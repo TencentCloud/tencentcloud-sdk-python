@@ -494,6 +494,11 @@ def test_import_ie():
     from tencentcloud.ie.v20200304 import models
 
 
+def test_import_iecp():
+    from tencentcloud.iecp.v20210914 import iecp_client
+    from tencentcloud.iecp.v20210914 import models
+
+
 def test_import_iir():
     from tencentcloud.iir.v20200417 import iir_client
     from tencentcloud.iir.v20200417 import models

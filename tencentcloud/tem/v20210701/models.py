@@ -2335,6 +2335,59 @@ class RestartApplicationPodResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class RestartApplicationRequest(AbstractModel):
+    """RestartApplication请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ApplicationId: 服务id
+        :type ApplicationId: str
+        :param SourceChannel: 来源渠道
+        :type SourceChannel: int
+        :param EnvironmentId: 环境ID
+        :type EnvironmentId: str
+        """
+        self.ApplicationId = None
+        self.SourceChannel = None
+        self.EnvironmentId = None
+
+
+    def _deserialize(self, params):
+        self.ApplicationId = params.get("ApplicationId")
+        self.SourceChannel = params.get("SourceChannel")
+        self.EnvironmentId = params.get("EnvironmentId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RestartApplicationResponse(AbstractModel):
+    """RestartApplication返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 返回结果
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
 class ResumeDeployApplicationRequest(AbstractModel):
     """ResumeDeployApplication请求参数结构体
 
@@ -2557,6 +2610,59 @@ class RunVersionPod(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class StopApplicationRequest(AbstractModel):
+    """StopApplication请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ApplicationId: 服务id
+        :type ApplicationId: str
+        :param SourceChannel: 来源渠道
+        :type SourceChannel: int
+        :param EnvironmentId: 环境ID
+        :type EnvironmentId: str
+        """
+        self.ApplicationId = None
+        self.SourceChannel = None
+        self.EnvironmentId = None
+
+
+    def _deserialize(self, params):
+        self.ApplicationId = params.get("ApplicationId")
+        self.SourceChannel = params.get("SourceChannel")
+        self.EnvironmentId = params.get("EnvironmentId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StopApplicationResponse(AbstractModel):
+    """StopApplication返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 返回结果
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
 
 
 class StorageConf(AbstractModel):

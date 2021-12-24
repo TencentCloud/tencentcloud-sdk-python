@@ -1062,6 +1062,34 @@ class CamClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def GetRolePermissionBoundary(self, request):
+        """获取角色权限边界
+
+        :param request: Request instance for GetRolePermissionBoundary.
+        :type request: :class:`tencentcloud.cam.v20190116.models.GetRolePermissionBoundaryRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.GetRolePermissionBoundaryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetRolePermissionBoundary", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetRolePermissionBoundaryResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def GetSAMLProvider(self, request):
         """查询SAML身份提供商详情
 
@@ -1160,6 +1188,34 @@ class CamClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetUserResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def GetUserPermissionBoundary(self, request):
+        """获取用户权限边界
+
+        :param request: Request instance for GetUserPermissionBoundary.
+        :type request: :class:`tencentcloud.cam.v20190116.models.GetUserPermissionBoundaryRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.GetUserPermissionBoundaryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetUserPermissionBoundary", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetUserPermissionBoundaryResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

@@ -18,6 +18,102 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class ClusterView(AbstractModel):
+    """集群维度视图数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Health: 集群健康状态
+        :type Health: float
+        :param Visible: 集群是否可见
+        :type Visible: float
+        :param Break: 集群是否熔断
+        :type Break: float
+        :param AvgDiskUsage: 平均磁盘使用率
+        :type AvgDiskUsage: float
+        :param AvgMemUsage: 平均内存使用率
+        :type AvgMemUsage: float
+        :param AvgCpuUsage: 平均cpu使用率
+        :type AvgCpuUsage: float
+        :param TotalDiskSize: 集群总存储大小
+        :type TotalDiskSize: int
+        :param TargetNodeTypes: 客户端请求节点
+        :type TargetNodeTypes: list of str
+        :param NodeNum: 在线节点数
+        :type NodeNum: int
+        :param TotalNodeNum: 总节点数
+        :type TotalNodeNum: int
+        :param DataNodeNum: 数据节点数
+        :type DataNodeNum: int
+        :param IndexNum: 索引数
+        :type IndexNum: int
+        :param DocNum: 文档数
+        :type DocNum: int
+        :param DiskUsedInBytes: 磁盘已使用字节数
+        :type DiskUsedInBytes: int
+        :param ShardNum: 分片个数
+        :type ShardNum: int
+        :param PrimaryShardNum: 主分片个数
+        :type PrimaryShardNum: int
+        :param RelocatingShardNum: 迁移中的分片个数
+        :type RelocatingShardNum: int
+        :param InitializingShardNum: 初始化中的分片个数
+        :type InitializingShardNum: int
+        :param UnassignedShardNum: 未分配的分片个数
+        :type UnassignedShardNum: int
+        """
+        self.Health = None
+        self.Visible = None
+        self.Break = None
+        self.AvgDiskUsage = None
+        self.AvgMemUsage = None
+        self.AvgCpuUsage = None
+        self.TotalDiskSize = None
+        self.TargetNodeTypes = None
+        self.NodeNum = None
+        self.TotalNodeNum = None
+        self.DataNodeNum = None
+        self.IndexNum = None
+        self.DocNum = None
+        self.DiskUsedInBytes = None
+        self.ShardNum = None
+        self.PrimaryShardNum = None
+        self.RelocatingShardNum = None
+        self.InitializingShardNum = None
+        self.UnassignedShardNum = None
+
+
+    def _deserialize(self, params):
+        self.Health = params.get("Health")
+        self.Visible = params.get("Visible")
+        self.Break = params.get("Break")
+        self.AvgDiskUsage = params.get("AvgDiskUsage")
+        self.AvgMemUsage = params.get("AvgMemUsage")
+        self.AvgCpuUsage = params.get("AvgCpuUsage")
+        self.TotalDiskSize = params.get("TotalDiskSize")
+        self.TargetNodeTypes = params.get("TargetNodeTypes")
+        self.NodeNum = params.get("NodeNum")
+        self.TotalNodeNum = params.get("TotalNodeNum")
+        self.DataNodeNum = params.get("DataNodeNum")
+        self.IndexNum = params.get("IndexNum")
+        self.DocNum = params.get("DocNum")
+        self.DiskUsedInBytes = params.get("DiskUsedInBytes")
+        self.ShardNum = params.get("ShardNum")
+        self.PrimaryShardNum = params.get("PrimaryShardNum")
+        self.RelocatingShardNum = params.get("RelocatingShardNum")
+        self.InitializingShardNum = params.get("InitializingShardNum")
+        self.UnassignedShardNum = params.get("UnassignedShardNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CosBackup(AbstractModel):
     """ES cos自动备份信息
 
@@ -519,6 +615,74 @@ class DescribeInstancesResponse(AbstractModel):
                 obj = InstanceInfo()
                 obj._deserialize(item)
                 self.InstanceList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeViewsRequest(AbstractModel):
+    """DescribeViews请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 集群实例ID
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeViewsResponse(AbstractModel):
+    """DescribeViews返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterView: 集群维度视图
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterView: :class:`tencentcloud.es.v20180416.models.ClusterView`
+        :param NodesView: 节点维度视图
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NodesView: list of NodeView
+        :param KibanasView: Kibana维度视图
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KibanasView: list of KibanaView
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ClusterView = None
+        self.NodesView = None
+        self.KibanasView = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ClusterView") is not None:
+            self.ClusterView = ClusterView()
+            self.ClusterView._deserialize(params.get("ClusterView"))
+        if params.get("NodesView") is not None:
+            self.NodesView = []
+            for item in params.get("NodesView"):
+                obj = NodeView()
+                obj._deserialize(item)
+                self.NodesView.append(obj)
+        if params.get("KibanasView") is not None:
+            self.KibanasView = []
+            for item in params.get("KibanasView"):
+                obj = KibanaView()
+                obj._deserialize(item)
+                self.KibanasView.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1180,6 +1344,58 @@ class KibanaNodeInfo(AbstractModel):
         
 
 
+class KibanaView(AbstractModel):
+    """Kibana视图数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Ip: Kibana节点IP
+        :type Ip: str
+        :param DiskSize: 节点总磁盘大小
+        :type DiskSize: int
+        :param DiskUsage: 磁盘使用率
+        :type DiskUsage: float
+        :param MemSize: 节点内存大小
+        :type MemSize: int
+        :param MemUsage: 内存使用率
+        :type MemUsage: float
+        :param CpuNum: 节点cpu个数
+        :type CpuNum: int
+        :param CpuUsage: cpu使用率
+        :type CpuUsage: float
+        :param Zone: 可用区
+        :type Zone: str
+        """
+        self.Ip = None
+        self.DiskSize = None
+        self.DiskUsage = None
+        self.MemSize = None
+        self.MemUsage = None
+        self.CpuNum = None
+        self.CpuUsage = None
+        self.Zone = None
+
+
+    def _deserialize(self, params):
+        self.Ip = params.get("Ip")
+        self.DiskSize = params.get("DiskSize")
+        self.DiskUsage = params.get("DiskUsage")
+        self.MemSize = params.get("MemSize")
+        self.MemUsage = params.get("MemUsage")
+        self.CpuNum = params.get("CpuNum")
+        self.CpuUsage = params.get("CpuUsage")
+        self.Zone = params.get("Zone")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class LocalDiskInfo(AbstractModel):
     """节点本地盘信息
 
@@ -1309,6 +1525,94 @@ class NodeInfo(AbstractModel):
             self.LocalDiskInfo._deserialize(params.get("LocalDiskInfo"))
         self.DiskCount = params.get("DiskCount")
         self.DiskEncrypt = params.get("DiskEncrypt")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NodeView(AbstractModel):
+    """节点维度视图数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NodeId: 节点ID
+        :type NodeId: str
+        :param NodeIp: 节点IP
+        :type NodeIp: str
+        :param Visible: 节点是否可见
+        :type Visible: float
+        :param Break: 是否熔断
+        :type Break: float
+        :param DiskSize: 节点总磁盘大小
+        :type DiskSize: int
+        :param DiskUsage: 磁盘使用率
+        :type DiskUsage: float
+        :param MemSize: 节点内存大小，单位GB
+        :type MemSize: int
+        :param MemUsage: 内存使用率
+        :type MemUsage: float
+        :param CpuNum: 节点cpu个数
+        :type CpuNum: int
+        :param CpuUsage: cpu使用率
+        :type CpuUsage: float
+        :param Zone: 可用区
+        :type Zone: str
+        :param NodeRole: 节点角色
+        :type NodeRole: str
+        :param NodeHttpIp: 节点HTTP IP
+        :type NodeHttpIp: str
+        :param JvmMemUsage: JVM内存使用率
+        :type JvmMemUsage: float
+        :param ShardNum: 节点分片数
+        :type ShardNum: int
+        :param DiskIds: 节点上磁盘ID列表
+        :type DiskIds: list of str
+        :param Hidden: 是否为隐藏可用区
+        :type Hidden: bool
+        """
+        self.NodeId = None
+        self.NodeIp = None
+        self.Visible = None
+        self.Break = None
+        self.DiskSize = None
+        self.DiskUsage = None
+        self.MemSize = None
+        self.MemUsage = None
+        self.CpuNum = None
+        self.CpuUsage = None
+        self.Zone = None
+        self.NodeRole = None
+        self.NodeHttpIp = None
+        self.JvmMemUsage = None
+        self.ShardNum = None
+        self.DiskIds = None
+        self.Hidden = None
+
+
+    def _deserialize(self, params):
+        self.NodeId = params.get("NodeId")
+        self.NodeIp = params.get("NodeIp")
+        self.Visible = params.get("Visible")
+        self.Break = params.get("Break")
+        self.DiskSize = params.get("DiskSize")
+        self.DiskUsage = params.get("DiskUsage")
+        self.MemSize = params.get("MemSize")
+        self.MemUsage = params.get("MemUsage")
+        self.CpuNum = params.get("CpuNum")
+        self.CpuUsage = params.get("CpuUsage")
+        self.Zone = params.get("Zone")
+        self.NodeRole = params.get("NodeRole")
+        self.NodeHttpIp = params.get("NodeHttpIp")
+        self.JvmMemUsage = params.get("JvmMemUsage")
+        self.ShardNum = params.get("ShardNum")
+        self.DiskIds = params.get("DiskIds")
+        self.Hidden = params.get("Hidden")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

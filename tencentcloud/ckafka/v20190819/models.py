@@ -282,6 +282,34 @@ class Assignment(AbstractModel):
         
 
 
+class BatchContent(AbstractModel):
+    """批量发送消息内容
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Body: 发送的消息体
+        :type Body: str
+        :param Key: 发送消息的键名
+        :type Key: str
+        """
+        self.Body = None
+        self.Key = None
+
+
+    def _deserialize(self, params):
+        self.Body = params.get("Body")
+        self.Key = params.get("Key")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BatchCreateAclRequest(AbstractModel):
     """BatchCreateAcl请求参数结构体
 
@@ -4531,6 +4559,60 @@ class SaleInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class SendMessageRequest(AbstractModel):
+    """SendMessage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DataHubId: DataHub接入ID
+        :type DataHubId: str
+        :param Message: 发送消息内容
+        :type Message: list of BatchContent
+        """
+        self.DataHubId = None
+        self.Message = None
+
+
+    def _deserialize(self, params):
+        self.DataHubId = params.get("DataHubId")
+        if params.get("Message") is not None:
+            self.Message = []
+            for item in params.get("Message"):
+                obj = BatchContent()
+                obj._deserialize(item)
+                self.Message.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SendMessageResponse(AbstractModel):
+    """SendMessage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MessageId: 消息ID列表
+        :type MessageId: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.MessageId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.MessageId = params.get("MessageId")
+        self.RequestId = params.get("RequestId")
 
 
 class SubscribedInfo(AbstractModel):

@@ -1007,7 +1007,7 @@ class KmsClient(AbstractClient):
 
 
     def GetRegions(self, request):
-        """获取支持的地域列表
+        """获取可以提供KMS服务的地域列表
 
         :param request: Request instance for GetRegions.
         :type request: :class:`tencentcloud.kms.v20190118.models.GetRegionsRequest`

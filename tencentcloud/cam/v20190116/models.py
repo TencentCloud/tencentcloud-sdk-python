@@ -2023,6 +2023,72 @@ class GetPolicyVersionResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class GetRolePermissionBoundaryRequest(AbstractModel):
+    """GetRolePermissionBoundary请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RoleId: 角色ID
+        :type RoleId: str
+        """
+        self.RoleId = None
+
+
+    def _deserialize(self, params):
+        self.RoleId = params.get("RoleId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetRolePermissionBoundaryResponse(AbstractModel):
+    """GetRolePermissionBoundary返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PolicyId: 策略ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PolicyId: int
+        :param PolicyName: 策略名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PolicyName: str
+        :param PolicyDocument: 策略语法
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PolicyDocument: str
+        :param PolicyType: 策略类型：1.自定义策略，2.预设策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PolicyType: int
+        :param CreateMode: 创建方式：1.按产品功能或项目权限创建，2.按策略语法创建，3.按策略生成器创建，4.按标签授权创建，5.按权限边界规则创建
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateMode: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.PolicyId = None
+        self.PolicyName = None
+        self.PolicyDocument = None
+        self.PolicyType = None
+        self.CreateMode = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.PolicyId = params.get("PolicyId")
+        self.PolicyName = params.get("PolicyName")
+        self.PolicyDocument = params.get("PolicyDocument")
+        self.PolicyType = params.get("PolicyType")
+        self.CreateMode = params.get("CreateMode")
+        self.RequestId = params.get("RequestId")
+
+
 class GetRoleRequest(AbstractModel):
     """GetRole请求参数结构体
 
@@ -2241,6 +2307,72 @@ class GetServiceLinkedRoleDeletionStatusResponse(AbstractModel):
         self.Reason = params.get("Reason")
         self.ServiceType = params.get("ServiceType")
         self.ServiceName = params.get("ServiceName")
+        self.RequestId = params.get("RequestId")
+
+
+class GetUserPermissionBoundaryRequest(AbstractModel):
+    """GetUserPermissionBoundary请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TargetUin: 子账号Uin
+        :type TargetUin: int
+        """
+        self.TargetUin = None
+
+
+    def _deserialize(self, params):
+        self.TargetUin = params.get("TargetUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetUserPermissionBoundaryResponse(AbstractModel):
+    """GetUserPermissionBoundary返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PolicyId: 策略ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PolicyId: int
+        :param PolicyName: 策略名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PolicyName: str
+        :param PolicyDocument: 策略语法
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PolicyDocument: str
+        :param PolicyType: 策略类型：1.自定义策略，2.预设策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PolicyType: int
+        :param CreateMode: 创建方式：1.按产品功能或项目权限创建，2.按策略语法创建，3.按策略生成器创建，4.按标签授权创建，5.按权限边界规则创建
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateMode: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.PolicyId = None
+        self.PolicyName = None
+        self.PolicyDocument = None
+        self.PolicyType = None
+        self.CreateMode = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.PolicyId = params.get("PolicyId")
+        self.PolicyName = params.get("PolicyName")
+        self.PolicyDocument = params.get("PolicyDocument")
+        self.PolicyType = params.get("PolicyType")
+        self.CreateMode = params.get("CreateMode")
         self.RequestId = params.get("RequestId")
 
 

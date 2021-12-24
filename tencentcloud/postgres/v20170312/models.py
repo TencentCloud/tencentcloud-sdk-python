@@ -286,8 +286,6 @@ class CreateDBInstancesRequest(AbstractModel):
         r"""
         :param SpecCode: 售卖规格ID。该参数可以通过调用DescribeProductConfig的返回值中的SpecCode字段来获取。
         :type SpecCode: str
-        :param DBVersion: PostgreSQL内核版本，目前支持以下版本：9.3.5、9.5.4、10.4、11.8、12.4 。
-        :type DBVersion: str
         :param Storage: 实例容量大小，单位：GB。
         :type Storage: int
         :param InstanceCount: 一次性购买的实例数量。取值1-100
@@ -298,6 +296,8 @@ class CreateDBInstancesRequest(AbstractModel):
         :type Zone: str
         :param ProjectId: 项目ID。
         :type ProjectId: int
+        :param DBVersion: PostgreSQL版本。当输入该参数时，会基于此版本创建对应的最新内核版本号实例。
+        :type DBVersion: str
         :param InstanceChargeType: 实例计费类型。目前支持：PREPAID（预付费，即包年包月），POSTPAID_BY_HOUR（后付费，即按量计费）。
         :type InstanceChargeType: str
         :param AutoVoucher: 是否自动使用代金券。1（是），0（否），默认不使用。
@@ -320,14 +320,18 @@ class CreateDBInstancesRequest(AbstractModel):
         :type TagList: list of Tag
         :param SecurityGroupIds: 安全组id
         :type SecurityGroupIds: list of str
+        :param DBMajorVersion: PostgreSQL主要版本。目前支持10，11，12，13这几个版本。当输入该参数时，会基于此版本创建对应的最新内核版本号实例。
+        :type DBMajorVersion: str
+        :param DBKernelVersion: PostgreSQL内核版本。当输入该参数时，会创建该内核版本号实例。
+        :type DBKernelVersion: str
         """
         self.SpecCode = None
-        self.DBVersion = None
         self.Storage = None
         self.InstanceCount = None
         self.Period = None
         self.Zone = None
         self.ProjectId = None
+        self.DBVersion = None
         self.InstanceChargeType = None
         self.AutoVoucher = None
         self.VoucherIds = None
@@ -339,16 +343,18 @@ class CreateDBInstancesRequest(AbstractModel):
         self.NeedSupportIpv6 = None
         self.TagList = None
         self.SecurityGroupIds = None
+        self.DBMajorVersion = None
+        self.DBKernelVersion = None
 
 
     def _deserialize(self, params):
         self.SpecCode = params.get("SpecCode")
-        self.DBVersion = params.get("DBVersion")
         self.Storage = params.get("Storage")
         self.InstanceCount = params.get("InstanceCount")
         self.Period = params.get("Period")
         self.Zone = params.get("Zone")
         self.ProjectId = params.get("ProjectId")
+        self.DBVersion = params.get("DBVersion")
         self.InstanceChargeType = params.get("InstanceChargeType")
         self.AutoVoucher = params.get("AutoVoucher")
         self.VoucherIds = params.get("VoucherIds")
@@ -365,6 +371,8 @@ class CreateDBInstancesRequest(AbstractModel):
                 obj._deserialize(item)
                 self.TagList.append(obj)
         self.SecurityGroupIds = params.get("SecurityGroupIds")
+        self.DBMajorVersion = params.get("DBMajorVersion")
+        self.DBKernelVersion = params.get("DBKernelVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -412,8 +420,6 @@ class CreateInstancesRequest(AbstractModel):
         r"""
         :param SpecCode: 售卖规格ID。该参数可以通过调用DescribeProductConfig的返回值中的SpecCode字段来获取。
         :type SpecCode: str
-        :param DBVersion: PostgreSQL主版本，目前支持：9.3、9.5、10、11、12、13以及9.3.5、9.5.4、10.4、11.8、12.4版本。
-        :type DBVersion: str
         :param Storage: 实例容量大小，单位：GB。
         :type Storage: int
         :param InstanceCount: 一次性购买的实例数量。取值1-10。
@@ -430,6 +436,8 @@ class CreateInstancesRequest(AbstractModel):
         :type AdminPassword: str
         :param ProjectId: 项目ID。
         :type ProjectId: int
+        :param DBVersion: PostgreSQL版本。当输入该参数时，会基于此版本创建对应的最新内核版本号实例
+        :type DBVersion: str
         :param InstanceChargeType: 实例计费类型。目前支持：PREPAID（预付费，即包年包月），POSTPAID_BY_HOUR（后付费，即按量计费）。
         :type InstanceChargeType: str
         :param AutoVoucher: 是否自动使用代金券。1（是），0（否），默认不使用。
@@ -452,9 +460,12 @@ class CreateInstancesRequest(AbstractModel):
         :type TagList: list of Tag
         :param SecurityGroupIds: 安全组ID。
         :type SecurityGroupIds: list of str
+        :param DBMajorVersion: PostgreSQL主要版本。目前支持10，11，12，13这几个版本。当输入该参数时，会基于此版本创建对应的最新内核版本号实例
+        :type DBMajorVersion: str
+        :param DBKernelVersion: PostgreSQL内核版本。当输入该参数时，会创建该内核版本号实例
+        :type DBKernelVersion: str
         """
         self.SpecCode = None
-        self.DBVersion = None
         self.Storage = None
         self.InstanceCount = None
         self.Period = None
@@ -463,6 +474,7 @@ class CreateInstancesRequest(AbstractModel):
         self.AdminName = None
         self.AdminPassword = None
         self.ProjectId = None
+        self.DBVersion = None
         self.InstanceChargeType = None
         self.AutoVoucher = None
         self.VoucherIds = None
@@ -474,11 +486,12 @@ class CreateInstancesRequest(AbstractModel):
         self.NeedSupportIpv6 = None
         self.TagList = None
         self.SecurityGroupIds = None
+        self.DBMajorVersion = None
+        self.DBKernelVersion = None
 
 
     def _deserialize(self, params):
         self.SpecCode = params.get("SpecCode")
-        self.DBVersion = params.get("DBVersion")
         self.Storage = params.get("Storage")
         self.InstanceCount = params.get("InstanceCount")
         self.Period = params.get("Period")
@@ -487,6 +500,7 @@ class CreateInstancesRequest(AbstractModel):
         self.AdminName = params.get("AdminName")
         self.AdminPassword = params.get("AdminPassword")
         self.ProjectId = params.get("ProjectId")
+        self.DBVersion = params.get("DBVersion")
         self.InstanceChargeType = params.get("InstanceChargeType")
         self.AutoVoucher = params.get("AutoVoucher")
         self.VoucherIds = params.get("VoucherIds")
@@ -503,6 +517,8 @@ class CreateInstancesRequest(AbstractModel):
                 obj._deserialize(item)
                 self.TagList.append(obj)
         self.SecurityGroupIds = params.get("SecurityGroupIds")
+        self.DBMajorVersion = params.get("DBMajorVersion")
+        self.DBKernelVersion = params.get("DBKernelVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -941,7 +957,7 @@ class DBInstance(AbstractModel):
         :type DBInstanceVersion: str
         :param DBCharset: 实例DB字符集
         :type DBCharset: str
-        :param DBVersion: PostgreSQL主版本
+        :param DBVersion: PostgreSQL版本
         :type DBVersion: str
         :param CreateTime: 实例创建时间
         :type CreateTime: str
@@ -986,6 +1002,9 @@ class DBInstance(AbstractModel):
         :param NetworkAccessList: 实例网络信息列表（此字段已废弃）
 注意：此字段可能返回 null，表示取不到有效值。
         :type NetworkAccessList: list of NetworkAccess
+        :param DBMajorVersion: PostgreSQL主要版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DBMajorVersion: str
         """
         self.Region = None
         self.Zone = None
@@ -1021,6 +1040,7 @@ class DBInstance(AbstractModel):
         self.OfflineTime = None
         self.DBKernelVersion = None
         self.NetworkAccessList = None
+        self.DBMajorVersion = None
 
 
     def _deserialize(self, params):
@@ -1073,6 +1093,7 @@ class DBInstance(AbstractModel):
                 obj = NetworkAccess()
                 obj._deserialize(item)
                 self.NetworkAccessList.append(obj)
+        self.DBMajorVersion = params.get("DBMajorVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4369,6 +4390,9 @@ class ServerlessDBInstance(AbstractModel):
         :param DBKernelVersion: 数据库内核版本
 注意：此字段可能返回 null，表示取不到有效值。
         :type DBKernelVersion: str
+        :param DBMajorVersion: 数据库主要版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DBMajorVersion: str
         """
         self.DBInstanceId = None
         self.DBInstanceName = None
@@ -4386,6 +4410,7 @@ class ServerlessDBInstance(AbstractModel):
         self.DBDatabaseList = None
         self.TagList = None
         self.DBKernelVersion = None
+        self.DBMajorVersion = None
 
 
     def _deserialize(self, params):
@@ -4420,6 +4445,7 @@ class ServerlessDBInstance(AbstractModel):
                 obj._deserialize(item)
                 self.TagList.append(obj)
         self.DBKernelVersion = params.get("DBKernelVersion")
+        self.DBMajorVersion = params.get("DBMajorVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4606,7 +4632,7 @@ class SpecItemInfo(AbstractModel):
         r"""
         :param SpecCode: 规格ID
         :type SpecCode: str
-        :param Version: PostgreSQL的内核版本编号
+        :param Version: PostgreSQL的版本编号
         :type Version: str
         :param VersionName: 内核编号对应的完整版本名称
         :type VersionName: str
@@ -4624,6 +4650,12 @@ class SpecItemInfo(AbstractModel):
         :type Pid: int
         :param Type: 机器类型
         :type Type: str
+        :param MajorVersion: PostgreSQL的主要版本编号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MajorVersion: str
+        :param KernelVersion: PostgreSQL的内核版本编号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KernelVersion: str
         """
         self.SpecCode = None
         self.Version = None
@@ -4635,6 +4667,8 @@ class SpecItemInfo(AbstractModel):
         self.Qps = None
         self.Pid = None
         self.Type = None
+        self.MajorVersion = None
+        self.KernelVersion = None
 
 
     def _deserialize(self, params):
@@ -4648,6 +4682,8 @@ class SpecItemInfo(AbstractModel):
         self.Qps = params.get("Qps")
         self.Pid = params.get("Pid")
         self.Type = params.get("Type")
+        self.MajorVersion = params.get("MajorVersion")
+        self.KernelVersion = params.get("KernelVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -4670,6 +4670,10 @@ class DeployContainerGroupRequest(AbstractModel):
         :type IncrementalDeployment: bool
         :param RepoType: tcr或者不填
         :type RepoType: str
+        :param VolumeInfos: 数据卷信息
+        :type VolumeInfos: :class:`tencentcloud.tsf.v20180326.models.VolumeInfo`
+        :param VolumeMountInfos: 数据卷挂载点信息
+        :type VolumeMountInfos: :class:`tencentcloud.tsf.v20180326.models.VolumeMountInfo`
         """
         self.GroupId = None
         self.TagName = None
@@ -4702,6 +4706,8 @@ class DeployContainerGroupRequest(AbstractModel):
         self.SchedulingStrategy = None
         self.IncrementalDeployment = None
         self.RepoType = None
+        self.VolumeInfos = None
+        self.VolumeMountInfos = None
 
 
     def _deserialize(self, params):
@@ -4747,6 +4753,12 @@ class DeployContainerGroupRequest(AbstractModel):
             self.SchedulingStrategy._deserialize(params.get("SchedulingStrategy"))
         self.IncrementalDeployment = params.get("IncrementalDeployment")
         self.RepoType = params.get("RepoType")
+        if params.get("VolumeInfos") is not None:
+            self.VolumeInfos = VolumeInfo()
+            self.VolumeInfos._deserialize(params.get("VolumeInfos"))
+        if params.get("VolumeMountInfos") is not None:
+            self.VolumeMountInfos = VolumeMountInfo()
+            self.VolumeMountInfos._deserialize(params.get("VolumeMountInfos"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7449,6 +7461,8 @@ class DescribeMicroservicesRequest(AbstractModel):
         :type Status: list of str
         :param MicroserviceIdList: IdList
         :type MicroserviceIdList: list of str
+        :param MicroserviceNameList: 搜索的服务名列表
+        :type MicroserviceNameList: list of str
         """
         self.NamespaceId = None
         self.SearchWord = None
@@ -7458,6 +7472,7 @@ class DescribeMicroservicesRequest(AbstractModel):
         self.Limit = None
         self.Status = None
         self.MicroserviceIdList = None
+        self.MicroserviceNameList = None
 
 
     def _deserialize(self, params):
@@ -7469,6 +7484,7 @@ class DescribeMicroservicesRequest(AbstractModel):
         self.Limit = params.get("Limit")
         self.Status = params.get("Status")
         self.MicroserviceIdList = params.get("MicroserviceIdList")
+        self.MicroserviceNameList = params.get("MicroserviceNameList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -17651,6 +17667,74 @@ class VmGroupSimple(AbstractModel):
         self.UpdatedTime = params.get("UpdatedTime")
         self.DeployDesc = params.get("DeployDesc")
         self.Alias = params.get("Alias")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VolumeInfo(AbstractModel):
+    """容器卷挂载信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param VolumeType: 数据卷类型
+        :type VolumeType: str
+        :param VolumeName: 数据卷名称
+        :type VolumeName: str
+        :param VolumeConfig: 数据卷配置
+        :type VolumeConfig: str
+        """
+        self.VolumeType = None
+        self.VolumeName = None
+        self.VolumeConfig = None
+
+
+    def _deserialize(self, params):
+        self.VolumeType = params.get("VolumeType")
+        self.VolumeName = params.get("VolumeName")
+        self.VolumeConfig = params.get("VolumeConfig")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VolumeMountInfo(AbstractModel):
+    """容器卷挂载点信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param VolumeMountName: 挂载数据卷名称
+        :type VolumeMountName: str
+        :param VolumeMountPath: 挂载路径
+        :type VolumeMountPath: str
+        :param VolumeMountSubPath: 挂载子路径
+        :type VolumeMountSubPath: str
+        :param ReadOrWrite: 读写，1：读 2：读写
+        :type ReadOrWrite: str
+        """
+        self.VolumeMountName = None
+        self.VolumeMountPath = None
+        self.VolumeMountSubPath = None
+        self.ReadOrWrite = None
+
+
+    def _deserialize(self, params):
+        self.VolumeMountName = params.get("VolumeMountName")
+        self.VolumeMountPath = params.get("VolumeMountPath")
+        self.VolumeMountSubPath = params.get("VolumeMountSubPath")
+        self.ReadOrWrite = params.get("ReadOrWrite")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -1431,7 +1431,7 @@ class ScanVoiceRequest(AbstractModel):
         r"""
         :param BizId: 应用ID，登录[控制台 - 服务管理](https://console.cloud.tencent.com/gamegme)创建应用得到的AppID
         :type BizId: int
-        :param Scenes: 语音检测场景，参数值目前要求为 default。 预留场景设置： 谩骂、色情、涉政、广告、暴恐、违禁等场景，<a href="#Label_Value">具体取值见上述 Label 说明。</a>
+        :param Scenes: 语音检测场景，参数值目前要求为 default。 预留场景设置： 谩骂、色情、广告、违禁等场景，<a href="#Label_Value">具体取值见上述 Label 说明。</a>
         :type Scenes: list of str
         :param Live: 是否为直播流。值为 false 时表示普通语音文件检测；为 true 时表示语音流检测。
         :type Live: bool
@@ -1441,12 +1441,15 @@ class ScanVoiceRequest(AbstractModel):
         :type Tasks: list of Task
         :param Callback: 异步检测结果回调地址，具体见上述<a href="#Callback_Declare">回调相关说明</a>。（说明：该字段为空时，必须通过接口(查询语音检测结果)获取检测结果）。
         :type Callback: str
+        :param Lang: 语言，目前jp代表日语
+        :type Lang: str
         """
         self.BizId = None
         self.Scenes = None
         self.Live = None
         self.Tasks = None
         self.Callback = None
+        self.Lang = None
 
 
     def _deserialize(self, params):
@@ -1460,6 +1463,7 @@ class ScanVoiceRequest(AbstractModel):
                 obj._deserialize(item)
                 self.Tasks.append(obj)
         self.Callback = params.get("Callback")
+        self.Lang = params.get("Lang")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1625,7 +1629,7 @@ class VoiceFilter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Type: 过滤类型，1：政治，2：色情，3：涉毒，4：谩骂
+        :param Type: 过滤类型，1：色情，2：涉毒，3：谩骂
 注意：此字段可能返回 null，表示取不到有效值。
         :type Type: int
         :param Word: 过滤命中关键词

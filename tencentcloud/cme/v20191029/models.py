@@ -5209,19 +5209,24 @@ class SlotInfo(AbstractModel):
         r"""
         :param Id: 卡槽 Id。
         :type Id: int
-        :param Type: 素材类型，同素材素材，可取值有：
-<li> AUDIO :音频;</li>
-<li> VIDEO :视频;</li>
-<li> IMAGE :图片。</li>
+        :param Type: 卡槽类型，可取值有：
+<li> AUDIO：音频卡槽，可替换素材类型为 AUDIO 的音频素材;</li>
+<li> VIDEO：视频卡槽，可替换素材类型为 VIDEO 的视频素材;</li>
+<li> IMAGE：图片卡槽，可替换素材类型为 IMAGE 的图片素材;</li>
+<li> TEXT：文本卡槽，可替换文本内容。</li>
         :type Type: str
-        :param DefaultMaterialId: 默认素材 Id。
+        :param DefaultMaterialId: 默认素材ID。当卡槽类型为 AUDIO，VIDEO，或 IMAGE 中的一种时有效。
         :type DefaultMaterialId: str
+        :param DefaultTextSlotInfo: 默认文本卡槽信息。当卡槽类型为 TEXT 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DefaultTextSlotInfo: :class:`tencentcloud.cme.v20191029.models.TextSlotInfo`
         :param Duration: 素材时长，单位秒。
         :type Duration: float
         """
         self.Id = None
         self.Type = None
         self.DefaultMaterialId = None
+        self.DefaultTextSlotInfo = None
         self.Duration = None
 
 
@@ -5229,6 +5234,9 @@ class SlotInfo(AbstractModel):
         self.Id = params.get("Id")
         self.Type = params.get("Type")
         self.DefaultMaterialId = params.get("DefaultMaterialId")
+        if params.get("DefaultTextSlotInfo") is not None:
+            self.DefaultTextSlotInfo = TextSlotInfo()
+            self.DefaultTextSlotInfo._deserialize(params.get("DefaultTextSlotInfo"))
         self.Duration = params.get("Duration")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -5798,6 +5806,30 @@ class TextReplacementInfo(AbstractModel):
     def __init__(self):
         r"""
         :param Text: 替换的文本信息。
+        :type Text: str
+        """
+        self.Text = None
+
+
+    def _deserialize(self, params):
+        self.Text = params.get("Text")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TextSlotInfo(AbstractModel):
+    """文本类型卡槽信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Text: 文本内容。
         :type Text: str
         """
         self.Text = None

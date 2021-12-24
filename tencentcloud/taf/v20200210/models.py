@@ -74,6 +74,34 @@ class DetectFraudKOLResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class Device(AbstractModel):
+    """业务入参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DeviceId: 业务入参id
+        :type DeviceId: str
+        :param DeviceType: 业务入参类型
+        :type DeviceType: int
+        """
+        self.DeviceId = None
+        self.DeviceType = None
+
+
+    def _deserialize(self, params):
+        self.DeviceId = params.get("DeviceId")
+        self.DeviceType = params.get("DeviceType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class EnhanceTaDegreeRequest(AbstractModel):
     """EnhanceTaDegree请求参数结构体
 
@@ -300,6 +328,8 @@ class InputRecognizeTargetAudience(AbstractModel):
         :type ReqType: int
         :param IsAuthorized: 用户是否授权,1为授权，0为未授权
         :type IsAuthorized: int
+        :param DeviceList: 设备信息
+        :type DeviceList: list of Device
         """
         self.Uid = None
         self.AccountType = None
@@ -340,6 +370,7 @@ class InputRecognizeTargetAudience(AbstractModel):
         self.AppVer = None
         self.ReqType = None
         self.IsAuthorized = None
+        self.DeviceList = None
 
 
     def _deserialize(self, params):
@@ -382,6 +413,12 @@ class InputRecognizeTargetAudience(AbstractModel):
         self.AppVer = params.get("AppVer")
         self.ReqType = params.get("ReqType")
         self.IsAuthorized = params.get("IsAuthorized")
+        if params.get("DeviceList") is not None:
+            self.DeviceList = []
+            for item in params.get("DeviceList"):
+                obj = Device()
+                obj._deserialize(item)
+                self.DeviceList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

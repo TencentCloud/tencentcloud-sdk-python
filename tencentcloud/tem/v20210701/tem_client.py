@@ -533,6 +533,34 @@ class TemClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def RestartApplication(self, request):
+        """服务重启
+
+        :param request: Request instance for RestartApplication.
+        :type request: :class:`tencentcloud.tem.v20210701.models.RestartApplicationRequest`
+        :rtype: :class:`tencentcloud.tem.v20210701.models.RestartApplicationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("RestartApplication", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.RestartApplicationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def RestartApplicationPod(self, request):
         """重启应用实例
 
@@ -631,6 +659,34 @@ class TemClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RollingUpdateApplicationByVersionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def StopApplication(self, request):
+        """服务停止
+
+        :param request: Request instance for StopApplication.
+        :type request: :class:`tencentcloud.tem.v20210701.models.StopApplicationRequest`
+        :rtype: :class:`tencentcloud.tem.v20210701.models.StopApplicationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("StopApplication", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.StopApplicationResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

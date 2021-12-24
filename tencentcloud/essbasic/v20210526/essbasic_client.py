@@ -110,6 +110,34 @@ class EssbasicClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeFlowDetailInfo(self, request):
+        """此接口（DescribeFlowDetailInfo）用于查询合同(流程)的详细信息。
+
+        :param request: Request instance for DescribeFlowDetailInfo.
+        :type request: :class:`tencentcloud.essbasic.v20210526.models.DescribeFlowDetailInfoRequest`
+        :rtype: :class:`tencentcloud.essbasic.v20210526.models.DescribeFlowDetailInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeFlowDetailInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeFlowDetailInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeResourceUrlsByFlows(self, request):
         """根据流程信息批量获取资源下载链接
 

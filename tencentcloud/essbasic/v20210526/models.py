@@ -449,6 +449,77 @@ class CreateSignUrlsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeFlowDetailInfoRequest(AbstractModel):
+    """DescribeFlowDetailInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Agent: 应用信息
+        :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        :param FlowIds: 合同(流程)编号数组
+        :type FlowIds: list of str
+        :param Operator: 操作者的信息
+        :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
+        """
+        self.Agent = None
+        self.FlowIds = None
+        self.Operator = None
+
+
+    def _deserialize(self, params):
+        if params.get("Agent") is not None:
+            self.Agent = Agent()
+            self.Agent._deserialize(params.get("Agent"))
+        self.FlowIds = params.get("FlowIds")
+        if params.get("Operator") is not None:
+            self.Operator = UserInfo()
+            self.Operator._deserialize(params.get("Operator"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeFlowDetailInfoResponse(AbstractModel):
+    """DescribeFlowDetailInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ApplicationId: 渠道侧应用号Id
+        :type ApplicationId: str
+        :param ProxyOrganizationOpenId: 渠道侧企业第三方Id
+        :type ProxyOrganizationOpenId: str
+        :param FlowInfo: 合同(流程)的具体详细描述信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlowInfo: list of FlowDetailInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ApplicationId = None
+        self.ProxyOrganizationOpenId = None
+        self.FlowInfo = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ApplicationId = params.get("ApplicationId")
+        self.ProxyOrganizationOpenId = params.get("ProxyOrganizationOpenId")
+        if params.get("FlowInfo") is not None:
+            self.FlowInfo = []
+            for item in params.get("FlowInfo"):
+                obj = FlowDetailInfo()
+                obj._deserialize(item)
+                self.FlowInfo.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeResourceUrlsByFlowsRequest(AbstractModel):
     """DescribeResourceUrlsByFlows请求参数结构体
 
@@ -692,6 +763,75 @@ class DownloadFlowInfo(AbstractModel):
         
 
 
+class FlowApproverDetail(AbstractModel):
+    """签署人的流程信息明细
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ReceiptId: 模板配置时候的签署人id,与控件绑定
+        :type ReceiptId: str
+        :param ProxyOrganizationOpenId: 渠道侧企业的第三方id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProxyOrganizationOpenId: str
+        :param ProxyOperatorOpenId: 渠道侧企业操作人的第三方id
+        :type ProxyOperatorOpenId: str
+        :param ProxyOrganizationName: 渠道侧企业名称
+        :type ProxyOrganizationName: str
+        :param Mobile: 签署人手机号
+        :type Mobile: str
+        :param SignOrder: 签署人签署顺序
+        :type SignOrder: int
+        :param ApproveName: 签署人姓名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApproveName: str
+        :param ApproveStatus: 当前签署人的状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApproveStatus: str
+        :param ApproveMessage: 签署人信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApproveMessage: str
+        :param ApproveTime: 签署人签署时间
+        :type ApproveTime: int
+        :param ApproveType: 参与者类型 (ORGANIZATION企业/PERSON个人)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApproveType: str
+        """
+        self.ReceiptId = None
+        self.ProxyOrganizationOpenId = None
+        self.ProxyOperatorOpenId = None
+        self.ProxyOrganizationName = None
+        self.Mobile = None
+        self.SignOrder = None
+        self.ApproveName = None
+        self.ApproveStatus = None
+        self.ApproveMessage = None
+        self.ApproveTime = None
+        self.ApproveType = None
+
+
+    def _deserialize(self, params):
+        self.ReceiptId = params.get("ReceiptId")
+        self.ProxyOrganizationOpenId = params.get("ProxyOrganizationOpenId")
+        self.ProxyOperatorOpenId = params.get("ProxyOperatorOpenId")
+        self.ProxyOrganizationName = params.get("ProxyOrganizationName")
+        self.Mobile = params.get("Mobile")
+        self.SignOrder = params.get("SignOrder")
+        self.ApproveName = params.get("ApproveName")
+        self.ApproveStatus = params.get("ApproveStatus")
+        self.ApproveMessage = params.get("ApproveMessage")
+        self.ApproveTime = params.get("ApproveTime")
+        self.ApproveType = params.get("ApproveType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class FlowApproverInfo(AbstractModel):
     """创建流程签署人入参
 
@@ -739,6 +879,67 @@ class FlowApproverInfo(AbstractModel):
         self.ApproverType = params.get("ApproverType")
         self.OpenId = params.get("OpenId")
         self.PreReadTime = params.get("PreReadTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FlowDetailInfo(AbstractModel):
+    """此结构体(FlowDetailInfo)描述的是合同(流程)的详细信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: 合同(流程)的Id
+        :type FlowId: str
+        :param FlowName: 合同(流程)的名字
+        :type FlowName: str
+        :param FlowType: 合同(流程)的类型
+        :type FlowType: str
+        :param FlowStatus: 合同(流程)的状态
+        :type FlowStatus: str
+        :param FlowMessage: 合同(流程)的信息
+        :type FlowMessage: str
+        :param CreateOn: 合同(流程)的创建时间戳
+        :type CreateOn: int
+        :param DeadLine: 合同(流程)的签署截止时间戳
+        :type DeadLine: int
+        :param CustomData: 用户自定义数据
+        :type CustomData: str
+        :param FlowApproverInfos: 合同(流程)的签署人数组
+        :type FlowApproverInfos: list of FlowApproverDetail
+        """
+        self.FlowId = None
+        self.FlowName = None
+        self.FlowType = None
+        self.FlowStatus = None
+        self.FlowMessage = None
+        self.CreateOn = None
+        self.DeadLine = None
+        self.CustomData = None
+        self.FlowApproverInfos = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.FlowName = params.get("FlowName")
+        self.FlowType = params.get("FlowType")
+        self.FlowStatus = params.get("FlowStatus")
+        self.FlowMessage = params.get("FlowMessage")
+        self.CreateOn = params.get("CreateOn")
+        self.DeadLine = params.get("DeadLine")
+        self.CustomData = params.get("CustomData")
+        if params.get("FlowApproverInfos") is not None:
+            self.FlowApproverInfos = []
+            for item in params.get("FlowApproverInfos"):
+                obj = FlowApproverDetail()
+                obj._deserialize(item)
+                self.FlowApproverInfos.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

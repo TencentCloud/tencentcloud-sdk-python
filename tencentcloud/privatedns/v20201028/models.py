@@ -897,7 +897,7 @@ class DescribePrivateZoneRecordListRequest(AbstractModel):
         r"""
         :param ZoneId: 私有域ID: zone-xxxxxx
         :type ZoneId: str
-        :param Filters: 过滤参数
+        :param Filters: 过滤参数（支持使用Value、RecordType过滤）
         :type Filters: list of Filter
         :param Offset: 分页偏移量，从0开始
         :type Offset: int

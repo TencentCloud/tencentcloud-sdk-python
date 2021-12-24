@@ -32,6 +32,9 @@ CDBERROR_IMPORTERROR = 'CdbError.ImportError'
 # 后端任务错误。
 CDBERROR_TASKERROR = 'CdbError.TaskError'
 
+# 操作失败。
+FAILEDOPERATION = 'FailedOperation'
+
 # 异步任务状态异常。
 FAILEDOPERATION_ASYNCTASKSTATUSERROR = 'FailedOperation.AsyncTaskStatusError'
 
@@ -91,6 +94,9 @@ FAILEDOPERATION_TIMEOUTERROR = 'FailedOperation.TimeoutError'
 
 # 类型错误，无法执行该操作。
 FAILEDOPERATION_TYPEINCONFLICT = 'FailedOperation.TypeInConflict'
+
+# 内部错误。
+INTERNALERROR = 'InternalError'
 
 # 查询异步任务错误。
 INTERNALERROR_ASYNCREQUESTERROR = 'InternalError.AsyncRequestError'

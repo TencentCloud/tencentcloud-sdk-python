@@ -1222,11 +1222,14 @@ class ClusterPublicLB(AbstractModel):
         :type SecurityPolicies: list of str
         :param ExtraParam: 外网访问相关的扩展参数，格式为json
         :type ExtraParam: str
+        :param SecurityGroup: 新内外网功能，需要传递安全组
+        :type SecurityGroup: str
         """
         self.Enabled = None
         self.AllowFromCidrs = None
         self.SecurityPolicies = None
         self.ExtraParam = None
+        self.SecurityGroup = None
 
 
     def _deserialize(self, params):
@@ -1234,6 +1237,7 @@ class ClusterPublicLB(AbstractModel):
         self.AllowFromCidrs = params.get("AllowFromCidrs")
         self.SecurityPolicies = params.get("SecurityPolicies")
         self.ExtraParam = params.get("ExtraParam")
+        self.SecurityGroup = params.get("SecurityGroup")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4184,6 +4188,8 @@ class DescribeEKSClusterCredentialResponse(AbstractModel):
         :type PublicLB: :class:`tencentcloud.tke.v20180525.models.ClusterPublicLB`
         :param InternalLB: 集群的内网访问信息
         :type InternalLB: :class:`tencentcloud.tke.v20180525.models.ClusterInternalLB`
+        :param ProxyLB: 标记是否新的内外网功能
+        :type ProxyLB: bool
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4191,6 +4197,7 @@ class DescribeEKSClusterCredentialResponse(AbstractModel):
         self.Credential = None
         self.PublicLB = None
         self.InternalLB = None
+        self.ProxyLB = None
         self.RequestId = None
 
 
@@ -4210,6 +4217,7 @@ class DescribeEKSClusterCredentialResponse(AbstractModel):
         if params.get("InternalLB") is not None:
             self.InternalLB = ClusterInternalLB()
             self.InternalLB._deserialize(params.get("InternalLB"))
+        self.ProxyLB = params.get("ProxyLB")
         self.RequestId = params.get("RequestId")
 
 
@@ -10021,6 +10029,8 @@ class UpdateEKSClusterRequest(AbstractModel):
         :type ClearDnsServer: str
         :param NeedDeleteCbs: 将来删除集群时是否要删除cbs。默认为 FALSE
         :type NeedDeleteCbs: bool
+        :param ProxyLB: 标记是否是新的内外网。默认为false
+        :type ProxyLB: bool
         """
         self.ClusterId = None
         self.ClusterName = None
@@ -10032,6 +10042,7 @@ class UpdateEKSClusterRequest(AbstractModel):
         self.DnsServers = None
         self.ClearDnsServer = None
         self.NeedDeleteCbs = None
+        self.ProxyLB = None
 
 
     def _deserialize(self, params):
@@ -10054,6 +10065,7 @@ class UpdateEKSClusterRequest(AbstractModel):
                 self.DnsServers.append(obj)
         self.ClearDnsServer = params.get("ClearDnsServer")
         self.NeedDeleteCbs = params.get("NeedDeleteCbs")
+        self.ProxyLB = params.get("ProxyLB")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -343,7 +343,7 @@ class CreateKeyRequest(AbstractModel):
         :type Alias: str
         :param Description: CMK 的描述，最大1024字节
         :type Description: str
-        :param KeyUsage: 指定key的用途，默认为  "ENCRYPT_DECRYPT" 表示创建对称加解密密钥，其它支持用途 “ASYMMETRIC_DECRYPT_RSA_2048” 表示创建用于加解密的RSA2048非对称密钥，“ASYMMETRIC_DECRYPT_SM2” 表示创建用于加解密的SM2非对称密钥, “ASYMMETRIC_SIGN_VERIFY_SM2” 表示创建用于签名验签的SM2非对称密钥, “ASYMMETRIC_SIGN_VERIFY_ECC” 表示创建用于签名验签的ECC非对称密钥, “ASYMMETRIC_SIGN_VERIFY_RSA_2048” 表示创建用于签名验签的RSA_2048非对称密钥
+        :param KeyUsage: 指定key的用途，默认为  "ENCRYPT_DECRYPT" 表示创建对称加解密密钥，其它支持用途 “ASYMMETRIC_DECRYPT_RSA_2048” 表示创建用于加解密的RSA2048非对称密钥，“ASYMMETRIC_DECRYPT_SM2” 表示创建用于加解密的SM2非对称密钥，“ASYMMETRIC_SIGN_VERIFY_SM2” 表示创建用于签名验签的SM2非对称密钥，“ASYMMETRIC_SIGN_VERIFY_ECC” 表示创建用于签名验签的ECC非对称密钥，“ASYMMETRIC_SIGN_VERIFY_RSA_2048” 表示创建用于签名验签的RSA_2048非对称密钥，“ASYMMETRIC_SIGN_VERIFY_ECDSA384”表示创建用于签名验签的 ECDSA384 非对称秘钥。完整的秘钥用途与算法支持列表可通过 ListAlgorithms 接口获取。
         :type KeyUsage: str
         :param Type: 指定key类型，默认为1，1表示默认类型，由KMS创建CMK密钥，2 表示EXTERNAL 类型，该类型需要用户导入密钥材料，参考 GetParametersForImport 和 ImportKeyMaterial 接口
         :type Type: int
@@ -520,14 +520,22 @@ class DecryptRequest(AbstractModel):
         :type CiphertextBlob: str
         :param EncryptionContext: key/value对的json字符串，如果Encrypt指定了该参数，则在调用Decrypt API时需要提供同样的参数，最大支持1024字符
         :type EncryptionContext: str
+        :param EncryptionPublicKey: PEM 格式公钥字符串，支持 RSA2048 和 SM2 公钥，用于对返回数据中的 Plaintext 值进行加密。若为空，则不对 Plaintext 值加密。
+        :type EncryptionPublicKey: str
+        :param EncryptionAlgorithm: 非对称加密算法，配合 EncryptionPublicKey 对返回数据进行加密。目前支持：SM2（C1C3C2），RSAES_PKCS1_V1_5，RSAES_OAEP_SHA_1，RSAES_OAEP_SHA_256。若为空，则默认为 SM2。
+        :type EncryptionAlgorithm: str
         """
         self.CiphertextBlob = None
         self.EncryptionContext = None
+        self.EncryptionPublicKey = None
+        self.EncryptionAlgorithm = None
 
 
     def _deserialize(self, params):
         self.CiphertextBlob = params.get("CiphertextBlob")
         self.EncryptionContext = params.get("EncryptionContext")
+        self.EncryptionPublicKey = params.get("EncryptionPublicKey")
+        self.EncryptionAlgorithm = params.get("EncryptionAlgorithm")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -546,7 +554,8 @@ class DecryptResponse(AbstractModel):
         r"""
         :param KeyId: CMK的全局唯一标识
         :type KeyId: str
-        :param Plaintext: 解密后的明文。该字段是base64编码的，为了得到原始明文，调用方需要进行base64解码
+        :param Plaintext: 若调用时未提供 EncryptionPublicKey，该字段值为 Base64 编码的明文，需进行 Base64 解码以获取明文。
+若调用时提供了 EncryptionPublicKey，则该字段值为使用 EncryptionPublicKey 公钥进行非对称加密后的 Base64 编码的密文。需在 Base64 解码后，使用用户上传的公钥对应的私钥进行进一步解密，以获取明文。
         :type Plaintext: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1552,11 +1561,17 @@ class GenerateDataKeyRequest(AbstractModel):
         :type NumberOfBytes: int
         :param EncryptionContext: key/value对的json字符串，如果使用该字段，则返回的DataKey在解密时需要填入相同的字符串
         :type EncryptionContext: str
+        :param EncryptionPublicKey: PEM 格式公钥字符串，支持 RSA2048 和 SM2 公钥，用于对返回数据中的 Plaintext 值进行加密。若为空，则不对 Plaintext 值加密。
+        :type EncryptionPublicKey: str
+        :param EncryptionAlgorithm: 非对称加密算法，配合 EncryptionPublicKey 对返回数据进行加密。目前支持：SM2（C1C3C2），RSAES_PKCS1_V1_5，RSAES_OAEP_SHA_1，RSAES_OAEP_SHA_256。若为空，则默认为 SM2。
+        :type EncryptionAlgorithm: str
         """
         self.KeyId = None
         self.KeySpec = None
         self.NumberOfBytes = None
         self.EncryptionContext = None
+        self.EncryptionPublicKey = None
+        self.EncryptionAlgorithm = None
 
 
     def _deserialize(self, params):
@@ -1564,6 +1579,8 @@ class GenerateDataKeyRequest(AbstractModel):
         self.KeySpec = params.get("KeySpec")
         self.NumberOfBytes = params.get("NumberOfBytes")
         self.EncryptionContext = params.get("EncryptionContext")
+        self.EncryptionPublicKey = params.get("EncryptionPublicKey")
+        self.EncryptionAlgorithm = params.get("EncryptionAlgorithm")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1582,7 +1599,8 @@ class GenerateDataKeyResponse(AbstractModel):
         r"""
         :param KeyId: CMK的全局唯一标识
         :type KeyId: str
-        :param Plaintext: 生成的数据密钥DataKey的明文，该明文使用base64进行了编码，需base64解码后作为数据密钥本地使用
+        :param Plaintext: 若调用时未提供 EncryptionPublicKey，该字段值为生成的数据密钥 DataKey 的 Base64 编码的明文，需进行 Base64 解码以获取 DataKey 明文。
+若调用时提供了 EncryptionPublicKey，则该字段值为使用 EncryptionPublicKey 公钥进行非对称加密后的 Base64 编码的密文。需在 Base64 解码后，使用用户上传的公钥对应的私钥进行进一步解密，以获取 DataKey 明文。
         :type Plaintext: str
         :param CiphertextBlob: 数据密钥DataKey加密后的密文，用户需要自行保存该密文，KMS不托管用户的数据密钥。可以通过Decrypt接口从CiphertextBlob中获取数据密钥DataKey明文
         :type CiphertextBlob: str
