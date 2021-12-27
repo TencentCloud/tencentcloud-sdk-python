@@ -2452,11 +2452,15 @@ class GeneralHandwritingOCRRequest(AbstractModel):
         :type Scene: str
         :param EnableWordPolygon: 是否开启单字的四点定位坐标输出，默认值为false。
         :type EnableWordPolygon: bool
+        :param EnableDetectText: 文本检测开关，默认值为true。
+设置为false表示直接进行单行识别，可适用于识别单行手写体签名场景。
+        :type EnableDetectText: bool
         """
         self.ImageBase64 = None
         self.ImageUrl = None
         self.Scene = None
         self.EnableWordPolygon = None
+        self.EnableDetectText = None
 
 
     def _deserialize(self, params):
@@ -2464,6 +2468,7 @@ class GeneralHandwritingOCRRequest(AbstractModel):
         self.ImageUrl = params.get("ImageUrl")
         self.Scene = params.get("Scene")
         self.EnableWordPolygon = params.get("EnableWordPolygon")
+        self.EnableDetectText = params.get("EnableDetectText")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
