@@ -80,3 +80,31 @@ class OrganizationClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeOrganization(self, request):
+        """获取企业组织信息
+
+        :param request: Request instance for DescribeOrganization.
+        :type request: :class:`tencentcloud.organization.v20210331.models.DescribeOrganizationRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.DescribeOrganizationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeOrganization", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeOrganizationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)

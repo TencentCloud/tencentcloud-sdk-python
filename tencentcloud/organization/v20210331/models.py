@@ -130,3 +130,137 @@ class CreateOrganizationMemberResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class DescribeOrganizationRequest(AbstractModel):
+    """DescribeOrganization请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Lang: 国际站：en，国内站：zh
+        :type Lang: str
+        """
+        self.Lang = None
+
+
+    def _deserialize(self, params):
+        self.Lang = params.get("Lang")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeOrganizationResponse(AbstractModel):
+    """DescribeOrganization返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param OrgId: 企业组织ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OrgId: int
+        :param HostUin: 创建者UIN
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HostUin: int
+        :param NickName: 创建者昵称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NickName: str
+        :param OrgType: 企业组织类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OrgType: int
+        :param IsManager: 组织管理员：true，组织成员：false
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsManager: bool
+        :param OrgPolicyType: 策略类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OrgPolicyType: str
+        :param OrgPolicyName: 策略名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OrgPolicyName: str
+        :param OrgPermission: 策略权限
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OrgPermission: list of OrgPermission
+        :param RootNodeId: 根节点ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RootNodeId: int
+        :param CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param JoinTime: 成员加入时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JoinTime: str
+        :param IsAllowQuit: 是否允许退出。允许：Allow，不允许：Denied。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsAllowQuit: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.OrgId = None
+        self.HostUin = None
+        self.NickName = None
+        self.OrgType = None
+        self.IsManager = None
+        self.OrgPolicyType = None
+        self.OrgPolicyName = None
+        self.OrgPermission = None
+        self.RootNodeId = None
+        self.CreateTime = None
+        self.JoinTime = None
+        self.IsAllowQuit = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.OrgId = params.get("OrgId")
+        self.HostUin = params.get("HostUin")
+        self.NickName = params.get("NickName")
+        self.OrgType = params.get("OrgType")
+        self.IsManager = params.get("IsManager")
+        self.OrgPolicyType = params.get("OrgPolicyType")
+        self.OrgPolicyName = params.get("OrgPolicyName")
+        if params.get("OrgPermission") is not None:
+            self.OrgPermission = []
+            for item in params.get("OrgPermission"):
+                obj = OrgPermission()
+                obj._deserialize(item)
+                self.OrgPermission.append(obj)
+        self.RootNodeId = params.get("RootNodeId")
+        self.CreateTime = params.get("CreateTime")
+        self.JoinTime = params.get("JoinTime")
+        self.IsAllowQuit = params.get("IsAllowQuit")
+        self.RequestId = params.get("RequestId")
+
+
+class OrgPermission(AbstractModel):
+    """关系策略权限
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: 权限Id
+        :type Id: int
+        :param Name: 权限名
+        :type Name: str
+        """
+        self.Id = None
+        self.Name = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
