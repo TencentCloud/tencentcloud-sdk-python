@@ -1196,61 +1196,6 @@ class CmqTransactionPolicy(AbstractModel):
         
 
 
-class Connection(AbstractModel):
-    """生产者连接实例
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Address: 生产者地址。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Address: str
-        :param Partitions: 主题分区。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Partitions: int
-        :param ClientVersion: 生产者版本。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ClientVersion: str
-        :param ProducerName: 生产者名称。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ProducerName: str
-        :param ProducerId: 生产者ID。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ProducerId: str
-        :param AverageMsgSize: 消息平均大小(byte)。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AverageMsgSize: str
-        :param MsgThroughputIn: 生成速率(byte/秒)。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MsgThroughputIn: str
-        """
-        self.Address = None
-        self.Partitions = None
-        self.ClientVersion = None
-        self.ProducerName = None
-        self.ProducerId = None
-        self.AverageMsgSize = None
-        self.MsgThroughputIn = None
-
-
-    def _deserialize(self, params):
-        self.Address = params.get("Address")
-        self.Partitions = params.get("Partitions")
-        self.ClientVersion = params.get("ClientVersion")
-        self.ProducerName = params.get("ProducerName")
-        self.ProducerId = params.get("ProducerId")
-        self.AverageMsgSize = params.get("AverageMsgSize")
-        self.MsgThroughputIn = params.get("MsgThroughputIn")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class Consumer(AbstractModel):
     """消费者
 
@@ -4927,80 +4872,6 @@ class DescribeNodeHealthOptResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class DescribeProducersRequest(AbstractModel):
-    """DescribeProducers请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param EnvironmentId: 环境（命名空间）名称。
-        :type EnvironmentId: str
-        :param TopicName: 主题名。
-        :type TopicName: str
-        :param Offset: 起始下标，不填默认为0。
-        :type Offset: int
-        :param Limit: 返回数量，不填则默认为10，最大值为20。
-        :type Limit: int
-        :param ProducerName: 生产者名称，模糊匹配。
-        :type ProducerName: str
-        :param ClusterId: Pulsar 集群的ID
-        :type ClusterId: str
-        """
-        self.EnvironmentId = None
-        self.TopicName = None
-        self.Offset = None
-        self.Limit = None
-        self.ProducerName = None
-        self.ClusterId = None
-
-
-    def _deserialize(self, params):
-        self.EnvironmentId = params.get("EnvironmentId")
-        self.TopicName = params.get("TopicName")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.ProducerName = params.get("ProducerName")
-        self.ClusterId = params.get("ClusterId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeProducersResponse(AbstractModel):
-    """DescribeProducers返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param ProducerSets: 生产者集合数组。
-        :type ProducerSets: list of Producer
-        :param TotalCount: 记录总数。
-        :type TotalCount: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.ProducerSets = None
-        self.TotalCount = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        if params.get("ProducerSets") is not None:
-            self.ProducerSets = []
-            for item in params.get("ProducerSets"):
-                obj = Producer()
-                obj._deserialize(item)
-                self.ProducerSets.append(obj)
-        self.TotalCount = params.get("TotalCount")
-        self.RequestId = params.get("RequestId")
-
-
 class DescribePublisherSummaryRequest(AbstractModel):
     """DescribePublisherSummary请求参数结构体
 
@@ -7096,49 +6967,6 @@ class PartitionsTopic(AbstractModel):
         self.ProducerCount = params.get("ProducerCount")
         self.TotalSize = params.get("TotalSize")
         self.TopicType = params.get("TopicType")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class Producer(AbstractModel):
-    """生产者
-
-    """
-
-    def __init__(self):
-        r"""
-        :param EnvironmentId: 环境（命名空间）名称。
-        :type EnvironmentId: str
-        :param TopicName: 主题名称。
-        :type TopicName: str
-        :param CountConnect: 连接数。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CountConnect: int
-        :param ConnectionSets: 连接集合。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ConnectionSets: list of Connection
-        """
-        self.EnvironmentId = None
-        self.TopicName = None
-        self.CountConnect = None
-        self.ConnectionSets = None
-
-
-    def _deserialize(self, params):
-        self.EnvironmentId = params.get("EnvironmentId")
-        self.TopicName = params.get("TopicName")
-        self.CountConnect = params.get("CountConnect")
-        if params.get("ConnectionSets") is not None:
-            self.ConnectionSets = []
-            for item in params.get("ConnectionSets"):
-                obj = Connection()
-                obj._deserialize(item)
-                self.ConnectionSets.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -74,9 +74,6 @@ FAILEDOPERATION_DELETESUBSCRIPTIONS = 'FailedOperation.DeleteSubscriptions'
 # 主题删除失败。
 FAILEDOPERATION_DELETETOPICS = 'FailedOperation.DeleteTopics'
 
-# 查询生产者数据失败。
-FAILEDOPERATION_DESCRIBEPRODUCERS = 'FailedOperation.DescribeProducers'
-
 # 查询订阅数据失败。
 FAILEDOPERATION_DESCRIBESUBSCRIPTION = 'FailedOperation.DescribeSubscription'
 

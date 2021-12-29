@@ -60,6 +60,29 @@ class AccountInfo(AbstractModel):
         
 
 
+class DescribeRiskAssessmentRequest(AbstractModel):
+    """DescribeRiskAssessment请求参数结构体
+
+    """
+
+
+class DescribeRiskAssessmentResponse(AbstractModel):
+    """DescribeRiskAssessment返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeRiskModelRequest(AbstractModel):
     """DescribeRiskModel请求参数结构体
 
@@ -105,6 +128,55 @@ class DescribeRiskModelResponse(AbstractModel):
     def _deserialize(self, params):
         if params.get("Data") is not None:
             self.Data = OutputDescribeRiskModel()
+            self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeRiskTrendsRequest(AbstractModel):
+    """DescribeRiskTrends请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BusinessSecurityData: 业务入参
+        :type BusinessSecurityData: :class:`tencentcloud.rce.v20201103.models.InputFrontRisk`
+        """
+        self.BusinessSecurityData = None
+
+
+    def _deserialize(self, params):
+        if params.get("BusinessSecurityData") is not None:
+            self.BusinessSecurityData = InputFrontRisk()
+            self.BusinessSecurityData._deserialize(params.get("BusinessSecurityData"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRiskTrendsResponse(AbstractModel):
+    """DescribeRiskTrends返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 业务出参
+        :type Data: :class:`tencentcloud.rce.v20201103.models.OutputFrontRiskData`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = OutputFrontRiskData()
             self.Data._deserialize(params.get("Data"))
         self.RequestId = params.get("RequestId")
 
@@ -192,6 +264,50 @@ class InputDetails(AbstractModel):
     def _deserialize(self, params):
         self.FieldName = params.get("FieldName")
         self.FieldValue = params.get("FieldValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InputFrontRisk(AbstractModel):
+    """风险趋势统计--入参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EventId: 事件ID
+        :type EventId: int
+        :param StartTime: 开始时间
+        :type StartTime: str
+        :param EndTime: 结束时间
+        :type EndTime: str
+        :param Type: 趋势类型
+        :type Type: int
+        :param CurrentStartTime: 当前开始时间
+        :type CurrentStartTime: str
+        :param CurrentEndTime: 当前结束时间
+        :type CurrentEndTime: str
+        """
+        self.EventId = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Type = None
+        self.CurrentStartTime = None
+        self.CurrentEndTime = None
+
+
+    def _deserialize(self, params):
+        self.EventId = params.get("EventId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Type = params.get("Type")
+        self.CurrentStartTime = params.get("CurrentStartTime")
+        self.CurrentEndTime = params.get("CurrentEndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -503,6 +619,111 @@ class OutputDescribeRiskModelValue(AbstractModel):
 
     def _deserialize(self, params):
         self.ApplyScore = params.get("ApplyScore")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OutputFrontRisk(AbstractModel):
+    """风险趋势统计出参，需要为数组
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param Value: 参数值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: list of OutputFrontRiskValue
+        """
+        self.Name = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        if params.get("Value") is not None:
+            self.Value = []
+            for item in params.get("Value"):
+                obj = OutputFrontRiskValue()
+                obj._deserialize(item)
+                self.Value.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OutputFrontRiskData(AbstractModel):
+    """风险趋势统计--出参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Code: 返回码[0：成功；非0：标识失败错误码]。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Code: int
+        :param Message: 出错消息[UTF-8编码]。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Message: str
+        :param Value: 返回结果。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: list of OutputFrontRisk
+        """
+        self.Code = None
+        self.Message = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Code = params.get("Code")
+        self.Message = params.get("Message")
+        if params.get("Value") is not None:
+            self.Value = []
+            for item in params.get("Value"):
+                obj = OutputFrontRisk()
+                obj._deserialize(item)
+                self.Value.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OutputFrontRiskValue(AbstractModel):
+    """风险趋势统计--值
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Requests: 请求次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Requests: int
+        :param Index: 日期标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Index: str
+        """
+        self.Requests = None
+        self.Index = None
+
+
+    def _deserialize(self, params):
+        self.Requests = params.get("Requests")
+        self.Index = params.get("Index")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

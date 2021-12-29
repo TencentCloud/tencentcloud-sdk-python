@@ -6503,6 +6503,9 @@ class PrometheusInstancesItem(AbstractModel):
         :param Grant: 实例的授权信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Grant: :class:`tencentcloud.monitor.v20180724.models.PrometheusInstanceGrantInfo`
+        :param GrafanaInstanceId: 绑定的 Grafana 实例 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GrafanaInstanceId: str
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -6530,6 +6533,7 @@ class PrometheusInstancesItem(AbstractModel):
         self.GrafanaStatus = None
         self.GrafanaIpWhiteList = None
         self.Grant = None
+        self.GrafanaInstanceId = None
 
 
     def _deserialize(self, params):
@@ -6566,6 +6570,7 @@ class PrometheusInstancesItem(AbstractModel):
         if params.get("Grant") is not None:
             self.Grant = PrometheusInstanceGrantInfo()
             self.Grant._deserialize(params.get("Grant"))
+        self.GrafanaInstanceId = params.get("GrafanaInstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
