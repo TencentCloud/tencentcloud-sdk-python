@@ -55,7 +55,7 @@ class AccessConfiguration(AbstractModel):
 
 
 class AccessRegionDetial(AbstractModel):
-    """根据源站查询的可用加速区域信息及对应的可选带宽和并发量
+    """根据源站查询的可用加速区域信息及对应的可选带宽和并发量。
 
     """
 
@@ -604,7 +604,7 @@ class CheckProxyCreateRequest(AbstractModel):
         :type IPAddressVersion: str
         :param NetworkType: 网络类型，可取值：normal、cn2，默认值normal
         :type NetworkType: str
-        :param PackageType: 通道组类型。Thunder表示标准通道组，Accelerator表示游戏加速器通道。
+        :param PackageType: 通道套餐类型。Thunder表示标准通道组，Accelerator表示游戏加速器通道，CrossBorder表示跨境通道。
         :type PackageType: str
         """
         self.AccessRegion = None
@@ -1397,8 +1397,10 @@ class CreateProxyRequest(AbstractModel):
         :type BillingType: int
         :param IPAddressVersion: IP版本，可取值：IPv4、IPv6，默认值IPv4
         :type IPAddressVersion: str
-        :param NetworkType: 网络类型，可取值：normal、cn2，默认值normal
+        :param NetworkType: 网络类型，normal表示常规BGP，cn2表示精品BGP，triple表示三网
         :type NetworkType: str
+        :param PackageType: 通道套餐类型，Thunder表示标准通道组，Accelerator表示游戏加速器通道，CrossBorder表示跨境通道。
+        :type PackageType: str
         """
         self.ProjectId = None
         self.ProxyName = None
@@ -1413,6 +1415,7 @@ class CreateProxyRequest(AbstractModel):
         self.BillingType = None
         self.IPAddressVersion = None
         self.NetworkType = None
+        self.PackageType = None
 
 
     def _deserialize(self, params):
@@ -1434,6 +1437,7 @@ class CreateProxyRequest(AbstractModel):
         self.BillingType = params.get("BillingType")
         self.IPAddressVersion = params.get("IPAddressVersion")
         self.NetworkType = params.get("NetworkType")
+        self.PackageType = params.get("PackageType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2208,7 +2212,7 @@ class DescribeAccessRegionsByDestRegionRequest(AbstractModel):
         :type DestRegion: str
         :param IPAddressVersion: IP版本，可取值：IPv4、IPv6，默认值IPv4
         :type IPAddressVersion: str
-        :param PackageType: 通道组类型，Thunder表示标准通道组，Accelerator表示游戏加速器通道。
+        :param PackageType: 通道套餐类型，Thunder表示标准通道组，Accelerator表示游戏加速器通道，CrossBorder表示跨境通道。
         :type PackageType: str
         """
         self.DestRegion = None
@@ -3087,6 +3091,7 @@ AccessRegion - String - 是否必填：否 - （过滤条件）按照接入地�
 RealServerRegion - String - 是否必填：否 - （过滤条件）按照源站地域过滤。
 GroupId - String - 是否必填：否 - （过滤条件）按照通道组ID过滤。
 IPAddressVersion - String - 是否必填：否 - （过滤条件）按照IP版本过滤。
+PackageType - String - 是否必填：否 - （过滤条件）按照通道套餐类型过滤。
         :type Filters: list of Filter
         :param ProxyIds: （新参数，替代InstanceIds）按照一个或者多个实例ID查询。每次请求的实例的上限为100。参数不支持同时指定InstanceIds和Filters。
         :type ProxyIds: list of str
@@ -3852,7 +3857,7 @@ class DescribeRegionAndPriceRequest(AbstractModel):
         r"""
         :param IPAddressVersion: IP版本，可取值：IPv4、IPv6，默认值IPv4
         :type IPAddressVersion: str
-        :param PackageType: 通道组类型，Thunder表示标准通道组，Accelerator表示游戏加速器通道。
+        :param PackageType: 通道套餐类型，Thunder表示标准通道组，Accelerator表示游戏加速器通道，CrossBorder表示跨境通道。
         :type PackageType: str
         """
         self.IPAddressVersion = None
@@ -5073,7 +5078,7 @@ class InquiryPriceCreateProxyRequest(AbstractModel):
         :type IPAddressVersion: str
         :param NetworkType: 网络类型，可取值：normal、cn2，默认值normal
         :type NetworkType: str
-        :param PackageType: 通道组类型。Thunder表示标准通道组，Accelerator表示游戏加速器通道。
+        :param PackageType: 通道套餐类型，Thunder表示标准通道组，Accelerator表示游戏加速器通道，CrossBorder表示跨境通道。
         :type PackageType: str
         """
         self.AccessRegion = None
@@ -6644,7 +6649,8 @@ CLONING表示复制中。
         :param NetworkType: 网络类型：normal表示常规BGP，cn2表示精品BGP，triple表示三网
 注意：此字段可能返回 null，表示取不到有效值。
         :type NetworkType: str
-        :param PackageType: 通道套餐类型：Thunder表示标准通道，Accelerator表示游戏加速器通道。
+        :param PackageType: 通道套餐类型：Thunder表示标准通道，Accelerator表示游戏加速器通道，
+CrossBorder表示跨境通道。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PackageType: str
         :param BanStatus: 封禁解封状态：BANNED表示已封禁，RECOVER表示已解封或未封禁，BANNING表示封禁中，RECOVERING表示解封中，BAN_FAILED表示封禁失败，RECOVER_FAILED表示解封失败。

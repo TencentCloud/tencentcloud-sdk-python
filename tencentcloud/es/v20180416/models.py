@@ -63,6 +63,14 @@ class ClusterView(AbstractModel):
         :type InitializingShardNum: int
         :param UnassignedShardNum: 未分配的分片个数
         :type UnassignedShardNum: int
+        :param TotalCosStorage: 企业版COS存储容量大小，单位GB
+        :type TotalCosStorage: int
+        :param SearchableSnapshotCosBucket: 企业版集群可搜索快照cos存放的bucket名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SearchableSnapshotCosBucket: str
+        :param SearchableSnapshotCosAppId: 企业版集群可搜索快照cos所属appid
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SearchableSnapshotCosAppId: str
         """
         self.Health = None
         self.Visible = None
@@ -83,6 +91,9 @@ class ClusterView(AbstractModel):
         self.RelocatingShardNum = None
         self.InitializingShardNum = None
         self.UnassignedShardNum = None
+        self.TotalCosStorage = None
+        self.SearchableSnapshotCosBucket = None
+        self.SearchableSnapshotCosAppId = None
 
 
     def _deserialize(self, params):
@@ -105,6 +116,9 @@ class ClusterView(AbstractModel):
         self.RelocatingShardNum = params.get("RelocatingShardNum")
         self.InitializingShardNum = params.get("InitializingShardNum")
         self.UnassignedShardNum = params.get("UnassignedShardNum")
+        self.TotalCosStorage = params.get("TotalCosStorage")
+        self.SearchableSnapshotCosBucket = params.get("SearchableSnapshotCosBucket")
+        self.SearchableSnapshotCosAppId = params.get("SearchableSnapshotCosAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -316,15 +330,20 @@ class CreateInstanceResponse(AbstractModel):
         r"""
         :param InstanceId: 实例ID
         :type InstanceId: str
+        :param DealName: 订单号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DealName: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.InstanceId = None
+        self.DealName = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
+        self.DealName = params.get("DealName")
         self.RequestId = params.get("RequestId")
 
 
@@ -552,6 +571,8 @@ class DescribeInstancesRequest(AbstractModel):
         :type TagList: list of TagInfo
         :param IpList: 私有网络vip列表
         :type IpList: list of str
+        :param ZoneList: 可用区列表
+        :type ZoneList: list of str
         """
         self.Zone = None
         self.InstanceIds = None
@@ -562,6 +583,7 @@ class DescribeInstancesRequest(AbstractModel):
         self.OrderByType = None
         self.TagList = None
         self.IpList = None
+        self.ZoneList = None
 
 
     def _deserialize(self, params):
@@ -579,6 +601,7 @@ class DescribeInstancesRequest(AbstractModel):
                 obj._deserialize(item)
                 self.TagList.append(obj)
         self.IpList = params.get("IpList")
+        self.ZoneList = params.get("ZoneList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1008,22 +1031,22 @@ class InstanceInfo(AbstractModel):
         :param EnableHotWarmMode: 是否为冷热集群<li>true: 冷热集群</li><li>false: 非冷热集群</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EnableHotWarmMode: bool
-        :param WarmNodeType: 冷节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li>
+        :param WarmNodeType: 温节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WarmNodeType: str
-        :param WarmNodeNum: 冷节点个数
+        :param WarmNodeNum: 温节点个数
 注意：此字段可能返回 null，表示取不到有效值。
         :type WarmNodeNum: int
-        :param WarmCpuNum: 冷节点CPU核数
+        :param WarmCpuNum: 温节点CPU核数
 注意：此字段可能返回 null，表示取不到有效值。
         :type WarmCpuNum: int
-        :param WarmMemSize: 冷节点内存内存大小，单位GB
+        :param WarmMemSize: 温节点内存内存大小，单位GB
 注意：此字段可能返回 null，表示取不到有效值。
         :type WarmMemSize: int
-        :param WarmDiskType: 冷节点磁盘类型
+        :param WarmDiskType: 温节点磁盘类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type WarmDiskType: str
-        :param WarmDiskSize: 冷节点磁盘大小，单位GB
+        :param WarmDiskSize: 温节点磁盘大小，单位GB
 注意：此字段可能返回 null，表示取不到有效值。
         :type WarmDiskSize: int
         :param NodeInfoList: 集群节点信息列表
@@ -1076,6 +1099,42 @@ class InstanceInfo(AbstractModel):
         :param SecurityGroups: 安全组id
 注意：此字段可能返回 null，表示取不到有效值。
         :type SecurityGroups: list of str
+        :param ColdNodeType: 冷节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ColdNodeType: str
+        :param ColdNodeNum: 冷节点个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ColdNodeNum: int
+        :param ColdCpuNum: 冷节点CPU核数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ColdCpuNum: int
+        :param ColdMemSize: 冷节点内存大小，单位GB
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ColdMemSize: int
+        :param ColdDiskType: 冷节点磁盘类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ColdDiskType: str
+        :param ColdDiskSize: 冷节点磁盘大小，单位GB
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ColdDiskSize: int
+        :param FrozenNodeType: 冻节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FrozenNodeType: str
+        :param FrozenNodeNum: 冻节点个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FrozenNodeNum: int
+        :param FrozenCpuNum: 冻节点CPU核数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FrozenCpuNum: int
+        :param FrozenMemSize: 冻节点内存大小，单位GB
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FrozenMemSize: int
+        :param FrozenDiskType: 冻节点磁盘类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FrozenDiskType: str
+        :param FrozenDiskSize: 冻节点磁盘大小，单位GB
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FrozenDiskSize: int
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -1136,6 +1195,18 @@ class InstanceInfo(AbstractModel):
         self.Jdk = None
         self.Protocol = None
         self.SecurityGroups = None
+        self.ColdNodeType = None
+        self.ColdNodeNum = None
+        self.ColdCpuNum = None
+        self.ColdMemSize = None
+        self.ColdDiskType = None
+        self.ColdDiskSize = None
+        self.FrozenNodeType = None
+        self.FrozenNodeNum = None
+        self.FrozenCpuNum = None
+        self.FrozenMemSize = None
+        self.FrozenDiskType = None
+        self.FrozenDiskSize = None
 
 
     def _deserialize(self, params):
@@ -1227,6 +1298,18 @@ class InstanceInfo(AbstractModel):
         self.Jdk = params.get("Jdk")
         self.Protocol = params.get("Protocol")
         self.SecurityGroups = params.get("SecurityGroups")
+        self.ColdNodeType = params.get("ColdNodeType")
+        self.ColdNodeNum = params.get("ColdNodeNum")
+        self.ColdCpuNum = params.get("ColdCpuNum")
+        self.ColdMemSize = params.get("ColdMemSize")
+        self.ColdDiskType = params.get("ColdDiskType")
+        self.ColdDiskSize = params.get("ColdDiskSize")
+        self.FrozenNodeType = params.get("FrozenNodeType")
+        self.FrozenNodeNum = params.get("FrozenNodeNum")
+        self.FrozenCpuNum = params.get("FrozenCpuNum")
+        self.FrozenMemSize = params.get("FrozenMemSize")
+        self.FrozenDiskType = params.get("FrozenDiskType")
+        self.FrozenDiskSize = params.get("FrozenDiskSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2191,13 +2274,18 @@ class UpdateInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param DealName: 订单号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DealName: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.DealName = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.DealName = params.get("DealName")
         self.RequestId = params.get("RequestId")
 
 
@@ -2271,12 +2359,15 @@ class UpdatePluginsRequest(AbstractModel):
         :type ForceRestart: bool
         :param ForceUpdate: 是否重新安装
         :type ForceUpdate: bool
+        :param PluginType: 0：系统插件
+        :type PluginType: int
         """
         self.InstanceId = None
         self.InstallPluginList = None
         self.RemovePluginList = None
         self.ForceRestart = None
         self.ForceUpdate = None
+        self.PluginType = None
 
 
     def _deserialize(self, params):
@@ -2285,6 +2376,7 @@ class UpdatePluginsRequest(AbstractModel):
         self.RemovePluginList = params.get("RemovePluginList")
         self.ForceRestart = params.get("ForceRestart")
         self.ForceUpdate = params.get("ForceUpdate")
+        self.PluginType = params.get("PluginType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2468,13 +2560,18 @@ class UpgradeLicenseResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param DealName: 订单号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DealName: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.DealName = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.DealName = params.get("DealName")
         self.RequestId = params.get("RequestId")
 
 

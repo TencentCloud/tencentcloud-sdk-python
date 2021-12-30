@@ -807,6 +807,69 @@ class BindingPolicyObjectResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class BindingPolicyTagRequest(AbstractModel):
+    """BindingPolicyTag请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Module: 固定取值 monitor
+        :type Module: str
+        :param PolicyId: 策略ID
+        :type PolicyId: str
+        :param GroupId: 用于实例、实例组绑定和解绑接口（BindingPolicyObject、UnBindingAllPolicyObject、UnBindingPolicyObject）的策略 ID
+        :type GroupId: str
+        :param Tag: 策略标签
+        :type Tag: :class:`tencentcloud.monitor.v20180724.models.PolicyTag`
+        :param ServiceType: 产品类型
+        :type ServiceType: str
+        :param InstanceGroupId: 实例分组ID
+        :type InstanceGroupId: int
+        """
+        self.Module = None
+        self.PolicyId = None
+        self.GroupId = None
+        self.Tag = None
+        self.ServiceType = None
+        self.InstanceGroupId = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.PolicyId = params.get("PolicyId")
+        self.GroupId = params.get("GroupId")
+        if params.get("Tag") is not None:
+            self.Tag = PolicyTag()
+            self.Tag._deserialize(params.get("Tag"))
+        self.ServiceType = params.get("ServiceType")
+        self.InstanceGroupId = params.get("InstanceGroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BindingPolicyTagResponse(AbstractModel):
+    """BindingPolicyTag返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CommonNamespace(AbstractModel):
     """统一的命名空间信息
 
@@ -6299,6 +6362,34 @@ class Point(AbstractModel):
 
     def _deserialize(self, params):
         self.Timestamp = params.get("Timestamp")
+        self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PolicyTag(AbstractModel):
+    """策略标签
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Key: 标签Key
+        :type Key: str
+        :param Value: 标签Value
+        :type Value: str
+        """
+        self.Key = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
         self.Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

@@ -869,7 +869,7 @@ class GaapClient(AbstractClient):
 
 
     def DescribeAccessRegionsByDestRegion(self, request):
-        """本接口（DescribeAccessRegionsByDestRegion）根据源站区域查询可用的加速区域列表
+        """本接口（DescribeAccessRegionsByDestRegion）根据源站区域查询可用的加速区域列表。
 
         :param request: Request instance for DescribeAccessRegionsByDestRegion.
         :type request: :class:`tencentcloud.gaap.v20180529.models.DescribeAccessRegionsByDestRegionRequest`

@@ -54,6 +54,34 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def BindingPolicyTag(self, request):
+        """策略绑定标签
+
+        :param request: Request instance for BindingPolicyTag.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.BindingPolicyTagRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.BindingPolicyTagResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("BindingPolicyTag", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.BindingPolicyTagResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateAlarmNotice(self, request):
         """创建通知模板
 

@@ -132,6 +132,72 @@ class CreateOrganizationMemberResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeOrganizationMembersRequest(AbstractModel):
+    """DescribeOrganizationMembers请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Offset: 偏移量
+        :type Offset: int
+        :param Limit: 限制数目
+        :type Limit: int
+        :param Lang: 国际站：en，国内站：zh
+        :type Lang: str
+        :param SearchKey: 成员名或者成员ID搜索
+        :type SearchKey: str
+        """
+        self.Offset = None
+        self.Limit = None
+        self.Lang = None
+        self.SearchKey = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.Lang = params.get("Lang")
+        self.SearchKey = params.get("SearchKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeOrganizationMembersResponse(AbstractModel):
+    """DescribeOrganizationMembers返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Items: 成员列表
+        :type Items: list of OrgMember
+        :param Total: 总数目
+        :type Total: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Items = None
+        self.Total = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = OrgMember()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        self.Total = params.get("Total")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeOrganizationRequest(AbstractModel):
     """DescribeOrganization请求参数结构体
 
@@ -236,6 +302,91 @@ class DescribeOrganizationResponse(AbstractModel):
         self.JoinTime = params.get("JoinTime")
         self.IsAllowQuit = params.get("IsAllowQuit")
         self.RequestId = params.get("RequestId")
+
+
+class OrgMember(AbstractModel):
+    """企业组织成员
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MemberUin: 成员Uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MemberUin: int
+        :param Name: 成员名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param MemberType: 成员类型，邀请：Invite， 创建：Create
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MemberType: str
+        :param OrgPolicyType: 关系策略类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OrgPolicyType: str
+        :param OrgPolicyName: 关系策略名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OrgPolicyName: str
+        :param OrgPermission: 关系策略权限
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OrgPermission: list of OrgPermission
+        :param NodeId: 所属节点ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NodeId: int
+        :param NodeName: 所属节点名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NodeName: str
+        :param Remark: 备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
+        :param CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param UpdateTime: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        :param IsAllowQuit: 是否允许成员退出。允许：Allow，不允许：Denied。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsAllowQuit: str
+        """
+        self.MemberUin = None
+        self.Name = None
+        self.MemberType = None
+        self.OrgPolicyType = None
+        self.OrgPolicyName = None
+        self.OrgPermission = None
+        self.NodeId = None
+        self.NodeName = None
+        self.Remark = None
+        self.CreateTime = None
+        self.UpdateTime = None
+        self.IsAllowQuit = None
+
+
+    def _deserialize(self, params):
+        self.MemberUin = params.get("MemberUin")
+        self.Name = params.get("Name")
+        self.MemberType = params.get("MemberType")
+        self.OrgPolicyType = params.get("OrgPolicyType")
+        self.OrgPolicyName = params.get("OrgPolicyName")
+        if params.get("OrgPermission") is not None:
+            self.OrgPermission = []
+            for item in params.get("OrgPermission"):
+                obj = OrgPermission()
+                obj._deserialize(item)
+                self.OrgPermission.append(obj)
+        self.NodeId = params.get("NodeId")
+        self.NodeName = params.get("NodeName")
+        self.Remark = params.get("Remark")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        self.IsAllowQuit = params.get("IsAllowQuit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class OrgPermission(AbstractModel):

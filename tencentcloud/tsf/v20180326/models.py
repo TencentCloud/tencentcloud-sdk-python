@@ -1780,6 +1780,200 @@ class ContainerEvent(AbstractModel):
         
 
 
+class ContainerGroupDeploy(AbstractModel):
+    """获取部署组
+
+    """
+
+    def __init__(self):
+        r"""
+        :param GroupId: 部署组id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupId: str
+        :param GroupName: 分组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupName: str
+        :param InstanceNum: 实例总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceNum: int
+        :param CurrentNum: 已启动实例总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CurrentNum: int
+        :param Server: 镜像server
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Server: str
+        :param Reponame: 镜像名，如/tsf/nginx
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Reponame: str
+        :param TagName: 镜像版本名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagName: str
+        :param CpuRequest: 业务容器初始分配的 CPU 核数，对应 K8S request
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CpuRequest: str
+        :param CpuLimit: 业务容器最大分配的 CPU 核数，对应 K8S limit
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CpuLimit: str
+        :param MemRequest: 业务容器初始分配的内存 MiB 数，对应 K8S request
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MemRequest: str
+        :param MemLimit: 业务容器最大分配的内存 MiB 数，对应 K8S limit
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MemLimit: str
+        :param AccessType: 0:公网 1:集群内访问 2：NodePort
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccessType: int
+        :param ProtocolPorts: 端口映射
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProtocolPorts: list of ProtocolPort
+        :param UpdateType: 更新方式：0:快速更新 1:滚动更新
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateType: int
+        :param UpdateIvl: 更新间隔,单位秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateIvl: int
+        :param JvmOpts: jvm参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JvmOpts: str
+        :param SubnetId: 子网id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubnetId: str
+        :param AgentCpuRequest: agent容器初始分配的 CPU 核数，对应 K8S request
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AgentCpuRequest: str
+        :param AgentCpuLimit: agent容器最大分配的 CPU 核数，对应 K8S limit
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AgentCpuLimit: str
+        :param AgentMemRequest: agent容器初始分配的内存 MiB 数，对应 K8S request
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AgentMemRequest: str
+        :param AgentMemLimit: agent容器最大分配的内存 MiB 数，对应 K8S limit
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AgentMemLimit: str
+        :param IstioCpuRequest: istioproxy容器初始分配的 CPU 核数，对应 K8S request
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IstioCpuRequest: str
+        :param IstioCpuLimit: istioproxy容器最大分配的 CPU 核数，对应 K8S limit
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IstioCpuLimit: str
+        :param IstioMemRequest: istioproxy容器初始分配的内存 MiB 数，对应 K8S request
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IstioMemRequest: str
+        :param IstioMemLimit: istioproxy容器最大分配的内存 MiB 数，对应 K8S limit
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IstioMemLimit: str
+        :param Envs: 部署组的环境变量数组，这里没有展示 tsf 使用的环境变量，只展示了用户设置的环境变量。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Envs: list of Env
+        :param HealthCheckSettings: 健康检查配置信息，若不指定该参数，则默认不设置健康检查。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HealthCheckSettings: :class:`tencentcloud.tsf.v20180326.models.HealthCheckSettings`
+        :param DeployAgent: 是否部署Agent容器
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeployAgent: bool
+        :param Alias: 部署组备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Alias: str
+        :param DisableService: 是否创建 k8s service
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DisableService: bool
+        :param HeadlessService: service 是否为 headless 类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HeadlessService: bool
+        :param TcrRepoInfo: TcrRepoInfo值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TcrRepoInfo: :class:`tencentcloud.tsf.v20180326.models.TcrRepoInfo`
+        """
+        self.GroupId = None
+        self.GroupName = None
+        self.InstanceNum = None
+        self.CurrentNum = None
+        self.Server = None
+        self.Reponame = None
+        self.TagName = None
+        self.CpuRequest = None
+        self.CpuLimit = None
+        self.MemRequest = None
+        self.MemLimit = None
+        self.AccessType = None
+        self.ProtocolPorts = None
+        self.UpdateType = None
+        self.UpdateIvl = None
+        self.JvmOpts = None
+        self.SubnetId = None
+        self.AgentCpuRequest = None
+        self.AgentCpuLimit = None
+        self.AgentMemRequest = None
+        self.AgentMemLimit = None
+        self.IstioCpuRequest = None
+        self.IstioCpuLimit = None
+        self.IstioMemRequest = None
+        self.IstioMemLimit = None
+        self.Envs = None
+        self.HealthCheckSettings = None
+        self.DeployAgent = None
+        self.Alias = None
+        self.DisableService = None
+        self.HeadlessService = None
+        self.TcrRepoInfo = None
+
+
+    def _deserialize(self, params):
+        self.GroupId = params.get("GroupId")
+        self.GroupName = params.get("GroupName")
+        self.InstanceNum = params.get("InstanceNum")
+        self.CurrentNum = params.get("CurrentNum")
+        self.Server = params.get("Server")
+        self.Reponame = params.get("Reponame")
+        self.TagName = params.get("TagName")
+        self.CpuRequest = params.get("CpuRequest")
+        self.CpuLimit = params.get("CpuLimit")
+        self.MemRequest = params.get("MemRequest")
+        self.MemLimit = params.get("MemLimit")
+        self.AccessType = params.get("AccessType")
+        if params.get("ProtocolPorts") is not None:
+            self.ProtocolPorts = []
+            for item in params.get("ProtocolPorts"):
+                obj = ProtocolPort()
+                obj._deserialize(item)
+                self.ProtocolPorts.append(obj)
+        self.UpdateType = params.get("UpdateType")
+        self.UpdateIvl = params.get("UpdateIvl")
+        self.JvmOpts = params.get("JvmOpts")
+        self.SubnetId = params.get("SubnetId")
+        self.AgentCpuRequest = params.get("AgentCpuRequest")
+        self.AgentCpuLimit = params.get("AgentCpuLimit")
+        self.AgentMemRequest = params.get("AgentMemRequest")
+        self.AgentMemLimit = params.get("AgentMemLimit")
+        self.IstioCpuRequest = params.get("IstioCpuRequest")
+        self.IstioCpuLimit = params.get("IstioCpuLimit")
+        self.IstioMemRequest = params.get("IstioMemRequest")
+        self.IstioMemLimit = params.get("IstioMemLimit")
+        if params.get("Envs") is not None:
+            self.Envs = []
+            for item in params.get("Envs"):
+                obj = Env()
+                obj._deserialize(item)
+                self.Envs.append(obj)
+        if params.get("HealthCheckSettings") is not None:
+            self.HealthCheckSettings = HealthCheckSettings()
+            self.HealthCheckSettings._deserialize(params.get("HealthCheckSettings"))
+        self.DeployAgent = params.get("DeployAgent")
+        self.Alias = params.get("Alias")
+        self.DisableService = params.get("DisableService")
+        self.HeadlessService = params.get("HeadlessService")
+        if params.get("TcrRepoInfo") is not None:
+            self.TcrRepoInfo = TcrRepoInfo()
+            self.TcrRepoInfo._deserialize(params.get("TcrRepoInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ContainerGroupDetail(AbstractModel):
     """容器部署组详情
 
@@ -5998,6 +6192,53 @@ class DescribeContainerEventsResponse(AbstractModel):
     def _deserialize(self, params):
         if params.get("Result") is not None:
             self.Result = TsfPageContainerEvent()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeContainerGroupDeployInfoRequest(AbstractModel):
+    """DescribeContainerGroupDeployInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param GroupId: 实例所属 groupId
+        :type GroupId: str
+        """
+        self.GroupId = None
+
+
+    def _deserialize(self, params):
+        self.GroupId = params.get("GroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeContainerGroupDeployInfoResponse(AbstractModel):
+    """DescribeContainerGroupDeployInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 获取部署组
+        :type Result: :class:`tencentcloud.tsf.v20180326.models.ContainerGroupDeploy`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = ContainerGroupDeploy()
             self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
 

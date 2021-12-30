@@ -1847,6 +1847,34 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeContainerGroupDeployInfo(self, request):
+        """获取部署组详情
+
+        :param request: Request instance for DescribeContainerGroupDeployInfo.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeContainerGroupDeployInfoRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeContainerGroupDeployInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeContainerGroupDeployInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeContainerGroupDeployInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeContainerGroupDetail(self, request):
         """容器部署组详情（已废弃，请使用  DescribeContainerGroupDeployInfo）
 
