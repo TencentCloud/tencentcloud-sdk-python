@@ -35,6 +35,9 @@ INVALIDPARAMETER_DUPLICATEGROUPNAME = 'InvalidParameter.DuplicateGroupName'
 # 重复的用户名。
 INVALIDPARAMETER_DUPLICATEUSERNAME = 'InvalidParameter.DuplicateUserName'
 
+# 无效的数据引擎名。
+INVALIDPARAMETER_INVALIDDATAENGINENAME = 'InvalidParameter.InvalidDataEngineName'
+
 # 无效的描述信息。
 INVALIDPARAMETER_INVALIDDESCRIPTION = 'InvalidParameter.InvalidDescription'
 

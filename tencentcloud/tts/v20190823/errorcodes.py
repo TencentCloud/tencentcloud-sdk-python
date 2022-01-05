@@ -26,6 +26,9 @@ FAILEDOPERATION_NOSUCHTASK = 'FailedOperation.NoSuchTask'
 # 路由错误。
 INTERNALERROR_ERRORGETROUTE = 'InternalError.ErrorGetRoute'
 
+# 负载限流。
+INTERNALERROR_EXCEEDMAXLIMIT = 'InternalError.ExceedMaxLimit'
+
 # 数据库存取失败。
 INTERNALERROR_FAILACCESSDATABASE = 'InternalError.FailAccessDatabase'
 

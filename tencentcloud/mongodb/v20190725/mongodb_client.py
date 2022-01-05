@@ -838,3 +838,31 @@ class MongodbClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SetAccountUserPrivilege(self, request):
+        """账户权限设置。
+
+        :param request: Request instance for SetAccountUserPrivilege.
+        :type request: :class:`tencentcloud.mongodb.v20190725.models.SetAccountUserPrivilegeRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20190725.models.SetAccountUserPrivilegeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SetAccountUserPrivilege", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SetAccountUserPrivilegeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)

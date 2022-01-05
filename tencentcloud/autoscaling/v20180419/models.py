@@ -231,6 +231,64 @@ class AttachInstancesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class AttachLoadBalancersRequest(AbstractModel):
+    """AttachLoadBalancers请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AutoScalingGroupId: 伸缩组ID
+        :type AutoScalingGroupId: str
+        :param LoadBalancerIds: 传统负载均衡器ID列表，伸缩组绑定数量上限为20，LoadBalancerIds 和 ForwardLoadBalancers 二者同时最多只能指定一个
+        :type LoadBalancerIds: list of str
+        :param ForwardLoadBalancers: 应用型负载均衡器列表，伸缩组绑定数量上限为50，LoadBalancerIds 和 ForwardLoadBalancers 二者同时最多只能指定一个
+        :type ForwardLoadBalancers: list of ForwardLoadBalancer
+        """
+        self.AutoScalingGroupId = None
+        self.LoadBalancerIds = None
+        self.ForwardLoadBalancers = None
+
+
+    def _deserialize(self, params):
+        self.AutoScalingGroupId = params.get("AutoScalingGroupId")
+        self.LoadBalancerIds = params.get("LoadBalancerIds")
+        if params.get("ForwardLoadBalancers") is not None:
+            self.ForwardLoadBalancers = []
+            for item in params.get("ForwardLoadBalancers"):
+                obj = ForwardLoadBalancer()
+                obj._deserialize(item)
+                self.ForwardLoadBalancers.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AttachLoadBalancersResponse(AbstractModel):
+    """AttachLoadBalancers返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ActivityId: 伸缩活动ID
+        :type ActivityId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ActivityId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ActivityId = params.get("ActivityId")
+        self.RequestId = params.get("RequestId")
+
+
 class AutoScalingAdvice(AbstractModel):
     """伸缩组配置建议。
 
@@ -2467,6 +2525,64 @@ class DetachInstancesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DetachLoadBalancersRequest(AbstractModel):
+    """DetachLoadBalancers请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AutoScalingGroupId: 伸缩组ID
+        :type AutoScalingGroupId: str
+        :param LoadBalancerIds: 传统负载均衡器ID列表，目前长度上限为20，LoadBalancerIds 和 ForwardLoadBalancerIdentifications 二者同时最多只能指定一个
+        :type LoadBalancerIds: list of str
+        :param ForwardLoadBalancerIdentifications: 应用型负载均衡器标识信息列表，目前长度上限为50，LoadBalancerIds 和 ForwardLoadBalancerIdentifications二者同时最多只能指定一个
+        :type ForwardLoadBalancerIdentifications: list of ForwardLoadBalancerIdentification
+        """
+        self.AutoScalingGroupId = None
+        self.LoadBalancerIds = None
+        self.ForwardLoadBalancerIdentifications = None
+
+
+    def _deserialize(self, params):
+        self.AutoScalingGroupId = params.get("AutoScalingGroupId")
+        self.LoadBalancerIds = params.get("LoadBalancerIds")
+        if params.get("ForwardLoadBalancerIdentifications") is not None:
+            self.ForwardLoadBalancerIdentifications = []
+            for item in params.get("ForwardLoadBalancerIdentifications"):
+                obj = ForwardLoadBalancerIdentification()
+                obj._deserialize(item)
+                self.ForwardLoadBalancerIdentifications.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DetachLoadBalancersResponse(AbstractModel):
+    """DetachLoadBalancers返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ActivityId: 伸缩活动ID
+        :type ActivityId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ActivityId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ActivityId = params.get("ActivityId")
+        self.RequestId = params.get("RequestId")
+
+
 class DetailedStatusMessage(AbstractModel):
     """伸缩活动状态详细描述。
 
@@ -2757,6 +2873,38 @@ class ForwardLoadBalancer(AbstractModel):
                 self.TargetAttributes.append(obj)
         self.LocationId = params.get("LocationId")
         self.Region = params.get("Region")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ForwardLoadBalancerIdentification(AbstractModel):
+    """应用型负载均衡器标识信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LoadBalancerId: 负载均衡器ID
+        :type LoadBalancerId: str
+        :param ListenerId: 应用型负载均衡监听器 ID
+        :type ListenerId: str
+        :param LocationId: 转发规则ID，注意：针对七层监听器此参数必填
+        :type LocationId: str
+        """
+        self.LoadBalancerId = None
+        self.ListenerId = None
+        self.LocationId = None
+
+
+    def _deserialize(self, params):
+        self.LoadBalancerId = params.get("LoadBalancerId")
+        self.ListenerId = params.get("ListenerId")
+        self.LocationId = params.get("LocationId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3760,6 +3908,60 @@ class ModifyLaunchConfigurationAttributesResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyLoadBalancerTargetAttributesRequest(AbstractModel):
+    """ModifyLoadBalancerTargetAttributes请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AutoScalingGroupId: 伸缩组ID
+        :type AutoScalingGroupId: str
+        :param ForwardLoadBalancers: 需修改目标规则属性的应用型负载均衡器列表，长度上限为50
+        :type ForwardLoadBalancers: list of ForwardLoadBalancer
+        """
+        self.AutoScalingGroupId = None
+        self.ForwardLoadBalancers = None
+
+
+    def _deserialize(self, params):
+        self.AutoScalingGroupId = params.get("AutoScalingGroupId")
+        if params.get("ForwardLoadBalancers") is not None:
+            self.ForwardLoadBalancers = []
+            for item in params.get("ForwardLoadBalancers"):
+                obj = ForwardLoadBalancer()
+                obj._deserialize(item)
+                self.ForwardLoadBalancers.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyLoadBalancerTargetAttributesResponse(AbstractModel):
+    """ModifyLoadBalancerTargetAttributes返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ActivityId: 伸缩活动ID
+        :type ActivityId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ActivityId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ActivityId = params.get("ActivityId")
         self.RequestId = params.get("RequestId")
 
 

@@ -41,6 +41,12 @@ FAILEDOPERATION_CONFIGGROUPQUERYFAILED = 'FailedOperation.ConfigGroupQueryFailed
 # 命名空间查询失败。
 FAILEDOPERATION_CONFIGNAMESPACEQUERYFAILED = 'FailedOperation.ConfigNamespaceQueryFailed'
 
+# 配置项查询失败。
+FAILEDOPERATION_CONFIGQUERYFAILED = 'FailedOperation.ConfigQueryFailed'
+
+# 配置项发布信息查询失败。
+FAILEDOPERATION_CONFIGRELEASEQUERYFAILED = 'FailedOperation.ConfigReleaseQueryFailed'
+
 # 部署组处于运行状态，无法启动。
 FAILEDOPERATION_CONTAINERGROUPGROUPHASRUN = 'FailedOperation.ContainergroupGroupHasrun'
 
@@ -58,6 +64,9 @@ FAILEDOPERATION_GROUPEXISTS = 'FailedOperation.GroupExists'
 
 # 部署组查询失败。
 FAILEDOPERATION_GROUPQUERYFAILD = 'FailedOperation.GroupQueryFaild'
+
+# 查询机器实例部分失败。
+FAILEDOPERATION_INSTANCEQUERYFAILED = 'FailedOperation.InstanceQueryFailed'
 
 # 重装系统失败，请稍后重试。若无法解决，请联系智能客服或提交工单。
 FAILEDOPERATION_INSTANCERESETERROR = 'FailedOperation.InstanceResetError'
@@ -182,6 +191,9 @@ INTERNALERROR_CPCLUSTERUNAVAILABLE = 'InternalError.CpClusterUnavailable'
 # 命令下放失败。
 INTERNALERROR_CVMCAEMASTERDISPATCHERROR = 'InternalError.CvmCaeMasterDispatchError'
 
+# TSF MASTER 内部执行错误。
+INTERNALERROR_CVMCAEMASTERINTERNALERROR = 'InternalError.CvmCaeMasterInternalError'
+
 # MASTER通道查询失败。
 INTERNALERROR_CVMCAEMASTERNONALIVE = 'InternalError.CvmCaeMasterNonAlive'
 
@@ -202,6 +214,9 @@ INTERNALERROR_GROUPCOMMONERROR = 'InternalError.GroupCommonError'
 
 # 部署组操作请求MASTER 操作失败。
 INTERNALERROR_GROUPMASTERNUKNOWNERROR = 'InternalError.GroupMasterNuknownError'
+
+# tcr仓库绑定失败。
+INTERNALERROR_IMAGEREPOTCRBINDERROR = 'InternalError.ImagerepoTcrBindError'
 
 # TSF节点管理通用错误信息。
 INTERNALERROR_INSTANCECOMMONERROR = 'InternalError.InstanceCommonError'
@@ -404,6 +419,9 @@ INVALIDPARAMETERVALUE_CONFIGVERSIONDESCINVALID = 'InvalidParameterValue.ConfigVe
 # 配置项版本不合规。
 INVALIDPARAMETERVALUE_CONFIGVERSIONINVALID = 'InvalidParameterValue.ConfigVersionInvalid'
 
+# 该镜像被占用中。
+INVALIDPARAMETERVALUE_CONTAINERGROUPIMAGETAGISINUSE = 'InvalidParameterValue.ContainerGroupImageTagIsInUse'
+
 # 服务访问方式不能为空。
 INVALIDPARAMETERVALUE_CONTAINERGROUPACCESSTYPENULL = 'InvalidParameterValue.ContainergroupAccesstypeNull'
 
@@ -448,6 +466,9 @@ INVALIDPARAMETERVALUE_CONTAINERGROUPPROTOCOLPORTSNULL = 'InvalidParameterValue.C
 
 # 镜像仓库名与应用名不匹配。
 INVALIDPARAMETERVALUE_CONTAINERGROUPREPONAMEINVALID = 'InvalidParameterValue.ContainergroupReponameInvalid'
+
+# agent 容器资源值非法 , %s。
+INVALIDPARAMETERVALUE_CONTAINERGROUPRESOURCEAGENTVALUEINVALID = 'InvalidParameterValue.ContainergroupResourceAgentValueInvalid'
 
 # 容器端口不允许重复映射。
 INVALIDPARAMETERVALUE_CONTAINERGROUPTARGETPORTSREPEAT = 'InvalidParameterValue.ContainergroupTargetPortsRepeat'

@@ -65,6 +65,9 @@ REQUESTLIMITEXCEEDED = 'RequestLimitExceeded'
 # 资源被占用。
 RESOURCEINUSE = 'ResourceInUse'
 
+# 资源不存在。
+RESOURCENOTFOUND = 'ResourceNotFound'
+
 # 资源不可用。
 RESOURCEUNAVAILABLE = 'ResourceUnavailable'
 

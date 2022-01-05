@@ -65,6 +65,9 @@ INTERNALERROR_INVALIDERRORCODE = 'InternalError.InvalidErrorCode'
 # 内部服务错误，请联系腾讯云工程师进一步排查。
 INTERNALERROR_PROXYSERVER = 'InternalError.ProxyServer'
 
+# 内部服务错误，请联系腾讯云工程师进一步排查。
+INTERNALERROR_ROUTEERROR = 'InternalError.RouteError'
+
 # SCDN服务未生效，请购买或续费SCDN套餐后重试。
 INTERNALERROR_SCDNUSERNOPACKAGE = 'InternalError.ScdnUserNoPackage'
 
@@ -82,6 +85,9 @@ INTERNALERROR_TAGSYSTEMERROR = 'InternalError.TagSystemError'
 
 # 参数错误。
 INVALIDPARAMETER = 'InvalidParameter'
+
+# 域名启用 HTTPS 配置需保持访问端口配置-443端口为开启状态。
+INVALIDPARAMETER_ACCESSPORTOPENEDHTTPS = 'InvalidParameter.AccessPortOpenedHttps'
 
 # 域名状态不合法。
 INVALIDPARAMETER_CDNSTATUSINVALIDDOMAIN = 'InvalidParameter.CDNStatusInvalidDomain'
@@ -476,6 +482,9 @@ UNAUTHORIZEDOPERATION_CLSUNAUTHORIZED = 'UnauthorizedOperation.ClsUnauthorized'
 # 内部服务错误，请联系腾讯云工程师进一步排查。
 UNAUTHORIZEDOPERATION_CSRFERROR = 'UnauthorizedOperation.CsrfError'
 
+# 鉴权域名为空。
+UNAUTHORIZEDOPERATION_DOMAINEMPTY = 'UnauthorizedOperation.DomainEmpty'
+
 # 未授权的操作。
 UNAUTHORIZEDOPERATION_NOPERMISSION = 'UnauthorizedOperation.NoPermission'
 
@@ -484,6 +493,9 @@ UNAUTHORIZEDOPERATION_OPNOAUTH = 'UnauthorizedOperation.OpNoAuth'
 
 # 操作超出调用频次限制。
 UNAUTHORIZEDOPERATION_OPERATIONTOOOFTEN = 'UnauthorizedOperation.OperationTooOften'
+
+# 未授权操作。
+UNAUTHORIZEDOPERATION_UNKNOWN = 'UnauthorizedOperation.Unknown'
 
 # 未知参数错误。
 UNKNOWNPARAMETER = 'UnknownParameter'

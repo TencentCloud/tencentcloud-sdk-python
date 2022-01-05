@@ -158,13 +158,18 @@ class AddUserToUserGroupResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param FailedItems: 未成功加入用户组的用户ID列表信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailedItems: list of str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.FailedItems = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.FailedItems = params.get("FailedItems")
         self.RequestId = params.get("RequestId")
 
 
@@ -774,7 +779,7 @@ class CreateUserRequest(AbstractModel):
         :type UserGroupIds: list of str
         :param Phone: 用户手机号。例如：+86-1xxxxxxxxxx。
         :type Phone: str
-        :param OrgNodeId: 用户所属组织机构唯一ID。如果为空，默认为在根节点下创建用户。
+        :param OrgNodeId: 用户所属的主组织机构唯一ID。如果为空，默认为在根节点下创建用户。
         :type OrgNodeId: str
         :param ExpirationTime: 用户过期时间，遵循 ISO 8601 标准。
         :type ExpirationTime: str
@@ -782,6 +787,8 @@ class CreateUserRequest(AbstractModel):
         :type Email: str
         :param PwdNeedReset: 密码是否需要重置，为空默认为false不需要重置密码。
         :type PwdNeedReset: bool
+        :param SecondaryOrgNodeIdList: 用户所属的次要组织机构ID列表。
+        :type SecondaryOrgNodeIdList: list of str
         """
         self.UserName = None
         self.Password = None
@@ -793,6 +800,7 @@ class CreateUserRequest(AbstractModel):
         self.ExpirationTime = None
         self.Email = None
         self.PwdNeedReset = None
+        self.SecondaryOrgNodeIdList = None
 
 
     def _deserialize(self, params):
@@ -806,6 +814,7 @@ class CreateUserRequest(AbstractModel):
         self.ExpirationTime = params.get("ExpirationTime")
         self.Email = params.get("Email")
         self.PwdNeedReset = params.get("PwdNeedReset")
+        self.SecondaryOrgNodeIdList = params.get("SecondaryOrgNodeIdList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1781,7 +1790,7 @@ class DescribeUserInfoResponse(AbstractModel):
         :param Phone: 用户手机号。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Phone: str
-        :param OrgNodeId: 用户所属组织机构 Id。
+        :param OrgNodeId: 用户所属的主组织机构唯一ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type OrgNodeId: str
         :param DataSource: 数据来源
@@ -1796,6 +1805,9 @@ class DescribeUserInfoResponse(AbstractModel):
         :param PwdNeedReset: 当前用户的密码是否需要重置，该字段为false表示不需要重置密码。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PwdNeedReset: bool
+        :param SecondaryOrgNodeIdList: 用户所属的次要组织机构ID列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecondaryOrgNodeIdList: list of str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1812,6 +1824,7 @@ class DescribeUserInfoResponse(AbstractModel):
         self.ExpirationTime = None
         self.ActivationTime = None
         self.PwdNeedReset = None
+        self.SecondaryOrgNodeIdList = None
         self.RequestId = None
 
 
@@ -1829,6 +1842,7 @@ class DescribeUserInfoResponse(AbstractModel):
         self.ExpirationTime = params.get("ExpirationTime")
         self.ActivationTime = params.get("ActivationTime")
         self.PwdNeedReset = params.get("PwdNeedReset")
+        self.SecondaryOrgNodeIdList = params.get("SecondaryOrgNodeIdList")
         self.RequestId = params.get("RequestId")
 
 
@@ -2195,19 +2209,22 @@ class ListApplicationsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SearchCondition: 查询条件，支持多搜索条件组合、多数据范围匹配的搜索。同时支持查询信息内容全匹配、部分匹配、范围匹配等多种查询方式，具体查询方式为：双引号（""）表示全匹配、以星号（* ) 结尾表示字段部分匹配。如果该字段为空，则默认查全量表。
+        :param SearchCondition: 模糊匹配搜索条件，支持多搜索条件组合、多数据范围匹配的搜索。同时支持查询信息内容全匹配、部分匹配、范围匹配等多种查询方式，具体查询方式为：双引号（""）表示全匹配、以星号（* ) 结尾表示字段部分匹配。模糊匹配搜索功能与精准匹配查询不会同时生效，如果SearchCondition与ApplicationIdList均不为空，则默认以ApplicationIdList进行精准查询。如果SearchCondition字段与ApplicationIdList字段均为空，则默认返回全部的应用信息。
         :type SearchCondition: :class:`tencentcloud.eiam.v20210420.models.ApplicationInfoSearchCriteria`
-        :param Sort: 排序条件集合。可排序的属性支持：应用名字（displayName）、创建时间（createdDate）、上次修改时间（lastModifiedDate）。如果该字段为空，则默认按照应用名字正向排序。
+        :param Sort: 排序条件集合。可排序的属性支持：应用名字（DisplayName）、创建时间（CreatedDate）、上次修改时间（LastModifiedDate）。如果该字段为空，则默认按照应用名字正向排序。
         :type Sort: :class:`tencentcloud.eiam.v20210420.models.SortCondition`
-        :param Offset: 分页偏移量。Offset 和 Limit 两个字段需配合使用，即其中一个指定了，另一个必须指定。 如果不指定以上参数，则表示不进行分页查询。
+        :param Offset: 排序条件集合。可排序的属性支持：应用名字（DisplayName）、创建时间（CreatedDate）、上次修改时间（LastModifiedDate）。如果该字段为空，则默认按照应用名字正向排序。
         :type Offset: int
         :param Limit: 分页读取数量。Offset 和 Limit 两个字段需配合使用，即其中一个指定了，另一个必须指定。 如果不指定以上参数，则表示不进行分页查询。
         :type Limit: int
+        :param ApplicationIdList: 应用ID列表，通过应用ID列表精准匹配对应的应用信息。模糊匹配搜索功能与精准匹配查询不会同时生效，如果SearchCondition与ApplicationIdList均不为空，则默认以ApplicationIdList进行精准查询。如果SearchCondition字段与ApplicationIdList字段均为空，则默认返回全部的应用信息。
+        :type ApplicationIdList: list of str
         """
         self.SearchCondition = None
         self.Sort = None
         self.Offset = None
         self.Limit = None
+        self.ApplicationIdList = None
 
 
     def _deserialize(self, params):
@@ -2219,6 +2236,7 @@ class ListApplicationsRequest(AbstractModel):
             self.Sort._deserialize(params.get("Sort"))
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.ApplicationIdList = params.get("ApplicationIdList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2727,12 +2745,32 @@ class ListUsersInUserGroupRequest(AbstractModel):
         r"""
         :param UserGroupId: 用户组ID，是用户组的全局唯一标识。
         :type UserGroupId: str
+        :param SearchCondition: 用户属性搜索条件，可查询条件包括：用户名、手机号码，邮箱、用户锁定状态、用户冻结状态、创建时间、上次修改时间，支持多种属性组合作为查询条件。同时支持查询信息内容全匹配、部分匹配、范围匹配等多种查询方式，具体查询方式为：双引号（“”）表示全匹配、以星号（）结尾表示字段部分匹配、中括号以逗号分隔（[Min，Max]）表示闭区间查询、大括号以逗号分隔（{Min，Max}）表示开区间查询，中括号与大括号可以配合使用（例如：{Min，Max]表示最小值开区间，最大值闭区间查询）。范围匹配支持使用星号（例如{20,]表示查询范围为大于20的所有数据）。范围查询同时支持时间段查询，支持的属性包括创建时间 （CreationTime）、上次修改时间（LastUpdateTime），查询的时间格式遵循 ISO 8601 标准，例如：2021-01-13T09:44:07.182+0000。
+        :type SearchCondition: :class:`tencentcloud.eiam.v20210420.models.UserSearchCriteria`
+        :param Sort: 排序条件集合。可排序的属性支持：用户名字（UserName）、用户昵称（DisplayName）、手机号（Phone）、邮箱（Email）、用户状态（Status）、创建时间 （CreatedDate）、上次更新时间（LastModifiedDate）。如果不指定，则默认按照用户昵称（DisplayName）正向排序。
+        :type Sort: :class:`tencentcloud.eiam.v20210420.models.SortCondition`
+        :param Offset: 分页偏移量，默认为0。Offset 和 Limit 两个字段需配合使用，即其中一个指定了，另一个必须指定。 如果不指定以上参数，则表示不进行分页查询，即只返回最多50个用户。
+        :type Offset: int
+        :param Limit: 分页读取数量，默认为50，最大值为100。 Offset 和 Limit 两个字段需配合使用，即其中一个指定了，另一个必须指定。 如果不指定以上参数，则表示不进行分页查询，即只返回最多50个用户。
+        :type Limit: int
         """
         self.UserGroupId = None
+        self.SearchCondition = None
+        self.Sort = None
+        self.Offset = None
+        self.Limit = None
 
 
     def _deserialize(self, params):
         self.UserGroupId = params.get("UserGroupId")
+        if params.get("SearchCondition") is not None:
+            self.SearchCondition = UserSearchCriteria()
+            self.SearchCondition._deserialize(params.get("SearchCondition"))
+        if params.get("Sort") is not None:
+            self.Sort = SortCondition()
+            self.Sort._deserialize(params.get("Sort"))
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3051,6 +3089,8 @@ class ModifyUserInfoRequest(AbstractModel):
         :type PwdNeedReset: bool
         :param OrgNodeId: 用户所属的主组织机构唯一ID。如果为空，默认为在根节点下创建用户。
         :type OrgNodeId: str
+        :param SecondaryOrgNodeIdList: 用户所属的次要组织机构ID列表。
+        :type SecondaryOrgNodeIdList: list of str
         """
         self.UserName = None
         self.DisplayName = None
@@ -3063,6 +3103,7 @@ class ModifyUserInfoRequest(AbstractModel):
         self.Email = None
         self.PwdNeedReset = None
         self.OrgNodeId = None
+        self.SecondaryOrgNodeIdList = None
 
 
     def _deserialize(self, params):
@@ -3077,6 +3118,7 @@ class ModifyUserInfoRequest(AbstractModel):
         self.Email = params.get("Email")
         self.PwdNeedReset = params.get("PwdNeedReset")
         self.OrgNodeId = params.get("OrgNodeId")
+        self.SecondaryOrgNodeIdList = params.get("SecondaryOrgNodeIdList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3615,7 +3657,7 @@ class UserInformation(AbstractModel):
         :param CreationTime: 用户创建时间，遵循 ISO 8601 标准。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreationTime: str
-        :param OrgPath: 用户所属组织机构路径。
+        :param OrgPath: 用户所属主组织机构的路径ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type OrgPath: str
         :param Phone: 带国家号的用户手机号，例如+86-00000000000。

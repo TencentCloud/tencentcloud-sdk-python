@@ -224,7 +224,7 @@ class SesClient(AbstractClient):
 
 
     def DeleteEmailTemplate(self, request):
-        """删除发信模版
+        """删除发信模板
 
         :param request: Request instance for DeleteEmailTemplate.
         :type request: :class:`tencentcloud.ses.v20201002.models.DeleteEmailTemplateRequest`

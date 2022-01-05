@@ -29,6 +29,9 @@ FAILEDOPERATION_IMAGEDECODEFAILED = 'FailedOperation.ImageDecodeFailed'
 # 图片删除失败。
 FAILEDOPERATION_IMAGEDELETEFAILED = 'FailedOperation.ImageDeleteFailed'
 
+# 图片下载错误。
+FAILEDOPERATION_IMAGEDOWNLOADERROR = 'FailedOperation.ImageDownloadError'
+
 # 超出Entity数量限制。
 FAILEDOPERATION_IMAGEENTITYCOUNTEXCEED = 'FailedOperation.ImageEntityCountExceed'
 
@@ -88,6 +91,9 @@ FAILEDOPERATION_UNKNOWERROR = 'FailedOperation.UnKnowError'
 
 # 服务未开通。
 FAILEDOPERATION_UNOPENERROR = 'FailedOperation.UnOpenError'
+
+# 未知错误。
+FAILEDOPERATION_UNKNOWN = 'FailedOperation.Unknown'
 
 # 参数取值错误。
 INVALIDPARAMETER_INVALIDPARAMETER = 'InvalidParameter.InvalidParameter'
@@ -154,6 +160,9 @@ INVALIDPARAMETERVALUE_TAGSVALUEILLEGAL = 'InvalidParameterValue.TagsValueIllegal
 
 # 标签值长度过长。
 INVALIDPARAMETERVALUE_TAGSVALUESIZEEXCEED = 'InvalidParameterValue.TagsValueSizeExceed'
+
+# URL格式不合法。
+INVALIDPARAMETERVALUE_URLILLEGAL = 'InvalidParameterValue.UrlIllegal'
 
 # 文件太大。
 LIMITEXCEEDED_TOOLARGEFILEERROR = 'LimitExceeded.TooLargeFileError'

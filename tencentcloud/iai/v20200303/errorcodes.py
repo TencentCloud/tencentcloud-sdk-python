@@ -17,6 +17,9 @@
 # 认证失败。
 AUTHFAILURE_INVALIDAUTHORIZATION = 'AuthFailure.InvalidAuthorization'
 
+# 操作失败。
+FAILEDOPERATION = 'FailedOperation'
+
 # 该操作不支持跨算法模型版本。
 FAILEDOPERATION_ACROSSVERSIONSERROR = 'FailedOperation.AcrossVersionsError'
 

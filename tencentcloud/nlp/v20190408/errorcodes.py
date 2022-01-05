@@ -74,6 +74,9 @@ INVALIDPARAMETERVALUE_TEXTENCODEERROR = 'InvalidParameterValue.TextEncodeError'
 # 文本输入格式错误
 INVALIDPARAMETERVALUE_TEXTFORMATERROR = 'InvalidParameterValue.TextFormatError'
 
+# 输入文本超出数量限制
+INVALIDPARAMETERVALUE_TEXTNUMTOOMUCH = 'InvalidParameterValue.TextNumTooMuch'
+
 # 输入文本超出长度限制
 INVALIDPARAMETERVALUE_TEXTTOOLONG = 'InvalidParameterValue.TextTooLong'
 

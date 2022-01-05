@@ -4864,10 +4864,14 @@ class DeployContainerGroupRequest(AbstractModel):
         :type IncrementalDeployment: bool
         :param RepoType: tcr或者不填
         :type RepoType: str
-        :param VolumeInfos: 数据卷信息
+        :param VolumeInfos: 数据卷信息-废弃，请用VolumeInfoList参数
         :type VolumeInfos: :class:`tencentcloud.tsf.v20180326.models.VolumeInfo`
-        :param VolumeMountInfos: 数据卷挂载点信息
+        :param VolumeMountInfos: 数据卷挂载点信息-废弃，请用VolumeMountInfoList参数
         :type VolumeMountInfos: :class:`tencentcloud.tsf.v20180326.models.VolumeMountInfo`
+        :param VolumeInfoList: 数据卷信息，list
+        :type VolumeInfoList: list of VolumeInfo
+        :param VolumeMountInfoList: 数据卷挂载点信息，list
+        :type VolumeMountInfoList: list of VolumeMountInfo
         """
         self.GroupId = None
         self.TagName = None
@@ -4902,6 +4906,8 @@ class DeployContainerGroupRequest(AbstractModel):
         self.RepoType = None
         self.VolumeInfos = None
         self.VolumeMountInfos = None
+        self.VolumeInfoList = None
+        self.VolumeMountInfoList = None
 
 
     def _deserialize(self, params):
@@ -4953,6 +4959,18 @@ class DeployContainerGroupRequest(AbstractModel):
         if params.get("VolumeMountInfos") is not None:
             self.VolumeMountInfos = VolumeMountInfo()
             self.VolumeMountInfos._deserialize(params.get("VolumeMountInfos"))
+        if params.get("VolumeInfoList") is not None:
+            self.VolumeInfoList = []
+            for item in params.get("VolumeInfoList"):
+                obj = VolumeInfo()
+                obj._deserialize(item)
+                self.VolumeInfoList.append(obj)
+        if params.get("VolumeMountInfoList") is not None:
+            self.VolumeMountInfoList = []
+            for item in params.get("VolumeMountInfoList"):
+                obj = VolumeMountInfo()
+                obj._deserialize(item)
+                self.VolumeMountInfoList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

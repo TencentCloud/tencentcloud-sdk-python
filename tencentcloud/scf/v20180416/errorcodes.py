@@ -644,6 +644,9 @@ RESOURCENOTFOUND_QUALIFIER = 'ResourceNotFound.Qualifier'
 # 角色不存在。
 RESOURCENOTFOUND_ROLE = 'ResourceNotFound.Role'
 
+# Role不存在。
+RESOURCENOTFOUND_ROLECHECK = 'ResourceNotFound.RoleCheck'
+
 # Timer不存在。
 RESOURCENOTFOUND_TIMER = 'ResourceNotFound.Timer'
 

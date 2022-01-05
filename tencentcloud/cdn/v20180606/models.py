@@ -9651,6 +9651,12 @@ class MainlandConfig(AbstractModel):
         :param VideoSeek: 视频拖拽配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type VideoSeek: :class:`tencentcloud.cdn.v20180606.models.VideoSeek`
+        :param AwsPrivateAccess: 回源S3私有鉴权。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AwsPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.AwsPrivateAccess`
+        :param OssPrivateAccess: 回源OSS私有鉴权。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OssPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.OssPrivateAccess`
         """
         self.Authentication = None
         self.BandwidthAlert = None
@@ -9676,6 +9682,8 @@ class MainlandConfig(AbstractModel):
         self.ServiceType = None
         self.StatusCodeCache = None
         self.VideoSeek = None
+        self.AwsPrivateAccess = None
+        self.OssPrivateAccess = None
 
 
     def _deserialize(self, params):
@@ -9749,6 +9757,12 @@ class MainlandConfig(AbstractModel):
         if params.get("VideoSeek") is not None:
             self.VideoSeek = VideoSeek()
             self.VideoSeek._deserialize(params.get("VideoSeek"))
+        if params.get("AwsPrivateAccess") is not None:
+            self.AwsPrivateAccess = AwsPrivateAccess()
+            self.AwsPrivateAccess._deserialize(params.get("AwsPrivateAccess"))
+        if params.get("OssPrivateAccess") is not None:
+            self.OssPrivateAccess = OssPrivateAccess()
+            self.OssPrivateAccess._deserialize(params.get("OssPrivateAccess"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -10424,6 +10438,12 @@ class OverseaConfig(AbstractModel):
         :param VideoSeek: 视频拖拽配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type VideoSeek: :class:`tencentcloud.cdn.v20180606.models.VideoSeek`
+        :param AwsPrivateAccess: 回源S3私有鉴权。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AwsPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.AwsPrivateAccess`
+        :param OssPrivateAccess: 回源OSS私有鉴权。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OssPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.OssPrivateAccess`
         """
         self.Authentication = None
         self.BandwidthAlert = None
@@ -10449,6 +10469,8 @@ class OverseaConfig(AbstractModel):
         self.ServiceType = None
         self.StatusCodeCache = None
         self.VideoSeek = None
+        self.AwsPrivateAccess = None
+        self.OssPrivateAccess = None
 
 
     def _deserialize(self, params):
@@ -10522,6 +10544,12 @@ class OverseaConfig(AbstractModel):
         if params.get("VideoSeek") is not None:
             self.VideoSeek = VideoSeek()
             self.VideoSeek._deserialize(params.get("VideoSeek"))
+        if params.get("AwsPrivateAccess") is not None:
+            self.AwsPrivateAccess = AwsPrivateAccess()
+            self.AwsPrivateAccess._deserialize(params.get("AwsPrivateAccess"))
+        if params.get("OssPrivateAccess") is not None:
+            self.OssPrivateAccess = OssPrivateAccess()
+            self.OssPrivateAccess._deserialize(params.get("OssPrivateAccess"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -12852,8 +12880,7 @@ class ServerCert(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CertId: 服务器证书 ID
-在 SSL 证书管理进行证书托管时自动生成
+        :param CertId: 服务器证书 ID 在 SSL 证书管理进行证书托管时自动生成
 注意：此字段可能返回 null，表示取不到有效值。
         :type CertId: str
         :param CertName: 服务器证书名称

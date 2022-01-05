@@ -1754,6 +1754,8 @@ class CreateDBInstanceRequest(AbstractModel):
         :type AutoSyncFlag: int
         :param CageId: 金融围拢 ID。
         :type CageId: str
+        :param ParamTemplateType: 默认参数模板类型。支持值包括："HIGH_STABILITY" - 高稳定模版，"HIGH_PERFORMANCE" - 高性能模版。
+        :type ParamTemplateType: str
         :param AlarmPolicyIdList: 告警策略名数组，例如:["policy-uyoee9wg"]，AlarmPolicyList不为空时该参数无效。
         :type AlarmPolicyIdList: list of str
         :param DryRun: 是否只预检此次请求。true：发送检查请求，不会创建实例。检查项包括是否填写了必需参数，请求格式，业务限制等。如果检查不通过，则返回对应错误码；如果检查通过，则返回RequestId.默认为false：发送正常请求，通过检查后直接创建实例。
@@ -1792,6 +1794,7 @@ class CreateDBInstanceRequest(AbstractModel):
         self.Cpu = None
         self.AutoSyncFlag = None
         self.CageId = None
+        self.ParamTemplateType = None
         self.AlarmPolicyIdList = None
         self.DryRun = None
 
@@ -1842,6 +1845,7 @@ class CreateDBInstanceRequest(AbstractModel):
         self.Cpu = params.get("Cpu")
         self.AutoSyncFlag = params.get("AutoSyncFlag")
         self.CageId = params.get("CageId")
+        self.ParamTemplateType = params.get("ParamTemplateType")
         self.AlarmPolicyIdList = params.get("AlarmPolicyIdList")
         self.DryRun = params.get("DryRun")
         memeber_set = set(params.keys())

@@ -14,6 +14,9 @@
 # limitations under the License.
 
 
+# 引擎识别失败。
+INTERNALERROR_ENGINERESULTERROR = 'InternalError.EngineResultError'
+
 # 初始化参数错误。
 INTERNALERROR_INITIALPARAMETERERROR = 'InternalError.InitialParameterError'
 

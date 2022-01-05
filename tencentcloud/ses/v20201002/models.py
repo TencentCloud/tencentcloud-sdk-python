@@ -518,7 +518,7 @@ class DeleteEmailTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TemplateID: 模版ID
+        :param TemplateID: 模板ID
         :type TemplateID: int
         """
         self.TemplateID = None
