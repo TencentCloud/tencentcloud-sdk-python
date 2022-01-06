@@ -531,7 +531,7 @@ class BizLicenseVerifyResult(AbstractModel):
     def __init__(self):
         r"""
         :param RegNum: “0“：一致
-“-1”：此号未查询到结果
+“-1”：不一致
         :type RegNum: str
         :param Name: “0“：一致
 “-1”：不一致

@@ -598,7 +598,7 @@ class DescribeTemplatesRequest(AbstractModel):
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         :param Operator: 操作者的信息
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
-        :param TemplateId: 模版唯一标识
+        :param TemplateId: 模板唯一标识
         :type TemplateId: str
         """
         self.Agent = None

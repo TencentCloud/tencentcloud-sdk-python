@@ -902,12 +902,19 @@ class DetectInfoIdCardData(AbstractModel):
         :param Avatar: 身份证正面人像图base64编码。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Avatar: str
+        :param WarnInfos: 开启身份证防翻拍告警功能后才会返回，返回数组中可能出现的告警码如下：
+-9102 身份证复印件告警。
+-9103 身份证翻拍告警。
+-9106 身份证 PS 告警。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WarnInfos: list of int
         """
         self.OcrFront = None
         self.OcrBack = None
         self.ProcessedFrontImage = None
         self.ProcessedBackImage = None
         self.Avatar = None
+        self.WarnInfos = None
 
 
     def _deserialize(self, params):
@@ -916,6 +923,7 @@ class DetectInfoIdCardData(AbstractModel):
         self.ProcessedFrontImage = params.get("ProcessedFrontImage")
         self.ProcessedBackImage = params.get("ProcessedBackImage")
         self.Avatar = params.get("Avatar")
+        self.WarnInfos = params.get("WarnInfos")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2938,15 +2946,20 @@ class PhoneVerificationResponse(AbstractModel):
         :type Result: str
         :param Description: 业务结果描述。
         :type Description: str
+        :param Isp: 运营商名称。
+取值范围为["","移动","电信","联通"]
+        :type Isp: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Result = None
         self.Description = None
+        self.Isp = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.Result = params.get("Result")
         self.Description = params.get("Description")
+        self.Isp = params.get("Isp")
         self.RequestId = params.get("RequestId")

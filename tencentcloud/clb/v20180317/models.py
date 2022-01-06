@@ -1641,15 +1641,20 @@ class CreateLoadBalancerResponse(AbstractModel):
         r"""
         :param LoadBalancerIds: 由负载均衡实例唯一 ID 组成的数组。
         :type LoadBalancerIds: list of str
+        :param DealName: 订单号。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DealName: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.LoadBalancerIds = None
+        self.DealName = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.LoadBalancerIds = params.get("LoadBalancerIds")
+        self.DealName = params.get("DealName")
         self.RequestId = params.get("RequestId")
 
 
@@ -4077,12 +4082,16 @@ class DescribeTaskStatusRequest(AbstractModel):
         r"""
         :param TaskId: 请求ID，即接口返回的 RequestId 参数。
         :type TaskId: str
+        :param DealName: 订单ID。
+        :type DealName: str
         """
         self.TaskId = None
+        self.DealName = None
 
 
     def _deserialize(self, params):
         self.TaskId = params.get("TaskId")
+        self.DealName = params.get("DealName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4101,15 +4110,20 @@ class DescribeTaskStatusResponse(AbstractModel):
         r"""
         :param Status: 任务的当前状态。 0：成功，1：失败，2：进行中。
         :type Status: int
+        :param LoadBalancerIds: 由负载均衡实例唯一 ID 组成的数组。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LoadBalancerIds: list of str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Status = None
+        self.LoadBalancerIds = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.LoadBalancerIds = params.get("LoadBalancerIds")
         self.RequestId = params.get("RequestId")
 
 

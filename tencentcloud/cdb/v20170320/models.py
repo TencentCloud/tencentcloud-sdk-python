@@ -1350,6 +1350,8 @@ class CreateCloneInstanceRequest(AbstractModel):
         :type DeployGroupId: str
         :param DryRun: 是否只预检此次请求。true：发送检查请求，不会创建实例。检查项包括是否填写了必需参数，请求格式，业务限制等。如果检查不通过，则返回对应错误码；如果检查通过，则返回RequestId.默认为false：发送正常请求，通过检查后直接创建实例。
         :type DryRun: bool
+        :param CageId: 金融围拢 ID 。
+        :type CageId: str
         """
         self.InstanceId = None
         self.SpecifiedRollbackTime = None
@@ -1370,6 +1372,7 @@ class CreateCloneInstanceRequest(AbstractModel):
         self.InstanceNodes = None
         self.DeployGroupId = None
         self.DryRun = None
+        self.CageId = None
 
 
     def _deserialize(self, params):
@@ -1397,6 +1400,7 @@ class CreateCloneInstanceRequest(AbstractModel):
         self.InstanceNodes = params.get("InstanceNodes")
         self.DeployGroupId = params.get("DeployGroupId")
         self.DryRun = params.get("DryRun")
+        self.CageId = params.get("CageId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
