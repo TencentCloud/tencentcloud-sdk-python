@@ -17,7 +17,7 @@ class HttpProfile(object):
     scheme = "https"
 
     def __init__(self, protocol=None, endpoint=None, reqMethod="POST", reqTimeout=60,
-                 keepAlive=False, proxy=None, rootDomain=None):
+                 keepAlive=False, proxy=None, rootDomain=None, certification=None):
         """HTTP profile.
         :param protocol: http or https, default is https.
         :type protocol: str
@@ -39,3 +39,4 @@ class HttpProfile(object):
         self.keepAlive = keepAlive
         self.proxy = proxy
         self.rootDomain = "tencentcloudapi.com" if rootDomain is None else rootDomain
+        self.certification = certification

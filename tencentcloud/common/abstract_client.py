@@ -78,7 +78,8 @@ class AbstractClient(object):
         self.request = ApiRequest(self._get_endpoint(),
                                   req_timeout=self.profile.httpProfile.reqTimeout,
                                   proxy=self.profile.httpProfile.proxy,
-                                  is_http=is_http)
+                                  is_http=is_http,
+                                  certification=self.profile.httpProfile.certification)
         if self.profile.httpProfile.keepAlive:
             self.request.set_keep_alive()
 
