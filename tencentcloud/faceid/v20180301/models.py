@@ -277,6 +277,62 @@ class BankCardVerificationResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ChargeDetail(AbstractModel):
+    """计费详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ReqTime: 一比一时间时间戳，13位。
+        :type ReqTime: str
+        :param Seq: 一比一请求的唯一标记。
+        :type Seq: str
+        :param Idcard: 一比一时使用的、脱敏后的身份证号。
+        :type Idcard: str
+        :param Name: 一比一时使用的、脱敏后的姓名。
+        :type Name: str
+        :param Sim: 一比一的相似度。0-100，保留2位小数。
+        :type Sim: str
+        :param IsNeedCharge: 本次详情是否收费。
+        :type IsNeedCharge: bool
+        :param ChargeType: 收费类型，比对、核身、混合部署。
+        :type ChargeType: str
+        :param ErrorCode: 本次活体一比一最终结果。
+        :type ErrorCode: str
+        :param ErrorMessage: 本次活体一比一最终结果描述。
+        :type ErrorMessage: str
+        """
+        self.ReqTime = None
+        self.Seq = None
+        self.Idcard = None
+        self.Name = None
+        self.Sim = None
+        self.IsNeedCharge = None
+        self.ChargeType = None
+        self.ErrorCode = None
+        self.ErrorMessage = None
+
+
+    def _deserialize(self, params):
+        self.ReqTime = params.get("ReqTime")
+        self.Seq = params.get("Seq")
+        self.Idcard = params.get("Idcard")
+        self.Name = params.get("Name")
+        self.Sim = params.get("Sim")
+        self.IsNeedCharge = params.get("IsNeedCharge")
+        self.ChargeType = params.get("ChargeType")
+        self.ErrorCode = params.get("ErrorCode")
+        self.ErrorMessage = params.get("ErrorMessage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CheckBankCardInformationRequest(AbstractModel):
     """CheckBankCardInformation请求参数结构体
 
@@ -2065,6 +2121,72 @@ class GetRealNameAuthTokenResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class GetWeChatBillDetailsRequest(AbstractModel):
+    """GetWeChatBillDetails请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Date: 拉取的日期（YYYY-MM-DD）。最大可追溯到365天前。当天6点后才能拉取前一天的数据。
+        :type Date: str
+        :param Cursor: 游标。用于分页，取第一页时传0，取后续页面时，传入本接口响应中返回的NextCursor字段的值。
+        :type Cursor: int
+        :param RuleId: 需要拉取账单详情业务对应的RuleId。不传会返回所有RuleId数据。默认为空字符串。
+        :type RuleId: str
+        """
+        self.Date = None
+        self.Cursor = None
+        self.RuleId = None
+
+
+    def _deserialize(self, params):
+        self.Date = params.get("Date")
+        self.Cursor = params.get("Cursor")
+        self.RuleId = params.get("RuleId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetWeChatBillDetailsResponse(AbstractModel):
+    """GetWeChatBillDetails返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param HasNextPage: 是否还有下一页。该字段为true时，需要将NextCursor的值作为入参Cursor继续调用本接口。
+        :type HasNextPage: bool
+        :param NextCursor: 下一页的游标。用于分页。
+        :type NextCursor: int
+        :param WeChatBillDetails: 数据
+        :type WeChatBillDetails: list of WeChatBillDetail
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.HasNextPage = None
+        self.NextCursor = None
+        self.WeChatBillDetails = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.HasNextPage = params.get("HasNextPage")
+        self.NextCursor = params.get("NextCursor")
+        if params.get("WeChatBillDetails") is not None:
+            self.WeChatBillDetails = []
+            for item in params.get("WeChatBillDetails"):
+                obj = WeChatBillDetail()
+                obj._deserialize(item)
+                self.WeChatBillDetails.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class IdCardOCRVerificationRequest(AbstractModel):
     """IdCardOCRVerification请求参数结构体
 
@@ -2963,3 +3085,44 @@ class PhoneVerificationResponse(AbstractModel):
         self.Description = params.get("Description")
         self.Isp = params.get("Isp")
         self.RequestId = params.get("RequestId")
+
+
+class WeChatBillDetail(AbstractModel):
+    """账单详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BizToken: token
+        :type BizToken: str
+        :param ChargeCount: 本token收费次数
+        :type ChargeCount: int
+        :param ChargeDetails: 本token计费详情
+        :type ChargeDetails: list of ChargeDetail
+        :param RuleId: 业务RuleId
+        :type RuleId: str
+        """
+        self.BizToken = None
+        self.ChargeCount = None
+        self.ChargeDetails = None
+        self.RuleId = None
+
+
+    def _deserialize(self, params):
+        self.BizToken = params.get("BizToken")
+        self.ChargeCount = params.get("ChargeCount")
+        if params.get("ChargeDetails") is not None:
+            self.ChargeDetails = []
+            for item in params.get("ChargeDetails"):
+                obj = ChargeDetail()
+                obj._deserialize(item)
+                self.ChargeDetails.append(obj)
+        self.RuleId = params.get("RuleId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        

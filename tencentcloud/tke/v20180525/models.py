@@ -8314,11 +8314,16 @@ abnormal = 异常
         :type Status: str
         :param ClusterName: 集群名称
         :type ClusterName: str
+        :param ExternalLabels: 额外labels
+本集群的所有指标都会带上这几个label
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExternalLabels: list of Label
         """
         self.ClusterType = None
         self.ClusterId = None
         self.Status = None
         self.ClusterName = None
+        self.ExternalLabels = None
 
 
     def _deserialize(self, params):
@@ -8326,6 +8331,12 @@ abnormal = 异常
         self.ClusterId = params.get("ClusterId")
         self.Status = params.get("Status")
         self.ClusterName = params.get("ClusterName")
+        if params.get("ExternalLabels") is not None:
+            self.ExternalLabels = []
+            for item in params.get("ExternalLabels"):
+                obj = Label()
+                obj._deserialize(item)
+                self.ExternalLabels.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8410,6 +8421,9 @@ class PrometheusAlertRule(AbstractModel):
         :param Annotations: 参考prometheus rule中的annotations
 注意：此字段可能返回 null，表示取不到有效值。
         :type Annotations: list of Label
+        :param RuleState: 告警规则状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleState: int
         """
         self.Name = None
         self.Rule = None
@@ -8418,6 +8432,7 @@ class PrometheusAlertRule(AbstractModel):
         self.For = None
         self.Describe = None
         self.Annotations = None
+        self.RuleState = None
 
 
     def _deserialize(self, params):
@@ -8438,6 +8453,7 @@ class PrometheusAlertRule(AbstractModel):
                 obj = Label()
                 obj._deserialize(item)
                 self.Annotations.append(obj)
+        self.RuleState = params.get("RuleState")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

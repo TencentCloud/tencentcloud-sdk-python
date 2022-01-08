@@ -1883,6 +1883,12 @@ class ContainerGroupDeploy(AbstractModel):
         :param TcrRepoInfo: TcrRepoInfo值
 注意：此字段可能返回 null，表示取不到有效值。
         :type TcrRepoInfo: :class:`tencentcloud.tsf.v20180326.models.TcrRepoInfo`
+        :param VolumeInfos: 数据卷信息，list
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VolumeInfos: list of VolumeInfo
+        :param VolumeMountInfos: 数据卷挂载信息，list
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VolumeMountInfos: list of VolumeMountInfo
         """
         self.GroupId = None
         self.GroupName = None
@@ -1916,6 +1922,8 @@ class ContainerGroupDeploy(AbstractModel):
         self.DisableService = None
         self.HeadlessService = None
         self.TcrRepoInfo = None
+        self.VolumeInfos = None
+        self.VolumeMountInfos = None
 
 
     def _deserialize(self, params):
@@ -1965,6 +1973,18 @@ class ContainerGroupDeploy(AbstractModel):
         if params.get("TcrRepoInfo") is not None:
             self.TcrRepoInfo = TcrRepoInfo()
             self.TcrRepoInfo._deserialize(params.get("TcrRepoInfo"))
+        if params.get("VolumeInfos") is not None:
+            self.VolumeInfos = []
+            for item in params.get("VolumeInfos"):
+                obj = VolumeInfo()
+                obj._deserialize(item)
+                self.VolumeInfos.append(obj)
+        if params.get("VolumeMountInfos") is not None:
+            self.VolumeMountInfos = []
+            for item in params.get("VolumeMountInfos"):
+                obj = VolumeMountInfo()
+                obj._deserialize(item)
+                self.VolumeMountInfos.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

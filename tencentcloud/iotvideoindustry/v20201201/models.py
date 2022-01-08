@@ -2132,17 +2132,21 @@ class DescribeChannelStreamURLRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DeviceId: 设备唯一标识
+        :param DeviceId: 设备唯一标识，必填参数
         :type DeviceId: str
-        :param ChannelId: 通道唯一标识（接口升级字段为必填）
+        :param ExpireTime: 流地址失效时间，固定值填写0，其他参数无效，必填参数
+        :type ExpireTime: int
+        :param ChannelId: 通道唯一标识（接口升级字段为必填），必填参数
         :type ChannelId: str
         """
         self.DeviceId = None
+        self.ExpireTime = None
         self.ChannelId = None
 
 
     def _deserialize(self, params):
         self.DeviceId = params.get("DeviceId")
+        self.ExpireTime = params.get("ExpireTime")
         self.ChannelId = params.get("ChannelId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

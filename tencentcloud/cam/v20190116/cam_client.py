@@ -1314,6 +1314,34 @@ class CamClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ListAttachedUserAllPolicies(self, request):
+        """列出用户关联的策略（包括随组关联）
+
+        :param request: Request instance for ListAttachedUserAllPolicies.
+        :type request: :class:`tencentcloud.cam.v20190116.models.ListAttachedUserAllPoliciesRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.ListAttachedUserAllPoliciesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ListAttachedUserAllPolicies", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ListAttachedUserAllPoliciesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ListAttachedUserPolicies(self, request):
         """本接口（ListAttachedUserPolicies）可用于查询子账号关联的策略列表。
 

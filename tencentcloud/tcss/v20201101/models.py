@@ -5052,6 +5052,10 @@ class DescribeAssetHostDetailResponse(AbstractModel):
         :type MachineType: str
         :param PublicIp: 外网ip
         :type PublicIp: str
+        :param InstanceID: 主机实例ID
+        :type InstanceID: str
+        :param RegionID: 地域ID
+        :type RegionID: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5077,6 +5081,8 @@ class DescribeAssetHostDetailResponse(AbstractModel):
         self.IsContainerd = None
         self.MachineType = None
         self.PublicIp = None
+        self.InstanceID = None
+        self.RegionID = None
         self.RequestId = None
 
 
@@ -5103,6 +5109,8 @@ class DescribeAssetHostDetailResponse(AbstractModel):
         self.IsContainerd = params.get("IsContainerd")
         self.MachineType = params.get("MachineType")
         self.PublicIp = params.get("PublicIp")
+        self.InstanceID = params.get("InstanceID")
+        self.RegionID = params.get("RegionID")
         self.RequestId = params.get("RequestId")
 
 
@@ -5125,6 +5133,7 @@ class DescribeAssetHostListRequest(AbstractModel):
 <li>HostID- string - 是否必填：否 - 主机id搜索</li>
 <li>DockerVersion- string - 是否必填：否 - docker版本搜索</li>
 <li>MachineType- string - 是否必填：否 - 主机来源MachineType搜索，"ALL":"全部"(或不传该字段),"TENCENTCLOUD":"腾讯云服务器","OTHERCLOUD":"非腾讯云服务器"</li>
+<li>DockerStatus- string - 是否必填：否 - docker安装状态，"ALL":"全部"(或不传该字段),"INSTALL":"已安装","UNINSTALL":"未安装"</li>
         :type Filters: list of AssetFilters
         :param By: 排序字段
         :type By: str
@@ -11405,12 +11414,16 @@ class HostInfo(AbstractModel):
         :type Status: str
         :param IsContainerd: 是否是Containerd
         :type IsContainerd: bool
-        :param MachineType: 主机来源
+        :param MachineType: 主机来源：["CVM", "ECM", "LH", "BM"]  中的之一为腾讯云服务器；["Other"]之一非腾讯云服务器；
         :type MachineType: str
         :param PublicIp: 外网ip
         :type PublicIp: str
         :param Uuid: 主机uuid
         :type Uuid: str
+        :param InstanceID: 主机实例ID
+        :type InstanceID: str
+        :param RegionID: 地域ID
+        :type RegionID: int
         """
         self.HostID = None
         self.HostIP = None
@@ -11425,6 +11438,8 @@ class HostInfo(AbstractModel):
         self.MachineType = None
         self.PublicIp = None
         self.Uuid = None
+        self.InstanceID = None
+        self.RegionID = None
 
 
     def _deserialize(self, params):
@@ -11441,6 +11456,8 @@ class HostInfo(AbstractModel):
         self.MachineType = params.get("MachineType")
         self.PublicIp = params.get("PublicIp")
         self.Uuid = params.get("Uuid")
+        self.InstanceID = params.get("InstanceID")
+        self.RegionID = params.get("RegionID")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

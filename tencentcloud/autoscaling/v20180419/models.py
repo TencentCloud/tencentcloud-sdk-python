@@ -3828,6 +3828,8 @@ InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定�
         :type InstanceNameSettings: :class:`tencentcloud.autoscaling.v20180419.models.InstanceNameSettings`
         :param EnhancedService: 增强服务。通过该参数可以指定是否开启云安全、云监控等服务。
         :type EnhancedService: :class:`tencentcloud.autoscaling.v20180419.models.EnhancedService`
+        :param CamRoleName: CAM角色名称。可通过DescribeRoleList接口返回值中的roleName获取。
+        :type CamRoleName: str
         """
         self.LaunchConfigurationId = None
         self.ImageId = None
@@ -3846,6 +3848,7 @@ InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定�
         self.HostNameSettings = None
         self.InstanceNameSettings = None
         self.EnhancedService = None
+        self.CamRoleName = None
 
 
     def _deserialize(self, params):
@@ -3885,6 +3888,7 @@ InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定�
         if params.get("EnhancedService") is not None:
             self.EnhancedService = EnhancedService()
             self.EnhancedService._deserialize(params.get("EnhancedService"))
+        self.CamRoleName = params.get("CamRoleName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

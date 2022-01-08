@@ -615,6 +615,34 @@ class FaceidClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def GetWeChatBillDetails(self, request):
+        """查询微信渠道服务（微信小程序、微信原生H5、微信普通H5）的账单明细及计费状态。
+
+        :param request: Request instance for GetWeChatBillDetails.
+        :type request: :class:`tencentcloud.faceid.v20180301.models.GetWeChatBillDetailsRequest`
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.GetWeChatBillDetailsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetWeChatBillDetails", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetWeChatBillDetailsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def IdCardOCRVerification(self, request):
         """本接口用于校验姓名和身份证号的真实性和一致性，您可以通过输入姓名和身份证号或传入身份证人像面照片提供所需验证信息。
 

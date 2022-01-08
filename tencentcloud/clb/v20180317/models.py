@@ -970,6 +970,8 @@ class CloneLoadBalancerRequest(AbstractModel):
         :type SnatIps: list of SnatIp
         :param ClusterIds: 公网独占集群ID或者CDCId。
         :type ClusterIds: list of str
+        :param SlaType: 性能保障规格。
+        :type SlaType: str
         :param ClusterTag: Stgw独占集群的标签。
         :type ClusterTag: str
         :param Zones: 仅适用于私有网络内网负载均衡。内网就近接入时，选择可用区下发。
@@ -992,6 +994,7 @@ class CloneLoadBalancerRequest(AbstractModel):
         self.SnatPro = None
         self.SnatIps = None
         self.ClusterIds = None
+        self.SlaType = None
         self.ClusterTag = None
         self.Zones = None
         self.EipAddressId = None
@@ -1027,6 +1030,7 @@ class CloneLoadBalancerRequest(AbstractModel):
                 obj._deserialize(item)
                 self.SnatIps.append(obj)
         self.ClusterIds = params.get("ClusterIds")
+        self.SlaType = params.get("SlaType")
         self.ClusterTag = params.get("ClusterTag")
         self.Zones = params.get("Zones")
         self.EipAddressId = params.get("EipAddressId")
