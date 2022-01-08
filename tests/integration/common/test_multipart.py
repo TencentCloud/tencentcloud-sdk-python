@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 import json
 import os
+
+import pytest
+
 from tencentcloud.common import credential
 from tencentcloud.common.profile.client_profile import ClientProfile
 from tencentcloud.common.profile.http_profile import HttpProfile
@@ -35,6 +38,7 @@ class CvmTest(cvm_client.CvmClient):
 
 
 def test_multipart_action():
+    pytest.skip("ActionOffline")
     try:
         cred = credential.Credential(
             os.environ.get("TENCENTCLOUD_SECRET_ID"),
