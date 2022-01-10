@@ -5670,11 +5670,14 @@ class ModifyDBInstanceNetworkRequest(AbstractModel):
         :type NewSubnetId: str
         :param OldIpRetainTime: 原vip保留时长，单位小时，默认为0，代表立即回收，最大为168小时
         :type OldIpRetainTime: int
+        :param Vip: 指定VIP地址
+        :type Vip: str
         """
         self.InstanceId = None
         self.NewVpcId = None
         self.NewSubnetId = None
         self.OldIpRetainTime = None
+        self.Vip = None
 
 
     def _deserialize(self, params):
@@ -5682,6 +5685,7 @@ class ModifyDBInstanceNetworkRequest(AbstractModel):
         self.NewVpcId = params.get("NewVpcId")
         self.NewSubnetId = params.get("NewSubnetId")
         self.OldIpRetainTime = params.get("OldIpRetainTime")
+        self.Vip = params.get("Vip")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -1773,6 +1773,46 @@ class ConstantParameter(AbstractModel):
         
 
 
+class CosConfig(AbstractModel):
+    """cos类型的api配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Action: API调用后端COS的方式，前端请求方法与Action的可选值为：
+GET：GetObject
+PUT：PutObject
+POST：PostObject、AppendObject
+HEAD： HeadObject
+DELETE： DeleteObject。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Action: str
+        :param BucketName: API后端COS的存储桶名。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BucketName: str
+        :param Authorization: API调用后端COS的签名开关，默认为false。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Authorization: bool
+        """
+        self.Action = None
+        self.BucketName = None
+        self.Authorization = None
+
+
+    def _deserialize(self, params):
+        self.Action = params.get("Action")
+        self.BucketName = params.get("BucketName")
+        self.Authorization = params.get("Authorization")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateAPIDocRequest(AbstractModel):
     """CreateAPIDoc请求参数结构体
 
@@ -8198,12 +8238,16 @@ class ServiceConfig(AbstractModel):
         :type Path: str
         :param Method: API的后端服务请求方法，如 GET。如果 ServiceType 是 HTTP，则此参数必传。前后端方法可不同。
         :type Method: str
+        :param CosConfig: API后端COS配置。如果 ServiceType 是 COS，则此参数必传。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CosConfig: :class:`tencentcloud.apigateway.v20180808.models.CosConfig`
         """
         self.Product = None
         self.UniqVpcId = None
         self.Url = None
         self.Path = None
         self.Method = None
+        self.CosConfig = None
 
 
     def _deserialize(self, params):
@@ -8212,6 +8256,9 @@ class ServiceConfig(AbstractModel):
         self.Url = params.get("Url")
         self.Path = params.get("Path")
         self.Method = params.get("Method")
+        if params.get("CosConfig") is not None:
+            self.CosConfig = CosConfig()
+            self.CosConfig._deserialize(params.get("CosConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

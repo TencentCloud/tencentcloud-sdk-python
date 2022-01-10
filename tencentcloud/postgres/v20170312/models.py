@@ -464,6 +464,8 @@ class CreateInstancesRequest(AbstractModel):
         :type DBMajorVersion: str
         :param DBKernelVersion: PostgreSQL内核版本。当输入该参数时，会创建该内核版本号实例
         :type DBKernelVersion: str
+        :param DBNodeSet: 实例节点信息，购买跨可用区实例时填写。
+        :type DBNodeSet: list of DBNode
         """
         self.SpecCode = None
         self.Storage = None
@@ -488,6 +490,7 @@ class CreateInstancesRequest(AbstractModel):
         self.SecurityGroupIds = None
         self.DBMajorVersion = None
         self.DBKernelVersion = None
+        self.DBNodeSet = None
 
 
     def _deserialize(self, params):
@@ -519,6 +522,12 @@ class CreateInstancesRequest(AbstractModel):
         self.SecurityGroupIds = params.get("SecurityGroupIds")
         self.DBMajorVersion = params.get("DBMajorVersion")
         self.DBKernelVersion = params.get("DBKernelVersion")
+        if params.get("DBNodeSet") is not None:
+            self.DBNodeSet = []
+            for item in params.get("DBNodeSet"):
+                obj = DBNode()
+                obj._deserialize(item)
+                self.DBNodeSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -885,6 +894,9 @@ class DBBackup(AbstractModel):
         :type InternalAddr: str
         :param ExternalAddr: 外网下载地址
         :type ExternalAddr: str
+        :param SetId: 备份集ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SetId: str
         """
         self.Id = None
         self.StartTime = None
@@ -897,6 +909,7 @@ class DBBackup(AbstractModel):
         self.DbList = None
         self.InternalAddr = None
         self.ExternalAddr = None
+        self.SetId = None
 
 
     def _deserialize(self, params):
@@ -911,6 +924,7 @@ class DBBackup(AbstractModel):
         self.DbList = params.get("DbList")
         self.InternalAddr = params.get("InternalAddr")
         self.ExternalAddr = params.get("ExternalAddr")
+        self.SetId = params.get("SetId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1005,6 +1019,9 @@ class DBInstance(AbstractModel):
         :param DBMajorVersion: PostgreSQL主要版本
 注意：此字段可能返回 null，表示取不到有效值。
         :type DBMajorVersion: str
+        :param DBNodeSet: 实例的节点信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DBNodeSet: list of DBNode
         """
         self.Region = None
         self.Zone = None
@@ -1041,6 +1058,7 @@ class DBInstance(AbstractModel):
         self.DBKernelVersion = None
         self.NetworkAccessList = None
         self.DBMajorVersion = None
+        self.DBNodeSet = None
 
 
     def _deserialize(self, params):
@@ -1094,6 +1112,12 @@ class DBInstance(AbstractModel):
                 obj._deserialize(item)
                 self.NetworkAccessList.append(obj)
         self.DBMajorVersion = params.get("DBMajorVersion")
+        if params.get("DBNodeSet") is not None:
+            self.DBNodeSet = []
+            for item in params.get("DBNodeSet"):
+                obj = DBNode()
+                obj._deserialize(item)
+                self.DBNodeSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1144,6 +1168,36 @@ class DBInstanceNetInfo(AbstractModel):
         self.Status = params.get("Status")
         self.VpcId = params.get("VpcId")
         self.SubnetId = params.get("SubnetId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DBNode(AbstractModel):
+    """描述实例节点信息，包括节点类型、节点所在可用区。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Role: 节点类型，值可以为：
+Primary，代表主节点；
+Standby，代表备节点。
+        :type Role: str
+        :param Zone: 节点所在可用区，例如 ap-guangzhou-1。
+        :type Zone: str
+        """
+        self.Role = None
+        self.Zone = None
+
+
+    def _deserialize(self, params):
+        self.Role = params.get("Role")
+        self.Zone = params.get("Zone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4859,16 +4913,20 @@ class ZoneInfo(AbstractModel):
         :type ZoneName: str
         :param ZoneId: 该可用区对应的数字编号
         :type ZoneId: int
-        :param ZoneState: 可用状态，UNAVAILABLE表示不可用，AVAILABLE表示可用
+        :param ZoneState: 可用状态，UNAVAILABLE表示不可用，AVAILABLE表示可用，SELLOUT表示售罄
         :type ZoneState: str
         :param ZoneSupportIpv6: 该可用区是否支持Ipv6
         :type ZoneSupportIpv6: int
+        :param StandbyZoneSet: 该可用区对应的备可用区集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StandbyZoneSet: list of str
         """
         self.Zone = None
         self.ZoneName = None
         self.ZoneId = None
         self.ZoneState = None
         self.ZoneSupportIpv6 = None
+        self.StandbyZoneSet = None
 
 
     def _deserialize(self, params):
@@ -4877,6 +4935,7 @@ class ZoneInfo(AbstractModel):
         self.ZoneId = params.get("ZoneId")
         self.ZoneState = params.get("ZoneState")
         self.ZoneSupportIpv6 = params.get("ZoneSupportIpv6")
+        self.StandbyZoneSet = params.get("StandbyZoneSet")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

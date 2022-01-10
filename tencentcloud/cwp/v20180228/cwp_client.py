@@ -5235,7 +5235,7 @@ class CwpClient(AbstractClient):
 
 
     def ModifyAutoOpenProVersionConfig(self, request):
-        """用于设置新增主机自动开通专业版配置。
+        """用于设置新增主机自动开通专业防护配置。
 
         :param request: Request instance for ModifyAutoOpenProVersionConfig.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyAutoOpenProVersionConfigRequest`

@@ -8988,6 +8988,12 @@ class DescribeGeneralStatResponse(AbstractModel):
         :type Shutdown: int
         :param Offline: 已离线总数
         :type Offline: int
+        :param FlagshipMachineCnt: 旗舰版主机数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlagshipMachineCnt: int
+        :param ProtectDays: 保护天数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProtectDays: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -9002,6 +9008,8 @@ class DescribeGeneralStatResponse(AbstractModel):
         self.RiskMachine = None
         self.Shutdown = None
         self.Offline = None
+        self.FlagshipMachineCnt = None
+        self.ProtectDays = None
         self.RequestId = None
 
 
@@ -9017,6 +9025,8 @@ class DescribeGeneralStatResponse(AbstractModel):
         self.RiskMachine = params.get("RiskMachine")
         self.Shutdown = params.get("Shutdown")
         self.Offline = params.get("Offline")
+        self.FlagshipMachineCnt = params.get("FlagshipMachineCnt")
+        self.ProtectDays = params.get("ProtectDays")
         self.RequestId = params.get("RequestId")
 
 
@@ -9367,18 +9377,28 @@ class DescribeImportMachineInfoRequest(AbstractModel):
         :type MachineList: list of str
         :param ImportType: 批量导入的数据类型：Ip、Name、Id 三选一
         :type ImportType: str
-        :param IsQueryProMachine: 是否仅支持专业版机器的查询（true：仅专业版   false：专业版+基础版）
+        :param IsQueryProMachine: 该参数已作废.
         :type IsQueryProMachine: bool
+        :param Filters: 过滤条件。
+<li>Version - String  是否必填：否 - 当前防护版本（ PRO_VERSION：专业版 | BASIC_VERSION：基础版 | Flagship : 旗舰版 | ProtectedMachines: 专业版+旗舰版）</li>
+        :type Filters: list of Filters
         """
         self.MachineList = None
         self.ImportType = None
         self.IsQueryProMachine = None
+        self.Filters = None
 
 
     def _deserialize(self, params):
         self.MachineList = params.get("MachineList")
         self.ImportType = params.get("ImportType")
         self.IsQueryProMachine = params.get("IsQueryProMachine")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filters()
+                obj._deserialize(item)
+                self.Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9705,6 +9725,8 @@ class DescribeMachineInfoResponse(AbstractModel):
         :type ProVersionDeadline: str
         :param HasAssetScan: 是否有资产扫描记录，0无，1有
         :type HasAssetScan: int
+        :param ProtectType: 防护版本 BASIC_VERSION 基础版, PRO_VERSION 专业版 Flagship 旗舰版.
+        :type ProtectType: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -9727,6 +9749,7 @@ class DescribeMachineInfoResponse(AbstractModel):
         self.AgentVersion = None
         self.ProVersionDeadline = None
         self.HasAssetScan = None
+        self.ProtectType = None
         self.RequestId = None
 
 
@@ -9750,6 +9773,7 @@ class DescribeMachineInfoResponse(AbstractModel):
         self.AgentVersion = params.get("AgentVersion")
         self.ProVersionDeadline = params.get("ProVersionDeadline")
         self.HasAssetScan = params.get("HasAssetScan")
+        self.ProtectType = params.get("ProtectType")
         self.RequestId = params.get("RequestId")
 
 
@@ -9969,10 +9993,11 @@ Other 混合云专区
         :param Filters: 过滤条件。
 <li>Keywords - String - 是否必填：否 - 查询关键字 </li>
 <li>Status - String - 是否必填：否 - 客户端在线状态（OFFLINE: 离线/关机 | ONLINE: 在线 | UNINSTALLED：未安装 | AGENT_OFFLINE 离线| AGENT_SHUTDOWN 已关机）</li>
-<li>Version - String  是否必填：否 - 当前防护版本（ PRO_VERSION：专业版 | BASIC_VERSION：基础版）</li>
+<li>Version - String  是否必填：否 - 当前防护版本（ PRO_VERSION：专业版 | BASIC_VERSION：基础版 | Flagship : 旗舰版 | ProtectedMachines: 专业版+旗舰版）</li>
 <li>Risk - String 是否必填: 否 - 风险主机( yes ) </li>
 <li>Os -String 是否必填: 否 - 操作系统( DescribeMachineOsList 接口 值 )
 每个过滤条件只支持一个值，暂不支持多个值“或”关系查询
+<li>Quuid - String - 是否必填: 否 - 云服务器uuid  最大100条.</li>
         :type Filters: list of Filter
         :param ProjectIds: 机器所属业务ID列表
         :type ProjectIds: list of int non-negative
@@ -15773,6 +15798,7 @@ class Machine(AbstractModel):
 <li>OFFLINE: 离线  </li>
 <li>ONLINE: 在线</li>
 <li>SHUTDOWN: 已关机</li>
+<li>UNINSTALLED: 未防护</li>
         :type MachineStatus: str
         :param Uuid: 云镜客户端唯一Uuid，若客户端长时间不在线将返回空字符。
         :type Uuid: str
@@ -15821,6 +15847,8 @@ class Machine(AbstractModel):
         :type MachineType: str
         :param KernelVersion: 内核版本
         :type KernelVersion: str
+        :param ProtectType: 防护版本 BASIC_VERSION 基础版, PRO_VERSION 专业版 Flagship 旗舰版.
+        :type ProtectType: str
         """
         self.MachineName = None
         self.MachineOs = None
@@ -15845,6 +15873,7 @@ class Machine(AbstractModel):
         self.HasAssetScan = None
         self.MachineType = None
         self.KernelVersion = None
+        self.ProtectType = None
 
 
     def _deserialize(self, params):
@@ -15878,6 +15907,7 @@ class Machine(AbstractModel):
         self.HasAssetScan = params.get("HasAssetScan")
         self.MachineType = params.get("MachineType")
         self.KernelVersion = params.get("KernelVersion")
+        self.ProtectType = params.get("ProtectType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -16099,6 +16129,12 @@ class MalwareInfo(AbstractModel):
         :param Level: 风险等级 0提示、1低、2中、3高、4严重
 注意：此字段可能返回 null，表示取不到有效值。
         :type Level: int
+        :param CheckPlatform: 木马检测平台用,分割 1云查杀引擎、2TAV、3binaryAi、4异常行为、5威胁情报
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CheckPlatform: str
+        :param Uuid: 主机uuid
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Uuid: str
         """
         self.VirusName = None
         self.FileSize = None
@@ -16125,6 +16161,8 @@ class MalwareInfo(AbstractModel):
         self.MachineStatus = None
         self.Status = None
         self.Level = None
+        self.CheckPlatform = None
+        self.Uuid = None
 
 
     def _deserialize(self, params):
@@ -16153,6 +16191,8 @@ class MalwareInfo(AbstractModel):
         self.MachineStatus = params.get("MachineStatus")
         self.Status = params.get("Status")
         self.Level = params.get("Level")
+        self.CheckPlatform = params.get("CheckPlatform")
+        self.Uuid = params.get("Uuid")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

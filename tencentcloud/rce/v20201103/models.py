@@ -226,16 +226,20 @@ class InputDescribeRiskModelData(AbstractModel):
         :type ApplyDate: int
         :param UserId: 客户业务侧标识用户的唯一ID
         :type UserId: str
+        :param IsTest: 是否为测试流量
+        :type IsTest: int
         """
         self.UserData = None
         self.ApplyDate = None
         self.UserId = None
+        self.IsTest = None
 
 
     def _deserialize(self, params):
         self.UserData = params.get("UserData")
         self.ApplyDate = params.get("ApplyDate")
         self.UserId = params.get("UserId")
+        self.IsTest = params.get("IsTest")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
