@@ -85,10 +85,10 @@ class ApiRequest(object):
             logger.debug("SendRequest %s" % req_inter)
         if req_inter.method == 'GET':
             req_inter_url = '%s?%s' % (self.host, req_inter.data)
-            self.conn.request(req_inter.method, req_inter_url,
+            return self.conn.request(req_inter.method, req_inter_url,
                               None, req_inter.header)
         elif req_inter.method == 'POST':
-            self.conn.request(req_inter.method, self.host,
+            return self.conn.request(req_inter.method, self.host,
                               req_inter.data, req_inter.header)
         else:
             raise TencentCloudSDKException(
