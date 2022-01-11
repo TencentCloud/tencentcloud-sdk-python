@@ -6,7 +6,10 @@ import socket
 import logging
 import requests
 
-from http.client import HTTPSConnection
+try:
+    from urllib.parse import urlparse
+except ImportError:
+    from urlparse import urlparse
 
 from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentCloudSDKException
 
@@ -36,22 +39,27 @@ class ProxyConnection(object):
                 self.proxy = {"http": proxy}
             else:
                 self.proxy = {"https": proxy}
+        self.request_length = 0
 
     def request(self, method, url, body=None, headers={}):
         self.request_length = 0
         headers.setdefault("Host", self.request_host)
-        requests.request(method=method,
-                         url=url,
-                         body=body,
-                         headers=headers,
-                         proxies=self.proxy,
-                         cert=self.certification,
-                         timeout=self.timeout)
+        return requests.request(method=method,
+                                url=url,
+                                data=body,
+                                headers=headers,
+                                proxies=self.proxy,
+                                cert=self.certification,
+                                timeout=self.timeout)
 
 
 class ApiRequest(object):
     def __init__(self, host, req_timeout=60, debug=False, proxy=None, is_http=False, certification=None):
         self.conn = ProxyConnection(host, timeout=req_timeout, proxy=proxy, certification=certification, is_http=is_http)
+        url = urlparse(host)
+        if not url.hostname:
+            host = "https://" + host
+        self.host = host
         self.req_timeout = req_timeout
         self.keep_alive = False
         self.debug = debug
@@ -76,11 +84,11 @@ class ApiRequest(object):
         if self.debug:
             logger.debug("SendRequest %s" % req_inter)
         if req_inter.method == 'GET':
-            req_inter_url = '%s?%s' % (req_inter.uri, req_inter.data)
+            req_inter_url = '%s?%s' % (self.host, req_inter.data)
             self.conn.request(req_inter.method, req_inter_url,
                               None, req_inter.header)
         elif req_inter.method == 'POST':
-            self.conn.request(req_inter.method, req_inter.uri,
+            self.conn.request(req_inter.method, self.host,
                               req_inter.data, req_inter.header)
         else:
             raise TencentCloudSDKException(
@@ -89,10 +97,10 @@ class ApiRequest(object):
     def send_request(self, req_inter):
         try:
             http_resp = self._request(req_inter)
-            headers = dict(http_resp.getheaders())
-            resp_inter = ResponseInternal(status=http_resp.status,
+            headers = dict(http_resp.headers)
+            resp_inter = ResponseInternal(status=http_resp.status_code,
                                           header=headers,
-                                          data=http_resp.read())
+                                          data=http_resp.text)
             self.request_size = self.conn.request_length
             self.response_size = len(resp_inter.data)
             logger.debug("GetResponse %s" % resp_inter)
