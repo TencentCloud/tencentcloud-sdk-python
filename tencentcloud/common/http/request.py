@@ -58,10 +58,7 @@ class ApiRequest(object):
         self.conn = ProxyConnection(host, timeout=req_timeout, proxy=proxy, certification=certification, is_http=is_http)
         url = urlparse(host)
         if not url.hostname:
-            if is_http:
-                host = "http://" + host
-            else:
-                host = "https://" + host
+            host = "https://" + host
         self.host = host
         self.req_timeout = req_timeout
         self.keep_alive = False
