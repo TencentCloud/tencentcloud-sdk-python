@@ -62,6 +62,9 @@ FAILEDOPERATION_SHIPPERTASKNOTTORETRY = 'FailedOperation.ShipperTaskNotToRetry'
 # 查询语句解析错误。
 FAILEDOPERATION_SYNTAXERROR = 'FailedOperation.SyntaxError'
 
+# 请求标签服务限频。
+FAILEDOPERATION_TAGQPSLIMIT = 'FailedOperation.TagQpsLimit'
+
 # 日志主题已关闭。
 FAILEDOPERATION_TOPICCLOSED = 'FailedOperation.TopicClosed'
 

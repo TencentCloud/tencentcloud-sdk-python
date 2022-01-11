@@ -3657,6 +3657,8 @@ FAILED：表示操作失败
         :type OsName: str
         :param Zone: 可用区。
         :type Zone: str
+        :param Tags: 实例绑定的标签列表。
+        :type Tags: list of Tag
         """
         self.InstanceId = None
         self.BundleId = None
@@ -3683,6 +3685,7 @@ FAILED：表示操作失败
         self.Platform = None
         self.OsName = None
         self.Zone = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -3717,6 +3720,12 @@ FAILED：表示操作失败
         self.Platform = params.get("Platform")
         self.OsName = params.get("OsName")
         self.Zone = params.get("Zone")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5096,6 +5105,34 @@ class SystemDisk(AbstractModel):
         self.DiskType = params.get("DiskType")
         self.DiskSize = params.get("DiskSize")
         self.DiskId = params.get("DiskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Tag(AbstractModel):
+    """标签
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Key: 标签键
+        :type Key: str
+        :param Value: 标签值
+        :type Value: str
+        """
+        self.Key = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -14,6 +14,9 @@
 # limitations under the License.
 
 
+# 计费次数统计失败。
+FAILEDOPERATION_CHARGECOUNTERROR = 'FailedOperation.ChargeCountError'
+
 # 引擎识别失败。
 INTERNALERROR_ENGINERESULTERROR = 'InternalError.EngineResultError'
 

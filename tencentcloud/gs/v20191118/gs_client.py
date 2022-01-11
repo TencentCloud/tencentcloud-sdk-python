@@ -110,6 +110,34 @@ class GsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def StartPublishStream(self, request):
+        """开始云端推流
+
+        :param request: Request instance for StartPublishStream.
+        :type request: :class:`tencentcloud.gs.v20191118.models.StartPublishStreamRequest`
+        :rtype: :class:`tencentcloud.gs.v20191118.models.StartPublishStreamResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("StartPublishStream", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.StartPublishStreamResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def StopGame(self, request):
         """强制退出游戏
 
@@ -124,6 +152,34 @@ class GsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StopGameResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def StopPublishStream(self, request):
+        """停止云端推流
+
+        :param request: Request instance for StopPublishStream.
+        :type request: :class:`tencentcloud.gs.v20191118.models.StopPublishStreamRequest`
+        :rtype: :class:`tencentcloud.gs.v20191118.models.StopPublishStreamResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("StopPublishStream", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.StopPublishStreamResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

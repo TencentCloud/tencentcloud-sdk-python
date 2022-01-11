@@ -857,14 +857,14 @@ class FlowApproverInfo(AbstractModel):
         :type OpenId: str
         :param PreReadTime: 合同的强制预览时间：3~300s，未指定则按合同页数计算
         :type PreReadTime: int
-        :param ComponentLimitType: 个人签署方指定签署控件类型，目前仅支持：OCR_ESIGN
+        :param ComponentLimitType: 个人签署方指定签署控件类型，目前仅支持：OCR_ESIGN(AI智慧手写签名)
         :type ComponentLimitType: list of str
         :param RecipientId: 流程签署人在模板中对应的签署人Id；在非单方签署、以及非B2C签署的场景下必传，用于指定当前签署方在流程中的位置；
         :type RecipientId: str
+        :param OrganizationName: 同一渠道下其他合作企业OpenId，签署人为非发起方企业员工场景下必传；
+        :type OrganizationName: str
         :param OrganizationOpenId: 同一渠道下其他合作企业OpenId，签署人为非发起方企业员工场景下必传；
         :type OrganizationOpenId: str
-        :param OrganizationName: 同一渠道下其他合作企业OpenId，B2B场景下必传；
-        :type OrganizationName: str
         """
         self.Name = None
         self.IdCardNumber = None
@@ -877,8 +877,8 @@ class FlowApproverInfo(AbstractModel):
         self.PreReadTime = None
         self.ComponentLimitType = None
         self.RecipientId = None
-        self.OrganizationOpenId = None
         self.OrganizationName = None
+        self.OrganizationOpenId = None
 
 
     def _deserialize(self, params):
@@ -893,8 +893,8 @@ class FlowApproverInfo(AbstractModel):
         self.PreReadTime = params.get("PreReadTime")
         self.ComponentLimitType = params.get("ComponentLimitType")
         self.RecipientId = params.get("RecipientId")
-        self.OrganizationOpenId = params.get("OrganizationOpenId")
         self.OrganizationName = params.get("OrganizationName")
+        self.OrganizationOpenId = params.get("OrganizationOpenId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1193,7 +1193,7 @@ class OperateChannelTemplateRequest(AbstractModel):
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         :param AuthTag: 模板可见性, 全部可见-"all", 部分可见-"part"
         :type AuthTag: str
-        :param ProxyOrganizationOpenIds: 合作企业方第三方机构唯一标识数据
+        :param ProxyOrganizationOpenIds: 合作企业方第三方机构唯一标识数据，支持多个， 用","进行分隔
         :type ProxyOrganizationOpenIds: str
         """
         self.Agent = None
@@ -1409,6 +1409,8 @@ class Recipient(AbstractModel):
         :type SignType: int
         :param RoutingOrder: 签署顺序：数字越小优先级越高
         :type RoutingOrder: int
+        :param IsPromoter: 是否是发起方
+        :type IsPromoter: bool
         """
         self.RecipientId = None
         self.RecipientType = None
@@ -1418,6 +1420,7 @@ class Recipient(AbstractModel):
         self.RequireSign = None
         self.SignType = None
         self.RoutingOrder = None
+        self.IsPromoter = None
 
 
     def _deserialize(self, params):
@@ -1429,6 +1432,7 @@ class Recipient(AbstractModel):
         self.RequireSign = params.get("RequireSign")
         self.SignType = params.get("SignType")
         self.RoutingOrder = params.get("RoutingOrder")
+        self.IsPromoter = params.get("IsPromoter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -1590,7 +1590,7 @@ class CreateClusterRequest(AbstractModel):
         :type BindClusterId: int
         :param Remark: 说明，128个字符以内。
         :type Remark: str
-        :param Tags: 集群的标签列表
+        :param Tags: 集群的标签列表(已废弃)
         :type Tags: list of Tag
         :param PublicAccessEnabled: 是否开启公网访问，不填时默认开启
         :type PublicAccessEnabled: bool

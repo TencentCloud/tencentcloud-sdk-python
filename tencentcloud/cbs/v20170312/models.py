@@ -580,7 +580,7 @@ class CreateSnapshotRequest(AbstractModel):
         :type DiskId: str
         :param SnapshotName: 快照名称，不传则新快照名称默认为“未命名”。
         :type SnapshotName: str
-        :param Deadline: 快照的到期时间，到期后该快照将会自动删除
+        :param Deadline: 快照的到期时间，到期后该快照将会自动删除,需要传入UTC时间下的ISO-8601标准时间格式,例如:2022-01-08T09:47:55+00:00
         :type Deadline: str
         """
         self.DiskId = None
@@ -2981,12 +2981,16 @@ class TerminateDisksRequest(AbstractModel):
         r"""
         :param DiskIds: 需退还的云盘ID列表。
         :type DiskIds: list of str
+        :param DeleteSnapshot: 销毁云盘时删除关联的非永久保留快照。0 表示非永久快照不随云盘销毁而销毁，1表示非永久快照随云盘销毁而销毁，默认取0。快照是否永久保留可以通过DescribeSnapshots接口返回的快照详情的IsPermanent字段来判断，true表示永久快照，false表示非永久快照。
+        :type DeleteSnapshot: int
         """
         self.DiskIds = None
+        self.DeleteSnapshot = None
 
 
     def _deserialize(self, params):
         self.DiskIds = params.get("DiskIds")
+        self.DeleteSnapshot = params.get("DeleteSnapshot")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

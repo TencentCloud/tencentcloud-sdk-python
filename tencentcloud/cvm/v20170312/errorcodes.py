@@ -383,6 +383,9 @@ INVALIDPARAMETERVALUE_LAUNCHTEMPLATEIDNOTEXISTED = 'InvalidParameterValue.Launch
 # 实例启动模板和版本ID组合不存在。
 INVALIDPARAMETERVALUE_LAUNCHTEMPLATEIDVERNOTEXISTED = 'InvalidParameterValue.LaunchTemplateIdVerNotExisted'
 
+# 指定的实例启动模板id不存在。
+INVALIDPARAMETERVALUE_LAUNCHTEMPLATEIDVERSETALREADY = 'InvalidParameterValue.LaunchTemplateIdVerSetAlready'
+
 # 实例启动模板未找到。
 INVALIDPARAMETERVALUE_LAUNCHTEMPLATENOTFOUND = 'InvalidParameterValue.LaunchTemplateNotFound'
 
@@ -638,6 +641,9 @@ UNSUPPORTEDOPERATION_INSTANCEMIXEDPRICINGMODEL = 'UnsupportedOperation.InstanceM
 # 请求不支持操作系统为`Xserver windows2012cndatacenterx86_64`的实例`ins-xxxxxx` 。
 UNSUPPORTEDOPERATION_INSTANCEOSWINDOWS = 'UnsupportedOperation.InstanceOsWindows'
 
+# 该子机处于封禁状态，请联系相关人员处理。
+UNSUPPORTEDOPERATION_INSTANCESTATEBANNING = 'UnsupportedOperation.InstanceStateBanning'
+
 # 请求不支持永久故障的实例。
 UNSUPPORTEDOPERATION_INSTANCESTATECORRUPTED = 'UnsupportedOperation.InstanceStateCorrupted'
 
@@ -652,6 +658,9 @@ UNSUPPORTEDOPERATION_INSTANCESTATEEXITRESCUEMODE = 'UnsupportedOperation.Instanc
 
 # 不支持状态为 `EXIT_SERVICE_LIVE_MIGRATE`.的实例 `ins-xxxxxx` 。
 UNSUPPORTEDOPERATION_INSTANCESTATEEXITSERVICELIVEMIGRATE = 'UnsupportedOperation.InstanceStateExitServiceLiveMigrate'
+
+# 操作不支持已冻结的实例。
+UNSUPPORTEDOPERATION_INSTANCESTATEFREEZING = 'UnsupportedOperation.InstanceStateFreezing'
 
 # 请求不支持正在隔离状态的实例。
 UNSUPPORTEDOPERATION_INSTANCESTATEISOLATING = 'UnsupportedOperation.InstanceStateIsolating'

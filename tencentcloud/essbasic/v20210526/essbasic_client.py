@@ -55,7 +55,7 @@ class EssbasicClient(AbstractClient):
 
 
     def CreateFlowsByTemplates(self, request):
-        """接口（CreateFlowsByTemplates）用于使用多个模板批量创建流程
+        """接口（CreateFlowsByTemplates）用于使用多个模板批量创建流程。当前可批量发起合同（流程）数量最大为20个。
 
         :param request: Request instance for CreateFlowsByTemplates.
         :type request: :class:`tencentcloud.essbasic.v20210526.models.CreateFlowsByTemplatesRequest`
@@ -83,7 +83,7 @@ class EssbasicClient(AbstractClient):
 
 
     def CreateSignUrls(self, request):
-        """根据流程Id批量创建签署参与者签署H5链接
+        """创建参与者签署短链
 
         :param request: Request instance for CreateSignUrls.
         :type request: :class:`tencentcloud.essbasic.v20210526.models.CreateSignUrlsRequest`
@@ -224,7 +224,8 @@ class EssbasicClient(AbstractClient):
 
 
     def GetDownloadFlowUrl(self, request):
-        """此接口（GetDownloadFlowUrl）用于创建电子签批量下载确认页面链接，支持客户合同（流程）归类打包下载。
+        """此接口（GetDownloadFlowUrl）用于创建电子签批量下载确认页面链接，支持客户合同（流程）按照自定义文件夹形式 分类下载。
+        当前接口限制最多合同（流程）50个.
 
         :param request: Request instance for GetDownloadFlowUrl.
         :type request: :class:`tencentcloud.essbasic.v20210526.models.GetDownloadFlowUrlRequest`
@@ -252,20 +253,11 @@ class EssbasicClient(AbstractClient):
 
 
     def OperateChannelTemplate(self, request):
-        """此接口（OperateChannelTemplate）用于渠道侧将模板库中的模板对合作企业进行查询和设置, 其中包括可见性的修改以及对合作企业的指定.
+        """此接口（OperateChannelTemplate）用于渠道侧将模板库中的模板对合作企业进行查询和设置, 其中包括可见性的修改以及对合作企业的设置.
         1、同步标识=select时：
-        输入规则：“可见标识”、“指定合作企业列表”为空。
-        处理规则：返回指定模版的可见标识、指定合作企业列表。
-        2、同步标识=update时：
-        输入规则：“可见标识”、“指定合作企业列表”非必填输入。
-        处理规则：
-        若“可见标识”=空，不做处理，返回当前的可见标识。
-        若“可见标识”=所有合作企业，不取“指定合作企业列表”的值处理。
-        若“可见标识”=指定合作企业，取“指定合作企业列表”的值进行更新/插入。
-        3、同步标识=delete时：
-        输入规则：“可见标识”、“指定合作企业列表”非必填输入。
-        处理规则：
-        仅取“指定合作企业列表”的值进行删除处理，为空时不做处。
+        返回渠道侧模板库当前模板的属性.
+        2、同步标识=update或者delete时：
+        对渠道子客进行模板库中模板授权,修改操作
 
         :param request: Request instance for OperateChannelTemplate.
         :type request: :class:`tencentcloud.essbasic.v20210526.models.OperateChannelTemplateRequest`
@@ -294,6 +286,8 @@ class EssbasicClient(AbstractClient):
 
     def PrepareFlows(self, request):
         """该接口 (PrepareFlows) 用于创建待发起文件
+        用户通过该接口进入流程发起的确认页面，进行发起信息二次确认， 如果确认则进行正常发起。
+        目前该接口只支持B2C。
 
         :param request: Request instance for PrepareFlows.
         :type request: :class:`tencentcloud.essbasic.v20210526.models.PrepareFlowsRequest`

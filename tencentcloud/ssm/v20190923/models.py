@@ -643,7 +643,7 @@ class DescribeSecretResponse(AbstractModel):
         :param ResourceID: 云产品实例ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceID: str
-        :param RotationStatus: 是否开启轮转：True -- 开启轮转；False -- 禁止轮转。
+        :param RotationStatus: 是否开启轮转：True -- 开启轮转；False -- 关闭轮转。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RotationStatus: bool
         :param RotationFrequency: 轮转周期，默认以天为单位。
@@ -658,6 +658,9 @@ class DescribeSecretResponse(AbstractModel):
         :param AssociatedInstanceIDs: 当凭据类型为SSH密钥对凭据时，此字段有效，用于表示SSH密钥对所关联的CVM实例ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AssociatedInstanceIDs: list of str
+        :param TargetUin: 当凭据类型为云API密钥对凭据时，此字段有效，用于表示此云API密钥对所属的用户UIN。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetUin: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -676,6 +679,7 @@ class DescribeSecretResponse(AbstractModel):
         self.ResourceName = None
         self.ProjectID = None
         self.AssociatedInstanceIDs = None
+        self.TargetUin = None
         self.RequestId = None
 
 
@@ -695,6 +699,7 @@ class DescribeSecretResponse(AbstractModel):
         self.ResourceName = params.get("ResourceName")
         self.ProjectID = params.get("ProjectID")
         self.AssociatedInstanceIDs = params.get("AssociatedInstanceIDs")
+        self.TargetUin = params.get("TargetUin")
         self.RequestId = params.get("RequestId")
 
 
@@ -998,17 +1003,22 @@ class GetServiceStatusResponse(AbstractModel):
         :type ServiceEnabled: bool
         :param InvalidType: 服务不可用类型： 0-未购买，1-正常， 2-欠费停服， 3-资源释放。
         :type InvalidType: int
+        :param AccessKeyEscrowEnabled: true表示用户已经可以使用云API密钥安全托管功能，
+false表示用户暂时不能使用云API密钥安全托管功能。
+        :type AccessKeyEscrowEnabled: bool
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.ServiceEnabled = None
         self.InvalidType = None
+        self.AccessKeyEscrowEnabled = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.ServiceEnabled = params.get("ServiceEnabled")
         self.InvalidType = params.get("InvalidType")
+        self.AccessKeyEscrowEnabled = params.get("AccessKeyEscrowEnabled")
         self.RequestId = params.get("RequestId")
 
 
@@ -1096,6 +1106,7 @@ class ListSecretsRequest(AbstractModel):
         :param SecretType: 0  -- 表示用户自定义凭据，默认为0。
 1  -- 表示用户云产品凭据。
 2 -- 表示SSH密钥对凭据。
+3 -- 表示云API密钥对凭据。
         :type SecretType: int
         :param ProductName: 此参数仅在SecretType参数值为1时生效，
 当SecretType值为1时：
@@ -1370,7 +1381,7 @@ class RotateProductSecretResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FlowID: 轮转异步任务ID号。
+        :param FlowID: 当凭据类型为云产品凭据时（即SecretType为1，如Mysq、Tdsql等托管凭据）此字段有效，返回轮转异步任务ID号。
         :type FlowID: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1413,7 +1424,10 @@ class SecretMetadata(AbstractModel):
         :param NextRotationTime: 下一次轮转开始时间，uinx 时间戳
 注意：此字段可能返回 null，表示取不到有效值。
         :type NextRotationTime: int
-        :param SecretType: 0 -- 用户自定义凭据；1 -- 云产品凭据
+        :param SecretType: 0 -- 用户自定义凭据；
+1 -- 云产品凭据；
+2 -- SSH密钥对凭据；
+3 -- 云API密钥对凭据；
 注意：此字段可能返回 null，表示取不到有效值。
         :type SecretType: int
         :param ProductName: 云产品名称，仅在SecretType为1，即凭据类型为云产品凭据时生效
@@ -1428,6 +1442,9 @@ class SecretMetadata(AbstractModel):
         :param AssociatedInstanceIDs: 当凭据类型为SSH密钥对凭据时，此字段有效，用于表示SSH密钥对所关联的CVM实例ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AssociatedInstanceIDs: list of str
+        :param TargetUin: 当凭据类型为云API密钥对凭据时，此字段有效，用于表示云API密钥对所属的用户UIN。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetUin: int
         """
         self.SecretName = None
         self.Description = None
@@ -1444,6 +1461,7 @@ class SecretMetadata(AbstractModel):
         self.ResourceName = None
         self.ProjectID = None
         self.AssociatedInstanceIDs = None
+        self.TargetUin = None
 
 
     def _deserialize(self, params):
@@ -1462,6 +1480,7 @@ class SecretMetadata(AbstractModel):
         self.ResourceName = params.get("ResourceName")
         self.ProjectID = params.get("ProjectID")
         self.AssociatedInstanceIDs = params.get("AssociatedInstanceIDs")
+        self.TargetUin = params.get("TargetUin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

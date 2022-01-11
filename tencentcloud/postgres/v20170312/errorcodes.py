@@ -50,6 +50,9 @@ FAILEDOPERATION_CAMSIGANDAUTHERROR = 'FailedOperation.CamSigAndAuthError'
 # 获取项目信息失败，请稍后重试。如果持续不成功，请联系客服进行处理。
 FAILEDOPERATION_CDBCGWCONNECTERROR = 'FailedOperation.CdbCgwConnectError'
 
+# 不支持新增基础网络。
+FAILEDOPERATION_CREATEBASICNETWORKDENIEDERROR = 'FailedOperation.CreateBasicNetworkDeniedError'
+
 # 创建续费订单失败。
 FAILEDOPERATION_CREATEORDERFAILED = 'FailedOperation.CreateOrderFailed'
 
@@ -364,6 +367,9 @@ INVALIDPARAMETERVALUE_PARAMETERHANDLEERROR = 'InvalidParameterValue.ParameterHan
 
 # 参数长度超过限制。
 INVALIDPARAMETERVALUE_PARAMETERLENGTHLIMITERROR = 'InvalidParameterValue.ParameterLengthLimitError'
+
+# 存在无效的参数值。
+INVALIDPARAMETERVALUE_PARAMETEROUTRANGEERROR = 'InvalidParameterValue.ParameterOutRangeError'
 
 # 参数值超过上限。
 INVALIDPARAMETERVALUE_PARAMETERVALUEEXCEEDERROR = 'InvalidParameterValue.ParameterValueExceedError'

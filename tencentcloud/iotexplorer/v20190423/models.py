@@ -118,6 +118,190 @@ class BatchProductionInfo(AbstractModel):
         
 
 
+class BindDeviceInfo(AbstractModel):
+    """BindDeviceInfo
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProductId: 产品ID。
+        :type ProductId: str
+        :param DeviceName: 设备名称。
+        :type DeviceName: str
+        """
+        self.ProductId = None
+        self.DeviceName = None
+
+
+    def _deserialize(self, params):
+        self.ProductId = params.get("ProductId")
+        self.DeviceName = params.get("DeviceName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BindDevicesRequest(AbstractModel):
+    """BindDevices请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param GatewayProductId: 网关设备的产品ID。
+        :type GatewayProductId: str
+        :param GatewayDeviceName: 网关设备的设备名。
+        :type GatewayDeviceName: str
+        :param ProductId: 被绑定设备的产品ID。
+        :type ProductId: str
+        :param DeviceNames: 被绑定的多个设备名。
+        :type DeviceNames: list of str
+        """
+        self.GatewayProductId = None
+        self.GatewayDeviceName = None
+        self.ProductId = None
+        self.DeviceNames = None
+
+
+    def _deserialize(self, params):
+        self.GatewayProductId = params.get("GatewayProductId")
+        self.GatewayDeviceName = params.get("GatewayDeviceName")
+        self.ProductId = params.get("ProductId")
+        self.DeviceNames = params.get("DeviceNames")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BindDevicesResponse(AbstractModel):
+    """BindDevices返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class BindProductInfo(AbstractModel):
+    """绑定、未绑定产品详细信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProductId: 产品ID。
+        :type ProductId: str
+        :param ProductName: 产品名称。
+        :type ProductName: str
+        :param ProjectId: 产品所属项目ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectId: str
+        :param DataProtocol: 物模型类型。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataProtocol: int
+        :param CategoryId: 产品分组模板ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CategoryId: int
+        :param ProductType: 产品类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductType: int
+        :param NetType: 连接类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NetType: str
+        :param DevStatus: 状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DevStatus: str
+        """
+        self.ProductId = None
+        self.ProductName = None
+        self.ProjectId = None
+        self.DataProtocol = None
+        self.CategoryId = None
+        self.ProductType = None
+        self.NetType = None
+        self.DevStatus = None
+
+
+    def _deserialize(self, params):
+        self.ProductId = params.get("ProductId")
+        self.ProductName = params.get("ProductName")
+        self.ProjectId = params.get("ProjectId")
+        self.DataProtocol = params.get("DataProtocol")
+        self.CategoryId = params.get("CategoryId")
+        self.ProductType = params.get("ProductType")
+        self.NetType = params.get("NetType")
+        self.DevStatus = params.get("DevStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BindProductsRequest(AbstractModel):
+    """BindProducts请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param GatewayProductId: 网关产品ID。
+        :type GatewayProductId: str
+        :param ProductIds: 待绑定的子产品ID数组。
+        :type ProductIds: list of str
+        """
+        self.GatewayProductId = None
+        self.ProductIds = None
+
+
+    def _deserialize(self, params):
+        self.GatewayProductId = params.get("GatewayProductId")
+        self.ProductIds = params.get("ProductIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BindProductsResponse(AbstractModel):
+    """BindProducts返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CallDeviceActionAsyncRequest(AbstractModel):
     """CallDeviceActionAsync请求参数结构体
 
@@ -1585,6 +1769,123 @@ class DescribeBatchProductionResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeBindedProductsRequest(AbstractModel):
+    """DescribeBindedProducts请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param GatewayProductId: 网关产品ID
+        :type GatewayProductId: str
+        :param Offset: 分页偏移量
+        :type Offset: int
+        :param Limit: 分页大小
+        :type Limit: int
+        """
+        self.GatewayProductId = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.GatewayProductId = params.get("GatewayProductId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBindedProductsResponse(AbstractModel):
+    """DescribeBindedProducts返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Products: 当前分页的子产品数组
+        :type Products: list of BindProductInfo
+        :param Total: 绑定的子产品总数量
+        :type Total: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Products = None
+        self.Total = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Products") is not None:
+            self.Products = []
+            for item in params.get("Products"):
+                obj = BindProductInfo()
+                obj._deserialize(item)
+                self.Products.append(obj)
+        self.Total = params.get("Total")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDeviceBindGatewayRequest(AbstractModel):
+    """DescribeDeviceBindGateway请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProductId: 产品Id
+        :type ProductId: str
+        :param DeviceName: 设备名
+        :type DeviceName: str
+        """
+        self.ProductId = None
+        self.DeviceName = None
+
+
+    def _deserialize(self, params):
+        self.ProductId = params.get("ProductId")
+        self.DeviceName = params.get("DeviceName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDeviceBindGatewayResponse(AbstractModel):
+    """DescribeDeviceBindGateway返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param GatewayProductId: 网关产品ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GatewayProductId: str
+        :param GatewayDeviceName: 网关设备名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GatewayDeviceName: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.GatewayProductId = None
+        self.GatewayDeviceName = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.GatewayProductId = params.get("GatewayProductId")
+        self.GatewayDeviceName = params.get("GatewayDeviceName")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDeviceDataHistoryRequest(AbstractModel):
     """DescribeDeviceDataHistory请求参数结构体
 
@@ -2075,6 +2376,146 @@ class DescribeFirmwareTaskResponse(AbstractModel):
         self.UpgradeMode = params.get("UpgradeMode")
         self.ProductId = params.get("ProductId")
         self.OriginalVersion = params.get("OriginalVersion")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeGatewayBindDevicesRequest(AbstractModel):
+    """DescribeGatewayBindDevices请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param GatewayProductId: 网关设备的产品ID
+        :type GatewayProductId: str
+        :param GatewayDeviceName: 网关设备的设备名
+        :type GatewayDeviceName: str
+        :param ProductId: 子产品的ID
+        :type ProductId: str
+        :param Offset: 分页的偏移
+        :type Offset: int
+        :param Limit: 分页的页大小
+        :type Limit: int
+        """
+        self.GatewayProductId = None
+        self.GatewayDeviceName = None
+        self.ProductId = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.GatewayProductId = params.get("GatewayProductId")
+        self.GatewayDeviceName = params.get("GatewayDeviceName")
+        self.ProductId = params.get("ProductId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeGatewayBindDevicesResponse(AbstractModel):
+    """DescribeGatewayBindDevices返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Devices: 子设备信息。
+        :type Devices: list of BindDeviceInfo
+        :param Total: 子设备总数。
+        :type Total: int
+        :param ProductName: 子设备所属的产品名。
+        :type ProductName: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Devices = None
+        self.Total = None
+        self.ProductName = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Devices") is not None:
+            self.Devices = []
+            for item in params.get("Devices"):
+                obj = BindDeviceInfo()
+                obj._deserialize(item)
+                self.Devices.append(obj)
+        self.Total = params.get("Total")
+        self.ProductName = params.get("ProductName")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeGatewaySubProductsRequest(AbstractModel):
+    """DescribeGatewaySubProducts请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param GatewayProductId: 网关产品ID
+        :type GatewayProductId: str
+        :param Offset: 分页的偏移量
+        :type Offset: int
+        :param Limit: 分页的大小
+        :type Limit: int
+        :param ProjectId: 项目Id
+        :type ProjectId: str
+        """
+        self.GatewayProductId = None
+        self.Offset = None
+        self.Limit = None
+        self.ProjectId = None
+
+
+    def _deserialize(self, params):
+        self.GatewayProductId = params.get("GatewayProductId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.ProjectId = params.get("ProjectId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeGatewaySubProductsResponse(AbstractModel):
+    """DescribeGatewaySubProducts返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Products: 当前分页的可绑定或解绑的产品信息。
+        :type Products: list of BindProductInfo
+        :param Total: 可绑定或解绑的产品总数
+        :type Total: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Products = None
+        self.Total = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Products") is not None:
+            self.Products = []
+            for item in params.get("Products"):
+                obj = BindProductInfo()
+                obj._deserialize(item)
+                self.Products.append(obj)
+        self.Total = params.get("Total")
         self.RequestId = params.get("RequestId")
 
 
@@ -3012,6 +3453,70 @@ class EventHistoryItem(AbstractModel):
         
 
 
+class FamilySubDevice(AbstractModel):
+    """子设备详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProductId: 产品Id
+        :type ProductId: str
+        :param DeviceName: 设备名称
+        :type DeviceName: str
+        :param DeviceId: 设备ID
+        :type DeviceId: str
+        :param AliasName: 设备别名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AliasName: str
+        :param FamilyId: 设备绑定的家庭ID
+        :type FamilyId: str
+        :param RoomId: 设备所在的房间ID，默认"0"
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RoomId: str
+        :param IconUrl: 图标
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IconUrl: str
+        :param IconUrlGrid: grid图标
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IconUrlGrid: str
+        :param CreateTime: 设备绑定时间戳
+        :type CreateTime: int
+        :param UpdateTime: 设备更新时间戳
+        :type UpdateTime: int
+        """
+        self.ProductId = None
+        self.DeviceName = None
+        self.DeviceId = None
+        self.AliasName = None
+        self.FamilyId = None
+        self.RoomId = None
+        self.IconUrl = None
+        self.IconUrlGrid = None
+        self.CreateTime = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.ProductId = params.get("ProductId")
+        self.DeviceName = params.get("DeviceName")
+        self.DeviceId = params.get("DeviceId")
+        self.AliasName = params.get("AliasName")
+        self.FamilyId = params.get("FamilyId")
+        self.RoomId = params.get("RoomId")
+        self.IconUrl = params.get("IconUrl")
+        self.IconUrlGrid = params.get("IconUrlGrid")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class FenceAlarmPoint(AbstractModel):
     """围栏告警位置点
 
@@ -3587,6 +4092,71 @@ class GetFamilyDeviceUserListResponse(AbstractModel):
                 obj = DeviceUser()
                 obj._deserialize(item)
                 self.UserList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class GetGatewaySubDeviceListRequest(AbstractModel):
+    """GetGatewaySubDeviceList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param GatewayProductId: 网关产品ID
+        :type GatewayProductId: str
+        :param GatewayDeviceName: 网关设备名称
+        :type GatewayDeviceName: str
+        :param Offset: 分页偏移
+        :type Offset: int
+        :param Limit: 分页的大小
+        :type Limit: int
+        """
+        self.GatewayProductId = None
+        self.GatewayDeviceName = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.GatewayProductId = params.get("GatewayProductId")
+        self.GatewayDeviceName = params.get("GatewayDeviceName")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetGatewaySubDeviceListResponse(AbstractModel):
+    """GetGatewaySubDeviceList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Total: 设备的总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: int
+        :param DeviceList: 设备列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeviceList: :class:`tencentcloud.iotexplorer.v20190423.models.FamilySubDevice`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Total = None
+        self.DeviceList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("DeviceList") is not None:
+            self.DeviceList = FamilySubDevice()
+            self.DeviceList._deserialize(params.get("DeviceList"))
         self.RequestId = params.get("RequestId")
 
 
@@ -5926,6 +6496,108 @@ class TopicRulePayload(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class UnbindDevicesRequest(AbstractModel):
+    """UnbindDevices请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param GatewayProductId: 网关设备的产品ID
+        :type GatewayProductId: str
+        :param GatewayDeviceName: 网关设备的设备名
+        :type GatewayDeviceName: str
+        :param ProductId: 产品ID
+        :type ProductId: str
+        :param DeviceNames: 设备名列表
+        :type DeviceNames: list of str
+        """
+        self.GatewayProductId = None
+        self.GatewayDeviceName = None
+        self.ProductId = None
+        self.DeviceNames = None
+
+
+    def _deserialize(self, params):
+        self.GatewayProductId = params.get("GatewayProductId")
+        self.GatewayDeviceName = params.get("GatewayDeviceName")
+        self.ProductId = params.get("ProductId")
+        self.DeviceNames = params.get("DeviceNames")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UnbindDevicesResponse(AbstractModel):
+    """UnbindDevices返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UnbindProductsRequest(AbstractModel):
+    """UnbindProducts请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param GatewayProductId: 网关产品ID
+        :type GatewayProductId: str
+        :param ProductIds: 待解绑的子产品ID数组
+        :type ProductIds: list of str
+        """
+        self.GatewayProductId = None
+        self.ProductIds = None
+
+
+    def _deserialize(self, params):
+        self.GatewayProductId = params.get("GatewayProductId")
+        self.ProductIds = params.get("ProductIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UnbindProductsResponse(AbstractModel):
+    """UnbindProducts返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param GatewayDeviceNames: 绑定了待解绑的LoRa产品下的设备的网关设备列表
+        :type GatewayDeviceNames: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.GatewayDeviceNames = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.GatewayDeviceNames = params.get("GatewayDeviceNames")
+        self.RequestId = params.get("RequestId")
 
 
 class UpdateDevicesEnableStateRequest(AbstractModel):

@@ -843,6 +843,7 @@ class CommonMixLayoutParams(AbstractModel):
         :param ImageLayer: 输入图层。取值范围[1，16]。
 1)背景流（即大主播画面或画布）的 image_layer 填1。
 2)纯音频混流，该参数也需填。
+注意：不同输入，该值不可重复
         :type ImageLayer: int
         :param InputType: 输入类型。取值范围[0，5]。
 不填默认为0。
