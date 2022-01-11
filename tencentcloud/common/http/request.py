@@ -59,9 +59,9 @@ class ApiRequest(object):
         url = urlparse(host)
         if not url.hostname:
             if is_http:
-                host = "https://" + host
-            else:
                 host = "http://" + host
+            else:
+                host = "https://" + host
         self.host = host
         self.req_timeout = req_timeout
         self.keep_alive = False
