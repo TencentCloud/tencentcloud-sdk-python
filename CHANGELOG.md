@@ -1,3 +1,121 @@
+# Release 3.0.563
+
+## 云硬盘(cbs) 版本：2017-03-12
+
+### 第 37 次发布
+
+发布时间：2022-01-12 08:06:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Disk](https://cloud.tencent.com/document/api/362/15669#Disk)
+
+	* 新增成员：DeleteSnapshot
+
+
+
+
+## 云监控(monitor) 版本：2018-07-24
+
+### 第 36 次发布
+
+发布时间：2022-01-12 08:12:33
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [URLNotice](https://cloud.tencent.com/document/api/248/30354#URLNotice)
+
+	* 新增成员：StartTime, EndTime
+
+
+
+
+## 云数据库 PostgreSQL(postgres) 版本：2017-03-12
+
+### 第 24 次发布
+
+发布时间：2022-01-12 08:13:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CloneDBInstance](https://cloud.tencent.com/document/api/409/68071)
+* [DescribeAvailableRecoveryTime](https://cloud.tencent.com/document/api/409/68070)
+* [DescribeBackupPlans](https://cloud.tencent.com/document/api/409/68069)
+* [DescribeCloneDBInstanceSpec](https://cloud.tencent.com/document/api/409/68068)
+* [ModifyBackupPlan](https://cloud.tencent.com/document/api/409/68067)
+* [ModifyDBInstanceDeployment](https://cloud.tencent.com/document/api/409/68066)
+
+新增数据结构：
+
+* [BackupPlan](https://cloud.tencent.com/document/api/409/16778#BackupPlan)
+
+
+
+## 云函数(scf) 版本：2018-04-16
+
+### 第 43 次发布
+
+发布时间：2022-01-12 08:13:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [TriggerAction](https://cloud.tencent.com/document/api/583/17244#TriggerAction)
+
+	* 新增成员：ProvisionedType
+
+
+
+
+## 弹性微服务(tem) 版本：2021-07-01
+
+### 第 10 次发布
+
+发布时间：2022-01-12 08:15:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DeployApplication](https://cloud.tencent.com/document/api/1371/60158)
+
+	* 新增入参：ConfEdited, SpeedUp, StartupProbe
+
+
+修改数据结构：
+
+* [DeployStrategyConf](https://cloud.tencent.com/document/api/1371/60171#DeployStrategyConf)
+
+	* 新增成员：MinAvailable
+
+* [Pair](https://cloud.tencent.com/document/api/1371/60171#Pair)
+
+	* 新增成员：Type, Config
+
+
+
+
+## 弹性微服务(tem) 版本：2020-12-21
+
+
+
 # Release 3.0.562
 
 ## 计费相关(billing) 版本：2018-07-09

@@ -2126,7 +2126,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeUploadedFiles(self, request):
-        """本接口(DescribeUploadedFiles)用于查询用户导入的SQL文件列表。
+        """本接口(DescribeUploadedFiles)用于查询用户导入的SQL文件列表，全地域公共参数Region均为ap-shanghai。
 
         :param request: Request instance for DescribeUploadedFiles.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeUploadedFilesRequest`

@@ -7172,16 +7172,26 @@ class URLNotice(AbstractModel):
         :param ValidationCode: 验证码
 注意：此字段可能返回 null，表示取不到有效值。
         :type ValidationCode: str
+        :param StartTime: 通知开始时间 一天开始的秒数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTime: int
+        :param EndTime: 通知结束时间 一天开始的秒数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: int
         """
         self.URL = None
         self.IsValid = None
         self.ValidationCode = None
+        self.StartTime = None
+        self.EndTime = None
 
 
     def _deserialize(self, params):
         self.URL = params.get("URL")
         self.IsValid = params.get("IsValid")
         self.ValidationCode = params.get("ValidationCode")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -4375,16 +4375,21 @@ class TriggerAction(AbstractModel):
         :param TriggerCronConfig: 设置定时触发器的时间配置，cron表达式。Cron 表达式有七个必需字段，按空格分隔。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TriggerCronConfig: str
+        :param ProvisionedType: 预置类型 Default
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProvisionedType: str
         """
         self.TriggerName = None
         self.TriggerProvisionedConcurrencyNum = None
         self.TriggerCronConfig = None
+        self.ProvisionedType = None
 
 
     def _deserialize(self, params):
         self.TriggerName = params.get("TriggerName")
         self.TriggerProvisionedConcurrencyNum = params.get("TriggerProvisionedConcurrencyNum")
         self.TriggerCronConfig = params.get("TriggerCronConfig")
+        self.ProvisionedType = params.get("ProvisionedType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
