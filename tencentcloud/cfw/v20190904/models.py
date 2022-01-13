@@ -666,13 +666,17 @@ class CreateNatFwInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param CfwInsId: 防火墙实例id
+        :type CfwInsId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.CfwInsId = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.CfwInsId = params.get("CfwInsId")
         self.RequestId = params.get("RequestId")
 
 
@@ -745,13 +749,18 @@ class CreateNatFwInstanceWithDomainResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param CfwInsId: nat实例信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CfwInsId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.CfwInsId = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.CfwInsId = params.get("CfwInsId")
         self.RequestId = params.get("RequestId")
 
 
@@ -3010,17 +3019,22 @@ class DescribeVpcRuleOverviewResponse(AbstractModel):
         :param StartRuleNum: 启用规则数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type StartRuleNum: int
+        :param Total: 规则总量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.StrategyNum = None
         self.StartRuleNum = None
+        self.Total = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.StrategyNum = params.get("StrategyNum")
         self.StartRuleNum = params.get("StartRuleNum")
+        self.Total = params.get("Total")
         self.RequestId = params.get("RequestId")
 
 

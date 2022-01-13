@@ -2073,6 +2073,34 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def SearchClsLog(self, request):
+        """搜索CLS日志，TCB角色秘钥访问
+
+        :param request: Request instance for SearchClsLog.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.SearchClsLogRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.SearchClsLogResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SearchClsLog", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SearchClsLogResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def TurnOffStandaloneGateway(self, request):
         """本接口（TurnOffStandaloneGateway）用于关闭小租户网关。
 

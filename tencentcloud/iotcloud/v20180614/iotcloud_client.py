@@ -1342,6 +1342,90 @@ class IotcloudClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ListLog(self, request):
+        """本接口（ListLog）用于查看日志信息
+
+        :param request: Request instance for ListLog.
+        :type request: :class:`tencentcloud.iotcloud.v20180614.models.ListLogRequest`
+        :rtype: :class:`tencentcloud.iotcloud.v20180614.models.ListLogResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ListLog", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ListLogResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ListLogPayload(self, request):
+        """获取日志内容列表
+
+        :param request: Request instance for ListLogPayload.
+        :type request: :class:`tencentcloud.iotcloud.v20180614.models.ListLogPayloadRequest`
+        :rtype: :class:`tencentcloud.iotcloud.v20180614.models.ListLogPayloadResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ListLogPayload", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ListLogPayloadResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ListSDKLog(self, request):
+        """获取设备上报的日志
+
+        :param request: Request instance for ListSDKLog.
+        :type request: :class:`tencentcloud.iotcloud.v20180614.models.ListSDKLogRequest`
+        :rtype: :class:`tencentcloud.iotcloud.v20180614.models.ListSDKLogResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ListSDKLog", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ListSDKLogResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def PublishAsDevice(self, request):
         """模拟lora类型的设备端向服务器端发送消息
 

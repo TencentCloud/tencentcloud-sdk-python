@@ -1968,12 +1968,15 @@ class CreateParamTemplateRequest(AbstractModel):
         :type TemplateId: int
         :param ParamList: 参数列表。
         :type ParamList: list of Parameter
+        :param TemplateType: 默认参数模板类型。支持值包括："HIGH_STABILITY" - 高稳定模版，"HIGH_PERFORMANCE" - 高性能模版。
+        :type TemplateType: str
         """
         self.Name = None
         self.Description = None
         self.EngineVersion = None
         self.TemplateId = None
         self.ParamList = None
+        self.TemplateType = None
 
 
     def _deserialize(self, params):
@@ -1987,6 +1990,7 @@ class CreateParamTemplateRequest(AbstractModel):
                 obj = Parameter()
                 obj._deserialize(item)
                 self.ParamList.append(obj)
+        self.TemplateType = params.get("TemplateType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5011,6 +5015,8 @@ class DescribeParamTemplateInfoResponse(AbstractModel):
         :type Items: list of ParameterDetail
         :param Description: 参数模板描述
         :type Description: str
+        :param TemplateType: 参数模板类型。支持值包括："HIGH_STABILITY" - 高稳定模版，"HIGH_PERFORMANCE" - 高性能模版。
+        :type TemplateType: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5020,6 +5026,7 @@ class DescribeParamTemplateInfoResponse(AbstractModel):
         self.TotalCount = None
         self.Items = None
         self.Description = None
+        self.TemplateType = None
         self.RequestId = None
 
 
@@ -5035,6 +5042,7 @@ class DescribeParamTemplateInfoResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Items.append(obj)
         self.Description = params.get("Description")
+        self.TemplateType = params.get("TemplateType")
         self.RequestId = params.get("RequestId")
 
 
@@ -5042,6 +5050,24 @@ class DescribeParamTemplatesRequest(AbstractModel):
     """DescribeParamTemplates请求参数结构体
 
     """
+
+    def __init__(self):
+        r"""
+        :param EngineVersions: 引擎版本，缺省则查询所有
+        :type EngineVersions: list of str
+        """
+        self.EngineVersions = None
+
+
+    def _deserialize(self, params):
+        self.EngineVersions = params.get("EngineVersions")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DescribeParamTemplatesResponse(AbstractModel):
@@ -8337,11 +8363,14 @@ class ParamTemplateInfo(AbstractModel):
         :type Description: str
         :param EngineVersion: 实例引擎版本
         :type EngineVersion: str
+        :param TemplateType: 参数模板类型
+        :type TemplateType: str
         """
         self.TemplateId = None
         self.Name = None
         self.Description = None
         self.EngineVersion = None
+        self.TemplateType = None
 
 
     def _deserialize(self, params):
@@ -8349,6 +8378,7 @@ class ParamTemplateInfo(AbstractModel):
         self.Name = params.get("Name")
         self.Description = params.get("Description")
         self.EngineVersion = params.get("EngineVersion")
+        self.TemplateType = params.get("TemplateType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8395,7 +8425,7 @@ class ParameterDetail(AbstractModel):
         r"""
         :param Name: 参数名称
         :type Name: str
-        :param ParamType: 参数类型
+        :param ParamType: 参数类型：integer，enum，float，string，func
         :type ParamType: str
         :param Default: 参数默认值
         :type Default: str
@@ -8411,6 +8441,10 @@ class ParameterDetail(AbstractModel):
         :type Min: int
         :param EnumValue: 参数的可选枚举值。如果为非枚举参数，则为空
         :type EnumValue: list of str
+        :param MaxFunc: 参数是公式类型时，该字段有效，表示公式类型最大值
+        :type MaxFunc: str
+        :param MinFunc: 参数是公式类型时，该字段有效，表示公式类型最小值
+        :type MinFunc: str
         """
         self.Name = None
         self.ParamType = None
@@ -8421,6 +8455,8 @@ class ParameterDetail(AbstractModel):
         self.Max = None
         self.Min = None
         self.EnumValue = None
+        self.MaxFunc = None
+        self.MinFunc = None
 
 
     def _deserialize(self, params):
@@ -8433,6 +8469,8 @@ class ParameterDetail(AbstractModel):
         self.Max = params.get("Max")
         self.Min = params.get("Min")
         self.EnumValue = params.get("EnumValue")
+        self.MaxFunc = params.get("MaxFunc")
+        self.MinFunc = params.get("MinFunc")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

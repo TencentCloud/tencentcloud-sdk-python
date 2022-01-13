@@ -448,7 +448,7 @@ class AuthorizationInfoSearchCriteria(AbstractModel):
         
 
 
-class AuthorizationResouceEntityInfo(AbstractModel):
+class AuthorizationResourceEntityInfo(AbstractModel):
     """授权资源详情
 
     """
@@ -1518,7 +1518,7 @@ class DescribeOrgResourcesAuthorizationResponse(AbstractModel):
         :type OrgNodePath: str
         :param AuthorizationOrgResourceList: 资源列表
 注意：此字段可能返回 null，表示取不到有效值。
-        :type AuthorizationOrgResourceList: list of AuthorizationResouceEntityInfo
+        :type AuthorizationOrgResourceList: list of AuthorizationResourceEntityInfo
         :param TotalCount: 资源数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
@@ -1542,7 +1542,7 @@ class DescribeOrgResourcesAuthorizationResponse(AbstractModel):
         if params.get("AuthorizationOrgResourceList") is not None:
             self.AuthorizationOrgResourceList = []
             for item in params.get("AuthorizationOrgResourceList"):
-                obj = AuthorizationResouceEntityInfo()
+                obj = AuthorizationResourceEntityInfo()
                 obj._deserialize(item)
                 self.AuthorizationOrgResourceList.append(obj)
         self.TotalCount = params.get("TotalCount")
@@ -1675,7 +1675,7 @@ class DescribeUserGroupResourcesAuthorizationResponse(AbstractModel):
         :type UserGroupName: str
         :param AuthorizationUserGroupResourceList: 资源列表
 注意：此字段可能返回 null，表示取不到有效值。
-        :type AuthorizationUserGroupResourceList: list of AuthorizationResouceEntityInfo
+        :type AuthorizationUserGroupResourceList: list of AuthorizationResourceEntityInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1693,7 +1693,7 @@ class DescribeUserGroupResourcesAuthorizationResponse(AbstractModel):
         if params.get("AuthorizationUserGroupResourceList") is not None:
             self.AuthorizationUserGroupResourceList = []
             for item in params.get("AuthorizationUserGroupResourceList"):
-                obj = AuthorizationResouceEntityInfo()
+                obj = AuthorizationResourceEntityInfo()
                 obj._deserialize(item)
                 self.AuthorizationUserGroupResourceList.append(obj)
         self.RequestId = params.get("RequestId")

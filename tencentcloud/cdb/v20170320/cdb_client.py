@@ -1761,7 +1761,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeParamTemplates(self, request):
-        """该接口（DescribeParamTemplates）查询参数模板列表。
+        """该接口（DescribeParamTemplates）查询参数模板列表，全地域公共参数Region均为ap-guangzhou。
 
         :param request: Request instance for DescribeParamTemplates.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeParamTemplatesRequest`

@@ -630,6 +630,38 @@ class CbsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def InitializeDisks(self, request):
+        """重新初始化云硬盘至云硬盘初始创建时的状态。使用云硬盘的重新初始化功能时需要注意以下4点：
+        1. 如果云硬盘是由快照创建的，则重新初始化会通过此快照重新回滚此云硬盘，即将云硬盘恢复为与快照一致的状态；
+        2. 如果云硬盘不是通过快照创建的，则重新初始化会清空此云硬盘的数据；请在重新初始化云硬盘前检查并备份必要的数据；
+        3. 当前仅未挂载的、非共享属性的数据盘云硬盘支持重新初始化；
+        4. 当创建此云硬盘的原始快照被删除时，不再支持重新初始化此云硬盘。
+
+        :param request: Request instance for InitializeDisks.
+        :type request: :class:`tencentcloud.cbs.v20170312.models.InitializeDisksRequest`
+        :rtype: :class:`tencentcloud.cbs.v20170312.models.InitializeDisksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("InitializeDisks", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.InitializeDisksResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def InquirePriceModifyDiskExtraPerformance(self, request):
         """本接口（InquirePriceModifyDiskExtraPerformance）用于调整云硬盘额外性能询价。
 

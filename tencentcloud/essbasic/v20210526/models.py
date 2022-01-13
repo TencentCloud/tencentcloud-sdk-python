@@ -243,7 +243,7 @@ class CreateConsoleLoginUrlRequest(AbstractModel):
         :type ProxyOperatorName: str
         :param Operator: 操作者的信息
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
-        :param Module: 控制台指定模块，文件/合同管理:"DOCUMENT"，模版管理:"TEMPLATE"，印章管理:"SEAL"，组织架构/人员:"OPERATOR"，空字符串："账号信息"
+        :param Module: 控制台指定模块，文件/合同管理:"DOCUMENT"，模板管理:"TEMPLATE"，印章管理:"SEAL"，组织架构/人员:"OPERATOR"，空字符串："账号信息"
         :type Module: str
         :param ModuleId: 控制台指定模块Id
         :type ModuleId: str
@@ -1751,7 +1751,7 @@ class TemplateInfo(AbstractModel):
         :type Creator: str
         :param CreatedOn: 模板创建的时间戳（精确到秒）
         :type CreatedOn: int
-        :param TemplateType: 模板类型：1-静默签；2-静默签授权；3-普通模版
+        :param TemplateType: 模板类型：1-静默签；2-静默签授权；3-普通模板
         :type TemplateType: int
         :param Recipients: 模板中的流程参与人信息
         :type Recipients: list of Recipient
