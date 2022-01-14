@@ -261,6 +261,58 @@ class BrokerSubscribe(AbstractModel):
         
 
 
+class CLSLogItem(AbstractModel):
+    """CLS日志
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Content: 日志内容
+        :type Content: str
+        :param Devicename: 设备名称
+        :type Devicename: str
+        :param Productid: 产品ID
+        :type Productid: str
+        :param Requestid: 请求ID
+        :type Requestid: str
+        :param Result: 结果
+        :type Result: str
+        :param Scene: 模块
+        :type Scene: str
+        :param Time: 日志时间
+        :type Time: str
+        :param Userid: 腾讯云账号
+        :type Userid: str
+        """
+        self.Content = None
+        self.Devicename = None
+        self.Productid = None
+        self.Requestid = None
+        self.Result = None
+        self.Scene = None
+        self.Time = None
+        self.Userid = None
+
+
+    def _deserialize(self, params):
+        self.Content = params.get("Content")
+        self.Devicename = params.get("Devicename")
+        self.Productid = params.get("Productid")
+        self.Requestid = params.get("Requestid")
+        self.Result = params.get("Result")
+        self.Scene = params.get("Scene")
+        self.Time = params.get("Time")
+        self.Userid = params.get("Userid")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CancelDeviceFirmwareTaskRequest(AbstractModel):
     """CancelDeviceFirmwareTask请求参数结构体
 
@@ -3469,6 +3521,238 @@ class GetUserResourceInfoResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ListLogPayloadRequest(AbstractModel):
+    """ListLogPayload请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MinTime: 日志开始时间
+        :type MinTime: int
+        :param MaxTime: 日志结束时间
+        :type MaxTime: int
+        :param Keywords: 查询关键字，可以同时支持键值查询和文本查询，例如，查询某key的值为value，并且包含某word的日志，该参数为：key:value word。键值或文本可以包含多个，以空格隔开。其中可以索引的key比如：RequestID、ProductID、DeviceName等。
+一个典型的查询示例：ProductID:ABCDE12345 DeviceName:test publish
+        :type Keywords: str
+        :param Context: 日志检索上下文
+        :type Context: str
+        :param MaxNum: 日志最大条数
+        :type MaxNum: int
+        """
+        self.MinTime = None
+        self.MaxTime = None
+        self.Keywords = None
+        self.Context = None
+        self.MaxNum = None
+
+
+    def _deserialize(self, params):
+        self.MinTime = params.get("MinTime")
+        self.MaxTime = params.get("MaxTime")
+        self.Keywords = params.get("Keywords")
+        self.Context = params.get("Context")
+        self.MaxNum = params.get("MaxNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListLogPayloadResponse(AbstractModel):
+    """ListLogPayload返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Context: 日志上下文
+        :type Context: str
+        :param Listover: 是否还有日志，如有仍有日志，下次查询的请求带上当前请求返回的Context
+        :type Listover: bool
+        :param Results: 日志列表
+        :type Results: list of PayloadLogItem
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Context = None
+        self.Listover = None
+        self.Results = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Context = params.get("Context")
+        self.Listover = params.get("Listover")
+        if params.get("Results") is not None:
+            self.Results = []
+            for item in params.get("Results"):
+                obj = PayloadLogItem()
+                obj._deserialize(item)
+                self.Results.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class ListLogRequest(AbstractModel):
+    """ListLog请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MinTime: 日志开始时间
+        :type MinTime: int
+        :param MaxTime: 日志结束时间
+        :type MaxTime: int
+        :param Keywords: 查询关键字，可以同时支持键值查询和文本查询，例如，查询某key的值为value，并且包含某word的日志，该参数为：key:value word。键值或文本可以包含多个，以空格隔开。其中可以索引的key包括：requestid、productid、devicename、scene、content。
+一个典型的查询示例：productid:ABCDE12345 devicename:test scene:SHADOW content:Device%20connect publish
+        :type Keywords: str
+        :param Context: 日志检索上下文
+        :type Context: str
+        :param MaxNum: 查询条数
+        :type MaxNum: int
+        """
+        self.MinTime = None
+        self.MaxTime = None
+        self.Keywords = None
+        self.Context = None
+        self.MaxNum = None
+
+
+    def _deserialize(self, params):
+        self.MinTime = params.get("MinTime")
+        self.MaxTime = params.get("MaxTime")
+        self.Keywords = params.get("Keywords")
+        self.Context = params.get("Context")
+        self.MaxNum = params.get("MaxNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListLogResponse(AbstractModel):
+    """ListLog返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Context: 日志上下文
+        :type Context: str
+        :param Listover: 是否还有日志，如有仍有日志，下次查询的请求带上当前请求返回的Context
+        :type Listover: bool
+        :param Results: 日志列表
+        :type Results: list of CLSLogItem
+        :param TotalCount: 日志总条数
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Context = None
+        self.Listover = None
+        self.Results = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Context = params.get("Context")
+        self.Listover = params.get("Listover")
+        if params.get("Results") is not None:
+            self.Results = []
+            for item in params.get("Results"):
+                obj = CLSLogItem()
+                obj._deserialize(item)
+                self.Results.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class ListSDKLogRequest(AbstractModel):
+    """ListSDKLog请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MinTime: 日志开始时间
+        :type MinTime: int
+        :param MaxTime: 日志结束时间
+        :type MaxTime: int
+        :param Keywords: 查询关键字，可以同时支持键值查询和文本查询，
+例如，查询某key的值为value，并且包含某word的日志，该参数为：key:value word。
+键值或文本可以包含多个，以空格隔开。
+其中可以索引的key包括：productid、devicename、loglevel
+一个典型的查询示例：productid:7JK1G72JNE devicename:name publish loglevel:WARN一个典型的查询示例：productid:ABCDE12345 devicename:test scene:SHADOW publish
+        :type Keywords: str
+        :param Context: 日志检索上下文
+        :type Context: str
+        :param MaxNum: 查询条数
+        :type MaxNum: int
+        """
+        self.MinTime = None
+        self.MaxTime = None
+        self.Keywords = None
+        self.Context = None
+        self.MaxNum = None
+
+
+    def _deserialize(self, params):
+        self.MinTime = params.get("MinTime")
+        self.MaxTime = params.get("MaxTime")
+        self.Keywords = params.get("Keywords")
+        self.Context = params.get("Context")
+        self.MaxNum = params.get("MaxNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListSDKLogResponse(AbstractModel):
+    """ListSDKLog返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Context: 日志检索上下文
+        :type Context: str
+        :param Listover: 是否还有日志，如有仍有日志，下次查询的请求带上当前请求返回的Context
+        :type Listover: bool
+        :param Results: 日志列表
+        :type Results: list of SDKLogItem
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Context = None
+        self.Listover = None
+        self.Results = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Context = params.get("Context")
+        self.Listover = params.get("Listover")
+        if params.get("Results") is not None:
+            self.Results = []
+            for item in params.get("Results"):
+                obj = SDKLogItem()
+                obj._deserialize(item)
+                self.Results.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class MultiDevicesInfo(AbstractModel):
     """创建设备时返回的设备信息
 
@@ -3504,6 +3788,66 @@ class MultiDevicesInfo(AbstractModel):
         self.DevicePrivateKey = params.get("DevicePrivateKey")
         self.Result = params.get("Result")
         self.ErrMsg = params.get("ErrMsg")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PayloadLogItem(AbstractModel):
+    """内容日志项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Uin: 账号id
+        :type Uin: str
+        :param ProductID: 产品id
+        :type ProductID: str
+        :param DeviceName: 设备名称
+        :type DeviceName: str
+        :param SrcType: 来源类型
+        :type SrcType: str
+        :param SrcName: 来源名称
+        :type SrcName: str
+        :param Topic: 消息topic
+        :type Topic: str
+        :param PayloadFmtType: 内容格式类型
+        :type PayloadFmtType: str
+        :param Payload: 内容信息
+        :type Payload: str
+        :param RequestID: 请求ID
+        :type RequestID: str
+        :param DateTime: 日期时间
+        :type DateTime: str
+        """
+        self.Uin = None
+        self.ProductID = None
+        self.DeviceName = None
+        self.SrcType = None
+        self.SrcName = None
+        self.Topic = None
+        self.PayloadFmtType = None
+        self.Payload = None
+        self.RequestID = None
+        self.DateTime = None
+
+
+    def _deserialize(self, params):
+        self.Uin = params.get("Uin")
+        self.ProductID = params.get("ProductID")
+        self.DeviceName = params.get("DeviceName")
+        self.SrcType = params.get("SrcType")
+        self.SrcName = params.get("SrcName")
+        self.Topic = params.get("Topic")
+        self.PayloadFmtType = params.get("PayloadFmtType")
+        self.Payload = params.get("Payload")
+        self.RequestID = params.get("RequestID")
+        self.DateTime = params.get("DateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4250,6 +4594,46 @@ class RetryDeviceFirmwareTaskResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class SDKLogItem(AbstractModel):
+    """SDK日志项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProductID: 产品ID
+        :type ProductID: str
+        :param DeviceName: 设备名称
+        :type DeviceName: str
+        :param Level: 日志等级
+        :type Level: str
+        :param DateTime: 日志时间
+        :type DateTime: str
+        :param Content: 日志内容
+        :type Content: str
+        """
+        self.ProductID = None
+        self.DeviceName = None
+        self.Level = None
+        self.DateTime = None
+        self.Content = None
+
+
+    def _deserialize(self, params):
+        self.ProductID = params.get("ProductID")
+        self.DeviceName = params.get("DeviceName")
+        self.Level = params.get("Level")
+        self.DateTime = params.get("DateTime")
+        self.Content = params.get("Content")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class SearchKeyword(AbstractModel):

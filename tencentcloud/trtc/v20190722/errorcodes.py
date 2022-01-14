@@ -104,6 +104,9 @@ INVALIDPARAMETER_PAGESIZEOVERSIZE = 'InvalidParameter.PageSizeOversize'
 # 自定义布局参数错误。
 INVALIDPARAMETER_PRESETLAYOUTCONFIG = 'InvalidParameter.PresetLayoutConfig'
 
+# PublishCdnUrls参数校验失败。
+INVALIDPARAMETER_PUBLISHCDNURLS = 'InvalidParameter.PublishCdnUrls'
+
 # 纯音频推流参数错误。
 INVALIDPARAMETER_PUREAUDIOSTREAM = 'InvalidParameter.PureAudioStream'
 

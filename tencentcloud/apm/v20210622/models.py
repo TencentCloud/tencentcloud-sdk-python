@@ -127,6 +127,18 @@ class ApmInstanceDetail(AbstractModel):
         :param SlowRequestSavedThreshold: 慢调用保存阈值
 注意：此字段可能返回 null，表示取不到有效值。
         :type SlowRequestSavedThreshold: int
+        :param LogRegion: cls日志所在地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogRegion: str
+        :param LogSource: 日志来源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogSource: str
+        :param IsRelatedLog: 日志功能开关 0 关 | 1 开
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsRelatedLog: int
+        :param LogTopicID: 日志主题ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogTopicID: str
         """
         self.AmountOfUsedStorage = None
         self.Name = None
@@ -146,6 +158,10 @@ class ApmInstanceDetail(AbstractModel):
         self.SampleRate = None
         self.ErrorSample = None
         self.SlowRequestSavedThreshold = None
+        self.LogRegion = None
+        self.LogSource = None
+        self.IsRelatedLog = None
+        self.LogTopicID = None
 
 
     def _deserialize(self, params):
@@ -172,6 +188,10 @@ class ApmInstanceDetail(AbstractModel):
         self.SampleRate = params.get("SampleRate")
         self.ErrorSample = params.get("ErrorSample")
         self.SlowRequestSavedThreshold = params.get("SlowRequestSavedThreshold")
+        self.LogRegion = params.get("LogRegion")
+        self.LogSource = params.get("LogSource")
+        self.IsRelatedLog = params.get("IsRelatedLog")
+        self.LogTopicID = params.get("LogTopicID")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -970,6 +970,8 @@ class CloneLoadBalancerRequest(AbstractModel):
         :type SnatIps: list of SnatIp
         :param ClusterIds: 公网独占集群ID或者CDCId。
         :type ClusterIds: list of str
+        :param SlaType: 性能保障规格。
+        :type SlaType: str
         :param ClusterTag: Stgw独占集群的标签。
         :type ClusterTag: str
         :param Zones: 仅适用于私有网络内网负载均衡。内网就近接入时，选择可用区下发。
@@ -992,6 +994,7 @@ class CloneLoadBalancerRequest(AbstractModel):
         self.SnatPro = None
         self.SnatIps = None
         self.ClusterIds = None
+        self.SlaType = None
         self.ClusterTag = None
         self.Zones = None
         self.EipAddressId = None
@@ -1027,6 +1030,7 @@ class CloneLoadBalancerRequest(AbstractModel):
                 obj._deserialize(item)
                 self.SnatIps.append(obj)
         self.ClusterIds = params.get("ClusterIds")
+        self.SlaType = params.get("SlaType")
         self.ClusterTag = params.get("ClusterTag")
         self.Zones = params.get("Zones")
         self.EipAddressId = params.get("EipAddressId")
@@ -1641,15 +1645,20 @@ class CreateLoadBalancerResponse(AbstractModel):
         r"""
         :param LoadBalancerIds: 由负载均衡实例唯一 ID 组成的数组。
         :type LoadBalancerIds: list of str
+        :param DealName: 订单号。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DealName: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.LoadBalancerIds = None
+        self.DealName = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.LoadBalancerIds = params.get("LoadBalancerIds")
+        self.DealName = params.get("DealName")
         self.RequestId = params.get("RequestId")
 
 
@@ -4077,12 +4086,16 @@ class DescribeTaskStatusRequest(AbstractModel):
         r"""
         :param TaskId: 请求ID，即接口返回的 RequestId 参数。
         :type TaskId: str
+        :param DealName: 订单ID。
+        :type DealName: str
         """
         self.TaskId = None
+        self.DealName = None
 
 
     def _deserialize(self, params):
         self.TaskId = params.get("TaskId")
+        self.DealName = params.get("DealName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4101,15 +4114,20 @@ class DescribeTaskStatusResponse(AbstractModel):
         r"""
         :param Status: 任务的当前状态。 0：成功，1：失败，2：进行中。
         :type Status: int
+        :param LoadBalancerIds: 由负载均衡实例唯一 ID 组成的数组。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LoadBalancerIds: list of str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Status = None
+        self.LoadBalancerIds = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.LoadBalancerIds = params.get("LoadBalancerIds")
         self.RequestId = params.get("RequestId")
 
 

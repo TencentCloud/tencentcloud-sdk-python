@@ -751,6 +751,139 @@ class CreateDedicatedClusterDBInstanceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateHourDBInstanceRequest(AbstractModel):
+    """CreateHourDBInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Zones: 节点可用区分布，最多可填两个可用区。当分片规格为一主两从时，其中两个节点在第一个可用区。
+        :type Zones: list of str
+        :param NodeCount: 节点个数
+        :type NodeCount: int
+        :param Memory: 内存大小，单位：GB
+        :type Memory: int
+        :param Storage: 储存大小，单位：GB
+        :type Storage: int
+        :param Count: 购买实例数量
+        :type Count: int
+        :param ProjectId: 项目ID，不传表示默认项目
+        :type ProjectId: int
+        :param VpcId: 统一网络ID，不传表示基础网络
+        :type VpcId: str
+        :param SubnetId: 统一子网ID，VpcId有值时需填写
+        :type SubnetId: str
+        :param DbVersionId: 数据库引擎版本，当前可选：10.0.10，10.1.9，5.7.17。
+10.0.10 - Mariadb 10.0.10；
+10.1.9 - Mariadb 10.1.9；
+5.7.17 - Percona 5.7.17。
+如果不填的话，默认为10.1.9，表示Mariadb 10.1.9。
+        :type DbVersionId: str
+        :param InstanceName: 自定义实例名称
+        :type InstanceName: str
+        :param SecurityGroupIds: 安全组ID，不传表示不绑定安全组
+        :type SecurityGroupIds: list of str
+        :param Ipv6Flag: 是否支持IPv6
+        :type Ipv6Flag: int
+        :param ResourceTags: 标签键值对数组
+        :type ResourceTags: list of ResourceTag
+        :param DcnRegion: DCN源地域
+        :type DcnRegion: str
+        :param DcnInstanceId: DCN源实例ID
+        :type DcnInstanceId: str
+        :param InitParams: 参数列表。本接口的可选值为：character_set_server（字符集，必传），lower_case_table_names（表名大小写敏感，必传，0 - 敏感；1-不敏感），innodb_page_size（innodb数据页，默认16K），sync_mode（同步模式：0 - 异步； 1 - 强同步；2 - 强同步可退化。默认为强同步可退化）。
+        :type InitParams: list of DBParamValue
+        :param RollbackInstanceId: 回档源实例ID
+        :type RollbackInstanceId: str
+        :param RollbackTime: 回档时间
+        :type RollbackTime: str
+        """
+        self.Zones = None
+        self.NodeCount = None
+        self.Memory = None
+        self.Storage = None
+        self.Count = None
+        self.ProjectId = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.DbVersionId = None
+        self.InstanceName = None
+        self.SecurityGroupIds = None
+        self.Ipv6Flag = None
+        self.ResourceTags = None
+        self.DcnRegion = None
+        self.DcnInstanceId = None
+        self.InitParams = None
+        self.RollbackInstanceId = None
+        self.RollbackTime = None
+
+
+    def _deserialize(self, params):
+        self.Zones = params.get("Zones")
+        self.NodeCount = params.get("NodeCount")
+        self.Memory = params.get("Memory")
+        self.Storage = params.get("Storage")
+        self.Count = params.get("Count")
+        self.ProjectId = params.get("ProjectId")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.DbVersionId = params.get("DbVersionId")
+        self.InstanceName = params.get("InstanceName")
+        self.SecurityGroupIds = params.get("SecurityGroupIds")
+        self.Ipv6Flag = params.get("Ipv6Flag")
+        if params.get("ResourceTags") is not None:
+            self.ResourceTags = []
+            for item in params.get("ResourceTags"):
+                obj = ResourceTag()
+                obj._deserialize(item)
+                self.ResourceTags.append(obj)
+        self.DcnRegion = params.get("DcnRegion")
+        self.DcnInstanceId = params.get("DcnInstanceId")
+        if params.get("InitParams") is not None:
+            self.InitParams = []
+            for item in params.get("InitParams"):
+                obj = DBParamValue()
+                obj._deserialize(item)
+                self.InitParams.append(obj)
+        self.RollbackInstanceId = params.get("RollbackInstanceId")
+        self.RollbackTime = params.get("RollbackTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateHourDBInstanceResponse(AbstractModel):
+    """CreateHourDBInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DealName: 长订单号。可以据此调用 DescribeOrders
+ 查询订单详细信息，或在支付失败时调用用户账号相关接口进行支付。
+        :type DealName: str
+        :param InstanceIds: 订单对应的实例 ID 列表，如果此处没有返回实例 ID，可以通过订单查询接口获取。还可通过实例查询接口查询实例是否创建完成。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceIds: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DealName = None
+        self.InstanceIds = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DealName = params.get("DealName")
+        self.InstanceIds = params.get("InstanceIds")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateTmpInstancesRequest(AbstractModel):
     """CreateTmpInstances请求参数结构体
 
@@ -1002,6 +1135,9 @@ class DBInstance(AbstractModel):
         :param InstanceType: 1： 主实例（独享型）, 2: 主实例, 3： 灾备实例, 4： 灾备实例（独享型）
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceType: int
+        :param ResourceTags: 实例标签信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceTags: list of ResourceTag
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -1053,6 +1189,7 @@ class DBInstance(AbstractModel):
         self.DcnStatus = None
         self.DcnDstNum = None
         self.InstanceType = None
+        self.ResourceTags = None
 
 
     def _deserialize(self, params):
@@ -1106,6 +1243,12 @@ class DBInstance(AbstractModel):
         self.DcnStatus = params.get("DcnStatus")
         self.DcnDstNum = params.get("DcnDstNum")
         self.InstanceType = params.get("InstanceType")
+        if params.get("ResourceTags") is not None:
+            self.ResourceTags = []
+            for item in params.get("ResourceTags"):
+                obj = ResourceTag()
+                obj._deserialize(item)
+                self.ResourceTags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2831,10 +2974,13 @@ class DescribeProjectSecurityGroupsResponse(AbstractModel):
         r"""
         :param Groups: 安全组详情。
         :type Groups: list of SecurityGroup
+        :param Total: 安全组总数。
+        :type Total: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Groups = None
+        self.Total = None
         self.RequestId = None
 
 
@@ -2845,6 +2991,7 @@ class DescribeProjectSecurityGroupsResponse(AbstractModel):
                 obj = SecurityGroup()
                 obj._deserialize(item)
                 self.Groups.append(obj)
+        self.Total = params.get("Total")
         self.RequestId = params.get("RequestId")
 
 
@@ -4079,7 +4226,7 @@ class ModifySyncTaskAttributeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskIds: 一个或多个待操作的任务ID。可通过DescribeSyncTasks API返回值中的TaskId获取。每次请求允许操作的实例数量上限是100。
+        :param TaskIds: 一个或多个待操作的任务ID。可通过DescribeSyncTasks API返回值中的TaskId获取。每次请求允许操作的任务数量上限是100。
         :type TaskIds: list of str
         :param TaskName: 任务名称。可任意命名，但不得超过100个字符。
         :type TaskName: str
@@ -5039,6 +5186,55 @@ class SqlLogItem(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class SwitchDBInstanceHARequest(AbstractModel):
+    """SwitchDBInstanceHA请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例Id，形如 tdsql-ow728lmc
+        :type InstanceId: str
+        :param Zone: 切换的目标区域，会自动选择该可用区中延迟最低的节点
+        :type Zone: str
+        """
+        self.InstanceId = None
+        self.Zone = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Zone = params.get("Zone")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SwitchDBInstanceHAResponse(AbstractModel):
+    """SwitchDBInstanceHA返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: 异步流程Id
+        :type FlowId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
 
 
 class TablePrivilege(AbstractModel):

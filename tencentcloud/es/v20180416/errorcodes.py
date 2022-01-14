@@ -62,6 +62,9 @@ RESOURCEINSUFFICIENT = 'ResourceInsufficient'
 # 账户余额不足。
 RESOURCEINSUFFICIENT_BALANCE = 'ResourceInsufficient.Balance'
 
+# 隐藏可用区专用主节点资源不足。
+RESOURCEINSUFFICIENT_HIDDENZONE = 'ResourceInsufficient.HiddenZone'
+
 # 子网剩余ip数量不足。
 RESOURCEINSUFFICIENT_SUBNET = 'ResourceInsufficient.Subnet'
 

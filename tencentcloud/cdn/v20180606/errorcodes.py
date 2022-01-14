@@ -65,6 +65,9 @@ INTERNALERROR_INVALIDERRORCODE = 'InternalError.InvalidErrorCode'
 # 内部服务错误，请联系腾讯云工程师进一步排查。
 INTERNALERROR_PROXYSERVER = 'InternalError.ProxyServer'
 
+# 内部服务错误，请联系腾讯云工程师进一步排查。
+INTERNALERROR_ROUTEERROR = 'InternalError.RouteError'
+
 # SCDN服务未生效，请购买或续费SCDN套餐后重试。
 INTERNALERROR_SCDNUSERNOPACKAGE = 'InternalError.ScdnUserNoPackage'
 
@@ -82,6 +85,15 @@ INTERNALERROR_TAGSYSTEMERROR = 'InternalError.TagSystemError'
 
 # 参数错误。
 INVALIDPARAMETER = 'InvalidParameter'
+
+# 域名启用 HTTPS 配置需保持访问端口配置-443端口为开启状态。
+INVALIDPARAMETER_ACCESSPORTOPENEDHTTPS = 'InvalidParameter.AccessPortOpenedHttps'
+
+# 请删除域名的限流管理配置后再切换加速区域。
+INVALIDPARAMETER_BANDLIMITREQUIREDMAINLAND = 'InvalidParameter.BandLimitRequiredMainland'
+
+# 源站类型为COS源或第三方对象存储的域名，用量封顶-超出阈值的处理方式仅支持访问返回404，请修改该配置后重试。
+INVALIDPARAMETER_BANDWIDTHALERTCOUNTERMEASURECONFLICTORIGINTYPE = 'InvalidParameter.BandwidthAlertCounterMeasureConflictOriginType'
 
 # 域名状态不合法。
 INVALIDPARAMETER_CDNSTATUSINVALIDDOMAIN = 'InvalidParameter.CDNStatusInvalidDomain'
@@ -380,9 +392,6 @@ RESOURCEUNAVAILABLE_CDNHOSTBELONGSTOOTHERSINMAINLAND = 'ResourceUnavailable.CdnH
 # 该域名已在其他处接入中国境外服务地域，如需修改服务地域为全球，需验证取回域名。
 RESOURCEUNAVAILABLE_CDNHOSTBELONGSTOOTHERSINOVERSEAS = 'ResourceUnavailable.CdnHostBelongsToOthersInOverseas'
 
-# 域名已接入DSA功能。
-RESOURCEUNAVAILABLE_CDNHOSTEXISTSINDSA = 'ResourceUnavailable.CdnHostExistsInDsa'
-
 # 域名已经在TCB控制台接入。
 RESOURCEUNAVAILABLE_CDNHOSTEXISTSINTCB = 'ResourceUnavailable.CdnHostExistsInTcb'
 
@@ -421,6 +430,9 @@ UNAUTHORIZEDOPERATION_CDNDOMAINRECORDNOTVERIFIED = 'UnauthorizedOperation.CdnDom
 
 # 域名在内部系统已存在，请提工单处理。
 UNAUTHORIZEDOPERATION_CDNHOSTEXISTSININTERNAL = 'UnauthorizedOperation.CdnHostExistsInInternal'
+
+# 域名现存在风险，不可接入。
+UNAUTHORIZEDOPERATION_CDNHOSTINICPBLACKLIST = 'UnauthorizedOperation.CdnHostInIcpBlacklist'
 
 # 该域名属于其他账号，您没有权限接入。
 UNAUTHORIZEDOPERATION_CDNHOSTISOWNEDBYOTHER = 'UnauthorizedOperation.CdnHostIsOwnedByOther'
@@ -476,6 +488,9 @@ UNAUTHORIZEDOPERATION_CLSUNAUTHORIZED = 'UnauthorizedOperation.ClsUnauthorized'
 # 内部服务错误，请联系腾讯云工程师进一步排查。
 UNAUTHORIZEDOPERATION_CSRFERROR = 'UnauthorizedOperation.CsrfError'
 
+# 鉴权域名为空。
+UNAUTHORIZEDOPERATION_DOMAINEMPTY = 'UnauthorizedOperation.DomainEmpty'
+
 # 未授权的操作。
 UNAUTHORIZEDOPERATION_NOPERMISSION = 'UnauthorizedOperation.NoPermission'
 
@@ -484,6 +499,9 @@ UNAUTHORIZEDOPERATION_OPNOAUTH = 'UnauthorizedOperation.OpNoAuth'
 
 # 操作超出调用频次限制。
 UNAUTHORIZEDOPERATION_OPERATIONTOOOFTEN = 'UnauthorizedOperation.OperationTooOften'
+
+# 未授权操作。
+UNAUTHORIZEDOPERATION_UNKNOWN = 'UnauthorizedOperation.Unknown'
 
 # 未知参数错误。
 UNKNOWNPARAMETER = 'UnknownParameter'

@@ -67,6 +67,34 @@ class AssignProjectResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class Auth(AbstractModel):
+    """用户权限
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NameSpace: *表示所有数据库,db.name表示特定的name数据库。
+        :type NameSpace: str
+        :param Mask: 用于控制权限,0无权限，1只读，2只写，3读写。
+        :type Mask: int
+        """
+        self.NameSpace = None
+        self.Mask = None
+
+
+    def _deserialize(self, params):
+        self.NameSpace = params.get("NameSpace")
+        self.Mask = params.get("Mask")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BackupDownloadTask(AbstractModel):
     """备份下载任务
 
@@ -2913,6 +2941,64 @@ class SecurityGroupBound(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class SetAccountUserPrivilegeRequest(AbstractModel):
+    """SetAccountUserPrivilege请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param UserName: 账号名称
+        :type UserName: str
+        :param AuthRole: 权限信息
+        :type AuthRole: list of Auth
+        """
+        self.InstanceId = None
+        self.UserName = None
+        self.AuthRole = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.UserName = params.get("UserName")
+        if params.get("AuthRole") is not None:
+            self.AuthRole = []
+            for item in params.get("AuthRole"):
+                obj = Auth()
+                obj._deserialize(item)
+                self.AuthRole.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SetAccountUserPrivilegeResponse(AbstractModel):
+    """SetAccountUserPrivilege返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: 设置任务ID,用于查询是否设置完成
+        :type FlowId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
 
 
 class ShardInfo(AbstractModel):

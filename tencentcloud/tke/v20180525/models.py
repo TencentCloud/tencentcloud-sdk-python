@@ -1789,6 +1789,8 @@ class CreateClusterNodePoolRequest(AbstractModel):
         :type NodePoolOs: str
         :param OsCustomizeType: 容器的镜像版本，"DOCKER_CUSTOMIZE"(容器定制版),"GENERAL"(普通版本，默认值)
         :type OsCustomizeType: str
+        :param Tags: 资源标签
+        :type Tags: list of Tag
         """
         self.ClusterId = None
         self.AutoScalingGroupPara = None
@@ -1800,6 +1802,7 @@ class CreateClusterNodePoolRequest(AbstractModel):
         self.Taints = None
         self.NodePoolOs = None
         self.OsCustomizeType = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -1825,6 +1828,12 @@ class CreateClusterNodePoolRequest(AbstractModel):
                 self.Taints.append(obj)
         self.NodePoolOs = params.get("NodePoolOs")
         self.OsCustomizeType = params.get("OsCustomizeType")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7675,6 +7684,8 @@ class ModifyClusterNodePoolRequest(AbstractModel):
         :type OsCustomizeType: str
         :param ExtraArgs: 节点自定义参数
         :type ExtraArgs: :class:`tencentcloud.tke.v20180525.models.InstanceExtraArgs`
+        :param Tags: 资源标签
+        :type Tags: list of Tag
         """
         self.ClusterId = None
         self.NodePoolId = None
@@ -7687,6 +7698,7 @@ class ModifyClusterNodePoolRequest(AbstractModel):
         self.OsName = None
         self.OsCustomizeType = None
         self.ExtraArgs = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -7713,6 +7725,12 @@ class ModifyClusterNodePoolRequest(AbstractModel):
         if params.get("ExtraArgs") is not None:
             self.ExtraArgs = InstanceExtraArgs()
             self.ExtraArgs._deserialize(params.get("ExtraArgs"))
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8053,6 +8071,9 @@ class NodePool(AbstractModel):
         :param UserScript: 用户自定义脚本
 注意：此字段可能返回 null，表示取不到有效值。
         :type UserScript: str
+        :param Tags: 资源标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
         """
         self.NodePoolId = None
         self.Name = None
@@ -8072,6 +8093,7 @@ class NodePool(AbstractModel):
         self.ImageId = None
         self.DesiredPodNum = None
         self.UserScript = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -8105,6 +8127,12 @@ class NodePool(AbstractModel):
         self.ImageId = params.get("ImageId")
         self.DesiredPodNum = params.get("DesiredPodNum")
         self.UserScript = params.get("UserScript")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8286,11 +8314,16 @@ abnormal = 异常
         :type Status: str
         :param ClusterName: 集群名称
         :type ClusterName: str
+        :param ExternalLabels: 额外labels
+本集群的所有指标都会带上这几个label
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExternalLabels: list of Label
         """
         self.ClusterType = None
         self.ClusterId = None
         self.Status = None
         self.ClusterName = None
+        self.ExternalLabels = None
 
 
     def _deserialize(self, params):
@@ -8298,6 +8331,12 @@ abnormal = 异常
         self.ClusterId = params.get("ClusterId")
         self.Status = params.get("Status")
         self.ClusterName = params.get("ClusterName")
+        if params.get("ExternalLabels") is not None:
+            self.ExternalLabels = []
+            for item in params.get("ExternalLabels"):
+                obj = Label()
+                obj._deserialize(item)
+                self.ExternalLabels.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8382,6 +8421,9 @@ class PrometheusAlertRule(AbstractModel):
         :param Annotations: 参考prometheus rule中的annotations
 注意：此字段可能返回 null，表示取不到有效值。
         :type Annotations: list of Label
+        :param RuleState: 告警规则状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleState: int
         """
         self.Name = None
         self.Rule = None
@@ -8390,6 +8432,7 @@ class PrometheusAlertRule(AbstractModel):
         self.For = None
         self.Describe = None
         self.Annotations = None
+        self.RuleState = None
 
 
     def _deserialize(self, params):
@@ -8410,6 +8453,7 @@ class PrometheusAlertRule(AbstractModel):
                 obj = Label()
                 obj._deserialize(item)
                 self.Annotations.append(obj)
+        self.RuleState = params.get("RuleState")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -10031,6 +10075,8 @@ class UpdateEKSClusterRequest(AbstractModel):
         :type NeedDeleteCbs: bool
         :param ProxyLB: 标记是否是新的内外网。默认为false
         :type ProxyLB: bool
+        :param ExtraParam: 扩展参数。须是map[string]string 的json 格式。
+        :type ExtraParam: str
         """
         self.ClusterId = None
         self.ClusterName = None
@@ -10043,6 +10089,7 @@ class UpdateEKSClusterRequest(AbstractModel):
         self.ClearDnsServer = None
         self.NeedDeleteCbs = None
         self.ProxyLB = None
+        self.ExtraParam = None
 
 
     def _deserialize(self, params):
@@ -10066,6 +10113,7 @@ class UpdateEKSClusterRequest(AbstractModel):
         self.ClearDnsServer = params.get("ClearDnsServer")
         self.NeedDeleteCbs = params.get("NeedDeleteCbs")
         self.ProxyLB = params.get("ProxyLB")
+        self.ExtraParam = params.get("ExtraParam")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

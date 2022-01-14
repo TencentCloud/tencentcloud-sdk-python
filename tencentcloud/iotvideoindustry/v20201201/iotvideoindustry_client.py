@@ -54,8 +54,65 @@ class IotvideoindustryClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ControlChannelLocalRecord(self, request):
+        """本接口（ControlChannelLocalRecord）用于对通道本地回放流进行控制，包括暂停、播放、拉动、结束等
+
+        :param request: Request instance for ControlChannelLocalRecord.
+        :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.ControlChannelLocalRecordRequest`
+        :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.ControlChannelLocalRecordResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ControlChannelLocalRecord", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ControlChannelLocalRecordResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ControlChannelPTZ(self, request):
+        """本接口(ControlChannelPTZ) 用于对支持GB28181 PTZ信令的设备进行指定通道的远程控制。
+
+        :param request: Request instance for ControlChannelPTZ.
+        :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.ControlChannelPTZRequest`
+        :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.ControlChannelPTZResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ControlChannelPTZ", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ControlChannelPTZResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ControlDevicePTZ(self, request):
         """本接口(ControlDevicePTZ) 用于对支持GB28181 PTZ信令的设备进行远程控制。
+        请使用ControlChannelPTZ接口
 
         :param request: Request instance for ControlDevicePTZ.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.ControlDevicePTZRequest`
@@ -82,8 +139,65 @@ class IotvideoindustryClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ControlHomePosition(self, request):
+        """看守位控制
+
+        :param request: Request instance for ControlHomePosition.
+        :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.ControlHomePositionRequest`
+        :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.ControlHomePositionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ControlHomePosition", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ControlHomePositionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ControlPreset(self, request):
+        """预置位控制
+
+        :param request: Request instance for ControlPreset.
+        :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.ControlPresetRequest`
+        :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.ControlPresetResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ControlPreset", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ControlPresetResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ControlRecordStream(self, request):
         """对回放流进行控制，包括暂停、播放、拉动、结束等
+        请使用ControlChannelLocalRecord接口
 
         :param request: Request instance for ControlRecordStream.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.ControlRecordStreamRequest`
@@ -252,6 +366,7 @@ class IotvideoindustryClient(AbstractClient):
 
     def CreateRecordPlan(self, request):
         """本接口(CreateRecordPlan) 用于创建录制计划，使设备与时间模板绑定，以便及时启动录制
+        请使用CreateRecordingPlan代替
 
         :param request: Request instance for CreateRecordPlan.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.CreateRecordPlanRequest`
@@ -264,6 +379,34 @@ class IotvideoindustryClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateRecordPlanResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateRecordingPlan(self, request):
+        """本接口(CreateRecordingPlan) 用于创建录制计划，使通道与时间模板绑定，以便及时启动录制
+
+        :param request: Request instance for CreateRecordingPlan.
+        :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.CreateRecordingPlanRequest`
+        :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.CreateRecordingPlanResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateRecordingPlan", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateRecordingPlanResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -335,7 +478,8 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def DeleteChannel(self, request):
-        """删除通道接口
+        """本接口用于删除设备下的通道
+        注意： 在线状态的设备不允许删除
 
         :param request: Request instance for DeleteChannel.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DeleteChannelRequest`
@@ -533,6 +677,7 @@ class IotvideoindustryClient(AbstractClient):
     def DeleteRecordPlan(self, request):
         """本接口(DeleteRecordPlan)用于删除录制计划
         录制计划删除的同时，会停止该录制计划下的全部录制任务。
+        请使用DeleteRecordingPlan接口
 
         :param request: Request instance for DeleteRecordPlan.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DeleteRecordPlanRequest`
@@ -545,6 +690,35 @@ class IotvideoindustryClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteRecordPlanResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteRecordingPlan(self, request):
+        """本接口(DeleteRecordingPlan)用于删除录制计划
+        录制计划删除的同时，会停止该录制计划下的全部录制任务。
+
+        :param request: Request instance for DeleteRecordingPlan.
+        :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DeleteRecordingPlanRequest`
+        :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.DeleteRecordingPlanResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteRecordingPlan", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteRecordingPlanResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -643,8 +817,65 @@ class IotvideoindustryClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteWarning(self, request):
+        """设备告警-删除告警
+
+        :param request: Request instance for DeleteWarning.
+        :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DeleteWarningRequest`
+        :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.DeleteWarningResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteWarning", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteWarningResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAbnormalEvents(self, request):
+        """获取异常事件统计
+
+        :param request: Request instance for DescribeAbnormalEvents.
+        :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeAbnormalEventsRequest`
+        :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeAbnormalEventsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAbnormalEvents", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAbnormalEventsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeAllDeviceList(self, request):
         """本接口(DescribeAllDeviceList) 用于获取设备列表。
+        请使用DescribeDevicesList接口
 
         :param request: Request instance for DescribeAllDeviceList.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeAllDeviceListRequest`
@@ -657,6 +888,34 @@ class IotvideoindustryClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAllDeviceListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeBindSceneChannels(self, request):
+        """获取场景绑定通道列表
+
+        :param request: Request instance for DescribeBindSceneChannels.
+        :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeBindSceneChannelsRequest`
+        :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeBindSceneChannelsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeBindSceneChannels", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBindSceneChannelsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -699,6 +958,92 @@ class IotvideoindustryClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeChannelLocalRecordURL(self, request):
+        """本接口（DescribeChannelLocalRecordURL）用于将NVR等设备对应通道本地回放文件，通过GB28181信令推送至云端，并生成对应的实时视频流URL，流地址URL是动态生成，如需重新播放请重新调用此接口获取最新地址。
+        正常推流，如未设置对应录制计划，且180s无人观看此流，将会被自动掐断。
+
+        :param request: Request instance for DescribeChannelLocalRecordURL.
+        :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeChannelLocalRecordURLRequest`
+        :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeChannelLocalRecordURLResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeChannelLocalRecordURL", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeChannelLocalRecordURLResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeChannelStreamURL(self, request):
+        """本接口(DescribeChannelStreamURL)用于获取设备指定通道实时流地址，地址是动态生成，如重新播放需要调用此接口重新获取最新播放地址。
+        正常推流，如未设置对应录制计划，且180s无人观看此流，将会被自动掐断。
+
+        :param request: Request instance for DescribeChannelStreamURL.
+        :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeChannelStreamURLRequest`
+        :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeChannelStreamURLResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeChannelStreamURL", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeChannelStreamURLResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeChannels(self, request):
+        """本接口（DescribeChannels）用于获取设备下属通道列表
+
+        :param request: Request instance for DescribeChannels.
+        :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeChannelsRequest`
+        :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeChannelsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeChannels", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeChannelsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeChannelsByLiveRecordPlan(self, request):
         """根据直播录制计划获取频道列表
 
@@ -727,6 +1072,90 @@ class IotvideoindustryClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeCurrentDeviceData(self, request):
+        """查询设备统计当前信息
+
+        :param request: Request instance for DescribeCurrentDeviceData.
+        :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeCurrentDeviceDataRequest`
+        :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeCurrentDeviceDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCurrentDeviceData", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCurrentDeviceDataResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDevice(self, request):
+        """获取指定设备详细信息
+
+        :param request: Request instance for DescribeDevice.
+        :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeDeviceRequest`
+        :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeDeviceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDevice", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDeviceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDeviceEvent(self, request):
+        """获取设备事件
+
+        :param request: Request instance for DescribeDeviceEvent.
+        :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeDeviceEventRequest`
+        :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeDeviceEventResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDeviceEvent", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDeviceEventResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeDeviceGroup(self, request):
         """本接口(DescribeDeviceGroup)用于根据设备ID查询设备所在分组信息，可批量查询。
 
@@ -741,6 +1170,62 @@ class IotvideoindustryClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDeviceGroupResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDeviceList(self, request):
+        """本接口(DescribeDevicesList) 用于获取设备列表，支持模糊搜索
+
+        :param request: Request instance for DescribeDeviceList.
+        :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeDeviceListRequest`
+        :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeDeviceListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDeviceList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDeviceListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDeviceMonitorData(self, request):
+        """查询设备统计monitor信息
+
+        :param request: Request instance for DescribeDeviceMonitorData.
+        :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeDeviceMonitorDataRequest`
+        :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeDeviceMonitorDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDeviceMonitorData", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDeviceMonitorDataResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -785,6 +1270,7 @@ class IotvideoindustryClient(AbstractClient):
 
     def DescribeDeviceStreams(self, request):
         """本接口(DescribeDeviceStreams)用于获取设备实时流地址。
+        请使用DescribeChannelStreamURL接口
 
         :param request: Request instance for DescribeDeviceStreams.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeDeviceStreamsRequest`
@@ -925,6 +1411,7 @@ class IotvideoindustryClient(AbstractClient):
 
     def DescribeIPCChannels(self, request):
         """获取IPC设备下属通道
+        请使用DescribeChannels接口
 
         :param request: Request instance for DescribeIPCChannels.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeIPCChannelsRequest`
@@ -1175,6 +1662,90 @@ class IotvideoindustryClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeMonitorDataByDate(self, request):
+        """运营中心-设备录像存储统计
+
+        :param request: Request instance for DescribeMonitorDataByDate.
+        :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeMonitorDataByDateRequest`
+        :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeMonitorDataByDateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeMonitorDataByDate", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeMonitorDataByDateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribePresetList(self, request):
+        """获取预置位列表
+
+        :param request: Request instance for DescribePresetList.
+        :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribePresetListRequest`
+        :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribePresetListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribePresetList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePresetListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeRecordDatesByChannel(self, request):
+        """本接口(DescribeRecordDatesByChannel)用于查询设备含有录像文件的日期列表。
+
+        :param request: Request instance for DescribeRecordDatesByChannel.
+        :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeRecordDatesByChannelRequest`
+        :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeRecordDatesByChannelResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeRecordDatesByChannel", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRecordDatesByChannelResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeRecordDatesByLive(self, request):
         """直播录像存储日期列表
 
@@ -1204,7 +1775,9 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def DescribeRecordStream(self, request):
-        """获取回放视频流(NVR录制用)
+        """获取回放视频流地址
+        请使用DescribeChannelLocalRecordURL接口
+
         RecordId和StartTime/EndTime互斥
         当存在RecordId时，StartTime和EndTime无效
         当RecordId为空，StartTime和EndTime生效
@@ -1234,6 +1807,62 @@ class IotvideoindustryClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeRecordingPlanById(self, request):
+        """本接口(DescribeRecordingPlanById)用于根据录制计划ID获取录制计划。
+
+        :param request: Request instance for DescribeRecordingPlanById.
+        :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeRecordingPlanByIdRequest`
+        :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeRecordingPlanByIdResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeRecordingPlanById", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRecordingPlanByIdResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeRecordingPlans(self, request):
+        """本接口(DescribeRecordingPlans)用于获取用户的全部录制计划。
+
+        :param request: Request instance for DescribeRecordingPlans.
+        :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeRecordingPlansRequest`
+        :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeRecordingPlansResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeRecordingPlans", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRecordingPlansResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeSIPServer(self, request):
         """本接口用于获取SIP服务器相关配置，用户可以通过这些配置项，将设备通过GB28181协议注册到本服务。
 
@@ -1248,6 +1877,34 @@ class IotvideoindustryClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSIPServerResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeScene(self, request):
+        """场景详情
+
+        :param request: Request instance for DescribeScene.
+        :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeSceneRequest`
+        :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeSceneResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeScene", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSceneResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1403,7 +2060,7 @@ class IotvideoindustryClient(AbstractClient):
 
 
     def DescribeVideoList(self, request):
-        """根据时间获取回放文件列表(云端录制用)
+        """根据时间获取云端录制文件列表
 
         :param request: Request instance for DescribeVideoList.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeVideoListRequest`
@@ -1430,8 +2087,121 @@ class IotvideoindustryClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeVideoListByChannel(self, request):
+        """本接口(DescribeVideoListByChannel)用于查询指定通道的录制文件列表
+
+        :param request: Request instance for DescribeVideoListByChannel.
+        :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeVideoListByChannelRequest`
+        :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeVideoListByChannelResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeVideoListByChannel", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeVideoListByChannelResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeWarnMod(self, request):
+        """告警等级列表
+
+        :param request: Request instance for DescribeWarnMod.
+        :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeWarnModRequest`
+        :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeWarnModResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeWarnMod", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeWarnModResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeWarnings(self, request):
+        """获取告警列表
+
+        :param request: Request instance for DescribeWarnings.
+        :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeWarningsRequest`
+        :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeWarningsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeWarnings", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeWarningsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeXP2PData(self, request):
+        """获取X-P2P的统计数据
+
+        :param request: Request instance for DescribeXP2PData.
+        :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeXP2PDataRequest`
+        :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeXP2PDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeXP2PData", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeXP2PDataResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def GetRecordDatesByDev(self, request):
         """本接口(GetRecordDatesByDev)用于查询设备含有录像文件的日期列表。
+        请使用DescribeRecordDatesByChannel接口
 
         :param request: Request instance for GetRecordDatesByDev.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.GetRecordDatesByDevRequest`
@@ -1488,6 +2258,7 @@ class IotvideoindustryClient(AbstractClient):
 
     def GetRecordPlanById(self, request):
         """本接口(GetRecordPlanById)用于根据录制计划ID获取录制计划。
+        请使用DescribeRecordingPlanById接口
 
         :param request: Request instance for GetRecordPlanById.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.GetRecordPlanByIdRequest`
@@ -1516,6 +2287,7 @@ class IotvideoindustryClient(AbstractClient):
 
     def GetRecordPlans(self, request):
         """本接口(GetRecordPlans)用于获取用户的全部录制计划。
+        请使用DescribeRecordingPlans接口
 
         :param request: Request instance for GetRecordPlans.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.GetRecordPlansRequest`
@@ -1600,6 +2372,7 @@ class IotvideoindustryClient(AbstractClient):
 
     def GetVideoListByCon(self, request):
         """本接口(GetVideoListByCon)用于查询设备的录制文件列表
+        请使用DescribeVideoListByChannel接口
 
         :param request: Request instance for GetVideoListByCon.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.GetVideoListByConRequest`
@@ -1640,6 +2413,90 @@ class IotvideoindustryClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyBindPlanLiveChannelResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyBindRecordingPlan(self, request):
+        """本接口(ModifyBindRecordingPlan)用于更新录制计划绑定的通道
+
+        :param request: Request instance for ModifyBindRecordingPlan.
+        :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.ModifyBindRecordingPlanRequest`
+        :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.ModifyBindRecordingPlanResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyBindRecordingPlan", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyBindRecordingPlanResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyBindSceneChannels(self, request):
+        """场景绑定解绑通道接口
+
+        :param request: Request instance for ModifyBindSceneChannels.
+        :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.ModifyBindSceneChannelsRequest`
+        :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.ModifyBindSceneChannelsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyBindSceneChannels", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyBindSceneChannelsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyBindSceneDevice(self, request):
+        """场景绑定/解绑通道接口
+
+        :param request: Request instance for ModifyBindSceneDevice.
+        :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.ModifyBindSceneDeviceRequest`
+        :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.ModifyBindSceneDeviceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyBindSceneDevice", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyBindSceneDeviceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1794,6 +2651,90 @@ class IotvideoindustryClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyPreset(self, request):
+        """编辑预置位信息
+
+        :param request: Request instance for ModifyPreset.
+        :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.ModifyPresetRequest`
+        :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.ModifyPresetResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyPreset", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyPresetResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyRecordingPlan(self, request):
+        """本接口(ModifyRecordingPlan)用于更新录制计划。
+
+        :param request: Request instance for ModifyRecordingPlan.
+        :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.ModifyRecordingPlanRequest`
+        :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.ModifyRecordingPlanResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyRecordingPlan", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyRecordingPlanResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyScene(self, request):
+        """修改场景
+
+        :param request: Request instance for ModifyScene.
+        :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.ModifySceneRequest`
+        :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.ModifySceneResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyScene", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifySceneResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifySubscriptionStatus(self, request):
         """编辑设备订阅状态
 
@@ -1836,6 +2777,34 @@ class IotvideoindustryClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyVideoInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ResetWarning(self, request):
+        """重置设备告警
+
+        :param request: Request instance for ResetWarning.
+        :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.ResetWarningRequest`
+        :rtype: :class:`tencentcloud.iotvideoindustry.v20201201.models.ResetWarningResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ResetWarning", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ResetWarningResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1908,6 +2877,7 @@ class IotvideoindustryClient(AbstractClient):
 
     def UpdateRecordPlan(self, request):
         """本接口(UpdateRecordPlan)用于更新录制计划。
+        请使用 ModifyRecordingPlan接口和ModifyBindRecordingPlan接口
 
         :param request: Request instance for UpdateRecordPlan.
         :type request: :class:`tencentcloud.iotvideoindustry.v20201201.models.UpdateRecordPlanRequest`

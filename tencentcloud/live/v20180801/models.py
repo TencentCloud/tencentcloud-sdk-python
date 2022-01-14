@@ -843,6 +843,7 @@ class CommonMixLayoutParams(AbstractModel):
         :param ImageLayer: 输入图层。取值范围[1，16]。
 1)背景流（即大主播画面或画布）的 image_layer 填1。
 2)纯音频混流，该参数也需填。
+注意：不同输入，该值不可重复
         :type ImageLayer: int
         :param InputType: 输入类型。取值范围[0，5]。
 不填默认为0。
@@ -3213,6 +3214,17 @@ Oversea：则查询国外数据，
         :type Granularity: int
         :param ServiceName: 服务名称，可选值包括LVB(标准直播)，LEB(快直播)，不填则查LVB+LEB总值。
         :type ServiceName: str
+        :param RegionNames: 大区，映射表如下：
+China Mainland 中国大陆
+Asia Pacific I 亚太一区
+Asia Pacific II 亚太二区
+Asia Pacific III 亚太三区
+Europe 欧洲
+North America 北美
+South America 南美
+Middle East 中东
+Africa 非洲。
+        :type RegionNames: list of str
         """
         self.StartTime = None
         self.EndTime = None
@@ -3220,6 +3232,7 @@ Oversea：则查询国外数据，
         self.MainlandOrOversea = None
         self.Granularity = None
         self.ServiceName = None
+        self.RegionNames = None
 
 
     def _deserialize(self, params):
@@ -3229,6 +3242,7 @@ Oversea：则查询国外数据，
         self.MainlandOrOversea = params.get("MainlandOrOversea")
         self.Granularity = params.get("Granularity")
         self.ServiceName = params.get("ServiceName")
+        self.RegionNames = params.get("RegionNames")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6178,12 +6192,24 @@ Oversea：则查询国际/港澳台（境外）数据，
 1440：天粒度（跨度不支持超过一个月）。
 默认值：5。
         :type Granularity: int
+        :param RegionNames: 大区，映射表如下：
+China Mainland 中国大陆
+Asia Pacific I 亚太一区
+Asia Pacific II 亚太二区
+Asia Pacific III 亚太三区
+Europe 欧洲
+North America 北美
+South America 南美
+Middle East 中东
+Africa 非洲。
+        :type RegionNames: list of str
         """
         self.StartTime = None
         self.EndTime = None
         self.PushDomains = None
         self.MainlandOrOversea = None
         self.Granularity = None
+        self.RegionNames = None
 
 
     def _deserialize(self, params):
@@ -6192,6 +6218,7 @@ Oversea：则查询国际/港澳台（境外）数据，
         self.PushDomains = params.get("PushDomains")
         self.MainlandOrOversea = params.get("MainlandOrOversea")
         self.Granularity = params.get("Granularity")
+        self.RegionNames = params.get("RegionNames")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

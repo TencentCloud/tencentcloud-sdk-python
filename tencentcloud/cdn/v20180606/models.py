@@ -109,9 +109,11 @@ class AddCdnDomainRequest(AbstractModel):
         :param Domain: 域名
         :type Domain: str
         :param ServiceType: 加速域名业务类型
-web：静态加速
-download：下载加速
-media：流媒体点播加速
+web：网页小文件
+download：下载大文件
+media：音视频点播
+hybrid:  动静加速
+dynamic:  动态加速
         :type ServiceType: str
         :param Origin: 源站配置
         :type Origin: :class:`tencentcloud.cdn.v20180606.models.Origin`
@@ -180,7 +182,7 @@ global：全球加速
         :type Ipv6Access: :class:`tencentcloud.cdn.v20180606.models.Ipv6Access`
         :param OfflineCache: 离线缓存
         :type OfflineCache: :class:`tencentcloud.cdn.v20180606.models.OfflineCache`
-        :param Quic: QUIC正在内测中，请先提交内测申请，详情请前往QUIC产品文档。
+        :param Quic: Quic访问（收费服务，详见计费说明和产品文档）
         :type Quic: :class:`tencentcloud.cdn.v20180606.models.Quic`
         :param AwsPrivateAccess: 回源S3私有鉴权
         :type AwsPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.AwsPrivateAccess`
@@ -9651,6 +9653,12 @@ class MainlandConfig(AbstractModel):
         :param VideoSeek: 视频拖拽配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type VideoSeek: :class:`tencentcloud.cdn.v20180606.models.VideoSeek`
+        :param AwsPrivateAccess: 回源S3私有鉴权。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AwsPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.AwsPrivateAccess`
+        :param OssPrivateAccess: 回源OSS私有鉴权。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OssPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.OssPrivateAccess`
         """
         self.Authentication = None
         self.BandwidthAlert = None
@@ -9676,6 +9684,8 @@ class MainlandConfig(AbstractModel):
         self.ServiceType = None
         self.StatusCodeCache = None
         self.VideoSeek = None
+        self.AwsPrivateAccess = None
+        self.OssPrivateAccess = None
 
 
     def _deserialize(self, params):
@@ -9749,6 +9759,12 @@ class MainlandConfig(AbstractModel):
         if params.get("VideoSeek") is not None:
             self.VideoSeek = VideoSeek()
             self.VideoSeek._deserialize(params.get("VideoSeek"))
+        if params.get("AwsPrivateAccess") is not None:
+            self.AwsPrivateAccess = AwsPrivateAccess()
+            self.AwsPrivateAccess._deserialize(params.get("AwsPrivateAccess"))
+        if params.get("OssPrivateAccess") is not None:
+            self.OssPrivateAccess = OssPrivateAccess()
+            self.OssPrivateAccess._deserialize(params.get("OssPrivateAccess"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -10424,6 +10440,12 @@ class OverseaConfig(AbstractModel):
         :param VideoSeek: 视频拖拽配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type VideoSeek: :class:`tencentcloud.cdn.v20180606.models.VideoSeek`
+        :param AwsPrivateAccess: 回源S3私有鉴权。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AwsPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.AwsPrivateAccess`
+        :param OssPrivateAccess: 回源OSS私有鉴权。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OssPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.OssPrivateAccess`
         """
         self.Authentication = None
         self.BandwidthAlert = None
@@ -10449,6 +10471,8 @@ class OverseaConfig(AbstractModel):
         self.ServiceType = None
         self.StatusCodeCache = None
         self.VideoSeek = None
+        self.AwsPrivateAccess = None
+        self.OssPrivateAccess = None
 
 
     def _deserialize(self, params):
@@ -10522,6 +10546,12 @@ class OverseaConfig(AbstractModel):
         if params.get("VideoSeek") is not None:
             self.VideoSeek = VideoSeek()
             self.VideoSeek._deserialize(params.get("VideoSeek"))
+        if params.get("AwsPrivateAccess") is not None:
+            self.AwsPrivateAccess = AwsPrivateAccess()
+            self.AwsPrivateAccess._deserialize(params.get("AwsPrivateAccess"))
+        if params.get("OssPrivateAccess") is not None:
+            self.OssPrivateAccess = OssPrivateAccess()
+            self.OssPrivateAccess._deserialize(params.get("OssPrivateAccess"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -12852,8 +12882,7 @@ class ServerCert(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CertId: 服务器证书 ID
-在 SSL 证书管理进行证书托管时自动生成
+        :param CertId: 服务器证书 ID 在 SSL 证书管理进行证书托管时自动生成
 注意：此字段可能返回 null，表示取不到有效值。
         :type CertId: str
         :param CertName: 服务器证书名称
@@ -13851,7 +13880,7 @@ global：全球加速
         :type OfflineCache: :class:`tencentcloud.cdn.v20180606.models.OfflineCache`
         :param OriginCombine: 合并回源
         :type OriginCombine: :class:`tencentcloud.cdn.v20180606.models.OriginCombine`
-        :param Quic: QUIC正在内测中，请先提交内测申请，详情请前往QUIC产品文档。
+        :param Quic: Quic访问（收费服务，详见计费说明和产品文档）
         :type Quic: :class:`tencentcloud.cdn.v20180606.models.Quic`
         :param OssPrivateAccess: 回源OSS私有鉴权
         :type OssPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.OssPrivateAccess`

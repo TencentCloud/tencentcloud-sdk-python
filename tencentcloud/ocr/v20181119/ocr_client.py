@@ -288,7 +288,9 @@ class OcrClient(AbstractClient):
 
         驾驶证副页：包括证号、姓名、档案编号、记录。
 
-        另外，本接口还支持复印件、翻拍和PS告警功能。
+        另外，本接口还支持复印件、翻拍和PS告警功能。同时支持识别交管12123APP发放的电子驾驶证正页。
+
+        电子驾驶证正页：包括证号、姓名、性别、国籍、出生日期、初次领证日期、准驾车型、有效期开始时间、有效期截止时间、档案编号、状态、累积记分。
 
         :param request: Request instance for DriverLicenseOCR.
         :type request: :class:`tencentcloud.ocr.v20181119.models.DriverLicenseOCRRequest`

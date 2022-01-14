@@ -807,6 +807,69 @@ class BindingPolicyObjectResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class BindingPolicyTagRequest(AbstractModel):
+    """BindingPolicyTag请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Module: 固定取值 monitor
+        :type Module: str
+        :param PolicyId: 策略ID
+        :type PolicyId: str
+        :param GroupId: 用于实例、实例组绑定和解绑接口（BindingPolicyObject、UnBindingAllPolicyObject、UnBindingPolicyObject）的策略 ID
+        :type GroupId: str
+        :param Tag: 策略标签
+        :type Tag: :class:`tencentcloud.monitor.v20180724.models.PolicyTag`
+        :param ServiceType: 产品类型
+        :type ServiceType: str
+        :param InstanceGroupId: 实例分组ID
+        :type InstanceGroupId: int
+        """
+        self.Module = None
+        self.PolicyId = None
+        self.GroupId = None
+        self.Tag = None
+        self.ServiceType = None
+        self.InstanceGroupId = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.PolicyId = params.get("PolicyId")
+        self.GroupId = params.get("GroupId")
+        if params.get("Tag") is not None:
+            self.Tag = PolicyTag()
+            self.Tag._deserialize(params.get("Tag"))
+        self.ServiceType = params.get("ServiceType")
+        self.InstanceGroupId = params.get("InstanceGroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BindingPolicyTagResponse(AbstractModel):
+    """BindingPolicyTag返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CommonNamespace(AbstractModel):
     """统一的命名空间信息
 
@@ -6309,6 +6372,34 @@ class Point(AbstractModel):
         
 
 
+class PolicyTag(AbstractModel):
+    """策略标签
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Key: 标签Key
+        :type Key: str
+        :param Value: 标签Value
+        :type Value: str
+        """
+        self.Key = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ProductSimple(AbstractModel):
     """云监控支持的产品简要信息
 
@@ -6503,6 +6594,9 @@ class PrometheusInstancesItem(AbstractModel):
         :param Grant: 实例的授权信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Grant: :class:`tencentcloud.monitor.v20180724.models.PrometheusInstanceGrantInfo`
+        :param GrafanaInstanceId: 绑定的 Grafana 实例 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GrafanaInstanceId: str
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -6530,6 +6624,7 @@ class PrometheusInstancesItem(AbstractModel):
         self.GrafanaStatus = None
         self.GrafanaIpWhiteList = None
         self.Grant = None
+        self.GrafanaInstanceId = None
 
 
     def _deserialize(self, params):
@@ -6566,6 +6661,7 @@ class PrometheusInstancesItem(AbstractModel):
         if params.get("Grant") is not None:
             self.Grant = PrometheusInstanceGrantInfo()
             self.Grant._deserialize(params.get("Grant"))
+        self.GrafanaInstanceId = params.get("GrafanaInstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7076,16 +7172,26 @@ class URLNotice(AbstractModel):
         :param ValidationCode: 验证码
 注意：此字段可能返回 null，表示取不到有效值。
         :type ValidationCode: str
+        :param StartTime: 通知开始时间 一天开始的秒数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTime: int
+        :param EndTime: 通知结束时间 一天开始的秒数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: int
         """
         self.URL = None
         self.IsValid = None
         self.ValidationCode = None
+        self.StartTime = None
+        self.EndTime = None
 
 
     def _deserialize(self, params):
         self.URL = params.get("URL")
         self.IsValid = params.get("IsValid")
         self.ValidationCode = params.get("ValidationCode")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

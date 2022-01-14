@@ -26,6 +26,34 @@ class RceClient(AbstractClient):
     _service = 'rce'
 
 
+    def DescribeRiskAssessment(self, request):
+        """此接口用于查询风险评估结果
+
+        :param request: Request instance for DescribeRiskAssessment.
+        :type request: :class:`tencentcloud.rce.v20201103.models.DescribeRiskAssessmentRequest`
+        :rtype: :class:`tencentcloud.rce.v20201103.models.DescribeRiskAssessmentResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeRiskAssessment", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRiskAssessmentResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeRiskModel(self, request):
         """依托人工智能技术和腾讯丰富的风控实战经验，根据用户提供的数据和业务场景，给客户提供定制化模型服务
 
@@ -40,6 +68,34 @@ class RceClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRiskModelResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeRiskTrends(self, request):
+        """以图表形式展示三种请求状态的趋势变化
+
+        :param request: Request instance for DescribeRiskTrends.
+        :type request: :class:`tencentcloud.rce.v20201103.models.DescribeRiskTrendsRequest`
+        :rtype: :class:`tencentcloud.rce.v20201103.models.DescribeRiskTrendsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeRiskTrends", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRiskTrendsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

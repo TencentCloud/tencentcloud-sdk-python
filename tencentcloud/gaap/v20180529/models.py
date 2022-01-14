@@ -55,7 +55,7 @@ class AccessConfiguration(AbstractModel):
 
 
 class AccessRegionDetial(AbstractModel):
-    """根据源站查询的可用加速区域信息及对应的可选带宽和并发量
+    """根据源站查询的可用加速区域信息及对应的可选带宽和并发量。
 
     """
 
@@ -75,6 +75,19 @@ class AccessRegionDetial(AbstractModel):
         :type RegionAreaName: str
         :param IDCType: 机房类型, dc表示DataCenter数据中心, ec表示EdgeComputing边缘节点
         :type IDCType: str
+        :param FeatureBitmap: 特性位图，每个bit位代表一种特性，其中：
+0，表示不支持该特性；
+1，表示支持该特性。
+特性位图含义如下（从右往左）：
+第1个bit，支持4层加速；
+第2个bit，支持7层加速；
+第3个bit，支持Http3接入；
+第4个bit，支持IPv6；
+第5个bit，支持精品BGP接入；
+第6个bit，支持三网接入；
+第7个bit，支持接入段Qos加速。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FeatureBitmap: int
         """
         self.RegionId = None
         self.RegionName = None
@@ -83,6 +96,7 @@ class AccessRegionDetial(AbstractModel):
         self.RegionArea = None
         self.RegionAreaName = None
         self.IDCType = None
+        self.FeatureBitmap = None
 
 
     def _deserialize(self, params):
@@ -93,6 +107,7 @@ class AccessRegionDetial(AbstractModel):
         self.RegionArea = params.get("RegionArea")
         self.RegionAreaName = params.get("RegionAreaName")
         self.IDCType = params.get("IDCType")
+        self.FeatureBitmap = params.get("FeatureBitmap")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -604,8 +619,10 @@ class CheckProxyCreateRequest(AbstractModel):
         :type IPAddressVersion: str
         :param NetworkType: 网络类型，可取值：normal、cn2，默认值normal
         :type NetworkType: str
-        :param PackageType: 通道组类型。Thunder表示标准通道组，Accelerator表示游戏加速器通道。
+        :param PackageType: 通道套餐类型。Thunder表示标准通道组，Accelerator表示游戏加速器通道，CrossBorder表示跨境通道。
         :type PackageType: str
+        :param Http3Supported: 支持Http3的开关，其中：0，表示不需要支持Http3接入；1，表示需要支持Http3接入。注意：如果开启了Http3的功能，那么该通道就不再支持TCP/UDP接入的功能。该功能的启停无法在通道创建完毕后再修改。
+        :type Http3Supported: int
         """
         self.AccessRegion = None
         self.RealServerRegion = None
@@ -615,6 +632,7 @@ class CheckProxyCreateRequest(AbstractModel):
         self.IPAddressVersion = None
         self.NetworkType = None
         self.PackageType = None
+        self.Http3Supported = None
 
 
     def _deserialize(self, params):
@@ -626,6 +644,7 @@ class CheckProxyCreateRequest(AbstractModel):
         self.IPAddressVersion = params.get("IPAddressVersion")
         self.NetworkType = params.get("NetworkType")
         self.PackageType = params.get("PackageType")
+        self.Http3Supported = params.get("Http3Supported")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1063,12 +1082,18 @@ class CreateDomainRequest(AbstractModel):
         :param PolyClientCertificateIds: 客户端CA证书，用于客户端与GAAP的HTTPS的交互。
 仅当采用双向认证的方式时，需要设置该字段或ClientCertificateId字段。
         :type PolyClientCertificateIds: list of str
+        :param Http3Supported: 是否开启Http3特性的标识，其中：
+0，表示不开启Http3；
+1，表示开启Http3。
+默认不开启Http3。可以通过SetDomainHttp3开启。
+        :type Http3Supported: int
         """
         self.ListenerId = None
         self.Domain = None
         self.CertificateId = None
         self.ClientCertificateId = None
         self.PolyClientCertificateIds = None
+        self.Http3Supported = None
 
 
     def _deserialize(self, params):
@@ -1077,6 +1102,7 @@ class CreateDomainRequest(AbstractModel):
         self.CertificateId = params.get("CertificateId")
         self.ClientCertificateId = params.get("ClientCertificateId")
         self.PolyClientCertificateIds = params.get("PolyClientCertificateIds")
+        self.Http3Supported = params.get("Http3Supported")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1188,6 +1214,12 @@ class CreateHTTPSListenerRequest(AbstractModel):
         :type PolyClientCertificateIds: list of str
         :param GroupId: 通道组ID，与ProxyId之间只能设置一个。表示创建通道组的监听器。
         :type GroupId: str
+        :param Http3Supported: 支持Http3的开关，其中：
+0，表示不需要支持Http3接入；
+1，表示需要支持Http3接入。
+注意：如果支持了Http3的功能，那么该监听器会占用对应的UDP接入端口，不可再创建相同端口的UDP监听器。
+该功能的启停无法在监听器创建完毕后再修改。
+        :type Http3Supported: int
         """
         self.ListenerName = None
         self.Port = None
@@ -1198,6 +1230,7 @@ class CreateHTTPSListenerRequest(AbstractModel):
         self.ClientCertificateId = None
         self.PolyClientCertificateIds = None
         self.GroupId = None
+        self.Http3Supported = None
 
 
     def _deserialize(self, params):
@@ -1210,6 +1243,7 @@ class CreateHTTPSListenerRequest(AbstractModel):
         self.ClientCertificateId = params.get("ClientCertificateId")
         self.PolyClientCertificateIds = params.get("PolyClientCertificateIds")
         self.GroupId = params.get("GroupId")
+        self.Http3Supported = params.get("Http3Supported")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1306,6 +1340,12 @@ class CreateProxyGroupRequest(AbstractModel):
         :type IPAddressVersion: str
         :param PackageType: 通道组套餐类型，可取值：Thunder、Accelerator，默认值Thunder
         :type PackageType: str
+        :param Http3Supported: 支持Http3的开关，其中：
+0，表示不需要支持Http3接入；
+1，表示需要支持Http3接入。
+注意：如果开启了Http3的功能，那么该通道组就不再支持TCP/UDP接入的功能。
+该功能的启停无法在通道组创建完毕后再修改。
+        :type Http3Supported: int
         """
         self.ProjectId = None
         self.GroupName = None
@@ -1314,6 +1354,7 @@ class CreateProxyGroupRequest(AbstractModel):
         self.AccessRegionSet = None
         self.IPAddressVersion = None
         self.PackageType = None
+        self.Http3Supported = None
 
 
     def _deserialize(self, params):
@@ -1334,6 +1375,7 @@ class CreateProxyGroupRequest(AbstractModel):
                 self.AccessRegionSet.append(obj)
         self.IPAddressVersion = params.get("IPAddressVersion")
         self.PackageType = params.get("PackageType")
+        self.Http3Supported = params.get("Http3Supported")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1397,8 +1439,12 @@ class CreateProxyRequest(AbstractModel):
         :type BillingType: int
         :param IPAddressVersion: IP版本，可取值：IPv4、IPv6，默认值IPv4
         :type IPAddressVersion: str
-        :param NetworkType: 网络类型，可取值：normal、cn2，默认值normal
+        :param NetworkType: 网络类型，normal表示常规BGP，cn2表示精品BGP，triple表示三网
         :type NetworkType: str
+        :param PackageType: 通道套餐类型，Thunder表示标准通道组，Accelerator表示游戏加速器通道，CrossBorder表示跨境通道。
+        :type PackageType: str
+        :param Http3Supported: 支持Http3的开关，其中：0，表示不需要支持Http3接入；1，表示需要支持Http3接入。注意：如果开启了Http3的功能，那么该通道就不再支持TCP/UDP接入的功能。该功能的启停无法在通道创建完毕后再修改。
+        :type Http3Supported: int
         """
         self.ProjectId = None
         self.ProxyName = None
@@ -1413,6 +1459,8 @@ class CreateProxyRequest(AbstractModel):
         self.BillingType = None
         self.IPAddressVersion = None
         self.NetworkType = None
+        self.PackageType = None
+        self.Http3Supported = None
 
 
     def _deserialize(self, params):
@@ -1434,6 +1482,8 @@ class CreateProxyRequest(AbstractModel):
         self.BillingType = params.get("BillingType")
         self.IPAddressVersion = params.get("IPAddressVersion")
         self.NetworkType = params.get("NetworkType")
+        self.PackageType = params.get("PackageType")
+        self.Http3Supported = params.get("Http3Supported")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2208,7 +2258,7 @@ class DescribeAccessRegionsByDestRegionRequest(AbstractModel):
         :type DestRegion: str
         :param IPAddressVersion: IP版本，可取值：IPv4、IPv6，默认值IPv4
         :type IPAddressVersion: str
-        :param PackageType: 通道组类型，Thunder表示标准通道组，Accelerator表示游戏加速器通道。
+        :param PackageType: 通道套餐类型，Thunder表示标准通道组，Accelerator表示游戏加速器通道，CrossBorder表示跨境通道。
         :type PackageType: str
         """
         self.DestRegion = None
@@ -2872,6 +2922,12 @@ class DescribeHTTPSListenersRequest(AbstractModel):
         :type SearchValue: str
         :param GroupId: 过滤条件，通道组ID
         :type GroupId: str
+        :param Http3Supported: 支持Http3的开关，其中：
+0，表示不需要支持Http3接入；
+1，表示需要支持Http3接入。
+注意：如果支持了Http3的功能，那么该监听器会占用对应的UDP接入端口，不可再创建相同端口的UDP监听器。
+该功能的启停无法在监听器创建完毕后再修改。
+        :type Http3Supported: int
         """
         self.ProxyId = None
         self.ListenerId = None
@@ -2881,6 +2937,7 @@ class DescribeHTTPSListenersRequest(AbstractModel):
         self.Limit = None
         self.SearchValue = None
         self.GroupId = None
+        self.Http3Supported = None
 
 
     def _deserialize(self, params):
@@ -2892,6 +2949,7 @@ class DescribeHTTPSListenersRequest(AbstractModel):
         self.Limit = params.get("Limit")
         self.SearchValue = params.get("SearchValue")
         self.GroupId = params.get("GroupId")
+        self.Http3Supported = params.get("Http3Supported")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3087,6 +3145,7 @@ AccessRegion - String - 是否必填：否 - （过滤条件）按照接入地�
 RealServerRegion - String - 是否必填：否 - （过滤条件）按照源站地域过滤。
 GroupId - String - 是否必填：否 - （过滤条件）按照通道组ID过滤。
 IPAddressVersion - String - 是否必填：否 - （过滤条件）按照IP版本过滤。
+PackageType - String - 是否必填：否 - （过滤条件）按照通道套餐类型过滤。
         :type Filters: list of Filter
         :param ProxyIds: （新参数，替代InstanceIds）按照一个或者多个实例ID查询。每次请求的实例的上限为100。参数不支持同时指定InstanceIds和Filters。
         :type ProxyIds: list of str
@@ -3852,7 +3911,7 @@ class DescribeRegionAndPriceRequest(AbstractModel):
         r"""
         :param IPAddressVersion: IP版本，可取值：IPv4、IPv6，默认值IPv4
         :type IPAddressVersion: str
-        :param PackageType: 通道组类型，Thunder表示标准通道组，Accelerator表示游戏加速器通道。
+        :param PackageType: 通道套餐类型，Thunder表示标准通道组，Accelerator表示游戏加速器通道，CrossBorder表示跨境通道。
         :type PackageType: str
         """
         self.IPAddressVersion = None
@@ -4717,6 +4776,11 @@ class DomainRuleSet(AbstractModel):
         :param BanStatus: 封禁解封状态：BANNED表示已封禁，RECOVER表示已解封或未封禁，BANNING表示封禁中，RECOVERING表示解封中，BAN_FAILED表示封禁失败，RECOVER_FAILED表示解封失败。
 注意：此字段可能返回 null，表示取不到有效值。
         :type BanStatus: str
+        :param Http3Supported: Http3特性标识，其中：
+0表示关闭；
+1表示启用。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Http3Supported: int
         """
         self.Domain = None
         self.RuleSet = None
@@ -4738,6 +4802,7 @@ class DomainRuleSet(AbstractModel):
         self.PolyRealServerCertificateAliasInfo = None
         self.DomainStatus = None
         self.BanStatus = None
+        self.Http3Supported = None
 
 
     def _deserialize(self, params):
@@ -4776,6 +4841,7 @@ class DomainRuleSet(AbstractModel):
                 self.PolyRealServerCertificateAliasInfo.append(obj)
         self.DomainStatus = params.get("DomainStatus")
         self.BanStatus = params.get("BanStatus")
+        self.Http3Supported = params.get("Http3Supported")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5073,8 +5139,10 @@ class InquiryPriceCreateProxyRequest(AbstractModel):
         :type IPAddressVersion: str
         :param NetworkType: 网络类型，可取值：normal、cn2，默认值normal
         :type NetworkType: str
-        :param PackageType: 通道组类型。Thunder表示标准通道组，Accelerator表示游戏加速器通道。
+        :param PackageType: 通道套餐类型，Thunder表示标准通道组，Accelerator表示游戏加速器通道，CrossBorder表示跨境通道。
         :type PackageType: str
+        :param Http3Supported: 支持Http3的开关，其中：0，表示不需要支持Http3接入；1，表示需要支持Http3接入。注意：如果开启了Http3的功能，那么该通道就不再支持TCP/UDP接入的功能。该功能的启停无法在通道创建完毕后再修改。
+        :type Http3Supported: int
         """
         self.AccessRegion = None
         self.Bandwidth = None
@@ -5086,6 +5154,7 @@ class InquiryPriceCreateProxyRequest(AbstractModel):
         self.IPAddressVersion = None
         self.NetworkType = None
         self.PackageType = None
+        self.Http3Supported = None
 
 
     def _deserialize(self, params):
@@ -5099,6 +5168,7 @@ class InquiryPriceCreateProxyRequest(AbstractModel):
         self.IPAddressVersion = params.get("IPAddressVersion")
         self.NetworkType = params.get("NetworkType")
         self.PackageType = params.get("PackageType")
+        self.Http3Supported = params.get("Http3Supported")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6394,9 +6464,14 @@ class ProxyGroupDetail(AbstractModel):
         :param IPAddressVersion: IP版本，可取值：IPv4、IPv6，默认值IPv4
 注意：此字段可能返回 null，表示取不到有效值。
         :type IPAddressVersion: str
-        :param PackageType: 通道组套餐类型：Thunder表示标准通道组，Accelerator表示游戏加速器通道组。
+        :param PackageType: 通道组套餐类型：Thunder表示标准通道组，Accelerator表示游戏加速器通道组，CrossBorder表示跨境通道组。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PackageType: str
+        :param Http3Supported: 支持Http3特性的标识，其中：
+0表示关闭；
+1表示启用。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Http3Supported: int
         """
         self.CreateTime = None
         self.ProjectId = None
@@ -6416,6 +6491,7 @@ class ProxyGroupDetail(AbstractModel):
         self.ClientIPMethod = None
         self.IPAddressVersion = None
         self.PackageType = None
+        self.Http3Supported = None
 
 
     def _deserialize(self, params):
@@ -6444,6 +6520,7 @@ class ProxyGroupDetail(AbstractModel):
         self.ClientIPMethod = params.get("ClientIPMethod")
         self.IPAddressVersion = params.get("IPAddressVersion")
         self.PackageType = params.get("PackageType")
+        self.Http3Supported = params.get("Http3Supported")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6490,6 +6567,11 @@ MOVING表示通道迁移中。
         :param ProxyType: 通道组是否包含微软通道
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProxyType: int
+        :param Http3Supported: 支持Http3特性的标识，其中：
+0，表示不支持Http3；
+1，表示支持Http3。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Http3Supported: int
         """
         self.GroupId = None
         self.Domain = None
@@ -6501,6 +6583,7 @@ MOVING表示通道迁移中。
         self.Version = None
         self.CreateTime = None
         self.ProxyType = None
+        self.Http3Supported = None
 
 
     def _deserialize(self, params):
@@ -6521,6 +6604,7 @@ MOVING表示通道迁移中。
         self.Version = params.get("Version")
         self.CreateTime = params.get("CreateTime")
         self.ProxyType = params.get("ProxyType")
+        self.Http3Supported = params.get("Http3Supported")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6644,7 +6728,8 @@ CLONING表示复制中。
         :param NetworkType: 网络类型：normal表示常规BGP，cn2表示精品BGP，triple表示三网
 注意：此字段可能返回 null，表示取不到有效值。
         :type NetworkType: str
-        :param PackageType: 通道套餐类型：Thunder表示标准通道，Accelerator表示游戏加速器通道。
+        :param PackageType: 通道套餐类型：Thunder表示标准通道，Accelerator表示游戏加速器通道，
+CrossBorder表示跨境通道。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PackageType: str
         :param BanStatus: 封禁解封状态：BANNED表示已封禁，RECOVER表示已解封或未封禁，BANNING表示封禁中，RECOVERING表示解封中，BAN_FAILED表示封禁失败，RECOVER_FAILED表示解封失败。
@@ -6653,6 +6738,11 @@ CLONING表示复制中。
         :param IPList: IP列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type IPList: list of IPDetail
+        :param Http3Supported: 支持Http3协议的标识，其中：
+0表示关闭；
+1表示启用。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Http3Supported: int
         """
         self.InstanceId = None
         self.CreateTime = None
@@ -6686,6 +6776,7 @@ CLONING表示复制中。
         self.PackageType = None
         self.BanStatus = None
         self.IPList = None
+        self.Http3Supported = None
 
 
     def _deserialize(self, params):
@@ -6735,6 +6826,7 @@ CLONING表示复制中。
                 obj = IPDetail()
                 obj._deserialize(item)
                 self.IPList.append(obj)
+        self.Http3Supported = params.get("Http3Supported")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6949,12 +7041,26 @@ class RegionDetail(AbstractModel):
         :type RegionAreaName: str
         :param IDCType: 机房类型, dc表示DataCenter数据中心, ec表示EdgeComputing边缘节点
         :type IDCType: str
+        :param FeatureBitmap: 特性位图，每个bit位代表一种特性，其中：
+0，表示不支持该特性；
+1，表示支持该特性。
+特性位图含义如下（从右往左）：
+第1个bit，支持4层加速；
+第2个bit，支持7层加速；
+第3个bit，支持Http3接入；
+第4个bit，支持IPv6；
+第5个bit，支持精品BGP接入；
+第6个bit，支持三网接入；
+第7个bit，支持接入段Qos加速。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FeatureBitmap: int
         """
         self.RegionId = None
         self.RegionName = None
         self.RegionArea = None
         self.RegionAreaName = None
         self.IDCType = None
+        self.FeatureBitmap = None
 
 
     def _deserialize(self, params):
@@ -6963,6 +7069,7 @@ class RegionDetail(AbstractModel):
         self.RegionArea = params.get("RegionArea")
         self.RegionAreaName = params.get("RegionAreaName")
         self.IDCType = params.get("IDCType")
+        self.FeatureBitmap = params.get("FeatureBitmap")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

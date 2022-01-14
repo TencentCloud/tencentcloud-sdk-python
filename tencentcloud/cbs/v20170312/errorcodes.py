@@ -41,9 +41,6 @@ INVALIDAUTOSNAPSHOTPOLICYID_NOTFOUND = 'InvalidAutoSnapshotPolicyId.NotFound'
 # 云盘已绑定定期快照策略。
 INVALIDDISK_ALREADYBOUND = 'InvalidDisk.AlreadyBound'
 
-# 云硬盘已挂载。
-INVALIDDISK_ATTACHED = 'InvalidDisk.Attached'
-
 # 云硬盘忙，请稍后重试。
 INVALIDDISK_BUSY = 'InvalidDisk.Busy'
 
@@ -53,17 +50,11 @@ INVALIDDISK_EXPIRE = 'InvalidDisk.Expire'
 # 不支持非弹性云盘。
 INVALIDDISK_NOTPORTABLE = 'InvalidDisk.NotPortable'
 
-# 云盘不支持退还。
-INVALIDDISK_NOTSUPPORTREFUND = 'InvalidDisk.NotSupportRefund'
-
 # 云硬盘没有快照能力。
 INVALIDDISK_NOTSUPPORTSNAPSHOT = 'InvalidDisk.NotSupportSnapshot'
 
 # 云硬盘不支持该操作。
 INVALIDDISK_NOTSUPPORTED = 'InvalidDisk.NotSupported'
-
-# 云盘已退还过，不能重复退还。
-INVALIDDISK_REPEATREFUND = 'InvalidDisk.RepeatRefund'
 
 # 云硬盘正在创建快照，请稍后重试。
 INVALIDDISK_SNAPSHOTCREATING = 'InvalidDisk.SnapshotCreating'
@@ -137,6 +128,9 @@ RESOURCEINSUFFICIENT = 'ResourceInsufficient'
 # 配额不足。
 RESOURCEINSUFFICIENT_OVERQUOTA = 'ResourceInsufficient.OverQuota'
 
+# 云盘退还数量已达上限，不能再退还。
+RESOURCEINSUFFICIENT_OVERREFUNDQUOTA = 'ResourceInsufficient.OverRefundQuota'
+
 # 资源不存在。
 RESOURCENOTFOUND_NOTFOUND = 'ResourceNotFound.NotFound'
 
@@ -148,6 +142,9 @@ RESOURCEUNAVAILABLE_EXPIRE = 'ResourceUnavailable.Expire'
 
 # 非弹性云硬盘不支持此操作。
 RESOURCEUNAVAILABLE_NOTPORTABLE = 'ResourceUnavailable.NotPortable'
+
+# 云盘不支持退还。
+RESOURCEUNAVAILABLE_NOTSUPPORTREFUND = 'ResourceUnavailable.NotSupportRefund'
 
 # 资源不支持此操作。
 RESOURCEUNAVAILABLE_NOTSUPPORTED = 'ResourceUnavailable.NotSupported'
@@ -202,6 +199,3 @@ UNSUPPORTEDOPERATION_SNAPSHOTHASBINDEDIMAGE = 'UnsupportedOperation.SnapshotHasB
 
 # 资源当前状态不支持该操作。
 UNSUPPORTEDOPERATION_STATEERROR = 'UnsupportedOperation.StateError'
-
-# 云硬盘与实例不在同一可用区。
-ZONENOTMATCH = 'ZoneNotMatch'

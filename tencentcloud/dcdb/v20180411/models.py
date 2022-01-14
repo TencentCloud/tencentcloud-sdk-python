@@ -522,6 +522,8 @@ class CreateDCDBInstanceRequest(AbstractModel):
         :type DcnInstanceId: str
         :param AutoRenewFlag: 自动续费标记，0表示默认状态(用户未设置，即初始状态即手动续费，用户开通了预付费不停服特权也会进行自动续费)， 1表示自动续费，2表示明确不自动续费(用户设置)，若业务无续费概念或无需自动续费，需要设置为0
         :type AutoRenewFlag: int
+        :param SecurityGroupIds: 安全组ids，安全组可以传数组形式，兼容之前SecurityGroupId参数
+        :type SecurityGroupIds: list of str
         """
         self.Zones = None
         self.Period = None
@@ -544,6 +546,7 @@ class CreateDCDBInstanceRequest(AbstractModel):
         self.DcnRegion = None
         self.DcnInstanceId = None
         self.AutoRenewFlag = None
+        self.SecurityGroupIds = None
 
 
     def _deserialize(self, params):
@@ -578,6 +581,7 @@ class CreateDCDBInstanceRequest(AbstractModel):
         self.DcnRegion = params.get("DcnRegion")
         self.DcnInstanceId = params.get("DcnInstanceId")
         self.AutoRenewFlag = params.get("AutoRenewFlag")
+        self.SecurityGroupIds = params.get("SecurityGroupIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -952,6 +956,9 @@ class DCDBInstanceInfo(AbstractModel):
         :param InstanceType: 1： 主实例（独享型）, 2: 主实例, 3： 灾备实例, 4： 灾备实例（独享型）
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceType: int
+        :param ResourceTags: 实例标签信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceTags: list of ResourceTag
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -1001,6 +1008,7 @@ class DCDBInstanceInfo(AbstractModel):
         self.DcnStatus = None
         self.DcnDstNum = None
         self.InstanceType = None
+        self.ResourceTags = None
 
 
     def _deserialize(self, params):
@@ -1057,6 +1065,12 @@ class DCDBInstanceInfo(AbstractModel):
         self.DcnStatus = params.get("DcnStatus")
         self.DcnDstNum = params.get("DcnDstNum")
         self.InstanceType = params.get("InstanceType")
+        if params.get("ResourceTags") is not None:
+            self.ResourceTags = []
+            for item in params.get("ResourceTags"):
+                obj = ResourceTag()
+                obj._deserialize(item)
+                self.ResourceTags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2842,10 +2856,13 @@ class DescribeProjectSecurityGroupsResponse(AbstractModel):
         r"""
         :param Groups: 安全组详情。
         :type Groups: list of SecurityGroup
+        :param Total: 安全组个数。
+        :type Total: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Groups = None
+        self.Total = None
         self.RequestId = None
 
 
@@ -2856,6 +2873,7 @@ class DescribeProjectSecurityGroupsResponse(AbstractModel):
                 obj = SecurityGroup()
                 obj._deserialize(item)
                 self.Groups.append(obj)
+        self.Total = params.get("Total")
         self.RequestId = params.get("RequestId")
 
 
@@ -4311,24 +4329,24 @@ class SecurityGroupBound(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Action: 策略，ACCEPT 或者 DROP
-        :type Action: str
         :param CidrIp: 来源 IP 或 IP 段，例如192.168.0.0/16
         :type CidrIp: str
+        :param Action: 策略，ACCEPT 或者 DROP
+        :type Action: str
         :param PortRange: 端口
         :type PortRange: str
         :param IpProtocol: 网络协议，支持 UDP、TCP 等
         :type IpProtocol: str
         """
-        self.Action = None
         self.CidrIp = None
+        self.Action = None
         self.PortRange = None
         self.IpProtocol = None
 
 
     def _deserialize(self, params):
-        self.Action = params.get("Action")
         self.CidrIp = params.get("CidrIp")
+        self.Action = params.get("Action")
         self.PortRange = params.get("PortRange")
         self.IpProtocol = params.get("IpProtocol")
         memeber_set = set(params.keys())
@@ -4614,6 +4632,55 @@ class SqlLogItem(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class SwitchDBInstanceHARequest(AbstractModel):
+    """SwitchDBInstanceHA请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例Id，形如 tdsql-ow728lmc。
+        :type InstanceId: str
+        :param Zone: 切换的目标区域，会自动选择该可用区中延迟最低的节点。
+        :type Zone: str
+        """
+        self.InstanceId = None
+        self.Zone = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Zone = params.get("Zone")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SwitchDBInstanceHAResponse(AbstractModel):
+    """SwitchDBInstanceHA返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: 异步流程Id
+        :type FlowId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
 
 
 class TableColumn(AbstractModel):

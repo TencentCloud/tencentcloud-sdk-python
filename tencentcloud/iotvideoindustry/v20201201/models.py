@@ -18,6 +18,71 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AbnormalEvents(AbstractModel):
+    """异动事件走势列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Date: 对应查询日期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Date: str
+        :param Info: 列表信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Info: list of AbnormalEventsInfo
+        """
+        self.Date = None
+        self.Info = None
+
+
+    def _deserialize(self, params):
+        self.Date = params.get("Date")
+        if params.get("Info") is not None:
+            self.Info = []
+            for item in params.get("Info"):
+                obj = AbnormalEventsInfo()
+                obj._deserialize(item)
+                self.Info.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AbnormalEventsInfo(AbstractModel):
+    """异动事件走势元素
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Key: 类型值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: int
+        :param Count: 类型总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Count: int
+        """
+        self.Key = None
+        self.Count = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Count = params.get("Count")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AllDeviceInfo(AbstractModel):
     """查询全部设备出参
 
@@ -148,6 +213,221 @@ class BindGroupDevicesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ChannelDetail(AbstractModel):
+    """国标通道详细信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ChannelName: 通道名称
+        :type ChannelName: str
+        :param ChannelId: 通道唯一标识
+        :type ChannelId: str
+        :param ChannelType: 通道类型 0：未知；1：视频通道；2：音频通道；3：告警通道
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChannelType: int
+        :param ChannelCode: 20位国标通道编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChannelCode: str
+        :param ExtraInformation: 通道扩展信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExtraInformation: str
+        :param Status: 通道在线状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param IsRecord: 通道是否存在录像标识 0：无录像；1：有录像
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsRecord: int
+        :param DeviceId: 通道所属设备唯一标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeviceId: str
+        :param BusinessGroupId: 通道所属虚拟组织的ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BusinessGroupId: str
+        """
+        self.ChannelName = None
+        self.ChannelId = None
+        self.ChannelType = None
+        self.ChannelCode = None
+        self.ExtraInformation = None
+        self.Status = None
+        self.IsRecord = None
+        self.DeviceId = None
+        self.BusinessGroupId = None
+
+
+    def _deserialize(self, params):
+        self.ChannelName = params.get("ChannelName")
+        self.ChannelId = params.get("ChannelId")
+        self.ChannelType = params.get("ChannelType")
+        self.ChannelCode = params.get("ChannelCode")
+        self.ExtraInformation = params.get("ExtraInformation")
+        self.Status = params.get("Status")
+        self.IsRecord = params.get("IsRecord")
+        self.DeviceId = params.get("DeviceId")
+        self.BusinessGroupId = params.get("BusinessGroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChannelItem(AbstractModel):
+    """GB28181通道
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DeviceId: 设备唯一标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeviceId: str
+        :param ChannelId: 通道唯一标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChannelId: str
+        """
+        self.DeviceId = None
+        self.ChannelId = None
+
+
+    def _deserialize(self, params):
+        self.DeviceId = params.get("DeviceId")
+        self.ChannelId = params.get("ChannelId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ControlChannelLocalRecordRequest(AbstractModel):
+    """ControlChannelLocalRecord请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DeviceId: 设备唯一标识
+        :type DeviceId: str
+        :param ChannelId: 通道唯一标识
+        :type ChannelId: str
+        :param StreamId: 流Id，流的唯一标识
+        :type StreamId: str
+        :param Command: 控制参数，转义的json字符串
+
+目前支持的command：
+"Command": "{"Action":"PAUSE"}" 暂停
+"Command": "{"Action":"PLAY"}" 暂停恢复
+"Command": "{"Action":"PLAY","Offset":"15"}" 基于文件起始时间点的位置偏移，单位秒
+        :type Command: str
+        """
+        self.DeviceId = None
+        self.ChannelId = None
+        self.StreamId = None
+        self.Command = None
+
+
+    def _deserialize(self, params):
+        self.DeviceId = params.get("DeviceId")
+        self.ChannelId = params.get("ChannelId")
+        self.StreamId = params.get("StreamId")
+        self.Command = params.get("Command")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ControlChannelLocalRecordResponse(AbstractModel):
+    """ControlChannelLocalRecord返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ControlChannelPTZRequest(AbstractModel):
+    """ControlChannelPTZ请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DeviceId: 设备唯一标识
+        :type DeviceId: str
+        :param ChannelId: 通道唯一标识
+        :type ChannelId: str
+        :param Command: PTZ控制命令类型：
+stop - 停止当前PTZ信令
+left - 向左移动
+right - 向右移动
+up - 向上移动
+down - 向下移动
+leftUp - 左上移动
+leftDown - 左下移动
+rightUp - 右上移动
+rightDown - 右下移动
+zoomOut - 镜头缩小
+zoomIn - 镜头放大
+irisIn - 光圈缩小
+irisOut - 光圈放大
+focusIn - 焦距变近
+focusOut - 焦距变远
+        :type Command: str
+        """
+        self.DeviceId = None
+        self.ChannelId = None
+        self.Command = None
+
+
+    def _deserialize(self, params):
+        self.DeviceId = params.get("DeviceId")
+        self.ChannelId = params.get("ChannelId")
+        self.Command = params.get("Command")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ControlChannelPTZResponse(AbstractModel):
+    """ControlChannelPTZ返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ControlDevicePTZRequest(AbstractModel):
     """ControlDevicePTZ请求参数结构体
 
@@ -197,6 +477,119 @@ focusOut - 焦距变远
 
 class ControlDevicePTZResponse(AbstractModel):
     """ControlDevicePTZ返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ControlHomePositionRequest(AbstractModel):
+    """ControlHomePosition请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ChannelId: 通道ID
+        :type ChannelId: str
+        :param DeviceId: 设备Id
+        :type DeviceId: str
+        :param Enable: 看守位使能 0-停用看守位 1-启用看守位
+        :type Enable: int
+        :param PresetId: 预置位编码 范围1-8，启用看守位时必填
+        :type PresetId: int
+        :param ResetTime: 看守位自动归位时间， 启用看守位时必填
+        :type ResetTime: int
+        """
+        self.ChannelId = None
+        self.DeviceId = None
+        self.Enable = None
+        self.PresetId = None
+        self.ResetTime = None
+
+
+    def _deserialize(self, params):
+        self.ChannelId = params.get("ChannelId")
+        self.DeviceId = params.get("DeviceId")
+        self.Enable = params.get("Enable")
+        self.PresetId = params.get("PresetId")
+        self.ResetTime = params.get("ResetTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ControlHomePositionResponse(AbstractModel):
+    """ControlHomePosition返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ControlPresetRequest(AbstractModel):
+    """ControlPreset请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ChannelId: 通道ID
+        :type ChannelId: str
+        :param Command: 控制命令：
+Set-设置当前位置为预置位
+Del-删除指定的预置位
+Call-调用指定的预置位
+        :type Command: str
+        :param PresetId: 预置位编码 范围1-8
+        :type PresetId: int
+        :param DeviceId: 设备Id
+        :type DeviceId: str
+        """
+        self.ChannelId = None
+        self.Command = None
+        self.PresetId = None
+        self.DeviceId = None
+
+
+    def _deserialize(self, params):
+        self.ChannelId = params.get("ChannelId")
+        self.Command = params.get("Command")
+        self.PresetId = params.get("PresetId")
+        self.DeviceId = params.get("DeviceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ControlPresetResponse(AbstractModel):
+    """ControlPreset返回参数结构体
 
     """
 
@@ -340,7 +733,7 @@ class CreateDeviceRequest(AbstractModel):
         :type NickName: str
         :param PassWord: 设备密码
         :type PassWord: str
-        :param DeviceType: 设备类型 2:国标IPC设备; 3:NVR设备
+        :param DeviceType: 设备类型，1：国标VMS设备(公有云不支持此类型)，2：国标IPC设备，3：国标NVR设备，9：智能告警设备(公有云不支持此类型)
         :type DeviceType: int
         :param GroupId: 设备需要绑定的分组ID，参数为空则默认绑定到根分组
         :type GroupId: str
@@ -378,7 +771,7 @@ class CreateDeviceResponse(AbstractModel):
         :param DeviceId: 设备唯一标识
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceId: str
-        :param VirtualGroupId: 设备虚拟组信息，仅在创建NVR/VMS时返回该值
+        :param VirtualGroupId: 设备虚拟组信息，仅在创建NVR时返回该值
 注意：此字段可能返回 null，表示取不到有效值。
         :type VirtualGroupId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -650,6 +1043,68 @@ class CreateRecordPlanResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateRecordingPlanRequest(AbstractModel):
+    """CreateRecordingPlan请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 计划名称
+        :type Name: str
+        :param TimeTemplateId: 时间模板ID
+        :type TimeTemplateId: str
+        :param Channels: 该录制计划绑定的通道列表
+        :type Channels: list of ChannelItem
+        :param RecordStorageTime: 存储周期(天)；默认存储30天
+        :type RecordStorageTime: int
+        """
+        self.Name = None
+        self.TimeTemplateId = None
+        self.Channels = None
+        self.RecordStorageTime = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.TimeTemplateId = params.get("TimeTemplateId")
+        if params.get("Channels") is not None:
+            self.Channels = []
+            for item in params.get("Channels"):
+                obj = ChannelItem()
+                obj._deserialize(item)
+                self.Channels.append(obj)
+        self.RecordStorageTime = params.get("RecordStorageTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateRecordingPlanResponse(AbstractModel):
+    """CreateRecordingPlan返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PlanId: 录制计划ID
+        :type PlanId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.PlanId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.PlanId = params.get("PlanId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateSceneRequest(AbstractModel):
     """CreateScene请求参数结构体
 
@@ -665,14 +1120,17 @@ class CreateSceneRequest(AbstractModel):
         :type RecordDuration: int
         :param StoreDuration: 录像存储时长(天)
         :type StoreDuration: int
-        :param Devices: 设备列表
+        :param Devices: 设备列表(不推荐使用)
         :type Devices: list of DeviceItem
+        :param Channels: 通道列表
+        :type Channels: list of ChannelItem
         """
         self.SceneName = None
         self.SceneTrigger = None
         self.RecordDuration = None
         self.StoreDuration = None
         self.Devices = None
+        self.Channels = None
 
 
     def _deserialize(self, params):
@@ -686,6 +1144,12 @@ class CreateSceneRequest(AbstractModel):
                 obj = DeviceItem()
                 obj._deserialize(item)
                 self.Devices.append(obj)
+        if params.get("Channels") is not None:
+            self.Channels = []
+            for item in params.get("Channels"):
+                obj = ChannelItem()
+                obj._deserialize(item)
+                self.Channels.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -897,7 +1361,7 @@ class DeleteDeviceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Status: 操作结果
+        :param Status: 操作结果 OK-成功； 其他-失败
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1125,6 +1589,51 @@ class DeleteRecordPlanResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteRecordingPlanRequest(AbstractModel):
+    """DeleteRecordingPlan请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PlanId: 录制计划ID
+        :type PlanId: str
+        """
+        self.PlanId = None
+
+
+    def _deserialize(self, params):
+        self.PlanId = params.get("PlanId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteRecordingPlanResponse(AbstractModel):
+    """DeleteRecordingPlan返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Status: 操作结果，OK：成功，其他：失败
+        :type Status: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Status = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteSceneRequest(AbstractModel):
     """DeleteScene请求参数结构体
 
@@ -1253,6 +1762,106 @@ class DeleteVideoListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteWarningRequest(AbstractModel):
+    """DeleteWarning请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: 告警ID
+        :type Id: int
+        :param Index: 告警索引
+        :type Index: str
+        """
+        self.Id = None
+        self.Index = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.Index = params.get("Index")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteWarningResponse(AbstractModel):
+    """DeleteWarning返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAbnormalEventsRequest(AbstractModel):
+    """DescribeAbnormalEvents请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StartTime: 开始时间
+        :type StartTime: int
+        :param EndTime: 结束时间
+        :type EndTime: int
+        """
+        self.StartTime = None
+        self.EndTime = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAbnormalEventsResponse(AbstractModel):
+    """DescribeAbnormalEvents返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 异动事件走势列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: list of AbnormalEvents
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = AbnormalEvents()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeAllDeviceListRequest(AbstractModel):
     """DescribeAllDeviceList请求参数结构体
 
@@ -1268,7 +1877,7 @@ class DescribeAllDeviceListRequest(AbstractModel):
         :type NickName: str
         :param DeviceIds: DeviceId列表，需要精确查找设备时为必填
         :type DeviceIds: list of str
-        :param DeviceTypes: 设备类型过滤
+        :param DeviceTypes: 设备类型过滤，设备类型，1：国标VMS设备(公有云不支持此类型)，2：国标IPC设备，3：国标NVR设备，9：智能告警设备(公有云不支持此类型)
         :type DeviceTypes: list of int
         """
         self.Offset = None
@@ -1322,6 +1931,70 @@ class DescribeAllDeviceListResponse(AbstractModel):
                 obj = AllDeviceInfo()
                 obj._deserialize(item)
                 self.Devices.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeBindSceneChannelsRequest(AbstractModel):
+    """DescribeBindSceneChannels请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Limit: 条数限制最大不能超过1000
+        :type Limit: int
+        :param SceneId: 场景ID
+        :type SceneId: int
+        :param Offset: 偏移值
+        :type Offset: int
+        """
+        self.Limit = None
+        self.SceneId = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.SceneId = params.get("SceneId")
+        self.Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBindSceneChannelsResponse(AbstractModel):
+    """DescribeBindSceneChannels返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Total: 总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: int
+        :param List: 通道列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type List: list of ChannelItem
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Total = None
+        self.List = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("List") is not None:
+            self.List = []
+            for item in params.get("List"):
+                obj = ChannelItem()
+                obj._deserialize(item)
+                self.List.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1389,6 +2062,124 @@ class DescribeBindSceneDevicesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeChannelLocalRecordURLRequest(AbstractModel):
+    """DescribeChannelLocalRecordURL请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DeviceId: 设备唯一标识
+        :type DeviceId: str
+        :param ChannelId: 通道唯一标识
+        :type ChannelId: str
+        :param RecordId: 录像文件Id，通过获取本地录像返回
+        :type RecordId: str
+        :param StartTime: 录像文件推送的开始时间，需要在RecordId参数起始时间内，可以通过此参数控制回放流起始点
+        :type StartTime: int
+        :param EndTime: 录像文件推送的结束时间，需要在RecordId参数起始时间内，可以通过此参数控制回放流起始点
+        :type EndTime: int
+        """
+        self.DeviceId = None
+        self.ChannelId = None
+        self.RecordId = None
+        self.StartTime = None
+        self.EndTime = None
+
+
+    def _deserialize(self, params):
+        self.DeviceId = params.get("DeviceId")
+        self.ChannelId = params.get("ChannelId")
+        self.RecordId = params.get("RecordId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeChannelLocalRecordURLResponse(AbstractModel):
+    """DescribeChannelLocalRecordURL返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 结果
+        :type Data: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeRecordStreamData`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = DescribeRecordStreamData()
+            self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeChannelStreamURLRequest(AbstractModel):
+    """DescribeChannelStreamURL请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DeviceId: 设备唯一标识，必填参数
+        :type DeviceId: str
+        :param ExpireTime: 流地址失效时间，固定值填写0，其他参数无效，必填参数
+        :type ExpireTime: int
+        :param ChannelId: 通道唯一标识（接口升级字段为必填），必填参数
+        :type ChannelId: str
+        """
+        self.DeviceId = None
+        self.ExpireTime = None
+        self.ChannelId = None
+
+
+    def _deserialize(self, params):
+        self.DeviceId = params.get("DeviceId")
+        self.ExpireTime = params.get("ExpireTime")
+        self.ChannelId = params.get("ChannelId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeChannelStreamURLResponse(AbstractModel):
+    """DescribeChannelStreamURL返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 设备实时流地址列表
+        :type Data: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeDeviceStreamsData`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = DescribeDeviceStreamsData()
+            self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeChannelsByLiveRecordPlanRequest(AbstractModel):
     """DescribeChannelsByLiveRecordPlan请求参数结构体
 
@@ -1453,6 +2244,201 @@ class DescribeChannelsByLiveRecordPlanResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeChannelsRequest(AbstractModel):
+    """DescribeChannels请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DeviceId: 设备Id
+        :type DeviceId: str
+        :param Limit: 限制，默认0
+        :type Limit: int
+        :param Offset: 偏移量，默认0
+        :type Offset: int
+        :param ChannelTypes: 通道类型  0: 未知类型 1: 视频通道 2:  音频通道 3: 告警通道
+        :type ChannelTypes: list of int non-negative
+        :param PlanId: 录制计划ID， 当为"null"值时未绑定录制计划
+        :type PlanId: str
+        :param SceneId: 告警联动场景ID， 当为 -1 值时未绑定场景
+        :type SceneId: int
+        """
+        self.DeviceId = None
+        self.Limit = None
+        self.Offset = None
+        self.ChannelTypes = None
+        self.PlanId = None
+        self.SceneId = None
+
+
+    def _deserialize(self, params):
+        self.DeviceId = params.get("DeviceId")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.ChannelTypes = params.get("ChannelTypes")
+        self.PlanId = params.get("PlanId")
+        self.SceneId = params.get("SceneId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeChannelsResponse(AbstractModel):
+    """DescribeChannels返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 通道总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param Channels: 通道详情列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Channels: list of ChannelDetail
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Channels = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Channels") is not None:
+            self.Channels = []
+            for item in params.get("Channels"):
+                obj = ChannelDetail()
+                obj._deserialize(item)
+                self.Channels.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCurrentDeviceDataRequest(AbstractModel):
+    """DescribeCurrentDeviceData请求参数结构体
+
+    """
+
+
+class DescribeCurrentDeviceDataResponse(AbstractModel):
+    """DescribeCurrentDeviceData返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Channels: 通道数
+        :type Channels: int
+        :param Devices: 设备数
+        :type Devices: int
+        :param OnlineChannels: 在线通道数
+        :type OnlineChannels: int
+        :param OnlineDevices: 在线设备数
+        :type OnlineDevices: int
+        :param RecordingChannels: 正在录制通道数
+        :type RecordingChannels: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Channels = None
+        self.Devices = None
+        self.OnlineChannels = None
+        self.OnlineDevices = None
+        self.RecordingChannels = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Channels = params.get("Channels")
+        self.Devices = params.get("Devices")
+        self.OnlineChannels = params.get("OnlineChannels")
+        self.OnlineDevices = params.get("OnlineDevices")
+        self.RecordingChannels = params.get("RecordingChannels")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDeviceEventRequest(AbstractModel):
+    """DescribeDeviceEvent请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StartTime: 开始时间，秒级时间戳
+        :type StartTime: int
+        :param EndTime: 结束时间，秒级时间戳
+        :type EndTime: int
+        :param DeviceId: 设备Id
+        :type DeviceId: str
+        :param EventTypes: 事件类型 1:注册 2:心跳 4:录制异常 5:播放异常 6:流中断
+        :type EventTypes: list of int
+        :param Offset: 偏移值
+        :type Offset: int
+        :param Limit: limit限制值
+        :type Limit: int
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.DeviceId = None
+        self.EventTypes = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.DeviceId = params.get("DeviceId")
+        self.EventTypes = params.get("EventTypes")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDeviceEventResponse(AbstractModel):
+    """DescribeDeviceEvent返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param Events: 事件列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Events: list of Events
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Events = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Events") is not None:
+            self.Events = []
+            for item in params.get("Events"):
+                obj = Events()
+                obj._deserialize(item)
+                self.Events.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDeviceGroupRequest(AbstractModel):
     """DescribeDeviceGroup请求参数结构体
 
@@ -1504,6 +2490,136 @@ class DescribeDeviceGroupResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDeviceListRequest(AbstractModel):
+    """DescribeDeviceList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Offset: 偏移量，默认0
+        :type Offset: int
+        :param Limit: 限制，默认200
+        :type Limit: int
+        :param NickName: 设备名前缀
+        :type NickName: str
+        :param DeviceTypes: 设备类型，1：国标VMS设备(公有云不支持此类型)，2：国标IPC设备，3：国标NVR设备，9：智能告警设备(公有云不支持此类型)
+        :type DeviceTypes: list of int
+        """
+        self.Offset = None
+        self.Limit = None
+        self.NickName = None
+        self.DeviceTypes = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.NickName = params.get("NickName")
+        self.DeviceTypes = params.get("DeviceTypes")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDeviceListResponse(AbstractModel):
+    """DescribeDeviceList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 设备总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param Devices: 设备详细信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Devices: list of AllDeviceInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Devices = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Devices") is not None:
+            self.Devices = []
+            for item in params.get("Devices"):
+                obj = AllDeviceInfo()
+                obj._deserialize(item)
+                self.Devices.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDeviceMonitorDataRequest(AbstractModel):
+    """DescribeDeviceMonitorData请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StartTime: 开始时间戳
+        :type StartTime: int
+        :param EndTime: 结束时间戳
+        :type EndTime: int
+        :param Type: 类型 支持 OnlineChannels/OnlineDevices/RecordingChannels
+        :type Type: str
+        :param TimesSpec: 时间粒度 目前只支持 1h
+        :type TimesSpec: str
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.Type = None
+        self.TimesSpec = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Type = params.get("Type")
+        self.TimesSpec = params.get("TimesSpec")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDeviceMonitorDataResponse(AbstractModel):
+    """DescribeDeviceMonitorData返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 查询设备统计monitor信息列表
+        :type Data: list of DeviceMonitorValue
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = DeviceMonitorValue()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDevicePassWordRequest(AbstractModel):
     """DescribeDevicePassWord请求参数结构体
 
@@ -1546,6 +2662,53 @@ class DescribeDevicePassWordResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.PassWord = params.get("PassWord")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDeviceRequest(AbstractModel):
+    """DescribeDevice请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DeviceId: 设备ID
+        :type DeviceId: str
+        """
+        self.DeviceId = None
+
+
+    def _deserialize(self, params):
+        self.DeviceId = params.get("DeviceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDeviceResponse(AbstractModel):
+    """DescribeDevice返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Device: 设备详情信息
+        :type Device: :class:`tencentcloud.iotvideoindustry.v20201201.models.AllDeviceInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Device = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Device") is not None:
+            self.Device = AllDeviceInfo()
+            self.Device._deserialize(params.get("Device"))
         self.RequestId = params.get("RequestId")
 
 
@@ -1753,8 +2916,8 @@ class DescribeGroupDevicesRequest(AbstractModel):
         :type NickName: str
         :param Recordable: 过滤不可录制设备
         :type Recordable: int
-        :param DeviceTypes: 当Group是普通组的时候，支持根据deviceTypes筛选类型
- 0: 普通摄像头1:  国标VMS设备 2: 国标IPC设备 3: 国标NVR设备  4: 国标NVR通道 5: 国标VMS通道 6: 国标IPC通道 9: 智能告警设备 10: 带有RTSP固定地址的设备
+        :param DeviceTypes: 当Group是普通组的时候，支持根据DeviceTypes筛选类型，
+ 设备类型，1：国标VMS设备(公有云不支持此类型)，2：国标IPC设备，3：国标NVR设备，9：智能告警设备(公有云不支持此类型)
         :type DeviceTypes: list of int
         """
         self.GroupId = None
@@ -2266,7 +3429,7 @@ class DescribeLiveVideoListRequest(AbstractModel):
         :type Offset: int
         :param Limit: 分页的每页数量
         :type Limit: int
-        :param LiveChannelId: 直播ID
+        :param LiveChannelId: 直播频道ID
         :type LiveChannelId: str
         :param StartRecordTime: 开始录制开始时间
         :type StartRecordTime: int
@@ -2498,6 +3661,178 @@ class DescribeMessageForwardsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeMonitorDataByDateRequest(AbstractModel):
+    """DescribeMonitorDataByDate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StartTime: 开始时间戳
+        :type StartTime: int
+        :param EndTime: 结束时间戳 最多显示30天数据
+        :type EndTime: int
+        """
+        self.StartTime = None
+        self.EndTime = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeMonitorDataByDateResponse(AbstractModel):
+    """DescribeMonitorDataByDate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 统计数据列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: list of RecordStatistic
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = RecordStatistic()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribePresetListRequest(AbstractModel):
+    """DescribePresetList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ChannelId: 视频通道唯一标识
+        :type ChannelId: str
+        :param DeviceId: 设备唯一标识
+        :type DeviceId: str
+        """
+        self.ChannelId = None
+        self.DeviceId = None
+
+
+    def _deserialize(self, params):
+        self.ChannelId = params.get("ChannelId")
+        self.DeviceId = params.get("DeviceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePresetListResponse(AbstractModel):
+    """DescribePresetList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 预置列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: list of PresetItem
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = PresetItem()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeRecordDatesByChannelRequest(AbstractModel):
+    """DescribeRecordDatesByChannel请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DeviceId: 设备唯一标识
+        :type DeviceId: str
+        :param ChannelId: 通道唯一标识
+        :type ChannelId: str
+        :param Type: 1: 云端录制 2: 本地录制
+        :type Type: int
+        :param Limit: 限制量，默认200
+        :type Limit: int
+        :param Offset: 偏移量，默认0
+        :type Offset: int
+        """
+        self.DeviceId = None
+        self.ChannelId = None
+        self.Type = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.DeviceId = params.get("DeviceId")
+        self.ChannelId = params.get("ChannelId")
+        self.Type = params.get("Type")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRecordDatesByChannelResponse(AbstractModel):
+    """DescribeRecordDatesByChannel返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Dates: 含有录像文件的日期列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Dates: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Dates = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Dates = params.get("Dates")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeRecordDatesByLiveRequest(AbstractModel):
     """DescribeRecordDatesByLive请求参数结构体
 
@@ -2601,13 +3936,13 @@ class DescribeRecordStreamRequest(AbstractModel):
         r"""
         :param DeviceId: 设备Id
         :type DeviceId: str
-        :param ExpireTime: 流失效时间
+        :param ExpireTime: 流失效时间，UNIX时间戳，30天内
         :type ExpireTime: int
-        :param RecordId: 录像文件Id
+        :param RecordId: 录像文件ID
         :type RecordId: str
-        :param StartTime: 录像流开始时间，当录像文件Id为空时有效
+        :param StartTime: 录像流开始时间，当录像文件ID为空时有效，UNIX时间戳
         :type StartTime: int
-        :param EndTime: 录像流结束时间，当录像文件Id为空时有效
+        :param EndTime: 录像流结束时间，当录像文件iD为空时有效，UNIX时间戳
         :type EndTime: int
         :param ChannelId: 通道唯一标识
         :type ChannelId: str
@@ -2659,6 +3994,92 @@ class DescribeRecordStreamResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeRecordingPlanByIdRequest(AbstractModel):
+    """DescribeRecordingPlanById请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PlanId: 录制计划ID
+        :type PlanId: str
+        """
+        self.PlanId = None
+
+
+    def _deserialize(self, params):
+        self.PlanId = params.get("PlanId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRecordingPlanByIdResponse(AbstractModel):
+    """DescribeRecordingPlanById返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Plan: 录制计划详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Plan: :class:`tencentcloud.iotvideoindustry.v20201201.models.RecordPlanDetail`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Plan = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Plan") is not None:
+            self.Plan = RecordPlanDetail()
+            self.Plan._deserialize(params.get("Plan"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeRecordingPlansRequest(AbstractModel):
+    """DescribeRecordingPlans请求参数结构体
+
+    """
+
+
+class DescribeRecordingPlansResponse(AbstractModel):
+    """DescribeRecordingPlans返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Plans: 录制计划详情·列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Plans: list of RecordPlanDetail
+        :param TotalCount: 录制计划总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Plans = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Plans") is not None:
+            self.Plans = []
+            for item in params.get("Plans"):
+                obj = RecordPlanDetail()
+                obj._deserialize(item)
+                self.Plans.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeSIPServerRequest(AbstractModel):
     """DescribeSIPServer请求参数结构体
 
@@ -2685,6 +4106,86 @@ class DescribeSIPServerResponse(AbstractModel):
         if params.get("Data") is not None:
             self.Data = ServerConfiguration()
             self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeSceneRequest(AbstractModel):
+    """DescribeScene请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IntId: 场景ID
+        :type IntId: int
+        """
+        self.IntId = None
+
+
+    def _deserialize(self, params):
+        self.IntId = params.get("IntId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSceneResponse(AbstractModel):
+    """DescribeScene返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IntId: 场景ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IntId: int
+        :param RecordDuration: 录制时长(秒)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecordDuration: int
+        :param SceneName: 场景名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SceneName: str
+        :param SceneTrigger: 场景触发规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SceneTrigger: str
+        :param StoreDuration: 存储时长 (天)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StoreDuration: int
+        :param CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param UpdateTime: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        :param Uin: 用户Uin
+        :type Uin: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.IntId = None
+        self.RecordDuration = None
+        self.SceneName = None
+        self.SceneTrigger = None
+        self.StoreDuration = None
+        self.CreateTime = None
+        self.UpdateTime = None
+        self.Uin = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.IntId = params.get("IntId")
+        self.RecordDuration = params.get("RecordDuration")
+        self.SceneName = params.get("SceneName")
+        self.SceneTrigger = params.get("SceneTrigger")
+        self.StoreDuration = params.get("StoreDuration")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        self.Uin = params.get("Uin")
         self.RequestId = params.get("RequestId")
 
 
@@ -3007,6 +4508,83 @@ class DescribeSubscriptionStatusResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeVideoListByChannelRequest(AbstractModel):
+    """DescribeVideoListByChannel请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DeviceId: 设备唯一标识
+        :type DeviceId: str
+        :param ChannelId: 通道唯一标识
+        :type ChannelId: str
+        :param Type: 1: 云端录制 2: 本地录制
+        :type Type: int
+        :param Date: 指定某天。取值【YYYY-MM-DD】
+为空时默认查询最近一天的记录
+        :type Date: str
+        :param Limit: 限制量，默认2000
+        :type Limit: int
+        :param Offset: 偏移量，默认0
+        :type Offset: int
+        """
+        self.DeviceId = None
+        self.ChannelId = None
+        self.Type = None
+        self.Date = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.DeviceId = params.get("DeviceId")
+        self.ChannelId = params.get("ChannelId")
+        self.Type = params.get("Type")
+        self.Date = params.get("Date")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVideoListByChannelResponse(AbstractModel):
+    """DescribeVideoListByChannel返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param VideoList: 录像详情列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VideoList: list of RecordTaskItem
+        :param TotalCount: 录像总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.VideoList = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("VideoList") is not None:
+            self.VideoList = []
+            for item in params.get("VideoList"):
+                obj = RecordTaskItem()
+                obj._deserialize(item)
+                self.VideoList.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeVideoListRequest(AbstractModel):
     """DescribeVideoList请求参数结构体
 
@@ -3131,6 +4709,178 @@ class DescribeVideoListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeWarnModRequest(AbstractModel):
+    """DescribeWarnMod请求参数结构体
+
+    """
+
+
+class DescribeWarnModResponse(AbstractModel):
+    """DescribeWarnMod返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 告警类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Data = params.get("Data")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeWarningsRequest(AbstractModel):
+    """DescribeWarnings请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param OrderType: 1:创建时间倒序 2：创建时间升序 3：level倒序 4：leve升序
+        :type OrderType: int
+        :param DeviceId: 可选设备id
+        :type DeviceId: str
+        :param WarnLevelArray: 如果不传则查询所有，取值参见配置
+        :type WarnLevelArray: list of int
+        :param WarnModeArray: 如果不传则查询所有，取值参见配置
+        :type WarnModeArray: list of int
+        :param Offset: 不传认为是0
+        :type Offset: int
+        :param Limit: 不传认为是20
+        :type Limit: int
+        :param DateBegin: 形似：2021-05-21 00:00:00 .取值在当前日前30天内，不传默认是当前日前30天日期
+        :type DateBegin: str
+        :param DateEnd: 形似：2021-05-21 23:59:59 .取值在当前日前30天内，不传默认是当前日前30天日期
+        :type DateEnd: str
+        """
+        self.OrderType = None
+        self.DeviceId = None
+        self.WarnLevelArray = None
+        self.WarnModeArray = None
+        self.Offset = None
+        self.Limit = None
+        self.DateBegin = None
+        self.DateEnd = None
+
+
+    def _deserialize(self, params):
+        self.OrderType = params.get("OrderType")
+        self.DeviceId = params.get("DeviceId")
+        self.WarnLevelArray = params.get("WarnLevelArray")
+        self.WarnModeArray = params.get("WarnModeArray")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.DateBegin = params.get("DateBegin")
+        self.DateEnd = params.get("DateEnd")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeWarningsResponse(AbstractModel):
+    """DescribeWarnings返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Total: 总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: int
+        :param Data: 告警列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: list of WarningsData
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Total = None
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = WarningsData()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeXP2PDataRequest(AbstractModel):
+    """DescribeXP2PData请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param P2PAppId: P2P应用ID
+        :type P2PAppId: str
+        :param From: 查询开始时间
+        :type From: int
+        :param To: 查询结束时间
+        :type To: int
+        :param P2PChannelId: P2P通路ID
+        :type P2PChannelId: str
+        """
+        self.P2PAppId = None
+        self.From = None
+        self.To = None
+        self.P2PChannelId = None
+
+
+    def _deserialize(self, params):
+        self.P2PAppId = params.get("P2PAppId")
+        self.From = params.get("From")
+        self.To = params.get("To")
+        self.P2PChannelId = params.get("P2PChannelId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeXP2PDataResponse(AbstractModel):
+    """DescribeXP2PData返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: [log_time,cdn_bytes , p2p_bytes, online_people, stuck_times, stuck_people,request,request_success,request_fail,play_fail]
+[时间戳,cdn流量(字节) , p2p流量(字节), 在线人数, 卡播次数, 卡播人数,起播请求次数,起播成功次数,起播失败次数,播放失败次数, pcdn cdn流量（字节), pcdn路由流量(字节), 上传流量(字节)]
+[1481016480, 46118502414, 75144943171, 61691, 3853, 0,0,0,0,0, 0, 0, 0]
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Data = params.get("Data")
+        self.RequestId = params.get("RequestId")
+
+
 class DevGroupInfo(AbstractModel):
     """设备所在分组信息
 
@@ -3201,6 +4951,96 @@ class DeviceItem(AbstractModel):
         
 
 
+class DeviceMonitorValue(AbstractModel):
+    """查询设备统计返回值
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Value: 统计值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: float
+        :param Time: 统计时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Time: int
+        """
+        self.Value = None
+        self.Time = None
+
+
+    def _deserialize(self, params):
+        self.Value = params.get("Value")
+        self.Time = params.get("Time")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Events(AbstractModel):
+    """设备事件列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EventTime: 开始时间，秒级时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EventTime: int
+        :param EventType: 事件类型 1:注册 2:心跳 4:录制异常 5:播放异常 6:流中断
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EventType: int
+        :param EventDesc: 事件描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EventDesc: str
+        :param DeviceType: 设备类型
+        :type DeviceType: int
+        :param DeviceAddress: 设备地址
+        :type DeviceAddress: str
+        :param DeviceId: 设备Id
+        :type DeviceId: str
+        :param ChannelId: 通道Id
+        :type ChannelId: str
+        :param EventLog: 事件日志
+        :type EventLog: str
+        :param DeviceName: 设备备注名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeviceName: str
+        """
+        self.EventTime = None
+        self.EventType = None
+        self.EventDesc = None
+        self.DeviceType = None
+        self.DeviceAddress = None
+        self.DeviceId = None
+        self.ChannelId = None
+        self.EventLog = None
+        self.DeviceName = None
+
+
+    def _deserialize(self, params):
+        self.EventTime = params.get("EventTime")
+        self.EventType = params.get("EventType")
+        self.EventDesc = params.get("EventDesc")
+        self.DeviceType = params.get("DeviceType")
+        self.DeviceAddress = params.get("DeviceAddress")
+        self.DeviceId = params.get("DeviceId")
+        self.ChannelId = params.get("ChannelId")
+        self.EventLog = params.get("EventLog")
+        self.DeviceName = params.get("DeviceName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class GetRecordDatesByDevRequest(AbstractModel):
     """GetRecordDatesByDev请求参数结构体
 
@@ -3210,26 +5050,26 @@ class GetRecordDatesByDevRequest(AbstractModel):
         r"""
         :param DeviceId: 设备唯一标识
         :type DeviceId: str
-        :param Offset: 偏移量，默认0
-        :type Offset: int
         :param Limit: 限制量，默认200
         :type Limit: int
+        :param Offset: 偏移量，默认0
+        :type Offset: int
         :param ChannelId: 通道唯一标识
         :type ChannelId: str
         :param Type: 1: 云端录制 2: 本地录制
         :type Type: int
         """
         self.DeviceId = None
-        self.Offset = None
         self.Limit = None
+        self.Offset = None
         self.ChannelId = None
         self.Type = None
 
 
     def _deserialize(self, params):
         self.DeviceId = params.get("DeviceId")
-        self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
         self.ChannelId = params.get("ChannelId")
         self.Type = params.get("Type")
         memeber_set = set(params.keys())
@@ -3495,22 +5335,22 @@ class GetVideoListByConRequest(AbstractModel):
         :type Offset: int
         :param Limit: 限制量，默认200
         :type Limit: int
+        :param ChannelId: 通道唯一标识
+        :type ChannelId: str
         :param LatestDay: 0：查询指定日期的录像；1：查询最近一天的录像；默认0
         :type LatestDay: int
         :param Date: 指定某天。取值【YYYY-MM-DD】
-当LatestDay为空或为0时，本参数不允许为空。
+为空时默认查询最近一天的记录
         :type Date: str
-        :param ChannelId: 通道唯一标识
-        :type ChannelId: str
         :param Type: 1: 云端录制 2: 本地录制
         :type Type: int
         """
         self.DeviceId = None
         self.Offset = None
         self.Limit = None
+        self.ChannelId = None
         self.LatestDay = None
         self.Date = None
-        self.ChannelId = None
         self.Type = None
 
 
@@ -3518,9 +5358,9 @@ class GetVideoListByConRequest(AbstractModel):
         self.DeviceId = params.get("DeviceId")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.ChannelId = params.get("ChannelId")
         self.LatestDay = params.get("LatestDay")
         self.Date = params.get("Date")
-        self.ChannelId = params.get("ChannelId")
         self.Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -3600,6 +5440,15 @@ class GroupDeviceItem(AbstractModel):
         :param Protocol: 设备接入协议
 注意：此字段可能返回 null，表示取不到有效值。
         :type Protocol: str
+        :param CreateTime: 设备创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: int
+        :param ChannelNum: 设备通道总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChannelNum: int
+        :param VideoChannelNum: 设备视频通道总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VideoChannelNum: int
         """
         self.DeviceId = None
         self.NickName = None
@@ -3611,6 +5460,9 @@ class GroupDeviceItem(AbstractModel):
         self.IsRecord = None
         self.Recordable = None
         self.Protocol = None
+        self.CreateTime = None
+        self.ChannelNum = None
+        self.VideoChannelNum = None
 
 
     def _deserialize(self, params):
@@ -3624,6 +5476,9 @@ class GroupDeviceItem(AbstractModel):
         self.IsRecord = params.get("IsRecord")
         self.Recordable = params.get("Recordable")
         self.Protocol = params.get("Protocol")
+        self.CreateTime = params.get("CreateTime")
+        self.ChannelNum = params.get("ChannelNum")
+        self.VideoChannelNum = params.get("VideoChannelNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4063,6 +5918,168 @@ class ModifyBindPlanLiveChannelResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyBindRecordingPlanRequest(AbstractModel):
+    """ModifyBindRecordingPlan请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Type: 操作类型： 1-绑定设备 ；2-解绑设备
+        :type Type: int
+        :param PlanId: 录制计划ID
+        :type PlanId: str
+        :param Channels: 录制通道列表
+        :type Channels: list of ChannelItem
+        """
+        self.Type = None
+        self.PlanId = None
+        self.Channels = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.PlanId = params.get("PlanId")
+        if params.get("Channels") is not None:
+            self.Channels = []
+            for item in params.get("Channels"):
+                obj = ChannelItem()
+                obj._deserialize(item)
+                self.Channels.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyBindRecordingPlanResponse(AbstractModel):
+    """ModifyBindRecordingPlan返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyBindSceneChannelsRequest(AbstractModel):
+    """ModifyBindSceneChannels请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SceneId: 场景ID
+        :type SceneId: int
+        :param Type: 1: 绑定 2: 解绑
+        :type Type: int
+        :param Channels: 通道列表
+        :type Channels: list of ChannelItem
+        """
+        self.SceneId = None
+        self.Type = None
+        self.Channels = None
+
+
+    def _deserialize(self, params):
+        self.SceneId = params.get("SceneId")
+        self.Type = params.get("Type")
+        if params.get("Channels") is not None:
+            self.Channels = []
+            for item in params.get("Channels"):
+                obj = ChannelItem()
+                obj._deserialize(item)
+                self.Channels.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyBindSceneChannelsResponse(AbstractModel):
+    """ModifyBindSceneChannels返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyBindSceneDeviceRequest(AbstractModel):
+    """ModifyBindSceneDevice请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SceneId: 场景ID
+        :type SceneId: int
+        :param Type: 1: 绑定 2: 解绑
+        :type Type: int
+        :param Devices: 设备列表
+        :type Devices: list of DeviceItem
+        """
+        self.SceneId = None
+        self.Type = None
+        self.Devices = None
+
+
+    def _deserialize(self, params):
+        self.SceneId = params.get("SceneId")
+        self.Type = params.get("Type")
+        if params.get("Devices") is not None:
+            self.Devices = []
+            for item in params.get("Devices"):
+                obj = DeviceItem()
+                obj._deserialize(item)
+                self.Devices.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyBindSceneDeviceResponse(AbstractModel):
+    """ModifyBindSceneDevice返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyDeviceDataRequest(AbstractModel):
     """ModifyDeviceData请求参数结构体
 
@@ -4297,6 +6314,165 @@ class ModifyMessageForwardResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyPresetRequest(AbstractModel):
+    """ModifyPreset请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ChannelId: 通道ID
+        :type ChannelId: str
+        :param PresetId: 预置位编码 范围1-8
+        :type PresetId: int
+        :param PresetName: 预制位名称
+        :type PresetName: str
+        :param DeviceId: 设备Id
+        :type DeviceId: str
+        """
+        self.ChannelId = None
+        self.PresetId = None
+        self.PresetName = None
+        self.DeviceId = None
+
+
+    def _deserialize(self, params):
+        self.ChannelId = params.get("ChannelId")
+        self.PresetId = params.get("PresetId")
+        self.PresetName = params.get("PresetName")
+        self.DeviceId = params.get("DeviceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyPresetResponse(AbstractModel):
+    """ModifyPreset返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyRecordingPlanRequest(AbstractModel):
+    """ModifyRecordingPlan请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PlanId: 录制计划ID
+        :type PlanId: str
+        :param Name: 计划名称
+        :type Name: str
+        :param TimeTemplateId: 时间模板ID
+        :type TimeTemplateId: str
+        """
+        self.PlanId = None
+        self.Name = None
+        self.TimeTemplateId = None
+
+
+    def _deserialize(self, params):
+        self.PlanId = params.get("PlanId")
+        self.Name = params.get("Name")
+        self.TimeTemplateId = params.get("TimeTemplateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyRecordingPlanResponse(AbstractModel):
+    """ModifyRecordingPlan返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Status: 操作结果
+        :type Status: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Status = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.RequestId = params.get("RequestId")
+
+
+class ModifySceneRequest(AbstractModel):
+    """ModifyScene请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IntId: 场景ID
+        :type IntId: int
+        :param SceneName: 场景名称
+        :type SceneName: str
+        :param SceneTrigger: 触发条件
+        :type SceneTrigger: str
+        :param RecordDuration: 录制时长(秒)
+        :type RecordDuration: int
+        """
+        self.IntId = None
+        self.SceneName = None
+        self.SceneTrigger = None
+        self.RecordDuration = None
+
+
+    def _deserialize(self, params):
+        self.IntId = params.get("IntId")
+        self.SceneName = params.get("SceneName")
+        self.SceneTrigger = params.get("SceneTrigger")
+        self.RecordDuration = params.get("RecordDuration")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifySceneResponse(AbstractModel):
+    """ModifyScene返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifySubscriptionStatusRequest(AbstractModel):
     """ModifySubscriptionStatus请求参数结构体
 
@@ -4391,6 +6567,99 @@ class ModifyVideoInfoResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class PresetItem(AbstractModel):
+    """预置位结构出参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PresetId: 预置位ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PresetId: int
+        :param PresetName: 预置位名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PresetName: str
+        :param Status: 预置位状态 0:未设置预置位 1:已设置预置位 2:已设置预置位&看守位
+        :type Status: int
+        :param ResetTime: 预置位启用时的自动归位时间
+        :type ResetTime: int
+        """
+        self.PresetId = None
+        self.PresetName = None
+        self.Status = None
+        self.ResetTime = None
+
+
+    def _deserialize(self, params):
+        self.PresetId = params.get("PresetId")
+        self.PresetName = params.get("PresetName")
+        self.Status = params.get("Status")
+        self.ResetTime = params.get("ResetTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RecordPlanDetail(AbstractModel):
+    """录制计划详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PlanId: 计划ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PlanId: str
+        :param Name: 计划名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param TimeTemplateId: 时间模板ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimeTemplateId: str
+        :param TimeTemplateName: 时间模板名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimeTemplateName: str
+        :param Channels: 绑定的通道列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Channels: list of ChannelItem
+        :param RecordStorageTime: 存储周期（天）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecordStorageTime: int
+        """
+        self.PlanId = None
+        self.Name = None
+        self.TimeTemplateId = None
+        self.TimeTemplateName = None
+        self.Channels = None
+        self.RecordStorageTime = None
+
+
+    def _deserialize(self, params):
+        self.PlanId = params.get("PlanId")
+        self.Name = params.get("Name")
+        self.TimeTemplateId = params.get("TimeTemplateId")
+        self.TimeTemplateName = params.get("TimeTemplateName")
+        if params.get("Channels") is not None:
+            self.Channels = []
+            for item in params.get("Channels"):
+                obj = ChannelItem()
+                obj._deserialize(item)
+                self.Channels.append(obj)
+        self.RecordStorageTime = params.get("RecordStorageTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RecordPlanItem(AbstractModel):
     """录制计划详情
 
@@ -4437,6 +6706,73 @@ class RecordPlanItem(AbstractModel):
                 obj = DeviceItem()
                 obj._deserialize(item)
                 self.Devices.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RecordStatistic(AbstractModel):
+    """大盘统计-录像存储统计 出参RecordStatistic
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Time: 时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Time: int
+        :param Value: 统计结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: :class:`tencentcloud.iotvideoindustry.v20201201.models.RecordStatisticValue`
+        """
+        self.Time = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Time = params.get("Time")
+        if params.get("Value") is not None:
+            self.Value = RecordStatisticValue()
+            self.Value._deserialize(params.get("Value"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RecordStatisticValue(AbstractModel):
+    """大盘统计-录像存储统计 出参Value
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ExpectTimeLen: 期望执行时间 秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpectTimeLen: int
+        :param RecordTimeLen: 实际执行时间 秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecordTimeLen: int
+        :param FileSize: 存储大小 G
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileSize: float
+        """
+        self.ExpectTimeLen = None
+        self.RecordTimeLen = None
+        self.FileSize = None
+
+
+    def _deserialize(self, params):
+        self.ExpectTimeLen = params.get("ExpectTimeLen")
+        self.RecordTimeLen = params.get("RecordTimeLen")
+        self.FileSize = params.get("FileSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4514,6 +6850,51 @@ class RecordTaskItem(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ResetWarningRequest(AbstractModel):
+    """ResetWarning请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: 告警ID
+        :type Id: int
+        :param Index: Es中告警ID
+        :type Index: str
+        """
+        self.Id = None
+        self.Index = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.Index = params.get("Index")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResetWarningResponse(AbstractModel):
+    """ResetWarning返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class SceneItem(AbstractModel):
@@ -4698,10 +7079,10 @@ class TimeTemplateItem(AbstractModel):
         :param Name: 模板名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
-        :param IsAllWeek: 是否全时录制，即7*24小时录制
+        :param IsAllWeek: 是否全时录制，即7*24小时录制 0-否 1-是
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsAllWeek: int
-        :param Type: 是否为自定义模板
+        :param Type: 是否为自定义模板 0-否 1-是
 注意：此字段可能返回 null，表示取不到有效值。
         :type Type: int
         :param TimeTemplateSpecs: 时间片段详情
@@ -5006,3 +7387,116 @@ class UpdateTimeTemplateResponse(AbstractModel):
     def _deserialize(self, params):
         self.Status = params.get("Status")
         self.RequestId = params.get("RequestId")
+
+
+class WarningsData(AbstractModel):
+    """告警列表出参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: 唯一ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: int
+        :param DeviceId: 设备ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeviceId: str
+        :param DeviceName: 设备名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeviceName: str
+        :param WarnChannel: 告警通道
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WarnChannel: str
+        :param WarnLevel: 告警级别 1: "一级警情", 2: "二级警情", 3: "三级警情", 4: "四级警情",
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WarnLevel: int
+        :param WarnLevelName: 告警级别名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WarnLevelName: str
+        :param WarnMode: 告警方式 2 设备报警 5 视频报警 6 设备故障报警
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WarnMode: int
+        :param WarnModeName: 告警方式名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WarnModeName: str
+        :param WarnType: 告警类型  2: {
+			Name: "设备报警",
+			WarnType: map[int]string{
+				1: "视频丢失报警",
+				2: "设备防拆报警",
+				3: "存储设备磁盘满报警",
+				4: "设备高温报警",
+				5: "设备低温报警",
+			},
+		},
+		5: {
+			Name: "视频报警",
+			WarnType: map[int]string{
+				1:  "人工视频报警",
+				2:  "运动目标检测报警",
+				3:  "遗留物检测报警",
+				4:  "物体移除检测报警",
+				5:  "绊线检测报警",
+				6:  "入侵检测报警",
+				7:  "逆行检测报警",
+				8:  "徘徊检测报警",
+				9:  "流量统计报警",
+				10: "密度检测报警",
+				11: "视频异常检测报警",
+				12: "快速移动报警",
+			},
+		},
+		6: {
+			Name: "设备故障报警",
+			WarnType: map[int]string{
+				1: "存储设备磁盘故障报警",
+				2: "存储设备风扇故障报警",
+			},
+		}
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WarnType: int
+        :param Del: 是否删除
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Del: int
+        :param CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param UpdateTime: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        """
+        self.Id = None
+        self.DeviceId = None
+        self.DeviceName = None
+        self.WarnChannel = None
+        self.WarnLevel = None
+        self.WarnLevelName = None
+        self.WarnMode = None
+        self.WarnModeName = None
+        self.WarnType = None
+        self.Del = None
+        self.CreateTime = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.DeviceId = params.get("DeviceId")
+        self.DeviceName = params.get("DeviceName")
+        self.WarnChannel = params.get("WarnChannel")
+        self.WarnLevel = params.get("WarnLevel")
+        self.WarnLevelName = params.get("WarnLevelName")
+        self.WarnMode = params.get("WarnMode")
+        self.WarnModeName = params.get("WarnModeName")
+        self.WarnType = params.get("WarnType")
+        self.Del = params.get("Del")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        

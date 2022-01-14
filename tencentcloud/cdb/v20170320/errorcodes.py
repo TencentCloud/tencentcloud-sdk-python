@@ -71,6 +71,9 @@ FAILEDOPERATION_JSONMARSHALERROR = 'FailedOperation.JsonMarshalError'
 # json反序列化失败。
 FAILEDOPERATION_JSONUNMARSHALERROR = 'FailedOperation.JsonUnmarshalError'
 
+# 不是延迟复制RO。
+FAILEDOPERATION_NOTDELAYRO = 'FailedOperation.NotDelayRo'
+
 # 执行的权限修改操作非法。您可以参照产品文档，了解当前实例支持哪些权限修改操作，如有疑问，请您咨询客服进行处理。
 FAILEDOPERATION_PRIVILEGEDATAILLEGAL = 'FailedOperation.PrivilegeDataIllegal'
 
@@ -385,6 +388,9 @@ OPERATIONDENIED_INSTANCELOCKERCONFLICT = 'OperationDenied.InstanceLockerConflict
 
 # 实例状态异常。
 OPERATIONDENIED_INSTANCESTATUSERROR = 'OperationDenied.InstanceStatusError'
+
+# 当前实例正在进行其他任务，不能执行延迟复制。
+OPERATIONDENIED_INSTANCETASKRUNNING = 'OperationDenied.InstanceTaskRunning'
 
 # 实例不支持该操作。
 OPERATIONDENIED_INSTANCEUNSUPPORTEDOPERATEERROR = 'OperationDenied.InstanceUnsupportedOperateError'

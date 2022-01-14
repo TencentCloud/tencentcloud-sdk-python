@@ -14,6 +14,9 @@
 # limitations under the License.
 
 
+# cvm调用失败。
+INTERNALERROR_CALLCVM = 'InternalError.CallCvm'
+
 # 参数格式有误。
 INVALIDPARAMETER_MALFORMED = 'InvalidParameter.Malformed'
 
@@ -31,3 +34,9 @@ INVALIDPARAMETERVALUE_TOOSMALL = 'InvalidParameterValue.TooSmall'
 
 # 集群不存在。
 RESOURCENOTFOUND_CLUSTERID = 'ResourceNotFound.ClusterId'
+
+# 无法找到ID对应的弹性伸缩启动配置。
+RESOURCENOTFOUND_LAUNCHCONFIGURATIONID = 'ResourceNotFound.LaunchConfigurationId'
+
+# 该伸缩组已绑定集群，请更换伸缩组。
+UNSUPPORTEDOPERATION_AUTOSCALINGGROUPALREADYBINDED = 'UnsupportedOperation.AutoScalingGroupAlreadyBinded'

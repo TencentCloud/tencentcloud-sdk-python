@@ -54,6 +54,34 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ApplyCDBProxy(self, request):
+        """针对主实例申请创建数据库代理。
+
+        :param request: Request instance for ApplyCDBProxy.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.ApplyCDBProxyRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.ApplyCDBProxyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ApplyCDBProxy", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ApplyCDBProxyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def AssociateSecurityGroups(self, request):
         """本接口(AssociateSecurityGroups)用于安全组批量绑定实例。
 
@@ -96,6 +124,34 @@ class CdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.BalanceRoGroupLoadResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CloseCDBProxy(self, request):
+        """关闭数据库代理
+
+        :param request: Request instance for CloseCDBProxy.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.CloseCDBProxyRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.CloseCDBProxyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CloseCDBProxy", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CloseCDBProxyResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1169,6 +1225,34 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeCDBProxy(self, request):
+        """查询数据库代理
+
+        :param request: Request instance for DescribeCDBProxy.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeCDBProxyRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeCDBProxyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCDBProxy", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCDBProxyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeCloneList(self, request):
         """本接口(DescribeCloneList) 用于查询用户实例的克隆任务列表。
 
@@ -1732,6 +1816,34 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeLocalBinlogConfig(self, request):
+        """该接口用于查询实例本地binlog保留策略。
+
+        :param request: Request instance for DescribeLocalBinlogConfig.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeLocalBinlogConfigRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeLocalBinlogConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeLocalBinlogConfig", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeLocalBinlogConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeParamTemplateInfo(self, request):
         """该接口（DescribeParamTemplateInfo）用于查询参数模板详情，全地域公共参数Region均为ap-guangzhou。
 
@@ -1761,7 +1873,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeParamTemplates(self, request):
-        """该接口（DescribeParamTemplates）查询参数模板列表。
+        """该接口（DescribeParamTemplates）查询参数模板列表，全地域公共参数Region均为ap-guangzhou。
 
         :param request: Request instance for DescribeParamTemplates.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeParamTemplatesRequest`
@@ -1802,6 +1914,62 @@ class CdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeProjectSecurityGroupsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeProxyConnectionPoolConf(self, request):
+        """获取数据库代理连接池相关规格配置
+
+        :param request: Request instance for DescribeProxyConnectionPoolConf.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeProxyConnectionPoolConfRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeProxyConnectionPoolConfResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeProxyConnectionPoolConf", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeProxyConnectionPoolConfResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeProxyCustomConf(self, request):
+        """查询代理规格配置
+
+        :param request: Request instance for DescribeProxyCustomConf.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeProxyCustomConfRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeProxyCustomConfResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeProxyCustomConf", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeProxyCustomConfResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -2126,7 +2294,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeUploadedFiles(self, request):
-        """本接口(DescribeUploadedFiles)用于查询用户导入的SQL文件列表。
+        """本接口(DescribeUploadedFiles)用于查询用户导入的SQL文件列表，全地域公共参数Region均为ap-shanghai。
 
         :param request: Request instance for DescribeUploadedFiles.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeUploadedFilesRequest`
@@ -2548,6 +2716,118 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyCDBProxy(self, request):
+        """配置数据库代理读写分离
+
+        :param request: Request instance for ModifyCDBProxy.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyCDBProxyRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.ModifyCDBProxyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyCDBProxy", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyCDBProxyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyCDBProxyConnectionPool(self, request):
+        """请求该接口配置数据库连接池；支持的连接池配置请求DescribeProxyConnectionPoolConf接口获取。
+
+        :param request: Request instance for ModifyCDBProxyConnectionPool.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyCDBProxyConnectionPoolRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.ModifyCDBProxyConnectionPoolResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyCDBProxyConnectionPool", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyCDBProxyConnectionPoolResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyCDBProxyDesc(self, request):
+        """修改数据库代理描述
+
+        :param request: Request instance for ModifyCDBProxyDesc.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyCDBProxyDescRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.ModifyCDBProxyDescResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyCDBProxyDesc", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyCDBProxyDescResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyCDBProxyVipVPort(self, request):
+        """修改数据库代理VIP或端口
+
+        :param request: Request instance for ModifyCDBProxyVipVPort.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyCDBProxyVipVPortRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.ModifyCDBProxyVipVPortResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyCDBProxyVipVPort", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyCDBProxyVipVPortResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyDBInstanceName(self, request):
         """本接口(ModifyDBInstanceName)用于修改云数据库实例的名称。
 
@@ -2702,6 +2982,34 @@ class CdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyInstanceTagResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyLocalBinlogConfig(self, request):
+        """该接口用于修改实例本地binlog保留策略。
+
+        :param request: Request instance for ModifyLocalBinlogConfig.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyLocalBinlogConfigRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.ModifyLocalBinlogConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyLocalBinlogConfig", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyLocalBinlogConfigResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -2946,6 +3254,34 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ReloadBalanceProxyNode(self, request):
+        """重新负载均衡数据库代理
+
+        :param request: Request instance for ReloadBalanceProxyNode.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.ReloadBalanceProxyNodeRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.ReloadBalanceProxyNodeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ReloadBalanceProxyNode", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ReloadBalanceProxyNodeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def RenewDBInstance(self, request):
         """本接口(RenewDBInstance)用于续费云数据库实例，支持付费模式为包年包月的实例。按量计费实例可通过该接口续费为包年包月的实例。
 
@@ -3146,6 +3482,34 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def SwitchCDBProxy(self, request):
+        """昨晚数据库代理配置变更或则升级版本后手动发起立即切换
+
+        :param request: Request instance for SwitchCDBProxy.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.SwitchCDBProxyRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.SwitchCDBProxyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SwitchCDBProxy", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SwitchCDBProxyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def SwitchDBInstanceMasterSlave(self, request):
         """该接口 (SwitchDBInstanceMasterSlave) 支持用户主动切换实例主从角色。
 
@@ -3216,6 +3580,62 @@ class CdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SwitchForUpgradeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpgradeCDBProxy(self, request):
+        """调整数据库代理配置
+
+        :param request: Request instance for UpgradeCDBProxy.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.UpgradeCDBProxyRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.UpgradeCDBProxyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UpgradeCDBProxy", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpgradeCDBProxyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpgradeCDBProxyVersion(self, request):
+        """升级数据库代理版本
+
+        :param request: Request instance for UpgradeCDBProxyVersion.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.UpgradeCDBProxyVersionRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.UpgradeCDBProxyVersionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UpgradeCDBProxyVersion", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpgradeCDBProxyVersionResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

@@ -1773,6 +1773,46 @@ class ConstantParameter(AbstractModel):
         
 
 
+class CosConfig(AbstractModel):
+    """cos类型的api配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Action: API调用后端COS的方式，前端请求方法与Action的可选值为：
+GET：GetObject
+PUT：PutObject
+POST：PostObject、AppendObject
+HEAD： HeadObject
+DELETE： DeleteObject。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Action: str
+        :param BucketName: API后端COS的存储桶名。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BucketName: str
+        :param Authorization: API调用后端COS的签名开关，默认为false。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Authorization: bool
+        """
+        self.Action = None
+        self.BucketName = None
+        self.Authorization = None
+
+
+    def _deserialize(self, params):
+        self.Action = params.get("Action")
+        self.BucketName = params.get("BucketName")
+        self.Authorization = params.get("Authorization")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateAPIDocRequest(AbstractModel):
     """CreateAPIDoc请求参数结构体
 
@@ -2043,6 +2083,8 @@ class CreateApiRequest(AbstractModel):
         :type UserType: str
         :param IsBase64Encoded: 是否打开Base64编码，只有后端是scf时才会生效。
         :type IsBase64Encoded: bool
+        :param EventBusId: 事件总线ID。
+        :type EventBusId: str
         :param ServiceScfFunctionType: scf函数类型。当后端类型是SCF时生效。支持事件触发(EVENT)，http直通云函数(HTTP)。
         :type ServiceScfFunctionType: str
         :param EIAMAppType: EIAM应用类型。
@@ -2100,6 +2142,7 @@ class CreateApiRequest(AbstractModel):
         self.TargetNamespaceId = None
         self.UserType = None
         self.IsBase64Encoded = None
+        self.EventBusId = None
         self.ServiceScfFunctionType = None
         self.EIAMAppType = None
         self.EIAMAuthType = None
@@ -2196,6 +2239,7 @@ class CreateApiRequest(AbstractModel):
         self.TargetNamespaceId = params.get("TargetNamespaceId")
         self.UserType = params.get("UserType")
         self.IsBase64Encoded = params.get("IsBase64Encoded")
+        self.EventBusId = params.get("EventBusId")
         self.ServiceScfFunctionType = params.get("ServiceScfFunctionType")
         self.EIAMAppType = params.get("EIAMAppType")
         self.EIAMAuthType = params.get("EIAMAuthType")
@@ -6922,6 +6966,18 @@ class ModifyApiRequest(AbstractModel):
         :type IsBase64Trigger: bool
         :param Base64EncodedTriggerRules: Header触发规则，总规则数不能超过10。
         :type Base64EncodedTriggerRules: list of Base64EncodedTriggerRule
+        :param EventBusId: 事件总线ID。
+        :type EventBusId: str
+        :param ServiceScfFunctionType: scf函数类型。当后端类型是SCF时生效。支持事件触发(EVENT)，http直通云函数(HTTP)。
+        :type ServiceScfFunctionType: str
+        :param EIAMAppType: EIAM应用类型。
+        :type EIAMAppType: str
+        :param EIAMAuthType: EIAM应用认证类型，支持仅认证（AuthenticationOnly）、认证和鉴权（Authorization）。
+        :type EIAMAuthType: str
+        :param EIAMAppId: EIAM应用Token 有效时间，单位为秒，默认为7200秒。
+        :type EIAMAppId: str
+        :param TokenTimeout: EIAM应用ID。
+        :type TokenTimeout: int
         """
         self.ServiceId = None
         self.ServiceType = None
@@ -6971,6 +7027,12 @@ class ModifyApiRequest(AbstractModel):
         self.IsBase64Encoded = None
         self.IsBase64Trigger = None
         self.Base64EncodedTriggerRules = None
+        self.EventBusId = None
+        self.ServiceScfFunctionType = None
+        self.EIAMAppType = None
+        self.EIAMAuthType = None
+        self.EIAMAppId = None
+        self.TokenTimeout = None
 
 
     def _deserialize(self, params):
@@ -7066,6 +7128,12 @@ class ModifyApiRequest(AbstractModel):
                 obj = Base64EncodedTriggerRule()
                 obj._deserialize(item)
                 self.Base64EncodedTriggerRules.append(obj)
+        self.EventBusId = params.get("EventBusId")
+        self.ServiceScfFunctionType = params.get("ServiceScfFunctionType")
+        self.EIAMAppType = params.get("EIAMAppType")
+        self.EIAMAuthType = params.get("EIAMAuthType")
+        self.EIAMAppId = params.get("EIAMAppId")
+        self.TokenTimeout = params.get("TokenTimeout")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8198,12 +8266,16 @@ class ServiceConfig(AbstractModel):
         :type Path: str
         :param Method: API的后端服务请求方法，如 GET。如果 ServiceType 是 HTTP，则此参数必传。前后端方法可不同。
         :type Method: str
+        :param CosConfig: API后端COS配置。如果 ServiceType 是 COS，则此参数必传。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CosConfig: :class:`tencentcloud.apigateway.v20180808.models.CosConfig`
         """
         self.Product = None
         self.UniqVpcId = None
         self.Url = None
         self.Path = None
         self.Method = None
+        self.CosConfig = None
 
 
     def _deserialize(self, params):
@@ -8212,6 +8284,9 @@ class ServiceConfig(AbstractModel):
         self.Url = params.get("Url")
         self.Path = params.get("Path")
         self.Method = params.get("Method")
+        if params.get("CosConfig") is not None:
+            self.CosConfig = CosConfig()
+            self.CosConfig._deserialize(params.get("CosConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

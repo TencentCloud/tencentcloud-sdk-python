@@ -382,6 +382,8 @@ class RuntimeDeployedInstanceMC(AbstractModel):
         :type CreatedAt: int
         :param UpdatedAt: 应用实例部署更新时间
         :type UpdatedAt: int
+        :param ProjectType: 应用类型：0:NormalApp普通应用 1:TemplateApp模版应用 2:LightApp轻应用 3:MicroConnTemplate微连接模板 4:MicroConnApp微连接应用
+        :type ProjectType: int
         """
         self.GroupId = None
         self.GroupName = None
@@ -393,6 +395,7 @@ class RuntimeDeployedInstanceMC(AbstractModel):
         self.Status = None
         self.CreatedAt = None
         self.UpdatedAt = None
+        self.ProjectType = None
 
 
     def _deserialize(self, params):
@@ -406,6 +409,7 @@ class RuntimeDeployedInstanceMC(AbstractModel):
         self.Status = params.get("Status")
         self.CreatedAt = params.get("CreatedAt")
         self.UpdatedAt = params.get("UpdatedAt")
+        self.ProjectType = params.get("ProjectType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -444,6 +448,14 @@ class RuntimeMC(AbstractModel):
         :type WorkerReplica: int
         :param RunningInstanceCount: 正在运行的应用实例数量
         :type RunningInstanceCount: int
+        :param CpuUsed: 已使用cpu核数
+        :type CpuUsed: float
+        :param CpuLimit: cpu核数上限
+        :type CpuLimit: float
+        :param MemoryUsed: 已使用内存 MB
+        :type MemoryUsed: float
+        :param MemoryLimit: 内存上限 MB
+        :type MemoryLimit: float
         """
         self.RuntimeId = None
         self.Uin = None
@@ -456,6 +468,10 @@ class RuntimeMC(AbstractModel):
         self.WorkerSize = None
         self.WorkerReplica = None
         self.RunningInstanceCount = None
+        self.CpuUsed = None
+        self.CpuLimit = None
+        self.MemoryUsed = None
+        self.MemoryLimit = None
 
 
     def _deserialize(self, params):
@@ -470,6 +486,10 @@ class RuntimeMC(AbstractModel):
         self.WorkerSize = params.get("WorkerSize")
         self.WorkerReplica = params.get("WorkerReplica")
         self.RunningInstanceCount = params.get("RunningInstanceCount")
+        self.CpuUsed = params.get("CpuUsed")
+        self.CpuLimit = params.get("CpuLimit")
+        self.MemoryUsed = params.get("MemoryUsed")
+        self.MemoryLimit = params.get("MemoryLimit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

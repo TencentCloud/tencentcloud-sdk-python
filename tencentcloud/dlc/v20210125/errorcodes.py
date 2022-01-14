@@ -23,6 +23,9 @@ FAILEDOPERATION = 'FailedOperation'
 # 另一个请求正在处理中，请稍后再试。
 FAILEDOPERATION_ANOTHERREQUESTPROCESSING = 'FailedOperation.AnotherRequestProcessing'
 
+# HTTP客户端请求失败。
+FAILEDOPERATION_HTTPCLIENTDOREQUESTFAILED = 'FailedOperation.HttpClientDoRequestFailed'
+
 # 内部错误。
 INTERNALERROR = 'InternalError'
 
@@ -34,6 +37,9 @@ INVALIDPARAMETER_DUPLICATEGROUPNAME = 'InvalidParameter.DuplicateGroupName'
 
 # 重复的用户名。
 INVALIDPARAMETER_DUPLICATEUSERNAME = 'InvalidParameter.DuplicateUserName'
+
+# 无效的数据引擎名。
+INVALIDPARAMETER_INVALIDDATAENGINENAME = 'InvalidParameter.InvalidDataEngineName'
 
 # 无效的描述信息。
 INVALIDPARAMETER_INVALIDDESCRIPTION = 'InvalidParameter.InvalidDescription'

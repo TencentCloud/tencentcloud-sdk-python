@@ -842,9 +842,9 @@ class AddEditReverseShellWhiteListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param WhiteListInfo: 增加白名单信息，白名单id为空，编辑白名单id不能为空
+        :param WhiteListInfo: 增加或编辑白名单信息。新增白名单时WhiteListInfo.id为空，编辑白名单WhiteListInfo.id不能为空。
         :type WhiteListInfo: :class:`tencentcloud.tcss.v20201101.models.ReverseShellWhiteListInfo`
-        :param EventId: 仅在添加白名单时候使用
+        :param EventId: 仅在添加事件白名单时候使用
         :type EventId: str
         """
         self.WhiteListInfo = None
@@ -3032,6 +3032,7 @@ ASSET_CONTAINER, 容器
 ASSET_IMAGE, 镜像
 ASSET_HOST, 主机
 ASSET_K8S, K8S资产
+AssetTypeSet, PolicySetId, PeriodTaskId三个参数，必须要给其中一个参数填写有效的值。
         :type AssetTypeSet: list of str
         :param PolicySetId: 按照策略集ID指定的策略执行合规检查。
         :type PolicySetId: int
@@ -5052,6 +5053,10 @@ class DescribeAssetHostDetailResponse(AbstractModel):
         :type MachineType: str
         :param PublicIp: 外网ip
         :type PublicIp: str
+        :param InstanceID: 主机实例ID
+        :type InstanceID: str
+        :param RegionID: 地域ID
+        :type RegionID: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5077,6 +5082,8 @@ class DescribeAssetHostDetailResponse(AbstractModel):
         self.IsContainerd = None
         self.MachineType = None
         self.PublicIp = None
+        self.InstanceID = None
+        self.RegionID = None
         self.RequestId = None
 
 
@@ -5103,6 +5110,8 @@ class DescribeAssetHostDetailResponse(AbstractModel):
         self.IsContainerd = params.get("IsContainerd")
         self.MachineType = params.get("MachineType")
         self.PublicIp = params.get("PublicIp")
+        self.InstanceID = params.get("InstanceID")
+        self.RegionID = params.get("RegionID")
         self.RequestId = params.get("RequestId")
 
 
@@ -5125,6 +5134,7 @@ class DescribeAssetHostListRequest(AbstractModel):
 <li>HostID- string - 是否必填：否 - 主机id搜索</li>
 <li>DockerVersion- string - 是否必填：否 - docker版本搜索</li>
 <li>MachineType- string - 是否必填：否 - 主机来源MachineType搜索，"ALL":"全部"(或不传该字段),"TENCENTCLOUD":"腾讯云服务器","OTHERCLOUD":"非腾讯云服务器"</li>
+<li>DockerStatus- string - 是否必填：否 - docker安装状态，"ALL":"全部"(或不传该字段),"INSTALL":"已安装","UNINSTALL":"未安装"</li>
         :type Filters: list of AssetFilters
         :param By: 排序字段
         :type By: str
@@ -8201,6 +8211,10 @@ class DescribeComplianceTaskAssetSummaryRequest(AbstractModel):
     def __init__(self):
         r"""
         :param AssetTypeSet: 资产类型列表。
+ASSET_CONTAINER, 容器
+ASSET_IMAGE, 镜像
+ASSET_HOST, 主机
+ASSET_K8S, K8S资产
         :type AssetTypeSet: list of str
         """
         self.AssetTypeSet = None
@@ -8495,6 +8509,8 @@ class DescribeContainerSecEventSummaryResponse(AbstractModel):
         :type UnhandledAbnormalProcessCnt: int
         :param UnhandledFileCnt: 未处理文件篡改
         :type UnhandledFileCnt: int
+        :param UnhandledVirusEventCnt: 未处理木马事件
+        :type UnhandledVirusEventCnt: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -8503,6 +8519,7 @@ class DescribeContainerSecEventSummaryResponse(AbstractModel):
         self.UnhandledRiskSyscallCnt = None
         self.UnhandledAbnormalProcessCnt = None
         self.UnhandledFileCnt = None
+        self.UnhandledVirusEventCnt = None
         self.RequestId = None
 
 
@@ -8512,6 +8529,7 @@ class DescribeContainerSecEventSummaryResponse(AbstractModel):
         self.UnhandledRiskSyscallCnt = params.get("UnhandledRiskSyscallCnt")
         self.UnhandledAbnormalProcessCnt = params.get("UnhandledAbnormalProcessCnt")
         self.UnhandledFileCnt = params.get("UnhandledFileCnt")
+        self.UnhandledVirusEventCnt = params.get("UnhandledVirusEventCnt")
         self.RequestId = params.get("RequestId")
 
 
@@ -10727,6 +10745,7 @@ class DescribeVirusScanSettingResponse(AbstractModel):
         :param ScanPath: 自选排除或扫描的地址
         :type ScanPath: list of str
         :param ClickTimeout: 一键检测的超时设置
+注意：此字段可能返回 null，表示取不到有效值。
         :type ClickTimeout: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -10801,6 +10820,7 @@ SCAN_SCANNING:正在扫描中，
 SCAN_FINISH：扫描完成， 
 SCAN_TIMEOUT：扫描超时
 SCAN_CANCELING: 取消中
+SCAN_CANCELED:已取消
         :type Status: str
         :param Schedule: 扫描进度 I
         :type Schedule: int
@@ -11405,12 +11425,16 @@ class HostInfo(AbstractModel):
         :type Status: str
         :param IsContainerd: 是否是Containerd
         :type IsContainerd: bool
-        :param MachineType: 主机来源
+        :param MachineType: 主机来源：["CVM", "ECM", "LH", "BM"]  中的之一为腾讯云服务器；["Other"]之一非腾讯云服务器；
         :type MachineType: str
         :param PublicIp: 外网ip
         :type PublicIp: str
         :param Uuid: 主机uuid
         :type Uuid: str
+        :param InstanceID: 主机实例ID
+        :type InstanceID: str
+        :param RegionID: 地域ID
+        :type RegionID: int
         """
         self.HostID = None
         self.HostIP = None
@@ -11425,6 +11449,8 @@ class HostInfo(AbstractModel):
         self.MachineType = None
         self.PublicIp = None
         self.Uuid = None
+        self.InstanceID = None
+        self.RegionID = None
 
 
     def _deserialize(self, params):
@@ -11441,6 +11467,8 @@ class HostInfo(AbstractModel):
         self.MachineType = params.get("MachineType")
         self.PublicIp = params.get("PublicIp")
         self.Uuid = params.get("Uuid")
+        self.InstanceID = params.get("InstanceID")
+        self.RegionID = params.get("RegionID")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -13098,15 +13126,15 @@ class ModifyVirusScanSettingRequest(AbstractModel):
         r"""
         :param EnableScan: 是否开启定期扫描
         :type EnableScan: bool
-        :param Cycle: 检测周期每隔多少天
+        :param Cycle: 检测周期每隔多少天(1|3|7)
         :type Cycle: int
         :param BeginScanAt: 扫描开始时间
         :type BeginScanAt: str
-        :param ScanPathAll: 扫描全部路径
+        :param ScanPathAll: 扫描全部路径(true:全选,false:自选)
         :type ScanPathAll: bool
         :param ScanPathType: 当ScanPathAll为true 生效 0扫描以下路径 1、扫描除以下路径
         :type ScanPathType: int
-        :param Timeout: 超时时长
+        :param Timeout: 超时时长(5~24h)
         :type Timeout: int
         :param ScanRangeType: 扫描范围0容器1主机节点
         :type ScanRangeType: int
@@ -13173,7 +13201,7 @@ class ModifyVirusScanTimeoutSettingRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Timeout: 超时时长单位小时
+        :param Timeout: 超时时长单位小时(5~24h)
         :type Timeout: int
         :param ScanType: 设置类型0一键检测，1定时检测
         :type ScanType: int
@@ -14907,6 +14935,9 @@ FILE_ABNORMAL_DEAL_RECOVER:恢复文件时，文件异常
 BACKUP_FILE_NOT_FOUND:备份文件不存在
 CONTAINER_NOT_FOUND_DEAL_ISOLATE:隔离时，容器不存在
 CONTAINER_NOT_FOUND_DEAL_RECOVER:恢复时，容器不存在
+TIMEOUT: 超时
+TOO_MANY: 任务过多
+OFFLINE: 离线
         :type SubStatus: str
         """
         self.FileName = None

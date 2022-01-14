@@ -1433,6 +1433,21 @@ class Deal(AbstractModel):
         :type RefReturnDeals: str
         :param PayMode: 付费模式：prePay 预付费 postPay后付费 riPay预留实例
         :type PayMode: str
+        :param Action: 交易类型
+modifyNetworkMode 调整带宽模式
+modifyNetworkSize 调整带宽大小
+refund 退款
+downgrade 降配
+upgrade 升配
+renew 续费
+purchase 购买
+preMoveOut 包年包月迁出资源
+preMoveIn 包年包月迁入资源
+preToPost 预付费转后付费
+postMoveOut 按量计费迁出资源
+postMoveIn 按量计费迁入资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Action: str
         """
         self.OrderId = None
         self.Status = None
@@ -1456,6 +1471,7 @@ class Deal(AbstractModel):
         self.Formula = None
         self.RefReturnDeals = None
         self.PayMode = None
+        self.Action = None
 
 
     def _deserialize(self, params):
@@ -1486,6 +1502,7 @@ class Deal(AbstractModel):
         self.Formula = params.get("Formula")
         self.RefReturnDeals = params.get("RefReturnDeals")
         self.PayMode = params.get("PayMode")
+        self.Action = params.get("Action")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

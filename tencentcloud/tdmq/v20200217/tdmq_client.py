@@ -1762,34 +1762,6 @@ class TdmqClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeProducers(self, request):
-        """获取生产者列表，仅显示在线的生产者
-
-        :param request: Request instance for DescribeProducers.
-        :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeProducersRequest`
-        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DescribeProducersResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("DescribeProducers", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeProducersResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def DescribePublisherSummary(self, request):
         """获取消息生产概览信息
 

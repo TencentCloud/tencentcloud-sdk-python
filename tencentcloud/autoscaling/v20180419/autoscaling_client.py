@@ -54,6 +54,34 @@ class AutoscalingClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def AttachLoadBalancers(self, request):
+        """此接口（AttachLoadBalancers）用于将负载均衡器添加到伸缩组。
+
+        :param request: Request instance for AttachLoadBalancers.
+        :type request: :class:`tencentcloud.autoscaling.v20180419.models.AttachLoadBalancersRequest`
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.AttachLoadBalancersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AttachLoadBalancers", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AttachLoadBalancersResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ClearLaunchConfigurationAttributes(self, request):
         """本接口（ClearLaunchConfigurationAttributes）用于将启动配置内的特定属性完全清空。
 
@@ -917,6 +945,34 @@ class AutoscalingClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DetachLoadBalancers(self, request):
+        """本接口（DetachLoadBalancers）用于从伸缩组移出负载均衡器，本接口不会销毁负载均衡器。
+
+        :param request: Request instance for DetachLoadBalancers.
+        :type request: :class:`tencentcloud.autoscaling.v20180419.models.DetachLoadBalancersRequest`
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.DetachLoadBalancersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DetachLoadBalancers", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DetachLoadBalancersResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DisableAutoScalingGroup(self, request):
         """本接口（DisableAutoScalingGroup）用于停用指定伸缩组。
 
@@ -1077,6 +1133,34 @@ class AutoscalingClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyLaunchConfigurationAttributesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyLoadBalancerTargetAttributes(self, request):
+        """本接口（ModifyLoadBalancerTargetAttributes）用于修改伸缩组内负载均衡器的目标规则属性。
+
+        :param request: Request instance for ModifyLoadBalancerTargetAttributes.
+        :type request: :class:`tencentcloud.autoscaling.v20180419.models.ModifyLoadBalancerTargetAttributesRequest`
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.ModifyLoadBalancerTargetAttributesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyLoadBalancerTargetAttributes", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyLoadBalancerTargetAttributesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

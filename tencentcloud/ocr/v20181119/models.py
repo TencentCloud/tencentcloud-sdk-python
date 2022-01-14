@@ -531,7 +531,7 @@ class BizLicenseVerifyResult(AbstractModel):
     def __init__(self):
         r"""
         :param RegNum: “0“：一致
-“-1”：此号未查询到结果
+“-1”：不一致
         :type RegNum: str
         :param Name: “0“：一致
 “-1”：不一致
@@ -1251,6 +1251,10 @@ WARN_DRIVER_LICENSE_PS_CARD ps告警
         :type RecognizeWarnMsg: list of str
         :param IssuingAuthority: 发证单位
         :type IssuingAuthority: str
+        :param State: 状态（仅电子驾驶证支持返回该字段）
+        :type State: str
+        :param CumulativeScore: 累积记分（仅电子驾驶证支持返回该字段）
+        :type CumulativeScore: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1269,6 +1273,8 @@ WARN_DRIVER_LICENSE_PS_CARD ps告警
         self.RecognizeWarnCode = None
         self.RecognizeWarnMsg = None
         self.IssuingAuthority = None
+        self.State = None
+        self.CumulativeScore = None
         self.RequestId = None
 
 
@@ -1288,6 +1294,8 @@ WARN_DRIVER_LICENSE_PS_CARD ps告警
         self.RecognizeWarnCode = params.get("RecognizeWarnCode")
         self.RecognizeWarnMsg = params.get("RecognizeWarnMsg")
         self.IssuingAuthority = params.get("IssuingAuthority")
+        self.State = params.get("State")
+        self.CumulativeScore = params.get("CumulativeScore")
         self.RequestId = params.get("RequestId")
 
 
@@ -3085,8 +3093,8 @@ class InvoiceGeneralInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 识别出的字段名称(关键字)，支持以下字段：
-发票代码、发票号码、日期、合计金额(小写)、合计金额(大写)、购买方识别号、销售方识别号、校验码、购买方名称、销售方名称、时间、种类、发票消费类型、省、市、是否有公司印章。
+        :param Name: 识别出的字段名称(关键字)，支持以下字段识别（注：下划线表示一个字段）：
+发票代码、发票号码、日期、合计金额(小写)、合计金额(大写)、购买方识别号、销售方识别号、校验码、购买方名称、销售方名称、时间、种类、发票消费类型、省、市、是否有公司印章、发票名称、<span style="text-decoration:underline">购买方地址、电话</span>、<span style="text-decoration:underline">销售方地址、电话</span>、购买方开户行及账号、销售方开户行及账号、经办人取票用户、经办人支付信息、经办人商户号、经办人订单号、<span style="text-decoration:underline">货物或应税劳务、服务名称</span>、数量、单价、税率、税额、金额、单位、规格型号、合计税额、合计金额、备注、收款人、复核、开票人、密码区、行业分类
         :type Name: str
         :param Value: 识别出的字段名称对应的值，也就是字段Name对应的字符串结果。
         :type Value: str
@@ -3337,6 +3345,7 @@ class MLIDCardOCRResponse(AbstractModel):
 -9103	证照翻拍告警
 -9102	证照复印件告警
 -9106       证件遮挡告警
+-9107       模糊图片告警
         :type Warn: list of int
         :param Image: 证件图片
         :type Image: str

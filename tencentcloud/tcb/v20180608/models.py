@@ -2416,16 +2416,20 @@ class CreateWxCloudBaseRunServerDBClusterRequest(AbstractModel):
         :type EnvId: str
         :param WxAppId: 微信appid
         :type WxAppId: str
+        :param DbVersion: mysql内核版本，支持5.7,8.0
+        :type DbVersion: str
         """
         self.AccountPassword = None
         self.EnvId = None
         self.WxAppId = None
+        self.DbVersion = None
 
 
     def _deserialize(self, params):
         self.AccountPassword = params.get("AccountPassword")
         self.EnvId = params.get("EnvId")
         self.WxAppId = params.get("WxAppId")
+        self.DbVersion = params.get("DbVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6567,6 +6571,87 @@ class KVPair(AbstractModel):
         
 
 
+class LogObject(AbstractModel):
+    """CLS日志单条信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TopicId: 日志属于的 topic ID
+        :type TopicId: str
+        :param TopicName: 日志主题的名字
+        :type TopicName: str
+        :param Timestamp: 日志时间
+        :type Timestamp: str
+        :param Content: 日志内容
+        :type Content: str
+        :param FileName: 采集路径
+        :type FileName: str
+        :param Source: 日志来源设备
+        :type Source: str
+        """
+        self.TopicId = None
+        self.TopicName = None
+        self.Timestamp = None
+        self.Content = None
+        self.FileName = None
+        self.Source = None
+
+
+    def _deserialize(self, params):
+        self.TopicId = params.get("TopicId")
+        self.TopicName = params.get("TopicName")
+        self.Timestamp = params.get("Timestamp")
+        self.Content = params.get("Content")
+        self.FileName = params.get("FileName")
+        self.Source = params.get("Source")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LogResObject(AbstractModel):
+    """CLS日志结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Context: 获取更多检索结果的游标
+        :type Context: str
+        :param ListOver: 搜索结果是否已经全部返回
+        :type ListOver: bool
+        :param Results: 日志内容信息
+        :type Results: list of LogObject
+        """
+        self.Context = None
+        self.ListOver = None
+        self.Results = None
+
+
+    def _deserialize(self, params):
+        self.Context = params.get("Context")
+        self.ListOver = params.get("ListOver")
+        if params.get("Results") is not None:
+            self.Results = []
+            for item in params.get("Results"):
+                obj = LogObject()
+                obj._deserialize(item)
+                self.Results.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class LogServiceInfo(AbstractModel):
     """云日志服务相关信息
 
@@ -7591,6 +7676,81 @@ class RollUpdateCloudBaseRunServerVersionResponse(AbstractModel):
         self.Result = params.get("Result")
         self.VersionName = params.get("VersionName")
         self.RunId = params.get("RunId")
+        self.RequestId = params.get("RequestId")
+
+
+class SearchClsLogRequest(AbstractModel):
+    """SearchClsLog请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EnvId: 环境唯一ID
+        :type EnvId: str
+        :param StartTime: 查询起始时间条件
+        :type StartTime: str
+        :param EndTime: 查询结束时间条件
+        :type EndTime: str
+        :param QueryString: 查询语句，详情参考 https://cloud.tencent.com/document/product/614/47044
+        :type QueryString: str
+        :param Limit: 单次要返回的日志条数，单次返回的最大条数为100
+        :type Limit: int
+        :param Context: 加载更多使用，透传上次返回的 context 值，获取后续的日志内容，通过游标最多可获取10000条，请尽可能缩小时间范围
+        :type Context: str
+        :param Sort: 按时间排序 asc（升序）或者 desc（降序），默认为 desc
+        :type Sort: str
+        :param UseLucene: 是否使用Lucene语法，默认为false
+        :type UseLucene: bool
+        """
+        self.EnvId = None
+        self.StartTime = None
+        self.EndTime = None
+        self.QueryString = None
+        self.Limit = None
+        self.Context = None
+        self.Sort = None
+        self.UseLucene = None
+
+
+    def _deserialize(self, params):
+        self.EnvId = params.get("EnvId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.QueryString = params.get("QueryString")
+        self.Limit = params.get("Limit")
+        self.Context = params.get("Context")
+        self.Sort = params.get("Sort")
+        self.UseLucene = params.get("UseLucene")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SearchClsLogResponse(AbstractModel):
+    """SearchClsLog返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LogResults: 日志内容结果
+        :type LogResults: :class:`tencentcloud.tcb.v20180608.models.LogResObject`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.LogResults = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("LogResults") is not None:
+            self.LogResults = LogResObject()
+            self.LogResults._deserialize(params.get("LogResults"))
         self.RequestId = params.get("RequestId")
 
 

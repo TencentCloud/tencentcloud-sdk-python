@@ -243,7 +243,7 @@ class CreateConsoleLoginUrlRequest(AbstractModel):
         :type ProxyOperatorName: str
         :param Operator: 操作者的信息
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
-        :param Module: 控制台指定模块，文件/合同管理:"DOCUMENT"，模版管理:"TEMPLATE"，印章管理:"SEAL"，组织架构/人员:"OPERATOR"，空字符串："账号信息"
+        :param Module: 控制台指定模块，文件/合同管理:"DOCUMENT"，模板管理:"TEMPLATE"，印章管理:"SEAL"，组织架构/人员:"OPERATOR"，空字符串："账号信息"
         :type Module: str
         :param ModuleId: 控制台指定模块Id
         :type ModuleId: str
@@ -598,7 +598,7 @@ class DescribeTemplatesRequest(AbstractModel):
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         :param Operator: 操作者的信息
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
-        :param TemplateId: 模版唯一标识
+        :param TemplateId: 模板唯一标识
         :type TemplateId: str
         """
         self.Agent = None
@@ -841,10 +841,10 @@ class FlowApproverInfo(AbstractModel):
         r"""
         :param Name: 签署人姓名
         :type Name: str
-        :param Mobile: 签署人手机号，脱敏显示
-        :type Mobile: str
         :param IdCardNumber: 经办人身份证号
         :type IdCardNumber: str
+        :param Mobile: 签署人手机号，脱敏显示
+        :type Mobile: str
         :param JumpUrl: 签署完前端跳转的url，暂未使用
         :type JumpUrl: str
         :param Deadline: 签署截止时间
@@ -857,28 +857,44 @@ class FlowApproverInfo(AbstractModel):
         :type OpenId: str
         :param PreReadTime: 合同的强制预览时间：3~300s，未指定则按合同页数计算
         :type PreReadTime: int
+        :param ComponentLimitType: 个人签署方指定签署控件类型，目前仅支持：OCR_ESIGN(AI智慧手写签名)
+        :type ComponentLimitType: list of str
+        :param RecipientId: 流程签署人在模板中对应的签署人Id；在非单方签署、以及非B2C签署的场景下必传，用于指定当前签署方在流程中的位置；
+        :type RecipientId: str
+        :param OrganizationName: 同一渠道下其他合作企业OpenId，签署人为非发起方企业员工场景下必传；
+        :type OrganizationName: str
+        :param OrganizationOpenId: 同一渠道下其他合作企业OpenId，签署人为非发起方企业员工场景下必传；
+        :type OrganizationOpenId: str
         """
         self.Name = None
-        self.Mobile = None
         self.IdCardNumber = None
+        self.Mobile = None
         self.JumpUrl = None
         self.Deadline = None
         self.CallbackUrl = None
         self.ApproverType = None
         self.OpenId = None
         self.PreReadTime = None
+        self.ComponentLimitType = None
+        self.RecipientId = None
+        self.OrganizationName = None
+        self.OrganizationOpenId = None
 
 
     def _deserialize(self, params):
         self.Name = params.get("Name")
-        self.Mobile = params.get("Mobile")
         self.IdCardNumber = params.get("IdCardNumber")
+        self.Mobile = params.get("Mobile")
         self.JumpUrl = params.get("JumpUrl")
         self.Deadline = params.get("Deadline")
         self.CallbackUrl = params.get("CallbackUrl")
         self.ApproverType = params.get("ApproverType")
         self.OpenId = params.get("OpenId")
         self.PreReadTime = params.get("PreReadTime")
+        self.ComponentLimitType = params.get("ComponentLimitType")
+        self.RecipientId = params.get("RecipientId")
+        self.OrganizationName = params.get("OrganizationName")
+        self.OrganizationOpenId = params.get("OrganizationOpenId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -978,7 +994,7 @@ class FlowInfo(AbstractModel):
         :type FlowDescription: str
         :param CustomerData: 渠道的业务信息，限制1024字符
         :type CustomerData: str
-        :param CcInfos: 被抄送人的信息列表
+        :param CcInfos: 被抄送人的信息列表，抄送功能暂不开放
         :type CcInfos: list of CcInfo
         """
         self.FlowName = None
@@ -1177,7 +1193,7 @@ class OperateChannelTemplateRequest(AbstractModel):
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         :param AuthTag: 模板可见性, 全部可见-"all", 部分可见-"part"
         :type AuthTag: str
-        :param ProxyOrganizationOpenIds: 合作企业方第三方机构唯一标识数据
+        :param ProxyOrganizationOpenIds: 合作企业方第三方机构唯一标识数据，支持多个， 用","进行分隔
         :type ProxyOrganizationOpenIds: str
         """
         self.Agent = None
@@ -1393,6 +1409,8 @@ class Recipient(AbstractModel):
         :type SignType: int
         :param RoutingOrder: 签署顺序：数字越小优先级越高
         :type RoutingOrder: int
+        :param IsPromoter: 是否是发起方
+        :type IsPromoter: bool
         """
         self.RecipientId = None
         self.RecipientType = None
@@ -1402,6 +1420,7 @@ class Recipient(AbstractModel):
         self.RequireSign = None
         self.SignType = None
         self.RoutingOrder = None
+        self.IsPromoter = None
 
 
     def _deserialize(self, params):
@@ -1413,6 +1432,7 @@ class Recipient(AbstractModel):
         self.RequireSign = params.get("RequireSign")
         self.SignType = params.get("SignType")
         self.RoutingOrder = params.get("RoutingOrder")
+        self.IsPromoter = params.get("IsPromoter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1731,7 +1751,7 @@ class TemplateInfo(AbstractModel):
         :type Creator: str
         :param CreatedOn: 模板创建的时间戳（精确到秒）
         :type CreatedOn: int
-        :param TemplateType: 模板类型：1-静默签；2-静默签授权；3-普通模版
+        :param TemplateType: 模板类型：1-静默签；2-静默签授权；3-普通模板
         :type TemplateType: int
         :param Recipients: 模板中的流程参与人信息
         :type Recipients: list of Recipient

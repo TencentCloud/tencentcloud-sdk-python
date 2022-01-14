@@ -65,6 +65,9 @@ FAILEDOPERATION_CERTIFICATEIDVERIFYFAIL = 'FailedOperation.CertificateIdVerifyFa
 # Apis 证书为空，请上传证书。
 FAILEDOPERATION_CERTIFICATEISNULL = 'FailedOperation.CertificateIsNull'
 
+# 调用CLS服务失败。
+FAILEDOPERATION_CLSERROR = 'FailedOperation.ClsError'
+
 # API文档操作失败。
 FAILEDOPERATION_CODINGERROR = 'FailedOperation.CodingError'
 
@@ -418,6 +421,9 @@ UNSUPPORTEDOPERATION_ALREADYBINDUSAGEPLAN = 'UnsupportedOperation.AlreadyBindUsa
 
 # 当前插件不支持绑定。
 UNSUPPORTEDOPERATION_ATTACHPLUGIN = 'UnsupportedOperation.AttachPlugin'
+
+# 日志检索起始时间间隔。
+UNSUPPORTEDOPERATION_CLSSEARCHTIME = 'UnsupportedOperation.ClsSearchTime'
 
 # 协议为HTTP时，不支持强制Https。
 UNSUPPORTEDOPERATION_FORCEHTTPS = 'UnsupportedOperation.ForceHttps'

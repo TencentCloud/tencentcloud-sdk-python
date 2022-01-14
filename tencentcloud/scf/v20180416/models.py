@@ -2345,7 +2345,7 @@ class GetRequestStatusRequest(AbstractModel):
         :type Namespace: str
         :param StartTime: 查询的开始时间，例如：2017-05-16 20:00:00，不填默认为当前时间 - 15min
         :type StartTime: str
-        :param EndTime: 查询的结束时间，例如：2017-05-16 20:59:59，不填默认为当前时间。EndTime 需要晚于 StartTime。
+        :param EndTime: 查询的结束时间，例如：2017-05-16 20:59:59。StartTime 为空时，EndTime 默认为当前时间；StartTime 有值时，需要同时传 EndTime。EndTime 需要晚于 StartTime。
         :type EndTime: str
         """
         self.FunctionName = None
@@ -2696,9 +2696,9 @@ class LayerVersionSimple(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LayerName: layer名称
+        :param LayerName: 绑定的层名称。解绑层需传递空字符串。
         :type LayerName: str
-        :param LayerVersion: 版本号
+        :param LayerVersion: 绑定或解绑层的版本号。解绑函数版本关联的最后一个层版本时，LayerVersion 填 0。
         :type LayerVersion: int
         """
         self.LayerName = None
@@ -4375,16 +4375,21 @@ class TriggerAction(AbstractModel):
         :param TriggerCronConfig: 设置定时触发器的时间配置，cron表达式。Cron 表达式有七个必需字段，按空格分隔。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TriggerCronConfig: str
+        :param ProvisionedType: 预置类型 Default
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProvisionedType: str
         """
         self.TriggerName = None
         self.TriggerProvisionedConcurrencyNum = None
         self.TriggerCronConfig = None
+        self.ProvisionedType = None
 
 
     def _deserialize(self, params):
         self.TriggerName = params.get("TriggerName")
         self.TriggerProvisionedConcurrencyNum = params.get("TriggerProvisionedConcurrencyNum")
         self.TriggerCronConfig = params.get("TriggerCronConfig")
+        self.ProvisionedType = params.get("ProvisionedType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

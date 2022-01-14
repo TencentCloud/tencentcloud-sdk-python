@@ -586,7 +586,7 @@ class CreateTaskRequest(AbstractModel):
         r"""
         :param Task: 计算任务，该参数中包含任务类型及其相关配置信息
         :type Task: :class:`tencentcloud.dlc.v20210125.models.Task`
-        :param DatabaseName: 数据库名称。任务在执行前均会USE该数据库， 除了首次建库时，其他情况建议均添加上。
+        :param DatabaseName: 数据库名称。如果SQL语句中有数据库名称，优先使用SQL语句中的数据库，否则使用该参数指定的数据库（注：当提交建库sql时，该字段传空字符串）。
         :type DatabaseName: str
         :param DatasourceConnectionName: 默认数据源名称。
         :type DatasourceConnectionName: str
@@ -703,7 +703,7 @@ class CreateTasksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DatabaseName: 数据库名称。如果SQL语句中有数据库名称，优先使用SQL语句中的数据库，否则使用该参数指定的数据库。
+        :param DatabaseName: 数据库名称。如果SQL语句中有数据库名称，优先使用SQL语句中的数据库，否则使用该参数指定的数据库（注：当提交建库sql时，该字段传空字符串）。
         :type DatabaseName: str
         :param Tasks: SQL任务信息
         :type Tasks: :class:`tencentcloud.dlc.v20210125.models.TasksInfo`
@@ -1600,7 +1600,6 @@ task-id - String - （任务ID准确过滤）task-id取值形如：e386471f-139a
 task-state - String - （任务状态过滤）取值范围 0(初始化)， 1(运行中)， 2(成功)， -1(失败)。
 task-sql-keyword - String - （SQL语句关键字模糊过滤）取值形如：DROP TABLE。
 task-operator- string （子uin过滤）
-task-type -string （任务类型过滤）分导入任务和sql任务
         :type Filters: list of Filter
         :param SortBy: 排序字段，支持如下字段类型，create-time（创建时间，默认）、update-time（更新时间）
         :type SortBy: str

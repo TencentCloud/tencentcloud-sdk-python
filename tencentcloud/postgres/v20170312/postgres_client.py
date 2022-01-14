@@ -54,6 +54,34 @@ class PostgresClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CloneDBInstance(self, request):
+        """用于克隆实例，支持指定备份集、指定时间点进行克隆。
+
+        :param request: Request instance for CloneDBInstance.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.CloneDBInstanceRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.CloneDBInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CloneDBInstance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CloneDBInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CloseDBExtranetAccess(self, request):
         """本接口（CloseDBExtranetAccess）用于关闭实例外网链接。
 
@@ -320,6 +348,90 @@ class PostgresClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAccountsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAvailableRecoveryTime(self, request):
+        """本接口（DescribeAvailableRecoveryTime）用于查询实例可恢复的时间范围。
+
+        :param request: Request instance for DescribeAvailableRecoveryTime.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeAvailableRecoveryTimeRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.DescribeAvailableRecoveryTimeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAvailableRecoveryTime", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAvailableRecoveryTimeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeBackupPlans(self, request):
+        """本接口 (DescribeBackupPlans) 用于实例所有的备份计划查询
+
+        :param request: Request instance for DescribeBackupPlans.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeBackupPlansRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.DescribeBackupPlansResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeBackupPlans", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBackupPlansResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeCloneDBInstanceSpec(self, request):
+        """本接口（DescribeCloneDBInstanceSpec）用于查询克隆实例可选择的最小规格，包括SpecCode和磁盘。
+
+        :param request: Request instance for DescribeCloneDBInstanceSpec.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeCloneDBInstanceSpecRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.DescribeCloneDBInstanceSpecResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCloneDBInstanceSpec", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCloneDBInstanceSpecResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1020,6 +1132,62 @@ class PostgresClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAccountRemarkResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyBackupPlan(self, request):
+        """本接口 (ModifyBackupPlan) 用于实例备份计划的修改，默认是在每天的凌晨开始全量备份，备份保留时长是7天。可以根据此接口指定时间进行实例的备份。
+
+        :param request: Request instance for ModifyBackupPlan.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.ModifyBackupPlanRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.ModifyBackupPlanResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyBackupPlan", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyBackupPlanResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyDBInstanceDeployment(self, request):
+        """本接口（ModifyDBInstanceDeployment）用于修改节点可用区部署方式，仅支持主实例。
+
+        :param request: Request instance for ModifyDBInstanceDeployment.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.ModifyDBInstanceDeploymentRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.ModifyDBInstanceDeploymentResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyDBInstanceDeployment", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyDBInstanceDeploymentResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

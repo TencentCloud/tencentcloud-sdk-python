@@ -580,7 +580,7 @@ class CreateSnapshotRequest(AbstractModel):
         :type DiskId: str
         :param SnapshotName: 快照名称，不传则新快照名称默认为“未命名”。
         :type SnapshotName: str
-        :param Deadline: 快照的到期时间，到期后该快照将会自动删除
+        :param Deadline: 快照的到期时间，到期后该快照将会自动删除,需要传入UTC时间下的ISO-8601标准时间格式,例如:2022-01-08T09:47:55+00:00
         :type Deadline: str
         """
         self.DiskId = None
@@ -1517,6 +1517,8 @@ class Disk(AbstractModel):
         :type Shareable: bool
         :param CreateTime: 云硬盘的创建时间。
         :type CreateTime: str
+        :param DeleteSnapshot: 销毁云盘时删除关联的非永久保留快照。0 表示非永久快照不随云盘销毁而销毁，1表示非永久快照随云盘销毁而销毁，默认取0。快照是否永久保留可以通过DescribeSnapshots接口返回的快照详情的IsPermanent字段来判断，true表示永久快照，false表示非永久快照。
+        :type DeleteSnapshot: int
         """
         self.DeleteWithInstance = None
         self.RenewFlag = None
@@ -1553,6 +1555,7 @@ class Disk(AbstractModel):
         self.ReturnFailCode = None
         self.Shareable = None
         self.CreateTime = None
+        self.DeleteSnapshot = None
 
 
     def _deserialize(self, params):
@@ -1598,6 +1601,7 @@ class Disk(AbstractModel):
         self.ReturnFailCode = params.get("ReturnFailCode")
         self.Shareable = params.get("Shareable")
         self.CreateTime = params.get("CreateTime")
+        self.DeleteSnapshot = params.get("DeleteSnapshot")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1846,6 +1850,47 @@ class Image(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class InitializeDisksRequest(AbstractModel):
+    """InitializeDisks请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DiskIds: 待重新初始化的云硬盘ID列表， 单次初始化限制20块以内
+        :type DiskIds: list of str
+        """
+        self.DiskIds = None
+
+
+    def _deserialize(self, params):
+        self.DiskIds = params.get("DiskIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InitializeDisksResponse(AbstractModel):
+    """InitializeDisks返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class InquirePriceModifyDiskExtraPerformanceRequest(AbstractModel):
@@ -2981,12 +3026,16 @@ class TerminateDisksRequest(AbstractModel):
         r"""
         :param DiskIds: 需退还的云盘ID列表。
         :type DiskIds: list of str
+        :param DeleteSnapshot: 销毁云盘时删除关联的非永久保留快照。0 表示非永久快照不随云盘销毁而销毁，1表示非永久快照随云盘销毁而销毁，默认取0。快照是否永久保留可以通过DescribeSnapshots接口返回的快照详情的IsPermanent字段来判断，true表示永久快照，false表示非永久快照。
+        :type DeleteSnapshot: int
         """
         self.DiskIds = None
+        self.DeleteSnapshot = None
 
 
     def _deserialize(self, params):
         self.DiskIds = params.get("DiskIds")
+        self.DeleteSnapshot = params.get("DeleteSnapshot")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

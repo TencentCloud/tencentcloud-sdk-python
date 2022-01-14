@@ -230,6 +230,83 @@ class CreateDBDiagReportUrlResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateKillTaskRequest(AbstractModel):
+    """CreateKillTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: kill会话任务的关联实例ID。
+        :type InstanceId: str
+        :param Duration: 任务持续时间时间，单位秒，手动关闭任务传-1。
+        :type Duration: int
+        :param Host: 任务过滤条件，客户端IP。
+        :type Host: str
+        :param DB: 任务过滤条件，数据库库名,多个","隔开。
+        :type DB: str
+        :param Command: 任务过滤条件，相关命令，多个","隔开。
+        :type Command: str
+        :param Info: 任务过滤条件，支持单条件前缀匹配。
+        :type Info: str
+        :param User: 任务过滤条件，用户类型。
+        :type User: str
+        :param Time: 任务过滤条件，会话持续时长，单位秒。
+        :type Time: int
+        :param Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
+        :type Product: str
+        """
+        self.InstanceId = None
+        self.Duration = None
+        self.Host = None
+        self.DB = None
+        self.Command = None
+        self.Info = None
+        self.User = None
+        self.Time = None
+        self.Product = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Duration = params.get("Duration")
+        self.Host = params.get("Host")
+        self.DB = params.get("DB")
+        self.Command = params.get("Command")
+        self.Info = params.get("Info")
+        self.User = params.get("User")
+        self.Time = params.get("Time")
+        self.Product = params.get("Product")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateKillTaskResponse(AbstractModel):
+    """CreateKillTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Status: kill会话任务创建成功返回1
+        :type Status: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Status = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateMailProfileRequest(AbstractModel):
     """CreateMailProfile请求参数结构体
 
@@ -290,6 +367,55 @@ class CreateMailProfileResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreateProxySessionKillTaskRequest(AbstractModel):
+    """CreateProxySessionKillTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例 ID。
+        :type InstanceId: str
+        :param Product: 服务产品类型，支持值包括： "redis" - 云数据库 Redis。
+        :type Product: str
+        """
+        self.InstanceId = None
+        self.Product = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Product = params.get("Product")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateProxySessionKillTaskResponse(AbstractModel):
+    """CreateProxySessionKillTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AsyncRequestId: 创建 kill 会话任务返回的异步任务 id
+        :type AsyncRequestId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AsyncRequestId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AsyncRequestId = params.get("AsyncRequestId")
         self.RequestId = params.get("RequestId")
 
 

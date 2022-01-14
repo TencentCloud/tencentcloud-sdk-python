@@ -251,6 +251,34 @@ class MariadbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateHourDBInstance(self, request):
+        """创建后付费实例
+
+        :param request: Request instance for CreateHourDBInstance.
+        :type request: :class:`tencentcloud.mariadb.v20170312.models.CreateHourDBInstanceRequest`
+        :rtype: :class:`tencentcloud.mariadb.v20170312.models.CreateHourDBInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateHourDBInstance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateHourDBInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateTmpInstances(self, request):
         """本接口（CreateTmpInstances）用于创建临时实例。
 
@@ -1624,6 +1652,34 @@ class MariadbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RestartDBInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SwitchDBInstanceHA(self, request):
+        """本接口（SwitchDBInstanceHA）用于发起实例主备切换。
+
+        :param request: Request instance for SwitchDBInstanceHA.
+        :type request: :class:`tencentcloud.mariadb.v20170312.models.SwitchDBInstanceHARequest`
+        :rtype: :class:`tencentcloud.mariadb.v20170312.models.SwitchDBInstanceHAResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SwitchDBInstanceHA", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SwitchDBInstanceHAResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

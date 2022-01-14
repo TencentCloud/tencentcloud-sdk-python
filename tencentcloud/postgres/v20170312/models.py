@@ -183,6 +183,171 @@ class AnalysisItems(AbstractModel):
         
 
 
+class BackupPlan(AbstractModel):
+    """备份计划
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BackupPeriod: 备份周期
+        :type BackupPeriod: str
+        :param BaseBackupRetentionPeriod: 基础备份保留时长
+        :type BaseBackupRetentionPeriod: int
+        :param MinBackupStartTime: 开始备份的最早时间
+        :type MinBackupStartTime: str
+        :param MaxBackupStartTime: 开始备份的最晚时间
+        :type MaxBackupStartTime: str
+        """
+        self.BackupPeriod = None
+        self.BaseBackupRetentionPeriod = None
+        self.MinBackupStartTime = None
+        self.MaxBackupStartTime = None
+
+
+    def _deserialize(self, params):
+        self.BackupPeriod = params.get("BackupPeriod")
+        self.BaseBackupRetentionPeriod = params.get("BaseBackupRetentionPeriod")
+        self.MinBackupStartTime = params.get("MinBackupStartTime")
+        self.MaxBackupStartTime = params.get("MaxBackupStartTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloneDBInstanceRequest(AbstractModel):
+    """CloneDBInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DBInstanceId: 克隆的源实例ID。
+        :type DBInstanceId: str
+        :param SpecCode: 售卖规格ID。该参数可以通过调用DescribeProductConfig的返回值中的SpecCode字段来获取。
+        :type SpecCode: str
+        :param Storage: 实例容量大小，单位：GB。
+        :type Storage: int
+        :param Period: 购买时长，单位：月。目前只支持1,2,3,4,5,6,7,8,9,10,11,12,24,36这些值，按量计费模式下该参数传1。
+        :type Period: int
+        :param AutoRenewFlag: 续费标记：0-正常续费（默认）；1-自动续费。
+        :type AutoRenewFlag: int
+        :param VpcId: 私有网络ID。
+        :type VpcId: str
+        :param SubnetId: 已配置的私有网络中的子网ID。
+        :type SubnetId: str
+        :param Name: 新购实例的实例名称。
+        :type Name: str
+        :param InstanceChargeType: 实例计费类型。目前支持：PREPAID（预付费，即包年包月），POSTPAID_BY_HOUR（后付费，即按量计费）。
+        :type InstanceChargeType: str
+        :param SecurityGroupIds: 安全组ID。
+        :type SecurityGroupIds: list of str
+        :param ProjectId: 项目ID。
+        :type ProjectId: int
+        :param TagList: 实例需要绑定的Tag信息，默认为空。
+        :type TagList: list of Tag
+        :param DBNodeSet: 购买多可用区实例时填写。
+        :type DBNodeSet: list of DBNode
+        :param AutoVoucher: 是否自动使用代金券。1（是），0（否），默认不使用。
+        :type AutoVoucher: int
+        :param VoucherIds: 代金券ID列表。
+        :type VoucherIds: str
+        :param ActivityId: 活动ID。
+        :type ActivityId: int
+        :param BackupSetId: 基础备份集ID。
+        :type BackupSetId: str
+        :param RecoveryTargetTime: 恢复时间点。
+        :type RecoveryTargetTime: str
+        """
+        self.DBInstanceId = None
+        self.SpecCode = None
+        self.Storage = None
+        self.Period = None
+        self.AutoRenewFlag = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.Name = None
+        self.InstanceChargeType = None
+        self.SecurityGroupIds = None
+        self.ProjectId = None
+        self.TagList = None
+        self.DBNodeSet = None
+        self.AutoVoucher = None
+        self.VoucherIds = None
+        self.ActivityId = None
+        self.BackupSetId = None
+        self.RecoveryTargetTime = None
+
+
+    def _deserialize(self, params):
+        self.DBInstanceId = params.get("DBInstanceId")
+        self.SpecCode = params.get("SpecCode")
+        self.Storage = params.get("Storage")
+        self.Period = params.get("Period")
+        self.AutoRenewFlag = params.get("AutoRenewFlag")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.Name = params.get("Name")
+        self.InstanceChargeType = params.get("InstanceChargeType")
+        self.SecurityGroupIds = params.get("SecurityGroupIds")
+        self.ProjectId = params.get("ProjectId")
+        if params.get("TagList") is not None:
+            self.TagList = []
+            for item in params.get("TagList"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.TagList.append(obj)
+        if params.get("DBNodeSet") is not None:
+            self.DBNodeSet = []
+            for item in params.get("DBNodeSet"):
+                obj = DBNode()
+                obj._deserialize(item)
+                self.DBNodeSet.append(obj)
+        self.AutoVoucher = params.get("AutoVoucher")
+        self.VoucherIds = params.get("VoucherIds")
+        self.ActivityId = params.get("ActivityId")
+        self.BackupSetId = params.get("BackupSetId")
+        self.RecoveryTargetTime = params.get("RecoveryTargetTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloneDBInstanceResponse(AbstractModel):
+    """CloneDBInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DealName: 订单号。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DealName: str
+        :param BillId: 订单流水号。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BillId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DealName = None
+        self.BillId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DealName = params.get("DealName")
+        self.BillId = params.get("BillId")
+        self.RequestId = params.get("RequestId")
+
+
 class CloseDBExtranetAccessRequest(AbstractModel):
     """CloseDBExtranetAccess请求参数结构体
 
@@ -464,6 +629,8 @@ class CreateInstancesRequest(AbstractModel):
         :type DBMajorVersion: str
         :param DBKernelVersion: PostgreSQL内核版本。当输入该参数时，会创建该内核版本号实例
         :type DBKernelVersion: str
+        :param DBNodeSet: 实例节点信息，购买跨可用区实例时填写。
+        :type DBNodeSet: list of DBNode
         """
         self.SpecCode = None
         self.Storage = None
@@ -488,6 +655,7 @@ class CreateInstancesRequest(AbstractModel):
         self.SecurityGroupIds = None
         self.DBMajorVersion = None
         self.DBKernelVersion = None
+        self.DBNodeSet = None
 
 
     def _deserialize(self, params):
@@ -519,6 +687,12 @@ class CreateInstancesRequest(AbstractModel):
         self.SecurityGroupIds = params.get("SecurityGroupIds")
         self.DBMajorVersion = params.get("DBMajorVersion")
         self.DBKernelVersion = params.get("DBKernelVersion")
+        if params.get("DBNodeSet") is not None:
+            self.DBNodeSet = []
+            for item in params.get("DBNodeSet"):
+                obj = DBNode()
+                obj._deserialize(item)
+                self.DBNodeSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -885,6 +1059,9 @@ class DBBackup(AbstractModel):
         :type InternalAddr: str
         :param ExternalAddr: 外网下载地址
         :type ExternalAddr: str
+        :param SetId: 备份集ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SetId: str
         """
         self.Id = None
         self.StartTime = None
@@ -897,6 +1074,7 @@ class DBBackup(AbstractModel):
         self.DbList = None
         self.InternalAddr = None
         self.ExternalAddr = None
+        self.SetId = None
 
 
     def _deserialize(self, params):
@@ -911,6 +1089,7 @@ class DBBackup(AbstractModel):
         self.DbList = params.get("DbList")
         self.InternalAddr = params.get("InternalAddr")
         self.ExternalAddr = params.get("ExternalAddr")
+        self.SetId = params.get("SetId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1005,6 +1184,9 @@ class DBInstance(AbstractModel):
         :param DBMajorVersion: PostgreSQL主要版本
 注意：此字段可能返回 null，表示取不到有效值。
         :type DBMajorVersion: str
+        :param DBNodeSet: 实例的节点信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DBNodeSet: list of DBNode
         """
         self.Region = None
         self.Zone = None
@@ -1041,6 +1223,7 @@ class DBInstance(AbstractModel):
         self.DBKernelVersion = None
         self.NetworkAccessList = None
         self.DBMajorVersion = None
+        self.DBNodeSet = None
 
 
     def _deserialize(self, params):
@@ -1094,6 +1277,12 @@ class DBInstance(AbstractModel):
                 obj._deserialize(item)
                 self.NetworkAccessList.append(obj)
         self.DBMajorVersion = params.get("DBMajorVersion")
+        if params.get("DBNodeSet") is not None:
+            self.DBNodeSet = []
+            for item in params.get("DBNodeSet"):
+                obj = DBNode()
+                obj._deserialize(item)
+                self.DBNodeSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1144,6 +1333,36 @@ class DBInstanceNetInfo(AbstractModel):
         self.Status = params.get("Status")
         self.VpcId = params.get("VpcId")
         self.SubnetId = params.get("SubnetId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DBNode(AbstractModel):
+    """描述实例节点信息，包括节点类型、节点所在可用区。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Role: 节点类型，值可以为：
+Primary，代表主节点；
+Standby，代表备节点。
+        :type Role: str
+        :param Zone: 节点所在可用区，例如 ap-guangzhou-1。
+        :type Zone: str
+        """
+        self.Role = None
+        self.Zone = None
+
+
+    def _deserialize(self, params):
+        self.Role = params.get("Role")
+        self.Zone = params.get("Zone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1311,6 +1530,162 @@ class DescribeAccountsResponse(AbstractModel):
                 obj = AccountInfo()
                 obj._deserialize(item)
                 self.Details.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAvailableRecoveryTimeRequest(AbstractModel):
+    """DescribeAvailableRecoveryTime请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DBInstanceId: 实例ID
+        :type DBInstanceId: str
+        """
+        self.DBInstanceId = None
+
+
+    def _deserialize(self, params):
+        self.DBInstanceId = params.get("DBInstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAvailableRecoveryTimeResponse(AbstractModel):
+    """DescribeAvailableRecoveryTime返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RecoveryBeginTime: 可恢复的最早时间，时区为东八区（UTC+8）。
+        :type RecoveryBeginTime: str
+        :param RecoveryEndTime: 可恢复的最晚时间，时区为东八区（UTC+8）。
+        :type RecoveryEndTime: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RecoveryBeginTime = None
+        self.RecoveryEndTime = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RecoveryBeginTime = params.get("RecoveryBeginTime")
+        self.RecoveryEndTime = params.get("RecoveryEndTime")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeBackupPlansRequest(AbstractModel):
+    """DescribeBackupPlans请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DBInstanceId: 实例ID
+        :type DBInstanceId: str
+        """
+        self.DBInstanceId = None
+
+
+    def _deserialize(self, params):
+        self.DBInstanceId = params.get("DBInstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBackupPlansResponse(AbstractModel):
+    """DescribeBackupPlans返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Plans: 实例的备份计划集
+        :type Plans: list of BackupPlan
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Plans = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Plans") is not None:
+            self.Plans = []
+            for item in params.get("Plans"):
+                obj = BackupPlan()
+                obj._deserialize(item)
+                self.Plans.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCloneDBInstanceSpecRequest(AbstractModel):
+    """DescribeCloneDBInstanceSpec请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DBInstanceId: 实例ID。
+        :type DBInstanceId: str
+        :param BackupSetId: 基础备份集ID，此入参和RecoveryTargetTime必须选择一个传入。如与RecoveryTargetTime参数同时设置，则以此参数为准。
+        :type BackupSetId: str
+        :param RecoveryTargetTime: 恢复目标时间，此入参和BackupSetId必须选择一个传入。时区以东八区（UTC+8）为准。
+        :type RecoveryTargetTime: str
+        """
+        self.DBInstanceId = None
+        self.BackupSetId = None
+        self.RecoveryTargetTime = None
+
+
+    def _deserialize(self, params):
+        self.DBInstanceId = params.get("DBInstanceId")
+        self.BackupSetId = params.get("BackupSetId")
+        self.RecoveryTargetTime = params.get("RecoveryTargetTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCloneDBInstanceSpecResponse(AbstractModel):
+    """DescribeCloneDBInstanceSpec返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MinSpecCode: 可购买的最小规格码。
+        :type MinSpecCode: str
+        :param MinStorage: 可购买的最小磁盘容量，单位GB。
+        :type MinStorage: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.MinSpecCode = None
+        self.MinStorage = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.MinSpecCode = params.get("MinSpecCode")
+        self.MinStorage = params.get("MinStorage")
         self.RequestId = params.get("RequestId")
 
 
@@ -3039,6 +3414,125 @@ class ModifyAccountRemarkRequest(AbstractModel):
 
 class ModifyAccountRemarkResponse(AbstractModel):
     """ModifyAccountRemark返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyBackupPlanRequest(AbstractModel):
+    """ModifyBackupPlan请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DBInstanceId: 实例ID
+        :type DBInstanceId: str
+        :param MinBackupStartTime: 实例最早开始备份时间
+        :type MinBackupStartTime: str
+        :param MaxBackupStartTime: 实例最晚开始备份时间
+        :type MaxBackupStartTime: str
+        :param BaseBackupRetentionPeriod: 实例备份保留时长，取值范围为3-7，单位是天
+        :type BaseBackupRetentionPeriod: int
+        :param BackupPeriod: 实例备份周期，按照星期维度，格式为小写星期英文单词
+        :type BackupPeriod: list of str
+        """
+        self.DBInstanceId = None
+        self.MinBackupStartTime = None
+        self.MaxBackupStartTime = None
+        self.BaseBackupRetentionPeriod = None
+        self.BackupPeriod = None
+
+
+    def _deserialize(self, params):
+        self.DBInstanceId = params.get("DBInstanceId")
+        self.MinBackupStartTime = params.get("MinBackupStartTime")
+        self.MaxBackupStartTime = params.get("MaxBackupStartTime")
+        self.BaseBackupRetentionPeriod = params.get("BaseBackupRetentionPeriod")
+        self.BackupPeriod = params.get("BackupPeriod")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyBackupPlanResponse(AbstractModel):
+    """ModifyBackupPlan返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyDBInstanceDeploymentRequest(AbstractModel):
+    """ModifyDBInstanceDeployment请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DBInstanceId: 实例ID。
+        :type DBInstanceId: str
+        :param DBNodeSet: 实例节点信息。
+        :type DBNodeSet: list of DBNode
+        :param SwitchTag: 切换时间，默认为 立即切换，入参为 0 ：立即切换 。1：指定时间切换。
+        :type SwitchTag: int
+        :param SwitchStartTime: 切换开始时间，时间格式：HH:MM:SS，例如：01:00:00。
+        :type SwitchStartTime: str
+        :param SwitchEndTime: 切换截止时间，时间格式：HH:MM:SS，例如：01:30:00。
+        :type SwitchEndTime: str
+        """
+        self.DBInstanceId = None
+        self.DBNodeSet = None
+        self.SwitchTag = None
+        self.SwitchStartTime = None
+        self.SwitchEndTime = None
+
+
+    def _deserialize(self, params):
+        self.DBInstanceId = params.get("DBInstanceId")
+        if params.get("DBNodeSet") is not None:
+            self.DBNodeSet = []
+            for item in params.get("DBNodeSet"):
+                obj = DBNode()
+                obj._deserialize(item)
+                self.DBNodeSet.append(obj)
+        self.SwitchTag = params.get("SwitchTag")
+        self.SwitchStartTime = params.get("SwitchStartTime")
+        self.SwitchEndTime = params.get("SwitchEndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDBInstanceDeploymentResponse(AbstractModel):
+    """ModifyDBInstanceDeployment返回参数结构体
 
     """
 
@@ -4859,16 +5353,20 @@ class ZoneInfo(AbstractModel):
         :type ZoneName: str
         :param ZoneId: 该可用区对应的数字编号
         :type ZoneId: int
-        :param ZoneState: 可用状态，UNAVAILABLE表示不可用，AVAILABLE表示可用
+        :param ZoneState: 可用状态，UNAVAILABLE表示不可用，AVAILABLE表示可用，SELLOUT表示售罄
         :type ZoneState: str
         :param ZoneSupportIpv6: 该可用区是否支持Ipv6
         :type ZoneSupportIpv6: int
+        :param StandbyZoneSet: 该可用区对应的备可用区集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StandbyZoneSet: list of str
         """
         self.Zone = None
         self.ZoneName = None
         self.ZoneId = None
         self.ZoneState = None
         self.ZoneSupportIpv6 = None
+        self.StandbyZoneSet = None
 
 
     def _deserialize(self, params):
@@ -4877,6 +5375,7 @@ class ZoneInfo(AbstractModel):
         self.ZoneId = params.get("ZoneId")
         self.ZoneState = params.get("ZoneState")
         self.ZoneSupportIpv6 = params.get("ZoneSupportIpv6")
+        self.StandbyZoneSet = params.get("StandbyZoneSet")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
