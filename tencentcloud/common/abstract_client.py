@@ -340,10 +340,6 @@ class AbstractClient(object):
         resp = self.request.send_request(req)
         self._check_status(resp)
         data = resp.data
-        if sys.version_info[0] > 2:
-            data = data.decode()
-        else:
-            data = data.decode('UTF-8')
 
         json_rsp = json.loads(data)
         if "Error" in json_rsp["Response"]:
