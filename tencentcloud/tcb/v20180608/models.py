@@ -2416,16 +2416,20 @@ class CreateWxCloudBaseRunServerDBClusterRequest(AbstractModel):
         :type EnvId: str
         :param WxAppId: 微信appid
         :type WxAppId: str
+        :param DbVersion: mysql内核版本，支持5.7,8.0
+        :type DbVersion: str
         """
         self.AccountPassword = None
         self.EnvId = None
         self.WxAppId = None
+        self.DbVersion = None
 
 
     def _deserialize(self, params):
         self.AccountPassword = params.get("AccountPassword")
         self.EnvId = params.get("EnvId")
         self.WxAppId = params.get("WxAppId")
+        self.DbVersion = params.get("DbVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

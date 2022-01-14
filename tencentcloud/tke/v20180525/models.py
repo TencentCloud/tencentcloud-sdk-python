@@ -10075,6 +10075,8 @@ class UpdateEKSClusterRequest(AbstractModel):
         :type NeedDeleteCbs: bool
         :param ProxyLB: 标记是否是新的内外网。默认为false
         :type ProxyLB: bool
+        :param ExtraParam: 扩展参数。须是map[string]string 的json 格式。
+        :type ExtraParam: str
         """
         self.ClusterId = None
         self.ClusterName = None
@@ -10087,6 +10089,7 @@ class UpdateEKSClusterRequest(AbstractModel):
         self.ClearDnsServer = None
         self.NeedDeleteCbs = None
         self.ProxyLB = None
+        self.ExtraParam = None
 
 
     def _deserialize(self, params):
@@ -10110,6 +10113,7 @@ class UpdateEKSClusterRequest(AbstractModel):
         self.ClearDnsServer = params.get("ClearDnsServer")
         self.NeedDeleteCbs = params.get("NeedDeleteCbs")
         self.ProxyLB = params.get("ProxyLB")
+        self.ExtraParam = params.get("ExtraParam")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

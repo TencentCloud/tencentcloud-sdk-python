@@ -1251,6 +1251,10 @@ WARN_DRIVER_LICENSE_PS_CARD ps告警
         :type RecognizeWarnMsg: list of str
         :param IssuingAuthority: 发证单位
         :type IssuingAuthority: str
+        :param State: 状态（仅电子驾驶证支持返回该字段）
+        :type State: str
+        :param CumulativeScore: 累积记分（仅电子驾驶证支持返回该字段）
+        :type CumulativeScore: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1269,6 +1273,8 @@ WARN_DRIVER_LICENSE_PS_CARD ps告警
         self.RecognizeWarnCode = None
         self.RecognizeWarnMsg = None
         self.IssuingAuthority = None
+        self.State = None
+        self.CumulativeScore = None
         self.RequestId = None
 
 
@@ -1288,6 +1294,8 @@ WARN_DRIVER_LICENSE_PS_CARD ps告警
         self.RecognizeWarnCode = params.get("RecognizeWarnCode")
         self.RecognizeWarnMsg = params.get("RecognizeWarnMsg")
         self.IssuingAuthority = params.get("IssuingAuthority")
+        self.State = params.get("State")
+        self.CumulativeScore = params.get("CumulativeScore")
         self.RequestId = params.get("RequestId")
 
 

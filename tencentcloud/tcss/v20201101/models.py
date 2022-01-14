@@ -8509,6 +8509,8 @@ class DescribeContainerSecEventSummaryResponse(AbstractModel):
         :type UnhandledAbnormalProcessCnt: int
         :param UnhandledFileCnt: 未处理文件篡改
         :type UnhandledFileCnt: int
+        :param UnhandledVirusEventCnt: 未处理木马事件
+        :type UnhandledVirusEventCnt: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -8517,6 +8519,7 @@ class DescribeContainerSecEventSummaryResponse(AbstractModel):
         self.UnhandledRiskSyscallCnt = None
         self.UnhandledAbnormalProcessCnt = None
         self.UnhandledFileCnt = None
+        self.UnhandledVirusEventCnt = None
         self.RequestId = None
 
 
@@ -8526,6 +8529,7 @@ class DescribeContainerSecEventSummaryResponse(AbstractModel):
         self.UnhandledRiskSyscallCnt = params.get("UnhandledRiskSyscallCnt")
         self.UnhandledAbnormalProcessCnt = params.get("UnhandledAbnormalProcessCnt")
         self.UnhandledFileCnt = params.get("UnhandledFileCnt")
+        self.UnhandledVirusEventCnt = params.get("UnhandledVirusEventCnt")
         self.RequestId = params.get("RequestId")
 
 
@@ -10741,6 +10745,7 @@ class DescribeVirusScanSettingResponse(AbstractModel):
         :param ScanPath: 自选排除或扫描的地址
         :type ScanPath: list of str
         :param ClickTimeout: 一键检测的超时设置
+注意：此字段可能返回 null，表示取不到有效值。
         :type ClickTimeout: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -10815,6 +10820,7 @@ SCAN_SCANNING:正在扫描中，
 SCAN_FINISH：扫描完成， 
 SCAN_TIMEOUT：扫描超时
 SCAN_CANCELING: 取消中
+SCAN_CANCELED:已取消
         :type Status: str
         :param Schedule: 扫描进度 I
         :type Schedule: int
@@ -13120,15 +13126,15 @@ class ModifyVirusScanSettingRequest(AbstractModel):
         r"""
         :param EnableScan: 是否开启定期扫描
         :type EnableScan: bool
-        :param Cycle: 检测周期每隔多少天
+        :param Cycle: 检测周期每隔多少天(1|3|7)
         :type Cycle: int
         :param BeginScanAt: 扫描开始时间
         :type BeginScanAt: str
-        :param ScanPathAll: 扫描全部路径
+        :param ScanPathAll: 扫描全部路径(true:全选,false:自选)
         :type ScanPathAll: bool
         :param ScanPathType: 当ScanPathAll为true 生效 0扫描以下路径 1、扫描除以下路径
         :type ScanPathType: int
-        :param Timeout: 超时时长
+        :param Timeout: 超时时长(5~24h)
         :type Timeout: int
         :param ScanRangeType: 扫描范围0容器1主机节点
         :type ScanRangeType: int
@@ -13195,7 +13201,7 @@ class ModifyVirusScanTimeoutSettingRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Timeout: 超时时长单位小时
+        :param Timeout: 超时时长单位小时(5~24h)
         :type Timeout: int
         :param ScanType: 设置类型0一键检测，1定时检测
         :type ScanType: int
@@ -14929,6 +14935,9 @@ FILE_ABNORMAL_DEAL_RECOVER:恢复文件时，文件异常
 BACKUP_FILE_NOT_FOUND:备份文件不存在
 CONTAINER_NOT_FOUND_DEAL_ISOLATE:隔离时，容器不存在
 CONTAINER_NOT_FOUND_DEAL_RECOVER:恢复时，容器不存在
+TIMEOUT: 超时
+TOO_MANY: 任务过多
+OFFLINE: 离线
         :type SubStatus: str
         """
         self.FileName = None

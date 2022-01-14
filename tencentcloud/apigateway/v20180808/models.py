@@ -2083,6 +2083,8 @@ class CreateApiRequest(AbstractModel):
         :type UserType: str
         :param IsBase64Encoded: 是否打开Base64编码，只有后端是scf时才会生效。
         :type IsBase64Encoded: bool
+        :param EventBusId: 事件总线ID。
+        :type EventBusId: str
         :param ServiceScfFunctionType: scf函数类型。当后端类型是SCF时生效。支持事件触发(EVENT)，http直通云函数(HTTP)。
         :type ServiceScfFunctionType: str
         :param EIAMAppType: EIAM应用类型。
@@ -2140,6 +2142,7 @@ class CreateApiRequest(AbstractModel):
         self.TargetNamespaceId = None
         self.UserType = None
         self.IsBase64Encoded = None
+        self.EventBusId = None
         self.ServiceScfFunctionType = None
         self.EIAMAppType = None
         self.EIAMAuthType = None
@@ -2236,6 +2239,7 @@ class CreateApiRequest(AbstractModel):
         self.TargetNamespaceId = params.get("TargetNamespaceId")
         self.UserType = params.get("UserType")
         self.IsBase64Encoded = params.get("IsBase64Encoded")
+        self.EventBusId = params.get("EventBusId")
         self.ServiceScfFunctionType = params.get("ServiceScfFunctionType")
         self.EIAMAppType = params.get("EIAMAppType")
         self.EIAMAuthType = params.get("EIAMAuthType")
@@ -6962,6 +6966,18 @@ class ModifyApiRequest(AbstractModel):
         :type IsBase64Trigger: bool
         :param Base64EncodedTriggerRules: Header触发规则，总规则数不能超过10。
         :type Base64EncodedTriggerRules: list of Base64EncodedTriggerRule
+        :param EventBusId: 事件总线ID。
+        :type EventBusId: str
+        :param ServiceScfFunctionType: scf函数类型。当后端类型是SCF时生效。支持事件触发(EVENT)，http直通云函数(HTTP)。
+        :type ServiceScfFunctionType: str
+        :param EIAMAppType: EIAM应用类型。
+        :type EIAMAppType: str
+        :param EIAMAuthType: EIAM应用认证类型，支持仅认证（AuthenticationOnly）、认证和鉴权（Authorization）。
+        :type EIAMAuthType: str
+        :param EIAMAppId: EIAM应用Token 有效时间，单位为秒，默认为7200秒。
+        :type EIAMAppId: str
+        :param TokenTimeout: EIAM应用ID。
+        :type TokenTimeout: int
         """
         self.ServiceId = None
         self.ServiceType = None
@@ -7011,6 +7027,12 @@ class ModifyApiRequest(AbstractModel):
         self.IsBase64Encoded = None
         self.IsBase64Trigger = None
         self.Base64EncodedTriggerRules = None
+        self.EventBusId = None
+        self.ServiceScfFunctionType = None
+        self.EIAMAppType = None
+        self.EIAMAuthType = None
+        self.EIAMAppId = None
+        self.TokenTimeout = None
 
 
     def _deserialize(self, params):
@@ -7106,6 +7128,12 @@ class ModifyApiRequest(AbstractModel):
                 obj = Base64EncodedTriggerRule()
                 obj._deserialize(item)
                 self.Base64EncodedTriggerRules.append(obj)
+        self.EventBusId = params.get("EventBusId")
+        self.ServiceScfFunctionType = params.get("ServiceScfFunctionType")
+        self.EIAMAppType = params.get("EIAMAppType")
+        self.EIAMAuthType = params.get("EIAMAuthType")
+        self.EIAMAppId = params.get("EIAMAppId")
+        self.TokenTimeout = params.get("TokenTimeout")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

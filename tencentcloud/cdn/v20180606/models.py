@@ -109,9 +109,11 @@ class AddCdnDomainRequest(AbstractModel):
         :param Domain: 域名
         :type Domain: str
         :param ServiceType: 加速域名业务类型
-web：静态加速
-download：下载加速
-media：流媒体点播加速
+web：网页小文件
+download：下载大文件
+media：音视频点播
+hybrid:  动静加速
+dynamic:  动态加速
         :type ServiceType: str
         :param Origin: 源站配置
         :type Origin: :class:`tencentcloud.cdn.v20180606.models.Origin`
@@ -180,7 +182,7 @@ global：全球加速
         :type Ipv6Access: :class:`tencentcloud.cdn.v20180606.models.Ipv6Access`
         :param OfflineCache: 离线缓存
         :type OfflineCache: :class:`tencentcloud.cdn.v20180606.models.OfflineCache`
-        :param Quic: QUIC正在内测中，请先提交内测申请，详情请前往QUIC产品文档。
+        :param Quic: Quic访问（收费服务，详见计费说明和产品文档）
         :type Quic: :class:`tencentcloud.cdn.v20180606.models.Quic`
         :param AwsPrivateAccess: 回源S3私有鉴权
         :type AwsPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.AwsPrivateAccess`
@@ -13878,7 +13880,7 @@ global：全球加速
         :type OfflineCache: :class:`tencentcloud.cdn.v20180606.models.OfflineCache`
         :param OriginCombine: 合并回源
         :type OriginCombine: :class:`tencentcloud.cdn.v20180606.models.OriginCombine`
-        :param Quic: QUIC正在内测中，请先提交内测申请，详情请前往QUIC产品文档。
+        :param Quic: Quic访问（收费服务，详见计费说明和产品文档）
         :type Quic: :class:`tencentcloud.cdn.v20180606.models.Quic`
         :param OssPrivateAccess: 回源OSS私有鉴权
         :type OssPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.OssPrivateAccess`

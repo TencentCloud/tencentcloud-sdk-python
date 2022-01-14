@@ -1302,7 +1302,7 @@ class DescribeApplicationResponse(AbstractModel):
         :param ClientId: 客户端id。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClientId: str
-        :param ApplicationType: 应用类型，即创建应用时所选择的应用模版类型。
+        :param ApplicationType: 应用类型，即创建应用时所选择的应用模板类型。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApplicationType: str
         :param CreatedDate: 应用创建时间，符合 ISO8601 标准。

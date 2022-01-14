@@ -628,7 +628,7 @@ class Cluster(AbstractModel):
         :param HealthyInfo: 集群健康信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type HealthyInfo: str
-        :param Status: 集群状态，0:创建中，1:正常，2:删除中，3:已删除，5:创建失败，6: 删除失败
+        :param Status: 集群状态，0:创建中，1:正常，2:销毁中，3:已删除，4: 隔离中，5:创建失败，6: 删除失败
         :type Status: int
         :param MaxNamespaceNum: 最大命名空间数量
         :type MaxNamespaceNum: int
