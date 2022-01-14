@@ -5,6 +5,7 @@ import os
 import socket
 import logging
 import requests
+import certifi
 
 try:
     from urllib.parse import urlparse
@@ -35,6 +36,8 @@ class ProxyConnection(object):
         else:
             proxy = proxy or _get_proxy_from_env(host, varname="HTTPS_PROXY")
         if proxy:
+            if not certification:
+                self.certification = certifi.where()
             if is_http:
                 self.proxy = {"http": proxy}
             else:
