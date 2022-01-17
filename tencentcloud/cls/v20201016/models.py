@@ -3464,7 +3464,7 @@ class KeyValueInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Key: 需要配置键值或者元字段索引的字段
+        :param Key: 需要配置键值或者元字段索引的字段，元字段Key无需额外添加`__TAG__.`前缀，与上传日志时对应的字段Key一致即可，腾讯云控制台展示时将自动添加`__TAG__.`前缀
         :type Key: str
         :param Value: 字段的索引描述信息
         :type Value: :class:`tencentcloud.cls.v20201016.models.ValueInfo`
@@ -4210,7 +4210,7 @@ class ModifyIndexRequest(AbstractModel):
         :type TopicId: str
         :param Status: 默认不生效
         :type Status: bool
-        :param Rule: 索引规则，Rule和Effective两个必须有一个参数存在
+        :param Rule: 索引规则
         :type Rule: :class:`tencentcloud.cls.v20201016.models.RuleInfo`
         """
         self.TopicId = None
@@ -4786,7 +4786,7 @@ class RuleKeyValueInfo(AbstractModel):
 
 
 class RuleTagInfo(AbstractModel):
-    """标签索引配置信息
+    """元字段索引配置
 
     """
 
@@ -4794,7 +4794,7 @@ class RuleTagInfo(AbstractModel):
         r"""
         :param CaseSensitive: 是否大小写敏感
         :type CaseSensitive: bool
-        :param KeyValues: 标签索引配置中的字段信息
+        :param KeyValues: 元字段索引配置中的字段信息
         :type KeyValues: list of KeyValueInfo
         """
         self.CaseSensitive = None

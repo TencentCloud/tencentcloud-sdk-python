@@ -503,7 +503,7 @@ class CfwClient(AbstractClient):
 
 
     def DescribeAddrTemplateList(self, request):
-        """获取地址模版列表
+        """获取地址模板列表
 
         :param request: Request instance for DescribeAddrTemplateList.
         :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeAddrTemplateListRequest`
@@ -1612,6 +1612,34 @@ class CfwClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyResourceGroupResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyRunSyncAsset(self, request):
+        """同步资产-互联网&VPC（新）
+
+        :param request: Request instance for ModifyRunSyncAsset.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.ModifyRunSyncAssetRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.ModifyRunSyncAssetResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyRunSyncAsset", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyRunSyncAssetResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

@@ -3988,6 +3988,12 @@ class DescribeCDBProxyResponse(AbstractModel):
         :param ConnectionPoolInfo: 连接池信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type ConnectionPoolInfo: :class:`tencentcloud.cdb.v20170320.models.ConnectionPoolInfo`
+        :param Count: 代理数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Count: int
+        :param ProxyGroup: 代理信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProxyGroup: list of ProxyGroup
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3996,6 +4002,8 @@ class DescribeCDBProxyResponse(AbstractModel):
         self.ProxyNode = None
         self.RWInstInfo = None
         self.ConnectionPoolInfo = None
+        self.Count = None
+        self.ProxyGroup = None
         self.RequestId = None
 
 
@@ -4015,6 +4023,13 @@ class DescribeCDBProxyResponse(AbstractModel):
         if params.get("ConnectionPoolInfo") is not None:
             self.ConnectionPoolInfo = ConnectionPoolInfo()
             self.ConnectionPoolInfo._deserialize(params.get("ConnectionPoolInfo"))
+        self.Count = params.get("Count")
+        if params.get("ProxyGroup") is not None:
+            self.ProxyGroup = []
+            for item in params.get("ProxyGroup"):
+                obj = ProxyGroup()
+                obj._deserialize(item)
+                self.ProxyGroup.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -9422,6 +9437,67 @@ class PoolConf(AbstractModel):
         self.ConnectionPoolType = params.get("ConnectionPoolType")
         self.MaxPoolConnectionTimeOut = params.get("MaxPoolConnectionTimeOut")
         self.MinPoolConnectionTimeOut = params.get("MinPoolConnectionTimeOut")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProxyGroup(AbstractModel):
+    """数据代理组信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BaseGroup: 代理基本信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BaseGroup: :class:`tencentcloud.cdb.v20170320.models.BaseGroupInfo`
+        :param Address: 代理地址信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Address: list of Address
+        :param ConnectionPoolInfo: 代理连接池信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConnectionPoolInfo: :class:`tencentcloud.cdb.v20170320.models.ConnectionPoolInfo`
+        :param ProxyNode: 代理节点信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProxyNode: list of ProxyNodeInfo
+        :param RWInstInfo: 代理路由信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RWInstInfo: :class:`tencentcloud.cdb.v20170320.models.RWInfo`
+        """
+        self.BaseGroup = None
+        self.Address = None
+        self.ConnectionPoolInfo = None
+        self.ProxyNode = None
+        self.RWInstInfo = None
+
+
+    def _deserialize(self, params):
+        if params.get("BaseGroup") is not None:
+            self.BaseGroup = BaseGroupInfo()
+            self.BaseGroup._deserialize(params.get("BaseGroup"))
+        if params.get("Address") is not None:
+            self.Address = []
+            for item in params.get("Address"):
+                obj = Address()
+                obj._deserialize(item)
+                self.Address.append(obj)
+        if params.get("ConnectionPoolInfo") is not None:
+            self.ConnectionPoolInfo = ConnectionPoolInfo()
+            self.ConnectionPoolInfo._deserialize(params.get("ConnectionPoolInfo"))
+        if params.get("ProxyNode") is not None:
+            self.ProxyNode = []
+            for item in params.get("ProxyNode"):
+                obj = ProxyNodeInfo()
+                obj._deserialize(item)
+                self.ProxyNode.append(obj)
+        if params.get("RWInstInfo") is not None:
+            self.RWInstInfo = RWInfo()
+            self.RWInstInfo._deserialize(params.get("RWInstInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -1282,6 +1282,8 @@ class DescribeCertificatesRequest(AbstractModel):
         :type Upload: int
         :param Renew: 是否筛选可续期证书 1筛选 0不筛选
         :type Renew: int
+        :param FilterSource: 筛选来源， upload：上传证书， buy：腾讯云证书， 不传默认全部
+        :type FilterSource: str
         """
         self.Offset = None
         self.Limit = None
@@ -1293,6 +1295,7 @@ class DescribeCertificatesRequest(AbstractModel):
         self.Deployable = None
         self.Upload = None
         self.Renew = None
+        self.FilterSource = None
 
 
     def _deserialize(self, params):
@@ -1306,6 +1309,7 @@ class DescribeCertificatesRequest(AbstractModel):
         self.Deployable = params.get("Deployable")
         self.Upload = params.get("Upload")
         self.Renew = params.get("Renew")
+        self.FilterSource = params.get("FilterSource")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

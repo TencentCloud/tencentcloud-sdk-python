@@ -6121,6 +6121,9 @@ class EnvInfo(AbstractModel):
         :param CustomLogServices: 自定义日志服务
 注意：此字段可能返回 null，表示取不到有效值。
         :type CustomLogServices: list of ClsInfo
+        :param EnvType: 环境类型：baas, run, hoting, weda
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnvType: str
         """
         self.EnvId = None
         self.Source = None
@@ -6142,6 +6145,7 @@ class EnvInfo(AbstractModel):
         self.Region = None
         self.Tags = None
         self.CustomLogServices = None
+        self.EnvType = None
 
 
     def _deserialize(self, params):
@@ -6200,6 +6204,7 @@ class EnvInfo(AbstractModel):
                 obj = ClsInfo()
                 obj._deserialize(item)
                 self.CustomLogServices.append(obj)
+        self.EnvType = params.get("EnvType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

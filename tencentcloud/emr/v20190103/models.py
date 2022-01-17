@@ -785,6 +785,34 @@ class CustomMetaInfo(AbstractModel):
         
 
 
+class CustomServiceDefine(AbstractModel):
+    """共用自建组件参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 自定义参数key
+        :type Name: str
+        :param Value: 自定义参数value
+        :type Value: str
+        """
+        self.Name = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DescribeClusterNodesRequest(AbstractModel):
     """DescribeClusterNodes请求参数结构体
 
@@ -1424,6 +1452,47 @@ class Execution(AbstractModel):
         
 
 
+class ExternalService(AbstractModel):
+    """共用组件信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ShareType: 共用组件类型，EMR/CUSTOM
+        :type ShareType: str
+        :param CustomServiceDefineList: 自定义参数集合
+        :type CustomServiceDefineList: list of CustomServiceDefine
+        :param Service: 共用组件名
+        :type Service: str
+        :param InstanceId: 共用组件集群
+        :type InstanceId: str
+        """
+        self.ShareType = None
+        self.CustomServiceDefineList = None
+        self.Service = None
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.ShareType = params.get("ShareType")
+        if params.get("CustomServiceDefineList") is not None:
+            self.CustomServiceDefineList = []
+            for item in params.get("CustomServiceDefineList"):
+                obj = CustomServiceDefine()
+                obj._deserialize(item)
+                self.CustomServiceDefineList.append(obj)
+        self.Service = params.get("Service")
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class HostVolumeContext(AbstractModel):
     """Pod HostPath挂载方式描述
 
@@ -1594,6 +1663,8 @@ Hadoop-Zookeeper
 Hadoop-Presto
 Hadoop-Hbase
         :type SceneName: str
+        :param ExternalService: 共用组件信息
+        :type ExternalService: list of ExternalService
         """
         self.TimeUnit = None
         self.TimeSpan = None
@@ -1609,6 +1680,7 @@ Hadoop-Hbase
         self.MetaDBInfo = None
         self.ProductId = None
         self.SceneName = None
+        self.ExternalService = None
 
 
     def _deserialize(self, params):
@@ -1634,6 +1706,12 @@ Hadoop-Hbase
             self.MetaDBInfo._deserialize(params.get("MetaDBInfo"))
         self.ProductId = params.get("ProductId")
         self.SceneName = params.get("SceneName")
+        if params.get("ExternalService") is not None:
+            self.ExternalService = []
+            for item in params.get("ExternalService"):
+                obj = ExternalService()
+                obj._deserialize(item)
+                self.ExternalService.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

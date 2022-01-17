@@ -18,6 +18,36 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class APMKVItem(AbstractModel):
+    """Apm通用KV结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Key: Key值定义
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: str
+        :param Value: Value值定义
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        """
+        self.Key = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ApmAgentInfo(AbstractModel):
     """apm Agent信息
 
@@ -59,6 +89,55 @@ class ApmAgentInfo(AbstractModel):
         self.PublicCollectorURL = params.get("PublicCollectorURL")
         self.InnerCollectorURL = params.get("InnerCollectorURL")
         self.PrivateLinkCollectorURL = params.get("PrivateLinkCollectorURL")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ApmField(AbstractModel):
+    """指标维度信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CompareVal: 昨日同比指标值，已弃用，不建议使用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CompareVal: str
+        :param CompareVals: Compare值结果数组，推荐使用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CompareVals: list of APMKVItem
+        :param Value: 指标值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: float
+        :param Unit: 指标所对应的单位
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Unit: str
+        :param Key: 请求数
+        :type Key: str
+        """
+        self.CompareVal = None
+        self.CompareVals = None
+        self.Value = None
+        self.Unit = None
+        self.Key = None
+
+
+    def _deserialize(self, params):
+        self.CompareVal = params.get("CompareVal")
+        if params.get("CompareVals") is not None:
+            self.CompareVals = []
+            for item in params.get("CompareVals"):
+                obj = APMKVItem()
+                obj._deserialize(item)
+                self.CompareVals.append(obj)
+        self.Value = params.get("Value")
+        self.Unit = params.get("Unit")
+        self.Key = params.get("Key")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -192,6 +271,44 @@ class ApmInstanceDetail(AbstractModel):
         self.LogSource = params.get("LogSource")
         self.IsRelatedLog = params.get("IsRelatedLog")
         self.LogTopicID = params.get("LogTopicID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ApmMetricRecord(AbstractModel):
+    """指标列表单元
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Fields: field数组
+        :type Fields: list of ApmField
+        :param Tags: tag数组
+        :type Tags: list of ApmTag
+        """
+        self.Fields = None
+        self.Tags = None
+
+
+    def _deserialize(self, params):
+        if params.get("Fields") is not None:
+            self.Fields = []
+            for item in params.get("Fields"):
+                obj = ApmField()
+                obj._deserialize(item)
+                self.Fields.append(obj)
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = ApmTag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -418,3 +535,190 @@ class DescribeApmInstancesResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Instances.append(obj)
         self.RequestId = params.get("RequestId")
+
+
+class DescribeMetricRecordsRequest(AbstractModel):
+    """DescribeMetricRecords请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Filters: 过滤条件
+        :type Filters: list of Filter
+        :param Metrics: 指标列表
+        :type Metrics: list of QueryMetricItem
+        :param GroupBy: 聚合维度
+        :type GroupBy: list of str
+        :param OrderBy: 排序
+        :type OrderBy: :class:`tencentcloud.apm.v20210622.models.OrderBy`
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param Limit: 每页大小
+        :type Limit: int
+        :param StartTime: 开始时间
+        :type StartTime: int
+        :param Offset: 分页起始点
+        :type Offset: int
+        :param EndTime: 结束时间
+        :type EndTime: int
+        """
+        self.Filters = None
+        self.Metrics = None
+        self.GroupBy = None
+        self.OrderBy = None
+        self.InstanceId = None
+        self.Limit = None
+        self.StartTime = None
+        self.Offset = None
+        self.EndTime = None
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        if params.get("Metrics") is not None:
+            self.Metrics = []
+            for item in params.get("Metrics"):
+                obj = QueryMetricItem()
+                obj._deserialize(item)
+                self.Metrics.append(obj)
+        self.GroupBy = params.get("GroupBy")
+        if params.get("OrderBy") is not None:
+            self.OrderBy = OrderBy()
+            self.OrderBy._deserialize(params.get("OrderBy"))
+        self.InstanceId = params.get("InstanceId")
+        self.Limit = params.get("Limit")
+        self.StartTime = params.get("StartTime")
+        self.Offset = params.get("Offset")
+        self.EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeMetricRecordsResponse(AbstractModel):
+    """DescribeMetricRecords返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Records: 指标结果集
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Records: list of ApmMetricRecord
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Records = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Records") is not None:
+            self.Records = []
+            for item in params.get("Records"):
+                obj = ApmMetricRecord()
+                obj._deserialize(item)
+                self.Records.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class Filter(AbstractModel):
+    """查询过滤参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Type: 过滤方式（=, !=, in）
+        :type Type: str
+        :param Key: 过滤维度名
+        :type Key: str
+        :param Value: 过滤值，in过滤方式用逗号分割多个值
+        :type Value: str
+        """
+        self.Type = None
+        self.Key = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.Key = params.get("Key")
+        self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OrderBy(AbstractModel):
+    """sql排序字段
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Key: 需要排序的字段
+        :type Key: str
+        :param Value: 顺序排序/倒序排序
+        :type Value: str
+        """
+        self.Key = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryMetricItem(AbstractModel):
+    """查询
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MetricName: 指标名
+        :type MetricName: str
+        :param Compare: 同比，已弃用，不建议使用
+        :type Compare: str
+        :param Compares: 同比，支持多种同比方式
+        :type Compares: list of str
+        """
+        self.MetricName = None
+        self.Compare = None
+        self.Compares = None
+
+
+    def _deserialize(self, params):
+        self.MetricName = params.get("MetricName")
+        self.Compare = params.get("Compare")
+        self.Compares = params.get("Compares")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        

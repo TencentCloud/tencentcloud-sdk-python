@@ -786,16 +786,20 @@ class DescribeRoomInfoRequest(AbstractModel):
         r"""
         :param SdkAppId: 应用ID，登录[控制台 - 服务管理](https://console.cloud.tencent.com/gamegme)创建应用得到的AppID
         :type SdkAppId: int
-        :param RoomIds: 房间号列表，最大不能超过10个
+        :param RoomIds: 房间号列表，最大不能超过10个（RoomIds、StrRoomIds必须填一个）
         :type RoomIds: list of int non-negative
+        :param StrRoomIds: 字符串类型房间号列表，最大不能超过10个（RoomIds、StrRoomIds必须填一个）
+        :type StrRoomIds: list of str
         """
         self.SdkAppId = None
         self.RoomIds = None
+        self.StrRoomIds = None
 
 
     def _deserialize(self, params):
         self.SdkAppId = params.get("SdkAppId")
         self.RoomIds = params.get("RoomIds")
+        self.StrRoomIds = params.get("StrRoomIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1292,14 +1296,19 @@ class RoomUser(AbstractModel):
         :param Uins: 房间里用户uin列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Uins: list of int non-negative
+        :param StrRoomId: 字符串房间id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StrRoomId: str
         """
         self.RoomId = None
         self.Uins = None
+        self.StrRoomId = None
 
 
     def _deserialize(self, params):
         self.RoomId = params.get("RoomId")
         self.Uins = params.get("Uins")
+        self.StrRoomId = params.get("StrRoomId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

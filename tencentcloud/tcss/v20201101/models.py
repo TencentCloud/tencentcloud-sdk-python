@@ -14938,6 +14938,8 @@ CONTAINER_NOT_FOUND_DEAL_RECOVER:恢复时，容器不存在
 TIMEOUT: 超时
 TOO_MANY: 任务过多
 OFFLINE: 离线
+INTERNAL: 服务内部错误
+VALIDATION: 参数非法
         :type SubStatus: str
         """
         self.FileName = None

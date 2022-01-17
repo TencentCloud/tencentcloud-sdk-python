@@ -976,7 +976,7 @@ class FlowInfo(AbstractModel):
         :type FlowName: str
         :param Deadline: 签署截止时间戳，超过有效签署时间则该签署流程失败
         :type Deadline: int
-        :param TemplateId: 模版ID
+        :param TemplateId: 模板ID
         :type TemplateId: str
         :param FlowType: 合同类型：
 1. “劳务”
@@ -1162,7 +1162,7 @@ class GetDownloadFlowUrlResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DownLoadUrl: 进入合同（流程）下载确认页面链接
+        :param DownLoadUrl: 合同（流程）下载地址
         :type DownLoadUrl: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

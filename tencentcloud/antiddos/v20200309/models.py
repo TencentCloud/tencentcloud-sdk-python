@@ -18,6 +18,55 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AclConfig(AbstractModel):
+    """基于端口的acl策略
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ForwardProtocol: 协议类型, 可取值tcp, udp, all
+        :type ForwardProtocol: str
+        :param DPortStart: 目的端口起始，可取值范围0~65535
+        :type DPortStart: int
+        :param DPortEnd: 目的端口结束，可取值范围0~65535
+        :type DPortEnd: int
+        :param SPortStart: 来源端口起始，可取值范围0~65535
+        :type SPortStart: int
+        :param SPortEnd: 来源端口结束，可取值范围0~65535
+        :type SPortEnd: int
+        :param Action: 动作，可取值：drop， transmit， forward
+        :type Action: str
+        :param Priority: 策略优先级，数字越小，级别越高，该规则越靠前匹配，取值1-1000
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Priority: int
+        """
+        self.ForwardProtocol = None
+        self.DPortStart = None
+        self.DPortEnd = None
+        self.SPortStart = None
+        self.SPortEnd = None
+        self.Action = None
+        self.Priority = None
+
+
+    def _deserialize(self, params):
+        self.ForwardProtocol = params.get("ForwardProtocol")
+        self.DPortStart = params.get("DPortStart")
+        self.DPortEnd = params.get("DPortEnd")
+        self.SPortStart = params.get("SPortStart")
+        self.SPortEnd = params.get("SPortEnd")
+        self.Action = params.get("Action")
+        self.Priority = params.get("Priority")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AssociateDDoSEipAddressRequest(AbstractModel):
     """AssociateDDoSEipAddress请求参数结构体
 
@@ -1131,6 +1180,100 @@ class CreatePacketFilterConfigRequest(AbstractModel):
 
 class CreatePacketFilterConfigResponse(AbstractModel):
     """CreatePacketFilterConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreatePortAclConfigListRequest(AbstractModel):
+    """CreatePortAclConfigList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceIdList: 资源实例ID列表
+        :type InstanceIdList: list of str
+        :param AclConfig: 端口acl策略
+        :type AclConfig: :class:`tencentcloud.antiddos.v20200309.models.AclConfig`
+        """
+        self.InstanceIdList = None
+        self.AclConfig = None
+
+
+    def _deserialize(self, params):
+        self.InstanceIdList = params.get("InstanceIdList")
+        if params.get("AclConfig") is not None:
+            self.AclConfig = AclConfig()
+            self.AclConfig._deserialize(params.get("AclConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreatePortAclConfigListResponse(AbstractModel):
+    """CreatePortAclConfigList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreatePortAclConfigRequest(AbstractModel):
+    """CreatePortAclConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 资源实例ID
+        :type InstanceId: str
+        :param AclConfig: 端口acl策略
+        :type AclConfig: :class:`tencentcloud.antiddos.v20200309.models.AclConfig`
+        """
+        self.InstanceId = None
+        self.AclConfig = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        if params.get("AclConfig") is not None:
+            self.AclConfig = AclConfig()
+            self.AclConfig._deserialize(params.get("AclConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreatePortAclConfigResponse(AbstractModel):
+    """CreatePortAclConfig返回参数结构体
 
     """
 

@@ -108,3 +108,31 @@ class ApmClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeMetricRecords(self, request):
+        """拉取通用指标列表
+
+        :param request: Request instance for DescribeMetricRecords.
+        :type request: :class:`tencentcloud.apm.v20210622.models.DescribeMetricRecordsRequest`
+        :rtype: :class:`tencentcloud.apm.v20210622.models.DescribeMetricRecordsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeMetricRecords", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeMetricRecordsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)

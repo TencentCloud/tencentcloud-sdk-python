@@ -12946,7 +12946,7 @@ class DescribeVulInfoCvssResponse(AbstractModel):
         :param Reference: 参考链接
 注意：此字段可能返回 null，表示取不到有效值。
         :type Reference: str
-        :param CVSS: CVSS信息，wiki:http://tapd.oa.com/Teneyes/markdown_wikis/view/#1010131751011792303
+        :param CVSS: CVSS信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type CVSS: str
         :param PublicDate: 发布时间
