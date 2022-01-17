@@ -78,7 +78,8 @@ class AbstractClient(object):
         self.request = ApiRequest(self._get_endpoint(),
                                   req_timeout=self.profile.httpProfile.reqTimeout,
                                   proxy=self.profile.httpProfile.proxy,
-                                  is_http=is_http)
+                                  is_http=is_http,
+                                  certification=self.profile.httpProfile.certification)
         if self.profile.httpProfile.keepAlive:
             self.request.set_keep_alive()
 
@@ -178,7 +179,7 @@ class AbstractClient(object):
         req.header["Host"] = endpoint
         req.header["X-TC-Action"] = action[0].upper() + action[1:]
         req.header["X-TC-RequestClient"] = self._sdkVersion
-        req.header["X-TC-Timestamp"] = timestamp
+        req.header["X-TC-Timestamp"] = str(timestamp)
         req.header["X-TC-Version"] = self._apiVersion
         if self.profile.unsignedPayload is True:
             req.header["X-TC-Content-SHA256"] = "UNSIGNED-PAYLOAD"
@@ -304,10 +305,6 @@ class AbstractClient(object):
         resp_inter = self.request.send_request(req)
         self._check_status(resp_inter)
         data = resp_inter.data
-        if sys.version_info[0] > 2:
-            data = data.decode()
-        else:
-            data = data.decode('UTF-8')
         return data
 
     def call_octet_stream(self, action, headers, body):
@@ -343,10 +340,6 @@ class AbstractClient(object):
         resp = self.request.send_request(req)
         self._check_status(resp)
         data = resp.data
-        if sys.version_info[0] > 2:
-            data = data.decode()
-        else:
-            data = data.decode('UTF-8')
 
         json_rsp = json.loads(data)
         if "Error" in json_rsp["Response"]:

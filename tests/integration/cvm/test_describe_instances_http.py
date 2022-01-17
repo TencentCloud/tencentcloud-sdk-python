@@ -27,6 +27,6 @@ def test_describe_instances():
     except TencentCloudSDKException as e:
         # 403 forbidden
         assert e.code == "ServerNetworkError"
-        assert b"403 Forbidden" in e.message
+        assert "403 Forbidden" in e.message
         return
     assert "" == "exception is not captured"
