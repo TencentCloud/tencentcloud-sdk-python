@@ -1490,6 +1490,8 @@ class DescribeDetailedSingleProbeDataRequest(AbstractModel):
         :type Districts: list of str
         :param ErrorTypes: 错误类型
         :type ErrorTypes: list of str
+        :param City: 城市
+        :type City: list of str
         """
         self.BeginTime = None
         self.EndTime = None
@@ -1503,6 +1505,7 @@ class DescribeDetailedSingleProbeDataRequest(AbstractModel):
         self.Operators = None
         self.Districts = None
         self.ErrorTypes = None
+        self.City = None
 
 
     def _deserialize(self, params):
@@ -1518,6 +1521,7 @@ class DescribeDetailedSingleProbeDataRequest(AbstractModel):
         self.Operators = params.get("Operators")
         self.Districts = params.get("Districts")
         self.ErrorTypes = params.get("ErrorTypes")
+        self.City = params.get("City")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

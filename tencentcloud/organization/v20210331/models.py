@@ -76,7 +76,7 @@ class CreateOrganizationMemberRequest(AbstractModel):
         r"""
         :param Name: 名称
         :type Name: str
-        :param PolicyType: 关系策略
+        :param PolicyType: 关系策略  取值：Financial
         :type PolicyType: str
         :param PermissionIds: 关系权限
         :type PermissionIds: list of int non-negative
@@ -88,6 +88,10 @@ class CreateOrganizationMemberRequest(AbstractModel):
         :type Remark: str
         :param RecordId: 重试创建传记录ID
         :type RecordId: int
+        :param PayUin: 代付者Uin
+        :type PayUin: str
+        :param IdentityRoleID: 管理身份
+        :type IdentityRoleID: list of int non-negative
         """
         self.Name = None
         self.PolicyType = None
@@ -96,6 +100,8 @@ class CreateOrganizationMemberRequest(AbstractModel):
         self.AccountName = None
         self.Remark = None
         self.RecordId = None
+        self.PayUin = None
+        self.IdentityRoleID = None
 
 
     def _deserialize(self, params):
@@ -106,6 +112,8 @@ class CreateOrganizationMemberRequest(AbstractModel):
         self.AccountName = params.get("AccountName")
         self.Remark = params.get("Remark")
         self.RecordId = params.get("RecordId")
+        self.PayUin = params.get("PayUin")
+        self.IdentityRoleID = params.get("IdentityRoleID")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -122,13 +130,18 @@ class CreateOrganizationMemberResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param Uin: 成员Uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Uin: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.Uin = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.Uin = params.get("Uin")
         self.RequestId = params.get("RequestId")
 
 
@@ -304,6 +317,36 @@ class DescribeOrganizationResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class MemberIdentity(AbstractModel):
+    """成员管理身份
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IdentityId: 身份ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IdentityId: int
+        :param IdentityAliasName: 身份名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IdentityAliasName: str
+        """
+        self.IdentityId = None
+        self.IdentityAliasName = None
+
+
+    def _deserialize(self, params):
+        self.IdentityId = params.get("IdentityId")
+        self.IdentityAliasName = params.get("IdentityAliasName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class OrgMember(AbstractModel):
     """企业组织成员
 
@@ -347,6 +390,15 @@ class OrgMember(AbstractModel):
         :param IsAllowQuit: 是否允许成员退出。允许：Allow，不允许：Denied。
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsAllowQuit: str
+        :param PayUin: 代付者Uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PayUin: str
+        :param PayName: 代付者名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PayName: str
+        :param OrgIdentity: 管理身份
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OrgIdentity: list of MemberIdentity
         """
         self.MemberUin = None
         self.Name = None
@@ -360,6 +412,9 @@ class OrgMember(AbstractModel):
         self.CreateTime = None
         self.UpdateTime = None
         self.IsAllowQuit = None
+        self.PayUin = None
+        self.PayName = None
+        self.OrgIdentity = None
 
 
     def _deserialize(self, params):
@@ -380,6 +435,14 @@ class OrgMember(AbstractModel):
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
         self.IsAllowQuit = params.get("IsAllowQuit")
+        self.PayUin = params.get("PayUin")
+        self.PayName = params.get("PayName")
+        if params.get("OrgIdentity") is not None:
+            self.OrgIdentity = []
+            for item in params.get("OrgIdentity"):
+                obj = MemberIdentity()
+                obj._deserialize(item)
+                self.OrgIdentity.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

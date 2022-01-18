@@ -139,6 +139,62 @@ class SesClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateReceiver(self, request):
+        """创建收件人列表，收件人列表是发送批量邮件的目标邮件地址列表。创建列表后，需要上传收件人邮箱地址。之后创建发送任务，关联列表，便可以实现批量发送邮件的功能
+
+        :param request: Request instance for CreateReceiver.
+        :type request: :class:`tencentcloud.ses.v20201002.models.CreateReceiverRequest`
+        :rtype: :class:`tencentcloud.ses.v20201002.models.CreateReceiverResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateReceiver", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateReceiverResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateReceiverDetail(self, request):
+        """在创建完收件人列表后，向这个收件人列表中批量增加收件人邮箱地址，一次最大支持10W，异步完成处理。收件人列表只可以上传一次，不可追加上传。数据量比较大的时候，上传可能需要一点时间，可以通过查询收件人列表了解上传状态和上传数量
+
+        :param request: Request instance for CreateReceiverDetail.
+        :type request: :class:`tencentcloud.ses.v20201002.models.CreateReceiverDetailRequest`
+        :rtype: :class:`tencentcloud.ses.v20201002.models.CreateReceiverDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateReceiverDetail", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateReceiverDetailResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteBlackList(self, request):
         """邮箱被拉黑之后，用户如果确认收件邮箱有效或者已经处于激活状态，可以从腾讯云地址库中删除该黑名单之后继续投递。
 
@@ -461,6 +517,62 @@ class SesClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListEmailTemplatesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ListReceivers(self, request):
+        """根据条件查询收件人列表，支持分页，模糊查询，状态查询
+
+        :param request: Request instance for ListReceivers.
+        :type request: :class:`tencentcloud.ses.v20201002.models.ListReceiversRequest`
+        :rtype: :class:`tencentcloud.ses.v20201002.models.ListReceiversResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ListReceivers", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ListReceiversResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ListSendTasks(self, request):
+        """分页查询批量发送邮件任务，包含即时发送任务，定时发送任务，周期重复发送任务，查询发送情况，包括请求数量，已发数量，缓存数量，任务状态等信息
+
+        :param request: Request instance for ListSendTasks.
+        :type request: :class:`tencentcloud.ses.v20201002.models.ListSendTasksRequest`
+        :rtype: :class:`tencentcloud.ses.v20201002.models.ListSendTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ListSendTasks", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ListSendTasksResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

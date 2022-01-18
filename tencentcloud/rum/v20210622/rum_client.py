@@ -82,6 +82,62 @@ class RumClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeDataFetchUrl(self, request):
+        """获取DescribeDataFetchUrl信息
+
+        :param request: Request instance for DescribeDataFetchUrl.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeDataFetchUrlRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeDataFetchUrlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDataFetchUrl", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDataFetchUrlResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDataFetchUrlInfo(self, request):
+        """获取DescribeDataFetchUrlInfo信息
+
+        :param request: Request instance for DescribeDataFetchUrlInfo.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeDataFetchUrlInfoRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeDataFetchUrlInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDataFetchUrlInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDataFetchUrlInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeDataLogUrlStatistics(self, request):
         """获取LogUrlStatistics信息
 

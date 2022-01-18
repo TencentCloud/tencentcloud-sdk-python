@@ -2062,6 +2062,57 @@ class DescribeBindSceneDevicesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeChannelLiveStreamURLRequest(AbstractModel):
+    """DescribeChannelLiveStreamURL请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DeviceId: 设备唯一标识，必填参数
+        :type DeviceId: str
+        :param ChannelId: 通道唯一标识（接口升级字段为必填），必填参数
+        :type ChannelId: str
+        """
+        self.DeviceId = None
+        self.ChannelId = None
+
+
+    def _deserialize(self, params):
+        self.DeviceId = params.get("DeviceId")
+        self.ChannelId = params.get("ChannelId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeChannelLiveStreamURLResponse(AbstractModel):
+    """DescribeChannelLiveStreamURL返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 设备实时流地址列表
+        :type Data: :class:`tencentcloud.iotvideoindustry.v20201201.models.DescribeDeviceStreamsData`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = DescribeDeviceStreamsData()
+            self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeChannelLocalRecordURLRequest(AbstractModel):
     """DescribeChannelLocalRecordURL请求参数结构体
 
@@ -2075,6 +2126,8 @@ class DescribeChannelLocalRecordURLRequest(AbstractModel):
         :type ChannelId: str
         :param RecordId: 录像文件Id，通过获取本地录像返回
         :type RecordId: str
+        :param ExpireTime: UNIX 时间戳，30天内，URL失效时间，如180s无人观看此流则URL提前失效
+        :type ExpireTime: int
         :param StartTime: 录像文件推送的开始时间，需要在RecordId参数起始时间内，可以通过此参数控制回放流起始点
         :type StartTime: int
         :param EndTime: 录像文件推送的结束时间，需要在RecordId参数起始时间内，可以通过此参数控制回放流起始点
@@ -2083,6 +2136,7 @@ class DescribeChannelLocalRecordURLRequest(AbstractModel):
         self.DeviceId = None
         self.ChannelId = None
         self.RecordId = None
+        self.ExpireTime = None
         self.StartTime = None
         self.EndTime = None
 
@@ -2091,6 +2145,7 @@ class DescribeChannelLocalRecordURLRequest(AbstractModel):
         self.DeviceId = params.get("DeviceId")
         self.ChannelId = params.get("ChannelId")
         self.RecordId = params.get("RecordId")
+        self.ExpireTime = params.get("ExpireTime")
         self.StartTime = params.get("StartTime")
         self.EndTime = params.get("EndTime")
         memeber_set = set(params.keys())

@@ -218,8 +218,14 @@ INVALIDPARAMETERVALUE_CFSPARAMETERDUPLICATE = 'InvalidParameterValue.CfsParamete
 # cfs配置项取值与规范不符。
 INVALIDPARAMETERVALUE_CFSPARAMETERERROR = 'InvalidParameterValue.CfsParameterError'
 
+# cfs参数格式与规范不符。
+INVALIDPARAMETERVALUE_CFSSTRUCTIONERROR = 'InvalidParameterValue.CfsStructionError'
+
 # Ckafka传入错误。
 INVALIDPARAMETERVALUE_CKAFKA = 'InvalidParameterValue.Ckafka'
+
+# 运行函数时的参数传入有误。
+INVALIDPARAMETERVALUE_CLIENTCONTEXT = 'InvalidParameterValue.ClientContext'
 
 # Cls传入错误。
 INVALIDPARAMETERVALUE_CLS = 'InvalidParameterValue.Cls'
@@ -442,6 +448,9 @@ INVALIDPARAMETERVALUE_TEMPCOSOBJECTNAME = 'InvalidParameterValue.TempCosObjectNa
 
 # TraceEnable取值与规范不符，请修正后再试。
 INVALIDPARAMETERVALUE_TRACEENABLE = 'InvalidParameterValue.TraceEnable'
+
+# TrackingTarget 参数输入错误。
+INVALIDPARAMETERVALUE_TRACKINGTARGET = 'InvalidParameterValue.TrackingTarget'
 
 # TriggerCronConfig参数传入错误。
 INVALIDPARAMETERVALUE_TRIGGERCRONCONFIG = 'InvalidParameterValue.TriggerCronConfig'

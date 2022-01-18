@@ -14,6 +14,9 @@
 # limitations under the License.
 
 
+# 操作失败。
+FAILEDOPERATION = 'FailedOperation'
+
 # 附件太大，请参考单个附件以及附件总量大小限制。
 FAILEDOPERATION_ATTACHCONTENTTOOLARGE = 'FailedOperation.AttachContentToolarge'
 
@@ -134,11 +137,20 @@ INVALIDPARAMETERVALUE_NOSUCHSENDER = 'InvalidParameterValue.NoSuchSender'
 # 该域名还没有创建，请先新建发信域名。
 INVALIDPARAMETERVALUE_NOTEXISTDOMAIN = 'InvalidParameterValue.NotExistDomain'
 
+# 收件人列表描述不合法，描述不可包含特殊字符，字符长度范围:1~300。
+INVALIDPARAMETERVALUE_RECEIVERDESCILLEGAL = 'InvalidParameterValue.ReceiverDescIllegal'
+
+# 收件人列表名字不合法，请检查字符内容及大小。
+INVALIDPARAMETERVALUE_RECEIVERNAMEILLEGAL = 'InvalidParameterValue.ReceiverNameIllegal'
+
 # 该域名已经创建过了，请勿重复创建。
 INVALIDPARAMETERVALUE_REPEATCREATION = 'InvalidParameterValue.RepeatCreation'
 
 # 该邮件地址已经创建过了，请勿重复创建。
 INVALIDPARAMETERVALUE_REPEATEMAILADDRESS = 'InvalidParameterValue.RepeatEmailAddress'
+
+# 收件人列表名称重复。
+INVALIDPARAMETERVALUE_REPEATRECEIVERNAME = 'InvalidParameterValue.RepeatReceiverName'
 
 # 模版资源为空。
 INVALIDPARAMETERVALUE_TEMPLATECONTENTISNULL = 'InvalidParameterValue.TemplateContentIsNULL'
@@ -164,11 +176,23 @@ INVALIDPARAMETERVALUE_WRONGDATE = 'InvalidParameterValue.WrongDate'
 # 超过配额限制。
 LIMITEXCEEDED = 'LimitExceeded'
 
+# 收件人地址数量超过限制。
+LIMITEXCEEDED_EXCEEDRECEIVERDETAILLIMIT = 'LimitExceeded.ExceedReceiverDetailLimit'
+
+# 收件人列表数量超过限制。
+LIMITEXCEEDED_EXCEEDRECEIVERLIMIT = 'LimitExceeded.ExceedReceiverLimit'
+
 # 缺少参数错误。
 MISSINGPARAMETER = 'MissingParameter'
 
 # 周期发送任务需选择开始时间和间隔时间。
 MISSINGPARAMETER_CYCLEPARAMNECESSARY = 'MissingParameter.CycleParamNecessary'
+
+# 收件人地址必须传。
+MISSINGPARAMETER_EMAILSNECESSARY = 'MissingParameter.EmailsNecessary'
+
+# 收件人列表Id必传。
+MISSINGPARAMETER_RECEIVERIDNECESSARY = 'MissingParameter.ReceiverIdNecessary'
 
 # 发件地址、收件人列表,发件模板必须传。
 MISSINGPARAMETER_SENDPARAMNECESSARY = 'MissingParameter.SendParamNecessary'
@@ -187,6 +211,9 @@ OPERATIONDENIED_EXCEEDDOMAINLIMIT = 'OperationDenied.ExceedDomainLimit'
 
 # 超出最大发信地址限制。
 OPERATIONDENIED_EXCEEDSENDERLIMIT = 'OperationDenied.ExceedSenderLimit'
+
+# 收件人列表正在被操作，请稍候操作。
+OPERATIONDENIED_RECEIVERISOPERATING = 'OperationDenied.ReceiverIsOperating'
 
 # 收件人列表不存在。
 OPERATIONDENIED_RECEIVERNOTEXIST = 'OperationDenied.ReceiverNotExist'

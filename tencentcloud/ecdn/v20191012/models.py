@@ -1046,6 +1046,9 @@ class DomainBriefInfo(AbstractModel):
         :type Area: str
         :param Readonly: 域名锁定状态，normal、global，分别表示未被锁定、全球锁定。
         :type Readonly: str
+        :param Tag: 域名标签。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tag: list of Tag
         """
         self.ResourceId = None
         self.AppId = None
@@ -1059,6 +1062,7 @@ class DomainBriefInfo(AbstractModel):
         self.Disable = None
         self.Area = None
         self.Readonly = None
+        self.Tag = None
 
 
     def _deserialize(self, params):
@@ -1076,6 +1080,12 @@ class DomainBriefInfo(AbstractModel):
         self.Disable = params.get("Disable")
         self.Area = params.get("Area")
         self.Readonly = params.get("Readonly")
+        if params.get("Tag") is not None:
+            self.Tag = []
+            for item in params.get("Tag"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tag.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1754,7 +1764,7 @@ class PurgePathCacheResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: 刷新任务Id，前十位为提交任务时的UTC时间。
+        :param TaskId: 刷新任务Id。
         :type TaskId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1843,7 +1853,7 @@ class PurgeUrlsCacheResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: 刷新任务Id，前十位为提交任务时的UTC时间。
+        :param TaskId: 刷新任务Id。
         :type TaskId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

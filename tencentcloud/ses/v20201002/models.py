@@ -75,6 +75,8 @@ class BatchSendEmailRequest(AbstractModel):
         :type CycleParam: :class:`tencentcloud.ses.v20201002.models.CycleEmailParam`
         :param TimedParam: 定时发送任务的必要参数
         :type TimedParam: :class:`tencentcloud.ses.v20201002.models.TimedEmailParam`
+        :param Unsubscribe: 退订选项 1: 加入退订链接 0: 不加入退订链接
+        :type Unsubscribe: str
         """
         self.FromEmailAddress = None
         self.ReceiverId = None
@@ -86,6 +88,7 @@ class BatchSendEmailRequest(AbstractModel):
         self.Attachments = None
         self.CycleParam = None
         self.TimedParam = None
+        self.Unsubscribe = None
 
 
     def _deserialize(self, params):
@@ -112,6 +115,7 @@ class BatchSendEmailRequest(AbstractModel):
         if params.get("TimedParam") is not None:
             self.TimedParam = TimedEmailParam()
             self.TimedParam._deserialize(params.get("TimedParam"))
+        self.Unsubscribe = params.get("Unsubscribe")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -317,6 +321,100 @@ class CreateEmailTemplateResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreateReceiverDetailRequest(AbstractModel):
+    """CreateReceiverDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ReceiverId: 收件人列表ID
+        :type ReceiverId: int
+        :param Emails: 邮箱
+        :type Emails: list of str
+        """
+        self.ReceiverId = None
+        self.Emails = None
+
+
+    def _deserialize(self, params):
+        self.ReceiverId = params.get("ReceiverId")
+        self.Emails = params.get("Emails")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateReceiverDetailResponse(AbstractModel):
+    """CreateReceiverDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreateReceiverRequest(AbstractModel):
+    """CreateReceiver请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ReceiversName: 收件人列表名称
+        :type ReceiversName: str
+        :param Desc: 收件人列表描述
+        :type Desc: str
+        """
+        self.ReceiversName = None
+        self.Desc = None
+
+
+    def _deserialize(self, params):
+        self.ReceiversName = params.get("ReceiversName")
+        self.Desc = params.get("Desc")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateReceiverResponse(AbstractModel):
+    """CreateReceiver返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ReceiverId: 收件人列表id，后续根据收件人列表id上传收件人地址
+        :type ReceiverId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ReceiverId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ReceiverId = params.get("ReceiverId")
         self.RequestId = params.get("RequestId")
 
 
@@ -1054,6 +1152,188 @@ class ListEmailTemplatesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ListReceiversRequest(AbstractModel):
+    """ListReceivers请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Offset: 偏移量，整型，从0开始
+        :type Offset: int
+        :param Limit: 限制数目，整型，不超过100
+        :type Limit: int
+        :param Status: 列表状态(1 待上传 2 上传中  3传完成)，若查询所有就不传这个字段
+        :type Status: int
+        :param KeyWord: 列表名称的关键字，模糊查询
+        :type KeyWord: str
+        """
+        self.Offset = None
+        self.Limit = None
+        self.Status = None
+        self.KeyWord = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.Status = params.get("Status")
+        self.KeyWord = params.get("KeyWord")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListReceiversResponse(AbstractModel):
+    """ListReceivers返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 总数
+        :type TotalCount: int
+        :param Data: 数据记录
+        :type Data: list of ReceiverData
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = ReceiverData()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class ListSendTasksRequest(AbstractModel):
+    """ListSendTasks请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Offset: 偏移量，整型，从0开始，0代表跳过0行
+        :type Offset: int
+        :param Limit: 限制数目，整型,不超过100
+        :type Limit: int
+        :param Status: 任务状态 1 待开始 5 发送中 6 今日暂停发送  7 发信异常 10 发送完成。查询所有状态，则不传这个字段
+        :type Status: int
+        :param ReceiverId: 收件人列表ID
+        :type ReceiverId: int
+        :param TaskType: 任务类型 1即时 2定时 3周期，查询所有类型则不传这个字段
+        :type TaskType: int
+        """
+        self.Offset = None
+        self.Limit = None
+        self.Status = None
+        self.ReceiverId = None
+        self.TaskType = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.Status = params.get("Status")
+        self.ReceiverId = params.get("ReceiverId")
+        self.TaskType = params.get("TaskType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListSendTasksResponse(AbstractModel):
+    """ListSendTasks返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 总数
+        :type TotalCount: int
+        :param Data: 数据记录
+        :type Data: list of SendTaskData
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = SendTaskData()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class ReceiverData(AbstractModel):
+    """收件人列表数据类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ReceiverId: 收件人列表ID
+        :type ReceiverId: int
+        :param ReceiversName: 收件人列表名称
+        :type ReceiversName: str
+        :param Count: 收件人地址总数
+        :type Count: int
+        :param Desc: 收件人列表描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Desc: str
+        :param ReceiversStatus: 列表状态(1 待上传 2 上传中 3 上传完成)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReceiversStatus: int
+        :param CreateTime: 创建时间,如:2021-09-28 16:40:35
+        :type CreateTime: str
+        """
+        self.ReceiverId = None
+        self.ReceiversName = None
+        self.Count = None
+        self.Desc = None
+        self.ReceiversStatus = None
+        self.CreateTime = None
+
+
+    def _deserialize(self, params):
+        self.ReceiverId = params.get("ReceiverId")
+        self.ReceiversName = params.get("ReceiversName")
+        self.Count = params.get("Count")
+        self.Desc = params.get("Desc")
+        self.ReceiversStatus = params.get("ReceiversStatus")
+        self.CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SendEmailRequest(AbstractModel):
     """SendEmail请求参数结构体
 
@@ -1077,7 +1357,7 @@ class SendEmailRequest(AbstractModel):
         :type Simple: :class:`tencentcloud.ses.v20201002.models.Simple`
         :param Attachments: 需要发送附件时，填写附件相关参数。
         :type Attachments: list of Attachment
-        :param Unsubscribe: 是否加入退订链接
+        :param Unsubscribe: 退订选项 1: 加入退订链接 0: 不加入退订链接
         :type Unsubscribe: str
         """
         self.FromEmailAddress = None
@@ -1224,6 +1504,100 @@ class SendEmailStatus(AbstractModel):
         self.UserClicked = params.get("UserClicked")
         self.UserUnsubscribed = params.get("UserUnsubscribed")
         self.UserComplainted = params.get("UserComplainted")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SendTaskData(AbstractModel):
+    """发送任务数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 任务id
+        :type TaskId: int
+        :param FromEmailAddress: 发信地址
+        :type FromEmailAddress: str
+        :param ReceiverId: 收件人列表Id
+        :type ReceiverId: int
+        :param TaskStatus: 任务状态 1 待开始 5 发送中 6 今日暂停发送  7 发信异常 10 发送完成
+        :type TaskStatus: int
+        :param TaskType: 任务类型 1 即时 2 定时 3 周期
+        :type TaskType: int
+        :param RequestCount: 任务请求发信数量
+        :type RequestCount: int
+        :param SendCount: 已经发送数量
+        :type SendCount: int
+        :param CacheCount: 缓存数量
+        :type CacheCount: int
+        :param CreateTime: 任务创建时间
+        :type CreateTime: str
+        :param UpdateTime: 任务更新时间
+        :type UpdateTime: str
+        :param Subject: 邮件主题
+        :type Subject: str
+        :param Template: 模板和模板数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Template: :class:`tencentcloud.ses.v20201002.models.Template`
+        :param CycleParam: 周期任务参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CycleParam: :class:`tencentcloud.ses.v20201002.models.CycleEmailParam`
+        :param TimedParam: 定时任务参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimedParam: :class:`tencentcloud.ses.v20201002.models.TimedEmailParam`
+        :param ErrMsg: 任务异常信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrMsg: str
+        :param ReceiversName: 收件人列表名称
+        :type ReceiversName: str
+        """
+        self.TaskId = None
+        self.FromEmailAddress = None
+        self.ReceiverId = None
+        self.TaskStatus = None
+        self.TaskType = None
+        self.RequestCount = None
+        self.SendCount = None
+        self.CacheCount = None
+        self.CreateTime = None
+        self.UpdateTime = None
+        self.Subject = None
+        self.Template = None
+        self.CycleParam = None
+        self.TimedParam = None
+        self.ErrMsg = None
+        self.ReceiversName = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.FromEmailAddress = params.get("FromEmailAddress")
+        self.ReceiverId = params.get("ReceiverId")
+        self.TaskStatus = params.get("TaskStatus")
+        self.TaskType = params.get("TaskType")
+        self.RequestCount = params.get("RequestCount")
+        self.SendCount = params.get("SendCount")
+        self.CacheCount = params.get("CacheCount")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        self.Subject = params.get("Subject")
+        if params.get("Template") is not None:
+            self.Template = Template()
+            self.Template._deserialize(params.get("Template"))
+        if params.get("CycleParam") is not None:
+            self.CycleParam = CycleEmailParam()
+            self.CycleParam._deserialize(params.get("CycleParam"))
+        if params.get("TimedParam") is not None:
+            self.TimedParam = TimedEmailParam()
+            self.TimedParam._deserialize(params.get("TimedParam"))
+        self.ErrMsg = params.get("ErrMsg")
+        self.ReceiversName = params.get("ReceiversName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

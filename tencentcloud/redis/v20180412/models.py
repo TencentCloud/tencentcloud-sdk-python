@@ -4516,14 +4516,18 @@ class KillMasterGroupRequest(AbstractModel):
     c.数字0-9
     d.()`~!@#$%^&*-+=_|{}[]:;<>,.?/
         :type Password: str
+        :param ShardIds: 单AZ实例节点信息
+        :type ShardIds: list of int
         """
         self.InstanceId = None
         self.Password = None
+        self.ShardIds = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
         self.Password = params.get("Password")
+        self.ShardIds = params.get("ShardIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

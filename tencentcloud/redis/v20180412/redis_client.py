@@ -83,7 +83,7 @@ class RedisClient(AbstractClient):
 
 
     def ChangeReplicaToMaster(self, request):
-        """该接口仅支持多AZ实例副本组提主
+        """该接口仅支持多AZ实例副本组提主和单AZ副本提主
 
         :param request: Request instance for ChangeReplicaToMaster.
         :type request: :class:`tencentcloud.redis.v20180412.models.ChangeReplicaToMasterRequest`

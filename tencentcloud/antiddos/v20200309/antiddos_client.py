@@ -194,6 +194,34 @@ class AntiddosClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateDDoSConnectLimit(self, request):
+        """配置DDoS连接抑制选项
+
+        :param request: Request instance for CreateDDoSConnectLimit.
+        :type request: :class:`tencentcloud.antiddos.v20200309.models.CreateDDoSConnectLimitRequest`
+        :rtype: :class:`tencentcloud.antiddos.v20200309.models.CreateDDoSConnectLimitResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateDDoSConnectLimit", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateDDoSConnectLimitResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateDDoSGeoIPBlockConfig(self, request):
         """添加DDoS防护的区域封禁配置
 

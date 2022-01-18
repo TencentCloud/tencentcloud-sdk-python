@@ -1950,6 +1950,36 @@ class CvmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ProgramFpgaImage(self, request):
+        """本接口(ProgramFpgaImage)用于在线烧录由客户提供的FPGA镜像文件到指定实例的指定FPGA卡上。
+        * 只支持对单个实例发起在线烧录FPGA镜像的操作。
+        * 支持对单个实例的多块FPGA卡同时烧录FPGA镜像，DBDFs参数为空时，默认对指定实例的所有FPGA卡进行烧录。
+
+        :param request: Request instance for ProgramFpgaImage.
+        :type request: :class:`tencentcloud.cvm.v20170312.models.ProgramFpgaImageRequest`
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.ProgramFpgaImageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ProgramFpgaImage", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ProgramFpgaImageResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def PurchaseReservedInstancesOffering(self, request):
         """本接口(PurchaseReservedInstancesOffering)用于用户购买一个或者多个指定配置的预留实例
 

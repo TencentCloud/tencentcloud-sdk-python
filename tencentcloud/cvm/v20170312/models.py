@@ -6059,6 +6059,59 @@ class Price(AbstractModel):
         
 
 
+class ProgramFpgaImageRequest(AbstractModel):
+    """ProgramFpgaImage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例的ID信息。
+        :type InstanceId: str
+        :param FPGAUrl: FPGA镜像文件的COS URL地址。
+        :type FPGAUrl: str
+        :param DBDFs: 实例上FPGA卡的DBDF号，不填默认烧录FPGA镜像到实例所拥有的所有FPGA卡。
+        :type DBDFs: list of str
+        :param DryRun: 试运行，不会执行实际的烧录动作，默认为False。
+        :type DryRun: bool
+        """
+        self.InstanceId = None
+        self.FPGAUrl = None
+        self.DBDFs = None
+        self.DryRun = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.FPGAUrl = params.get("FPGAUrl")
+        self.DBDFs = params.get("DBDFs")
+        self.DryRun = params.get("DryRun")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProgramFpgaImageResponse(AbstractModel):
+    """ProgramFpgaImage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class PurchaseReservedInstancesOfferingRequest(AbstractModel):
     """PurchaseReservedInstancesOffering请求参数结构体
 

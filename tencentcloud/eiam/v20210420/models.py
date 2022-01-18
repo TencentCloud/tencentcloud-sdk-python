@@ -1808,6 +1808,9 @@ class DescribeUserInfoResponse(AbstractModel):
         :param SecondaryOrgNodeIdList: 用户所属的次要组织机构ID列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SecondaryOrgNodeIdList: list of str
+        :param AdminFlag: 是否管理员标志，0为否、1为是。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AdminFlag: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1825,6 +1828,7 @@ class DescribeUserInfoResponse(AbstractModel):
         self.ActivationTime = None
         self.PwdNeedReset = None
         self.SecondaryOrgNodeIdList = None
+        self.AdminFlag = None
         self.RequestId = None
 
 
@@ -1843,6 +1847,7 @@ class DescribeUserInfoResponse(AbstractModel):
         self.ActivationTime = params.get("ActivationTime")
         self.PwdNeedReset = params.get("PwdNeedReset")
         self.SecondaryOrgNodeIdList = params.get("SecondaryOrgNodeIdList")
+        self.AdminFlag = params.get("AdminFlag")
         self.RequestId = params.get("RequestId")
 
 

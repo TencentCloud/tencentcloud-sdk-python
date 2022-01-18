@@ -26,6 +26,34 @@ class AmeClient(AbstractClient):
     _service = 'ame'
 
 
+    def CreateKTVRobot(self, request):
+        """创建机器人，支持进入 RTC 房间，播放直播互动曲库歌曲。
+
+        :param request: Request instance for CreateKTVRobot.
+        :type request: :class:`tencentcloud.ame.v20190916.models.CreateKTVRobotRequest`
+        :rtype: :class:`tencentcloud.ame.v20190916.models.CreateKTVRobotResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateKTVRobot", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateKTVRobotResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeAuthInfo(self, request):
         """获取授权项目信息列表
 
@@ -250,6 +278,34 @@ class AmeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeKTVRobots(self, request):
+        """查询机器人列表，支持 Id、状态等过滤条件。
+
+        :param request: Request instance for DescribeKTVRobots.
+        :type request: :class:`tencentcloud.ame.v20190916.models.DescribeKTVRobotsRequest`
+        :rtype: :class:`tencentcloud.ame.v20190916.models.DescribeKTVRobotsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeKTVRobots", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeKTVRobotsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeLyric(self, request):
         """根据接口的模式及歌曲ID来取得歌词信息或者波形图信息。
 
@@ -446,6 +502,34 @@ class AmeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DestroyKTVRobot(self, request):
+        """销毁机器人，机器人退出 RTC 房间。
+
+        :param request: Request instance for DestroyKTVRobot.
+        :type request: :class:`tencentcloud.ame.v20190916.models.DestroyKTVRobotRequest`
+        :rtype: :class:`tencentcloud.ame.v20190916.models.DestroyKTVRobotResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DestroyKTVRobot", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DestroyKTVRobotResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyMusicOnShelves(self, request):
         """根据资源方，需要变更的参数，请求该接口进行变更，为空的参数默认为无变更
 
@@ -544,6 +628,34 @@ class AmeClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SearchKTVMusicsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SyncKTVRobotCommand(self, request):
+        """下发操作机器人指令，支持播放、暂停、恢复、歌单设置等操作指令，实现对机器人行为的控制。
+
+        :param request: Request instance for SyncKTVRobotCommand.
+        :type request: :class:`tencentcloud.ame.v20190916.models.SyncKTVRobotCommandRequest`
+        :rtype: :class:`tencentcloud.ame.v20190916.models.SyncKTVRobotCommandResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SyncKTVRobotCommand", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SyncKTVRobotCommandResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

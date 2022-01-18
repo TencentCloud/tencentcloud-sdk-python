@@ -104,6 +104,9 @@ INTERNALERROR_DBOPERATIONFAILED = 'InternalError.DbOperationFailed'
 # 查询独享集群信息失败。
 INTERNALERROR_FENCEERROR = 'InternalError.FenceError'
 
+# 获取指标数据。
+INTERNALERROR_FETCHMETRICDATAFAILED = 'InternalError.FetchMetricDataFailed'
+
 # 获取数据库实例参数失败。
 INTERNALERROR_GETDBCONFIGFAILED = 'InternalError.GetDbConfigFailed'
 

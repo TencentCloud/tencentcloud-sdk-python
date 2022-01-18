@@ -678,6 +678,62 @@ class CertIdInsL7Rules(AbstractModel):
         
 
 
+class ConnectLimitConfig(AbstractModel):
+    """连接抑制相关配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdNewLimit: 基于源IP+目的IP的每秒新建数限制
+        :type SdNewLimit: int
+        :param DstNewLimit: 基于目的IP的每秒新建数限制
+        :type DstNewLimit: int
+        :param SdConnLimit: 基于源IP+目的IP的并发连接控制
+        :type SdConnLimit: int
+        :param DstConnLimit: 基于目的IP+目的端口的并发连接控制
+        :type DstConnLimit: int
+        :param BadConnThreshold: 基于连接抑制触发阈值，取值范围[0,4294967295]
+        :type BadConnThreshold: int
+        :param NullConnEnable: 异常连接检测条件，空连接防护开关，，取值范围[0,1]
+        :type NullConnEnable: int
+        :param ConnTimeout: 异常连接检测条件，连接超时，，取值范围[0,65535]
+        :type ConnTimeout: int
+        :param SynRate: 异常连接检测条件，syn占比ack百分比，，取值范围[0,100]
+        :type SynRate: int
+        :param SynLimit: 异常连接检测条件，syn阈值，取值范围[0,100]
+        :type SynLimit: int
+        """
+        self.SdNewLimit = None
+        self.DstNewLimit = None
+        self.SdConnLimit = None
+        self.DstConnLimit = None
+        self.BadConnThreshold = None
+        self.NullConnEnable = None
+        self.ConnTimeout = None
+        self.SynRate = None
+        self.SynLimit = None
+
+
+    def _deserialize(self, params):
+        self.SdNewLimit = params.get("SdNewLimit")
+        self.DstNewLimit = params.get("DstNewLimit")
+        self.SdConnLimit = params.get("SdConnLimit")
+        self.DstConnLimit = params.get("DstConnLimit")
+        self.BadConnThreshold = params.get("BadConnThreshold")
+        self.NullConnEnable = params.get("NullConnEnable")
+        self.ConnTimeout = params.get("ConnTimeout")
+        self.SynRate = params.get("SynRate")
+        self.SynLimit = params.get("SynLimit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateBlackWhiteIpListRequest(AbstractModel):
     """CreateBlackWhiteIpList请求参数结构体
 
@@ -887,6 +943,53 @@ class CreateDDoSBlackWhiteIpListRequest(AbstractModel):
 
 class CreateDDoSBlackWhiteIpListResponse(AbstractModel):
     """CreateDDoSBlackWhiteIpList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreateDDoSConnectLimitRequest(AbstractModel):
+    """CreateDDoSConnectLimit请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 资源实例Id
+        :type InstanceId: str
+        :param ConnectLimitConfig: 连接抑制配置
+        :type ConnectLimitConfig: :class:`tencentcloud.antiddos.v20200309.models.ConnectLimitConfig`
+        """
+        self.InstanceId = None
+        self.ConnectLimitConfig = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        if params.get("ConnectLimitConfig") is not None:
+            self.ConnectLimitConfig = ConnectLimitConfig()
+            self.ConnectLimitConfig._deserialize(params.get("ConnectLimitConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDDoSConnectLimitResponse(AbstractModel):
+    """CreateDDoSConnectLimit返回参数结构体
 
     """
 

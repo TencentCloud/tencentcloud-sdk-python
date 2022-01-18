@@ -2316,14 +2316,16 @@ class DescribeInstancesDetailRequest(AbstractModel):
         :type SearchWord: str
         :param Status: （过滤条件）实例的状态。0：创建中，1：运行中，2：删除中，不填默认返回全部
         :type Status: list of int
-        :param Offset: 偏移量，不填默认为0
+        :param Offset: 偏移量，不填默认为0。
         :type Offset: int
-        :param Limit: 返回数量，不填则默认10，最大值20
+        :param Limit: 返回数量，不填则默认10，最大值20。
         :type Limit: int
         :param TagKey: 匹配标签key值。
         :type TagKey: str
-        :param Filters: 过滤器
+        :param Filters: 过滤器。
         :type Filters: list of Filter
+        :param InstanceIds: 按照实例ID过滤
+        :type InstanceIds: str
         """
         self.InstanceId = None
         self.SearchWord = None
@@ -2332,6 +2334,7 @@ class DescribeInstancesDetailRequest(AbstractModel):
         self.Limit = None
         self.TagKey = None
         self.Filters = None
+        self.InstanceIds = None
 
 
     def _deserialize(self, params):
@@ -2347,6 +2350,7 @@ class DescribeInstancesDetailRequest(AbstractModel):
                 obj = Filter()
                 obj._deserialize(item)
                 self.Filters.append(obj)
+        self.InstanceIds = params.get("InstanceIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2398,6 +2402,8 @@ class DescribeInstancesRequest(AbstractModel):
         :type Limit: int
         :param TagKey: 已废弃。匹配标签key值。
         :type TagKey: str
+        :param VpcId: 私有网络Id
+        :type VpcId: str
         """
         self.InstanceId = None
         self.SearchWord = None
@@ -2405,6 +2411,7 @@ class DescribeInstancesRequest(AbstractModel):
         self.Offset = None
         self.Limit = None
         self.TagKey = None
+        self.VpcId = None
 
 
     def _deserialize(self, params):
@@ -2414,6 +2421,7 @@ class DescribeInstancesRequest(AbstractModel):
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
         self.TagKey = params.get("TagKey")
+        self.VpcId = params.get("VpcId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3704,6 +3712,15 @@ class InstanceDetail(AbstractModel):
         :param RebalanceTime: 计划升级配置时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type RebalanceTime: str
+        :param PartitionNumber: 实例当前partition数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PartitionNumber: int
+        :param PublicNetworkChargeType: 公网带宽类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PublicNetworkChargeType: str
+        :param PublicNetwork: 公网带宽值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PublicNetwork: int
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -3732,6 +3749,9 @@ class InstanceDetail(AbstractModel):
         self.MaxTopicNumber = None
         self.MaxPartitionNumber = None
         self.RebalanceTime = None
+        self.PartitionNumber = None
+        self.PublicNetworkChargeType = None
+        self.PublicNetwork = None
 
 
     def _deserialize(self, params):
@@ -3772,6 +3792,9 @@ class InstanceDetail(AbstractModel):
         self.MaxTopicNumber = params.get("MaxTopicNumber")
         self.MaxPartitionNumber = params.get("MaxPartitionNumber")
         self.RebalanceTime = params.get("RebalanceTime")
+        self.PartitionNumber = params.get("PartitionNumber")
+        self.PublicNetworkChargeType = params.get("PublicNetworkChargeType")
+        self.PublicNetwork = params.get("PublicNetwork")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

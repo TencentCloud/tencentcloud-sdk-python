@@ -7686,6 +7686,8 @@ class ModifyClusterNodePoolRequest(AbstractModel):
         :type ExtraArgs: :class:`tencentcloud.tke.v20180525.models.InstanceExtraArgs`
         :param Tags: 资源标签
         :type Tags: list of Tag
+        :param Unschedulable: 设置加入的节点是否参与调度，默认值为0，表示参与调度；非0表示不参与调度, 待节点初始化完成之后, 可执行kubectl uncordon nodename使node加入调度.
+        :type Unschedulable: int
         """
         self.ClusterId = None
         self.NodePoolId = None
@@ -7699,6 +7701,7 @@ class ModifyClusterNodePoolRequest(AbstractModel):
         self.OsCustomizeType = None
         self.ExtraArgs = None
         self.Tags = None
+        self.Unschedulable = None
 
 
     def _deserialize(self, params):
@@ -7731,6 +7734,7 @@ class ModifyClusterNodePoolRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.Unschedulable = params.get("Unschedulable")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

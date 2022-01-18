@@ -130,6 +130,58 @@ class AuthInfo(AbstractModel):
         
 
 
+class CreateKTVRobotRequest(AbstractModel):
+    """CreateKTVRobot请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RTCSystem: RTC厂商类型，取值有：
+<li>TRTC</li>
+        :type RTCSystem: str
+        :param JoinRoomInput: 进房参数。
+        :type JoinRoomInput: :class:`tencentcloud.ame.v20190916.models.JoinRoomInput`
+        """
+        self.RTCSystem = None
+        self.JoinRoomInput = None
+
+
+    def _deserialize(self, params):
+        self.RTCSystem = params.get("RTCSystem")
+        if params.get("JoinRoomInput") is not None:
+            self.JoinRoomInput = JoinRoomInput()
+            self.JoinRoomInput._deserialize(params.get("JoinRoomInput"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateKTVRobotResponse(AbstractModel):
+    """CreateKTVRobot返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RobotId: 机器人Id。
+        :type RobotId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RobotId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RobotId = params.get("RobotId")
+        self.RequestId = params.get("RequestId")
+
+
 class DataInfo(AbstractModel):
     """数据信息
 
@@ -680,6 +732,75 @@ class DescribeKTVPlaylistsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeKTVRobotsRequest(AbstractModel):
+    """DescribeKTVRobots请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RobotIds: 机器人Id列表。
+        :type RobotIds: list of str
+        :param Statuses: 机器人状态，取值有：
+<li>Play：播放</li>
+<li>Pause：暂停</li>
+<li>Destroy：销毁</li>
+        :type Statuses: list of str
+        :param Offset: 分页返回的起始偏移量，默认值：0。将返回第 Offset 到第 Offset+Limit-1 条。
+        :type Offset: int
+        :param Limit: 分页返回的起始偏移量，默认值：10。
+        :type Limit: int
+        """
+        self.RobotIds = None
+        self.Statuses = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.RobotIds = params.get("RobotIds")
+        self.Statuses = params.get("Statuses")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeKTVRobotsResponse(AbstractModel):
+    """DescribeKTVRobots返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 机器人总数。
+        :type TotalCount: int
+        :param KTVRobotInfoSet: 机器人信息集合。
+        :type KTVRobotInfoSet: list of KTVRobotInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.KTVRobotInfoSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("KTVRobotInfoSet") is not None:
+            self.KTVRobotInfoSet = []
+            for item in params.get("KTVRobotInfoSet"):
+                obj = KTVRobotInfo()
+                obj._deserialize(item)
+                self.KTVRobotInfoSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeLyricRequest(AbstractModel):
     """DescribeLyric请求参数结构体
 
@@ -1097,6 +1218,47 @@ class DescribeStationsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DestroyKTVRobotRequest(AbstractModel):
+    """DestroyKTVRobot请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RobotId: 机器人Id。
+        :type RobotId: str
+        """
+        self.RobotId = None
+
+
+    def _deserialize(self, params):
+        self.RobotId = params.get("RobotId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DestroyKTVRobotResponse(AbstractModel):
+    """DestroyKTVRobot返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ImagePath(AbstractModel):
     """图片路径
 
@@ -1171,6 +1333,32 @@ class Item(AbstractModel):
                 obj._deserialize(item)
                 self.Artists.append(obj)
         self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class JoinRoomInput(AbstractModel):
+    """直播进房输入参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TRTCJoinRoomInput: TRTC进房参数
+        :type TRTCJoinRoomInput: :class:`tencentcloud.ame.v20190916.models.TRTCJoinRoomInput`
+        """
+        self.TRTCJoinRoomInput = None
+
+
+    def _deserialize(self, params):
+        if params.get("TRTCJoinRoomInput") is not None:
+            self.TRTCJoinRoomInput = TRTCJoinRoomInput()
+            self.TRTCJoinRoomInput._deserialize(params.get("TRTCJoinRoomInput"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1290,6 +1478,66 @@ class KTVPlaylistBaseInfo(AbstractModel):
         self.Title = params.get("Title")
         self.Description = params.get("Description")
         self.MusicNum = params.get("MusicNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KTVRobotInfo(AbstractModel):
+    """机器人信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RobotId: 机器人Id。
+        :type RobotId: str
+        :param Status: 状态，取值有：
+<li>Play：播放</li>
+<li>Pause：暂停</li>
+<li>Destroy：销毁</li>
+        :type Status: str
+        :param Playlists: 播放列表。
+        :type Playlists: list of str
+        :param CurIndex: 当前歌单索引位置。
+        :type CurIndex: int
+        :param Position: 播放进度，单位：毫秒。
+        :type Position: int
+        :param SetAudioParamInput: 音频参数
+        :type SetAudioParamInput: :class:`tencentcloud.ame.v20190916.models.SetAudioParamCommandInput`
+        :param JoinRoomInput: 进房信息
+        :type JoinRoomInput: :class:`tencentcloud.ame.v20190916.models.JoinRoomInput`
+        :param RTCSystem: RTC厂商类型，取值有：
+<li>TRTC</li>
+        :type RTCSystem: str
+        """
+        self.RobotId = None
+        self.Status = None
+        self.Playlists = None
+        self.CurIndex = None
+        self.Position = None
+        self.SetAudioParamInput = None
+        self.JoinRoomInput = None
+        self.RTCSystem = None
+
+
+    def _deserialize(self, params):
+        self.RobotId = params.get("RobotId")
+        self.Status = params.get("Status")
+        self.Playlists = params.get("Playlists")
+        self.CurIndex = params.get("CurIndex")
+        self.Position = params.get("Position")
+        if params.get("SetAudioParamInput") is not None:
+            self.SetAudioParamInput = SetAudioParamCommandInput()
+            self.SetAudioParamInput._deserialize(params.get("SetAudioParamInput"))
+        if params.get("JoinRoomInput") is not None:
+            self.JoinRoomInput = JoinRoomInput()
+            self.JoinRoomInput._deserialize(params.get("JoinRoomInput"))
+        self.RTCSystem = params.get("RTCSystem")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1748,6 +1996,30 @@ class PackageItem(AbstractModel):
         
 
 
+class PlayCommandInput(AbstractModel):
+    """播放指令输入参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Index: 歌曲位置索引。
+        :type Index: int
+        """
+        self.Index = None
+
+
+    def _deserialize(self, params):
+        self.Index = params.get("Index")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PutMusicOnTheShelvesRequest(AbstractModel):
     """PutMusicOnTheShelves请求参数结构体
 
@@ -1919,6 +2191,127 @@ class SearchKTVMusicsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class SeekCommandInput(AbstractModel):
+    """调整播放进度指令参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Position: 播放位置，单位：毫秒。
+        :type Position: int
+        """
+        self.Position = None
+
+
+    def _deserialize(self, params):
+        self.Position = params.get("Position")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SendMessageCommandInput(AbstractModel):
+    """发送自定义信息指令参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Message: 自定义消息，json格式字符串。
+        :type Message: str
+        :param Repeat: 消息重复次数，默认为 1。
+        :type Repeat: int
+        """
+        self.Message = None
+        self.Repeat = None
+
+
+    def _deserialize(self, params):
+        self.Message = params.get("Message")
+        self.Repeat = params.get("Repeat")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SetAudioParamCommandInput(AbstractModel):
+    """音频参数信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Definition: 规格，取值有：
+<li>audio/mi：低规格</li>
+<li>audio/lo：中规格</li>
+<li>audio/hi：高规格</li>
+        :type Definition: str
+        :param Type: 音频类型，取值有：
+<li>Original：原唱</li>
+<li>Accompaniment：伴奏</li>
+        :type Type: str
+        """
+        self.Definition = None
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        self.Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SetPlaylistCommandInput(AbstractModel):
+    """设置播放列表指令参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Type: 变更类型，取值有：
+<li>Add：添加</li>
+<li>Delete：删除</li>
+        :type Type: str
+        :param Index: 歌单索引位置，
+当 Type 取 Add 时，-1表示添加在列表最后位置，大于-1表示要添加的位置；
+当 Type 取 Delete 时，表示要删除的位置。
+        :type Index: int
+        :param MusicIds: 歌曲 ID 列表，当 Type 取 Add 时，必填。
+        :type MusicIds: list of str
+        """
+        self.Type = None
+        self.Index = None
+        self.MusicIds = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.Index = params.get("Index")
+        self.MusicIds = params.get("MusicIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Station(AbstractModel):
     """分类内容
 
@@ -1959,6 +2352,125 @@ class Station(AbstractModel):
                 obj = ImagePath()
                 obj._deserialize(item)
                 self.ImagePathMap.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SyncKTVRobotCommandRequest(AbstractModel):
+    """SyncKTVRobotCommand请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RobotId: 机器人Id。
+        :type RobotId: str
+        :param Command: 指令，取值有：
+<li>Play：播放</li>
+<li>Pause：暂停</li>
+<li>SwitchPrevious：上一首</li>
+<li>SwitchNext：下一首</li>
+<li>Seek：调整播放进度</li>
+<li>SetPlaylist：歌单变更</li>
+<li>SetAudioParam：音频参数变更</li>
+<li>SendMessage：发送自定义消息</li>
+        :type Command: str
+        :param PlayCommandInput: 播放参数。
+        :type PlayCommandInput: :class:`tencentcloud.ame.v20190916.models.PlayCommandInput`
+        :param SetPlaylistCommandInput: 播放列表变更信息，当Command取SetPlaylist时，必填。
+        :type SetPlaylistCommandInput: :class:`tencentcloud.ame.v20190916.models.SetPlaylistCommandInput`
+        :param SeekCommandInput: 播放进度，当Command取Seek时，必填。
+        :type SeekCommandInput: :class:`tencentcloud.ame.v20190916.models.SeekCommandInput`
+        :param SetAudioParamCommandInput: 音频参数，当Command取SetAudioParam时，必填。
+        :type SetAudioParamCommandInput: :class:`tencentcloud.ame.v20190916.models.SetAudioParamCommandInput`
+        :param SendMessageCommandInput: 自定义消息，当Command取SendMessage时，必填。
+        :type SendMessageCommandInput: :class:`tencentcloud.ame.v20190916.models.SendMessageCommandInput`
+        """
+        self.RobotId = None
+        self.Command = None
+        self.PlayCommandInput = None
+        self.SetPlaylistCommandInput = None
+        self.SeekCommandInput = None
+        self.SetAudioParamCommandInput = None
+        self.SendMessageCommandInput = None
+
+
+    def _deserialize(self, params):
+        self.RobotId = params.get("RobotId")
+        self.Command = params.get("Command")
+        if params.get("PlayCommandInput") is not None:
+            self.PlayCommandInput = PlayCommandInput()
+            self.PlayCommandInput._deserialize(params.get("PlayCommandInput"))
+        if params.get("SetPlaylistCommandInput") is not None:
+            self.SetPlaylistCommandInput = SetPlaylistCommandInput()
+            self.SetPlaylistCommandInput._deserialize(params.get("SetPlaylistCommandInput"))
+        if params.get("SeekCommandInput") is not None:
+            self.SeekCommandInput = SeekCommandInput()
+            self.SeekCommandInput._deserialize(params.get("SeekCommandInput"))
+        if params.get("SetAudioParamCommandInput") is not None:
+            self.SetAudioParamCommandInput = SetAudioParamCommandInput()
+            self.SetAudioParamCommandInput._deserialize(params.get("SetAudioParamCommandInput"))
+        if params.get("SendMessageCommandInput") is not None:
+            self.SendMessageCommandInput = SendMessageCommandInput()
+            self.SendMessageCommandInput._deserialize(params.get("SendMessageCommandInput"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SyncKTVRobotCommandResponse(AbstractModel):
+    """SyncKTVRobotCommand返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class TRTCJoinRoomInput(AbstractModel):
+    """TRTC推流进房信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Sign: 签名。
+        :type Sign: str
+        :param RoomId: 房间号。
+        :type RoomId: str
+        :param SdkAppId: 推流应用ID。
+        :type SdkAppId: str
+        :param UserId: 用户唯一标识。
+        :type UserId: str
+        """
+        self.Sign = None
+        self.RoomId = None
+        self.SdkAppId = None
+        self.UserId = None
+
+
+    def _deserialize(self, params):
+        self.Sign = params.get("Sign")
+        self.RoomId = params.get("RoomId")
+        self.SdkAppId = params.get("SdkAppId")
+        self.UserId = params.get("UserId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
