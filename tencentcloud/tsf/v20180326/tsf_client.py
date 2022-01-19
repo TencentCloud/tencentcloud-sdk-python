@@ -1288,7 +1288,7 @@ class TsfClient(AbstractClient):
 
 
     def DeployContainerGroup(self, request):
-        """部署容器应用
+        """部署容器应用-更新
 
         :param request: Request instance for DeployContainerGroup.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DeployContainerGroupRequest`

@@ -26,6 +26,34 @@ class RedisClient(AbstractClient):
     _service = 'redis'
 
 
+    def AddReplicationInstance(self, request):
+        """添加复制组成员
+
+        :param request: Request instance for AddReplicationInstance.
+        :type request: :class:`tencentcloud.redis.v20180412.models.AddReplicationInstanceRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.AddReplicationInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AddReplicationInstance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AddReplicationInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ApplyParamsTemplate(self, request):
         """应用参数模板到实例
 
@@ -250,6 +278,34 @@ class RedisClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateReplicationGroup(self, request):
+        """创建复制组
+
+        :param request: Request instance for CreateReplicationGroup.
+        :type request: :class:`tencentcloud.redis.v20180412.models.CreateReplicationGroupRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.CreateReplicationGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateReplicationGroup", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateReplicationGroupResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteInstanceAccount(self, request):
         """删除实例子账号
 
@@ -292,6 +348,34 @@ class RedisClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteParamTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteReplicationInstance(self, request):
+        """移除复制组成员
+
+        :param request: Request instance for DeleteReplicationInstance.
+        :type request: :class:`tencentcloud.redis.v20180412.models.DeleteReplicationInstanceRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.DeleteReplicationInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteReplicationInstance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteReplicationInstanceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

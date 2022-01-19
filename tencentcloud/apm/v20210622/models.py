@@ -562,6 +562,8 @@ class DescribeMetricRecordsRequest(AbstractModel):
         :type Offset: int
         :param EndTime: 结束时间
         :type EndTime: int
+        :param BusinessName: 业务名称（默认值：taw）
+        :type BusinessName: str
         """
         self.Filters = None
         self.Metrics = None
@@ -572,6 +574,7 @@ class DescribeMetricRecordsRequest(AbstractModel):
         self.StartTime = None
         self.Offset = None
         self.EndTime = None
+        self.BusinessName = None
 
 
     def _deserialize(self, params):
@@ -596,6 +599,7 @@ class DescribeMetricRecordsRequest(AbstractModel):
         self.StartTime = params.get("StartTime")
         self.Offset = params.get("Offset")
         self.EndTime = params.get("EndTime")
+        self.BusinessName = params.get("BusinessName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

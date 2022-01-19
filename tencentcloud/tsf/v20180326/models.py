@@ -4892,6 +4892,8 @@ class DeployContainerGroupRequest(AbstractModel):
         :type VolumeInfoList: list of VolumeInfo
         :param VolumeMountInfoList: 数据卷挂载点信息，list
         :type VolumeMountInfoList: list of VolumeMountInfo
+        :param VolumeClean: 是否清除数据卷信息，默认false
+        :type VolumeClean: bool
         """
         self.GroupId = None
         self.TagName = None
@@ -4928,6 +4930,7 @@ class DeployContainerGroupRequest(AbstractModel):
         self.VolumeMountInfos = None
         self.VolumeInfoList = None
         self.VolumeMountInfoList = None
+        self.VolumeClean = None
 
 
     def _deserialize(self, params):
@@ -4991,6 +4994,7 @@ class DeployContainerGroupRequest(AbstractModel):
                 obj = VolumeMountInfo()
                 obj._deserialize(item)
                 self.VolumeMountInfoList.append(obj)
+        self.VolumeClean = params.get("VolumeClean")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

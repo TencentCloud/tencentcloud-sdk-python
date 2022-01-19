@@ -6736,10 +6736,10 @@ class RuleInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Domain: 转发规则的域名。长度限制为：1~80。
-        :type Domain: str
         :param Url: 转发规则的路径。长度限制为：1~200。
         :type Url: str
+        :param Domain: 转发规则的域名。长度限制为：1~80。Domain和Domains只需要传一个，单域名规则传Domain，多域名规则传Domains。
+        :type Domain: str
         :param SessionExpireTime: 会话保持时间。设置为0表示关闭会话保持，开启会话保持可取值30~3600，单位：秒。
         :type SessionExpireTime: int
         :param HealthCheck: 健康检查信息。详情请参见：[健康检查](https://cloud.tencent.com/document/product/214/6097)
@@ -6763,9 +6763,11 @@ class RuleInput(AbstractModel):
         :type TrpcFunc: str
         :param Quic: 是否开启QUIC，注意，只有HTTPS域名才能开启QUIC
         :type Quic: bool
+        :param Domains: 转发规则的域名列表。每个域名的长度限制为：1~80。Domain和Domains只需要传一个，单域名规则传Domain，多域名规则传Domains。
+        :type Domains: list of str
         """
-        self.Domain = None
         self.Url = None
+        self.Domain = None
         self.SessionExpireTime = None
         self.HealthCheck = None
         self.Certificate = None
@@ -6777,11 +6779,12 @@ class RuleInput(AbstractModel):
         self.TrpcCallee = None
         self.TrpcFunc = None
         self.Quic = None
+        self.Domains = None
 
 
     def _deserialize(self, params):
-        self.Domain = params.get("Domain")
         self.Url = params.get("Url")
+        self.Domain = params.get("Domain")
         self.SessionExpireTime = params.get("SessionExpireTime")
         if params.get("HealthCheck") is not None:
             self.HealthCheck = HealthCheck()
@@ -6797,6 +6800,7 @@ class RuleInput(AbstractModel):
         self.TrpcCallee = params.get("TrpcCallee")
         self.TrpcFunc = params.get("TrpcFunc")
         self.Quic = params.get("Quic")
+        self.Domains = params.get("Domains")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

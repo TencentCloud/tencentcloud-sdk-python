@@ -68,6 +68,59 @@ class Account(AbstractModel):
         
 
 
+class AddReplicationInstanceRequest(AbstractModel):
+    """AddReplicationInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param GroupId: 复制组ID
+        :type GroupId: str
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param InstanceRole: 实例角色，rw可读写，r只读
+        :type InstanceRole: str
+        """
+        self.GroupId = None
+        self.InstanceId = None
+        self.InstanceRole = None
+
+
+    def _deserialize(self, params):
+        self.GroupId = params.get("GroupId")
+        self.InstanceId = params.get("InstanceId")
+        self.InstanceRole = params.get("InstanceRole")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddReplicationInstanceResponse(AbstractModel):
+    """AddReplicationInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 异步流程ID
+        :type TaskId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
 class ApplyParamsTemplateRequest(AbstractModel):
     """ApplyParamsTemplate请求参数结构体
 
@@ -732,6 +785,59 @@ class CreateParamTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateReplicationGroupRequest(AbstractModel):
+    """CreateReplicationGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param GroupName: 复制组名称
+        :type GroupName: str
+        :param Remark: 备注信息
+        :type Remark: str
+        """
+        self.InstanceId = None
+        self.GroupName = None
+        self.Remark = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.GroupName = params.get("GroupName")
+        self.Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateReplicationGroupResponse(AbstractModel):
+    """CreateReplicationGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 异步流程ID
+        :type TaskId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
 class DelayDistribution(AbstractModel):
     """延时分布详情
 
@@ -857,6 +963,59 @@ class DeleteParamTemplateResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteReplicationInstanceRequest(AbstractModel):
+    """DeleteReplicationInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param GroupId: 复制组ID
+        :type GroupId: str
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param SyncType: 数据同步类型，true:需要数据强同步,false:不需要强同步，仅限删除主实例
+        :type SyncType: bool
+        """
+        self.GroupId = None
+        self.InstanceId = None
+        self.SyncType = None
+
+
+    def _deserialize(self, params):
+        self.GroupId = params.get("GroupId")
+        self.InstanceId = params.get("InstanceId")
+        self.SyncType = params.get("SyncType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteReplicationInstanceResponse(AbstractModel):
+    """DeleteReplicationInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 异步任务ID
+        :type TaskId: float
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
         self.RequestId = params.get("RequestId")
 
 

@@ -67,6 +67,41 @@ class AclConfig(AbstractModel):
         
 
 
+class AclConfigRelation(AbstractModel):
+    """端口acl策略配置与高防资源关联
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AclConfig: acl策略
+        :type AclConfig: :class:`tencentcloud.antiddos.v20200309.models.AclConfig`
+        :param InstanceDetailList: 实例列表
+        :type InstanceDetailList: list of InstanceRelation
+        """
+        self.AclConfig = None
+        self.InstanceDetailList = None
+
+
+    def _deserialize(self, params):
+        if params.get("AclConfig") is not None:
+            self.AclConfig = AclConfig()
+            self.AclConfig._deserialize(params.get("AclConfig"))
+        if params.get("InstanceDetailList") is not None:
+            self.InstanceDetailList = []
+            for item in params.get("InstanceDetailList"):
+                obj = InstanceRelation()
+                obj._deserialize(item)
+                self.InstanceDetailList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AssociateDDoSEipAddressRequest(AbstractModel):
     """AssociateDDoSEipAddress请求参数结构体
 
@@ -725,6 +760,41 @@ class ConnectLimitConfig(AbstractModel):
         self.ConnTimeout = params.get("ConnTimeout")
         self.SynRate = params.get("SynRate")
         self.SynLimit = params.get("SynLimit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConnectLimitRelation(AbstractModel):
+    """连接抑制列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ConnectLimitConfig: 连接抑制配置
+        :type ConnectLimitConfig: :class:`tencentcloud.antiddos.v20200309.models.ConnectLimitConfig`
+        :param InstanceDetailList: 连接抑制关联的实例信息
+        :type InstanceDetailList: list of InstanceRelation
+        """
+        self.ConnectLimitConfig = None
+        self.InstanceDetailList = None
+
+
+    def _deserialize(self, params):
+        if params.get("ConnectLimitConfig") is not None:
+            self.ConnectLimitConfig = ConnectLimitConfig()
+            self.ConnectLimitConfig._deserialize(params.get("ConnectLimitConfig"))
+        if params.get("InstanceDetailList") is not None:
+            self.InstanceDetailList = []
+            for item in params.get("InstanceDetailList"):
+                obj = InstanceRelation()
+                obj._deserialize(item)
+                self.InstanceDetailList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2481,6 +2551,72 @@ class DescribeDDoSBlackWhiteIpListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDDoSConnectLimitListRequest(AbstractModel):
+    """DescribeDDoSConnectLimitList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Offset: 页起始偏移，取值为(页码-1)*一页条数
+        :type Offset: int
+        :param Limit: 一页条数
+        :type Limit: int
+        :param FilterIp: 可选参数，按照IP进行过滤
+        :type FilterIp: str
+        :param FilterInstanceId: 可选参数，按照实例id进行过滤
+        :type FilterInstanceId: str
+        """
+        self.Offset = None
+        self.Limit = None
+        self.FilterIp = None
+        self.FilterInstanceId = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.FilterIp = params.get("FilterIp")
+        self.FilterInstanceId = params.get("FilterInstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDDoSConnectLimitListResponse(AbstractModel):
+    """DescribeDDoSConnectLimitList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Total: 连接抑制配置总数
+        :type Total: int
+        :param ConfigList: 连接抑制配置详情信息
+        :type ConfigList: list of ConnectLimitRelation
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Total = None
+        self.ConfigList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("ConfigList") is not None:
+            self.ConfigList = []
+            for item in params.get("ConfigList"):
+                obj = ConnectLimitRelation()
+                obj._deserialize(item)
+                self.ConfigList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDDoSTrendRequest(AbstractModel):
     """DescribeDDoSTrend请求参数结构体
 
@@ -3324,6 +3460,72 @@ class DescribeListPacketFilterConfigResponse(AbstractModel):
                 obj = PacketFilterRelation()
                 obj._deserialize(item)
                 self.ConfigList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeListPortAclListRequest(AbstractModel):
+    """DescribeListPortAclList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Offset: 页起始偏移，取值为(页码-1)*一页条数
+        :type Offset: int
+        :param Limit: 一页条数，当Limit=0时，默认一页条数为100;最大取值为100
+        :type Limit: int
+        :param FilterInstanceId: 资源实例ID搜索, 支持资源实例前缀通配搜索，例如bgp-*表示获取高防包类型的资源实例
+        :type FilterInstanceId: str
+        :param FilterIp: ip搜索
+        :type FilterIp: str
+        """
+        self.Offset = None
+        self.Limit = None
+        self.FilterInstanceId = None
+        self.FilterIp = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.FilterInstanceId = params.get("FilterInstanceId")
+        self.FilterIp = params.get("FilterIp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeListPortAclListResponse(AbstractModel):
+    """DescribeListPortAclList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Total: 总数
+        :type Total: int
+        :param AclList: 端口acl策略
+        :type AclList: list of AclConfigRelation
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Total = None
+        self.AclList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("AclList") is not None:
+            self.AclList = []
+            for item in params.get("AclList"):
+                obj = AclConfigRelation()
+                obj._deserialize(item)
+                self.AclList.append(obj)
         self.RequestId = params.get("RequestId")
 
 
