@@ -26,6 +26,34 @@ class CiiClient(AbstractClient):
     _service = 'cii'
 
 
+    def AddSubStructureTasks(self, request):
+        """中银三星需求，基于主任务批量添加结构化子任务
+
+        :param request: Request instance for AddSubStructureTasks.
+        :type request: :class:`tencentcloud.cii.v20210408.models.AddSubStructureTasksRequest`
+        :rtype: :class:`tencentcloud.cii.v20210408.models.AddSubStructureTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AddSubStructureTasks", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AddSubStructureTasksResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateAutoClassifyStructureTask(self, request):
         """本接口(CreateAutoClassifyStructureTask)基于提供的客户及保单信息，创建并启动结构化识别任务。
 
@@ -138,6 +166,34 @@ class CiiClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeReportClassify(self, request):
+        """saas页面集成了自动分类功能，该接口提供自动分类结果
+
+        :param request: Request instance for DescribeReportClassify.
+        :type request: :class:`tencentcloud.cii.v20210408.models.DescribeReportClassifyRequest`
+        :rtype: :class:`tencentcloud.cii.v20210408.models.DescribeReportClassifyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeReportClassify", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeReportClassifyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeStructCompareData(self, request):
         """结构化对比查询接口，对比结构化复核前后数据差异，查询识别正确率，召回率。
 
@@ -236,6 +292,34 @@ class CiiClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeStructureTaskResultResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeUnderwriteTask(self, request):
+        """本接口(DescribeUnderwriteTask)用于查询核保任务结果
+
+        :param request: Request instance for DescribeUnderwriteTask.
+        :type request: :class:`tencentcloud.cii.v20210408.models.DescribeUnderwriteTaskRequest`
+        :rtype: :class:`tencentcloud.cii.v20210408.models.DescribeUnderwriteTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeUnderwriteTask", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeUnderwriteTaskResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

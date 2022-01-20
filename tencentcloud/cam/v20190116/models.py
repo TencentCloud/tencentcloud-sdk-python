@@ -574,7 +574,7 @@ class AttachedUserPolicy(AbstractModel):
 
 
 class AttachedUserPolicyGroupInfo(AbstractModel):
-    """用户关联策略(随组管理)信息
+    """用户关联策略(随组关联)信息
 
     """
 
@@ -1661,7 +1661,7 @@ class DescribeUserSAMLConfigResponse(AbstractModel):
         r"""
         :param SAMLMetadata: SAML元数据文档
         :type SAMLMetadata: str
-        :param Status: 状态：0:未设置，11:已开启，2:已禁用
+        :param Status: 状态：0:未设置，1:已开启，2:已禁用
         :type Status: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2072,7 +2072,7 @@ class GetPolicyVersionRequest(AbstractModel):
         r"""
         :param PolicyId: 策略ID
         :type PolicyId: int
-        :param VersionId: 策略版本号
+        :param VersionId: 策略版本号，可由ListPolicyVersions获取
         :type VersionId: int
         """
         self.PolicyId = None
@@ -2506,8 +2506,9 @@ class GetUserResponse(AbstractModel):
         :param Uid: 子用户 UID
         :type Uid: int
         :param Remark: 子用户备注
+注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
-        :param ConsoleLogin: 子用户能否登录控制台
+        :param ConsoleLogin: 子用户能否登录控制台 0-无法登录控制台，1-可以登录控制台
         :type ConsoleLogin: int
         :param PhoneNum: 手机号
         :type PhoneNum: str
@@ -2626,17 +2627,17 @@ class GroupMemberInfo(AbstractModel):
         :type PhoneNum: str
         :param CountryCode: 手机区域代码。
         :type CountryCode: str
-        :param PhoneFlag: 是否已验证手机。
+        :param PhoneFlag: 是否已验证手机。0-未验证  1-验证
         :type PhoneFlag: int
         :param Email: 邮箱地址。
         :type Email: str
-        :param EmailFlag: 是否已验证邮箱。
+        :param EmailFlag: 是否已验证邮箱。0-未验证  1-验证
         :type EmailFlag: int
-        :param UserType: 用户类型。
+        :param UserType: 用户类型。1-全局协作者 2-项目协作者 3-消息接收者
         :type UserType: int
         :param CreateTime: 创建时间。
         :type CreateTime: str
-        :param IsReceiverOwner: 是否为主消息接收人。
+        :param IsReceiverOwner: 是否为主消息接收人。0-否 1-是
         :type IsReceiverOwner: int
         """
         self.Uid = None
@@ -4279,7 +4280,7 @@ class SetDefaultPolicyVersionRequest(AbstractModel):
         r"""
         :param PolicyId: 策略ID
         :type PolicyId: int
-        :param VersionId: 策略版本号
+        :param VersionId: 策略版本号，可由ListPolicyVersions获取
         :type VersionId: int
         """
         self.PolicyId = None
@@ -4738,9 +4739,9 @@ class UpdateRoleConsoleLoginRequest(AbstractModel):
         r"""
         :param ConsoleLogin: 是否可登录，可登录：1，不可登录：0
         :type ConsoleLogin: int
-        :param RoleId: 角色ID
+        :param RoleId: 角色ID，入参 RoleId 与 RoleName 二选一
         :type RoleId: int
-        :param RoleName: 角色名
+        :param RoleName: 角色名，入参 RoleId 与 RoleName 二选一
         :type RoleName: str
         """
         self.ConsoleLogin = None

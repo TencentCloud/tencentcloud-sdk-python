@@ -18,6 +18,88 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AddSubStructureTasksRequest(AbstractModel):
+    """AddSubStructureTasks请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MainTaskId: 主任务id
+        :type MainTaskId: str
+        :param TaskInfos: 子任务信息数组
+        :type TaskInfos: list of CreateStructureTaskInfo
+        """
+        self.MainTaskId = None
+        self.TaskInfos = None
+
+
+    def _deserialize(self, params):
+        self.MainTaskId = params.get("MainTaskId")
+        if params.get("TaskInfos") is not None:
+            self.TaskInfos = []
+            for item in params.get("TaskInfos"):
+                obj = CreateStructureTaskInfo()
+                obj._deserialize(item)
+                self.TaskInfos.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddSubStructureTasksResponse(AbstractModel):
+    """AddSubStructureTasks返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SubTaskIds: 增量子任务id数组
+        :type SubTaskIds: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.SubTaskIds = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.SubTaskIds = params.get("SubTaskIds")
+        self.RequestId = params.get("RequestId")
+
+
+class ClassifiedReports(AbstractModel):
+    """报告分类结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ReportType: 报告类型
+        :type ReportType: str
+        :param FileList: 文件列表
+        :type FileList: list of str
+        """
+        self.ReportType = None
+        self.FileList = None
+
+
+    def _deserialize(self, params):
+        self.ReportType = params.get("ReportType")
+        self.FileList = params.get("FileList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ClassifyInfo(AbstractModel):
     """报告分类信息
 
@@ -469,6 +551,60 @@ class DescribeMachineUnderwriteResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeReportClassifyRequest(AbstractModel):
+    """DescribeReportClassify请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ServiceType: 服务类型（Structured/Underwrite）
+        :type ServiceType: str
+        :param FileList: 文件地址数组
+        :type FileList: list of str
+        """
+        self.ServiceType = None
+        self.FileList = None
+
+
+    def _deserialize(self, params):
+        self.ServiceType = params.get("ServiceType")
+        self.FileList = params.get("FileList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeReportClassifyResponse(AbstractModel):
+    """DescribeReportClassify返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Reports: 报告分类结果
+        :type Reports: list of ClassifiedReports
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Reports = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Reports") is not None:
+            self.Reports = []
+            for item in params.get("Reports"):
+                obj = ClassifiedReports()
+                obj._deserialize(item)
+                self.Reports.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeStructCompareDataRequest(AbstractModel):
     """DescribeStructCompareData请求参数结构体
 
@@ -757,6 +893,80 @@ class DescribeStructureTaskResultResponse(AbstractModel):
                 obj = ResultObject()
                 obj._deserialize(item)
                 self.Results.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeUnderwriteTaskRequest(AbstractModel):
+    """DescribeUnderwriteTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UnderwriteTaskId: 任务ID
+        :type UnderwriteTaskId: str
+        """
+        self.UnderwriteTaskId = None
+
+
+    def _deserialize(self, params):
+        self.UnderwriteTaskId = params.get("UnderwriteTaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeUnderwriteTaskResponse(AbstractModel):
+    """DescribeUnderwriteTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Uin: 腾讯云主账号ID
+        :type Uin: str
+        :param SubAccountUin: 操作人子账户ID
+        :type SubAccountUin: str
+        :param PolicyId: 保单ID
+        :type PolicyId: str
+        :param MainTaskId: 主任务ID
+        :type MainTaskId: str
+        :param UnderwriteTaskId: 核保任务ID
+        :type UnderwriteTaskId: str
+        :param Status: 状态码
+        :type Status: int
+        :param UnderwriteResults: 核保结果
+        :type UnderwriteResults: list of UnderwriteOutput
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Uin = None
+        self.SubAccountUin = None
+        self.PolicyId = None
+        self.MainTaskId = None
+        self.UnderwriteTaskId = None
+        self.Status = None
+        self.UnderwriteResults = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Uin = params.get("Uin")
+        self.SubAccountUin = params.get("SubAccountUin")
+        self.PolicyId = params.get("PolicyId")
+        self.MainTaskId = params.get("MainTaskId")
+        self.UnderwriteTaskId = params.get("UnderwriteTaskId")
+        self.Status = params.get("Status")
+        if params.get("UnderwriteResults") is not None:
+            self.UnderwriteResults = []
+            for item in params.get("UnderwriteResults"):
+                obj = UnderwriteOutput()
+                obj._deserialize(item)
+                self.UnderwriteResults.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1115,6 +1325,38 @@ class StructureResultObject(AbstractModel):
         
 
 
+class UnderwriteConclusion(AbstractModel):
+    """核保结论 机器结论和人工结论统一数据结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Type: 类型
+        :type Type: str
+        :param Conclusion: 结论
+        :type Conclusion: str
+        :param Explanation: 解释
+        :type Explanation: str
+        """
+        self.Type = None
+        self.Conclusion = None
+        self.Explanation = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.Conclusion = params.get("Conclusion")
+        self.Explanation = params.get("Explanation")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class UnderwriteItem(AbstractModel):
     """机器核保结论子项
 
@@ -1138,6 +1380,56 @@ class UnderwriteItem(AbstractModel):
         self.Name = params.get("Name")
         self.Result = params.get("Result")
         self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UnderwriteOutput(AbstractModel):
+    """核保结果输出
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CustomerId: 客户ID
+        :type CustomerId: str
+        :param CustomerName: 客户姓名
+        :type CustomerName: str
+        :param Results: 结果
+        :type Results: list of InsuranceResult
+        :param ReviewTime: 复核时间
+        :type ReviewTime: str
+        :param ManualDetail: 人工复核结果
+        :type ManualDetail: list of UnderwriteConclusion
+        """
+        self.CustomerId = None
+        self.CustomerName = None
+        self.Results = None
+        self.ReviewTime = None
+        self.ManualDetail = None
+
+
+    def _deserialize(self, params):
+        self.CustomerId = params.get("CustomerId")
+        self.CustomerName = params.get("CustomerName")
+        if params.get("Results") is not None:
+            self.Results = []
+            for item in params.get("Results"):
+                obj = InsuranceResult()
+                obj._deserialize(item)
+                self.Results.append(obj)
+        self.ReviewTime = params.get("ReviewTime")
+        if params.get("ManualDetail") is not None:
+            self.ManualDetail = []
+            for item in params.get("ManualDetail"):
+                obj = UnderwriteConclusion()
+                obj._deserialize(item)
+                self.ManualDetail.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -1349,21 +1349,21 @@ class CreateClsLogSetRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Period: 日志集的保存周期，单位：天，最大 90。
-        :type Period: int
         :param LogsetName: 日志集的名字，不能和cls其他日志集重名。不填默认为clb_logset。
         :type LogsetName: str
+        :param Period: 日志集的保存周期，单位：天。
+        :type Period: int
         :param LogsetType: 日志集类型，ACCESS：访问日志，HEALTH：健康检查日志，默认ACCESS。
         :type LogsetType: str
         """
-        self.Period = None
         self.LogsetName = None
+        self.Period = None
         self.LogsetType = None
 
 
     def _deserialize(self, params):
-        self.Period = params.get("Period")
         self.LogsetName = params.get("LogsetName")
+        self.Period = params.get("Period")
         self.LogsetType = params.get("LogsetType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -1849,16 +1849,20 @@ class CreateTopicRequest(AbstractModel):
         :type PartitionCount: int
         :param TopicType: 日志类型，ACCESS：访问日志，HEALTH：健康检查日志，默认ACCESS。
         :type TopicType: str
+        :param Period: 日志集的保存周期，单位：天，默认30天。
+        :type Period: int
         """
         self.TopicName = None
         self.PartitionCount = None
         self.TopicType = None
+        self.Period = None
 
 
     def _deserialize(self, params):
         self.TopicName = params.get("TopicName")
         self.PartitionCount = params.get("PartitionCount")
         self.TopicType = params.get("TopicType")
+        self.Period = params.get("Period")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2190,11 +2194,11 @@ class DeleteRuleRequest(AbstractModel):
         :type ListenerId: str
         :param LocationIds: 要删除的转发规则的ID组成的数组。
         :type LocationIds: list of str
-        :param Domain: 要删除的转发规则的域名，已提供LocationIds参数时本参数不生效。
+        :param Domain: 要删除的转发规则的域名，如果是多域名，可以指定多域名列表中的任意一个。已提供LocationIds参数时本参数不生效。
         :type Domain: str
         :param Url: 要删除的转发规则的转发路径，已提供LocationIds参数时本参数不生效。
         :type Url: str
-        :param NewDefaultServerDomain: 监听器下必须配置一个默认域名，当需要删除默认域名时，可以指定另一个域名作为新的默认域名。
+        :param NewDefaultServerDomain: 监听器下必须配置一个默认域名，当需要删除默认域名时，可以指定另一个域名作为新的默认域名，如果新的默认域名是多域名，可以指定多域名列表中的任意一个。
         :type NewDefaultServerDomain: str
         """
         self.LoadBalancerId = None
@@ -5254,6 +5258,9 @@ Public：公网属性， Private：内网属性。
         :param TargetHealth: 后端目标健康状态。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TargetHealth: str
+        :param Domains: 转发规则的域名列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Domains: str
         """
         self.LoadBalancerId = None
         self.LoadBalancerName = None
@@ -5288,6 +5295,7 @@ Public：公网属性， Private：内网属性。
         self.SecurityGroup = None
         self.LoadBalancerPassToTarget = None
         self.TargetHealth = None
+        self.Domains = None
 
 
     def _deserialize(self, params):
@@ -5335,6 +5343,7 @@ Public：公网属性， Private：内网属性。
         self.SecurityGroup = params.get("SecurityGroup")
         self.LoadBalancerPassToTarget = params.get("LoadBalancerPassToTarget")
         self.TargetHealth = params.get("TargetHealth")
+        self.Domains = params.get("Domains")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5610,9 +5619,9 @@ class ModifyDomainAttributesRequest(AbstractModel):
         :type LoadBalancerId: str
         :param ListenerId: 负载均衡监听器ID。
         :type ListenerId: str
-        :param Domain: 域名（必须是已经创建的转发规则下的域名）。
+        :param Domain: 域名（必须是已经创建的转发规则下的域名），如果是多域名，可以指定多域名列表中的任意一个。
         :type Domain: str
-        :param NewDomain: 要修改的新域名。
+        :param NewDomain: 要修改的新域名。NewDomain和NewDomains只能传一个。
         :type NewDomain: str
         :param Certificate: 域名相关的证书信息，注意，仅对启用SNI的监听器适用。
         :type Certificate: :class:`tencentcloud.clb.v20180317.models.CertificateInput`
@@ -5620,8 +5629,10 @@ class ModifyDomainAttributesRequest(AbstractModel):
         :type Http2: bool
         :param DefaultServer: 是否设为默认域名，注意，一个监听器下只能设置一个默认域名。
         :type DefaultServer: bool
-        :param NewDefaultServerDomain: 监听器下必须配置一个默认域名，若要关闭原默认域名，必须同时指定另一个域名作为新的默认域名。
+        :param NewDefaultServerDomain: 监听器下必须配置一个默认域名，若要关闭原默认域名，必须同时指定另一个域名作为新的默认域名，如果新的默认域名是多域名，可以指定多域名列表中的任意一个。
         :type NewDefaultServerDomain: str
+        :param NewDomains: 要修改的新域名列表。NewDomain和NewDomains只能传一个。
+        :type NewDomains: list of str
         """
         self.LoadBalancerId = None
         self.ListenerId = None
@@ -5631,6 +5642,7 @@ class ModifyDomainAttributesRequest(AbstractModel):
         self.Http2 = None
         self.DefaultServer = None
         self.NewDefaultServerDomain = None
+        self.NewDomains = None
 
 
     def _deserialize(self, params):
@@ -5644,6 +5656,7 @@ class ModifyDomainAttributesRequest(AbstractModel):
         self.Http2 = params.get("Http2")
         self.DefaultServer = params.get("DefaultServer")
         self.NewDefaultServerDomain = params.get("NewDefaultServerDomain")
+        self.NewDomains = params.get("NewDomains")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6869,6 +6882,9 @@ class RuleOutput(AbstractModel):
         :param QuicStatus: QUIC状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type QuicStatus: str
+        :param Domains: 转发规则的域名列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Domains: list of str
         """
         self.LocationId = None
         self.Domain = None
@@ -6891,6 +6907,7 @@ class RuleOutput(AbstractModel):
         self.TrpcCallee = None
         self.TrpcFunc = None
         self.QuicStatus = None
+        self.Domains = None
 
 
     def _deserialize(self, params):
@@ -6923,6 +6940,7 @@ class RuleOutput(AbstractModel):
         self.TrpcCallee = params.get("TrpcCallee")
         self.TrpcFunc = params.get("TrpcFunc")
         self.QuicStatus = params.get("QuicStatus")
+        self.Domains = params.get("Domains")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

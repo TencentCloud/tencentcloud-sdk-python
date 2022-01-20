@@ -559,7 +559,7 @@ class EbClient(AbstractClient):
 
 
     def PublishEvent(self, request):
-        """用于Event事件投递
+        """（已废弃）用于Event事件投递
 
         :param request: Request instance for PublishEvent.
         :type request: :class:`tencentcloud.eb.v20210416.models.PublishEventRequest`
@@ -572,6 +572,34 @@ class EbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.PublishEventResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def PutEvents(self, request):
+        """用于Event事件投递
+
+        :param request: Request instance for PutEvents.
+        :type request: :class:`tencentcloud.eb.v20210416.models.PutEventsRequest`
+        :rtype: :class:`tencentcloud.eb.v20210416.models.PutEventsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("PutEvents", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.PutEventsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

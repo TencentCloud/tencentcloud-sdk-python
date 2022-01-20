@@ -5103,6 +5103,8 @@ class CreateRedInvoiceRequest(AbstractModel):
     def __init__(self):
         r"""
         :param InvoicePlatformId: 开票平台ID
+0 : 高灯
+1 : 票易通
         :type InvoicePlatformId: int
         :param Invoices: 红冲明细
         :type Invoices: list of CreateRedInvoiceItem
@@ -5265,6 +5267,8 @@ class CreateRedInvoiceV2Request(AbstractModel):
     def __init__(self):
         r"""
         :param InvoicePlatformId: 开票平台ID
+0 : 高灯
+1 : 票易通
         :type InvoicePlatformId: int
         :param OrderId: 订单号
         :type OrderId: str
@@ -11042,6 +11046,8 @@ class QueryInvoiceRequest(AbstractModel):
     def __init__(self):
         r"""
         :param InvoicePlatformId: 开票平台ID
+0 : 高灯
+1 : 票易通
         :type InvoicePlatformId: int
         :param OrderId: 订单号
         :type OrderId: str
@@ -11234,6 +11240,8 @@ class QueryInvoiceV2Request(AbstractModel):
     def __init__(self):
         r"""
         :param InvoicePlatformId: 开票平台ID
+0 : 高灯
+1 : 票易通
         :type InvoicePlatformId: int
         :param OrderId: 订单号
         :type OrderId: str

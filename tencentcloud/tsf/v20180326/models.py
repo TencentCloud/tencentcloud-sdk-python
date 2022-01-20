@@ -3711,11 +3711,14 @@ class CreateTaskFlowRequest(AbstractModel):
         :type FlowEdges: list of TaskFlowEdge
         :param TimeOut: 工作流执行超时时间
         :type TimeOut: int
+        :param ProgramIdList: 无
+        :type ProgramIdList: list of str
         """
         self.FlowName = None
         self.TriggerRule = None
         self.FlowEdges = None
         self.TimeOut = None
+        self.ProgramIdList = None
 
 
     def _deserialize(self, params):
@@ -3730,6 +3733,7 @@ class CreateTaskFlowRequest(AbstractModel):
                 obj._deserialize(item)
                 self.FlowEdges.append(obj)
         self.TimeOut = params.get("TimeOut")
+        self.ProgramIdList = params.get("ProgramIdList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3747,6 +3751,7 @@ class CreateTaskFlowResponse(AbstractModel):
     def __init__(self):
         r"""
         :param Result: 工作流 ID
+注意：此字段可能返回 null，表示取不到有效值。
         :type Result: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3797,6 +3802,8 @@ class CreateTaskRequest(AbstractModel):
         :type AdvanceSettings: :class:`tencentcloud.tsf.v20180326.models.AdvanceSettings`
         :param TaskArgument: 任务参数，长度限制10000个字符
         :type TaskArgument: str
+        :param ProgramIdList: 无
+        :type ProgramIdList: list of str
         """
         self.TaskName = None
         self.TaskContent = None
@@ -3813,6 +3820,7 @@ class CreateTaskRequest(AbstractModel):
         self.SuccessRatio = None
         self.AdvanceSettings = None
         self.TaskArgument = None
+        self.ProgramIdList = None
 
 
     def _deserialize(self, params):
@@ -3840,6 +3848,7 @@ class CreateTaskRequest(AbstractModel):
             self.AdvanceSettings = AdvanceSettings()
             self.AdvanceSettings._deserialize(params.get("AdvanceSettings"))
         self.TaskArgument = params.get("TaskArgument")
+        self.ProgramIdList = params.get("ProgramIdList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3857,6 +3866,7 @@ class CreateTaskResponse(AbstractModel):
     def __init__(self):
         r"""
         :param Result: 任务ID
+注意：此字段可能返回 null，表示取不到有效值。
         :type Result: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -9195,6 +9205,8 @@ class DescribeTaskRecordsRequest(AbstractModel):
         :type TaskType: str
         :param ExecuteType: 任务触发类型，UNICAST、BROADCAST。
         :type ExecuteType: str
+        :param Ids: 无
+        :type Ids: list of str
         """
         self.Offset = None
         self.Limit = None
@@ -9203,6 +9215,7 @@ class DescribeTaskRecordsRequest(AbstractModel):
         self.GroupId = None
         self.TaskType = None
         self.ExecuteType = None
+        self.Ids = None
 
 
     def _deserialize(self, params):
@@ -9213,6 +9226,7 @@ class DescribeTaskRecordsRequest(AbstractModel):
         self.GroupId = params.get("GroupId")
         self.TaskType = params.get("TaskType")
         self.ExecuteType = params.get("ExecuteType")
+        self.Ids = params.get("Ids")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9230,6 +9244,7 @@ class DescribeTaskRecordsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param Result: 任务记录列表
+注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.TaskRecordPage`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -12691,6 +12706,8 @@ class ModifyTaskRequest(AbstractModel):
         :type RetryInterval: int
         :param TaskArgument: 任务参数，长度限制10000个字符
         :type TaskArgument: str
+        :param ProgramIdList: 无
+        :type ProgramIdList: list of str
         """
         self.TaskId = None
         self.TaskName = None
@@ -12708,6 +12725,7 @@ class ModifyTaskRequest(AbstractModel):
         self.RetryCount = None
         self.RetryInterval = None
         self.TaskArgument = None
+        self.ProgramIdList = None
 
 
     def _deserialize(self, params):
@@ -12736,6 +12754,7 @@ class ModifyTaskRequest(AbstractModel):
         self.RetryCount = params.get("RetryCount")
         self.RetryInterval = params.get("RetryInterval")
         self.TaskArgument = params.get("TaskArgument")
+        self.ProgramIdList = params.get("ProgramIdList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -12753,6 +12772,7 @@ class ModifyTaskResponse(AbstractModel):
     def __init__(self):
         r"""
         :param Result: 更新是否成功
+注意：此字段可能返回 null，表示取不到有效值。
         :type Result: bool
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

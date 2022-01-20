@@ -9507,6 +9507,67 @@ class ProxyGroup(AbstractModel):
         
 
 
+class ProxyGroups(AbstractModel):
+    """数据代理组信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BaseGroup: 代理基本信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BaseGroup: :class:`tencentcloud.cdb.v20170320.models.BaseGroupInfo`
+        :param Address: 代理地址信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Address: list of Address
+        :param ConnectionPoolInfo: 代理连接池信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConnectionPoolInfo: :class:`tencentcloud.cdb.v20170320.models.ConnectionPoolInfo`
+        :param ProxyNode: 代理节点信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProxyNode: list of ProxyNodeInfo
+        :param RWInstInfo: 代理路由信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RWInstInfo: :class:`tencentcloud.cdb.v20170320.models.RWInfos`
+        """
+        self.BaseGroup = None
+        self.Address = None
+        self.ConnectionPoolInfo = None
+        self.ProxyNode = None
+        self.RWInstInfo = None
+
+
+    def _deserialize(self, params):
+        if params.get("BaseGroup") is not None:
+            self.BaseGroup = BaseGroupInfo()
+            self.BaseGroup._deserialize(params.get("BaseGroup"))
+        if params.get("Address") is not None:
+            self.Address = []
+            for item in params.get("Address"):
+                obj = Address()
+                obj._deserialize(item)
+                self.Address.append(obj)
+        if params.get("ConnectionPoolInfo") is not None:
+            self.ConnectionPoolInfo = ConnectionPoolInfo()
+            self.ConnectionPoolInfo._deserialize(params.get("ConnectionPoolInfo"))
+        if params.get("ProxyNode") is not None:
+            self.ProxyNode = []
+            for item in params.get("ProxyNode"):
+                obj = ProxyNodeInfo()
+                obj._deserialize(item)
+                self.ProxyNode.append(obj)
+        if params.get("RWInstInfo") is not None:
+            self.RWInstInfo = RWInfos()
+            self.RWInstInfo._deserialize(params.get("RWInstInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ProxyNodeInfo(AbstractModel):
     """代理节点信息
 
@@ -9556,6 +9617,66 @@ error（节点故障）
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class QueryCDBProxyRequest(AbstractModel):
+    """QueryCDBProxy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param ProxyGroupId: 代理ID
+        :type ProxyGroupId: str
+        """
+        self.InstanceId = None
+        self.ProxyGroupId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.ProxyGroupId = params.get("ProxyGroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryCDBProxyResponse(AbstractModel):
+    """QueryCDBProxy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Count: 代理数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Count: int
+        :param ProxyGroup: 代理信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProxyGroup: list of ProxyGroups
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Count = None
+        self.ProxyGroup = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Count = params.get("Count")
+        if params.get("ProxyGroup") is not None:
+            self.ProxyGroup = []
+            for item in params.get("ProxyGroup"):
+                obj = ProxyGroups()
+                obj._deserialize(item)
+                self.ProxyGroup.append(obj)
+        self.RequestId = params.get("RequestId")
 
 
 class RWInfo(AbstractModel):
@@ -9612,6 +9733,72 @@ class RWInfo(AbstractModel):
         if params.get("RWInstInfo") is not None:
             self.RWInstInfo = RWInstanceInfo()
             self.RWInstInfo._deserialize(params.get("RWInstInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RWInfos(AbstractModel):
+    """proxy读写分离信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstCount: 代理实例数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstCount: int
+        :param WeightMode: 权重分配模式；
+系统自动分配："system"， 自定义："custom"
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WeightMode: str
+        :param IsKickOut: 是否开启延迟剔除
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsKickOut: bool
+        :param MinCount: 最小保留数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MinCount: int
+        :param MaxDelay: 延迟剔除阈值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxDelay: int
+        :param FailOver: 是否开启故障转移
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailOver: bool
+        :param AutoAddRo: 是否自动添加RO
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AutoAddRo: bool
+        :param RWInstInfo: 代理实例信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RWInstInfo: list of RWInstanceInfo
+        """
+        self.InstCount = None
+        self.WeightMode = None
+        self.IsKickOut = None
+        self.MinCount = None
+        self.MaxDelay = None
+        self.FailOver = None
+        self.AutoAddRo = None
+        self.RWInstInfo = None
+
+
+    def _deserialize(self, params):
+        self.InstCount = params.get("InstCount")
+        self.WeightMode = params.get("WeightMode")
+        self.IsKickOut = params.get("IsKickOut")
+        self.MinCount = params.get("MinCount")
+        self.MaxDelay = params.get("MaxDelay")
+        self.FailOver = params.get("FailOver")
+        self.AutoAddRo = params.get("AutoAddRo")
+        if params.get("RWInstInfo") is not None:
+            self.RWInstInfo = []
+            for item in params.get("RWInstInfo"):
+                obj = RWInstanceInfo()
+                obj._deserialize(item)
+                self.RWInstInfo.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -2324,7 +2324,7 @@ class DescribeInstancesDetailRequest(AbstractModel):
         :type TagKey: str
         :param Filters: 过滤器。
         :type Filters: list of Filter
-        :param InstanceIds: 按照实例ID过滤
+        :param InstanceIds: 已经废弃， 使用InstanceIdList
         :type InstanceIds: str
         """
         self.InstanceId = None

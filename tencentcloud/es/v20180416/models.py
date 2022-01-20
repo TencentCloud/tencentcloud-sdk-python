@@ -573,6 +573,8 @@ class DescribeInstancesRequest(AbstractModel):
         :type IpList: list of str
         :param ZoneList: 可用区列表
         :type ZoneList: list of str
+        :param HealthStatus: 健康状态筛列表
+        :type HealthStatus: list of int
         """
         self.Zone = None
         self.InstanceIds = None
@@ -584,6 +586,7 @@ class DescribeInstancesRequest(AbstractModel):
         self.TagList = None
         self.IpList = None
         self.ZoneList = None
+        self.HealthStatus = None
 
 
     def _deserialize(self, params):
@@ -602,6 +605,7 @@ class DescribeInstancesRequest(AbstractModel):
                 self.TagList.append(obj)
         self.IpList = params.get("IpList")
         self.ZoneList = params.get("ZoneList")
+        self.HealthStatus = params.get("HealthStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1135,6 +1139,9 @@ class InstanceInfo(AbstractModel):
         :param FrozenDiskSize: 冻节点磁盘大小，单位GB
 注意：此字段可能返回 null，表示取不到有效值。
         :type FrozenDiskSize: int
+        :param HealthStatus: 集群健康状态 -1 未知；0 Green; 1 Yellow; 2 Red
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HealthStatus: int
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -1207,6 +1214,7 @@ class InstanceInfo(AbstractModel):
         self.FrozenMemSize = None
         self.FrozenDiskType = None
         self.FrozenDiskSize = None
+        self.HealthStatus = None
 
 
     def _deserialize(self, params):
@@ -1310,6 +1318,7 @@ class InstanceInfo(AbstractModel):
         self.FrozenMemSize = params.get("FrozenMemSize")
         self.FrozenDiskType = params.get("FrozenDiskType")
         self.FrozenDiskSize = params.get("FrozenDiskSize")
+        self.HealthStatus = params.get("HealthStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

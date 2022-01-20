@@ -3226,6 +3226,34 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def QueryCDBProxy(self, request):
+        """查询代理详情
+
+        :param request: Request instance for QueryCDBProxy.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.QueryCDBProxyRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.QueryCDBProxyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("QueryCDBProxy", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryCDBProxyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ReleaseIsolatedDBInstances(self, request):
         """本接口（ReleaseIsolatedDBInstances）用于恢复已隔离云数据库实例。
 
