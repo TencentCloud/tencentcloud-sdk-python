@@ -2741,13 +2741,22 @@ class CreateAssetImageRegistryScanTaskRequest(AbstractModel):
         :type Images: list of ImageInfo
         :param ScanType: 扫描类型数组
         :type ScanType: list of str
-        :param Id: 扫描的镜像列表Id
+        :param Id: 扫描的镜像列表
         :type Id: list of int non-negative
+        :param Filters: 过滤条件
+        :type Filters: list of AssetFilters
+        :param ExcludeImageList: 不需要扫描的镜像列表, 与Filters配合使用
+        :type ExcludeImageList: list of int non-negative
+        :param OnlyScanLatest: 是否仅扫描各repository最新版的镜像, 与Filters配合使用
+        :type OnlyScanLatest: bool
         """
         self.All = None
         self.Images = None
         self.ScanType = None
         self.Id = None
+        self.Filters = None
+        self.ExcludeImageList = None
+        self.OnlyScanLatest = None
 
 
     def _deserialize(self, params):
@@ -2760,6 +2769,14 @@ class CreateAssetImageRegistryScanTaskRequest(AbstractModel):
                 self.Images.append(obj)
         self.ScanType = params.get("ScanType")
         self.Id = params.get("Id")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = AssetFilters()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.ExcludeImageList = params.get("ExcludeImageList")
+        self.OnlyScanLatest = params.get("OnlyScanLatest")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5699,6 +5716,24 @@ class DescribeAssetImageRegistryDetailRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param Id: 仓库列表id
+        :type Id: int
+        """
+        self.Id = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribeAssetImageRegistryDetailResponse(AbstractModel):
     """DescribeAssetImageRegistryDetail返回参数结构体
@@ -5713,17 +5748,167 @@ class DescribeAssetImageRegistryDetailResponse(AbstractModel):
         :param ImageRepoAddress: 镜像地址
 注意：此字段可能返回 null，表示取不到有效值。
         :type ImageRepoAddress: str
+        :param RegistryType: 镜像类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegistryType: str
+        :param ImageName: 仓库名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageName: str
+        :param ImageTag: 镜像版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageTag: str
+        :param ScanTime: 扫描时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScanTime: str
+        :param ScanStatus: 扫描状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScanStatus: str
+        :param VulCnt: 安全漏洞数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VulCnt: int
+        :param VirusCnt: 木马病毒数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VirusCnt: int
+        :param RiskCnt: 风险行为数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RiskCnt: int
+        :param SentiveInfoCnt: 敏感信息数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SentiveInfoCnt: int
+        :param OsName: 镜像系统
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OsName: str
+        :param ScanVirusError: 木马扫描错误
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScanVirusError: str
+        :param ScanVulError: 漏洞扫描错误
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScanVulError: str
+        :param LayerInfo: 层文件信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LayerInfo: str
+        :param InstanceId: 实例id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param InstanceName: 实例名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceName: str
+        :param Namespace: 命名空间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Namespace: str
+        :param ScanRiskError: 高危扫描错误
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScanRiskError: str
+        :param ScanVirusProgress: 木马信息扫描进度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScanVirusProgress: int
+        :param ScanVulProgress: 漏洞扫描进度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScanVulProgress: int
+        :param ScanRiskProgress: 敏感扫描进度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScanRiskProgress: int
+        :param ScanRemainTime: 剩余扫描时间秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScanRemainTime: int
+        :param CveStatus: cve扫描状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CveStatus: str
+        :param RiskStatus: 高危扫描状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RiskStatus: str
+        :param VirusStatus: 木马扫描状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VirusStatus: str
+        :param Progress: 总进度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Progress: int
+        :param IsAuthorized: 授权状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsAuthorized: int
+        :param ImageSize: 镜像大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageSize: int
+        :param ImageId: 镜像Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageId: str
+        :param RegistryRegion: 镜像区域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegistryRegion: str
+        :param ImageCreateTime: 镜像创建的时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageCreateTime: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.ImageDigest = None
         self.ImageRepoAddress = None
+        self.RegistryType = None
+        self.ImageName = None
+        self.ImageTag = None
+        self.ScanTime = None
+        self.ScanStatus = None
+        self.VulCnt = None
+        self.VirusCnt = None
+        self.RiskCnt = None
+        self.SentiveInfoCnt = None
+        self.OsName = None
+        self.ScanVirusError = None
+        self.ScanVulError = None
+        self.LayerInfo = None
+        self.InstanceId = None
+        self.InstanceName = None
+        self.Namespace = None
+        self.ScanRiskError = None
+        self.ScanVirusProgress = None
+        self.ScanVulProgress = None
+        self.ScanRiskProgress = None
+        self.ScanRemainTime = None
+        self.CveStatus = None
+        self.RiskStatus = None
+        self.VirusStatus = None
+        self.Progress = None
+        self.IsAuthorized = None
+        self.ImageSize = None
+        self.ImageId = None
+        self.RegistryRegion = None
+        self.ImageCreateTime = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.ImageDigest = params.get("ImageDigest")
         self.ImageRepoAddress = params.get("ImageRepoAddress")
+        self.RegistryType = params.get("RegistryType")
+        self.ImageName = params.get("ImageName")
+        self.ImageTag = params.get("ImageTag")
+        self.ScanTime = params.get("ScanTime")
+        self.ScanStatus = params.get("ScanStatus")
+        self.VulCnt = params.get("VulCnt")
+        self.VirusCnt = params.get("VirusCnt")
+        self.RiskCnt = params.get("RiskCnt")
+        self.SentiveInfoCnt = params.get("SentiveInfoCnt")
+        self.OsName = params.get("OsName")
+        self.ScanVirusError = params.get("ScanVirusError")
+        self.ScanVulError = params.get("ScanVulError")
+        self.LayerInfo = params.get("LayerInfo")
+        self.InstanceId = params.get("InstanceId")
+        self.InstanceName = params.get("InstanceName")
+        self.Namespace = params.get("Namespace")
+        self.ScanRiskError = params.get("ScanRiskError")
+        self.ScanVirusProgress = params.get("ScanVirusProgress")
+        self.ScanVulProgress = params.get("ScanVulProgress")
+        self.ScanRiskProgress = params.get("ScanRiskProgress")
+        self.ScanRemainTime = params.get("ScanRemainTime")
+        self.CveStatus = params.get("CveStatus")
+        self.RiskStatus = params.get("RiskStatus")
+        self.VirusStatus = params.get("VirusStatus")
+        self.Progress = params.get("Progress")
+        self.IsAuthorized = params.get("IsAuthorized")
+        self.ImageSize = params.get("ImageSize")
+        self.ImageId = params.get("ImageId")
+        self.RegistryRegion = params.get("RegistryRegion")
+        self.ImageCreateTime = params.get("ImageCreateTime")
         self.RequestId = params.get("RequestId")
 
 
@@ -5746,6 +5931,8 @@ class DescribeAssetImageRegistryListExportRequest(AbstractModel):
         :type By: str
         :param Order: 排序方式，asc，desc
         :type Order: str
+        :param OnlyShowLatest: 是否仅展示repository版本最新的镜像，默认为false
+        :type OnlyShowLatest: bool
         """
         self.ExportField = None
         self.Limit = None
@@ -5753,6 +5940,7 @@ class DescribeAssetImageRegistryListExportRequest(AbstractModel):
         self.Filters = None
         self.By = None
         self.Order = None
+        self.OnlyShowLatest = None
 
 
     def _deserialize(self, params):
@@ -5767,6 +5955,7 @@ class DescribeAssetImageRegistryListExportRequest(AbstractModel):
                 self.Filters.append(obj)
         self.By = params.get("By")
         self.Order = params.get("Order")
+        self.OnlyShowLatest = params.get("OnlyShowLatest")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5803,6 +5992,50 @@ class DescribeAssetImageRegistryListRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param Limit: 需要返回的数量，默认为10，最大值为100
+        :type Limit: int
+        :param Offset: 偏移量，默认为0
+        :type Offset: int
+        :param Filters: 过滤字段
+IsAuthorized是否授权，取值全部all，未授权0，已授权1
+        :type Filters: list of AssetFilters
+        :param By: 排序字段
+        :type By: str
+        :param Order: 排序方式，asc，desc
+        :type Order: str
+        :param OnlyShowLatest: 是否仅展示各repository最新的镜像, 默认为false
+        :type OnlyShowLatest: bool
+        """
+        self.Limit = None
+        self.Offset = None
+        self.Filters = None
+        self.By = None
+        self.Order = None
+        self.OnlyShowLatest = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = AssetFilters()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.By = params.get("By")
+        self.Order = params.get("Order")
+        self.OnlyShowLatest = params.get("OnlyShowLatest")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribeAssetImageRegistryListResponse(AbstractModel):
     """DescribeAssetImageRegistryList返回参数结构体
@@ -5811,13 +6044,28 @@ class DescribeAssetImageRegistryListResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param List: 镜像仓库列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type List: list of ImageRepoInfo
+        :param TotalCount: 总数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.List = None
+        self.TotalCount = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        if params.get("List") is not None:
+            self.List = []
+            for item in params.get("List"):
+                obj = ImageRepoInfo()
+                obj._deserialize(item)
+                self.List.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -11642,6 +11890,176 @@ class ImageProgress(AbstractModel):
         
 
 
+class ImageRepoInfo(AbstractModel):
+    """容器安全镜像仓库列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ImageDigest: 镜像Digest
+        :type ImageDigest: str
+        :param ImageRepoAddress: 镜像仓库地址
+        :type ImageRepoAddress: str
+        :param RegistryType: 仓库类型
+        :type RegistryType: str
+        :param ImageName: 镜像名称
+        :type ImageName: str
+        :param ImageTag: 镜像版本
+        :type ImageTag: str
+        :param ImageSize: 镜像大小
+        :type ImageSize: int
+        :param ScanTime: 最近扫描时间
+        :type ScanTime: str
+        :param ScanStatus: 扫描状态
+        :type ScanStatus: str
+        :param VulCnt: 安全漏洞数
+        :type VulCnt: int
+        :param VirusCnt: 木马病毒数
+        :type VirusCnt: int
+        :param RiskCnt: 风险行为数
+        :type RiskCnt: int
+        :param SentiveInfoCnt: 敏感信息数
+        :type SentiveInfoCnt: int
+        :param IsTrustImage: 是否可信镜像
+        :type IsTrustImage: bool
+        :param OsName: 镜像系统
+        :type OsName: str
+        :param ScanVirusError: 木马扫描错误
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScanVirusError: str
+        :param ScanVulError: 漏洞扫描错误
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScanVulError: str
+        :param InstanceId: 实例id
+        :type InstanceId: str
+        :param InstanceName: 实例名称
+        :type InstanceName: str
+        :param Namespace: 命名空间
+        :type Namespace: str
+        :param ScanRiskError: 高危扫描错误
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScanRiskError: str
+        :param ScanVirusProgress: 敏感信息扫描进度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScanVirusProgress: int
+        :param ScanVulProgress: 木马扫描进度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScanVulProgress: int
+        :param ScanRiskProgress: 漏洞扫描进度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScanRiskProgress: int
+        :param ScanRemainTime: 剩余扫描时间秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScanRemainTime: int
+        :param CveStatus: cve扫描状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CveStatus: str
+        :param RiskStatus: 高危扫描状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RiskStatus: str
+        :param VirusStatus: 木马扫描状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VirusStatus: str
+        :param Progress: 总进度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Progress: int
+        :param IsAuthorized: 授权状态
+        :type IsAuthorized: int
+        :param RegistryRegion: 仓库区域
+        :type RegistryRegion: str
+        :param Id: 列表id
+        :type Id: int
+        :param ImageId: 镜像Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageId: str
+        :param ImageCreateTime: 镜像创建的时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageCreateTime: str
+        :param IsLatestImage: 是否为镜像的最新版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsLatestImage: bool
+        """
+        self.ImageDigest = None
+        self.ImageRepoAddress = None
+        self.RegistryType = None
+        self.ImageName = None
+        self.ImageTag = None
+        self.ImageSize = None
+        self.ScanTime = None
+        self.ScanStatus = None
+        self.VulCnt = None
+        self.VirusCnt = None
+        self.RiskCnt = None
+        self.SentiveInfoCnt = None
+        self.IsTrustImage = None
+        self.OsName = None
+        self.ScanVirusError = None
+        self.ScanVulError = None
+        self.InstanceId = None
+        self.InstanceName = None
+        self.Namespace = None
+        self.ScanRiskError = None
+        self.ScanVirusProgress = None
+        self.ScanVulProgress = None
+        self.ScanRiskProgress = None
+        self.ScanRemainTime = None
+        self.CveStatus = None
+        self.RiskStatus = None
+        self.VirusStatus = None
+        self.Progress = None
+        self.IsAuthorized = None
+        self.RegistryRegion = None
+        self.Id = None
+        self.ImageId = None
+        self.ImageCreateTime = None
+        self.IsLatestImage = None
+
+
+    def _deserialize(self, params):
+        self.ImageDigest = params.get("ImageDigest")
+        self.ImageRepoAddress = params.get("ImageRepoAddress")
+        self.RegistryType = params.get("RegistryType")
+        self.ImageName = params.get("ImageName")
+        self.ImageTag = params.get("ImageTag")
+        self.ImageSize = params.get("ImageSize")
+        self.ScanTime = params.get("ScanTime")
+        self.ScanStatus = params.get("ScanStatus")
+        self.VulCnt = params.get("VulCnt")
+        self.VirusCnt = params.get("VirusCnt")
+        self.RiskCnt = params.get("RiskCnt")
+        self.SentiveInfoCnt = params.get("SentiveInfoCnt")
+        self.IsTrustImage = params.get("IsTrustImage")
+        self.OsName = params.get("OsName")
+        self.ScanVirusError = params.get("ScanVirusError")
+        self.ScanVulError = params.get("ScanVulError")
+        self.InstanceId = params.get("InstanceId")
+        self.InstanceName = params.get("InstanceName")
+        self.Namespace = params.get("Namespace")
+        self.ScanRiskError = params.get("ScanRiskError")
+        self.ScanVirusProgress = params.get("ScanVirusProgress")
+        self.ScanVulProgress = params.get("ScanVulProgress")
+        self.ScanRiskProgress = params.get("ScanRiskProgress")
+        self.ScanRemainTime = params.get("ScanRemainTime")
+        self.CveStatus = params.get("CveStatus")
+        self.RiskStatus = params.get("RiskStatus")
+        self.VirusStatus = params.get("VirusStatus")
+        self.Progress = params.get("Progress")
+        self.IsAuthorized = params.get("IsAuthorized")
+        self.RegistryRegion = params.get("RegistryRegion")
+        self.Id = params.get("Id")
+        self.ImageId = params.get("ImageId")
+        self.ImageCreateTime = params.get("ImageCreateTime")
+        self.IsLatestImage = params.get("IsLatestImage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ImageRisk(AbstractModel):
     """容器安全镜像高危行为信息
 
@@ -12609,12 +13027,21 @@ class ModifyAssetImageRegistryScanStopRequest(AbstractModel):
         :type All: bool
         :param Images: 扫描的镜像列表
         :type Images: list of ImageInfo
-        :param Id: 扫描的镜像列表Id
+        :param Id: 扫描的镜像列表
         :type Id: list of int non-negative
+        :param Filters: 过滤条件
+        :type Filters: list of AssetFilters
+        :param ExcludeImageList: 不要扫描的镜像列表，与Filters配合使用
+        :type ExcludeImageList: list of int non-negative
+        :param OnlyScanLatest: 是否仅扫描各repository最新版本的镜像
+        :type OnlyScanLatest: bool
         """
         self.All = None
         self.Images = None
         self.Id = None
+        self.Filters = None
+        self.ExcludeImageList = None
+        self.OnlyScanLatest = None
 
 
     def _deserialize(self, params):
@@ -12626,6 +13053,14 @@ class ModifyAssetImageRegistryScanStopRequest(AbstractModel):
                 obj._deserialize(item)
                 self.Images.append(obj)
         self.Id = params.get("Id")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = AssetFilters()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.ExcludeImageList = params.get("ExcludeImageList")
+        self.OnlyScanLatest = params.get("OnlyScanLatest")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

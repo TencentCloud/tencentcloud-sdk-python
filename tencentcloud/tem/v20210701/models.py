@@ -2533,12 +2533,27 @@ class RollingUpdateApplicationByVersionRequest(AbstractModel):
         :type PackageName: str
         :param From: 请求来源平台，含 IntelliJ，Coding
         :type From: str
+        :param DeployStrategyType: 部署策略，AUTO 为全自动；BETA 为小批量验证后自动；MANUAL 为全手动；
+        :type DeployStrategyType: str
+        :param TotalBatchCount: 发布批次数
+        :type TotalBatchCount: int
+        :param BatchInterval: 批次间隔时间
+        :type BatchInterval: int
+        :param BetaBatchNum: 小批量验证批次的实例数
+        :type BetaBatchNum: int
+        :param MinAvailable: 发布过程中保障的最小可用实例数
+        :type MinAvailable: int
         """
         self.ApplicationId = None
         self.EnvironmentId = None
         self.DeployVersion = None
         self.PackageName = None
         self.From = None
+        self.DeployStrategyType = None
+        self.TotalBatchCount = None
+        self.BatchInterval = None
+        self.BetaBatchNum = None
+        self.MinAvailable = None
 
 
     def _deserialize(self, params):
@@ -2547,6 +2562,11 @@ class RollingUpdateApplicationByVersionRequest(AbstractModel):
         self.DeployVersion = params.get("DeployVersion")
         self.PackageName = params.get("PackageName")
         self.From = params.get("From")
+        self.DeployStrategyType = params.get("DeployStrategyType")
+        self.TotalBatchCount = params.get("TotalBatchCount")
+        self.BatchInterval = params.get("BatchInterval")
+        self.BetaBatchNum = params.get("BetaBatchNum")
+        self.MinAvailable = params.get("MinAvailable")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2897,6 +2917,8 @@ class TemNamespaceInfo(AbstractModel):
         :type ClusterStatus: str
         :param EnableTswTraceService: 是否开启tsw
         :type EnableTswTraceService: bool
+        :param Locked: 环境锁，1为上锁，0则为上锁
+        :type Locked: int
         """
         self.EnvironmentId = None
         self.Channel = None
@@ -2914,6 +2936,7 @@ class TemNamespaceInfo(AbstractModel):
         self.SubnetId = None
         self.ClusterStatus = None
         self.EnableTswTraceService = None
+        self.Locked = None
 
 
     def _deserialize(self, params):
@@ -2933,6 +2956,7 @@ class TemNamespaceInfo(AbstractModel):
         self.SubnetId = params.get("SubnetId")
         self.ClusterStatus = params.get("ClusterStatus")
         self.EnableTswTraceService = params.get("EnableTswTraceService")
+        self.Locked = params.get("Locked")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

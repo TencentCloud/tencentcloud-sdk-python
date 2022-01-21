@@ -3270,12 +3270,15 @@ class LicensePlateOCRResponse(AbstractModel):
         :type Confidence: int
         :param Rect: 文本行在原图片中的像素坐标框。
         :type Rect: :class:`tencentcloud.ocr.v20181119.models.Rect`
+        :param Color: 识别出的车牌颜色，目前支持颜色包括 “白”、“黑”、“蓝”、“绿“、“黄”、“黄绿”、“临牌”。
+        :type Color: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Number = None
         self.Confidence = None
         self.Rect = None
+        self.Color = None
         self.RequestId = None
 
 
@@ -3285,6 +3288,7 @@ class LicensePlateOCRResponse(AbstractModel):
         if params.get("Rect") is not None:
             self.Rect = Rect()
             self.Rect._deserialize(params.get("Rect"))
+        self.Color = params.get("Color")
         self.RequestId = params.get("RequestId")
 
 

@@ -904,6 +904,15 @@ class CmqQueue(AbstractModel):
         :param NamespaceName: 命名空间名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type NamespaceName: str
+        :param Status: 集群状态，0:创建中，1:正常，2:销毁中，3:已删除，4: 隔离中，5:创建失败，6: 删除失败
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param MaxUnackedMsgNum: 最大未确认消息数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxUnackedMsgNum: int
+        :param MaxMsgBacklogSize: 最大消息堆积大小（字节）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxMsgBacklogSize: int
         """
         self.QueueId = None
         self.QueueName = None
@@ -932,6 +941,9 @@ class CmqQueue(AbstractModel):
         self.Trace = None
         self.TenantId = None
         self.NamespaceName = None
+        self.Status = None
+        self.MaxUnackedMsgNum = None
+        self.MaxMsgBacklogSize = None
 
 
     def _deserialize(self, params):
@@ -976,6 +988,9 @@ class CmqQueue(AbstractModel):
         self.Trace = params.get("Trace")
         self.TenantId = params.get("TenantId")
         self.NamespaceName = params.get("NamespaceName")
+        self.Status = params.get("Status")
+        self.MaxUnackedMsgNum = params.get("MaxUnackedMsgNum")
+        self.MaxMsgBacklogSize = params.get("MaxMsgBacklogSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

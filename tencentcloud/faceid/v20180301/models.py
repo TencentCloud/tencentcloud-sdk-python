@@ -3002,6 +3002,240 @@ class MobileStatusResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class PhoneVerificationCMCCRequest(AbstractModel):
+    """PhoneVerificationCMCC请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IdCard: 身份证号
+        :type IdCard: str
+        :param Name: 姓名
+        :type Name: str
+        :param Phone: 手机号
+        :type Phone: str
+        :param Encryption: 敏感数据加密信息。对传入信息（姓名、身份证号、手机号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+        :type Encryption: :class:`tencentcloud.faceid.v20180301.models.Encryption`
+        """
+        self.IdCard = None
+        self.Name = None
+        self.Phone = None
+        self.Encryption = None
+
+
+    def _deserialize(self, params):
+        self.IdCard = params.get("IdCard")
+        self.Name = params.get("Name")
+        self.Phone = params.get("Phone")
+        if params.get("Encryption") is not None:
+            self.Encryption = Encryption()
+            self.Encryption._deserialize(params.get("Encryption"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PhoneVerificationCMCCResponse(AbstractModel):
+    """PhoneVerificationCMCC返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 认证结果码，收费情况如下。
+收费结果码：
+0: 认证通过
+-4: 信息不一致（手机号已实名，但姓名和身份证号与实名信息不一致）
+不收费结果码：
+-6: 手机号码不合法
+-7: 身份证号码有误
+-8: 姓名校验不通过
+-9: 没有记录
+-10: 认证未通过
+-11: 验证中心服务繁忙
+        :type Result: str
+        :param Isp: 运营商名称。
+取值范围为["移动","联通","电信",""]
+        :type Isp: str
+        :param Description: 业务结果描述。
+        :type Description: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.Isp = None
+        self.Description = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.Isp = params.get("Isp")
+        self.Description = params.get("Description")
+        self.RequestId = params.get("RequestId")
+
+
+class PhoneVerificationCTCCRequest(AbstractModel):
+    """PhoneVerificationCTCC请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IdCard: 身份证号
+        :type IdCard: str
+        :param Name: 姓名
+        :type Name: str
+        :param Phone: 手机号
+        :type Phone: str
+        :param Encryption: 敏感数据加密信息。对传入信息（姓名、身份证号、手机号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+        :type Encryption: :class:`tencentcloud.faceid.v20180301.models.Encryption`
+        """
+        self.IdCard = None
+        self.Name = None
+        self.Phone = None
+        self.Encryption = None
+
+
+    def _deserialize(self, params):
+        self.IdCard = params.get("IdCard")
+        self.Name = params.get("Name")
+        self.Phone = params.get("Phone")
+        if params.get("Encryption") is not None:
+            self.Encryption = Encryption()
+            self.Encryption._deserialize(params.get("Encryption"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PhoneVerificationCTCCResponse(AbstractModel):
+    """PhoneVerificationCTCC返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 认证结果码，收费情况如下。
+收费结果码：
+0: 认证通过
+-4: 信息不一致（手机号已实名，但姓名和身份证号与实名信息不一致）
+不收费结果码：
+-6: 手机号码不合法
+-7: 身份证号码有误
+-8: 姓名校验不通过
+-9: 没有记录
+-10: 认证未通过
+-11: 验证中心服务繁忙
+        :type Result: str
+        :param Isp: 运营商名称。
+取值范围为["移动","联通","电信",""]
+        :type Isp: str
+        :param Description: 业务结果描述。
+        :type Description: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.Isp = None
+        self.Description = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.Isp = params.get("Isp")
+        self.Description = params.get("Description")
+        self.RequestId = params.get("RequestId")
+
+
+class PhoneVerificationCUCCRequest(AbstractModel):
+    """PhoneVerificationCUCC请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IdCard: 身份证号
+        :type IdCard: str
+        :param Name: 姓名
+        :type Name: str
+        :param Phone: 手机号
+        :type Phone: str
+        :param Encryption: 敏感数据加密信息。对传入信息（姓名、身份证号、手机号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+        :type Encryption: :class:`tencentcloud.faceid.v20180301.models.Encryption`
+        """
+        self.IdCard = None
+        self.Name = None
+        self.Phone = None
+        self.Encryption = None
+
+
+    def _deserialize(self, params):
+        self.IdCard = params.get("IdCard")
+        self.Name = params.get("Name")
+        self.Phone = params.get("Phone")
+        if params.get("Encryption") is not None:
+            self.Encryption = Encryption()
+            self.Encryption._deserialize(params.get("Encryption"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PhoneVerificationCUCCResponse(AbstractModel):
+    """PhoneVerificationCUCC返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 认证结果码，收费情况如下。
+收费结果码：
+0: 认证通过
+-4: 信息不一致（手机号已实名，但姓名和身份证号与实名信息不一致）
+不收费结果码：
+-6: 手机号码不合法
+-7: 身份证号码有误
+-8: 姓名校验不通过
+-9: 没有记录
+-10: 认证未通过
+-11: 验证中心服务繁忙
+        :type Result: str
+        :param Isp: 运营商名称。
+取值范围为["移动","联通","电信",""]
+        :type Isp: str
+        :param Description: 业务结果描述。
+        :type Description: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.Isp = None
+        self.Description = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.Isp = params.get("Isp")
+        self.Description = params.get("Description")
+        self.RequestId = params.get("RequestId")
+
+
 class PhoneVerificationRequest(AbstractModel):
     """PhoneVerification请求参数结构体
 
