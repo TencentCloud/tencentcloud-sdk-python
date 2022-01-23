@@ -29,6 +29,8 @@ class ProxyConnection(object):
     def __init__(self, host, timeout=60, proxy=None, certification=None, is_http=False):
         self.request_host = host
         self.certification = certification
+        if not certification:
+            self.certification = certifi.where()
         self.timeout = timeout
         self.proxy = None
         if is_http:
@@ -36,8 +38,6 @@ class ProxyConnection(object):
         else:
             proxy = proxy or _get_proxy_from_env(host, varname="HTTPS_PROXY")
         if proxy:
-            if not certification:
-                self.certification = certifi.where()
             if is_http:
                 self.proxy = {"http": proxy}
             else:
@@ -52,7 +52,7 @@ class ProxyConnection(object):
                                 data=body,
                                 headers=headers,
                                 proxies=self.proxy,
-                                cert=self.certification,
+                                verify=self.certification,
                                 timeout=self.timeout)
 
 
