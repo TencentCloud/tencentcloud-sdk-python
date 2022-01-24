@@ -2879,22 +2879,28 @@ class CreateAssetImageScanTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param All: 是否扫描全部镜像
+        :param All: 是否扫描全部镜像；全部镜像，镜像列表和根据过滤条件筛选三选一。
         :type All: bool
-        :param Images: 需要扫描的镜像列表
+        :param Images: 需要扫描的镜像列表；全部镜像，镜像列表和根据过滤条件筛选三选一。
         :type Images: list of str
-        :param ScanVul: 扫描漏洞
+        :param ScanVul: 扫描漏洞；漏洞，木马和风险需选其一
         :type ScanVul: bool
-        :param ScanVirus: 扫描木马
+        :param ScanVirus: 扫描木马；漏洞，木马和风险需选其一
         :type ScanVirus: bool
-        :param ScanRisk: 扫描风险
+        :param ScanRisk: 扫描风险；漏洞，木马和风险需选其一
         :type ScanRisk: bool
+        :param Filters: 根据过滤条件筛选出镜像；全部镜像，镜像列表和根据过滤条件筛选三选一。
+        :type Filters: list of AssetFilters
+        :param ExcludeImageIds: 根据过滤条件筛选出镜像，再排除个别镜像
+        :type ExcludeImageIds: list of str
         """
         self.All = None
         self.Images = None
         self.ScanVul = None
         self.ScanVirus = None
         self.ScanRisk = None
+        self.Filters = None
+        self.ExcludeImageIds = None
 
 
     def _deserialize(self, params):
@@ -2903,6 +2909,13 @@ class CreateAssetImageScanTaskRequest(AbstractModel):
         self.ScanVul = params.get("ScanVul")
         self.ScanVirus = params.get("ScanVirus")
         self.ScanRisk = params.get("ScanRisk")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = AssetFilters()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.ExcludeImageIds = params.get("ExcludeImageIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9126,6 +9139,8 @@ class DescribeImageAuthorizedInfoResponse(AbstractModel):
         :type ScannedImageCnt: int
         :param NotScannedImageCnt: 未开启扫描镜像数
         :type NotScannedImageCnt: int
+        :param NotScannedLocalImageCnt: 本地未开启扫描镜像数
+        :type NotScannedLocalImageCnt: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -9133,6 +9148,7 @@ class DescribeImageAuthorizedInfoResponse(AbstractModel):
         self.UsedAuthorizedCnt = None
         self.ScannedImageCnt = None
         self.NotScannedImageCnt = None
+        self.NotScannedLocalImageCnt = None
         self.RequestId = None
 
 
@@ -9141,6 +9157,7 @@ class DescribeImageAuthorizedInfoResponse(AbstractModel):
         self.UsedAuthorizedCnt = params.get("UsedAuthorizedCnt")
         self.ScannedImageCnt = params.get("ScannedImageCnt")
         self.NotScannedImageCnt = params.get("NotScannedImageCnt")
+        self.NotScannedLocalImageCnt = params.get("NotScannedLocalImageCnt")
         self.RequestId = params.get("RequestId")
 
 
@@ -13094,18 +13111,31 @@ class ModifyAssetImageScanStopRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskID: 任务id
+        :param TaskID: 任务id；任务id，镜像id和根据过滤条件筛选三选一。
         :type TaskID: str
-        :param Images: 镜像id
+        :param Images: 镜像id；任务id，镜像id和根据过滤条件筛选三选一。
         :type Images: list of str
+        :param Filters: 根据过滤条件筛选出镜像；任务id，镜像id和根据过滤条件筛选三选一。
+        :type Filters: list of AssetFilters
+        :param ExcludeImageIds: 根据过滤条件筛选出镜像，再排除个别镜像
+        :type ExcludeImageIds: str
         """
         self.TaskID = None
         self.Images = None
+        self.Filters = None
+        self.ExcludeImageIds = None
 
 
     def _deserialize(self, params):
         self.TaskID = params.get("TaskID")
         self.Images = params.get("Images")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = AssetFilters()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.ExcludeImageIds = params.get("ExcludeImageIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

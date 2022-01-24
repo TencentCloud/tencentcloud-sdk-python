@@ -3162,23 +3162,29 @@ class CreateFlowLogRequest(AbstractModel):
         :type ResourceId: str
         :param TrafficType: 流日志采集类型，ACCEPT|REJECT|ALL
         :type TrafficType: str
-        :param CloudLogId: 流日志存储ID
-        :type CloudLogId: str
         :param VpcId: 私用网络ID或者统一ID，建议使用统一ID，当ResourceType为CCN时不填，其他类型必填。
         :type VpcId: str
         :param FlowLogDescription: 流日志实例描述
         :type FlowLogDescription: str
+        :param CloudLogId: 流日志存储ID
+        :type CloudLogId: str
         :param Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
         :type Tags: list of Tag
+        :param StorageType: 消费端类型：cls、ckafka
+        :type StorageType: str
+        :param FlowLogStorage: 流日志消费端信息，当消费端类型为ckafka时，必填。
+        :type FlowLogStorage: :class:`tencentcloud.vpc.v20170312.models.FlowLogStorage`
         """
         self.FlowLogName = None
         self.ResourceType = None
         self.ResourceId = None
         self.TrafficType = None
-        self.CloudLogId = None
         self.VpcId = None
         self.FlowLogDescription = None
+        self.CloudLogId = None
         self.Tags = None
+        self.StorageType = None
+        self.FlowLogStorage = None
 
 
     def _deserialize(self, params):
@@ -3186,15 +3192,19 @@ class CreateFlowLogRequest(AbstractModel):
         self.ResourceType = params.get("ResourceType")
         self.ResourceId = params.get("ResourceId")
         self.TrafficType = params.get("TrafficType")
-        self.CloudLogId = params.get("CloudLogId")
         self.VpcId = params.get("VpcId")
         self.FlowLogDescription = params.get("FlowLogDescription")
+        self.CloudLogId = params.get("CloudLogId")
         if params.get("Tags") is not None:
             self.Tags = []
             for item in params.get("Tags"):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.StorageType = params.get("StorageType")
+        if params.get("FlowLogStorage") is not None:
+            self.FlowLogStorage = FlowLogStorage()
+            self.FlowLogStorage._deserialize(params.get("FlowLogStorage"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -12504,28 +12514,36 @@ class FlowLog(AbstractModel):
 
     def __init__(self):
         r"""
-        :param VpcId: 私用网络ID或者统一ID，建议使用统一ID
+        :param VpcId: 私用网络ID或者统一ID，建议使用统一ID。
         :type VpcId: str
-        :param FlowLogId: 流日志唯一ID
+        :param FlowLogId: 流日志唯一ID。
         :type FlowLogId: str
-        :param FlowLogName: 流日志实例名字
+        :param FlowLogName: 流日志实例名字。
         :type FlowLogName: str
-        :param ResourceType: 流日志所属资源类型，VPC|SUBNET|NETWORKINTERFACE|CCN
+        :param ResourceType: 流日志所属资源类型，VPC|SUBNET|NETWORKINTERFACE|CCN。
         :type ResourceType: str
-        :param ResourceId: 资源唯一ID
+        :param ResourceId: 资源唯一ID。
         :type ResourceId: str
-        :param TrafficType: 流日志采集类型，ACCEPT|REJECT|ALL
+        :param TrafficType: 流日志采集类型，ACCEPT|REJECT|ALL。
         :type TrafficType: str
-        :param CloudLogId: 流日志存储ID
+        :param CloudLogId: 流日志存储ID。
         :type CloudLogId: str
-        :param CloudLogState: 流日志存储ID状态
+        :param CloudLogState: 流日志存储ID状态。
         :type CloudLogState: str
-        :param FlowLogDescription: 流日志描述信息
+        :param FlowLogDescription: 流日志描述信息。
         :type FlowLogDescription: str
-        :param CreatedTime: 流日志创建时间
+        :param CreatedTime: 流日志创建时间。
         :type CreatedTime: str
-        :param TagSet: 标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
+        :param TagSet: 标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
         :type TagSet: list of Tag
+        :param Enable: 是否启用，true-启用，false-停用。
+        :type Enable: bool
+        :param StorageType: 消费端类型：cls、ckafka。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StorageType: str
+        :param FlowLogStorage: 消费端信息，当消费端类型为ckafka时返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlowLogStorage: :class:`tencentcloud.vpc.v20170312.models.FlowLogStorage`
         """
         self.VpcId = None
         self.FlowLogId = None
@@ -12538,6 +12556,9 @@ class FlowLog(AbstractModel):
         self.FlowLogDescription = None
         self.CreatedTime = None
         self.TagSet = None
+        self.Enable = None
+        self.StorageType = None
+        self.FlowLogStorage = None
 
 
     def _deserialize(self, params):
@@ -12557,6 +12578,40 @@ class FlowLog(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.TagSet.append(obj)
+        self.Enable = params.get("Enable")
+        self.StorageType = params.get("StorageType")
+        if params.get("FlowLogStorage") is not None:
+            self.FlowLogStorage = FlowLogStorage()
+            self.FlowLogStorage._deserialize(params.get("FlowLogStorage"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FlowLogStorage(AbstractModel):
+    """流日志存储信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StorageId: 存储实例Id，当流日志存储类型为ckafka时，必填。
+        :type StorageId: str
+        :param StorageTopic: 主题Id，当流日志存储类型为ckafka时，必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StorageTopic: str
+        """
+        self.StorageId = None
+        self.StorageTopic = None
+
+
+    def _deserialize(self, params):
+        self.StorageId = params.get("StorageId")
+        self.StorageTopic = params.get("StorageTopic")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

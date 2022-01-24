@@ -4808,6 +4808,70 @@ class RecognizeContainerOCRResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class RecognizeHealthCodeOCRRequest(AbstractModel):
+    """RecognizeHealthCodeOCR请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ImageBase64: 图片的 Base64 值。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
+图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :type ImageBase64: str
+        :param ImageUrl: 图片的 Url 地址。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
+图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :type ImageUrl: str
+        """
+        self.ImageBase64 = None
+        self.ImageUrl = None
+
+
+    def _deserialize(self, params):
+        self.ImageBase64 = params.get("ImageBase64")
+        self.ImageUrl = params.get("ImageUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RecognizeHealthCodeOCRResponse(AbstractModel):
+    """RecognizeHealthCodeOCR返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 持码人姓名
+        :type Name: str
+        :param Time: 健康码更新时间，格式为：XXXX-XX-XX XX:XX:XX
+        :type Time: str
+        :param Color: 健康码颜色：绿色、黄色、红色
+        :type Color: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Name = None
+        self.Time = None
+        self.Color = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Time = params.get("Time")
+        self.Color = params.get("Color")
+        self.RequestId = params.get("RequestId")
+
+
 class RecognizeOnlineTaxiItineraryOCRRequest(AbstractModel):
     """RecognizeOnlineTaxiItineraryOCR请求参数结构体
 

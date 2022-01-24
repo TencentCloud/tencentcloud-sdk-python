@@ -1514,6 +1514,12 @@ class KTVRobotInfo(AbstractModel):
         :param RTCSystem: RTC厂商类型，取值有：
 <li>TRTC</li>
         :type RTCSystem: str
+        :param SetPlayModeInput: 播放模式，PlayMode取值有：
+<li>RepeatPlaylist：列表循环</li>
+<li>Order：顺序播放</li>
+<li>RepeatSingle：单曲循环</li>
+<li>Shuffle：随机播放</li>
+        :type SetPlayModeInput: :class:`tencentcloud.ame.v20190916.models.SetPlayModeCommandInput`
         """
         self.RobotId = None
         self.Status = None
@@ -1523,6 +1529,7 @@ class KTVRobotInfo(AbstractModel):
         self.SetAudioParamInput = None
         self.JoinRoomInput = None
         self.RTCSystem = None
+        self.SetPlayModeInput = None
 
 
     def _deserialize(self, params):
@@ -1538,6 +1545,9 @@ class KTVRobotInfo(AbstractModel):
             self.JoinRoomInput = JoinRoomInput()
             self.JoinRoomInput._deserialize(params.get("JoinRoomInput"))
         self.RTCSystem = params.get("RTCSystem")
+        if params.get("SetPlayModeInput") is not None:
+            self.SetPlayModeInput = SetPlayModeCommandInput()
+            self.SetPlayModeInput._deserialize(params.get("SetPlayModeInput"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2276,6 +2286,34 @@ class SetAudioParamCommandInput(AbstractModel):
         
 
 
+class SetPlayModeCommandInput(AbstractModel):
+    """设置播放模式
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PlayMode: 播放模式，取值有：
+<li>RepeatPlaylist：列表循环</li>
+<li>Order：顺序播放</li>
+<li>RepeatSingle：单曲循环</li>
+<li>Shuffle：随机播放</li>
+        :type PlayMode: str
+        """
+        self.PlayMode = None
+
+
+    def _deserialize(self, params):
+        self.PlayMode = params.get("PlayMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SetPlaylistCommandInput(AbstractModel):
     """设置播放列表指令参数
 
@@ -2375,6 +2413,7 @@ class SyncKTVRobotCommandRequest(AbstractModel):
 <li>Pause：暂停</li>
 <li>SwitchPrevious：上一首</li>
 <li>SwitchNext：下一首</li>
+<li>SetPlayMode：设置播放模式</li>
 <li>Seek：调整播放进度</li>
 <li>SetPlaylist：歌单变更</li>
 <li>SetAudioParam：音频参数变更</li>
@@ -2390,6 +2429,8 @@ class SyncKTVRobotCommandRequest(AbstractModel):
         :type SetAudioParamCommandInput: :class:`tencentcloud.ame.v20190916.models.SetAudioParamCommandInput`
         :param SendMessageCommandInput: 自定义消息，当Command取SendMessage时，必填。
         :type SendMessageCommandInput: :class:`tencentcloud.ame.v20190916.models.SendMessageCommandInput`
+        :param SetPlayModeCommandInput: 播放模式，当Command取SetPlayMode时，必填。
+        :type SetPlayModeCommandInput: :class:`tencentcloud.ame.v20190916.models.SetPlayModeCommandInput`
         """
         self.RobotId = None
         self.Command = None
@@ -2398,6 +2439,7 @@ class SyncKTVRobotCommandRequest(AbstractModel):
         self.SeekCommandInput = None
         self.SetAudioParamCommandInput = None
         self.SendMessageCommandInput = None
+        self.SetPlayModeCommandInput = None
 
 
     def _deserialize(self, params):
@@ -2418,6 +2460,9 @@ class SyncKTVRobotCommandRequest(AbstractModel):
         if params.get("SendMessageCommandInput") is not None:
             self.SendMessageCommandInput = SendMessageCommandInput()
             self.SendMessageCommandInput._deserialize(params.get("SendMessageCommandInput"))
+        if params.get("SetPlayModeCommandInput") is not None:
+            self.SetPlayModeCommandInput = SetPlayModeCommandInput()
+            self.SetPlayModeCommandInput._deserialize(params.get("SetPlayModeCommandInput"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

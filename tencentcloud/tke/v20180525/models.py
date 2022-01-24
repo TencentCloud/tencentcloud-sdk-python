@@ -1247,6 +1247,74 @@ class ClusterPublicLB(AbstractModel):
         
 
 
+class ClusterStatus(AbstractModel):
+    """集群状态信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群Id
+        :type ClusterId: str
+        :param ClusterState: 集群状态
+        :type ClusterState: str
+        :param ClusterInstanceState: 集群下机器实例的状态
+        :type ClusterInstanceState: str
+        :param ClusterBMonitor: 集群是否开启监控
+        :type ClusterBMonitor: bool
+        :param ClusterInitNodeNum: 集群创建中的节点数，-1表示获取节点状态超时，-2表示获取节点状态失败
+        :type ClusterInitNodeNum: int
+        :param ClusterRunningNodeNum: 集群运行中的节点数，-1表示获取节点状态超时，-2表示获取节点状态失败
+        :type ClusterRunningNodeNum: int
+        :param ClusterFailedNodeNum: 集群异常的节点数，-1表示获取节点状态超时，-2表示获取节点状态失败
+        :type ClusterFailedNodeNum: int
+        :param ClusterClosedNodeNum: 集群已关机的节点数，-1表示获取节点状态超时，-2表示获取节点状态失败
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterClosedNodeNum: int
+        :param ClusterClosingNodeNum: 集群关机中的节点数，-1表示获取节点状态超时，-2表示获取节点状态失败
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterClosingNodeNum: int
+        :param ClusterDeletionProtection: 集群是否开启删除保护
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterDeletionProtection: bool
+        :param ClusterAuditEnabled: 集群是否可审计
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterAuditEnabled: bool
+        """
+        self.ClusterId = None
+        self.ClusterState = None
+        self.ClusterInstanceState = None
+        self.ClusterBMonitor = None
+        self.ClusterInitNodeNum = None
+        self.ClusterRunningNodeNum = None
+        self.ClusterFailedNodeNum = None
+        self.ClusterClosedNodeNum = None
+        self.ClusterClosingNodeNum = None
+        self.ClusterDeletionProtection = None
+        self.ClusterAuditEnabled = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.ClusterState = params.get("ClusterState")
+        self.ClusterInstanceState = params.get("ClusterInstanceState")
+        self.ClusterBMonitor = params.get("ClusterBMonitor")
+        self.ClusterInitNodeNum = params.get("ClusterInitNodeNum")
+        self.ClusterRunningNodeNum = params.get("ClusterRunningNodeNum")
+        self.ClusterFailedNodeNum = params.get("ClusterFailedNodeNum")
+        self.ClusterClosedNodeNum = params.get("ClusterClosedNodeNum")
+        self.ClusterClosingNodeNum = params.get("ClusterClosingNodeNum")
+        self.ClusterDeletionProtection = params.get("ClusterDeletionProtection")
+        self.ClusterAuditEnabled = params.get("ClusterAuditEnabled")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ClusterVersion(AbstractModel):
     """集群版本信息
 
@@ -4051,6 +4119,60 @@ class DescribeClusterSecurityResponse(AbstractModel):
         self.SecurityPolicy = params.get("SecurityPolicy")
         self.Kubeconfig = params.get("Kubeconfig")
         self.JnsGwEndpoint = params.get("JnsGwEndpoint")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeClusterStatusRequest(AbstractModel):
+    """DescribeClusterStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterIds: 集群ID列表，不传默认拉取所有集群
+        :type ClusterIds: list of str
+        """
+        self.ClusterIds = None
+
+
+    def _deserialize(self, params):
+        self.ClusterIds = params.get("ClusterIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeClusterStatusResponse(AbstractModel):
+    """DescribeClusterStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterStatusSet: 集群状态列表
+        :type ClusterStatusSet: list of ClusterStatus
+        :param TotalCount: 集群个数
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ClusterStatusSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ClusterStatusSet") is not None:
+            self.ClusterStatusSet = []
+            for item in params.get("ClusterStatusSet"):
+                obj = ClusterStatus()
+                obj._deserialize(item)
+                self.ClusterStatusSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 

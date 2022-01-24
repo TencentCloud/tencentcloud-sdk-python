@@ -18,6 +18,55 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AutoCalloutTaskInfo(AbstractModel):
+    """自动外呼任务列表项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 任务名
+        :type Name: str
+        :param CalleeCount: 被叫数量
+        :type CalleeCount: int
+        :param Callers: 主叫号码列表
+        :type Callers: list of str
+        :param NotBefore: 起始时间戳
+        :type NotBefore: int
+        :param NotAfter: 结束时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NotAfter: int
+        :param IvrId: 任务使用的IvrId
+        :type IvrId: int
+        :param State: 任务状态0初始 1运行中 2已完成 3结束中 4已结束
+        :type State: int
+        """
+        self.Name = None
+        self.CalleeCount = None
+        self.Callers = None
+        self.NotBefore = None
+        self.NotAfter = None
+        self.IvrId = None
+        self.State = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.CalleeCount = params.get("CalleeCount")
+        self.Callers = params.get("Callers")
+        self.NotBefore = params.get("NotBefore")
+        self.NotAfter = params.get("NotAfter")
+        self.IvrId = params.get("IvrId")
+        self.State = params.get("State")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BindStaffSkillGroupListRequest(AbstractModel):
     """BindStaffSkillGroupList请求参数结构体
 
@@ -202,6 +251,71 @@ class CallInSkillGroupMetrics(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class CreateCallOutSessionRequest(AbstractModel):
+    """CreateCallOutSession请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkAppId: 应用 ID
+        :type SdkAppId: int
+        :param UserId: 客服用户 ID，一般为客服邮箱
+        :type UserId: str
+        :param Callee: 被叫号码，须带 0086 前缀
+        :type Callee: str
+        :param Caller: 主叫号码，须带 0086 前缀
+        :type Caller: str
+        :param IsForceUseMobile: 是否强制使用手机外呼，当前只支持 true，若为 true 请确保已配置白名单
+        :type IsForceUseMobile: bool
+        :param Uui: 自定义数据，长度限制 1024 字节
+        :type Uui: str
+        """
+        self.SdkAppId = None
+        self.UserId = None
+        self.Callee = None
+        self.Caller = None
+        self.IsForceUseMobile = None
+        self.Uui = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.UserId = params.get("UserId")
+        self.Callee = params.get("Callee")
+        self.Caller = params.get("Caller")
+        self.IsForceUseMobile = params.get("IsForceUseMobile")
+        self.Uui = params.get("Uui")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCallOutSessionResponse(AbstractModel):
+    """CreateCallOutSession返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SessionId: 新创建的会话 ID
+        :type SessionId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.SessionId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.SessionId = params.get("SessionId")
+        self.RequestId = params.get("RequestId")
 
 
 class CreateSDKLoginTokenRequest(AbstractModel):
@@ -425,6 +539,68 @@ class DeleteStaffResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.OnlineStaffList = params.get("OnlineStaffList")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAutoCalloutTasksRequest(AbstractModel):
+    """DescribeAutoCalloutTasks请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkAppId: 呼叫中心实例Id
+        :type SdkAppId: int
+        :param PageSize: 分页大小
+        :type PageSize: int
+        :param PageNumber: 页数
+        :type PageNumber: int
+        """
+        self.SdkAppId = None
+        self.PageSize = None
+        self.PageNumber = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.PageSize = params.get("PageSize")
+        self.PageNumber = params.get("PageNumber")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAutoCalloutTasksResponse(AbstractModel):
+    """DescribeAutoCalloutTasks返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 总数
+        :type TotalCount: int
+        :param Tasks: 任务列表
+        :type Tasks: list of AutoCalloutTaskInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Tasks = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Tasks") is not None:
+            self.Tasks = []
+            for item in params.get("Tasks"):
+                obj = AutoCalloutTaskInfo()
+                obj._deserialize(item)
+                self.Tasks.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1279,7 +1455,7 @@ class ErrStaffItem(AbstractModel):
 
 
 class IMCdrInfo(AbstractModel):
-    """全媒体服务记录信息
+    """文本会话服务记录信息
 
     """
 
@@ -1290,6 +1466,14 @@ class IMCdrInfo(AbstractModel):
         :param Duration: 服务时长秒数
         :type Duration: int
         :param EndStatus: 结束状态
+0 异常结束
+1 正常结束
+3 无坐席在线
+17 坐席放弃接听
+100 黑名单
+101 坐席手动转接
+102 IVR阶段放弃
+108 用户超时自动结束
         :type EndStatus: int
         :param Nickname: 用户昵称
         :type Nickname: str
@@ -1299,6 +1483,15 @@ class IMCdrInfo(AbstractModel):
         :type StaffId: str
         :param Timestamp: 服务时间戳
         :type Timestamp: int
+        :param SessionId: 会话ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SessionId: str
+        :param SkillGroupId: 技能组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SkillGroupId: str
+        :param SkillGroupName: 技能组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SkillGroupName: str
         """
         self.Id = None
         self.Duration = None
@@ -1307,6 +1500,9 @@ class IMCdrInfo(AbstractModel):
         self.Type = None
         self.StaffId = None
         self.Timestamp = None
+        self.SessionId = None
+        self.SkillGroupId = None
+        self.SkillGroupName = None
 
 
     def _deserialize(self, params):
@@ -1317,6 +1513,9 @@ class IMCdrInfo(AbstractModel):
         self.Type = params.get("Type")
         self.StaffId = params.get("StaffId")
         self.Timestamp = params.get("Timestamp")
+        self.SessionId = params.get("SessionId")
+        self.SkillGroupId = params.get("SkillGroupId")
+        self.SkillGroupName = params.get("SkillGroupName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

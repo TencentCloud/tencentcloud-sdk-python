@@ -3068,6 +3068,41 @@ class Filter(AbstractModel):
         
 
 
+class GPUInfo(AbstractModel):
+    """实例GPU信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param GPUCount: 实例GPU个数。值小于1代表VGPU类型，大于1代表GPU直通类型。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GPUCount: float
+        :param GPUId: 实例GPU地址。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GPUId: list of str
+        :param GPUType: 实例GPU类型。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GPUType: str
+        """
+        self.GPUCount = None
+        self.GPUId = None
+        self.GPUType = None
+
+
+    def _deserialize(self, params):
+        self.GPUCount = params.get("GPUCount")
+        self.GPUId = params.get("GPUId")
+        self.GPUType = params.get("GPUType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class HostItem(AbstractModel):
     """cdh实例详细信息
 
@@ -4183,6 +4218,9 @@ class Instance(AbstractModel):
         :param IsolatedSource: 实例隔离类型。取值范围：<br><li>ARREAR：表示欠费隔离<br></li><li>EXPIRE：表示到期隔离<br></li><li>MANMADE：表示主动退还隔离<br></li><li>NOTISOLATED：表示未隔离<br></li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsolatedSource: str
+        :param GPUInfo: GPU信息。如果是gpu类型子机，该值会返回GPU信息，如果是其他类型子机则不返回。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GPUInfo: :class:`tencentcloud.cvm.v20170312.models.GPUInfo`
         """
         self.Placement = None
         self.InstanceId = None
@@ -4218,6 +4256,7 @@ class Instance(AbstractModel):
         self.HpcClusterId = None
         self.RdmaIpAddresses = None
         self.IsolatedSource = None
+        self.GPUInfo = None
 
 
     def _deserialize(self, params):
@@ -4275,6 +4314,9 @@ class Instance(AbstractModel):
         self.HpcClusterId = params.get("HpcClusterId")
         self.RdmaIpAddresses = params.get("RdmaIpAddresses")
         self.IsolatedSource = params.get("IsolatedSource")
+        if params.get("GPUInfo") is not None:
+            self.GPUInfo = GPUInfo()
+            self.GPUInfo._deserialize(params.get("GPUInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

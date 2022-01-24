@@ -1001,7 +1001,7 @@ class MeshStatus(AbstractModel):
         :param CanaryVersion: 灰度升级的版本
 注意：此字段可能返回 null，表示取不到有效值。
         :type CanaryVersion: str
-        :param Prometheus: Prometheus状态
+        :param Prometheus: 已废弃
 注意：此字段可能返回 null，表示取不到有效值。
         :type Prometheus: list of PrometheusStatus
         :param StateMessage: 状态附带信息
@@ -1010,12 +1010,16 @@ class MeshStatus(AbstractModel):
         :param ActiveOperationList: 正在执行的异步操作
 注意：此字段可能返回 null，表示取不到有效值。
         :type ActiveOperationList: list of ActiveOperation
+        :param TPS: 获取TPS信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TPS: :class:`tencentcloud.tcm.v20210413.models.PrometheusStatus`
         """
         self.ServiceCount = None
         self.CanaryVersion = None
         self.Prometheus = None
         self.StateMessage = None
         self.ActiveOperationList = None
+        self.TPS = None
 
 
     def _deserialize(self, params):
@@ -1034,6 +1038,9 @@ class MeshStatus(AbstractModel):
                 obj = ActiveOperation()
                 obj._deserialize(item)
                 self.ActiveOperationList.append(obj)
+        if params.get("TPS") is not None:
+            self.TPS = PrometheusStatus()
+            self.TPS._deserialize(params.get("TPS"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

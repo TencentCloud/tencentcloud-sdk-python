@@ -29,6 +29,9 @@ FAILEDOPERATION_ADDRESSENIINFONOTFOUND = 'FailedOperation.AddressEniInfoNotFound
 # 内部错误。
 INTERNALERROR = 'InternalError'
 
+# 创建Ckafka路由失败，请稍后重试。
+INTERNALERROR_CREATECKAFKAROUTEERROR = 'InternalError.CreateCkafkaRouteError'
+
 # 操作内部错误。
 INTERNALSERVERERROR = 'InternalServerError'
 
@@ -488,6 +491,12 @@ UNSUPPORTEDOPERATION_ECMPWITHUSERROUTE = 'UnsupportedOperation.EcmpWithUserRoute
 # 终端节点服务本身不能是终端节点。
 UNSUPPORTEDOPERATION_ENDPOINTSERVICE = 'UnsupportedOperation.EndPointService'
 
+# 不支持创建流日志：当前弹性网卡绑定的是KO机型。
+UNSUPPORTEDOPERATION_FLOWLOGSNOTSUPPORTKOINSTANCEENI = 'UnsupportedOperation.FlowLogsNotSupportKoInstanceEni'
+
+# 不支持创建流日志：当前弹性网卡未绑定实例。
+UNSUPPORTEDOPERATION_FLOWLOGSNOTSUPPORTNULLINSTANCEENI = 'UnsupportedOperation.FlowLogsNotSupportNullInstanceEni'
+
 # 该种类型地址不支持此操作。
 UNSUPPORTEDOPERATION_INCORRECTADDRESSRESOURCETYPE = 'UnsupportedOperation.IncorrectAddressResourceType'
 
@@ -550,6 +559,9 @@ UNSUPPORTEDOPERATION_NOTPOSTPAIDCCNOPERATION = 'UnsupportedOperation.NotPostpaid
 
 # 指定的路由策略不支持发布或撤销至云联网。
 UNSUPPORTEDOPERATION_NOTIFYCCN = 'UnsupportedOperation.NotifyCcn'
+
+# 仅支持专业版Ckafka。
+UNSUPPORTEDOPERATION_ONLYSUPPORTPROFESSIONKAFKA = 'UnsupportedOperation.OnlySupportProfessionKafka'
 
 # 预付费云联网只支持地域间限速。
 UNSUPPORTEDOPERATION_PREPAIDCCNONLYSUPPORTINTERREGIONLIMIT = 'UnsupportedOperation.PrepaidCcnOnlySupportInterRegionLimit'

@@ -1370,6 +1370,34 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeClusterStatus(self, request):
+        """查看集群状态列表
+
+        :param request: Request instance for DescribeClusterStatus.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterStatusRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeClusterStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeClusterStatus", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeClusterStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeClusters(self, request):
         """查询集群列表
 

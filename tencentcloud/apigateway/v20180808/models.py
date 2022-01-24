@@ -7675,7 +7675,7 @@ class ParameterInfo(AbstractModel):
         :type Default: int
         :param Unit: 单位
         :type Unit: str
-        :param Type: 类型
+        :param Type: 类型, integer|string
         :type Type: str
         :param Minimum: 最小
         :type Minimum: int
@@ -7683,6 +7683,15 @@ class ParameterInfo(AbstractModel):
         :type Maximum: int
         :param ModifedTime: 修改时间
         :type ModifedTime: str
+        :param ValueString: 字符类型的值，当Type为string时才有意义
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ValueString: str
+        :param DefaultValueString: 字符类型的默认值，当Type为string时才有意义
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DefaultValueString: str
+        :param Range: 可调整范围
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Range: str
         """
         self.Name = None
         self.Value = None
@@ -7692,6 +7701,9 @@ class ParameterInfo(AbstractModel):
         self.Minimum = None
         self.Maximum = None
         self.ModifedTime = None
+        self.ValueString = None
+        self.DefaultValueString = None
+        self.Range = None
 
 
     def _deserialize(self, params):
@@ -7703,6 +7715,9 @@ class ParameterInfo(AbstractModel):
         self.Minimum = params.get("Minimum")
         self.Maximum = params.get("Maximum")
         self.ModifedTime = params.get("ModifedTime")
+        self.ValueString = params.get("ValueString")
+        self.DefaultValueString = params.get("DefaultValueString")
+        self.Range = params.get("Range")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
