@@ -97,7 +97,8 @@ def test_serialization():
 
     actual = json.loads(res.to_json_string())
     for key in actual["InstanceSet"][0]:
-        assert actual["InstanceSet"][0][key] == mocked["InstanceSet"][0][key], key
+        if key in mocked.keys():
+            assert actual["InstanceSet"][0][key] == mocked["InstanceSet"][0][key], key
     for key in mocked["InstanceSet"][0]:
         assert actual["InstanceSet"][0][key] == mocked["InstanceSet"][0][key], key
     assert actual == mocked
