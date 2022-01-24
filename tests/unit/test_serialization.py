@@ -101,4 +101,3 @@ def test_serialization():
             assert actual["InstanceSet"][0][key] == mocked["InstanceSet"][0][key], key
     for key in mocked["InstanceSet"][0]:
         assert actual["InstanceSet"][0][key] == mocked["InstanceSet"][0][key], key
-    assert actual == mocked
