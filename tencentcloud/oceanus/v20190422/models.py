@@ -53,6 +53,8 @@ class CreateJobConfigRequest(AbstractModel):
         :type ClsLogsetId: str
         :param ClsTopicId: CLS日志主题ID
         :type ClsTopicId: str
+        :param LogCollectType: 日志采集类型 2：CLS；3：COS
+        :type LogCollectType: int
         """
         self.JobId = None
         self.EntrypointClass = None
@@ -68,6 +70,7 @@ class CreateJobConfigRequest(AbstractModel):
         self.TaskManagerSpec = None
         self.ClsLogsetId = None
         self.ClsTopicId = None
+        self.LogCollectType = None
 
 
     def _deserialize(self, params):
@@ -95,6 +98,7 @@ class CreateJobConfigRequest(AbstractModel):
         self.TaskManagerSpec = params.get("TaskManagerSpec")
         self.ClsLogsetId = params.get("ClsLogsetId")
         self.ClsTopicId = params.get("ClsTopicId")
+        self.LogCollectType = params.get("LogCollectType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

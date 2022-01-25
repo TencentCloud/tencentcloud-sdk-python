@@ -434,6 +434,9 @@ INVALIDPARAMETERVALUE_CONTAINERGROUPAPPLICATIONIDNULL = 'InvalidParameterValue.C
 # 集群 CPU 资源不足。
 INVALIDPARAMETERVALUE_CONTAINERGROUPCPULIMITOVER = 'InvalidParameterValue.ContainergroupCpulimitOver'
 
+# 容器 Env 的 Value 和 ValueFrom 至少要有一个。
+INVALIDPARAMETERVALUE_CONTAINERGROUPENVVALUENOTSET = 'InvalidParameterValue.ContainergroupEnvValueNotSet'
+
 # 部署组ID不能为空。
 INVALIDPARAMETERVALUE_CONTAINERGROUPGROUPIDNULL = 'InvalidParameterValue.ContainergroupGroupidNull'
 
@@ -484,6 +487,9 @@ INVALIDPARAMETERVALUE_CONTAINERGROUPTARGETPORTNULL = 'InvalidParameterValue.Cont
 
 # 更新间隔不能为空或者数值非法。
 INVALIDPARAMETERVALUE_CONTAINERGROUPUPDATEIVLINVALID = 'InvalidParameterValue.ContainergroupUpdateivlInvalid'
+
+# updateType参数不合法，值必须为0、1。
+INVALIDPARAMETERVALUE_CONTAINERGROUPUPDATETYPEINVALID = 'InvalidParameterValue.ContainergroupUpdatetypeInvalid'
 
 # 找不到业务容器。
 INVALIDPARAMETERVALUE_CONTAINERGROUPYAMLUSERCONTAINERNOTFOUND = 'InvalidParameterValue.ContainergroupYamlUserContainerNotFound'
@@ -538,6 +544,9 @@ INVALIDPARAMETERVALUE_GROUPBATCHPARAMETERINVALID = 'InvalidParameterValue.GroupB
 
 # 部署组的集群未绑定该命名空间。
 INVALIDPARAMETERVALUE_GROUPCLUSTERNAMESPACENOTBOUND = 'InvalidParameterValue.GroupClusterNamespaceNotBound'
+
+# 删除分组，集群类型不匹配。
+INVALIDPARAMETERVALUE_GROUPDELETECLUSTERTYPEMISMATCH = 'InvalidParameterValue.GroupDeleteClusterTypeMismatch'
 
 # 部署组ID不能为空。
 INVALIDPARAMETERVALUE_GROUPIDNULL = 'InvalidParameterValue.GroupIdNull'

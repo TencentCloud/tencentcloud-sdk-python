@@ -48,7 +48,7 @@ FAILEDOPERATION_APPNOTEXISTED = 'FailedOperation.AppNotExisted'
 FAILEDOPERATION_CHILDORGNODENAMEEXISTS = 'FailedOperation.ChildOrgNodeNameExists'
 
 # 其子机构中存在用户的机构节点不能被删除。
-FAILEDOPERATION_CHILDORGNODEWITHUSERSCANNOTBEDELETED = 'FailedOperation.ChildOrgNodeWithUsersCannotBeDeleted'
+FAILEDOPERATION_CHILDORGNODEWITHUSERSCANNOTBEDELETED = 'FailedOperation.ChildOrgNodeWithUsersCanNotBeDeleted'
 
 # 创建机构节点失败。
 FAILEDOPERATION_CREATEORGNODEFAILURE = 'FailedOperation.CreateOrgNodeFailure'
@@ -62,7 +62,7 @@ FAILEDOPERATION_CREATEUSERGROUPFAILURE = 'FailedOperation.CreateUserGroupFailure
 # 自定义机构节点对外ID已存在。
 FAILEDOPERATION_CUSTOMIZEDPARENTORGNODEIDEXISTED = 'FailedOperation.CustomizedParentOrgNodeIdExisted'
 
-# 删除机构节点异常。
+# 删除机构节点失败。
 FAILEDOPERATION_DELETEORGNODEFAILURE = 'FailedOperation.DeleteOrgNodeFailure'
 
 # 用户为管理员，不能删除。
@@ -92,6 +92,9 @@ FAILEDOPERATION_GROUPIDNOTFOUND = 'FailedOperation.GroupIdNotFound'
 # 数据条目超过最大限制。
 FAILEDOPERATION_ITEMSEXCEEDMAXNUMBER = 'FailedOperation.ItemsExceedMaxNumber'
 
+# 同一个应用，相同的用户不能添加超过 %s 个映射关系。
+FAILEDOPERATION_LIMITQUOTANOTENOUGH = 'FailedOperation.LimitQuotaNotEnough'
+
 # 获取用户所在的用户组列表异常。
 FAILEDOPERATION_LISTUSERGROUPSOFUSERFAILURE = 'FailedOperation.ListUserGroupsOfUserFailure'
 
@@ -117,10 +120,10 @@ FAILEDOPERATION_ORGNODEIDNOTEXIST = 'FailedOperation.OrgNodeIdNotExist'
 FAILEDOPERATION_ORGNODENOTEXIST = 'FailedOperation.OrgNodeNotExist'
 
 # 机构根节点不能被删除。
-FAILEDOPERATION_ORGNODEROOTCANNOTBEDELETED = 'FailedOperation.OrgNodeRootCannotBeDeleted'
+FAILEDOPERATION_ORGNODEROOTCANNOTBEDELETED = 'FailedOperation.OrgNodeRootCanNotBeDeleted'
 
 # 有用户存在的机构节点不能被删除。
-FAILEDOPERATION_ORGNODEWITHUSERSCANNOTBEDELETED = 'FailedOperation.OrgNodeWithUsersCannotBeDeleted'
+FAILEDOPERATION_ORGNODEWITHUSERSCANNOTBEDELETED = 'FailedOperation.OrgNodeWithUsersCanNotBeDeleted'
 
 # 父机构节点ID未找到。
 FAILEDOPERATION_PARENTORGNODEIDNOTFOUND = 'FailedOperation.ParentOrgNodeIdNotFound'
@@ -142,6 +145,12 @@ FAILEDOPERATION_SECONDARYNODENUMBEROVERLIMIT = 'FailedOperation.SecondaryNodeNum
 
 # 设定的时间格式不合法。
 FAILEDOPERATION_TIMEFORMATISILLEGAL = 'FailedOperation.TimeFormatIsIllegal'
+
+# 不能变更LDAP导入的用户到目录外的组织机构下。
+FAILEDOPERATION_UPDATELDAPUSERORGEXCEEDSRANGE = 'FailedOperation.UpdateLDAPUserOrgExceedsRange'
+
+# 不能变更自建用户到有同步操作类型的组织机构下。
+FAILEDOPERATION_UPDATEUSEREXCEEDSRANGE = 'FailedOperation.UpdateUserExceedsRange'
 
 # 不能变更企业微信用户到企业外的组织机构。
 FAILEDOPERATION_UPDATEWECOMUSERORGEXCEEDSRANGE = 'FailedOperation.UpdateWeComUserOrgExceedsRange'

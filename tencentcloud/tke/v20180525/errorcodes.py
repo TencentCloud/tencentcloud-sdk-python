@@ -182,6 +182,9 @@ INTERNALERROR_ROUTETABLENOTEMPTY = 'InternalError.RouteTableNotEmpty'
 # 路由表不存在。
 INTERNALERROR_ROUTETABLENOTFOUND = 'InternalError.RouteTableNotFound'
 
+# 已有相同任务执行中。
+INTERNALERROR_TASKALREADYRUNNING = 'InternalError.TaskAlreadyRunning'
+
 # 创建任务失败。
 INTERNALERROR_TASKCREATEFAILED = 'InternalError.TaskCreateFailed'
 

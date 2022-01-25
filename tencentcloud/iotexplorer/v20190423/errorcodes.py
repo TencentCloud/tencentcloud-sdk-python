@@ -416,6 +416,9 @@ UNSUPPORTEDOPERATION_DEVICEEXCEEDLIMIT = 'UnsupportedOperation.DeviceExceedLimit
 # 设备ota升级中。
 UNSUPPORTEDOPERATION_DEVICEOTATASKINPROGRESS = 'UnsupportedOperation.DeviceOtaTaskInProgress'
 
+# 设备类型错误。
+UNSUPPORTEDOPERATION_DEVICETYPE = 'UnsupportedOperation.DeviceType'
+
 # 产品下还存在未删除的设备。
 UNSUPPORTEDOPERATION_DEVICESEXISTUNDERPRODUCT = 'UnsupportedOperation.DevicesExistUnderProduct'
 

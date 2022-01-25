@@ -51,7 +51,7 @@ INVALIDPARAMETER_TIMERANGEERROR = 'InvalidParameter.TimeRangeError'
 LIMITEXCEEDED_APPLICATION = 'LimitExceeded.Application'
 
 # 缺少参数。
-MISSINGPARAMETER_ = 'MissingParameter.'
+MISSINGPARAMETER = 'MissingParameter'
 
 # 操作被拒绝。
 OPERATIONDENIED = 'OperationDenied'

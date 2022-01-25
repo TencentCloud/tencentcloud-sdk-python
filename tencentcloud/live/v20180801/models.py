@@ -9237,11 +9237,11 @@ class PushDataInfo(AbstractModel):
         :type ServerIp: str
         :param VideoFps: 推流视频帧率，单位: Hz。
         :type VideoFps: int
-        :param VideoSpeed: 推流视频码率，单位: Kbps。
+        :param VideoSpeed: 推流视频码率，单位: bps。
         :type VideoSpeed: int
         :param AudioFps: 推流音频帧率，单位: Hz。
         :type AudioFps: int
-        :param AudioSpeed: 推流音频码率，单位: Kbps。
+        :param AudioSpeed: 推流音频码率，单位: bps。
         :type AudioSpeed: int
         :param PushDomain: 推流域名。
         :type PushDomain: str
@@ -9257,9 +9257,9 @@ class PushDataInfo(AbstractModel):
         :type Resolution: str
         :param AsampleRate: 采样率。
         :type AsampleRate: int
-        :param MetaAudioSpeed: metadata 中的音频码率，单位: Kbps。
+        :param MetaAudioSpeed: metadata 中的音频码率，单位: bps。
         :type MetaAudioSpeed: int
-        :param MetaVideoSpeed: metadata 中的视频码率，单位: Kbps。
+        :param MetaVideoSpeed: metadata 中的视频码率，单位: bps。
         :type MetaVideoSpeed: int
         :param MetaFps: metadata 中的帧率。
         :type MetaFps: int
