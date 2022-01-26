@@ -903,7 +903,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribeProductList(self, request):
-        """查询云监控产品列表
+        """查询云监控产品列表，支持云服务器CVM、云数据库、云消息队列、负载均衡、容器服务、专线等云产品。
 
         :param request: Request instance for DescribeProductList.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeProductListRequest`

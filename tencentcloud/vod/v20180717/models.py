@@ -6905,15 +6905,30 @@ class CreateSuperPlayerConfigRequest(AbstractModel):
         r"""
         :param Name: 播放器配置名称，长度限制：64 个字符。只允许出现 [0-9a-zA-Z] 及 _- 字符（如 test_ABC-123），同一个用户该名称唯一。
         :type Name: str
+        :param AudioVideoType: 播放的音视频类型，可选值：
+<li>AdaptiveDynamicStream：自适应码流输出；</li>
+<li>Transcode：转码输出；</li>
+<li>Original：原始音视频。</li>
+默认为 AdaptiveDynamicStream。
+        :type AudioVideoType: str
         :param DrmSwitch: 播放 DRM 保护的自适应码流开关：
 <li>ON：开启，表示仅播放 DRM  保护的自适应码流输出；</li>
 <li>OFF：关闭，表示播放未加密的自适应码流输出。</li>
 默认为 OFF。
+当 AudioVideoType 为 AdaptiveDynamicStream 时，此参数有效。
         :type DrmSwitch: str
-        :param AdaptiveDynamicStreamingDefinition: 允许输出的未加密的自适应码流模板 ID，当 DrmSwitch 为 OFF 时必填。
+        :param AdaptiveDynamicStreamingDefinition: 允许输出的未加密的自适应码流模板 ID。
+
+当 AudioVideoType 为 AdaptiveDynamicStream 并且 DrmSwitch 为 OFF 时，此参数为必填。
         :type AdaptiveDynamicStreamingDefinition: int
-        :param DrmStreamingsInfo: 允许输出的 DRM 自适应码流模板内容，当 DrmSwitch 为 ON 时必填。
+        :param DrmStreamingsInfo: 允许输出的 DRM 自适应码流模板内容。
+
+当 AudioVideoType 为 AdaptiveDynamicStream 并且 DrmSwitch 为 ON 时，此参数为必填。
         :type DrmStreamingsInfo: :class:`tencentcloud.vod.v20180717.models.DrmStreamingsInfo`
+        :param TranscodeDefinition: 允许输出的转码模板 ID。
+
+当 AudioVideoType 为 Transcode 时必填。
+        :type TranscodeDefinition: int
         :param ImageSpriteDefinition: 允许输出的雪碧图模板 ID。
         :type ImageSpriteDefinition: int
         :param ResolutionNames: 播放器对不于不同分辨率的子流展示名字，不填或者填空数组则使用默认配置：
@@ -6937,9 +6952,11 @@ class CreateSuperPlayerConfigRequest(AbstractModel):
         :type SubAppId: int
         """
         self.Name = None
+        self.AudioVideoType = None
         self.DrmSwitch = None
         self.AdaptiveDynamicStreamingDefinition = None
         self.DrmStreamingsInfo = None
+        self.TranscodeDefinition = None
         self.ImageSpriteDefinition = None
         self.ResolutionNames = None
         self.Domain = None
@@ -6950,11 +6967,13 @@ class CreateSuperPlayerConfigRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.Name = params.get("Name")
+        self.AudioVideoType = params.get("AudioVideoType")
         self.DrmSwitch = params.get("DrmSwitch")
         self.AdaptiveDynamicStreamingDefinition = params.get("AdaptiveDynamicStreamingDefinition")
         if params.get("DrmStreamingsInfo") is not None:
             self.DrmStreamingsInfo = DrmStreamingsInfo()
             self.DrmStreamingsInfo._deserialize(params.get("DrmStreamingsInfo"))
+        self.TranscodeDefinition = params.get("TranscodeDefinition")
         self.ImageSpriteDefinition = params.get("ImageSpriteDefinition")
         if params.get("ResolutionNames") is not None:
             self.ResolutionNames = []
@@ -16343,6 +16362,11 @@ class ModifySuperPlayerConfigRequest(AbstractModel):
         r"""
         :param Name: 播放器配置名称。
         :type Name: str
+        :param AudioVideoType: 播放的音视频类型，可选值：
+<li>AdaptiveDynamicStream：自适应码流输出；</li>
+<li>Transcode：转码输出；</li>
+<li>Original：原始音视频。</li>
+        :type AudioVideoType: str
         :param DrmSwitch: 播放 DRM 保护的自适应码流开关：
 <li>ON：开启，表示仅播放 DRM  保护的自适应码流输出；</li>
 <li>OFF：关闭，表示播放未加密的自适应码流输出。</li>
@@ -16351,6 +16375,8 @@ class ModifySuperPlayerConfigRequest(AbstractModel):
         :type AdaptiveDynamicStreamingDefinition: int
         :param DrmStreamingsInfo: 允许输出的 DRM 自适应码流模板内容。
         :type DrmStreamingsInfo: :class:`tencentcloud.vod.v20180717.models.DrmStreamingsInfoForUpdate`
+        :param TranscodeDefinition: 允许输出的转码模板 ID。
+        :type TranscodeDefinition: int
         :param ImageSpriteDefinition: 允许输出的雪碧图模板 ID。
         :type ImageSpriteDefinition: int
         :param ResolutionNames: 播放器对不于不同分辨率的子流展示名字。
@@ -16368,9 +16394,11 @@ class ModifySuperPlayerConfigRequest(AbstractModel):
         :type SubAppId: int
         """
         self.Name = None
+        self.AudioVideoType = None
         self.DrmSwitch = None
         self.AdaptiveDynamicStreamingDefinition = None
         self.DrmStreamingsInfo = None
+        self.TranscodeDefinition = None
         self.ImageSpriteDefinition = None
         self.ResolutionNames = None
         self.Domain = None
@@ -16381,11 +16409,13 @@ class ModifySuperPlayerConfigRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.Name = params.get("Name")
+        self.AudioVideoType = params.get("AudioVideoType")
         self.DrmSwitch = params.get("DrmSwitch")
         self.AdaptiveDynamicStreamingDefinition = params.get("AdaptiveDynamicStreamingDefinition")
         if params.get("DrmStreamingsInfo") is not None:
             self.DrmStreamingsInfo = DrmStreamingsInfoForUpdate()
             self.DrmStreamingsInfo._deserialize(params.get("DrmStreamingsInfo"))
+        self.TranscodeDefinition = params.get("TranscodeDefinition")
         self.ImageSpriteDefinition = params.get("ImageSpriteDefinition")
         if params.get("ResolutionNames") is not None:
             self.ResolutionNames = []

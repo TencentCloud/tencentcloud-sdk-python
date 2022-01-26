@@ -746,6 +746,9 @@ class DescribeKTVRobotsRequest(AbstractModel):
 <li>Pause：暂停</li>
 <li>Destroy：销毁</li>
         :type Statuses: list of str
+        :param CreateTime: 匹配创建时间在此时间段内的机器人。
+<li>包含所指定的头尾时间点。</li>
+        :type CreateTime: :class:`tencentcloud.ame.v20190916.models.TimeRange`
         :param Offset: 分页返回的起始偏移量，默认值：0。将返回第 Offset 到第 Offset+Limit-1 条。
         :type Offset: int
         :param Limit: 分页返回的起始偏移量，默认值：10。
@@ -753,6 +756,7 @@ class DescribeKTVRobotsRequest(AbstractModel):
         """
         self.RobotIds = None
         self.Statuses = None
+        self.CreateTime = None
         self.Offset = None
         self.Limit = None
 
@@ -760,6 +764,9 @@ class DescribeKTVRobotsRequest(AbstractModel):
     def _deserialize(self, params):
         self.RobotIds = params.get("RobotIds")
         self.Statuses = params.get("Statuses")
+        if params.get("CreateTime") is not None:
+            self.CreateTime = TimeRange()
+            self.CreateTime._deserialize(params.get("CreateTime"))
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
         memeber_set = set(params.keys())
@@ -2611,6 +2618,36 @@ class TakeMusicOffShelvesResponse(AbstractModel):
         self.FailedNum = params.get("FailedNum")
         self.FailedMusicIds = params.get("FailedMusicIds")
         self.RequestId = params.get("RequestId")
+
+
+class TimeRange(AbstractModel):
+    """时间范围
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Before: <li>大于等于此时间（起始时间）。</li>
+<li>格式按照 ISO 8601标准表示，详见 <a href="https://cloud.tencent.com/document/product/266/11732#I" target="_blank">ISO 日期格式说明</a>。</li>
+        :type Before: str
+        :param After: <li>小于此时间（结束时间）。</li>
+<li>格式按照 ISO 8601标准表示，详见 <a href="https://cloud.tencent.com/document/product/266/11732#I" target="_blank">ISO 日期格式说明</a>。</li>
+        :type After: str
+        """
+        self.Before = None
+        self.After = None
+
+
+    def _deserialize(self, params):
+        self.Before = params.get("Before")
+        self.After = params.get("After")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class UseRange(AbstractModel):

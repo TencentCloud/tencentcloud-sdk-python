@@ -18,6 +18,65 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AddCustomPersonImageRequest(AbstractModel):
+    """AddCustomPersonImage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PersonId: 自定义人物Id
+        :type PersonId: str
+        :param ImageURL: 自定义人物图片地址
+        :type ImageURL: str
+        :param Image: 图片数据base64之后的结果
+        :type Image: str
+        """
+        self.PersonId = None
+        self.ImageURL = None
+        self.Image = None
+
+
+    def _deserialize(self, params):
+        self.PersonId = params.get("PersonId")
+        self.ImageURL = params.get("ImageURL")
+        self.Image = params.get("Image")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddCustomPersonImageResponse(AbstractModel):
+    """AddCustomPersonImage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PersonId: 自定义人物Id
+        :type PersonId: str
+        :param ImageInfo: 自定义人脸图片信息
+        :type ImageInfo: :class:`tencentcloud.ivld.v20210903.models.PersonImageInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.PersonId = None
+        self.ImageInfo = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.PersonId = params.get("PersonId")
+        if params.get("ImageInfo") is not None:
+            self.ImageInfo = PersonImageInfo()
+            self.ImageInfo._deserialize(params.get("ImageInfo"))
+        self.RequestId = params.get("RequestId")
+
+
 class AppearIndexPair(AbstractModel):
     """出现信息索引对
 
@@ -145,6 +204,186 @@ class AudioInfo(AbstractModel):
         
 
 
+class CreateCustomCategoryRequest(AbstractModel):
+    """CreateCustomCategory请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param L1Category: 自定义一级类型
+        :type L1Category: str
+        :param L2Category: 自定义二级类型
+        :type L2Category: str
+        """
+        self.L1Category = None
+        self.L2Category = None
+
+
+    def _deserialize(self, params):
+        self.L1Category = params.get("L1Category")
+        self.L2Category = params.get("L2Category")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCustomCategoryResponse(AbstractModel):
+    """CreateCustomCategory返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CategoryId: 自定义分类信息ID
+        :type CategoryId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.CategoryId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.CategoryId = params.get("CategoryId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateCustomGroupRequest(AbstractModel):
+    """CreateCustomGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Bucket: 人脸图片COS存储桶Host地址
+        :type Bucket: str
+        """
+        self.Bucket = None
+
+
+    def _deserialize(self, params):
+        self.Bucket = params.get("Bucket")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCustomGroupResponse(AbstractModel):
+    """CreateCustomGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreateCustomPersonRequest(AbstractModel):
+    """CreateCustomPerson请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 自定义人物姓名
+        :type Name: str
+        :param BasicInfo: 自定义人物简要信息(仅用于标记，不支持检索)
+        :type BasicInfo: str
+        :param CategoryId: 自定义分类ID，如不存在接口会报错
+        :type CategoryId: str
+        :param ImageURL: 自定义人物图片URL，可支持任意地址，推荐使用COS
+        :type ImageURL: str
+        :param Image: 原始图片base64编码后的数据
+        :type Image: str
+        """
+        self.Name = None
+        self.BasicInfo = None
+        self.CategoryId = None
+        self.ImageURL = None
+        self.Image = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.BasicInfo = params.get("BasicInfo")
+        self.CategoryId = params.get("CategoryId")
+        self.ImageURL = params.get("ImageURL")
+        self.Image = params.get("Image")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCustomPersonResponse(AbstractModel):
+    """CreateCustomPerson返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PersonId: 自定义人物Id
+        :type PersonId: str
+        :param ImageInfo: 自定义人脸信息
+        :type ImageInfo: :class:`tencentcloud.ivld.v20210903.models.PersonImageInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.PersonId = None
+        self.ImageInfo = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.PersonId = params.get("PersonId")
+        if params.get("ImageInfo") is not None:
+            self.ImageInfo = PersonImageInfo()
+            self.ImageInfo._deserialize(params.get("ImageInfo"))
+        self.RequestId = params.get("RequestId")
+
+
+class CreateDefaultCategoriesRequest(AbstractModel):
+    """CreateDefaultCategories请求参数结构体
+
+    """
+
+
+class CreateDefaultCategoriesResponse(AbstractModel):
+    """CreateDefaultCategories返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CreateTaskRequest(AbstractModel):
     """CreateTask请求参数结构体
 
@@ -204,6 +443,114 @@ class CreateTaskResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CustomCategory(AbstractModel):
+    """自定义分类信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CategoryId: 自定义分类ID
+        :type CategoryId: str
+        :param L1Category: 一级自定义类型
+        :type L1Category: str
+        :param L2Category: 二级自定义类型
+        :type L2Category: str
+        """
+        self.CategoryId = None
+        self.L1Category = None
+        self.L2Category = None
+
+
+    def _deserialize(self, params):
+        self.CategoryId = params.get("CategoryId")
+        self.L1Category = params.get("L1Category")
+        self.L2Category = params.get("L2Category")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CustomPersonFilter(AbstractModel):
+    """自定义人物批量查询过滤条件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 待查询的人物姓名
+        :type Name: str
+        :param CategoryIdSet: 待过滤的自定义类型Id数组
+        :type CategoryIdSet: list of str
+        :param PersonIdSet: 待过滤的自定义人物Id数组
+        :type PersonIdSet: list of str
+        :param L1CategorySet: 一级自定义人物类型数组
+        :type L1CategorySet: list of str
+        """
+        self.Name = None
+        self.CategoryIdSet = None
+        self.PersonIdSet = None
+        self.L1CategorySet = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.CategoryIdSet = params.get("CategoryIdSet")
+        self.PersonIdSet = params.get("PersonIdSet")
+        self.L1CategorySet = params.get("L1CategorySet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CustomPersonInfo(AbstractModel):
+    """自定义人物信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PersonId: 自定义人物Id
+        :type PersonId: str
+        :param Name: 自定义人物姓名
+        :type Name: str
+        :param BasicInfo: 自定义人物简介信息
+        :type BasicInfo: str
+        :param L1Category: 一级自定义人物类型
+        :type L1Category: str
+        :param L2Category: 二级自定义人物类型
+        :type L2Category: str
+        """
+        self.PersonId = None
+        self.Name = None
+        self.BasicInfo = None
+        self.L1Category = None
+        self.L2Category = None
+
+
+    def _deserialize(self, params):
+        self.PersonId = params.get("PersonId")
+        self.Name = params.get("Name")
+        self.BasicInfo = params.get("BasicInfo")
+        self.L1Category = params.get("L1Category")
+        self.L2Category = params.get("L2Category")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Data(AbstractModel):
     """任务结果数据
 
@@ -229,6 +576,149 @@ class Data(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class DeleteCustomCategoryRequest(AbstractModel):
+    """DeleteCustomCategory请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CategoryId: 自定义分类ID
+        :type CategoryId: str
+        """
+        self.CategoryId = None
+
+
+    def _deserialize(self, params):
+        self.CategoryId = params.get("CategoryId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteCustomCategoryResponse(AbstractModel):
+    """DeleteCustomCategory返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CategoryId: 123
+        :type CategoryId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.CategoryId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.CategoryId = params.get("CategoryId")
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteCustomPersonImageRequest(AbstractModel):
+    """DeleteCustomPersonImage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PersonId: 自定义人物Id
+        :type PersonId: str
+        :param ImageId: 自定义人脸图片Id
+        :type ImageId: str
+        """
+        self.PersonId = None
+        self.ImageId = None
+
+
+    def _deserialize(self, params):
+        self.PersonId = params.get("PersonId")
+        self.ImageId = params.get("ImageId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteCustomPersonImageResponse(AbstractModel):
+    """DeleteCustomPersonImage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PersonId: 自定义人物Id
+        :type PersonId: str
+        :param ImageId: 已删除的人物图片Id
+        :type ImageId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.PersonId = None
+        self.ImageId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.PersonId = params.get("PersonId")
+        self.ImageId = params.get("ImageId")
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteCustomPersonRequest(AbstractModel):
+    """DeleteCustomPerson请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PersonId: 待删除的自定义人物ID
+        :type PersonId: str
+        """
+        self.PersonId = None
+
+
+    def _deserialize(self, params):
+        self.PersonId = params.get("PersonId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteCustomPersonResponse(AbstractModel):
+    """DeleteCustomPerson返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PersonId: 已删除的自定义人物Id
+        :type PersonId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.PersonId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.PersonId = params.get("PersonId")
+        self.RequestId = params.get("RequestId")
 
 
 class DeleteMediaRequest(AbstractModel):
@@ -269,6 +759,191 @@ class DeleteMediaResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCustomCategoriesRequest(AbstractModel):
+    """DescribeCustomCategories请求参数结构体
+
+    """
+
+
+class DescribeCustomCategoriesResponse(AbstractModel):
+    """DescribeCustomCategories返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CategorySet: 自定义人物类型数组
+        :type CategorySet: list of CustomCategory
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.CategorySet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("CategorySet") is not None:
+            self.CategorySet = []
+            for item in params.get("CategorySet"):
+                obj = CustomCategory()
+                obj._deserialize(item)
+                self.CategorySet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCustomGroupRequest(AbstractModel):
+    """DescribeCustomGroup请求参数结构体
+
+    """
+
+
+class DescribeCustomGroupResponse(AbstractModel):
+    """DescribeCustomGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param GroupSize: 自定义人物库所包含的人物个数
+        :type GroupSize: int
+        :param Bucket: 自定义人物库图片后续所在的存储桶
+        :type Bucket: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.GroupSize = None
+        self.Bucket = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.GroupSize = params.get("GroupSize")
+        self.Bucket = params.get("Bucket")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCustomPersonDetailRequest(AbstractModel):
+    """DescribeCustomPersonDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PersonId: 自定义人物Id
+        :type PersonId: str
+        """
+        self.PersonId = None
+
+
+    def _deserialize(self, params):
+        self.PersonId = params.get("PersonId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCustomPersonDetailResponse(AbstractModel):
+    """DescribeCustomPersonDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PersonInfo: 自定义人物信息
+        :type PersonInfo: :class:`tencentcloud.ivld.v20210903.models.CustomPersonInfo`
+        :param TaskIdSet: 出现该自定义人物的所有分析人物Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskIdSet: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.PersonInfo = None
+        self.TaskIdSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("PersonInfo") is not None:
+            self.PersonInfo = CustomPersonInfo()
+            self.PersonInfo._deserialize(params.get("PersonInfo"))
+        self.TaskIdSet = params.get("TaskIdSet")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCustomPersonsRequest(AbstractModel):
+    """DescribeCustomPersons请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PageNumber: 分页序号，从1开始
+        :type PageNumber: int
+        :param PageSize: 分页数据行数，最多50
+        :type PageSize: int
+        :param SortBy: 排序信息，默认倒序
+        :type SortBy: :class:`tencentcloud.ivld.v20210903.models.SortBy`
+        :param Filter: 自定义人物过滤条件
+        :type Filter: :class:`tencentcloud.ivld.v20210903.models.CustomPersonFilter`
+        """
+        self.PageNumber = None
+        self.PageSize = None
+        self.SortBy = None
+        self.Filter = None
+
+
+    def _deserialize(self, params):
+        self.PageNumber = params.get("PageNumber")
+        self.PageSize = params.get("PageSize")
+        if params.get("SortBy") is not None:
+            self.SortBy = SortBy()
+            self.SortBy._deserialize(params.get("SortBy"))
+        if params.get("Filter") is not None:
+            self.Filter = CustomPersonFilter()
+            self.Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCustomPersonsResponse(AbstractModel):
+    """DescribeCustomPersons返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 满足过滤条件的自定义人物数量
+        :type TotalCount: int
+        :param PersonInfoSet: 自定义人物信息
+        :type PersonInfoSet: list of CustomPersonInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.PersonInfoSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("PersonInfoSet") is not None:
+            self.PersonInfoSet = []
+            for item in params.get("PersonInfoSet"):
+                obj = CustomPersonInfo()
+                obj._deserialize(item)
+                self.PersonInfoSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1039,6 +1714,42 @@ class MultiLevelTag(AbstractModel):
         
 
 
+class PersonImageInfo(AbstractModel):
+    """自定义人物人脸图片信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ImageId: 人脸图片ID
+        :type ImageId: str
+        :param ImageURL: 自定义人脸图片的URL，存储在IVLDCustomPreson存储桶内
+        :type ImageURL: str
+        :param ErrorCode: 自定义人脸图片处理错误码
+        :type ErrorCode: str
+        :param ErrorMsg: 自定义人脸图片处理错误信息
+        :type ErrorMsg: str
+        """
+        self.ImageId = None
+        self.ImageURL = None
+        self.ErrorCode = None
+        self.ErrorMsg = None
+
+
+    def _deserialize(self, params):
+        self.ImageId = params.get("ImageId")
+        self.ImageURL = params.get("ImageURL")
+        self.ErrorCode = params.get("ErrorCode")
+        self.ErrorMsg = params.get("ErrorMsg")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ShowInfo(AbstractModel):
     """视频结构化结果
 
@@ -1374,6 +2085,116 @@ class TextInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class UpdateCustomCategoryRequest(AbstractModel):
+    """UpdateCustomCategory请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CategoryId: 自定义人物类型Id
+        :type CategoryId: str
+        :param L1Category: 一级自定义人物类型
+        :type L1Category: str
+        :param L2Category: 二级自定义人物类型
+        :type L2Category: str
+        """
+        self.CategoryId = None
+        self.L1Category = None
+        self.L2Category = None
+
+
+    def _deserialize(self, params):
+        self.CategoryId = params.get("CategoryId")
+        self.L1Category = params.get("L1Category")
+        self.L2Category = params.get("L2Category")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateCustomCategoryResponse(AbstractModel):
+    """UpdateCustomCategory返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CategoryId: 成功更新的自定义人物类型Id
+        :type CategoryId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.CategoryId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.CategoryId = params.get("CategoryId")
+        self.RequestId = params.get("RequestId")
+
+
+class UpdateCustomPersonRequest(AbstractModel):
+    """UpdateCustomPerson请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PersonId: 待更新的自定义人物Id
+        :type PersonId: str
+        :param Name: 更新后的自定义人物名称，如为空则不更新
+        :type Name: str
+        :param BasicInfo: 更新后的自定义人物简介，如为空则不更新
+        :type BasicInfo: str
+        :param CategoryId: 更新后的分类信息，如为空则不更新
+        :type CategoryId: str
+        """
+        self.PersonId = None
+        self.Name = None
+        self.BasicInfo = None
+        self.CategoryId = None
+
+
+    def _deserialize(self, params):
+        self.PersonId = params.get("PersonId")
+        self.Name = params.get("Name")
+        self.BasicInfo = params.get("BasicInfo")
+        self.CategoryId = params.get("CategoryId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateCustomPersonResponse(AbstractModel):
+    """UpdateCustomPerson返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PersonId: 成功更新的自定义人物Id
+        :type PersonId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.PersonId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.PersonId = params.get("PersonId")
+        self.RequestId = params.get("RequestId")
 
 
 class VideoAppearInfo(AbstractModel):

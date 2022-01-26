@@ -278,6 +278,12 @@ class DescribeOrganizationResponse(AbstractModel):
         :param IsAllowQuit: 是否允许退出。允许：Allow，不允许：Denied。
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsAllowQuit: str
+        :param PayUin: 代付者Uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PayUin: str
+        :param PayName: 代付者名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PayName: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -293,6 +299,8 @@ class DescribeOrganizationResponse(AbstractModel):
         self.CreateTime = None
         self.JoinTime = None
         self.IsAllowQuit = None
+        self.PayUin = None
+        self.PayName = None
         self.RequestId = None
 
 
@@ -314,6 +322,8 @@ class DescribeOrganizationResponse(AbstractModel):
         self.CreateTime = params.get("CreateTime")
         self.JoinTime = params.get("JoinTime")
         self.IsAllowQuit = params.get("IsAllowQuit")
+        self.PayUin = params.get("PayUin")
+        self.PayName = params.get("PayName")
         self.RequestId = params.get("RequestId")
 
 

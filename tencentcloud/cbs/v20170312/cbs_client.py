@@ -120,6 +120,37 @@ class CbsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CopySnapshotCrossRegions(self, request):
+        """本接口（CopySnapshotCrossRegions）用于快照跨地域复制。
+
+        * 本接口为异步接口，当跨地域复制的请求下发成功后会返回一个新的快照ID，此时快照未立即复制到目标地域，可请求目标地域的[DescribeSnapshots](/document/product/362/15647)接口查询新快照的状态，判断是否复制完成。如果快照的状态为“NORMAL”，表示快照复制完成。
+        * 本接口实现的快照跨地域复制操作将产生跨地域流量，预计2022年第三季度会针对此功能进行商业化计费；请留意后续站内信公告，避免产生预期外扣费。
+
+        :param request: Request instance for CopySnapshotCrossRegions.
+        :type request: :class:`tencentcloud.cbs.v20170312.models.CopySnapshotCrossRegionsRequest`
+        :rtype: :class:`tencentcloud.cbs.v20170312.models.CopySnapshotCrossRegionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CopySnapshotCrossRegions", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CopySnapshotCrossRegionsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateAutoSnapshotPolicy(self, request):
         """本接口（CreateAutoSnapshotPolicy）用于创建定期快照策略。
 
