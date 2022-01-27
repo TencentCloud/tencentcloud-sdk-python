@@ -4485,6 +4485,9 @@ class SubAccountInfo(AbstractModel):
         :param CreateTime: 创建时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
+        :param NickName: 昵称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NickName: str
         """
         self.Uin = None
         self.Name = None
@@ -4495,6 +4498,7 @@ class SubAccountInfo(AbstractModel):
         self.CountryCode = None
         self.Email = None
         self.CreateTime = None
+        self.NickName = None
 
 
     def _deserialize(self, params):
@@ -4507,6 +4511,7 @@ class SubAccountInfo(AbstractModel):
         self.CountryCode = params.get("CountryCode")
         self.Email = params.get("Email")
         self.CreateTime = params.get("CreateTime")
+        self.NickName = params.get("NickName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

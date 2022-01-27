@@ -306,6 +306,92 @@ class AmeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeKTVSingerCategories(self, request):
+        """获取直播互动曲库歌手分类信息
+
+        :param request: Request instance for DescribeKTVSingerCategories.
+        :type request: :class:`tencentcloud.ame.v20190916.models.DescribeKTVSingerCategoriesRequest`
+        :rtype: :class:`tencentcloud.ame.v20190916.models.DescribeKTVSingerCategoriesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeKTVSingerCategories", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeKTVSingerCategoriesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeKTVSingerMusics(self, request):
+        """根据歌手id，返回该歌手下歌曲列表。
+
+
+
+        :param request: Request instance for DescribeKTVSingerMusics.
+        :type request: :class:`tencentcloud.ame.v20190916.models.DescribeKTVSingerMusicsRequest`
+        :rtype: :class:`tencentcloud.ame.v20190916.models.DescribeKTVSingerMusicsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeKTVSingerMusics", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeKTVSingerMusicsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeKTVSingers(self, request):
+        """根据过滤条件，返回匹配的歌手列表。
+
+        :param request: Request instance for DescribeKTVSingers.
+        :type request: :class:`tencentcloud.ame.v20190916.models.DescribeKTVSingersRequest`
+        :rtype: :class:`tencentcloud.ame.v20190916.models.DescribeKTVSingersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeKTVSingers", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeKTVSingersResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeLyric(self, request):
         """根据接口的模式及歌曲ID来取得歌词信息或者波形图信息。
 

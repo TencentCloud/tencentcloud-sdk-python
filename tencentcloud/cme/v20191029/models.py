@@ -394,6 +394,66 @@ class CMEExportInfo(AbstractModel):
         
 
 
+class ClassCreatedEvent(AbstractModel):
+    """分类创建事件。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Owner: 分类归属。
+        :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`
+        :param ClassPath: 分类路径。
+        :type ClassPath: str
+        """
+        self.Owner = None
+        self.ClassPath = None
+
+
+    def _deserialize(self, params):
+        if params.get("Owner") is not None:
+            self.Owner = Entity()
+            self.Owner._deserialize(params.get("Owner"))
+        self.ClassPath = params.get("ClassPath")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ClassDeletedEvent(AbstractModel):
+    """分类删除事件。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Owner: 删除的分类归属。
+        :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`
+        :param ClassPathSet: 删除的分类路径列表。
+        :type ClassPathSet: list of str
+        """
+        self.Owner = None
+        self.ClassPathSet = None
+
+
+    def _deserialize(self, params):
+        if params.get("Owner") is not None:
+            self.Owner = Entity()
+            self.Owner._deserialize(params.get("Owner"))
+        self.ClassPathSet = params.get("ClassPathSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ClassInfo(AbstractModel):
     """分类信息
 
@@ -415,6 +475,46 @@ class ClassInfo(AbstractModel):
             self.Owner = Entity()
             self.Owner._deserialize(params.get("Owner"))
         self.ClassPath = params.get("ClassPath")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ClassMovedEvent(AbstractModel):
+    """分类移动事件。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SourceOwner: 源分类归属。
+        :type SourceOwner: :class:`tencentcloud.cme.v20191029.models.Entity`
+        :param SourceClassPathSet: 源分类路径列表。
+        :type SourceClassPathSet: list of str
+        :param DestinationOwner: 目标分类归属。
+        :type DestinationOwner: :class:`tencentcloud.cme.v20191029.models.Entity`
+        :param DestinationClassPath: 目标分类归属。
+        :type DestinationClassPath: str
+        """
+        self.SourceOwner = None
+        self.SourceClassPathSet = None
+        self.DestinationOwner = None
+        self.DestinationClassPath = None
+
+
+    def _deserialize(self, params):
+        if params.get("SourceOwner") is not None:
+            self.SourceOwner = Entity()
+            self.SourceOwner._deserialize(params.get("SourceOwner"))
+        self.SourceClassPathSet = params.get("SourceClassPathSet")
+        if params.get("DestinationOwner") is not None:
+            self.DestinationOwner = Entity()
+            self.DestinationOwner._deserialize(params.get("DestinationOwner"))
+        self.DestinationClassPath = params.get("DestinationClassPath")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2338,28 +2438,104 @@ class EventContent(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EventType: 事件类型，可取值为：
-<li>Storage.NewFileCreated：新文件产生；</li>
-<li>Project.StreamConnect.StatusChanged：云转推项目状态变更。</li>
+        :param EventType: 事件类型，可取值有：
+<li>Storage.NewFileCreated：新文件产生事件；</li>
+<li>Project.StreamConnect.StatusChanged：云转推项目状态变更事件；</li>
+<li>Project.Switcher.StatusChanged：导播台项目状态变更事件；</li>
+<li>Material.Imported：媒体导入事件；</li>
+<li>Material.Added：媒体添加事件；</li>
+<li>Material.Moved：媒体移动事件；</li>
+<li>Material.Modified：媒体变更事件；</li>
+<li>Material.Deleted：媒体删除事件；</li>
+<li>Class.Created：分类新增事件；</li>
+<li>Class.Moved：分类移动事件；</li>
+<li>Class.Deleted：分类删除事件。</li>
         :type EventType: str
-        :param StorageNewFileCreatedEvent: 新文件产生事件信息。仅当 EventType 为 Storage.NewFileCreated 时有效。
+        :param Operator: 操作者，表示触发事件的操作者。如果是 `cmeid_system` 表示平台管理员操作。
+        :type Operator: str
+        :param StorageNewFileCreatedEvent: 新文件产生事件。仅当 EventType 为 Storage.NewFileCreated 时有效。
         :type StorageNewFileCreatedEvent: :class:`tencentcloud.cme.v20191029.models.StorageNewFileCreatedEvent`
-        :param ProjectStreamConnectStatusChangedEvent: 云转推项目状态变更事件信息。仅当 EventType 为 Project.StreamConnect.StatusChanged 时有效。
+        :param ProjectStreamConnectStatusChangedEvent: 云转推项目状态变更事件。仅当 EventType 为 Project.StreamConnect.StatusChanged 时有效。
         :type ProjectStreamConnectStatusChangedEvent: :class:`tencentcloud.cme.v20191029.models.ProjectStreamConnectStatusChangedEvent`
+        :param ProjectSwitcherStatusChangedEvent: 导播台项目状态变更事件。仅当 EventType 为 Project.Switcher.StatusChanged 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectSwitcherStatusChangedEvent: :class:`tencentcloud.cme.v20191029.models.ProjectSwitcherStatusChangedEvent`
+        :param MaterialImportedEvent: 媒体导入事件。仅当 EventType 为 Material.Imported 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaterialImportedEvent: :class:`tencentcloud.cme.v20191029.models.MaterialImportedEvent`
+        :param MaterialAddedEvent: 媒体添加事件。仅当 EventType 为 Material.Added 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaterialAddedEvent: :class:`tencentcloud.cme.v20191029.models.MaterialAddedEvent`
+        :param MaterialMovedEvent: 媒体移动事件。仅当 EventType 为 Material.Moved 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaterialMovedEvent: :class:`tencentcloud.cme.v20191029.models.MaterialMovedEvent`
+        :param MaterialModifiedEvent: 媒体更新事件。仅当 EventType 为 Material.Modified 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaterialModifiedEvent: :class:`tencentcloud.cme.v20191029.models.MaterialModifiedEvent`
+        :param MaterialDeletedEvent: 媒体删除事件。仅当 EventType 为 Material.Deleted 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaterialDeletedEvent: :class:`tencentcloud.cme.v20191029.models.MaterialDeletedEvent`
+        :param ClassCreatedEvent: 分类创建事件。仅当 EventType 为 Class.Created 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClassCreatedEvent: :class:`tencentcloud.cme.v20191029.models.ClassCreatedEvent`
+        :param ClassMovedEvent: 分类移动事件。仅当 EventType 为 Class.Moved 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClassMovedEvent: :class:`tencentcloud.cme.v20191029.models.ClassMovedEvent`
+        :param ClassDeletedEvent: 分类删除事件。仅当 EventType 为 Class.Deleted 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClassDeletedEvent: :class:`tencentcloud.cme.v20191029.models.ClassDeletedEvent`
         """
         self.EventType = None
+        self.Operator = None
         self.StorageNewFileCreatedEvent = None
         self.ProjectStreamConnectStatusChangedEvent = None
+        self.ProjectSwitcherStatusChangedEvent = None
+        self.MaterialImportedEvent = None
+        self.MaterialAddedEvent = None
+        self.MaterialMovedEvent = None
+        self.MaterialModifiedEvent = None
+        self.MaterialDeletedEvent = None
+        self.ClassCreatedEvent = None
+        self.ClassMovedEvent = None
+        self.ClassDeletedEvent = None
 
 
     def _deserialize(self, params):
         self.EventType = params.get("EventType")
+        self.Operator = params.get("Operator")
         if params.get("StorageNewFileCreatedEvent") is not None:
             self.StorageNewFileCreatedEvent = StorageNewFileCreatedEvent()
             self.StorageNewFileCreatedEvent._deserialize(params.get("StorageNewFileCreatedEvent"))
         if params.get("ProjectStreamConnectStatusChangedEvent") is not None:
             self.ProjectStreamConnectStatusChangedEvent = ProjectStreamConnectStatusChangedEvent()
             self.ProjectStreamConnectStatusChangedEvent._deserialize(params.get("ProjectStreamConnectStatusChangedEvent"))
+        if params.get("ProjectSwitcherStatusChangedEvent") is not None:
+            self.ProjectSwitcherStatusChangedEvent = ProjectSwitcherStatusChangedEvent()
+            self.ProjectSwitcherStatusChangedEvent._deserialize(params.get("ProjectSwitcherStatusChangedEvent"))
+        if params.get("MaterialImportedEvent") is not None:
+            self.MaterialImportedEvent = MaterialImportedEvent()
+            self.MaterialImportedEvent._deserialize(params.get("MaterialImportedEvent"))
+        if params.get("MaterialAddedEvent") is not None:
+            self.MaterialAddedEvent = MaterialAddedEvent()
+            self.MaterialAddedEvent._deserialize(params.get("MaterialAddedEvent"))
+        if params.get("MaterialMovedEvent") is not None:
+            self.MaterialMovedEvent = MaterialMovedEvent()
+            self.MaterialMovedEvent._deserialize(params.get("MaterialMovedEvent"))
+        if params.get("MaterialModifiedEvent") is not None:
+            self.MaterialModifiedEvent = MaterialModifiedEvent()
+            self.MaterialModifiedEvent._deserialize(params.get("MaterialModifiedEvent"))
+        if params.get("MaterialDeletedEvent") is not None:
+            self.MaterialDeletedEvent = MaterialDeletedEvent()
+            self.MaterialDeletedEvent._deserialize(params.get("MaterialDeletedEvent"))
+        if params.get("ClassCreatedEvent") is not None:
+            self.ClassCreatedEvent = ClassCreatedEvent()
+            self.ClassCreatedEvent._deserialize(params.get("ClassCreatedEvent"))
+        if params.get("ClassMovedEvent") is not None:
+            self.ClassMovedEvent = ClassMovedEvent()
+            self.ClassMovedEvent._deserialize(params.get("ClassMovedEvent"))
+        if params.get("ClassDeletedEvent") is not None:
+            self.ClassDeletedEvent = ClassDeletedEvent()
+            self.ClassDeletedEvent._deserialize(params.get("ClassDeletedEvent"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3169,6 +3345,34 @@ class ImportMaterialResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ImportMediaInfo(AbstractModel):
+    """导入媒资信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FileId: 云点播文件 FileId。
+        :type FileId: str
+        :param MaterialId: 媒体 Id。
+        :type MaterialId: str
+        """
+        self.FileId = None
+        self.MaterialId = None
+
+
+    def _deserialize(self, params):
+        self.FileId = params.get("FileId")
+        self.MaterialId = params.get("MaterialId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ImportMediaToProjectRequest(AbstractModel):
     """ImportMediaToProject请求参数结构体
 
@@ -3606,6 +3810,40 @@ class LoginStatusInfo(AbstractModel):
         
 
 
+class MaterialAddedEvent(AbstractModel):
+    """媒体添加事件。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MaterialIdSet: 添加的媒体 Id 列表。
+        :type MaterialIdSet: list of str
+        :param Owner: 添加的媒体归属。
+        :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`
+        :param ClassPath: 添加的媒体分类路径。
+        :type ClassPath: str
+        """
+        self.MaterialIdSet = None
+        self.Owner = None
+        self.ClassPath = None
+
+
+    def _deserialize(self, params):
+        self.MaterialIdSet = params.get("MaterialIdSet")
+        if params.get("Owner") is not None:
+            self.Owner = Entity()
+            self.Owner._deserialize(params.get("Owner"))
+        self.ClassPath = params.get("ClassPath")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class MaterialBasicInfo(AbstractModel):
     """媒体基本信息。
 
@@ -3689,6 +3927,69 @@ class MaterialBasicInfo(AbstractModel):
         
 
 
+class MaterialDeletedEvent(AbstractModel):
+    """媒体删除事件。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MaterialIdSet: 删除的媒体 Id 列表。
+        :type MaterialIdSet: list of str
+        """
+        self.MaterialIdSet = None
+
+
+    def _deserialize(self, params):
+        self.MaterialIdSet = params.get("MaterialIdSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MaterialImportedEvent(AbstractModel):
+    """媒体导入事件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MediaInfoSet: 导入的媒体信息列表。
+        :type MediaInfoSet: list of ImportMediaInfo
+        :param Owner: 媒体归属。
+        :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`
+        :param ClassPath: 媒体分类路径。
+        :type ClassPath: str
+        """
+        self.MediaInfoSet = None
+        self.Owner = None
+        self.ClassPath = None
+
+
+    def _deserialize(self, params):
+        if params.get("MediaInfoSet") is not None:
+            self.MediaInfoSet = []
+            for item in params.get("MediaInfoSet"):
+                obj = ImportMediaInfo()
+                obj._deserialize(item)
+                self.MediaInfoSet.append(obj)
+        if params.get("Owner") is not None:
+            self.Owner = Entity()
+            self.Owner._deserialize(params.get("Owner"))
+        self.ClassPath = params.get("ClassPath")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class MaterialInfo(AbstractModel):
     """媒体详情信息
 
@@ -3748,6 +4049,86 @@ class MaterialInfo(AbstractModel):
         if params.get("OtherMaterial") is not None:
             self.OtherMaterial = OtherMaterial()
             self.OtherMaterial._deserialize(params.get("OtherMaterial"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MaterialModifiedEvent(AbstractModel):
+    """媒体更新事件。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MaterialId: 媒体 Id。
+        :type MaterialId: str
+        :param Name: 更新后的媒体名称。如未更新则为空。
+        :type Name: str
+        :param PresetTagIdSet: 更新后的媒体预置标签列表。如未更新媒体预置标签，则该字段为空数组。
+        :type PresetTagIdSet: list of str
+        :param TagSet: 更新后的媒体自定义标签列表。如未更新媒体自定义标签，则该字段为空数组。
+        :type TagSet: list of str
+        """
+        self.MaterialId = None
+        self.Name = None
+        self.PresetTagIdSet = None
+        self.TagSet = None
+
+
+    def _deserialize(self, params):
+        self.MaterialId = params.get("MaterialId")
+        self.Name = params.get("Name")
+        self.PresetTagIdSet = params.get("PresetTagIdSet")
+        self.TagSet = params.get("TagSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MaterialMovedEvent(AbstractModel):
+    """媒体移动事件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MaterialIdSet: 要移动的媒体 Id 列表。
+        :type MaterialIdSet: list of str
+        :param SourceOwner: 源媒体归属。
+        :type SourceOwner: :class:`tencentcloud.cme.v20191029.models.Entity`
+        :param SourceClassPath: 源媒体分类路径。
+        :type SourceClassPath: str
+        :param DestinationOwner: 目标媒体分类归属。
+        :type DestinationOwner: :class:`tencentcloud.cme.v20191029.models.Entity`
+        :param DestinationClassPath: 目标媒体分类路径。
+        :type DestinationClassPath: str
+        """
+        self.MaterialIdSet = None
+        self.SourceOwner = None
+        self.SourceClassPath = None
+        self.DestinationOwner = None
+        self.DestinationClassPath = None
+
+
+    def _deserialize(self, params):
+        self.MaterialIdSet = params.get("MaterialIdSet")
+        if params.get("SourceOwner") is not None:
+            self.SourceOwner = Entity()
+            self.SourceOwner._deserialize(params.get("SourceOwner"))
+        self.SourceClassPath = params.get("SourceClassPath")
+        if params.get("DestinationOwner") is not None:
+            self.DestinationOwner = Entity()
+            self.DestinationOwner._deserialize(params.get("DestinationOwner"))
+        self.DestinationClassPath = params.get("DestinationClassPath")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4851,6 +5232,40 @@ class ProjectStreamConnectStatusChangedEvent(AbstractModel):
         
 
 
+class ProjectSwitcherStatusChangedEvent(AbstractModel):
+    """导播台项目状态变更事件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProjectId: 导播台项目 Id。
+        :type ProjectId: str
+        :param Status: 导播台项目状态，可取值有：
+<li>Started：导播台启动；</li>
+<li>Stopped：导播台停止；</li>
+<li>PvwStarted：导播台 PVW 开启；</li>
+<li>PgmStarted：导播台 PGM 开启，输出推流开始；</li>
+<li>PvwStopped：导播台 PVW 停止；</li>
+<li>PgmStopped：导播台 PGM 停止，输出推流结束。</li>
+        :type Status: str
+        """
+        self.ProjectId = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.ProjectId = params.get("ProjectId")
+        self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RecordReplayProjectInput(AbstractModel):
     """录制回放项目输入信息。
 
@@ -5331,17 +5746,23 @@ class StorageNewFileCreatedEvent(AbstractModel):
         :type FileId: str
         :param MaterialId: 媒体 Id。
         :type MaterialId: str
-        :param Operator: 操作者 Id。
+        :param Operator: 操作者 Id。（废弃，请勿使用）
         :type Operator: str
-        :param OperationType: 操作类型，可取值为：
-<li>Upload：上传；</li>
+        :param OperationType: 操作类型，可取值有：
+<li>Upload：本地上传；</li>
 <li>PullUpload：拉取上传；</li>
-<li>Record：直播录制。</li>
+<li>VideoEdit：视频剪辑；</li>
+<li>LiveStreamClip：直播流剪辑；</li>
+<li>LiveStreamRecord：直播流录制。</li>
         :type OperationType: str
         :param Owner: 媒体归属。
         :type Owner: :class:`tencentcloud.cme.v20191029.models.Entity`
         :param ClassPath: 媒体分类路径。
         :type ClassPath: str
+        :param TaskId: 生成文件的任务 Id。当生成新文件是拉取上传、视频剪辑、直播流剪辑时为任务 Id。
+        :type TaskId: str
+        :param SourceContext: 来源上下文信息。视频剪辑生成新文件时此字段为项目 Id；直播流剪辑或者直播流录制生成新文件则为原始流地址。
+        :type SourceContext: str
         """
         self.FileId = None
         self.MaterialId = None
@@ -5349,6 +5770,8 @@ class StorageNewFileCreatedEvent(AbstractModel):
         self.OperationType = None
         self.Owner = None
         self.ClassPath = None
+        self.TaskId = None
+        self.SourceContext = None
 
 
     def _deserialize(self, params):
@@ -5360,6 +5783,8 @@ class StorageNewFileCreatedEvent(AbstractModel):
             self.Owner = Entity()
             self.Owner._deserialize(params.get("Owner"))
         self.ClassPath = params.get("ClassPath")
+        self.TaskId = params.get("TaskId")
+        self.SourceContext = params.get("SourceContext")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

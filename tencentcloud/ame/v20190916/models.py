@@ -130,6 +130,34 @@ class AuthInfo(AbstractModel):
         
 
 
+class ChorusClip(AbstractModel):
+    """副歌片段信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StartTime: 副歌时间，单位：毫秒
+        :type StartTime: int
+        :param EndTime: 副歌结束时间，单位：毫秒
+        :type EndTime: int
+        """
+        self.StartTime = None
+        self.EndTime = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateKTVRobotRequest(AbstractModel):
     """CreateKTVRobot请求参数结构体
 
@@ -585,6 +613,10 @@ class DescribeKTVMusicDetailResponse(AbstractModel):
         :type LyricsUrl: str
         :param DefinitionInfoSet: 歌曲规格信息列表
         :type DefinitionInfoSet: list of KTVMusicDefinitionInfo
+        :param MidiJsonUrl: 音高数据文件下载地址
+        :type MidiJsonUrl: str
+        :param ChorusClipSet: 副歌片段数据列表
+        :type ChorusClipSet: list of ChorusClip
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -592,6 +624,8 @@ class DescribeKTVMusicDetailResponse(AbstractModel):
         self.PlayToken = None
         self.LyricsUrl = None
         self.DefinitionInfoSet = None
+        self.MidiJsonUrl = None
+        self.ChorusClipSet = None
         self.RequestId = None
 
 
@@ -607,6 +641,13 @@ class DescribeKTVMusicDetailResponse(AbstractModel):
                 obj = KTVMusicDefinitionInfo()
                 obj._deserialize(item)
                 self.DefinitionInfoSet.append(obj)
+        self.MidiJsonUrl = params.get("MidiJsonUrl")
+        if params.get("ChorusClipSet") is not None:
+            self.ChorusClipSet = []
+            for item in params.get("ChorusClipSet"):
+                obj = ChorusClip()
+                obj._deserialize(item)
+                self.ChorusClipSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -805,6 +846,191 @@ class DescribeKTVRobotsResponse(AbstractModel):
                 obj = KTVRobotInfo()
                 obj._deserialize(item)
                 self.KTVRobotInfoSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeKTVSingerCategoriesRequest(AbstractModel):
+    """DescribeKTVSingerCategories请求参数结构体
+
+    """
+
+
+class DescribeKTVSingerCategoriesResponse(AbstractModel):
+    """DescribeKTVSingerCategories返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param GenderSet: 歌手性别分类列表
+        :type GenderSet: list of KTVSingerCategoryInfo
+        :param AreaSet: 歌手区域分类列表
+        :type AreaSet: list of KTVSingerCategoryInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.GenderSet = None
+        self.AreaSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("GenderSet") is not None:
+            self.GenderSet = []
+            for item in params.get("GenderSet"):
+                obj = KTVSingerCategoryInfo()
+                obj._deserialize(item)
+                self.GenderSet.append(obj)
+        if params.get("AreaSet") is not None:
+            self.AreaSet = []
+            for item in params.get("AreaSet"):
+                obj = KTVSingerCategoryInfo()
+                obj._deserialize(item)
+                self.AreaSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeKTVSingerMusicsRequest(AbstractModel):
+    """DescribeKTVSingerMusics请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SingerId: 歌手id
+        :type SingerId: str
+        :param Offset: 分页偏移量，默认值：0。
+        :type Offset: int
+        :param Limit: 分页返回的记录条数，默认值：50。将返回第 Offset 到第 Offset+Limit-1 条。
+        :type Limit: int
+        """
+        self.SingerId = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.SingerId = params.get("SingerId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeKTVSingerMusicsResponse(AbstractModel):
+    """DescribeKTVSingerMusics返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 总曲目数
+        :type TotalCount: int
+        :param KTVMusicInfoSet: KTV 曲目列表
+        :type KTVMusicInfoSet: list of KTVMusicBaseInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.KTVMusicInfoSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("KTVMusicInfoSet") is not None:
+            self.KTVMusicInfoSet = []
+            for item in params.get("KTVMusicInfoSet"):
+                obj = KTVMusicBaseInfo()
+                obj._deserialize(item)
+                self.KTVMusicInfoSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeKTVSingersRequest(AbstractModel):
+    """DescribeKTVSingers请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SingerIds: 歌手id集合，精确匹配歌手id
+<li> 数组长度限制10</li>
+        :type SingerIds: list of str
+        :param Genders: 歌手性别集合，不传为全部，精确匹配歌手性别类型，
+<li>数组长度限制1</li>
+<li>取值范围：直播互动曲库歌手分类信息接口，返回性别分类信息列表中，分类英文名</li>
+        :type Genders: list of str
+        :param Areas: 歌手区域集合，不传为全部，精确匹配歌手区域
+<li>数组长度限制10</li>
+<li>取值范围：直播互动曲库歌手分类信息接口，返回的区域分类信息列表中，分类英文名</li>
+        :type Areas: list of str
+        :param Sort: 排序方式。默认按照播放数倒序
+<li> Sort.Field 可选 PlayCount。</li>
+        :type Sort: :class:`tencentcloud.ame.v20190916.models.SortBy`
+        :param Offset: 分页偏移量，默认值：0。
+        :type Offset: int
+        :param Limit: 分页返回的记录条数，默认值：50。将返回第 Offset 到第 Offset+Limit-1 条。
+        :type Limit: int
+        """
+        self.SingerIds = None
+        self.Genders = None
+        self.Areas = None
+        self.Sort = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.SingerIds = params.get("SingerIds")
+        self.Genders = params.get("Genders")
+        self.Areas = params.get("Areas")
+        if params.get("Sort") is not None:
+            self.Sort = SortBy()
+            self.Sort._deserialize(params.get("Sort"))
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeKTVSingersResponse(AbstractModel):
+    """DescribeKTVSingers返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 总歌手数
+        :type TotalCount: int
+        :param KTVSingerInfoSet: KTV歌手列表
+        :type KTVSingerInfoSet: list of KTVSingerInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.KTVSingerInfoSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("KTVSingerInfoSet") is not None:
+            self.KTVSingerInfoSet = []
+            for item in params.get("KTVSingerInfoSet"):
+                obj = KTVSingerInfo()
+                obj._deserialize(item)
+                self.KTVSingerInfoSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1386,7 +1612,9 @@ class KTVMusicBaseInfo(AbstractModel):
         :type MusicId: str
         :param Name: 歌曲名称
         :type Name: str
-        :param SingerSet: 演唱者列表
+        :param SingerInfoSet: 演唱者基础信息列表
+        :type SingerInfoSet: list of KTVSingerBaseInfo
+        :param SingerSet: 已弃用，请使用SingerInfoSet
         :type SingerSet: list of str
         :param LyricistSet: 作词者列表
         :type LyricistSet: list of str
@@ -1399,6 +1627,7 @@ class KTVMusicBaseInfo(AbstractModel):
         """
         self.MusicId = None
         self.Name = None
+        self.SingerInfoSet = None
         self.SingerSet = None
         self.LyricistSet = None
         self.ComposerSet = None
@@ -1409,6 +1638,12 @@ class KTVMusicBaseInfo(AbstractModel):
     def _deserialize(self, params):
         self.MusicId = params.get("MusicId")
         self.Name = params.get("Name")
+        if params.get("SingerInfoSet") is not None:
+            self.SingerInfoSet = []
+            for item in params.get("SingerInfoSet"):
+                obj = KTVSingerBaseInfo()
+                obj._deserialize(item)
+                self.SingerInfoSet.append(obj)
         self.SingerSet = params.get("SingerSet")
         self.LyricistSet = params.get("LyricistSet")
         self.ComposerSet = params.get("ComposerSet")
@@ -1555,6 +1790,106 @@ class KTVRobotInfo(AbstractModel):
         if params.get("SetPlayModeInput") is not None:
             self.SetPlayModeInput = SetPlayModeCommandInput()
             self.SetPlayModeInput._deserialize(params.get("SetPlayModeInput"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KTVSingerBaseInfo(AbstractModel):
+    """KTV 歌手基础信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SingerId: 歌手id
+        :type SingerId: str
+        :param Name: 歌手名
+        :type Name: str
+        """
+        self.SingerId = None
+        self.Name = None
+
+
+    def _deserialize(self, params):
+        self.SingerId = params.get("SingerId")
+        self.Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KTVSingerCategoryInfo(AbstractModel):
+    """KTV歌手分类信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ChineseName: 分类中文名
+        :type ChineseName: str
+        :param EnglishName: 分类英文名
+        :type EnglishName: str
+        """
+        self.ChineseName = None
+        self.EnglishName = None
+
+
+    def _deserialize(self, params):
+        self.ChineseName = params.get("ChineseName")
+        self.EnglishName = params.get("EnglishName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KTVSingerInfo(AbstractModel):
+    """直播互动歌曲的歌手信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SingerId: 歌手id
+        :type SingerId: str
+        :param Name: 歌手名
+        :type Name: str
+        :param Gender: 歌手性别: 男，女，组合
+        :type Gender: str
+        :param Area: 地区: 大陆，港台，欧美，日本
+        :type Area: str
+        :param MusicCount: 歌曲数
+        :type MusicCount: int
+        :param PlayCount: 歌曲总播放次数
+        :type PlayCount: int
+        """
+        self.SingerId = None
+        self.Name = None
+        self.Gender = None
+        self.Area = None
+        self.MusicCount = None
+        self.PlayCount = None
+
+
+    def _deserialize(self, params):
+        self.SingerId = params.get("SingerId")
+        self.Name = params.get("Name")
+        self.Gender = params.get("Gender")
+        self.Area = params.get("Area")
+        self.MusicCount = params.get("MusicCount")
+        self.PlayCount = params.get("PlayCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2348,6 +2683,34 @@ class SetPlaylistCommandInput(AbstractModel):
         self.Type = params.get("Type")
         self.Index = params.get("Index")
         self.MusicIds = params.get("MusicIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SortBy(AbstractModel):
+    """排序依据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Field: 排序字段
+        :type Field: str
+        :param Order: 排序方式，可选值：Asc（升序）、Desc（降序）
+        :type Order: str
+        """
+        self.Field = None
+        self.Order = None
+
+
+    def _deserialize(self, params):
+        self.Field = params.get("Field")
+        self.Order = params.get("Order")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

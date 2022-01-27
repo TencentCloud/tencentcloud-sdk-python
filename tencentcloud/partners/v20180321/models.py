@@ -254,9 +254,9 @@ class AgentDealElem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DealId: 订单自增 ID
+        :param DealId: 订单自增 ID【请勿依赖该字段作为唯一标识】
         :type DealId: str
-        :param DealName: 订单号
+        :param DealName: 订单号【订单唯一键】
         :type DealName: str
         :param GoodsCategoryId: 商品类型 ID
         :type GoodsCategoryId: str
@@ -417,9 +417,9 @@ class AgentDealNewElem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DealId: 订单自增 ID
+        :param DealId: 订单自增 ID【请勿依赖该字段作为唯一标识】
         :type DealId: str
-        :param DealName: 订单号
+        :param DealName: 订单号【订单唯一键】
         :type DealName: str
         :param GoodsCategoryId: 商品类型 ID
         :type GoodsCategoryId: str
