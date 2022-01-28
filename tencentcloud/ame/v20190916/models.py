@@ -1034,6 +1034,67 @@ class DescribeKTVSingersResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeKTVTopListRequest(AbstractModel):
+    """DescribeKTVTopList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Type: 榜单类型。默认Hot
+<li> Hot, 热歌榜。</li>
+        :type Type: str
+        :param Period: 榜单周期 默认为Week
+<li> Week, 周榜。</li>
+<li> Month, 月榜。</li>
+        :type Period: str
+        """
+        self.Type = None
+        self.Period = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.Period = params.get("Period")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeKTVTopListResponse(AbstractModel):
+    """DescribeKTVTopList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param KTVMusicTopInfoSet: 歌曲基础信息列表
+        :type KTVMusicTopInfoSet: list of KTVMusicTopInfo
+        :param TotalCount: 返回总条数
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.KTVMusicTopInfoSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("KTVMusicTopInfoSet") is not None:
+            self.KTVMusicTopInfoSet = []
+            for item in params.get("KTVMusicTopInfoSet"):
+                obj = KTVMusicTopInfo()
+                obj._deserialize(item)
+                self.KTVMusicTopInfoSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeLyricRequest(AbstractModel):
     """DescribeLyric请求参数结构体
 
@@ -1684,6 +1745,59 @@ class KTVMusicDefinitionInfo(AbstractModel):
         self.Definition = params.get("Definition")
         self.Bitrate = params.get("Bitrate")
         self.Size = params.get("Size")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KTVMusicTopInfo(AbstractModel):
+    """排行榜结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MusicId: 歌曲Id
+        :type MusicId: str
+        :param Name: 歌曲名称
+        :type Name: str
+        :param SingerInfoSet: 歌手名称列表
+        :type SingerInfoSet: list of KTVSingerBaseInfo
+        :param LyricistSet: 歌词名称列表
+        :type LyricistSet: list of str
+        :param ComposerSet: 作曲列表
+        :type ComposerSet: list of str
+        :param TagSet: 标签列表
+        :type TagSet: list of str
+        :param Duration: 播放时长
+        :type Duration: int
+        """
+        self.MusicId = None
+        self.Name = None
+        self.SingerInfoSet = None
+        self.LyricistSet = None
+        self.ComposerSet = None
+        self.TagSet = None
+        self.Duration = None
+
+
+    def _deserialize(self, params):
+        self.MusicId = params.get("MusicId")
+        self.Name = params.get("Name")
+        if params.get("SingerInfoSet") is not None:
+            self.SingerInfoSet = []
+            for item in params.get("SingerInfoSet"):
+                obj = KTVSingerBaseInfo()
+                obj._deserialize(item)
+                self.SingerInfoSet.append(obj)
+        self.LyricistSet = params.get("LyricistSet")
+        self.ComposerSet = params.get("ComposerSet")
+        self.TagSet = params.get("TagSet")
+        self.Duration = params.get("Duration")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

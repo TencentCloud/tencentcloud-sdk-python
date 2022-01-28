@@ -579,6 +579,11 @@ def test_import_live():
     from tencentcloud.live.v20180801 import models
 
 
+def test_import_lowcode():
+    from tencentcloud.lowcode.v20210108 import lowcode_client
+    from tencentcloud.lowcode.v20210108 import models
+
+
 def test_import_lp():
     from tencentcloud.lp.v20200224 import lp_client
     from tencentcloud.lp.v20200224 import models

@@ -392,6 +392,34 @@ class AmeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeKTVTopList(self, request):
+        """获取直播互动曲库歌曲的周榜和月榜
+
+        :param request: Request instance for DescribeKTVTopList.
+        :type request: :class:`tencentcloud.ame.v20190916.models.DescribeKTVTopListRequest`
+        :rtype: :class:`tencentcloud.ame.v20190916.models.DescribeKTVTopListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeKTVTopList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeKTVTopListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeLyric(self, request):
         """根据接口的模式及歌曲ID来取得歌词信息或者波形图信息。
 
