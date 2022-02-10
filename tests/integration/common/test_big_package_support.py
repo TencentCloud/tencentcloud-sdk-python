@@ -84,4 +84,4 @@ def test_big_package_with_signature_v3_post():
     try:
         resp = client.CompareFace(req)
     except TencentCloudSDKException as e:
-        assert e.code in ["ResourceUnavailable.NotExist"]
+        assert e.code in ["ResourceUnavailable.NotExist", "FailedOperation.ImageDownloadError"]
