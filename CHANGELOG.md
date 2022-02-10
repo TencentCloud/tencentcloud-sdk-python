@@ -1,3 +1,37 @@
+# Release 3.0.576
+
+## 智能媒资托管(smh) 版本：2021-07-12
+
+### 第 1 次发布
+
+发布时间：2022-02-10 11:28:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateLibrary](https://cloud.tencent.com/document/api/1339/69089)
+* [DeleteLibrary](https://cloud.tencent.com/document/api/1339/69088)
+* [DescribeLibraries](https://cloud.tencent.com/document/api/1339/69087)
+* [DescribeLibrarySecret](https://cloud.tencent.com/document/api/1339/69086)
+* [DescribeOfficialInstances](https://cloud.tencent.com/document/api/1339/69083)
+* [DescribeOfficialOverview](https://cloud.tencent.com/document/api/1339/69082)
+* [DescribeTrafficPackages](https://cloud.tencent.com/document/api/1339/69081)
+* [ModifyLibrary](https://cloud.tencent.com/document/api/1339/69085)
+* [SendSmsCode](https://cloud.tencent.com/document/api/1339/69080)
+* [VerifySmsCode](https://cloud.tencent.com/document/api/1339/69079)
+
+新增数据结构：
+
+* [Instance](https://cloud.tencent.com/document/api/1339/69090#Instance)
+* [Library](https://cloud.tencent.com/document/api/1339/69090#Library)
+* [LibraryExtension](https://cloud.tencent.com/document/api/1339/69090#LibraryExtension)
+* [TrafficPackage](https://cloud.tencent.com/document/api/1339/69090#TrafficPackage)
+
+
+
 # Release 3.0.575
 
 ## 正版曲库直通车(ame) 版本：2019-09-16

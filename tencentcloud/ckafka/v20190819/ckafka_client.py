@@ -334,6 +334,34 @@ class CkafkaClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteGroup(self, request):
+        """删除消费组
+
+        :param request: Request instance for DeleteGroup.
+        :type request: :class:`tencentcloud.ckafka.v20190819.models.DeleteGroupRequest`
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.DeleteGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteGroup", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteGroupResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteInstancePre(self, request):
         """删除预付费实例
 

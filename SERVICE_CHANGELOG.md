@@ -1,10 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 正版曲库直通车(ame) 版本：2019-09-16
+## 智能媒资托管(smh) 版本：2021-07-12
 
-### 第 24 次发布
+### 第 1 次发布
 
-发布时间：2022-01-28 08:00:20
+发布时间：2022-02-10 11:28:45
 
 本次发布包含了以下内容：
 
@@ -12,11 +12,23 @@
 
 新增接口：
 
-* [DescribeKTVTopList](https://cloud.tencent.com/document/api/1155/68908)
+* [CreateLibrary](https://cloud.tencent.com/document/api/1339/69089)
+* [DeleteLibrary](https://cloud.tencent.com/document/api/1339/69088)
+* [DescribeLibraries](https://cloud.tencent.com/document/api/1339/69087)
+* [DescribeLibrarySecret](https://cloud.tencent.com/document/api/1339/69086)
+* [DescribeOfficialInstances](https://cloud.tencent.com/document/api/1339/69083)
+* [DescribeOfficialOverview](https://cloud.tencent.com/document/api/1339/69082)
+* [DescribeTrafficPackages](https://cloud.tencent.com/document/api/1339/69081)
+* [ModifyLibrary](https://cloud.tencent.com/document/api/1339/69085)
+* [SendSmsCode](https://cloud.tencent.com/document/api/1339/69080)
+* [VerifySmsCode](https://cloud.tencent.com/document/api/1339/69079)
 
 新增数据结构：
 
-* [KTVMusicTopInfo](https://cloud.tencent.com/document/api/1155/40113#KTVMusicTopInfo)
+* [Instance](https://cloud.tencent.com/document/api/1339/69090#Instance)
+* [Library](https://cloud.tencent.com/document/api/1339/69090#Library)
+* [LibraryExtension](https://cloud.tencent.com/document/api/1339/69090#LibraryExtension)
+* [TrafficPackage](https://cloud.tencent.com/document/api/1339/69090#TrafficPackage)
 
 
 
@@ -429,11 +441,11 @@
 
 新增接口：
 
-* [[DescribeKTVTopList](https://cloud.tencent.com/document/api/1155/68908)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeKTVTopList](https://cloud.tencent.com/document/api/1155/68908)
 
 新增数据结构：
 
-* [[KTVMusicTopInfo](https://cloud.tencent.com/document/api/1155/40113#KTVMusicTopInfo)](https://cloud.tencent.com/document/api/1155/40113#[KTVMusicTopInfo](https://cloud.tencent.com/document/api/1155/40113#KTVMusicTopInfo))
+* [KTVMusicTopInfo](https://cloud.tencent.com/document/api/1155/40113#KTVMusicTopInfo)
 
 ### 第 23 次发布
 
@@ -13934,6 +13946,18 @@
 
 
 ## 消息队列 Ckafka(ckafka) 版本：2019-08-19
+
+### 第 34 次发布
+
+发布时间：2022-02-10 08:03:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DeleteGroup](https://cloud.tencent.com/document/api/597/69059)
 
 ### 第 33 次发布
 
@@ -49644,6 +49668,39 @@
 * [TemplateContent](https://cloud.tencent.com/document/api/1288/51053#TemplateContent)
 * [TemplatesMetadata](https://cloud.tencent.com/document/api/1288/51053#TemplatesMetadata)
 * [Volume](https://cloud.tencent.com/document/api/1288/51053#Volume)
+
+
+
+
+## 智能媒资托管(smh) 版本：2021-07-12
+
+### 第 1 次发布
+
+发布时间：2022-02-10 11:28:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateLibrary](https://cloud.tencent.com/document/api/1339/69089)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteLibrary](https://cloud.tencent.com/document/api/1339/69088)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeLibraries](https://cloud.tencent.com/document/api/1339/69087)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeLibrarySecret](https://cloud.tencent.com/document/api/1339/69086)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeOfficialInstances](https://cloud.tencent.com/document/api/1339/69083)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeOfficialOverview](https://cloud.tencent.com/document/api/1339/69082)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeTrafficPackages](https://cloud.tencent.com/document/api/1339/69081)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyLibrary](https://cloud.tencent.com/document/api/1339/69085)](https://cloud.tencent.com/document/api/#/#)
+* [[SendSmsCode](https://cloud.tencent.com/document/api/1339/69080)](https://cloud.tencent.com/document/api/#/#)
+* [[VerifySmsCode](https://cloud.tencent.com/document/api/1339/69079)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[Instance](https://cloud.tencent.com/document/api/1339/69090#Instance)](https://cloud.tencent.com/document/api/1339/69090#[Instance](https://cloud.tencent.com/document/api/1339/69090#Instance))
+* [[Library](https://cloud.tencent.com/document/api/1339/69090#Library)](https://cloud.tencent.com/document/api/1339/69090#[Library](https://cloud.tencent.com/document/api/1339/69090#Library))
+* [[LibraryExtension](https://cloud.tencent.com/document/api/1339/69090#LibraryExtension)](https://cloud.tencent.com/document/api/1339/69090#[LibraryExtension](https://cloud.tencent.com/document/api/1339/69090#LibraryExtension))
+* [[TrafficPackage](https://cloud.tencent.com/document/api/1339/69090#TrafficPackage)](https://cloud.tencent.com/document/api/1339/69090#[TrafficPackage](https://cloud.tencent.com/document/api/1339/69090#TrafficPackage))
 
 
 

@@ -26,6 +26,9 @@ AUTHFAILURE_INVALIDAUTHORIZATION = 'AuthFailure.InvalidAuthorization'
 # 操作失败。
 FAILEDOPERATION = 'FailedOperation'
 
+# 会话缓存保存失败，请重新初始化。
+FAILEDOPERATION_ERRORGETSESSION = 'FailedOperation.ErrorGetSession'
+
 # 评测时间超出限制，请检查音频时间是否过长后重试。
 FAILEDOPERATION_EVALUATETIMEOUT = 'FailedOperation.EvaluateTimeout'
 

@@ -182,6 +182,9 @@ OPERATIONDENIED_ANALYSISSWITCHCLOSE = 'OperationDenied.AnalysisSwitchClose'
 # 通知模板已绑定告警，无法删除。
 OPERATIONDENIED_NOTICEHASALARM = 'OperationDenied.NoticeHasAlarm'
 
+# 操作低频检索不支持。
+OPERATIONDENIED_OPERATIONNOTSUPPORTINSEARCHLOW = 'OperationDenied.OperationNotSupportInSearchLow'
+
 # topic绑定了数据加工。
 OPERATIONDENIED_TOPICHASDATAFORMTASK = 'OperationDenied.TopicHasDataFormTask'
 

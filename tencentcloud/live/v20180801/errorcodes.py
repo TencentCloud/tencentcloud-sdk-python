@@ -392,6 +392,9 @@ RESOURCENOTFOUND_CDNTHEMEEMPTY = 'ResourceNotFound.CdnThemeEmpty'
 # 频道不存在。
 RESOURCENOTFOUND_CHANNELNOTEXIST = 'ResourceNotFound.ChannelNotExist'
 
+# 证书不存在。
+RESOURCENOTFOUND_CRTDATENOTFOUND = 'ResourceNotFound.CrtDateNotFound'
+
 # 未找到证书信息。
 RESOURCENOTFOUND_CRTDOMAINNOTFOUND = 'ResourceNotFound.CrtDomainNotFound'
 

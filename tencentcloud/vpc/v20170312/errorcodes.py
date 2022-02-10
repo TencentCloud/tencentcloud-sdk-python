@@ -32,7 +32,7 @@ INTERNALERROR = 'InternalError'
 # 创建Ckafka路由失败，请稍后重试。
 INTERNALERROR_CREATECKAFKAROUTEERROR = 'InternalError.CreateCkafkaRouteError'
 
-# 网路探测超时，请稍后重试。
+# 网络探测超时，请稍后重试。
 INTERNALERROR_NETDETECTTIMEOUT = 'InternalError.NetDetectTimeOut'
 
 # 操作内部错误。
@@ -97,6 +97,9 @@ INVALIDPARAMETERCONFLICT = 'InvalidParameterConflict'
 
 # 参数取值错误。
 INVALIDPARAMETERVALUE = 'InvalidParameterValue'
+
+# 被攻击的IP地址。
+INVALIDPARAMETERVALUE_ADDRESSATTACKED = 'InvalidParameterValue.AddressAttacked'
 
 # 该地址ID不合法。
 INVALIDPARAMETERVALUE_ADDRESSIDMALFORMED = 'InvalidParameterValue.AddressIdMalformed'
