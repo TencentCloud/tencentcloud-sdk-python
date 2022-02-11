@@ -1033,6 +1033,8 @@ class FileSystemInfo(AbstractModel):
         :type BandwidthLimit: float
         :param Capacity: 文件系统总容量
         :type Capacity: int
+        :param Tags: 文件系统标签列表
+        :type Tags: list of TagInfo
         """
         self.CreationTime = None
         self.CreationToken = None
@@ -1053,6 +1055,7 @@ class FileSystemInfo(AbstractModel):
         self.AppId = None
         self.BandwidthLimit = None
         self.Capacity = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -1077,6 +1080,12 @@ class FileSystemInfo(AbstractModel):
         self.AppId = params.get("AppId")
         self.BandwidthLimit = params.get("BandwidthLimit")
         self.Capacity = params.get("Capacity")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = TagInfo()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

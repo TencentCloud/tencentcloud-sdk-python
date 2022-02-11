@@ -1703,28 +1703,32 @@ class CreateDBImportJobRequest(AbstractModel):
         r"""
         :param InstanceId: 实例的 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
         :type InstanceId: str
-        :param FileName: 文件名称。该文件是指用户已上传到腾讯云的文件，仅支持.sql文件。
-        :type FileName: str
         :param User: 云数据库的用户名。
         :type User: str
+        :param FileName: 文件名称。该文件是指用户已上传到腾讯云的文件，仅支持.sql文件。
+        :type FileName: str
         :param Password: 云数据库实例 User 账号的密码。
         :type Password: str
         :param DbName: 导入的目标数据库名，不传表示不指定数据库。
         :type DbName: str
+        :param CosUrl: 腾讯云COS文件链接。 用户需要指定 FileName 或者 CosUrl 其中一个。 COS文件需要是 .sql 文件。
+        :type CosUrl: str
         """
         self.InstanceId = None
-        self.FileName = None
         self.User = None
+        self.FileName = None
         self.Password = None
         self.DbName = None
+        self.CosUrl = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
-        self.FileName = params.get("FileName")
         self.User = params.get("User")
+        self.FileName = params.get("FileName")
         self.Password = params.get("Password")
         self.DbName = params.get("DbName")
+        self.CosUrl = params.get("CosUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

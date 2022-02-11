@@ -744,6 +744,11 @@ def test_import_ses():
     from tencentcloud.ses.v20201002 import models
 
 
+def test_import_smh():
+    from tencentcloud.smh.v20210712 import smh_client
+    from tencentcloud.smh.v20210712 import models
+
+
 def test_import_smpn():
     from tencentcloud.smpn.v20190822 import smpn_client
     from tencentcloud.smpn.v20190822 import models

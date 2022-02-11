@@ -1644,6 +1644,7 @@ class CreateLoadBalancerResponse(AbstractModel):
     def __init__(self):
         r"""
         :param LoadBalancerIds: 由负载均衡实例唯一 ID 组成的数组。
+存在某些场景，如创建出现延迟时，此字段可能返回为空；此时可以根据接口返回的RequestId或DealName参数，通过DescribeTaskStatus接口查询创建的资源ID。
         :type LoadBalancerIds: list of str
         :param DealName: 订单号。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -4339,7 +4340,7 @@ class HealthCheck(AbstractModel):
         :param HttpVersion: 自定义探测相关参数。健康检查协议CheckType的值取HTTP时，必传此字段，代表后端服务的HTTP版本：HTTP/1.0、HTTP/1.1；（仅适用于TCP监听器）
 注意：此字段可能返回 null，表示取不到有效值。
         :type HttpVersion: str
-        :param SourceIpType: 自定义探测相关参数。健康检查原IP类型：0（使用LB的VIP作为源IP），1（使用100.64网段IP作为源IP），默认值：0
+        :param SourceIpType: 自定义探测相关参数。健康检查源IP类型：0（使用LB的VIP作为源IP），1（使用100.64网段IP作为源IP），默认值：0
 注意：此字段可能返回 null，表示取不到有效值。
         :type SourceIpType: int
         """

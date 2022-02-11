@@ -3897,12 +3897,39 @@ class DescribeClusterNodePoolsRequest(AbstractModel):
         r"""
         :param ClusterId: ClusterId（集群id）
         :type ClusterId: str
+        :param Filters: ·  NodePoolsName
+    按照【节点池名】进行过滤。
+    类型：String
+    必选：否
+
+·  NodePoolsId
+    按照【节点池id】进行过滤。
+    类型：String
+    必选：否
+
+·  tags
+    按照【标签键值对】进行过滤。
+    类型：String
+    必选：否
+
+·  tag:tag-key
+    按照【标签键值对】进行过滤。
+    类型：String
+    必选：否
+        :type Filters: list of Filter
         """
         self.ClusterId = None
+        self.Filters = None
 
 
     def _deserialize(self, params):
         self.ClusterId = params.get("ClusterId")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4192,6 +4219,16 @@ class DescribeClustersRequest(AbstractModel):
         :type Limit: int
         :param Filters: ·  ClusterName
     按照【集群名】进行过滤。
+    类型：String
+    必选：否
+
+·  ClusterType
+    按照【集群类型】进行过滤。
+    类型：String
+    必选：否
+
+·  ClusterStatus
+    按照【集群状态】进行过滤。
     类型：String
     必选：否
 

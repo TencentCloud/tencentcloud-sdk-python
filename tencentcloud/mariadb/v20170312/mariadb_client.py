@@ -701,6 +701,34 @@ class MariadbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeDatabaseTable(self, request):
+        """本接口（DescribeDatabaseTable）用于查询云数据库实例的表信息。
+
+        :param request: Request instance for DescribeDatabaseTable.
+        :type request: :class:`tencentcloud.mariadb.v20170312.models.DescribeDatabaseTableRequest`
+        :rtype: :class:`tencentcloud.mariadb.v20170312.models.DescribeDatabaseTableResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDatabaseTable", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDatabaseTableResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeDatabases(self, request):
         """本接口（DescribeDatabases）用于查询云数据库实例的数据库列表。
 

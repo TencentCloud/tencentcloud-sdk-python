@@ -131,6 +131,9 @@ INTERNALERROR_GETSLOWLOGFAILED = 'InternalError.GetSlowLogFailed'
 # 查询虚拟私有网络子网信息失败。
 INTERNALERROR_GETSUBNETFAILED = 'InternalError.GetSubnetFailed'
 
+# 获取表结构失败。
+INTERNALERROR_GETTABLEINFOFAILED = 'InternalError.GetTableInfoFailed'
+
 # 获取账号列表失败。
 INTERNALERROR_GETUSERLISTFAILED = 'InternalError.GetUserListFailed'
 

@@ -2498,6 +2498,76 @@ class DescribeDBSlowLogsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDatabaseTableRequest(AbstractModel):
+    """DescribeDatabaseTable请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例 ID，形如：dcdbt-ow7t8lmc。
+        :type InstanceId: str
+        :param DbName: 数据库名称，通过 DescribeDatabases 接口获取。
+        :type DbName: str
+        :param Table: 表名称，通过 DescribeDatabaseObjects 接口获取。
+        :type Table: str
+        """
+        self.InstanceId = None
+        self.DbName = None
+        self.Table = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.DbName = params.get("DbName")
+        self.Table = params.get("Table")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDatabaseTableResponse(AbstractModel):
+    """DescribeDatabaseTable返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例名称。
+        :type InstanceId: str
+        :param DbName: 数据库名称。
+        :type DbName: str
+        :param Table: 表名称。
+        :type Table: str
+        :param Cols: 列信息。
+        :type Cols: list of TableColumn
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.InstanceId = None
+        self.DbName = None
+        self.Table = None
+        self.Cols = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.DbName = params.get("DbName")
+        self.Table = params.get("Table")
+        if params.get("Cols") is not None:
+            self.Cols = []
+            for item in params.get("Cols"):
+                obj = TableColumn()
+                obj._deserialize(item)
+                self.Cols.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDatabasesRequest(AbstractModel):
     """DescribeDatabases请求参数结构体
 
@@ -5235,6 +5305,34 @@ class SwitchDBInstanceHAResponse(AbstractModel):
     def _deserialize(self, params):
         self.FlowId = params.get("FlowId")
         self.RequestId = params.get("RequestId")
+
+
+class TableColumn(AbstractModel):
+    """数据库列信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Col: 列名称
+        :type Col: str
+        :param Type: 列类型
+        :type Type: str
+        """
+        self.Col = None
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.Col = params.get("Col")
+        self.Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class TablePrivilege(AbstractModel):
