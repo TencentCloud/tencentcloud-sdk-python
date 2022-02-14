@@ -1386,6 +1386,68 @@ class DescribeMySqlProcessListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeProxySessionKillTasksRequest(AbstractModel):
+    """DescribeProxySessionKillTasks请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID。
+        :type InstanceId: str
+        :param AsyncRequestIds: kill 会话异步任务 ID,  接口 CreateProxySessionKillTask 调用成功后获取。
+        :type AsyncRequestIds: list of int
+        :param Product: 服务产品类型，支持值包括： "redis" - 云数据库 Redis。
+        :type Product: str
+        """
+        self.InstanceId = None
+        self.AsyncRequestIds = None
+        self.Product = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.AsyncRequestIds = params.get("AsyncRequestIds")
+        self.Product = params.get("Product")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeProxySessionKillTasksResponse(AbstractModel):
+    """DescribeProxySessionKillTasks返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Tasks: kill 任务的详情。
+        :type Tasks: list of TaskInfo
+        :param TotalCount: 任务总数。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Tasks = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Tasks") is not None:
+            self.Tasks = []
+            for item in params.get("Tasks"):
+                obj = TaskInfo()
+                obj._deserialize(item)
+                self.Tasks.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeSecurityAuditLogDownloadUrlsRequest(AbstractModel):
     """DescribeSecurityAuditLogDownloadUrls请求参数结构体
 
@@ -3493,6 +3555,70 @@ class TableSpaceTimeSeries(AbstractModel):
         if params.get("SeriesData") is not None:
             self.SeriesData = MonitorFloatMetricSeriesData()
             self.SeriesData._deserialize(params.get("SeriesData"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TaskInfo(AbstractModel):
+    """展示 redis kill 会话任务状态。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AsyncRequestId: 异步任务 ID。
+        :type AsyncRequestId: int
+        :param InstProxyList: 当前实例所有 proxy 列表。
+        :type InstProxyList: list of str
+        :param InstProxyCount: 当前实例所有 proxy 数量。
+        :type InstProxyCount: int
+        :param CreateTime: 任务创建时间。
+        :type CreateTime: str
+        :param StartTime: 任务启动时间。
+        :type StartTime: str
+        :param TaskStatus: 任务的状态，支持的取值包括："created" - 新建；"chosen" - 待执行； "running" - 执行中；"failed" - 失败；"finished" - 已完成。
+        :type TaskStatus: str
+        :param FinishedProxyList: 完成 kill 任务的 proxyId。
+        :type FinishedProxyList: list of str
+        :param FailedProxyList: kill 任务实行失败的 proxyId。
+        :type FailedProxyList: list of str
+        :param EndTime: 任务结束时间。
+        :type EndTime: str
+        :param Progress: 任务执行进度。
+        :type Progress: int
+        :param InstanceId: 实例 ID。
+        :type InstanceId: str
+        """
+        self.AsyncRequestId = None
+        self.InstProxyList = None
+        self.InstProxyCount = None
+        self.CreateTime = None
+        self.StartTime = None
+        self.TaskStatus = None
+        self.FinishedProxyList = None
+        self.FailedProxyList = None
+        self.EndTime = None
+        self.Progress = None
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.AsyncRequestId = params.get("AsyncRequestId")
+        self.InstProxyList = params.get("InstProxyList")
+        self.InstProxyCount = params.get("InstProxyCount")
+        self.CreateTime = params.get("CreateTime")
+        self.StartTime = params.get("StartTime")
+        self.TaskStatus = params.get("TaskStatus")
+        self.FinishedProxyList = params.get("FinishedProxyList")
+        self.FailedProxyList = params.get("FailedProxyList")
+        self.EndTime = params.get("EndTime")
+        self.Progress = params.get("Progress")
+        self.InstanceId = params.get("InstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

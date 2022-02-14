@@ -78,9 +78,9 @@ class CreateOrganizationMemberRequest(AbstractModel):
         :type Name: str
         :param PolicyType: 关系策略  取值：Financial
         :type PolicyType: str
-        :param PermissionIds: 关系权限
+        :param PermissionIds: 关系权限 取值：1-查看账单、2-查看余额、3-资金划拨、4-合并出账、5-开票 ，1、2 默认必须
         :type PermissionIds: list of int non-negative
-        :param NodeId: 需要调节的节点
+        :param NodeId: 成员所属部门的节点ID
         :type NodeId: int
         :param AccountName: 账号名
         :type AccountName: str

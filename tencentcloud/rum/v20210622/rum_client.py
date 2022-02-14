@@ -26,6 +26,66 @@ class RumClient(AbstractClient):
     _service = 'rum'
 
 
+    def CreateLogExport(self, request):
+        """接口请求域名： rum.tencentcloudapi.com 。
+
+        本接口用于创建日志下载任务
+
+        默认接口请求频率限制：20次/秒。
+
+        :param request: Request instance for CreateLogExport.
+        :type request: :class:`tencentcloud.rum.v20210622.models.CreateLogExportRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.CreateLogExportResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateLogExport", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateLogExportResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateOfflineLogConfig(self, request):
+        """创建离线日志监听，对应用户的离线日志将上报
+
+        :param request: Request instance for CreateOfflineLogConfig.
+        :type request: :class:`tencentcloud.rum.v20210622.models.CreateOfflineLogConfigRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.CreateOfflineLogConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateOfflineLogConfig", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateOfflineLogConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateProject(self, request):
         """创建项目（归属于某个团队）
 
@@ -54,6 +114,402 @@ class RumClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateReleaseFile(self, request):
+        """创建对应项目的文件记录
+
+        :param request: Request instance for CreateReleaseFile.
+        :type request: :class:`tencentcloud.rum.v20210622.models.CreateReleaseFileRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.CreateReleaseFileResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateReleaseFile", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateReleaseFileResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateStarProject(self, request):
+        """个人用户添加星标项目
+
+        :param request: Request instance for CreateStarProject.
+        :type request: :class:`tencentcloud.rum.v20210622.models.CreateStarProjectRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.CreateStarProjectResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateStarProject", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateStarProjectResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateTawInstance(self, request):
+        """创建Rum实例
+
+        :param request: Request instance for CreateTawInstance.
+        :type request: :class:`tencentcloud.rum.v20210622.models.CreateTawInstanceRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.CreateTawInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateTawInstance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateTawInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateWhitelist(self, request):
+        """创建白名单
+
+        :param request: Request instance for CreateWhitelist.
+        :type request: :class:`tencentcloud.rum.v20210622.models.CreateWhitelistRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.CreateWhitelistResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateWhitelist", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateWhitelistResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteInstance(self, request):
+        """删除实例，谨慎操作，不可恢复
+
+        :param request: Request instance for DeleteInstance.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DeleteInstanceRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DeleteInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteInstance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteLogExport(self, request):
+        """接口请求域名： rum.tencentcloudapi.com 。
+
+        本接口用于删除日志下载任务
+
+        默认接口请求频率限制：20次/秒。
+
+        :param request: Request instance for DeleteLogExport.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DeleteLogExportRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DeleteLogExportResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteLogExport", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteLogExportResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteOfflineLogConfig(self, request):
+        """删除 rum 离线日志监听 - 对应用户的离线日志将不会上报
+
+        :param request: Request instance for DeleteOfflineLogConfig.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DeleteOfflineLogConfigRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DeleteOfflineLogConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteOfflineLogConfig", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteOfflineLogConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteOfflineLogRecord(self, request):
+        """删除对应的离线日志记录
+
+        :param request: Request instance for DeleteOfflineLogRecord.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DeleteOfflineLogRecordRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DeleteOfflineLogRecordResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteOfflineLogRecord", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteOfflineLogRecordResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteProject(self, request):
+        """删除给定的 rum 的项目
+
+        :param request: Request instance for DeleteProject.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DeleteProjectRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DeleteProjectResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteProject", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteProjectResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteReleaseFile(self, request):
+        """将对应 sourcemap 文件删除
+
+        :param request: Request instance for DeleteReleaseFile.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DeleteReleaseFileRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DeleteReleaseFileResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteReleaseFile", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteReleaseFileResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteStarProject(self, request):
+        """删除用户名下的星标项目
+
+        :param request: Request instance for DeleteStarProject.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DeleteStarProjectRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DeleteStarProjectResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteStarProject", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteStarProjectResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteWhitelist(self, request):
+        """删除白名单
+
+        :param request: Request instance for DeleteWhitelist.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DeleteWhitelistRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DeleteWhitelistResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteWhitelist", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteWhitelistResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeData(self, request):
+        """转发monitor查询
+
+        :param request: Request instance for DescribeData.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeDataRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeData", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDataResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDataCustomUrl(self, request):
+        """获取DescribeDataCustomUrl信息
+
+        :param request: Request instance for DescribeDataCustomUrl.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeDataCustomUrlRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeDataCustomUrlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDataCustomUrl", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDataCustomUrlResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeDataEventUrl(self, request):
         """获取DescribeDataEventUrl信息
 
@@ -68,6 +524,34 @@ class RumClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDataEventUrlResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDataFetchProject(self, request):
+        """获取DescribeDataFetchProject信息
+
+        :param request: Request instance for DescribeDataFetchProject.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeDataFetchProjectRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeDataFetchProjectResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDataFetchProject", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDataFetchProjectResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -138,6 +622,34 @@ class RumClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeDataLogUrlInfo(self, request):
+        """获取loginfo信息
+
+        :param request: Request instance for DescribeDataLogUrlInfo.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeDataLogUrlInfoRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeDataLogUrlInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDataLogUrlInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDataLogUrlInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeDataLogUrlStatistics(self, request):
         """获取LogUrlStatistics信息
 
@@ -194,6 +706,62 @@ class RumClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeDataPerformanceProject(self, request):
+        """获取PerformanceProject信息
+
+        :param request: Request instance for DescribeDataPerformanceProject.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeDataPerformanceProjectRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeDataPerformanceProjectResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDataPerformanceProject", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDataPerformanceProjectResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDataPvUrlInfo(self, request):
+        """获取PvUrlInfo信息
+
+        :param request: Request instance for DescribeDataPvUrlInfo.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeDataPvUrlInfoRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeDataPvUrlInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDataPvUrlInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDataPvUrlInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeDataPvUrlStatistics(self, request):
         """获取DescribeDataPvUrlStatistics信息
 
@@ -208,6 +776,175 @@ class RumClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDataPvUrlStatisticsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDataReportCount(self, request):
+        """获取项目上报量
+
+        :param request: Request instance for DescribeDataReportCount.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeDataReportCountRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeDataReportCountResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDataReportCount", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDataReportCountResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDataSetUrlStatistics(self, request):
+        """获取DescribeDataSetUrlStatistics信息
+
+        :param request: Request instance for DescribeDataSetUrlStatistics.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeDataSetUrlStatisticsRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeDataSetUrlStatisticsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDataSetUrlStatistics", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDataSetUrlStatisticsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDataStaticProject(self, request):
+        """获取DescribeDataStaticProject信息
+
+        :param request: Request instance for DescribeDataStaticProject.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeDataStaticProjectRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeDataStaticProjectResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDataStaticProject", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDataStaticProjectResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDataStaticResource(self, request):
+        """获取DescribeDataStaticResource信息
+
+        :param request: Request instance for DescribeDataStaticResource.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeDataStaticResourceRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeDataStaticResourceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDataStaticResource", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDataStaticResourceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDataStaticUrl(self, request):
+        """获取DescribeDataStaticUrl信息
+
+        :param request: Request instance for DescribeDataStaticUrl.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeDataStaticUrlRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeDataStaticUrlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDataStaticUrl", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDataStaticUrlResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDataWebVitalsPage(self, request):
+        """获取DescribeDataWebVitalsPage信息，用户核心活动信息
+        页面加载性能之Web Vitals。性能关键点
+
+        :param request: Request instance for DescribeDataWebVitalsPage.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeDataWebVitalsPageRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeDataWebVitalsPageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDataWebVitalsPage", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDataWebVitalsPageResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -250,6 +987,38 @@ class RumClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeLogExports(self, request):
+        """接口请求域名： rum.tencentcloudapi.com 。
+
+        本接口用于获取日志下载任务列表
+
+        默认接口请求频率限制：20次/秒
+
+        :param request: Request instance for DescribeLogExports.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeLogExportsRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeLogExportsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeLogExports", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeLogExportsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeLogList(self, request):
         """获取项目下的日志列表（实例创建的项目下的日志列表）
 
@@ -264,6 +1033,118 @@ class RumClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLogListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeOfflineLogConfigs(self, request):
+        """获取设置的离线日志监听配置 - 返回设置的用户唯一标识
+
+        :param request: Request instance for DescribeOfflineLogConfigs.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeOfflineLogConfigsRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeOfflineLogConfigsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeOfflineLogConfigs", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeOfflineLogConfigsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeOfflineLogRecords(self, request):
+        """获取所有离线日志记录(最多100条)
+
+        :param request: Request instance for DescribeOfflineLogRecords.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeOfflineLogRecordsRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeOfflineLogRecordsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeOfflineLogRecords", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeOfflineLogRecordsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeOfflineLogs(self, request):
+        """获取对应离线日志
+
+        :param request: Request instance for DescribeOfflineLogs.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeOfflineLogsRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeOfflineLogsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeOfflineLogs", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeOfflineLogsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeProjectLimits(self, request):
+        """获取项目上报率列表
+
+        :param request: Request instance for DescribeProjectLimits.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeProjectLimitsRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeProjectLimitsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeProjectLimits", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeProjectLimitsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -306,6 +1187,90 @@ class RumClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribePvList(self, request):
+        """获取项目下的PV列表
+
+        :param request: Request instance for DescribePvList.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DescribePvListRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribePvListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribePvList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePvListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeReleaseFileSign(self, request):
+        """获取上传文件存储的临时密钥
+
+        :param request: Request instance for DescribeReleaseFileSign.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeReleaseFileSignRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeReleaseFileSignResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeReleaseFileSign", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeReleaseFileSignResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeReleaseFiles(self, request):
+        """获取项目对应sourcemap文件列表
+
+        :param request: Request instance for DescribeReleaseFiles.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeReleaseFilesRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeReleaseFilesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeReleaseFiles", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeReleaseFilesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeScores(self, request):
         """获取首页分数列表
 
@@ -320,6 +1285,258 @@ class RumClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeScoresResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeTawAreas(self, request):
+        """查询片区信息
+
+        :param request: Request instance for DescribeTawAreas.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeTawAreasRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeTawAreasResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeTawAreas", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeTawAreasResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeTawInstances(self, request):
+        """查询实例信息
+
+        :param request: Request instance for DescribeTawInstances.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeTawInstancesRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeTawInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeTawInstances", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeTawInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeUvList(self, request):
+        """获取项目下的UV列表
+
+        :param request: Request instance for DescribeUvList.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeUvListRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeUvListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeUvList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeUvListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeWhitelists(self, request):
+        """获取白名单列表
+
+        :param request: Request instance for DescribeWhitelists.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeWhitelistsRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeWhitelistsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeWhitelists", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeWhitelistsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyInstance(self, request):
+        """修改实例信息
+
+        :param request: Request instance for ModifyInstance.
+        :type request: :class:`tencentcloud.rum.v20210622.models.ModifyInstanceRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.ModifyInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyInstance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyProject(self, request):
+        """修改 rum 项目信息
+
+        :param request: Request instance for ModifyProject.
+        :type request: :class:`tencentcloud.rum.v20210622.models.ModifyProjectRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.ModifyProjectResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyProject", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyProjectResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyProjectLimit(self, request):
+        """新增修改限流
+
+        :param request: Request instance for ModifyProjectLimit.
+        :type request: :class:`tencentcloud.rum.v20210622.models.ModifyProjectLimitRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.ModifyProjectLimitResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyProjectLimit", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyProjectLimitResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ResumeInstance(self, request):
+        """恢复实例
+
+        :param request: Request instance for ResumeInstance.
+        :type request: :class:`tencentcloud.rum.v20210622.models.ResumeInstanceRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.ResumeInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ResumeInstance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ResumeInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def StopInstance(self, request):
+        """停止实例
+
+        :param request: Request instance for StopInstance.
+        :type request: :class:`tencentcloud.rum.v20210622.models.StopInstanceRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.StopInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("StopInstance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.StopInstanceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

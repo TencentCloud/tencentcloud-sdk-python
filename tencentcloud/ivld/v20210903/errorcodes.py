@@ -38,8 +38,14 @@ AUTHFAILURE_TOKENFAILURE = 'AuthFailure.TokenFailure'
 # 用户已激活。
 AUTHFAILURE_USERACTIVATED = 'AuthFailure.UserActivated'
 
+# 用户状态异常。
+AUTHFAILURE_USERINVALIDSTATUS = 'AuthFailure.UserInvalidStatus'
+
 # 用户无权限。
 AUTHFAILURE_USERNOTFOUND = 'AuthFailure.UserNotFound'
+
+# 用户已欠费停服。
+AUTHFAILURE_USERSTOPARREAR = 'AuthFailure.UserStopArrear'
 
 # 匹配的模板不存在。
 FAILEDOPERATION_AITEMPLATENOTEXIST = 'FailedOperation.AiTemplateNotExist'
@@ -97,6 +103,9 @@ FAILEDOPERATION_MULTIPLEFACESINIMAGE = 'FailedOperation.MultipleFacesInImage'
 
 # 图片中不包含人脸。
 FAILEDOPERATION_NOFACEINIMAGE = 'FailedOperation.NoFaceInImage'
+
+# 计费开通失败。
+FAILEDOPERATION_OPENCHARGEFAILED = 'FailedOperation.OpenChargeFailed'
 
 # 人脸库中存在相似的人脸: %!s(MISSING)。
 FAILEDOPERATION_PERSONDUPLICATED = 'FailedOperation.PersonDuplicated'

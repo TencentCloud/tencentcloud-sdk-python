@@ -680,6 +680,372 @@ class BoundIpInfo(AbstractModel):
         
 
 
+class CCPrecisionPlyRecord(AbstractModel):
+    """CC精准防护配置项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FieldType: 配置项类型，当前仅支持value
+        :type FieldType: str
+        :param FieldName: 配置字段，可取值cgi， ua， cookie， referer， accept,  srcip
+        :type FieldName: str
+        :param Value: 配置取值
+        :type Value: str
+        :param ValueOperator: 配置项值比对方式，可取值equal ，not_equal， include
+        :type ValueOperator: str
+        """
+        self.FieldType = None
+        self.FieldName = None
+        self.Value = None
+        self.ValueOperator = None
+
+
+    def _deserialize(self, params):
+        self.FieldType = params.get("FieldType")
+        self.FieldName = params.get("FieldName")
+        self.Value = params.get("Value")
+        self.ValueOperator = params.get("ValueOperator")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CCPrecisionPolicy(AbstractModel):
+    """CC精准防护策略信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PolicyId: 策略Id
+        :type PolicyId: str
+        :param InstanceId: 实例Id
+        :type InstanceId: str
+        :param Ip: Ip地址
+        :type Ip: str
+        :param Protocol: 协议
+        :type Protocol: str
+        :param Domain: 域名
+        :type Domain: str
+        :param PolicyAction: 策略方式（丢弃或验证码）
+        :type PolicyAction: str
+        :param PolicyList: 策略列表
+        :type PolicyList: list of CCPrecisionPlyRecord
+        :param CreateTime: 创建时间
+        :type CreateTime: str
+        :param ModifyTime: 修改时间
+        :type ModifyTime: str
+        """
+        self.PolicyId = None
+        self.InstanceId = None
+        self.Ip = None
+        self.Protocol = None
+        self.Domain = None
+        self.PolicyAction = None
+        self.PolicyList = None
+        self.CreateTime = None
+        self.ModifyTime = None
+
+
+    def _deserialize(self, params):
+        self.PolicyId = params.get("PolicyId")
+        self.InstanceId = params.get("InstanceId")
+        self.Ip = params.get("Ip")
+        self.Protocol = params.get("Protocol")
+        self.Domain = params.get("Domain")
+        self.PolicyAction = params.get("PolicyAction")
+        if params.get("PolicyList") is not None:
+            self.PolicyList = []
+            for item in params.get("PolicyList"):
+                obj = CCPrecisionPlyRecord()
+                obj._deserialize(item)
+                self.PolicyList.append(obj)
+        self.CreateTime = params.get("CreateTime")
+        self.ModifyTime = params.get("ModifyTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CCReqLimitPolicy(AbstractModel):
+    """CC频率限制策略
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PolicyId: 策略Id
+        :type PolicyId: str
+        :param InstanceId: 实例Id
+        :type InstanceId: str
+        :param Ip: Ip地址
+        :type Ip: str
+        :param Protocol: 协议，可取值HTTP，HTTPS
+        :type Protocol: str
+        :param Domain: 域名
+        :type Domain: str
+        :param PolicyRecord: 策略项
+        :type PolicyRecord: :class:`tencentcloud.antiddos.v20200309.models.CCReqLimitPolicyRecord`
+        :param CreateTime: 创建时间
+        :type CreateTime: str
+        :param ModifyTime: 修改时间
+        :type ModifyTime: str
+        """
+        self.PolicyId = None
+        self.InstanceId = None
+        self.Ip = None
+        self.Protocol = None
+        self.Domain = None
+        self.PolicyRecord = None
+        self.CreateTime = None
+        self.ModifyTime = None
+
+
+    def _deserialize(self, params):
+        self.PolicyId = params.get("PolicyId")
+        self.InstanceId = params.get("InstanceId")
+        self.Ip = params.get("Ip")
+        self.Protocol = params.get("Protocol")
+        self.Domain = params.get("Domain")
+        if params.get("PolicyRecord") is not None:
+            self.PolicyRecord = CCReqLimitPolicyRecord()
+            self.PolicyRecord._deserialize(params.get("PolicyRecord"))
+        self.CreateTime = params.get("CreateTime")
+        self.ModifyTime = params.get("ModifyTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CCReqLimitPolicyRecord(AbstractModel):
+    """CC频率限制策略项字段
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Period: 统计周期，可取值1，10，30，60，单位秒
+        :type Period: int
+        :param RequestNum: 请求数，取值1~20000
+        :type RequestNum: int
+        :param Action: 频率限制策略方式，可取值alg表示验证码，drop表示丢弃
+        :type Action: str
+        :param ExecuteDuration: 频率限制策略时长，可取值1~86400，单位秒
+        :type ExecuteDuration: int
+        :param Mode: 策略项比对方式，可取值include表示包含，equal表示等于
+        :type Mode: str
+        :param Uri: Uri，三个策略项仅可填其中之一
+        :type Uri: str
+        :param UserAgent: User-Agent，三个策略项仅可填其中之一
+        :type UserAgent: str
+        :param Cookie: Cookie，三个策略项仅可填其中之一
+        :type Cookie: str
+        """
+        self.Period = None
+        self.RequestNum = None
+        self.Action = None
+        self.ExecuteDuration = None
+        self.Mode = None
+        self.Uri = None
+        self.UserAgent = None
+        self.Cookie = None
+
+
+    def _deserialize(self, params):
+        self.Period = params.get("Period")
+        self.RequestNum = params.get("RequestNum")
+        self.Action = params.get("Action")
+        self.ExecuteDuration = params.get("ExecuteDuration")
+        self.Mode = params.get("Mode")
+        self.Uri = params.get("Uri")
+        self.UserAgent = params.get("UserAgent")
+        self.Cookie = params.get("Cookie")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CcBlackWhiteIpPolicy(AbstractModel):
+    """CC四层黑白名单列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PolicyId: 策略Id
+        :type PolicyId: str
+        :param InstanceId: 实例Id
+        :type InstanceId: str
+        :param Ip: IP地址
+        :type Ip: str
+        :param Domain: 域名
+        :type Domain: str
+        :param Protocol: 协议
+        :type Protocol: str
+        :param Type: IP类型，取值[black(黑名单IP), white(白名单IP)]
+        :type Type: str
+        :param BlackWhiteIp: 黑白名单IP地址
+        :type BlackWhiteIp: str
+        :param Mask: 掩码
+        :type Mask: int
+        :param CreateTime: 创建时间
+        :type CreateTime: str
+        :param ModifyTime: 修改时间
+        :type ModifyTime: str
+        """
+        self.PolicyId = None
+        self.InstanceId = None
+        self.Ip = None
+        self.Domain = None
+        self.Protocol = None
+        self.Type = None
+        self.BlackWhiteIp = None
+        self.Mask = None
+        self.CreateTime = None
+        self.ModifyTime = None
+
+
+    def _deserialize(self, params):
+        self.PolicyId = params.get("PolicyId")
+        self.InstanceId = params.get("InstanceId")
+        self.Ip = params.get("Ip")
+        self.Domain = params.get("Domain")
+        self.Protocol = params.get("Protocol")
+        self.Type = params.get("Type")
+        self.BlackWhiteIp = params.get("BlackWhiteIp")
+        self.Mask = params.get("Mask")
+        self.CreateTime = params.get("CreateTime")
+        self.ModifyTime = params.get("ModifyTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CcGeoIPBlockConfig(AbstractModel):
+    """DDoS防护的区域封禁配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RegionType: 区域类型，取值[
+oversea(海外)
+china(国内)
+customized(自定义地区)
+]
+        :type RegionType: str
+        :param Action: 封禁动作，取值[
+drop(拦截)
+alg(人机校验)
+]
+        :type Action: str
+        :param Id: 配置ID，配置添加成功后生成；添加新配置时不用填写此字段，修改或删除配置时需要填写配置ID
+        :type Id: str
+        :param AreaList: 当RegionType为customized时，必须填写AreaList；当RegionType为china或oversea时，AreaList为空
+        :type AreaList: list of int
+        """
+        self.RegionType = None
+        self.Action = None
+        self.Id = None
+        self.AreaList = None
+
+
+    def _deserialize(self, params):
+        self.RegionType = params.get("RegionType")
+        self.Action = params.get("Action")
+        self.Id = params.get("Id")
+        self.AreaList = params.get("AreaList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CcGeoIpPolicyNew(AbstractModel):
+    """CC地域封禁列表详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PolicyId: 策略Id
+        :type PolicyId: str
+        :param InstanceId: 实例Id
+        :type InstanceId: str
+        :param Ip: IP地址
+        :type Ip: str
+        :param Domain: 域名
+        :type Domain: str
+        :param Protocol: 协议，可取值HTTP，HTTPS
+        :type Protocol: str
+        :param Action: 用户动作，drop或alg
+        :type Action: str
+        :param RegionType: 地域类型，分为china, oversea与customized
+        :type RegionType: str
+        :param AreaList: 用户选择封禁的地域ID列表
+        :type AreaList: list of int non-negative
+        :param CreateTime: 创建时间
+        :type CreateTime: str
+        :param ModifyTime: 修改时间
+        :type ModifyTime: str
+        """
+        self.PolicyId = None
+        self.InstanceId = None
+        self.Ip = None
+        self.Domain = None
+        self.Protocol = None
+        self.Action = None
+        self.RegionType = None
+        self.AreaList = None
+        self.CreateTime = None
+        self.ModifyTime = None
+
+
+    def _deserialize(self, params):
+        self.PolicyId = params.get("PolicyId")
+        self.InstanceId = params.get("InstanceId")
+        self.Ip = params.get("Ip")
+        self.Domain = params.get("Domain")
+        self.Protocol = params.get("Protocol")
+        self.Action = params.get("Action")
+        self.RegionType = params.get("RegionType")
+        self.AreaList = params.get("AreaList")
+        self.CreateTime = params.get("CreateTime")
+        self.ModifyTime = params.get("ModifyTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CertIdInsL7Rules(AbstractModel):
     """使用证书的规则集合
 
@@ -923,6 +1289,190 @@ class CreateBoundIPResponse(AbstractModel):
         if params.get("Success") is not None:
             self.Success = SuccessCode()
             self.Success._deserialize(params.get("Success"))
+        self.RequestId = params.get("RequestId")
+
+
+class CreateCCPrecisionPolicyRequest(AbstractModel):
+    """CreateCCPrecisionPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例Id
+        :type InstanceId: str
+        :param Ip: IP值
+        :type Ip: str
+        :param Protocol: 协议， 可取值HTTP，HTTPS
+        :type Protocol: str
+        :param Domain: 域名
+        :type Domain: str
+        :param PolicyAction: 策略方式，可取值alg表示验证码，drop表示丢弃
+        :type PolicyAction: str
+        :param PolicyList: 策略记录
+        :type PolicyList: list of CCPrecisionPlyRecord
+        """
+        self.InstanceId = None
+        self.Ip = None
+        self.Protocol = None
+        self.Domain = None
+        self.PolicyAction = None
+        self.PolicyList = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Ip = params.get("Ip")
+        self.Protocol = params.get("Protocol")
+        self.Domain = params.get("Domain")
+        self.PolicyAction = params.get("PolicyAction")
+        if params.get("PolicyList") is not None:
+            self.PolicyList = []
+            for item in params.get("PolicyList"):
+                obj = CCPrecisionPlyRecord()
+                obj._deserialize(item)
+                self.PolicyList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCCPrecisionPolicyResponse(AbstractModel):
+    """CreateCCPrecisionPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreateCCReqLimitPolicyRequest(AbstractModel):
+    """CreateCCReqLimitPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例Id
+        :type InstanceId: str
+        :param Ip: IP值
+        :type Ip: str
+        :param Protocol: 协议，可取值HTTP，HTTPS
+        :type Protocol: str
+        :param Domain: 域名
+        :type Domain: str
+        :param Policy: 策略项
+        :type Policy: :class:`tencentcloud.antiddos.v20200309.models.CCReqLimitPolicyRecord`
+        """
+        self.InstanceId = None
+        self.Ip = None
+        self.Protocol = None
+        self.Domain = None
+        self.Policy = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Ip = params.get("Ip")
+        self.Protocol = params.get("Protocol")
+        self.Domain = params.get("Domain")
+        if params.get("Policy") is not None:
+            self.Policy = CCReqLimitPolicyRecord()
+            self.Policy._deserialize(params.get("Policy"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCCReqLimitPolicyResponse(AbstractModel):
+    """CreateCCReqLimitPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreateCcGeoIPBlockConfigRequest(AbstractModel):
+    """CreateCcGeoIPBlockConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例id
+        :type InstanceId: str
+        :param IP: ip地址
+        :type IP: str
+        :param Domain: 域名
+        :type Domain: str
+        :param Protocol: 协议类型
+        :type Protocol: str
+        :param CcGeoIPBlockConfig: CC区域封禁配置，填写参数时配置ID请为空
+        :type CcGeoIPBlockConfig: :class:`tencentcloud.antiddos.v20200309.models.CcGeoIPBlockConfig`
+        """
+        self.InstanceId = None
+        self.IP = None
+        self.Domain = None
+        self.Protocol = None
+        self.CcGeoIPBlockConfig = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.IP = params.get("IP")
+        self.Domain = params.get("Domain")
+        self.Protocol = params.get("Protocol")
+        if params.get("CcGeoIPBlockConfig") is not None:
+            self.CcGeoIPBlockConfig = CcGeoIPBlockConfig()
+            self.CcGeoIPBlockConfig._deserialize(params.get("CcGeoIPBlockConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCcGeoIPBlockConfigResponse(AbstractModel):
+    """CreateCcGeoIPBlockConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -1917,6 +2467,188 @@ class DeleteBlackWhiteIpListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteCCPrecisionPolicyRequest(AbstractModel):
+    """DeleteCCPrecisionPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例Id
+        :type InstanceId: str
+        :param PolicyId: 策略Id
+        :type PolicyId: str
+        """
+        self.InstanceId = None
+        self.PolicyId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.PolicyId = params.get("PolicyId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteCCPrecisionPolicyResponse(AbstractModel):
+    """DeleteCCPrecisionPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteCCRequestLimitPolicyRequest(AbstractModel):
+    """DeleteCCRequestLimitPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例Id
+        :type InstanceId: str
+        :param PolicyId: 策略Id
+        :type PolicyId: str
+        """
+        self.InstanceId = None
+        self.PolicyId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.PolicyId = params.get("PolicyId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteCCRequestLimitPolicyResponse(AbstractModel):
+    """DeleteCCRequestLimitPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteCcBlackWhiteIpListRequest(AbstractModel):
+    """DeleteCcBlackWhiteIpList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 资源实例ID
+        :type InstanceId: str
+        :param PolicyId: 策略Id
+        :type PolicyId: str
+        """
+        self.InstanceId = None
+        self.PolicyId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.PolicyId = params.get("PolicyId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteCcBlackWhiteIpListResponse(AbstractModel):
+    """DeleteCcBlackWhiteIpList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteCcGeoIPBlockConfigRequest(AbstractModel):
+    """DeleteCcGeoIPBlockConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 资源实例ID
+        :type InstanceId: str
+        :param CcGeoIPBlockConfig: CC区域封禁配置，填写参数时配置ID不能为空
+        :type CcGeoIPBlockConfig: :class:`tencentcloud.antiddos.v20200309.models.CcGeoIPBlockConfig`
+        """
+        self.InstanceId = None
+        self.CcGeoIPBlockConfig = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        if params.get("CcGeoIPBlockConfig") is not None:
+            self.CcGeoIPBlockConfig = CcGeoIPBlockConfig()
+            self.CcGeoIPBlockConfig._deserialize(params.get("CcGeoIPBlockConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteCcGeoIPBlockConfigResponse(AbstractModel):
+    """DeleteCcGeoIPBlockConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteDDoSBlackWhiteIpListRequest(AbstractModel):
     """DeleteDDoSBlackWhiteIpList请求参数结构体
 
@@ -2097,6 +2829,53 @@ class DeletePacketFilterConfigRequest(AbstractModel):
 
 class DeletePacketFilterConfigResponse(AbstractModel):
     """DeletePacketFilterConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeletePortAclConfigRequest(AbstractModel):
+    """DeletePortAclConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 资源实例ID
+        :type InstanceId: str
+        :param AclConfig: 端口acl策略
+        :type AclConfig: :class:`tencentcloud.antiddos.v20200309.models.AclConfig`
+        """
+        self.InstanceId = None
+        self.AclConfig = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        if params.get("AclConfig") is not None:
+            self.AclConfig = AclConfig()
+            self.AclConfig._deserialize(params.get("AclConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeletePortAclConfigResponse(AbstractModel):
+    """DeletePortAclConfig返回参数结构体
 
     """
 
@@ -2386,6 +3165,162 @@ class DescribeBlackWhiteIpListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeCCPrecisionPlyListRequest(AbstractModel):
+    """DescribeCCPrecisionPlyList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Business: 大禹子产品代号（bgpip-multip：表示高防包；bgpip：表示高防ip）
+        :type Business: str
+        :param Offset: 页起始偏移，取值为(页码-1)*一页条数
+        :type Offset: int
+        :param Limit: 一页条数
+        :type Limit: int
+        :param InstanceId: 指定特定实例Id
+        :type InstanceId: str
+        :param Ip: ip地址，普通高防ip要传该字段
+        :type Ip: str
+        :param Domain: 域名，普通高防ip要传该字段
+        :type Domain: str
+        :param Protocol: 协议，普通高防ip要传该字段
+        :type Protocol: str
+        """
+        self.Business = None
+        self.Offset = None
+        self.Limit = None
+        self.InstanceId = None
+        self.Ip = None
+        self.Domain = None
+        self.Protocol = None
+
+
+    def _deserialize(self, params):
+        self.Business = params.get("Business")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.InstanceId = params.get("InstanceId")
+        self.Ip = params.get("Ip")
+        self.Domain = params.get("Domain")
+        self.Protocol = params.get("Protocol")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCCPrecisionPlyListResponse(AbstractModel):
+    """DescribeCCPrecisionPlyList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Total: 策略列表总数
+        :type Total: int
+        :param PrecisionPolicyList: 策略列表详情
+        :type PrecisionPolicyList: list of CCPrecisionPolicy
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Total = None
+        self.PrecisionPolicyList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("PrecisionPolicyList") is not None:
+            self.PrecisionPolicyList = []
+            for item in params.get("PrecisionPolicyList"):
+                obj = CCPrecisionPolicy()
+                obj._deserialize(item)
+                self.PrecisionPolicyList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCCReqLimitPolicyListRequest(AbstractModel):
+    """DescribeCCReqLimitPolicyList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Business: 大禹子产品代号（bgp-multip表示高防包，bgpip表示高防ip）
+        :type Business: str
+        :param Offset: 页起始偏移，取值为(页码-1)*一页条数
+        :type Offset: int
+        :param Limit: 一页条数
+        :type Limit: int
+        :param InstanceId: 指定实例Id
+        :type InstanceId: str
+        :param Ip: Ip地址，普通高防ip要传该字段
+        :type Ip: str
+        :param Domain: 域名，普通高防ip要传该字段
+        :type Domain: str
+        :param Protocol: 协议，普通高防ip要传该字段
+        :type Protocol: str
+        """
+        self.Business = None
+        self.Offset = None
+        self.Limit = None
+        self.InstanceId = None
+        self.Ip = None
+        self.Domain = None
+        self.Protocol = None
+
+
+    def _deserialize(self, params):
+        self.Business = params.get("Business")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.InstanceId = params.get("InstanceId")
+        self.Ip = params.get("Ip")
+        self.Domain = params.get("Domain")
+        self.Protocol = params.get("Protocol")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCCReqLimitPolicyListResponse(AbstractModel):
+    """DescribeCCReqLimitPolicyList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Total: 频率限制列表总数
+        :type Total: int
+        :param RequestLimitPolicyList: 频率限制列表详情
+        :type RequestLimitPolicyList: list of CCReqLimitPolicy
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Total = None
+        self.RequestLimitPolicyList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("RequestLimitPolicyList") is not None:
+            self.RequestLimitPolicyList = []
+            for item in params.get("RequestLimitPolicyList"):
+                obj = CCReqLimitPolicy()
+                obj._deserialize(item)
+                self.RequestLimitPolicyList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeCCTrendRequest(AbstractModel):
     """DescribeCCTrend请求参数结构体
 
@@ -2489,6 +3424,170 @@ class DescribeCCTrendResponse(AbstractModel):
         self.Data = params.get("Data")
         self.Id = params.get("Id")
         self.MetricName = params.get("MetricName")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCcBlackWhiteIpListRequest(AbstractModel):
+    """DescribeCcBlackWhiteIpList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Business: 大禹子产品代号（bgp-multip：表示高防包；bgpip：表示高防ip）
+        :type Business: str
+        :param InstanceId: 指定特定实例Id
+        :type InstanceId: str
+        :param Offset: 页起始偏移，取值为(页码-1)*一页条数
+        :type Offset: int
+        :param Limit: 一页条数
+        :type Limit: int
+        :param Ip: Ip地址，普通高防ip要传该字段
+        :type Ip: str
+        :param Domain: 域名，普通高防ip要传该字段
+        :type Domain: str
+        :param Protocol: 协议，普通高防ip要传该字段
+        :type Protocol: str
+        :param FilterIp: 筛选ip，需要筛选黑白名单ip时传该字段
+        :type FilterIp: str
+        :param FilterType: 黑白名单筛选字段，需要筛选黑白名单列表时传该字段
+        :type FilterType: str
+        """
+        self.Business = None
+        self.InstanceId = None
+        self.Offset = None
+        self.Limit = None
+        self.Ip = None
+        self.Domain = None
+        self.Protocol = None
+        self.FilterIp = None
+        self.FilterType = None
+
+
+    def _deserialize(self, params):
+        self.Business = params.get("Business")
+        self.InstanceId = params.get("InstanceId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.Ip = params.get("Ip")
+        self.Domain = params.get("Domain")
+        self.Protocol = params.get("Protocol")
+        self.FilterIp = params.get("FilterIp")
+        self.FilterType = params.get("FilterType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCcBlackWhiteIpListResponse(AbstractModel):
+    """DescribeCcBlackWhiteIpList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Total: CC四层黑白名单策略列表总数
+        :type Total: int
+        :param CcBlackWhiteIpList: CC四层黑白名单策略列表详情
+        :type CcBlackWhiteIpList: list of CcBlackWhiteIpPolicy
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Total = None
+        self.CcBlackWhiteIpList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("CcBlackWhiteIpList") is not None:
+            self.CcBlackWhiteIpList = []
+            for item in params.get("CcBlackWhiteIpList"):
+                obj = CcBlackWhiteIpPolicy()
+                obj._deserialize(item)
+                self.CcBlackWhiteIpList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCcGeoIPBlockConfigListRequest(AbstractModel):
+    """DescribeCcGeoIPBlockConfigList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Business: 大禹子产品代号（bgpip-multip：表示高防包；bgpip：表示高防ip）
+        :type Business: str
+        :param Offset: 页起始偏移，取值为(页码-1)*一页条数
+        :type Offset: int
+        :param Limit: 一页条数
+        :type Limit: int
+        :param InstanceId: 指定特定实例Id
+        :type InstanceId: str
+        :param Ip: Ip地址，普通高防ip要传该字段
+        :type Ip: str
+        :param Domain: 域名，普通高防ip要传该字段
+        :type Domain: str
+        :param Protocol: 协议，普通高防ip要传该字段
+        :type Protocol: str
+        """
+        self.Business = None
+        self.Offset = None
+        self.Limit = None
+        self.InstanceId = None
+        self.Ip = None
+        self.Domain = None
+        self.Protocol = None
+
+
+    def _deserialize(self, params):
+        self.Business = params.get("Business")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.InstanceId = params.get("InstanceId")
+        self.Ip = params.get("Ip")
+        self.Domain = params.get("Domain")
+        self.Protocol = params.get("Protocol")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCcGeoIPBlockConfigListResponse(AbstractModel):
+    """DescribeCcGeoIPBlockConfigList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Total: CC地域封禁策略列表总数
+        :type Total: int
+        :param CcGeoIpPolicyList: CC地域封禁策略列表详情
+        :type CcGeoIpPolicyList: list of CcGeoIpPolicyNew
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Total = None
+        self.CcGeoIpPolicyList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("CcGeoIpPolicyList") is not None:
+            self.CcGeoIpPolicyList = []
+            for item in params.get("CcGeoIpPolicyList"):
+                obj = CcGeoIpPolicyNew()
+                obj._deserialize(item)
+                self.CcGeoIpPolicyList.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -2954,7 +4053,7 @@ class DescribeListBGPInstancesRequest(AbstractModel):
         :type FilterName: str
         :param FilterLine: 按照线路搜索, 1: BGP; 2: 三网
         :type FilterLine: int
-        :param FilterStatus: 状态搜索，idle：允许中；attacking：攻击中；blocking：封堵中
+        :param FilterStatus: 状态搜索，idle：运行中；attacking：攻击中；blocking：封堵中
         :type FilterStatus: str
         :param FilterBoundStatus: 高防包绑定状态搜索，bounding：绑定中； failed：绑定失败
         :type FilterBoundStatus: str
@@ -4490,6 +5589,348 @@ class ListenerCcThreholdConfig(AbstractModel):
         
 
 
+class ModifyCCLevelPolicyRequest(AbstractModel):
+    """ModifyCCLevelPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例Id
+        :type InstanceId: str
+        :param Ip: Ip地址
+        :type Ip: str
+        :param Domain: 域名
+        :type Domain: str
+        :param Protocol: 协议，可取值HTTP，HTTPS
+        :type Protocol: str
+        :param Level: CC防护等级，可取值loose表示宽松，strict表示严格，normal表示适中， emergency表示攻击紧急， sup_loose表示超级宽松，default表示默认策略（无频控配置下发），customized表示自定义策略
+        :type Level: str
+        """
+        self.InstanceId = None
+        self.Ip = None
+        self.Domain = None
+        self.Protocol = None
+        self.Level = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Ip = params.get("Ip")
+        self.Domain = params.get("Domain")
+        self.Protocol = params.get("Protocol")
+        self.Level = params.get("Level")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCCLevelPolicyResponse(AbstractModel):
+    """ModifyCCLevelPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyCCPrecisionPolicyRequest(AbstractModel):
+    """ModifyCCPrecisionPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例Id
+        :type InstanceId: str
+        :param PolicyId: 策略Id
+        :type PolicyId: str
+        :param PolicyAction: 策略方式，可取值alg表示验证码，drop表示丢弃
+        :type PolicyAction: str
+        :param PolicyList: 策略记录
+        :type PolicyList: list of CCPrecisionPlyRecord
+        """
+        self.InstanceId = None
+        self.PolicyId = None
+        self.PolicyAction = None
+        self.PolicyList = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.PolicyId = params.get("PolicyId")
+        self.PolicyAction = params.get("PolicyAction")
+        if params.get("PolicyList") is not None:
+            self.PolicyList = []
+            for item in params.get("PolicyList"):
+                obj = CCPrecisionPlyRecord()
+                obj._deserialize(item)
+                self.PolicyList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCCPrecisionPolicyResponse(AbstractModel):
+    """ModifyCCPrecisionPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyCCReqLimitPolicyRequest(AbstractModel):
+    """ModifyCCReqLimitPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例Id
+        :type InstanceId: str
+        :param PolicyId: 策略Id
+        :type PolicyId: str
+        :param Policy: 策略项
+        :type Policy: :class:`tencentcloud.antiddos.v20200309.models.CCReqLimitPolicyRecord`
+        """
+        self.InstanceId = None
+        self.PolicyId = None
+        self.Policy = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.PolicyId = params.get("PolicyId")
+        if params.get("Policy") is not None:
+            self.Policy = CCReqLimitPolicyRecord()
+            self.Policy._deserialize(params.get("Policy"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCCReqLimitPolicyResponse(AbstractModel):
+    """ModifyCCReqLimitPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyCCThresholdPolicyRequest(AbstractModel):
+    """ModifyCCThresholdPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例Id
+        :type InstanceId: str
+        :param Ip: Ip地址
+        :type Ip: str
+        :param Domain: 域名
+        :type Domain: str
+        :param Protocol: 协议，可取值HTTP，HTTPS
+        :type Protocol: str
+        :param Threshold: 清洗阈值，-1表示开启“默认”模式
+        :type Threshold: int
+        """
+        self.InstanceId = None
+        self.Ip = None
+        self.Domain = None
+        self.Protocol = None
+        self.Threshold = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Ip = params.get("Ip")
+        self.Domain = params.get("Domain")
+        self.Protocol = params.get("Protocol")
+        self.Threshold = params.get("Threshold")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCCThresholdPolicyResponse(AbstractModel):
+    """ModifyCCThresholdPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyCcBlackWhiteIpListRequest(AbstractModel):
+    """ModifyCcBlackWhiteIpList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 资源实例ID
+        :type InstanceId: str
+        :param IpList: IP列表
+        :type IpList: list of IpSegment
+        :param Type: IP类型，取值[black(黑名单IP), white(白名单IP)]
+        :type Type: str
+        :param PolicyId: 策略Id
+        :type PolicyId: str
+        """
+        self.InstanceId = None
+        self.IpList = None
+        self.Type = None
+        self.PolicyId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        if params.get("IpList") is not None:
+            self.IpList = []
+            for item in params.get("IpList"):
+                obj = IpSegment()
+                obj._deserialize(item)
+                self.IpList.append(obj)
+        self.Type = params.get("Type")
+        self.PolicyId = params.get("PolicyId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCcBlackWhiteIpListResponse(AbstractModel):
+    """ModifyCcBlackWhiteIpList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyDDoSBlackWhiteIpListRequest(AbstractModel):
+    """ModifyDDoSBlackWhiteIpList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 资源Id
+        :type InstanceId: str
+        :param OldIpType: 当前黑名单类型，取值black时黑名单；取值white时白名单
+        :type OldIpType: str
+        :param OldIp: 当前配置的Ip段，包含ip与掩码
+        :type OldIp: :class:`tencentcloud.antiddos.v20200309.models.IpSegment`
+        :param NewIpType: 修改后黑白名单类型，取值black时黑名单，取值white时白名单
+        :type NewIpType: str
+        :param NewIp: 当前配置的Ip段，包含ip与掩码
+        :type NewIp: :class:`tencentcloud.antiddos.v20200309.models.IpSegment`
+        """
+        self.InstanceId = None
+        self.OldIpType = None
+        self.OldIp = None
+        self.NewIpType = None
+        self.NewIp = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.OldIpType = params.get("OldIpType")
+        if params.get("OldIp") is not None:
+            self.OldIp = IpSegment()
+            self.OldIp._deserialize(params.get("OldIp"))
+        self.NewIpType = params.get("NewIpType")
+        if params.get("NewIp") is not None:
+            self.NewIp = IpSegment()
+            self.NewIp._deserialize(params.get("NewIp"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDDoSBlackWhiteIpListResponse(AbstractModel):
+    """ModifyDDoSBlackWhiteIpList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyDDoSGeoIPBlockConfigRequest(AbstractModel):
     """ModifyDDoSGeoIPBlockConfig请求参数结构体
 
@@ -4537,6 +5978,67 @@ class ModifyDDoSGeoIPBlockConfigResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyDDoSLevelRequest(AbstractModel):
+    """ModifyDDoSLevel请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: 资源ID
+        :type Id: str
+        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
+        :type Business: str
+        :param Method: =get表示读取防护等级；=set表示修改防护等级
+        :type Method: str
+        :param DDoSLevel: 防护等级，取值[low,middle,high]；当Method=set时必填
+        :type DDoSLevel: str
+        """
+        self.Id = None
+        self.Business = None
+        self.Method = None
+        self.DDoSLevel = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.Business = params.get("Business")
+        self.Method = params.get("Method")
+        self.DDoSLevel = params.get("DDoSLevel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDDoSLevelResponse(AbstractModel):
+    """ModifyDDoSLevel返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DDoSLevel: 防护等级，取值[low,middle,high]
+        :type DDoSLevel: str
+        :param Id: 资源ID
+        :type Id: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DDoSLevel = None
+        self.Id = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DDoSLevel = params.get("DDoSLevel")
+        self.Id = params.get("Id")
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyDDoSSpeedLimitConfigRequest(AbstractModel):
     """ModifyDDoSSpeedLimitConfig请求参数结构体
 
@@ -4581,6 +6083,62 @@ class ModifyDDoSSpeedLimitConfigResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyDDoSThresholdRequest(AbstractModel):
+    """ModifyDDoSThreshold请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Threshold: DDoS清洗阈值，取值[0, 60, 80, 100, 150, 200, 250, 300, 400, 500, 700, 1000];
+当设置值为0时，表示采用默认值；
+        :type Threshold: int
+        :param Id: 资源ID
+        :type Id: str
+        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
+        :type Business: str
+        """
+        self.Threshold = None
+        self.Id = None
+        self.Business = None
+
+
+    def _deserialize(self, params):
+        self.Threshold = params.get("Threshold")
+        self.Id = params.get("Id")
+        self.Business = params.get("Business")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDDoSThresholdResponse(AbstractModel):
+    """ModifyDDoSThreshold返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Success: 成功码
+        :type Success: :class:`tencentcloud.antiddos.v20200309.models.SuccessCode`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Success = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Success") is not None:
+            self.Success = SuccessCode()
+            self.Success._deserialize(params.get("Success"))
         self.RequestId = params.get("RequestId")
 
 
@@ -4775,6 +6333,59 @@ class ModifyPacketFilterConfigRequest(AbstractModel):
 
 class ModifyPacketFilterConfigResponse(AbstractModel):
     """ModifyPacketFilterConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyPortAclConfigRequest(AbstractModel):
+    """ModifyPortAclConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 资源实例ID
+        :type InstanceId: str
+        :param OldAclConfig: 旧端口acl策略
+        :type OldAclConfig: :class:`tencentcloud.antiddos.v20200309.models.AclConfig`
+        :param NewAclConfig: 新端口acl策略
+        :type NewAclConfig: :class:`tencentcloud.antiddos.v20200309.models.AclConfig`
+        """
+        self.InstanceId = None
+        self.OldAclConfig = None
+        self.NewAclConfig = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        if params.get("OldAclConfig") is not None:
+            self.OldAclConfig = AclConfig()
+            self.OldAclConfig._deserialize(params.get("OldAclConfig"))
+        if params.get("NewAclConfig") is not None:
+            self.NewAclConfig = AclConfig()
+            self.NewAclConfig._deserialize(params.get("NewAclConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyPortAclConfigResponse(AbstractModel):
+    """ModifyPortAclConfig返回参数结构体
 
     """
 

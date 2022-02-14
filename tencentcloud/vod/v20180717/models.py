@@ -3022,7 +3022,7 @@ class AiReviewPornOcrTaskOutput(AbstractModel):
 
 
 class AiReviewPornTaskInput(AbstractModel):
-    """只能识别涉及令人反感的信息的任务输入参数类型
+    """智能识别涉及令人反感的信息的任务输入参数类型
 
     """
 
@@ -3542,7 +3542,7 @@ class AiReviewTaskPornResult(AbstractModel):
 
 
 class AiReviewTaskProhibitedAsrResult(AbstractModel):
-    """智能识别 Asr 文字鉴任违禁务结果类型
+    """智能识别 Asr 文字鉴违禁任务结果类型
 
     """
 
@@ -3591,7 +3591,7 @@ class AiReviewTaskProhibitedAsrResult(AbstractModel):
 
 
 class AiReviewTaskProhibitedOcrResult(AbstractModel):
-    """智能识别 Ocr 文字鉴任违禁务结果类型
+    """智能识别 Ocr 文字鉴违禁任务结果类型
 
     """
 

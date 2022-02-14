@@ -2603,21 +2603,29 @@ class SearchKTVMusicsRequest(AbstractModel):
         :param KeyWord: 搜索关键词
         :type KeyWord: str
         :param Offset: 分页返回的起始偏移量，默认值：0。将返回第 Offset 到第 Offset+Limit-1 条。
-取值范围：Offset + Limit 不超过5000。取值范围：小于5000
+取值范围：Offset + Limit 不超过5000。
         :type Offset: int
         :param Limit: 分页返回的起始偏移量，默认值：50。将返回第 Offset 到第 Offset+Limit-1 条。
-取值范围：Offset + Limit 不超过5000。
         :type Limit: int
+        :param Sort: 排序方式。默认按照匹配度排序
+<li> Sort.Field 可选 CreateTime</li>
+<li> Sort.Order 可选 Desc </li>
+<li> 当 KeyWord 不为空时，Sort.Field 字段无效， 搜索结果将以匹配度排序。</li>
+        :type Sort: :class:`tencentcloud.ame.v20190916.models.SortBy`
         """
         self.KeyWord = None
         self.Offset = None
         self.Limit = None
+        self.Sort = None
 
 
     def _deserialize(self, params):
         self.KeyWord = params.get("KeyWord")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        if params.get("Sort") is not None:
+            self.Sort = SortBy()
+            self.Sort._deserialize(params.get("Sort"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

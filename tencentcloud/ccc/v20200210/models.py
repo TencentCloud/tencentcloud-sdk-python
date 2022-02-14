@@ -18,6 +18,34 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AutoCalloutTaskCalleeInfo(AbstractModel):
+    """外呼任务被叫信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Callee: 被叫号码
+        :type Callee: str
+        :param State: 呼叫状态 0初始 1已接听 2未接听 3呼叫中 4待重试
+        :type State: int
+        """
+        self.Callee = None
+        self.State = None
+
+
+    def _deserialize(self, params):
+        self.Callee = params.get("Callee")
+        self.State = params.get("State")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AutoCalloutTaskInfo(AbstractModel):
     """自动外呼任务列表项
 
@@ -251,6 +279,83 @@ class CallInSkillGroupMetrics(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class CreateAutoCalloutTaskRequest(AbstractModel):
+    """CreateAutoCalloutTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkAppId: 呼叫中心实例Id
+        :type SdkAppId: int
+        :param NotBefore: 任务起始时间戳，Unix 秒级时间戳
+        :type NotBefore: int
+        :param Callees: 被叫号码列表
+        :type Callees: list of str
+        :param Callers: 主叫号码列表
+        :type Callers: list of str
+        :param IvrId: 呼叫使用的Ivr
+        :type IvrId: int
+        :param Name: 任务名
+        :type Name: str
+        :param Description: 任务描述
+        :type Description: str
+        :param NotAfter: 任务停止时间戳，Unix 秒级时间戳
+        :type NotAfter: int
+        :param Tries: 最大尝试次数
+        :type Tries: int
+        """
+        self.SdkAppId = None
+        self.NotBefore = None
+        self.Callees = None
+        self.Callers = None
+        self.IvrId = None
+        self.Name = None
+        self.Description = None
+        self.NotAfter = None
+        self.Tries = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.NotBefore = params.get("NotBefore")
+        self.Callees = params.get("Callees")
+        self.Callers = params.get("Callers")
+        self.IvrId = params.get("IvrId")
+        self.Name = params.get("Name")
+        self.Description = params.get("Description")
+        self.NotAfter = params.get("NotAfter")
+        self.Tries = params.get("Tries")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAutoCalloutTaskResponse(AbstractModel):
+    """CreateAutoCalloutTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 任务Id
+        :type TaskId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
 
 
 class CreateCallOutSessionRequest(AbstractModel):
@@ -539,6 +644,89 @@ class DeleteStaffResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.OnlineStaffList = params.get("OnlineStaffList")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAutoCalloutTaskRequest(AbstractModel):
+    """DescribeAutoCalloutTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkAppId: 呼叫中心实例Id
+        :type SdkAppId: int
+        :param TaskId: 任务Id
+        :type TaskId: int
+        """
+        self.SdkAppId = None
+        self.TaskId = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAutoCalloutTaskResponse(AbstractModel):
+    """DescribeAutoCalloutTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 任务名
+        :type Name: str
+        :param Description: 任务描述
+        :type Description: str
+        :param NotBefore: 任务起始时间戳
+        :type NotBefore: int
+        :param NotAfter: 任务结束时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NotAfter: int
+        :param Callers: 主叫列表
+        :type Callers: list of str
+        :param Callees: 被叫信息列表
+        :type Callees: list of AutoCalloutTaskCalleeInfo
+        :param IvrId: 任务使用的IvrId
+        :type IvrId: int
+        :param State: 任务状态 0初始 1运行中 2已完成 3结束中 4已终止
+        :type State: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Name = None
+        self.Description = None
+        self.NotBefore = None
+        self.NotAfter = None
+        self.Callers = None
+        self.Callees = None
+        self.IvrId = None
+        self.State = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Description = params.get("Description")
+        self.NotBefore = params.get("NotBefore")
+        self.NotAfter = params.get("NotAfter")
+        self.Callers = params.get("Callers")
+        if params.get("Callees") is not None:
+            self.Callees = []
+            for item in params.get("Callees"):
+                obj = AutoCalloutTaskCalleeInfo()
+                obj._deserialize(item)
+                self.Callees.append(obj)
+        self.IvrId = params.get("IvrId")
+        self.State = params.get("State")
         self.RequestId = params.get("RequestId")
 
 
@@ -2341,6 +2529,51 @@ class StaffStatusMetrics(AbstractModel):
         
 
 
+class StopAutoCalloutTaskRequest(AbstractModel):
+    """StopAutoCalloutTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkAppId: 呼叫中心实例Id
+        :type SdkAppId: int
+        :param TaskId: 任务Id
+        :type TaskId: int
+        """
+        self.SdkAppId = None
+        self.TaskId = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StopAutoCalloutTaskResponse(AbstractModel):
+    """StopAutoCalloutTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class TelCdrInfo(AbstractModel):
     """电话话单信息
 
@@ -2465,6 +2698,9 @@ notInService       不在服务区
         :param IVRKeyPressedEx: IVR按键信息（e.g. [{"Key":"1","Label":"非常满意"}]）
 注意：此字段可能返回 null，表示取不到有效值。
         :type IVRKeyPressedEx: list of IVRKeyPressedElement
+        :param AsrUrl: 获取录音ASR文本信息地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AsrUrl: str
         """
         self.Caller = None
         self.Callee = None
@@ -2494,6 +2730,7 @@ notInService       不在服务区
         self.ProtectedCallee = None
         self.Uui = None
         self.IVRKeyPressedEx = None
+        self.AsrUrl = None
 
 
     def _deserialize(self, params):
@@ -2542,6 +2779,7 @@ notInService       不在服务区
                 obj = IVRKeyPressedElement()
                 obj._deserialize(item)
                 self.IVRKeyPressedEx.append(obj)
+        self.AsrUrl = params.get("AsrUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -54,6 +54,34 @@ class CccClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateAutoCalloutTask(self, request):
+        """创建自动外呼任务
+
+        :param request: Request instance for CreateAutoCalloutTask.
+        :type request: :class:`tencentcloud.ccc.v20200210.models.CreateAutoCalloutTaskRequest`
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.CreateAutoCalloutTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateAutoCalloutTask", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateAutoCalloutTaskResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateCallOutSession(self, request):
         """创建外呼会话
 
@@ -180,6 +208,34 @@ class CccClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteStaffResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAutoCalloutTask(self, request):
+        """查询自动外呼任务详情
+
+        :param request: Request instance for DescribeAutoCalloutTask.
+        :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeAutoCalloutTaskRequest`
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.DescribeAutoCalloutTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAutoCalloutTask", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAutoCalloutTaskResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -546,6 +602,34 @@ class CccClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTelSessionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def StopAutoCalloutTask(self, request):
+        """停止自动外呼任务
+
+        :param request: Request instance for StopAutoCalloutTask.
+        :type request: :class:`tencentcloud.ccc.v20200210.models.StopAutoCalloutTaskRequest`
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.StopAutoCalloutTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("StopAutoCalloutTask", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.StopAutoCalloutTaskResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

@@ -5003,12 +5003,16 @@ class DescribeDefaultParamsRequest(AbstractModel):
         r"""
         :param EngineVersion: mysql版本，目前支持 ["5.1", "5.5", "5.6", "5.7"]。
         :type EngineVersion: str
+        :param TemplateType: 默认参数模板类型。支持值包括："HIGH_STABILITY" - 高稳定模版，"HIGH_PERFORMANCE" - 高性能模版。
+        :type TemplateType: str
         """
         self.EngineVersion = None
+        self.TemplateType = None
 
 
     def _deserialize(self, params):
         self.EngineVersion = params.get("EngineVersion")
+        self.TemplateType = params.get("TemplateType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
