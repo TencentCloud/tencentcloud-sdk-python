@@ -2126,12 +2126,17 @@ class ComplianceK8SDetailInfo(AbstractModel):
         :param ClusterName: K8S集群的名称。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterName: str
+        :param ClusterVersion: K8S集群的版本。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterVersion: str
         """
         self.ClusterName = None
+        self.ClusterVersion = None
 
 
     def _deserialize(self, params):
         self.ClusterName = params.get("ClusterName")
+        self.ClusterVersion = params.get("ClusterVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5733,12 +5738,16 @@ class DescribeAssetImageRegistryDetailRequest(AbstractModel):
         r"""
         :param Id: 仓库列表id
         :type Id: int
+        :param ImageId: 镜像ID
+        :type ImageId: str
         """
         self.Id = None
+        self.ImageId = None
 
 
     def _deserialize(self, params):
         self.Id = params.get("Id")
+        self.ImageId = params.get("ImageId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -11291,7 +11300,7 @@ class DescribeVirusTaskListResponse(AbstractModel):
         r"""
         :param List: 文件查杀列表
         :type List: list of VirusTaskInfo
-        :param TotalCount: 总数量
+        :param TotalCount: 总数量(容器任务数量)
         :type TotalCount: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -13540,7 +13549,7 @@ class ModifyVirusMonitorSettingRequest(AbstractModel):
         :type EnableScan: bool
         :param ScanPathAll: 扫描全部路径
         :type ScanPathAll: bool
-        :param ScanPathType: 当ScanPathAll为true 生效 0扫描以下路径 1、扫描除以下路径
+        :param ScanPathType: 当ScanPathAll为true 生效 0扫描以下路径 1、扫描除以下路径(扫描范围只能小于等于1)
         :type ScanPathType: int
         :param ScanPath: 自选排除或扫描的地址
         :type ScanPath: list of str

@@ -100,11 +100,15 @@ class ApplicationBasicInfo(AbstractModel):
         :type Description: str
         :param CreateTime: 创建时间
         :type CreateTime: str
+        :param AllowVisualModify: 是否允许可视化修改
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AllowVisualModify: bool
         """
         self.Name = None
         self.ManageUrl = None
         self.Description = None
         self.CreateTime = None
+        self.AllowVisualModify = None
 
 
     def _deserialize(self, params):
@@ -112,6 +116,7 @@ class ApplicationBasicInfo(AbstractModel):
         self.ManageUrl = params.get("ManageUrl")
         self.Description = params.get("Description")
         self.CreateTime = params.get("CreateTime")
+        self.AllowVisualModify = params.get("AllowVisualModify")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -260,6 +260,9 @@ FAILEDOPERATION_QUERYRESULTNULL = 'FailedOperation.QueryResultNull'
 # 超出商户单日转账额度。
 FAILEDOPERATION_QUOTAEXCEED = 'FailedOperation.QuotaExceed'
 
+# 退款交易已结束。
+FAILEDOPERATION_REFUNDTRANSACTIONCLOSED = 'FailedOperation.RefundTransactionClosed'
+
 # 退款交易已完成，请勿重复操作。
 FAILEDOPERATION_REFUNDTRANSACTIONFINISHED = 'FailedOperation.RefundTransactionFinished'
 
