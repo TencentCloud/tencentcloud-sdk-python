@@ -2445,7 +2445,7 @@ class CreateAddressTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AddressTemplateName: IP地址模版名称
+        :param AddressTemplateName: IP地址模板名称。
         :type AddressTemplateName: str
         :param Addresses: 地址信息，支持 IP、CIDR、IP 范围。Addresses与AddressesExtra必填其一。
         :type Addresses: list of str

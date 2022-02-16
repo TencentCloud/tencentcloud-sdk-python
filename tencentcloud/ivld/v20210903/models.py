@@ -528,12 +528,18 @@ class CustomPersonInfo(AbstractModel):
         :type L1Category: str
         :param L2Category: 二级自定义人物类型
         :type L2Category: str
+        :param ImageInfoSet: 自定义人物图片信息
+        :type ImageInfoSet: list of PersonImageInfo
+        :param CreateTime: 自定义人物创建时间
+        :type CreateTime: str
         """
         self.PersonId = None
         self.Name = None
         self.BasicInfo = None
         self.L1Category = None
         self.L2Category = None
+        self.ImageInfoSet = None
+        self.CreateTime = None
 
 
     def _deserialize(self, params):
@@ -542,6 +548,13 @@ class CustomPersonInfo(AbstractModel):
         self.BasicInfo = params.get("BasicInfo")
         self.L1Category = params.get("L1Category")
         self.L2Category = params.get("L2Category")
+        if params.get("ImageInfoSet") is not None:
+            self.ImageInfoSet = []
+            for item in params.get("ImageInfoSet"):
+                obj = PersonImageInfo()
+                obj._deserialize(item)
+                self.ImageInfoSet.append(obj)
+        self.CreateTime = params.get("CreateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

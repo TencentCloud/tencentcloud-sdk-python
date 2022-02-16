@@ -33,11 +33,17 @@ class AccessLogConfig(AbstractModel):
         :type SelectedRange: :class:`tencentcloud.tcm.v20210413.models.SelectedRange`
         :param CLS: 腾讯云日志服务相关参数
         :type CLS: :class:`tencentcloud.tcm.v20210413.models.CLS`
+        :param Encoding: 编码格式，可选值：TEXT、JSON
+        :type Encoding: str
+        :param Format: 日志格式
+        :type Format: str
         """
         self.Enable = None
         self.Template = None
         self.SelectedRange = None
         self.CLS = None
+        self.Encoding = None
+        self.Format = None
 
 
     def _deserialize(self, params):
@@ -49,6 +55,8 @@ class AccessLogConfig(AbstractModel):
         if params.get("CLS") is not None:
             self.CLS = CLS()
             self.CLS._deserialize(params.get("CLS"))
+        self.Encoding = params.get("Encoding")
+        self.Format = params.get("Format")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

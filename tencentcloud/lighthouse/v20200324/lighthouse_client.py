@@ -241,6 +241,34 @@ class LighthouseClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateInstances(self, request):
+        """本接口(CreateInstances)用于创建一个或多个指定套餐的轻量应用服务器实例。
+
+        :param request: Request instance for CreateInstances.
+        :type request: :class:`tencentcloud.lighthouse.v20200324.models.CreateInstancesRequest`
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.CreateInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateInstances", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateKeyPair(self, request):
         """本接口（CreateKeyPair）用于创建一个密钥对。
 

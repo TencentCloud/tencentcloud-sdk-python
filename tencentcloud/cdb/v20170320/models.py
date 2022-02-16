@@ -12206,7 +12206,7 @@ class ZoneSellConf(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Status: 可用区状态。可能的返回值为：0-未上线；1-上线；2-开放；3-停售；4-不展示
+        :param Status: 可用区状态。可能的返回值为：1-上线；3-停售；4-不展示
         :type Status: int
         :param ZoneName: 可用区中文名称
         :type ZoneName: str
@@ -12239,6 +12239,14 @@ class ZoneSellConf(AbstractModel):
         :param RemoteRoZone: 可支持的跨可用区只读区信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type RemoteRoZone: list of str
+        :param ExClusterStatus: 独享型可用区状态。可能的返回值为：1-上线；3-停售；4-不展示
+        :type ExClusterStatus: int
+        :param ExClusterRemoteRoZone: 独享型可支持的跨可用区只读区信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExClusterRemoteRoZone: list of str
+        :param ExClusterZoneConf: 独享型多可用区信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExClusterZoneConf: :class:`tencentcloud.cdb.v20170320.models.ZoneConf`
         """
         self.Status = None
         self.ZoneName = None
@@ -12256,6 +12264,9 @@ class ZoneSellConf(AbstractModel):
         self.DrZone = None
         self.IsSupportRemoteRo = None
         self.RemoteRoZone = None
+        self.ExClusterStatus = None
+        self.ExClusterRemoteRoZone = None
+        self.ExClusterZoneConf = None
 
 
     def _deserialize(self, params):
@@ -12282,6 +12293,11 @@ class ZoneSellConf(AbstractModel):
         self.DrZone = params.get("DrZone")
         self.IsSupportRemoteRo = params.get("IsSupportRemoteRo")
         self.RemoteRoZone = params.get("RemoteRoZone")
+        self.ExClusterStatus = params.get("ExClusterStatus")
+        self.ExClusterRemoteRoZone = params.get("ExClusterRemoteRoZone")
+        if params.get("ExClusterZoneConf") is not None:
+            self.ExClusterZoneConf = ZoneConf()
+            self.ExClusterZoneConf._deserialize(params.get("ExClusterZoneConf"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
