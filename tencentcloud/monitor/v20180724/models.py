@@ -395,6 +395,9 @@ class AlarmPolicy(AbstractModel):
         :param TagInstances: 标签
 注意：此字段可能返回 null，表示取不到有效值。
         :type TagInstances: list of TagInstance
+        :param FilterDimensionsParam: 策略关联的过滤维度信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FilterDimensionsParam: str
         """
         self.PolicyId = None
         self.PolicyName = None
@@ -425,6 +428,7 @@ class AlarmPolicy(AbstractModel):
         self.RuleType = None
         self.OriginId = None
         self.TagInstances = None
+        self.FilterDimensionsParam = None
 
 
     def _deserialize(self, params):
@@ -478,6 +482,7 @@ class AlarmPolicy(AbstractModel):
                 obj = TagInstance()
                 obj._deserialize(item)
                 self.TagInstances.append(obj)
+        self.FilterDimensionsParam = params.get("FilterDimensionsParam")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2419,6 +2424,8 @@ class DescribeAlarmPoliciesRequest(AbstractModel):
         :type NotBindingNoticeRule: int
         :param InstanceGroupId: 实例分组id
         :type InstanceGroupId: int
+        :param NeedCorrespondence: 是否需要策略与入参过滤维度参数的对应关系，1：是  0：否，默认为0
+        :type NeedCorrespondence: int
         """
         self.Module = None
         self.PageNumber = None
@@ -2438,6 +2445,7 @@ class DescribeAlarmPoliciesRequest(AbstractModel):
         self.Enable = None
         self.NotBindingNoticeRule = None
         self.InstanceGroupId = None
+        self.NeedCorrespondence = None
 
 
     def _deserialize(self, params):
@@ -2459,6 +2467,7 @@ class DescribeAlarmPoliciesRequest(AbstractModel):
         self.Enable = params.get("Enable")
         self.NotBindingNoticeRule = params.get("NotBindingNoticeRule")
         self.InstanceGroupId = params.get("InstanceGroupId")
+        self.NeedCorrespondence = params.get("NeedCorrespondence")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7543,7 +7552,7 @@ class UserNotice(AbstractModel):
         :param EndTime: 通知结束时间 00:00:00 开始的秒数（取值范围0-86399）
 注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: int
-        :param NoticeWay: 通知渠道列表 EMAIL=邮件 SMS=短信 CALL=电话 WECHAT=微信
+        :param NoticeWay: 通知渠道列表 EMAIL=邮件 SMS=短信 CALL=电话 WECHAT=微信 RTX=企业微信
 注意：此字段可能返回 null，表示取不到有效值。
         :type NoticeWay: list of str
         :param UserIds: 用户 uid 列表
@@ -7567,6 +7576,9 @@ class UserNotice(AbstractModel):
         :param NeedPhoneArriveNotice: 是否需要触达通知 0=否 1=是
 注意：此字段可能返回 null，表示取不到有效值。
         :type NeedPhoneArriveNotice: int
+        :param PhoneCallType: 电话拨打类型 SYNC=同时拨打 CIRCLE=轮询拨打 不指定时默认是轮询
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PhoneCallType: str
         """
         self.ReceiverType = None
         self.StartTime = None
@@ -7579,6 +7591,7 @@ class UserNotice(AbstractModel):
         self.PhoneInnerInterval = None
         self.PhoneCircleInterval = None
         self.NeedPhoneArriveNotice = None
+        self.PhoneCallType = None
 
 
     def _deserialize(self, params):
@@ -7593,6 +7606,7 @@ class UserNotice(AbstractModel):
         self.PhoneInnerInterval = params.get("PhoneInnerInterval")
         self.PhoneCircleInterval = params.get("PhoneCircleInterval")
         self.NeedPhoneArriveNotice = params.get("NeedPhoneArriveNotice")
+        self.PhoneCallType = params.get("PhoneCallType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

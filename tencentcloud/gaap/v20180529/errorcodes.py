@@ -155,6 +155,9 @@ INVALIDPARAMETERVALUE_DUPLICATEDLISTENERPORT = 'InvalidParameterValue.Duplicated
 # 无法同时开启所设置的特性。
 INVALIDPARAMETERVALUE_FEATURECONFLICT = 'InvalidParameterValue.FeatureConflict'
 
+# 资源已被录入封禁黑名单。
+INVALIDPARAMETERVALUE_HITBANBLACKLIST = 'InvalidParameterValue.HitBanBlacklist'
+
 # header黑名单限制。
 INVALIDPARAMETERVALUE_HITBLACKLIST = 'InvalidParameterValue.HitBlacklist'
 
@@ -178,6 +181,9 @@ INVALIDPARAMETERVALUE_INVALIDLISTENERPORT = 'InvalidParameterValue.InvalidListen
 
 # 未找到或无权限访问该标签
 INVALIDPARAMETERVALUE_INVALIDTAGS = 'InvalidParameterValue.InvalidTags'
+
+# 该域名被封禁，无法添加。
+INVALIDPARAMETERVALUE_L7DOMAINHITBANBLACKLIST = 'InvalidParameterValue.L7DomainHitBanBlacklist'
 
 # 项目不属于该用户。
 INVALIDPARAMETERVALUE_PROJECTIDNOTBELONG = 'InvalidParameterValue.ProjectIdNotBelong'

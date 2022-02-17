@@ -6501,10 +6501,12 @@ offline：已关闭
         :type Status: str
         :param ProjectId: 项目 ID，可前往腾讯云项目管理页面查看
         :type ProjectId: int
-        :param ServiceType: 域名业务类型
-web：静态加速
-download：下载加速
-media：流媒体点播加速
+        :param ServiceType: 加速域名业务类型
+web：网页小文件
+download：下载大文件
+media：音视频点播
+hybrid:  动静加速
+dynamic:  动态加速
         :type ServiceType: str
         :param CreateTime: 域名创建时间
         :type CreateTime: str
@@ -6679,6 +6681,9 @@ off：不支持
         :param ShareCname: 共享CNAME配置（白名单功能）
 注意：此字段可能返回 null，表示取不到有效值。
         :type ShareCname: :class:`tencentcloud.cdn.v20180606.models.ShareCname`
+        :param RuleEngine: 规则引擎
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleEngine: :class:`tencentcloud.cdn.v20180606.models.RuleEngine`
         """
         self.ResourceId = None
         self.AppId = None
@@ -6740,6 +6745,7 @@ off：不支持
         self.WebSocket = None
         self.RemoteAuthentication = None
         self.ShareCname = None
+        self.RuleEngine = None
 
 
     def _deserialize(self, params):
@@ -6901,6 +6907,9 @@ off：不支持
         if params.get("ShareCname") is not None:
             self.ShareCname = ShareCname()
             self.ShareCname._deserialize(params.get("ShareCname"))
+        if params.get("RuleEngine") is not None:
+            self.RuleEngine = RuleEngine()
+            self.RuleEngine._deserialize(params.get("RuleEngine"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -11765,6 +11774,37 @@ class RuleCacheConfig(AbstractModel):
         
 
 
+class RuleEngine(AbstractModel):
+    """规则引擎配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 规则引擎配置开关
+on：开启
+off：关闭
+        :type Switch: str
+        :param Content: 规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Content: str
+        """
+        self.Switch = None
+        self.Content = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.Content = params.get("Content")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RuleQueryString(AbstractModel):
     """路径保留参数配置
 
@@ -12908,6 +12948,9 @@ class ServerCert(AbstractModel):
         :param Message: 证书备注信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
+        :param From: 证书来源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type From: str
         """
         self.CertId = None
         self.CertName = None
@@ -12916,6 +12959,7 @@ class ServerCert(AbstractModel):
         self.ExpireTime = None
         self.DeployTime = None
         self.Message = None
+        self.From = None
 
 
     def _deserialize(self, params):
@@ -12926,6 +12970,7 @@ class ServerCert(AbstractModel):
         self.ExpireTime = params.get("ExpireTime")
         self.DeployTime = params.get("DeployTime")
         self.Message = params.get("Message")
+        self.From = params.get("From")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

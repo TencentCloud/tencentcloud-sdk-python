@@ -420,6 +420,34 @@ class DcdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeDBSlowLogs(self, request):
+        """本接口(DescribeDBSlowLogs)用于查询慢查询日志列表。
+
+        :param request: Request instance for DescribeDBSlowLogs.
+        :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeDBSlowLogsRequest`
+        :rtype: :class:`tencentcloud.dcdb.v20180411.models.DescribeDBSlowLogsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDBSlowLogs", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDBSlowLogsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeDBSyncMode(self, request):
         """本接口（DescribeDBSyncMode）用于查询云数据库实例的同步模式。
 

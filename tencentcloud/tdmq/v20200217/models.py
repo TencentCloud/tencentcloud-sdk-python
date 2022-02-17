@@ -679,6 +679,11 @@ class Cluster(AbstractModel):
         :param Tags: 标签
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
+        :param PayMode: 计费模式：
+0: 按量计费
+1: 包年包月
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PayMode: int
         """
         self.ClusterId = None
         self.ClusterName = None
@@ -706,6 +711,7 @@ class Cluster(AbstractModel):
         self.MaxMessageDelayInSeconds = None
         self.PublicAccessEnabled = None
         self.Tags = None
+        self.PayMode = None
 
 
     def _deserialize(self, params):
@@ -740,6 +746,7 @@ class Cluster(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.PayMode = params.get("PayMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1230,11 +1237,15 @@ class Consumer(AbstractModel):
         :param ClientVersion: 消费者版本。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClientVersion: str
+        :param Partition: 消费者连接的主题分区号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Partition: int
         """
         self.ConnectedSince = None
         self.ConsumerAddr = None
         self.ConsumerName = None
         self.ClientVersion = None
+        self.Partition = None
 
 
     def _deserialize(self, params):
@@ -1242,6 +1253,7 @@ class Consumer(AbstractModel):
         self.ConsumerAddr = params.get("ConsumerAddr")
         self.ConsumerName = params.get("ConsumerName")
         self.ClientVersion = params.get("ClientVersion")
+        self.Partition = params.get("Partition")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1695,6 +1707,8 @@ class CreateCmqQueueRequest(AbstractModel):
         :type MaxTimeToLive: int
         :param Trace: 是否开启消息轨迹追踪，当不设置字段时，默认为不开启，该字段为true表示开启，为false表示不开启
         :type Trace: bool
+        :param Tags: 标签数组
+        :type Tags: list of Tag
         """
         self.QueueName = None
         self.MaxMsgHeapNum = None
@@ -1711,6 +1725,7 @@ class CreateCmqQueueRequest(AbstractModel):
         self.MaxReceiveCount = None
         self.MaxTimeToLive = None
         self.Trace = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -1729,6 +1744,12 @@ class CreateCmqQueueRequest(AbstractModel):
         self.MaxReceiveCount = params.get("MaxReceiveCount")
         self.MaxTimeToLive = params.get("MaxTimeToLive")
         self.Trace = params.get("Trace")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1849,12 +1870,15 @@ class CreateCmqTopicRequest(AbstractModel):
         :type MsgRetentionSeconds: int
         :param Trace: 是否开启消息轨迹标识，true表示开启，false表示不开启，不填表示不开启。
         :type Trace: bool
+        :param Tags: 标签数组
+        :type Tags: list of Tag
         """
         self.TopicName = None
         self.MaxMsgSize = None
         self.FilterType = None
         self.MsgRetentionSeconds = None
         self.Trace = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -1863,6 +1887,12 @@ class CreateCmqTopicRequest(AbstractModel):
         self.FilterType = params.get("FilterType")
         self.MsgRetentionSeconds = params.get("MsgRetentionSeconds")
         self.Trace = params.get("Trace")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2398,32 +2428,40 @@ class CreateTopicRequest(AbstractModel):
         :type TopicName: str
         :param Partitions: 0：非分区topic，无分区；非0：具体分区topic的分区数，最大不允许超过128。
         :type Partitions: int
+        :param Remark: 备注，128字符以内。
+        :type Remark: str
         :param TopicType: 0： 普通消息；
 1 ：全局顺序消息；
 2 ：局部顺序消息；
 3 ：重试队列；
 4 ：死信队列。
         :type TopicType: int
-        :param Remark: 备注，128字符以内。
-        :type Remark: str
         :param ClusterId: Pulsar 集群的ID
         :type ClusterId: str
+        :param PulsarTopicType: Pulsar 主题类型
+0: 非持久非分区
+1: 非持久分区
+2: 持久非分区
+3: 持久分区
+        :type PulsarTopicType: int
         """
         self.EnvironmentId = None
         self.TopicName = None
         self.Partitions = None
-        self.TopicType = None
         self.Remark = None
+        self.TopicType = None
         self.ClusterId = None
+        self.PulsarTopicType = None
 
 
     def _deserialize(self, params):
         self.EnvironmentId = params.get("EnvironmentId")
         self.TopicName = params.get("TopicName")
         self.Partitions = params.get("Partitions")
-        self.TopicType = params.get("TopicType")
         self.Remark = params.get("Remark")
+        self.TopicType = params.get("TopicType")
         self.ClusterId = params.get("ClusterId")
+        self.PulsarTopicType = params.get("PulsarTopicType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8042,6 +8080,15 @@ class Subscription(AbstractModel):
         :param UpdateTime: 最近修改时间。
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
+        :param SubType: 订阅类型，Exclusive，Shared，Failover， Key_Shared，空或NULL表示未知，
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubType: str
+        :param BlockedSubscriptionOnUnackedMsgs: 是否由于未 ack 数到达上限而被 block
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BlockedSubscriptionOnUnackedMsgs: bool
+        :param MaxUnackedMsgNum: 未 ack 消息数上限
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxUnackedMsgNum: int
         """
         self.TopicName = None
         self.EnvironmentId = None
@@ -8060,6 +8107,9 @@ class Subscription(AbstractModel):
         self.Remark = None
         self.CreateTime = None
         self.UpdateTime = None
+        self.SubType = None
+        self.BlockedSubscriptionOnUnackedMsgs = None
+        self.MaxUnackedMsgNum = None
 
 
     def _deserialize(self, params):
@@ -8090,6 +8140,9 @@ class Subscription(AbstractModel):
         self.Remark = params.get("Remark")
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
+        self.SubType = params.get("SubType")
+        self.BlockedSubscriptionOnUnackedMsgs = params.get("BlockedSubscriptionOnUnackedMsgs")
+        self.MaxUnackedMsgNum = params.get("MaxUnackedMsgNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8235,6 +8288,12 @@ class Topic(AbstractModel):
         :param ConsumerLimit: 消费者上限。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ConsumerLimit: str
+        :param PulsarTopicType: 0: 非持久非分区
+1: 非持久分区
+2: 持久非分区
+3: 持久分区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PulsarTopicType: int
         """
         self.AverageMsgSize = None
         self.ConsumerCount = None
@@ -8257,6 +8316,7 @@ class Topic(AbstractModel):
         self.UpdateTime = None
         self.ProducerLimit = None
         self.ConsumerLimit = None
+        self.PulsarTopicType = None
 
 
     def _deserialize(self, params):
@@ -8286,6 +8346,7 @@ class Topic(AbstractModel):
         self.UpdateTime = params.get("UpdateTime")
         self.ProducerLimit = params.get("ProducerLimit")
         self.ConsumerLimit = params.get("ConsumerLimit")
+        self.PulsarTopicType = params.get("PulsarTopicType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

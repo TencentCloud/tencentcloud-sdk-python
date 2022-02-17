@@ -1845,6 +1845,108 @@ class DescribeDBSecurityGroupsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDBSlowLogsRequest(AbstractModel):
+    """DescribeDBSlowLogs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例 ID，形如：dcdbt-hw0qj6m1
+        :type InstanceId: str
+        :param Offset: 从结果的第几条数据开始返回
+        :type Offset: int
+        :param Limit: 返回的结果条数
+        :type Limit: int
+        :param StartTime: 查询的起始时间，形如2016-07-23 14:55:20
+        :type StartTime: str
+        :param ShardId: 实例的分片ID，形如shard-53ima8ln
+        :type ShardId: str
+        :param EndTime: 查询的结束时间，形如2016-08-22 14:55:20。如果不填，那么查询结束时间就是当前时间
+        :type EndTime: str
+        :param Db: 要查询的具体数据库名称
+        :type Db: str
+        :param OrderBy: 排序指标，取值为query_time_sum或者query_count。不填默认按照query_time_sum排序
+        :type OrderBy: str
+        :param OrderByType: 排序类型，desc（降序）或者asc（升序）。不填默认desc排序
+        :type OrderByType: str
+        :param Slave: 是否查询从机的慢查询，0-主机; 1-从机。不填默认查询主机慢查询
+        :type Slave: int
+        """
+        self.InstanceId = None
+        self.Offset = None
+        self.Limit = None
+        self.StartTime = None
+        self.ShardId = None
+        self.EndTime = None
+        self.Db = None
+        self.OrderBy = None
+        self.OrderByType = None
+        self.Slave = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.StartTime = params.get("StartTime")
+        self.ShardId = params.get("ShardId")
+        self.EndTime = params.get("EndTime")
+        self.Db = params.get("Db")
+        self.OrderBy = params.get("OrderBy")
+        self.OrderByType = params.get("OrderByType")
+        self.Slave = params.get("Slave")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDBSlowLogsResponse(AbstractModel):
+    """DescribeDBSlowLogs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LockTimeSum: 所有语句锁时间总和
+        :type LockTimeSum: float
+        :param QueryCount: 所有语句查询总次数
+        :type QueryCount: int
+        :param Total: 总记录数
+        :type Total: int
+        :param QueryTimeSum: 所有语句查询时间总和
+        :type QueryTimeSum: float
+        :param Data: 慢查询日志数据
+        :type Data: list of SlowLogData
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.LockTimeSum = None
+        self.QueryCount = None
+        self.Total = None
+        self.QueryTimeSum = None
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.LockTimeSum = params.get("LockTimeSum")
+        self.QueryCount = params.get("QueryCount")
+        self.Total = params.get("Total")
+        self.QueryTimeSum = params.get("QueryTimeSum")
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = SlowLogData()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDBSyncModeRequest(AbstractModel):
     """DescribeDBSyncMode请求参数结构体
 
@@ -4444,6 +4546,104 @@ class ShardZoneChooseInfo(AbstractModel):
                 obj = ZonesInfo()
                 obj._deserialize(item)
                 self.SlaveZones.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SlowLogData(AbstractModel):
+    """慢查询条目信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CheckSum: 语句校验和，用于查询详情
+        :type CheckSum: str
+        :param Db: 数据库名称
+        :type Db: str
+        :param FingerPrint: 抽象的SQL语句
+        :type FingerPrint: str
+        :param LockTimeAvg: 平均的锁时间
+        :type LockTimeAvg: str
+        :param LockTimeMax: 最大锁时间
+        :type LockTimeMax: str
+        :param LockTimeMin: 最小锁时间
+        :type LockTimeMin: str
+        :param LockTimeSum: 锁时间总和
+        :type LockTimeSum: str
+        :param QueryCount: 查询次数
+        :type QueryCount: str
+        :param QueryTimeAvg: 平均查询时间
+        :type QueryTimeAvg: str
+        :param QueryTimeMax: 最大查询时间
+        :type QueryTimeMax: str
+        :param QueryTimeMin: 最小查询时间
+        :type QueryTimeMin: str
+        :param QueryTimeSum: 查询时间总和
+        :type QueryTimeSum: str
+        :param RowsExaminedSum: 扫描行数
+        :type RowsExaminedSum: str
+        :param RowsSentSum: 发送行数
+        :type RowsSentSum: str
+        :param TsMax: 最后执行时间
+        :type TsMax: str
+        :param TsMin: 首次执行时间
+        :type TsMin: str
+        :param User: 帐号
+        :type User: str
+        :param ExampleSql: 样例Sql
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExampleSql: str
+        :param Host: 账户的域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Host: str
+        """
+        self.CheckSum = None
+        self.Db = None
+        self.FingerPrint = None
+        self.LockTimeAvg = None
+        self.LockTimeMax = None
+        self.LockTimeMin = None
+        self.LockTimeSum = None
+        self.QueryCount = None
+        self.QueryTimeAvg = None
+        self.QueryTimeMax = None
+        self.QueryTimeMin = None
+        self.QueryTimeSum = None
+        self.RowsExaminedSum = None
+        self.RowsSentSum = None
+        self.TsMax = None
+        self.TsMin = None
+        self.User = None
+        self.ExampleSql = None
+        self.Host = None
+
+
+    def _deserialize(self, params):
+        self.CheckSum = params.get("CheckSum")
+        self.Db = params.get("Db")
+        self.FingerPrint = params.get("FingerPrint")
+        self.LockTimeAvg = params.get("LockTimeAvg")
+        self.LockTimeMax = params.get("LockTimeMax")
+        self.LockTimeMin = params.get("LockTimeMin")
+        self.LockTimeSum = params.get("LockTimeSum")
+        self.QueryCount = params.get("QueryCount")
+        self.QueryTimeAvg = params.get("QueryTimeAvg")
+        self.QueryTimeMax = params.get("QueryTimeMax")
+        self.QueryTimeMin = params.get("QueryTimeMin")
+        self.QueryTimeSum = params.get("QueryTimeSum")
+        self.RowsExaminedSum = params.get("RowsExaminedSum")
+        self.RowsSentSum = params.get("RowsSentSum")
+        self.TsMax = params.get("TsMax")
+        self.TsMin = params.get("TsMin")
+        self.User = params.get("User")
+        self.ExampleSql = params.get("ExampleSql")
+        self.Host = params.get("Host")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

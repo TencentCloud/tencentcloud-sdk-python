@@ -1312,11 +1312,14 @@ class StructureResultObject(AbstractModel):
         :type StructureResult: str
         :param SubTaskId: 子任务ID
         :type SubTaskId: str
+        :param TaskFiles: 任务文件列表
+        :type TaskFiles: list of str
         """
         self.Code = None
         self.TaskType = None
         self.StructureResult = None
         self.SubTaskId = None
+        self.TaskFiles = None
 
 
     def _deserialize(self, params):
@@ -1324,6 +1327,7 @@ class StructureResultObject(AbstractModel):
         self.TaskType = params.get("TaskType")
         self.StructureResult = params.get("StructureResult")
         self.SubTaskId = params.get("SubTaskId")
+        self.TaskFiles = params.get("TaskFiles")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
