@@ -554,6 +554,51 @@ class DescribeMachineUnderwriteResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeQualityScoreRequest(AbstractModel):
+    """DescribeQualityScore请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param File: 文件二进制数据
+        :type File: binary
+        """
+        self.File = None
+
+
+    def _deserialize(self, params):
+        self.File = params.get("File")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeQualityScoreResponse(AbstractModel):
+    """DescribeQualityScore返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param QualityScore: 质量分
+        :type QualityScore: float
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.QualityScore = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.QualityScore = params.get("QualityScore")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeReportClassifyRequest(AbstractModel):
     """DescribeReportClassify请求参数结构体
 
@@ -1382,16 +1427,51 @@ class UnderwriteItem(AbstractModel):
         :type Result: str
         :param Value: 风险值或者说明
         :type Value: str
+        :param Range: 参考范围
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Range: str
+        :param ReportDate: 报告时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReportDate: list of str
+        :param FileType: 文件类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileType: str
+        :param InspectProject: 检查项目
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InspectProject: str
+        :param Unit: 单位
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Unit: str
+        :param OriginName: 原名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OriginName: str
+        :param YinYang: 阴阳性
+注意：此字段可能返回 null，表示取不到有效值。
+        :type YinYang: str
         """
         self.Name = None
         self.Result = None
         self.Value = None
+        self.Range = None
+        self.ReportDate = None
+        self.FileType = None
+        self.InspectProject = None
+        self.Unit = None
+        self.OriginName = None
+        self.YinYang = None
 
 
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Result = params.get("Result")
         self.Value = params.get("Value")
+        self.Range = params.get("Range")
+        self.ReportDate = params.get("ReportDate")
+        self.FileType = params.get("FileType")
+        self.InspectProject = params.get("InspectProject")
+        self.Unit = params.get("Unit")
+        self.OriginName = params.get("OriginName")
+        self.YinYang = params.get("YinYang")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
