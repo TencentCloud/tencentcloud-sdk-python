@@ -503,7 +503,7 @@ class ClsClient(AbstractClient):
 
 
     def DeleteIndex(self, request):
-        """本接口用于日志主题的索引配置
+        """本接口用于删除日志主题的索引配置，删除索引配置后将无法检索和查询采集到的日志。
 
         :param request: Request instance for DeleteIndex.
         :type request: :class:`tencentcloud.cls.v20201016.models.DeleteIndexRequest`

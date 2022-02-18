@@ -1142,6 +1142,12 @@ class InstanceInfo(AbstractModel):
         :param HealthStatus: 集群健康状态 -1 未知；0 Green; 1 Yellow; 2 Red
 注意：此字段可能返回 null，表示取不到有效值。
         :type HealthStatus: int
+        :param EsPrivateUrl: https集群内网url
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EsPrivateUrl: str
+        :param EsPrivateDomain: https集群内网域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EsPrivateDomain: str
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -1215,6 +1221,8 @@ class InstanceInfo(AbstractModel):
         self.FrozenDiskType = None
         self.FrozenDiskSize = None
         self.HealthStatus = None
+        self.EsPrivateUrl = None
+        self.EsPrivateDomain = None
 
 
     def _deserialize(self, params):
@@ -1319,6 +1327,8 @@ class InstanceInfo(AbstractModel):
         self.FrozenDiskType = params.get("FrozenDiskType")
         self.FrozenDiskSize = params.get("FrozenDiskSize")
         self.HealthStatus = params.get("HealthStatus")
+        self.EsPrivateUrl = params.get("EsPrivateUrl")
+        self.EsPrivateDomain = params.get("EsPrivateDomain")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -503,10 +503,16 @@ class ServiceGovernanceInfo(AbstractModel):
         :type BoundK8SInfos: list of BoundK8SInfo
         :param VpcInfos: 服务治理引擎绑定的网络信息
         :type VpcInfos: list of VpcInfo
+        :param AuthOpen: 当前实例鉴权是否开启
+        :type AuthOpen: bool
+        :param Features: 该实例支持的功能，鉴权就是 Auth
+        :type Features: list of str
         """
         self.EngineRegion = None
         self.BoundK8SInfos = None
         self.VpcInfos = None
+        self.AuthOpen = None
+        self.Features = None
 
 
     def _deserialize(self, params):
@@ -523,6 +529,8 @@ class ServiceGovernanceInfo(AbstractModel):
                 obj = VpcInfo()
                 obj._deserialize(item)
                 self.VpcInfos.append(obj)
+        self.AuthOpen = params.get("AuthOpen")
+        self.Features = params.get("Features")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

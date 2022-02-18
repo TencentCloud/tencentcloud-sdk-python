@@ -26,6 +26,34 @@ class CynosdbClient(AbstractClient):
     _service = 'cynosdb'
 
 
+    def ActivateInstance(self, request):
+        """本接口(ActivateInstance)用于恢复已隔离的实例访问。
+
+        :param request: Request instance for ActivateInstance.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.ActivateInstanceRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ActivateInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ActivateInstance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ActivateInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def AddInstances(self, request):
         """本接口（AddInstances）用于集群添加实例
 
@@ -54,6 +82,34 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def AssociateSecurityGroups(self, request):
+        """安全组批量绑定云资源
+
+        :param request: Request instance for AssociateSecurityGroups.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.AssociateSecurityGroupsRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.AssociateSecurityGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AssociateSecurityGroups", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AssociateSecurityGroupsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateClusters(self, request):
         """创建集群
 
@@ -68,6 +124,34 @@ class CynosdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateClustersResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAccountAllGrantPrivileges(self, request):
+        """账号所有权限
+
+        :param request: Request instance for DescribeAccountAllGrantPrivileges.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeAccountAllGrantPrivilegesRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeAccountAllGrantPrivilegesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAccountAllGrantPrivileges", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAccountAllGrantPrivilegesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -208,6 +292,34 @@ class CynosdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeClusterInstanceGrpsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeClusterParamLogs(self, request):
+        """本接口（DescribeClusterParamLogs）查询参数修改日志
+
+        :param request: Request instance for DescribeClusterParamLogs.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeClusterParamLogsRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeClusterParamLogsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeClusterParamLogs", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeClusterParamLogsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -502,6 +614,62 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DisassociateSecurityGroups(self, request):
+        """安全组批量解绑云资源
+
+        :param request: Request instance for DisassociateSecurityGroups.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DisassociateSecurityGroupsRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DisassociateSecurityGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DisassociateSecurityGroups", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DisassociateSecurityGroupsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def GrantAccountPrivileges(self, request):
+        """批量授权账号权限
+
+        :param request: Request instance for GrantAccountPrivileges.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.GrantAccountPrivilegesRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.GrantAccountPrivilegesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GrantAccountPrivileges", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GrantAccountPrivilegesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def IsolateCluster(self, request):
         """隔离集群
 
@@ -544,6 +712,34 @@ class CynosdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.IsolateInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyAccountParams(self, request):
+        """修改账号参数
+
+        :param request: Request instance for ModifyAccountParams.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.ModifyAccountParamsRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ModifyAccountParamsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyAccountParams", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyAccountParamsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -712,6 +908,118 @@ class CynosdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.OfflineInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def PauseServerless(self, request):
+        """暂停serverless集群
+
+        :param request: Request instance for PauseServerless.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.PauseServerlessRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.PauseServerlessResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("PauseServerless", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.PauseServerlessResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ResumeServerless(self, request):
+        """恢复serverless集群
+
+        :param request: Request instance for ResumeServerless.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.ResumeServerlessRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ResumeServerlessResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ResumeServerless", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ResumeServerlessResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def RevokeAccountPrivileges(self, request):
+        """批量回收账号权限
+
+        :param request: Request instance for RevokeAccountPrivileges.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.RevokeAccountPrivilegesRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.RevokeAccountPrivilegesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("RevokeAccountPrivileges", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.RevokeAccountPrivilegesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def RollBackCluster(self, request):
+        """本接口（RollBackCluster）用于回档集群
+
+        :param request: Request instance for RollBackCluster.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.RollBackClusterRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.RollBackClusterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("RollBackCluster", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.RollBackClusterResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
