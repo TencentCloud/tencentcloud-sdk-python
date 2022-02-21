@@ -26,6 +26,9 @@ FAILEDOPERATION_CREATETRIGGER = 'FailedOperation.CreateTrigger'
 # 删除连接器失败，请检查资源状态。
 FAILEDOPERATION_DELETECONNECTION = 'FailedOperation.DeleteConnection'
 
+# 规则与事件不匹配，请修正后再试。
+FAILEDOPERATION_ERRORFILTER = 'FailedOperation.ErrorFilter'
+
 # ServiceError操作失败，请检查资源信息。
 FAILEDOPERATION_SERVICEERROR = 'FailedOperation.ServiceError'
 
@@ -85,6 +88,9 @@ INVALIDPARAMETERVALUE_FILTERS = 'InvalidParameterValue.Filters'
 
 # InvalidApiRequestConfig取值与规范不符，请修正后再试。
 INVALIDPARAMETERVALUE_INVALIDAPIREQUESTCONFIG = 'InvalidParameterValue.InvalidApiRequestConfig'
+
+# 事件格式非法，请修正后再试。
+INVALIDPARAMETERVALUE_INVALIDEVENT = 'InvalidParameterValue.InvalidEvent'
 
 # Limit取值与规范不符，请修正后再试。
 INVALIDPARAMETERVALUE_LIMIT = 'InvalidParameterValue.Limit'
@@ -178,6 +184,9 @@ RESOURCENOTFOUND_CONNECTION = 'ResourceNotFound.Connection'
 
 # 未找到指定事件集，请创建后再试。
 RESOURCENOTFOUND_EVENTBUS = 'ResourceNotFound.EventBus'
+
+# 事件集不存在或未配置规则，请检查后再试。
+RESOURCENOTFOUND_EVENTBUSNOTFOUND = 'ResourceNotFound.EventBusNotFound'
 
 # 未找到指定的Function，请创建后再试。
 RESOURCENOTFOUND_FUNCTION = 'ResourceNotFound.Function'

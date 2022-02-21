@@ -138,6 +138,34 @@ class CkafkaClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateConsumer(self, request):
+        """创建消费者
+
+        :param request: Request instance for CreateConsumer.
+        :type request: :class:`tencentcloud.ckafka.v20190819.models.CreateConsumerRequest`
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.CreateConsumerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateConsumer", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateConsumerResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateInstancePre(self, request):
         """创建实例(预付费包年包月)
 
@@ -180,6 +208,34 @@ class CkafkaClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreatePartitionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateRoute(self, request):
+        """添加实例路由
+
+        :param request: Request instance for CreateRoute.
+        :type request: :class:`tencentcloud.ckafka.v20190819.models.CreateRouteRequest`
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.CreateRouteResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateRoute", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateRouteResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

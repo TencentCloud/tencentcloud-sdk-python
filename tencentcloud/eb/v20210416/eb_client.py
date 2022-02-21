@@ -27,7 +27,7 @@ class EbClient(AbstractClient):
 
 
     def CheckRule(self, request):
-        """规则检验
+        """检验规则
 
         :param request: Request instance for CheckRule.
         :type request: :class:`tencentcloud.eb.v20210416.models.CheckRuleRequest`

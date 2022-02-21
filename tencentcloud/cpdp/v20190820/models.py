@@ -2123,6 +2123,147 @@ class BindAcctResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class BindOpenBankExternalSubMerchantBankAccountRequest(AbstractModel):
+    """BindOpenBankExternalSubMerchantBankAccount请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ChannelMerchantId: 渠道商户ID。
+        :type ChannelMerchantId: str
+        :param ChannelSubMerchantId: 渠道子商户ID。
+        :type ChannelSubMerchantId: str
+        :param ChannelName: 渠道名称。
+__TENPAY__: 商企付
+__WECHAT__: 微信支付
+__ALIPAY__: 支付宝
+        :type ChannelName: str
+        :param PaymentMethod: 支付方式。
+__EBANK_PAYMENT__: ebank支付
+__OPENBANK_PAYMENT__: openbank支付
+        :type PaymentMethod: str
+        :param ExternalSubMerchantBindBankAccountData: 第三方渠道子商户收款方银行卡信息, 为JSON格式字符串。详情见附录-复杂类型。
+        :type ExternalSubMerchantBindBankAccountData: str
+        :param OutApplyId: 外部申请编号。
+        :type OutApplyId: str
+        :param NotifyUrl: 通知地址。
+        :type NotifyUrl: str
+        :param Environment: 环境类型。
+__release__:生产环境
+__sandbox__:沙箱环境
+_不填默认为生产环境_
+        :type Environment: str
+        """
+        self.ChannelMerchantId = None
+        self.ChannelSubMerchantId = None
+        self.ChannelName = None
+        self.PaymentMethod = None
+        self.ExternalSubMerchantBindBankAccountData = None
+        self.OutApplyId = None
+        self.NotifyUrl = None
+        self.Environment = None
+
+
+    def _deserialize(self, params):
+        self.ChannelMerchantId = params.get("ChannelMerchantId")
+        self.ChannelSubMerchantId = params.get("ChannelSubMerchantId")
+        self.ChannelName = params.get("ChannelName")
+        self.PaymentMethod = params.get("PaymentMethod")
+        self.ExternalSubMerchantBindBankAccountData = params.get("ExternalSubMerchantBindBankAccountData")
+        self.OutApplyId = params.get("OutApplyId")
+        self.NotifyUrl = params.get("NotifyUrl")
+        self.Environment = params.get("Environment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BindOpenBankExternalSubMerchantBankAccountResponse(AbstractModel):
+    """BindOpenBankExternalSubMerchantBankAccount返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrCode: 错误码。
+__SUCCESS__: 成功
+__其他__: 见附录-错误码表
+        :type ErrCode: str
+        :param ErrMessage: 错误消息。
+        :type ErrMessage: str
+        :param Result: 返回结果。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.cpdp.v20190820.models.BindOpenBankExternalSubMerchantBankAccountResult`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrCode = None
+        self.ErrMessage = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrCode = params.get("ErrCode")
+        self.ErrMessage = params.get("ErrMessage")
+        if params.get("Result") is not None:
+            self.Result = BindOpenBankExternalSubMerchantBankAccountResult()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class BindOpenBankExternalSubMerchantBankAccountResult(AbstractModel):
+    """第三方子商户银行卡绑定返回结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ChannelApplyId: 渠道申请编号。
+        :type ChannelApplyId: str
+        :param BindStatus: 绑定状态。
+__SUCCESS__: 绑定成功
+__FAILED__: 绑定失败
+__PROCESSING__: 绑定中。
+注意：若返回绑定中，需要再次调用绑定结果查询接口,查询结果。
+        :type BindStatus: str
+        :param BindMessage: 绑定返回描述, 例如失败原因等。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BindMessage: str
+        :param ExternalSubMerchantBankAccountReturnData: 渠道子商户银行账户信息, 为JSON格式字符串（绑定成功状态下返回）。详情见附录-复杂类型。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExternalSubMerchantBankAccountReturnData: str
+        :param BindSerialNo: 绑卡序列号。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BindSerialNo: str
+        """
+        self.ChannelApplyId = None
+        self.BindStatus = None
+        self.BindMessage = None
+        self.ExternalSubMerchantBankAccountReturnData = None
+        self.BindSerialNo = None
+
+
+    def _deserialize(self, params):
+        self.ChannelApplyId = params.get("ChannelApplyId")
+        self.BindStatus = params.get("BindStatus")
+        self.BindMessage = params.get("BindMessage")
+        self.ExternalSubMerchantBankAccountReturnData = params.get("ExternalSubMerchantBankAccountReturnData")
+        self.BindSerialNo = params.get("BindSerialNo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BindRelateAccReUnionPayRequest(AbstractModel):
     """BindRelateAccReUnionPay请求参数结构体
 
@@ -2755,6 +2896,106 @@ class ClearItem(AbstractModel):
         self.ClearingStatus = params.get("ClearingStatus")
         self.ClearingReturnMsg = params.get("ClearingReturnMsg")
         self.TotalAmt = params.get("TotalAmt")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloseOpenBankPaymentOrderRequest(AbstractModel):
+    """CloseOpenBankPaymentOrder请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ChannelMerchantId: 渠道商户ID，云企付平台下发给外部接入平台。
+        :type ChannelMerchantId: str
+        :param OutOrderId: 外部商户订单号，与ChannelOrderId不能同时为空
+        :type OutOrderId: str
+        :param ChannelOrderId: 云企付平台订单号，与OutOrderId不能同时为空
+        :type ChannelOrderId: str
+        :param Environment: 接入环境。沙箱环境填 sandbox。缺省默认调用生产环境
+        :type Environment: str
+        """
+        self.ChannelMerchantId = None
+        self.OutOrderId = None
+        self.ChannelOrderId = None
+        self.Environment = None
+
+
+    def _deserialize(self, params):
+        self.ChannelMerchantId = params.get("ChannelMerchantId")
+        self.OutOrderId = params.get("OutOrderId")
+        self.ChannelOrderId = params.get("ChannelOrderId")
+        self.Environment = params.get("Environment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloseOpenBankPaymentOrderResponse(AbstractModel):
+    """CloseOpenBankPaymentOrder返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrCode: 业务系统返回码，SUCCESS表示成功，其他表示失败。
+        :type ErrCode: str
+        :param ErrMessage: 业务系统返回消息
+        :type ErrMessage: str
+        :param Result: 关单响应对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.cpdp.v20190820.models.CloseOpenBankPaymentOrderResult`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrCode = None
+        self.ErrMessage = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrCode = params.get("ErrCode")
+        self.ErrMessage = params.get("ErrMessage")
+        if params.get("Result") is not None:
+            self.Result = CloseOpenBankPaymentOrderResult()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class CloseOpenBankPaymentOrderResult(AbstractModel):
+    """云企付-关单响应
+
+    """
+
+    def __init__(self):
+        r"""
+        :param OutOrderId: 外部商户订单号
+        :type OutOrderId: str
+        :param ChannelOrderId: 云企付平台订单号
+        :type ChannelOrderId: str
+        :param OrderStatus: 订单状态。关单成功CLOSED
+        :type OrderStatus: str
+        """
+        self.OutOrderId = None
+        self.ChannelOrderId = None
+        self.OrderStatus = None
+
+
+    def _deserialize(self, params):
+        self.OutOrderId = params.get("OutOrderId")
+        self.ChannelOrderId = params.get("ChannelOrderId")
+        self.OrderStatus = params.get("OrderStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4914,6 +5155,479 @@ class CreateMerchantResultData(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class CreateOpenBankExternalSubMerchantRegistrationRequest(AbstractModel):
+    """CreateOpenBankExternalSubMerchantRegistration请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param OutRegistrationNo: 外部进件序列号。
+        :type OutRegistrationNo: str
+        :param ChannelMerchantId: 渠道商户ID。
+        :type ChannelMerchantId: str
+        :param OutSubMerchantId: 外部子商户ID,平台侧商户唯一ID。
+        :type OutSubMerchantId: str
+        :param ChannelName: 渠道名称。
+__TENPAY__: 商企付
+__WECHAT__: 微信支付
+__ALIPAY__: 支付宝
+        :type ChannelName: str
+        :param PaymentMethod: 支付方式。
+__EBANK_PAYMENT__: ebank支付
+__OPENBANK_PAYMENT__: openbank支付
+        :type PaymentMethod: str
+        :param BusinessLicenseNumber: 社会信用代码。
+        :type BusinessLicenseNumber: str
+        :param OutSubMerchantName: 外部子商户名称。
+        :type OutSubMerchantName: str
+        :param LegalName: 法人姓名。
+        :type LegalName: str
+        :param OutSubMerchantShortName: 外部子商户简称。
+        :type OutSubMerchantShortName: str
+        :param OutSubMerchantDescription: 外部子商户描述。
+        :type OutSubMerchantDescription: str
+        :param ExternalSubMerchantRegistrationData: 第三方子商户进件信息，为JSON格式字符串。详情见附录-复杂类型。
+        :type ExternalSubMerchantRegistrationData: str
+        :param NotifyUrl: 通知地址。
+        :type NotifyUrl: str
+        :param Environment: 环境类型。
+__release__:生产环境
+__sandbox__:沙箱环境
+_不填默认为生产环境_
+        :type Environment: str
+        """
+        self.OutRegistrationNo = None
+        self.ChannelMerchantId = None
+        self.OutSubMerchantId = None
+        self.ChannelName = None
+        self.PaymentMethod = None
+        self.BusinessLicenseNumber = None
+        self.OutSubMerchantName = None
+        self.LegalName = None
+        self.OutSubMerchantShortName = None
+        self.OutSubMerchantDescription = None
+        self.ExternalSubMerchantRegistrationData = None
+        self.NotifyUrl = None
+        self.Environment = None
+
+
+    def _deserialize(self, params):
+        self.OutRegistrationNo = params.get("OutRegistrationNo")
+        self.ChannelMerchantId = params.get("ChannelMerchantId")
+        self.OutSubMerchantId = params.get("OutSubMerchantId")
+        self.ChannelName = params.get("ChannelName")
+        self.PaymentMethod = params.get("PaymentMethod")
+        self.BusinessLicenseNumber = params.get("BusinessLicenseNumber")
+        self.OutSubMerchantName = params.get("OutSubMerchantName")
+        self.LegalName = params.get("LegalName")
+        self.OutSubMerchantShortName = params.get("OutSubMerchantShortName")
+        self.OutSubMerchantDescription = params.get("OutSubMerchantDescription")
+        self.ExternalSubMerchantRegistrationData = params.get("ExternalSubMerchantRegistrationData")
+        self.NotifyUrl = params.get("NotifyUrl")
+        self.Environment = params.get("Environment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateOpenBankExternalSubMerchantRegistrationResponse(AbstractModel):
+    """CreateOpenBankExternalSubMerchantRegistration返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrCode: 错误码。
+__SUCCESS__: 成功
+__其他__: 见附录-错误码表
+        :type ErrCode: str
+        :param ErrMessage: 错误消息。
+        :type ErrMessage: str
+        :param Result: 返回结果。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.cpdp.v20190820.models.CreateOpenBankExternalSubMerchantRegistrationResult`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrCode = None
+        self.ErrMessage = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrCode = params.get("ErrCode")
+        self.ErrMessage = params.get("ErrMessage")
+        if params.get("Result") is not None:
+            self.Result = CreateOpenBankExternalSubMerchantRegistrationResult()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class CreateOpenBankExternalSubMerchantRegistrationResult(AbstractModel):
+    """子商户进件返回结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RegistrationStatus: 进件状态。
+__SUCCESS__: 进件成功
+__FAILED__: 进件失败
+__PROCESSING__: 进件中
+注意：若返回进件中，需要再次调用进件结果查询接口，查询结果。
+        :type RegistrationStatus: str
+        :param RegistrationMessage: 进件返回描述, 例如失败原因等。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegistrationMessage: str
+        :param ChannelRegistrationNo: 渠道进件序列号。
+        :type ChannelRegistrationNo: str
+        :param ChannelSubMerchantId: 渠道子商户ID。
+        :type ChannelSubMerchantId: str
+        :param ExternalReturnData: 第三方渠道返回信息, 为JSON格式字符串。详情见附录-复杂类型。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExternalReturnData: str
+        """
+        self.RegistrationStatus = None
+        self.RegistrationMessage = None
+        self.ChannelRegistrationNo = None
+        self.ChannelSubMerchantId = None
+        self.ExternalReturnData = None
+
+
+    def _deserialize(self, params):
+        self.RegistrationStatus = params.get("RegistrationStatus")
+        self.RegistrationMessage = params.get("RegistrationMessage")
+        self.ChannelRegistrationNo = params.get("ChannelRegistrationNo")
+        self.ChannelSubMerchantId = params.get("ChannelSubMerchantId")
+        self.ExternalReturnData = params.get("ExternalReturnData")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateOpenBankMerchantRequest(AbstractModel):
+    """CreateOpenBankMerchant请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param OutMerchantId: 外部商户ID。
+        :type OutMerchantId: str
+        :param ChannelName: 渠道名称。
+__TENPAY__: 商企付
+__WECHAT__: 微信支付
+__ALIPAY__: 支付宝
+        :type ChannelName: str
+        :param OutMerchantName: 外部商户名称。
+        :type OutMerchantName: str
+        :param ExternalMerchantInfo: 第三方渠道商户信息。详情见附录-复杂类型。
+        :type ExternalMerchantInfo: str
+        :param OutMerchantShortName: 外部商户简称。
+        :type OutMerchantShortName: str
+        :param OutMerchantDescription: 外部商户描述
+        :type OutMerchantDescription: str
+        :param Environment: 环境类型。
+__release__:生产环境
+__sandbox__:沙箱环境
+_不填默认为生产环境_
+        :type Environment: str
+        """
+        self.OutMerchantId = None
+        self.ChannelName = None
+        self.OutMerchantName = None
+        self.ExternalMerchantInfo = None
+        self.OutMerchantShortName = None
+        self.OutMerchantDescription = None
+        self.Environment = None
+
+
+    def _deserialize(self, params):
+        self.OutMerchantId = params.get("OutMerchantId")
+        self.ChannelName = params.get("ChannelName")
+        self.OutMerchantName = params.get("OutMerchantName")
+        self.ExternalMerchantInfo = params.get("ExternalMerchantInfo")
+        self.OutMerchantShortName = params.get("OutMerchantShortName")
+        self.OutMerchantDescription = params.get("OutMerchantDescription")
+        self.Environment = params.get("Environment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateOpenBankMerchantResponse(AbstractModel):
+    """CreateOpenBankMerchant返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrCode: 错误码。
+__SUCCESS__: 成功
+__其他__: 见附录-错误码表
+        :type ErrCode: str
+        :param ErrMessage: 错误消息。
+        :type ErrMessage: str
+        :param Result: 返回结果。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.cpdp.v20190820.models.CreateOpenBankMerchantResult`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrCode = None
+        self.ErrMessage = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrCode = params.get("ErrCode")
+        self.ErrMessage = params.get("ErrMessage")
+        if params.get("Result") is not None:
+            self.Result = CreateOpenBankMerchantResult()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class CreateOpenBankMerchantResult(AbstractModel):
+    """创建渠道商户返回结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ChannelMerchantId: 渠道商户ID。
+        :type ChannelMerchantId: str
+        """
+        self.ChannelMerchantId = None
+
+
+    def _deserialize(self, params):
+        self.ChannelMerchantId = params.get("ChannelMerchantId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateOpenBankOrderPaymentResult(AbstractModel):
+    """云企付-支付下单返回响应
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ChannelOrderId: 云企付平台订单号。
+        :type ChannelOrderId: str
+        :param ThirdPayOrderId: 第三方支付平台返回支付订单号。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ThirdPayOrderId: str
+        :param RedirectInfo: 小程序跳转参数渠道为TENPAY，付款方式为EBANK_PAYMENT时必选。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RedirectInfo: :class:`tencentcloud.cpdp.v20190820.models.OpenBankRedirectInfo`
+        :param OutOrderId: 外部商户订单号，只能是数字、大小写字母，且在同一个接入平台下唯一。
+        :type OutOrderId: str
+        """
+        self.ChannelOrderId = None
+        self.ThirdPayOrderId = None
+        self.RedirectInfo = None
+        self.OutOrderId = None
+
+
+    def _deserialize(self, params):
+        self.ChannelOrderId = params.get("ChannelOrderId")
+        self.ThirdPayOrderId = params.get("ThirdPayOrderId")
+        if params.get("RedirectInfo") is not None:
+            self.RedirectInfo = OpenBankRedirectInfo()
+            self.RedirectInfo._deserialize(params.get("RedirectInfo"))
+        self.OutOrderId = params.get("OutOrderId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateOpenBankPaymentOrderRequest(AbstractModel):
+    """CreateOpenBankPaymentOrder请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ChannelMerchantId: 云企付渠道商户号。外部接入平台入驻云企付平台后下发。
+        :type ChannelMerchantId: str
+        :param ChannelName: 渠道名称。
+__TENPAY__: 商企付
+__WECHAT__: 微信支付
+__ALIPAY__: 支付宝
+        :type ChannelName: str
+        :param PaymentMethod: 付款方式。如
+__EBANK_PAYMENT__:B2B EBank付款
+__OPENBANK_PAYMENT__:B2C  openbank付款
+        :type PaymentMethod: str
+        :param PaymentMode: 付款模式。默认直接支付，如
+__DIRECT__:直接支付
+__FREEZE__:担保支付
+        :type PaymentMode: str
+        :param OutOrderId: 外部订单号,只能是数字、大小写字母，且在同一个接入平台下唯一，限定长度40位。
+        :type OutOrderId: str
+        :param TotalAmount: 付款金额，单位分。
+        :type TotalAmount: int
+        :param Currency: 固定值CNY。
+        :type Currency: str
+        :param PayerInfo: 付款方信息。
+        :type PayerInfo: :class:`tencentcloud.cpdp.v20190820.models.OpenBankPayerInfo`
+        :param PayeeInfo: 收款方信息。
+        :type PayeeInfo: :class:`tencentcloud.cpdp.v20190820.models.OpenBankPayeeInfo`
+        :param NotifyUrl: 通知地址，如www.test.com。
+        :type NotifyUrl: str
+        :param ExpireTime: 订单过期时间，yyyy-MM-dd HH:mm:ss格式。
+        :type ExpireTime: str
+        :param FrontUrl: 前端成功回调URL。条件可选
+当付款方式PaymentMethod为EBANK_PAYMENT时必填
+        :type FrontUrl: str
+        :param RefreshUrl: 前端刷新 URL。条件可选
+当付款方式PaymentMethod为EBANK_PAYMENT时必填
+        :type RefreshUrl: str
+        :param SceneInfo: 设备信息，条件可选。
+        :type SceneInfo: :class:`tencentcloud.cpdp.v20190820.models.OpenBankSceneInfo`
+        :param GoodsInfo: 商品信息，条件可选。
+        :type GoodsInfo: :class:`tencentcloud.cpdp.v20190820.models.OpenBankGoodsInfo`
+        :param Attachment: 附加信息，查询时原样返回。
+        :type Attachment: str
+        :param ProfitShareFlag: 若不上传，即使用默认值无需分润
+__NO_NEED_SHARE__：无需分润；
+__SHARE_BY_INFO__：分润时指定金额，此时如果分润信息 ProfitShareInfo为空，只冻结，不分账给其他商户；需要调用解冻接口。
+__SHARE_BY_API__：后续调用分润接口决定分润金额
+        :type ProfitShareFlag: str
+        :param ProfitShareInfoList: 分润信息，配合ProfitShareFlag使用。
+        :type ProfitShareInfoList: list of OpenBankProfitShareInfo
+        :param Remark: 备注信息。
+        :type Remark: str
+        :param Environment: 环境类型
+__release__:生产环境
+__sandbox__:沙箱环境
+缺省默认为生产环境
+        :type Environment: str
+        """
+        self.ChannelMerchantId = None
+        self.ChannelName = None
+        self.PaymentMethod = None
+        self.PaymentMode = None
+        self.OutOrderId = None
+        self.TotalAmount = None
+        self.Currency = None
+        self.PayerInfo = None
+        self.PayeeInfo = None
+        self.NotifyUrl = None
+        self.ExpireTime = None
+        self.FrontUrl = None
+        self.RefreshUrl = None
+        self.SceneInfo = None
+        self.GoodsInfo = None
+        self.Attachment = None
+        self.ProfitShareFlag = None
+        self.ProfitShareInfoList = None
+        self.Remark = None
+        self.Environment = None
+
+
+    def _deserialize(self, params):
+        self.ChannelMerchantId = params.get("ChannelMerchantId")
+        self.ChannelName = params.get("ChannelName")
+        self.PaymentMethod = params.get("PaymentMethod")
+        self.PaymentMode = params.get("PaymentMode")
+        self.OutOrderId = params.get("OutOrderId")
+        self.TotalAmount = params.get("TotalAmount")
+        self.Currency = params.get("Currency")
+        if params.get("PayerInfo") is not None:
+            self.PayerInfo = OpenBankPayerInfo()
+            self.PayerInfo._deserialize(params.get("PayerInfo"))
+        if params.get("PayeeInfo") is not None:
+            self.PayeeInfo = OpenBankPayeeInfo()
+            self.PayeeInfo._deserialize(params.get("PayeeInfo"))
+        self.NotifyUrl = params.get("NotifyUrl")
+        self.ExpireTime = params.get("ExpireTime")
+        self.FrontUrl = params.get("FrontUrl")
+        self.RefreshUrl = params.get("RefreshUrl")
+        if params.get("SceneInfo") is not None:
+            self.SceneInfo = OpenBankSceneInfo()
+            self.SceneInfo._deserialize(params.get("SceneInfo"))
+        if params.get("GoodsInfo") is not None:
+            self.GoodsInfo = OpenBankGoodsInfo()
+            self.GoodsInfo._deserialize(params.get("GoodsInfo"))
+        self.Attachment = params.get("Attachment")
+        self.ProfitShareFlag = params.get("ProfitShareFlag")
+        if params.get("ProfitShareInfoList") is not None:
+            self.ProfitShareInfoList = []
+            for item in params.get("ProfitShareInfoList"):
+                obj = OpenBankProfitShareInfo()
+                obj._deserialize(item)
+                self.ProfitShareInfoList.append(obj)
+        self.Remark = params.get("Remark")
+        self.Environment = params.get("Environment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateOpenBankPaymentOrderResponse(AbstractModel):
+    """CreateOpenBankPaymentOrder返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrCode: 业务系统返回码，SUCCESS表示成功，其他表示失败。
+        :type ErrCode: str
+        :param ErrMessage: 业务系统返回消息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrMessage: str
+        :param Result: 统一下单响应对象。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.cpdp.v20190820.models.CreateOpenBankOrderPaymentResult`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrCode = None
+        self.ErrMessage = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrCode = params.get("ErrCode")
+        self.ErrMessage = params.get("ErrMessage")
+        if params.get("Result") is not None:
+            self.Result = CreateOpenBankOrderPaymentResult()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
 
 
 class CreateOrderRequest(AbstractModel):
@@ -8209,6 +8923,225 @@ class MultiApplyOrder(AbstractModel):
                 obj = MultiApplyDetail()
                 obj._deserialize(item)
                 self.Details.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OpenBankGoodsInfo(AbstractModel):
+    """云企付-商品信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param GoodsName: 商品名称，默认值“商品支付”
+        :type GoodsName: str
+        :param GoodsDetail: 商品详细描述（商品列表）
+        :type GoodsDetail: str
+        :param GoodsDescription: 商品简单描述。需传入应用市场上的 APP 名字-实际商品名称，例如：天天爱消除-游戏充值
+        :type GoodsDescription: str
+        """
+        self.GoodsName = None
+        self.GoodsDetail = None
+        self.GoodsDescription = None
+
+
+    def _deserialize(self, params):
+        self.GoodsName = params.get("GoodsName")
+        self.GoodsDetail = params.get("GoodsDetail")
+        self.GoodsDescription = params.get("GoodsDescription")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OpenBankPayeeInfo(AbstractModel):
+    """云企付-收款人信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PayeeId: 收款方唯一标识。当渠道为TENPAY，付款方式为EBANK_PAYMENT，必填，上送收款方入驻云企付商户ID；付款方式为OPENBANK_PAYMENT时，非必填，输入外部收款方的标识ID
+        :type PayeeId: str
+        :param PayeeName: 收款方名称。当渠道为TENPAY，付款方式为EBANK_PAYMENT时，上送收款方入驻云企付的商户名称；
+渠道为TENPAY，付款方式为OPENBANK_PAYMENT时必选，上送收款方账户名称
+        :type PayeeName: str
+        :param BankAccountNumber: 银行账号。渠道为TENPAY，付款方式为OPENBANK_PAYMENT时必选
+        :type BankAccountNumber: str
+        :param BankBranchName: 支行名称。
+        :type BankBranchName: str
+        :param BankBranchId: 联行号。渠道为TENPAY，付款方式为OPENBANK_PAYMENT时必选
+        :type BankBranchId: str
+        """
+        self.PayeeId = None
+        self.PayeeName = None
+        self.BankAccountNumber = None
+        self.BankBranchName = None
+        self.BankBranchId = None
+
+
+    def _deserialize(self, params):
+        self.PayeeId = params.get("PayeeId")
+        self.PayeeName = params.get("PayeeName")
+        self.BankAccountNumber = params.get("BankAccountNumber")
+        self.BankBranchName = params.get("BankBranchName")
+        self.BankBranchId = params.get("BankBranchId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OpenBankPayerInfo(AbstractModel):
+    """云企付-付款人信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PayerId: 付款方唯一标识。当TENPAY时，必填上送
+付款方入驻云企付商户ID。
+        :type PayerId: str
+        :param PayerName: 付款方名称。当TENPAY上送付款方入驻云企付的商户名称。
+        :type PayerName: str
+        :param BindSerialNo: 付款方付款账户标识，当付款方式为OPENBANK_PAYMENT时，必输表示企业账户ID。
+        :type BindSerialNo: str
+        """
+        self.PayerId = None
+        self.PayerName = None
+        self.BindSerialNo = None
+
+
+    def _deserialize(self, params):
+        self.PayerId = params.get("PayerId")
+        self.PayerName = params.get("PayerName")
+        self.BindSerialNo = params.get("BindSerialNo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OpenBankProfitShareInfo(AbstractModel):
+    """云企付-分润信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RecvId: 分润接收方，渠道商户号ID
+        :type RecvId: str
+        :param ProfitShareFee: 分润金额，单位分
+        :type ProfitShareFee: int
+        """
+        self.RecvId = None
+        self.ProfitShareFee = None
+
+
+    def _deserialize(self, params):
+        self.RecvId = params.get("RecvId")
+        self.ProfitShareFee = params.get("ProfitShareFee")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OpenBankRedirectInfo(AbstractModel):
+    """云企付-跳转参数，用于小程序前端跳转
+
+    """
+
+    def __init__(self):
+        r"""
+        :param QRCodeUrl: 生成二维码，引导用户扫码
+        :type QRCodeUrl: str
+        :param QRCodeKey: 二维码凭证
+        :type QRCodeKey: str
+        :param Url: 跳转 URL,用于客户端跳转，订单未支付时返回该参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Url: str
+        :param ExpireTime: 跳转凭证过期时间,yyyy-MM-dd HH:mm:ss
+        :type ExpireTime: str
+        :param MpAppId: 小程序 appid
+        :type MpAppId: str
+        :param MpPath: 小程序路径
+        :type MpPath: str
+        :param MpUserName: 小程序原始 id
+        :type MpUserName: str
+        """
+        self.QRCodeUrl = None
+        self.QRCodeKey = None
+        self.Url = None
+        self.ExpireTime = None
+        self.MpAppId = None
+        self.MpPath = None
+        self.MpUserName = None
+
+
+    def _deserialize(self, params):
+        self.QRCodeUrl = params.get("QRCodeUrl")
+        self.QRCodeKey = params.get("QRCodeKey")
+        self.Url = params.get("Url")
+        self.ExpireTime = params.get("ExpireTime")
+        self.MpAppId = params.get("MpAppId")
+        self.MpPath = params.get("MpPath")
+        self.MpUserName = params.get("MpUserName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OpenBankSceneInfo(AbstractModel):
+    """云企付-设备信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PayerClientIp: 用户端实际 ip，示例值：14.17.22.32
+        :type PayerClientIp: str
+        :param PayerUa: 浏览器 User-Agent
+        :type PayerUa: str
+        :param OrderTime: 用户下单时间，若不上送，服务端默认当前时间
+        :type OrderTime: str
+        :param DeviceId: 终端设备号（门店号或收银设备 ID），示例值：POS1:1
+        :type DeviceId: str
+        """
+        self.PayerClientIp = None
+        self.PayerUa = None
+        self.OrderTime = None
+        self.DeviceId = None
+
+
+    def _deserialize(self, params):
+        self.PayerClientIp = params.get("PayerClientIp")
+        self.PayerUa = params.get("PayerUa")
+        self.OrderTime = params.get("OrderTime")
+        self.DeviceId = params.get("DeviceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -12125,6 +13058,800 @@ class QueryMerchantResponse(AbstractModel):
         self.MerchantName = params.get("MerchantName")
         self.BusinessPayFlag = params.get("BusinessPayFlag")
         self.RequestId = params.get("RequestId")
+
+
+class QueryOpenBankBindExternalSubMerchantBankAccountRequest(AbstractModel):
+    """QueryOpenBankBindExternalSubMerchantBankAccount请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ChannelSubMerchantId: 渠道子商户ID。
+        :type ChannelSubMerchantId: str
+        :param ChannelMerchantId: 渠道商户ID。
+        :type ChannelMerchantId: str
+        :param ChannelApplyId: 渠道申请编号，与外部申请编号二者选填其一。
+        :type ChannelApplyId: str
+        :param Environment: 环境类型。
+__release__:生产环境
+__sandbox__:沙箱环境
+_不填默认为生产环境_
+        :type Environment: str
+        :param OutApplyId: 外部申请编号，与渠道申请编号二者选填其一。
+        :type OutApplyId: str
+        """
+        self.ChannelSubMerchantId = None
+        self.ChannelMerchantId = None
+        self.ChannelApplyId = None
+        self.Environment = None
+        self.OutApplyId = None
+
+
+    def _deserialize(self, params):
+        self.ChannelSubMerchantId = params.get("ChannelSubMerchantId")
+        self.ChannelMerchantId = params.get("ChannelMerchantId")
+        self.ChannelApplyId = params.get("ChannelApplyId")
+        self.Environment = params.get("Environment")
+        self.OutApplyId = params.get("OutApplyId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryOpenBankBindExternalSubMerchantBankAccountResponse(AbstractModel):
+    """QueryOpenBankBindExternalSubMerchantBankAccount返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrCode: 错误码。
+__SUCCESS__: 成功
+__其他__: 见附录-错误码表
+        :type ErrCode: str
+        :param ErrMessage: 错误消息。
+        :type ErrMessage: str
+        :param Result: 返回结果。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.cpdp.v20190820.models.QueryOpenBankBindExternalSubMerchantBankAccountResult`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrCode = None
+        self.ErrMessage = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrCode = params.get("ErrCode")
+        self.ErrMessage = params.get("ErrMessage")
+        if params.get("Result") is not None:
+            self.Result = QueryOpenBankBindExternalSubMerchantBankAccountResult()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class QueryOpenBankBindExternalSubMerchantBankAccountResult(AbstractModel):
+    """子商户银行卡绑定结果查询返回结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ExternalSubMerchantBankAccountReturnData: 渠道子商户收款方银行卡信息, 为JSON格式字符串（绑定成功状态下返回）。详情见附录-复杂类型。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExternalSubMerchantBankAccountReturnData: str
+        :param ChannelApplyId: 渠道申请编号。
+        :type ChannelApplyId: str
+        :param BindStatus: 绑定状态。
+__SUCCESS__: 绑定成功
+__FAILED__: 绑定失败
+__PROCESSING__: 绑定中
+        :type BindStatus: str
+        :param BindMessage: 绑定返回描述, 例如失败原因等。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BindMessage: str
+        :param BindSerialNo: 绑卡序列号。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BindSerialNo: str
+        """
+        self.ExternalSubMerchantBankAccountReturnData = None
+        self.ChannelApplyId = None
+        self.BindStatus = None
+        self.BindMessage = None
+        self.BindSerialNo = None
+
+
+    def _deserialize(self, params):
+        self.ExternalSubMerchantBankAccountReturnData = params.get("ExternalSubMerchantBankAccountReturnData")
+        self.ChannelApplyId = params.get("ChannelApplyId")
+        self.BindStatus = params.get("BindStatus")
+        self.BindMessage = params.get("BindMessage")
+        self.BindSerialNo = params.get("BindSerialNo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryOpenBankDownLoadUrlRequest(AbstractModel):
+    """QueryOpenBankDownLoadUrl请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ChannelMerchantId: 渠道商户号，外部接入平台方入驻云企付平台后下发。
+        :type ChannelMerchantId: str
+        :param BillDate: 账单日期,yyyy-MM-dd。
+        :type BillDate: str
+        :param BillType: 账单类型，默认交易账单。
+        :type BillType: str
+        :param Environment: 接入环境。沙箱环境填 sandbox。缺省默认调用生产环境。
+        :type Environment: str
+        """
+        self.ChannelMerchantId = None
+        self.BillDate = None
+        self.BillType = None
+        self.Environment = None
+
+
+    def _deserialize(self, params):
+        self.ChannelMerchantId = params.get("ChannelMerchantId")
+        self.BillDate = params.get("BillDate")
+        self.BillType = params.get("BillType")
+        self.Environment = params.get("Environment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryOpenBankDownLoadUrlResponse(AbstractModel):
+    """QueryOpenBankDownLoadUrl返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrCode: 业务系统返回码，SUCCESS表示成功，其他表示失败。
+        :type ErrCode: str
+        :param ErrMessage: 业务系统返回消息。
+        :type ErrMessage: str
+        :param Result: 查询对账文件下载响应对象。
+        :type Result: :class:`tencentcloud.cpdp.v20190820.models.QueryOpenBankDownLoadUrlResult`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrCode = None
+        self.ErrMessage = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrCode = params.get("ErrCode")
+        self.ErrMessage = params.get("ErrMessage")
+        if params.get("Result") is not None:
+            self.Result = QueryOpenBankDownLoadUrlResult()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class QueryOpenBankDownLoadUrlResult(AbstractModel):
+    """云企付-查询对账单文件下载url
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DownloadUrl: 供下一步请求账单文件的下载地址。
+        :type DownloadUrl: str
+        :param HashValue: 从 download_url 下载的文件的哈希值，用于校验文件的完整性。
+        :type HashValue: str
+        :param HashType: 从 download_url 下载的文件的哈希类型，用于校验文件的完整性。
+        :type HashType: str
+        """
+        self.DownloadUrl = None
+        self.HashValue = None
+        self.HashType = None
+
+
+    def _deserialize(self, params):
+        self.DownloadUrl = params.get("DownloadUrl")
+        self.HashValue = params.get("HashValue")
+        self.HashType = params.get("HashType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryOpenBankExternalSubMerchantBankAccountData(AbstractModel):
+    """第三方子商户银行卡列表查询返回数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AccountBank: 开户银行。
+        :type AccountBank: str
+        :param BindSerialNo: 绑卡序列号。
+        :type BindSerialNo: str
+        :param AccountType: 账号类型。
+__COLLECT_MONEY__: 收款卡
+__PAYMENT__: 付款卡
+        :type AccountType: str
+        :param BankBranchId: 支行号。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BankBranchId: str
+        :param AccountNumberLastFour: 银行卡卡后四位。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccountNumberLastFour: str
+        """
+        self.AccountBank = None
+        self.BindSerialNo = None
+        self.AccountType = None
+        self.BankBranchId = None
+        self.AccountNumberLastFour = None
+
+
+    def _deserialize(self, params):
+        self.AccountBank = params.get("AccountBank")
+        self.BindSerialNo = params.get("BindSerialNo")
+        self.AccountType = params.get("AccountType")
+        self.BankBranchId = params.get("BankBranchId")
+        self.AccountNumberLastFour = params.get("AccountNumberLastFour")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryOpenBankExternalSubMerchantBankAccountRequest(AbstractModel):
+    """QueryOpenBankExternalSubMerchantBankAccount请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ChannelMerchantId: 渠道商户ID。
+        :type ChannelMerchantId: str
+        :param ChannelSubMerchantId: 渠道子商户ID。
+        :type ChannelSubMerchantId: str
+        :param ChannelName: 渠道名称。
+__TENPAY__: 商企付
+__WECHAT__: 微信支付
+__ALIPAY__: 支付宝
+        :type ChannelName: str
+        :param PaymentMethod: 支付方式。
+__EBANK_PAYMENT__: ebank支付
+__OPENBANK_PAYMENT__: openbank支付
+        :type PaymentMethod: str
+        :param Environment: 环境类型。
+__release__:生产环境
+__sandbox__:沙箱环境
+_不填默认为生产环境_
+        :type Environment: str
+        """
+        self.ChannelMerchantId = None
+        self.ChannelSubMerchantId = None
+        self.ChannelName = None
+        self.PaymentMethod = None
+        self.Environment = None
+
+
+    def _deserialize(self, params):
+        self.ChannelMerchantId = params.get("ChannelMerchantId")
+        self.ChannelSubMerchantId = params.get("ChannelSubMerchantId")
+        self.ChannelName = params.get("ChannelName")
+        self.PaymentMethod = params.get("PaymentMethod")
+        self.Environment = params.get("Environment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryOpenBankExternalSubMerchantBankAccountResponse(AbstractModel):
+    """QueryOpenBankExternalSubMerchantBankAccount返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrCode: 错误码。
+__SUCCESS__: 成功
+__其他__: 见附录-错误码表
+        :type ErrCode: str
+        :param ErrMessage: 错误消息。
+        :type ErrMessage: str
+        :param Result: 返回结果。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.cpdp.v20190820.models.QueryOpenBankExternalSubMerchantBankAccountResult`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrCode = None
+        self.ErrMessage = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrCode = params.get("ErrCode")
+        self.ErrMessage = params.get("ErrMessage")
+        if params.get("Result") is not None:
+            self.Result = QueryOpenBankExternalSubMerchantBankAccountResult()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class QueryOpenBankExternalSubMerchantBankAccountResult(AbstractModel):
+    """第三方子商户银行卡列表查询返回结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AccountList: 第三方渠道子商户查询银行账户返回。
+        :type AccountList: list of QueryOpenBankExternalSubMerchantBankAccountData
+        """
+        self.AccountList = None
+
+
+    def _deserialize(self, params):
+        if params.get("AccountList") is not None:
+            self.AccountList = []
+            for item in params.get("AccountList"):
+                obj = QueryOpenBankExternalSubMerchantBankAccountData()
+                obj._deserialize(item)
+                self.AccountList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryOpenBankExternalSubMerchantRegistrationRequest(AbstractModel):
+    """QueryOpenBankExternalSubMerchantRegistration请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ChannelMerchantId: 渠道商户号。
+        :type ChannelMerchantId: str
+        :param ChannelRegistrationNo: 渠道进件号，与外部进件号二者选填其一。
+        :type ChannelRegistrationNo: str
+        :param OutRegistrationNo: 外部进件号，与渠道进件号二者选填其一。
+        :type OutRegistrationNo: str
+        :param Environment: 环境类型
+__release__:生产环境
+__sandbox__:沙箱环境
+_不填默认为生产环境_
+        :type Environment: str
+        """
+        self.ChannelMerchantId = None
+        self.ChannelRegistrationNo = None
+        self.OutRegistrationNo = None
+        self.Environment = None
+
+
+    def _deserialize(self, params):
+        self.ChannelMerchantId = params.get("ChannelMerchantId")
+        self.ChannelRegistrationNo = params.get("ChannelRegistrationNo")
+        self.OutRegistrationNo = params.get("OutRegistrationNo")
+        self.Environment = params.get("Environment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryOpenBankExternalSubMerchantRegistrationResponse(AbstractModel):
+    """QueryOpenBankExternalSubMerchantRegistration返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrCode: 错误码。
+__SUCCESS__: 成功
+__其他__: 见附录-错误码表
+        :type ErrCode: str
+        :param ErrMessage: 错误消息。
+        :type ErrMessage: str
+        :param Result: 返回结果。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.cpdp.v20190820.models.QueryOpenBankExternalSubMerchantRegistrationResult`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrCode = None
+        self.ErrMessage = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrCode = params.get("ErrCode")
+        self.ErrMessage = params.get("ErrMessage")
+        if params.get("Result") is not None:
+            self.Result = QueryOpenBankExternalSubMerchantRegistrationResult()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class QueryOpenBankExternalSubMerchantRegistrationResult(AbstractModel):
+    """第三方子商户进件结果查询返回结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RegistrationStatus: 进件状态。
+__SUCCESS__: 进件成功
+__FAILED__: 进件失败
+__PROCESSING__: 进件中
+        :type RegistrationStatus: str
+        :param RegistrationMessage: 进件返回描述, 例如失败原因等。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegistrationMessage: str
+        :param ChannelRegistrationNo: 渠道进件号。
+        :type ChannelRegistrationNo: str
+        :param ChannelSubMerchantId: 渠道子商户ID（进件成功返回）。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChannelSubMerchantId: str
+        :param OutSubMerchantName: 外部子商户名称（进件成功返回）。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OutSubMerchantName: str
+        :param ChannelName: 渠道名称（进件成功返回）。
+__TENPAY__: 商企付
+__WECHAT__: 微信支付
+__ALIPAY__: 支付宝
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChannelName: str
+        :param PaymentMethod: 支付方式（进件成功返回）。
+__EBANK_PAYMENT__: ebank支付
+__OPENBANK_PAYMENT__: openbank支付
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PaymentMethod: str
+        :param BusinessLicenseNumber: 社会信用代码。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BusinessLicenseNumber: str
+        :param LegalName: 法人姓名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LegalName: str
+        :param ExternalReturnData: 第三方渠道查询进件返回数据。详情见附录-复杂类型。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExternalReturnData: str
+        """
+        self.RegistrationStatus = None
+        self.RegistrationMessage = None
+        self.ChannelRegistrationNo = None
+        self.ChannelSubMerchantId = None
+        self.OutSubMerchantName = None
+        self.ChannelName = None
+        self.PaymentMethod = None
+        self.BusinessLicenseNumber = None
+        self.LegalName = None
+        self.ExternalReturnData = None
+
+
+    def _deserialize(self, params):
+        self.RegistrationStatus = params.get("RegistrationStatus")
+        self.RegistrationMessage = params.get("RegistrationMessage")
+        self.ChannelRegistrationNo = params.get("ChannelRegistrationNo")
+        self.ChannelSubMerchantId = params.get("ChannelSubMerchantId")
+        self.OutSubMerchantName = params.get("OutSubMerchantName")
+        self.ChannelName = params.get("ChannelName")
+        self.PaymentMethod = params.get("PaymentMethod")
+        self.BusinessLicenseNumber = params.get("BusinessLicenseNumber")
+        self.LegalName = params.get("LegalName")
+        self.ExternalReturnData = params.get("ExternalReturnData")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryOpenBankPaymentOrderRequest(AbstractModel):
+    """QueryOpenBankPaymentOrder请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ChannelMerchantId: 渠道商户号。外部接入平台入驻云企付平台下发。
+        :type ChannelMerchantId: str
+        :param OutOrderId: 外部商户订单号。与ChannelOrderId不能同时为空字符串。
+        :type OutOrderId: str
+        :param ChannelOrderId: 云平台订单号。与OutOrderId不能同时为空字符串。
+        :type ChannelOrderId: str
+        :param Environment: 接入环境。沙箱环境填 sandbox。缺省默认调用生产环境。
+        :type Environment: str
+        """
+        self.ChannelMerchantId = None
+        self.OutOrderId = None
+        self.ChannelOrderId = None
+        self.Environment = None
+
+
+    def _deserialize(self, params):
+        self.ChannelMerchantId = params.get("ChannelMerchantId")
+        self.OutOrderId = params.get("OutOrderId")
+        self.ChannelOrderId = params.get("ChannelOrderId")
+        self.Environment = params.get("Environment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryOpenBankPaymentOrderResponse(AbstractModel):
+    """QueryOpenBankPaymentOrder返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrCode: 业务系统返回码，SUCCESS表示成功，其他表示失败。
+        :type ErrCode: str
+        :param ErrMessage: 业务系统返回消息。
+        :type ErrMessage: str
+        :param Result: 查询支付结果响应对象。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.cpdp.v20190820.models.QueryOpenBankPaymentOrderResult`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrCode = None
+        self.ErrMessage = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrCode = params.get("ErrCode")
+        self.ErrMessage = params.get("ErrMessage")
+        if params.get("Result") is not None:
+            self.Result = QueryOpenBankPaymentOrderResult()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class QueryOpenBankPaymentOrderResult(AbstractModel):
+    """云企付-查询订单支付结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ChannelMerchantId: 渠道商户号。外部接入平台入驻云企付平台下发
+        :type ChannelMerchantId: str
+        :param OutOrderId: 外部商户订单号
+        :type OutOrderId: str
+        :param ChannelOrderId: 云企付平台订单号
+        :type ChannelOrderId: str
+        :param ThirdPayOrderId: 第三方支付平台订单号
+        :type ThirdPayOrderId: str
+        :param OrderStatus: INIT：初始化
+PAYING：支付中
+DEDUCTED：扣款成功
+ACCEPTED：支付受理成功
+SUCCESS：支付成功
+CLOSED：关单
+PAY_FAIL：支付失败
+REVOKE：退票
+        :type OrderStatus: str
+        :param ChannelName: 支付渠道名称，如TENPAY
+        :type ChannelName: str
+        :param PaymentMethod: 付款方式。如EBANK_PAYMENT
+OPENBANK_PAYMENT
+        :type PaymentMethod: str
+        :param TotalAmount: 订单金额。单位分
+        :type TotalAmount: int
+        :param PayAmount: 实际支付金额。单位分，支付成功时返回
+        :type PayAmount: int
+        :param FailReason: 失败原因，若失败的返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailReason: str
+        :param Attachment: 附加信息，查询时原样透传
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Attachment: str
+        :param RedirectInfo: 重定向参数，用于客户端跳转，订单未支付时返回该参数
+渠道为TENPAY，付款方式为EBANK_PAYMENT时返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RedirectInfo: :class:`tencentcloud.cpdp.v20190820.models.OpenBankRedirectInfo`
+        :param ExternalReturnData: 第三方渠道返回信息，见渠道特殊说明
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExternalReturnData: str
+        """
+        self.ChannelMerchantId = None
+        self.OutOrderId = None
+        self.ChannelOrderId = None
+        self.ThirdPayOrderId = None
+        self.OrderStatus = None
+        self.ChannelName = None
+        self.PaymentMethod = None
+        self.TotalAmount = None
+        self.PayAmount = None
+        self.FailReason = None
+        self.Attachment = None
+        self.RedirectInfo = None
+        self.ExternalReturnData = None
+
+
+    def _deserialize(self, params):
+        self.ChannelMerchantId = params.get("ChannelMerchantId")
+        self.OutOrderId = params.get("OutOrderId")
+        self.ChannelOrderId = params.get("ChannelOrderId")
+        self.ThirdPayOrderId = params.get("ThirdPayOrderId")
+        self.OrderStatus = params.get("OrderStatus")
+        self.ChannelName = params.get("ChannelName")
+        self.PaymentMethod = params.get("PaymentMethod")
+        self.TotalAmount = params.get("TotalAmount")
+        self.PayAmount = params.get("PayAmount")
+        self.FailReason = params.get("FailReason")
+        self.Attachment = params.get("Attachment")
+        if params.get("RedirectInfo") is not None:
+            self.RedirectInfo = OpenBankRedirectInfo()
+            self.RedirectInfo._deserialize(params.get("RedirectInfo"))
+        self.ExternalReturnData = params.get("ExternalReturnData")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryOpenBankUnbindExternalSubMerchantBankAccountRequest(AbstractModel):
+    """QueryOpenBankUnbindExternalSubMerchantBankAccount请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ChannelSubMerchantId: 渠道子商户ID。
+        :type ChannelSubMerchantId: str
+        :param ChannelMerchantId: 渠道商户ID。
+        :type ChannelMerchantId: str
+        :param ChannelApplyId: 渠道申请编号，与外部申请编号二者选填其一。
+        :type ChannelApplyId: str
+        :param Environment: 环境类型。
+__release__:生产环境
+__sandbox__:沙箱环境
+_不填默认为生产环境_
+        :type Environment: str
+        :param OutApplyId: 外部申请编号，与渠道申请编号二者选填其一。
+        :type OutApplyId: str
+        """
+        self.ChannelSubMerchantId = None
+        self.ChannelMerchantId = None
+        self.ChannelApplyId = None
+        self.Environment = None
+        self.OutApplyId = None
+
+
+    def _deserialize(self, params):
+        self.ChannelSubMerchantId = params.get("ChannelSubMerchantId")
+        self.ChannelMerchantId = params.get("ChannelMerchantId")
+        self.ChannelApplyId = params.get("ChannelApplyId")
+        self.Environment = params.get("Environment")
+        self.OutApplyId = params.get("OutApplyId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryOpenBankUnbindExternalSubMerchantBankAccountResponse(AbstractModel):
+    """QueryOpenBankUnbindExternalSubMerchantBankAccount返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrCode: 错误码。
+__SUCCESS__: 成功
+__其他__: 见附录-错误码表
+        :type ErrCode: str
+        :param ErrMessage: 错误消息。
+        :type ErrMessage: str
+        :param Result: 返回结果。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.cpdp.v20190820.models.QueryOpenBankUnbindExternalSubMerchantBankAccountResult`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrCode = None
+        self.ErrMessage = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrCode = params.get("ErrCode")
+        self.ErrMessage = params.get("ErrMessage")
+        if params.get("Result") is not None:
+            self.Result = QueryOpenBankUnbindExternalSubMerchantBankAccountResult()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class QueryOpenBankUnbindExternalSubMerchantBankAccountResult(AbstractModel):
+    """第三方子商户银行卡解绑结果查询返回结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ChannelApplyId: 渠道申请编号。
+        :type ChannelApplyId: str
+        :param UnbindStatus: 解绑状态。
+__SUCCESS__: 解绑成功
+__FAILED__: 解绑失败
+__PROCESSING__: 解绑中
+        :type UnbindStatus: str
+        :param UnbindMessage: 解绑返回描述, 例如失败原因等。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UnbindMessage: str
+        """
+        self.ChannelApplyId = None
+        self.UnbindStatus = None
+        self.UnbindMessage = None
+
+
+    def _deserialize(self, params):
+        self.ChannelApplyId = params.get("ChannelApplyId")
+        self.UnbindStatus = params.get("UnbindStatus")
+        self.UnbindMessage = params.get("UnbindMessage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class QueryOrderOutOrderList(AbstractModel):
@@ -16969,6 +18696,137 @@ class UnBindAcctResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class UnbindOpenBankExternalSubMerchantBankAccountRequest(AbstractModel):
+    """UnbindOpenBankExternalSubMerchantBankAccount请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ChannelMerchantId: 渠道商户ID。
+        :type ChannelMerchantId: str
+        :param ChannelSubMerchantId: 渠道子商户ID。
+        :type ChannelSubMerchantId: str
+        :param ChannelName: 渠道名称。
+__TENPAY__: 商企付
+__WECHAT__: 微信支付
+__ALIPAY__: 支付宝
+        :type ChannelName: str
+        :param PaymentMethod: 支付方式。
+__EBANK_PAYMENT__: ebank支付
+__OPENBANK_PAYMENT__: openbank支付
+        :type PaymentMethod: str
+        :param BindSerialNo: 绑卡序列号。
+        :type BindSerialNo: str
+        :param OutApplyId: 外部申请编号。
+        :type OutApplyId: str
+        :param NotifyUrl: 通知地址。
+        :type NotifyUrl: str
+        :param Environment: 环境类型。
+__release__:生产环境
+__sandbox__:沙箱环境
+_不填默认为生产环境_
+        :type Environment: str
+        """
+        self.ChannelMerchantId = None
+        self.ChannelSubMerchantId = None
+        self.ChannelName = None
+        self.PaymentMethod = None
+        self.BindSerialNo = None
+        self.OutApplyId = None
+        self.NotifyUrl = None
+        self.Environment = None
+
+
+    def _deserialize(self, params):
+        self.ChannelMerchantId = params.get("ChannelMerchantId")
+        self.ChannelSubMerchantId = params.get("ChannelSubMerchantId")
+        self.ChannelName = params.get("ChannelName")
+        self.PaymentMethod = params.get("PaymentMethod")
+        self.BindSerialNo = params.get("BindSerialNo")
+        self.OutApplyId = params.get("OutApplyId")
+        self.NotifyUrl = params.get("NotifyUrl")
+        self.Environment = params.get("Environment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UnbindOpenBankExternalSubMerchantBankAccountResponse(AbstractModel):
+    """UnbindOpenBankExternalSubMerchantBankAccount返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrCode: 错误码。
+__SUCCESS__: 成功
+__其他__: 见附录-错误码表
+        :type ErrCode: str
+        :param ErrMessage: 错误消息。
+        :type ErrMessage: str
+        :param Result: 返回结果。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.cpdp.v20190820.models.UnbindOpenBankExternalSubMerchantBankAccountResult`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrCode = None
+        self.ErrMessage = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrCode = params.get("ErrCode")
+        self.ErrMessage = params.get("ErrMessage")
+        if params.get("Result") is not None:
+            self.Result = UnbindOpenBankExternalSubMerchantBankAccountResult()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class UnbindOpenBankExternalSubMerchantBankAccountResult(AbstractModel):
+    """第三方子商户银行卡解绑返回结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ChannelApplyId: 渠道申请编号。
+        :type ChannelApplyId: str
+        :param UnbindStatus: 解绑状态。
+__SUCCESS__: 解绑成功
+__FAILED__: 解绑失败
+__PROCESSING__: 解绑中
+注意：若返回解绑中，需要再次调用解绑结果查询接口查询结果。
+        :type UnbindStatus: str
+        :param UnbindMessage: 解绑返回描述, 例如失败原因等。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UnbindMessage: str
+        """
+        self.ChannelApplyId = None
+        self.UnbindStatus = None
+        self.UnbindMessage = None
+
+
+    def _deserialize(self, params):
+        self.ChannelApplyId = params.get("ChannelApplyId")
+        self.UnbindStatus = params.get("UnbindStatus")
+        self.UnbindMessage = params.get("UnbindMessage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class UnbindRelateAcctRequest(AbstractModel):

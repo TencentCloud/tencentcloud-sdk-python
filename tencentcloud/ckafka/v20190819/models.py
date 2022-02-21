@@ -984,6 +984,65 @@ class CreateAclResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateConsumerRequest(AbstractModel):
+    """CreateConsumer请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例id
+        :type InstanceId: str
+        :param GroupName: group名称
+        :type GroupName: str
+        :param TopicName: topic名称
+        :type TopicName: str
+        :param TopicNameList: topic名称数组
+        :type TopicNameList: list of str
+        """
+        self.InstanceId = None
+        self.GroupName = None
+        self.TopicName = None
+        self.TopicNameList = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.GroupName = params.get("GroupName")
+        self.TopicName = params.get("TopicName")
+        self.TopicNameList = params.get("TopicNameList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateConsumerResponse(AbstractModel):
+    """CreateConsumer返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 创建group描述
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = JgwOperateResponse()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
 class CreateInstancePreData(AbstractModel):
     """创建预付费接口返回的Data
 
@@ -1211,6 +1270,85 @@ class CreatePartitionResponse(AbstractModel):
     def __init__(self):
         r"""
         :param Result: 返回的结果集
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = JgwOperateResponse()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class CreateRouteRequest(AbstractModel):
+    """CreateRoute请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例唯一id
+        :type InstanceId: str
+        :param VipType: 路由网络类型(3:vpc路由;4:标准版支撑路由;7:专业版支撑路由)
+        :type VipType: int
+        :param VpcId: vpc网络Id
+        :type VpcId: str
+        :param SubnetId: vpc子网id
+        :type SubnetId: str
+        :param AccessType: 访问类型
+        :type AccessType: int
+        :param AuthFlag: 是否需要权限管理
+        :type AuthFlag: int
+        :param CallerAppid: 调用方appId
+        :type CallerAppid: int
+        :param PublicNetwork: 公网带宽
+        :type PublicNetwork: int
+        :param Ip: vip地址
+        :type Ip: str
+        """
+        self.InstanceId = None
+        self.VipType = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.AccessType = None
+        self.AuthFlag = None
+        self.CallerAppid = None
+        self.PublicNetwork = None
+        self.Ip = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.VipType = params.get("VipType")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.AccessType = params.get("AccessType")
+        self.AuthFlag = params.get("AuthFlag")
+        self.CallerAppid = params.get("CallerAppid")
+        self.PublicNetwork = params.get("PublicNetwork")
+        self.Ip = params.get("Ip")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateRouteResponse(AbstractModel):
+    """CreateRoute返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 返回结果
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
