@@ -167,7 +167,7 @@ class IecpClient(AbstractClient):
 
 
     def CreateEdgeNodeUnitTemplate(self, request):
-        """创建边缘单元NodeUnit模版
+        """创建边缘单元NodeUnit模板
 
         :param request: Request instance for CreateEdgeNodeUnitTemplate.
         :type request: :class:`tencentcloud.iecp.v20210914.models.CreateEdgeNodeUnitTemplateRequest`
@@ -447,7 +447,7 @@ class IecpClient(AbstractClient):
 
 
     def DeleteEdgeNodeUnitTemplates(self, request):
-        """删除边缘单元NodeUnit模版
+        """删除边缘单元NodeUnit模板
 
         :param request: Request instance for DeleteEdgeNodeUnitTemplates.
         :type request: :class:`tencentcloud.iecp.v20210914.models.DeleteEdgeNodeUnitTemplatesRequest`
@@ -1595,7 +1595,7 @@ class IecpClient(AbstractClient):
 
 
     def DescribeEdgeUnitNodeUnitTemplates(self, request):
-        """查询边缘单元EdgeUnit模版列表
+        """查询边缘单元EdgeUnit模板列表
 
         :param request: Request instance for DescribeEdgeUnitNodeUnitTemplates.
         :type request: :class:`tencentcloud.iecp.v20210914.models.DescribeEdgeUnitNodeUnitTemplatesRequest`
@@ -1791,7 +1791,7 @@ class IecpClient(AbstractClient):
 
 
     def DescribeNodeUnitTemplateOnNodeGroup(self, request):
-        """查询指定NodeGroup下NodeUnit模版列表
+        """查询指定NodeGroup下NodeUnit模板列表
 
         :param request: Request instance for DescribeNodeUnitTemplateOnNodeGroup.
         :type request: :class:`tencentcloud.iecp.v20210914.models.DescribeNodeUnitTemplateOnNodeGroupRequest`
@@ -2211,7 +2211,7 @@ class IecpClient(AbstractClient):
 
 
     def ModifyNodeUnitTemplate(self, request):
-        """修改边缘单元NodeUnit模版
+        """修改边缘单元NodeUnit模板
 
         :param request: Request instance for ModifyNodeUnitTemplate.
         :type request: :class:`tencentcloud.iecp.v20210914.models.ModifyNodeUnitTemplateRequest`

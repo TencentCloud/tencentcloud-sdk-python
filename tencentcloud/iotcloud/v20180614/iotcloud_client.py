@@ -418,6 +418,34 @@ class IotcloudClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteDeviceResource(self, request):
+        """本接口（DeleteDeviceResource）用于删除设备资源
+
+        :param request: Request instance for DeleteDeviceResource.
+        :type request: :class:`tencentcloud.iotcloud.v20180614.models.DeleteDeviceResourceRequest`
+        :rtype: :class:`tencentcloud.iotcloud.v20180614.models.DeleteDeviceResourceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteDeviceResource", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteDeviceResourceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteLoraDevice(self, request):
         """删除lora类型的设备
 
@@ -1216,6 +1244,34 @@ class IotcloudClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DisableTopicRuleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DownloadDeviceResource(self, request):
+        """本接口（DownloadDeviceResource）用于下载设备资源
+
+        :param request: Request instance for DownloadDeviceResource.
+        :type request: :class:`tencentcloud.iotcloud.v20180614.models.DownloadDeviceResourceRequest`
+        :rtype: :class:`tencentcloud.iotcloud.v20180614.models.DownloadDeviceResourceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DownloadDeviceResource", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DownloadDeviceResourceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

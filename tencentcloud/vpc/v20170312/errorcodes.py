@@ -116,6 +116,9 @@ INVALIDPARAMETERVALUE_ADDRESSIPNOTFOUND = 'InvalidParameterValue.AddressIpNotFou
 # VPC中不存在此IP地址。
 INVALIDPARAMETERVALUE_ADDRESSIPNOTINVPC = 'InvalidParameterValue.AddressIpNotInVpc'
 
+# 此IPv6地址未发布。
+INVALIDPARAMETERVALUE_ADDRESSIPNOTPUBLIC = 'InvalidParameterValue.AddressIpNotPublic'
+
 # 该地址不可与此实例申请。
 INVALIDPARAMETERVALUE_ADDRESSNOTAPPLICABLE = 'InvalidParameterValue.AddressNotApplicable'
 

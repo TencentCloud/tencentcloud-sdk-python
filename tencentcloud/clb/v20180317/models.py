@@ -3697,6 +3697,75 @@ class DescribeQuotaResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeResourcesRequest(AbstractModel):
+    """DescribeResources请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Limit: 返回可用区资源列表数目，默认20，最大值100。
+        :type Limit: int
+        :param Offset: 返回可用区资源列表起始偏移量，默认0。
+        :type Offset: int
+        :param Filters: 查询可用区资源列表条件，详细的过滤条件如下：
+<li> zone - String - 是否必填：否 - （过滤条件）按照 可用区 过滤，如："ap-guangzhou-1"（广州一区）。</li>
+<li> isp -- String - 是否必填：否 - （过滤条件）按照 Isp 类型过滤，如："BGP","CMCC","CUCC","CTCC"。</li>
+        :type Filters: list of Filter
+        """
+        self.Limit = None
+        self.Offset = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeResourcesResponse(AbstractModel):
+    """DescribeResources返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneResourceSet: 可用区支持的资源列表。
+        :type ZoneResourceSet: list of ZoneResource
+        :param TotalCount: 可用区资源列表数目。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ZoneResourceSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ZoneResourceSet") is not None:
+            self.ZoneResourceSet = []
+            for item in params.get("ZoneResourceSet"):
+                obj = ZoneResource()
+                obj._deserialize(item)
+                self.ZoneResourceSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeRewriteRequest(AbstractModel):
     """DescribeRewrite请求参数结构体
 
@@ -6563,6 +6632,34 @@ class ReplaceCertForLoadBalancersResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class Resource(AbstractModel):
+    """资源详细信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Type: 运营商内具体资源信息，如"CMCC", "CUCC", "CTCC", "BGP", "INTERNAL"。
+        :type Type: list of str
+        :param Isp: 运营商信息，如"CMCC", "CUCC", "CTCC", "BGP", "INTERNAL"。
+        :type Isp: str
+        """
+        self.Type = None
+        self.Isp = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.Isp = params.get("Isp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RewriteLocationMap(AbstractModel):
     """转发规则之间的重定向关系
 
@@ -7680,6 +7777,57 @@ class ZoneInfo(AbstractModel):
         self.ZoneId = params.get("ZoneId")
         self.Zone = params.get("Zone")
         self.ZoneName = params.get("ZoneName")
+        self.ZoneRegion = params.get("ZoneRegion")
+        self.LocalZone = params.get("LocalZone")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ZoneResource(AbstractModel):
+    """可用区资源列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MasterZone: 主可用区，如"ap-guangzhou-1"。
+        :type MasterZone: str
+        :param ResourceSet: 资源列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceSet: list of Resource
+        :param SlaveZone: 备可用区，如"ap-guangzhou-2"，单可用区时，备可用区为null。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SlaveZone: str
+        :param IPVersion: IP版本，如IPv4，IPv6，IPv6_Nat。
+        :type IPVersion: str
+        :param ZoneRegion: 可用区所属地域，如：ap-guangzhou
+        :type ZoneRegion: str
+        :param LocalZone: 可用区是否是LocalZone可用区，如：false
+        :type LocalZone: bool
+        """
+        self.MasterZone = None
+        self.ResourceSet = None
+        self.SlaveZone = None
+        self.IPVersion = None
+        self.ZoneRegion = None
+        self.LocalZone = None
+
+
+    def _deserialize(self, params):
+        self.MasterZone = params.get("MasterZone")
+        if params.get("ResourceSet") is not None:
+            self.ResourceSet = []
+            for item in params.get("ResourceSet"):
+                obj = Resource()
+                obj._deserialize(item)
+                self.ResourceSet.append(obj)
+        self.SlaveZone = params.get("SlaveZone")
+        self.IPVersion = params.get("IPVersion")
         self.ZoneRegion = params.get("ZoneRegion")
         self.LocalZone = params.get("LocalZone")
         memeber_set = set(params.keys())

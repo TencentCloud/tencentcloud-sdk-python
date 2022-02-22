@@ -38,6 +38,9 @@ INTERNALERROR_DESCRIBERUNPODLISTERROR = 'InternalError.DescribeRunPodListError'
 # 重启失败。
 INTERNALERROR_RESTARTAPPLICATIONERROR = 'InternalError.RestartApplicationError'
 
+# 更新 ingress 失败。
+INTERNALERROR_UPDATEINGRESSERROR = 'InternalError.UpdateIngressError'
+
 # 版本号格式非法。
 INVALIDPARAMETERVALUE_INVALIDDEPLOYVERSION = 'InvalidParameterValue.InvalidDeployVersion'
 
@@ -76,6 +79,9 @@ RESOURCENOTFOUND_SERVICERUNNINGVERSIONNOTFOUND = 'ResourceNotFound.ServiceRunnin
 
 # 找不到版本对应的环境。
 RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = 'ResourceNotFound.VersionNamespaceNotFound'
+
+# 找不到版本对应的应用。
+RESOURCENOTFOUND_VERSIONSERVICENOTFOUND = 'ResourceNotFound.VersionServiceNotFound'
 
 # 等待组件安装。
 RESOURCEUNAVAILABLE_WAITFORKRUISE = 'ResourceUnavailable.WaitForKruise'

@@ -742,7 +742,7 @@ class CreateTriggerRequest(AbstractModel):
         :type TriggerDesc: str
         :param Namespace: 函数的命名空间
         :type Namespace: str
-        :param Qualifier: 函数的版本
+        :param Qualifier: 函数的版本，默认为 $LATEST，建议填写 [$DEFAULT](https://cloud.tencent.com/document/product/583/36149#.E9.BB.98.E8.AE.A4.E5.88.AB.E5.90.8D)方便后续进行版本的灰度发布。
         :type Qualifier: str
         :param Enable: 触发器的初始是能状态 OPEN表示开启 CLOSE表示关闭
         :type Enable: str

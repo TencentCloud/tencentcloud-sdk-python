@@ -1310,6 +1310,30 @@ class Database(AbstractModel):
         
 
 
+class DatabaseFunction(AbstractModel):
+    """数据库函数信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Func: 函数名称
+        :type Func: str
+        """
+        self.Func = None
+
+
+    def _deserialize(self, params):
+        self.Func = params.get("Func")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DatabasePrivilege(AbstractModel):
     """数据库权限
 
@@ -1329,6 +1353,78 @@ class DatabasePrivilege(AbstractModel):
     def _deserialize(self, params):
         self.Privileges = params.get("Privileges")
         self.Database = params.get("Database")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DatabaseProcedure(AbstractModel):
+    """数据库存储过程信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Proc: 存储过程名称
+        :type Proc: str
+        """
+        self.Proc = None
+
+
+    def _deserialize(self, params):
+        self.Proc = params.get("Proc")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DatabaseTable(AbstractModel):
+    """数据库表信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Table: 表名
+        :type Table: str
+        """
+        self.Table = None
+
+
+    def _deserialize(self, params):
+        self.Table = params.get("Table")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DatabaseView(AbstractModel):
+    """数据库视图信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param View: 视图名称
+        :type View: str
+        """
+        self.View = None
+
+
+    def _deserialize(self, params):
+        self.View = params.get("View")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2495,6 +2591,95 @@ class DescribeDBSlowLogsResponse(AbstractModel):
         self.QueryCount = params.get("QueryCount")
         self.Total = params.get("Total")
         self.QueryTimeSum = params.get("QueryTimeSum")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDatabaseObjectsRequest(AbstractModel):
+    """DescribeDatabaseObjects请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例 ID，形如：dcdbt-ow7t8lmc。
+        :type InstanceId: str
+        :param DbName: 数据库名称，通过 DescribeDatabases 接口获取。
+        :type DbName: str
+        """
+        self.InstanceId = None
+        self.DbName = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.DbName = params.get("DbName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDatabaseObjectsResponse(AbstractModel):
+    """DescribeDatabaseObjects返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 透传入参。
+        :type InstanceId: str
+        :param DbName: 数据库名称。
+        :type DbName: str
+        :param Tables: 表列表。
+        :type Tables: list of DatabaseTable
+        :param Views: 视图列表。
+        :type Views: list of DatabaseView
+        :param Procs: 存储过程列表。
+        :type Procs: list of DatabaseProcedure
+        :param Funcs: 函数列表。
+        :type Funcs: list of DatabaseFunction
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.InstanceId = None
+        self.DbName = None
+        self.Tables = None
+        self.Views = None
+        self.Procs = None
+        self.Funcs = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.DbName = params.get("DbName")
+        if params.get("Tables") is not None:
+            self.Tables = []
+            for item in params.get("Tables"):
+                obj = DatabaseTable()
+                obj._deserialize(item)
+                self.Tables.append(obj)
+        if params.get("Views") is not None:
+            self.Views = []
+            for item in params.get("Views"):
+                obj = DatabaseView()
+                obj._deserialize(item)
+                self.Views.append(obj)
+        if params.get("Procs") is not None:
+            self.Procs = []
+            for item in params.get("Procs"):
+                obj = DatabaseProcedure()
+                obj._deserialize(item)
+                self.Procs.append(obj)
+        if params.get("Funcs") is not None:
+            self.Funcs = []
+            for item in params.get("Funcs"):
+                obj = DatabaseFunction()
+                obj._deserialize(item)
+                self.Funcs.append(obj)
         self.RequestId = params.get("RequestId")
 
 

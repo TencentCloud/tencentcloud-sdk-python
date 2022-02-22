@@ -113,6 +113,9 @@ INTERNALERROR_GETDBCONFIGFAILED = 'InternalError.GetDbConfigFailed'
 # 获取数据库列表失败。
 INTERNALERROR_GETDBLISTFAILED = 'InternalError.GetDbListFailed'
 
+# 获取数据库对象失败。
+INTERNALERROR_GETDBOBJECTFAILED = 'InternalError.GetDbObjectFailed'
+
 # 获取实例详情失败。
 INTERNALERROR_GETINSTANCEDETAILFAILED = 'InternalError.GetInstanceDetailFailed'
 
@@ -292,6 +295,9 @@ INVALIDPARAMETERVALUE_ILLEGALZONE = 'InvalidParameterValue.IllegalZone'
 
 # 非法的实例名称。
 INVALIDPARAMETERVALUE_INSTANCENAMEILLEGAL = 'InvalidParameterValue.InstanceNameIllegal'
+
+# 参数验证错误。
+INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = 'InvalidParameterValue.InvalidParameterValueError'
 
 # 分片不存在。
 INVALIDPARAMETERVALUE_SHARDNOTEXIST = 'InvalidParameterValue.ShardNotExist'

@@ -112,7 +112,7 @@ class SesClient(AbstractClient):
 
     def CreateEmailTemplate(self, request):
         """创建模板，该模板可以是TXT或者HTML，请注意如果HTML不要包含外部文件的CSS。模板中的变量使用 {{变量名}} 表示。
-        注意：模版需要审核通过才可以使用。
+        注意：模板需要审核通过才可以使用。
 
         :param request: Request instance for CreateEmailTemplate.
         :type request: :class:`tencentcloud.ses.v20201002.models.CreateEmailTemplateRequest`

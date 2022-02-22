@@ -38,6 +38,9 @@ INVALIDPARAMETER_DUPLICATEGROUPNAME = 'InvalidParameter.DuplicateGroupName'
 # 重复的用户名。
 INVALIDPARAMETER_DUPLICATEUSERNAME = 'InvalidParameter.DuplicateUserName'
 
+# 无效的访问策略。
+INVALIDPARAMETER_INVALIDACCESSPOLICY = 'InvalidParameter.InvalidAccessPolicy'
+
 # 无效的数据引擎名。
 INVALIDPARAMETER_INVALIDDATAENGINENAME = 'InvalidParameter.InvalidDataEngineName'
 
