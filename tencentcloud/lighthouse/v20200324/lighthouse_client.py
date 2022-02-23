@@ -728,7 +728,7 @@ class LighthouseClient(AbstractClient):
 
 
     def DescribeFirewallRulesTemplate(self, request):
-        """本接口（DescribeFirewallRulesTemplate）用于查询防火墙规则模版。
+        """本接口（DescribeFirewallRulesTemplate）用于查询防火墙规则模板。
 
         :param request: Request instance for DescribeFirewallRulesTemplate.
         :type request: :class:`tencentcloud.lighthouse.v20200324.models.DescribeFirewallRulesTemplateRequest`

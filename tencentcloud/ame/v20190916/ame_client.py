@@ -26,6 +26,34 @@ class AmeClient(AbstractClient):
     _service = 'ame'
 
 
+    def BatchDescribeKTVMusicDetails(self, request):
+        """根据 Id 列表查询歌曲的详细信息，包含基础信息及播放信息。
+
+        :param request: Request instance for BatchDescribeKTVMusicDetails.
+        :type request: :class:`tencentcloud.ame.v20190916.models.BatchDescribeKTVMusicDetailsRequest`
+        :rtype: :class:`tencentcloud.ame.v20190916.models.BatchDescribeKTVMusicDetailsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("BatchDescribeKTVMusicDetails", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.BatchDescribeKTVMusicDetailsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateKTVRobot(self, request):
         """创建机器人，支持进入 RTC 房间，播放直播互动曲库歌曲。
 

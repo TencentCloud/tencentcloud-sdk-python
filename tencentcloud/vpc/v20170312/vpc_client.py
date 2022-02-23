@@ -770,7 +770,7 @@ class VpcClient(AbstractClient):
 
 
     def CreateAddressTemplateGroup(self, request):
-        """本接口（CreateAddressTemplateGroup）用于创建IP地址模版集合
+        """本接口（CreateAddressTemplateGroup）用于创建IP地址模板集合
 
         :param request: Request instance for CreateAddressTemplateGroup.
         :type request: :class:`tencentcloud.vpc.v20170312.models.CreateAddressTemplateGroupRequest`

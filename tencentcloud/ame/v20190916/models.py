@@ -130,6 +130,60 @@ class AuthInfo(AbstractModel):
         
 
 
+class BatchDescribeKTVMusicDetailsRequest(AbstractModel):
+    """BatchDescribeKTVMusicDetails请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MusicIds: 歌曲Id列表，注：列表最大长度为50
+        :type MusicIds: list of str
+        """
+        self.MusicIds = None
+
+
+    def _deserialize(self, params):
+        self.MusicIds = params.get("MusicIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BatchDescribeKTVMusicDetailsResponse(AbstractModel):
+    """BatchDescribeKTVMusicDetails返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param KTVMusicDetailInfoSet: 歌曲详情列表信息
+        :type KTVMusicDetailInfoSet: list of KTVMusicDetailInfo
+        :param NotExistMusicIdSet: 不存在的歌曲 ID 列表。
+        :type NotExistMusicIdSet: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.KTVMusicDetailInfoSet = None
+        self.NotExistMusicIdSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("KTVMusicDetailInfoSet") is not None:
+            self.KTVMusicDetailInfoSet = []
+            for item in params.get("KTVMusicDetailInfoSet"):
+                obj = KTVMusicDetailInfo()
+                obj._deserialize(item)
+                self.KTVMusicDetailInfoSet.append(obj)
+        self.NotExistMusicIdSet = params.get("NotExistMusicIdSet")
+        self.RequestId = params.get("RequestId")
+
+
 class ChorusClip(AbstractModel):
     """副歌片段信息
 
@@ -1745,6 +1799,62 @@ class KTVMusicDefinitionInfo(AbstractModel):
         self.Definition = params.get("Definition")
         self.Bitrate = params.get("Bitrate")
         self.Size = params.get("Size")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KTVMusicDetailInfo(AbstractModel):
+    """即使广播曲库歌曲信息详情列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param KTVMusicBaseInfo: 即使广播曲库歌曲基础信息
+        :type KTVMusicBaseInfo: :class:`tencentcloud.ame.v20190916.models.KTVMusicBaseInfo`
+        :param PlayToken: 播放凭证
+        :type PlayToken: str
+        :param LyricsUrl: 歌词下载地址
+        :type LyricsUrl: str
+        :param DefinitionInfoSet: 歌曲规格信息列表
+        :type DefinitionInfoSet: list of KTVMusicDefinitionInfo
+        :param MidiJsonUrl: 音高数据文件下载地址
+        :type MidiJsonUrl: str
+        :param ChorusClipSet: 副歌片段数据列表
+        :type ChorusClipSet: list of ChorusClip
+        """
+        self.KTVMusicBaseInfo = None
+        self.PlayToken = None
+        self.LyricsUrl = None
+        self.DefinitionInfoSet = None
+        self.MidiJsonUrl = None
+        self.ChorusClipSet = None
+
+
+    def _deserialize(self, params):
+        if params.get("KTVMusicBaseInfo") is not None:
+            self.KTVMusicBaseInfo = KTVMusicBaseInfo()
+            self.KTVMusicBaseInfo._deserialize(params.get("KTVMusicBaseInfo"))
+        self.PlayToken = params.get("PlayToken")
+        self.LyricsUrl = params.get("LyricsUrl")
+        if params.get("DefinitionInfoSet") is not None:
+            self.DefinitionInfoSet = []
+            for item in params.get("DefinitionInfoSet"):
+                obj = KTVMusicDefinitionInfo()
+                obj._deserialize(item)
+                self.DefinitionInfoSet.append(obj)
+        self.MidiJsonUrl = params.get("MidiJsonUrl")
+        if params.get("ChorusClipSet") is not None:
+            self.ChorusClipSet = []
+            for item in params.get("ChorusClipSet"):
+                obj = ChorusClip()
+                obj._deserialize(item)
+                self.ChorusClipSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

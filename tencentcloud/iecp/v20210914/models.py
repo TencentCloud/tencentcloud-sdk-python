@@ -973,22 +973,22 @@ class CreateEdgeUnitApplicationYamlRequest(AbstractModel):
         r"""
         :param EdgeUnitId: 单元ID
         :type EdgeUnitId: int
+        :param Yaml: base64后的Yaml配置
+        :type Yaml: str
         :param BasicInfo: 基本信息
         :type BasicInfo: :class:`tencentcloud.iecp.v20210914.models.ApplicationBasicInfo`
-        :param Yaml: Yaml配置
-        :type Yaml: str
         """
         self.EdgeUnitId = None
-        self.BasicInfo = None
         self.Yaml = None
+        self.BasicInfo = None
 
 
     def _deserialize(self, params):
         self.EdgeUnitId = params.get("EdgeUnitId")
+        self.Yaml = params.get("Yaml")
         if params.get("BasicInfo") is not None:
             self.BasicInfo = ApplicationBasicInfo()
             self.BasicInfo._deserialize(params.get("BasicInfo"))
-        self.Yaml = params.get("Yaml")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6221,6 +6221,10 @@ class MarketComponentInfo(AbstractModel):
         :type Version: str
         :param WorkloadVisualConfig: 组件可视化信息
         :type WorkloadVisualConfig: str
+        :param DetailUrl: 无
+        :type DetailUrl: str
+        :param Installed: 无
+        :type Installed: bool
         """
         self.ID = None
         self.AppName = None
@@ -6231,6 +6235,8 @@ class MarketComponentInfo(AbstractModel):
         self.Icon = None
         self.Version = None
         self.WorkloadVisualConfig = None
+        self.DetailUrl = None
+        self.Installed = None
 
 
     def _deserialize(self, params):
@@ -6243,6 +6249,8 @@ class MarketComponentInfo(AbstractModel):
         self.Icon = params.get("Icon")
         self.Version = params.get("Version")
         self.WorkloadVisualConfig = params.get("WorkloadVisualConfig")
+        self.DetailUrl = params.get("DetailUrl")
+        self.Installed = params.get("Installed")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

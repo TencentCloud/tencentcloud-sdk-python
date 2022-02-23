@@ -251,6 +251,34 @@ class DcdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateHourDCDBInstance(self, request):
+        """创建DCDB后付费实例
+
+        :param request: Request instance for CreateHourDCDBInstance.
+        :type request: :class:`tencentcloud.dcdb.v20180411.models.CreateHourDCDBInstanceRequest`
+        :rtype: :class:`tencentcloud.dcdb.v20180411.models.CreateHourDCDBInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateHourDCDBInstance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateHourDCDBInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteAccount(self, request):
         """本接口（DeleteAccount）用于删除云数据库账号。用户名+host唯一确定一个账号。
 

@@ -2394,9 +2394,9 @@ class CreateAddressTemplateGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AddressTemplateGroupName: IP地址模版集合名称。
+        :param AddressTemplateGroupName: IP地址模板集合名称。
         :type AddressTemplateGroupName: str
-        :param AddressTemplateIds: IP地址模版实例ID，例如：ipm-mdunqeb6。
+        :param AddressTemplateIds: IP地址模板实例ID，例如：ipm-mdunqeb6。
         :type AddressTemplateIds: list of str
         """
         self.AddressTemplateGroupName = None
@@ -6819,7 +6819,7 @@ class DescribeAddressTemplatesResponse(AbstractModel):
         r"""
         :param TotalCount: 符合条件的实例数量。
         :type TotalCount: int
-        :param AddressTemplateSet: IP地址模版。
+        :param AddressTemplateSet: IP地址模板。
         :type AddressTemplateSet: list of AddressTemplate
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

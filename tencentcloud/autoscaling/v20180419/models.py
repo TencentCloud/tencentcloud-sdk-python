@@ -3726,14 +3726,22 @@ class ModifyDesiredCapacityRequest(AbstractModel):
         :type AutoScalingGroupId: str
         :param DesiredCapacity: 期望实例数
         :type DesiredCapacity: int
+        :param MinSize: 最小实例数，取值范围为0-2000。
+        :type MinSize: int
+        :param MaxSize: 最大实例数，取值范围为0-2000。
+        :type MaxSize: int
         """
         self.AutoScalingGroupId = None
         self.DesiredCapacity = None
+        self.MinSize = None
+        self.MaxSize = None
 
 
     def _deserialize(self, params):
         self.AutoScalingGroupId = params.get("AutoScalingGroupId")
         self.DesiredCapacity = params.get("DesiredCapacity")
+        self.MinSize = params.get("MinSize")
+        self.MaxSize = params.get("MaxSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
