@@ -29,7 +29,7 @@ FAILEDOPERATION_EMAILCONTENTTOOLARGE = 'FailedOperation.EmailContentToolarge'
 # 超出当日总量发送限制。
 FAILEDOPERATION_EXCEEDSENDLIMIT = 'FailedOperation.ExceedSendLimit'
 
-# 超出最大模版数量限制。
+# 超出最大模板数量限制。
 FAILEDOPERATION_EXCEEDTEMPLATELIMIT = 'FailedOperation.ExceedTemplateLimit'
 
 # 触发频率控制，短时间内对同一地址发送过多邮件。
@@ -83,7 +83,7 @@ FAILEDOPERATION_SENDEMAILERR = 'FailedOperation.SendEmailErr'
 # 临时性错误，请求未生效，请重试。
 FAILEDOPERATION_SERVICENOTAVAILABLE = 'FailedOperation.ServiceNotAvailable'
 
-# 模版内容太大，请减少模版内容。
+# 模板内容太大，请减少模板内容。
 FAILEDOPERATION_TEMPLATECONTENTTOOLARGE = 'FailedOperation.TemplateContentToolarge'
 
 # 因触发了某些规则导致临时Block。
@@ -158,16 +158,16 @@ INVALIDPARAMETERVALUE_REPEATRECEIVERNAME = 'InvalidParameterValue.RepeatReceiver
 # 邮件主题长度必须为1-100。
 INVALIDPARAMETERVALUE_SUBJECTLENGTHERROR = 'InvalidParameterValue.SubjectLengthError'
 
-# 模版资源为空。
+# 模板资源为空。
 INVALIDPARAMETERVALUE_TEMPLATECONTENTISNULL = 'InvalidParameterValue.TemplateContentIsNULL'
 
-# 模版内容错误，请检查base64内容是否正确。
+# 模板内容错误，请检查base64内容是否正确。
 INVALIDPARAMETERVALUE_TEMPLATECONTENTISWRONG = 'InvalidParameterValue.TemplateContentIsWrong'
 
 # 变量设置必须为json格式。
 INVALIDPARAMETERVALUE_TEMPLATEDATAERROR = 'InvalidParameterValue.TemplateDataError'
 
-# 模版名字不合法，请检查字符内容及大小。
+# 模板名字不合法，请检查字符内容及大小。
 INVALIDPARAMETERVALUE_TEMPLATENAMEILLEGAL = 'InvalidParameterValue.TemplateNameIllegal'
 
 # 模版名字不能为空。

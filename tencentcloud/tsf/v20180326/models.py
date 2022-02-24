@@ -14957,6 +14957,12 @@ class ServiceSetting(AbstractModel):
         :param AllowDeleteService: 当为 true 且 DisableService 也为 true 时，会删除之前创建的 service，请小心使用
 注意：此字段可能返回 null，表示取不到有效值。
         :type AllowDeleteService: bool
+        :param OpenSessionAffinity: 开启SessionAffinity，true为开启，false为不开启，默认为false
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OpenSessionAffinity: bool
+        :param SessionAffinityTimeoutSeconds: SessionAffinity会话时间，默认10800
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SessionAffinityTimeoutSeconds: int
         """
         self.AccessType = None
         self.ProtocolPorts = None
@@ -14964,6 +14970,8 @@ class ServiceSetting(AbstractModel):
         self.DisableService = None
         self.HeadlessService = None
         self.AllowDeleteService = None
+        self.OpenSessionAffinity = None
+        self.SessionAffinityTimeoutSeconds = None
 
 
     def _deserialize(self, params):
@@ -14978,6 +14986,8 @@ class ServiceSetting(AbstractModel):
         self.DisableService = params.get("DisableService")
         self.HeadlessService = params.get("HeadlessService")
         self.AllowDeleteService = params.get("AllowDeleteService")
+        self.OpenSessionAffinity = params.get("OpenSessionAffinity")
+        self.SessionAffinityTimeoutSeconds = params.get("SessionAffinityTimeoutSeconds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

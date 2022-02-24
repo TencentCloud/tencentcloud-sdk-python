@@ -1885,6 +1885,62 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateVpnGatewaySslClient(self, request):
+        """创建SSL-VPN-CLIENT
+
+        :param request: Request instance for CreateVpnGatewaySslClient.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.CreateVpnGatewaySslClientRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.CreateVpnGatewaySslClientResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateVpnGatewaySslClient", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateVpnGatewaySslClientResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateVpnGatewaySslServer(self, request):
+        """创建 Server端
+
+        :param request: Request instance for CreateVpnGatewaySslServer.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.CreateVpnGatewaySslServerRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.CreateVpnGatewaySslServerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateVpnGatewaySslServer", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateVpnGatewaySslServerResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteAddressTemplate(self, request):
         """本接口（DeleteAddressTemplate）用于删除IP地址模板
 
@@ -2845,6 +2901,62 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteVpnGatewayRoutesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteVpnGatewaySslClient(self, request):
+        """删除SSL-VPN-CLIENT
+
+        :param request: Request instance for DeleteVpnGatewaySslClient.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteVpnGatewaySslClientRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DeleteVpnGatewaySslClientResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteVpnGatewaySslClient", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteVpnGatewaySslClientResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteVpnGatewaySslServer(self, request):
+        """删除SSL-VPN-SERVER 实例
+
+        :param request: Request instance for DeleteVpnGatewaySslServer.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteVpnGatewaySslServerRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DeleteVpnGatewaySslServerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteVpnGatewaySslServer", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteVpnGatewaySslServerResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -4772,6 +4884,62 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeVpnGatewaySslClients(self, request):
+        """查询SSL-VPN-CLIENT 列表
+
+        :param request: Request instance for DescribeVpnGatewaySslClients.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeVpnGatewaySslClientsRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeVpnGatewaySslClientsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeVpnGatewaySslClients", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeVpnGatewaySslClientsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeVpnGatewaySslServers(self, request):
+        """查询SSL-VPN SERVER 列表信息
+
+        :param request: Request instance for DescribeVpnGatewaySslServers.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeVpnGatewaySslServersRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeVpnGatewaySslServersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeVpnGatewaySslServers", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeVpnGatewaySslServersResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeVpnGateways(self, request):
         """本接口（DescribeVpnGateways）用于查询VPN网关列表。
 
@@ -4958,6 +5126,34 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DisableRoutesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DisableVpnGatewaySslClientCert(self, request):
+        """禁用SSL-VPN-CLIENT 证书
+
+        :param request: Request instance for DisableVpnGatewaySslClientCert.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DisableVpnGatewaySslClientCertRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DisableVpnGatewaySslClientCertResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DisableVpnGatewaySslClientCert", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DisableVpnGatewaySslClientCertResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -5202,6 +5398,34 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DownloadVpnGatewaySslClientCert(self, request):
+        """下载SSL-VPN-CLIENT 客户端证书
+
+        :param request: Request instance for DownloadVpnGatewaySslClientCert.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DownloadVpnGatewaySslClientCertRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DownloadVpnGatewaySslClientCertResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DownloadVpnGatewaySslClientCert", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DownloadVpnGatewaySslClientCertResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def EnableCcnRoutes(self, request):
         """本接口（EnableCcnRoutes）用于启用已经加入云联网（CCN）的路由。<br />
         本接口会校验启用后，是否与已有路由冲突，如果冲突，则无法启用，失败处理。路由冲突时，需要先禁用与之冲突的路由，才能启用该路由。
@@ -5302,6 +5526,34 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.EnableVpcEndPointConnectResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def EnableVpnGatewaySslClientCert(self, request):
+        """启用SSL-VPN-CLIENT 证书
+
+        :param request: Request instance for EnableVpnGatewaySslClientCert.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.EnableVpnGatewaySslClientCertRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.EnableVpnGatewaySslClientCertResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("EnableVpnGatewaySslClientCert", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.EnableVpnGatewaySslClientCertResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

@@ -55,6 +55,8 @@ class CreateJobConfigRequest(AbstractModel):
         :type ClsTopicId: str
         :param LogCollectType: 日志采集类型 2：CLS；3：COS
         :type LogCollectType: int
+        :param PythonVersion: pyflink作业运行时使用的python版本
+        :type PythonVersion: str
         """
         self.JobId = None
         self.EntrypointClass = None
@@ -71,6 +73,7 @@ class CreateJobConfigRequest(AbstractModel):
         self.ClsLogsetId = None
         self.ClsTopicId = None
         self.LogCollectType = None
+        self.PythonVersion = None
 
 
     def _deserialize(self, params):
@@ -99,6 +102,7 @@ class CreateJobConfigRequest(AbstractModel):
         self.ClsLogsetId = params.get("ClsLogsetId")
         self.ClsTopicId = params.get("ClsTopicId")
         self.LogCollectType = params.get("LogCollectType")
+        self.PythonVersion = params.get("PythonVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -998,6 +1002,9 @@ class JobConfig(AbstractModel):
         :param ClsTopicId: CLS日志主题ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClsTopicId: str
+        :param PythonVersion: pyflink作业运行的python版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PythonVersion: str
         """
         self.JobId = None
         self.EntrypointClass = None
@@ -1017,6 +1024,7 @@ class JobConfig(AbstractModel):
         self.TaskManagerSpec = None
         self.ClsLogsetId = None
         self.ClsTopicId = None
+        self.PythonVersion = None
 
 
     def _deserialize(self, params):
@@ -1048,6 +1056,7 @@ class JobConfig(AbstractModel):
         self.TaskManagerSpec = params.get("TaskManagerSpec")
         self.ClsLogsetId = params.get("ClsLogsetId")
         self.ClsTopicId = params.get("ClsTopicId")
+        self.PythonVersion = params.get("PythonVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

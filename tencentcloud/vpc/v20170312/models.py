@@ -4893,6 +4893,132 @@ class CreateVpnGatewayRoutesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateVpnGatewaySslClientRequest(AbstractModel):
+    """CreateVpnGatewaySslClient请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SslVpnServerId: SSL-VPN-SERVER 实例ID。
+        :type SslVpnServerId: str
+        :param SslVpnClientName: name
+        :type SslVpnClientName: str
+        """
+        self.SslVpnServerId = None
+        self.SslVpnClientName = None
+
+
+    def _deserialize(self, params):
+        self.SslVpnServerId = params.get("SslVpnServerId")
+        self.SslVpnClientName = params.get("SslVpnClientName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateVpnGatewaySslClientResponse(AbstractModel):
+    """CreateVpnGatewaySslClient返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 异步任务ID。
+        :type TaskId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateVpnGatewaySslServerRequest(AbstractModel):
+    """CreateVpnGatewaySslServer请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param VpnGatewayId: VPN实例ID
+        :type VpnGatewayId: str
+        :param SslVpnServerName: SSL_VPN_SERVER 实例名
+        :type SslVpnServerName: str
+        :param LocalAddress: 本端地址网段
+        :type LocalAddress: list of str
+        :param RemoteAddress: 客户端地址网段
+        :type RemoteAddress: str
+        :param SslVpnProtocol: SSL VPN服务端监听协议。当前仅支持 UDP。默认UDP
+        :type SslVpnProtocol: str
+        :param SslVpnPort: SSL VPN服务端监听协议端口。默认1194。
+        :type SslVpnPort: int
+        :param IntegrityAlgorithm: 认证算法。可选 'SHA1', 'MD5', 'NONE'。默认NONE
+        :type IntegrityAlgorithm: str
+        :param EncryptAlgorithm: 加密算法。可选 'AES-128-CBC', 'AES-192-CBC', 'AES-256-CBC', 'NONE'。默认NONE
+        :type EncryptAlgorithm: str
+        :param Compress: 是否支持压缩。当前仅支持不支持压缩。默认False
+        :type Compress: bool
+        """
+        self.VpnGatewayId = None
+        self.SslVpnServerName = None
+        self.LocalAddress = None
+        self.RemoteAddress = None
+        self.SslVpnProtocol = None
+        self.SslVpnPort = None
+        self.IntegrityAlgorithm = None
+        self.EncryptAlgorithm = None
+        self.Compress = None
+
+
+    def _deserialize(self, params):
+        self.VpnGatewayId = params.get("VpnGatewayId")
+        self.SslVpnServerName = params.get("SslVpnServerName")
+        self.LocalAddress = params.get("LocalAddress")
+        self.RemoteAddress = params.get("RemoteAddress")
+        self.SslVpnProtocol = params.get("SslVpnProtocol")
+        self.SslVpnPort = params.get("SslVpnPort")
+        self.IntegrityAlgorithm = params.get("IntegrityAlgorithm")
+        self.EncryptAlgorithm = params.get("EncryptAlgorithm")
+        self.Compress = params.get("Compress")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateVpnGatewaySslServerResponse(AbstractModel):
+    """CreateVpnGatewaySslServer返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 创建SSL-VPN server 异步任务ID
+        :type TaskId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
 class CrossBorderCompliance(AbstractModel):
     """合规化审批单
 
@@ -6634,6 +6760,96 @@ class DeleteVpnGatewayRoutesResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteVpnGatewaySslClientRequest(AbstractModel):
+    """DeleteVpnGatewaySslClient请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SslVpnClientId: SSL-VPN-CLIENT 实例ID。
+        :type SslVpnClientId: str
+        """
+        self.SslVpnClientId = None
+
+
+    def _deserialize(self, params):
+        self.SslVpnClientId = params.get("SslVpnClientId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteVpnGatewaySslClientResponse(AbstractModel):
+    """DeleteVpnGatewaySslClient返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 异步任务ID。
+        :type TaskId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteVpnGatewaySslServerRequest(AbstractModel):
+    """DeleteVpnGatewaySslServer请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SslVpnServerId: SSL-VPN-SERVER 实例ID。
+        :type SslVpnServerId: str
+        """
+        self.SslVpnServerId = None
+
+
+    def _deserialize(self, params):
+        self.SslVpnServerId = params.get("SslVpnServerId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteVpnGatewaySslServerResponse(AbstractModel):
+    """DeleteVpnGatewaySslServer返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 异步任务ID。
+        :type TaskId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
         self.RequestId = params.get("RequestId")
 
 
@@ -11082,6 +11298,158 @@ class DescribeVpnGatewayRoutesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeVpnGatewaySslClientsRequest(AbstractModel):
+    """DescribeVpnGatewaySslClients请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Filters: 过滤条件，参数不支持同时指定SslVpnClientIds和Filters。
+<li>vpc-id - String - （过滤条件）VPC实例ID形如：vpc-f49l6u0z。</li>
+<li>vpn-gateway-id - String - （过滤条件）VPN实例ID形如：vpngw-5aluhh9t。</li>
+<li>ssl-vpn-server-id - String - （过滤条件）SSL-VPN-SERVER实例ID形如：vpngwSslServer-123456。</li>
+<li>ssl-vpn-client-id - String - （过滤条件）SSL-VPN-CLIENT实例ID形如：vpngwSslClient-123456。</li>
+<li>ssl-vpn-client-name - String - （过滤条件）SSL-VPN-CLIENT实例名称。</li>
+        :type Filters: list of Filter
+        :param Offset: 偏移量
+        :type Offset: int
+        :param Limit: 请求对象个数
+        :type Limit: int
+        :param SslVpnClientIds: SSL-VPN-CLIENT实例ID。形如：vpngwSslClient-f49l6u0z。每次请求的实例的上限为100。参数不支持同时指定SslVpnClientIds和Filters。
+        :type SslVpnClientIds: list of str
+        """
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+        self.SslVpnClientIds = None
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.SslVpnClientIds = params.get("SslVpnClientIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVpnGatewaySslClientsResponse(AbstractModel):
+    """DescribeVpnGatewaySslClients返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 符合条件的实例数量。
+        :type TotalCount: int
+        :param SslVpnClientSet: 符合条件的实例个数。
+        :type SslVpnClientSet: list of SslVpnClient
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.SslVpnClientSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("SslVpnClientSet") is not None:
+            self.SslVpnClientSet = []
+            for item in params.get("SslVpnClientSet"):
+                obj = SslVpnClient()
+                obj._deserialize(item)
+                self.SslVpnClientSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeVpnGatewaySslServersRequest(AbstractModel):
+    """DescribeVpnGatewaySslServers请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Offset: 偏移量
+        :type Offset: int
+        :param Limit: 请求对象个数
+        :type Limit: int
+        :param SslVpnServerIds: SSL-VPN-SERVER实例ID。形如：vpngwSslServer-12345678。每次请求的实例的上限为100。参数不支持同时指定SslVpnServerIds和Filters。
+        :type SslVpnServerIds: list of str
+        :param Filters: 过滤条件，参数不支持同时指定SslVpnServerIds和Filters。
+<li>vpc-id - String - （过滤条件）VPC实例ID形如：vpc-f49l6u0z。</li>
+<li>vpn-gateway-id - String - （过滤条件）VPN实例ID形如：vpngw-5aluhh9t。</li>
+<li>vpn-gateway-name - String - （过滤条件）VPN实例名称。</li>
+<li>ssl-vpn-server-name - String - （过滤条件）SSL-VPN-SERVER实例名称。</li>
+<li>ssl-vpn-server-id - String - （过滤条件）SSL-VPN-SERVER实例ID形如：vpngwSslServer-123456。</li>
+        :type Filters: list of FilterObject
+        """
+        self.Offset = None
+        self.Limit = None
+        self.SslVpnServerIds = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.SslVpnServerIds = params.get("SslVpnServerIds")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = FilterObject()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVpnGatewaySslServersResponse(AbstractModel):
+    """DescribeVpnGatewaySslServers返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 符合条件的实例数量。
+        :type TotalCount: int
+        :param SslVpnSeverSet: SSL-VPN-SERVER 实例详细信息列表。
+        :type SslVpnSeverSet: list of SslVpnSever
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.SslVpnSeverSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("SslVpnSeverSet") is not None:
+            self.SslVpnSeverSet = []
+            for item in params.get("SslVpnSeverSet"):
+                obj = SslVpnSever()
+                obj._deserialize(item)
+                self.SslVpnSeverSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeVpnGatewaysRequest(AbstractModel):
     """DescribeVpnGateways请求参数结构体
 
@@ -11746,6 +12114,51 @@ class DisableRoutesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DisableVpnGatewaySslClientCertRequest(AbstractModel):
+    """DisableVpnGatewaySslClientCert请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SslVpnClientId: SSL-VPN-CLIENT 实例ID。
+        :type SslVpnClientId: str
+        """
+        self.SslVpnClientId = None
+
+
+    def _deserialize(self, params):
+        self.SslVpnClientId = params.get("SslVpnClientId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DisableVpnGatewaySslClientCertResponse(AbstractModel):
+    """DisableVpnGatewaySslClientCert返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 异步任务实例ID。
+        :type TaskId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
 class DisassociateAddressRequest(AbstractModel):
     """DisassociateAddress请求参数结构体
 
@@ -12124,6 +12537,51 @@ class DownloadCustomerGatewayConfigurationResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DownloadVpnGatewaySslClientCertRequest(AbstractModel):
+    """DownloadVpnGatewaySslClientCert请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SslVpnClientId: SSL-VPN-CLIENT 实例ID。
+        :type SslVpnClientId: str
+        """
+        self.SslVpnClientId = None
+
+
+    def _deserialize(self, params):
+        self.SslVpnClientId = params.get("SslVpnClientId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DownloadVpnGatewaySslClientCertResponse(AbstractModel):
+    """DownloadVpnGatewaySslClientCert返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SslClientConfigsSet: SSL-VPN-CLIENT 证书配置
+        :type SslClientConfigsSet: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.SslClientConfigsSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.SslClientConfigsSet = params.get("SslClientConfigsSet")
+        self.RequestId = params.get("RequestId")
+
+
 class EnableCcnRoutesRequest(AbstractModel):
     """EnableCcnRoutes请求参数结构体
 
@@ -12308,6 +12766,51 @@ class EnableVpcEndPointConnectResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class EnableVpnGatewaySslClientCertRequest(AbstractModel):
+    """EnableVpnGatewaySslClientCert请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SslVpnClientId: SSL-VPN-CLIENT 实例ID。
+        :type SslVpnClientId: str
+        """
+        self.SslVpnClientId = None
+
+
+    def _deserialize(self, params):
+        self.SslVpnClientId = params.get("SslVpnClientId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EnableVpnGatewaySslClientCertResponse(AbstractModel):
+    """EnableVpnGatewaySslClientCert返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 异步任务实例ID。
+        :type TaskId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
         self.RequestId = params.get("RequestId")
 
 
@@ -19005,6 +19508,160 @@ class SourceIpTranslationNatRule(AbstractModel):
         self.NatGatewayId = params.get("NatGatewayId")
         self.VpcId = params.get("VpcId")
         self.CreatedTime = params.get("CreatedTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SslVpnClient(AbstractModel):
+    """SSL-VPN-CLIENT 出参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param VpcId: VPC实例ID
+        :type VpcId: str
+        :param SslVpnServerId: SSL-VPN-SERVER 实例ID
+        :type SslVpnServerId: str
+        :param CertStatus: 证书状态. 
+0:创建中
+1:正常
+2:已停用
+3.已过期
+4.创建出错
+        :type CertStatus: int
+        :param SslVpnClientId: SSL-VPN-CLIENT 实例ID
+        :type SslVpnClientId: str
+        :param CertBeginTime: 证书开始时间
+        :type CertBeginTime: str
+        :param CertEndTime: 证书到期时间
+        :type CertEndTime: str
+        :param Name: CLIENT NAME
+        :type Name: str
+        :param State: 创建CLIENT 状态。
+0 创建中
+1 创建出错
+2 更新中
+3 更新出错
+4 销毁中
+5 销毁出粗
+6 已连通
+7 未知
+        :type State: str
+        """
+        self.VpcId = None
+        self.SslVpnServerId = None
+        self.CertStatus = None
+        self.SslVpnClientId = None
+        self.CertBeginTime = None
+        self.CertEndTime = None
+        self.Name = None
+        self.State = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.SslVpnServerId = params.get("SslVpnServerId")
+        self.CertStatus = params.get("CertStatus")
+        self.SslVpnClientId = params.get("SslVpnClientId")
+        self.CertBeginTime = params.get("CertBeginTime")
+        self.CertEndTime = params.get("CertEndTime")
+        self.Name = params.get("Name")
+        self.State = params.get("State")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SslVpnSever(AbstractModel):
+    """SSL-VPN-SERVER 信息 SET
+
+    """
+
+    def __init__(self):
+        r"""
+        :param VpcId: VPC实例ID.
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcId: str
+        :param SslVpnServerId: SSL-VPN-SERVER 实例ID。
+        :type SslVpnServerId: str
+        :param VpnGatewayId: VPN 实例ID。
+        :type VpnGatewayId: str
+        :param SslVpnServerName: SSL-VPN-SERVER name。
+        :type SslVpnServerName: str
+        :param LocalAddress: 本端地址段。
+        :type LocalAddress: list of str
+        :param RemoteAddress: 客户端地址段。
+        :type RemoteAddress: str
+        :param MaxConnection: 客户端最大连接数。
+        :type MaxConnection: int
+        :param WanIp: SSL-VPN 网关公网IP。
+        :type WanIp: str
+        :param SslVpnProtocol: SSL VPN服务端监听协议
+        :type SslVpnProtocol: str
+        :param SslVpnPort: SSL VPN服务端监听协议端口
+        :type SslVpnPort: int
+        :param EncryptAlgorithm: 加密算法。
+        :type EncryptAlgorithm: str
+        :param IntegrityAlgorithm: 认证算法。
+        :type IntegrityAlgorithm: str
+        :param Compress: 是否支持压缩。
+        :type Compress: int
+        :param CreateTime: 创建时间。
+        :type CreateTime: str
+        :param State: SSL-VPN-SERVER 创建状态。
+0 创建中
+1 创建出错
+2 更新中
+3 更新出错
+4 销毁中
+5 销毁出粗
+6 已连通
+7 未知
+        :type State: int
+        """
+        self.VpcId = None
+        self.SslVpnServerId = None
+        self.VpnGatewayId = None
+        self.SslVpnServerName = None
+        self.LocalAddress = None
+        self.RemoteAddress = None
+        self.MaxConnection = None
+        self.WanIp = None
+        self.SslVpnProtocol = None
+        self.SslVpnPort = None
+        self.EncryptAlgorithm = None
+        self.IntegrityAlgorithm = None
+        self.Compress = None
+        self.CreateTime = None
+        self.State = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.SslVpnServerId = params.get("SslVpnServerId")
+        self.VpnGatewayId = params.get("VpnGatewayId")
+        self.SslVpnServerName = params.get("SslVpnServerName")
+        self.LocalAddress = params.get("LocalAddress")
+        self.RemoteAddress = params.get("RemoteAddress")
+        self.MaxConnection = params.get("MaxConnection")
+        self.WanIp = params.get("WanIp")
+        self.SslVpnProtocol = params.get("SslVpnProtocol")
+        self.SslVpnPort = params.get("SslVpnPort")
+        self.EncryptAlgorithm = params.get("EncryptAlgorithm")
+        self.IntegrityAlgorithm = params.get("IntegrityAlgorithm")
+        self.Compress = params.get("Compress")
+        self.CreateTime = params.get("CreateTime")
+        self.State = params.get("State")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
