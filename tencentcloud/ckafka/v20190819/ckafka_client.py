@@ -139,7 +139,7 @@ class CkafkaClient(AbstractClient):
 
 
     def CreateConsumer(self, request):
-        """创建消费者
+        """创建消费者组
 
         :param request: Request instance for CreateConsumer.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.CreateConsumerRequest`

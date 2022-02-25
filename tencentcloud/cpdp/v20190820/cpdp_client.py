@@ -2414,6 +2414,34 @@ class CpdpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def QueryExceedingInfo(self, request):
+        """灵云-查询超额信息
+
+        :param request: Request instance for QueryExceedingInfo.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.QueryExceedingInfoRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.QueryExceedingInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("QueryExceedingInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryExceedingInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def QueryExchangeRate(self, request):
         """跨境-查询汇率
 

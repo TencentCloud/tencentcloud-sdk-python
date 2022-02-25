@@ -2300,7 +2300,7 @@ class GetSecurityLastUsedRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SecretIdList: 查询密钥ID列表
+        :param SecretIdList: 查询密钥ID列表。最多支持10个。
         :type SecretIdList: list of str
         """
         self.SecretIdList = None

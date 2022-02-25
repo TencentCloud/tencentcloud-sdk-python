@@ -671,6 +671,8 @@ class DescribeKTVMusicDetailResponse(AbstractModel):
         :type MidiJsonUrl: str
         :param ChorusClipSet: 副歌片段数据列表
         :type ChorusClipSet: list of ChorusClip
+        :param PreludeInterval: 前奏间隔，单位：毫秒；注：若参数返回为0则无人声部分
+        :type PreludeInterval: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -680,6 +682,7 @@ class DescribeKTVMusicDetailResponse(AbstractModel):
         self.DefinitionInfoSet = None
         self.MidiJsonUrl = None
         self.ChorusClipSet = None
+        self.PreludeInterval = None
         self.RequestId = None
 
 
@@ -702,6 +705,7 @@ class DescribeKTVMusicDetailResponse(AbstractModel):
                 obj = ChorusClip()
                 obj._deserialize(item)
                 self.ChorusClipSet.append(obj)
+        self.PreludeInterval = params.get("PreludeInterval")
         self.RequestId = params.get("RequestId")
 
 
@@ -1827,6 +1831,8 @@ class KTVMusicDetailInfo(AbstractModel):
         :type MidiJsonUrl: str
         :param ChorusClipSet: 副歌片段数据列表
         :type ChorusClipSet: list of ChorusClip
+        :param PreludeInterval: 前奏间隔，单位：毫秒；注：若参数返回为0则无人声部分
+        :type PreludeInterval: int
         """
         self.KTVMusicBaseInfo = None
         self.PlayToken = None
@@ -1834,6 +1840,7 @@ class KTVMusicDetailInfo(AbstractModel):
         self.DefinitionInfoSet = None
         self.MidiJsonUrl = None
         self.ChorusClipSet = None
+        self.PreludeInterval = None
 
 
     def _deserialize(self, params):
@@ -1855,6 +1862,7 @@ class KTVMusicDetailInfo(AbstractModel):
                 obj = ChorusClip()
                 obj._deserialize(item)
                 self.ChorusClipSet.append(obj)
+        self.PreludeInterval = params.get("PreludeInterval")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

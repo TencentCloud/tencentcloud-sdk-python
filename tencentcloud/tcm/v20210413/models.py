@@ -18,6 +18,40 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class APM(AbstractModel):
+    """腾讯云应用性能管理服务参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Enable: 是否启用
+        :type Enable: bool
+        :param Region: 地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
+        :param InstanceId: APM 实例，如果创建时传入的参数为空，则表示自动创建 APM 实例。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        """
+        self.Enable = None
+        self.Region = None
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.Enable = params.get("Enable")
+        self.Region = params.get("Region")
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AccessLogConfig(AbstractModel):
     """AccessLog 配置
 
@@ -742,7 +776,7 @@ class IstioConfig(AbstractModel):
         r"""
         :param OutboundTrafficPolicy: 外部流量策略
         :type OutboundTrafficPolicy: str
-        :param Tracing: 调用链配置
+        :param Tracing: 调用链配置（Deprecated，请使用 MeshConfig.Tracing 进行配置）
         :type Tracing: :class:`tencentcloud.tcm.v20210413.models.TracingConfig`
         :param DisablePolicyChecks: 禁用策略检查功能
 注意：此字段可能返回 null，表示取不到有效值。
@@ -1417,12 +1451,22 @@ class TracingConfig(AbstractModel):
         r"""
         :param Sampling: 调用链采样率，百分比
         :type Sampling: float
+        :param Enable: 是否启用调用跟踪
+        :type Enable: bool
+        :param APM: 腾讯云 APM 服务相关参数
+        :type APM: :class:`tencentcloud.tcm.v20210413.models.APM`
         """
         self.Sampling = None
+        self.Enable = None
+        self.APM = None
 
 
     def _deserialize(self, params):
         self.Sampling = params.get("Sampling")
+        self.Enable = params.get("Enable")
+        if params.get("APM") is not None:
+            self.APM = APM()
+            self.APM._deserialize(params.get("APM"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

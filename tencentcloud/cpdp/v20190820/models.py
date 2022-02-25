@@ -9337,6 +9337,34 @@ class OrganizationInfo(AbstractModel):
         
 
 
+class Paging(AbstractModel):
+    """分页参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Index: 页码
+        :type Index: int
+        :param Count: 页长
+        :type Count: int
+        """
+        self.Index = None
+        self.Count = None
+
+
+    def _deserialize(self, params):
+        self.Index = params.get("Index")
+        self.Count = params.get("Count")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PayDataResult(AbstractModel):
     """pay支付方式json数据
 
@@ -11841,6 +11869,153 @@ class QueryDownloadBillURLResponse(AbstractModel):
         self.MerchantAppId = params.get("MerchantAppId")
         self.DownloadUrl = params.get("DownloadUrl")
         self.RequestId = params.get("RequestId")
+
+
+class QueryExceedingInfoData(AbstractModel):
+    """超额信息数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AgentId: 代理商ID。
+        :type AgentId: str
+        :param AgentName: 代理商名称。
+        :type AgentName: str
+        :param AnchorId: 主播ID。当入参Dimension为ANCHOR或ORDER时，该字段才会有值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AnchorId: str
+        :param AnchorName: 主播名称。当入参Dimension为ANCHOR或ORDER时，该字段才会有值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AnchorName: str
+        :param OrderId: 订单号。当入参Dimension为ORDER时，该字段才会有值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OrderId: str
+        :param ExceedingType: 超额类型。目前支持 AGENT_EXCEED_100 和 ANCHOR_EXCEED_100_12 两种类型。
+        :type ExceedingType: str
+        """
+        self.AgentId = None
+        self.AgentName = None
+        self.AnchorId = None
+        self.AnchorName = None
+        self.OrderId = None
+        self.ExceedingType = None
+
+
+    def _deserialize(self, params):
+        self.AgentId = params.get("AgentId")
+        self.AgentName = params.get("AgentName")
+        self.AnchorId = params.get("AnchorId")
+        self.AnchorName = params.get("AnchorName")
+        self.OrderId = params.get("OrderId")
+        self.ExceedingType = params.get("ExceedingType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryExceedingInfoRequest(AbstractModel):
+    """QueryExceedingInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TimeStr: 超额日期。格式为yyyy-MM-dd。
+        :type TimeStr: str
+        :param Dimension: 维度。目前支持三个维度: AGENT, ANCHOR, ORDER。不填默认使用AGENT维度。
+        :type Dimension: str
+        :param PageNumber: 分页信息。不填默认Index为1，Count为100。
+        :type PageNumber: :class:`tencentcloud.cpdp.v20190820.models.Paging`
+        """
+        self.TimeStr = None
+        self.Dimension = None
+        self.PageNumber = None
+
+
+    def _deserialize(self, params):
+        self.TimeStr = params.get("TimeStr")
+        self.Dimension = params.get("Dimension")
+        if params.get("PageNumber") is not None:
+            self.PageNumber = Paging()
+            self.PageNumber._deserialize(params.get("PageNumber"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryExceedingInfoResponse(AbstractModel):
+    """QueryExceedingInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrCode: 错误码。
+        :type ErrCode: str
+        :param ErrMessage: 错误消息。
+        :type ErrMessage: str
+        :param Result: 超额信息结果。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.cpdp.v20190820.models.QueryExceedingInfoResult`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrCode = None
+        self.ErrMessage = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrCode = params.get("ErrCode")
+        self.ErrMessage = params.get("ErrMessage")
+        if params.get("Result") is not None:
+            self.Result = QueryExceedingInfoResult()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class QueryExceedingInfoResult(AbstractModel):
+    """超额信息结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Count: 记录总数。
+        :type Count: int
+        :param Data: 超额信息数据。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: list of QueryExceedingInfoData
+        """
+        self.Count = None
+        self.Data = None
+
+
+    def _deserialize(self, params):
+        self.Count = params.get("Count")
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = QueryExceedingInfoData()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class QueryExchangeRateRequest(AbstractModel):
