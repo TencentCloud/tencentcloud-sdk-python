@@ -19130,6 +19130,7 @@ class SecurityGroupPolicy(AbstractModel):
         :param Protocol: 协议, 取值: TCP,UDP,ICMP,ICMPv6,ALL。
         :type Protocol: str
         :param Port: 端口(all, 离散port,  range)。
+说明：如果Protocol设置为ALL，则Port也需要设置为all。
         :type Port: str
         :param ServiceTemplate: 协议端口ID或者协议端口组ID。ServiceTemplate和Protocol+Port互斥。
         :type ServiceTemplate: :class:`tencentcloud.vpc.v20170312.models.ServiceTemplateSpecification`

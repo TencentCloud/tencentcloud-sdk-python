@@ -243,6 +243,29 @@ class CreateAuditResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateAuditTrackRequest(AbstractModel):
+    """CreateAuditTrack请求参数结构体
+
+    """
+
+
+class CreateAuditTrackResponse(AbstractModel):
+    """CreateAuditTrack返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteAuditRequest(AbstractModel):
     """DeleteAudit请求参数结构体
 
@@ -285,6 +308,29 @@ class DeleteAuditResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.IsSuccess = params.get("IsSuccess")
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteAuditTrackRequest(AbstractModel):
+    """DeleteAuditTrack请求参数结构体
+
+    """
+
+
+class DeleteAuditTrackResponse(AbstractModel):
+    """DeleteAuditTrack返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -999,6 +1045,29 @@ class LookupAttribute(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ModifyAuditTrackRequest(AbstractModel):
+    """ModifyAuditTrack请求参数结构体
+
+    """
+
+
+class ModifyAuditTrackResponse(AbstractModel):
+    """ModifyAuditTrack返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class Resource(AbstractModel):
