@@ -3943,6 +3943,38 @@ class CreateUnitRuleResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CurvePoint(AbstractModel):
+    """构成监控数据图的曲线坐标点
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Label: 当前坐标 X轴的值 当前是日期格式:"yyyy-MM-dd HH:mm:ss"
+        :type Label: str
+        :param Value: 当前坐标 Y轴的值
+        :type Value: str
+        :param Timestamp: 该坐标点时间戳
+        :type Timestamp: str
+        """
+        self.Label = None
+        self.Value = None
+        self.Timestamp = None
+
+
+    def _deserialize(self, params):
+        self.Label = params.get("Label")
+        self.Value = params.get("Value")
+        self.Timestamp = params.get("Timestamp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DeleteApiGroupRequest(AbstractModel):
     """DeleteApiGroup请求参数结构体
 
@@ -7543,6 +7575,486 @@ class DescribeImageTagsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeInovcationIndicatorsRequest(AbstractModel):
+    """DescribeInovcationIndicators请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Dimension: 维度
+        :type Dimension: str
+        :param StartTime: 开始时间
+        :type StartTime: str
+        :param EndTime: 结束时间
+        :type EndTime: str
+        :param NamespaceId: 命名空间ID
+        :type NamespaceId: str
+        :param ServiceId: 微服务ID
+        :type ServiceId: str
+        :param CallerServiceName: 调用方服务名
+        :type CallerServiceName: str
+        :param CalleeServiceName: 被调方服务名
+        :type CalleeServiceName: str
+        :param CallerInterfaceName: 调用方接口名
+        :type CallerInterfaceName: str
+        :param CalleeInterfaceName: 被调方接口名
+        :type CalleeInterfaceName: str
+        :param ApplicationId: 应用ID
+        :type ApplicationId: str
+        :param GroupId: 部署组ID
+        :type GroupId: str
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        """
+        self.Dimension = None
+        self.StartTime = None
+        self.EndTime = None
+        self.NamespaceId = None
+        self.ServiceId = None
+        self.CallerServiceName = None
+        self.CalleeServiceName = None
+        self.CallerInterfaceName = None
+        self.CalleeInterfaceName = None
+        self.ApplicationId = None
+        self.GroupId = None
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.Dimension = params.get("Dimension")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.NamespaceId = params.get("NamespaceId")
+        self.ServiceId = params.get("ServiceId")
+        self.CallerServiceName = params.get("CallerServiceName")
+        self.CalleeServiceName = params.get("CalleeServiceName")
+        self.CallerInterfaceName = params.get("CallerInterfaceName")
+        self.CalleeInterfaceName = params.get("CalleeInterfaceName")
+        self.ApplicationId = params.get("ApplicationId")
+        self.GroupId = params.get("GroupId")
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInovcationIndicatorsResponse(AbstractModel):
+    """DescribeInovcationIndicators返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 服务调用监控指标
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.tsf.v20180326.models.InvocationIndicator`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = InvocationIndicator()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeInvocationMetricDataCurveRequest(AbstractModel):
+    """DescribeInvocationMetricDataCurve请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StartTime: 查询开始时间
+        :type StartTime: str
+        :param EndTime: 查询结束时间
+        :type EndTime: str
+        :param Period: 查询时间粒度，单位秒可选值：60、3600、86400
+        :type Period: int
+        :param MetricDimensions: 查询指标维度
+        :type MetricDimensions: list of MetricDimension
+        :param Metrics: 查询指标名
+        :type Metrics: list of Metric
+        :param Kind: 视图视角。可选值：SERVER, CLIENT。默认为SERVER
+        :type Kind: str
+        :param Type: 类型。组件监控使用，可选值：SQL 或者 NoSQL
+        :type Type: str
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.Period = None
+        self.MetricDimensions = None
+        self.Metrics = None
+        self.Kind = None
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Period = params.get("Period")
+        if params.get("MetricDimensions") is not None:
+            self.MetricDimensions = []
+            for item in params.get("MetricDimensions"):
+                obj = MetricDimension()
+                obj._deserialize(item)
+                self.MetricDimensions.append(obj)
+        if params.get("Metrics") is not None:
+            self.Metrics = []
+            for item in params.get("Metrics"):
+                obj = Metric()
+                obj._deserialize(item)
+                self.Metrics.append(obj)
+        self.Kind = params.get("Kind")
+        self.Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInvocationMetricDataCurveResponse(AbstractModel):
+    """DescribeInvocationMetricDataCurve返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 指标监控数据曲线集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: list of MetricDataCurve
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = []
+            for item in params.get("Result"):
+                obj = MetricDataCurve()
+                obj._deserialize(item)
+                self.Result.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeInvocationMetricDataDimensionRequest(AbstractModel):
+    """DescribeInvocationMetricDataDimension请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StartTime: 开始时间
+        :type StartTime: str
+        :param EndTime: 结束时间
+        :type EndTime: str
+        :param Offset: 开始index
+        :type Offset: int
+        :param Limit: 分页大小
+        :type Limit: int
+        :param DimensionName: 聚合维度
+        :type DimensionName: str
+        :param SearchWord: 搜索关键字
+        :type SearchWord: str
+        :param MetricDimensionValues: 维度
+        :type MetricDimensionValues: list of MetricDimensionValue
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.Offset = None
+        self.Limit = None
+        self.DimensionName = None
+        self.SearchWord = None
+        self.MetricDimensionValues = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.DimensionName = params.get("DimensionName")
+        self.SearchWord = params.get("SearchWord")
+        if params.get("MetricDimensionValues") is not None:
+            self.MetricDimensionValues = []
+            for item in params.get("MetricDimensionValues"):
+                obj = MetricDimensionValue()
+                obj._deserialize(item)
+                self.MetricDimensionValues.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInvocationMetricDataDimensionResponse(AbstractModel):
+    """DescribeInvocationMetricDataDimension返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 维度
+        :type Result: :class:`tencentcloud.tsf.v20180326.models.TsfPageDimension`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = TsfPageDimension()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeInvocationMetricDataPointRequest(AbstractModel):
+    """DescribeInvocationMetricDataPoint请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StartTime: 开始时间
+        :type StartTime: str
+        :param EndTime: 结束时间
+        :type EndTime: str
+        :param MetricDimensionValues: 维度
+        :type MetricDimensionValues: list of MetricDimensionValue
+        :param Metrics: 指标
+        :type Metrics: list of Metric
+        :param Kind: 调用视角。可选值：SERVER, CLIENT。默认为SERVER
+        :type Kind: str
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.MetricDimensionValues = None
+        self.Metrics = None
+        self.Kind = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        if params.get("MetricDimensionValues") is not None:
+            self.MetricDimensionValues = []
+            for item in params.get("MetricDimensionValues"):
+                obj = MetricDimensionValue()
+                obj._deserialize(item)
+                self.MetricDimensionValues.append(obj)
+        if params.get("Metrics") is not None:
+            self.Metrics = []
+            for item in params.get("Metrics"):
+                obj = Metric()
+                obj._deserialize(item)
+                self.Metrics.append(obj)
+        self.Kind = params.get("Kind")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInvocationMetricDataPointResponse(AbstractModel):
+    """DescribeInvocationMetricDataPoint返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 单值指标列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: list of MetricDataSingleValue
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = []
+            for item in params.get("Result"):
+                obj = MetricDataSingleValue()
+                obj._deserialize(item)
+                self.Result.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeInvocationMetricScatterPlotRequest(AbstractModel):
+    """DescribeInvocationMetricScatterPlot请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StartTime: 查询开始时间
+        :type StartTime: str
+        :param EndTime: 查询结束时间
+        :type EndTime: str
+        :param Period: 查询时间粒度，单位秒。可选值：60、3600、86400。
+        :type Period: int
+        :param MetricDimensions: 查询指标维度
+        :type MetricDimensions: list of MetricDimension
+        :param Metrics: 查询指标名
+        :type Metrics: list of Metric
+        :param Kind: 视图视角。可选值：SERVER, CLIENT。默认为SERVER
+        :type Kind: str
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.Period = None
+        self.MetricDimensions = None
+        self.Metrics = None
+        self.Kind = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Period = params.get("Period")
+        if params.get("MetricDimensions") is not None:
+            self.MetricDimensions = []
+            for item in params.get("MetricDimensions"):
+                obj = MetricDimension()
+                obj._deserialize(item)
+                self.MetricDimensions.append(obj)
+        if params.get("Metrics") is not None:
+            self.Metrics = []
+            for item in params.get("Metrics"):
+                obj = Metric()
+                obj._deserialize(item)
+                self.Metrics.append(obj)
+        self.Kind = params.get("Kind")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInvocationMetricScatterPlotResponse(AbstractModel):
+    """DescribeInvocationMetricScatterPlot返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 多值时间抽统计指标
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.tsf.v20180326.models.InvocationMetricScatterPlot`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = InvocationMetricScatterPlot()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeJvmMonitorRequest(AbstractModel):
+    """DescribeJvmMonitor请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 查询的实例Id
+        :type InstanceId: str
+        :param ApplicationId: 实例所属应用Id
+        :type ApplicationId: str
+        :param TimeGranularity: 时间粒度,单位:秒
+        :type TimeGranularity: int
+        :param From: 查询数据起始时间格式(yyyy-MM-dd HH:mm:ss)
+        :type From: str
+        :param To: 查询数据结束时间格式(yyyy-MM-dd HH:mm:ss)
+        :type To: str
+        :param RequiredPictures: 查询的监控图列表,以返回值属性名作为入参
+        :type RequiredPictures: list of str
+        :param Tag: 扩展字段
+        :type Tag: str
+        """
+        self.InstanceId = None
+        self.ApplicationId = None
+        self.TimeGranularity = None
+        self.From = None
+        self.To = None
+        self.RequiredPictures = None
+        self.Tag = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.ApplicationId = params.get("ApplicationId")
+        self.TimeGranularity = params.get("TimeGranularity")
+        self.From = params.get("From")
+        self.To = params.get("To")
+        self.RequiredPictures = params.get("RequiredPictures")
+        self.Tag = params.get("Tag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeJvmMonitorResponse(AbstractModel):
+    """DescribeJvmMonitor返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: Java实例jvm监控数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.tsf.v20180326.models.JvmMonitorData`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = JvmMonitorData()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeLaneRulesRequest(AbstractModel):
     """DescribeLaneRules请求参数结构体
 
@@ -7867,6 +8379,73 @@ class DescribeMsApiListResponse(AbstractModel):
         if params.get("Result") is not None:
             self.Result = TsfApiListResponse()
             self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeOverviewInvocationRequest(AbstractModel):
+    """DescribeOverviewInvocation请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NamespaceId: 命名空间ID
+        :type NamespaceId: str
+        :param Type: 监控统计类型，可选值：SumReqAmount、AvgFailureRate、AvgTimeCost，分别对应请求量、请求错误率、平均响应耗时
+        :type Type: str
+        :param Period: 监控统计数据粒度，可选值：60、3600、86400，分别对应1分钟、1小时、1天
+        :type Period: int
+        :param StartTime: 查询开始时间，默认为当天的 00:00:00
+        :type StartTime: str
+        :param EndTime: 查询结束时间，默认为当前时间
+        :type EndTime: str
+        """
+        self.NamespaceId = None
+        self.Type = None
+        self.Period = None
+        self.StartTime = None
+        self.EndTime = None
+
+
+    def _deserialize(self, params):
+        self.NamespaceId = params.get("NamespaceId")
+        self.Type = params.get("Type")
+        self.Period = params.get("Period")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeOverviewInvocationResponse(AbstractModel):
+    """DescribeOverviewInvocation返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 监控统计数据列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: list of MetricDataPoint
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = []
+            for item in params.get("Result"):
+                obj = MetricDataPoint()
+                obj._deserialize(item)
+                self.Result.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -9082,6 +9661,111 @@ class DescribeSimpleNamespacesResponse(AbstractModel):
     def _deserialize(self, params):
         if params.get("Result") is not None:
             self.Result = TsfPageNamespace()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeStatisticsRequest(AbstractModel):
+    """DescribeStatistics请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Type: 类型：Interface、Service、Group、Instance、SQL、NoSQL
+        :type Type: str
+        :param TimeStep: 步长，单位s：60、3600、86400
+        :type TimeStep: int
+        :param Offset: 偏移量，取值范围大于等于0，默认值为0
+        :type Offset: int
+        :param Limit: 单页请求配置数量，取值范围[1, 50]，默认值为10
+        :type Limit: int
+        :param NamespaceId: 命名空间Id
+        :type NamespaceId: str
+        :param OrderBy: 排序字段:AvgTimeConsuming[默认]、RequestCount、ErrorRate。实例监控还支持 CpuPercent
+        :type OrderBy: str
+        :param OrderType: 排序方式：ASC:0、DESC:1
+        :type OrderType: int
+        :param EndTime: 开始时间：年月日 时分秒2020-05-12 14:43:12
+        :type EndTime: str
+        :param StartTime: 开始时间：年月日 时分秒2020-05-12 14:43:12
+        :type StartTime: str
+        :param ServiceName: 服务名称
+        :type ServiceName: str
+        :param SearchWord: 搜索关键词
+        :type SearchWord: str
+        :param MetricDimensionValues: 维度
+        :type MetricDimensionValues: list of MetricDimensionValue
+        :param BucketKey: 聚合关键词
+        :type BucketKey: str
+        :param DbName: 数据库
+        :type DbName: str
+        """
+        self.Type = None
+        self.TimeStep = None
+        self.Offset = None
+        self.Limit = None
+        self.NamespaceId = None
+        self.OrderBy = None
+        self.OrderType = None
+        self.EndTime = None
+        self.StartTime = None
+        self.ServiceName = None
+        self.SearchWord = None
+        self.MetricDimensionValues = None
+        self.BucketKey = None
+        self.DbName = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.TimeStep = params.get("TimeStep")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.NamespaceId = params.get("NamespaceId")
+        self.OrderBy = params.get("OrderBy")
+        self.OrderType = params.get("OrderType")
+        self.EndTime = params.get("EndTime")
+        self.StartTime = params.get("StartTime")
+        self.ServiceName = params.get("ServiceName")
+        self.SearchWord = params.get("SearchWord")
+        if params.get("MetricDimensionValues") is not None:
+            self.MetricDimensionValues = []
+            for item in params.get("MetricDimensionValues"):
+                obj = MetricDimensionValue()
+                obj._deserialize(item)
+                self.MetricDimensionValues.append(obj)
+        self.BucketKey = params.get("BucketKey")
+        self.DbName = params.get("DbName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeStatisticsResponse(AbstractModel):
+    """DescribeStatistics返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 查询服务统计结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.tsf.v20180326.models.ServiceStatisticsResults`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = ServiceStatisticsResults()
             self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
 
@@ -11575,6 +12259,41 @@ class ImageTagsResult(AbstractModel):
         
 
 
+class IndicatorCoord(AbstractModel):
+    """监控指标坐标
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CoordX: 指标横坐标值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CoordX: str
+        :param CoordY: 指标纵坐标值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CoordY: str
+        :param CoordTag: 指标标签，用于标识附加信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CoordTag: str
+        """
+        self.CoordX = None
+        self.CoordY = None
+        self.CoordTag = None
+
+
+    def _deserialize(self, params):
+        self.CoordX = params.get("CoordX")
+        self.CoordY = params.get("CoordY")
+        self.CoordTag = params.get("CoordTag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Instance(AbstractModel):
     """机器实例
 
@@ -11807,6 +12526,242 @@ class InstanceAdvancedSettings(AbstractModel):
     def _deserialize(self, params):
         self.MountTarget = params.get("MountTarget")
         self.DockerGraphPath = params.get("DockerGraphPath")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InvocationIndicator(AbstractModel):
+    """服务调用监控指标
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InvocationQuantity: 总请求数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InvocationQuantity: int
+        :param InvocationSuccessRate: 请求成功率，百分比
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InvocationSuccessRate: float
+        :param InvocationAvgDuration: 请求平均耗时，单位毫秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InvocationAvgDuration: float
+        :param InvocationSuccessDistribution: 成功请求数时间分布
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InvocationSuccessDistribution: list of IndicatorCoord
+        :param InvocationFailedDistribution: 失败请求数时间分布
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InvocationFailedDistribution: list of IndicatorCoord
+        :param InvocationStatusDistribution: 状态码分布
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InvocationStatusDistribution: list of IndicatorCoord
+        :param InvocationDurationDistribution: 时延分布
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InvocationDurationDistribution: list of IndicatorCoord
+        :param InvocationQuantityDistribution: 并发请求次数时间分布
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InvocationQuantityDistribution: list of IndicatorCoord
+        """
+        self.InvocationQuantity = None
+        self.InvocationSuccessRate = None
+        self.InvocationAvgDuration = None
+        self.InvocationSuccessDistribution = None
+        self.InvocationFailedDistribution = None
+        self.InvocationStatusDistribution = None
+        self.InvocationDurationDistribution = None
+        self.InvocationQuantityDistribution = None
+
+
+    def _deserialize(self, params):
+        self.InvocationQuantity = params.get("InvocationQuantity")
+        self.InvocationSuccessRate = params.get("InvocationSuccessRate")
+        self.InvocationAvgDuration = params.get("InvocationAvgDuration")
+        if params.get("InvocationSuccessDistribution") is not None:
+            self.InvocationSuccessDistribution = []
+            for item in params.get("InvocationSuccessDistribution"):
+                obj = IndicatorCoord()
+                obj._deserialize(item)
+                self.InvocationSuccessDistribution.append(obj)
+        if params.get("InvocationFailedDistribution") is not None:
+            self.InvocationFailedDistribution = []
+            for item in params.get("InvocationFailedDistribution"):
+                obj = IndicatorCoord()
+                obj._deserialize(item)
+                self.InvocationFailedDistribution.append(obj)
+        if params.get("InvocationStatusDistribution") is not None:
+            self.InvocationStatusDistribution = []
+            for item in params.get("InvocationStatusDistribution"):
+                obj = IndicatorCoord()
+                obj._deserialize(item)
+                self.InvocationStatusDistribution.append(obj)
+        if params.get("InvocationDurationDistribution") is not None:
+            self.InvocationDurationDistribution = []
+            for item in params.get("InvocationDurationDistribution"):
+                obj = IndicatorCoord()
+                obj._deserialize(item)
+                self.InvocationDurationDistribution.append(obj)
+        if params.get("InvocationQuantityDistribution") is not None:
+            self.InvocationQuantityDistribution = []
+            for item in params.get("InvocationQuantityDistribution"):
+                obj = IndicatorCoord()
+                obj._deserialize(item)
+                self.InvocationQuantityDistribution.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InvocationMetricScatterPlot(AbstractModel):
+    """监控数据散点图
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EndTime: 时间轴截止时间，GMT，精确到毫秒
+        :type EndTime: int
+        :param StartTime: 时间粒度
+        :type StartTime: int
+        :param Period: 时间轴开始时间，GMT，精确到毫秒
+        :type Period: int
+        :param DataPoints: 多值数据点集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataPoints: list of MultiValueDataPoints
+        """
+        self.EndTime = None
+        self.StartTime = None
+        self.Period = None
+        self.DataPoints = None
+
+
+    def _deserialize(self, params):
+        self.EndTime = params.get("EndTime")
+        self.StartTime = params.get("StartTime")
+        self.Period = params.get("Period")
+        if params.get("DataPoints") is not None:
+            self.DataPoints = []
+            for item in params.get("DataPoints"):
+                obj = MultiValueDataPoints()
+                obj._deserialize(item)
+                self.DataPoints.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class JvmMonitorData(AbstractModel):
+    """DescribeJvmMonitor查询jvm监控数据接口返回数据封装
+
+    """
+
+    def __init__(self):
+        r"""
+        :param HeapMemory: 堆内存监控图,三条线
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HeapMemory: :class:`tencentcloud.tsf.v20180326.models.MemoryPicture`
+        :param NonHeapMemory: 非堆内存监控图,三条线
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NonHeapMemory: :class:`tencentcloud.tsf.v20180326.models.MemoryPicture`
+        :param EdenSpace: 伊甸园区监控图,三条线
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EdenSpace: :class:`tencentcloud.tsf.v20180326.models.MemoryPicture`
+        :param SurvivorSpace: 幸存者区监控图,三条线
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SurvivorSpace: :class:`tencentcloud.tsf.v20180326.models.MemoryPicture`
+        :param OldSpace: 老年代监控图,三条线
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OldSpace: :class:`tencentcloud.tsf.v20180326.models.MemoryPicture`
+        :param MetaSpace: 元空间监控图,三条线
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MetaSpace: :class:`tencentcloud.tsf.v20180326.models.MemoryPicture`
+        :param ThreadPicture: 线程监控图,三条线
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ThreadPicture: :class:`tencentcloud.tsf.v20180326.models.ThreadPicture`
+        :param YoungGC: youngGC增量监控图,一条线
+注意：此字段可能返回 null，表示取不到有效值。
+        :type YoungGC: list of CurvePoint
+        :param FullGC: fullGC增量监控图,一条线
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FullGC: list of CurvePoint
+        :param CpuUsage: cpu使用率,一条线
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CpuUsage: list of CurvePoint
+        :param ClassCount: 加载类数,一条线
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClassCount: list of CurvePoint
+        """
+        self.HeapMemory = None
+        self.NonHeapMemory = None
+        self.EdenSpace = None
+        self.SurvivorSpace = None
+        self.OldSpace = None
+        self.MetaSpace = None
+        self.ThreadPicture = None
+        self.YoungGC = None
+        self.FullGC = None
+        self.CpuUsage = None
+        self.ClassCount = None
+
+
+    def _deserialize(self, params):
+        if params.get("HeapMemory") is not None:
+            self.HeapMemory = MemoryPicture()
+            self.HeapMemory._deserialize(params.get("HeapMemory"))
+        if params.get("NonHeapMemory") is not None:
+            self.NonHeapMemory = MemoryPicture()
+            self.NonHeapMemory._deserialize(params.get("NonHeapMemory"))
+        if params.get("EdenSpace") is not None:
+            self.EdenSpace = MemoryPicture()
+            self.EdenSpace._deserialize(params.get("EdenSpace"))
+        if params.get("SurvivorSpace") is not None:
+            self.SurvivorSpace = MemoryPicture()
+            self.SurvivorSpace._deserialize(params.get("SurvivorSpace"))
+        if params.get("OldSpace") is not None:
+            self.OldSpace = MemoryPicture()
+            self.OldSpace._deserialize(params.get("OldSpace"))
+        if params.get("MetaSpace") is not None:
+            self.MetaSpace = MemoryPicture()
+            self.MetaSpace._deserialize(params.get("MetaSpace"))
+        if params.get("ThreadPicture") is not None:
+            self.ThreadPicture = ThreadPicture()
+            self.ThreadPicture._deserialize(params.get("ThreadPicture"))
+        if params.get("YoungGC") is not None:
+            self.YoungGC = []
+            for item in params.get("YoungGC"):
+                obj = CurvePoint()
+                obj._deserialize(item)
+                self.YoungGC.append(obj)
+        if params.get("FullGC") is not None:
+            self.FullGC = []
+            for item in params.get("FullGC"):
+                obj = CurvePoint()
+                obj._deserialize(item)
+                self.FullGC.append(obj)
+        if params.get("CpuUsage") is not None:
+            self.CpuUsage = []
+            for item in params.get("CpuUsage"):
+                obj = CurvePoint()
+                obj._deserialize(item)
+                self.CpuUsage.append(obj)
+        if params.get("ClassCount") is not None:
+            self.ClassCount = []
+            for item in params.get("ClassCount"):
+                obj = CurvePoint()
+                obj._deserialize(item)
+                self.ClassCount.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -12159,6 +13114,123 @@ class LaneRules(AbstractModel):
         
 
 
+class MemoryPicture(AbstractModel):
+    """Jvm监控内存数据封装
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Max: 内存最大值
+        :type Max: list of CurvePoint
+        :param Used: 已用内存大小
+        :type Used: list of CurvePoint
+        :param Committed: 系统分配内存大小
+        :type Committed: list of CurvePoint
+        """
+        self.Max = None
+        self.Used = None
+        self.Committed = None
+
+
+    def _deserialize(self, params):
+        if params.get("Max") is not None:
+            self.Max = []
+            for item in params.get("Max"):
+                obj = CurvePoint()
+                obj._deserialize(item)
+                self.Max.append(obj)
+        if params.get("Used") is not None:
+            self.Used = []
+            for item in params.get("Used"):
+                obj = CurvePoint()
+                obj._deserialize(item)
+                self.Used.append(obj)
+        if params.get("Committed") is not None:
+            self.Committed = []
+            for item in params.get("Committed"):
+                obj = CurvePoint()
+                obj._deserialize(item)
+                self.Committed.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Metric(AbstractModel):
+    """指标
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 指标名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param Function: 指标计算方式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Function: str
+        """
+        self.Name = None
+        self.Function = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Function = params.get("Function")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MetricDataCurve(AbstractModel):
+    """指标监控数据曲线
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MetricName: 指标名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MetricName: str
+        :param MetricFunction: 指标计算方式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MetricFunction: str
+        :param MetricDataPoints: 指标数据点集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MetricDataPoints: list of MetricDataPoint
+        """
+        self.MetricName = None
+        self.MetricFunction = None
+        self.MetricDataPoints = None
+
+
+    def _deserialize(self, params):
+        self.MetricName = params.get("MetricName")
+        self.MetricFunction = params.get("MetricFunction")
+        if params.get("MetricDataPoints") is not None:
+            self.MetricDataPoints = []
+            for item in params.get("MetricDataPoints"):
+                obj = MetricDataPoint()
+                obj._deserialize(item)
+                self.MetricDataPoints.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class MetricDataPoint(AbstractModel):
     """监控统计数据点
 
@@ -12232,6 +13304,99 @@ class MetricDataPointMap(AbstractModel):
                 obj = MetricDataPoint()
                 obj._deserialize(item)
                 self.AvgTimeCost.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MetricDataSingleValue(AbstractModel):
+    """单值指标
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MetricName: 指标
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MetricName: str
+        :param MetricFunction: 统计方式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MetricFunction: str
+        :param MetricDataValue: 指标值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MetricDataValue: str
+        """
+        self.MetricName = None
+        self.MetricFunction = None
+        self.MetricDataValue = None
+
+
+    def _deserialize(self, params):
+        self.MetricName = params.get("MetricName")
+        self.MetricFunction = params.get("MetricFunction")
+        self.MetricDataValue = params.get("MetricDataValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MetricDimension(AbstractModel):
+    """指标维度
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 指标维度名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param Value: 指标维度取值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        """
+        self.Name = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MetricDimensionValue(AbstractModel):
+    """指标维度多值匹配
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 维度名
+        :type Name: str
+        :param Value: 维度值
+        :type Value: list of str
+        """
+        self.Name = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -13075,6 +14240,68 @@ class MsInstance(AbstractModel):
         self.LastHeartbeatTime = params.get("LastHeartbeatTime")
         self.RegistrationId = params.get("RegistrationId")
         self.HiddenStatus = params.get("HiddenStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MultiValue(AbstractModel):
+    """多值数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Values: 数据点
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Values: list of float
+        """
+        self.Values = None
+
+
+    def _deserialize(self, params):
+        self.Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MultiValueDataPoints(AbstractModel):
+    """多值数据点集合
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Points: 多值数据点
+        :type Points: list of MultiValue
+        :param MetricName: 指标名称
+        :type MetricName: str
+        :param PointKeys: 多值数据点key列表，每个值表示当前数据点所在区域的下限
+        :type PointKeys: list of str
+        """
+        self.Points = None
+        self.MetricName = None
+        self.PointKeys = None
+
+
+    def _deserialize(self, params):
+        if params.get("Points") is not None:
+            self.Points = []
+            for item in params.get("Points"):
+                obj = MultiValue()
+                obj._deserialize(item)
+                self.Points.append(obj)
+        self.MetricName = params.get("MetricName")
+        self.PointKeys = params.get("PointKeys")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -14997,6 +16224,170 @@ class ServiceSetting(AbstractModel):
         
 
 
+class ServiceStatisticsResult(AbstractModel):
+    """服务统计结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Path: 请求模版路径:type为接口时返回，服务时不返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Path: str
+        :param Method: 请求方法:type为接口时返回，服务时不返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Method: str
+        :param MicroserviceId: 微服务Id
+        :type MicroserviceId: str
+        :param MicroserviceName: 微服务名称
+        :type MicroserviceName: str
+        :param RequestCount: 请求数
+        :type RequestCount: int
+        :param ErrorRate: 请求错误率，不带百分号
+        :type ErrorRate: float
+        :param AvgTimeConsuming: 平均响应耗时ms
+        :type AvgTimeConsuming: float
+        :param MetricDataCurves: 响应耗时曲线
+        :type MetricDataCurves: list of MetricDataCurve
+        :param InstanceId: 实例id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param InstanceName: 实例name
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceName: str
+        :param GroupId: 部署组id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupId: str
+        :param GroupName: 部署组name
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupName: str
+        :param ClusterType: 部署组类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterType: str
+        :param GroupExist: 部署组是否存在
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupExist: int
+        :param InstanceExist: 实例是否存在，仅限cvm
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceExist: int
+        :param ApplicationId: 应用id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationId: str
+        :param MicroserviceType: 微服务类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MicroserviceType: str
+        :param CpuPercent: cpu使用率
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CpuPercent: int
+        :param HeapUsed: 已用堆大小,单位KB
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HeapUsed: int
+        :param DbName: 数据库
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DbName: str
+        :param Script: Script值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Script: str
+        :param DbType: 数据库类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DbType: str
+        """
+        self.Path = None
+        self.Method = None
+        self.MicroserviceId = None
+        self.MicroserviceName = None
+        self.RequestCount = None
+        self.ErrorRate = None
+        self.AvgTimeConsuming = None
+        self.MetricDataCurves = None
+        self.InstanceId = None
+        self.InstanceName = None
+        self.GroupId = None
+        self.GroupName = None
+        self.ClusterType = None
+        self.GroupExist = None
+        self.InstanceExist = None
+        self.ApplicationId = None
+        self.MicroserviceType = None
+        self.CpuPercent = None
+        self.HeapUsed = None
+        self.DbName = None
+        self.Script = None
+        self.DbType = None
+
+
+    def _deserialize(self, params):
+        self.Path = params.get("Path")
+        self.Method = params.get("Method")
+        self.MicroserviceId = params.get("MicroserviceId")
+        self.MicroserviceName = params.get("MicroserviceName")
+        self.RequestCount = params.get("RequestCount")
+        self.ErrorRate = params.get("ErrorRate")
+        self.AvgTimeConsuming = params.get("AvgTimeConsuming")
+        if params.get("MetricDataCurves") is not None:
+            self.MetricDataCurves = []
+            for item in params.get("MetricDataCurves"):
+                obj = MetricDataCurve()
+                obj._deserialize(item)
+                self.MetricDataCurves.append(obj)
+        self.InstanceId = params.get("InstanceId")
+        self.InstanceName = params.get("InstanceName")
+        self.GroupId = params.get("GroupId")
+        self.GroupName = params.get("GroupName")
+        self.ClusterType = params.get("ClusterType")
+        self.GroupExist = params.get("GroupExist")
+        self.InstanceExist = params.get("InstanceExist")
+        self.ApplicationId = params.get("ApplicationId")
+        self.MicroserviceType = params.get("MicroserviceType")
+        self.CpuPercent = params.get("CpuPercent")
+        self.HeapUsed = params.get("HeapUsed")
+        self.DbName = params.get("DbName")
+        self.Script = params.get("Script")
+        self.DbType = params.get("DbType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ServiceStatisticsResults(AbstractModel):
+    """服务统计结果集
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Content: 返回结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Content: list of ServiceStatisticsResult
+        :param TotalCount: 条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        """
+        self.Content = None
+        self.TotalCount = None
+
+
+    def _deserialize(self, params):
+        if params.get("Content") is not None:
+            self.Content = []
+            for item in params.get("Content"):
+                obj = ServiceStatisticsResult()
+                obj._deserialize(item)
+                self.Content.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ShardArgument(AbstractModel):
     """分片参数
 
@@ -16067,6 +17458,53 @@ class TerminateTaskFlowBatchResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ThreadPicture(AbstractModel):
+    """jvm监控数据线程数据封装
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ThreadCount: 总线程数
+        :type ThreadCount: list of CurvePoint
+        :param ThreadActive: 活跃线程数
+        :type ThreadActive: list of CurvePoint
+        :param DeamonThreadCount: 守护线程数
+        :type DeamonThreadCount: list of CurvePoint
+        """
+        self.ThreadCount = None
+        self.ThreadActive = None
+        self.DeamonThreadCount = None
+
+
+    def _deserialize(self, params):
+        if params.get("ThreadCount") is not None:
+            self.ThreadCount = []
+            for item in params.get("ThreadCount"):
+                obj = CurvePoint()
+                obj._deserialize(item)
+                self.ThreadCount.append(obj)
+        if params.get("ThreadActive") is not None:
+            self.ThreadActive = []
+            for item in params.get("ThreadActive"):
+                obj = CurvePoint()
+                obj._deserialize(item)
+                self.ThreadActive.append(obj)
+        if params.get("DeamonThreadCount") is not None:
+            self.DeamonThreadCount = []
+            for item in params.get("DeamonThreadCount"):
+                obj = CurvePoint()
+                obj._deserialize(item)
+                self.DeamonThreadCount.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TsfApiListResponse(AbstractModel):
     """TsfApiListResponse
 
@@ -16410,6 +17848,34 @@ class TsfPageContainerEvent(AbstractModel):
                 obj = ContainerEvent()
                 obj._deserialize(item)
                 self.Content.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TsfPageDimension(AbstractModel):
+    """维度分页
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 总数
+        :type TotalCount: int
+        :param Content: 维度
+        :type Content: list of str
+        """
+        self.TotalCount = None
+        self.Content = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        self.Content = params.get("Content")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -10247,7 +10247,7 @@ class RoInstanceInfo(AbstractModel):
         :type Zone: str
         :param InstanceId: RO实例ID，格式如：cdbro-c1nl9rpv
         :type InstanceId: str
-        :param Status: RO实例状态，可能返回值：0-创建中，1-运行中，4-删除中
+        :param Status: RO实例状态，可能返回值：0-创建中，1-运行中，3-异地RO（仅在使用DescribeDBInstances查询主实例信息时，返回值中异地RO的状态恒等于3，其他场景下无此值），4-删除中
         :type Status: int
         :param InstanceType: 实例类型，可能返回值：1-主实例，2-灾备实例，3-只读实例
         :type InstanceType: int

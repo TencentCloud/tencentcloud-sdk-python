@@ -2464,6 +2464,174 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeInovcationIndicators(self, request):
+        """查询调用监控指标
+
+        :param request: Request instance for DescribeInovcationIndicators.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeInovcationIndicatorsRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeInovcationIndicatorsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeInovcationIndicators", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeInovcationIndicatorsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeInvocationMetricDataCurve(self, request):
+        """查询调用指标数据变化曲线
+
+        :param request: Request instance for DescribeInvocationMetricDataCurve.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeInvocationMetricDataCurveRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeInvocationMetricDataCurveResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeInvocationMetricDataCurve", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeInvocationMetricDataCurveResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeInvocationMetricDataDimension(self, request):
+        """查询维度
+
+        :param request: Request instance for DescribeInvocationMetricDataDimension.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeInvocationMetricDataDimensionRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeInvocationMetricDataDimensionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeInvocationMetricDataDimension", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeInvocationMetricDataDimensionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeInvocationMetricDataPoint(self, request):
+        """查询单值指标维度
+
+        :param request: Request instance for DescribeInvocationMetricDataPoint.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeInvocationMetricDataPointRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeInvocationMetricDataPointResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeInvocationMetricDataPoint", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeInvocationMetricDataPointResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeInvocationMetricScatterPlot(self, request):
+        """查询调用指标数据散点图
+
+        :param request: Request instance for DescribeInvocationMetricScatterPlot.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeInvocationMetricScatterPlotRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeInvocationMetricScatterPlotResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeInvocationMetricScatterPlot", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeInvocationMetricScatterPlotResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeJvmMonitor(self, request):
+        """查询java实例jvm监控数据,返回数据可选
+
+        :param request: Request instance for DescribeJvmMonitor.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeJvmMonitorRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeJvmMonitorResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeJvmMonitor", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeJvmMonitorResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeLaneRules(self, request):
         """查询泳道规则列表
 
@@ -2590,6 +2758,34 @@ class TsfClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeMsApiListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeOverviewInvocation(self, request):
+        """服务调用监控统计概览
+
+        :param request: Request instance for DescribeOverviewInvocation.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeOverviewInvocationRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeOverviewInvocationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeOverviewInvocation", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeOverviewInvocationResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -3122,6 +3318,34 @@ class TsfClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSimpleNamespacesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeStatistics(self, request):
+        """服务统计页面：接口和服务维度
+
+        :param request: Request instance for DescribeStatistics.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeStatisticsRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeStatisticsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeStatistics", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeStatisticsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

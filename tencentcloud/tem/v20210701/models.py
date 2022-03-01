@@ -941,12 +941,15 @@ class DeployStrategyConf(AbstractModel):
         :type BatchInterval: int
         :param MinAvailable: 最小可用实例数
         :type MinAvailable: int
+        :param Force: 是否强制发布
+        :type Force: bool
         """
         self.TotalBatchCount = None
         self.BetaBatchNum = None
         self.DeployStrategyType = None
         self.BatchInterval = None
         self.MinAvailable = None
+        self.Force = None
 
 
     def _deserialize(self, params):
@@ -955,6 +958,7 @@ class DeployStrategyConf(AbstractModel):
         self.DeployStrategyType = params.get("DeployStrategyType")
         self.BatchInterval = params.get("BatchInterval")
         self.MinAvailable = params.get("MinAvailable")
+        self.Force = params.get("Force")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

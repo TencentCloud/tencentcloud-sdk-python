@@ -2402,6 +2402,41 @@ class GetServiceLinkedRoleDeletionStatusResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class GetUserAppIdRequest(AbstractModel):
+    """GetUserAppId请求参数结构体
+
+    """
+
+
+class GetUserAppIdResponse(AbstractModel):
+    """GetUserAppId返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Uin: 当前账号Uin
+        :type Uin: str
+        :param OwnerUin: 当前账号OwnerUin
+        :type OwnerUin: str
+        :param AppId: 当前账号AppId
+        :type AppId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Uin = None
+        self.OwnerUin = None
+        self.AppId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Uin = params.get("Uin")
+        self.OwnerUin = params.get("OwnerUin")
+        self.AppId = params.get("AppId")
+        self.RequestId = params.get("RequestId")
+
+
 class GetUserPermissionBoundaryRequest(AbstractModel):
     """GetUserPermissionBoundary请求参数结构体
 

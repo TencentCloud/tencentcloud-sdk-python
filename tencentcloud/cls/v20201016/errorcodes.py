@@ -146,6 +146,9 @@ LIMITEXCEEDED_MACHINEGROUPLABELS = 'LimitExceeded.MachineGroupLabels'
 # 分区超过限制。
 LIMITEXCEEDED_PARTITION = 'LimitExceeded.Partition'
 
+# 检索接口返回的日志量太大， 超过20MB限制。
+LIMITEXCEEDED_SEARCHRESULTTOOLARGE = 'LimitExceeded.SearchResultTooLarge'
+
 # 投递规则超出限制。
 LIMITEXCEEDED_SHIPPER = 'LimitExceeded.Shipper'
 

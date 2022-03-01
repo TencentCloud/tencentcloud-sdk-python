@@ -18,6 +18,55 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class ActiveHourDCDBInstanceRequest(AbstractModel):
+    """ActiveHourDCDBInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceIds: 待升级的实例ID列表。形如：["dcdbt-ow728lmc"]，可以通过 DescribeDCDBInstances 查询实例详情获得。
+        :type InstanceIds: list of str
+        """
+        self.InstanceIds = None
+
+
+    def _deserialize(self, params):
+        self.InstanceIds = params.get("InstanceIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ActiveHourDCDBInstanceResponse(AbstractModel):
+    """ActiveHourDCDBInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SuccessInstanceIds: 解隔离成功的实例id列表
+        :type SuccessInstanceIds: list of str
+        :param FailedInstanceIds: 解隔离失败的实例id列表
+        :type FailedInstanceIds: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.SuccessInstanceIds = None
+        self.FailedInstanceIds = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.SuccessInstanceIds = params.get("SuccessInstanceIds")
+        self.FailedInstanceIds = params.get("FailedInstanceIds")
+        self.RequestId = params.get("RequestId")
+
+
 class AddShardConfig(AbstractModel):
     """升级实例 -- 新增分片类型
 
@@ -3697,6 +3746,55 @@ class InitDCDBInstancesResponse(AbstractModel):
     def _deserialize(self, params):
         self.FlowIds = params.get("FlowIds")
         self.InstanceIds = params.get("InstanceIds")
+        self.RequestId = params.get("RequestId")
+
+
+class IsolateHourDCDBInstanceRequest(AbstractModel):
+    """IsolateHourDCDBInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceIds: 实例uuid列表
+        :type InstanceIds: list of str
+        """
+        self.InstanceIds = None
+
+
+    def _deserialize(self, params):
+        self.InstanceIds = params.get("InstanceIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IsolateHourDCDBInstanceResponse(AbstractModel):
+    """IsolateHourDCDBInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SuccessInstanceIds: 隔离成功的实例id列表
+        :type SuccessInstanceIds: list of str
+        :param FailedInstanceIds: 隔离失败的实例id列表
+        :type FailedInstanceIds: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.SuccessInstanceIds = None
+        self.FailedInstanceIds = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.SuccessInstanceIds = params.get("SuccessInstanceIds")
+        self.FailedInstanceIds = params.get("FailedInstanceIds")
         self.RequestId = params.get("RequestId")
 
 

@@ -777,6 +777,75 @@ class DescribeFilterResultResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeRealtimeScanConfigRequest(AbstractModel):
+    """DescribeRealtimeScanConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BizId: 应用ID
+        :type BizId: int
+        """
+        self.BizId = None
+
+
+    def _deserialize(self, params):
+        self.BizId = params.get("BizId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRealtimeScanConfigResponse(AbstractModel):
+    """DescribeRealtimeScanConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrorCode: 返回结果码
+        :type ErrorCode: int
+        :param BizId: 应用ID
+        :type BizId: int
+        :param AuditType: 送检类型
+        :type AuditType: int
+        :param UserIdRegex: 用户号正则
+        :type UserIdRegex: list of str
+        :param RoomIdRegex: 房间号正则
+        :type RoomIdRegex: list of str
+        :param UserIdString: 用户号字符串，逗号分隔
+        :type UserIdString: str
+        :param RoomIdString: 房间号字符串，逗号分隔
+        :type RoomIdString: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrorCode = None
+        self.BizId = None
+        self.AuditType = None
+        self.UserIdRegex = None
+        self.RoomIdRegex = None
+        self.UserIdString = None
+        self.RoomIdString = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrorCode = params.get("ErrorCode")
+        self.BizId = params.get("BizId")
+        self.AuditType = params.get("AuditType")
+        self.UserIdRegex = params.get("UserIdRegex")
+        self.RoomIdRegex = params.get("RoomIdRegex")
+        self.UserIdString = params.get("UserIdString")
+        self.RoomIdString = params.get("RoomIdString")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeRoomInfoRequest(AbstractModel):
     """DescribeRoomInfo请求参数结构体
 
@@ -1629,6 +1698,113 @@ class Task(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class UpdateScanRoomsRequest(AbstractModel):
+    """UpdateScanRooms请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BizId: 应用ID
+        :type BizId: int
+        :param RoomIdString: 字符串房间号，逗号分隔
+        :type RoomIdString: str
+        :param RoomIdRegex: 正则表达式房间号，["^6.*"]6开头的房间号
+        :type RoomIdRegex: list of str
+        """
+        self.BizId = None
+        self.RoomIdString = None
+        self.RoomIdRegex = None
+
+
+    def _deserialize(self, params):
+        self.BizId = params.get("BizId")
+        self.RoomIdString = params.get("RoomIdString")
+        self.RoomIdRegex = params.get("RoomIdRegex")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateScanRoomsResponse(AbstractModel):
+    """UpdateScanRooms返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrorCode: 返回结果码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorCode: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrorCode = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrorCode = params.get("ErrorCode")
+        self.RequestId = params.get("RequestId")
+
+
+class UpdateScanUsersRequest(AbstractModel):
+    """UpdateScanUsers请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BizId: 应用ID
+        :type BizId: int
+        :param UserIdString: 字符串用户号，逗号分隔
+        :type UserIdString: str
+        :param UserIdRegex: 正则表达式用户号，["^6.*"]6开头的用户号
+        :type UserIdRegex: list of str
+        """
+        self.BizId = None
+        self.UserIdString = None
+        self.UserIdRegex = None
+
+
+    def _deserialize(self, params):
+        self.BizId = params.get("BizId")
+        self.UserIdString = params.get("UserIdString")
+        self.UserIdRegex = params.get("UserIdRegex")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateScanUsersResponse(AbstractModel):
+    """UpdateScanUsers返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrorCode: 返回结果码
+        :type ErrorCode: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrorCode = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrorCode = params.get("ErrorCode")
+        self.RequestId = params.get("RequestId")
 
 
 class VoiceFilter(AbstractModel):

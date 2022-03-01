@@ -423,6 +423,34 @@ class ApigatewayClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateUpstream(self, request):
+        """用于创建创建VPC通道
+
+        :param request: Request instance for CreateUpstream.
+        :type request: :class:`tencentcloud.apigateway.v20180808.models.CreateUpstreamRequest`
+        :rtype: :class:`tencentcloud.apigateway.v20180808.models.CreateUpstreamResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateUpstream", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateUpstreamResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateUsagePlan(self, request):
         """本接口（CreateUsagePlan）用于创建使用计划。
         用户在使用 API 网关时，需要创建使用计划并将其绑定到服务的环境中使用。
@@ -663,6 +691,34 @@ class ApigatewayClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteServiceSubDomainMappingResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteUpstream(self, request):
+        """删除VPC通道，需要注意有api绑定时，不允许删除
+
+        :param request: Request instance for DeleteUpstream.
+        :type request: :class:`tencentcloud.apigateway.v20180808.models.DeleteUpstreamRequest`
+        :rtype: :class:`tencentcloud.apigateway.v20180808.models.DeleteUpstreamResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteUpstream", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteUpstreamResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1667,6 +1723,62 @@ class ApigatewayClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeUpstreamBindApis(self, request):
+        """查询VPC通道绑定的api列表
+
+        :param request: Request instance for DescribeUpstreamBindApis.
+        :type request: :class:`tencentcloud.apigateway.v20180808.models.DescribeUpstreamBindApisRequest`
+        :rtype: :class:`tencentcloud.apigateway.v20180808.models.DescribeUpstreamBindApisResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeUpstreamBindApis", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeUpstreamBindApisResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeUpstreams(self, request):
+        """查询VPC通道列表详情
+
+        :param request: Request instance for DescribeUpstreams.
+        :type request: :class:`tencentcloud.apigateway.v20180808.models.DescribeUpstreamsRequest`
+        :rtype: :class:`tencentcloud.apigateway.v20180808.models.DescribeUpstreamsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeUpstreams", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeUpstreamsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeUsagePlan(self, request):
         """本接口（DescribeUsagePlan）用于查询一个使用计划的详细信息，包括名称、QPS、创建时间绑定的环境等。
 
@@ -2187,6 +2299,34 @@ class ApigatewayClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifySubDomainResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyUpstream(self, request):
+        """修改VPC通道
+
+        :param request: Request instance for ModifyUpstream.
+        :type request: :class:`tencentcloud.apigateway.v20180808.models.ModifyUpstreamRequest`
+        :rtype: :class:`tencentcloud.apigateway.v20180808.models.ModifyUpstreamResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyUpstream", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyUpstreamResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

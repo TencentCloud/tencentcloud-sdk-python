@@ -46,6 +46,55 @@ class Account(AbstractModel):
         
 
 
+class ActivateHourDBInstanceRequest(AbstractModel):
+    """ActivateHourDBInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceIds: 实例ID列表
+        :type InstanceIds: list of str
+        """
+        self.InstanceIds = None
+
+
+    def _deserialize(self, params):
+        self.InstanceIds = params.get("InstanceIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ActivateHourDBInstanceResponse(AbstractModel):
+    """ActivateHourDBInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SuccessInstanceIds: 隔离成功的实例id列表
+        :type SuccessInstanceIds: list of str
+        :param FailedInstanceIds: 隔离失败的实例id列表
+        :type FailedInstanceIds: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.SuccessInstanceIds = None
+        self.FailedInstanceIds = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.SuccessInstanceIds = params.get("SuccessInstanceIds")
+        self.FailedInstanceIds = params.get("FailedInstanceIds")
+        self.RequestId = params.get("RequestId")
+
+
 class AssociateSecurityGroupsRequest(AbstractModel):
     """AssociateSecurityGroups请求参数结构体
 
@@ -3813,6 +3862,55 @@ class InstanceSpec(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class IsolateHourDBInstanceRequest(AbstractModel):
+    """IsolateHourDBInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceIds: 实例ID列表
+        :type InstanceIds: list of str
+        """
+        self.InstanceIds = None
+
+
+    def _deserialize(self, params):
+        self.InstanceIds = params.get("InstanceIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IsolateHourDBInstanceResponse(AbstractModel):
+    """IsolateHourDBInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SuccessInstanceIds: 解隔离成功的实例id列表
+        :type SuccessInstanceIds: list of str
+        :param FailedInstanceIds: 解隔离失败的实例id列表
+        :type FailedInstanceIds: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.SuccessInstanceIds = None
+        self.FailedInstanceIds = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.SuccessInstanceIds = params.get("SuccessInstanceIds")
+        self.FailedInstanceIds = params.get("FailedInstanceIds")
+        self.RequestId = params.get("RequestId")
 
 
 class KillSessionRequest(AbstractModel):

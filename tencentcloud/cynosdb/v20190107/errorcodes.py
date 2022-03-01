@@ -191,6 +191,9 @@ RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = 'ResourceNotFound.ClusterNotFoundError'
 # 实例{{1}}不存在。
 RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = 'ResourceNotFound.InstanceNotFoundError'
 
+# 参数{{1}}对应资源不存在。
+RESOURCENOTFOUND_RESOURCEERROR = 'ResourceNotFound.ResourceError'
+
 # 锁定实例失败，暂时不可操作。
 RESOURCEUNAVAILABLE_INSTANCELOCKFAIL = 'ResourceUnavailable.InstanceLockFail'
 

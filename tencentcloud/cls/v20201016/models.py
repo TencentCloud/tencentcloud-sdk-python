@@ -4825,28 +4825,33 @@ class SearchLogRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TopicId: 要查询的日志主题ID
+        :param TopicId: 要检索分析的日志主题ID
         :type TopicId: str
-        :param From: 要查询的日志的起始时间，Unix时间戳，单位ms
+        :param From: 要检索分析的日志的起始时间，Unix时间戳（毫秒）
         :type From: int
-        :param To: 要查询的日志的结束时间，Unix时间戳，单位ms
+        :param To: 要检索分析的日志的结束时间，Unix时间戳（毫秒）
         :type To: int
-        :param Query: 查询语句，语句长度最大为12KB
-查询语句由 <a href="https://cloud.tencent.com/document/product/614/47044" target="_blank">[检索条件]</a> | <a href="https://cloud.tencent.com/document/product/614/44061" target="_blank">[SQL语句]</a>构成，无需对日志进行统计分析时，可省略其中的管道符<code>|</code>及SQL语句
+        :param Query: 检索分析语句，最大长度为12KB
+语句由 <a href="https://cloud.tencent.com/document/product/614/47044" target="_blank">[检索条件]</a> | <a href="https://cloud.tencent.com/document/product/614/44061" target="_blank">[SQL语句]</a>构成，无需对日志进行统计分析时，可省略其中的管道符<code> | </code>及SQL语句
         :type Query: str
-        :param Limit: 仅当查询语句(Query)不包含SQL时有效
-表示单次查询返回的原始日志条数，最大值为1000，获取后续日志需使用Context参数
-SQL结果条数指定方式参考<a href="https://cloud.tencent.com/document/product/614/58977" target="_blank">SQL LIMIT语法</a>
+        :param Limit: 表示单次查询返回的原始日志条数，最大值为1000，获取后续日志需使用Context参数
+注意：
+* 仅当检索分析语句(Query)不包含SQL时有效
+* SQL结果条数指定方式参考<a href="https://cloud.tencent.com/document/product/614/58977" target="_blank">SQL LIMIT语法</a>
         :type Limit: int
-        :param Context: 仅当查询语句(Query)不包含SQL时有效
-透传上次接口返回的Context值，可获取后续日志，总计最多可获取1万条原始日志。过期时间1小时
-SQL获取后续结果参考<a href="https://cloud.tencent.com/document/product/614/58977" target="_blank">SQL LIMIT语法</a>
+        :param Context: 透传上次接口返回的Context值，可获取后续更多日志，总计最多可获取1万条原始日志，过期时间1小时
+注意：
+* 仅当检索分析语句(Query)不包含SQL时有效
+* SQL获取后续结果参考<a href="https://cloud.tencent.com/document/product/614/58977" target="_blank">SQL LIMIT语法</a>
         :type Context: str
-        :param Sort: 仅当查询语句(Query)不包含SQL时有效。
-原始日志是否按时间排序返回；可选值：asc(升序)、desc(降序)，默认为 desc
-SQL结果排序方式参考<a href="https://cloud.tencent.com/document/product/614/58978" target="_blank">SQL ORDER BY 语法</a>
+        :param Sort: 原始日志是否按时间排序返回；可选值：asc(升序)、desc(降序)，默认为 desc
+注意：
+* 仅当检索分析语句(Query)不包含SQL时有效
+* SQL结果排序方式参考<a href="https://cloud.tencent.com/document/product/614/58978" target="_blank">SQL ORDER BY语法</a>
         :type Sort: str
-        :param UseNewAnalysis: 为true代表使用新的检索结果返回方式，响应参数AnalysisRecords和Columns有效；为false时代表使用老检索结果返回方式, AnalysisResults和ColNames有效
+        :param UseNewAnalysis: 为true代表使用新的检索结果返回方式，输出参数AnalysisRecords和Columns有效
+为false时代表使用老的检索结果返回方式, 输出AnalysisResults和ColNames有效
+两种返回方式在编码格式上有少量区别，建议使用true
         :type UseNewAnalysis: bool
         """
         self.TopicId = None
@@ -4884,25 +4889,30 @@ class SearchLogResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Context: 加载后续内容的Context，过期时间1小时
+        :param Context: 透传本次接口返回的Context值，可获取后续更多日志，过期时间1小时
         :type Context: str
-        :param ListOver: 原始日志查询结果是否全部返回。查询语句(Query)包含SQL时该参数无意义
+        :param ListOver: 符合检索条件的日志是否已全部返回，如未全部返回可使用Context参数获取后续更多日志
+注意：仅当检索分析语句(Query)不包含SQL时有效
         :type ListOver: bool
-        :param Analysis: 返回的是否为分析结果
+        :param Analysis: 返回的是否为统计分析（即SQL）结果
         :type Analysis: bool
-        :param ColNames: 如果Analysis为True，则返回分析结果的列名，否则为空
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ColNames: list of str
-        :param Results: 日志查询结果；当Analysis为True时，可能返回为null
+        :param Results: 匹配检索条件的原始日志
 注意：此字段可能返回 null，表示取不到有效值。
         :type Results: list of LogInfo
-        :param AnalysisResults: 日志分析结果；当Analysis为False时，可能返回为null
+        :param ColNames: 日志统计分析结果的列名
+当UseNewAnalysis为false时生效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ColNames: list of str
+        :param AnalysisResults: 日志统计分析结果
+当UseNewAnalysis为false时生效
 注意：此字段可能返回 null，表示取不到有效值。
         :type AnalysisResults: list of LogItems
-        :param AnalysisRecords: 新的日志分析结果; UseNewAnalysis为true有效
+        :param AnalysisRecords: 日志统计分析结果
+当UseNewAnalysis为true时生效
 注意：此字段可能返回 null，表示取不到有效值。
         :type AnalysisRecords: list of str
-        :param Columns: 日志分析的列属性; UseNewAnalysis为true有效
+        :param Columns: 日志统计分析结果的列属性
+当UseNewAnalysis为true时生效
 注意：此字段可能返回 null，表示取不到有效值。
         :type Columns: list of Column
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -4911,8 +4921,8 @@ class SearchLogResponse(AbstractModel):
         self.Context = None
         self.ListOver = None
         self.Analysis = None
-        self.ColNames = None
         self.Results = None
+        self.ColNames = None
         self.AnalysisResults = None
         self.AnalysisRecords = None
         self.Columns = None
@@ -4923,13 +4933,13 @@ class SearchLogResponse(AbstractModel):
         self.Context = params.get("Context")
         self.ListOver = params.get("ListOver")
         self.Analysis = params.get("Analysis")
-        self.ColNames = params.get("ColNames")
         if params.get("Results") is not None:
             self.Results = []
             for item in params.get("Results"):
                 obj = LogInfo()
                 obj._deserialize(item)
                 self.Results.append(obj)
+        self.ColNames = params.get("ColNames")
         if params.get("AnalysisResults") is not None:
             self.AnalysisResults = []
             for item in params.get("AnalysisResults"):
