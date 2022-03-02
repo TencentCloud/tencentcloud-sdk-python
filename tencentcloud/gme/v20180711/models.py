@@ -808,19 +808,19 @@ class DescribeRealtimeScanConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ErrorCode: 返回结果码
+        :param ErrorCode: 返回结果码，0正常，非0失败
         :type ErrorCode: int
         :param BizId: 应用ID
         :type BizId: int
-        :param AuditType: 送检类型
+        :param AuditType: 送检类型，0: 全量送审，1: 自定义送审
         :type AuditType: int
-        :param UserIdRegex: 用户号正则
+        :param UserIdRegex: 用户号正则表达式
         :type UserIdRegex: list of str
-        :param RoomIdRegex: 房间号正则
+        :param RoomIdRegex: 房间号正则表达式
         :type RoomIdRegex: list of str
-        :param UserIdString: 用户号字符串，逗号分隔
+        :param UserIdString: 用户号字符串，逗号分隔，示例："0001,0002,0003"
         :type UserIdString: str
-        :param RoomIdString: 房间号字符串，逗号分隔
+        :param RoomIdString: 房间号字符串，逗号分隔，示例："0001,0002,0003"
         :type RoomIdString: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1709,9 +1709,9 @@ class UpdateScanRoomsRequest(AbstractModel):
         r"""
         :param BizId: 应用ID
         :type BizId: int
-        :param RoomIdString: 字符串房间号，逗号分隔
+        :param RoomIdString: 需要送检的所有房间号。多个房间号之间用","分隔。示例："0001,0002,0003"
         :type RoomIdString: str
-        :param RoomIdRegex: 正则表达式房间号，["^6.*"]6开头的房间号
+        :param RoomIdRegex: 符合此正则表达式规则的房间号将被送检。示例：["^6.*"] 表示所有以6开头的房间号将被送检
         :type RoomIdRegex: list of str
         """
         self.BizId = None
@@ -1763,9 +1763,9 @@ class UpdateScanUsersRequest(AbstractModel):
         r"""
         :param BizId: 应用ID
         :type BizId: int
-        :param UserIdString: 字符串用户号，逗号分隔
+        :param UserIdString: 需要送检的所有用户号。多个用户号之间用","分隔。示例："0001,0002,0003"
         :type UserIdString: str
-        :param UserIdRegex: 正则表达式用户号，["^6.*"]6开头的用户号
+        :param UserIdRegex: 符合此正则表达式规则的用户号将被送检。示例：["^6.*"] 表示所有以6开头的用户号将被送检
         :type UserIdRegex: list of str
         """
         self.BizId = None

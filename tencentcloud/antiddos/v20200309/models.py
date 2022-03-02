@@ -684,6 +684,54 @@ class BoundIpInfo(AbstractModel):
         
 
 
+class CCLevelPolicy(AbstractModel):
+    """CC分级策略
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例Id
+        :type InstanceId: str
+        :param Ip: Ip
+        :type Ip: str
+        :param Protocol: 协议
+        :type Protocol: str
+        :param Domain: 域名
+        :type Domain: str
+        :param Level: 防护等级，可取值default表示默认策略，loose表示宽松，strict表示严格
+        :type Level: str
+        :param CreateTime: 创建时间
+        :type CreateTime: str
+        :param ModifyTime: 修改时间
+        :type ModifyTime: str
+        """
+        self.InstanceId = None
+        self.Ip = None
+        self.Protocol = None
+        self.Domain = None
+        self.Level = None
+        self.CreateTime = None
+        self.ModifyTime = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Ip = params.get("Ip")
+        self.Protocol = params.get("Protocol")
+        self.Domain = params.get("Domain")
+        self.Level = params.get("Level")
+        self.CreateTime = params.get("CreateTime")
+        self.ModifyTime = params.get("ModifyTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CCPrecisionPlyRecord(AbstractModel):
     """CC精准防护配置项
 
@@ -878,6 +926,54 @@ class CCReqLimitPolicyRecord(AbstractModel):
         self.Uri = params.get("Uri")
         self.UserAgent = params.get("UserAgent")
         self.Cookie = params.get("Cookie")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CCThresholdPolicy(AbstractModel):
+    """CC清洗阈值策略
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例Id
+        :type InstanceId: str
+        :param Ip: Ip地址
+        :type Ip: str
+        :param Protocol: 协议
+        :type Protocol: str
+        :param Domain: 域名
+        :type Domain: str
+        :param Threshold: 清洗阈值
+        :type Threshold: int
+        :param CreateTime: 创建时间
+        :type CreateTime: str
+        :param ModifyTime: 修改时间
+        :type ModifyTime: str
+        """
+        self.InstanceId = None
+        self.Ip = None
+        self.Protocol = None
+        self.Domain = None
+        self.Threshold = None
+        self.CreateTime = None
+        self.ModifyTime = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Ip = params.get("Ip")
+        self.Protocol = params.get("Protocol")
+        self.Domain = params.get("Domain")
+        self.Threshold = params.get("Threshold")
+        self.CreateTime = params.get("CreateTime")
+        self.ModifyTime = params.get("ModifyTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1406,6 +1502,72 @@ class CreateCCReqLimitPolicyRequest(AbstractModel):
 
 class CreateCCReqLimitPolicyResponse(AbstractModel):
     """CreateCCReqLimitPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreateCcBlackWhiteIpListRequest(AbstractModel):
+    """CreateCcBlackWhiteIpList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 资源实例ID
+        :type InstanceId: str
+        :param IpList: IP列表
+        :type IpList: list of IpSegment
+        :param Type: IP类型，取值[black(黑名单IP), white(白名单IP)]
+        :type Type: str
+        :param Ip: Ip地址
+        :type Ip: str
+        :param Domain: 域名
+        :type Domain: str
+        :param Protocol: 协议
+        :type Protocol: str
+        """
+        self.InstanceId = None
+        self.IpList = None
+        self.Type = None
+        self.Ip = None
+        self.Domain = None
+        self.Protocol = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        if params.get("IpList") is not None:
+            self.IpList = []
+            for item in params.get("IpList"):
+                obj = IpSegment()
+                obj._deserialize(item)
+                self.IpList.append(obj)
+        self.Type = params.get("Type")
+        self.Ip = params.get("Ip")
+        self.Domain = params.get("Domain")
+        self.Protocol = params.get("Protocol")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCcBlackWhiteIpListResponse(AbstractModel):
+    """CreateCcBlackWhiteIpList返回参数结构体
 
     """
 
@@ -2471,6 +2633,59 @@ class DeleteBlackWhiteIpListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteCCLevelPolicyRequest(AbstractModel):
+    """DeleteCCLevelPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例Id
+        :type InstanceId: str
+        :param Ip: 配置策略的IP
+        :type Ip: str
+        :param Domain: 域名
+        :type Domain: str
+        :param Protocol: 协议，可取值http
+        :type Protocol: str
+        """
+        self.InstanceId = None
+        self.Ip = None
+        self.Domain = None
+        self.Protocol = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Ip = params.get("Ip")
+        self.Domain = params.get("Domain")
+        self.Protocol = params.get("Protocol")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteCCLevelPolicyResponse(AbstractModel):
+    """DeleteCCLevelPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteCCPrecisionPolicyRequest(AbstractModel):
     """DeleteCCPrecisionPolicy请求参数结构体
 
@@ -2546,6 +2761,59 @@ class DeleteCCRequestLimitPolicyRequest(AbstractModel):
 
 class DeleteCCRequestLimitPolicyResponse(AbstractModel):
     """DeleteCCRequestLimitPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteCCThresholdPolicyRequest(AbstractModel):
+    """DeleteCCThresholdPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例Id
+        :type InstanceId: str
+        :param Ip: 配置策略的IP
+        :type Ip: str
+        :param Domain: 域名
+        :type Domain: str
+        :param Protocol: 协议，可取值http
+        :type Protocol: str
+        """
+        self.InstanceId = None
+        self.Ip = None
+        self.Domain = None
+        self.Protocol = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Ip = params.get("Ip")
+        self.Domain = params.get("Domain")
+        self.Protocol = params.get("Protocol")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteCCThresholdPolicyResponse(AbstractModel):
+    """DeleteCCThresholdPolicy返回参数结构体
 
     """
 
@@ -3169,6 +3437,129 @@ class DescribeBlackWhiteIpListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeCCLevelListRequest(AbstractModel):
+    """DescribeCCLevelList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Business: 大禹子产品代号（bgp-multip表示高防包）
+        :type Business: str
+        :param Offset: 页起始偏移，取值为(页码-1)*一页条数
+        :type Offset: int
+        :param Limit: 一页条数
+        :type Limit: int
+        :param InstanceId: 指定实例Id
+        :type InstanceId: str
+        """
+        self.Business = None
+        self.Offset = None
+        self.Limit = None
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.Business = params.get("Business")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCCLevelListResponse(AbstractModel):
+    """DescribeCCLevelList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Total: 分级策略列表总数
+        :type Total: int
+        :param LevelList: 分级策略列表详情
+        :type LevelList: list of CCLevelPolicy
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Total = None
+        self.LevelList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("LevelList") is not None:
+            self.LevelList = []
+            for item in params.get("LevelList"):
+                obj = CCLevelPolicy()
+                obj._deserialize(item)
+                self.LevelList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCCLevelPolicyRequest(AbstractModel):
+    """DescribeCCLevelPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例Id
+        :type InstanceId: str
+        :param Ip: IP值
+        :type Ip: str
+        :param Domain: 域名
+        :type Domain: str
+        :param Protocol: 协议，可取值HTTP，HTTPS
+        :type Protocol: str
+        """
+        self.InstanceId = None
+        self.Ip = None
+        self.Domain = None
+        self.Protocol = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Ip = params.get("Ip")
+        self.Domain = params.get("Domain")
+        self.Protocol = params.get("Protocol")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCCLevelPolicyResponse(AbstractModel):
+    """DescribeCCLevelPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Level: CC防护等级，可取值loose表示宽松，strict表示严格，normal表示适中， emergency表示攻击紧急， sup_loose表示超级宽松，default表示默认策略（无频控配置下发），customized表示自定义策略
+        :type Level: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Level = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Level = params.get("Level")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeCCPrecisionPlyListRequest(AbstractModel):
     """DescribeCCPrecisionPlyList请求参数结构体
 
@@ -3322,6 +3713,72 @@ class DescribeCCReqLimitPolicyListResponse(AbstractModel):
                 obj = CCReqLimitPolicy()
                 obj._deserialize(item)
                 self.RequestLimitPolicyList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCCThresholdListRequest(AbstractModel):
+    """DescribeCCThresholdList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Business: 大禹子产品代号（bgp-multip表示高防包）
+        :type Business: str
+        :param Offset: 页起始偏移，取值为(页码-1)*一页条数
+        :type Offset: int
+        :param Limit: 一页条数
+        :type Limit: int
+        :param InstanceId: 指定实例Id
+        :type InstanceId: str
+        """
+        self.Business = None
+        self.Offset = None
+        self.Limit = None
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.Business = params.get("Business")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCCThresholdListResponse(AbstractModel):
+    """DescribeCCThresholdList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Total: 清洗阈值策略列表总数
+        :type Total: int
+        :param ThresholdList: 清洗阈值策略列表详情
+        :type ThresholdList: list of CCThresholdPolicy
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Total = None
+        self.ThresholdList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("ThresholdList") is not None:
+            self.ThresholdList = []
+            for item in params.get("ThresholdList"):
+                obj = CCThresholdPolicy()
+                obj._deserialize(item)
+                self.ThresholdList.append(obj)
         self.RequestId = params.get("RequestId")
 
 

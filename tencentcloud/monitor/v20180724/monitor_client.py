@@ -111,7 +111,7 @@ class MonitorClient(AbstractClient):
 
 
     def CreateAlarmPolicy(self, request):
-        """创建告警策略
+        """创建云监控告警策略
 
         :param request: Request instance for CreateAlarmPolicy.
         :type request: :class:`tencentcloud.monitor.v20180724.models.CreateAlarmPolicyRequest`

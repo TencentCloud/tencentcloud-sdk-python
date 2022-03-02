@@ -1448,6 +1448,12 @@ postMoveOut 按量计费迁出资源
 postMoveIn 按量计费迁入资源
 注意：此字段可能返回 null，表示取不到有效值。
         :type Action: str
+        :param ProductName: 产品编码中文名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductName: str
+        :param SubProductName: 子产品编码中文名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubProductName: str
         """
         self.OrderId = None
         self.Status = None
@@ -1472,6 +1478,8 @@ postMoveIn 按量计费迁入资源
         self.RefReturnDeals = None
         self.PayMode = None
         self.Action = None
+        self.ProductName = None
+        self.SubProductName = None
 
 
     def _deserialize(self, params):
@@ -1503,6 +1511,8 @@ postMoveIn 按量计费迁入资源
         self.RefReturnDeals = params.get("RefReturnDeals")
         self.PayMode = params.get("PayMode")
         self.Action = params.get("Action")
+        self.ProductName = params.get("ProductName")
+        self.SubProductName = params.get("SubProductName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
