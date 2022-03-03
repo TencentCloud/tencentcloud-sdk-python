@@ -1713,6 +1713,34 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyLoadBalancerMixIpTarget(self, request):
+        """修改IPv6FullChain负载均衡7层监听器支持混绑IPv4/IPv6目标特性。
+
+        :param request: Request instance for ModifyLoadBalancerMixIpTarget.
+        :type request: :class:`tencentcloud.clb.v20180317.models.ModifyLoadBalancerMixIpTargetRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.ModifyLoadBalancerMixIpTargetResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyLoadBalancerMixIpTarget", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyLoadBalancerMixIpTargetResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyLoadBalancerSla(self, request):
         """支持共享型clb升级到性能容量型clb（不支持性能保障降级到共享型）。
 

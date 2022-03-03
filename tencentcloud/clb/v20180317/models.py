@@ -5966,6 +5966,51 @@ class ModifyLoadBalancerAttributesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyLoadBalancerMixIpTargetRequest(AbstractModel):
+    """ModifyLoadBalancerMixIpTarget请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LoadBalancerIds: 负载均衡实例ID数组。
+        :type LoadBalancerIds: list of str
+        :param MixIpTarget: 开启/关闭IPv6FullChain负载均衡7层监听器支持混绑IPv4/IPv6目标特性。
+        :type MixIpTarget: bool
+        """
+        self.LoadBalancerIds = None
+        self.MixIpTarget = None
+
+
+    def _deserialize(self, params):
+        self.LoadBalancerIds = params.get("LoadBalancerIds")
+        self.MixIpTarget = params.get("MixIpTarget")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyLoadBalancerMixIpTargetResponse(AbstractModel):
+    """ModifyLoadBalancerMixIpTarget返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyLoadBalancerSlaRequest(AbstractModel):
     """ModifyLoadBalancerSla请求参数结构体
 

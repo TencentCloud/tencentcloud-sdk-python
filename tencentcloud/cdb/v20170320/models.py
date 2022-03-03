@@ -512,6 +512,9 @@ class AuditPolicy(AbstractModel):
         :param RuleName: 审计规则名称。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RuleName: str
+        :param InstanceName: 数据库实例名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceName: str
         """
         self.PolicyId = None
         self.Status = None
@@ -521,6 +524,7 @@ class AuditPolicy(AbstractModel):
         self.PolicyName = None
         self.RuleId = None
         self.RuleName = None
+        self.InstanceName = None
 
 
     def _deserialize(self, params):
@@ -532,6 +536,7 @@ class AuditPolicy(AbstractModel):
         self.PolicyName = params.get("PolicyName")
         self.RuleId = params.get("RuleId")
         self.RuleName = params.get("RuleName")
+        self.InstanceName = params.get("InstanceName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

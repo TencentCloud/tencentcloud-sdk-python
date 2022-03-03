@@ -2506,6 +2506,8 @@ class CreateServiceRequest(AbstractModel):
         :type Tags: list of Tag
         :param InstanceId: 独享实例id
         :type InstanceId: str
+        :param UniqVpcId: vpc属性
+        :type UniqVpcId: str
         """
         self.ServiceName = None
         self.Protocol = None
@@ -2517,6 +2519,7 @@ class CreateServiceRequest(AbstractModel):
         self.AppIdType = None
         self.Tags = None
         self.InstanceId = None
+        self.UniqVpcId = None
 
 
     def _deserialize(self, params):
@@ -2535,6 +2538,7 @@ class CreateServiceRequest(AbstractModel):
                 obj._deserialize(item)
                 self.Tags.append(obj)
         self.InstanceId = params.get("InstanceId")
+        self.UniqVpcId = params.get("UniqVpcId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

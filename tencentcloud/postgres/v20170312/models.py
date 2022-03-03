@@ -442,6 +442,68 @@ class CloseServerlessDBExtranetAccessResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateDBInstanceNetworkAccessRequest(AbstractModel):
+    """CreateDBInstanceNetworkAccess请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DBInstanceId: 实例ID，形如：postgres-6bwgamo3。
+        :type DBInstanceId: str
+        :param VpcId: 私有网络统一 ID。
+        :type VpcId: str
+        :param SubnetId: 子网ID。
+        :type SubnetId: str
+        :param IsAssignVip: 是否指定分配vip true-指定分配  false-自动分配。
+        :type IsAssignVip: bool
+        :param Vip: 目标VIP地址。
+        :type Vip: str
+        """
+        self.DBInstanceId = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.IsAssignVip = None
+        self.Vip = None
+
+
+    def _deserialize(self, params):
+        self.DBInstanceId = params.get("DBInstanceId")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.IsAssignVip = params.get("IsAssignVip")
+        self.Vip = params.get("Vip")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDBInstanceNetworkAccessResponse(AbstractModel):
+    """CreateDBInstanceNetworkAccess返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: 流程ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlowId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateDBInstancesRequest(AbstractModel):
     """CreateDBInstances请求参数结构体
 
@@ -859,6 +921,68 @@ class CreateReadOnlyDBInstanceResponse(AbstractModel):
         self.DealNames = params.get("DealNames")
         self.BillId = params.get("BillId")
         self.DBInstanceIdSet = params.get("DBInstanceIdSet")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateReadOnlyGroupNetworkAccessRequest(AbstractModel):
+    """CreateReadOnlyGroupNetworkAccess请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ReadOnlyGroupId: RO组ID，形如：pgro-4t9c6g7k。
+        :type ReadOnlyGroupId: str
+        :param VpcId: 私有网络统一 ID。
+        :type VpcId: str
+        :param SubnetId: 子网ID。
+        :type SubnetId: str
+        :param IsAssignVip: 是否指定分配vip true-指定分配  false-自动分配。
+        :type IsAssignVip: bool
+        :param Vip: 目标VIP地址。
+        :type Vip: str
+        """
+        self.ReadOnlyGroupId = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.IsAssignVip = None
+        self.Vip = None
+
+
+    def _deserialize(self, params):
+        self.ReadOnlyGroupId = params.get("ReadOnlyGroupId")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.IsAssignVip = params.get("IsAssignVip")
+        self.Vip = params.get("Vip")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateReadOnlyGroupNetworkAccessResponse(AbstractModel):
+    """CreateReadOnlyGroupNetworkAccess返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: 流程ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlowId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
         self.RequestId = params.get("RequestId")
 
 
@@ -1370,6 +1494,122 @@ Standby，代表备节点。
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class DeleteDBInstanceNetworkAccessRequest(AbstractModel):
+    """DeleteDBInstanceNetworkAccess请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DBInstanceId: 实例ID，形如：postgres-6bwgamo3。
+        :type DBInstanceId: str
+        :param VpcId: 私有网络统一 ID，若是基础网络则传"0"。
+        :type VpcId: str
+        :param SubnetId: 子网ID，若是基础网络则传"0"。
+        :type SubnetId: str
+        :param Vip: 目标VIP地址。
+        :type Vip: str
+        """
+        self.DBInstanceId = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.Vip = None
+
+
+    def _deserialize(self, params):
+        self.DBInstanceId = params.get("DBInstanceId")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.Vip = params.get("Vip")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteDBInstanceNetworkAccessResponse(AbstractModel):
+    """DeleteDBInstanceNetworkAccess返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: 流程ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlowId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteReadOnlyGroupNetworkAccessRequest(AbstractModel):
+    """DeleteReadOnlyGroupNetworkAccess请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ReadOnlyGroupId: RO组ID，形如：pgro-4t9c6g7k。
+        :type ReadOnlyGroupId: str
+        :param VpcId: 私有网络统一 ID，若是基础网络则传"0"。
+        :type VpcId: str
+        :param SubnetId: 子网ID，若是基础网络则传"0"。
+        :type SubnetId: str
+        :param Vip: 目标VIP地址。
+        :type Vip: str
+        """
+        self.ReadOnlyGroupId = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.Vip = None
+
+
+    def _deserialize(self, params):
+        self.ReadOnlyGroupId = params.get("ReadOnlyGroupId")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.Vip = params.get("Vip")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteReadOnlyGroupNetworkAccessResponse(AbstractModel):
+    """DeleteReadOnlyGroupNetworkAccess返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: 流程ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlowId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
 
 
 class DeleteReadOnlyGroupRequest(AbstractModel):

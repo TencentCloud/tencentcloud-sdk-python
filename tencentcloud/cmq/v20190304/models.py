@@ -340,40 +340,40 @@ class CreateTopicResponse(AbstractModel):
 
 
 class DeadLetterPolicy(AbstractModel):
-    """DeadLetterPolicy
+    """死信队列策略
 
     """
 
     def __init__(self):
         r"""
-        :param DeadLetterQueueName: 死信队列名字。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DeadLetterQueueName: str
         :param DeadLetterQueue: 死信队列。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeadLetterQueue: str
-        :param Policy: 死信队列策略。
+        :param DeadLetterQueueName: 死信队列名字。
 注意：此字段可能返回 null，表示取不到有效值。
-        :type Policy: int
+        :type DeadLetterQueueName: str
         :param MaxTimeToLive: 最大未消费过期时间。Policy为1时必选。范围300-43200，单位秒，需要小于消息最大保留时间MsgRetentionSeconds。
 注意：此字段可能返回 null，表示取不到有效值。
         :type MaxTimeToLive: int
+        :param Policy: 死信队列策略。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Policy: int
         :param MaxReceiveCount: 最大接收次数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type MaxReceiveCount: int
         """
-        self.DeadLetterQueueName = None
         self.DeadLetterQueue = None
-        self.Policy = None
+        self.DeadLetterQueueName = None
         self.MaxTimeToLive = None
+        self.Policy = None
         self.MaxReceiveCount = None
 
 
     def _deserialize(self, params):
-        self.DeadLetterQueueName = params.get("DeadLetterQueueName")
         self.DeadLetterQueue = params.get("DeadLetterQueue")
-        self.Policy = params.get("Policy")
+        self.DeadLetterQueueName = params.get("DeadLetterQueueName")
         self.MaxTimeToLive = params.get("MaxTimeToLive")
+        self.Policy = params.get("Policy")
         self.MaxReceiveCount = params.get("MaxReceiveCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -385,7 +385,7 @@ class DeadLetterPolicy(AbstractModel):
 
 
 class DeadLetterSource(AbstractModel):
-    """DeadLetterSource
+    """死信源队列信息
 
     """
 
@@ -1080,145 +1080,150 @@ class QueueSet(AbstractModel):
         r"""
         :param QueueId: 消息队列ID。
         :type QueueId: str
+        :param RewindSeconds: 回溯队列的消息回溯时间最大值，取值范围0 - 43200秒，0表示不开启消息回溯。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RewindSeconds: int
+        :param CreateUin: 创建者Uin。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateUin: int
+        :param LastModifyTime: 最后一次修改队列属性的时间。返回 Unix 时间戳，精确到秒。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastModifyTime: int
+        :param VisibilityTimeout: 消息可见性超时。取值范围1 - 43200秒（即12小时内），默认值30。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VisibilityTimeout: int
         :param QueueName: 消息队列名字。
         :type QueueName: str
-        :param Qps: 每秒钟生产消息条数的限制，消费消息的大小是该值的1.1倍。
+        :param Trace: 消息轨迹。true表示开启，false表示不开启。
 注意：此字段可能返回 null，表示取不到有效值。
-        :type Qps: int
-        :param Bps: 带宽限制。
+        :type Trace: bool
+        :param Tags: 关联的标签。
 注意：此字段可能返回 null，表示取不到有效值。
-        :type Bps: int
+        :type Tags: list of Tag
+        :param RewindMsgNum: 已调用 DelMsg 接口删除，但还在回溯保留时间内的消息数量。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RewindMsgNum: int
         :param MaxDelaySeconds: 飞行消息最大保留时间。
 注意：此字段可能返回 null，表示取不到有效值。
         :type MaxDelaySeconds: int
+        :param TransactionPolicy: 事务消息策略。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TransactionPolicy: :class:`tencentcloud.cmq.v20190304.models.TransactionPolicy`
+        :param MsgRetentionSeconds: 消息保留周期。取值范围60-1296000秒（1min-15天），默认值345600秒（4 天）。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MsgRetentionSeconds: int
+        :param DelayMsgNum: 延迟消息数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DelayMsgNum: int
         :param MaxMsgHeapNum: 最大堆积消息数。取值范围在公测期间为 1,000,000 - 10,000,000，正式上线后范围可达到 1000,000-1000,000,000。默认取值在公测期间为 10,000,000，正式上线后为 100,000,000。
 注意：此字段可能返回 null，表示取不到有效值。
         :type MaxMsgHeapNum: int
         :param PollingWaitSeconds: 消息接收长轮询等待时间。取值范围0 - 30秒，默认值0。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PollingWaitSeconds: int
-        :param MsgRetentionSeconds: 消息保留周期。取值范围60-1296000秒（1min-15天），默认值345600秒（4 天）。
+        :param Bps: 带宽限制。
 注意：此字段可能返回 null，表示取不到有效值。
-        :type MsgRetentionSeconds: int
-        :param VisibilityTimeout: 消息可见性超时。取值范围1 - 43200秒（即12小时内），默认值30。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type VisibilityTimeout: int
-        :param MaxMsgSize: 消息最大长度。取值范围1024 - 1048576 Byte（即1K - 1024K），默认值65536。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MaxMsgSize: int
-        :param RewindSeconds: 回溯队列的消息回溯时间最大值，取值范围0 - 43200秒，0表示不开启消息回溯。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type RewindSeconds: int
-        :param CreateTime: 队列的创建时间。返回 Unix 时间戳，精确到秒。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CreateTime: int
-        :param LastModifyTime: 最后一次修改队列属性的时间。返回 Unix 时间戳，精确到秒。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type LastModifyTime: int
-        :param ActiveMsgNum: 在队列中处于 Active 状态（不处于被消费状态）的消息总数，为近似值。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ActiveMsgNum: int
+        :type Bps: int
         :param InactiveMsgNum: 在队列中处于 Inactive 状态（正处于被消费状态）的消息总数，为近似值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type InactiveMsgNum: int
-        :param DelayMsgNum: 延迟消息数。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DelayMsgNum: int
-        :param RewindMsgNum: 已调用 DelMsg 接口删除，但还在回溯保留时间内的消息数量。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type RewindMsgNum: int
-        :param MinMsgTime: 消息最小未消费时间，单位为秒。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MinMsgTime: int
-        :param Transaction: 事务消息队列。true表示是事务消息，false表示不是事务消息。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Transaction: bool
-        :param DeadLetterSource: 死信队列。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DeadLetterSource: list of DeadLetterSource
         :param DeadLetterPolicy: 死信队列策略。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeadLetterPolicy: :class:`tencentcloud.cmq.v20190304.models.DeadLetterPolicy`
-        :param TransactionPolicy: 事务消息策略。
+        :param ActiveMsgNum: 在队列中处于 Active 状态（不处于被消费状态）的消息总数，为近似值。
 注意：此字段可能返回 null，表示取不到有效值。
-        :type TransactionPolicy: :class:`tencentcloud.cmq.v20190304.models.TransactionPolicy`
-        :param CreateUin: 创建者Uin。
+        :type ActiveMsgNum: int
+        :param MaxMsgSize: 消息最大长度。取值范围1024 - 1048576 Byte（即1K - 1024K），默认值65536。
 注意：此字段可能返回 null，表示取不到有效值。
-        :type CreateUin: int
-        :param Tags: 关联的标签。
+        :type MaxMsgSize: int
+        :param MinMsgTime: 消息最小未消费时间，单位为秒。
 注意：此字段可能返回 null，表示取不到有效值。
-        :type Tags: list of Tag
-        :param Trace: 消息轨迹。true表示开启，false表示不开启。
+        :type MinMsgTime: int
+        :param DeadLetterSource: 死信队列。
 注意：此字段可能返回 null，表示取不到有效值。
-        :type Trace: bool
+        :type DeadLetterSource: list of DeadLetterSource
+        :param Transaction: 事务消息队列。true表示是事务消息，false表示不是事务消息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Transaction: bool
+        :param Qps: 每秒钟生产消息条数的限制，消费消息的大小是该值的1.1倍。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Qps: int
+        :param CreateTime: 队列的创建时间。返回 Unix 时间戳，精确到秒。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: int
+        :param Migrate: 是否迁移到新版本。0 表示仅同步元数据，1 表示迁移中，2 表示已经迁移完毕，3 表示回切状态，曾经迁移过，4 未迁移。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Migrate: int
         """
         self.QueueId = None
+        self.RewindSeconds = None
+        self.CreateUin = None
+        self.LastModifyTime = None
+        self.VisibilityTimeout = None
         self.QueueName = None
-        self.Qps = None
-        self.Bps = None
+        self.Trace = None
+        self.Tags = None
+        self.RewindMsgNum = None
         self.MaxDelaySeconds = None
+        self.TransactionPolicy = None
+        self.MsgRetentionSeconds = None
+        self.DelayMsgNum = None
         self.MaxMsgHeapNum = None
         self.PollingWaitSeconds = None
-        self.MsgRetentionSeconds = None
-        self.VisibilityTimeout = None
-        self.MaxMsgSize = None
-        self.RewindSeconds = None
-        self.CreateTime = None
-        self.LastModifyTime = None
-        self.ActiveMsgNum = None
+        self.Bps = None
         self.InactiveMsgNum = None
-        self.DelayMsgNum = None
-        self.RewindMsgNum = None
-        self.MinMsgTime = None
-        self.Transaction = None
-        self.DeadLetterSource = None
         self.DeadLetterPolicy = None
-        self.TransactionPolicy = None
-        self.CreateUin = None
-        self.Tags = None
-        self.Trace = None
+        self.ActiveMsgNum = None
+        self.MaxMsgSize = None
+        self.MinMsgTime = None
+        self.DeadLetterSource = None
+        self.Transaction = None
+        self.Qps = None
+        self.CreateTime = None
+        self.Migrate = None
 
 
     def _deserialize(self, params):
         self.QueueId = params.get("QueueId")
-        self.QueueName = params.get("QueueName")
-        self.Qps = params.get("Qps")
-        self.Bps = params.get("Bps")
-        self.MaxDelaySeconds = params.get("MaxDelaySeconds")
-        self.MaxMsgHeapNum = params.get("MaxMsgHeapNum")
-        self.PollingWaitSeconds = params.get("PollingWaitSeconds")
-        self.MsgRetentionSeconds = params.get("MsgRetentionSeconds")
-        self.VisibilityTimeout = params.get("VisibilityTimeout")
-        self.MaxMsgSize = params.get("MaxMsgSize")
         self.RewindSeconds = params.get("RewindSeconds")
-        self.CreateTime = params.get("CreateTime")
-        self.LastModifyTime = params.get("LastModifyTime")
-        self.ActiveMsgNum = params.get("ActiveMsgNum")
-        self.InactiveMsgNum = params.get("InactiveMsgNum")
-        self.DelayMsgNum = params.get("DelayMsgNum")
-        self.RewindMsgNum = params.get("RewindMsgNum")
-        self.MinMsgTime = params.get("MinMsgTime")
-        self.Transaction = params.get("Transaction")
-        if params.get("DeadLetterSource") is not None:
-            self.DeadLetterSource = []
-            for item in params.get("DeadLetterSource"):
-                obj = DeadLetterSource()
-                obj._deserialize(item)
-                self.DeadLetterSource.append(obj)
-        if params.get("DeadLetterPolicy") is not None:
-            self.DeadLetterPolicy = DeadLetterPolicy()
-            self.DeadLetterPolicy._deserialize(params.get("DeadLetterPolicy"))
-        if params.get("TransactionPolicy") is not None:
-            self.TransactionPolicy = TransactionPolicy()
-            self.TransactionPolicy._deserialize(params.get("TransactionPolicy"))
         self.CreateUin = params.get("CreateUin")
+        self.LastModifyTime = params.get("LastModifyTime")
+        self.VisibilityTimeout = params.get("VisibilityTimeout")
+        self.QueueName = params.get("QueueName")
+        self.Trace = params.get("Trace")
         if params.get("Tags") is not None:
             self.Tags = []
             for item in params.get("Tags"):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
-        self.Trace = params.get("Trace")
+        self.RewindMsgNum = params.get("RewindMsgNum")
+        self.MaxDelaySeconds = params.get("MaxDelaySeconds")
+        if params.get("TransactionPolicy") is not None:
+            self.TransactionPolicy = TransactionPolicy()
+            self.TransactionPolicy._deserialize(params.get("TransactionPolicy"))
+        self.MsgRetentionSeconds = params.get("MsgRetentionSeconds")
+        self.DelayMsgNum = params.get("DelayMsgNum")
+        self.MaxMsgHeapNum = params.get("MaxMsgHeapNum")
+        self.PollingWaitSeconds = params.get("PollingWaitSeconds")
+        self.Bps = params.get("Bps")
+        self.InactiveMsgNum = params.get("InactiveMsgNum")
+        if params.get("DeadLetterPolicy") is not None:
+            self.DeadLetterPolicy = DeadLetterPolicy()
+            self.DeadLetterPolicy._deserialize(params.get("DeadLetterPolicy"))
+        self.ActiveMsgNum = params.get("ActiveMsgNum")
+        self.MaxMsgSize = params.get("MaxMsgSize")
+        self.MinMsgTime = params.get("MinMsgTime")
+        if params.get("DeadLetterSource") is not None:
+            self.DeadLetterSource = []
+            for item in params.get("DeadLetterSource"):
+                obj = DeadLetterSource()
+                obj._deserialize(item)
+                self.DeadLetterSource.append(obj)
+        self.Transaction = params.get("Transaction")
+        self.Qps = params.get("Qps")
+        self.CreateTime = params.get("CreateTime")
+        self.Migrate = params.get("Migrate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1394,77 +1399,82 @@ class TopicSet(AbstractModel):
 
     def __init__(self):
         r"""
+        :param MsgCount: 当前该主题中消息数目（消息堆积数）。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MsgCount: int
         :param TopicId: 主题的 ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TopicId: str
-        :param TopicName: 主题名称。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TopicName: str
-        :param MsgRetentionSeconds: 消息在主题中最长存活时间，从发送到该主题开始经过此参数指定的时间后，不论消息是否被成功推送给用户都将被删除，单位为秒。固定为一天（86400秒），该属性不能修改。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MsgRetentionSeconds: int
         :param MaxMsgSize: 消息最大长度。取值范围1024 - 1048576Byte（即1 - 1024K），默认值为65536。
 注意：此字段可能返回 null，表示取不到有效值。
         :type MaxMsgSize: int
-        :param Qps: 每秒钟发布消息的条数。
+        :param Trace: 消息轨迹。true表示开启，false表示不开启。
 注意：此字段可能返回 null，表示取不到有效值。
-        :type Qps: int
+        :type Trace: bool
+        :param Tags: 关联的标签。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
+        :param CreateUin: 创建者 Uin，CAM 鉴权 resource 由该字段组合而成。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateUin: int
         :param FilterType: 描述用户创建订阅时选择的过滤策略：
 FilterType = 1表示用户使用 FilterTag 标签过滤;
 FilterType = 2表示用户使用 BindingKey 过滤。
 注意：此字段可能返回 null，表示取不到有效值。
         :type FilterType: int
-        :param CreateTime: 主题的创建时间。返回 Unix 时间戳，精确到秒。
+        :param TopicName: 主题名称。
 注意：此字段可能返回 null，表示取不到有效值。
-        :type CreateTime: int
+        :type TopicName: str
         :param LastModifyTime: 最后一次修改主题属性的时间。返回 Unix 时间戳，精确到秒。
 注意：此字段可能返回 null，表示取不到有效值。
         :type LastModifyTime: int
-        :param MsgCount: 当前该主题中消息数目（消息堆积数）。
+        :param MsgRetentionSeconds: 消息在主题中最长存活时间，从发送到该主题开始经过此参数指定的时间后，不论消息是否被成功推送给用户都将被删除，单位为秒。固定为一天（86400秒），该属性不能修改。
 注意：此字段可能返回 null，表示取不到有效值。
-        :type MsgCount: int
-        :param CreateUin: 创建者 Uin，CAM 鉴权 resource 由该字段组合而成。
+        :type MsgRetentionSeconds: int
+        :param Qps: 每秒钟发布消息的条数。
 注意：此字段可能返回 null，表示取不到有效值。
-        :type CreateUin: int
-        :param Tags: 关联的标签。
+        :type Qps: int
+        :param CreateTime: 主题的创建时间。返回 Unix 时间戳，精确到秒。
 注意：此字段可能返回 null，表示取不到有效值。
-        :type Tags: list of Tag
-        :param Trace: 消息轨迹。true表示开启，false表示不开启。
+        :type CreateTime: int
+        :param Migrate: 是否迁移到新版本。0 表示未迁移，1 表示迁移中，2 表示已经迁移完毕，3 表示回切状态，曾经迁移过，4 未知状态。
 注意：此字段可能返回 null，表示取不到有效值。
-        :type Trace: bool
+        :type Migrate: int
         """
-        self.TopicId = None
-        self.TopicName = None
-        self.MsgRetentionSeconds = None
-        self.MaxMsgSize = None
-        self.Qps = None
-        self.FilterType = None
-        self.CreateTime = None
-        self.LastModifyTime = None
         self.MsgCount = None
-        self.CreateUin = None
-        self.Tags = None
+        self.TopicId = None
+        self.MaxMsgSize = None
         self.Trace = None
+        self.Tags = None
+        self.CreateUin = None
+        self.FilterType = None
+        self.TopicName = None
+        self.LastModifyTime = None
+        self.MsgRetentionSeconds = None
+        self.Qps = None
+        self.CreateTime = None
+        self.Migrate = None
 
 
     def _deserialize(self, params):
-        self.TopicId = params.get("TopicId")
-        self.TopicName = params.get("TopicName")
-        self.MsgRetentionSeconds = params.get("MsgRetentionSeconds")
-        self.MaxMsgSize = params.get("MaxMsgSize")
-        self.Qps = params.get("Qps")
-        self.FilterType = params.get("FilterType")
-        self.CreateTime = params.get("CreateTime")
-        self.LastModifyTime = params.get("LastModifyTime")
         self.MsgCount = params.get("MsgCount")
-        self.CreateUin = params.get("CreateUin")
+        self.TopicId = params.get("TopicId")
+        self.MaxMsgSize = params.get("MaxMsgSize")
+        self.Trace = params.get("Trace")
         if params.get("Tags") is not None:
             self.Tags = []
             for item in params.get("Tags"):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
-        self.Trace = params.get("Trace")
+        self.CreateUin = params.get("CreateUin")
+        self.FilterType = params.get("FilterType")
+        self.TopicName = params.get("TopicName")
+        self.LastModifyTime = params.get("LastModifyTime")
+        self.MsgRetentionSeconds = params.get("MsgRetentionSeconds")
+        self.Qps = params.get("Qps")
+        self.CreateTime = params.get("CreateTime")
+        self.Migrate = params.get("Migrate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1475,26 +1485,26 @@ FilterType = 2表示用户使用 BindingKey 过滤。
 
 
 class TransactionPolicy(AbstractModel):
-    """TransactionPolicy
+    """事务消息策略
 
     """
 
     def __init__(self):
         r"""
-        :param FirstQueryInterval: 第一次回查时间。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type FirstQueryInterval: int
         :param MaxQueryCount: 最大查询次数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type MaxQueryCount: int
+        :param FirstQueryInterval: 第一次回查时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FirstQueryInterval: int
         """
-        self.FirstQueryInterval = None
         self.MaxQueryCount = None
+        self.FirstQueryInterval = None
 
 
     def _deserialize(self, params):
-        self.FirstQueryInterval = params.get("FirstQueryInterval")
         self.MaxQueryCount = params.get("MaxQueryCount")
+        self.FirstQueryInterval = params.get("FirstQueryInterval")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

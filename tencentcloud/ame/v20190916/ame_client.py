@@ -307,7 +307,7 @@ class AmeClient(AbstractClient):
 
 
     def DescribeKTVRobots(self, request):
-        """查询机器人列表，支持 Id、状态等过滤条件。
+        """获取机器人列表，支持 Id、状态等过滤条件。
 
         :param request: Request instance for DescribeKTVRobots.
         :type request: :class:`tencentcloud.ame.v20190916.models.DescribeKTVRobotsRequest`

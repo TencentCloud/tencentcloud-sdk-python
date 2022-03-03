@@ -88,10 +88,14 @@ class AMQPClusterDetail(AbstractModel):
         :param Tags: 标签
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
+        :param Status: 集群状态，0:创建中，1:正常，2:销毁中，3:已删除，4: 隔离中，5:创建失败，6: 删除失败
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
         """
         self.Info = None
         self.Config = None
         self.Tags = None
+        self.Status = None
 
 
     def _deserialize(self, params):
@@ -107,6 +111,7 @@ class AMQPClusterDetail(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -227,6 +232,15 @@ class AMQPExchange(AbstractModel):
         :type UpdateTime: int
         :param Internal: 是否为内部Exchange(以amq.前缀开头的)
         :type Internal: bool
+        :param AlternateExchange: 备用Exchange名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlternateExchange: str
+        :param AlternateExchangeDeleteMark: 备用Exchange是否删除标识: true(已删除)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlternateExchangeDeleteMark: bool
+        :param DelayType: 延迟Exchange的类别，为枚举类型:Direct, Fanout, Topic
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DelayType: str
         """
         self.Name = None
         self.Type = None
@@ -236,6 +250,9 @@ class AMQPExchange(AbstractModel):
         self.CreateTime = None
         self.UpdateTime = None
         self.Internal = None
+        self.AlternateExchange = None
+        self.AlternateExchangeDeleteMark = None
+        self.DelayType = None
 
 
     def _deserialize(self, params):
@@ -247,6 +264,9 @@ class AMQPExchange(AbstractModel):
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
         self.Internal = params.get("Internal")
+        self.AlternateExchange = params.get("AlternateExchange")
+        self.AlternateExchangeDeleteMark = params.get("AlternateExchangeDeleteMark")
+        self.DelayType = params.get("DelayType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -409,6 +429,9 @@ class AMQPVHost(AbstractModel):
         :type Username: str
         :param Password: 密码
         :type Password: str
+        :param Status: 集群状态，0:创建中，1:正常，2:销毁中，3:已删除，4: 隔离中，5:创建失败，6: 删除失败
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
         """
         self.VHostId = None
         self.MsgTtl = None
@@ -417,6 +440,7 @@ class AMQPVHost(AbstractModel):
         self.UpdateTime = None
         self.Username = None
         self.Password = None
+        self.Status = None
 
 
     def _deserialize(self, params):
@@ -427,6 +451,7 @@ class AMQPVHost(AbstractModel):
         self.UpdateTime = params.get("UpdateTime")
         self.Username = params.get("Username")
         self.Password = params.get("Password")
+        self.Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1371,7 +1396,7 @@ class CreateAMQPExchangeRequest(AbstractModel):
         :type Exchange: str
         :param VHosts: 交换机所在的vhost，目前支持在单个vhost下创建主题
         :type VHosts: list of str
-        :param Type: 交换机类型，可选值为Direct, Fanout, Topic
+        :param Type: 交换机类型，可选值为Direct, Fanout, Topic, x-delayed-message
         :type Type: str
         :param ClusterId: 集群ID
         :type ClusterId: str
@@ -1379,6 +1404,8 @@ class CreateAMQPExchangeRequest(AbstractModel):
         :type Remark: str
         :param AlternateExchange: 备用交换机名称
         :type AlternateExchange: str
+        :param DelayedType: 延迟交换机类型，可选值为Direct, Fanout, Topic, 不允许为x-delayed-message
+        :type DelayedType: str
         """
         self.Exchange = None
         self.VHosts = None
@@ -1386,6 +1413,7 @@ class CreateAMQPExchangeRequest(AbstractModel):
         self.ClusterId = None
         self.Remark = None
         self.AlternateExchange = None
+        self.DelayedType = None
 
 
     def _deserialize(self, params):
@@ -1395,6 +1423,7 @@ class CreateAMQPExchangeRequest(AbstractModel):
         self.ClusterId = params.get("ClusterId")
         self.Remark = params.get("Remark")
         self.AlternateExchange = params.get("AlternateExchange")
+        self.DelayedType = params.get("DelayedType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3825,11 +3854,14 @@ class DescribeAMQPVHostsRequest(AbstractModel):
         :type Limit: int
         :param NameKeyword: 按名称搜索
         :type NameKeyword: str
+        :param VHostIdList: VHostId 列表过滤
+        :type VHostIdList: list of str
         """
         self.ClusterId = None
         self.Offset = None
         self.Limit = None
         self.NameKeyword = None
+        self.VHostIdList = None
 
 
     def _deserialize(self, params):
@@ -3837,6 +3869,7 @@ class DescribeAMQPVHostsRequest(AbstractModel):
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
         self.NameKeyword = params.get("NameKeyword")
+        self.VHostIdList = params.get("VHostIdList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

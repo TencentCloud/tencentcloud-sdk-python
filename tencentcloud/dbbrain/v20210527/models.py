@@ -2089,16 +2089,20 @@ class DescribeUserSqlAdviceRequest(AbstractModel):
         :type SqlText: str
         :param Schema: 库名。
         :type Schema: str
+        :param Product: 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL；"dbbrain-mysql" - 自建 MySQL，默认为"mysql"。
+        :type Product: str
         """
         self.InstanceId = None
         self.SqlText = None
         self.Schema = None
+        self.Product = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
         self.SqlText = params.get("SqlText")
         self.Schema = params.get("Schema")
+        self.Product = params.get("Product")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

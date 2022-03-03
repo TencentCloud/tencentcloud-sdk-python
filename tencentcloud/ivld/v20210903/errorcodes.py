@@ -47,6 +47,9 @@ AUTHFAILURE_USERNOTFOUND = 'AuthFailure.UserNotFound'
 # 用户已欠费停服。
 AUTHFAILURE_USERSTOPARREAR = 'AuthFailure.UserStopArrear'
 
+# 操作失败。
+FAILEDOPERATION = 'FailedOperation'
+
 # 匹配的模板不存在。
 FAILEDOPERATION_AITEMPLATENOTEXIST = 'FailedOperation.AiTemplateNotExist'
 
@@ -238,6 +241,9 @@ INVALIDPARAMETER_INVALIDUIN = 'InvalidParameter.InvalidUin'
 
 # 名称超过长度限制。
 INVALIDPARAMETER_NAMETOOLONG = 'InvalidParameter.NameTooLong'
+
+# 参数超过长度限制。
+INVALIDPARAMETER_PARAMTOOLONG = 'InvalidParameter.ParamTooLong'
 
 # 不支持的URL类型。
 INVALIDPARAMETER_UNSUPPORTURL = 'InvalidParameter.UnsupportURL'

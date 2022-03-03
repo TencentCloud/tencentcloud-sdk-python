@@ -4327,10 +4327,14 @@ class ModifyBundle(AbstractModel):
         :type ModifyBundleState: str
         :param Bundle: 套餐信息。
         :type Bundle: :class:`tencentcloud.lighthouse.v20200324.models.Bundle`
+        :param NotSupportModifyMessage: 不支持套餐变更原因信息。变更套餐状态为"AVAILABLE"时, 该信息为空
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NotSupportModifyMessage: str
         """
         self.ModifyPrice = None
         self.ModifyBundleState = None
         self.Bundle = None
+        self.NotSupportModifyMessage = None
 
 
     def _deserialize(self, params):
@@ -4341,6 +4345,7 @@ class ModifyBundle(AbstractModel):
         if params.get("Bundle") is not None:
             self.Bundle = Bundle()
             self.Bundle._deserialize(params.get("Bundle"))
+        self.NotSupportModifyMessage = params.get("NotSupportModifyMessage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

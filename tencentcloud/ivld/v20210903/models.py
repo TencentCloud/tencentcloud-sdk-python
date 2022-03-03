@@ -399,11 +399,17 @@ class CreateTaskRequest(AbstractModel):
         :type TaskName: str
         :param UploadVideo: 是否上传转码后的视频，仅设置true时上传，默认为false
         :type UploadVideo: bool
+        :param Label: 自定义标签，可用于查询
+        :type Label: str
+        :param CallbackURL: 任务分析完成的回调地址，该设置优先级高于控制台全局的设置；
+        :type CallbackURL: str
         """
         self.MediaId = None
         self.MediaPreknownInfo = None
         self.TaskName = None
         self.UploadVideo = None
+        self.Label = None
+        self.CallbackURL = None
 
 
     def _deserialize(self, params):
@@ -413,6 +419,8 @@ class CreateTaskRequest(AbstractModel):
             self.MediaPreknownInfo._deserialize(params.get("MediaPreknownInfo"))
         self.TaskName = params.get("TaskName")
         self.UploadVideo = params.get("UploadVideo")
+        self.Label = params.get("Label")
+        self.CallbackURL = params.get("CallbackURL")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -760,6 +768,47 @@ class DeleteMediaRequest(AbstractModel):
 
 class DeleteMediaResponse(AbstractModel):
     """DeleteMedia返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteTaskRequest(AbstractModel):
+    """DeleteTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 任务Id
+        :type TaskId: str
+        """
+        self.TaskId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteTaskResponse(AbstractModel):
+    """DeleteTask返回参数结构体
 
     """
 
@@ -1264,16 +1313,28 @@ class ImportMediaRequest(AbstractModel):
         :type MD5: str
         :param Name: 待分析视频的名称，指定后可支持筛选，最多100个中文字符
         :type Name: str
+        :param WriteBackCosPath: 当非本人外部视频地址导入时，该字段为转存的cos桶地址且不可为空; 示例：https://${Bucket}-${AppId}.cos.${Region}.myqcloud.com/${PathPrefix}/  (注意，cos路径需要以/分隔符结尾)
+        :type WriteBackCosPath: str
+        :param Label: 自定义标签，可用于查询
+        :type Label: str
+        :param CallbackURL: 媒资导入完成的回调地址，该设置优先级高于控制台全局的设置；
+        :type CallbackURL: str
         """
         self.URL = None
         self.MD5 = None
         self.Name = None
+        self.WriteBackCosPath = None
+        self.Label = None
+        self.CallbackURL = None
 
 
     def _deserialize(self, params):
         self.URL = params.get("URL")
         self.MD5 = params.get("MD5")
         self.Name = params.get("Name")
+        self.WriteBackCosPath = params.get("WriteBackCosPath")
+        self.Label = params.get("Label")
+        self.CallbackURL = params.get("CallbackURL")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1464,16 +1525,21 @@ class MediaFilter(AbstractModel):
         :param MediaIdSet: 媒资ID数组
 注意：此字段可能返回 null，表示取不到有效值。
         :type MediaIdSet: list of str
+        :param LabelSet: 媒资自定义标签数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LabelSet: list of str
         """
         self.MediaNameSet = None
         self.StatusSet = None
         self.MediaIdSet = None
+        self.LabelSet = None
 
 
     def _deserialize(self, params):
         self.MediaNameSet = params.get("MediaNameSet")
         self.StatusSet = params.get("StatusSet")
         self.MediaIdSet = params.get("MediaIdSet")
+        self.LabelSet = params.get("LabelSet")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1525,6 +1591,9 @@ class MediaInfo(AbstractModel):
         :param Progress: 导入视频进度，取值范围为[0,100]
 注意：此字段可能返回 null，表示取不到有效值。
         :type Progress: float
+        :param Label: 媒资自定义标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Label: str
         """
         self.MediaId = None
         self.Name = None
@@ -1533,6 +1602,7 @@ class MediaInfo(AbstractModel):
         self.FailedReason = None
         self.Metadata = None
         self.Progress = None
+        self.Label = None
 
 
     def _deserialize(self, params):
@@ -1545,6 +1615,7 @@ class MediaInfo(AbstractModel):
             self.Metadata = MediaMetadata()
             self.Metadata._deserialize(params.get("Metadata"))
         self.Progress = params.get("Progress")
+        self.Label = params.get("Label")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1688,6 +1759,51 @@ class MediaPreknownInfo(AbstractModel):
         
 
 
+class ModifyCallbackRequest(AbstractModel):
+    """ModifyCallback请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskFinishNotifyURL: 任务分析完成后回调地址
+        :type TaskFinishNotifyURL: str
+        :param MediaFinishNotifyURL: 媒体导入完成后回调地址
+        :type MediaFinishNotifyURL: str
+        """
+        self.TaskFinishNotifyURL = None
+        self.MediaFinishNotifyURL = None
+
+
+    def _deserialize(self, params):
+        self.TaskFinishNotifyURL = params.get("TaskFinishNotifyURL")
+        self.MediaFinishNotifyURL = params.get("MediaFinishNotifyURL")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCallbackResponse(AbstractModel):
+    """ModifyCallback返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class MultiLevelTag(AbstractModel):
     """标签信息结构体
 
@@ -1761,6 +1877,37 @@ class PersonImageInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class QueryCallbackRequest(AbstractModel):
+    """QueryCallback请求参数结构体
+
+    """
+
+
+class QueryCallbackResponse(AbstractModel):
+    """QueryCallback返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskFinishNotifyURL: 任务分析完成后回调地址
+        :type TaskFinishNotifyURL: str
+        :param MediaFinishNotifyURL: 媒体导入完成后回调地址
+        :type MediaFinishNotifyURL: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskFinishNotifyURL = None
+        self.MediaFinishNotifyURL = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskFinishNotifyURL = params.get("TaskFinishNotifyURL")
+        self.MediaFinishNotifyURL = params.get("MediaFinishNotifyURL")
+        self.RequestId = params.get("RequestId")
 
 
 class ShowInfo(AbstractModel):
@@ -1916,6 +2063,8 @@ class TaskFilter(AbstractModel):
         :type MediaLangSet: list of int
         :param MediaLabelSet: 媒资素材一级类型
         :type MediaLabelSet: list of int
+        :param LabelSet: 媒资自定义标签数组
+        :type LabelSet: list of str
         """
         self.MediaTypeSet = None
         self.TaskStatusSet = None
@@ -1924,6 +2073,7 @@ class TaskFilter(AbstractModel):
         self.MediaNameSet = None
         self.MediaLangSet = None
         self.MediaLabelSet = None
+        self.LabelSet = None
 
 
     def _deserialize(self, params):
@@ -1934,6 +2084,7 @@ class TaskFilter(AbstractModel):
         self.MediaNameSet = params.get("MediaNameSet")
         self.MediaLangSet = params.get("MediaLangSet")
         self.MediaLabelSet = params.get("MediaLabelSet")
+        self.LabelSet = params.get("LabelSet")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1993,6 +2144,9 @@ class TaskInfo(AbstractModel):
         :param MediaName: 媒资文件名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type MediaName: str
+        :param Label: 媒资自定义标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Label: str
         """
         self.TaskId = None
         self.TaskName = None
@@ -2005,6 +2159,7 @@ class TaskInfo(AbstractModel):
         self.FailedReason = None
         self.MediaPreknownInfo = None
         self.MediaName = None
+        self.Label = None
 
 
     def _deserialize(self, params):
@@ -2021,6 +2176,7 @@ class TaskInfo(AbstractModel):
             self.MediaPreknownInfo = MediaPreknownInfo()
             self.MediaPreknownInfo._deserialize(params.get("MediaPreknownInfo"))
         self.MediaName = params.get("MediaName")
+        self.Label = params.get("Label")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

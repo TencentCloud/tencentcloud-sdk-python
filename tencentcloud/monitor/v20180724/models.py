@@ -5098,6 +5098,10 @@ class DescribePrometheusInstancesRequest(AbstractModel):
         :type Limit: int
         :param Offset: 偏移量，默认为0。
         :type Offset: int
+        :param InstanceChargeType: 按照【计费类型】进行过滤。
+<li>2：包年包月</li>
+<li>3：按量</li>
+        :type InstanceChargeType: int
         """
         self.InstanceIds = None
         self.InstanceStatus = None
@@ -5107,6 +5111,7 @@ class DescribePrometheusInstancesRequest(AbstractModel):
         self.IPv4Address = None
         self.Limit = None
         self.Offset = None
+        self.InstanceChargeType = None
 
 
     def _deserialize(self, params):
@@ -5123,6 +5128,7 @@ class DescribePrometheusInstancesRequest(AbstractModel):
         self.IPv4Address = params.get("IPv4Address")
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
+        self.InstanceChargeType = params.get("InstanceChargeType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

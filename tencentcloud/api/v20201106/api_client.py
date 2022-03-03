@@ -26,6 +26,34 @@ class ApiClient(AbstractClient):
     _service = 'api'
 
 
+    def DescribeProducts(self, request):
+        """本接口(DescribeProducts)用于查询各个支持地域列表查询的产品信息。
+
+        :param request: Request instance for DescribeProducts.
+        :type request: :class:`tencentcloud.api.v20201106.models.DescribeProductsRequest`
+        :rtype: :class:`tencentcloud.api.v20201106.models.DescribeProductsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeProducts", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeProductsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeRegions(self, request):
         """本接口(DescribeRegions)用于查询各个产品支持地域信息。
 

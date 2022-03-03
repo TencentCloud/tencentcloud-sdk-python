@@ -57,6 +57,8 @@ class CreateJobConfigRequest(AbstractModel):
         :type LogCollectType: int
         :param PythonVersion: pyflink作业运行时使用的python版本
         :type PythonVersion: str
+        :param WorkSpaceId: 工作空间 SerialId
+        :type WorkSpaceId: str
         """
         self.JobId = None
         self.EntrypointClass = None
@@ -74,6 +76,7 @@ class CreateJobConfigRequest(AbstractModel):
         self.ClsTopicId = None
         self.LogCollectType = None
         self.PythonVersion = None
+        self.WorkSpaceId = None
 
 
     def _deserialize(self, params):
@@ -103,6 +106,7 @@ class CreateJobConfigRequest(AbstractModel):
         self.ClsTopicId = params.get("ClsTopicId")
         self.LogCollectType = params.get("LogCollectType")
         self.PythonVersion = params.get("PythonVersion")
+        self.WorkSpaceId = params.get("WorkSpaceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -156,6 +160,8 @@ class CreateJobRequest(AbstractModel):
         :type FolderId: str
         :param FlinkVersion: 作业运行的Flink版本
         :type FlinkVersion: str
+        :param WorkSpaceId: 工作空间 SerialId
+        :type WorkSpaceId: str
         """
         self.Name = None
         self.JobType = None
@@ -165,6 +171,7 @@ class CreateJobRequest(AbstractModel):
         self.Remark = None
         self.FolderId = None
         self.FlinkVersion = None
+        self.WorkSpaceId = None
 
 
     def _deserialize(self, params):
@@ -176,6 +183,7 @@ class CreateJobRequest(AbstractModel):
         self.Remark = params.get("Remark")
         self.FolderId = params.get("FolderId")
         self.FlinkVersion = params.get("FlinkVersion")
+        self.WorkSpaceId = params.get("WorkSpaceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -221,11 +229,14 @@ class CreateResourceConfigRequest(AbstractModel):
         :type Remark: str
         :param AutoDelete: 1： 资源版本达到上限，自动删除最早可删除的版本
         :type AutoDelete: int
+        :param WorkSpaceId: 工作空间 SerialId
+        :type WorkSpaceId: str
         """
         self.ResourceId = None
         self.ResourceLoc = None
         self.Remark = None
         self.AutoDelete = None
+        self.WorkSpaceId = None
 
 
     def _deserialize(self, params):
@@ -235,6 +246,7 @@ class CreateResourceConfigRequest(AbstractModel):
             self.ResourceLoc._deserialize(params.get("ResourceLoc"))
         self.Remark = params.get("Remark")
         self.AutoDelete = params.get("AutoDelete")
+        self.WorkSpaceId = params.get("WorkSpaceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -284,6 +296,8 @@ class CreateResourceRequest(AbstractModel):
         :type ResourceConfigRemark: str
         :param FolderId: 目录ID
         :type FolderId: str
+        :param WorkSpaceId: 工作空间 SerialId
+        :type WorkSpaceId: str
         """
         self.ResourceLoc = None
         self.ResourceType = None
@@ -291,6 +305,7 @@ class CreateResourceRequest(AbstractModel):
         self.Name = None
         self.ResourceConfigRemark = None
         self.FolderId = None
+        self.WorkSpaceId = None
 
 
     def _deserialize(self, params):
@@ -302,6 +317,7 @@ class CreateResourceRequest(AbstractModel):
         self.Name = params.get("Name")
         self.ResourceConfigRemark = params.get("ResourceConfigRemark")
         self.FolderId = params.get("FolderId")
+        self.WorkSpaceId = params.get("WorkSpaceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -347,14 +363,18 @@ class DeleteResourceConfigsRequest(AbstractModel):
         :type ResourceId: str
         :param ResourceConfigVersions: 资源版本数组
         :type ResourceConfigVersions: list of int
+        :param WorkSpaceId: 工作空间 SerialId
+        :type WorkSpaceId: str
         """
         self.ResourceId = None
         self.ResourceConfigVersions = None
+        self.WorkSpaceId = None
 
 
     def _deserialize(self, params):
         self.ResourceId = params.get("ResourceId")
         self.ResourceConfigVersions = params.get("ResourceConfigVersions")
+        self.WorkSpaceId = params.get("WorkSpaceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -390,12 +410,16 @@ class DeleteResourcesRequest(AbstractModel):
         r"""
         :param ResourceIds: 待删除资源ID列表
         :type ResourceIds: list of str
+        :param WorkSpaceId: 工作空间 SerialId
+        :type WorkSpaceId: str
         """
         self.ResourceIds = None
+        self.WorkSpaceId = None
 
 
     def _deserialize(self, params):
         self.ResourceIds = params.get("ResourceIds")
+        self.WorkSpaceId = params.get("WorkSpaceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -435,16 +459,20 @@ class DeleteTableConfigRequest(AbstractModel):
         :type DebugId: int
         :param TableName: 表名
         :type TableName: str
+        :param WorkSpaceId: 工作空间 SerialId
+        :type WorkSpaceId: str
         """
         self.JobId = None
         self.DebugId = None
         self.TableName = None
+        self.WorkSpaceId = None
 
 
     def _deserialize(self, params):
         self.JobId = params.get("JobId")
         self.DebugId = params.get("DebugId")
         self.TableName = params.get("TableName")
+        self.WorkSpaceId = params.get("WorkSpaceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -490,6 +518,8 @@ class DescribeJobConfigsRequest(AbstractModel):
         :type Filters: list of Filter
         :param OnlyDraft: true 表示只展示草稿
         :type OnlyDraft: bool
+        :param WorkSpaceId: 工作空间 SerialId
+        :type WorkSpaceId: str
         """
         self.JobId = None
         self.JobConfigVersions = None
@@ -497,6 +527,7 @@ class DescribeJobConfigsRequest(AbstractModel):
         self.Limit = None
         self.Filters = None
         self.OnlyDraft = None
+        self.WorkSpaceId = None
 
 
     def _deserialize(self, params):
@@ -511,6 +542,7 @@ class DescribeJobConfigsRequest(AbstractModel):
                 obj._deserialize(item)
                 self.Filters.append(obj)
         self.OnlyDraft = params.get("OnlyDraft")
+        self.WorkSpaceId = params.get("WorkSpaceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -559,17 +591,20 @@ class DescribeJobsRequest(AbstractModel):
         r"""
         :param JobIds: 按照一个或者多个作业ID查询。作业ID形如：cql-11112222，每次请求的作业上限为100。参数不支持同时指定JobIds和Filters。
         :type JobIds: list of str
-        :param Filters: 过滤条件，支持的 Filter.Name 为：作业名 Name、作业状态 Status、所属集群 ClusterId。每次请求的 Filters 个数的上限为 3，Filter.Values 的个数上限为 5。参数不支持同时指定 JobIds 和 Filters。
+        :param Filters: 过滤条件，支持的 Filter.Name 为：作业名 Name、作业状态 Status、所属集群 ClusterId、作业id JobId、集群名称 ClusterName。 每次请求的 Filters 个数的上限为 5，Filter.Values 的个数上限为 5。参数不支持同时指定 JobIds 和 Filters。
         :type Filters: list of Filter
         :param Offset: 偏移量，默认为0
         :type Offset: int
         :param Limit: 分页大小，默认为20，最大值为100
         :type Limit: int
+        :param WorkSpaceId: 工作空间 SerialId
+        :type WorkSpaceId: str
         """
         self.JobIds = None
         self.Filters = None
         self.Offset = None
         self.Limit = None
+        self.WorkSpaceId = None
 
 
     def _deserialize(self, params):
@@ -582,6 +617,7 @@ class DescribeJobsRequest(AbstractModel):
                 self.Filters.append(obj)
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.WorkSpaceId = params.get("WorkSpaceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -640,6 +676,8 @@ class DescribeResourceConfigsRequest(AbstractModel):
         :type JobConfigVersion: int
         :param JobId: 作业ID
         :type JobId: str
+        :param WorkSpaceId: 工作空间 SerialId
+        :type WorkSpaceId: str
         """
         self.ResourceId = None
         self.Offset = None
@@ -647,6 +685,7 @@ class DescribeResourceConfigsRequest(AbstractModel):
         self.ResourceConfigVersions = None
         self.JobConfigVersion = None
         self.JobId = None
+        self.WorkSpaceId = None
 
 
     def _deserialize(self, params):
@@ -656,6 +695,7 @@ class DescribeResourceConfigsRequest(AbstractModel):
         self.ResourceConfigVersions = params.get("ResourceConfigVersions")
         self.JobConfigVersion = params.get("JobConfigVersion")
         self.JobId = params.get("JobId")
+        self.WorkSpaceId = params.get("WorkSpaceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -712,12 +752,15 @@ class DescribeResourceRelatedJobsRequest(AbstractModel):
         :type Limit: int
         :param ResourceConfigVersion: 资源版本号
         :type ResourceConfigVersion: int
+        :param WorkSpaceId: 工作空间 SerialId
+        :type WorkSpaceId: str
         """
         self.ResourceId = None
         self.DESCByJobConfigCreateTime = None
         self.Offset = None
         self.Limit = None
         self.ResourceConfigVersion = None
+        self.WorkSpaceId = None
 
 
     def _deserialize(self, params):
@@ -726,6 +769,7 @@ class DescribeResourceRelatedJobsRequest(AbstractModel):
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
         self.ResourceConfigVersion = params.get("ResourceConfigVersion")
+        self.WorkSpaceId = params.get("WorkSpaceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -781,11 +825,14 @@ class DescribeResourcesRequest(AbstractModel):
         :param Filters: <li><strong>ResourceName</strong></li>
 <p style="padding-left: 30px;">按照资源名字过滤，支持模糊过滤。传入的过滤名字不超过5个</p><p style="padding-left: 30px;">类型: String</p><p style="padding-left: 30px;">必选: 否</p>
         :type Filters: list of Filter
+        :param WorkSpaceId: 工作空间 SerialId
+        :type WorkSpaceId: str
         """
         self.ResourceIds = None
         self.Offset = None
         self.Limit = None
         self.Filters = None
+        self.WorkSpaceId = None
 
 
     def _deserialize(self, params):
@@ -798,6 +845,7 @@ class DescribeResourcesRequest(AbstractModel):
                 obj = Filter()
                 obj._deserialize(item)
                 self.Filters.append(obj)
+        self.WorkSpaceId = params.get("WorkSpaceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1160,6 +1208,12 @@ class JobV1(AbstractModel):
         :param FlinkVersion: 作业运行的 Flink 版本
 注意：此字段可能返回 null，表示取不到有效值。
         :type FlinkVersion: str
+        :param WorkSpaceId: 工作空间 SerialId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkSpaceId: str
+        :param WorkSpaceName: 工作空间名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkSpaceName: str
         """
         self.JobId = None
         self.Region = None
@@ -1190,6 +1244,8 @@ class JobV1(AbstractModel):
         self.ClusterStatus = None
         self.RunningCu = None
         self.FlinkVersion = None
+        self.WorkSpaceId = None
+        self.WorkSpaceName = None
 
 
     def _deserialize(self, params):
@@ -1222,6 +1278,8 @@ class JobV1(AbstractModel):
         self.ClusterStatus = params.get("ClusterStatus")
         self.RunningCu = params.get("RunningCu")
         self.FlinkVersion = params.get("FlinkVersion")
+        self.WorkSpaceId = params.get("WorkSpaceId")
+        self.WorkSpaceName = params.get("WorkSpaceName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1632,8 +1690,11 @@ class RunJobsRequest(AbstractModel):
         r"""
         :param RunJobDescriptions: 批量启动作业的描述信息
         :type RunJobDescriptions: list of RunJobDescription
+        :param WorkSpaceId: 工作空间 SerialId
+        :type WorkSpaceId: str
         """
         self.RunJobDescriptions = None
+        self.WorkSpaceId = None
 
 
     def _deserialize(self, params):
@@ -1643,6 +1704,7 @@ class RunJobsRequest(AbstractModel):
                 obj = RunJobDescription()
                 obj._deserialize(item)
                 self.RunJobDescriptions.append(obj)
+        self.WorkSpaceId = params.get("WorkSpaceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1706,8 +1768,11 @@ class StopJobsRequest(AbstractModel):
         r"""
         :param StopJobDescriptions: 批量停止作业的描述信息
         :type StopJobDescriptions: list of StopJobDescription
+        :param WorkSpaceId: 工作空间 SerialId
+        :type WorkSpaceId: str
         """
         self.StopJobDescriptions = None
+        self.WorkSpaceId = None
 
 
     def _deserialize(self, params):
@@ -1717,6 +1782,7 @@ class StopJobsRequest(AbstractModel):
                 obj = StopJobDescription()
                 obj._deserialize(item)
                 self.StopJobDescriptions.append(obj)
+        self.WorkSpaceId = params.get("WorkSpaceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

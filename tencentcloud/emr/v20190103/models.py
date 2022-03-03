@@ -180,6 +180,46 @@ class CdbInfo(AbstractModel):
         
 
 
+class ClusterExternalServiceInfo(AbstractModel):
+    """当前集群共用组件与集群对应关系
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DependType: 依赖关系，0:被其他集群依赖，1:依赖其他集群
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DependType: int
+        :param Service: 共用组件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Service: str
+        :param ClusterId: 共用集群
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterId: str
+        :param ClusterStatus: 共用集群状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterStatus: int
+        """
+        self.DependType = None
+        self.Service = None
+        self.ClusterId = None
+        self.ClusterStatus = None
+
+
+    def _deserialize(self, params):
+        self.DependType = params.get("DependType")
+        self.Service = params.get("Service")
+        self.ClusterId = params.get("ClusterId")
+        self.ClusterStatus = params.get("ClusterStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ClusterInstancesInfo(AbstractModel):
     """集群实例信息
 
@@ -322,6 +362,9 @@ class ClusterInstancesInfo(AbstractModel):
         :param SubnetName: subnet name
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubnetName: str
+        :param ClusterExternalServiceInfo: 集群依赖关系
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterExternalServiceInfo: list of ClusterExternalServiceInfo
         """
         self.Id = None
         self.ClusterId = None
@@ -359,6 +402,7 @@ class ClusterInstancesInfo(AbstractModel):
         self.DisplayName = None
         self.VpcName = None
         self.SubnetName = None
+        self.ClusterExternalServiceInfo = None
 
 
     def _deserialize(self, params):
@@ -405,6 +449,12 @@ class ClusterInstancesInfo(AbstractModel):
         self.DisplayName = params.get("DisplayName")
         self.VpcName = params.get("VpcName")
         self.SubnetName = params.get("SubnetName")
+        if params.get("ClusterExternalServiceInfo") is not None:
+            self.ClusterExternalServiceInfo = []
+            for item in params.get("ClusterExternalServiceInfo"):
+                obj = ClusterExternalServiceInfo()
+                obj._deserialize(item)
+                self.ClusterExternalServiceInfo.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -640,6 +690,8 @@ Hadoop-Zookeeper
 Hadoop-Presto
 Hadoop-Hbase
         :type SceneName: str
+        :param ExternalService: 共享组件信息
+        :type ExternalService: list of ExternalService
         """
         self.ProductId = None
         self.VPCSettings = None
@@ -669,6 +721,7 @@ Hadoop-Hbase
         self.MetaDBInfo = None
         self.ApplicationRole = None
         self.SceneName = None
+        self.ExternalService = None
 
 
     def _deserialize(self, params):
@@ -722,6 +775,12 @@ Hadoop-Hbase
             self.MetaDBInfo._deserialize(params.get("MetaDBInfo"))
         self.ApplicationRole = params.get("ApplicationRole")
         self.SceneName = params.get("SceneName")
+        if params.get("ExternalService") is not None:
+            self.ExternalService = []
+            for item in params.get("ExternalService"):
+                obj = ExternalService()
+                obj._deserialize(item)
+                self.ExternalService.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1364,6 +1423,9 @@ class EmrProductConfigOutter(AbstractModel):
         :param SecurityGroups: 安全组
 注意：此字段可能返回 null，表示取不到有效值。
         :type SecurityGroups: list of str
+        :param PublicKeyId: SSH密钥Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PublicKeyId: str
         """
         self.SoftInfo = None
         self.MasterNodeSize = None
@@ -1383,6 +1445,7 @@ class EmrProductConfigOutter(AbstractModel):
         self.CbsEncrypt = None
         self.ApplicationRole = None
         self.SecurityGroups = None
+        self.PublicKeyId = None
 
 
     def _deserialize(self, params):
@@ -1412,6 +1475,7 @@ class EmrProductConfigOutter(AbstractModel):
         self.CbsEncrypt = params.get("CbsEncrypt")
         self.ApplicationRole = params.get("ApplicationRole")
         self.SecurityGroups = params.get("SecurityGroups")
+        self.PublicKeyId = params.get("PublicKeyId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

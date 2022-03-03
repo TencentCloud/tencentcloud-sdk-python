@@ -327,7 +327,7 @@ RESOURCEUNAVAILABLE_RESOURCESPECNOTDEFAULTSPEC = 'ResourceUnavailable.ResourceSp
 RESOURCEUNAVAILABLE_RESOURCESPEC_NOTDEFAULTSPEC = 'ResourceUnavailable.ResourceSpec_NotDefaultSpec'
 
 # 资源售罄。
-RESOURCESSOLDOUT_ = 'ResourcesSoldOut.'
+RESOURCESSOLDOUT = 'ResourcesSoldOut'
 
 # CBS资源售罄。
 RESOURCESSOLDOUT_CBSSOLDOUT = 'ResourcesSoldOut.CbsSoldOut'

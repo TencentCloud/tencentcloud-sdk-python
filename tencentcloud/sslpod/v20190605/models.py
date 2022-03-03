@@ -488,13 +488,14 @@ class DescribeDomainsRequest(AbstractModel):
         :type Offset: int
         :param Limit: 获取数量
         :type Limit: int
-        :param SearchType: 搜索的类型有：none，tags，grade，brand，code，hash，limit。
+        :param SearchType: 搜索的类型有：none，tags，grade，brand，code，hash，limit，domain。
 选tags，入参请填Tag，
 选grade，入参请填Grade，
 选brand，入参请填Brand，
 选code，入参请填Code，
 选hash，入参请填Hash
 选limit，标识只返回数量信息
+选domain，入参请填Domain
         :type SearchType: str
         :param Tag: 标签，多个标签用逗号分隔
         :type Tag: str
@@ -510,6 +511,8 @@ class DescribeDomainsRequest(AbstractModel):
         :type Item: str
         :param Status: 搜索图标值
         :type Status: str
+        :param Domain: 搜索域名
+        :type Domain: str
         """
         self.Offset = None
         self.Limit = None
@@ -521,6 +524,7 @@ class DescribeDomainsRequest(AbstractModel):
         self.Hash = None
         self.Item = None
         self.Status = None
+        self.Domain = None
 
 
     def _deserialize(self, params):
@@ -534,6 +538,7 @@ class DescribeDomainsRequest(AbstractModel):
         self.Hash = params.get("Hash")
         self.Item = params.get("Item")
         self.Status = params.get("Status")
+        self.Domain = params.get("Domain")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
