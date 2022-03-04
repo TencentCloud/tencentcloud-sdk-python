@@ -926,12 +926,12 @@ class CreateExportRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TopicId: 日志主题
+        :param TopicId: 日志主题ID
         :type TopicId: str
-        :param Query: 日志导出检索语句
-        :type Query: str
-        :param Count: 日志导出数量,  最大值1000万
+        :param Count: 日志导出数量,  最大值5000万
         :type Count: int
+        :param Query: 日志导出检索语句，不支持<a href="https://cloud.tencent.com/document/product/614/44061" target="_blank">[SQL语句]</a>
+        :type Query: str
         :param From: 日志导出起始时间，毫秒时间戳
         :type From: int
         :param To: 日志导出结束时间，毫秒时间戳
@@ -942,8 +942,8 @@ class CreateExportRequest(AbstractModel):
         :type Format: str
         """
         self.TopicId = None
-        self.Query = None
         self.Count = None
+        self.Query = None
         self.From = None
         self.To = None
         self.Order = None
@@ -952,8 +952,8 @@ class CreateExportRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.TopicId = params.get("TopicId")
-        self.Query = params.get("Query")
         self.Count = params.get("Count")
+        self.Query = params.get("Query")
         self.From = params.get("From")
         self.To = params.get("To")
         self.Order = params.get("Order")

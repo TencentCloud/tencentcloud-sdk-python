@@ -282,6 +282,60 @@ class Assignment(AbstractModel):
         
 
 
+class AuthorizeTokenRequest(AbstractModel):
+    """AuthorizeToken请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param User: 用户
+        :type User: str
+        :param Tokens: token串
+        :type Tokens: str
+        """
+        self.InstanceId = None
+        self.User = None
+        self.Tokens = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.User = params.get("User")
+        self.Tokens = params.get("Tokens")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AuthorizeTokenResponse(AbstractModel):
+    """AuthorizeToken返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 0 成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
 class BatchContent(AbstractModel):
     """批量发送消息内容
 
@@ -596,6 +650,60 @@ class BatchModifyTopicResultDTO(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class CancelAuthorizationTokenRequest(AbstractModel):
+    """CancelAuthorizationToken请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param User: 用户
+        :type User: str
+        :param Tokens: token串
+        :type Tokens: str
+        """
+        self.InstanceId = None
+        self.User = None
+        self.Tokens = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.User = params.get("User")
+        self.Tokens = params.get("Tokens")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CancelAuthorizationTokenResponse(AbstractModel):
+    """CancelAuthorizationToken返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 0 成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
 
 
 class ClusterInfo(AbstractModel):
@@ -1361,6 +1469,56 @@ class CreateRouteResponse(AbstractModel):
         if params.get("Result") is not None:
             self.Result = JgwOperateResponse()
             self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class CreateTokenRequest(AbstractModel):
+    """CreateToken请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param User: 用户名
+        :type User: str
+        """
+        self.InstanceId = None
+        self.User = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.User = params.get("User")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateTokenResponse(AbstractModel):
+    """CreateToken返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: token串
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
         self.RequestId = params.get("RequestId")
 
 

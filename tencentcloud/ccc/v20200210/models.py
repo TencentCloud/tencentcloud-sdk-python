@@ -2207,6 +2207,9 @@ class ServeParticipant(AbstractModel):
         :param SkillGroupName: 技能组名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type SkillGroupName: str
+        :param CustomRecordURL: 录音转存第三方COS地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CustomRecordURL: str
         """
         self.Mail = None
         self.Phone = None
@@ -2224,6 +2227,7 @@ class ServeParticipant(AbstractModel):
         self.Sequence = None
         self.StartTimestamp = None
         self.SkillGroupName = None
+        self.CustomRecordURL = None
 
 
     def _deserialize(self, params):
@@ -2243,6 +2247,7 @@ class ServeParticipant(AbstractModel):
         self.Sequence = params.get("Sequence")
         self.StartTimestamp = params.get("StartTimestamp")
         self.SkillGroupName = params.get("SkillGroupName")
+        self.CustomRecordURL = params.get("CustomRecordURL")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2701,6 +2706,9 @@ notInService       不在服务区
         :param AsrUrl: 获取录音ASR文本信息地址
 注意：此字段可能返回 null，表示取不到有效值。
         :type AsrUrl: str
+        :param CustomRecordURL: 录音转存第三方COS地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CustomRecordURL: str
         """
         self.Caller = None
         self.Callee = None
@@ -2731,6 +2739,7 @@ notInService       不在服务区
         self.Uui = None
         self.IVRKeyPressedEx = None
         self.AsrUrl = None
+        self.CustomRecordURL = None
 
 
     def _deserialize(self, params):
@@ -2780,6 +2789,7 @@ notInService       不在服务区
                 obj._deserialize(item)
                 self.IVRKeyPressedEx.append(obj)
         self.AsrUrl = params.get("AsrUrl")
+        self.CustomRecordURL = params.get("CustomRecordURL")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

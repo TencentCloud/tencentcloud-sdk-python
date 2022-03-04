@@ -167,7 +167,7 @@ class ClsClient(AbstractClient):
 
 
     def CreateExport(self, request):
-        """本接口用于创建日志下载任务
+        """本接口用于创建日志下载任务，导出原始日志
 
         :param request: Request instance for CreateExport.
         :type request: :class:`tencentcloud.cls.v20201016.models.CreateExportRequest`

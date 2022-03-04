@@ -80,18 +80,24 @@ class AddContractRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Fee: 签约扣率百分比（如：0.32）
-        :type Fee: str
-        :param OutContractId: 机构合同主键（系统有唯一性校验），建议使用合同表的主键ID，防止重复添加合同
-        :type OutContractId: str
-        :param PaymentClassificationLimit: 封顶值（分为单位，无封顶填0）
-        :type PaymentClassificationLimit: str
-        :param ContactTelephone: 联系人电话
-        :type ContactTelephone: str
-        :param PaymentId: 支付方式编号
-        :type PaymentId: str
+        :param OpenId: 收单系统分配的开放ID
+        :type OpenId: str
         :param OpenKey: 收单系统分配的密钥
         :type OpenKey: str
+        :param OutContractId: 机构合同主键（系统有唯一性校验），建议使用合同表的主键ID，防止重复添加合同
+        :type OutContractId: str
+        :param Code: 合同编号（系统有唯一性校验）
+        :type Code: str
+        :param PaymentId: 支付方式编号
+        :type PaymentId: str
+        :param PaymentClassificationId: 支付方式行业分类编号
+        :type PaymentClassificationId: str
+        :param PaymentClassificationLimit: 封顶值（分为单位，无封顶填0）
+        :type PaymentClassificationLimit: str
+        :param MerchantNo: 商户编号
+        :type MerchantNo: str
+        :param Fee: 签约扣率百分比（如：0.32）
+        :type Fee: str
         :param StartDate: 合同生效日期（yyyy-mm-dd）
         :type StartDate: str
         :param EndDate: 合同过期日期（yyyy-mm-dd）
@@ -100,114 +106,108 @@ class AddContractRequest(AbstractModel):
         :type SignMan: str
         :param SignName: 签购单名称，建议使用商户招牌名称
         :type SignName: str
-        :param OpenId: 收单系统分配的开放ID
-        :type OpenId: str
-        :param MerchantNo: 商户编号
-        :type MerchantNo: str
-        :param PictureOne: 合同照片【私密区】
-        :type PictureOne: str
-        :param Contact: 联系人
-        :type Contact: str
         :param SignDate: 合同签署日期（yyyy-mm-dd）
         :type SignDate: str
-        :param Code: 合同编号（系统有唯一性校验）
-        :type Code: str
         :param AutoSign: 是否自动续签（1是，0否）
         :type AutoSign: str
-        :param PaymentClassificationId: 支付方式行业分类编号
-        :type PaymentClassificationId: str
-        :param Profile: 沙箱环境填sandbox，正式环境不填
-        :type Profile: str
+        :param Contact: 联系人
+        :type Contact: str
+        :param ContactTelephone: 联系人电话
+        :type ContactTelephone: str
+        :param PictureOne: 合同照片【私密区】
+        :type PictureOne: str
         :param PictureTwo: 合同照片【私密区】
         :type PictureTwo: str
+        :param ChannelExtJson: 渠道扩展字段，json格式
+        :type ChannelExtJson: str
+        :param Profile: 沙箱环境填sandbox，正式环境不填
+        :type Profile: str
+        :param PaymentOptionOne: 合同选项1（不同支付方式规则不一样，请以支付方式规定的格式传值）
+        :type PaymentOptionOne: str
+        :param PaymentOptionTwo: 合同选项2（不同支付方式规则不一样，请以支付方式规定的格式传值）
+        :type PaymentOptionTwo: str
+        :param PaymentOptionThree: 合同选项3（不同支付方式规则不一样，请以支付方式规定的格式传值）
+        :type PaymentOptionThree: str
+        :param PaymentOptionFour: 合同选项4（不同支付方式规则不一样，请以支付方式规定的格式传值）
+        :type PaymentOptionFour: str
+        :param PaymentOptionFive: 合同证书选项1（不同支付方式规则不一样，请以支付方式规定的格式传值）
+        :type PaymentOptionFive: str
+        :param PaymentOptionSix: 合同证书选项2（不同支付方式规则不一样，请以支付方式规定的格式传值）
+        :type PaymentOptionSix: str
+        :param PaymentOptionSeven: 合同选项5（不同支付方式规则不一样，请以支付方式规定的格式传值）
+        :type PaymentOptionSeven: str
+        :param PaymentOptionOther: 合同选项6（不同支付方式规则不一样，请以支付方式规定的格式传值）
+        :type PaymentOptionOther: str
         :param PaymentOptionTen: 合同选项8
         :type PaymentOptionTen: str
         :param PaymentOptionNine: 合同选项7（不同支付方式规则不一样，请以支付方式规定的格式传值）
         :type PaymentOptionNine: str
-        :param PaymentOptionOther: 合同选项6（不同支付方式规则不一样，请以支付方式规定的格式传值）
-        :type PaymentOptionOther: str
-        :param PaymentOptionFive: 合同证书选项1（不同支付方式规则不一样，请以支付方式规定的格式传值）
-        :type PaymentOptionFive: str
-        :param PaymentOptionFour: 合同选项4（不同支付方式规则不一样，请以支付方式规定的格式传值）
-        :type PaymentOptionFour: str
-        :param PaymentOptionSeven: 合同选项5（不同支付方式规则不一样，请以支付方式规定的格式传值）
-        :type PaymentOptionSeven: str
-        :param PaymentOptionSix: 合同证书选项2（不同支付方式规则不一样，请以支付方式规定的格式传值）
-        :type PaymentOptionSix: str
-        :param PaymentOptionOne: 合同选项1（不同支付方式规则不一样，请以支付方式规定的格式传值）
-        :type PaymentOptionOne: str
-        :param PaymentOptionThree: 合同选项3（不同支付方式规则不一样，请以支付方式规定的格式传值）
-        :type PaymentOptionThree: str
-        :param PaymentOptionTwo: 合同选项2（不同支付方式规则不一样，请以支付方式规定的格式传值）
-        :type PaymentOptionTwo: str
-        :param ChannelExtJson: 渠道扩展字段，json格式
-        :type ChannelExtJson: str
         """
-        self.Fee = None
-        self.OutContractId = None
-        self.PaymentClassificationLimit = None
-        self.ContactTelephone = None
-        self.PaymentId = None
+        self.OpenId = None
         self.OpenKey = None
+        self.OutContractId = None
+        self.Code = None
+        self.PaymentId = None
+        self.PaymentClassificationId = None
+        self.PaymentClassificationLimit = None
+        self.MerchantNo = None
+        self.Fee = None
         self.StartDate = None
         self.EndDate = None
         self.SignMan = None
         self.SignName = None
-        self.OpenId = None
-        self.MerchantNo = None
-        self.PictureOne = None
-        self.Contact = None
         self.SignDate = None
-        self.Code = None
         self.AutoSign = None
-        self.PaymentClassificationId = None
-        self.Profile = None
+        self.Contact = None
+        self.ContactTelephone = None
+        self.PictureOne = None
         self.PictureTwo = None
+        self.ChannelExtJson = None
+        self.Profile = None
+        self.PaymentOptionOne = None
+        self.PaymentOptionTwo = None
+        self.PaymentOptionThree = None
+        self.PaymentOptionFour = None
+        self.PaymentOptionFive = None
+        self.PaymentOptionSix = None
+        self.PaymentOptionSeven = None
+        self.PaymentOptionOther = None
         self.PaymentOptionTen = None
         self.PaymentOptionNine = None
-        self.PaymentOptionOther = None
-        self.PaymentOptionFive = None
-        self.PaymentOptionFour = None
-        self.PaymentOptionSeven = None
-        self.PaymentOptionSix = None
-        self.PaymentOptionOne = None
-        self.PaymentOptionThree = None
-        self.PaymentOptionTwo = None
-        self.ChannelExtJson = None
 
 
     def _deserialize(self, params):
-        self.Fee = params.get("Fee")
-        self.OutContractId = params.get("OutContractId")
-        self.PaymentClassificationLimit = params.get("PaymentClassificationLimit")
-        self.ContactTelephone = params.get("ContactTelephone")
-        self.PaymentId = params.get("PaymentId")
+        self.OpenId = params.get("OpenId")
         self.OpenKey = params.get("OpenKey")
+        self.OutContractId = params.get("OutContractId")
+        self.Code = params.get("Code")
+        self.PaymentId = params.get("PaymentId")
+        self.PaymentClassificationId = params.get("PaymentClassificationId")
+        self.PaymentClassificationLimit = params.get("PaymentClassificationLimit")
+        self.MerchantNo = params.get("MerchantNo")
+        self.Fee = params.get("Fee")
         self.StartDate = params.get("StartDate")
         self.EndDate = params.get("EndDate")
         self.SignMan = params.get("SignMan")
         self.SignName = params.get("SignName")
-        self.OpenId = params.get("OpenId")
-        self.MerchantNo = params.get("MerchantNo")
-        self.PictureOne = params.get("PictureOne")
-        self.Contact = params.get("Contact")
         self.SignDate = params.get("SignDate")
-        self.Code = params.get("Code")
         self.AutoSign = params.get("AutoSign")
-        self.PaymentClassificationId = params.get("PaymentClassificationId")
-        self.Profile = params.get("Profile")
+        self.Contact = params.get("Contact")
+        self.ContactTelephone = params.get("ContactTelephone")
+        self.PictureOne = params.get("PictureOne")
         self.PictureTwo = params.get("PictureTwo")
+        self.ChannelExtJson = params.get("ChannelExtJson")
+        self.Profile = params.get("Profile")
+        self.PaymentOptionOne = params.get("PaymentOptionOne")
+        self.PaymentOptionTwo = params.get("PaymentOptionTwo")
+        self.PaymentOptionThree = params.get("PaymentOptionThree")
+        self.PaymentOptionFour = params.get("PaymentOptionFour")
+        self.PaymentOptionFive = params.get("PaymentOptionFive")
+        self.PaymentOptionSix = params.get("PaymentOptionSix")
+        self.PaymentOptionSeven = params.get("PaymentOptionSeven")
+        self.PaymentOptionOther = params.get("PaymentOptionOther")
         self.PaymentOptionTen = params.get("PaymentOptionTen")
         self.PaymentOptionNine = params.get("PaymentOptionNine")
-        self.PaymentOptionOther = params.get("PaymentOptionOther")
-        self.PaymentOptionFive = params.get("PaymentOptionFive")
-        self.PaymentOptionFour = params.get("PaymentOptionFour")
-        self.PaymentOptionSeven = params.get("PaymentOptionSeven")
-        self.PaymentOptionSix = params.get("PaymentOptionSix")
-        self.PaymentOptionOne = params.get("PaymentOptionOne")
-        self.PaymentOptionThree = params.get("PaymentOptionThree")
-        self.PaymentOptionTwo = params.get("PaymentOptionTwo")
-        self.ChannelExtJson = params.get("ChannelExtJson")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -282,242 +282,242 @@ class AddMerchantRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BossName: 法人姓名
-        :type BossName: str
-        :param BusinessLicensePicture: 营业执照图片【私密区】（系统返回的图片路径），（小微商户不效验，随意传要有值，公司/个体户必传）
-        :type BusinessLicensePicture: str
-        :param BrandName: 招牌名称
-        :type BrandName: str
+        :param OpenId: 收单系统分配的开放ID
+        :type OpenId: str
         :param OpenKey: 收单系统分配的密钥
         :type OpenKey: str
+        :param OutMerchantId: 机构商户主键（系统有唯一性校验），建议使用商户表的主键ID，防止重复添加商户
+        :type OutMerchantId: str
+        :param MerchantName: 商户名称，小微商户命名要符合“”商户_名字” （例如：商户_张三）
+        :type MerchantName: str
+        :param BusinessLicenseType: 营业执照类型（1三证合一，2非三证合一）
+        :type BusinessLicenseType: str
+        :param BusinessLicenseNo: 营业执照编号（系统有唯一性校验），（小微商户不效验，随意传要有值，公司/个体户必传）
+        :type BusinessLicenseNo: str
+        :param BusinessLicensePicture: 营业执照图片【私密区】（系统返回的图片路径），（小微商户不效验，随意传要有值，公司/个体户必传）
+        :type BusinessLicensePicture: str
+        :param BusinessLicenseStartDate: 营业执照生效时间（yyyy-mm-dd），（小微商户不效验，随意传要有值，公司/个体户必传）
+        :type BusinessLicenseStartDate: str
         :param BusinessLicenseEndDate: 营业执照过期时间（yyyy-mm-dd），（小微商户不效验，随意传要有值，公司/个体户必传）
         :type BusinessLicenseEndDate: str
-        :param BossStartDate: 法人证件生效时间（yyyy-mm-dd）
-        :type BossStartDate: str
+        :param ClassificationIds: 行业分类编号列表（第一个分类编号为主分类，后面的为二级分类）
+        :type ClassificationIds: list of str
+        :param BrandName: 招牌名称
+        :type BrandName: str
+        :param Telephone: 联系电话
+        :type Telephone: str
+        :param CityId: 城市编号
+        :type CityId: str
+        :param Address: 详细地址，不含省市区县名称，长度需要大于5。
+        :type Address: str
+        :param OpenHours: 营业时间，多个以小写逗号分开(9:00-12:00,13:00-18:00)
+        :type OpenHours: str
+        :param AccountType: 结算账户类型（2对私，1对公）
+        :type AccountType: str
         :param BankNo: 清算联行号，开户行行号
         :type BankNo: str
         :param BankName: 开户行名称
         :type BankName: str
-        :param BusinessLicenseType: 营业执照类型（1三证合一，2非三证合一）
-        :type BusinessLicenseType: str
-        :param BossEndDate: 法人证件过期时间（yyyy-mm-dd）
-        :type BossEndDate: str
-        :param BusinessLicenseNo: 营业执照编号（系统有唯一性校验），（小微商户不效验，随意传要有值，公司/个体户必传）
-        :type BusinessLicenseNo: str
-        :param BusinessLicenseStartDate: 营业执照生效时间（yyyy-mm-dd），（小微商户不效验，随意传要有值，公司/个体户必传）
-        :type BusinessLicenseStartDate: str
-        :param BossIdType: 法人证件类型（1居民身份证,2临时居民身份证,3居民户口簿,4护照,5港澳居民来往内地通行证,6回乡证,7军人证,8武警身份证,9其他法定文件）
-        :type BossIdType: str
-        :param Address: 详细地址，不含省市区县名称，长度需要大于5。
-        :type Address: str
-        :param BossIdCountry: 法人证件国别/地区（中国CHN，香港HKG，澳门MAC，台湾CTN）
-        :type BossIdCountry: str
-        :param OpenId: 收单系统分配的开放ID
-        :type OpenId: str
-        :param MerchantName: 商户名称，小微商户命名要符合“”商户_名字” （例如：商户_张三）
-        :type MerchantName: str
-        :param BossSex: 法人性别（1男，2女）
-        :type BossSex: str
-        :param ClassificationIds: 行业分类编号列表（第一个分类编号为主分类，后面的为二级分类）
-        :type ClassificationIds: list of str
-        :param BossIdNo: 法人证件号码
-        :type BossIdNo: str
-        :param LicencePicture: 许可证图片【私密区】，（小微商户不效验，随意传要有值，公司/个体户必传）
-        :type LicencePicture: str
-        :param OpenHours: 营业时间，多个以小写逗号分开(9:00-12:00,13:00-18:00)
-        :type OpenHours: str
-        :param AccountName: 银行户名
-        :type AccountName: str
         :param AccountNo: 银行账号
         :type AccountNo: str
-        :param AccountType: 结算账户类型（2对私，1对公）
-        :type AccountType: str
-        :param Telephone: 联系电话
-        :type Telephone: str
+        :param AccountName: 银行户名
+        :type AccountName: str
+        :param BossIdType: 法人证件类型（1居民身份证,2临时居民身份证,3居民户口簿,4护照,5港澳居民来往内地通行证,6回乡证,7军人证,8武警身份证,9其他法定文件）
+        :type BossIdType: str
+        :param BossIdNo: 法人证件号码
+        :type BossIdNo: str
+        :param BossName: 法人姓名
+        :type BossName: str
+        :param BossSex: 法人性别（1男，2女）
+        :type BossSex: str
+        :param BossIdCountry: 法人证件国别/地区（中国CHN，香港HKG，澳门MAC，台湾CTN）
+        :type BossIdCountry: str
         :param BossPositive: 法人身份证正面【私密区】（系统返回的图片路径）
         :type BossPositive: str
-        :param CityId: 城市编号
-        :type CityId: str
         :param BossBack: 法人身份证背面【私密区】（系统返回的图片路径）
         :type BossBack: str
-        :param OutMerchantId: 机构商户主键（系统有唯一性校验），建议使用商户表的主键ID，防止重复添加商户
-        :type OutMerchantId: str
-        :param OrganizationStartDate: 组织机构代码证生效时间（yyyy-mm-dd）
-        :type OrganizationStartDate: str
-        :param AccountIdNo: 法人亲属证件号码
-        :type AccountIdNo: str
-        :param FinancialContact: 财务联系人
-        :type FinancialContact: str
-        :param AccountIdType: 法人亲属证件类型（1居民身份证,2临时居民身份证,3居民户口簿,4护照,5港澳居民来往内地通行证,6回乡证,7军人证,8武警身份证,9其他法定文件）结算账户人身份为法人亲属时必填
-        :type AccountIdType: str
-        :param OrganizationNo: 组织机构代码证号
-        :type OrganizationNo: str
-        :param OtherPictureOne: 其他资料1
-        :type OtherPictureOne: str
-        :param FinancialTelephone: 财务联系人电话
-        :type FinancialTelephone: str
-        :param Profile: 沙箱环境填sandbox，正式环境不填
-        :type Profile: str
-        :param OrganizationPicture: 组织机构代码证图片【私密区】
-        :type OrganizationPicture: str
-        :param TaxRegistrationStartDate: 税务登记证生效时间（yyyy-mm-dd）
-        :type TaxRegistrationStartDate: str
-        :param Tag: 商户标记，自定义参数
-        :type Tag: str
-        :param AccountBoss: 结算账户人身份（1法人，2法人亲属），结算帐户为对私时必填
-        :type AccountBoss: str
-        :param BossTelephone: 法人电话
-        :type BossTelephone: str
-        :param TaxRegistrationPicture: 税务登记证图片【私密区】
-        :type TaxRegistrationPicture: str
-        :param OrganizationEndDate: 组织机构代码证过期时间（yyyy-mm-dd）
-        :type OrganizationEndDate: str
-        :param BossJob: 法人职业
-        :type BossJob: str
-        :param OtherPictureThree: 其他资料3
-        :type OtherPictureThree: str
-        :param LicencePictureTwo: 授权文件【私密区】
-        :type LicencePictureTwo: str
-        :param Logo: 商户logo【公共区】
-        :type Logo: str
-        :param BossAddress: 法人住址
-        :type BossAddress: str
-        :param BossEmail: 法人邮箱
-        :type BossEmail: str
-        :param OtherPictureTwo: 其他资料2
-        :type OtherPictureTwo: str
-        :param Intro: 商户简介
-        :type Intro: str
-        :param AccountManagerName: 客户经理姓名，必须为系统后台的管理员真实姓名
-        :type AccountManagerName: str
-        :param TaxRegistrationEndDate: 税务登记证过期时间（yyyy-mm-dd）
-        :type TaxRegistrationEndDate: str
-        :param OtherPictureFour: 其他资料4
-        :type OtherPictureFour: str
-        :param TaxRegistrationNo: 税务登记证号
-        :type TaxRegistrationNo: str
+        :param BossStartDate: 法人证件生效时间（yyyy-mm-dd）
+        :type BossStartDate: str
+        :param BossEndDate: 法人证件过期时间（yyyy-mm-dd）
+        :type BossEndDate: str
+        :param LicencePicture: 许可证图片【私密区】，（小微商户不效验，随意传要有值，公司/个体户必传）
+        :type LicencePicture: str
         :param Type: 商户类型：1-个体，2-小微，3-企业。不传默认为2-小微商户。
         :type Type: str
+        :param OrganizationNo: 组织机构代码证号
+        :type OrganizationNo: str
+        :param OrganizationStartDate: 组织机构代码证生效时间（yyyy-mm-dd）
+        :type OrganizationStartDate: str
+        :param OrganizationPicture: 组织机构代码证图片【私密区】
+        :type OrganizationPicture: str
+        :param OrganizationEndDate: 组织机构代码证过期时间（yyyy-mm-dd）
+        :type OrganizationEndDate: str
+        :param Intro: 商户简介
+        :type Intro: str
+        :param Logo: 商户logo【公共区】
+        :type Logo: str
+        :param Tag: 商户标记，自定义参数
+        :type Tag: str
+        :param FinancialTelephone: 财务联系人电话
+        :type FinancialTelephone: str
+        :param FinancialContact: 财务联系人
+        :type FinancialContact: str
+        :param TaxRegistrationNo: 税务登记证号
+        :type TaxRegistrationNo: str
+        :param TaxRegistrationPicture: 税务登记证图片【私密区】
+        :type TaxRegistrationPicture: str
+        :param TaxRegistrationStartDate: 税务登记证生效时间（yyyy-mm-dd）
+        :type TaxRegistrationStartDate: str
+        :param TaxRegistrationEndDate: 税务登记证过期时间（yyyy-mm-dd）
+        :type TaxRegistrationEndDate: str
+        :param AccountBoss: 结算账户人身份（1法人，2法人亲属），结算帐户为对私时必填
+        :type AccountBoss: str
+        :param AccountManagerName: 客户经理姓名，必须为系统后台的管理员真实姓名
+        :type AccountManagerName: str
+        :param BossTelephone: 法人电话
+        :type BossTelephone: str
+        :param BossJob: 法人职业
+        :type BossJob: str
+        :param BossEmail: 法人邮箱
+        :type BossEmail: str
+        :param BossAddress: 法人住址
+        :type BossAddress: str
+        :param AccountIdType: 法人亲属证件类型（1居民身份证,2临时居民身份证,3居民户口簿,4护照,5港澳居民来往内地通行证,6回乡证,7军人证,8武警身份证,9其他法定文件）结算账户人身份为法人亲属时必填
+        :type AccountIdType: str
+        :param AccountIdNo: 法人亲属证件号码
+        :type AccountIdNo: str
+        :param LicencePictureTwo: 授权文件【私密区】
+        :type LicencePictureTwo: str
+        :param OtherPictureOne: 其他资料1
+        :type OtherPictureOne: str
+        :param OtherPictureTwo: 其他资料2
+        :type OtherPictureTwo: str
+        :param OtherPictureThree: 其他资料3
+        :type OtherPictureThree: str
+        :param OtherPictureFour: 其他资料4
+        :type OtherPictureFour: str
+        :param Profile: 沙箱环境填sandbox，正式环境不填
+        :type Profile: str
         """
-        self.BossName = None
-        self.BusinessLicensePicture = None
-        self.BrandName = None
+        self.OpenId = None
         self.OpenKey = None
+        self.OutMerchantId = None
+        self.MerchantName = None
+        self.BusinessLicenseType = None
+        self.BusinessLicenseNo = None
+        self.BusinessLicensePicture = None
+        self.BusinessLicenseStartDate = None
         self.BusinessLicenseEndDate = None
-        self.BossStartDate = None
+        self.ClassificationIds = None
+        self.BrandName = None
+        self.Telephone = None
+        self.CityId = None
+        self.Address = None
+        self.OpenHours = None
+        self.AccountType = None
         self.BankNo = None
         self.BankName = None
-        self.BusinessLicenseType = None
-        self.BossEndDate = None
-        self.BusinessLicenseNo = None
-        self.BusinessLicenseStartDate = None
-        self.BossIdType = None
-        self.Address = None
-        self.BossIdCountry = None
-        self.OpenId = None
-        self.MerchantName = None
-        self.BossSex = None
-        self.ClassificationIds = None
-        self.BossIdNo = None
-        self.LicencePicture = None
-        self.OpenHours = None
-        self.AccountName = None
         self.AccountNo = None
-        self.AccountType = None
-        self.Telephone = None
+        self.AccountName = None
+        self.BossIdType = None
+        self.BossIdNo = None
+        self.BossName = None
+        self.BossSex = None
+        self.BossIdCountry = None
         self.BossPositive = None
-        self.CityId = None
         self.BossBack = None
-        self.OutMerchantId = None
-        self.OrganizationStartDate = None
-        self.AccountIdNo = None
-        self.FinancialContact = None
-        self.AccountIdType = None
-        self.OrganizationNo = None
-        self.OtherPictureOne = None
-        self.FinancialTelephone = None
-        self.Profile = None
-        self.OrganizationPicture = None
-        self.TaxRegistrationStartDate = None
-        self.Tag = None
-        self.AccountBoss = None
-        self.BossTelephone = None
-        self.TaxRegistrationPicture = None
-        self.OrganizationEndDate = None
-        self.BossJob = None
-        self.OtherPictureThree = None
-        self.LicencePictureTwo = None
-        self.Logo = None
-        self.BossAddress = None
-        self.BossEmail = None
-        self.OtherPictureTwo = None
-        self.Intro = None
-        self.AccountManagerName = None
-        self.TaxRegistrationEndDate = None
-        self.OtherPictureFour = None
-        self.TaxRegistrationNo = None
+        self.BossStartDate = None
+        self.BossEndDate = None
+        self.LicencePicture = None
         self.Type = None
+        self.OrganizationNo = None
+        self.OrganizationStartDate = None
+        self.OrganizationPicture = None
+        self.OrganizationEndDate = None
+        self.Intro = None
+        self.Logo = None
+        self.Tag = None
+        self.FinancialTelephone = None
+        self.FinancialContact = None
+        self.TaxRegistrationNo = None
+        self.TaxRegistrationPicture = None
+        self.TaxRegistrationStartDate = None
+        self.TaxRegistrationEndDate = None
+        self.AccountBoss = None
+        self.AccountManagerName = None
+        self.BossTelephone = None
+        self.BossJob = None
+        self.BossEmail = None
+        self.BossAddress = None
+        self.AccountIdType = None
+        self.AccountIdNo = None
+        self.LicencePictureTwo = None
+        self.OtherPictureOne = None
+        self.OtherPictureTwo = None
+        self.OtherPictureThree = None
+        self.OtherPictureFour = None
+        self.Profile = None
 
 
     def _deserialize(self, params):
-        self.BossName = params.get("BossName")
-        self.BusinessLicensePicture = params.get("BusinessLicensePicture")
-        self.BrandName = params.get("BrandName")
+        self.OpenId = params.get("OpenId")
         self.OpenKey = params.get("OpenKey")
+        self.OutMerchantId = params.get("OutMerchantId")
+        self.MerchantName = params.get("MerchantName")
+        self.BusinessLicenseType = params.get("BusinessLicenseType")
+        self.BusinessLicenseNo = params.get("BusinessLicenseNo")
+        self.BusinessLicensePicture = params.get("BusinessLicensePicture")
+        self.BusinessLicenseStartDate = params.get("BusinessLicenseStartDate")
         self.BusinessLicenseEndDate = params.get("BusinessLicenseEndDate")
-        self.BossStartDate = params.get("BossStartDate")
+        self.ClassificationIds = params.get("ClassificationIds")
+        self.BrandName = params.get("BrandName")
+        self.Telephone = params.get("Telephone")
+        self.CityId = params.get("CityId")
+        self.Address = params.get("Address")
+        self.OpenHours = params.get("OpenHours")
+        self.AccountType = params.get("AccountType")
         self.BankNo = params.get("BankNo")
         self.BankName = params.get("BankName")
-        self.BusinessLicenseType = params.get("BusinessLicenseType")
-        self.BossEndDate = params.get("BossEndDate")
-        self.BusinessLicenseNo = params.get("BusinessLicenseNo")
-        self.BusinessLicenseStartDate = params.get("BusinessLicenseStartDate")
-        self.BossIdType = params.get("BossIdType")
-        self.Address = params.get("Address")
-        self.BossIdCountry = params.get("BossIdCountry")
-        self.OpenId = params.get("OpenId")
-        self.MerchantName = params.get("MerchantName")
-        self.BossSex = params.get("BossSex")
-        self.ClassificationIds = params.get("ClassificationIds")
-        self.BossIdNo = params.get("BossIdNo")
-        self.LicencePicture = params.get("LicencePicture")
-        self.OpenHours = params.get("OpenHours")
-        self.AccountName = params.get("AccountName")
         self.AccountNo = params.get("AccountNo")
-        self.AccountType = params.get("AccountType")
-        self.Telephone = params.get("Telephone")
+        self.AccountName = params.get("AccountName")
+        self.BossIdType = params.get("BossIdType")
+        self.BossIdNo = params.get("BossIdNo")
+        self.BossName = params.get("BossName")
+        self.BossSex = params.get("BossSex")
+        self.BossIdCountry = params.get("BossIdCountry")
         self.BossPositive = params.get("BossPositive")
-        self.CityId = params.get("CityId")
         self.BossBack = params.get("BossBack")
-        self.OutMerchantId = params.get("OutMerchantId")
-        self.OrganizationStartDate = params.get("OrganizationStartDate")
-        self.AccountIdNo = params.get("AccountIdNo")
-        self.FinancialContact = params.get("FinancialContact")
-        self.AccountIdType = params.get("AccountIdType")
-        self.OrganizationNo = params.get("OrganizationNo")
-        self.OtherPictureOne = params.get("OtherPictureOne")
-        self.FinancialTelephone = params.get("FinancialTelephone")
-        self.Profile = params.get("Profile")
-        self.OrganizationPicture = params.get("OrganizationPicture")
-        self.TaxRegistrationStartDate = params.get("TaxRegistrationStartDate")
-        self.Tag = params.get("Tag")
-        self.AccountBoss = params.get("AccountBoss")
-        self.BossTelephone = params.get("BossTelephone")
-        self.TaxRegistrationPicture = params.get("TaxRegistrationPicture")
-        self.OrganizationEndDate = params.get("OrganizationEndDate")
-        self.BossJob = params.get("BossJob")
-        self.OtherPictureThree = params.get("OtherPictureThree")
-        self.LicencePictureTwo = params.get("LicencePictureTwo")
-        self.Logo = params.get("Logo")
-        self.BossAddress = params.get("BossAddress")
-        self.BossEmail = params.get("BossEmail")
-        self.OtherPictureTwo = params.get("OtherPictureTwo")
-        self.Intro = params.get("Intro")
-        self.AccountManagerName = params.get("AccountManagerName")
-        self.TaxRegistrationEndDate = params.get("TaxRegistrationEndDate")
-        self.OtherPictureFour = params.get("OtherPictureFour")
-        self.TaxRegistrationNo = params.get("TaxRegistrationNo")
+        self.BossStartDate = params.get("BossStartDate")
+        self.BossEndDate = params.get("BossEndDate")
+        self.LicencePicture = params.get("LicencePicture")
         self.Type = params.get("Type")
+        self.OrganizationNo = params.get("OrganizationNo")
+        self.OrganizationStartDate = params.get("OrganizationStartDate")
+        self.OrganizationPicture = params.get("OrganizationPicture")
+        self.OrganizationEndDate = params.get("OrganizationEndDate")
+        self.Intro = params.get("Intro")
+        self.Logo = params.get("Logo")
+        self.Tag = params.get("Tag")
+        self.FinancialTelephone = params.get("FinancialTelephone")
+        self.FinancialContact = params.get("FinancialContact")
+        self.TaxRegistrationNo = params.get("TaxRegistrationNo")
+        self.TaxRegistrationPicture = params.get("TaxRegistrationPicture")
+        self.TaxRegistrationStartDate = params.get("TaxRegistrationStartDate")
+        self.TaxRegistrationEndDate = params.get("TaxRegistrationEndDate")
+        self.AccountBoss = params.get("AccountBoss")
+        self.AccountManagerName = params.get("AccountManagerName")
+        self.BossTelephone = params.get("BossTelephone")
+        self.BossJob = params.get("BossJob")
+        self.BossEmail = params.get("BossEmail")
+        self.BossAddress = params.get("BossAddress")
+        self.AccountIdType = params.get("AccountIdType")
+        self.AccountIdNo = params.get("AccountIdNo")
+        self.LicencePictureTwo = params.get("LicencePictureTwo")
+        self.OtherPictureOne = params.get("OtherPictureOne")
+        self.OtherPictureTwo = params.get("OtherPictureTwo")
+        self.OtherPictureThree = params.get("OtherPictureThree")
+        self.OtherPictureFour = params.get("OtherPictureFour")
+        self.Profile = params.get("Profile")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -594,92 +594,92 @@ class AddShopRequest(AbstractModel):
         r"""
         :param OpenId: 收单系统分配的开放ID
         :type OpenId: str
+        :param OpenKey: 收单系统分配的密钥
+        :type OpenKey: str
+        :param OutShopId: 机构门店主键（系统有唯一性校验），建议使用门店表的主键ID，防止重复添加门店
+        :type OutShopId: str
         :param ShopName: 门店简称（例如：南山店）
         :type ShopName: str
+        :param ShopFullName: 门店全称（例如：江山小厨（南山店））
+        :type ShopFullName: str
         :param MerchantNo: 商户编号
         :type MerchantNo: str
+        :param Telephone: 门店电话
+        :type Telephone: str
+        :param OpenHours: 营业时间，多个以小写逗号分开(9:00-12:00,13:00-18:00)
+        :type OpenHours: str
+        :param CityId: 门店所在的城市编码
+        :type CityId: str
+        :param Address: 门店详细地址，不含省市区县名称
+        :type Address: str
+        :param PictureOne: 整体门面（含招牌）图片【公共区】
+        :type PictureOne: str
         :param PictureTwo: 整体门面（含招牌）图片【公共区】
         :type PictureTwo: str
         :param PictureThree: 店内环境图片【公共区】
         :type PictureThree: str
-        :param PictureOne: 整体门面（含招牌）图片【公共区】
-        :type PictureOne: str
-        :param Telephone: 门店电话
-        :type Telephone: str
-        :param OutShopId: 机构门店主键（系统有唯一性校验），建议使用门店表的主键ID，防止重复添加门店
-        :type OutShopId: str
-        :param CityId: 门店所在的城市编码
-        :type CityId: str
-        :param ShopFullName: 门店全称（例如：江山小厨（南山店））
-        :type ShopFullName: str
-        :param OpenHours: 营业时间，多个以小写逗号分开(9:00-12:00,13:00-18:00)
-        :type OpenHours: str
-        :param Address: 门店详细地址，不含省市区县名称
-        :type Address: str
-        :param OpenKey: 收单系统分配的密钥
-        :type OpenKey: str
-        :param Profile: 沙箱环境填sandbox，正式环境不填
-        :type Profile: str
-        :param LatitudeTwo: 高德地图纬度
-        :type LatitudeTwo: str
-        :param OtherPicture: 其他照片【公共区】
-        :type OtherPicture: str
-        :param LongitudeTwo: 高德地图经度
-        :type LongitudeTwo: str
-        :param Contact: 门店负责人
-        :type Contact: str
-        :param Longitude: 百度地图经度
-        :type Longitude: str
-        :param Latitude: 百度地图纬度
-        :type Latitude: str
         :param FinancialTelephone: 负责人手机号码
         :type FinancialTelephone: str
+        :param Contact: 门店负责人
+        :type Contact: str
+        :param Latitude: 百度地图纬度
+        :type Latitude: str
+        :param LatitudeTwo: 高德地图纬度
+        :type LatitudeTwo: str
+        :param Longitude: 百度地图经度
+        :type Longitude: str
+        :param LongitudeTwo: 高德地图经度
+        :type LongitudeTwo: str
+        :param OtherPicture: 其他照片【公共区】
+        :type OtherPicture: str
+        :param Profile: 沙箱环境填sandbox，正式环境不填
+        :type Profile: str
         """
         self.OpenId = None
+        self.OpenKey = None
+        self.OutShopId = None
         self.ShopName = None
+        self.ShopFullName = None
         self.MerchantNo = None
+        self.Telephone = None
+        self.OpenHours = None
+        self.CityId = None
+        self.Address = None
+        self.PictureOne = None
         self.PictureTwo = None
         self.PictureThree = None
-        self.PictureOne = None
-        self.Telephone = None
-        self.OutShopId = None
-        self.CityId = None
-        self.ShopFullName = None
-        self.OpenHours = None
-        self.Address = None
-        self.OpenKey = None
-        self.Profile = None
-        self.LatitudeTwo = None
-        self.OtherPicture = None
-        self.LongitudeTwo = None
-        self.Contact = None
-        self.Longitude = None
-        self.Latitude = None
         self.FinancialTelephone = None
+        self.Contact = None
+        self.Latitude = None
+        self.LatitudeTwo = None
+        self.Longitude = None
+        self.LongitudeTwo = None
+        self.OtherPicture = None
+        self.Profile = None
 
 
     def _deserialize(self, params):
         self.OpenId = params.get("OpenId")
+        self.OpenKey = params.get("OpenKey")
+        self.OutShopId = params.get("OutShopId")
         self.ShopName = params.get("ShopName")
+        self.ShopFullName = params.get("ShopFullName")
         self.MerchantNo = params.get("MerchantNo")
+        self.Telephone = params.get("Telephone")
+        self.OpenHours = params.get("OpenHours")
+        self.CityId = params.get("CityId")
+        self.Address = params.get("Address")
+        self.PictureOne = params.get("PictureOne")
         self.PictureTwo = params.get("PictureTwo")
         self.PictureThree = params.get("PictureThree")
-        self.PictureOne = params.get("PictureOne")
-        self.Telephone = params.get("Telephone")
-        self.OutShopId = params.get("OutShopId")
-        self.CityId = params.get("CityId")
-        self.ShopFullName = params.get("ShopFullName")
-        self.OpenHours = params.get("OpenHours")
-        self.Address = params.get("Address")
-        self.OpenKey = params.get("OpenKey")
-        self.Profile = params.get("Profile")
-        self.LatitudeTwo = params.get("LatitudeTwo")
-        self.OtherPicture = params.get("OtherPicture")
-        self.LongitudeTwo = params.get("LongitudeTwo")
-        self.Contact = params.get("Contact")
-        self.Longitude = params.get("Longitude")
-        self.Latitude = params.get("Latitude")
         self.FinancialTelephone = params.get("FinancialTelephone")
+        self.Contact = params.get("Contact")
+        self.Latitude = params.get("Latitude")
+        self.LatitudeTwo = params.get("LatitudeTwo")
+        self.Longitude = params.get("Longitude")
+        self.LongitudeTwo = params.get("LongitudeTwo")
+        self.OtherPicture = params.get("OtherPicture")
+        self.Profile = params.get("Profile")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1525,6 +1525,121 @@ class ApplyReWithdrawalResponse(AbstractModel):
     def _deserialize(self, params):
         self.WithdrawOrderId = params.get("WithdrawOrderId")
         self.RequestId = params.get("RequestId")
+
+
+class ApplyReconciliationFileRequest(AbstractModel):
+    """ApplyReconciliationFile请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ApplyFileType: 申请的文件类型。
+__CZ__：充值文件
+__TX__：提现文件
+__JY__：交易文件
+__YE__：余额文件
+        :type ApplyFileType: str
+        :param ApplyFileDate: 申请的对账文件日期，格式：yyyyMMdd。
+        :type ApplyFileDate: str
+        :param BankAccountNumber: 父账户账号。
+_平安渠道为资金汇总账号_
+        :type BankAccountNumber: str
+        :param MidasEnvironment: 环境名。
+__release__: 现网环境
+__sandbox__: 沙箱环境
+__development__: 开发环境
+_缺省: release_
+        :type MidasEnvironment: str
+        """
+        self.ApplyFileType = None
+        self.ApplyFileDate = None
+        self.BankAccountNumber = None
+        self.MidasEnvironment = None
+
+
+    def _deserialize(self, params):
+        self.ApplyFileType = params.get("ApplyFileType")
+        self.ApplyFileDate = params.get("ApplyFileDate")
+        self.BankAccountNumber = params.get("BankAccountNumber")
+        self.MidasEnvironment = params.get("MidasEnvironment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ApplyReconciliationFileResponse(AbstractModel):
+    """ApplyReconciliationFile返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrCode: 错误码。
+__SUCCESS__: 成功
+__其他__: 见附录-错误码表
+        :type ErrCode: str
+        :param ErrMessage: 错误消息。
+        :type ErrMessage: str
+        :param Result: 返回结果。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.cpdp.v20190820.models.ApplyReconciliationFileResult`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrCode = None
+        self.ErrMessage = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrCode = params.get("ErrCode")
+        self.ErrMessage = params.get("ErrMessage")
+        if params.get("Result") is not None:
+            self.Result = ApplyReconciliationFileResult()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class ApplyReconciliationFileResult(AbstractModel):
+    """申请对账文件结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ApplyFileId: 申请对账文件的任务ID。
+        :type ApplyFileId: str
+        :param ApplyStatus: 对账文件申请状态。
+__I__：申请中
+__S__：申请成功
+__F__：申请失败
+        :type ApplyStatus: str
+        :param ApplyMessage: 申请结果描述。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplyMessage: str
+        """
+        self.ApplyFileId = None
+        self.ApplyStatus = None
+        self.ApplyMessage = None
+
+
+    def _deserialize(self, params):
+        self.ApplyFileId = params.get("ApplyFileId")
+        self.ApplyStatus = params.get("ApplyStatus")
+        self.ApplyMessage = params.get("ApplyMessage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ApplyTradeData(AbstractModel):
@@ -3469,89 +3584,89 @@ class ContractPayListResult(AbstractModel):
 
     def __init__(self):
         r"""
+        :param PaymentId: 支付方式编号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PaymentId: str
+        :param PaymentType: 支持的交易类型（多个以小写逗号分开，0现金，1刷卡，2主扫，3被扫，4JSPAY，5预授权）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PaymentType: str
         :param PaymentTag: 支付标签
 注意：此字段可能返回 null，表示取不到有效值。
         :type PaymentTag: str
         :param PaymentIcon: 支付方式图片url路径
 注意：此字段可能返回 null，表示取不到有效值。
         :type PaymentIcon: str
-        :param PaymentOptionSix: 支付方式
-注意：此字段可能返回 null，表示取不到有效值。
-        :type PaymentOptionSix: str
         :param PaymentName: 付款方式名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type PaymentName: str
-        :param PaymentOptionSeven: 支付方式
-注意：此字段可能返回 null，表示取不到有效值。
-        :type PaymentOptionSeven: str
-        :param PaymentOptionTwo: 支付方式
-注意：此字段可能返回 null，表示取不到有效值。
-        :type PaymentOptionTwo: str
-        :param PaymentOptionOne: 支付方式
-注意：此字段可能返回 null，表示取不到有效值。
-        :type PaymentOptionOne: str
-        :param PaymentOptionOther: 支付方式
-注意：此字段可能返回 null，表示取不到有效值。
-        :type PaymentOptionOther: str
-        :param PaymentType: 支持的交易类型（多个以小写逗号分开，0现金，1刷卡，2主扫，3被扫，4JSPAY，5预授权）
-注意：此字段可能返回 null，表示取不到有效值。
-        :type PaymentType: str
-        :param PaymentOptionFive: 支付方式
-注意：此字段可能返回 null，表示取不到有效值。
-        :type PaymentOptionFive: str
-        :param PaymentOptionNine: 支付方式
-注意：此字段可能返回 null，表示取不到有效值。
-        :type PaymentOptionNine: str
-        :param PaymentId: 支付方式编号
-注意：此字段可能返回 null，表示取不到有效值。
-        :type PaymentId: str
-        :param PaymentOptionThree: 支付方式
-注意：此字段可能返回 null，表示取不到有效值。
-        :type PaymentOptionThree: str
         :param PaymentInternalName: 付款方式名称（内部名称）
 注意：此字段可能返回 null，表示取不到有效值。
         :type PaymentInternalName: str
+        :param PaymentOptionOne: 支付方式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PaymentOptionOne: str
+        :param PaymentOptionTwo: 支付方式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PaymentOptionTwo: str
+        :param PaymentOptionThree: 支付方式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PaymentOptionThree: str
         :param PaymentOptionFour: 支付方式
 注意：此字段可能返回 null，表示取不到有效值。
         :type PaymentOptionFour: str
+        :param PaymentOptionFive: 支付方式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PaymentOptionFive: str
+        :param PaymentOptionSix: 支付方式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PaymentOptionSix: str
+        :param PaymentOptionSeven: 支付方式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PaymentOptionSeven: str
+        :param PaymentOptionOther: 支付方式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PaymentOptionOther: str
+        :param PaymentOptionNine: 支付方式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PaymentOptionNine: str
         :param PaymentOptionTen: 支付方式
 注意：此字段可能返回 null，表示取不到有效值。
         :type PaymentOptionTen: str
         """
+        self.PaymentId = None
+        self.PaymentType = None
         self.PaymentTag = None
         self.PaymentIcon = None
-        self.PaymentOptionSix = None
         self.PaymentName = None
-        self.PaymentOptionSeven = None
-        self.PaymentOptionTwo = None
-        self.PaymentOptionOne = None
-        self.PaymentOptionOther = None
-        self.PaymentType = None
-        self.PaymentOptionFive = None
-        self.PaymentOptionNine = None
-        self.PaymentId = None
-        self.PaymentOptionThree = None
         self.PaymentInternalName = None
+        self.PaymentOptionOne = None
+        self.PaymentOptionTwo = None
+        self.PaymentOptionThree = None
         self.PaymentOptionFour = None
+        self.PaymentOptionFive = None
+        self.PaymentOptionSix = None
+        self.PaymentOptionSeven = None
+        self.PaymentOptionOther = None
+        self.PaymentOptionNine = None
         self.PaymentOptionTen = None
 
 
     def _deserialize(self, params):
+        self.PaymentId = params.get("PaymentId")
+        self.PaymentType = params.get("PaymentType")
         self.PaymentTag = params.get("PaymentTag")
         self.PaymentIcon = params.get("PaymentIcon")
-        self.PaymentOptionSix = params.get("PaymentOptionSix")
         self.PaymentName = params.get("PaymentName")
-        self.PaymentOptionSeven = params.get("PaymentOptionSeven")
-        self.PaymentOptionTwo = params.get("PaymentOptionTwo")
-        self.PaymentOptionOne = params.get("PaymentOptionOne")
-        self.PaymentOptionOther = params.get("PaymentOptionOther")
-        self.PaymentType = params.get("PaymentType")
-        self.PaymentOptionFive = params.get("PaymentOptionFive")
-        self.PaymentOptionNine = params.get("PaymentOptionNine")
-        self.PaymentId = params.get("PaymentId")
-        self.PaymentOptionThree = params.get("PaymentOptionThree")
         self.PaymentInternalName = params.get("PaymentInternalName")
+        self.PaymentOptionOne = params.get("PaymentOptionOne")
+        self.PaymentOptionTwo = params.get("PaymentOptionTwo")
+        self.PaymentOptionThree = params.get("PaymentOptionThree")
         self.PaymentOptionFour = params.get("PaymentOptionFour")
+        self.PaymentOptionFive = params.get("PaymentOptionFive")
+        self.PaymentOptionSix = params.get("PaymentOptionSix")
+        self.PaymentOptionSeven = params.get("PaymentOptionSeven")
+        self.PaymentOptionOther = params.get("PaymentOptionOther")
+        self.PaymentOptionNine = params.get("PaymentOptionNine")
         self.PaymentOptionTen = params.get("PaymentOptionTen")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -6875,9 +6990,9 @@ class DistributeAccreditQueryRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param OpenId: 收单系统分配的开放ID
+        :param OpenId: 使用门店OpenId
         :type OpenId: str
-        :param OpenKey: 收单系统分配的密钥
+        :param OpenKey: 使用门店OpenKey
         :type OpenKey: str
         :param Profile: 沙箱环境填sandbox，正式环境不填
         :type Profile: str
@@ -7005,34 +7120,34 @@ class DistributeAccreditTlinxRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param OpenId: 收单系统分配的开放ID
+        :param OpenId: 使用门店OpenId
         :type OpenId: str
+        :param OpenKey: 使用门店OpenKey
+        :type OpenKey: str
         :param AuthType: 验证方式，传1手机验证(验证码时效60S)传2结算卡验证(时效6小时)，多种方式用逗号隔开
         :type AuthType: str
-        :param OpenKey: 收单系统分配的密钥
-        :type OpenKey: str
-        :param Profile: 沙箱环境填sandbox，正式环境不填
-        :type Profile: str
         :param Percent: 分账比例（500=5%）不传默认百分之10
         :type Percent: str
         :param FullName: 营业执照商户全称
         :type FullName: str
+        :param Profile: 沙箱环境填sandbox，正式环境不填
+        :type Profile: str
         """
         self.OpenId = None
-        self.AuthType = None
         self.OpenKey = None
-        self.Profile = None
+        self.AuthType = None
         self.Percent = None
         self.FullName = None
+        self.Profile = None
 
 
     def _deserialize(self, params):
         self.OpenId = params.get("OpenId")
-        self.AuthType = params.get("AuthType")
         self.OpenKey = params.get("OpenKey")
-        self.Profile = params.get("Profile")
+        self.AuthType = params.get("AuthType")
         self.Percent = params.get("Percent")
         self.FullName = params.get("FullName")
+        self.Profile = params.get("Profile")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7082,30 +7197,30 @@ class DistributeAddReceiverRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param OpenId: 收单系统分配的开放ID
+        :param OpenId: 使用门店OpenId
         :type OpenId: str
-        :param OpenKey: 收单系统分配的密钥
+        :param OpenKey: 使用门店OpenKey
         :type OpenKey: str
         :param MerchantNo: 商户编号
         :type MerchantNo: str
-        :param Profile: 沙箱环境填sandbox，正式环境不填
-        :type Profile: str
         :param Remark: 备注
         :type Remark: str
+        :param Profile: 沙箱环境填sandbox，正式环境不填
+        :type Profile: str
         """
         self.OpenId = None
         self.OpenKey = None
         self.MerchantNo = None
-        self.Profile = None
         self.Remark = None
+        self.Profile = None
 
 
     def _deserialize(self, params):
         self.OpenId = params.get("OpenId")
         self.OpenKey = params.get("OpenKey")
         self.MerchantNo = params.get("MerchantNo")
-        self.Profile = params.get("Profile")
         self.Remark = params.get("Remark")
+        self.Profile = params.get("Profile")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7155,47 +7270,47 @@ class DistributeApplyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param OpenId: 收单系统分配的开放ID
+        :param OpenId: 使用门店OpenId
         :type OpenId: str
+        :param OpenKey: 使用门店OpenKey
+        :type OpenKey: str
         :param OutDistributeNo: 商户分账单号
         :type OutDistributeNo: str
-        :param OpenKey: 收单系统分配的密钥
-        :type OpenKey: str
         :param Details: 分账明细
         :type Details: list of MultiApplyDetail
-        :param Profile: 沙箱环境填sandbox，正式环境不填
-        :type Profile: str
-        :param Remark: 说明
-        :type Remark: str
         :param DeveloperNo: 商户交易订单号，和OrderNo二者传其一
         :type DeveloperNo: str
         :param OrderNo: 平台交易订单号，和DeveloperNo二者传其一
         :type OrderNo: str
+        :param Remark: 说明
+        :type Remark: str
+        :param Profile: 沙箱环境填sandbox，正式环境不填
+        :type Profile: str
         """
         self.OpenId = None
-        self.OutDistributeNo = None
         self.OpenKey = None
+        self.OutDistributeNo = None
         self.Details = None
-        self.Profile = None
-        self.Remark = None
         self.DeveloperNo = None
         self.OrderNo = None
+        self.Remark = None
+        self.Profile = None
 
 
     def _deserialize(self, params):
         self.OpenId = params.get("OpenId")
-        self.OutDistributeNo = params.get("OutDistributeNo")
         self.OpenKey = params.get("OpenKey")
+        self.OutDistributeNo = params.get("OutDistributeNo")
         if params.get("Details") is not None:
             self.Details = []
             for item in params.get("Details"):
                 obj = MultiApplyDetail()
                 obj._deserialize(item)
                 self.Details.append(obj)
-        self.Profile = params.get("Profile")
-        self.Remark = params.get("Remark")
         self.DeveloperNo = params.get("DeveloperNo")
         self.OrderNo = params.get("OrderNo")
+        self.Remark = params.get("Remark")
+        self.Profile = params.get("Profile")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7245,34 +7360,34 @@ class DistributeCancelRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param OpenId: 收单系统分配的开放ID
+        :param OpenId: 使用门店OpenId
         :type OpenId: str
-        :param OpenKey: 收单系统分配的密钥
+        :param OpenKey: 使用门店OpenKey
         :type OpenKey: str
         :param OrderNo: 平台交易订单号
         :type OrderNo: str
-        :param Profile: 沙箱环境填sandbox，正式环境不填
-        :type Profile: str
-        :param DistributeNo: 平台分账单号，type为2时，和OutDistributeNo二者传其一
-        :type DistributeNo: str
         :param OutDistributeNo: 商户分账单号，type为2时，和DistributeNo二者传其一
         :type OutDistributeNo: str
+        :param DistributeNo: 平台分账单号，type为2时，和OutDistributeNo二者传其一
+        :type DistributeNo: str
+        :param Profile: 沙箱环境填sandbox，正式环境不填
+        :type Profile: str
         """
         self.OpenId = None
         self.OpenKey = None
         self.OrderNo = None
-        self.Profile = None
-        self.DistributeNo = None
         self.OutDistributeNo = None
+        self.DistributeNo = None
+        self.Profile = None
 
 
     def _deserialize(self, params):
         self.OpenId = params.get("OpenId")
         self.OpenKey = params.get("OpenKey")
         self.OrderNo = params.get("OrderNo")
-        self.Profile = params.get("Profile")
-        self.DistributeNo = params.get("DistributeNo")
         self.OutDistributeNo = params.get("OutDistributeNo")
+        self.DistributeNo = params.get("DistributeNo")
+        self.Profile = params.get("Profile")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7412,9 +7527,9 @@ class DistributeQueryReceiverRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param OpenId: 收单系统分配的开放ID
+        :param OpenId: 使用门店OpenId
         :type OpenId: str
-        :param OpenKey: 收单系统分配的密钥
+        :param OpenKey: 使用门店OpenKey
         :type OpenKey: str
         :param Profile: 沙箱环境填sandbox，正式环境不填
         :type Profile: str
@@ -7477,38 +7592,38 @@ class DistributeQueryRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param OpenId: 收单系统分配的开放ID
+        :param OpenId: 使用门店OpenId
         :type OpenId: str
-        :param OpenKey: 收单系统分配的密钥
+        :param OpenKey: 使用门店OpenKey
         :type OpenKey: str
         :param Type: 查询类型（1-全部，2-单笔）
         :type Type: str
-        :param Profile: 沙箱环境填sandbox，正式环境不填
-        :type Profile: str
-        :param DistributeNo: 平台分账单号，type为2时，和OutDistributeNo二者传其一
-        :type DistributeNo: str
         :param OutDistributeNo: 商户分账单号，type为2时，和DistributeNo二者传其一
         :type OutDistributeNo: str
+        :param DistributeNo: 平台分账单号，type为2时，和OutDistributeNo二者传其一
+        :type DistributeNo: str
         :param OrderNo: 平台交易订单号
         :type OrderNo: str
+        :param Profile: 沙箱环境填sandbox，正式环境不填
+        :type Profile: str
         """
         self.OpenId = None
         self.OpenKey = None
         self.Type = None
-        self.Profile = None
-        self.DistributeNo = None
         self.OutDistributeNo = None
+        self.DistributeNo = None
         self.OrderNo = None
+        self.Profile = None
 
 
     def _deserialize(self, params):
         self.OpenId = params.get("OpenId")
         self.OpenKey = params.get("OpenKey")
         self.Type = params.get("Type")
-        self.Profile = params.get("Profile")
-        self.DistributeNo = params.get("DistributeNo")
         self.OutDistributeNo = params.get("OutDistributeNo")
+        self.DistributeNo = params.get("DistributeNo")
         self.OrderNo = params.get("OrderNo")
+        self.Profile = params.get("Profile")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7613,30 +7728,30 @@ class DistributeRemoveReceiverRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param OpenId: 收单系统分配的开放ID
+        :param OpenId: 使用门店OpenId
         :type OpenId: str
-        :param OpenKey: 收单系统分配的密钥
+        :param OpenKey: 使用门店OpenKey
         :type OpenKey: str
         :param MerchantNo: 商户编号
         :type MerchantNo: str
-        :param Profile: 沙箱环境填sandbox，正式环境不填
-        :type Profile: str
         :param Remark: 备注
         :type Remark: str
+        :param Profile: 沙箱环境填sandbox，正式环境不填
+        :type Profile: str
         """
         self.OpenId = None
         self.OpenKey = None
         self.MerchantNo = None
-        self.Profile = None
         self.Remark = None
+        self.Profile = None
 
 
     def _deserialize(self, params):
         self.OpenId = params.get("OpenId")
         self.OpenKey = params.get("OpenKey")
         self.MerchantNo = params.get("MerchantNo")
-        self.Profile = params.get("Profile")
         self.Remark = params.get("Remark")
+        self.Profile = params.get("Profile")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7793,26 +7908,26 @@ class DownloadOrgFileRequest(AbstractModel):
         :type OpenId: str
         :param OpenKey: 收单系统分配的密钥
         :type OpenKey: str
-        :param Profile: 沙箱环境填sandbox，正式环境不填
-        :type Profile: str
         :param Storage: 存储区域（0私密区，1公共区），请严格按文件要求，上传到不同的区域
         :type Storage: str
         :param FilePath: 文件路径
         :type FilePath: str
+        :param Profile: 沙箱环境填sandbox，正式环境不填
+        :type Profile: str
         """
         self.OpenId = None
         self.OpenKey = None
-        self.Profile = None
         self.Storage = None
         self.FilePath = None
+        self.Profile = None
 
 
     def _deserialize(self, params):
         self.OpenId = params.get("OpenId")
         self.OpenKey = params.get("OpenKey")
-        self.Profile = params.get("Profile")
         self.Storage = params.get("Storage")
         self.FilePath = params.get("FilePath")
+        self.Profile = params.get("Profile")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8207,6 +8322,170 @@ class FileItem(AbstractModel):
         self.RandomPassword = params.get("RandomPassword")
         self.FilePath = params.get("FilePath")
         self.DrawCode = params.get("DrawCode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FundsTransactionItem(AbstractModel):
+    """会员资金交易明细信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TransType: 资金交易类型。
+__1__：提现/退款
+__2__：清分/充值
+        :type TransType: str
+        :param BankBookingMessage: 银行记账说明。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BankBookingMessage: str
+        :param TranStatus: 交易状态。
+__0__：成功
+        :type TranStatus: str
+        :param TransNetMemberCode: 业务方会员标识。
+_平安渠道为交易网会员代码_
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TransNetMemberCode: str
+        :param SubAccountNumber: 子账户账号。
+_平安渠道为见证子账户的账号_
+        :type SubAccountNumber: str
+        :param SubAccountName: 子账户名称。
+_平安渠道为见证子账户的户名_
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubAccountName: str
+        :param TransAmount: 交易金额。
+        :type TransAmount: str
+        :param TransFee: 交易手续费。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TransFee: str
+        :param TransDate: 交易日期，格式：yyyyMMdd。
+        :type TransDate: str
+        :param TransTime: 交易时间，格式：HHmmss。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TransTime: str
+        :param BankSequenceNumber: 银行系统流水号。
+_平安渠道为见证系统流水号_
+        :type BankSequenceNumber: str
+        :param Remark: 备注。
+_平安渠道，如果是见证+收单的交易，返回交易订单号_
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
+        """
+        self.TransType = None
+        self.BankBookingMessage = None
+        self.TranStatus = None
+        self.TransNetMemberCode = None
+        self.SubAccountNumber = None
+        self.SubAccountName = None
+        self.TransAmount = None
+        self.TransFee = None
+        self.TransDate = None
+        self.TransTime = None
+        self.BankSequenceNumber = None
+        self.Remark = None
+
+
+    def _deserialize(self, params):
+        self.TransType = params.get("TransType")
+        self.BankBookingMessage = params.get("BankBookingMessage")
+        self.TranStatus = params.get("TranStatus")
+        self.TransNetMemberCode = params.get("TransNetMemberCode")
+        self.SubAccountNumber = params.get("SubAccountNumber")
+        self.SubAccountName = params.get("SubAccountName")
+        self.TransAmount = params.get("TransAmount")
+        self.TransFee = params.get("TransFee")
+        self.TransDate = params.get("TransDate")
+        self.TransTime = params.get("TransTime")
+        self.BankSequenceNumber = params.get("BankSequenceNumber")
+        self.Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MemberTransactionItem(AbstractModel):
+    """会员间交易明细信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TransType: 交易类型。
+__1__：转出
+__2__：转入
+        :type TransType: str
+        :param TranStatus: 交易状态。
+__0__：成功
+        :type TranStatus: str
+        :param TransAmount: 交易金额。
+        :type TransAmount: str
+        :param TransDate: 交易日期，格式：yyyyMMdd。
+        :type TransDate: str
+        :param TransTime: 交易时间，格式：HHmmss。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TransTime: str
+        :param BankSequenceNumber: 银行系统流水号。
+_平安渠道为见证系统流水号_
+        :type BankSequenceNumber: str
+        :param BankBookingType: 银行记账类型。
+_平安渠道为：_
+_1：会员支付_
+_2：会员冻结_
+_3：会员解冻_
+_4：登记挂账_
+_6：下单预支付_
+_7：确认并付款_
+_8：会员退款_
+_22：见证+收单平台调账_
+_23：见证+收单资金冻结_
+_24：见证+收单资金解冻_
+_25：会员间交易退款_
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BankBookingType: str
+        :param InSubAccountNumber: 转入方子账户账号。
+_平安渠道为转入见证子账户的账号_
+        :type InSubAccountNumber: str
+        :param OutSubAccountNumber: 转出方子账户账号。
+_平安渠道为转出见证子账户的账号_
+        :type OutSubAccountNumber: str
+        :param Remark: 备注。
+_平安渠道，如果是见证+收单的交易，返回交易订单号_
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
+        """
+        self.TransType = None
+        self.TranStatus = None
+        self.TransAmount = None
+        self.TransDate = None
+        self.TransTime = None
+        self.BankSequenceNumber = None
+        self.BankBookingType = None
+        self.InSubAccountNumber = None
+        self.OutSubAccountNumber = None
+        self.Remark = None
+
+
+    def _deserialize(self, params):
+        self.TransType = params.get("TransType")
+        self.TranStatus = params.get("TranStatus")
+        self.TransAmount = params.get("TransAmount")
+        self.TransDate = params.get("TransDate")
+        self.TransTime = params.get("TransTime")
+        self.BankSequenceNumber = params.get("BankSequenceNumber")
+        self.BankBookingType = params.get("BankBookingType")
+        self.InSubAccountNumber = params.get("InSubAccountNumber")
+        self.OutSubAccountNumber = params.get("OutSubAccountNumber")
+        self.Remark = params.get("Remark")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -12146,6 +12425,150 @@ class QueryExchangerateResult(AbstractModel):
         
 
 
+class QueryFundsTransactionDetailsRequest(AbstractModel):
+    """QueryFundsTransactionDetails请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param QueryDateType: 查询的交易发生时间类型。
+__1__：当日
+__2__：历史
+        :type QueryDateType: str
+        :param QueryTranType: 查询的交易类型。
+__2__：提现/退款
+__3__：清分/充值
+        :type QueryTranType: str
+        :param BankAccountNumber: 父账户账号。
+_平安渠道为资金汇总账号_
+        :type BankAccountNumber: str
+        :param SubAccountNumber: 子账户账号。
+_平安渠道为见证子账户的账号_
+        :type SubAccountNumber: str
+        :param PageOffSet: 分页号, 起始值为1。
+        :type PageOffSet: str
+        :param QueryStartDate: 查询开始日期，格式：yyyyMMdd。
+__若是历史查询，则必输，当日查询时，不起作用；开始日期不能超过当前日期__
+        :type QueryStartDate: str
+        :param QueryEndDate: 查询终止日期，格式：yyyyMMdd。
+__若是历史查询，则必输，当日查询时，不起作用；终止日期不能超过当前日期__
+        :type QueryEndDate: str
+        :param MidasEnvironment: 环境名。
+__release__: 现网环境
+__sandbox__: 沙箱环境
+__development__: 开发环境
+_缺省: release_
+        :type MidasEnvironment: str
+        """
+        self.QueryDateType = None
+        self.QueryTranType = None
+        self.BankAccountNumber = None
+        self.SubAccountNumber = None
+        self.PageOffSet = None
+        self.QueryStartDate = None
+        self.QueryEndDate = None
+        self.MidasEnvironment = None
+
+
+    def _deserialize(self, params):
+        self.QueryDateType = params.get("QueryDateType")
+        self.QueryTranType = params.get("QueryTranType")
+        self.BankAccountNumber = params.get("BankAccountNumber")
+        self.SubAccountNumber = params.get("SubAccountNumber")
+        self.PageOffSet = params.get("PageOffSet")
+        self.QueryStartDate = params.get("QueryStartDate")
+        self.QueryEndDate = params.get("QueryEndDate")
+        self.MidasEnvironment = params.get("MidasEnvironment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryFundsTransactionDetailsResponse(AbstractModel):
+    """QueryFundsTransactionDetails返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrCode: 错误码。
+__SUCCESS__: 成功
+__其他__: 见附录-错误码表
+        :type ErrCode: str
+        :param ErrMessage: 错误消息。
+        :type ErrMessage: str
+        :param Result: 返回结果。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.cpdp.v20190820.models.QueryFundsTransactionDetailsResult`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrCode = None
+        self.ErrMessage = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrCode = params.get("ErrCode")
+        self.ErrMessage = params.get("ErrMessage")
+        if params.get("Result") is not None:
+            self.Result = QueryFundsTransactionDetailsResult()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class QueryFundsTransactionDetailsResult(AbstractModel):
+    """查询会员资金交易信息列表结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ResultCount: 本次交易返回查询结果记录数。
+        :type ResultCount: int
+        :param TotalCount: 符合业务查询条件的记录总数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param EndFlag: 结束标志。
+__0__：否
+__1__：是
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndFlag: str
+        :param TranItemArray: 会员资金交易信息数组。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TranItemArray: list of FundsTransactionItem
+        """
+        self.ResultCount = None
+        self.TotalCount = None
+        self.EndFlag = None
+        self.TranItemArray = None
+
+
+    def _deserialize(self, params):
+        self.ResultCount = params.get("ResultCount")
+        self.TotalCount = params.get("TotalCount")
+        self.EndFlag = params.get("EndFlag")
+        if params.get("TranItemArray") is not None:
+            self.TranItemArray = []
+            for item in params.get("TranItemArray"):
+                obj = FundsTransactionItem()
+                obj._deserialize(item)
+                self.TranItemArray.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class QueryInvoiceRequest(AbstractModel):
     """QueryInvoice请求参数结构体
 
@@ -12681,6 +13104,151 @@ class QueryMemberBindResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class QueryMemberTransactionDetailsRequest(AbstractModel):
+    """QueryMemberTransactionDetails请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param QueryDateType: 查询的交易发生时间类型。
+__1__：当日
+__2__：历史
+        :type QueryDateType: str
+        :param QueryTranType: 查询的交易类型。
+__1__：全部
+__2__：转出
+__3__：转入
+        :type QueryTranType: str
+        :param BankAccountNumber: 父账户账号。
+_平安渠道为资金汇总账号_
+        :type BankAccountNumber: str
+        :param SubAccountNumber: 子账户账号。
+_平安渠道为见证子账户的账号_
+        :type SubAccountNumber: str
+        :param PageOffSet: 分页号, 起始值为1。
+        :type PageOffSet: str
+        :param QueryStartDate: 查询开始日期，格式：yyyyMMdd。
+__若是历史查询，则必输，当日查询时，不起作用；开始日期不能超过当前日期__
+        :type QueryStartDate: str
+        :param QueryEndDate: 查询终止日期，格式：yyyyMMdd。
+__若是历史查询，则必输，当日查询时，不起作用；终止日期不能超过当前日期__
+        :type QueryEndDate: str
+        :param MidasEnvironment: 环境名。
+__release__: 现网环境
+__sandbox__: 沙箱环境
+__development__: 开发环境
+_缺省: release_
+        :type MidasEnvironment: str
+        """
+        self.QueryDateType = None
+        self.QueryTranType = None
+        self.BankAccountNumber = None
+        self.SubAccountNumber = None
+        self.PageOffSet = None
+        self.QueryStartDate = None
+        self.QueryEndDate = None
+        self.MidasEnvironment = None
+
+
+    def _deserialize(self, params):
+        self.QueryDateType = params.get("QueryDateType")
+        self.QueryTranType = params.get("QueryTranType")
+        self.BankAccountNumber = params.get("BankAccountNumber")
+        self.SubAccountNumber = params.get("SubAccountNumber")
+        self.PageOffSet = params.get("PageOffSet")
+        self.QueryStartDate = params.get("QueryStartDate")
+        self.QueryEndDate = params.get("QueryEndDate")
+        self.MidasEnvironment = params.get("MidasEnvironment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryMemberTransactionDetailsResponse(AbstractModel):
+    """QueryMemberTransactionDetails返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrCode: 错误码。
+__SUCCESS__: 成功
+__其他__: 见附录-错误码表
+        :type ErrCode: str
+        :param ErrMessage: 错误消息。
+        :type ErrMessage: str
+        :param Result: 返回结果。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.cpdp.v20190820.models.QueryMemberTransactionDetailsResult`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrCode = None
+        self.ErrMessage = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrCode = params.get("ErrCode")
+        self.ErrMessage = params.get("ErrMessage")
+        if params.get("Result") is not None:
+            self.Result = QueryMemberTransactionDetailsResult()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class QueryMemberTransactionDetailsResult(AbstractModel):
+    """聚鑫-查询会员间交易信息列表结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ResultCount: 本次交易返回查询结果记录数。
+        :type ResultCount: int
+        :param TotalCount: 符合业务查询条件的记录总数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param EndFlag: 结束标志。
+__0__：否
+__1__：是
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndFlag: str
+        :param TranItemArray: 会员间交易信息数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TranItemArray: list of MemberTransactionItem
+        """
+        self.ResultCount = None
+        self.TotalCount = None
+        self.EndFlag = None
+        self.TranItemArray = None
+
+
+    def _deserialize(self, params):
+        self.ResultCount = params.get("ResultCount")
+        self.TotalCount = params.get("TotalCount")
+        self.EndFlag = params.get("EndFlag")
+        if params.get("TranItemArray") is not None:
+            self.TranItemArray = []
+            for item in params.get("TranItemArray"):
+                obj = MemberTransactionItem()
+                obj._deserialize(item)
+                self.TranItemArray.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class QueryMemberTransactionRequest(AbstractModel):
     """QueryMemberTransaction请求参数结构体
 
@@ -13117,9 +13685,9 @@ class QueryMerchantPayWayListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param OpenId: 收单系统分配的开放ID
+        :param OpenId: 使用门店OpenId
         :type OpenId: str
-        :param OpenKey: 收单系统分配的密钥
+        :param OpenKey: 使用门店OpenKey
         :type OpenKey: str
         :param PayType: 支付类型，逗号分隔。1-现金，2-主扫，3-被扫，4-JSAPI。
         :type PayType: str
@@ -14321,9 +14889,9 @@ class QueryOrderStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param OpenId: 收单系统分配的开放ID
+        :param OpenId: 使用门店OpenId
         :type OpenId: str
-        :param OpenKey: 收单系统分配的密钥
+        :param OpenKey: 使用门店OpenKey
         :type OpenKey: str
         :param DeveloperNo: 开发者流水号
         :type DeveloperNo: str
@@ -14970,6 +15538,113 @@ class QueryReconciliationDocumentResponse(AbstractModel):
                 self.TranItemArray.append(obj)
         self.ReservedMsg = params.get("ReservedMsg")
         self.RequestId = params.get("RequestId")
+
+
+class QueryReconciliationFileApplyInfoRequest(AbstractModel):
+    """QueryReconciliationFileApplyInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ApplyFileId: 申请对账文件的任务ID。
+        :type ApplyFileId: str
+        :param MidasEnvironment: 环境名。
+__release__: 现网环境
+__sandbox__: 沙箱环境
+__development__: 开发环境
+_缺省: release_
+        :type MidasEnvironment: str
+        """
+        self.ApplyFileId = None
+        self.MidasEnvironment = None
+
+
+    def _deserialize(self, params):
+        self.ApplyFileId = params.get("ApplyFileId")
+        self.MidasEnvironment = params.get("MidasEnvironment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryReconciliationFileApplyInfoResponse(AbstractModel):
+    """QueryReconciliationFileApplyInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrCode: 错误码。
+__SUCCESS__: 成功
+__其他__: 见附录-错误码表
+        :type ErrCode: str
+        :param ErrMessage: 错误消息。
+        :type ErrMessage: str
+        :param Result: 返回结果。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.cpdp.v20190820.models.QueryReconciliationFileApplyInfoResult`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrCode = None
+        self.ErrMessage = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrCode = params.get("ErrCode")
+        self.ErrMessage = params.get("ErrMessage")
+        if params.get("Result") is not None:
+            self.Result = QueryReconciliationFileApplyInfoResult()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class QueryReconciliationFileApplyInfoResult(AbstractModel):
+    """查询对账文件申请结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ApplyFileId: 申请对账文件的任务ID。
+        :type ApplyFileId: str
+        :param ApplyStatus: 对账文件申请状态。
+__I__：申请中
+__S__：申请成功
+__F__：申请失败
+        :type ApplyStatus: str
+        :param ApplyMessage: 申请结果描述。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplyMessage: str
+        :param FileUrlArray: 对账文件下载地址列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileUrlArray: list of str
+        """
+        self.ApplyFileId = None
+        self.ApplyStatus = None
+        self.ApplyMessage = None
+        self.FileUrlArray = None
+
+
+    def _deserialize(self, params):
+        self.ApplyFileId = params.get("ApplyFileId")
+        self.ApplyStatus = params.get("ApplyStatus")
+        self.ApplyMessage = params.get("ApplyMessage")
+        self.FileUrlArray = params.get("FileUrlArray")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class QueryRefundRequest(AbstractModel):
@@ -17068,9 +17743,9 @@ class RefundTlinxOrderRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param OpenId: 收单系统分配的开放ID
+        :param OpenId: 使用门店OpenId
         :type OpenId: str
-        :param OpenKey: 收单系统分配的密钥
+        :param OpenKey: 使用门店OpenKey
         :type OpenKey: str
         :param DeveloperNo: 原始订单的开发者交易流水号
         :type DeveloperNo: str
@@ -19318,44 +19993,42 @@ class UnifiedTlinxOrderRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param OpenId: 使用门店OpenId
+        :type OpenId: str
+        :param OpenKey: 使用门店OpenKey
+        :type OpenKey: str
         :param DeveloperNo: 开发者流水号
         :type DeveloperNo: str
-        :param OpenId: 收单系统分配的开放ID
-        :type OpenId: str
-        :param NotifyUrl: 交易结果异步通知url地址
-        :type NotifyUrl: str
-        :param OpenKey: 收单系统分配的密钥
-        :type OpenKey: str
         :param PayTag: 支付标签
         :type PayTag: str
         :param TradeAmount: 实际交易金额（以分为单位，没有小数点）
         :type TradeAmount: str
-        :param Remark: 订单备注
-        :type Remark: str
-        :param Tag: 订单标记，订单附加数据。
-        :type Tag: str
-        :param IgnoreAmount: 抹零金额（以分为单位，没有小数点）
-        :type IgnoreAmount: str
-        :param AuthCode: 条码支付的授权码（条码抢扫手机扫到的一串数字）
-        :type AuthCode: str
-        :param OriginalAmount: 原始交易金额（以分为单位，没有小数点）
-        :type OriginalAmount: str
-        :param OrderName: 订单名称（描述）
-        :type OrderName: str
+        :param NotifyUrl: 交易结果异步通知url地址
+        :type NotifyUrl: str
+        :param PayName: 付款方式名称(当PayTag为Diy时，PayName不能为空)
+        :type PayName: str
         :param JumpUrl: 公众号支付时，支付成功后跳转url地址
         :type JumpUrl: str
-        :param Profile: 沙箱环境填sandbox，正式环境不填
-        :type Profile: str
-        :param TradeResult: 收单机构原始交易报文，请转换为json
-        :type TradeResult: str
+        :param OrderName: 订单名称（描述）
+        :type OrderName: str
+        :param OriginalAmount: 原始交易金额（以分为单位，没有小数点）
+        :type OriginalAmount: str
+        :param IgnoreAmount: 抹零金额（以分为单位，没有小数点）
+        :type IgnoreAmount: str
+        :param DiscountAmount: 折扣金额（以分为单位，没有小数点）
+        :type DiscountAmount: str
         :param TradeAccount: 交易帐号（银行卡号）
         :type TradeAccount: str
         :param TradeNo: 交易号（收单机构交易号）
         :type TradeNo: str
-        :param DiscountAmount: 折扣金额（以分为单位，没有小数点）
-        :type DiscountAmount: str
-        :param PayName: 付款方式名称(当PayTag为Diy时，PayName不能为空)
-        :type PayName: str
+        :param AuthCode: 条码支付的授权码（条码抢扫手机扫到的一串数字）
+        :type AuthCode: str
+        :param Tag: 订单标记，订单附加数据。
+        :type Tag: str
+        :param Remark: 订单备注
+        :type Remark: str
+        :param TradeResult: 收单机构原始交易报文，请转换为json
+        :type TradeResult: str
         :param Royalty: 0-不分账，1-需分账。为1时标记为待分账订单，待分账订单不会进行清算。不传默认为不分账。
         :type Royalty: str
         :param Jsapi: 小程序支付参数：填默认值 1
@@ -19366,56 +20039,58 @@ class UnifiedTlinxOrderRequest(AbstractModel):
         :param SubOpenId: 小程序支付参数:
 用户在子商户appid下的唯一标识。
         :type SubOpenId: str
+        :param Profile: 沙箱环境填sandbox，正式环境不填
+        :type Profile: str
         """
-        self.DeveloperNo = None
         self.OpenId = None
-        self.NotifyUrl = None
         self.OpenKey = None
+        self.DeveloperNo = None
         self.PayTag = None
         self.TradeAmount = None
-        self.Remark = None
-        self.Tag = None
-        self.IgnoreAmount = None
-        self.AuthCode = None
-        self.OriginalAmount = None
-        self.OrderName = None
+        self.NotifyUrl = None
+        self.PayName = None
         self.JumpUrl = None
-        self.Profile = None
-        self.TradeResult = None
+        self.OrderName = None
+        self.OriginalAmount = None
+        self.IgnoreAmount = None
+        self.DiscountAmount = None
         self.TradeAccount = None
         self.TradeNo = None
-        self.DiscountAmount = None
-        self.PayName = None
+        self.AuthCode = None
+        self.Tag = None
+        self.Remark = None
+        self.TradeResult = None
         self.Royalty = None
         self.Jsapi = None
         self.SubAppId = None
         self.SubOpenId = None
+        self.Profile = None
 
 
     def _deserialize(self, params):
-        self.DeveloperNo = params.get("DeveloperNo")
         self.OpenId = params.get("OpenId")
-        self.NotifyUrl = params.get("NotifyUrl")
         self.OpenKey = params.get("OpenKey")
+        self.DeveloperNo = params.get("DeveloperNo")
         self.PayTag = params.get("PayTag")
         self.TradeAmount = params.get("TradeAmount")
-        self.Remark = params.get("Remark")
-        self.Tag = params.get("Tag")
-        self.IgnoreAmount = params.get("IgnoreAmount")
-        self.AuthCode = params.get("AuthCode")
-        self.OriginalAmount = params.get("OriginalAmount")
-        self.OrderName = params.get("OrderName")
+        self.NotifyUrl = params.get("NotifyUrl")
+        self.PayName = params.get("PayName")
         self.JumpUrl = params.get("JumpUrl")
-        self.Profile = params.get("Profile")
-        self.TradeResult = params.get("TradeResult")
+        self.OrderName = params.get("OrderName")
+        self.OriginalAmount = params.get("OriginalAmount")
+        self.IgnoreAmount = params.get("IgnoreAmount")
+        self.DiscountAmount = params.get("DiscountAmount")
         self.TradeAccount = params.get("TradeAccount")
         self.TradeNo = params.get("TradeNo")
-        self.DiscountAmount = params.get("DiscountAmount")
-        self.PayName = params.get("PayName")
+        self.AuthCode = params.get("AuthCode")
+        self.Tag = params.get("Tag")
+        self.Remark = params.get("Remark")
+        self.TradeResult = params.get("TradeResult")
         self.Royalty = params.get("Royalty")
         self.Jsapi = params.get("Jsapi")
         self.SubAppId = params.get("SubAppId")
         self.SubOpenId = params.get("SubOpenId")
+        self.Profile = params.get("Profile")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -19629,6 +20304,8 @@ class UploadOrgFileRequest(AbstractModel):
         r"""
         :param OpenId: 收单系统分配的开放ID
         :type OpenId: str
+        :param OpenKey: 收单系统分配的密钥
+        :type OpenKey: str
         :param Storage: 存储区域（0私密区，1公共区），请严格按文件要求，上传到不同的区域
         :type Storage: str
         :param FileMd5: 文件的md5值（为防止平台多次上传重复文件，文件名为文件md5,且不会覆盖，重复上传返回第一次上传成功的文件路径）
@@ -19637,27 +20314,25 @@ class UploadOrgFileRequest(AbstractModel):
         :type FileContent: str
         :param FileExtension: 文件扩展名（png,jpg,gif）
         :type FileExtension: str
-        :param OpenKey: 收单系统分配的密钥
-        :type OpenKey: str
         :param Profile: 沙箱环境填sandbox，正式环境不填
         :type Profile: str
         """
         self.OpenId = None
+        self.OpenKey = None
         self.Storage = None
         self.FileMd5 = None
         self.FileContent = None
         self.FileExtension = None
-        self.OpenKey = None
         self.Profile = None
 
 
     def _deserialize(self, params):
         self.OpenId = params.get("OpenId")
+        self.OpenKey = params.get("OpenKey")
         self.Storage = params.get("Storage")
         self.FileMd5 = params.get("FileMd5")
         self.FileContent = params.get("FileContent")
         self.FileExtension = params.get("FileExtension")
-        self.OpenKey = params.get("OpenKey")
         self.Profile = params.get("Profile")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -19818,26 +20493,26 @@ class ViewContractRequest(AbstractModel):
         :type OpenId: str
         :param OpenKey: 收单系统分配的密钥
         :type OpenKey: str
-        :param Profile: 沙箱环境填sandbox，正式环境不填
-        :type Profile: str
         :param OutContractId: 外部合同主键编号（ContractId或OutContractId必须传一个）
         :type OutContractId: str
         :param ContractId: 合同主键（ContractId或OutContractId必须传一个）
         :type ContractId: str
+        :param Profile: 沙箱环境填sandbox，正式环境不填
+        :type Profile: str
         """
         self.OpenId = None
         self.OpenKey = None
-        self.Profile = None
         self.OutContractId = None
         self.ContractId = None
+        self.Profile = None
 
 
     def _deserialize(self, params):
         self.OpenId = params.get("OpenId")
         self.OpenKey = params.get("OpenKey")
-        self.Profile = params.get("Profile")
         self.OutContractId = params.get("OutContractId")
         self.ContractId = params.get("ContractId")
+        self.Profile = params.get("Profile")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -20201,26 +20876,26 @@ class ViewMerchantRequest(AbstractModel):
         :type OpenId: str
         :param OpenKey: 收单系统分配的密钥
         :type OpenKey: str
-        :param Profile: 沙箱环境填sandbox，正式环境不填
-        :type Profile: str
         :param OutMerchantId: 外部商户主键编号（MerchantNo或OutMerchantId必须传一个）
         :type OutMerchantId: str
         :param MerchantNo: 商户编号（MerchantNo或OutMerchantId必须传一个）
         :type MerchantNo: str
+        :param Profile: 沙箱环境填sandbox，正式环境不填
+        :type Profile: str
         """
         self.OpenId = None
         self.OpenKey = None
-        self.Profile = None
         self.OutMerchantId = None
         self.MerchantNo = None
+        self.Profile = None
 
 
     def _deserialize(self, params):
         self.OpenId = params.get("OpenId")
         self.OpenKey = params.get("OpenKey")
-        self.Profile = params.get("Profile")
         self.OutMerchantId = params.get("OutMerchantId")
         self.MerchantNo = params.get("MerchantNo")
+        self.Profile = params.get("Profile")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -20644,26 +21319,26 @@ class ViewShopRequest(AbstractModel):
         :type OpenId: str
         :param OpenKey: 收单系统分配的密钥
         :type OpenKey: str
-        :param Profile: 沙箱环境填sandbox，正式环境不填
-        :type Profile: str
         :param OutShopId: 外部商户主键编号（ShopNo或OutShopId必须传一个）
         :type OutShopId: str
         :param ShopNo: 门店编号（ShopNo或OutShopId必须传一个）
         :type ShopNo: str
+        :param Profile: 沙箱环境填sandbox，正式环境不填
+        :type Profile: str
         """
         self.OpenId = None
         self.OpenKey = None
-        self.Profile = None
         self.OutShopId = None
         self.ShopNo = None
+        self.Profile = None
 
 
     def _deserialize(self, params):
         self.OpenId = params.get("OpenId")
         self.OpenKey = params.get("OpenKey")
-        self.Profile = params.get("Profile")
         self.OutShopId = params.get("OutShopId")
         self.ShopNo = params.get("ShopNo")
+        self.Profile = params.get("Profile")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
