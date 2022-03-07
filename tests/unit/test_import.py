@@ -169,6 +169,11 @@ def test_import_captcha():
     from tencentcloud.captcha.v20190722 import models
 
 
+def test_import_casb():
+    from tencentcloud.casb.v20200507 import casb_client
+    from tencentcloud.casb.v20200507 import models
+
+
 def test_import_cat():
     from tencentcloud.cat.v20180409 import cat_client
     from tencentcloud.cat.v20180409 import models

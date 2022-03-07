@@ -1,3 +1,96 @@
+# Release 3.0.594
+
+## 云数据加密代理网关(casb) 版本：2020-05-07
+
+### 第 1 次发布
+
+发布时间：2022-03-04 10:44:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CopyCryptoColumnPolicy](https://cloud.tencent.com/document/api/1303/70652)
+
+新增数据结构：
+
+* [CryptoCopyColumnPolicyTableFilter](https://cloud.tencent.com/document/api/1303/70653#CryptoCopyColumnPolicyTableFilter)
+
+
+
+## 企业收付平台(cpdp) 版本：2019-08-20
+
+### 第 57 次发布
+
+发布时间：2022-03-07 08:05:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [QueryOpenBankBankBranchList](https://cloud.tencent.com/document/api/1122/70730)
+* [QueryOpenBankSupportBankList](https://cloud.tencent.com/document/api/1122/70729)
+
+新增数据结构：
+
+* [BankBranchInfo](https://cloud.tencent.com/document/api/1122/40683#BankBranchInfo)
+* [QueryOpenBankBankBranchListResult](https://cloud.tencent.com/document/api/1122/40683#QueryOpenBankBankBranchListResult)
+* [QueryOpenBankSupportBankListResult](https://cloud.tencent.com/document/api/1122/40683#QueryOpenBankSupportBankListResult)
+* [SupportBankInfo](https://cloud.tencent.com/document/api/1122/40683#SupportBankInfo)
+
+修改数据结构：
+
+* [OpenBankPayeeInfo](https://cloud.tencent.com/document/api/1122/40683#OpenBankPayeeInfo)
+
+	* 新增成员：BindSerialNo
+
+
+
+
+## 视频智能标签(ivld) 版本：2021-09-03
+
+### 第 5 次发布
+
+发布时间：2022-03-07 10:30:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [ClassifiedPersonInfo](https://cloud.tencent.com/document/api/1509/65063#ClassifiedPersonInfo)
+* [PersonInfo](https://cloud.tencent.com/document/api/1509/65063#PersonInfo)
+
+修改数据结构：
+
+* [ShowInfo](https://cloud.tencent.com/document/api/1509/65063#ShowInfo)
+
+	* 新增成员：ClassifiedPersonInfoSet
+
+
+
+
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 90 次发布
+
+发布时间：2022-03-07 08:14:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeTKEEdgeScript](https://cloud.tencent.com/document/api/457/70732)
+
+
+
 # Release 3.0.593
 
 ## 云呼叫中心(ccc) 版本：2020-02-10

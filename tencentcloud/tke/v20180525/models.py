@@ -5646,6 +5646,59 @@ class DescribeRouteTableConflictsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeTKEEdgeScriptRequest(AbstractModel):
+    """DescribeTKEEdgeScript请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群id
+        :type ClusterId: str
+        :param Interface: 网卡名
+        :type Interface: str
+        :param NodeName: 节点名字
+        :type NodeName: str
+        :param Config: json格式的节点配置
+        :type Config: str
+        """
+        self.ClusterId = None
+        self.Interface = None
+        self.NodeName = None
+        self.Config = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.Interface = params.get("Interface")
+        self.NodeName = params.get("NodeName")
+        self.Config = params.get("Config")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTKEEdgeScriptResponse(AbstractModel):
+    """DescribeTKEEdgeScript返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeVersionsRequest(AbstractModel):
     """DescribeVersions请求参数结构体
 

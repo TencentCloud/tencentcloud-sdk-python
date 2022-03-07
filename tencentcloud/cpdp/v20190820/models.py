@@ -1968,6 +1968,42 @@ class AssignmentData(AbstractModel):
         
 
 
+class BankBranchInfo(AbstractModel):
+    """支行信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BankName: 银行名称。
+        :type BankName: str
+        :param BankAbbreviation: 银行简称。
+        :type BankAbbreviation: str
+        :param BankBranchName: 支行名。
+        :type BankBranchName: str
+        :param BankBranchId: 联行号。
+        :type BankBranchId: str
+        """
+        self.BankName = None
+        self.BankAbbreviation = None
+        self.BankBranchName = None
+        self.BankBranchId = None
+
+
+    def _deserialize(self, params):
+        self.BankName = params.get("BankName")
+        self.BankAbbreviation = params.get("BankAbbreviation")
+        self.BankBranchName = params.get("BankBranchName")
+        self.BankBranchId = params.get("BankBranchId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BankCardItem(AbstractModel):
     """绑卡列表
 
@@ -9261,12 +9297,16 @@ class OpenBankPayeeInfo(AbstractModel):
         :type BankBranchName: str
         :param BankBranchId: 联行号。渠道为TENPAY，付款方式为OPENBANK_PAYMENT时必选
         :type BankBranchId: str
+        :param BindSerialNo: 收款方绑卡序列号。
+当渠道为TENPAY，付款方式为EBANK_PAYMENT时，上送收款方入驻云企付平台时，下发的绑卡序列号。
+        :type BindSerialNo: str
         """
         self.PayeeId = None
         self.PayeeName = None
         self.BankAccountNumber = None
         self.BankBranchName = None
         self.BankBranchId = None
+        self.BindSerialNo = None
 
 
     def _deserialize(self, params):
@@ -9275,6 +9315,7 @@ class OpenBankPayeeInfo(AbstractModel):
         self.BankAccountNumber = params.get("BankAccountNumber")
         self.BankBranchName = params.get("BankBranchName")
         self.BankBranchId = params.get("BankBranchId")
+        self.BindSerialNo = params.get("BindSerialNo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -13803,6 +13844,132 @@ class QueryMerchantResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class QueryOpenBankBankBranchListRequest(AbstractModel):
+    """QueryOpenBankBankBranchList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ChannelMerchantId: 渠道商户ID。
+        :type ChannelMerchantId: str
+        :param ChannelName: 渠道名称。
+__TENPAY__: 商企付
+__WECHAT__: 微信支付
+__ALIPAY__: 支付宝
+        :type ChannelName: str
+        :param PaymentMethod: 支付方式。
+__EBANK_PAYMENT__:ebank付款
+__OPENBANK_PAYMENT__: openbank付款
+        :type PaymentMethod: str
+        :param BankBranchName: 支行名称。
+        :type BankBranchName: str
+        :param BankAbbreviation: 银行简称。
+        :type BankAbbreviation: str
+        :param PageNumber: 页码。Index和Count必须大于等于1。
+        :type PageNumber: :class:`tencentcloud.cpdp.v20190820.models.Paging`
+        :param Environment: 环境类型。
+__release__:生产环境
+__sandbox__:沙箱环境
+_不填默认为生产环境_
+        :type Environment: str
+        """
+        self.ChannelMerchantId = None
+        self.ChannelName = None
+        self.PaymentMethod = None
+        self.BankBranchName = None
+        self.BankAbbreviation = None
+        self.PageNumber = None
+        self.Environment = None
+
+
+    def _deserialize(self, params):
+        self.ChannelMerchantId = params.get("ChannelMerchantId")
+        self.ChannelName = params.get("ChannelName")
+        self.PaymentMethod = params.get("PaymentMethod")
+        self.BankBranchName = params.get("BankBranchName")
+        self.BankAbbreviation = params.get("BankAbbreviation")
+        if params.get("PageNumber") is not None:
+            self.PageNumber = Paging()
+            self.PageNumber._deserialize(params.get("PageNumber"))
+        self.Environment = params.get("Environment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryOpenBankBankBranchListResponse(AbstractModel):
+    """QueryOpenBankBankBranchList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrCode: 错误码。
+__SUCCESS__: 成功
+__其他__: 见附录-错误码表
+        :type ErrCode: str
+        :param ErrMessage: 错误消息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrMessage: str
+        :param Result: 返回结果。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.cpdp.v20190820.models.QueryOpenBankBankBranchListResult`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrCode = None
+        self.ErrMessage = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrCode = params.get("ErrCode")
+        self.ErrMessage = params.get("ErrMessage")
+        if params.get("Result") is not None:
+            self.Result = QueryOpenBankBankBranchListResult()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class QueryOpenBankBankBranchListResult(AbstractModel):
+    """查询联行号返回结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BankBranchList: 支行列表。
+        :type BankBranchList: list of BankBranchInfo
+        :param Count: 列表总数。
+        :type Count: int
+        """
+        self.BankBranchList = None
+        self.Count = None
+
+
+    def _deserialize(self, params):
+        if params.get("BankBranchList") is not None:
+            self.BankBranchList = []
+            for item in params.get("BankBranchList"):
+                obj = BankBranchInfo()
+                obj._deserialize(item)
+                self.BankBranchList.append(obj)
+        self.Count = params.get("Count")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class QueryOpenBankBindExternalSubMerchantBankAccountRequest(AbstractModel):
     """QueryOpenBankBindExternalSubMerchantBankAccount请求参数结构体
 
@@ -14475,6 +14642,114 @@ OPENBANK_PAYMENT
             self.RedirectInfo = OpenBankRedirectInfo()
             self.RedirectInfo._deserialize(params.get("RedirectInfo"))
         self.ExternalReturnData = params.get("ExternalReturnData")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryOpenBankSupportBankListRequest(AbstractModel):
+    """QueryOpenBankSupportBankList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ChannelMerchantId: 渠道商户ID。
+        :type ChannelMerchantId: str
+        :param ChannelName: 渠道名称。
+__TENPAY__: 商企付
+__WECHAT__: 微信支付
+__ALIPAY__: 支付宝
+        :type ChannelName: str
+        :param PaymentMethod: 支付方式。
+__EBANK_PAYMENT__:ebank付款
+__OPENBANK_PAYMENT__: openbank付款
+        :type PaymentMethod: str
+        :param Environment: 环境类型。
+__release__:生产环境
+__sandbox__:沙箱环境
+_不填默认为生产环境_
+        :type Environment: str
+        """
+        self.ChannelMerchantId = None
+        self.ChannelName = None
+        self.PaymentMethod = None
+        self.Environment = None
+
+
+    def _deserialize(self, params):
+        self.ChannelMerchantId = params.get("ChannelMerchantId")
+        self.ChannelName = params.get("ChannelName")
+        self.PaymentMethod = params.get("PaymentMethod")
+        self.Environment = params.get("Environment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryOpenBankSupportBankListResponse(AbstractModel):
+    """QueryOpenBankSupportBankList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrCode: 错误码。
+__SUCCESS__: 成功
+__其他__: 见附录-错误码表
+        :type ErrCode: str
+        :param ErrMessage: 错误消息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrMessage: str
+        :param Result: 返回结果。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.cpdp.v20190820.models.QueryOpenBankSupportBankListResult`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrCode = None
+        self.ErrMessage = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrCode = params.get("ErrCode")
+        self.ErrMessage = params.get("ErrMessage")
+        if params.get("Result") is not None:
+            self.Result = QueryOpenBankSupportBankListResult()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class QueryOpenBankSupportBankListResult(AbstractModel):
+    """查询支持的银行列表返回结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SupportBankList: 支持的银行列表
+        :type SupportBankList: list of SupportBankInfo
+        """
+        self.SupportBankList = None
+
+
+    def _deserialize(self, params):
+        if params.get("SupportBankList") is not None:
+            self.SupportBankList = []
+            for item in params.get("SupportBankList"):
+                obj = SupportBankInfo()
+                obj._deserialize(item)
+                self.SupportBankList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -18794,6 +19069,46 @@ class SceneInfo(AbstractModel):
         self.LocaleCode = params.get("LocaleCode")
         self.RegionCode = params.get("RegionCode")
         self.UserClientIp = params.get("UserClientIp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SupportBankInfo(AbstractModel):
+    """支持的银行信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BankCode: 银行简称。
+        :type BankCode: str
+        :param BankName: 银行名称。
+        :type BankName: str
+        :param MaintainStatus: 状态。
+__MAINTAINING__: 维护中
+__WORKING__: 正常工作
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaintainStatus: str
+        :param BankNotice: 银行渠道维护公告。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BankNotice: str
+        """
+        self.BankCode = None
+        self.BankName = None
+        self.MaintainStatus = None
+        self.BankNotice = None
+
+
+    def _deserialize(self, params):
+        self.BankCode = params.get("BankCode")
+        self.BankName = params.get("BankName")
+        self.MaintainStatus = params.get("MaintainStatus")
+        self.BankNotice = params.get("BankNotice")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

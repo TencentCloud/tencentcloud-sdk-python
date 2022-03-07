@@ -29,6 +29,7 @@
 | btoe | [区块链可信取证](https://cloud.tencent.com/document/product/1259) | 2022-02-21 08:02:02 |
 | cam | [访问管理](https://cloud.tencent.com/document/product/598) | 2022-03-01 08:01:53 |
 | captcha | [验证码](https://cloud.tencent.com/document/product/1110) | 2022-02-21 08:02:12 |
+| casb | [云数据加密代理网关](https://cloud.tencent.com/document/product/1303) | 2022-03-04 10:56:53 |
 | cat | [云拨测](https://cloud.tencent.com/document/product/280) | 2022-02-21 08:02:15 |
 | cbs | [云硬盘](https://cloud.tencent.com/document/product/362) | 2022-02-21 08:02:20 |
 | ccc | [云呼叫中心](https://cloud.tencent.com/document/product/679) | 2022-03-04 08:05:02 |
@@ -45,11 +46,11 @@
 | clb | [负载均衡](https://cloud.tencent.com/document/product/214) | 2022-03-03 08:03:01 |
 | cloudaudit | [云审计](https://cloud.tencent.com/document/product/629) | 2022-02-28 08:08:23 |
 | cloudhsm | [云加密机](https://cloud.tencent.com/document/product/639) | 2022-02-21 08:03:43 |
-| cls | [日志服务](https://cloud.tencent.com/document/product/614) | 2022-03-04 08:06:26 |
+| cls | [日志服务](https://cloud.tencent.com/document/product/614) | 2022-03-07 08:04:53 |
 | cme | [多媒体创作引擎](https://cloud.tencent.com/document/product/1156) | 2022-02-21 08:03:52 |
 | cmq | [消息队列 CMQ](https://cloud.tencent.com/document/product/406) | 2022-03-03 08:03:36 |
 | cms | [内容安全](https://cloud.tencent.com/document/product) | 2020-10-29 08:03:08 |
-| cpdp | [企业收付平台](https://cloud.tencent.com/document/product/1122) | 2022-03-04 08:06:47 |
+| cpdp | [企业收付平台](https://cloud.tencent.com/document/product/1122) | 2022-03-07 08:05:12 |
 | cr | [金融联络机器人](https://cloud.tencent.com/document/product/656) | 2021-02-24 08:03:24 |
 | cvm | [云服务器](https://cloud.tencent.com/document/product/213) | 2022-02-25 08:06:49 |
 | cwp | [主机安全](https://cloud.tencent.com/document/product/296) | 2022-02-21 08:04:51 |
@@ -99,7 +100,7 @@
 | iottid | [物联网设备身份认证](https://cloud.tencent.com/document/product/1086) | 2022-02-21 08:08:24 |
 | iotvideo | [物联网智能视频服务](https://cloud.tencent.com/document/product/1131) | 2022-02-21 08:08:26 |
 | iotvideoindustry | [物联网智能视频服务（行业版）](https://cloud.tencent.com/document/product/1361) | 2022-02-21 08:08:35 |
-| ivld | [视频智能标签](https://cloud.tencent.com/document/product/1509) | 2022-03-02 12:16:47 |
+| ivld | [视频智能标签](https://cloud.tencent.com/document/product/1509) | 2022-03-07 10:30:32 |
 | kms | [密钥管理系统](https://cloud.tencent.com/document/product/573) | 2022-02-21 08:08:51 |
 | lighthouse | [轻量应用服务器](https://cloud.tencent.com/document/product/1207) | 2022-03-03 08:08:18 |
 | live | [云直播](https://cloud.tencent.com/document/product/267) | 2022-02-24 08:10:24 |
@@ -131,7 +132,7 @@
 | rkp | [风险探针](https://cloud.tencent.com/document/product/1169) | 2022-02-21 08:10:55 |
 | rp | [注册保护](https://cloud.tencent.com/document/product/1191) | 2022-02-21 08:10:56 |
 | rum | [前端性能监控](https://cloud.tencent.com/document/product/1464) | 2022-03-01 08:11:06 |
-| scf | [云函数](https://cloud.tencent.com/document/product/583) | 2022-03-02 08:14:31 |
+| scf | [云函数](https://cloud.tencent.com/document/product/583) | 2022-03-07 08:11:53 |
 | ses | [邮件推送](https://cloud.tencent.com/document/product/1288) | 2022-02-22 08:11:38 |
 | smh | [智能媒资托管](https://cloud.tencent.com/document/product/1339) | 2022-02-21 08:11:14 |
 | smpn | [营销号码安全](https://cloud.tencent.com/document/product/1127) | 2022-02-21 08:11:16 |
@@ -171,7 +172,7 @@
 | tiia | [图像分析](https://cloud.tencent.com/document/product/865) | 2022-02-21 08:13:16 |
 | tione | [腾讯云 TI 平台 TI-ONE](https://cloud.tencent.com/document/product/851) | 2022-02-21 08:13:19 |
 | tiw | [互动白板](https://cloud.tencent.com/document/product/1137) | 2022-02-21 08:13:23 |
-| tke | [容器服务](https://cloud.tencent.com/document/product/457) | 2022-02-21 08:13:27 |
+| tke | [容器服务](https://cloud.tencent.com/document/product/457) | 2022-03-07 08:14:19 |
 | tkgdq | [腾讯知识图谱数据查询](https://cloud.tencent.com/document/product) | 2020-03-10 00:51:44 |
 | tms | [文本内容安全](https://cloud.tencent.com/document/product/1124) | 2022-02-21 08:13:40 |
 | tmt | [机器翻译](https://cloud.tencent.com/document/product/551) | 2022-02-21 08:13:41 |

@@ -204,6 +204,41 @@ class AudioInfo(AbstractModel):
         
 
 
+class ClassifiedPersonInfo(AbstractModel):
+    """已分类的人物信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClassifyName: 人物分类名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClassifyName: str
+        :param PersonInfoSet: 符合特定分类的人物信息数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PersonInfoSet: list of PersonInfo
+        """
+        self.ClassifyName = None
+        self.PersonInfoSet = None
+
+
+    def _deserialize(self, params):
+        self.ClassifyName = params.get("ClassifyName")
+        if params.get("PersonInfoSet") is not None:
+            self.PersonInfoSet = []
+            for item in params.get("PersonInfoSet"):
+                obj = PersonInfo()
+                obj._deserialize(item)
+                self.PersonInfoSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateCustomCategoryRequest(AbstractModel):
     """CreateCustomCategory请求参数结构体
 
@@ -1879,6 +1914,44 @@ class PersonImageInfo(AbstractModel):
         
 
 
+class PersonInfo(AbstractModel):
+    """人物信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 公众人物姓名
+        :type Name: str
+        :param Job: 公众人物职务
+        :type Job: str
+        :param FirstAppear: 首次出现模态，可选值为[1,3]，详细参见AppearIndex定义
+        :type FirstAppear: int
+        :param AppearInfo: 人物出现信息
+        :type AppearInfo: :class:`tencentcloud.ivld.v20210903.models.AppearInfo`
+        """
+        self.Name = None
+        self.Job = None
+        self.FirstAppear = None
+        self.AppearInfo = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Job = params.get("Job")
+        self.FirstAppear = params.get("FirstAppear")
+        if params.get("AppearInfo") is not None:
+            self.AppearInfo = AppearInfo()
+            self.AppearInfo._deserialize(params.get("AppearInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class QueryCallbackRequest(AbstractModel):
     """QueryCallback请求参数结构体
 
@@ -1944,6 +2017,9 @@ class ShowInfo(AbstractModel):
         :param TextInfoSet: 可视文字识别结果列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type TextInfoSet: list of TextInfo
+        :param ClassifiedPersonInfoSet: 已分类人物信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClassifiedPersonInfoSet: list of ClassifiedPersonInfo
         :param TextTagSet: 文本标签列表，包含标签内容和出现信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type TextTagSet: :class:`tencentcloud.ivld.v20210903.models.MultiLevelTag`
@@ -1969,6 +2045,7 @@ class ShowInfo(AbstractModel):
         self.TitleSet = None
         self.AudioInfoSet = None
         self.TextInfoSet = None
+        self.ClassifiedPersonInfoSet = None
         self.TextTagSet = None
         self.FrameTagSet = None
         self.WebMediaURL = None
@@ -1996,6 +2073,12 @@ class ShowInfo(AbstractModel):
                 obj = TextInfo()
                 obj._deserialize(item)
                 self.TextInfoSet.append(obj)
+        if params.get("ClassifiedPersonInfoSet") is not None:
+            self.ClassifiedPersonInfoSet = []
+            for item in params.get("ClassifiedPersonInfoSet"):
+                obj = ClassifiedPersonInfo()
+                obj._deserialize(item)
+                self.ClassifiedPersonInfoSet.append(obj)
         if params.get("TextTagSet") is not None:
             self.TextTagSet = MultiLevelTag()
             self.TextTagSet._deserialize(params.get("TextTagSet"))

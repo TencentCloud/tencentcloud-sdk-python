@@ -2014,6 +2014,34 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeTKEEdgeScript(self, request):
+        """获取边缘脚本链接
+
+        :param request: Request instance for DescribeTKEEdgeScript.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeTKEEdgeScriptRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeTKEEdgeScriptResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeTKEEdgeScript", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeTKEEdgeScriptResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeVersions(self, request):
         """获取集群版本信息
 
