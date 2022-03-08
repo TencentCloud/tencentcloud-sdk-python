@@ -1,85 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 云数据加密代理网关(casb) 版本：2020-05-07
-
-### 第 1 次发布
-
-发布时间：2022-03-04 10:44:38
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CopyCryptoColumnPolicy](https://cloud.tencent.com/document/api/1303/70652)
-
-新增数据结构：
-
-* [CryptoCopyColumnPolicyTableFilter](https://cloud.tencent.com/document/api/1303/70653#CryptoCopyColumnPolicyTableFilter)
-
-
-
 ## 企业收付平台(cpdp) 版本：2019-08-20
 
-### 第 57 次发布
+### 第 58 次发布
 
-发布时间：2022-03-07 08:05:12
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [QueryOpenBankBankBranchList](https://cloud.tencent.com/document/api/1122/70730)
-* [QueryOpenBankSupportBankList](https://cloud.tencent.com/document/api/1122/70729)
-
-新增数据结构：
-
-* [BankBranchInfo](https://cloud.tencent.com/document/api/1122/40683#BankBranchInfo)
-* [QueryOpenBankBankBranchListResult](https://cloud.tencent.com/document/api/1122/40683#QueryOpenBankBankBranchListResult)
-* [QueryOpenBankSupportBankListResult](https://cloud.tencent.com/document/api/1122/40683#QueryOpenBankSupportBankListResult)
-* [SupportBankInfo](https://cloud.tencent.com/document/api/1122/40683#SupportBankInfo)
-
-修改数据结构：
-
-* [OpenBankPayeeInfo](https://cloud.tencent.com/document/api/1122/40683#OpenBankPayeeInfo)
-
-	* 新增成员：BindSerialNo
-
-
-
-
-## 视频智能标签(ivld) 版本：2021-09-03
-
-### 第 5 次发布
-
-发布时间：2022-03-07 10:30:32
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增数据结构：
-
-* [ClassifiedPersonInfo](https://cloud.tencent.com/document/api/1509/65063#ClassifiedPersonInfo)
-* [PersonInfo](https://cloud.tencent.com/document/api/1509/65063#PersonInfo)
-
-修改数据结构：
-
-* [ShowInfo](https://cloud.tencent.com/document/api/1509/65063#ShowInfo)
-
-	* 新增成员：ClassifiedPersonInfoSet
-
-
-
-
-## 容器服务(tke) 版本：2018-05-25
-
-### 第 90 次发布
-
-发布时间：2022-03-07 08:14:19
+发布时间：2022-03-08 08:09:49
 
 本次发布包含了以下内容：
 
@@ -87,7 +12,94 @@
 
 新增接口：
 
-* [DescribeTKEEdgeScript](https://cloud.tencent.com/document/api/457/70732)
+* [QueryOpenBankBankAccountBalance](https://cloud.tencent.com/document/api/1122/70774)
+* [QueryOpenBankDailyReceiptDownloadUrl](https://cloud.tencent.com/document/api/1122/70773)
+
+新增数据结构：
+
+* [QueryOpenBankBankAccountBalanceResult](https://cloud.tencent.com/document/api/1122/40683#QueryOpenBankBankAccountBalanceResult)
+* [QueryOpenBankDailyReceiptDownloadUrlResult](https://cloud.tencent.com/document/api/1122/40683#QueryOpenBankDailyReceiptDownloadUrlResult)
+
+
+
+## 企业组织(organization) 版本：2021-03-31
+
+### 第 7 次发布
+
+发布时间：2022-03-08 08:16:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [OrgMember](https://cloud.tencent.com/document/api/850/67060#OrgMember)
+
+	* 新增成员：BindStatus
+
+
+
+
+## 企业组织(organization) 版本：2018-12-25
+
+
+
+## 邮件推送(ses) 版本：2020-10-02
+
+### 第 8 次发布
+
+发布时间：2022-03-07 16:52:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateReceiverDetailWithData](https://cloud.tencent.com/document/api/1288/70776)
+
+新增数据结构：
+
+* [ReceiverInputData](https://cloud.tencent.com/document/api/1288/51053#ReceiverInputData)
+
+
+
+## 容器安全服务(tcss) 版本：2020-11-01
+
+### 第 11 次发布
+
+发布时间：2022-03-08 08:18:39
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ImagesInfo](https://cloud.tencent.com/document/api/1285/65614#ImagesInfo)
+
+	* 新增成员：ComponentCnt
+
+
+
+
+## 腾讯云微服务引擎(tse) 版本：2020-12-07
+
+### 第 15 次发布
+
+发布时间：2022-03-08 08:20:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [EnvInfo](https://cloud.tencent.com/document/api/1364/54942#EnvInfo)
+
+	* 新增成员：SpecId, EnvReplica, RunningCount
+
 
 
 
@@ -8026,11 +8038,11 @@
 
 新增接口：
 
-* [[CopyCryptoColumnPolicy](https://cloud.tencent.com/document/api/1303/70652)](https://cloud.tencent.com/document/api/#/#)
+* [CopyCryptoColumnPolicy](https://cloud.tencent.com/document/api/1303/70652)
 
 新增数据结构：
 
-* [[CryptoCopyColumnPolicyTableFilter](https://cloud.tencent.com/document/api/1303/70653#CryptoCopyColumnPolicyTableFilter)](https://cloud.tencent.com/document/api/1303/70653#[CryptoCopyColumnPolicyTableFilter](https://cloud.tencent.com/document/api/1303/70653#CryptoCopyColumnPolicyTableFilter))
+* [CryptoCopyColumnPolicyTableFilter](https://cloud.tencent.com/document/api/1303/70653#CryptoCopyColumnPolicyTableFilter)
 
 
 
@@ -18878,6 +18890,24 @@
 
 ## 企业收付平台(cpdp) 版本：2019-08-20
 
+### 第 58 次发布
+
+发布时间：2022-03-08 08:09:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[QueryOpenBankBankAccountBalance](https://cloud.tencent.com/document/api/1122/70774)](https://cloud.tencent.com/document/api/#/#)
+* [[QueryOpenBankDailyReceiptDownloadUrl](https://cloud.tencent.com/document/api/1122/70773)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[QueryOpenBankBankAccountBalanceResult](https://cloud.tencent.com/document/api/1122/40683#QueryOpenBankBankAccountBalanceResult)](https://cloud.tencent.com/document/api/1122/40683#[QueryOpenBankBankAccountBalanceResult](https://cloud.tencent.com/document/api/1122/40683#QueryOpenBankBankAccountBalanceResult))
+* [[QueryOpenBankDailyReceiptDownloadUrlResult](https://cloud.tencent.com/document/api/1122/40683#QueryOpenBankDailyReceiptDownloadUrlResult)](https://cloud.tencent.com/document/api/1122/40683#[QueryOpenBankDailyReceiptDownloadUrlResult](https://cloud.tencent.com/document/api/1122/40683#QueryOpenBankDailyReceiptDownloadUrlResult))
+
 ### 第 57 次发布
 
 发布时间：2022-03-07 08:05:12
@@ -18888,15 +18918,15 @@
 
 新增接口：
 
-* [[QueryOpenBankBankBranchList](https://cloud.tencent.com/document/api/1122/70730)](https://cloud.tencent.com/document/api/#/#)
-* [[QueryOpenBankSupportBankList](https://cloud.tencent.com/document/api/1122/70729)](https://cloud.tencent.com/document/api/#/#)
+* [QueryOpenBankBankBranchList](https://cloud.tencent.com/document/api/1122/70730)
+* [QueryOpenBankSupportBankList](https://cloud.tencent.com/document/api/1122/70729)
 
 新增数据结构：
 
-* [[BankBranchInfo](https://cloud.tencent.com/document/api/1122/40683#BankBranchInfo)](https://cloud.tencent.com/document/api/1122/40683#[BankBranchInfo](https://cloud.tencent.com/document/api/1122/40683#BankBranchInfo))
-* [[QueryOpenBankBankBranchListResult](https://cloud.tencent.com/document/api/1122/40683#QueryOpenBankBankBranchListResult)](https://cloud.tencent.com/document/api/1122/40683#[QueryOpenBankBankBranchListResult](https://cloud.tencent.com/document/api/1122/40683#QueryOpenBankBankBranchListResult))
-* [[QueryOpenBankSupportBankListResult](https://cloud.tencent.com/document/api/1122/40683#QueryOpenBankSupportBankListResult)](https://cloud.tencent.com/document/api/1122/40683#[QueryOpenBankSupportBankListResult](https://cloud.tencent.com/document/api/1122/40683#QueryOpenBankSupportBankListResult))
-* [[SupportBankInfo](https://cloud.tencent.com/document/api/1122/40683#SupportBankInfo)](https://cloud.tencent.com/document/api/1122/40683#[SupportBankInfo](https://cloud.tencent.com/document/api/1122/40683#SupportBankInfo))
+* [BankBranchInfo](https://cloud.tencent.com/document/api/1122/40683#BankBranchInfo)
+* [QueryOpenBankBankBranchListResult](https://cloud.tencent.com/document/api/1122/40683#QueryOpenBankBankBranchListResult)
+* [QueryOpenBankSupportBankListResult](https://cloud.tencent.com/document/api/1122/40683#QueryOpenBankSupportBankListResult)
+* [SupportBankInfo](https://cloud.tencent.com/document/api/1122/40683#SupportBankInfo)
 
 修改数据结构：
 
@@ -39017,8 +39047,8 @@
 
 新增数据结构：
 
-* [[ClassifiedPersonInfo](https://cloud.tencent.com/document/api/1509/65063#ClassifiedPersonInfo)](https://cloud.tencent.com/document/api/1509/65063#[ClassifiedPersonInfo](https://cloud.tencent.com/document/api/1509/65063#ClassifiedPersonInfo))
-* [[PersonInfo](https://cloud.tencent.com/document/api/1509/65063#PersonInfo)](https://cloud.tencent.com/document/api/1509/65063#[PersonInfo](https://cloud.tencent.com/document/api/1509/65063#PersonInfo))
+* [ClassifiedPersonInfo](https://cloud.tencent.com/document/api/1509/65063#ClassifiedPersonInfo)
+* [PersonInfo](https://cloud.tencent.com/document/api/1509/65063#PersonInfo)
 
 修改数据结构：
 
@@ -47652,6 +47682,21 @@
 
 ## 企业组织(organization) 版本：2021-03-31
 
+### 第 7 次发布
+
+发布时间：2022-03-08 08:16:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [OrgMember](https://cloud.tencent.com/document/api/850/67060#OrgMember)
+
+	* 新增成员：BindStatus
+
+
 ### 第 6 次发布
 
 发布时间：2022-01-26 08:11:15
@@ -51097,6 +51142,22 @@
 
 
 ## 邮件推送(ses) 版本：2020-10-02
+
+### 第 8 次发布
+
+发布时间：2022-03-07 16:52:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateReceiverDetailWithData](https://cloud.tencent.com/document/api/1288/70776)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[ReceiverInputData](https://cloud.tencent.com/document/api/1288/51053#ReceiverInputData)](https://cloud.tencent.com/document/api/1288/51053#[ReceiverInputData](https://cloud.tencent.com/document/api/1288/51053#ReceiverInputData))
 
 ### 第 7 次发布
 
@@ -57711,6 +57772,21 @@
 
 ## 容器安全服务(tcss) 版本：2020-11-01
 
+### 第 11 次发布
+
+发布时间：2022-03-08 08:18:39
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ImagesInfo](https://cloud.tencent.com/document/api/1285/65614#ImagesInfo)
+
+	* 新增成员：ComponentCnt
+
+
 ### 第 10 次发布
 
 发布时间：2022-03-02 08:15:58
@@ -61342,7 +61418,7 @@
 
 新增接口：
 
-* [[DescribeTKEEdgeScript](https://cloud.tencent.com/document/api/457/70732)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeTKEEdgeScript](https://cloud.tencent.com/document/api/457/70732)
 
 ### 第 89 次发布
 
@@ -63843,6 +63919,21 @@
 
 
 ## 腾讯云微服务引擎(tse) 版本：2020-12-07
+
+### 第 15 次发布
+
+发布时间：2022-03-08 08:20:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [EnvInfo](https://cloud.tencent.com/document/api/1364/54942#EnvInfo)
+
+	* 新增成员：SpecId, EnvReplica, RunningCount
+
 
 ### 第 14 次发布
 

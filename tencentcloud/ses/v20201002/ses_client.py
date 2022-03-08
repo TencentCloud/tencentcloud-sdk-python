@@ -195,6 +195,34 @@ class SesClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateReceiverDetailWithData(self, request):
+        """添加收件人地址附带模板参数
+
+        :param request: Request instance for CreateReceiverDetailWithData.
+        :type request: :class:`tencentcloud.ses.v20201002.models.CreateReceiverDetailWithDataRequest`
+        :rtype: :class:`tencentcloud.ses.v20201002.models.CreateReceiverDetailWithDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateReceiverDetailWithData", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateReceiverDetailWithDataResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteBlackList(self, request):
         """邮箱被拉黑之后，用户如果确认收件邮箱有效或者已经处于激活状态，可以从腾讯云地址库中删除该黑名单之后继续投递。
 

@@ -155,6 +155,9 @@ FAILEDOPERATION_TSFMONITORWAITEDTIMEOUT = 'FailedOperation.TsfMonitorWaitedTimeo
 # TSF权限模块异常，请联系系统管理员。。
 FAILEDOPERATION_TSFPRIVILEGEERROR = 'FailedOperation.TsfPrivilegeError'
 
+# 模块未处理异常。
+FAILEDOPERATION_UNHANDLEDEXCEPTION = 'FailedOperation.UnhandledException'
+
 # 应用操作请求MASTER FEIGN失败。
 INTERNALERROR_APPLICATIONMASTERFEIGNERROR = 'InternalError.ApplicationMasterFeignError'
 
@@ -277,6 +280,9 @@ INVALIDPARAMETER_BADREQUEST = 'InvalidParameter.BadRequest'
 
 # TSF MASTER 实例状态异常。
 INVALIDPARAMETER_CVMCAEMASTERUNKNOWNINSTANCESTATUS = 'InvalidParameter.CvmCaeMasterUnknownInstanceStatus'
+
+# 未找到 TCR 实例或命名空间。
+INVALIDPARAMETER_IMAGEREPOTCRNAMESPACENOTFOUND = 'InvalidParameter.ImagerepoTcrNamespaceNotFound'
 
 # 参数错误。
 INVALIDPARAMETER_KUBERNETESPARAMERROR = 'InvalidParameter.KubernetesParamError'

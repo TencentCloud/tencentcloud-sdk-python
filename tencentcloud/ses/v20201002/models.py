@@ -369,6 +369,56 @@ class CreateReceiverDetailResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateReceiverDetailWithDataRequest(AbstractModel):
+    """CreateReceiverDetailWithData请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ReceiverId: 收件人列表ID
+        :type ReceiverId: int
+        :param Datas: 收信人邮箱以及模板参数，数组形式
+        :type Datas: list of ReceiverInputData
+        """
+        self.ReceiverId = None
+        self.Datas = None
+
+
+    def _deserialize(self, params):
+        self.ReceiverId = params.get("ReceiverId")
+        if params.get("Datas") is not None:
+            self.Datas = []
+            for item in params.get("Datas"):
+                obj = ReceiverInputData()
+                obj._deserialize(item)
+                self.Datas.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateReceiverDetailWithDataResponse(AbstractModel):
+    """CreateReceiverDetailWithData返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CreateReceiverRequest(AbstractModel):
     """CreateReceiver请求参数结构体
 
@@ -1325,6 +1375,35 @@ class ReceiverData(AbstractModel):
         self.Desc = params.get("Desc")
         self.ReceiversStatus = params.get("ReceiversStatus")
         self.CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReceiverInputData(AbstractModel):
+    """收件人明细输入参数，包含收件人邮箱，以及模板参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Email: 收件人邮箱
+        :type Email: str
+        :param TemplateData: 模板中的变量参数，请使用json.dump将json对象格式化为string类型。该对象是一组键值对，每个Key代表模板中的一个变量，模板中的变量使用{{键}}表示，相应的值在发送时会被替换为{{值}}。
+注意：参数值不能是html等复杂类型的数据。
+        :type TemplateData: str
+        """
+        self.Email = None
+        self.TemplateData = None
+
+
+    def _deserialize(self, params):
+        self.Email = params.get("Email")
+        self.TemplateData = params.get("TemplateData")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

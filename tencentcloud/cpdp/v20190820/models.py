@@ -13844,6 +13844,119 @@ class QueryMerchantResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class QueryOpenBankBankAccountBalanceRequest(AbstractModel):
+    """QueryOpenBankBankAccountBalance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ChannelMerchantId: 云企付渠道商户号。外部接入平台入驻云企付平台后下发。
+        :type ChannelMerchantId: str
+        :param ChannelSubMerchantId: 云企付渠道子商户号。入驻在渠道商户下的子商户ID，如付款方的商户ID，对应创建支付订单中接口参数中的PayerInfo中的payerId。
+        :type ChannelSubMerchantId: str
+        :param ChannelName: 渠道名称。
+__TENPAY__: 商企付
+__WECHAT__: 微信支付
+__ALIPAY__: 支付宝
+        :type ChannelName: str
+        :param PaymentMethod: 支付方式，如
+__EBANK_PAYMENT__:ebank付款
+__OPENBANK_PAYMENT__: openbank付款
+        :type PaymentMethod: str
+        :param BindSerialNo: 绑卡序列号，银行账户唯一ID，区分多卡或多账户的场景
+        :type BindSerialNo: str
+        :param Environment: 环境类型
+release:生产环境
+sandbox:沙箱环境
+缺省默认为生产环境
+        :type Environment: str
+        """
+        self.ChannelMerchantId = None
+        self.ChannelSubMerchantId = None
+        self.ChannelName = None
+        self.PaymentMethod = None
+        self.BindSerialNo = None
+        self.Environment = None
+
+
+    def _deserialize(self, params):
+        self.ChannelMerchantId = params.get("ChannelMerchantId")
+        self.ChannelSubMerchantId = params.get("ChannelSubMerchantId")
+        self.ChannelName = params.get("ChannelName")
+        self.PaymentMethod = params.get("PaymentMethod")
+        self.BindSerialNo = params.get("BindSerialNo")
+        self.Environment = params.get("Environment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryOpenBankBankAccountBalanceResponse(AbstractModel):
+    """QueryOpenBankBankAccountBalance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrCode: 业务系统返回码，SUCCESS表示成功，其他表示失败。
+        :type ErrCode: str
+        :param ErrMessage: 业务系统返回消息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrMessage: str
+        :param Result: 账户余额查询响应对象。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.cpdp.v20190820.models.QueryOpenBankBankAccountBalanceResult`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrCode = None
+        self.ErrMessage = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrCode = params.get("ErrCode")
+        self.ErrMessage = params.get("ErrMessage")
+        if params.get("Result") is not None:
+            self.Result = QueryOpenBankBankAccountBalanceResult()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class QueryOpenBankBankAccountBalanceResult(AbstractModel):
+    """云企付-查询账户余额
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalBalance: 总余额，单位分
+        :type TotalBalance: str
+        :param YesterdayBalance: 昨日余额，单位分
+        :type YesterdayBalance: str
+        """
+        self.TotalBalance = None
+        self.YesterdayBalance = None
+
+
+    def _deserialize(self, params):
+        self.TotalBalance = params.get("TotalBalance")
+        self.YesterdayBalance = params.get("YesterdayBalance")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class QueryOpenBankBankBranchListRequest(AbstractModel):
     """QueryOpenBankBankBranchList请求参数结构体
 
@@ -14084,6 +14197,129 @@ __PROCESSING__: 绑定中
         self.BindStatus = params.get("BindStatus")
         self.BindMessage = params.get("BindMessage")
         self.BindSerialNo = params.get("BindSerialNo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryOpenBankDailyReceiptDownloadUrlRequest(AbstractModel):
+    """QueryOpenBankDailyReceiptDownloadUrl请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ChannelMerchantId: 云企付渠道商户号。外部接入平台入驻云企付平台后下发。
+        :type ChannelMerchantId: str
+        :param ChannelSubMerchantId: 云企付渠道子商户号。入驻在渠道商户下的子商户ID，如付款方的商户ID，对应创建支付订单中接口参数中的PayerInfo中的payerId。
+        :type ChannelSubMerchantId: str
+        :param ChannelName: 渠道名称。
+__TENPAY__: 商企付
+__WECHAT__: 微信支付
+__ALIPAY__: 支付宝
+        :type ChannelName: str
+        :param PaymentMethod: 付款方式。如
+__EBANK_PAYMENT__:ebank付款
+__OPENBANK_PAYMENT__: openbank付款
+        :type PaymentMethod: str
+        :param BindSerialNo: 绑卡序列号，银行卡唯一标记，资金账户ID，用于区分商户绑定多卡或多账户场景
+        :type BindSerialNo: str
+        :param QueryDate: 查询日期，D日查询D-1日的回单文件
+        :type QueryDate: str
+        :param Environment: 环境类型
+release:生产环境
+sandbox:沙箱环境
+缺省默认为生产环境
+        :type Environment: str
+        """
+        self.ChannelMerchantId = None
+        self.ChannelSubMerchantId = None
+        self.ChannelName = None
+        self.PaymentMethod = None
+        self.BindSerialNo = None
+        self.QueryDate = None
+        self.Environment = None
+
+
+    def _deserialize(self, params):
+        self.ChannelMerchantId = params.get("ChannelMerchantId")
+        self.ChannelSubMerchantId = params.get("ChannelSubMerchantId")
+        self.ChannelName = params.get("ChannelName")
+        self.PaymentMethod = params.get("PaymentMethod")
+        self.BindSerialNo = params.get("BindSerialNo")
+        self.QueryDate = params.get("QueryDate")
+        self.Environment = params.get("Environment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryOpenBankDailyReceiptDownloadUrlResponse(AbstractModel):
+    """QueryOpenBankDailyReceiptDownloadUrl返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrCode: 业务系统返回码，SUCCESS表示成功，其他表示失败。
+        :type ErrCode: str
+        :param ErrMessage: 业务系统返回消息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrMessage: str
+        :param Result: 按日期查询回单下载地址响应对象。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.cpdp.v20190820.models.QueryOpenBankDailyReceiptDownloadUrlResult`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrCode = None
+        self.ErrMessage = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrCode = params.get("ErrCode")
+        self.ErrMessage = params.get("ErrMessage")
+        if params.get("Result") is not None:
+            self.Result = QueryOpenBankDailyReceiptDownloadUrlResult()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class QueryOpenBankDailyReceiptDownloadUrlResult(AbstractModel):
+    """云企付-按日期查询回单下载地址
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DownloadUrl: 回单文件下载链接
+        :type DownloadUrl: str
+        :param ExpireTime: 过期时间
+        :type ExpireTime: str
+        :param ReceiptStatus: 回单状态
+PENDING: 处理中
+READY: 可以下载
+        :type ReceiptStatus: str
+        """
+        self.DownloadUrl = None
+        self.ExpireTime = None
+        self.ReceiptStatus = None
+
+
+    def _deserialize(self, params):
+        self.DownloadUrl = params.get("DownloadUrl")
+        self.ExpireTime = params.get("ExpireTime")
+        self.ReceiptStatus = params.get("ReceiptStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

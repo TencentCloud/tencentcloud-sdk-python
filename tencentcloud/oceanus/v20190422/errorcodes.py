@@ -227,5 +227,8 @@ UNSUPPORTEDOPERATION = 'UnsupportedOperation'
 # Checkpoint 时间间隔，错误。
 UNSUPPORTEDOPERATION_INVALIDCHECKPOINTINTERVALERROR = 'UnsupportedOperation.InvalidCheckpointIntervalError'
 
+# 权限拦截,没有进入权限。
+UNSUPPORTEDOPERATION_NOPERMISSIONACCESS = 'UnsupportedOperation.NoPermissionAccess'
+
 # 不支持的启动模式。
 UNSUPPORTEDOPERATION_UNSUPPORTEDSTARTMODE = 'UnsupportedOperation.UnsupportedStartMode'

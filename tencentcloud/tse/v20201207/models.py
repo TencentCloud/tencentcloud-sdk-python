@@ -253,6 +253,12 @@ class EnvInfo(AbstractModel):
         :type EnableConfigInternet: bool
         :param ConfigInternetServiceIp: config-server公网访问地址
         :type ConfigInternetServiceIp: str
+        :param SpecId: 规格ID
+        :type SpecId: str
+        :param EnvReplica: 环境的节点数
+        :type EnvReplica: int
+        :param RunningCount: 环境运行的节点数
+        :type RunningCount: int
         """
         self.EnvName = None
         self.VpcInfos = None
@@ -262,6 +268,9 @@ class EnvInfo(AbstractModel):
         self.ConfigServiceIp = None
         self.EnableConfigInternet = None
         self.ConfigInternetServiceIp = None
+        self.SpecId = None
+        self.EnvReplica = None
+        self.RunningCount = None
 
 
     def _deserialize(self, params):
@@ -278,6 +287,9 @@ class EnvInfo(AbstractModel):
         self.ConfigServiceIp = params.get("ConfigServiceIp")
         self.EnableConfigInternet = params.get("EnableConfigInternet")
         self.ConfigInternetServiceIp = params.get("ConfigInternetServiceIp")
+        self.SpecId = params.get("SpecId")
+        self.EnvReplica = params.get("EnvReplica")
+        self.RunningCount = params.get("RunningCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

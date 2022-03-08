@@ -1744,7 +1744,7 @@ class VpcClient(AbstractClient):
 
 
     def CreateVpcEndPointService(self, request):
-        """创建终端节点服务。
+        """本接口(CreateVpcEndPointService)用于创建终端节点服务。
 
         :param request: Request instance for CreateVpcEndPointService.
         :type request: :class:`tencentcloud.vpc.v20170312.models.CreateVpcEndPointServiceRequest`

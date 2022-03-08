@@ -624,16 +624,16 @@ class CreateAlarmNoticeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 告警模板名称。
+        :param Name: 通知渠道组名称。
         :type Name: str
-        :param Type: 告警模板的类型。可选值：
-<br><li> Trigger - 告警触发
-<br><li> Recovery - 告警恢复
-<br><li> All - 告警触发和告警恢复
+        :param Type: 通知类型。可选值：
+<li> Trigger - 告警触发
+<li> Recovery - 告警恢复
+<li> All - 告警触发和告警恢复
         :type Type: str
-        :param NoticeReceivers: 告警模板接收者信息。
+        :param NoticeReceivers: 通知接收对象。
         :type NoticeReceivers: list of NoticeReceiver
-        :param WebCallbacks: 告警模板回调信息。
+        :param WebCallbacks: 接口回调信息（包括企业微信）。
         :type WebCallbacks: list of WebCallback
         """
         self.Name = None
@@ -1385,7 +1385,7 @@ class DeleteAlarmNoticeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AlarmNoticeId: 告警通知模板
+        :param AlarmNoticeId: 通知渠道组ID
         :type AlarmNoticeId: str
         """
         self.AlarmNoticeId = None
@@ -1840,34 +1840,21 @@ class DescribeAlarmNoticesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Filters: <br><li> name
-
-按照【告警通知模板名称】进行过滤。
+        :param Filters: <li> name
+按照【通知渠道组名称】进行过滤。
 类型：String
-
 必选：否
-
-<br><li> alarmNoticeId
-
-按照【告警通知模板ID】进行过滤。
+<li> alarmNoticeId
+按照【通知渠道组ID】进行过滤。
 类型：String
-
 必选：否
-
-<br><li> uid
-
+<li> uid
 按照【接收用户ID】进行过滤。
-
 类型：String
-
 必选：否
-
-<br><li> groupId
-
-按照【用户组ID】进行过滤。
-
+<li> groupId
+按照【接收用户组ID】进行过滤。
 类型：String
-
 必选：否
 
 每次请求的Filters的上限为10，Filter.Values的上限为5。
@@ -3900,18 +3887,18 @@ class ModifyAlarmNoticeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AlarmNoticeId: 告警通知模板ID。
+        :param AlarmNoticeId: 通知渠道组ID。
         :type AlarmNoticeId: str
-        :param Name: 告警模板名称。
+        :param Name: 通知渠道组名称。
         :type Name: str
-        :param Type: 告警模板的类型。可选值：
-<br><li> Trigger - 告警触发
-<br><li> Recovery - 告警恢复
-<br><li> All - 告警触发和告警恢复
+        :param Type: 通知类型。可选值：
+<li> Trigger - 告警触发
+<li> Recovery - 告警恢复
+<li> All - 告警触发和告警恢复
         :type Type: str
-        :param NoticeReceivers: 告警模板接收者信息。
+        :param NoticeReceivers: 通知接收对象。
         :type NoticeReceivers: list of NoticeReceiver
-        :param WebCallbacks: 告警模板回调信息。
+        :param WebCallbacks: 接口回调信息（包括企业微信）。
         :type WebCallbacks: list of WebCallback
         """
         self.AlarmNoticeId = None
@@ -5360,19 +5347,21 @@ class WebCallback(AbstractModel):
         :param Url: 回调地址。
         :type Url: str
         :param CallbackType: 回调的类型。可选值：
-<br><li> WeCom
-<br><li> Http
+<li> WeCom
+<li> Http
         :type CallbackType: str
         :param Method: 回调方法。可选值：
-<br><li> POST
-<br><li> PUT
+<li> POST
+<li> PUT
 默认值为POST。CallbackType为Http时为必选。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Method: str
         :param Headers: 请求头。
+注意：该参数已废弃，请在<a href="https://cloud.tencent.com/document/product/614/56466">创建告警策略</a>接口CallBack参数中指定请求头。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Headers: list of str
-        :param Body: 请求内容。CallbackType为Http时为必选。
+        :param Body: 请求内容。
+注意：该参数已废弃，请在<a href="https://cloud.tencent.com/document/product/614/56466">创建告警策略</a>接口CallBack参数中指定请求内容。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Body: str
         :param Index: 序号

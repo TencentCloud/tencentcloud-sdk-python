@@ -12643,6 +12643,8 @@ class ImagesInfo(AbstractModel):
         :type IsSuggest: int
         :param IsAuthorized: 是否授权，1是0否
         :type IsAuthorized: int
+        :param ComponentCnt: 组件个数
+        :type ComponentCnt: int
         """
         self.ImageID = None
         self.ImageName = None
@@ -12664,6 +12666,7 @@ class ImagesInfo(AbstractModel):
         self.ScanRiskError = None
         self.IsSuggest = None
         self.IsAuthorized = None
+        self.ComponentCnt = None
 
 
     def _deserialize(self, params):
@@ -12687,6 +12690,7 @@ class ImagesInfo(AbstractModel):
         self.ScanRiskError = params.get("ScanRiskError")
         self.IsSuggest = params.get("IsSuggest")
         self.IsAuthorized = params.get("IsAuthorized")
+        self.ComponentCnt = params.get("ComponentCnt")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
