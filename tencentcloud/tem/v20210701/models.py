@@ -646,6 +646,14 @@ class DeployApplicationRequest(AbstractModel):
         :type SpeedUp: bool
         :param StartupProbe: 启动探针配置
         :type StartupProbe: :class:`tencentcloud.tem.v20210701.models.HealthCheckConfig`
+        :param OsFlavour: 操作系统版本；
+当选择openjdk时，可选参数：
+- ALPINE
+- CENTOS
+当选择konajdk时，可选参数：
+- ALPINE
+- TENCENTOS
+        :type OsFlavour: str
         """
         self.ApplicationId = None
         self.InitPodNum = None
@@ -685,6 +693,7 @@ class DeployApplicationRequest(AbstractModel):
         self.ConfEdited = None
         self.SpeedUp = None
         self.StartupProbe = None
+        self.OsFlavour = None
 
 
     def _deserialize(self, params):
@@ -770,6 +779,7 @@ class DeployApplicationRequest(AbstractModel):
         if params.get("StartupProbe") is not None:
             self.StartupProbe = HealthCheckConfig()
             self.StartupProbe._deserialize(params.get("StartupProbe"))
+        self.OsFlavour = params.get("OsFlavour")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -368,6 +368,9 @@ RESOURCENOTFOUND_LISTENERNOTFOUND = 'ResourceNotFound.ListenerNotFound'
 # 找不到指定负载均衡器。
 RESOURCENOTFOUND_LOADBALANCERNOTFOUND = 'ResourceNotFound.LoadBalancerNotFound'
 
+# 指定的负载均衡器在当前伸缩组中没有找到。
+RESOURCENOTFOUND_LOADBALANCERNOTINAUTOSCALINGGROUP = 'ResourceNotFound.LoadBalancerNotInAutoScalingGroup'
+
 # 指定的Location不存在。
 RESOURCENOTFOUND_LOCATIONNOTFOUND = 'ResourceNotFound.LocationNotFound'
 

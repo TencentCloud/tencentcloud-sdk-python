@@ -3293,15 +3293,13 @@ class PhoneVerificationResponse(AbstractModel):
         r"""
         :param Result: 认证结果码:
 收费结果码
-0: 认证通过
--4: 信息不一致（手机号已实名，但姓名和身份证号与实名信息不一致）
--5: 手机号未实名
+0: 三要素信息一致
+-4: 三要素信息不一致
 不收费结果码
 -6: 手机号码不合法
 -7: 身份证号码有误
 -8: 姓名校验不通过
 -9: 没有记录
--10: 认证未通过
 -11: 验证中心服务繁忙
         :type Result: str
         :param Description: 业务结果描述。

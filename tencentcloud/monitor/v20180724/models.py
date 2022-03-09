@@ -6122,22 +6122,26 @@ class ModifyAlarmPolicyNoticeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Module: 模块名，这里填“monitor”
+        :param Module: 模块名，这里填“monitor”。
         :type Module: str
-        :param PolicyId: 告警策略 ID
+        :param PolicyId: 告警策略 ID，如果该参数与PolicyIds参数同时存在，则以PolicyIds为准。
         :type PolicyId: str
-        :param NoticeIds: 告警通知模板 ID 列表
+        :param NoticeIds: 告警通知模板 ID 列表。
         :type NoticeIds: list of str
+        :param PolicyIds: 告警策略ID数组，支持给多个告警策略批量绑定通知模板。最多30个。
+        :type PolicyIds: list of str
         """
         self.Module = None
         self.PolicyId = None
         self.NoticeIds = None
+        self.PolicyIds = None
 
 
     def _deserialize(self, params):
         self.Module = params.get("Module")
         self.PolicyId = params.get("PolicyId")
         self.NoticeIds = params.get("NoticeIds")
+        self.PolicyIds = params.get("PolicyIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

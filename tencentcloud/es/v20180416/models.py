@@ -2486,6 +2486,8 @@ class UpgradeInstanceRequest(AbstractModel):
         :type BasicSecurityType: int
         :param UpgradeMode: 升级方式：<li>scale 蓝绿变更</li><li>restart 滚动重启</li>默认值为scale
         :type UpgradeMode: str
+        :param CosBackup: 升级版本前是否对集群进行备份，默认不备份
+        :type CosBackup: bool
         """
         self.InstanceId = None
         self.EsVersion = None
@@ -2493,6 +2495,7 @@ class UpgradeInstanceRequest(AbstractModel):
         self.LicenseType = None
         self.BasicSecurityType = None
         self.UpgradeMode = None
+        self.CosBackup = None
 
 
     def _deserialize(self, params):
@@ -2502,6 +2505,7 @@ class UpgradeInstanceRequest(AbstractModel):
         self.LicenseType = params.get("LicenseType")
         self.BasicSecurityType = params.get("BasicSecurityType")
         self.UpgradeMode = params.get("UpgradeMode")
+        self.CosBackup = params.get("CosBackup")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
