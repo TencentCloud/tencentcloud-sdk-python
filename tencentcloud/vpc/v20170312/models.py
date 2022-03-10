@@ -1828,6 +1828,9 @@ class CcnBandwidthInfo(AbstractModel):
         :param CcnRegionBandwidthLimit: 描述带宽的地域和限速上限信息。在地域间限速的情况下才会返回参数，出口限速模式不返回。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CcnRegionBandwidthLimit: :class:`tencentcloud.vpc.v20170312.models.CcnRegionBandwidthLimit`
+        :param MarketId: 云市场实例ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MarketId: str
         """
         self.CcnId = None
         self.CreatedTime = None
@@ -1835,6 +1838,7 @@ class CcnBandwidthInfo(AbstractModel):
         self.RegionFlowControlId = None
         self.RenewFlag = None
         self.CcnRegionBandwidthLimit = None
+        self.MarketId = None
 
 
     def _deserialize(self, params):
@@ -1846,6 +1850,7 @@ class CcnBandwidthInfo(AbstractModel):
         if params.get("CcnRegionBandwidthLimit") is not None:
             self.CcnRegionBandwidthLimit = CcnRegionBandwidthLimit()
             self.CcnRegionBandwidthLimit._deserialize(params.get("CcnRegionBandwidthLimit"))
+        self.MarketId = params.get("MarketId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

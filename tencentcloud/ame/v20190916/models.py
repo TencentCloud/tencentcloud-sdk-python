@@ -52,6 +52,42 @@ class Album(AbstractModel):
         
 
 
+class ApplicationLicenseInput(AbstractModel):
+    """用户license基础信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AppName: 应用名称，注：后面三个字段AndroidPackageName、IOSBundleId、PcIdentifier，三者选填一个
+        :type AppName: str
+        :param AndroidPackageName: app的安卓包名
+        :type AndroidPackageName: str
+        :param IOSBundleId: app的IOS的BundleId名
+        :type IOSBundleId: str
+        :param PcIdentifier: PC标识名
+        :type PcIdentifier: str
+        """
+        self.AppName = None
+        self.AndroidPackageName = None
+        self.IOSBundleId = None
+        self.PcIdentifier = None
+
+
+    def _deserialize(self, params):
+        self.AppName = params.get("AppName")
+        self.AndroidPackageName = params.get("AndroidPackageName")
+        self.IOSBundleId = params.get("IOSBundleId")
+        self.PcIdentifier = params.get("PcIdentifier")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Artist(AbstractModel):
     """Artist
 
@@ -224,9 +260,12 @@ class CreateKTVRobotRequest(AbstractModel):
         :type RTCSystem: str
         :param JoinRoomInput: 进房参数。
         :type JoinRoomInput: :class:`tencentcloud.ame.v20190916.models.JoinRoomInput`
+        :param ApplicationLicenseInput: license基础信息
+        :type ApplicationLicenseInput: :class:`tencentcloud.ame.v20190916.models.ApplicationLicenseInput`
         """
         self.RTCSystem = None
         self.JoinRoomInput = None
+        self.ApplicationLicenseInput = None
 
 
     def _deserialize(self, params):
@@ -234,6 +273,9 @@ class CreateKTVRobotRequest(AbstractModel):
         if params.get("JoinRoomInput") is not None:
             self.JoinRoomInput = JoinRoomInput()
             self.JoinRoomInput._deserialize(params.get("JoinRoomInput"))
+        if params.get("ApplicationLicenseInput") is not None:
+            self.ApplicationLicenseInput = ApplicationLicenseInput()
+            self.ApplicationLicenseInput._deserialize(params.get("ApplicationLicenseInput"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -709,6 +751,38 @@ class DescribeKTVMusicDetailResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeKTVMusicTagsRequest(AbstractModel):
+    """DescribeKTVMusicTags请求参数结构体
+
+    """
+
+
+class DescribeKTVMusicTagsResponse(AbstractModel):
+    """DescribeKTVMusicTags返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TagGroupSet: 标签分组列表
+        :type TagGroupSet: list of KTVMusicTagGroup
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TagGroupSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("TagGroupSet") is not None:
+            self.TagGroupSet = []
+            for item in params.get("TagGroupSet"):
+                obj = KTVMusicTagGroup()
+                obj._deserialize(item)
+                self.TagGroupSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeKTVPlaylistDetailRequest(AbstractModel):
     """DescribeKTVPlaylistDetail请求参数结构体
 
@@ -1089,6 +1163,56 @@ class DescribeKTVSingersResponse(AbstractModel):
                 obj = KTVSingerInfo()
                 obj._deserialize(item)
                 self.KTVSingerInfoSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeKTVSuggestionsRequest(AbstractModel):
+    """DescribeKTVSuggestions请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param KeyWord: 联想关键词
+        :type KeyWord: str
+        """
+        self.KeyWord = None
+
+
+    def _deserialize(self, params):
+        self.KeyWord = params.get("KeyWord")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeKTVSuggestionsResponse(AbstractModel):
+    """DescribeKTVSuggestions返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param KTVSuggestionInfoSet: 联想词信息列表。返回总数最大为10。
+        :type KTVSuggestionInfoSet: list of KTVSuggestionInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.KTVSuggestionInfoSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("KTVSuggestionInfoSet") is not None:
+            self.KTVSuggestionInfoSet = []
+            for item in params.get("KTVSuggestionInfoSet"):
+                obj = KTVSuggestionInfo()
+                obj._deserialize(item)
+                self.KTVSuggestionInfoSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1872,6 +1996,71 @@ class KTVMusicDetailInfo(AbstractModel):
         
 
 
+class KTVMusicTagGroup(AbstractModel):
+    """即使广播曲库歌曲标签分组信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EnglishGroupName: 标签分组英文名
+        :type EnglishGroupName: str
+        :param ChineseGroupName: 标签分组中文名
+        :type ChineseGroupName: str
+        :param TagSet: 标签分类下标签列表
+        :type TagSet: list of KTVMusicTagInfo
+        """
+        self.EnglishGroupName = None
+        self.ChineseGroupName = None
+        self.TagSet = None
+
+
+    def _deserialize(self, params):
+        self.EnglishGroupName = params.get("EnglishGroupName")
+        self.ChineseGroupName = params.get("ChineseGroupName")
+        if params.get("TagSet") is not None:
+            self.TagSet = []
+            for item in params.get("TagSet"):
+                obj = KTVMusicTagInfo()
+                obj._deserialize(item)
+                self.TagSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KTVMusicTagInfo(AbstractModel):
+    """即使广播曲库歌曲标签信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TagId: 标签Id
+        :type TagId: str
+        :param TagName: 标签
+        :type TagName: str
+        """
+        self.TagId = None
+        self.TagName = None
+
+
+    def _deserialize(self, params):
+        self.TagId = params.get("TagId")
+        self.TagName = params.get("TagName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class KTVMusicTopInfo(AbstractModel):
     """排行榜结构
 
@@ -2122,6 +2311,30 @@ class KTVSingerInfo(AbstractModel):
         self.Area = params.get("Area")
         self.MusicCount = params.get("MusicCount")
         self.PlayCount = params.get("PlayCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KTVSuggestionInfo(AbstractModel):
+    """即使广播曲库联想词信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Suggestion: 联想词
+        :type Suggestion: str
+        """
+        self.Suggestion = None
+
+
+    def _deserialize(self, params):
+        self.Suggestion = params.get("Suggestion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2730,11 +2943,15 @@ class SearchKTVMusicsRequest(AbstractModel):
 <li> Sort.Order 可选 Desc </li>
 <li> 当 KeyWord 不为空时，Sort.Field 字段无效， 搜索结果将以匹配度排序。</li>
         :type Sort: :class:`tencentcloud.ame.v20190916.models.SortBy`
+        :param TagIds: 标签 ID 集合，匹配集合指定所有 ID 。
+<li>数组长度限制：10。</li>
+        :type TagIds: list of str
         """
         self.KeyWord = None
         self.Offset = None
         self.Limit = None
         self.Sort = None
+        self.TagIds = None
 
 
     def _deserialize(self, params):
@@ -2744,6 +2961,7 @@ class SearchKTVMusicsRequest(AbstractModel):
         if params.get("Sort") is not None:
             self.Sort = SortBy()
             self.Sort._deserialize(params.get("Sort"))
+        self.TagIds = params.get("TagIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -4184,6 +4184,36 @@ class InstanceDetailResponse(AbstractModel):
         
 
 
+class InstanceQuotaConfigResp(AbstractModel):
+    """实例 / topic 维度限流策略
+
+    """
+
+    def __init__(self):
+        r"""
+        :param QuotaProducerByteRate: 生产限流大小，单位 MB/s
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QuotaProducerByteRate: int
+        :param QuotaConsumerByteRate: 消费限流大小，单位 MB/s
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QuotaConsumerByteRate: int
+        """
+        self.QuotaProducerByteRate = None
+        self.QuotaConsumerByteRate = None
+
+
+    def _deserialize(self, params):
+        self.QuotaProducerByteRate = params.get("QuotaProducerByteRate")
+        self.QuotaConsumerByteRate = params.get("QuotaConsumerByteRate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class InstanceResponse(AbstractModel):
     """聚合的实例状态返回结果
 
@@ -4538,6 +4568,10 @@ class ModifyTopicAttributesRequest(AbstractModel):
         :type RetentionBytes: int
         :param Tags: 标签列表
         :type Tags: list of Tag
+        :param QuotaProducerByteRate: 生产限流，单位 MB/s
+        :type QuotaProducerByteRate: int
+        :param QuotaConsumerByteRate: 消费限流，单位 MB/s
+        :type QuotaConsumerByteRate: int
         """
         self.InstanceId = None
         self.TopicName = None
@@ -4554,6 +4588,8 @@ class ModifyTopicAttributesRequest(AbstractModel):
         self.AclRuleName = None
         self.RetentionBytes = None
         self.Tags = None
+        self.QuotaProducerByteRate = None
+        self.QuotaConsumerByteRate = None
 
 
     def _deserialize(self, params):
@@ -4577,6 +4613,8 @@ class ModifyTopicAttributesRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.QuotaProducerByteRate = params.get("QuotaProducerByteRate")
+        self.QuotaConsumerByteRate = params.get("QuotaConsumerByteRate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5120,6 +5158,9 @@ class TopicAttributesResponse(AbstractModel):
         :param AclRuleList: 预设策略列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type AclRuleList: list of AclRule
+        :param QuotaConfig: topic 限流策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QuotaConfig: :class:`tencentcloud.ckafka.v20190819.models.InstanceQuotaConfigResp`
         """
         self.TopicId = None
         self.CreateTime = None
@@ -5131,6 +5172,7 @@ class TopicAttributesResponse(AbstractModel):
         self.Partitions = None
         self.EnableAclRule = None
         self.AclRuleList = None
+        self.QuotaConfig = None
 
 
     def _deserialize(self, params):
@@ -5156,6 +5198,9 @@ class TopicAttributesResponse(AbstractModel):
                 obj = AclRule()
                 obj._deserialize(item)
                 self.AclRuleList.append(obj)
+        if params.get("QuotaConfig") is not None:
+            self.QuotaConfig = InstanceQuotaConfigResp()
+            self.QuotaConfig._deserialize(params.get("QuotaConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

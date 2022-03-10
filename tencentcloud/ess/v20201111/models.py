@@ -47,7 +47,10 @@ class ApproverInfo(AbstractModel):
         :type OrganizationName: str
         :param ApproverIdCardNumber: 身份证号
         :type ApproverIdCardNumber: str
-        :param ApproverIdCardType: 证件类型 ID_CARD 身份证
+        :param ApproverIdCardType: 证件类型 
+ID_CARD 身份证
+HONGKONG_AND_MACAO 港澳居民来往内地通行证
+HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
         :type ApproverIdCardType: str
         :param NotifyType: sms--短信，none--不通知
         :type NotifyType: str
@@ -942,10 +945,12 @@ class FlowCreateApprover(AbstractModel):
         :type ApproverName: str
         :param ApproverMobile: 签署方经办人手机号码
         :type ApproverMobile: str
-        :param ApproverIdCardType: 签署方经办人证件类型，ID_CARD表示身份证
-        :type ApproverIdCardType: str
         :param ApproverIdCardNumber: 签署方经办人证件号码
         :type ApproverIdCardNumber: str
+        :param ApproverIdCardType: 签署方经办人证件类型ID_CARD 身份证
+HONGKONG_AND_MACAO 港澳居民来往内地通行证
+HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
+        :type ApproverIdCardType: str
         :param RecipientId: 签署方经办人在模板中的角色ID
         :type RecipientId: str
         :param UserId: 签署方经办人的用户ID,和签署方经办人姓名+手机号+证件必须有一个
@@ -962,8 +967,8 @@ class FlowCreateApprover(AbstractModel):
         self.Required = None
         self.ApproverName = None
         self.ApproverMobile = None
-        self.ApproverIdCardType = None
         self.ApproverIdCardNumber = None
+        self.ApproverIdCardType = None
         self.RecipientId = None
         self.UserId = None
         self.IsFullText = None
@@ -977,8 +982,8 @@ class FlowCreateApprover(AbstractModel):
         self.Required = params.get("Required")
         self.ApproverName = params.get("ApproverName")
         self.ApproverMobile = params.get("ApproverMobile")
-        self.ApproverIdCardType = params.get("ApproverIdCardType")
         self.ApproverIdCardNumber = params.get("ApproverIdCardNumber")
+        self.ApproverIdCardType = params.get("ApproverIdCardType")
         self.RecipientId = params.get("RecipientId")
         self.UserId = params.get("UserId")
         self.IsFullText = params.get("IsFullText")
