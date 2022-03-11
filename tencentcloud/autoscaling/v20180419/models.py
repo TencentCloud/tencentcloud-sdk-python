@@ -4312,51 +4312,6 @@ class PaiInstance(AbstractModel):
         
 
 
-class PreviewPaiDomainNameRequest(AbstractModel):
-    """PreviewPaiDomainName请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param DomainNameType: 域名类型
-        :type DomainNameType: str
-        """
-        self.DomainNameType = None
-
-
-    def _deserialize(self, params):
-        self.DomainNameType = params.get("DomainNameType")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class PreviewPaiDomainNameResponse(AbstractModel):
-    """PreviewPaiDomainName返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param DomainName: 可用的PAI域名
-        :type DomainName: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.DomainName = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.DomainName = params.get("DomainName")
-        self.RequestId = params.get("RequestId")
-
-
 class RemoveInstancesRequest(AbstractModel):
     """RemoveInstances请求参数结构体
 
