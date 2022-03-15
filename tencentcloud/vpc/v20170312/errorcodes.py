@@ -35,9 +35,6 @@ INTERNALERROR = 'InternalError'
 # 创建Ckafka路由失败，请稍后重试。
 INTERNALERROR_CREATECKAFKAROUTEERROR = 'InternalError.CreateCkafkaRouteError'
 
-# 网络探测超时，请稍后重试。
-INTERNALERROR_NETDETECTTIMEOUT = 'InternalError.NetDetectTimeOut'
-
 # 操作内部错误。
 INTERNALSERVERERROR = 'InternalServerError'
 
@@ -232,6 +229,9 @@ INVALIDPARAMETERVALUE_MISSINGASSOCIATEENTITY = 'InvalidParameterValue.MissingAss
 
 # 集群类型不同的IP不可在同一请求中。
 INVALIDPARAMETERVALUE_MIXEDADDRESSIPSETTYPE = 'InvalidParameterValue.MixedAddressIpSetType'
+
+# NAT网关的SNAT转换规则不存在。
+INVALIDPARAMETERVALUE_NATGATEWAYSNATRULENOTEXISTS = 'InvalidParameterValue.NatGatewaySnatRuleNotExists'
 
 # NAT网关的SNAT规则已经存在。
 INVALIDPARAMETERVALUE_NATSNATRULEEXISTS = 'InvalidParameterValue.NatSnatRuleExists'

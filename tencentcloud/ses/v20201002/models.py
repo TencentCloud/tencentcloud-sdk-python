@@ -700,6 +700,47 @@ class DeleteEmailTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteReceiverRequest(AbstractModel):
+    """DeleteReceiver请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ReceiverId: 收件人列表id，创建收件人列表时会返回
+        :type ReceiverId: int
+        """
+        self.ReceiverId = None
+
+
+    def _deserialize(self, params):
+        self.ReceiverId = params.get("ReceiverId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteReceiverResponse(AbstractModel):
+    """DeleteReceiver返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class EmailIdentity(AbstractModel):
     """发信域名验证列表结构体
 

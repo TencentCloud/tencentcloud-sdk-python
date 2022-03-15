@@ -423,6 +423,9 @@ class SREInstance(AbstractModel):
         :param EnableConsoleIntranet: 引擎实例是否开启控制台内网访问地址
 注意：此字段可能返回 null，表示取不到有效值。
         :type EnableConsoleIntranet: bool
+        :param ConfigInfoVisible: 引擎实例是否展示参数配置页面
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigInfoVisible: bool
         """
         self.InstanceId = None
         self.Name = None
@@ -447,6 +450,7 @@ class SREInstance(AbstractModel):
         self.Tags = None
         self.EnableConsoleInternet = None
         self.EnableConsoleIntranet = None
+        self.ConfigInfoVisible = None
 
 
     def _deserialize(self, params):
@@ -493,6 +497,7 @@ class SREInstance(AbstractModel):
                 self.Tags.append(obj)
         self.EnableConsoleInternet = params.get("EnableConsoleInternet")
         self.EnableConsoleIntranet = params.get("EnableConsoleIntranet")
+        self.ConfigInfoVisible = params.get("ConfigInfoVisible")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

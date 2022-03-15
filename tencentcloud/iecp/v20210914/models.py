@@ -1039,6 +1039,8 @@ class CreateEdgeUnitCloudRequest(AbstractModel):
         :type PodCIDR: str
         :param ServiceCIDR: 集群service cidr, 默认 10.2.0.0/16
         :type ServiceCIDR: str
+        :param OpenCloudMonitor: 是否开启监控。目前内存中权限开启联系产品开通白名单
+        :type OpenCloudMonitor: bool
         """
         self.Name = None
         self.K8sVersion = None
@@ -1046,6 +1048,7 @@ class CreateEdgeUnitCloudRequest(AbstractModel):
         self.Description = None
         self.PodCIDR = None
         self.ServiceCIDR = None
+        self.OpenCloudMonitor = None
 
 
     def _deserialize(self, params):
@@ -1055,6 +1058,7 @@ class CreateEdgeUnitCloudRequest(AbstractModel):
         self.Description = params.get("Description")
         self.PodCIDR = params.get("PodCIDR")
         self.ServiceCIDR = params.get("ServiceCIDR")
+        self.OpenCloudMonitor = params.get("OpenCloudMonitor")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

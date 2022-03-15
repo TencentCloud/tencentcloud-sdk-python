@@ -3956,7 +3956,7 @@ class DescribeCDBProxyRequest(AbstractModel):
         r"""
         :param InstanceId: 实例ID
         :type InstanceId: str
-        :param ProxyGroupId: 代理ID
+        :param ProxyGroupId: 代理组ID
         :type ProxyGroupId: str
         """
         self.InstanceId = None

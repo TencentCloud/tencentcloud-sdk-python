@@ -1645,6 +1645,60 @@ class TextCorrectionResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class TextSimilarityProRequest(AbstractModel):
+    """TextSimilarityPro请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SrcText: 需要与目标句子计算相似度的源句子（仅支持UTF-8格式，不超过128字符）
+        :type SrcText: str
+        :param TargetText: 目标句子（仅支持UTF-8格式，不超过128字符）
+        :type TargetText: list of str
+        """
+        self.SrcText = None
+        self.TargetText = None
+
+
+    def _deserialize(self, params):
+        self.SrcText = params.get("SrcText")
+        self.TargetText = params.get("TargetText")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TextSimilarityProResponse(AbstractModel):
+    """TextSimilarityPro返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Similarity: 每个目标句子与源句子的相似度分值，按照分值降序排列
+        :type Similarity: list of Similarity
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Similarity = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Similarity") is not None:
+            self.Similarity = []
+            for item in params.get("Similarity"):
+                obj = Similarity()
+                obj._deserialize(item)
+                self.Similarity.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class TextSimilarityRequest(AbstractModel):
     """TextSimilarity请求参数结构体
 

@@ -138,6 +138,34 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateConfigExtra(self, request):
+        """本接口用于创建特殊采集配置任务
+
+        :param request: Request instance for CreateConfigExtra.
+        :type request: :class:`tencentcloud.cls.v20201016.models.CreateConfigExtraRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.CreateConfigExtraResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateConfigExtra", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateConfigExtraResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateConsumer(self, request):
         """本接口用于创建投递任务
 
@@ -418,6 +446,34 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteConfigExtra(self, request):
+        """本接口用于删除特殊采集规则配置
+
+        :param request: Request instance for DeleteConfigExtra.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DeleteConfigExtraRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DeleteConfigExtraResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteConfigExtra", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteConfigExtraResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteConfigFromMachineGroup(self, request):
         """删除应用到机器组的采集配置
 
@@ -684,6 +740,34 @@ class ClsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAlarmsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeConfigExtras(self, request):
+        """本接口用于获取特殊采集配置
+
+        :param request: Request instance for DescribeConfigExtras.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DescribeConfigExtrasRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DescribeConfigExtrasResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeConfigExtras", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeConfigExtrasResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1216,6 +1300,34 @@ class ClsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyConfigExtra(self, request):
+        """本接口用于修改特殊采集配置任务
+
+        :param request: Request instance for ModifyConfigExtra.
+        :type request: :class:`tencentcloud.cls.v20201016.models.ModifyConfigExtraRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.ModifyConfigExtraResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyConfigExtra", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyConfigExtraResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

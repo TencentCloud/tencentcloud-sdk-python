@@ -339,6 +339,8 @@ class CreateTawInstanceRequest(AbstractModel):
         :type CountNum: str
         :param PeriodRetain: 数据存储时长计费
         :type PeriodRetain: str
+        :param BuyingChannel: 实例购买渠道("cdn" 等)
+        :type BuyingChannel: str
         """
         self.AreaId = None
         self.ChargeType = None
@@ -348,6 +350,7 @@ class CreateTawInstanceRequest(AbstractModel):
         self.InstanceDesc = None
         self.CountNum = None
         self.PeriodRetain = None
+        self.BuyingChannel = None
 
 
     def _deserialize(self, params):
@@ -364,6 +367,7 @@ class CreateTawInstanceRequest(AbstractModel):
         self.InstanceDesc = params.get("InstanceDesc")
         self.CountNum = params.get("CountNum")
         self.PeriodRetain = params.get("PeriodRetain")
+        self.BuyingChannel = params.get("BuyingChannel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

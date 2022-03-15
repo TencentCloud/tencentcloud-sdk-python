@@ -9298,7 +9298,7 @@ class OpenBankPayeeInfo(AbstractModel):
         :param BankBranchId: 联行号。渠道为TENPAY，付款方式为OPENBANK_PAYMENT时必选
         :type BankBranchId: str
         :param BindSerialNo: 收款方绑卡序列号。
-当渠道为TENPAY，付款方式为EBANK_PAYMENT时，上送收款方入驻云企付平台时，下发的绑卡序列号。
+当渠道为TENPAY，付款方式为EBANK_PAYMENT时，必填，上送收款方入驻云企付平台时，下发的绑卡序列号。
         :type BindSerialNo: str
         """
         self.PayeeId = None
@@ -14377,6 +14377,7 @@ class QueryOpenBankDownLoadUrlResponse(AbstractModel):
         :param ErrMessage: 业务系统返回消息。
         :type ErrMessage: str
         :param Result: 查询对账文件下载响应对象。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.cpdp.v20190820.models.QueryOpenBankDownLoadUrlResult`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

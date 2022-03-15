@@ -550,11 +550,15 @@ class BGPInstanceSpecification(AbstractModel):
 1：开启了自动续费
 ]
         :type AutoRenewFlag: int
+        :param UnionPackFlag: 联合产品标记，0代表普通高防包，1代表联合高防包
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UnionPackFlag: int
         """
         self.ProtectBandwidth = None
         self.ProtectCountLimit = None
         self.ProtectIPNumberLimit = None
         self.AutoRenewFlag = None
+        self.UnionPackFlag = None
 
 
     def _deserialize(self, params):
@@ -562,6 +566,7 @@ class BGPInstanceSpecification(AbstractModel):
         self.ProtectCountLimit = params.get("ProtectCountLimit")
         self.ProtectIPNumberLimit = params.get("ProtectIPNumberLimit")
         self.AutoRenewFlag = params.get("AutoRenewFlag")
+        self.UnionPackFlag = params.get("UnionPackFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -669,6 +669,38 @@ class NlpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def TextSimilarityPro(self, request):
+        """句子相似度接口能够基于深度学习技术来计算一个源句子和多个目标句子的相似度，相似度分值越大的两个句子在语义上越相似。目前仅支持短文本（不超过128字符）的相似度计算，长文本的相似度计算也即将推出。
+
+        鉴于句子相似度是一个应用非常广泛的功能，腾讯云自然语言处理团队在Bert等领先的深度神经网络模型的基础上，专门针对文本相似任务进行了优化，并持续迭代更新。基于句子相似度，可以轻松实现诸如文本去重、相似推荐等功能。
+
+        接口将以句子数量为单位消耗资源包，而不是调用接口次数为单位。
+
+        :param request: Request instance for TextSimilarityPro.
+        :type request: :class:`tencentcloud.nlp.v20190408.models.TextSimilarityProRequest`
+        :rtype: :class:`tencentcloud.nlp.v20190408.models.TextSimilarityProResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("TextSimilarityPro", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.TextSimilarityProResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def UpdateDict(self, request):
         """修改自定义词库元数据信息，包括名称、描述。
 
