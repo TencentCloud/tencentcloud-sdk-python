@@ -300,6 +300,8 @@ class CreateDocumentRequest(AbstractModel):
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         :param ClientToken: 客户端Token，保持接口幂等性
         :type ClientToken: str
+        :param NeedPreview: 是否需要生成预览文件 默认不生成
+        :type NeedPreview: bool
         """
         self.Operator = None
         self.TemplateId = None
@@ -308,6 +310,7 @@ class CreateDocumentRequest(AbstractModel):
         self.FormFields = None
         self.Agent = None
         self.ClientToken = None
+        self.NeedPreview = None
 
 
     def _deserialize(self, params):
@@ -327,6 +330,7 @@ class CreateDocumentRequest(AbstractModel):
             self.Agent = Agent()
             self.Agent._deserialize(params.get("Agent"))
         self.ClientToken = params.get("ClientToken")
+        self.NeedPreview = params.get("NeedPreview")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -345,15 +349,20 @@ class CreateDocumentResponse(AbstractModel):
         r"""
         :param DocumentId: 返回的电子文档ID
         :type DocumentId: str
+        :param PreviewFileUrl: 返回合同文件的预览地址 5分钟内有效。仅当NeedPreview为true 时返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PreviewFileUrl: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.DocumentId = None
+        self.PreviewFileUrl = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.DocumentId = params.get("DocumentId")
+        self.PreviewFileUrl = params.get("PreviewFileUrl")
         self.RequestId = params.get("RequestId")
 
 
@@ -392,6 +401,8 @@ MULTI_LINE_TEXT - 多行文本控件
         :type Components: list of Component
         :param CcInfos: 被抄送人的信息列表
         :type CcInfos: list of CcInfo
+        :param NeedPreview: 是否需要预览，true：预览模式，false：非预览（默认）
+        :type NeedPreview: bool
         """
         self.Operator = None
         self.FlowName = None
@@ -404,6 +415,7 @@ MULTI_LINE_TEXT - 多行文本控件
         self.Agent = None
         self.Components = None
         self.CcInfos = None
+        self.NeedPreview = None
 
 
     def _deserialize(self, params):
@@ -437,6 +449,7 @@ MULTI_LINE_TEXT - 多行文本控件
                 obj = CcInfo()
                 obj._deserialize(item)
                 self.CcInfos.append(obj)
+        self.NeedPreview = params.get("NeedPreview")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -455,15 +468,20 @@ class CreateFlowByFilesResponse(AbstractModel):
         r"""
         :param FlowId: 流程编号
         :type FlowId: str
+        :param PreviewUrl: 合同预览链接
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PreviewUrl: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.FlowId = None
+        self.PreviewUrl = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.FlowId = params.get("FlowId")
+        self.PreviewUrl = params.get("PreviewUrl")
         self.RequestId = params.get("RequestId")
 
 

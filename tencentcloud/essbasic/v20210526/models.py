@@ -285,7 +285,7 @@ class CreateConsoleLoginUrlResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ConsoleUrl: 控制台url
+        :param ConsoleUrl: 控制台url，此链接5分钟内有效，且只能访问一次
         :type ConsoleUrl: str
         :param IsActivated: 渠道合作企业是否认证开通腾讯电子签。
 当渠道合作企业未完成认证开通腾讯电子签,建议先调用同步企业信息(SyncProxyOrganization)和同步经办人信息(SyncProxyOrganizationOperators)接口成功后再跳转到登录页面。
@@ -317,10 +317,13 @@ class CreateFlowsByTemplatesRequest(AbstractModel):
         :type FlowInfos: list of FlowInfo
         :param Operator: 操作者的信息
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
+        :param NeedPreview: 是否为预览模式；默认为false，即非预览模式，此时发起合同并返回FlowIds；若为预览模式，则返回PreviewUrls；
+        :type NeedPreview: bool
         """
         self.Agent = None
         self.FlowInfos = None
         self.Operator = None
+        self.NeedPreview = None
 
 
     def _deserialize(self, params):
@@ -336,6 +339,7 @@ class CreateFlowsByTemplatesRequest(AbstractModel):
         if params.get("Operator") is not None:
             self.Operator = UserInfo()
             self.Operator._deserialize(params.get("Operator"))
+        self.NeedPreview = params.get("NeedPreview")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -359,12 +363,15 @@ class CreateFlowsByTemplatesResponse(AbstractModel):
         :param ErrorMessages: 创建消息，对应多个合同ID，
 成功为“”,创建失败则对应失败消息
         :type ErrorMessages: list of str
+        :param PreviewUrls: 预览模式下返回的预览文件url数组
+        :type PreviewUrls: list of str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.FlowIds = None
         self.CustomerData = None
         self.ErrorMessages = None
+        self.PreviewUrls = None
         self.RequestId = None
 
 
@@ -372,6 +379,7 @@ class CreateFlowsByTemplatesResponse(AbstractModel):
         self.FlowIds = params.get("FlowIds")
         self.CustomerData = params.get("CustomerData")
         self.ErrorMessages = params.get("ErrorMessages")
+        self.PreviewUrls = params.get("PreviewUrls")
         self.RequestId = params.get("RequestId")
 
 
@@ -390,7 +398,7 @@ class CreateSignUrlsRequest(AbstractModel):
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         :param Endpoint: 签署链接类型，默认：“WEIXINAPP”-直接跳小程序; “CHANNEL”-跳转H5页面; “APP”-第三方APP或小程序跳转电子签小程序;
         :type Endpoint: str
-        :param JumpUrl: 签署完成后H5引导页跳转URL
+        :param JumpUrl: 签署完之后的H5页面的跳转链接，针对Endpoint为CHANNEL时有效
         :type JumpUrl: str
         """
         self.Agent = None
@@ -865,6 +873,9 @@ class FlowApproverInfo(AbstractModel):
         :type OrganizationName: str
         :param OrganizationOpenId: 企业签署方在同一渠道下的其他合作企业OpenId，签署方为非发起方企业场景下必传；
         :type OrganizationOpenId: str
+        :param NotChannelOrganization: 指定签署人非渠道企业下员工，在ApproverType为ORGANIZATION时指定。
+默认为false，即签署人位于同一个渠道应用号下；
+        :type NotChannelOrganization: bool
         """
         self.Name = None
         self.IdCardNumber = None
@@ -879,6 +890,7 @@ class FlowApproverInfo(AbstractModel):
         self.RecipientId = None
         self.OrganizationName = None
         self.OrganizationOpenId = None
+        self.NotChannelOrganization = None
 
 
     def _deserialize(self, params):
@@ -895,6 +907,7 @@ class FlowApproverInfo(AbstractModel):
         self.RecipientId = params.get("RecipientId")
         self.OrganizationName = params.get("OrganizationName")
         self.OrganizationOpenId = params.get("OrganizationOpenId")
+        self.NotChannelOrganization = params.get("NotChannelOrganization")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -974,7 +987,7 @@ class FlowInfo(AbstractModel):
         r"""
         :param FlowName: 合同名字
         :type FlowName: str
-        :param Deadline: 签署截止时间戳，超过有效签署时间则该签署流程失败
+        :param Deadline: 签署截止时间戳，超过有效签署时间则该签署流程失败，默认一年
         :type Deadline: int
         :param TemplateId: 模板ID
         :type TemplateId: str
@@ -986,7 +999,7 @@ class FlowInfo(AbstractModel):
         :type FlowType: str
         :param CallbackUrl: 回调地址
         :type CallbackUrl: str
-        :param FlowApprovers: 多个签署人信息
+        :param FlowApprovers: 多个签署人信息，渠道侧目前不支持超过5个签署方信息
         :type FlowApprovers: list of FlowApproverInfo
         :param FormFields: 表单K-V对列表
         :type FormFields: list of FormField
@@ -1487,7 +1500,7 @@ class SignUrlInfo(AbstractModel):
         :param SignUrl: 签署链接
 注意：此字段可能返回 null，表示取不到有效值。
         :type SignUrl: str
-        :param Deadline: 链接失效时间
+        :param Deadline: 链接失效时间,默认30分钟
 注意：此字段可能返回 null，表示取不到有效值。
         :type Deadline: int
         :param SignOrder: 当流程为顺序签署此参数有效时，数字越小优先级越高，暂不支持并行签署 可选

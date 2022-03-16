@@ -602,6 +602,9 @@ UNSUPPORTEDOPERATION_PUBLICIPADDRESSISNOTEXISTED = 'UnsupportedOperation.PublicI
 # 绑定NAT网关的弹性IP不是按流量计费的。
 UNSUPPORTEDOPERATION_PUBLICIPADDRESSNOTBILLEDBYTRAFFIC = 'UnsupportedOperation.PublicIpAddressNotBilledByTraffic'
 
+# 当前账号不能在该地域使用产品。
+UNSUPPORTEDOPERATION_PURCHASELIMIT = 'UnsupportedOperation.PurchaseLimit'
+
 # 输入的资源ID与IP绑定的资源不匹配，请检查。
 UNSUPPORTEDOPERATION_RESOURCEMISMATCH = 'UnsupportedOperation.ResourceMismatch'
 

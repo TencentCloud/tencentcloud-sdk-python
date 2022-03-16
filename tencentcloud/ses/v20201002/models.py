@@ -1479,6 +1479,8 @@ class SendEmailRequest(AbstractModel):
         :type Attachments: list of Attachment
         :param Unsubscribe: 退订选项 1: 加入退订链接 0: 不加入退订链接
         :type Unsubscribe: str
+        :param TriggerType: 邮件触发类型 0:非触发类，默认类型，营销类邮件、非即时类邮件等选择此类型  1:触发类，验证码等即时发送类邮件，若邮件超过一定大小，系统会自动选择非触发类型通道
+        :type TriggerType: int
         """
         self.FromEmailAddress = None
         self.Destination = None
@@ -1488,6 +1490,7 @@ class SendEmailRequest(AbstractModel):
         self.Simple = None
         self.Attachments = None
         self.Unsubscribe = None
+        self.TriggerType = None
 
 
     def _deserialize(self, params):
@@ -1508,6 +1511,7 @@ class SendEmailRequest(AbstractModel):
                 obj._deserialize(item)
                 self.Attachments.append(obj)
         self.Unsubscribe = params.get("Unsubscribe")
+        self.TriggerType = params.get("TriggerType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

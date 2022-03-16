@@ -1413,6 +1413,9 @@ class Container(AbstractModel):
         :param GpuLimit: Gpu限制
 注意：此字段可能返回 null，表示取不到有效值。
         :type GpuLimit: int
+        :param SecurityContext: 容器的安全上下文
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecurityContext: :class:`tencentcloud.tke.v20180525.models.SecurityContext`
         """
         self.Image = None
         self.Name = None
@@ -1428,6 +1431,7 @@ class Container(AbstractModel):
         self.LivenessProbe = None
         self.ReadinessProbe = None
         self.GpuLimit = None
+        self.SecurityContext = None
 
 
     def _deserialize(self, params):
@@ -1461,6 +1465,9 @@ class Container(AbstractModel):
             self.ReadinessProbe = LivenessOrReadinessProbe()
             self.ReadinessProbe._deserialize(params.get("ReadinessProbe"))
         self.GpuLimit = params.get("GpuLimit")
+        if params.get("SecurityContext") is not None:
+            self.SecurityContext = SecurityContext()
+            self.SecurityContext._deserialize(params.get("SecurityContext"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

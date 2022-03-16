@@ -3554,16 +3554,26 @@ class NamespaceUsage(AbstractModel):
         :type Namespace: str
         :param FunctionsCount: 命名空间函数个数
         :type FunctionsCount: int
+        :param TotalConcurrencyMem: 命名空间配额总量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalConcurrencyMem: int
+        :param TotalAllocatedConcurrencyMem: 命名空间配额使用量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalAllocatedConcurrencyMem: int
         """
         self.Functions = None
         self.Namespace = None
         self.FunctionsCount = None
+        self.TotalConcurrencyMem = None
+        self.TotalAllocatedConcurrencyMem = None
 
 
     def _deserialize(self, params):
         self.Functions = params.get("Functions")
         self.Namespace = params.get("Namespace")
         self.FunctionsCount = params.get("FunctionsCount")
+        self.TotalConcurrencyMem = params.get("TotalConcurrencyMem")
+        self.TotalAllocatedConcurrencyMem = params.get("TotalAllocatedConcurrencyMem")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

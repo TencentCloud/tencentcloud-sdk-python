@@ -254,6 +254,8 @@ class CreateGroupRequest(AbstractModel):
 1: 通用图库，以用户输入图提取特征。
 2: 灰度图库，输入图和搜索图均转为灰度图提取特征。
 3: 针对电商（通用品类）和logo优化。
+4: 通用图库v2。
+5: 电商模型。
         :type GroupType: int
         """
         self.GroupId = None
@@ -310,17 +312,17 @@ class CreateImageRequest(AbstractModel):
 若EntityId已存在，则对其追加图片。
         :type EntityId: str
         :param PicName: 图片名称，最多支持64个字符， 
-同一个EntityId，最大支持5张图。如果图片名称已存在，则会更新库中的图片。
+同一个EntityId，最大支持10张图。如果图片名称已存在，则会更新库中的图片。
         :type PicName: str
-        :param ImageUrl: 图片的 Url 。对应图片 base64 编码后大小不可超过2M。  
+        :param ImageUrl: 图片的 Url 。对应图片 base64 编码后大小不可超过5M。  
 Url、Image必须提供一个，如果都提供，只使用 Url。 
-图片分辨率不超过1920*1080。
+图片分辨率不超过4096*4096。
 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
 非腾讯云存储的Url速度和稳定性可能受一定影响。 
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :type ImageUrl: str
-        :param ImageBase64: 图片 base64 数据，base64 编码后大小不可超过2M。 
-图片分辨率不超过1920*1080。 
+        :param ImageBase64: 图片 base64 数据，base64 编码后大小不可超过5M。 
+图片分辨率不超过4096*4096。 
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :type ImageBase64: str
         :param CustomContent: 用户自定义的内容，最多支持4096个字符，查询时原样带回。
