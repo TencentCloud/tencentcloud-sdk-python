@@ -26,6 +26,9 @@ AUTHFAILURE = 'AuthFailure'
 # 地址没有弹性网卡信息。
 FAILEDOPERATION_ADDRESSENIINFONOTFOUND = 'FailedOperation.AddressEniInfoNotFound'
 
+# 不支持的地域。
+FAILEDOPERATION_INVALIDREGION = 'FailedOperation.InvalidRegion'
+
 # 网络探测超时，请稍后重试。
 FAILEDOPERATION_NETDETECTTIMEOUT = 'FailedOperation.NetDetectTimeOut'
 
@@ -178,6 +181,9 @@ INVALIDPARAMETERVALUE_INSTANCEDOESNOTSUPPORTANYCAST = 'InvalidParameterValue.Ins
 
 # 该实例已有WanIP。
 INVALIDPARAMETERVALUE_INSTANCEHASWANIP = 'InvalidParameterValue.InstanceHasWanIP'
+
+# 实例ID错误。
+INVALIDPARAMETERVALUE_INSTANCEIDMALFORMED = 'InvalidParameterValue.InstanceIdMalformed'
 
 # 该实例没有CalcIP，无法完成请求。
 INVALIDPARAMETERVALUE_INSTANCENOCALCIP = 'InvalidParameterValue.InstanceNoCalcIP'
@@ -350,11 +356,23 @@ LIMITEXCEEDED_ADDRESS = 'LimitExceeded.Address'
 # 租户申请的弹性IP超过上限。
 LIMITEXCEEDED_ADDRESSQUOTALIMITEXCEEDED = 'LimitExceeded.AddressQuotaLimitExceeded'
 
+# 带宽包配额超过限制。
+LIMITEXCEEDED_BANDWIDTHPACKAGEQUOTA = 'LimitExceeded.BandwidthPackageQuota'
+
 # VPC分配网段数量达到上限。
 LIMITEXCEEDED_CIDRBLOCK = 'LimitExceeded.CidrBlock'
 
 # 租户每天申请的弹性IP超过上限。
 LIMITEXCEEDED_DAILYALLOCATEADDRESSQUOTALIMITEXCEEDED = 'LimitExceeded.DailyAllocateAddressQuotaLimitExceeded'
+
+# 实例绑定的弹性IP超过配额。
+LIMITEXCEEDED_INSTANCEADDRESSQUOTA = 'LimitExceeded.InstanceAddressQuota'
+
+# 修改地址网络计费模式配额超过限制。
+LIMITEXCEEDED_MODIFYADDRESSINTERNETCHARGETYPEQUOTA = 'LimitExceeded.ModifyAddressInternetChargeTypeQuota'
+
+# 每月地址找回配额超过限制。
+LIMITEXCEEDED_MONTHLYADDRESSRECOVERYQUOTA = 'LimitExceeded.MonthlyAddressRecoveryQuota'
 
 # NAT网关数量已达到上限。
 LIMITEXCEEDED_NATGATEWAYLIMITEXCEEDED = 'LimitExceeded.NatGatewayLimitExceeded'

@@ -7823,6 +7823,29 @@ class DescribeClassicLinkInstancesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeCrossBorderCcnRegionBandwidthLimitsRequest(AbstractModel):
+    """DescribeCrossBorderCcnRegionBandwidthLimits请求参数结构体
+
+    """
+
+
+class DescribeCrossBorderCcnRegionBandwidthLimitsResponse(AbstractModel):
+    """DescribeCrossBorderCcnRegionBandwidthLimits返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeCrossBorderComplianceRequest(AbstractModel):
     """DescribeCrossBorderCompliance请求参数结构体
 
@@ -10459,6 +10482,29 @@ class DescribeTemplateLimitsResponse(AbstractModel):
         if params.get("TemplateLimit") is not None:
             self.TemplateLimit = TemplateLimit()
             self.TemplateLimit._deserialize(params.get("TemplateLimit"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeTenantCcnsRequest(AbstractModel):
+    """DescribeTenantCcns请求参数结构体
+
+    """
+
+
+class DescribeTenantCcnsResponse(AbstractModel):
+    """DescribeTenantCcns返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -14218,6 +14264,52 @@ class LocalGateway(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class LockCcnBandwidthsRequest(AbstractModel):
+    """LockCcnBandwidths请求参数结构体
+
+    """
+
+
+class LockCcnBandwidthsResponse(AbstractModel):
+    """LockCcnBandwidths返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class LockCcnsRequest(AbstractModel):
+    """LockCcns请求参数结构体
+
+    """
+
+
+class LockCcnsResponse(AbstractModel):
+    """LockCcns返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class MemberInfo(AbstractModel):
@@ -20099,6 +20191,52 @@ class UnassignPrivateIpAddressesRequest(AbstractModel):
 
 class UnassignPrivateIpAddressesResponse(AbstractModel):
     """UnassignPrivateIpAddresses返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UnlockCcnBandwidthsRequest(AbstractModel):
+    """UnlockCcnBandwidths请求参数结构体
+
+    """
+
+
+class UnlockCcnBandwidthsResponse(AbstractModel):
+    """UnlockCcnBandwidths返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UnlockCcnsRequest(AbstractModel):
+    """UnlockCcns请求参数结构体
+
+    """
+
+
+class UnlockCcnsResponse(AbstractModel):
+    """UnlockCcns返回参数结构体
 
     """
 

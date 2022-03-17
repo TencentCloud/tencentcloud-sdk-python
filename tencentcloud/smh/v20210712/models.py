@@ -248,11 +248,23 @@ class DescribeOfficialInstancesRequest(AbstractModel):
         :type PageNumber: int
         :param PageSize: 每页数目，整型，配合 PageNumber 使用，默认值为 20，最大值为 100。
         :type PageSize: int
+        :param OrderBy: 对指定列进行排序
+        :type OrderBy: str
+        :param OrderByType: 排序方式
+        :type OrderByType: str
+        :param AutoRenew: 续费管理筛选类型
+        :type AutoRenew: int
+        :param BindPhone: 超级管理管理员账号是否绑定了手机号
+        :type BindPhone: bool
         """
         self.SuperAdminAccount = None
         self.InstanceIds = None
         self.PageNumber = None
         self.PageSize = None
+        self.OrderBy = None
+        self.OrderByType = None
+        self.AutoRenew = None
+        self.BindPhone = None
 
 
     def _deserialize(self, params):
@@ -260,6 +272,10 @@ class DescribeOfficialInstancesRequest(AbstractModel):
         self.InstanceIds = params.get("InstanceIds")
         self.PageNumber = params.get("PageNumber")
         self.PageSize = params.get("PageSize")
+        self.OrderBy = params.get("OrderBy")
+        self.OrderByType = params.get("OrderByType")
+        self.AutoRenew = params.get("AutoRenew")
+        self.BindPhone = params.get("BindPhone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -351,16 +367,28 @@ class DescribeTrafficPackagesRequest(AbstractModel):
         :type PageNumber: int
         :param PageSize: 每页数目，整型，配合 PageNumber 使用，默认值为 20，最大值为 100。
         :type PageSize: int
+        :param OrderBy: 对指定列进行排序
+        :type OrderBy: str
+        :param OrderByType: 排序方式
+        :type OrderByType: str
+        :param Type: 来源类型筛选
+        :type Type: int
         """
         self.ResourceIds = None
         self.PageNumber = None
         self.PageSize = None
+        self.OrderBy = None
+        self.OrderByType = None
+        self.Type = None
 
 
     def _deserialize(self, params):
         self.ResourceIds = params.get("ResourceIds")
         self.PageNumber = params.get("PageNumber")
         self.PageSize = params.get("PageSize")
+        self.OrderBy = params.get("OrderBy")
+        self.OrderByType = params.get("OrderByType")
+        self.Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -3697,7 +3697,7 @@ class InquiryPriceCreateInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Price: 价格，单位：元
+        :param Price: 价格，单位：分
 注意：此字段可能返回 null，表示取不到有效值。
         :type Price: float
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

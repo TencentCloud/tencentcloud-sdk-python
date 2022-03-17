@@ -1225,6 +1225,10 @@ class CreateInstancePreRequest(AbstractModel):
         :type Tags: list of Tag
         :param DiskType: 磁盘类型（ssd填写CLOUD_SSD，sata填写CLOUD_BASIC）
         :type DiskType: str
+        :param MultiZoneFlag: 跨可用区，zoneIds必填
+        :type MultiZoneFlag: bool
+        :param ZoneIds: 可用区列表
+        :type ZoneIds: list of int
         """
         self.InstanceName = None
         self.ZoneId = None
@@ -1242,6 +1246,8 @@ class CreateInstancePreRequest(AbstractModel):
         self.Partition = None
         self.Tags = None
         self.DiskType = None
+        self.MultiZoneFlag = None
+        self.ZoneIds = None
 
 
     def _deserialize(self, params):
@@ -1266,6 +1272,8 @@ class CreateInstancePreRequest(AbstractModel):
                 obj._deserialize(item)
                 self.Tags.append(obj)
         self.DiskType = params.get("DiskType")
+        self.MultiZoneFlag = params.get("MultiZoneFlag")
+        self.ZoneIds = params.get("ZoneIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
