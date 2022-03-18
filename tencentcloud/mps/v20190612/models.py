@@ -9627,7 +9627,7 @@ class MediaSnapshotByTimePicInfoItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TimeOffset: 该张截图对应视频文件中的时间偏移，单位为<font color=red>毫秒</font>。
+        :param TimeOffset: 该张截图对应视频文件中的时间偏移，单位为秒。
         :type TimeOffset: float
         :param Path: 该张截图的路径。
         :type Path: str

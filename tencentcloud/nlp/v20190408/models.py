@@ -1590,6 +1590,61 @@ class TextClassificationResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class TextCorrectionProRequest(AbstractModel):
+    """TextCorrectionPro请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Text: 待纠错的文本（仅支持UTF-8格式，不超过128字符）
+        :type Text: str
+        """
+        self.Text = None
+
+
+    def _deserialize(self, params):
+        self.Text = params.get("Text")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TextCorrectionProResponse(AbstractModel):
+    """TextCorrectionPro返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CCITokens: 纠错详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CCITokens: list of CCIToken
+        :param ResultText: 纠错后的文本
+        :type ResultText: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.CCITokens = None
+        self.ResultText = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("CCITokens") is not None:
+            self.CCITokens = []
+            for item in params.get("CCITokens"):
+                obj = CCIToken()
+                obj._deserialize(item)
+                self.CCITokens.append(obj)
+        self.ResultText = params.get("ResultText")
+        self.RequestId = params.get("RequestId")
+
+
 class TextCorrectionRequest(AbstractModel):
     """TextCorrection请求参数结构体
 

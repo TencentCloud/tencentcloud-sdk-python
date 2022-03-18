@@ -229,7 +229,7 @@ class ApplyCDBProxyRequest(AbstractModel):
         :type Mem: int
         :param SecurityGroup: 安全组
         :type SecurityGroup: list of str
-        :param Desc: 描述说明
+        :param Desc: 描述说明，最大支持256位。
         :type Desc: str
         """
         self.InstanceId = None
@@ -1046,7 +1046,7 @@ class CloseCDBProxyRequest(AbstractModel):
         :type InstanceId: str
         :param ProxyGroupId: 代理组ID
         :type ProxyGroupId: str
-        :param OnlyCloseRW: 是否只关闭读写分离，取值："true" | "false"
+        :param OnlyCloseRW: 是否只关闭读写分离，取值："true" | "false"，默认为"false"
         :type OnlyCloseRW: bool
         """
         self.InstanceId = None
@@ -2240,7 +2240,7 @@ class CreateParamTemplateRequest(AbstractModel):
         :type TemplateId: int
         :param ParamList: 参数列表。
         :type ParamList: list of Parameter
-        :param TemplateType: 默认参数模板类型。支持值包括："HIGH_STABILITY" - 高稳定模版，"HIGH_PERFORMANCE" - 高性能模版。
+        :param TemplateType: 默认参数模板类型。支持值包括："HIGH_STABILITY" - 高稳定模板，"HIGH_PERFORMANCE" - 高性能模板。
         :type TemplateType: str
         """
         self.Name = None
@@ -3334,7 +3334,7 @@ class DescribeAuditRulesRequest(AbstractModel):
         :type RuleName: str
         :param Limit: 分页大小参数。默认值为 20，最小值为 1，最大值为 100。
         :type Limit: int
-        :param Offset: 分页偏移量。
+        :param Offset: 分页偏移量。默认值为0。
         :type Offset: int
         """
         self.RuleId = None
@@ -5484,7 +5484,7 @@ class DescribeParamTemplateInfoResponse(AbstractModel):
         :type Items: list of ParameterDetail
         :param Description: 参数模板描述
         :type Description: str
-        :param TemplateType: 参数模板类型。支持值包括："HIGH_STABILITY" - 高稳定模版，"HIGH_PERFORMANCE" - 高性能模版。
+        :param TemplateType: 参数模板类型。支持值包括："HIGH_STABILITY" - 高稳定模板，"HIGH_PERFORMANCE" - 高性能模板。
         :type TemplateType: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7845,7 +7845,7 @@ class ModifyAccountPrivilegesRequest(AbstractModel):
         :param ColumnPrivileges: 数据库表中列的权限。Privileges 权限的可选值为："SELECT","INSERT","UPDATE","REFERENCES"。
 注意，不传该参数表示清除该权限。
         :type ColumnPrivileges: list of ColumnPrivilege
-        :param ModifyAction: 该参数不为空时，为批量修改权限。可选值为：grant，revoke。
+        :param ModifyAction: 该参数不为空时，为批量修改权限。可选值为：grant - 授予权限，revoke - 回收权限。
         :type ModifyAction: str
         """
         self.InstanceId = None

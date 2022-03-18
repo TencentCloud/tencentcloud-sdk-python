@@ -772,10 +772,16 @@ class CreateUserRequest(AbstractModel):
         :type UserDescription: str
         :param PolicySet: 绑定到用户的权限集合
         :type PolicySet: list of Policy
+        :param UserType: 用户类型。ADMIN：管理员 COMMON：一般用户。当用户类型为管理员的时候，不能设置权限集合和绑定的工作组集合，管理员默认拥有所有权限。该参数不填默认为COMMON
+        :type UserType: str
+        :param WorkGroupIds: 绑定到用户的工作组ID集合。
+        :type WorkGroupIds: list of int
         """
         self.UserId = None
         self.UserDescription = None
         self.PolicySet = None
+        self.UserType = None
+        self.WorkGroupIds = None
 
 
     def _deserialize(self, params):
@@ -787,6 +793,8 @@ class CreateUserRequest(AbstractModel):
                 obj = Policy()
                 obj._deserialize(item)
                 self.PolicySet.append(obj)
+        self.UserType = params.get("UserType")
+        self.WorkGroupIds = params.get("WorkGroupIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -826,10 +834,13 @@ class CreateWorkGroupRequest(AbstractModel):
         :type WorkGroupDescription: str
         :param PolicySet: 工作组绑定的鉴权策略集合
         :type PolicySet: list of Policy
+        :param UserIds: 需要绑定到工作组的用户Id集合
+        :type UserIds: list of str
         """
         self.WorkGroupName = None
         self.WorkGroupDescription = None
         self.PolicySet = None
+        self.UserIds = None
 
 
     def _deserialize(self, params):
@@ -841,6 +852,7 @@ class CreateWorkGroupRequest(AbstractModel):
                 obj = Policy()
                 obj._deserialize(item)
                 self.PolicySet.append(obj)
+        self.UserIds = params.get("UserIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

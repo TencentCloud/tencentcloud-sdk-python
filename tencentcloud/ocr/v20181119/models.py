@@ -3468,6 +3468,10 @@ class MLIDPassportOCRResponse(AbstractModel):
     }
 }
         :type AdvancedInfo: str
+        :param CodeSet: 最下方第一行 MRZ Code 序列
+        :type CodeSet: str
+        :param CodeCrc: 最下方第二行 MRZ Code 序列
+        :type CodeCrc: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3481,6 +3485,8 @@ class MLIDPassportOCRResponse(AbstractModel):
         self.Warn = None
         self.Image = None
         self.AdvancedInfo = None
+        self.CodeSet = None
+        self.CodeCrc = None
         self.RequestId = None
 
 
@@ -3495,6 +3501,8 @@ class MLIDPassportOCRResponse(AbstractModel):
         self.Warn = params.get("Warn")
         self.Image = params.get("Image")
         self.AdvancedInfo = params.get("AdvancedInfo")
+        self.CodeSet = params.get("CodeSet")
+        self.CodeCrc = params.get("CodeCrc")
         self.RequestId = params.get("RequestId")
 
 

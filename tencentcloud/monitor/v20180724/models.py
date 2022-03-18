@@ -255,6 +255,9 @@ class AlarmNotice(AbstractModel):
         :param PolicyIds: 告警通知模板绑定的告警策略ID列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type PolicyIds: list of str
+        :param CLSNotices: 推送cls渠道
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CLSNotices: list of CLSNotice
         """
         self.Id = None
         self.Name = None
@@ -266,6 +269,7 @@ class AlarmNotice(AbstractModel):
         self.IsPreset = None
         self.NoticeLanguage = None
         self.PolicyIds = None
+        self.CLSNotices = None
 
 
     def _deserialize(self, params):
@@ -289,6 +293,12 @@ class AlarmNotice(AbstractModel):
         self.IsPreset = params.get("IsPreset")
         self.NoticeLanguage = params.get("NoticeLanguage")
         self.PolicyIds = params.get("PolicyIds")
+        if params.get("CLSNotices") is not None:
+            self.CLSNotices = []
+            for item in params.get("CLSNotices"):
+                obj = CLSNotice()
+                obj._deserialize(item)
+                self.CLSNotices.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -875,6 +885,42 @@ class BindingPolicyTagResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CLSNotice(AbstractModel):
+    """告警通知中的推送CLS操作
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Region: 地域
+        :type Region: str
+        :param LogSetId: 日志集Id
+        :type LogSetId: str
+        :param TopicId: 主题Id
+        :type TopicId: str
+        :param Enable: 启停状态，可不传，默认启用。0=停用，1=启用
+        :type Enable: int
+        """
+        self.Region = None
+        self.LogSetId = None
+        self.TopicId = None
+        self.Enable = None
+
+
+    def _deserialize(self, params):
+        self.Region = params.get("Region")
+        self.LogSetId = params.get("LogSetId")
+        self.TopicId = params.get("TopicId")
+        self.Enable = params.get("Enable")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CommonNamespace(AbstractModel):
     """统一的命名空间信息
 
@@ -1048,6 +1094,8 @@ class CreateAlarmNoticeRequest(AbstractModel):
         :type UserNotices: list of UserNotice
         :param URLNotices: 回调通知 最多3个
         :type URLNotices: list of URLNotice
+        :param CLSNotices: 推送CLS日志服务的操作 最多1个
+        :type CLSNotices: list of CLSNotice
         """
         self.Module = None
         self.Name = None
@@ -1055,6 +1103,7 @@ class CreateAlarmNoticeRequest(AbstractModel):
         self.NoticeLanguage = None
         self.UserNotices = None
         self.URLNotices = None
+        self.CLSNotices = None
 
 
     def _deserialize(self, params):
@@ -1074,6 +1123,12 @@ class CreateAlarmNoticeRequest(AbstractModel):
                 obj = URLNotice()
                 obj._deserialize(item)
                 self.URLNotices.append(obj)
+        if params.get("CLSNotices") is not None:
+            self.CLSNotices = []
+            for item in params.get("CLSNotices"):
+                obj = CLSNotice()
+                obj._deserialize(item)
+                self.CLSNotices.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2491,6 +2546,8 @@ class DescribeAlarmPoliciesRequest(AbstractModel):
         :type InstanceGroupId: int
         :param NeedCorrespondence: 是否需要策略与入参过滤维度参数的对应关系，1：是  0：否，默认为0
         :type NeedCorrespondence: int
+        :param TriggerTasks: 按照触发任务（例如弹性伸缩）过滤策略。最多10个
+        :type TriggerTasks: list of AlarmPolicyTriggerTask
         """
         self.Module = None
         self.PageNumber = None
@@ -2511,6 +2568,7 @@ class DescribeAlarmPoliciesRequest(AbstractModel):
         self.NotBindingNoticeRule = None
         self.InstanceGroupId = None
         self.NeedCorrespondence = None
+        self.TriggerTasks = None
 
 
     def _deserialize(self, params):
@@ -2533,6 +2591,12 @@ class DescribeAlarmPoliciesRequest(AbstractModel):
         self.NotBindingNoticeRule = params.get("NotBindingNoticeRule")
         self.InstanceGroupId = params.get("InstanceGroupId")
         self.NeedCorrespondence = params.get("NeedCorrespondence")
+        if params.get("TriggerTasks") is not None:
+            self.TriggerTasks = []
+            for item in params.get("TriggerTasks"):
+                obj = AlarmPolicyTriggerTask()
+                obj._deserialize(item)
+                self.TriggerTasks.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5937,6 +6001,8 @@ class ModifyAlarmNoticeRequest(AbstractModel):
         :type UserNotices: list of UserNotice
         :param URLNotices: 回调通知 最多3个
         :type URLNotices: list of URLNotice
+        :param CLSNotices: 告警通知推送到CLS服务 最多1个
+        :type CLSNotices: list of CLSNotice
         """
         self.Module = None
         self.Name = None
@@ -5945,6 +6011,7 @@ class ModifyAlarmNoticeRequest(AbstractModel):
         self.NoticeId = None
         self.UserNotices = None
         self.URLNotices = None
+        self.CLSNotices = None
 
 
     def _deserialize(self, params):
@@ -5965,6 +6032,12 @@ class ModifyAlarmNoticeRequest(AbstractModel):
                 obj = URLNotice()
                 obj._deserialize(item)
                 self.URLNotices.append(obj)
+        if params.get("CLSNotices") is not None:
+            self.CLSNotices = []
+            for item in params.get("CLSNotices"):
+                obj = CLSNotice()
+                obj._deserialize(item)
+                self.CLSNotices.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
