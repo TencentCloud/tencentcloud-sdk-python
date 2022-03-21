@@ -379,6 +379,30 @@ class AutoScalingGroupRange(AbstractModel):
         
 
 
+class AutoUpgradeClusterLevel(AbstractModel):
+    """自动变配集群等级
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IsAutoUpgrade: 是否开启自动变配集群等级
+        :type IsAutoUpgrade: bool
+        """
+        self.IsAutoUpgrade = None
+
+
+    def _deserialize(self, params):
+        self.IsAutoUpgrade = params.get("IsAutoUpgrade")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AutoscalingAdded(AbstractModel):
     """自动扩所容的节点
 
@@ -962,6 +986,10 @@ class ClusterBasicSettings(AbstractModel):
         :type NeedWorkSecurityGroup: bool
         :param SubnetId: 当选择Cilium Overlay网络插件时，TKE会从该子网获取2个IP用来创建内网负载均衡
         :type SubnetId: str
+        :param ClusterLevel: 集群等级，针对托管集群生效
+        :type ClusterLevel: str
+        :param AutoUpgradeClusterLevel: 自动变配集群等级，针对托管集群生效
+        :type AutoUpgradeClusterLevel: :class:`tencentcloud.tke.v20180525.models.AutoUpgradeClusterLevel`
         """
         self.ClusterOs = None
         self.ClusterVersion = None
@@ -973,6 +1001,8 @@ class ClusterBasicSettings(AbstractModel):
         self.OsCustomizeType = None
         self.NeedWorkSecurityGroup = None
         self.SubnetId = None
+        self.ClusterLevel = None
+        self.AutoUpgradeClusterLevel = None
 
 
     def _deserialize(self, params):
@@ -991,6 +1021,10 @@ class ClusterBasicSettings(AbstractModel):
         self.OsCustomizeType = params.get("OsCustomizeType")
         self.NeedWorkSecurityGroup = params.get("NeedWorkSecurityGroup")
         self.SubnetId = params.get("SubnetId")
+        self.ClusterLevel = params.get("ClusterLevel")
+        if params.get("AutoUpgradeClusterLevel") is not None:
+            self.AutoUpgradeClusterLevel = AutoUpgradeClusterLevel()
+            self.AutoUpgradeClusterLevel._deserialize(params.get("AutoUpgradeClusterLevel"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8108,11 +8142,17 @@ class ModifyClusterAttributeRequest(AbstractModel):
         :type ClusterName: str
         :param ClusterDesc: 集群描述
         :type ClusterDesc: str
+        :param ClusterLevel: 集群等级
+        :type ClusterLevel: str
+        :param AutoUpgradeClusterLevel: 自动变配集群等级
+        :type AutoUpgradeClusterLevel: :class:`tencentcloud.tke.v20180525.models.AutoUpgradeClusterLevel`
         """
         self.ClusterId = None
         self.ProjectId = None
         self.ClusterName = None
         self.ClusterDesc = None
+        self.ClusterLevel = None
+        self.AutoUpgradeClusterLevel = None
 
 
     def _deserialize(self, params):
@@ -8120,6 +8160,10 @@ class ModifyClusterAttributeRequest(AbstractModel):
         self.ProjectId = params.get("ProjectId")
         self.ClusterName = params.get("ClusterName")
         self.ClusterDesc = params.get("ClusterDesc")
+        self.ClusterLevel = params.get("ClusterLevel")
+        if params.get("AutoUpgradeClusterLevel") is not None:
+            self.AutoUpgradeClusterLevel = AutoUpgradeClusterLevel()
+            self.AutoUpgradeClusterLevel._deserialize(params.get("AutoUpgradeClusterLevel"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8145,12 +8189,20 @@ class ModifyClusterAttributeResponse(AbstractModel):
         :param ClusterDesc: 集群描述
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterDesc: str
+        :param ClusterLevel: 集群等级
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterLevel: str
+        :param AutoUpgradeClusterLevel: 自动变配集群等级
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AutoUpgradeClusterLevel: :class:`tencentcloud.tke.v20180525.models.AutoUpgradeClusterLevel`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.ProjectId = None
         self.ClusterName = None
         self.ClusterDesc = None
+        self.ClusterLevel = None
+        self.AutoUpgradeClusterLevel = None
         self.RequestId = None
 
 
@@ -8158,6 +8210,10 @@ class ModifyClusterAttributeResponse(AbstractModel):
         self.ProjectId = params.get("ProjectId")
         self.ClusterName = params.get("ClusterName")
         self.ClusterDesc = params.get("ClusterDesc")
+        self.ClusterLevel = params.get("ClusterLevel")
+        if params.get("AutoUpgradeClusterLevel") is not None:
+            self.AutoUpgradeClusterLevel = AutoUpgradeClusterLevel()
+            self.AutoUpgradeClusterLevel._deserialize(params.get("AutoUpgradeClusterLevel"))
         self.RequestId = params.get("RequestId")
 
 

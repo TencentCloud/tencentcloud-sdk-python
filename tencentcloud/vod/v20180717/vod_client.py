@@ -3155,6 +3155,40 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ProcessImage(self, request):
+        """对点播中的图片文件发起处理任务，功能包括：
+
+        1. 智能识别（令人反感的信息、不安全的信息、不适宜的信息）;
+
+        ><li>图片文件大小支持：文件 < 5M；</li>
+        ><li>图片文件分辨率支持：建议分辨率大于256x256，否则可能会影响识别效果；</li>
+        ><li>图片文件支持格式：PNG、JPG、JPEG、BMP、GIF、WEBP格式。</li>
+
+        :param request: Request instance for ProcessImage.
+        :type request: :class:`tencentcloud.vod.v20180717.models.ProcessImageRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ProcessImageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ProcessImage", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ProcessImageResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ProcessMedia(self, request):
         """对点播中的音视频媒体发起处理任务，功能包括：
         1. 视频转码（带水印）；

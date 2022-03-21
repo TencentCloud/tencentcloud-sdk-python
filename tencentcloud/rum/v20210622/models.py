@@ -3341,10 +3341,13 @@ class DescribeProjectsRequest(AbstractModel):
         :type Offset: int
         :param Filters: 过滤条件
         :type Filters: list of Filter
+        :param IsDemo: 是否为demo模式（1=是，2=否）
+        :type IsDemo: int
         """
         self.Limit = None
         self.Offset = None
         self.Filters = None
+        self.IsDemo = None
 
 
     def _deserialize(self, params):
@@ -3356,6 +3359,7 @@ class DescribeProjectsRequest(AbstractModel):
                 obj = Filter()
                 obj._deserialize(item)
                 self.Filters.append(obj)
+        self.IsDemo = params.get("IsDemo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3586,16 +3590,20 @@ class DescribeScoresRequest(AbstractModel):
         :type StartTime: str
         :param ID: 项目ID
         :type ID: int
+        :param IsDemo: 是否为demo模式（1=是，2=否）
+        :type IsDemo: int
         """
         self.EndTime = None
         self.StartTime = None
         self.ID = None
+        self.IsDemo = None
 
 
     def _deserialize(self, params):
         self.EndTime = params.get("EndTime")
         self.StartTime = params.get("StartTime")
         self.ID = params.get("ID")
+        self.IsDemo = params.get("IsDemo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3724,6 +3732,8 @@ class DescribeTawInstancesRequest(AbstractModel):
         :type InstanceIds: list of str
         :param Filters: 过滤参数
         :type Filters: list of Filter
+        :param IsDemo: 是否为demo模式（1=是，2=否）
+        :type IsDemo: int
         """
         self.ChargeStatuses = None
         self.ChargeTypes = None
@@ -3733,6 +3743,7 @@ class DescribeTawInstancesRequest(AbstractModel):
         self.InstanceStatuses = None
         self.InstanceIds = None
         self.Filters = None
+        self.IsDemo = None
 
 
     def _deserialize(self, params):
@@ -3749,6 +3760,7 @@ class DescribeTawInstancesRequest(AbstractModel):
                 obj = Filter()
                 obj._deserialize(item)
                 self.Filters.append(obj)
+        self.IsDemo = params.get("IsDemo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4198,30 +4210,30 @@ class ProjectLimit(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ID: 主键ID
-        :type ID: int
-        :param ProjectID: 项目ID
-        :type ProjectID: int
         :param ProjectInterface: 接口
         :type ProjectInterface: str
         :param ReportRate: 上报率
         :type ReportRate: int
         :param ReportType: 上报类型 1：上报率  2：上报量限制
         :type ReportType: int
+        :param ID: 主键ID
+        :type ID: int
+        :param ProjectID: 项目ID
+        :type ProjectID: int
         """
-        self.ID = None
-        self.ProjectID = None
         self.ProjectInterface = None
         self.ReportRate = None
         self.ReportType = None
+        self.ID = None
+        self.ProjectID = None
 
 
     def _deserialize(self, params):
-        self.ID = params.get("ID")
-        self.ProjectID = params.get("ProjectID")
         self.ProjectInterface = params.get("ProjectInterface")
         self.ReportRate = params.get("ReportRate")
         self.ReportType = params.get("ReportType")
+        self.ID = params.get("ID")
+        self.ProjectID = params.get("ProjectID")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4463,6 +4475,9 @@ class RumProject(AbstractModel):
         :param IsStar: 是否星标  1:是 0:否
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsStar: int
+        :param ProjectStatus: 项目状态(1 创建中，2 运行中，3 异常，4 重启中，5 停止中，6 已停止， 7 销毁中，8 已销毁)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectStatus: int
         """
         self.Name = None
         self.Creator = None
@@ -4479,6 +4494,7 @@ class RumProject(AbstractModel):
         self.InstanceKey = None
         self.Desc = None
         self.IsStar = None
+        self.ProjectStatus = None
 
 
     def _deserialize(self, params):
@@ -4497,6 +4513,7 @@ class RumProject(AbstractModel):
         self.InstanceKey = params.get("InstanceKey")
         self.Desc = params.get("Desc")
         self.IsStar = params.get("IsStar")
+        self.ProjectStatus = params.get("ProjectStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

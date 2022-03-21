@@ -5491,6 +5491,117 @@ class ConfirmEventsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ContentReviewOcrResult(AbstractModel):
+    """图片Ocr 文字鉴别信息的任务结果类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Confidence: Ocr 文字鉴别结果的评分，分值为0到100。
+        :type Confidence: float
+        :param Suggestion: Ocr 文字鉴别的结果建议，取值范围：
+<li>pass；</li>
+<li>review；</li>
+<li>block。</li>
+        :type Suggestion: str
+        :param KeywordSet: Ocr 文字鉴别的嫌疑关键词列表。
+        :type KeywordSet: list of str
+        :param AreaCoordSet: Ocr 文字鉴别的嫌疑文字出现的区域坐标 (像素级)，[x1, y1, x2, y2]，即左上角坐标、右下角坐标。
+        :type AreaCoordSet: list of int
+        """
+        self.Confidence = None
+        self.Suggestion = None
+        self.KeywordSet = None
+        self.AreaCoordSet = None
+
+
+    def _deserialize(self, params):
+        self.Confidence = params.get("Confidence")
+        self.Suggestion = params.get("Suggestion")
+        self.KeywordSet = params.get("KeywordSet")
+        self.AreaCoordSet = params.get("AreaCoordSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ContentReviewResult(AbstractModel):
+    """图片智能内容识别任务结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Type: 结果类型，取值范围：
+<li>Porn.Image：图片画面中的鉴别令人反感的信息结果；</li>
+<li>Terrorism.Image：图片画面中的鉴别令人不安全的信息结果；</li>
+<li>Political.Image：图片画面中的鉴别令人不适宜信息结果；</li>
+<li>Porn.Ocr：图片 OCR 文字中的鉴别令人反感的信息结果；</li>
+<li>Terrorism.Ocr：图片 OCR 文字中的鉴别令人不安全的信息结果；</li>
+<li>Political.Ocr：图片 OCR 文字中的鉴别令人不适宜信息结果。</li>
+        :type Type: str
+        :param PornImageResult: 图片画面中的鉴别令人反感的信息结果，当 Type 为 Porn.Image 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PornImageResult: :class:`tencentcloud.vod.v20180717.models.PornImageResult`
+        :param TerrorismImageResult: 图片画面中的鉴别令人不安全的信息结果，当 Type 为 Terrorism.Image 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TerrorismImageResult: :class:`tencentcloud.vod.v20180717.models.TerrorismImageResult`
+        :param PoliticalImageResult: 图片画面中的鉴别令人不适宜信息结果，当 Type 为 Political.Image 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PoliticalImageResult: :class:`tencentcloud.vod.v20180717.models.PoliticalImageResult`
+        :param PornOcrResult: 图片 OCR 文字中的鉴别令人反感的信息结果，当 Type 为 Porn.Ocr 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PornOcrResult: :class:`tencentcloud.vod.v20180717.models.ContentReviewOcrResult`
+        :param TerrorismOcrResult: 图片 OCR 中的鉴别令人不安全的信息结果，当 Type 为 Terrorism.Ocr 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TerrorismOcrResult: :class:`tencentcloud.vod.v20180717.models.ContentReviewOcrResult`
+        :param PoliticalOcrResult: 图片 OCR 文字中的鉴别令人不适宜信息结果，当 Type 为 Political.Ocr 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PoliticalOcrResult: :class:`tencentcloud.vod.v20180717.models.ContentReviewOcrResult`
+        """
+        self.Type = None
+        self.PornImageResult = None
+        self.TerrorismImageResult = None
+        self.PoliticalImageResult = None
+        self.PornOcrResult = None
+        self.TerrorismOcrResult = None
+        self.PoliticalOcrResult = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        if params.get("PornImageResult") is not None:
+            self.PornImageResult = PornImageResult()
+            self.PornImageResult._deserialize(params.get("PornImageResult"))
+        if params.get("TerrorismImageResult") is not None:
+            self.TerrorismImageResult = TerrorismImageResult()
+            self.TerrorismImageResult._deserialize(params.get("TerrorismImageResult"))
+        if params.get("PoliticalImageResult") is not None:
+            self.PoliticalImageResult = PoliticalImageResult()
+            self.PoliticalImageResult._deserialize(params.get("PoliticalImageResult"))
+        if params.get("PornOcrResult") is not None:
+            self.PornOcrResult = ContentReviewOcrResult()
+            self.PornOcrResult._deserialize(params.get("PornOcrResult"))
+        if params.get("TerrorismOcrResult") is not None:
+            self.TerrorismOcrResult = ContentReviewOcrResult()
+            self.TerrorismOcrResult._deserialize(params.get("TerrorismOcrResult"))
+        if params.get("PoliticalOcrResult") is not None:
+            self.PoliticalOcrResult = ContentReviewOcrResult()
+            self.PoliticalOcrResult._deserialize(params.get("PoliticalOcrResult"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ContentReviewTemplateItem(AbstractModel):
     """智能识别模板详情
 
@@ -12150,6 +12261,31 @@ class ImageCenterCut(AbstractModel):
         
 
 
+class ImageContentReviewInput(AbstractModel):
+    """图片智能内容识别任务输入
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Definition: 图片智能内容审核模板 ID。当前只支持：
+<li>10：所有审核类型均打开。</li>
+        :type Definition: int
+        """
+        self.Definition = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ImageOperation(AbstractModel):
     """单个图片处理操作。
 
@@ -17527,6 +17663,45 @@ class PoliticalConfigureInfoForUpdate(AbstractModel):
         
 
 
+class PoliticalImageResult(AbstractModel):
+    """图片画面智能识别涉及令人不适宜信息的任务结果类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Confidence: 鉴别涉及令人不适宜信息的评分，分值为0到100。
+        :type Confidence: float
+        :param Suggestion: 鉴别涉及令人不适宜信息的结果建议，取值范围：
+<li>pass；</li>
+<li>review；</li>
+<li>block。</li>
+        :type Suggestion: str
+        :param Name: 涉及令人不适宜的信息、违规图标名字。
+        :type Name: str
+        :param AreaCoordSet: 涉及令人不适宜的信息、违规图标出现的区域坐标 (像素级)，[x1, y1, x2, y2]，即左上角坐标、右下角坐标。
+        :type AreaCoordSet: list of int
+        """
+        self.Confidence = None
+        self.Suggestion = None
+        self.Name = None
+        self.AreaCoordSet = None
+
+
+    def _deserialize(self, params):
+        self.Confidence = params.get("Confidence")
+        self.Suggestion = params.get("Suggestion")
+        self.Name = params.get("Name")
+        self.AreaCoordSet = params.get("AreaCoordSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PoliticalImgReviewTemplateInfo(AbstractModel):
     """画面鉴别涉及令人不适宜的信息的任务控制参数
 
@@ -17825,6 +18000,45 @@ class PornConfigureInfoForUpdate(AbstractModel):
         if params.get("OcrReviewInfo") is not None:
             self.OcrReviewInfo = PornOcrReviewTemplateInfoForUpdate()
             self.OcrReviewInfo._deserialize(params.get("OcrReviewInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PornImageResult(AbstractModel):
+    """图片画面智能识别涉及令人反感的信息的任务结果类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Confidence: 鉴别涉及令人反感的信息的评分，分值为0到100。
+        :type Confidence: float
+        :param Suggestion: 鉴别涉及令人反感的信息的结果建议，取值范围：
+<li>pass；</li>
+<li>review；</li>
+<li>block。</li>
+        :type Suggestion: str
+        :param Label: 鉴别涉及令人反感的信息的结果标签，取值范围：
+<li>porn：色情；</li>
+<li>sexy：性感；</li>
+<li>vulgar：低俗；</li>
+<li>intimacy：亲密行为。</li>
+        :type Label: str
+        """
+        self.Confidence = None
+        self.Suggestion = None
+        self.Label = None
+
+
+    def _deserialize(self, params):
+        self.Confidence = params.get("Confidence")
+        self.Suggestion = params.get("Suggestion")
+        self.Label = params.get("Label")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -18179,6 +18393,70 @@ class ProcedureTemplate(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ProcessImageRequest(AbstractModel):
+    """ProcessImage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FileId: 媒体文件 ID，即该文件在云点播上的全局唯一标识符。本接口要求媒体文件必须是图片格式。
+        :type FileId: str
+        :param Operation: 操作类型。现在仅支持填 ContentReview，表示内容智能识别。
+        :type Operation: str
+        :param ContentReviewInput: 图片内容智能识别参数，当 Operation 为 ContentReview 时该字段有效。
+        :type ContentReviewInput: :class:`tencentcloud.vod.v20180717.models.ImageContentReviewInput`
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.FileId = None
+        self.Operation = None
+        self.ContentReviewInput = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.FileId = params.get("FileId")
+        self.Operation = params.get("Operation")
+        if params.get("ContentReviewInput") is not None:
+            self.ContentReviewInput = ImageContentReviewInput()
+            self.ContentReviewInput._deserialize(params.get("ContentReviewInput"))
+        self.SubAppId = params.get("SubAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProcessImageResponse(AbstractModel):
+    """ProcessImage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ContentReviewResultSet: 图片内容智能识别任务结果。
+        :type ContentReviewResultSet: list of ContentReviewResult
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ContentReviewResultSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ContentReviewResultSet") is not None:
+            self.ContentReviewResultSet = []
+            for item in params.get("ContentReviewResultSet"):
+                obj = ContentReviewResult()
+                obj._deserialize(item)
+                self.ContentReviewResultSet.append(obj)
+        self.RequestId = params.get("RequestId")
 
 
 class ProcessMediaByProcedureRequest(AbstractModel):
@@ -21012,6 +21290,48 @@ class TerrorismConfigureInfoForUpdate(AbstractModel):
         if params.get("OcrReviewInfo") is not None:
             self.OcrReviewInfo = TerrorismOcrReviewTemplateInfoForUpdate()
             self.OcrReviewInfo._deserialize(params.get("OcrReviewInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TerrorismImageResult(AbstractModel):
+    """图片画面智能识别涉及令人不安全的信息的任务结果类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Confidence: 鉴别涉及令人不安全的信息的评分，分值为0到100。
+        :type Confidence: float
+        :param Suggestion: 鉴别涉及令人不安全的信息的结果建议，取值范围：
+<li>pass；</li>
+<li>review；</li>
+<li>block。</li>
+        :type Suggestion: str
+        :param Label: 鉴别涉及令人不安全的信息的结果标签，取值范围：
+<li>guns：武器枪支；</li>
+<li>crowd：人群聚集；</li>
+<li>police：警察部队；</li>
+<li>bloody：血腥画面；</li>
+<li>banners：暴恐旗帜；</li>
+<li>explosion：爆炸火灾；</li>
+<li>scenario：暴恐画面。</li>
+        :type Label: str
+        """
+        self.Confidence = None
+        self.Suggestion = None
+        self.Label = None
+
+
+    def _deserialize(self, params):
+        self.Confidence = params.get("Confidence")
+        self.Suggestion = params.get("Suggestion")
+        self.Label = params.get("Label")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

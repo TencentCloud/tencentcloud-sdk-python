@@ -109,28 +109,28 @@ class CancelFlowRequest(AbstractModel):
         r"""
         :param Operator: 操作用户id
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param Agent: 应用相关信息
-        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         :param FlowId: 流程id
         :type FlowId: str
         :param CancelMessage: 撤销原因
         :type CancelMessage: str
+        :param Agent: 应用相关信息
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
         self.Operator = None
-        self.Agent = None
         self.FlowId = None
         self.CancelMessage = None
+        self.Agent = None
 
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
             self.Operator = UserInfo()
             self.Operator._deserialize(params.get("Operator"))
+        self.FlowId = params.get("FlowId")
+        self.CancelMessage = params.get("CancelMessage")
         if params.get("Agent") is not None:
             self.Agent = Agent()
             self.Agent._deserialize(params.get("Agent"))
-        self.FlowId = params.get("FlowId")
-        self.CancelMessage = params.get("CancelMessage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -974,6 +974,8 @@ HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
         :type PreReadTime: int
         :param NotifyType: 是否发送短信，sms--短信通知，none--不通知，默认为sms
         :type NotifyType: str
+        :param VerifyChannel: 签署意愿确认渠道,WEIXINAPP:人脸识别
+        :type VerifyChannel: list of str
         """
         self.ApproverType = None
         self.OrganizationName = None
@@ -987,6 +989,7 @@ HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
         self.IsFullText = None
         self.PreReadTime = None
         self.NotifyType = None
+        self.VerifyChannel = None
 
 
     def _deserialize(self, params):
@@ -1002,6 +1005,7 @@ HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
         self.IsFullText = params.get("IsFullText")
         self.PreReadTime = params.get("PreReadTime")
         self.NotifyType = params.get("NotifyType")
+        self.VerifyChannel = params.get("VerifyChannel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

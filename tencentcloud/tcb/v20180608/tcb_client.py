@@ -1849,6 +1849,34 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def FreezeCloudBaseRunServers(self, request):
+        """批量冻结
+
+        :param request: Request instance for FreezeCloudBaseRunServers.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.FreezeCloudBaseRunServersRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.FreezeCloudBaseRunServersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("FreezeCloudBaseRunServers", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.FreezeCloudBaseRunServersResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyCloudBaseRunServerFlowConf(self, request):
         """修改容器内的版本流量配置
 
@@ -2143,6 +2171,34 @@ class TcbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.TurnOnStandaloneGatewayResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UnfreezeCloudBaseRunServers(self, request):
+        """批量解冻服务
+
+        :param request: Request instance for UnfreezeCloudBaseRunServers.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.UnfreezeCloudBaseRunServersRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.UnfreezeCloudBaseRunServersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UnfreezeCloudBaseRunServers", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UnfreezeCloudBaseRunServersResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

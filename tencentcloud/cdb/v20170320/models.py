@@ -5632,9 +5632,9 @@ class DescribeProxyConnectionPoolConfRequest(AbstractModel):
         r"""
         :param InstanceId: 实例ID
         :type InstanceId: str
-        :param Offset: 分页查询偏移量
+        :param Offset: 分页
         :type Offset: int
-        :param Limit: 分页查询限制
+        :param Limit: 限制
         :type Limit: int
         """
         self.InstanceId = None
@@ -8322,9 +8322,9 @@ class ModifyCDBProxyRequest(AbstractModel):
         r"""
         :param ProxyGroupId: 数据库代理组唯一ID
         :type ProxyGroupId: str
-        :param IsKickout: 是否开始延迟剔除，取值："true" | "false"
+        :param IsKickout: 是否开始延迟剔除，默认false，取值："true" | "false"
         :type IsKickout: bool
-        :param MinCount: 最少保留数
+        :param MinCount: 最少保留数，最小为0，最大为实例数量
         :type MinCount: int
         :param MaxDelay: 延迟剔除的阈值；如果IsKickOut="true", 该字段必填
         :type MaxDelay: int
@@ -8332,9 +8332,9 @@ class ModifyCDBProxyRequest(AbstractModel):
         :type WeightMode: str
         :param RoWeightValues: 实例只读权重
         :type RoWeightValues: :class:`tencentcloud.cdb.v20170320.models.RoWeight`
-        :param FailOver: 是否开启故障转移，代理出现故障后，连接地址将路由到主实例，取值："true" | "false"
+        :param FailOver: 是否开启故障转移，代理出现故障后，连接地址将路由到主实例，默认false，取值："true" | "false"
         :type FailOver: bool
-        :param AutoAddRo: 是否自动添加只读实例，取值："true" | "false"
+        :param AutoAddRo: 是否自动添加只读实例，默认false，取值："true" | "false"
         :type AutoAddRo: bool
         """
         self.ProxyGroupId = None
@@ -11800,9 +11800,9 @@ class UpgradeCDBProxyRequest(AbstractModel):
         :type InstanceId: str
         :param ProxyGroupId: 数据库代理ID
         :type ProxyGroupId: str
-        :param ProxyCount: 代理节点个数
+        :param ProxyCount: 代理节点个数，实际规格支持数
         :type ProxyCount: int
-        :param Cpu: 代理节点核数
+        :param Cpu: 代理节点核数，实际规格支持数
         :type Cpu: int
         :param Mem: 代理节点内存大小
         :type Mem: int

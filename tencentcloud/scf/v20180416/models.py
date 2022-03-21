@@ -3831,12 +3831,29 @@ class PutProvisionedConcurrencyConfigRequest(AbstractModel):
         :type Namespace: str
         :param TriggerActions: 定时预置任务
         :type TriggerActions: list of TriggerAction
+        :param ProvisionedType: 预置类型，
+静态预置：Default
+动态追踪并发利用率指标预置：ConcurrencyUtilizationTracking
+预置类型二选一，设置静态预置时可以设置VersionProvisionedConcurrencyNum。
+
+动态利用率预置可以设置TrackingTarget，MinCapacity，MaxCapacity，保持向后兼容性此时VersionProvisionedConcurrencyNum设置为0.
+        :type ProvisionedType: str
+        :param TrackingTarget: 指标追踪的并发利用率。设置范围(0,1)
+        :type TrackingTarget: float
+        :param MinCapacity: 缩容时的最小值, 最小值为1
+        :type MinCapacity: int
+        :param MaxCapacity: 扩容时的最大值
+        :type MaxCapacity: int
         """
         self.FunctionName = None
         self.Qualifier = None
         self.VersionProvisionedConcurrencyNum = None
         self.Namespace = None
         self.TriggerActions = None
+        self.ProvisionedType = None
+        self.TrackingTarget = None
+        self.MinCapacity = None
+        self.MaxCapacity = None
 
 
     def _deserialize(self, params):
@@ -3850,6 +3867,10 @@ class PutProvisionedConcurrencyConfigRequest(AbstractModel):
                 obj = TriggerAction()
                 obj._deserialize(item)
                 self.TriggerActions.append(obj)
+        self.ProvisionedType = params.get("ProvisionedType")
+        self.TrackingTarget = params.get("TrackingTarget")
+        self.MinCapacity = params.get("MinCapacity")
+        self.MaxCapacity = params.get("MaxCapacity")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

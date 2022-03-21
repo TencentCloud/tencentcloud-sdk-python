@@ -6489,6 +6489,66 @@ class FreequotaInfo(AbstractModel):
         
 
 
+class FreezeCloudBaseRunServersRequest(AbstractModel):
+    """FreezeCloudBaseRunServers请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EnvId: 环境ID
+        :type EnvId: str
+        :param ServerNameList: 服务名列表
+        :type ServerNameList: list of str
+        """
+        self.EnvId = None
+        self.ServerNameList = None
+
+
+    def _deserialize(self, params):
+        self.EnvId = params.get("EnvId")
+        self.ServerNameList = params.get("ServerNameList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FreezeCloudBaseRunServersResponse(AbstractModel):
+    """FreezeCloudBaseRunServers返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 批量状态状态
+成功：succ
+失败：fail
+部分：partial（部分成功、部分失败）
+注意：此字段可能返回 null，表示取不到有效值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: str
+        :param FailServerList: 冻结失败服务列表
+注意：此字段可能返回 null，表示取不到有效值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailServerList: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.FailServerList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.FailServerList = params.get("FailServerList")
+        self.RequestId = params.get("RequestId")
+
+
 class FunctionInfo(AbstractModel):
     """函数的信息
 
@@ -8159,4 +8219,64 @@ class TurnOnStandaloneGatewayResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.RequestId = params.get("RequestId")
+
+
+class UnfreezeCloudBaseRunServersRequest(AbstractModel):
+    """UnfreezeCloudBaseRunServers请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EnvId: 环境ID
+        :type EnvId: str
+        :param ServerNameList: 服务名称列表
+        :type ServerNameList: list of str
+        """
+        self.EnvId = None
+        self.ServerNameList = None
+
+
+    def _deserialize(self, params):
+        self.EnvId = params.get("EnvId")
+        self.ServerNameList = params.get("ServerNameList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UnfreezeCloudBaseRunServersResponse(AbstractModel):
+    """UnfreezeCloudBaseRunServers返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 批量执行结果
+成功：succ
+失败：fail
+部分：partial（部分成功、部分失败）
+注意：此字段可能返回 null，表示取不到有效值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: str
+        :param FailServerList: 解冻失败列表
+注意：此字段可能返回 null，表示取不到有效值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailServerList: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.FailServerList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.FailServerList = params.get("FailServerList")
         self.RequestId = params.get("RequestId")
