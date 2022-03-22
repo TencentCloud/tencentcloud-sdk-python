@@ -1818,6 +1818,110 @@ class TemplateInfo(AbstractModel):
         
 
 
+class UploadFile(AbstractModel):
+    """此结构体 (UploadFile) 用于描述多文件上传的文件信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FileBody: Base64编码后的文件内容
+        :type FileBody: str
+        :param FileName: 文件名
+        :type FileName: str
+        """
+        self.FileBody = None
+        self.FileName = None
+
+
+    def _deserialize(self, params):
+        self.FileBody = params.get("FileBody")
+        self.FileName = params.get("FileName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UploadFilesRequest(AbstractModel):
+    """UploadFiles请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BusinessType: 文件对应业务类型，用于区分文件存储路径：
+1. TEMPLATE - 模版； 文件类型：.pdf
+2. DOCUMENT - 签署过程及签署后的合同文档/图片控件 文件类型：.pdf/.jpg/.png
+        :type BusinessType: str
+        :param Agent: 应用相关信息，若是渠道版调用 appid 和proxyappid 必填
+        :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        :param FileInfos: 上传文件内容数组，最多支持20个文件
+        :type FileInfos: list of UploadFile
+        :param Operator: 操作者的信息
+        :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
+        """
+        self.BusinessType = None
+        self.Agent = None
+        self.FileInfos = None
+        self.Operator = None
+
+
+    def _deserialize(self, params):
+        self.BusinessType = params.get("BusinessType")
+        if params.get("Agent") is not None:
+            self.Agent = Agent()
+            self.Agent._deserialize(params.get("Agent"))
+        if params.get("FileInfos") is not None:
+            self.FileInfos = []
+            for item in params.get("FileInfos"):
+                obj = UploadFile()
+                obj._deserialize(item)
+                self.FileInfos.append(obj)
+        if params.get("Operator") is not None:
+            self.Operator = UserInfo()
+            self.Operator._deserialize(params.get("Operator"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UploadFilesResponse(AbstractModel):
+    """UploadFiles返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FileIds: 文件id数组
+        :type FileIds: list of str
+        :param TotalCount: 上传成功文件数量
+        :type TotalCount: int
+        :param FileUrls: 文件Url
+        :type FileUrls: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FileIds = None
+        self.TotalCount = None
+        self.FileUrls = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FileIds = params.get("FileIds")
+        self.TotalCount = params.get("TotalCount")
+        self.FileUrls = params.get("FileUrls")
+        self.RequestId = params.get("RequestId")
+
+
 class UsageDetail(AbstractModel):
     """用量明细
 

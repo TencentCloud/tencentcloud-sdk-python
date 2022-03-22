@@ -4533,6 +4533,8 @@ class DescribeEKSClusterCredentialResponse(AbstractModel):
         :type InternalLB: :class:`tencentcloud.tke.v20180525.models.ClusterInternalLB`
         :param ProxyLB: 标记是否新的内外网功能
         :type ProxyLB: bool
+        :param Kubeconfig: 连接用户集群k8s 的Config
+        :type Kubeconfig: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4541,6 +4543,7 @@ class DescribeEKSClusterCredentialResponse(AbstractModel):
         self.PublicLB = None
         self.InternalLB = None
         self.ProxyLB = None
+        self.Kubeconfig = None
         self.RequestId = None
 
 
@@ -4561,6 +4564,7 @@ class DescribeEKSClusterCredentialResponse(AbstractModel):
             self.InternalLB = ClusterInternalLB()
             self.InternalLB._deserialize(params.get("InternalLB"))
         self.ProxyLB = params.get("ProxyLB")
+        self.Kubeconfig = params.get("Kubeconfig")
         self.RequestId = params.get("RequestId")
 
 

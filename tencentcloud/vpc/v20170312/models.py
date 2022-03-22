@@ -9733,7 +9733,7 @@ class DescribeProductQuotaRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Product: 查询的网络产品名称，如vpc、ccn等
+        :param Product: 查询的网络产品名称，可查询的产品有：vpc、ccn、vpn、dc、dfw、clb、eip。
         :type Product: str
         """
         self.Product = None

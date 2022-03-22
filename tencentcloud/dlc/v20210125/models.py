@@ -434,6 +434,140 @@ class CreateDatabaseResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateExportTaskRequest(AbstractModel):
+    """CreateExportTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InputType: 数据来源，lakefsStorage、taskResult
+        :type InputType: str
+        :param InputConf: 导出任务输入配置
+        :type InputConf: list of KVPair
+        :param OutputConf: 导出任务输出配置
+        :type OutputConf: list of KVPair
+        :param OutputType: 目标数据源的类型，目前支持导出到cos
+        :type OutputType: str
+        """
+        self.InputType = None
+        self.InputConf = None
+        self.OutputConf = None
+        self.OutputType = None
+
+
+    def _deserialize(self, params):
+        self.InputType = params.get("InputType")
+        if params.get("InputConf") is not None:
+            self.InputConf = []
+            for item in params.get("InputConf"):
+                obj = KVPair()
+                obj._deserialize(item)
+                self.InputConf.append(obj)
+        if params.get("OutputConf") is not None:
+            self.OutputConf = []
+            for item in params.get("OutputConf"):
+                obj = KVPair()
+                obj._deserialize(item)
+                self.OutputConf.append(obj)
+        self.OutputType = params.get("OutputType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateExportTaskResponse(AbstractModel):
+    """CreateExportTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 任务id
+        :type TaskId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateImportTaskRequest(AbstractModel):
+    """CreateImportTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InputType: 数据来源，cos
+        :type InputType: str
+        :param InputConf: 输入配置
+        :type InputConf: list of KVPair
+        :param OutputConf: 输出配置
+        :type OutputConf: list of KVPair
+        :param OutputType: 目标数据源的类型，目前支持导入到托管存储，即lakefsStorage
+        :type OutputType: str
+        """
+        self.InputType = None
+        self.InputConf = None
+        self.OutputConf = None
+        self.OutputType = None
+
+
+    def _deserialize(self, params):
+        self.InputType = params.get("InputType")
+        if params.get("InputConf") is not None:
+            self.InputConf = []
+            for item in params.get("InputConf"):
+                obj = KVPair()
+                obj._deserialize(item)
+                self.InputConf.append(obj)
+        if params.get("OutputConf") is not None:
+            self.OutputConf = []
+            for item in params.get("OutputConf"):
+                obj = KVPair()
+                obj._deserialize(item)
+                self.OutputConf.append(obj)
+        self.OutputType = params.get("OutputType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateImportTaskResponse(AbstractModel):
+    """CreateImportTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 任务id
+        :type TaskId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateScriptRequest(AbstractModel):
     """CreateScript请求参数结构体
 

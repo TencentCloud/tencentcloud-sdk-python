@@ -350,6 +350,9 @@ INVALIDVPNGATEWAYID_NOTFOUND = 'InvalidVpnGatewayId.NotFound'
 # 超过配额限制。
 LIMITEXCEEDED = 'LimitExceeded'
 
+# 账号退还配额超过限制。
+LIMITEXCEEDED_ACCOUNTRETURNQUOTA = 'LimitExceeded.AccountReturnQuota'
+
 # 分配IP地址数量达到上限。
 LIMITEXCEEDED_ADDRESS = 'LimitExceeded.Address'
 
@@ -379,6 +382,9 @@ LIMITEXCEEDED_NATGATEWAYLIMITEXCEEDED = 'LimitExceeded.NatGatewayLimitExceeded'
 
 # 私有网络创建的NAT网关超过上限。
 LIMITEXCEEDED_NATGATEWAYPERVPCLIMITEXCEEDED = 'LimitExceeded.NatGatewayPerVpcLimitExceeded'
+
+# 过滤参数名称超过限制。
+LIMITEXCEEDED_NUMBEROFFILTERS = 'LimitExceeded.NumberOfFilters'
 
 # NAT网关绑定的弹性IP超过上限。
 LIMITEXCEEDED_PUBLICIPADDRESSPERNATGATEWAYLIMITEXCEEDED = 'LimitExceeded.PublicIpAddressPerNatGatewayLimitExceeded'
@@ -421,6 +427,9 @@ UNAUTHORIZEDOPERATION = 'UnauthorizedOperation'
 
 # 绑定关系不存在。
 UNAUTHORIZEDOPERATION_ATTACHMENTNOTFOUND = 'UnauthorizedOperation.AttachmentNotFound'
+
+# 未授权的用户。
+UNAUTHORIZEDOPERATION_INVALIDACCOUNT = 'UnauthorizedOperation.InvalidAccount'
 
 # 账号未实名。
 UNAUTHORIZEDOPERATION_NOREALNAMEAUTHENTICATION = 'UnauthorizedOperation.NoRealNameAuthentication'
@@ -565,6 +574,9 @@ UNSUPPORTEDOPERATION_INVALIDRESOURCEPROTOCOL = 'UnsupportedOperation.InvalidReso
 
 # 资源状态不合法。
 UNSUPPORTEDOPERATION_INVALIDSTATE = 'UnsupportedOperation.InvalidState'
+
+# 当前状态不支持发布至云联网，请重试。
+UNSUPPORTEDOPERATION_INVALIDSTATUSNOTIFYCCN = 'UnsupportedOperation.InvalidStatusNotifyCcn'
 
 # 关联当前云联网的实例的账号存在不是金融云账号。
 UNSUPPORTEDOPERATION_ISNOTFINANCEACCOUNT = 'UnsupportedOperation.IsNotFinanceAccount'

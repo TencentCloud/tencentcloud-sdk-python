@@ -5233,7 +5233,7 @@ class ComposeMediaTask(AbstractModel):
         :param Output: 制作媒体文件任务的输出。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.ComposeMediaTaskOutput`
-        :param MetaData: 原始视频的元信息。
+        :param MetaData: 输出视频的元信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
         :param SessionId: 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
@@ -11362,7 +11362,7 @@ class EditMediaTask(AbstractModel):
         :param Output: 视频编辑任务的输出。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.EditMediaTaskOutput`
-        :param MetaData: 原始视频的元信息。
+        :param MetaData: 输出视频的元信息。
         :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
         :param ProcedureTaskId: 若发起视频编辑任务时指定了视频处理流程，则该字段为流程任务 ID。
         :type ProcedureTaskId: str
@@ -19207,7 +19207,7 @@ class PullUploadTask(AbstractModel):
         :param MediaBasicInfo: 转拉完成后生成的媒体文件基础信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type MediaBasicInfo: :class:`tencentcloud.vod.v20180717.models.MediaBasicInfo`
-        :param MetaData: 原始视频的元信息。
+        :param MetaData: 输出视频的元信息。
         :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
         :param FileUrl: 转拉上传完成后生成的播放地址。
         :type FileUrl: str

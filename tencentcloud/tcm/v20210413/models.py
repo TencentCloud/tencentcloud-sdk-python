@@ -750,14 +750,19 @@ class InjectConfig(AbstractModel):
         :param HoldApplicationUntilProxyStarts: 是否等待sidecar启动
 注意：此字段可能返回 null，表示取不到有效值。
         :type HoldApplicationUntilProxyStarts: bool
+        :param HoldProxyUntilApplicationEnds: 是否允许sidecar等待
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HoldProxyUntilApplicationEnds: bool
         """
         self.ExcludeIPRanges = None
         self.HoldApplicationUntilProxyStarts = None
+        self.HoldProxyUntilApplicationEnds = None
 
 
     def _deserialize(self, params):
         self.ExcludeIPRanges = params.get("ExcludeIPRanges")
         self.HoldApplicationUntilProxyStarts = params.get("HoldApplicationUntilProxyStarts")
+        self.HoldProxyUntilApplicationEnds = params.get("HoldProxyUntilApplicationEnds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1002,11 +1007,19 @@ class MeshConfig(AbstractModel):
         :param Inject: 自动注入配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type Inject: :class:`tencentcloud.tcm.v20210413.models.InjectConfig`
+        :param Tracing: 调用跟踪配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tracing: :class:`tencentcloud.tcm.v20210413.models.TracingConfig`
+        :param SidecarResources: Sidecar自定义资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SidecarResources: :class:`tencentcloud.tcm.v20210413.models.ResourceRequirements`
         """
         self.Istio = None
         self.AccessLog = None
         self.Prometheus = None
         self.Inject = None
+        self.Tracing = None
+        self.SidecarResources = None
 
 
     def _deserialize(self, params):
@@ -1022,6 +1035,12 @@ class MeshConfig(AbstractModel):
         if params.get("Inject") is not None:
             self.Inject = InjectConfig()
             self.Inject._deserialize(params.get("Inject"))
+        if params.get("Tracing") is not None:
+            self.Tracing = TracingConfig()
+            self.Tracing._deserialize(params.get("Tracing"))
+        if params.get("SidecarResources") is not None:
+            self.SidecarResources = ResourceRequirements()
+            self.SidecarResources._deserialize(params.get("SidecarResources"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

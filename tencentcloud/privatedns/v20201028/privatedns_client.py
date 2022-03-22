@@ -418,6 +418,34 @@ class PrivatednsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeQuotaUsage(self, request):
+        """查询额度使用情况
+
+        :param request: Request instance for DescribeQuotaUsage.
+        :type request: :class:`tencentcloud.privatedns.v20201028.models.DescribeQuotaUsageRequest`
+        :rtype: :class:`tencentcloud.privatedns.v20201028.models.DescribeQuotaUsageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeQuotaUsage", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeQuotaUsageResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeRequestData(self, request):
         """获取私有域解析请求量
 

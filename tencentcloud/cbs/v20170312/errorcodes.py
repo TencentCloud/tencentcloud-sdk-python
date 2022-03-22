@@ -104,6 +104,9 @@ INVALIDSNAPSHOT_NOTSUPPORTED = 'InvalidSnapshot.NotSupported'
 # 输入的`SnapshotId`不存在。
 INVALIDSNAPSHOTID_NOTFOUND = 'InvalidSnapshotId.NotFound'
 
+# 定期快照策略数量已达到上限。
+LIMITEXCEEDED_AUTOSNAPSHOTPOLICYOUTOFQUOTA = 'LimitExceeded.AutoSnapshotPolicyOutOfQuota'
+
 # 实例挂载云盘数量超过限制。
 LIMITEXCEEDED_INSTANCEATTACHEDDISK = 'LimitExceeded.InstanceAttachedDisk'
 

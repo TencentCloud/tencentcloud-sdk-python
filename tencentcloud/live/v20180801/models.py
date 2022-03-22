@@ -1377,6 +1377,17 @@ ContinueBreakPoint：播放完当前正在播放的点播 url 后再使用新的
         :type ExtraCmd: str
         :param Comment: 任务描述，限制 512 字节。
         :type Comment: str
+        :param BackupSourceType: 备源的类型：
+PullLivePushLive -直播，
+PullVodPushLive -点播。
+注意：
+1. 仅当主源类型为直播源时，备源才会生效。
+2. 主直播源拉流中断时，自动使用备源进行拉流。
+3. 如果备源为点播文件时，则每次轮播完点播文件就检查主源是否恢复，如果主源恢复则自动切回到主源，否则继续拉备源。
+        :type BackupSourceType: str
+        :param BackupSourceUrl: 备源 URL。
+只允许填一个备源 URL
+        :type BackupSourceUrl: str
         """
         self.SourceType = None
         self.SourceUrls = None
@@ -1393,6 +1404,8 @@ ContinueBreakPoint：播放完当前正在播放的点播 url 后再使用新的
         self.CallbackUrl = None
         self.ExtraCmd = None
         self.Comment = None
+        self.BackupSourceType = None
+        self.BackupSourceUrl = None
 
 
     def _deserialize(self, params):
@@ -1411,6 +1424,8 @@ ContinueBreakPoint：播放完当前正在播放的点播 url 后再使用新的
         self.CallbackUrl = params.get("CallbackUrl")
         self.ExtraCmd = params.get("ExtraCmd")
         self.Comment = params.get("Comment")
+        self.BackupSourceType = params.get("BackupSourceType")
+        self.BackupSourceUrl = params.get("BackupSourceUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8259,6 +8274,17 @@ ResetTaskConfig：任务更新回调。
         :type OffsetTime: int
         :param Comment: 任务备注。
         :type Comment: str
+        :param BackupSourceType: 备源的类型：
+PullLivePushLive -直播，
+PullVodPushLive -点播。
+注意：
+1. 仅当主源类型为直播源时，备源才会生效。
+2. 主直播源拉流中断时，自动使用备源进行拉流。
+3. 如果备源为点播文件时，则每次轮播完点播文件就检查主源是否恢复，如果主源恢复则自动切回到主源，否则继续拉备源。
+        :type BackupSourceType: str
+        :param BackupSourceUrl: 备源 URL。
+只允许填一个备源 URL
+        :type BackupSourceUrl: str
         """
         self.TaskId = None
         self.Operator = None
@@ -8273,6 +8299,8 @@ ResetTaskConfig：任务更新回调。
         self.FileIndex = None
         self.OffsetTime = None
         self.Comment = None
+        self.BackupSourceType = None
+        self.BackupSourceUrl = None
 
 
     def _deserialize(self, params):
@@ -8289,6 +8317,8 @@ ResetTaskConfig：任务更新回调。
         self.FileIndex = params.get("FileIndex")
         self.OffsetTime = params.get("OffsetTime")
         self.Comment = params.get("Comment")
+        self.BackupSourceType = params.get("BackupSourceType")
+        self.BackupSourceUrl = params.get("BackupSourceUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
