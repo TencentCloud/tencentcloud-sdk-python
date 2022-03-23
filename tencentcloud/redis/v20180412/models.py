@@ -3010,6 +3010,72 @@ class DescribeProxySlowLogResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeReplicationGroupRequest(AbstractModel):
+    """DescribeReplicationGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Limit: 实例列表的大小，参数默认值20
+        :type Limit: int
+        :param Offset: 偏移量，取Limit整数倍
+        :type Offset: int
+        :param GroupId: 复制组ID
+        :type GroupId: str
+        :param SearchKey: 实例ID和实例名称，支持模糊查询
+        :type SearchKey: str
+        """
+        self.Limit = None
+        self.Offset = None
+        self.GroupId = None
+        self.SearchKey = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.GroupId = params.get("GroupId")
+        self.SearchKey = params.get("SearchKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeReplicationGroupResponse(AbstractModel):
+    """DescribeReplicationGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 复制组数
+        :type TotalCount: int
+        :param Groups: 复制组信息
+        :type Groups: list of Groups
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Groups = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Groups") is not None:
+            self.Groups = []
+            for item in params.get("Groups"):
+                obj = Groups()
+                obj._deserialize(item)
+                self.Groups.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeSlowLogRequest(AbstractModel):
     """DescribeSlowLog请求参数结构体
 
@@ -3543,6 +3609,66 @@ class EnableReplicaReadonlyResponse(AbstractModel):
         self.Status = params.get("Status")
         self.TaskId = params.get("TaskId")
         self.RequestId = params.get("RequestId")
+
+
+class Groups(AbstractModel):
+    """复制组信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AppId: 用户AppID
+        :type AppId: int
+        :param RegionId: 地域ID 1--广州 4--上海 5-- 中国香港 6--多伦多 7--上海金融 8--北京 9-- 新加坡 11--深圳金融 15--美西（硅谷）16--成都 17--德国 18--韩国 19--重庆 21--印度 22--美东（弗吉尼亚）23--泰国 24--俄罗斯 25--日本
+        :type RegionId: int
+        :param GroupId: 复制组信息
+        :type GroupId: str
+        :param GroupName: 复制组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupName: str
+        :param Status: 复制组状态，37："绑定复制组中"，38："复制组重连中"，51："解绑复制组中"，52："复制组实例切主中"，53："角色变更中"
+        :type Status: int
+        :param InstanceCount: 复制组数量
+        :type InstanceCount: int
+        :param Instances: 复制组实例
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Instances: list of Instances
+        :param Remark: 备注信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
+        """
+        self.AppId = None
+        self.RegionId = None
+        self.GroupId = None
+        self.GroupName = None
+        self.Status = None
+        self.InstanceCount = None
+        self.Instances = None
+        self.Remark = None
+
+
+    def _deserialize(self, params):
+        self.AppId = params.get("AppId")
+        self.RegionId = params.get("RegionId")
+        self.GroupId = params.get("GroupId")
+        self.GroupName = params.get("GroupName")
+        self.Status = params.get("Status")
+        self.InstanceCount = params.get("InstanceCount")
+        if params.get("Instances") is not None:
+            self.Instances = []
+            for item in params.get("Instances"):
+                obj = Instances()
+                obj._deserialize(item)
+                self.Instances.append(obj)
+        self.Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class HotKeyInfo(AbstractModel):
@@ -4658,6 +4784,108 @@ class InstanceTextParam(AbstractModel):
         
 
 
+class Instances(AbstractModel):
+    """复制组实例
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AppId: 用户AppID
+        :type AppId: int
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param InstanceName: 实例名称
+        :type InstanceName: str
+        :param RegionId: 地域ID 1--广州 4--上海 5-- 香港 6--多伦多 7--上海金融 8--北京 9-- 新加坡 11--深圳金融 15--美西（硅谷）
+        :type RegionId: int
+        :param ZoneId: 区域ID
+        :type ZoneId: int
+        :param RedisReplicasNum: 副本数量
+        :type RedisReplicasNum: int
+        :param RedisShardNum: 分片数量
+        :type RedisShardNum: int
+        :param RedisShardSize: 分片大小
+        :type RedisShardSize: int
+        :param DiskSize: 实例的磁盘大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiskSize: int
+        :param Engine: 引擎：社区版Redis、腾讯云CKV
+        :type Engine: str
+        :param Role: 实例角色，rw可读写，r只读
+        :type Role: str
+        :param Vip: 实例VIP
+        :type Vip: str
+        :param Vip6: 内部参数，用户可忽略
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Vip6: str
+        :param VpcID: vpc网络ID 如：75101
+        :type VpcID: int
+        :param VPort: 实例端口
+        :type VPort: int
+        :param Status: 实例状态：0-待初始化，1-流程中，2-运行中，-2-已隔离，-3-待删除
+        :type Status: int
+        :param GrocerySysId: 仓库ID
+        :type GrocerySysId: int
+        :param ProductType: 实例类型：1 – Redis2.8内存版（集群架构），2 – Redis2.8内存版（标准架构），3 – CKV 3.2内存版(标准架构)，4 – CKV 3.2内存版(集群架构)，5 – Redis2.8内存版（单机），6 – Redis4.0内存版（标准架构），7 – Redis4.0内存版（集群架构），8 – Redis5.0内存版（标准架构），9 – Redis5.0内存版（集群架构）
+        :type ProductType: int
+        :param CreateTime: 创建时间
+        :type CreateTime: str
+        :param UpdateTime: 更新实例
+        :type UpdateTime: str
+        """
+        self.AppId = None
+        self.InstanceId = None
+        self.InstanceName = None
+        self.RegionId = None
+        self.ZoneId = None
+        self.RedisReplicasNum = None
+        self.RedisShardNum = None
+        self.RedisShardSize = None
+        self.DiskSize = None
+        self.Engine = None
+        self.Role = None
+        self.Vip = None
+        self.Vip6 = None
+        self.VpcID = None
+        self.VPort = None
+        self.Status = None
+        self.GrocerySysId = None
+        self.ProductType = None
+        self.CreateTime = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.AppId = params.get("AppId")
+        self.InstanceId = params.get("InstanceId")
+        self.InstanceName = params.get("InstanceName")
+        self.RegionId = params.get("RegionId")
+        self.ZoneId = params.get("ZoneId")
+        self.RedisReplicasNum = params.get("RedisReplicasNum")
+        self.RedisShardNum = params.get("RedisShardNum")
+        self.RedisShardSize = params.get("RedisShardSize")
+        self.DiskSize = params.get("DiskSize")
+        self.Engine = params.get("Engine")
+        self.Role = params.get("Role")
+        self.Vip = params.get("Vip")
+        self.Vip6 = params.get("Vip6")
+        self.VpcID = params.get("VpcID")
+        self.VPort = params.get("VPort")
+        self.Status = params.get("Status")
+        self.GrocerySysId = params.get("GrocerySysId")
+        self.ProductType = params.get("ProductType")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class KillMasterGroupRequest(AbstractModel):
     """KillMasterGroup请求参数结构体
 
@@ -4868,12 +5096,15 @@ class ModifyAutoBackupConfigResponse(AbstractModel):
         :type WeekDays: list of str
         :param TimePeriod: 时间段 00:00-01:00, 01:00-02:00...... 23:00-00:00
         :type TimePeriod: str
+        :param BackupStorageDays: 全量备份文件保存天数,单位：天
+        :type BackupStorageDays: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.AutoBackupType = None
         self.WeekDays = None
         self.TimePeriod = None
+        self.BackupStorageDays = None
         self.RequestId = None
 
 
@@ -4881,6 +5112,7 @@ class ModifyAutoBackupConfigResponse(AbstractModel):
         self.AutoBackupType = params.get("AutoBackupType")
         self.WeekDays = params.get("WeekDays")
         self.TimePeriod = params.get("TimePeriod")
+        self.BackupStorageDays = params.get("BackupStorageDays")
         self.RequestId = params.get("RequestId")
 
 
@@ -5254,12 +5486,15 @@ class ModifyNetworkConfigRequest(AbstractModel):
         :type VpcId: str
         :param SubnetId: 子网ID，changeVpc、changeBaseToVpc的时候需要提供
         :type SubnetId: str
+        :param Recycle: vip保留时间，单位：天
+        :type Recycle: int
         """
         self.InstanceId = None
         self.Operation = None
         self.Vip = None
         self.VpcId = None
         self.SubnetId = None
+        self.Recycle = None
 
 
     def _deserialize(self, params):
@@ -5268,6 +5503,7 @@ class ModifyNetworkConfigRequest(AbstractModel):
         self.Vip = params.get("Vip")
         self.VpcId = params.get("VpcId")
         self.SubnetId = params.get("SubnetId")
+        self.Recycle = params.get("Recycle")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

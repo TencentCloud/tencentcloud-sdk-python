@@ -1635,6 +1635,8 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
         :type HlsSpecialParam: :class:`tencentcloud.live.v20180801.models.HlsSpecialParam`
         :param Mp3Param: Mp3录制参数，开启Mp3录制时设置。
         :type Mp3Param: :class:`tencentcloud.live.v20180801.models.RecordParam`
+        :param RemoveWatermark: 是否去除水印，类型为慢直播时此参数无效。
+        :type RemoveWatermark: bool
         """
         self.TemplateName = None
         self.Description = None
@@ -1645,6 +1647,7 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
         self.IsDelayLive = None
         self.HlsSpecialParam = None
         self.Mp3Param = None
+        self.RemoveWatermark = None
 
 
     def _deserialize(self, params):
@@ -1669,6 +1672,7 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
         if params.get("Mp3Param") is not None:
             self.Mp3Param = RecordParam()
             self.Mp3Param._deserialize(params.get("Mp3Param"))
+        self.RemoveWatermark = params.get("RemoveWatermark")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8430,6 +8434,8 @@ class ModifyLiveRecordTemplateRequest(AbstractModel):
         :type HlsSpecialParam: :class:`tencentcloud.live.v20180801.models.HlsSpecialParam`
         :param Mp3Param: MP3 录制参数，开启 MP3 录制时设置。
         :type Mp3Param: :class:`tencentcloud.live.v20180801.models.RecordParam`
+        :param RemoveWatermark: 是否去除水印，类型为慢直播时此参数无效。
+        :type RemoveWatermark: bool
         """
         self.TemplateId = None
         self.TemplateName = None
@@ -8440,6 +8446,7 @@ class ModifyLiveRecordTemplateRequest(AbstractModel):
         self.AacParam = None
         self.HlsSpecialParam = None
         self.Mp3Param = None
+        self.RemoveWatermark = None
 
 
     def _deserialize(self, params):
@@ -8464,6 +8471,7 @@ class ModifyLiveRecordTemplateRequest(AbstractModel):
         if params.get("Mp3Param") is not None:
             self.Mp3Param = RecordParam()
             self.Mp3Param._deserialize(params.get("Mp3Param"))
+        self.RemoveWatermark = params.get("RemoveWatermark")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9828,6 +9836,9 @@ class RecordTemplateInfo(AbstractModel):
         :type HlsSpecialParam: :class:`tencentcloud.live.v20180801.models.HlsSpecialParam`
         :param Mp3Param: MP3 录制参数。
         :type Mp3Param: :class:`tencentcloud.live.v20180801.models.RecordParam`
+        :param RemoveWatermark: 是否去除水印。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RemoveWatermark: bool
         """
         self.TemplateId = None
         self.TemplateName = None
@@ -9839,6 +9850,7 @@ class RecordTemplateInfo(AbstractModel):
         self.IsDelayLive = None
         self.HlsSpecialParam = None
         self.Mp3Param = None
+        self.RemoveWatermark = None
 
 
     def _deserialize(self, params):
@@ -9864,6 +9876,7 @@ class RecordTemplateInfo(AbstractModel):
         if params.get("Mp3Param") is not None:
             self.Mp3Param = RecordParam()
             self.Mp3Param._deserialize(params.get("Mp3Param"))
+        self.RemoveWatermark = params.get("RemoveWatermark")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

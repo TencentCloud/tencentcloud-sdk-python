@@ -251,7 +251,7 @@ class RedisClient(AbstractClient):
 
 
     def CreateParamTemplate(self, request):
-        """创建参数模板
+        """创建参数模板。
 
         :param request: Request instance for CreateParamTemplate.
         :type request: :class:`tencentcloud.redis.v20180412.models.CreateParamTemplateRequest`
@@ -1230,6 +1230,34 @@ class RedisClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeReplicationGroup(self, request):
+        """查询复制组
+
+        :param request: Request instance for DescribeReplicationGroup.
+        :type request: :class:`tencentcloud.redis.v20180412.models.DescribeReplicationGroupRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.DescribeReplicationGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeReplicationGroup", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeReplicationGroupResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeSlowLog(self, request):
         """查询实例慢查询记录
 
@@ -1651,7 +1679,7 @@ class RedisClient(AbstractClient):
 
 
     def ModifyAutoBackupConfig(self, request):
-        """设置自动备份时间
+        """设置自动备份配置
 
         :param request: Request instance for ModifyAutoBackupConfig.
         :type request: :class:`tencentcloud.redis.v20180412.models.ModifyAutoBackupConfigRequest`

@@ -1827,6 +1827,47 @@ class DeleteEdgeUnitPodResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteIotDeviceBatchRequest(AbstractModel):
+    """DeleteIotDeviceBatch请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DeviceIDList: 无
+        :type DeviceIDList: list of int non-negative
+        """
+        self.DeviceIDList = None
+
+
+    def _deserialize(self, params):
+        self.DeviceIDList = params.get("DeviceIDList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteIotDeviceBatchResponse(AbstractModel):
+    """DeleteIotDeviceBatch返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteNamespaceRequest(AbstractModel):
     """DeleteNamespace请求参数结构体
 
@@ -2474,6 +2515,52 @@ class DescribeConfigMapsResponse(AbstractModel):
                 obj = ConfigMapBasicInfo()
                 obj._deserialize(item)
                 self.Items.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDracoEdgeNodeInstallerRequest(AbstractModel):
+    """DescribeDracoEdgeNodeInstaller请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SN: 设备SN
+        :type SN: str
+        """
+        self.SN = None
+
+
+    def _deserialize(self, params):
+        self.SN = params.get("SN")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDracoEdgeNodeInstallerResponse(AbstractModel):
+    """DescribeDracoEdgeNodeInstaller返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param OnlineInstallationCommand: 在线安装命名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OnlineInstallationCommand: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.OnlineInstallationCommand = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.OnlineInstallationCommand = params.get("OnlineInstallationCommand")
         self.RequestId = params.get("RequestId")
 
 

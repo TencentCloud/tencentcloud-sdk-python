@@ -1226,11 +1226,17 @@ class AssociateNatGatewayAddressRequest(AbstractModel):
         :type PublicIpAddresses: list of str
         :param Zone: 弹性IP可用区，自动分配弹性IP时传递。
         :type Zone: str
+        :param StockPublicIpAddressesBandwidthOut: 绑定NAT网关的弹性IP带宽大小（单位Mbps），默认为当前用户类型所能使用的最大值。
+        :type StockPublicIpAddressesBandwidthOut: int
+        :param PublicIpAddressesBandwidthOut: 需要申请公网IP带宽大小（单位Mbps），默认为当前用户类型所能使用的最大值。
+        :type PublicIpAddressesBandwidthOut: int
         """
         self.NatGatewayId = None
         self.AddressCount = None
         self.PublicIpAddresses = None
         self.Zone = None
+        self.StockPublicIpAddressesBandwidthOut = None
+        self.PublicIpAddressesBandwidthOut = None
 
 
     def _deserialize(self, params):
@@ -1238,6 +1244,8 @@ class AssociateNatGatewayAddressRequest(AbstractModel):
         self.AddressCount = params.get("AddressCount")
         self.PublicIpAddresses = params.get("PublicIpAddresses")
         self.Zone = params.get("Zone")
+        self.StockPublicIpAddressesBandwidthOut = params.get("StockPublicIpAddressesBandwidthOut")
+        self.PublicIpAddressesBandwidthOut = params.get("PublicIpAddressesBandwidthOut")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3487,6 +3495,10 @@ class CreateNatGatewayRequest(AbstractModel):
         :type Tags: list of Tag
         :param SubnetId: NAT网关所属子网
         :type SubnetId: str
+        :param StockPublicIpAddressesBandwidthOut: 绑定NAT网关的弹性IP带宽大小（单位Mbps），默认为当前用户类型所能使用的最大值。
+        :type StockPublicIpAddressesBandwidthOut: int
+        :param PublicIpAddressesBandwidthOut: 需要申请公网IP带宽大小（单位Mbps），默认为当前用户类型所能使用的最大值。
+        :type PublicIpAddressesBandwidthOut: int
         """
         self.NatGatewayName = None
         self.VpcId = None
@@ -3497,6 +3509,8 @@ class CreateNatGatewayRequest(AbstractModel):
         self.Zone = None
         self.Tags = None
         self.SubnetId = None
+        self.StockPublicIpAddressesBandwidthOut = None
+        self.PublicIpAddressesBandwidthOut = None
 
 
     def _deserialize(self, params):
@@ -3514,6 +3528,8 @@ class CreateNatGatewayRequest(AbstractModel):
                 obj._deserialize(item)
                 self.Tags.append(obj)
         self.SubnetId = params.get("SubnetId")
+        self.StockPublicIpAddressesBandwidthOut = params.get("StockPublicIpAddressesBandwidthOut")
+        self.PublicIpAddressesBandwidthOut = params.get("PublicIpAddressesBandwidthOut")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

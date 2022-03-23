@@ -77,6 +77,8 @@ class BatchSendEmailRequest(AbstractModel):
         :type TimedParam: :class:`tencentcloud.ses.v20201002.models.TimedEmailParam`
         :param Unsubscribe: 退订选项 1: 加入退订链接 0: 不加入退订链接
         :type Unsubscribe: str
+        :param ADLocation: 是否添加广告标识 0:不添加 1:添加到subject前面，2:添加到subject后面
+        :type ADLocation: int
         """
         self.FromEmailAddress = None
         self.ReceiverId = None
@@ -89,6 +91,7 @@ class BatchSendEmailRequest(AbstractModel):
         self.CycleParam = None
         self.TimedParam = None
         self.Unsubscribe = None
+        self.ADLocation = None
 
 
     def _deserialize(self, params):
@@ -116,6 +119,7 @@ class BatchSendEmailRequest(AbstractModel):
             self.TimedParam = TimedEmailParam()
             self.TimedParam._deserialize(params.get("TimedParam"))
         self.Unsubscribe = params.get("Unsubscribe")
+        self.ADLocation = params.get("ADLocation")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

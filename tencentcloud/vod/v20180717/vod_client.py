@@ -1822,6 +1822,37 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeMediaPlayStatDetails(self, request):
+        """该接口用于查询媒体文件按指定时间粒度统计的播放数据
+        * 可以查询最近一年的播放统计数据。
+        * 时间粒度为小时，结束时间和起始时间的跨度最大为7天。
+        * 时间粒度为天，结束时间和起始时间的跨度最大为90天。
+
+        :param request: Request instance for DescribeMediaPlayStatDetails.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeMediaPlayStatDetailsRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeMediaPlayStatDetailsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeMediaPlayStatDetails", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeMediaPlayStatDetailsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeMediaProcessUsageData(self, request):
         """该接口返回查询时间范围内每天使用的视频处理用量信息。
            1. 可以查询最近365天内的视频处理统计数据。

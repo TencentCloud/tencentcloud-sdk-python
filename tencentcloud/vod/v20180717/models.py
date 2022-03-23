@@ -9660,6 +9660,75 @@ class DescribeMediaInfosResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeMediaPlayStatDetailsRequest(AbstractModel):
+    """DescribeMediaPlayStatDetails请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FileId: 媒体文件 ID。
+        :type FileId: str
+        :param StartTime: 起始时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type StartTime: str
+        :param EndTime: 结束时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type EndTime: str
+        :param Interval: 统计时间粒度，有效值：
+<li>Hour：以小时为粒度。</li>
+<li>Day：以天为粒度。</li>
+默认按时间跨度决定，小于1天以小时为粒度，大于等于1天则以天为粒度。
+        :type Interval: str
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.FileId = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Interval = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.FileId = params.get("FileId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Interval = params.get("Interval")
+        self.SubAppId = params.get("SubAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeMediaPlayStatDetailsResponse(AbstractModel):
+    """DescribeMediaPlayStatDetails返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PlayStatInfoSet: 播放统计数据。
+        :type PlayStatInfoSet: list of PlayStatInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.PlayStatInfoSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("PlayStatInfoSet") is not None:
+            self.PlayStatInfoSet = []
+            for item in params.get("PlayStatInfoSet"):
+                obj = PlayStatInfo()
+                obj._deserialize(item)
+                self.PlayStatInfoSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeMediaProcessUsageDataRequest(AbstractModel):
     """DescribeMediaProcessUsageData请求参数结构体
 
@@ -17424,6 +17493,44 @@ class PlayStatFileInfo(AbstractModel):
     def _deserialize(self, params):
         self.Date = params.get("Date")
         self.Url = params.get("Url")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PlayStatInfo(AbstractModel):
+    """播放统计信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Time: 数据所在时间区间的开始时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。如：当时间粒度为天，2018-12-01T00:00:00+08:00，表示2018年12月1日（含）到2018年12月2日（不含）区间。
+<li>表示小时级别数据时，2019-08-22T00:00:00+08:00表示2019-08-22日0点到1点的统计数据。</li>
+<li>表示天级别数据时，2019-08-22T00:00:00+08:00表示2019-08-22日的统计数据。</li>
+        :type Time: str
+        :param FileId: 媒体文件ID。
+        :type FileId: str
+        :param PlayTimes: 播放次数。
+        :type PlayTimes: int
+        :param Traffic: 播放流量，单位：字节。
+        :type Traffic: int
+        """
+        self.Time = None
+        self.FileId = None
+        self.PlayTimes = None
+        self.Traffic = None
+
+
+    def _deserialize(self, params):
+        self.Time = params.get("Time")
+        self.FileId = params.get("FileId")
+        self.PlayTimes = params.get("PlayTimes")
+        self.Traffic = params.get("Traffic")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
