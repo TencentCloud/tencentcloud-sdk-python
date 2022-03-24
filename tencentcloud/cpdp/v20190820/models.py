@@ -9247,6 +9247,35 @@ class MultiApplyOrder(AbstractModel):
         
 
 
+class OpenBankApprovalGuideInfo(AbstractModel):
+    """银行复核指引。银行侧返回网银授权指引链接，一般PC网银，手机网银链接
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PcGuideUrl: PC网银指引
+        :type PcGuideUrl: str
+        :param MobileGuideUrl: 手机网银指引
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MobileGuideUrl: str
+        """
+        self.PcGuideUrl = None
+        self.MobileGuideUrl = None
+
+
+    def _deserialize(self, params):
+        self.PcGuideUrl = params.get("PcGuideUrl")
+        self.MobileGuideUrl = params.get("MobileGuideUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class OpenBankGoodsInfo(AbstractModel):
     """云企付-商品信息
 
@@ -14844,9 +14873,12 @@ OPENBANK_PAYMENT
 渠道为TENPAY，付款方式为EBANK_PAYMENT时返回
 注意：此字段可能返回 null，表示取不到有效值。
         :type RedirectInfo: :class:`tencentcloud.cpdp.v20190820.models.OpenBankRedirectInfo`
-        :param ExternalReturnData: 第三方渠道返回信息，见渠道特殊说明
+        :param ExternalReturnData: 第三方渠道返回信息，见渠道特殊说明,详情见附录-复杂类型。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExternalReturnData: str
+        :param BankApprovalGuideInfo: 银行复核指引。当TENPAY下OPENBANT_PAYMENT时，下单受理成功是返回。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BankApprovalGuideInfo: :class:`tencentcloud.cpdp.v20190820.models.OpenBankApprovalGuideInfo`
         """
         self.ChannelMerchantId = None
         self.OutOrderId = None
@@ -14861,6 +14893,7 @@ OPENBANK_PAYMENT
         self.Attachment = None
         self.RedirectInfo = None
         self.ExternalReturnData = None
+        self.BankApprovalGuideInfo = None
 
 
     def _deserialize(self, params):
@@ -14879,6 +14912,9 @@ OPENBANK_PAYMENT
             self.RedirectInfo = OpenBankRedirectInfo()
             self.RedirectInfo._deserialize(params.get("RedirectInfo"))
         self.ExternalReturnData = params.get("ExternalReturnData")
+        if params.get("BankApprovalGuideInfo") is not None:
+            self.BankApprovalGuideInfo = OpenBankApprovalGuideInfo()
+            self.BankApprovalGuideInfo._deserialize(params.get("BankApprovalGuideInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

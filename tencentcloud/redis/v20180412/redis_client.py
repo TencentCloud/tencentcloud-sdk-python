@@ -979,7 +979,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeInstanceZoneInfo(self, request):
-        """查询Redis节点信息
+        """查询Redis节点详细信息
 
         :param request: Request instance for DescribeInstanceZoneInfo.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceZoneInfoRequest`
@@ -1063,7 +1063,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeParamTemplateInfo(self, request):
-        """查询参数模板详情
+        """查询参数模板详情。
 
         :param request: Request instance for DescribeParamTemplateInfo.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeParamTemplateInfoRequest`
@@ -1707,7 +1707,7 @@ class RedisClient(AbstractClient):
 
 
     def ModifyConnectionConfig(self, request):
-        """修改实例的连接配置，包括带宽和最大连接数
+        """修改实例的连接配置，包括带宽和最大连接数。
 
         :param request: Request instance for ModifyConnectionConfig.
         :type request: :class:`tencentcloud.redis.v20180412.models.ModifyConnectionConfigRequest`

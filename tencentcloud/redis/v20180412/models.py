@@ -340,7 +340,7 @@ class ChangeReplicaToMasterRequest(AbstractModel):
         r"""
         :param InstanceId: 实例Id
         :type InstanceId: str
-        :param GroupId: 副本Id
+        :param GroupId: 副本组Id，多AZ实例必填
         :type GroupId: int
         """
         self.InstanceId = None
@@ -1056,12 +1056,18 @@ class DescribeAutoBackupConfigResponse(AbstractModel):
         :type WeekDays: list of str
         :param TimePeriod: 时间段。
         :type TimePeriod: str
+        :param BackupStorageDays: 全量备份文件保存天数
+        :type BackupStorageDays: int
+        :param BinlogStorageDays: tendis binlog备份文件保存天数
+        :type BinlogStorageDays: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.AutoBackupType = None
         self.WeekDays = None
         self.TimePeriod = None
+        self.BackupStorageDays = None
+        self.BinlogStorageDays = None
         self.RequestId = None
 
 
@@ -1069,6 +1075,8 @@ class DescribeAutoBackupConfigResponse(AbstractModel):
         self.AutoBackupType = params.get("AutoBackupType")
         self.WeekDays = params.get("WeekDays")
         self.TimePeriod = params.get("TimePeriod")
+        self.BackupStorageDays = params.get("BackupStorageDays")
+        self.BinlogStorageDays = params.get("BinlogStorageDays")
         self.RequestId = params.get("RequestId")
 
 
@@ -1147,13 +1155,13 @@ class DescribeCommonDBInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param VpcIds: 实例Vip信息列表
+        :param VpcIds: vpc网络ID信息列表
         :type VpcIds: list of int
-        :param SubnetIds: 子网id信息列表
+        :param SubnetIds: 子网ID信息列表
         :type SubnetIds: list of int
         :param PayMode: 计费类型过滤列表；0表示包年包月，1表示按量计费
         :type PayMode: int
-        :param InstanceIds: 实例id过滤信息列表
+        :param InstanceIds: 实例ID过滤信息列表
         :type InstanceIds: list of str
         :param InstanceNames: 实例名称过滤信息列表
         :type InstanceNames: list of str
@@ -1279,10 +1287,16 @@ class DescribeDBSecurityGroupsResponse(AbstractModel):
         r"""
         :param Groups: 安全组规则
         :type Groups: list of SecurityGroup
+        :param VIP: 安全组生效内网地址
+        :type VIP: str
+        :param VPort: 安全组生效内网端口
+        :type VPort: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Groups = None
+        self.VIP = None
+        self.VPort = None
         self.RequestId = None
 
 
@@ -1293,6 +1307,8 @@ class DescribeDBSecurityGroupsResponse(AbstractModel):
                 obj = SecurityGroup()
                 obj._deserialize(item)
                 self.Groups.append(obj)
+        self.VIP = params.get("VIP")
+        self.VPort = params.get("VPort")
         self.RequestId = params.get("RequestId")
 
 
@@ -2468,7 +2484,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Limit: 实例列表的大小，参数默认值20
+        :param Limit: 实例列表的大小，参数默认值20，传值则以传参为准，如果传参大于具体配置etc/conf/component.properties中的DescribeInstancesPageLimit配置项 （读不到配置默认配置项为1000），则以配置项为准
         :type Limit: int
         :param Offset: 偏移量，取Limit整数倍
         :type Offset: int
@@ -2512,6 +2528,10 @@ class DescribeInstancesRequest(AbstractModel):
         :type TypeList: list of int
         :param MonitorVersion: 内部参数，用户可忽略
         :type MonitorVersion: str
+        :param InstanceTags: 根据标签的Key和Value筛选资源，不传或者传空数组则不进行过滤
+        :type InstanceTags: list of InstanceTagInfo
+        :param TagKeys: 根据标签的Key筛选资源，不传或者传空数组则不进行过滤
+        :type TagKeys: list of str
         """
         self.Limit = None
         self.Offset = None
@@ -2535,6 +2555,8 @@ class DescribeInstancesRequest(AbstractModel):
         self.SearchKeys = None
         self.TypeList = None
         self.MonitorVersion = None
+        self.InstanceTags = None
+        self.TagKeys = None
 
 
     def _deserialize(self, params):
@@ -2560,6 +2582,13 @@ class DescribeInstancesRequest(AbstractModel):
         self.SearchKeys = params.get("SearchKeys")
         self.TypeList = params.get("TypeList")
         self.MonitorVersion = params.get("MonitorVersion")
+        if params.get("InstanceTags") is not None:
+            self.InstanceTags = []
+            for item in params.get("InstanceTags"):
+                obj = InstanceTagInfo()
+                obj._deserialize(item)
+                self.InstanceTags.append(obj)
+        self.TagKeys = params.get("TagKeys")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2879,7 +2908,7 @@ class DescribeProjectSecurityGroupsRequest(AbstractModel):
         :type ProjectId: int
         :param Offset: 偏移量。
         :type Offset: int
-        :param Limit: 拉取数量限制。
+        :param Limit: 拉取数量限制，默认20
         :type Limit: int
         :param SearchKey: 搜索条件，支持安全组id或者安全组名称。
         :type SearchKey: str
@@ -3222,7 +3251,7 @@ class DescribeTaskListRequest(AbstractModel):
         :type InstanceId: str
         :param InstanceName: 实例名称
         :type InstanceName: str
-        :param Limit: 分页大小
+        :param Limit: 分页大小,默认20，上限不大于100
         :type Limit: int
         :param Offset: 偏移量，取Limit整数倍（自动向下取整）
         :type Offset: int
@@ -4956,14 +4985,18 @@ class ManualBackupInstanceRequest(AbstractModel):
         :type InstanceId: str
         :param Remark: 备份的备注信息
         :type Remark: str
+        :param StorageDays: 保存天数。0代表指定默认保留时间
+        :type StorageDays: int
         """
         self.InstanceId = None
         self.Remark = None
+        self.StorageDays = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
         self.Remark = params.get("Remark")
+        self.StorageDays = params.get("StorageDays")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5235,7 +5268,7 @@ class ModifyInstanceAccountRequest(AbstractModel):
         :type AccountPassword: str
         :param Remark: 子账号描述信息
         :type Remark: str
-        :param ReadonlyPolicy: 子账号路由策略：填写master或者slave，表示路由主节点，从节点
+        :param ReadonlyPolicy: 路由策略：填写master或者replication，表示主节点或者从节点
         :type ReadonlyPolicy: list of str
         :param Privilege: 子账号读写策略：填写r、w、rw，表示只读，只写，读写策略
         :type Privilege: str
@@ -5867,6 +5900,15 @@ class RedisBackupSet(AbstractModel):
         :type Remark: str
         :param Locked: 备份是否被锁定，0：未被锁定；1：已被锁定
         :type Locked: int
+        :param BackupSize: 内部字段，用户可忽略
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BackupSize: int
+        :param FullBackup: 内部字段，用户可忽略
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FullBackup: int
+        :param InstanceType: 内部字段，用户可忽略
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceType: int
         """
         self.StartTime = None
         self.BackupId = None
@@ -5874,6 +5916,9 @@ class RedisBackupSet(AbstractModel):
         self.Status = None
         self.Remark = None
         self.Locked = None
+        self.BackupSize = None
+        self.FullBackup = None
+        self.InstanceType = None
 
 
     def _deserialize(self, params):
@@ -5883,6 +5928,9 @@ class RedisBackupSet(AbstractModel):
         self.Status = params.get("Status")
         self.Remark = params.get("Remark")
         self.Locked = params.get("Locked")
+        self.BackupSize = params.get("BackupSize")
+        self.FullBackup = params.get("FullBackup")
+        self.InstanceType = params.get("InstanceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6307,7 +6355,7 @@ class RestoreInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 待操作的实例ID，可通过 DescribeRedis 接口返回值中的 redisId 获取。
+        :param InstanceId: 待操作的实例ID，可通过 DescribeInstances 接口返回值中的 InstanceId 获取。
         :type InstanceId: str
         :param BackupId: 备份ID，可通过 GetRedisBackupList 接口返回值中的 backupId 获取
         :type BackupId: str
@@ -6885,7 +6933,7 @@ class UpgradeInstanceRequest(AbstractModel):
         :type MemSize: int
         :param RedisShardNum: 分片数量，标准架构不需要填写。该参数不支持与RedisReplicasNum或MemSize同时输入。
         :type RedisShardNum: int
-        :param RedisReplicasNum: 副本数量，标准架构不需要填写，多AZ实例修改副本时必须要传入NodeSet。该参数不支持与RedisShardNum或MemSize同时输入。
+        :param RedisReplicasNum: 副本数量，多AZ实例修改副本时必须要传入NodeSet。该参数不支持与RedisShardNum或MemSize同时输入。
         :type RedisReplicasNum: int
         :param NodeSet: 多AZ实例增加副本时的附带信息，非多AZ实例不需要传此参数。多AZ增加副本时此参数为必传参数，传入要增加的副本的信息，包括副本的可用区和副本的类型（NodeType为1）
         :type NodeSet: list of RedisNodeInfo
@@ -7000,12 +7048,16 @@ class UpgradeVersionToMultiAvailabilityZonesRequest(AbstractModel):
         r"""
         :param InstanceId: 实例ID
         :type InstanceId: str
+        :param UpgradeProxyAndRedisServer: 是否升级proxy和redis内核版本，升级后可支持就近接入
+        :type UpgradeProxyAndRedisServer: bool
         """
         self.InstanceId = None
+        self.UpgradeProxyAndRedisServer = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
+        self.UpgradeProxyAndRedisServer = params.get("UpgradeProxyAndRedisServer")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
