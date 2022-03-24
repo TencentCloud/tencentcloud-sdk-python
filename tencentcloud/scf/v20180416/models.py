@@ -4995,9 +4995,9 @@ class Variable(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Key: 变量的名称
+        :param Key: 变量的名称，不可为空字符
         :type Key: str
-        :param Value: 变量的值
+        :param Value: 变量的值，不可为空字符
         :type Value: str
         """
         self.Key = None

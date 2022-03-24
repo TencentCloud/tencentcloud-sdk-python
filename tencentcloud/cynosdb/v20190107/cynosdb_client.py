@@ -110,6 +110,34 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateAccounts(self, request):
+        """创建账号
+
+        :param request: Request instance for CreateAccounts.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.CreateAccountsRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.CreateAccountsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateAccounts", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateAccountsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateClusters(self, request):
         """创建集群
 

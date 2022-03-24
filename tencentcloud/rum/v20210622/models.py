@@ -3339,9 +3339,9 @@ class DescribeProjectsRequest(AbstractModel):
         :type Limit: int
         :param Offset: 分页页码，整型
         :type Offset: int
-        :param Filters: 过滤条件
+        :param Filters: 过滤参数；demo模式传{"Name": "IsDemo", "Values":["1"]}
         :type Filters: list of Filter
-        :param IsDemo: 是否为demo模式（1=是，2=否）
+        :param IsDemo: 该参数已废弃，demo模式请在Filters内注明
         :type IsDemo: int
         """
         self.Limit = None
@@ -3590,7 +3590,7 @@ class DescribeScoresRequest(AbstractModel):
         :type StartTime: str
         :param ID: 项目ID
         :type ID: int
-        :param IsDemo: 是否为demo模式（1=是，2=否）
+        :param IsDemo: 该参数已废弃
         :type IsDemo: int
         """
         self.EndTime = None
@@ -3730,9 +3730,9 @@ class DescribeTawInstancesRequest(AbstractModel):
         :type InstanceStatuses: list of int
         :param InstanceIds: 实例Id
         :type InstanceIds: list of str
-        :param Filters: 过滤参数
+        :param Filters: 过滤参数；demo模式传{"Name": "IsDemo", "Values":["1"]}
         :type Filters: list of Filter
-        :param IsDemo: 是否为demo模式（1=是，2=否）
+        :param IsDemo: 该参数已废弃，demo模式请在Filters内注明
         :type IsDemo: int
         """
         self.ChargeStatuses = None

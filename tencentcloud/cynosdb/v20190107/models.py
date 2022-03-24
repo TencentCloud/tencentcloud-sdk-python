@@ -502,6 +502,56 @@ class ClusterParamModifyLog(AbstractModel):
         
 
 
+class CreateAccountsRequest(AbstractModel):
+    """CreateAccounts请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群id
+        :type ClusterId: str
+        :param Accounts: 新账户列表
+        :type Accounts: list of NewAccount
+        """
+        self.ClusterId = None
+        self.Accounts = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        if params.get("Accounts") is not None:
+            self.Accounts = []
+            for item in params.get("Accounts"):
+                obj = NewAccount()
+                obj._deserialize(item)
+                self.Accounts.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAccountsResponse(AbstractModel):
+    """CreateAccounts返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CreateClustersRequest(AbstractModel):
     """CreateClusters请求参数结构体
 
@@ -758,7 +808,16 @@ class CynosdbCluster(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Status: 集群状态
+        :param Status: 集群状态， 可选值如下:
+creating: 创建中
+running:运行中
+isolating:隔离中
+isolated:已隔离
+activating:解隔离中
+offlining:下线中
+offlined:已下线
+deleting:删除中
+deleted:已删除
         :type Status: str
         :param UpdateTime: 更新时间
         :type UpdateTime: str
@@ -3176,6 +3235,42 @@ class NetAddr(AbstractModel):
         self.WanDomain = params.get("WanDomain")
         self.WanPort = params.get("WanPort")
         self.NetType = params.get("NetType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NewAccount(AbstractModel):
+    """新创建的账号
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AccountName: 账户名
+        :type AccountName: str
+        :param AccountPassword: 密码
+        :type AccountPassword: str
+        :param Host: 主机
+        :type Host: str
+        :param Description: 描述
+        :type Description: str
+        """
+        self.AccountName = None
+        self.AccountPassword = None
+        self.Host = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.AccountName = params.get("AccountName")
+        self.AccountPassword = params.get("AccountPassword")
+        self.Host = params.get("Host")
+        self.Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

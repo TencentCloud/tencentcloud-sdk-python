@@ -93,6 +93,9 @@ INVALIDPARAMETER_ISOLATENOTALLOWED = 'InvalidParameter.IsolateNotAllowed'
 INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 
 # 账号已存在。
+INVALIDPARAMETERVALUE_ACCOUNTALREADYEXISTERROR = 'InvalidParameterValue.AccountAlreadyExistError'
+
+# 账号已存在。
 INVALIDPARAMETERVALUE_ACCOUNTEXIST = 'InvalidParameterValue.AccountExist'
 
 # 实例{{1}}不存在账号{{2}}。

@@ -4303,6 +4303,9 @@ class ParamDesc(AbstractModel):
         :type Constraint: :class:`tencentcloud.dcdb.v20180411.models.ParamConstraint`
         :param HaveSetValue: 是否有设置过值，false:没有设置过值，true:有设置过值。
         :type HaveSetValue: bool
+        :param NeedRestart: 是否需要重启生效，false:不需要重启，
+true:需要重启
+        :type NeedRestart: bool
         """
         self.Param = None
         self.Value = None
@@ -4310,6 +4313,7 @@ class ParamDesc(AbstractModel):
         self.Default = None
         self.Constraint = None
         self.HaveSetValue = None
+        self.NeedRestart = None
 
 
     def _deserialize(self, params):
@@ -4321,6 +4325,7 @@ class ParamDesc(AbstractModel):
             self.Constraint = ParamConstraint()
             self.Constraint._deserialize(params.get("Constraint"))
         self.HaveSetValue = params.get("HaveSetValue")
+        self.NeedRestart = params.get("NeedRestart")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

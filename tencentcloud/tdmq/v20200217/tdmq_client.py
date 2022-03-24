@@ -2574,6 +2574,34 @@ class TdmqClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ResetRocketMQConsumerOffSet(self, request):
+        """重置指定Group的消费位点到指定时间戳
+
+        :param request: Request instance for ResetRocketMQConsumerOffSet.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.ResetRocketMQConsumerOffSetRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.ResetRocketMQConsumerOffSetResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ResetRocketMQConsumerOffSet", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ResetRocketMQConsumerOffSetResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def RewindCmqQueue(self, request):
         """回溯cmq队列
 
