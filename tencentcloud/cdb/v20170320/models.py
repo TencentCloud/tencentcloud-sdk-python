@@ -5281,9 +5281,9 @@ class DescribeInstanceParamRecordsRequest(AbstractModel):
         r"""
         :param InstanceId: 实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同，可使用 [查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口获取，其值为输出参数中字段 InstanceId 的值。
         :type InstanceId: str
-        :param Offset: 分页偏移量。
+        :param Offset: 分页偏移量，默认值：0。
         :type Offset: int
-        :param Limit: 分页大小。
+        :param Limit: 分页大小，默认值：20。
         :type Limit: int
         """
         self.InstanceId = None
@@ -8878,9 +8878,9 @@ class ModifyParamTemplateRequest(AbstractModel):
         r"""
         :param TemplateId: 模板 ID。
         :type TemplateId: int
-        :param Name: 模板名称。
+        :param Name: 模板名称，长度不超过64。
         :type Name: str
-        :param Description: 模板描述。
+        :param Description: 模板描述，长度不超过255。
         :type Description: str
         :param ParamList: 参数列表。
         :type ParamList: list of Parameter

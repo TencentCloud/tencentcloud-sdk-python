@@ -2041,6 +2041,8 @@ global：全球锁定
         :type Readonly: str
         :param Product: 域名所属产品，cdn/ecdn
         :type Product: str
+        :param ParentHost: 主域名
+        :type ParentHost: str
         """
         self.ResourceId = None
         self.AppId = None
@@ -2056,6 +2058,7 @@ global：全球锁定
         self.Area = None
         self.Readonly = None
         self.Product = None
+        self.ParentHost = None
 
 
     def _deserialize(self, params):
@@ -2075,6 +2078,7 @@ global：全球锁定
         self.Area = params.get("Area")
         self.Readonly = params.get("Readonly")
         self.Product = params.get("Product")
+        self.ParentHost = params.get("ParentHost")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6689,6 +6693,9 @@ off：不支持
         :param RuleEngine: 规则引擎
 注意：此字段可能返回 null，表示取不到有效值。
         :type RuleEngine: :class:`tencentcloud.cdn.v20180606.models.RuleEngine`
+        :param ParentHost: 主域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParentHost: str
         """
         self.ResourceId = None
         self.AppId = None
@@ -6751,6 +6758,7 @@ off：不支持
         self.RemoteAuthentication = None
         self.ShareCname = None
         self.RuleEngine = None
+        self.ParentHost = None
 
 
     def _deserialize(self, params):
@@ -6915,6 +6923,7 @@ off：不支持
         if params.get("RuleEngine") is not None:
             self.RuleEngine = RuleEngine()
             self.RuleEngine._deserialize(params.get("RuleEngine"))
+        self.ParentHost = params.get("ParentHost")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

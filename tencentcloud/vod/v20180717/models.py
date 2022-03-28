@@ -11249,11 +11249,17 @@ class EditMediaOutputConfig(AbstractModel):
         :type ClassId: int
         :param ExpireTime: 输出文件的过期时间，超过该时间文件将被删除，默认为永久不过期，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
         :type ExpireTime: str
+        :param VideoStream: 输出的视频信息。
+        :type VideoStream: :class:`tencentcloud.vod.v20180717.models.EditMediaVideoStream`
+        :param TEHDConfig: 极速高清转码参数。
+        :type TEHDConfig: :class:`tencentcloud.vod.v20180717.models.EditMediaTEHDConfig`
         """
         self.MediaName = None
         self.Type = None
         self.ClassId = None
         self.ExpireTime = None
+        self.VideoStream = None
+        self.TEHDConfig = None
 
 
     def _deserialize(self, params):
@@ -11261,6 +11267,12 @@ class EditMediaOutputConfig(AbstractModel):
         self.Type = params.get("Type")
         self.ClassId = params.get("ClassId")
         self.ExpireTime = params.get("ExpireTime")
+        if params.get("VideoStream") is not None:
+            self.VideoStream = EditMediaVideoStream()
+            self.VideoStream._deserialize(params.get("VideoStream"))
+        if params.get("TEHDConfig") is not None:
+            self.TEHDConfig = EditMediaTEHDConfig()
+            self.TEHDConfig._deserialize(params.get("TEHDConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -11285,7 +11297,7 @@ class EditMediaRequest(AbstractModel):
         :type StreamInfos: list of EditMediaStreamInfo
         :param Definition: 编辑模板 ID，取值有 10，20，不填代表使用 10 模板。
 <li>10：拼接时，以分辨率最高的输入为基准；</li>
-<li>20：拼接时，以码率最高的输入为基准；</li>
+<li>20：拼接时，以码率最高的输入为基准。</li>
         :type Definition: int
         :param ProcedureName: [任务流模板](/document/product/266/11700#.E4.BB.BB.E5.8A.A1.E6.B5.81.E6.A8.A1.E6.9D.BF)名字，如果要对生成的新视频执行任务流时填写。
         :type ProcedureName: str
@@ -11392,6 +11404,30 @@ class EditMediaStreamInfo(AbstractModel):
         self.StreamId = params.get("StreamId")
         self.StartTime = params.get("StartTime")
         self.EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EditMediaTEHDConfig(AbstractModel):
+    """视频编辑极速高清参数配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Type: 极速高清类型，可选值：<li>TEHD-100 表示极速高清-100;</li> <li>OFF 表示关闭极速高清。</li>不填表示 OFF。
+        :type Type: str
+        """
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -11560,6 +11596,51 @@ class EditMediaTaskOutput(AbstractModel):
         self.MediaName = params.get("MediaName")
         self.ClassId = params.get("ClassId")
         self.ExpireTime = params.get("ExpireTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EditMediaVideoStream(AbstractModel):
+    """视频流配置信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ResolutionAdaptive: 分辨率自适应，可选值：
+<li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
+<li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
+默认值：open。
+        :type ResolutionAdaptive: str
+        :param Width: 视频流宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+<li>当 Width、Height 均为 0，则分辨率取基准分辨率；</li>
+<li>当 Width 为 0，Height 非 0，则 Width 按基准分辨率比例缩放；</li>
+<li>当 Width 非 0，Height 为 0，则 Height 按基准分辨率比例缩放；</li>
+<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+默认值：0。
+        :type Width: int
+        :param Height: 视频流高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+<li>当 Width、Height 均为 0，则分辨率取基准分辨率；</li>
+<li>当 Width 为 0，Height 非 0，则 Width 按基准分辨率比例缩放；</li>
+<li>当 Width 非 0，Height 为 0，则 Height 按基准分辨率比例缩放；</li>
+<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+默认值：0。
+        :type Height: int
+        """
+        self.ResolutionAdaptive = None
+        self.Width = None
+        self.Height = None
+
+
+    def _deserialize(self, params):
+        self.ResolutionAdaptive = params.get("ResolutionAdaptive")
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -19711,7 +19792,7 @@ class SampleSnapshotTemplate(AbstractModel):
         :type CreateTime: str
         :param UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
         :type UpdateTime: str
-        :param FillType: 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
+        :param FillType: 填充方式，当截图配置宽高参数与原始视频的宽高比不一致时，对截图的处理方式，即为“填充”。可选填充方式：
 <li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
 <li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
 <li>white：留白，保持视频宽高比不变，边缘剩余部分使用白色填充。</li>
@@ -20276,11 +20357,11 @@ class SnapshotByTimeOffsetTemplate(AbstractModel):
         :type CreateTime: str
         :param UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
         :type UpdateTime: str
-        :param FillType: 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
+        :param FillType: 填充方式，当截图配置宽高参数与原始视频的宽高比不一致时，对截图的处理方式，即为“填充”。可选填充方式：
 <li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
 <li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
-<li>black：留白，保持视频宽高比不变，边缘剩余部分使用白色填充。</li>
-<li>black：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊。</li>
+<li>white：留白，保持视频宽高比不变，边缘剩余部分使用白色填充。</li>
+<li>gauss：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊。</li>
 默认值：black 。
         :type FillType: str
         """
