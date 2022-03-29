@@ -1334,7 +1334,7 @@ class CreateUserTokenRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Second: 无
+        :param Second: token过期时间，有效值是1~300秒
         :type Second: int
         """
         self.Second = None

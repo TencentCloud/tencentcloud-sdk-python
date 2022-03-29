@@ -3265,6 +3265,8 @@ class DescribeAuditPoliciesRequest(AbstractModel):
         :param RuleId: 审计规则 ID。可使用该审计规则 ID 查询到其关联的审计策略。
 注意，参数 RuleId，InstanceId，PolicyId，PolicyName 必须至少传一个。
         :type RuleId: str
+        :param InstanceName: 实例名称
+        :type InstanceName: str
         """
         self.InstanceId = None
         self.PolicyId = None
@@ -3272,6 +3274,7 @@ class DescribeAuditPoliciesRequest(AbstractModel):
         self.Limit = None
         self.Offset = None
         self.RuleId = None
+        self.InstanceName = None
 
 
     def _deserialize(self, params):
@@ -3281,6 +3284,7 @@ class DescribeAuditPoliciesRequest(AbstractModel):
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
         self.RuleId = params.get("RuleId")
+        self.InstanceName = params.get("InstanceName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

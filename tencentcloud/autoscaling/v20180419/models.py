@@ -1393,11 +1393,15 @@ class DataDisk(AbstractModel):
         :param DeleteWithInstance: 数据盘是否随子机销毁。取值范围：<br><li>TRUE：子机销毁时，销毁数据盘，只支持按小时后付费云盘<br><li>FALSE：子机销毁时，保留数据盘
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeleteWithInstance: bool
+        :param Encrypt: 数据盘是否加密。取值范围：<br><li>TRUE：加密<br><li>FALSE：不加密
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Encrypt: bool
         """
         self.DiskType = None
         self.DiskSize = None
         self.SnapshotId = None
         self.DeleteWithInstance = None
+        self.Encrypt = None
 
 
     def _deserialize(self, params):
@@ -1405,6 +1409,7 @@ class DataDisk(AbstractModel):
         self.DiskSize = params.get("DiskSize")
         self.SnapshotId = params.get("SnapshotId")
         self.DeleteWithInstance = params.get("DeleteWithInstance")
+        self.Encrypt = params.get("Encrypt")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

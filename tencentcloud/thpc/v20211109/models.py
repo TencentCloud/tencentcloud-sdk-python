@@ -154,6 +154,10 @@ class ClusterOverview(AbstractModel):
         :type ManagerNodeCount: int
         :param ManagerNodeSet: 管控节点概览。
         :type ManagerNodeSet: list of ManagerNodeOverview
+        :param LoginNodeSet: 登录节点概览。
+        :type LoginNodeSet: list of LoginNodeOverview
+        :param LoginNodeCount: 登录节点数量。
+        :type LoginNodeCount: int
         """
         self.ClusterId = None
         self.ClusterStatus = None
@@ -165,6 +169,8 @@ class ClusterOverview(AbstractModel):
         self.ComputeNodeSet = None
         self.ManagerNodeCount = None
         self.ManagerNodeSet = None
+        self.LoginNodeSet = None
+        self.LoginNodeCount = None
 
 
     def _deserialize(self, params):
@@ -190,6 +196,13 @@ class ClusterOverview(AbstractModel):
                 obj = ManagerNodeOverview()
                 obj._deserialize(item)
                 self.ManagerNodeSet.append(obj)
+        if params.get("LoginNodeSet") is not None:
+            self.LoginNodeSet = []
+            for item in params.get("LoginNodeSet"):
+                obj = LoginNodeOverview()
+                obj._deserialize(item)
+                self.LoginNodeSet.append(obj)
+        self.LoginNodeCount = params.get("LoginNodeCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -624,6 +637,30 @@ BANDWIDTH_PACKAGE：带宽包用户
     def _deserialize(self, params):
         self.InternetChargeType = params.get("InternetChargeType")
         self.InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LoginNodeOverview(AbstractModel):
+    """登录节点概览。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NodeId: 登录节点ID。
+        :type NodeId: str
+        """
+        self.NodeId = None
+
+
+    def _deserialize(self, params):
+        self.NodeId = params.get("NodeId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

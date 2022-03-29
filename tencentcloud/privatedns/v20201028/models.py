@@ -901,7 +901,7 @@ class DescribePrivateZoneRecordListRequest(AbstractModel):
         :type Filters: list of Filter
         :param Offset: 分页偏移量，从0开始
         :type Offset: int
-        :param Limit: 分页限制数目， 最大100，默认20
+        :param Limit: 分页限制数目， 最大200，默认20
         :type Limit: int
         """
         self.ZoneId = None
@@ -1490,6 +1490,9 @@ class PrivateZone(AbstractModel):
         :param AccountVpcSet: 绑定的关联账号的vpc列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type AccountVpcSet: list of AccountVpcInfoOutput
+        :param IsCustomTld: 是否自定义TLD
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsCustomTld: bool
         """
         self.ZoneId = None
         self.OwnerUin = None
@@ -1503,6 +1506,7 @@ class PrivateZone(AbstractModel):
         self.DnsForwardStatus = None
         self.Tags = None
         self.AccountVpcSet = None
+        self.IsCustomTld = None
 
 
     def _deserialize(self, params):
@@ -1533,6 +1537,7 @@ class PrivateZone(AbstractModel):
                 obj = AccountVpcInfoOutput()
                 obj._deserialize(item)
                 self.AccountVpcSet.append(obj)
+        self.IsCustomTld = params.get("IsCustomTld")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
