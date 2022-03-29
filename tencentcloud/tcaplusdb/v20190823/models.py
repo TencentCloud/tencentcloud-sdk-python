@@ -328,6 +328,15 @@ class ClusterInfo(AbstractModel):
         :param KafkaInfo: 数据订阅的kafka信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type KafkaInfo: :class:`tencentcloud.tcaplusdb.v20190823.models.KafkaInfo`
+        :param TxhBackupExpireDay: 集群Txh备份文件多少天后过期删除
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TxhBackupExpireDay: int
+        :param UlogBackupExpireDay: 集群Ulog备份文件多少天后过期删除
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UlogBackupExpireDay: int
+        :param IsReadOnlyUlogBackupExpireDay: 集群Ulog备份文件过期策略是否为只读， 0： UlogBackupExpire是只读，不可修改， 1： UlogBackupExpire可以修改（当前业务存在Svrid第二段等于clusterid的机器）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsReadOnlyUlogBackupExpireDay: int
         """
         self.ClusterName = None
         self.ClusterId = None
@@ -355,6 +364,9 @@ class ClusterInfo(AbstractModel):
         self.DbaUins = None
         self.DataFlowStatus = None
         self.KafkaInfo = None
+        self.TxhBackupExpireDay = None
+        self.UlogBackupExpireDay = None
+        self.IsReadOnlyUlogBackupExpireDay = None
 
 
     def _deserialize(self, params):
@@ -396,6 +408,9 @@ class ClusterInfo(AbstractModel):
         if params.get("KafkaInfo") is not None:
             self.KafkaInfo = KafkaInfo()
             self.KafkaInfo._deserialize(params.get("KafkaInfo"))
+        self.TxhBackupExpireDay = params.get("TxhBackupExpireDay")
+        self.UlogBackupExpireDay = params.get("UlogBackupExpireDay")
+        self.IsReadOnlyUlogBackupExpireDay = params.get("IsReadOnlyUlogBackupExpireDay")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1335,11 +1350,11 @@ class DescribeApplicationsRequest(AbstractModel):
         r"""
         :param ClusterId: 集群ID，用于获取指定集群的单据
         :type ClusterId: str
-        :param Limit: 分页
+        :param Limit: 分页，限制当前返回多少条记录，大于等于10
         :type Limit: int
-        :param Offset: 分页
+        :param Offset: 分页，从多少条数据开始返回
         :type Offset: int
-        :param CensorStatus: 申请单状态，用于过滤
+        :param CensorStatus: 申请单状态，用于过滤，0-待审核 1-已经审核并提交任务 2-已驳回
         :type CensorStatus: int
         :param TableGroupId: 表格组id，用于过滤
         :type TableGroupId: str
@@ -1347,7 +1362,7 @@ class DescribeApplicationsRequest(AbstractModel):
         :type TableName: str
         :param Applicant: 申请人uin，用于过滤
         :type Applicant: str
-        :param ApplyType: 申请类型，用于过滤
+        :param ApplyType: 申请类型，用于过滤，0加表 1删除表 2清理表 3修改表 4表重建 5存储层扩缩容 6接入层扩缩容 7复制表数据 8key回档
         :type ApplyType: int
         """
         self.ClusterId = None
@@ -4593,6 +4608,9 @@ class TableInfoNew(AbstractModel):
         :param DbClusterInfoStruct: 表格分布式索引/缓写、kafka数据订阅信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type DbClusterInfoStruct: str
+        :param TxhBackupExpireDay: 表格Txh备份文件多少天后过期删除
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TxhBackupExpireDay: int
         """
         self.TableName = None
         self.TableInstanceId = None
@@ -4621,6 +4639,7 @@ class TableInfoNew(AbstractModel):
         self.SortFieldNum = None
         self.SortRule = None
         self.DbClusterInfoStruct = None
+        self.TxhBackupExpireDay = None
 
 
     def _deserialize(self, params):
@@ -4658,6 +4677,7 @@ class TableInfoNew(AbstractModel):
         self.SortFieldNum = params.get("SortFieldNum")
         self.SortRule = params.get("SortRule")
         self.DbClusterInfoStruct = params.get("DbClusterInfoStruct")
+        self.TxhBackupExpireDay = params.get("TxhBackupExpireDay")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

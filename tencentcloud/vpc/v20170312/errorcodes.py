@@ -167,6 +167,9 @@ INVALIDPARAMETERVALUE_DUPLICATE = 'InvalidParameterValue.Duplicate'
 # 参数值存在重复。
 INVALIDPARAMETERVALUE_DUPLICATEPARA = 'InvalidParameterValue.DuplicatePara'
 
+# 值超过上限。
+INVALIDPARAMETERVALUE_EIPBRANDWIDTHOUTINVALID = 'InvalidParameterValue.EIPBrandWidthOutInvalid'
+
 # 缺少参数。
 INVALIDPARAMETERVALUE_EMPTY = 'InvalidParameterValue.Empty'
 
@@ -590,6 +593,9 @@ UNSUPPORTEDOPERATION_LOCALGATEWAYALREADYEXISTS = 'UnsupportedOperation.LocalGate
 # 资源互斥操作任务正在执行。
 UNSUPPORTEDOPERATION_MUTEXOPERATIONTASKRUNNING = 'UnsupportedOperation.MutexOperationTaskRunning'
 
+# SNAT/DNAT转换规则所指定的内网IP已绑定了其他的规则，无法重复绑定。
+UNSUPPORTEDOPERATION_NATGATEWAYRULEPIPEXISTS = 'UnsupportedOperation.NatGatewayRulePipExists'
+
 # NAT网关类型不支持SNAT规则。
 UNSUPPORTEDOPERATION_NATGATEWAYTYPENOTSUPPORTSNAT = 'UnsupportedOperation.NatGatewayTypeNotSupportSNAT'
 
@@ -664,6 +670,9 @@ UNSUPPORTEDOPERATION_UNPAIDORDERALREADYEXISTS = 'UnsupportedOperation.UnpaidOrde
 
 # 指定机型不支持弹性网卡。
 UNSUPPORTEDOPERATION_UNSUPPORTEDINSTANCEFAMILY = 'UnsupportedOperation.UnsupportedInstanceFamily'
+
+# 暂无法在此国家/地区提供该服务。
+UNSUPPORTEDOPERATION_UNSUPPORTEDREGION = 'UnsupportedOperation.UnsupportedRegion'
 
 # 当前用户付费类型不支持创建所选付费类型的云联网。
 UNSUPPORTEDOPERATION_USERANDCCNCHARGETYPENOTMATCH = 'UnsupportedOperation.UserAndCcnChargeTypeNotMatch'

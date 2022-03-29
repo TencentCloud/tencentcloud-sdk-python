@@ -400,12 +400,15 @@ class CreateSignUrlsRequest(AbstractModel):
         :type Endpoint: str
         :param JumpUrl: 签署完之后的H5页面的跳转链接，针对Endpoint为CHANNEL时有效
         :type JumpUrl: str
+        :param AutoJumpBack: "APP" 类型的签署链接，可以设置此值；表示签署完成后自动回跳至源APP；
+        :type AutoJumpBack: bool
         """
         self.Agent = None
         self.FlowIds = None
         self.Operator = None
         self.Endpoint = None
         self.JumpUrl = None
+        self.AutoJumpBack = None
 
 
     def _deserialize(self, params):
@@ -418,6 +421,7 @@ class CreateSignUrlsRequest(AbstractModel):
             self.Operator._deserialize(params.get("Operator"))
         self.Endpoint = params.get("Endpoint")
         self.JumpUrl = params.get("JumpUrl")
+        self.AutoJumpBack = params.get("AutoJumpBack")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -859,7 +863,9 @@ class FlowApproverInfo(AbstractModel):
         :type Deadline: int
         :param CallbackUrl: 签署完回调url
         :type CallbackUrl: str
-        :param ApproverType: 签署人类型，PERSON和ORGANIZATION
+        :param ApproverType: 签署人类型，PERSON-个人；ORGANIZATION-企业；
+ENTERPRISESERVER-企业静默签;
+注：ENTERPRISESERVER 类型仅用于使用文件创建流程（ChannelCreateFlowByFiles）接口；并且仅能指定发起方企业签署方为静默签署；
         :type ApproverType: str
         :param OpenId: 用户侧第三方id
         :type OpenId: str
@@ -876,6 +882,8 @@ class FlowApproverInfo(AbstractModel):
         :param NotChannelOrganization: 指定签署人非渠道企业下员工，在ApproverType为ORGANIZATION时指定。
 默认为false，即签署人位于同一个渠道应用号下；
         :type NotChannelOrganization: bool
+        :param SignComponents: 使用PDF文件直接发起合同时，签署人指定的签署控件
+        :type SignComponents: list of Component
         """
         self.Name = None
         self.IdCardNumber = None
@@ -891,6 +899,7 @@ class FlowApproverInfo(AbstractModel):
         self.OrganizationName = None
         self.OrganizationOpenId = None
         self.NotChannelOrganization = None
+        self.SignComponents = None
 
 
     def _deserialize(self, params):
@@ -908,6 +917,12 @@ class FlowApproverInfo(AbstractModel):
         self.OrganizationName = params.get("OrganizationName")
         self.OrganizationOpenId = params.get("OrganizationOpenId")
         self.NotChannelOrganization = params.get("NotChannelOrganization")
+        if params.get("SignComponents") is not None:
+            self.SignComponents = []
+            for item in params.get("SignComponents"):
+                obj = Component()
+                obj._deserialize(item)
+                self.SignComponents.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

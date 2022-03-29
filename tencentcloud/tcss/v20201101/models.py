@@ -1891,6 +1891,12 @@ CHECK_FAILED, 检测失败
         :type LastCheckTime: str
         :param PeriodRule: 定时检测规则。
         :type PeriodRule: :class:`tencentcloud.tcss.v20201101.models.CompliancePeriodTaskRule`
+        :param OpenPolicyItemCount: 已开启的检查项总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OpenPolicyItemCount: int
+        :param IgnoredPolicyItemCount: 已忽略的检查项总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IgnoredPolicyItemCount: int
         """
         self.AssetType = None
         self.IsCustomerFirstCheck = None
@@ -1910,6 +1916,8 @@ CHECK_FAILED, 检测失败
         self.CheckCostTime = None
         self.LastCheckTime = None
         self.PeriodRule = None
+        self.OpenPolicyItemCount = None
+        self.IgnoredPolicyItemCount = None
 
 
     def _deserialize(self, params):
@@ -1933,6 +1941,8 @@ CHECK_FAILED, 检测失败
         if params.get("PeriodRule") is not None:
             self.PeriodRule = CompliancePeriodTaskRule()
             self.PeriodRule._deserialize(params.get("PeriodRule"))
+        self.OpenPolicyItemCount = params.get("OpenPolicyItemCount")
+        self.IgnoredPolicyItemCount = params.get("IgnoredPolicyItemCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2235,14 +2245,19 @@ class CompliancePeriodTaskRule(AbstractModel):
         :type Frequency: int
         :param ExecutionTime: 在这天的什么时间执行，格式为：HH:mm:SS。
         :type ExecutionTime: str
+        :param Enable: 是否开启
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Enable: bool
         """
         self.Frequency = None
         self.ExecutionTime = None
+        self.Enable = None
 
 
     def _deserialize(self, params):
         self.Frequency = params.get("Frequency")
         self.ExecutionTime = params.get("ExecutionTime")
+        self.Enable = params.get("Enable")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

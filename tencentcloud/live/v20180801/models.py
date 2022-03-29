@@ -6797,9 +6797,9 @@ class DescribeStreamPushInfoListRequest(AbstractModel):
         r"""
         :param StreamName: 流名称。
         :type StreamName: str
-        :param StartTime: 起始时间点，格式为yyyy-mm-dd HH:MM:SS。
+        :param StartTime: 起始时间点，北京时间，格式为yyyy-mm-dd HH:MM:SS。
         :type StartTime: str
-        :param EndTime: 结束时间点，格式为yyyy-mm-dd HH:MM:SS，支持查询最近7天数据，建议查询时间跨度在3小时之内。
+        :param EndTime: 结束时间点，北京时间，格式为yyyy-mm-dd HH:MM:SS，支持查询最近7天数据，建议查询时间跨度在3小时之内。
         :type EndTime: str
         :param PushDomain: 推流域名。
         :type PushDomain: str
@@ -9585,6 +9585,10 @@ class PushQualityData(AbstractModel):
         :type MateFps: int
         :param StreamParam: 推流参数
         :type StreamParam: str
+        :param Bandwidth: 带宽，单位Mbps。
+        :type Bandwidth: float
+        :param Flux: 流量，单位MB。
+        :type Flux: float
         """
         self.Time = None
         self.PushDomain = None
@@ -9606,6 +9610,8 @@ class PushQualityData(AbstractModel):
         self.MetaAudioRate = None
         self.MateFps = None
         self.StreamParam = None
+        self.Bandwidth = None
+        self.Flux = None
 
 
     def _deserialize(self, params):
@@ -9629,6 +9635,8 @@ class PushQualityData(AbstractModel):
         self.MetaAudioRate = params.get("MetaAudioRate")
         self.MateFps = params.get("MateFps")
         self.StreamParam = params.get("StreamParam")
+        self.Bandwidth = params.get("Bandwidth")
+        self.Flux = params.get("Flux")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

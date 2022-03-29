@@ -590,7 +590,7 @@ class CreateClustersRequest(AbstractModel):
         :type Port: int
         :param PayMode: 计费模式，按量计费：0，包年包月：1。默认按量计费。
         :type PayMode: int
-        :param Count: 购买个数，目前只支持传1（不传默认为1）
+        :param Count: 购买集群数，可选值范围[1,50]，默认为1
         :type Count: int
         :param RollbackStrategy: 回档类型：
 noneRollback：不回档；
@@ -3039,6 +3039,51 @@ class ModifyBackupConfigResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyClusterNameRequest(AbstractModel):
+    """ModifyClusterName请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param ClusterName: 集群名
+        :type ClusterName: str
+        """
+        self.ClusterId = None
+        self.ClusterName = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.ClusterName = params.get("ClusterName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyClusterNameResponse(AbstractModel):
+    """ModifyClusterName返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyClusterParamRequest(AbstractModel):
     """ModifyClusterParam请求参数结构体
 
@@ -3131,6 +3176,51 @@ class ModifyDBInstanceSecurityGroupsRequest(AbstractModel):
 
 class ModifyDBInstanceSecurityGroupsResponse(AbstractModel):
     """ModifyDBInstanceSecurityGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyInstanceNameRequest(AbstractModel):
+    """ModifyInstanceName请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param InstanceName: 实例名称
+        :type InstanceName: str
+        """
+        self.InstanceId = None
+        self.InstanceName = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.InstanceName = params.get("InstanceName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyInstanceNameResponse(AbstractModel):
+    """ModifyInstanceName返回参数结构体
 
     """
 

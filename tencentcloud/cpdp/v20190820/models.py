@@ -2077,6 +2077,31 @@ BindType==2时必填
         
 
 
+class BillDownloadUrlResult(AbstractModel):
+    """机构账单文件下载地址响应对象
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DownloadUrl: 对账单下载地址。GET方式访问，返回zip包，解压后为csv格式文件。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DownloadUrl: str
+        """
+        self.DownloadUrl = None
+
+
+    def _deserialize(self, params):
+        self.DownloadUrl = params.get("DownloadUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BindAccountRequest(AbstractModel):
     """BindAccount请求参数结构体
 
@@ -8447,6 +8472,71 @@ _平安渠道，如果是见证+收单的交易，返回交易订单号_
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class GetBillDownloadUrlRequest(AbstractModel):
+    """GetBillDownloadUrl请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param OpenId: 收单系统分配的开放ID
+        :type OpenId: str
+        :param OpenKey: 收单系统分配的密钥
+        :type OpenKey: str
+        :param Day: 清算日期（YYYYMMDD，今天传昨天的日期，每日下午1点后出前一日的账单）
+        :type Day: str
+        """
+        self.OpenId = None
+        self.OpenKey = None
+        self.Day = None
+
+
+    def _deserialize(self, params):
+        self.OpenId = params.get("OpenId")
+        self.OpenKey = params.get("OpenKey")
+        self.Day = params.get("Day")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetBillDownloadUrlResponse(AbstractModel):
+    """GetBillDownloadUrl返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrCode: 业务系统返回码
+        :type ErrCode: str
+        :param ErrMessage: 业务系统返回消息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrMessage: str
+        :param Result: 账单文件下载地址响应对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.cpdp.v20190820.models.BillDownloadUrlResult`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrCode = None
+        self.ErrMessage = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrCode = params.get("ErrCode")
+        self.ErrMessage = params.get("ErrMessage")
+        if params.get("Result") is not None:
+            self.Result = BillDownloadUrlResult()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
 
 
 class MemberTransactionItem(AbstractModel):

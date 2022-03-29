@@ -318,13 +318,17 @@ class CreateEmailTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param TemplateID: 模板id
+        :type TemplateID: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.TemplateID = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.TemplateID = params.get("TemplateID")
         self.RequestId = params.get("RequestId")
 
 
@@ -1954,7 +1958,7 @@ class UpdateEmailTemplateRequest(AbstractModel):
         :type TemplateContent: :class:`tencentcloud.ses.v20201002.models.TemplateContent`
         :param TemplateID: 模板ID
         :type TemplateID: int
-        :param TemplateName: 模版名字
+        :param TemplateName: 模板名字
         :type TemplateName: str
         """
         self.TemplateContent = None

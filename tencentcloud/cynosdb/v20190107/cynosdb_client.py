@@ -810,6 +810,34 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyClusterName(self, request):
+        """修改集群名称
+
+        :param request: Request instance for ModifyClusterName.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.ModifyClusterNameRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ModifyClusterNameResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyClusterName", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyClusterNameResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyClusterParam(self, request):
         """修改集群参数
 
@@ -852,6 +880,34 @@ class CynosdbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDBInstanceSecurityGroupsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyInstanceName(self, request):
+        """本接口(ModifyInstanceName)用于修改实例名称。
+
+        :param request: Request instance for ModifyInstanceName.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.ModifyInstanceNameRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ModifyInstanceNameResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyInstanceName", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyInstanceNameResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

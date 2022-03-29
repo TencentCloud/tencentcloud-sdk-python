@@ -2932,6 +2932,80 @@ class DescribeLogContextResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeLogHistogramRequest(AbstractModel):
+    """DescribeLogHistogram请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TopicId: 要查询的日志主题ID
+        :type TopicId: str
+        :param From: 要查询的日志的起始时间，Unix时间戳，单位ms
+        :type From: int
+        :param To: 要查询的日志的结束时间，Unix时间戳，单位ms
+        :type To: int
+        :param Query: 查询语句
+        :type Query: str
+        :param Interval: 时间间隔: 单位ms
+        :type Interval: int
+        """
+        self.TopicId = None
+        self.From = None
+        self.To = None
+        self.Query = None
+        self.Interval = None
+
+
+    def _deserialize(self, params):
+        self.TopicId = params.get("TopicId")
+        self.From = params.get("From")
+        self.To = params.get("To")
+        self.Query = params.get("Query")
+        self.Interval = params.get("Interval")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLogHistogramResponse(AbstractModel):
+    """DescribeLogHistogram返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Interval: 统计周期： 单位ms
+        :type Interval: int
+        :param TotalCount: 命中关键字的日志总条数
+        :type TotalCount: int
+        :param HistogramInfos: 周期内统计结果详情
+        :type HistogramInfos: list of HistogramInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Interval = None
+        self.TotalCount = None
+        self.HistogramInfos = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Interval = params.get("Interval")
+        self.TotalCount = params.get("TotalCount")
+        if params.get("HistogramInfos") is not None:
+            self.HistogramInfos = []
+            for item in params.get("HistogramInfos"):
+                obj = HistogramInfo()
+                obj._deserialize(item)
+                self.HistogramInfos.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeLogsetsRequest(AbstractModel):
     """DescribeLogsets请求参数结构体
 
@@ -3897,6 +3971,34 @@ class GetAlarmLogResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Columns.append(obj)
         self.RequestId = params.get("RequestId")
+
+
+class HistogramInfo(AbstractModel):
+    """直方图详细信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Count: 统计周期内的日志条数
+        :type Count: int
+        :param BTime: 按 period 取整后的 unix timestamp： 单位毫秒
+        :type BTime: int
+        """
+        self.Count = None
+        self.BTime = None
+
+
+    def _deserialize(self, params):
+        self.Count = params.get("Count")
+        self.BTime = params.get("BTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class HostFileInfo(AbstractModel):

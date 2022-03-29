@@ -2353,6 +2353,8 @@ Activity：活动来源
         :type VpcId: str
         :param SubNetIds: 子网列表
         :type SubNetIds: list of str
+        :param IsOpenCloudInvoke: 是否打开云调用
+        :type IsOpenCloudInvoke: bool
         """
         self.WxAppId = None
         self.Alias = None
@@ -2360,6 +2362,7 @@ Activity：活动来源
         self.Flag = None
         self.VpcId = None
         self.SubNetIds = None
+        self.IsOpenCloudInvoke = None
 
 
     def _deserialize(self, params):
@@ -2369,6 +2372,7 @@ Activity：活动来源
         self.Flag = params.get("Flag")
         self.VpcId = params.get("VpcId")
         self.SubNetIds = params.get("SubNetIds")
+        self.IsOpenCloudInvoke = params.get("IsOpenCloudInvoke")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

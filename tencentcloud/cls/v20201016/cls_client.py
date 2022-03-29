@@ -950,6 +950,34 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeLogHistogram(self, request):
+        """本接口用于构建直方图
+
+        :param request: Request instance for DescribeLogHistogram.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DescribeLogHistogramRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DescribeLogHistogramResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeLogHistogram", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeLogHistogramResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeLogsets(self, request):
         """本接口用于获取日志集信息列表。
 

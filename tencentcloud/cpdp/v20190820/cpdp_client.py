@@ -1658,6 +1658,35 @@ class CpdpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def GetBillDownloadUrl(self, request):
+        """调用该接口返回对账单下载地址，对账单下载URL通过GET方式访问，返回zip包，解压后为csv格式文件。文件首行如下：
+        订单号,订单归属日期,机构编号,订单描述,交易类型,订单状态,支付场景,原始金额,折扣金额,实际交易金额,支付渠道优惠金额,抹零金额,币种,下单时间,付款成功时间,商户编号,门店编号,付款方式编号,付款方式名称,商户手续费T1,商户扣率,是否信用卡交易,原始订单号,用户账号,外部订单号,订单备注
+
+        :param request: Request instance for GetBillDownloadUrl.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.GetBillDownloadUrlRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.GetBillDownloadUrlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetBillDownloadUrl", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetBillDownloadUrlResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def MigrateOrderRefund(self, request):
         """山姆聚合支付项目-存量订单退款接口。可以通过本接口将支付款全部或部分退还给付款方，在收到用户退款请求并且验证成功之后，按照退款规则将支付款按原路退回到支付帐号。
 
