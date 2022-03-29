@@ -104,7 +104,7 @@ INTERNALERROR_DBOPERATIONFAILED = 'InternalError.DbOperationFailed'
 # 查询独享集群信息失败。
 INTERNALERROR_FENCEERROR = 'InternalError.FenceError'
 
-# 获取指标数据。
+# 获取监控数据失败。
 INTERNALERROR_FETCHMETRICDATAFAILED = 'InternalError.FetchMetricDataFailed'
 
 # 获取数据库实例参数失败。
@@ -112,6 +112,9 @@ INTERNALERROR_GETDBCONFIGFAILED = 'InternalError.GetDbConfigFailed'
 
 # 获取数据库列表失败。
 INTERNALERROR_GETDBLISTFAILED = 'InternalError.GetDbListFailed'
+
+# 获取数据库对象失败。
+INTERNALERROR_GETDBOBJECTFAILED = 'InternalError.GetDbObjectFailed'
 
 # 获取实例详情失败。
 INTERNALERROR_GETINSTANCEDETAILFAILED = 'InternalError.GetInstanceDetailFailed'
@@ -130,6 +133,9 @@ INTERNALERROR_GETSLOWLOGFAILED = 'InternalError.GetSlowLogFailed'
 
 # 查询虚拟私有网络子网信息失败。
 INTERNALERROR_GETSUBNETFAILED = 'InternalError.GetSubnetFailed'
+
+# 获取表结构失败。
+INTERNALERROR_GETTABLEINFOFAILED = 'InternalError.GetTableInfoFailed'
 
 # 获取账号列表失败。
 INTERNALERROR_GETUSERLISTFAILED = 'InternalError.GetUserListFailed'
@@ -206,7 +212,7 @@ INVALIDPARAMETER_ACTIONNOTFOUND = 'InvalidParameter.ActionNotFound'
 # 密码包含了非法字符。
 INVALIDPARAMETER_CHARACTERERROR = 'InvalidParameter.CharacterError'
 
-# 参数检测为通过。
+# 入参校验失败。
 INVALIDPARAMETER_CHECKPARAMNOTPASS = 'InvalidParameter.CheckParamNotPass'
 
 # 未指定需要查询的订单ID。
@@ -275,6 +281,9 @@ INVALIDPARAMETERVALUE_ILLEGALEXCLUSTERID = 'InvalidParameterValue.IllegalExclust
 # 初始化数据库实例参数错误。
 INVALIDPARAMETERVALUE_ILLEGALINITPARAM = 'InvalidParameterValue.IllegalInitParam'
 
+# 非法实例ID。
+INVALIDPARAMETERVALUE_ILLEGALINSTANCEID = 'InvalidParameterValue.IllegalInstanceId'
+
 # 修改log保存天数时过小或过大。
 INVALIDPARAMETERVALUE_ILLEGALLOGSAVEDAYS = 'InvalidParameterValue.IllegalLogSaveDays'
 
@@ -289,6 +298,9 @@ INVALIDPARAMETERVALUE_ILLEGALZONE = 'InvalidParameterValue.IllegalZone'
 
 # 非法的实例名称。
 INVALIDPARAMETERVALUE_INSTANCENAMEILLEGAL = 'InvalidParameterValue.InstanceNameIllegal'
+
+# 参数验证错误。
+INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = 'InvalidParameterValue.InvalidParameterValueError'
 
 # 分片不存在。
 INVALIDPARAMETERVALUE_SHARDNOTEXIST = 'InvalidParameterValue.ShardNotExist'

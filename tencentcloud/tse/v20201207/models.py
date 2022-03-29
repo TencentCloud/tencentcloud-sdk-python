@@ -30,14 +30,19 @@ class BoundK8SInfo(AbstractModel):
         :param BoundClusterType: 绑定的kubernetes的集群类型，分tke和eks两种
 注意：此字段可能返回 null，表示取不到有效值。
         :type BoundClusterType: str
+        :param SyncMode: 服务同步模式，all为全量同步，demand为按需同步
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SyncMode: str
         """
         self.BoundClusterId = None
         self.BoundClusterType = None
+        self.SyncMode = None
 
 
     def _deserialize(self, params):
         self.BoundClusterId = params.get("BoundClusterId")
         self.BoundClusterType = params.get("BoundClusterType")
+        self.SyncMode = params.get("SyncMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -253,6 +258,12 @@ class EnvInfo(AbstractModel):
         :type EnableConfigInternet: bool
         :param ConfigInternetServiceIp: config-server公网访问地址
         :type ConfigInternetServiceIp: str
+        :param SpecId: 规格ID
+        :type SpecId: str
+        :param EnvReplica: 环境的节点数
+        :type EnvReplica: int
+        :param RunningCount: 环境运行的节点数
+        :type RunningCount: int
         """
         self.EnvName = None
         self.VpcInfos = None
@@ -262,6 +273,9 @@ class EnvInfo(AbstractModel):
         self.ConfigServiceIp = None
         self.EnableConfigInternet = None
         self.ConfigInternetServiceIp = None
+        self.SpecId = None
+        self.EnvReplica = None
+        self.RunningCount = None
 
 
     def _deserialize(self, params):
@@ -278,6 +292,9 @@ class EnvInfo(AbstractModel):
         self.ConfigServiceIp = params.get("ConfigServiceIp")
         self.EnableConfigInternet = params.get("EnableConfigInternet")
         self.ConfigInternetServiceIp = params.get("ConfigInternetServiceIp")
+        self.SpecId = params.get("SpecId")
+        self.EnvReplica = params.get("EnvReplica")
+        self.RunningCount = params.get("RunningCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -411,6 +428,12 @@ class SREInstance(AbstractModel):
         :param EnableConsoleIntranet: 引擎实例是否开启控制台内网访问地址
 注意：此字段可能返回 null，表示取不到有效值。
         :type EnableConsoleIntranet: bool
+        :param ConfigInfoVisible: 引擎实例是否展示参数配置页面
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigInfoVisible: bool
+        :param ConsoleDefaultPwd: 引擎实例控制台默认密码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConsoleDefaultPwd: str
         """
         self.InstanceId = None
         self.Name = None
@@ -435,6 +458,8 @@ class SREInstance(AbstractModel):
         self.Tags = None
         self.EnableConsoleInternet = None
         self.EnableConsoleIntranet = None
+        self.ConfigInfoVisible = None
+        self.ConsoleDefaultPwd = None
 
 
     def _deserialize(self, params):
@@ -481,6 +506,8 @@ class SREInstance(AbstractModel):
                 self.Tags.append(obj)
         self.EnableConsoleInternet = params.get("EnableConsoleInternet")
         self.EnableConsoleIntranet = params.get("EnableConsoleIntranet")
+        self.ConfigInfoVisible = params.get("ConfigInfoVisible")
+        self.ConsoleDefaultPwd = params.get("ConsoleDefaultPwd")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -503,10 +530,19 @@ class ServiceGovernanceInfo(AbstractModel):
         :type BoundK8SInfos: list of BoundK8SInfo
         :param VpcInfos: 服务治理引擎绑定的网络信息
         :type VpcInfos: list of VpcInfo
+        :param AuthOpen: 当前实例鉴权是否开启
+        :type AuthOpen: bool
+        :param Features: 该实例支持的功能，鉴权就是 Auth
+        :type Features: list of str
+        :param MainPassword: 主账户名默认为 polaris，该值为主账户的默认密码
+        :type MainPassword: str
         """
         self.EngineRegion = None
         self.BoundK8SInfos = None
         self.VpcInfos = None
+        self.AuthOpen = None
+        self.Features = None
+        self.MainPassword = None
 
 
     def _deserialize(self, params):
@@ -523,6 +559,9 @@ class ServiceGovernanceInfo(AbstractModel):
                 obj = VpcInfo()
                 obj._deserialize(item)
                 self.VpcInfos.append(obj)
+        self.AuthOpen = params.get("AuthOpen")
+        self.Features = params.get("Features")
+        self.MainPassword = params.get("MainPassword")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

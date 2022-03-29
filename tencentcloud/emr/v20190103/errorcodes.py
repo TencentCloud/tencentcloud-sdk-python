@@ -20,6 +20,9 @@ FAILEDOPERATION = 'FailedOperation'
 # 重复的订单，请检查emr控制台。
 FAILEDOPERATION_DUPLICATEORDERNOTALLOWED = 'FailedOperation.DuplicateOrderNotAllowed'
 
+# 操作失败，不支持pod。
+FAILEDOPERATION_NOTSUPPORTPOD = 'FailedOperation.NotSupportPod'
+
 # 内部错误。
 INTERNALERROR = 'InternalError'
 
@@ -113,6 +116,9 @@ INVALIDPARAMETER_INVALIDCLIENTTOKEN = 'InvalidParameter.InvalidClientToken'
 # 无效参数，ClusterId。
 INVALIDPARAMETER_INVALIDCLUSTERID = 'InvalidParameter.InvalidClusterId'
 
+# 参数错误。
+INVALIDPARAMETER_INVALIDCOMMONDISKTYPE = 'InvalidParameter.InvalidCommonDiskType'
+
 # 无效的组件。
 INVALIDPARAMETER_INVALIDCOMPONENT = 'InvalidParameter.InvalidComponent'
 
@@ -160,6 +166,9 @@ INVALIDPARAMETER_INVALIDJOBTYPE = 'InvalidParameter.InvalidJobType'
 
 # 无效的登录设置。
 INVALIDPARAMETER_INVALIDLOGINSETTING = 'InvalidParameter.InvalidLoginSetting'
+
+# 参数错误。
+INVALIDPARAMETER_INVALIDMASTERDISKTYPE = 'InvalidParameter.InvalidMasterDiskType'
 
 # 无效的元数据表类型。
 INVALIDPARAMETER_INVALIDMETATYPE = 'InvalidParameter.InvalidMetaType'
@@ -318,7 +327,7 @@ RESOURCEUNAVAILABLE_RESOURCESPECNOTDEFAULTSPEC = 'ResourceUnavailable.ResourceSp
 RESOURCEUNAVAILABLE_RESOURCESPEC_NOTDEFAULTSPEC = 'ResourceUnavailable.ResourceSpec_NotDefaultSpec'
 
 # 资源售罄。
-RESOURCESSOLDOUT_ = 'ResourcesSoldOut.'
+RESOURCESSOLDOUT = 'ResourcesSoldOut'
 
 # CBS资源售罄。
 RESOURCESSOLDOUT_CBSSOLDOUT = 'ResourcesSoldOut.CbsSoldOut'

@@ -182,6 +182,9 @@ INTERNALERROR_ROUTETABLENOTEMPTY = 'InternalError.RouteTableNotEmpty'
 # 路由表不存在。
 INTERNALERROR_ROUTETABLENOTFOUND = 'InternalError.RouteTableNotFound'
 
+# 已有相同任务执行中。
+INTERNALERROR_TASKALREADYRUNNING = 'InternalError.TaskAlreadyRunning'
+
 # 创建任务失败。
 INTERNALERROR_TASKCREATEFAILED = 'InternalError.TaskCreateFailed'
 
@@ -190,6 +193,12 @@ INTERNALERROR_TASKLIFESTATEERROR = 'InternalError.TaskLifeStateError'
 
 # 任务未找到。
 INTERNALERROR_TASKNOTFOUND = 'InternalError.TaskNotFound'
+
+# 询价错误。
+INTERNALERROR_TRADECOMMON = 'InternalError.TradeCommon'
+
+# 账户余额不足。
+INTERNALERROR_TRADEINSUFFICIENTBALANCE = 'InternalError.TradeInsufficientBalance'
 
 # 内部错误。
 INTERNALERROR_UNEXCEPTEDINTERNAL = 'InternalError.UnexceptedInternal'

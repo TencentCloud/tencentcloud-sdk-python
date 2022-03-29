@@ -502,6 +502,34 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateImageCache(self, request):
+        """创建镜像缓存的接口。创建过程中，请勿删除EKSCI实例和云盘，否则镜像缓存将创建失败。
+
+        :param request: Request instance for CreateImageCache.
+        :type request: :class:`tencentcloud.tke.v20180525.models.CreateImageCacheRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.CreateImageCacheResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateImageCache", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateImageCacheResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreatePrometheusAlertRule(self, request):
         """创建告警规则
 
@@ -852,6 +880,34 @@ class TkeClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteEKSContainerInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteImageCaches(self, request):
+        """批量删除镜像缓存
+
+        :param request: Request instance for DeleteImageCaches.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DeleteImageCachesRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DeleteImageCachesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteImageCaches", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteImageCachesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1370,6 +1426,34 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeClusterStatus(self, request):
+        """查看集群状态列表
+
+        :param request: Request instance for DescribeClusterStatus.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterStatusRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeClusterStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeClusterStatus", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeClusterStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeClusters(self, request):
         """查询集群列表
 
@@ -1636,6 +1720,34 @@ class TkeClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeExternalClusterSpecResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeImageCaches(self, request):
+        """查询镜像缓存信息接口
+
+        :param request: Request instance for DescribeImageCaches.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeImageCachesRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeImageCachesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeImageCaches", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeImageCachesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1986,6 +2098,34 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeTKEEdgeScript(self, request):
+        """获取边缘脚本链接
+
+        :param request: Request instance for DescribeTKEEdgeScript.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeTKEEdgeScriptRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeTKEEdgeScriptResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeTKEEdgeScript", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeTKEEdgeScriptResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeVersions(self, request):
         """获取集群版本信息
 
@@ -2168,6 +2308,34 @@ class TkeClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ForwardApplicationRequestV3Response()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def GetMostSuitableImageCache(self, request):
+        """根据镜像列表，查询匹配的镜像缓存
+
+        :param request: Request instance for GetMostSuitableImageCache.
+        :type request: :class:`tencentcloud.tke.v20180525.models.GetMostSuitableImageCacheRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.GetMostSuitableImageCacheResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetMostSuitableImageCache", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetMostSuitableImageCacheResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -2756,6 +2924,34 @@ class TkeClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateEKSContainerInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateImageCache(self, request):
+        """更新镜像缓存接口
+
+        :param request: Request instance for UpdateImageCache.
+        :type request: :class:`tencentcloud.tke.v20180525.models.UpdateImageCacheRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.UpdateImageCacheResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UpdateImageCache", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateImageCacheResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

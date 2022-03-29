@@ -2041,6 +2041,8 @@ global：全球锁定
         :type Readonly: str
         :param Product: 域名所属产品，cdn/ecdn
         :type Product: str
+        :param ParentHost: 主域名
+        :type ParentHost: str
         """
         self.ResourceId = None
         self.AppId = None
@@ -2056,6 +2058,7 @@ global：全球锁定
         self.Area = None
         self.Readonly = None
         self.Product = None
+        self.ParentHost = None
 
 
     def _deserialize(self, params):
@@ -2075,6 +2078,7 @@ global：全球锁定
         self.Area = params.get("Area")
         self.Readonly = params.get("Readonly")
         self.Product = params.get("Product")
+        self.ParentHost = params.get("ParentHost")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2978,7 +2982,7 @@ class CreateClsLogTopicRequest(AbstractModel):
         :type TopicName: str
         :param LogsetId: 日志集ID
         :type LogsetId: str
-        :param Channel: 接入渠道，默认值为cdn
+        :param Channel: 接入渠道，cdn或者ecdn，默认值为cdn
         :type Channel: str
         :param DomainAreaConfigs: 域名区域信息
         :type DomainAreaConfigs: list of DomainAreaConfig
@@ -3613,7 +3617,7 @@ class DeleteClsLogTopicRequest(AbstractModel):
         :type TopicId: str
         :param LogsetId: 日志集ID
         :type LogsetId: str
-        :param Channel: 接入渠道，默认值为cdn
+        :param Channel: 接入渠道，cdn或者ecdn，默认值为cdn
         :type Channel: str
         """
         self.TopicId = None
@@ -5235,11 +5239,14 @@ class DescribePayTypeResponse(AbstractModel):
 flux：流量计费
 bandwidth：带宽计费
 request：请求数计费
+flux_sep：动静分离流量计费
+bandwidth_sep：动静分离带宽计费
 日结计费方式切换时，若当日产生消耗，则此字段表示第二天即将生效的计费方式，若未产生消耗，则表示已经生效的计费方式。
         :type PayType: str
         :param BillingCycle: 计费周期：
 day：日结计费
 month：月结计费
+hour：小时结计费
         :type BillingCycle: str
         :param StatType: monthMax：日峰值月平均，月结模式
 day95：日 95 带宽，月结模式
@@ -5255,6 +5262,8 @@ multiple：分地区计费
 flux：流量计费
 bandwidth：带宽计费
 request：请求数计费
+flux_sep：动静分离流量计费
+bandwidth_sep：动静分离带宽计费
         :type CurrentPayType: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6501,10 +6510,12 @@ offline：已关闭
         :type Status: str
         :param ProjectId: 项目 ID，可前往腾讯云项目管理页面查看
         :type ProjectId: int
-        :param ServiceType: 域名业务类型
-web：静态加速
-download：下载加速
-media：流媒体点播加速
+        :param ServiceType: 加速域名业务类型
+web：网页小文件
+download：下载大文件
+media：音视频点播
+hybrid:  动静加速
+dynamic:  动态加速
         :type ServiceType: str
         :param CreateTime: 域名创建时间
         :type CreateTime: str
@@ -6679,6 +6690,12 @@ off：不支持
         :param ShareCname: 共享CNAME配置（白名单功能）
 注意：此字段可能返回 null，表示取不到有效值。
         :type ShareCname: :class:`tencentcloud.cdn.v20180606.models.ShareCname`
+        :param RuleEngine: 规则引擎
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleEngine: :class:`tencentcloud.cdn.v20180606.models.RuleEngine`
+        :param ParentHost: 主域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParentHost: str
         """
         self.ResourceId = None
         self.AppId = None
@@ -6740,6 +6757,8 @@ off：不支持
         self.WebSocket = None
         self.RemoteAuthentication = None
         self.ShareCname = None
+        self.RuleEngine = None
+        self.ParentHost = None
 
 
     def _deserialize(self, params):
@@ -6901,6 +6920,10 @@ off：不支持
         if params.get("ShareCname") is not None:
             self.ShareCname = ShareCname()
             self.ShareCname._deserialize(params.get("ShareCname"))
+        if params.get("RuleEngine") is not None:
+            self.RuleEngine = RuleEngine()
+            self.RuleEngine._deserialize(params.get("RuleEngine"))
+        self.ParentHost = params.get("ParentHost")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7168,7 +7191,7 @@ class DisableClsLogTopicRequest(AbstractModel):
         :type LogsetId: str
         :param TopicId: 日志主题ID
         :type TopicId: str
-        :param Channel: 接入渠道，默认值为cdn
+        :param Channel: 接入渠道，cdn或者ecdn，默认值为cdn
         :type Channel: str
         """
         self.LogsetId = None
@@ -7362,7 +7385,7 @@ class DomainFilter(AbstractModel):
 - domain：域名。
 - resourceId：域名id。
 - status：域名状态，online，offline或processing。
-- serviceType：业务类型，web，download或media。
+- serviceType：业务类型，web，download，media，hybrid或dynamic。
 - projectId：项目ID。
 - domainType：主源站类型，cname表示自有源，cos表示cos接入，third_party表示第三方对象存储。
 - fullUrlCache：全路径缓存，on或off。
@@ -7585,7 +7608,7 @@ class EnableClsLogTopicRequest(AbstractModel):
         :type LogsetId: str
         :param TopicId: 日志主题ID
         :type TopicId: str
-        :param Channel: 接入渠道，默认值为cdn
+        :param Channel: 接入渠道，cdn或者ecdn，默认值为cdn
         :type Channel: str
         """
         self.LogsetId = None
@@ -8528,7 +8551,7 @@ class ListClsLogTopicsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Channel: 接入渠道，默认值为cdn
+        :param Channel: 接入渠道，cdn或者ecdn，默认值为cdn
         :type Channel: str
         """
         self.Channel = None
@@ -8599,7 +8622,7 @@ class ListClsTopicDomainsRequest(AbstractModel):
         :type LogsetId: str
         :param TopicId: 日志主题ID
         :type TopicId: str
-        :param Channel: 接入渠道，默认值为cdn
+        :param Channel: 接入渠道，cdn或者ecdn，默认值为cdn
         :type Channel: str
         """
         self.LogsetId = None
@@ -9105,7 +9128,7 @@ class ListTopClsLogDataRequest(AbstractModel):
 /files/* 表示所有以/files/开头的请求
 *.jpg 表示所有以.jpg结尾的请求
         :type Url: str
-        :param Channel: 接入渠道，默认值为cdn
+        :param Channel: 接入渠道，cdn或者ecdn，默认值为cdn
         :type Channel: str
         :param Limit: 要查询的Top条数，最大值为100，默认为10
         :type Limit: int
@@ -9785,7 +9808,7 @@ class ManageClsTopicDomainsRequest(AbstractModel):
         :type LogsetId: str
         :param TopicId: 日志主题ID
         :type TopicId: str
-        :param Channel: 接入渠道，默认值为cdn
+        :param Channel: 接入渠道，cdn或者ecdn，默认值为cdn
         :type Channel: str
         :param DomainAreaConfigs: 域名区域配置，注意：如果此字段为空，则表示解绑对应主题下的所有域名
         :type DomainAreaConfigs: list of DomainAreaConfig
@@ -10046,13 +10069,21 @@ class Origin(AbstractModel):
         :param OriginType: 主源站类型
 入参支持以下几种类型：
 domain：域名类型
+domainv6：域名解析V6类型
 cos：对象存储源站
 ip：IP 列表作为源站
 ipv6：源站列表为一个单独的 IPv6 地址
 ip_ipv6：源站列表为多个 IPv4 地址和IPv6 地址
 ip_domain: 支持IP和域名形式源站混填（白名单功能）
+ip_domainv6：源站列表为多个 IPv4 地址以及域名解析v6地址
 ipv6_domain: 源站列表为多个 IPv6 地址以及域名
+ipv6_domainv6：源站列表为多个 IPv6 地址以及域名解析v6地址
+domain_domainv6：源站列表为多个域名解析v4 地址以及域名解析v6地址
 ip_ipv6_domain：源站列表为多个 IPv4 地址IPv6 地址以及域名
+ip_ipv6_domainv6：源站列表为多个 IPv4 地址IPv6 地址以及域名解析v6地址
+ip_domain_domainv6：源站列表为多个 IPv4 地址域名解析v4 地址以及域名解析v6地址
+ipv6_domain_domainv6：源站列表为多个 域名解析v4 地址IPv6 地址以及域名解析v6地址
+ip_ipv6_domain_domainv6：源站列表为多个 IPv4 地址IPv6 地址 域名解析v4 地址以及域名解析v6地址
 出参增加以下几种类型：
 image：数据万象源站
 ftp：历史 FTP 托管源源站，现已不维护
@@ -11765,6 +11796,37 @@ class RuleCacheConfig(AbstractModel):
         
 
 
+class RuleEngine(AbstractModel):
+    """规则引擎配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 规则引擎配置开关
+on：开启
+off：关闭
+        :type Switch: str
+        :param Content: 规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Content: str
+        """
+        self.Switch = None
+        self.Content = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.Content = params.get("Content")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RuleQueryString(AbstractModel):
     """路径保留参数配置
 
@@ -12759,7 +12821,7 @@ class SearchClsLogRequest(AbstractModel):
         :type EndTime: str
         :param Limit: 单次要返回的日志条数，单次返回的最大条数为100
         :type Limit: int
-        :param Channel: 接入渠道，默认值为cdn
+        :param Channel: 接入渠道，cdn或者ecdn，默认值为cdn
         :type Channel: str
         :param Query: 需要查询的内容，详情请参考https://cloud.tencent.com/document/product/614/16982
         :type Query: str
@@ -12908,6 +12970,9 @@ class ServerCert(AbstractModel):
         :param Message: 证书备注信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
+        :param From: 证书来源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type From: str
         """
         self.CertId = None
         self.CertName = None
@@ -12916,6 +12981,7 @@ class ServerCert(AbstractModel):
         self.ExpireTime = None
         self.DeployTime = None
         self.Message = None
+        self.From = None
 
 
     def _deserialize(self, params):
@@ -12926,6 +12992,7 @@ class ServerCert(AbstractModel):
         self.ExpireTime = params.get("ExpireTime")
         self.DeployTime = params.get("DeployTime")
         self.Message = params.get("Message")
+        self.From = params.get("From")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

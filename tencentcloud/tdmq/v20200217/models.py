@@ -88,10 +88,14 @@ class AMQPClusterDetail(AbstractModel):
         :param Tags: 标签
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
+        :param Status: 集群状态，0:创建中，1:正常，2:销毁中，3:已删除，4: 隔离中，5:创建失败，6: 删除失败
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
         """
         self.Info = None
         self.Config = None
         self.Tags = None
+        self.Status = None
 
 
     def _deserialize(self, params):
@@ -107,6 +111,7 @@ class AMQPClusterDetail(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -227,6 +232,15 @@ class AMQPExchange(AbstractModel):
         :type UpdateTime: int
         :param Internal: 是否为内部Exchange(以amq.前缀开头的)
         :type Internal: bool
+        :param AlternateExchange: 备用Exchange名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlternateExchange: str
+        :param AlternateExchangeDeleteMark: 备用Exchange是否删除标识: true(已删除)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlternateExchangeDeleteMark: bool
+        :param DelayType: 延迟Exchange的类别，为枚举类型:Direct, Fanout, Topic
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DelayType: str
         """
         self.Name = None
         self.Type = None
@@ -236,6 +250,9 @@ class AMQPExchange(AbstractModel):
         self.CreateTime = None
         self.UpdateTime = None
         self.Internal = None
+        self.AlternateExchange = None
+        self.AlternateExchangeDeleteMark = None
+        self.DelayType = None
 
 
     def _deserialize(self, params):
@@ -247,6 +264,9 @@ class AMQPExchange(AbstractModel):
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
         self.Internal = params.get("Internal")
+        self.AlternateExchange = params.get("AlternateExchange")
+        self.AlternateExchangeDeleteMark = params.get("AlternateExchangeDeleteMark")
+        self.DelayType = params.get("DelayType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -409,6 +429,9 @@ class AMQPVHost(AbstractModel):
         :type Username: str
         :param Password: 密码
         :type Password: str
+        :param Status: 集群状态，0:创建中，1:正常，2:销毁中，3:已删除，4: 隔离中，5:创建失败，6: 删除失败
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
         """
         self.VHostId = None
         self.MsgTtl = None
@@ -417,6 +440,7 @@ class AMQPVHost(AbstractModel):
         self.UpdateTime = None
         self.Username = None
         self.Password = None
+        self.Status = None
 
 
     def _deserialize(self, params):
@@ -427,6 +451,7 @@ class AMQPVHost(AbstractModel):
         self.UpdateTime = params.get("UpdateTime")
         self.Username = params.get("Username")
         self.Password = params.get("Password")
+        self.Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -679,6 +704,11 @@ class Cluster(AbstractModel):
         :param Tags: 标签
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
+        :param PayMode: 计费模式：
+0: 按量计费
+1: 包年包月
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PayMode: int
         """
         self.ClusterId = None
         self.ClusterName = None
@@ -706,6 +736,7 @@ class Cluster(AbstractModel):
         self.MaxMessageDelayInSeconds = None
         self.PublicAccessEnabled = None
         self.Tags = None
+        self.PayMode = None
 
 
     def _deserialize(self, params):
@@ -740,6 +771,7 @@ class Cluster(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.PayMode = params.get("PayMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1230,11 +1262,15 @@ class Consumer(AbstractModel):
         :param ClientVersion: 消费者版本。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClientVersion: str
+        :param Partition: 消费者连接的主题分区号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Partition: int
         """
         self.ConnectedSince = None
         self.ConsumerAddr = None
         self.ConsumerName = None
         self.ClientVersion = None
+        self.Partition = None
 
 
     def _deserialize(self, params):
@@ -1242,6 +1278,7 @@ class Consumer(AbstractModel):
         self.ConsumerAddr = params.get("ConsumerAddr")
         self.ConsumerName = params.get("ConsumerName")
         self.ClientVersion = params.get("ClientVersion")
+        self.Partition = params.get("Partition")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1359,7 +1396,7 @@ class CreateAMQPExchangeRequest(AbstractModel):
         :type Exchange: str
         :param VHosts: 交换机所在的vhost，目前支持在单个vhost下创建主题
         :type VHosts: list of str
-        :param Type: 交换机类型，可选值为Direct, Fanout, Topic
+        :param Type: 交换机类型，可选值为Direct, Fanout, Topic, x-delayed-message
         :type Type: str
         :param ClusterId: 集群ID
         :type ClusterId: str
@@ -1367,6 +1404,8 @@ class CreateAMQPExchangeRequest(AbstractModel):
         :type Remark: str
         :param AlternateExchange: 备用交换机名称
         :type AlternateExchange: str
+        :param DelayedType: 延迟交换机类型，可选值为Direct, Fanout, Topic, 不允许为x-delayed-message
+        :type DelayedType: str
         """
         self.Exchange = None
         self.VHosts = None
@@ -1374,6 +1413,7 @@ class CreateAMQPExchangeRequest(AbstractModel):
         self.ClusterId = None
         self.Remark = None
         self.AlternateExchange = None
+        self.DelayedType = None
 
 
     def _deserialize(self, params):
@@ -1383,6 +1423,7 @@ class CreateAMQPExchangeRequest(AbstractModel):
         self.ClusterId = params.get("ClusterId")
         self.Remark = params.get("Remark")
         self.AlternateExchange = params.get("AlternateExchange")
+        self.DelayedType = params.get("DelayedType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1695,6 +1736,8 @@ class CreateCmqQueueRequest(AbstractModel):
         :type MaxTimeToLive: int
         :param Trace: 是否开启消息轨迹追踪，当不设置字段时，默认为不开启，该字段为true表示开启，为false表示不开启
         :type Trace: bool
+        :param Tags: 标签数组
+        :type Tags: list of Tag
         """
         self.QueueName = None
         self.MaxMsgHeapNum = None
@@ -1711,6 +1754,7 @@ class CreateCmqQueueRequest(AbstractModel):
         self.MaxReceiveCount = None
         self.MaxTimeToLive = None
         self.Trace = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -1729,6 +1773,12 @@ class CreateCmqQueueRequest(AbstractModel):
         self.MaxReceiveCount = params.get("MaxReceiveCount")
         self.MaxTimeToLive = params.get("MaxTimeToLive")
         self.Trace = params.get("Trace")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1849,12 +1899,15 @@ class CreateCmqTopicRequest(AbstractModel):
         :type MsgRetentionSeconds: int
         :param Trace: 是否开启消息轨迹标识，true表示开启，false表示不开启，不填表示不开启。
         :type Trace: bool
+        :param Tags: 标签数组
+        :type Tags: list of Tag
         """
         self.TopicName = None
         self.MaxMsgSize = None
         self.FilterType = None
         self.MsgRetentionSeconds = None
         self.Trace = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -1863,6 +1916,12 @@ class CreateCmqTopicRequest(AbstractModel):
         self.FilterType = params.get("FilterType")
         self.MsgRetentionSeconds = params.get("MsgRetentionSeconds")
         self.Trace = params.get("Trace")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2398,32 +2457,40 @@ class CreateTopicRequest(AbstractModel):
         :type TopicName: str
         :param Partitions: 0：非分区topic，无分区；非0：具体分区topic的分区数，最大不允许超过128。
         :type Partitions: int
+        :param Remark: 备注，128字符以内。
+        :type Remark: str
         :param TopicType: 0： 普通消息；
 1 ：全局顺序消息；
 2 ：局部顺序消息；
 3 ：重试队列；
 4 ：死信队列。
         :type TopicType: int
-        :param Remark: 备注，128字符以内。
-        :type Remark: str
         :param ClusterId: Pulsar 集群的ID
         :type ClusterId: str
+        :param PulsarTopicType: Pulsar 主题类型
+0: 非持久非分区
+1: 非持久分区
+2: 持久非分区
+3: 持久分区
+        :type PulsarTopicType: int
         """
         self.EnvironmentId = None
         self.TopicName = None
         self.Partitions = None
-        self.TopicType = None
         self.Remark = None
+        self.TopicType = None
         self.ClusterId = None
+        self.PulsarTopicType = None
 
 
     def _deserialize(self, params):
         self.EnvironmentId = params.get("EnvironmentId")
         self.TopicName = params.get("TopicName")
         self.Partitions = params.get("Partitions")
-        self.TopicType = params.get("TopicType")
         self.Remark = params.get("Remark")
+        self.TopicType = params.get("TopicType")
         self.ClusterId = params.get("ClusterId")
+        self.PulsarTopicType = params.get("PulsarTopicType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3787,11 +3854,14 @@ class DescribeAMQPVHostsRequest(AbstractModel):
         :type Limit: int
         :param NameKeyword: 按名称搜索
         :type NameKeyword: str
+        :param VHostIdList: VHostId 列表过滤
+        :type VHostIdList: list of str
         """
         self.ClusterId = None
         self.Offset = None
         self.Limit = None
         self.NameKeyword = None
+        self.VHostIdList = None
 
 
     def _deserialize(self, params):
@@ -3799,6 +3869,7 @@ class DescribeAMQPVHostsRequest(AbstractModel):
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
         self.NameKeyword = params.get("NameKeyword")
+        self.VHostIdList = params.get("VHostIdList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7250,6 +7321,67 @@ class ResetMsgSubOffsetByTimestampResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ResetRocketMQConsumerOffSetRequest(AbstractModel):
+    """ResetRocketMQConsumerOffSet请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param NamespaceId: 命名空间名称
+        :type NamespaceId: str
+        :param GroupId: 消费组名称
+        :type GroupId: str
+        :param Topic: 主题名称
+        :type Topic: str
+        :param Type: 重置方式，0表示从最新位点开始，1表示从指定时间点开始
+        :type Type: int
+        :param ResetTimestamp: 重置指定的时间戳，仅在 Type 为1是生效，以毫秒为单位
+        :type ResetTimestamp: int
+        """
+        self.ClusterId = None
+        self.NamespaceId = None
+        self.GroupId = None
+        self.Topic = None
+        self.Type = None
+        self.ResetTimestamp = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.NamespaceId = params.get("NamespaceId")
+        self.GroupId = params.get("GroupId")
+        self.Topic = params.get("Topic")
+        self.Type = params.get("Type")
+        self.ResetTimestamp = params.get("ResetTimestamp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResetRocketMQConsumerOffSetResponse(AbstractModel):
+    """ResetRocketMQConsumerOffSet返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class RetentionPolicy(AbstractModel):
     """消息保留策略
 
@@ -8042,6 +8174,15 @@ class Subscription(AbstractModel):
         :param UpdateTime: 最近修改时间。
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
+        :param SubType: 订阅类型，Exclusive，Shared，Failover， Key_Shared，空或NULL表示未知，
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubType: str
+        :param BlockedSubscriptionOnUnackedMsgs: 是否由于未 ack 数到达上限而被 block
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BlockedSubscriptionOnUnackedMsgs: bool
+        :param MaxUnackedMsgNum: 未 ack 消息数上限
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxUnackedMsgNum: int
         """
         self.TopicName = None
         self.EnvironmentId = None
@@ -8060,6 +8201,9 @@ class Subscription(AbstractModel):
         self.Remark = None
         self.CreateTime = None
         self.UpdateTime = None
+        self.SubType = None
+        self.BlockedSubscriptionOnUnackedMsgs = None
+        self.MaxUnackedMsgNum = None
 
 
     def _deserialize(self, params):
@@ -8090,6 +8234,9 @@ class Subscription(AbstractModel):
         self.Remark = params.get("Remark")
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
+        self.SubType = params.get("SubType")
+        self.BlockedSubscriptionOnUnackedMsgs = params.get("BlockedSubscriptionOnUnackedMsgs")
+        self.MaxUnackedMsgNum = params.get("MaxUnackedMsgNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8235,6 +8382,12 @@ class Topic(AbstractModel):
         :param ConsumerLimit: 消费者上限。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ConsumerLimit: str
+        :param PulsarTopicType: 0: 非持久非分区
+1: 非持久分区
+2: 持久非分区
+3: 持久分区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PulsarTopicType: int
         """
         self.AverageMsgSize = None
         self.ConsumerCount = None
@@ -8257,6 +8410,7 @@ class Topic(AbstractModel):
         self.UpdateTime = None
         self.ProducerLimit = None
         self.ConsumerLimit = None
+        self.PulsarTopicType = None
 
 
     def _deserialize(self, params):
@@ -8286,6 +8440,7 @@ class Topic(AbstractModel):
         self.UpdateTime = params.get("UpdateTime")
         self.ProducerLimit = params.get("ProducerLimit")
         self.ConsumerLimit = params.get("ConsumerLimit")
+        self.PulsarTopicType = params.get("PulsarTopicType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

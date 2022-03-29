@@ -1439,6 +1439,48 @@ class BindApiAppResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class BindApiInfo(AbstractModel):
+    """vpc通道绑定的api信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ApiId: api唯一id
+        :type ApiId: str
+        :param ServiceId: Service唯一id
+        :type ServiceId: str
+        :param ApiName: api名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApiName: str
+        :param ServiceName: 服务名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceName: str
+        :param BindTime: 绑定时间
+        :type BindTime: str
+        """
+        self.ApiId = None
+        self.ServiceId = None
+        self.ApiName = None
+        self.ServiceName = None
+        self.BindTime = None
+
+
+    def _deserialize(self, params):
+        self.ApiId = params.get("ApiId")
+        self.ServiceId = params.get("ServiceId")
+        self.ApiName = params.get("ApiName")
+        self.ServiceName = params.get("ServiceName")
+        self.BindTime = params.get("BindTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BindEnvironmentRequest(AbstractModel):
     """BindEnvironment请求参数结构体
 
@@ -1794,16 +1836,25 @@ DELETE： DeleteObject。
         :param Authorization: API调用后端COS的签名开关，默认为false。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Authorization: bool
+        :param PathMatchMode: API后端COS的路径匹配模式，可选值：
+BackEndPath ： 后端路径匹配
+FullPath ： 全路径匹配
+
+默认值为：BackEndPath
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PathMatchMode: str
         """
         self.Action = None
         self.BucketName = None
         self.Authorization = None
+        self.PathMatchMode = None
 
 
     def _deserialize(self, params):
         self.Action = params.get("Action")
         self.BucketName = params.get("BucketName")
         self.Authorization = params.get("Authorization")
+        self.PathMatchMode = params.get("PathMatchMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2288,20 +2339,32 @@ class CreateApiRsp(AbstractModel):
         :param ApiId: api id
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApiId: str
-        :param Path: path
+        :param Path: 路径
 注意：此字段可能返回 null，表示取不到有效值。
         :type Path: str
-        :param Method: method
+        :param Method: 请求方法
 注意：此字段可能返回 null，表示取不到有效值。
         :type Method: str
         :param CreatedTime: 创建时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedTime: str
+        :param Status: 导入状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param ErrMsg: 异常信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrMsg: str
+        :param ApiName: api name
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApiName: str
         """
         self.ApiId = None
         self.Path = None
         self.Method = None
         self.CreatedTime = None
+        self.Status = None
+        self.ErrMsg = None
+        self.ApiName = None
 
 
     def _deserialize(self, params):
@@ -2309,6 +2372,9 @@ class CreateApiRsp(AbstractModel):
         self.Path = params.get("Path")
         self.Method = params.get("Method")
         self.CreatedTime = params.get("CreatedTime")
+        self.Status = params.get("Status")
+        self.ErrMsg = params.get("ErrMsg")
+        self.ApiName = params.get("ApiName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2464,6 +2530,8 @@ class CreateServiceRequest(AbstractModel):
         :type Tags: list of Tag
         :param InstanceId: 独享实例id
         :type InstanceId: str
+        :param UniqVpcId: vpc属性
+        :type UniqVpcId: str
         """
         self.ServiceName = None
         self.Protocol = None
@@ -2475,6 +2543,7 @@ class CreateServiceRequest(AbstractModel):
         self.AppIdType = None
         self.Tags = None
         self.InstanceId = None
+        self.UniqVpcId = None
 
 
     def _deserialize(self, params):
@@ -2493,6 +2562,7 @@ class CreateServiceRequest(AbstractModel):
                 obj._deserialize(item)
                 self.Tags.append(obj)
         self.InstanceId = params.get("InstanceId")
+        self.UniqVpcId = params.get("UniqVpcId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2549,6 +2619,94 @@ class CreateServiceResponse(AbstractModel):
         self.CreatedTime = params.get("CreatedTime")
         self.NetTypes = params.get("NetTypes")
         self.IpVersion = params.get("IpVersion")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateUpstreamRequest(AbstractModel):
+    """CreateUpstream请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Scheme: 后端协议，HTTP, HTTPS其中之一
+        :type Scheme: str
+        :param Algorithm: 负载均衡算法目前支持ROUND_ROBIN
+        :type Algorithm: str
+        :param UniqVpcId: VPC唯一ID
+        :type UniqVpcId: str
+        :param UpstreamName: VPC通道名字
+        :type UpstreamName: str
+        :param UpstreamDescription: VPC通道描述
+        :type UpstreamDescription: str
+        :param Retries: 请求重试次数，默认3次
+        :type Retries: int
+        :param UpstreamHost: 请求到后端的，host头
+        :type UpstreamHost: str
+        :param Nodes: 后端节点
+        :type Nodes: list of UpstreamNode
+        :param K8sService: k8s服务的配置
+        :type K8sService: list of K8sService
+        """
+        self.Scheme = None
+        self.Algorithm = None
+        self.UniqVpcId = None
+        self.UpstreamName = None
+        self.UpstreamDescription = None
+        self.Retries = None
+        self.UpstreamHost = None
+        self.Nodes = None
+        self.K8sService = None
+
+
+    def _deserialize(self, params):
+        self.Scheme = params.get("Scheme")
+        self.Algorithm = params.get("Algorithm")
+        self.UniqVpcId = params.get("UniqVpcId")
+        self.UpstreamName = params.get("UpstreamName")
+        self.UpstreamDescription = params.get("UpstreamDescription")
+        self.Retries = params.get("Retries")
+        self.UpstreamHost = params.get("UpstreamHost")
+        if params.get("Nodes") is not None:
+            self.Nodes = []
+            for item in params.get("Nodes"):
+                obj = UpstreamNode()
+                obj._deserialize(item)
+                self.Nodes.append(obj)
+        if params.get("K8sService") is not None:
+            self.K8sService = []
+            for item in params.get("K8sService"):
+                obj = K8sService()
+                obj._deserialize(item)
+                self.K8sService.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateUpstreamResponse(AbstractModel):
+    """CreateUpstream返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UpstreamId: 创建返回的唯一id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpstreamId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.UpstreamId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.UpstreamId = params.get("UpstreamId")
         self.RequestId = params.get("RequestId")
 
 
@@ -2994,6 +3152,52 @@ class DeleteServiceSubDomainMappingResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteUpstreamRequest(AbstractModel):
+    """DeleteUpstream请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UpstreamId: 待删除的VPC通道唯一ID
+        :type UpstreamId: str
+        """
+        self.UpstreamId = None
+
+
+    def _deserialize(self, params):
+        self.UpstreamId = params.get("UpstreamId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteUpstreamResponse(AbstractModel):
+    """DeleteUpstream返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UpstreamId: 成功删除的vpc通道id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpstreamId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.UpstreamId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.UpstreamId = params.get("UpstreamId")
         self.RequestId = params.get("RequestId")
 
 
@@ -5420,6 +5624,196 @@ class DescribeServicesStatusResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeUpstreamBindApis(AbstractModel):
+    """查询vpc通道绑定api列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 总数
+        :type TotalCount: int
+        :param BindApiSet: 绑定的api信息
+        :type BindApiSet: list of BindApiInfo
+        """
+        self.TotalCount = None
+        self.BindApiSet = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("BindApiSet") is not None:
+            self.BindApiSet = []
+            for item in params.get("BindApiSet"):
+                obj = BindApiInfo()
+                obj._deserialize(item)
+                self.BindApiSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeUpstreamBindApisRequest(AbstractModel):
+    """DescribeUpstreamBindApis请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Limit: 分页
+        :type Limit: int
+        :param Offset: 分页
+        :type Offset: int
+        :param UpstreamId: vpc通道Id
+        :type UpstreamId: str
+        :param Filters: ServiceId和ApiId过滤查询
+        :type Filters: list of Filter
+        """
+        self.Limit = None
+        self.Offset = None
+        self.UpstreamId = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.UpstreamId = params.get("UpstreamId")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeUpstreamBindApisResponse(AbstractModel):
+    """DescribeUpstreamBindApis返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 查询结果
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.DescribeUpstreamBindApis`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = DescribeUpstreamBindApis()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeUpstreamInfo(AbstractModel):
+    """查询vpc通道返回信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 查询总数
+        :type TotalCount: int
+        :param UpstreamSet: 查询列表
+        :type UpstreamSet: list of UpstreamInfo
+        """
+        self.TotalCount = None
+        self.UpstreamSet = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("UpstreamSet") is not None:
+            self.UpstreamSet = []
+            for item in params.get("UpstreamSet"):
+                obj = UpstreamInfo()
+                obj._deserialize(item)
+                self.UpstreamSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeUpstreamsRequest(AbstractModel):
+    """DescribeUpstreams请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Limit: 分页
+        :type Limit: int
+        :param Offset: 分页
+        :type Offset: int
+        :param Filters: 过滤条件
+        :type Filters: list of Filter
+        """
+        self.Limit = None
+        self.Offset = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeUpstreamsResponse(AbstractModel):
+    """DescribeUpstreams返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 查询结果
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.DescribeUpstreamInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = DescribeUpstreamInfo()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeUsagePlanEnvironmentsRequest(AbstractModel):
     """DescribeUsagePlanEnvironments请求参数结构体
 
@@ -6535,6 +6929,87 @@ class InstanceParameterInput(AbstractModel):
         
 
 
+class K8sLabel(AbstractModel):
+    """k8s Label
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Key: Label的Key
+        :type Key: str
+        :param Value: Label的Value
+        :type Value: str
+        """
+        self.Key = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class K8sService(AbstractModel):
+    """k8s 服务的配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Weight: 权重
+        :type Weight: int
+        :param ClusterId: k8s集群ID
+        :type ClusterId: str
+        :param Namespace: 容器命名空间
+        :type Namespace: str
+        :param ServiceName: 容器服务的名字
+        :type ServiceName: str
+        :param Port: 服务的端口
+        :type Port: int
+        :param ExtraLabels: 额外选择的Pod的Label
+        :type ExtraLabels: list of K8sLabel
+        :param Name: 自定义的服务名字，可选
+        :type Name: str
+        """
+        self.Weight = None
+        self.ClusterId = None
+        self.Namespace = None
+        self.ServiceName = None
+        self.Port = None
+        self.ExtraLabels = None
+        self.Name = None
+
+
+    def _deserialize(self, params):
+        self.Weight = params.get("Weight")
+        self.ClusterId = params.get("ClusterId")
+        self.Namespace = params.get("Namespace")
+        self.ServiceName = params.get("ServiceName")
+        self.Port = params.get("Port")
+        if params.get("ExtraLabels") is not None:
+            self.ExtraLabels = []
+            for item in params.get("ExtraLabels"):
+                obj = K8sLabel()
+                obj._deserialize(item)
+                self.ExtraLabels.append(obj)
+        self.Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class LogQuery(AbstractModel):
     """检索条件入参
 
@@ -7524,6 +7999,100 @@ class ModifySubDomainResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyUpstreamRequest(AbstractModel):
+    """ModifyUpstream请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UpstreamId: VPC通道唯一ID
+        :type UpstreamId: str
+        :param UpstreamName: VPC通道名字
+        :type UpstreamName: str
+        :param UpstreamDescription: VPC通道描述
+        :type UpstreamDescription: str
+        :param Scheme: 后端协议，HTTP, HTTPS其中之一
+        :type Scheme: str
+        :param Algorithm: 负载均衡算法目前支持ROUND_ROBIN
+        :type Algorithm: str
+        :param UniqVpcId: VPC唯一ID
+        :type UniqVpcId: str
+        :param Retries: 请求重试次数，默认3次
+        :type Retries: int
+        :param UpstreamHost: 请求到后端的，host头
+        :type UpstreamHost: str
+        :param Nodes: 后端节点列表
+        :type Nodes: list of UpstreamNode
+        :param K8sService: k8s服务配置
+        :type K8sService: list of K8sService
+        """
+        self.UpstreamId = None
+        self.UpstreamName = None
+        self.UpstreamDescription = None
+        self.Scheme = None
+        self.Algorithm = None
+        self.UniqVpcId = None
+        self.Retries = None
+        self.UpstreamHost = None
+        self.Nodes = None
+        self.K8sService = None
+
+
+    def _deserialize(self, params):
+        self.UpstreamId = params.get("UpstreamId")
+        self.UpstreamName = params.get("UpstreamName")
+        self.UpstreamDescription = params.get("UpstreamDescription")
+        self.Scheme = params.get("Scheme")
+        self.Algorithm = params.get("Algorithm")
+        self.UniqVpcId = params.get("UniqVpcId")
+        self.Retries = params.get("Retries")
+        self.UpstreamHost = params.get("UpstreamHost")
+        if params.get("Nodes") is not None:
+            self.Nodes = []
+            for item in params.get("Nodes"):
+                obj = UpstreamNode()
+                obj._deserialize(item)
+                self.Nodes.append(obj)
+        if params.get("K8sService") is not None:
+            self.K8sService = []
+            for item in params.get("K8sService"):
+                obj = K8sService()
+                obj._deserialize(item)
+                self.K8sService.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyUpstreamResponse(AbstractModel):
+    """ModifyUpstream返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 返回修改后的vpc通道信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.UpstreamInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = UpstreamInfo()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyUsagePlanRequest(AbstractModel):
     """ModifyUsagePlan请求参数结构体
 
@@ -7675,7 +8244,7 @@ class ParameterInfo(AbstractModel):
         :type Default: int
         :param Unit: 单位
         :type Unit: str
-        :param Type: 类型
+        :param Type: 类型, integer|string
         :type Type: str
         :param Minimum: 最小
         :type Minimum: int
@@ -7683,6 +8252,15 @@ class ParameterInfo(AbstractModel):
         :type Maximum: int
         :param ModifedTime: 修改时间
         :type ModifedTime: str
+        :param ValueString: 字符类型的值，当Type为string时才有意义
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ValueString: str
+        :param DefaultValueString: 字符类型的默认值，当Type为string时才有意义
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DefaultValueString: str
+        :param Range: 可调整范围
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Range: str
         """
         self.Name = None
         self.Value = None
@@ -7692,6 +8270,9 @@ class ParameterInfo(AbstractModel):
         self.Minimum = None
         self.Maximum = None
         self.ModifedTime = None
+        self.ValueString = None
+        self.DefaultValueString = None
+        self.Range = None
 
 
     def _deserialize(self, params):
@@ -7703,6 +8284,9 @@ class ParameterInfo(AbstractModel):
         self.Minimum = params.get("Minimum")
         self.Maximum = params.get("Maximum")
         self.ModifedTime = params.get("ModifedTime")
+        self.ValueString = params.get("ValueString")
+        self.DefaultValueString = params.get("DefaultValueString")
+        self.Range = params.get("Range")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8256,7 +8840,7 @@ class ServiceConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Product: 后端类型。启用vpc时生效，目前支持的类型为clb和vpc通道
+        :param Product: 后端类型。启用vpc时生效，目前支持的类型为clb, cvm和upstream
         :type Product: str
         :param UniqVpcId: vpc 的唯一ID。
         :type UniqVpcId: str
@@ -9276,6 +9860,254 @@ class UpdateServiceResponse(AbstractModel):
     def _deserialize(self, params):
         self.Result = params.get("Result")
         self.RequestId = params.get("RequestId")
+
+
+class UpstreamHealthChecker(AbstractModel):
+    """VPC通道健康检查参数配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EnableActiveCheck: 标识是否开启主动健康检查。
+        :type EnableActiveCheck: bool
+        :param EnablePassiveCheck: 标识是否开启被动健康检查。
+        :type EnablePassiveCheck: bool
+        :param HealthyHttpStatus: 健康检查时，判断为成功请求的 HTTP 状态码。
+        :type HealthyHttpStatus: str
+        :param UnhealthyHttpStatus: 健康检查时，判断为失败请求的 HTTP 状态码。
+        :type UnhealthyHttpStatus: str
+        :param TcpFailureThreshold: TCP连续错误阈值。0 表示禁用 TCP 检查。取值范围：[0, 254]。
+        :type TcpFailureThreshold: int
+        :param TimeoutThreshold: 连续超时阈值。0 表示禁用超时检查。取值范围：[0, 254]。
+        :type TimeoutThreshold: int
+        :param HttpFailureThreshold: HTTP连续错误阈值。0 表示禁用HTTP检查。取值范围：[0, 254]。
+        :type HttpFailureThreshold: int
+        :param ActiveCheckHttpPath: 主动健康检查时探测请求的路径。默认为"/"。
+        :type ActiveCheckHttpPath: str
+        :param ActiveCheckTimeout: 主动健康检查的探测请求超时，单位秒。默认为5秒。
+        :type ActiveCheckTimeout: int
+        :param ActiveCheckInterval: 主动健康检查的时间间隔，默认5秒。
+        :type ActiveCheckInterval: int
+        :param ActiveRequestHeader: 主动健康检查时探测请求的的请求头。
+        :type ActiveRequestHeader: list of UpstreamHealthCheckerReqHeaders
+        :param UnhealthyTimeout: 异常节点的状态自动恢复时间，单位秒。当只开启被动检查的话，必须设置为 > 0 的值，否则被动异常节点将无法恢复。默认30秒。
+        :type UnhealthyTimeout: int
+        """
+        self.EnableActiveCheck = None
+        self.EnablePassiveCheck = None
+        self.HealthyHttpStatus = None
+        self.UnhealthyHttpStatus = None
+        self.TcpFailureThreshold = None
+        self.TimeoutThreshold = None
+        self.HttpFailureThreshold = None
+        self.ActiveCheckHttpPath = None
+        self.ActiveCheckTimeout = None
+        self.ActiveCheckInterval = None
+        self.ActiveRequestHeader = None
+        self.UnhealthyTimeout = None
+
+
+    def _deserialize(self, params):
+        self.EnableActiveCheck = params.get("EnableActiveCheck")
+        self.EnablePassiveCheck = params.get("EnablePassiveCheck")
+        self.HealthyHttpStatus = params.get("HealthyHttpStatus")
+        self.UnhealthyHttpStatus = params.get("UnhealthyHttpStatus")
+        self.TcpFailureThreshold = params.get("TcpFailureThreshold")
+        self.TimeoutThreshold = params.get("TimeoutThreshold")
+        self.HttpFailureThreshold = params.get("HttpFailureThreshold")
+        self.ActiveCheckHttpPath = params.get("ActiveCheckHttpPath")
+        self.ActiveCheckTimeout = params.get("ActiveCheckTimeout")
+        self.ActiveCheckInterval = params.get("ActiveCheckInterval")
+        if params.get("ActiveRequestHeader") is not None:
+            self.ActiveRequestHeader = []
+            for item in params.get("ActiveRequestHeader"):
+                obj = UpstreamHealthCheckerReqHeaders()
+                obj._deserialize(item)
+                self.ActiveRequestHeader.append(obj)
+        self.UnhealthyTimeout = params.get("UnhealthyTimeout")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpstreamHealthCheckerReqHeaders(AbstractModel):
+    """VPC通道主动健康检查的请求头配置
+
+    """
+
+
+class UpstreamInfo(AbstractModel):
+    """VPC通道信息集合
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UpstreamId: VPC通道唯一ID
+        :type UpstreamId: str
+        :param UpstreamName: VPC通道名字
+        :type UpstreamName: str
+        :param UpstreamDescription: VPC通道描述
+        :type UpstreamDescription: str
+        :param Scheme: 写意
+        :type Scheme: str
+        :param Algorithm: 负载均衡算法
+        :type Algorithm: str
+        :param UniqVpcId: vpc唯一ID
+        :type UniqVpcId: str
+        :param Retries: 请求重拾次数
+        :type Retries: int
+        :param Nodes: 后端节点
+        :type Nodes: list of UpstreamNode
+        :param CreatedTime: 创建时间
+        :type CreatedTime: str
+        :param Tags: 标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
+        :param HealthChecker: 健康检查配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HealthChecker: :class:`tencentcloud.apigateway.v20180808.models.UpstreamHealthChecker`
+        :param UpstreamType: Upstream的类型
+        :type UpstreamType: str
+        :param K8sServices: k8s服务配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type K8sServices: list of K8sService
+        :param UpstreamHost: vpc通道的Host
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpstreamHost: str
+        """
+        self.UpstreamId = None
+        self.UpstreamName = None
+        self.UpstreamDescription = None
+        self.Scheme = None
+        self.Algorithm = None
+        self.UniqVpcId = None
+        self.Retries = None
+        self.Nodes = None
+        self.CreatedTime = None
+        self.Tags = None
+        self.HealthChecker = None
+        self.UpstreamType = None
+        self.K8sServices = None
+        self.UpstreamHost = None
+
+
+    def _deserialize(self, params):
+        self.UpstreamId = params.get("UpstreamId")
+        self.UpstreamName = params.get("UpstreamName")
+        self.UpstreamDescription = params.get("UpstreamDescription")
+        self.Scheme = params.get("Scheme")
+        self.Algorithm = params.get("Algorithm")
+        self.UniqVpcId = params.get("UniqVpcId")
+        self.Retries = params.get("Retries")
+        if params.get("Nodes") is not None:
+            self.Nodes = []
+            for item in params.get("Nodes"):
+                obj = UpstreamNode()
+                obj._deserialize(item)
+                self.Nodes.append(obj)
+        self.CreatedTime = params.get("CreatedTime")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        if params.get("HealthChecker") is not None:
+            self.HealthChecker = UpstreamHealthChecker()
+            self.HealthChecker._deserialize(params.get("HealthChecker"))
+        self.UpstreamType = params.get("UpstreamType")
+        if params.get("K8sServices") is not None:
+            self.K8sServices = []
+            for item in params.get("K8sServices"):
+                obj = K8sService()
+                obj._deserialize(item)
+                self.K8sServices.append(obj)
+        self.UpstreamHost = params.get("UpstreamHost")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpstreamNode(AbstractModel):
+    """VPC通道后端节点元数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Host: IP（domain）
+        :type Host: str
+        :param Port: 端口[0, 65535]
+        :type Port: int
+        :param Weight: 权重[0, 100], 0为禁用
+        :type Weight: int
+        :param VmInstanceId: vm实例id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VmInstanceId: str
+        :param Tags: 染色标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of str
+        :param Healthy: 节点健康状态，创建、编辑时不需要传该参数。OFF：关闭，HEALTHY：健康，UNHEALTHY：异常，NO_DATA：数据未上报
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Healthy: str
+        :param ServiceName: k8s服务名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceName: str
+        :param NameSpace: k8s命名空间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NameSpace: str
+        :param ClusterId: TKE集群的ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterId: str
+        :param Source: Node的来源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Source: str
+        :param UniqueServiceName: API网关内部记录唯一的服务名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UniqueServiceName: str
+        """
+        self.Host = None
+        self.Port = None
+        self.Weight = None
+        self.VmInstanceId = None
+        self.Tags = None
+        self.Healthy = None
+        self.ServiceName = None
+        self.NameSpace = None
+        self.ClusterId = None
+        self.Source = None
+        self.UniqueServiceName = None
+
+
+    def _deserialize(self, params):
+        self.Host = params.get("Host")
+        self.Port = params.get("Port")
+        self.Weight = params.get("Weight")
+        self.VmInstanceId = params.get("VmInstanceId")
+        self.Tags = params.get("Tags")
+        self.Healthy = params.get("Healthy")
+        self.ServiceName = params.get("ServiceName")
+        self.NameSpace = params.get("NameSpace")
+        self.ClusterId = params.get("ClusterId")
+        self.Source = params.get("Source")
+        self.UniqueServiceName = params.get("UniqueServiceName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class UsagePlan(AbstractModel):

@@ -104,6 +104,9 @@ INVALIDSNAPSHOT_NOTSUPPORTED = 'InvalidSnapshot.NotSupported'
 # 输入的`SnapshotId`不存在。
 INVALIDSNAPSHOTID_NOTFOUND = 'InvalidSnapshotId.NotFound'
 
+# 定期快照策略数量已达到上限。
+LIMITEXCEEDED_AUTOSNAPSHOTPOLICYOUTOFQUOTA = 'LimitExceeded.AutoSnapshotPolicyOutOfQuota'
+
 # 实例挂载云盘数量超过限制。
 LIMITEXCEEDED_INSTANCEATTACHEDDISK = 'LimitExceeded.InstanceAttachedDisk'
 
@@ -115,6 +118,9 @@ RESOURCEBUSY = 'ResourceBusy'
 
 # 资源被占用。
 RESOURCEINUSE = 'ResourceInUse'
+
+# 指定快照正在复制到目标地域。
+RESOURCEINUSE_COPYSNAPSHOTCONFLICT = 'ResourceInUse.CopySnapshotConflict'
 
 # 云硬盘当前已在迁移中，请稍后重试。
 RESOURCEINUSE_DISKMIGRATING = 'ResourceInUse.DiskMigrating'
@@ -179,6 +185,9 @@ UNAUTHORIZEDOPERATION_NOTCERTIFICATION = 'UnauthorizedOperation.NotCertification
 # 没有支付权限。
 UNAUTHORIZEDOPERATION_NOTHAVEPAYMENTRIGHT = 'UnauthorizedOperation.NotHavePaymentRight'
 
+# 授权角色不存在。
+UNAUTHORIZEDOPERATION_ROLENOTEXISTS = 'UnauthorizedOperation.RoleNotExists'
+
 # 操作不支持。
 UNSUPPORTEDOPERATION = 'UnsupportedOperation'
 
@@ -196,6 +205,9 @@ UNSUPPORTEDOPERATION_SNAPHASSHARED = 'UnsupportedOperation.SnapHasShared'
 
 # 该快照创建了自定义快照，请先删除对应镜像。
 UNSUPPORTEDOPERATION_SNAPSHOTHASBINDEDIMAGE = 'UnsupportedOperation.SnapshotHasBindedImage'
+
+# 快照不支持跨地域复制。
+UNSUPPORTEDOPERATION_SNAPSHOTNOTSUPPORTCOPY = 'UnsupportedOperation.SnapshotNotSupportCopy'
 
 # 资源当前状态不支持该操作。
 UNSUPPORTEDOPERATION_STATEERROR = 'UnsupportedOperation.StateError'

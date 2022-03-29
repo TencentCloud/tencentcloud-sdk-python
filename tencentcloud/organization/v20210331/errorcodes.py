@@ -92,11 +92,23 @@ UNSUPPORTEDOPERATION_ADDDELEGATEPAYERNOTALLOW = 'UnsupportedOperation.AddDelegat
 # 不允许添加优惠继承关系。
 UNSUPPORTEDOPERATION_ADDDISCOUNTINHERITNOTALLOW = 'UnsupportedOperation.AddDiscountInheritNotAllow'
 
+# 用户类型不一致。
+UNSUPPORTEDOPERATION_INCONSISTENTUSERTYPES = 'UnsupportedOperation.InconsistentUserTypes'
+
+# 调用经管系统报错。
+UNSUPPORTEDOPERATION_MANAGEMENTSYSTEMERROR = 'UnsupportedOperation.ManagementSystemError'
+
 # 成员账户欠费。
 UNSUPPORTEDOPERATION_MEMBERACCOUNTARREARS = 'UnsupportedOperation.MemberAccountArrears'
 
 # 成员存在优惠继承。
 UNSUPPORTEDOPERATION_MEMBERDISCOUNTINHERITEXISTED = 'UnsupportedOperation.MemberDiscountInheritExisted'
+
+# 成员存在账户级优惠。
+UNSUPPORTEDOPERATION_MEMBEREXISTACCOUNTLEVELDISCOUNTINHERIT = 'UnsupportedOperation.MemberExistAccountLevelDiscountInherit'
+
+# 成员是代理商或代客。
+UNSUPPORTEDOPERATION_MEMBERISAGENT = 'UnsupportedOperation.MemberIsAgent'
 
 # 存在在途订单。
 UNSUPPORTEDOPERATION_ORDERINPROGRESSEXISTED = 'UnsupportedOperation.OrderInProgressExisted'
@@ -106,3 +118,6 @@ UNSUPPORTEDOPERATION_OWNERDISCOUNTINHERITEXISTED = 'UnsupportedOperation.OwnerDi
 
 # 代付者欠费且未开通信用账户。
 UNSUPPORTEDOPERATION_PAYERARREARSANDNOCREDITACCOUNT = 'UnsupportedOperation.PayerArrearsAndNoCreditAccount'
+
+# 代付者存在账户级优惠。
+UNSUPPORTEDOPERATION_PAYEREXISTACCOUNTLEVELDISCOUNTINHERIT = 'UnsupportedOperation.PayerExistAccountLevelDiscountInherit'

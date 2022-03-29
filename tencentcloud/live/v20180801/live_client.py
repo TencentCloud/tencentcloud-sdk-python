@@ -638,6 +638,40 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateScreenshotTask(self, request):
+        """创建一个在指定时间启动、结束的截图任务，并使用指定截图模板ID对应的配置进行截图。
+        - 注意事项
+        1. 断流会结束当前截图。在结束时间到达之前任务仍然有效，期间只要正常推流都会正常截图，与是否多次推、断流无关。
+        2. 使用上避免创建时间段相互重叠的截图任务。若同一条流当前存在多个时段重叠的任务，为避免重复系统将启动最多3个截图任务。
+        3. 创建的截图任务记录在平台侧只保留3个月。
+        4. 当前截图任务管理API（CreateScreenshotTask/StopScreenshotTask/DeleteScreenshotTask）与旧API（CreateLiveInstantSnapshot/StopLiveInstantSnapshot）不兼容，两套接口不能混用。
+        5. 避免 创建截图任务 与 推流 操作同时进行，可能导致因截图任务未生效而引起任务延迟启动问题，两者操作间隔建议大于3秒。
+
+        :param request: Request instance for CreateScreenshotTask.
+        :type request: :class:`tencentcloud.live.v20180801.models.CreateScreenshotTaskRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.CreateScreenshotTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateScreenshotTask", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateScreenshotTaskResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteLiveCallbackRule(self, request):
         """删除回调规则。
 
@@ -1076,6 +1110,34 @@ class LiveClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteRecordTaskResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteScreenshotTask(self, request):
+        """删除截图任务配置。删除操作不影响正在运行当中的任务，仅对删除之后新的推流有效。
+
+        :param request: Request instance for DeleteScreenshotTask.
+        :type request: :class:`tencentcloud.live.v20180801.models.DeleteScreenshotTaskRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DeleteScreenshotTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteScreenshotTask", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteScreenshotTaskResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -2577,6 +2639,37 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeScreenshotTask(self, request):
+        """查询指定时间段范围内启动和结束的截图任务列表。
+        - 使用前提
+        1. 仅用于查询由 CreateScreenshotTask接口创建的截图任务。
+        2. 不能查询被 DeleteScreenshotTask接口删除以及已过期（平台侧保留3个月）的截图任务。
+
+        :param request: Request instance for DescribeScreenshotTask.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeScreenshotTaskRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeScreenshotTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeScreenshotTask", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeScreenshotTaskResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeStreamDayPlayInfoList(self, request):
         """查询天维度每条流的播放数据，包括总流量等。
 
@@ -3323,6 +3416,34 @@ class LiveClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StopRecordTaskResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def StopScreenshotTask(self, request):
+        """提前结束截图，中止运行中的截图任务。任务被成功终止后，本次任务将不再启动。
+
+        :param request: Request instance for StopScreenshotTask.
+        :type request: :class:`tencentcloud.live.v20180801.models.StopScreenshotTaskRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.StopScreenshotTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("StopScreenshotTask", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.StopScreenshotTaskResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

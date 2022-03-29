@@ -698,6 +698,34 @@ class CfwClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeIPStatusList(self, request):
+        """ip防护状态查询
+
+        :param request: Request instance for DescribeIPStatusList.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeIPStatusListRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.DescribeIPStatusListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeIPStatusList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeIPStatusListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeNatFwInfoCount(self, request):
         """获取当前用户接入nat防火墙的所有子网数及natfw实例个数
 

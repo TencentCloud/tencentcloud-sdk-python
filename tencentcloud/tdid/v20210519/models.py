@@ -31,10 +31,13 @@ class CreateCredentialRequest(AbstractModel):
         :type TransactionArg: :class:`tencentcloud.tdid.v20210519.models.TransactionArg`
         :param VersionCredential: 版本
         :type VersionCredential: str
+        :param UnSigned: 是否未签名
+        :type UnSigned: bool
         """
         self.FunctionArg = None
         self.TransactionArg = None
         self.VersionCredential = None
+        self.UnSigned = None
 
 
     def _deserialize(self, params):
@@ -45,6 +48,7 @@ class CreateCredentialRequest(AbstractModel):
             self.TransactionArg = TransactionArg()
             self.TransactionArg._deserialize(params.get("TransactionArg"))
         self.VersionCredential = params.get("VersionCredential")
+        self.UnSigned = params.get("UnSigned")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -126,6 +130,63 @@ class CreateSelectiveCredentialResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateTDidByPublicKeyRequest(AbstractModel):
+    """CreateTDidByPublicKey请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 网络ID
+        :type ClusterId: str
+        :param GroupId: 群组ID
+        :type GroupId: int
+        :param PublicKey: 身份公钥
+        :type PublicKey: str
+        :param EncryptPubKey: 加密公钥
+        :type EncryptPubKey: str
+        """
+        self.ClusterId = None
+        self.GroupId = None
+        self.PublicKey = None
+        self.EncryptPubKey = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.GroupId = params.get("GroupId")
+        self.PublicKey = params.get("PublicKey")
+        self.EncryptPubKey = params.get("EncryptPubKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateTDidByPublicKeyResponse(AbstractModel):
+    """CreateTDidByPublicKey返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Did: did具体信息
+        :type Did: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Did = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Did = params.get("Did")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateTDidRequest(AbstractModel):
     """CreateTDid请求参数结构体
 
@@ -179,6 +240,53 @@ class CreateTDidResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CredentialStatus(AbstractModel):
+    """凭证链上状态信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CredentialId: 凭证唯一id
+        :type CredentialId: str
+        :param Status: 凭证状态（0：吊销；1：有效）
+        :type Status: int
+        :param Issuer: 凭证颁发者Did
+        :type Issuer: str
+        :param Digest: 凭证摘要
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Digest: str
+        :param Signature: 凭证签名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Signature: str
+        :param TimeStamp: 更新时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimeStamp: int
+        """
+        self.CredentialId = None
+        self.Status = None
+        self.Issuer = None
+        self.Digest = None
+        self.Signature = None
+        self.TimeStamp = None
+
+
+    def _deserialize(self, params):
+        self.CredentialId = params.get("CredentialId")
+        self.Status = params.get("Status")
+        self.Issuer = params.get("Issuer")
+        self.Digest = params.get("Digest")
+        self.Signature = params.get("Signature")
+        self.TimeStamp = params.get("TimeStamp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class FunctionArg(AbstractModel):
     """创建凭证入参的FunctionArg
 
@@ -213,6 +321,124 @@ class FunctionArg(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class GetAuthorityIssuerRequest(AbstractModel):
+    """GetAuthorityIssuer请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Did: tdid
+        :type Did: str
+        """
+        self.Did = None
+
+
+    def _deserialize(self, params):
+        self.Did = params.get("Did")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetAuthorityIssuerResponse(AbstractModel):
+    """GetAuthorityIssuer返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 名称
+        :type Name: str
+        :param ClusterId: 区块链网络id
+        :type ClusterId: str
+        :param GroupId: 区块链群组id
+        :type GroupId: int
+        :param Did: 权威机构did
+        :type Did: str
+        :param Remark: 机构备注信息
+        :type Remark: str
+        :param RegisterTime: 注册时间
+        :type RegisterTime: str
+        :param RecognizeTime: 认证时间
+        :type RecognizeTime: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Name = None
+        self.ClusterId = None
+        self.GroupId = None
+        self.Did = None
+        self.Remark = None
+        self.RegisterTime = None
+        self.RecognizeTime = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.ClusterId = params.get("ClusterId")
+        self.GroupId = params.get("GroupId")
+        self.Did = params.get("Did")
+        self.Remark = params.get("Remark")
+        self.RegisterTime = params.get("RegisterTime")
+        self.RecognizeTime = params.get("RecognizeTime")
+        self.RequestId = params.get("RequestId")
+
+
+class GetDidDocumentRequest(AbstractModel):
+    """GetDidDocument请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Did: tdid
+        :type Did: str
+        """
+        self.Did = None
+
+
+    def _deserialize(self, params):
+        self.Did = params.get("Did")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetDidDocumentResponse(AbstractModel):
+    """GetDidDocument返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 名称
+        :type Name: str
+        :param Document: DID文档
+        :type Document: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Name = None
+        self.Document = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Document = params.get("Document")
+        self.RequestId = params.get("RequestId")
 
 
 class Proof(AbstractModel):
@@ -253,6 +479,49 @@ class Proof(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class SetCredentialStatusRequest(AbstractModel):
+    """SetCredentialStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CredentialStatus: 凭证状态
+        :type CredentialStatus: :class:`tencentcloud.tdid.v20210519.models.CredentialStatus`
+        """
+        self.CredentialStatus = None
+
+
+    def _deserialize(self, params):
+        if params.get("CredentialStatus") is not None:
+            self.CredentialStatus = CredentialStatus()
+            self.CredentialStatus._deserialize(params.get("CredentialStatus"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SetCredentialStatusResponse(AbstractModel):
+    """SetCredentialStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class TransactionArg(AbstractModel):

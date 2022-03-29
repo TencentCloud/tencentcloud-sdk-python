@@ -32,6 +32,9 @@ INVALIDPARAMETER = 'InvalidParameter'
 # 参数冲突。
 INVALIDPARAMETER_CONFLICTPARAMETER = 'InvalidParameter.ConflictParameter'
 
+# 无效用户名。
+INVALIDPARAMETER_INVALIDUSERNAME = 'InvalidParameter.InvalidUsername'
+
 # 参数取值错误。
 INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 

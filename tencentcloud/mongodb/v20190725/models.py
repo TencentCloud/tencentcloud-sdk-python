@@ -27,7 +27,7 @@ class AssignProjectRequest(AbstractModel):
         r"""
         :param InstanceIds: 实例ID列表，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
         :type InstanceIds: list of str
-        :param ProjectId: 项目ID
+        :param ProjectId: 项目ID，用户已创建项目的唯一ID,非自定义
         :type ProjectId: int
         """
         self.InstanceIds = None
@@ -118,6 +118,11 @@ class BackupDownloadTask(AbstractModel):
         :type TimeSpend: int
         :param Url: 备份数据下载链接
         :type Url: str
+        :param BackupMethod: 备份文件备份类型，0-逻辑备份，1-物理备份
+        :type BackupMethod: int
+        :param BackupDesc: 发起备份时指定的备注信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BackupDesc: str
         """
         self.CreateTime = None
         self.BackupName = None
@@ -127,6 +132,8 @@ class BackupDownloadTask(AbstractModel):
         self.Percent = None
         self.TimeSpend = None
         self.Url = None
+        self.BackupMethod = None
+        self.BackupDesc = None
 
 
     def _deserialize(self, params):
@@ -138,6 +145,8 @@ class BackupDownloadTask(AbstractModel):
         self.Percent = params.get("Percent")
         self.TimeSpend = params.get("TimeSpend")
         self.Url = params.get("Url")
+        self.BackupMethod = params.get("BackupMethod")
+        self.BackupDesc = params.get("BackupDesc")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -355,11 +364,13 @@ class CreateBackupDownloadTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+        :param InstanceId: 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同。
         :type InstanceId: str
-        :param BackupName: 要下载的备份文件名，可通过DescribeDBBackups接口获取
+        :param BackupName: 要下载的备份文件名，可通过DescribeDBBackups接口获取。
         :type BackupName: str
-        :param BackupSets: 下载备份的分片列表
+        :param BackupSets: 指定要下载的副本集的节点名称 或 分片集群的分片名称列表。
+如副本集cmgo-p8vnipr5，示例(固定取值)：BackupSets.0=cmgo-p8vnipr5_0，可下载全量数据。
+如分片集群cmgo-p8vnipr5，示例：BackupSets.0=cmgo-p8vnipr5_0&BackupSets.1=cmgo-p8vnipr5_1，即下载分片0和分片1的数据，分片集群如需全量下载，请按示例方式传入全部分片名称。
         :type BackupSets: list of ReplicaSetInfo
         """
         self.InstanceId = None
@@ -949,9 +960,9 @@ class DescribeBackupDownloadTaskRequest(AbstractModel):
         :type InstanceId: str
         :param BackupName: 备份文件名，用来过滤指定文件的下载任务
         :type BackupName: str
-        :param StartTime: 指定要查询任务的时间范围，StartTime指定开始时间，不填默认不限制开始时间
+        :param StartTime: 指定查询时间范围内的任务，StartTime指定开始时间，不填默认不限制开始时间
         :type StartTime: str
-        :param EndTime: 指定要查询任务的时间范围，EndTime指定结束时间，不填默认不限制结束时间
+        :param EndTime: 指定查询时间范围内的任务，EndTime指定截止时间，不填默认不限制截止时间
         :type EndTime: str
         :param Limit: 此次查询返回的条数，取值范围为1-100，默认为20
         :type Limit: int
@@ -1033,7 +1044,7 @@ class DescribeClientConnectionsRequest(AbstractModel):
         r"""
         :param InstanceId: 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
         :type InstanceId: str
-        :param Limit: 查询返回记录条数，默认为10000。
+        :param Limit: 单次请求返回的数量，最小值为1，最大值为1000，默认值为1000。
         :type Limit: int
         :param Offset: 偏移量，默认值为0。
         :type Offset: int
@@ -1791,7 +1802,7 @@ class InquirePriceCreateDBInstancesRequest(AbstractModel):
         r"""
         :param Zone: 实例所属区域名称，格式如：ap-guangzhou-2
         :type Zone: str
-        :param NodeNum: 每个副本集内节点个数，当前副本集节点数固定为3，分片从节点数可选，具体参照查询云数据库的售卖规格返回参数
+        :param NodeNum: 每个副本集内节点个数，具体参照查询云数据库的售卖规格返回参数
         :type NodeNum: int
         :param Memory: 实例内存大小，单位：GB
         :type Memory: int
@@ -1799,7 +1810,7 @@ class InquirePriceCreateDBInstancesRequest(AbstractModel):
         :type Volume: int
         :param MongoVersion: 版本号，具体支持的售卖版本请参照查询云数据库的售卖规格（DescribeSpecInfo）返回结果。参数与版本对应关系是MONGO_3_WT：MongoDB 3.2 WiredTiger存储引擎版本，MONGO_3_ROCKS：MongoDB 3.2 RocksDB存储引擎版本，MONGO_36_WT：MongoDB 3.6 WiredTiger存储引擎版本，MONGO_40_WT：MongoDB 4.0 WiredTiger存储引擎版本
         :type MongoVersion: str
-        :param MachineCode: 机器类型，HIO：高IO型；HIO10G：高IO万兆型；STDS5：标准型
+        :param MachineCode: 机器类型，HIO：高IO型；HIO10G：高IO万兆型；
         :type MachineCode: str
         :param GoodsNum: 实例数量, 最小值1，最大值为10
         :type GoodsNum: int
@@ -1878,16 +1889,24 @@ class InquirePriceModifyDBInstanceSpecRequest(AbstractModel):
         :type Memory: int
         :param Volume: 变更配置后实例磁盘大小，单位：GB。
         :type Volume: int
+        :param NodeNum: 实例变更后的节点数，取值范围具体参照查询云数据库的售卖规格返回参数。默认为不变更节点数
+        :type NodeNum: int
+        :param ReplicateSetNum: 实例变更后的分片数，取值范围具体参照查询云数据库的售卖规格返回参数。只能增加不能减少，默认为不变更分片数
+        :type ReplicateSetNum: int
         """
         self.InstanceId = None
         self.Memory = None
         self.Volume = None
+        self.NodeNum = None
+        self.ReplicateSetNum = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
         self.Memory = params.get("Memory")
         self.Volume = params.get("Volume")
+        self.NodeNum = params.get("NodeNum")
+        self.ReplicateSetNum = params.get("ReplicateSetNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2220,7 +2239,7 @@ class InstanceEnumParam(AbstractModel):
         :type DefaultValue: str
         :param EnumValue: 枚举值，所有支持的值
         :type EnumValue: list of str
-        :param NeedRestart: 是否需要重启后生效，"1"需要，"0"无需重启
+        :param NeedRestart: 是否需要重启生效 1:需要重启后生效；0：无需重启，设置成功即可生效；
         :type NeedRestart: str
         :param ParamName: 参数名称
         :type ParamName: str
@@ -2228,7 +2247,7 @@ class InstanceEnumParam(AbstractModel):
         :type Tips: list of str
         :param ValueType: 参数值类型说明
         :type ValueType: str
-        :param Status: 是否获取到参数，1为获取，前端正常显示，0:前段显示loading
+        :param Status: 是否为运行中参数值 1:运行中参数值；0：非运行中参数值；
         :type Status: int
         """
         self.CurrentValue = None
@@ -2274,7 +2293,7 @@ class InstanceIntegerParam(AbstractModel):
         :type Max: str
         :param Min: 最小值
         :type Min: str
-        :param NeedRestart: 是否徐亚哦重启后生效 1:需要重启；0:无需重启
+        :param NeedRestart: 是否需要重启生效 1:需要重启后生效；0：无需重启，设置成功即可生效；
         :type NeedRestart: str
         :param ParamName: 参数名称
         :type ParamName: str
@@ -2282,9 +2301,9 @@ class InstanceIntegerParam(AbstractModel):
         :type Tips: list of str
         :param ValueType: 参数类型
         :type ValueType: str
-        :param Status: 是否正常获取到，1：未正常获取；0：正常获取，仅对前端有实际意义；
+        :param Status: 是否为运行中参数值 1:运行中参数值；0：非运行中参数值；
         :type Status: int
-        :param Unit: 暂时未用到，前端使用redis侧代码，为了兼容，保留该参数
+        :param Unit: 冗余字段，可忽略
         :type Unit: str
         """
         self.CurrentValue = None
@@ -2332,15 +2351,15 @@ class InstanceMultiParam(AbstractModel):
         :type DefaultValue: str
         :param EnumValue: 指导值范围
         :type EnumValue: list of str
-        :param NeedRestart: 是否需要重启
+        :param NeedRestart: 是否需要重启生效 1:需要重启后生效；0：无需重启，设置成功即可生效；
         :type NeedRestart: str
         :param ParamName: 参数名称
         :type ParamName: str
-        :param Status: 状态值
+        :param Status: 是否为运行中参数值 1:运行中参数值；0：非运行中参数值；
         :type Status: int
         :param Tips: 参数说明
         :type Tips: list of str
-        :param ValueType: 值类型，multi混合类型
+        :param ValueType: 当前值的类型描述，默认为multi
         :type ValueType: str
         """
         self.CurrentValue = None
@@ -2378,21 +2397,21 @@ class InstanceTextParam(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CurrentValue: 当前值(暂未使用)
+        :param CurrentValue: 当前值
         :type CurrentValue: str
-        :param DefaultValue: 默认值(暂未使用)
+        :param DefaultValue: 默认值
         :type DefaultValue: str
-        :param NeedRestart: 是否需要重启(暂未使用)
+        :param NeedRestart: 是否需要重启
         :type NeedRestart: str
-        :param ParamName: 参数名称(暂未使用)
+        :param ParamName: 参数名称
         :type ParamName: str
-        :param TextValue: text类型值(暂未使用)
+        :param TextValue: text类型值
         :type TextValue: str
-        :param Tips: 说明(暂未使用)
+        :param Tips: 参数说明
         :type Tips: list of str
-        :param ValueType: 值类型(暂未使用)
+        :param ValueType: 值类型说明
         :type ValueType: str
-        :param Status: 值获取状态(暂未使用)
+        :param Status: 是否为运行中参数值 1:运行中参数值；0：非运行中参数值；
         :type Status: str
         """
         self.CurrentValue = None
@@ -2503,6 +2522,51 @@ class KillOpsRequest(AbstractModel):
 
 class KillOpsResponse(AbstractModel):
     """KillOps返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyDBInstanceSecurityGroupRequest(AbstractModel):
+    """ModifyDBInstanceSecurityGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param SecurityGroupIds: 目标安全组id
+        :type SecurityGroupIds: list of str
+        """
+        self.InstanceId = None
+        self.SecurityGroupIds = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.SecurityGroupIds = params.get("SecurityGroupIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDBInstanceSecurityGroupResponse(AbstractModel):
+    """ModifyDBInstanceSecurityGroup返回参数结构体
 
     """
 
@@ -2673,7 +2737,7 @@ class RenameInstanceRequest(AbstractModel):
         r"""
         :param InstanceId: 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
         :type InstanceId: str
-        :param NewName: 实例名称
+        :param NewName: 自定义实例名称，名称只支持长度为60个字符的中文、英文、数字、下划线_、分隔符 -
         :type NewName: str
         """
         self.InstanceId = None
@@ -2763,7 +2827,7 @@ class ReplicaSetInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ReplicaSetId: 分片名称
+        :param ReplicaSetId: 副本集ID
         :type ReplicaSetId: str
         """
         self.ReplicaSetId = None
@@ -2791,7 +2855,7 @@ class ResetDBInstancePasswordRequest(AbstractModel):
         :type InstanceId: str
         :param UserName: 实例账号名
         :type UserName: str
-        :param Password: 新密码
+        :param Password: 新密码，新密码长度不能少于8位
         :type Password: str
         """
         self.InstanceId = None

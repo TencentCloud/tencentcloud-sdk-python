@@ -341,7 +341,7 @@ string|tinyint|smallint|int|bigint|boolean|float|double|decimal|timestamp|date|b
         :param Nullable: 是否为null
 注意：此字段可能返回 null，表示取不到有效值。
         :type Nullable: str
-        :param Position: 字段位置
+        :param Position: 字段位置，小的在前
 注意：此字段可能返回 null，表示取不到有效值。
         :type Position: int
         :param CreateTime: 字段创建时间
@@ -431,6 +431,140 @@ class CreateDatabaseResponse(AbstractModel):
         if params.get("Execution") is not None:
             self.Execution = Execution()
             self.Execution._deserialize(params.get("Execution"))
+        self.RequestId = params.get("RequestId")
+
+
+class CreateExportTaskRequest(AbstractModel):
+    """CreateExportTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InputType: 数据来源，lakefsStorage、taskResult
+        :type InputType: str
+        :param InputConf: 导出任务输入配置
+        :type InputConf: list of KVPair
+        :param OutputConf: 导出任务输出配置
+        :type OutputConf: list of KVPair
+        :param OutputType: 目标数据源的类型，目前支持导出到cos
+        :type OutputType: str
+        """
+        self.InputType = None
+        self.InputConf = None
+        self.OutputConf = None
+        self.OutputType = None
+
+
+    def _deserialize(self, params):
+        self.InputType = params.get("InputType")
+        if params.get("InputConf") is not None:
+            self.InputConf = []
+            for item in params.get("InputConf"):
+                obj = KVPair()
+                obj._deserialize(item)
+                self.InputConf.append(obj)
+        if params.get("OutputConf") is not None:
+            self.OutputConf = []
+            for item in params.get("OutputConf"):
+                obj = KVPair()
+                obj._deserialize(item)
+                self.OutputConf.append(obj)
+        self.OutputType = params.get("OutputType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateExportTaskResponse(AbstractModel):
+    """CreateExportTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 任务id
+        :type TaskId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateImportTaskRequest(AbstractModel):
+    """CreateImportTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InputType: 数据来源，cos
+        :type InputType: str
+        :param InputConf: 输入配置
+        :type InputConf: list of KVPair
+        :param OutputConf: 输出配置
+        :type OutputConf: list of KVPair
+        :param OutputType: 目标数据源的类型，目前支持导入到托管存储，即lakefsStorage
+        :type OutputType: str
+        """
+        self.InputType = None
+        self.InputConf = None
+        self.OutputConf = None
+        self.OutputType = None
+
+
+    def _deserialize(self, params):
+        self.InputType = params.get("InputType")
+        if params.get("InputConf") is not None:
+            self.InputConf = []
+            for item in params.get("InputConf"):
+                obj = KVPair()
+                obj._deserialize(item)
+                self.InputConf.append(obj)
+        if params.get("OutputConf") is not None:
+            self.OutputConf = []
+            for item in params.get("OutputConf"):
+                obj = KVPair()
+                obj._deserialize(item)
+                self.OutputConf.append(obj)
+        self.OutputType = params.get("OutputType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateImportTaskResponse(AbstractModel):
+    """CreateImportTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 任务id
+        :type TaskId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
         self.RequestId = params.get("RequestId")
 
 
@@ -772,10 +906,16 @@ class CreateUserRequest(AbstractModel):
         :type UserDescription: str
         :param PolicySet: 绑定到用户的权限集合
         :type PolicySet: list of Policy
+        :param UserType: 用户类型。ADMIN：管理员 COMMON：一般用户。当用户类型为管理员的时候，不能设置权限集合和绑定的工作组集合，管理员默认拥有所有权限。该参数不填默认为COMMON
+        :type UserType: str
+        :param WorkGroupIds: 绑定到用户的工作组ID集合。
+        :type WorkGroupIds: list of int
         """
         self.UserId = None
         self.UserDescription = None
         self.PolicySet = None
+        self.UserType = None
+        self.WorkGroupIds = None
 
 
     def _deserialize(self, params):
@@ -787,6 +927,8 @@ class CreateUserRequest(AbstractModel):
                 obj = Policy()
                 obj._deserialize(item)
                 self.PolicySet.append(obj)
+        self.UserType = params.get("UserType")
+        self.WorkGroupIds = params.get("WorkGroupIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -826,10 +968,13 @@ class CreateWorkGroupRequest(AbstractModel):
         :type WorkGroupDescription: str
         :param PolicySet: 工作组绑定的鉴权策略集合
         :type PolicySet: list of Policy
+        :param UserIds: 需要绑定到工作组的用户Id集合
+        :type UserIds: list of str
         """
         self.WorkGroupName = None
         self.WorkGroupDescription = None
         self.PolicySet = None
+        self.UserIds = None
 
 
     def _deserialize(self, params):
@@ -841,6 +986,7 @@ class CreateWorkGroupRequest(AbstractModel):
                 obj = Policy()
                 obj._deserialize(item)
                 self.PolicySet.append(obj)
+        self.UserIds = params.get("UserIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1692,12 +1838,15 @@ class DescribeUsersRequest(AbstractModel):
         :type SortBy: str
         :param Sorting: 排序方式，desc表示正序，asc表示反序， 默认为asc
         :type Sorting: str
+        :param Filters: 过滤条件，支持如下字段类型，user-type：根据用户类型过滤。
+        :type Filters: list of Filter
         """
         self.UserId = None
         self.Offset = None
         self.Limit = None
         self.SortBy = None
         self.Sorting = None
+        self.Filters = None
 
 
     def _deserialize(self, params):
@@ -1706,6 +1855,12 @@ class DescribeUsersRequest(AbstractModel):
         self.Limit = params.get("Limit")
         self.SortBy = params.get("SortBy")
         self.Sorting = params.get("Sorting")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2254,20 +2409,56 @@ class Policy(AbstractModel):
         r"""
         :param Database: 需要授权的数据库名，填*代表当前Catalog下所有数据库。当授权类型为管理员级别时，只允许填“*”，当授权类型为数据连接级别时只允许填空，其他类型下可以任意指定数据库。
         :type Database: str
-        :param Catalog: 需要授权的数据源名称，管理员级别下只支持填*（代表该级别全部资源）；数据源级别和数据库级别鉴权的情况下，只支持填COSDataCatalog或者*；在数据表级别鉴权下可以填写用户自定义数据源。不填情况下默认为COSDataCatalog。注意：如果是对用户自定义数据源进行鉴权，DLC能够管理的权限是用户接入数据源的时候提供的账户的子集。
+        :param Catalog: 需要授权的数据源名称，管理员级别下只支持填*（代表该级别全部资源）；数据源级别和数据库级别鉴权的情况下，只支持填COSDataCatalog或者*；在数据表级别鉴权下可以填写用户自定义数据源。不填情况下默认为DataLakeCatalog。注意：如果是对用户自定义数据源进行鉴权，DLC能够管理的权限是用户接入数据源的时候提供的账户的子集。
         :type Catalog: str
         :param Table: 需要授权的表名，填*代表当前Database下所有表。当授权类型为管理员级别时，只允许填“*”，当授权类型为数据连接级别、数据库级别时只允许填空，其他类型下可以任意指定数据表。
         :type Table: str
-        :param Operation: 授权的权限操作，对于不同级别的鉴权提供不同操作。管理员权限：ALL，不填默认为ALL；数据连接级鉴权：CRETE；数据库级别鉴权：ALL、CREATE、ALTER、DROP；数据表权限：ALL、SELECT、INSERT、ALTER、DELETE、DROP、UPDATE。注意：在数据表权限下，指定的数据源不为COSDataCatalog的时候，只支持SELECT操作。
+        :param Operation: 授权的权限操作，对于不同级别的鉴权提供不同操作。管理员权限：ALL，不填默认为ALL；数据连接级鉴权：CREATE；数据库级别鉴权：ALL、CREATE、ALTER、DROP；数据表权限：ALL、SELECT、INSERT、ALTER、DELETE、DROP、UPDATE。注意：在数据表权限下，指定的数据源不为COSDataCatalog的时候，只支持SELECT操作。
         :type Operation: str
-        :param PolicyType: 授权类型，现在支持四种授权类型：ADMIN:管理员级别鉴权 DATASOURCE：数据连接级别鉴权 DATABASE：数据库级别鉴权 TABLE：表级别鉴权。不填默认为管理员级别鉴权。
+        :param PolicyType: 授权类型，现在支持八种授权类型：ADMIN:管理员级别鉴权 DATASOURCE：数据连接级别鉴权 DATABASE：数据库级别鉴权 TABLE：表级别鉴权 VIEW：视图级别鉴权 FUNCTION：函数级别鉴权 COLUMN：列级别鉴权 ENGINE：数据引擎鉴权。不填默认为管理员级别鉴权。
         :type PolicyType: str
+        :param Function: 需要授权的函数名，填*代表当前Catalog下所有函数。当授权类型为管理员级别时，只允许填“*”，当授权类型为数据连接级别时只允许填空，其他类型下可以任意指定函数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Function: str
+        :param View: 需要授权的视图，填*代表当前Database下所有视图。当授权类型为管理员级别时，只允许填“*”，当授权类型为数据连接级别、数据库级别时只允许填空，其他类型下可以任意指定视图。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type View: str
+        :param Column: 需要授权的列，填*代表当前所有列。当授权类型为管理员级别时，只允许填“*”
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Column: str
+        :param DataEngine: 需要授权的数据引擎，填*代表当前所有引擎。当授权类型为管理员级别时，只允许填“*”
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataEngine: str
+        :param ReAuth: 用户是否可以进行二次授权。当为true的时候，被授权的用户可以将本次获取的权限再次授权给其他子用户。默认为false
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReAuth: bool
+        :param Source: 权限来源，入参不填。USER：权限来自用户本身；WORKGROUP：权限来自绑定的工作组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Source: str
+        :param Mode: 授权模式，入参不填。COMMON：普通模式；SENIOR：高级模式。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Mode: str
+        :param Operator: 操作者，入参不填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Operator: str
+        :param CreateTime: 权限创建的时间，入参不填
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
         """
         self.Database = None
         self.Catalog = None
         self.Table = None
         self.Operation = None
         self.PolicyType = None
+        self.Function = None
+        self.View = None
+        self.Column = None
+        self.DataEngine = None
+        self.ReAuth = None
+        self.Source = None
+        self.Mode = None
+        self.Operator = None
+        self.CreateTime = None
 
 
     def _deserialize(self, params):
@@ -2276,6 +2467,15 @@ class Policy(AbstractModel):
         self.Table = params.get("Table")
         self.Operation = params.get("Operation")
         self.PolicyType = params.get("PolicyType")
+        self.Function = params.get("Function")
+        self.View = params.get("View")
+        self.Column = params.get("Column")
+        self.DataEngine = params.get("DataEngine")
+        self.ReAuth = params.get("ReAuth")
+        self.Source = params.get("Source")
+        self.Mode = params.get("Mode")
+        self.Operator = params.get("Operator")
+        self.CreateTime = params.get("CreateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2528,6 +2728,12 @@ class TableResponseInfo(AbstractModel):
         :param InputFormat: 数据格式。
 注意：此字段可能返回 null，表示取不到有效值。
         :type InputFormat: str
+        :param StorageSize: 数据表存储大小（单位：Byte）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StorageSize: int
+        :param RecordCount: 数据表行数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecordCount: int
         """
         self.TableBaseInfo = None
         self.Columns = None
@@ -2537,6 +2743,8 @@ class TableResponseInfo(AbstractModel):
         self.ModifiedTime = None
         self.CreateTime = None
         self.InputFormat = None
+        self.StorageSize = None
+        self.RecordCount = None
 
 
     def _deserialize(self, params):
@@ -2565,6 +2773,8 @@ class TableResponseInfo(AbstractModel):
         self.ModifiedTime = params.get("ModifiedTime")
         self.CreateTime = params.get("CreateTime")
         self.InputFormat = params.get("InputFormat")
+        self.StorageSize = params.get("StorageSize")
+        self.RecordCount = params.get("RecordCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3000,9 +3210,12 @@ class UserInfo(AbstractModel):
         :param WorkGroupSet: 关联的工作组集合
 注意：此字段可能返回 null，表示取不到有效值。
         :type WorkGroupSet: list of WorkGroupMessage
-        :param IsOwner: 是否是管理员账号
+        :param IsOwner: 是否是主账号
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsOwner: bool
+        :param UserType: 用户类型。ADMIN：管理员 COMMON：普通用户。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserType: str
         """
         self.UserId = None
         self.UserDescription = None
@@ -3011,6 +3224,7 @@ class UserInfo(AbstractModel):
         self.CreateTime = None
         self.WorkGroupSet = None
         self.IsOwner = None
+        self.UserType = None
 
 
     def _deserialize(self, params):
@@ -3031,6 +3245,7 @@ class UserInfo(AbstractModel):
                 obj._deserialize(item)
                 self.WorkGroupSet.append(obj)
         self.IsOwner = params.get("IsOwner")
+        self.UserType = params.get("UserType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -25,3 +25,9 @@ INVALIDPARAMETERVALUE_QUERYERROR = 'InvalidParameterValue.QueryError'
 
 # 资源不存在。
 RESOURCENOTFOUND = 'ResourceNotFound'
+
+# 未授权操作。
+UNAUTHORIZEDOPERATION = 'UnauthorizedOperation'
+
+# cam认证失败。
+UNAUTHORIZEDOPERATION_CAMNOAUTH = 'UnauthorizedOperation.CamNoAuth'

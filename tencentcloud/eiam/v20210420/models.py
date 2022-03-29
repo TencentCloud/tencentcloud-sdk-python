@@ -665,7 +665,7 @@ class CreateOrgNodeRequest(AbstractModel):
         :type ParentOrgNodeId: str
         :param Description: 机构节点描述。
         :type Description: str
-        :param CustomizedOrgNodeId: 用户自定义可选填的机构节点对外ID，如果非空则校验此ID的唯一性。
+        :param CustomizedOrgNodeId: 机构代码。如果为空，则默认生成机构代码。如果为非空，则校验机构代码的唯一性。
         :type CustomizedOrgNodeId: str
         """
         self.DisplayName = None
@@ -1772,7 +1772,7 @@ class DescribeUserInfoResponse(AbstractModel):
         :param Status: 用户状态，取值 NORMAL （正常）、FREEZE （已冻结）、LOCKED （已锁定）或 NOT_ENABLED （未启用）。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
-        :param DisplayName: 昵称
+        :param DisplayName: 昵称。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DisplayName: str
         :param Description: 用户备注。
@@ -1793,7 +1793,7 @@ class DescribeUserInfoResponse(AbstractModel):
         :param OrgNodeId: 用户所属的主组织机构唯一ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type OrgNodeId: str
-        :param DataSource: 数据来源
+        :param DataSource: 数据来源。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DataSource: str
         :param ExpirationTime: 用户过期时间，遵循 ISO 8601 标准。
@@ -3421,7 +3421,7 @@ class UpdateOrgNodeRequest(AbstractModel):
         :type DisplayName: str
         :param Description: 机构节点描述。
         :type Description: str
-        :param CustomizedOrgNodeId: 用户自定义可选填的机构节点对外ID，如果非空则校验此ID的唯一性。
+        :param CustomizedOrgNodeId: 机构代码。如果非空则校验此ID的唯一性。
         :type CustomizedOrgNodeId: str
         """
         self.OrgNodeId = None

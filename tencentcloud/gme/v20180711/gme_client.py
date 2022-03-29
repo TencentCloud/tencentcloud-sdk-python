@@ -92,6 +92,62 @@ class GmeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateScanUser(self, request):
+        """新增自定义送检用户
+
+        :param request: Request instance for CreateScanUser.
+        :type request: :class:`tencentcloud.gme.v20180711.models.CreateScanUserRequest`
+        :rtype: :class:`tencentcloud.gme.v20180711.models.CreateScanUserResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateScanUser", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateScanUserResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteScanUser(self, request):
+        """删除自定义送检用户
+
+        :param request: Request instance for DeleteScanUser.
+        :type request: :class:`tencentcloud.gme.v20180711.models.DeleteScanUserRequest`
+        :rtype: :class:`tencentcloud.gme.v20180711.models.DeleteScanUserResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteScanUser", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteScanUserResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeAgeDetectTask(self, request):
         """查询年龄语音识别任务结果，请求频率10次/秒。该接口目前通过白名单开放试用，如有需求，请提交工单申请。
 
@@ -218,6 +274,34 @@ class GmeClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeFilterResultListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeRealtimeScanConfig(self, request):
+        """获取用户自定义送检信息
+
+        :param request: Request instance for DescribeRealtimeScanConfig.
+        :type request: :class:`tencentcloud.gme.v20180711.models.DescribeRealtimeScanConfigRequest`
+        :rtype: :class:`tencentcloud.gme.v20180711.models.DescribeRealtimeScanConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeRealtimeScanConfig", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRealtimeScanConfigResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -535,10 +619,66 @@ class GmeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def UpdateScanRooms(self, request):
+        """更新自定义送检房间号
+
+        :param request: Request instance for UpdateScanRooms.
+        :type request: :class:`tencentcloud.gme.v20180711.models.UpdateScanRoomsRequest`
+        :rtype: :class:`tencentcloud.gme.v20180711.models.UpdateScanRoomsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UpdateScanRooms", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateScanRoomsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateScanUsers(self, request):
+        """更新自定义送检用户号
+
+        :param request: Request instance for UpdateScanUsers.
+        :type request: :class:`tencentcloud.gme.v20180711.models.UpdateScanUsersRequest`
+        :rtype: :class:`tencentcloud.gme.v20180711.models.UpdateScanUsersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UpdateScanUsers", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateScanUsersResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def VoiceFilter(self, request):
-        """本接口用于识别涉黄、涉政等违规音频，成功会回调配置在应用的回调地址。回调示例如下：
+        """本接口用于识别涉黄等违规音频，成功会回调配置在应用的回调地址。回调示例如下：
         {"BizId":0,"FileId":"test_file_id","FileName":"test_file_name","FileUrl":"test_file_url","OpenId":"test_open_id","TimeStamp":"0000-00-00 00:00:00","Data":[{"Type":1,"Word":"xx"}]}
-        Type表示过滤类型，1：政治，2：色情，3：谩骂
+        Type表示过滤类型，1：色情，2：谩骂
 
         :param request: Request instance for VoiceFilter.
         :type request: :class:`tencentcloud.gme.v20180711.models.VoiceFilterRequest`

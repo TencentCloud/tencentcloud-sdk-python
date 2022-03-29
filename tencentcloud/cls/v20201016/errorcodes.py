@@ -26,6 +26,9 @@ FAILEDOPERATION_BINDEDALARM = 'FailedOperation.BindedAlarm'
 # 检索日志触发最大条数限制。
 FAILEDOPERATION_GETLOGREACHLIMIT = 'FailedOperation.GetlogReachLimit'
 
+# 低频不支持配置kv和tag索引。
+FAILEDOPERATION_INVALIDINDEXRULEFORSEARCHLOW = 'FailedOperation.InValidIndexRuleForSearchLow'
+
 # 该告警策略状态异常，请检查下日志主题ID是否都存在。
 FAILEDOPERATION_INVALIDALARM = 'FailedOperation.InvalidAlarm'
 
@@ -95,6 +98,9 @@ INVALIDPARAMETER_CONFIGCONFLICT = 'InvalidParameter.ConfigConflict'
 # 无效的Content。
 INVALIDPARAMETER_CONTENT = 'InvalidParameter.Content'
 
+# 数据库唯一键冲突。
+INVALIDPARAMETER_DBDUPLICATION = 'InvalidParameter.DbDuplication'
+
 # 低频不支持配置kv和tag索引。
 INVALIDPARAMETER_INVALIDINDEXRULEFORSEARCHLOW = 'InvalidParameter.InValidIndexRuleForSearchLow'
 
@@ -146,6 +152,9 @@ LIMITEXCEEDED_MACHINEGROUPLABELS = 'LimitExceeded.MachineGroupLabels'
 # 分区超过限制。
 LIMITEXCEEDED_PARTITION = 'LimitExceeded.Partition'
 
+# 检索接口返回的日志量太大， 超过20MB限制。
+LIMITEXCEEDED_SEARCHRESULTTOOLARGE = 'LimitExceeded.SearchResultTooLarge'
+
 # 投递规则超出限制。
 LIMITEXCEEDED_SHIPPER = 'LimitExceeded.Shipper'
 
@@ -181,6 +190,9 @@ OPERATIONDENIED_ANALYSISSWITCHCLOSE = 'OperationDenied.AnalysisSwitchClose'
 
 # 通知模板已绑定告警，无法删除。
 OPERATIONDENIED_NOTICEHASALARM = 'OperationDenied.NoticeHasAlarm'
+
+# 操作低频检索不支持。
+OPERATIONDENIED_OPERATIONNOTSUPPORTINSEARCHLOW = 'OperationDenied.OperationNotSupportInSearchLow'
 
 # topic绑定了数据加工。
 OPERATIONDENIED_TOPICHASDATAFORMTASK = 'OperationDenied.TopicHasDataFormTask'

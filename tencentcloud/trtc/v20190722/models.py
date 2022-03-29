@@ -783,65 +783,6 @@ class DescribeRoomInformationResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class DescribeTrtcInteractiveTimeRequest(AbstractModel):
-    """DescribeTrtcInteractiveTime请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param StartTime: 查询开始时间，格式为YYYY-MM-DD。
-        :type StartTime: str
-        :param EndTime: 查询结束时间，格式为YYYY-MM-DD。
-单次查询统计区间最多不能超过31天。
-        :type EndTime: str
-        :param SdkAppId: 应用ID，可不传。传应用ID时返回的是该应用的用量，不传时返回所有应用的合计值。
-        :type SdkAppId: int
-        """
-        self.StartTime = None
-        self.EndTime = None
-        self.SdkAppId = None
-
-
-    def _deserialize(self, params):
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.SdkAppId = params.get("SdkAppId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeTrtcInteractiveTimeResponse(AbstractModel):
-    """DescribeTrtcInteractiveTime返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Usages: 应用的用量信息数组。
-        :type Usages: list of OneSdkAppIdUsagesInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.Usages = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        if params.get("Usages") is not None:
-            self.Usages = []
-            for item in params.get("Usages"):
-                obj = OneSdkAppIdUsagesInfo()
-                obj._deserialize(item)
-                self.Usages.append(obj)
-        self.RequestId = params.get("RequestId")
-
-
 class DescribeTrtcMcuTranscodeTimeRequest(AbstractModel):
     """DescribeTrtcMcuTranscodeTime请求参数结构体
 
@@ -1389,43 +1330,6 @@ class OneSdkAppIdTranscodeTimeUsagesInfo(AbstractModel):
         
 
 
-class OneSdkAppIdUsagesInfo(AbstractModel):
-    """单个SdkAppId的音视频互动计费时长用量数组和数组长度。
-
-    """
-
-    def __init__(self):
-        r"""
-        :param TotalNum: 该 SdkAppId 对应的用量记录数长度
-        :type TotalNum: int
-        :param SdkAppIdTrtcTimeUsages: 用量数组
-        :type SdkAppIdTrtcTimeUsages: list of SdkAppIdTrtcUsage
-        :param SdkAppId: 应用ID
-        :type SdkAppId: str
-        """
-        self.TotalNum = None
-        self.SdkAppIdTrtcTimeUsages = None
-        self.SdkAppId = None
-
-
-    def _deserialize(self, params):
-        self.TotalNum = params.get("TotalNum")
-        if params.get("SdkAppIdTrtcTimeUsages") is not None:
-            self.SdkAppIdTrtcTimeUsages = []
-            for item in params.get("SdkAppIdTrtcTimeUsages"):
-                obj = SdkAppIdTrtcUsage()
-                obj._deserialize(item)
-                self.SdkAppIdTrtcTimeUsages.append(obj)
-        self.SdkAppId = params.get("SdkAppId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class OutputParams(AbstractModel):
     """MCU混流的输出参数
 
@@ -1922,52 +1826,6 @@ class SdkAppIdTrtcMcuTranscodeTimeUsage(AbstractModel):
         self.VideoTimeSd = params.get("VideoTimeSd")
         self.VideoTimeHd = params.get("VideoTimeHd")
         self.VideoTimeFhd = params.get("VideoTimeFhd")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class SdkAppIdTrtcUsage(AbstractModel):
-    """查询音视频互动时长的输出数据。
-    查询时间小于等于1天时，返回每5分钟粒度的数据；查询时间大于1天时，返回按天汇总的数据。
-
-    """
-
-    def __init__(self):
-        r"""
-        :param TimeKey: 本组数据对应的时间点，格式如：2020-09-07或2020-09-07 00:05:05。
-        :type TimeKey: str
-        :param AudioTime: 语音时长，单位：秒。
-        :type AudioTime: int
-        :param AudioVideoTime: 音视频时长，单位：秒。
-2019年10月11日前注册，没有变更为 [新计费模式](https://cloud.tencent.com/document/product/647/17157) 的用户才会返回此值。
-        :type AudioVideoTime: int
-        :param VideoTimeSd: 视频时长-标清SD，单位：秒。
-        :type VideoTimeSd: int
-        :param VideoTimeHd: 视频时长-高清HD，单位：秒。
-        :type VideoTimeHd: int
-        :param VideoTimeHdp: 视频时长-超清HD，单位：秒。
-        :type VideoTimeHdp: int
-        """
-        self.TimeKey = None
-        self.AudioTime = None
-        self.AudioVideoTime = None
-        self.VideoTimeSd = None
-        self.VideoTimeHd = None
-        self.VideoTimeHdp = None
-
-
-    def _deserialize(self, params):
-        self.TimeKey = params.get("TimeKey")
-        self.AudioTime = params.get("AudioTime")
-        self.AudioVideoTime = params.get("AudioVideoTime")
-        self.VideoTimeSd = params.get("VideoTimeSd")
-        self.VideoTimeHd = params.get("VideoTimeHd")
-        self.VideoTimeHdp = params.get("VideoTimeHdp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

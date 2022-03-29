@@ -255,6 +255,9 @@ class AlarmNotice(AbstractModel):
         :param PolicyIds: 告警通知模板绑定的告警策略ID列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type PolicyIds: list of str
+        :param CLSNotices: 推送cls渠道
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CLSNotices: list of CLSNotice
         """
         self.Id = None
         self.Name = None
@@ -266,6 +269,7 @@ class AlarmNotice(AbstractModel):
         self.IsPreset = None
         self.NoticeLanguage = None
         self.PolicyIds = None
+        self.CLSNotices = None
 
 
     def _deserialize(self, params):
@@ -289,6 +293,12 @@ class AlarmNotice(AbstractModel):
         self.IsPreset = params.get("IsPreset")
         self.NoticeLanguage = params.get("NoticeLanguage")
         self.PolicyIds = params.get("PolicyIds")
+        if params.get("CLSNotices") is not None:
+            self.CLSNotices = []
+            for item in params.get("CLSNotices"):
+                obj = CLSNotice()
+                obj._deserialize(item)
+                self.CLSNotices.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -395,6 +405,9 @@ class AlarmPolicy(AbstractModel):
         :param TagInstances: 标签
 注意：此字段可能返回 null，表示取不到有效值。
         :type TagInstances: list of TagInstance
+        :param FilterDimensionsParam: 策略关联的过滤维度信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FilterDimensionsParam: str
         """
         self.PolicyId = None
         self.PolicyName = None
@@ -425,6 +438,7 @@ class AlarmPolicy(AbstractModel):
         self.RuleType = None
         self.OriginId = None
         self.TagInstances = None
+        self.FilterDimensionsParam = None
 
 
     def _deserialize(self, params):
@@ -478,6 +492,7 @@ class AlarmPolicy(AbstractModel):
                 obj = TagInstance()
                 obj._deserialize(item)
                 self.TagInstances.append(obj)
+        self.FilterDimensionsParam = params.get("FilterDimensionsParam")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -870,6 +885,42 @@ class BindingPolicyTagResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CLSNotice(AbstractModel):
+    """告警通知中的推送CLS操作
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Region: 地域
+        :type Region: str
+        :param LogSetId: 日志集Id
+        :type LogSetId: str
+        :param TopicId: 主题Id
+        :type TopicId: str
+        :param Enable: 启停状态，可不传，默认启用。0=停用，1=启用
+        :type Enable: int
+        """
+        self.Region = None
+        self.LogSetId = None
+        self.TopicId = None
+        self.Enable = None
+
+
+    def _deserialize(self, params):
+        self.Region = params.get("Region")
+        self.LogSetId = params.get("LogSetId")
+        self.TopicId = params.get("TopicId")
+        self.Enable = params.get("Enable")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CommonNamespace(AbstractModel):
     """统一的命名空间信息
 
@@ -913,6 +964,69 @@ class CommonNamespace(AbstractModel):
         self.AvailableRegions = params.get("AvailableRegions")
         self.SortId = params.get("SortId")
         self.DashboardId = params.get("DashboardId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Condition(AbstractModel):
+    """告警条件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AlarmNotifyPeriod: 告警通知频率
+        :type AlarmNotifyPeriod: int
+        :param AlarmNotifyType: 重复通知策略预定义（0 - 只告警一次， 1 - 指数告警，2 - 连接告警）
+        :type AlarmNotifyType: int
+        :param CalcType: 检测方式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CalcType: str
+        :param CalcValue: 检测值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CalcValue: str
+        :param ContinueTime: 持续时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ContinueTime: str
+        :param MetricID: 指标ID
+        :type MetricID: int
+        :param MetricDisplayName: 指标展示名称（对外）
+        :type MetricDisplayName: str
+        :param Period: 周期
+        :type Period: int
+        :param RuleID: 规则ID
+        :type RuleID: int
+        :param Unit: 指标单位
+        :type Unit: str
+        """
+        self.AlarmNotifyPeriod = None
+        self.AlarmNotifyType = None
+        self.CalcType = None
+        self.CalcValue = None
+        self.ContinueTime = None
+        self.MetricID = None
+        self.MetricDisplayName = None
+        self.Period = None
+        self.RuleID = None
+        self.Unit = None
+
+
+    def _deserialize(self, params):
+        self.AlarmNotifyPeriod = params.get("AlarmNotifyPeriod")
+        self.AlarmNotifyType = params.get("AlarmNotifyType")
+        self.CalcType = params.get("CalcType")
+        self.CalcValue = params.get("CalcValue")
+        self.ContinueTime = params.get("ContinueTime")
+        self.MetricID = params.get("MetricID")
+        self.MetricDisplayName = params.get("MetricDisplayName")
+        self.Period = params.get("Period")
+        self.RuleID = params.get("RuleID")
+        self.Unit = params.get("Unit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -980,6 +1094,8 @@ class CreateAlarmNoticeRequest(AbstractModel):
         :type UserNotices: list of UserNotice
         :param URLNotices: 回调通知 最多3个
         :type URLNotices: list of URLNotice
+        :param CLSNotices: 推送CLS日志服务的操作 最多1个
+        :type CLSNotices: list of CLSNotice
         """
         self.Module = None
         self.Name = None
@@ -987,6 +1103,7 @@ class CreateAlarmNoticeRequest(AbstractModel):
         self.NoticeLanguage = None
         self.UserNotices = None
         self.URLNotices = None
+        self.CLSNotices = None
 
 
     def _deserialize(self, params):
@@ -1006,6 +1123,12 @@ class CreateAlarmNoticeRequest(AbstractModel):
                 obj = URLNotice()
                 obj._deserialize(item)
                 self.URLNotices.append(obj)
+        if params.get("CLSNotices") is not None:
+            self.CLSNotices = []
+            for item in params.get("CLSNotices"):
+                obj = CLSNotice()
+                obj._deserialize(item)
+                self.CLSNotices.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1057,7 +1180,7 @@ class CreateAlarmPolicyRequest(AbstractModel):
         :type Enable: int
         :param ProjectId: 项目 Id，对于区分项目的产品必须传入非 -1 的值。 -1=无项目 0=默认项目，如不传 默认为 -1。支持的项目 Id 可以在控制台 [账号中心-项目管理](https://console.cloud.tencent.com/project) 中查看。
         :type ProjectId: int
-        :param ConditionTemplateId: 触发条件模板 Id ，可不传
+        :param ConditionTemplateId: 触发条件模板 Id，该参数与 Condition 参数二选一。如果策略绑定触发条件模板，则传该参数；否则不传该参数，而是传 Condition 参数。触发条件模板 Id 可以从 [DescribeConditionsTemplateList](https://cloud.tencent.com/document/api/248/70250) 接口获取。
         :type ConditionTemplateId: int
         :param Condition: 指标触发条件，支持的指标可以从 [DescribeAlarmMetrics](https://cloud.tencent.com/document/product/248/51283) 查询。
         :type Condition: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicyCondition`
@@ -2394,6 +2517,8 @@ class DescribeAlarmPoliciesRequest(AbstractModel):
 具体也可以参考下方的示例 2。
 
 不同云产品参数示例详见 [维度信息Dimensions列表](https://cloud.tencent.com/document/product/248/50397)
+
+注意：如果NeedCorrespondence传入1，即需要返回策略与实例对应关系，请传入不多于20个告警对象维度，否则容易请求超时
         :type Dimensions: str
         :param ReceiverUids: 根据接收人搜索，可以使用“访问管理”的 [拉取子用户 ListUsers](https://cloud.tencent.com/document/product/598/34587) 接口获取用户列表 或 [查询子用户 GetUser](https://cloud.tencent.com/document/product/598/34590) 接口查询子用户详情，此处填入返回结果中的 `Uid` 字段
         :type ReceiverUids: list of int
@@ -2419,6 +2544,10 @@ class DescribeAlarmPoliciesRequest(AbstractModel):
         :type NotBindingNoticeRule: int
         :param InstanceGroupId: 实例分组id
         :type InstanceGroupId: int
+        :param NeedCorrespondence: 是否需要策略与入参过滤维度参数的对应关系，1：是  0：否，默认为0
+        :type NeedCorrespondence: int
+        :param TriggerTasks: 按照触发任务（例如弹性伸缩）过滤策略。最多10个
+        :type TriggerTasks: list of AlarmPolicyTriggerTask
         """
         self.Module = None
         self.PageNumber = None
@@ -2438,6 +2567,8 @@ class DescribeAlarmPoliciesRequest(AbstractModel):
         self.Enable = None
         self.NotBindingNoticeRule = None
         self.InstanceGroupId = None
+        self.NeedCorrespondence = None
+        self.TriggerTasks = None
 
 
     def _deserialize(self, params):
@@ -2459,6 +2590,13 @@ class DescribeAlarmPoliciesRequest(AbstractModel):
         self.Enable = params.get("Enable")
         self.NotBindingNoticeRule = params.get("NotBindingNoticeRule")
         self.InstanceGroupId = params.get("InstanceGroupId")
+        self.NeedCorrespondence = params.get("NeedCorrespondence")
+        if params.get("TriggerTasks") is not None:
+            self.TriggerTasks = []
+            for item in params.get("TriggerTasks"):
+                obj = AlarmPolicyTriggerTask()
+                obj._deserialize(item)
+                self.TriggerTasks.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3218,6 +3356,85 @@ class DescribeBindingPolicyObjectListResponse(AbstractModel):
         if params.get("InstanceGroup") is not None:
             self.InstanceGroup = DescribeBindingPolicyObjectListInstanceGroup()
             self.InstanceGroup._deserialize(params.get("InstanceGroup"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeConditionsTemplateListRequest(AbstractModel):
+    """DescribeConditionsTemplateList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Module: 固定值，为"monitor"
+        :type Module: str
+        :param ViewName: 视图名，由 [DescribeAllNamespaces](https://cloud.tencent.com/document/product/248/48683) 获得。对于云产品监控，取接口出参的 QceNamespacesNew.N.Id，例如 cvm_device
+        :type ViewName: str
+        :param GroupName: 根据触发条件模板名称过滤查询
+        :type GroupName: str
+        :param GroupID: 根据触发条件模板ID过滤查询
+        :type GroupID: str
+        :param Limit: 分页参数，每页返回的数量，取值1~100，默认20
+        :type Limit: int
+        :param Offset: 分页参数，页偏移量，从0开始计数，默认0
+        :type Offset: int
+        :param UpdateTimeOrder: 指定按更新时间的排序方式，asc=升序, desc=降序
+        :type UpdateTimeOrder: str
+        """
+        self.Module = None
+        self.ViewName = None
+        self.GroupName = None
+        self.GroupID = None
+        self.Limit = None
+        self.Offset = None
+        self.UpdateTimeOrder = None
+
+
+    def _deserialize(self, params):
+        self.Module = params.get("Module")
+        self.ViewName = params.get("ViewName")
+        self.GroupName = params.get("GroupName")
+        self.GroupID = params.get("GroupID")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.UpdateTimeOrder = params.get("UpdateTimeOrder")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeConditionsTemplateListResponse(AbstractModel):
+    """DescribeConditionsTemplateList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Total: 模板总数
+        :type Total: int
+        :param TemplateGroupList: 模板列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TemplateGroupList: list of TemplateGroup
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Total = None
+        self.TemplateGroupList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("TemplateGroupList") is not None:
+            self.TemplateGroupList = []
+            for item in params.get("TemplateGroupList"):
+                obj = TemplateGroup()
+                obj._deserialize(item)
+                self.TemplateGroupList.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -4945,6 +5162,10 @@ class DescribePrometheusInstancesRequest(AbstractModel):
         :type Limit: int
         :param Offset: 偏移量，默认为0。
         :type Offset: int
+        :param InstanceChargeType: 按照【计费类型】进行过滤。
+<li>2：包年包月</li>
+<li>3：按量</li>
+        :type InstanceChargeType: int
         """
         self.InstanceIds = None
         self.InstanceStatus = None
@@ -4954,6 +5175,7 @@ class DescribePrometheusInstancesRequest(AbstractModel):
         self.IPv4Address = None
         self.Limit = None
         self.Offset = None
+        self.InstanceChargeType = None
 
 
     def _deserialize(self, params):
@@ -4970,6 +5192,7 @@ class DescribePrometheusInstancesRequest(AbstractModel):
         self.IPv4Address = params.get("IPv4Address")
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
+        self.InstanceChargeType = params.get("InstanceChargeType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5208,6 +5431,48 @@ class DimensionsDesc(AbstractModel):
 
     def _deserialize(self, params):
         self.Dimensions = params.get("Dimensions")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EventCondition(AbstractModel):
+    """事件告警条件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AlarmNotifyPeriod: 告警通知频率
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlarmNotifyPeriod: str
+        :param AlarmNotifyType: 重复通知策略预定义（0 - 只告警一次， 1 - 指数告警，2 - 连接告警）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlarmNotifyType: str
+        :param EventID: 事件ID
+        :type EventID: str
+        :param EventDisplayName: 事件展示名称（对外）
+        :type EventDisplayName: str
+        :param RuleID: 规则ID
+        :type RuleID: str
+        """
+        self.AlarmNotifyPeriod = None
+        self.AlarmNotifyType = None
+        self.EventID = None
+        self.EventDisplayName = None
+        self.RuleID = None
+
+
+    def _deserialize(self, params):
+        self.AlarmNotifyPeriod = params.get("AlarmNotifyPeriod")
+        self.AlarmNotifyType = params.get("AlarmNotifyType")
+        self.EventID = params.get("EventID")
+        self.EventDisplayName = params.get("EventDisplayName")
+        self.RuleID = params.get("RuleID")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5736,6 +6001,8 @@ class ModifyAlarmNoticeRequest(AbstractModel):
         :type UserNotices: list of UserNotice
         :param URLNotices: 回调通知 最多3个
         :type URLNotices: list of URLNotice
+        :param CLSNotices: 告警通知推送到CLS服务 最多1个
+        :type CLSNotices: list of CLSNotice
         """
         self.Module = None
         self.Name = None
@@ -5744,6 +6011,7 @@ class ModifyAlarmNoticeRequest(AbstractModel):
         self.NoticeId = None
         self.UserNotices = None
         self.URLNotices = None
+        self.CLSNotices = None
 
 
     def _deserialize(self, params):
@@ -5764,6 +6032,12 @@ class ModifyAlarmNoticeRequest(AbstractModel):
                 obj = URLNotice()
                 obj._deserialize(item)
                 self.URLNotices.append(obj)
+        if params.get("CLSNotices") is not None:
+            self.CLSNotices = []
+            for item in params.get("CLSNotices"):
+                obj = CLSNotice()
+                obj._deserialize(item)
+                self.CLSNotices.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5921,22 +6195,26 @@ class ModifyAlarmPolicyNoticeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Module: 模块名，这里填“monitor”
+        :param Module: 模块名，这里填“monitor”。
         :type Module: str
-        :param PolicyId: 告警策略 ID
+        :param PolicyId: 告警策略 ID，如果该参数与PolicyIds参数同时存在，则以PolicyIds为准。
         :type PolicyId: str
-        :param NoticeIds: 告警通知模板 ID 列表
+        :param NoticeIds: 告警通知模板 ID 列表。
         :type NoticeIds: list of str
+        :param PolicyIds: 告警策略ID数组，支持给多个告警策略批量绑定通知模板。最多30个。
+        :type PolicyIds: list of str
         """
         self.Module = None
         self.PolicyId = None
         self.NoticeIds = None
+        self.PolicyIds = None
 
 
     def _deserialize(self, params):
         self.Module = params.get("Module")
         self.PolicyId = params.get("PolicyId")
         self.NoticeIds = params.get("NoticeIds")
+        self.PolicyIds = params.get("PolicyIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6367,6 +6645,174 @@ class Point(AbstractModel):
     def _deserialize(self, params):
         self.Timestamp = params.get("Timestamp")
         self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PolicyGroup(AbstractModel):
+    """策略组信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CanSetDefault: 是否可设为默认告警策略
+        :type CanSetDefault: bool
+        :param GroupID: 告警策略组ID
+        :type GroupID: int
+        :param GroupName: 告警策略组名称
+        :type GroupName: str
+        :param InsertTime: 创建时间
+        :type InsertTime: int
+        :param IsDefault: 是否为默认告警策略
+        :type IsDefault: int
+        :param Enable: 告警策略启用状态
+        :type Enable: bool
+        :param LastEditUin: 最后修改人UIN
+        :type LastEditUin: int
+        :param NoShieldedInstanceCount: 未屏蔽的实例数
+        :type NoShieldedInstanceCount: int
+        :param ParentGroupID: 父策略组ID
+        :type ParentGroupID: int
+        :param ProjectID: 所属项目ID
+        :type ProjectID: int
+        :param ReceiverInfos: 告警接收对象信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReceiverInfos: list of PolicyGroupReceiverInfo
+        :param Remark: 备注信息
+        :type Remark: str
+        :param UpdateTime: 修改时间
+        :type UpdateTime: int
+        :param TotalInstanceCount: 总绑定实例数
+        :type TotalInstanceCount: int
+        :param ViewName: 视图
+        :type ViewName: str
+        :param IsUnionRule: 是否为与关系规则
+        :type IsUnionRule: int
+        """
+        self.CanSetDefault = None
+        self.GroupID = None
+        self.GroupName = None
+        self.InsertTime = None
+        self.IsDefault = None
+        self.Enable = None
+        self.LastEditUin = None
+        self.NoShieldedInstanceCount = None
+        self.ParentGroupID = None
+        self.ProjectID = None
+        self.ReceiverInfos = None
+        self.Remark = None
+        self.UpdateTime = None
+        self.TotalInstanceCount = None
+        self.ViewName = None
+        self.IsUnionRule = None
+
+
+    def _deserialize(self, params):
+        self.CanSetDefault = params.get("CanSetDefault")
+        self.GroupID = params.get("GroupID")
+        self.GroupName = params.get("GroupName")
+        self.InsertTime = params.get("InsertTime")
+        self.IsDefault = params.get("IsDefault")
+        self.Enable = params.get("Enable")
+        self.LastEditUin = params.get("LastEditUin")
+        self.NoShieldedInstanceCount = params.get("NoShieldedInstanceCount")
+        self.ParentGroupID = params.get("ParentGroupID")
+        self.ProjectID = params.get("ProjectID")
+        if params.get("ReceiverInfos") is not None:
+            self.ReceiverInfos = []
+            for item in params.get("ReceiverInfos"):
+                obj = PolicyGroupReceiverInfo()
+                obj._deserialize(item)
+                self.ReceiverInfos.append(obj)
+        self.Remark = params.get("Remark")
+        self.UpdateTime = params.get("UpdateTime")
+        self.TotalInstanceCount = params.get("TotalInstanceCount")
+        self.ViewName = params.get("ViewName")
+        self.IsUnionRule = params.get("IsUnionRule")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PolicyGroupReceiverInfo(AbstractModel):
+    """2018版策略模板列表接收人信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EndTime: 有效时段结束时间
+        :type EndTime: int
+        :param NeedSendNotice: 是否需要发送通知
+        :type NeedSendNotice: int
+        :param NotifyWay: 告警接收渠道
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NotifyWay: list of str
+        :param PersonInterval: 电话告警对个人间隔（秒）
+        :type PersonInterval: int
+        :param ReceiverGroupList: 消息接收组列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReceiverGroupList: list of int
+        :param ReceiverType: 接受者类型
+        :type ReceiverType: str
+        :param ReceiverUserList: 接收人列表。通过平台接口查询到的接收人id列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReceiverUserList: list of int
+        :param RecoverNotify: 告警恢复通知方式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecoverNotify: list of str
+        :param RoundInterval: 电话告警每轮间隔（秒）
+        :type RoundInterval: int
+        :param RoundNumber: 电话告警轮数
+        :type RoundNumber: int
+        :param SendFor: 电话告警通知时机。可选"OCCUR"(告警时通知),"RECOVER"(恢复时通知)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SendFor: list of str
+        :param StartTime: 有效时段开始时间
+        :type StartTime: int
+        :param UIDList: 电话告警接收者uid
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UIDList: list of int
+        """
+        self.EndTime = None
+        self.NeedSendNotice = None
+        self.NotifyWay = None
+        self.PersonInterval = None
+        self.ReceiverGroupList = None
+        self.ReceiverType = None
+        self.ReceiverUserList = None
+        self.RecoverNotify = None
+        self.RoundInterval = None
+        self.RoundNumber = None
+        self.SendFor = None
+        self.StartTime = None
+        self.UIDList = None
+
+
+    def _deserialize(self, params):
+        self.EndTime = params.get("EndTime")
+        self.NeedSendNotice = params.get("NeedSendNotice")
+        self.NotifyWay = params.get("NotifyWay")
+        self.PersonInterval = params.get("PersonInterval")
+        self.ReceiverGroupList = params.get("ReceiverGroupList")
+        self.ReceiverType = params.get("ReceiverType")
+        self.ReceiverUserList = params.get("ReceiverUserList")
+        self.RecoverNotify = params.get("RecoverNotify")
+        self.RoundInterval = params.get("RoundInterval")
+        self.RoundNumber = params.get("RoundNumber")
+        self.SendFor = params.get("SendFor")
+        self.StartTime = params.get("StartTime")
+        self.UIDList = params.get("UIDList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7160,6 +7606,88 @@ class TagInstance(AbstractModel):
         
 
 
+class TemplateGroup(AbstractModel):
+    """模板列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Conditions: 指标告警规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Conditions: list of Condition
+        :param EventConditions: 事件告警规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EventConditions: list of EventCondition
+        :param PolicyGroups: 关联告警策略组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PolicyGroups: list of PolicyGroup
+        :param GroupID: 模板策略组ID
+        :type GroupID: int
+        :param GroupName: 模板策略组名称
+        :type GroupName: str
+        :param InsertTime: 创建时间
+        :type InsertTime: int
+        :param LastEditUin: 最后修改人UIN
+        :type LastEditUin: int
+        :param Remark: 备注
+        :type Remark: str
+        :param UpdateTime: 更新时间
+        :type UpdateTime: int
+        :param ViewName: 视图
+        :type ViewName: str
+        :param IsUnionRule: 是否为与关系
+        :type IsUnionRule: int
+        """
+        self.Conditions = None
+        self.EventConditions = None
+        self.PolicyGroups = None
+        self.GroupID = None
+        self.GroupName = None
+        self.InsertTime = None
+        self.LastEditUin = None
+        self.Remark = None
+        self.UpdateTime = None
+        self.ViewName = None
+        self.IsUnionRule = None
+
+
+    def _deserialize(self, params):
+        if params.get("Conditions") is not None:
+            self.Conditions = []
+            for item in params.get("Conditions"):
+                obj = Condition()
+                obj._deserialize(item)
+                self.Conditions.append(obj)
+        if params.get("EventConditions") is not None:
+            self.EventConditions = []
+            for item in params.get("EventConditions"):
+                obj = EventCondition()
+                obj._deserialize(item)
+                self.EventConditions.append(obj)
+        if params.get("PolicyGroups") is not None:
+            self.PolicyGroups = []
+            for item in params.get("PolicyGroups"):
+                obj = PolicyGroup()
+                obj._deserialize(item)
+                self.PolicyGroups.append(obj)
+        self.GroupID = params.get("GroupID")
+        self.GroupName = params.get("GroupName")
+        self.InsertTime = params.get("InsertTime")
+        self.LastEditUin = params.get("LastEditUin")
+        self.Remark = params.get("Remark")
+        self.UpdateTime = params.get("UpdateTime")
+        self.ViewName = params.get("ViewName")
+        self.IsUnionRule = params.get("IsUnionRule")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class URLNotice(AbstractModel):
     """云监控告警通知模板 - 回调通知详情
 
@@ -7543,7 +8071,7 @@ class UserNotice(AbstractModel):
         :param EndTime: 通知结束时间 00:00:00 开始的秒数（取值范围0-86399）
 注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: int
-        :param NoticeWay: 通知渠道列表 EMAIL=邮件 SMS=短信 CALL=电话 WECHAT=微信
+        :param NoticeWay: 通知渠道列表 EMAIL=邮件 SMS=短信 CALL=电话 WECHAT=微信 RTX=企业微信
 注意：此字段可能返回 null，表示取不到有效值。
         :type NoticeWay: list of str
         :param UserIds: 用户 uid 列表
@@ -7567,6 +8095,9 @@ class UserNotice(AbstractModel):
         :param NeedPhoneArriveNotice: 是否需要触达通知 0=否 1=是
 注意：此字段可能返回 null，表示取不到有效值。
         :type NeedPhoneArriveNotice: int
+        :param PhoneCallType: 电话拨打类型 SYNC=同时拨打 CIRCLE=轮询拨打 不指定时默认是轮询
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PhoneCallType: str
         """
         self.ReceiverType = None
         self.StartTime = None
@@ -7579,6 +8110,7 @@ class UserNotice(AbstractModel):
         self.PhoneInnerInterval = None
         self.PhoneCircleInterval = None
         self.NeedPhoneArriveNotice = None
+        self.PhoneCallType = None
 
 
     def _deserialize(self, params):
@@ -7593,6 +8125,7 @@ class UserNotice(AbstractModel):
         self.PhoneInnerInterval = params.get("PhoneInnerInterval")
         self.PhoneCircleInterval = params.get("PhoneCircleInterval")
         self.NeedPhoneArriveNotice = params.get("NeedPhoneArriveNotice")
+        self.PhoneCallType = params.get("PhoneCallType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

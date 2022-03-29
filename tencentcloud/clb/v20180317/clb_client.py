@@ -178,9 +178,6 @@ class ClbClient(AbstractClient):
         不支持后端类型为 目标组、SCF云函数
         个性化配置、重定向配置、安全组默认放通开关 将不会被克隆，须手工配置
 
-        权限说明：
-        调用克隆接口用户需要具有：CreateLoadBalancer、CreateLoadBalancerListeners、CreateListenerRules、BatchRegisterTargets、SetLoadBalancerSecurityGroups、ModifyLoadBalancerAttributes、SetLoadBalancerClsLog、DeleteLoadBalancer权限，其中DeleteLoadBalancer用于克隆失败回滚流程，如果没有该接口权限，克隆失败后可能会残留克隆失败的CLB数据。
-
         通过接口调用：
         BGP带宽包必须传带宽包id
         独占集群克隆必须传对应的参数，否则按共享型创建
@@ -1260,6 +1257,34 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeResources(self, request):
+        """查询用户在当前地域支持可用区列表和资源列表。
+
+        :param request: Request instance for DescribeResources.
+        :type request: :class:`tencentcloud.clb.v20180317.models.DescribeResourcesRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.DescribeResourcesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeResources", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeResourcesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeRewrite(self, request):
         """DescribeRewrite 接口可根据负载均衡实例ID，查询一个负载均衡实例下转发规则的重定向关系。如果不指定监听器ID或转发规则ID，则返回该负载均衡实例下的所有重定向关系。
 
@@ -1674,6 +1699,34 @@ class ClbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyLoadBalancerAttributesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyLoadBalancerMixIpTarget(self, request):
+        """修改IPv6FullChain负载均衡7层监听器支持混绑IPv4/IPv6目标特性。
+
+        :param request: Request instance for ModifyLoadBalancerMixIpTarget.
+        :type request: :class:`tencentcloud.clb.v20180317.models.ModifyLoadBalancerMixIpTargetRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.ModifyLoadBalancerMixIpTargetResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyLoadBalancerMixIpTarget", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyLoadBalancerMixIpTargetResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

@@ -27,7 +27,7 @@ class CiiClient(AbstractClient):
 
 
     def AddSubStructureTasks(self, request):
-        """中银三星需求，基于主任务批量添加结构化子任务
+        """如果主任务下的报告不满足需求，可以基于主任务批量添加子任务
 
         :param request: Request instance for AddSubStructureTasks.
         :type request: :class:`tencentcloud.cii.v20210408.models.AddSubStructureTasksRequest`
@@ -166,8 +166,37 @@ class CiiClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeQualityScore(self, request):
+        """获取图片质量分
+
+        :param request: Request instance for DescribeQualityScore.
+        :type request: :class:`tencentcloud.cii.v20210408.models.DescribeQualityScoreRequest`
+        :rtype: :class:`tencentcloud.cii.v20210408.models.DescribeQualityScoreResponse`
+
+        """
+        try:
+            params = request._serialize()
+            options = {'IsMultipart': True, 'BinaryParams': [u'File']}
+            body = self.call("DescribeQualityScore", params, options=options)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeQualityScoreResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeReportClassify(self, request):
-        """saas页面集成了自动分类功能，该接口提供自动分类结果
+        """辅助用户对批量报告自动分类
 
         :param request: Request instance for DescribeReportClassify.
         :type request: :class:`tencentcloud.cii.v20210408.models.DescribeReportClassifyRequest`

@@ -157,7 +157,7 @@ class AttachDisksResponse(AbstractModel):
 
 
 class AutoMountConfiguration(AbstractModel):
-    """自动初始化、挂载云盘时指定配置。
+    """描述了新购云硬盘时自动将云硬盘初始化并挂载至云服务器内部的配置。
 
     """
 
@@ -381,6 +381,64 @@ class CdcSize(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class CopySnapshotCrossRegionsRequest(AbstractModel):
+    """CopySnapshotCrossRegions请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DestinationRegions: 快照需要复制到的目标地域，各地域的标准取值可通过接口[DescribeRegions](https://cloud.tencent.com/document/product/213/9456)查询，且只能传入支持快照的地域。
+        :type DestinationRegions: list of str
+        :param SnapshotId: 需要跨地域复制的源快照ID，可通过[DescribeSnapshots](/document/product/362/15647)查询。
+        :type SnapshotId: str
+        :param SnapshotName: 新复制快照的名称，如果不传，则默认取值为“Copied 源快照ID from 地域名”。
+        :type SnapshotName: str
+        """
+        self.DestinationRegions = None
+        self.SnapshotId = None
+        self.SnapshotName = None
+
+
+    def _deserialize(self, params):
+        self.DestinationRegions = params.get("DestinationRegions")
+        self.SnapshotId = params.get("SnapshotId")
+        self.SnapshotName = params.get("SnapshotName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CopySnapshotCrossRegionsResponse(AbstractModel):
+    """CopySnapshotCrossRegions返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SnapshotCopyResultSet: 快照跨地域复制的结果，如果请求下发成功，则返回相应地地域的新快照ID，否则返回Error。
+        :type SnapshotCopyResultSet: list of SnapshotCopyResult
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.SnapshotCopyResultSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("SnapshotCopyResultSet") is not None:
+            self.SnapshotCopyResultSet = []
+            for item in params.get("SnapshotCopyResultSet"):
+                obj = SnapshotCopyResult()
+                obj._deserialize(item)
+                self.SnapshotCopyResultSet.append(obj)
+        self.RequestId = params.get("RequestId")
 
 
 class CreateAutoSnapshotPolicyRequest(AbstractModel):
@@ -2925,6 +2983,42 @@ class Snapshot(AbstractModel):
         self.DiskUsage = params.get("DiskUsage")
         self.SnapshotId = params.get("SnapshotId")
         self.TimeStartShare = params.get("TimeStartShare")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SnapshotCopyResult(AbstractModel):
+    """描述快照跨地域复制的结果。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SnapshotId: 复制到目标地域的新快照ID。
+        :type SnapshotId: str
+        :param Message: 指示具体错误信息，成功时为空字符串。
+        :type Message: str
+        :param Code: 错误码，成功时取值为“Success”。
+        :type Code: str
+        :param DestinationRegion: 跨地复制的目标地域。
+        :type DestinationRegion: str
+        """
+        self.SnapshotId = None
+        self.Message = None
+        self.Code = None
+        self.DestinationRegion = None
+
+
+    def _deserialize(self, params):
+        self.SnapshotId = params.get("SnapshotId")
+        self.Message = params.get("Message")
+        self.Code = params.get("Code")
+        self.DestinationRegion = params.get("DestinationRegion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

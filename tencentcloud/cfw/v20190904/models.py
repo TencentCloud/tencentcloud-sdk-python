@@ -1902,6 +1902,64 @@ class DescribeGuideScanInfoResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeIPStatusListRequest(AbstractModel):
+    """DescribeIPStatusList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IPList: 资产Id
+        :type IPList: list of str
+        """
+        self.IPList = None
+
+
+    def _deserialize(self, params):
+        self.IPList = params.get("IPList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeIPStatusListResponse(AbstractModel):
+    """DescribeIPStatusList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StatusList: ip状态信息
+        :type StatusList: list of IPDefendStatus
+        :param ReturnCode: 状态码
+        :type ReturnCode: int
+        :param ReturnMsg: 状态信息
+        :type ReturnMsg: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.StatusList = None
+        self.ReturnCode = None
+        self.ReturnMsg = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("StatusList") is not None:
+            self.StatusList = []
+            for item in params.get("StatusList"):
+                obj = IPDefendStatus()
+                obj._deserialize(item)
+                self.StatusList.append(obj)
+        self.ReturnCode = params.get("ReturnCode")
+        self.ReturnMsg = params.get("ReturnMsg")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeNatFwInfoCountRequest(AbstractModel):
     """DescribeNatFwInfoCount请求参数结构体
 
@@ -3113,6 +3171,34 @@ class ExpandCfwVerticalResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class IPDefendStatus(AbstractModel):
+    """ip防护状态
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IP: ip地址
+        :type IP: str
+        :param Status: 防护状态   1:防护打开; -1:地址错误; 其他:未防护
+        :type Status: int
+        """
+        self.IP = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.IP = params.get("IP")
+        self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class InstanceInfo(AbstractModel):

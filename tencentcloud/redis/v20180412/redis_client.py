@@ -251,7 +251,7 @@ class RedisClient(AbstractClient):
 
 
     def CreateParamTemplate(self, request):
-        """创建参数模板
+        """创建参数模板。
 
         :param request: Request instance for CreateParamTemplate.
         :type request: :class:`tencentcloud.redis.v20180412.models.CreateParamTemplateRequest`
@@ -979,7 +979,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeInstanceZoneInfo(self, request):
-        """查询Redis节点信息
+        """查询Redis节点详细信息
 
         :param request: Request instance for DescribeInstanceZoneInfo.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceZoneInfoRequest`
@@ -1063,7 +1063,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeParamTemplateInfo(self, request):
-        """查询参数模板详情
+        """查询参数模板详情。
 
         :param request: Request instance for DescribeParamTemplateInfo.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeParamTemplateInfoRequest`
@@ -1216,6 +1216,34 @@ class RedisClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeProxySlowLogResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeReplicationGroup(self, request):
+        """查询复制组
+
+        :param request: Request instance for DescribeReplicationGroup.
+        :type request: :class:`tencentcloud.redis.v20180412.models.DescribeReplicationGroupRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.DescribeReplicationGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeReplicationGroup", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeReplicationGroupResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1651,7 +1679,7 @@ class RedisClient(AbstractClient):
 
 
     def ModifyAutoBackupConfig(self, request):
-        """设置自动备份时间
+        """设置自动备份配置
 
         :param request: Request instance for ModifyAutoBackupConfig.
         :type request: :class:`tencentcloud.redis.v20180412.models.ModifyAutoBackupConfigRequest`
@@ -1679,7 +1707,7 @@ class RedisClient(AbstractClient):
 
 
     def ModifyConnectionConfig(self, request):
-        """修改实例的连接配置，包括带宽和最大连接数
+        """修改实例的连接配置，包括带宽和最大连接数。
 
         :param request: Request instance for ModifyConnectionConfig.
         :type request: :class:`tencentcloud.redis.v20180412.models.ModifyConnectionConfigRequest`

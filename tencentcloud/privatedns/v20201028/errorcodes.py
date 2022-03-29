@@ -134,8 +134,17 @@ INVALIDPARAMETER_ZONENOTEXISTS = 'InvalidParameter.ZoneNotExists'
 # 参数取值错误。
 INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 
+# 内部专用TLD，不支持创建。
+INVALIDPARAMETERVALUE_RESERVEDDOMAIN = 'InvalidParameterValue.ReservedDomain'
+
 # 超过配额限制。
 LIMITEXCEEDED = 'LimitExceeded'
+
+# 超过自定义TLD额度。
+LIMITEXCEEDED_TLDOUTOFLIMIT = 'LimitExceeded.TldOutOfLimit'
+
+# 使用自定义TLD的私有域超过总额度。
+LIMITEXCEEDED_TLDOUTOFRANGE = 'LimitExceeded.TldOutOfRange'
 
 # 缺少参数错误。
 MISSINGPARAMETER = 'MissingParameter'
@@ -160,6 +169,12 @@ RESOURCENOTFOUND_SERVICENOTSUBSCRIBED = 'ResourceNotFound.ServiceNotSubscribed'
 
 # 资源不可用。
 RESOURCEUNAVAILABLE = 'ResourceUnavailable'
+
+# TLD增值包超额不允许操作。
+RESOURCEUNAVAILABLE_TLDOPERATELIMIT = 'ResourceUnavailable.TldOperateLimit'
+
+# TLD增值包已过期。
+RESOURCEUNAVAILABLE_TLDPACKAGEEXPIRED = 'ResourceUnavailable.TldPackageExpired'
 
 # 资源售罄。
 RESOURCESSOLDOUT = 'ResourcesSoldOut'

@@ -56,14 +56,26 @@ INVALIDPARAMETERVALUE_WRONGACTION = 'InvalidParameterValue.WrongAction'
 # zone不支持。
 INVALIDPARAMETERVALUE_ZONENOTSUPPORT = 'InvalidParameterValue.ZoneNotSupport'
 
+# 路由数超过限制。
+LIMITEXCEEDED_ROUTEOVERLIMIT = 'LimitExceeded.RouteOverLimit'
+
+# SASL路由超过限制。
+LIMITEXCEEDED_ROUTESASLOVERLIMIT = 'LimitExceeded.RouteSASLOverLimit'
+
 # 操作被拒绝。
 OPERATIONDENIED = 'OperationDenied'
+
+# 任务资源暂停。
+OPERATIONDENIED_RESOURCETASKPAUSED = 'OperationDenied.ResourceTaskPaused'
 
 # 请求的次数超过了频率限制。
 REQUESTLIMITEXCEEDED = 'RequestLimitExceeded'
 
 # 资源被占用。
 RESOURCEINUSE = 'ResourceInUse'
+
+# 资源不足。
+RESOURCEINSUFFICIENT = 'ResourceInsufficient'
 
 # 资源不存在。
 RESOURCENOTFOUND = 'ResourceNotFound'

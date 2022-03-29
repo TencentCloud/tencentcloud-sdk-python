@@ -1142,6 +1142,12 @@ class InstanceInfo(AbstractModel):
         :param HealthStatus: 集群健康状态 -1 未知；0 Green; 1 Yellow; 2 Red
 注意：此字段可能返回 null，表示取不到有效值。
         :type HealthStatus: int
+        :param EsPrivateUrl: https集群内网url
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EsPrivateUrl: str
+        :param EsPrivateDomain: https集群内网域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EsPrivateDomain: str
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -1215,6 +1221,8 @@ class InstanceInfo(AbstractModel):
         self.FrozenDiskType = None
         self.FrozenDiskSize = None
         self.HealthStatus = None
+        self.EsPrivateUrl = None
+        self.EsPrivateDomain = None
 
 
     def _deserialize(self, params):
@@ -1319,6 +1327,8 @@ class InstanceInfo(AbstractModel):
         self.FrozenDiskType = params.get("FrozenDiskType")
         self.FrozenDiskSize = params.get("FrozenDiskSize")
         self.HealthStatus = params.get("HealthStatus")
+        self.EsPrivateUrl = params.get("EsPrivateUrl")
+        self.EsPrivateDomain = params.get("EsPrivateDomain")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2116,6 +2126,71 @@ class UpdateDiagnoseSettingsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class UpdateDictionariesRequest(AbstractModel):
+    """UpdateDictionaries请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: ES实例ID
+        :type InstanceId: str
+        :param IkMainDicts: IK分词主词典COS地址
+        :type IkMainDicts: list of str
+        :param IkStopwords: IK分词停用词词典COS地址
+        :type IkStopwords: list of str
+        :param Synonym: 同义词词典COS地址
+        :type Synonym: list of str
+        :param QQDict: QQ分词词典COS地址
+        :type QQDict: list of str
+        :param UpdateType: 0：安装；1：删除
+        :type UpdateType: int
+        :param ForceRestart: 是否强制重启集群
+        :type ForceRestart: bool
+        """
+        self.InstanceId = None
+        self.IkMainDicts = None
+        self.IkStopwords = None
+        self.Synonym = None
+        self.QQDict = None
+        self.UpdateType = None
+        self.ForceRestart = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.IkMainDicts = params.get("IkMainDicts")
+        self.IkStopwords = params.get("IkStopwords")
+        self.Synonym = params.get("Synonym")
+        self.QQDict = params.get("QQDict")
+        self.UpdateType = params.get("UpdateType")
+        self.ForceRestart = params.get("ForceRestart")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateDictionariesResponse(AbstractModel):
+    """UpdateDictionaries返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class UpdateInstanceRequest(AbstractModel):
     """UpdateInstance请求参数结构体
 
@@ -2476,6 +2551,8 @@ class UpgradeInstanceRequest(AbstractModel):
         :type BasicSecurityType: int
         :param UpgradeMode: 升级方式：<li>scale 蓝绿变更</li><li>restart 滚动重启</li>默认值为scale
         :type UpgradeMode: str
+        :param CosBackup: 升级版本前是否对集群进行备份，默认不备份
+        :type CosBackup: bool
         """
         self.InstanceId = None
         self.EsVersion = None
@@ -2483,6 +2560,7 @@ class UpgradeInstanceRequest(AbstractModel):
         self.LicenseType = None
         self.BasicSecurityType = None
         self.UpgradeMode = None
+        self.CosBackup = None
 
 
     def _deserialize(self, params):
@@ -2492,6 +2570,7 @@ class UpgradeInstanceRequest(AbstractModel):
         self.LicenseType = params.get("LicenseType")
         self.BasicSecurityType = params.get("BasicSecurityType")
         self.UpgradeMode = params.get("UpgradeMode")
+        self.CosBackup = params.get("CosBackup")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

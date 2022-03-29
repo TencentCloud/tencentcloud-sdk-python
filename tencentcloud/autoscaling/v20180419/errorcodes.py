@@ -185,9 +185,6 @@ INVALIDPARAMETERVALUE_INVALIDLIFECYCLEHOOKID = 'InvalidParameterValue.InvalidLif
 # 指定的通知组 ID 不是数值字符串格式。
 INVALIDPARAMETERVALUE_INVALIDNOTIFICATIONUSERGROUPID = 'InvalidParameterValue.InvalidNotificationUserGroupId'
 
-# 指定的PAI域名类型不支持。
-INVALIDPARAMETERVALUE_INVALIDPAIDOMAINNAMETYPE = 'InvalidParameterValue.InvalidPaiDomainNameType'
-
 # 定时任务ID无效。
 INVALIDPARAMETERVALUE_INVALIDSCHEDULEDACTIONID = 'InvalidParameterValue.InvalidScheduledActionId'
 
@@ -367,6 +364,9 @@ RESOURCENOTFOUND_LISTENERNOTFOUND = 'ResourceNotFound.ListenerNotFound'
 
 # 找不到指定负载均衡器。
 RESOURCENOTFOUND_LOADBALANCERNOTFOUND = 'ResourceNotFound.LoadBalancerNotFound'
+
+# 指定的负载均衡器在当前伸缩组中没有找到。
+RESOURCENOTFOUND_LOADBALANCERNOTINAUTOSCALINGGROUP = 'ResourceNotFound.LoadBalancerNotInAutoScalingGroup'
 
 # 指定的Location不存在。
 RESOURCENOTFOUND_LOCATIONNOTFOUND = 'ResourceNotFound.LocationNotFound'

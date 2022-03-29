@@ -229,7 +229,7 @@ class ApplyCDBProxyRequest(AbstractModel):
         :type Mem: int
         :param SecurityGroup: 安全组
         :type SecurityGroup: list of str
-        :param Desc: 描述说明
+        :param Desc: 描述说明，最大支持256位。
         :type Desc: str
         """
         self.InstanceId = None
@@ -512,6 +512,9 @@ class AuditPolicy(AbstractModel):
         :param RuleName: 审计规则名称。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RuleName: str
+        :param InstanceName: 数据库实例名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceName: str
         """
         self.PolicyId = None
         self.Status = None
@@ -521,6 +524,7 @@ class AuditPolicy(AbstractModel):
         self.PolicyName = None
         self.RuleId = None
         self.RuleName = None
+        self.InstanceName = None
 
 
     def _deserialize(self, params):
@@ -532,6 +536,7 @@ class AuditPolicy(AbstractModel):
         self.PolicyName = params.get("PolicyName")
         self.RuleId = params.get("RuleId")
         self.RuleName = params.get("RuleName")
+        self.InstanceName = params.get("InstanceName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1041,7 +1046,7 @@ class CloseCDBProxyRequest(AbstractModel):
         :type InstanceId: str
         :param ProxyGroupId: 代理组ID
         :type ProxyGroupId: str
-        :param OnlyCloseRW: 是否只关闭读写分离，取值："true" | "false"
+        :param OnlyCloseRW: 是否只关闭读写分离，取值："true" | "false"，默认为"false"
         :type OnlyCloseRW: bool
         """
         self.InstanceId = None
@@ -1703,28 +1708,32 @@ class CreateDBImportJobRequest(AbstractModel):
         r"""
         :param InstanceId: 实例的 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
         :type InstanceId: str
-        :param FileName: 文件名称。该文件是指用户已上传到腾讯云的文件，仅支持.sql文件。
-        :type FileName: str
         :param User: 云数据库的用户名。
         :type User: str
+        :param FileName: 文件名称。该文件是指用户已上传到腾讯云的文件，仅支持.sql文件。
+        :type FileName: str
         :param Password: 云数据库实例 User 账号的密码。
         :type Password: str
         :param DbName: 导入的目标数据库名，不传表示不指定数据库。
         :type DbName: str
+        :param CosUrl: 腾讯云COS文件链接。 用户需要指定 FileName 或者 CosUrl 其中一个。 COS文件需要是 .sql 文件。
+        :type CosUrl: str
         """
         self.InstanceId = None
-        self.FileName = None
         self.User = None
+        self.FileName = None
         self.Password = None
         self.DbName = None
+        self.CosUrl = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
-        self.FileName = params.get("FileName")
         self.User = params.get("User")
+        self.FileName = params.get("FileName")
         self.Password = params.get("Password")
         self.DbName = params.get("DbName")
+        self.CosUrl = params.get("CosUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1822,7 +1831,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
         :type InstanceNodes: int
         :param Cpu: 实例cpu核数， 如果不传将根据memory指定的内存值自动填充对应的cpu值。
         :type Cpu: int
-        :param AutoSyncFlag: 是否自动发起灾备同步功能。该参数仅对购买灾备实例生效。 可选值为：0 - 不自动发起灾备同步；1 - 自动发起灾备同步。
+        :param AutoSyncFlag: 是否自动发起灾备同步功能。该参数仅对购买灾备实例生效。 可选值为：0 - 不自动发起灾备同步；1 - 自动发起灾备同步。该值默认为0。
         :type AutoSyncFlag: int
         :param CageId: 金融围拢 ID 。
         :type CageId: str
@@ -2021,7 +2030,7 @@ class CreateDBInstanceRequest(AbstractModel):
         :type InstanceNodes: int
         :param Cpu: 实例cpu核数， 如果不传将根据memory指定的内存值自动填充对应的cpu值。
         :type Cpu: int
-        :param AutoSyncFlag: 是否自动发起灾备同步功能。该参数仅对购买灾备实例生效。 可选值为：0 - 不自动发起灾备同步；1 - 自动发起灾备同步。
+        :param AutoSyncFlag: 是否自动发起灾备同步功能。该参数仅对购买灾备实例生效。 可选值为：0 - 不自动发起灾备同步；1 - 自动发起灾备同步。该值默认为0。
         :type AutoSyncFlag: int
         :param CageId: 金融围拢 ID。
         :type CageId: str
@@ -2231,7 +2240,7 @@ class CreateParamTemplateRequest(AbstractModel):
         :type TemplateId: int
         :param ParamList: 参数列表。
         :type ParamList: list of Parameter
-        :param TemplateType: 默认参数模板类型。支持值包括："HIGH_STABILITY" - 高稳定模版，"HIGH_PERFORMANCE" - 高性能模版。
+        :param TemplateType: 默认参数模板类型。支持值包括："HIGH_STABILITY" - 高稳定模板，"HIGH_PERFORMANCE" - 高性能模板。
         :type TemplateType: str
         """
         self.Name = None
@@ -3325,7 +3334,7 @@ class DescribeAuditRulesRequest(AbstractModel):
         :type RuleName: str
         :param Limit: 分页大小参数。默认值为 20，最小值为 1，最大值为 100。
         :type Limit: int
-        :param Offset: 分页偏移量。
+        :param Offset: 分页偏移量。默认值为0。
         :type Offset: int
         """
         self.RuleId = None
@@ -3630,13 +3639,13 @@ class DescribeBackupSummariesRequest(AbstractModel):
         r"""
         :param Product: 需要查询的云数据库产品类型，目前仅支持 "mysql"。
         :type Product: str
-        :param Offset: 分页查询数据的偏移量。
+        :param Offset: 分页查询数据的偏移量，默认为0。
         :type Offset: int
-        :param Limit: 分页查询数据的条目限制，默认值为20。
+        :param Limit: 分页查询数据的条目限制，默认值为20。最小值为1，最大值为100。
         :type Limit: int
-        :param OrderBy: 指定按某一项排序，可选值包括： BackupVolume: 备份容量， DataBackupVolume: 数据备份容量， BinlogBackupVolume: 日志备份容量， AutoBackupVolume: 自动备份容量， ManualBackupVolume: 手动备份容量。
+        :param OrderBy: 指定按某一项排序，可选值包括： BackupVolume: 备份容量， DataBackupVolume: 数据备份容量， BinlogBackupVolume: 日志备份容量， AutoBackupVolume: 自动备份容量， ManualBackupVolume: 手动备份容量。默认按照BackupVolume排序。
         :type OrderBy: str
-        :param OrderDirection: 指定排序方向，可选值包括： ASC: 正序， DESC: 逆序。
+        :param OrderDirection: 指定排序方向，可选值包括： ASC: 正序， DESC: 逆序。默认值为 ASC。
         :type OrderDirection: str
         """
         self.Product = None
@@ -3947,7 +3956,7 @@ class DescribeCDBProxyRequest(AbstractModel):
         r"""
         :param InstanceId: 实例ID
         :type InstanceId: str
-        :param ProxyGroupId: 代理ID
+        :param ProxyGroupId: 代理组ID
         :type ProxyGroupId: str
         """
         self.InstanceId = None
@@ -4712,7 +4721,7 @@ class DescribeDBSecurityGroupsRequest(AbstractModel):
         r"""
         :param InstanceId: 实例ID，格式如：cdb-c1nl9rpv或者cdbro-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同。
         :type InstanceId: str
-        :param ForReadonlyInstance: 当传入只读实例ID时，默认操作的是对应只读组的安全组。如果需要操作只读实例ID的安全组， 需要将该入参置为True
+        :param ForReadonlyInstance: 该值默认为False，表示当传入只读实例ID时，查询操作的是对应只读组的安全组。如果需要操作只读实例ID的安全组， 需要将该入参置为True。
         :type ForReadonlyInstance: bool
         """
         self.InstanceId = None
@@ -4999,12 +5008,16 @@ class DescribeDefaultParamsRequest(AbstractModel):
         r"""
         :param EngineVersion: mysql版本，目前支持 ["5.1", "5.5", "5.6", "5.7"]。
         :type EngineVersion: str
+        :param TemplateType: 默认参数模板类型。支持值包括："HIGH_STABILITY" - 高稳定模版，"HIGH_PERFORMANCE" - 高性能模版。
+        :type TemplateType: str
         """
         self.EngineVersion = None
+        self.TemplateType = None
 
 
     def _deserialize(self, params):
         self.EngineVersion = params.get("EngineVersion")
+        self.TemplateType = params.get("TemplateType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5268,9 +5281,9 @@ class DescribeInstanceParamRecordsRequest(AbstractModel):
         r"""
         :param InstanceId: 实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同，可使用 [查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口获取，其值为输出参数中字段 InstanceId 的值。
         :type InstanceId: str
-        :param Offset: 分页偏移量。
+        :param Offset: 分页偏移量，默认值：0。
         :type Offset: int
-        :param Limit: 分页大小。
+        :param Limit: 分页大小，默认值：20。
         :type Limit: int
         """
         self.InstanceId = None
@@ -5471,7 +5484,7 @@ class DescribeParamTemplateInfoResponse(AbstractModel):
         :type Items: list of ParameterDetail
         :param Description: 参数模板描述
         :type Description: str
-        :param TemplateType: 参数模板类型。支持值包括："HIGH_STABILITY" - 高稳定模版，"HIGH_PERFORMANCE" - 高性能模版。
+        :param TemplateType: 参数模板类型。支持值包括："HIGH_STABILITY" - 高稳定模板，"HIGH_PERFORMANCE" - 高性能模板。
         :type TemplateType: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5619,9 +5632,9 @@ class DescribeProxyConnectionPoolConfRequest(AbstractModel):
         r"""
         :param InstanceId: 实例ID
         :type InstanceId: str
-        :param Offset: 分页查询偏移量
+        :param Offset: 分页
         :type Offset: int
-        :param Limit: 分页查询限制
+        :param Limit: 限制
         :type Limit: int
         """
         self.InstanceId = None
@@ -6067,7 +6080,7 @@ class DescribeSlowLogsRequest(AbstractModel):
         r"""
         :param InstanceId: 实例 ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例 ID 相同。
         :type InstanceId: str
-        :param Offset: 偏移量，最小值为0。
+        :param Offset: 偏移量，默认值为0，最小值为0。
         :type Offset: int
         :param Limit: 分页大小，默认值为20，最小值为1，最大值为100。
         :type Limit: int
@@ -7820,7 +7833,7 @@ class ModifyAccountPrivilegesRequest(AbstractModel):
         :type InstanceId: str
         :param Accounts: 数据库的账号，包括用户名和域名。
         :type Accounts: list of Account
-        :param GlobalPrivileges: 全局权限。其中，GlobalPrivileges 中权限的可选值为："SELECT","INSERT","UPDATE","DELETE","CREATE", "PROCESS", "DROP","REFERENCES","INDEX","ALTER","SHOW DATABASES","CREATE TEMPORARY TABLES","LOCK TABLES","EXECUTE","CREATE VIEW","SHOW VIEW","CREATE ROUTINE","ALTER ROUTINE","EVENT","TRIGGER"。
+        :param GlobalPrivileges: 全局权限。其中，GlobalPrivileges 中权限的可选值为："SELECT","INSERT","UPDATE","DELETE","CREATE", "PROCESS", "DROP","REFERENCES","INDEX","ALTER","SHOW DATABASES","CREATE TEMPORARY TABLES","LOCK TABLES","EXECUTE","CREATE VIEW","SHOW VIEW","CREATE ROUTINE","ALTER ROUTINE","EVENT","TRIGGER","CREATE USER","RELOAD","REPLICATION CLIENT","REPLICATION SLAVE","UPDATE"。
 注意，不传该参数表示清除该权限。
         :type GlobalPrivileges: list of str
         :param DatabasePrivileges: 数据库的权限。Privileges 权限的可选值为："SELECT","INSERT","UPDATE","DELETE","CREATE",	"DROP","REFERENCES","INDEX","ALTER","CREATE TEMPORARY TABLES","LOCK TABLES","EXECUTE","CREATE VIEW","SHOW VIEW","CREATE ROUTINE","ALTER ROUTINE","EVENT","TRIGGER"。
@@ -7832,7 +7845,7 @@ class ModifyAccountPrivilegesRequest(AbstractModel):
         :param ColumnPrivileges: 数据库表中列的权限。Privileges 权限的可选值为："SELECT","INSERT","UPDATE","REFERENCES"。
 注意，不传该参数表示清除该权限。
         :type ColumnPrivileges: list of ColumnPrivilege
-        :param ModifyAction: 该参数不为空时，为批量修改权限。可选值为：grant，revoke。
+        :param ModifyAction: 该参数不为空时，为批量修改权限。可选值为：grant - 授予权限，revoke - 回收权限。
         :type ModifyAction: str
         """
         self.InstanceId = None
@@ -8309,9 +8322,9 @@ class ModifyCDBProxyRequest(AbstractModel):
         r"""
         :param ProxyGroupId: 数据库代理组唯一ID
         :type ProxyGroupId: str
-        :param IsKickout: 是否开始延迟剔除，取值："true" | "false"
+        :param IsKickout: 是否开始延迟剔除，默认false，取值："true" | "false"
         :type IsKickout: bool
-        :param MinCount: 最少保留数
+        :param MinCount: 最少保留数，最小为0，最大为实例数量
         :type MinCount: int
         :param MaxDelay: 延迟剔除的阈值；如果IsKickOut="true", 该字段必填
         :type MaxDelay: int
@@ -8319,9 +8332,9 @@ class ModifyCDBProxyRequest(AbstractModel):
         :type WeightMode: str
         :param RoWeightValues: 实例只读权重
         :type RoWeightValues: :class:`tencentcloud.cdb.v20170320.models.RoWeight`
-        :param FailOver: 是否开启故障转移，代理出现故障后，连接地址将路由到主实例，取值："true" | "false"
+        :param FailOver: 是否开启故障转移，代理出现故障后，连接地址将路由到主实例，默认false，取值："true" | "false"
         :type FailOver: bool
-        :param AutoAddRo: 是否自动添加只读实例，取值："true" | "false"
+        :param AutoAddRo: 是否自动添加只读实例，默认false，取值："true" | "false"
         :type AutoAddRo: bool
         """
         self.ProxyGroupId = None
@@ -8441,7 +8454,7 @@ class ModifyDBInstanceNameRequest(AbstractModel):
         r"""
         :param InstanceId: 实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同，可使用 [查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口获取，其值为输出参数中字段 InstanceId 的值。
         :type InstanceId: str
-        :param InstanceName: 实例名称。
+        :param InstanceName: 修改后的实例名称。
         :type InstanceName: str
         """
         self.InstanceId = None
@@ -8865,9 +8878,9 @@ class ModifyParamTemplateRequest(AbstractModel):
         r"""
         :param TemplateId: 模板 ID。
         :type TemplateId: int
-        :param Name: 模板名称。
+        :param Name: 模板名称，长度不超过64。
         :type Name: str
-        :param Description: 模板描述。
+        :param Description: 模板描述，长度不超过255。
         :type Description: str
         :param ParamList: 参数列表。
         :type ParamList: list of Parameter
@@ -10239,7 +10252,7 @@ class RoInstanceInfo(AbstractModel):
         :type Zone: str
         :param InstanceId: RO实例ID，格式如：cdbro-c1nl9rpv
         :type InstanceId: str
-        :param Status: RO实例状态，可能返回值：0-创建中，1-运行中，4-删除中
+        :param Status: RO实例状态，可能返回值：0-创建中，1-运行中，3-异地RO（仅在使用DescribeDBInstances查询主实例信息时，返回值中异地RO的状态恒等于3，其他场景下无此值），4-删除中
         :type Status: int
         :param InstanceType: 实例类型，可能返回值：1-主实例，2-灾备实例，3-只读实例
         :type InstanceType: int
@@ -11787,9 +11800,9 @@ class UpgradeCDBProxyRequest(AbstractModel):
         :type InstanceId: str
         :param ProxyGroupId: 数据库代理ID
         :type ProxyGroupId: str
-        :param ProxyCount: 代理节点个数
+        :param ProxyCount: 代理节点个数，实际规格支持数
         :type ProxyCount: int
-        :param Cpu: 代理节点核数
+        :param Cpu: 代理节点核数，实际规格支持数
         :type Cpu: int
         :param Mem: 代理节点内存大小
         :type Mem: int
@@ -12198,7 +12211,7 @@ class ZoneSellConf(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Status: 可用区状态。可能的返回值为：0-未上线；1-上线；2-开放；3-停售；4-不展示
+        :param Status: 可用区状态。可能的返回值为：1-上线；3-停售；4-不展示
         :type Status: int
         :param ZoneName: 可用区中文名称
         :type ZoneName: str
@@ -12231,6 +12244,14 @@ class ZoneSellConf(AbstractModel):
         :param RemoteRoZone: 可支持的跨可用区只读区信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type RemoteRoZone: list of str
+        :param ExClusterStatus: 独享型可用区状态。可能的返回值为：1-上线；3-停售；4-不展示
+        :type ExClusterStatus: int
+        :param ExClusterRemoteRoZone: 独享型可支持的跨可用区只读区信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExClusterRemoteRoZone: list of str
+        :param ExClusterZoneConf: 独享型多可用区信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExClusterZoneConf: :class:`tencentcloud.cdb.v20170320.models.ZoneConf`
         """
         self.Status = None
         self.ZoneName = None
@@ -12248,6 +12269,9 @@ class ZoneSellConf(AbstractModel):
         self.DrZone = None
         self.IsSupportRemoteRo = None
         self.RemoteRoZone = None
+        self.ExClusterStatus = None
+        self.ExClusterRemoteRoZone = None
+        self.ExClusterZoneConf = None
 
 
     def _deserialize(self, params):
@@ -12274,6 +12298,11 @@ class ZoneSellConf(AbstractModel):
         self.DrZone = params.get("DrZone")
         self.IsSupportRemoteRo = params.get("IsSupportRemoteRo")
         self.RemoteRoZone = params.get("RemoteRoZone")
+        self.ExClusterStatus = params.get("ExClusterStatus")
+        self.ExClusterRemoteRoZone = params.get("ExClusterRemoteRoZone")
+        if params.get("ExClusterZoneConf") is not None:
+            self.ExClusterZoneConf = ZoneConf()
+            self.ExClusterZoneConf._deserialize(params.get("ExClusterZoneConf"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

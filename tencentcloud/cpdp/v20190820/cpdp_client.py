@@ -222,6 +222,34 @@ class CpdpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ApplyReconciliationFile(self, request):
+        """聚鑫-申请对账文件
+
+        :param request: Request instance for ApplyReconciliationFile.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.ApplyReconciliationFileRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.ApplyReconciliationFileResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ApplyReconciliationFile", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ApplyReconciliationFileResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ApplyTrade(self, request):
         """跨境-提交贸易材料。通过提交贸易材料接口可为对接方累计贸易额度，在额度范围内可发起汇兑汇出交易。
 
@@ -320,6 +348,34 @@ class CpdpClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.BindAcctResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def BindOpenBankExternalSubMerchantBankAccount(self, request):
+        """云企付-子商户银行卡绑定
+
+        :param request: Request instance for BindOpenBankExternalSubMerchantBankAccount.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.BindOpenBankExternalSubMerchantBankAccountRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.BindOpenBankExternalSubMerchantBankAccountResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("BindOpenBankExternalSubMerchantBankAccount", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.BindOpenBankExternalSubMerchantBankAccountResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -467,6 +523,34 @@ class CpdpClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CheckAmountResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CloseOpenBankPaymentOrder(self, request):
+        """云企付-关闭订单
+
+        :param request: Request instance for CloseOpenBankPaymentOrder.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.CloseOpenBankPaymentOrderRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.CloseOpenBankPaymentOrderResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CloseOpenBankPaymentOrder", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CloseOpenBankPaymentOrderResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -804,6 +888,90 @@ class CpdpClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateMerchantResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateOpenBankExternalSubMerchantRegistration(self, request):
+        """云企付-子商户进件
+
+        :param request: Request instance for CreateOpenBankExternalSubMerchantRegistration.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.CreateOpenBankExternalSubMerchantRegistrationRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.CreateOpenBankExternalSubMerchantRegistrationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateOpenBankExternalSubMerchantRegistration", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateOpenBankExternalSubMerchantRegistrationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateOpenBankMerchant(self, request):
+        """云企付-创建商户
+
+        :param request: Request instance for CreateOpenBankMerchant.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.CreateOpenBankMerchantRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.CreateOpenBankMerchantResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateOpenBankMerchant", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateOpenBankMerchantResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateOpenBankPaymentOrder(self, request):
+        """云企付-创建支付订单
+
+        :param request: Request instance for CreateOpenBankPaymentOrder.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.CreateOpenBankPaymentOrderRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.CreateOpenBankPaymentOrderResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateOpenBankPaymentOrder", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateOpenBankPaymentOrderResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1323,7 +1491,7 @@ class CpdpClient(AbstractClient):
 
 
     def DistributeQueryReceiver(self, request):
-        """云支付-T查询已添加分账接收方接口
+        """云支付-查询已添加分账接收方接口
 
         :param request: Request instance for DistributeQueryReceiver.
         :type request: :class:`tencentcloud.cpdp.v20190820.models.DistributeQueryReceiverRequest`
@@ -1476,6 +1644,35 @@ class CpdpClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ExecuteMemberTransactionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def GetBillDownloadUrl(self, request):
+        """调用该接口返回对账单下载地址，对账单下载URL通过GET方式访问，返回zip包，解压后为csv格式文件。文件首行如下：
+        订单号,订单归属日期,机构编号,订单描述,交易类型,订单状态,支付场景,原始金额,折扣金额,实际交易金额,支付渠道优惠金额,抹零金额,币种,下单时间,付款成功时间,商户编号,门店编号,付款方式编号,付款方式名称,商户手续费T1,商户扣率,是否信用卡交易,原始订单号,用户账号,外部订单号,订单备注
+
+        :param request: Request instance for GetBillDownloadUrl.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.GetBillDownloadUrlRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.GetBillDownloadUrlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetBillDownloadUrl", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetBillDownloadUrlResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -2274,6 +2471,34 @@ class CpdpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def QueryExceedingInfo(self, request):
+        """灵云-查询超额信息
+
+        :param request: Request instance for QueryExceedingInfo.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.QueryExceedingInfoRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.QueryExceedingInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("QueryExceedingInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryExceedingInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def QueryExchangeRate(self, request):
         """跨境-查询汇率
 
@@ -2288,6 +2513,34 @@ class CpdpClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryExchangeRateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def QueryFundsTransactionDetails(self, request):
+        """聚鑫-查询会员资金交易信息列表
+
+        :param request: Request instance for QueryFundsTransactionDetails.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.QueryFundsTransactionDetailsRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.QueryFundsTransactionDetailsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("QueryFundsTransactionDetails", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryFundsTransactionDetailsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -2429,6 +2682,34 @@ class CpdpClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryMemberTransactionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def QueryMemberTransactionDetails(self, request):
+        """聚鑫-查询会员间交易信息列表
+
+        :param request: Request instance for QueryMemberTransactionDetails.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.QueryMemberTransactionDetailsRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.QueryMemberTransactionDetailsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("QueryMemberTransactionDetails", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryMemberTransactionDetailsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -2611,6 +2892,286 @@ class CpdpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def QueryOpenBankBankAccountBalance(self, request):
+        """云企付-查询账户余额
+
+        :param request: Request instance for QueryOpenBankBankAccountBalance.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.QueryOpenBankBankAccountBalanceRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.QueryOpenBankBankAccountBalanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("QueryOpenBankBankAccountBalance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryOpenBankBankAccountBalanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def QueryOpenBankBankBranchList(self, request):
+        """云企付-查询联行号
+
+        :param request: Request instance for QueryOpenBankBankBranchList.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.QueryOpenBankBankBranchListRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.QueryOpenBankBankBranchListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("QueryOpenBankBankBranchList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryOpenBankBankBranchListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def QueryOpenBankBindExternalSubMerchantBankAccount(self, request):
+        """云企付-子商户银行卡绑定结果查询
+
+        :param request: Request instance for QueryOpenBankBindExternalSubMerchantBankAccount.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.QueryOpenBankBindExternalSubMerchantBankAccountRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.QueryOpenBankBindExternalSubMerchantBankAccountResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("QueryOpenBankBindExternalSubMerchantBankAccount", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryOpenBankBindExternalSubMerchantBankAccountResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def QueryOpenBankDailyReceiptDownloadUrl(self, request):
+        """云企付-按日期批量查询回单下载地址
+
+        :param request: Request instance for QueryOpenBankDailyReceiptDownloadUrl.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.QueryOpenBankDailyReceiptDownloadUrlRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.QueryOpenBankDailyReceiptDownloadUrlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("QueryOpenBankDailyReceiptDownloadUrl", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryOpenBankDailyReceiptDownloadUrlResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def QueryOpenBankDownLoadUrl(self, request):
+        """云企付-查询对账单下载地址
+
+        :param request: Request instance for QueryOpenBankDownLoadUrl.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.QueryOpenBankDownLoadUrlRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.QueryOpenBankDownLoadUrlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("QueryOpenBankDownLoadUrl", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryOpenBankDownLoadUrlResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def QueryOpenBankExternalSubMerchantBankAccount(self, request):
+        """云企付-子商户银行卡列表查询
+
+        :param request: Request instance for QueryOpenBankExternalSubMerchantBankAccount.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.QueryOpenBankExternalSubMerchantBankAccountRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.QueryOpenBankExternalSubMerchantBankAccountResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("QueryOpenBankExternalSubMerchantBankAccount", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryOpenBankExternalSubMerchantBankAccountResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def QueryOpenBankExternalSubMerchantRegistration(self, request):
+        """云企付-子商户进件结果查询
+
+        :param request: Request instance for QueryOpenBankExternalSubMerchantRegistration.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.QueryOpenBankExternalSubMerchantRegistrationRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.QueryOpenBankExternalSubMerchantRegistrationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("QueryOpenBankExternalSubMerchantRegistration", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryOpenBankExternalSubMerchantRegistrationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def QueryOpenBankPaymentOrder(self, request):
+        """云企付-查询订单支付结果
+
+        :param request: Request instance for QueryOpenBankPaymentOrder.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.QueryOpenBankPaymentOrderRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.QueryOpenBankPaymentOrderResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("QueryOpenBankPaymentOrder", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryOpenBankPaymentOrderResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def QueryOpenBankSupportBankList(self, request):
+        """云企付-查询支持银行列表
+
+        :param request: Request instance for QueryOpenBankSupportBankList.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.QueryOpenBankSupportBankListRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.QueryOpenBankSupportBankListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("QueryOpenBankSupportBankList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryOpenBankSupportBankListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def QueryOpenBankUnbindExternalSubMerchantBankAccount(self, request):
+        """云企付-子商户银行卡解绑结果查询
+
+        :param request: Request instance for QueryOpenBankUnbindExternalSubMerchantBankAccount.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.QueryOpenBankUnbindExternalSubMerchantBankAccountRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.QueryOpenBankUnbindExternalSubMerchantBankAccountResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("QueryOpenBankUnbindExternalSubMerchantBankAccount", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryOpenBankUnbindExternalSubMerchantBankAccountResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def QueryOrder(self, request):
         """根据订单号，或者用户Id，查询支付订单状态
 
@@ -2737,6 +3298,34 @@ class CpdpClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryReconciliationDocumentResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def QueryReconciliationFileApplyInfo(self, request):
+        """聚鑫-查询对账文件申请结果
+
+        :param request: Request instance for QueryReconciliationFileApplyInfo.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.QueryReconciliationFileApplyInfoRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.QueryReconciliationFileApplyInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("QueryReconciliationFileApplyInfo", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryReconciliationFileApplyInfoResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -3493,6 +4082,34 @@ class CpdpClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UnBindAcctResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UnbindOpenBankExternalSubMerchantBankAccount(self, request):
+        """云企付-子商户银行卡解绑
+
+        :param request: Request instance for UnbindOpenBankExternalSubMerchantBankAccount.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.UnbindOpenBankExternalSubMerchantBankAccountRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.UnbindOpenBankExternalSubMerchantBankAccountResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UnbindOpenBankExternalSubMerchantBankAccount", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UnbindOpenBankExternalSubMerchantBankAccountResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

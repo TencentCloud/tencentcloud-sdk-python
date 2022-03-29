@@ -17,6 +17,9 @@
 # CAM签名/鉴权错误。
 AUTHFAILURE = 'AuthFailure'
 
+# DryRun 操作，代表请求将会是成功的，只是多传了 DryRun 参数。
+DRYRUNOPERATION = 'DryRunOperation'
+
 # 操作失败。
 FAILEDOPERATION = 'FailedOperation'
 
@@ -44,8 +47,20 @@ OPERATIONDENIED_USERHASNOSTRATEGY = 'OperationDenied.UserHasNoStrategy'
 # 请求的次数超过了频率限制。
 REQUESTLIMITEXCEEDED = 'RequestLimitExceeded'
 
+# 资源被占用。
+RESOURCEINUSE = 'ResourceInUse'
+
+# 资源不足。
+RESOURCEINSUFFICIENT = 'ResourceInsufficient'
+
 # 资源不存在。
 RESOURCENOTFOUND = 'ResourceNotFound'
+
+# 资源不可用。
+RESOURCEUNAVAILABLE = 'ResourceUnavailable'
+
+# 资源售罄。
+RESOURCESSOLDOUT = 'ResourcesSoldOut'
 
 # 未授权操作。
 UNAUTHORIZEDOPERATION = 'UnauthorizedOperation'

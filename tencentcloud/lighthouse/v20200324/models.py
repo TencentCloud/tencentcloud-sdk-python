@@ -529,6 +529,34 @@ class CcnAttachedInstance(AbstractModel):
         
 
 
+class ContainerEnv(AbstractModel):
+    """容器环境变量
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Key: 环境变量Key
+        :type Key: str
+        :param Value: 环境变量值
+        :type Value: str
+        """
+        self.Key = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateBlueprintRequest(AbstractModel):
     """CreateBlueprint请求参数结构体
 
@@ -682,6 +710,102 @@ class CreateInstanceSnapshotResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.SnapshotId = params.get("SnapshotId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateInstancesRequest(AbstractModel):
+    """CreateInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BundleId: Lighthouse套餐ID。
+        :type BundleId: str
+        :param BlueprintId: Lighthouse镜像ID。
+        :type BlueprintId: str
+        :param InstanceChargePrepaid: 当前Lighthouse实例仅支持预付费模式，即包年包月相关参数设置，单位（月）。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。该参数必传。
+        :type InstanceChargePrepaid: :class:`tencentcloud.lighthouse.v20200324.models.InstanceChargePrepaid`
+        :param InstanceName: Lighthouse实例显示名称。
+        :type InstanceName: str
+        :param InstanceCount: 购买Lighthouse实例数量。包年包月实例取值范围：[1，30]。默认取值：1。指定购买实例的数量不能超过用户所能购买的剩余配额数量
+        :type InstanceCount: int
+        :param Zones: 可用区列表。默认为随机可用区
+        :type Zones: list of str
+        :param DryRun: 是否只预检此次请求。
+true：发送检查请求，不会创建实例。检查项包括是否填写了必需参数，请求格式，业务限制和库存。
+如果检查不通过，则返回对应错误码；
+如果检查通过，则返回RequestId.
+false（默认）：发送正常请求，通过检查后直接创建实例
+        :type DryRun: bool
+        :param ClientToken: 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
+        :type ClientToken: str
+        :param LoginConfiguration: 实例登录密码信息配置。本字段目前仅支持WINDOWS实例进行密码设置。默认缺失情况下代表用户选择实例创建后设置登录密码。
+        :type LoginConfiguration: :class:`tencentcloud.lighthouse.v20200324.models.LoginConfiguration`
+        :param Containers: 要创建的容器配置列表。
+        :type Containers: list of DockerContainerConfiguration
+        """
+        self.BundleId = None
+        self.BlueprintId = None
+        self.InstanceChargePrepaid = None
+        self.InstanceName = None
+        self.InstanceCount = None
+        self.Zones = None
+        self.DryRun = None
+        self.ClientToken = None
+        self.LoginConfiguration = None
+        self.Containers = None
+
+
+    def _deserialize(self, params):
+        self.BundleId = params.get("BundleId")
+        self.BlueprintId = params.get("BlueprintId")
+        if params.get("InstanceChargePrepaid") is not None:
+            self.InstanceChargePrepaid = InstanceChargePrepaid()
+            self.InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
+        self.InstanceName = params.get("InstanceName")
+        self.InstanceCount = params.get("InstanceCount")
+        self.Zones = params.get("Zones")
+        self.DryRun = params.get("DryRun")
+        self.ClientToken = params.get("ClientToken")
+        if params.get("LoginConfiguration") is not None:
+            self.LoginConfiguration = LoginConfiguration()
+            self.LoginConfiguration._deserialize(params.get("LoginConfiguration"))
+        if params.get("Containers") is not None:
+            self.Containers = []
+            for item in params.get("Containers"):
+                obj = DockerContainerConfiguration()
+                obj._deserialize(item)
+                self.Containers.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateInstancesResponse(AbstractModel):
+    """CreateInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceIdSet: 当通过本接口来创建实例时会返回该参数，表示一个或多个实例ID。返回实例ID列表并不代表实例创建成功。
+
+可根据 DescribeInstances 接口查询返回的InstancesSet中对应实例的ID的状态来判断创建是否完成；如果实例状态由“启动中”变为“运行中”，则为创建成功。
+        :type InstanceIdSet: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.InstanceIdSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceIdSet = params.get("InstanceIdSet")
         self.RequestId = params.get("RequestId")
 
 
@@ -1998,7 +2122,7 @@ class DescribeInstancesRequest(AbstractModel):
 <li>instance-state</li>按照【实例状态】进行过滤。
 类型：String
 必选：否
-每次请求的 Filters 的上限为 10，Filter.Values 的上限为 5。参数不支持同时指定 InstanceIds 和 Filters。
+每次请求的 Filters 的上限为 10，Filter.Values 的上限为 100。参数不支持同时指定 InstanceIds 和 Filters。
         :type Filters: list of Filter
         :param Offset: 偏移量，默认为 0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/product/1207/47578)中的相关小节。
         :type Offset: int
@@ -3086,6 +3210,131 @@ class DiskReturnable(AbstractModel):
         
 
 
+class DockerContainerConfiguration(AbstractModel):
+    """Docker容器创建时的配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ContainerImage: 容器镜像地址
+        :type ContainerImage: str
+        :param ContainerName: 容器名称
+        :type ContainerName: str
+        :param Envs: 环境变量列表
+        :type Envs: list of ContainerEnv
+        :param PublishPorts: 容器端口主机端口映射列表
+        :type PublishPorts: list of DockerContainerPublishPort
+        :param Volumes: 容器加载本地卷列表
+        :type Volumes: list of DockerContainerVolume
+        :param Command: 运行的命令
+        :type Command: str
+        """
+        self.ContainerImage = None
+        self.ContainerName = None
+        self.Envs = None
+        self.PublishPorts = None
+        self.Volumes = None
+        self.Command = None
+
+
+    def _deserialize(self, params):
+        self.ContainerImage = params.get("ContainerImage")
+        self.ContainerName = params.get("ContainerName")
+        if params.get("Envs") is not None:
+            self.Envs = []
+            for item in params.get("Envs"):
+                obj = ContainerEnv()
+                obj._deserialize(item)
+                self.Envs.append(obj)
+        if params.get("PublishPorts") is not None:
+            self.PublishPorts = []
+            for item in params.get("PublishPorts"):
+                obj = DockerContainerPublishPort()
+                obj._deserialize(item)
+                self.PublishPorts.append(obj)
+        if params.get("Volumes") is not None:
+            self.Volumes = []
+            for item in params.get("Volumes"):
+                obj = DockerContainerVolume()
+                obj._deserialize(item)
+                self.Volumes.append(obj)
+        self.Command = params.get("Command")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DockerContainerPublishPort(AbstractModel):
+    """Docker容器映射的端口
+
+    """
+
+    def __init__(self):
+        r"""
+        :param HostPort: 主机端口
+        :type HostPort: int
+        :param ContainerPort: 容器端口
+        :type ContainerPort: int
+        :param Ip: 对外绑定IP，默认0.0.0.0
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Ip: str
+        :param Protocol: 协议，默认tcp，支持tcp/udp/sctp
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Protocol: str
+        """
+        self.HostPort = None
+        self.ContainerPort = None
+        self.Ip = None
+        self.Protocol = None
+
+
+    def _deserialize(self, params):
+        self.HostPort = params.get("HostPort")
+        self.ContainerPort = params.get("ContainerPort")
+        self.Ip = params.get("Ip")
+        self.Protocol = params.get("Protocol")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DockerContainerVolume(AbstractModel):
+    """Docker容器挂载卷
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ContainerPath: 容器路径
+        :type ContainerPath: str
+        :param HostPath: 主机路径
+        :type HostPath: str
+        """
+        self.ContainerPath = None
+        self.HostPath = None
+
+
+    def _deserialize(self, params):
+        self.ContainerPath = params.get("ContainerPath")
+        self.HostPath = params.get("HostPath")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Filter(AbstractModel):
     """>描述键值对过滤器，用于条件过滤查询。例如过滤名称等
     > * 若存在多个`Filter`时，`Filter`间的关系为逻辑与（`AND`）关系。
@@ -3983,6 +4232,12 @@ class KeyPair(AbstractModel):
         
 
 
+class LoginConfiguration(AbstractModel):
+    """实例密码登录配置信息。
+
+    """
+
+
 class LoginSettings(AbstractModel):
     """描述了实例登录相关配置与信息。
 
@@ -4072,10 +4327,14 @@ class ModifyBundle(AbstractModel):
         :type ModifyBundleState: str
         :param Bundle: 套餐信息。
         :type Bundle: :class:`tencentcloud.lighthouse.v20200324.models.Bundle`
+        :param NotSupportModifyMessage: 不支持套餐变更原因信息。变更套餐状态为"AVAILABLE"时, 该信息为空
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NotSupportModifyMessage: str
         """
         self.ModifyPrice = None
         self.ModifyBundleState = None
         self.Bundle = None
+        self.NotSupportModifyMessage = None
 
 
     def _deserialize(self, params):
@@ -4086,6 +4345,7 @@ class ModifyBundle(AbstractModel):
         if params.get("Bundle") is not None:
             self.Bundle = Bundle()
             self.Bundle._deserialize(params.get("Bundle"))
+        self.NotSupportModifyMessage = params.get("NotSupportModifyMessage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

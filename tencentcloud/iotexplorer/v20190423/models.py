@@ -2453,6 +2453,74 @@ class DescribeGatewayBindDevicesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeGatewaySubDeviceListRequest(AbstractModel):
+    """DescribeGatewaySubDeviceList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param GatewayProductId: 网关产品ID
+        :type GatewayProductId: str
+        :param GatewayDeviceName: 网关设备名称
+        :type GatewayDeviceName: str
+        :param Offset: 分页偏移
+        :type Offset: int
+        :param Limit: 分页的大小
+        :type Limit: int
+        """
+        self.GatewayProductId = None
+        self.GatewayDeviceName = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.GatewayProductId = params.get("GatewayProductId")
+        self.GatewayDeviceName = params.get("GatewayDeviceName")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeGatewaySubDeviceListResponse(AbstractModel):
+    """DescribeGatewaySubDeviceList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Total: 设备的总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: int
+        :param DeviceList: 设备列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeviceList: list of FamilySubDevice
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Total = None
+        self.DeviceList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("DeviceList") is not None:
+            self.DeviceList = []
+            for item in params.get("DeviceList"):
+                obj = FamilySubDevice()
+                obj._deserialize(item)
+                self.DeviceList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeGatewaySubProductsRequest(AbstractModel):
     """DescribeGatewaySubProducts请求参数结构体
 

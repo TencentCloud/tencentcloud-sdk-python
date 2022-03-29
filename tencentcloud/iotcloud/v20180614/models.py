@@ -1032,6 +1032,55 @@ class DeleteDeviceRequest(AbstractModel):
         
 
 
+class DeleteDeviceResourceRequest(AbstractModel):
+    """DeleteDeviceResource请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProductID: 产品ID
+        :type ProductID: str
+        :param Name: 资源名称
+        :type Name: str
+        :param DeviceName: 设备名称
+        :type DeviceName: str
+        """
+        self.ProductID = None
+        self.Name = None
+        self.DeviceName = None
+
+
+    def _deserialize(self, params):
+        self.ProductID = params.get("ProductID")
+        self.Name = params.get("Name")
+        self.DeviceName = params.get("DeviceName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteDeviceResourceResponse(AbstractModel):
+    """DeleteDeviceResource返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteDeviceResponse(AbstractModel):
     """DeleteDevice返回参数结构体
 
@@ -3300,6 +3349,59 @@ class DisableTopicRuleResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DownloadDeviceResourceRequest(AbstractModel):
+    """DownloadDeviceResource请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProductID: 产品ID
+        :type ProductID: str
+        :param Name: 资源名称
+        :type Name: str
+        :param DeviceName: 设备名称
+        :type DeviceName: str
+        """
+        self.ProductID = None
+        self.Name = None
+        self.DeviceName = None
+
+
+    def _deserialize(self, params):
+        self.ProductID = params.get("ProductID")
+        self.Name = params.get("Name")
+        self.DeviceName = params.get("DeviceName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DownloadDeviceResourceResponse(AbstractModel):
+    """DownloadDeviceResource返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Url: 设备资源的cos链接
+        :type Url: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Url = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Url = params.get("Url")
         self.RequestId = params.get("RequestId")
 
 

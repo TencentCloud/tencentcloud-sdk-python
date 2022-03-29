@@ -65,6 +65,9 @@ INVALIDPARAMETER = 'InvalidParameter'
 # 必须包含开始时间和结束时间，且必须为整形时间戳（精确到秒）
 INVALIDPARAMETER_TIME = 'InvalidParameter.Time'
 
+# 别名已经存在
+INVALIDPARAMETERVALUE_ALIASALREADYEXISTS = 'InvalidParameterValue.AliasAlreadyExists'
+
 # 跟踪集名称不符合规则
 INVALIDPARAMETERVALUE_AUDITNAMEERROR = 'InvalidParameterValue.AuditNameError'
 
@@ -85,6 +88,9 @@ INVALIDPARAMETERVALUE_ISCREATENEWQUEUEERROR = 'InvalidParameterValue.IsCreateNew
 
 # IsEnableCmqNotify的有效取值范围是0和1，0代表不开启投递cmq,1代表开启cmq投递。
 INVALIDPARAMETERVALUE_ISENABLECMQNOTIFYERROR = 'InvalidParameterValue.IsEnableCmqNotifyError'
+
+# 云审计暂不支持该地域的KMS
+INVALIDPARAMETERVALUE_KMSREGIONERROR = 'InvalidParameterValue.KmsRegionError'
 
 # 日志前缀格式错误
 INVALIDPARAMETERVALUE_LOGFILEPREFIXERROR = 'InvalidParameterValue.LogFilePrefixError'

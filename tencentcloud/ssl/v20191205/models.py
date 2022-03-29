@@ -731,16 +731,21 @@ class DeployedResources(AbstractModel):
         :type Count: int
         :param Type: 资源标识:clb,cdn,live,waf,antiddos
         :type Type: str
+        :param ResourceIds: 关联资源ID或关联域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceIds: list of str
         """
         self.CertificateId = None
         self.Count = None
         self.Type = None
+        self.ResourceIds = None
 
 
     def _deserialize(self, params):
         self.CertificateId = params.get("CertificateId")
         self.Count = params.get("Count")
         self.Type = params.get("Type")
+        self.ResourceIds = params.get("ResourceIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

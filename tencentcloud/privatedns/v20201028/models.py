@@ -1033,6 +1033,35 @@ class DescribePrivateZoneServiceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeQuotaUsageRequest(AbstractModel):
+    """DescribeQuotaUsage请求参数结构体
+
+    """
+
+
+class DescribeQuotaUsageResponse(AbstractModel):
+    """DescribeQuotaUsage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TldQuota: Tld额度使用情况
+        :type TldQuota: :class:`tencentcloud.privatedns.v20201028.models.TldQuota`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TldQuota = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("TldQuota") is not None:
+            self.TldQuota = TldQuota()
+            self.TldQuota._deserialize(params.get("TldQuota"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeRequestDataRequest(AbstractModel):
     """DescribeRequestData请求参数结构体
 
@@ -1630,6 +1659,42 @@ class TagInfo(AbstractModel):
     def _deserialize(self, params):
         self.TagKey = params.get("TagKey")
         self.TagValue = params.get("TagValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TldQuota(AbstractModel):
+    """Tld额度
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Total: 总共额度
+        :type Total: int
+        :param Used: 已使用额度
+        :type Used: int
+        :param Stock: 库存
+        :type Stock: int
+        :param Quota: 用户限额
+        :type Quota: int
+        """
+        self.Total = None
+        self.Used = None
+        self.Stock = None
+        self.Quota = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        self.Used = params.get("Used")
+        self.Stock = params.get("Stock")
+        self.Quota = params.get("Quota")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -17,6 +17,9 @@
 # CAM签名/鉴权错误。
 AUTHFAILURE = 'AuthFailure'
 
+# 子账号无权限。
+AUTHFAILURE_SUBACCOUNTDENIED = 'AuthFailure.SubAccountDenied'
+
 # 后端错误或者流程错误。
 CDBERROR = 'CdbError'
 
@@ -37,6 +40,9 @@ FAILEDOPERATION = 'FailedOperation'
 
 # 异步任务状态异常。
 FAILEDOPERATION_ASYNCTASKSTATUSERROR = 'FailedOperation.AsyncTaskStatusError'
+
+# 审计不存在。
+FAILEDOPERATION_AUDITCONFIGNOTEXIST = 'FailedOperation.AuditConfigNotExist'
 
 # 实例互斥操作锁定失败,请稍后重试。
 FAILEDOPERATION_CDBINSTANCELOCKFAILERROR = 'FailedOperation.CdbInstanceLockFailError'
@@ -59,6 +65,9 @@ FAILEDOPERATION_DBOPERATIONACTIONERROR = 'FailedOperation.DBOperationActionError
 # 删除审计失败。
 FAILEDOPERATION_DELETEAUDITFAILERROR = 'FailedOperation.DeleteAuditFailError'
 
+# 查询数据库代理失败。
+FAILEDOPERATION_DESCRIBEPROXYGROUPERROR = 'FailedOperation.DescribeProxyGroupError'
+
 # 获取权限错误。
 FAILEDOPERATION_GETPRIVILEGEERROR = 'FailedOperation.GetPrivilegeError'
 
@@ -77,8 +86,14 @@ FAILEDOPERATION_NOTDELAYRO = 'FailedOperation.NotDelayRo'
 # 执行的权限修改操作非法。您可以参照产品文档，了解当前实例支持哪些权限修改操作，如有疑问，请您咨询客服进行处理。
 FAILEDOPERATION_PRIVILEGEDATAILLEGAL = 'FailedOperation.PrivilegeDataIllegal'
 
+# 数据库代理状态异常。
+FAILEDOPERATION_PROXYGROUPSTATUSERROR = 'FailedOperation.ProxyGroupStatusError'
+
 # 查询日志失败。
 FAILEDOPERATION_QUERYLOGERROR = 'FailedOperation.QueryLogError'
+
+# 代理创建中或则已存在，请勿重复创建。
+FAILEDOPERATION_REPEATCREATEPROXYERROR = 'FailedOperation.RepeatCreateProxyError'
 
 # 后台请求服务异常，请您联系客服解决。
 FAILEDOPERATION_RESPONSEVALUEERROR = 'FailedOperation.ResponseValueError'
@@ -224,6 +239,9 @@ INTERNALERROR_TIMEWINDOWERROR = 'InternalError.TimeWindowError'
 # 交易系统错误。
 INTERNALERROR_TRADEERROR = 'InternalError.TradeError'
 
+# 操作失败。
+INTERNALERROR_TRANSACTIONBEGINERROR = 'InternalError.TransactionBeginError'
+
 # 未知错误。
 INTERNALERROR_UNDEFINEDERROR = 'InternalError.UndefinedError'
 
@@ -338,6 +356,9 @@ OPERATIONDENIED_ACTIONINPROCESS = 'OperationDenied.ActionInProcess'
 # 不支持的操作。
 OPERATIONDENIED_ACTIONNOTSUPPORT = 'OperationDenied.ActionNotSupport'
 
+# 至少保留一个审计策略。
+OPERATIONDENIED_ATLEASTAUDITPOLICYERROR = 'OperationDenied.AtLeastAuditPolicyError'
+
 # 审计日志文件数超过最大限制数。
 OPERATIONDENIED_AUDITFILEOVERQUOTAERROR = 'OperationDenied.AuditFileOverQuotaError'
 
@@ -349,6 +370,9 @@ OPERATIONDENIED_AUDITPOLICYEXISTERROR = 'OperationDenied.AuditPolicyExistError'
 
 # 审计策略不存在。
 OPERATIONDENIED_AUDITPOLICYNOTEXISTERROR = 'OperationDenied.AuditPolicyNotExistError'
+
+# 审计策略数量超限。
+OPERATIONDENIED_AUDITPOLICYOVERQUOTAERROR = 'OperationDenied.AuditPolicyOverQuotaError'
 
 # 审计规则删除失败。
 OPERATIONDENIED_AUDITRULEDELETEERROR = 'OperationDenied.AuditRuleDeleteError'
@@ -370,6 +394,9 @@ OPERATIONDENIED_AUDITTASKCONFLICTERROR = 'OperationDenied.AuditTaskConflictError
 
 # 当前RO组有RO实例处于非法状态，不允许执行当前操作。
 OPERATIONDENIED_CONFLICTROSTATUS = 'OperationDenied.ConflictRoStatus'
+
+# 当前只读组配置正在变更中，请勿重复发起请求。
+OPERATIONDENIED_CONFLICTSTATUS = 'OperationDenied.ConflictStatus'
 
 # 已开通安全审计,不支持规则审计。
 OPERATIONDENIED_DBBRAINPOLICYCONFLICT = 'OperationDenied.DBBrainPolicyConflict'

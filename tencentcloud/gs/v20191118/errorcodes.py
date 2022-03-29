@@ -23,7 +23,7 @@ FAILEDOPERATION_PROCESSTIMEOUT = 'FailedOperation.ProcessTimeout'
 # 请降低访问频率。
 FAILEDOPERATION_SLOWDOWN = 'FailedOperation.SlowDown'
 
-# 锁定机器超时或未调用TrylockWorker。
+# 操作超时。
 FAILEDOPERATION_TIMEOUT = 'FailedOperation.Timeout'
 
 # 请求太频繁。
@@ -49,6 +49,9 @@ RESOURCENOTFOUND_NOIDLE = 'ResourceNotFound.NoIdle'
 
 # 会话未找到。
 RESOURCENOTFOUND_SESSIONNOTFOUND = 'ResourceNotFound.SessionNotFound'
+
+# 访问并发实例失败。
+RESOURCEUNAVAILABLE_ACCESSFAILED = 'ResourceUnavailable.AccessFailed'
 
 # 机器还在初始化中。
 RESOURCEUNAVAILABLE_INITIALIZATION = 'ResourceUnavailable.Initialization'

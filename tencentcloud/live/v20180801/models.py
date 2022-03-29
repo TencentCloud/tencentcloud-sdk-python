@@ -1377,6 +1377,17 @@ ContinueBreakPoint：播放完当前正在播放的点播 url 后再使用新的
         :type ExtraCmd: str
         :param Comment: 任务描述，限制 512 字节。
         :type Comment: str
+        :param BackupSourceType: 备源的类型：
+PullLivePushLive -直播，
+PullVodPushLive -点播。
+注意：
+1. 仅当主源类型为直播源时，备源才会生效。
+2. 主直播源拉流中断时，自动使用备源进行拉流。
+3. 如果备源为点播文件时，则每次轮播完点播文件就检查主源是否恢复，如果主源恢复则自动切回到主源，否则继续拉备源。
+        :type BackupSourceType: str
+        :param BackupSourceUrl: 备源 URL。
+只允许填一个备源 URL
+        :type BackupSourceUrl: str
         """
         self.SourceType = None
         self.SourceUrls = None
@@ -1393,6 +1404,8 @@ ContinueBreakPoint：播放完当前正在播放的点播 url 后再使用新的
         self.CallbackUrl = None
         self.ExtraCmd = None
         self.Comment = None
+        self.BackupSourceType = None
+        self.BackupSourceUrl = None
 
 
     def _deserialize(self, params):
@@ -1411,6 +1424,8 @@ ContinueBreakPoint：播放完当前正在播放的点播 url 后再使用新的
         self.CallbackUrl = params.get("CallbackUrl")
         self.ExtraCmd = params.get("ExtraCmd")
         self.Comment = params.get("Comment")
+        self.BackupSourceType = params.get("BackupSourceType")
+        self.BackupSourceUrl = params.get("BackupSourceUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1620,6 +1635,8 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
         :type HlsSpecialParam: :class:`tencentcloud.live.v20180801.models.HlsSpecialParam`
         :param Mp3Param: Mp3录制参数，开启Mp3录制时设置。
         :type Mp3Param: :class:`tencentcloud.live.v20180801.models.RecordParam`
+        :param RemoveWatermark: 是否去除水印，类型为慢直播时此参数无效。
+        :type RemoveWatermark: bool
         """
         self.TemplateName = None
         self.Description = None
@@ -1630,6 +1647,7 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
         self.IsDelayLive = None
         self.HlsSpecialParam = None
         self.Mp3Param = None
+        self.RemoveWatermark = None
 
 
     def _deserialize(self, params):
@@ -1654,6 +1672,7 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
         if params.get("Mp3Param") is not None:
             self.Mp3Param = RecordParam()
             self.Mp3Param._deserialize(params.get("Mp3Param"))
+        self.RemoveWatermark = params.get("RemoveWatermark")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2242,6 +2261,81 @@ class CreateRecordTaskResponse(AbstractModel):
     def __init__(self):
         r"""
         :param TaskId: 任务ID，全局唯一标识录制任务。返回TaskId字段说明录制任务创建成功。
+        :type TaskId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateScreenshotTaskRequest(AbstractModel):
+    """CreateScreenshotTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StreamName: 流名称。
+        :type StreamName: str
+        :param DomainName: 推流域名。
+        :type DomainName: str
+        :param AppName: 推流路径。
+        :type AppName: str
+        :param EndTime: 截图任务结束时间，Unix时间戳。设置时间必须大于StartTime及当前时间，且EndTime - StartTime不能超过24小时。
+        :type EndTime: int
+        :param TemplateId: 截图模板ID，CreateLiveSnapshotTemplate 返回值。如果传入错误ID，则不拉起截图。
+        :type TemplateId: int
+        :param StartTime: 截图任务开始时间，Unix时间戳。如果不填表示立即启动截图。StartTime不能超过当前时间+6天。
+        :type StartTime: int
+        :param StreamType: 推流类型，默认0。取值：
+0-直播推流。
+1-合成流，即 A+B=C 类型混流。
+        :type StreamType: int
+        :param Extension: 扩展字段，暂无定义。默认为空。
+        :type Extension: str
+        """
+        self.StreamName = None
+        self.DomainName = None
+        self.AppName = None
+        self.EndTime = None
+        self.TemplateId = None
+        self.StartTime = None
+        self.StreamType = None
+        self.Extension = None
+
+
+    def _deserialize(self, params):
+        self.StreamName = params.get("StreamName")
+        self.DomainName = params.get("DomainName")
+        self.AppName = params.get("AppName")
+        self.EndTime = params.get("EndTime")
+        self.TemplateId = params.get("TemplateId")
+        self.StartTime = params.get("StartTime")
+        self.StreamType = params.get("StreamType")
+        self.Extension = params.get("Extension")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateScreenshotTaskResponse(AbstractModel):
+    """CreateScreenshotTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 任务ID，全局唯一标识截图任务。返回TaskId字段说明截图任务创建成功。
         :type TaskId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3056,6 +3150,47 @@ class DeleteRecordTaskRequest(AbstractModel):
 
 class DeleteRecordTaskResponse(AbstractModel):
     """DeleteRecordTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteScreenshotTaskRequest(AbstractModel):
+    """DeleteScreenshotTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 任务ID，CreateScreenshotTask返回。删除TaskId指定的截图任务。
+        :type TaskId: str
+        """
+        self.TaskId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteScreenshotTaskResponse(AbstractModel):
+    """DeleteScreenshotTask返回参数结构体
 
     """
 
@@ -6414,6 +6549,80 @@ class DescribeScreenShotSheetNumListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeScreenshotTaskRequest(AbstractModel):
+    """DescribeScreenshotTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StartTime: 查询任务开始时间，Unix 时间戳。设置时间不早于当前时间之前90天的时间，且查询时间跨度不超过一周。
+        :type StartTime: int
+        :param EndTime: 查询任务结束时间，Unix 时间戳。EndTime 必须大于 StartTime，设置时间不早于当前时间之前90天的时间，且查询时间跨度不超过一周。（注意：任务开始结束时间必须在查询时间范围内）。
+        :type EndTime: int
+        :param StreamName: 流名称。
+        :type StreamName: str
+        :param DomainName: 推流域名。
+        :type DomainName: str
+        :param AppName: 推流路径。
+        :type AppName: str
+        :param ScrollToken: 翻页标识，分批拉取时使用：当单次请求无法拉取所有数据，接口将会返回 ScrollToken，下一次请求携带该 Token，将会从下一条记录开始获取。
+        :type ScrollToken: str
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.StreamName = None
+        self.DomainName = None
+        self.AppName = None
+        self.ScrollToken = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.StreamName = params.get("StreamName")
+        self.DomainName = params.get("DomainName")
+        self.AppName = params.get("AppName")
+        self.ScrollToken = params.get("ScrollToken")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeScreenshotTaskResponse(AbstractModel):
+    """DescribeScreenshotTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ScrollToken: 翻页标识，当请求未返回所有数据，该字段表示下一条记录的 Token。当该字段为空，说明已无更多数据。
+        :type ScrollToken: str
+        :param TaskList: 截图任务列表。当该字段为空，说明已返回所有数据。
+        :type TaskList: list of ScreenshotTask
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ScrollToken = None
+        self.TaskList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ScrollToken = params.get("ScrollToken")
+        if params.get("TaskList") is not None:
+            self.TaskList = []
+            for item in params.get("TaskList"):
+                obj = ScreenshotTask()
+                obj._deserialize(item)
+                self.TaskList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeStreamDayPlayInfoListRequest(AbstractModel):
     """DescribeStreamDayPlayInfoList请求参数结构体
 
@@ -6588,9 +6797,9 @@ class DescribeStreamPushInfoListRequest(AbstractModel):
         r"""
         :param StreamName: 流名称。
         :type StreamName: str
-        :param StartTime: 起始时间点，格式为yyyy-mm-dd HH:MM:SS。
+        :param StartTime: 起始时间点，北京时间，格式为yyyy-mm-dd HH:MM:SS。
         :type StartTime: str
-        :param EndTime: 结束时间点，格式为yyyy-mm-dd HH:MM:SS，支持查询最近7天数据，建议查询时间跨度在3小时之内。
+        :param EndTime: 结束时间点，北京时间，格式为yyyy-mm-dd HH:MM:SS，支持查询最近7天数据，建议查询时间跨度在3小时之内。
         :type EndTime: str
         :param PushDomain: 推流域名。
         :type PushDomain: str
@@ -8069,6 +8278,17 @@ ResetTaskConfig：任务更新回调。
         :type OffsetTime: int
         :param Comment: 任务备注。
         :type Comment: str
+        :param BackupSourceType: 备源的类型：
+PullLivePushLive -直播，
+PullVodPushLive -点播。
+注意：
+1. 仅当主源类型为直播源时，备源才会生效。
+2. 主直播源拉流中断时，自动使用备源进行拉流。
+3. 如果备源为点播文件时，则每次轮播完点播文件就检查主源是否恢复，如果主源恢复则自动切回到主源，否则继续拉备源。
+        :type BackupSourceType: str
+        :param BackupSourceUrl: 备源 URL。
+只允许填一个备源 URL
+        :type BackupSourceUrl: str
         """
         self.TaskId = None
         self.Operator = None
@@ -8083,6 +8303,8 @@ ResetTaskConfig：任务更新回调。
         self.FileIndex = None
         self.OffsetTime = None
         self.Comment = None
+        self.BackupSourceType = None
+        self.BackupSourceUrl = None
 
 
     def _deserialize(self, params):
@@ -8099,6 +8321,8 @@ ResetTaskConfig：任务更新回调。
         self.FileIndex = params.get("FileIndex")
         self.OffsetTime = params.get("OffsetTime")
         self.Comment = params.get("Comment")
+        self.BackupSourceType = params.get("BackupSourceType")
+        self.BackupSourceUrl = params.get("BackupSourceUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8210,6 +8434,8 @@ class ModifyLiveRecordTemplateRequest(AbstractModel):
         :type HlsSpecialParam: :class:`tencentcloud.live.v20180801.models.HlsSpecialParam`
         :param Mp3Param: MP3 录制参数，开启 MP3 录制时设置。
         :type Mp3Param: :class:`tencentcloud.live.v20180801.models.RecordParam`
+        :param RemoveWatermark: 是否去除水印，类型为慢直播时此参数无效。
+        :type RemoveWatermark: bool
         """
         self.TemplateId = None
         self.TemplateName = None
@@ -8220,6 +8446,7 @@ class ModifyLiveRecordTemplateRequest(AbstractModel):
         self.AacParam = None
         self.HlsSpecialParam = None
         self.Mp3Param = None
+        self.RemoveWatermark = None
 
 
     def _deserialize(self, params):
@@ -8244,6 +8471,7 @@ class ModifyLiveRecordTemplateRequest(AbstractModel):
         if params.get("Mp3Param") is not None:
             self.Mp3Param = RecordParam()
             self.Mp3Param._deserialize(params.get("Mp3Param"))
+        self.RemoveWatermark = params.get("RemoveWatermark")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9237,11 +9465,11 @@ class PushDataInfo(AbstractModel):
         :type ServerIp: str
         :param VideoFps: 推流视频帧率，单位: Hz。
         :type VideoFps: int
-        :param VideoSpeed: 推流视频码率，单位: Kbps。
+        :param VideoSpeed: 推流视频码率，单位: bps。
         :type VideoSpeed: int
         :param AudioFps: 推流音频帧率，单位: Hz。
         :type AudioFps: int
-        :param AudioSpeed: 推流音频码率，单位: Kbps。
+        :param AudioSpeed: 推流音频码率，单位: bps。
         :type AudioSpeed: int
         :param PushDomain: 推流域名。
         :type PushDomain: str
@@ -9257,9 +9485,9 @@ class PushDataInfo(AbstractModel):
         :type Resolution: str
         :param AsampleRate: 采样率。
         :type AsampleRate: int
-        :param MetaAudioSpeed: metadata 中的音频码率，单位: Kbps。
+        :param MetaAudioSpeed: metadata 中的音频码率，单位: bps。
         :type MetaAudioSpeed: int
-        :param MetaVideoSpeed: metadata 中的视频码率，单位: Kbps。
+        :param MetaVideoSpeed: metadata 中的视频码率，单位: bps。
         :type MetaVideoSpeed: int
         :param MetaFps: metadata 中的帧率。
         :type MetaFps: int
@@ -9357,6 +9585,10 @@ class PushQualityData(AbstractModel):
         :type MateFps: int
         :param StreamParam: 推流参数
         :type StreamParam: str
+        :param Bandwidth: 带宽，单位Mbps。
+        :type Bandwidth: float
+        :param Flux: 流量，单位MB。
+        :type Flux: float
         """
         self.Time = None
         self.PushDomain = None
@@ -9378,6 +9610,8 @@ class PushQualityData(AbstractModel):
         self.MetaAudioRate = None
         self.MateFps = None
         self.StreamParam = None
+        self.Bandwidth = None
+        self.Flux = None
 
 
     def _deserialize(self, params):
@@ -9401,6 +9635,8 @@ class PushQualityData(AbstractModel):
         self.MetaAudioRate = params.get("MetaAudioRate")
         self.MateFps = params.get("MateFps")
         self.StreamParam = params.get("StreamParam")
+        self.Bandwidth = params.get("Bandwidth")
+        self.Flux = params.get("Flux")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9608,6 +9844,9 @@ class RecordTemplateInfo(AbstractModel):
         :type HlsSpecialParam: :class:`tencentcloud.live.v20180801.models.HlsSpecialParam`
         :param Mp3Param: MP3 录制参数。
         :type Mp3Param: :class:`tencentcloud.live.v20180801.models.RecordParam`
+        :param RemoveWatermark: 是否去除水印。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RemoveWatermark: bool
         """
         self.TemplateId = None
         self.TemplateName = None
@@ -9619,6 +9858,7 @@ class RecordTemplateInfo(AbstractModel):
         self.IsDelayLive = None
         self.HlsSpecialParam = None
         self.Mp3Param = None
+        self.RemoveWatermark = None
 
 
     def _deserialize(self, params):
@@ -9644,6 +9884,7 @@ class RecordTemplateInfo(AbstractModel):
         if params.get("Mp3Param") is not None:
             self.Mp3Param = RecordParam()
             self.Mp3Param._deserialize(params.get("Mp3Param"))
+        self.RemoveWatermark = params.get("RemoveWatermark")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9835,6 +10076,58 @@ class RuleInfo(AbstractModel):
         
 
 
+class ScreenshotTask(AbstractModel):
+    """截图任务
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 截图任务ID。
+        :type TaskId: str
+        :param DomainName: 推流域名。
+        :type DomainName: str
+        :param AppName: 推流路径。
+        :type AppName: str
+        :param StreamName: 流名称。
+        :type StreamName: str
+        :param StartTime: 任务开始时间，Unix时间戳。
+        :type StartTime: int
+        :param EndTime: 任务结束时间，Unix时间戳。
+        :type EndTime: int
+        :param TemplateId: 截图模板ID。
+        :type TemplateId: int
+        :param Stopped: 调用 StopScreenshotTask 停止任务时间，Unix时间戳。值为0表示未曾调用接口停止任务。
+        :type Stopped: int
+        """
+        self.TaskId = None
+        self.DomainName = None
+        self.AppName = None
+        self.StreamName = None
+        self.StartTime = None
+        self.EndTime = None
+        self.TemplateId = None
+        self.Stopped = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.DomainName = params.get("DomainName")
+        self.AppName = params.get("AppName")
+        self.StreamName = params.get("StreamName")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.TemplateId = params.get("TemplateId")
+        self.Stopped = params.get("Stopped")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SnapshotTemplateInfo(AbstractModel):
     """截图模板信息。
 
@@ -9978,6 +10271,47 @@ class StopRecordTaskRequest(AbstractModel):
 
 class StopRecordTaskResponse(AbstractModel):
     """StopRecordTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class StopScreenshotTaskRequest(AbstractModel):
+    """StopScreenshotTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 截图任务ID。
+        :type TaskId: str
+        """
+        self.TaskId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StopScreenshotTaskResponse(AbstractModel):
+    """StopScreenshotTask返回参数结构体
 
     """
 

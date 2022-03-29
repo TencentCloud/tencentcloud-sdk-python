@@ -161,6 +161,9 @@ INVALIDPARAMETER_CDNHOSTINVALIDPARAM = 'InvalidParameter.CdnHostInvalidParam'
 # 域名状态不合法。
 INVALIDPARAMETER_CDNHOSTINVALIDSTATUS = 'InvalidParameter.CdnHostInvalidStatus'
 
+# 该域名为COS访问域名，无法接入，如需启动加速服务，请前往COS控制台启用默认 CDN 加速域。
+INVALIDPARAMETER_CDNHOSTISCOSDEFAULTACCESS = 'InvalidParameter.CdnHostIsCosDefaultAccess'
+
 # 域名太长。
 INVALIDPARAMETER_CDNHOSTTOOLONGHOST = 'InvalidParameter.CdnHostTooLongHost'
 
@@ -359,6 +362,9 @@ RESOURCEINUSE_TCBHOSTEXISTS = 'ResourceInUse.TcbHostExists'
 # 资源不存在。
 RESOURCENOTFOUND = 'ResourceNotFound'
 
+# 标签键不存在。
+RESOURCENOTFOUND_CAMTAGKEYNOTEXIST = 'ResourceNotFound.CamTagKeyNotExist'
+
 # 账号下无此域名，请确认后重试。
 RESOURCENOTFOUND_CDNHOSTNOTEXISTS = 'ResourceNotFound.CdnHostNotExists'
 
@@ -391,6 +397,9 @@ RESOURCEUNAVAILABLE_CDNHOSTBELONGSTOOTHERSINMAINLAND = 'ResourceUnavailable.CdnH
 
 # 该域名已在其他处接入中国境外服务地域，如需修改服务地域为全球，需验证取回域名。
 RESOURCEUNAVAILABLE_CDNHOSTBELONGSTOOTHERSINOVERSEAS = 'ResourceUnavailable.CdnHostBelongsToOthersInOverseas'
+
+# 域名已接入DSA功能。
+RESOURCEUNAVAILABLE_CDNHOSTEXISTSINDSA = 'ResourceUnavailable.CdnHostExistsInDsa'
 
 # 域名已经在TCB控制台接入。
 RESOURCEUNAVAILABLE_CDNHOSTEXISTSINTCB = 'ResourceUnavailable.CdnHostExistsInTcb'

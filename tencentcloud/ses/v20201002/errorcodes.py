@@ -29,7 +29,7 @@ FAILEDOPERATION_EMAILCONTENTTOOLARGE = 'FailedOperation.EmailContentToolarge'
 # 超出当日总量发送限制。
 FAILEDOPERATION_EXCEEDSENDLIMIT = 'FailedOperation.ExceedSendLimit'
 
-# 超出最大模版数量限制。
+# 超出最大模板数量限制。
 FAILEDOPERATION_EXCEEDTEMPLATELIMIT = 'FailedOperation.ExceedTemplateLimit'
 
 # 触发频率控制，短时间内对同一地址发送过多邮件。
@@ -74,13 +74,16 @@ FAILEDOPERATION_NOTSUPPORTDATE = 'FailedOperation.NotSupportDate'
 # 协议检查错误，请检查协议是否正确。
 FAILEDOPERATION_PROTOCOLCHECKERR = 'FailedOperation.ProtocolCheckErr'
 
+# 收件人已退订。
+FAILEDOPERATION_RECEIVERHASUNSUBSCRIBED = 'FailedOperation.ReceiverHasUnsubscribed'
+
 # 您的发送遇到问题，请联系腾讯云提交工单沟通原因并解决。
 FAILEDOPERATION_SENDEMAILERR = 'FailedOperation.SendEmailErr'
 
 # 临时性错误，请求未生效，请重试。
 FAILEDOPERATION_SERVICENOTAVAILABLE = 'FailedOperation.ServiceNotAvailable'
 
-# 模版内容太大，请减少模版内容。
+# 模板内容太大，请减少模板内容。
 FAILEDOPERATION_TEMPLATECONTENTTOOLARGE = 'FailedOperation.TemplateContentToolarge'
 
 # 因触发了某些规则导致临时Block。
@@ -95,7 +98,7 @@ FAILEDOPERATION_TOOMANYRECIPIENTS = 'FailedOperation.TooManyRecipients'
 # 不支持的邮箱类型。
 FAILEDOPERATION_UNSUPPORTMAILTYPE = 'FailedOperation.UnsupportMailType'
 
-# 未开通自定义发送权限，必须使用模版发送。
+# 未开通自定义发送权限，必须使用模板发送。
 FAILEDOPERATION_WITHOUTPERMISSION = 'FailedOperation.WithOutPermission'
 
 # TemplateData字段格式不正确，请保持为json格式。
@@ -152,22 +155,25 @@ INVALIDPARAMETERVALUE_REPEATEMAILADDRESS = 'InvalidParameterValue.RepeatEmailAdd
 # 收件人列表名称重复。
 INVALIDPARAMETERVALUE_REPEATRECEIVERNAME = 'InvalidParameterValue.RepeatReceiverName'
 
-# 模版资源为空。
+# 邮件主题长度必须为1-100。
+INVALIDPARAMETERVALUE_SUBJECTLENGTHERROR = 'InvalidParameterValue.SubjectLengthError'
+
+# 模板资源为空。
 INVALIDPARAMETERVALUE_TEMPLATECONTENTISNULL = 'InvalidParameterValue.TemplateContentIsNULL'
 
-# 模版内容错误，请检查base64内容是否正确。
+# 模板内容错误，请检查base64内容是否正确。
 INVALIDPARAMETERVALUE_TEMPLATECONTENTISWRONG = 'InvalidParameterValue.TemplateContentIsWrong'
 
 # 变量设置必须为json格式。
 INVALIDPARAMETERVALUE_TEMPLATEDATAERROR = 'InvalidParameterValue.TemplateDataError'
 
-# 模版名字不合法，请检查字符内容及大小。
+# 模板名字不合法，请检查字符内容及大小。
 INVALIDPARAMETERVALUE_TEMPLATENAMEILLEGAL = 'InvalidParameterValue.TemplateNameIllegal'
 
-# 模版名字不能为空。
+# 模板名字不能为空。
 INVALIDPARAMETERVALUE_TEMPLATENAMEISNULL = 'InvalidParameterValue.TemplateNameIsNULL'
 
-# 不存在该模版，请先创建模版。
+# 不存在该模板，请先创建模板。
 INVALIDPARAMETERVALUE_TEMPLATENOTEXIST = 'InvalidParameterValue.TemplateNotExist'
 
 # 搜索日期错误，请检查日期及格式是否有效。

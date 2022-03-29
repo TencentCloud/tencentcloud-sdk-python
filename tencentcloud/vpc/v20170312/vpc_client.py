@@ -113,7 +113,7 @@ class VpcClient(AbstractClient):
 
 
     def AddTemplateMember(self, request):
-        """增加模版对象中的IP地址、协议端口、IP地址组、协议端口组。当前仅支持北京、泰国、北美地域请求。
+        """增加模板对象中的IP地址、协议端口、IP地址组、协议端口组。当前仅支持北京、泰国、北美地域请求。
 
         :param request: Request instance for AddTemplateMember.
         :type request: :class:`tencentcloud.vpc.v20170312.models.AddTemplateMemberRequest`
@@ -742,7 +742,7 @@ class VpcClient(AbstractClient):
 
 
     def CreateAddressTemplate(self, request):
-        """本接口（CreateAddressTemplate）用于创建IP地址模版
+        """本接口（CreateAddressTemplate）用于创建IP地址模板。
 
         :param request: Request instance for CreateAddressTemplate.
         :type request: :class:`tencentcloud.vpc.v20170312.models.CreateAddressTemplateRequest`
@@ -770,7 +770,7 @@ class VpcClient(AbstractClient):
 
 
     def CreateAddressTemplateGroup(self, request):
-        """本接口（CreateAddressTemplateGroup）用于创建IP地址模版集合
+        """本接口（CreateAddressTemplateGroup）用于创建IP地址模板集合
 
         :param request: Request instance for CreateAddressTemplateGroup.
         :type request: :class:`tencentcloud.vpc.v20170312.models.CreateAddressTemplateGroupRequest`
@@ -1744,7 +1744,7 @@ class VpcClient(AbstractClient):
 
 
     def CreateVpcEndPointService(self, request):
-        """创建终端节点服务。
+        """本接口(CreateVpcEndPointService)用于创建终端节点服务。
 
         :param request: Request instance for CreateVpcEndPointService.
         :type request: :class:`tencentcloud.vpc.v20170312.models.CreateVpcEndPointServiceRequest`
@@ -1871,6 +1871,62 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateVpnGatewayRoutesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateVpnGatewaySslClient(self, request):
+        """创建SSL-VPN-CLIENT
+
+        :param request: Request instance for CreateVpnGatewaySslClient.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.CreateVpnGatewaySslClientRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.CreateVpnGatewaySslClientResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateVpnGatewaySslClient", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateVpnGatewaySslClientResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateVpnGatewaySslServer(self, request):
+        """创建 Server端
+
+        :param request: Request instance for CreateVpnGatewaySslServer.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.CreateVpnGatewaySslServerRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.CreateVpnGatewaySslServerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateVpnGatewaySslServer", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateVpnGatewaySslServerResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -2633,7 +2689,7 @@ class VpcClient(AbstractClient):
 
 
     def DeleteTemplateMember(self, request):
-        """删除模版对象中的IP地址、协议端口、IP地址组、协议端口组。当前仅支持北京、泰国、北美地域请求。
+        """删除模板对象中的IP地址、协议端口、IP地址组、协议端口组。当前仅支持北京、泰国、北美地域请求。
 
         :param request: Request instance for DeleteTemplateMember.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteTemplateMemberRequest`
@@ -2845,6 +2901,62 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteVpnGatewayRoutesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteVpnGatewaySslClient(self, request):
+        """删除SSL-VPN-CLIENT
+
+        :param request: Request instance for DeleteVpnGatewaySslClient.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteVpnGatewaySslClientRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DeleteVpnGatewaySslClientResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteVpnGatewaySslClient", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteVpnGatewaySslClientResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteVpnGatewaySslServer(self, request):
+        """删除SSL-VPN-SERVER 实例
+
+        :param request: Request instance for DeleteVpnGatewaySslServer.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteVpnGatewaySslServerRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DeleteVpnGatewaySslServerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteVpnGatewaySslServer", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteVpnGatewaySslServerResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -3266,6 +3378,36 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeClassicLinkInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeCrossBorderCcnRegionBandwidthLimits(self, request):
+        """本接口（DescribeCrossBorderCcnRegionBandwidthLimits）用于获取要锁定的限速实例列表。
+        该接口一般用来封禁地域间限速的云联网实例下的限速实例, 目前联通内部运营系统通过云API调用, 如果是出口限速, 一般使用更粗的云联网实例粒度封禁（DescribeTenantCcns）
+        如有需要, 可以封禁任意限速实例, 可接入到内部运营系统
+
+        :param request: Request instance for DescribeCrossBorderCcnRegionBandwidthLimits.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeCrossBorderCcnRegionBandwidthLimitsRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeCrossBorderCcnRegionBandwidthLimitsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeCrossBorderCcnRegionBandwidthLimits", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCrossBorderCcnRegionBandwidthLimitsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -4377,6 +4519,36 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeTenantCcns(self, request):
+        """本接口（DescribeTenantCcns）用于获取要锁定的云联网实例列表。
+        该接口一般用来封禁出口限速的云联网实例, 目前联通内部运营系统通过云API调用, 因为出口限速无法按地域间封禁, 只能按更粗的云联网实例粒度封禁, 如果是地域间限速, 一般可以通过更细的限速实例粒度封禁（DescribeCrossBorderCcnRegionBandwidthLimits）
+        如有需要, 可以封禁任意云联网实例, 可接入到内部运营系统
+
+        :param request: Request instance for DescribeTenantCcns.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeTenantCcnsRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeTenantCcnsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeTenantCcns", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeTenantCcnsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeVpcEndPoint(self, request):
         """查询终端节点列表。
 
@@ -4772,6 +4944,62 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeVpnGatewaySslClients(self, request):
+        """查询SSL-VPN-CLIENT 列表
+
+        :param request: Request instance for DescribeVpnGatewaySslClients.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeVpnGatewaySslClientsRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeVpnGatewaySslClientsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeVpnGatewaySslClients", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeVpnGatewaySslClientsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeVpnGatewaySslServers(self, request):
+        """查询SSL-VPN SERVER 列表信息
+
+        :param request: Request instance for DescribeVpnGatewaySslServers.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeVpnGatewaySslServersRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeVpnGatewaySslServersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeVpnGatewaySslServers", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeVpnGatewaySslServersResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeVpnGateways(self, request):
         """本接口（DescribeVpnGateways）用于查询VPN网关列表。
 
@@ -4958,6 +5186,34 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DisableRoutesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DisableVpnGatewaySslClientCert(self, request):
+        """禁用SSL-VPN-CLIENT 证书
+
+        :param request: Request instance for DisableVpnGatewaySslClientCert.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DisableVpnGatewaySslClientCertRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DisableVpnGatewaySslClientCertResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DisableVpnGatewaySslClientCert", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DisableVpnGatewaySslClientCertResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -5202,6 +5458,34 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DownloadVpnGatewaySslClientCert(self, request):
+        """下载SSL-VPN-CLIENT 客户端证书
+
+        :param request: Request instance for DownloadVpnGatewaySslClientCert.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DownloadVpnGatewaySslClientCertRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DownloadVpnGatewaySslClientCertResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DownloadVpnGatewaySslClientCert", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DownloadVpnGatewaySslClientCertResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def EnableCcnRoutes(self, request):
         """本接口（EnableCcnRoutes）用于启用已经加入云联网（CCN）的路由。<br />
         本接口会校验启用后，是否与已有路由冲突，如果冲突，则无法启用，失败处理。路由冲突时，需要先禁用与之冲突的路由，才能启用该路由。
@@ -5302,6 +5586,34 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.EnableVpcEndPointConnectResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def EnableVpnGatewaySslClientCert(self, request):
+        """启用SSL-VPN-CLIENT 证书
+
+        :param request: Request instance for EnableVpnGatewaySslClientCert.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.EnableVpnGatewaySslClientCertRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.EnableVpnGatewaySslClientCertResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("EnableVpnGatewaySslClientCert", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.EnableVpnGatewaySslClientCertResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -5500,6 +5812,69 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.InquiryPriceResetVpnGatewayInternetMaxBandwidthResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def LockCcnBandwidths(self, request):
+        """本接口（LockCcnBandwidths）用户锁定云联网限速实例。
+        该接口一般用来封禁地域间限速的云联网实例下的限速实例, 目前联通内部运营系统通过云API调用, 如果是出口限速, 一般使用更粗的云联网实例粒度封禁（LockCcns）。
+        如有需要, 可以封禁任意限速实例, 可接入到内部运营系统。
+
+        :param request: Request instance for LockCcnBandwidths.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.LockCcnBandwidthsRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.LockCcnBandwidthsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("LockCcnBandwidths", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.LockCcnBandwidthsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def LockCcns(self, request):
+        """本接口（LockCcns）用于锁定云联网实例
+
+        该接口一般用来封禁出口限速的云联网实例, 目前联通内部运营系统通过云API调用, 因为出口限速无法按地域间封禁, 只能按更粗的云联网实例粒度封禁, 如果是地域间限速, 一般可以通过更细的限速实例粒度封禁（LockCcnBandwidths）
+
+        如有需要, 可以封禁任意限速实例, 可接入到内部运营系统
+
+
+        :param request: Request instance for LockCcns.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.LockCcnsRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.LockCcnsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("LockCcns", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.LockCcnsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -6364,7 +6739,7 @@ class VpcClient(AbstractClient):
 
 
     def ModifyNetworkInterfaceQos(self, request):
-        """修改弹性网卡服务质量
+        """修改弹性网卡服务质量。
 
         :param request: Request instance for ModifyNetworkInterfaceQos.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyNetworkInterfaceQosRequest`
@@ -6603,7 +6978,7 @@ class VpcClient(AbstractClient):
 
 
     def ModifyTemplateMember(self, request):
-        """修改模版对象中的IP地址、协议端口、IP地址组、协议端口组。当前仅支持北京、泰国、北美地域请求。
+        """修改模板对象中的IP地址、协议端口、IP地址组、协议端口组。当前仅支持北京、泰国、北美地域请求。
 
         :param request: Request instance for ModifyTemplateMember.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyTemplateMemberRequest`
@@ -6856,7 +7231,7 @@ class VpcClient(AbstractClient):
 
 
     def NotifyRoutes(self, request):
-        """路由表列表页操作增加“发布到云联网”，用于发布路由到云联网。
+        """本接口（NotifyRoutes）用于路由表列表页操作增加“发布到云联网”，发布路由到云联网。
 
         :param request: Request instance for NotifyRoutes.
         :type request: :class:`tencentcloud.vpc.v20170312.models.NotifyRoutesRequest`
@@ -7526,6 +7901,69 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UnassignPrivateIpAddressesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UnlockCcnBandwidths(self, request):
+        """本接口（UnlockCcnBandwidths）用户解锁云联网限速实例。
+        该接口一般用来封禁地域间限速的云联网实例下的限速实例, 目前联通内部运营系统通过云API调用, 如果是出口限速, 一般使用更粗的云联网实例粒度封禁（SecurityUnlockCcns）。
+        如有需要, 可以封禁任意限速实例, 可接入到内部运营系统。
+
+        :param request: Request instance for UnlockCcnBandwidths.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.UnlockCcnBandwidthsRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.UnlockCcnBandwidthsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UnlockCcnBandwidths", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UnlockCcnBandwidthsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UnlockCcns(self, request):
+        """本接口（UnlockCcns）用于解锁云联网实例
+
+        该接口一般用来解封禁出口限速的云联网实例, 目前联通内部运营系统通过云API调用, 因为出口限速无法按地域间解封禁, 只能按更粗的云联网实例粒度解封禁, 如果是地域间限速, 一般可以通过更细的限速实例粒度解封禁（UnlockCcnBandwidths）
+
+        如有需要, 可以封禁任意限速实例, 可接入到内部运营系统
+
+
+        :param request: Request instance for UnlockCcns.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.UnlockCcnsRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.UnlockCcnsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UnlockCcns", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UnlockCcnsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

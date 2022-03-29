@@ -38,8 +38,17 @@ AUTHFAILURE_TOKENFAILURE = 'AuthFailure.TokenFailure'
 # 用户已激活。
 AUTHFAILURE_USERACTIVATED = 'AuthFailure.UserActivated'
 
+# 用户状态异常。
+AUTHFAILURE_USERINVALIDSTATUS = 'AuthFailure.UserInvalidStatus'
+
 # 用户无权限。
 AUTHFAILURE_USERNOTFOUND = 'AuthFailure.UserNotFound'
+
+# 用户已欠费停服。
+AUTHFAILURE_USERSTOPARREAR = 'AuthFailure.UserStopArrear'
+
+# 操作失败。
+FAILEDOPERATION = 'FailedOperation'
 
 # 匹配的模板不存在。
 FAILEDOPERATION_AITEMPLATENOTEXIST = 'FailedOperation.AiTemplateNotExist'
@@ -59,9 +68,6 @@ FAILEDOPERATION_CUSTOMGROUPALREADYEXIST = 'FailedOperation.CustomGroupAlreadyExi
 # 内部DB连接失败。
 FAILEDOPERATION_DBCONNECTIONERROR = 'FailedOperation.DBConnectionError'
 
-# 内部DB操作错误。
-FAILEDOPERATION_DBOPERATIONERROR = 'FailedOperation.DBOperationError'
-
 # 媒资文件下载失败。
 FAILEDOPERATION_DOWNLOADFAILED = 'FailedOperation.DownloadFailed'
 
@@ -76,6 +82,9 @@ FAILEDOPERATION_GETTASKLISTFAILED = 'FailedOperation.GetTaskListFailed'
 
 # 获取媒资信息失败。
 FAILEDOPERATION_GETVIDEOMETADATAFAILED = 'FailedOperation.GetVideoMetadataFailed'
+
+# 图片数量过多。
+FAILEDOPERATION_IMAGENUMEXCEEDED = 'FailedOperation.ImageNumExceeded'
 
 # MD5不匹配。
 FAILEDOPERATION_MD5MISMATCH = 'FailedOperation.MD5Mismatch'
@@ -98,11 +107,17 @@ FAILEDOPERATION_MULTIPLEFACESINIMAGE = 'FailedOperation.MultipleFacesInImage'
 # 图片中不包含人脸。
 FAILEDOPERATION_NOFACEINIMAGE = 'FailedOperation.NoFaceInImage'
 
+# 计费开通失败。
+FAILEDOPERATION_OPENCHARGEFAILED = 'FailedOperation.OpenChargeFailed'
+
 # 人脸库中存在相似的人脸: %!s(MISSING)。
 FAILEDOPERATION_PERSONDUPLICATED = 'FailedOperation.PersonDuplicated'
 
 # 人脸图片不属于已知人物。
 FAILEDOPERATION_PERSONNOTMATCHED = 'FailedOperation.PersonNotMatched'
+
+# 自定义人物数量过多。
+FAILEDOPERATION_PERSONNUMEXCEEDED = 'FailedOperation.PersonNumExceeded'
 
 # 图片质量分检测失败。
 FAILEDOPERATION_QUALITYALGOFAILED = 'FailedOperation.QualityAlgoFailed'
@@ -127,6 +142,9 @@ FAILEDOPERATION_TRANSCODEFAILED = 'FailedOperation.TranscodeFailed'
 
 # 上传文件失败。
 FAILEDOPERATION_UPLOADFAILED = 'FailedOperation.UploadFailed'
+
+# 内部错误。
+INTERNALERROR = 'InternalError'
 
 # 内部DB连接失败。
 INTERNALERROR_DBCONNECTIONERROR = 'InternalError.DBConnectionError'
@@ -194,7 +212,7 @@ INVALIDPARAMETER_INVALIDPAGENUMBER = 'InvalidParameter.InvalidPageNumber'
 # 分页大小不合法。
 INVALIDPARAMETER_INVALIDPAGESIZE = 'InvalidParameter.InvalidPageSize'
 
-# 输入字段不合法。
+# 输入字段 %!s(MISSING) 不合法。
 INVALIDPARAMETER_INVALIDPARAM = 'InvalidParameter.InvalidParam'
 
 # 人物ID不合法。
@@ -223,6 +241,12 @@ INVALIDPARAMETER_INVALIDUIN = 'InvalidParameter.InvalidUin'
 
 # 名称超过长度限制。
 INVALIDPARAMETER_NAMETOOLONG = 'InvalidParameter.NameTooLong'
+
+# 参数超过长度限制。
+INVALIDPARAMETER_PARAMTOOLONG = 'InvalidParameter.ParamTooLong'
+
+# 输入URL域名无法解析。
+INVALIDPARAMETER_URLNOTRESOLVED = 'InvalidParameter.URLNotResolved'
 
 # 不支持的URL类型。
 INVALIDPARAMETER_UNSUPPORTURL = 'InvalidParameter.UnsupportURL'

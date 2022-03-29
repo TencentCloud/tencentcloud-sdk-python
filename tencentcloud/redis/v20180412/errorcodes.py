@@ -77,6 +77,9 @@ INTERNALERROR_DBOPERATIONFAILED = 'InternalError.DbOperationFailed'
 # 执行Http请求失败。
 INTERNALERROR_EXECHTTPREQUESTERROR = 'InternalError.ExecHttpRequestError'
 
+# 无操作权限。
+INTERNALERROR_INSTANCEOPERATEPERMISSIONERROR = 'InternalError.InstanceOperatePermissionError'
+
 # 内部错误。
 INTERNALERROR_INTERNALERROR = 'InternalError.InternalError'
 
@@ -88,6 +91,9 @@ INTERNALERROR_NETWORKERR = 'InternalError.NetWorkErr'
 
 # 参数错误。
 INVALIDPARAMETER = 'InvalidParameter'
+
+# 没有找到对应接口。
+INVALIDPARAMETER_ACTIONNOTFOUND = 'InvalidParameter.ActionNotFound'
 
 # 参数为空。
 INVALIDPARAMETER_EMPTYPARAM = 'InvalidParameter.EmptyParam'

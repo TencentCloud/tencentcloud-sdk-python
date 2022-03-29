@@ -74,6 +74,34 @@ class ActionSummaryOverviewItem(AbstractModel):
         
 
 
+class ApplicableProducts(AbstractModel):
+    """适用商品信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param GoodsName: 适用商品名称，值为“全产品通用”或商品名称组成的string，以","分割。
+        :type GoodsName: str
+        :param PayMode: postPay后付费/prePay预付费/riPay预留实例/空字符串或者"*"表示全部模式。如GoodsName为多个商品名以","分割组成的string，而PayMode为"*"，表示每一件商品的模式都为"*"。
+        :type PayMode: str
+        """
+        self.GoodsName = None
+        self.PayMode = None
+
+
+    def _deserialize(self, params):
+        self.GoodsName = params.get("GoodsName")
+        self.PayMode = params.get("PayMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BillDetail(AbstractModel):
     """账单明细数据对象
 
@@ -1448,6 +1476,12 @@ postMoveOut 按量计费迁出资源
 postMoveIn 按量计费迁入资源
 注意：此字段可能返回 null，表示取不到有效值。
         :type Action: str
+        :param ProductName: 产品编码中文名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductName: str
+        :param SubProductName: 子产品编码中文名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubProductName: str
         """
         self.OrderId = None
         self.Status = None
@@ -1472,6 +1506,8 @@ postMoveIn 按量计费迁入资源
         self.RefReturnDeals = None
         self.PayMode = None
         self.Action = None
+        self.ProductName = None
+        self.SubProductName = None
 
 
     def _deserialize(self, params):
@@ -1503,6 +1539,8 @@ postMoveIn 按量计费迁入资源
         self.RefReturnDeals = params.get("RefReturnDeals")
         self.PayMode = params.get("PayMode")
         self.Action = params.get("Action")
+        self.ProductName = params.get("ProductName")
+        self.SubProductName = params.get("SubProductName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3027,6 +3065,192 @@ class DescribeDosageDetailByDateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeVoucherInfoRequest(AbstractModel):
+    """DescribeVoucherInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Limit: 一页多少条数据，默认是20条，最大不超过1000
+        :type Limit: int
+        :param Offset: 第多少页，默认是1
+        :type Offset: int
+        :param Status: 券状态：待使用：unUsed，已使用： used，已发货：delivered，已作废： cancel，已过期：overdue
+        :type Status: str
+        :param VoucherId: 代金券id
+        :type VoucherId: str
+        :param CodeId: 代金券订单id
+        :type CodeId: str
+        :param ProductCode: 商品码
+        :type ProductCode: str
+        :param ActivityId: 活动id
+        :type ActivityId: str
+        :param VoucherName: 代金券名称
+        :type VoucherName: str
+        :param TimeFrom: 发放开始时间
+        :type TimeFrom: str
+        :param TimeTo: 发放结束时间
+        :type TimeTo: str
+        :param SortField: 指定排序字段：BeginTime开始时间、EndTime到期时间、CreateTime创建时间
+        :type SortField: str
+        :param SortOrder: 指定升序降序：desc、asc
+        :type SortOrder: str
+        :param PayMode: 付费模式，postPay后付费/prePay预付费/riPay预留实例/""或者"*"表示全部模式，如果payMode为""或"*"，那么productCode与subProductCode必须传空
+        :type PayMode: str
+        :param PayScene: 付费场景PayMode=postPay时：spotpay-竞价实例,"settle account"-普通后付费PayMode=prePay时：purchase-包年包月新购，renew-包年包月续费（自动续费），modify-包年包月配置变更(变配）PayMode=riPay时：oneOffFee-预留实例预付，hourlyFee-预留实例每小时扣费，*-支持全部付费场景
+        :type PayScene: str
+        :param Operator: 操作人，默认就是用户uin
+        :type Operator: str
+        """
+        self.Limit = None
+        self.Offset = None
+        self.Status = None
+        self.VoucherId = None
+        self.CodeId = None
+        self.ProductCode = None
+        self.ActivityId = None
+        self.VoucherName = None
+        self.TimeFrom = None
+        self.TimeTo = None
+        self.SortField = None
+        self.SortOrder = None
+        self.PayMode = None
+        self.PayScene = None
+        self.Operator = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.Status = params.get("Status")
+        self.VoucherId = params.get("VoucherId")
+        self.CodeId = params.get("CodeId")
+        self.ProductCode = params.get("ProductCode")
+        self.ActivityId = params.get("ActivityId")
+        self.VoucherName = params.get("VoucherName")
+        self.TimeFrom = params.get("TimeFrom")
+        self.TimeTo = params.get("TimeTo")
+        self.SortField = params.get("SortField")
+        self.SortOrder = params.get("SortOrder")
+        self.PayMode = params.get("PayMode")
+        self.PayScene = params.get("PayScene")
+        self.Operator = params.get("Operator")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVoucherInfoResponse(AbstractModel):
+    """DescribeVoucherInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 券总数
+        :type TotalCount: int
+        :param TotalBalance: 总余额（微分）
+        :type TotalBalance: int
+        :param VoucherInfos: 代金券相关信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VoucherInfos: list of VoucherInfos
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.TotalBalance = None
+        self.VoucherInfos = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        self.TotalBalance = params.get("TotalBalance")
+        if params.get("VoucherInfos") is not None:
+            self.VoucherInfos = []
+            for item in params.get("VoucherInfos"):
+                obj = VoucherInfos()
+                obj._deserialize(item)
+                self.VoucherInfos.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeVoucherUsageDetailsRequest(AbstractModel):
+    """DescribeVoucherUsageDetails请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Limit: 一页多少条数据，默认是20条，最大不超过1000
+        :type Limit: int
+        :param Offset: 第多少页，默认是1
+        :type Offset: int
+        :param VoucherId: 代金券id
+        :type VoucherId: str
+        :param Operator: 操作人，默认就是用户uin
+        :type Operator: str
+        """
+        self.Limit = None
+        self.Offset = None
+        self.VoucherId = None
+        self.Operator = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.VoucherId = params.get("VoucherId")
+        self.Operator = params.get("Operator")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVoucherUsageDetailsResponse(AbstractModel):
+    """DescribeVoucherUsageDetails返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 券总数
+        :type TotalCount: int
+        :param TotalUsedAmount: 总已用金额（微分）
+        :type TotalUsedAmount: int
+        :param UsageRecords: 代金券使用记录细节
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UsageRecords: list of UsageRecords
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.TotalUsedAmount = None
+        self.UsageRecords = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        self.TotalUsedAmount = params.get("TotalUsedAmount")
+        if params.get("UsageRecords") is not None:
+            self.UsageRecords = []
+            for item in params.get("UsageRecords"):
+                obj = UsageRecords()
+                obj._deserialize(item)
+                self.UsageRecords.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DetailPoint(AbstractModel):
     """由时间和值组成的数据结构
 
@@ -3084,6 +3308,34 @@ class DetailSet(AbstractModel):
                 obj._deserialize(item)
                 self.DetailPoints.append(obj)
         self.InstanceID = params.get("InstanceID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExcludedProducts(AbstractModel):
+    """不适用商品信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param GoodsName: 不适用商品名称
+        :type GoodsName: str
+        :param PayMode: postPay后付费/prePay预付费/riPay预留实例/空字符串或者"*"表示全部模式。
+        :type PayMode: str
+        """
+        self.GoodsName = None
+        self.PayMode = None
+
+
+    def _deserialize(self, params):
+        self.GoodsName = params.get("GoodsName")
+        self.PayMode = params.get("PayMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3421,6 +3673,147 @@ class TagSummaryOverviewItem(AbstractModel):
         self.RealTotalCost = params.get("RealTotalCost")
         self.RealTotalCostRatio = params.get("RealTotalCostRatio")
         self.TotalCost = params.get("TotalCost")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UsageDetails(AbstractModel):
+    """购买商品信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProductName: 商品名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductName: str
+        :param SubProductName: 商品细节
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubProductName: str
+        """
+        self.ProductName = None
+        self.SubProductName = None
+
+
+    def _deserialize(self, params):
+        self.ProductName = params.get("ProductName")
+        self.SubProductName = params.get("SubProductName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UsageRecords(AbstractModel):
+    """使用记录
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UsedAmount: 使用金额（微分）
+        :type UsedAmount: int
+        :param UsedTime: 使用时间
+        :type UsedTime: str
+        :param UsageDetails: 使用记录细节
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UsageDetails: list of UsageDetails
+        """
+        self.UsedAmount = None
+        self.UsedTime = None
+        self.UsageDetails = None
+
+
+    def _deserialize(self, params):
+        self.UsedAmount = params.get("UsedAmount")
+        self.UsedTime = params.get("UsedTime")
+        if params.get("UsageDetails") is not None:
+            self.UsageDetails = []
+            for item in params.get("UsageDetails"):
+                obj = UsageDetails()
+                obj._deserialize(item)
+                self.UsageDetails.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VoucherInfos(AbstractModel):
+    """代金券相关信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param OwnerUin: 代金券拥有者
+        :type OwnerUin: str
+        :param Status: 券状态：待使用：unUsed，已使用： used，已发货：delivered，已作废： cancel，已过期：overdue
+        :type Status: str
+        :param NominalValue: 代金券面额（微分）
+        :type NominalValue: int
+        :param Balance: 剩余金额（微分）
+        :type Balance: int
+        :param VoucherId: 代金券id
+        :type VoucherId: str
+        :param PayMode: postPay后付费/prePay预付费/riPay预留实例/空字符串或者'*'表示全部模式
+        :type PayMode: str
+        :param PayScene: 付费场景PayMode=postPay时：spotpay-竞价实例,"settle account"-普通后付费PayMode=prePay时：purchase-包年包月新购，renew-包年包月续费（自动续费），modify-包年包月配置变更(变配）PayMode=riPay时：oneOffFee-预留实例预付，hourlyFee-预留实例每小时扣费，*-支持全部付费场景
+        :type PayScene: str
+        :param BeginTime: 有效期生效时间
+        :type BeginTime: str
+        :param EndTime: 有效期截止时间
+        :type EndTime: str
+        :param ApplicableProducts: 适用商品信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicableProducts: :class:`tencentcloud.billing.v20180709.models.ApplicableProducts`
+        :param ExcludedProducts: 不适用商品信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExcludedProducts: list of ExcludedProducts
+        """
+        self.OwnerUin = None
+        self.Status = None
+        self.NominalValue = None
+        self.Balance = None
+        self.VoucherId = None
+        self.PayMode = None
+        self.PayScene = None
+        self.BeginTime = None
+        self.EndTime = None
+        self.ApplicableProducts = None
+        self.ExcludedProducts = None
+
+
+    def _deserialize(self, params):
+        self.OwnerUin = params.get("OwnerUin")
+        self.Status = params.get("Status")
+        self.NominalValue = params.get("NominalValue")
+        self.Balance = params.get("Balance")
+        self.VoucherId = params.get("VoucherId")
+        self.PayMode = params.get("PayMode")
+        self.PayScene = params.get("PayScene")
+        self.BeginTime = params.get("BeginTime")
+        self.EndTime = params.get("EndTime")
+        if params.get("ApplicableProducts") is not None:
+            self.ApplicableProducts = ApplicableProducts()
+            self.ApplicableProducts._deserialize(params.get("ApplicableProducts"))
+        if params.get("ExcludedProducts") is not None:
+            self.ExcludedProducts = []
+            for item in params.get("ExcludedProducts"):
+                obj = ExcludedProducts()
+                obj._deserialize(item)
+                self.ExcludedProducts.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

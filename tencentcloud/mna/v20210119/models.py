@@ -46,6 +46,44 @@ class Capacity(AbstractModel):
         
 
 
+class Context(AbstractModel):
+    """加速策略关键数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NetworkData: 测速数据
+        :type NetworkData: :class:`tencentcloud.mna.v20210119.models.NetworkData`
+        :param ExpectedLowThreshold: 用户期望最低门限
+        :type ExpectedLowThreshold: :class:`tencentcloud.mna.v20210119.models.ExpectedThreshold`
+        :param ExpectedHighThreshold: 用户期望最高门限
+        :type ExpectedHighThreshold: :class:`tencentcloud.mna.v20210119.models.ExpectedThreshold`
+        """
+        self.NetworkData = None
+        self.ExpectedLowThreshold = None
+        self.ExpectedHighThreshold = None
+
+
+    def _deserialize(self, params):
+        if params.get("NetworkData") is not None:
+            self.NetworkData = NetworkData()
+            self.NetworkData._deserialize(params.get("NetworkData"))
+        if params.get("ExpectedLowThreshold") is not None:
+            self.ExpectedLowThreshold = ExpectedThreshold()
+            self.ExpectedLowThreshold._deserialize(params.get("ExpectedLowThreshold"))
+        if params.get("ExpectedHighThreshold") is not None:
+            self.ExpectedHighThreshold = ExpectedThreshold()
+            self.ExpectedHighThreshold._deserialize(params.get("ExpectedHighThreshold"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateQosRequest(AbstractModel):
     """CreateQos请求参数结构体
 
@@ -81,6 +119,10 @@ BU4M：带宽型保障 + 上行带宽保障4Mbps
 2. UDP
 3. TCP
         :type Protocol: int
+        :param Context: 加速策略关键数据
+        :type Context: :class:`tencentcloud.mna.v20210119.models.Context`
+        :param Extern: 签名
+        :type Extern: str
         """
         self.SrcAddressInfo = None
         self.DestAddressInfo = None
@@ -90,6 +132,8 @@ BU4M：带宽型保障 + 上行带宽保障4Mbps
         self.Capacity = None
         self.TemplateId = None
         self.Protocol = None
+        self.Context = None
+        self.Extern = None
 
 
     def _deserialize(self, params):
@@ -109,6 +153,10 @@ BU4M：带宽型保障 + 上行带宽保障4Mbps
             self.Capacity._deserialize(params.get("Capacity"))
         self.TemplateId = params.get("TemplateId")
         self.Protocol = params.get("Protocol")
+        if params.get("Context") is not None:
+            self.Context = Context()
+            self.Context._deserialize(params.get("Context"))
+        self.Extern = params.get("Extern")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -327,6 +375,74 @@ Android 填写 IMEI
         self.DeviceId = params.get("DeviceId")
         self.PhoneNum = params.get("PhoneNum")
         self.Wireless = params.get("Wireless")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExpectedThreshold(AbstractModel):
+    """用户期望门限
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RTT: 期望发起加速的时延阈值
+        :type RTT: float
+        :param Loss: 期望发起加速的丢包率阈值
+        :type Loss: float
+        :param Jitter: 期望发起加速的抖动阈值
+        :type Jitter: float
+        """
+        self.RTT = None
+        self.Loss = None
+        self.Jitter = None
+
+
+    def _deserialize(self, params):
+        self.RTT = params.get("RTT")
+        self.Loss = params.get("Loss")
+        self.Jitter = params.get("Jitter")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NetworkData(AbstractModel):
+    """测速数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RTT: 时延数组，最大长度30
+        :type RTT: list of float
+        :param Loss: 丢包率
+        :type Loss: float
+        :param Jitter: 抖动
+        :type Jitter: float
+        :param Timestamp: 10位秒级时间戳
+        :type Timestamp: int
+        """
+        self.RTT = None
+        self.Loss = None
+        self.Jitter = None
+        self.Timestamp = None
+
+
+    def _deserialize(self, params):
+        self.RTT = params.get("RTT")
+        self.Loss = params.get("Loss")
+        self.Jitter = params.get("Jitter")
+        self.Timestamp = params.get("Timestamp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

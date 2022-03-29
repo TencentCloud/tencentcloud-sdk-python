@@ -83,7 +83,7 @@ class ClsClient(AbstractClient):
 
 
     def CreateAlarmNotice(self, request):
-        """该接口用户创建通知渠道组。
+        """该接口用于创建通知渠道组。
 
         :param request: Request instance for CreateAlarmNotice.
         :type request: :class:`tencentcloud.cls.v20201016.models.CreateAlarmNoticeRequest`
@@ -138,6 +138,34 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateConfigExtra(self, request):
+        """本接口用于创建特殊采集配置任务
+
+        :param request: Request instance for CreateConfigExtra.
+        :type request: :class:`tencentcloud.cls.v20201016.models.CreateConfigExtraRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.CreateConfigExtraResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateConfigExtra", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateConfigExtraResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateConsumer(self, request):
         """本接口用于创建投递任务
 
@@ -167,7 +195,7 @@ class ClsClient(AbstractClient):
 
 
     def CreateExport(self, request):
-        """本接口用于创建日志下载任务
+        """本接口用于创建日志下载任务，导出原始日志
 
         :param request: Request instance for CreateExport.
         :type request: :class:`tencentcloud.cls.v20201016.models.CreateExportRequest`
@@ -418,6 +446,34 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteConfigExtra(self, request):
+        """本接口用于删除特殊采集规则配置
+
+        :param request: Request instance for DeleteConfigExtra.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DeleteConfigExtraRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DeleteConfigExtraResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteConfigExtra", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteConfigExtraResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteConfigFromMachineGroup(self, request):
         """删除应用到机器组的采集配置
 
@@ -503,7 +559,7 @@ class ClsClient(AbstractClient):
 
 
     def DeleteIndex(self, request):
-        """本接口用于日志主题的索引配置
+        """本接口用于删除日志主题的索引配置，删除索引配置后将无法检索和查询采集到的日志。
 
         :param request: Request instance for DeleteIndex.
         :type request: :class:`tencentcloud.cls.v20201016.models.DeleteIndexRequest`
@@ -698,6 +754,34 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeConfigExtras(self, request):
+        """本接口用于获取特殊采集配置
+
+        :param request: Request instance for DescribeConfigExtras.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DescribeConfigExtrasRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DescribeConfigExtrasResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeConfigExtras", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeConfigExtrasResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeConfigMachineGroups(self, request):
         """获取采集规则配置所绑定的机器组
 
@@ -852,6 +936,34 @@ class ClsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLogContextResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeLogHistogram(self, request):
+        """本接口用于构建直方图
+
+        :param request: Request instance for DescribeLogHistogram.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DescribeLogHistogramRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DescribeLogHistogramResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeLogHistogram", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeLogHistogramResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1230,6 +1342,34 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyConfigExtra(self, request):
+        """本接口用于修改特殊采集配置任务
+
+        :param request: Request instance for ModifyConfigExtra.
+        :type request: :class:`tencentcloud.cls.v20201016.models.ModifyConfigExtraRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.ModifyConfigExtraResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyConfigExtra", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyConfigExtraResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyConsumer(self, request):
         """本接口用于修改投递任务
 
@@ -1427,7 +1567,7 @@ class ClsClient(AbstractClient):
 
 
     def SearchLog(self, request):
-        """本接口用于搜索日志, 该接口除受默认接口请求频率限制外，针对单个日志主题，并发数不能超过15
+        """本接口用于检索分析日志, 该接口除受默认接口请求频率限制外，针对单个日志主题，查询并发数不能超过15。
 
         :param request: Request instance for SearchLog.
         :type request: :class:`tencentcloud.cls.v20201016.models.SearchLogRequest`
@@ -1483,7 +1623,14 @@ class ClsClient(AbstractClient):
 
 
     def UploadLog(self, request, body):
-        """## 功能描述
+        """## 提示
+        为了保障您日志数据的可靠性以及更高效地使用日志服务，建议您使用CLS优化后的接口[上传结构化日志](https://cloud.tencent.com/document/api/614/16873)上传日志。
+
+        同时我们给此接口专门优化定制了多个语言版本的SDK供您选择，SDK提供统一的异步发送、资源控制、自动重试、优雅关闭、感知上报等功能，使上报日志功能更完善，详情请参考[SDK采集](https://cloud.tencent.com/document/product/614/67157)。
+
+        同时云API上传日志接口也支持同步上传日志数据，如果您选继续使用此接口请参考下文。
+
+        ## 功能描述
 
         本接口用于将日志写入到指定的日志主题。
 

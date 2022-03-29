@@ -78,9 +78,9 @@ class CreateOrganizationMemberRequest(AbstractModel):
         :type Name: str
         :param PolicyType: 关系策略  取值：Financial
         :type PolicyType: str
-        :param PermissionIds: 关系权限
+        :param PermissionIds: 关系权限 取值：1-查看账单、2-查看余额、3-资金划拨、4-合并出账、5-开票 ，1、2 默认必须
         :type PermissionIds: list of int non-negative
-        :param NodeId: 需要调节的节点
+        :param NodeId: 成员所属部门的节点ID
         :type NodeId: int
         :param AccountName: 账号名
         :type AccountName: str
@@ -278,6 +278,12 @@ class DescribeOrganizationResponse(AbstractModel):
         :param IsAllowQuit: 是否允许退出。允许：Allow，不允许：Denied。
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsAllowQuit: str
+        :param PayUin: 代付者Uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PayUin: str
+        :param PayName: 代付者名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PayName: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -293,6 +299,8 @@ class DescribeOrganizationResponse(AbstractModel):
         self.CreateTime = None
         self.JoinTime = None
         self.IsAllowQuit = None
+        self.PayUin = None
+        self.PayName = None
         self.RequestId = None
 
 
@@ -314,6 +322,8 @@ class DescribeOrganizationResponse(AbstractModel):
         self.CreateTime = params.get("CreateTime")
         self.JoinTime = params.get("JoinTime")
         self.IsAllowQuit = params.get("IsAllowQuit")
+        self.PayUin = params.get("PayUin")
+        self.PayName = params.get("PayName")
         self.RequestId = params.get("RequestId")
 
 
@@ -399,6 +409,9 @@ class OrgMember(AbstractModel):
         :param OrgIdentity: 管理身份
 注意：此字段可能返回 null，表示取不到有效值。
         :type OrgIdentity: list of MemberIdentity
+        :param BindStatus: 安全信息绑定状态  未绑定：Unbound，待激活：Valid，绑定成功：Success，绑定失败：Failed
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BindStatus: str
         """
         self.MemberUin = None
         self.Name = None
@@ -415,6 +428,7 @@ class OrgMember(AbstractModel):
         self.PayUin = None
         self.PayName = None
         self.OrgIdentity = None
+        self.BindStatus = None
 
 
     def _deserialize(self, params):
@@ -443,6 +457,7 @@ class OrgMember(AbstractModel):
                 obj = MemberIdentity()
                 obj._deserialize(item)
                 self.OrgIdentity.append(obj)
+        self.BindStatus = params.get("BindStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -140,11 +140,23 @@ FAILEDOPERATION_TKECLUSTERCREATEFAILED = 'FailedOperation.TkeClusterCreateFailed
 # TKE 集群查询失败。
 FAILEDOPERATION_TKECLUSTERQUERYFAILED = 'FailedOperation.TkeClusterQueryFailed'
 
+# TSF应用性能管理CTSDB客户端调用失败。
+FAILEDOPERATION_TSFAPMCTSDBCLIENTREQUESTERROR = 'FailedOperation.TsfApmCtsdbClientRequestError'
+
 # resource服务错误。
 FAILEDOPERATION_TSFASRESOURCESERVERERROR = 'FailedOperation.TsfAsResourceServerError'
 
+# ctsdb数据库请求失败。
+FAILEDOPERATION_TSFCMONITORCTSDBCLIENTREQUESTFAIL = 'FailedOperation.TsfCmonitorCtsdbClientRequestFail'
+
+# TSF监控统计等待超时, 请稍后重试。
+FAILEDOPERATION_TSFMONITORWAITEDTIMEOUT = 'FailedOperation.TsfMonitorWaitedTimeout'
+
 # TSF权限模块异常，请联系系统管理员。。
 FAILEDOPERATION_TSFPRIVILEGEERROR = 'FailedOperation.TsfPrivilegeError'
+
+# 模块未处理异常。
+FAILEDOPERATION_UNHANDLEDEXCEPTION = 'FailedOperation.UnhandledException'
 
 # 应用操作请求MASTER FEIGN失败。
 INTERNALERROR_APPLICATIONMASTERFEIGNERROR = 'InternalError.ApplicationMasterFeignError'
@@ -248,6 +260,15 @@ INTERNALERROR_TKEAPIFAILEDOPERATION = 'InternalError.TkeApiFailedOperation'
 # TSF应用性能管理ES客户端响应状态异常。
 INTERNALERROR_TSFAPMESRESPONSESTATUSEXCEPTION = 'InternalError.TsfApmEsResponseStatusException'
 
+# TSF应用性能管理内部异常, 请稍后重试。
+INTERNALERROR_TSFAPMINTERNALERROR = 'InternalError.TsfApmInternalError'
+
+# TSF监控统计时间日期解析失败。
+INTERNALERROR_TSFMONITORDATEPARSEFAILED = 'InternalError.TsfMonitorDateParseFailed'
+
+# TSF监控统计内部异常, 请稍后重试。
+INTERNALERROR_TSFMONITORINTERNALERROR = 'InternalError.TsfMonitorInternalError'
+
 # [%s]模块未处理异常。。
 INTERNALERROR_UNHANDLEDEXCEPTION = 'InternalError.UnhandledException'
 
@@ -259,6 +280,9 @@ INVALIDPARAMETER_BADREQUEST = 'InvalidParameter.BadRequest'
 
 # TSF MASTER 实例状态异常。
 INVALIDPARAMETER_CVMCAEMASTERUNKNOWNINSTANCESTATUS = 'InvalidParameter.CvmCaeMasterUnknownInstanceStatus'
+
+# 未找到 TCR 实例或命名空间。
+INVALIDPARAMETER_IMAGEREPOTCRNAMESPACENOTFOUND = 'InvalidParameter.ImagerepoTcrNamespaceNotFound'
 
 # 参数错误。
 INVALIDPARAMETER_KUBERNETESPARAMERROR = 'InvalidParameter.KubernetesParamError'
@@ -341,8 +365,17 @@ INVALIDPARAMETER_TSFAPMBUSILOGCFGAPPRELATIONPARAMERROR = 'InvalidParameter.TsfAp
 # TSF应用性能管理业务日志搜索请求参数错误。
 INVALIDPARAMETER_TSFAPMBUSILOGSEARCHREQUESTPARAMERROR = 'InvalidParameter.TsfApmBusiLogSearchRequestParamError'
 
+# TSF应用性能管理运行状态统计查询请求参数错误。
+INVALIDPARAMETER_TSFAPMSTATSSEARCHREQUESTPARAMERROR = 'InvalidParameter.TsfApmStatsSearchRequestParamError'
+
 # TSF应用性能管理标准输出日志搜索请求参数错误。
 INVALIDPARAMETER_TSFAPMSTDOUTSEARCHREQUESTPARAMERROR = 'InvalidParameter.TsfApmStdoutSearchRequestParamError'
+
+# TSF应用性能管理调用链搜索请求参数错误。
+INVALIDPARAMETER_TSFAPMTRACESEARCHREQUESTPARAMERROR = 'InvalidParameter.TsfApmTraceSearchRequestParamError'
+
+# TSF监控统计请求参数[%s]非法。
+INVALIDPARAMETER_TSFMONITORREQUESTPARAMILLEGAL = 'InvalidParameter.TsfMonitorRequestParamIllegal'
 
 # 仓库批量删除包数量超过单次允许上限。
 INVALIDPARAMETER_UPPERDELETELIMIT = 'InvalidParameter.UpperDeleteLimit'
@@ -434,6 +467,9 @@ INVALIDPARAMETERVALUE_CONTAINERGROUPAPPLICATIONIDNULL = 'InvalidParameterValue.C
 # 集群 CPU 资源不足。
 INVALIDPARAMETERVALUE_CONTAINERGROUPCPULIMITOVER = 'InvalidParameterValue.ContainergroupCpulimitOver'
 
+# 容器 Env 的 Value 和 ValueFrom 至少要有一个。
+INVALIDPARAMETERVALUE_CONTAINERGROUPENVVALUENOTSET = 'InvalidParameterValue.ContainergroupEnvValueNotSet'
+
 # 部署组ID不能为空。
 INVALIDPARAMETERVALUE_CONTAINERGROUPGROUPIDNULL = 'InvalidParameterValue.ContainergroupGroupidNull'
 
@@ -484,6 +520,9 @@ INVALIDPARAMETERVALUE_CONTAINERGROUPTARGETPORTNULL = 'InvalidParameterValue.Cont
 
 # 更新间隔不能为空或者数值非法。
 INVALIDPARAMETERVALUE_CONTAINERGROUPUPDATEIVLINVALID = 'InvalidParameterValue.ContainergroupUpdateivlInvalid'
+
+# updateType参数不合法，值必须为0、1。
+INVALIDPARAMETERVALUE_CONTAINERGROUPUPDATETYPEINVALID = 'InvalidParameterValue.ContainergroupUpdatetypeInvalid'
 
 # 找不到业务容器。
 INVALIDPARAMETERVALUE_CONTAINERGROUPYAMLUSERCONTAINERNOTFOUND = 'InvalidParameterValue.ContainergroupYamlUserContainerNotFound'
@@ -538,6 +577,9 @@ INVALIDPARAMETERVALUE_GROUPBATCHPARAMETERINVALID = 'InvalidParameterValue.GroupB
 
 # 部署组的集群未绑定该命名空间。
 INVALIDPARAMETERVALUE_GROUPCLUSTERNAMESPACENOTBOUND = 'InvalidParameterValue.GroupClusterNamespaceNotBound'
+
+# 删除分组，集群类型不匹配。
+INVALIDPARAMETERVALUE_GROUPDELETECLUSTERTYPEMISMATCH = 'InvalidParameterValue.GroupDeleteClusterTypeMismatch'
 
 # 部署组ID不能为空。
 INVALIDPARAMETERVALUE_GROUPIDNULL = 'InvalidParameterValue.GroupIdNull'

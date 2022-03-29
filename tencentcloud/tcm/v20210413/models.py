@@ -18,6 +18,40 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class APM(AbstractModel):
+    """腾讯云应用性能管理服务参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Enable: 是否启用
+        :type Enable: bool
+        :param Region: 地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
+        :param InstanceId: APM 实例，如果创建时传入的参数为空，则表示自动创建 APM 实例。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        """
+        self.Enable = None
+        self.Region = None
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.Enable = params.get("Enable")
+        self.Region = params.get("Region")
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AccessLogConfig(AbstractModel):
     """AccessLog 配置
 
@@ -33,11 +67,17 @@ class AccessLogConfig(AbstractModel):
         :type SelectedRange: :class:`tencentcloud.tcm.v20210413.models.SelectedRange`
         :param CLS: 腾讯云日志服务相关参数
         :type CLS: :class:`tencentcloud.tcm.v20210413.models.CLS`
+        :param Encoding: 编码格式，可选值：TEXT、JSON
+        :type Encoding: str
+        :param Format: 日志格式
+        :type Format: str
         """
         self.Enable = None
         self.Template = None
         self.SelectedRange = None
         self.CLS = None
+        self.Encoding = None
+        self.Format = None
 
 
     def _deserialize(self, params):
@@ -49,6 +89,8 @@ class AccessLogConfig(AbstractModel):
         if params.get("CLS") is not None:
             self.CLS = CLS()
             self.CLS._deserialize(params.get("CLS"))
+        self.Encoding = params.get("Encoding")
+        self.Format = params.get("Format")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -708,14 +750,19 @@ class InjectConfig(AbstractModel):
         :param HoldApplicationUntilProxyStarts: 是否等待sidecar启动
 注意：此字段可能返回 null，表示取不到有效值。
         :type HoldApplicationUntilProxyStarts: bool
+        :param HoldProxyUntilApplicationEnds: 是否允许sidecar等待
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HoldProxyUntilApplicationEnds: bool
         """
         self.ExcludeIPRanges = None
         self.HoldApplicationUntilProxyStarts = None
+        self.HoldProxyUntilApplicationEnds = None
 
 
     def _deserialize(self, params):
         self.ExcludeIPRanges = params.get("ExcludeIPRanges")
         self.HoldApplicationUntilProxyStarts = params.get("HoldApplicationUntilProxyStarts")
+        self.HoldProxyUntilApplicationEnds = params.get("HoldProxyUntilApplicationEnds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -734,7 +781,7 @@ class IstioConfig(AbstractModel):
         r"""
         :param OutboundTrafficPolicy: 外部流量策略
         :type OutboundTrafficPolicy: str
-        :param Tracing: 调用链配置
+        :param Tracing: 调用链配置（Deprecated，请使用 MeshConfig.Tracing 进行配置）
         :type Tracing: :class:`tencentcloud.tcm.v20210413.models.TracingConfig`
         :param DisablePolicyChecks: 禁用策略检查功能
 注意：此字段可能返回 null，表示取不到有效值。
@@ -960,11 +1007,19 @@ class MeshConfig(AbstractModel):
         :param Inject: 自动注入配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type Inject: :class:`tencentcloud.tcm.v20210413.models.InjectConfig`
+        :param Tracing: 调用跟踪配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tracing: :class:`tencentcloud.tcm.v20210413.models.TracingConfig`
+        :param SidecarResources: Sidecar自定义资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SidecarResources: :class:`tencentcloud.tcm.v20210413.models.ResourceRequirements`
         """
         self.Istio = None
         self.AccessLog = None
         self.Prometheus = None
         self.Inject = None
+        self.Tracing = None
+        self.SidecarResources = None
 
 
     def _deserialize(self, params):
@@ -980,6 +1035,12 @@ class MeshConfig(AbstractModel):
         if params.get("Inject") is not None:
             self.Inject = InjectConfig()
             self.Inject._deserialize(params.get("Inject"))
+        if params.get("Tracing") is not None:
+            self.Tracing = TracingConfig()
+            self.Tracing._deserialize(params.get("Tracing"))
+        if params.get("SidecarResources") is not None:
+            self.SidecarResources = ResourceRequirements()
+            self.SidecarResources._deserialize(params.get("SidecarResources"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1001,7 +1062,7 @@ class MeshStatus(AbstractModel):
         :param CanaryVersion: 灰度升级的版本
 注意：此字段可能返回 null，表示取不到有效值。
         :type CanaryVersion: str
-        :param Prometheus: Prometheus状态
+        :param Prometheus: 已废弃
 注意：此字段可能返回 null，表示取不到有效值。
         :type Prometheus: list of PrometheusStatus
         :param StateMessage: 状态附带信息
@@ -1010,12 +1071,16 @@ class MeshStatus(AbstractModel):
         :param ActiveOperationList: 正在执行的异步操作
 注意：此字段可能返回 null，表示取不到有效值。
         :type ActiveOperationList: list of ActiveOperation
+        :param TPS: 获取TPS信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TPS: :class:`tencentcloud.tcm.v20210413.models.PrometheusStatus`
         """
         self.ServiceCount = None
         self.CanaryVersion = None
         self.Prometheus = None
         self.StateMessage = None
         self.ActiveOperationList = None
+        self.TPS = None
 
 
     def _deserialize(self, params):
@@ -1034,6 +1099,9 @@ class MeshStatus(AbstractModel):
                 obj = ActiveOperation()
                 obj._deserialize(item)
                 self.ActiveOperationList.append(obj)
+        if params.get("TPS") is not None:
+            self.TPS = PrometheusStatus()
+            self.TPS._deserialize(params.get("TPS"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1402,12 +1470,22 @@ class TracingConfig(AbstractModel):
         r"""
         :param Sampling: 调用链采样率，百分比
         :type Sampling: float
+        :param Enable: 是否启用调用跟踪
+        :type Enable: bool
+        :param APM: 腾讯云 APM 服务相关参数
+        :type APM: :class:`tencentcloud.tcm.v20210413.models.APM`
         """
         self.Sampling = None
+        self.Enable = None
+        self.APM = None
 
 
     def _deserialize(self, params):
         self.Sampling = params.get("Sampling")
+        self.Enable = params.get("Enable")
+        if params.get("APM") is not None:
+            self.APM = APM()
+            self.APM._deserialize(params.get("APM"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

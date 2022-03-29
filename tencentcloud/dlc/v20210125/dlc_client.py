@@ -194,6 +194,62 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateExportTask(self, request):
+        """该接口（CreateExportTask）用于创建导出任务
+
+        :param request: Request instance for CreateExportTask.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.CreateExportTaskRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.CreateExportTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateExportTask", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateExportTaskResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateImportTask(self, request):
+        """该接口（CreateImportTask）用于创建导入任务
+
+        :param request: Request instance for CreateImportTask.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.CreateImportTaskRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.CreateImportTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateImportTask", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateImportTaskResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateScript(self, request):
         """该接口（CreateScript）用于创建sql脚本。
 

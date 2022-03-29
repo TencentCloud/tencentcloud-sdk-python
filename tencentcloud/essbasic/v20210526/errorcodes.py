@@ -14,6 +14,9 @@
 # limitations under the License.
 
 
+# CAM签名/鉴权错误。
+AUTHFAILURE = 'AuthFailure'
+
 # 操作失败。
 FAILEDOPERATION = 'FailedOperation'
 
@@ -46,6 +49,12 @@ INTERNALERROR_ENCRYPTION = 'InternalError.Encryption'
 
 # 生成唯一ID错误。
 INTERNALERROR_GENERATEID = 'InternalError.GenerateId'
+
+# 序列化错误。
+INTERNALERROR_SERIALIZE = 'InternalError.Serialize'
+
+# 系统错误。
+INTERNALERROR_SYSTEM = 'InternalError.System'
 
 # 第三方错误。
 INTERNALERROR_THIRDPARTY = 'InternalError.ThirdParty'
@@ -97,6 +106,9 @@ RESOURCENOTFOUND = 'ResourceNotFound'
 
 # 应用号不存在。
 RESOURCENOTFOUND_APPLICATION = 'ResourceNotFound.Application'
+
+# 机构不存在。
+RESOURCENOTFOUND_ORGANIZATION = 'ResourceNotFound.Organization'
 
 # 模板不存在。
 RESOURCENOTFOUND_TEMPLATE = 'ResourceNotFound.Template'

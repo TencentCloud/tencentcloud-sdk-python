@@ -62,9 +62,6 @@ INTERNALERROR_SQLCODENOTFOUND = 'InternalError.SqlCodeNotFound'
 # 内部错误。
 INTERNALERROR_STSNEWCLIENT = 'InternalError.StsNewClient'
 
-# 系统错误。
-INTERNALERROR_SYSTEMERROR = 'InternalError.SystemError'
-
 # AppId资源不匹配。
 INVALIDPARAMETER_APPIDRESOURCENOTMATCH = 'InvalidParameter.AppIdResourceNotMatch'
 
@@ -137,6 +134,9 @@ INVALIDPARAMETERVALUE_RUNTYPE = 'InvalidParameterValue.RunType'
 # 不支持的复合类型。
 INVALIDPARAMETERVALUE_UNSUPPORTEDCOMPOSITE = 'InvalidParameterValue.UnSupportedComposite'
 
+# 未知停止类型错误。
+INVALIDPARAMETERVALUE_UNKNOWNSTOPTYPE = 'InvalidParameterValue.UnknownStopType'
+
 # 超过配额限制。
 LIMITEXCEEDED = 'LimitExceeded'
 
@@ -194,6 +194,9 @@ RESOURCEUNAVAILABLE_BEUSEBYSOMEJOBCONFIG = 'ResourceUnavailable.BeUseBySomeJobCo
 # 检查资源位置是否存在错误。
 RESOURCEUNAVAILABLE_CHECKRESOURCELOCEXISTS = 'ResourceUnavailable.CheckResourceLocExists'
 
+# 集群处于非运行状态。
+RESOURCEUNAVAILABLE_CLUSTER = 'ResourceUnavailable.Cluster'
+
 # 群集组状态错误。
 RESOURCEUNAVAILABLE_CLUSTERGROUPSTATUS = 'ResourceUnavailable.ClusterGroupStatus'
 
@@ -223,6 +226,9 @@ UNSUPPORTEDOPERATION = 'UnsupportedOperation'
 
 # Checkpoint 时间间隔，错误。
 UNSUPPORTEDOPERATION_INVALIDCHECKPOINTINTERVALERROR = 'UnsupportedOperation.InvalidCheckpointIntervalError'
+
+# 权限拦截,没有进入权限。
+UNSUPPORTEDOPERATION_NOPERMISSIONACCESS = 'UnsupportedOperation.NoPermissionAccess'
 
 # 不支持的启动模式。
 UNSUPPORTEDOPERATION_UNSUPPORTEDSTARTMODE = 'UnsupportedOperation.UnsupportedStartMode'

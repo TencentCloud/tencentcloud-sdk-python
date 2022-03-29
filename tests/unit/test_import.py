@@ -169,6 +169,11 @@ def test_import_captcha():
     from tencentcloud.captcha.v20190722 import models
 
 
+def test_import_casb():
+    from tencentcloud.casb.v20200507 import casb_client
+    from tencentcloud.casb.v20200507 import models
+
+
 def test_import_cat():
     from tencentcloud.cat.v20180409 import cat_client
     from tencentcloud.cat.v20180409 import models
@@ -414,6 +419,11 @@ def test_import_es():
     from tencentcloud.es.v20180416 import models
 
 
+def test_import_ess():
+    from tencentcloud.ess.v20201111 import ess_client
+    from tencentcloud.ess.v20201111 import models
+
+
 def test_import_essbasic():
     from tencentcloud.essbasic.v20201222 import essbasic_client
     from tencentcloud.essbasic.v20201222 import models
@@ -579,6 +589,11 @@ def test_import_live():
     from tencentcloud.live.v20180801 import models
 
 
+def test_import_lowcode():
+    from tencentcloud.lowcode.v20210108 import lowcode_client
+    from tencentcloud.lowcode.v20210108 import models
+
+
 def test_import_lp():
     from tencentcloud.lp.v20200224 import lp_client
     from tencentcloud.lp.v20200224 import models
@@ -739,6 +754,11 @@ def test_import_ses():
     from tencentcloud.ses.v20201002 import models
 
 
+def test_import_smh():
+    from tencentcloud.smh.v20210712 import smh_client
+    from tencentcloud.smh.v20210712 import models
+
+
 def test_import_smpn():
     from tencentcloud.smpn.v20190822 import smpn_client
     from tencentcloud.smpn.v20190822 import models
@@ -867,6 +887,11 @@ def test_import_tcr():
 def test_import_tcss():
     from tencentcloud.tcss.v20201101 import tcss_client
     from tencentcloud.tcss.v20201101 import models
+
+
+def test_import_tdcpg():
+    from tencentcloud.tdcpg.v20211118 import tdcpg_client
+    from tencentcloud.tdcpg.v20211118 import models
 
 
 def test_import_tdid():

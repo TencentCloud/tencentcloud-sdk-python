@@ -1515,6 +1515,34 @@ class OcrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def RecognizeHealthCodeOCR(self, request):
+        """本接口支持粤康码识别，包括姓名、更新时间、健康码颜色，三个字段的识别结果输出。
+
+        :param request: Request instance for RecognizeHealthCodeOCR.
+        :type request: :class:`tencentcloud.ocr.v20181119.models.RecognizeHealthCodeOCRRequest`
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.RecognizeHealthCodeOCRResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("RecognizeHealthCodeOCR", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.RecognizeHealthCodeOCRResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def RecognizeOnlineTaxiItineraryOCR(self, request):
         """本接口支持网约车行程单关键字段的识别，包括行程起止日期、上车时间、起点、终点、里程、金额等字段。
 
@@ -1586,6 +1614,34 @@ class OcrClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RecognizeThaiIDCardOCRResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def RecognizeTravelCardOCR(self, request):
+        """本接口支持通信大数据行程卡识别，包括行程卡颜色、更新时间、途经地、存在中高风险地区的城市、电话号码，五个字段的识别结果输出。
+
+        :param request: Request instance for RecognizeTravelCardOCR.
+        :type request: :class:`tencentcloud.ocr.v20181119.models.RecognizeTravelCardOCRRequest`
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.RecognizeTravelCardOCRResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("RecognizeTravelCardOCR", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.RecognizeTravelCardOCRResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

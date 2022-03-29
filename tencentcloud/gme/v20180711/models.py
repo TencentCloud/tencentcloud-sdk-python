@@ -448,6 +448,104 @@ class CreateAppResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateScanUserRequest(AbstractModel):
+    """CreateScanUser请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BizId: 应用ID，登录控制台 - 服务管理创建应用得到的AppID
+        :type BizId: int
+        :param UserId: 需要新增送检的用户号。示例：1234
+        :type UserId: int
+        """
+        self.BizId = None
+        self.UserId = None
+
+
+    def _deserialize(self, params):
+        self.BizId = params.get("BizId")
+        self.UserId = params.get("UserId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateScanUserResponse(AbstractModel):
+    """CreateScanUser返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrorCode: 返回结果码
+        :type ErrorCode: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrorCode = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrorCode = params.get("ErrorCode")
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteScanUserRequest(AbstractModel):
+    """DeleteScanUser请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BizId: 应用ID，登录控制台 - 服务管理创建应用得到的AppID
+        :type BizId: int
+        :param UserId: 需要删除送检的用户号。示例：1234
+        :type UserId: int
+        """
+        self.BizId = None
+        self.UserId = None
+
+
+    def _deserialize(self, params):
+        self.BizId = params.get("BizId")
+        self.UserId = params.get("UserId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteScanUserResponse(AbstractModel):
+    """DeleteScanUser返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrorCode: 返回结果码
+        :type ErrorCode: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrorCode = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrorCode = params.get("ErrorCode")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeAgeDetectTaskRequest(AbstractModel):
     """DescribeAgeDetectTask请求参数结构体
 
@@ -774,6 +872,75 @@ class DescribeFilterResultResponse(AbstractModel):
         if params.get("Data") is not None:
             self.Data = VoiceFilterInfo()
             self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeRealtimeScanConfigRequest(AbstractModel):
+    """DescribeRealtimeScanConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BizId: 应用ID
+        :type BizId: int
+        """
+        self.BizId = None
+
+
+    def _deserialize(self, params):
+        self.BizId = params.get("BizId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRealtimeScanConfigResponse(AbstractModel):
+    """DescribeRealtimeScanConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrorCode: 返回结果码，0正常，非0失败
+        :type ErrorCode: int
+        :param BizId: 应用ID
+        :type BizId: int
+        :param AuditType: 送检类型，0: 全量送审，1: 自定义送审
+        :type AuditType: int
+        :param UserIdRegex: 用户号正则表达式
+        :type UserIdRegex: list of str
+        :param RoomIdRegex: 房间号正则表达式
+        :type RoomIdRegex: list of str
+        :param UserIdString: 用户号字符串，逗号分隔，示例："0001,0002,0003"
+        :type UserIdString: str
+        :param RoomIdString: 房间号字符串，逗号分隔，示例："0001,0002,0003"
+        :type RoomIdString: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrorCode = None
+        self.BizId = None
+        self.AuditType = None
+        self.UserIdRegex = None
+        self.RoomIdRegex = None
+        self.UserIdString = None
+        self.RoomIdString = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrorCode = params.get("ErrorCode")
+        self.BizId = params.get("BizId")
+        self.AuditType = params.get("AuditType")
+        self.UserIdRegex = params.get("UserIdRegex")
+        self.RoomIdRegex = params.get("RoomIdRegex")
+        self.UserIdString = params.get("UserIdString")
+        self.RoomIdString = params.get("RoomIdString")
         self.RequestId = params.get("RequestId")
 
 
@@ -1629,6 +1796,113 @@ class Task(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class UpdateScanRoomsRequest(AbstractModel):
+    """UpdateScanRooms请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BizId: 应用ID
+        :type BizId: int
+        :param RoomIdString: 需要送检的所有房间号。多个房间号之间用","分隔。示例："0001,0002,0003"
+        :type RoomIdString: str
+        :param RoomIdRegex: 符合此正则表达式规则的房间号将被送检。示例：["^6.*"] 表示所有以6开头的房间号将被送检
+        :type RoomIdRegex: list of str
+        """
+        self.BizId = None
+        self.RoomIdString = None
+        self.RoomIdRegex = None
+
+
+    def _deserialize(self, params):
+        self.BizId = params.get("BizId")
+        self.RoomIdString = params.get("RoomIdString")
+        self.RoomIdRegex = params.get("RoomIdRegex")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateScanRoomsResponse(AbstractModel):
+    """UpdateScanRooms返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrorCode: 返回结果码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorCode: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrorCode = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrorCode = params.get("ErrorCode")
+        self.RequestId = params.get("RequestId")
+
+
+class UpdateScanUsersRequest(AbstractModel):
+    """UpdateScanUsers请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BizId: 应用ID
+        :type BizId: int
+        :param UserIdString: 需要送检的所有用户号。多个用户号之间用","分隔。示例："0001,0002,0003"
+        :type UserIdString: str
+        :param UserIdRegex: 符合此正则表达式规则的用户号将被送检。示例：["^6.*"] 表示所有以6开头的用户号将被送检
+        :type UserIdRegex: list of str
+        """
+        self.BizId = None
+        self.UserIdString = None
+        self.UserIdRegex = None
+
+
+    def _deserialize(self, params):
+        self.BizId = params.get("BizId")
+        self.UserIdString = params.get("UserIdString")
+        self.UserIdRegex = params.get("UserIdRegex")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateScanUsersResponse(AbstractModel):
+    """UpdateScanUsers返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrorCode: 返回结果码
+        :type ErrorCode: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrorCode = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrorCode = params.get("ErrorCode")
+        self.RequestId = params.get("RequestId")
 
 
 class VoiceFilter(AbstractModel):

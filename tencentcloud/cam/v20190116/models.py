@@ -1574,12 +1574,15 @@ class DescribeSafeAuthFlagResponse(AbstractModel):
         :type ActionFlag: :class:`tencentcloud.cam.v20190116.models.LoginActionFlag`
         :param OffsiteFlag: 异地登录保护设置
         :type OffsiteFlag: :class:`tencentcloud.cam.v20190116.models.OffsiteFlag`
+        :param PromptTrust: 1: 提示7天信任设备 0: 不提示
+        :type PromptTrust: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.LoginFlag = None
         self.ActionFlag = None
         self.OffsiteFlag = None
+        self.PromptTrust = None
         self.RequestId = None
 
 
@@ -1593,6 +1596,7 @@ class DescribeSafeAuthFlagResponse(AbstractModel):
         if params.get("OffsiteFlag") is not None:
             self.OffsiteFlag = OffsiteFlag()
             self.OffsiteFlag._deserialize(params.get("OffsiteFlag"))
+        self.PromptTrust = params.get("PromptTrust")
         self.RequestId = params.get("RequestId")
 
 
@@ -2300,7 +2304,7 @@ class GetSecurityLastUsedRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SecretIdList: 查询密钥ID列表
+        :param SecretIdList: 查询密钥ID列表。最多支持10个。
         :type SecretIdList: list of str
         """
         self.SecretIdList = None
@@ -2399,6 +2403,41 @@ class GetServiceLinkedRoleDeletionStatusResponse(AbstractModel):
         self.Reason = params.get("Reason")
         self.ServiceType = params.get("ServiceType")
         self.ServiceName = params.get("ServiceName")
+        self.RequestId = params.get("RequestId")
+
+
+class GetUserAppIdRequest(AbstractModel):
+    """GetUserAppId请求参数结构体
+
+    """
+
+
+class GetUserAppIdResponse(AbstractModel):
+    """GetUserAppId返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Uin: 当前账号Uin
+        :type Uin: str
+        :param OwnerUin: 当前账号OwnerUin
+        :type OwnerUin: str
+        :param AppId: 当前账号AppId
+        :type AppId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Uin = None
+        self.OwnerUin = None
+        self.AppId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Uin = params.get("Uin")
+        self.OwnerUin = params.get("OwnerUin")
+        self.AppId = params.get("AppId")
         self.RequestId = params.get("RequestId")
 
 
@@ -4485,6 +4524,9 @@ class SubAccountInfo(AbstractModel):
         :param CreateTime: 创建时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
+        :param NickName: 昵称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NickName: str
         """
         self.Uin = None
         self.Name = None
@@ -4495,6 +4537,7 @@ class SubAccountInfo(AbstractModel):
         self.CountryCode = None
         self.Email = None
         self.CreateTime = None
+        self.NickName = None
 
 
     def _deserialize(self, params):
@@ -4507,6 +4550,7 @@ class SubAccountInfo(AbstractModel):
         self.CountryCode = params.get("CountryCode")
         self.Email = params.get("Email")
         self.CreateTime = params.get("CreateTime")
+        self.NickName = params.get("NickName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4527,7 +4571,7 @@ class SubAccountUser(AbstractModel):
         :type Uin: int
         :param Name: 子用户用户名
         :type Name: str
-        :param Uid: 子用户 UID
+        :param Uid: 子用户 UID，UID是用户作为消息接收人时的唯一标识，和 UIN 一样可以唯一标识一个用户，可通过接口https://cloud.tencent.com/document/api/598/53486 获取
         :type Uid: int
         :param Remark: 子用户备注
         :type Remark: str

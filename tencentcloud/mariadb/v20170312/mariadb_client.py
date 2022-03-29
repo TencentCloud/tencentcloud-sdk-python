@@ -26,6 +26,34 @@ class MariadbClient(AbstractClient):
     _service = 'mariadb'
 
 
+    def ActivateHourDBInstance(self, request):
+        """解隔离后付费实例
+
+        :param request: Request instance for ActivateHourDBInstance.
+        :type request: :class:`tencentcloud.mariadb.v20170312.models.ActivateHourDBInstanceRequest`
+        :rtype: :class:`tencentcloud.mariadb.v20170312.models.ActivateHourDBInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ActivateHourDBInstance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ActivateHourDBInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def AssociateSecurityGroups(self, request):
         """本接口 (AssociateSecurityGroups) 用于安全组批量绑定云资源。
 
@@ -701,6 +729,62 @@ class MariadbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeDatabaseObjects(self, request):
+        """本接口（DescribeDatabaseObjects）用于查询云数据库实例的数据库中的对象列表，包含表、存储过程、视图和函数。
+
+        :param request: Request instance for DescribeDatabaseObjects.
+        :type request: :class:`tencentcloud.mariadb.v20170312.models.DescribeDatabaseObjectsRequest`
+        :rtype: :class:`tencentcloud.mariadb.v20170312.models.DescribeDatabaseObjectsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDatabaseObjects", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDatabaseObjectsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDatabaseTable(self, request):
+        """本接口（DescribeDatabaseTable）用于查询云数据库实例的表信息。
+
+        :param request: Request instance for DescribeDatabaseTable.
+        :type request: :class:`tencentcloud.mariadb.v20170312.models.DescribeDatabaseTableRequest`
+        :rtype: :class:`tencentcloud.mariadb.v20170312.models.DescribeDatabaseTableResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDatabaseTable", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDatabaseTableResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeDatabases(self, request):
         """本接口（DescribeDatabases）用于查询云数据库实例的数据库列表。
 
@@ -1192,6 +1276,34 @@ class MariadbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.InitDBInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def IsolateHourDBInstance(self, request):
+        """隔离后付费实例
+
+        :param request: Request instance for IsolateHourDBInstance.
+        :type request: :class:`tencentcloud.mariadb.v20170312.models.IsolateHourDBInstanceRequest`
+        :rtype: :class:`tencentcloud.mariadb.v20170312.models.IsolateHourDBInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("IsolateHourDBInstance", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.IsolateHourDBInstanceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

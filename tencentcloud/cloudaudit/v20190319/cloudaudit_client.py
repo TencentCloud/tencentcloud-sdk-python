@@ -58,6 +58,34 @@ class CloudauditClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateAuditTrack(self, request):
+        """创建跟踪集
+
+        :param request: Request instance for CreateAuditTrack.
+        :type request: :class:`tencentcloud.cloudaudit.v20190319.models.CreateAuditTrackRequest`
+        :rtype: :class:`tencentcloud.cloudaudit.v20190319.models.CreateAuditTrackResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateAuditTrack", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateAuditTrackResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteAudit(self, request):
         """删除跟踪集
 
@@ -86,6 +114,34 @@ class CloudauditClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteAuditTrack(self, request):
+        """删除云审计跟踪集
+
+        :param request: Request instance for DeleteAuditTrack.
+        :type request: :class:`tencentcloud.cloudaudit.v20190319.models.DeleteAuditTrackRequest`
+        :rtype: :class:`tencentcloud.cloudaudit.v20190319.models.DeleteAuditTrackResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteAuditTrack", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteAuditTrackResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeAudit(self, request):
         """查询跟踪集详情
 
@@ -100,6 +156,34 @@ class CloudauditClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAuditResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeAuditTracks(self, request):
+        """查询云审计跟踪集列表
+
+        :param request: Request instance for DescribeAuditTracks.
+        :type request: :class:`tencentcloud.cloudaudit.v20190319.models.DescribeAuditTracksRequest`
+        :rtype: :class:`tencentcloud.cloudaudit.v20190319.models.DescribeAuditTracksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAuditTracks", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAuditTracksResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -324,6 +408,34 @@ class CloudauditClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.LookUpEventsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyAuditTrack(self, request):
+        """修改云审计跟踪
+
+        :param request: Request instance for ModifyAuditTrack.
+        :type request: :class:`tencentcloud.cloudaudit.v20190319.models.ModifyAuditTrackRequest`
+        :rtype: :class:`tencentcloud.cloudaudit.v20190319.models.ModifyAuditTrackResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyAuditTrack", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyAuditTrackResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

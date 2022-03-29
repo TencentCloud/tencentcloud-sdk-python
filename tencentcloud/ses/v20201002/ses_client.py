@@ -112,7 +112,7 @@ class SesClient(AbstractClient):
 
     def CreateEmailTemplate(self, request):
         """创建模板，该模板可以是TXT或者HTML，请注意如果HTML不要包含外部文件的CSS。模板中的变量使用 {{变量名}} 表示。
-        注意：模版需要审核通过才可以使用。
+        注意：模板需要审核通过才可以使用。
 
         :param request: Request instance for CreateEmailTemplate.
         :type request: :class:`tencentcloud.ses.v20201002.models.CreateEmailTemplateRequest`
@@ -181,6 +181,34 @@ class SesClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateReceiverDetailResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateReceiverDetailWithData(self, request):
+        """添加收件人地址附带模板参数
+
+        :param request: Request instance for CreateReceiverDetailWithData.
+        :type request: :class:`tencentcloud.ses.v20201002.models.CreateReceiverDetailWithDataRequest`
+        :rtype: :class:`tencentcloud.ses.v20201002.models.CreateReceiverDetailWithDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateReceiverDetailWithData", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateReceiverDetailWithDataResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -293,6 +321,34 @@ class SesClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteEmailTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteReceiver(self, request):
+        """根据收件id删除收件人列表,同时删除列表中的所有收件邮箱
+
+        :param request: Request instance for DeleteReceiver.
+        :type request: :class:`tencentcloud.ses.v20201002.models.DeleteReceiverRequest`
+        :rtype: :class:`tencentcloud.ses.v20201002.models.DeleteReceiverResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteReceiver", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteReceiverResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

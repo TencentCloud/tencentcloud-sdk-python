@@ -18,6 +18,55 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class ActiveHourDCDBInstanceRequest(AbstractModel):
+    """ActiveHourDCDBInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceIds: 待升级的实例ID列表。形如：["dcdbt-ow728lmc"]，可以通过 DescribeDCDBInstances 查询实例详情获得。
+        :type InstanceIds: list of str
+        """
+        self.InstanceIds = None
+
+
+    def _deserialize(self, params):
+        self.InstanceIds = params.get("InstanceIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ActiveHourDCDBInstanceResponse(AbstractModel):
+    """ActiveHourDCDBInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SuccessInstanceIds: 解隔离成功的实例id列表
+        :type SuccessInstanceIds: list of str
+        :param FailedInstanceIds: 解隔离失败的实例id列表
+        :type FailedInstanceIds: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.SuccessInstanceIds = None
+        self.FailedInstanceIds = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.SuccessInstanceIds = params.get("SuccessInstanceIds")
+        self.FailedInstanceIds = params.get("FailedInstanceIds")
+        self.RequestId = params.get("RequestId")
+
+
 class AddShardConfig(AbstractModel):
     """升级实例 -- 新增分片类型
 
@@ -763,6 +812,153 @@ class CreateDedicatedClusterDCDBInstanceResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreateHourDCDBInstanceRequest(AbstractModel):
+    """CreateHourDCDBInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ShardMemory: 分片内存大小，单位：GB，可以通过 DescribeShardSpec
+ 查询实例规格获得。
+        :type ShardMemory: int
+        :param ShardStorage: 分片存储空间大小，单位：GB，可以通过 DescribeShardSpec
+ 查询实例规格获得。
+        :type ShardStorage: int
+        :param ShardNodeCount: 单个分片节点个数，可以通过 DescribeShardSpec
+ 查询实例规格获得。
+        :type ShardNodeCount: int
+        :param ShardCount: 实例分片个数，可选范围2-8，可以通过升级实例进行新增分片到最多64个分片。
+        :type ShardCount: int
+        :param Count: 欲购买实例的数量
+        :type Count: int
+        :param ProjectId: 项目 ID，可以通过查看项目列表获取，不传则关联到默认项目
+        :type ProjectId: int
+        :param VpcId: 虚拟私有网络 ID，不传或传空表示创建为基础网络
+        :type VpcId: str
+        :param SubnetId: 虚拟私有网络子网 ID，VpcId不为空时必填
+        :type SubnetId: str
+        :param ShardCpu: 分片cpu大小，单位：核，可以通过 DescribeShardSpec
+ 查询实例规格获得。
+        :type ShardCpu: int
+        :param DbVersionId: 数据库引擎版本，当前可选：10.0.10，10.1.9，5.7.17。
+10.0.10 - Mariadb 10.0.10；
+10.1.9 - Mariadb 10.1.9；
+5.7.17 - Percona 5.7.17。
+如果不填的话，默认为10.1.9，表示Mariadb 10.1.9。
+        :type DbVersionId: str
+        :param Zones: 分片节点可用区分布，最多可填两个可用区。当分片规格为一主两从时，其中两个节点在第一个可用区。
+        :type Zones: list of str
+        :param SecurityGroupId: 安全组id
+        :type SecurityGroupId: str
+        :param InstanceName: 实例名称， 可以通过该字段自主的设置实例的名字
+        :type InstanceName: str
+        :param Ipv6Flag: 是否支持IPv6
+        :type Ipv6Flag: int
+        :param ResourceTags: 标签键值对数组
+        :type ResourceTags: list of ResourceTag
+        :param DcnRegion: DCN源地域
+        :type DcnRegion: str
+        :param DcnInstanceId: DCN源实例ID
+        :type DcnInstanceId: str
+        :param InitParams: 参数列表。本接口的可选值为：character_set_server（字符集，必传），lower_case_table_names（表名大小写敏感，必传，0 - 敏感；1-不敏感），innodb_page_size（innodb数据页，默认16K），sync_mode（同步模式：0 - 异步； 1 - 强同步；2 - 强同步可退化。默认为强同步可退化）。
+        :type InitParams: list of DBParamValue
+        :param RollbackInstanceId: 需要回档的源实例ID
+        :type RollbackInstanceId: str
+        :param RollbackTime: 回档时间
+        :type RollbackTime: str
+        :param SecurityGroupIds: 安全组ids，安全组可以传数组形式，兼容之前SecurityGroupId参数
+        :type SecurityGroupIds: list of str
+        """
+        self.ShardMemory = None
+        self.ShardStorage = None
+        self.ShardNodeCount = None
+        self.ShardCount = None
+        self.Count = None
+        self.ProjectId = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.ShardCpu = None
+        self.DbVersionId = None
+        self.Zones = None
+        self.SecurityGroupId = None
+        self.InstanceName = None
+        self.Ipv6Flag = None
+        self.ResourceTags = None
+        self.DcnRegion = None
+        self.DcnInstanceId = None
+        self.InitParams = None
+        self.RollbackInstanceId = None
+        self.RollbackTime = None
+        self.SecurityGroupIds = None
+
+
+    def _deserialize(self, params):
+        self.ShardMemory = params.get("ShardMemory")
+        self.ShardStorage = params.get("ShardStorage")
+        self.ShardNodeCount = params.get("ShardNodeCount")
+        self.ShardCount = params.get("ShardCount")
+        self.Count = params.get("Count")
+        self.ProjectId = params.get("ProjectId")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.ShardCpu = params.get("ShardCpu")
+        self.DbVersionId = params.get("DbVersionId")
+        self.Zones = params.get("Zones")
+        self.SecurityGroupId = params.get("SecurityGroupId")
+        self.InstanceName = params.get("InstanceName")
+        self.Ipv6Flag = params.get("Ipv6Flag")
+        if params.get("ResourceTags") is not None:
+            self.ResourceTags = []
+            for item in params.get("ResourceTags"):
+                obj = ResourceTag()
+                obj._deserialize(item)
+                self.ResourceTags.append(obj)
+        self.DcnRegion = params.get("DcnRegion")
+        self.DcnInstanceId = params.get("DcnInstanceId")
+        if params.get("InitParams") is not None:
+            self.InitParams = []
+            for item in params.get("InitParams"):
+                obj = DBParamValue()
+                obj._deserialize(item)
+                self.InitParams.append(obj)
+        self.RollbackInstanceId = params.get("RollbackInstanceId")
+        self.RollbackTime = params.get("RollbackTime")
+        self.SecurityGroupIds = params.get("SecurityGroupIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateHourDCDBInstanceResponse(AbstractModel):
+    """CreateHourDCDBInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceIds: 订单对应的实例 ID 列表，如果此处没有返回实例 ID，可以通过订单查询接口获取。还可通过实例查询接口查询实例是否创建完成。
+        :type InstanceIds: list of str
+        :param FlowId: 流程id，可以根据流程id查询创建进度
+        :type FlowId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.InstanceIds = None
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceIds = params.get("InstanceIds")
+        self.FlowId = params.get("FlowId")
         self.RequestId = params.get("RequestId")
 
 
@@ -1842,6 +2038,108 @@ class DescribeDBSecurityGroupsResponse(AbstractModel):
                 self.Groups.append(obj)
         self.VIP = params.get("VIP")
         self.VPort = params.get("VPort")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDBSlowLogsRequest(AbstractModel):
+    """DescribeDBSlowLogs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例 ID，形如：dcdbt-hw0qj6m1
+        :type InstanceId: str
+        :param Offset: 从结果的第几条数据开始返回
+        :type Offset: int
+        :param Limit: 返回的结果条数
+        :type Limit: int
+        :param StartTime: 查询的起始时间，形如2016-07-23 14:55:20
+        :type StartTime: str
+        :param ShardId: 实例的分片ID，形如shard-53ima8ln
+        :type ShardId: str
+        :param EndTime: 查询的结束时间，形如2016-08-22 14:55:20。如果不填，那么查询结束时间就是当前时间
+        :type EndTime: str
+        :param Db: 要查询的具体数据库名称
+        :type Db: str
+        :param OrderBy: 排序指标，取值为query_time_sum或者query_count。不填默认按照query_time_sum排序
+        :type OrderBy: str
+        :param OrderByType: 排序类型，desc（降序）或者asc（升序）。不填默认desc排序
+        :type OrderByType: str
+        :param Slave: 是否查询从机的慢查询，0-主机; 1-从机。不填默认查询主机慢查询
+        :type Slave: int
+        """
+        self.InstanceId = None
+        self.Offset = None
+        self.Limit = None
+        self.StartTime = None
+        self.ShardId = None
+        self.EndTime = None
+        self.Db = None
+        self.OrderBy = None
+        self.OrderByType = None
+        self.Slave = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.StartTime = params.get("StartTime")
+        self.ShardId = params.get("ShardId")
+        self.EndTime = params.get("EndTime")
+        self.Db = params.get("Db")
+        self.OrderBy = params.get("OrderBy")
+        self.OrderByType = params.get("OrderByType")
+        self.Slave = params.get("Slave")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDBSlowLogsResponse(AbstractModel):
+    """DescribeDBSlowLogs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LockTimeSum: 所有语句锁时间总和
+        :type LockTimeSum: float
+        :param QueryCount: 所有语句查询总次数
+        :type QueryCount: int
+        :param Total: 总记录数
+        :type Total: int
+        :param QueryTimeSum: 所有语句查询时间总和
+        :type QueryTimeSum: float
+        :param Data: 慢查询日志数据
+        :type Data: list of SlowLogData
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.LockTimeSum = None
+        self.QueryCount = None
+        self.Total = None
+        self.QueryTimeSum = None
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.LockTimeSum = params.get("LockTimeSum")
+        self.QueryCount = params.get("QueryCount")
+        self.Total = params.get("Total")
+        self.QueryTimeSum = params.get("QueryTimeSum")
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = SlowLogData()
+                obj._deserialize(item)
+                self.Data.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -3451,6 +3749,55 @@ class InitDCDBInstancesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class IsolateHourDCDBInstanceRequest(AbstractModel):
+    """IsolateHourDCDBInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceIds: 实例uuid列表
+        :type InstanceIds: list of str
+        """
+        self.InstanceIds = None
+
+
+    def _deserialize(self, params):
+        self.InstanceIds = params.get("InstanceIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IsolateHourDCDBInstanceResponse(AbstractModel):
+    """IsolateHourDCDBInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SuccessInstanceIds: 隔离成功的实例id列表
+        :type SuccessInstanceIds: list of str
+        :param FailedInstanceIds: 隔离失败的实例id列表
+        :type FailedInstanceIds: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.SuccessInstanceIds = None
+        self.FailedInstanceIds = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.SuccessInstanceIds = params.get("SuccessInstanceIds")
+        self.FailedInstanceIds = params.get("FailedInstanceIds")
+        self.RequestId = params.get("RequestId")
+
+
 class KillSessionRequest(AbstractModel):
     """KillSession请求参数结构体
 
@@ -3956,6 +4303,9 @@ class ParamDesc(AbstractModel):
         :type Constraint: :class:`tencentcloud.dcdb.v20180411.models.ParamConstraint`
         :param HaveSetValue: 是否有设置过值，false:没有设置过值，true:有设置过值。
         :type HaveSetValue: bool
+        :param NeedRestart: 是否需要重启生效，false:不需要重启，
+true:需要重启
+        :type NeedRestart: bool
         """
         self.Param = None
         self.Value = None
@@ -3963,6 +4313,7 @@ class ParamDesc(AbstractModel):
         self.Default = None
         self.Constraint = None
         self.HaveSetValue = None
+        self.NeedRestart = None
 
 
     def _deserialize(self, params):
@@ -3974,6 +4325,7 @@ class ParamDesc(AbstractModel):
             self.Constraint = ParamConstraint()
             self.Constraint._deserialize(params.get("Constraint"))
         self.HaveSetValue = params.get("HaveSetValue")
+        self.NeedRestart = params.get("NeedRestart")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4444,6 +4796,104 @@ class ShardZoneChooseInfo(AbstractModel):
                 obj = ZonesInfo()
                 obj._deserialize(item)
                 self.SlaveZones.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SlowLogData(AbstractModel):
+    """慢查询条目信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CheckSum: 语句校验和，用于查询详情
+        :type CheckSum: str
+        :param Db: 数据库名称
+        :type Db: str
+        :param FingerPrint: 抽象的SQL语句
+        :type FingerPrint: str
+        :param LockTimeAvg: 平均的锁时间
+        :type LockTimeAvg: str
+        :param LockTimeMax: 最大锁时间
+        :type LockTimeMax: str
+        :param LockTimeMin: 最小锁时间
+        :type LockTimeMin: str
+        :param LockTimeSum: 锁时间总和
+        :type LockTimeSum: str
+        :param QueryCount: 查询次数
+        :type QueryCount: str
+        :param QueryTimeAvg: 平均查询时间
+        :type QueryTimeAvg: str
+        :param QueryTimeMax: 最大查询时间
+        :type QueryTimeMax: str
+        :param QueryTimeMin: 最小查询时间
+        :type QueryTimeMin: str
+        :param QueryTimeSum: 查询时间总和
+        :type QueryTimeSum: str
+        :param RowsExaminedSum: 扫描行数
+        :type RowsExaminedSum: str
+        :param RowsSentSum: 发送行数
+        :type RowsSentSum: str
+        :param TsMax: 最后执行时间
+        :type TsMax: str
+        :param TsMin: 首次执行时间
+        :type TsMin: str
+        :param User: 帐号
+        :type User: str
+        :param ExampleSql: 样例Sql
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExampleSql: str
+        :param Host: 账户的域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Host: str
+        """
+        self.CheckSum = None
+        self.Db = None
+        self.FingerPrint = None
+        self.LockTimeAvg = None
+        self.LockTimeMax = None
+        self.LockTimeMin = None
+        self.LockTimeSum = None
+        self.QueryCount = None
+        self.QueryTimeAvg = None
+        self.QueryTimeMax = None
+        self.QueryTimeMin = None
+        self.QueryTimeSum = None
+        self.RowsExaminedSum = None
+        self.RowsSentSum = None
+        self.TsMax = None
+        self.TsMin = None
+        self.User = None
+        self.ExampleSql = None
+        self.Host = None
+
+
+    def _deserialize(self, params):
+        self.CheckSum = params.get("CheckSum")
+        self.Db = params.get("Db")
+        self.FingerPrint = params.get("FingerPrint")
+        self.LockTimeAvg = params.get("LockTimeAvg")
+        self.LockTimeMax = params.get("LockTimeMax")
+        self.LockTimeMin = params.get("LockTimeMin")
+        self.LockTimeSum = params.get("LockTimeSum")
+        self.QueryCount = params.get("QueryCount")
+        self.QueryTimeAvg = params.get("QueryTimeAvg")
+        self.QueryTimeMax = params.get("QueryTimeMax")
+        self.QueryTimeMin = params.get("QueryTimeMin")
+        self.QueryTimeSum = params.get("QueryTimeSum")
+        self.RowsExaminedSum = params.get("RowsExaminedSum")
+        self.RowsSentSum = params.get("RowsSentSum")
+        self.TsMax = params.get("TsMax")
+        self.TsMin = params.get("TsMin")
+        self.User = params.get("User")
+        self.ExampleSql = params.get("ExampleSql")
+        self.Host = params.get("Host")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

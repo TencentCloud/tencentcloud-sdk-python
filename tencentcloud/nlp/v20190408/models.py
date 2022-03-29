@@ -1590,6 +1590,61 @@ class TextClassificationResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class TextCorrectionProRequest(AbstractModel):
+    """TextCorrectionPro请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Text: 待纠错的文本（仅支持UTF-8格式，不超过128字符）
+        :type Text: str
+        """
+        self.Text = None
+
+
+    def _deserialize(self, params):
+        self.Text = params.get("Text")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TextCorrectionProResponse(AbstractModel):
+    """TextCorrectionPro返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CCITokens: 纠错详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CCITokens: list of CCIToken
+        :param ResultText: 纠错后的文本
+        :type ResultText: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.CCITokens = None
+        self.ResultText = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("CCITokens") is not None:
+            self.CCITokens = []
+            for item in params.get("CCITokens"):
+                obj = CCIToken()
+                obj._deserialize(item)
+                self.CCITokens.append(obj)
+        self.ResultText = params.get("ResultText")
+        self.RequestId = params.get("RequestId")
+
+
 class TextCorrectionRequest(AbstractModel):
     """TextCorrection请求参数结构体
 
@@ -1642,6 +1697,60 @@ class TextCorrectionResponse(AbstractModel):
                 obj._deserialize(item)
                 self.CCITokens.append(obj)
         self.ResultText = params.get("ResultText")
+        self.RequestId = params.get("RequestId")
+
+
+class TextSimilarityProRequest(AbstractModel):
+    """TextSimilarityPro请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SrcText: 需要与目标句子计算相似度的源句子（仅支持UTF-8格式，不超过128字符）
+        :type SrcText: str
+        :param TargetText: 目标句子（仅支持UTF-8格式，不超过128字符）
+        :type TargetText: list of str
+        """
+        self.SrcText = None
+        self.TargetText = None
+
+
+    def _deserialize(self, params):
+        self.SrcText = params.get("SrcText")
+        self.TargetText = params.get("TargetText")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TextSimilarityProResponse(AbstractModel):
+    """TextSimilarityPro返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Similarity: 每个目标句子与源句子的相似度分值，按照分值降序排列
+        :type Similarity: list of Similarity
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Similarity = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Similarity") is not None:
+            self.Similarity = []
+            for item in params.get("Similarity"):
+                obj = Similarity()
+                obj._deserialize(item)
+                self.Similarity.append(obj)
         self.RequestId = params.get("RequestId")
 
 

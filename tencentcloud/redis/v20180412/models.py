@@ -340,7 +340,7 @@ class ChangeReplicaToMasterRequest(AbstractModel):
         r"""
         :param InstanceId: 实例Id
         :type InstanceId: str
-        :param GroupId: 副本Id
+        :param GroupId: 副本组Id，多AZ实例必填
         :type GroupId: int
         """
         self.InstanceId = None
@@ -1056,12 +1056,18 @@ class DescribeAutoBackupConfigResponse(AbstractModel):
         :type WeekDays: list of str
         :param TimePeriod: 时间段。
         :type TimePeriod: str
+        :param BackupStorageDays: 全量备份文件保存天数
+        :type BackupStorageDays: int
+        :param BinlogStorageDays: tendis binlog备份文件保存天数
+        :type BinlogStorageDays: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.AutoBackupType = None
         self.WeekDays = None
         self.TimePeriod = None
+        self.BackupStorageDays = None
+        self.BinlogStorageDays = None
         self.RequestId = None
 
 
@@ -1069,6 +1075,8 @@ class DescribeAutoBackupConfigResponse(AbstractModel):
         self.AutoBackupType = params.get("AutoBackupType")
         self.WeekDays = params.get("WeekDays")
         self.TimePeriod = params.get("TimePeriod")
+        self.BackupStorageDays = params.get("BackupStorageDays")
+        self.BinlogStorageDays = params.get("BinlogStorageDays")
         self.RequestId = params.get("RequestId")
 
 
@@ -1147,13 +1155,13 @@ class DescribeCommonDBInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param VpcIds: 实例Vip信息列表
+        :param VpcIds: vpc网络ID信息列表
         :type VpcIds: list of int
-        :param SubnetIds: 子网id信息列表
+        :param SubnetIds: 子网ID信息列表
         :type SubnetIds: list of int
         :param PayMode: 计费类型过滤列表；0表示包年包月，1表示按量计费
         :type PayMode: int
-        :param InstanceIds: 实例id过滤信息列表
+        :param InstanceIds: 实例ID过滤信息列表
         :type InstanceIds: list of str
         :param InstanceNames: 实例名称过滤信息列表
         :type InstanceNames: list of str
@@ -1279,10 +1287,16 @@ class DescribeDBSecurityGroupsResponse(AbstractModel):
         r"""
         :param Groups: 安全组规则
         :type Groups: list of SecurityGroup
+        :param VIP: 安全组生效内网地址
+        :type VIP: str
+        :param VPort: 安全组生效内网端口
+        :type VPort: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Groups = None
+        self.VIP = None
+        self.VPort = None
         self.RequestId = None
 
 
@@ -1293,6 +1307,8 @@ class DescribeDBSecurityGroupsResponse(AbstractModel):
                 obj = SecurityGroup()
                 obj._deserialize(item)
                 self.Groups.append(obj)
+        self.VIP = params.get("VIP")
+        self.VPort = params.get("VPort")
         self.RequestId = params.get("RequestId")
 
 
@@ -2468,7 +2484,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Limit: 实例列表的大小，参数默认值20
+        :param Limit: 实例列表的大小，参数默认值20，传值则以传参为准，如果传参大于具体配置etc/conf/component.properties中的DescribeInstancesPageLimit配置项 （读不到配置默认配置项为1000），则以配置项为准
         :type Limit: int
         :param Offset: 偏移量，取Limit整数倍
         :type Offset: int
@@ -2512,6 +2528,10 @@ class DescribeInstancesRequest(AbstractModel):
         :type TypeList: list of int
         :param MonitorVersion: 内部参数，用户可忽略
         :type MonitorVersion: str
+        :param InstanceTags: 根据标签的Key和Value筛选资源，不传或者传空数组则不进行过滤
+        :type InstanceTags: list of InstanceTagInfo
+        :param TagKeys: 根据标签的Key筛选资源，不传或者传空数组则不进行过滤
+        :type TagKeys: list of str
         """
         self.Limit = None
         self.Offset = None
@@ -2535,6 +2555,8 @@ class DescribeInstancesRequest(AbstractModel):
         self.SearchKeys = None
         self.TypeList = None
         self.MonitorVersion = None
+        self.InstanceTags = None
+        self.TagKeys = None
 
 
     def _deserialize(self, params):
@@ -2560,6 +2582,13 @@ class DescribeInstancesRequest(AbstractModel):
         self.SearchKeys = params.get("SearchKeys")
         self.TypeList = params.get("TypeList")
         self.MonitorVersion = params.get("MonitorVersion")
+        if params.get("InstanceTags") is not None:
+            self.InstanceTags = []
+            for item in params.get("InstanceTags"):
+                obj = InstanceTagInfo()
+                obj._deserialize(item)
+                self.InstanceTags.append(obj)
+        self.TagKeys = params.get("TagKeys")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2879,7 +2908,7 @@ class DescribeProjectSecurityGroupsRequest(AbstractModel):
         :type ProjectId: int
         :param Offset: 偏移量。
         :type Offset: int
-        :param Limit: 拉取数量限制。
+        :param Limit: 拉取数量限制，默认20
         :type Limit: int
         :param SearchKey: 搜索条件，支持安全组id或者安全组名称。
         :type SearchKey: str
@@ -3007,6 +3036,72 @@ class DescribeProxySlowLogResponse(AbstractModel):
                 obj = InstanceProxySlowlogDetail()
                 obj._deserialize(item)
                 self.InstanceProxySlowLogDetail.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeReplicationGroupRequest(AbstractModel):
+    """DescribeReplicationGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Limit: 实例列表的大小，参数默认值20
+        :type Limit: int
+        :param Offset: 偏移量，取Limit整数倍
+        :type Offset: int
+        :param GroupId: 复制组ID
+        :type GroupId: str
+        :param SearchKey: 实例ID和实例名称，支持模糊查询
+        :type SearchKey: str
+        """
+        self.Limit = None
+        self.Offset = None
+        self.GroupId = None
+        self.SearchKey = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.GroupId = params.get("GroupId")
+        self.SearchKey = params.get("SearchKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeReplicationGroupResponse(AbstractModel):
+    """DescribeReplicationGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 复制组数
+        :type TotalCount: int
+        :param Groups: 复制组信息
+        :type Groups: list of Groups
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Groups = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Groups") is not None:
+            self.Groups = []
+            for item in params.get("Groups"):
+                obj = Groups()
+                obj._deserialize(item)
+                self.Groups.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -3156,7 +3251,7 @@ class DescribeTaskListRequest(AbstractModel):
         :type InstanceId: str
         :param InstanceName: 实例名称
         :type InstanceName: str
-        :param Limit: 分页大小
+        :param Limit: 分页大小,默认20，上限不大于100
         :type Limit: int
         :param Offset: 偏移量，取Limit整数倍（自动向下取整）
         :type Offset: int
@@ -3545,6 +3640,66 @@ class EnableReplicaReadonlyResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class Groups(AbstractModel):
+    """复制组信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AppId: 用户AppID
+        :type AppId: int
+        :param RegionId: 地域ID 1--广州 4--上海 5-- 中国香港 6--多伦多 7--上海金融 8--北京 9-- 新加坡 11--深圳金融 15--美西（硅谷）16--成都 17--德国 18--韩国 19--重庆 21--印度 22--美东（弗吉尼亚）23--泰国 24--俄罗斯 25--日本
+        :type RegionId: int
+        :param GroupId: 复制组信息
+        :type GroupId: str
+        :param GroupName: 复制组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupName: str
+        :param Status: 复制组状态，37："绑定复制组中"，38："复制组重连中"，51："解绑复制组中"，52："复制组实例切主中"，53："角色变更中"
+        :type Status: int
+        :param InstanceCount: 复制组数量
+        :type InstanceCount: int
+        :param Instances: 复制组实例
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Instances: list of Instances
+        :param Remark: 备注信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
+        """
+        self.AppId = None
+        self.RegionId = None
+        self.GroupId = None
+        self.GroupName = None
+        self.Status = None
+        self.InstanceCount = None
+        self.Instances = None
+        self.Remark = None
+
+
+    def _deserialize(self, params):
+        self.AppId = params.get("AppId")
+        self.RegionId = params.get("RegionId")
+        self.GroupId = params.get("GroupId")
+        self.GroupName = params.get("GroupName")
+        self.Status = params.get("Status")
+        self.InstanceCount = params.get("InstanceCount")
+        if params.get("Instances") is not None:
+            self.Instances = []
+            for item in params.get("Instances"):
+                obj = Instances()
+                obj._deserialize(item)
+                self.Instances.append(obj)
+        self.Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class HotKeyInfo(AbstractModel):
     """热Key详细信息
 
@@ -3697,7 +3852,7 @@ class InquiryPriceCreateInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Price: 价格，单位：元
+        :param Price: 价格，单位：分
 注意：此字段可能返回 null，表示取不到有效值。
         :type Price: float
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -4658,6 +4813,108 @@ class InstanceTextParam(AbstractModel):
         
 
 
+class Instances(AbstractModel):
+    """复制组实例
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AppId: 用户AppID
+        :type AppId: int
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param InstanceName: 实例名称
+        :type InstanceName: str
+        :param RegionId: 地域ID 1--广州 4--上海 5-- 香港 6--多伦多 7--上海金融 8--北京 9-- 新加坡 11--深圳金融 15--美西（硅谷）
+        :type RegionId: int
+        :param ZoneId: 区域ID
+        :type ZoneId: int
+        :param RedisReplicasNum: 副本数量
+        :type RedisReplicasNum: int
+        :param RedisShardNum: 分片数量
+        :type RedisShardNum: int
+        :param RedisShardSize: 分片大小
+        :type RedisShardSize: int
+        :param DiskSize: 实例的磁盘大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiskSize: int
+        :param Engine: 引擎：社区版Redis、腾讯云CKV
+        :type Engine: str
+        :param Role: 实例角色，rw可读写，r只读
+        :type Role: str
+        :param Vip: 实例VIP
+        :type Vip: str
+        :param Vip6: 内部参数，用户可忽略
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Vip6: str
+        :param VpcID: vpc网络ID 如：75101
+        :type VpcID: int
+        :param VPort: 实例端口
+        :type VPort: int
+        :param Status: 实例状态：0-待初始化，1-流程中，2-运行中，-2-已隔离，-3-待删除
+        :type Status: int
+        :param GrocerySysId: 仓库ID
+        :type GrocerySysId: int
+        :param ProductType: 实例类型：1 – Redis2.8内存版（集群架构），2 – Redis2.8内存版（标准架构），3 – CKV 3.2内存版(标准架构)，4 – CKV 3.2内存版(集群架构)，5 – Redis2.8内存版（单机），6 – Redis4.0内存版（标准架构），7 – Redis4.0内存版（集群架构），8 – Redis5.0内存版（标准架构），9 – Redis5.0内存版（集群架构）
+        :type ProductType: int
+        :param CreateTime: 创建时间
+        :type CreateTime: str
+        :param UpdateTime: 更新实例
+        :type UpdateTime: str
+        """
+        self.AppId = None
+        self.InstanceId = None
+        self.InstanceName = None
+        self.RegionId = None
+        self.ZoneId = None
+        self.RedisReplicasNum = None
+        self.RedisShardNum = None
+        self.RedisShardSize = None
+        self.DiskSize = None
+        self.Engine = None
+        self.Role = None
+        self.Vip = None
+        self.Vip6 = None
+        self.VpcID = None
+        self.VPort = None
+        self.Status = None
+        self.GrocerySysId = None
+        self.ProductType = None
+        self.CreateTime = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.AppId = params.get("AppId")
+        self.InstanceId = params.get("InstanceId")
+        self.InstanceName = params.get("InstanceName")
+        self.RegionId = params.get("RegionId")
+        self.ZoneId = params.get("ZoneId")
+        self.RedisReplicasNum = params.get("RedisReplicasNum")
+        self.RedisShardNum = params.get("RedisShardNum")
+        self.RedisShardSize = params.get("RedisShardSize")
+        self.DiskSize = params.get("DiskSize")
+        self.Engine = params.get("Engine")
+        self.Role = params.get("Role")
+        self.Vip = params.get("Vip")
+        self.Vip6 = params.get("Vip6")
+        self.VpcID = params.get("VpcID")
+        self.VPort = params.get("VPort")
+        self.Status = params.get("Status")
+        self.GrocerySysId = params.get("GrocerySysId")
+        self.ProductType = params.get("ProductType")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class KillMasterGroupRequest(AbstractModel):
     """KillMasterGroup请求参数结构体
 
@@ -4728,14 +4985,18 @@ class ManualBackupInstanceRequest(AbstractModel):
         :type InstanceId: str
         :param Remark: 备份的备注信息
         :type Remark: str
+        :param StorageDays: 保存天数。0代表指定默认保留时间
+        :type StorageDays: int
         """
         self.InstanceId = None
         self.Remark = None
+        self.StorageDays = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
         self.Remark = params.get("Remark")
+        self.StorageDays = params.get("StorageDays")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4868,12 +5129,15 @@ class ModifyAutoBackupConfigResponse(AbstractModel):
         :type WeekDays: list of str
         :param TimePeriod: 时间段 00:00-01:00, 01:00-02:00...... 23:00-00:00
         :type TimePeriod: str
+        :param BackupStorageDays: 全量备份文件保存天数,单位：天
+        :type BackupStorageDays: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.AutoBackupType = None
         self.WeekDays = None
         self.TimePeriod = None
+        self.BackupStorageDays = None
         self.RequestId = None
 
 
@@ -4881,6 +5145,7 @@ class ModifyAutoBackupConfigResponse(AbstractModel):
         self.AutoBackupType = params.get("AutoBackupType")
         self.WeekDays = params.get("WeekDays")
         self.TimePeriod = params.get("TimePeriod")
+        self.BackupStorageDays = params.get("BackupStorageDays")
         self.RequestId = params.get("RequestId")
 
 
@@ -5003,7 +5268,7 @@ class ModifyInstanceAccountRequest(AbstractModel):
         :type AccountPassword: str
         :param Remark: 子账号描述信息
         :type Remark: str
-        :param ReadonlyPolicy: 子账号路由策略：填写master或者slave，表示路由主节点，从节点
+        :param ReadonlyPolicy: 路由策略：填写master或者replication，表示主节点或者从节点
         :type ReadonlyPolicy: list of str
         :param Privilege: 子账号读写策略：填写r、w、rw，表示只读，只写，读写策略
         :type Privilege: str
@@ -5254,12 +5519,15 @@ class ModifyNetworkConfigRequest(AbstractModel):
         :type VpcId: str
         :param SubnetId: 子网ID，changeVpc、changeBaseToVpc的时候需要提供
         :type SubnetId: str
+        :param Recycle: vip保留时间，单位：天
+        :type Recycle: int
         """
         self.InstanceId = None
         self.Operation = None
         self.Vip = None
         self.VpcId = None
         self.SubnetId = None
+        self.Recycle = None
 
 
     def _deserialize(self, params):
@@ -5268,6 +5536,7 @@ class ModifyNetworkConfigRequest(AbstractModel):
         self.Vip = params.get("Vip")
         self.VpcId = params.get("VpcId")
         self.SubnetId = params.get("SubnetId")
+        self.Recycle = params.get("Recycle")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5631,6 +5900,15 @@ class RedisBackupSet(AbstractModel):
         :type Remark: str
         :param Locked: 备份是否被锁定，0：未被锁定；1：已被锁定
         :type Locked: int
+        :param BackupSize: 内部字段，用户可忽略
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BackupSize: int
+        :param FullBackup: 内部字段，用户可忽略
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FullBackup: int
+        :param InstanceType: 内部字段，用户可忽略
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceType: int
         """
         self.StartTime = None
         self.BackupId = None
@@ -5638,6 +5916,9 @@ class RedisBackupSet(AbstractModel):
         self.Status = None
         self.Remark = None
         self.Locked = None
+        self.BackupSize = None
+        self.FullBackup = None
+        self.InstanceType = None
 
 
     def _deserialize(self, params):
@@ -5647,6 +5928,9 @@ class RedisBackupSet(AbstractModel):
         self.Status = params.get("Status")
         self.Remark = params.get("Remark")
         self.Locked = params.get("Locked")
+        self.BackupSize = params.get("BackupSize")
+        self.FullBackup = params.get("FullBackup")
+        self.InstanceType = params.get("InstanceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6071,7 +6355,7 @@ class RestoreInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 待操作的实例ID，可通过 DescribeRedis 接口返回值中的 redisId 获取。
+        :param InstanceId: 待操作的实例ID，可通过 DescribeInstances 接口返回值中的 InstanceId 获取。
         :type InstanceId: str
         :param BackupId: 备份ID，可通过 GetRedisBackupList 接口返回值中的 backupId 获取
         :type BackupId: str
@@ -6649,7 +6933,7 @@ class UpgradeInstanceRequest(AbstractModel):
         :type MemSize: int
         :param RedisShardNum: 分片数量，标准架构不需要填写。该参数不支持与RedisReplicasNum或MemSize同时输入。
         :type RedisShardNum: int
-        :param RedisReplicasNum: 副本数量，标准架构不需要填写，多AZ实例修改副本时必须要传入NodeSet。该参数不支持与RedisShardNum或MemSize同时输入。
+        :param RedisReplicasNum: 副本数量，多AZ实例修改副本时必须要传入NodeSet。该参数不支持与RedisShardNum或MemSize同时输入。
         :type RedisReplicasNum: int
         :param NodeSet: 多AZ实例增加副本时的附带信息，非多AZ实例不需要传此参数。多AZ增加副本时此参数为必传参数，传入要增加的副本的信息，包括副本的可用区和副本的类型（NodeType为1）
         :type NodeSet: list of RedisNodeInfo
@@ -6764,12 +7048,16 @@ class UpgradeVersionToMultiAvailabilityZonesRequest(AbstractModel):
         r"""
         :param InstanceId: 实例ID
         :type InstanceId: str
+        :param UpgradeProxyAndRedisServer: 是否升级proxy和redis内核版本，升级后可支持就近接入
+        :type UpgradeProxyAndRedisServer: bool
         """
         self.InstanceId = None
+        self.UpgradeProxyAndRedisServer = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
+        self.UpgradeProxyAndRedisServer = params.get("UpgradeProxyAndRedisServer")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

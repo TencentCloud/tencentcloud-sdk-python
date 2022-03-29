@@ -2431,7 +2431,7 @@ class DescribeDeviceEventRequest(AbstractModel):
         :type EndTime: int
         :param DeviceId: 设备Id
         :type DeviceId: str
-        :param EventTypes: 事件类型 1:注册 2:心跳 4:录制异常 5:播放异常 6:流中断
+        :param EventTypes: 默认为全部 事件类型 1:注册 2:心跳 4:录制异常 5:播放异常 6:流中断
         :type EventTypes: list of int
         :param Offset: 偏移值
         :type Offset: int
@@ -4885,9 +4885,9 @@ class DescribeXP2PDataRequest(AbstractModel):
         r"""
         :param P2PAppId: P2P应用ID
         :type P2PAppId: str
-        :param From: 查询开始时间
+        :param From: 查询开始时间，时间戳秒
         :type From: int
-        :param To: 查询结束时间
+        :param To: 查询结束时间，时间戳秒
         :type To: int
         :param P2PChannelId: P2P通路ID
         :type P2PChannelId: str
@@ -5386,9 +5386,9 @@ class GetVideoListByConRequest(AbstractModel):
         r"""
         :param DeviceId: 设备唯一标识
         :type DeviceId: str
-        :param Offset: 偏移量，默认0
+        :param Offset: 偏移量
         :type Offset: int
-        :param Limit: 限制量，默认200
+        :param Limit: 限制量
         :type Limit: int
         :param ChannelId: 通道唯一标识，对于NVR设备，多通道IPC设备，设备编码与通道编码不一致的IPC设备，此字段为必填
         :type ChannelId: str

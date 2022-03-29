@@ -352,13 +352,14 @@ class CreateRecTaskRequest(AbstractModel):
 • 16k_wuu-SH：16k 上海话方言；
 • 16k_zh_dialect：多方言。
         :type EngineModelType: str
-        :param ChannelNum: 识别声道数。1：单声道；2：双声道（仅支持 8k_zh 引擎模）。注意：录音识别会自动将音频转码为填写的识别声道数
+        :param ChannelNum: 识别声道数。1：单声道（非电话场景，直接选择单声道即可，忽略音频声道数）；2：双声道（仅支持8k_zh电话场景，双声道应分别对应通话双方）。注意：双声道的电话音频已物理分离说话人，无需再开启说话人分离功能。
         :type ChannelNum: int
         :param ResTextFormat: 识别结果返回形式。0： 识别结果文本(含分段时间戳)； 1：词级别粒度的[详细识别结果](https://cloud.tencent.com/document/api/1093/37824#SentenceDetail)(不含标点，含语速值)；2：词级别粒度的详细识别结果（包含标点、语速值）
         :type ResTextFormat: int
         :param SourceType: 语音数据来源。0：语音 URL；1：语音数据（post body）。
         :type SourceType: int
-        :param SpeakerDiarization: 是否开启说话人分离，0：不开启，1：开启(仅支持8k_zh，16k_zh，16k_zh_video引擎模型，单声道音频)，默认值为 0。
+        :param SpeakerDiarization: 是否开启说话人分离，0：不开启，1：开启(仅支持8k_zh，16k_zh，16k_zh_video，单声道音频)，默认值为 0。
+注意：8k电话场景建议使用双声道来区分通话双方，设置ChannelNum=2即可，不用开启说话人分离。
         :type SpeakerDiarization: int
         :param SpeakerNumber: 说话人分离人数（需配合开启说话人分离使用），取值范围：0-10，0代表自动分离（目前仅支持≤6个人），1-10代表指定说话人数分离。默认值为 0。
 注：话者分离目前是beta版本，请根据您的需要谨慎使用
@@ -367,22 +368,24 @@ class CreateRecTaskRequest(AbstractModel):
         :type CallbackUrl: str
         :param Url: 语音的URL地址，需要公网可下载。长度小于2048字节，当 SourceType 值为 0 时须填写该字段，为 1 时不需要填写。注意：请确保录音文件时长在5个小时之内，否则可能识别失败。请保证文件的下载速度，否则可能下载失败。
         :type Url: str
-        :param Data: 语音数据，当SourceType 值为1时必须填写，为0可不写。要base64编码(采用python语言时注意读取文件应该为string而不是byte，以byte格式读取后要decode()。编码后的数据不可带有回车换行符)。音频数据要小于5MB。
+        :param Data: 语音数据base64编码，当SourceType 值为1时必须填写，为0可不写。音频数据要小于5MB。
         :type Data: str
         :param DataLen: 数据长度，非必填（此数据长度为数据未进行base64编码时的数据长度）。
         :type DataLen: int
-        :param HotwordId: 热词id。用于调用对应的热词表，如果在调用语音识别服务时，不进行单独的热词id设置，自动生效默认热词；如果进行了单独的热词id设置，那么将生效单独设置的热词id。
-        :type HotwordId: str
-        :param FilterDirty: 是否过滤脏词（目前支持中文普通话引擎）。0：不过滤脏词；1：过滤脏词；2：将脏词替换为 * 。默认值为 0。
-        :type FilterDirty: int
-        :param FilterModal: 是否过滤语气词（目前支持中文普通话引擎）。0：不过滤语气词；1：部分过滤；2：严格过滤 。默认值为 0。
-        :type FilterModal: int
         :param ConvertNumMode: 是否进行阿拉伯数字智能转换（目前支持中文普通话引擎）。0：不转换，直接输出中文数字，1：根据场景智能转换为阿拉伯数字，3: 打开数学相关数字转换。默认值为 1。
         :type ConvertNumMode: int
+        :param FilterDirty: 是否过滤脏词（目前支持中文普通话引擎）。0：不过滤脏词；1：过滤脏词；2：将脏词替换为 * 。默认值为 0。
+        :type FilterDirty: int
+        :param HotwordId: 热词表id。如不设置该参数，自动生效默认热词表；如果设置了该参数，那么将生效对应的热词表。
+        :type HotwordId: str
+        :param CustomizationId: 自学习模型 id。如不设置该参数，自动生效最后一次上线的自学习模型；如果设置了该参数，那么将生效对应的自学习模型。
+        :type CustomizationId: str
         :param Extra: 附加参数(该参数无意义，忽略即可)
         :type Extra: str
         :param FilterPunc: 是否过滤标点符号（目前支持中文普通话引擎）。 0：不过滤，1：过滤句末标点，2：过滤所有标点。默认值为 0。
         :type FilterPunc: int
+        :param FilterModal: 是否过滤语气词（目前支持中文普通话引擎）。0：不过滤语气词；1：部分过滤；2：严格过滤 。默认值为 0。
+        :type FilterModal: int
         """
         self.EngineModelType = None
         self.ChannelNum = None
@@ -394,12 +397,13 @@ class CreateRecTaskRequest(AbstractModel):
         self.Url = None
         self.Data = None
         self.DataLen = None
-        self.HotwordId = None
-        self.FilterDirty = None
-        self.FilterModal = None
         self.ConvertNumMode = None
+        self.FilterDirty = None
+        self.HotwordId = None
+        self.CustomizationId = None
         self.Extra = None
         self.FilterPunc = None
+        self.FilterModal = None
 
 
     def _deserialize(self, params):
@@ -413,12 +417,13 @@ class CreateRecTaskRequest(AbstractModel):
         self.Url = params.get("Url")
         self.Data = params.get("Data")
         self.DataLen = params.get("DataLen")
-        self.HotwordId = params.get("HotwordId")
-        self.FilterDirty = params.get("FilterDirty")
-        self.FilterModal = params.get("FilterModal")
         self.ConvertNumMode = params.get("ConvertNumMode")
+        self.FilterDirty = params.get("FilterDirty")
+        self.HotwordId = params.get("HotwordId")
+        self.CustomizationId = params.get("CustomizationId")
         self.Extra = params.get("Extra")
         self.FilterPunc = params.get("FilterPunc")
+        self.FilterModal = params.get("FilterModal")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1167,7 +1172,6 @@ class SentenceRecognitionRequest(AbstractModel):
 • 16k_en：16k 英语；
 • 16k_ca：16k 粤语；
 • 16k_ja：16k 日语；
-• 16k_wuu-SH：16k 上海话方言；
 • 16k_zh_medical：16k 医疗；
 • 16k_zh_dialect：多方言。
         :type EngSerViceType: str
@@ -1193,7 +1197,7 @@ class SentenceRecognitionRequest(AbstractModel):
         :type FilterPunc: int
         :param ConvertNumMode: 是否进行阿拉伯数字智能转换。0：不转换，直接输出中文数字，1：根据场景智能转换为阿拉伯数字。默认值为1。
         :type ConvertNumMode: int
-        :param WordInfo: 是否显示词级别时间戳。0：不显示；1：显示，不包含标点时间戳，2：显示，包含标点时间戳。支持引擎8k_zh，16k_zh，16k_en，16k_ca，16k_ja，16k_wuu-SH。默认值为 0。
+        :param WordInfo: 是否显示词级别时间戳。0：不显示；1：显示，不包含标点时间戳，2：显示，包含标点时间戳。默认值为 0。
         :type WordInfo: int
         """
         self.ProjectId = None

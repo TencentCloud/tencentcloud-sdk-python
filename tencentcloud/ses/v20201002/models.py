@@ -27,7 +27,7 @@ class Attachment(AbstractModel):
         r"""
         :param FileName: 附件名称，最大支持255个字符长度，不支持部分附件类型，详情请参考[附件类型](https://cloud.tencent.com/document/product/1288/51951)。
         :type FileName: str
-        :param Content: base64之后的附件内容，您可以发送的附件大小上限为5 MB。 注意：腾讯云api目前要求请求包大小不得超过10 MB。如果您要发送多个附件，那么这些附件的总大小不能超过10 MB。
+        :param Content: base64之后的附件内容，您可以发送的附件大小上限为4 MB。 注意：腾讯云api目前要求请求包大小不得超过8 MB。如果您要发送多个附件，那么这些附件的总大小不能超过8 MB。
         :type Content: str
         """
         self.FileName = None
@@ -63,13 +63,13 @@ class BatchSendEmailRequest(AbstractModel):
         :type Subject: str
         :param TaskType: 任务类型 1: 立即发送 2: 定时发送 3: 周期（频率）发送
         :type TaskType: int
-        :param ReplyToAddresses: 邮件的“回复”电子邮件地址。可以填写您能收到邮件的邮箱地址，可以是个人邮箱。如果不填，收件人将会回复到腾讯云。
+        :param ReplyToAddresses: 邮件的“回复”电子邮件地址。可以填写您能收到邮件的邮箱地址，可以是个人邮箱。如果不填，收件人将会回复到腾讯云
         :type ReplyToAddresses: str
         :param Template: 使用模板发送时，填写的模板相关参数
         :type Template: :class:`tencentcloud.ses.v20201002.models.Template`
-        :param Simple: 使用API直接发送内容时，填写的邮件内容
+        :param Simple: 使用API直接发送内容时，填写的邮件内容（暂未支持）
         :type Simple: :class:`tencentcloud.ses.v20201002.models.Simple`
-        :param Attachments: 需要发送附件时，填写附件相关参数。
+        :param Attachments: 需要发送附件时，填写附件相关参数（暂未支持）
         :type Attachments: list of Attachment
         :param CycleParam: 周期发送任务的必要参数
         :type CycleParam: :class:`tencentcloud.ses.v20201002.models.CycleEmailParam`
@@ -77,6 +77,8 @@ class BatchSendEmailRequest(AbstractModel):
         :type TimedParam: :class:`tencentcloud.ses.v20201002.models.TimedEmailParam`
         :param Unsubscribe: 退订选项 1: 加入退订链接 0: 不加入退订链接
         :type Unsubscribe: str
+        :param ADLocation: 是否添加广告标识 0:不添加 1:添加到subject前面，2:添加到subject后面
+        :type ADLocation: int
         """
         self.FromEmailAddress = None
         self.ReceiverId = None
@@ -89,6 +91,7 @@ class BatchSendEmailRequest(AbstractModel):
         self.CycleParam = None
         self.TimedParam = None
         self.Unsubscribe = None
+        self.ADLocation = None
 
 
     def _deserialize(self, params):
@@ -116,6 +119,7 @@ class BatchSendEmailRequest(AbstractModel):
             self.TimedParam = TimedEmailParam()
             self.TimedParam._deserialize(params.get("TimedParam"))
         self.Unsubscribe = params.get("Unsubscribe")
+        self.ADLocation = params.get("ADLocation")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -314,13 +318,17 @@ class CreateEmailTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param TemplateID: 模板id
+        :type TemplateID: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.TemplateID = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.TemplateID = params.get("TemplateID")
         self.RequestId = params.get("RequestId")
 
 
@@ -354,6 +362,56 @@ class CreateReceiverDetailRequest(AbstractModel):
 
 class CreateReceiverDetailResponse(AbstractModel):
     """CreateReceiverDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreateReceiverDetailWithDataRequest(AbstractModel):
+    """CreateReceiverDetailWithData请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ReceiverId: 收件人列表ID
+        :type ReceiverId: int
+        :param Datas: 收信人邮箱以及模板参数，数组形式
+        :type Datas: list of ReceiverInputData
+        """
+        self.ReceiverId = None
+        self.Datas = None
+
+
+    def _deserialize(self, params):
+        self.ReceiverId = params.get("ReceiverId")
+        if params.get("Datas") is not None:
+            self.Datas = []
+            for item in params.get("Datas"):
+                obj = ReceiverInputData()
+                obj._deserialize(item)
+                self.Datas.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateReceiverDetailWithDataResponse(AbstractModel):
+    """CreateReceiverDetailWithData返回参数结构体
 
     """
 
@@ -635,6 +693,47 @@ class DeleteEmailTemplateRequest(AbstractModel):
 
 class DeleteEmailTemplateResponse(AbstractModel):
     """DeleteEmailTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteReceiverRequest(AbstractModel):
+    """DeleteReceiver请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ReceiverId: 收件人列表id，创建收件人列表时会返回
+        :type ReceiverId: int
+        """
+        self.ReceiverId = None
+
+
+    def _deserialize(self, params):
+        self.ReceiverId = params.get("ReceiverId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteReceiverResponse(AbstractModel):
+    """DeleteReceiver返回参数结构体
 
     """
 
@@ -1334,6 +1433,35 @@ class ReceiverData(AbstractModel):
         
 
 
+class ReceiverInputData(AbstractModel):
+    """收件人明细输入参数，包含收件人邮箱，以及模板参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Email: 收件人邮箱
+        :type Email: str
+        :param TemplateData: 模板中的变量参数，请使用json.dump将json对象格式化为string类型。该对象是一组键值对，每个Key代表模板中的一个变量，模板中的变量使用{{键}}表示，相应的值在发送时会被替换为{{值}}。
+注意：参数值不能是html等复杂类型的数据。
+        :type TemplateData: str
+        """
+        self.Email = None
+        self.TemplateData = None
+
+
+    def _deserialize(self, params):
+        self.Email = params.get("Email")
+        self.TemplateData = params.get("TemplateData")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SendEmailRequest(AbstractModel):
     """SendEmail请求参数结构体
 
@@ -1359,6 +1487,8 @@ class SendEmailRequest(AbstractModel):
         :type Attachments: list of Attachment
         :param Unsubscribe: 退订选项 1: 加入退订链接 0: 不加入退订链接
         :type Unsubscribe: str
+        :param TriggerType: 邮件触发类型 0:非触发类，默认类型，营销类邮件、非即时类邮件等选择此类型  1:触发类，验证码等即时发送类邮件，若邮件超过一定大小，系统会自动选择非触发类型通道
+        :type TriggerType: int
         """
         self.FromEmailAddress = None
         self.Destination = None
@@ -1368,6 +1498,7 @@ class SendEmailRequest(AbstractModel):
         self.Simple = None
         self.Attachments = None
         self.Unsubscribe = None
+        self.TriggerType = None
 
 
     def _deserialize(self, params):
@@ -1388,6 +1519,7 @@ class SendEmailRequest(AbstractModel):
                 obj._deserialize(item)
                 self.Attachments.append(obj)
         self.Unsubscribe = params.get("Unsubscribe")
+        self.TriggerType = params.get("TriggerType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1826,7 +1958,7 @@ class UpdateEmailTemplateRequest(AbstractModel):
         :type TemplateContent: :class:`tencentcloud.ses.v20201002.models.TemplateContent`
         :param TemplateID: 模板ID
         :type TemplateID: int
-        :param TemplateName: 模版名字
+        :param TemplateName: 模板名字
         :type TemplateName: str
         """
         self.TemplateContent = None

@@ -282,6 +282,60 @@ class Assignment(AbstractModel):
         
 
 
+class AuthorizeTokenRequest(AbstractModel):
+    """AuthorizeToken请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param User: 用户
+        :type User: str
+        :param Tokens: token串
+        :type Tokens: str
+        """
+        self.InstanceId = None
+        self.User = None
+        self.Tokens = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.User = params.get("User")
+        self.Tokens = params.get("Tokens")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AuthorizeTokenResponse(AbstractModel):
+    """AuthorizeToken返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 0 成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
 class BatchContent(AbstractModel):
     """批量发送消息内容
 
@@ -596,6 +650,60 @@ class BatchModifyTopicResultDTO(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class CancelAuthorizationTokenRequest(AbstractModel):
+    """CancelAuthorizationToken请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param User: 用户
+        :type User: str
+        :param Tokens: token串
+        :type Tokens: str
+        """
+        self.InstanceId = None
+        self.User = None
+        self.Tokens = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.User = params.get("User")
+        self.Tokens = params.get("Tokens")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CancelAuthorizationTokenResponse(AbstractModel):
+    """CancelAuthorizationToken返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 0 成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
 
 
 class ClusterInfo(AbstractModel):
@@ -984,6 +1092,65 @@ class CreateAclResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateConsumerRequest(AbstractModel):
+    """CreateConsumer请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例id
+        :type InstanceId: str
+        :param GroupName: group名称
+        :type GroupName: str
+        :param TopicName: topic名称，TopicName、TopicNameList 需要显示指定一个存在的topic名称
+        :type TopicName: str
+        :param TopicNameList: topic名称数组
+        :type TopicNameList: list of str
+        """
+        self.InstanceId = None
+        self.GroupName = None
+        self.TopicName = None
+        self.TopicNameList = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.GroupName = params.get("GroupName")
+        self.TopicName = params.get("TopicName")
+        self.TopicNameList = params.get("TopicNameList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateConsumerResponse(AbstractModel):
+    """CreateConsumer返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 创建group描述
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = JgwOperateResponse()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
 class CreateInstancePreData(AbstractModel):
     """创建预付费接口返回的Data
 
@@ -1058,6 +1225,10 @@ class CreateInstancePreRequest(AbstractModel):
         :type Tags: list of Tag
         :param DiskType: 磁盘类型（ssd填写CLOUD_SSD，sata填写CLOUD_BASIC）
         :type DiskType: str
+        :param MultiZoneFlag: 跨可用区，zoneIds必填
+        :type MultiZoneFlag: bool
+        :param ZoneIds: 可用区列表
+        :type ZoneIds: list of int
         """
         self.InstanceName = None
         self.ZoneId = None
@@ -1075,6 +1246,8 @@ class CreateInstancePreRequest(AbstractModel):
         self.Partition = None
         self.Tags = None
         self.DiskType = None
+        self.MultiZoneFlag = None
+        self.ZoneIds = None
 
 
     def _deserialize(self, params):
@@ -1099,6 +1272,8 @@ class CreateInstancePreRequest(AbstractModel):
                 obj._deserialize(item)
                 self.Tags.append(obj)
         self.DiskType = params.get("DiskType")
+        self.MultiZoneFlag = params.get("MultiZoneFlag")
+        self.ZoneIds = params.get("ZoneIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1223,6 +1398,135 @@ class CreatePartitionResponse(AbstractModel):
         if params.get("Result") is not None:
             self.Result = JgwOperateResponse()
             self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class CreateRouteRequest(AbstractModel):
+    """CreateRoute请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例唯一id
+        :type InstanceId: str
+        :param VipType: 路由网络类型(3:vpc路由;4:标准版支撑路由;7:专业版支撑路由)
+        :type VipType: int
+        :param VpcId: vpc网络Id
+        :type VpcId: str
+        :param SubnetId: vpc子网id
+        :type SubnetId: str
+        :param AccessType: 访问类型
+        :type AccessType: int
+        :param AuthFlag: 是否需要权限管理
+        :type AuthFlag: int
+        :param CallerAppid: 调用方appId
+        :type CallerAppid: int
+        :param PublicNetwork: 公网带宽
+        :type PublicNetwork: int
+        :param Ip: vip地址
+        :type Ip: str
+        """
+        self.InstanceId = None
+        self.VipType = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.AccessType = None
+        self.AuthFlag = None
+        self.CallerAppid = None
+        self.PublicNetwork = None
+        self.Ip = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.VipType = params.get("VipType")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.AccessType = params.get("AccessType")
+        self.AuthFlag = params.get("AuthFlag")
+        self.CallerAppid = params.get("CallerAppid")
+        self.PublicNetwork = params.get("PublicNetwork")
+        self.Ip = params.get("Ip")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateRouteResponse(AbstractModel):
+    """CreateRoute返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 返回结果
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = JgwOperateResponse()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class CreateTokenRequest(AbstractModel):
+    """CreateToken请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param User: 用户名
+        :type User: str
+        """
+        self.InstanceId = None
+        self.User = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.User = params.get("User")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateTokenResponse(AbstractModel):
+    """CreateToken返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: token串
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
         self.RequestId = params.get("RequestId")
 
 
@@ -1589,6 +1893,57 @@ class DeleteAclRuleResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteGroupRequest(AbstractModel):
+    """DeleteGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例Id
+        :type InstanceId: str
+        :param Group: 消费分组
+        :type Group: str
+        """
+        self.InstanceId = None
+        self.Group = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Group = params.get("Group")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteGroupResponse(AbstractModel):
+    """DeleteGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 返回结果
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = JgwOperateResponse()
+            self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
 
 
@@ -3674,7 +4029,7 @@ class InstanceDetail(AbstractModel):
         :type SubnetId: str
         :param RenewFlag: 实例是否续费，int  枚举值：1表示自动续费，2表示明确不自动续费
         :type RenewFlag: int
-        :param Healthy: 实例状态 int：0表示健康，1表示告警，2 表示实例状态异常
+        :param Healthy: 实例状态 int：1表示健康，2表示告警，3 表示实例状态异常
         :type Healthy: int
         :param HealthyMessage: 实例状态信息
         :type HealthyMessage: str
@@ -3828,6 +4183,36 @@ class InstanceDetailResponse(AbstractModel):
                 obj = InstanceDetail()
                 obj._deserialize(item)
                 self.InstanceList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InstanceQuotaConfigResp(AbstractModel):
+    """实例 / topic 维度限流策略
+
+    """
+
+    def __init__(self):
+        r"""
+        :param QuotaProducerByteRate: 生产限流大小，单位 MB/s
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QuotaProducerByteRate: int
+        :param QuotaConsumerByteRate: 消费限流大小，单位 MB/s
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QuotaConsumerByteRate: int
+        """
+        self.QuotaProducerByteRate = None
+        self.QuotaConsumerByteRate = None
+
+
+    def _deserialize(self, params):
+        self.QuotaProducerByteRate = params.get("QuotaProducerByteRate")
+        self.QuotaConsumerByteRate = params.get("QuotaConsumerByteRate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4191,6 +4576,10 @@ class ModifyTopicAttributesRequest(AbstractModel):
         :type RetentionBytes: int
         :param Tags: 标签列表
         :type Tags: list of Tag
+        :param QuotaProducerByteRate: 生产限流，单位 MB/s
+        :type QuotaProducerByteRate: int
+        :param QuotaConsumerByteRate: 消费限流，单位 MB/s
+        :type QuotaConsumerByteRate: int
         """
         self.InstanceId = None
         self.TopicName = None
@@ -4207,6 +4596,8 @@ class ModifyTopicAttributesRequest(AbstractModel):
         self.AclRuleName = None
         self.RetentionBytes = None
         self.Tags = None
+        self.QuotaProducerByteRate = None
+        self.QuotaConsumerByteRate = None
 
 
     def _deserialize(self, params):
@@ -4230,6 +4621,8 @@ class ModifyTopicAttributesRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.QuotaProducerByteRate = params.get("QuotaProducerByteRate")
+        self.QuotaConsumerByteRate = params.get("QuotaConsumerByteRate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4773,6 +5166,9 @@ class TopicAttributesResponse(AbstractModel):
         :param AclRuleList: 预设策略列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type AclRuleList: list of AclRule
+        :param QuotaConfig: topic 限流策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QuotaConfig: :class:`tencentcloud.ckafka.v20190819.models.InstanceQuotaConfigResp`
         """
         self.TopicId = None
         self.CreateTime = None
@@ -4784,6 +5180,7 @@ class TopicAttributesResponse(AbstractModel):
         self.Partitions = None
         self.EnableAclRule = None
         self.AclRuleList = None
+        self.QuotaConfig = None
 
 
     def _deserialize(self, params):
@@ -4809,6 +5206,9 @@ class TopicAttributesResponse(AbstractModel):
                 obj = AclRule()
                 obj._deserialize(item)
                 self.AclRuleList.append(obj)
+        if params.get("QuotaConfig") is not None:
+            self.QuotaConfig = InstanceQuotaConfigResp()
+            self.QuotaConfig._deserialize(params.get("QuotaConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

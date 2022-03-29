@@ -1090,6 +1090,34 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeGatewaySubDeviceList(self, request):
+        """查询绑定到家庭的网关设备的子设备列表
+
+        :param request: Request instance for DescribeGatewaySubDeviceList.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeGatewaySubDeviceListRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeGatewaySubDeviceListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeGatewaySubDeviceList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeGatewaySubDeviceListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeGatewaySubProducts(self, request):
         """用于获取网关可绑定或解绑的子产品
 

@@ -17,6 +17,9 @@
 # 未进行实名认证。
 AUTHFAILURE_ACCOUNT = 'AuthFailure.Account'
 
+# 权限限额，禁止操作。
+AUTHFAILURE_FORBIDDEN = 'AuthFailure.Forbidden'
+
 # 未找到密钥。
 AUTHFAILURE_SECRETKEYNOTFOUND = 'AuthFailure.SecretKeyNotFound'
 
@@ -28,6 +31,9 @@ FAILEDOPERATION = 'FailedOperation'
 
 # 商户状态异常。
 FAILEDOPERATION_ABNORMALMERCHANTSTATE = 'FailedOperation.AbnormalMerchantState'
+
+# 订单状态异常。
+FAILEDOPERATION_ABNORMALORDERSTATE = 'FailedOperation.AbnormalOrderState'
 
 # 账户未绑定。
 FAILEDOPERATION_ACCTNOTBIND = 'FailedOperation.AcctNotBind'
@@ -76,6 +82,9 @@ FAILEDOPERATION_CHANNELDENY = 'FailedOperation.ChannelDeny'
 
 # 支付渠道错误。
 FAILEDOPERATION_CHANNELERROR = 'FailedOperation.ChannelError'
+
+# 渠道方退款失败。
+FAILEDOPERATION_CHANNELREFUNDFAILED = 'FailedOperation.ChannelRefundFailed'
 
 # 终止合约失败。
 FAILEDOPERATION_CLOSECONTRACTDBFAILED = 'FailedOperation.CloseContractDbFailed'
@@ -256,6 +265,9 @@ FAILEDOPERATION_QUERYRESULTNULL = 'FailedOperation.QueryResultNull'
 
 # 超出商户单日转账额度。
 FAILEDOPERATION_QUOTAEXCEED = 'FailedOperation.QuotaExceed'
+
+# 退款交易已结束。
+FAILEDOPERATION_REFUNDTRANSACTIONCLOSED = 'FailedOperation.RefundTransactionClosed'
 
 # 退款交易已完成，请勿重复操作。
 FAILEDOPERATION_REFUNDTRANSACTIONFINISHED = 'FailedOperation.RefundTransactionFinished'

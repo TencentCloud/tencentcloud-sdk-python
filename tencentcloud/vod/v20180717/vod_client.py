@@ -1822,6 +1822,37 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeMediaPlayStatDetails(self, request):
+        """该接口用于查询媒体文件按指定时间粒度统计的播放数据
+        * 可以查询最近一年的播放统计数据。
+        * 时间粒度为小时，结束时间和起始时间的跨度最大为7天。
+        * 时间粒度为天，结束时间和起始时间的跨度最大为90天。
+
+        :param request: Request instance for DescribeMediaPlayStatDetails.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeMediaPlayStatDetailsRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeMediaPlayStatDetailsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeMediaPlayStatDetails", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeMediaPlayStatDetailsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeMediaProcessUsageData(self, request):
         """该接口返回查询时间范围内每天使用的视频处理用量信息。
            1. 可以查询最近365天内的视频处理统计数据。
@@ -2777,6 +2808,46 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyMediaStorageClass(self, request):
+        """修改媒体文件的存储类型。
+        当媒体文件的存储类型为标准存储时，可以修改为以下类型：
+        <li>低频存储</li>
+        <li>归档存储</li>
+        <li>深度归档存储</li>
+        当媒体文件的当前存储类型为低频存储时，可以修改为以下类型：
+        <li>标准存储</li>
+        <li>归档存储</li>
+        <li>深度归档存储</li>
+        当媒体文件的当前存储类型为归档存储时，可以修改为以下类型：
+        <li>标准存储</li>
+        当媒体文件的当前存储类型为深度归档存储时，可以修改为以下类型：
+        <li>标准存储</li>
+
+        :param request: Request instance for ModifyMediaStorageClass.
+        :type request: :class:`tencentcloud.vod.v20180717.models.ModifyMediaStorageClassRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ModifyMediaStorageClassResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyMediaStorageClass", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyMediaStorageClassResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyPersonSample(self, request):
         """该接口用于根据素材 ID，修改素材样本信息，包括名称、描述的修改，以及五官、标签的添加、删除、重置操作。五官删除操作需保证至少剩余 1 张图片，否则，请使用重置操作。
 
@@ -3101,6 +3172,40 @@ class VodClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ParseStreamingManifestResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ProcessImage(self, request):
+        """对点播中的图片文件发起处理任务，功能包括：
+
+        1. 智能识别（令人反感的信息、不安全的信息、不适宜的信息）;
+
+        ><li>图片文件大小支持：文件 < 5M；</li>
+        ><li>图片文件分辨率支持：建议分辨率大于256x256，否则可能会影响识别效果；</li>
+        ><li>图片文件支持格式：PNG、JPG、JPEG、BMP、GIF、WEBP格式。</li>
+
+        :param request: Request instance for ProcessImage.
+        :type request: :class:`tencentcloud.vod.v20180717.models.ProcessImageRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ProcessImageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ProcessImage", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ProcessImageResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

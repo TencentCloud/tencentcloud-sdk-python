@@ -110,6 +110,118 @@ class TdidClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateTDidByPublicKey(self, request):
+        """新建DID根据公钥生成Tdid
+
+        :param request: Request instance for CreateTDidByPublicKey.
+        :type request: :class:`tencentcloud.tdid.v20210519.models.CreateTDidByPublicKeyRequest`
+        :rtype: :class:`tencentcloud.tdid.v20210519.models.CreateTDidByPublicKeyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateTDidByPublicKey", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateTDidByPublicKeyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def GetAuthorityIssuer(self, request):
+        """获取权威机构信息
+
+        :param request: Request instance for GetAuthorityIssuer.
+        :type request: :class:`tencentcloud.tdid.v20210519.models.GetAuthorityIssuerRequest`
+        :rtype: :class:`tencentcloud.tdid.v20210519.models.GetAuthorityIssuerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetAuthorityIssuer", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetAuthorityIssuerResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def GetDidDocument(self, request):
+        """查看DID文档
+
+        :param request: Request instance for GetDidDocument.
+        :type request: :class:`tencentcloud.tdid.v20210519.models.GetDidDocumentRequest`
+        :rtype: :class:`tencentcloud.tdid.v20210519.models.GetDidDocumentResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetDidDocument", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetDidDocumentResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SetCredentialStatus(self, request):
+        """设置凭证链上状态
+
+        :param request: Request instance for SetCredentialStatus.
+        :type request: :class:`tencentcloud.tdid.v20210519.models.SetCredentialStatusRequest`
+        :rtype: :class:`tencentcloud.tdid.v20210519.models.SetCredentialStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SetCredentialStatus", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SetCredentialStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def VerifyCredential(self, request):
         """验证凭证
 

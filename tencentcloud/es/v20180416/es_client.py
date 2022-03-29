@@ -362,6 +362,34 @@ class EsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def UpdateDictionaries(self, request):
+        """更新ES集群词典
+
+        :param request: Request instance for UpdateDictionaries.
+        :type request: :class:`tencentcloud.es.v20180416.models.UpdateDictionariesRequest`
+        :rtype: :class:`tencentcloud.es.v20180416.models.UpdateDictionariesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UpdateDictionaries", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateDictionariesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def UpdateInstance(self, request):
         """对集群进行节点规格变更，修改实例名称，修改配置，重置密码， 添加Kibana黑白名单等操作。参数中InstanceId为必传参数，ForceRestart为选填参数，剩余参数传递组合及含义如下：
         - InstanceName：修改实例名称(仅用于标识实例)

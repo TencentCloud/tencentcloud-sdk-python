@@ -3834,6 +3834,34 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeSecurityEventStat(self, request):
+        """获取安全事件统计
+
+        :param request: Request instance for DescribeSecurityEventStat.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeSecurityEventStatRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeSecurityEventStatResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeSecurityEventStat", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSecurityEventStatResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeSecurityEventsCnt(self, request):
         """获取安全概览相关事件统计数据接口
 

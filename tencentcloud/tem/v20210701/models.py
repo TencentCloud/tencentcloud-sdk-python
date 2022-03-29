@@ -646,6 +646,14 @@ class DeployApplicationRequest(AbstractModel):
         :type SpeedUp: bool
         :param StartupProbe: 启动探针配置
         :type StartupProbe: :class:`tencentcloud.tem.v20210701.models.HealthCheckConfig`
+        :param OsFlavour: 操作系统版本；
+当选择openjdk时，可选参数：
+- ALPINE
+- CENTOS
+当选择konajdk时，可选参数：
+- ALPINE
+- TENCENTOS
+        :type OsFlavour: str
         """
         self.ApplicationId = None
         self.InitPodNum = None
@@ -685,6 +693,7 @@ class DeployApplicationRequest(AbstractModel):
         self.ConfEdited = None
         self.SpeedUp = None
         self.StartupProbe = None
+        self.OsFlavour = None
 
 
     def _deserialize(self, params):
@@ -770,6 +779,7 @@ class DeployApplicationRequest(AbstractModel):
         if params.get("StartupProbe") is not None:
             self.StartupProbe = HealthCheckConfig()
             self.StartupProbe._deserialize(params.get("StartupProbe"))
+        self.OsFlavour = params.get("OsFlavour")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -941,12 +951,15 @@ class DeployStrategyConf(AbstractModel):
         :type BatchInterval: int
         :param MinAvailable: 最小可用实例数
         :type MinAvailable: int
+        :param Force: 是否强制发布
+        :type Force: bool
         """
         self.TotalBatchCount = None
         self.BetaBatchNum = None
         self.DeployStrategyType = None
         self.BatchInterval = None
         self.MinAvailable = None
+        self.Force = None
 
 
     def _deserialize(self, params):
@@ -955,6 +968,7 @@ class DeployStrategyConf(AbstractModel):
         self.DeployStrategyType = params.get("DeployStrategyType")
         self.BatchInterval = params.get("BatchInterval")
         self.MinAvailable = params.get("MinAvailable")
+        self.Force = params.get("Force")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

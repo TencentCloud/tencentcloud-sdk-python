@@ -155,6 +155,9 @@ RESOURCENOTFOUND_TEMPLATENOTEXIST = 'ResourceNotFound.TemplateNotExist'
 # 资源不可用。
 RESOURCEUNAVAILABLE = 'ResourceUnavailable'
 
+# 国标信令异常。
+RESOURCEUNAVAILABLE_GBPROTOCOLEXECEXCEPTION = 'ResourceUnavailable.GBProtocolExecException'
+
 # 资源售罄。
 RESOURCESSOLDOUT = 'ResourcesSoldOut'
 
