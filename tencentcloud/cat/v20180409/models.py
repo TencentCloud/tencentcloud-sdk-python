@@ -1561,6 +1561,71 @@ class DescribeDetailedSingleProbeDataResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeProbeMetricDataRequest(AbstractModel):
+    """DescribeProbeMetricData请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AnalyzeTaskType: 分析任务类型
+        :type AnalyzeTaskType: str
+        :param MetricType: 指标类型，counter 或者 gauge
+        :type MetricType: str
+        :param Field: 指标详细字段
+        :type Field: str
+        :param Filter: 过滤条件
+        :type Filter: str
+        :param GroupBy: 聚合时间, 1m、1d、100d 等等
+        :type GroupBy: str
+        :param Filters: 过滤条件数组
+        :type Filters: list of str
+        """
+        self.AnalyzeTaskType = None
+        self.MetricType = None
+        self.Field = None
+        self.Filter = None
+        self.GroupBy = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.AnalyzeTaskType = params.get("AnalyzeTaskType")
+        self.MetricType = params.get("MetricType")
+        self.Field = params.get("Field")
+        self.Filter = params.get("Filter")
+        self.GroupBy = params.get("GroupBy")
+        self.Filters = params.get("Filters")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeProbeMetricDataResponse(AbstractModel):
+    """DescribeProbeMetricData返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MetricSet: 指标 JSON 序列化后的字符串
+        :type MetricSet: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.MetricSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.MetricSet = params.get("MetricSet")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeProbeNodesRequest(AbstractModel):
     """DescribeProbeNodes请求参数结构体
 

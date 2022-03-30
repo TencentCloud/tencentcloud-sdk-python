@@ -1205,8 +1205,10 @@ class DescribeAgentDealsByCacheRequest(AbstractModel):
         :type Status: int
         :param OwnerUins: 下单人账号ID列表
         :type OwnerUins: list of str
-        :param DealNames: 订单号列表
+        :param DealNames: 子订单号列表
         :type DealNames: list of str
+        :param BigDealIds: 大订单号列表
+        :type BigDealIds: list of str
         :param PayerMode: 支付方式，0：自付；1：代付
         :type PayerMode: int
         """
@@ -1218,6 +1220,7 @@ class DescribeAgentDealsByCacheRequest(AbstractModel):
         self.Status = None
         self.OwnerUins = None
         self.DealNames = None
+        self.BigDealIds = None
         self.PayerMode = None
 
 
@@ -1230,6 +1233,7 @@ class DescribeAgentDealsByCacheRequest(AbstractModel):
         self.Status = params.get("Status")
         self.OwnerUins = params.get("OwnerUins")
         self.DealNames = params.get("DealNames")
+        self.BigDealIds = params.get("BigDealIds")
         self.PayerMode = params.get("PayerMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -1459,8 +1463,10 @@ class DescribeAgentPayDealsV2Request(AbstractModel):
         :type Status: int
         :param OwnerUins: 下单人账号ID列表
         :type OwnerUins: list of str
-        :param DealNames: 订单号列表
+        :param DealNames: 子订单号列表
         :type DealNames: list of str
+        :param BigDealIds: 大订单号列表
+        :type BigDealIds: list of str
         """
         self.Offset = None
         self.Limit = None
@@ -1470,6 +1476,7 @@ class DescribeAgentPayDealsV2Request(AbstractModel):
         self.Status = None
         self.OwnerUins = None
         self.DealNames = None
+        self.BigDealIds = None
 
 
     def _deserialize(self, params):
@@ -1481,6 +1488,7 @@ class DescribeAgentPayDealsV2Request(AbstractModel):
         self.Status = params.get("Status")
         self.OwnerUins = params.get("OwnerUins")
         self.DealNames = params.get("DealNames")
+        self.BigDealIds = params.get("BigDealIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1623,8 +1631,10 @@ class DescribeAgentSelfPayDealsV2Request(AbstractModel):
         :type Order: int
         :param Status: 订单的状态(1：未支付;2：已支付;3：发货中;4：已发货;5：发货失败;6：已退款;7：已关单;8：订单过期;9：订单已失效;10：产品已失效;11：代付拒绝;12：支付中)
         :type Status: int
-        :param DealNames: 订单号列表
+        :param DealNames: 子订单号列表
         :type DealNames: list of str
+        :param BigDealIds: 大订单号列表
+        :type BigDealIds: list of str
         """
         self.OwnerUin = None
         self.Offset = None
@@ -1634,6 +1644,7 @@ class DescribeAgentSelfPayDealsV2Request(AbstractModel):
         self.Order = None
         self.Status = None
         self.DealNames = None
+        self.BigDealIds = None
 
 
     def _deserialize(self, params):
@@ -1645,6 +1656,7 @@ class DescribeAgentSelfPayDealsV2Request(AbstractModel):
         self.Order = params.get("Order")
         self.Status = params.get("Status")
         self.DealNames = params.get("DealNames")
+        self.BigDealIds = params.get("BigDealIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -418,6 +418,34 @@ class CatClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeProbeMetricData(self, request):
+        """列出云拨测指标详细数据
+
+        :param request: Request instance for DescribeProbeMetricData.
+        :type request: :class:`tencentcloud.cat.v20180409.models.DescribeProbeMetricDataRequest`
+        :rtype: :class:`tencentcloud.cat.v20180409.models.DescribeProbeMetricDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeProbeMetricData", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeProbeMetricDataResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeProbeNodes(self, request):
         """查询拨测节点
 

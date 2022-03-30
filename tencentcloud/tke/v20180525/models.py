@@ -2757,7 +2757,7 @@ class DataDisk(AbstractModel):
         :param MountTarget: 挂载目录
 注意：此字段可能返回 null，表示取不到有效值。
         :type MountTarget: str
-        :param DiskPartition: 挂载设备名或分区名
+        :param DiskPartition: 挂载设备名或分区名，当且仅当添加已有节点时需要
 注意：此字段可能返回 null，表示取不到有效值。
         :type DiskPartition: str
         """
