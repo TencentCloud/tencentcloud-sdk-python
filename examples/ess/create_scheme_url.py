@@ -31,7 +31,7 @@ try:
     userInfo.UserId = "**************"
     req.Operator = userInfo
 
-    # 由CreateFlow返回
+    # FlowId由CreateFlow或者CreateFlowByFiles返回
     req.FlowId = "**************"
     req.PathType = 1
     req.Name = "**************"

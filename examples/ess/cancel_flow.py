@@ -24,17 +24,18 @@ try:
     clientProfile.httpProfile = httpProfile
 
     client = ess_client.EssClient(cred, "", clientProfile)
-    req = models.DescribeFlowBriefsRequest()
+    req = models.CancelFlowRequest()
 
     # FlowId由CreateFlow或者CreateFlowByFiles返回
-    req.FlowIds = ["**************"]
+    req.FlowId = "**************"
+    req.CancelMessage = "**************"
 
     userInfo = models.UserInfo()
     # 管理员用户id或者员工用户id
     userInfo.UserId = "**************"
     req.Operator = userInfo
 
-    resp = client.DescribeFlowBriefs(req)
+    resp = client.CancelFlow(req)
     # 输出json格式的字符串回包
     print("%s" % resp.to_json_string())
 

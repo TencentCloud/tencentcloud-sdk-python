@@ -29,7 +29,6 @@ try:
     userInfo = models.UserInfo()
     # 管理员用户id或者员工用户id
     userInfo.UserId = "**************"
-    userInfo.ClientIp = "**************"
     req.Operator = userInfo
 
     # 企业方 静默签署ApproverType为3 手动签署ApproverType为0
