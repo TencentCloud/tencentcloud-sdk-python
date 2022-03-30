@@ -502,6 +502,56 @@ class ClusterParamModifyLog(AbstractModel):
         
 
 
+class CreateAccountsRequest(AbstractModel):
+    """CreateAccounts请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群id
+        :type ClusterId: str
+        :param Accounts: 新账户列表
+        :type Accounts: list of NewAccount
+        """
+        self.ClusterId = None
+        self.Accounts = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        if params.get("Accounts") is not None:
+            self.Accounts = []
+            for item in params.get("Accounts"):
+                obj = NewAccount()
+                obj._deserialize(item)
+                self.Accounts.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAccountsResponse(AbstractModel):
+    """CreateAccounts返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CreateClustersRequest(AbstractModel):
     """CreateClusters请求参数结构体
 
@@ -540,7 +590,7 @@ class CreateClustersRequest(AbstractModel):
         :type Port: int
         :param PayMode: 计费模式，按量计费：0，包年包月：1。默认按量计费。
         :type PayMode: int
-        :param Count: 购买个数，目前只支持传1（不传默认为1）
+        :param Count: 购买集群数，可选值范围[1,50]，默认为1
         :type Count: int
         :param RollbackStrategy: 回档类型：
 noneRollback：不回档；
@@ -758,7 +808,16 @@ class CynosdbCluster(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Status: 集群状态
+        :param Status: 集群状态， 可选值如下:
+creating: 创建中
+running:运行中
+isolating:隔离中
+isolated:已隔离
+activating:解隔离中
+offlining:下线中
+offlined:已下线
+deleting:删除中
+deleted:已删除
         :type Status: str
         :param UpdateTime: 更新时间
         :type UpdateTime: str
@@ -2980,6 +3039,51 @@ class ModifyBackupConfigResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyClusterNameRequest(AbstractModel):
+    """ModifyClusterName请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param ClusterName: 集群名
+        :type ClusterName: str
+        """
+        self.ClusterId = None
+        self.ClusterName = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.ClusterName = params.get("ClusterName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyClusterNameResponse(AbstractModel):
+    """ModifyClusterName返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyClusterParamRequest(AbstractModel):
     """ModifyClusterParam请求参数结构体
 
@@ -3087,6 +3191,51 @@ class ModifyDBInstanceSecurityGroupsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyInstanceNameRequest(AbstractModel):
+    """ModifyInstanceName请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param InstanceName: 实例名称
+        :type InstanceName: str
+        """
+        self.InstanceId = None
+        self.InstanceName = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.InstanceName = params.get("InstanceName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyInstanceNameResponse(AbstractModel):
+    """ModifyInstanceName返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyMaintainPeriodConfigRequest(AbstractModel):
     """ModifyMaintainPeriodConfig请求参数结构体
 
@@ -3176,6 +3325,42 @@ class NetAddr(AbstractModel):
         self.WanDomain = params.get("WanDomain")
         self.WanPort = params.get("WanPort")
         self.NetType = params.get("NetType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NewAccount(AbstractModel):
+    """新创建的账号
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AccountName: 账户名
+        :type AccountName: str
+        :param AccountPassword: 密码
+        :type AccountPassword: str
+        :param Host: 主机
+        :type Host: str
+        :param Description: 描述
+        :type Description: str
+        """
+        self.AccountName = None
+        self.AccountPassword = None
+        self.Host = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.AccountName = params.get("AccountName")
+        self.AccountPassword = params.get("AccountPassword")
+        self.Host = params.get("Host")
+        self.Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

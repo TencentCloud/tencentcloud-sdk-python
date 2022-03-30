@@ -11984,6 +11984,178 @@ class DescribeSecurityDynamicsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeSecurityEventStatRequest(AbstractModel):
+    """DescribeSecurityEventStat请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Filters: 该接口无过滤条件
+        :type Filters: list of Filter
+        """
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSecurityEventStatResponse(AbstractModel):
+    """DescribeSecurityEventStat返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MalwareStat: 木马事件统计
+        :type MalwareStat: :class:`tencentcloud.cwp.v20180228.models.EventStat`
+        :param HostLoginStat: 异地事件统计
+        :type HostLoginStat: :class:`tencentcloud.cwp.v20180228.models.EventStat`
+        :param BruteAttackStat: 爆破事件统计
+        :type BruteAttackStat: :class:`tencentcloud.cwp.v20180228.models.EventStat`
+        :param MaliciousRequestStat: 恶意请求事件统计
+        :type MaliciousRequestStat: :class:`tencentcloud.cwp.v20180228.models.EventStat`
+        :param PrivilegeStat: 本地提权事件统计
+        :type PrivilegeStat: :class:`tencentcloud.cwp.v20180228.models.EventStat`
+        :param ReverseShellStat: 反弹Shell事件统计
+        :type ReverseShellStat: :class:`tencentcloud.cwp.v20180228.models.EventStat`
+        :param HighRiskBashStat: 高危命令事件统计
+        :type HighRiskBashStat: :class:`tencentcloud.cwp.v20180228.models.EventStat`
+        :param AttackLogsStat: 网络攻击事件统计
+        :type AttackLogsStat: :class:`tencentcloud.cwp.v20180228.models.EventStat`
+        :param VulHighStat: 高危漏洞事件统计
+        :type VulHighStat: :class:`tencentcloud.cwp.v20180228.models.EventStat`
+        :param VulNormalStat: 中危漏洞事件统计
+        :type VulNormalStat: :class:`tencentcloud.cwp.v20180228.models.EventStat`
+        :param VulLowStat: 低危漏洞事件统计
+        :type VulLowStat: :class:`tencentcloud.cwp.v20180228.models.EventStat`
+        :param BaselineHighStat: 高危基线漏洞事件统计
+        :type BaselineHighStat: :class:`tencentcloud.cwp.v20180228.models.EventStat`
+        :param BaselineNormalStat: 中危基线漏事件统计
+        :type BaselineNormalStat: :class:`tencentcloud.cwp.v20180228.models.EventStat`
+        :param BaselineLowStat: 低危基线漏事件统计
+        :type BaselineLowStat: :class:`tencentcloud.cwp.v20180228.models.EventStat`
+        :param MachineTotalAffectNum: 有未处理安全事件的机器总数
+        :type MachineTotalAffectNum: int
+        :param InvasionTotalAffectNum: 有未处理入侵安全事件的机器总数
+        :type InvasionTotalAffectNum: int
+        :param VulTotalAffectNum: 有未处理漏洞安全事件的机器总数
+        :type VulTotalAffectNum: int
+        :param BaseLineTotalAffectNum: 有未处理基线安全事件的机器总数
+        :type BaseLineTotalAffectNum: int
+        :param CyberAttackTotalAffectNum: 有未处理网络攻击安全事件的机器总数
+        :type CyberAttackTotalAffectNum: int
+        :param VulRiskStat: 严重漏洞事件统计
+        :type VulRiskStat: :class:`tencentcloud.cwp.v20180228.models.EventStat`
+        :param BaselineRiskStat: 严重基线漏洞事件统计
+        :type BaselineRiskStat: :class:`tencentcloud.cwp.v20180228.models.EventStat`
+        :param VulStat: 漏洞数统计
+        :type VulStat: :class:`tencentcloud.cwp.v20180228.models.EventStat`
+        :param Score: 安全得分
+        :type Score: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.MalwareStat = None
+        self.HostLoginStat = None
+        self.BruteAttackStat = None
+        self.MaliciousRequestStat = None
+        self.PrivilegeStat = None
+        self.ReverseShellStat = None
+        self.HighRiskBashStat = None
+        self.AttackLogsStat = None
+        self.VulHighStat = None
+        self.VulNormalStat = None
+        self.VulLowStat = None
+        self.BaselineHighStat = None
+        self.BaselineNormalStat = None
+        self.BaselineLowStat = None
+        self.MachineTotalAffectNum = None
+        self.InvasionTotalAffectNum = None
+        self.VulTotalAffectNum = None
+        self.BaseLineTotalAffectNum = None
+        self.CyberAttackTotalAffectNum = None
+        self.VulRiskStat = None
+        self.BaselineRiskStat = None
+        self.VulStat = None
+        self.Score = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("MalwareStat") is not None:
+            self.MalwareStat = EventStat()
+            self.MalwareStat._deserialize(params.get("MalwareStat"))
+        if params.get("HostLoginStat") is not None:
+            self.HostLoginStat = EventStat()
+            self.HostLoginStat._deserialize(params.get("HostLoginStat"))
+        if params.get("BruteAttackStat") is not None:
+            self.BruteAttackStat = EventStat()
+            self.BruteAttackStat._deserialize(params.get("BruteAttackStat"))
+        if params.get("MaliciousRequestStat") is not None:
+            self.MaliciousRequestStat = EventStat()
+            self.MaliciousRequestStat._deserialize(params.get("MaliciousRequestStat"))
+        if params.get("PrivilegeStat") is not None:
+            self.PrivilegeStat = EventStat()
+            self.PrivilegeStat._deserialize(params.get("PrivilegeStat"))
+        if params.get("ReverseShellStat") is not None:
+            self.ReverseShellStat = EventStat()
+            self.ReverseShellStat._deserialize(params.get("ReverseShellStat"))
+        if params.get("HighRiskBashStat") is not None:
+            self.HighRiskBashStat = EventStat()
+            self.HighRiskBashStat._deserialize(params.get("HighRiskBashStat"))
+        if params.get("AttackLogsStat") is not None:
+            self.AttackLogsStat = EventStat()
+            self.AttackLogsStat._deserialize(params.get("AttackLogsStat"))
+        if params.get("VulHighStat") is not None:
+            self.VulHighStat = EventStat()
+            self.VulHighStat._deserialize(params.get("VulHighStat"))
+        if params.get("VulNormalStat") is not None:
+            self.VulNormalStat = EventStat()
+            self.VulNormalStat._deserialize(params.get("VulNormalStat"))
+        if params.get("VulLowStat") is not None:
+            self.VulLowStat = EventStat()
+            self.VulLowStat._deserialize(params.get("VulLowStat"))
+        if params.get("BaselineHighStat") is not None:
+            self.BaselineHighStat = EventStat()
+            self.BaselineHighStat._deserialize(params.get("BaselineHighStat"))
+        if params.get("BaselineNormalStat") is not None:
+            self.BaselineNormalStat = EventStat()
+            self.BaselineNormalStat._deserialize(params.get("BaselineNormalStat"))
+        if params.get("BaselineLowStat") is not None:
+            self.BaselineLowStat = EventStat()
+            self.BaselineLowStat._deserialize(params.get("BaselineLowStat"))
+        self.MachineTotalAffectNum = params.get("MachineTotalAffectNum")
+        self.InvasionTotalAffectNum = params.get("InvasionTotalAffectNum")
+        self.VulTotalAffectNum = params.get("VulTotalAffectNum")
+        self.BaseLineTotalAffectNum = params.get("BaseLineTotalAffectNum")
+        self.CyberAttackTotalAffectNum = params.get("CyberAttackTotalAffectNum")
+        if params.get("VulRiskStat") is not None:
+            self.VulRiskStat = EventStat()
+            self.VulRiskStat._deserialize(params.get("VulRiskStat"))
+        if params.get("BaselineRiskStat") is not None:
+            self.BaselineRiskStat = EventStat()
+            self.BaselineRiskStat._deserialize(params.get("BaselineRiskStat"))
+        if params.get("VulStat") is not None:
+            self.VulStat = EventStat()
+            self.VulStat._deserialize(params.get("VulStat"))
+        self.Score = params.get("Score")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeSecurityEventsCntRequest(AbstractModel):
     """DescribeSecurityEventsCnt请求参数结构体
 
@@ -13765,6 +13937,34 @@ class EmergencyVul(AbstractModel):
         self.CvssScore = params.get("CvssScore")
         self.Labels = params.get("Labels")
         self.HostCount = params.get("HostCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EventStat(AbstractModel):
+    """未处理的安全事件统计信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EventsNum: 事件数
+        :type EventsNum: int
+        :param MachineAffectNum: 受影响的主机数
+        :type MachineAffectNum: int
+        """
+        self.EventsNum = None
+        self.MachineAffectNum = None
+
+
+    def _deserialize(self, params):
+        self.EventsNum = params.get("EventsNum")
+        self.MachineAffectNum = params.get("MachineAffectNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

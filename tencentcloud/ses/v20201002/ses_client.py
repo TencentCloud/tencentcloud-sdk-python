@@ -335,6 +335,34 @@ class SesClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteReceiver(self, request):
+        """根据收件id删除收件人列表,同时删除列表中的所有收件邮箱
+
+        :param request: Request instance for DeleteReceiver.
+        :type request: :class:`tencentcloud.ses.v20201002.models.DeleteReceiverRequest`
+        :rtype: :class:`tencentcloud.ses.v20201002.models.DeleteReceiverResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteReceiver", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteReceiverResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def GetEmailIdentity(self, request):
         """获取某个发信域名的配置详情
 

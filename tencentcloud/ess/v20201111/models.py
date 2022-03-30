@@ -47,18 +47,16 @@ class ApproverInfo(AbstractModel):
         :type OrganizationName: str
         :param ApproverIdCardNumber: 身份证号
         :type ApproverIdCardNumber: str
-        :param ApproverIdCardType: 证件类型 ID_CARD 身份证
+        :param ApproverIdCardType: 证件类型 
+ID_CARD 身份证
+HONGKONG_AND_MACAO 港澳居民来往内地通行证
+HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
         :type ApproverIdCardType: str
         :param NotifyType: sms--短信，none--不通知
         :type NotifyType: str
         :param ApproverRole: 1--收款人、2--开具人、3--见证人
         :type ApproverRole: int
-        :param VerifyChannel: 认证方式：
-WEIXINAPP - 微信小程序；
-VERIFYCODE - 验证码；
-
-可以选择多个, 按照顺序进行优先级选择
-注：使用验证码方式认证签署时，请传入["VERIFYCODE","WEIXINAPP"]
+        :param VerifyChannel: 签署意愿确认渠道,WEIXINAPP:人脸识别
         :type VerifyChannel: list of str
         :param PreReadTime: 合同的强制预览时间：3~300s，未指定则按合同页数计算
         :type PreReadTime: int
@@ -111,28 +109,28 @@ class CancelFlowRequest(AbstractModel):
         r"""
         :param Operator: 操作用户id
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param Agent: 应用相关信息
-        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         :param FlowId: 流程id
         :type FlowId: str
         :param CancelMessage: 撤销原因
         :type CancelMessage: str
+        :param Agent: 应用相关信息
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
         self.Operator = None
-        self.Agent = None
         self.FlowId = None
         self.CancelMessage = None
+        self.Agent = None
 
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
             self.Operator = UserInfo()
             self.Operator._deserialize(params.get("Operator"))
+        self.FlowId = params.get("FlowId")
+        self.CancelMessage = params.get("CancelMessage")
         if params.get("Agent") is not None:
             self.Agent = Agent()
             self.Agent._deserialize(params.get("Agent"))
-        self.FlowId = params.get("FlowId")
-        self.CancelMessage = params.get("CancelMessage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -297,6 +295,8 @@ class CreateDocumentRequest(AbstractModel):
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         :param ClientToken: 客户端Token，保持接口幂等性
         :type ClientToken: str
+        :param NeedPreview: 是否需要生成预览文件 默认不生成
+        :type NeedPreview: bool
         """
         self.Operator = None
         self.TemplateId = None
@@ -305,6 +305,7 @@ class CreateDocumentRequest(AbstractModel):
         self.FormFields = None
         self.Agent = None
         self.ClientToken = None
+        self.NeedPreview = None
 
 
     def _deserialize(self, params):
@@ -324,6 +325,7 @@ class CreateDocumentRequest(AbstractModel):
             self.Agent = Agent()
             self.Agent._deserialize(params.get("Agent"))
         self.ClientToken = params.get("ClientToken")
+        self.NeedPreview = params.get("NeedPreview")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -342,15 +344,20 @@ class CreateDocumentResponse(AbstractModel):
         r"""
         :param DocumentId: 返回的电子文档ID
         :type DocumentId: str
+        :param PreviewFileUrl: 返回合同文件的预览地址 5分钟内有效。仅当NeedPreview为true 时返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PreviewFileUrl: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.DocumentId = None
+        self.PreviewFileUrl = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.DocumentId = params.get("DocumentId")
+        self.PreviewFileUrl = params.get("PreviewFileUrl")
         self.RequestId = params.get("RequestId")
 
 
@@ -389,6 +396,8 @@ MULTI_LINE_TEXT - 多行文本控件
         :type Components: list of Component
         :param CcInfos: 被抄送人的信息列表
         :type CcInfos: list of CcInfo
+        :param NeedPreview: 是否需要预览，true：预览模式，false：非预览（默认）
+        :type NeedPreview: bool
         """
         self.Operator = None
         self.FlowName = None
@@ -401,6 +410,7 @@ MULTI_LINE_TEXT - 多行文本控件
         self.Agent = None
         self.Components = None
         self.CcInfos = None
+        self.NeedPreview = None
 
 
     def _deserialize(self, params):
@@ -434,6 +444,7 @@ MULTI_LINE_TEXT - 多行文本控件
                 obj = CcInfo()
                 obj._deserialize(item)
                 self.CcInfos.append(obj)
+        self.NeedPreview = params.get("NeedPreview")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -452,15 +463,20 @@ class CreateFlowByFilesResponse(AbstractModel):
         r"""
         :param FlowId: 流程编号
         :type FlowId: str
+        :param PreviewUrl: 合同预览链接
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PreviewUrl: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.FlowId = None
+        self.PreviewUrl = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.FlowId = params.get("FlowId")
+        self.PreviewUrl = params.get("PreviewUrl")
         self.RequestId = params.get("RequestId")
 
 
@@ -942,10 +958,12 @@ class FlowCreateApprover(AbstractModel):
         :type ApproverName: str
         :param ApproverMobile: 签署方经办人手机号码
         :type ApproverMobile: str
-        :param ApproverIdCardType: 签署方经办人证件类型，ID_CARD表示身份证
-        :type ApproverIdCardType: str
         :param ApproverIdCardNumber: 签署方经办人证件号码
         :type ApproverIdCardNumber: str
+        :param ApproverIdCardType: 签署方经办人证件类型ID_CARD 身份证
+HONGKONG_AND_MACAO 港澳居民来往内地通行证
+HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
+        :type ApproverIdCardType: str
         :param RecipientId: 签署方经办人在模板中的角色ID
         :type RecipientId: str
         :param UserId: 签署方经办人的用户ID,和签署方经办人姓名+手机号+证件必须有一个
@@ -956,19 +974,22 @@ class FlowCreateApprover(AbstractModel):
         :type PreReadTime: int
         :param NotifyType: 是否发送短信，sms--短信通知，none--不通知，默认为sms
         :type NotifyType: str
+        :param VerifyChannel: 签署意愿确认渠道,WEIXINAPP:人脸识别
+        :type VerifyChannel: list of str
         """
         self.ApproverType = None
         self.OrganizationName = None
         self.Required = None
         self.ApproverName = None
         self.ApproverMobile = None
-        self.ApproverIdCardType = None
         self.ApproverIdCardNumber = None
+        self.ApproverIdCardType = None
         self.RecipientId = None
         self.UserId = None
         self.IsFullText = None
         self.PreReadTime = None
         self.NotifyType = None
+        self.VerifyChannel = None
 
 
     def _deserialize(self, params):
@@ -977,13 +998,14 @@ class FlowCreateApprover(AbstractModel):
         self.Required = params.get("Required")
         self.ApproverName = params.get("ApproverName")
         self.ApproverMobile = params.get("ApproverMobile")
-        self.ApproverIdCardType = params.get("ApproverIdCardType")
         self.ApproverIdCardNumber = params.get("ApproverIdCardNumber")
+        self.ApproverIdCardType = params.get("ApproverIdCardType")
         self.RecipientId = params.get("RecipientId")
         self.UserId = params.get("UserId")
         self.IsFullText = params.get("IsFullText")
         self.PreReadTime = params.get("PreReadTime")
         self.NotifyType = params.get("NotifyType")
+        self.VerifyChannel = params.get("VerifyChannel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

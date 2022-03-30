@@ -30,14 +30,19 @@ class BoundK8SInfo(AbstractModel):
         :param BoundClusterType: 绑定的kubernetes的集群类型，分tke和eks两种
 注意：此字段可能返回 null，表示取不到有效值。
         :type BoundClusterType: str
+        :param SyncMode: 服务同步模式，all为全量同步，demand为按需同步
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SyncMode: str
         """
         self.BoundClusterId = None
         self.BoundClusterType = None
+        self.SyncMode = None
 
 
     def _deserialize(self, params):
         self.BoundClusterId = params.get("BoundClusterId")
         self.BoundClusterType = params.get("BoundClusterType")
+        self.SyncMode = params.get("SyncMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -423,6 +428,12 @@ class SREInstance(AbstractModel):
         :param EnableConsoleIntranet: 引擎实例是否开启控制台内网访问地址
 注意：此字段可能返回 null，表示取不到有效值。
         :type EnableConsoleIntranet: bool
+        :param ConfigInfoVisible: 引擎实例是否展示参数配置页面
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigInfoVisible: bool
+        :param ConsoleDefaultPwd: 引擎实例控制台默认密码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConsoleDefaultPwd: str
         """
         self.InstanceId = None
         self.Name = None
@@ -447,6 +458,8 @@ class SREInstance(AbstractModel):
         self.Tags = None
         self.EnableConsoleInternet = None
         self.EnableConsoleIntranet = None
+        self.ConfigInfoVisible = None
+        self.ConsoleDefaultPwd = None
 
 
     def _deserialize(self, params):
@@ -493,6 +506,8 @@ class SREInstance(AbstractModel):
                 self.Tags.append(obj)
         self.EnableConsoleInternet = params.get("EnableConsoleInternet")
         self.EnableConsoleIntranet = params.get("EnableConsoleIntranet")
+        self.ConfigInfoVisible = params.get("ConfigInfoVisible")
+        self.ConsoleDefaultPwd = params.get("ConsoleDefaultPwd")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -519,12 +534,15 @@ class ServiceGovernanceInfo(AbstractModel):
         :type AuthOpen: bool
         :param Features: 该实例支持的功能，鉴权就是 Auth
         :type Features: list of str
+        :param MainPassword: 主账户名默认为 polaris，该值为主账户的默认密码
+        :type MainPassword: str
         """
         self.EngineRegion = None
         self.BoundK8SInfos = None
         self.VpcInfos = None
         self.AuthOpen = None
         self.Features = None
+        self.MainPassword = None
 
 
     def _deserialize(self, params):
@@ -543,6 +561,7 @@ class ServiceGovernanceInfo(AbstractModel):
                 self.VpcInfos.append(obj)
         self.AuthOpen = params.get("AuthOpen")
         self.Features = params.get("Features")
+        self.MainPassword = params.get("MainPassword")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

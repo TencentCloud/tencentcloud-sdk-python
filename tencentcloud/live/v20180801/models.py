@@ -1377,6 +1377,17 @@ ContinueBreakPoint：播放完当前正在播放的点播 url 后再使用新的
         :type ExtraCmd: str
         :param Comment: 任务描述，限制 512 字节。
         :type Comment: str
+        :param BackupSourceType: 备源的类型：
+PullLivePushLive -直播，
+PullVodPushLive -点播。
+注意：
+1. 仅当主源类型为直播源时，备源才会生效。
+2. 主直播源拉流中断时，自动使用备源进行拉流。
+3. 如果备源为点播文件时，则每次轮播完点播文件就检查主源是否恢复，如果主源恢复则自动切回到主源，否则继续拉备源。
+        :type BackupSourceType: str
+        :param BackupSourceUrl: 备源 URL。
+只允许填一个备源 URL
+        :type BackupSourceUrl: str
         """
         self.SourceType = None
         self.SourceUrls = None
@@ -1393,6 +1404,8 @@ ContinueBreakPoint：播放完当前正在播放的点播 url 后再使用新的
         self.CallbackUrl = None
         self.ExtraCmd = None
         self.Comment = None
+        self.BackupSourceType = None
+        self.BackupSourceUrl = None
 
 
     def _deserialize(self, params):
@@ -1411,6 +1424,8 @@ ContinueBreakPoint：播放完当前正在播放的点播 url 后再使用新的
         self.CallbackUrl = params.get("CallbackUrl")
         self.ExtraCmd = params.get("ExtraCmd")
         self.Comment = params.get("Comment")
+        self.BackupSourceType = params.get("BackupSourceType")
+        self.BackupSourceUrl = params.get("BackupSourceUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1620,6 +1635,8 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
         :type HlsSpecialParam: :class:`tencentcloud.live.v20180801.models.HlsSpecialParam`
         :param Mp3Param: Mp3录制参数，开启Mp3录制时设置。
         :type Mp3Param: :class:`tencentcloud.live.v20180801.models.RecordParam`
+        :param RemoveWatermark: 是否去除水印，类型为慢直播时此参数无效。
+        :type RemoveWatermark: bool
         """
         self.TemplateName = None
         self.Description = None
@@ -1630,6 +1647,7 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
         self.IsDelayLive = None
         self.HlsSpecialParam = None
         self.Mp3Param = None
+        self.RemoveWatermark = None
 
 
     def _deserialize(self, params):
@@ -1654,6 +1672,7 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
         if params.get("Mp3Param") is not None:
             self.Mp3Param = RecordParam()
             self.Mp3Param._deserialize(params.get("Mp3Param"))
+        self.RemoveWatermark = params.get("RemoveWatermark")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6778,9 +6797,9 @@ class DescribeStreamPushInfoListRequest(AbstractModel):
         r"""
         :param StreamName: 流名称。
         :type StreamName: str
-        :param StartTime: 起始时间点，格式为yyyy-mm-dd HH:MM:SS。
+        :param StartTime: 起始时间点，北京时间，格式为yyyy-mm-dd HH:MM:SS。
         :type StartTime: str
-        :param EndTime: 结束时间点，格式为yyyy-mm-dd HH:MM:SS，支持查询最近7天数据，建议查询时间跨度在3小时之内。
+        :param EndTime: 结束时间点，北京时间，格式为yyyy-mm-dd HH:MM:SS，支持查询最近7天数据，建议查询时间跨度在3小时之内。
         :type EndTime: str
         :param PushDomain: 推流域名。
         :type PushDomain: str
@@ -8259,6 +8278,17 @@ ResetTaskConfig：任务更新回调。
         :type OffsetTime: int
         :param Comment: 任务备注。
         :type Comment: str
+        :param BackupSourceType: 备源的类型：
+PullLivePushLive -直播，
+PullVodPushLive -点播。
+注意：
+1. 仅当主源类型为直播源时，备源才会生效。
+2. 主直播源拉流中断时，自动使用备源进行拉流。
+3. 如果备源为点播文件时，则每次轮播完点播文件就检查主源是否恢复，如果主源恢复则自动切回到主源，否则继续拉备源。
+        :type BackupSourceType: str
+        :param BackupSourceUrl: 备源 URL。
+只允许填一个备源 URL
+        :type BackupSourceUrl: str
         """
         self.TaskId = None
         self.Operator = None
@@ -8273,6 +8303,8 @@ ResetTaskConfig：任务更新回调。
         self.FileIndex = None
         self.OffsetTime = None
         self.Comment = None
+        self.BackupSourceType = None
+        self.BackupSourceUrl = None
 
 
     def _deserialize(self, params):
@@ -8289,6 +8321,8 @@ ResetTaskConfig：任务更新回调。
         self.FileIndex = params.get("FileIndex")
         self.OffsetTime = params.get("OffsetTime")
         self.Comment = params.get("Comment")
+        self.BackupSourceType = params.get("BackupSourceType")
+        self.BackupSourceUrl = params.get("BackupSourceUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8400,6 +8434,8 @@ class ModifyLiveRecordTemplateRequest(AbstractModel):
         :type HlsSpecialParam: :class:`tencentcloud.live.v20180801.models.HlsSpecialParam`
         :param Mp3Param: MP3 录制参数，开启 MP3 录制时设置。
         :type Mp3Param: :class:`tencentcloud.live.v20180801.models.RecordParam`
+        :param RemoveWatermark: 是否去除水印，类型为慢直播时此参数无效。
+        :type RemoveWatermark: bool
         """
         self.TemplateId = None
         self.TemplateName = None
@@ -8410,6 +8446,7 @@ class ModifyLiveRecordTemplateRequest(AbstractModel):
         self.AacParam = None
         self.HlsSpecialParam = None
         self.Mp3Param = None
+        self.RemoveWatermark = None
 
 
     def _deserialize(self, params):
@@ -8434,6 +8471,7 @@ class ModifyLiveRecordTemplateRequest(AbstractModel):
         if params.get("Mp3Param") is not None:
             self.Mp3Param = RecordParam()
             self.Mp3Param._deserialize(params.get("Mp3Param"))
+        self.RemoveWatermark = params.get("RemoveWatermark")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9547,6 +9585,10 @@ class PushQualityData(AbstractModel):
         :type MateFps: int
         :param StreamParam: 推流参数
         :type StreamParam: str
+        :param Bandwidth: 带宽，单位Mbps。
+        :type Bandwidth: float
+        :param Flux: 流量，单位MB。
+        :type Flux: float
         """
         self.Time = None
         self.PushDomain = None
@@ -9568,6 +9610,8 @@ class PushQualityData(AbstractModel):
         self.MetaAudioRate = None
         self.MateFps = None
         self.StreamParam = None
+        self.Bandwidth = None
+        self.Flux = None
 
 
     def _deserialize(self, params):
@@ -9591,6 +9635,8 @@ class PushQualityData(AbstractModel):
         self.MetaAudioRate = params.get("MetaAudioRate")
         self.MateFps = params.get("MateFps")
         self.StreamParam = params.get("StreamParam")
+        self.Bandwidth = params.get("Bandwidth")
+        self.Flux = params.get("Flux")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9798,6 +9844,9 @@ class RecordTemplateInfo(AbstractModel):
         :type HlsSpecialParam: :class:`tencentcloud.live.v20180801.models.HlsSpecialParam`
         :param Mp3Param: MP3 录制参数。
         :type Mp3Param: :class:`tencentcloud.live.v20180801.models.RecordParam`
+        :param RemoveWatermark: 是否去除水印。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RemoveWatermark: bool
         """
         self.TemplateId = None
         self.TemplateName = None
@@ -9809,6 +9858,7 @@ class RecordTemplateInfo(AbstractModel):
         self.IsDelayLive = None
         self.HlsSpecialParam = None
         self.Mp3Param = None
+        self.RemoveWatermark = None
 
 
     def _deserialize(self, params):
@@ -9834,6 +9884,7 @@ class RecordTemplateInfo(AbstractModel):
         if params.get("Mp3Param") is not None:
             self.Mp3Param = RecordParam()
             self.Mp3Param._deserialize(params.get("Mp3Param"))
+        self.RemoveWatermark = params.get("RemoveWatermark")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -17,6 +17,9 @@
 # 未进行实名认证。
 AUTHFAILURE_ACCOUNT = 'AuthFailure.Account'
 
+# 权限限额，禁止操作。
+AUTHFAILURE_FORBIDDEN = 'AuthFailure.Forbidden'
+
 # 未找到密钥。
 AUTHFAILURE_SECRETKEYNOTFOUND = 'AuthFailure.SecretKeyNotFound'
 
@@ -79,6 +82,9 @@ FAILEDOPERATION_CHANNELDENY = 'FailedOperation.ChannelDeny'
 
 # 支付渠道错误。
 FAILEDOPERATION_CHANNELERROR = 'FailedOperation.ChannelError'
+
+# 渠道方退款失败。
+FAILEDOPERATION_CHANNELREFUNDFAILED = 'FailedOperation.ChannelRefundFailed'
 
 # 终止合约失败。
 FAILEDOPERATION_CLOSECONTRACTDBFAILED = 'FailedOperation.CloseContractDbFailed'

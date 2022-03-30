@@ -749,16 +749,20 @@ class DescribeCaptchaMiniOperDataRequest(AbstractModel):
         :type Start: int
         :param Type: 查询类型
         :type Type: int
+        :param End: 查询结束时间
+        :type End: int
         """
         self.CaptchaAppId = None
         self.Start = None
         self.Type = None
+        self.End = None
 
 
     def _deserialize(self, params):
         self.CaptchaAppId = params.get("CaptchaAppId")
         self.Start = params.get("Start")
         self.Type = params.get("Type")
+        self.End = params.get("End")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1013,16 +1017,20 @@ class DescribeCaptchaOperDataRequest(AbstractModel):
         :type Start: int
         :param Type: 查询类型
         :type Type: int
+        :param End: 查询结束时间
+        :type End: int
         """
         self.CaptchaAppId = None
         self.Start = None
         self.Type = None
+        self.End = None
 
 
     def _deserialize(self, params):
         self.CaptchaAppId = params.get("CaptchaAppId")
         self.Start = params.get("Start")
         self.Type = params.get("Type")
+        self.End = params.get("End")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1199,14 +1207,18 @@ class DescribeCaptchaTicketDataRequest(AbstractModel):
         :type CaptchaAppId: int
         :param Start: 查询开始时间 例如：20200909
         :type Start: int
+        :param End: 查询结束时间 例如：20220314
+        :type End: int
         """
         self.CaptchaAppId = None
         self.Start = None
+        self.End = None
 
 
     def _deserialize(self, params):
         self.CaptchaAppId = params.get("CaptchaAppId")
         self.Start = params.get("Start")
+        self.End = params.get("End")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

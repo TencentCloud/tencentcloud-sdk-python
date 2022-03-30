@@ -7321,6 +7321,67 @@ class ResetMsgSubOffsetByTimestampResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ResetRocketMQConsumerOffSetRequest(AbstractModel):
+    """ResetRocketMQConsumerOffSet请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param NamespaceId: 命名空间名称
+        :type NamespaceId: str
+        :param GroupId: 消费组名称
+        :type GroupId: str
+        :param Topic: 主题名称
+        :type Topic: str
+        :param Type: 重置方式，0表示从最新位点开始，1表示从指定时间点开始
+        :type Type: int
+        :param ResetTimestamp: 重置指定的时间戳，仅在 Type 为1是生效，以毫秒为单位
+        :type ResetTimestamp: int
+        """
+        self.ClusterId = None
+        self.NamespaceId = None
+        self.GroupId = None
+        self.Topic = None
+        self.Type = None
+        self.ResetTimestamp = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.NamespaceId = params.get("NamespaceId")
+        self.GroupId = params.get("GroupId")
+        self.Topic = params.get("Topic")
+        self.Type = params.get("Type")
+        self.ResetTimestamp = params.get("ResetTimestamp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResetRocketMQConsumerOffSetResponse(AbstractModel):
+    """ResetRocketMQConsumerOffSet返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class RetentionPolicy(AbstractModel):
     """消息保留策略
 

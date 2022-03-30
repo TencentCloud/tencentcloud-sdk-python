@@ -448,6 +448,104 @@ class CreateAppResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateScanUserRequest(AbstractModel):
+    """CreateScanUser请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BizId: 应用ID，登录控制台 - 服务管理创建应用得到的AppID
+        :type BizId: int
+        :param UserId: 需要新增送检的用户号。示例：1234
+        :type UserId: int
+        """
+        self.BizId = None
+        self.UserId = None
+
+
+    def _deserialize(self, params):
+        self.BizId = params.get("BizId")
+        self.UserId = params.get("UserId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateScanUserResponse(AbstractModel):
+    """CreateScanUser返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrorCode: 返回结果码
+        :type ErrorCode: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrorCode = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrorCode = params.get("ErrorCode")
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteScanUserRequest(AbstractModel):
+    """DeleteScanUser请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BizId: 应用ID，登录控制台 - 服务管理创建应用得到的AppID
+        :type BizId: int
+        :param UserId: 需要删除送检的用户号。示例：1234
+        :type UserId: int
+        """
+        self.BizId = None
+        self.UserId = None
+
+
+    def _deserialize(self, params):
+        self.BizId = params.get("BizId")
+        self.UserId = params.get("UserId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteScanUserResponse(AbstractModel):
+    """DeleteScanUser返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrorCode: 返回结果码
+        :type ErrorCode: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrorCode = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrorCode = params.get("ErrorCode")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeAgeDetectTaskRequest(AbstractModel):
     """DescribeAgeDetectTask请求参数结构体
 

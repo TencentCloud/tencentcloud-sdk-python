@@ -12048,7 +12048,7 @@ class ImageRepository(AbstractModel):
         :param ApplicationId: applicationid值
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApplicationId: str
-        :param ApplicationName: ApplicationName值
+        :param ApplicationName: ApplicationName值（类型是string）
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApplicationName: :class:`tencentcloud.tsf.v20180326.models.ScalableRule`
         """

@@ -332,6 +332,9 @@ INVALIDPARAMETERVALUE_INSUFFICIENTPRICE = 'InvalidParameterValue.InsufficientPri
 # 无效的appid。
 INVALIDPARAMETERVALUE_INVALIDAPPIDFORMAT = 'InvalidParameterValue.InvalidAppIdFormat'
 
+# 不支持转为非GPU或其他类型GPU实例。
+INVALIDPARAMETERVALUE_INVALIDGPUFAMILYCHANGE = 'InvalidParameterValue.InvalidGPUFamilyChange'
+
 # 镜像ID不支持指定的实例机型。
 INVALIDPARAMETERVALUE_INVALIDIMAGEFORGIVENINSTANCETYPE = 'InvalidParameterValue.InvalidImageForGivenInstanceType'
 
@@ -349,6 +352,9 @@ INVALIDPARAMETERVALUE_INVALIDIMAGEOSNAME = 'InvalidParameterValue.InvalidImageOs
 
 # 镜像被其他操作占用，请检查，并稍后重试。
 INVALIDPARAMETERVALUE_INVALIDIMAGESTATE = 'InvalidParameterValue.InvalidImageState'
+
+# 该实例配置来自免费升配活动，暂不支持3个月内进行降配。
+INVALIDPARAMETERVALUE_INVALIDINSTANCESOURCE = 'InvalidParameterValue.InvalidInstanceSource'
 
 # IP地址不符合规范
 INVALIDPARAMETERVALUE_INVALIDIPFORMAT = 'InvalidParameterValue.InvalidIpFormat'

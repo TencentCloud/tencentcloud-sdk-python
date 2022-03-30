@@ -77,6 +77,8 @@ class BatchSendEmailRequest(AbstractModel):
         :type TimedParam: :class:`tencentcloud.ses.v20201002.models.TimedEmailParam`
         :param Unsubscribe: 退订选项 1: 加入退订链接 0: 不加入退订链接
         :type Unsubscribe: str
+        :param ADLocation: 是否添加广告标识 0:不添加 1:添加到subject前面，2:添加到subject后面
+        :type ADLocation: int
         """
         self.FromEmailAddress = None
         self.ReceiverId = None
@@ -89,6 +91,7 @@ class BatchSendEmailRequest(AbstractModel):
         self.CycleParam = None
         self.TimedParam = None
         self.Unsubscribe = None
+        self.ADLocation = None
 
 
     def _deserialize(self, params):
@@ -116,6 +119,7 @@ class BatchSendEmailRequest(AbstractModel):
             self.TimedParam = TimedEmailParam()
             self.TimedParam._deserialize(params.get("TimedParam"))
         self.Unsubscribe = params.get("Unsubscribe")
+        self.ADLocation = params.get("ADLocation")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -314,13 +318,17 @@ class CreateEmailTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param TemplateID: 模板id
+        :type TemplateID: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.TemplateID = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.TemplateID = params.get("TemplateID")
         self.RequestId = params.get("RequestId")
 
 
@@ -685,6 +693,47 @@ class DeleteEmailTemplateRequest(AbstractModel):
 
 class DeleteEmailTemplateResponse(AbstractModel):
     """DeleteEmailTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteReceiverRequest(AbstractModel):
+    """DeleteReceiver请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ReceiverId: 收件人列表id，创建收件人列表时会返回
+        :type ReceiverId: int
+        """
+        self.ReceiverId = None
+
+
+    def _deserialize(self, params):
+        self.ReceiverId = params.get("ReceiverId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteReceiverResponse(AbstractModel):
+    """DeleteReceiver返回参数结构体
 
     """
 
@@ -1438,6 +1487,8 @@ class SendEmailRequest(AbstractModel):
         :type Attachments: list of Attachment
         :param Unsubscribe: 退订选项 1: 加入退订链接 0: 不加入退订链接
         :type Unsubscribe: str
+        :param TriggerType: 邮件触发类型 0:非触发类，默认类型，营销类邮件、非即时类邮件等选择此类型  1:触发类，验证码等即时发送类邮件，若邮件超过一定大小，系统会自动选择非触发类型通道
+        :type TriggerType: int
         """
         self.FromEmailAddress = None
         self.Destination = None
@@ -1447,6 +1498,7 @@ class SendEmailRequest(AbstractModel):
         self.Simple = None
         self.Attachments = None
         self.Unsubscribe = None
+        self.TriggerType = None
 
 
     def _deserialize(self, params):
@@ -1467,6 +1519,7 @@ class SendEmailRequest(AbstractModel):
                 obj._deserialize(item)
                 self.Attachments.append(obj)
         self.Unsubscribe = params.get("Unsubscribe")
+        self.TriggerType = params.get("TriggerType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1905,7 +1958,7 @@ class UpdateEmailTemplateRequest(AbstractModel):
         :type TemplateContent: :class:`tencentcloud.ses.v20201002.models.TemplateContent`
         :param TemplateID: 模板ID
         :type TemplateID: int
-        :param TemplateName: 模版名字
+        :param TemplateName: 模板名字
         :type TemplateName: str
         """
         self.TemplateContent = None

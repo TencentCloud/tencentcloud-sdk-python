@@ -3540,7 +3540,7 @@ class NamedComputeEnv(AbstractModel):
         :param AgentRunningMode: agent运行模式，适用于Windows系统
         :type AgentRunningMode: :class:`tencentcloud.batch.v20170312.models.AgentRunningMode`
         :param Notifications: 通知信息
-        :type Notifications: :class:`tencentcloud.batch.v20170312.models.Notification`
+        :type Notifications: list of Notification
         :param ActionIfComputeNodeInactive: 非活跃节点处理策略，默认“RECREATE”，即对于实例创建失败或异常退还的计算节点，定期重新创建实例资源。
         :type ActionIfComputeNodeInactive: str
         :param ResourceMaxRetryCount: 对于实例创建失败或异常退还的计算节点，定期重新创建实例资源的最大重试次数，最大值11，如果不设置的话，系统会设置一个默认值，当前为7
@@ -3593,8 +3593,11 @@ class NamedComputeEnv(AbstractModel):
             self.AgentRunningMode = AgentRunningMode()
             self.AgentRunningMode._deserialize(params.get("AgentRunningMode"))
         if params.get("Notifications") is not None:
-            self.Notifications = Notification()
-            self.Notifications._deserialize(params.get("Notifications"))
+            self.Notifications = []
+            for item in params.get("Notifications"):
+                obj = Notification()
+                obj._deserialize(item)
+                self.Notifications.append(obj)
         self.ActionIfComputeNodeInactive = params.get("ActionIfComputeNodeInactive")
         self.ResourceMaxRetryCount = params.get("ResourceMaxRetryCount")
         if params.get("Tags") is not None:

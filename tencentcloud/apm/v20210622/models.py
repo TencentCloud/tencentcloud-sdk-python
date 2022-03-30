@@ -486,10 +486,13 @@ class DescribeApmInstancesRequest(AbstractModel):
         :type InstanceName: str
         :param InstanceIds: 过滤实例ID
         :type InstanceIds: list of str
+        :param DemoInstanceFlag: 是否查询官方demo实例
+        :type DemoInstanceFlag: int
         """
         self.Tags = None
         self.InstanceName = None
         self.InstanceIds = None
+        self.DemoInstanceFlag = None
 
 
     def _deserialize(self, params):
@@ -501,6 +504,7 @@ class DescribeApmInstancesRequest(AbstractModel):
                 self.Tags.append(obj)
         self.InstanceName = params.get("InstanceName")
         self.InstanceIds = params.get("InstanceIds")
+        self.DemoInstanceFlag = params.get("DemoInstanceFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

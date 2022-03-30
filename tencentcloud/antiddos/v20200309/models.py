@@ -550,11 +550,19 @@ class BGPInstanceSpecification(AbstractModel):
 1：开启了自动续费
 ]
         :type AutoRenewFlag: int
+        :param UnionPackFlag: 联合产品标记，0代表普通高防包，1代表联合高防包
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UnionPackFlag: int
+        :param ServiceBandWidth: 业务带宽
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceBandWidth: int
         """
         self.ProtectBandwidth = None
         self.ProtectCountLimit = None
         self.ProtectIPNumberLimit = None
         self.AutoRenewFlag = None
+        self.UnionPackFlag = None
+        self.ServiceBandWidth = None
 
 
     def _deserialize(self, params):
@@ -562,6 +570,8 @@ class BGPInstanceSpecification(AbstractModel):
         self.ProtectCountLimit = params.get("ProtectCountLimit")
         self.ProtectIPNumberLimit = params.get("ProtectIPNumberLimit")
         self.AutoRenewFlag = params.get("AutoRenewFlag")
+        self.UnionPackFlag = params.get("UnionPackFlag")
+        self.ServiceBandWidth = params.get("ServiceBandWidth")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2384,7 +2394,7 @@ class DDoSGeoIPBlockConfig(AbstractModel):
     def __init__(self):
         r"""
         :param RegionType: 区域类型，取值[
-oversea(海外)
+oversea(境外)
 china(国内)
 customized(自定义地区)
 ]
@@ -4518,6 +4528,8 @@ class DescribeListBGPInstancesRequest(AbstractModel):
         :type FilterStatus: str
         :param FilterBoundStatus: 高防包绑定状态搜索，bounding：绑定中； failed：绑定失败
         :type FilterBoundStatus: str
+        :param FilterInstanceIdList: 实例id数组
+        :type FilterInstanceIdList: list of str
         """
         self.Offset = None
         self.Limit = None
@@ -4528,6 +4540,7 @@ class DescribeListBGPInstancesRequest(AbstractModel):
         self.FilterLine = None
         self.FilterStatus = None
         self.FilterBoundStatus = None
+        self.FilterInstanceIdList = None
 
 
     def _deserialize(self, params):
@@ -4540,6 +4553,7 @@ class DescribeListBGPInstancesRequest(AbstractModel):
         self.FilterLine = params.get("FilterLine")
         self.FilterStatus = params.get("FilterStatus")
         self.FilterBoundStatus = params.get("FilterBoundStatus")
+        self.FilterInstanceIdList = params.get("FilterInstanceIdList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

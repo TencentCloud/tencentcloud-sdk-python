@@ -73,6 +73,9 @@ class AbnormalProcessEventDescription(AbstractModel):
         :type RuleName: str
         :param RuleId: 命中规则的id
         :type RuleId: str
+        :param OperationTime: 事件最后一次处理的时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OperationTime: str
         """
         self.Description = None
         self.Solution = None
@@ -80,6 +83,7 @@ class AbnormalProcessEventDescription(AbstractModel):
         self.MatchRule = None
         self.RuleName = None
         self.RuleId = None
+        self.OperationTime = None
 
 
     def _deserialize(self, params):
@@ -91,6 +95,7 @@ class AbnormalProcessEventDescription(AbstractModel):
             self.MatchRule._deserialize(params.get("MatchRule"))
         self.RuleName = params.get("RuleName")
         self.RuleId = params.get("RuleId")
+        self.OperationTime = params.get("OperationTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -229,6 +234,8 @@ class AbnormalProcessRuleInfo(AbstractModel):
         :type RuleId: str
         :param SystemChildRules: 系统策略的子策略数组
         :type SystemChildRules: list of AbnormalProcessSystemChildRuleInfo
+        :param IsDefault: 是否是系统默认策略
+        :type IsDefault: bool
         """
         self.IsEnable = None
         self.ImageIds = None
@@ -236,6 +243,7 @@ class AbnormalProcessRuleInfo(AbstractModel):
         self.RuleName = None
         self.RuleId = None
         self.SystemChildRules = None
+        self.IsDefault = None
 
 
     def _deserialize(self, params):
@@ -255,6 +263,7 @@ class AbnormalProcessRuleInfo(AbstractModel):
                 obj = AbnormalProcessSystemChildRuleInfo()
                 obj._deserialize(item)
                 self.SystemChildRules.append(obj)
+        self.IsDefault = params.get("IsDefault")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -368,6 +377,9 @@ class AccessControlEventDescription(AbstractModel):
         :type RuleName: str
         :param RuleId: 命中规则id
         :type RuleId: str
+        :param OperationTime: 事件最后一次处理的时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OperationTime: str
         """
         self.Description = None
         self.Solution = None
@@ -375,6 +387,7 @@ class AccessControlEventDescription(AbstractModel):
         self.MatchRule = None
         self.RuleName = None
         self.RuleId = None
+        self.OperationTime = None
 
 
     def _deserialize(self, params):
@@ -386,6 +399,7 @@ class AccessControlEventDescription(AbstractModel):
             self.MatchRule._deserialize(params.get("MatchRule"))
         self.RuleName = params.get("RuleName")
         self.RuleId = params.get("RuleId")
+        self.OperationTime = params.get("OperationTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -536,6 +550,8 @@ class AccessControlRuleInfo(AbstractModel):
         :type RuleId: str
         :param SystemChildRules: 系统策略的子策略数组
         :type SystemChildRules: list of AccessControlSystemChildRuleInfo
+        :param IsDefault: 是否是系统默认策略
+        :type IsDefault: bool
         """
         self.IsEnable = None
         self.ImageIds = None
@@ -543,6 +559,7 @@ class AccessControlRuleInfo(AbstractModel):
         self.RuleName = None
         self.RuleId = None
         self.SystemChildRules = None
+        self.IsDefault = None
 
 
     def _deserialize(self, params):
@@ -562,6 +579,7 @@ class AccessControlRuleInfo(AbstractModel):
                 obj = AccessControlSystemChildRuleInfo()
                 obj._deserialize(item)
                 self.SystemChildRules.append(obj)
+        self.IsDefault = params.get("IsDefault")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1873,6 +1891,12 @@ CHECK_FAILED, 检测失败
         :type LastCheckTime: str
         :param PeriodRule: 定时检测规则。
         :type PeriodRule: :class:`tencentcloud.tcss.v20201101.models.CompliancePeriodTaskRule`
+        :param OpenPolicyItemCount: 已开启的检查项总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OpenPolicyItemCount: int
+        :param IgnoredPolicyItemCount: 已忽略的检查项总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IgnoredPolicyItemCount: int
         """
         self.AssetType = None
         self.IsCustomerFirstCheck = None
@@ -1892,6 +1916,8 @@ CHECK_FAILED, 检测失败
         self.CheckCostTime = None
         self.LastCheckTime = None
         self.PeriodRule = None
+        self.OpenPolicyItemCount = None
+        self.IgnoredPolicyItemCount = None
 
 
     def _deserialize(self, params):
@@ -1915,6 +1941,8 @@ CHECK_FAILED, 检测失败
         if params.get("PeriodRule") is not None:
             self.PeriodRule = CompliancePeriodTaskRule()
             self.PeriodRule._deserialize(params.get("PeriodRule"))
+        self.OpenPolicyItemCount = params.get("OpenPolicyItemCount")
+        self.IgnoredPolicyItemCount = params.get("IgnoredPolicyItemCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2217,14 +2245,19 @@ class CompliancePeriodTaskRule(AbstractModel):
         :type Frequency: int
         :param ExecutionTime: 在这天的什么时间执行，格式为：HH:mm:SS。
         :type ExecutionTime: str
+        :param Enable: 是否开启
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Enable: bool
         """
         self.Frequency = None
         self.ExecutionTime = None
+        self.Enable = None
 
 
     def _deserialize(self, params):
         self.Frequency = params.get("Frequency")
         self.ExecutionTime = params.get("ExecutionTime")
+        self.Enable = params.get("Enable")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3613,6 +3646,9 @@ class DescribeAbnormalProcessDetailResponse(AbstractModel):
         :type ParentProcessInfo: :class:`tencentcloud.tcss.v20201101.models.ProcessDetailBaseInfo`
         :param EventDetail: 事件描述
         :type EventDetail: :class:`tencentcloud.tcss.v20201101.models.AbnormalProcessEventDescription`
+        :param AncestorProcessInfo: 祖先进程信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AncestorProcessInfo: :class:`tencentcloud.tcss.v20201101.models.ProcessBaseInfo`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3620,6 +3656,7 @@ class DescribeAbnormalProcessDetailResponse(AbstractModel):
         self.ProcessInfo = None
         self.ParentProcessInfo = None
         self.EventDetail = None
+        self.AncestorProcessInfo = None
         self.RequestId = None
 
 
@@ -3636,6 +3673,9 @@ class DescribeAbnormalProcessDetailResponse(AbstractModel):
         if params.get("EventDetail") is not None:
             self.EventDetail = AbnormalProcessEventDescription()
             self.EventDetail._deserialize(params.get("EventDetail"))
+        if params.get("AncestorProcessInfo") is not None:
+            self.AncestorProcessInfo = ProcessBaseInfo()
+            self.AncestorProcessInfo._deserialize(params.get("AncestorProcessInfo"))
         self.RequestId = params.get("RequestId")
 
 
@@ -3796,14 +3836,22 @@ class DescribeAbnormalProcessRuleDetailRequest(AbstractModel):
         :type RuleId: str
         :param ImageId: 镜像id, 在添加白名单的时候使用
         :type ImageId: str
+        :param Limit: 需要返回的数量，默认为10，最大值为100
+        :type Limit: int
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
         """
         self.RuleId = None
         self.ImageId = None
+        self.Limit = None
+        self.Offset = None
 
 
     def _deserialize(self, params):
         self.RuleId = params.get("RuleId")
         self.ImageId = params.get("ImageId")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4021,6 +4069,11 @@ class DescribeAccessControlDetailResponse(AbstractModel):
         :type TamperedFileInfo: :class:`tencentcloud.tcss.v20201101.models.FileAttributeInfo`
         :param EventDetail: 事件描述
         :type EventDetail: :class:`tencentcloud.tcss.v20201101.models.AccessControlEventDescription`
+        :param ParentProcessInfo: 父进程信息
+        :type ParentProcessInfo: :class:`tencentcloud.tcss.v20201101.models.ProcessBaseInfo`
+        :param AncestorProcessInfo: 祖先进程信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AncestorProcessInfo: :class:`tencentcloud.tcss.v20201101.models.ProcessBaseInfo`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4028,6 +4081,8 @@ class DescribeAccessControlDetailResponse(AbstractModel):
         self.ProcessInfo = None
         self.TamperedFileInfo = None
         self.EventDetail = None
+        self.ParentProcessInfo = None
+        self.AncestorProcessInfo = None
         self.RequestId = None
 
 
@@ -4044,6 +4099,12 @@ class DescribeAccessControlDetailResponse(AbstractModel):
         if params.get("EventDetail") is not None:
             self.EventDetail = AccessControlEventDescription()
             self.EventDetail._deserialize(params.get("EventDetail"))
+        if params.get("ParentProcessInfo") is not None:
+            self.ParentProcessInfo = ProcessBaseInfo()
+            self.ParentProcessInfo._deserialize(params.get("ParentProcessInfo"))
+        if params.get("AncestorProcessInfo") is not None:
+            self.AncestorProcessInfo = ProcessBaseInfo()
+            self.AncestorProcessInfo._deserialize(params.get("AncestorProcessInfo"))
         self.RequestId = params.get("RequestId")
 
 
@@ -4204,14 +4265,22 @@ class DescribeAccessControlRuleDetailRequest(AbstractModel):
         :type RuleId: str
         :param ImageId: 镜像id, 仅仅在事件加白的时候使用
         :type ImageId: str
+        :param Limit: 需要返回的数量，默认为10，最大值为100
+        :type Limit: int
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
         """
         self.RuleId = None
         self.ImageId = None
+        self.Limit = None
+        self.Offset = None
 
 
     def _deserialize(self, params):
         self.RuleId = params.get("RuleId")
         self.ImageId = params.get("ImageId")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8857,12 +8926,19 @@ class DescribeEscapeEventDetailResponse(AbstractModel):
         :type ProcessInfo: :class:`tencentcloud.tcss.v20201101.models.ProcessDetailInfo`
         :param EventDetail: 事件描述
         :type EventDetail: :class:`tencentcloud.tcss.v20201101.models.EscapeEventDescription`
+        :param ParentProcessInfo: 父进程信息
+        :type ParentProcessInfo: :class:`tencentcloud.tcss.v20201101.models.ProcessBaseInfo`
+        :param AncestorProcessInfo: 祖先进程信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AncestorProcessInfo: :class:`tencentcloud.tcss.v20201101.models.ProcessBaseInfo`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.EventBaseInfo = None
         self.ProcessInfo = None
         self.EventDetail = None
+        self.ParentProcessInfo = None
+        self.AncestorProcessInfo = None
         self.RequestId = None
 
 
@@ -8876,6 +8952,12 @@ class DescribeEscapeEventDetailResponse(AbstractModel):
         if params.get("EventDetail") is not None:
             self.EventDetail = EscapeEventDescription()
             self.EventDetail._deserialize(params.get("EventDetail"))
+        if params.get("ParentProcessInfo") is not None:
+            self.ParentProcessInfo = ProcessBaseInfo()
+            self.ParentProcessInfo._deserialize(params.get("ParentProcessInfo"))
+        if params.get("AncestorProcessInfo") is not None:
+            self.AncestorProcessInfo = ProcessBaseInfo()
+            self.AncestorProcessInfo._deserialize(params.get("AncestorProcessInfo"))
         self.RequestId = params.get("RequestId")
 
 
@@ -9678,6 +9760,9 @@ class DescribeReverseShellDetailResponse(AbstractModel):
         :type ParentProcessInfo: :class:`tencentcloud.tcss.v20201101.models.ProcessDetailBaseInfo`
         :param EventDetail: 事件描述
         :type EventDetail: :class:`tencentcloud.tcss.v20201101.models.ReverseShellEventDescription`
+        :param AncestorProcessInfo: 祖先进程信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AncestorProcessInfo: :class:`tencentcloud.tcss.v20201101.models.ProcessBaseInfo`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -9685,6 +9770,7 @@ class DescribeReverseShellDetailResponse(AbstractModel):
         self.ProcessInfo = None
         self.ParentProcessInfo = None
         self.EventDetail = None
+        self.AncestorProcessInfo = None
         self.RequestId = None
 
 
@@ -9701,6 +9787,9 @@ class DescribeReverseShellDetailResponse(AbstractModel):
         if params.get("EventDetail") is not None:
             self.EventDetail = ReverseShellEventDescription()
             self.EventDetail._deserialize(params.get("EventDetail"))
+        if params.get("AncestorProcessInfo") is not None:
+            self.AncestorProcessInfo = ProcessBaseInfo()
+            self.AncestorProcessInfo._deserialize(params.get("AncestorProcessInfo"))
         self.RequestId = params.get("RequestId")
 
 
@@ -10091,6 +10180,9 @@ class DescribeRiskSyscallDetailResponse(AbstractModel):
         :type ParentProcessInfo: :class:`tencentcloud.tcss.v20201101.models.ProcessDetailBaseInfo`
         :param EventDetail: 事件描述
         :type EventDetail: :class:`tencentcloud.tcss.v20201101.models.RiskSyscallEventDescription`
+        :param AncestorProcessInfo: 祖先进程信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AncestorProcessInfo: :class:`tencentcloud.tcss.v20201101.models.ProcessBaseInfo`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -10098,6 +10190,7 @@ class DescribeRiskSyscallDetailResponse(AbstractModel):
         self.ProcessInfo = None
         self.ParentProcessInfo = None
         self.EventDetail = None
+        self.AncestorProcessInfo = None
         self.RequestId = None
 
 
@@ -10114,6 +10207,9 @@ class DescribeRiskSyscallDetailResponse(AbstractModel):
         if params.get("EventDetail") is not None:
             self.EventDetail = RiskSyscallEventDescription()
             self.EventDetail._deserialize(params.get("EventDetail"))
+        if params.get("AncestorProcessInfo") is not None:
+            self.AncestorProcessInfo = ProcessBaseInfo()
+            self.AncestorProcessInfo._deserialize(params.get("AncestorProcessInfo"))
         self.RequestId = params.get("RequestId")
 
 
@@ -10798,6 +10894,33 @@ CONTAINER_NOT_FOUND_DEAL_RECOVER:恢复时，容器不存在
         :param ClientIP: 外网ip
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClientIP: str
+        :param PProcessStartUser: 父进程启动用户
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PProcessStartUser: str
+        :param PProcessUserGroup: 父进程用户组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PProcessUserGroup: str
+        :param PProcessPath: 父进程路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PProcessPath: str
+        :param PProcessParam: 父进程命令行参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PProcessParam: str
+        :param AncestorProcessStartUser: 祖先进程启动用户
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AncestorProcessStartUser: str
+        :param AncestorProcessUserGroup: 祖先进程用户组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AncestorProcessUserGroup: str
+        :param AncestorProcessPath: 祖先进程路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AncestorProcessPath: str
+        :param AncestorProcessParam: 祖先进程命令行参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AncestorProcessParam: str
+        :param OperationTime: 事件最后一次处理的时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OperationTime: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -10835,6 +10958,15 @@ CONTAINER_NOT_FOUND_DEAL_RECOVER:恢复时，容器不存在
         self.SubStatus = None
         self.HostIP = None
         self.ClientIP = None
+        self.PProcessStartUser = None
+        self.PProcessUserGroup = None
+        self.PProcessPath = None
+        self.PProcessParam = None
+        self.AncestorProcessStartUser = None
+        self.AncestorProcessUserGroup = None
+        self.AncestorProcessPath = None
+        self.AncestorProcessParam = None
+        self.OperationTime = None
         self.RequestId = None
 
 
@@ -10873,6 +11005,15 @@ CONTAINER_NOT_FOUND_DEAL_RECOVER:恢复时，容器不存在
         self.SubStatus = params.get("SubStatus")
         self.HostIP = params.get("HostIP")
         self.ClientIP = params.get("ClientIP")
+        self.PProcessStartUser = params.get("PProcessStartUser")
+        self.PProcessUserGroup = params.get("PProcessUserGroup")
+        self.PProcessPath = params.get("PProcessPath")
+        self.PProcessParam = params.get("PProcessParam")
+        self.AncestorProcessStartUser = params.get("AncestorProcessStartUser")
+        self.AncestorProcessUserGroup = params.get("AncestorProcessUserGroup")
+        self.AncestorProcessPath = params.get("AncestorProcessPath")
+        self.AncestorProcessParam = params.get("AncestorProcessParam")
+        self.OperationTime = params.get("OperationTime")
         self.RequestId = params.get("RequestId")
 
 
@@ -11384,16 +11525,21 @@ class EscapeEventDescription(AbstractModel):
         :param Remark: 事件备注信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
+        :param OperationTime: 事件最后一次处理的时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OperationTime: str
         """
         self.Description = None
         self.Solution = None
         self.Remark = None
+        self.OperationTime = None
 
 
     def _deserialize(self, params):
         self.Description = params.get("Description")
         self.Solution = params.get("Solution")
         self.Remark = params.get("Remark")
+        self.OperationTime = params.get("OperationTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -13810,6 +13956,46 @@ class PortInfo(AbstractModel):
         
 
 
+class ProcessBaseInfo(AbstractModel):
+    """运行时安全，进程基础信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProcessStartUser: 进程启动用户
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProcessStartUser: str
+        :param ProcessUserGroup: 进程用户组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProcessUserGroup: str
+        :param ProcessPath: 进程路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProcessPath: str
+        :param ProcessParam: 进程命令行参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProcessParam: str
+        """
+        self.ProcessStartUser = None
+        self.ProcessUserGroup = None
+        self.ProcessPath = None
+        self.ProcessParam = None
+
+
+    def _deserialize(self, params):
+        self.ProcessStartUser = params.get("ProcessStartUser")
+        self.ProcessUserGroup = params.get("ProcessUserGroup")
+        self.ProcessPath = params.get("ProcessPath")
+        self.ProcessParam = params.get("ProcessParam")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ProcessDetailBaseInfo(AbstractModel):
     """运行是安全详情，进程基础信息
 
@@ -14080,11 +14266,15 @@ class ReverseShellEventDescription(AbstractModel):
         :type Remark: str
         :param DstAddress: 目标地址
         :type DstAddress: str
+        :param OperationTime: 事件最后一次处理的时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OperationTime: str
         """
         self.Description = None
         self.Solution = None
         self.Remark = None
         self.DstAddress = None
+        self.OperationTime = None
 
 
     def _deserialize(self, params):
@@ -14092,6 +14282,7 @@ class ReverseShellEventDescription(AbstractModel):
         self.Solution = params.get("Solution")
         self.Remark = params.get("Remark")
         self.DstAddress = params.get("DstAddress")
+        self.OperationTime = params.get("OperationTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -14300,11 +14491,15 @@ class RiskSyscallEventDescription(AbstractModel):
         :type Remark: str
         :param SyscallName: 系统调用名称
         :type SyscallName: str
+        :param OperationTime: 事件最后一次处理的时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OperationTime: str
         """
         self.Description = None
         self.Solution = None
         self.Remark = None
         self.SyscallName = None
+        self.OperationTime = None
 
 
     def _deserialize(self, params):
@@ -14312,6 +14507,7 @@ class RiskSyscallEventDescription(AbstractModel):
         self.Solution = params.get("Solution")
         self.Remark = params.get("Remark")
         self.SyscallName = params.get("SyscallName")
+        self.OperationTime = params.get("OperationTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

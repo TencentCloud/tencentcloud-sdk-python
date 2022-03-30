@@ -1482,6 +1482,9 @@ postMoveIn 按量计费迁入资源
         :param SubProductName: 子产品编码中文名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubProductName: str
+        :param ResourceId: 订单对应的资源id, 查询参数Limit超过200，将返回null
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceId: list of str
         """
         self.OrderId = None
         self.Status = None
@@ -1508,6 +1511,7 @@ postMoveIn 按量计费迁入资源
         self.Action = None
         self.ProductName = None
         self.SubProductName = None
+        self.ResourceId = None
 
 
     def _deserialize(self, params):
@@ -1541,6 +1545,7 @@ postMoveIn 按量计费迁入资源
         self.Action = params.get("Action")
         self.ProductName = params.get("ProductName")
         self.SubProductName = params.get("SubProductName")
+        self.ResourceId = params.get("ResourceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2847,6 +2852,8 @@ class DescribeDealsByCondRequest(AbstractModel):
         :type OrderId: str
         :param BigDealId: 大订单号
         :type BigDealId: str
+        :param ResourceId: 资源id
+        :type ResourceId: str
         """
         self.StartTime = None
         self.EndTime = None
@@ -2855,6 +2862,7 @@ class DescribeDealsByCondRequest(AbstractModel):
         self.Status = None
         self.OrderId = None
         self.BigDealId = None
+        self.ResourceId = None
 
 
     def _deserialize(self, params):
@@ -2865,6 +2873,7 @@ class DescribeDealsByCondRequest(AbstractModel):
         self.Status = params.get("Status")
         self.OrderId = params.get("OrderId")
         self.BigDealId = params.get("BigDealId")
+        self.ResourceId = params.get("ResourceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -65,6 +65,9 @@ FAILEDOPERATION_TEMPLATEMAXNUMFAILED = 'FailedOperation.TemplateMaxNumFailed'
 # 上传图片操作失败。
 FAILEDOPERATION_UPLOADIMAGEFAILED = 'FailedOperation.UploadImageFailed'
 
+# 当前用户未在官网进行实名操作。
+FAILEDOPERATION_VERIFYUINISREALNAME = 'FailedOperation.VerifyUinIsRealname'
+
 # 内部错误。
 INTERNALERROR = 'InternalError'
 
@@ -154,6 +157,9 @@ INVALIDPARAMETER_VERIFYCODEISINVALID = 'InvalidParameter.VerifyCodeIsInvalid'
 
 # 邮编为空或者不合法。
 INVALIDPARAMETER_ZIPCODEISINVALID = 'InvalidParameter.ZipCodeIsInvalid'
+
+# 请求频率超过限制。
+LIMITEXCEEDED_REQUESTLIMIT = 'LimitExceeded.RequestLimit'
 
 # 缺少参数错误。
 MISSINGPARAMETER = 'MissingParameter'

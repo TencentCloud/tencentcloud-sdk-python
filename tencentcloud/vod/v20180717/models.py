@@ -407,11 +407,15 @@ class AdaptiveStreamTemplate(AbstractModel):
 <li>0：否，</li>
 <li>1：是。</li>
         :type RemoveVideo: int
+        :param TEHDConfig: 极速高清转码参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TEHDConfig: :class:`tencentcloud.vod.v20180717.models.TEHDConfig`
         """
         self.Video = None
         self.Audio = None
         self.RemoveAudio = None
         self.RemoveVideo = None
+        self.TEHDConfig = None
 
 
     def _deserialize(self, params):
@@ -423,6 +427,9 @@ class AdaptiveStreamTemplate(AbstractModel):
             self.Audio._deserialize(params.get("Audio"))
         self.RemoveAudio = params.get("RemoveAudio")
         self.RemoveVideo = params.get("RemoveVideo")
+        if params.get("TEHDConfig") is not None:
+            self.TEHDConfig = TEHDConfig()
+            self.TEHDConfig._deserialize(params.get("TEHDConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5226,7 +5233,7 @@ class ComposeMediaTask(AbstractModel):
         :param Output: 制作媒体文件任务的输出。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.ComposeMediaTaskOutput`
-        :param MetaData: 原始视频的元信息。
+        :param MetaData: 输出视频的元信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
         :param SessionId: 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
@@ -5482,6 +5489,117 @@ class ConfirmEventsResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class ContentReviewOcrResult(AbstractModel):
+    """图片Ocr 文字鉴别信息的任务结果类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Confidence: Ocr 文字鉴别结果的评分，分值为0到100。
+        :type Confidence: float
+        :param Suggestion: Ocr 文字鉴别的结果建议，取值范围：
+<li>pass；</li>
+<li>review；</li>
+<li>block。</li>
+        :type Suggestion: str
+        :param KeywordSet: Ocr 文字鉴别的嫌疑关键词列表。
+        :type KeywordSet: list of str
+        :param AreaCoordSet: Ocr 文字鉴别的嫌疑文字出现的区域坐标 (像素级)，[x1, y1, x2, y2]，即左上角坐标、右下角坐标。
+        :type AreaCoordSet: list of int
+        """
+        self.Confidence = None
+        self.Suggestion = None
+        self.KeywordSet = None
+        self.AreaCoordSet = None
+
+
+    def _deserialize(self, params):
+        self.Confidence = params.get("Confidence")
+        self.Suggestion = params.get("Suggestion")
+        self.KeywordSet = params.get("KeywordSet")
+        self.AreaCoordSet = params.get("AreaCoordSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ContentReviewResult(AbstractModel):
+    """图片智能内容识别任务结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Type: 结果类型，取值范围：
+<li>Porn.Image：图片画面中的鉴别令人反感的信息结果；</li>
+<li>Terrorism.Image：图片画面中的鉴别令人不安全的信息结果；</li>
+<li>Political.Image：图片画面中的鉴别令人不适宜信息结果；</li>
+<li>Porn.Ocr：图片 OCR 文字中的鉴别令人反感的信息结果；</li>
+<li>Terrorism.Ocr：图片 OCR 文字中的鉴别令人不安全的信息结果；</li>
+<li>Political.Ocr：图片 OCR 文字中的鉴别令人不适宜信息结果。</li>
+        :type Type: str
+        :param PornImageResult: 图片画面中的鉴别令人反感的信息结果，当 Type 为 Porn.Image 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PornImageResult: :class:`tencentcloud.vod.v20180717.models.PornImageResult`
+        :param TerrorismImageResult: 图片画面中的鉴别令人不安全的信息结果，当 Type 为 Terrorism.Image 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TerrorismImageResult: :class:`tencentcloud.vod.v20180717.models.TerrorismImageResult`
+        :param PoliticalImageResult: 图片画面中的鉴别令人不适宜信息结果，当 Type 为 Political.Image 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PoliticalImageResult: :class:`tencentcloud.vod.v20180717.models.PoliticalImageResult`
+        :param PornOcrResult: 图片 OCR 文字中的鉴别令人反感的信息结果，当 Type 为 Porn.Ocr 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PornOcrResult: :class:`tencentcloud.vod.v20180717.models.ContentReviewOcrResult`
+        :param TerrorismOcrResult: 图片 OCR 中的鉴别令人不安全的信息结果，当 Type 为 Terrorism.Ocr 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TerrorismOcrResult: :class:`tencentcloud.vod.v20180717.models.ContentReviewOcrResult`
+        :param PoliticalOcrResult: 图片 OCR 文字中的鉴别令人不适宜信息结果，当 Type 为 Political.Ocr 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PoliticalOcrResult: :class:`tencentcloud.vod.v20180717.models.ContentReviewOcrResult`
+        """
+        self.Type = None
+        self.PornImageResult = None
+        self.TerrorismImageResult = None
+        self.PoliticalImageResult = None
+        self.PornOcrResult = None
+        self.TerrorismOcrResult = None
+        self.PoliticalOcrResult = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        if params.get("PornImageResult") is not None:
+            self.PornImageResult = PornImageResult()
+            self.PornImageResult._deserialize(params.get("PornImageResult"))
+        if params.get("TerrorismImageResult") is not None:
+            self.TerrorismImageResult = TerrorismImageResult()
+            self.TerrorismImageResult._deserialize(params.get("TerrorismImageResult"))
+        if params.get("PoliticalImageResult") is not None:
+            self.PoliticalImageResult = PoliticalImageResult()
+            self.PoliticalImageResult._deserialize(params.get("PoliticalImageResult"))
+        if params.get("PornOcrResult") is not None:
+            self.PornOcrResult = ContentReviewOcrResult()
+            self.PornOcrResult._deserialize(params.get("PornOcrResult"))
+        if params.get("TerrorismOcrResult") is not None:
+            self.TerrorismOcrResult = ContentReviewOcrResult()
+            self.TerrorismOcrResult._deserialize(params.get("TerrorismOcrResult"))
+        if params.get("PoliticalOcrResult") is not None:
+            self.PoliticalOcrResult = ContentReviewOcrResult()
+            self.PoliticalOcrResult._deserialize(params.get("PoliticalOcrResult"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ContentReviewTemplateItem(AbstractModel):
@@ -9542,6 +9660,75 @@ class DescribeMediaInfosResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeMediaPlayStatDetailsRequest(AbstractModel):
+    """DescribeMediaPlayStatDetails请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FileId: 媒体文件 ID。
+        :type FileId: str
+        :param StartTime: 起始时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type StartTime: str
+        :param EndTime: 结束时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type EndTime: str
+        :param Interval: 统计时间粒度，有效值：
+<li>Hour：以小时为粒度。</li>
+<li>Day：以天为粒度。</li>
+默认按时间跨度决定，小于1天以小时为粒度，大于等于1天则以天为粒度。
+        :type Interval: str
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.FileId = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Interval = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.FileId = params.get("FileId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Interval = params.get("Interval")
+        self.SubAppId = params.get("SubAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeMediaPlayStatDetailsResponse(AbstractModel):
+    """DescribeMediaPlayStatDetails返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PlayStatInfoSet: 播放统计数据。
+        :type PlayStatInfoSet: list of PlayStatInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.PlayStatInfoSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("PlayStatInfoSet") is not None:
+            self.PlayStatInfoSet = []
+            for item in params.get("PlayStatInfoSet"):
+                obj = PlayStatInfo()
+                obj._deserialize(item)
+                self.PlayStatInfoSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeMediaProcessUsageDataRequest(AbstractModel):
     """DescribeMediaProcessUsageData请求参数结构体
 
@@ -11062,11 +11249,17 @@ class EditMediaOutputConfig(AbstractModel):
         :type ClassId: int
         :param ExpireTime: 输出文件的过期时间，超过该时间文件将被删除，默认为永久不过期，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
         :type ExpireTime: str
+        :param VideoStream: 输出的视频信息。
+        :type VideoStream: :class:`tencentcloud.vod.v20180717.models.EditMediaVideoStream`
+        :param TEHDConfig: 极速高清转码参数。
+        :type TEHDConfig: :class:`tencentcloud.vod.v20180717.models.EditMediaTEHDConfig`
         """
         self.MediaName = None
         self.Type = None
         self.ClassId = None
         self.ExpireTime = None
+        self.VideoStream = None
+        self.TEHDConfig = None
 
 
     def _deserialize(self, params):
@@ -11074,6 +11267,12 @@ class EditMediaOutputConfig(AbstractModel):
         self.Type = params.get("Type")
         self.ClassId = params.get("ClassId")
         self.ExpireTime = params.get("ExpireTime")
+        if params.get("VideoStream") is not None:
+            self.VideoStream = EditMediaVideoStream()
+            self.VideoStream._deserialize(params.get("VideoStream"))
+        if params.get("TEHDConfig") is not None:
+            self.TEHDConfig = EditMediaTEHDConfig()
+            self.TEHDConfig._deserialize(params.get("TEHDConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -11098,7 +11297,7 @@ class EditMediaRequest(AbstractModel):
         :type StreamInfos: list of EditMediaStreamInfo
         :param Definition: 编辑模板 ID，取值有 10，20，不填代表使用 10 模板。
 <li>10：拼接时，以分辨率最高的输入为基准；</li>
-<li>20：拼接时，以码率最高的输入为基准；</li>
+<li>20：拼接时，以码率最高的输入为基准。</li>
         :type Definition: int
         :param ProcedureName: [任务流模板](/document/product/266/11700#.E4.BB.BB.E5.8A.A1.E6.B5.81.E6.A8.A1.E6.9D.BF)名字，如果要对生成的新视频执行任务流时填写。
         :type ProcedureName: str
@@ -11214,6 +11413,30 @@ class EditMediaStreamInfo(AbstractModel):
         
 
 
+class EditMediaTEHDConfig(AbstractModel):
+    """视频编辑极速高清参数配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Type: 极速高清类型，可选值：<li>TEHD-100 表示极速高清-100;</li> <li>OFF 表示关闭极速高清。</li>不填表示 OFF。
+        :type Type: str
+        """
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class EditMediaTask(AbstractModel):
     """编辑视频任务信息
 
@@ -11244,7 +11467,7 @@ class EditMediaTask(AbstractModel):
         :param Output: 视频编辑任务的输出。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.EditMediaTaskOutput`
-        :param MetaData: 原始视频的元信息。
+        :param MetaData: 输出视频的元信息。
         :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
         :param ProcedureTaskId: 若发起视频编辑任务时指定了视频处理流程，则该字段为流程任务 ID。
         :type ProcedureTaskId: str
@@ -11373,6 +11596,51 @@ class EditMediaTaskOutput(AbstractModel):
         self.MediaName = params.get("MediaName")
         self.ClassId = params.get("ClassId")
         self.ExpireTime = params.get("ExpireTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EditMediaVideoStream(AbstractModel):
+    """视频流配置信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ResolutionAdaptive: 分辨率自适应，可选值：
+<li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
+<li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
+默认值：open。
+        :type ResolutionAdaptive: str
+        :param Width: 视频流宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+<li>当 Width、Height 均为 0，则分辨率取基准分辨率；</li>
+<li>当 Width 为 0，Height 非 0，则 Width 按基准分辨率比例缩放；</li>
+<li>当 Width 非 0，Height 为 0，则 Height 按基准分辨率比例缩放；</li>
+<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+默认值：0。
+        :type Width: int
+        :param Height: 视频流高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+<li>当 Width、Height 均为 0，则分辨率取基准分辨率；</li>
+<li>当 Width 为 0，Height 非 0，则 Width 按基准分辨率比例缩放；</li>
+<li>当 Width 非 0，Height 为 0，则 Height 按基准分辨率比例缩放；</li>
+<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+默认值：0。
+        :type Height: int
+        """
+        self.ResolutionAdaptive = None
+        self.Width = None
+        self.Height = None
+
+
+    def _deserialize(self, params):
+        self.ResolutionAdaptive = params.get("ResolutionAdaptive")
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -12134,6 +12402,31 @@ class ImageCenterCut(AbstractModel):
         self.Width = params.get("Width")
         self.Height = params.get("Height")
         self.Radius = params.get("Radius")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImageContentReviewInput(AbstractModel):
+    """图片智能内容识别任务输入
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Definition: 图片智能内容审核模板 ID。当前只支持：
+<li>10：所有审核类型均打开。</li>
+        :type Definition: int
+        """
+        self.Definition = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -15973,6 +16266,70 @@ class ModifyMediaInfoResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyMediaStorageClassRequest(AbstractModel):
+    """ModifyMediaStorageClass请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FileIds: 媒体文件唯一标识列表。
+        :type FileIds: list of str
+        :param StorageClass: 目标存储类型。可选值有：
+<li> STANDARD：标准存储。</li>
+<li> STANDARD_IA：低频存储。</li>
+<li> ARCHIVE：归档存储。</li>
+<li> DEEP_ARCHIVE：深度归档存储。</li>
+        :type StorageClass: str
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        :param RestoreTier: 取回模式。当文件的存储类型从归档或深度归档转换为标准存储时，需要指定取回（也称为解冻）操作的模式，具体说明请参考[数据取回及取回模式](https://cloud.tencent.com/document/product/266/56196#retake)。
+当媒体文件目前的存储类型为归档存储时，有以下取值：
+<li>Expedited：极速模式。</li>
+<li>Standard：标准模式。</li>
+<li>Bulk：批量模式。</li>
+当媒体文件目前的存储类型为深度归档存储时，有以下取值：
+<li>Standard：标准模式。</li>
+<li>Bulk：批量模式。</li>
+        :type RestoreTier: str
+        """
+        self.FileIds = None
+        self.StorageClass = None
+        self.SubAppId = None
+        self.RestoreTier = None
+
+
+    def _deserialize(self, params):
+        self.FileIds = params.get("FileIds")
+        self.StorageClass = params.get("StorageClass")
+        self.SubAppId = params.get("SubAppId")
+        self.RestoreTier = params.get("RestoreTier")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyMediaStorageClassResponse(AbstractModel):
+    """ModifyMediaStorageClass返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyPersonSampleRequest(AbstractModel):
     """ModifyPersonSample请求参数结构体
 
@@ -17226,6 +17583,44 @@ class PlayStatFileInfo(AbstractModel):
         
 
 
+class PlayStatInfo(AbstractModel):
+    """播放统计信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Time: 数据所在时间区间的开始时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。如：当时间粒度为天，2018-12-01T00:00:00+08:00，表示2018年12月1日（含）到2018年12月2日（不含）区间。
+<li>表示小时级别数据时，2019-08-22T00:00:00+08:00表示2019-08-22日0点到1点的统计数据。</li>
+<li>表示天级别数据时，2019-08-22T00:00:00+08:00表示2019-08-22日的统计数据。</li>
+        :type Time: str
+        :param FileId: 媒体文件ID。
+        :type FileId: str
+        :param PlayTimes: 播放次数。
+        :type PlayTimes: int
+        :param Traffic: 播放流量，单位：字节。
+        :type Traffic: int
+        """
+        self.Time = None
+        self.FileId = None
+        self.PlayTimes = None
+        self.Traffic = None
+
+
+    def _deserialize(self, params):
+        self.Time = params.get("Time")
+        self.FileId = params.get("FileId")
+        self.PlayTimes = params.get("PlayTimes")
+        self.Traffic = params.get("Traffic")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PlayerConfig(AbstractModel):
     """播放器配置详情
 
@@ -17447,6 +17842,45 @@ class PoliticalConfigureInfoForUpdate(AbstractModel):
         if params.get("OcrReviewInfo") is not None:
             self.OcrReviewInfo = PoliticalOcrReviewTemplateInfoForUpdate()
             self.OcrReviewInfo._deserialize(params.get("OcrReviewInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PoliticalImageResult(AbstractModel):
+    """图片画面智能识别涉及令人不适宜信息的任务结果类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Confidence: 鉴别涉及令人不适宜信息的评分，分值为0到100。
+        :type Confidence: float
+        :param Suggestion: 鉴别涉及令人不适宜信息的结果建议，取值范围：
+<li>pass；</li>
+<li>review；</li>
+<li>block。</li>
+        :type Suggestion: str
+        :param Name: 涉及令人不适宜的信息、违规图标名字。
+        :type Name: str
+        :param AreaCoordSet: 涉及令人不适宜的信息、违规图标出现的区域坐标 (像素级)，[x1, y1, x2, y2]，即左上角坐标、右下角坐标。
+        :type AreaCoordSet: list of int
+        """
+        self.Confidence = None
+        self.Suggestion = None
+        self.Name = None
+        self.AreaCoordSet = None
+
+
+    def _deserialize(self, params):
+        self.Confidence = params.get("Confidence")
+        self.Suggestion = params.get("Suggestion")
+        self.Name = params.get("Name")
+        self.AreaCoordSet = params.get("AreaCoordSet")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -17754,6 +18188,45 @@ class PornConfigureInfoForUpdate(AbstractModel):
         if params.get("OcrReviewInfo") is not None:
             self.OcrReviewInfo = PornOcrReviewTemplateInfoForUpdate()
             self.OcrReviewInfo._deserialize(params.get("OcrReviewInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PornImageResult(AbstractModel):
+    """图片画面智能识别涉及令人反感的信息的任务结果类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Confidence: 鉴别涉及令人反感的信息的评分，分值为0到100。
+        :type Confidence: float
+        :param Suggestion: 鉴别涉及令人反感的信息的结果建议，取值范围：
+<li>pass；</li>
+<li>review；</li>
+<li>block。</li>
+        :type Suggestion: str
+        :param Label: 鉴别涉及令人反感的信息的结果标签，取值范围：
+<li>porn：色情；</li>
+<li>sexy：性感；</li>
+<li>vulgar：低俗；</li>
+<li>intimacy：亲密行为。</li>
+        :type Label: str
+        """
+        self.Confidence = None
+        self.Suggestion = None
+        self.Label = None
+
+
+    def _deserialize(self, params):
+        self.Confidence = params.get("Confidence")
+        self.Suggestion = params.get("Suggestion")
+        self.Label = params.get("Label")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -18108,6 +18581,70 @@ class ProcedureTemplate(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ProcessImageRequest(AbstractModel):
+    """ProcessImage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FileId: 媒体文件 ID，即该文件在云点播上的全局唯一标识符。本接口要求媒体文件必须是图片格式。
+        :type FileId: str
+        :param Operation: 操作类型。现在仅支持填 ContentReview，表示内容智能识别。
+        :type Operation: str
+        :param ContentReviewInput: 图片内容智能识别参数，当 Operation 为 ContentReview 时该字段有效。
+        :type ContentReviewInput: :class:`tencentcloud.vod.v20180717.models.ImageContentReviewInput`
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.FileId = None
+        self.Operation = None
+        self.ContentReviewInput = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.FileId = params.get("FileId")
+        self.Operation = params.get("Operation")
+        if params.get("ContentReviewInput") is not None:
+            self.ContentReviewInput = ImageContentReviewInput()
+            self.ContentReviewInput._deserialize(params.get("ContentReviewInput"))
+        self.SubAppId = params.get("SubAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProcessImageResponse(AbstractModel):
+    """ProcessImage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ContentReviewResultSet: 图片内容智能识别任务结果。
+        :type ContentReviewResultSet: list of ContentReviewResult
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ContentReviewResultSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ContentReviewResultSet") is not None:
+            self.ContentReviewResultSet = []
+            for item in params.get("ContentReviewResultSet"):
+                obj = ContentReviewResult()
+                obj._deserialize(item)
+                self.ContentReviewResultSet.append(obj)
+        self.RequestId = params.get("RequestId")
 
 
 class ProcessMediaByProcedureRequest(AbstractModel):
@@ -18858,7 +19395,7 @@ class PullUploadTask(AbstractModel):
         :param MediaBasicInfo: 转拉完成后生成的媒体文件基础信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type MediaBasicInfo: :class:`tencentcloud.vod.v20180717.models.MediaBasicInfo`
-        :param MetaData: 原始视频的元信息。
+        :param MetaData: 输出视频的元信息。
         :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
         :param FileUrl: 转拉上传完成后生成的播放地址。
         :type FileUrl: str
@@ -19255,7 +19792,7 @@ class SampleSnapshotTemplate(AbstractModel):
         :type CreateTime: str
         :param UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
         :type UpdateTime: str
-        :param FillType: 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
+        :param FillType: 填充方式，当截图配置宽高参数与原始视频的宽高比不一致时，对截图的处理方式，即为“填充”。可选填充方式：
 <li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
 <li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
 <li>white：留白，保持视频宽高比不变，边缘剩余部分使用白色填充。</li>
@@ -19820,11 +20357,11 @@ class SnapshotByTimeOffsetTemplate(AbstractModel):
         :type CreateTime: str
         :param UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
         :type UpdateTime: str
-        :param FillType: 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
+        :param FillType: 填充方式，当截图配置宽高参数与原始视频的宽高比不一致时，对截图的处理方式，即为“填充”。可选填充方式：
 <li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
 <li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
-<li>black：留白，保持视频宽高比不变，边缘剩余部分使用白色填充。</li>
-<li>black：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊。</li>
+<li>white：留白，保持视频宽高比不变，边缘剩余部分使用白色填充。</li>
+<li>gauss：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊。</li>
 默认值：black 。
         :type FillType: str
         """
@@ -20529,9 +21066,7 @@ class TEHDConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Type: 极速高清类型，可选值：
-<li>TEHD-100：极速高清-100。</li>
-不填代表不启用极速高清。
+        :param Type: 极速高清类型，可选值：<li>TEHD-100 表示极速高清-100;</li> <li>OFF 表示关闭极速高清。</li>不填表示 OFF。
         :type Type: str
         :param MaxVideoBitrate: 视频码率上限，当 Type 指定了极速高清类型时有效。
 不填或填0表示不设视频码率上限。
@@ -20560,9 +21095,7 @@ class TEHDConfigForUpdate(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Type: 极速高清类型，可选值：
-<li>TEHD-100：极速高清-100。</li>
-不填代表不修改。
+        :param Type: 极速高清类型，可选值：<li>TEHD-100 表示极速高清-100;</li> <li>OFF 表示关闭极速高清。</li>不填表示不修改。
         :type Type: str
         :param MaxVideoBitrate: 视频码率上限，不填代表不修改。
         :type MaxVideoBitrate: int
@@ -20945,6 +21478,48 @@ class TerrorismConfigureInfoForUpdate(AbstractModel):
         if params.get("OcrReviewInfo") is not None:
             self.OcrReviewInfo = TerrorismOcrReviewTemplateInfoForUpdate()
             self.OcrReviewInfo._deserialize(params.get("OcrReviewInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TerrorismImageResult(AbstractModel):
+    """图片画面智能识别涉及令人不安全的信息的任务结果类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Confidence: 鉴别涉及令人不安全的信息的评分，分值为0到100。
+        :type Confidence: float
+        :param Suggestion: 鉴别涉及令人不安全的信息的结果建议，取值范围：
+<li>pass；</li>
+<li>review；</li>
+<li>block。</li>
+        :type Suggestion: str
+        :param Label: 鉴别涉及令人不安全的信息的结果标签，取值范围：
+<li>guns：武器枪支；</li>
+<li>crowd：人群聚集；</li>
+<li>police：警察部队；</li>
+<li>bloody：血腥画面；</li>
+<li>banners：暴恐旗帜；</li>
+<li>explosion：爆炸火灾；</li>
+<li>scenario：暴恐画面。</li>
+        :type Label: str
+        """
+        self.Confidence = None
+        self.Suggestion = None
+        self.Label = None
+
+
+    def _deserialize(self, params):
+        self.Confidence = params.get("Confidence")
+        self.Suggestion = params.get("Suggestion")
+        self.Label = params.get("Label")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

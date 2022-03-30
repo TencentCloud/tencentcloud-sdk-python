@@ -1628,6 +1628,34 @@ class OcrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def RecognizeTravelCardOCR(self, request):
+        """本接口支持通信大数据行程卡识别，包括行程卡颜色、更新时间、途经地、存在中高风险地区的城市、电话号码，五个字段的识别结果输出。
+
+        :param request: Request instance for RecognizeTravelCardOCR.
+        :type request: :class:`tencentcloud.ocr.v20181119.models.RecognizeTravelCardOCRRequest`
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.RecognizeTravelCardOCRResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("RecognizeTravelCardOCR", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.RecognizeTravelCardOCRResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ResidenceBookletOCR(self, request):
         """本接口支持居民户口簿户主页及成员页关键字段的识别，包括姓名、户别、地址、籍贯、身份证号码等。
 

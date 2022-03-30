@@ -29,6 +29,9 @@ FAILEDOPERATION_HTTPCLIENTDOREQUESTFAILED = 'FailedOperation.HttpClientDoRequest
 # 内部错误。
 INTERNALERROR = 'InternalError'
 
+# 数据库错误。
+INTERNALERROR_DBERROR = 'InternalError.DBError'
+
 # 参数错误。
 INVALIDPARAMETER = 'InvalidParameter'
 
@@ -74,6 +77,9 @@ INVALIDPARAMETER_INVALIDTASKID = 'InvalidParameter.InvalidTaskId'
 # 无效的用户名。
 INVALIDPARAMETER_INVALIDUSERNAME = 'InvalidParameter.InvalidUserName'
 
+# 无效的用户类型。
+INVALIDPARAMETER_INVALIDUSERTYPE = 'InvalidParameter.InvalidUserType'
+
 # 无效的工作组名。
 INVALIDPARAMETER_INVALIDWORKGROUPNAME = 'InvalidParameter.InvalidWorkGroupName'
 
@@ -95,8 +101,59 @@ RESOURCENOTFOUND_DATASOURCENOTFOUND = 'ResourceNotFound.DatasourceNotFound'
 # 账号余额不足，无法执行SQL任务。
 RESOURCEUNAVAILABLE_BALANCEINSUFFICIENT = 'ResourceUnavailable.BalanceInsufficient'
 
+# 资源售罄。
+RESOURCESSOLDOUT = 'ResourcesSoldOut'
+
 # 无权限授权策略。
 RESOURCESSOLDOUT_UNAUTHORIZEDGRANTPOLICY = 'ResourcesSoldOut.UnauthorizedGrantPolicy'
+
+# 无权限操作。
+RESOURCESSOLDOUT_UNAUTHORIZEDOPERATION = 'ResourcesSoldOut.UnauthorizedOperation'
+
+# 无权限回收权限。
+RESOURCESSOLDOUT_UNAUTHORIZEDREVOKEPOLICY = 'ResourcesSoldOut.UnauthorizedRevokePolicy'
+
+# 未授权操作。
+UNAUTHORIZEDOPERATION = 'UnauthorizedOperation'
+
+# 子用户不是管理员，无权将用户添加到工作组。
+UNAUTHORIZEDOPERATION_ADDUSERSTOWORKGROUP = 'UnauthorizedOperation.AddUsersToWorkgroup'
+
+# 子用户不是管理员，无权绑定工作组到用户。
+UNAUTHORIZEDOPERATION_BINDWORKGROUPSTOUSER = 'UnauthorizedOperation.BindWorkgroupsToUser'
+
+# 子用户不是管理员，无权创建工作组。
+UNAUTHORIZEDOPERATION_CREATEWORKGROUP = 'UnauthorizedOperation.CreateWorkgroup'
+
+# 子用户不是管理员，无权删除用户。
+UNAUTHORIZEDOPERATION_DELETEUSER = 'UnauthorizedOperation.DeleteUser'
+
+# 子用户不是管理员，无权将用户从工作组解绑。
+UNAUTHORIZEDOPERATION_DELETEUSERSFROMWORKGROUP = 'UnauthorizedOperation.DeleteUsersFromWorkgroup'
+
+# 子用户不是管理员，无权删除工作组。
+UNAUTHORIZEDOPERATION_DELETEWORKGROUP = 'UnauthorizedOperation.DeleteWorkgroup'
+
+# 子用户无权授予特定权限。
+UNAUTHORIZEDOPERATION_GRANTPOLICY = 'UnauthorizedOperation.GrantPolicy'
+
+# 子用户不是管理员，无权修改用户信息。
+UNAUTHORIZEDOPERATION_MODIFYUSERINFO = 'UnauthorizedOperation.ModifyUserInfo'
+
+# 子用户不是管理员，无权修改工作组信息。
+UNAUTHORIZEDOPERATION_MODIFYWORKGROUPINFO = 'UnauthorizedOperation.ModifyWorkgroupInfo'
+
+# 子用户无权取消特定权限。
+UNAUTHORIZEDOPERATION_REVOKEPOLICY = 'UnauthorizedOperation.RevokePolicy'
+
+# 子用户不是管理员，无权将工作组和用户解绑。
+UNAUTHORIZEDOPERATION_UNBINDWORKGROUPSFROMUSER = 'UnauthorizedOperation.UnbindWorkgroupsFromUser'
+
+# 子用户无权使用计算引擎。
+UNAUTHORIZEDOPERATION_USECOMPUTINGENGINE = 'UnauthorizedOperation.UseComputingEngine'
+
+# 子用户不存在。
+UNAUTHORIZEDOPERATION_USERNOTEXIST = 'UnauthorizedOperation.UserNotExist'
 
 # 无法修改主账号。
 UNSUPPORTEDOPERATION_MODIFYOWNERUNSUPPORTED = 'UnsupportedOperation.ModifyOwnerUnsupported'

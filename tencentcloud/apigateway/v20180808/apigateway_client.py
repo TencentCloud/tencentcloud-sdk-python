@@ -1102,7 +1102,7 @@ class ApigatewayClient(AbstractClient):
 
     def DescribeApiKeysStatus(self, request):
         """本接口（DescribeApiKeysStatus）用于查询密钥列表。
-        当用户创建了多个密钥对时，可使用本接口查询一个或多个 API 密钥信息，本接口不会显示密钥 Key。
+        当用户创建了多个密钥对时，可使用本接口查询一个或多个 API 密钥信息。
 
         :param request: Request instance for DescribeApiKeysStatus.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.DescribeApiKeysStatusRequest`

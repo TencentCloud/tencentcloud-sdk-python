@@ -194,6 +194,12 @@ INTERNALERROR_TASKLIFESTATEERROR = 'InternalError.TaskLifeStateError'
 # 任务未找到。
 INTERNALERROR_TASKNOTFOUND = 'InternalError.TaskNotFound'
 
+# 询价错误。
+INTERNALERROR_TRADECOMMON = 'InternalError.TradeCommon'
+
+# 账户余额不足。
+INTERNALERROR_TRADEINSUFFICIENTBALANCE = 'InternalError.TradeInsufficientBalance'
+
 # 内部错误。
 INTERNALERROR_UNEXCEPTEDINTERNAL = 'InternalError.UnexceptedInternal'
 

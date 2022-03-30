@@ -2126,6 +2126,71 @@ class UpdateDiagnoseSettingsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class UpdateDictionariesRequest(AbstractModel):
+    """UpdateDictionaries请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: ES实例ID
+        :type InstanceId: str
+        :param IkMainDicts: IK分词主词典COS地址
+        :type IkMainDicts: list of str
+        :param IkStopwords: IK分词停用词词典COS地址
+        :type IkStopwords: list of str
+        :param Synonym: 同义词词典COS地址
+        :type Synonym: list of str
+        :param QQDict: QQ分词词典COS地址
+        :type QQDict: list of str
+        :param UpdateType: 0：安装；1：删除
+        :type UpdateType: int
+        :param ForceRestart: 是否强制重启集群
+        :type ForceRestart: bool
+        """
+        self.InstanceId = None
+        self.IkMainDicts = None
+        self.IkStopwords = None
+        self.Synonym = None
+        self.QQDict = None
+        self.UpdateType = None
+        self.ForceRestart = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.IkMainDicts = params.get("IkMainDicts")
+        self.IkStopwords = params.get("IkStopwords")
+        self.Synonym = params.get("Synonym")
+        self.QQDict = params.get("QQDict")
+        self.UpdateType = params.get("UpdateType")
+        self.ForceRestart = params.get("ForceRestart")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateDictionariesResponse(AbstractModel):
+    """UpdateDictionaries返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class UpdateInstanceRequest(AbstractModel):
     """UpdateInstance请求参数结构体
 

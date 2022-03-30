@@ -684,6 +684,56 @@ class CreateConfigMapResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateEdgeNodeBatchRequest(AbstractModel):
+    """CreateEdgeNodeBatch请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EdgeUnitId: 边缘单元ID
+        :type EdgeUnitId: int
+        :param Nodes: 节点信息
+        :type Nodes: list of DracoNodeInfo
+        """
+        self.EdgeUnitId = None
+        self.Nodes = None
+
+
+    def _deserialize(self, params):
+        self.EdgeUnitId = params.get("EdgeUnitId")
+        if params.get("Nodes") is not None:
+            self.Nodes = []
+            for item in params.get("Nodes"):
+                obj = DracoNodeInfo()
+                obj._deserialize(item)
+                self.Nodes.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateEdgeNodeBatchResponse(AbstractModel):
+    """CreateEdgeNodeBatch返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CreateEdgeNodeGroupRequest(AbstractModel):
     """CreateEdgeNodeGroup请求参数结构体
 
@@ -1039,6 +1089,8 @@ class CreateEdgeUnitCloudRequest(AbstractModel):
         :type PodCIDR: str
         :param ServiceCIDR: 集群service cidr, 默认 10.2.0.0/16
         :type ServiceCIDR: str
+        :param OpenCloudMonitor: 是否开启监控。目前内存中权限开启联系产品开通白名单
+        :type OpenCloudMonitor: bool
         """
         self.Name = None
         self.K8sVersion = None
@@ -1046,6 +1098,7 @@ class CreateEdgeUnitCloudRequest(AbstractModel):
         self.Description = None
         self.PodCIDR = None
         self.ServiceCIDR = None
+        self.OpenCloudMonitor = None
 
 
     def _deserialize(self, params):
@@ -1055,6 +1108,7 @@ class CreateEdgeUnitCloudRequest(AbstractModel):
         self.Description = params.get("Description")
         self.PodCIDR = params.get("PodCIDR")
         self.ServiceCIDR = params.get("ServiceCIDR")
+        self.OpenCloudMonitor = params.get("OpenCloudMonitor")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1270,6 +1324,51 @@ class CreateUpdateNodeUnitResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreateUserTokenRequest(AbstractModel):
+    """CreateUserToken请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Second: token过期时间，有效值是1~300秒
+        :type Second: int
+        """
+        self.Second = None
+
+
+    def _deserialize(self, params):
+        self.Second = params.get("Second")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateUserTokenResponse(AbstractModel):
+    """CreateUserToken返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Token: 无
+        :type Token: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Token = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Token = params.get("Token")
         self.RequestId = params.get("RequestId")
 
 
@@ -1713,6 +1812,47 @@ class DeleteEdgeUnitPodRequest(AbstractModel):
 
 class DeleteEdgeUnitPodResponse(AbstractModel):
     """DeleteEdgeUnitPod返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteIotDeviceBatchRequest(AbstractModel):
+    """DeleteIotDeviceBatch请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DeviceIDList: 无
+        :type DeviceIDList: list of int non-negative
+        """
+        self.DeviceIDList = None
+
+
+    def _deserialize(self, params):
+        self.DeviceIDList = params.get("DeviceIDList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteIotDeviceBatchResponse(AbstractModel):
+    """DeleteIotDeviceBatch返回参数结构体
 
     """
 
@@ -2378,6 +2518,52 @@ class DescribeConfigMapsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDracoEdgeNodeInstallerRequest(AbstractModel):
+    """DescribeDracoEdgeNodeInstaller请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SN: 设备SN
+        :type SN: str
+        """
+        self.SN = None
+
+
+    def _deserialize(self, params):
+        self.SN = params.get("SN")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDracoEdgeNodeInstallerResponse(AbstractModel):
+    """DescribeDracoEdgeNodeInstaller返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param OnlineInstallationCommand: 在线安装命名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OnlineInstallationCommand: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.OnlineInstallationCommand = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.OnlineInstallationCommand = params.get("OnlineInstallationCommand")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeEdgeAgentNodeInstallerRequest(AbstractModel):
     """DescribeEdgeAgentNodeInstaller请求参数结构体
 
@@ -2596,6 +2782,52 @@ class DescribeEdgeNodePodsResponse(AbstractModel):
                 obj = EdgeNodePodInfo()
                 obj._deserialize(item)
                 self.PodSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeEdgeNodeRemarkListRequest(AbstractModel):
+    """DescribeEdgeNodeRemarkList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EdgeUnitId: 边缘单元ID
+        :type EdgeUnitId: int
+        """
+        self.EdgeUnitId = None
+
+
+    def _deserialize(self, params):
+        self.EdgeUnitId = params.get("EdgeUnitId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeEdgeNodeRemarkListResponse(AbstractModel):
+    """DescribeEdgeNodeRemarkList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Remarks: 边缘单元内的备注列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remarks: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Remarks = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Remarks = params.get("Remarks")
         self.RequestId = params.get("RequestId")
 
 
@@ -2919,6 +3151,82 @@ class DescribeEdgePodResponse(AbstractModel):
         if params.get("Pod") is not None:
             self.Pod = EdgeNodePodInfo()
             self.Pod._deserialize(params.get("Pod"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeEdgeSnNodesRequest(AbstractModel):
+    """DescribeEdgeSnNodes请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EdgeUnitId: 边缘单元ID
+        :type EdgeUnitId: int
+        :param NamePattern: 根据节点名称模糊匹配
+        :type NamePattern: str
+        :param SNPattern: 根据设备SN模糊匹配
+        :type SNPattern: str
+        :param RemarkPattern: 根据备注批次信息模糊匹配
+        :type RemarkPattern: str
+        :param Offset: 默认0
+        :type Offset: int
+        :param Limit: 默认20
+        :type Limit: int
+        """
+        self.EdgeUnitId = None
+        self.NamePattern = None
+        self.SNPattern = None
+        self.RemarkPattern = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.EdgeUnitId = params.get("EdgeUnitId")
+        self.NamePattern = params.get("NamePattern")
+        self.SNPattern = params.get("SNPattern")
+        self.RemarkPattern = params.get("RemarkPattern")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeEdgeSnNodesResponse(AbstractModel):
+    """DescribeEdgeSnNodes返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 满足条件的总条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param NodeSet: 节点详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NodeSet: list of EdgeDracoNodeInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.NodeSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("NodeSet") is not None:
+            self.NodeSet = []
+            for item in params.get("NodeSet"):
+                obj = EdgeDracoNodeInfo()
+                obj._deserialize(item)
+                self.NodeSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -4926,6 +5234,54 @@ class DescribeSecretsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeYeheResourceLimitRequest(AbstractModel):
+    """DescribeYeheResourceLimit请求参数结构体
+
+    """
+
+
+class DescribeYeheResourceLimitResponse(AbstractModel):
+    """DescribeYeheResourceLimit返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Uin: 用户父账号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Uin: str
+        :param CreateNodeLimit: 允许创建的节点数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateNodeLimit: int
+        :param CreateClusterLimit: 允许创建的集群数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateClusterLimit: int
+        :param EnablePermMonitor: 是否有监控开启权限
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnablePermMonitor: bool
+        :param EnablePermAdminNode: 节点是否有admin的所有权限
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnablePermAdminNode: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Uin = None
+        self.CreateNodeLimit = None
+        self.CreateClusterLimit = None
+        self.EnablePermMonitor = None
+        self.EnablePermAdminNode = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Uin = params.get("Uin")
+        self.CreateNodeLimit = params.get("CreateNodeLimit")
+        self.CreateClusterLimit = params.get("CreateClusterLimit")
+        self.EnablePermMonitor = params.get("EnablePermMonitor")
+        self.EnablePermAdminNode = params.get("EnablePermAdminNode")
+        self.RequestId = params.get("RequestId")
+
+
 class DockerConfig(AbstractModel):
     """docker配置
 
@@ -4950,6 +5306,38 @@ class DockerConfig(AbstractModel):
         self.RegistryDomain = params.get("RegistryDomain")
         self.UserName = params.get("UserName")
         self.Password = params.get("Password")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DracoNodeInfo(AbstractModel):
+    """Draco 设备预录入信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SN: 设备SN。SN仅支持大写字母、数字，长度限制为1~32个字符
+        :type SN: str
+        :param Name: 节点名称。长度限制为1~63个字符，节点名称只支持小写英文、数字、中横线、英文句号
+        :type Name: str
+        :param Remark: 节点备注
+        :type Remark: str
+        """
+        self.SN = None
+        self.Name = None
+        self.Remark = None
+
+
+    def _deserialize(self, params):
+        self.SN = params.get("SN")
+        self.Name = params.get("Name")
+        self.Remark = params.get("Remark")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5035,6 +5423,50 @@ class EdgeCloudCluster(AbstractModel):
         self.ServiceCIDR = params.get("ServiceCIDR")
         self.EdgeClusterVersion = params.get("EdgeClusterVersion")
         self.UID = params.get("UID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EdgeDracoNodeInfo(AbstractModel):
+    """预注册节点的信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: 节点ID
+        :type Id: int
+        :param Name: 节点名称
+        :type Name: str
+        :param IsUsed: 是否已激活
+        :type IsUsed: bool
+        :param CreateTime: 创建时间
+        :type CreateTime: str
+        :param Remark: 备注信息，如批次
+        :type Remark: str
+        :param SN: SN 设备号
+        :type SN: str
+        """
+        self.Id = None
+        self.Name = None
+        self.IsUsed = None
+        self.CreateTime = None
+        self.Remark = None
+        self.SN = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.Name = params.get("Name")
+        self.IsUsed = params.get("IsUsed")
+        self.CreateTime = params.get("CreateTime")
+        self.Remark = params.get("Remark")
+        self.SN = params.get("SN")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6472,6 +6904,61 @@ class ModifyConfigMapResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyEdgeDracoNodeRequest(AbstractModel):
+    """ModifyEdgeDracoNode请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EdgeUnitId: 边缘单元ID
+        :type EdgeUnitId: int
+        :param NodeId: 边缘节点ID
+        :type NodeId: int
+        :param NodeInfo: 节点信息
+        :type NodeInfo: :class:`tencentcloud.iecp.v20210914.models.DracoNodeInfo`
+        :param IsReset: 是否重置draco设备
+        :type IsReset: bool
+        """
+        self.EdgeUnitId = None
+        self.NodeId = None
+        self.NodeInfo = None
+        self.IsReset = None
+
+
+    def _deserialize(self, params):
+        self.EdgeUnitId = params.get("EdgeUnitId")
+        self.NodeId = params.get("NodeId")
+        if params.get("NodeInfo") is not None:
+            self.NodeInfo = DracoNodeInfo()
+            self.NodeInfo._deserialize(params.get("NodeInfo"))
+        self.IsReset = params.get("IsReset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyEdgeDracoNodeResponse(AbstractModel):
+    """ModifyEdgeDracoNode返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyEdgeNodeLabelsRequest(AbstractModel):
     """ModifyEdgeNodeLabels请求参数结构体
 
@@ -6721,6 +7208,59 @@ class ModifyEdgeUnitApplicationYamlRequest(AbstractModel):
 
 class ModifyEdgeUnitApplicationYamlResponse(AbstractModel):
     """ModifyEdgeUnitApplicationYaml返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyEdgeUnitCloudApiRequest(AbstractModel):
+    """ModifyEdgeUnitCloudApi请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EdgeUnitId: 边缘单元ID
+        :type EdgeUnitId: int
+        :param Name: 边缘单元名称，64字符内
+        :type Name: str
+        :param Description: 描述，200字符内
+        :type Description: str
+        :param OpenCloudMonitor: 是否开启监控
+        :type OpenCloudMonitor: bool
+        """
+        self.EdgeUnitId = None
+        self.Name = None
+        self.Description = None
+        self.OpenCloudMonitor = None
+
+
+    def _deserialize(self, params):
+        self.EdgeUnitId = params.get("EdgeUnitId")
+        self.Name = params.get("Name")
+        self.Description = params.get("Description")
+        self.OpenCloudMonitor = params.get("OpenCloudMonitor")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyEdgeUnitCloudApiResponse(AbstractModel):
+    """ModifyEdgeUnitCloudApi返回参数结构体
 
     """
 

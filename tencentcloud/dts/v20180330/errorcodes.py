@@ -74,6 +74,9 @@ LIMITEXCEEDED_MAXUNUSEDJOBS = 'LimitExceeded.MaxUnusedJobs'
 # 操作被拒绝。
 OPERATIONDENIED = 'OperationDenied'
 
+# 当前操作不满足条件被阻止。
+OPERATIONDENIED_BIZOPERATIONDENIEDERROR = 'OperationDenied.BizOperationDeniedError'
+
 # 任务操作失败。
 OPERATIONDENIED_JOBOPERATIONDENIEDERROR = 'OperationDenied.JobOperationDeniedError'
 

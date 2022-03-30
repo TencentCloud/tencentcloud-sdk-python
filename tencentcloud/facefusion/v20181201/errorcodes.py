@@ -98,6 +98,9 @@ FAILEDOPERATION_IMAGESIZEINVALID = 'FailedOperation.ImageSizeInvalid'
 # 图片上传失败。
 FAILEDOPERATION_IMAGEUPLOADFAILED = 'FailedOperation.ImageUploadFailed'
 
+# 服务内部错误。
+FAILEDOPERATION_INNERERROR = 'FailedOperation.InnerError'
+
 # 素材条数超过上限。
 FAILEDOPERATION_MATERIALVALUEEXCEED = 'FailedOperation.MaterialValueExceed'
 

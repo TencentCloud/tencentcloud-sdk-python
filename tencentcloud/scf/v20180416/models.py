@@ -3554,16 +3554,26 @@ class NamespaceUsage(AbstractModel):
         :type Namespace: str
         :param FunctionsCount: 命名空间函数个数
         :type FunctionsCount: int
+        :param TotalConcurrencyMem: 命名空间配额总量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalConcurrencyMem: int
+        :param TotalAllocatedConcurrencyMem: 命名空间配额使用量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalAllocatedConcurrencyMem: int
         """
         self.Functions = None
         self.Namespace = None
         self.FunctionsCount = None
+        self.TotalConcurrencyMem = None
+        self.TotalAllocatedConcurrencyMem = None
 
 
     def _deserialize(self, params):
         self.Functions = params.get("Functions")
         self.Namespace = params.get("Namespace")
         self.FunctionsCount = params.get("FunctionsCount")
+        self.TotalConcurrencyMem = params.get("TotalConcurrencyMem")
+        self.TotalAllocatedConcurrencyMem = params.get("TotalAllocatedConcurrencyMem")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3821,12 +3831,29 @@ class PutProvisionedConcurrencyConfigRequest(AbstractModel):
         :type Namespace: str
         :param TriggerActions: 定时预置任务
         :type TriggerActions: list of TriggerAction
+        :param ProvisionedType: 预置类型，
+静态预置：Default
+动态追踪并发利用率指标预置：ConcurrencyUtilizationTracking
+预置类型二选一，设置静态预置时可以设置VersionProvisionedConcurrencyNum。
+
+动态利用率预置可以设置TrackingTarget，MinCapacity，MaxCapacity，保持向后兼容性此时VersionProvisionedConcurrencyNum设置为0.
+        :type ProvisionedType: str
+        :param TrackingTarget: 指标追踪的并发利用率。设置范围(0,1)
+        :type TrackingTarget: float
+        :param MinCapacity: 缩容时的最小值, 最小值为1
+        :type MinCapacity: int
+        :param MaxCapacity: 扩容时的最大值
+        :type MaxCapacity: int
         """
         self.FunctionName = None
         self.Qualifier = None
         self.VersionProvisionedConcurrencyNum = None
         self.Namespace = None
         self.TriggerActions = None
+        self.ProvisionedType = None
+        self.TrackingTarget = None
+        self.MinCapacity = None
+        self.MaxCapacity = None
 
 
     def _deserialize(self, params):
@@ -3840,6 +3867,10 @@ class PutProvisionedConcurrencyConfigRequest(AbstractModel):
                 obj = TriggerAction()
                 obj._deserialize(item)
                 self.TriggerActions.append(obj)
+        self.ProvisionedType = params.get("ProvisionedType")
+        self.TrackingTarget = params.get("TrackingTarget")
+        self.MinCapacity = params.get("MinCapacity")
+        self.MaxCapacity = params.get("MaxCapacity")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4964,9 +4995,9 @@ class Variable(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Key: 变量的名称
+        :param Key: 变量的名称，不可为空字符
         :type Key: str
-        :param Value: 变量的值
+        :param Value: 变量的值，不可为空字符
         :type Value: str
         """
         self.Key = None

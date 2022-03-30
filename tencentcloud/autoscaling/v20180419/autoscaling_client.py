@@ -975,6 +975,19 @@ class AutoscalingClient(AbstractClient):
 
     def DisableAutoScalingGroup(self, request):
         """本接口（DisableAutoScalingGroup）用于停用指定伸缩组。
+        * 停用伸缩组后，自动触发的伸缩活动不再进行，包括：
+            - 告警策略触发的伸缩活动
+            - 匹配期望实例数的伸缩活动
+            - 不健康实例替换活动
+            - 定时任务
+        * 停用伸缩组后，手动触发的伸缩活动允许进行，包括：
+            - 指定数量扩容实例（ScaleOutInstances）
+            - 指定数量缩容实例（ScaleInInstances）
+            - 从伸缩组中移出 CVM 实例（DetachInstances）
+            - 从伸缩组中删除 CVM 实例（RemoveInstances）
+            - 添加 CVM 实例到伸缩组（AttachInstances）
+            - 关闭伸缩组内 CVM 实例（StopAutoScalingInstances）
+            - 开启伸缩组内 CVM 实例（StartAutoScalingInstances）
 
         :param request: Request instance for DisableAutoScalingGroup.
         :type request: :class:`tencentcloud.autoscaling.v20180419.models.DisableAutoScalingGroupRequest`
@@ -1292,34 +1305,6 @@ class AutoscalingClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def PreviewPaiDomainName(self, request):
-        """本接口（PreviewPaiDomainName）用于预览PAI实例域名。
-
-        :param request: Request instance for PreviewPaiDomainName.
-        :type request: :class:`tencentcloud.autoscaling.v20180419.models.PreviewPaiDomainNameRequest`
-        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.PreviewPaiDomainNameResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("PreviewPaiDomainName", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.PreviewPaiDomainNameResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def RemoveInstances(self, request):
         """本接口（RemoveInstances）用于从伸缩组删除 CVM 实例。根据当前的产品逻辑，如果实例由弹性伸缩自动创建，则实例会被销毁；如果实例系创建后加入伸缩组的，则会从伸缩组中移除，保留实例。
         * 如果删除指定实例后，伸缩组内处于`IN_SERVICE`状态的实例数量小于伸缩组最小值，接口将报错
@@ -1354,6 +1339,7 @@ class AutoscalingClient(AbstractClient):
     def ScaleInInstances(self, request):
         """为伸缩组指定数量缩容实例，返回缩容活动的 ActivityId。
         * 伸缩组需要未处于活动中
+        * 伸缩组处于停用状态时，该接口也会生效，可参考[停用伸缩组](https://cloud.tencent.com/document/api/377/20435)文档查看伸缩组停用状态的影响范围
         * 根据伸缩组的`TerminationPolicies`策略，选择被缩容的实例，可参考[缩容处理](https://cloud.tencent.com/document/product/377/8563)
         * 接口只会选择`IN_SERVICE`实例缩容，如果需要缩容其他状态实例，可以使用 [DetachInstances](https://cloud.tencent.com/document/api/377/20436) 或 [RemoveInstances](https://cloud.tencent.com/document/api/377/20431) 接口
         * 接口会减少期望实例数，新的期望实例数需要大于等于最小实例数
@@ -1387,6 +1373,7 @@ class AutoscalingClient(AbstractClient):
     def ScaleOutInstances(self, request):
         """为伸缩组指定数量扩容实例，返回扩容活动的 ActivityId。
         * 伸缩组需要未处于活动中
+        * 伸缩组处于停用状态时，该接口也会生效，可参考[停用伸缩组](https://cloud.tencent.com/document/api/377/20435)文档查看伸缩组停用状态的影响范围
         * 接口会增加期望实例数，新的期望实例数需要小于等于最大实例数
         * 扩容如果失败或者部分成功，最后期望实例数只会增加实际成功的实例数量
 

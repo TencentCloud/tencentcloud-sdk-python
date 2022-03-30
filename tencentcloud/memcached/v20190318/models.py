@@ -25,54 +25,54 @@ class DescribeInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceIds: 实例ID组成的数组，数组下标从0开始
-        :type InstanceIds: list of str
-        :param InstanceNames: 实例名称组成的数组，数组下标从0开始
-        :type InstanceNames: list of str
-        :param Limit: 实例列表的大小，参数默认值100
-        :type Limit: int
-        :param Offset: 偏移量，取Limit整数倍
-        :type Offset: int
         :param OrderBy: 枚举范围： AddTimeStamp, InstanceName, ProjectId
         :type OrderBy: str
+        :param SearchKeys: 查找的关键字
+        :type SearchKeys: list of str
+        :param UniqSubnetIds: 子网ID列表
+        :type UniqSubnetIds: list of str
+        :param Vips: VIP列表
+        :type Vips: list of str
         :param OrderType: 0倒序，1正序，默认倒序
         :type OrderType: int
-        :param ProjectIds: 项目ID组成的数组，数组下标从0开始
-        :type ProjectIds: list of int
-        :param SearchKeys: 搜索关键词：支持实例ID、实例名称、完整IP
-        :type SearchKeys: list of str
-        :param UniqSubnetIds: 子网ID数组，数组下标从0开始，如：subnet-fdj24n34j2
-        :type UniqSubnetIds: list of str
-        :param UniqVpcIds: 私有网络ID数组，数组下标从0开始，如果不传则默认选择基础网络，如：vpc-sad23jfdfk
+        :param InstanceNames: 实例名称列表
+        :type InstanceNames: list of str
+        :param UniqVpcIds: VPC ID列表
         :type UniqVpcIds: list of str
-        :param Vips: 实例服务IP组成的数组，数组下标从0开始
-        :type Vips: list of str
+        :param ProjectIds: 项目ID列表
+        :type ProjectIds: list of int
+        :param Offset: 偏移量，取Limit整数倍
+        :type Offset: int
+        :param Limit: 实例列表的大小，参数默认值100
+        :type Limit: int
+        :param InstanceIds: 实例ID列表
+        :type InstanceIds: list of str
         """
-        self.InstanceIds = None
-        self.InstanceNames = None
-        self.Limit = None
-        self.Offset = None
         self.OrderBy = None
-        self.OrderType = None
-        self.ProjectIds = None
         self.SearchKeys = None
         self.UniqSubnetIds = None
-        self.UniqVpcIds = None
         self.Vips = None
+        self.OrderType = None
+        self.InstanceNames = None
+        self.UniqVpcIds = None
+        self.ProjectIds = None
+        self.Offset = None
+        self.Limit = None
+        self.InstanceIds = None
 
 
     def _deserialize(self, params):
-        self.InstanceIds = params.get("InstanceIds")
-        self.InstanceNames = params.get("InstanceNames")
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
         self.OrderBy = params.get("OrderBy")
-        self.OrderType = params.get("OrderType")
-        self.ProjectIds = params.get("ProjectIds")
         self.SearchKeys = params.get("SearchKeys")
         self.UniqSubnetIds = params.get("UniqSubnetIds")
-        self.UniqVpcIds = params.get("UniqVpcIds")
         self.Vips = params.get("Vips")
+        self.OrderType = params.get("OrderType")
+        self.InstanceNames = params.get("InstanceNames")
+        self.UniqVpcIds = params.get("UniqVpcIds")
+        self.ProjectIds = params.get("ProjectIds")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.InstanceIds = params.get("InstanceIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -119,111 +119,112 @@ class InstanceListInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Tags: 实例关联的标签信息
-        :type Tags: list of TagInfo
-        :param AddTimeStamp: 实例创建时间
-        :type AddTimeStamp: str
-        :param AppId: 用户AppID
-        :type AppId: int
-        :param AutoRenewFlag: 实例是否设置自动续费标识，1：设置自动续费；0：未设置自动续费
-        :type AutoRenewFlag: int
-        :param CmemId: 实例内置ID
-        :type CmemId: int
-        :param DeadlineTimeStamp: 实例截止时间
-        :type DeadlineTimeStamp: str
-        :param Expire: 过期策略
-        :type Expire: int
-        :param InstanceDesc: 实例描述信息
-        :type InstanceDesc: str
-        :param InstanceId: 实例ID
-        :type InstanceId: str
-        :param InstanceName: 实例名称
-        :type InstanceName: str
-        :param IsolateTimeStamp: 实例隔离时间
-        :type IsolateTimeStamp: str
         :param ModTimeStamp: 实例修改时间
         :type ModTimeStamp: str
-        :param PayMode: 计费模式：0-按量计费，1-包年包月
-        :type PayMode: int
-        :param ProjectId: 项目ID
-        :type ProjectId: int
-        :param RegionId: 地域id 1--广州 4--上海 5-- 香港 6--多伦多 7--上海金融 8--北京 9-- 新加坡 11--深圳金融 15--美西（硅谷）16--成都 17--德国 18--韩国 19--重庆 21--印度 22--美东（弗吉尼亚）23--泰国 24--俄罗斯 25--日本
-        :type RegionId: int
+        :param IsolateTimeStamp: 实例隔离时间
+        :type IsolateTimeStamp: str
+        :param AutoRenewFlag: 实例是否设置自动续费标识，1：设置自动续费；0：未设置自动续费
+        :type AutoRenewFlag: int
         :param SetId: 仓库ID
         :type SetId: int
-        :param Status: 实例当前状态，0：待初始化；1：实例在流程中；2：实例运行中；-2：实例已隔离；-3：实例待删除
+        :param Status: 实例当前状态，0：发货中；1：运行中；2：创建失败；4：销毁中；5：隔离中；6：下线中
         :type Status: int
+        :param CmemId: 实例内置ID
+        :type CmemId: int
+        :param Tags: 实例关联的标签信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of TagInfo
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param RegionId: 地域id 1--广州 4--上海 5-- 香港 6--多伦多 7--上海金融 8--北京 9-- 新加坡 11--深圳金融 15--美西（硅谷）16--成都 17--德国 18--韩国 19--重庆 21--印度 22--美东（弗吉尼亚）23--泰国 24--俄罗斯 25--日本
+        :type RegionId: int
+        :param InstanceDesc: 实例描述信息
+        :type InstanceDesc: str
+        :param Expire: 过期策略
+        :type Expire: int
         :param SubnetId: vpc网络下子网id 如：46315
         :type SubnetId: int
-        :param UniqSubnetId: vpc网络下子网id 如：subnet-fd3j6l35mm0
-        :type UniqSubnetId: str
+        :param ProjectId: 项目ID
+        :type ProjectId: int
+        :param AddTimeStamp: 实例创建时间
+        :type AddTimeStamp: str
+        :param ZoneId: 区域ID
+        :type ZoneId: int
+        :param PayMode: 计费模式：0-按量计费，1-包年包月
+        :type PayMode: int
+        :param VpcId: vpc网络id 如：75101
+        :type VpcId: int
+        :param InstanceName: 实例名称
+        :type InstanceName: str
+        :param DeadlineTimeStamp: 实例截止时间
+        :type DeadlineTimeStamp: str
         :param UniqVpcId: vpc网络id 如：vpc-fk33jsf43kgv
         :type UniqVpcId: str
         :param Vip: 实例vip
         :type Vip: str
-        :param VpcId: vpc网络id 如：75101
-        :type VpcId: int
+        :param UniqSubnetId: vpc网络下子网id 如：subnet-fd3j6l35mm0
+        :type UniqSubnetId: str
+        :param AppId: 用户AppID
+        :type AppId: int
         :param Vport: 实例端口号
         :type Vport: int
-        :param ZoneId: 区域ID
-        :type ZoneId: int
         """
-        self.Tags = None
-        self.AddTimeStamp = None
-        self.AppId = None
-        self.AutoRenewFlag = None
-        self.CmemId = None
-        self.DeadlineTimeStamp = None
-        self.Expire = None
-        self.InstanceDesc = None
-        self.InstanceId = None
-        self.InstanceName = None
-        self.IsolateTimeStamp = None
         self.ModTimeStamp = None
-        self.PayMode = None
-        self.ProjectId = None
-        self.RegionId = None
+        self.IsolateTimeStamp = None
+        self.AutoRenewFlag = None
         self.SetId = None
         self.Status = None
+        self.CmemId = None
+        self.Tags = None
+        self.InstanceId = None
+        self.RegionId = None
+        self.InstanceDesc = None
+        self.Expire = None
         self.SubnetId = None
-        self.UniqSubnetId = None
+        self.ProjectId = None
+        self.AddTimeStamp = None
+        self.ZoneId = None
+        self.PayMode = None
+        self.VpcId = None
+        self.InstanceName = None
+        self.DeadlineTimeStamp = None
         self.UniqVpcId = None
         self.Vip = None
-        self.VpcId = None
+        self.UniqSubnetId = None
+        self.AppId = None
         self.Vport = None
-        self.ZoneId = None
 
 
     def _deserialize(self, params):
+        self.ModTimeStamp = params.get("ModTimeStamp")
+        self.IsolateTimeStamp = params.get("IsolateTimeStamp")
+        self.AutoRenewFlag = params.get("AutoRenewFlag")
+        self.SetId = params.get("SetId")
+        self.Status = params.get("Status")
+        self.CmemId = params.get("CmemId")
         if params.get("Tags") is not None:
             self.Tags = []
             for item in params.get("Tags"):
                 obj = TagInfo()
                 obj._deserialize(item)
                 self.Tags.append(obj)
-        self.AddTimeStamp = params.get("AddTimeStamp")
-        self.AppId = params.get("AppId")
-        self.AutoRenewFlag = params.get("AutoRenewFlag")
-        self.CmemId = params.get("CmemId")
-        self.DeadlineTimeStamp = params.get("DeadlineTimeStamp")
-        self.Expire = params.get("Expire")
-        self.InstanceDesc = params.get("InstanceDesc")
         self.InstanceId = params.get("InstanceId")
-        self.InstanceName = params.get("InstanceName")
-        self.IsolateTimeStamp = params.get("IsolateTimeStamp")
-        self.ModTimeStamp = params.get("ModTimeStamp")
-        self.PayMode = params.get("PayMode")
-        self.ProjectId = params.get("ProjectId")
         self.RegionId = params.get("RegionId")
-        self.SetId = params.get("SetId")
-        self.Status = params.get("Status")
+        self.InstanceDesc = params.get("InstanceDesc")
+        self.Expire = params.get("Expire")
         self.SubnetId = params.get("SubnetId")
-        self.UniqSubnetId = params.get("UniqSubnetId")
+        self.ProjectId = params.get("ProjectId")
+        self.AddTimeStamp = params.get("AddTimeStamp")
+        self.ZoneId = params.get("ZoneId")
+        self.PayMode = params.get("PayMode")
+        self.VpcId = params.get("VpcId")
+        self.InstanceName = params.get("InstanceName")
+        self.DeadlineTimeStamp = params.get("DeadlineTimeStamp")
         self.UniqVpcId = params.get("UniqVpcId")
         self.Vip = params.get("Vip")
-        self.VpcId = params.get("VpcId")
+        self.UniqSubnetId = params.get("UniqSubnetId")
+        self.AppId = params.get("AppId")
         self.Vport = params.get("Vport")
-        self.ZoneId = params.get("ZoneId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

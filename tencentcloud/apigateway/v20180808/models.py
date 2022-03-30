@@ -1836,16 +1836,25 @@ DELETE： DeleteObject。
         :param Authorization: API调用后端COS的签名开关，默认为false。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Authorization: bool
+        :param PathMatchMode: API后端COS的路径匹配模式，可选值：
+BackEndPath ： 后端路径匹配
+FullPath ： 全路径匹配
+
+默认值为：BackEndPath
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PathMatchMode: str
         """
         self.Action = None
         self.BucketName = None
         self.Authorization = None
+        self.PathMatchMode = None
 
 
     def _deserialize(self, params):
         self.Action = params.get("Action")
         self.BucketName = params.get("BucketName")
         self.Authorization = params.get("Authorization")
+        self.PathMatchMode = params.get("PathMatchMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2330,20 +2339,32 @@ class CreateApiRsp(AbstractModel):
         :param ApiId: api id
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApiId: str
-        :param Path: path
+        :param Path: 路径
 注意：此字段可能返回 null，表示取不到有效值。
         :type Path: str
-        :param Method: method
+        :param Method: 请求方法
 注意：此字段可能返回 null，表示取不到有效值。
         :type Method: str
         :param CreatedTime: 创建时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedTime: str
+        :param Status: 导入状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param ErrMsg: 异常信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrMsg: str
+        :param ApiName: api name
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApiName: str
         """
         self.ApiId = None
         self.Path = None
         self.Method = None
         self.CreatedTime = None
+        self.Status = None
+        self.ErrMsg = None
+        self.ApiName = None
 
 
     def _deserialize(self, params):
@@ -2351,6 +2372,9 @@ class CreateApiRsp(AbstractModel):
         self.Path = params.get("Path")
         self.Method = params.get("Method")
         self.CreatedTime = params.get("CreatedTime")
+        self.Status = params.get("Status")
+        self.ErrMsg = params.get("ErrMsg")
+        self.ApiName = params.get("ApiName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8816,7 +8840,7 @@ class ServiceConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Product: 后端类型。启用vpc时生效，目前支持的类型为clb和vpc通道
+        :param Product: 后端类型。启用vpc时生效，目前支持的类型为clb, cvm和upstream
         :type Product: str
         :param UniqVpcId: vpc 的唯一ID。
         :type UniqVpcId: str

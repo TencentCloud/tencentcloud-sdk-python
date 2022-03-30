@@ -893,13 +893,13 @@ class AiContentReviewResult(AbstractModel):
         r"""
         :param Type: 任务的类型，可以取的值有：
 <li>Porn：图片鉴黄</li>
-<li>Terrorism：图片鉴恐</li>
-<li>Political：图片鉴政</li>
+<li>Terrorism：图片敏感</li>
+<li>Political：图片敏感</li>
 <li>Porn.Asr：Asr 文字鉴黄</li>
 <li>Porn.Ocr：Ocr 文字鉴黄</li>
-<li>Political.Asr：Asr 文字鉴政</li>
-<li>Political.Ocr：Ocr 文字鉴政</li>
-<li>Terrorism.Ocr：Ocr 文字鉴恐</li>
+<li>Political.Asr：Asr 文字敏感</li>
+<li>Political.Ocr：Ocr 文字敏感</li>
+<li>Terrorism.Ocr：Ocr 文字敏感</li>
 <li>Prohibited.Asr：Asr 文字鉴违禁</li>
 <li>Prohibited.Ocr：Ocr 文字鉴违禁</li>
         :type Type: str
@@ -910,10 +910,10 @@ class AiContentReviewResult(AbstractModel):
         :param PornTask: 视频内容审核智能画面鉴黄任务的查询结果，当任务类型为 Porn 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PornTask: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskPornResult`
-        :param TerrorismTask: 视频内容审核智能画面鉴恐任务的查询结果，当任务类型为 Terrorism 时有效。
+        :param TerrorismTask: 视频内容审核智能画面敏感任务的查询结果，当任务类型为 Terrorism 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TerrorismTask: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskTerrorismResult`
-        :param PoliticalTask: 视频内容审核智能画面鉴政任务的查询结果，当任务类型为 Political 时有效。
+        :param PoliticalTask: 视频内容审核智能画面敏感任务的查询结果，当任务类型为 Political 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PoliticalTask: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskPoliticalResult`
         :param PornAsrTask: 视频内容审核 Asr 文字鉴黄任务的查询结果，当任务类型为 Porn.Asr 时有效。
@@ -922,13 +922,13 @@ class AiContentReviewResult(AbstractModel):
         :param PornOcrTask: 视频内容审核 Ocr 文字鉴黄任务的查询结果，当任务类型为 Porn.Ocr 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PornOcrTask: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskPornOcrResult`
-        :param PoliticalAsrTask: 视频内容审核 Asr 文字鉴政任务的查询结果，当任务类型为 Political.Asr 时有效。
+        :param PoliticalAsrTask: 视频内容审核 Asr 文字敏感任务的查询结果，当任务类型为 Political.Asr 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PoliticalAsrTask: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskPoliticalAsrResult`
-        :param PoliticalOcrTask: 视频内容审核 Ocr 文字鉴政任务的查询结果，当任务类型为 Political.Ocr 时有效。
+        :param PoliticalOcrTask: 视频内容审核 Ocr 文字敏感任务的查询结果，当任务类型为 Political.Ocr 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PoliticalOcrTask: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskPoliticalOcrResult`
-        :param TerrorismOcrTask: 视频内容审核 Ocr 文字鉴恐任务的查询结果，当任务类型为 Terrorism.Ocr 时有效。
+        :param TerrorismOcrTask: 视频内容审核 Ocr 文字敏感任务的查询结果，当任务类型为 Terrorism.Ocr 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TerrorismOcrTask: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskTerrorismOcrResult`
         :param ProhibitedAsrTask: 视频内容审核 Asr 文字鉴违禁任务的查询结果，当任务类型为 Prohibited.Asr 时有效。
@@ -1952,13 +1952,13 @@ class AiRecognitionTaskOcrWordsSegmentItem(AbstractModel):
 
 
 class AiReviewPoliticalAsrTaskInput(AbstractModel):
-    """内容审核 Asr 文字鉴政、敏感任务输入参数类型
+    """内容审核 Asr 文字敏感任务输入参数类型
 
     """
 
     def __init__(self):
         r"""
-        :param Definition: 鉴政模板 ID。
+        :param Definition: 模板 ID。
         :type Definition: int
         """
         self.Definition = None
@@ -1976,20 +1976,20 @@ class AiReviewPoliticalAsrTaskInput(AbstractModel):
 
 
 class AiReviewPoliticalAsrTaskOutput(AbstractModel):
-    """Asr 文字涉政信息
+    """Asr 文字敏感信息
 
     """
 
     def __init__(self):
         r"""
-        :param Confidence: Asr 文字涉政、敏感评分，分值为0到100。
+        :param Confidence: Asr 文字敏感评分，分值为0到100。
         :type Confidence: float
-        :param Suggestion: Asr 文字涉政、敏感结果建议，取值范围：
+        :param Suggestion: Asr 文字敏感结果建议，取值范围：
 <li>pass。</li>
 <li>review。</li>
 <li>block。</li>
         :type Suggestion: str
-        :param SegmentSet: Asr 文字有涉政、敏感嫌疑的视频片段列表。
+        :param SegmentSet: Asr 文字敏感嫌疑的视频片段列表。
         :type SegmentSet: list of MediaContentReviewAsrTextSegmentItem
         """
         self.Confidence = None
@@ -2016,13 +2016,13 @@ class AiReviewPoliticalAsrTaskOutput(AbstractModel):
 
 
 class AiReviewPoliticalOcrTaskInput(AbstractModel):
-    """内容审核 Ocr 文字鉴政任务输入参数类型
+    """内容审核 Ocr 文字敏感任务输入参数类型
 
     """
 
     def __init__(self):
         r"""
-        :param Definition: 鉴政模板 ID。
+        :param Definition: 模板 ID。
         :type Definition: int
         """
         self.Definition = None
@@ -2040,20 +2040,20 @@ class AiReviewPoliticalOcrTaskInput(AbstractModel):
 
 
 class AiReviewPoliticalOcrTaskOutput(AbstractModel):
-    """Ocr 文字涉政信息
+    """Ocr 文字敏感信息
 
     """
 
     def __init__(self):
         r"""
-        :param Confidence: Ocr 文字涉政、敏感评分，分值为0到100。
+        :param Confidence: Ocr 文字敏感评分，分值为0到100。
         :type Confidence: float
-        :param Suggestion: Ocr 文字涉政、敏感结果建议，取值范围：
+        :param Suggestion: Ocr 文字敏感结果建议，取值范围：
 <li>pass。</li>
 <li>review。</li>
 <li>block。</li>
         :type Suggestion: str
-        :param SegmentSet: Ocr 文字有涉政、敏感嫌疑的视频片段列表。
+        :param SegmentSet: Ocr 文字有敏感嫌疑的视频片段列表。
         :type SegmentSet: list of MediaContentReviewOcrTextSegmentItem
         """
         self.Confidence = None
@@ -2080,13 +2080,13 @@ class AiReviewPoliticalOcrTaskOutput(AbstractModel):
 
 
 class AiReviewPoliticalTaskInput(AbstractModel):
-    """内容审核鉴政任务输入参数类型
+    """内容审核敏感任务输入参数类型
 
     """
 
     def __init__(self):
         r"""
-        :param Definition: 鉴政模板 ID。
+        :param Definition: 模板 ID。
         :type Definition: int
         """
         self.Definition = None
@@ -2104,26 +2104,26 @@ class AiReviewPoliticalTaskInput(AbstractModel):
 
 
 class AiReviewPoliticalTaskOutput(AbstractModel):
-    """涉政信息
+    """涉敏信息
 
     """
 
     def __init__(self):
         r"""
-        :param Confidence: 视频涉政评分，分值为0到100。
+        :param Confidence: 视频涉敏评分，分值为0到100。
         :type Confidence: float
-        :param Suggestion: 涉政结果建议，取值范围：
+        :param Suggestion: 涉敏结果建议，取值范围：
 <li>pass。</li>
 <li>review。</li>
 <li>block。</li>
         :type Suggestion: str
-        :param Label: 视频鉴政结果标签。内容审核模板[画面鉴政任务控制参数](https://cloud.tencent.com/document/api/862/37615#AiReviewPoliticalTaskOutput)里 LabelSet 参数与此参数取值范围的对应关系：
+        :param Label: 视频涉敏结果标签。内容审核模板[画面涉敏任务控制参数](https://cloud.tencent.com/document/api/862/37615#AiReviewPoliticalTaskOutput)里 LabelSet 参数与此参数取值范围的对应关系：
 violation_photo：
 <li>violation_photo：违规图标。</li>
 其他（即 politician/entertainment/sport/entrepreneur/scholar/celebrity/military）：
-<li>politician：政治人物。</li>
+<li>politician：涉敏人物。</li>
         :type Label: str
-        :param SegmentSet: 有涉政嫌疑的视频片段列表。
+        :param SegmentSet: 有涉敏嫌疑的视频片段列表。
         :type SegmentSet: list of MediaContentReviewPoliticalSegmentItem
         """
         self.Confidence = None
@@ -2480,7 +2480,7 @@ class AiReviewProhibitedOcrTaskOutput(AbstractModel):
 
 
 class AiReviewTaskPoliticalAsrResult(AbstractModel):
-    """内容审核 Asr 文字鉴政、敏感任务结果类型
+    """内容审核 Asr 文字敏感任务结果类型
 
     """
 
@@ -2494,9 +2494,9 @@ class AiReviewTaskPoliticalAsrResult(AbstractModel):
         :type ErrCode: int
         :param Message: 错误信息。
         :type Message: str
-        :param Input: 内容审核 Asr 文字鉴政任务输入。
+        :param Input: 内容审核 Asr 文字敏感任务输入。
         :type Input: :class:`tencentcloud.mps.v20190612.models.AiReviewPoliticalAsrTaskInput`
-        :param Output: 内容审核 Asr 文字鉴政任务输出。
+        :param Output: 内容审核 Asr 文字敏感任务输出。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiReviewPoliticalAsrTaskOutput`
         """
@@ -2529,7 +2529,7 @@ class AiReviewTaskPoliticalAsrResult(AbstractModel):
 
 
 class AiReviewTaskPoliticalOcrResult(AbstractModel):
-    """内容审核 Ocr 文字鉴政、敏感任务结果类型
+    """内容审核 Ocr 文字敏感任务结果类型
 
     """
 
@@ -2543,9 +2543,9 @@ class AiReviewTaskPoliticalOcrResult(AbstractModel):
         :type ErrCode: int
         :param Message: 错误信息。
         :type Message: str
-        :param Input: 内容审核 Ocr 文字鉴政任务输入。
+        :param Input: 内容审核 Ocr 文字敏感任务输入。
         :type Input: :class:`tencentcloud.mps.v20190612.models.AiReviewPoliticalOcrTaskInput`
-        :param Output: 内容审核 Ocr 文字鉴政任务输出。
+        :param Output: 内容审核 Ocr 文字敏感任务输出。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiReviewPoliticalOcrTaskOutput`
         """
@@ -2578,7 +2578,7 @@ class AiReviewTaskPoliticalOcrResult(AbstractModel):
 
 
 class AiReviewTaskPoliticalResult(AbstractModel):
-    """内容审核鉴政任务结果类型
+    """内容审核涉敏任务结果类型
 
     """
 
@@ -2592,9 +2592,9 @@ class AiReviewTaskPoliticalResult(AbstractModel):
         :type ErrCode: int
         :param Message: 错误信息。
         :type Message: str
-        :param Input: 内容审核鉴政任务输入。
+        :param Input: 内容审核涉敏任务输入。
         :type Input: :class:`tencentcloud.mps.v20190612.models.AiReviewPoliticalTaskInput`
-        :param Output: 内容审核鉴政任务输出。
+        :param Output: 内容审核涉敏任务输出。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiReviewPoliticalTaskOutput`
         """
@@ -2872,7 +2872,7 @@ class AiReviewTaskProhibitedOcrResult(AbstractModel):
 
 
 class AiReviewTaskTerrorismOcrResult(AbstractModel):
-    """内容审核 Ocr 文字鉴恐任务结果类型
+    """内容审核 Ocr 文字敏感任务结果类型
 
     """
 
@@ -2886,9 +2886,9 @@ class AiReviewTaskTerrorismOcrResult(AbstractModel):
         :type ErrCode: int
         :param Message: 错误信息。
         :type Message: str
-        :param Input: 内容审核 Ocr 文字鉴恐任务输入。
+        :param Input: 内容审核 Ocr 文字敏感任务输入。
         :type Input: :class:`tencentcloud.mps.v20190612.models.AiReviewTerrorismOcrTaskInput`
-        :param Output: 内容审核 Ocr 文字鉴恐任务输出。
+        :param Output: 内容审核 Ocr 文字敏感任务输出。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiReviewTerrorismOcrTaskOutput`
         """
@@ -2921,7 +2921,7 @@ class AiReviewTaskTerrorismOcrResult(AbstractModel):
 
 
 class AiReviewTaskTerrorismResult(AbstractModel):
-    """内容审核鉴恐任务结果类型
+    """内容审核涉敏任务结果类型
 
     """
 
@@ -2935,9 +2935,9 @@ class AiReviewTaskTerrorismResult(AbstractModel):
         :type ErrCode: int
         :param Message: 错误信息。
         :type Message: str
-        :param Input: 内容审核鉴恐任务输入。
+        :param Input: 内容审核涉敏任务输入。
         :type Input: :class:`tencentcloud.mps.v20190612.models.AiReviewTerrorismTaskInput`
-        :param Output: 内容审核鉴恐任务输出。
+        :param Output: 内容审核涉敏任务输出。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiReviewTerrorismTaskOutput`
         """
@@ -2970,13 +2970,13 @@ class AiReviewTaskTerrorismResult(AbstractModel):
 
 
 class AiReviewTerrorismOcrTaskInput(AbstractModel):
-    """内容审核 Ocr 文字鉴恐任务输入参数类型
+    """内容审核 Ocr 文字敏感任务输入参数类型
 
     """
 
     def __init__(self):
         r"""
-        :param Definition: 鉴恐模板 ID。
+        :param Definition: 模板 ID。
         :type Definition: int
         """
         self.Definition = None
@@ -2994,20 +2994,20 @@ class AiReviewTerrorismOcrTaskInput(AbstractModel):
 
 
 class AiReviewTerrorismOcrTaskOutput(AbstractModel):
-    """Ocr 文字涉恐信息
+    """Ocr 文字涉敏信息
 
     """
 
     def __init__(self):
         r"""
-        :param Confidence: Ocr 文字涉恐评分，分值为0到100。
+        :param Confidence: Ocr 文字涉敏评分，分值为0到100。
         :type Confidence: float
-        :param Suggestion: Ocr 文字涉恐结果建议，取值范围：
+        :param Suggestion: Ocr 文字涉敏结果建议，取值范围：
 <li>pass。</li>
 <li>review。</li>
 <li>block。</li>
         :type Suggestion: str
-        :param SegmentSet: Ocr 文字有涉恐嫌疑的视频片段列表。
+        :param SegmentSet: Ocr 文字有涉敏嫌疑的视频片段列表。
         :type SegmentSet: list of MediaContentReviewOcrTextSegmentItem
         """
         self.Confidence = None
@@ -3034,13 +3034,13 @@ class AiReviewTerrorismOcrTaskOutput(AbstractModel):
 
 
 class AiReviewTerrorismTaskInput(AbstractModel):
-    """内容审核鉴恐任务输入参数类型
+    """内容审核涉敏任务输入参数类型
 
     """
 
     def __init__(self):
         r"""
-        :param Definition: 鉴恐模板 ID。
+        :param Definition: 模板 ID。
         :type Definition: int
         """
         self.Definition = None
@@ -3058,31 +3058,31 @@ class AiReviewTerrorismTaskInput(AbstractModel):
 
 
 class AiReviewTerrorismTaskOutput(AbstractModel):
-    """暴恐信息
+    """涉敏信息
 
     """
 
     def __init__(self):
         r"""
-        :param Confidence: 视频暴恐评分，分值为0到100。
+        :param Confidence: 视频涉敏评分，分值为0到100。
         :type Confidence: float
-        :param Suggestion: 暴恐结果建议，取值范围：
+        :param Suggestion: 涉敏结果建议，取值范围：
 <li>pass。</li>
 <li>review。</li>
 <li>block。</li>
         :type Suggestion: str
-        :param Label: 视频暴恐结果标签，取值范围：
+        :param Label: 视频涉敏结果标签，取值范围：
 <li>guns：武器枪支。</li>
 <li>crowd：人群聚集。</li>
 <li>police：警察部队。</li>
 <li>bloody：血腥画面。</li>
-<li>banners：暴恐旗帜。</li>
+<li>banners：涉敏旗帜。</li>
 <li>militant：武装分子。</li>
 <li>explosion：爆炸火灾。</li>
-<li>terrorists：暴恐人物。</li>
-<li>scenario：暴恐画面。</li>
+<li>terrorists：涉敏人物。</li>
+<li>scenario：涉敏画面。</li>
         :type Label: str
-        :param SegmentSet: 有暴恐嫌疑的视频片段列表。
+        :param SegmentSet: 有涉敏嫌疑的视频片段列表。
         :type SegmentSet: list of MediaContentReviewSegmentItem
         """
         self.Confidence = None
@@ -3799,10 +3799,10 @@ class ContentReviewTemplateItem(AbstractModel):
         :param PornConfigure: 鉴黄控制参数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PornConfigure: :class:`tencentcloud.mps.v20190612.models.PornConfigureInfo`
-        :param TerrorismConfigure: 鉴恐控制参数。
+        :param TerrorismConfigure: 涉敏控制参数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TerrorismConfigure: :class:`tencentcloud.mps.v20190612.models.TerrorismConfigureInfo`
-        :param PoliticalConfigure: 鉴政控制参数。
+        :param PoliticalConfigure: 涉敏控制参数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PoliticalConfigure: :class:`tencentcloud.mps.v20190612.models.PoliticalConfigureInfo`
         :param ProhibitedConfigure: 违禁控制参数。违禁内容包括：
@@ -7197,7 +7197,7 @@ class FaceConfigureInfo(AbstractModel):
         :param DefaultLibraryLabelSet: 默认人物过滤标签，指定需要返回的默认人物的标签。如果未填或者为空，则全部默认人物结果都返回。标签可选值：
 <li>entertainment：娱乐明星；</li>
 <li>sport：体育明星；</li>
-<li>politician：政治人物。</li>
+<li>politician：敏感人物。</li>
         :type DefaultLibraryLabelSet: list of str
         :param UserDefineLibraryLabelSet: 用户自定义人物过滤标签，指定需要返回的用户自定义人物的标签。如果未填或者为空，则全部自定义人物结果都返回。
 标签个数最多 100 个，每个标签长度最多 16 个字符。
@@ -7247,7 +7247,7 @@ class FaceConfigureInfoForUpdate(AbstractModel):
         :param DefaultLibraryLabelSet: 默认人物过滤标签，指定需要返回的默认人物的标签。如果未填或者为空，则全部默认人物结果都返回。标签可选值：
 <li>entertainment：娱乐明星；</li>
 <li>sport：体育明星；</li>
-<li>politician：政治人物。</li>
+<li>politician：敏感人物。</li>
         :type DefaultLibraryLabelSet: list of str
         :param UserDefineLibraryLabelSet: 用户自定义人物过滤标签，指定需要返回的用户自定义人物的标签。如果未填或者为空，则全部自定义人物结果都返回。
 标签个数最多 100 个，每个标签长度最多 16 个字符。
@@ -7752,7 +7752,7 @@ OcrFullTextRecognition 时有效。
 
 
 class LiveStreamAiReviewImagePoliticalResult(AbstractModel):
-    """直播 AI 内容审核图片鉴政结果
+    """直播 AI 内容审核图片敏感结果
 
     """
 
@@ -7762,20 +7762,20 @@ class LiveStreamAiReviewImagePoliticalResult(AbstractModel):
         :type StartPtsTime: float
         :param EndPtsTime: 嫌疑片段结束的 PTS 时间，单位：秒。
         :type EndPtsTime: float
-        :param Confidence: 嫌疑片段涉政分数。
+        :param Confidence: 嫌疑片段敏感分数。
         :type Confidence: float
         :param Suggestion: 嫌疑片段鉴黄结果建议，取值范围：
 <li>pass</li>
 <li>review</li>
 <li>block</li>
         :type Suggestion: str
-        :param Label: 视频鉴政结果标签，取值范围：
-<li>politician：政治人物。</li>
+        :param Label: 视频敏感结果标签，取值范围：
+<li>politician：敏感人物。</li>
 <li>violation_photo：违规图标。</li>
         :type Label: str
-        :param Name: 涉政人物、违规图标名字。
+        :param Name: 敏感人物、违规图标名字。
         :type Name: str
-        :param AreaCoordSet: 涉政人物、违规图标出现的区域坐标 (像素级)，[x1, y1, x2, y2]，即左上角坐标、右下角坐标。
+        :param AreaCoordSet: 敏感人物、违规图标出现的区域坐标 (像素级)，[x1, y1, x2, y2]，即左上角坐标、右下角坐标。
         :type AreaCoordSet: list of int
         :param Url: 嫌疑图片 URL （图片不会永久存储，到达
 PicUrlExpireTime 时间点后图片将被删除）。
@@ -7870,7 +7870,7 @@ PicUrlExpireTime 时间点后图片将被删除）。
 
 
 class LiveStreamAiReviewImageTerrorismResult(AbstractModel):
-    """直播 AI 内容审核图片鉴恐结果
+    """直播 AI 内容审核图片涉敏结果
 
     """
 
@@ -7880,22 +7880,22 @@ class LiveStreamAiReviewImageTerrorismResult(AbstractModel):
         :type StartPtsTime: float
         :param EndPtsTime: 嫌疑片段结束的 PTS 时间，单位：秒。
         :type EndPtsTime: float
-        :param Confidence: 嫌疑片段涉恐分数。
+        :param Confidence: 嫌疑片段涉敏分数。
         :type Confidence: float
-        :param Suggestion: 嫌疑片段鉴恐结果建议，取值范围：
+        :param Suggestion: 嫌疑片段涉敏结果建议，取值范围：
 <li>pass</li>
 <li>review</li>
 <li>block</li>
         :type Suggestion: str
-        :param Label: 视频暴恐结果标签，取值范围：
+        :param Label: 视频涉敏结果标签，取值范围：
 <li>guns：武器枪支。</li>
 <li>crowd：人群聚集。</li>
 <li>police：警察部队。</li>
 <li>bloody：血腥画面。</li>
-<li>banners：暴恐旗帜。</li>
+<li>banners：涉敏旗帜。</li>
 <li>militant：武装分子。</li>
 <li>explosion：爆炸火灾。</li>
-<li>terrorists：暴恐人物。</li>
+<li>terrorists：涉敏人物。</li>
         :type Label: str
         :param Url: 嫌疑图片 URL （图片不会永久存储，到达
 PicUrlExpireTime 时间点后图片将被删除）。
@@ -7967,15 +7967,15 @@ class LiveStreamAiReviewResultItem(AbstractModel):
         r"""
         :param Type: 审核结果的类型，可以取的值有：
 <li>ImagePorn：图片鉴黄</li>
-<li>ImageTerrorism：图片鉴恐</li>
-<li>ImagePolitical：图片鉴政</li>
+<li>ImageTerrorism：图片涉敏</li>
+<li>ImagePolitical：图片涉敏</li>
 <li>PornVoice：声音鉴黄</li>
         :type Type: str
         :param ImagePornResultSet: 图片鉴黄的结果，当 Type 为 ImagePorn 时有效。
         :type ImagePornResultSet: list of LiveStreamAiReviewImagePornResult
-        :param ImageTerrorismResultSet: 图片鉴恐的结果，当 Type 为 ImageTerrorism 时有效。
+        :param ImageTerrorismResultSet: 图片涉敏的结果，当 Type 为 ImageTerrorism 时有效。
         :type ImageTerrorismResultSet: list of LiveStreamAiReviewImageTerrorismResult
-        :param ImagePoliticalResultSet: 图片鉴政的结果，当 Type 为 ImagePolitical 时有效。
+        :param ImagePoliticalResultSet: 图片涉敏的结果，当 Type 为 ImagePolitical 时有效。
         :type ImagePoliticalResultSet: list of LiveStreamAiReviewImagePoliticalResult
         :param VoicePornResultSet: 声音鉴黄的结果，当 Type 为 PornVoice 时有效。
         :type VoicePornResultSet: list of LiveStreamAiReviewVoicePornResult
@@ -8790,7 +8790,7 @@ PicUrlExpireTime 时间点后图片将被删除）。
 
 
 class MediaContentReviewPoliticalSegmentItem(AbstractModel):
-    """内容审核涉政嫌疑片段
+    """内容审核涉敏嫌疑片段
 
     """
 
@@ -8800,16 +8800,16 @@ class MediaContentReviewPoliticalSegmentItem(AbstractModel):
         :type StartTimeOffset: float
         :param EndTimeOffset: 嫌疑片段结束的偏移时间，单位：秒。
         :type EndTimeOffset: float
-        :param Confidence: 嫌疑片段涉政分数。
+        :param Confidence: 嫌疑片段涉敏分数。
         :type Confidence: float
-        :param Suggestion: 嫌疑片段鉴政结果建议，取值范围：
+        :param Suggestion: 嫌疑片段涉敏结果建议，取值范围：
 <li>pass。</li>
 <li>review。</li>
 <li>block。</li>
         :type Suggestion: str
-        :param Name: 涉政人物、违规图标名字。
+        :param Name: 涉敏人物、违规图标名字。
         :type Name: str
-        :param Label: 嫌疑片段鉴政结果标签。内容审核模板[画面鉴政任务控制参数](https://cloud.tencent.com/document/api/862/37615#PoliticalImgReviewTemplateInfo)里 LabelSet 参数与此参数取值范围的对应关系：
+        :param Label: 嫌疑片段涉敏结果标签。内容审核模板[画面涉敏任务控制参数](https://cloud.tencent.com/document/api/862/37615#PoliticalImgReviewTemplateInfo)里 LabelSet 参数与此参数取值范围的对应关系：
 violation_photo：
 <li>violation_photo：违规图标。</li>
 politician：
@@ -8818,7 +8818,7 @@ politician：
 <li>bureau_politician：厅局级领导人；</li>
 <li>county_politician：县处级领导人；</li>
 <li>rural_politician：乡科级领导人；</li>
-<li>sensitive_politician：敏感政治人物；</li>
+<li>sensitive_politician：涉敏人物；</li>
 <li>foreign_politician：国外领导人。</li>
 entertainment：
 <li>sensitive_entertainment：敏感娱乐人物。</li>
@@ -8837,7 +8837,7 @@ military：
         :param Url: 嫌疑图片 URL （图片不会永久存储，到达
  PicUrlExpireTime 时间点后图片将被删除）。
         :type Url: str
-        :param AreaCoordSet: 涉政人物、违规图标出现的区域坐标 (像素级)，[x1, y1, x2, y2]，即左上角坐标、右下角坐标。
+        :param AreaCoordSet: 涉敏人物、违规图标出现的区域坐标 (像素级)，[x1, y1, x2, y2]，即左上角坐标、右下角坐标。
         :type AreaCoordSet: list of int
         :param PicUrlExpireTime: 嫌疑图片 URL 失效时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
         :type PicUrlExpireTime: str
@@ -8873,7 +8873,7 @@ military：
 
 
 class MediaContentReviewSegmentItem(AbstractModel):
-    """内容审核涉黄/暴恐嫌疑片段
+    """内容审核涉黄/涉敏嫌疑片段
 
     """
 
@@ -9627,7 +9627,7 @@ class MediaSnapshotByTimePicInfoItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TimeOffset: 该张截图对应视频文件中的时间偏移，单位为<font color=red>毫秒</font>。
+        :param TimeOffset: 该张截图对应视频文件中的时间偏移，单位为秒。
         :type TimeOffset: float
         :param Path: 该张截图的路径。
         :type Path: str
@@ -11216,15 +11216,15 @@ class ParseNotificationResponse(AbstractModel):
 
 
 class PoliticalAsrReviewTemplateInfo(AbstractModel):
-    """语音鉴政任务控制参数
+    """语音涉敏任务控制参数
 
     """
 
     def __init__(self):
         r"""
-        :param Switch: 语音鉴政任务开关，可选值：
-<li>ON：开启语音鉴政任务；</li>
-<li>OFF：关闭语音鉴政任务。</li>
+        :param Switch: 语音涉敏任务开关，可选值：
+<li>ON：开启语音涉敏任务；</li>
+<li>OFF：关闭语音涉敏任务。</li>
         :type Switch: str
         :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
         :type BlockConfidence: int
@@ -11250,15 +11250,15 @@ class PoliticalAsrReviewTemplateInfo(AbstractModel):
 
 
 class PoliticalAsrReviewTemplateInfoForUpdate(AbstractModel):
-    """语音鉴政任务控制参数。
+    """语音涉敏任务控制参数。
 
     """
 
     def __init__(self):
         r"""
-        :param Switch: 语音鉴政任务开关，可选值：
-<li>ON：开启语音鉴政任务；</li>
-<li>OFF：关闭语音鉴政任务。</li>
+        :param Switch: 语音涉敏任务开关，可选值：
+<li>ON：开启语音涉敏任务；</li>
+<li>OFF：关闭语音涉敏任务。</li>
         :type Switch: str
         :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
         :type BlockConfidence: int
@@ -11284,17 +11284,17 @@ class PoliticalAsrReviewTemplateInfoForUpdate(AbstractModel):
 
 
 class PoliticalConfigureInfo(AbstractModel):
-    """鉴政任务控制参数
+    """涉敏任务控制参数
 
     """
 
     def __init__(self):
         r"""
-        :param ImgReviewInfo: 画面鉴政控制参数。
+        :param ImgReviewInfo: 画面涉敏控制参数。
         :type ImgReviewInfo: :class:`tencentcloud.mps.v20190612.models.PoliticalImgReviewTemplateInfo`
-        :param AsrReviewInfo: 语音鉴政控制参数。
+        :param AsrReviewInfo: 语音涉敏控制参数。
         :type AsrReviewInfo: :class:`tencentcloud.mps.v20190612.models.PoliticalAsrReviewTemplateInfo`
-        :param OcrReviewInfo: 文本鉴政控制参数。
+        :param OcrReviewInfo: 文本涉敏控制参数。
         :type OcrReviewInfo: :class:`tencentcloud.mps.v20190612.models.PoliticalOcrReviewTemplateInfo`
         """
         self.ImgReviewInfo = None
@@ -11322,17 +11322,17 @@ class PoliticalConfigureInfo(AbstractModel):
 
 
 class PoliticalConfigureInfoForUpdate(AbstractModel):
-    """鉴政任务控制参数。
+    """涉敏任务控制参数。
 
     """
 
     def __init__(self):
         r"""
-        :param ImgReviewInfo: 画面鉴政控制参数。
+        :param ImgReviewInfo: 画面涉敏控制参数。
         :type ImgReviewInfo: :class:`tencentcloud.mps.v20190612.models.PoliticalImgReviewTemplateInfoForUpdate`
-        :param AsrReviewInfo: 语音鉴政控制参数。
+        :param AsrReviewInfo: 语音涉敏控制参数。
         :type AsrReviewInfo: :class:`tencentcloud.mps.v20190612.models.PoliticalAsrReviewTemplateInfoForUpdate`
-        :param OcrReviewInfo: 文本鉴政控制参数。
+        :param OcrReviewInfo: 文本涉敏控制参数。
         :type OcrReviewInfo: :class:`tencentcloud.mps.v20190612.models.PoliticalOcrReviewTemplateInfoForUpdate`
         """
         self.ImgReviewInfo = None
@@ -11360,19 +11360,19 @@ class PoliticalConfigureInfoForUpdate(AbstractModel):
 
 
 class PoliticalImgReviewTemplateInfo(AbstractModel):
-    """画面鉴政任务控制参数
+    """画面涉敏任务控制参数
 
     """
 
     def __init__(self):
         r"""
-        :param Switch: 画面鉴政任务开关，可选值：
-<li>ON：开启画面鉴政任务；</li>
-<li>OFF：关闭画面鉴政任务。</li>
+        :param Switch: 画面涉敏任务开关，可选值：
+<li>ON：开启画面涉敏任务；</li>
+<li>OFF：关闭画面涉敏任务。</li>
         :type Switch: str
-        :param LabelSet: 画面鉴政过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：
+        :param LabelSet: 画面涉敏过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：
 <li>violation_photo：违规图标；</li>
-<li>politician：政治人物；</li>
+<li>politician：涉敏人物；</li>
 <li>entertainment：娱乐人物；</li>
 <li>sport：体育人物；</li>
 <li>entrepreneur：商业人物；</li>
@@ -11406,19 +11406,19 @@ class PoliticalImgReviewTemplateInfo(AbstractModel):
 
 
 class PoliticalImgReviewTemplateInfoForUpdate(AbstractModel):
-    """画面鉴政任务控制参数。
+    """画面涉敏任务控制参数。
 
     """
 
     def __init__(self):
         r"""
-        :param Switch: 画面鉴政任务开关，可选值：
-<li>ON：开启画面鉴政任务；</li>
-<li>OFF：关闭画面鉴政任务。</li>
+        :param Switch: 画面涉敏任务开关，可选值：
+<li>ON：开启画面涉敏任务；</li>
+<li>OFF：关闭画面涉敏任务。</li>
         :type Switch: str
-        :param LabelSet: 画面鉴政过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：
+        :param LabelSet: 画面涉敏过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：
 <li>violation_photo：违规图标；</li>
-<li>politician：政治人物；</li>
+<li>politician：涉敏人物；</li>
 <li>entertainment：娱乐人物；</li>
 <li>sport：体育人物；</li>
 <li>entrepreneur：商业人物；</li>
@@ -11452,15 +11452,15 @@ class PoliticalImgReviewTemplateInfoForUpdate(AbstractModel):
 
 
 class PoliticalOcrReviewTemplateInfo(AbstractModel):
-    """文本鉴政任务控制参数
+    """文本涉敏任务控制参数
 
     """
 
     def __init__(self):
         r"""
-        :param Switch: 文本鉴政任务开关，可选值：
-<li>ON：开启文本鉴政任务；</li>
-<li>OFF：关闭文本鉴政任务。</li>
+        :param Switch: 文本涉敏任务开关，可选值：
+<li>ON：开启文本涉敏任务；</li>
+<li>OFF：关闭文本涉敏任务。</li>
         :type Switch: str
         :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
         :type BlockConfidence: int
@@ -11486,15 +11486,15 @@ class PoliticalOcrReviewTemplateInfo(AbstractModel):
 
 
 class PoliticalOcrReviewTemplateInfoForUpdate(AbstractModel):
-    """文本鉴政任务控制参数。
+    """文本涉敏任务控制参数。
 
     """
 
     def __init__(self):
         r"""
-        :param Switch: 文本鉴政任务开关，可选值：
-<li>ON：开启文本鉴政任务；</li>
-<li>OFF：关闭文本鉴政任务。</li>
+        :param Switch: 文本涉敏任务开关，可选值：
+<li>ON：开启文本涉敏任务；</li>
+<li>OFF：关闭文本涉敏任务。</li>
         :type Switch: str
         :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
         :type BlockConfidence: int
@@ -13117,15 +13117,15 @@ class TaskSimpleInfo(AbstractModel):
 
 
 class TerrorismConfigureInfo(AbstractModel):
-    """鉴恐任务控制参数
+    """涉敏任务控制参数
 
     """
 
     def __init__(self):
         r"""
-        :param ImgReviewInfo: 画面鉴恐任务控制参数。
+        :param ImgReviewInfo: 画面涉敏任务控制参数。
         :type ImgReviewInfo: :class:`tencentcloud.mps.v20190612.models.TerrorismImgReviewTemplateInfo`
-        :param OcrReviewInfo: 文本鉴恐任务控制参数。
+        :param OcrReviewInfo: 文本涉敏任务控制参数。
         :type OcrReviewInfo: :class:`tencentcloud.mps.v20190612.models.TerrorismOcrReviewTemplateInfo`
         """
         self.ImgReviewInfo = None
@@ -13149,15 +13149,15 @@ class TerrorismConfigureInfo(AbstractModel):
 
 
 class TerrorismConfigureInfoForUpdate(AbstractModel):
-    """鉴恐任务控制参数。
+    """涉敏任务控制参数。
 
     """
 
     def __init__(self):
         r"""
-        :param ImgReviewInfo: 画面鉴恐任务控制参数。
+        :param ImgReviewInfo: 画面涉敏任务控制参数。
         :type ImgReviewInfo: :class:`tencentcloud.mps.v20190612.models.TerrorismImgReviewTemplateInfoForUpdate`
-        :param OcrReviewInfo: 文本鉴恐任务控制参数。
+        :param OcrReviewInfo: 文本涉敏任务控制参数。
         :type OcrReviewInfo: :class:`tencentcloud.mps.v20190612.models.TerrorismOcrReviewTemplateInfoForUpdate`
         """
         self.ImgReviewInfo = None
@@ -13181,26 +13181,26 @@ class TerrorismConfigureInfoForUpdate(AbstractModel):
 
 
 class TerrorismImgReviewTemplateInfo(AbstractModel):
-    """画面鉴恐任务控制参数
+    """画面涉敏任务控制参数
 
     """
 
     def __init__(self):
         r"""
-        :param Switch: 画面鉴恐任务开关，可选值：
-<li>ON：开启画面鉴恐任务；</li>
-<li>OFF：关闭画面鉴恐任务。</li>
+        :param Switch: 画面涉敏任务开关，可选值：
+<li>ON：开启画面涉敏任务；</li>
+<li>OFF：关闭画面涉敏任务。</li>
         :type Switch: str
-        :param LabelSet: 画面鉴恐过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：
+        :param LabelSet: 画面涉敏过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：
 <li>guns：武器枪支；</li>
 <li>crowd：人群聚集；</li>
 <li>bloody：血腥画面；</li>
 <li>police：警察部队；</li>
-<li>banners：暴恐旗帜；</li>
+<li>banners：涉敏旗帜；</li>
 <li>militant：武装分子；</li>
 <li>explosion：爆炸火灾；</li>
-<li>terrorists：暴恐人物；</li>
-<li>scenario：暴恐画面。</li>
+<li>terrorists：涉敏人物；</li>
+<li>scenario：涉敏画面。</li>
         :type LabelSet: list of str
         :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 90 分。取值范围：0~100。
         :type BlockConfidence: int
@@ -13228,26 +13228,26 @@ class TerrorismImgReviewTemplateInfo(AbstractModel):
 
 
 class TerrorismImgReviewTemplateInfoForUpdate(AbstractModel):
-    """画面鉴恐任务控制参数。
+    """画面涉敏任务控制参数。
 
     """
 
     def __init__(self):
         r"""
-        :param Switch: 画面鉴恐任务开关，可选值：
-<li>ON：开启画面鉴恐任务；</li>
-<li>OFF：关闭画面鉴恐任务。</li>
+        :param Switch: 画面涉敏任务开关，可选值：
+<li>ON：开启画面涉敏任务；</li>
+<li>OFF：关闭画面涉敏任务。</li>
         :type Switch: str
-        :param LabelSet: 画面鉴恐过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：
+        :param LabelSet: 画面涉敏过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：
 <li>guns：武器枪支；</li>
 <li>crowd：人群聚集；</li>
 <li>bloody：血腥画面；</li>
 <li>police：警察部队；</li>
-<li>banners：暴恐旗帜；</li>
+<li>banners：涉敏旗帜；</li>
 <li>militant：武装分子；</li>
 <li>explosion：爆炸火灾；</li>
-<li>terrorists：暴恐人物；</li>
-<li>scenario：暴恐画面。</li>
+<li>terrorists：涉敏人物；</li>
+<li>scenario：涉敏画面。</li>
         :type LabelSet: list of str
         :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
         :type BlockConfidence: int
@@ -13275,15 +13275,15 @@ class TerrorismImgReviewTemplateInfoForUpdate(AbstractModel):
 
 
 class TerrorismOcrReviewTemplateInfo(AbstractModel):
-    """文本鉴恐任务控制参数
+    """文本涉敏任务控制参数
 
     """
 
     def __init__(self):
         r"""
-        :param Switch: 文本鉴恐任务开关，可选值：
-<li>ON：开启文本鉴恐任务；</li>
-<li>OFF：关闭文本鉴恐任务。</li>
+        :param Switch: 文本涉敏任务开关，可选值：
+<li>ON：开启文本涉敏任务；</li>
+<li>OFF：关闭文本涉敏任务。</li>
         :type Switch: str
         :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
         :type BlockConfidence: int
@@ -13309,15 +13309,15 @@ class TerrorismOcrReviewTemplateInfo(AbstractModel):
 
 
 class TerrorismOcrReviewTemplateInfoForUpdate(AbstractModel):
-    """文本鉴恐任务控制参数
+    """文本涉敏任务控制参数
 
     """
 
     def __init__(self):
         r"""
-        :param Switch: 文本鉴恐任务开关，可选值：
-<li>ON：开启文本鉴恐任务；</li>
-<li>OFF：关闭文本鉴恐任务。</li>
+        :param Switch: 文本涉敏任务开关，可选值：
+<li>ON：开启文本涉敏任务；</li>
+<li>OFF：关闭文本涉敏任务。</li>
         :type Switch: str
         :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
         :type BlockConfidence: int

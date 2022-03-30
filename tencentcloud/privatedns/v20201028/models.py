@@ -901,7 +901,7 @@ class DescribePrivateZoneRecordListRequest(AbstractModel):
         :type Filters: list of Filter
         :param Offset: 分页偏移量，从0开始
         :type Offset: int
-        :param Limit: 分页限制数目， 最大100，默认20
+        :param Limit: 分页限制数目， 最大200，默认20
         :type Limit: int
         """
         self.ZoneId = None
@@ -1030,6 +1030,35 @@ class DescribePrivateZoneServiceResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.ServiceStatus = params.get("ServiceStatus")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeQuotaUsageRequest(AbstractModel):
+    """DescribeQuotaUsage请求参数结构体
+
+    """
+
+
+class DescribeQuotaUsageResponse(AbstractModel):
+    """DescribeQuotaUsage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TldQuota: Tld额度使用情况
+        :type TldQuota: :class:`tencentcloud.privatedns.v20201028.models.TldQuota`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TldQuota = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("TldQuota") is not None:
+            self.TldQuota = TldQuota()
+            self.TldQuota._deserialize(params.get("TldQuota"))
         self.RequestId = params.get("RequestId")
 
 
@@ -1461,6 +1490,9 @@ class PrivateZone(AbstractModel):
         :param AccountVpcSet: 绑定的关联账号的vpc列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type AccountVpcSet: list of AccountVpcInfoOutput
+        :param IsCustomTld: 是否自定义TLD
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsCustomTld: bool
         """
         self.ZoneId = None
         self.OwnerUin = None
@@ -1474,6 +1506,7 @@ class PrivateZone(AbstractModel):
         self.DnsForwardStatus = None
         self.Tags = None
         self.AccountVpcSet = None
+        self.IsCustomTld = None
 
 
     def _deserialize(self, params):
@@ -1504,6 +1537,7 @@ class PrivateZone(AbstractModel):
                 obj = AccountVpcInfoOutput()
                 obj._deserialize(item)
                 self.AccountVpcSet.append(obj)
+        self.IsCustomTld = params.get("IsCustomTld")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1630,6 +1664,42 @@ class TagInfo(AbstractModel):
     def _deserialize(self, params):
         self.TagKey = params.get("TagKey")
         self.TagValue = params.get("TagValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TldQuota(AbstractModel):
+    """Tld额度
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Total: 总共额度
+        :type Total: int
+        :param Used: 已使用额度
+        :type Used: int
+        :param Stock: 库存
+        :type Stock: int
+        :param Quota: 用户限额
+        :type Quota: int
+        """
+        self.Total = None
+        self.Used = None
+        self.Stock = None
+        self.Quota = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        self.Used = params.get("Used")
+        self.Stock = params.get("Stock")
+        self.Quota = params.get("Quota")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

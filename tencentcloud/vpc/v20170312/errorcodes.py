@@ -26,6 +26,9 @@ AUTHFAILURE = 'AuthFailure'
 # 地址没有弹性网卡信息。
 FAILEDOPERATION_ADDRESSENIINFONOTFOUND = 'FailedOperation.AddressEniInfoNotFound'
 
+# 不支持的地域。
+FAILEDOPERATION_INVALIDREGION = 'FailedOperation.InvalidRegion'
+
 # 网络探测超时，请稍后重试。
 FAILEDOPERATION_NETDETECTTIMEOUT = 'FailedOperation.NetDetectTimeOut'
 
@@ -34,9 +37,6 @@ INTERNALERROR = 'InternalError'
 
 # 创建Ckafka路由失败，请稍后重试。
 INTERNALERROR_CREATECKAFKAROUTEERROR = 'InternalError.CreateCkafkaRouteError'
-
-# 网络探测超时，请稍后重试。
-INTERNALERROR_NETDETECTTIMEOUT = 'InternalError.NetDetectTimeOut'
 
 # 操作内部错误。
 INTERNALSERVERERROR = 'InternalServerError'
@@ -167,6 +167,9 @@ INVALIDPARAMETERVALUE_DUPLICATE = 'InvalidParameterValue.Duplicate'
 # 参数值存在重复。
 INVALIDPARAMETERVALUE_DUPLICATEPARA = 'InvalidParameterValue.DuplicatePara'
 
+# 值超过上限。
+INVALIDPARAMETERVALUE_EIPBRANDWIDTHOUTINVALID = 'InvalidParameterValue.EIPBrandWidthOutInvalid'
+
 # 缺少参数。
 INVALIDPARAMETERVALUE_EMPTY = 'InvalidParameterValue.Empty'
 
@@ -181,6 +184,9 @@ INVALIDPARAMETERVALUE_INSTANCEDOESNOTSUPPORTANYCAST = 'InvalidParameterValue.Ins
 
 # 该实例已有WanIP。
 INVALIDPARAMETERVALUE_INSTANCEHASWANIP = 'InvalidParameterValue.InstanceHasWanIP'
+
+# 实例ID错误。
+INVALIDPARAMETERVALUE_INSTANCEIDMALFORMED = 'InvalidParameterValue.InstanceIdMalformed'
 
 # 该实例没有CalcIP，无法完成请求。
 INVALIDPARAMETERVALUE_INSTANCENOCALCIP = 'InvalidParameterValue.InstanceNoCalcIP'
@@ -232,6 +238,9 @@ INVALIDPARAMETERVALUE_MISSINGASSOCIATEENTITY = 'InvalidParameterValue.MissingAss
 
 # 集群类型不同的IP不可在同一请求中。
 INVALIDPARAMETERVALUE_MIXEDADDRESSIPSETTYPE = 'InvalidParameterValue.MixedAddressIpSetType'
+
+# NAT网关的SNAT转换规则不存在。
+INVALIDPARAMETERVALUE_NATGATEWAYSNATRULENOTEXISTS = 'InvalidParameterValue.NatGatewaySnatRuleNotExists'
 
 # NAT网关的SNAT规则已经存在。
 INVALIDPARAMETERVALUE_NATSNATRULEEXISTS = 'InvalidParameterValue.NatSnatRuleExists'
@@ -344,11 +353,17 @@ INVALIDVPNGATEWAYID_NOTFOUND = 'InvalidVpnGatewayId.NotFound'
 # 超过配额限制。
 LIMITEXCEEDED = 'LimitExceeded'
 
+# 账号退还配额超过限制。
+LIMITEXCEEDED_ACCOUNTRETURNQUOTA = 'LimitExceeded.AccountReturnQuota'
+
 # 分配IP地址数量达到上限。
 LIMITEXCEEDED_ADDRESS = 'LimitExceeded.Address'
 
 # 租户申请的弹性IP超过上限。
 LIMITEXCEEDED_ADDRESSQUOTALIMITEXCEEDED = 'LimitExceeded.AddressQuotaLimitExceeded'
+
+# 带宽包配额超过限制。
+LIMITEXCEEDED_BANDWIDTHPACKAGEQUOTA = 'LimitExceeded.BandwidthPackageQuota'
 
 # VPC分配网段数量达到上限。
 LIMITEXCEEDED_CIDRBLOCK = 'LimitExceeded.CidrBlock'
@@ -356,11 +371,23 @@ LIMITEXCEEDED_CIDRBLOCK = 'LimitExceeded.CidrBlock'
 # 租户每天申请的弹性IP超过上限。
 LIMITEXCEEDED_DAILYALLOCATEADDRESSQUOTALIMITEXCEEDED = 'LimitExceeded.DailyAllocateAddressQuotaLimitExceeded'
 
+# 实例绑定的弹性IP超过配额。
+LIMITEXCEEDED_INSTANCEADDRESSQUOTA = 'LimitExceeded.InstanceAddressQuota'
+
+# 修改地址网络计费模式配额超过限制。
+LIMITEXCEEDED_MODIFYADDRESSINTERNETCHARGETYPEQUOTA = 'LimitExceeded.ModifyAddressInternetChargeTypeQuota'
+
+# 每月地址找回配额超过限制。
+LIMITEXCEEDED_MONTHLYADDRESSRECOVERYQUOTA = 'LimitExceeded.MonthlyAddressRecoveryQuota'
+
 # NAT网关数量已达到上限。
 LIMITEXCEEDED_NATGATEWAYLIMITEXCEEDED = 'LimitExceeded.NatGatewayLimitExceeded'
 
 # 私有网络创建的NAT网关超过上限。
 LIMITEXCEEDED_NATGATEWAYPERVPCLIMITEXCEEDED = 'LimitExceeded.NatGatewayPerVpcLimitExceeded'
+
+# 过滤参数名称超过限制。
+LIMITEXCEEDED_NUMBEROFFILTERS = 'LimitExceeded.NumberOfFilters'
 
 # NAT网关绑定的弹性IP超过上限。
 LIMITEXCEEDED_PUBLICIPADDRESSPERNATGATEWAYLIMITEXCEEDED = 'LimitExceeded.PublicIpAddressPerNatGatewayLimitExceeded'
@@ -403,6 +430,9 @@ UNAUTHORIZEDOPERATION = 'UnauthorizedOperation'
 
 # 绑定关系不存在。
 UNAUTHORIZEDOPERATION_ATTACHMENTNOTFOUND = 'UnauthorizedOperation.AttachmentNotFound'
+
+# 未授权的用户。
+UNAUTHORIZEDOPERATION_INVALIDACCOUNT = 'UnauthorizedOperation.InvalidAccount'
 
 # 账号未实名。
 UNAUTHORIZEDOPERATION_NOREALNAMEAUTHENTICATION = 'UnauthorizedOperation.NoRealNameAuthentication'
@@ -548,6 +578,9 @@ UNSUPPORTEDOPERATION_INVALIDRESOURCEPROTOCOL = 'UnsupportedOperation.InvalidReso
 # 资源状态不合法。
 UNSUPPORTEDOPERATION_INVALIDSTATE = 'UnsupportedOperation.InvalidState'
 
+# 当前状态不支持发布至云联网，请重试。
+UNSUPPORTEDOPERATION_INVALIDSTATUSNOTIFYCCN = 'UnsupportedOperation.InvalidStatusNotifyCcn'
+
 # 关联当前云联网的实例的账号存在不是金融云账号。
 UNSUPPORTEDOPERATION_ISNOTFINANCEACCOUNT = 'UnsupportedOperation.IsNotFinanceAccount'
 
@@ -560,6 +593,9 @@ UNSUPPORTEDOPERATION_LOCALGATEWAYALREADYEXISTS = 'UnsupportedOperation.LocalGate
 # 资源互斥操作任务正在执行。
 UNSUPPORTEDOPERATION_MUTEXOPERATIONTASKRUNNING = 'UnsupportedOperation.MutexOperationTaskRunning'
 
+# SNAT/DNAT转换规则所指定的内网IP已绑定了其他的规则，无法重复绑定。
+UNSUPPORTEDOPERATION_NATGATEWAYRULEPIPEXISTS = 'UnsupportedOperation.NatGatewayRulePipExists'
+
 # NAT网关类型不支持SNAT规则。
 UNSUPPORTEDOPERATION_NATGATEWAYTYPENOTSUPPORTSNAT = 'UnsupportedOperation.NatGatewayTypeNotSupportSNAT'
 
@@ -568,6 +604,9 @@ UNSUPPORTEDOPERATION_NATNOTSUPPORTED = 'UnsupportedOperation.NatNotSupported'
 
 # 指定的子网不支持创建本地网关类型的路由。
 UNSUPPORTEDOPERATION_NORMALSUBNETNOTSUPPORTLOCALGATEWAY = 'UnsupportedOperation.NormalSubnetNotSupportLocalGateway'
+
+# 当前实例已被封禁，无法进行此操作。
+UNSUPPORTEDOPERATION_NOTLOCKEDINSTANCEOPERATION = 'UnsupportedOperation.NotLockedInstanceOperation'
 
 # 当前云联网实例未处于申请中状态，无法进行操作。
 UNSUPPORTEDOPERATION_NOTPENDINGCCNINSTANCE = 'UnsupportedOperation.NotPendingCcnInstance'
@@ -599,6 +638,9 @@ UNSUPPORTEDOPERATION_PUBLICIPADDRESSISNOTEXISTED = 'UnsupportedOperation.PublicI
 # 绑定NAT网关的弹性IP不是按流量计费的。
 UNSUPPORTEDOPERATION_PUBLICIPADDRESSNOTBILLEDBYTRAFFIC = 'UnsupportedOperation.PublicIpAddressNotBilledByTraffic'
 
+# 当前账号不能在该地域使用产品。
+UNSUPPORTEDOPERATION_PURCHASELIMIT = 'UnsupportedOperation.PurchaseLimit'
+
 # 输入的资源ID与IP绑定的资源不匹配，请检查。
 UNSUPPORTEDOPERATION_RESOURCEMISMATCH = 'UnsupportedOperation.ResourceMismatch'
 
@@ -628,6 +670,9 @@ UNSUPPORTEDOPERATION_UNPAIDORDERALREADYEXISTS = 'UnsupportedOperation.UnpaidOrde
 
 # 指定机型不支持弹性网卡。
 UNSUPPORTEDOPERATION_UNSUPPORTEDINSTANCEFAMILY = 'UnsupportedOperation.UnsupportedInstanceFamily'
+
+# 暂无法在此国家/地区提供该服务。
+UNSUPPORTEDOPERATION_UNSUPPORTEDREGION = 'UnsupportedOperation.UnsupportedRegion'
 
 # 当前用户付费类型不支持创建所选付费类型的云联网。
 UNSUPPORTEDOPERATION_USERANDCCNCHARGETYPENOTMATCH = 'UnsupportedOperation.UserAndCcnChargeTypeNotMatch'

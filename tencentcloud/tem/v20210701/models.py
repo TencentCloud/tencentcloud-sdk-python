@@ -108,7 +108,7 @@ class CreateApplicationRequest(AbstractModel):
 - JAR
 - WAR
         :type DeployMode: str
-        :param EnableTracing: 是否启用调用链功能
+        :param EnableTracing: 是否开启 Java 应用的 APM 自动上报功能，1 表示启用；0 表示关闭
         :type EnableTracing: int
         """
         self.ApplicationName = None
@@ -317,11 +317,17 @@ class CreateResourceRequest(AbstractModel):
         :type ResourceId: str
         :param SourceChannel: 来源渠道
         :type SourceChannel: int
+        :param ResourceFrom: 资源来源，目前支持：existing，已有资源；creating，自动创建
+        :type ResourceFrom: str
+        :param ResourceConfig: 设置 resource 的额外配置
+        :type ResourceConfig: str
         """
         self.EnvironmentId = None
         self.ResourceType = None
         self.ResourceId = None
         self.SourceChannel = None
+        self.ResourceFrom = None
+        self.ResourceConfig = None
 
 
     def _deserialize(self, params):
@@ -329,6 +335,8 @@ class CreateResourceRequest(AbstractModel):
         self.ResourceType = params.get("ResourceType")
         self.ResourceId = params.get("ResourceId")
         self.SourceChannel = params.get("SourceChannel")
+        self.ResourceFrom = params.get("ResourceFrom")
+        self.ResourceConfig = params.get("ResourceConfig")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -654,6 +662,8 @@ class DeployApplicationRequest(AbstractModel):
 - ALPINE
 - TENCENTOS
         :type OsFlavour: str
+        :param EnablePrometheusConf: 是否开启prometheus 业务指标监控
+        :type EnablePrometheusConf: :class:`tencentcloud.tem.v20210701.models.EnablePrometheusConf`
         """
         self.ApplicationId = None
         self.InitPodNum = None
@@ -694,6 +704,7 @@ class DeployApplicationRequest(AbstractModel):
         self.SpeedUp = None
         self.StartupProbe = None
         self.OsFlavour = None
+        self.EnablePrometheusConf = None
 
 
     def _deserialize(self, params):
@@ -780,6 +791,9 @@ class DeployApplicationRequest(AbstractModel):
             self.StartupProbe = HealthCheckConfig()
             self.StartupProbe._deserialize(params.get("StartupProbe"))
         self.OsFlavour = params.get("OsFlavour")
+        if params.get("EnablePrometheusConf") is not None:
+            self.EnablePrometheusConf = EnablePrometheusConf()
+            self.EnablePrometheusConf._deserialize(params.get("EnablePrometheusConf"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -945,7 +959,7 @@ class DeployStrategyConf(AbstractModel):
         :type TotalBatchCount: int
         :param BetaBatchNum: beta分批实例数
         :type BetaBatchNum: int
-        :param DeployStrategyType: 分批策略：0-全自动，1-全手动，2-beta分批，beta批一定是手动的
+        :param DeployStrategyType: 分批策略：0-全自动，1-全手动，2-beta分批，beta批一定是手动的，3-首次发布
         :type DeployStrategyType: int
         :param BatchInterval: 每批暂停间隔
         :type BatchInterval: int
@@ -1472,6 +1486,34 @@ class EksService(AbstractModel):
         
 
 
+class EnablePrometheusConf(AbstractModel):
+    """开启prometheus监控配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Port: 应用开放的监听端口
+        :type Port: int
+        :param Path: 业务指标暴露的url path
+        :type Path: str
+        """
+        self.Port = None
+        self.Path = None
+
+
+    def _deserialize(self, params):
+        self.Port = params.get("Port")
+        self.Path = params.get("Path")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class EsInfo(AbstractModel):
     """弹性伸缩配置
 
@@ -1693,6 +1735,11 @@ class IngressInfo(AbstractModel):
         :type CreateTime: str
         :param Mixed: 是否混合 https，默认 false，可选值 true 代表有 https 协议监听
         :type Mixed: bool
+        :param RewriteType: 重定向模式，可选值：
+- AUTO（自动重定向http到https）
+- NONE（不使用重定向）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RewriteType: str
         """
         self.EnvironmentId = None
         self.ClusterNamespace = None
@@ -1705,6 +1752,7 @@ class IngressInfo(AbstractModel):
         self.Vip = None
         self.CreateTime = None
         self.Mixed = None
+        self.RewriteType = None
 
 
     def _deserialize(self, params):
@@ -1729,6 +1777,7 @@ class IngressInfo(AbstractModel):
         self.Vip = params.get("Vip")
         self.CreateTime = params.get("CreateTime")
         self.Mixed = params.get("Mixed")
+        self.RewriteType = params.get("RewriteType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2174,10 +2223,13 @@ class MountedSettingConf(AbstractModel):
         :type MountedPath: str
         :param Data: 配置内容
         :type Data: list of Pair
+        :param SecretDataName: 加密配置名称
+        :type SecretDataName: str
         """
         self.ConfigDataName = None
         self.MountedPath = None
         self.Data = None
+        self.SecretDataName = None
 
 
     def _deserialize(self, params):
@@ -2189,6 +2241,7 @@ class MountedSettingConf(AbstractModel):
                 obj = Pair()
                 obj._deserialize(item)
                 self.Data.append(obj)
+        self.SecretDataName = params.get("SecretDataName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2256,11 +2309,15 @@ class Pair(AbstractModel):
         :param Config: 配置名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type Config: str
+        :param Secret: 加密配置名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Secret: str
         """
         self.Key = None
         self.Value = None
         self.Type = None
         self.Config = None
+        self.Secret = None
 
 
     def _deserialize(self, params):
@@ -2268,6 +2325,7 @@ class Pair(AbstractModel):
         self.Value = params.get("Value")
         self.Type = params.get("Type")
         self.Config = params.get("Config")
+        self.Secret = params.get("Secret")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

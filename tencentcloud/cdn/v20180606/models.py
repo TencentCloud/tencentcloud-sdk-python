@@ -2041,6 +2041,8 @@ global：全球锁定
         :type Readonly: str
         :param Product: 域名所属产品，cdn/ecdn
         :type Product: str
+        :param ParentHost: 主域名
+        :type ParentHost: str
         """
         self.ResourceId = None
         self.AppId = None
@@ -2056,6 +2058,7 @@ global：全球锁定
         self.Area = None
         self.Readonly = None
         self.Product = None
+        self.ParentHost = None
 
 
     def _deserialize(self, params):
@@ -2075,6 +2078,7 @@ global：全球锁定
         self.Area = params.get("Area")
         self.Readonly = params.get("Readonly")
         self.Product = params.get("Product")
+        self.ParentHost = params.get("ParentHost")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6689,6 +6693,9 @@ off：不支持
         :param RuleEngine: 规则引擎
 注意：此字段可能返回 null，表示取不到有效值。
         :type RuleEngine: :class:`tencentcloud.cdn.v20180606.models.RuleEngine`
+        :param ParentHost: 主域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParentHost: str
         """
         self.ResourceId = None
         self.AppId = None
@@ -6751,6 +6758,7 @@ off：不支持
         self.RemoteAuthentication = None
         self.ShareCname = None
         self.RuleEngine = None
+        self.ParentHost = None
 
 
     def _deserialize(self, params):
@@ -6915,6 +6923,7 @@ off：不支持
         if params.get("RuleEngine") is not None:
             self.RuleEngine = RuleEngine()
             self.RuleEngine._deserialize(params.get("RuleEngine"))
+        self.ParentHost = params.get("ParentHost")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9271,12 +9280,12 @@ class ListTopDataRequest(AbstractModel):
         r"""
         :param StartTime: 查询起始日期：yyyy-MM-dd HH:mm:ss
 仅支持按天粒度的数据查询，取入参中的天信息作为起始日期
-返回大于等于起始日期当天 00:00:00 点产生的数据
+返回大于等于起始日期当天 00:00:00 点产生的数据，如 StartTime为2018-09-04 10:40:00，返回数据的起始时间为2018-09-04 00:00:00
 仅支持 90 天内数据查询
         :type StartTime: str
         :param EndTime: 查询结束日期：yyyy-MM-dd HH:mm:ss
 仅支持按天粒度的数据查询，取入参中的天信息作为结束日期
-返回小于等于结束日期当天 23:59:59 产生的数据
+返回小于等于结束日期当天 23:59:59 产生的数据，如EndTime为2018-09-05 22:40:00，返回数据的结束时间为2018-09-05 23:59:59
 EndTime 需要大于等于 StartTime
         :type EndTime: str
         :param Metric: 排序对象，支持以下几种形式：
@@ -10060,13 +10069,21 @@ class Origin(AbstractModel):
         :param OriginType: 主源站类型
 入参支持以下几种类型：
 domain：域名类型
+domainv6：域名解析V6类型
 cos：对象存储源站
 ip：IP 列表作为源站
 ipv6：源站列表为一个单独的 IPv6 地址
 ip_ipv6：源站列表为多个 IPv4 地址和IPv6 地址
 ip_domain: 支持IP和域名形式源站混填（白名单功能）
+ip_domainv6：源站列表为多个 IPv4 地址以及域名解析v6地址
 ipv6_domain: 源站列表为多个 IPv6 地址以及域名
+ipv6_domainv6：源站列表为多个 IPv6 地址以及域名解析v6地址
+domain_domainv6：源站列表为多个域名解析v4 地址以及域名解析v6地址
 ip_ipv6_domain：源站列表为多个 IPv4 地址IPv6 地址以及域名
+ip_ipv6_domainv6：源站列表为多个 IPv4 地址IPv6 地址以及域名解析v6地址
+ip_domain_domainv6：源站列表为多个 IPv4 地址域名解析v4 地址以及域名解析v6地址
+ipv6_domain_domainv6：源站列表为多个 域名解析v4 地址IPv6 地址以及域名解析v6地址
+ip_ipv6_domain_domainv6：源站列表为多个 IPv4 地址IPv6 地址 域名解析v4 地址以及域名解析v6地址
 出参增加以下几种类型：
 image：数据万象源站
 ftp：历史 FTP 托管源源站，现已不维护

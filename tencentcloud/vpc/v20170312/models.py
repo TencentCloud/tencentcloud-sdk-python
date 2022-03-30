@@ -1226,11 +1226,20 @@ class AssociateNatGatewayAddressRequest(AbstractModel):
         :type PublicIpAddresses: list of str
         :param Zone: 弹性IP可用区，自动分配弹性IP时传递。
         :type Zone: str
+        :param StockPublicIpAddressesBandwidthOut: 绑定NAT网关的弹性IP带宽大小（单位Mbps），默认为当前用户类型所能使用的最大值。
+        :type StockPublicIpAddressesBandwidthOut: int
+        :param PublicIpAddressesBandwidthOut: 需要申请公网IP带宽大小（单位Mbps），默认为当前用户类型所能使用的最大值。
+        :type PublicIpAddressesBandwidthOut: int
+        :param PublicIpFromSameZone: 公网IP是否强制与NAT网关来自同可用区，true表示需要与NAT网关同可用区；false表示可与NAT网关不是同一个可用区。此参数只有当参数Zone存在时才能生效。
+        :type PublicIpFromSameZone: bool
         """
         self.NatGatewayId = None
         self.AddressCount = None
         self.PublicIpAddresses = None
         self.Zone = None
+        self.StockPublicIpAddressesBandwidthOut = None
+        self.PublicIpAddressesBandwidthOut = None
+        self.PublicIpFromSameZone = None
 
 
     def _deserialize(self, params):
@@ -1238,6 +1247,9 @@ class AssociateNatGatewayAddressRequest(AbstractModel):
         self.AddressCount = params.get("AddressCount")
         self.PublicIpAddresses = params.get("PublicIpAddresses")
         self.Zone = params.get("Zone")
+        self.StockPublicIpAddressesBandwidthOut = params.get("StockPublicIpAddressesBandwidthOut")
+        self.PublicIpAddressesBandwidthOut = params.get("PublicIpAddressesBandwidthOut")
+        self.PublicIpFromSameZone = params.get("PublicIpFromSameZone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1828,6 +1840,9 @@ class CcnBandwidthInfo(AbstractModel):
         :param CcnRegionBandwidthLimit: 描述带宽的地域和限速上限信息。在地域间限速的情况下才会返回参数，出口限速模式不返回。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CcnRegionBandwidthLimit: :class:`tencentcloud.vpc.v20170312.models.CcnRegionBandwidthLimit`
+        :param MarketId: 云市场实例ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MarketId: str
         """
         self.CcnId = None
         self.CreatedTime = None
@@ -1835,6 +1850,7 @@ class CcnBandwidthInfo(AbstractModel):
         self.RegionFlowControlId = None
         self.RenewFlag = None
         self.CcnRegionBandwidthLimit = None
+        self.MarketId = None
 
 
     def _deserialize(self, params):
@@ -1846,6 +1862,7 @@ class CcnBandwidthInfo(AbstractModel):
         if params.get("CcnRegionBandwidthLimit") is not None:
             self.CcnRegionBandwidthLimit = CcnRegionBandwidthLimit()
             self.CcnRegionBandwidthLimit._deserialize(params.get("CcnRegionBandwidthLimit"))
+        self.MarketId = params.get("MarketId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3482,6 +3499,12 @@ class CreateNatGatewayRequest(AbstractModel):
         :type Tags: list of Tag
         :param SubnetId: NAT网关所属子网
         :type SubnetId: str
+        :param StockPublicIpAddressesBandwidthOut: 绑定NAT网关的弹性IP带宽大小（单位Mbps），默认为当前用户类型所能使用的最大值。
+        :type StockPublicIpAddressesBandwidthOut: int
+        :param PublicIpAddressesBandwidthOut: 需要申请公网IP带宽大小（单位Mbps），默认为当前用户类型所能使用的最大值。
+        :type PublicIpAddressesBandwidthOut: int
+        :param PublicIpFromSameZone: 公网IP是否强制与NAT网关来自同可用区，true表示需要与NAT网关同可用区；false表示可与NAT网关不是同一个可用区。此参数只有当参数Zone存在时才能生效。
+        :type PublicIpFromSameZone: bool
         """
         self.NatGatewayName = None
         self.VpcId = None
@@ -3492,6 +3515,9 @@ class CreateNatGatewayRequest(AbstractModel):
         self.Zone = None
         self.Tags = None
         self.SubnetId = None
+        self.StockPublicIpAddressesBandwidthOut = None
+        self.PublicIpAddressesBandwidthOut = None
+        self.PublicIpFromSameZone = None
 
 
     def _deserialize(self, params):
@@ -3509,6 +3535,9 @@ class CreateNatGatewayRequest(AbstractModel):
                 obj._deserialize(item)
                 self.Tags.append(obj)
         self.SubnetId = params.get("SubnetId")
+        self.StockPublicIpAddressesBandwidthOut = params.get("StockPublicIpAddressesBandwidthOut")
+        self.PublicIpAddressesBandwidthOut = params.get("PublicIpAddressesBandwidthOut")
+        self.PublicIpFromSameZone = params.get("PublicIpFromSameZone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7818,6 +7847,29 @@ class DescribeClassicLinkInstancesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeCrossBorderCcnRegionBandwidthLimitsRequest(AbstractModel):
+    """DescribeCrossBorderCcnRegionBandwidthLimits请求参数结构体
+
+    """
+
+
+class DescribeCrossBorderCcnRegionBandwidthLimitsResponse(AbstractModel):
+    """DescribeCrossBorderCcnRegionBandwidthLimits返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeCrossBorderComplianceRequest(AbstractModel):
     """DescribeCrossBorderCompliance请求参数结构体
 
@@ -9705,7 +9757,7 @@ class DescribeProductQuotaRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Product: 查询的网络产品名称，如vpc、ccn等
+        :param Product: 查询的网络产品名称，可查询的产品有：vpc、ccn、vpn、dc、dfw、clb、eip。
         :type Product: str
         """
         self.Product = None
@@ -10454,6 +10506,29 @@ class DescribeTemplateLimitsResponse(AbstractModel):
         if params.get("TemplateLimit") is not None:
             self.TemplateLimit = TemplateLimit()
             self.TemplateLimit._deserialize(params.get("TemplateLimit"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeTenantCcnsRequest(AbstractModel):
+    """DescribeTenantCcns请求参数结构体
+
+    """
+
+
+class DescribeTenantCcnsResponse(AbstractModel):
+    """DescribeTenantCcns返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -13589,10 +13664,16 @@ class InquiryPriceCreateVpnGatewayRequest(AbstractModel):
         :type InstanceChargeType: str
         :param InstanceChargePrepaid: 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
         :type InstanceChargePrepaid: :class:`tencentcloud.vpc.v20170312.models.InstanceChargePrepaid`
+        :param MaxConnection: SSL VPN连接数设置，可选规格：5, 10, 20, 50, 100；单位：个。
+        :type MaxConnection: int
+        :param Type: 查询的VPN类型，支持IPSEC和SSL两种类型，为SSL类型时，MaxConnection参数必传。
+        :type Type: str
         """
         self.InternetMaxBandwidthOut = None
         self.InstanceChargeType = None
         self.InstanceChargePrepaid = None
+        self.MaxConnection = None
+        self.Type = None
 
 
     def _deserialize(self, params):
@@ -13601,6 +13682,8 @@ class InquiryPriceCreateVpnGatewayRequest(AbstractModel):
         if params.get("InstanceChargePrepaid") is not None:
             self.InstanceChargePrepaid = InstanceChargePrepaid()
             self.InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
+        self.MaxConnection = params.get("MaxConnection")
+        self.Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -14213,6 +14296,52 @@ class LocalGateway(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class LockCcnBandwidthsRequest(AbstractModel):
+    """LockCcnBandwidths请求参数结构体
+
+    """
+
+
+class LockCcnBandwidthsResponse(AbstractModel):
+    """LockCcnBandwidths返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class LockCcnsRequest(AbstractModel):
+    """LockCcns请求参数结构体
+
+    """
+
+
+class LockCcnsResponse(AbstractModel):
+    """LockCcns返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class MemberInfo(AbstractModel):
@@ -15804,7 +15933,7 @@ class ModifyNetworkInterfaceQosRequest(AbstractModel):
         r"""
         :param NetworkInterfaceIds: 弹性网卡ID，支持批量修改。
         :type NetworkInterfaceIds: list of str
-        :param QosLevel: 服务质量，可选值：AU、AG、PT，分别代表金、银、白金三个等级。
+        :param QosLevel: 服务质量，可选值：PT、AU、AG、DEFAULT，分别代表白金、金、银、默认四个等级。
         :type QosLevel: str
         """
         self.NetworkInterfaceIds = None
@@ -20094,6 +20223,52 @@ class UnassignPrivateIpAddressesRequest(AbstractModel):
 
 class UnassignPrivateIpAddressesResponse(AbstractModel):
     """UnassignPrivateIpAddresses返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UnlockCcnBandwidthsRequest(AbstractModel):
+    """UnlockCcnBandwidths请求参数结构体
+
+    """
+
+
+class UnlockCcnBandwidthsResponse(AbstractModel):
+    """UnlockCcnBandwidths返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UnlockCcnsRequest(AbstractModel):
+    """UnlockCcns请求参数结构体
+
+    """
+
+
+class UnlockCcnsResponse(AbstractModel):
+    """UnlockCcns返回参数结构体
 
     """
 
