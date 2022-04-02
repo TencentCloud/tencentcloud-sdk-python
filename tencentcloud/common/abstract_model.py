@@ -18,6 +18,7 @@ import sys
 
 class AbstractModel(object):
     """Base class for all models."""
+    header = None
 
     def _serialize(self, allow_none=False):
         d = vars(self)
@@ -56,3 +57,13 @@ class AbstractModel(object):
 
     def __repr__(self):
         return "%s" % self.to_json_string()
+
+    def set_header(self, header):
+        """
+        :type header: dict
+        :param header: request header, like {"X-TC-TraceId": "ffe0c072-8a5d-4e17-8887-a8a60252abca"}
+        """
+        self.header = header
+
+    def get_header(self):
+        return self.header
