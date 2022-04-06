@@ -125,7 +125,7 @@ class AlertType(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AlertTime: 时间戳
+        :param AlertTime: 标准时间格式
 注意：此字段可能返回 null，表示取不到有效值。
         :type AlertTime: str
         :param AlertId: 唯一id
@@ -1017,11 +1017,31 @@ class ConcernInfo(AbstractModel):
         :param StatisticsCount: 最近数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type StatisticsCount: int
+        :param SearchData: 可疑关注点字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SearchData: str
+        :param IpCountryIso: 可疑关注点字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IpCountryIso: str
+        :param IpProvinceIso: 可疑关注点字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IpProvinceIso: str
+        :param IpCity: 可疑关注点字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IpCity: str
+        :param EventSubType: 可疑关注点字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EventSubType: str
         """
         self.ConcernType = None
         self.EntityType = None
         self.Concern = None
         self.StatisticsCount = None
+        self.SearchData = None
+        self.IpCountryIso = None
+        self.IpProvinceIso = None
+        self.IpCity = None
+        self.EventSubType = None
 
 
     def _deserialize(self, params):
@@ -1029,6 +1049,11 @@ class ConcernInfo(AbstractModel):
         self.EntityType = params.get("EntityType")
         self.Concern = params.get("Concern")
         self.StatisticsCount = params.get("StatisticsCount")
+        self.SearchData = params.get("SearchData")
+        self.IpCountryIso = params.get("IpCountryIso")
+        self.IpProvinceIso = params.get("IpProvinceIso")
+        self.IpCity = params.get("IpCity")
+        self.EventSubType = params.get("EventSubType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2324,12 +2349,15 @@ class DescribeSocAlertListRequest(AbstractModel):
         :type Filter: list of QueryFilter
         :param Sorter: 排序参数
         :type Sorter: list of QuerySort
+        :param ExportFlag: 是否导出
+        :type ExportFlag: bool
         """
         self.PageSize = None
         self.PageIndex = None
         self.Scenes = None
         self.Filter = None
         self.Sorter = None
+        self.ExportFlag = None
 
 
     def _deserialize(self, params):
@@ -2348,6 +2376,7 @@ class DescribeSocAlertListRequest(AbstractModel):
                 obj = QuerySort()
                 obj._deserialize(item)
                 self.Sorter.append(obj)
+        self.ExportFlag = params.get("ExportFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2508,6 +2537,9 @@ class DescribeVulDetailResponse(AbstractModel):
         :param SsaAssetCategory: 资产归属
 注意：此字段可能返回 null，表示取不到有效值。
         :type SsaAssetCategory: int
+        :param VulPath: 资产文件路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VulPath: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2532,6 +2564,7 @@ class DescribeVulDetailResponse(AbstractModel):
         self.Source = None
         self.VulUrl = None
         self.SsaAssetCategory = None
+        self.VulPath = None
         self.RequestId = None
 
 
@@ -2557,6 +2590,7 @@ class DescribeVulDetailResponse(AbstractModel):
         self.Source = params.get("Source")
         self.VulUrl = params.get("VulUrl")
         self.SsaAssetCategory = params.get("SsaAssetCategory")
+        self.VulPath = params.get("VulPath")
         self.RequestId = params.get("RequestId")
 
 
@@ -3197,6 +3231,9 @@ class VulItem(AbstractModel):
         :param VulRepairPlan: 漏洞描述
 注意：此字段可能返回 null，表示取不到有效值。
         :type VulRepairPlan: str
+        :param VulPath: 漏洞文件路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VulPath: str
         """
         self.Id = None
         self.VulName = None
@@ -3229,6 +3266,7 @@ class VulItem(AbstractModel):
         self.IsOpen = None
         self.YzHostId = None
         self.VulRepairPlan = None
+        self.VulPath = None
 
 
     def _deserialize(self, params):
@@ -3263,6 +3301,7 @@ class VulItem(AbstractModel):
         self.IsOpen = params.get("IsOpen")
         self.YzHostId = params.get("YzHostId")
         self.VulRepairPlan = params.get("VulRepairPlan")
+        self.VulPath = params.get("VulPath")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

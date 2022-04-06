@@ -3353,14 +3353,12 @@ class MLIDCardOCRResponse(AbstractModel):
         :type Warn: list of int
         :param Image: 证件图片
         :type Image: str
-        :param AdvancedInfo: 扩展字段：
+        :param AdvancedInfo: 此字段为扩展字段。
+返回字段识别结果的置信度，格式如下
 {
-    ID:{
-        Confidence:0.9999
-    },
-    Name:{
-        Confidence:0.9996
-    }
+  字段名:{
+    Confidence:0.9999
+  }
 }
         :type AdvancedInfo: str
         :param Type: 证件类型

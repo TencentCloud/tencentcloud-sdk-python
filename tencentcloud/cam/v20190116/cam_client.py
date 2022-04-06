@@ -362,6 +362,34 @@ class CamClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateUserOIDCConfig(self, request):
+        """创建用户OIDC配置。只能创建一个用户OIDC身份提供商，并且创建用户OIDC配置之后会自动关闭用户SAML SSO身份提供商。
+
+        :param request: Request instance for CreateUserOIDCConfig.
+        :type request: :class:`tencentcloud.cam.v20190116.models.CreateUserOIDCConfigRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.CreateUserOIDCConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateUserOIDCConfig", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateUserOIDCConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateUserSAMLConfig(self, request):
         """创建用户SAML配置
 
@@ -782,6 +810,34 @@ class CamClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeUserOIDCConfig(self, request):
+        """查询用户OIDC配置
+
+        :param request: Request instance for DescribeUserOIDCConfig.
+        :type request: :class:`tencentcloud.cam.v20190116.models.DescribeUserOIDCConfigRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.DescribeUserOIDCConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeUserOIDCConfig", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeUserOIDCConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeUserSAMLConfig(self, request):
         """查询用户SAML配置
 
@@ -880,6 +936,34 @@ class CamClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DetachUserPolicyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DisableUserSSO(self, request):
+        """禁用用户SSO
+
+        :param request: Request instance for DisableUserSSO.
+        :type request: :class:`tencentcloud.cam.v20190116.models.DisableUserSSORequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.DisableUserSSOResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DisableUserSSO", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DisableUserSSOResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -2029,6 +2113,34 @@ class CamClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateUserResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateUserOIDCConfig(self, request):
+        """修改用户OIDC配置
+
+        :param request: Request instance for UpdateUserOIDCConfig.
+        :type request: :class:`tencentcloud.cam.v20190116.models.UpdateUserOIDCConfigRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.UpdateUserOIDCConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UpdateUserOIDCConfig", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateUserOIDCConfigResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

@@ -41,6 +41,9 @@ INTERNALERROR_CACHE = 'InternalError.Cache'
 # 数据库异常。
 INTERNALERROR_DB = 'InternalError.Db'
 
+# 数据库新增记录出错。
+INTERNALERROR_DBINSERT = 'InternalError.DbInsert'
+
 # 内部错误,数据库查询失败,请稍后重试。
 INTERNALERROR_DBREAD = 'InternalError.DbRead'
 
@@ -127,6 +130,9 @@ OPERATIONDENIED_FORBID = 'OperationDenied.Forbid'
 
 # 未通过个人实名认证。
 OPERATIONDENIED_NOIDENTITYVERIFY = 'OperationDenied.NoIdentityVerify'
+
+# 用户未登录,请先登录后再操作。
+OPERATIONDENIED_NOLOGIN = 'OperationDenied.NoLogin'
 
 # 流程配额不足。
 OPERATIONDENIED_NOQUOTA = 'OperationDenied.NoQuota'

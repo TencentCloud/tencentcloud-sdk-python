@@ -824,37 +824,6 @@ class AutoscalingClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribePaiInstances(self, request):
-        """本接口（DescribePaiInstances）用于查询PAI实例信息。
-
-        * 可以根据实例ID、实例域名等信息来查询PAI实例的详细信息。过滤信息详细请见过滤器`Filter`。
-        * 如果参数为空，返回当前用户一定数量（`Limit`所指定的数量，默认为20）的PAI实例。
-
-        :param request: Request instance for DescribePaiInstances.
-        :type request: :class:`tencentcloud.autoscaling.v20180419.models.DescribePaiInstancesRequest`
-        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.DescribePaiInstancesResponse`
-
-        """
-        try:
-            params = request._serialize()
-            body = self.call("DescribePaiInstances", params)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribePaiInstancesResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def DescribeScalingPolicies(self, request):
         """本接口（DescribeScalingPolicies）用于查询告警触发策略。
 

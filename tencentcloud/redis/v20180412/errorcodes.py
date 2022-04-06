@@ -203,6 +203,9 @@ LIMITEXCEEDED_REPLICATIONGROUPLOCKED = 'LimitExceeded.ReplicationGroupLocked'
 # 实例被其它流程锁住。
 RESOURCEINUSE_INSTANCEBEENLOCKED = 'ResourceInUse.InstanceBeenLocked'
 
+# 资源不足。
+RESOURCEINSUFFICIENT = 'ResourceInsufficient'
+
 # uin 值为空。
 RESOURCENOTFOUND_ACCOUNTDOESNOTEXISTS = 'ResourceNotFound.AccountDoesNotExists'
 

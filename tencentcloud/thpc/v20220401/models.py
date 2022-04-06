@@ -18,6 +18,141 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AddNodesRequest(AbstractModel):
+    """AddNodes请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Placement: 集群中实例所在的位置。
+        :type Placement: :class:`tencentcloud.thpc.v20220401.models.Placement`
+        :param ClusterId: 集群ID。
+        :type ClusterId: str
+        :param ImageId: 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。目前仅支持公有镜像和自定义镜像。
+        :type ImageId: str
+        :param VirtualPrivateCloud: 私有网络相关信息配置。
+        :type VirtualPrivateCloud: :class:`tencentcloud.thpc.v20220401.models.VirtualPrivateCloud`
+        :param Count: 添加节点数量。
+        :type Count: int
+        :param InstanceChargeType: 节点[计费类型](https://cloud.tencent.com/document/product/213/2180)。<br><li>PREPAID：预付费，即包年包月<br><li>POSTPAID_BY_HOUR：按小时后付费<br><li>SPOTPAID：竞价付费<br>默认值：POSTPAID_BY_HOUR。
+        :type InstanceChargeType: str
+        :param InstanceChargePrepaid: 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月节点的购买时长、是否设置自动续费等属性。若指定节点的付费模式为预付费则该参数必传。
+        :type InstanceChargePrepaid: :class:`tencentcloud.thpc.v20220401.models.InstanceChargePrepaid`
+        :param InstanceType: 节点机型。不同实例机型指定了不同的资源规格。<br><li>具体取值可通过调用接口[DescribeInstanceTypeConfigs](https://cloud.tencent.com/document/api/213/15749)来获得最新的规格表或参见[实例规格](https://cloud.tencent.com/document/product/213/11518)描述。
+        :type InstanceType: str
+        :param SystemDisk: 节点系统盘配置信息。若不指定该参数，则按照系统默认值进行分配。
+        :type SystemDisk: list of SystemDisk
+        :param DataDisks: 节点数据盘配置信息。若不指定该参数，则默认不购买数据盘。支持购买的时候指定21块数据盘，其中最多包含1块LOCAL_BASIC数据盘或者LOCAL_SSD数据盘，最多包含20块CLOUD_BASIC数据盘、CLOUD_PREMIUM数据盘或者CLOUD_SSD数据盘。
+        :type DataDisks: list of DataDisk
+        :param InternetAccessible: 节点数据盘配置信息。若不指定该参数，则默认不购买数据盘。支持购买的时候指定21块数据盘，其中最多包含1块LOCAL_BASIC数据盘或者LOCAL_SSD数据盘，最多包含20块CLOUD_BASIC数据盘、CLOUD_PREMIUM数据盘或者CLOUD_SSD数据盘。
+        :type InternetAccessible: :class:`tencentcloud.thpc.v20220401.models.InternetAccessible`
+        :param InstanceName: 节点显示名称。
+不指定节点显示名称则默认显示‘未命名’。
+最多支持60个字符。
+        :type InstanceName: str
+        :param LoginSettings: 集群登录设置。
+        :type LoginSettings: :class:`tencentcloud.thpc.v20220401.models.LoginSettings`
+        :param SecurityGroupIds: 集群中实例所属安全组。该参数可以通过调用 [DescribeSecurityGroups](https://cloud.tencent.com/document/api/215/15808) 的返回值中的sgId字段来获取。若不指定该参数，则绑定默认安全组。
+        :type SecurityGroupIds: list of str
+        :param ClientToken: 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
+        :type ClientToken: str
+        :param QueueName: 队列名称。
+        :type QueueName: str
+        :param NodeRole: 添加节点类型。默认值：Compute<br><li>Compute：计算节点。<br><li>Login：登录节点。
+        :type NodeRole: str
+        :param DryRun: 是否只预检此次请求。
+true：发送检查请求，不会创建实例。检查项包括是否填写了必需参数，请求格式，业务限制和云服务器库存。
+如果检查不通过，则返回对应错误码；
+如果检查通过，则返回RequestId.
+false（默认）：发送正常请求，通过检查后直接创建实例
+        :type DryRun: bool
+        """
+        self.Placement = None
+        self.ClusterId = None
+        self.ImageId = None
+        self.VirtualPrivateCloud = None
+        self.Count = None
+        self.InstanceChargeType = None
+        self.InstanceChargePrepaid = None
+        self.InstanceType = None
+        self.SystemDisk = None
+        self.DataDisks = None
+        self.InternetAccessible = None
+        self.InstanceName = None
+        self.LoginSettings = None
+        self.SecurityGroupIds = None
+        self.ClientToken = None
+        self.QueueName = None
+        self.NodeRole = None
+        self.DryRun = None
+
+
+    def _deserialize(self, params):
+        if params.get("Placement") is not None:
+            self.Placement = Placement()
+            self.Placement._deserialize(params.get("Placement"))
+        self.ClusterId = params.get("ClusterId")
+        self.ImageId = params.get("ImageId")
+        if params.get("VirtualPrivateCloud") is not None:
+            self.VirtualPrivateCloud = VirtualPrivateCloud()
+            self.VirtualPrivateCloud._deserialize(params.get("VirtualPrivateCloud"))
+        self.Count = params.get("Count")
+        self.InstanceChargeType = params.get("InstanceChargeType")
+        if params.get("InstanceChargePrepaid") is not None:
+            self.InstanceChargePrepaid = InstanceChargePrepaid()
+            self.InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
+        self.InstanceType = params.get("InstanceType")
+        if params.get("SystemDisk") is not None:
+            self.SystemDisk = []
+            for item in params.get("SystemDisk"):
+                obj = SystemDisk()
+                obj._deserialize(item)
+                self.SystemDisk.append(obj)
+        if params.get("DataDisks") is not None:
+            self.DataDisks = []
+            for item in params.get("DataDisks"):
+                obj = DataDisk()
+                obj._deserialize(item)
+                self.DataDisks.append(obj)
+        if params.get("InternetAccessible") is not None:
+            self.InternetAccessible = InternetAccessible()
+            self.InternetAccessible._deserialize(params.get("InternetAccessible"))
+        self.InstanceName = params.get("InstanceName")
+        if params.get("LoginSettings") is not None:
+            self.LoginSettings = LoginSettings()
+            self.LoginSettings._deserialize(params.get("LoginSettings"))
+        self.SecurityGroupIds = params.get("SecurityGroupIds")
+        self.ClientToken = params.get("ClientToken")
+        self.QueueName = params.get("QueueName")
+        self.NodeRole = params.get("NodeRole")
+        self.DryRun = params.get("DryRun")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddNodesResponse(AbstractModel):
+    """AddNodes返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class BindAutoScalingGroupRequest(AbstractModel):
     """BindAutoScalingGroup请求参数结构体
 
@@ -144,7 +279,7 @@ class ClusterOverview(AbstractModel):
         :param ClusterName: 集群名称。
         :type ClusterName: str
         :param Placement: 集群位置信息。
-        :type Placement: :class:`tencentcloud.thpc.v20211109.models.Placement`
+        :type Placement: :class:`tencentcloud.thpc.v20220401.models.Placement`
         :param CreateTime: 集群创建时间。
         :type CreateTime: str
         :param SchedulerType: 集群调度器。
@@ -225,16 +360,16 @@ class ComputeNode(AbstractModel):
         :param InstanceChargeType: 节点[计费类型](https://cloud.tencent.com/document/product/213/2180)。<br><li>PREPAID：预付费，即包年包月<br><li>POSTPAID_BY_HOUR：按小时后付费<br><li>SPOTPAID：竞价付费<br>默认值：POSTPAID_BY_HOUR。
         :type InstanceChargeType: str
         :param InstanceChargePrepaid: 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月节点的购买时长、是否设置自动续费等属性。若指定节点的付费模式为预付费则该参数必传。
-        :type InstanceChargePrepaid: :class:`tencentcloud.thpc.v20211109.models.InstanceChargePrepaid`
+        :type InstanceChargePrepaid: :class:`tencentcloud.thpc.v20220401.models.InstanceChargePrepaid`
         :param InstanceType: 节点机型。不同实例机型指定了不同的资源规格。
 <br><li>具体取值可通过调用接口[DescribeInstanceTypeConfigs](https://cloud.tencent.com/document/api/213/15749)来获得最新的规格表或参见[实例规格](https://cloud.tencent.com/document/product/213/11518)描述。
         :type InstanceType: str
         :param SystemDisk: 节点系统盘配置信息。若不指定该参数，则按照系统默认值进行分配。
-        :type SystemDisk: :class:`tencentcloud.thpc.v20211109.models.SystemDisk`
+        :type SystemDisk: :class:`tencentcloud.thpc.v20220401.models.SystemDisk`
         :param DataDisks: 节点数据盘配置信息。若不指定该参数，则默认不购买数据盘。支持购买的时候指定21块数据盘，其中最多包含1块LOCAL_BASIC数据盘或者LOCAL_SSD数据盘，最多包含20块CLOUD_BASIC数据盘、CLOUD_PREMIUM数据盘或者CLOUD_SSD数据盘。
         :type DataDisks: list of DataDisk
-        :param InternetAccessible: 节点数据盘配置信息。若不指定该参数，则默认不购买数据盘。支持购买的时候指定21块数据盘，其中最多包含1块LOCAL_BASIC数据盘或者LOCAL_SSD数据盘，最多包含20块CLOUD_BASIC数据盘、CLOUD_PREMIUM数据盘或者CLOUD_SSD数据盘。
-        :type InternetAccessible: :class:`tencentcloud.thpc.v20211109.models.InternetAccessible`
+        :param InternetAccessible: 公网带宽相关信息设置。若不指定该参数，则默认公网带宽为0Mbps。
+        :type InternetAccessible: :class:`tencentcloud.thpc.v20220401.models.InternetAccessible`
         :param InstanceName: 节点显示名称。<br><li>
 不指定节点显示名称则默认显示‘未命名’。
 最多支持60个字符。
@@ -310,13 +445,13 @@ class CreateClusterRequest(AbstractModel):
     def __init__(self):
         r"""
         :param Placement: 集群中实例所在的位置。
-        :type Placement: :class:`tencentcloud.thpc.v20211109.models.Placement`
+        :type Placement: :class:`tencentcloud.thpc.v20220401.models.Placement`
         :param ManagerNode: 指定管理节点。
-        :type ManagerNode: :class:`tencentcloud.thpc.v20211109.models.ManagerNode`
+        :type ManagerNode: :class:`tencentcloud.thpc.v20220401.models.ManagerNode`
         :param ManagerNodeCount: 指定管理节点的数量。默认取值：1。取值范围：1～2。
         :type ManagerNodeCount: int
         :param ComputeNode: 指定计算节点。
-        :type ComputeNode: :class:`tencentcloud.thpc.v20211109.models.ComputeNode`
+        :type ComputeNode: :class:`tencentcloud.thpc.v20220401.models.ComputeNode`
         :param ComputeNodeCount: 指定计算节点的数量。默认取值：0。
         :type ComputeNodeCount: int
         :param SchedulerType: 调度器类型。<br><li>SGE：SGE调度器。<br><li>SLURM：SLURM调度器。
@@ -324,9 +459,9 @@ class CreateClusterRequest(AbstractModel):
         :param ImageId: 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。目前仅支持公有镜像。
         :type ImageId: str
         :param VirtualPrivateCloud: 私有网络相关信息配置。
-        :type VirtualPrivateCloud: :class:`tencentcloud.thpc.v20211109.models.VirtualPrivateCloud`
+        :type VirtualPrivateCloud: :class:`tencentcloud.thpc.v20220401.models.VirtualPrivateCloud`
         :param LoginSettings: 集群登录设置。
-        :type LoginSettings: :class:`tencentcloud.thpc.v20211109.models.LoginSettings`
+        :type LoginSettings: :class:`tencentcloud.thpc.v20220401.models.LoginSettings`
         :param SecurityGroupIds: 集群中实例所属安全组。该参数可以通过调用 [DescribeSecurityGroups](https://cloud.tencent.com/document/api/215/15808) 的返回值中的sgId字段来获取。若不指定该参数，则绑定默认安全组。
         :type SecurityGroupIds: list of str
         :param ClientToken: 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
@@ -343,12 +478,10 @@ false（默认）：发送正常请求，通过检查后直接创建实例
         :param ClusterName: 集群显示名称。
         :type ClusterName: str
         :param StorageOption: 集群存储选项
-        :type StorageOption: :class:`tencentcloud.thpc.v20211109.models.StorageOption`
-        :param LoginNode: 已废弃。
-指定登录节点。
-        :type LoginNode: list of LoginNode
-        :param LoginNodeCount: 已废弃。
-指定登录节点的数量。默认取值：0。取值范围：0～10。
+        :type StorageOption: :class:`tencentcloud.thpc.v20220401.models.StorageOption`
+        :param LoginNode: 指定登录节点。
+        :type LoginNode: :class:`tencentcloud.thpc.v20220401.models.LoginNode`
+        :param LoginNodeCount: 指定登录节点的数量。默认取值：0。取值范围：0～10。
         :type LoginNodeCount: int
         :param Tags: 创建集群时同时绑定的标签对说明。
         :type Tags: list of Tag
@@ -402,11 +535,8 @@ false（默认）：发送正常请求，通过检查后直接创建实例
             self.StorageOption = StorageOption()
             self.StorageOption._deserialize(params.get("StorageOption"))
         if params.get("LoginNode") is not None:
-            self.LoginNode = []
-            for item in params.get("LoginNode"):
-                obj = LoginNode()
-                obj._deserialize(item)
-                self.LoginNode.append(obj)
+            self.LoginNode = LoginNode()
+            self.LoginNode._deserialize(params.get("LoginNode"))
         self.LoginNodeCount = params.get("LoginNodeCount")
         if params.get("Tags") is not None:
             self.Tags = []
@@ -499,6 +629,51 @@ class DeleteClusterRequest(AbstractModel):
 
 class DeleteClusterResponse(AbstractModel):
     """DeleteCluster返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteNodesRequest(AbstractModel):
+    """DeleteNodes请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID。
+        :type ClusterId: str
+        :param NodeIds: 节点ID。
+        :type NodeIds: list of str
+        """
+        self.ClusterId = None
+        self.NodeIds = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.NodeIds = params.get("NodeIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteNodesResponse(AbstractModel):
+    """DeleteNodes返回参数结构体
 
     """
 
@@ -681,10 +856,10 @@ class LoginNode(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceChargeType: 节点[计费类型](https://cloud.tencent.com/document/product/213/2180)。<br><li>PREPAID：预付费，即包年包月<br><li>POSTPAID_BY_HOUR：按小时后付费<br><li>SPOTPAID：竞价付费<br>默认值：POSTPAID_BY_HOUR。
+        :param InstanceChargeType: 节点[计费类型](https://cloud.tencent.com/document/product/213/2180)。<br><li>PREPAID：预付费，即包年包月<br><li>POSTPAID_BY_HOUR：按小时后付费<br>默认值：POSTPAID_BY_HOUR。
         :type InstanceChargeType: str
         :param InstanceChargePrepaid: 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月节点的购买时长、是否设置自动续费等属性。若指定节点的付费模式为预付费则该参数必传。
-        :type InstanceChargePrepaid: :class:`tencentcloud.thpc.v20211109.models.InstanceChargePrepaid`
+        :type InstanceChargePrepaid: :class:`tencentcloud.thpc.v20220401.models.InstanceChargePrepaid`
         :param InstanceType: 节点机型。不同实例机型指定了不同的资源规格。
 <br><li>具体取值可通过调用接口[DescribeInstanceTypeConfigs](https://cloud.tencent.com/document/api/213/15749)来获得最新的规格表或参见[实例规格](https://cloud.tencent.com/document/product/213/11518)描述。
         :type InstanceType: str
@@ -692,7 +867,7 @@ class LoginNode(AbstractModel):
         :type SystemDisk: list of SystemDisk
         :param DataDisks: 节点数据盘配置信息。若不指定该参数，则默认不购买数据盘。支持购买的时候指定21块数据盘，其中最多包含1块LOCAL_BASIC数据盘或者LOCAL_SSD数据盘，最多包含20块CLOUD_BASIC数据盘、CLOUD_PREMIUM数据盘或者CLOUD_SSD数据盘。
         :type DataDisks: list of DataDisk
-        :param InternetAccessible: 节点数据盘配置信息。若不指定该参数，则默认不购买数据盘。支持购买的时候指定21块数据盘，其中最多包含1块LOCAL_BASIC数据盘或者LOCAL_SSD数据盘，最多包含20块CLOUD_BASIC数据盘、CLOUD_PREMIUM数据盘或者CLOUD_SSD数据盘。
+        :param InternetAccessible: 公网带宽相关信息设置。若不指定该参数，则默认公网带宽为0Mbps。
         :type InternetAccessible: list of InternetAccessible
         :param InstanceName: 节点显示名称。<br><li>
 不指定节点显示名称则默认显示‘未命名’。
@@ -800,16 +975,16 @@ class ManagerNode(AbstractModel):
         :param InstanceChargeType: 节点[计费类型](https://cloud.tencent.com/document/product/213/2180)。<br><li>PREPAID：预付费，即包年包月<br><li>POSTPAID_BY_HOUR：按小时后付费<br>默认值：POSTPAID_BY_HOUR。
         :type InstanceChargeType: str
         :param InstanceChargePrepaid: 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月节点的购买时长、是否设置自动续费等属性。若指定节点的付费模式为预付费则该参数必传。
-        :type InstanceChargePrepaid: :class:`tencentcloud.thpc.v20211109.models.InstanceChargePrepaid`
+        :type InstanceChargePrepaid: :class:`tencentcloud.thpc.v20220401.models.InstanceChargePrepaid`
         :param InstanceType: 节点机型。不同实例机型指定了不同的资源规格。
 <br><li>对于付费模式为PREPAID或POSTPAID\_BY\_HOUR的实例创建，具体取值可通过调用接口[DescribeInstanceTypeConfigs](https://cloud.tencent.com/document/api/213/15749)来获得最新的规格表或参见[实例规格](https://cloud.tencent.com/document/product/213/11518)描述。
         :type InstanceType: str
         :param SystemDisk: 节点系统盘配置信息。若不指定该参数，则按照系统默认值进行分配。
-        :type SystemDisk: :class:`tencentcloud.thpc.v20211109.models.SystemDisk`
+        :type SystemDisk: :class:`tencentcloud.thpc.v20220401.models.SystemDisk`
         :param DataDisks: 节点数据盘配置信息。若不指定该参数，则默认不购买数据盘。支持购买的时候指定21块数据盘，其中最多包含1块LOCAL_BASIC数据盘或者LOCAL_SSD数据盘，最多包含20块CLOUD_BASIC数据盘、CLOUD_PREMIUM数据盘或者CLOUD_SSD数据盘。
         :type DataDisks: list of DataDisk
         :param InternetAccessible: 公网带宽相关信息设置。若不指定该参数，则默认公网带宽为0Mbps。
-        :type InternetAccessible: :class:`tencentcloud.thpc.v20211109.models.InternetAccessible`
+        :type InternetAccessible: :class:`tencentcloud.thpc.v20220401.models.InternetAccessible`
         :param InstanceName: 节点显示名称。<br><li>
 不指定节点显示名称则默认显示‘未命名’。
 </li><li>购买多个节点，如果指定模式串`{R:x}`，表示生成数字[`[x, x+n-1]`，其中`n`表示购买节点的数量，例如`server_{R:3}`，购买1个时，节点显示名称为`server_3`；购买2个时，节点显示名称分别为`server_3`，`server_4`。支持指定多个模式串`{R:x}`。

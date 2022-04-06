@@ -278,6 +278,62 @@ class WavClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def QueryCrmStatistics(self, request):
+        """通过接口拉取租户/指定成员/部门在指定日期范围内的CRM跟进统计数据
+
+        :param request: Request instance for QueryCrmStatistics.
+        :type request: :class:`tencentcloud.wav.v20210129.models.QueryCrmStatisticsRequest`
+        :rtype: :class:`tencentcloud.wav.v20210129.models.QueryCrmStatisticsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("QueryCrmStatistics", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryCrmStatisticsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def QueryCustomerEventDetailStatistics(self, request):
+        """通过接口拉取SaaS内C端外部联系人在指定时间范围内的行为事件明细。此接口提供的数据以天为维度，查询的时间范围为[start_time,end_time]，即前后均为闭区间，支持的最大查询跨度为365天。
+
+        :param request: Request instance for QueryCustomerEventDetailStatistics.
+        :type request: :class:`tencentcloud.wav.v20210129.models.QueryCustomerEventDetailStatisticsRequest`
+        :rtype: :class:`tencentcloud.wav.v20210129.models.QueryCustomerEventDetailStatisticsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("QueryCustomerEventDetailStatistics", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryCustomerEventDetailStatisticsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def QueryDealerInfoList(self, request):
         """企业可通过此接口获取录入在企微SaaS平台上的经销商信息。
 
@@ -362,6 +418,34 @@ class WavClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def QueryExternalUserEventList(self, request):
+        """通过接口拉取租户在指定时间范围内的外部联系人添加/删除明细，此接口提供的数据以天为维度，查询的时间范围为[StarTime, EndTime]，即前后均为闭区间，支持的最大查询跨度为365天；
+
+        :param request: Request instance for QueryExternalUserEventList.
+        :type request: :class:`tencentcloud.wav.v20210129.models.QueryExternalUserEventListRequest`
+        :rtype: :class:`tencentcloud.wav.v20210129.models.QueryExternalUserEventListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("QueryExternalUserEventList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryExternalUserEventListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def QueryExternalUserMappingInfo(self, request):
         """企业可通过此接口将企业主体对应的外部联系人id转换为乐销车应用主体对应的外部联系人。
 
@@ -418,6 +502,34 @@ class WavClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def QueryMaterialList(self, request):
+        """通过接口按类型拉取租户当前的素材列表及关键信息
+
+        :param request: Request instance for QueryMaterialList.
+        :type request: :class:`tencentcloud.wav.v20210129.models.QueryMaterialListRequest`
+        :rtype: :class:`tencentcloud.wav.v20210129.models.QueryMaterialListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("QueryMaterialList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryMaterialListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def QueryMiniAppCodeList(self, request):
         """查询小程序码列表接口
 
@@ -432,6 +544,62 @@ class WavClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryMiniAppCodeListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def QueryStaffEventDetailStatistics(self, request):
+        """通过接口拉取SaaS内企业成员在指定时间范围内的行为事件明细。此接口提供的数据以天为维度，查询的时间范围为[start_time,end_time]，即前后均为闭区间，支持的最大查询跨度为365天。
+
+        :param request: Request instance for QueryStaffEventDetailStatistics.
+        :type request: :class:`tencentcloud.wav.v20210129.models.QueryStaffEventDetailStatisticsRequest`
+        :rtype: :class:`tencentcloud.wav.v20210129.models.QueryStaffEventDetailStatisticsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("QueryStaffEventDetailStatistics", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryStaffEventDetailStatisticsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def QueryUserInfoList(self, request):
+        """查询企业成员信息列表接口
+
+        :param request: Request instance for QueryUserInfoList.
+        :type request: :class:`tencentcloud.wav.v20210129.models.QueryUserInfoListRequest`
+        :rtype: :class:`tencentcloud.wav.v20210129.models.QueryUserInfoListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("QueryUserInfoList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryUserInfoListResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

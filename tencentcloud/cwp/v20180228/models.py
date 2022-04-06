@@ -2912,7 +2912,7 @@ class BashEvent(AbstractModel):
         :type RuleName: str
         :param RuleLevel: 规则等级：1-高 2-中 3-低
         :type RuleLevel: int
-        :param Status: 处理状态： 0 = 待处理 1= 已处理, 2 = 已加白
+        :param Status: 处理状态： 0 = 待处理 1= 已处理, 2 = 已加白， 3 = 已忽略
         :type Status: int
         :param CreateTime: 发生时间
         :type CreateTime: str
@@ -3136,6 +3136,9 @@ class BruteAttackInfo(AbstractModel):
         :param InstanceId: 实例ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
+        :param DataStatus: 0：待处理，1：忽略，5：已处理，6：加入白名单
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataStatus: int
         """
         self.Id = None
         self.Uuid = None
@@ -3157,6 +3160,7 @@ class BruteAttackInfo(AbstractModel):
         self.Port = None
         self.ModifyTime = None
         self.InstanceId = None
+        self.DataStatus = None
 
 
     def _deserialize(self, params):
@@ -3180,6 +3184,7 @@ class BruteAttackInfo(AbstractModel):
         self.Port = params.get("Port")
         self.ModifyTime = params.get("ModifyTime")
         self.InstanceId = params.get("InstanceId")
+        self.DataStatus = params.get("DataStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8280,6 +8285,7 @@ class DescribeBruteAttackListRequest(AbstractModel):
         :param Filters: 过滤条件。
 <li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
 <li>Uuid - String - 是否必填：否 - 云镜唯一Uuid</li>
+<li>Quuid - String - 是否必填：否 - 云服务器uuid</li>
 <li>Status - String - 是否必填：否 - 状态筛选：失败：FAILED 成功：SUCCESS</li>
 <li>UserName - String - 是否必填：否 - UserName筛选</li>
 <li>SrcIp - String - 是否必填：否 - 来源ip筛选</li>
@@ -9163,11 +9169,12 @@ class DescribeHostLoginListRequest(AbstractModel):
         :param Filters: 过滤条件。
 <li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
 <li>Uuid - String - 是否必填：否 - 云镜唯一Uuid</li>
+<li>Quuid - String - 是否必填：否 - 云服务器uuid</li>
 <li>UserName - String - 是否必填：否 - 用户名筛选</li>
 <li>LoginTimeBegin - String - 是否必填：否 - 按照修改时间段筛选，开始时间</li>
 <li>LoginTimeEnd - String - 是否必填：否 - 按照修改时间段筛选，结束时间</li>
 <li>SrcIp - String - 是否必填：否 - 来源ip筛选</li>
-<li>Status - int - 是否必填：否 - 状态筛选1:正常登录；5：已加白</li>
+<li>Status - int - 是否必填：否 - 状态筛选1:正常登录；5：已加白,14:已处理，15：已忽略</li>
 <li>RiskLevel - int - 是否必填：否 - 状态筛选0:高危；1：可疑</li>
         :type Filters: list of Filter
         """
@@ -9418,7 +9425,7 @@ class DescribeImportMachineInfoResponse(AbstractModel):
         :param EffectiveMachineInfoList: 有效的机器信息列表：机器名称、机器公网/内网ip、机器标签
 注意：此字段可能返回 null，表示取不到有效值。
         :type EffectiveMachineInfoList: list of EffectiveMachineInfo
-        :param InvalidMachineList: 用户批量导入失败的机器列表（比如机器不存在等...）
+        :param InvalidMachineList: 用户批量导入失败的机器列表（例如机器不存在等...）
 注意：此字段可能返回 null，表示取不到有效值。
         :type InvalidMachineList: list of str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -9702,7 +9709,7 @@ class DescribeMachineInfoResponse(AbstractModel):
         :type IsProVersion: bool
         :param ProVersionOpenDate: 专业版开通时间。
         :type ProVersionOpenDate: str
-        :param MachineType: 云主机类型。
+        :param MachineType: 云服务器类型。
 <li>CVM: 腾讯云服务器</li>
 <li>BM: 黑石物理机</li>
 <li>ECM: 边缘计算服务器</li>
@@ -15541,7 +15548,7 @@ class HostLoginList(AbstractModel):
         :param SrcIp: 来源ip
 注意：此字段可能返回 null，表示取不到有效值。
         :type SrcIp: str
-        :param Status: 1:正常登录；2异地登录； 5已加白
+        :param Status: 1:正常登录；2异地登录； 5已加白； 14：已处理；15：已忽略。
         :type Status: int
         :param Country: 国家id
 注意：此字段可能返回 null，表示取不到有效值。
@@ -17071,7 +17078,7 @@ class OpenProVersionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param MachineType: 云主机类型。(当前参数已作废,可以留空值 )
+        :param MachineType: 云服务器类型。(当前参数已作废,可以留空值 )
         :type MachineType: str
         :param MachineRegion: 机器所属地域。(当前参数已作废,可以留空值 )
         :type MachineRegion: str
@@ -17219,7 +17226,7 @@ class PrivilegeEscalationProcess(AbstractModel):
         :type ParentProcPath: str
         :param ProcTree: 进程树
         :type ProcTree: str
-        :param Status: 处理状态：0-待处理 2-白名单
+        :param Status: 处理状态：0-待处理 2-白名单 3-已处理 4-已忽略
         :type Status: int
         :param CreateTime: 发生时间
         :type CreateTime: str
@@ -17963,7 +17970,7 @@ class ReverseShell(AbstractModel):
         :type ParentProcGroup: str
         :param ParentProcPath: 父进程路径
         :type ParentProcPath: str
-        :param Status: 处理状态：0-待处理 2-白名单
+        :param Status: 处理状态：0-待处理 2-白名单 3-已处理 4-已忽略
         :type Status: int
         :param CreateTime: 产生时间
         :type CreateTime: str
@@ -18109,7 +18116,7 @@ class RiskDnsList(AbstractModel):
         :type GlobalRuleId: int
         :param UserRuleId: 用户规则id
         :type UserRuleId: int
-        :param Status: 状态；0-待处理，2-已加白，3-非信任状态
+        :param Status: 状态；0-待处理，2-已加白，3-非信任状态，4-已处理，5-已忽略
         :type Status: int
         :param CreateTime: 首次访问时间
         :type CreateTime: str

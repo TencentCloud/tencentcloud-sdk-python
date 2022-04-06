@@ -26,6 +26,9 @@ FAILEDOPERATION_DUPLICATEDJOBNAME = 'FailedOperation.DuplicatedJobName'
 # 语法检查失败。
 FAILEDOPERATION_GRAMMARCHECKFAILURE = 'FailedOperation.GrammarCheckFailure'
 
+# SQL解析失败。
+FAILEDOPERATION_PARSESQL = 'FailedOperation.ParseSql'
+
 # 用户未实名验证。
 FAILEDOPERATION_USERNOTAUTHENTICATED = 'FailedOperation.UserNotAuthenticated'
 

@@ -2265,77 +2265,6 @@ class DescribeNotificationConfigurationsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class DescribePaiInstancesRequest(AbstractModel):
-    """DescribePaiInstances请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param InstanceIds: 依据PAI实例的实例ID进行查询。
-        :type InstanceIds: list of str
-        :param Filters: 过滤条件。
-        :type Filters: list of Filter
-        :param Limit: 返回数量，默认为20，最大值为100。
-        :type Limit: int
-        :param Offset: 偏移量，默认为0。
-        :type Offset: int
-        """
-        self.InstanceIds = None
-        self.Filters = None
-        self.Limit = None
-        self.Offset = None
-
-
-    def _deserialize(self, params):
-        self.InstanceIds = params.get("InstanceIds")
-        if params.get("Filters") is not None:
-            self.Filters = []
-            for item in params.get("Filters"):
-                obj = Filter()
-                obj._deserialize(item)
-                self.Filters.append(obj)
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribePaiInstancesResponse(AbstractModel):
-    """DescribePaiInstances返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param TotalCount: 符合条件的PAI实例数量
-        :type TotalCount: int
-        :param PaiInstanceSet: PAI实例详细信息
-        :type PaiInstanceSet: list of PaiInstance
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.TotalCount = None
-        self.PaiInstanceSet = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
-        if params.get("PaiInstanceSet") is not None:
-            self.PaiInstanceSet = []
-            for item in params.get("PaiInstanceSet"):
-                obj = PaiInstance()
-                obj._deserialize(item)
-                self.PaiInstanceSet.append(obj)
-        self.RequestId = params.get("RequestId")
-
-
 class DescribeScalingPoliciesRequest(AbstractModel):
     """DescribeScalingPolicies请求参数结构体
 
@@ -4276,38 +4205,6 @@ class NotificationTarget(AbstractModel):
         self.TargetType = params.get("TargetType")
         self.QueueName = params.get("QueueName")
         self.TopicName = params.get("TopicName")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class PaiInstance(AbstractModel):
-    """PAI实例
-
-    """
-
-    def __init__(self):
-        r"""
-        :param InstanceId: 实例ID
-        :type InstanceId: str
-        :param DomainName: 实例域名
-        :type DomainName: str
-        :param PaiMateUrl: PAI管理页面URL
-        :type PaiMateUrl: str
-        """
-        self.InstanceId = None
-        self.DomainName = None
-        self.PaiMateUrl = None
-
-
-    def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.DomainName = params.get("DomainName")
-        self.PaiMateUrl = params.get("PaiMateUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

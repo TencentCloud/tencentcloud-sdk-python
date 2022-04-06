@@ -4443,6 +4443,9 @@ class DescribeDiagnoseReportResponse(AbstractModel):
         :type MidNodeInfo: :class:`tencentcloud.cdn.v20180606.models.DiagnoseData`
         :param OriginInfo: 源站检测信息
         :type OriginInfo: :class:`tencentcloud.cdn.v20180606.models.DiagnoseData`
+        :param PurgeInfo: 刷新检测信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PurgeInfo: :class:`tencentcloud.cdn.v20180606.models.DiagnoseData`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4454,6 +4457,7 @@ class DescribeDiagnoseReportResponse(AbstractModel):
         self.OcNodeInfo = None
         self.MidNodeInfo = None
         self.OriginInfo = None
+        self.PurgeInfo = None
         self.RequestId = None
 
 
@@ -4482,6 +4486,9 @@ class DescribeDiagnoseReportResponse(AbstractModel):
         if params.get("OriginInfo") is not None:
             self.OriginInfo = DiagnoseData()
             self.OriginInfo._deserialize(params.get("OriginInfo"))
+        if params.get("PurgeInfo") is not None:
+            self.PurgeInfo = DiagnoseData()
+            self.PurgeInfo._deserialize(params.get("PurgeInfo"))
         self.RequestId = params.get("RequestId")
 
 
@@ -13911,14 +13918,14 @@ class UpdateDomainConfigRequest(AbstractModel):
         :type Referer: :class:`tencentcloud.cdn.v20180606.models.Referer`
         :param MaxAge: 浏览器缓存配置（功能灰度中，尚未全量）
         :type MaxAge: :class:`tencentcloud.cdn.v20180606.models.MaxAge`
+        :param SpecificConfig: 地域属性特殊配置
+适用于域名境内加速、境外加速配置不一致场景
+        :type SpecificConfig: :class:`tencentcloud.cdn.v20180606.models.SpecificConfig`
         :param ServiceType: 域名业务类型
 web：静态加速
 download：下载加速
 media：流媒体点播加速
         :type ServiceType: str
-        :param SpecificConfig: 地域属性特殊配置
-适用于域名境内加速、境外加速配置不一致场景
-        :type SpecificConfig: :class:`tencentcloud.cdn.v20180606.models.SpecificConfig`
         :param Area: 域名加速区域
 mainland：中国境内加速
 overseas：中国境外加速
@@ -13983,8 +13990,8 @@ global：全球加速
         self.ForceRedirect = None
         self.Referer = None
         self.MaxAge = None
-        self.ServiceType = None
         self.SpecificConfig = None
+        self.ServiceType = None
         self.Area = None
         self.OriginPullTimeout = None
         self.AwsPrivateAccess = None
@@ -14076,10 +14083,10 @@ global：全球加速
         if params.get("MaxAge") is not None:
             self.MaxAge = MaxAge()
             self.MaxAge._deserialize(params.get("MaxAge"))
-        self.ServiceType = params.get("ServiceType")
         if params.get("SpecificConfig") is not None:
             self.SpecificConfig = SpecificConfig()
             self.SpecificConfig._deserialize(params.get("SpecificConfig"))
+        self.ServiceType = params.get("ServiceType")
         self.Area = params.get("Area")
         if params.get("OriginPullTimeout") is not None:
             self.OriginPullTimeout = OriginPullTimeout()

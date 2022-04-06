@@ -854,16 +854,25 @@ class DescribeKTVPlaylistsRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param Type: 歌单类型，取值有：
+·OfficialRec：官方推荐
+·Normal：自定义
+当该字段未填时，默认为取OfficialRec
+        :type Type: str
         :param Offset: 分页返回的起始偏移量，默认值：0。将返回第 Offset 到第 Offset+Limit-1 条。
+取值范围：Offset + Limit 不超过5000
         :type Offset: int
         :param Limit: 分页返回的记录条数，默认值：50。将返回第 Offset 到第 Offset+Limit-1 条。
+取值范围：Offset + Limit 不超过5000
         :type Limit: int
         """
+        self.Type = None
         self.Offset = None
         self.Limit = None
 
 
     def _deserialize(self, params):
+        self.Type = params.get("Type")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
         memeber_set = set(params.keys())

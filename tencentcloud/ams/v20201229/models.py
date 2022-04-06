@@ -864,12 +864,17 @@ class MoanResult(AbstractModel):
         :type StartTime: float
         :param EndTime: 违规事件结束时间，单位为毫秒（ms）；
         :type EndTime: float
+        :param SubLabel: 该字段用于返回当前标签（Lable）下的二级标签。
+注意：此字段可能返回null，表示取不到有效值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubLabel: str
         """
         self.Label = None
         self.Score = None
         self.Suggestion = None
         self.StartTime = None
         self.EndTime = None
+        self.SubLabel = None
 
 
     def _deserialize(self, params):
@@ -878,6 +883,7 @@ class MoanResult(AbstractModel):
         self.Suggestion = params.get("Suggestion")
         self.StartTime = params.get("StartTime")
         self.EndTime = params.get("EndTime")
+        self.SubLabel = params.get("SubLabel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1187,6 +1193,10 @@ class TextResult(AbstractModel):
 
 2：自定义库；
         :type LibType: int
+        :param SubLabel: 该字段用于返回当前标签（Lable）下的二级标签。
+注意：此字段可能返回null，表示取不到有效值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubLabel: str
         """
         self.Label = None
         self.Keywords = None
@@ -1195,6 +1205,7 @@ class TextResult(AbstractModel):
         self.Score = None
         self.Suggestion = None
         self.LibType = None
+        self.SubLabel = None
 
 
     def _deserialize(self, params):
@@ -1205,6 +1216,7 @@ class TextResult(AbstractModel):
         self.Score = params.get("Score")
         self.Suggestion = params.get("Suggestion")
         self.LibType = params.get("LibType")
+        self.SubLabel = params.get("SubLabel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

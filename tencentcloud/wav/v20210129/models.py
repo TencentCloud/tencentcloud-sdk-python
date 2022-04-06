@@ -453,6 +453,74 @@ class ClueInfoDetail(AbstractModel):
         
 
 
+class CorpUserInfo(AbstractModel):
+    """企业成员信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UserId: 企业成员UserId
+        :type UserId: int
+        :param UserName: 企业成员在SaaS名片内填写的姓名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserName: str
+        :param UserOpenId: 企业成员在企微原生通讯录内的id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserOpenId: str
+        :param DealerId: 成员所属经销商id，可为空
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DealerId: int
+        :param ShopId: 成员所属门店id，可为空
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ShopId: int
+        :param Phone: 企业成员手机号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Phone: str
+        :param OrgIds: 成员所属部门id列表，仅返回该应用有查看权限的部门id；成员授权模式下，固定返回根部门id，即固定为1；多个部门使用逗号分割
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OrgIds: str
+        :param MainDepartment: 主部门，仅当应用对主部门有查看权限时返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MainDepartment: str
+        :param IsLeaderInDept: 是否为部门负责人，第三方应用可为空。与orgIds值一一对应，多个部门使用逗号隔开，0-否， 1-是
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsLeaderInDept: str
+        :param Status: 激活状态: 0=已激活，1=已禁用，-1=退出企业"
+        :type Status: int
+        """
+        self.UserId = None
+        self.UserName = None
+        self.UserOpenId = None
+        self.DealerId = None
+        self.ShopId = None
+        self.Phone = None
+        self.OrgIds = None
+        self.MainDepartment = None
+        self.IsLeaderInDept = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.UserId = params.get("UserId")
+        self.UserName = params.get("UserName")
+        self.UserOpenId = params.get("UserOpenId")
+        self.DealerId = params.get("DealerId")
+        self.ShopId = params.get("ShopId")
+        self.Phone = params.get("Phone")
+        self.OrgIds = params.get("OrgIds")
+        self.MainDepartment = params.get("MainDepartment")
+        self.IsLeaderInDept = params.get("IsLeaderInDept")
+        self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateChannelCodeRequest(AbstractModel):
     """CreateChannelCode请求参数结构体
 
@@ -708,6 +776,110 @@ class CreateLeadResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CrmStatisticsData(AbstractModel):
+    """CRM统计数据响应
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LeadCnt: 新增线索
+        :type LeadCnt: int
+        :param BuildCnt: 新增建档
+        :type BuildCnt: int
+        :param InvitedCnt: 新增到店
+        :type InvitedCnt: int
+        :param OrderedCnt: 新增下订
+        :type OrderedCnt: int
+        :param DeliveredCnt: 新增成交
+        :type DeliveredCnt: int
+        :param DefeatCnt: 新增战败
+        :type DefeatCnt: int
+        :param NewContactCnt: 新增好友
+        :type NewContactCnt: int
+        :param StatisticalTime: 统计时间, 单位：天
+        :type StatisticalTime: str
+        """
+        self.LeadCnt = None
+        self.BuildCnt = None
+        self.InvitedCnt = None
+        self.OrderedCnt = None
+        self.DeliveredCnt = None
+        self.DefeatCnt = None
+        self.NewContactCnt = None
+        self.StatisticalTime = None
+
+
+    def _deserialize(self, params):
+        self.LeadCnt = params.get("LeadCnt")
+        self.BuildCnt = params.get("BuildCnt")
+        self.InvitedCnt = params.get("InvitedCnt")
+        self.OrderedCnt = params.get("OrderedCnt")
+        self.DeliveredCnt = params.get("DeliveredCnt")
+        self.DefeatCnt = params.get("DefeatCnt")
+        self.NewContactCnt = params.get("NewContactCnt")
+        self.StatisticalTime = params.get("StatisticalTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CustomerActionEventDetail(AbstractModel):
+    """外部联系人SaaS使用明细数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EventCode: 事件码
+        :type EventCode: str
+        :param EventType: 事件类型
+        :type EventType: int
+        :param EventSource: 事件来源
+        :type EventSource: int
+        :param ExternalUserId: 外部联系人id
+        :type ExternalUserId: str
+        :param SalesId: 销售顾问id
+        :type SalesId: int
+        :param MaterialType: 素材类型
+        :type MaterialType: int
+        :param MaterialId: 素材编号id
+        :type MaterialId: int
+        :param EventTime: 事件上报时间，单位：秒
+        :type EventTime: int
+        """
+        self.EventCode = None
+        self.EventType = None
+        self.EventSource = None
+        self.ExternalUserId = None
+        self.SalesId = None
+        self.MaterialType = None
+        self.MaterialId = None
+        self.EventTime = None
+
+
+    def _deserialize(self, params):
+        self.EventCode = params.get("EventCode")
+        self.EventType = params.get("EventType")
+        self.EventSource = params.get("EventSource")
+        self.ExternalUserId = params.get("ExternalUserId")
+        self.SalesId = params.get("SalesId")
+        self.MaterialType = params.get("MaterialType")
+        self.MaterialId = params.get("MaterialId")
+        self.EventTime = params.get("EventTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DealerInfo(AbstractModel):
     """经销商信息
 
@@ -850,6 +1022,42 @@ class ExternalContactTag(AbstractModel):
         self.TagName = params.get("TagName")
         self.Type = params.get("Type")
         self.TagId = params.get("TagId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExternalUserEventInfo(AbstractModel):
+    """外部联系人事件信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EventCode: 事件编码, 添加外部联系人(ADD_EXTERNAL_CUSTOMER)/成员删除外部联系人(DELETE_EXTERNAL_CUSTOMER)/外部联系人删除成员(DELETE_FOLLOW_USER)
+        :type EventCode: str
+        :param ExternalUserId: 外部联系人id
+        :type ExternalUserId: str
+        :param SalesId: 企微SaaS的成员id
+        :type SalesId: str
+        :param EventTime: 事件上报时间戳，单位：秒
+        :type EventTime: int
+        """
+        self.EventCode = None
+        self.ExternalUserId = None
+        self.SalesId = None
+        self.EventTime = None
+
+
+    def _deserialize(self, params):
+        self.EventCode = params.get("EventCode")
+        self.ExternalUserId = params.get("ExternalUserId")
+        self.SalesId = params.get("SalesId")
+        self.EventTime = params.get("EventTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1053,6 +1261,39 @@ class LiveCodeDetail(AbstractModel):
         self.LiveCodeData = params.get("LiveCodeData")
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MaterialInfo(AbstractModel):
+    """素材信息响应体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MaterialId: 素材id
+        :type MaterialId: int
+        :param MaterialName: 素材名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaterialName: str
+        :param Status: 素材状态, -1: 删除 0: 启用 1: 禁用
+        :type Status: int
+        """
+        self.MaterialId = None
+        self.MaterialName = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.MaterialId = params.get("MaterialId")
+        self.MaterialName = params.get("MaterialName")
+        self.Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1479,6 +1720,150 @@ class QueryClueInfoListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class QueryCrmStatisticsRequest(AbstractModel):
+    """QueryCrmStatistics请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BeginTime: 查询开始时间， 单位秒
+        :type BeginTime: int
+        :param EndTime: 查询结束时间， 单位秒
+        :type EndTime: int
+        :param Cursor: 用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填
+        :type Cursor: str
+        :param Limit: 返回的最大记录数，整型，最大值100，默认值50，超过最大值时取最大值
+        :type Limit: int
+        :param SalesId: 请求的企业成员id，为空时默认全租户
+        :type SalesId: str
+        :param OrgId: 请求的部门id，为空时默认全租户
+        :type OrgId: int
+        """
+        self.BeginTime = None
+        self.EndTime = None
+        self.Cursor = None
+        self.Limit = None
+        self.SalesId = None
+        self.OrgId = None
+
+
+    def _deserialize(self, params):
+        self.BeginTime = params.get("BeginTime")
+        self.EndTime = params.get("EndTime")
+        self.Cursor = params.get("Cursor")
+        self.Limit = params.get("Limit")
+        self.SalesId = params.get("SalesId")
+        self.OrgId = params.get("OrgId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryCrmStatisticsResponse(AbstractModel):
+    """QueryCrmStatistics返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NextCursor: 分页游标，再下次请求时填写以获取之后分页的记录，如果已经没有更多的数据则返回空
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NextCursor: str
+        :param PageData: CRM统计响应数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageData: list of CrmStatisticsData
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.NextCursor = None
+        self.PageData = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.NextCursor = params.get("NextCursor")
+        if params.get("PageData") is not None:
+            self.PageData = []
+            for item in params.get("PageData"):
+                obj = CrmStatisticsData()
+                obj._deserialize(item)
+                self.PageData.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class QueryCustomerEventDetailStatisticsRequest(AbstractModel):
+    """QueryCustomerEventDetailStatistics请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BeginTime: 查询开始时间， 单位秒
+        :type BeginTime: int
+        :param EndTime: 查询结束时间， 单位秒
+        :type EndTime: int
+        :param Cursor: 用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填
+        :type Cursor: str
+        :param Limit: 返回的最大记录数，整型，最大值100，默认值50，超过最大值时取最大值
+        :type Limit: int
+        """
+        self.BeginTime = None
+        self.EndTime = None
+        self.Cursor = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.BeginTime = params.get("BeginTime")
+        self.EndTime = params.get("EndTime")
+        self.Cursor = params.get("Cursor")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryCustomerEventDetailStatisticsResponse(AbstractModel):
+    """QueryCustomerEventDetailStatistics返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NextCursor: 分页游标，再下次请求时填写以获取之后分页的记录，如果已经没有更多的数据则返回空
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NextCursor: str
+        :param PageData: 外部联系人SaaS使用明细统计响应数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageData: list of CustomerActionEventDetail
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.NextCursor = None
+        self.PageData = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.NextCursor = params.get("NextCursor")
+        if params.get("PageData") is not None:
+            self.PageData = []
+            for item in params.get("PageData"):
+                obj = CustomerActionEventDetail()
+                obj._deserialize(item)
+                self.PageData.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class QueryDealerInfoListRequest(AbstractModel):
     """QueryDealerInfoList请求参数结构体
 
@@ -1675,6 +2060,74 @@ class QueryExternalContactListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class QueryExternalUserEventListRequest(AbstractModel):
+    """QueryExternalUserEventList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BeginTime: 查询开始时间， 单位秒
+        :type BeginTime: int
+        :param EndTime: 查询结束时间， 单位秒
+        :type EndTime: int
+        :param Cursor: 用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填
+        :type Cursor: str
+        :param Limit: 返回的最大记录数，整型，最大值100，默认值50，超过最大值时取最大值
+        :type Limit: int
+        """
+        self.BeginTime = None
+        self.EndTime = None
+        self.Cursor = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.BeginTime = params.get("BeginTime")
+        self.EndTime = params.get("EndTime")
+        self.Cursor = params.get("Cursor")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryExternalUserEventListResponse(AbstractModel):
+    """QueryExternalUserEventList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NextCursor: 分页游标，再下次请求时填写以获取之后分页的记录，如果已经没有更多的数据则返回空
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NextCursor: str
+        :param PageData: 外部联系人事件信息响应数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageData: list of ExternalUserEventInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.NextCursor = None
+        self.PageData = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.NextCursor = params.get("NextCursor")
+        if params.get("PageData") is not None:
+            self.PageData = []
+            for item in params.get("PageData"):
+                obj = ExternalUserEventInfo()
+                obj._deserialize(item)
+                self.PageData.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class QueryExternalUserMappingInfoRequest(AbstractModel):
     """QueryExternalUserMappingInfo请求参数结构体
 
@@ -1774,6 +2227,70 @@ class QueryLicenseInfoResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class QueryMaterialListRequest(AbstractModel):
+    """QueryMaterialList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MaterialType: 素材类型：0-图片，1-视频，3-文章，10-车型，11-名片
+        :type MaterialType: int
+        :param Cursor: 用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填
+        :type Cursor: str
+        :param Limit: 返回的最大记录数，整型，最大值100，默认值50，超过最大值时取最大值
+        :type Limit: int
+        """
+        self.MaterialType = None
+        self.Cursor = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.MaterialType = params.get("MaterialType")
+        self.Cursor = params.get("Cursor")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryMaterialListResponse(AbstractModel):
+    """QueryMaterialList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NextCursor: 分页游标，再下次请求时填写以获取之后分页的记录，如果已经没有更多的数据则返回空
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NextCursor: str
+        :param PageData: 企业素材列表响应数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageData: list of MaterialInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.NextCursor = None
+        self.PageData = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.NextCursor = params.get("NextCursor")
+        if params.get("PageData") is not None:
+            self.PageData = []
+            for item in params.get("PageData"):
+                obj = MaterialInfo()
+                obj._deserialize(item)
+                self.PageData.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class QueryMiniAppCodeListRequest(AbstractModel):
     """QueryMiniAppCodeList请求参数结构体
 
@@ -1829,6 +2346,134 @@ class QueryMiniAppCodeListResponse(AbstractModel):
             self.PageData = []
             for item in params.get("PageData"):
                 obj = MiniAppCodeInfo()
+                obj._deserialize(item)
+                self.PageData.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class QueryStaffEventDetailStatisticsRequest(AbstractModel):
+    """QueryStaffEventDetailStatistics请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BeginTime: 查询开始时间， 单位秒
+        :type BeginTime: int
+        :param EndTime: 查询结束时间， 单位秒
+        :type EndTime: int
+        :param Cursor: 用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填
+        :type Cursor: str
+        :param Limit: 返回的最大记录数，整型，最大值100，默认值50，超过最大值时取最大值
+        :type Limit: int
+        """
+        self.BeginTime = None
+        self.EndTime = None
+        self.Cursor = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.BeginTime = params.get("BeginTime")
+        self.EndTime = params.get("EndTime")
+        self.Cursor = params.get("Cursor")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryStaffEventDetailStatisticsResponse(AbstractModel):
+    """QueryStaffEventDetailStatistics返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NextCursor: 分页游标，再下次请求时填写以获取之后分页的记录，如果已经没有更多的数据则返回空
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NextCursor: str
+        :param PageData: 企业成员SaaS使用明细统计响应数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageData: list of SalesActionEventDetail
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.NextCursor = None
+        self.PageData = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.NextCursor = params.get("NextCursor")
+        if params.get("PageData") is not None:
+            self.PageData = []
+            for item in params.get("PageData"):
+                obj = SalesActionEventDetail()
+                obj._deserialize(item)
+                self.PageData.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class QueryUserInfoListRequest(AbstractModel):
+    """QueryUserInfoList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Cursor: 用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填
+        :type Cursor: str
+        :param Limit: 返回的最大记录数，整型，最大值100，默认值50，超过最大值时取最大值
+        :type Limit: int
+        """
+        self.Cursor = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.Cursor = params.get("Cursor")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryUserInfoListResponse(AbstractModel):
+    """QueryUserInfoList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NextCursor: 分页游标，再下次请求时填写以获取之后分页的记录，如果已经没有更多的数据则返回空
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NextCursor: str
+        :param PageData: 企业成员信息列表响应数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageData: list of CorpUserInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.NextCursor = None
+        self.PageData = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.NextCursor = params.get("NextCursor")
+        if params.get("PageData") is not None:
+            self.PageData = []
+            for item in params.get("PageData"):
+                obj = CorpUserInfo()
                 obj._deserialize(item)
                 self.PageData.append(obj)
         self.RequestId = params.get("RequestId")
@@ -1897,6 +2542,54 @@ class QueryVehicleInfoListResponse(AbstractModel):
         self.NextCursor = params.get("NextCursor")
         self.HasMore = params.get("HasMore")
         self.RequestId = params.get("RequestId")
+
+
+class SalesActionEventDetail(AbstractModel):
+    """企业成员SaaS使用明细数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EventCode: 事件码
+        :type EventCode: str
+        :param EventType: 事件类型
+        :type EventType: int
+        :param EventSource: 事件来源
+        :type EventSource: int
+        :param SalesId: 销售顾问id
+        :type SalesId: int
+        :param MaterialType: 素材类型
+        :type MaterialType: int
+        :param MaterialId: 素材编号id
+        :type MaterialId: int
+        :param EventTime: 事件上报时间，单位：秒
+        :type EventTime: int
+        """
+        self.EventCode = None
+        self.EventType = None
+        self.EventSource = None
+        self.SalesId = None
+        self.MaterialType = None
+        self.MaterialId = None
+        self.EventTime = None
+
+
+    def _deserialize(self, params):
+        self.EventCode = params.get("EventCode")
+        self.EventType = params.get("EventType")
+        self.EventSource = params.get("EventSource")
+        self.SalesId = params.get("SalesId")
+        self.MaterialType = params.get("MaterialType")
+        self.MaterialId = params.get("MaterialId")
+        self.EventTime = params.get("EventTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class TagDetailInfo(AbstractModel):

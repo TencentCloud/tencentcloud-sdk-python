@@ -1416,7 +1416,7 @@ class LighthouseClient(AbstractClient):
 
 
     def InquirePriceRenewInstances(self, request):
-        """本接口（InquirePriceCreateInstances）用于续费实例询价。
+        """本接口（InquirePriceRenewInstances）用于续费实例询价。
 
         :param request: Request instance for InquirePriceRenewInstances.
         :type request: :class:`tencentcloud.lighthouse.v20200324.models.InquirePriceRenewInstancesRequest`

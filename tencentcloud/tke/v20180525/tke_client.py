@@ -1286,6 +1286,62 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeClusterLevelAttribute(self, request):
+        """获取集群规模
+
+        :param request: Request instance for DescribeClusterLevelAttribute.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterLevelAttributeRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeClusterLevelAttributeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeClusterLevelAttribute", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeClusterLevelAttributeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeClusterLevelChangeRecords(self, request):
+        """查询集群变配记录
+
+        :param request: Request instance for DescribeClusterLevelChangeRecords.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterLevelChangeRecordsRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeClusterLevelChangeRecordsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeClusterLevelChangeRecords", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeClusterLevelChangeRecordsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeClusterNodePoolDetail(self, request):
         """查询节点池详情
 
@@ -2070,6 +2126,34 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeResourceUsage(self, request):
+        """获取集群资源使用量
+
+        :param request: Request instance for DescribeResourceUsage.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeResourceUsageRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeResourceUsageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeResourceUsage", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeResourceUsageResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeRouteTableConflicts(self, request):
         """查询路由表冲突列表
 
@@ -2308,6 +2392,34 @@ class TkeClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ForwardApplicationRequestV3Response()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def GetClusterLevelPrice(self, request):
+        """获取集群规模价格
+
+        :param request: Request instance for GetClusterLevelPrice.
+        :type request: :class:`tencentcloud.tke.v20180525.models.GetClusterLevelPriceRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.GetClusterLevelPriceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetClusterLevelPrice", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetClusterLevelPriceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

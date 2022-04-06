@@ -966,6 +966,80 @@ class CreateServiceLinkedRoleResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateUserOIDCConfigRequest(AbstractModel):
+    """CreateUserOIDCConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IdentityUrl: 身份提供商URL。OpenID Connect身份提供商标识。
+对应企业IdP提供的Openid-configuration中"issuer"字段的值。
+        :type IdentityUrl: str
+        :param IdentityKey: 签名公钥，需要base64_encode。验证OpenID Connect身份提供商ID Token签名的公钥。为了您的帐号安全，建议您定期轮换签名公钥。
+        :type IdentityKey: str
+        :param ClientId: 客户端ID，在OpenID Connect身份提供商注册的客户端ID。
+        :type ClientId: str
+        :param AuthorizationEndpoint: 授权请求Endpoint，OpenID Connect身份提供商授权地址。对应企业IdP提供的Openid-configuration中"authorization_endpoint"字段的值。
+        :type AuthorizationEndpoint: str
+        :param ResponseType: 授权请求Response type，固定值id_token
+        :type ResponseType: str
+        :param ResponseMode: 授权请求Response mode。授权请求返回模式，form_post和fragment两种可选模式，推荐选择form_post模式。
+        :type ResponseMode: str
+        :param MappingFiled: 映射字段名称。IdP的id_token中哪一个字段映射到子用户的用户名，通常是sub或者name字段
+        :type MappingFiled: str
+        :param Scope: 授权请求Scope。openid; email;profile。授权请求信息范围。默认必选openid。
+        :type Scope: list of str
+        :param Description: 描述
+        :type Description: str
+        """
+        self.IdentityUrl = None
+        self.IdentityKey = None
+        self.ClientId = None
+        self.AuthorizationEndpoint = None
+        self.ResponseType = None
+        self.ResponseMode = None
+        self.MappingFiled = None
+        self.Scope = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.IdentityUrl = params.get("IdentityUrl")
+        self.IdentityKey = params.get("IdentityKey")
+        self.ClientId = params.get("ClientId")
+        self.AuthorizationEndpoint = params.get("AuthorizationEndpoint")
+        self.ResponseType = params.get("ResponseType")
+        self.ResponseMode = params.get("ResponseMode")
+        self.MappingFiled = params.get("MappingFiled")
+        self.Scope = params.get("Scope")
+        self.Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateUserOIDCConfigResponse(AbstractModel):
+    """CreateUserOIDCConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CreateUserSAMLConfigRequest(AbstractModel):
     """CreateUserSAMLConfig请求参数结构体
 
@@ -1650,6 +1724,73 @@ class DescribeSubAccountsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeUserOIDCConfigRequest(AbstractModel):
+    """DescribeUserOIDCConfig请求参数结构体
+
+    """
+
+
+class DescribeUserOIDCConfigResponse(AbstractModel):
+    """DescribeUserOIDCConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProviderType: 身份提供商类型。 12：用户OIDC身份提供商
+        :type ProviderType: int
+        :param IdentityUrl: 身份提供商URL
+        :type IdentityUrl: str
+        :param IdentityKey: 签名公钥
+        :type IdentityKey: str
+        :param ClientId: 客户端id
+        :type ClientId: str
+        :param Status: 状态：0:未设置，11:已开启，2:已禁用
+        :type Status: int
+        :param AuthorizationEndpoint: 授权请求Endpoint
+        :type AuthorizationEndpoint: str
+        :param Scope: 授权请求Scope
+        :type Scope: list of str
+        :param ResponseType: 授权请求Response type
+        :type ResponseType: str
+        :param ResponseMode: 授权请求Response mode
+        :type ResponseMode: str
+        :param MappingFiled: 映射字段名称
+        :type MappingFiled: str
+        :param Description: 描述
+        :type Description: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ProviderType = None
+        self.IdentityUrl = None
+        self.IdentityKey = None
+        self.ClientId = None
+        self.Status = None
+        self.AuthorizationEndpoint = None
+        self.Scope = None
+        self.ResponseType = None
+        self.ResponseMode = None
+        self.MappingFiled = None
+        self.Description = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ProviderType = params.get("ProviderType")
+        self.IdentityUrl = params.get("IdentityUrl")
+        self.IdentityKey = params.get("IdentityKey")
+        self.ClientId = params.get("ClientId")
+        self.Status = params.get("Status")
+        self.AuthorizationEndpoint = params.get("AuthorizationEndpoint")
+        self.Scope = params.get("Scope")
+        self.ResponseType = params.get("ResponseType")
+        self.ResponseMode = params.get("ResponseMode")
+        self.MappingFiled = params.get("MappingFiled")
+        self.Description = params.get("Description")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeUserSAMLConfigRequest(AbstractModel):
     """DescribeUserSAMLConfig请求参数结构体
 
@@ -1809,6 +1950,29 @@ class DetachUserPolicyRequest(AbstractModel):
 
 class DetachUserPolicyResponse(AbstractModel):
     """DetachUserPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DisableUserSSORequest(AbstractModel):
+    """DisableUserSSO请求参数结构体
+
+    """
+
+
+class DisableUserSSOResponse(AbstractModel):
+    """DisableUserSSO返回参数结构体
 
     """
 
@@ -4906,6 +5070,80 @@ class UpdateSAMLProviderRequest(AbstractModel):
 
 class UpdateSAMLProviderResponse(AbstractModel):
     """UpdateSAMLProvider返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UpdateUserOIDCConfigRequest(AbstractModel):
+    """UpdateUserOIDCConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IdentityUrl: 身份提供商URL。OpenID Connect身份提供商标识。
+对应企业IdP提供的Openid-configuration中"issuer"字段的值。
+        :type IdentityUrl: str
+        :param IdentityKey: 签名公钥，需要base64_encode。验证OpenID Connect身份提供商ID Token签名的公钥。为了您的帐号安全，建议您定期轮换签名公钥。
+        :type IdentityKey: str
+        :param ClientId: 客户端ID，在OpenID Connect身份提供商注册的客户端ID。
+        :type ClientId: str
+        :param AuthorizationEndpoint: 授权请求Endpoint，OpenID Connect身份提供商授权地址。对应企业IdP提供的Openid-configuration中"authorization_endpoint"字段的值。
+        :type AuthorizationEndpoint: str
+        :param ResponseType: 授权请求Response type，固定值id_token。
+        :type ResponseType: str
+        :param ResponseMode: 授权请求Response mode。授权请求返回模式，form_post和fragment两种可选模式，推荐选择form_post模式。
+        :type ResponseMode: str
+        :param MappingFiled: 映射字段名称。IdP的id_token中哪一个字段映射到子用户的用户名，通常是sub或者name字段
+        :type MappingFiled: str
+        :param Scope: 授权请求Scope。openid; email;profile。授权请求信息范围。默认必选openid。
+        :type Scope: list of str
+        :param Description: 描述
+        :type Description: str
+        """
+        self.IdentityUrl = None
+        self.IdentityKey = None
+        self.ClientId = None
+        self.AuthorizationEndpoint = None
+        self.ResponseType = None
+        self.ResponseMode = None
+        self.MappingFiled = None
+        self.Scope = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.IdentityUrl = params.get("IdentityUrl")
+        self.IdentityKey = params.get("IdentityKey")
+        self.ClientId = params.get("ClientId")
+        self.AuthorizationEndpoint = params.get("AuthorizationEndpoint")
+        self.ResponseType = params.get("ResponseType")
+        self.ResponseMode = params.get("ResponseMode")
+        self.MappingFiled = params.get("MappingFiled")
+        self.Scope = params.get("Scope")
+        self.Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateUserOIDCConfigResponse(AbstractModel):
+    """UpdateUserOIDCConfig返回参数结构体
 
     """
 

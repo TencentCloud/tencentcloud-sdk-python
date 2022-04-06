@@ -720,15 +720,15 @@ class CreateInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BundleId: Lighthouse套餐ID。
+        :param BundleId: 套餐ID。
         :type BundleId: str
-        :param BlueprintId: Lighthouse镜像ID。
+        :param BlueprintId: 镜像ID。
         :type BlueprintId: str
-        :param InstanceChargePrepaid: 当前Lighthouse实例仅支持预付费模式，即包年包月相关参数设置，单位（月）。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。该参数必传。
+        :param InstanceChargePrepaid: 当前实例仅支持预付费模式，即包年包月相关参数设置，单位（月）。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。该参数必传。
         :type InstanceChargePrepaid: :class:`tencentcloud.lighthouse.v20200324.models.InstanceChargePrepaid`
-        :param InstanceName: Lighthouse实例显示名称。
+        :param InstanceName: 实例显示名称。
         :type InstanceName: str
-        :param InstanceCount: 购买Lighthouse实例数量。包年包月实例取值范围：[1，30]。默认取值：1。指定购买实例的数量不能超过用户所能购买的剩余配额数量
+        :param InstanceCount: 购买实例数量。包年包月实例取值范围：[1，30]。默认取值：1。指定购买实例的数量不能超过用户所能购买的剩余配额数量
         :type InstanceCount: int
         :param Zones: 可用区列表。默认为随机可用区
         :type Zones: list of str
@@ -1860,7 +1860,7 @@ class DescribeGeneralResourceQuotasRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ResourceNames: 资源名列表，取值为：USER_KEY_PAIR、INSTANCE、SNAPSHOT。
+        :param ResourceNames: 资源名列表，取值为：USER_KEY_PAIR、GENERAL_BUNDLE_INSTANCE、STORAGE_BUNDLE_INSTANCE、ENTERPRISE_BUNDLE_INSTANCE、EXCLUSIVE_BUNDLE_INSTANCE、BEFAST_BUNDLE_INSTANCE、SNAPSHOT、BLUEPRINT、FREE_BLUEPRINT、DATA_DISK、ATTACHED_DATA_DISK、FIREWALL_RULE。
         :type ResourceNames: list of str
         """
         self.ResourceNames = None
@@ -3871,7 +3871,7 @@ NOTIFY_AND_AUTO_RENEW：表示通知即将过期，而且自动续费 。
         :param LoginSettings: 实例登录设置。
         :type LoginSettings: :class:`tencentcloud.lighthouse.v20200324.models.LoginSettings`
         :param InstanceState: 实例状态。取值范围： 
-<li>PENDING：表示创建中</li><li>LAUNCH_FAILED：表示创建失败</li><li>RUNNING：表示运行中</li><li>STOPPED：表示关机</li><li>STARTING：表示开机中</li><li>STOPPING：表示关机中</li><li>REBOOTING：表示重启中</li><li>SHUTDOWN：表示停止待销毁</li><li>TERMINATING：表示销毁中</li>
+<li>PENDING：表示创建中</li><li>LAUNCH_FAILED：表示创建失败</li><li>RUNNING：表示运行中</li><li>STOPPED：表示关机</li><li>STARTING：表示开机中</li><li>STOPPING：表示关机中</li><li>REBOOTING：表示重启中</li><li>SHUTDOWN：表示停止待销毁</li><li>TERMINATING：表示销毁中</li><li>DELETING：表示删除中</li><li>FREEZING：表示冻结中</li>
         :type InstanceState: str
         :param Uuid: 实例全局唯一 ID。
         :type Uuid: str
@@ -3908,6 +3908,9 @@ FAILED：表示操作失败
         :type Zone: str
         :param Tags: 实例绑定的标签列表。
         :type Tags: list of Tag
+        :param InstanceRestrictState: 实例封禁状态。取值范围：
+<li>NORMAL实例正常。</li><li>NETWORK_RESTRICT：网络封禁。</li>
+        :type InstanceRestrictState: str
         """
         self.InstanceId = None
         self.BundleId = None
@@ -3935,6 +3938,7 @@ FAILED：表示操作失败
         self.OsName = None
         self.Zone = None
         self.Tags = None
+        self.InstanceRestrictState = None
 
 
     def _deserialize(self, params):
@@ -3975,6 +3979,7 @@ FAILED：表示操作失败
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.InstanceRestrictState = params.get("InstanceRestrictState")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

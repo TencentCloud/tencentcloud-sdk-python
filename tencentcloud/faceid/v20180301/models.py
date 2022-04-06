@@ -756,7 +756,7 @@ Base64编码后的图片数据大小不超过3M，仅支持jpg、png格式。请
         :type ImageBase64: str
         :param Encryption: 敏感数据加密信息。对传入信息（姓名、身份证号）有加密需求的用户可使用此参数，详情请点击左侧链接。
         :type Encryption: :class:`tencentcloud.faceid.v20180301.models.Encryption`
-        :param IntentionVerifyText: 意愿核身使用的文案，若未使用意愿核身功能，该字段无需传入。默认为空，最长可接受100的字符串长度。
+        :param IntentionVerifyText: 意愿核身使用的文案，若未使用意愿核身功能，该字段无需传入。默认为空，最长可接受120的字符串长度。
         :type IntentionVerifyText: str
         """
         self.RuleId = None
@@ -2463,12 +2463,16 @@ class IntentionVerifyData(AbstractModel):
         :param IntentionVerifyBestFrame: 意愿确认环节中录制视频的最佳帧（base64）。若不存在则为空字符串。
 注意：此字段可能返回 null，表示取不到有效值。
         :type IntentionVerifyBestFrame: str
+        :param AsrResultSimilarity: 本次流程用户语音与传入文本比对的相似度分值，取值范围 [0.00, 100.00]。只有配置了相似度阈值后才进行语音校验并返回相似度分值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AsrResultSimilarity: str
         """
         self.IntentionVerifyVideo = None
         self.AsrResult = None
         self.ErrorCode = None
         self.ErrorMessage = None
         self.IntentionVerifyBestFrame = None
+        self.AsrResultSimilarity = None
 
 
     def _deserialize(self, params):
@@ -2477,6 +2481,7 @@ class IntentionVerifyData(AbstractModel):
         self.ErrorCode = params.get("ErrorCode")
         self.ErrorMessage = params.get("ErrorMessage")
         self.IntentionVerifyBestFrame = params.get("IntentionVerifyBestFrame")
+        self.AsrResultSimilarity = params.get("AsrResultSimilarity")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

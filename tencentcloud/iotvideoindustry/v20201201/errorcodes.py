@@ -158,6 +158,9 @@ RESOURCEUNAVAILABLE = 'ResourceUnavailable'
 # 国标信令异常。
 RESOURCEUNAVAILABLE_GBPROTOCOLEXECEXCEPTION = 'ResourceUnavailable.GBProtocolExecException'
 
+# 流信息异常。
+RESOURCEUNAVAILABLE_STREAMINFOEXCEPTION = 'ResourceUnavailable.StreamInfoException'
+
 # 资源售罄。
 RESOURCESSOLDOUT = 'ResourcesSoldOut'
 

@@ -3173,7 +3173,7 @@ class CreateFlowLogRequest(AbstractModel):
         r"""
         :param FlowLogName: 流日志实例名字
         :type FlowLogName: str
-        :param ResourceType: 流日志所属资源类型，VPC|SUBNET|NETWORKINTERFACE|CCN
+        :param ResourceType: 流日志所属资源类型，VPC|SUBNET|NETWORKINTERFACE|CCN|NAT|DCG
         :type ResourceType: str
         :param ResourceId: 资源唯一ID
         :type ResourceId: str
@@ -13098,7 +13098,7 @@ class FlowLog(AbstractModel):
         :type FlowLogId: str
         :param FlowLogName: 流日志实例名字。
         :type FlowLogName: str
-        :param ResourceType: 流日志所属资源类型，VPC|SUBNET|NETWORKINTERFACE|CCN。
+        :param ResourceType: 流日志所属资源类型，VPC|SUBNET|NETWORKINTERFACE|CCN|NAT|DCG。
         :type ResourceType: str
         :param ResourceId: 资源唯一ID。
         :type ResourceId: str

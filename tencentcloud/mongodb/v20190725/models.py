@@ -2537,6 +2537,68 @@ class KillOpsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyDBInstanceNetworkAddressRequest(AbstractModel):
+    """ModifyDBInstanceNetworkAddress请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param OldIpExpiredTime: 原IP保留时长，单位为分钟；原IP会在约定时间后释放，在释放前原IP和新IP均可访问；0表示立即回收原IP
+        :type OldIpExpiredTime: int
+        :param NewUniqVpcId: 切换后IP地址所属私有网络统一ID，若为基础网络，该字段为空
+        :type NewUniqVpcId: str
+        :param NewUniqSubnetId: 切换后IP地址所属子网统一ID，若为基础网络，该字段为空
+        :type NewUniqSubnetId: str
+        :param NetworkAddresses: 待修改IP信息
+        :type NetworkAddresses: list of ModifyNetworkAddress
+        """
+        self.InstanceId = None
+        self.OldIpExpiredTime = None
+        self.NewUniqVpcId = None
+        self.NewUniqSubnetId = None
+        self.NetworkAddresses = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.OldIpExpiredTime = params.get("OldIpExpiredTime")
+        self.NewUniqVpcId = params.get("NewUniqVpcId")
+        self.NewUniqSubnetId = params.get("NewUniqSubnetId")
+        if params.get("NetworkAddresses") is not None:
+            self.NetworkAddresses = []
+            for item in params.get("NetworkAddresses"):
+                obj = ModifyNetworkAddress()
+                obj._deserialize(item)
+                self.NetworkAddresses.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDBInstanceNetworkAddressResponse(AbstractModel):
+    """ModifyDBInstanceNetworkAddress返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyDBInstanceSecurityGroupRequest(AbstractModel):
     """ModifyDBInstanceSecurityGroup请求参数结构体
 
@@ -2649,6 +2711,34 @@ class ModifyDBInstanceSpecResponse(AbstractModel):
     def _deserialize(self, params):
         self.DealId = params.get("DealId")
         self.RequestId = params.get("RequestId")
+
+
+class ModifyNetworkAddress(AbstractModel):
+    """修改数据库地址
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NewIPAddress: 新IP地址。
+        :type NewIPAddress: str
+        :param OldIpAddress: 原IP地址。
+        :type OldIpAddress: str
+        """
+        self.NewIPAddress = None
+        self.OldIpAddress = None
+
+
+    def _deserialize(self, params):
+        self.NewIPAddress = params.get("NewIPAddress")
+        self.OldIpAddress = params.get("OldIpAddress")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class OfflineIsolatedDBInstanceRequest(AbstractModel):

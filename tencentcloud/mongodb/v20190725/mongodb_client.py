@@ -700,6 +700,34 @@ class MongodbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyDBInstanceNetworkAddress(self, request):
+        """本接口(ModifyDBInstanceNetworkAddress)用于修改云数据库实例的网络信息，可进行基础网络转VPC网络和VPC网络之间的变换。
+
+        :param request: Request instance for ModifyDBInstanceNetworkAddress.
+        :type request: :class:`tencentcloud.mongodb.v20190725.models.ModifyDBInstanceNetworkAddressRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20190725.models.ModifyDBInstanceNetworkAddressResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyDBInstanceNetworkAddress", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyDBInstanceNetworkAddressResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyDBInstanceSecurityGroup(self, request):
         """修改实例绑定的安全组
 

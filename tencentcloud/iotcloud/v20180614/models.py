@@ -2378,6 +2378,30 @@ class DescribeMultiDevicesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeProductRequest(AbstractModel):
+    """DescribeProduct请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProductId: 产品ID
+        :type ProductId: str
+        """
+        self.ProductId = None
+
+
+    def _deserialize(self, params):
+        self.ProductId = params.get("ProductId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DescribeProductResourceRequest(AbstractModel):
     """DescribeProductResource请求参数结构体
 
@@ -2494,6 +2518,43 @@ class DescribeProductResourcesResponse(AbstractModel):
                 obj = ProductResourceInfo()
                 obj._deserialize(item)
                 self.Result.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeProductResponse(AbstractModel):
+    """DescribeProduct返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProductId: 产品ID
+        :type ProductId: str
+        :param ProductName: 产品名
+        :type ProductName: str
+        :param ProductMetadata: 产品元数据
+        :type ProductMetadata: :class:`tencentcloud.iotcloud.v20180614.models.ProductMetadata`
+        :param ProductProperties: 产品属性
+        :type ProductProperties: :class:`tencentcloud.iotcloud.v20180614.models.ProductProperties`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ProductId = None
+        self.ProductName = None
+        self.ProductMetadata = None
+        self.ProductProperties = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ProductId = params.get("ProductId")
+        self.ProductName = params.get("ProductName")
+        if params.get("ProductMetadata") is not None:
+            self.ProductMetadata = ProductMetadata()
+            self.ProductMetadata._deserialize(params.get("ProductMetadata"))
+        if params.get("ProductProperties") is not None:
+            self.ProductProperties = ProductProperties()
+            self.ProductProperties._deserialize(params.get("ProductProperties"))
         self.RequestId = params.get("RequestId")
 
 
@@ -5223,6 +5284,67 @@ class UpdateDevicesEnableStateResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UpdateProductDynamicRegisterRequest(AbstractModel):
+    """UpdateProductDynamicRegister请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProductId: 产品Id
+        :type ProductId: str
+        :param RegisterType: 动态注册类型，0-关闭 1-预创建设备 2-自动创建设备
+        :type RegisterType: int
+        :param RegisterLimit: 动态注册设备上限
+        :type RegisterLimit: int
+        """
+        self.ProductId = None
+        self.RegisterType = None
+        self.RegisterLimit = None
+
+
+    def _deserialize(self, params):
+        self.ProductId = params.get("ProductId")
+        self.RegisterType = params.get("RegisterType")
+        self.RegisterLimit = params.get("RegisterLimit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateProductDynamicRegisterResponse(AbstractModel):
+    """UpdateProductDynamicRegister返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RegisterType: 动态注册类型，0-关闭 1-预创建设备 2-自动创建设备
+        :type RegisterType: int
+        :param ProductSecret: 动态注册产品密钥
+        :type ProductSecret: str
+        :param RegisterLimit: 动态注册设备上限
+        :type RegisterLimit: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RegisterType = None
+        self.ProductSecret = None
+        self.RegisterLimit = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RegisterType = params.get("RegisterType")
+        self.ProductSecret = params.get("ProductSecret")
+        self.RegisterLimit = params.get("RegisterLimit")
         self.RequestId = params.get("RequestId")
 
 

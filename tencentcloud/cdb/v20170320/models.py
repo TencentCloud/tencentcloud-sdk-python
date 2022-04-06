@@ -1620,6 +1620,8 @@ class CreateCloneInstanceRequest(AbstractModel):
         :type DryRun: bool
         :param CageId: 金融围拢 ID 。
         :type CageId: str
+        :param ProjectId: 项目ID，默认项目ID0
+        :type ProjectId: int
         """
         self.InstanceId = None
         self.SpecifiedRollbackTime = None
@@ -1641,6 +1643,7 @@ class CreateCloneInstanceRequest(AbstractModel):
         self.DeployGroupId = None
         self.DryRun = None
         self.CageId = None
+        self.ProjectId = None
 
 
     def _deserialize(self, params):
@@ -1669,6 +1672,7 @@ class CreateCloneInstanceRequest(AbstractModel):
         self.DeployGroupId = params.get("DeployGroupId")
         self.DryRun = params.get("DryRun")
         self.CageId = params.get("CageId")
+        self.ProjectId = params.get("ProjectId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8595,7 +8599,7 @@ class ModifyDBInstanceVipVportRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同，可使用 [查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口获取，其值为输出参数中字段 InstanceId 的值。
+        :param InstanceId: 实例 ID，格式如：cdb-c1nl9rpv 或者 cdbro-c2nl9rpv 或者 cdbrg-c3nl9rpv，与云数据库控制台页面中显示的实例 ID 相同，可使用 [查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口获取，其值为输出参数中字段 InstanceId 的值。
         :type InstanceId: str
         :param DstIp: 目标 IP。该参数和 DstPort 参数，两者必传一个。
         :type DstIp: str

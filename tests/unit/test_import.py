@@ -149,6 +149,11 @@ def test_import_bri():
     from tencentcloud.bri.v20190328 import models
 
 
+def test_import_bsca():
+    from tencentcloud.bsca.v20210811 import bsca_client
+    from tencentcloud.bsca.v20210811 import models
+
+
 def test_import_btoe():
     from tencentcloud.btoe.v20210303 import btoe_client
     from tencentcloud.btoe.v20210303 import models
@@ -922,6 +927,11 @@ def test_import_tem():
 def test_import_thpc():
     from tencentcloud.thpc.v20211109 import thpc_client
     from tencentcloud.thpc.v20211109 import models
+
+
+def test_import_thpc():
+    from tencentcloud.thpc.v20220401 import thpc_client
+    from tencentcloud.thpc.v20220401 import models
 
 
 def test_import_tia():

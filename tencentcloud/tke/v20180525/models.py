@@ -1178,6 +1178,115 @@ class ClusterInternalLB(AbstractModel):
         
 
 
+class ClusterLevelAttribute(AbstractModel):
+    """托管集群等级属性
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 集群等级
+        :type Name: str
+        :param Alias: 等级名称
+        :type Alias: str
+        :param NodeCount: 节点数量
+        :type NodeCount: int
+        :param PodCount: Pod数量
+        :type PodCount: int
+        :param ConfigMapCount: Configmap数量
+        :type ConfigMapCount: int
+        :param CRDCount: CRD数量
+        :type CRDCount: int
+        :param Enable: 是否启用
+        :type Enable: bool
+        :param OtherCount: 其他资源数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OtherCount: int
+        """
+        self.Name = None
+        self.Alias = None
+        self.NodeCount = None
+        self.PodCount = None
+        self.ConfigMapCount = None
+        self.CRDCount = None
+        self.Enable = None
+        self.OtherCount = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Alias = params.get("Alias")
+        self.NodeCount = params.get("NodeCount")
+        self.PodCount = params.get("PodCount")
+        self.ConfigMapCount = params.get("ConfigMapCount")
+        self.CRDCount = params.get("CRDCount")
+        self.Enable = params.get("Enable")
+        self.OtherCount = params.get("OtherCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ClusterLevelChangeRecord(AbstractModel):
+    """集群等级变配记录
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ID: 记录ID
+        :type ID: str
+        :param ClusterID: 集群ID
+        :type ClusterID: str
+        :param Status: 变配状态：trading 发货中,upgrading 变配中,success 变配成功,failed 变配失败。
+        :type Status: str
+        :param Message: 状态描述
+        :type Message: str
+        :param OldLevel: 变配前规模
+        :type OldLevel: str
+        :param NewLevel: 变配后规模
+        :type NewLevel: str
+        :param TriggerType: 变配触发类型：manual 手动,auto 自动
+        :type TriggerType: str
+        :param StartedAt: 开始时间
+        :type StartedAt: str
+        :param EndedAt: 结束时间
+        :type EndedAt: str
+        """
+        self.ID = None
+        self.ClusterID = None
+        self.Status = None
+        self.Message = None
+        self.OldLevel = None
+        self.NewLevel = None
+        self.TriggerType = None
+        self.StartedAt = None
+        self.EndedAt = None
+
+
+    def _deserialize(self, params):
+        self.ID = params.get("ID")
+        self.ClusterID = params.get("ClusterID")
+        self.Status = params.get("Status")
+        self.Message = params.get("Message")
+        self.OldLevel = params.get("OldLevel")
+        self.NewLevel = params.get("NewLevel")
+        self.TriggerType = params.get("TriggerType")
+        self.StartedAt = params.get("StartedAt")
+        self.EndedAt = params.get("EndedAt")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ClusterNetworkSettings(AbstractModel):
     """集群网络相关的参数
 
@@ -4012,6 +4121,130 @@ class DescribeClusterKubeconfigResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeClusterLevelAttributeRequest(AbstractModel):
+    """DescribeClusterLevelAttribute请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterID: 集群ID，变配时使用
+        :type ClusterID: str
+        """
+        self.ClusterID = None
+
+
+    def _deserialize(self, params):
+        self.ClusterID = params.get("ClusterID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeClusterLevelAttributeResponse(AbstractModel):
+    """DescribeClusterLevelAttribute返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 总数
+        :type TotalCount: int
+        :param Items: 集群规模
+        :type Items: list of ClusterLevelAttribute
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Items = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = ClusterLevelAttribute()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeClusterLevelChangeRecordsRequest(AbstractModel):
+    """DescribeClusterLevelChangeRecords请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterID: 集群ID
+        :type ClusterID: str
+        :param StartAt: 开始时间
+        :type StartAt: str
+        :param EndAt: 结束时间
+        :type EndAt: str
+        :param Offset: 偏移量,默认0
+        :type Offset: int
+        :param Limit: 最大输出条数，默认20
+        :type Limit: int
+        """
+        self.ClusterID = None
+        self.StartAt = None
+        self.EndAt = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.ClusterID = params.get("ClusterID")
+        self.StartAt = params.get("StartAt")
+        self.EndAt = params.get("EndAt")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeClusterLevelChangeRecordsResponse(AbstractModel):
+    """DescribeClusterLevelChangeRecords返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 总数
+        :type TotalCount: int
+        :param Items: 集群规模
+        :type Items: list of ClusterLevelChangeRecord
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Items = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = ClusterLevelChangeRecord()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeClusterNodePoolDetailRequest(AbstractModel):
     """DescribeClusterNodePoolDetail请求参数结构体
 
@@ -5844,6 +6077,67 @@ class DescribeRegionsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeResourceUsageRequest(AbstractModel):
+    """DescribeResourceUsage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        """
+        self.ClusterId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeResourceUsageResponse(AbstractModel):
+    """DescribeResourceUsage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CRDUsage: CRD使用量
+        :type CRDUsage: :class:`tencentcloud.tke.v20180525.models.ResourceUsage`
+        :param PodUsage: Pod使用量
+        :type PodUsage: int
+        :param ConfigMapUsage: ConfigMap使用量
+        :type ConfigMapUsage: int
+        :param OtherUsage: 其他资源使用量
+        :type OtherUsage: :class:`tencentcloud.tke.v20180525.models.ResourceUsage`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.CRDUsage = None
+        self.PodUsage = None
+        self.ConfigMapUsage = None
+        self.OtherUsage = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("CRDUsage") is not None:
+            self.CRDUsage = ResourceUsage()
+            self.CRDUsage._deserialize(params.get("CRDUsage"))
+        self.PodUsage = params.get("PodUsage")
+        self.ConfigMapUsage = params.get("ConfigMapUsage")
+        if params.get("OtherUsage") is not None:
+            self.OtherUsage = ResourceUsage()
+            self.OtherUsage._deserialize(params.get("OtherUsage"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeRouteTableConflictsRequest(AbstractModel):
     """DescribeRouteTableConflicts请求参数结构体
 
@@ -7061,6 +7355,55 @@ class ForwardApplicationRequestV3Response(AbstractModel):
 
     def _deserialize(self, params):
         self.ResponseBody = params.get("ResponseBody")
+        self.RequestId = params.get("RequestId")
+
+
+class GetClusterLevelPriceRequest(AbstractModel):
+    """GetClusterLevelPrice请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterLevel: 集群规格，托管集群询价
+        :type ClusterLevel: str
+        """
+        self.ClusterLevel = None
+
+
+    def _deserialize(self, params):
+        self.ClusterLevel = params.get("ClusterLevel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetClusterLevelPriceResponse(AbstractModel):
+    """GetClusterLevelPrice返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Cost: 询价结果，单位：分，打折后
+        :type Cost: int
+        :param TotalCost: 询价结果，单位：分，折扣前
+        :type TotalCost: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Cost = None
+        self.TotalCost = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Cost = params.get("Cost")
+        self.TotalCost = params.get("TotalCost")
         self.RequestId = params.get("RequestId")
 
 
@@ -9892,6 +10235,71 @@ class ResourceDeleteOption(AbstractModel):
     def _deserialize(self, params):
         self.ResourceType = params.get("ResourceType")
         self.DeleteMode = params.get("DeleteMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResourceUsage(AbstractModel):
+    """集群资源使用量
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 资源类型
+        :type Name: str
+        :param Usage: 资源使用量
+        :type Usage: int
+        :param Details: 资源使用详情
+        :type Details: list of ResourceUsageDetail
+        """
+        self.Name = None
+        self.Usage = None
+        self.Details = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Usage = params.get("Usage")
+        if params.get("Details") is not None:
+            self.Details = []
+            for item in params.get("Details"):
+                obj = ResourceUsageDetail()
+                obj._deserialize(item)
+                self.Details.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResourceUsageDetail(AbstractModel):
+    """资源使用明细
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 资源名称
+        :type Name: str
+        :param Usage: 资源使用量
+        :type Usage: int
+        """
+        self.Name = None
+        self.Usage = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Usage = params.get("Usage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
