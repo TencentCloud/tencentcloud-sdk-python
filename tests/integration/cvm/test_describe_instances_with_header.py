@@ -25,6 +25,7 @@ def _test_describe_instances(http_method, sign_method, unsigned_payload=False):
     header = {
         "X-TC-TraceId": "ffe0c072-8a5d-4e17-8887-a8a60252abca",
     }
+    req.header = header
 
     fzone = models.Filter()
     fzone.Name = "zone"
@@ -33,7 +34,7 @@ def _test_describe_instances(http_method, sign_method, unsigned_payload=False):
     fname.Name = "instance-name"
     fname.Values = [u"中文", u"测试"]
     req.Filters = [fzone, fname]
-    resp = client.DescribeInstances(req, header)
+    resp = client.DescribeInstances(req)
     assert resp.TotalCount >= 0
 
 

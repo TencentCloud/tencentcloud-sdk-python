@@ -306,7 +306,6 @@ class AbstractClient(object):
         resp_inter = self.request.send_request(req)
         self._check_status(resp_inter)
         data = resp_inter.data
-        print(resp_inter.header)
         return data
 
     def call_octet_stream(self, action, headers, body):
