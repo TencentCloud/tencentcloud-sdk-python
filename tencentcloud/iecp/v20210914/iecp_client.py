@@ -54,6 +54,34 @@ class IecpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def BuildMessageRoute(self, request):
+        """建立消息路由
+
+        :param request: Request instance for BuildMessageRoute.
+        :type request: :class:`tencentcloud.iecp.v20210914.models.BuildMessageRouteRequest`
+        :rtype: :class:`tencentcloud.iecp.v20210914.models.BuildMessageRouteResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("BuildMessageRoute", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.BuildMessageRouteResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateApplicationVisualization(self, request):
         """创建可视化创建应用模板
 
@@ -292,6 +320,90 @@ class IecpClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateEdgeUnitCloudResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateEdgeUnitDevices(self, request):
+        """批量绑定设备到单元
+
+        :param request: Request instance for CreateEdgeUnitDevices.
+        :type request: :class:`tencentcloud.iecp.v20210914.models.CreateEdgeUnitDevicesRequest`
+        :rtype: :class:`tencentcloud.iecp.v20210914.models.CreateEdgeUnitDevicesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateEdgeUnitDevices", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateEdgeUnitDevicesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateIotDevice(self, request):
+        """创建子设备
+
+        :param request: Request instance for CreateIotDevice.
+        :type request: :class:`tencentcloud.iecp.v20210914.models.CreateIotDeviceRequest`
+        :rtype: :class:`tencentcloud.iecp.v20210914.models.CreateIotDeviceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateIotDevice", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateIotDeviceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateMessageRoute(self, request):
+        """创建消息路由
+
+        :param request: Request instance for CreateMessageRoute.
+        :type request: :class:`tencentcloud.iecp.v20210914.models.CreateMessageRouteRequest`
+        :rtype: :class:`tencentcloud.iecp.v20210914.models.CreateMessageRouteResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateMessageRoute", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateMessageRouteResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -642,6 +754,34 @@ class IecpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteEdgeUnitDevices(self, request):
+        """批量解绑单元设备
+
+        :param request: Request instance for DeleteEdgeUnitDevices.
+        :type request: :class:`tencentcloud.iecp.v20210914.models.DeleteEdgeUnitDevicesRequest`
+        :rtype: :class:`tencentcloud.iecp.v20210914.models.DeleteEdgeUnitDevicesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteEdgeUnitDevices", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteEdgeUnitDevicesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteEdgeUnitPod(self, request):
         """删除指定pod
 
@@ -670,6 +810,34 @@ class IecpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteIotDevice(self, request):
+        """删除设备
+
+        :param request: Request instance for DeleteIotDevice.
+        :type request: :class:`tencentcloud.iecp.v20210914.models.DeleteIotDeviceRequest`
+        :rtype: :class:`tencentcloud.iecp.v20210914.models.DeleteIotDeviceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteIotDevice", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteIotDeviceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteIotDeviceBatch(self, request):
         """批量删除设备
 
@@ -684,6 +852,34 @@ class IecpClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteIotDeviceBatchResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteMessageRoute(self, request):
+        """删除消息路由
+
+        :param request: Request instance for DeleteMessageRoute.
+        :type request: :class:`tencentcloud.iecp.v20210914.models.DeleteMessageRouteRequest`
+        :rtype: :class:`tencentcloud.iecp.v20210914.models.DeleteMessageRouteResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteMessageRoute", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteMessageRouteResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1818,6 +2014,90 @@ class IecpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeIotDevice(self, request):
+        """获取设备信息
+
+        :param request: Request instance for DescribeIotDevice.
+        :type request: :class:`tencentcloud.iecp.v20210914.models.DescribeIotDeviceRequest`
+        :rtype: :class:`tencentcloud.iecp.v20210914.models.DescribeIotDeviceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeIotDevice", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeIotDeviceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeIotDevices(self, request):
+        """获取设备列表信息
+
+        :param request: Request instance for DescribeIotDevices.
+        :type request: :class:`tencentcloud.iecp.v20210914.models.DescribeIotDevicesRequest`
+        :rtype: :class:`tencentcloud.iecp.v20210914.models.DescribeIotDevicesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeIotDevices", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeIotDevicesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeMessageRouteList(self, request):
+        """获取消息路由列表
+
+        :param request: Request instance for DescribeMessageRouteList.
+        :type request: :class:`tencentcloud.iecp.v20210914.models.DescribeMessageRouteListRequest`
+        :rtype: :class:`tencentcloud.iecp.v20210914.models.DescribeMessageRouteListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeMessageRouteList", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeMessageRouteListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeMonitorMetrics(self, request):
         """查询边缘单元监控数据
 
@@ -2462,6 +2742,34 @@ class IecpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyIotDevice(self, request):
+        """修改设备信息
+
+        :param request: Request instance for ModifyIotDevice.
+        :type request: :class:`tencentcloud.iecp.v20210914.models.ModifyIotDeviceRequest`
+        :rtype: :class:`tencentcloud.iecp.v20210914.models.ModifyIotDeviceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyIotDevice", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyIotDeviceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyNodeUnitTemplate(self, request):
         """修改边缘单元NodeUnit模板
 
@@ -2532,6 +2840,34 @@ class IecpClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RedeployEdgeUnitApplicationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SetRouteOnOff(self, request):
+        """开关消息路由
+
+        :param request: Request instance for SetRouteOnOff.
+        :type request: :class:`tencentcloud.iecp.v20210914.models.SetRouteOnOffRequest`
+        :rtype: :class:`tencentcloud.iecp.v20210914.models.SetRouteOnOffResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("SetRouteOnOff", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SetRouteOnOffResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

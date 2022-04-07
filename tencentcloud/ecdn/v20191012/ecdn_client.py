@@ -89,7 +89,7 @@ class EcdnClient(AbstractClient):
     def DeleteEcdnDomain(self, request):
         """本接口（DeleteEcdnDomain）用于删除指定加速域名。待删除域名必须处于已停用状态。
 
-        >?  若您的业务已迁移至 CDN 控制台，请参考<a href="https://cloud.tencent.com/document/api/570/42471"> CDN 接口文档</a>，使用  CDN 相关API 进行操作。
+        >?  若您的业务已迁移至 CDN 控制台，请参考<a href="https://cloud.tencent.com/document/api/228/41122"> CDN 接口文档</a>，使用  CDN 相关API 进行操作。
 
         :param request: Request instance for DeleteEcdnDomain.
         :type request: :class:`tencentcloud.ecdn.v20191012.models.DeleteEcdnDomainRequest`

@@ -6174,10 +6174,14 @@ class DescribeTopDataRequest(AbstractModel):
     def __init__(self):
         r"""
         :param StartTime: 查询起始日期：yyyy-MM-dd HH:mm:ss
-当前仅支持按天粒度的数据查询，参数需为某天的起点时刻
+仅支持按天粒度的数据查询，取入参中的天信息作为起始日期
+返回大于等于起始日期当天 00:00:00 点产生的数据，如 StartTime为2018-09-04 10:40:00，返回数据的起始时间为2018-09-04 00:00:00
+仅支持 90 天内数据查询
         :type StartTime: str
-        :param EndTime: 查询起始日期：yyyy-MM-dd HH:mm:ss
-当前仅支持按天粒度的数据查询，参数需为某天的结束时刻
+        :param EndTime: 查询结束日期：yyyy-MM-dd HH:mm:ss
+仅支持按天粒度的数据查询，取入参中的天信息作为结束日期
+返回小于等于结束日期当天 23:59:59 产生的数据，如EndTime为2018-09-05 22:40:00，返回数据的结束时间为2018-09-05 23:59:59
+EndTime 需要大于等于 StartTime
         :type EndTime: str
         :param Metric: 排序对象，支持以下几种形式：
 ip、ua_device、ua_browser、ua_os、referer
@@ -6192,9 +6196,11 @@ request：Metric 为 host 时指代访问请求数
         :type Project: int
         :param Detail: 是否详细显示每个域名的的具体数值
         :type Detail: bool
-        :param Area: 地域，目前可不填，默认是大陆
+        :param Area: 指定服务地域查询，不填充表示查询中国境内 CDN 数据
+mainland：指定查询中国境内 CDN 数据
+overseas：指定查询中国境外 CDN 数据
         :type Area: str
-        :param Product: 产品名，目前仅可使用cdn
+        :param Product: 指定查询的产品数据，目前仅可使用cdn
         :type Product: str
         """
         self.StartTime = None

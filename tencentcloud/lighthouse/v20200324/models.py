@@ -744,6 +744,8 @@ false（默认）：发送正常请求，通过检查后直接创建实例
         :type LoginConfiguration: :class:`tencentcloud.lighthouse.v20200324.models.LoginConfiguration`
         :param Containers: 要创建的容器配置列表。
         :type Containers: list of DockerContainerConfiguration
+        :param AutoVoucher: 是否自动使用代金券。默认不使用。
+        :type AutoVoucher: bool
         """
         self.BundleId = None
         self.BlueprintId = None
@@ -755,6 +757,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
         self.ClientToken = None
         self.LoginConfiguration = None
         self.Containers = None
+        self.AutoVoucher = None
 
 
     def _deserialize(self, params):
@@ -777,6 +780,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
                 obj = DockerContainerConfiguration()
                 obj._deserialize(item)
                 self.Containers.append(obj)
+        self.AutoVoucher = params.get("AutoVoucher")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

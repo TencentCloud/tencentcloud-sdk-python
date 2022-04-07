@@ -59,6 +59,10 @@ class CreateSessionRequest(AbstractModel):
         :type Role: str
         :param GameContext: 游戏相关参数
         :type GameContext: str
+        :param RunMode: 云端运行模式。
+RunWithoutClient：允许无客户端连接的情况下仍保持云端 App 运行
+默认值（空）：要求必须有客户端连接才会保持云端 App 运行。
+        :type RunMode: str
         """
         self.ClientSession = None
         self.UserId = None
@@ -77,6 +81,7 @@ class CreateSessionRequest(AbstractModel):
         self.HostUserId = None
         self.Role = None
         self.GameContext = None
+        self.RunMode = None
 
 
     def _deserialize(self, params):
@@ -97,6 +102,7 @@ class CreateSessionRequest(AbstractModel):
         self.HostUserId = params.get("HostUserId")
         self.Role = params.get("Role")
         self.GameContext = params.get("GameContext")
+        self.RunMode = params.get("RunMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -7535,7 +7535,7 @@ class VatInvoiceVerifyRequest(AbstractModel):
         :type InvoiceCode: str
         :param InvoiceNo: 发票号码（8位）。
         :type InvoiceNo: str
-        :param InvoiceDate: 开票日期（不支持当天发票查询，只支持一年以内），如：2019-12-20。
+        :param InvoiceDate: 开票日期（不支持当天发票查询，支持五年以内开具的发票），如：2019-12-20。
         :type InvoiceDate: str
         :param Additional: 根据票种传递对应值，如果报参数错误，请仔细检查每个票种对应的值
 

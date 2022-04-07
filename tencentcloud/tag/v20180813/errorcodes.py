@@ -23,17 +23,26 @@ FAILEDOPERATION = 'FailedOperation'
 # 单次请求的资源appId必须相同。
 FAILEDOPERATION_RESOURCEAPPIDNOTSAME = 'FailedOperation.ResourceAppIdNotSame'
 
+# 资源标签正在处理中。
+FAILEDOPERATION_RESOURCETAGPROCESSING = 'FailedOperation.ResourceTagProcessing'
+
 # 已关联资源的标签无法删除。
 FAILEDOPERATION_TAGATTACHEDRESOURCE = 'FailedOperation.TagAttachedResource'
 
 # 参数错误。
 INVALIDPARAMETER = 'InvalidParameter'
 
+# PaginationToken参数非法。
+INVALIDPARAMETER_PAGINATIONTOKENINVALID = 'InvalidParameter.PaginationTokenInvalid'
+
 # 系统预留标签键 qcloud、tencent和project 禁止创建。
 INVALIDPARAMETER_RESERVEDTAGKEY = 'InvalidParameter.ReservedTagKey'
 
 # Tag参数错误。
 INVALIDPARAMETER_TAG = 'InvalidParameter.Tag'
+
+# 当前业务不支持标签操作。
+INVALIDPARAMETER_UNSUPPORTEDSERVICE = 'InvalidParameter.UnsupportedService'
 
 # DeleteTags中不能包含ReplaceTags或AddTags中元素。
 INVALIDPARAMETERVALUE_DELETETAGSPARAMERROR = 'InvalidParameterValue.DeleteTagsParamError'
@@ -68,6 +77,9 @@ INVALIDPARAMETERVALUE_TAGFILTERSLENGTHEXCEEDED = 'InvalidParameterValue.TagFilte
 # 标签键包含非法字符。
 INVALIDPARAMETERVALUE_TAGKEYCHARACTERILLEGAL = 'InvalidParameterValue.TagKeyCharacterIllegal'
 
+# TagList中存在重复的TagKey。
+INVALIDPARAMETERVALUE_TAGKEYDUPLICATE = 'InvalidParameterValue.TagKeyDuplicate'
+
 # 标签键不能为空值。
 INVALIDPARAMETERVALUE_TAGKEYEMPTY = 'InvalidParameterValue.TagKeyEmpty'
 
@@ -86,6 +98,9 @@ INVALIDPARAMETERVALUE_TAGVALUELENGTHEXCEEDED = 'InvalidParameterValue.TagValueLe
 # Uin参数不合法。
 INVALIDPARAMETERVALUE_UININVALID = 'InvalidParameterValue.UinInvalid'
 
+# 超过配额限制。
+LIMITEXCEEDED = 'LimitExceeded'
+
 # 资源关联的标签数超过限制。
 LIMITEXCEEDED_RESOURCEATTACHEDTAGS = 'LimitExceeded.ResourceAttachedTags'
 
@@ -95,8 +110,14 @@ LIMITEXCEEDED_RESOURCENUMPERREQUEST = 'LimitExceeded.ResourceNumPerRequest'
 # 用户创建标签键达到上限数 1000。
 LIMITEXCEEDED_TAGKEY = 'LimitExceeded.TagKey'
 
+# 单次请求的标签数超过上限。
+LIMITEXCEEDED_TAGNUMPERREQUEST = 'LimitExceeded.TagNumPerRequest'
+
 # 单个标签键对应标签值达到上限数 1000。
 LIMITEXCEEDED_TAGVALUE = 'LimitExceeded.TagValue'
+
+# 缺少参数错误。
+MISSINGPARAMETER = 'MissingParameter'
 
 # 操作被拒绝。
 OPERATIONDENIED = 'OperationDenied'

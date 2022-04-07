@@ -1577,6 +1577,10 @@ class DescribeBlockByIpTimesListRequest(AbstractModel):
         :type Direction: str
         :param Source: 来源
         :type Source: str
+        :param EdgeId: vpc间防火墙开关边id
+        :type EdgeId: str
+        :param LogSource: 日志来源 move：vpc间防火墙
+        :type LogSource: str
         """
         self.StartTime = None
         self.EndTime = None
@@ -1584,6 +1588,8 @@ class DescribeBlockByIpTimesListRequest(AbstractModel):
         self.Zone = None
         self.Direction = None
         self.Source = None
+        self.EdgeId = None
+        self.LogSource = None
 
 
     def _deserialize(self, params):
@@ -1593,6 +1599,8 @@ class DescribeBlockByIpTimesListRequest(AbstractModel):
         self.Zone = params.get("Zone")
         self.Direction = params.get("Direction")
         self.Source = params.get("Source")
+        self.EdgeId = params.get("EdgeId")
+        self.LogSource = params.get("LogSource")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6015,11 +6023,15 @@ class UnHandleEvent(AbstractModel):
         :type BaseLineInSwitch: int
         :param BaseLineOutSwitch: 1 打开 0 关闭
         :type BaseLineOutSwitch: int
+        :param VpcFwCount: vpc间防火墙实例数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcFwCount: int
         """
         self.EventTableListStruct = None
         self.BaseLineUser = None
         self.BaseLineInSwitch = None
         self.BaseLineOutSwitch = None
+        self.VpcFwCount = None
 
 
     def _deserialize(self, params):
@@ -6032,6 +6044,7 @@ class UnHandleEvent(AbstractModel):
         self.BaseLineUser = params.get("BaseLineUser")
         self.BaseLineInSwitch = params.get("BaseLineInSwitch")
         self.BaseLineOutSwitch = params.get("BaseLineOutSwitch")
+        self.VpcFwCount = params.get("VpcFwCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

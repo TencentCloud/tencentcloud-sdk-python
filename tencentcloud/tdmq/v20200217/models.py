@@ -945,6 +945,9 @@ class CmqQueue(AbstractModel):
         :param MaxMsgBacklogSize: 最大消息堆积大小（字节）
 注意：此字段可能返回 null，表示取不到有效值。
         :type MaxMsgBacklogSize: int
+        :param RetentionSizeInMB: 队列可回溯存储空间，取值范围1024MB - 10240MB，0表示不开启
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RetentionSizeInMB: int
         """
         self.QueueId = None
         self.QueueName = None
@@ -976,6 +979,7 @@ class CmqQueue(AbstractModel):
         self.Status = None
         self.MaxUnackedMsgNum = None
         self.MaxMsgBacklogSize = None
+        self.RetentionSizeInMB = None
 
 
     def _deserialize(self, params):
@@ -1023,6 +1027,7 @@ class CmqQueue(AbstractModel):
         self.Status = params.get("Status")
         self.MaxUnackedMsgNum = params.get("MaxUnackedMsgNum")
         self.MaxMsgBacklogSize = params.get("MaxMsgBacklogSize")
+        self.RetentionSizeInMB = params.get("RetentionSizeInMB")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1167,6 +1172,9 @@ FilterType = 2表示用户使用 BindingKey 过滤。
         :param NamespaceName: 命名空间名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type NamespaceName: str
+        :param Status: 集群状态，0:创建中，1:正常，2:销毁中，3:已删除，4: 隔离中，5:创建失败，6: 删除失败
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
         """
         self.TopicId = None
         self.TopicName = None
@@ -1182,6 +1190,7 @@ FilterType = 2表示用户使用 BindingKey 过滤。
         self.Trace = None
         self.TenantId = None
         self.NamespaceName = None
+        self.Status = None
 
 
     def _deserialize(self, params):
@@ -1204,6 +1213,7 @@ FilterType = 2表示用户使用 BindingKey 过滤。
         self.Trace = params.get("Trace")
         self.TenantId = params.get("TenantId")
         self.NamespaceName = params.get("NamespaceName")
+        self.Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7570,6 +7580,9 @@ class RocketMQClusterInfo(AbstractModel):
         :type PublicEndPoint: str
         :param VpcEndPoint: VPC接入地址
         :type VpcEndPoint: str
+        :param SupportNamespaceEndpoint: 是否支持命名空间接入点
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SupportNamespaceEndpoint: bool
         """
         self.ClusterId = None
         self.ClusterName = None
@@ -7578,6 +7591,7 @@ class RocketMQClusterInfo(AbstractModel):
         self.Remark = None
         self.PublicEndPoint = None
         self.VpcEndPoint = None
+        self.SupportNamespaceEndpoint = None
 
 
     def _deserialize(self, params):
@@ -7588,6 +7602,7 @@ class RocketMQClusterInfo(AbstractModel):
         self.Remark = params.get("Remark")
         self.PublicEndPoint = params.get("PublicEndPoint")
         self.VpcEndPoint = params.get("VpcEndPoint")
+        self.SupportNamespaceEndpoint = params.get("SupportNamespaceEndpoint")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7724,11 +7739,19 @@ class RocketMQNamespace(AbstractModel):
         :param Remark: 说明
 注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
+        :param PublicEndpoint: 公网接入点地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PublicEndpoint: str
+        :param VpcEndpoint: VPC接入点地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcEndpoint: str
         """
         self.NamespaceId = None
         self.Ttl = None
         self.RetentionTime = None
         self.Remark = None
+        self.PublicEndpoint = None
+        self.VpcEndpoint = None
 
 
     def _deserialize(self, params):
@@ -7736,6 +7759,8 @@ class RocketMQNamespace(AbstractModel):
         self.Ttl = params.get("Ttl")
         self.RetentionTime = params.get("RetentionTime")
         self.Remark = params.get("Remark")
+        self.PublicEndpoint = params.get("PublicEndpoint")
+        self.VpcEndpoint = params.get("VpcEndpoint")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

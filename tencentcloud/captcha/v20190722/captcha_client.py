@@ -195,7 +195,7 @@ class CaptchaClient(AbstractClient):
 
 
     def DescribeCaptchaMiniResult(self, request):
-        """核查验证码小程序插件票据结果
+        """核查验证码票据结果(小程序插件)
 
         :param request: Request instance for DescribeCaptchaMiniResult.
         :type request: :class:`tencentcloud.captcha.v20190722.models.DescribeCaptchaMiniResultRequest`
@@ -279,7 +279,7 @@ class CaptchaClient(AbstractClient):
 
 
     def DescribeCaptchaResult(self, request):
-        """核查验证码票据结果
+        """核查验证码票据结果(Web|APP)
 
         :param request: Request instance for DescribeCaptchaResult.
         :type request: :class:`tencentcloud.captcha.v20190722.models.DescribeCaptchaResultRequest`

@@ -4017,9 +4017,9 @@ class DescribeCcGeoIPBlockConfigListRequest(AbstractModel):
         :type Offset: int
         :param Limit: 一页条数
         :type Limit: int
-        :param InstanceId: 指定特定实例Id
+        :param InstanceId: 指定特定实例ID
         :type InstanceId: str
-        :param Ip: IP地址，普通高防ip要传该字段
+        :param Ip: IP地址，普通高防IP要传该字段
         :type Ip: str
         :param Domain: 域名，普通高防IP要传该字段
         :type Domain: str

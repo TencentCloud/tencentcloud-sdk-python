@@ -110,6 +110,34 @@ class TagClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateTags(self, request):
+        """本接口用于创建多对标签键和标签值
+
+        :param request: Request instance for CreateTags.
+        :type request: :class:`tencentcloud.tag.v20180813.models.CreateTagsRequest`
+        :rtype: :class:`tencentcloud.tag.v20180813.models.CreateTagsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateTags", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateTagsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteResourceTag(self, request):
         """本接口用于解除标签和资源的关联关系
 
@@ -152,6 +180,34 @@ class TagClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteTagResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteTags(self, request):
+        """本接口用于删除一对标签键和标签值
+
+        :param request: Request instance for DeleteTags.
+        :type request: :class:`tencentcloud.tag.v20180813.models.DeleteTagsRequest`
+        :rtype: :class:`tencentcloud.tag.v20180813.models.DeleteTagsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteTags", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteTagsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -502,6 +558,118 @@ class TagClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def GetResources(self, request):
+        """查询绑定了标签的资源列表。
+
+        :param request: Request instance for GetResources.
+        :type request: :class:`tencentcloud.tag.v20180813.models.GetResourcesRequest`
+        :rtype: :class:`tencentcloud.tag.v20180813.models.GetResourcesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetResources", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetResourcesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def GetTagKeys(self, request):
+        """查询标签键列表。
+
+        :param request: Request instance for GetTagKeys.
+        :type request: :class:`tencentcloud.tag.v20180813.models.GetTagKeysRequest`
+        :rtype: :class:`tencentcloud.tag.v20180813.models.GetTagKeysResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetTagKeys", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetTagKeysResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def GetTagValues(self, request):
+        """用于查询已建立的标签列表中的标签值。
+
+        :param request: Request instance for GetTagValues.
+        :type request: :class:`tencentcloud.tag.v20180813.models.GetTagValuesRequest`
+        :rtype: :class:`tencentcloud.tag.v20180813.models.GetTagValuesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetTagValues", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetTagValuesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def GetTags(self, request):
+        """用于获取已建立的标签列表。
+
+        :param request: Request instance for GetTags.
+        :type request: :class:`tencentcloud.tag.v20180813.models.GetTagsRequest`
+        :rtype: :class:`tencentcloud.tag.v20180813.models.GetTagsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("GetTags", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetTagsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyResourceTags(self, request):
         """本接口用于修改资源关联的所有标签
 
@@ -544,6 +712,62 @@ class TagClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyResourcesTagValueResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def TagResources(self, request):
+        """为指定的多个云产品的多个云资源统一创建并绑定标签。
+
+        :param request: Request instance for TagResources.
+        :type request: :class:`tencentcloud.tag.v20180813.models.TagResourcesRequest`
+        :rtype: :class:`tencentcloud.tag.v20180813.models.TagResourcesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("TagResources", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.TagResourcesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UnTagResources(self, request):
+        """指定的多个云产品的多个云资源统一解绑标签。
+
+        :param request: Request instance for UnTagResources.
+        :type request: :class:`tencentcloud.tag.v20180813.models.UnTagResourcesRequest`
+        :rtype: :class:`tencentcloud.tag.v20180813.models.UnTagResourcesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UnTagResources", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UnTagResourcesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

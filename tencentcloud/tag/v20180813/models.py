@@ -173,6 +173,53 @@ class CreateTagResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateTagsRequest(AbstractModel):
+    """CreateTags请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Tags: 标签列表。
+N取值范围：0~9
+        :type Tags: list of Tag
+        """
+        self.Tags = None
+
+
+    def _deserialize(self, params):
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateTagsResponse(AbstractModel):
+    """CreateTags返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteResourceTagRequest(AbstractModel):
     """DeleteResourceTag请求参数结构体
 
@@ -248,6 +295,53 @@ class DeleteTagRequest(AbstractModel):
 
 class DeleteTagResponse(AbstractModel):
     """DeleteTag返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteTagsRequest(AbstractModel):
+    """DeleteTags请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Tags: 标签列表。
+N取值范围：0~9
+        :type Tags: list of Tag
+        """
+        self.Tags = None
+
+
+    def _deserialize(self, params):
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteTagsResponse(AbstractModel):
+    """DeleteTags返回参数结构体
 
     """
 
@@ -1241,6 +1335,305 @@ class DetachResourcesTagResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class FailedResource(AbstractModel):
+    """失败资源信息。
+    绑定或解绑资源标签时失败返回
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Resource: 失败的资源六段式
+        :type Resource: str
+        :param Code: 错误码
+        :type Code: str
+        :param Message: 错误信息
+        :type Message: str
+        """
+        self.Resource = None
+        self.Code = None
+        self.Message = None
+
+
+    def _deserialize(self, params):
+        self.Resource = params.get("Resource")
+        self.Code = params.get("Code")
+        self.Message = params.get("Message")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetResourcesRequest(AbstractModel):
+    """GetResources请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ResourceList: 资源六段式列表。腾讯云使用资源六段式描述一个资源。
+例如：ResourceList.1 = qcs::${ServiceType}:${Region}:${Account}:${ResourcePreifx}/${ResourceId}。
+如果传入了此参数会返回所有匹配的资源列表，指定的MaxResults会失效。
+N取值范围：0~9
+        :type ResourceList: list of str
+        :param TagFilters: 标签键和标签值。
+指定多个标签，会查询同时绑定了该多个标签的资源。
+N取值范围：0~5。
+每个TagFilters中的TagValue最多支持10个
+        :type TagFilters: list of TagFilter
+        :param PaginationToken: 从上一页的响应中获取的下一页的Token值。
+如果是第一次请求，设置为空。
+        :type PaginationToken: str
+        :param MaxResults: 每一页返回的数据最大条数，最大200。
+缺省值：50。
+        :type MaxResults: int
+        """
+        self.ResourceList = None
+        self.TagFilters = None
+        self.PaginationToken = None
+        self.MaxResults = None
+
+
+    def _deserialize(self, params):
+        self.ResourceList = params.get("ResourceList")
+        if params.get("TagFilters") is not None:
+            self.TagFilters = []
+            for item in params.get("TagFilters"):
+                obj = TagFilter()
+                obj._deserialize(item)
+                self.TagFilters.append(obj)
+        self.PaginationToken = params.get("PaginationToken")
+        self.MaxResults = params.get("MaxResults")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetResourcesResponse(AbstractModel):
+    """GetResources返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PaginationToken: 获取的下一页的Token值
+        :type PaginationToken: str
+        :param ResourceTagMappingList: 资源及关联的标签(键和值)列表
+        :type ResourceTagMappingList: list of ResourceTagMapping
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.PaginationToken = None
+        self.ResourceTagMappingList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.PaginationToken = params.get("PaginationToken")
+        if params.get("ResourceTagMappingList") is not None:
+            self.ResourceTagMappingList = []
+            for item in params.get("ResourceTagMappingList"):
+                obj = ResourceTagMapping()
+                obj._deserialize(item)
+                self.ResourceTagMappingList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class GetTagKeysRequest(AbstractModel):
+    """GetTagKeys请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PaginationToken: 从上一页的响应中获取的下一页的Token值。
+如果是第一次请求，设置为空。
+        :type PaginationToken: str
+        :param MaxResults: 每一页返回的数据最大条数，最大1000。
+缺省值：50。
+        :type MaxResults: int
+        """
+        self.PaginationToken = None
+        self.MaxResults = None
+
+
+    def _deserialize(self, params):
+        self.PaginationToken = params.get("PaginationToken")
+        self.MaxResults = params.get("MaxResults")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetTagKeysResponse(AbstractModel):
+    """GetTagKeys返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PaginationToken: 获取的下一页的Token值
+        :type PaginationToken: str
+        :param TagKeys: 标签键信息。
+        :type TagKeys: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.PaginationToken = None
+        self.TagKeys = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.PaginationToken = params.get("PaginationToken")
+        self.TagKeys = params.get("TagKeys")
+        self.RequestId = params.get("RequestId")
+
+
+class GetTagValuesRequest(AbstractModel):
+    """GetTagValues请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TagKeys: 标签键。
+返回所有标签键列表对应的标签值。
+最大长度：20
+        :type TagKeys: list of str
+        :param PaginationToken: 从上一页的响应中获取的下一页的Token值。
+如果是第一次请求，设置为空。
+        :type PaginationToken: str
+        :param MaxResults: 每一页返回的数据最大条数，最大1000。
+缺省值：50。
+        :type MaxResults: int
+        """
+        self.TagKeys = None
+        self.PaginationToken = None
+        self.MaxResults = None
+
+
+    def _deserialize(self, params):
+        self.TagKeys = params.get("TagKeys")
+        self.PaginationToken = params.get("PaginationToken")
+        self.MaxResults = params.get("MaxResults")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetTagValuesResponse(AbstractModel):
+    """GetTagValues返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PaginationToken: 获取的下一页的Token值
+        :type PaginationToken: str
+        :param Tags: 标签列表。
+        :type Tags: list of Tag
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.PaginationToken = None
+        self.Tags = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.PaginationToken = params.get("PaginationToken")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class GetTagsRequest(AbstractModel):
+    """GetTags请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PaginationToken: 从上一页的响应中获取的下一页的Token值。
+如果是第一次请求，设置为空。
+        :type PaginationToken: str
+        :param MaxResults: 每一页返回的数据最大条数，最大1000。
+缺省值：50。
+        :type MaxResults: int
+        :param TagKeys: 标签键。
+返回所有标签键列表对应的标签。
+最大长度：20
+        :type TagKeys: list of str
+        """
+        self.PaginationToken = None
+        self.MaxResults = None
+        self.TagKeys = None
+
+
+    def _deserialize(self, params):
+        self.PaginationToken = params.get("PaginationToken")
+        self.MaxResults = params.get("MaxResults")
+        self.TagKeys = params.get("TagKeys")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetTagsResponse(AbstractModel):
+    """GetTags返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PaginationToken: 获取的下一页的Token值
+        :type PaginationToken: str
+        :param Tags: 标签列表。
+        :type Tags: list of Tag
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.PaginationToken = None
+        self.Tags = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.PaginationToken = params.get("PaginationToken")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyResourceTagsRequest(AbstractModel):
     """ModifyResourceTags请求参数结构体
 
@@ -1446,6 +1839,40 @@ class ResourceTag(AbstractModel):
         
 
 
+class ResourceTagMapping(AbstractModel):
+    """资源及关联的标签(键和值)。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Resource: 资源六段式。腾讯云使用资源六段式描述一个资源。
+例如：ResourceList.1 = qcs::${ServiceType}:${Region}:${Account}:${ResourcePreifx}/${ResourceId}。
+        :type Resource: str
+        :param Tags: 资源关联的标签列表
+        :type Tags: list of Tag
+        """
+        self.Resource = None
+        self.Tags = None
+
+
+    def _deserialize(self, params):
+        self.Resource = params.get("Resource")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Tag(AbstractModel):
     """表示一个标签键值对
 
@@ -1571,6 +1998,73 @@ class TagResource(AbstractModel):
         
 
 
+class TagResourcesRequest(AbstractModel):
+    """TagResources请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ResourceList: 资源六段式列表。腾讯云使用资源六段式描述一个资源。可参考[访问管理](https://cloud.tencent.com/document/product/598/67350)-概览-接口列表-资源六段式信息
+例如：ResourceList.1 = qcs::${ServiceType}:${Region}:${Account}:${ResourcePreifx}/${ResourceId}。
+N取值范围：0~9
+        :type ResourceList: list of str
+        :param Tags: 标签键和标签值。
+如果指定多个标签，则会为指定资源同时创建并绑定该多个标签。
+同一个资源上的同一个标签键只能对应一个标签值。如果您尝试添加已有标签键，则对应的标签值会更新为新值。
+如果标签不存在会为您自动创建标签。
+N取值范围：0~9
+        :type Tags: list of Tag
+        """
+        self.ResourceList = None
+        self.Tags = None
+
+
+    def _deserialize(self, params):
+        self.ResourceList = params.get("ResourceList")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TagResourcesResponse(AbstractModel):
+    """TagResources返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FailedResources: 失败资源信息。
+创建并绑定标签成功时，返回的FailedResources为空。
+创建并绑定标签失败或部分失败时，返回的FailedResources会显示失败资源的详细信息。
+        :type FailedResources: list of FailedResource
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FailedResources = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("FailedResources") is not None:
+            self.FailedResources = []
+            for item in params.get("FailedResources"):
+                obj = FailedResource()
+                obj._deserialize(item)
+                self.FailedResources.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class TagWithDelete(AbstractModel):
     """表示一个标签键值对以及是否允许删除
 
@@ -1601,6 +2095,65 @@ class TagWithDelete(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class UnTagResourcesRequest(AbstractModel):
+    """UnTagResources请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ResourceList: 资源六段式列表。腾讯云使用资源六段式描述一个资源。可参考[访问管理](https://cloud.tencent.com/document/product/598/67350)-概览-接口列表-资源六段式信息
+例如：ResourceList.1 = qcs::${ServiceType}:${Region}:${Account}:${ResourcePreifx}/${ResourceId}。
+N取值范围：0~9
+        :type ResourceList: list of str
+        :param TagKeys: 标签键。
+取值范围：0~9
+        :type TagKeys: list of str
+        """
+        self.ResourceList = None
+        self.TagKeys = None
+
+
+    def _deserialize(self, params):
+        self.ResourceList = params.get("ResourceList")
+        self.TagKeys = params.get("TagKeys")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UnTagResourcesResponse(AbstractModel):
+    """UnTagResources返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FailedResources: 失败资源信息。
+解绑标签成功时，返回的FailedResources为空。
+解绑标签失败或部分失败时，返回的FailedResources会显示失败资源的详细信息。
+        :type FailedResources: list of FailedResource
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FailedResources = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("FailedResources") is not None:
+            self.FailedResources = []
+            for item in params.get("FailedResources"):
+                obj = FailedResource()
+                obj._deserialize(item)
+                self.FailedResources.append(obj)
+        self.RequestId = params.get("RequestId")
 
 
 class UpdateResourceTagValueRequest(AbstractModel):

@@ -322,6 +322,75 @@ class ApplyMarketComponentResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class BuildMessageRouteRequest(AbstractModel):
+    """BuildMessageRoute请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RouteName: 路由名字
+        :type RouteName: str
+        :param SourceProductID: 源产品id
+        :type SourceProductID: str
+        :param SourceDeviceNameList: 源设备名列表
+        :type SourceDeviceNameList: list of str
+        :param TopicFilter: 第一个字符为 "0"或"1"，"1"表示自定义topic
+        :type TopicFilter: str
+        :param Mode: http或mqtt-broker
+        :type Mode: str
+        :param SourceUnitIDList: 源单元id列表
+        :type SourceUnitIDList: list of str
+        :param Descript: 描述
+        :type Descript: str
+        :param TargetOptions: 无
+        :type TargetOptions: str
+        """
+        self.RouteName = None
+        self.SourceProductID = None
+        self.SourceDeviceNameList = None
+        self.TopicFilter = None
+        self.Mode = None
+        self.SourceUnitIDList = None
+        self.Descript = None
+        self.TargetOptions = None
+
+
+    def _deserialize(self, params):
+        self.RouteName = params.get("RouteName")
+        self.SourceProductID = params.get("SourceProductID")
+        self.SourceDeviceNameList = params.get("SourceDeviceNameList")
+        self.TopicFilter = params.get("TopicFilter")
+        self.Mode = params.get("Mode")
+        self.SourceUnitIDList = params.get("SourceUnitIDList")
+        self.Descript = params.get("Descript")
+        self.TargetOptions = params.get("TargetOptions")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BuildMessageRouteResponse(AbstractModel):
+    """BuildMessageRoute返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ConfigMapBasicInfo(AbstractModel):
     """ConfigMap基本信息
 
@@ -1145,6 +1214,157 @@ class CreateEdgeUnitCloudResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateEdgeUnitDevicesRequest(AbstractModel):
+    """CreateEdgeUnitDevices请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EdgeUnitId: 无
+        :type EdgeUnitId: int
+        :param ProductId: 无
+        :type ProductId: str
+        :param DeviceNames: 无
+        :type DeviceNames: list of str
+        """
+        self.EdgeUnitId = None
+        self.ProductId = None
+        self.DeviceNames = None
+
+
+    def _deserialize(self, params):
+        self.EdgeUnitId = params.get("EdgeUnitId")
+        self.ProductId = params.get("ProductId")
+        self.DeviceNames = params.get("DeviceNames")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateEdgeUnitDevicesResponse(AbstractModel):
+    """CreateEdgeUnitDevices返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreateIotDeviceRequest(AbstractModel):
+    """CreateIotDevice请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DeviceName: 设备名称
+        :type DeviceName: str
+        :param ProductId: 设备所属的产品id
+        :type ProductId: str
+        :param Description: 描述
+        :type Description: str
+        :param UnitID: 无
+        :type UnitID: int
+        """
+        self.DeviceName = None
+        self.ProductId = None
+        self.Description = None
+        self.UnitID = None
+
+
+    def _deserialize(self, params):
+        self.DeviceName = params.get("DeviceName")
+        self.ProductId = params.get("ProductId")
+        self.Description = params.get("Description")
+        self.UnitID = params.get("UnitID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateIotDeviceResponse(AbstractModel):
+    """CreateIotDevice返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreateMessageRouteRequest(AbstractModel):
+    """CreateMessageRoute请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RouteName: 路由名称
+        :type RouteName: str
+        :param Descript: 路由备注
+        :type Descript: str
+        """
+        self.RouteName = None
+        self.Descript = None
+
+
+    def _deserialize(self, params):
+        self.RouteName = params.get("RouteName")
+        self.Descript = params.get("Descript")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateMessageRouteResponse(AbstractModel):
+    """CreateMessageRoute返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RouteID: 路由id
+        :type RouteID: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RouteID = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RouteID = params.get("RouteID")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateNamespaceRequest(AbstractModel):
     """CreateNamespace请求参数结构体
 
@@ -1778,6 +1998,84 @@ class DeleteEdgeUnitDeployGridItemResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteEdgeUnitDevicesDevice(AbstractModel):
+    """从单元批量解绑设备
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProductId: 无
+        :type ProductId: str
+        :param DeviceName: 无
+        :type DeviceName: str
+        """
+        self.ProductId = None
+        self.DeviceName = None
+
+
+    def _deserialize(self, params):
+        self.ProductId = params.get("ProductId")
+        self.DeviceName = params.get("DeviceName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteEdgeUnitDevicesRequest(AbstractModel):
+    """DeleteEdgeUnitDevices请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EdgeUnitId: 无
+        :type EdgeUnitId: int
+        :param Devices: 无
+        :type Devices: list of DeleteEdgeUnitDevicesDevice
+        """
+        self.EdgeUnitId = None
+        self.Devices = None
+
+
+    def _deserialize(self, params):
+        self.EdgeUnitId = params.get("EdgeUnitId")
+        if params.get("Devices") is not None:
+            self.Devices = []
+            for item in params.get("Devices"):
+                obj = DeleteEdgeUnitDevicesDevice()
+                obj._deserialize(item)
+                self.Devices.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteEdgeUnitDevicesResponse(AbstractModel):
+    """DeleteEdgeUnitDevices返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteEdgeUnitPodRequest(AbstractModel):
     """DeleteEdgeUnitPod请求参数结构体
 
@@ -1853,6 +2151,88 @@ class DeleteIotDeviceBatchRequest(AbstractModel):
 
 class DeleteIotDeviceBatchResponse(AbstractModel):
     """DeleteIotDeviceBatch返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteIotDeviceRequest(AbstractModel):
+    """DeleteIotDevice请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DeviceId: 设备id
+        :type DeviceId: int
+        """
+        self.DeviceId = None
+
+
+    def _deserialize(self, params):
+        self.DeviceId = params.get("DeviceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteIotDeviceResponse(AbstractModel):
+    """DeleteIotDevice返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteMessageRouteRequest(AbstractModel):
+    """DeleteMessageRoute请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RouteID: 无
+        :type RouteID: int
+        """
+        self.RouteID = None
+
+
+    def _deserialize(self, params):
+        self.RouteID = params.get("RouteID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteMessageRouteResponse(AbstractModel):
+    """DeleteMessageRoute返回参数结构体
 
     """
 
@@ -4601,6 +4981,275 @@ class DescribeEdgeUnitsCloudResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeIotDeviceRequest(AbstractModel):
+    """DescribeIotDevice请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DeviceId: 设备id，传0值表示此参数无效
+        :type DeviceId: int
+        :param ProductID: 无
+        :type ProductID: str
+        :param DeviceName: 无
+        :type DeviceName: str
+        """
+        self.DeviceId = None
+        self.ProductID = None
+        self.DeviceName = None
+
+
+    def _deserialize(self, params):
+        self.DeviceId = params.get("DeviceId")
+        self.ProductID = params.get("ProductID")
+        self.DeviceName = params.get("DeviceName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeIotDeviceResponse(AbstractModel):
+    """DescribeIotDevice返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: 设备id
+        :type Id: int
+        :param Name: 设备名称
+        :type Name: str
+        :param Version: 版本号
+        :type Version: str
+        :param Cert: ssl证书
+        :type Cert: str
+        :param PrivateKey: ssl私钥
+        :type PrivateKey: str
+        :param Psk: psk认证密钥
+        :type Psk: str
+        :param Disabled: 设备是否打开
+        :type Disabled: bool
+        :param LogSetting: 设备日志
+        :type LogSetting: int
+        :param LogLevel: 设备日志级别
+        :type LogLevel: int
+        :param UserName: mqtt参数
+        :type UserName: str
+        :param Password: mqtt参数
+        :type Password: str
+        :param ClientID: mqtt参数
+        :type ClientID: str
+        :param PskHex: 16进制的psk格式
+        :type PskHex: str
+        :param Description: 描述
+        :type Description: str
+        :param Status: 设备在线状态
+        :type Status: int
+        :param Region: 无
+        :type Region: str
+        :param UnitID: 无
+        :type UnitID: int
+        :param UnitName: 无
+        :type UnitName: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Id = None
+        self.Name = None
+        self.Version = None
+        self.Cert = None
+        self.PrivateKey = None
+        self.Psk = None
+        self.Disabled = None
+        self.LogSetting = None
+        self.LogLevel = None
+        self.UserName = None
+        self.Password = None
+        self.ClientID = None
+        self.PskHex = None
+        self.Description = None
+        self.Status = None
+        self.Region = None
+        self.UnitID = None
+        self.UnitName = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.Name = params.get("Name")
+        self.Version = params.get("Version")
+        self.Cert = params.get("Cert")
+        self.PrivateKey = params.get("PrivateKey")
+        self.Psk = params.get("Psk")
+        self.Disabled = params.get("Disabled")
+        self.LogSetting = params.get("LogSetting")
+        self.LogLevel = params.get("LogLevel")
+        self.UserName = params.get("UserName")
+        self.Password = params.get("Password")
+        self.ClientID = params.get("ClientID")
+        self.PskHex = params.get("PskHex")
+        self.Description = params.get("Description")
+        self.Status = params.get("Status")
+        self.Region = params.get("Region")
+        self.UnitID = params.get("UnitID")
+        self.UnitName = params.get("UnitName")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeIotDevicesRequest(AbstractModel):
+    """DescribeIotDevices请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Offset: 页偏移
+        :type Offset: int
+        :param Limit: 每页数量
+        :type Limit: int
+        :param ProductId: 产品id
+        :type ProductId: str
+        :param NamePattern: 设备名称模糊查找
+        :type NamePattern: str
+        :param Versions: 版本列表
+        :type Versions: list of str
+        :param Order: ASC 或 DESC
+        :type Order: str
+        """
+        self.Offset = None
+        self.Limit = None
+        self.ProductId = None
+        self.NamePattern = None
+        self.Versions = None
+        self.Order = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.ProductId = params.get("ProductId")
+        self.NamePattern = params.get("NamePattern")
+        self.Versions = params.get("Versions")
+        self.Order = params.get("Order")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeIotDevicesResponse(AbstractModel):
+    """DescribeIotDevices返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 符合查找条件的总数量
+        :type TotalCount: int
+        :param DeviceSet: 设备列表
+        :type DeviceSet: list of IotDevicesInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.DeviceSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("DeviceSet") is not None:
+            self.DeviceSet = []
+            for item in params.get("DeviceSet"):
+                obj = IotDevicesInfo()
+                obj._deserialize(item)
+                self.DeviceSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeMessageRouteListRequest(AbstractModel):
+    """DescribeMessageRouteList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Limit: 无
+        :type Limit: int
+        :param Offset: 无
+        :type Offset: int
+        :param Filter: 无
+        :type Filter: str
+        :param StartTime: 无
+        :type StartTime: str
+        :param EndTime: 无
+        :type EndTime: str
+        :param Order: 无
+        :type Order: str
+        """
+        self.Limit = None
+        self.Offset = None
+        self.Filter = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Order = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.Filter = params.get("Filter")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Order = params.get("Order")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeMessageRouteListResponse(AbstractModel):
+    """DescribeMessageRouteList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RouteList: 无
+        :type RouteList: list of RouteInfo
+        :param TotalCount: 无
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RouteList = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("RouteList") is not None:
+            self.RouteList = []
+            for item in params.get("RouteList"):
+                obj = RouteInfo()
+                obj._deserialize(item)
+                self.RouteList.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeMonitorMetricsRequest(AbstractModel):
     """DescribeMonitorMetrics请求参数结构体
 
@@ -6536,6 +7185,74 @@ class HttpProbe(AbstractModel):
         
 
 
+class IotDevicesInfo(AbstractModel):
+    """子设备列表信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: 设备id
+        :type Id: int
+        :param Name: 设备名称
+        :type Name: str
+        :param Status: 设备状态
+        :type Status: int
+        :param Disabled: 设备打开状态
+        :type Disabled: bool
+        :param Description: 描述
+        :type Description: str
+        :param CreateTime: 设备创建时间
+        :type CreateTime: str
+        :param LastOnlineTime: 最后在线时间
+        :type LastOnlineTime: str
+        :param IsBound: 设备是否绑定到节点
+        :type IsBound: bool
+        :param Version: 设备版本
+        :type Version: str
+        :param Region: 无
+        :type Region: str
+        :param UnitID: 无
+        :type UnitID: int
+        :param UnitName: 无
+        :type UnitName: str
+        """
+        self.Id = None
+        self.Name = None
+        self.Status = None
+        self.Disabled = None
+        self.Description = None
+        self.CreateTime = None
+        self.LastOnlineTime = None
+        self.IsBound = None
+        self.Version = None
+        self.Region = None
+        self.UnitID = None
+        self.UnitName = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.Name = params.get("Name")
+        self.Status = params.get("Status")
+        self.Disabled = params.get("Disabled")
+        self.Description = params.get("Description")
+        self.CreateTime = params.get("CreateTime")
+        self.LastOnlineTime = params.get("LastOnlineTime")
+        self.IsBound = params.get("IsBound")
+        self.Version = params.get("Version")
+        self.Region = params.get("Region")
+        self.UnitID = params.get("UnitID")
+        self.UnitName = params.get("UnitName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Job(AbstractModel):
     """Job配置
 
@@ -7382,6 +8099,63 @@ class ModifyEdgeUnitResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyIotDeviceRequest(AbstractModel):
+    """ModifyIotDevice请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DeviceId: 设备id
+        :type DeviceId: int
+        :param Description: 描述
+        :type Description: str
+        :param Disabled: 设备是否开启
+        :type Disabled: bool
+        :param LogSetting: 日志设置
+        :type LogSetting: int
+        :param LogLevel: 日志级别
+        :type LogLevel: int
+        """
+        self.DeviceId = None
+        self.Description = None
+        self.Disabled = None
+        self.LogSetting = None
+        self.LogLevel = None
+
+
+    def _deserialize(self, params):
+        self.DeviceId = params.get("DeviceId")
+        self.Description = params.get("Description")
+        self.Disabled = params.get("Disabled")
+        self.LogSetting = params.get("LogSetting")
+        self.LogLevel = params.get("LogLevel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyIotDeviceResponse(AbstractModel):
+    """ModifyIotDevice返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyNodeUnitTemplateRequest(AbstractModel):
     """ModifyNodeUnitTemplate请求参数结构体
 
@@ -8202,6 +8976,90 @@ class ResourceMetricTarget(AbstractModel):
         
 
 
+class RouteInfo(AbstractModel):
+    """消息路由
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RouteID: 无
+        :type RouteID: int
+        :param RouteName: 无
+        :type RouteName: str
+        :param SourceProductID: 无
+        :type SourceProductID: str
+        :param TopicFilter: 无
+        :type TopicFilter: str
+        :param Mode: 无
+        :type Mode: str
+        :param TargetOptions: 无
+        :type TargetOptions: str
+        :param CreateTime: 无
+        :type CreateTime: str
+        :param Descript: 无
+        :type Descript: str
+        :param Healthy: 无
+        :type Healthy: str
+        :param Status: 无
+        :type Status: str
+        :param MessageCount: 无
+        :type MessageCount: int
+        :param MessageLastTime: 无
+        :type MessageLastTime: str
+        :param SourceProductName: 无
+        :type SourceProductName: str
+        :param SourceUnitIDList: 无
+        :type SourceUnitIDList: list of str
+        :param SourceUnitNameList: 无
+        :type SourceUnitNameList: list of str
+        :param SourceDeviceNameList: 无
+        :type SourceDeviceNameList: list of str
+        """
+        self.RouteID = None
+        self.RouteName = None
+        self.SourceProductID = None
+        self.TopicFilter = None
+        self.Mode = None
+        self.TargetOptions = None
+        self.CreateTime = None
+        self.Descript = None
+        self.Healthy = None
+        self.Status = None
+        self.MessageCount = None
+        self.MessageLastTime = None
+        self.SourceProductName = None
+        self.SourceUnitIDList = None
+        self.SourceUnitNameList = None
+        self.SourceDeviceNameList = None
+
+
+    def _deserialize(self, params):
+        self.RouteID = params.get("RouteID")
+        self.RouteName = params.get("RouteName")
+        self.SourceProductID = params.get("SourceProductID")
+        self.TopicFilter = params.get("TopicFilter")
+        self.Mode = params.get("Mode")
+        self.TargetOptions = params.get("TargetOptions")
+        self.CreateTime = params.get("CreateTime")
+        self.Descript = params.get("Descript")
+        self.Healthy = params.get("Healthy")
+        self.Status = params.get("Status")
+        self.MessageCount = params.get("MessageCount")
+        self.MessageLastTime = params.get("MessageLastTime")
+        self.SourceProductName = params.get("SourceProductName")
+        self.SourceUnitIDList = params.get("SourceUnitIDList")
+        self.SourceUnitNameList = params.get("SourceUnitNameList")
+        self.SourceDeviceNameList = params.get("SourceDeviceNameList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SecretItem(AbstractModel):
     """Secret信息
 
@@ -8358,6 +9216,51 @@ class Service(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class SetRouteOnOffRequest(AbstractModel):
+    """SetRouteOnOff请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RouteID: 无
+        :type RouteID: int
+        :param Status: on 或 off
+        :type Status: str
+        """
+        self.RouteID = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.RouteID = params.get("RouteID")
+        self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SetRouteOnOffResponse(AbstractModel):
+    """SetRouteOnOff返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class Sort(AbstractModel):

@@ -818,9 +818,9 @@ class DescribeCaptchaMiniResultRequest(AbstractModel):
         :type Ticket: str
         :param UserIp: 业务侧获取到的验证码使用者的外网IP
         :type UserIp: str
-        :param CaptchaAppId: 验证码应用APPID
+        :param CaptchaAppId: 验证码应用ID。登录 [验证码控制台](https://console.cloud.tencent.com/captcha/graphical)，在验证列表的【密钥】列，即可查看到CaptchaAppId。
         :type CaptchaAppId: int
-        :param AppSecretKey: 用于服务器端校验验证码票据的验证密钥，请妥善保密，请勿泄露给第三方
+        :param AppSecretKey: 验证码应用密钥。登录 [验证码控制台](https://console.cloud.tencent.com/captcha/graphical)，在验证列表的【密钥】列，即可查看到AppSecretKey。AppSecretKey属于服务器端校验验证码票据的密钥，请妥善保密，请勿泄露给第三方。
         :type AppSecretKey: str
         :param BusinessId: 业务 ID，网站或应用在多个业务中使用此服务，通过此 ID 区分统计数据
         :type BusinessId: int
@@ -1088,9 +1088,9 @@ class DescribeCaptchaResultRequest(AbstractModel):
         :type UserIp: str
         :param Randstr: 前端回调函数返回的随机字符串
         :type Randstr: str
-        :param CaptchaAppId: 验证码应用ID
+        :param CaptchaAppId: 验证码应用ID。登录 [验证码控制台](https://console.cloud.tencent.com/captcha/graphical)，在验证列表的【密钥】列，即可查看到CaptchaAppId。
         :type CaptchaAppId: int
-        :param AppSecretKey: 用于服务器端校验验证码票据的验证密钥，请妥善保密，请勿泄露给第三方
+        :param AppSecretKey: 验证码应用密钥。登录 [验证码控制台](https://console.cloud.tencent.com/captcha/graphical)，在验证列表的【密钥】列，即可查看到AppSecretKey。AppSecretKey属于服务器端校验验证码票据的密钥，请妥善保密，请勿泄露给第三方。
         :type AppSecretKey: str
         :param BusinessId: 业务 ID，网站或应用在多个业务中使用此服务，通过此 ID 区分统计数据
         :type BusinessId: int
