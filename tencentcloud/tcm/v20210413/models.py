@@ -1504,7 +1504,7 @@ class WorkloadConfig(AbstractModel):
         r"""
         :param Replicas: 工作副本数
         :type Replicas: int
-        :param Resources: 资源限制
+        :param Resources: 资源配置
         :type Resources: :class:`tencentcloud.tcm.v20210413.models.ResourceRequirements`
         :param HorizontalPodAutoscaler: HPA策略
         :type HorizontalPodAutoscaler: :class:`tencentcloud.tcm.v20210413.models.HorizontalPodAutoscalerSpec`

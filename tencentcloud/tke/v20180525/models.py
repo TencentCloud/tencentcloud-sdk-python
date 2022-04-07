@@ -639,6 +639,12 @@ class Cluster(AbstractModel):
         :param EnableExternalNode: 集群是否开启第三方节点支持
 注意：此字段可能返回 null，表示取不到有效值。
         :type EnableExternalNode: bool
+        :param ClusterLevel: 集群等级，针对托管集群生效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterLevel: str
+        :param AutoUpgradeClusterLevel: 自动变配集群等级，针对托管集群生效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AutoUpgradeClusterLevel: bool
         """
         self.ClusterId = None
         self.ClusterName = None
@@ -659,6 +665,8 @@ class Cluster(AbstractModel):
         self.CreatedTime = None
         self.DeletionProtection = None
         self.EnableExternalNode = None
+        self.ClusterLevel = None
+        self.AutoUpgradeClusterLevel = None
 
 
     def _deserialize(self, params):
@@ -688,6 +696,8 @@ class Cluster(AbstractModel):
         self.CreatedTime = params.get("CreatedTime")
         self.DeletionProtection = params.get("DeletionProtection")
         self.EnableExternalNode = params.get("EnableExternalNode")
+        self.ClusterLevel = params.get("ClusterLevel")
+        self.AutoUpgradeClusterLevel = params.get("AutoUpgradeClusterLevel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -2240,6 +2240,26 @@ class CreateSchedulingDomainRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param Product: 代表是否混合云本地化的产品。
+hybrid: 宙斯盾本地化
+不填写：其他
+        :type Product: str
+        """
+        self.Product = None
+
+
+    def _deserialize(self, params):
+        self.Product = params.get("Product")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class CreateSchedulingDomainResponse(AbstractModel):
     """CreateSchedulingDomain返回参数结构体
@@ -3577,7 +3597,7 @@ class DescribeCCPrecisionPlyListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Business: 大禹子产品代号（bgpip-multip：表示高防包；bgpip：表示高防ip）
+        :param Business: 大禹子产品代号（bgpip-multip：表示高防包；bgpip：表示高防IP）
         :type Business: str
         :param Offset: 页起始偏移，取值为(页码-1)*一页条数
         :type Offset: int
@@ -3585,11 +3605,11 @@ class DescribeCCPrecisionPlyListRequest(AbstractModel):
         :type Limit: int
         :param InstanceId: 指定特定实例Id
         :type InstanceId: str
-        :param Ip: ip地址，普通高防ip要传该字段
+        :param Ip: IP地址，普通高防IP要传该字段
         :type Ip: str
-        :param Domain: 域名，普通高防ip要传该字段
+        :param Domain: 域名，普通高防IP要传该字段
         :type Domain: str
-        :param Protocol: 协议，普通高防ip要传该字段
+        :param Protocol: 协议，普通高防IP要传该字段
         :type Protocol: str
         """
         self.Business = None
@@ -3655,7 +3675,7 @@ class DescribeCCReqLimitPolicyListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Business: 大禹子产品代号（bgp-multip表示高防包，bgpip表示高防ip）
+        :param Business: 大禹子产品代号（bgp-multip表示高防包，bgpip表示高防IP）
         :type Business: str
         :param Offset: 页起始偏移，取值为(页码-1)*一页条数
         :type Offset: int
@@ -3663,11 +3683,11 @@ class DescribeCCReqLimitPolicyListRequest(AbstractModel):
         :type Limit: int
         :param InstanceId: 指定实例Id
         :type InstanceId: str
-        :param Ip: Ip地址，普通高防ip要传该字段
+        :param Ip: IP地址，普通高防IP要传该字段
         :type Ip: str
-        :param Domain: 域名，普通高防ip要传该字段
+        :param Domain: 域名，普通高防IP要传该字段
         :type Domain: str
-        :param Protocol: 协议，普通高防ip要传该字段
+        :param Protocol: 协议，普通高防IP要传该字段
         :type Protocol: str
         """
         self.Business = None
@@ -3905,7 +3925,7 @@ class DescribeCcBlackWhiteIpListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Business: 大禹子产品代号（bgp-multip：表示高防包；bgpip：表示高防ip）
+        :param Business: 大禹子产品代号（bgp-multip：表示高防包；bgpip：表示高防IP）
         :type Business: str
         :param InstanceId: 指定特定实例Id
         :type InstanceId: str
@@ -3913,13 +3933,13 @@ class DescribeCcBlackWhiteIpListRequest(AbstractModel):
         :type Offset: int
         :param Limit: 一页条数
         :type Limit: int
-        :param Ip: Ip地址，普通高防ip要传该字段
+        :param Ip: IP地址，普通高防IP要传该字段
         :type Ip: str
-        :param Domain: 域名，普通高防ip要传该字段
+        :param Domain: 域名，普通高防IP要传该字段
         :type Domain: str
-        :param Protocol: 协议，普通高防ip要传该字段
+        :param Protocol: 协议，普通高防IP要传该字段
         :type Protocol: str
-        :param FilterIp: 筛选ip，需要筛选黑白名单ip时传该字段
+        :param FilterIp: 筛选IP，需要筛选黑白名单IP时传该字段
         :type FilterIp: str
         :param FilterType: 黑白名单筛选字段，需要筛选黑白名单列表时传该字段
         :type FilterType: str
@@ -3991,7 +4011,7 @@ class DescribeCcGeoIPBlockConfigListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Business: 大禹子产品代号（bgpip-multip：表示高防包；bgpip：表示高防ip）
+        :param Business: 大禹子产品代号（bgpip-multip：表示高防包；bgpip：表示高防IP）
         :type Business: str
         :param Offset: 页起始偏移，取值为(页码-1)*一页条数
         :type Offset: int
@@ -3999,11 +4019,11 @@ class DescribeCcGeoIPBlockConfigListRequest(AbstractModel):
         :type Limit: int
         :param InstanceId: 指定特定实例Id
         :type InstanceId: str
-        :param Ip: Ip地址，普通高防ip要传该字段
+        :param Ip: IP地址，普通高防ip要传该字段
         :type Ip: str
-        :param Domain: 域名，普通高防ip要传该字段
+        :param Domain: 域名，普通高防IP要传该字段
         :type Domain: str
-        :param Protocol: 协议，普通高防ip要传该字段
+        :param Protocol: 协议，普通高防IP要传该字段
         :type Protocol: str
         """
         self.Business = None
@@ -6073,7 +6093,7 @@ class ModifyCCLevelPolicyRequest(AbstractModel):
         r"""
         :param InstanceId: 实例Id
         :type InstanceId: str
-        :param Ip: Ip地址
+        :param Ip: IP地址
         :type Ip: str
         :param Domain: 域名
         :type Domain: str
@@ -6239,7 +6259,7 @@ class ModifyCCThresholdPolicyRequest(AbstractModel):
         r"""
         :param InstanceId: 实例Id
         :type InstanceId: str
-        :param Ip: Ip地址
+        :param Ip: IP地址
         :type Ip: str
         :param Domain: 域名
         :type Domain: str

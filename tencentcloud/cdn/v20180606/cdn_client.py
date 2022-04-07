@@ -1215,7 +1215,7 @@ class CdnClient(AbstractClient):
 
 
     def DescribeTrafficPackages(self, request):
-        """DescribeTrafficPackages 用于查询中国境内 CDN 流量包详情。
+        """DescribeTrafficPackages 用于查询 CDN 流量包详情。
 
         :param request: Request instance for DescribeTrafficPackages.
         :type request: :class:`tencentcloud.cdn.v20180606.models.DescribeTrafficPackagesRequest`

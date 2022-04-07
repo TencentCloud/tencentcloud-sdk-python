@@ -4500,7 +4500,7 @@ class DescribeDBInstancesRequest(AbstractModel):
         :type ZoneIds: list of int non-negative
         :param SubnetIds: 子网 ID。
         :type SubnetIds: list of int non-negative
-        :param CdbErrors: 是否锁定标记。
+        :param CdbErrors: 是否锁定标记，可选值：0 - 不锁定，1 - 锁定，默认为0。
         :type CdbErrors: list of int
         :param OrderBy: 返回结果集排序的字段，目前支持："InstanceId"，"InstanceName"，"CreateTime"，"DeadlineTime"。
         :type OrderBy: str
@@ -4528,6 +4528,12 @@ class DescribeDBInstancesRequest(AbstractModel):
         :type TagKeysForSearch: list of str
         :param CageIds: 金融围拢 ID 。
         :type CageIds: list of str
+        :param TagValues: 标签值
+        :type TagValues: list of str
+        :param UniqueVpcIds: 私有网络字符型vpcId
+        :type UniqueVpcIds: list of str
+        :param UniqSubnetIds: 私有网络字符型subnetId
+        :type UniqSubnetIds: list of str
         """
         self.ProjectId = None
         self.InstanceTypes = None
@@ -4557,6 +4563,9 @@ class DescribeDBInstancesRequest(AbstractModel):
         self.DeployGroupIds = None
         self.TagKeysForSearch = None
         self.CageIds = None
+        self.TagValues = None
+        self.UniqueVpcIds = None
+        self.UniqSubnetIds = None
 
 
     def _deserialize(self, params):
@@ -4588,6 +4597,9 @@ class DescribeDBInstancesRequest(AbstractModel):
         self.DeployGroupIds = params.get("DeployGroupIds")
         self.TagKeysForSearch = params.get("TagKeysForSearch")
         self.CageIds = params.get("CageIds")
+        self.TagValues = params.get("TagValues")
+        self.UniqueVpcIds = params.get("UniqueVpcIds")
+        self.UniqSubnetIds = params.get("UniqSubnetIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

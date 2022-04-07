@@ -6264,14 +6264,24 @@ class DescribeTrafficPackagesRequest(AbstractModel):
         :type Offset: int
         :param Limit: 分页查询记录个数，默认100，最大1000
         :type Limit: int
+        :param SortBy: 流量包排序方式，支持以下值：
+expireTimeDesc：默认值，按过期时间倒序
+expireTimeAsc：按过期时间正序
+createTimeDesc：按创建时间倒序
+createTimeAsc：按创建时间正序
+status：按状态排序，正常抵扣>未生效>已用尽>已过期
+channel：按来源排序，主动购买>自动续订>CDN赠送
+        :type SortBy: str
         """
         self.Offset = None
         self.Limit = None
+        self.SortBy = None
 
 
     def _deserialize(self, params):
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.SortBy = params.get("SortBy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6296,6 +6306,8 @@ class DescribeTrafficPackagesResponse(AbstractModel):
         :type ExpiringCount: int
         :param EnabledCount: 有效流量包个数
         :type EnabledCount: int
+        :param PaidCount: 付费流量包个数
+        :type PaidCount: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -6303,6 +6315,7 @@ class DescribeTrafficPackagesResponse(AbstractModel):
         self.TrafficPackages = None
         self.ExpiringCount = None
         self.EnabledCount = None
+        self.PaidCount = None
         self.RequestId = None
 
 
@@ -6316,6 +6329,7 @@ class DescribeTrafficPackagesResponse(AbstractModel):
                 self.TrafficPackages.append(obj)
         self.ExpiringCount = params.get("ExpiringCount")
         self.EnabledCount = params.get("EnabledCount")
+        self.PaidCount = params.get("PaidCount")
         self.RequestId = params.get("RequestId")
 
 

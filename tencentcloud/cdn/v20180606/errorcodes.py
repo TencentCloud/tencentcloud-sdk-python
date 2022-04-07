@@ -425,6 +425,9 @@ RESOURCEUNAVAILABLE_CDNHOSTNOICP = 'ResourceUnavailable.CdnHostNoIcp'
 # SCDN服务未生效，请购买或续费SCDN套餐后重试。
 RESOURCEUNAVAILABLE_SCDNUSERNOPACKAGE = 'ResourceUnavailable.ScdnUserNoPackage'
 
+# SCDN服务未生效，请购买或续费SCDN套餐后重试。
+RESOURCEUNAVAILABLE_SCDNUSERSUSPEND = 'ResourceUnavailable.ScdnUserSuspend'
+
 # 未授权操作。
 UNAUTHORIZEDOPERATION = 'UnauthorizedOperation'
 

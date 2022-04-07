@@ -1447,11 +1447,11 @@ class DescribeAddrTemplateListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Total: 模版总数
+        :param Total: 模板总数
         :type Total: int
-        :param Data: 模版列表数据
+        :param Data: 模板列表数据
         :type Data: list of TemplateListInfo
-        :param NameList: 模版名称列表
+        :param NameList: 模板名称列表
         :type NameList: list of str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
