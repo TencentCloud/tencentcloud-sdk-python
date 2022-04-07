@@ -296,15 +296,17 @@ class AbstractClient(object):
             endpoint = self._get_service_domain()
         return endpoint
 
-    def call(self, action, params, options=None):
+    def call(self, action, params, options=None, header=None):
         req = RequestInternal(self._get_endpoint(),
                               self.profile.httpProfile.reqMethod,
-                              self._requestPath)
+                              self._requestPath,
+                              header=header)
         self._build_req_inter(action, params, req, options)
 
         resp_inter = self.request.send_request(req)
         self._check_status(resp_inter)
         data = resp_inter.data
+        print(resp_inter.header)
         return data
 
     def call_octet_stream(self, action, headers, body):
@@ -349,7 +351,7 @@ class AbstractClient(object):
             raise TencentCloudSDKException(code, message, reqid)
         return json_rsp
 
-    def call_json(self, action, params):
+    def call_json(self, action, params, header=None):
         """
         Call api with json object and return with json object.
 
@@ -357,8 +359,10 @@ class AbstractClient(object):
         :param action: api name e.g. ``DescribeInstances``
         :type params: dict
         :param params: params with this action
+        :type header: dict
+        :param header: request header, like {"X-TC-TraceId": "ffe0c072-8a5d-4e17-8887-a8a60252abca"}
         """
-        body = self.call(action, params)
+        body = self.call(action, params, header=header)
         response = json.loads(body)
         if "Error" not in response["Response"]:
             return response
