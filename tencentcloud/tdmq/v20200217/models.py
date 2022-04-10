@@ -315,6 +315,9 @@ class AMQPQueueDetail(AbstractModel):
         :param DeadLetterRoutingKey: 死信交换机路由键
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeadLetterRoutingKey: str
+        :param TopicName: Queue对应的Topic名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicName: str
         """
         self.Name = None
         self.Remark = None
@@ -327,6 +330,7 @@ class AMQPQueueDetail(AbstractModel):
         self.AutoDelete = None
         self.DeadLetterExchange = None
         self.DeadLetterRoutingKey = None
+        self.TopicName = None
 
 
     def _deserialize(self, params):
@@ -341,6 +345,7 @@ class AMQPQueueDetail(AbstractModel):
         self.AutoDelete = params.get("AutoDelete")
         self.DeadLetterExchange = params.get("DeadLetterExchange")
         self.DeadLetterRoutingKey = params.get("DeadLetterRoutingKey")
+        self.TopicName = params.get("TopicName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

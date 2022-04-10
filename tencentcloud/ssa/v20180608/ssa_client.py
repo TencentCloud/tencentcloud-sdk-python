@@ -334,6 +334,34 @@ class SsaClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeMappingResults(self, request):
+        """获取测绘列表
+
+        :param request: Request instance for DescribeMappingResults.
+        :type request: :class:`tencentcloud.ssa.v20180608.models.DescribeMappingResultsRequest`
+        :rtype: :class:`tencentcloud.ssa.v20180608.models.DescribeMappingResultsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeMappingResults", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeMappingResultsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeSafetyEventList(self, request):
         """获取安全事件列表
 

@@ -2492,6 +2492,34 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeInstances(self, request):
+        """无
+
+        :param request: Request instance for DescribeInstances.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeInstancesRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeInstances", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeInvocationMetricDataCurve(self, request):
         """查询调用指标数据变化曲线
 

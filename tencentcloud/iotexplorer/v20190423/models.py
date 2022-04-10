@@ -3973,7 +3973,7 @@ class GetDeviceListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ProductId: 需要查看设备列表的产品 ID
+        :param ProductId: 需要查看设备列表的产品ID, -1代表ProjectId来筛选
         :type ProductId: str
         :param Offset: 分页偏移
         :type Offset: int
@@ -4446,9 +4446,9 @@ class GetStudioProductListRequest(AbstractModel):
         :type ProjectId: str
         :param DevStatus: 产品DevStatus
         :type DevStatus: str
-        :param Offset: Offset
+        :param Offset: 偏移量
         :type Offset: int
-        :param Limit: Limit
+        :param Limit: 数量限制
         :type Limit: int
         """
         self.ProjectId = None
@@ -4907,26 +4907,26 @@ class LoRaGatewayLocation(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Accuracy: 准确度
-        :type Accuracy: float
-        :param Altitude: 海拔
-        :type Altitude: float
         :param Latitude: 纬度
         :type Latitude: float
         :param Longitude: 精度
         :type Longitude: float
+        :param Accuracy: 准确度
+        :type Accuracy: float
+        :param Altitude: 海拔
+        :type Altitude: float
         """
-        self.Accuracy = None
-        self.Altitude = None
         self.Latitude = None
         self.Longitude = None
+        self.Accuracy = None
+        self.Altitude = None
 
 
     def _deserialize(self, params):
-        self.Accuracy = params.get("Accuracy")
-        self.Altitude = params.get("Altitude")
         self.Latitude = params.get("Latitude")
         self.Longitude = params.get("Longitude")
+        self.Accuracy = params.get("Accuracy")
+        self.Altitude = params.get("Altitude")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

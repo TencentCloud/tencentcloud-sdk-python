@@ -6692,7 +6692,7 @@ class ReservedInstances(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ReservedInstancesId: 已购买的预留实例计费ID。形如：650c138f-ae7e-4750-952a-96841d6e9fc1。
+        :param ReservedInstancesId: （此字段已废弃，建议使用字段：ReservedInstanceId）已购买的预留实例计费ID。形如：ri-rtbh4han。
         :type ReservedInstancesId: str
         :param InstanceType: 预留实例计费的规格。形如：S3.MEDIUM4。
 返回项：<a href="https://cloud.tencent.com/document/product/213/11518">预留实例计费规格列表</a>
@@ -6724,6 +6724,10 @@ class ReservedInstances(AbstractModel):
         :param InstanceFamily: 预留实例计费的类型。形如：S3。
 返回项：<a href="https://cloud.tencent.com/document/product/213/11518">预留实例计费类型列表</a>
         :type InstanceFamily: str
+        :param ReservedInstanceId: 已购买的预留实例计费ID。形如：ri-rtbh4han。
+        :type ReservedInstanceId: str
+        :param ReservedInstanceName: 预留实例显示名称。形如：riname-01
+        :type ReservedInstanceName: str
         """
         self.ReservedInstancesId = None
         self.InstanceType = None
@@ -6737,6 +6741,8 @@ class ReservedInstances(AbstractModel):
         self.CurrencyCode = None
         self.OfferingType = None
         self.InstanceFamily = None
+        self.ReservedInstanceId = None
+        self.ReservedInstanceName = None
 
 
     def _deserialize(self, params):
@@ -6752,6 +6758,8 @@ class ReservedInstances(AbstractModel):
         self.CurrencyCode = params.get("CurrencyCode")
         self.OfferingType = params.get("OfferingType")
         self.InstanceFamily = params.get("InstanceFamily")
+        self.ReservedInstanceId = params.get("ReservedInstanceId")
+        self.ReservedInstanceName = params.get("ReservedInstanceName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

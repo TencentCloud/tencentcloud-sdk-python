@@ -7667,6 +7667,67 @@ class DescribeInovcationIndicatorsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeInstancesRequest(AbstractModel):
+    """DescribeInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Filters: 过滤条件
+        :type Filters: list of Filter
+        :param Offset: 偏移量，默认为0
+        :type Offset: int
+        :param Limit: 分页个数，默认为20，最大100
+        :type Limit: int
+        """
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInstancesResponse(AbstractModel):
+    """DescribeInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 机器列表信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.tsf.v20180326.models.InstanceEnrichedInfoPage`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = InstanceEnrichedInfoPage()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeInvocationMetricDataCurveRequest(AbstractModel):
     """DescribeInvocationMetricDataCurve请求参数结构体
 
@@ -11116,6 +11177,34 @@ class FileConfigRelease(AbstractModel):
         
 
 
+class Filter(AbstractModel):
+    """用于请求参数中的条件过滤字段
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 过滤条件名
+        :type Name: str
+        :param Values: 过滤条件匹配值，几个条件间是或关系
+        :type Values: list of str
+        """
+        self.Name = None
+        self.Values = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class GatewayApiGroupVo(AbstractModel):
     """网关分组简单信息
 
@@ -12526,6 +12615,146 @@ class InstanceAdvancedSettings(AbstractModel):
     def _deserialize(self, params):
         self.MountTarget = params.get("MountTarget")
         self.DockerGraphPath = params.get("DockerGraphPath")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InstanceEnrichedInfo(AbstractModel):
+    """包含虚拟机所在TSF中的位置信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 机器ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param InstanceName: 机器名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceName: str
+        :param LanIp: 机器内网IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LanIp: str
+        :param WanIp: 机器外网IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WanIp: str
+        :param VpcId: 机器所在VPC
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcId: str
+        :param InstanceStatus: 机器运行状态 Pending Running Stopped Rebooting Starting Stopping Abnormal Unknown
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceStatus: str
+        :param InstanceAvailableStatus: 机器可用状态（表示机器上的Agent在线）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceAvailableStatus: str
+        :param ApplicationId: 应用ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationId: str
+        :param ApplicationName: 应用名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationName: str
+        :param ApplicationType: 应用类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationType: str
+        :param ClusterId: 集群ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterId: str
+        :param ClusterName: 集群名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterName: str
+        :param ClusterType: 集群类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterType: str
+        :param NamespaceId: 命名空间ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NamespaceId: str
+        :param NamespaceName: 命名空间名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NamespaceName: str
+        :param GroupId: 机器所在部署组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupId: str
+        :param GroupName: 部署组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupName: str
+        """
+        self.InstanceId = None
+        self.InstanceName = None
+        self.LanIp = None
+        self.WanIp = None
+        self.VpcId = None
+        self.InstanceStatus = None
+        self.InstanceAvailableStatus = None
+        self.ApplicationId = None
+        self.ApplicationName = None
+        self.ApplicationType = None
+        self.ClusterId = None
+        self.ClusterName = None
+        self.ClusterType = None
+        self.NamespaceId = None
+        self.NamespaceName = None
+        self.GroupId = None
+        self.GroupName = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.InstanceName = params.get("InstanceName")
+        self.LanIp = params.get("LanIp")
+        self.WanIp = params.get("WanIp")
+        self.VpcId = params.get("VpcId")
+        self.InstanceStatus = params.get("InstanceStatus")
+        self.InstanceAvailableStatus = params.get("InstanceAvailableStatus")
+        self.ApplicationId = params.get("ApplicationId")
+        self.ApplicationName = params.get("ApplicationName")
+        self.ApplicationType = params.get("ApplicationType")
+        self.ClusterId = params.get("ClusterId")
+        self.ClusterName = params.get("ClusterName")
+        self.ClusterType = params.get("ClusterType")
+        self.NamespaceId = params.get("NamespaceId")
+        self.NamespaceName = params.get("NamespaceName")
+        self.GroupId = params.get("GroupId")
+        self.GroupName = params.get("GroupName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InstanceEnrichedInfoPage(AbstractModel):
+    """InstanceEnrichedInfo列表结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 总数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param Content: 列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Content: list of InstanceEnrichedInfo
+        """
+        self.TotalCount = None
+        self.Content = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Content") is not None:
+            self.Content = []
+            for item in params.get("Content"):
+                obj = InstanceEnrichedInfo()
+                obj._deserialize(item)
+                self.Content.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

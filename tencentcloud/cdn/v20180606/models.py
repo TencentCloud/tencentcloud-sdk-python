@@ -11007,12 +11007,17 @@ global：预热全球节点
 2. 当前只支持递归解析一级索引和子索引中的ts分片，递归深度不超过3层
 3. 解析获取的ts分片会正常累加每日预热用量，当用量超出配额时，会静默处理，不再执行预热
         :type ParseM3U8: bool
+        :param DisableRange: 是否关闭Range回源
+注意事项：
+此功能灰度发布中，敬请期待
+        :type DisableRange: bool
         """
         self.Urls = None
         self.UserAgent = None
         self.Area = None
         self.Layer = None
         self.ParseM3U8 = None
+        self.DisableRange = None
 
 
     def _deserialize(self, params):
@@ -11021,6 +11026,7 @@ global：预热全球节点
         self.Area = params.get("Area")
         self.Layer = params.get("Layer")
         self.ParseM3U8 = params.get("ParseM3U8")
+        self.DisableRange = params.get("DisableRange")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

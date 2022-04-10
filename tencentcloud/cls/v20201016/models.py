@@ -423,6 +423,47 @@ class Ckafka(AbstractModel):
         
 
 
+class CloseKafkaConsumerRequest(AbstractModel):
+    """CloseKafkaConsumer请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FromTopicId: CLS对应的topic标识
+        :type FromTopicId: str
+        """
+        self.FromTopicId = None
+
+
+    def _deserialize(self, params):
+        self.FromTopicId = params.get("FromTopicId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloseKafkaConsumerResponse(AbstractModel):
+    """CloseKafkaConsumer返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class Column(AbstractModel):
     """日志分析的列属性
 
@@ -5751,6 +5792,51 @@ class NoticeReceiver(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class OpenKafkaConsumerRequest(AbstractModel):
+    """OpenKafkaConsumer请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FromTopicId: CLS控制台创建的TopicId
+        :type FromTopicId: str
+        """
+        self.FromTopicId = None
+
+
+    def _deserialize(self, params):
+        self.FromTopicId = params.get("FromTopicId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OpenKafkaConsumerResponse(AbstractModel):
+    """OpenKafkaConsumer返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TopicID: 待消费TopicId
+        :type TopicID: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TopicID = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TopicID = params.get("TopicID")
+        self.RequestId = params.get("RequestId")
 
 
 class PartitionInfo(AbstractModel):
