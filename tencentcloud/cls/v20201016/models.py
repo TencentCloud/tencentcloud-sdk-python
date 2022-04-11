@@ -1528,10 +1528,16 @@ class CreateIndexRequest(AbstractModel):
         :type Rule: :class:`tencentcloud.cls.v20201016.models.RuleInfo`
         :param Status: 是否生效，默认为true
         :type Status: bool
+        :param IncludeInternalFields: 全文索引系统预置字段标记，默认false。  false:不包含系统预置字段， true:包含系统预置字段
+        :type IncludeInternalFields: bool
+        :param MetadataFlag: 元数据相关标志位，默认为0。 0：全文索引包括开启键值索引的元数据字段， 1：全文索引包括所有元数据字段，2：全文索引不包括元数据字段。
+        :type MetadataFlag: int
         """
         self.TopicId = None
         self.Rule = None
         self.Status = None
+        self.IncludeInternalFields = None
+        self.MetadataFlag = None
 
 
     def _deserialize(self, params):
@@ -1540,6 +1546,8 @@ class CreateIndexRequest(AbstractModel):
             self.Rule = RuleInfo()
             self.Rule._deserialize(params.get("Rule"))
         self.Status = params.get("Status")
+        self.IncludeInternalFields = params.get("IncludeInternalFields")
+        self.MetadataFlag = params.get("MetadataFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3193,6 +3201,12 @@ class DescribeIndexResponse(AbstractModel):
         :type Rule: :class:`tencentcloud.cls.v20201016.models.RuleInfo`
         :param ModifyTime: 索引修改时间，初始值为索引创建时间。
         :type ModifyTime: str
+        :param IncludeInternalFields: 全文索引系统预置字段标记，默认false。  false:不包含系统预置字段， true:包含系统预置字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IncludeInternalFields: bool
+        :param MetadataFlag: 元数据相关标志位，默认为0。 0：全文索引包括开启键值索引的元数据字段， 1：全文索引包括所有元数据字段，2：全文索引不包括元数据字段。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MetadataFlag: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3200,6 +3214,8 @@ class DescribeIndexResponse(AbstractModel):
         self.Status = None
         self.Rule = None
         self.ModifyTime = None
+        self.IncludeInternalFields = None
+        self.MetadataFlag = None
         self.RequestId = None
 
 
@@ -3210,6 +3226,8 @@ class DescribeIndexResponse(AbstractModel):
             self.Rule = RuleInfo()
             self.Rule._deserialize(params.get("Rule"))
         self.ModifyTime = params.get("ModifyTime")
+        self.IncludeInternalFields = params.get("IncludeInternalFields")
+        self.MetadataFlag = params.get("MetadataFlag")
         self.RequestId = params.get("RequestId")
 
 
@@ -5385,10 +5403,16 @@ class ModifyIndexRequest(AbstractModel):
         :type Status: bool
         :param Rule: 索引规则
         :type Rule: :class:`tencentcloud.cls.v20201016.models.RuleInfo`
+        :param IncludeInternalFields: 全文索引系统预置字段标记，默认false。  false:不包含系统预置字段， true:包含系统预置字段
+        :type IncludeInternalFields: bool
+        :param MetadataFlag: 元数据相关标志位，默认为0。 0：全文索引包括开启键值索引的元数据字段， 1：全文索引包括所有元数据字段，2：全文索引不包括元数据字段。
+        :type MetadataFlag: int
         """
         self.TopicId = None
         self.Status = None
         self.Rule = None
+        self.IncludeInternalFields = None
+        self.MetadataFlag = None
 
 
     def _deserialize(self, params):
@@ -5397,6 +5421,8 @@ class ModifyIndexRequest(AbstractModel):
         if params.get("Rule") is not None:
             self.Rule = RuleInfo()
             self.Rule._deserialize(params.get("Rule"))
+        self.IncludeInternalFields = params.get("IncludeInternalFields")
+        self.MetadataFlag = params.get("MetadataFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

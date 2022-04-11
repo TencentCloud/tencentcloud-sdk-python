@@ -483,7 +483,8 @@ class ControlDeviceDataResponse(AbstractModel):
         :param Data: 返回信息
         :type Data: str
         :param Result: JSON字符串， 返回下发控制的结果信息, 
-Sent = 1 表示设备已经在线并且订阅了控制下发的mqtt topic
+Sent = 1 表示设备已经在线并且订阅了控制下发的mqtt topic.
+pushResult 是表示发送结果，其中 0 表示成功， 23101 表示设备未在线或没有订阅相关的 MQTT Topic。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1872,17 +1873,22 @@ class DescribeDeviceBindGatewayResponse(AbstractModel):
         :param GatewayDeviceName: 网关设备名
 注意：此字段可能返回 null，表示取不到有效值。
         :type GatewayDeviceName: str
+        :param GatewayName: 网关产品名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GatewayName: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.GatewayProductId = None
         self.GatewayDeviceName = None
+        self.GatewayName = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.GatewayProductId = params.get("GatewayProductId")
         self.GatewayDeviceName = params.get("GatewayDeviceName")
+        self.GatewayName = params.get("GatewayName")
         self.RequestId = params.get("RequestId")
 
 

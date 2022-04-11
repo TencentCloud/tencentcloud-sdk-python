@@ -9589,6 +9589,13 @@ class DescribeProVersionInfoResponse(AbstractModel):
         :param ResourceId: 资源ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceId: str
+        :param BuyStatus: 购买状态
+待购: Pending
+已购: Normal
+隔离: Isolate
+        :type BuyStatus: str
+        :param IsPurchased: 是否曾经购买过(false:未曾 true:曾经购买过)
+        :type IsPurchased: bool
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -9597,6 +9604,8 @@ class DescribeProVersionInfoResponse(AbstractModel):
         self.CoresCnt = None
         self.MaxPostPayCoresCnt = None
         self.ResourceId = None
+        self.BuyStatus = None
+        self.IsPurchased = None
         self.RequestId = None
 
 
@@ -9606,6 +9615,8 @@ class DescribeProVersionInfoResponse(AbstractModel):
         self.CoresCnt = params.get("CoresCnt")
         self.MaxPostPayCoresCnt = params.get("MaxPostPayCoresCnt")
         self.ResourceId = params.get("ResourceId")
+        self.BuyStatus = params.get("BuyStatus")
+        self.IsPurchased = params.get("IsPurchased")
         self.RequestId = params.get("RequestId")
 
 

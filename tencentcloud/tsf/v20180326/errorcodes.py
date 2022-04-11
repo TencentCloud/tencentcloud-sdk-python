@@ -194,6 +194,9 @@ INTERNALERROR_CONTAINERGROUPKUBERNETEAPIINVOKEERROR = 'InternalError.Containergr
 # 连接TKE服务失败。
 INTERNALERROR_CONTAINERGROUPKUBERNETECONNECTERROR = 'InternalError.ContainergroupKuberneteConnectError'
 
+# Kubernetes deployment 未找到。
+INTERNALERROR_CONTAINERGROUPKUBERNETEDEPLOYMENTNOTFOUND = 'InternalError.ContainergroupKuberneteDeploymentNotfound'
+
 # 容器应用SQL错误。
 INTERNALERROR_CONTAINERGROUPSQLFAILED = 'InternalError.ContainergroupSqlFailed'
 

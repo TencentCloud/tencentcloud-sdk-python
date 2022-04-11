@@ -514,6 +514,11 @@ def test_import_ic():
     from tencentcloud.ic.v20190307 import models
 
 
+def test_import_icr():
+    from tencentcloud.icr.v20211014 import icr_client
+    from tencentcloud.icr.v20211014 import models
+
+
 def test_import_ie():
     from tencentcloud.ie.v20200304 import ie_client
     from tencentcloud.ie.v20200304 import models

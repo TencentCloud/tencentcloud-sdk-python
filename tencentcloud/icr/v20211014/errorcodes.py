@@ -13,15 +13,3 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-
-# 操作失败。
-FAILEDOPERATION = 'FailedOperation'
-
-# 内部错误。
-INTERNALERROR = 'InternalError'
-
-# 参数错误。
-INVALIDPARAMETER = 'InvalidParameter'
-
-# 资源不可用。
-RESOURCEUNAVAILABLE = 'ResourceUnavailable'

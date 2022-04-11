@@ -7579,7 +7579,7 @@ class ModifyConfigMapRequest(AbstractModel):
         :type EdgeUnitID: int
         :param ConfigMapName: ConfigMap名称
         :type ConfigMapName: str
-        :param Yaml: Yaml配置
+        :param Yaml: Yaml配置, base64之后的串
         :type Yaml: str
         :param ConfigMapNamespace: ConfigMap命名空间
         :type ConfigMapNamespace: str

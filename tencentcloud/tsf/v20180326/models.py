@@ -1643,6 +1643,9 @@ class ContainGroup(AbstractModel):
         :param Alias: 部署组备注
 注意：此字段可能返回 null，表示取不到有效值。
         :type Alias: str
+        :param KubeInjectEnable: KubeInjectEnable值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KubeInjectEnable: bool
         """
         self.GroupId = None
         self.GroupName = None
@@ -1659,6 +1662,7 @@ class ContainGroup(AbstractModel):
         self.MemRequest = None
         self.MemLimit = None
         self.Alias = None
+        self.KubeInjectEnable = None
 
 
     def _deserialize(self, params):
@@ -1677,6 +1681,7 @@ class ContainGroup(AbstractModel):
         self.MemRequest = params.get("MemRequest")
         self.MemLimit = params.get("MemLimit")
         self.Alias = params.get("Alias")
+        self.KubeInjectEnable = params.get("KubeInjectEnable")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1889,6 +1894,9 @@ class ContainerGroupDeploy(AbstractModel):
         :param VolumeMountInfos: 数据卷挂载信息，list
 注意：此字段可能返回 null，表示取不到有效值。
         :type VolumeMountInfos: list of VolumeMountInfo
+        :param KubeInjectEnable: KubeInjectEnable值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KubeInjectEnable: bool
         """
         self.GroupId = None
         self.GroupName = None
@@ -1924,6 +1932,7 @@ class ContainerGroupDeploy(AbstractModel):
         self.TcrRepoInfo = None
         self.VolumeInfos = None
         self.VolumeMountInfos = None
+        self.KubeInjectEnable = None
 
 
     def _deserialize(self, params):
@@ -1985,6 +1994,7 @@ class ContainerGroupDeploy(AbstractModel):
                 obj = VolumeMountInfo()
                 obj._deserialize(item)
                 self.VolumeMountInfos.append(obj)
+        self.KubeInjectEnable = params.get("KubeInjectEnable")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -12137,9 +12147,12 @@ class ImageRepository(AbstractModel):
         :param ApplicationId: applicationid值
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApplicationId: str
-        :param ApplicationName: ApplicationName值（类型是string）
+        :param ApplicationName: ApplicationName值（废弃）
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApplicationName: :class:`tencentcloud.tsf.v20180326.models.ScalableRule`
+        :param ApplicationNameReal: ApplicationName值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationNameReal: str
         """
         self.Reponame = None
         self.Repotype = None
@@ -12156,6 +12169,7 @@ class ImageRepository(AbstractModel):
         self.TcrBindingId = None
         self.ApplicationId = None
         self.ApplicationName = None
+        self.ApplicationNameReal = None
 
 
     def _deserialize(self, params):
@@ -12178,6 +12192,7 @@ class ImageRepository(AbstractModel):
         if params.get("ApplicationName") is not None:
             self.ApplicationName = ScalableRule()
             self.ApplicationName._deserialize(params.get("ApplicationName"))
+        self.ApplicationNameReal = params.get("ApplicationNameReal")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -14589,6 +14604,9 @@ class Namespace(AbstractModel):
         :param IsHaEnable: 是否开启高可用
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsHaEnable: str
+        :param KubeInjectEnable: KubeInjectEnable值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KubeInjectEnable: bool
         """
         self.NamespaceId = None
         self.NamespaceCode = None
@@ -14604,6 +14622,7 @@ class Namespace(AbstractModel):
         self.NamespaceResourceType = None
         self.NamespaceType = None
         self.IsHaEnable = None
+        self.KubeInjectEnable = None
 
 
     def _deserialize(self, params):
@@ -14626,6 +14645,7 @@ class Namespace(AbstractModel):
         self.NamespaceResourceType = params.get("NamespaceResourceType")
         self.NamespaceType = params.get("NamespaceType")
         self.IsHaEnable = params.get("IsHaEnable")
+        self.KubeInjectEnable = params.get("KubeInjectEnable")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -16520,6 +16540,30 @@ class ServiceStatisticsResult(AbstractModel):
         :param DbType: 数据库类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type DbType: str
+        :param Apdex: Apdex值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Apdex: float
+        :param Qps: Qps值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Qps: float
+        :param InstanceOnlineCount: 实例在线数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceOnlineCount: int
+        :param InstanceTotalCount: 实例总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceTotalCount: int
+        :param Status: normal/error
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param ErrorRateLevel: normal/warn/error
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorRateLevel: str
+        :param AvgTimeConsumingLevel: normal/warn/error
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AvgTimeConsumingLevel: str
+        :param ApdexLevel: normal/warn/error
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApdexLevel: str
         """
         self.Path = None
         self.Method = None
@@ -16543,6 +16587,14 @@ class ServiceStatisticsResult(AbstractModel):
         self.DbName = None
         self.Script = None
         self.DbType = None
+        self.Apdex = None
+        self.Qps = None
+        self.InstanceOnlineCount = None
+        self.InstanceTotalCount = None
+        self.Status = None
+        self.ErrorRateLevel = None
+        self.AvgTimeConsumingLevel = None
+        self.ApdexLevel = None
 
 
     def _deserialize(self, params):
@@ -16573,6 +16625,14 @@ class ServiceStatisticsResult(AbstractModel):
         self.DbName = params.get("DbName")
         self.Script = params.get("Script")
         self.DbType = params.get("DbType")
+        self.Apdex = params.get("Apdex")
+        self.Qps = params.get("Qps")
+        self.InstanceOnlineCount = params.get("InstanceOnlineCount")
+        self.InstanceTotalCount = params.get("InstanceTotalCount")
+        self.Status = params.get("Status")
+        self.ErrorRateLevel = params.get("ErrorRateLevel")
+        self.AvgTimeConsumingLevel = params.get("AvgTimeConsumingLevel")
+        self.ApdexLevel = params.get("ApdexLevel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

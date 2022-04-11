@@ -279,7 +279,7 @@ class CaptchaClient(AbstractClient):
 
 
     def DescribeCaptchaResult(self, request):
-        """核查验证码票据结果(Web|APP)
+        """核查验证码票据结果(Web及APP)
 
         :param request: Request instance for DescribeCaptchaResult.
         :type request: :class:`tencentcloud.captcha.v20190722.models.DescribeCaptchaResultRequest`

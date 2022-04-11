@@ -1120,6 +1120,9 @@ class SentenceDetail(AbstractModel):
         :param SpeechSpeed: 单句语速，单位：字数/秒
 注意：此字段可能返回 null，表示取不到有效值。
         :type SpeechSpeed: float
+        :param SpeakerId: 声道或说话人 Id（请求中如果设置了 speaker_diarization或者ChannelNum为双声道，可区分说话人或声道）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SpeakerId: int
         """
         self.FinalSentence = None
         self.SliceSentence = None
@@ -1128,6 +1131,7 @@ class SentenceDetail(AbstractModel):
         self.WordsNum = None
         self.Words = None
         self.SpeechSpeed = None
+        self.SpeakerId = None
 
 
     def _deserialize(self, params):
@@ -1143,6 +1147,7 @@ class SentenceDetail(AbstractModel):
                 obj._deserialize(item)
                 self.Words.append(obj)
         self.SpeechSpeed = params.get("SpeechSpeed")
+        self.SpeakerId = params.get("SpeakerId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
