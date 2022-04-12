@@ -152,3 +152,73 @@ Common Client参考[example](https://github.com/TencentCloud/tencentcloud-sdk-py
 在 Mac 操作系统安装 Python 3.6 或以上版本时，可能会遇到证书错误：`Error: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1056).`。这是因为在 Mac 操作系统下，Python 不再使用系统默认的证书，且本身也不提供证书。在进行 HTTPS 请求时，需要使用 `certifi` 库提供的证书，但 SDK 不支持指定，所以只能使用 `sudo "/Applications/Python 3.6/Install Certificates.command"` 命令安装证书才能解决此问题。
 
 虽然 Python 2 版本不应该有同样的问题，但是在个别用户环境上确实也观察到有类似的情况，也一样可以通过 `sudo /Applications/Python 2.7/Install Certificates.command` 解决。
+
+# 凭证管理
+
+腾讯云 Python SDK 目前支持以下几种方式进行凭证管理：
+
+1. 环境变量
+
+默认读取环境变量 `TENCENTCLOUD_SECRET_ID` 和 `TENCENTCLOUD_SECRET_KEY` 获取 secretId 和 secretKey。相关代码如下：
+
+```python
+from tencentcloud.common import credential
+cred = credential.EnvironmentVariableCredential().get_credential()
+```
+
+2. 配置文件
+
+配置文件路径要求为：
+
++ Windows: `c:\Users\NAME\.tencentcloud\credentials`
++ Linux: `~/.tencentcloud/credentials` 或 `/etc/tencentcloud/credentials`
+
+配置文件格式如下，要求是 .ini 格式的文件：
+
+```ini
+[default]
+secret_id = xxxxx
+secret_key = xxxxx
+```
+
+相关代码如下：
+
+```python
+from tencentcloud.common import credential
+cred = credential.ProfileCredential.get_credential()
+```
+
+3. 角色扮演
+
+有关角色扮演的相关概念请参阅：[腾讯云角色概述](https://cloud.tencent.com/document/product/598/19420)
+
+要使用此种方式，您必须在腾讯云访问管理控制台上创建了一个角色，具体创建过程请参阅：[腾讯云角色创建](https://cloud.tencent.com/document/product/598/19381)
+
+在您拥有角色后，可以通过如下方式获取临时凭证，相关代码如下：
+
+```python
+from tencentcloud.common import credential
+cred = credential.STSAssumeRoleCredential("SecretId", "SecretKey", "RoleArn", "RoleSessionName")
+```
+
+有关角色扮演的详细使用方式可以参考示例：[使用角色](./examples/cvm/v20170312/describe_instances_sts.py)
+
+4. 实例角色
+
+有关实例角色的相关概念请参阅：[腾讯云实例角色](https://cloud.tencent.com/document/product/213/47668)
+
+在您为实例绑定角色后，您可以在实例中访问相关元数据接口获取临时凭证，SDK 会自动刷新临时凭证。相关代码如下：
+
+```python
+from tencentcloud.common import credential
+cred = credential.CVMRoleCredential().get_credential()
+```
+
+5. 凭证提供链
+
+腾讯云 Python SDK 提供了凭证提供链，它会默认以`环境变量->配置文件->实例角色`的顺序尝试获取凭证，并返回第一个获取到的凭证。相关代码如下：
+
+```python
+from tencentcloud.common import credential
+cred = credential.DefaultCredentialProvider().get_credentials()
+```
