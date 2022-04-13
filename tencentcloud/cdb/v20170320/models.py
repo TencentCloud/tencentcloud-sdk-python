@@ -117,6 +117,8 @@ class AddTimeWindowRequest(AbstractModel):
         :type Saturday: list of str
         :param Sunday: 星期日的可维护时间窗口。 一周中应至少设置一天的时间窗。
         :type Sunday: list of str
+        :param MaxDelayTime: 最大延迟阈值，仅对主实例和灾备实例有效
+        :type MaxDelayTime: int
         """
         self.InstanceId = None
         self.Monday = None
@@ -126,6 +128,7 @@ class AddTimeWindowRequest(AbstractModel):
         self.Friday = None
         self.Saturday = None
         self.Sunday = None
+        self.MaxDelayTime = None
 
 
     def _deserialize(self, params):
@@ -137,6 +140,7 @@ class AddTimeWindowRequest(AbstractModel):
         self.Friday = params.get("Friday")
         self.Saturday = params.get("Saturday")
         self.Sunday = params.get("Sunday")
+        self.MaxDelayTime = params.get("MaxDelayTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1823,7 +1827,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
         :type ResourceTags: list of TagInfo
         :param DeployGroupId: 置放群组 ID。
         :type DeployGroupId: str
-        :param ClientToken: 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间在当天内唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
+        :param ClientToken: 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间在48小时内唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
         :type ClientToken: str
         :param DeviceType: 实例隔离类型。支持值包括： "UNIVERSAL" - 通用型实例， "EXCLUSIVE" - 独享型实例， "BASIC" - 基础版实例。 不指定则默认为通用型实例。
         :type DeviceType: str
@@ -1845,6 +1849,8 @@ class CreateDBInstanceHourRequest(AbstractModel):
         :type AlarmPolicyIdList: list of str
         :param DryRun: 是否只预检此次请求。true：发送检查请求，不会创建实例。检查项包括是否填写了必需参数，请求格式，业务限制等。如果检查不通过，则返回对应错误码；如果检查通过，则返回RequestId.默认为false：发送正常请求，通过检查后直接创建实例。
         :type DryRun: bool
+        :param Vips: 指定实例的IP列表。仅支持主实例指定，按实例顺序，不足则按未指定处理。
+        :type Vips: list of str
         """
         self.GoodsNum = None
         self.Memory = None
@@ -1881,6 +1887,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
         self.ParamTemplateType = None
         self.AlarmPolicyIdList = None
         self.DryRun = None
+        self.Vips = None
 
 
     def _deserialize(self, params):
@@ -1931,6 +1938,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
         self.ParamTemplateType = params.get("ParamTemplateType")
         self.AlarmPolicyIdList = params.get("AlarmPolicyIdList")
         self.DryRun = params.get("DryRun")
+        self.Vips = params.get("Vips")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2022,7 +2030,7 @@ class CreateDBInstanceRequest(AbstractModel):
         :type ResourceTags: list of TagInfo
         :param DeployGroupId: 置放群组 ID。
         :type DeployGroupId: str
-        :param ClientToken: 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间在当天内唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
+        :param ClientToken: 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间在48小时内唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
         :type ClientToken: str
         :param DeviceType: 实例隔离类型。支持值包括： "UNIVERSAL" - 通用型实例， "EXCLUSIVE" - 独享型实例， "BASIC" - 基础版实例。 不指定则默认为通用型实例。
         :type DeviceType: str
@@ -2044,6 +2052,8 @@ class CreateDBInstanceRequest(AbstractModel):
         :type AlarmPolicyIdList: list of str
         :param DryRun: 是否只预检此次请求。true：发送检查请求，不会创建实例。检查项包括是否填写了必需参数，请求格式，业务限制等。如果检查不通过，则返回对应错误码；如果检查通过，则返回RequestId.默认为false：发送正常请求，通过检查后直接创建实例。
         :type DryRun: bool
+        :param Vips: 指定实例的IP列表。仅支持主实例指定，按实例顺序，不足则按未指定处理。
+        :type Vips: list of str
         """
         self.Memory = None
         self.Volume = None
@@ -2081,6 +2091,7 @@ class CreateDBInstanceRequest(AbstractModel):
         self.ParamTemplateType = None
         self.AlarmPolicyIdList = None
         self.DryRun = None
+        self.Vips = None
 
 
     def _deserialize(self, params):
@@ -2132,6 +2143,7 @@ class CreateDBInstanceRequest(AbstractModel):
         self.ParamTemplateType = params.get("ParamTemplateType")
         self.AlarmPolicyIdList = params.get("AlarmPolicyIdList")
         self.DryRun = params.get("DryRun")
+        self.Vips = params.get("Vips")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6488,6 +6500,8 @@ class DescribeTimeWindowResponse(AbstractModel):
         :type Saturday: list of str
         :param Sunday: 星期日的可维护时间列表。
         :type Sunday: list of str
+        :param MaxDelayTime: 最大数据延迟阈值
+        :type MaxDelayTime: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -6498,6 +6512,7 @@ class DescribeTimeWindowResponse(AbstractModel):
         self.Friday = None
         self.Saturday = None
         self.Sunday = None
+        self.MaxDelayTime = None
         self.RequestId = None
 
 
@@ -6509,6 +6524,7 @@ class DescribeTimeWindowResponse(AbstractModel):
         self.Friday = params.get("Friday")
         self.Saturday = params.get("Saturday")
         self.Sunday = params.get("Sunday")
+        self.MaxDelayTime = params.get("MaxDelayTime")
         self.RequestId = params.get("RequestId")
 
 
@@ -7854,16 +7870,16 @@ class ModifyAccountPrivilegesRequest(AbstractModel):
         :param Accounts: 数据库的账号，包括用户名和域名。
         :type Accounts: list of Account
         :param GlobalPrivileges: 全局权限。其中，GlobalPrivileges 中权限的可选值为："SELECT","INSERT","UPDATE","DELETE","CREATE", "PROCESS", "DROP","REFERENCES","INDEX","ALTER","SHOW DATABASES","CREATE TEMPORARY TABLES","LOCK TABLES","EXECUTE","CREATE VIEW","SHOW VIEW","CREATE ROUTINE","ALTER ROUTINE","EVENT","TRIGGER","CREATE USER","RELOAD","REPLICATION CLIENT","REPLICATION SLAVE","UPDATE"。
-注意，不传该参数表示清除该权限。
+注意，ModifyAction为空时，不传该参数表示清除该权限。
         :type GlobalPrivileges: list of str
         :param DatabasePrivileges: 数据库的权限。Privileges 权限的可选值为："SELECT","INSERT","UPDATE","DELETE","CREATE",	"DROP","REFERENCES","INDEX","ALTER","CREATE TEMPORARY TABLES","LOCK TABLES","EXECUTE","CREATE VIEW","SHOW VIEW","CREATE ROUTINE","ALTER ROUTINE","EVENT","TRIGGER"。
-注意，不传该参数表示清除该权限。
+注意，ModifyAction为空时，不传该参数表示清除该权限。
         :type DatabasePrivileges: list of DatabasePrivilege
         :param TablePrivileges: 数据库中表的权限。Privileges 权限的可选值为：权限的可选值为："SELECT","INSERT","UPDATE","DELETE","CREATE",	"DROP","REFERENCES","INDEX","ALTER","CREATE VIEW","SHOW VIEW", "TRIGGER"。
-注意，不传该参数表示清除该权限。
+注意，ModifyAction为空时，不传该参数表示清除该权限。
         :type TablePrivileges: list of TablePrivilege
         :param ColumnPrivileges: 数据库表中列的权限。Privileges 权限的可选值为："SELECT","INSERT","UPDATE","REFERENCES"。
-注意，不传该参数表示清除该权限。
+注意，ModifyAction为空时，不传该参数表示清除该权限。
         :type ColumnPrivileges: list of ColumnPrivilege
         :param ModifyAction: 该参数不为空时，为批量修改权限。可选值为：grant - 授予权限，revoke - 回收权限。
         :type ModifyAction: str
@@ -9029,16 +9045,20 @@ class ModifyTimeWindowRequest(AbstractModel):
         :type TimeRanges: list of str
         :param Weekdays: 指定修改哪一天的客户时间段，可能的取值为：monday，tuesday，wednesday，thursday，friday，saturday，sunday。如果不指定该值或者为空，则默认一周七天都修改。
         :type Weekdays: list of str
+        :param MaxDelayTime: 数据延迟阈值，仅对主实例和灾备实例有效，不传默认修改为10
+        :type MaxDelayTime: int
         """
         self.InstanceId = None
         self.TimeRanges = None
         self.Weekdays = None
+        self.MaxDelayTime = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
         self.TimeRanges = params.get("TimeRanges")
         self.Weekdays = params.get("Weekdays")
+        self.MaxDelayTime = params.get("MaxDelayTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -10065,6 +10085,47 @@ class RenewDBInstanceResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.DealId = params.get("DealId")
+        self.RequestId = params.get("RequestId")
+
+
+class ResetRootAccountRequest(AbstractModel):
+    """ResetRootAccount请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例id
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResetRootAccountResponse(AbstractModel):
+    """ResetRootAccount返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 

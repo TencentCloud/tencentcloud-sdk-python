@@ -564,6 +564,7 @@ class VpcClient(AbstractClient):
 
     def AttachNetworkInterface(self, request):
         """本接口（AttachNetworkInterface）用于弹性网卡绑定云服务器。
+        * 一个弹性网卡请至少绑定一个安全组，如需绑定请参见<a href="https://cloud.tencent.com/document/product/215/43132">弹性网卡绑定安全组</a>。
         * 一个云服务器可以绑定多个弹性网卡，但只能绑定一个主网卡。更多限制信息详见<a href="https://cloud.tencent.com/document/product/576/18527">弹性网卡使用限制</a>。
         * 一个弹性网卡只能同时绑定一个云服务器。
         * 只有运行中或者已关机状态的云服务器才能绑定弹性网卡，查看云服务器状态详见<a href="https://cloud.tencent.com/document/api/213/9452#InstanceStatus">腾讯云服务器信息</a>。

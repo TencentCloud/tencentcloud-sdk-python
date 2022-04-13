@@ -2552,6 +2552,46 @@ class DescribeSocCheckItemListRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param Filter: 查询参数,可支持的排序字段:Name,Type,AssetType,Level,Standard,IsFree
+        :type Filter: list of QueryFilter
+        :param Sorter: 排序参数:无
+        :type Sorter: list of QuerySort
+        :param PageSize: 当前页码数据，默认值为10
+        :type PageSize: int
+        :param PageIndex: 当前页面索引，默认值为0
+        :type PageIndex: int
+        """
+        self.Filter = None
+        self.Sorter = None
+        self.PageSize = None
+        self.PageIndex = None
+
+
+    def _deserialize(self, params):
+        if params.get("Filter") is not None:
+            self.Filter = []
+            for item in params.get("Filter"):
+                obj = QueryFilter()
+                obj._deserialize(item)
+                self.Filter.append(obj)
+        if params.get("Sorter") is not None:
+            self.Sorter = []
+            for item in params.get("Sorter"):
+                obj = QuerySort()
+                obj._deserialize(item)
+                self.Sorter.append(obj)
+        self.PageSize = params.get("PageSize")
+        self.PageIndex = params.get("PageIndex")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribeSocCheckItemListResponse(AbstractModel):
     """DescribeSocCheckItemList返回参数结构体
@@ -2560,14 +2600,56 @@ class DescribeSocCheckItemListResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param Data: 检查项列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.ssa.v20180608.models.DescribeSocCheckItemListRspRsp`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.Data = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = DescribeSocCheckItemListRspRsp()
+            self.Data._deserialize(params.get("Data"))
         self.RequestId = params.get("RequestId")
+
+
+class DescribeSocCheckItemListRspRsp(AbstractModel):
+    """云安全配置检查项列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param List: 检查项详情列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type List: list of SocCheckItemV1
+        :param Total: 检查项总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: int
+        """
+        self.List = None
+        self.Total = None
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self.List = []
+            for item in params.get("List"):
+                obj = SocCheckItemV1()
+                obj._deserialize(item)
+                self.List.append(obj)
+        self.Total = params.get("Total")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DescribeSocCspmComplianceRequest(AbstractModel):
@@ -3069,37 +3151,37 @@ class SaDivulgeDataQueryPub(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Id: Id
+        :param Id: Id信息
         :type Id: str
-        :param Uin: Uin
+        :param Uin: 用户Uin
         :type Uin: str
-        :param AppId: AppId
+        :param AppId: 用户AppId
         :type AppId: str
-        :param EventName: EventName
+        :param EventName: 事件名称
         :type EventName: str
-        :param DivulgeSoure: DivulgeSoure
+        :param DivulgeSoure: 监控源 0:全部 1:GitHub 2:暗网 默认值1
         :type DivulgeSoure: str
-        :param Asset: Asset
+        :param Asset: 受影响资产
         :type Asset: str
-        :param RuleName: RuleName
+        :param RuleName: 命中主题集下的规则topic名称
         :type RuleName: str
-        :param RuleId: RuleId
+        :param RuleId: 命中主题集下的规则topic唯一id
         :type RuleId: str
-        :param RuleWord: RuleWord
+        :param RuleWord: 命中主题集下的自定义规则策略
         :type RuleWord: str
-        :param ScanUrl: ScanUrl
+        :param ScanUrl: 扫描监测url"
         :type ScanUrl: str
-        :param ScanCount: ScanCount
+        :param ScanCount: 扫描监测命中次数
         :type ScanCount: str
-        :param Level: Level
+        :param Level: 风险等级 -1:未知 1:低危 2:中危 3:高危 4:严重
         :type Level: str
-        :param Status: Status
+        :param Status: 安全事件处理状态 -1:未知 1:待处理 2:已处理 3:误报 4:已忽略 5:已知晓 6:已信任
         :type Status: str
-        :param EventTime: EventTime
+        :param EventTime: 安全事件发生时间
         :type EventTime: str
-        :param InsertTime: InsertTime
+        :param InsertTime: 事件插入时间
         :type InsertTime: str
-        :param UpdateTime: UpdateTime
+        :param UpdateTime: 事件更新时间
         :type UpdateTime: str
         """
         self.Id = None
@@ -3147,15 +3229,15 @@ class SaDivulgeDataQueryPub(AbstractModel):
 
 
 class SaDivulgeDataQueryPubList(AbstractModel):
-    """查询_通用字段
+    """自定义泄露事件列表
 
     """
 
     def __init__(self):
         r"""
-        :param Count: Count
+        :param Count: 数据条数
         :type Count: int
-        :param List: List
+        :param List: 自定义泄露事件列表
         :type List: list of SaDivulgeDataQueryPub
         """
         self.Count = None
@@ -3307,6 +3389,61 @@ class SocCheckItem(AbstractModel):
         self.LevelId = params.get("LevelId")
         self.SuccessCount = params.get("SuccessCount")
         self.FailCount = params.get("FailCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SocCheckItemV1(AbstractModel):
+    """检查项相关信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CheckId: 检查项id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CheckId: str
+        :param Name: 配置要求
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param Type: 检查项类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param AssetType: 检查对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssetType: str
+        :param Level: 默认风险等级 2:低危 3:中危 4:高危
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Level: int
+        :param Standard: 相关规范
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Standard: str
+        :param IsFree: 检查项是否付费 1:免费 2:付费
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsFree: int
+        """
+        self.CheckId = None
+        self.Name = None
+        self.Type = None
+        self.AssetType = None
+        self.Level = None
+        self.Standard = None
+        self.IsFree = None
+
+
+    def _deserialize(self, params):
+        self.CheckId = params.get("CheckId")
+        self.Name = params.get("Name")
+        self.Type = params.get("Type")
+        self.AssetType = params.get("AssetType")
+        self.Level = params.get("Level")
+        self.Standard = params.get("Standard")
+        self.IsFree = params.get("IsFree")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -6322,7 +6322,7 @@ class ModifyCmqQueueAttributeRequest(AbstractModel):
         :type PollingWaitSeconds: int
         :param VisibilityTimeout: 消息可见性超时。取值范围 1-43200 秒（即12小时内），默认值 30。
         :type VisibilityTimeout: int
-        :param MaxMsgSize: 消息最大长度。取值范围 1024-65536 Byte（即1-64K），默认值 65536。
+        :param MaxMsgSize: 消息最大长度，新版CMQ新建的队列默认1024KB，不支持修改
         :type MaxMsgSize: int
         :param MsgRetentionSeconds: 消息最长未确认时间。取值范围 30-43200 秒（30秒~12小时），默认值 3600 (1 小时)。
         :type MsgRetentionSeconds: int

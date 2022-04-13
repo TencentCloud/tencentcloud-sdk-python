@@ -1722,6 +1722,78 @@ class ProductInfo(AbstractModel):
         
 
 
+class RecognizeCarProRequest(AbstractModel):
+    """RecognizeCarPro请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ImageUrl: 图片URL地址。 
+图片限制： 
+• 图片格式：PNG、JPG、JPEG。 
+• 图片大小：所下载图片经Base64编码后不超过4M。图片下载时间不超过3秒。 
+建议：
+• 图片像素：大于50*50像素，否则影响识别效果； 
+• 长宽比：长边：短边<5； 
+接口响应时间会受到图片下载时间的影响，建议使用更可靠的存储服务，推荐将图片存储在腾讯云COS。
+        :type ImageUrl: str
+        :param ImageBase64: 图片经过base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
+**注意：图片需要base64编码，并且要去掉编码头部。**
+支持的图片格式：PNG、JPG、JPEG、BMP，暂不支持GIF格式。支持的图片大小：所下载图片经Base64编码后不超过4M。图片下载时间不超过3秒。
+        :type ImageBase64: str
+        """
+        self.ImageUrl = None
+        self.ImageBase64 = None
+
+
+    def _deserialize(self, params):
+        self.ImageUrl = params.get("ImageUrl")
+        self.ImageBase64 = params.get("ImageBase64")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RecognizeCarProResponse(AbstractModel):
+    """RecognizeCarPro返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CarCoords: 汽车的四个矩形顶点坐标，如果图片中存在多辆车，则输出最大车辆的坐标。
+        :type CarCoords: list of Coord
+        :param CarTags: 车辆属性识别的结果数组，如果识别到多辆车，则会输出每辆车的top1结果。
+        :type CarTags: list of CarTagItem
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.CarCoords = None
+        self.CarTags = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("CarCoords") is not None:
+            self.CarCoords = []
+            for item in params.get("CarCoords"):
+                obj = Coord()
+                obj._deserialize(item)
+                self.CarCoords.append(obj)
+        if params.get("CarTags") is not None:
+            self.CarTags = []
+            for item in params.get("CarTags"):
+                obj = CarTagItem()
+                obj._deserialize(item)
+                self.CarTags.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class RecognizeCarRequest(AbstractModel):
     """RecognizeCar请求参数结构体
 

@@ -188,6 +188,10 @@ global：全球加速
         :type AwsPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.AwsPrivateAccess`
         :param OssPrivateAccess: 回源OSS私有鉴权
         :type OssPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.OssPrivateAccess`
+        :param HwPrivateAccess: 华为云对象存储回源鉴权
+        :type HwPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.HwPrivateAccess`
+        :param QnPrivateAccess: 七牛云对象存储回源鉴权
+        :type QnPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.QnPrivateAccess`
         """
         self.Domain = None
         self.ServiceType = None
@@ -225,6 +229,8 @@ global：全球加速
         self.Quic = None
         self.AwsPrivateAccess = None
         self.OssPrivateAccess = None
+        self.HwPrivateAccess = None
+        self.QnPrivateAccess = None
 
 
     def _deserialize(self, params):
@@ -331,6 +337,12 @@ global：全球加速
         if params.get("OssPrivateAccess") is not None:
             self.OssPrivateAccess = OssPrivateAccess()
             self.OssPrivateAccess._deserialize(params.get("OssPrivateAccess"))
+        if params.get("HwPrivateAccess") is not None:
+            self.HwPrivateAccess = HwPrivateAccess()
+            self.HwPrivateAccess._deserialize(params.get("HwPrivateAccess"))
+        if params.get("QnPrivateAccess") is not None:
+            self.QnPrivateAccess = QnPrivateAccess()
+            self.QnPrivateAccess._deserialize(params.get("QnPrivateAccess"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1581,16 +1593,26 @@ class AwsPrivateAccess(AbstractModel):
         :param SecretKey: 密钥。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SecretKey: str
+        :param Region: 地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
+        :param Bucket: Bucketname
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Bucket: str
         """
         self.Switch = None
         self.AccessKey = None
         self.SecretKey = None
+        self.Region = None
+        self.Bucket = None
 
 
     def _deserialize(self, params):
         self.Switch = params.get("Switch")
         self.AccessKey = params.get("AccessKey")
         self.SecretKey = params.get("SecretKey")
+        self.Region = params.get("Region")
+        self.Bucket = params.get("Bucket")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6723,6 +6745,12 @@ off：不支持
         :param ParentHost: 主域名
 注意：此字段可能返回 null，表示取不到有效值。
         :type ParentHost: str
+        :param HwPrivateAccess: 华为云对象存储回源鉴权
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HwPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.HwPrivateAccess`
+        :param QnPrivateAccess: 七牛云对象存储回源鉴权
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QnPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.QnPrivateAccess`
         """
         self.ResourceId = None
         self.AppId = None
@@ -6786,6 +6814,8 @@ off：不支持
         self.ShareCname = None
         self.RuleEngine = None
         self.ParentHost = None
+        self.HwPrivateAccess = None
+        self.QnPrivateAccess = None
 
 
     def _deserialize(self, params):
@@ -6951,6 +6981,12 @@ off：不支持
             self.RuleEngine = RuleEngine()
             self.RuleEngine._deserialize(params.get("RuleEngine"))
         self.ParentHost = params.get("ParentHost")
+        if params.get("HwPrivateAccess") is not None:
+            self.HwPrivateAccess = HwPrivateAccess()
+            self.HwPrivateAccess._deserialize(params.get("HwPrivateAccess"))
+        if params.get("QnPrivateAccess") is not None:
+            self.QnPrivateAccess = QnPrivateAccess()
+            self.QnPrivateAccess._deserialize(params.get("QnPrivateAccess"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8227,6 +8263,45 @@ failed：部署失败
             self.Hsts = Hsts()
             self.Hsts._deserialize(params.get("Hsts"))
         self.TlsVersion = params.get("TlsVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HwPrivateAccess(AbstractModel):
+    """华为云对象存储回源鉴权
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 开关 on/off
+        :type Switch: str
+        :param AccessKey: 访问 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccessKey: str
+        :param SecretKey: 密钥
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecretKey: str
+        :param Bucket: bucketname
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Bucket: str
+        """
+        self.Switch = None
+        self.AccessKey = None
+        self.SecretKey = None
+        self.Bucket = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.AccessKey = params.get("AccessKey")
+        self.SecretKey = params.get("SecretKey")
+        self.Bucket = params.get("Bucket")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9709,6 +9784,12 @@ class MainlandConfig(AbstractModel):
         :param OssPrivateAccess: 回源OSS私有鉴权。
 注意：此字段可能返回 null，表示取不到有效值。
         :type OssPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.OssPrivateAccess`
+        :param HwPrivateAccess: 华为云对象存储回源鉴权
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HwPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.HwPrivateAccess`
+        :param QnPrivateAccess: 七牛云对象存储回源鉴权
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QnPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.QnPrivateAccess`
         """
         self.Authentication = None
         self.BandwidthAlert = None
@@ -9736,6 +9817,8 @@ class MainlandConfig(AbstractModel):
         self.VideoSeek = None
         self.AwsPrivateAccess = None
         self.OssPrivateAccess = None
+        self.HwPrivateAccess = None
+        self.QnPrivateAccess = None
 
 
     def _deserialize(self, params):
@@ -9815,6 +9898,12 @@ class MainlandConfig(AbstractModel):
         if params.get("OssPrivateAccess") is not None:
             self.OssPrivateAccess = OssPrivateAccess()
             self.OssPrivateAccess._deserialize(params.get("OssPrivateAccess"))
+        if params.get("HwPrivateAccess") is not None:
+            self.HwPrivateAccess = HwPrivateAccess()
+            self.HwPrivateAccess._deserialize(params.get("HwPrivateAccess"))
+        if params.get("QnPrivateAccess") is not None:
+            self.QnPrivateAccess = QnPrivateAccess()
+            self.QnPrivateAccess._deserialize(params.get("QnPrivateAccess"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -10162,6 +10251,9 @@ ip_ipv6_domain：源站列表为多个 IPv4 地址IPv6 地址以及域名
         :param AdvanceHttps: HTTPS回源高级配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type AdvanceHttps: :class:`tencentcloud.cdn.v20180606.models.AdvanceHttps`
+        :param OriginCompany: 对象存储回源厂商
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OriginCompany: str
         """
         self.Origins = None
         self.OriginType = None
@@ -10175,6 +10267,7 @@ ip_ipv6_domain：源站列表为多个 IPv4 地址IPv6 地址以及域名
         self.PathRules = None
         self.PathBasedOrigin = None
         self.AdvanceHttps = None
+        self.OriginCompany = None
 
 
     def _deserialize(self, params):
@@ -10202,6 +10295,7 @@ ip_ipv6_domain：源站列表为多个 IPv4 地址IPv6 地址以及域名
         if params.get("AdvanceHttps") is not None:
             self.AdvanceHttps = AdvanceHttps()
             self.AdvanceHttps._deserialize(params.get("AdvanceHttps"))
+        self.OriginCompany = params.get("OriginCompany")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -10394,16 +10488,26 @@ class OssPrivateAccess(AbstractModel):
         :param SecretKey: 密钥。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SecretKey: str
+        :param Region: 地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
+        :param Bucket: Bucketname
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Bucket: str
         """
         self.Switch = None
         self.AccessKey = None
         self.SecretKey = None
+        self.Region = None
+        self.Bucket = None
 
 
     def _deserialize(self, params):
         self.Switch = params.get("Switch")
         self.AccessKey = params.get("AccessKey")
         self.SecretKey = params.get("SecretKey")
+        self.Region = params.get("Region")
+        self.Bucket = params.get("Bucket")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -11055,6 +11159,39 @@ class PushUrlsCacheResponse(AbstractModel):
     def _deserialize(self, params):
         self.TaskId = params.get("TaskId")
         self.RequestId = params.get("RequestId")
+
+
+class QnPrivateAccess(AbstractModel):
+    """七牛元对象存储回源鉴权配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 开关 on/off
+        :type Switch: str
+        :param AccessKey: 访问 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccessKey: str
+        :param SecretKey: 密钥
+        :type SecretKey: str
+        """
+        self.Switch = None
+        self.AccessKey = None
+        self.SecretKey = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.AccessKey = params.get("AccessKey")
+        self.SecretKey = params.get("SecretKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class QueryStringKey(AbstractModel):
@@ -13990,6 +14127,10 @@ global：全球加速
         :type RemoteAuthentication: :class:`tencentcloud.cdn.v20180606.models.RemoteAuthentication`
         :param ShareCname: 共享CNAME配置，白名单功能
         :type ShareCname: :class:`tencentcloud.cdn.v20180606.models.ShareCname`
+        :param HwPrivateAccess: 华为云对象存储回源鉴权
+        :type HwPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.HwPrivateAccess`
+        :param QnPrivateAccess: 七牛云对象存储回源鉴权
+        :type QnPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.QnPrivateAccess`
         """
         self.Domain = None
         self.ProjectId = None
@@ -14035,6 +14176,8 @@ global：全球加速
         self.WebSocket = None
         self.RemoteAuthentication = None
         self.ShareCname = None
+        self.HwPrivateAccess = None
+        self.QnPrivateAccess = None
 
 
     def _deserialize(self, params):
@@ -14160,6 +14303,12 @@ global：全球加速
         if params.get("ShareCname") is not None:
             self.ShareCname = ShareCname()
             self.ShareCname._deserialize(params.get("ShareCname"))
+        if params.get("HwPrivateAccess") is not None:
+            self.HwPrivateAccess = HwPrivateAccess()
+            self.HwPrivateAccess._deserialize(params.get("HwPrivateAccess"))
+        if params.get("QnPrivateAccess") is not None:
+            self.QnPrivateAccess = QnPrivateAccess()
+            self.QnPrivateAccess._deserialize(params.get("QnPrivateAccess"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

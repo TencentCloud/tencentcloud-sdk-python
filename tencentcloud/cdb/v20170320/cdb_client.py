@@ -3338,6 +3338,34 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ResetRootAccount(self, request):
+        """重置实例ROOT账，初始化账号权限
+
+        :param request: Request instance for ResetRootAccount.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.ResetRootAccountRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.ResetRootAccountResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ResetRootAccount", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ResetRootAccountResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def RestartDBInstances(self, request):
         """本接口(RestartDBInstances)用于重启云数据库实例。
 
