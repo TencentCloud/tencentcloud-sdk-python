@@ -1731,9 +1731,9 @@ class CreateCmqQueueRequest(AbstractModel):
         :type VisibilityTimeout: int
         :param MaxMsgSize: 消息最大长度。取值范围 1024-65536 Byte（即1-64K），默认值 65536。
         :type MaxMsgSize: int
-        :param MsgRetentionSeconds: 消息保留周期。取值范围 60-1296000 秒（1min-15天），默认值 345600 (4 天)。
+        :param MsgRetentionSeconds: 消息最长未确认时间。取值范围 30-43200 秒（30秒~12小时），默认值 3600 (1 小时)。
         :type MsgRetentionSeconds: int
-        :param RewindSeconds: 队列是否开启回溯消息能力，该参数取值范围0-msgRetentionSeconds,即最大的回溯时间为消息在队列中的保留周期，0表示不开启。
+        :param RewindSeconds: 队列是否开启回溯消息能力，该参数取值范围0-1296000，0表示不开启。
         :type RewindSeconds: int
         :param Transaction: 1 表示事务队列，0 表示普通队列
         :type Transaction: int
@@ -1753,6 +1753,8 @@ class CreateCmqQueueRequest(AbstractModel):
         :type Trace: bool
         :param Tags: 标签数组
         :type Tags: list of Tag
+        :param RetentionSizeInMB: 队列可回溯存储空间，取值范围1024MB - 10240MB，0表示不开启
+        :type RetentionSizeInMB: int
         """
         self.QueueName = None
         self.MaxMsgHeapNum = None
@@ -1770,6 +1772,7 @@ class CreateCmqQueueRequest(AbstractModel):
         self.MaxTimeToLive = None
         self.Trace = None
         self.Tags = None
+        self.RetentionSizeInMB = None
 
 
     def _deserialize(self, params):
@@ -1794,6 +1797,7 @@ class CreateCmqQueueRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.RetentionSizeInMB = params.get("RetentionSizeInMB")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6320,9 +6324,9 @@ class ModifyCmqQueueAttributeRequest(AbstractModel):
         :type VisibilityTimeout: int
         :param MaxMsgSize: 消息最大长度。取值范围 1024-65536 Byte（即1-64K），默认值 65536。
         :type MaxMsgSize: int
-        :param MsgRetentionSeconds: 消息保留周期。取值范围 60-1296000 秒（1min-15天），默认值 345600 (4 天)。
+        :param MsgRetentionSeconds: 消息最长未确认时间。取值范围 30-43200 秒（30秒~12小时），默认值 3600 (1 小时)。
         :type MsgRetentionSeconds: int
-        :param RewindSeconds: 消息最长回溯时间，取值范围0-msgRetentionSeconds，消息的最大回溯之间为消息在队列中的保存周期，0表示不开启消息回溯。
+        :param RewindSeconds: 队列是否开启回溯消息能力，该参数取值范围0-1296000，0表示不开启。
         :type RewindSeconds: int
         :param FirstQueryInterval: 第一次查询时间
         :type FirstQueryInterval: int
@@ -6340,6 +6344,8 @@ class ModifyCmqQueueAttributeRequest(AbstractModel):
         :type Trace: bool
         :param Transaction: 是否开启事务，1开启，0不开启
         :type Transaction: int
+        :param RetentionSizeInMB: 队列可回溯存储空间，取值范围1024MB - 10240MB，0表示不开启
+        :type RetentionSizeInMB: int
         """
         self.QueueName = None
         self.MaxMsgHeapNum = None
@@ -6356,6 +6362,7 @@ class ModifyCmqQueueAttributeRequest(AbstractModel):
         self.Policy = None
         self.Trace = None
         self.Transaction = None
+        self.RetentionSizeInMB = None
 
 
     def _deserialize(self, params):
@@ -6374,6 +6381,7 @@ class ModifyCmqQueueAttributeRequest(AbstractModel):
         self.Policy = params.get("Policy")
         self.Trace = params.get("Trace")
         self.Transaction = params.get("Transaction")
+        self.RetentionSizeInMB = params.get("RetentionSizeInMB")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

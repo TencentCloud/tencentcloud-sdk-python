@@ -552,6 +552,8 @@ class CreateDisksRequest(AbstractModel):
         :type DeleteSnapshot: int
         :param AutoMountConfiguration: 创建云盘时指定自动挂载并初始化该数据盘。
         :type AutoMountConfiguration: :class:`tencentcloud.cbs.v20170312.models.AutoMountConfiguration`
+        :param DiskBackupQuota: 指定云硬盘备份点配额。
+        :type DiskBackupQuota: int
         """
         self.Placement = None
         self.DiskChargeType = None
@@ -568,6 +570,7 @@ class CreateDisksRequest(AbstractModel):
         self.DiskChargePrepaid = None
         self.DeleteSnapshot = None
         self.AutoMountConfiguration = None
+        self.DiskBackupQuota = None
 
 
     def _deserialize(self, params):
@@ -597,6 +600,7 @@ class CreateDisksRequest(AbstractModel):
         if params.get("AutoMountConfiguration") is not None:
             self.AutoMountConfiguration = AutoMountConfiguration()
             self.AutoMountConfiguration._deserialize(params.get("AutoMountConfiguration"))
+        self.DiskBackupQuota = params.get("DiskBackupQuota")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -640,16 +644,20 @@ class CreateSnapshotRequest(AbstractModel):
         :type SnapshotName: str
         :param Deadline: 快照的到期时间，到期后该快照将会自动删除,需要传入UTC时间下的ISO-8601标准时间格式,例如:2022-01-08T09:47:55+00:00
         :type Deadline: str
+        :param DiskBackupId: 云硬盘备份点ID。传入此参数时，将通过备份点创建快照。
+        :type DiskBackupId: str
         """
         self.DiskId = None
         self.SnapshotName = None
         self.Deadline = None
+        self.DiskBackupId = None
 
 
     def _deserialize(self, params):
         self.DiskId = params.get("DiskId")
         self.SnapshotName = params.get("SnapshotName")
         self.Deadline = params.get("Deadline")
+        self.DiskBackupId = params.get("DiskBackupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1577,6 +1585,10 @@ class Disk(AbstractModel):
         :type CreateTime: str
         :param DeleteSnapshot: 销毁云盘时删除关联的非永久保留快照。0 表示非永久快照不随云盘销毁而销毁，1表示非永久快照随云盘销毁而销毁，默认取0。快照是否永久保留可以通过DescribeSnapshots接口返回的快照详情的IsPermanent字段来判断，true表示永久快照，false表示非永久快照。
         :type DeleteSnapshot: int
+        :param DiskBackupCount: 云硬盘备份点已使用的数量。
+        :type DiskBackupCount: int
+        :param InstanceType: 云硬盘挂载实例的类型。取值范围：<br><li>CVM<br><li>EKS
+        :type InstanceType: str
         """
         self.DeleteWithInstance = None
         self.RenewFlag = None
@@ -1614,6 +1626,8 @@ class Disk(AbstractModel):
         self.Shareable = None
         self.CreateTime = None
         self.DeleteSnapshot = None
+        self.DiskBackupCount = None
+        self.InstanceType = None
 
 
     def _deserialize(self, params):
@@ -1660,6 +1674,8 @@ class Disk(AbstractModel):
         self.Shareable = params.get("Shareable")
         self.CreateTime = params.get("CreateTime")
         self.DeleteSnapshot = params.get("DeleteSnapshot")
+        self.DiskBackupCount = params.get("DiskBackupCount")
+        self.InstanceType = params.get("InstanceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2009,40 +2025,44 @@ class InquiryPriceCreateDisksRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param DiskChargeType: 云硬盘计费类型。<br><li>PREPAID：预付费，即包年包月<br><li>POSTPAID_BY_HOUR：按小时后付费
+        :type DiskChargeType: str
         :param DiskType: 硬盘介质类型。取值范围：<br><li>CLOUD_BASIC：表示普通云硬盘<br><li>CLOUD_PREMIUM：表示高性能云硬盘<br><li>CLOUD_SSD：表示SSD云硬盘<br><li>CLOUD_HSSD：表示增强型SSD云硬盘<br><li>CLOUD_TSSD：表示极速型SSD云硬盘。
         :type DiskType: str
         :param DiskSize: 云硬盘大小，单位为GB。云盘大小取值范围参见云硬盘[产品分类](/document/product/362/2353)的说明。
         :type DiskSize: int
-        :param DiskChargeType: 云硬盘计费类型。<br><li>PREPAID：预付费，即包年包月<br><li>POSTPAID_BY_HOUR：按小时后付费
-        :type DiskChargeType: str
-        :param DiskChargePrepaid: 预付费模式，即包年包月相关参数设置。通过该参数指定包年包月云盘的购买时长、是否设置自动续费等属性。<br>创建预付费云盘该参数必传，创建按小时后付费云盘无需传该参数。
-        :type DiskChargePrepaid: :class:`tencentcloud.cbs.v20170312.models.DiskChargePrepaid`
-        :param DiskCount: 购买云盘的数量。不填则默认为1。
-        :type DiskCount: int
         :param ProjectId: 云盘所属项目ID。
         :type ProjectId: int
+        :param DiskCount: 购买云盘的数量。不填则默认为1。
+        :type DiskCount: int
         :param ThroughputPerformance: 额外购买的云硬盘性能值，单位MB/s。<br>目前仅支持增强型SSD云硬盘（CLOUD_HSSD）和极速型SSD云硬盘（CLOUD_TSSD）
         :type ThroughputPerformance: int
+        :param DiskChargePrepaid: 预付费模式，即包年包月相关参数设置。通过该参数指定包年包月云盘的购买时长、是否设置自动续费等属性。<br>创建预付费云盘该参数必传，创建按小时后付费云盘无需传该参数。
+        :type DiskChargePrepaid: :class:`tencentcloud.cbs.v20170312.models.DiskChargePrepaid`
+        :param DiskBackupQuota: 指定云硬盘备份点配额。
+        :type DiskBackupQuota: int
         """
+        self.DiskChargeType = None
         self.DiskType = None
         self.DiskSize = None
-        self.DiskChargeType = None
-        self.DiskChargePrepaid = None
-        self.DiskCount = None
         self.ProjectId = None
+        self.DiskCount = None
         self.ThroughputPerformance = None
+        self.DiskChargePrepaid = None
+        self.DiskBackupQuota = None
 
 
     def _deserialize(self, params):
+        self.DiskChargeType = params.get("DiskChargeType")
         self.DiskType = params.get("DiskType")
         self.DiskSize = params.get("DiskSize")
-        self.DiskChargeType = params.get("DiskChargeType")
+        self.ProjectId = params.get("ProjectId")
+        self.DiskCount = params.get("DiskCount")
+        self.ThroughputPerformance = params.get("ThroughputPerformance")
         if params.get("DiskChargePrepaid") is not None:
             self.DiskChargePrepaid = DiskChargePrepaid()
             self.DiskChargePrepaid._deserialize(params.get("DiskChargePrepaid"))
-        self.DiskCount = params.get("DiskCount")
-        self.ProjectId = params.get("ProjectId")
-        self.ThroughputPerformance = params.get("ThroughputPerformance")
+        self.DiskBackupQuota = params.get("DiskBackupQuota")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2711,55 +2731,55 @@ class Price(AbstractModel):
 
     def __init__(self):
         r"""
-        :param OriginalPrice: 预付费云盘预支费用的原价，单位：元。
+        :param UnitPriceDiscount: 后付费云盘折扣单价，单位：元。
 注意：此字段可能返回 null，表示取不到有效值。
-        :type OriginalPrice: float
+        :type UnitPriceDiscount: float
         :param DiscountPrice: 预付费云盘预支费用的折扣价，单位：元。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DiscountPrice: float
         :param UnitPrice: 后付费云盘原单价，单位：元。
 注意：此字段可能返回 null，表示取不到有效值。
         :type UnitPrice: float
-        :param ChargeUnit: 后付费云盘的计价单元，取值范围：<br><li>HOUR：表示后付费云盘的计价单元是按小时计算。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ChargeUnit: str
-        :param UnitPriceDiscount: 后付费云盘折扣单价，单位：元。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type UnitPriceDiscount: float
-        :param OriginalPriceHigh: 高精度预付费云盘预支费用的原价, 单位：元	。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type OriginalPriceHigh: str
-        :param DiscountPriceHigh: 高精度预付费云盘预支费用的折扣价, 单位：元
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DiscountPriceHigh: str
         :param UnitPriceHigh: 高精度后付费云盘原单价, 单位：元
 注意：此字段可能返回 null，表示取不到有效值。
         :type UnitPriceHigh: str
+        :param OriginalPriceHigh: 高精度预付费云盘预支费用的原价, 单位：元	。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OriginalPriceHigh: str
+        :param OriginalPrice: 预付费云盘预支费用的原价，单位：元。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OriginalPrice: float
+        :param DiscountPriceHigh: 高精度预付费云盘预支费用的折扣价, 单位：元
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiscountPriceHigh: str
         :param UnitPriceDiscountHigh: 高精度后付费云盘折扣单价, 单位：元
 注意：此字段可能返回 null，表示取不到有效值。
         :type UnitPriceDiscountHigh: str
+        :param ChargeUnit: 后付费云盘的计价单元，取值范围：<br><li>HOUR：表示后付费云盘的计价单元是按小时计算。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChargeUnit: str
         """
-        self.OriginalPrice = None
+        self.UnitPriceDiscount = None
         self.DiscountPrice = None
         self.UnitPrice = None
-        self.ChargeUnit = None
-        self.UnitPriceDiscount = None
-        self.OriginalPriceHigh = None
-        self.DiscountPriceHigh = None
         self.UnitPriceHigh = None
+        self.OriginalPriceHigh = None
+        self.OriginalPrice = None
+        self.DiscountPriceHigh = None
         self.UnitPriceDiscountHigh = None
+        self.ChargeUnit = None
 
 
     def _deserialize(self, params):
-        self.OriginalPrice = params.get("OriginalPrice")
+        self.UnitPriceDiscount = params.get("UnitPriceDiscount")
         self.DiscountPrice = params.get("DiscountPrice")
         self.UnitPrice = params.get("UnitPrice")
-        self.ChargeUnit = params.get("ChargeUnit")
-        self.UnitPriceDiscount = params.get("UnitPriceDiscount")
-        self.OriginalPriceHigh = params.get("OriginalPriceHigh")
-        self.DiscountPriceHigh = params.get("DiscountPriceHigh")
         self.UnitPriceHigh = params.get("UnitPriceHigh")
+        self.OriginalPriceHigh = params.get("OriginalPriceHigh")
+        self.OriginalPrice = params.get("OriginalPrice")
+        self.DiscountPriceHigh = params.get("DiscountPriceHigh")
         self.UnitPriceDiscountHigh = params.get("UnitPriceDiscountHigh")
+        self.ChargeUnit = params.get("ChargeUnit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

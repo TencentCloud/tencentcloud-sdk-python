@@ -5028,7 +5028,7 @@ class DescribeDefaultParamsRequest(AbstractModel):
         r"""
         :param EngineVersion: mysql版本，目前支持 ["5.1", "5.5", "5.6", "5.7"]。
         :type EngineVersion: str
-        :param TemplateType: 默认参数模板类型。支持值包括："HIGH_STABILITY" - 高稳定模版，"HIGH_PERFORMANCE" - 高性能模版。
+        :param TemplateType: 默认参数模板类型。支持值包括："HIGH_STABILITY" - 高稳定模板，"HIGH_PERFORMANCE" - 高性能模板。
         :type TemplateType: str
         """
         self.EngineVersion = None
@@ -5652,9 +5652,9 @@ class DescribeProxyConnectionPoolConfRequest(AbstractModel):
         r"""
         :param InstanceId: 实例ID
         :type InstanceId: str
-        :param Offset: 分页
+        :param Offset: 分页查询偏移量
         :type Offset: int
-        :param Limit: 限制
+        :param Limit: 分页查询限制
         :type Limit: int
         """
         self.InstanceId = None

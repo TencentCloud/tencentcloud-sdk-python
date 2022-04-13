@@ -6965,6 +6965,51 @@ class CreateSnapshotByTimeOffsetTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateStorageRegionRequest(AbstractModel):
+    """CreateStorageRegion请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StorageRegion: 待开通的存储地域，必须是系统支持的地域。
+        :type StorageRegion: str
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.StorageRegion = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.StorageRegion = params.get("StorageRegion")
+        self.SubAppId = params.get("SubAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateStorageRegionResponse(AbstractModel):
+    """CreateStorageRegion返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CreateSubAppIdRequest(AbstractModel):
     """CreateSubAppId请求参数结构体
 
@@ -10349,6 +10394,56 @@ class DescribeStorageDetailsResponse(AbstractModel):
                 obj = StatDataItem()
                 obj._deserialize(item)
                 self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeStorageRegionsRequest(AbstractModel):
+    """DescribeStorageRegions请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.SubAppId = params.get("SubAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeStorageRegionsResponse(AbstractModel):
+    """DescribeStorageRegions返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StorageRegionInfos: 存储地域信息列表。
+        :type StorageRegionInfos: list of StorageRegionInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.StorageRegionInfos = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("StorageRegionInfos") is not None:
+            self.StorageRegionInfos = []
+            for item in params.get("StorageRegionInfos"):
+                obj = StorageRegionInfo()
+                obj._deserialize(item)
+                self.StorageRegionInfos.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -15913,6 +16008,51 @@ class ModifyContentReviewTemplateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyDefaultStorageRegionRequest(AbstractModel):
+    """ModifyDefaultStorageRegion请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StorageRegion: 默认的存储地域，必须是已经开通的地域」，建议改成「默认的存储地域，必须是已经开通的地域（通过 DescribeStorageRegions 接口查询）。
+        :type StorageRegion: str
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.StorageRegion = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.StorageRegion = params.get("StorageRegion")
+        self.SubAppId = params.get("SubAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDefaultStorageRegionResponse(AbstractModel):
+    """ModifyDefaultStorageRegion返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyEventConfigRequest(AbstractModel):
     """ModifyEventConfig请求参数结构体
 
@@ -20861,6 +21001,44 @@ class StickerTrackItem(AbstractModel):
                 obj = ImageTransform()
                 obj._deserialize(item)
                 self.ImageOperations.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StorageRegionInfo(AbstractModel):
+    """存储地域信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Region: 存储地域
+        :type Region: str
+        :param Description: 存储地域描述信息
+        :type Description: str
+        :param Status: 状态，是否开通，取值有：
+<li>opened：已经开通。</li>
+<li>unopened：未开通。</li>
+        :type Status: str
+        :param IsDefault: 是否默认的存储地域，true：是；false：否
+        :type IsDefault: bool
+        """
+        self.Region = None
+        self.Description = None
+        self.Status = None
+        self.IsDefault = None
+
+
+    def _deserialize(self, params):
+        self.Region = params.get("Region")
+        self.Description = params.get("Description")
+        self.Status = params.get("Status")
+        self.IsDefault = params.get("IsDefault")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

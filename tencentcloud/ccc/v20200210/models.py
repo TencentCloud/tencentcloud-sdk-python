@@ -1480,12 +1480,12 @@ class DescribeTelCdrRequest(AbstractModel):
         :type StartTimeStamp: int
         :param EndTimeStamp: 结束时间戳，Unix 时间戳
         :type EndTimeStamp: int
+        :param InstanceId: 实例 ID（deprecated）
+        :type InstanceId: int
         :param Limit: 返回数据条数，上限（deprecated）
         :type Limit: int
         :param Offset: 偏移（deprecated）
         :type Offset: int
-        :param InstanceId: 实例 ID（deprecated）
-        :type InstanceId: int
         :param SdkAppId: 应用 ID
         :type SdkAppId: int
         :param PageSize: 分页尺寸，上限 100
@@ -1499,9 +1499,9 @@ class DescribeTelCdrRequest(AbstractModel):
         """
         self.StartTimeStamp = None
         self.EndTimeStamp = None
+        self.InstanceId = None
         self.Limit = None
         self.Offset = None
-        self.InstanceId = None
         self.SdkAppId = None
         self.PageSize = None
         self.PageNumber = None
@@ -1512,9 +1512,9 @@ class DescribeTelCdrRequest(AbstractModel):
     def _deserialize(self, params):
         self.StartTimeStamp = params.get("StartTimeStamp")
         self.EndTimeStamp = params.get("EndTimeStamp")
+        self.InstanceId = params.get("InstanceId")
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
-        self.InstanceId = params.get("InstanceId")
         self.SdkAppId = params.get("SdkAppId")
         self.PageSize = params.get("PageSize")
         self.PageNumber = params.get("PageNumber")

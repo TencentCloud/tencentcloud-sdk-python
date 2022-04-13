@@ -2547,6 +2547,29 @@ class DescribeSocAlertListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeSocCheckItemListRequest(AbstractModel):
+    """DescribeSocCheckItemList请求参数结构体
+
+    """
+
+
+class DescribeSocCheckItemListResponse(AbstractModel):
+    """DescribeSocCheckItemList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeSocCspmComplianceRequest(AbstractModel):
     """DescribeSocCspmCompliance请求参数结构体
 
@@ -3163,11 +3186,11 @@ class SaDivulgeDataQueryPubRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param QueryKey: 模糊查询字段
+        :param QueryKey: 模糊查询字段(针对appid或者uin)
         :type QueryKey: str
         :param EventName: 安全事件名称
         :type EventName: str
-        :param DivulgeSoure: 监控源
+        :param DivulgeSoure: 监控源  0:全部 1:GitHub 2:暗网 默认值1
         :type DivulgeSoure: str
         :param Asset: 受影响资产
         :type Asset: str
@@ -3175,9 +3198,9 @@ class SaDivulgeDataQueryPubRequest(AbstractModel):
         :type RuleName: str
         :param RuleId: 命中主题集下的规则topic唯一id
         :type RuleId: str
-        :param Level: 风险等级
+        :param Level: 风险等级 -1:未知 1:低危 2:中危 3:高危 4:严重
         :type Level: str
-        :param Status: 安全事件状态
+        :param Status: 安全事件处理状态 -1:未知 1:待处理 2:已处理 3:误报 4:已忽略 5:已知晓 6:已信任
         :type Status: str
         :param StartTime: 起始时间
         :type StartTime: str
@@ -3231,7 +3254,7 @@ class SaDivulgeDataQueryPubResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: 结果
+        :param Data: 自定义泄露事件列表
         :type Data: :class:`tencentcloud.ssa.v20180608.models.SaDivulgeDataQueryPubList`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

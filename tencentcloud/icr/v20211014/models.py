@@ -449,9 +449,9 @@ class ReqMetadataLBS(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Latitude: 无
+        :param Latitude: 纬度
         :type Latitude: float
-        :param Longitude: 无
+        :param Longitude: 经度
         :type Longitude: float
         """
         self.Latitude = None

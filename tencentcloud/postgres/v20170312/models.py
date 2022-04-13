@@ -663,7 +663,7 @@ class CreateInstancesRequest(AbstractModel):
         :type AdminPassword: str
         :param ProjectId: 项目ID。
         :type ProjectId: int
-        :param DBVersion: PostgreSQL版本。当输入该参数时，会基于此版本创建对应的最新内核版本号实例
+        :param DBVersion: PostgreSQL版本。当输入该参数时，会基于此版本创建对应的最新内核版本号实例。该参数和DBMajorVersion、DBKernelVersion至少需要传递一个。
         :type DBVersion: str
         :param InstanceChargeType: 实例计费类型。目前支持：PREPAID（预付费，即包年包月），POSTPAID_BY_HOUR（后付费，即按量计费）。
         :type InstanceChargeType: str
@@ -687,12 +687,18 @@ class CreateInstancesRequest(AbstractModel):
         :type TagList: list of Tag
         :param SecurityGroupIds: 安全组ID。
         :type SecurityGroupIds: list of str
-        :param DBMajorVersion: PostgreSQL主要版本。目前支持10，11，12，13这几个版本。当输入该参数时，会基于此版本创建对应的最新内核版本号实例
+        :param DBMajorVersion: PostgreSQL主要版本。目前支持10，11，12，13这几个版本。当输入该参数时，会基于此版本创建对应的最新内核版本号实例。该参数和DBVersion、DBKernelVersion至少需要传递一个。
         :type DBMajorVersion: str
-        :param DBKernelVersion: PostgreSQL内核版本。当输入该参数时，会创建该内核版本号实例
+        :param DBKernelVersion: PostgreSQL内核版本。当输入该参数时，会创建该内核版本号实例。该参数和DBVersion、DBMajorVersion至少需要传递一个。
         :type DBKernelVersion: str
         :param DBNodeSet: 实例节点信息，购买跨可用区实例时填写。
         :type DBNodeSet: list of DBNode
+        :param NeedSupportTDE: 是否需要支持数据透明加密，1：是，0：否（默认）。
+        :type NeedSupportTDE: int
+        :param KMSKeyId: 自定义密钥的keyId，若选择自定义密匙加密，则需要传入自定义密匙的keyId，keyId是CMK的唯一标识。
+        :type KMSKeyId: str
+        :param KMSRegion: 使用KMS服务的地域，KMSRegion为空默认使用本地域的kms，本地域不支持的情况下需自选其他KMS支持的地域。
+        :type KMSRegion: str
         """
         self.SpecCode = None
         self.Storage = None
@@ -718,6 +724,9 @@ class CreateInstancesRequest(AbstractModel):
         self.DBMajorVersion = None
         self.DBKernelVersion = None
         self.DBNodeSet = None
+        self.NeedSupportTDE = None
+        self.KMSKeyId = None
+        self.KMSRegion = None
 
 
     def _deserialize(self, params):
@@ -755,6 +764,9 @@ class CreateInstancesRequest(AbstractModel):
                 obj = DBNode()
                 obj._deserialize(item)
                 self.DBNodeSet.append(obj)
+        self.NeedSupportTDE = params.get("NeedSupportTDE")
+        self.KMSKeyId = params.get("KMSKeyId")
+        self.KMSRegion = params.get("KMSRegion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -836,7 +848,7 @@ class CreateReadOnlyDBInstanceRequest(AbstractModel):
         :type NeedSupportIpv6: int
         :param ReadOnlyGroupId: 只读组ID。
         :type ReadOnlyGroupId: str
-        :param TagList: 实例需要绑定的Tag信息，默认为空
+        :param TagList: 实例需要绑定的Tag信息，默认为空（该类型为Tag数组类型）
         :type TagList: :class:`tencentcloud.postgres.v20170312.models.Tag`
         :param SecurityGroupIds: 安全组id
         :type SecurityGroupIds: list of str
@@ -1311,6 +1323,9 @@ class DBInstance(AbstractModel):
         :param DBNodeSet: 实例的节点信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type DBNodeSet: list of DBNode
+        :param IsSupportTDE: 实例是否支持TDE数据加密  0：不支持，1：支持
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsSupportTDE: int
         """
         self.Region = None
         self.Zone = None
@@ -1348,6 +1363,7 @@ class DBInstance(AbstractModel):
         self.NetworkAccessList = None
         self.DBMajorVersion = None
         self.DBNodeSet = None
+        self.IsSupportTDE = None
 
 
     def _deserialize(self, params):
@@ -1407,6 +1423,7 @@ class DBInstance(AbstractModel):
                 obj = DBNode()
                 obj._deserialize(item)
                 self.DBNodeSet.append(obj)
+        self.IsSupportTDE = params.get("IsSupportTDE")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5333,10 +5350,14 @@ class SpecInfo(AbstractModel):
         :type Zone: str
         :param SpecItemInfoList: 规格详细信息列表
         :type SpecItemInfoList: list of SpecItemInfo
+        :param SupportKMSRegions: 支持KMS的地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SupportKMSRegions: list of str
         """
         self.Region = None
         self.Zone = None
         self.SpecItemInfoList = None
+        self.SupportKMSRegions = None
 
 
     def _deserialize(self, params):
@@ -5348,6 +5369,7 @@ class SpecInfo(AbstractModel):
                 obj = SpecItemInfo()
                 obj._deserialize(item)
                 self.SpecItemInfoList.append(obj)
+        self.SupportKMSRegions = params.get("SupportKMSRegions")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5390,6 +5412,9 @@ class SpecItemInfo(AbstractModel):
         :param KernelVersion: PostgreSQL的内核版本编号
 注意：此字段可能返回 null，表示取不到有效值。
         :type KernelVersion: str
+        :param IsSupportTDE: 是否支持TDE数据加密功能，0-不支持，1-支持
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsSupportTDE: int
         """
         self.SpecCode = None
         self.Version = None
@@ -5403,6 +5428,7 @@ class SpecItemInfo(AbstractModel):
         self.Type = None
         self.MajorVersion = None
         self.KernelVersion = None
+        self.IsSupportTDE = None
 
 
     def _deserialize(self, params):
@@ -5418,6 +5444,7 @@ class SpecItemInfo(AbstractModel):
         self.Type = params.get("Type")
         self.MajorVersion = params.get("MajorVersion")
         self.KernelVersion = params.get("KernelVersion")
+        self.IsSupportTDE = params.get("IsSupportTDE")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

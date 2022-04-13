@@ -4862,7 +4862,7 @@ class Route(AbstractModel):
         :type AccessType: int
         :param RouteId: 路由ID
         :type RouteId: int
-        :param VipType: vip网络类型（1:外网TGW  2:基础网络 3:VPC网络 4:支撑网络(标准版) 5:SSL外网访问方式访问 6:黑石环境vpc 7:支撑网络(专业版)）
+        :param VipType: vip网络类型（1:外网TGW  2:基础网络 3:VPC网络 4:支撑网络(idc 环境) 5:SSL外网访问方式访问 6:黑石环境vpc 7:支撑网络(cvm 环境）
         :type VipType: int
         :param VipList: 虚拟IP列表
         :type VipList: list of VipEntity

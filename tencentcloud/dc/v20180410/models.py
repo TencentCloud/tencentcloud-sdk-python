@@ -458,6 +458,14 @@ STATIC：静态
         :type TencentBackupAddress: str
         :param CloudAttachId: 高速上云服务ID
         :type CloudAttachId: str
+        :param BfdEnable: 是否开启BFD
+        :type BfdEnable: int
+        :param NqaEnable: 是否开启NQA
+        :type NqaEnable: int
+        :param BfdInfo: BFD配置信息
+        :type BfdInfo: :class:`tencentcloud.dc.v20180410.models.BFDInfo`
+        :param NqaInfo: NQA配置信息
+        :type NqaInfo: :class:`tencentcloud.dc.v20180410.models.NQAInfo`
         """
         self.DirectConnectId = None
         self.DirectConnectTunnelName = None
@@ -475,6 +483,10 @@ STATIC：静态
         self.CustomerAddress = None
         self.TencentBackupAddress = None
         self.CloudAttachId = None
+        self.BfdEnable = None
+        self.NqaEnable = None
+        self.BfdInfo = None
+        self.NqaInfo = None
 
 
     def _deserialize(self, params):
@@ -501,6 +513,14 @@ STATIC：静态
         self.CustomerAddress = params.get("CustomerAddress")
         self.TencentBackupAddress = params.get("TencentBackupAddress")
         self.CloudAttachId = params.get("CloudAttachId")
+        self.BfdEnable = params.get("BfdEnable")
+        self.NqaEnable = params.get("NqaEnable")
+        if params.get("BfdInfo") is not None:
+            self.BfdInfo = BFDInfo()
+            self.BfdInfo._deserialize(params.get("BfdInfo"))
+        if params.get("NqaInfo") is not None:
+            self.NqaInfo = NQAInfo()
+            self.NqaInfo._deserialize(params.get("NqaInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

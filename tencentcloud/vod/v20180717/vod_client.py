@@ -543,6 +543,36 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateStorageRegion(self, request):
+        """该接口用于开通某地域的存储。
+          1. 用户开通点播业务时，系统默认为用户开通了部分地域的存储，用户如果需要开通其它地域的存储，可以通过该接口进行开通。
+          2. 通过 DescribeStorageRegions 接口可以查询到所有存储地域及已经开通的地域。
+
+        :param request: Request instance for CreateStorageRegion.
+        :type request: :class:`tencentcloud.vod.v20180717.models.CreateStorageRegionRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.CreateStorageRegionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("CreateStorageRegion", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateStorageRegionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateSubAppId(self, request):
         """该接口用于创建点播子应用。
 
@@ -2117,6 +2147,37 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeStorageRegions(self, request):
+        """该接口用于：
+          1. 查询点播可开通的所有存储园区列表。
+          2. 查询已经开通的园区列表。
+          3. 查询默认使用的存储园区。
+
+        :param request: Request instance for DescribeStorageRegions.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeStorageRegionsRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeStorageRegionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeStorageRegions", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeStorageRegionsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeSubAppIds(self, request):
         """该接口用于获取当前账号的子应用列表，包含主应用。
 
@@ -2677,6 +2738,34 @@ class VodClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyContentReviewTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyDefaultStorageRegion(self, request):
+        """该接口用于设置默认的存储地域。上传文件时如果没有指定地域，将上传到默认地域。
+
+        :param request: Request instance for ModifyDefaultStorageRegion.
+        :type request: :class:`tencentcloud.vod.v20180717.models.ModifyDefaultStorageRegionRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ModifyDefaultStorageRegionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyDefaultStorageRegion", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyDefaultStorageRegionResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

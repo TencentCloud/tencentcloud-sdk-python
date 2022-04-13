@@ -4374,7 +4374,7 @@ class GetProjectListRequest(AbstractModel):
         :type Limit: int
         :param InstanceId: 实例ID
         :type InstanceId: str
-        :param ProjectId: 按项目D搜索
+        :param ProjectId: 按项目ID搜索
         :type ProjectId: str
         :param ProductId: 按产品ID搜索
         :type ProductId: str
