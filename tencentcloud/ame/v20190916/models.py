@@ -262,10 +262,13 @@ class CreateKTVRobotRequest(AbstractModel):
         :type JoinRoomInput: :class:`tencentcloud.ame.v20190916.models.JoinRoomInput`
         :param ApplicationLicenseInput: license基础信息
         :type ApplicationLicenseInput: :class:`tencentcloud.ame.v20190916.models.ApplicationLicenseInput`
+        :param SyncRobotCommands: 创建机器人时初始化参数。
+        :type SyncRobotCommands: list of SyncRobotCommand
         """
         self.RTCSystem = None
         self.JoinRoomInput = None
         self.ApplicationLicenseInput = None
+        self.SyncRobotCommands = None
 
 
     def _deserialize(self, params):
@@ -276,6 +279,12 @@ class CreateKTVRobotRequest(AbstractModel):
         if params.get("ApplicationLicenseInput") is not None:
             self.ApplicationLicenseInput = ApplicationLicenseInput()
             self.ApplicationLicenseInput._deserialize(params.get("ApplicationLicenseInput"))
+        if params.get("SyncRobotCommands") is not None:
+            self.SyncRobotCommands = []
+            for item in params.get("SyncRobotCommands"):
+                obj = SyncRobotCommand()
+                obj._deserialize(item)
+                self.SyncRobotCommands.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3406,6 +3415,89 @@ class SyncKTVRobotCommandResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class SyncRobotCommand(AbstractModel):
+    """KTV 机器人初始化参数，在创建后自动完成相关初始化工作。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Command: 可同时传入多个指令，顺序执行。取值有：
+<li>Play：播放</li>
+<li>Pause：暂停</li>
+<li>SwitchPrevious：上一首</li>
+<li>SwitchNext：下一首</li>
+<li>SetPlayMode：设置播放模式</li>
+<li>Seek：调整播放进度</li>
+<li>SetPlaylist：歌单变更</li>
+<li>SetAudioParam：音频参数变更</li>
+<li>SendMessage：发送自定义消息</li>
+<li>SetDestroyMode：设置销毁模式</li>
+<li>SetVolume：设置音量</li>
+        :type Command: str
+        :param PlayCommandInput: 播放参数。
+        :type PlayCommandInput: :class:`tencentcloud.ame.v20190916.models.PlayCommandInput`
+        :param SetPlaylistCommandInput: 播放列表变更信息，当Command取SetPlaylist时，必填。
+        :type SetPlaylistCommandInput: :class:`tencentcloud.ame.v20190916.models.SetPlaylistCommandInput`
+        :param SeekCommandInput: 播放进度，当Command取Seek时，必填。
+        :type SeekCommandInput: :class:`tencentcloud.ame.v20190916.models.SeekCommandInput`
+        :param SetAudioParamCommandInput: 音频参数，当Command取SetAudioParam时，必填。
+        :type SetAudioParamCommandInput: :class:`tencentcloud.ame.v20190916.models.SetAudioParamCommandInput`
+        :param SendMessageCommandInput: 自定义消息，当Command取SendMessage时，必填。
+        :type SendMessageCommandInput: :class:`tencentcloud.ame.v20190916.models.SendMessageCommandInput`
+        :param SetPlayModeCommandInput: 播放模式，当Command取SetPlayMode时，必填。
+        :type SetPlayModeCommandInput: :class:`tencentcloud.ame.v20190916.models.SetPlayModeCommandInput`
+        :param SetDestroyModeCommandInput: 销毁模式，当Command取SetDestroyMode时，必填。
+        :type SetDestroyModeCommandInput: :class:`tencentcloud.ame.v20190916.models.SetDestroyModeCommandInput`
+        :param SetVolumeCommandInput: 音量，当Command取SetVolume时，必填。
+        :type SetVolumeCommandInput: :class:`tencentcloud.ame.v20190916.models.SetVolumeCommandInput`
+        """
+        self.Command = None
+        self.PlayCommandInput = None
+        self.SetPlaylistCommandInput = None
+        self.SeekCommandInput = None
+        self.SetAudioParamCommandInput = None
+        self.SendMessageCommandInput = None
+        self.SetPlayModeCommandInput = None
+        self.SetDestroyModeCommandInput = None
+        self.SetVolumeCommandInput = None
+
+
+    def _deserialize(self, params):
+        self.Command = params.get("Command")
+        if params.get("PlayCommandInput") is not None:
+            self.PlayCommandInput = PlayCommandInput()
+            self.PlayCommandInput._deserialize(params.get("PlayCommandInput"))
+        if params.get("SetPlaylistCommandInput") is not None:
+            self.SetPlaylistCommandInput = SetPlaylistCommandInput()
+            self.SetPlaylistCommandInput._deserialize(params.get("SetPlaylistCommandInput"))
+        if params.get("SeekCommandInput") is not None:
+            self.SeekCommandInput = SeekCommandInput()
+            self.SeekCommandInput._deserialize(params.get("SeekCommandInput"))
+        if params.get("SetAudioParamCommandInput") is not None:
+            self.SetAudioParamCommandInput = SetAudioParamCommandInput()
+            self.SetAudioParamCommandInput._deserialize(params.get("SetAudioParamCommandInput"))
+        if params.get("SendMessageCommandInput") is not None:
+            self.SendMessageCommandInput = SendMessageCommandInput()
+            self.SendMessageCommandInput._deserialize(params.get("SendMessageCommandInput"))
+        if params.get("SetPlayModeCommandInput") is not None:
+            self.SetPlayModeCommandInput = SetPlayModeCommandInput()
+            self.SetPlayModeCommandInput._deserialize(params.get("SetPlayModeCommandInput"))
+        if params.get("SetDestroyModeCommandInput") is not None:
+            self.SetDestroyModeCommandInput = SetDestroyModeCommandInput()
+            self.SetDestroyModeCommandInput._deserialize(params.get("SetDestroyModeCommandInput"))
+        if params.get("SetVolumeCommandInput") is not None:
+            self.SetVolumeCommandInput = SetVolumeCommandInput()
+            self.SetVolumeCommandInput._deserialize(params.get("SetVolumeCommandInput"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class TRTCJoinRoomInput(AbstractModel):

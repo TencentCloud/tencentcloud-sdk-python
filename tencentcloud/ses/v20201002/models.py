@@ -1200,9 +1200,9 @@ class ListEmailTemplatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Limit: 获取模版数据量，用于分页
+        :param Limit: 获取模板数据量，用于分页
         :type Limit: int
-        :param Offset: 获取模版偏移值，用于分页
+        :param Offset: 获取模板偏移值，用于分页
         :type Offset: int
         """
         self.Limit = None
@@ -1230,7 +1230,7 @@ class ListEmailTemplatesResponse(AbstractModel):
         r"""
         :param TemplatesMetadata: 邮件模板列表
         :type TemplatesMetadata: list of TemplatesMetadata
-        :param TotalCount: 模版总数量
+        :param TotalCount: 模板总数量
         :type TotalCount: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

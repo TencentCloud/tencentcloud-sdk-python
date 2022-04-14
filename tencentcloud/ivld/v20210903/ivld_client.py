@@ -632,7 +632,7 @@ class IvldClient(AbstractClient):
 
         当前URL只支持COS地址，其形式为`https://${Bucket}-${AppId}.cos.${Region}.myqcloud.com/${ObjectKey}`，其中`${Bucket}`为您的COS桶名称，Region为COS桶所在[可用区](https://cloud.tencent.com/document/product/213/6091)，`${ObjectKey}`为指向存储在COS桶内的待分析的视频的[ObjectKey](https://cloud.tencent.com/document/product/436/13324)
 
-        分析完成后，本产品将在您的`${Bucket}`桶内创建名为`${ObjectKey}-${task-start-time}`的目录(`task-start-time`形式为1970-01-01T08:08:08)并将分析结果将回传回该目录，也即，结构化分析结果(包括图片，JSON等数据)将会写回`https://${Bucket}-${AppId}.cos.${Region}.myqcloud.com/${ObjectKey}-${task-start-time}`目录
+        分析完成后，本产品将在您的`${Bucket}`桶内创建名为`${ObjectKey}_${task-create-time}`的目录(`task-create-time`形式为1970-01-01T08:08:08)并将分析结果将回传回该目录，也即，结构化分析结果(包括图片，JSON等数据)将会写回`https://${Bucket}-${AppId}.cos.${Region}.myqcloud.com/${ObjectKey}_${task-create-time}`目录
 
         :param request: Request instance for ImportMedia.
         :type request: :class:`tencentcloud.ivld.v20210903.models.ImportMediaRequest`
@@ -684,7 +684,7 @@ class IvldClient(AbstractClient):
         |---------|---------|---------|---------|
         | EventType | 是 | int | 回调时间类型，1-任务分析完成，2-媒资导入完成 |
         | TaskId | 是 | String | 任务ID |
-        | TaskStatus | 是 | [TaskStatus](/document/product/1611/63373?!preview&preview_docmenu=1&lang=cn&!document=1#TaskStatus) | 任务执行状态 |
+        | TaskStatus | 是 | [TaskStatus](/document/product/1509/65063#TaskInfo) | 任务执行状态 |
         | FailedReason | 是 | String | 若任务失败，该字段为失败原因 |
 
 
@@ -693,7 +693,7 @@ class IvldClient(AbstractClient):
         |---------|---------|---------|---------|
         | EventType | 是 | int | 回调时间类型，1-任务分析完成，2-媒资导入完成 |
         | MediaId | 是 | String | 媒资ID |
-        | MediaStatus | 是 | [MediaStatus](/document/product/1611/63373?!preview&preview_docmenu=1&lang=cn&!document=1#MediaStatus) | 媒资导入状态|
+        | MediaStatus | 是 | [MediaStatus](/document/product/1509/65063#MediaInfo) | 媒资导入状态|
         | FailedReason | 是 | String | 若任务失败，该字段为失败原因 |
 
         :param request: Request instance for ModifyCallback.

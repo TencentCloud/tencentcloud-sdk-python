@@ -1,3 +1,121 @@
+# Release 3.0.619
+
+## 借贷反欺诈(af) 版本：2020-02-26
+
+### 第 5 次发布
+
+发布时间：2022-04-15 06:01:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AntiFraudFilter](https://cloud.tencent.com/document/api/668/44002#AntiFraudFilter)
+
+	* 新增成员：OldResponseType
+
+
+
+
+## 正版曲库直通车(ame) 版本：2019-09-16
+
+### 第 33 次发布
+
+发布时间：2022-04-15 06:01:25
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateKTVRobot](https://cloud.tencent.com/document/api/1155/68351)
+
+	* 新增入参：SyncRobotCommands
+
+
+新增数据结构：
+
+* [SyncRobotCommand](https://cloud.tencent.com/document/api/1155/40113#SyncRobotCommand)
+
+
+
+## 云呼叫中心(ccc) 版本：2020-02-10
+
+### 第 24 次发布
+
+发布时间：2022-04-15 06:03:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeProtectedTelCdr](https://cloud.tencent.com/document/api/679/72597)
+
+
+
+## 企业收付平台(cpdp) 版本：2019-08-20
+
+### 第 62 次发布
+
+发布时间：2022-04-15 06:04:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CloseCloudOrder](https://cloud.tencent.com/document/api/1122/72605)
+* [CreateCloudSubMerchant](https://cloud.tencent.com/document/api/1122/72604)
+* [QueryCloudChannelData](https://cloud.tencent.com/document/api/1122/72603)
+* [QueryCloudOrder](https://cloud.tencent.com/document/api/1122/72602)
+* [QueryCloudRefundOrder](https://cloud.tencent.com/document/api/1122/72601)
+* [RefundCloudOrder](https://cloud.tencent.com/document/api/1122/72600)
+* [UnifiedCloudOrder](https://cloud.tencent.com/document/api/1122/72599)
+
+新增数据结构：
+
+* [CloudAttachmentInfo](https://cloud.tencent.com/document/api/1122/40683#CloudAttachmentInfo)
+* [CloudChannelExternalUserInfo](https://cloud.tencent.com/document/api/1122/40683#CloudChannelExternalUserInfo)
+* [CloudClientInfo](https://cloud.tencent.com/document/api/1122/40683#CloudClientInfo)
+* [CloudExternalChannelData](https://cloud.tencent.com/document/api/1122/40683#CloudExternalChannelData)
+* [CloudExternalPromptGroup](https://cloud.tencent.com/document/api/1122/40683#CloudExternalPromptGroup)
+* [CloudExternalPromptInfo](https://cloud.tencent.com/document/api/1122/40683#CloudExternalPromptInfo)
+* [CloudGlobalPayTimeInfo](https://cloud.tencent.com/document/api/1122/40683#CloudGlobalPayTimeInfo)
+* [CloudOrderReturn](https://cloud.tencent.com/document/api/1122/40683#CloudOrderReturn)
+* [CloudSettleInfo](https://cloud.tencent.com/document/api/1122/40683#CloudSettleInfo)
+* [CloudStoreInfo](https://cloud.tencent.com/document/api/1122/40683#CloudStoreInfo)
+* [CloudSubOrder](https://cloud.tencent.com/document/api/1122/40683#CloudSubOrder)
+* [CloudSubOrderRefund](https://cloud.tencent.com/document/api/1122/40683#CloudSubOrderRefund)
+* [CloudSubOrderReturn](https://cloud.tencent.com/document/api/1122/40683#CloudSubOrderReturn)
+* [CloudSubRefundItem](https://cloud.tencent.com/document/api/1122/40683#CloudSubRefundItem)
+
+
+
+## 云服务器(cvm) 版本：2017-03-12
+
+### 第 79 次发布
+
+发布时间：2022-04-15 06:05:33
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Image](https://cloud.tencent.com/document/api/213/15753#Image)
+
+	* 新增成员：Tags
+
+
+
+
 # Release 3.0.618
 
 ## 云数据库 MySQL(cdb) 版本：2017-03-20

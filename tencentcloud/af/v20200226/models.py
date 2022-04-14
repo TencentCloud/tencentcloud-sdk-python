@@ -146,6 +146,8 @@ appid，用来唯一标识网站或应用
 0：不加密（默认值）
 1：md5
         :type NameCryptoType: str
+        :param OldResponseType: 是否使用旧回包
+        :type OldResponseType: str
         """
         self.CustomerUin = None
         self.CustomerAppid = None
@@ -175,6 +177,7 @@ appid，用来唯一标识网站或应用
         self.IdCryptoType = None
         self.PhoneCryptoType = None
         self.NameCryptoType = None
+        self.OldResponseType = None
 
 
     def _deserialize(self, params):
@@ -206,6 +209,7 @@ appid，用来唯一标识网站或应用
         self.IdCryptoType = params.get("IdCryptoType")
         self.PhoneCryptoType = params.get("PhoneCryptoType")
         self.NameCryptoType = params.get("NameCryptoType")
+        self.OldResponseType = params.get("OldResponseType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

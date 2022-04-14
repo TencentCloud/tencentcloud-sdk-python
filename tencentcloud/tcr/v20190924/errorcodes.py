@@ -98,8 +98,8 @@ INVALIDPARAMETER_ERRNAMESPACERESERVED = 'InvalidParameter.ErrNamespaceReserved'
 # 无效的参数，仓库已存在。
 INVALIDPARAMETER_ERRREPOEXIST = 'InvalidParameter.ErrRepoExist'
 
-# 请求参数数量过多。
-INVALIDPARAMETER_ERRREQARGSTOOLARGE = 'InvalidParameter.ErrReqArgsTooLarge'
+# 参数过多。
+INVALIDPARAMETER_ERRTOOLARGE = 'InvalidParameter.ErrTooLarge'
 
 # 触发器名称已存在。
 INVALIDPARAMETER_ERRTRIGGEREXIST = 'InvalidParameter.ErrTriggerExist'

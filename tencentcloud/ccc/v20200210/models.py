@@ -1152,6 +1152,76 @@ class DescribePSTNActiveSessionListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeProtectedTelCdrRequest(AbstractModel):
+    """DescribeProtectedTelCdr请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StartTimeStamp: 起始时间戳，Unix 秒级时间戳
+        :type StartTimeStamp: int
+        :param EndTimeStamp: 结束时间戳，Unix 秒级时间戳
+        :type EndTimeStamp: int
+        :param SdkAppId: 应用 ID，可以查看 https://console.cloud.tencent.com/ccc
+        :type SdkAppId: int
+        :param PageSize: 分页尺寸，上限 100
+        :type PageSize: int
+        :param PageNumber: 分页页码，从 0 开始
+        :type PageNumber: int
+        """
+        self.StartTimeStamp = None
+        self.EndTimeStamp = None
+        self.SdkAppId = None
+        self.PageSize = None
+        self.PageNumber = None
+
+
+    def _deserialize(self, params):
+        self.StartTimeStamp = params.get("StartTimeStamp")
+        self.EndTimeStamp = params.get("EndTimeStamp")
+        self.SdkAppId = params.get("SdkAppId")
+        self.PageSize = params.get("PageSize")
+        self.PageNumber = params.get("PageNumber")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeProtectedTelCdrResponse(AbstractModel):
+    """DescribeProtectedTelCdr返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 话单记录总数
+        :type TotalCount: int
+        :param TelCdrs: 话单记录
+        :type TelCdrs: list of TelCdrInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.TelCdrs = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("TelCdrs") is not None:
+            self.TelCdrs = []
+            for item in params.get("TelCdrs"):
+                obj = TelCdrInfo()
+                obj._deserialize(item)
+                self.TelCdrs.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeSeatUserListRequest(AbstractModel):
     """DescribeSeatUserList请求参数结构体
 
@@ -1476,21 +1546,21 @@ class DescribeTelCdrRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StartTimeStamp: 起始时间戳，Unix 时间戳
+        :param StartTimeStamp: 起始时间戳，Unix 秒级时间戳
         :type StartTimeStamp: int
-        :param EndTimeStamp: 结束时间戳，Unix 时间戳
+        :param EndTimeStamp: 结束时间戳，Unix 秒级时间戳
         :type EndTimeStamp: int
-        :param InstanceId: 实例 ID（deprecated）
+        :param InstanceId: 实例 ID（废弃）
         :type InstanceId: int
-        :param Limit: 返回数据条数，上限（deprecated）
+        :param Limit: 返回数据条数，上限（废弃）
         :type Limit: int
-        :param Offset: 偏移（deprecated）
+        :param Offset: 偏移（废弃）
         :type Offset: int
-        :param SdkAppId: 应用 ID
+        :param SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
         :type SdkAppId: int
-        :param PageSize: 分页尺寸，上限 100
+        :param PageSize: 分页尺寸（必填），上限 100
         :type PageSize: int
-        :param PageNumber: 分页页码，从 0 开始
+        :param PageNumber: 分页页码（必填），从 0 开始
         :type PageNumber: int
         :param Phones: 按手机号筛选
         :type Phones: list of str

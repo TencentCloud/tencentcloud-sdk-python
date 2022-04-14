@@ -3280,6 +3280,9 @@ IMPORTFAILED-导入失败
         :param SnapshotSet: 镜像关联的快照信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type SnapshotSet: list of Snapshot
+        :param Tags: 镜像关联的标签列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
         """
         self.ImageId = None
         self.OsName = None
@@ -3296,6 +3299,7 @@ IMPORTFAILED-导入失败
         self.SyncPercent = None
         self.IsSupportCloudinit = None
         self.SnapshotSet = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -3319,6 +3323,12 @@ IMPORTFAILED-导入失败
                 obj = Snapshot()
                 obj._deserialize(item)
                 self.SnapshotSet.append(obj)
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
