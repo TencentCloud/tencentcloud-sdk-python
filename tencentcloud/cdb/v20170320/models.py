@@ -677,6 +677,8 @@ class BackupInfo(AbstractModel):
         :type Way: str
         :param ManualBackupName: 手动备份别名
         :type ManualBackupName: str
+        :param SaveMode: 备份保留类型，save_mode_regular - 常规保存备份，save_mode_period - 定期保存备份
+        :type SaveMode: str
         """
         self.Name = None
         self.Size = None
@@ -692,6 +694,7 @@ class BackupInfo(AbstractModel):
         self.Method = None
         self.Way = None
         self.ManualBackupName = None
+        self.SaveMode = None
 
 
     def _deserialize(self, params):
@@ -709,6 +712,7 @@ class BackupInfo(AbstractModel):
         self.Method = params.get("Method")
         self.Way = params.get("Way")
         self.ManualBackupName = params.get("ManualBackupName")
+        self.SaveMode = params.get("SaveMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3451,6 +3455,16 @@ class DescribeBackupConfigResponse(AbstractModel):
         :type BinlogExpireDays: int
         :param BackupTimeWindow: 实例自动备份的时间窗。
         :type BackupTimeWindow: :class:`tencentcloud.cdb.v20170320.models.CommonTimeWindow`
+        :param EnableBackupPeriodSave: 定期保留开关，off - 不开启定期保留策略，on - 开启定期保留策略，默认为off
+        :type EnableBackupPeriodSave: str
+        :param BackupPeriodSaveDays: 定期保留最长天数，最小值：90，最大值：3650，默认值：1080
+        :type BackupPeriodSaveDays: int
+        :param BackupPeriodSaveInterval: 定期保留策略周期，可取值：weekly - 周，monthly - 月， quarterly - 季度，yearly - 年，默认为monthly
+        :type BackupPeriodSaveInterval: str
+        :param BackupPeriodSaveCount: 定期保留的备份数量，最小值为1，最大值不超过定期保留策略周期内常规备份个数，默认值为1
+        :type BackupPeriodSaveCount: int
+        :param StartBackupPeriodSaveDate: 定期保留策略周期起始日期，格式：YYYY-MM-dd HH:mm:ss
+        :type StartBackupPeriodSaveDate: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3460,6 +3474,11 @@ class DescribeBackupConfigResponse(AbstractModel):
         self.BackupMethod = None
         self.BinlogExpireDays = None
         self.BackupTimeWindow = None
+        self.EnableBackupPeriodSave = None
+        self.BackupPeriodSaveDays = None
+        self.BackupPeriodSaveInterval = None
+        self.BackupPeriodSaveCount = None
+        self.StartBackupPeriodSaveDate = None
         self.RequestId = None
 
 
@@ -3472,6 +3491,11 @@ class DescribeBackupConfigResponse(AbstractModel):
         if params.get("BackupTimeWindow") is not None:
             self.BackupTimeWindow = CommonTimeWindow()
             self.BackupTimeWindow._deserialize(params.get("BackupTimeWindow"))
+        self.EnableBackupPeriodSave = params.get("EnableBackupPeriodSave")
+        self.BackupPeriodSaveDays = params.get("BackupPeriodSaveDays")
+        self.BackupPeriodSaveInterval = params.get("BackupPeriodSaveInterval")
+        self.BackupPeriodSaveCount = params.get("BackupPeriodSaveCount")
+        self.StartBackupPeriodSaveDate = params.get("StartBackupPeriodSaveDate")
         self.RequestId = params.get("RequestId")
 
 
@@ -8134,6 +8158,18 @@ class ModifyBackupConfigRequest(AbstractModel):
         :type BinlogExpireDays: int
         :param BackupTimeWindow: 备份时间窗，比如要设置每周二和周日 10:00-14:00之间备份，该参数如下：{"Monday": "", "Tuesday": "10:00-14:00", "Wednesday": "", "Thursday": "", "Friday": "", "Saturday": "", "Sunday": "10:00-14:00"}    （注：可以设置一周的某几天备份，但是每天的备份时间需要设置为相同的时间段。 如果设置了该字段，将忽略StartTime字段的设置）
         :type BackupTimeWindow: :class:`tencentcloud.cdb.v20170320.models.CommonTimeWindow`
+        :param EnableBackupPeriodSave: 定期保留开关，off - 不开启定期保留策略，on - 开启定期保留策略，默认为off
+        :type EnableBackupPeriodSave: str
+        :param EnableBackupPeriodLongTermSave: 长期保留开关,该字段功能暂未上线，可忽略。off - 不开启长期保留策略，on - 开启长期保留策略，默认为off，如果开启，则BackupPeriodSaveDays，BackupPeriodSaveInterval，BackupPeriodSaveCount参数无效
+        :type EnableBackupPeriodLongTermSave: str
+        :param BackupPeriodSaveDays: 定期保留最长天数，最小值：90，最大值：3650，默认值：1080
+        :type BackupPeriodSaveDays: int
+        :param BackupPeriodSaveInterval: 定期保留策略周期，可取值：weekly - 周，monthly - 月， quarterly - 季度，yearly - 年，默认为monthly
+        :type BackupPeriodSaveInterval: str
+        :param BackupPeriodSaveCount: 定期保留的备份数量，最小值为1，最大值不超过定期保留策略周期内常规备份个数，默认值为1
+        :type BackupPeriodSaveCount: int
+        :param StartBackupPeriodSaveDate: 定期保留策略周期起始日期，格式：YYYY-MM-dd HH:mm:ss
+        :type StartBackupPeriodSaveDate: str
         """
         self.InstanceId = None
         self.ExpireDays = None
@@ -8141,6 +8177,12 @@ class ModifyBackupConfigRequest(AbstractModel):
         self.BackupMethod = None
         self.BinlogExpireDays = None
         self.BackupTimeWindow = None
+        self.EnableBackupPeriodSave = None
+        self.EnableBackupPeriodLongTermSave = None
+        self.BackupPeriodSaveDays = None
+        self.BackupPeriodSaveInterval = None
+        self.BackupPeriodSaveCount = None
+        self.StartBackupPeriodSaveDate = None
 
 
     def _deserialize(self, params):
@@ -8152,6 +8194,12 @@ class ModifyBackupConfigRequest(AbstractModel):
         if params.get("BackupTimeWindow") is not None:
             self.BackupTimeWindow = CommonTimeWindow()
             self.BackupTimeWindow._deserialize(params.get("BackupTimeWindow"))
+        self.EnableBackupPeriodSave = params.get("EnableBackupPeriodSave")
+        self.EnableBackupPeriodLongTermSave = params.get("EnableBackupPeriodLongTermSave")
+        self.BackupPeriodSaveDays = params.get("BackupPeriodSaveDays")
+        self.BackupPeriodSaveInterval = params.get("BackupPeriodSaveInterval")
+        self.BackupPeriodSaveCount = params.get("BackupPeriodSaveCount")
+        self.StartBackupPeriodSaveDate = params.get("StartBackupPeriodSaveDate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

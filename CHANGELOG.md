@@ -1,3 +1,150 @@
+# Release 3.0.620
+
+## DDoS 防护(antiddos) 版本：2020-03-09
+
+### 第 27 次发布
+
+发布时间：2022-04-18 06:05:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [NewL7RuleEntry](https://cloud.tencent.com/document/api/1021/57582#NewL7RuleEntry)
+
+	* 新增成员：RewriteHttps, ErrCode
+
+
+
+
+## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 91 次发布
+
+发布时间：2022-04-18 06:07:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeBackupConfig](https://cloud.tencent.com/document/api/236/15837)
+
+	* 新增出参：EnableBackupPeriodSave, BackupPeriodSaveDays, BackupPeriodSaveInterval, BackupPeriodSaveCount, StartBackupPeriodSaveDate
+
+* [ModifyBackupConfig](https://cloud.tencent.com/document/api/236/15839)
+
+	* 新增入参：EnableBackupPeriodSave, EnableBackupPeriodLongTermSave, BackupPeriodSaveDays, BackupPeriodSaveInterval, BackupPeriodSaveCount, StartBackupPeriodSaveDate
+
+
+修改数据结构：
+
+* [BackupInfo](https://cloud.tencent.com/document/api/236/15878#BackupInfo)
+
+	* 新增成员：SaveMode
+
+
+
+
+## 内容分发网络(cdn) 版本：2018-06-06
+
+### 第 99 次发布
+
+发布时间：2022-04-18 06:07:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [OverseaConfig](https://cloud.tencent.com/document/api/228/30987#OverseaConfig)
+
+	* 新增成员：HwPrivateAccess, QnPrivateAccess
+
+
+
+
+## 物联网开发平台(iotexplorer) 版本：2019-04-23
+
+### 第 44 次发布
+
+发布时间：2022-04-18 06:13:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [PublishBroadcastMessage](https://cloud.tencent.com/document/api/1081/72633)
+
+
+
+## 安全运营中心(ssa) 版本：2018-06-08
+
+### 第 11 次发布
+
+发布时间：2022-04-18 06:17:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeSocCheckResultList](https://cloud.tencent.com/document/api/664/72634)
+
+新增数据结构：
+
+* [DescribeSocCheckResultListRspRsp](https://cloud.tencent.com/document/api/664/51406#DescribeSocCheckResultListRspRsp)
+* [SocCheckResult](https://cloud.tencent.com/document/api/664/51406#SocCheckResult)
+
+
+
+## Web 应用防火墙(waf) 版本：2018-01-25
+
+### 第 6 次发布
+
+发布时间：2022-04-18 06:22:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [AddDomainWhiteRule](https://cloud.tencent.com/document/api/627/72650)
+* [DeleteDomainWhiteRules](https://cloud.tencent.com/document/api/627/72649)
+* [DeleteIpAccessControl](https://cloud.tencent.com/document/api/627/72648)
+* [DescribeAutoDenyIP](https://cloud.tencent.com/document/api/627/72647)
+* [DescribeDomainWhiteRules](https://cloud.tencent.com/document/api/627/72646)
+* [DescribeIpAccessControl](https://cloud.tencent.com/document/api/627/72645)
+* [DescribeIpHitItems](https://cloud.tencent.com/document/api/627/72644)
+* [DescribeWafAutoDenyRules](https://cloud.tencent.com/document/api/627/72643)
+* [DescribeWafAutoDenyStatus](https://cloud.tencent.com/document/api/627/72642)
+* [DescribeWafThreatenIntelligence](https://cloud.tencent.com/document/api/627/72641)
+* [ModifyDomainWhiteRule](https://cloud.tencent.com/document/api/627/72640)
+* [ModifyWafAutoDenyRules](https://cloud.tencent.com/document/api/627/72639)
+* [ModifyWafAutoDenyStatus](https://cloud.tencent.com/document/api/627/72638)
+* [ModifyWafThreatenIntelligence](https://cloud.tencent.com/document/api/627/72637)
+* [UpsertIpAccessControl](https://cloud.tencent.com/document/api/627/72636)
+
+新增数据结构：
+
+* [AutoDenyDetail](https://cloud.tencent.com/document/api/627/53609#AutoDenyDetail)
+* [IpAccessControlData](https://cloud.tencent.com/document/api/627/53609#IpAccessControlData)
+* [IpAccessControlItem](https://cloud.tencent.com/document/api/627/53609#IpAccessControlItem)
+* [IpHitItem](https://cloud.tencent.com/document/api/627/53609#IpHitItem)
+* [IpHitItemsData](https://cloud.tencent.com/document/api/627/53609#IpHitItemsData)
+* [RuleList](https://cloud.tencent.com/document/api/627/53609#RuleList)
+* [WafThreatenIntelligenceDetails](https://cloud.tencent.com/document/api/627/53609#WafThreatenIntelligenceDetails)
+
+
+
 # Release 3.0.619
 
 ## 借贷反欺诈(af) 版本：2020-02-26

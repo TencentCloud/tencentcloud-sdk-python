@@ -6903,112 +6903,120 @@ class NewL7RuleEntry(AbstractModel):
 
     def __init__(self):
         r"""
-        :param KeepTime: 会话保持时间，单位秒
-        :type KeepTime: int
-        :param LbType: 负载均衡方式，取值[1(加权轮询)]
-        :type LbType: int
-        :param SourceList: 回源列表
-        :type SourceList: list of L4RuleSource
-        :param KeepEnable: 会话保持开关，取值[0(会话保持关闭)，1(会话保持开启)]
-        :type KeepEnable: int
-        :param Domain: 转发域名
-        :type Domain: str
         :param Protocol: 转发协议，取值[http, https]
         :type Protocol: str
+        :param Domain: 转发域名
+        :type Domain: str
+        :param LbType: 负载均衡方式，取值[1(加权轮询)]
+        :type LbType: int
+        :param KeepEnable: 会话保持开关，取值[0(会话保持关闭)，1(会话保持开启)]
+        :type KeepEnable: int
+        :param KeepTime: 会话保持时间，单位秒
+        :type KeepTime: int
         :param SourceType: 回源方式，取值[1(域名回源)，2(IP回源)]
         :type SourceType: int
-        :param HttpsToHttpEnable: 是否开启Https协议使用Http回源，取值[0(关闭), 1(开启)]，不填写默认是关闭
-        :type HttpsToHttpEnable: int
+        :param SourceList: 回源列表
+        :type SourceList: list of L4RuleSource
+        :param Region: 区域码
+        :type Region: int
+        :param Id: 资源Id
+        :type Id: str
+        :param Ip: 资源Ip
+        :type Ip: str
+        :param RuleId: 规则ID，当添加新规则时可以不用填写此字段；当修改或者删除规则时需要填写此字段；
+        :type RuleId: str
+        :param RuleName: 规则描述
+        :type RuleName: str
+        :param CertType: 证书来源，当转发协议为https时必须填，取值[2(腾讯云托管证书)]，当转发协议为http时也可以填0
+        :type CertType: int
+        :param SSLId: 当证书来源为腾讯云托管证书时，此字段必须填写托管证书ID
+        :type SSLId: str
+        :param Cert: 当证书来源为自有证书时，此字段必须填写证书内容；(因已不再支持自有证书，此字段已弃用，请不用填写此字段)
+        :type Cert: str
+        :param PrivateKey: 当证书来源为自有证书时，此字段必须填写证书密钥；(因已不再支持自有证书，此字段已弃用，请不用填写此字段)
+        :type PrivateKey: str
         :param Status: 规则状态，取值[0(规则配置成功)，1(规则配置生效中)，2(规则配置失败)，3(规则删除生效中)，5(规则删除失败)，6(规则等待配置)，7(规则等待删除)，8(规则待配置证书)]
         :type Status: int
-        :param CCLevel: HTTPS协议的CC防护等级
-        :type CCLevel: str
+        :param CCStatus: cc防护状态，取值[0(关闭), 1(开启)]
+        :type CCStatus: int
         :param CCEnable: HTTPS协议的CC防护状态，取值[0(关闭), 1(开启)]
         :type CCEnable: int
         :param CCThreshold: HTTPS协议的CC防护阈值
         :type CCThreshold: int
-        :param Region: 区域码
-        :type Region: int
-        :param RuleName: 规则描述
-        :type RuleName: str
-        :param Cert: 当证书来源为自有证书时，此字段必须填写证书内容；(因已不再支持自有证书，此字段已弃用，请不用填写此字段)
-        :type Cert: str
+        :param CCLevel: HTTPS协议的CC防护等级
+        :type CCLevel: str
         :param ModifyTime: 修改时间
         :type ModifyTime: str
-        :param RuleId: 规则ID，当添加新规则时可以不用填写此字段；当修改或者删除规则时需要填写此字段；
-        :type RuleId: str
-        :param Ip: 资源Ip
-        :type Ip: str
-        :param PrivateKey: 当证书来源为自有证书时，此字段必须填写证书密钥；(因已不再支持自有证书，此字段已弃用，请不用填写此字段)
-        :type PrivateKey: str
-        :param CertType: 证书来源，当转发协议为https时必须填，取值[2(腾讯云托管证书)]，当转发协议为http时也可以填0
-        :type CertType: int
+        :param HttpsToHttpEnable: 是否开启Https协议使用Http回源，取值[0(关闭), 1(开启)]，不填写默认是关闭
+        :type HttpsToHttpEnable: int
         :param VirtualPort: 接入端口值
 注意：此字段可能返回 null，表示取不到有效值。
         :type VirtualPort: int
-        :param CCStatus: cc防护状态，取值[0(关闭), 1(开启)]
-        :type CCStatus: int
-        :param SSLId: 当证书来源为腾讯云托管证书时，此字段必须填写托管证书ID
-        :type SSLId: str
-        :param Id: 资源Id
-        :type Id: str
+        :param RewriteHttps: http强制跳转https，1表示打开，0表示关闭
+        :type RewriteHttps: int
+        :param ErrCode: 规则配置失败时的详细错误原因(仅当Status=2时有效)，1001证书不存在，1002证书获取失败，1003证书上传失败，1004证书已过期
+        :type ErrCode: int
         """
-        self.KeepTime = None
-        self.LbType = None
-        self.SourceList = None
-        self.KeepEnable = None
-        self.Domain = None
         self.Protocol = None
+        self.Domain = None
+        self.LbType = None
+        self.KeepEnable = None
+        self.KeepTime = None
         self.SourceType = None
-        self.HttpsToHttpEnable = None
+        self.SourceList = None
+        self.Region = None
+        self.Id = None
+        self.Ip = None
+        self.RuleId = None
+        self.RuleName = None
+        self.CertType = None
+        self.SSLId = None
+        self.Cert = None
+        self.PrivateKey = None
         self.Status = None
-        self.CCLevel = None
+        self.CCStatus = None
         self.CCEnable = None
         self.CCThreshold = None
-        self.Region = None
-        self.RuleName = None
-        self.Cert = None
+        self.CCLevel = None
         self.ModifyTime = None
-        self.RuleId = None
-        self.Ip = None
-        self.PrivateKey = None
-        self.CertType = None
+        self.HttpsToHttpEnable = None
         self.VirtualPort = None
-        self.CCStatus = None
-        self.SSLId = None
-        self.Id = None
+        self.RewriteHttps = None
+        self.ErrCode = None
 
 
     def _deserialize(self, params):
-        self.KeepTime = params.get("KeepTime")
+        self.Protocol = params.get("Protocol")
+        self.Domain = params.get("Domain")
         self.LbType = params.get("LbType")
+        self.KeepEnable = params.get("KeepEnable")
+        self.KeepTime = params.get("KeepTime")
+        self.SourceType = params.get("SourceType")
         if params.get("SourceList") is not None:
             self.SourceList = []
             for item in params.get("SourceList"):
                 obj = L4RuleSource()
                 obj._deserialize(item)
                 self.SourceList.append(obj)
-        self.KeepEnable = params.get("KeepEnable")
-        self.Domain = params.get("Domain")
-        self.Protocol = params.get("Protocol")
-        self.SourceType = params.get("SourceType")
-        self.HttpsToHttpEnable = params.get("HttpsToHttpEnable")
+        self.Region = params.get("Region")
+        self.Id = params.get("Id")
+        self.Ip = params.get("Ip")
+        self.RuleId = params.get("RuleId")
+        self.RuleName = params.get("RuleName")
+        self.CertType = params.get("CertType")
+        self.SSLId = params.get("SSLId")
+        self.Cert = params.get("Cert")
+        self.PrivateKey = params.get("PrivateKey")
         self.Status = params.get("Status")
-        self.CCLevel = params.get("CCLevel")
+        self.CCStatus = params.get("CCStatus")
         self.CCEnable = params.get("CCEnable")
         self.CCThreshold = params.get("CCThreshold")
-        self.Region = params.get("Region")
-        self.RuleName = params.get("RuleName")
-        self.Cert = params.get("Cert")
+        self.CCLevel = params.get("CCLevel")
         self.ModifyTime = params.get("ModifyTime")
-        self.RuleId = params.get("RuleId")
-        self.Ip = params.get("Ip")
-        self.PrivateKey = params.get("PrivateKey")
-        self.CertType = params.get("CertType")
+        self.HttpsToHttpEnable = params.get("HttpsToHttpEnable")
         self.VirtualPort = params.get("VirtualPort")
-        self.CCStatus = params.get("CCStatus")
-        self.SSLId = params.get("SSLId")
-        self.Id = params.get("Id")
+        self.RewriteHttps = params.get("RewriteHttps")
+        self.ErrCode = params.get("ErrCode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

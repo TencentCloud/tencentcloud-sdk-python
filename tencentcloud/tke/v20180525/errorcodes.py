@@ -17,6 +17,39 @@
 # 操作失败。
 FAILEDOPERATION = 'FailedOperation'
 
+# 伸缩组资源创建报错。
+FAILEDOPERATION_ASCOMMON = 'FailedOperation.AsCommon'
+
+# 集群未找到。
+FAILEDOPERATION_CLUSTERNOTFOUND = 'FailedOperation.ClusterNotFound'
+
+# 集群状态错误。
+FAILEDOPERATION_CLUSTERSTATE = 'FailedOperation.ClusterState'
+
+# 内部HTTP客户端错误。
+FAILEDOPERATION_COMPONENTCLIENTHTTP = 'FailedOperation.ComponentClientHttp'
+
+# 内部HTTP解包失败。
+FAILEDOPERATION_COMPONENTCLIENTUNPACK = 'FailedOperation.ComponentClientUnpack'
+
+# cvm创建节点报错。
+FAILEDOPERATION_CVMCOMMON = 'FailedOperation.CvmCommon'
+
+# 连接用户Kubernetes集群失败。
+FAILEDOPERATION_KUBECLIENTCONNECTION = 'FailedOperation.KubeClientConnection'
+
+# KubernetesAPI错误。
+FAILEDOPERATION_KUBECOMMON = 'FailedOperation.KubeCommon'
+
+# 创建集群Client出错。
+FAILEDOPERATION_KUBERNETESCREATEOPERATIONERROR = 'FailedOperation.KubernetesCreateOperationError'
+
+# 参数错误。
+FAILEDOPERATION_PARAM = 'FailedOperation.Param'
+
+# 超过配额限制。
+FAILEDOPERATION_QUOTAMAXNODLIMIT = 'FailedOperation.QuotaMaxNodLimit'
+
 # 子账户RBAC权限不足。
 FAILEDOPERATION_RBACFORBIDDEN = 'FailedOperation.RBACForbidden'
 

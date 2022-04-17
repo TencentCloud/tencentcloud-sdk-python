@@ -2182,6 +2182,34 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def PublishBroadcastMessage(self, request):
+        """发布广播消息
+
+        :param request: Request instance for PublishBroadcastMessage.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.PublishBroadcastMessageRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.PublishBroadcastMessageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("PublishBroadcastMessage", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.PublishBroadcastMessageResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def PublishMessage(self, request):
         """本接口（PublishMessage）用于使用自定义透传协议进行设备远控
 

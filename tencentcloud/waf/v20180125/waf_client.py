@@ -54,6 +54,34 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def AddDomainWhiteRule(self, request):
+        """增加域名规则白名单
+
+        :param request: Request instance for AddDomainWhiteRule.
+        :type request: :class:`tencentcloud.waf.v20180125.models.AddDomainWhiteRuleRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.AddDomainWhiteRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("AddDomainWhiteRule", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AddDomainWhiteRuleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateAccessExport(self, request):
         """本接口用于创建访问日志导出
 
@@ -166,6 +194,35 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteDomainWhiteRules(self, request):
+        """删除域名规则白名单
+
+
+        :param request: Request instance for DeleteDomainWhiteRules.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DeleteDomainWhiteRulesRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DeleteDomainWhiteRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteDomainWhiteRules", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteDomainWhiteRulesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteDownloadRecord(self, request):
         """删除访问日志下载记录
 
@@ -180,6 +237,34 @@ class WafClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteDownloadRecordResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteIpAccessControl(self, request):
+        """Waf IP黑白名单Delete接口
+
+        :param request: Request instance for DeleteIpAccessControl.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DeleteIpAccessControlRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DeleteIpAccessControlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DeleteIpAccessControl", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteIpAccessControlResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -306,6 +391,34 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeAutoDenyIP(self, request):
+        """描述WAF自动封禁IP详情,对齐自动封堵状态
+
+        :param request: Request instance for DescribeAutoDenyIP.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeAutoDenyIPRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeAutoDenyIPResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeAutoDenyIP", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAutoDenyIPResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeCustomRules(self, request):
         """获取防护配置中的自定义策略列表
 
@@ -320,6 +433,35 @@ class WafClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCustomRulesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDomainWhiteRules(self, request):
+        """获取域名的规则白名单
+
+
+        :param request: Request instance for DescribeDomainWhiteRules.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeDomainWhiteRulesRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeDomainWhiteRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeDomainWhiteRules", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDomainWhiteRulesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -362,6 +504,62 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeIpAccessControl(self, request):
+        """Waf ip黑白名单查询
+
+        :param request: Request instance for DescribeIpAccessControl.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeIpAccessControlRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeIpAccessControlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeIpAccessControl", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeIpAccessControlResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeIpHitItems(self, request):
+        """Waf  IP封堵状态查询
+
+        :param request: Request instance for DescribeIpHitItems.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeIpHitItemsRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeIpHitItemsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeIpHitItems", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeIpHitItemsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeUserClbWafRegions(self, request):
         """在负载均衡型WAF的添加、编辑域名配置的时候，需要展示负载均衡型WAF（clb-waf)支持的地域列表，通过DescribeUserClbWafRegions既可以获得当前对客户已经开放的地域列表
 
@@ -376,6 +574,90 @@ class WafClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeUserClbWafRegionsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeWafAutoDenyRules(self, request):
+        """返回ip惩罚规则详细信息
+
+        :param request: Request instance for DescribeWafAutoDenyRules.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeWafAutoDenyRulesRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeWafAutoDenyRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeWafAutoDenyRules", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeWafAutoDenyRulesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeWafAutoDenyStatus(self, request):
+        """描述WAF自动封禁模块详情
+
+        :param request: Request instance for DescribeWafAutoDenyStatus.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeWafAutoDenyStatusRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeWafAutoDenyStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeWafAutoDenyStatus", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeWafAutoDenyStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeWafThreatenIntelligence(self, request):
+        """描述WAF威胁情报封禁模块配置详情
+
+        :param request: Request instance for DescribeWafThreatenIntelligence.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeWafThreatenIntelligenceRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeWafThreatenIntelligenceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("DescribeWafThreatenIntelligence", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeWafThreatenIntelligenceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -446,6 +728,118 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyDomainWhiteRule(self, request):
+        """更改某一条规则
+
+        :param request: Request instance for ModifyDomainWhiteRule.
+        :type request: :class:`tencentcloud.waf.v20180125.models.ModifyDomainWhiteRuleRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ModifyDomainWhiteRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyDomainWhiteRule", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyDomainWhiteRuleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyWafAutoDenyRules(self, request):
+        """修改ip惩罚规则
+
+        :param request: Request instance for ModifyWafAutoDenyRules.
+        :type request: :class:`tencentcloud.waf.v20180125.models.ModifyWafAutoDenyRulesRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ModifyWafAutoDenyRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyWafAutoDenyRules", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyWafAutoDenyRulesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyWafAutoDenyStatus(self, request):
+        """配置WAF自动封禁模块状态
+
+        :param request: Request instance for ModifyWafAutoDenyStatus.
+        :type request: :class:`tencentcloud.waf.v20180125.models.ModifyWafAutoDenyStatusRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ModifyWafAutoDenyStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyWafAutoDenyStatus", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyWafAutoDenyStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyWafThreatenIntelligence(self, request):
+        """配置WAF威胁情报封禁模块详情
+
+        :param request: Request instance for ModifyWafThreatenIntelligence.
+        :type request: :class:`tencentcloud.waf.v20180125.models.ModifyWafThreatenIntelligenceRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ModifyWafThreatenIntelligenceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("ModifyWafThreatenIntelligence", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyWafThreatenIntelligenceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def SearchAccessLog(self, request):
         """本接口用于搜索WAF访问日志
 
@@ -460,6 +854,34 @@ class WafClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SearchAccessLogResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpsertIpAccessControl(self, request):
+        """Waf IP黑白名单Upsert接口
+
+        :param request: Request instance for UpsertIpAccessControl.
+        :type request: :class:`tencentcloud.waf.v20180125.models.UpsertIpAccessControlRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.UpsertIpAccessControlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            body = self.call("UpsertIpAccessControl", params)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpsertIpAccessControlResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

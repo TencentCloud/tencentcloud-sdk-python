@@ -2652,6 +2652,130 @@ class DescribeSocCheckItemListRspRsp(AbstractModel):
         
 
 
+class DescribeSocCheckResultListRequest(AbstractModel):
+    """DescribeSocCheckResultList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Filter: 查询参数,可支持的查询参数：
+Name,Type,AssetType,Result,PloyName,PloyId
+        :type Filter: list of QueryFilter
+        :param Sorter: 排序参数,可支持的排序参数：CheckStatus,RiskCount
+        :type Sorter: list of QuerySort
+        :param PageSize: 当前页码数据，默认值为10
+        :type PageSize: int
+        :param PageIndex: 当前页面索引，默认值为0
+        :type PageIndex: int
+        :param AssetId: 资产id
+        :type AssetId: str
+        """
+        self.Filter = None
+        self.Sorter = None
+        self.PageSize = None
+        self.PageIndex = None
+        self.AssetId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Filter") is not None:
+            self.Filter = []
+            for item in params.get("Filter"):
+                obj = QueryFilter()
+                obj._deserialize(item)
+                self.Filter.append(obj)
+        if params.get("Sorter") is not None:
+            self.Sorter = []
+            for item in params.get("Sorter"):
+                obj = QuerySort()
+                obj._deserialize(item)
+                self.Sorter.append(obj)
+        self.PageSize = params.get("PageSize")
+        self.PageIndex = params.get("PageIndex")
+        self.AssetId = params.get("AssetId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSocCheckResultListResponse(AbstractModel):
+    """DescribeSocCheckResultList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 无
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.ssa.v20180608.models.DescribeSocCheckResultListRspRsp`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = DescribeSocCheckResultListRspRsp()
+            self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeSocCheckResultListRspRsp(AbstractModel):
+    """检查项结果详情列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param List: 具体检查项详情
+        :type List: list of SocCheckResult
+        :param Total: 检查结果总数
+        :type Total: int
+        :param LowTotal: 低危个数
+        :type LowTotal: int
+        :param MiddleTotal: 中危个数
+        :type MiddleTotal: int
+        :param HighTotal: 高危个数
+        :type HighTotal: int
+        :param NormalTotal: 正常个数
+        :type NormalTotal: int
+        """
+        self.List = None
+        self.Total = None
+        self.LowTotal = None
+        self.MiddleTotal = None
+        self.HighTotal = None
+        self.NormalTotal = None
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self.List = []
+            for item in params.get("List"):
+                obj = SocCheckResult()
+                obj._deserialize(item)
+                self.List.append(obj)
+        self.Total = params.get("Total")
+        self.LowTotal = params.get("LowTotal")
+        self.MiddleTotal = params.get("MiddleTotal")
+        self.HighTotal = params.get("HighTotal")
+        self.NormalTotal = params.get("NormalTotal")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DescribeSocCspmComplianceRequest(AbstractModel):
     """DescribeSocCspmCompliance请求参数结构体
 
@@ -3444,6 +3568,66 @@ class SocCheckItemV1(AbstractModel):
         self.Level = params.get("Level")
         self.Standard = params.get("Standard")
         self.IsFree = params.get("IsFree")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SocCheckResult(AbstractModel):
+    """云安全配置检测结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CheckId: 检查项的uuid
+        :type CheckId: str
+        :param Name: 配置要求
+        :type Name: str
+        :param Type: 检查项的类型
+        :type Type: str
+        :param AssetType: 检查对象
+        :type AssetType: str
+        :param PloyName: 策略名
+        :type PloyName: str
+        :param PloyId: 策略id
+        :type PloyId: int
+        :param Result: 正常,低危,中危,高危
+        :type Result: str
+        :param FailAssetNum: 不符合数
+        :type FailAssetNum: int
+        :param TotalAssetNum: 总数
+        :type TotalAssetNum: int
+        :param DealUrl: 处置建议url链接
+        :type DealUrl: str
+        """
+        self.CheckId = None
+        self.Name = None
+        self.Type = None
+        self.AssetType = None
+        self.PloyName = None
+        self.PloyId = None
+        self.Result = None
+        self.FailAssetNum = None
+        self.TotalAssetNum = None
+        self.DealUrl = None
+
+
+    def _deserialize(self, params):
+        self.CheckId = params.get("CheckId")
+        self.Name = params.get("Name")
+        self.Type = params.get("Type")
+        self.AssetType = params.get("AssetType")
+        self.PloyName = params.get("PloyName")
+        self.PloyId = params.get("PloyId")
+        self.Result = params.get("Result")
+        self.FailAssetNum = params.get("FailAssetNum")
+        self.TotalAssetNum = params.get("TotalAssetNum")
+        self.DealUrl = params.get("DealUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -5992,6 +5992,63 @@ class ProjectEntryEx(AbstractModel):
         
 
 
+class PublishBroadcastMessageRequest(AbstractModel):
+    """PublishBroadcastMessage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProductId: 产品ID
+        :type ProductId: str
+        :param Payload: 消息内容
+        :type Payload: str
+        :param Qos: 消息质量等级
+        :type Qos: int
+        :param PayloadEncoding: ayload内容的编码格式，取值为base64或空。base64表示云端将收到的请求数据进行base64解码后下发到设备，空则直接将原始内容下发到设备
+        :type PayloadEncoding: str
+        """
+        self.ProductId = None
+        self.Payload = None
+        self.Qos = None
+        self.PayloadEncoding = None
+
+
+    def _deserialize(self, params):
+        self.ProductId = params.get("ProductId")
+        self.Payload = params.get("Payload")
+        self.Qos = params.get("Qos")
+        self.PayloadEncoding = params.get("PayloadEncoding")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PublishBroadcastMessageResponse(AbstractModel):
+    """PublishBroadcastMessage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 广播消息任务Id
+        :type TaskId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
 class PublishMessageRequest(AbstractModel):
     """PublishMessage请求参数结构体
 

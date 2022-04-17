@@ -451,6 +451,111 @@ class AddCustomRuleResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class AddDomainWhiteRuleRequest(AbstractModel):
+    """AddDomainWhiteRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Domain: 需要添加的域名
+        :type Domain: str
+        :param Rules: 需要添加的规则
+        :type Rules: list of int non-negative
+        :param Url: 需要添加的规则url
+        :type Url: str
+        :param Function: 规则的方法
+        :type Function: str
+        :param Status: 规则的开关
+        :type Status: int
+        """
+        self.Domain = None
+        self.Rules = None
+        self.Url = None
+        self.Function = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        self.Rules = params.get("Rules")
+        self.Url = params.get("Url")
+        self.Function = params.get("Function")
+        self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddDomainWhiteRuleResponse(AbstractModel):
+    """AddDomainWhiteRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: 规则id
+        :type Id: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Id = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.RequestId = params.get("RequestId")
+
+
+class AutoDenyDetail(AbstractModel):
+    """Waf 攻击自动封禁详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AttackTags: 攻击封禁类型标签
+        :type AttackTags: list of str
+        :param AttackThreshold: 攻击次数阈值
+        :type AttackThreshold: int
+        :param DefenseStatus: 自动封禁状态
+        :type DefenseStatus: int
+        :param TimeThreshold: 攻击时间阈值
+        :type TimeThreshold: int
+        :param DenyTimeThreshold: 自动封禁时间
+        :type DenyTimeThreshold: int
+        :param LastUpdateTime: 最后更新时间
+        :type LastUpdateTime: str
+        """
+        self.AttackTags = None
+        self.AttackThreshold = None
+        self.DefenseStatus = None
+        self.TimeThreshold = None
+        self.DenyTimeThreshold = None
+        self.LastUpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.AttackTags = params.get("AttackTags")
+        self.AttackThreshold = params.get("AttackThreshold")
+        self.DefenseStatus = params.get("DefenseStatus")
+        self.TimeThreshold = params.get("TimeThreshold")
+        self.DenyTimeThreshold = params.get("DenyTimeThreshold")
+        self.LastUpdateTime = params.get("LastUpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BotStatPointItem(AbstractModel):
     """bot的趋势图对象
 
@@ -719,6 +824,56 @@ class DeleteAttackDownloadRecordResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteDomainWhiteRulesRequest(AbstractModel):
+    """DeleteDomainWhiteRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Domain: 需要删除的规则域名
+        :type Domain: str
+        :param Ids: 需要删除的白名单规则
+        :type Ids: list of int non-negative
+        """
+        self.Domain = None
+        self.Ids = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        self.Ids = params.get("Ids")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteDomainWhiteRulesResponse(AbstractModel):
+    """DeleteDomainWhiteRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 出参
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Data = params.get("Data")
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteDownloadRecordRequest(AbstractModel):
     """DeleteDownloadRecord请求参数结构体
 
@@ -757,6 +912,65 @@ class DeleteDownloadRecordResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteIpAccessControlRequest(AbstractModel):
+    """DeleteIpAccessControl请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Domain: 域名
+        :type Domain: str
+        :param Items: 删除的ip数组
+        :type Items: list of str
+        :param DeleteAll: 删除对应的域名下的所有黑/白IP名额单
+        :type DeleteAll: bool
+        """
+        self.Domain = None
+        self.Items = None
+        self.DeleteAll = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        self.Items = params.get("Items")
+        self.DeleteAll = params.get("DeleteAll")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteIpAccessControlResponse(AbstractModel):
+    """DeleteIpAccessControl返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FailedItems: 删除失败的条目
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailedItems: str
+        :param FailedCount: 删除失败的条目数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailedCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FailedItems = None
+        self.FailedCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FailedItems = params.get("FailedItems")
+        self.FailedCount = params.get("FailedCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -969,6 +1183,97 @@ class DescribeAccessIndexResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeAutoDenyIPRequest(AbstractModel):
+    """DescribeAutoDenyIP请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Domain: 域名
+        :type Domain: str
+        :param Ip: 查询IP自动封禁状态
+        :type Ip: str
+        :param Count: 计数标识
+        :type Count: int
+        :param Category: 类别
+        :type Category: str
+        :param VtsMin: 有效时间最小时间戳
+        :type VtsMin: int
+        :param VtsMax: 有效时间最大时间戳
+        :type VtsMax: int
+        :param CtsMin: 创建时间最小时间戳
+        :type CtsMin: int
+        :param CtsMax: 创建时间最大时间戳
+        :type CtsMax: int
+        :param Skip: 偏移量
+        :type Skip: int
+        :param Limit: 限制条数
+        :type Limit: int
+        :param Name: 策略名字
+        :type Name: str
+        :param Sort: 排序参数
+        :type Sort: str
+        """
+        self.Domain = None
+        self.Ip = None
+        self.Count = None
+        self.Category = None
+        self.VtsMin = None
+        self.VtsMax = None
+        self.CtsMin = None
+        self.CtsMax = None
+        self.Skip = None
+        self.Limit = None
+        self.Name = None
+        self.Sort = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        self.Ip = params.get("Ip")
+        self.Count = params.get("Count")
+        self.Category = params.get("Category")
+        self.VtsMin = params.get("VtsMin")
+        self.VtsMax = params.get("VtsMax")
+        self.CtsMin = params.get("CtsMin")
+        self.CtsMax = params.get("CtsMax")
+        self.Skip = params.get("Skip")
+        self.Limit = params.get("Limit")
+        self.Name = params.get("Name")
+        self.Sort = params.get("Sort")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAutoDenyIPResponse(AbstractModel):
+    """DescribeAutoDenyIP返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 查询IP封禁状态返回结果
+        :type Data: :class:`tencentcloud.waf.v20180125.models.IpHitItemsData`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = IpHitItemsData()
+            self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeCustomRulesPagingInfo(AbstractModel):
     """DescribeCustomRules接口的翻页参数
 
@@ -1134,6 +1439,80 @@ class DescribeCustomRulesRspRuleListItem(AbstractModel):
         
 
 
+class DescribeDomainWhiteRulesRequest(AbstractModel):
+    """DescribeDomainWhiteRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Domain: 需要查询的域名
+        :type Domain: str
+        :param Url: 请求的白名单匹配路径
+        :type Url: str
+        :param Page: 翻到多少页
+        :type Page: int
+        :param Count: 每页展示的条数
+        :type Count: int
+        :param Sort: 排序方式
+        :type Sort: str
+        :param RuleId: 规则ID
+        :type RuleId: str
+        """
+        self.Domain = None
+        self.Url = None
+        self.Page = None
+        self.Count = None
+        self.Sort = None
+        self.RuleId = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        self.Url = params.get("Url")
+        self.Page = params.get("Page")
+        self.Count = params.get("Count")
+        self.Sort = params.get("Sort")
+        self.RuleId = params.get("RuleId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDomainWhiteRulesResponse(AbstractModel):
+    """DescribeDomainWhiteRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleList: 规则列表
+        :type RuleList: list of RuleList
+        :param Total: 规则的数量
+        :type Total: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RuleList = None
+        self.Total = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("RuleList") is not None:
+            self.RuleList = []
+            for item in params.get("RuleList"):
+                obj = RuleList()
+                obj._deserialize(item)
+                self.RuleList.append(obj)
+        self.Total = params.get("Total")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeFlowTrendRequest(AbstractModel):
     """DescribeFlowTrend请求参数结构体
 
@@ -1192,6 +1571,190 @@ class DescribeFlowTrendResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeIpAccessControlRequest(AbstractModel):
+    """DescribeIpAccessControl请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Domain: 域名
+        :type Domain: str
+        :param Count: 计数标识
+        :type Count: int
+        :param ActionType: 动作
+        :type ActionType: int
+        :param VtsMin: 有效时间最小时间戳
+        :type VtsMin: int
+        :param VtsMax: 有效时间最大时间戳
+        :type VtsMax: int
+        :param CtsMin: 创建时间最小时间戳
+        :type CtsMin: int
+        :param CtsMax: 创建时间最大时间戳
+        :type CtsMax: int
+        :param OffSet: 偏移
+        :type OffSet: int
+        :param Limit: 限制
+        :type Limit: int
+        :param Source: 来源
+        :type Source: str
+        :param Sort: 排序参数
+        :type Sort: str
+        :param Ip: ip
+        :type Ip: str
+        """
+        self.Domain = None
+        self.Count = None
+        self.ActionType = None
+        self.VtsMin = None
+        self.VtsMax = None
+        self.CtsMin = None
+        self.CtsMax = None
+        self.OffSet = None
+        self.Limit = None
+        self.Source = None
+        self.Sort = None
+        self.Ip = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        self.Count = params.get("Count")
+        self.ActionType = params.get("ActionType")
+        self.VtsMin = params.get("VtsMin")
+        self.VtsMax = params.get("VtsMax")
+        self.CtsMin = params.get("CtsMin")
+        self.CtsMax = params.get("CtsMax")
+        self.OffSet = params.get("OffSet")
+        self.Limit = params.get("Limit")
+        self.Source = params.get("Source")
+        self.Sort = params.get("Sort")
+        self.Ip = params.get("Ip")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeIpAccessControlResponse(AbstractModel):
+    """DescribeIpAccessControl返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 输出
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.waf.v20180125.models.IpAccessControlData`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = IpAccessControlData()
+            self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeIpHitItemsRequest(AbstractModel):
+    """DescribeIpHitItems请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Domain: 域名
+        :type Domain: str
+        :param Count: 计数标识
+        :type Count: int
+        :param Category: 类别
+        :type Category: str
+        :param VtsMin: 有效时间最小时间戳
+        :type VtsMin: int
+        :param VtsMax: 有效时间最大时间戳
+        :type VtsMax: int
+        :param CtsMin: 创建时间最小时间戳
+        :type CtsMin: int
+        :param CtsMax: 创建时间最大时间戳
+        :type CtsMax: int
+        :param Skip: 偏移参数
+        :type Skip: int
+        :param Limit: 限制数目
+        :type Limit: int
+        :param Name: 策略名称
+        :type Name: str
+        :param Sort: 排序参数
+        :type Sort: str
+        :param Ip: IP
+        :type Ip: str
+        """
+        self.Domain = None
+        self.Count = None
+        self.Category = None
+        self.VtsMin = None
+        self.VtsMax = None
+        self.CtsMin = None
+        self.CtsMax = None
+        self.Skip = None
+        self.Limit = None
+        self.Name = None
+        self.Sort = None
+        self.Ip = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        self.Count = params.get("Count")
+        self.Category = params.get("Category")
+        self.VtsMin = params.get("VtsMin")
+        self.VtsMax = params.get("VtsMax")
+        self.CtsMin = params.get("CtsMin")
+        self.CtsMax = params.get("CtsMax")
+        self.Skip = params.get("Skip")
+        self.Limit = params.get("Limit")
+        self.Name = params.get("Name")
+        self.Sort = params.get("Sort")
+        self.Ip = params.get("Ip")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeIpHitItemsResponse(AbstractModel):
+    """DescribeIpHitItems返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.waf.v20180125.models.IpHitItemsData`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = IpHitItemsData()
+            self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeUserClbWafRegionsRequest(AbstractModel):
     """DescribeUserClbWafRegions请求参数结构体
 
@@ -1217,6 +1780,121 @@ class DescribeUserClbWafRegionsResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.Data = params.get("Data")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeWafAutoDenyRulesRequest(AbstractModel):
+    """DescribeWafAutoDenyRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Domain: 域名
+        :type Domain: str
+        """
+        self.Domain = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeWafAutoDenyRulesResponse(AbstractModel):
+    """DescribeWafAutoDenyRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AttackThreshold: 攻击次数阈值
+        :type AttackThreshold: int
+        :param TimeThreshold: 攻击时间阈值
+        :type TimeThreshold: int
+        :param DenyTimeThreshold: 自动封禁时间
+        :type DenyTimeThreshold: int
+        :param DefenseStatus: 自动封禁状态
+        :type DefenseStatus: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AttackThreshold = None
+        self.TimeThreshold = None
+        self.DenyTimeThreshold = None
+        self.DefenseStatus = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AttackThreshold = params.get("AttackThreshold")
+        self.TimeThreshold = params.get("TimeThreshold")
+        self.DenyTimeThreshold = params.get("DenyTimeThreshold")
+        self.DefenseStatus = params.get("DefenseStatus")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeWafAutoDenyStatusRequest(AbstractModel):
+    """DescribeWafAutoDenyStatus请求参数结构体
+
+    """
+
+
+class DescribeWafAutoDenyStatusResponse(AbstractModel):
+    """DescribeWafAutoDenyStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param WafAutoDenyDetails: WAF 自动封禁详情
+        :type WafAutoDenyDetails: :class:`tencentcloud.waf.v20180125.models.AutoDenyDetail`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.WafAutoDenyDetails = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("WafAutoDenyDetails") is not None:
+            self.WafAutoDenyDetails = AutoDenyDetail()
+            self.WafAutoDenyDetails._deserialize(params.get("WafAutoDenyDetails"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeWafThreatenIntelligenceRequest(AbstractModel):
+    """DescribeWafThreatenIntelligence请求参数结构体
+
+    """
+
+
+class DescribeWafThreatenIntelligenceResponse(AbstractModel):
+    """DescribeWafThreatenIntelligence返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param WafThreatenIntelligenceDetails: WAF 威胁情报封禁信息
+        :type WafThreatenIntelligenceDetails: :class:`tencentcloud.waf.v20180125.models.WafThreatenIntelligenceDetails`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.WafThreatenIntelligenceDetails = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("WafThreatenIntelligenceDetails") is not None:
+            self.WafThreatenIntelligenceDetails = WafThreatenIntelligenceDetails()
+            self.WafThreatenIntelligenceDetails._deserialize(params.get("WafThreatenIntelligenceDetails"))
         self.RequestId = params.get("RequestId")
 
 
@@ -1285,6 +1963,162 @@ class ExportAccessInfo(AbstractModel):
         self.To = params.get("To")
         self.CosPath = params.get("CosPath")
         self.CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IpAccessControlData(AbstractModel):
+    """数据封装
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Res: ip黑白名单
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Res: list of IpAccessControlItem
+        :param TotalCount: 计数
+        :type TotalCount: int
+        """
+        self.Res = None
+        self.TotalCount = None
+
+
+    def _deserialize(self, params):
+        if params.get("Res") is not None:
+            self.Res = []
+            for item in params.get("Res"):
+                obj = IpAccessControlItem()
+                obj._deserialize(item)
+                self.Res.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IpAccessControlItem(AbstractModel):
+    """ip黑白名单
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ActionType: 动作
+        :type ActionType: int
+        :param Ip: ip
+        :type Ip: str
+        :param Note: 备注
+        :type Note: str
+        :param Source: 来源
+        :type Source: str
+        :param TsVersion: 更新时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TsVersion: int
+        :param ValidTs: 有效截止时间戳
+        :type ValidTs: int
+        """
+        self.ActionType = None
+        self.Ip = None
+        self.Note = None
+        self.Source = None
+        self.TsVersion = None
+        self.ValidTs = None
+
+
+    def _deserialize(self, params):
+        self.ActionType = params.get("ActionType")
+        self.Ip = params.get("Ip")
+        self.Note = params.get("Note")
+        self.Source = params.get("Source")
+        self.TsVersion = params.get("TsVersion")
+        self.ValidTs = params.get("ValidTs")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IpHitItem(AbstractModel):
+    """ip封堵状态数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Action: 动作
+        :type Action: int
+        :param Category: 类别
+        :type Category: str
+        :param Ip: ip
+        :type Ip: str
+        :param Name: 规则名称
+        :type Name: str
+        :param TsVersion: 时间戳
+        :type TsVersion: int
+        :param ValidTs: 有效截止时间戳
+        :type ValidTs: int
+        """
+        self.Action = None
+        self.Category = None
+        self.Ip = None
+        self.Name = None
+        self.TsVersion = None
+        self.ValidTs = None
+
+
+    def _deserialize(self, params):
+        self.Action = params.get("Action")
+        self.Category = params.get("Category")
+        self.Ip = params.get("Ip")
+        self.Name = params.get("Name")
+        self.TsVersion = params.get("TsVersion")
+        self.ValidTs = params.get("ValidTs")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IpHitItemsData(AbstractModel):
+    """封装参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Res: 数组封装
+        :type Res: list of IpHitItem
+        :param TotalCount: 总数目
+        :type TotalCount: int
+        """
+        self.Res = None
+        self.TotalCount = None
+
+
+    def _deserialize(self, params):
+        if params.get("Res") is not None:
+            self.Res = []
+            for item in params.get("Res"):
+                obj = IpHitItem()
+                obj._deserialize(item)
+                self.Res.append(obj)
+        self.TotalCount = params.get("TotalCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1398,6 +2232,228 @@ class ModifyCustomRuleStatusResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyDomainWhiteRuleRequest(AbstractModel):
+    """ModifyDomainWhiteRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Domain: 需要更改的规则的域名
+        :type Domain: str
+        :param Id: 白名单id
+        :type Id: int
+        :param Rules: 规则的id列表
+        :type Rules: list of int non-negative
+        :param Url: 规则匹配路径
+        :type Url: str
+        :param Function: 规则匹配方法
+        :type Function: str
+        :param Status: 规则的开关状态
+        :type Status: int
+        """
+        self.Domain = None
+        self.Id = None
+        self.Rules = None
+        self.Url = None
+        self.Function = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        self.Id = params.get("Id")
+        self.Rules = params.get("Rules")
+        self.Url = params.get("Url")
+        self.Function = params.get("Function")
+        self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDomainWhiteRuleResponse(AbstractModel):
+    """ModifyDomainWhiteRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyWafAutoDenyRulesRequest(AbstractModel):
+    """ModifyWafAutoDenyRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Domain: 域名
+        :type Domain: str
+        :param AttackThreshold: 攻击次数阈值
+        :type AttackThreshold: int
+        :param TimeThreshold: 攻击时间阈值
+        :type TimeThreshold: int
+        :param DenyTimeThreshold: 自动封禁时间
+        :type DenyTimeThreshold: int
+        :param DefenseStatus: 自动封禁状态
+        :type DefenseStatus: int
+        """
+        self.Domain = None
+        self.AttackThreshold = None
+        self.TimeThreshold = None
+        self.DenyTimeThreshold = None
+        self.DefenseStatus = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        self.AttackThreshold = params.get("AttackThreshold")
+        self.TimeThreshold = params.get("TimeThreshold")
+        self.DenyTimeThreshold = params.get("DenyTimeThreshold")
+        self.DefenseStatus = params.get("DefenseStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyWafAutoDenyRulesResponse(AbstractModel):
+    """ModifyWafAutoDenyRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Success: 成功的状态码，需要JSON解码后再使用，返回的格式是{"域名":"状态"}，成功的状态码为Success，其它的为失败的状态码（yunapi定义的错误码）
+        :type Success: :class:`tencentcloud.waf.v20180125.models.ResponseCode`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Success = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Success") is not None:
+            self.Success = ResponseCode()
+            self.Success._deserialize(params.get("Success"))
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyWafAutoDenyStatusRequest(AbstractModel):
+    """ModifyWafAutoDenyStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param WafAutoDenyDetails: WAF 自动封禁配置项
+        :type WafAutoDenyDetails: :class:`tencentcloud.waf.v20180125.models.AutoDenyDetail`
+        """
+        self.WafAutoDenyDetails = None
+
+
+    def _deserialize(self, params):
+        if params.get("WafAutoDenyDetails") is not None:
+            self.WafAutoDenyDetails = AutoDenyDetail()
+            self.WafAutoDenyDetails._deserialize(params.get("WafAutoDenyDetails"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyWafAutoDenyStatusResponse(AbstractModel):
+    """ModifyWafAutoDenyStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param WafAutoDenyDetails: WAF 自动封禁配置项
+        :type WafAutoDenyDetails: :class:`tencentcloud.waf.v20180125.models.AutoDenyDetail`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.WafAutoDenyDetails = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("WafAutoDenyDetails") is not None:
+            self.WafAutoDenyDetails = AutoDenyDetail()
+            self.WafAutoDenyDetails._deserialize(params.get("WafAutoDenyDetails"))
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyWafThreatenIntelligenceRequest(AbstractModel):
+    """ModifyWafThreatenIntelligence请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param WafThreatenIntelligenceDetails: 配置WAF威胁情报封禁模块详情
+        :type WafThreatenIntelligenceDetails: :class:`tencentcloud.waf.v20180125.models.WafThreatenIntelligenceDetails`
+        """
+        self.WafThreatenIntelligenceDetails = None
+
+
+    def _deserialize(self, params):
+        if params.get("WafThreatenIntelligenceDetails") is not None:
+            self.WafThreatenIntelligenceDetails = WafThreatenIntelligenceDetails()
+            self.WafThreatenIntelligenceDetails._deserialize(params.get("WafThreatenIntelligenceDetails"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyWafThreatenIntelligenceResponse(AbstractModel):
+    """ModifyWafThreatenIntelligence返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param WafThreatenIntelligenceDetails: 当前WAF威胁情报封禁模块详情
+        :type WafThreatenIntelligenceDetails: :class:`tencentcloud.waf.v20180125.models.WafThreatenIntelligenceDetails`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.WafThreatenIntelligenceDetails = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("WafThreatenIntelligenceDetails") is not None:
+            self.WafThreatenIntelligenceDetails = WafThreatenIntelligenceDetails()
+            self.WafThreatenIntelligenceDetails._deserialize(params.get("WafThreatenIntelligenceDetails"))
+        self.RequestId = params.get("RequestId")
+
+
 class ResponseCode(AbstractModel):
     """响应体的返回码
 
@@ -1417,6 +2473,50 @@ class ResponseCode(AbstractModel):
     def _deserialize(self, params):
         self.Code = params.get("Code")
         self.Message = params.get("Message")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RuleList(AbstractModel):
+    """规则白名单
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: 规则Id
+        :type Id: int
+        :param Rules: 规则列表的id
+        :type Rules: list of int non-negative
+        :param Url: 请求url
+        :type Url: str
+        :param Function: 请求的方法
+        :type Function: str
+        :param Time: 时间戳
+        :type Time: str
+        :param Status: 开关状态
+        :type Status: int
+        """
+        self.Id = None
+        self.Rules = None
+        self.Url = None
+        self.Function = None
+        self.Time = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.Rules = params.get("Rules")
+        self.Url = params.get("Url")
+        self.Function = params.get("Function")
+        self.Time = params.get("Time")
+        self.Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1558,6 +2658,98 @@ class Strategy(AbstractModel):
         self.CompareFunc = params.get("CompareFunc")
         self.Content = params.get("Content")
         self.Arg = params.get("Arg")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpsertIpAccessControlRequest(AbstractModel):
+    """UpsertIpAccessControl请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Domain: 域名
+        :type Domain: str
+        :param Items: ip 参数列表，json数组由ip，source，note，action，valid_ts组成。ip对应配置的ip地址，source固定为custom值，note为注释，action值42为黑名单，40为白名单，valid_ts为有效日期，值为秒级时间戳
+        :type Items: list of str
+        :param Edition: clb-waf或者sparta-waf
+        :type Edition: str
+        """
+        self.Domain = None
+        self.Items = None
+        self.Edition = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        self.Items = params.get("Items")
+        self.Edition = params.get("Edition")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpsertIpAccessControlResponse(AbstractModel):
+    """UpsertIpAccessControl返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FailedItems: 添加或修改失败的条目
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailedItems: str
+        :param FailedCount: 添加或修改失败的数目
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailedCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FailedItems = None
+        self.FailedCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FailedItems = params.get("FailedItems")
+        self.FailedCount = params.get("FailedCount")
+        self.RequestId = params.get("RequestId")
+
+
+class WafThreatenIntelligenceDetails(AbstractModel):
+    """Waf 威胁情报封禁模块配置详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DefenseStatus: 封禁模组启用状态
+        :type DefenseStatus: int
+        :param Tags: 封禁属性标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of str
+        :param LastUpdateTime: 最后更新时间
+        :type LastUpdateTime: str
+        """
+        self.DefenseStatus = None
+        self.Tags = None
+        self.LastUpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.DefenseStatus = params.get("DefenseStatus")
+        self.Tags = params.get("Tags")
+        self.LastUpdateTime = params.get("LastUpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -1679,7 +1679,7 @@ class ClsClient(AbstractClient):
 
 
     def OpenKafkaConsumer(self, request):
-        """打开kafka协议消费
+        """打开Kafka协议消费功能
 
         :param request: Request instance for OpenKafkaConsumer.
         :type request: :class:`tencentcloud.cls.v20201016.models.OpenKafkaConsumerRequest`

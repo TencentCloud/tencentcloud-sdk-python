@@ -10608,6 +10608,12 @@ class OverseaConfig(AbstractModel):
         :param OssPrivateAccess: 回源OSS私有鉴权。
 注意：此字段可能返回 null，表示取不到有效值。
         :type OssPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.OssPrivateAccess`
+        :param HwPrivateAccess: 华为云对象存储鉴权
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HwPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.HwPrivateAccess`
+        :param QnPrivateAccess: 七牛云对象存储鉴权
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QnPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.QnPrivateAccess`
         """
         self.Authentication = None
         self.BandwidthAlert = None
@@ -10635,6 +10641,8 @@ class OverseaConfig(AbstractModel):
         self.VideoSeek = None
         self.AwsPrivateAccess = None
         self.OssPrivateAccess = None
+        self.HwPrivateAccess = None
+        self.QnPrivateAccess = None
 
 
     def _deserialize(self, params):
@@ -10714,6 +10722,12 @@ class OverseaConfig(AbstractModel):
         if params.get("OssPrivateAccess") is not None:
             self.OssPrivateAccess = OssPrivateAccess()
             self.OssPrivateAccess._deserialize(params.get("OssPrivateAccess"))
+        if params.get("HwPrivateAccess") is not None:
+            self.HwPrivateAccess = HwPrivateAccess()
+            self.HwPrivateAccess._deserialize(params.get("HwPrivateAccess"))
+        if params.get("QnPrivateAccess") is not None:
+            self.QnPrivateAccess = QnPrivateAccess()
+            self.QnPrivateAccess._deserialize(params.get("QnPrivateAccess"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
