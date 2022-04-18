@@ -33,13 +33,13 @@ try:
     clientProfile.httpProfile = httpProfile
 
     # common client方法支持指定header，如 X-TC-TraceId、X-TC-Canary
-    header = {
+    headers = {
         "X-TC-TraceId": "ffe0c072-8a5d-4e17-8887-a8a60252abca"
     }
 
     # 实例化要请求的common client对象，clientProfile是可选的。
     common_client = CommonClient("cvm", '2017-03-12', cred, "ap-shanghai", profile=clientProfile)
-    # 接口参数作为json字典传入，得到的输出也是json字典，请求失败将抛出异常
-    print(common_client.call_json("DescribeInstances", {"Limit": 10}, header=header))
+    # 接口参数作为json字典传入，得到的输出也是json字典，请求失败将抛出异常，headers为可选参数
+    print(common_client.call_json("DescribeInstances", {"Limit": 10}, headers=headers))
 except TencentCloudSDKException as err:
     print(err)

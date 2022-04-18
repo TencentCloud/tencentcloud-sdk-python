@@ -112,12 +112,12 @@ try:
     req.Filters = [respFilter]  # Filters 是成员为Filter对象的列表
 
     # python sdk支持自定义header如 X-TC-TraceId、X-TC-Canary，可以按照如下方式指定，header必须是字典类型的
-    header = {
+    headers = {
         "X-TC-TraceId": "ffe0c072-8a5d-4e17-8887-a8a60252abca"
     }
-    req.header = header
+    req.headers = headers
 
-    # 通过client对象调用DescribeInstances方法发起请求。注意请求方法名与请求对象是对应的，header为可选参数。
+    # 通过client对象调用DescribeInstances方法发起请求。注意请求方法名与请求对象是对应的，headers为可选参数。
     # 返回的resp是一个DescribeInstancesResponse类的实例，与请求对象对应。
     resp = client.DescribeInstances(req)
 

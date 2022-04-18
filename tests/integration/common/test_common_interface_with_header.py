@@ -22,10 +22,10 @@ def test_common_interface():
         clientProfile = ClientProfile()
         clientProfile.httpProfile = httpProfile
 
-        header = {
+        headers = {
             "X-TC-TraceId": "ffe0c072-8a5d-4e17-8887-a8a60252abca",
         }
         client = CommonClient(service, version, cred, region, clientProfile)
-        resp = client.call_json("DescribeZones", {}, header=header)
+        resp = client.call_json("DescribeZones", {}, headers=headers)
     except TencentCloudSDKException as err:
         assert False

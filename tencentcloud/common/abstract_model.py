@@ -21,12 +21,12 @@ class AbstractModel(object):
     _headers = None
 
     @property
-    def header(self):
+    def headers(self):
         return self._headers
 
-    @header.setter
-    def header(self, header):
-        self._headers = header
+    @headers.setter
+    def headers(self, headers):
+        self._headers = headers
 
     def _serialize(self, allow_none=False):
         d = vars(self)

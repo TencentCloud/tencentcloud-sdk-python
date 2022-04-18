@@ -22,10 +22,10 @@ def _test_describe_instances(http_method, sign_method, unsigned_payload=False):
 
     client = cvm_client.CvmClient(cred, "ap-guangzhou", clientProfile)
     req = models.DescribeInstancesRequest()
-    header = {
+    headers = {
         "X-TC-TraceId": "ffe0c072-8a5d-4e17-8887-a8a60252abca",
     }
-    req.header = header
+    req.headers = headers
 
     fzone = models.Filter()
     fzone.Name = "zone"
