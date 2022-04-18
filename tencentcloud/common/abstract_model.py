@@ -18,11 +18,22 @@ import sys
 
 class AbstractModel(object):
     """Base class for all models."""
+    _headers = None
+
+    @property
+    def headers(self):
+        return self._headers
+
+    @headers.setter
+    def headers(self, headers):
+        self._headers = headers
 
     def _serialize(self, allow_none=False):
         d = vars(self)
         ret = {}
         for k in d:
+            if k.startswith("_"):
+                continue
             if isinstance(d[k], AbstractModel):
                 r = d[k]._serialize(allow_none)
             elif isinstance(d[k], list):
