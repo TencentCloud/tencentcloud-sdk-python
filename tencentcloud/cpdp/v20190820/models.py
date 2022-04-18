@@ -3440,7 +3440,7 @@ PAYMENT_ORDER_EXTERNAL_NOTIFY_DATA: 支付通知数据
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExternalChannelDataName: str
         :param ExternalChannelDataValue: 第三方渠道数据值。
-当ExternalChannelDataType=PAYMENT时，反序列化格式请参考[ExternalChannelPaymentDataValue](https://midas-juxin-next.pages.woa.com/apidocs/external-channel-data/QueryExternalChannelData.html#ExternalChannelPaymentDataValue)
+当ExternalChannelDataType=PAYMENT时，反序列化格式请参考[ExternalChannelPaymentDataValue](https://dev.tke.midas.qq.com/juxin-doc-next/apidocs/external-channel-data/QueryExternalChannelData.html#externalchannelpaymentdatavalue)
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExternalChannelDataValue: str
         """
@@ -11273,7 +11273,7 @@ class QueryAcctItem(AbstractModel):
         :type SubMchType: str
         :param SubMchName: 子商户名称
         :type SubMchName: str
-        :param SubAcctNo: 子账号号
+        :param SubAcctNo: 子账号
         :type SubAcctNo: str
         :param ShortName: 不填则默认子商户名称
         :type ShortName: str
@@ -19151,7 +19151,7 @@ class RefundCloudOrderRequest(AbstractModel):
         :param RefundId: 退款订单号，仅支持数字、字母、下划线（_）、横杠字符（-）、点（.）的组合
         :type RefundId: str
         :param TotalRefundAmt: 退款金额，单位：分
-当该字段为空或者为0时，系统会默认使用订单当实付金额做为退款金额
+当该字段为空或者为0时，系统会默认使用订单当实付金额作为退款金额
         :type TotalRefundAmt: int
         :param OutTradeNo: 商品订单，仅支持数字、字母、下划线（_）、横杠字符（-）、点（.）的组合
         :type OutTradeNo: str

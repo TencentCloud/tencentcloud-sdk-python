@@ -36,7 +36,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AttachPlugin", params)
+            headers = request.headers
+            body = self.call("AttachPlugin", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AttachPluginResponse()
@@ -64,7 +65,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("BindApiApp", params)
+            headers = request.headers
+            body = self.call("BindApiApp", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.BindApiAppResponse()
@@ -94,7 +96,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("BindEnvironment", params)
+            headers = request.headers
+            body = self.call("BindEnvironment", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.BindEnvironmentResponse()
@@ -122,7 +125,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("BindIPStrategy", params)
+            headers = request.headers
+            body = self.call("BindIPStrategy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.BindIPStrategyResponse()
@@ -151,7 +155,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("BindSecretIds", params)
+            headers = request.headers
+            body = self.call("BindSecretIds", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.BindSecretIdsResponse()
@@ -180,7 +185,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("BindSubDomain", params)
+            headers = request.headers
+            body = self.call("BindSubDomain", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.BindSubDomainResponse()
@@ -208,7 +214,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("BuildAPIDoc", params)
+            headers = request.headers
+            body = self.call("BuildAPIDoc", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.BuildAPIDocResponse()
@@ -236,7 +243,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateAPIDoc", params)
+            headers = request.headers
+            body = self.call("CreateAPIDoc", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateAPIDocResponse()
@@ -264,7 +272,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateApi", params)
+            headers = request.headers
+            body = self.call("CreateApi", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateApiResponse()
@@ -292,7 +301,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateApiApp", params)
+            headers = request.headers
+            body = self.call("CreateApiApp", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateApiAppResponse()
@@ -320,7 +330,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateApiKey", params)
+            headers = request.headers
+            body = self.call("CreateApiKey", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateApiKeyResponse()
@@ -348,7 +359,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateIPStrategy", params)
+            headers = request.headers
+            body = self.call("CreateIPStrategy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateIPStrategyResponse()
@@ -376,7 +388,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreatePlugin", params)
+            headers = request.headers
+            body = self.call("CreatePlugin", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreatePluginResponse()
@@ -405,7 +418,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateService", params)
+            headers = request.headers
+            body = self.call("CreateService", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateServiceResponse()
@@ -433,7 +447,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateUpstream", params)
+            headers = request.headers
+            body = self.call("CreateUpstream", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateUpstreamResponse()
@@ -462,7 +477,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateUsagePlan", params)
+            headers = request.headers
+            body = self.call("CreateUsagePlan", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateUsagePlanResponse()
@@ -490,7 +506,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteAPIDoc", params)
+            headers = request.headers
+            body = self.call("DeleteAPIDoc", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteAPIDocResponse()
@@ -518,7 +535,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteApi", params)
+            headers = request.headers
+            body = self.call("DeleteApi", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteApiResponse()
@@ -546,7 +564,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteApiApp", params)
+            headers = request.headers
+            body = self.call("DeleteApiApp", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteApiAppResponse()
@@ -574,7 +593,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteApiKey", params)
+            headers = request.headers
+            body = self.call("DeleteApiKey", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteApiKeyResponse()
@@ -602,7 +622,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteIPStrategy", params)
+            headers = request.headers
+            body = self.call("DeleteIPStrategy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteIPStrategyResponse()
@@ -630,7 +651,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeletePlugin", params)
+            headers = request.headers
+            body = self.call("DeletePlugin", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeletePluginResponse()
@@ -658,7 +680,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteService", params)
+            headers = request.headers
+            body = self.call("DeleteService", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteServiceResponse()
@@ -687,7 +710,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteServiceSubDomainMapping", params)
+            headers = request.headers
+            body = self.call("DeleteServiceSubDomainMapping", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteServiceSubDomainMappingResponse()
@@ -715,7 +739,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteUpstream", params)
+            headers = request.headers
+            body = self.call("DeleteUpstream", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteUpstreamResponse()
@@ -743,7 +768,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteUsagePlan", params)
+            headers = request.headers
+            body = self.call("DeleteUsagePlan", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteUsagePlanResponse()
@@ -773,7 +799,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DemoteServiceUsagePlan", params)
+            headers = request.headers
+            body = self.call("DemoteServiceUsagePlan", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DemoteServiceUsagePlanResponse()
@@ -801,7 +828,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAPIDocDetail", params)
+            headers = request.headers
+            body = self.call("DescribeAPIDocDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAPIDocDetailResponse()
@@ -829,7 +857,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAPIDocs", params)
+            headers = request.headers
+            body = self.call("DescribeAPIDocs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAPIDocsResponse()
@@ -857,7 +886,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAllPluginApis", params)
+            headers = request.headers
+            body = self.call("DescribeAllPluginApis", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAllPluginApisResponse()
@@ -885,7 +915,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeApi", params)
+            headers = request.headers
+            body = self.call("DescribeApi", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeApiResponse()
@@ -913,7 +944,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeApiApp", params)
+            headers = request.headers
+            body = self.call("DescribeApiApp", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeApiAppResponse()
@@ -941,7 +973,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeApiAppBindApisStatus", params)
+            headers = request.headers
+            body = self.call("DescribeApiAppBindApisStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeApiAppBindApisStatusResponse()
@@ -969,7 +1002,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeApiAppsStatus", params)
+            headers = request.headers
+            body = self.call("DescribeApiAppsStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeApiAppsStatusResponse()
@@ -997,7 +1031,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeApiBindApiAppsStatus", params)
+            headers = request.headers
+            body = self.call("DescribeApiBindApiAppsStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeApiBindApiAppsStatusResponse()
@@ -1025,7 +1060,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeApiEnvironmentStrategy", params)
+            headers = request.headers
+            body = self.call("DescribeApiEnvironmentStrategy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeApiEnvironmentStrategyResponse()
@@ -1053,7 +1089,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeApiForApiApp", params)
+            headers = request.headers
+            body = self.call("DescribeApiForApiApp", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeApiForApiAppResponse()
@@ -1082,7 +1119,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeApiKey", params)
+            headers = request.headers
+            body = self.call("DescribeApiKey", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeApiKeyResponse()
@@ -1111,7 +1149,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeApiKeysStatus", params)
+            headers = request.headers
+            body = self.call("DescribeApiKeysStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeApiKeysStatusResponse()
@@ -1140,7 +1179,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeApiUsagePlan", params)
+            headers = request.headers
+            body = self.call("DescribeApiUsagePlan", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeApiUsagePlanResponse()
@@ -1168,7 +1208,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeApisStatus", params)
+            headers = request.headers
+            body = self.call("DescribeApisStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeApisStatusResponse()
@@ -1196,7 +1237,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeExclusiveInstanceDetail", params)
+            headers = request.headers
+            body = self.call("DescribeExclusiveInstanceDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeExclusiveInstanceDetailResponse()
@@ -1224,7 +1266,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeExclusiveInstances", params)
+            headers = request.headers
+            body = self.call("DescribeExclusiveInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeExclusiveInstancesResponse()
@@ -1252,7 +1295,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeIPStrategy", params)
+            headers = request.headers
+            body = self.call("DescribeIPStrategy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeIPStrategyResponse()
@@ -1280,7 +1324,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeIPStrategyApisStatus", params)
+            headers = request.headers
+            body = self.call("DescribeIPStrategyApisStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeIPStrategyApisStatusResponse()
@@ -1308,7 +1353,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeIPStrategysStatus", params)
+            headers = request.headers
+            body = self.call("DescribeIPStrategysStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeIPStrategysStatusResponse()
@@ -1336,7 +1382,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeLogSearch", params)
+            headers = request.headers
+            body = self.call("DescribeLogSearch", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLogSearchResponse()
@@ -1364,7 +1411,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePlugin", params)
+            headers = request.headers
+            body = self.call("DescribePlugin", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePluginResponse()
@@ -1392,7 +1440,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePluginApis", params)
+            headers = request.headers
+            body = self.call("DescribePluginApis", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePluginApisResponse()
@@ -1420,7 +1469,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePlugins", params)
+            headers = request.headers
+            body = self.call("DescribePlugins", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePluginsResponse()
@@ -1448,7 +1498,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeService", params)
+            headers = request.headers
+            body = self.call("DescribeService", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeServiceResponse()
@@ -1476,7 +1527,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeServiceEnvironmentList", params)
+            headers = request.headers
+            body = self.call("DescribeServiceEnvironmentList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeServiceEnvironmentListResponse()
@@ -1505,7 +1557,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeServiceEnvironmentReleaseHistory", params)
+            headers = request.headers
+            body = self.call("DescribeServiceEnvironmentReleaseHistory", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeServiceEnvironmentReleaseHistoryResponse()
@@ -1533,7 +1586,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeServiceEnvironmentStrategy", params)
+            headers = request.headers
+            body = self.call("DescribeServiceEnvironmentStrategy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeServiceEnvironmentStrategyResponse()
@@ -1561,7 +1615,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeServiceForApiApp", params)
+            headers = request.headers
+            body = self.call("DescribeServiceForApiApp", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeServiceForApiAppResponse()
@@ -1590,7 +1645,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeServiceReleaseVersion", params)
+            headers = request.headers
+            body = self.call("DescribeServiceReleaseVersion", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeServiceReleaseVersionResponse()
@@ -1619,7 +1675,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeServiceSubDomainMappings", params)
+            headers = request.headers
+            body = self.call("DescribeServiceSubDomainMappings", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeServiceSubDomainMappingsResponse()
@@ -1648,7 +1705,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeServiceSubDomains", params)
+            headers = request.headers
+            body = self.call("DescribeServiceSubDomains", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeServiceSubDomainsResponse()
@@ -1677,7 +1735,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeServiceUsagePlan", params)
+            headers = request.headers
+            body = self.call("DescribeServiceUsagePlan", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeServiceUsagePlanResponse()
@@ -1705,7 +1764,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeServicesStatus", params)
+            headers = request.headers
+            body = self.call("DescribeServicesStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeServicesStatusResponse()
@@ -1733,7 +1793,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeUpstreamBindApis", params)
+            headers = request.headers
+            body = self.call("DescribeUpstreamBindApis", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeUpstreamBindApisResponse()
@@ -1761,7 +1822,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeUpstreams", params)
+            headers = request.headers
+            body = self.call("DescribeUpstreams", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeUpstreamsResponse()
@@ -1789,7 +1851,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeUsagePlan", params)
+            headers = request.headers
+            body = self.call("DescribeUsagePlan", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeUsagePlanResponse()
@@ -1818,7 +1881,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeUsagePlanEnvironments", params)
+            headers = request.headers
+            body = self.call("DescribeUsagePlanEnvironments", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeUsagePlanEnvironmentsResponse()
@@ -1847,7 +1911,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeUsagePlanSecretIds", params)
+            headers = request.headers
+            body = self.call("DescribeUsagePlanSecretIds", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeUsagePlanSecretIdsResponse()
@@ -1875,7 +1940,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeUsagePlansStatus", params)
+            headers = request.headers
+            body = self.call("DescribeUsagePlansStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeUsagePlansStatusResponse()
@@ -1903,7 +1969,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DetachPlugin", params)
+            headers = request.headers
+            body = self.call("DetachPlugin", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DetachPluginResponse()
@@ -1931,7 +1998,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DisableApiKey", params)
+            headers = request.headers
+            body = self.call("DisableApiKey", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DisableApiKeyResponse()
@@ -1959,7 +2027,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("EnableApiKey", params)
+            headers = request.headers
+            body = self.call("EnableApiKey", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.EnableApiKeyResponse()
@@ -1987,7 +2056,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GenerateApiDocument", params)
+            headers = request.headers
+            body = self.call("GenerateApiDocument", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GenerateApiDocumentResponse()
@@ -2015,7 +2085,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyAPIDoc", params)
+            headers = request.headers
+            body = self.call("ModifyAPIDoc", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAPIDocResponse()
@@ -2043,7 +2114,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyApi", params)
+            headers = request.headers
+            body = self.call("ModifyApi", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyApiResponse()
@@ -2071,7 +2143,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyApiApp", params)
+            headers = request.headers
+            body = self.call("ModifyApiApp", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyApiAppResponse()
@@ -2099,7 +2172,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyApiEnvironmentStrategy", params)
+            headers = request.headers
+            body = self.call("ModifyApiEnvironmentStrategy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyApiEnvironmentStrategyResponse()
@@ -2127,7 +2201,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyApiIncrement", params)
+            headers = request.headers
+            body = self.call("ModifyApiIncrement", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyApiIncrementResponse()
@@ -2155,7 +2230,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyExclusiveInstance", params)
+            headers = request.headers
+            body = self.call("ModifyExclusiveInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyExclusiveInstanceResponse()
@@ -2183,7 +2259,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyIPStrategy", params)
+            headers = request.headers
+            body = self.call("ModifyIPStrategy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyIPStrategyResponse()
@@ -2211,7 +2288,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyPlugin", params)
+            headers = request.headers
+            body = self.call("ModifyPlugin", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyPluginResponse()
@@ -2239,7 +2317,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyService", params)
+            headers = request.headers
+            body = self.call("ModifyService", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyServiceResponse()
@@ -2267,7 +2346,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyServiceEnvironmentStrategy", params)
+            headers = request.headers
+            body = self.call("ModifyServiceEnvironmentStrategy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyServiceEnvironmentStrategyResponse()
@@ -2295,7 +2375,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifySubDomain", params)
+            headers = request.headers
+            body = self.call("ModifySubDomain", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifySubDomainResponse()
@@ -2323,7 +2404,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyUpstream", params)
+            headers = request.headers
+            body = self.call("ModifyUpstream", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyUpstreamResponse()
@@ -2351,7 +2433,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyUsagePlan", params)
+            headers = request.headers
+            body = self.call("ModifyUsagePlan", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyUsagePlanResponse()
@@ -2380,7 +2463,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ReleaseService", params)
+            headers = request.headers
+            body = self.call("ReleaseService", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ReleaseServiceResponse()
@@ -2408,7 +2492,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ResetAPIDocPassword", params)
+            headers = request.headers
+            body = self.call("ResetAPIDocPassword", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ResetAPIDocPasswordResponse()
@@ -2436,7 +2521,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UnBindEnvironment", params)
+            headers = request.headers
+            body = self.call("UnBindEnvironment", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UnBindEnvironmentResponse()
@@ -2464,7 +2550,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UnBindIPStrategy", params)
+            headers = request.headers
+            body = self.call("UnBindIPStrategy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UnBindIPStrategyResponse()
@@ -2492,7 +2579,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UnBindSecretIds", params)
+            headers = request.headers
+            body = self.call("UnBindSecretIds", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UnBindSecretIdsResponse()
@@ -2521,7 +2609,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UnBindSubDomain", params)
+            headers = request.headers
+            body = self.call("UnBindSubDomain", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UnBindSubDomainResponse()
@@ -2550,7 +2639,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UnReleaseService", params)
+            headers = request.headers
+            body = self.call("UnReleaseService", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UnReleaseServiceResponse()
@@ -2578,7 +2668,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UnbindApiApp", params)
+            headers = request.headers
+            body = self.call("UnbindApiApp", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UnbindApiAppResponse()
@@ -2606,7 +2697,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateApiAppKey", params)
+            headers = request.headers
+            body = self.call("UpdateApiAppKey", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateApiAppKeyResponse()
@@ -2634,7 +2726,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateApiKey", params)
+            headers = request.headers
+            body = self.call("UpdateApiKey", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateApiKeyResponse()
@@ -2662,7 +2755,8 @@ class ApigatewayClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateService", params)
+            headers = request.headers
+            body = self.call("UpdateService", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateServiceResponse()

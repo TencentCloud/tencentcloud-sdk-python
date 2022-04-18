@@ -36,7 +36,8 @@ class CamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AddUser", params)
+            headers = request.headers
+            body = self.call("AddUser", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AddUserResponse()
@@ -64,7 +65,8 @@ class CamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AddUserToGroup", params)
+            headers = request.headers
+            body = self.call("AddUserToGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AddUserToGroupResponse()
@@ -92,7 +94,8 @@ class CamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AttachGroupPolicy", params)
+            headers = request.headers
+            body = self.call("AttachGroupPolicy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AttachGroupPolicyResponse()
@@ -120,7 +123,8 @@ class CamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AttachRolePolicy", params)
+            headers = request.headers
+            body = self.call("AttachRolePolicy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AttachRolePolicyResponse()
@@ -148,7 +152,8 @@ class CamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AttachUserPolicy", params)
+            headers = request.headers
+            body = self.call("AttachUserPolicy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AttachUserPolicyResponse()
@@ -176,7 +181,8 @@ class CamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ConsumeCustomMFAToken", params)
+            headers = request.headers
+            body = self.call("ConsumeCustomMFAToken", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ConsumeCustomMFATokenResponse()
@@ -204,7 +210,8 @@ class CamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateGroup", params)
+            headers = request.headers
+            body = self.call("CreateGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateGroupResponse()
@@ -232,7 +239,8 @@ class CamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreatePolicy", params)
+            headers = request.headers
+            body = self.call("CreatePolicy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreatePolicyResponse()
@@ -260,7 +268,8 @@ class CamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreatePolicyVersion", params)
+            headers = request.headers
+            body = self.call("CreatePolicyVersion", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreatePolicyVersionResponse()
@@ -288,7 +297,8 @@ class CamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateRole", params)
+            headers = request.headers
+            body = self.call("CreateRole", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateRoleResponse()
@@ -316,7 +326,8 @@ class CamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateSAMLProvider", params)
+            headers = request.headers
+            body = self.call("CreateSAMLProvider", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateSAMLProviderResponse()
@@ -344,7 +355,8 @@ class CamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateServiceLinkedRole", params)
+            headers = request.headers
+            body = self.call("CreateServiceLinkedRole", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateServiceLinkedRoleResponse()
@@ -372,7 +384,8 @@ class CamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateUserOIDCConfig", params)
+            headers = request.headers
+            body = self.call("CreateUserOIDCConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateUserOIDCConfigResponse()
@@ -400,7 +413,8 @@ class CamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateUserSAMLConfig", params)
+            headers = request.headers
+            body = self.call("CreateUserSAMLConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateUserSAMLConfigResponse()
@@ -428,7 +442,8 @@ class CamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteGroup", params)
+            headers = request.headers
+            body = self.call("DeleteGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteGroupResponse()
@@ -456,7 +471,8 @@ class CamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeletePolicy", params)
+            headers = request.headers
+            body = self.call("DeletePolicy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeletePolicyResponse()
@@ -484,7 +500,8 @@ class CamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeletePolicyVersion", params)
+            headers = request.headers
+            body = self.call("DeletePolicyVersion", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeletePolicyVersionResponse()
@@ -512,7 +529,8 @@ class CamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteRole", params)
+            headers = request.headers
+            body = self.call("DeleteRole", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteRoleResponse()
@@ -540,7 +558,8 @@ class CamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteRolePermissionsBoundary", params)
+            headers = request.headers
+            body = self.call("DeleteRolePermissionsBoundary", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteRolePermissionsBoundaryResponse()
@@ -568,7 +587,8 @@ class CamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteSAMLProvider", params)
+            headers = request.headers
+            body = self.call("DeleteSAMLProvider", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteSAMLProviderResponse()
@@ -596,7 +616,8 @@ class CamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteServiceLinkedRole", params)
+            headers = request.headers
+            body = self.call("DeleteServiceLinkedRole", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteServiceLinkedRoleResponse()
@@ -624,7 +645,8 @@ class CamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteUser", params)
+            headers = request.headers
+            body = self.call("DeleteUser", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteUserResponse()
@@ -652,7 +674,8 @@ class CamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteUserPermissionsBoundary", params)
+            headers = request.headers
+            body = self.call("DeleteUserPermissionsBoundary", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteUserPermissionsBoundaryResponse()
@@ -680,7 +703,8 @@ class CamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRoleList", params)
+            headers = request.headers
+            body = self.call("DescribeRoleList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRoleListResponse()
@@ -708,7 +732,8 @@ class CamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSafeAuthFlag", params)
+            headers = request.headers
+            body = self.call("DescribeSafeAuthFlag", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSafeAuthFlagResponse()
@@ -736,7 +761,8 @@ class CamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSafeAuthFlagColl", params)
+            headers = request.headers
+            body = self.call("DescribeSafeAuthFlagColl", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSafeAuthFlagCollResponse()
@@ -764,7 +790,8 @@ class CamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSafeAuthFlagIntl", params)
+            headers = request.headers
+            body = self.call("DescribeSafeAuthFlagIntl", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSafeAuthFlagIntlResponse()
@@ -792,7 +819,8 @@ class CamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSubAccounts", params)
+            headers = request.headers
+            body = self.call("DescribeSubAccounts", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSubAccountsResponse()
@@ -820,7 +848,8 @@ class CamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeUserOIDCConfig", params)
+            headers = request.headers
+            body = self.call("DescribeUserOIDCConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeUserOIDCConfigResponse()
@@ -848,7 +877,8 @@ class CamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeUserSAMLConfig", params)
+            headers = request.headers
+            body = self.call("DescribeUserSAMLConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeUserSAMLConfigResponse()
@@ -876,7 +906,8 @@ class CamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DetachGroupPolicy", params)
+            headers = request.headers
+            body = self.call("DetachGroupPolicy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DetachGroupPolicyResponse()
@@ -904,7 +935,8 @@ class CamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DetachRolePolicy", params)
+            headers = request.headers
+            body = self.call("DetachRolePolicy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DetachRolePolicyResponse()
@@ -932,7 +964,8 @@ class CamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DetachUserPolicy", params)
+            headers = request.headers
+            body = self.call("DetachUserPolicy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DetachUserPolicyResponse()
@@ -960,7 +993,8 @@ class CamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DisableUserSSO", params)
+            headers = request.headers
+            body = self.call("DisableUserSSO", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DisableUserSSOResponse()
@@ -988,7 +1022,8 @@ class CamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetAccountSummary", params)
+            headers = request.headers
+            body = self.call("GetAccountSummary", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetAccountSummaryResponse()
@@ -1016,7 +1051,8 @@ class CamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetCustomMFATokenInfo", params)
+            headers = request.headers
+            body = self.call("GetCustomMFATokenInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetCustomMFATokenInfoResponse()
@@ -1044,7 +1080,8 @@ class CamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetGroup", params)
+            headers = request.headers
+            body = self.call("GetGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetGroupResponse()
@@ -1072,7 +1109,8 @@ class CamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetPolicy", params)
+            headers = request.headers
+            body = self.call("GetPolicy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetPolicyResponse()
@@ -1100,7 +1138,8 @@ class CamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetPolicyVersion", params)
+            headers = request.headers
+            body = self.call("GetPolicyVersion", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetPolicyVersionResponse()
@@ -1128,7 +1167,8 @@ class CamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetRole", params)
+            headers = request.headers
+            body = self.call("GetRole", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetRoleResponse()
@@ -1156,7 +1196,8 @@ class CamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetRolePermissionBoundary", params)
+            headers = request.headers
+            body = self.call("GetRolePermissionBoundary", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetRolePermissionBoundaryResponse()
@@ -1184,7 +1225,8 @@ class CamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetSAMLProvider", params)
+            headers = request.headers
+            body = self.call("GetSAMLProvider", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetSAMLProviderResponse()
@@ -1212,7 +1254,8 @@ class CamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetSecurityLastUsed", params)
+            headers = request.headers
+            body = self.call("GetSecurityLastUsed", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetSecurityLastUsedResponse()
@@ -1240,7 +1283,8 @@ class CamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetServiceLinkedRoleDeletionStatus", params)
+            headers = request.headers
+            body = self.call("GetServiceLinkedRoleDeletionStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetServiceLinkedRoleDeletionStatusResponse()
@@ -1268,7 +1312,8 @@ class CamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetUser", params)
+            headers = request.headers
+            body = self.call("GetUser", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetUserResponse()
@@ -1296,7 +1341,8 @@ class CamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetUserAppId", params)
+            headers = request.headers
+            body = self.call("GetUserAppId", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetUserAppIdResponse()
@@ -1324,7 +1370,8 @@ class CamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetUserPermissionBoundary", params)
+            headers = request.headers
+            body = self.call("GetUserPermissionBoundary", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetUserPermissionBoundaryResponse()
@@ -1352,7 +1399,8 @@ class CamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ListAccessKeys", params)
+            headers = request.headers
+            body = self.call("ListAccessKeys", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListAccessKeysResponse()
@@ -1380,7 +1428,8 @@ class CamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ListAttachedGroupPolicies", params)
+            headers = request.headers
+            body = self.call("ListAttachedGroupPolicies", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListAttachedGroupPoliciesResponse()
@@ -1408,7 +1457,8 @@ class CamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ListAttachedRolePolicies", params)
+            headers = request.headers
+            body = self.call("ListAttachedRolePolicies", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListAttachedRolePoliciesResponse()
@@ -1436,7 +1486,8 @@ class CamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ListAttachedUserAllPolicies", params)
+            headers = request.headers
+            body = self.call("ListAttachedUserAllPolicies", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListAttachedUserAllPoliciesResponse()
@@ -1464,7 +1515,8 @@ class CamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ListAttachedUserPolicies", params)
+            headers = request.headers
+            body = self.call("ListAttachedUserPolicies", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListAttachedUserPoliciesResponse()
@@ -1492,7 +1544,8 @@ class CamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ListCollaborators", params)
+            headers = request.headers
+            body = self.call("ListCollaborators", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListCollaboratorsResponse()
@@ -1520,7 +1573,8 @@ class CamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ListEntitiesForPolicy", params)
+            headers = request.headers
+            body = self.call("ListEntitiesForPolicy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListEntitiesForPolicyResponse()
@@ -1548,7 +1602,8 @@ class CamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ListGroups", params)
+            headers = request.headers
+            body = self.call("ListGroups", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListGroupsResponse()
@@ -1576,7 +1631,8 @@ class CamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ListGroupsForUser", params)
+            headers = request.headers
+            body = self.call("ListGroupsForUser", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListGroupsForUserResponse()
@@ -1604,7 +1660,8 @@ class CamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ListPolicies", params)
+            headers = request.headers
+            body = self.call("ListPolicies", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListPoliciesResponse()
@@ -1632,7 +1689,8 @@ class CamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ListPoliciesGrantingServiceAccess", params)
+            headers = request.headers
+            body = self.call("ListPoliciesGrantingServiceAccess", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListPoliciesGrantingServiceAccessResponse()
@@ -1660,7 +1718,8 @@ class CamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ListPolicyVersions", params)
+            headers = request.headers
+            body = self.call("ListPolicyVersions", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListPolicyVersionsResponse()
@@ -1688,7 +1747,8 @@ class CamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ListSAMLProviders", params)
+            headers = request.headers
+            body = self.call("ListSAMLProviders", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListSAMLProvidersResponse()
@@ -1716,7 +1776,8 @@ class CamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ListUsers", params)
+            headers = request.headers
+            body = self.call("ListUsers", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListUsersResponse()
@@ -1744,7 +1805,8 @@ class CamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ListUsersForGroup", params)
+            headers = request.headers
+            body = self.call("ListUsersForGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListUsersForGroupResponse()
@@ -1772,7 +1834,8 @@ class CamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ListWeChatWorkSubAccounts", params)
+            headers = request.headers
+            body = self.call("ListWeChatWorkSubAccounts", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListWeChatWorkSubAccountsResponse()
@@ -1800,7 +1863,8 @@ class CamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("PutRolePermissionsBoundary", params)
+            headers = request.headers
+            body = self.call("PutRolePermissionsBoundary", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.PutRolePermissionsBoundaryResponse()
@@ -1828,7 +1892,8 @@ class CamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("PutUserPermissionsBoundary", params)
+            headers = request.headers
+            body = self.call("PutUserPermissionsBoundary", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.PutUserPermissionsBoundaryResponse()
@@ -1856,7 +1921,8 @@ class CamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RemoveUserFromGroup", params)
+            headers = request.headers
+            body = self.call("RemoveUserFromGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RemoveUserFromGroupResponse()
@@ -1884,7 +1950,8 @@ class CamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SetDefaultPolicyVersion", params)
+            headers = request.headers
+            body = self.call("SetDefaultPolicyVersion", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SetDefaultPolicyVersionResponse()
@@ -1912,7 +1979,8 @@ class CamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SetMfaFlag", params)
+            headers = request.headers
+            body = self.call("SetMfaFlag", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SetMfaFlagResponse()
@@ -1940,7 +2008,8 @@ class CamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateAssumeRolePolicy", params)
+            headers = request.headers
+            body = self.call("UpdateAssumeRolePolicy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateAssumeRolePolicyResponse()
@@ -1968,7 +2037,8 @@ class CamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateGroup", params)
+            headers = request.headers
+            body = self.call("UpdateGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateGroupResponse()
@@ -1997,7 +2067,8 @@ class CamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdatePolicy", params)
+            headers = request.headers
+            body = self.call("UpdatePolicy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdatePolicyResponse()
@@ -2025,7 +2096,8 @@ class CamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateRoleConsoleLogin", params)
+            headers = request.headers
+            body = self.call("UpdateRoleConsoleLogin", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateRoleConsoleLoginResponse()
@@ -2053,7 +2125,8 @@ class CamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateRoleDescription", params)
+            headers = request.headers
+            body = self.call("UpdateRoleDescription", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateRoleDescriptionResponse()
@@ -2081,7 +2154,8 @@ class CamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateSAMLProvider", params)
+            headers = request.headers
+            body = self.call("UpdateSAMLProvider", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateSAMLProviderResponse()
@@ -2109,7 +2183,8 @@ class CamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateUser", params)
+            headers = request.headers
+            body = self.call("UpdateUser", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateUserResponse()
@@ -2137,7 +2212,8 @@ class CamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateUserOIDCConfig", params)
+            headers = request.headers
+            body = self.call("UpdateUserOIDCConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateUserOIDCConfigResponse()
@@ -2165,7 +2241,8 @@ class CamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateUserSAMLConfig", params)
+            headers = request.headers
+            body = self.call("UpdateUserSAMLConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateUserSAMLConfigResponse()

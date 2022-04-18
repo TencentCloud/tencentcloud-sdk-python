@@ -37,7 +37,8 @@ class UmpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateCameraAlerts", params)
+            headers = request.headers
+            body = self.call("CreateCameraAlerts", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateCameraAlertsResponse()
@@ -65,7 +66,8 @@ class UmpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateCameraState", params)
+            headers = request.headers
+            body = self.call("CreateCameraState", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateCameraStateResponse()
@@ -93,7 +95,8 @@ class UmpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateCapture", params)
+            headers = request.headers
+            body = self.call("CreateCapture", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateCaptureResponse()
@@ -121,7 +124,8 @@ class UmpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateMultiBizAlert", params)
+            headers = request.headers
+            body = self.call("CreateMultiBizAlert", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateMultiBizAlertResponse()
@@ -149,7 +153,8 @@ class UmpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateProgramState", params)
+            headers = request.headers
+            body = self.call("CreateProgramState", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateProgramStateResponse()
@@ -177,7 +182,8 @@ class UmpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateServerState", params)
+            headers = request.headers
+            body = self.call("CreateServerState", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateServerStateResponse()
@@ -205,7 +211,8 @@ class UmpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteMultiBizAlert", params)
+            headers = request.headers
+            body = self.call("DeleteMultiBizAlert", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteMultiBizAlertResponse()
@@ -233,7 +240,8 @@ class UmpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteTask", params)
+            headers = request.headers
+            body = self.call("DeleteTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteTaskResponse()
@@ -261,7 +269,8 @@ class UmpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCameras", params)
+            headers = request.headers
+            body = self.call("DescribeCameras", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCamerasResponse()
@@ -291,7 +300,8 @@ class UmpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeConfig", params)
+            headers = request.headers
+            body = self.call("DescribeConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeConfigResponse()
@@ -319,7 +329,8 @@ class UmpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeImage", params)
+            headers = request.headers
+            body = self.call("DescribeImage", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeImageResponse()
@@ -347,7 +358,8 @@ class UmpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeMultiBizBaseImage", params)
+            headers = request.headers
+            body = self.call("DescribeMultiBizBaseImage", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeMultiBizBaseImageResponse()
@@ -375,7 +387,8 @@ class UmpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTasks", params)
+            headers = request.headers
+            body = self.call("DescribeTasks", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTasksResponse()
@@ -403,7 +416,8 @@ class UmpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeZones", params)
+            headers = request.headers
+            body = self.call("DescribeZones", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeZonesResponse()
@@ -431,7 +445,8 @@ class UmpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyMultiBizConfig", params)
+            headers = request.headers
+            body = self.call("ModifyMultiBizConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyMultiBizConfigResponse()
@@ -459,7 +474,8 @@ class UmpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ReportServiceRegister", params)
+            headers = request.headers
+            body = self.call("ReportServiceRegister", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ReportServiceRegisterResponse()
@@ -487,7 +503,8 @@ class UmpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SearchImage", params)
+            headers = request.headers
+            body = self.call("SearchImage", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SearchImageResponse()

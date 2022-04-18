@@ -36,7 +36,8 @@ class SsaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAssetDetail", params)
+            headers = request.headers
+            body = self.call("DescribeAssetDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAssetDetailResponse()
@@ -64,7 +65,8 @@ class SsaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAssetList", params)
+            headers = request.headers
+            body = self.call("DescribeAssetList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAssetListResponse()
@@ -92,7 +94,8 @@ class SsaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAssetsMappingList", params)
+            headers = request.headers
+            body = self.call("DescribeAssetsMappingList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAssetsMappingListResponse()
@@ -120,7 +123,8 @@ class SsaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCheckConfigAssetList", params)
+            headers = request.headers
+            body = self.call("DescribeCheckConfigAssetList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCheckConfigAssetListResponse()
@@ -148,7 +152,8 @@ class SsaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCheckConfigDetail", params)
+            headers = request.headers
+            body = self.call("DescribeCheckConfigDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCheckConfigDetailResponse()
@@ -176,7 +181,8 @@ class SsaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeComplianceAssetList", params)
+            headers = request.headers
+            body = self.call("DescribeComplianceAssetList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeComplianceAssetListResponse()
@@ -204,7 +210,8 @@ class SsaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeComplianceDetail", params)
+            headers = request.headers
+            body = self.call("DescribeComplianceDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeComplianceDetailResponse()
@@ -232,7 +239,8 @@ class SsaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeComplianceList", params)
+            headers = request.headers
+            body = self.call("DescribeComplianceList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeComplianceListResponse()
@@ -260,7 +268,8 @@ class SsaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeConfigList", params)
+            headers = request.headers
+            body = self.call("DescribeConfigList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeConfigListResponse()
@@ -288,7 +297,8 @@ class SsaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeEventDetail", params)
+            headers = request.headers
+            body = self.call("DescribeEventDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeEventDetailResponse()
@@ -316,7 +326,8 @@ class SsaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeLeakDetectionList", params)
+            headers = request.headers
+            body = self.call("DescribeLeakDetectionList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLeakDetectionListResponse()
@@ -344,7 +355,8 @@ class SsaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeMappingResults", params)
+            headers = request.headers
+            body = self.call("DescribeMappingResults", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeMappingResultsResponse()
@@ -372,7 +384,8 @@ class SsaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSafetyEventList", params)
+            headers = request.headers
+            body = self.call("DescribeSafetyEventList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSafetyEventListResponse()
@@ -400,7 +413,8 @@ class SsaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSocAlertDetails", params)
+            headers = request.headers
+            body = self.call("DescribeSocAlertDetails", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSocAlertDetailsResponse()
@@ -428,7 +442,8 @@ class SsaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSocAlertList", params)
+            headers = request.headers
+            body = self.call("DescribeSocAlertList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSocAlertListResponse()
@@ -456,7 +471,8 @@ class SsaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSocCheckItemList", params)
+            headers = request.headers
+            body = self.call("DescribeSocCheckItemList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSocCheckItemListResponse()
@@ -484,7 +500,8 @@ class SsaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSocCheckResultList", params)
+            headers = request.headers
+            body = self.call("DescribeSocCheckResultList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSocCheckResultListResponse()
@@ -512,7 +529,8 @@ class SsaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSocCspmCompliance", params)
+            headers = request.headers
+            body = self.call("DescribeSocCspmCompliance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSocCspmComplianceResponse()
@@ -540,7 +558,8 @@ class SsaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeVulDetail", params)
+            headers = request.headers
+            body = self.call("DescribeVulDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeVulDetailResponse()
@@ -568,7 +587,8 @@ class SsaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeVulList", params)
+            headers = request.headers
+            body = self.call("DescribeVulList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeVulListResponse()
@@ -596,7 +616,8 @@ class SsaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SaDivulgeDataQueryPub", params)
+            headers = request.headers
+            body = self.call("SaDivulgeDataQueryPub", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SaDivulgeDataQueryPubResponse()

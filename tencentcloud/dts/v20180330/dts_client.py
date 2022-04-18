@@ -36,7 +36,8 @@ class DtsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ActivateSubscribe", params)
+            headers = request.headers
+            body = self.call("ActivateSubscribe", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ActivateSubscribeResponse()
@@ -66,7 +67,8 @@ class DtsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CompleteMigrateJob", params)
+            headers = request.headers
+            body = self.call("CompleteMigrateJob", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CompleteMigrateJobResponse()
@@ -96,7 +98,8 @@ class DtsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateMigrateCheckJob", params)
+            headers = request.headers
+            body = self.call("CreateMigrateCheckJob", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateMigrateCheckJobResponse()
@@ -126,7 +129,8 @@ class DtsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateMigrateJob", params)
+            headers = request.headers
+            body = self.call("CreateMigrateJob", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateMigrateJobResponse()
@@ -154,7 +158,8 @@ class DtsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateSubscribe", params)
+            headers = request.headers
+            body = self.call("CreateSubscribe", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateSubscribeResponse()
@@ -182,7 +187,8 @@ class DtsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteMigrateJob", params)
+            headers = request.headers
+            body = self.call("DeleteMigrateJob", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteMigrateJobResponse()
@@ -210,7 +216,8 @@ class DtsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAsyncRequestInfo", params)
+            headers = request.headers
+            body = self.call("DescribeAsyncRequestInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAsyncRequestInfoResponse()
@@ -240,7 +247,8 @@ class DtsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeMigrateCheckJob", params)
+            headers = request.headers
+            body = self.call("DescribeMigrateCheckJob", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeMigrateCheckJobResponse()
@@ -269,7 +277,8 @@ class DtsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeMigrateJobs", params)
+            headers = request.headers
+            body = self.call("DescribeMigrateJobs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeMigrateJobsResponse()
@@ -297,7 +306,8 @@ class DtsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRegionConf", params)
+            headers = request.headers
+            body = self.call("DescribeRegionConf", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRegionConfResponse()
@@ -325,7 +335,8 @@ class DtsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSubscribeConf", params)
+            headers = request.headers
+            body = self.call("DescribeSubscribeConf", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSubscribeConfResponse()
@@ -353,7 +364,8 @@ class DtsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSubscribes", params)
+            headers = request.headers
+            body = self.call("DescribeSubscribes", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSubscribesResponse()
@@ -381,7 +393,8 @@ class DtsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("IsolateSubscribe", params)
+            headers = request.headers
+            body = self.call("IsolateSubscribe", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.IsolateSubscribeResponse()
@@ -412,7 +425,8 @@ class DtsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyMigrateJob", params)
+            headers = request.headers
+            body = self.call("ModifyMigrateJob", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyMigrateJobResponse()
@@ -440,7 +454,8 @@ class DtsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifySubscribeAutoRenewFlag", params)
+            headers = request.headers
+            body = self.call("ModifySubscribeAutoRenewFlag", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifySubscribeAutoRenewFlagResponse()
@@ -468,7 +483,8 @@ class DtsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifySubscribeConsumeTime", params)
+            headers = request.headers
+            body = self.call("ModifySubscribeConsumeTime", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifySubscribeConsumeTimeResponse()
@@ -496,7 +512,8 @@ class DtsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifySubscribeName", params)
+            headers = request.headers
+            body = self.call("ModifySubscribeName", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifySubscribeNameResponse()
@@ -524,7 +541,8 @@ class DtsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifySubscribeObjects", params)
+            headers = request.headers
+            body = self.call("ModifySubscribeObjects", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifySubscribeObjectsResponse()
@@ -552,7 +570,8 @@ class DtsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifySubscribeVipVport", params)
+            headers = request.headers
+            body = self.call("ModifySubscribeVipVport", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifySubscribeVipVportResponse()
@@ -580,7 +599,8 @@ class DtsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("OfflineIsolatedSubscribe", params)
+            headers = request.headers
+            body = self.call("OfflineIsolatedSubscribe", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.OfflineIsolatedSubscribeResponse()
@@ -608,7 +628,8 @@ class DtsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ResetSubscribe", params)
+            headers = request.headers
+            body = self.call("ResetSubscribe", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ResetSubscribeResponse()
@@ -637,7 +658,8 @@ class DtsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("StartMigrateJob", params)
+            headers = request.headers
+            body = self.call("StartMigrateJob", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StartMigrateJobResponse()
@@ -666,7 +688,8 @@ class DtsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("StopMigrateJob", params)
+            headers = request.headers
+            body = self.call("StopMigrateJob", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StopMigrateJobResponse()

@@ -36,7 +36,8 @@ class CdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AddCdnDomain", params)
+            headers = request.headers
+            body = self.call("AddCdnDomain", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AddCdnDomainResponse()
@@ -64,7 +65,8 @@ class CdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateClsLogTopic", params)
+            headers = request.headers
+            body = self.call("CreateClsLogTopic", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateClsLogTopicResponse()
@@ -92,7 +94,8 @@ class CdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateDiagnoseUrl", params)
+            headers = request.headers
+            body = self.call("CreateDiagnoseUrl", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateDiagnoseUrlResponse()
@@ -120,7 +123,8 @@ class CdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateEdgePackTask", params)
+            headers = request.headers
+            body = self.call("CreateEdgePackTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateEdgePackTaskResponse()
@@ -148,7 +152,8 @@ class CdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateScdnDomain", params)
+            headers = request.headers
+            body = self.call("CreateScdnDomain", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateScdnDomainResponse()
@@ -176,7 +181,8 @@ class CdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateScdnFailedLogTask", params)
+            headers = request.headers
+            body = self.call("CreateScdnFailedLogTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateScdnFailedLogTaskResponse()
@@ -204,7 +210,8 @@ class CdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateScdnLogTask", params)
+            headers = request.headers
+            body = self.call("CreateScdnLogTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateScdnLogTaskResponse()
@@ -232,7 +239,8 @@ class CdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateVerifyRecord", params)
+            headers = request.headers
+            body = self.call("CreateVerifyRecord", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateVerifyRecordResponse()
@@ -260,7 +268,8 @@ class CdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteCdnDomain", params)
+            headers = request.headers
+            body = self.call("DeleteCdnDomain", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteCdnDomainResponse()
@@ -288,7 +297,8 @@ class CdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteClsLogTopic", params)
+            headers = request.headers
+            body = self.call("DeleteClsLogTopic", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteClsLogTopicResponse()
@@ -316,7 +326,8 @@ class CdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteScdnDomain", params)
+            headers = request.headers
+            body = self.call("DeleteScdnDomain", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteScdnDomainResponse()
@@ -344,7 +355,8 @@ class CdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBillingData", params)
+            headers = request.headers
+            body = self.call("DescribeBillingData", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBillingDataResponse()
@@ -372,7 +384,8 @@ class CdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCcData", params)
+            headers = request.headers
+            body = self.call("DescribeCcData", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCcDataResponse()
@@ -412,7 +425,8 @@ class CdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCdnData", params)
+            headers = request.headers
+            body = self.call("DescribeCdnData", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCdnDataResponse()
@@ -440,7 +454,8 @@ class CdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCdnDomainLogs", params)
+            headers = request.headers
+            body = self.call("DescribeCdnDomainLogs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCdnDomainLogsResponse()
@@ -469,7 +484,8 @@ class CdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCdnIp", params)
+            headers = request.headers
+            body = self.call("DescribeCdnIp", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCdnIpResponse()
@@ -497,7 +513,8 @@ class CdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCdnOriginIp", params)
+            headers = request.headers
+            body = self.call("DescribeCdnOriginIp", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCdnOriginIpResponse()
@@ -525,7 +542,8 @@ class CdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCertDomains", params)
+            headers = request.headers
+            body = self.call("DescribeCertDomains", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCertDomainsResponse()
@@ -553,7 +571,8 @@ class CdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDDoSData", params)
+            headers = request.headers
+            body = self.call("DescribeDDoSData", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDDoSDataResponse()
@@ -581,7 +600,8 @@ class CdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDiagnoseReport", params)
+            headers = request.headers
+            body = self.call("DescribeDiagnoseReport", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDiagnoseReportResponse()
@@ -610,7 +630,8 @@ class CdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDistrictIspData", params)
+            headers = request.headers
+            body = self.call("DescribeDistrictIspData", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDistrictIspDataResponse()
@@ -638,7 +659,8 @@ class CdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDomains", params)
+            headers = request.headers
+            body = self.call("DescribeDomains", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDomainsResponse()
@@ -666,7 +688,8 @@ class CdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDomainsConfig", params)
+            headers = request.headers
+            body = self.call("DescribeDomainsConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDomainsConfigResponse()
@@ -694,7 +717,8 @@ class CdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeEventLogData", params)
+            headers = request.headers
+            body = self.call("DescribeEventLogData", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeEventLogDataResponse()
@@ -722,7 +746,8 @@ class CdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeImageConfig", params)
+            headers = request.headers
+            body = self.call("DescribeImageConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeImageConfigResponse()
@@ -752,7 +777,8 @@ class CdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeIpStatus", params)
+            headers = request.headers
+            body = self.call("DescribeIpStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeIpStatusResponse()
@@ -783,7 +809,8 @@ class CdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeIpVisit", params)
+            headers = request.headers
+            body = self.call("DescribeIpVisit", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeIpVisitResponse()
@@ -811,7 +838,8 @@ class CdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeMapInfo", params)
+            headers = request.headers
+            body = self.call("DescribeMapInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeMapInfoResponse()
@@ -849,7 +877,8 @@ class CdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeOriginData", params)
+            headers = request.headers
+            body = self.call("DescribeOriginData", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeOriginDataResponse()
@@ -877,7 +906,8 @@ class CdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePayType", params)
+            headers = request.headers
+            body = self.call("DescribePayType", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePayTypeResponse()
@@ -905,7 +935,8 @@ class CdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePurgeQuota", params)
+            headers = request.headers
+            body = self.call("DescribePurgeQuota", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePurgeQuotaResponse()
@@ -933,7 +964,8 @@ class CdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePurgeTasks", params)
+            headers = request.headers
+            body = self.call("DescribePurgeTasks", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePurgeTasksResponse()
@@ -961,7 +993,8 @@ class CdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePushQuota", params)
+            headers = request.headers
+            body = self.call("DescribePushQuota", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePushQuotaResponse()
@@ -990,7 +1023,8 @@ class CdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePushTasks", params)
+            headers = request.headers
+            body = self.call("DescribePushTasks", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePushTasksResponse()
@@ -1018,7 +1052,8 @@ class CdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeReportData", params)
+            headers = request.headers
+            body = self.call("DescribeReportData", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeReportDataResponse()
@@ -1046,7 +1081,8 @@ class CdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeScdnBotData", params)
+            headers = request.headers
+            body = self.call("DescribeScdnBotData", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeScdnBotDataResponse()
@@ -1074,7 +1110,8 @@ class CdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeScdnBotRecords", params)
+            headers = request.headers
+            body = self.call("DescribeScdnBotRecords", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeScdnBotRecordsResponse()
@@ -1102,7 +1139,8 @@ class CdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeScdnConfig", params)
+            headers = request.headers
+            body = self.call("DescribeScdnConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeScdnConfigResponse()
@@ -1130,7 +1168,8 @@ class CdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeScdnIpStrategy", params)
+            headers = request.headers
+            body = self.call("DescribeScdnIpStrategy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeScdnIpStrategyResponse()
@@ -1158,7 +1197,8 @@ class CdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeScdnTopData", params)
+            headers = request.headers
+            body = self.call("DescribeScdnTopData", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeScdnTopDataResponse()
@@ -1196,7 +1236,8 @@ class CdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTopData", params)
+            headers = request.headers
+            body = self.call("DescribeTopData", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTopDataResponse()
@@ -1224,7 +1265,8 @@ class CdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTrafficPackages", params)
+            headers = request.headers
+            body = self.call("DescribeTrafficPackages", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTrafficPackagesResponse()
@@ -1253,7 +1295,8 @@ class CdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeUrlViolations", params)
+            headers = request.headers
+            body = self.call("DescribeUrlViolations", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeUrlViolationsResponse()
@@ -1281,7 +1324,8 @@ class CdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeWafData", params)
+            headers = request.headers
+            body = self.call("DescribeWafData", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeWafDataResponse()
@@ -1309,7 +1353,8 @@ class CdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DisableCaches", params)
+            headers = request.headers
+            body = self.call("DisableCaches", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DisableCachesResponse()
@@ -1337,7 +1382,8 @@ class CdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DisableClsLogTopic", params)
+            headers = request.headers
+            body = self.call("DisableClsLogTopic", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DisableClsLogTopicResponse()
@@ -1365,7 +1411,8 @@ class CdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DuplicateDomainConfig", params)
+            headers = request.headers
+            body = self.call("DuplicateDomainConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DuplicateDomainConfigResponse()
@@ -1393,7 +1440,8 @@ class CdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("EnableCaches", params)
+            headers = request.headers
+            body = self.call("EnableCaches", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.EnableCachesResponse()
@@ -1421,7 +1469,8 @@ class CdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("EnableClsLogTopic", params)
+            headers = request.headers
+            body = self.call("EnableClsLogTopic", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.EnableClsLogTopicResponse()
@@ -1449,7 +1498,8 @@ class CdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetDisableRecords", params)
+            headers = request.headers
+            body = self.call("GetDisableRecords", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetDisableRecordsResponse()
@@ -1477,7 +1527,8 @@ class CdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ListClsLogTopics", params)
+            headers = request.headers
+            body = self.call("ListClsLogTopics", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListClsLogTopicsResponse()
@@ -1505,7 +1556,8 @@ class CdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ListClsTopicDomains", params)
+            headers = request.headers
+            body = self.call("ListClsTopicDomains", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListClsTopicDomainsResponse()
@@ -1533,7 +1585,8 @@ class CdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ListDiagnoseReport", params)
+            headers = request.headers
+            body = self.call("ListDiagnoseReport", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListDiagnoseReportResponse()
@@ -1561,7 +1614,8 @@ class CdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ListScdnDomains", params)
+            headers = request.headers
+            body = self.call("ListScdnDomains", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListScdnDomainsResponse()
@@ -1589,7 +1643,8 @@ class CdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ListScdnLogTasks", params)
+            headers = request.headers
+            body = self.call("ListScdnLogTasks", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListScdnLogTasksResponse()
@@ -1617,7 +1672,8 @@ class CdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ListScdnTopBotData", params)
+            headers = request.headers
+            body = self.call("ListScdnTopBotData", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListScdnTopBotDataResponse()
@@ -1645,7 +1701,8 @@ class CdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ListTopBotData", params)
+            headers = request.headers
+            body = self.call("ListTopBotData", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListTopBotDataResponse()
@@ -1673,7 +1730,8 @@ class CdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ListTopCcData", params)
+            headers = request.headers
+            body = self.call("ListTopCcData", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListTopCcDataResponse()
@@ -1701,7 +1759,8 @@ class CdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ListTopClsLogData", params)
+            headers = request.headers
+            body = self.call("ListTopClsLogData", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListTopClsLogDataResponse()
@@ -1729,7 +1788,8 @@ class CdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ListTopDDoSData", params)
+            headers = request.headers
+            body = self.call("ListTopDDoSData", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListTopDDoSDataResponse()
@@ -1765,7 +1825,8 @@ class CdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ListTopData", params)
+            headers = request.headers
+            body = self.call("ListTopData", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListTopDataResponse()
@@ -1793,7 +1854,8 @@ class CdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ListTopWafData", params)
+            headers = request.headers
+            body = self.call("ListTopWafData", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListTopWafDataResponse()
@@ -1821,7 +1883,8 @@ class CdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ManageClsTopicDomains", params)
+            headers = request.headers
+            body = self.call("ManageClsTopicDomains", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ManageClsTopicDomainsResponse()
@@ -1849,7 +1912,8 @@ class CdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyPurgeFetchTaskStatus", params)
+            headers = request.headers
+            body = self.call("ModifyPurgeFetchTaskStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyPurgeFetchTaskStatusResponse()
@@ -1878,7 +1942,8 @@ class CdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("PurgePathCache", params)
+            headers = request.headers
+            body = self.call("PurgePathCache", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.PurgePathCacheResponse()
@@ -1907,7 +1972,8 @@ class CdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("PurgeUrlsCache", params)
+            headers = request.headers
+            body = self.call("PurgeUrlsCache", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.PurgeUrlsCacheResponse()
@@ -1936,7 +2002,8 @@ class CdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("PushUrlsCache", params)
+            headers = request.headers
+            body = self.call("PushUrlsCache", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.PushUrlsCacheResponse()
@@ -1964,7 +2031,8 @@ class CdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SearchClsLog", params)
+            headers = request.headers
+            body = self.call("SearchClsLog", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SearchClsLogResponse()
@@ -1992,7 +2060,8 @@ class CdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("StartCdnDomain", params)
+            headers = request.headers
+            body = self.call("StartCdnDomain", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StartCdnDomainResponse()
@@ -2020,7 +2089,8 @@ class CdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("StartScdnDomain", params)
+            headers = request.headers
+            body = self.call("StartScdnDomain", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StartScdnDomainResponse()
@@ -2049,7 +2119,8 @@ class CdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("StopCdnDomain", params)
+            headers = request.headers
+            body = self.call("StopCdnDomain", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StopCdnDomainResponse()
@@ -2077,7 +2148,8 @@ class CdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("StopScdnDomain", params)
+            headers = request.headers
+            body = self.call("StopScdnDomain", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StopScdnDomainResponse()
@@ -2106,7 +2178,8 @@ class CdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateDomainConfig", params)
+            headers = request.headers
+            body = self.call("UpdateDomainConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateDomainConfigResponse()
@@ -2134,7 +2207,8 @@ class CdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateImageConfig", params)
+            headers = request.headers
+            body = self.call("UpdateImageConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateImageConfigResponse()
@@ -2162,7 +2236,8 @@ class CdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdatePayType", params)
+            headers = request.headers
+            body = self.call("UpdatePayType", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdatePayTypeResponse()
@@ -2190,7 +2265,8 @@ class CdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateScdnDomain", params)
+            headers = request.headers
+            body = self.call("UpdateScdnDomain", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateScdnDomainResponse()
@@ -2218,7 +2294,8 @@ class CdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("VerifyDomainRecord", params)
+            headers = request.headers
+            body = self.call("VerifyDomainRecord", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.VerifyDomainRecordResponse()

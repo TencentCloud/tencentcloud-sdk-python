@@ -36,7 +36,8 @@ class CrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ApplyBlackList", params)
+            headers = request.headers
+            body = self.call("ApplyBlackList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ApplyBlackListResponse()
@@ -64,7 +65,8 @@ class CrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ApplyBlackListData", params)
+            headers = request.headers
+            body = self.call("ApplyBlackListData", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ApplyBlackListDataResponse()
@@ -92,7 +94,8 @@ class CrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ApplyCreditAudit", params)
+            headers = request.headers
+            body = self.call("ApplyCreditAudit", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ApplyCreditAuditResponse()
@@ -120,7 +123,8 @@ class CrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ChangeBotCallStatus", params)
+            headers = request.headers
+            body = self.call("ChangeBotCallStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ChangeBotCallStatusResponse()
@@ -148,7 +152,8 @@ class CrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ChangeBotTaskStatus", params)
+            headers = request.headers
+            body = self.call("ChangeBotTaskStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ChangeBotTaskStatusResponse()
@@ -176,7 +181,8 @@ class CrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateBotTask", params)
+            headers = request.headers
+            body = self.call("CreateBotTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateBotTaskResponse()
@@ -204,7 +210,8 @@ class CrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBotFlow", params)
+            headers = request.headers
+            body = self.call("DescribeBotFlow", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBotFlowResponse()
@@ -232,7 +239,8 @@ class CrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCreditResult", params)
+            headers = request.headers
+            body = self.call("DescribeCreditResult", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCreditResultResponse()
@@ -260,7 +268,8 @@ class CrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeFileModel", params)
+            headers = request.headers
+            body = self.call("DescribeFileModel", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeFileModelResponse()
@@ -288,7 +297,8 @@ class CrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRecords", params)
+            headers = request.headers
+            body = self.call("DescribeRecords", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRecordsResponse()
@@ -316,7 +326,8 @@ class CrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTaskStatus", params)
+            headers = request.headers
+            body = self.call("DescribeTaskStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTaskStatusResponse()
@@ -344,7 +355,8 @@ class CrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DownloadBotRecord", params)
+            headers = request.headers
+            body = self.call("DownloadBotRecord", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DownloadBotRecordResponse()
@@ -372,7 +384,8 @@ class CrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DownloadDialogueText", params)
+            headers = request.headers
+            body = self.call("DownloadDialogueText", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DownloadDialogueTextResponse()
@@ -401,7 +414,8 @@ class CrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DownloadRecordList", params)
+            headers = request.headers
+            body = self.call("DownloadRecordList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DownloadRecordListResponse()
@@ -429,7 +443,8 @@ class CrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DownloadReport", params)
+            headers = request.headers
+            body = self.call("DownloadReport", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DownloadReportResponse()
@@ -457,7 +472,8 @@ class CrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ExportBotData", params)
+            headers = request.headers
+            body = self.call("ExportBotData", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ExportBotDataResponse()
@@ -485,7 +501,8 @@ class CrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryBlackListData", params)
+            headers = request.headers
+            body = self.call("QueryBlackListData", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryBlackListDataResponse()
@@ -513,7 +530,8 @@ class CrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryBotList", params)
+            headers = request.headers
+            body = self.call("QueryBotList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryBotListResponse()
@@ -541,7 +559,8 @@ class CrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryCallList", params)
+            headers = request.headers
+            body = self.call("QueryCallList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryCallListResponse()
@@ -569,7 +588,8 @@ class CrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryInstantData", params)
+            headers = request.headers
+            body = self.call("QueryInstantData", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryInstantDataResponse()
@@ -597,7 +617,8 @@ class CrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryProducts", params)
+            headers = request.headers
+            body = self.call("QueryProducts", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryProductsResponse()
@@ -625,7 +646,8 @@ class CrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryRecordList", params)
+            headers = request.headers
+            body = self.call("QueryRecordList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryRecordListResponse()
@@ -653,7 +675,8 @@ class CrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateBotTask", params)
+            headers = request.headers
+            body = self.call("UpdateBotTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateBotTaskResponse()
@@ -681,7 +704,8 @@ class CrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UploadBotData", params)
+            headers = request.headers
+            body = self.call("UploadBotData", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UploadBotDataResponse()
@@ -709,7 +733,8 @@ class CrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UploadBotFile", params)
+            headers = request.headers
+            body = self.call("UploadBotFile", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UploadBotFileResponse()
@@ -738,7 +763,8 @@ class CrClient(AbstractClient):
         try:
             params = request._serialize()
             options = {'IsMultipart': True, 'BinaryParams': [u'File']}
-            body = self.call("UploadDataFile", params, options=options)
+            headers = request.headers
+            body = self.call("UploadDataFile", params, options=options, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UploadDataFileResponse()
@@ -766,7 +792,8 @@ class CrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UploadDataJson", params)
+            headers = request.headers
+            body = self.call("UploadDataJson", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UploadDataJsonResponse()
@@ -794,7 +821,8 @@ class CrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UploadFile", params)
+            headers = request.headers
+            body = self.call("UploadFile", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UploadFileResponse()

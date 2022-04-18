@@ -36,7 +36,8 @@ class TcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeMesh", params)
+            headers = request.headers
+            body = self.call("DescribeMesh", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeMeshResponse()
@@ -64,7 +65,8 @@ class TcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeMeshList", params)
+            headers = request.headers
+            body = self.call("DescribeMeshList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeMeshListResponse()

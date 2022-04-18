@@ -36,7 +36,8 @@ class BmeipClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("BindEipAcls", params)
+            headers = request.headers
+            body = self.call("BindEipAcls", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.BindEipAclsResponse()
@@ -64,7 +65,8 @@ class BmeipClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("BindHosted", params)
+            headers = request.headers
+            body = self.call("BindHosted", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.BindHostedResponse()
@@ -92,7 +94,8 @@ class BmeipClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("BindRs", params)
+            headers = request.headers
+            body = self.call("BindRs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.BindRsResponse()
@@ -120,7 +123,8 @@ class BmeipClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("BindVpcIp", params)
+            headers = request.headers
+            body = self.call("BindVpcIp", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.BindVpcIpResponse()
@@ -148,7 +152,8 @@ class BmeipClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateEip", params)
+            headers = request.headers
+            body = self.call("CreateEip", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateEipResponse()
@@ -176,7 +181,8 @@ class BmeipClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateEipAcl", params)
+            headers = request.headers
+            body = self.call("CreateEipAcl", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateEipAclResponse()
@@ -204,7 +210,8 @@ class BmeipClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteEip", params)
+            headers = request.headers
+            body = self.call("DeleteEip", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteEipResponse()
@@ -232,7 +239,8 @@ class BmeipClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteEipAcl", params)
+            headers = request.headers
+            body = self.call("DeleteEipAcl", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteEipAclResponse()
@@ -260,7 +268,8 @@ class BmeipClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeEipAcls", params)
+            headers = request.headers
+            body = self.call("DescribeEipAcls", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeEipAclsResponse()
@@ -288,7 +297,8 @@ class BmeipClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeEipQuota", params)
+            headers = request.headers
+            body = self.call("DescribeEipQuota", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeEipQuotaResponse()
@@ -316,7 +326,8 @@ class BmeipClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeEipTask", params)
+            headers = request.headers
+            body = self.call("DescribeEipTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeEipTaskResponse()
@@ -344,7 +355,8 @@ class BmeipClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeEips", params)
+            headers = request.headers
+            body = self.call("DescribeEips", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeEipsResponse()
@@ -372,7 +384,8 @@ class BmeipClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyEipAcl", params)
+            headers = request.headers
+            body = self.call("ModifyEipAcl", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyEipAclResponse()
@@ -400,7 +413,8 @@ class BmeipClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyEipCharge", params)
+            headers = request.headers
+            body = self.call("ModifyEipCharge", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyEipChargeResponse()
@@ -428,7 +442,8 @@ class BmeipClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyEipName", params)
+            headers = request.headers
+            body = self.call("ModifyEipName", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyEipNameResponse()
@@ -456,7 +471,8 @@ class BmeipClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UnbindEipAcls", params)
+            headers = request.headers
+            body = self.call("UnbindEipAcls", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UnbindEipAclsResponse()
@@ -484,7 +500,8 @@ class BmeipClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UnbindHosted", params)
+            headers = request.headers
+            body = self.call("UnbindHosted", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UnbindHostedResponse()
@@ -512,7 +529,8 @@ class BmeipClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UnbindRs", params)
+            headers = request.headers
+            body = self.call("UnbindRs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UnbindRsResponse()
@@ -540,7 +558,8 @@ class BmeipClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UnbindRsList", params)
+            headers = request.headers
+            body = self.call("UnbindRsList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UnbindRsListResponse()
@@ -568,7 +587,8 @@ class BmeipClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UnbindVpcIp", params)
+            headers = request.headers
+            body = self.call("UnbindVpcIp", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UnbindVpcIpResponse()

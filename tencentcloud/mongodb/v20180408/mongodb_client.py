@@ -37,7 +37,8 @@ class MongodbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AssignProject", params)
+            headers = request.headers
+            body = self.call("AssignProject", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AssignProjectResponse()
@@ -65,7 +66,8 @@ class MongodbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateDBInstance", params)
+            headers = request.headers
+            body = self.call("CreateDBInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateDBInstanceResponse()
@@ -93,7 +95,8 @@ class MongodbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateDBInstanceHour", params)
+            headers = request.headers
+            body = self.call("CreateDBInstanceHour", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateDBInstanceHourResponse()
@@ -121,7 +124,8 @@ class MongodbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeClientConnections", params)
+            headers = request.headers
+            body = self.call("DescribeClientConnections", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeClientConnectionsResponse()
@@ -149,7 +153,8 @@ class MongodbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDBInstances", params)
+            headers = request.headers
+            body = self.call("DescribeDBInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDBInstancesResponse()
@@ -177,7 +182,8 @@ class MongodbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSlowLog", params)
+            headers = request.headers
+            body = self.call("DescribeSlowLog", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSlowLogResponse()
@@ -205,7 +211,8 @@ class MongodbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSpecInfo", params)
+            headers = request.headers
+            body = self.call("DescribeSpecInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSpecInfoResponse()
@@ -233,7 +240,8 @@ class MongodbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RenameInstance", params)
+            headers = request.headers
+            body = self.call("RenameInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RenameInstanceResponse()
@@ -261,7 +269,8 @@ class MongodbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SetAutoRenew", params)
+            headers = request.headers
+            body = self.call("SetAutoRenew", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SetAutoRenewResponse()
@@ -290,7 +299,8 @@ class MongodbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SetPassword", params)
+            headers = request.headers
+            body = self.call("SetPassword", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SetPasswordResponse()
@@ -318,7 +328,8 @@ class MongodbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("TerminateDBInstance", params)
+            headers = request.headers
+            body = self.call("TerminateDBInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.TerminateDBInstanceResponse()
@@ -346,7 +357,8 @@ class MongodbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpgradeDBInstance", params)
+            headers = request.headers
+            body = self.call("UpgradeDBInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpgradeDBInstanceResponse()
@@ -374,7 +386,8 @@ class MongodbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpgradeDBInstanceHour", params)
+            headers = request.headers
+            body = self.call("UpgradeDBInstanceHour", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpgradeDBInstanceHourResponse()

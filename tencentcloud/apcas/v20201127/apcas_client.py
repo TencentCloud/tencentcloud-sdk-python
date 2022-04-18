@@ -36,7 +36,8 @@ class ApcasClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetTaskDetail", params)
+            headers = request.headers
+            body = self.call("GetTaskDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetTaskDetailResponse()
@@ -64,7 +65,8 @@ class ApcasClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetTaskList", params)
+            headers = request.headers
+            body = self.call("GetTaskList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetTaskListResponse()
@@ -92,7 +94,8 @@ class ApcasClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("PredictRating", params)
+            headers = request.headers
+            body = self.call("PredictRating", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.PredictRatingResponse()
@@ -120,7 +123,8 @@ class ApcasClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryCallDetails", params)
+            headers = request.headers
+            body = self.call("QueryCallDetails", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryCallDetailsResponse()
@@ -148,7 +152,8 @@ class ApcasClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryCallStat", params)
+            headers = request.headers
+            body = self.call("QueryCallStat", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryCallStatResponse()
@@ -176,7 +181,8 @@ class ApcasClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryGeneralStat", params)
+            headers = request.headers
+            body = self.call("QueryGeneralStat", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryGeneralStatResponse()
@@ -204,7 +210,8 @@ class ApcasClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UploadId", params)
+            headers = request.headers
+            body = self.call("UploadId", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UploadIdResponse()

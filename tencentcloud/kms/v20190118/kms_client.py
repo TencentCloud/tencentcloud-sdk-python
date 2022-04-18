@@ -36,7 +36,8 @@ class KmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ArchiveKey", params)
+            headers = request.headers
+            body = self.call("ArchiveKey", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ArchiveKeyResponse()
@@ -64,7 +65,8 @@ class KmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AsymmetricRsaDecrypt", params)
+            headers = request.headers
+            body = self.call("AsymmetricRsaDecrypt", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AsymmetricRsaDecryptResponse()
@@ -92,7 +94,8 @@ class KmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AsymmetricSm2Decrypt", params)
+            headers = request.headers
+            body = self.call("AsymmetricSm2Decrypt", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AsymmetricSm2DecryptResponse()
@@ -120,7 +123,8 @@ class KmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("BindCloudResource", params)
+            headers = request.headers
+            body = self.call("BindCloudResource", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.BindCloudResourceResponse()
@@ -148,7 +152,8 @@ class KmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CancelKeyArchive", params)
+            headers = request.headers
+            body = self.call("CancelKeyArchive", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CancelKeyArchiveResponse()
@@ -176,7 +181,8 @@ class KmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CancelKeyDeletion", params)
+            headers = request.headers
+            body = self.call("CancelKeyDeletion", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CancelKeyDeletionResponse()
@@ -204,7 +210,8 @@ class KmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateKey", params)
+            headers = request.headers
+            body = self.call("CreateKey", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateKeyResponse()
@@ -232,7 +239,8 @@ class KmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateWhiteBoxKey", params)
+            headers = request.headers
+            body = self.call("CreateWhiteBoxKey", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateWhiteBoxKeyResponse()
@@ -260,7 +268,8 @@ class KmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("Decrypt", params)
+            headers = request.headers
+            body = self.call("Decrypt", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DecryptResponse()
@@ -288,7 +297,8 @@ class KmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteImportedKeyMaterial", params)
+            headers = request.headers
+            body = self.call("DeleteImportedKeyMaterial", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteImportedKeyMaterialResponse()
@@ -316,7 +326,8 @@ class KmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteWhiteBoxKey", params)
+            headers = request.headers
+            body = self.call("DeleteWhiteBoxKey", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteWhiteBoxKeyResponse()
@@ -344,7 +355,8 @@ class KmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeKey", params)
+            headers = request.headers
+            body = self.call("DescribeKey", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeKeyResponse()
@@ -372,7 +384,8 @@ class KmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeKeys", params)
+            headers = request.headers
+            body = self.call("DescribeKeys", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeKeysResponse()
@@ -400,7 +413,8 @@ class KmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeWhiteBoxDecryptKey", params)
+            headers = request.headers
+            body = self.call("DescribeWhiteBoxDecryptKey", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeWhiteBoxDecryptKeyResponse()
@@ -428,7 +442,8 @@ class KmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeWhiteBoxDeviceFingerprints", params)
+            headers = request.headers
+            body = self.call("DescribeWhiteBoxDeviceFingerprints", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeWhiteBoxDeviceFingerprintsResponse()
@@ -456,7 +471,8 @@ class KmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeWhiteBoxKey", params)
+            headers = request.headers
+            body = self.call("DescribeWhiteBoxKey", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeWhiteBoxKeyResponse()
@@ -484,7 +500,8 @@ class KmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeWhiteBoxKeyDetails", params)
+            headers = request.headers
+            body = self.call("DescribeWhiteBoxKeyDetails", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeWhiteBoxKeyDetailsResponse()
@@ -512,7 +529,8 @@ class KmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeWhiteBoxServiceStatus", params)
+            headers = request.headers
+            body = self.call("DescribeWhiteBoxServiceStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeWhiteBoxServiceStatusResponse()
@@ -540,7 +558,8 @@ class KmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DisableKey", params)
+            headers = request.headers
+            body = self.call("DisableKey", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DisableKeyResponse()
@@ -568,7 +587,8 @@ class KmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DisableKeyRotation", params)
+            headers = request.headers
+            body = self.call("DisableKeyRotation", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DisableKeyRotationResponse()
@@ -596,7 +616,8 @@ class KmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DisableKeys", params)
+            headers = request.headers
+            body = self.call("DisableKeys", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DisableKeysResponse()
@@ -624,7 +645,8 @@ class KmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DisableWhiteBoxKey", params)
+            headers = request.headers
+            body = self.call("DisableWhiteBoxKey", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DisableWhiteBoxKeyResponse()
@@ -652,7 +674,8 @@ class KmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DisableWhiteBoxKeys", params)
+            headers = request.headers
+            body = self.call("DisableWhiteBoxKeys", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DisableWhiteBoxKeysResponse()
@@ -680,7 +703,8 @@ class KmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("EnableKey", params)
+            headers = request.headers
+            body = self.call("EnableKey", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.EnableKeyResponse()
@@ -708,7 +732,8 @@ class KmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("EnableKeyRotation", params)
+            headers = request.headers
+            body = self.call("EnableKeyRotation", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.EnableKeyRotationResponse()
@@ -736,7 +761,8 @@ class KmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("EnableKeys", params)
+            headers = request.headers
+            body = self.call("EnableKeys", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.EnableKeysResponse()
@@ -764,7 +790,8 @@ class KmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("EnableWhiteBoxKey", params)
+            headers = request.headers
+            body = self.call("EnableWhiteBoxKey", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.EnableWhiteBoxKeyResponse()
@@ -792,7 +819,8 @@ class KmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("EnableWhiteBoxKeys", params)
+            headers = request.headers
+            body = self.call("EnableWhiteBoxKeys", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.EnableWhiteBoxKeysResponse()
@@ -820,7 +848,8 @@ class KmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("Encrypt", params)
+            headers = request.headers
+            body = self.call("Encrypt", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.EncryptResponse()
@@ -848,7 +877,8 @@ class KmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("EncryptByWhiteBox", params)
+            headers = request.headers
+            body = self.call("EncryptByWhiteBox", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.EncryptByWhiteBoxResponse()
@@ -876,7 +906,8 @@ class KmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GenerateDataKey", params)
+            headers = request.headers
+            body = self.call("GenerateDataKey", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GenerateDataKeyResponse()
@@ -904,7 +935,8 @@ class KmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GenerateRandom", params)
+            headers = request.headers
+            body = self.call("GenerateRandom", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GenerateRandomResponse()
@@ -932,7 +964,8 @@ class KmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetKeyRotationStatus", params)
+            headers = request.headers
+            body = self.call("GetKeyRotationStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetKeyRotationStatusResponse()
@@ -960,7 +993,8 @@ class KmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetParametersForImport", params)
+            headers = request.headers
+            body = self.call("GetParametersForImport", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetParametersForImportResponse()
@@ -988,7 +1022,8 @@ class KmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetPublicKey", params)
+            headers = request.headers
+            body = self.call("GetPublicKey", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetPublicKeyResponse()
@@ -1016,7 +1051,8 @@ class KmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetRegions", params)
+            headers = request.headers
+            body = self.call("GetRegions", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetRegionsResponse()
@@ -1044,7 +1080,8 @@ class KmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetServiceStatus", params)
+            headers = request.headers
+            body = self.call("GetServiceStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetServiceStatusResponse()
@@ -1073,7 +1110,8 @@ class KmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ImportKeyMaterial", params)
+            headers = request.headers
+            body = self.call("ImportKeyMaterial", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ImportKeyMaterialResponse()
@@ -1101,7 +1139,8 @@ class KmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ListAlgorithms", params)
+            headers = request.headers
+            body = self.call("ListAlgorithms", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListAlgorithmsResponse()
@@ -1129,7 +1168,8 @@ class KmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ListKeyDetail", params)
+            headers = request.headers
+            body = self.call("ListKeyDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListKeyDetailResponse()
@@ -1157,7 +1197,8 @@ class KmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ListKeys", params)
+            headers = request.headers
+            body = self.call("ListKeys", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListKeysResponse()
@@ -1185,7 +1226,8 @@ class KmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("OverwriteWhiteBoxDeviceFingerprints", params)
+            headers = request.headers
+            body = self.call("OverwriteWhiteBoxDeviceFingerprints", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.OverwriteWhiteBoxDeviceFingerprintsResponse()
@@ -1213,7 +1255,8 @@ class KmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ReEncrypt", params)
+            headers = request.headers
+            body = self.call("ReEncrypt", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ReEncryptResponse()
@@ -1241,7 +1284,8 @@ class KmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ScheduleKeyDeletion", params)
+            headers = request.headers
+            body = self.call("ScheduleKeyDeletion", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ScheduleKeyDeletionResponse()
@@ -1270,7 +1314,8 @@ class KmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SignByAsymmetricKey", params)
+            headers = request.headers
+            body = self.call("SignByAsymmetricKey", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SignByAsymmetricKeyResponse()
@@ -1298,7 +1343,8 @@ class KmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UnbindCloudResource", params)
+            headers = request.headers
+            body = self.call("UnbindCloudResource", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UnbindCloudResourceResponse()
@@ -1326,7 +1372,8 @@ class KmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateAlias", params)
+            headers = request.headers
+            body = self.call("UpdateAlias", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateAliasResponse()
@@ -1354,7 +1401,8 @@ class KmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateKeyDescription", params)
+            headers = request.headers
+            body = self.call("UpdateKeyDescription", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateKeyDescriptionResponse()
@@ -1382,7 +1430,8 @@ class KmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("VerifyByAsymmetricKey", params)
+            headers = request.headers
+            body = self.call("VerifyByAsymmetricKey", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.VerifyByAsymmetricKeyResponse()

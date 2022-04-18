@@ -36,7 +36,8 @@ class ApeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("BatchDescribeOrderCertificate", params)
+            headers = request.headers
+            body = self.call("BatchDescribeOrderCertificate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.BatchDescribeOrderCertificateResponse()
@@ -64,7 +65,8 @@ class ApeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("BatchDescribeOrderImage", params)
+            headers = request.headers
+            body = self.call("BatchDescribeOrderImage", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.BatchDescribeOrderImageResponse()
@@ -92,7 +94,8 @@ class ApeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateOrderAndDownloads", params)
+            headers = request.headers
+            body = self.call("CreateOrderAndDownloads", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateOrderAndDownloadsResponse()
@@ -120,7 +123,8 @@ class ApeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateOrderAndPay", params)
+            headers = request.headers
+            body = self.call("CreateOrderAndPay", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateOrderAndPayResponse()
@@ -148,7 +152,8 @@ class ApeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAuthUsers", params)
+            headers = request.headers
+            body = self.call("DescribeAuthUsers", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAuthUsersResponse()
@@ -176,7 +181,8 @@ class ApeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDownloadInfos", params)
+            headers = request.headers
+            body = self.call("DescribeDownloadInfos", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDownloadInfosResponse()
@@ -204,7 +210,8 @@ class ApeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeImage", params)
+            headers = request.headers
+            body = self.call("DescribeImage", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeImageResponse()
@@ -232,7 +239,8 @@ class ApeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeImages", params)
+            headers = request.headers
+            body = self.call("DescribeImages", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeImagesResponse()

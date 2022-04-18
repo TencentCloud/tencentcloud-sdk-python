@@ -36,7 +36,8 @@ class FaceidClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("BankCard2EVerification", params)
+            headers = request.headers
+            body = self.call("BankCard2EVerification", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.BankCard2EVerificationResponse()
@@ -64,7 +65,8 @@ class FaceidClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("BankCard4EVerification", params)
+            headers = request.headers
+            body = self.call("BankCard4EVerification", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.BankCard4EVerificationResponse()
@@ -92,7 +94,8 @@ class FaceidClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("BankCardVerification", params)
+            headers = request.headers
+            body = self.call("BankCardVerification", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.BankCardVerificationResponse()
@@ -120,7 +123,8 @@ class FaceidClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CheckBankCardInformation", params)
+            headers = request.headers
+            body = self.call("CheckBankCardInformation", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CheckBankCardInformationResponse()
@@ -148,7 +152,8 @@ class FaceidClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CheckEidTokenStatus", params)
+            headers = request.headers
+            body = self.call("CheckEidTokenStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CheckEidTokenStatusResponse()
@@ -176,7 +181,8 @@ class FaceidClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CheckIdCardInformation", params)
+            headers = request.headers
+            body = self.call("CheckIdCardInformation", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CheckIdCardInformationResponse()
@@ -204,7 +210,8 @@ class FaceidClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CheckIdNameDate", params)
+            headers = request.headers
+            body = self.call("CheckIdNameDate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CheckIdNameDateResponse()
@@ -232,7 +239,8 @@ class FaceidClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CheckPhoneAndName", params)
+            headers = request.headers
+            body = self.call("CheckPhoneAndName", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CheckPhoneAndNameResponse()
@@ -260,7 +268,8 @@ class FaceidClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DetectAuth", params)
+            headers = request.headers
+            body = self.call("DetectAuth", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DetectAuthResponse()
@@ -289,7 +298,8 @@ class FaceidClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DetectReflectLivenessAndCompare", params)
+            headers = request.headers
+            body = self.call("DetectReflectLivenessAndCompare", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DetectReflectLivenessAndCompareResponse()
@@ -317,7 +327,8 @@ class FaceidClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("EncryptedPhoneVerification", params)
+            headers = request.headers
+            body = self.call("EncryptedPhoneVerification", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.EncryptedPhoneVerificationResponse()
@@ -345,7 +356,8 @@ class FaceidClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetActionSequence", params)
+            headers = request.headers
+            body = self.call("GetActionSequence", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetActionSequenceResponse()
@@ -373,7 +385,8 @@ class FaceidClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetDetectInfo", params)
+            headers = request.headers
+            body = self.call("GetDetectInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetDetectInfoResponse()
@@ -401,7 +414,8 @@ class FaceidClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetDetectInfoEnhanced", params)
+            headers = request.headers
+            body = self.call("GetDetectInfoEnhanced", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetDetectInfoEnhancedResponse()
@@ -429,7 +443,8 @@ class FaceidClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetEidResult", params)
+            headers = request.headers
+            body = self.call("GetEidResult", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetEidResultResponse()
@@ -457,7 +472,8 @@ class FaceidClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetEidToken", params)
+            headers = request.headers
+            body = self.call("GetEidToken", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetEidTokenResponse()
@@ -485,7 +501,8 @@ class FaceidClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetFaceIdResult", params)
+            headers = request.headers
+            body = self.call("GetFaceIdResult", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetFaceIdResultResponse()
@@ -513,7 +530,8 @@ class FaceidClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetFaceIdToken", params)
+            headers = request.headers
+            body = self.call("GetFaceIdToken", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetFaceIdTokenResponse()
@@ -541,7 +559,8 @@ class FaceidClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetLiveCode", params)
+            headers = request.headers
+            body = self.call("GetLiveCode", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetLiveCodeResponse()
@@ -569,7 +588,8 @@ class FaceidClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetRealNameAuthResult", params)
+            headers = request.headers
+            body = self.call("GetRealNameAuthResult", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetRealNameAuthResultResponse()
@@ -597,7 +617,8 @@ class FaceidClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetRealNameAuthToken", params)
+            headers = request.headers
+            body = self.call("GetRealNameAuthToken", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetRealNameAuthTokenResponse()
@@ -625,7 +646,8 @@ class FaceidClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetWeChatBillDetails", params)
+            headers = request.headers
+            body = self.call("GetWeChatBillDetails", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetWeChatBillDetailsResponse()
@@ -653,7 +675,8 @@ class FaceidClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("IdCardOCRVerification", params)
+            headers = request.headers
+            body = self.call("IdCardOCRVerification", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.IdCardOCRVerificationResponse()
@@ -681,7 +704,8 @@ class FaceidClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("IdCardVerification", params)
+            headers = request.headers
+            body = self.call("IdCardVerification", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.IdCardVerificationResponse()
@@ -709,7 +733,8 @@ class FaceidClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ImageRecognition", params)
+            headers = request.headers
+            body = self.call("ImageRecognition", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ImageRecognitionResponse()
@@ -737,7 +762,8 @@ class FaceidClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("Liveness", params)
+            headers = request.headers
+            body = self.call("Liveness", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.LivenessResponse()
@@ -765,7 +791,8 @@ class FaceidClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("LivenessCompare", params)
+            headers = request.headers
+            body = self.call("LivenessCompare", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.LivenessCompareResponse()
@@ -793,7 +820,8 @@ class FaceidClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("LivenessRecognition", params)
+            headers = request.headers
+            body = self.call("LivenessRecognition", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.LivenessRecognitionResponse()
@@ -821,7 +849,8 @@ class FaceidClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("MinorsVerification", params)
+            headers = request.headers
+            body = self.call("MinorsVerification", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.MinorsVerificationResponse()
@@ -849,7 +878,8 @@ class FaceidClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("MobileNetworkTimeVerification", params)
+            headers = request.headers
+            body = self.call("MobileNetworkTimeVerification", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.MobileNetworkTimeVerificationResponse()
@@ -877,7 +907,8 @@ class FaceidClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("MobileStatus", params)
+            headers = request.headers
+            body = self.call("MobileStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.MobileStatusResponse()
@@ -905,7 +936,8 @@ class FaceidClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("PhoneVerification", params)
+            headers = request.headers
+            body = self.call("PhoneVerification", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.PhoneVerificationResponse()
@@ -933,7 +965,8 @@ class FaceidClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("PhoneVerificationCMCC", params)
+            headers = request.headers
+            body = self.call("PhoneVerificationCMCC", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.PhoneVerificationCMCCResponse()
@@ -961,7 +994,8 @@ class FaceidClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("PhoneVerificationCTCC", params)
+            headers = request.headers
+            body = self.call("PhoneVerificationCTCC", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.PhoneVerificationCTCCResponse()
@@ -989,7 +1023,8 @@ class FaceidClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("PhoneVerificationCUCC", params)
+            headers = request.headers
+            body = self.call("PhoneVerificationCUCC", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.PhoneVerificationCUCCResponse()

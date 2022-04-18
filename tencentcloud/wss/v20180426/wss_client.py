@@ -36,7 +36,8 @@ class WssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteCert", params)
+            headers = request.headers
+            body = self.call("DeleteCert", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteCertResponse()
@@ -64,7 +65,8 @@ class WssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCertList", params)
+            headers = request.headers
+            body = self.call("DescribeCertList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCertListResponse()
@@ -92,7 +94,8 @@ class WssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UploadCert", params)
+            headers = request.headers
+            body = self.call("UploadCert", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UploadCertResponse()

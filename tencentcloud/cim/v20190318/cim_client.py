@@ -36,7 +36,8 @@ class CimClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSdkAppid", params)
+            headers = request.headers
+            body = self.call("DescribeSdkAppid", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSdkAppidResponse()

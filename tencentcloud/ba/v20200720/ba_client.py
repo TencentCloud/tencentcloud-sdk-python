@@ -36,7 +36,8 @@ class BaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateWeappQRUrl", params)
+            headers = request.headers
+            body = self.call("CreateWeappQRUrl", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateWeappQRUrlResponse()
@@ -64,7 +65,8 @@ class BaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeGetAuthInfo", params)
+            headers = request.headers
+            body = self.call("DescribeGetAuthInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeGetAuthInfoResponse()
@@ -93,7 +95,8 @@ class BaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SyncIcpOrderWebInfo", params)
+            headers = request.headers
+            body = self.call("SyncIcpOrderWebInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SyncIcpOrderWebInfoResponse()

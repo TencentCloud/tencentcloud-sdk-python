@@ -36,7 +36,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ApplyMarketComponent", params)
+            headers = request.headers
+            body = self.call("ApplyMarketComponent", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ApplyMarketComponentResponse()
@@ -64,7 +65,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("BuildMessageRoute", params)
+            headers = request.headers
+            body = self.call("BuildMessageRoute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.BuildMessageRouteResponse()
@@ -92,7 +94,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateApplicationVisualization", params)
+            headers = request.headers
+            body = self.call("CreateApplicationVisualization", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateApplicationVisualizationResponse()
@@ -120,7 +123,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateConfigMap", params)
+            headers = request.headers
+            body = self.call("CreateConfigMap", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateConfigMapResponse()
@@ -148,7 +152,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateEdgeNode", params)
+            headers = request.headers
+            body = self.call("CreateEdgeNode", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateEdgeNodeResponse()
@@ -176,7 +181,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateEdgeNodeBatch", params)
+            headers = request.headers
+            body = self.call("CreateEdgeNodeBatch", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateEdgeNodeBatchResponse()
@@ -204,7 +210,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateEdgeNodeGroup", params)
+            headers = request.headers
+            body = self.call("CreateEdgeNodeGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateEdgeNodeGroupResponse()
@@ -232,7 +239,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateEdgeNodeUnitTemplate", params)
+            headers = request.headers
+            body = self.call("CreateEdgeNodeUnitTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateEdgeNodeUnitTemplateResponse()
@@ -260,7 +268,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateEdgeUnitApplicationVisualization", params)
+            headers = request.headers
+            body = self.call("CreateEdgeUnitApplicationVisualization", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateEdgeUnitApplicationVisualizationResponse()
@@ -288,7 +297,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateEdgeUnitApplicationYaml", params)
+            headers = request.headers
+            body = self.call("CreateEdgeUnitApplicationYaml", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateEdgeUnitApplicationYamlResponse()
@@ -316,7 +326,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateEdgeUnitCloud", params)
+            headers = request.headers
+            body = self.call("CreateEdgeUnitCloud", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateEdgeUnitCloudResponse()
@@ -344,7 +355,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateEdgeUnitDevices", params)
+            headers = request.headers
+            body = self.call("CreateEdgeUnitDevices", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateEdgeUnitDevicesResponse()
@@ -372,7 +384,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateIotDevice", params)
+            headers = request.headers
+            body = self.call("CreateIotDevice", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateIotDeviceResponse()
@@ -400,7 +413,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateMessageRoute", params)
+            headers = request.headers
+            body = self.call("CreateMessageRoute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateMessageRouteResponse()
@@ -428,7 +442,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateNamespace", params)
+            headers = request.headers
+            body = self.call("CreateNamespace", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateNamespaceResponse()
@@ -456,7 +471,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateSecret", params)
+            headers = request.headers
+            body = self.call("CreateSecret", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateSecretResponse()
@@ -484,7 +500,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateUpdateNodeUnit", params)
+            headers = request.headers
+            body = self.call("CreateUpdateNodeUnit", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateUpdateNodeUnitResponse()
@@ -512,7 +529,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateUserToken", params)
+            headers = request.headers
+            body = self.call("CreateUserToken", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateUserTokenResponse()
@@ -540,7 +558,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteApplications", params)
+            headers = request.headers
+            body = self.call("DeleteApplications", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteApplicationsResponse()
@@ -568,7 +587,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteConfigMap", params)
+            headers = request.headers
+            body = self.call("DeleteConfigMap", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteConfigMapResponse()
@@ -596,7 +616,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteEdgeNodeGroup", params)
+            headers = request.headers
+            body = self.call("DeleteEdgeNodeGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteEdgeNodeGroupResponse()
@@ -624,7 +645,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteEdgeNodeUnitTemplates", params)
+            headers = request.headers
+            body = self.call("DeleteEdgeNodeUnitTemplates", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteEdgeNodeUnitTemplatesResponse()
@@ -652,7 +674,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteEdgeNodes", params)
+            headers = request.headers
+            body = self.call("DeleteEdgeNodes", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteEdgeNodesResponse()
@@ -680,7 +703,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteEdgeUnitApplications", params)
+            headers = request.headers
+            body = self.call("DeleteEdgeUnitApplications", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteEdgeUnitApplicationsResponse()
@@ -708,7 +732,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteEdgeUnitCloud", params)
+            headers = request.headers
+            body = self.call("DeleteEdgeUnitCloud", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteEdgeUnitCloudResponse()
@@ -736,7 +761,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteEdgeUnitDeployGridItem", params)
+            headers = request.headers
+            body = self.call("DeleteEdgeUnitDeployGridItem", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteEdgeUnitDeployGridItemResponse()
@@ -764,7 +790,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteEdgeUnitDevices", params)
+            headers = request.headers
+            body = self.call("DeleteEdgeUnitDevices", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteEdgeUnitDevicesResponse()
@@ -792,7 +819,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteEdgeUnitPod", params)
+            headers = request.headers
+            body = self.call("DeleteEdgeUnitPod", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteEdgeUnitPodResponse()
@@ -820,7 +848,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteIotDevice", params)
+            headers = request.headers
+            body = self.call("DeleteIotDevice", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteIotDeviceResponse()
@@ -848,7 +877,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteIotDeviceBatch", params)
+            headers = request.headers
+            body = self.call("DeleteIotDeviceBatch", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteIotDeviceBatchResponse()
@@ -876,7 +906,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteMessageRoute", params)
+            headers = request.headers
+            body = self.call("DeleteMessageRoute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteMessageRouteResponse()
@@ -904,7 +935,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteNamespace", params)
+            headers = request.headers
+            body = self.call("DeleteNamespace", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteNamespaceResponse()
@@ -932,7 +964,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteNodeUnit", params)
+            headers = request.headers
+            body = self.call("DeleteNodeUnit", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteNodeUnitResponse()
@@ -960,7 +993,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteSecret", params)
+            headers = request.headers
+            body = self.call("DeleteSecret", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteSecretResponse()
@@ -988,7 +1022,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeApplicationVisualization", params)
+            headers = request.headers
+            body = self.call("DescribeApplicationVisualization", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeApplicationVisualizationResponse()
@@ -1016,7 +1051,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeApplicationYaml", params)
+            headers = request.headers
+            body = self.call("DescribeApplicationYaml", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeApplicationYamlResponse()
@@ -1044,7 +1080,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeApplicationYamlError", params)
+            headers = request.headers
+            body = self.call("DescribeApplicationYamlError", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeApplicationYamlErrorResponse()
@@ -1072,7 +1109,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeApplications", params)
+            headers = request.headers
+            body = self.call("DescribeApplications", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeApplicationsResponse()
@@ -1100,7 +1138,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeConfigMap", params)
+            headers = request.headers
+            body = self.call("DescribeConfigMap", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeConfigMapResponse()
@@ -1128,7 +1167,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeConfigMapYamlError", params)
+            headers = request.headers
+            body = self.call("DescribeConfigMapYamlError", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeConfigMapYamlErrorResponse()
@@ -1156,7 +1196,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeConfigMaps", params)
+            headers = request.headers
+            body = self.call("DescribeConfigMaps", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeConfigMapsResponse()
@@ -1184,7 +1225,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDracoEdgeNodeInstaller", params)
+            headers = request.headers
+            body = self.call("DescribeDracoEdgeNodeInstaller", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDracoEdgeNodeInstallerResponse()
@@ -1212,7 +1254,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeEdgeAgentNodeInstaller", params)
+            headers = request.headers
+            body = self.call("DescribeEdgeAgentNodeInstaller", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeEdgeAgentNodeInstallerResponse()
@@ -1240,7 +1283,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeEdgeDefaultVpc", params)
+            headers = request.headers
+            body = self.call("DescribeEdgeDefaultVpc", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeEdgeDefaultVpcResponse()
@@ -1268,7 +1312,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeEdgeNode", params)
+            headers = request.headers
+            body = self.call("DescribeEdgeNode", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeEdgeNodeResponse()
@@ -1296,7 +1341,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeEdgeNodePodContainers", params)
+            headers = request.headers
+            body = self.call("DescribeEdgeNodePodContainers", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeEdgeNodePodContainersResponse()
@@ -1324,7 +1370,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeEdgeNodePods", params)
+            headers = request.headers
+            body = self.call("DescribeEdgeNodePods", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeEdgeNodePodsResponse()
@@ -1352,7 +1399,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeEdgeNodeRemarkList", params)
+            headers = request.headers
+            body = self.call("DescribeEdgeNodeRemarkList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeEdgeNodeRemarkListResponse()
@@ -1380,7 +1428,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeEdgeNodes", params)
+            headers = request.headers
+            body = self.call("DescribeEdgeNodes", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeEdgeNodesResponse()
@@ -1408,7 +1457,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeEdgeOperationLogs", params)
+            headers = request.headers
+            body = self.call("DescribeEdgeOperationLogs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeEdgeOperationLogsResponse()
@@ -1436,7 +1486,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeEdgePod", params)
+            headers = request.headers
+            body = self.call("DescribeEdgePod", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeEdgePodResponse()
@@ -1464,7 +1515,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeEdgeSnNodes", params)
+            headers = request.headers
+            body = self.call("DescribeEdgeSnNodes", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeEdgeSnNodesResponse()
@@ -1492,7 +1544,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeEdgeUnitApplicationEvents", params)
+            headers = request.headers
+            body = self.call("DescribeEdgeUnitApplicationEvents", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeEdgeUnitApplicationEventsResponse()
@@ -1520,7 +1573,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeEdgeUnitApplicationLogs", params)
+            headers = request.headers
+            body = self.call("DescribeEdgeUnitApplicationLogs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeEdgeUnitApplicationLogsResponse()
@@ -1548,7 +1602,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeEdgeUnitApplicationPodContainers", params)
+            headers = request.headers
+            body = self.call("DescribeEdgeUnitApplicationPodContainers", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeEdgeUnitApplicationPodContainersResponse()
@@ -1576,7 +1631,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeEdgeUnitApplicationPods", params)
+            headers = request.headers
+            body = self.call("DescribeEdgeUnitApplicationPods", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeEdgeUnitApplicationPodsResponse()
@@ -1604,7 +1660,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeEdgeUnitApplicationVisualization", params)
+            headers = request.headers
+            body = self.call("DescribeEdgeUnitApplicationVisualization", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeEdgeUnitApplicationVisualizationResponse()
@@ -1632,7 +1689,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeEdgeUnitApplicationYaml", params)
+            headers = request.headers
+            body = self.call("DescribeEdgeUnitApplicationYaml", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeEdgeUnitApplicationYamlResponse()
@@ -1660,7 +1718,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeEdgeUnitApplicationYamlError", params)
+            headers = request.headers
+            body = self.call("DescribeEdgeUnitApplicationYamlError", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeEdgeUnitApplicationYamlErrorResponse()
@@ -1688,7 +1747,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeEdgeUnitApplications", params)
+            headers = request.headers
+            body = self.call("DescribeEdgeUnitApplications", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeEdgeUnitApplicationsResponse()
@@ -1716,7 +1776,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeEdgeUnitCloud", params)
+            headers = request.headers
+            body = self.call("DescribeEdgeUnitCloud", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeEdgeUnitCloudResponse()
@@ -1744,7 +1805,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeEdgeUnitDeployGrid", params)
+            headers = request.headers
+            body = self.call("DescribeEdgeUnitDeployGrid", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeEdgeUnitDeployGridResponse()
@@ -1772,7 +1834,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeEdgeUnitDeployGridItem", params)
+            headers = request.headers
+            body = self.call("DescribeEdgeUnitDeployGridItem", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeEdgeUnitDeployGridItemResponse()
@@ -1800,7 +1863,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeEdgeUnitDeployGridItemYaml", params)
+            headers = request.headers
+            body = self.call("DescribeEdgeUnitDeployGridItemYaml", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeEdgeUnitDeployGridItemYamlResponse()
@@ -1828,7 +1892,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeEdgeUnitExtra", params)
+            headers = request.headers
+            body = self.call("DescribeEdgeUnitExtra", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeEdgeUnitExtraResponse()
@@ -1856,7 +1921,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeEdgeUnitGridEvents", params)
+            headers = request.headers
+            body = self.call("DescribeEdgeUnitGridEvents", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeEdgeUnitGridEventsResponse()
@@ -1884,7 +1950,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeEdgeUnitGridPods", params)
+            headers = request.headers
+            body = self.call("DescribeEdgeUnitGridPods", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeEdgeUnitGridPodsResponse()
@@ -1912,7 +1979,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeEdgeUnitMonitorStatus", params)
+            headers = request.headers
+            body = self.call("DescribeEdgeUnitMonitorStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeEdgeUnitMonitorStatusResponse()
@@ -1940,7 +2008,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeEdgeUnitNodeGroup", params)
+            headers = request.headers
+            body = self.call("DescribeEdgeUnitNodeGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeEdgeUnitNodeGroupResponse()
@@ -1968,7 +2037,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeEdgeUnitNodeUnitTemplates", params)
+            headers = request.headers
+            body = self.call("DescribeEdgeUnitNodeUnitTemplates", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeEdgeUnitNodeUnitTemplatesResponse()
@@ -1996,7 +2066,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeEdgeUnitsCloud", params)
+            headers = request.headers
+            body = self.call("DescribeEdgeUnitsCloud", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeEdgeUnitsCloudResponse()
@@ -2024,7 +2095,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeIotDevice", params)
+            headers = request.headers
+            body = self.call("DescribeIotDevice", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeIotDeviceResponse()
@@ -2052,7 +2124,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeIotDevices", params)
+            headers = request.headers
+            body = self.call("DescribeIotDevices", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeIotDevicesResponse()
@@ -2080,7 +2153,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeMessageRouteList", params)
+            headers = request.headers
+            body = self.call("DescribeMessageRouteList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeMessageRouteListResponse()
@@ -2108,7 +2182,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeMonitorMetrics", params)
+            headers = request.headers
+            body = self.call("DescribeMonitorMetrics", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeMonitorMetricsResponse()
@@ -2136,7 +2211,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeNamespace", params)
+            headers = request.headers
+            body = self.call("DescribeNamespace", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeNamespaceResponse()
@@ -2164,7 +2240,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeNamespaceResources", params)
+            headers = request.headers
+            body = self.call("DescribeNamespaceResources", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeNamespaceResourcesResponse()
@@ -2192,7 +2269,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeNamespaces", params)
+            headers = request.headers
+            body = self.call("DescribeNamespaces", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeNamespacesResponse()
@@ -2220,7 +2298,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeNodeUnit", params)
+            headers = request.headers
+            body = self.call("DescribeNodeUnit", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeNodeUnitResponse()
@@ -2248,7 +2327,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeNodeUnitTemplateOnNodeGroup", params)
+            headers = request.headers
+            body = self.call("DescribeNodeUnitTemplateOnNodeGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeNodeUnitTemplateOnNodeGroupResponse()
@@ -2276,7 +2356,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSecret", params)
+            headers = request.headers
+            body = self.call("DescribeSecret", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSecretResponse()
@@ -2304,7 +2385,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSecretYamlError", params)
+            headers = request.headers
+            body = self.call("DescribeSecretYamlError", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSecretYamlErrorResponse()
@@ -2332,7 +2414,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSecrets", params)
+            headers = request.headers
+            body = self.call("DescribeSecrets", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSecretsResponse()
@@ -2360,7 +2443,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeYeheResourceLimit", params)
+            headers = request.headers
+            body = self.call("DescribeYeheResourceLimit", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeYeheResourceLimitResponse()
@@ -2388,7 +2472,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetMarketComponent", params)
+            headers = request.headers
+            body = self.call("GetMarketComponent", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetMarketComponentResponse()
@@ -2416,7 +2501,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetMarketComponentList", params)
+            headers = request.headers
+            body = self.call("GetMarketComponentList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetMarketComponentListResponse()
@@ -2444,7 +2530,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyApplicationBasicInfo", params)
+            headers = request.headers
+            body = self.call("ModifyApplicationBasicInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyApplicationBasicInfoResponse()
@@ -2472,7 +2559,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyApplicationVisualization", params)
+            headers = request.headers
+            body = self.call("ModifyApplicationVisualization", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyApplicationVisualizationResponse()
@@ -2500,7 +2588,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyConfigMap", params)
+            headers = request.headers
+            body = self.call("ModifyConfigMap", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyConfigMapResponse()
@@ -2528,7 +2617,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyEdgeDracoNode", params)
+            headers = request.headers
+            body = self.call("ModifyEdgeDracoNode", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyEdgeDracoNodeResponse()
@@ -2556,7 +2646,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyEdgeNodeLabels", params)
+            headers = request.headers
+            body = self.call("ModifyEdgeNodeLabels", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyEdgeNodeLabelsResponse()
@@ -2584,7 +2675,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyEdgeUnit", params)
+            headers = request.headers
+            body = self.call("ModifyEdgeUnit", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyEdgeUnitResponse()
@@ -2612,7 +2704,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyEdgeUnitApplicationBasicInfo", params)
+            headers = request.headers
+            body = self.call("ModifyEdgeUnitApplicationBasicInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyEdgeUnitApplicationBasicInfoResponse()
@@ -2640,7 +2733,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyEdgeUnitApplicationVisualization", params)
+            headers = request.headers
+            body = self.call("ModifyEdgeUnitApplicationVisualization", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyEdgeUnitApplicationVisualizationResponse()
@@ -2668,7 +2762,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyEdgeUnitApplicationYaml", params)
+            headers = request.headers
+            body = self.call("ModifyEdgeUnitApplicationYaml", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyEdgeUnitApplicationYamlResponse()
@@ -2696,7 +2791,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyEdgeUnitCloudApi", params)
+            headers = request.headers
+            body = self.call("ModifyEdgeUnitCloudApi", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyEdgeUnitCloudApiResponse()
@@ -2724,7 +2820,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyEdgeUnitDeployGridItem", params)
+            headers = request.headers
+            body = self.call("ModifyEdgeUnitDeployGridItem", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyEdgeUnitDeployGridItemResponse()
@@ -2752,7 +2849,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyIotDevice", params)
+            headers = request.headers
+            body = self.call("ModifyIotDevice", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyIotDeviceResponse()
@@ -2780,7 +2878,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyNodeUnitTemplate", params)
+            headers = request.headers
+            body = self.call("ModifyNodeUnitTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyNodeUnitTemplateResponse()
@@ -2808,7 +2907,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifySecret", params)
+            headers = request.headers
+            body = self.call("ModifySecret", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifySecretResponse()
@@ -2836,7 +2936,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RedeployEdgeUnitApplication", params)
+            headers = request.headers
+            body = self.call("RedeployEdgeUnitApplication", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RedeployEdgeUnitApplicationResponse()
@@ -2864,7 +2965,8 @@ class IecpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SetRouteOnOff", params)
+            headers = request.headers
+            body = self.call("SetRouteOnOff", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SetRouteOnOffResponse()

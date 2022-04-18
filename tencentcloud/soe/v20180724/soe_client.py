@@ -36,7 +36,8 @@ class SoeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("InitOralProcess", params)
+            headers = request.headers
+            body = self.call("InitOralProcess", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.InitOralProcessResponse()
@@ -64,7 +65,8 @@ class SoeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("KeywordEvaluate", params)
+            headers = request.headers
+            body = self.call("KeywordEvaluate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.KeywordEvaluateResponse()
@@ -92,7 +94,8 @@ class SoeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("TransmitOralProcess", params)
+            headers = request.headers
+            body = self.call("TransmitOralProcess", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.TransmitOralProcessResponse()
@@ -120,7 +123,8 @@ class SoeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("TransmitOralProcessWithInit", params)
+            headers = request.headers
+            body = self.call("TransmitOralProcessWithInit", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.TransmitOralProcessWithInitResponse()

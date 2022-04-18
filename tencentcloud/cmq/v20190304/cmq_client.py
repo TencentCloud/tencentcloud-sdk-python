@@ -36,7 +36,8 @@ class CmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ClearQueue", params)
+            headers = request.headers
+            body = self.call("ClearQueue", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ClearQueueResponse()
@@ -64,7 +65,8 @@ class CmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ClearSubscriptionFilterTags", params)
+            headers = request.headers
+            body = self.call("ClearSubscriptionFilterTags", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ClearSubscriptionFilterTagsResponse()
@@ -92,7 +94,8 @@ class CmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateQueue", params)
+            headers = request.headers
+            body = self.call("CreateQueue", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateQueueResponse()
@@ -120,7 +123,8 @@ class CmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateSubscribe", params)
+            headers = request.headers
+            body = self.call("CreateSubscribe", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateSubscribeResponse()
@@ -148,7 +152,8 @@ class CmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateTopic", params)
+            headers = request.headers
+            body = self.call("CreateTopic", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateTopicResponse()
@@ -176,7 +181,8 @@ class CmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteQueue", params)
+            headers = request.headers
+            body = self.call("DeleteQueue", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteQueueResponse()
@@ -204,7 +210,8 @@ class CmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteSubscribe", params)
+            headers = request.headers
+            body = self.call("DeleteSubscribe", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteSubscribeResponse()
@@ -232,7 +239,8 @@ class CmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteTopic", params)
+            headers = request.headers
+            body = self.call("DeleteTopic", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteTopicResponse()
@@ -260,7 +268,8 @@ class CmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDeadLetterSourceQueues", params)
+            headers = request.headers
+            body = self.call("DescribeDeadLetterSourceQueues", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDeadLetterSourceQueuesResponse()
@@ -288,7 +297,8 @@ class CmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeQueueDetail", params)
+            headers = request.headers
+            body = self.call("DescribeQueueDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeQueueDetailResponse()
@@ -316,7 +326,8 @@ class CmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSubscriptionDetail", params)
+            headers = request.headers
+            body = self.call("DescribeSubscriptionDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSubscriptionDetailResponse()
@@ -344,7 +355,8 @@ class CmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTopicDetail", params)
+            headers = request.headers
+            body = self.call("DescribeTopicDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTopicDetailResponse()
@@ -372,7 +384,8 @@ class CmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyQueueAttribute", params)
+            headers = request.headers
+            body = self.call("ModifyQueueAttribute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyQueueAttributeResponse()
@@ -400,7 +413,8 @@ class CmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifySubscriptionAttribute", params)
+            headers = request.headers
+            body = self.call("ModifySubscriptionAttribute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifySubscriptionAttributeResponse()
@@ -428,7 +442,8 @@ class CmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyTopicAttribute", params)
+            headers = request.headers
+            body = self.call("ModifyTopicAttribute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyTopicAttributeResponse()
@@ -456,7 +471,8 @@ class CmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RewindQueue", params)
+            headers = request.headers
+            body = self.call("RewindQueue", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RewindQueueResponse()
@@ -484,7 +500,8 @@ class CmqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UnbindDeadLetter", params)
+            headers = request.headers
+            body = self.call("UnbindDeadLetter", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UnbindDeadLetterResponse()

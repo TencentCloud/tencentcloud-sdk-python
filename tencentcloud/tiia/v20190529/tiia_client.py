@@ -38,7 +38,8 @@ class TiiaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AssessQuality", params)
+            headers = request.headers
+            body = self.call("AssessQuality", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AssessQualityResponse()
@@ -71,7 +72,8 @@ class TiiaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateGroup", params)
+            headers = request.headers
+            body = self.call("CreateGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateGroupResponse()
@@ -99,7 +101,8 @@ class TiiaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateImage", params)
+            headers = request.headers
+            body = self.call("CreateImage", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateImageResponse()
@@ -131,7 +134,8 @@ class TiiaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CropImage", params)
+            headers = request.headers
+            body = self.call("CropImage", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CropImageResponse()
@@ -159,7 +163,8 @@ class TiiaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteImages", params)
+            headers = request.headers
+            body = self.call("DeleteImages", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteImagesResponse()
@@ -187,7 +192,8 @@ class TiiaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeGroups", params)
+            headers = request.headers
+            body = self.call("DescribeGroups", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeGroupsResponse()
@@ -215,7 +221,8 @@ class TiiaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeImages", params)
+            headers = request.headers
+            body = self.call("DescribeImages", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeImagesResponse()
@@ -247,7 +254,8 @@ class TiiaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DetectCelebrity", params)
+            headers = request.headers
+            body = self.call("DetectCelebrity", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DetectCelebrityResponse()
@@ -279,7 +287,8 @@ class TiiaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DetectDisgust", params)
+            headers = request.headers
+            body = self.call("DetectDisgust", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DetectDisgustResponse()
@@ -327,7 +336,8 @@ class TiiaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DetectLabel", params)
+            headers = request.headers
+            body = self.call("DetectLabel", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DetectLabelResponse()
@@ -358,7 +368,8 @@ class TiiaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DetectLabelBeta", params)
+            headers = request.headers
+            body = self.call("DetectLabelBeta", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DetectLabelBetaResponse()
@@ -388,7 +399,8 @@ class TiiaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DetectMisbehavior", params)
+            headers = request.headers
+            body = self.call("DetectMisbehavior", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DetectMisbehaviorResponse()
@@ -418,7 +430,8 @@ class TiiaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DetectProduct", params)
+            headers = request.headers
+            body = self.call("DetectProduct", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DetectProductResponse()
@@ -450,7 +463,8 @@ class TiiaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DetectProductBeta", params)
+            headers = request.headers
+            body = self.call("DetectProductBeta", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DetectProductBetaResponse()
@@ -482,7 +496,8 @@ class TiiaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("EnhanceImage", params)
+            headers = request.headers
+            body = self.call("EnhanceImage", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.EnhanceImageResponse()
@@ -501,7 +516,8 @@ class TiiaClient(AbstractClient):
 
 
     def RecognizeCar(self, request):
-        """腾讯云车辆属性识别可对汽车车身及车辆属性进行检测与识别，目前支持11种车身颜色、20多种车型、300多种品牌、4000多种车系+年款的识别，同时支持对车辆的位置进行检测。如果图片中存在多辆车，会分别输出每辆车的车型和坐标。
+        """车辆识别可对图片中车辆的车型进行识别，可识别7000多种车型，输出车辆的品牌（如路虎）、车系（如神行者2）、类型（如中型SUV）、颜色、年份和坐标等信息，覆盖轿车、SUV、大型客车等市面常见车。如果图片中存在多辆车，会分别输出每辆车的车型和坐标。
+
         >
         - 公共参数中的签名方式必须指定为V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
 
@@ -512,7 +528,8 @@ class TiiaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RecognizeCar", params)
+            headers = request.headers
+            body = self.call("RecognizeCar", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RecognizeCarResponse()
@@ -531,7 +548,7 @@ class TiiaClient(AbstractClient):
 
 
     def RecognizeCarPro(self, request):
-        """车辆识别（增强版）可对图片中汽车的车型和车牌进行识别，可识别7000多种车型，覆盖轿车、SUV、大型客车等市面常见车，输出车辆的车身颜色、品牌、车系、年份、车牌和位置等信息。如果图片中存在多辆车，会分别输出每辆车的车型、车牌和坐标。
+        """车辆识别（增强版）可对图片中车辆的车型和车牌进行识别，输出车辆的车牌，以及品牌（如路虎）、车系（如神行者2）、类型（如中型SUV）、颜色和坐标等信息，覆盖轿车、SUV、大型客车等市面常见车。如果图片中存在多辆车，会分别输出每辆车的车型、车牌和坐标。
 
         >
         - 公共参数中的签名方式必须指定为V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
@@ -543,7 +560,8 @@ class TiiaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RecognizeCarPro", params)
+            headers = request.headers
+            body = self.call("RecognizeCarPro", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RecognizeCarProResponse()
@@ -571,7 +589,8 @@ class TiiaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SearchImage", params)
+            headers = request.headers
+            body = self.call("SearchImage", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SearchImageResponse()

@@ -36,7 +36,8 @@ class StsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AssumeRole", params)
+            headers = request.headers
+            body = self.call("AssumeRole", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AssumeRoleResponse()
@@ -64,7 +65,8 @@ class StsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AssumeRoleWithSAML", params)
+            headers = request.headers
+            body = self.call("AssumeRoleWithSAML", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AssumeRoleWithSAMLResponse()
@@ -93,7 +95,8 @@ class StsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetCallerIdentity", params)
+            headers = request.headers
+            body = self.call("GetCallerIdentity", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetCallerIdentityResponse()
@@ -121,7 +124,8 @@ class StsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetFederationToken", params)
+            headers = request.headers
+            body = self.call("GetFederationToken", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetFederationTokenResponse()
@@ -149,7 +153,8 @@ class StsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryApiKey", params)
+            headers = request.headers
+            body = self.call("QueryApiKey", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryApiKeyResponse()

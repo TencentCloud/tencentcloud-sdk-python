@@ -1847,7 +1847,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
         :type AutoSyncFlag: int
         :param CageId: 金融围拢 ID 。
         :type CageId: str
-        :param ParamTemplateType: 默认参数模板类型。支持值包括："HIGH_STABILITY" - 高稳定模板，"HIGH_PERFORMANCE" - 高性能模板。
+        :param ParamTemplateType: 默认参数模板类型。支持值包括："HIGH_STABILITY" - 高稳定模板，"HIGH_PERFORMANCE" - 高性能模板，默认值是："HIGH_STABILITY"。
         :type ParamTemplateType: str
         :param AlarmPolicyIdList: 告警策略名数组，例如:["policy-uyoee9wg"]，AlarmPolicyList不为空时该参数无效。
         :type AlarmPolicyIdList: list of str
@@ -8148,13 +8148,13 @@ class ModifyBackupConfigRequest(AbstractModel):
         r"""
         :param InstanceId: 实例 ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例ID相同。
         :type InstanceId: str
-        :param ExpireDays: 备份文件的保留时间，单位为天。最小值为7天，最大值为732天。
+        :param ExpireDays: 备份文件的保留时间，单位为天。最小值为7天，最大值为1830天。
         :type ExpireDays: int
         :param StartTime: (将废弃，建议使用 BackupTimeWindow 参数) 备份时间范围，格式为：02:00-06:00，起点和终点时间目前限制为整点，目前可以选择的范围为： 00:00-12:00，02:00-06:00，06：00-10：00，10:00-14:00，14:00-18:00，18:00-22:00，22:00-02:00。
         :type StartTime: str
         :param BackupMethod: 自动备份方式，仅支持：physical - 物理冷备
         :type BackupMethod: str
-        :param BinlogExpireDays: binlog的保留时间，单位为天。最小值为7天，最大值为732天。该值的设置不能大于备份文件的保留时间。
+        :param BinlogExpireDays: binlog的保留时间，单位为天。最小值为7天，最大值为1830天。该值的设置不能大于备份文件的保留时间。
         :type BinlogExpireDays: int
         :param BackupTimeWindow: 备份时间窗，比如要设置每周二和周日 10:00-14:00之间备份，该参数如下：{"Monday": "", "Tuesday": "10:00-14:00", "Wednesday": "", "Thursday": "", "Friday": "", "Saturday": "", "Sunday": "10:00-14:00"}    （注：可以设置一周的某几天备份，但是每天的备份时间需要设置为相同的时间段。 如果设置了该字段，将忽略StartTime字段的设置）
         :type BackupTimeWindow: :class:`tencentcloud.cdb.v20170320.models.CommonTimeWindow`

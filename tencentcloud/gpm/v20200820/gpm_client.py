@@ -36,7 +36,8 @@ class GpmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CancelMatching", params)
+            headers = request.headers
+            body = self.call("CancelMatching", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CancelMatchingResponse()
@@ -64,7 +65,8 @@ class GpmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateMatch", params)
+            headers = request.headers
+            body = self.call("CreateMatch", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateMatchResponse()
@@ -92,7 +94,8 @@ class GpmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateRule", params)
+            headers = request.headers
+            body = self.call("CreateRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateRuleResponse()
@@ -120,7 +123,8 @@ class GpmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteMatch", params)
+            headers = request.headers
+            body = self.call("DeleteMatch", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteMatchResponse()
@@ -148,7 +152,8 @@ class GpmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteRule", params)
+            headers = request.headers
+            body = self.call("DeleteRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteRuleResponse()
@@ -176,7 +181,8 @@ class GpmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeData", params)
+            headers = request.headers
+            body = self.call("DescribeData", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDataResponse()
@@ -204,7 +210,8 @@ class GpmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeMatch", params)
+            headers = request.headers
+            body = self.call("DescribeMatch", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeMatchResponse()
@@ -232,7 +239,8 @@ class GpmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeMatchCodes", params)
+            headers = request.headers
+            body = self.call("DescribeMatchCodes", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeMatchCodesResponse()
@@ -260,7 +268,8 @@ class GpmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeMatches", params)
+            headers = request.headers
+            body = self.call("DescribeMatches", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeMatchesResponse()
@@ -288,7 +297,8 @@ class GpmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeMatchingProgress", params)
+            headers = request.headers
+            body = self.call("DescribeMatchingProgress", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeMatchingProgressResponse()
@@ -316,7 +326,8 @@ class GpmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRule", params)
+            headers = request.headers
+            body = self.call("DescribeRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRuleResponse()
@@ -344,7 +355,8 @@ class GpmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRules", params)
+            headers = request.headers
+            body = self.call("DescribeRules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRulesResponse()
@@ -372,7 +384,8 @@ class GpmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeToken", params)
+            headers = request.headers
+            body = self.call("DescribeToken", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTokenResponse()
@@ -400,7 +413,8 @@ class GpmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyMatch", params)
+            headers = request.headers
+            body = self.call("ModifyMatch", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyMatchResponse()
@@ -428,7 +442,8 @@ class GpmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyRule", params)
+            headers = request.headers
+            body = self.call("ModifyRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyRuleResponse()
@@ -456,7 +471,8 @@ class GpmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyToken", params)
+            headers = request.headers
+            body = self.call("ModifyToken", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyTokenResponse()
@@ -484,7 +500,8 @@ class GpmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("StartMatching", params)
+            headers = request.headers
+            body = self.call("StartMatching", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StartMatchingResponse()
@@ -512,7 +529,8 @@ class GpmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("StartMatchingBackfill", params)
+            headers = request.headers
+            body = self.call("StartMatchingBackfill", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StartMatchingBackfillResponse()

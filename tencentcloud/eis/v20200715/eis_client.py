@@ -36,7 +36,8 @@ class EisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeEisConnectorConfig", params)
+            headers = request.headers
+            body = self.call("DescribeEisConnectorConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeEisConnectorConfigResponse()
@@ -64,7 +65,8 @@ class EisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ListEisConnectorOperations", params)
+            headers = request.headers
+            body = self.call("ListEisConnectorOperations", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListEisConnectorOperationsResponse()
@@ -92,7 +94,8 @@ class EisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ListEisConnectors", params)
+            headers = request.headers
+            body = self.call("ListEisConnectors", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListEisConnectorsResponse()

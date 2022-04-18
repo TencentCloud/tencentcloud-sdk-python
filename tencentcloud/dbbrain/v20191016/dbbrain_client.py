@@ -36,7 +36,8 @@ class DbbrainClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AddUserContact", params)
+            headers = request.headers
+            body = self.call("AddUserContact", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AddUserContactResponse()
@@ -64,7 +65,8 @@ class DbbrainClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateDBDiagReportTask", params)
+            headers = request.headers
+            body = self.call("CreateDBDiagReportTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateDBDiagReportTaskResponse()
@@ -92,7 +94,8 @@ class DbbrainClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateDBDiagReportUrl", params)
+            headers = request.headers
+            body = self.call("CreateDBDiagReportUrl", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateDBDiagReportUrlResponse()
@@ -120,7 +123,8 @@ class DbbrainClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateMailProfile", params)
+            headers = request.headers
+            body = self.call("CreateMailProfile", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateMailProfileResponse()
@@ -148,7 +152,8 @@ class DbbrainClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateSchedulerMailProfile", params)
+            headers = request.headers
+            body = self.call("CreateSchedulerMailProfile", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateSchedulerMailProfileResponse()
@@ -176,7 +181,8 @@ class DbbrainClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateSecurityAuditLogExportTask", params)
+            headers = request.headers
+            body = self.call("CreateSecurityAuditLogExportTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateSecurityAuditLogExportTaskResponse()
@@ -204,7 +210,8 @@ class DbbrainClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteSecurityAuditLogExportTasks", params)
+            headers = request.headers
+            body = self.call("DeleteSecurityAuditLogExportTasks", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteSecurityAuditLogExportTasksResponse()
@@ -232,7 +239,8 @@ class DbbrainClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAllUserContact", params)
+            headers = request.headers
+            body = self.call("DescribeAllUserContact", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAllUserContactResponse()
@@ -260,7 +268,8 @@ class DbbrainClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAllUserGroup", params)
+            headers = request.headers
+            body = self.call("DescribeAllUserGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAllUserGroupResponse()
@@ -288,7 +297,8 @@ class DbbrainClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDBDiagEvent", params)
+            headers = request.headers
+            body = self.call("DescribeDBDiagEvent", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDBDiagEventResponse()
@@ -316,7 +326,8 @@ class DbbrainClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDBDiagHistory", params)
+            headers = request.headers
+            body = self.call("DescribeDBDiagHistory", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDBDiagHistoryResponse()
@@ -344,7 +355,8 @@ class DbbrainClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDBDiagReportTasks", params)
+            headers = request.headers
+            body = self.call("DescribeDBDiagReportTasks", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDBDiagReportTasksResponse()
@@ -372,7 +384,8 @@ class DbbrainClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDBSpaceStatus", params)
+            headers = request.headers
+            body = self.call("DescribeDBSpaceStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDBSpaceStatusResponse()
@@ -400,7 +413,8 @@ class DbbrainClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDiagDBInstances", params)
+            headers = request.headers
+            body = self.call("DescribeDiagDBInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDiagDBInstancesResponse()
@@ -428,7 +442,8 @@ class DbbrainClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeHealthScore", params)
+            headers = request.headers
+            body = self.call("DescribeHealthScore", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeHealthScoreResponse()
@@ -456,7 +471,8 @@ class DbbrainClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeMailProfile", params)
+            headers = request.headers
+            body = self.call("DescribeMailProfile", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeMailProfileResponse()
@@ -484,7 +500,8 @@ class DbbrainClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSecurityAuditLogDownloadUrls", params)
+            headers = request.headers
+            body = self.call("DescribeSecurityAuditLogDownloadUrls", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSecurityAuditLogDownloadUrlsResponse()
@@ -512,7 +529,8 @@ class DbbrainClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSecurityAuditLogExportTasks", params)
+            headers = request.headers
+            body = self.call("DescribeSecurityAuditLogExportTasks", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSecurityAuditLogExportTasksResponse()
@@ -540,7 +558,8 @@ class DbbrainClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSlowLogTimeSeriesStats", params)
+            headers = request.headers
+            body = self.call("DescribeSlowLogTimeSeriesStats", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSlowLogTimeSeriesStatsResponse()
@@ -568,7 +587,8 @@ class DbbrainClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSlowLogTopSqls", params)
+            headers = request.headers
+            body = self.call("DescribeSlowLogTopSqls", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSlowLogTopSqlsResponse()
@@ -596,7 +616,8 @@ class DbbrainClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSlowLogUserHostStats", params)
+            headers = request.headers
+            body = self.call("DescribeSlowLogUserHostStats", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSlowLogUserHostStatsResponse()
@@ -624,7 +645,8 @@ class DbbrainClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTopSpaceSchemaTimeSeries", params)
+            headers = request.headers
+            body = self.call("DescribeTopSpaceSchemaTimeSeries", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTopSpaceSchemaTimeSeriesResponse()
@@ -652,7 +674,8 @@ class DbbrainClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTopSpaceSchemas", params)
+            headers = request.headers
+            body = self.call("DescribeTopSpaceSchemas", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTopSpaceSchemasResponse()
@@ -680,7 +703,8 @@ class DbbrainClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTopSpaceTableTimeSeries", params)
+            headers = request.headers
+            body = self.call("DescribeTopSpaceTableTimeSeries", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTopSpaceTableTimeSeriesResponse()
@@ -708,7 +732,8 @@ class DbbrainClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTopSpaceTables", params)
+            headers = request.headers
+            body = self.call("DescribeTopSpaceTables", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTopSpaceTablesResponse()
@@ -736,7 +761,8 @@ class DbbrainClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeUserSqlAdvice", params)
+            headers = request.headers
+            body = self.call("DescribeUserSqlAdvice", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeUserSqlAdviceResponse()
@@ -764,7 +790,8 @@ class DbbrainClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyDiagDBInstanceConf", params)
+            headers = request.headers
+            body = self.call("ModifyDiagDBInstanceConf", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDiagDBInstanceConfResponse()

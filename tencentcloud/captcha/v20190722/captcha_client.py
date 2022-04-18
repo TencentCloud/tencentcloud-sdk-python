@@ -36,7 +36,8 @@ class CaptchaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCaptchaAppIdInfo", params)
+            headers = request.headers
+            body = self.call("DescribeCaptchaAppIdInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCaptchaAppIdInfoResponse()
@@ -64,7 +65,8 @@ class CaptchaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCaptchaData", params)
+            headers = request.headers
+            body = self.call("DescribeCaptchaData", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCaptchaDataResponse()
@@ -92,7 +94,8 @@ class CaptchaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCaptchaDataSum", params)
+            headers = request.headers
+            body = self.call("DescribeCaptchaDataSum", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCaptchaDataSumResponse()
@@ -120,7 +123,8 @@ class CaptchaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCaptchaMiniData", params)
+            headers = request.headers
+            body = self.call("DescribeCaptchaMiniData", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCaptchaMiniDataResponse()
@@ -148,7 +152,8 @@ class CaptchaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCaptchaMiniDataSum", params)
+            headers = request.headers
+            body = self.call("DescribeCaptchaMiniDataSum", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCaptchaMiniDataSumResponse()
@@ -176,7 +181,8 @@ class CaptchaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCaptchaMiniOperData", params)
+            headers = request.headers
+            body = self.call("DescribeCaptchaMiniOperData", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCaptchaMiniOperDataResponse()
@@ -204,7 +210,8 @@ class CaptchaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCaptchaMiniResult", params)
+            headers = request.headers
+            body = self.call("DescribeCaptchaMiniResult", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCaptchaMiniResultResponse()
@@ -232,7 +239,8 @@ class CaptchaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCaptchaMiniRiskResult", params)
+            headers = request.headers
+            body = self.call("DescribeCaptchaMiniRiskResult", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCaptchaMiniRiskResultResponse()
@@ -260,7 +268,8 @@ class CaptchaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCaptchaOperData", params)
+            headers = request.headers
+            body = self.call("DescribeCaptchaOperData", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCaptchaOperDataResponse()
@@ -288,7 +297,8 @@ class CaptchaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCaptchaResult", params)
+            headers = request.headers
+            body = self.call("DescribeCaptchaResult", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCaptchaResultResponse()
@@ -316,7 +326,8 @@ class CaptchaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCaptchaTicketData", params)
+            headers = request.headers
+            body = self.call("DescribeCaptchaTicketData", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCaptchaTicketDataResponse()
@@ -344,7 +355,8 @@ class CaptchaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCaptchaUserAllAppId", params)
+            headers = request.headers
+            body = self.call("DescribeCaptchaUserAllAppId", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCaptchaUserAllAppIdResponse()
@@ -372,7 +384,8 @@ class CaptchaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateCaptchaAppIdInfo", params)
+            headers = request.headers
+            body = self.call("UpdateCaptchaAppIdInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateCaptchaAppIdInfoResponse()

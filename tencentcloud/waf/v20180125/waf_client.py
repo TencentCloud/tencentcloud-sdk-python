@@ -36,7 +36,8 @@ class WafClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AddCustomRule", params)
+            headers = request.headers
+            body = self.call("AddCustomRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AddCustomRuleResponse()
@@ -64,10 +65,40 @@ class WafClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AddDomainWhiteRule", params)
+            headers = request.headers
+            body = self.call("AddDomainWhiteRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AddDomainWhiteRuleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def AddSpartaProtection(self, request):
+        """添加Spart防护域名
+
+        :param request: Request instance for AddSpartaProtection.
+        :type request: :class:`tencentcloud.waf.v20180125.models.AddSpartaProtectionRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.AddSpartaProtectionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AddSpartaProtection", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AddSpartaProtectionResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -92,7 +123,8 @@ class WafClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateAccessExport", params)
+            headers = request.headers
+            body = self.call("CreateAccessExport", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateAccessExportResponse()
@@ -120,7 +152,8 @@ class WafClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateAttackDownloadTask", params)
+            headers = request.headers
+            body = self.call("CreateAttackDownloadTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateAttackDownloadTaskResponse()
@@ -148,7 +181,8 @@ class WafClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteAccessExport", params)
+            headers = request.headers
+            body = self.call("DeleteAccessExport", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteAccessExportResponse()
@@ -176,7 +210,8 @@ class WafClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteAttackDownloadRecord", params)
+            headers = request.headers
+            body = self.call("DeleteAttackDownloadRecord", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteAttackDownloadRecordResponse()
@@ -205,7 +240,8 @@ class WafClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteDomainWhiteRules", params)
+            headers = request.headers
+            body = self.call("DeleteDomainWhiteRules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteDomainWhiteRulesResponse()
@@ -233,7 +269,8 @@ class WafClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteDownloadRecord", params)
+            headers = request.headers
+            body = self.call("DeleteDownloadRecord", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteDownloadRecordResponse()
@@ -261,7 +298,8 @@ class WafClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteIpAccessControl", params)
+            headers = request.headers
+            body = self.call("DeleteIpAccessControl", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteIpAccessControlResponse()
@@ -289,7 +327,8 @@ class WafClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteSession", params)
+            headers = request.headers
+            body = self.call("DeleteSession", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteSessionResponse()
@@ -317,7 +356,8 @@ class WafClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAccessExports", params)
+            headers = request.headers
+            body = self.call("DescribeAccessExports", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAccessExportsResponse()
@@ -345,7 +385,8 @@ class WafClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAccessFastAnalysis", params)
+            headers = request.headers
+            body = self.call("DescribeAccessFastAnalysis", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAccessFastAnalysisResponse()
@@ -373,7 +414,8 @@ class WafClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAccessIndex", params)
+            headers = request.headers
+            body = self.call("DescribeAccessIndex", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAccessIndexResponse()
@@ -401,7 +443,8 @@ class WafClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAutoDenyIP", params)
+            headers = request.headers
+            body = self.call("DescribeAutoDenyIP", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAutoDenyIPResponse()
@@ -429,7 +472,8 @@ class WafClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCustomRules", params)
+            headers = request.headers
+            body = self.call("DescribeCustomRules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCustomRulesResponse()
@@ -458,7 +502,8 @@ class WafClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDomainWhiteRules", params)
+            headers = request.headers
+            body = self.call("DescribeDomainWhiteRules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDomainWhiteRulesResponse()
@@ -486,7 +531,8 @@ class WafClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeFlowTrend", params)
+            headers = request.headers
+            body = self.call("DescribeFlowTrend", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeFlowTrendResponse()
@@ -514,7 +560,8 @@ class WafClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeIpAccessControl", params)
+            headers = request.headers
+            body = self.call("DescribeIpAccessControl", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeIpAccessControlResponse()
@@ -542,7 +589,8 @@ class WafClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeIpHitItems", params)
+            headers = request.headers
+            body = self.call("DescribeIpHitItems", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeIpHitItemsResponse()
@@ -570,7 +618,8 @@ class WafClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeUserClbWafRegions", params)
+            headers = request.headers
+            body = self.call("DescribeUserClbWafRegions", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeUserClbWafRegionsResponse()
@@ -598,7 +647,8 @@ class WafClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeWafAutoDenyRules", params)
+            headers = request.headers
+            body = self.call("DescribeWafAutoDenyRules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeWafAutoDenyRulesResponse()
@@ -626,7 +676,8 @@ class WafClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeWafAutoDenyStatus", params)
+            headers = request.headers
+            body = self.call("DescribeWafAutoDenyStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeWafAutoDenyStatusResponse()
@@ -654,7 +705,8 @@ class WafClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeWafThreatenIntelligence", params)
+            headers = request.headers
+            body = self.call("DescribeWafThreatenIntelligence", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeWafThreatenIntelligenceResponse()
@@ -682,7 +734,8 @@ class WafClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyAccessPeriod", params)
+            headers = request.headers
+            body = self.call("ModifyAccessPeriod", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAccessPeriodResponse()
@@ -710,7 +763,8 @@ class WafClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyCustomRuleStatus", params)
+            headers = request.headers
+            body = self.call("ModifyCustomRuleStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyCustomRuleStatusResponse()
@@ -738,7 +792,8 @@ class WafClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyDomainWhiteRule", params)
+            headers = request.headers
+            body = self.call("ModifyDomainWhiteRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDomainWhiteRuleResponse()
@@ -766,7 +821,8 @@ class WafClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyWafAutoDenyRules", params)
+            headers = request.headers
+            body = self.call("ModifyWafAutoDenyRules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyWafAutoDenyRulesResponse()
@@ -794,7 +850,8 @@ class WafClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyWafAutoDenyStatus", params)
+            headers = request.headers
+            body = self.call("ModifyWafAutoDenyStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyWafAutoDenyStatusResponse()
@@ -822,7 +879,8 @@ class WafClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyWafThreatenIntelligence", params)
+            headers = request.headers
+            body = self.call("ModifyWafThreatenIntelligence", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyWafThreatenIntelligenceResponse()
@@ -850,7 +908,8 @@ class WafClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SearchAccessLog", params)
+            headers = request.headers
+            body = self.call("SearchAccessLog", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SearchAccessLogResponse()
@@ -878,7 +937,8 @@ class WafClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpsertIpAccessControl", params)
+            headers = request.headers
+            body = self.call("UpsertIpAccessControl", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpsertIpAccessControlResponse()

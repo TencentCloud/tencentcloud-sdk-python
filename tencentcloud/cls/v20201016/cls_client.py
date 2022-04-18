@@ -36,7 +36,8 @@ class ClsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ApplyConfigToMachineGroup", params)
+            headers = request.headers
+            body = self.call("ApplyConfigToMachineGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ApplyConfigToMachineGroupResponse()
@@ -64,7 +65,8 @@ class ClsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CloseKafkaConsumer", params)
+            headers = request.headers
+            body = self.call("CloseKafkaConsumer", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CloseKafkaConsumerResponse()
@@ -92,7 +94,8 @@ class ClsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateAlarm", params)
+            headers = request.headers
+            body = self.call("CreateAlarm", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateAlarmResponse()
@@ -120,7 +123,8 @@ class ClsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateAlarmNotice", params)
+            headers = request.headers
+            body = self.call("CreateAlarmNotice", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateAlarmNoticeResponse()
@@ -148,7 +152,8 @@ class ClsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateConfig", params)
+            headers = request.headers
+            body = self.call("CreateConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateConfigResponse()
@@ -176,7 +181,8 @@ class ClsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateConfigExtra", params)
+            headers = request.headers
+            body = self.call("CreateConfigExtra", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateConfigExtraResponse()
@@ -204,7 +210,8 @@ class ClsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateConsumer", params)
+            headers = request.headers
+            body = self.call("CreateConsumer", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateConsumerResponse()
@@ -232,7 +239,8 @@ class ClsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateDataTransform", params)
+            headers = request.headers
+            body = self.call("CreateDataTransform", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateDataTransformResponse()
@@ -260,7 +268,8 @@ class ClsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateExport", params)
+            headers = request.headers
+            body = self.call("CreateExport", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateExportResponse()
@@ -288,7 +297,8 @@ class ClsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateIndex", params)
+            headers = request.headers
+            body = self.call("CreateIndex", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateIndexResponse()
@@ -316,7 +326,8 @@ class ClsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateLogset", params)
+            headers = request.headers
+            body = self.call("CreateLogset", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateLogsetResponse()
@@ -344,7 +355,8 @@ class ClsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateMachineGroup", params)
+            headers = request.headers
+            body = self.call("CreateMachineGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateMachineGroupResponse()
@@ -372,7 +384,8 @@ class ClsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateShipper", params)
+            headers = request.headers
+            body = self.call("CreateShipper", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateShipperResponse()
@@ -400,7 +413,8 @@ class ClsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateTopic", params)
+            headers = request.headers
+            body = self.call("CreateTopic", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateTopicResponse()
@@ -428,7 +442,8 @@ class ClsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteAlarm", params)
+            headers = request.headers
+            body = self.call("DeleteAlarm", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteAlarmResponse()
@@ -456,7 +471,8 @@ class ClsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteAlarmNotice", params)
+            headers = request.headers
+            body = self.call("DeleteAlarmNotice", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteAlarmNoticeResponse()
@@ -484,7 +500,8 @@ class ClsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteConfig", params)
+            headers = request.headers
+            body = self.call("DeleteConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteConfigResponse()
@@ -512,7 +529,8 @@ class ClsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteConfigExtra", params)
+            headers = request.headers
+            body = self.call("DeleteConfigExtra", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteConfigExtraResponse()
@@ -540,7 +558,8 @@ class ClsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteConfigFromMachineGroup", params)
+            headers = request.headers
+            body = self.call("DeleteConfigFromMachineGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteConfigFromMachineGroupResponse()
@@ -568,7 +587,8 @@ class ClsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteConsumer", params)
+            headers = request.headers
+            body = self.call("DeleteConsumer", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteConsumerResponse()
@@ -596,7 +616,8 @@ class ClsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteDataTransform", params)
+            headers = request.headers
+            body = self.call("DeleteDataTransform", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteDataTransformResponse()
@@ -624,7 +645,8 @@ class ClsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteExport", params)
+            headers = request.headers
+            body = self.call("DeleteExport", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteExportResponse()
@@ -652,7 +674,8 @@ class ClsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteIndex", params)
+            headers = request.headers
+            body = self.call("DeleteIndex", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteIndexResponse()
@@ -680,7 +703,8 @@ class ClsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteLogset", params)
+            headers = request.headers
+            body = self.call("DeleteLogset", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteLogsetResponse()
@@ -708,7 +732,8 @@ class ClsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteMachineGroup", params)
+            headers = request.headers
+            body = self.call("DeleteMachineGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteMachineGroupResponse()
@@ -736,7 +761,8 @@ class ClsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteShipper", params)
+            headers = request.headers
+            body = self.call("DeleteShipper", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteShipperResponse()
@@ -764,7 +790,8 @@ class ClsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteTopic", params)
+            headers = request.headers
+            body = self.call("DeleteTopic", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteTopicResponse()
@@ -792,7 +819,8 @@ class ClsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAlarmNotices", params)
+            headers = request.headers
+            body = self.call("DescribeAlarmNotices", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAlarmNoticesResponse()
@@ -820,7 +848,8 @@ class ClsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAlarms", params)
+            headers = request.headers
+            body = self.call("DescribeAlarms", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAlarmsResponse()
@@ -848,7 +877,8 @@ class ClsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeConfigExtras", params)
+            headers = request.headers
+            body = self.call("DescribeConfigExtras", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeConfigExtrasResponse()
@@ -876,7 +906,8 @@ class ClsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeConfigMachineGroups", params)
+            headers = request.headers
+            body = self.call("DescribeConfigMachineGroups", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeConfigMachineGroupsResponse()
@@ -904,7 +935,8 @@ class ClsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeConfigs", params)
+            headers = request.headers
+            body = self.call("DescribeConfigs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeConfigsResponse()
@@ -932,7 +964,8 @@ class ClsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeConsumer", params)
+            headers = request.headers
+            body = self.call("DescribeConsumer", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeConsumerResponse()
@@ -960,7 +993,8 @@ class ClsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDataTransformInfo", params)
+            headers = request.headers
+            body = self.call("DescribeDataTransformInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDataTransformInfoResponse()
@@ -988,7 +1022,8 @@ class ClsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeExports", params)
+            headers = request.headers
+            body = self.call("DescribeExports", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeExportsResponse()
@@ -1016,7 +1051,8 @@ class ClsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeIndex", params)
+            headers = request.headers
+            body = self.call("DescribeIndex", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeIndexResponse()
@@ -1044,7 +1080,8 @@ class ClsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeLogContext", params)
+            headers = request.headers
+            body = self.call("DescribeLogContext", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLogContextResponse()
@@ -1072,7 +1109,8 @@ class ClsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeLogHistogram", params)
+            headers = request.headers
+            body = self.call("DescribeLogHistogram", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLogHistogramResponse()
@@ -1100,7 +1138,8 @@ class ClsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeLogsets", params)
+            headers = request.headers
+            body = self.call("DescribeLogsets", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLogsetsResponse()
@@ -1128,7 +1167,8 @@ class ClsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeMachineGroupConfigs", params)
+            headers = request.headers
+            body = self.call("DescribeMachineGroupConfigs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeMachineGroupConfigsResponse()
@@ -1156,7 +1196,8 @@ class ClsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeMachineGroups", params)
+            headers = request.headers
+            body = self.call("DescribeMachineGroups", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeMachineGroupsResponse()
@@ -1184,7 +1225,8 @@ class ClsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeMachines", params)
+            headers = request.headers
+            body = self.call("DescribeMachines", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeMachinesResponse()
@@ -1212,7 +1254,8 @@ class ClsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePartitions", params)
+            headers = request.headers
+            body = self.call("DescribePartitions", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePartitionsResponse()
@@ -1240,7 +1283,8 @@ class ClsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeShipperTasks", params)
+            headers = request.headers
+            body = self.call("DescribeShipperTasks", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeShipperTasksResponse()
@@ -1268,7 +1312,8 @@ class ClsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeShippers", params)
+            headers = request.headers
+            body = self.call("DescribeShippers", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeShippersResponse()
@@ -1296,7 +1341,8 @@ class ClsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTopics", params)
+            headers = request.headers
+            body = self.call("DescribeTopics", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTopicsResponse()
@@ -1324,7 +1370,8 @@ class ClsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetAlarmLog", params)
+            headers = request.headers
+            body = self.call("GetAlarmLog", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetAlarmLogResponse()
@@ -1352,7 +1399,8 @@ class ClsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("MergePartition", params)
+            headers = request.headers
+            body = self.call("MergePartition", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.MergePartitionResponse()
@@ -1380,7 +1428,8 @@ class ClsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyAlarm", params)
+            headers = request.headers
+            body = self.call("ModifyAlarm", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAlarmResponse()
@@ -1408,7 +1457,8 @@ class ClsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyAlarmNotice", params)
+            headers = request.headers
+            body = self.call("ModifyAlarmNotice", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAlarmNoticeResponse()
@@ -1436,7 +1486,8 @@ class ClsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyConfig", params)
+            headers = request.headers
+            body = self.call("ModifyConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyConfigResponse()
@@ -1464,7 +1515,8 @@ class ClsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyConfigExtra", params)
+            headers = request.headers
+            body = self.call("ModifyConfigExtra", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyConfigExtraResponse()
@@ -1492,7 +1544,8 @@ class ClsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyConsumer", params)
+            headers = request.headers
+            body = self.call("ModifyConsumer", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyConsumerResponse()
@@ -1520,7 +1573,8 @@ class ClsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyDataTransform", params)
+            headers = request.headers
+            body = self.call("ModifyDataTransform", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDataTransformResponse()
@@ -1548,7 +1602,8 @@ class ClsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyIndex", params)
+            headers = request.headers
+            body = self.call("ModifyIndex", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyIndexResponse()
@@ -1576,7 +1631,8 @@ class ClsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyLogset", params)
+            headers = request.headers
+            body = self.call("ModifyLogset", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyLogsetResponse()
@@ -1604,7 +1660,8 @@ class ClsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyMachineGroup", params)
+            headers = request.headers
+            body = self.call("ModifyMachineGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyMachineGroupResponse()
@@ -1632,7 +1689,8 @@ class ClsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyShipper", params)
+            headers = request.headers
+            body = self.call("ModifyShipper", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyShipperResponse()
@@ -1660,7 +1718,8 @@ class ClsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyTopic", params)
+            headers = request.headers
+            body = self.call("ModifyTopic", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyTopicResponse()
@@ -1688,7 +1747,8 @@ class ClsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("OpenKafkaConsumer", params)
+            headers = request.headers
+            body = self.call("OpenKafkaConsumer", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.OpenKafkaConsumerResponse()
@@ -1716,7 +1776,8 @@ class ClsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RetryShipperTask", params)
+            headers = request.headers
+            body = self.call("RetryShipperTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RetryShipperTaskResponse()
@@ -1744,7 +1805,8 @@ class ClsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SearchLog", params)
+            headers = request.headers
+            body = self.call("SearchLog", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SearchLogResponse()
@@ -1772,7 +1834,8 @@ class ClsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SplitPartition", params)
+            headers = request.headers
+            body = self.call("SplitPartition", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SplitPartitionResponse()

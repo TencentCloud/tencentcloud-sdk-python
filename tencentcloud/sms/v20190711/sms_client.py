@@ -39,7 +39,8 @@ class SmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AddSmsSign", params)
+            headers = request.headers
+            body = self.call("AddSmsSign", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AddSmsSignResponse()
@@ -70,7 +71,8 @@ class SmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AddSmsTemplate", params)
+            headers = request.headers
+            body = self.call("AddSmsTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AddSmsTemplateResponse()
@@ -100,7 +102,8 @@ class SmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CallbackStatusStatistics", params)
+            headers = request.headers
+            body = self.call("CallbackStatusStatistics", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CallbackStatusStatisticsResponse()
@@ -130,7 +133,8 @@ class SmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteSmsSign", params)
+            headers = request.headers
+            body = self.call("DeleteSmsSign", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteSmsSignResponse()
@@ -160,7 +164,8 @@ class SmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteSmsTemplate", params)
+            headers = request.headers
+            body = self.call("DeleteSmsTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteSmsTemplateResponse()
@@ -190,7 +195,8 @@ class SmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSmsSignList", params)
+            headers = request.headers
+            body = self.call("DescribeSmsSignList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSmsSignListResponse()
@@ -220,7 +226,8 @@ class SmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSmsTemplateList", params)
+            headers = request.headers
+            body = self.call("DescribeSmsTemplateList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSmsTemplateListResponse()
@@ -252,7 +259,8 @@ class SmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifySmsSign", params)
+            headers = request.headers
+            body = self.call("ModifySmsSign", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifySmsSignResponse()
@@ -284,7 +292,8 @@ class SmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifySmsTemplate", params)
+            headers = request.headers
+            body = self.call("ModifySmsTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifySmsTemplateResponse()
@@ -316,7 +325,8 @@ class SmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("PullSmsReplyStatus", params)
+            headers = request.headers
+            body = self.call("PullSmsReplyStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.PullSmsReplyStatusResponse()
@@ -347,7 +357,8 @@ class SmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("PullSmsReplyStatusByPhoneNumber", params)
+            headers = request.headers
+            body = self.call("PullSmsReplyStatusByPhoneNumber", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.PullSmsReplyStatusByPhoneNumberResponse()
@@ -379,7 +390,8 @@ class SmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("PullSmsSendStatus", params)
+            headers = request.headers
+            body = self.call("PullSmsSendStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.PullSmsSendStatusResponse()
@@ -410,7 +422,8 @@ class SmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("PullSmsSendStatusByPhoneNumber", params)
+            headers = request.headers
+            body = self.call("PullSmsSendStatusByPhoneNumber", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.PullSmsSendStatusByPhoneNumberResponse()
@@ -440,7 +453,8 @@ class SmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SendSms", params)
+            headers = request.headers
+            body = self.call("SendSms", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SendSmsResponse()
@@ -470,7 +484,8 @@ class SmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SendStatusStatistics", params)
+            headers = request.headers
+            body = self.call("SendStatusStatistics", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SendStatusStatisticsResponse()
@@ -500,7 +515,8 @@ class SmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SmsPackagesStatistics", params)
+            headers = request.headers
+            body = self.call("SmsPackagesStatistics", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SmsPackagesStatisticsResponse()

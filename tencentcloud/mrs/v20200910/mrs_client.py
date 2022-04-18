@@ -36,7 +36,8 @@ class MrsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ImageToClass", params)
+            headers = request.headers
+            body = self.call("ImageToClass", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ImageToClassResponse()
@@ -64,7 +65,8 @@ class MrsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ImageToObject", params)
+            headers = request.headers
+            body = self.call("ImageToObject", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ImageToObjectResponse()
@@ -92,7 +94,8 @@ class MrsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("TextToClass", params)
+            headers = request.headers
+            body = self.call("TextToClass", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.TextToClassResponse()
@@ -120,7 +123,8 @@ class MrsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("TextToObject", params)
+            headers = request.headers
+            body = self.call("TextToObject", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.TextToObjectResponse()

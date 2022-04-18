@@ -42,7 +42,8 @@ class ScfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CopyFunction", params)
+            headers = request.headers
+            body = self.call("CopyFunction", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CopyFunctionResponse()
@@ -71,7 +72,8 @@ class ScfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateAlias", params)
+            headers = request.headers
+            body = self.call("CreateAlias", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateAliasResponse()
@@ -99,7 +101,8 @@ class ScfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateFunction", params)
+            headers = request.headers
+            body = self.call("CreateFunction", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateFunctionResponse()
@@ -127,7 +130,8 @@ class ScfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateNamespace", params)
+            headers = request.headers
+            body = self.call("CreateNamespace", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateNamespaceResponse()
@@ -155,7 +159,8 @@ class ScfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateTrigger", params)
+            headers = request.headers
+            body = self.call("CreateTrigger", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateTriggerResponse()
@@ -183,7 +188,8 @@ class ScfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteAlias", params)
+            headers = request.headers
+            body = self.call("DeleteAlias", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteAliasResponse()
@@ -211,7 +217,8 @@ class ScfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteFunction", params)
+            headers = request.headers
+            body = self.call("DeleteFunction", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteFunctionResponse()
@@ -239,7 +246,8 @@ class ScfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteLayerVersion", params)
+            headers = request.headers
+            body = self.call("DeleteLayerVersion", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteLayerVersionResponse()
@@ -267,7 +275,8 @@ class ScfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteNamespace", params)
+            headers = request.headers
+            body = self.call("DeleteNamespace", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteNamespaceResponse()
@@ -295,7 +304,8 @@ class ScfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteProvisionedConcurrencyConfig", params)
+            headers = request.headers
+            body = self.call("DeleteProvisionedConcurrencyConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteProvisionedConcurrencyConfigResponse()
@@ -323,7 +333,8 @@ class ScfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteReservedConcurrencyConfig", params)
+            headers = request.headers
+            body = self.call("DeleteReservedConcurrencyConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteReservedConcurrencyConfigResponse()
@@ -351,7 +362,8 @@ class ScfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteTrigger", params)
+            headers = request.headers
+            body = self.call("DeleteTrigger", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteTriggerResponse()
@@ -379,7 +391,8 @@ class ScfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetAccount", params)
+            headers = request.headers
+            body = self.call("GetAccount", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetAccountResponse()
@@ -407,7 +420,8 @@ class ScfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetAlias", params)
+            headers = request.headers
+            body = self.call("GetAlias", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetAliasResponse()
@@ -435,7 +449,8 @@ class ScfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetAsyncEventStatus", params)
+            headers = request.headers
+            body = self.call("GetAsyncEventStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetAsyncEventStatusResponse()
@@ -463,7 +478,8 @@ class ScfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetFunction", params)
+            headers = request.headers
+            body = self.call("GetFunction", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetFunctionResponse()
@@ -491,7 +507,8 @@ class ScfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetFunctionAddress", params)
+            headers = request.headers
+            body = self.call("GetFunctionAddress", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetFunctionAddressResponse()
@@ -519,7 +536,8 @@ class ScfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetFunctionEventInvokeConfig", params)
+            headers = request.headers
+            body = self.call("GetFunctionEventInvokeConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetFunctionEventInvokeConfigResponse()
@@ -547,7 +565,8 @@ class ScfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetFunctionLogs", params)
+            headers = request.headers
+            body = self.call("GetFunctionLogs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetFunctionLogsResponse()
@@ -575,7 +594,8 @@ class ScfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetLayerVersion", params)
+            headers = request.headers
+            body = self.call("GetLayerVersion", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetLayerVersionResponse()
@@ -603,7 +623,8 @@ class ScfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetProvisionedConcurrencyConfig", params)
+            headers = request.headers
+            body = self.call("GetProvisionedConcurrencyConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetProvisionedConcurrencyConfigResponse()
@@ -631,7 +652,8 @@ class ScfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetRequestStatus", params)
+            headers = request.headers
+            body = self.call("GetRequestStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetRequestStatusResponse()
@@ -659,7 +681,8 @@ class ScfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetReservedConcurrencyConfig", params)
+            headers = request.headers
+            body = self.call("GetReservedConcurrencyConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetReservedConcurrencyConfigResponse()
@@ -687,7 +710,8 @@ class ScfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("Invoke", params)
+            headers = request.headers
+            body = self.call("Invoke", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.InvokeResponse()
@@ -715,7 +739,8 @@ class ScfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("InvokeFunction", params)
+            headers = request.headers
+            body = self.call("InvokeFunction", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.InvokeFunctionResponse()
@@ -743,7 +768,8 @@ class ScfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ListAliases", params)
+            headers = request.headers
+            body = self.call("ListAliases", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListAliasesResponse()
@@ -771,7 +797,8 @@ class ScfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ListAsyncEvents", params)
+            headers = request.headers
+            body = self.call("ListAsyncEvents", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListAsyncEventsResponse()
@@ -799,7 +826,8 @@ class ScfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ListFunctions", params)
+            headers = request.headers
+            body = self.call("ListFunctions", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListFunctionsResponse()
@@ -827,7 +855,8 @@ class ScfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ListLayerVersions", params)
+            headers = request.headers
+            body = self.call("ListLayerVersions", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListLayerVersionsResponse()
@@ -855,7 +884,8 @@ class ScfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ListLayers", params)
+            headers = request.headers
+            body = self.call("ListLayers", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListLayersResponse()
@@ -883,7 +913,8 @@ class ScfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ListNamespaces", params)
+            headers = request.headers
+            body = self.call("ListNamespaces", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListNamespacesResponse()
@@ -911,7 +942,8 @@ class ScfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ListTriggers", params)
+            headers = request.headers
+            body = self.call("ListTriggers", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListTriggersResponse()
@@ -939,7 +971,8 @@ class ScfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ListVersionByFunction", params)
+            headers = request.headers
+            body = self.call("ListVersionByFunction", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListVersionByFunctionResponse()
@@ -967,7 +1000,8 @@ class ScfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("PublishLayerVersion", params)
+            headers = request.headers
+            body = self.call("PublishLayerVersion", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.PublishLayerVersionResponse()
@@ -995,7 +1029,8 @@ class ScfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("PublishVersion", params)
+            headers = request.headers
+            body = self.call("PublishVersion", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.PublishVersionResponse()
@@ -1023,7 +1058,8 @@ class ScfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("PutProvisionedConcurrencyConfig", params)
+            headers = request.headers
+            body = self.call("PutProvisionedConcurrencyConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.PutProvisionedConcurrencyConfigResponse()
@@ -1051,7 +1087,8 @@ class ScfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("PutReservedConcurrencyConfig", params)
+            headers = request.headers
+            body = self.call("PutReservedConcurrencyConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.PutReservedConcurrencyConfigResponse()
@@ -1079,7 +1116,8 @@ class ScfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("PutTotalConcurrencyConfig", params)
+            headers = request.headers
+            body = self.call("PutTotalConcurrencyConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.PutTotalConcurrencyConfigResponse()
@@ -1107,7 +1145,8 @@ class ScfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("TerminateAsyncEvent", params)
+            headers = request.headers
+            body = self.call("TerminateAsyncEvent", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.TerminateAsyncEventResponse()
@@ -1135,7 +1174,8 @@ class ScfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateAlias", params)
+            headers = request.headers
+            body = self.call("UpdateAlias", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateAliasResponse()
@@ -1163,7 +1203,8 @@ class ScfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateFunctionCode", params)
+            headers = request.headers
+            body = self.call("UpdateFunctionCode", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateFunctionCodeResponse()
@@ -1191,7 +1232,8 @@ class ScfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateFunctionConfiguration", params)
+            headers = request.headers
+            body = self.call("UpdateFunctionConfiguration", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateFunctionConfigurationResponse()
@@ -1219,7 +1261,8 @@ class ScfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateFunctionEventInvokeConfig", params)
+            headers = request.headers
+            body = self.call("UpdateFunctionEventInvokeConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateFunctionEventInvokeConfigResponse()
@@ -1247,7 +1290,8 @@ class ScfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateNamespace", params)
+            headers = request.headers
+            body = self.call("UpdateNamespace", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateNamespaceResponse()

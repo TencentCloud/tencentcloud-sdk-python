@@ -43,7 +43,8 @@ class TtsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateTtsTask", params)
+            headers = request.headers
+            body = self.call("CreateTtsTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateTtsTaskResponse()
@@ -74,7 +75,8 @@ class TtsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTtsTaskStatus", params)
+            headers = request.headers
+            body = self.call("DescribeTtsTaskStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTtsTaskStatusResponse()
@@ -104,7 +106,8 @@ class TtsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("TextToVoice", params)
+            headers = request.headers
+            body = self.call("TextToVoice", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.TextToVoiceResponse()

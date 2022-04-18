@@ -7710,12 +7710,16 @@ class URLNotice(AbstractModel):
         :param EndTime: 通知结束时间 一天开始的秒数
 注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: int
+        :param Weekday: 通知周期 1-7表示周一到周日
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Weekday: list of int
         """
         self.URL = None
         self.IsValid = None
         self.ValidationCode = None
         self.StartTime = None
         self.EndTime = None
+        self.Weekday = None
 
 
     def _deserialize(self, params):
@@ -7724,6 +7728,7 @@ class URLNotice(AbstractModel):
         self.ValidationCode = params.get("ValidationCode")
         self.StartTime = params.get("StartTime")
         self.EndTime = params.get("EndTime")
+        self.Weekday = params.get("Weekday")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8098,6 +8103,9 @@ class UserNotice(AbstractModel):
         :param PhoneCallType: 电话拨打类型 SYNC=同时拨打 CIRCLE=轮询拨打 不指定时默认是轮询
 注意：此字段可能返回 null，表示取不到有效值。
         :type PhoneCallType: str
+        :param Weekday: 通知周期 1-7表示周一到周日
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Weekday: list of int
         """
         self.ReceiverType = None
         self.StartTime = None
@@ -8111,6 +8119,7 @@ class UserNotice(AbstractModel):
         self.PhoneCircleInterval = None
         self.NeedPhoneArriveNotice = None
         self.PhoneCallType = None
+        self.Weekday = None
 
 
     def _deserialize(self, params):
@@ -8126,6 +8135,7 @@ class UserNotice(AbstractModel):
         self.PhoneCircleInterval = params.get("PhoneCircleInterval")
         self.NeedPhoneArriveNotice = params.get("NeedPhoneArriveNotice")
         self.PhoneCallType = params.get("PhoneCallType")
+        self.Weekday = params.get("Weekday")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

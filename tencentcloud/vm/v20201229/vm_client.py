@@ -38,7 +38,8 @@ class VmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CancelTask", params)
+            headers = request.headers
+            body = self.call("CancelTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CancelTaskResponse()
@@ -103,7 +104,8 @@ class VmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateVideoModerationTask", params)
+            headers = request.headers
+            body = self.call("CreateVideoModerationTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateVideoModerationTaskResponse()
@@ -133,7 +135,8 @@ class VmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTaskDetail", params)
+            headers = request.headers
+            body = self.call("DescribeTaskDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTaskDetailResponse()
@@ -163,7 +166,8 @@ class VmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTasks", params)
+            headers = request.headers
+            body = self.call("DescribeTasks", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTasksResponse()

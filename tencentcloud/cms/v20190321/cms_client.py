@@ -38,7 +38,8 @@ class CmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateFileSample", params)
+            headers = request.headers
+            body = self.call("CreateFileSample", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateFileSampleResponse()
@@ -68,7 +69,8 @@ class CmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateTextSample", params)
+            headers = request.headers
+            body = self.call("CreateTextSample", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateTextSampleResponse()
@@ -98,7 +100,8 @@ class CmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteFileSample", params)
+            headers = request.headers
+            body = self.call("DeleteFileSample", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteFileSampleResponse()
@@ -128,7 +131,8 @@ class CmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteTextSample", params)
+            headers = request.headers
+            body = self.call("DeleteTextSample", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteTextSampleResponse()
@@ -158,7 +162,8 @@ class CmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeFileSample", params)
+            headers = request.headers
+            body = self.call("DescribeFileSample", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeFileSampleResponse()
@@ -188,7 +193,8 @@ class CmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTextSample", params)
+            headers = request.headers
+            body = self.call("DescribeTextSample", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTextSampleResponse()
@@ -216,7 +222,8 @@ class CmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ImageModeration", params)
+            headers = request.headers
+            body = self.call("ImageModeration", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ImageModerationResponse()
@@ -244,7 +251,8 @@ class CmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ManualReview", params)
+            headers = request.headers
+            body = self.call("ManualReview", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ManualReviewResponse()
@@ -272,7 +280,8 @@ class CmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("TextModeration", params)
+            headers = request.headers
+            body = self.call("TextModeration", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.TextModerationResponse()

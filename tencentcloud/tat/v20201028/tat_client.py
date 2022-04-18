@@ -39,7 +39,8 @@ class TatClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CancelInvocation", params)
+            headers = request.headers
+            body = self.call("CancelInvocation", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CancelInvocationResponse()
@@ -67,7 +68,8 @@ class TatClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateCommand", params)
+            headers = request.headers
+            body = self.call("CreateCommand", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateCommandResponse()
@@ -95,7 +97,8 @@ class TatClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateInvoker", params)
+            headers = request.headers
+            body = self.call("CreateInvoker", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateInvokerResponse()
@@ -124,7 +127,8 @@ class TatClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteCommand", params)
+            headers = request.headers
+            body = self.call("DeleteCommand", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteCommandResponse()
@@ -152,7 +156,8 @@ class TatClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteInvoker", params)
+            headers = request.headers
+            body = self.call("DeleteInvoker", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteInvokerResponse()
@@ -180,7 +185,8 @@ class TatClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAutomationAgentStatus", params)
+            headers = request.headers
+            body = self.call("DescribeAutomationAgentStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAutomationAgentStatusResponse()
@@ -208,7 +214,8 @@ class TatClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCommands", params)
+            headers = request.headers
+            body = self.call("DescribeCommands", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCommandsResponse()
@@ -236,7 +243,8 @@ class TatClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInvocationTasks", params)
+            headers = request.headers
+            body = self.call("DescribeInvocationTasks", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInvocationTasksResponse()
@@ -264,7 +272,8 @@ class TatClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInvocations", params)
+            headers = request.headers
+            body = self.call("DescribeInvocations", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInvocationsResponse()
@@ -292,7 +301,8 @@ class TatClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInvokerRecords", params)
+            headers = request.headers
+            body = self.call("DescribeInvokerRecords", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInvokerRecordsResponse()
@@ -320,7 +330,8 @@ class TatClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInvokers", params)
+            headers = request.headers
+            body = self.call("DescribeInvokers", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInvokersResponse()
@@ -349,7 +360,8 @@ class TatClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRegions", params)
+            headers = request.headers
+            body = self.call("DescribeRegions", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRegionsResponse()
@@ -377,7 +389,8 @@ class TatClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DisableInvoker", params)
+            headers = request.headers
+            body = self.call("DisableInvoker", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DisableInvokerResponse()
@@ -405,7 +418,8 @@ class TatClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("EnableInvoker", params)
+            headers = request.headers
+            body = self.call("EnableInvoker", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.EnableInvokerResponse()
@@ -439,7 +453,8 @@ class TatClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("InvokeCommand", params)
+            headers = request.headers
+            body = self.call("InvokeCommand", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.InvokeCommandResponse()
@@ -467,7 +482,8 @@ class TatClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyCommand", params)
+            headers = request.headers
+            body = self.call("ModifyCommand", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyCommandResponse()
@@ -495,7 +511,8 @@ class TatClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyInvoker", params)
+            headers = request.headers
+            body = self.call("ModifyInvoker", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyInvokerResponse()
@@ -523,7 +540,8 @@ class TatClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("PreviewReplacedCommandContent", params)
+            headers = request.headers
+            body = self.call("PreviewReplacedCommandContent", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.PreviewReplacedCommandContentResponse()
@@ -557,7 +575,8 @@ class TatClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RunCommand", params)
+            headers = request.headers
+            body = self.call("RunCommand", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RunCommandResponse()

@@ -36,7 +36,8 @@ class PartnersClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AgentPayDeals", params)
+            headers = request.headers
+            body = self.call("AgentPayDeals", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AgentPayDealsResponse()
@@ -64,7 +65,8 @@ class PartnersClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AgentTransferMoney", params)
+            headers = request.headers
+            body = self.call("AgentTransferMoney", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AgentTransferMoneyResponse()
@@ -92,7 +94,8 @@ class PartnersClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AuditApplyClient", params)
+            headers = request.headers
+            body = self.call("AuditApplyClient", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AuditApplyClientResponse()
@@ -120,7 +123,8 @@ class PartnersClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreatePayRelationForClient", params)
+            headers = request.headers
+            body = self.call("CreatePayRelationForClient", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreatePayRelationForClientResponse()
@@ -148,7 +152,8 @@ class PartnersClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAgentAuditedClients", params)
+            headers = request.headers
+            body = self.call("DescribeAgentAuditedClients", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAgentAuditedClientsResponse()
@@ -176,7 +181,8 @@ class PartnersClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAgentBills", params)
+            headers = request.headers
+            body = self.call("DescribeAgentBills", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAgentBillsResponse()
@@ -204,7 +210,8 @@ class PartnersClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAgentClientGrade", params)
+            headers = request.headers
+            body = self.call("DescribeAgentClientGrade", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAgentClientGradeResponse()
@@ -232,7 +239,8 @@ class PartnersClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAgentClients", params)
+            headers = request.headers
+            body = self.call("DescribeAgentClients", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAgentClientsResponse()
@@ -260,7 +268,8 @@ class PartnersClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAgentDealsByCache", params)
+            headers = request.headers
+            body = self.call("DescribeAgentDealsByCache", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAgentDealsByCacheResponse()
@@ -288,7 +297,8 @@ class PartnersClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAgentDealsCache", params)
+            headers = request.headers
+            body = self.call("DescribeAgentDealsCache", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAgentDealsCacheResponse()
@@ -316,7 +326,8 @@ class PartnersClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAgentPayDeals", params)
+            headers = request.headers
+            body = self.call("DescribeAgentPayDeals", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAgentPayDealsResponse()
@@ -344,7 +355,8 @@ class PartnersClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAgentPayDealsV2", params)
+            headers = request.headers
+            body = self.call("DescribeAgentPayDealsV2", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAgentPayDealsV2Response()
@@ -372,7 +384,8 @@ class PartnersClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAgentSelfPayDeals", params)
+            headers = request.headers
+            body = self.call("DescribeAgentSelfPayDeals", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAgentSelfPayDealsResponse()
@@ -400,7 +413,8 @@ class PartnersClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAgentSelfPayDealsV2", params)
+            headers = request.headers
+            body = self.call("DescribeAgentSelfPayDealsV2", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAgentSelfPayDealsV2Response()
@@ -428,7 +442,8 @@ class PartnersClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeClientBalance", params)
+            headers = request.headers
+            body = self.call("DescribeClientBalance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeClientBalanceResponse()
@@ -456,7 +471,8 @@ class PartnersClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeClientBalanceNew", params)
+            headers = request.headers
+            body = self.call("DescribeClientBalanceNew", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeClientBalanceNewResponse()
@@ -484,7 +500,8 @@ class PartnersClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRebateInfos", params)
+            headers = request.headers
+            body = self.call("DescribeRebateInfos", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRebateInfosResponse()
@@ -512,7 +529,8 @@ class PartnersClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSalesmans", params)
+            headers = request.headers
+            body = self.call("DescribeSalesmans", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSalesmansResponse()
@@ -540,7 +558,8 @@ class PartnersClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeUnbindClientList", params)
+            headers = request.headers
+            body = self.call("DescribeUnbindClientList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeUnbindClientListResponse()
@@ -568,7 +587,8 @@ class PartnersClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyClientRemark", params)
+            headers = request.headers
+            body = self.call("ModifyClientRemark", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyClientRemarkResponse()
@@ -596,7 +616,8 @@ class PartnersClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RemovePayRelationForClient", params)
+            headers = request.headers
+            body = self.call("RemovePayRelationForClient", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RemovePayRelationForClientResponse()

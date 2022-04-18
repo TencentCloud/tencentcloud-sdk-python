@@ -36,7 +36,8 @@ class EmrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateInstance", params)
+            headers = request.headers
+            body = self.call("CreateInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateInstanceResponse()
@@ -64,7 +65,8 @@ class EmrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeClusterNodes", params)
+            headers = request.headers
+            body = self.call("DescribeClusterNodes", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeClusterNodesResponse()
@@ -92,7 +94,8 @@ class EmrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCvmQuota", params)
+            headers = request.headers
+            body = self.call("DescribeCvmQuota", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCvmQuotaResponse()
@@ -120,7 +123,8 @@ class EmrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInstanceRenewNodes", params)
+            headers = request.headers
+            body = self.call("DescribeInstanceRenewNodes", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInstanceRenewNodesResponse()
@@ -148,7 +152,8 @@ class EmrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInstances", params)
+            headers = request.headers
+            body = self.call("DescribeInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInstancesResponse()
@@ -176,7 +181,8 @@ class EmrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeJobFlow", params)
+            headers = request.headers
+            body = self.call("DescribeJobFlow", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeJobFlowResponse()
@@ -204,7 +210,8 @@ class EmrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("InquirePriceRenewEmr", params)
+            headers = request.headers
+            body = self.call("InquirePriceRenewEmr", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.InquirePriceRenewEmrResponse()
@@ -232,7 +239,8 @@ class EmrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("InquiryPriceCreateInstance", params)
+            headers = request.headers
+            body = self.call("InquiryPriceCreateInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.InquiryPriceCreateInstanceResponse()
@@ -260,7 +268,8 @@ class EmrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("InquiryPriceRenewInstance", params)
+            headers = request.headers
+            body = self.call("InquiryPriceRenewInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.InquiryPriceRenewInstanceResponse()
@@ -288,7 +297,8 @@ class EmrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("InquiryPriceScaleOutInstance", params)
+            headers = request.headers
+            body = self.call("InquiryPriceScaleOutInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.InquiryPriceScaleOutInstanceResponse()
@@ -316,7 +326,8 @@ class EmrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("InquiryPriceUpdateInstance", params)
+            headers = request.headers
+            body = self.call("InquiryPriceUpdateInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.InquiryPriceUpdateInstanceResponse()
@@ -344,7 +355,8 @@ class EmrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RunJobFlow", params)
+            headers = request.headers
+            body = self.call("RunJobFlow", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RunJobFlowResponse()
@@ -372,7 +384,8 @@ class EmrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ScaleOutInstance", params)
+            headers = request.headers
+            body = self.call("ScaleOutInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ScaleOutInstanceResponse()
@@ -400,7 +413,8 @@ class EmrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SyncPodState", params)
+            headers = request.headers
+            body = self.call("SyncPodState", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SyncPodStateResponse()
@@ -428,7 +442,8 @@ class EmrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("TerminateInstance", params)
+            headers = request.headers
+            body = self.call("TerminateInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.TerminateInstanceResponse()
@@ -456,7 +471,8 @@ class EmrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("TerminateTasks", params)
+            headers = request.headers
+            body = self.call("TerminateTasks", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.TerminateTasksResponse()

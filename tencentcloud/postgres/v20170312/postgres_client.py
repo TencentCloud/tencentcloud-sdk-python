@@ -36,7 +36,8 @@ class PostgresClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AddDBInstanceToReadOnlyGroup", params)
+            headers = request.headers
+            body = self.call("AddDBInstanceToReadOnlyGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AddDBInstanceToReadOnlyGroupResponse()
@@ -64,7 +65,8 @@ class PostgresClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CloneDBInstance", params)
+            headers = request.headers
+            body = self.call("CloneDBInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CloneDBInstanceResponse()
@@ -92,7 +94,8 @@ class PostgresClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CloseDBExtranetAccess", params)
+            headers = request.headers
+            body = self.call("CloseDBExtranetAccess", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CloseDBExtranetAccessResponse()
@@ -120,7 +123,8 @@ class PostgresClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CloseServerlessDBExtranetAccess", params)
+            headers = request.headers
+            body = self.call("CloseServerlessDBExtranetAccess", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CloseServerlessDBExtranetAccessResponse()
@@ -148,7 +152,8 @@ class PostgresClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateDBInstanceNetworkAccess", params)
+            headers = request.headers
+            body = self.call("CreateDBInstanceNetworkAccess", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateDBInstanceNetworkAccessResponse()
@@ -176,7 +181,8 @@ class PostgresClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateDBInstances", params)
+            headers = request.headers
+            body = self.call("CreateDBInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateDBInstancesResponse()
@@ -204,7 +210,8 @@ class PostgresClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateInstances", params)
+            headers = request.headers
+            body = self.call("CreateInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateInstancesResponse()
@@ -232,7 +239,8 @@ class PostgresClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateReadOnlyDBInstance", params)
+            headers = request.headers
+            body = self.call("CreateReadOnlyDBInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateReadOnlyDBInstanceResponse()
@@ -260,7 +268,8 @@ class PostgresClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateReadOnlyGroup", params)
+            headers = request.headers
+            body = self.call("CreateReadOnlyGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateReadOnlyGroupResponse()
@@ -288,7 +297,8 @@ class PostgresClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateReadOnlyGroupNetworkAccess", params)
+            headers = request.headers
+            body = self.call("CreateReadOnlyGroupNetworkAccess", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateReadOnlyGroupNetworkAccessResponse()
@@ -316,7 +326,8 @@ class PostgresClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateServerlessDBInstance", params)
+            headers = request.headers
+            body = self.call("CreateServerlessDBInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateServerlessDBInstanceResponse()
@@ -344,7 +355,8 @@ class PostgresClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteDBInstanceNetworkAccess", params)
+            headers = request.headers
+            body = self.call("DeleteDBInstanceNetworkAccess", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteDBInstanceNetworkAccessResponse()
@@ -372,7 +384,8 @@ class PostgresClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteReadOnlyGroup", params)
+            headers = request.headers
+            body = self.call("DeleteReadOnlyGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteReadOnlyGroupResponse()
@@ -400,7 +413,8 @@ class PostgresClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteReadOnlyGroupNetworkAccess", params)
+            headers = request.headers
+            body = self.call("DeleteReadOnlyGroupNetworkAccess", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteReadOnlyGroupNetworkAccessResponse()
@@ -428,7 +442,8 @@ class PostgresClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteServerlessDBInstance", params)
+            headers = request.headers
+            body = self.call("DeleteServerlessDBInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteServerlessDBInstanceResponse()
@@ -456,7 +471,8 @@ class PostgresClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAccounts", params)
+            headers = request.headers
+            body = self.call("DescribeAccounts", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAccountsResponse()
@@ -484,7 +500,8 @@ class PostgresClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAvailableRecoveryTime", params)
+            headers = request.headers
+            body = self.call("DescribeAvailableRecoveryTime", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAvailableRecoveryTimeResponse()
@@ -512,7 +529,8 @@ class PostgresClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBackupPlans", params)
+            headers = request.headers
+            body = self.call("DescribeBackupPlans", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBackupPlansResponse()
@@ -540,7 +558,8 @@ class PostgresClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCloneDBInstanceSpec", params)
+            headers = request.headers
+            body = self.call("DescribeCloneDBInstanceSpec", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCloneDBInstanceSpecResponse()
@@ -568,7 +587,8 @@ class PostgresClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDBBackups", params)
+            headers = request.headers
+            body = self.call("DescribeDBBackups", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDBBackupsResponse()
@@ -596,7 +616,8 @@ class PostgresClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDBErrlogs", params)
+            headers = request.headers
+            body = self.call("DescribeDBErrlogs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDBErrlogsResponse()
@@ -624,7 +645,8 @@ class PostgresClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDBInstanceAttribute", params)
+            headers = request.headers
+            body = self.call("DescribeDBInstanceAttribute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDBInstanceAttributeResponse()
@@ -652,7 +674,8 @@ class PostgresClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDBInstanceParameters", params)
+            headers = request.headers
+            body = self.call("DescribeDBInstanceParameters", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDBInstanceParametersResponse()
@@ -680,7 +703,8 @@ class PostgresClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDBInstances", params)
+            headers = request.headers
+            body = self.call("DescribeDBInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDBInstancesResponse()
@@ -708,7 +732,8 @@ class PostgresClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDBSlowlogs", params)
+            headers = request.headers
+            body = self.call("DescribeDBSlowlogs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDBSlowlogsResponse()
@@ -736,7 +761,8 @@ class PostgresClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDBXlogs", params)
+            headers = request.headers
+            body = self.call("DescribeDBXlogs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDBXlogsResponse()
@@ -764,7 +790,8 @@ class PostgresClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDatabases", params)
+            headers = request.headers
+            body = self.call("DescribeDatabases", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDatabasesResponse()
@@ -792,7 +819,8 @@ class PostgresClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeOrders", params)
+            headers = request.headers
+            body = self.call("DescribeOrders", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeOrdersResponse()
@@ -820,7 +848,8 @@ class PostgresClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeParamsEvent", params)
+            headers = request.headers
+            body = self.call("DescribeParamsEvent", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeParamsEventResponse()
@@ -848,7 +877,8 @@ class PostgresClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeProductConfig", params)
+            headers = request.headers
+            body = self.call("DescribeProductConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeProductConfigResponse()
@@ -876,7 +906,8 @@ class PostgresClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeReadOnlyGroups", params)
+            headers = request.headers
+            body = self.call("DescribeReadOnlyGroups", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeReadOnlyGroupsResponse()
@@ -904,7 +935,8 @@ class PostgresClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRegions", params)
+            headers = request.headers
+            body = self.call("DescribeRegions", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRegionsResponse()
@@ -932,7 +964,8 @@ class PostgresClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeServerlessDBInstances", params)
+            headers = request.headers
+            body = self.call("DescribeServerlessDBInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeServerlessDBInstancesResponse()
@@ -960,7 +993,8 @@ class PostgresClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSlowQueryAnalysis", params)
+            headers = request.headers
+            body = self.call("DescribeSlowQueryAnalysis", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSlowQueryAnalysisResponse()
@@ -988,7 +1022,8 @@ class PostgresClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSlowQueryList", params)
+            headers = request.headers
+            body = self.call("DescribeSlowQueryList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSlowQueryListResponse()
@@ -1016,7 +1051,8 @@ class PostgresClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeZones", params)
+            headers = request.headers
+            body = self.call("DescribeZones", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeZonesResponse()
@@ -1044,7 +1080,8 @@ class PostgresClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DestroyDBInstance", params)
+            headers = request.headers
+            body = self.call("DestroyDBInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DestroyDBInstanceResponse()
@@ -1072,7 +1109,8 @@ class PostgresClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DisIsolateDBInstances", params)
+            headers = request.headers
+            body = self.call("DisIsolateDBInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DisIsolateDBInstancesResponse()
@@ -1100,7 +1138,8 @@ class PostgresClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("InitDBInstances", params)
+            headers = request.headers
+            body = self.call("InitDBInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.InitDBInstancesResponse()
@@ -1128,7 +1167,8 @@ class PostgresClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("InquiryPriceCreateDBInstances", params)
+            headers = request.headers
+            body = self.call("InquiryPriceCreateDBInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.InquiryPriceCreateDBInstancesResponse()
@@ -1156,7 +1196,8 @@ class PostgresClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("InquiryPriceRenewDBInstance", params)
+            headers = request.headers
+            body = self.call("InquiryPriceRenewDBInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.InquiryPriceRenewDBInstanceResponse()
@@ -1184,7 +1225,8 @@ class PostgresClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("InquiryPriceUpgradeDBInstance", params)
+            headers = request.headers
+            body = self.call("InquiryPriceUpgradeDBInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.InquiryPriceUpgradeDBInstanceResponse()
@@ -1212,7 +1254,8 @@ class PostgresClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("IsolateDBInstances", params)
+            headers = request.headers
+            body = self.call("IsolateDBInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.IsolateDBInstancesResponse()
@@ -1240,7 +1283,8 @@ class PostgresClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyAccountRemark", params)
+            headers = request.headers
+            body = self.call("ModifyAccountRemark", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAccountRemarkResponse()
@@ -1268,7 +1312,8 @@ class PostgresClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyBackupPlan", params)
+            headers = request.headers
+            body = self.call("ModifyBackupPlan", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyBackupPlanResponse()
@@ -1296,7 +1341,8 @@ class PostgresClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyDBInstanceDeployment", params)
+            headers = request.headers
+            body = self.call("ModifyDBInstanceDeployment", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDBInstanceDeploymentResponse()
@@ -1324,7 +1370,8 @@ class PostgresClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyDBInstanceName", params)
+            headers = request.headers
+            body = self.call("ModifyDBInstanceName", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDBInstanceNameResponse()
@@ -1352,7 +1399,8 @@ class PostgresClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyDBInstanceParameters", params)
+            headers = request.headers
+            body = self.call("ModifyDBInstanceParameters", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDBInstanceParametersResponse()
@@ -1380,7 +1428,8 @@ class PostgresClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyDBInstanceReadOnlyGroup", params)
+            headers = request.headers
+            body = self.call("ModifyDBInstanceReadOnlyGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDBInstanceReadOnlyGroupResponse()
@@ -1408,7 +1457,8 @@ class PostgresClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyDBInstanceSpec", params)
+            headers = request.headers
+            body = self.call("ModifyDBInstanceSpec", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDBInstanceSpecResponse()
@@ -1436,7 +1486,8 @@ class PostgresClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyDBInstancesProject", params)
+            headers = request.headers
+            body = self.call("ModifyDBInstancesProject", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDBInstancesProjectResponse()
@@ -1464,7 +1515,8 @@ class PostgresClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyReadOnlyGroupConfig", params)
+            headers = request.headers
+            body = self.call("ModifyReadOnlyGroupConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyReadOnlyGroupConfigResponse()
@@ -1492,7 +1544,8 @@ class PostgresClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifySwitchTimePeriod", params)
+            headers = request.headers
+            body = self.call("ModifySwitchTimePeriod", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifySwitchTimePeriodResponse()
@@ -1520,7 +1573,8 @@ class PostgresClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("OpenDBExtranetAccess", params)
+            headers = request.headers
+            body = self.call("OpenDBExtranetAccess", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.OpenDBExtranetAccessResponse()
@@ -1548,7 +1602,8 @@ class PostgresClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("OpenServerlessDBExtranetAccess", params)
+            headers = request.headers
+            body = self.call("OpenServerlessDBExtranetAccess", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.OpenServerlessDBExtranetAccessResponse()
@@ -1576,7 +1631,8 @@ class PostgresClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RebalanceReadOnlyGroup", params)
+            headers = request.headers
+            body = self.call("RebalanceReadOnlyGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RebalanceReadOnlyGroupResponse()
@@ -1604,7 +1660,8 @@ class PostgresClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RemoveDBInstanceFromReadOnlyGroup", params)
+            headers = request.headers
+            body = self.call("RemoveDBInstanceFromReadOnlyGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RemoveDBInstanceFromReadOnlyGroupResponse()
@@ -1632,7 +1689,8 @@ class PostgresClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RenewInstance", params)
+            headers = request.headers
+            body = self.call("RenewInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RenewInstanceResponse()
@@ -1660,7 +1718,8 @@ class PostgresClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ResetAccountPassword", params)
+            headers = request.headers
+            body = self.call("ResetAccountPassword", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ResetAccountPasswordResponse()
@@ -1688,7 +1747,8 @@ class PostgresClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RestartDBInstance", params)
+            headers = request.headers
+            body = self.call("RestartDBInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RestartDBInstanceResponse()
@@ -1716,7 +1776,8 @@ class PostgresClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SetAutoRenewFlag", params)
+            headers = request.headers
+            body = self.call("SetAutoRenewFlag", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SetAutoRenewFlagResponse()
@@ -1744,7 +1805,8 @@ class PostgresClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpgradeDBInstance", params)
+            headers = request.headers
+            body = self.call("UpgradeDBInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpgradeDBInstanceResponse()

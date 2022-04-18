@@ -36,7 +36,8 @@ class MarketClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("FlowProductRemind", params)
+            headers = request.headers
+            body = self.call("FlowProductRemind", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.FlowProductRemindResponse()
@@ -64,7 +65,8 @@ class MarketClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetUsagePlanUsageAmount", params)
+            headers = request.headers
+            body = self.call("GetUsagePlanUsageAmount", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetUsagePlanUsageAmountResponse()

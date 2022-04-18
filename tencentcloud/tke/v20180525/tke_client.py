@@ -36,7 +36,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AcquireClusterAdminRole", params)
+            headers = request.headers
+            body = self.call("AcquireClusterAdminRole", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AcquireClusterAdminRoleResponse()
@@ -64,7 +65,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AddClusterCIDR", params)
+            headers = request.headers
+            body = self.call("AddClusterCIDR", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AddClusterCIDRResponse()
@@ -92,7 +94,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AddExistedInstances", params)
+            headers = request.headers
+            body = self.call("AddExistedInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AddExistedInstancesResponse()
@@ -120,7 +123,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AddNodeToNodePool", params)
+            headers = request.headers
+            body = self.call("AddNodeToNodePool", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AddNodeToNodePoolResponse()
@@ -148,7 +152,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AddVpcCniSubnets", params)
+            headers = request.headers
+            body = self.call("AddVpcCniSubnets", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AddVpcCniSubnetsResponse()
@@ -176,7 +181,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CheckInstancesUpgradeAble", params)
+            headers = request.headers
+            body = self.call("CheckInstancesUpgradeAble", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CheckInstancesUpgradeAbleResponse()
@@ -204,7 +210,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateCluster", params)
+            headers = request.headers
+            body = self.call("CreateCluster", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateClusterResponse()
@@ -232,7 +239,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateClusterAsGroup", params)
+            headers = request.headers
+            body = self.call("CreateClusterAsGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateClusterAsGroupResponse()
@@ -260,7 +268,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateClusterEndpoint", params)
+            headers = request.headers
+            body = self.call("CreateClusterEndpoint", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateClusterEndpointResponse()
@@ -288,7 +297,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateClusterEndpointVip", params)
+            headers = request.headers
+            body = self.call("CreateClusterEndpointVip", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateClusterEndpointVipResponse()
@@ -316,7 +326,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateClusterInstances", params)
+            headers = request.headers
+            body = self.call("CreateClusterInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateClusterInstancesResponse()
@@ -344,7 +355,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateClusterNodePool", params)
+            headers = request.headers
+            body = self.call("CreateClusterNodePool", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateClusterNodePoolResponse()
@@ -372,7 +384,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateClusterNodePoolFromExistingAsg", params)
+            headers = request.headers
+            body = self.call("CreateClusterNodePoolFromExistingAsg", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateClusterNodePoolFromExistingAsgResponse()
@@ -400,7 +413,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateClusterRoute", params)
+            headers = request.headers
+            body = self.call("CreateClusterRoute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateClusterRouteResponse()
@@ -428,7 +442,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateClusterRouteTable", params)
+            headers = request.headers
+            body = self.call("CreateClusterRouteTable", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateClusterRouteTableResponse()
@@ -456,7 +471,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateEKSCluster", params)
+            headers = request.headers
+            body = self.call("CreateEKSCluster", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateEKSClusterResponse()
@@ -484,7 +500,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateEKSContainerInstances", params)
+            headers = request.headers
+            body = self.call("CreateEKSContainerInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateEKSContainerInstancesResponse()
@@ -512,7 +529,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateImageCache", params)
+            headers = request.headers
+            body = self.call("CreateImageCache", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateImageCacheResponse()
@@ -540,7 +558,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreatePrometheusAlertRule", params)
+            headers = request.headers
+            body = self.call("CreatePrometheusAlertRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreatePrometheusAlertRuleResponse()
@@ -568,7 +587,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreatePrometheusDashboard", params)
+            headers = request.headers
+            body = self.call("CreatePrometheusDashboard", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreatePrometheusDashboardResponse()
@@ -596,7 +616,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreatePrometheusTemplate", params)
+            headers = request.headers
+            body = self.call("CreatePrometheusTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreatePrometheusTemplateResponse()
@@ -624,7 +645,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteCluster", params)
+            headers = request.headers
+            body = self.call("DeleteCluster", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteClusterResponse()
@@ -652,7 +674,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteClusterAsGroups", params)
+            headers = request.headers
+            body = self.call("DeleteClusterAsGroups", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteClusterAsGroupsResponse()
@@ -680,7 +703,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteClusterEndpoint", params)
+            headers = request.headers
+            body = self.call("DeleteClusterEndpoint", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteClusterEndpointResponse()
@@ -708,7 +732,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteClusterEndpointVip", params)
+            headers = request.headers
+            body = self.call("DeleteClusterEndpointVip", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteClusterEndpointVipResponse()
@@ -736,7 +761,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteClusterInstances", params)
+            headers = request.headers
+            body = self.call("DeleteClusterInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteClusterInstancesResponse()
@@ -764,7 +790,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteClusterNodePool", params)
+            headers = request.headers
+            body = self.call("DeleteClusterNodePool", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteClusterNodePoolResponse()
@@ -792,7 +819,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteClusterRoute", params)
+            headers = request.headers
+            body = self.call("DeleteClusterRoute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteClusterRouteResponse()
@@ -820,7 +848,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteClusterRouteTable", params)
+            headers = request.headers
+            body = self.call("DeleteClusterRouteTable", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteClusterRouteTableResponse()
@@ -848,7 +877,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteEKSCluster", params)
+            headers = request.headers
+            body = self.call("DeleteEKSCluster", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteEKSClusterResponse()
@@ -876,7 +906,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteEKSContainerInstances", params)
+            headers = request.headers
+            body = self.call("DeleteEKSContainerInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteEKSContainerInstancesResponse()
@@ -904,7 +935,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteImageCaches", params)
+            headers = request.headers
+            body = self.call("DeleteImageCaches", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteImageCachesResponse()
@@ -932,7 +964,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeletePrometheusAlertRule", params)
+            headers = request.headers
+            body = self.call("DeletePrometheusAlertRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeletePrometheusAlertRuleResponse()
@@ -960,7 +993,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeletePrometheusTemplate", params)
+            headers = request.headers
+            body = self.call("DeletePrometheusTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeletePrometheusTemplateResponse()
@@ -988,7 +1022,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeletePrometheusTemplateSync", params)
+            headers = request.headers
+            body = self.call("DeletePrometheusTemplateSync", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeletePrometheusTemplateSyncResponse()
@@ -1016,7 +1051,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAvailableClusterVersion", params)
+            headers = request.headers
+            body = self.call("DescribeAvailableClusterVersion", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAvailableClusterVersionResponse()
@@ -1044,7 +1080,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeClusterAsGroupOption", params)
+            headers = request.headers
+            body = self.call("DescribeClusterAsGroupOption", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeClusterAsGroupOptionResponse()
@@ -1072,7 +1109,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeClusterAsGroups", params)
+            headers = request.headers
+            body = self.call("DescribeClusterAsGroups", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeClusterAsGroupsResponse()
@@ -1100,7 +1138,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeClusterAuthenticationOptions", params)
+            headers = request.headers
+            body = self.call("DescribeClusterAuthenticationOptions", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeClusterAuthenticationOptionsResponse()
@@ -1128,7 +1167,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeClusterCommonNames", params)
+            headers = request.headers
+            body = self.call("DescribeClusterCommonNames", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeClusterCommonNamesResponse()
@@ -1156,7 +1196,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeClusterControllers", params)
+            headers = request.headers
+            body = self.call("DescribeClusterControllers", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeClusterControllersResponse()
@@ -1184,7 +1225,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeClusterEndpointStatus", params)
+            headers = request.headers
+            body = self.call("DescribeClusterEndpointStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeClusterEndpointStatusResponse()
@@ -1212,7 +1254,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeClusterEndpointVipStatus", params)
+            headers = request.headers
+            body = self.call("DescribeClusterEndpointVipStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeClusterEndpointVipStatusResponse()
@@ -1240,7 +1283,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeClusterInstances", params)
+            headers = request.headers
+            body = self.call("DescribeClusterInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeClusterInstancesResponse()
@@ -1268,7 +1312,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeClusterKubeconfig", params)
+            headers = request.headers
+            body = self.call("DescribeClusterKubeconfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeClusterKubeconfigResponse()
@@ -1296,7 +1341,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeClusterLevelAttribute", params)
+            headers = request.headers
+            body = self.call("DescribeClusterLevelAttribute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeClusterLevelAttributeResponse()
@@ -1324,7 +1370,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeClusterLevelChangeRecords", params)
+            headers = request.headers
+            body = self.call("DescribeClusterLevelChangeRecords", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeClusterLevelChangeRecordsResponse()
@@ -1352,7 +1399,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeClusterNodePoolDetail", params)
+            headers = request.headers
+            body = self.call("DescribeClusterNodePoolDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeClusterNodePoolDetailResponse()
@@ -1380,7 +1428,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeClusterNodePools", params)
+            headers = request.headers
+            body = self.call("DescribeClusterNodePools", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeClusterNodePoolsResponse()
@@ -1408,7 +1457,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeClusterRouteTables", params)
+            headers = request.headers
+            body = self.call("DescribeClusterRouteTables", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeClusterRouteTablesResponse()
@@ -1436,7 +1486,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeClusterRoutes", params)
+            headers = request.headers
+            body = self.call("DescribeClusterRoutes", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeClusterRoutesResponse()
@@ -1464,7 +1515,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeClusterSecurity", params)
+            headers = request.headers
+            body = self.call("DescribeClusterSecurity", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeClusterSecurityResponse()
@@ -1492,7 +1544,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeClusterStatus", params)
+            headers = request.headers
+            body = self.call("DescribeClusterStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeClusterStatusResponse()
@@ -1520,7 +1573,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeClusters", params)
+            headers = request.headers
+            body = self.call("DescribeClusters", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeClustersResponse()
@@ -1548,7 +1602,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeEKSClusterCredential", params)
+            headers = request.headers
+            body = self.call("DescribeEKSClusterCredential", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeEKSClusterCredentialResponse()
@@ -1576,7 +1631,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeEKSClusters", params)
+            headers = request.headers
+            body = self.call("DescribeEKSClusters", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeEKSClustersResponse()
@@ -1604,7 +1660,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeEKSContainerInstanceEvent", params)
+            headers = request.headers
+            body = self.call("DescribeEKSContainerInstanceEvent", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeEKSContainerInstanceEventResponse()
@@ -1632,7 +1689,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeEKSContainerInstanceRegions", params)
+            headers = request.headers
+            body = self.call("DescribeEKSContainerInstanceRegions", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeEKSContainerInstanceRegionsResponse()
@@ -1660,7 +1718,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeEKSContainerInstances", params)
+            headers = request.headers
+            body = self.call("DescribeEKSContainerInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeEKSContainerInstancesResponse()
@@ -1688,7 +1747,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeEksContainerInstanceLog", params)
+            headers = request.headers
+            body = self.call("DescribeEksContainerInstanceLog", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeEksContainerInstanceLogResponse()
@@ -1716,7 +1776,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeEnableVpcCniProgress", params)
+            headers = request.headers
+            body = self.call("DescribeEnableVpcCniProgress", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeEnableVpcCniProgressResponse()
@@ -1744,7 +1805,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeExistedInstances", params)
+            headers = request.headers
+            body = self.call("DescribeExistedInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeExistedInstancesResponse()
@@ -1772,7 +1834,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeExternalClusterSpec", params)
+            headers = request.headers
+            body = self.call("DescribeExternalClusterSpec", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeExternalClusterSpecResponse()
@@ -1800,7 +1863,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeImageCaches", params)
+            headers = request.headers
+            body = self.call("DescribeImageCaches", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeImageCachesResponse()
@@ -1828,7 +1892,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeImages", params)
+            headers = request.headers
+            body = self.call("DescribeImages", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeImagesResponse()
@@ -1856,7 +1921,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePrometheusAgentInstances", params)
+            headers = request.headers
+            body = self.call("DescribePrometheusAgentInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePrometheusAgentInstancesResponse()
@@ -1884,7 +1950,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePrometheusAgents", params)
+            headers = request.headers
+            body = self.call("DescribePrometheusAgents", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePrometheusAgentsResponse()
@@ -1912,7 +1979,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePrometheusAlertHistory", params)
+            headers = request.headers
+            body = self.call("DescribePrometheusAlertHistory", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePrometheusAlertHistoryResponse()
@@ -1940,7 +2008,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePrometheusAlertRule", params)
+            headers = request.headers
+            body = self.call("DescribePrometheusAlertRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePrometheusAlertRuleResponse()
@@ -1968,7 +2037,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePrometheusInstance", params)
+            headers = request.headers
+            body = self.call("DescribePrometheusInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePrometheusInstanceResponse()
@@ -1996,7 +2066,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePrometheusOverviews", params)
+            headers = request.headers
+            body = self.call("DescribePrometheusOverviews", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePrometheusOverviewsResponse()
@@ -2024,7 +2095,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePrometheusTargets", params)
+            headers = request.headers
+            body = self.call("DescribePrometheusTargets", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePrometheusTargetsResponse()
@@ -2052,7 +2124,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePrometheusTemplateSync", params)
+            headers = request.headers
+            body = self.call("DescribePrometheusTemplateSync", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePrometheusTemplateSyncResponse()
@@ -2080,7 +2153,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePrometheusTemplates", params)
+            headers = request.headers
+            body = self.call("DescribePrometheusTemplates", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePrometheusTemplatesResponse()
@@ -2108,7 +2182,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRegions", params)
+            headers = request.headers
+            body = self.call("DescribeRegions", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRegionsResponse()
@@ -2136,7 +2211,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeResourceUsage", params)
+            headers = request.headers
+            body = self.call("DescribeResourceUsage", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeResourceUsageResponse()
@@ -2164,7 +2240,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRouteTableConflicts", params)
+            headers = request.headers
+            body = self.call("DescribeRouteTableConflicts", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRouteTableConflictsResponse()
@@ -2192,7 +2269,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTKEEdgeScript", params)
+            headers = request.headers
+            body = self.call("DescribeTKEEdgeScript", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTKEEdgeScriptResponse()
@@ -2220,7 +2298,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeVersions", params)
+            headers = request.headers
+            body = self.call("DescribeVersions", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeVersionsResponse()
@@ -2248,7 +2327,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeVpcCniPodLimits", params)
+            headers = request.headers
+            body = self.call("DescribeVpcCniPodLimits", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeVpcCniPodLimitsResponse()
@@ -2276,7 +2356,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DisableClusterDeletionProtection", params)
+            headers = request.headers
+            body = self.call("DisableClusterDeletionProtection", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DisableClusterDeletionProtectionResponse()
@@ -2304,7 +2385,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DisableVpcCniNetworkType", params)
+            headers = request.headers
+            body = self.call("DisableVpcCniNetworkType", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DisableVpcCniNetworkTypeResponse()
@@ -2332,7 +2414,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("EnableClusterDeletionProtection", params)
+            headers = request.headers
+            body = self.call("EnableClusterDeletionProtection", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.EnableClusterDeletionProtectionResponse()
@@ -2360,7 +2443,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("EnableVpcCniNetworkType", params)
+            headers = request.headers
+            body = self.call("EnableVpcCniNetworkType", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.EnableVpcCniNetworkTypeResponse()
@@ -2388,7 +2472,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ForwardApplicationRequestV3", params)
+            headers = request.headers
+            body = self.call("ForwardApplicationRequestV3", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ForwardApplicationRequestV3Response()
@@ -2416,7 +2501,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetClusterLevelPrice", params)
+            headers = request.headers
+            body = self.call("GetClusterLevelPrice", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetClusterLevelPriceResponse()
@@ -2444,7 +2530,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetMostSuitableImageCache", params)
+            headers = request.headers
+            body = self.call("GetMostSuitableImageCache", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetMostSuitableImageCacheResponse()
@@ -2472,7 +2559,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetTkeAppChartList", params)
+            headers = request.headers
+            body = self.call("GetTkeAppChartList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetTkeAppChartListResponse()
@@ -2500,7 +2588,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetUpgradeInstanceProgress", params)
+            headers = request.headers
+            body = self.call("GetUpgradeInstanceProgress", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetUpgradeInstanceProgressResponse()
@@ -2528,7 +2617,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyClusterAsGroupAttribute", params)
+            headers = request.headers
+            body = self.call("ModifyClusterAsGroupAttribute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyClusterAsGroupAttributeResponse()
@@ -2556,7 +2646,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyClusterAsGroupOptionAttribute", params)
+            headers = request.headers
+            body = self.call("ModifyClusterAsGroupOptionAttribute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyClusterAsGroupOptionAttributeResponse()
@@ -2584,7 +2675,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyClusterAttribute", params)
+            headers = request.headers
+            body = self.call("ModifyClusterAttribute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyClusterAttributeResponse()
@@ -2612,7 +2704,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyClusterAuthenticationOptions", params)
+            headers = request.headers
+            body = self.call("ModifyClusterAuthenticationOptions", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyClusterAuthenticationOptionsResponse()
@@ -2640,7 +2733,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyClusterEndpointSP", params)
+            headers = request.headers
+            body = self.call("ModifyClusterEndpointSP", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyClusterEndpointSPResponse()
@@ -2668,7 +2762,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyClusterNodePool", params)
+            headers = request.headers
+            body = self.call("ModifyClusterNodePool", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyClusterNodePoolResponse()
@@ -2696,7 +2791,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyNodePoolDesiredCapacityAboutAsg", params)
+            headers = request.headers
+            body = self.call("ModifyNodePoolDesiredCapacityAboutAsg", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyNodePoolDesiredCapacityAboutAsgResponse()
@@ -2724,7 +2820,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyNodePoolInstanceTypes", params)
+            headers = request.headers
+            body = self.call("ModifyNodePoolInstanceTypes", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyNodePoolInstanceTypesResponse()
@@ -2752,7 +2849,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyPrometheusAlertRule", params)
+            headers = request.headers
+            body = self.call("ModifyPrometheusAlertRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyPrometheusAlertRuleResponse()
@@ -2780,7 +2878,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyPrometheusTemplate", params)
+            headers = request.headers
+            body = self.call("ModifyPrometheusTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyPrometheusTemplateResponse()
@@ -2808,7 +2907,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RemoveNodeFromNodePool", params)
+            headers = request.headers
+            body = self.call("RemoveNodeFromNodePool", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RemoveNodeFromNodePoolResponse()
@@ -2836,7 +2936,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RestartEKSContainerInstances", params)
+            headers = request.headers
+            body = self.call("RestartEKSContainerInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RestartEKSContainerInstancesResponse()
@@ -2864,7 +2965,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ScaleInClusterMaster", params)
+            headers = request.headers
+            body = self.call("ScaleInClusterMaster", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ScaleInClusterMasterResponse()
@@ -2892,7 +2994,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ScaleOutClusterMaster", params)
+            headers = request.headers
+            body = self.call("ScaleOutClusterMaster", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ScaleOutClusterMasterResponse()
@@ -2920,7 +3023,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SetNodePoolNodeProtection", params)
+            headers = request.headers
+            body = self.call("SetNodePoolNodeProtection", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SetNodePoolNodeProtectionResponse()
@@ -2948,7 +3052,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SyncPrometheusTemplate", params)
+            headers = request.headers
+            body = self.call("SyncPrometheusTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SyncPrometheusTemplateResponse()
@@ -2976,7 +3081,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateClusterVersion", params)
+            headers = request.headers
+            body = self.call("UpdateClusterVersion", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateClusterVersionResponse()
@@ -3004,7 +3110,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateEKSCluster", params)
+            headers = request.headers
+            body = self.call("UpdateEKSCluster", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateEKSClusterResponse()
@@ -3032,7 +3139,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateEKSContainerInstance", params)
+            headers = request.headers
+            body = self.call("UpdateEKSContainerInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateEKSContainerInstanceResponse()
@@ -3060,7 +3168,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateImageCache", params)
+            headers = request.headers
+            body = self.call("UpdateImageCache", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateImageCacheResponse()
@@ -3088,7 +3197,8 @@ class TkeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpgradeClusterInstances", params)
+            headers = request.headers
+            body = self.call("UpgradeClusterInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpgradeClusterInstancesResponse()

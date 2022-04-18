@@ -36,7 +36,8 @@ class SslpodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateDomain", params)
+            headers = request.headers
+            body = self.call("CreateDomain", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateDomainResponse()
@@ -64,7 +65,8 @@ class SslpodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteDomain", params)
+            headers = request.headers
+            body = self.call("DeleteDomain", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteDomainResponse()
@@ -92,7 +94,8 @@ class SslpodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDashboard", params)
+            headers = request.headers
+            body = self.call("DescribeDashboard", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDashboardResponse()
@@ -120,7 +123,8 @@ class SslpodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDomainCerts", params)
+            headers = request.headers
+            body = self.call("DescribeDomainCerts", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDomainCertsResponse()
@@ -148,7 +152,8 @@ class SslpodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDomainTags", params)
+            headers = request.headers
+            body = self.call("DescribeDomainTags", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDomainTagsResponse()
@@ -176,7 +181,8 @@ class SslpodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDomains", params)
+            headers = request.headers
+            body = self.call("DescribeDomains", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDomainsResponse()
@@ -204,7 +210,8 @@ class SslpodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeNoticeInfo", params)
+            headers = request.headers
+            body = self.call("DescribeNoticeInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeNoticeInfoResponse()
@@ -232,7 +239,8 @@ class SslpodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyDomainTags", params)
+            headers = request.headers
+            body = self.call("ModifyDomainTags", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDomainTagsResponse()
@@ -260,7 +268,8 @@ class SslpodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RefreshDomain", params)
+            headers = request.headers
+            body = self.call("RefreshDomain", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RefreshDomainResponse()
@@ -288,7 +297,8 @@ class SslpodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ResolveDomain", params)
+            headers = request.headers
+            body = self.call("ResolveDomain", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ResolveDomainResponse()

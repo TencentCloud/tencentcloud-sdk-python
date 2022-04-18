@@ -36,7 +36,8 @@ class ApmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateApmInstance", params)
+            headers = request.headers
+            body = self.call("CreateApmInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateApmInstanceResponse()
@@ -64,7 +65,8 @@ class ApmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeApmAgent", params)
+            headers = request.headers
+            body = self.call("DescribeApmAgent", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeApmAgentResponse()
@@ -92,7 +94,8 @@ class ApmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeApmInstances", params)
+            headers = request.headers
+            body = self.call("DescribeApmInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeApmInstancesResponse()
@@ -120,7 +123,8 @@ class ApmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeMetricRecords", params)
+            headers = request.headers
+            body = self.call("DescribeMetricRecords", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeMetricRecordsResponse()

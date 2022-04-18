@@ -36,7 +36,8 @@ class TswClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAgentShell", params)
+            headers = request.headers
+            body = self.call("DescribeAgentShell", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAgentShellResponse()

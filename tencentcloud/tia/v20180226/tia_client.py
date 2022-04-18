@@ -36,7 +36,8 @@ class TiaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateJob", params)
+            headers = request.headers
+            body = self.call("CreateJob", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateJobResponse()
@@ -64,7 +65,8 @@ class TiaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateModel", params)
+            headers = request.headers
+            body = self.call("CreateModel", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateModelResponse()
@@ -92,7 +94,8 @@ class TiaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteJob", params)
+            headers = request.headers
+            body = self.call("DeleteJob", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteJobResponse()
@@ -120,7 +123,8 @@ class TiaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteModel", params)
+            headers = request.headers
+            body = self.call("DeleteModel", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteModelResponse()
@@ -148,7 +152,8 @@ class TiaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeJob", params)
+            headers = request.headers
+            body = self.call("DescribeJob", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeJobResponse()
@@ -176,7 +181,8 @@ class TiaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeModel", params)
+            headers = request.headers
+            body = self.call("DescribeModel", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeModelResponse()
@@ -204,7 +210,8 @@ class TiaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("InstallAgent", params)
+            headers = request.headers
+            body = self.call("InstallAgent", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.InstallAgentResponse()
@@ -232,7 +239,8 @@ class TiaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ListJobs", params)
+            headers = request.headers
+            body = self.call("ListJobs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListJobsResponse()
@@ -260,7 +268,8 @@ class TiaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ListModels", params)
+            headers = request.headers
+            body = self.call("ListModels", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListModelsResponse()
@@ -288,7 +297,8 @@ class TiaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryLogs", params)
+            headers = request.headers
+            body = self.call("QueryLogs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryLogsResponse()

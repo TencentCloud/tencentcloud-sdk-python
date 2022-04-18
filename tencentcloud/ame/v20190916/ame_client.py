@@ -36,7 +36,8 @@ class AmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("BatchDescribeKTVMusicDetails", params)
+            headers = request.headers
+            body = self.call("BatchDescribeKTVMusicDetails", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.BatchDescribeKTVMusicDetailsResponse()
@@ -64,7 +65,8 @@ class AmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateKTVRobot", params)
+            headers = request.headers
+            body = self.call("CreateKTVRobot", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateKTVRobotResponse()
@@ -92,7 +94,8 @@ class AmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAuthInfo", params)
+            headers = request.headers
+            body = self.call("DescribeAuthInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAuthInfoResponse()
@@ -120,7 +123,8 @@ class AmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCloudMusic", params)
+            headers = request.headers
+            body = self.call("DescribeCloudMusic", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCloudMusicResponse()
@@ -148,7 +152,8 @@ class AmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCloudMusicPurchased", params)
+            headers = request.headers
+            body = self.call("DescribeCloudMusicPurchased", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCloudMusicPurchasedResponse()
@@ -176,7 +181,8 @@ class AmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeItemById", params)
+            headers = request.headers
+            body = self.call("DescribeItemById", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeItemByIdResponse()
@@ -204,7 +210,8 @@ class AmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeItems", params)
+            headers = request.headers
+            body = self.call("DescribeItems", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeItemsResponse()
@@ -232,7 +239,8 @@ class AmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeKTVMusicDetail", params)
+            headers = request.headers
+            body = self.call("DescribeKTVMusicDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeKTVMusicDetailResponse()
@@ -260,7 +268,8 @@ class AmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeKTVMusicTags", params)
+            headers = request.headers
+            body = self.call("DescribeKTVMusicTags", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeKTVMusicTagsResponse()
@@ -288,7 +297,8 @@ class AmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeKTVPlaylistDetail", params)
+            headers = request.headers
+            body = self.call("DescribeKTVPlaylistDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeKTVPlaylistDetailResponse()
@@ -316,7 +326,8 @@ class AmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeKTVPlaylists", params)
+            headers = request.headers
+            body = self.call("DescribeKTVPlaylists", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeKTVPlaylistsResponse()
@@ -344,7 +355,8 @@ class AmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeKTVRobots", params)
+            headers = request.headers
+            body = self.call("DescribeKTVRobots", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeKTVRobotsResponse()
@@ -372,7 +384,8 @@ class AmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeKTVSingerCategories", params)
+            headers = request.headers
+            body = self.call("DescribeKTVSingerCategories", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeKTVSingerCategoriesResponse()
@@ -402,7 +415,8 @@ class AmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeKTVSingerMusics", params)
+            headers = request.headers
+            body = self.call("DescribeKTVSingerMusics", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeKTVSingerMusicsResponse()
@@ -430,7 +444,8 @@ class AmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeKTVSingers", params)
+            headers = request.headers
+            body = self.call("DescribeKTVSingers", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeKTVSingersResponse()
@@ -458,7 +473,8 @@ class AmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeKTVSuggestions", params)
+            headers = request.headers
+            body = self.call("DescribeKTVSuggestions", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeKTVSuggestionsResponse()
@@ -486,7 +502,8 @@ class AmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeKTVTopList", params)
+            headers = request.headers
+            body = self.call("DescribeKTVTopList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeKTVTopListResponse()
@@ -514,7 +531,8 @@ class AmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeLyric", params)
+            headers = request.headers
+            body = self.call("DescribeLyric", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLyricResponse()
@@ -542,7 +560,8 @@ class AmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeMusic", params)
+            headers = request.headers
+            body = self.call("DescribeMusic", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeMusicResponse()
@@ -570,7 +589,8 @@ class AmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeMusicSaleStatus", params)
+            headers = request.headers
+            body = self.call("DescribeMusicSaleStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeMusicSaleStatusResponse()
@@ -598,7 +618,8 @@ class AmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePackageItems", params)
+            headers = request.headers
+            body = self.call("DescribePackageItems", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePackageItemsResponse()
@@ -626,7 +647,8 @@ class AmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePackages", params)
+            headers = request.headers
+            body = self.call("DescribePackages", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePackagesResponse()
@@ -654,7 +676,8 @@ class AmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePkgOfflineMusic", params)
+            headers = request.headers
+            body = self.call("DescribePkgOfflineMusic", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePkgOfflineMusicResponse()
@@ -682,7 +705,8 @@ class AmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeStations", params)
+            headers = request.headers
+            body = self.call("DescribeStations", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeStationsResponse()
@@ -710,7 +734,8 @@ class AmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DestroyKTVRobot", params)
+            headers = request.headers
+            body = self.call("DestroyKTVRobot", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DestroyKTVRobotResponse()
@@ -738,7 +763,8 @@ class AmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyMusicOnShelves", params)
+            headers = request.headers
+            body = self.call("ModifyMusicOnShelves", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyMusicOnShelvesResponse()
@@ -766,7 +792,8 @@ class AmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("PutMusicOnTheShelves", params)
+            headers = request.headers
+            body = self.call("PutMusicOnTheShelves", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.PutMusicOnTheShelvesResponse()
@@ -794,7 +821,8 @@ class AmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ReportData", params)
+            headers = request.headers
+            body = self.call("ReportData", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ReportDataResponse()
@@ -822,7 +850,8 @@ class AmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SearchKTVMusics", params)
+            headers = request.headers
+            body = self.call("SearchKTVMusics", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SearchKTVMusicsResponse()
@@ -850,7 +879,8 @@ class AmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SyncKTVRobotCommand", params)
+            headers = request.headers
+            body = self.call("SyncKTVRobotCommand", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SyncKTVRobotCommandResponse()
@@ -878,7 +908,8 @@ class AmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("TakeMusicOffShelves", params)
+            headers = request.headers
+            body = self.call("TakeMusicOffShelves", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.TakeMusicOffShelvesResponse()

@@ -36,7 +36,8 @@ class EisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetRuntimeMC", params)
+            headers = request.headers
+            body = self.call("GetRuntimeMC", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetRuntimeMCResponse()
@@ -64,7 +65,8 @@ class EisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetRuntimeResourceMonitorMetricMC", params)
+            headers = request.headers
+            body = self.call("GetRuntimeResourceMonitorMetricMC", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetRuntimeResourceMonitorMetricMCResponse()
@@ -92,7 +94,8 @@ class EisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ListDeployableRuntimesMC", params)
+            headers = request.headers
+            body = self.call("ListDeployableRuntimesMC", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListDeployableRuntimesMCResponse()
@@ -120,7 +123,8 @@ class EisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ListRuntimeDeployedInstancesMC", params)
+            headers = request.headers
+            body = self.call("ListRuntimeDeployedInstancesMC", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListRuntimeDeployedInstancesMCResponse()
@@ -148,7 +152,8 @@ class EisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ListRuntimesMC", params)
+            headers = request.headers
+            body = self.call("ListRuntimesMC", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListRuntimesMCResponse()

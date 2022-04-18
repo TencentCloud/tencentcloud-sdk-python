@@ -36,7 +36,8 @@ class CiiClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AddSubStructureTasks", params)
+            headers = request.headers
+            body = self.call("AddSubStructureTasks", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AddSubStructureTasksResponse()
@@ -64,7 +65,8 @@ class CiiClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateAutoClassifyStructureTask", params)
+            headers = request.headers
+            body = self.call("CreateAutoClassifyStructureTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateAutoClassifyStructureTaskResponse()
@@ -92,7 +94,8 @@ class CiiClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateStructureTask", params)
+            headers = request.headers
+            body = self.call("CreateStructureTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateStructureTaskResponse()
@@ -120,7 +123,8 @@ class CiiClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateUnderwriteTaskById", params)
+            headers = request.headers
+            body = self.call("CreateUnderwriteTaskById", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateUnderwriteTaskByIdResponse()
@@ -148,7 +152,8 @@ class CiiClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeMachineUnderwrite", params)
+            headers = request.headers
+            body = self.call("DescribeMachineUnderwrite", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeMachineUnderwriteResponse()
@@ -177,7 +182,8 @@ class CiiClient(AbstractClient):
         try:
             params = request._serialize()
             options = {'IsMultipart': True, 'BinaryParams': [u'File']}
-            body = self.call("DescribeQualityScore", params, options=options)
+            headers = request.headers
+            body = self.call("DescribeQualityScore", params, options=options, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeQualityScoreResponse()
@@ -205,7 +211,8 @@ class CiiClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeReportClassify", params)
+            headers = request.headers
+            body = self.call("DescribeReportClassify", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeReportClassifyResponse()
@@ -233,7 +240,8 @@ class CiiClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeStructCompareData", params)
+            headers = request.headers
+            body = self.call("DescribeStructCompareData", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeStructCompareDataResponse()
@@ -261,7 +269,8 @@ class CiiClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeStructureDifference", params)
+            headers = request.headers
+            body = self.call("DescribeStructureDifference", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeStructureDifferenceResponse()
@@ -289,7 +298,8 @@ class CiiClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeStructureResult", params)
+            headers = request.headers
+            body = self.call("DescribeStructureResult", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeStructureResultResponse()
@@ -317,7 +327,8 @@ class CiiClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeStructureTaskResult", params)
+            headers = request.headers
+            body = self.call("DescribeStructureTaskResult", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeStructureTaskResultResponse()
@@ -345,7 +356,8 @@ class CiiClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeUnderwriteTask", params)
+            headers = request.headers
+            body = self.call("DescribeUnderwriteTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeUnderwriteTaskResponse()
@@ -374,7 +386,8 @@ class CiiClient(AbstractClient):
         try:
             params = request._serialize()
             options = {'IsMultipart': True, 'BinaryParams': [u'File']}
-            body = self.call("UploadMedicalFile", params, options=options)
+            headers = request.headers
+            body = self.call("UploadMedicalFile", params, options=options, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UploadMedicalFileResponse()

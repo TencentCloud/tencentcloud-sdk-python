@@ -38,7 +38,8 @@ class AfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAntiFraud", params)
+            headers = request.headers
+            body = self.call("DescribeAntiFraud", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAntiFraudResponse()
@@ -66,7 +67,8 @@ class AfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetAntiFraud", params)
+            headers = request.headers
+            body = self.call("GetAntiFraud", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetAntiFraudResponse()
@@ -96,7 +98,8 @@ class AfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryAntiFraud", params)
+            headers = request.headers
+            body = self.call("QueryAntiFraud", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryAntiFraudResponse()

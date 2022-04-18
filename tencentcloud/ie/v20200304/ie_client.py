@@ -36,7 +36,8 @@ class IeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateEditingTask", params)
+            headers = request.headers
+            body = self.call("CreateEditingTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateEditingTaskResponse()
@@ -64,7 +65,8 @@ class IeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateMediaProcessTask", params)
+            headers = request.headers
+            body = self.call("CreateMediaProcessTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateMediaProcessTaskResponse()
@@ -92,7 +94,8 @@ class IeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateMediaQualityRestorationTask", params)
+            headers = request.headers
+            body = self.call("CreateMediaQualityRestorationTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateMediaQualityRestorationTaskResponse()
@@ -120,7 +123,8 @@ class IeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateQualityControlTask", params)
+            headers = request.headers
+            body = self.call("CreateQualityControlTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateQualityControlTaskResponse()
@@ -148,7 +152,8 @@ class IeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeEditingTaskResult", params)
+            headers = request.headers
+            body = self.call("DescribeEditingTaskResult", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeEditingTaskResultResponse()
@@ -176,7 +181,8 @@ class IeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeMediaProcessTaskResult", params)
+            headers = request.headers
+            body = self.call("DescribeMediaProcessTaskResult", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeMediaProcessTaskResultResponse()
@@ -204,7 +210,8 @@ class IeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeMediaQualityRestorationTaskRusult", params)
+            headers = request.headers
+            body = self.call("DescribeMediaQualityRestorationTaskRusult", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeMediaQualityRestorationTaskRusultResponse()
@@ -232,7 +239,8 @@ class IeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeQualityControlTaskResult", params)
+            headers = request.headers
+            body = self.call("DescribeQualityControlTaskResult", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeQualityControlTaskResultResponse()
@@ -260,7 +268,8 @@ class IeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("StopMediaProcessTask", params)
+            headers = request.headers
+            body = self.call("StopMediaProcessTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StopMediaProcessTaskResponse()
@@ -288,7 +297,8 @@ class IeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("StopMediaQualityRestorationTask", params)
+            headers = request.headers
+            body = self.call("StopMediaQualityRestorationTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StopMediaQualityRestorationTaskResponse()

@@ -36,7 +36,8 @@ class MemcachedClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInstances", params)
+            headers = request.headers
+            body = self.call("DescribeInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInstancesResponse()

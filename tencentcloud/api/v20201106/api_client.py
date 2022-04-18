@@ -36,7 +36,8 @@ class ApiClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeProducts", params)
+            headers = request.headers
+            body = self.call("DescribeProducts", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeProductsResponse()
@@ -64,7 +65,8 @@ class ApiClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRegions", params)
+            headers = request.headers
+            body = self.call("DescribeRegions", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRegionsResponse()
@@ -92,7 +94,8 @@ class ApiClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeZones", params)
+            headers = request.headers
+            body = self.call("DescribeZones", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeZonesResponse()

@@ -36,7 +36,8 @@ class HcmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("Evaluation", params)
+            headers = request.headers
+            body = self.call("Evaluation", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.EvaluationResponse()

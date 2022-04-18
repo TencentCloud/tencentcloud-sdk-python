@@ -36,7 +36,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AssociateSecurityGroups", params)
+            headers = request.headers
+            body = self.call("AssociateSecurityGroups", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AssociateSecurityGroupsResponse()
@@ -64,7 +65,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CloneDB", params)
+            headers = request.headers
+            body = self.call("CloneDB", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CloneDBResponse()
@@ -92,7 +94,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CompleteExpansion", params)
+            headers = request.headers
+            body = self.call("CompleteExpansion", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CompleteExpansionResponse()
@@ -120,7 +123,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CompleteMigration", params)
+            headers = request.headers
+            body = self.call("CompleteMigration", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CompleteMigrationResponse()
@@ -148,7 +152,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateAccount", params)
+            headers = request.headers
+            body = self.call("CreateAccount", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateAccountResponse()
@@ -176,7 +181,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateBackup", params)
+            headers = request.headers
+            body = self.call("CreateBackup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateBackupResponse()
@@ -204,7 +210,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateBackupMigration", params)
+            headers = request.headers
+            body = self.call("CreateBackupMigration", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateBackupMigrationResponse()
@@ -232,7 +239,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateBasicDBInstances", params)
+            headers = request.headers
+            body = self.call("CreateBasicDBInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateBasicDBInstancesResponse()
@@ -260,7 +268,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateDB", params)
+            headers = request.headers
+            body = self.call("CreateDB", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateDBResponse()
@@ -288,7 +297,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateDBInstances", params)
+            headers = request.headers
+            body = self.call("CreateDBInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateDBInstancesResponse()
@@ -316,7 +326,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateIncrementalMigration", params)
+            headers = request.headers
+            body = self.call("CreateIncrementalMigration", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateIncrementalMigrationResponse()
@@ -344,7 +355,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateMigration", params)
+            headers = request.headers
+            body = self.call("CreateMigration", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateMigrationResponse()
@@ -372,7 +384,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreatePublishSubscribe", params)
+            headers = request.headers
+            body = self.call("CreatePublishSubscribe", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreatePublishSubscribeResponse()
@@ -400,7 +413,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateReadOnlyDBInstances", params)
+            headers = request.headers
+            body = self.call("CreateReadOnlyDBInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateReadOnlyDBInstancesResponse()
@@ -428,7 +442,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteAccount", params)
+            headers = request.headers
+            body = self.call("DeleteAccount", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteAccountResponse()
@@ -456,7 +471,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteBackupMigration", params)
+            headers = request.headers
+            body = self.call("DeleteBackupMigration", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteBackupMigrationResponse()
@@ -484,7 +500,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteDB", params)
+            headers = request.headers
+            body = self.call("DeleteDB", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteDBResponse()
@@ -512,7 +529,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteDBInstance", params)
+            headers = request.headers
+            body = self.call("DeleteDBInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteDBInstanceResponse()
@@ -540,7 +558,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteIncrementalMigration", params)
+            headers = request.headers
+            body = self.call("DeleteIncrementalMigration", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteIncrementalMigrationResponse()
@@ -568,7 +587,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteMigration", params)
+            headers = request.headers
+            body = self.call("DeleteMigration", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteMigrationResponse()
@@ -596,7 +616,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeletePublishSubscribe", params)
+            headers = request.headers
+            body = self.call("DeletePublishSubscribe", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeletePublishSubscribeResponse()
@@ -624,7 +645,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAccounts", params)
+            headers = request.headers
+            body = self.call("DescribeAccounts", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAccountsResponse()
@@ -652,7 +674,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBackupByFlowId", params)
+            headers = request.headers
+            body = self.call("DescribeBackupByFlowId", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBackupByFlowIdResponse()
@@ -680,7 +703,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBackupCommand", params)
+            headers = request.headers
+            body = self.call("DescribeBackupCommand", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBackupCommandResponse()
@@ -708,7 +732,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBackupFiles", params)
+            headers = request.headers
+            body = self.call("DescribeBackupFiles", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBackupFilesResponse()
@@ -736,7 +761,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBackupMigration", params)
+            headers = request.headers
+            body = self.call("DescribeBackupMigration", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBackupMigrationResponse()
@@ -764,7 +790,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBackupUploadSize", params)
+            headers = request.headers
+            body = self.call("DescribeBackupUploadSize", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBackupUploadSizeResponse()
@@ -792,7 +819,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBackups", params)
+            headers = request.headers
+            body = self.call("DescribeBackups", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBackupsResponse()
@@ -820,7 +848,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCrossRegionZone", params)
+            headers = request.headers
+            body = self.call("DescribeCrossRegionZone", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCrossRegionZoneResponse()
@@ -848,7 +877,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDBCharsets", params)
+            headers = request.headers
+            body = self.call("DescribeDBCharsets", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDBCharsetsResponse()
@@ -876,7 +906,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDBInstances", params)
+            headers = request.headers
+            body = self.call("DescribeDBInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDBInstancesResponse()
@@ -904,7 +935,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDBSecurityGroups", params)
+            headers = request.headers
+            body = self.call("DescribeDBSecurityGroups", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDBSecurityGroupsResponse()
@@ -932,7 +964,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDBs", params)
+            headers = request.headers
+            body = self.call("DescribeDBs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDBsResponse()
@@ -960,7 +993,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDBsNormal", params)
+            headers = request.headers
+            body = self.call("DescribeDBsNormal", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDBsNormalResponse()
@@ -988,7 +1022,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeFlowStatus", params)
+            headers = request.headers
+            body = self.call("DescribeFlowStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeFlowStatusResponse()
@@ -1016,7 +1051,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeIncrementalMigration", params)
+            headers = request.headers
+            body = self.call("DescribeIncrementalMigration", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeIncrementalMigrationResponse()
@@ -1044,7 +1080,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInstanceParamRecords", params)
+            headers = request.headers
+            body = self.call("DescribeInstanceParamRecords", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInstanceParamRecordsResponse()
@@ -1072,7 +1109,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInstanceParams", params)
+            headers = request.headers
+            body = self.call("DescribeInstanceParams", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInstanceParamsResponse()
@@ -1100,7 +1138,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeMaintenanceSpan", params)
+            headers = request.headers
+            body = self.call("DescribeMaintenanceSpan", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeMaintenanceSpanResponse()
@@ -1128,7 +1167,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeMigrationDatabases", params)
+            headers = request.headers
+            body = self.call("DescribeMigrationDatabases", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeMigrationDatabasesResponse()
@@ -1156,7 +1196,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeMigrationDetail", params)
+            headers = request.headers
+            body = self.call("DescribeMigrationDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeMigrationDetailResponse()
@@ -1184,7 +1225,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeMigrations", params)
+            headers = request.headers
+            body = self.call("DescribeMigrations", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeMigrationsResponse()
@@ -1212,7 +1254,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeOrders", params)
+            headers = request.headers
+            body = self.call("DescribeOrders", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeOrdersResponse()
@@ -1240,7 +1283,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeProductConfig", params)
+            headers = request.headers
+            body = self.call("DescribeProductConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeProductConfigResponse()
@@ -1268,7 +1312,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeProjectSecurityGroups", params)
+            headers = request.headers
+            body = self.call("DescribeProjectSecurityGroups", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeProjectSecurityGroupsResponse()
@@ -1296,7 +1341,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePublishSubscribe", params)
+            headers = request.headers
+            body = self.call("DescribePublishSubscribe", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePublishSubscribeResponse()
@@ -1324,7 +1370,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeReadOnlyGroupByReadOnlyInstance", params)
+            headers = request.headers
+            body = self.call("DescribeReadOnlyGroupByReadOnlyInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeReadOnlyGroupByReadOnlyInstanceResponse()
@@ -1352,7 +1399,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeReadOnlyGroupDetails", params)
+            headers = request.headers
+            body = self.call("DescribeReadOnlyGroupDetails", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeReadOnlyGroupDetailsResponse()
@@ -1380,7 +1428,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeReadOnlyGroupList", params)
+            headers = request.headers
+            body = self.call("DescribeReadOnlyGroupList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeReadOnlyGroupListResponse()
@@ -1408,7 +1457,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRegions", params)
+            headers = request.headers
+            body = self.call("DescribeRegions", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRegionsResponse()
@@ -1436,7 +1486,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRollbackTime", params)
+            headers = request.headers
+            body = self.call("DescribeRollbackTime", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRollbackTimeResponse()
@@ -1464,7 +1515,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSlowlogs", params)
+            headers = request.headers
+            body = self.call("DescribeSlowlogs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSlowlogsResponse()
@@ -1492,7 +1544,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeUploadBackupInfo", params)
+            headers = request.headers
+            body = self.call("DescribeUploadBackupInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeUploadBackupInfoResponse()
@@ -1520,7 +1573,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeUploadIncrementalInfo", params)
+            headers = request.headers
+            body = self.call("DescribeUploadIncrementalInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeUploadIncrementalInfoResponse()
@@ -1548,7 +1602,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeZones", params)
+            headers = request.headers
+            body = self.call("DescribeZones", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeZonesResponse()
@@ -1576,7 +1631,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DisassociateSecurityGroups", params)
+            headers = request.headers
+            body = self.call("DisassociateSecurityGroups", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DisassociateSecurityGroupsResponse()
@@ -1604,7 +1660,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("InquiryPriceCreateDBInstances", params)
+            headers = request.headers
+            body = self.call("InquiryPriceCreateDBInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.InquiryPriceCreateDBInstancesResponse()
@@ -1632,7 +1689,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("InquiryPriceRenewDBInstance", params)
+            headers = request.headers
+            body = self.call("InquiryPriceRenewDBInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.InquiryPriceRenewDBInstanceResponse()
@@ -1660,7 +1718,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("InquiryPriceUpgradeDBInstance", params)
+            headers = request.headers
+            body = self.call("InquiryPriceUpgradeDBInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.InquiryPriceUpgradeDBInstanceResponse()
@@ -1688,7 +1747,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyAccountPrivilege", params)
+            headers = request.headers
+            body = self.call("ModifyAccountPrivilege", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAccountPrivilegeResponse()
@@ -1716,7 +1776,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyAccountRemark", params)
+            headers = request.headers
+            body = self.call("ModifyAccountRemark", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAccountRemarkResponse()
@@ -1744,7 +1805,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyBackupMigration", params)
+            headers = request.headers
+            body = self.call("ModifyBackupMigration", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyBackupMigrationResponse()
@@ -1772,7 +1834,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyBackupName", params)
+            headers = request.headers
+            body = self.call("ModifyBackupName", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyBackupNameResponse()
@@ -1800,7 +1863,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyBackupStrategy", params)
+            headers = request.headers
+            body = self.call("ModifyBackupStrategy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyBackupStrategyResponse()
@@ -1828,7 +1892,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyDBInstanceName", params)
+            headers = request.headers
+            body = self.call("ModifyDBInstanceName", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDBInstanceNameResponse()
@@ -1856,7 +1921,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyDBInstanceNetwork", params)
+            headers = request.headers
+            body = self.call("ModifyDBInstanceNetwork", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDBInstanceNetworkResponse()
@@ -1884,7 +1950,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyDBInstanceProject", params)
+            headers = request.headers
+            body = self.call("ModifyDBInstanceProject", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDBInstanceProjectResponse()
@@ -1912,7 +1979,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyDBInstanceRenewFlag", params)
+            headers = request.headers
+            body = self.call("ModifyDBInstanceRenewFlag", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDBInstanceRenewFlagResponse()
@@ -1940,7 +2008,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyDBInstanceSecurityGroups", params)
+            headers = request.headers
+            body = self.call("ModifyDBInstanceSecurityGroups", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDBInstanceSecurityGroupsResponse()
@@ -1968,7 +2037,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyDBName", params)
+            headers = request.headers
+            body = self.call("ModifyDBName", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDBNameResponse()
@@ -1996,7 +2066,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyDBRemark", params)
+            headers = request.headers
+            body = self.call("ModifyDBRemark", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDBRemarkResponse()
@@ -2024,7 +2095,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyDatabaseCDC", params)
+            headers = request.headers
+            body = self.call("ModifyDatabaseCDC", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDatabaseCDCResponse()
@@ -2052,7 +2124,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyDatabaseCT", params)
+            headers = request.headers
+            body = self.call("ModifyDatabaseCT", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDatabaseCTResponse()
@@ -2080,7 +2153,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyDatabaseMdf", params)
+            headers = request.headers
+            body = self.call("ModifyDatabaseMdf", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDatabaseMdfResponse()
@@ -2108,7 +2182,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyIncrementalMigration", params)
+            headers = request.headers
+            body = self.call("ModifyIncrementalMigration", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyIncrementalMigrationResponse()
@@ -2138,7 +2213,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyInstanceParam", params)
+            headers = request.headers
+            body = self.call("ModifyInstanceParam", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyInstanceParamResponse()
@@ -2166,7 +2242,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyMaintenanceSpan", params)
+            headers = request.headers
+            body = self.call("ModifyMaintenanceSpan", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyMaintenanceSpanResponse()
@@ -2194,7 +2271,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyMigration", params)
+            headers = request.headers
+            body = self.call("ModifyMigration", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyMigrationResponse()
@@ -2222,7 +2300,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyPublishSubscribeName", params)
+            headers = request.headers
+            body = self.call("ModifyPublishSubscribeName", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyPublishSubscribeNameResponse()
@@ -2250,7 +2329,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyReadOnlyGroupDetails", params)
+            headers = request.headers
+            body = self.call("ModifyReadOnlyGroupDetails", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyReadOnlyGroupDetailsResponse()
@@ -2278,7 +2358,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryMigrationCheckProcess", params)
+            headers = request.headers
+            body = self.call("QueryMigrationCheckProcess", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryMigrationCheckProcessResponse()
@@ -2306,7 +2387,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RecycleDBInstance", params)
+            headers = request.headers
+            body = self.call("RecycleDBInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RecycleDBInstanceResponse()
@@ -2334,7 +2416,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RecycleReadOnlyGroup", params)
+            headers = request.headers
+            body = self.call("RecycleReadOnlyGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RecycleReadOnlyGroupResponse()
@@ -2362,7 +2445,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RemoveBackups", params)
+            headers = request.headers
+            body = self.call("RemoveBackups", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RemoveBackupsResponse()
@@ -2391,7 +2475,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RenewDBInstance", params)
+            headers = request.headers
+            body = self.call("RenewDBInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RenewDBInstanceResponse()
@@ -2419,7 +2504,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RenewPostpaidDBInstance", params)
+            headers = request.headers
+            body = self.call("RenewPostpaidDBInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RenewPostpaidDBInstanceResponse()
@@ -2447,7 +2533,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ResetAccountPassword", params)
+            headers = request.headers
+            body = self.call("ResetAccountPassword", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ResetAccountPasswordResponse()
@@ -2475,7 +2562,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RestartDBInstance", params)
+            headers = request.headers
+            body = self.call("RestartDBInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RestartDBInstanceResponse()
@@ -2503,7 +2591,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RestoreInstance", params)
+            headers = request.headers
+            body = self.call("RestoreInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RestoreInstanceResponse()
@@ -2531,7 +2620,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RollbackInstance", params)
+            headers = request.headers
+            body = self.call("RollbackInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RollbackInstanceResponse()
@@ -2559,7 +2649,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RunMigration", params)
+            headers = request.headers
+            body = self.call("RunMigration", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RunMigrationResponse()
@@ -2587,7 +2678,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("StartBackupMigration", params)
+            headers = request.headers
+            body = self.call("StartBackupMigration", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StartBackupMigrationResponse()
@@ -2615,7 +2707,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("StartIncrementalMigration", params)
+            headers = request.headers
+            body = self.call("StartIncrementalMigration", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StartIncrementalMigrationResponse()
@@ -2643,7 +2736,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("StartMigrationCheck", params)
+            headers = request.headers
+            body = self.call("StartMigrationCheck", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StartMigrationCheckResponse()
@@ -2671,7 +2765,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("StopMigration", params)
+            headers = request.headers
+            body = self.call("StopMigration", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StopMigrationResponse()
@@ -2699,7 +2794,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("TerminateDBInstance", params)
+            headers = request.headers
+            body = self.call("TerminateDBInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.TerminateDBInstanceResponse()
@@ -2727,7 +2823,8 @@ class SqlserverClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpgradeDBInstance", params)
+            headers = request.headers
+            body = self.call("UpgradeDBInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpgradeDBInstanceResponse()

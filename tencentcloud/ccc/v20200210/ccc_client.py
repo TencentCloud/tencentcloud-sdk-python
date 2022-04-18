@@ -36,7 +36,8 @@ class CccClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("BindStaffSkillGroupList", params)
+            headers = request.headers
+            body = self.call("BindStaffSkillGroupList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.BindStaffSkillGroupListResponse()
@@ -64,7 +65,8 @@ class CccClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateAutoCalloutTask", params)
+            headers = request.headers
+            body = self.call("CreateAutoCalloutTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateAutoCalloutTaskResponse()
@@ -92,7 +94,8 @@ class CccClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateCallOutSession", params)
+            headers = request.headers
+            body = self.call("CreateCallOutSession", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateCallOutSessionResponse()
@@ -120,7 +123,8 @@ class CccClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateSDKLoginToken", params)
+            headers = request.headers
+            body = self.call("CreateSDKLoginToken", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateSDKLoginTokenResponse()
@@ -148,7 +152,8 @@ class CccClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateStaff", params)
+            headers = request.headers
+            body = self.call("CreateStaff", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateStaffResponse()
@@ -176,7 +181,8 @@ class CccClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateUserSig", params)
+            headers = request.headers
+            body = self.call("CreateUserSig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateUserSigResponse()
@@ -204,7 +210,8 @@ class CccClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteStaff", params)
+            headers = request.headers
+            body = self.call("DeleteStaff", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteStaffResponse()
@@ -232,7 +239,8 @@ class CccClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAutoCalloutTask", params)
+            headers = request.headers
+            body = self.call("DescribeAutoCalloutTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAutoCalloutTaskResponse()
@@ -260,7 +268,8 @@ class CccClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAutoCalloutTasks", params)
+            headers = request.headers
+            body = self.call("DescribeAutoCalloutTasks", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAutoCalloutTasksResponse()
@@ -288,7 +297,8 @@ class CccClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCCCBuyInfoList", params)
+            headers = request.headers
+            body = self.call("DescribeCCCBuyInfoList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCCCBuyInfoListResponse()
@@ -316,7 +326,8 @@ class CccClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCallInMetrics", params)
+            headers = request.headers
+            body = self.call("DescribeCallInMetrics", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCallInMetricsResponse()
@@ -344,7 +355,8 @@ class CccClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeChatMessages", params)
+            headers = request.headers
+            body = self.call("DescribeChatMessages", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeChatMessagesResponse()
@@ -372,7 +384,8 @@ class CccClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeIMCdrs", params)
+            headers = request.headers
+            body = self.call("DescribeIMCdrs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeIMCdrsResponse()
@@ -400,7 +413,8 @@ class CccClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePSTNActiveSessionList", params)
+            headers = request.headers
+            body = self.call("DescribePSTNActiveSessionList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePSTNActiveSessionListResponse()
@@ -428,7 +442,8 @@ class CccClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeProtectedTelCdr", params)
+            headers = request.headers
+            body = self.call("DescribeProtectedTelCdr", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeProtectedTelCdrResponse()
@@ -458,7 +473,8 @@ class CccClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSeatUserList", params)
+            headers = request.headers
+            body = self.call("DescribeSeatUserList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSeatUserListResponse()
@@ -486,7 +502,8 @@ class CccClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSkillGroupInfoList", params)
+            headers = request.headers
+            body = self.call("DescribeSkillGroupInfoList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSkillGroupInfoListResponse()
@@ -514,7 +531,8 @@ class CccClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeStaffInfoList", params)
+            headers = request.headers
+            body = self.call("DescribeStaffInfoList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeStaffInfoListResponse()
@@ -542,7 +560,8 @@ class CccClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeStaffStatusMetrics", params)
+            headers = request.headers
+            body = self.call("DescribeStaffStatusMetrics", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeStaffStatusMetricsResponse()
@@ -570,7 +589,8 @@ class CccClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTelCallInfo", params)
+            headers = request.headers
+            body = self.call("DescribeTelCallInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTelCallInfoResponse()
@@ -598,7 +618,8 @@ class CccClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTelCdr", params)
+            headers = request.headers
+            body = self.call("DescribeTelCdr", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTelCdrResponse()
@@ -626,7 +647,8 @@ class CccClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTelSession", params)
+            headers = request.headers
+            body = self.call("DescribeTelSession", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTelSessionResponse()
@@ -654,7 +676,8 @@ class CccClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("StopAutoCalloutTask", params)
+            headers = request.headers
+            body = self.call("StopAutoCalloutTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StopAutoCalloutTaskResponse()
@@ -682,7 +705,8 @@ class CccClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UnbindStaffSkillGroupList", params)
+            headers = request.headers
+            body = self.call("UnbindStaffSkillGroupList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UnbindStaffSkillGroupListResponse()

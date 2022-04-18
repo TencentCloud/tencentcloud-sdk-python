@@ -36,7 +36,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("BindDevices", params)
+            headers = request.headers
+            body = self.call("BindDevices", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.BindDevicesResponse()
@@ -64,7 +65,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("BindProducts", params)
+            headers = request.headers
+            body = self.call("BindProducts", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.BindProductsResponse()
@@ -92,7 +94,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CallDeviceActionAsync", params)
+            headers = request.headers
+            body = self.call("CallDeviceActionAsync", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CallDeviceActionAsyncResponse()
@@ -120,7 +123,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CallDeviceActionSync", params)
+            headers = request.headers
+            body = self.call("CallDeviceActionSync", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CallDeviceActionSyncResponse()
@@ -148,7 +152,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ControlDeviceData", params)
+            headers = request.headers
+            body = self.call("ControlDeviceData", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ControlDeviceDataResponse()
@@ -176,7 +181,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateBatchProduction", params)
+            headers = request.headers
+            body = self.call("CreateBatchProduction", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateBatchProductionResponse()
@@ -204,7 +210,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateDevice", params)
+            headers = request.headers
+            body = self.call("CreateDevice", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateDeviceResponse()
@@ -232,7 +239,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateFenceBind", params)
+            headers = request.headers
+            body = self.call("CreateFenceBind", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateFenceBindResponse()
@@ -260,7 +268,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateLoRaFrequency", params)
+            headers = request.headers
+            body = self.call("CreateLoRaFrequency", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateLoRaFrequencyResponse()
@@ -288,7 +297,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateLoRaGateway", params)
+            headers = request.headers
+            body = self.call("CreateLoRaGateway", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateLoRaGatewayResponse()
@@ -316,7 +326,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreatePositionFence", params)
+            headers = request.headers
+            body = self.call("CreatePositionFence", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreatePositionFenceResponse()
@@ -344,7 +355,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreatePositionSpace", params)
+            headers = request.headers
+            body = self.call("CreatePositionSpace", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreatePositionSpaceResponse()
@@ -372,7 +384,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateProject", params)
+            headers = request.headers
+            body = self.call("CreateProject", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateProjectResponse()
@@ -400,7 +413,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateStudioProduct", params)
+            headers = request.headers
+            body = self.call("CreateStudioProduct", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateStudioProductResponse()
@@ -428,7 +442,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateTopicPolicy", params)
+            headers = request.headers
+            body = self.call("CreateTopicPolicy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateTopicPolicyResponse()
@@ -456,7 +471,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateTopicRule", params)
+            headers = request.headers
+            body = self.call("CreateTopicRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateTopicRuleResponse()
@@ -484,7 +500,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteDevice", params)
+            headers = request.headers
+            body = self.call("DeleteDevice", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteDeviceResponse()
@@ -512,7 +529,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteDevices", params)
+            headers = request.headers
+            body = self.call("DeleteDevices", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteDevicesResponse()
@@ -540,7 +558,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteFenceBind", params)
+            headers = request.headers
+            body = self.call("DeleteFenceBind", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteFenceBindResponse()
@@ -568,7 +587,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteLoRaFrequency", params)
+            headers = request.headers
+            body = self.call("DeleteLoRaFrequency", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteLoRaFrequencyResponse()
@@ -596,7 +616,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteLoRaGateway", params)
+            headers = request.headers
+            body = self.call("DeleteLoRaGateway", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteLoRaGatewayResponse()
@@ -624,7 +645,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeletePositionFence", params)
+            headers = request.headers
+            body = self.call("DeletePositionFence", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeletePositionFenceResponse()
@@ -652,7 +674,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeletePositionSpace", params)
+            headers = request.headers
+            body = self.call("DeletePositionSpace", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeletePositionSpaceResponse()
@@ -680,7 +703,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteProject", params)
+            headers = request.headers
+            body = self.call("DeleteProject", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteProjectResponse()
@@ -708,7 +732,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteStudioProduct", params)
+            headers = request.headers
+            body = self.call("DeleteStudioProduct", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteStudioProductResponse()
@@ -736,7 +761,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteTopicPolicy", params)
+            headers = request.headers
+            body = self.call("DeleteTopicPolicy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteTopicPolicyResponse()
@@ -764,7 +790,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteTopicRule", params)
+            headers = request.headers
+            body = self.call("DeleteTopicRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteTopicRuleResponse()
@@ -792,7 +819,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBatchProduction", params)
+            headers = request.headers
+            body = self.call("DescribeBatchProduction", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBatchProductionResponse()
@@ -820,7 +848,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBindedProducts", params)
+            headers = request.headers
+            body = self.call("DescribeBindedProducts", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBindedProductsResponse()
@@ -848,7 +877,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDevice", params)
+            headers = request.headers
+            body = self.call("DescribeDevice", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDeviceResponse()
@@ -876,7 +906,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDeviceBindGateway", params)
+            headers = request.headers
+            body = self.call("DescribeDeviceBindGateway", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDeviceBindGatewayResponse()
@@ -904,7 +935,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDeviceData", params)
+            headers = request.headers
+            body = self.call("DescribeDeviceData", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDeviceDataResponse()
@@ -932,7 +964,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDeviceDataHistory", params)
+            headers = request.headers
+            body = self.call("DescribeDeviceDataHistory", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDeviceDataHistoryResponse()
@@ -960,7 +993,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDevicePositionList", params)
+            headers = request.headers
+            body = self.call("DescribeDevicePositionList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDevicePositionListResponse()
@@ -988,7 +1022,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeFenceBindList", params)
+            headers = request.headers
+            body = self.call("DescribeFenceBindList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeFenceBindListResponse()
@@ -1016,7 +1051,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeFenceEventList", params)
+            headers = request.headers
+            body = self.call("DescribeFenceEventList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeFenceEventListResponse()
@@ -1044,7 +1080,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeFirmwareTask", params)
+            headers = request.headers
+            body = self.call("DescribeFirmwareTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeFirmwareTaskResponse()
@@ -1072,7 +1109,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeGatewayBindDevices", params)
+            headers = request.headers
+            body = self.call("DescribeGatewayBindDevices", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeGatewayBindDevicesResponse()
@@ -1100,7 +1138,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeGatewaySubDeviceList", params)
+            headers = request.headers
+            body = self.call("DescribeGatewaySubDeviceList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeGatewaySubDeviceListResponse()
@@ -1128,7 +1167,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeGatewaySubProducts", params)
+            headers = request.headers
+            body = self.call("DescribeGatewaySubProducts", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeGatewaySubProductsResponse()
@@ -1156,7 +1196,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeLoRaFrequency", params)
+            headers = request.headers
+            body = self.call("DescribeLoRaFrequency", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLoRaFrequencyResponse()
@@ -1184,7 +1225,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeModelDefinition", params)
+            headers = request.headers
+            body = self.call("DescribeModelDefinition", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeModelDefinitionResponse()
@@ -1212,7 +1254,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePositionFenceList", params)
+            headers = request.headers
+            body = self.call("DescribePositionFenceList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePositionFenceListResponse()
@@ -1240,7 +1283,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeProject", params)
+            headers = request.headers
+            body = self.call("DescribeProject", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeProjectResponse()
@@ -1268,7 +1312,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSpaceFenceEventList", params)
+            headers = request.headers
+            body = self.call("DescribeSpaceFenceEventList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSpaceFenceEventListResponse()
@@ -1296,7 +1341,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeStudioProduct", params)
+            headers = request.headers
+            body = self.call("DescribeStudioProduct", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeStudioProductResponse()
@@ -1324,7 +1370,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTopicPolicy", params)
+            headers = request.headers
+            body = self.call("DescribeTopicPolicy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTopicPolicyResponse()
@@ -1352,7 +1399,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTopicRule", params)
+            headers = request.headers
+            body = self.call("DescribeTopicRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTopicRuleResponse()
@@ -1380,7 +1428,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DirectBindDeviceInFamily", params)
+            headers = request.headers
+            body = self.call("DirectBindDeviceInFamily", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DirectBindDeviceInFamilyResponse()
@@ -1408,7 +1457,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DisableTopicRule", params)
+            headers = request.headers
+            body = self.call("DisableTopicRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DisableTopicRuleResponse()
@@ -1436,7 +1486,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("EnableTopicRule", params)
+            headers = request.headers
+            body = self.call("EnableTopicRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.EnableTopicRuleResponse()
@@ -1464,7 +1515,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GenSingleDeviceSignatureOfPublic", params)
+            headers = request.headers
+            body = self.call("GenSingleDeviceSignatureOfPublic", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GenSingleDeviceSignatureOfPublicResponse()
@@ -1492,7 +1544,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetBatchProductionsList", params)
+            headers = request.headers
+            body = self.call("GetBatchProductionsList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetBatchProductionsListResponse()
@@ -1520,7 +1573,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetCOSURL", params)
+            headers = request.headers
+            body = self.call("GetCOSURL", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetCOSURLResponse()
@@ -1548,7 +1602,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetDeviceList", params)
+            headers = request.headers
+            body = self.call("GetDeviceList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetDeviceListResponse()
@@ -1576,7 +1631,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetDeviceLocationHistory", params)
+            headers = request.headers
+            body = self.call("GetDeviceLocationHistory", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetDeviceLocationHistoryResponse()
@@ -1604,7 +1660,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetFamilyDeviceUserList", params)
+            headers = request.headers
+            body = self.call("GetFamilyDeviceUserList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetFamilyDeviceUserListResponse()
@@ -1632,7 +1689,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetGatewaySubDeviceList", params)
+            headers = request.headers
+            body = self.call("GetGatewaySubDeviceList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetGatewaySubDeviceListResponse()
@@ -1660,7 +1718,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetLoRaGatewayList", params)
+            headers = request.headers
+            body = self.call("GetLoRaGatewayList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetLoRaGatewayListResponse()
@@ -1688,7 +1747,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetPositionSpaceList", params)
+            headers = request.headers
+            body = self.call("GetPositionSpaceList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetPositionSpaceListResponse()
@@ -1716,7 +1776,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetProjectList", params)
+            headers = request.headers
+            body = self.call("GetProjectList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetProjectListResponse()
@@ -1744,7 +1805,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetStudioProductList", params)
+            headers = request.headers
+            body = self.call("GetStudioProductList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetStudioProductListResponse()
@@ -1772,7 +1834,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetTopicRuleList", params)
+            headers = request.headers
+            body = self.call("GetTopicRuleList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetTopicRuleListResponse()
@@ -1800,7 +1863,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ListEventHistory", params)
+            headers = request.headers
+            body = self.call("ListEventHistory", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListEventHistoryResponse()
@@ -1828,7 +1892,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ListFirmwares", params)
+            headers = request.headers
+            body = self.call("ListFirmwares", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListFirmwaresResponse()
@@ -1856,7 +1921,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ListTopicPolicy", params)
+            headers = request.headers
+            body = self.call("ListTopicPolicy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListTopicPolicyResponse()
@@ -1884,7 +1950,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyFenceBind", params)
+            headers = request.headers
+            body = self.call("ModifyFenceBind", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyFenceBindResponse()
@@ -1912,7 +1979,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyLoRaFrequency", params)
+            headers = request.headers
+            body = self.call("ModifyLoRaFrequency", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyLoRaFrequencyResponse()
@@ -1940,7 +2008,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyLoRaGateway", params)
+            headers = request.headers
+            body = self.call("ModifyLoRaGateway", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyLoRaGatewayResponse()
@@ -1968,7 +2037,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyModelDefinition", params)
+            headers = request.headers
+            body = self.call("ModifyModelDefinition", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyModelDefinitionResponse()
@@ -1996,7 +2066,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyPositionFence", params)
+            headers = request.headers
+            body = self.call("ModifyPositionFence", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyPositionFenceResponse()
@@ -2024,7 +2095,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyPositionSpace", params)
+            headers = request.headers
+            body = self.call("ModifyPositionSpace", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyPositionSpaceResponse()
@@ -2052,7 +2124,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyProject", params)
+            headers = request.headers
+            body = self.call("ModifyProject", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyProjectResponse()
@@ -2080,7 +2153,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifySpaceProperty", params)
+            headers = request.headers
+            body = self.call("ModifySpaceProperty", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifySpacePropertyResponse()
@@ -2108,7 +2182,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyStudioProduct", params)
+            headers = request.headers
+            body = self.call("ModifyStudioProduct", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyStudioProductResponse()
@@ -2136,7 +2211,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyTopicPolicy", params)
+            headers = request.headers
+            body = self.call("ModifyTopicPolicy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyTopicPolicyResponse()
@@ -2164,7 +2240,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyTopicRule", params)
+            headers = request.headers
+            body = self.call("ModifyTopicRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyTopicRuleResponse()
@@ -2192,7 +2269,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("PublishBroadcastMessage", params)
+            headers = request.headers
+            body = self.call("PublishBroadcastMessage", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.PublishBroadcastMessageResponse()
@@ -2220,7 +2298,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("PublishMessage", params)
+            headers = request.headers
+            body = self.call("PublishMessage", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.PublishMessageResponse()
@@ -2248,7 +2327,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("PublishRRPCMessage", params)
+            headers = request.headers
+            body = self.call("PublishRRPCMessage", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.PublishRRPCMessageResponse()
@@ -2276,7 +2356,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ReleaseStudioProduct", params)
+            headers = request.headers
+            body = self.call("ReleaseStudioProduct", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ReleaseStudioProductResponse()
@@ -2304,7 +2385,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SearchPositionSpace", params)
+            headers = request.headers
+            body = self.call("SearchPositionSpace", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SearchPositionSpaceResponse()
@@ -2332,7 +2414,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SearchStudioProduct", params)
+            headers = request.headers
+            body = self.call("SearchStudioProduct", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SearchStudioProductResponse()
@@ -2360,7 +2443,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SearchTopicRule", params)
+            headers = request.headers
+            body = self.call("SearchTopicRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SearchTopicRuleResponse()
@@ -2388,7 +2472,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UnbindDevices", params)
+            headers = request.headers
+            body = self.call("UnbindDevices", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UnbindDevicesResponse()
@@ -2416,7 +2501,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UnbindProducts", params)
+            headers = request.headers
+            body = self.call("UnbindProducts", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UnbindProductsResponse()
@@ -2444,7 +2530,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateDevicesEnableState", params)
+            headers = request.headers
+            body = self.call("UpdateDevicesEnableState", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateDevicesEnableStateResponse()
@@ -2472,7 +2559,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateFirmware", params)
+            headers = request.headers
+            body = self.call("UpdateFirmware", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateFirmwareResponse()
@@ -2500,7 +2588,8 @@ class IotexplorerClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UploadFirmware", params)
+            headers = request.headers
+            body = self.call("UploadFirmware", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UploadFirmwareResponse()

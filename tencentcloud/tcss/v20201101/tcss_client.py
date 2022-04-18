@@ -36,7 +36,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AddAssetImageRegistryRegistryDetail", params)
+            headers = request.headers
+            body = self.call("AddAssetImageRegistryRegistryDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AddAssetImageRegistryRegistryDetailResponse()
@@ -64,7 +65,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AddCompliancePolicyItemToWhitelist", params)
+            headers = request.headers
+            body = self.call("AddCompliancePolicyItemToWhitelist", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AddCompliancePolicyItemToWhitelistResponse()
@@ -92,7 +94,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AddEditAbnormalProcessRule", params)
+            headers = request.headers
+            body = self.call("AddEditAbnormalProcessRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AddEditAbnormalProcessRuleResponse()
@@ -120,7 +123,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AddEditAccessControlRule", params)
+            headers = request.headers
+            body = self.call("AddEditAccessControlRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AddEditAccessControlRuleResponse()
@@ -148,7 +152,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AddEditReverseShellWhiteList", params)
+            headers = request.headers
+            body = self.call("AddEditReverseShellWhiteList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AddEditReverseShellWhiteListResponse()
@@ -176,7 +181,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AddEditRiskSyscallWhiteList", params)
+            headers = request.headers
+            body = self.call("AddEditRiskSyscallWhiteList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AddEditRiskSyscallWhiteListResponse()
@@ -204,7 +210,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AddEditWarningRules", params)
+            headers = request.headers
+            body = self.call("AddEditWarningRules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AddEditWarningRulesResponse()
@@ -232,7 +239,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CheckRepeatAssetImageRegistry", params)
+            headers = request.headers
+            body = self.call("CheckRepeatAssetImageRegistry", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CheckRepeatAssetImageRegistryResponse()
@@ -260,7 +268,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateAssetImageRegistryScanTask", params)
+            headers = request.headers
+            body = self.call("CreateAssetImageRegistryScanTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateAssetImageRegistryScanTaskResponse()
@@ -288,7 +297,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateAssetImageRegistryScanTaskOneKey", params)
+            headers = request.headers
+            body = self.call("CreateAssetImageRegistryScanTaskOneKey", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateAssetImageRegistryScanTaskOneKeyResponse()
@@ -316,7 +326,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateAssetImageScanSetting", params)
+            headers = request.headers
+            body = self.call("CreateAssetImageScanSetting", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateAssetImageScanSettingResponse()
@@ -344,7 +355,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateAssetImageScanTask", params)
+            headers = request.headers
+            body = self.call("CreateAssetImageScanTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateAssetImageScanTaskResponse()
@@ -372,7 +384,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateCheckComponent", params)
+            headers = request.headers
+            body = self.call("CreateCheckComponent", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateCheckComponentResponse()
@@ -400,7 +413,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateClusterCheckTask", params)
+            headers = request.headers
+            body = self.call("CreateClusterCheckTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateClusterCheckTaskResponse()
@@ -428,7 +442,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateComplianceTask", params)
+            headers = request.headers
+            body = self.call("CreateComplianceTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateComplianceTaskResponse()
@@ -456,7 +471,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateExportComplianceStatusListJob", params)
+            headers = request.headers
+            body = self.call("CreateExportComplianceStatusListJob", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateExportComplianceStatusListJobResponse()
@@ -484,7 +500,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateOrModifyPostPayCores", params)
+            headers = request.headers
+            body = self.call("CreateOrModifyPostPayCores", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateOrModifyPostPayCoresResponse()
@@ -512,7 +529,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateRefreshTask", params)
+            headers = request.headers
+            body = self.call("CreateRefreshTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateRefreshTaskResponse()
@@ -540,7 +558,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateVirusScanAgain", params)
+            headers = request.headers
+            body = self.call("CreateVirusScanAgain", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateVirusScanAgainResponse()
@@ -568,7 +587,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateVirusScanTask", params)
+            headers = request.headers
+            body = self.call("CreateVirusScanTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateVirusScanTaskResponse()
@@ -596,7 +616,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteAbnormalProcessRules", params)
+            headers = request.headers
+            body = self.call("DeleteAbnormalProcessRules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteAbnormalProcessRulesResponse()
@@ -624,7 +645,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteAccessControlRules", params)
+            headers = request.headers
+            body = self.call("DeleteAccessControlRules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteAccessControlRulesResponse()
@@ -652,7 +674,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteCompliancePolicyItemFromWhitelist", params)
+            headers = request.headers
+            body = self.call("DeleteCompliancePolicyItemFromWhitelist", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteCompliancePolicyItemFromWhitelistResponse()
@@ -680,7 +703,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteReverseShellWhiteLists", params)
+            headers = request.headers
+            body = self.call("DeleteReverseShellWhiteLists", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteReverseShellWhiteListsResponse()
@@ -708,7 +732,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteRiskSyscallWhiteLists", params)
+            headers = request.headers
+            body = self.call("DeleteRiskSyscallWhiteLists", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteRiskSyscallWhiteListsResponse()
@@ -736,7 +761,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAbnormalProcessDetail", params)
+            headers = request.headers
+            body = self.call("DescribeAbnormalProcessDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAbnormalProcessDetailResponse()
@@ -764,7 +790,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAbnormalProcessEvents", params)
+            headers = request.headers
+            body = self.call("DescribeAbnormalProcessEvents", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAbnormalProcessEventsResponse()
@@ -792,7 +819,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAbnormalProcessEventsExport", params)
+            headers = request.headers
+            body = self.call("DescribeAbnormalProcessEventsExport", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAbnormalProcessEventsExportResponse()
@@ -820,7 +848,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAbnormalProcessRuleDetail", params)
+            headers = request.headers
+            body = self.call("DescribeAbnormalProcessRuleDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAbnormalProcessRuleDetailResponse()
@@ -848,7 +877,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAbnormalProcessRules", params)
+            headers = request.headers
+            body = self.call("DescribeAbnormalProcessRules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAbnormalProcessRulesResponse()
@@ -876,7 +906,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAbnormalProcessRulesExport", params)
+            headers = request.headers
+            body = self.call("DescribeAbnormalProcessRulesExport", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAbnormalProcessRulesExportResponse()
@@ -904,7 +935,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAccessControlDetail", params)
+            headers = request.headers
+            body = self.call("DescribeAccessControlDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAccessControlDetailResponse()
@@ -932,7 +964,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAccessControlEvents", params)
+            headers = request.headers
+            body = self.call("DescribeAccessControlEvents", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAccessControlEventsResponse()
@@ -960,7 +993,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAccessControlEventsExport", params)
+            headers = request.headers
+            body = self.call("DescribeAccessControlEventsExport", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAccessControlEventsExportResponse()
@@ -988,7 +1022,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAccessControlRuleDetail", params)
+            headers = request.headers
+            body = self.call("DescribeAccessControlRuleDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAccessControlRuleDetailResponse()
@@ -1016,7 +1051,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAccessControlRules", params)
+            headers = request.headers
+            body = self.call("DescribeAccessControlRules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAccessControlRulesResponse()
@@ -1044,7 +1080,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAccessControlRulesExport", params)
+            headers = request.headers
+            body = self.call("DescribeAccessControlRulesExport", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAccessControlRulesExportResponse()
@@ -1072,7 +1109,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAffectedClusterCount", params)
+            headers = request.headers
+            body = self.call("DescribeAffectedClusterCount", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAffectedClusterCountResponse()
@@ -1100,7 +1138,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAffectedNodeList", params)
+            headers = request.headers
+            body = self.call("DescribeAffectedNodeList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAffectedNodeListResponse()
@@ -1128,7 +1167,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAffectedWorkloadList", params)
+            headers = request.headers
+            body = self.call("DescribeAffectedWorkloadList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAffectedWorkloadListResponse()
@@ -1156,7 +1196,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAssetAppServiceList", params)
+            headers = request.headers
+            body = self.call("DescribeAssetAppServiceList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAssetAppServiceListResponse()
@@ -1184,7 +1225,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAssetComponentList", params)
+            headers = request.headers
+            body = self.call("DescribeAssetComponentList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAssetComponentListResponse()
@@ -1212,7 +1254,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAssetContainerDetail", params)
+            headers = request.headers
+            body = self.call("DescribeAssetContainerDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAssetContainerDetailResponse()
@@ -1240,7 +1283,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAssetContainerList", params)
+            headers = request.headers
+            body = self.call("DescribeAssetContainerList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAssetContainerListResponse()
@@ -1268,7 +1312,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAssetDBServiceList", params)
+            headers = request.headers
+            body = self.call("DescribeAssetDBServiceList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAssetDBServiceListResponse()
@@ -1296,7 +1341,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAssetHostDetail", params)
+            headers = request.headers
+            body = self.call("DescribeAssetHostDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAssetHostDetailResponse()
@@ -1324,7 +1370,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAssetHostList", params)
+            headers = request.headers
+            body = self.call("DescribeAssetHostList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAssetHostListResponse()
@@ -1352,7 +1399,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAssetImageBindRuleInfo", params)
+            headers = request.headers
+            body = self.call("DescribeAssetImageBindRuleInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAssetImageBindRuleInfoResponse()
@@ -1380,7 +1428,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAssetImageDetail", params)
+            headers = request.headers
+            body = self.call("DescribeAssetImageDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAssetImageDetailResponse()
@@ -1408,7 +1457,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAssetImageHostList", params)
+            headers = request.headers
+            body = self.call("DescribeAssetImageHostList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAssetImageHostListResponse()
@@ -1436,7 +1486,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAssetImageList", params)
+            headers = request.headers
+            body = self.call("DescribeAssetImageList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAssetImageListResponse()
@@ -1464,7 +1515,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAssetImageListExport", params)
+            headers = request.headers
+            body = self.call("DescribeAssetImageListExport", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAssetImageListExportResponse()
@@ -1492,7 +1544,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAssetImageRegistryAssetStatus", params)
+            headers = request.headers
+            body = self.call("DescribeAssetImageRegistryAssetStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAssetImageRegistryAssetStatusResponse()
@@ -1520,7 +1573,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAssetImageRegistryDetail", params)
+            headers = request.headers
+            body = self.call("DescribeAssetImageRegistryDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAssetImageRegistryDetailResponse()
@@ -1548,7 +1602,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAssetImageRegistryList", params)
+            headers = request.headers
+            body = self.call("DescribeAssetImageRegistryList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAssetImageRegistryListResponse()
@@ -1576,7 +1631,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAssetImageRegistryListExport", params)
+            headers = request.headers
+            body = self.call("DescribeAssetImageRegistryListExport", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAssetImageRegistryListExportResponse()
@@ -1604,7 +1660,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAssetImageRegistryRegistryDetail", params)
+            headers = request.headers
+            body = self.call("DescribeAssetImageRegistryRegistryDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAssetImageRegistryRegistryDetailResponse()
@@ -1632,7 +1689,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAssetImageRegistryRegistryList", params)
+            headers = request.headers
+            body = self.call("DescribeAssetImageRegistryRegistryList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAssetImageRegistryRegistryListResponse()
@@ -1660,7 +1718,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAssetImageRegistryRiskInfoList", params)
+            headers = request.headers
+            body = self.call("DescribeAssetImageRegistryRiskInfoList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAssetImageRegistryRiskInfoListResponse()
@@ -1688,7 +1747,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAssetImageRegistryRiskListExport", params)
+            headers = request.headers
+            body = self.call("DescribeAssetImageRegistryRiskListExport", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAssetImageRegistryRiskListExportResponse()
@@ -1716,7 +1776,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAssetImageRegistryScanStatusOneKey", params)
+            headers = request.headers
+            body = self.call("DescribeAssetImageRegistryScanStatusOneKey", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAssetImageRegistryScanStatusOneKeyResponse()
@@ -1744,7 +1805,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAssetImageRegistrySummary", params)
+            headers = request.headers
+            body = self.call("DescribeAssetImageRegistrySummary", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAssetImageRegistrySummaryResponse()
@@ -1772,7 +1834,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAssetImageRegistryVirusList", params)
+            headers = request.headers
+            body = self.call("DescribeAssetImageRegistryVirusList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAssetImageRegistryVirusListResponse()
@@ -1800,7 +1863,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAssetImageRegistryVirusListExport", params)
+            headers = request.headers
+            body = self.call("DescribeAssetImageRegistryVirusListExport", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAssetImageRegistryVirusListExportResponse()
@@ -1828,7 +1892,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAssetImageRegistryVulList", params)
+            headers = request.headers
+            body = self.call("DescribeAssetImageRegistryVulList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAssetImageRegistryVulListResponse()
@@ -1856,7 +1921,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAssetImageRegistryVulListExport", params)
+            headers = request.headers
+            body = self.call("DescribeAssetImageRegistryVulListExport", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAssetImageRegistryVulListExportResponse()
@@ -1884,7 +1950,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAssetImageRiskList", params)
+            headers = request.headers
+            body = self.call("DescribeAssetImageRiskList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAssetImageRiskListResponse()
@@ -1912,7 +1979,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAssetImageRiskListExport", params)
+            headers = request.headers
+            body = self.call("DescribeAssetImageRiskListExport", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAssetImageRiskListExportResponse()
@@ -1940,7 +2008,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAssetImageScanSetting", params)
+            headers = request.headers
+            body = self.call("DescribeAssetImageScanSetting", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAssetImageScanSettingResponse()
@@ -1968,7 +2037,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAssetImageScanStatus", params)
+            headers = request.headers
+            body = self.call("DescribeAssetImageScanStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAssetImageScanStatusResponse()
@@ -1996,7 +2066,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAssetImageScanTask", params)
+            headers = request.headers
+            body = self.call("DescribeAssetImageScanTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAssetImageScanTaskResponse()
@@ -2024,7 +2095,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAssetImageSimpleList", params)
+            headers = request.headers
+            body = self.call("DescribeAssetImageSimpleList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAssetImageSimpleListResponse()
@@ -2052,7 +2124,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAssetImageVirusList", params)
+            headers = request.headers
+            body = self.call("DescribeAssetImageVirusList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAssetImageVirusListResponse()
@@ -2080,7 +2153,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAssetImageVirusListExport", params)
+            headers = request.headers
+            body = self.call("DescribeAssetImageVirusListExport", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAssetImageVirusListExportResponse()
@@ -2108,7 +2182,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAssetImageVulList", params)
+            headers = request.headers
+            body = self.call("DescribeAssetImageVulList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAssetImageVulListResponse()
@@ -2136,7 +2211,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAssetImageVulListExport", params)
+            headers = request.headers
+            body = self.call("DescribeAssetImageVulListExport", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAssetImageVulListExportResponse()
@@ -2164,7 +2240,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAssetPortList", params)
+            headers = request.headers
+            body = self.call("DescribeAssetPortList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAssetPortListResponse()
@@ -2192,7 +2269,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAssetProcessList", params)
+            headers = request.headers
+            body = self.call("DescribeAssetProcessList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAssetProcessListResponse()
@@ -2220,7 +2298,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAssetSummary", params)
+            headers = request.headers
+            body = self.call("DescribeAssetSummary", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAssetSummaryResponse()
@@ -2248,7 +2327,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAssetWebServiceList", params)
+            headers = request.headers
+            body = self.call("DescribeAssetWebServiceList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAssetWebServiceListResponse()
@@ -2276,7 +2356,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCheckItemList", params)
+            headers = request.headers
+            body = self.call("DescribeCheckItemList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCheckItemListResponse()
@@ -2304,7 +2385,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeClusterDetail", params)
+            headers = request.headers
+            body = self.call("DescribeClusterDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeClusterDetailResponse()
@@ -2332,7 +2414,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeClusterSummary", params)
+            headers = request.headers
+            body = self.call("DescribeClusterSummary", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeClusterSummaryResponse()
@@ -2360,7 +2443,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeComplianceAssetDetailInfo", params)
+            headers = request.headers
+            body = self.call("DescribeComplianceAssetDetailInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeComplianceAssetDetailInfoResponse()
@@ -2388,7 +2472,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeComplianceAssetList", params)
+            headers = request.headers
+            body = self.call("DescribeComplianceAssetList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeComplianceAssetListResponse()
@@ -2416,7 +2501,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeComplianceAssetPolicyItemList", params)
+            headers = request.headers
+            body = self.call("DescribeComplianceAssetPolicyItemList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeComplianceAssetPolicyItemListResponse()
@@ -2444,7 +2530,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCompliancePeriodTaskList", params)
+            headers = request.headers
+            body = self.call("DescribeCompliancePeriodTaskList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCompliancePeriodTaskListResponse()
@@ -2472,7 +2559,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCompliancePolicyItemAffectedAssetList", params)
+            headers = request.headers
+            body = self.call("DescribeCompliancePolicyItemAffectedAssetList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCompliancePolicyItemAffectedAssetListResponse()
@@ -2500,7 +2588,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCompliancePolicyItemAffectedSummary", params)
+            headers = request.headers
+            body = self.call("DescribeCompliancePolicyItemAffectedSummary", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCompliancePolicyItemAffectedSummaryResponse()
@@ -2528,7 +2617,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeComplianceScanFailedAssetList", params)
+            headers = request.headers
+            body = self.call("DescribeComplianceScanFailedAssetList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeComplianceScanFailedAssetListResponse()
@@ -2556,7 +2646,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeComplianceTaskAssetSummary", params)
+            headers = request.headers
+            body = self.call("DescribeComplianceTaskAssetSummary", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeComplianceTaskAssetSummaryResponse()
@@ -2584,7 +2675,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeComplianceTaskPolicyItemSummaryList", params)
+            headers = request.headers
+            body = self.call("DescribeComplianceTaskPolicyItemSummaryList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeComplianceTaskPolicyItemSummaryListResponse()
@@ -2612,7 +2704,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeComplianceWhitelistItemList", params)
+            headers = request.headers
+            body = self.call("DescribeComplianceWhitelistItemList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeComplianceWhitelistItemListResponse()
@@ -2640,7 +2733,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeContainerAssetSummary", params)
+            headers = request.headers
+            body = self.call("DescribeContainerAssetSummary", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeContainerAssetSummaryResponse()
@@ -2668,7 +2762,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeContainerSecEventSummary", params)
+            headers = request.headers
+            body = self.call("DescribeContainerSecEventSummary", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeContainerSecEventSummaryResponse()
@@ -2696,7 +2791,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeEscapeEventDetail", params)
+            headers = request.headers
+            body = self.call("DescribeEscapeEventDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeEscapeEventDetailResponse()
@@ -2724,7 +2820,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeEscapeEventInfo", params)
+            headers = request.headers
+            body = self.call("DescribeEscapeEventInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeEscapeEventInfoResponse()
@@ -2752,7 +2849,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeEscapeEventsExport", params)
+            headers = request.headers
+            body = self.call("DescribeEscapeEventsExport", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeEscapeEventsExportResponse()
@@ -2780,7 +2878,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeEscapeRuleInfo", params)
+            headers = request.headers
+            body = self.call("DescribeEscapeRuleInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeEscapeRuleInfoResponse()
@@ -2808,7 +2907,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeEscapeSafeState", params)
+            headers = request.headers
+            body = self.call("DescribeEscapeSafeState", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeEscapeSafeStateResponse()
@@ -2836,7 +2936,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeExportJobResult", params)
+            headers = request.headers
+            body = self.call("DescribeExportJobResult", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeExportJobResultResponse()
@@ -2864,7 +2965,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeImageAuthorizedInfo", params)
+            headers = request.headers
+            body = self.call("DescribeImageAuthorizedInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeImageAuthorizedInfoResponse()
@@ -2892,7 +2994,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeImageRegistryTimingScanTask", params)
+            headers = request.headers
+            body = self.call("DescribeImageRegistryTimingScanTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeImageRegistryTimingScanTaskResponse()
@@ -2920,7 +3023,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeImageRiskSummary", params)
+            headers = request.headers
+            body = self.call("DescribeImageRiskSummary", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeImageRiskSummaryResponse()
@@ -2948,7 +3052,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeImageRiskTendency", params)
+            headers = request.headers
+            body = self.call("DescribeImageRiskTendency", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeImageRiskTendencyResponse()
@@ -2976,7 +3081,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeImageSimpleList", params)
+            headers = request.headers
+            body = self.call("DescribeImageSimpleList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeImageSimpleListResponse()
@@ -3004,7 +3110,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePostPayDetail", params)
+            headers = request.headers
+            body = self.call("DescribePostPayDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePostPayDetailResponse()
@@ -3032,7 +3139,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeProVersionInfo", params)
+            headers = request.headers
+            body = self.call("DescribeProVersionInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeProVersionInfoResponse()
@@ -3060,7 +3168,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePurchaseStateInfo", params)
+            headers = request.headers
+            body = self.call("DescribePurchaseStateInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePurchaseStateInfoResponse()
@@ -3088,7 +3197,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRefreshTask", params)
+            headers = request.headers
+            body = self.call("DescribeRefreshTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRefreshTaskResponse()
@@ -3116,7 +3226,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeReverseShellDetail", params)
+            headers = request.headers
+            body = self.call("DescribeReverseShellDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeReverseShellDetailResponse()
@@ -3144,7 +3255,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeReverseShellEvents", params)
+            headers = request.headers
+            body = self.call("DescribeReverseShellEvents", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeReverseShellEventsResponse()
@@ -3172,7 +3284,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeReverseShellEventsExport", params)
+            headers = request.headers
+            body = self.call("DescribeReverseShellEventsExport", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeReverseShellEventsExportResponse()
@@ -3200,7 +3313,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeReverseShellWhiteListDetail", params)
+            headers = request.headers
+            body = self.call("DescribeReverseShellWhiteListDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeReverseShellWhiteListDetailResponse()
@@ -3228,7 +3342,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeReverseShellWhiteLists", params)
+            headers = request.headers
+            body = self.call("DescribeReverseShellWhiteLists", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeReverseShellWhiteListsResponse()
@@ -3256,7 +3371,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRiskList", params)
+            headers = request.headers
+            body = self.call("DescribeRiskList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRiskListResponse()
@@ -3284,7 +3400,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRiskSyscallDetail", params)
+            headers = request.headers
+            body = self.call("DescribeRiskSyscallDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRiskSyscallDetailResponse()
@@ -3312,7 +3429,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRiskSyscallEvents", params)
+            headers = request.headers
+            body = self.call("DescribeRiskSyscallEvents", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRiskSyscallEventsResponse()
@@ -3340,7 +3458,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRiskSyscallEventsExport", params)
+            headers = request.headers
+            body = self.call("DescribeRiskSyscallEventsExport", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRiskSyscallEventsExportResponse()
@@ -3368,7 +3487,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRiskSyscallNames", params)
+            headers = request.headers
+            body = self.call("DescribeRiskSyscallNames", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRiskSyscallNamesResponse()
@@ -3396,7 +3516,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRiskSyscallWhiteListDetail", params)
+            headers = request.headers
+            body = self.call("DescribeRiskSyscallWhiteListDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRiskSyscallWhiteListDetailResponse()
@@ -3424,7 +3545,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRiskSyscallWhiteLists", params)
+            headers = request.headers
+            body = self.call("DescribeRiskSyscallWhiteLists", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRiskSyscallWhiteListsResponse()
@@ -3452,7 +3574,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSecEventsTendency", params)
+            headers = request.headers
+            body = self.call("DescribeSecEventsTendency", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSecEventsTendencyResponse()
@@ -3480,7 +3603,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTaskResultSummary", params)
+            headers = request.headers
+            body = self.call("DescribeTaskResultSummary", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTaskResultSummaryResponse()
@@ -3508,7 +3632,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeUnfinishRefreshTask", params)
+            headers = request.headers
+            body = self.call("DescribeUnfinishRefreshTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeUnfinishRefreshTaskResponse()
@@ -3536,7 +3661,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeUserCluster", params)
+            headers = request.headers
+            body = self.call("DescribeUserCluster", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeUserClusterResponse()
@@ -3564,7 +3690,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeValueAddedSrvInfo", params)
+            headers = request.headers
+            body = self.call("DescribeValueAddedSrvInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeValueAddedSrvInfoResponse()
@@ -3592,7 +3719,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeVirusDetail", params)
+            headers = request.headers
+            body = self.call("DescribeVirusDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeVirusDetailResponse()
@@ -3620,7 +3748,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeVirusList", params)
+            headers = request.headers
+            body = self.call("DescribeVirusList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeVirusListResponse()
@@ -3648,7 +3777,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeVirusMonitorSetting", params)
+            headers = request.headers
+            body = self.call("DescribeVirusMonitorSetting", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeVirusMonitorSettingResponse()
@@ -3676,7 +3806,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeVirusScanSetting", params)
+            headers = request.headers
+            body = self.call("DescribeVirusScanSetting", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeVirusScanSettingResponse()
@@ -3704,7 +3835,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeVirusScanTaskStatus", params)
+            headers = request.headers
+            body = self.call("DescribeVirusScanTaskStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeVirusScanTaskStatusResponse()
@@ -3732,7 +3864,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeVirusScanTimeoutSetting", params)
+            headers = request.headers
+            body = self.call("DescribeVirusScanTimeoutSetting", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeVirusScanTimeoutSettingResponse()
@@ -3760,7 +3893,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeVirusSummary", params)
+            headers = request.headers
+            body = self.call("DescribeVirusSummary", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeVirusSummaryResponse()
@@ -3788,7 +3922,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeVirusTaskList", params)
+            headers = request.headers
+            body = self.call("DescribeVirusTaskList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeVirusTaskListResponse()
@@ -3816,7 +3951,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeWarningRules", params)
+            headers = request.headers
+            body = self.call("DescribeWarningRules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeWarningRulesResponse()
@@ -3844,7 +3980,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ExportVirusList", params)
+            headers = request.headers
+            body = self.call("ExportVirusList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ExportVirusListResponse()
@@ -3872,7 +4009,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("InitializeUserComplianceEnvironment", params)
+            headers = request.headers
+            body = self.call("InitializeUserComplianceEnvironment", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.InitializeUserComplianceEnvironmentResponse()
@@ -3900,7 +4038,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyAbnormalProcessRuleStatus", params)
+            headers = request.headers
+            body = self.call("ModifyAbnormalProcessRuleStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAbnormalProcessRuleStatusResponse()
@@ -3928,7 +4067,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyAbnormalProcessStatus", params)
+            headers = request.headers
+            body = self.call("ModifyAbnormalProcessStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAbnormalProcessStatusResponse()
@@ -3956,7 +4096,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyAccessControlRuleStatus", params)
+            headers = request.headers
+            body = self.call("ModifyAccessControlRuleStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAccessControlRuleStatusResponse()
@@ -3984,7 +4125,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyAccessControlStatus", params)
+            headers = request.headers
+            body = self.call("ModifyAccessControlStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAccessControlStatusResponse()
@@ -4012,7 +4154,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyAsset", params)
+            headers = request.headers
+            body = self.call("ModifyAsset", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAssetResponse()
@@ -4040,7 +4183,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyAssetImageRegistryScanStop", params)
+            headers = request.headers
+            body = self.call("ModifyAssetImageRegistryScanStop", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAssetImageRegistryScanStopResponse()
@@ -4068,7 +4212,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyAssetImageRegistryScanStopOneKey", params)
+            headers = request.headers
+            body = self.call("ModifyAssetImageRegistryScanStopOneKey", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAssetImageRegistryScanStopOneKeyResponse()
@@ -4096,7 +4241,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyAssetImageScanStop", params)
+            headers = request.headers
+            body = self.call("ModifyAssetImageScanStop", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAssetImageScanStopResponse()
@@ -4124,7 +4270,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyCompliancePeriodTask", params)
+            headers = request.headers
+            body = self.call("ModifyCompliancePeriodTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyCompliancePeriodTaskResponse()
@@ -4152,7 +4299,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyEscapeEventStatus", params)
+            headers = request.headers
+            body = self.call("ModifyEscapeEventStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyEscapeEventStatusResponse()
@@ -4180,7 +4328,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyEscapeRule", params)
+            headers = request.headers
+            body = self.call("ModifyEscapeRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyEscapeRuleResponse()
@@ -4208,7 +4357,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyReverseShellStatus", params)
+            headers = request.headers
+            body = self.call("ModifyReverseShellStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyReverseShellStatusResponse()
@@ -4236,7 +4386,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyRiskSyscallStatus", params)
+            headers = request.headers
+            body = self.call("ModifyRiskSyscallStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyRiskSyscallStatusResponse()
@@ -4264,7 +4415,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyVirusFileStatus", params)
+            headers = request.headers
+            body = self.call("ModifyVirusFileStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyVirusFileStatusResponse()
@@ -4292,7 +4444,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyVirusMonitorSetting", params)
+            headers = request.headers
+            body = self.call("ModifyVirusMonitorSetting", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyVirusMonitorSettingResponse()
@@ -4320,7 +4473,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyVirusScanSetting", params)
+            headers = request.headers
+            body = self.call("ModifyVirusScanSetting", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyVirusScanSettingResponse()
@@ -4348,7 +4502,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyVirusScanTimeoutSetting", params)
+            headers = request.headers
+            body = self.call("ModifyVirusScanTimeoutSetting", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyVirusScanTimeoutSettingResponse()
@@ -4376,7 +4531,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RemoveAssetImageRegistryRegistryDetail", params)
+            headers = request.headers
+            body = self.call("RemoveAssetImageRegistryRegistryDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RemoveAssetImageRegistryRegistryDetailResponse()
@@ -4404,7 +4560,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RenewImageAuthorizeState", params)
+            headers = request.headers
+            body = self.call("RenewImageAuthorizeState", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RenewImageAuthorizeStateResponse()
@@ -4432,7 +4589,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ScanComplianceAssets", params)
+            headers = request.headers
+            body = self.call("ScanComplianceAssets", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ScanComplianceAssetsResponse()
@@ -4460,7 +4618,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ScanComplianceAssetsByPolicyItem", params)
+            headers = request.headers
+            body = self.call("ScanComplianceAssetsByPolicyItem", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ScanComplianceAssetsByPolicyItemResponse()
@@ -4488,7 +4647,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ScanCompliancePolicyItems", params)
+            headers = request.headers
+            body = self.call("ScanCompliancePolicyItems", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ScanCompliancePolicyItemsResponse()
@@ -4516,7 +4676,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ScanComplianceScanFailedAssets", params)
+            headers = request.headers
+            body = self.call("ScanComplianceScanFailedAssets", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ScanComplianceScanFailedAssetsResponse()
@@ -4544,7 +4705,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SetCheckMode", params)
+            headers = request.headers
+            body = self.call("SetCheckMode", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SetCheckModeResponse()
@@ -4572,7 +4734,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("StopVirusScanTask", params)
+            headers = request.headers
+            body = self.call("StopVirusScanTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StopVirusScanTaskResponse()
@@ -4600,7 +4763,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SyncAssetImageRegistryAsset", params)
+            headers = request.headers
+            body = self.call("SyncAssetImageRegistryAsset", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SyncAssetImageRegistryAssetResponse()
@@ -4628,7 +4792,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateAssetImageRegistryRegistryDetail", params)
+            headers = request.headers
+            body = self.call("UpdateAssetImageRegistryRegistryDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateAssetImageRegistryRegistryDetailResponse()
@@ -4656,7 +4821,8 @@ class TcssClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateImageRegistryTimingScanTask", params)
+            headers = request.headers
+            body = self.call("UpdateImageRegistryTimingScanTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateImageRegistryTimingScanTaskResponse()

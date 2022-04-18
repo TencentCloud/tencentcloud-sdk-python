@@ -36,7 +36,8 @@ class OrganizationClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("BindOrganizationMemberAuthAccount", params)
+            headers = request.headers
+            body = self.call("BindOrganizationMemberAuthAccount", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.BindOrganizationMemberAuthAccountResponse()
@@ -64,7 +65,8 @@ class OrganizationClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateOrganizationMember", params)
+            headers = request.headers
+            body = self.call("CreateOrganizationMember", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateOrganizationMemberResponse()
@@ -92,7 +94,8 @@ class OrganizationClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeOrganization", params)
+            headers = request.headers
+            body = self.call("DescribeOrganization", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeOrganizationResponse()
@@ -120,7 +123,8 @@ class OrganizationClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeOrganizationMembers", params)
+            headers = request.headers
+            body = self.call("DescribeOrganizationMembers", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeOrganizationMembersResponse()

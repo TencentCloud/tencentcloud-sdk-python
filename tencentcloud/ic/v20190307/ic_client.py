@@ -36,7 +36,8 @@ class IcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeApp", params)
+            headers = request.headers
+            body = self.call("DescribeApp", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAppResponse()
@@ -64,7 +65,8 @@ class IcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCard", params)
+            headers = request.headers
+            body = self.call("DescribeCard", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCardResponse()
@@ -92,7 +94,8 @@ class IcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCards", params)
+            headers = request.headers
+            body = self.call("DescribeCards", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCardsResponse()
@@ -120,7 +123,8 @@ class IcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyUserCardRemark", params)
+            headers = request.headers
+            body = self.call("ModifyUserCardRemark", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyUserCardRemarkResponse()
@@ -153,7 +157,8 @@ class IcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RenewCards", params)
+            headers = request.headers
+            body = self.call("RenewCards", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RenewCardsResponse()
@@ -181,7 +186,8 @@ class IcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SendMultiSms", params)
+            headers = request.headers
+            body = self.call("SendMultiSms", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SendMultiSmsResponse()
@@ -209,7 +215,8 @@ class IcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SendSms", params)
+            headers = request.headers
+            body = self.call("SendSms", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SendSmsResponse()

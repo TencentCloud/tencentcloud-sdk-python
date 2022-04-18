@@ -46,7 +46,8 @@ class GmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateAgeDetectTask", params)
+            headers = request.headers
+            body = self.call("CreateAgeDetectTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateAgeDetectTaskResponse()
@@ -74,7 +75,8 @@ class GmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateApp", params)
+            headers = request.headers
+            body = self.call("CreateApp", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateAppResponse()
@@ -102,7 +104,8 @@ class GmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateScanUser", params)
+            headers = request.headers
+            body = self.call("CreateScanUser", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateScanUserResponse()
@@ -130,7 +133,8 @@ class GmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteScanUser", params)
+            headers = request.headers
+            body = self.call("DeleteScanUser", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteScanUserResponse()
@@ -158,7 +162,8 @@ class GmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAgeDetectTask", params)
+            headers = request.headers
+            body = self.call("DescribeAgeDetectTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAgeDetectTaskResponse()
@@ -186,7 +191,8 @@ class GmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAppStatistics", params)
+            headers = request.headers
+            body = self.call("DescribeAppStatistics", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAppStatisticsResponse()
@@ -214,7 +220,8 @@ class GmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeApplicationData", params)
+            headers = request.headers
+            body = self.call("DescribeApplicationData", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeApplicationDataResponse()
@@ -242,7 +249,8 @@ class GmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeFilterResult", params)
+            headers = request.headers
+            body = self.call("DescribeFilterResult", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeFilterResultResponse()
@@ -270,7 +278,8 @@ class GmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeFilterResultList", params)
+            headers = request.headers
+            body = self.call("DescribeFilterResultList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeFilterResultListResponse()
@@ -298,7 +307,8 @@ class GmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRealtimeScanConfig", params)
+            headers = request.headers
+            body = self.call("DescribeRealtimeScanConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRealtimeScanConfigResponse()
@@ -326,7 +336,8 @@ class GmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRoomInfo", params)
+            headers = request.headers
+            body = self.call("DescribeRoomInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRoomInfoResponse()
@@ -355,7 +366,8 @@ class GmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeScanResultList", params)
+            headers = request.headers
+            body = self.call("DescribeScanResultList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeScanResultListResponse()
@@ -383,7 +395,8 @@ class GmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeUserInAndOutTime", params)
+            headers = request.headers
+            body = self.call("DescribeUserInAndOutTime", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeUserInAndOutTimeResponse()
@@ -411,7 +424,8 @@ class GmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyAppStatus", params)
+            headers = request.headers
+            body = self.call("ModifyAppStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAppStatusResponse()
@@ -439,7 +453,8 @@ class GmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyRoomInfo", params)
+            headers = request.headers
+            body = self.call("ModifyRoomInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyRoomInfoResponse()
@@ -601,7 +616,8 @@ class GmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ScanVoice", params)
+            headers = request.headers
+            body = self.call("ScanVoice", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ScanVoiceResponse()
@@ -629,7 +645,8 @@ class GmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateScanRooms", params)
+            headers = request.headers
+            body = self.call("UpdateScanRooms", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateScanRoomsResponse()
@@ -657,7 +674,8 @@ class GmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateScanUsers", params)
+            headers = request.headers
+            body = self.call("UpdateScanUsers", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateScanUsersResponse()
@@ -687,7 +705,8 @@ class GmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("VoiceFilter", params)
+            headers = request.headers
+            body = self.call("VoiceFilter", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.VoiceFilterResponse()

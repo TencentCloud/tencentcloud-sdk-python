@@ -40,7 +40,8 @@ class CloudauditClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateAudit", params)
+            headers = request.headers
+            body = self.call("CreateAudit", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateAuditResponse()
@@ -68,7 +69,8 @@ class CloudauditClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateAuditTrack", params)
+            headers = request.headers
+            body = self.call("CreateAuditTrack", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateAuditTrackResponse()
@@ -96,7 +98,8 @@ class CloudauditClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteAudit", params)
+            headers = request.headers
+            body = self.call("DeleteAudit", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteAuditResponse()
@@ -124,7 +127,8 @@ class CloudauditClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteAuditTrack", params)
+            headers = request.headers
+            body = self.call("DeleteAuditTrack", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteAuditTrackResponse()
@@ -152,7 +156,8 @@ class CloudauditClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAudit", params)
+            headers = request.headers
+            body = self.call("DescribeAudit", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAuditResponse()
@@ -180,7 +185,8 @@ class CloudauditClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAuditTracks", params)
+            headers = request.headers
+            body = self.call("DescribeAuditTracks", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAuditTracksResponse()
@@ -208,7 +214,8 @@ class CloudauditClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeEvents", params)
+            headers = request.headers
+            body = self.call("DescribeEvents", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeEventsResponse()
@@ -236,7 +243,8 @@ class CloudauditClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetAttributeKey", params)
+            headers = request.headers
+            body = self.call("GetAttributeKey", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetAttributeKeyResponse()
@@ -264,7 +272,8 @@ class CloudauditClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("InquireAuditCredit", params)
+            headers = request.headers
+            body = self.call("InquireAuditCredit", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.InquireAuditCreditResponse()
@@ -292,7 +301,8 @@ class CloudauditClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ListAudits", params)
+            headers = request.headers
+            body = self.call("ListAudits", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListAuditsResponse()
@@ -320,7 +330,8 @@ class CloudauditClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ListCmqEnableRegion", params)
+            headers = request.headers
+            body = self.call("ListCmqEnableRegion", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListCmqEnableRegionResponse()
@@ -348,7 +359,8 @@ class CloudauditClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ListCosEnableRegion", params)
+            headers = request.headers
+            body = self.call("ListCosEnableRegion", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListCosEnableRegionResponse()
@@ -376,7 +388,8 @@ class CloudauditClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ListKeyAliasByRegion", params)
+            headers = request.headers
+            body = self.call("ListKeyAliasByRegion", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListKeyAliasByRegionResponse()
@@ -404,7 +417,8 @@ class CloudauditClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("LookUpEvents", params)
+            headers = request.headers
+            body = self.call("LookUpEvents", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.LookUpEventsResponse()
@@ -432,7 +446,8 @@ class CloudauditClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyAuditTrack", params)
+            headers = request.headers
+            body = self.call("ModifyAuditTrack", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAuditTrackResponse()
@@ -460,7 +475,8 @@ class CloudauditClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("StartLogging", params)
+            headers = request.headers
+            body = self.call("StartLogging", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StartLoggingResponse()
@@ -488,7 +504,8 @@ class CloudauditClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("StopLogging", params)
+            headers = request.headers
+            body = self.call("StopLogging", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StopLoggingResponse()
@@ -520,7 +537,8 @@ class CloudauditClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateAudit", params)
+            headers = request.headers
+            body = self.call("UpdateAudit", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateAuditResponse()

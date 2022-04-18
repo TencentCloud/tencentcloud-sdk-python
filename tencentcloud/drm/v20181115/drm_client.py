@@ -37,7 +37,8 @@ class DrmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AddFairPlayPem", params)
+            headers = request.headers
+            body = self.call("AddFairPlayPem", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AddFairPlayPemResponse()
@@ -65,7 +66,8 @@ class DrmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateEncryptKeys", params)
+            headers = request.headers
+            body = self.call("CreateEncryptKeys", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateEncryptKeysResponse()
@@ -94,7 +96,8 @@ class DrmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateLicense", params)
+            headers = request.headers
+            body = self.call("CreateLicense", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateLicenseResponse()
@@ -124,7 +127,8 @@ class DrmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteFairPlayPem", params)
+            headers = request.headers
+            body = self.call("DeleteFairPlayPem", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteFairPlayPemResponse()
@@ -152,7 +156,8 @@ class DrmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAllKeys", params)
+            headers = request.headers
+            body = self.call("DescribeAllKeys", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAllKeysResponse()
@@ -180,7 +185,8 @@ class DrmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeFairPlayPem", params)
+            headers = request.headers
+            body = self.call("DescribeFairPlayPem", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeFairPlayPemResponse()
@@ -209,7 +215,8 @@ class DrmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeKeys", params)
+            headers = request.headers
+            body = self.call("DescribeKeys", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeKeysResponse()
@@ -238,7 +245,8 @@ class DrmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyFairPlayPem", params)
+            headers = request.headers
+            body = self.call("ModifyFairPlayPem", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyFairPlayPemResponse()
@@ -267,7 +275,8 @@ class DrmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("StartEncryption", params)
+            headers = request.headers
+            body = self.call("StartEncryption", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StartEncryptionResponse()

@@ -36,7 +36,8 @@ class EsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateInstance", params)
+            headers = request.headers
+            body = self.call("CreateInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateInstanceResponse()
@@ -64,7 +65,8 @@ class EsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteInstance", params)
+            headers = request.headers
+            body = self.call("DeleteInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteInstanceResponse()
@@ -92,7 +94,8 @@ class EsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInstanceLogs", params)
+            headers = request.headers
+            body = self.call("DescribeInstanceLogs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInstanceLogsResponse()
@@ -120,7 +123,8 @@ class EsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInstanceOperations", params)
+            headers = request.headers
+            body = self.call("DescribeInstanceOperations", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInstanceOperationsResponse()
@@ -148,7 +152,8 @@ class EsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInstances", params)
+            headers = request.headers
+            body = self.call("DescribeInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInstancesResponse()
@@ -176,7 +181,8 @@ class EsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeViews", params)
+            headers = request.headers
+            body = self.call("DescribeViews", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeViewsResponse()
@@ -204,7 +210,8 @@ class EsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DiagnoseInstance", params)
+            headers = request.headers
+            body = self.call("DiagnoseInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DiagnoseInstanceResponse()
@@ -232,7 +239,8 @@ class EsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetRequestTargetNodeTypes", params)
+            headers = request.headers
+            body = self.call("GetRequestTargetNodeTypes", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetRequestTargetNodeTypesResponse()
@@ -260,7 +268,8 @@ class EsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RestartInstance", params)
+            headers = request.headers
+            body = self.call("RestartInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RestartInstanceResponse()
@@ -288,7 +297,8 @@ class EsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RestartKibana", params)
+            headers = request.headers
+            body = self.call("RestartKibana", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RestartKibanaResponse()
@@ -316,7 +326,8 @@ class EsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RestartNodes", params)
+            headers = request.headers
+            body = self.call("RestartNodes", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RestartNodesResponse()
@@ -344,7 +355,8 @@ class EsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateDiagnoseSettings", params)
+            headers = request.headers
+            body = self.call("UpdateDiagnoseSettings", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateDiagnoseSettingsResponse()
@@ -372,7 +384,8 @@ class EsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateDictionaries", params)
+            headers = request.headers
+            body = self.call("UpdateDictionaries", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateDictionariesResponse()
@@ -407,7 +420,8 @@ class EsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateInstance", params)
+            headers = request.headers
+            body = self.call("UpdateInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateInstanceResponse()
@@ -435,7 +449,8 @@ class EsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateJdk", params)
+            headers = request.headers
+            body = self.call("UpdateJdk", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateJdkResponse()
@@ -463,7 +478,8 @@ class EsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdatePlugins", params)
+            headers = request.headers
+            body = self.call("UpdatePlugins", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdatePluginsResponse()
@@ -491,7 +507,8 @@ class EsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateRequestTargetNodeTypes", params)
+            headers = request.headers
+            body = self.call("UpdateRequestTargetNodeTypes", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateRequestTargetNodeTypesResponse()
@@ -519,7 +536,8 @@ class EsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpgradeInstance", params)
+            headers = request.headers
+            body = self.call("UpgradeInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpgradeInstanceResponse()
@@ -547,7 +565,8 @@ class EsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpgradeLicense", params)
+            headers = request.headers
+            body = self.call("UpgradeLicense", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpgradeLicenseResponse()

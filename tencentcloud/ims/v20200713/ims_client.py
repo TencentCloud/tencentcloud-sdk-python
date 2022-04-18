@@ -36,7 +36,8 @@ class ImsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeImageStat", params)
+            headers = request.headers
+            body = self.call("DescribeImageStat", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeImageStatResponse()
@@ -64,7 +65,8 @@ class ImsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeImsList", params)
+            headers = request.headers
+            body = self.call("DescribeImsList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeImsListResponse()
@@ -108,7 +110,8 @@ class ImsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ImageModeration", params)
+            headers = request.headers
+            body = self.call("ImageModeration", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ImageModerationResponse()

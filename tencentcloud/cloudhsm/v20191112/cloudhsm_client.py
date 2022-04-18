@@ -36,7 +36,8 @@ class CloudhsmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeHSMBySubnetId", params)
+            headers = request.headers
+            body = self.call("DescribeHSMBySubnetId", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeHSMBySubnetIdResponse()
@@ -64,7 +65,8 @@ class CloudhsmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeHSMByVpcId", params)
+            headers = request.headers
+            body = self.call("DescribeHSMByVpcId", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeHSMByVpcIdResponse()
@@ -92,7 +94,8 @@ class CloudhsmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSubnet", params)
+            headers = request.headers
+            body = self.call("DescribeSubnet", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSubnetResponse()
@@ -120,7 +123,8 @@ class CloudhsmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSupportedHsm", params)
+            headers = request.headers
+            body = self.call("DescribeSupportedHsm", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSupportedHsmResponse()
@@ -148,7 +152,8 @@ class CloudhsmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeUsg", params)
+            headers = request.headers
+            body = self.call("DescribeUsg", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeUsgResponse()
@@ -176,7 +181,8 @@ class CloudhsmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeUsgRule", params)
+            headers = request.headers
+            body = self.call("DescribeUsgRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeUsgRuleResponse()
@@ -204,7 +210,8 @@ class CloudhsmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeVpc", params)
+            headers = request.headers
+            body = self.call("DescribeVpc", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeVpcResponse()
@@ -232,7 +239,8 @@ class CloudhsmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeVsmAttributes", params)
+            headers = request.headers
+            body = self.call("DescribeVsmAttributes", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeVsmAttributesResponse()
@@ -260,7 +268,8 @@ class CloudhsmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeVsms", params)
+            headers = request.headers
+            body = self.call("DescribeVsms", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeVsmsResponse()
@@ -288,7 +297,8 @@ class CloudhsmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("InquiryPriceBuyVsm", params)
+            headers = request.headers
+            body = self.call("InquiryPriceBuyVsm", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.InquiryPriceBuyVsmResponse()
@@ -316,7 +326,8 @@ class CloudhsmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyVsmAttributes", params)
+            headers = request.headers
+            body = self.call("ModifyVsmAttributes", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyVsmAttributesResponse()

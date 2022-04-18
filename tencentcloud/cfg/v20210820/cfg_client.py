@@ -36,7 +36,8 @@ class CfgClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateTaskFromTemplate", params)
+            headers = request.headers
+            body = self.call("CreateTaskFromTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateTaskFromTemplateResponse()
@@ -64,7 +65,8 @@ class CfgClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteTask", params)
+            headers = request.headers
+            body = self.call("DeleteTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteTaskResponse()
@@ -92,7 +94,8 @@ class CfgClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTask", params)
+            headers = request.headers
+            body = self.call("DescribeTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTaskResponse()
@@ -120,7 +123,8 @@ class CfgClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTaskExecuteLogs", params)
+            headers = request.headers
+            body = self.call("DescribeTaskExecuteLogs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTaskExecuteLogsResponse()
@@ -148,7 +152,8 @@ class CfgClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTaskList", params)
+            headers = request.headers
+            body = self.call("DescribeTaskList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTaskListResponse()
@@ -176,7 +181,8 @@ class CfgClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTemplate", params)
+            headers = request.headers
+            body = self.call("DescribeTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTemplateResponse()
@@ -204,7 +210,8 @@ class CfgClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTemplateList", params)
+            headers = request.headers
+            body = self.call("DescribeTemplateList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTemplateListResponse()
@@ -232,7 +239,8 @@ class CfgClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ExecuteTask", params)
+            headers = request.headers
+            body = self.call("ExecuteTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ExecuteTaskResponse()
@@ -260,7 +268,8 @@ class CfgClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ExecuteTaskInstance", params)
+            headers = request.headers
+            body = self.call("ExecuteTaskInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ExecuteTaskInstanceResponse()
@@ -288,7 +297,8 @@ class CfgClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyTaskRunStatus", params)
+            headers = request.headers
+            body = self.call("ModifyTaskRunStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyTaskRunStatusResponse()

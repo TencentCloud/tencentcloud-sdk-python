@@ -36,7 +36,8 @@ class CwsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateMonitors", params)
+            headers = request.headers
+            body = self.call("CreateMonitors", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateMonitorsResponse()
@@ -64,7 +65,8 @@ class CwsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateSites", params)
+            headers = request.headers
+            body = self.call("CreateSites", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateSitesResponse()
@@ -92,7 +94,8 @@ class CwsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateSitesScans", params)
+            headers = request.headers
+            body = self.call("CreateSitesScans", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateSitesScansResponse()
@@ -120,7 +123,8 @@ class CwsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateVulsMisinformation", params)
+            headers = request.headers
+            body = self.call("CreateVulsMisinformation", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateVulsMisinformationResponse()
@@ -148,7 +152,8 @@ class CwsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateVulsReport", params)
+            headers = request.headers
+            body = self.call("CreateVulsReport", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateVulsReportResponse()
@@ -176,7 +181,8 @@ class CwsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteMonitors", params)
+            headers = request.headers
+            body = self.call("DeleteMonitors", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteMonitorsResponse()
@@ -204,7 +210,8 @@ class CwsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteSites", params)
+            headers = request.headers
+            body = self.call("DeleteSites", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteSitesResponse()
@@ -232,7 +239,8 @@ class CwsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeConfig", params)
+            headers = request.headers
+            body = self.call("DescribeConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeConfigResponse()
@@ -260,7 +268,8 @@ class CwsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeMonitors", params)
+            headers = request.headers
+            body = self.call("DescribeMonitors", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeMonitorsResponse()
@@ -288,7 +297,8 @@ class CwsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSiteQuota", params)
+            headers = request.headers
+            body = self.call("DescribeSiteQuota", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSiteQuotaResponse()
@@ -316,7 +326,8 @@ class CwsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSites", params)
+            headers = request.headers
+            body = self.call("DescribeSites", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSitesResponse()
@@ -344,7 +355,8 @@ class CwsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSitesVerification", params)
+            headers = request.headers
+            body = self.call("DescribeSitesVerification", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSitesVerificationResponse()
@@ -372,7 +384,8 @@ class CwsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeVuls", params)
+            headers = request.headers
+            body = self.call("DescribeVuls", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeVulsResponse()
@@ -400,7 +413,8 @@ class CwsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeVulsNumber", params)
+            headers = request.headers
+            body = self.call("DescribeVulsNumber", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeVulsNumberResponse()
@@ -428,7 +442,8 @@ class CwsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeVulsNumberTimeline", params)
+            headers = request.headers
+            body = self.call("DescribeVulsNumberTimeline", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeVulsNumberTimelineResponse()
@@ -456,7 +471,8 @@ class CwsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyConfigAttribute", params)
+            headers = request.headers
+            body = self.call("ModifyConfigAttribute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyConfigAttributeResponse()
@@ -484,7 +500,8 @@ class CwsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyMonitorAttribute", params)
+            headers = request.headers
+            body = self.call("ModifyMonitorAttribute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyMonitorAttributeResponse()
@@ -512,7 +529,8 @@ class CwsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifySiteAttribute", params)
+            headers = request.headers
+            body = self.call("ModifySiteAttribute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifySiteAttributeResponse()
@@ -540,7 +558,8 @@ class CwsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("VerifySites", params)
+            headers = request.headers
+            body = self.call("VerifySites", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.VerifySitesResponse()

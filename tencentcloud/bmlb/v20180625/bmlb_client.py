@@ -36,7 +36,8 @@ class BmlbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("BindL4Backends", params)
+            headers = request.headers
+            body = self.call("BindL4Backends", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.BindL4BackendsResponse()
@@ -64,7 +65,8 @@ class BmlbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("BindL7Backends", params)
+            headers = request.headers
+            body = self.call("BindL7Backends", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.BindL7BackendsResponse()
@@ -92,7 +94,8 @@ class BmlbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("BindTrafficMirrorListeners", params)
+            headers = request.headers
+            body = self.call("BindTrafficMirrorListeners", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.BindTrafficMirrorListenersResponse()
@@ -120,7 +123,8 @@ class BmlbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("BindTrafficMirrorReceivers", params)
+            headers = request.headers
+            body = self.call("BindTrafficMirrorReceivers", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.BindTrafficMirrorReceiversResponse()
@@ -148,7 +152,8 @@ class BmlbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateL4Listeners", params)
+            headers = request.headers
+            body = self.call("CreateL4Listeners", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateL4ListenersResponse()
@@ -176,7 +181,8 @@ class BmlbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateL7Listeners", params)
+            headers = request.headers
+            body = self.call("CreateL7Listeners", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateL7ListenersResponse()
@@ -204,7 +210,8 @@ class BmlbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateL7Rules", params)
+            headers = request.headers
+            body = self.call("CreateL7Rules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateL7RulesResponse()
@@ -232,7 +239,8 @@ class BmlbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateLoadBalancers", params)
+            headers = request.headers
+            body = self.call("CreateLoadBalancers", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateLoadBalancersResponse()
@@ -260,7 +268,8 @@ class BmlbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateTrafficMirror", params)
+            headers = request.headers
+            body = self.call("CreateTrafficMirror", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateTrafficMirrorResponse()
@@ -288,7 +297,8 @@ class BmlbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteL7Domains", params)
+            headers = request.headers
+            body = self.call("DeleteL7Domains", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteL7DomainsResponse()
@@ -316,7 +326,8 @@ class BmlbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteL7Rules", params)
+            headers = request.headers
+            body = self.call("DeleteL7Rules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteL7RulesResponse()
@@ -344,7 +355,8 @@ class BmlbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteListeners", params)
+            headers = request.headers
+            body = self.call("DeleteListeners", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteListenersResponse()
@@ -372,7 +384,8 @@ class BmlbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteLoadBalancer", params)
+            headers = request.headers
+            body = self.call("DeleteLoadBalancer", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteLoadBalancerResponse()
@@ -400,7 +413,8 @@ class BmlbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteTrafficMirror", params)
+            headers = request.headers
+            body = self.call("DeleteTrafficMirror", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteTrafficMirrorResponse()
@@ -428,7 +442,8 @@ class BmlbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCertDetail", params)
+            headers = request.headers
+            body = self.call("DescribeCertDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCertDetailResponse()
@@ -456,7 +471,8 @@ class BmlbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDevicesBindInfo", params)
+            headers = request.headers
+            body = self.call("DescribeDevicesBindInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDevicesBindInfoResponse()
@@ -484,7 +500,8 @@ class BmlbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeL4Backends", params)
+            headers = request.headers
+            body = self.call("DescribeL4Backends", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeL4BackendsResponse()
@@ -512,7 +529,8 @@ class BmlbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeL4ListenerInfo", params)
+            headers = request.headers
+            body = self.call("DescribeL4ListenerInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeL4ListenerInfoResponse()
@@ -540,7 +558,8 @@ class BmlbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeL4Listeners", params)
+            headers = request.headers
+            body = self.call("DescribeL4Listeners", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeL4ListenersResponse()
@@ -568,7 +587,8 @@ class BmlbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeL7Backends", params)
+            headers = request.headers
+            body = self.call("DescribeL7Backends", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeL7BackendsResponse()
@@ -596,7 +616,8 @@ class BmlbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeL7ListenerInfo", params)
+            headers = request.headers
+            body = self.call("DescribeL7ListenerInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeL7ListenerInfoResponse()
@@ -624,7 +645,8 @@ class BmlbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeL7Listeners", params)
+            headers = request.headers
+            body = self.call("DescribeL7Listeners", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeL7ListenersResponse()
@@ -652,7 +674,8 @@ class BmlbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeL7ListenersEx", params)
+            headers = request.headers
+            body = self.call("DescribeL7ListenersEx", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeL7ListenersExResponse()
@@ -680,7 +703,8 @@ class BmlbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeL7Rules", params)
+            headers = request.headers
+            body = self.call("DescribeL7Rules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeL7RulesResponse()
@@ -708,7 +732,8 @@ class BmlbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeLoadBalancerPortInfo", params)
+            headers = request.headers
+            body = self.call("DescribeLoadBalancerPortInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLoadBalancerPortInfoResponse()
@@ -736,7 +761,8 @@ class BmlbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeLoadBalancerTaskResult", params)
+            headers = request.headers
+            body = self.call("DescribeLoadBalancerTaskResult", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLoadBalancerTaskResultResponse()
@@ -764,7 +790,8 @@ class BmlbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeLoadBalancers", params)
+            headers = request.headers
+            body = self.call("DescribeLoadBalancers", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLoadBalancersResponse()
@@ -792,7 +819,8 @@ class BmlbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTrafficMirrorListeners", params)
+            headers = request.headers
+            body = self.call("DescribeTrafficMirrorListeners", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTrafficMirrorListenersResponse()
@@ -820,7 +848,8 @@ class BmlbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTrafficMirrorReceiverHealthStatus", params)
+            headers = request.headers
+            body = self.call("DescribeTrafficMirrorReceiverHealthStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTrafficMirrorReceiverHealthStatusResponse()
@@ -848,7 +877,8 @@ class BmlbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTrafficMirrorReceivers", params)
+            headers = request.headers
+            body = self.call("DescribeTrafficMirrorReceivers", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTrafficMirrorReceiversResponse()
@@ -876,7 +906,8 @@ class BmlbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTrafficMirrors", params)
+            headers = request.headers
+            body = self.call("DescribeTrafficMirrors", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTrafficMirrorsResponse()
@@ -904,7 +935,8 @@ class BmlbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyL4BackendPort", params)
+            headers = request.headers
+            body = self.call("ModifyL4BackendPort", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyL4BackendPortResponse()
@@ -932,7 +964,8 @@ class BmlbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyL4BackendProbePort", params)
+            headers = request.headers
+            body = self.call("ModifyL4BackendProbePort", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyL4BackendProbePortResponse()
@@ -960,7 +993,8 @@ class BmlbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyL4BackendWeight", params)
+            headers = request.headers
+            body = self.call("ModifyL4BackendWeight", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyL4BackendWeightResponse()
@@ -988,7 +1022,8 @@ class BmlbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyL4Listener", params)
+            headers = request.headers
+            body = self.call("ModifyL4Listener", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyL4ListenerResponse()
@@ -1016,7 +1051,8 @@ class BmlbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyL7BackendPort", params)
+            headers = request.headers
+            body = self.call("ModifyL7BackendPort", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyL7BackendPortResponse()
@@ -1044,7 +1080,8 @@ class BmlbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyL7BackendWeight", params)
+            headers = request.headers
+            body = self.call("ModifyL7BackendWeight", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyL7BackendWeightResponse()
@@ -1072,7 +1109,8 @@ class BmlbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyL7Listener", params)
+            headers = request.headers
+            body = self.call("ModifyL7Listener", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyL7ListenerResponse()
@@ -1100,7 +1138,8 @@ class BmlbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyL7Locations", params)
+            headers = request.headers
+            body = self.call("ModifyL7Locations", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyL7LocationsResponse()
@@ -1128,7 +1167,8 @@ class BmlbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyLoadBalancer", params)
+            headers = request.headers
+            body = self.call("ModifyLoadBalancer", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyLoadBalancerResponse()
@@ -1156,7 +1196,8 @@ class BmlbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyLoadBalancerChargeMode", params)
+            headers = request.headers
+            body = self.call("ModifyLoadBalancerChargeMode", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyLoadBalancerChargeModeResponse()
@@ -1184,7 +1225,8 @@ class BmlbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ReplaceCert", params)
+            headers = request.headers
+            body = self.call("ReplaceCert", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ReplaceCertResponse()
@@ -1212,7 +1254,8 @@ class BmlbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SetTrafficMirrorAlias", params)
+            headers = request.headers
+            body = self.call("SetTrafficMirrorAlias", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SetTrafficMirrorAliasResponse()
@@ -1240,7 +1283,8 @@ class BmlbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SetTrafficMirrorHealthSwitch", params)
+            headers = request.headers
+            body = self.call("SetTrafficMirrorHealthSwitch", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SetTrafficMirrorHealthSwitchResponse()
@@ -1268,7 +1312,8 @@ class BmlbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UnbindL4Backends", params)
+            headers = request.headers
+            body = self.call("UnbindL4Backends", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UnbindL4BackendsResponse()
@@ -1296,7 +1341,8 @@ class BmlbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UnbindL7Backends", params)
+            headers = request.headers
+            body = self.call("UnbindL7Backends", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UnbindL7BackendsResponse()
@@ -1324,7 +1370,8 @@ class BmlbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UnbindTrafficMirrorListeners", params)
+            headers = request.headers
+            body = self.call("UnbindTrafficMirrorListeners", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UnbindTrafficMirrorListenersResponse()
@@ -1352,7 +1399,8 @@ class BmlbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UnbindTrafficMirrorReceivers", params)
+            headers = request.headers
+            body = self.call("UnbindTrafficMirrorReceivers", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UnbindTrafficMirrorReceiversResponse()
@@ -1380,7 +1428,8 @@ class BmlbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UploadCert", params)
+            headers = request.headers
+            body = self.call("UploadCert", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UploadCertResponse()

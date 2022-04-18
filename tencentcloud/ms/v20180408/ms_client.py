@@ -36,7 +36,8 @@ class MsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateBindInstance", params)
+            headers = request.headers
+            body = self.call("CreateBindInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateBindInstanceResponse()
@@ -64,7 +65,8 @@ class MsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateCosSecKeyInstance", params)
+            headers = request.headers
+            body = self.call("CreateCosSecKeyInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateCosSecKeyInstanceResponse()
@@ -92,7 +94,8 @@ class MsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateResourceInstances", params)
+            headers = request.headers
+            body = self.call("CreateResourceInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateResourceInstancesResponse()
@@ -120,7 +123,8 @@ class MsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateScanInstances", params)
+            headers = request.headers
+            body = self.call("CreateScanInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateScanInstancesResponse()
@@ -148,7 +152,8 @@ class MsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateShieldInstance", params)
+            headers = request.headers
+            body = self.call("CreateShieldInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateShieldInstanceResponse()
@@ -176,7 +181,8 @@ class MsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateShieldPlanInstance", params)
+            headers = request.headers
+            body = self.call("CreateShieldPlanInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateShieldPlanInstanceResponse()
@@ -204,7 +210,8 @@ class MsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteScanInstances", params)
+            headers = request.headers
+            body = self.call("DeleteScanInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteScanInstancesResponse()
@@ -232,7 +239,8 @@ class MsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteShieldInstances", params)
+            headers = request.headers
+            body = self.call("DeleteShieldInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteShieldInstancesResponse()
@@ -260,7 +268,8 @@ class MsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeResourceInstances", params)
+            headers = request.headers
+            body = self.call("DescribeResourceInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeResourceInstancesResponse()
@@ -289,7 +298,8 @@ class MsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeScanInstances", params)
+            headers = request.headers
+            body = self.call("DescribeScanInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeScanInstancesResponse()
@@ -317,7 +327,8 @@ class MsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeScanResults", params)
+            headers = request.headers
+            body = self.call("DescribeScanResults", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeScanResultsResponse()
@@ -346,7 +357,8 @@ class MsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeShieldInstances", params)
+            headers = request.headers
+            body = self.call("DescribeShieldInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeShieldInstancesResponse()
@@ -374,7 +386,8 @@ class MsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeShieldPlanInstance", params)
+            headers = request.headers
+            body = self.call("DescribeShieldPlanInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeShieldPlanInstanceResponse()
@@ -402,7 +415,8 @@ class MsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeShieldResult", params)
+            headers = request.headers
+            body = self.call("DescribeShieldResult", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeShieldResultResponse()
@@ -430,7 +444,8 @@ class MsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeUserBaseInfoInstance", params)
+            headers = request.headers
+            body = self.call("DescribeUserBaseInfoInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeUserBaseInfoInstanceResponse()

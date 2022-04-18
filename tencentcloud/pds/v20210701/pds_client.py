@@ -36,7 +36,8 @@ class PdsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeNewUserAcquisition", params)
+            headers = request.headers
+            body = self.call("DescribeNewUserAcquisition", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeNewUserAcquisitionResponse()
@@ -64,7 +65,8 @@ class PdsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeStockEstimation", params)
+            headers = request.headers
+            body = self.call("DescribeStockEstimation", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeStockEstimationResponse()

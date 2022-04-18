@@ -36,7 +36,8 @@ class ChdfsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AssociateAccessGroups", params)
+            headers = request.headers
+            body = self.call("AssociateAccessGroups", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AssociateAccessGroupsResponse()
@@ -64,7 +65,8 @@ class ChdfsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateAccessGroup", params)
+            headers = request.headers
+            body = self.call("CreateAccessGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateAccessGroupResponse()
@@ -92,7 +94,8 @@ class ChdfsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateAccessRules", params)
+            headers = request.headers
+            body = self.call("CreateAccessRules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateAccessRulesResponse()
@@ -120,7 +123,8 @@ class ChdfsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateFileSystem", params)
+            headers = request.headers
+            body = self.call("CreateFileSystem", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateFileSystemResponse()
@@ -148,7 +152,8 @@ class ChdfsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateLifeCycleRules", params)
+            headers = request.headers
+            body = self.call("CreateLifeCycleRules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateLifeCycleRulesResponse()
@@ -176,7 +181,8 @@ class ChdfsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateMountPoint", params)
+            headers = request.headers
+            body = self.call("CreateMountPoint", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateMountPointResponse()
@@ -204,7 +210,8 @@ class ChdfsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateRestoreTasks", params)
+            headers = request.headers
+            body = self.call("CreateRestoreTasks", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateRestoreTasksResponse()
@@ -232,7 +239,8 @@ class ChdfsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteAccessGroup", params)
+            headers = request.headers
+            body = self.call("DeleteAccessGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteAccessGroupResponse()
@@ -260,7 +268,8 @@ class ChdfsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteAccessRules", params)
+            headers = request.headers
+            body = self.call("DeleteAccessRules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteAccessRulesResponse()
@@ -288,7 +297,8 @@ class ChdfsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteFileSystem", params)
+            headers = request.headers
+            body = self.call("DeleteFileSystem", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteFileSystemResponse()
@@ -316,7 +326,8 @@ class ChdfsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteLifeCycleRules", params)
+            headers = request.headers
+            body = self.call("DeleteLifeCycleRules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteLifeCycleRulesResponse()
@@ -344,7 +355,8 @@ class ChdfsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteMountPoint", params)
+            headers = request.headers
+            body = self.call("DeleteMountPoint", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteMountPointResponse()
@@ -372,7 +384,8 @@ class ChdfsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAccessGroup", params)
+            headers = request.headers
+            body = self.call("DescribeAccessGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAccessGroupResponse()
@@ -400,7 +413,8 @@ class ChdfsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAccessGroups", params)
+            headers = request.headers
+            body = self.call("DescribeAccessGroups", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAccessGroupsResponse()
@@ -428,7 +442,8 @@ class ChdfsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAccessRules", params)
+            headers = request.headers
+            body = self.call("DescribeAccessRules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAccessRulesResponse()
@@ -456,7 +471,8 @@ class ChdfsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeFileSystem", params)
+            headers = request.headers
+            body = self.call("DescribeFileSystem", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeFileSystemResponse()
@@ -484,7 +500,8 @@ class ChdfsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeFileSystems", params)
+            headers = request.headers
+            body = self.call("DescribeFileSystems", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeFileSystemsResponse()
@@ -512,7 +529,8 @@ class ChdfsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeLifeCycleRules", params)
+            headers = request.headers
+            body = self.call("DescribeLifeCycleRules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLifeCycleRulesResponse()
@@ -540,7 +558,8 @@ class ChdfsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeMountPoint", params)
+            headers = request.headers
+            body = self.call("DescribeMountPoint", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeMountPointResponse()
@@ -568,7 +587,8 @@ class ChdfsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeMountPoints", params)
+            headers = request.headers
+            body = self.call("DescribeMountPoints", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeMountPointsResponse()
@@ -596,7 +616,8 @@ class ChdfsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeResourceTags", params)
+            headers = request.headers
+            body = self.call("DescribeResourceTags", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeResourceTagsResponse()
@@ -624,7 +645,8 @@ class ChdfsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRestoreTasks", params)
+            headers = request.headers
+            body = self.call("DescribeRestoreTasks", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRestoreTasksResponse()
@@ -652,7 +674,8 @@ class ChdfsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DisassociateAccessGroups", params)
+            headers = request.headers
+            body = self.call("DisassociateAccessGroups", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DisassociateAccessGroupsResponse()
@@ -680,7 +703,8 @@ class ChdfsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyAccessGroup", params)
+            headers = request.headers
+            body = self.call("ModifyAccessGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAccessGroupResponse()
@@ -708,7 +732,8 @@ class ChdfsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyAccessRules", params)
+            headers = request.headers
+            body = self.call("ModifyAccessRules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAccessRulesResponse()
@@ -736,7 +761,8 @@ class ChdfsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyFileSystem", params)
+            headers = request.headers
+            body = self.call("ModifyFileSystem", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyFileSystemResponse()
@@ -764,7 +790,8 @@ class ChdfsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyLifeCycleRules", params)
+            headers = request.headers
+            body = self.call("ModifyLifeCycleRules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyLifeCycleRulesResponse()
@@ -792,7 +819,8 @@ class ChdfsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyMountPoint", params)
+            headers = request.headers
+            body = self.call("ModifyMountPoint", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyMountPointResponse()
@@ -820,7 +848,8 @@ class ChdfsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyResourceTags", params)
+            headers = request.headers
+            body = self.call("ModifyResourceTags", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyResourceTagsResponse()

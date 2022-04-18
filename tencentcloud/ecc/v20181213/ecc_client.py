@@ -37,7 +37,8 @@ class EccClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CorrectMultiImage", params)
+            headers = request.headers
+            body = self.call("CorrectMultiImage", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CorrectMultiImageResponse()
@@ -65,7 +66,8 @@ class EccClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTask", params)
+            headers = request.headers
+            body = self.call("DescribeTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTaskResponse()
@@ -94,7 +96,8 @@ class EccClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ECC", params)
+            headers = request.headers
+            body = self.call("ECC", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ECCResponse()
@@ -123,7 +126,8 @@ class EccClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("EHOCR", params)
+            headers = request.headers
+            body = self.call("EHOCR", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.EHOCRResponse()

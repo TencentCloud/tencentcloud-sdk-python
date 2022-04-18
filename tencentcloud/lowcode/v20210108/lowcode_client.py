@@ -36,7 +36,8 @@ class LowcodeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDataSourceList", params)
+            headers = request.headers
+            body = self.call("DescribeDataSourceList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDataSourceListResponse()

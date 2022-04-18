@@ -36,7 +36,8 @@ class EbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CheckRule", params)
+            headers = request.headers
+            body = self.call("CheckRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CheckRuleResponse()
@@ -64,7 +65,8 @@ class EbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CheckTransformation", params)
+            headers = request.headers
+            body = self.call("CheckTransformation", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CheckTransformationResponse()
@@ -92,7 +94,8 @@ class EbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateConnection", params)
+            headers = request.headers
+            body = self.call("CreateConnection", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateConnectionResponse()
@@ -120,7 +123,8 @@ class EbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateEventBus", params)
+            headers = request.headers
+            body = self.call("CreateEventBus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateEventBusResponse()
@@ -148,7 +152,8 @@ class EbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateRule", params)
+            headers = request.headers
+            body = self.call("CreateRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateRuleResponse()
@@ -176,7 +181,8 @@ class EbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateTarget", params)
+            headers = request.headers
+            body = self.call("CreateTarget", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateTargetResponse()
@@ -204,7 +210,8 @@ class EbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateTransformation", params)
+            headers = request.headers
+            body = self.call("CreateTransformation", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateTransformationResponse()
@@ -232,7 +239,8 @@ class EbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteConnection", params)
+            headers = request.headers
+            body = self.call("DeleteConnection", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteConnectionResponse()
@@ -260,7 +268,8 @@ class EbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteEventBus", params)
+            headers = request.headers
+            body = self.call("DeleteEventBus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteEventBusResponse()
@@ -288,7 +297,8 @@ class EbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteRule", params)
+            headers = request.headers
+            body = self.call("DeleteRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteRuleResponse()
@@ -316,7 +326,8 @@ class EbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteTarget", params)
+            headers = request.headers
+            body = self.call("DeleteTarget", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteTargetResponse()
@@ -344,7 +355,8 @@ class EbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteTransformation", params)
+            headers = request.headers
+            body = self.call("DeleteTransformation", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteTransformationResponse()
@@ -372,7 +384,8 @@ class EbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetEventBus", params)
+            headers = request.headers
+            body = self.call("GetEventBus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetEventBusResponse()
@@ -400,7 +413,8 @@ class EbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetRule", params)
+            headers = request.headers
+            body = self.call("GetRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetRuleResponse()
@@ -428,7 +442,8 @@ class EbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetTransformation", params)
+            headers = request.headers
+            body = self.call("GetTransformation", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetTransformationResponse()
@@ -456,7 +471,8 @@ class EbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ListConnections", params)
+            headers = request.headers
+            body = self.call("ListConnections", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListConnectionsResponse()
@@ -484,7 +500,8 @@ class EbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ListEventBuses", params)
+            headers = request.headers
+            body = self.call("ListEventBuses", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListEventBusesResponse()
@@ -512,7 +529,8 @@ class EbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ListRules", params)
+            headers = request.headers
+            body = self.call("ListRules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListRulesResponse()
@@ -540,7 +558,8 @@ class EbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ListTargets", params)
+            headers = request.headers
+            body = self.call("ListTargets", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListTargetsResponse()
@@ -568,7 +587,8 @@ class EbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("PublishEvent", params)
+            headers = request.headers
+            body = self.call("PublishEvent", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.PublishEventResponse()
@@ -596,7 +616,8 @@ class EbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("PutEvents", params)
+            headers = request.headers
+            body = self.call("PutEvents", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.PutEventsResponse()
@@ -624,7 +645,8 @@ class EbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateConnection", params)
+            headers = request.headers
+            body = self.call("UpdateConnection", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateConnectionResponse()
@@ -652,7 +674,8 @@ class EbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateEventBus", params)
+            headers = request.headers
+            body = self.call("UpdateEventBus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateEventBusResponse()
@@ -680,7 +703,8 @@ class EbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateRule", params)
+            headers = request.headers
+            body = self.call("UpdateRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateRuleResponse()
@@ -708,7 +732,8 @@ class EbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateTarget", params)
+            headers = request.headers
+            body = self.call("UpdateTarget", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateTargetResponse()
@@ -736,7 +761,8 @@ class EbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateTransformation", params)
+            headers = request.headers
+            body = self.call("UpdateTransformation", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateTransformationResponse()

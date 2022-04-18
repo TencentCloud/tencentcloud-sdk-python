@@ -36,7 +36,8 @@ class TcbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("BindEnvGateway", params)
+            headers = request.headers
+            body = self.call("BindEnvGateway", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.BindEnvGatewayResponse()
@@ -64,7 +65,8 @@ class TcbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CheckTcbService", params)
+            headers = request.headers
+            body = self.call("CheckTcbService", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CheckTcbServiceResponse()
@@ -92,7 +94,8 @@ class TcbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CommonServiceAPI", params)
+            headers = request.headers
+            body = self.call("CommonServiceAPI", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CommonServiceAPIResponse()
@@ -120,7 +123,8 @@ class TcbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateAndDeployCloudBaseProject", params)
+            headers = request.headers
+            body = self.call("CreateAndDeployCloudBaseProject", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateAndDeployCloudBaseProjectResponse()
@@ -148,7 +152,8 @@ class TcbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateAuthDomain", params)
+            headers = request.headers
+            body = self.call("CreateAuthDomain", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateAuthDomainResponse()
@@ -176,7 +181,8 @@ class TcbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateCloudBaseRunResource", params)
+            headers = request.headers
+            body = self.call("CreateCloudBaseRunResource", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateCloudBaseRunResourceResponse()
@@ -204,7 +210,8 @@ class TcbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateCloudBaseRunServerVersion", params)
+            headers = request.headers
+            body = self.call("CreateCloudBaseRunServerVersion", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateCloudBaseRunServerVersionResponse()
@@ -232,7 +239,8 @@ class TcbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateHostingDomain", params)
+            headers = request.headers
+            body = self.call("CreateHostingDomain", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateHostingDomainResponse()
@@ -260,7 +268,8 @@ class TcbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreatePostpayPackage", params)
+            headers = request.headers
+            body = self.call("CreatePostpayPackage", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreatePostpayPackageResponse()
@@ -288,7 +297,8 @@ class TcbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateStandaloneGateway", params)
+            headers = request.headers
+            body = self.call("CreateStandaloneGateway", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateStandaloneGatewayResponse()
@@ -316,7 +326,8 @@ class TcbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateStaticStore", params)
+            headers = request.headers
+            body = self.call("CreateStaticStore", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateStaticStoreResponse()
@@ -344,7 +355,8 @@ class TcbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateWxCloudBaseRunEnv", params)
+            headers = request.headers
+            body = self.call("CreateWxCloudBaseRunEnv", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateWxCloudBaseRunEnvResponse()
@@ -372,7 +384,8 @@ class TcbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateWxCloudBaseRunServerDBCluster", params)
+            headers = request.headers
+            body = self.call("CreateWxCloudBaseRunServerDBCluster", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateWxCloudBaseRunServerDBClusterResponse()
@@ -400,7 +413,8 @@ class TcbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteCloudBaseProjectLatestVersion", params)
+            headers = request.headers
+            body = self.call("DeleteCloudBaseProjectLatestVersion", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteCloudBaseProjectLatestVersionResponse()
@@ -428,7 +442,8 @@ class TcbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteCloudBaseRunServerVersion", params)
+            headers = request.headers
+            body = self.call("DeleteCloudBaseRunServerVersion", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteCloudBaseRunServerVersionResponse()
@@ -456,7 +471,8 @@ class TcbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteEndUser", params)
+            headers = request.headers
+            body = self.call("DeleteEndUser", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteEndUserResponse()
@@ -484,7 +500,8 @@ class TcbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteWxGatewayRoute", params)
+            headers = request.headers
+            body = self.call("DeleteWxGatewayRoute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteWxGatewayRouteResponse()
@@ -512,7 +529,8 @@ class TcbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeActivityInfo", params)
+            headers = request.headers
+            body = self.call("DescribeActivityInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeActivityInfoResponse()
@@ -540,7 +558,8 @@ class TcbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeActivityRecord", params)
+            headers = request.headers
+            body = self.call("DescribeActivityRecord", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeActivityRecordResponse()
@@ -568,7 +587,8 @@ class TcbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAuthDomains", params)
+            headers = request.headers
+            body = self.call("DescribeAuthDomains", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAuthDomainsResponse()
@@ -596,7 +616,8 @@ class TcbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCloudBaseBuildService", params)
+            headers = request.headers
+            body = self.call("DescribeCloudBaseBuildService", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCloudBaseBuildServiceResponse()
@@ -624,7 +645,8 @@ class TcbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCloudBaseProjectLatestVersionList", params)
+            headers = request.headers
+            body = self.call("DescribeCloudBaseProjectLatestVersionList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCloudBaseProjectLatestVersionListResponse()
@@ -652,7 +674,8 @@ class TcbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCloudBaseProjectVersionList", params)
+            headers = request.headers
+            body = self.call("DescribeCloudBaseProjectVersionList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCloudBaseProjectVersionListResponse()
@@ -680,7 +703,8 @@ class TcbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCloudBaseRunAllVpcs", params)
+            headers = request.headers
+            body = self.call("DescribeCloudBaseRunAllVpcs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCloudBaseRunAllVpcsResponse()
@@ -708,7 +732,8 @@ class TcbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCloudBaseRunConfForGateWay", params)
+            headers = request.headers
+            body = self.call("DescribeCloudBaseRunConfForGateWay", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCloudBaseRunConfForGateWayResponse()
@@ -736,7 +761,8 @@ class TcbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCloudBaseRunOneClickTaskExternal", params)
+            headers = request.headers
+            body = self.call("DescribeCloudBaseRunOneClickTaskExternal", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCloudBaseRunOneClickTaskExternalResponse()
@@ -764,7 +790,8 @@ class TcbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCloudBaseRunOperationTypes", params)
+            headers = request.headers
+            body = self.call("DescribeCloudBaseRunOperationTypes", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCloudBaseRunOperationTypesResponse()
@@ -792,7 +819,8 @@ class TcbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCloudBaseRunPodList", params)
+            headers = request.headers
+            body = self.call("DescribeCloudBaseRunPodList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCloudBaseRunPodListResponse()
@@ -820,7 +848,8 @@ class TcbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCloudBaseRunResource", params)
+            headers = request.headers
+            body = self.call("DescribeCloudBaseRunResource", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCloudBaseRunResourceResponse()
@@ -848,7 +877,8 @@ class TcbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCloudBaseRunResourceForExtend", params)
+            headers = request.headers
+            body = self.call("DescribeCloudBaseRunResourceForExtend", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCloudBaseRunResourceForExtendResponse()
@@ -876,7 +906,8 @@ class TcbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCloudBaseRunServer", params)
+            headers = request.headers
+            body = self.call("DescribeCloudBaseRunServer", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCloudBaseRunServerResponse()
@@ -904,7 +935,8 @@ class TcbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCloudBaseRunServerDomainName", params)
+            headers = request.headers
+            body = self.call("DescribeCloudBaseRunServerDomainName", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCloudBaseRunServerDomainNameResponse()
@@ -932,7 +964,8 @@ class TcbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCloudBaseRunServerVersion", params)
+            headers = request.headers
+            body = self.call("DescribeCloudBaseRunServerVersion", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCloudBaseRunServerVersionResponse()
@@ -960,7 +993,8 @@ class TcbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCloudBaseRunVersion", params)
+            headers = request.headers
+            body = self.call("DescribeCloudBaseRunVersion", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCloudBaseRunVersionResponse()
@@ -988,7 +1022,8 @@ class TcbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCloudBaseRunVersionRsByCondition", params)
+            headers = request.headers
+            body = self.call("DescribeCloudBaseRunVersionRsByCondition", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCloudBaseRunVersionRsByConditionResponse()
@@ -1016,7 +1051,8 @@ class TcbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCloudBaseRunVersionSnapshot", params)
+            headers = request.headers
+            body = self.call("DescribeCloudBaseRunVersionSnapshot", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCloudBaseRunVersionSnapshotResponse()
@@ -1044,7 +1080,8 @@ class TcbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCurveData", params)
+            headers = request.headers
+            body = self.call("DescribeCurveData", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCurveDataResponse()
@@ -1072,7 +1109,8 @@ class TcbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDatabaseACL", params)
+            headers = request.headers
+            body = self.call("DescribeDatabaseACL", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDatabaseACLResponse()
@@ -1100,7 +1138,8 @@ class TcbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDownloadFile", params)
+            headers = request.headers
+            body = self.call("DescribeDownloadFile", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDownloadFileResponse()
@@ -1128,7 +1167,8 @@ class TcbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeEndUserLoginStatistic", params)
+            headers = request.headers
+            body = self.call("DescribeEndUserLoginStatistic", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeEndUserLoginStatisticResponse()
@@ -1156,7 +1196,8 @@ class TcbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeEndUserStatistic", params)
+            headers = request.headers
+            body = self.call("DescribeEndUserStatistic", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeEndUserStatisticResponse()
@@ -1184,7 +1225,8 @@ class TcbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeEndUsers", params)
+            headers = request.headers
+            body = self.call("DescribeEndUsers", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeEndUsersResponse()
@@ -1212,7 +1254,8 @@ class TcbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeEnvDealRegion", params)
+            headers = request.headers
+            body = self.call("DescribeEnvDealRegion", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeEnvDealRegionResponse()
@@ -1240,7 +1283,8 @@ class TcbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeEnvFreeQuota", params)
+            headers = request.headers
+            body = self.call("DescribeEnvFreeQuota", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeEnvFreeQuotaResponse()
@@ -1268,7 +1312,8 @@ class TcbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeEnvLimit", params)
+            headers = request.headers
+            body = self.call("DescribeEnvLimit", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeEnvLimitResponse()
@@ -1296,7 +1341,8 @@ class TcbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeEnvPostpaidDeduct", params)
+            headers = request.headers
+            body = self.call("DescribeEnvPostpaidDeduct", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeEnvPostpaidDeductResponse()
@@ -1324,7 +1370,8 @@ class TcbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeEnvs", params)
+            headers = request.headers
+            body = self.call("DescribeEnvs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeEnvsResponse()
@@ -1352,7 +1399,8 @@ class TcbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeExtensionUploadInfo", params)
+            headers = request.headers
+            body = self.call("DescribeExtensionUploadInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeExtensionUploadInfoResponse()
@@ -1380,7 +1428,8 @@ class TcbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeExtraPkgBillingInfo", params)
+            headers = request.headers
+            body = self.call("DescribeExtraPkgBillingInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeExtraPkgBillingInfoResponse()
@@ -1408,7 +1457,8 @@ class TcbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeHostingDomainTask", params)
+            headers = request.headers
+            body = self.call("DescribeHostingDomainTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeHostingDomainTaskResponse()
@@ -1436,7 +1486,8 @@ class TcbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePostpayFreeQuotas", params)
+            headers = request.headers
+            body = self.call("DescribePostpayFreeQuotas", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePostpayFreeQuotasResponse()
@@ -1464,7 +1515,8 @@ class TcbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePostpayPackageFreeQuotas", params)
+            headers = request.headers
+            body = self.call("DescribePostpayPackageFreeQuotas", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePostpayPackageFreeQuotasResponse()
@@ -1492,7 +1544,8 @@ class TcbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeQuotaData", params)
+            headers = request.headers
+            body = self.call("DescribeQuotaData", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeQuotaDataResponse()
@@ -1523,7 +1576,8 @@ class TcbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSmsQuotas", params)
+            headers = request.headers
+            body = self.call("DescribeSmsQuotas", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSmsQuotasResponse()
@@ -1551,7 +1605,8 @@ class TcbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSpecialCostItems", params)
+            headers = request.headers
+            body = self.call("DescribeSpecialCostItems", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSpecialCostItemsResponse()
@@ -1579,7 +1634,8 @@ class TcbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeStandaloneGateway", params)
+            headers = request.headers
+            body = self.call("DescribeStandaloneGateway", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeStandaloneGatewayResponse()
@@ -1607,7 +1663,8 @@ class TcbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeStandaloneGatewayPackage", params)
+            headers = request.headers
+            body = self.call("DescribeStandaloneGatewayPackage", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeStandaloneGatewayPackageResponse()
@@ -1635,7 +1692,8 @@ class TcbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeUserActivityInfo", params)
+            headers = request.headers
+            body = self.call("DescribeUserActivityInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeUserActivityInfoResponse()
@@ -1663,7 +1721,8 @@ class TcbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeWxCloudBaseRunEnvs", params)
+            headers = request.headers
+            body = self.call("DescribeWxCloudBaseRunEnvs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeWxCloudBaseRunEnvsResponse()
@@ -1691,7 +1750,8 @@ class TcbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeWxCloudBaseRunSubNets", params)
+            headers = request.headers
+            body = self.call("DescribeWxCloudBaseRunSubNets", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeWxCloudBaseRunSubNetsResponse()
@@ -1719,7 +1779,8 @@ class TcbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DestroyEnv", params)
+            headers = request.headers
+            body = self.call("DestroyEnv", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DestroyEnvResponse()
@@ -1747,7 +1808,8 @@ class TcbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DestroyStandaloneGateway", params)
+            headers = request.headers
+            body = self.call("DestroyStandaloneGateway", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DestroyStandaloneGatewayResponse()
@@ -1775,7 +1837,8 @@ class TcbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DestroyStaticStore", params)
+            headers = request.headers
+            body = self.call("DestroyStaticStore", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DestroyStaticStoreResponse()
@@ -1803,7 +1866,8 @@ class TcbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("EstablishCloudBaseRunServer", params)
+            headers = request.headers
+            body = self.call("EstablishCloudBaseRunServer", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.EstablishCloudBaseRunServerResponse()
@@ -1831,7 +1895,8 @@ class TcbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("EstablishWxGatewayRoute", params)
+            headers = request.headers
+            body = self.call("EstablishWxGatewayRoute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.EstablishWxGatewayRouteResponse()
@@ -1859,7 +1924,8 @@ class TcbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("FreezeCloudBaseRunServers", params)
+            headers = request.headers
+            body = self.call("FreezeCloudBaseRunServers", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.FreezeCloudBaseRunServersResponse()
@@ -1887,7 +1953,8 @@ class TcbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyCloudBaseRunServerFlowConf", params)
+            headers = request.headers
+            body = self.call("ModifyCloudBaseRunServerFlowConf", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyCloudBaseRunServerFlowConfResponse()
@@ -1915,7 +1982,8 @@ class TcbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyCloudBaseRunServerVersion", params)
+            headers = request.headers
+            body = self.call("ModifyCloudBaseRunServerVersion", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyCloudBaseRunServerVersionResponse()
@@ -1943,7 +2011,8 @@ class TcbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyDatabaseACL", params)
+            headers = request.headers
+            body = self.call("ModifyDatabaseACL", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDatabaseACLResponse()
@@ -1971,7 +2040,8 @@ class TcbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyEndUser", params)
+            headers = request.headers
+            body = self.call("ModifyEndUser", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyEndUserResponse()
@@ -1999,7 +2069,8 @@ class TcbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyEnv", params)
+            headers = request.headers
+            body = self.call("ModifyEnv", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyEnvResponse()
@@ -2027,7 +2098,8 @@ class TcbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ReinstateEnv", params)
+            headers = request.headers
+            body = self.call("ReinstateEnv", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ReinstateEnvResponse()
@@ -2055,7 +2127,8 @@ class TcbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ReplaceActivityRecord", params)
+            headers = request.headers
+            body = self.call("ReplaceActivityRecord", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ReplaceActivityRecordResponse()
@@ -2083,7 +2156,8 @@ class TcbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RollUpdateCloudBaseRunServerVersion", params)
+            headers = request.headers
+            body = self.call("RollUpdateCloudBaseRunServerVersion", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RollUpdateCloudBaseRunServerVersionResponse()
@@ -2111,7 +2185,8 @@ class TcbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SearchClsLog", params)
+            headers = request.headers
+            body = self.call("SearchClsLog", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SearchClsLogResponse()
@@ -2139,7 +2214,8 @@ class TcbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("TurnOffStandaloneGateway", params)
+            headers = request.headers
+            body = self.call("TurnOffStandaloneGateway", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.TurnOffStandaloneGatewayResponse()
@@ -2167,7 +2243,8 @@ class TcbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("TurnOnStandaloneGateway", params)
+            headers = request.headers
+            body = self.call("TurnOnStandaloneGateway", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.TurnOnStandaloneGatewayResponse()
@@ -2195,7 +2272,8 @@ class TcbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UnfreezeCloudBaseRunServers", params)
+            headers = request.headers
+            body = self.call("UnfreezeCloudBaseRunServers", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UnfreezeCloudBaseRunServersResponse()

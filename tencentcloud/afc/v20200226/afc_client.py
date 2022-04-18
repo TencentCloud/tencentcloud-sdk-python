@@ -36,7 +36,8 @@ class AfcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetAntiFraudVip", params)
+            headers = request.headers
+            body = self.call("GetAntiFraudVip", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetAntiFraudVipResponse()
@@ -66,7 +67,8 @@ class AfcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryAntiFraudVip", params)
+            headers = request.headers
+            body = self.call("QueryAntiFraudVip", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryAntiFraudVipResponse()

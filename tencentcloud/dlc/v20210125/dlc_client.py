@@ -36,7 +36,8 @@ class DlcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AddUsersToWorkGroup", params)
+            headers = request.headers
+            body = self.call("AddUsersToWorkGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AddUsersToWorkGroupResponse()
@@ -64,7 +65,8 @@ class DlcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AttachUserPolicy", params)
+            headers = request.headers
+            body = self.call("AttachUserPolicy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AttachUserPolicyResponse()
@@ -92,7 +94,8 @@ class DlcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AttachWorkGroupPolicy", params)
+            headers = request.headers
+            body = self.call("AttachWorkGroupPolicy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AttachWorkGroupPolicyResponse()
@@ -120,7 +123,8 @@ class DlcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("BindWorkGroupsToUser", params)
+            headers = request.headers
+            body = self.call("BindWorkGroupsToUser", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.BindWorkGroupsToUserResponse()
@@ -148,7 +152,8 @@ class DlcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CancelTask", params)
+            headers = request.headers
+            body = self.call("CancelTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CancelTaskResponse()
@@ -176,7 +181,8 @@ class DlcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateDatabase", params)
+            headers = request.headers
+            body = self.call("CreateDatabase", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateDatabaseResponse()
@@ -204,7 +210,8 @@ class DlcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateExportTask", params)
+            headers = request.headers
+            body = self.call("CreateExportTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateExportTaskResponse()
@@ -232,7 +239,8 @@ class DlcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateImportTask", params)
+            headers = request.headers
+            body = self.call("CreateImportTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateImportTaskResponse()
@@ -260,7 +268,8 @@ class DlcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateScript", params)
+            headers = request.headers
+            body = self.call("CreateScript", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateScriptResponse()
@@ -288,7 +297,8 @@ class DlcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateStoreLocation", params)
+            headers = request.headers
+            body = self.call("CreateStoreLocation", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateStoreLocationResponse()
@@ -316,7 +326,8 @@ class DlcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateTable", params)
+            headers = request.headers
+            body = self.call("CreateTable", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateTableResponse()
@@ -344,7 +355,8 @@ class DlcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateTask", params)
+            headers = request.headers
+            body = self.call("CreateTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateTaskResponse()
@@ -372,7 +384,8 @@ class DlcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateTasks", params)
+            headers = request.headers
+            body = self.call("CreateTasks", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateTasksResponse()
@@ -400,7 +413,8 @@ class DlcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateTasksInOrder", params)
+            headers = request.headers
+            body = self.call("CreateTasksInOrder", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateTasksInOrderResponse()
@@ -428,7 +442,8 @@ class DlcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateUser", params)
+            headers = request.headers
+            body = self.call("CreateUser", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateUserResponse()
@@ -456,7 +471,8 @@ class DlcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateWorkGroup", params)
+            headers = request.headers
+            body = self.call("CreateWorkGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateWorkGroupResponse()
@@ -484,7 +500,8 @@ class DlcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteScript", params)
+            headers = request.headers
+            body = self.call("DeleteScript", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteScriptResponse()
@@ -512,7 +529,8 @@ class DlcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteUser", params)
+            headers = request.headers
+            body = self.call("DeleteUser", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteUserResponse()
@@ -540,7 +558,8 @@ class DlcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteUsersFromWorkGroup", params)
+            headers = request.headers
+            body = self.call("DeleteUsersFromWorkGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteUsersFromWorkGroupResponse()
@@ -568,7 +587,8 @@ class DlcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteWorkGroup", params)
+            headers = request.headers
+            body = self.call("DeleteWorkGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteWorkGroupResponse()
@@ -596,7 +616,8 @@ class DlcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDatabases", params)
+            headers = request.headers
+            body = self.call("DescribeDatabases", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDatabasesResponse()
@@ -624,7 +645,8 @@ class DlcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeScripts", params)
+            headers = request.headers
+            body = self.call("DescribeScripts", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeScriptsResponse()
@@ -652,7 +674,8 @@ class DlcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeStoreLocation", params)
+            headers = request.headers
+            body = self.call("DescribeStoreLocation", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeStoreLocationResponse()
@@ -680,7 +703,8 @@ class DlcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTable", params)
+            headers = request.headers
+            body = self.call("DescribeTable", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTableResponse()
@@ -708,7 +732,8 @@ class DlcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTables", params)
+            headers = request.headers
+            body = self.call("DescribeTables", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTablesResponse()
@@ -736,7 +761,8 @@ class DlcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTaskResult", params)
+            headers = request.headers
+            body = self.call("DescribeTaskResult", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTaskResultResponse()
@@ -764,7 +790,8 @@ class DlcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTasks", params)
+            headers = request.headers
+            body = self.call("DescribeTasks", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTasksResponse()
@@ -792,7 +819,8 @@ class DlcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeUsers", params)
+            headers = request.headers
+            body = self.call("DescribeUsers", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeUsersResponse()
@@ -820,7 +848,8 @@ class DlcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeViews", params)
+            headers = request.headers
+            body = self.call("DescribeViews", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeViewsResponse()
@@ -848,7 +877,8 @@ class DlcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeWorkGroups", params)
+            headers = request.headers
+            body = self.call("DescribeWorkGroups", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeWorkGroupsResponse()
@@ -876,7 +906,8 @@ class DlcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DetachUserPolicy", params)
+            headers = request.headers
+            body = self.call("DetachUserPolicy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DetachUserPolicyResponse()
@@ -904,7 +935,8 @@ class DlcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DetachWorkGroupPolicy", params)
+            headers = request.headers
+            body = self.call("DetachWorkGroupPolicy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DetachWorkGroupPolicyResponse()
@@ -932,7 +964,8 @@ class DlcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyUser", params)
+            headers = request.headers
+            body = self.call("ModifyUser", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyUserResponse()
@@ -960,7 +993,8 @@ class DlcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyWorkGroup", params)
+            headers = request.headers
+            body = self.call("ModifyWorkGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyWorkGroupResponse()
@@ -988,7 +1022,8 @@ class DlcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UnbindWorkGroupsFromUser", params)
+            headers = request.headers
+            body = self.call("UnbindWorkGroupsFromUser", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UnbindWorkGroupsFromUserResponse()

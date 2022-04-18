@@ -36,7 +36,8 @@ class AaiClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("Chat", params)
+            headers = request.headers
+            body = self.call("Chat", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ChatResponse()
@@ -64,7 +65,8 @@ class AaiClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SentenceRecognition", params)
+            headers = request.headers
+            body = self.call("SentenceRecognition", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SentenceRecognitionResponse()
@@ -92,7 +94,8 @@ class AaiClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SimultaneousInterpreting", params)
+            headers = request.headers
+            body = self.call("SimultaneousInterpreting", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SimultaneousInterpretingResponse()
@@ -122,7 +125,8 @@ class AaiClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("TextToVoice", params)
+            headers = request.headers
+            body = self.call("TextToVoice", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.TextToVoiceResponse()

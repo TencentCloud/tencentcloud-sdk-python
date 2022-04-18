@@ -36,7 +36,8 @@ class TkgdqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeEntity", params)
+            headers = request.headers
+            body = self.call("DescribeEntity", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeEntityResponse()
@@ -64,7 +65,8 @@ class TkgdqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRelation", params)
+            headers = request.headers
+            body = self.call("DescribeRelation", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRelationResponse()
@@ -92,7 +94,8 @@ class TkgdqClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTriple", params)
+            headers = request.headers
+            body = self.call("DescribeTriple", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTripleResponse()

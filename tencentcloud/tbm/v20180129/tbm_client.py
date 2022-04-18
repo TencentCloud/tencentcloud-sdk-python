@@ -36,7 +36,8 @@ class TbmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBrandCommentCount", params)
+            headers = request.headers
+            body = self.call("DescribeBrandCommentCount", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBrandCommentCountResponse()
@@ -64,7 +65,8 @@ class TbmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBrandExposure", params)
+            headers = request.headers
+            body = self.call("DescribeBrandExposure", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBrandExposureResponse()
@@ -92,7 +94,8 @@ class TbmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBrandMediaReport", params)
+            headers = request.headers
+            body = self.call("DescribeBrandMediaReport", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBrandMediaReportResponse()
@@ -120,7 +123,8 @@ class TbmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBrandNegComments", params)
+            headers = request.headers
+            body = self.call("DescribeBrandNegComments", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBrandNegCommentsResponse()
@@ -148,7 +152,8 @@ class TbmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBrandPosComments", params)
+            headers = request.headers
+            body = self.call("DescribeBrandPosComments", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBrandPosCommentsResponse()
@@ -176,7 +181,8 @@ class TbmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBrandSocialOpinion", params)
+            headers = request.headers
+            body = self.call("DescribeBrandSocialOpinion", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBrandSocialOpinionResponse()
@@ -204,7 +210,8 @@ class TbmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBrandSocialReport", params)
+            headers = request.headers
+            body = self.call("DescribeBrandSocialReport", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBrandSocialReportResponse()
@@ -232,7 +239,8 @@ class TbmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeIndustryNews", params)
+            headers = request.headers
+            body = self.call("DescribeIndustryNews", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeIndustryNewsResponse()
@@ -260,7 +268,8 @@ class TbmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeUserPortrait", params)
+            headers = request.headers
+            body = self.call("DescribeUserPortrait", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeUserPortraitResponse()

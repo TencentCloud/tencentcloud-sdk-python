@@ -36,7 +36,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AttachCcnInstances", params)
+            headers = request.headers
+            body = self.call("AttachCcnInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AttachCcnInstancesResponse()
@@ -64,7 +65,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CopyFleet", params)
+            headers = request.headers
+            body = self.call("CopyFleet", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CopyFleetResponse()
@@ -92,7 +94,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateAlias", params)
+            headers = request.headers
+            body = self.call("CreateAlias", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateAliasResponse()
@@ -133,7 +136,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateAsset", params)
+            headers = request.headers
+            body = self.call("CreateAsset", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateAssetResponse()
@@ -161,7 +165,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateAssetWithImage", params)
+            headers = request.headers
+            body = self.call("CreateAssetWithImage", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateAssetWithImageResponse()
@@ -189,7 +194,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateFleet", params)
+            headers = request.headers
+            body = self.call("CreateFleet", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateFleetResponse()
@@ -217,7 +223,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateGameServerSession", params)
+            headers = request.headers
+            body = self.call("CreateGameServerSession", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateGameServerSessionResponse()
@@ -245,7 +252,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateGameServerSessionQueue", params)
+            headers = request.headers
+            body = self.call("CreateGameServerSessionQueue", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateGameServerSessionQueueResponse()
@@ -273,7 +281,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteAlias", params)
+            headers = request.headers
+            body = self.call("DeleteAlias", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteAliasResponse()
@@ -301,7 +310,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteAsset", params)
+            headers = request.headers
+            body = self.call("DeleteAsset", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteAssetResponse()
@@ -329,7 +339,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteFleet", params)
+            headers = request.headers
+            body = self.call("DeleteFleet", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteFleetResponse()
@@ -357,7 +368,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteGameServerSessionQueue", params)
+            headers = request.headers
+            body = self.call("DeleteGameServerSessionQueue", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteGameServerSessionQueueResponse()
@@ -387,7 +399,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteScalingPolicy", params)
+            headers = request.headers
+            body = self.call("DeleteScalingPolicy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteScalingPolicyResponse()
@@ -415,7 +428,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteTimerScalingPolicy", params)
+            headers = request.headers
+            body = self.call("DeleteTimerScalingPolicy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteTimerScalingPolicyResponse()
@@ -443,7 +457,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAlias", params)
+            headers = request.headers
+            body = self.call("DescribeAlias", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAliasResponse()
@@ -471,7 +486,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAsset", params)
+            headers = request.headers
+            body = self.call("DescribeAsset", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAssetResponse()
@@ -499,7 +515,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAssetSystems", params)
+            headers = request.headers
+            body = self.call("DescribeAssetSystems", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAssetSystemsResponse()
@@ -527,7 +544,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAssets", params)
+            headers = request.headers
+            body = self.call("DescribeAssets", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAssetsResponse()
@@ -555,7 +573,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCcnInstances", params)
+            headers = request.headers
+            body = self.call("DescribeCcnInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCcnInstancesResponse()
@@ -583,7 +602,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeFleetAttributes", params)
+            headers = request.headers
+            body = self.call("DescribeFleetAttributes", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeFleetAttributesResponse()
@@ -611,7 +631,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeFleetCapacity", params)
+            headers = request.headers
+            body = self.call("DescribeFleetCapacity", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeFleetCapacityResponse()
@@ -639,7 +660,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeFleetEvents", params)
+            headers = request.headers
+            body = self.call("DescribeFleetEvents", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeFleetEventsResponse()
@@ -667,7 +689,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeFleetPortSettings", params)
+            headers = request.headers
+            body = self.call("DescribeFleetPortSettings", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeFleetPortSettingsResponse()
@@ -695,7 +718,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeFleetRelatedResources", params)
+            headers = request.headers
+            body = self.call("DescribeFleetRelatedResources", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeFleetRelatedResourcesResponse()
@@ -723,7 +747,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeFleetStatisticDetails", params)
+            headers = request.headers
+            body = self.call("DescribeFleetStatisticDetails", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeFleetStatisticDetailsResponse()
@@ -751,7 +776,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeFleetStatisticFlows", params)
+            headers = request.headers
+            body = self.call("DescribeFleetStatisticFlows", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeFleetStatisticFlowsResponse()
@@ -779,7 +805,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeFleetStatisticSummary", params)
+            headers = request.headers
+            body = self.call("DescribeFleetStatisticSummary", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeFleetStatisticSummaryResponse()
@@ -807,7 +834,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeFleetUtilization", params)
+            headers = request.headers
+            body = self.call("DescribeFleetUtilization", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeFleetUtilizationResponse()
@@ -835,7 +863,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeGameServerSessionDetails", params)
+            headers = request.headers
+            body = self.call("DescribeGameServerSessionDetails", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeGameServerSessionDetailsResponse()
@@ -863,7 +892,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeGameServerSessionPlacement", params)
+            headers = request.headers
+            body = self.call("DescribeGameServerSessionPlacement", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeGameServerSessionPlacementResponse()
@@ -891,7 +921,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeGameServerSessionQueues", params)
+            headers = request.headers
+            body = self.call("DescribeGameServerSessionQueues", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeGameServerSessionQueuesResponse()
@@ -919,7 +950,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeGameServerSessions", params)
+            headers = request.headers
+            body = self.call("DescribeGameServerSessions", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeGameServerSessionsResponse()
@@ -947,7 +979,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInstanceLimit", params)
+            headers = request.headers
+            body = self.call("DescribeInstanceLimit", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInstanceLimitResponse()
@@ -975,7 +1008,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInstanceTypes", params)
+            headers = request.headers
+            body = self.call("DescribeInstanceTypes", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInstanceTypesResponse()
@@ -1003,7 +1037,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInstances", params)
+            headers = request.headers
+            body = self.call("DescribeInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInstancesResponse()
@@ -1031,7 +1066,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInstancesExtend", params)
+            headers = request.headers
+            body = self.call("DescribeInstancesExtend", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInstancesExtendResponse()
@@ -1059,7 +1095,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePlayerSessions", params)
+            headers = request.headers
+            body = self.call("DescribePlayerSessions", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePlayerSessionsResponse()
@@ -1087,7 +1124,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRuntimeConfiguration", params)
+            headers = request.headers
+            body = self.call("DescribeRuntimeConfiguration", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRuntimeConfigurationResponse()
@@ -1115,7 +1153,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeScalingPolicies", params)
+            headers = request.headers
+            body = self.call("DescribeScalingPolicies", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeScalingPoliciesResponse()
@@ -1143,7 +1182,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTimerScalingPolicies", params)
+            headers = request.headers
+            body = self.call("DescribeTimerScalingPolicies", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTimerScalingPoliciesResponse()
@@ -1171,7 +1211,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeUserQuota", params)
+            headers = request.headers
+            body = self.call("DescribeUserQuota", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeUserQuotaResponse()
@@ -1199,7 +1240,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeUserQuotas", params)
+            headers = request.headers
+            body = self.call("DescribeUserQuotas", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeUserQuotasResponse()
@@ -1227,7 +1269,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DetachCcnInstances", params)
+            headers = request.headers
+            body = self.call("DetachCcnInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DetachCcnInstancesResponse()
@@ -1255,7 +1298,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("EndGameServerSessionAndProcess", params)
+            headers = request.headers
+            body = self.call("EndGameServerSessionAndProcess", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.EndGameServerSessionAndProcessResponse()
@@ -1283,7 +1327,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetGameServerInstanceLogUrl", params)
+            headers = request.headers
+            body = self.call("GetGameServerInstanceLogUrl", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetGameServerInstanceLogUrlResponse()
@@ -1311,7 +1356,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetGameServerSessionLogUrl", params)
+            headers = request.headers
+            body = self.call("GetGameServerSessionLogUrl", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetGameServerSessionLogUrlResponse()
@@ -1339,7 +1385,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetInstanceAccess", params)
+            headers = request.headers
+            body = self.call("GetInstanceAccess", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetInstanceAccessResponse()
@@ -1368,7 +1415,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetUploadCredentials", params)
+            headers = request.headers
+            body = self.call("GetUploadCredentials", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetUploadCredentialsResponse()
@@ -1396,7 +1444,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetUploadFederationToken", params)
+            headers = request.headers
+            body = self.call("GetUploadFederationToken", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetUploadFederationTokenResponse()
@@ -1424,7 +1473,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("JoinGameServerSession", params)
+            headers = request.headers
+            body = self.call("JoinGameServerSession", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.JoinGameServerSessionResponse()
@@ -1452,7 +1502,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("JoinGameServerSessionBatch", params)
+            headers = request.headers
+            body = self.call("JoinGameServerSessionBatch", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.JoinGameServerSessionBatchResponse()
@@ -1480,7 +1531,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ListAliases", params)
+            headers = request.headers
+            body = self.call("ListAliases", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListAliasesResponse()
@@ -1508,7 +1560,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ListFleets", params)
+            headers = request.headers
+            body = self.call("ListFleets", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListFleetsResponse()
@@ -1633,7 +1686,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("PutScalingPolicy", params)
+            headers = request.headers
+            body = self.call("PutScalingPolicy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.PutScalingPolicyResponse()
@@ -1663,7 +1717,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("PutTimerScalingPolicy", params)
+            headers = request.headers
+            body = self.call("PutTimerScalingPolicy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.PutTimerScalingPolicyResponse()
@@ -1691,7 +1746,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ResolveAlias", params)
+            headers = request.headers
+            body = self.call("ResolveAlias", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ResolveAliasResponse()
@@ -1719,7 +1775,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SearchGameServerSessions", params)
+            headers = request.headers
+            body = self.call("SearchGameServerSessions", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SearchGameServerSessionsResponse()
@@ -1749,7 +1806,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SetServerReserved", params)
+            headers = request.headers
+            body = self.call("SetServerReserved", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SetServerReservedResponse()
@@ -1777,7 +1835,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SetServerWeight", params)
+            headers = request.headers
+            body = self.call("SetServerWeight", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SetServerWeightResponse()
@@ -1805,7 +1864,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("StartFleetActions", params)
+            headers = request.headers
+            body = self.call("StartFleetActions", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StartFleetActionsResponse()
@@ -1833,7 +1893,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("StartGameServerSessionPlacement", params)
+            headers = request.headers
+            body = self.call("StartGameServerSessionPlacement", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StartGameServerSessionPlacementResponse()
@@ -1861,7 +1922,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("StopFleetActions", params)
+            headers = request.headers
+            body = self.call("StopFleetActions", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StopFleetActionsResponse()
@@ -1889,7 +1951,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("StopGameServerSessionPlacement", params)
+            headers = request.headers
+            body = self.call("StopGameServerSessionPlacement", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StopGameServerSessionPlacementResponse()
@@ -1917,7 +1980,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateAlias", params)
+            headers = request.headers
+            body = self.call("UpdateAlias", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateAliasResponse()
@@ -1945,7 +2009,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateAsset", params)
+            headers = request.headers
+            body = self.call("UpdateAsset", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateAssetResponse()
@@ -1973,7 +2038,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateBucketAccelerateOpt", params)
+            headers = request.headers
+            body = self.call("UpdateBucketAccelerateOpt", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateBucketAccelerateOptResponse()
@@ -2001,7 +2067,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateBucketCORSOpt", params)
+            headers = request.headers
+            body = self.call("UpdateBucketCORSOpt", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateBucketCORSOptResponse()
@@ -2029,7 +2096,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateFleetAttributes", params)
+            headers = request.headers
+            body = self.call("UpdateFleetAttributes", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateFleetAttributesResponse()
@@ -2057,7 +2125,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateFleetCapacity", params)
+            headers = request.headers
+            body = self.call("UpdateFleetCapacity", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateFleetCapacityResponse()
@@ -2085,7 +2154,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateFleetName", params)
+            headers = request.headers
+            body = self.call("UpdateFleetName", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateFleetNameResponse()
@@ -2113,7 +2183,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateFleetPortSettings", params)
+            headers = request.headers
+            body = self.call("UpdateFleetPortSettings", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateFleetPortSettingsResponse()
@@ -2141,7 +2212,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateGameServerSession", params)
+            headers = request.headers
+            body = self.call("UpdateGameServerSession", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateGameServerSessionResponse()
@@ -2169,7 +2241,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateGameServerSessionQueue", params)
+            headers = request.headers
+            body = self.call("UpdateGameServerSessionQueue", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateGameServerSessionQueueResponse()
@@ -2197,7 +2270,8 @@ class GseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateRuntimeConfiguration", params)
+            headers = request.headers
+            body = self.call("UpdateRuntimeConfiguration", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateRuntimeConfigurationResponse()

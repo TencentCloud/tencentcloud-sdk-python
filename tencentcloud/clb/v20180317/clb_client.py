@@ -37,7 +37,8 @@ class ClbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AssociateTargetGroups", params)
+            headers = request.headers
+            body = self.call("AssociateTargetGroups", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AssociateTargetGroupsResponse()
@@ -66,7 +67,8 @@ class ClbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AutoRewrite", params)
+            headers = request.headers
+            body = self.call("AutoRewrite", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AutoRewriteResponse()
@@ -94,7 +96,8 @@ class ClbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("BatchDeregisterTargets", params)
+            headers = request.headers
+            body = self.call("BatchDeregisterTargets", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.BatchDeregisterTargetsResponse()
@@ -122,7 +125,8 @@ class ClbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("BatchModifyTargetWeight", params)
+            headers = request.headers
+            body = self.call("BatchModifyTargetWeight", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.BatchModifyTargetWeightResponse()
@@ -150,7 +154,8 @@ class ClbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("BatchRegisterTargets", params)
+            headers = request.headers
+            body = self.call("BatchRegisterTargets", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.BatchRegisterTargetsResponse()
@@ -190,7 +195,8 @@ class ClbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CloneLoadBalancer", params)
+            headers = request.headers
+            body = self.call("CloneLoadBalancer", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CloneLoadBalancerResponse()
@@ -218,7 +224,8 @@ class ClbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateClsLogSet", params)
+            headers = request.headers
+            body = self.call("CreateClsLogSet", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateClsLogSetResponse()
@@ -247,7 +254,8 @@ class ClbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateListener", params)
+            headers = request.headers
+            body = self.call("CreateListener", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateListenerResponse()
@@ -277,7 +285,8 @@ class ClbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateLoadBalancer", params)
+            headers = request.headers
+            body = self.call("CreateLoadBalancer", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateLoadBalancerResponse()
@@ -306,7 +315,8 @@ class ClbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateLoadBalancerSnatIps", params)
+            headers = request.headers
+            body = self.call("CreateLoadBalancerSnatIps", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateLoadBalancerSnatIpsResponse()
@@ -335,7 +345,8 @@ class ClbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateRule", params)
+            headers = request.headers
+            body = self.call("CreateRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateRuleResponse()
@@ -363,7 +374,8 @@ class ClbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateTargetGroup", params)
+            headers = request.headers
+            body = self.call("CreateTargetGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateTargetGroupResponse()
@@ -391,7 +403,8 @@ class ClbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateTopic", params)
+            headers = request.headers
+            body = self.call("CreateTopic", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateTopicResponse()
@@ -420,7 +433,8 @@ class ClbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteListener", params)
+            headers = request.headers
+            body = self.call("DeleteListener", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteListenerResponse()
@@ -449,7 +463,8 @@ class ClbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteLoadBalancer", params)
+            headers = request.headers
+            body = self.call("DeleteLoadBalancer", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteLoadBalancerResponse()
@@ -478,7 +493,8 @@ class ClbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteLoadBalancerListeners", params)
+            headers = request.headers
+            body = self.call("DeleteLoadBalancerListeners", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteLoadBalancerListenersResponse()
@@ -507,7 +523,8 @@ class ClbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteLoadBalancerSnatIps", params)
+            headers = request.headers
+            body = self.call("DeleteLoadBalancerSnatIps", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteLoadBalancerSnatIpsResponse()
@@ -536,7 +553,8 @@ class ClbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteRewrite", params)
+            headers = request.headers
+            body = self.call("DeleteRewrite", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteRewriteResponse()
@@ -565,7 +583,8 @@ class ClbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteRule", params)
+            headers = request.headers
+            body = self.call("DeleteRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteRuleResponse()
@@ -593,7 +612,8 @@ class ClbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteTargetGroups", params)
+            headers = request.headers
+            body = self.call("DeleteTargetGroups", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteTargetGroupsResponse()
@@ -622,7 +642,8 @@ class ClbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeregisterTargetGroupInstances", params)
+            headers = request.headers
+            body = self.call("DeregisterTargetGroupInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeregisterTargetGroupInstancesResponse()
@@ -651,7 +672,8 @@ class ClbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeregisterTargets", params)
+            headers = request.headers
+            body = self.call("DeregisterTargets", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeregisterTargetsResponse()
@@ -679,7 +701,8 @@ class ClbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeregisterTargetsFromClassicalLB", params)
+            headers = request.headers
+            body = self.call("DeregisterTargetsFromClassicalLB", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeregisterTargetsFromClassicalLBResponse()
@@ -707,7 +730,8 @@ class ClbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBlockIPList", params)
+            headers = request.headers
+            body = self.call("DescribeBlockIPList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBlockIPListResponse()
@@ -735,7 +759,8 @@ class ClbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBlockIPTask", params)
+            headers = request.headers
+            body = self.call("DescribeBlockIPTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBlockIPTaskResponse()
@@ -763,7 +788,8 @@ class ClbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeClassicalLBByInstanceId", params)
+            headers = request.headers
+            body = self.call("DescribeClassicalLBByInstanceId", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeClassicalLBByInstanceIdResponse()
@@ -791,7 +817,8 @@ class ClbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeClassicalLBHealthStatus", params)
+            headers = request.headers
+            body = self.call("DescribeClassicalLBHealthStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeClassicalLBHealthStatusResponse()
@@ -819,7 +846,8 @@ class ClbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeClassicalLBListeners", params)
+            headers = request.headers
+            body = self.call("DescribeClassicalLBListeners", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeClassicalLBListenersResponse()
@@ -847,7 +875,8 @@ class ClbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeClassicalLBTargets", params)
+            headers = request.headers
+            body = self.call("DescribeClassicalLBTargets", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeClassicalLBTargetsResponse()
@@ -875,7 +904,8 @@ class ClbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeClsLogSet", params)
+            headers = request.headers
+            body = self.call("DescribeClsLogSet", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeClsLogSetResponse()
@@ -903,7 +933,8 @@ class ClbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeClusterResources", params)
+            headers = request.headers
+            body = self.call("DescribeClusterResources", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeClusterResourcesResponse()
@@ -931,7 +962,8 @@ class ClbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCrossTargets", params)
+            headers = request.headers
+            body = self.call("DescribeCrossTargets", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCrossTargetsResponse()
@@ -959,7 +991,8 @@ class ClbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCustomizedConfigAssociateList", params)
+            headers = request.headers
+            body = self.call("DescribeCustomizedConfigAssociateList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCustomizedConfigAssociateListResponse()
@@ -987,7 +1020,8 @@ class ClbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCustomizedConfigList", params)
+            headers = request.headers
+            body = self.call("DescribeCustomizedConfigList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCustomizedConfigListResponse()
@@ -1015,7 +1049,8 @@ class ClbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeExclusiveClusters", params)
+            headers = request.headers
+            body = self.call("DescribeExclusiveClusters", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeExclusiveClustersResponse()
@@ -1043,7 +1078,8 @@ class ClbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeLBListeners", params)
+            headers = request.headers
+            body = self.call("DescribeLBListeners", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLBListenersResponse()
@@ -1071,7 +1107,8 @@ class ClbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeListeners", params)
+            headers = request.headers
+            body = self.call("DescribeListeners", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeListenersResponse()
@@ -1099,7 +1136,8 @@ class ClbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeLoadBalancerListByCertId", params)
+            headers = request.headers
+            body = self.call("DescribeLoadBalancerListByCertId", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLoadBalancerListByCertIdResponse()
@@ -1127,7 +1165,8 @@ class ClbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeLoadBalancerOverview", params)
+            headers = request.headers
+            body = self.call("DescribeLoadBalancerOverview", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLoadBalancerOverviewResponse()
@@ -1155,7 +1194,8 @@ class ClbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeLoadBalancerTraffic", params)
+            headers = request.headers
+            body = self.call("DescribeLoadBalancerTraffic", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLoadBalancerTrafficResponse()
@@ -1183,7 +1223,8 @@ class ClbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeLoadBalancers", params)
+            headers = request.headers
+            body = self.call("DescribeLoadBalancers", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLoadBalancersResponse()
@@ -1211,7 +1252,8 @@ class ClbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeLoadBalancersDetail", params)
+            headers = request.headers
+            body = self.call("DescribeLoadBalancersDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLoadBalancersDetailResponse()
@@ -1239,7 +1281,8 @@ class ClbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeQuota", params)
+            headers = request.headers
+            body = self.call("DescribeQuota", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeQuotaResponse()
@@ -1267,7 +1310,8 @@ class ClbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeResources", params)
+            headers = request.headers
+            body = self.call("DescribeResources", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeResourcesResponse()
@@ -1295,7 +1339,8 @@ class ClbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRewrite", params)
+            headers = request.headers
+            body = self.call("DescribeRewrite", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRewriteResponse()
@@ -1323,7 +1368,8 @@ class ClbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTargetGroupInstances", params)
+            headers = request.headers
+            body = self.call("DescribeTargetGroupInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTargetGroupInstancesResponse()
@@ -1351,7 +1397,8 @@ class ClbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTargetGroupList", params)
+            headers = request.headers
+            body = self.call("DescribeTargetGroupList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTargetGroupListResponse()
@@ -1379,7 +1426,8 @@ class ClbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTargetGroups", params)
+            headers = request.headers
+            body = self.call("DescribeTargetGroups", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTargetGroupsResponse()
@@ -1407,7 +1455,8 @@ class ClbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTargetHealth", params)
+            headers = request.headers
+            body = self.call("DescribeTargetHealth", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTargetHealthResponse()
@@ -1435,7 +1484,8 @@ class ClbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTargets", params)
+            headers = request.headers
+            body = self.call("DescribeTargets", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTargetsResponse()
@@ -1463,7 +1513,8 @@ class ClbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTaskStatus", params)
+            headers = request.headers
+            body = self.call("DescribeTaskStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTaskStatusResponse()
@@ -1492,7 +1543,8 @@ class ClbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DisassociateTargetGroups", params)
+            headers = request.headers
+            body = self.call("DisassociateTargetGroups", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DisassociateTargetGroupsResponse()
@@ -1521,7 +1573,8 @@ class ClbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ManualRewrite", params)
+            headers = request.headers
+            body = self.call("ManualRewrite", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ManualRewriteResponse()
@@ -1550,7 +1603,8 @@ class ClbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("MigrateClassicalLoadBalancers", params)
+            headers = request.headers
+            body = self.call("MigrateClassicalLoadBalancers", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.MigrateClassicalLoadBalancersResponse()
@@ -1579,7 +1633,8 @@ class ClbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyBlockIPList", params)
+            headers = request.headers
+            body = self.call("ModifyBlockIPList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyBlockIPListResponse()
@@ -1608,7 +1663,8 @@ class ClbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyDomain", params)
+            headers = request.headers
+            body = self.call("ModifyDomain", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDomainResponse()
@@ -1637,7 +1693,8 @@ class ClbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyDomainAttributes", params)
+            headers = request.headers
+            body = self.call("ModifyDomainAttributes", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDomainAttributesResponse()
@@ -1666,7 +1723,8 @@ class ClbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyListener", params)
+            headers = request.headers
+            body = self.call("ModifyListener", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyListenerResponse()
@@ -1695,7 +1753,8 @@ class ClbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyLoadBalancerAttributes", params)
+            headers = request.headers
+            body = self.call("ModifyLoadBalancerAttributes", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyLoadBalancerAttributesResponse()
@@ -1723,7 +1782,8 @@ class ClbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyLoadBalancerMixIpTarget", params)
+            headers = request.headers
+            body = self.call("ModifyLoadBalancerMixIpTarget", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyLoadBalancerMixIpTargetResponse()
@@ -1751,7 +1811,8 @@ class ClbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyLoadBalancerSla", params)
+            headers = request.headers
+            body = self.call("ModifyLoadBalancerSla", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyLoadBalancerSlaResponse()
@@ -1780,7 +1841,8 @@ class ClbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyRule", params)
+            headers = request.headers
+            body = self.call("ModifyRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyRuleResponse()
@@ -1808,7 +1870,8 @@ class ClbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyTargetGroupAttribute", params)
+            headers = request.headers
+            body = self.call("ModifyTargetGroupAttribute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyTargetGroupAttributeResponse()
@@ -1837,7 +1900,8 @@ class ClbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyTargetGroupInstancesPort", params)
+            headers = request.headers
+            body = self.call("ModifyTargetGroupInstancesPort", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyTargetGroupInstancesPortResponse()
@@ -1866,7 +1930,8 @@ class ClbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyTargetGroupInstancesWeight", params)
+            headers = request.headers
+            body = self.call("ModifyTargetGroupInstancesWeight", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyTargetGroupInstancesWeightResponse()
@@ -1895,7 +1960,8 @@ class ClbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyTargetPort", params)
+            headers = request.headers
+            body = self.call("ModifyTargetPort", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyTargetPortResponse()
@@ -1924,7 +1990,8 @@ class ClbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyTargetWeight", params)
+            headers = request.headers
+            body = self.call("ModifyTargetWeight", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyTargetWeightResponse()
@@ -1953,7 +2020,8 @@ class ClbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RegisterTargetGroupInstances", params)
+            headers = request.headers
+            body = self.call("RegisterTargetGroupInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RegisterTargetGroupInstancesResponse()
@@ -1982,7 +2050,8 @@ class ClbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RegisterTargets", params)
+            headers = request.headers
+            body = self.call("RegisterTargets", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RegisterTargetsResponse()
@@ -2010,7 +2079,8 @@ class ClbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RegisterTargetsWithClassicalLB", params)
+            headers = request.headers
+            body = self.call("RegisterTargetsWithClassicalLB", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RegisterTargetsWithClassicalLBResponse()
@@ -2041,7 +2111,8 @@ class ClbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ReplaceCertForLoadBalancers", params)
+            headers = request.headers
+            body = self.call("ReplaceCertForLoadBalancers", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ReplaceCertForLoadBalancersResponse()
@@ -2069,7 +2140,8 @@ class ClbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SetCustomizedConfigForLoadBalancer", params)
+            headers = request.headers
+            body = self.call("SetCustomizedConfigForLoadBalancer", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SetCustomizedConfigForLoadBalancerResponse()
@@ -2097,7 +2169,8 @@ class ClbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SetLoadBalancerClsLog", params)
+            headers = request.headers
+            body = self.call("SetLoadBalancerClsLog", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SetLoadBalancerClsLogResponse()
@@ -2127,7 +2200,8 @@ class ClbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SetLoadBalancerSecurityGroups", params)
+            headers = request.headers
+            body = self.call("SetLoadBalancerSecurityGroups", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SetLoadBalancerSecurityGroupsResponse()
@@ -2155,7 +2229,8 @@ class ClbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SetSecurityGroupForLoadbalancers", params)
+            headers = request.headers
+            body = self.call("SetSecurityGroupForLoadbalancers", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SetSecurityGroupForLoadbalancersResponse()

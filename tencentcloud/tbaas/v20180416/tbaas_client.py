@@ -36,7 +36,8 @@ class TbaasClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ApplyUserCert", params)
+            headers = request.headers
+            body = self.call("ApplyUserCert", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ApplyUserCertResponse()
@@ -66,7 +67,8 @@ class TbaasClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("BlockByNumberHandler", params)
+            headers = request.headers
+            body = self.call("BlockByNumberHandler", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.BlockByNumberHandlerResponse()
@@ -94,7 +96,8 @@ class TbaasClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateChaincodeAndInstallForUser", params)
+            headers = request.headers
+            body = self.call("CreateChaincodeAndInstallForUser", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateChaincodeAndInstallForUserResponse()
@@ -122,7 +125,8 @@ class TbaasClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeployDynamicBcosContract", params)
+            headers = request.headers
+            body = self.call("DeployDynamicBcosContract", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeployDynamicBcosContractResponse()
@@ -152,7 +156,8 @@ class TbaasClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeployDynamicContractHandler", params)
+            headers = request.headers
+            body = self.call("DeployDynamicContractHandler", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeployDynamicContractHandlerResponse()
@@ -180,7 +185,8 @@ class TbaasClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DownloadUserCert", params)
+            headers = request.headers
+            body = self.call("DownloadUserCert", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DownloadUserCertResponse()
@@ -208,7 +214,8 @@ class TbaasClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetBcosBlockByNumber", params)
+            headers = request.headers
+            body = self.call("GetBcosBlockByNumber", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetBcosBlockByNumberResponse()
@@ -236,7 +243,8 @@ class TbaasClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetBcosBlockList", params)
+            headers = request.headers
+            body = self.call("GetBcosBlockList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetBcosBlockListResponse()
@@ -264,7 +272,8 @@ class TbaasClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetBcosTransByHash", params)
+            headers = request.headers
+            body = self.call("GetBcosTransByHash", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetBcosTransByHashResponse()
@@ -292,7 +301,8 @@ class TbaasClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetBcosTransList", params)
+            headers = request.headers
+            body = self.call("GetBcosTransList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetBcosTransListResponse()
@@ -320,7 +330,8 @@ class TbaasClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetBlockList", params)
+            headers = request.headers
+            body = self.call("GetBlockList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetBlockListResponse()
@@ -350,7 +361,8 @@ class TbaasClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetBlockListHandler", params)
+            headers = request.headers
+            body = self.call("GetBlockListHandler", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetBlockListHandlerResponse()
@@ -378,7 +390,8 @@ class TbaasClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetBlockTransactionListForUser", params)
+            headers = request.headers
+            body = self.call("GetBlockTransactionListForUser", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetBlockTransactionListForUserResponse()
@@ -406,7 +419,8 @@ class TbaasClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetChaincodeCompileLogForUser", params)
+            headers = request.headers
+            body = self.call("GetChaincodeCompileLogForUser", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetChaincodeCompileLogForUserResponse()
@@ -434,7 +448,8 @@ class TbaasClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetChaincodeInitializeResultForUser", params)
+            headers = request.headers
+            body = self.call("GetChaincodeInitializeResultForUser", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetChaincodeInitializeResultForUserResponse()
@@ -462,7 +477,8 @@ class TbaasClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetChaincodeLogForUser", params)
+            headers = request.headers
+            body = self.call("GetChaincodeLogForUser", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetChaincodeLogForUserResponse()
@@ -490,7 +506,8 @@ class TbaasClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetChannelListForUser", params)
+            headers = request.headers
+            body = self.call("GetChannelListForUser", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetChannelListForUserResponse()
@@ -518,7 +535,8 @@ class TbaasClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetClusterListForUser", params)
+            headers = request.headers
+            body = self.call("GetClusterListForUser", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetClusterListForUserResponse()
@@ -546,7 +564,8 @@ class TbaasClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetClusterSummary", params)
+            headers = request.headers
+            body = self.call("GetClusterSummary", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetClusterSummaryResponse()
@@ -574,7 +593,8 @@ class TbaasClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetInvokeTx", params)
+            headers = request.headers
+            body = self.call("GetInvokeTx", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetInvokeTxResponse()
@@ -602,7 +622,8 @@ class TbaasClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetLatesdTransactionList", params)
+            headers = request.headers
+            body = self.call("GetLatesdTransactionList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetLatesdTransactionListResponse()
@@ -630,7 +651,8 @@ class TbaasClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetPeerLogForUser", params)
+            headers = request.headers
+            body = self.call("GetPeerLogForUser", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetPeerLogForUserResponse()
@@ -660,7 +682,8 @@ class TbaasClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetTransByHashHandler", params)
+            headers = request.headers
+            body = self.call("GetTransByHashHandler", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetTransByHashHandlerResponse()
@@ -690,7 +713,8 @@ class TbaasClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetTransListHandler", params)
+            headers = request.headers
+            body = self.call("GetTransListHandler", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetTransListHandlerResponse()
@@ -718,7 +742,8 @@ class TbaasClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetTransactionDetailForUser", params)
+            headers = request.headers
+            body = self.call("GetTransactionDetailForUser", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetTransactionDetailForUserResponse()
@@ -746,7 +771,8 @@ class TbaasClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("InitializeChaincodeForUser", params)
+            headers = request.headers
+            body = self.call("InitializeChaincodeForUser", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.InitializeChaincodeForUserResponse()
@@ -774,7 +800,8 @@ class TbaasClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("Invoke", params)
+            headers = request.headers
+            body = self.call("Invoke", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.InvokeResponse()
@@ -802,7 +829,8 @@ class TbaasClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("InvokeBcosTrans", params)
+            headers = request.headers
+            body = self.call("InvokeBcosTrans", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.InvokeBcosTransResponse()
@@ -830,7 +858,8 @@ class TbaasClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("InvokeChainMakerContract", params)
+            headers = request.headers
+            body = self.call("InvokeChainMakerContract", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.InvokeChainMakerContractResponse()
@@ -858,7 +887,8 @@ class TbaasClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("Query", params)
+            headers = request.headers
+            body = self.call("Query", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryResponse()
@@ -886,7 +916,8 @@ class TbaasClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryChainMakerBlockTransaction", params)
+            headers = request.headers
+            body = self.call("QueryChainMakerBlockTransaction", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryChainMakerBlockTransactionResponse()
@@ -914,7 +945,8 @@ class TbaasClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryChainMakerContract", params)
+            headers = request.headers
+            body = self.call("QueryChainMakerContract", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryChainMakerContractResponse()
@@ -942,7 +974,8 @@ class TbaasClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryChainMakerTransaction", params)
+            headers = request.headers
+            body = self.call("QueryChainMakerTransaction", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryChainMakerTransactionResponse()
@@ -972,7 +1005,8 @@ class TbaasClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SendTransactionHandler", params)
+            headers = request.headers
+            body = self.call("SendTransactionHandler", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SendTransactionHandlerResponse()
@@ -1000,7 +1034,8 @@ class TbaasClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SrvInvoke", params)
+            headers = request.headers
+            body = self.call("SrvInvoke", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SrvInvokeResponse()
@@ -1030,7 +1065,8 @@ class TbaasClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("TransByDynamicContractHandler", params)
+            headers = request.headers
+            body = self.call("TransByDynamicContractHandler", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.TransByDynamicContractHandlerResponse()

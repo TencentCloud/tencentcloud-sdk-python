@@ -36,7 +36,8 @@ class CdsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDasbImageIds", params)
+            headers = request.headers
+            body = self.call("DescribeDasbImageIds", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDasbImageIdsResponse()
@@ -64,7 +65,8 @@ class CdsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDbauditInstanceType", params)
+            headers = request.headers
+            body = self.call("DescribeDbauditInstanceType", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDbauditInstanceTypeResponse()
@@ -92,7 +94,8 @@ class CdsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDbauditInstances", params)
+            headers = request.headers
+            body = self.call("DescribeDbauditInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDbauditInstancesResponse()
@@ -120,7 +123,8 @@ class CdsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDbauditUsedRegions", params)
+            headers = request.headers
+            body = self.call("DescribeDbauditUsedRegions", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDbauditUsedRegionsResponse()
@@ -148,7 +152,8 @@ class CdsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("InquiryPriceDbauditInstance", params)
+            headers = request.headers
+            body = self.call("InquiryPriceDbauditInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.InquiryPriceDbauditInstanceResponse()
@@ -176,7 +181,8 @@ class CdsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyDbauditInstancesRenewFlag", params)
+            headers = request.headers
+            body = self.call("ModifyDbauditInstancesRenewFlag", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDbauditInstancesRenewFlagResponse()

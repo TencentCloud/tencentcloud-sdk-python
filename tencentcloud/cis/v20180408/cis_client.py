@@ -36,7 +36,8 @@ class CisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateContainerInstance", params)
+            headers = request.headers
+            body = self.call("CreateContainerInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateContainerInstanceResponse()
@@ -64,7 +65,8 @@ class CisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteContainerInstance", params)
+            headers = request.headers
+            body = self.call("DeleteContainerInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteContainerInstanceResponse()
@@ -92,7 +94,8 @@ class CisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeContainerInstance", params)
+            headers = request.headers
+            body = self.call("DescribeContainerInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeContainerInstanceResponse()
@@ -120,7 +123,8 @@ class CisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeContainerInstanceEvents", params)
+            headers = request.headers
+            body = self.call("DescribeContainerInstanceEvents", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeContainerInstanceEventsResponse()
@@ -148,7 +152,8 @@ class CisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeContainerInstances", params)
+            headers = request.headers
+            body = self.call("DescribeContainerInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeContainerInstancesResponse()
@@ -176,7 +181,8 @@ class CisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeContainerLog", params)
+            headers = request.headers
+            body = self.call("DescribeContainerLog", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeContainerLogResponse()
@@ -204,7 +210,8 @@ class CisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("InquiryPriceCreateCis", params)
+            headers = request.headers
+            body = self.call("InquiryPriceCreateCis", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.InquiryPriceCreateCisResponse()

@@ -36,7 +36,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AddRealServers", params)
+            headers = request.headers
+            body = self.call("AddRealServers", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AddRealServersResponse()
@@ -65,7 +66,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("BindListenerRealServers", params)
+            headers = request.headers
+            body = self.call("BindListenerRealServers", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.BindListenerRealServersResponse()
@@ -93,7 +95,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("BindRuleRealServers", params)
+            headers = request.headers
+            body = self.call("BindRuleRealServers", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.BindRuleRealServersResponse()
@@ -121,7 +124,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CheckProxyCreate", params)
+            headers = request.headers
+            body = self.call("CheckProxyCreate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CheckProxyCreateResponse()
@@ -149,7 +153,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CloseProxies", params)
+            headers = request.headers
+            body = self.call("CloseProxies", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CloseProxiesResponse()
@@ -177,7 +182,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CloseProxyGroup", params)
+            headers = request.headers
+            body = self.call("CloseProxyGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CloseProxyGroupResponse()
@@ -205,7 +211,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CloseSecurityPolicy", params)
+            headers = request.headers
+            body = self.call("CloseSecurityPolicy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CloseSecurityPolicyResponse()
@@ -233,7 +240,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateCertificate", params)
+            headers = request.headers
+            body = self.call("CreateCertificate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateCertificateResponse()
@@ -261,7 +269,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateCustomHeader", params)
+            headers = request.headers
+            body = self.call("CreateCustomHeader", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateCustomHeaderResponse()
@@ -290,7 +299,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateDomain", params)
+            headers = request.headers
+            body = self.call("CreateDomain", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateDomainResponse()
@@ -318,7 +328,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateDomainErrorPageInfo", params)
+            headers = request.headers
+            body = self.call("CreateDomainErrorPageInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateDomainErrorPageInfoResponse()
@@ -346,7 +357,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateHTTPListener", params)
+            headers = request.headers
+            body = self.call("CreateHTTPListener", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateHTTPListenerResponse()
@@ -374,7 +386,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateHTTPSListener", params)
+            headers = request.headers
+            body = self.call("CreateHTTPSListener", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateHTTPSListenerResponse()
@@ -402,7 +415,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateProxy", params)
+            headers = request.headers
+            body = self.call("CreateProxy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateProxyResponse()
@@ -430,7 +444,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateProxyGroup", params)
+            headers = request.headers
+            body = self.call("CreateProxyGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateProxyGroupResponse()
@@ -458,7 +473,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateProxyGroupDomain", params)
+            headers = request.headers
+            body = self.call("CreateProxyGroupDomain", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateProxyGroupDomainResponse()
@@ -486,7 +502,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateRule", params)
+            headers = request.headers
+            body = self.call("CreateRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateRuleResponse()
@@ -514,7 +531,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateSecurityPolicy", params)
+            headers = request.headers
+            body = self.call("CreateSecurityPolicy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateSecurityPolicyResponse()
@@ -542,7 +560,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateSecurityRules", params)
+            headers = request.headers
+            body = self.call("CreateSecurityRules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateSecurityRulesResponse()
@@ -570,7 +589,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateTCPListeners", params)
+            headers = request.headers
+            body = self.call("CreateTCPListeners", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateTCPListenersResponse()
@@ -598,7 +618,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateUDPListeners", params)
+            headers = request.headers
+            body = self.call("CreateUDPListeners", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateUDPListenersResponse()
@@ -626,7 +647,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteCertificate", params)
+            headers = request.headers
+            body = self.call("DeleteCertificate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteCertificateResponse()
@@ -654,7 +676,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteDomain", params)
+            headers = request.headers
+            body = self.call("DeleteDomain", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteDomainResponse()
@@ -682,7 +705,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteDomainErrorPageInfo", params)
+            headers = request.headers
+            body = self.call("DeleteDomainErrorPageInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteDomainErrorPageInfoResponse()
@@ -710,7 +734,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteListeners", params)
+            headers = request.headers
+            body = self.call("DeleteListeners", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteListenersResponse()
@@ -738,7 +763,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteProxyGroup", params)
+            headers = request.headers
+            body = self.call("DeleteProxyGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteProxyGroupResponse()
@@ -766,7 +792,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteRule", params)
+            headers = request.headers
+            body = self.call("DeleteRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteRuleResponse()
@@ -794,7 +821,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteSecurityPolicy", params)
+            headers = request.headers
+            body = self.call("DeleteSecurityPolicy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteSecurityPolicyResponse()
@@ -822,7 +850,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteSecurityRules", params)
+            headers = request.headers
+            body = self.call("DeleteSecurityRules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteSecurityRulesResponse()
@@ -850,7 +879,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAccessRegions", params)
+            headers = request.headers
+            body = self.call("DescribeAccessRegions", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAccessRegionsResponse()
@@ -878,7 +908,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAccessRegionsByDestRegion", params)
+            headers = request.headers
+            body = self.call("DescribeAccessRegionsByDestRegion", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAccessRegionsByDestRegionResponse()
@@ -906,7 +937,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBlackHeader", params)
+            headers = request.headers
+            body = self.call("DescribeBlackHeader", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBlackHeaderResponse()
@@ -934,7 +966,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCertificateDetail", params)
+            headers = request.headers
+            body = self.call("DescribeCertificateDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCertificateDetailResponse()
@@ -962,7 +995,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCertificates", params)
+            headers = request.headers
+            body = self.call("DescribeCertificates", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCertificatesResponse()
@@ -990,7 +1024,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCountryAreaMapping", params)
+            headers = request.headers
+            body = self.call("DescribeCountryAreaMapping", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCountryAreaMappingResponse()
@@ -1018,7 +1053,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCustomHeader", params)
+            headers = request.headers
+            body = self.call("DescribeCustomHeader", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCustomHeaderResponse()
@@ -1046,7 +1082,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDestRegions", params)
+            headers = request.headers
+            body = self.call("DescribeDestRegions", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDestRegionsResponse()
@@ -1074,7 +1111,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDomainErrorPageInfo", params)
+            headers = request.headers
+            body = self.call("DescribeDomainErrorPageInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDomainErrorPageInfoResponse()
@@ -1102,7 +1140,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDomainErrorPageInfoByIds", params)
+            headers = request.headers
+            body = self.call("DescribeDomainErrorPageInfoByIds", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDomainErrorPageInfoByIdsResponse()
@@ -1130,7 +1169,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeGroupAndStatisticsProxy", params)
+            headers = request.headers
+            body = self.call("DescribeGroupAndStatisticsProxy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeGroupAndStatisticsProxyResponse()
@@ -1158,7 +1198,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeGroupDomainConfig", params)
+            headers = request.headers
+            body = self.call("DescribeGroupDomainConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeGroupDomainConfigResponse()
@@ -1186,7 +1227,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeHTTPListeners", params)
+            headers = request.headers
+            body = self.call("DescribeHTTPListeners", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeHTTPListenersResponse()
@@ -1214,7 +1256,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeHTTPSListeners", params)
+            headers = request.headers
+            body = self.call("DescribeHTTPSListeners", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeHTTPSListenersResponse()
@@ -1242,7 +1285,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeListenerRealServers", params)
+            headers = request.headers
+            body = self.call("DescribeListenerRealServers", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeListenerRealServersResponse()
@@ -1270,7 +1314,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeListenerStatistics", params)
+            headers = request.headers
+            body = self.call("DescribeListenerStatistics", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeListenerStatisticsResponse()
@@ -1298,7 +1343,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeProxies", params)
+            headers = request.headers
+            body = self.call("DescribeProxies", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeProxiesResponse()
@@ -1326,7 +1372,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeProxiesStatus", params)
+            headers = request.headers
+            body = self.call("DescribeProxiesStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeProxiesStatusResponse()
@@ -1354,7 +1401,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeProxyAndStatisticsListeners", params)
+            headers = request.headers
+            body = self.call("DescribeProxyAndStatisticsListeners", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeProxyAndStatisticsListenersResponse()
@@ -1382,7 +1430,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeProxyDetail", params)
+            headers = request.headers
+            body = self.call("DescribeProxyDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeProxyDetailResponse()
@@ -1410,7 +1459,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeProxyGroupDetails", params)
+            headers = request.headers
+            body = self.call("DescribeProxyGroupDetails", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeProxyGroupDetailsResponse()
@@ -1438,7 +1488,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeProxyGroupList", params)
+            headers = request.headers
+            body = self.call("DescribeProxyGroupList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeProxyGroupListResponse()
@@ -1466,7 +1517,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeProxyGroupStatistics", params)
+            headers = request.headers
+            body = self.call("DescribeProxyGroupStatistics", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeProxyGroupStatisticsResponse()
@@ -1494,7 +1546,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeProxyStatistics", params)
+            headers = request.headers
+            body = self.call("DescribeProxyStatistics", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeProxyStatisticsResponse()
@@ -1522,7 +1575,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRealServerStatistics", params)
+            headers = request.headers
+            body = self.call("DescribeRealServerStatistics", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRealServerStatisticsResponse()
@@ -1550,7 +1604,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRealServers", params)
+            headers = request.headers
+            body = self.call("DescribeRealServers", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRealServersResponse()
@@ -1578,7 +1633,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRealServersStatus", params)
+            headers = request.headers
+            body = self.call("DescribeRealServersStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRealServersStatusResponse()
@@ -1606,7 +1662,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRegionAndPrice", params)
+            headers = request.headers
+            body = self.call("DescribeRegionAndPrice", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRegionAndPriceResponse()
@@ -1634,7 +1691,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeResourcesByTag", params)
+            headers = request.headers
+            body = self.call("DescribeResourcesByTag", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeResourcesByTagResponse()
@@ -1662,7 +1720,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRuleRealServers", params)
+            headers = request.headers
+            body = self.call("DescribeRuleRealServers", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRuleRealServersResponse()
@@ -1690,7 +1749,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRules", params)
+            headers = request.headers
+            body = self.call("DescribeRules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRulesResponse()
@@ -1718,7 +1778,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRulesByRuleIds", params)
+            headers = request.headers
+            body = self.call("DescribeRulesByRuleIds", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRulesByRuleIdsResponse()
@@ -1746,7 +1807,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSecurityPolicyDetail", params)
+            headers = request.headers
+            body = self.call("DescribeSecurityPolicyDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSecurityPolicyDetailResponse()
@@ -1774,7 +1836,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSecurityRules", params)
+            headers = request.headers
+            body = self.call("DescribeSecurityRules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSecurityRulesResponse()
@@ -1802,7 +1865,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTCPListeners", params)
+            headers = request.headers
+            body = self.call("DescribeTCPListeners", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTCPListenersResponse()
@@ -1830,7 +1894,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeUDPListeners", params)
+            headers = request.headers
+            body = self.call("DescribeUDPListeners", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeUDPListenersResponse()
@@ -1858,7 +1923,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DestroyProxies", params)
+            headers = request.headers
+            body = self.call("DestroyProxies", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DestroyProxiesResponse()
@@ -1886,7 +1952,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("InquiryPriceCreateProxy", params)
+            headers = request.headers
+            body = self.call("InquiryPriceCreateProxy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.InquiryPriceCreateProxyResponse()
@@ -1914,7 +1981,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyCertificate", params)
+            headers = request.headers
+            body = self.call("ModifyCertificate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyCertificateResponse()
@@ -1942,7 +2010,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyCertificateAttributes", params)
+            headers = request.headers
+            body = self.call("ModifyCertificateAttributes", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyCertificateAttributesResponse()
@@ -1970,7 +2039,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyDomain", params)
+            headers = request.headers
+            body = self.call("ModifyDomain", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDomainResponse()
@@ -1998,7 +2068,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyGroupDomainConfig", params)
+            headers = request.headers
+            body = self.call("ModifyGroupDomainConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyGroupDomainConfigResponse()
@@ -2027,7 +2098,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyHTTPListenerAttribute", params)
+            headers = request.headers
+            body = self.call("ModifyHTTPListenerAttribute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyHTTPListenerAttributeResponse()
@@ -2055,7 +2127,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyHTTPSListenerAttribute", params)
+            headers = request.headers
+            body = self.call("ModifyHTTPSListenerAttribute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyHTTPSListenerAttributeResponse()
@@ -2083,7 +2156,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyProxiesAttribute", params)
+            headers = request.headers
+            body = self.call("ModifyProxiesAttribute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyProxiesAttributeResponse()
@@ -2111,7 +2185,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyProxiesProject", params)
+            headers = request.headers
+            body = self.call("ModifyProxiesProject", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyProxiesProjectResponse()
@@ -2139,7 +2214,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyProxyConfiguration", params)
+            headers = request.headers
+            body = self.call("ModifyProxyConfiguration", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyProxyConfigurationResponse()
@@ -2167,7 +2243,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyProxyGroupAttribute", params)
+            headers = request.headers
+            body = self.call("ModifyProxyGroupAttribute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyProxyGroupAttributeResponse()
@@ -2195,7 +2272,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyRealServerName", params)
+            headers = request.headers
+            body = self.call("ModifyRealServerName", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyRealServerNameResponse()
@@ -2223,7 +2301,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyRuleAttribute", params)
+            headers = request.headers
+            body = self.call("ModifyRuleAttribute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyRuleAttributeResponse()
@@ -2251,7 +2330,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifySecurityRule", params)
+            headers = request.headers
+            body = self.call("ModifySecurityRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifySecurityRuleResponse()
@@ -2279,7 +2359,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyTCPListenerAttribute", params)
+            headers = request.headers
+            body = self.call("ModifyTCPListenerAttribute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyTCPListenerAttributeResponse()
@@ -2307,7 +2388,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyUDPListenerAttribute", params)
+            headers = request.headers
+            body = self.call("ModifyUDPListenerAttribute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyUDPListenerAttributeResponse()
@@ -2335,7 +2417,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("OpenProxies", params)
+            headers = request.headers
+            body = self.call("OpenProxies", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.OpenProxiesResponse()
@@ -2363,7 +2446,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("OpenProxyGroup", params)
+            headers = request.headers
+            body = self.call("OpenProxyGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.OpenProxyGroupResponse()
@@ -2391,7 +2475,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("OpenSecurityPolicy", params)
+            headers = request.headers
+            body = self.call("OpenSecurityPolicy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.OpenSecurityPolicyResponse()
@@ -2419,7 +2504,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RemoveRealServers", params)
+            headers = request.headers
+            body = self.call("RemoveRealServers", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RemoveRealServersResponse()
@@ -2447,7 +2533,8 @@ class GaapClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SetAuthentication", params)
+            headers = request.headers
+            body = self.call("SetAuthentication", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SetAuthenticationResponse()

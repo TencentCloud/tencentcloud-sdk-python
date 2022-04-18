@@ -36,7 +36,8 @@ class AaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ManageMarketingRisk", params)
+            headers = request.headers
+            body = self.call("ManageMarketingRisk", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ManageMarketingRiskResponse()
@@ -64,7 +65,8 @@ class AaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryActivityAntiRush", params)
+            headers = request.headers
+            body = self.call("QueryActivityAntiRush", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryActivityAntiRushResponse()
@@ -92,7 +94,8 @@ class AaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryActivityAntiRushAdvanced", params)
+            headers = request.headers
+            body = self.call("QueryActivityAntiRushAdvanced", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryActivityAntiRushAdvancedResponse()

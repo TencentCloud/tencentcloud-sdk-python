@@ -36,7 +36,8 @@ class DnspodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateDomain", params)
+            headers = request.headers
+            body = self.call("CreateDomain", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateDomainResponse()
@@ -64,7 +65,8 @@ class DnspodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateDomainAlias", params)
+            headers = request.headers
+            body = self.call("CreateDomainAlias", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateDomainAliasResponse()
@@ -92,7 +94,8 @@ class DnspodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateDomainBatch", params)
+            headers = request.headers
+            body = self.call("CreateDomainBatch", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateDomainBatchResponse()
@@ -120,7 +123,8 @@ class DnspodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateDomainGroup", params)
+            headers = request.headers
+            body = self.call("CreateDomainGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateDomainGroupResponse()
@@ -148,7 +152,8 @@ class DnspodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateRecord", params)
+            headers = request.headers
+            body = self.call("CreateRecord", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateRecordResponse()
@@ -176,7 +181,8 @@ class DnspodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateRecordBatch", params)
+            headers = request.headers
+            body = self.call("CreateRecordBatch", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateRecordBatchResponse()
@@ -204,7 +210,8 @@ class DnspodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteDomain", params)
+            headers = request.headers
+            body = self.call("DeleteDomain", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteDomainResponse()
@@ -232,7 +239,8 @@ class DnspodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteDomainAlias", params)
+            headers = request.headers
+            body = self.call("DeleteDomainAlias", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteDomainAliasResponse()
@@ -260,7 +268,8 @@ class DnspodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteRecord", params)
+            headers = request.headers
+            body = self.call("DeleteRecord", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteRecordResponse()
@@ -288,7 +297,8 @@ class DnspodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteShareDomain", params)
+            headers = request.headers
+            body = self.call("DeleteShareDomain", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteShareDomainResponse()
@@ -316,7 +326,8 @@ class DnspodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBatchTask", params)
+            headers = request.headers
+            body = self.call("DescribeBatchTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBatchTaskResponse()
@@ -344,7 +355,8 @@ class DnspodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDomain", params)
+            headers = request.headers
+            body = self.call("DescribeDomain", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDomainResponse()
@@ -372,7 +384,8 @@ class DnspodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDomainAliasList", params)
+            headers = request.headers
+            body = self.call("DescribeDomainAliasList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDomainAliasListResponse()
@@ -400,7 +413,8 @@ class DnspodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDomainList", params)
+            headers = request.headers
+            body = self.call("DescribeDomainList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDomainListResponse()
@@ -428,7 +442,8 @@ class DnspodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDomainLogList", params)
+            headers = request.headers
+            body = self.call("DescribeDomainLogList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDomainLogListResponse()
@@ -456,7 +471,8 @@ class DnspodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDomainPurview", params)
+            headers = request.headers
+            body = self.call("DescribeDomainPurview", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDomainPurviewResponse()
@@ -484,7 +500,8 @@ class DnspodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDomainShareInfo", params)
+            headers = request.headers
+            body = self.call("DescribeDomainShareInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDomainShareInfoResponse()
@@ -512,7 +529,8 @@ class DnspodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRecord", params)
+            headers = request.headers
+            body = self.call("DescribeRecord", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRecordResponse()
@@ -540,7 +558,8 @@ class DnspodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRecordLineList", params)
+            headers = request.headers
+            body = self.call("DescribeRecordLineList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRecordLineListResponse()
@@ -568,7 +587,8 @@ class DnspodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRecordList", params)
+            headers = request.headers
+            body = self.call("DescribeRecordList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRecordListResponse()
@@ -596,7 +616,8 @@ class DnspodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRecordType", params)
+            headers = request.headers
+            body = self.call("DescribeRecordType", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRecordTypeResponse()
@@ -624,7 +645,8 @@ class DnspodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeUserDetail", params)
+            headers = request.headers
+            body = self.call("DescribeUserDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeUserDetailResponse()
@@ -652,7 +674,8 @@ class DnspodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyDomainLock", params)
+            headers = request.headers
+            body = self.call("ModifyDomainLock", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDomainLockResponse()
@@ -680,7 +703,8 @@ class DnspodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyDomainOwner", params)
+            headers = request.headers
+            body = self.call("ModifyDomainOwner", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDomainOwnerResponse()
@@ -708,7 +732,8 @@ class DnspodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyDomainRemark", params)
+            headers = request.headers
+            body = self.call("ModifyDomainRemark", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDomainRemarkResponse()
@@ -736,7 +761,8 @@ class DnspodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyDomainStatus", params)
+            headers = request.headers
+            body = self.call("ModifyDomainStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDomainStatusResponse()
@@ -764,7 +790,8 @@ class DnspodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyDomainUnlock", params)
+            headers = request.headers
+            body = self.call("ModifyDomainUnlock", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDomainUnlockResponse()
@@ -792,7 +819,8 @@ class DnspodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyDynamicDNS", params)
+            headers = request.headers
+            body = self.call("ModifyDynamicDNS", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDynamicDNSResponse()
@@ -820,7 +848,8 @@ class DnspodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyRecord", params)
+            headers = request.headers
+            body = self.call("ModifyRecord", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyRecordResponse()
@@ -848,7 +877,8 @@ class DnspodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyRecordBatch", params)
+            headers = request.headers
+            body = self.call("ModifyRecordBatch", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyRecordBatchResponse()
@@ -876,7 +906,8 @@ class DnspodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyRecordRemark", params)
+            headers = request.headers
+            body = self.call("ModifyRecordRemark", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyRecordRemarkResponse()
@@ -904,7 +935,8 @@ class DnspodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyRecordStatus", params)
+            headers = request.headers
+            body = self.call("ModifyRecordStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyRecordStatusResponse()
@@ -932,7 +964,8 @@ class DnspodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifySubdomainStatus", params)
+            headers = request.headers
+            body = self.call("ModifySubdomainStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifySubdomainStatusResponse()

@@ -36,7 +36,8 @@ class EssbasicClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateConsoleLoginUrl", params)
+            headers = request.headers
+            body = self.call("CreateConsoleLoginUrl", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateConsoleLoginUrlResponse()
@@ -64,7 +65,8 @@ class EssbasicClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateFlowsByTemplates", params)
+            headers = request.headers
+            body = self.call("CreateFlowsByTemplates", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateFlowsByTemplatesResponse()
@@ -92,7 +94,8 @@ class EssbasicClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateSignUrls", params)
+            headers = request.headers
+            body = self.call("CreateSignUrls", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateSignUrlsResponse()
@@ -120,7 +123,8 @@ class EssbasicClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeFlowDetailInfo", params)
+            headers = request.headers
+            body = self.call("DescribeFlowDetailInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeFlowDetailInfoResponse()
@@ -148,7 +152,8 @@ class EssbasicClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeResourceUrlsByFlows", params)
+            headers = request.headers
+            body = self.call("DescribeResourceUrlsByFlows", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeResourceUrlsByFlowsResponse()
@@ -176,7 +181,8 @@ class EssbasicClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTemplates", params)
+            headers = request.headers
+            body = self.call("DescribeTemplates", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTemplatesResponse()
@@ -205,7 +211,8 @@ class EssbasicClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeUsage", params)
+            headers = request.headers
+            body = self.call("DescribeUsage", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeUsageResponse()
@@ -234,7 +241,8 @@ class EssbasicClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetDownloadFlowUrl", params)
+            headers = request.headers
+            body = self.call("GetDownloadFlowUrl", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetDownloadFlowUrlResponse()
@@ -266,7 +274,8 @@ class EssbasicClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("OperateChannelTemplate", params)
+            headers = request.headers
+            body = self.call("OperateChannelTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.OperateChannelTemplateResponse()
@@ -296,7 +305,8 @@ class EssbasicClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("PrepareFlows", params)
+            headers = request.headers
+            body = self.call("PrepareFlows", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.PrepareFlowsResponse()
@@ -324,7 +334,8 @@ class EssbasicClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SyncProxyOrganization", params)
+            headers = request.headers
+            body = self.call("SyncProxyOrganization", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SyncProxyOrganizationResponse()
@@ -352,7 +363,8 @@ class EssbasicClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SyncProxyOrganizationOperators", params)
+            headers = request.headers
+            body = self.call("SyncProxyOrganizationOperators", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SyncProxyOrganizationOperatorsResponse()
@@ -381,7 +393,8 @@ class EssbasicClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UploadFiles", params)
+            headers = request.headers
+            body = self.call("UploadFiles", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UploadFilesResponse()

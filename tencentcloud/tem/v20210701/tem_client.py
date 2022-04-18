@@ -36,7 +36,8 @@ class TemClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateApplication", params)
+            headers = request.headers
+            body = self.call("CreateApplication", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateApplicationResponse()
@@ -64,7 +65,8 @@ class TemClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateCosToken", params)
+            headers = request.headers
+            body = self.call("CreateCosToken", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateCosTokenResponse()
@@ -92,7 +94,8 @@ class TemClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateEnvironment", params)
+            headers = request.headers
+            body = self.call("CreateEnvironment", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateEnvironmentResponse()
@@ -120,7 +123,8 @@ class TemClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateResource", params)
+            headers = request.headers
+            body = self.call("CreateResource", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateResourceResponse()
@@ -151,7 +155,8 @@ class TemClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteApplication", params)
+            headers = request.headers
+            body = self.call("DeleteApplication", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteApplicationResponse()
@@ -179,7 +184,8 @@ class TemClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteIngress", params)
+            headers = request.headers
+            body = self.call("DeleteIngress", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteIngressResponse()
@@ -207,7 +213,8 @@ class TemClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeployApplication", params)
+            headers = request.headers
+            body = self.call("DeployApplication", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeployApplicationResponse()
@@ -235,7 +242,8 @@ class TemClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeApplicationPods", params)
+            headers = request.headers
+            body = self.call("DescribeApplicationPods", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeApplicationPodsResponse()
@@ -263,7 +271,8 @@ class TemClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDeployApplicationDetail", params)
+            headers = request.headers
+            body = self.call("DescribeDeployApplicationDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDeployApplicationDetailResponse()
@@ -291,7 +300,8 @@ class TemClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeEnvironments", params)
+            headers = request.headers
+            body = self.call("DescribeEnvironments", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeEnvironmentsResponse()
@@ -319,7 +329,8 @@ class TemClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeIngress", params)
+            headers = request.headers
+            body = self.call("DescribeIngress", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeIngressResponse()
@@ -347,7 +358,8 @@ class TemClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeIngresses", params)
+            headers = request.headers
+            body = self.call("DescribeIngresses", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeIngressesResponse()
@@ -375,7 +387,8 @@ class TemClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRelatedIngresses", params)
+            headers = request.headers
+            body = self.call("DescribeRelatedIngresses", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRelatedIngressesResponse()
@@ -403,7 +416,8 @@ class TemClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GenerateApplicationPackageDownloadUrl", params)
+            headers = request.headers
+            body = self.call("GenerateApplicationPackageDownloadUrl", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GenerateApplicationPackageDownloadUrlResponse()
@@ -431,7 +445,8 @@ class TemClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyApplicationInfo", params)
+            headers = request.headers
+            body = self.call("ModifyApplicationInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyApplicationInfoResponse()
@@ -459,7 +474,8 @@ class TemClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyApplicationReplicas", params)
+            headers = request.headers
+            body = self.call("ModifyApplicationReplicas", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyApplicationReplicasResponse()
@@ -487,7 +503,8 @@ class TemClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyEnvironment", params)
+            headers = request.headers
+            body = self.call("ModifyEnvironment", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyEnvironmentResponse()
@@ -515,7 +532,8 @@ class TemClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyIngress", params)
+            headers = request.headers
+            body = self.call("ModifyIngress", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyIngressResponse()
@@ -543,7 +561,8 @@ class TemClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RestartApplication", params)
+            headers = request.headers
+            body = self.call("RestartApplication", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RestartApplicationResponse()
@@ -571,7 +590,8 @@ class TemClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RestartApplicationPod", params)
+            headers = request.headers
+            body = self.call("RestartApplicationPod", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RestartApplicationPodResponse()
@@ -599,7 +619,8 @@ class TemClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ResumeDeployApplication", params)
+            headers = request.headers
+            body = self.call("ResumeDeployApplication", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ResumeDeployApplicationResponse()
@@ -627,7 +648,8 @@ class TemClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RevertDeployApplication", params)
+            headers = request.headers
+            body = self.call("RevertDeployApplication", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RevertDeployApplicationResponse()
@@ -655,7 +677,8 @@ class TemClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RollingUpdateApplicationByVersion", params)
+            headers = request.headers
+            body = self.call("RollingUpdateApplicationByVersion", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RollingUpdateApplicationByVersionResponse()
@@ -683,7 +706,8 @@ class TemClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("StopApplication", params)
+            headers = request.headers
+            body = self.call("StopApplication", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StopApplicationResponse()

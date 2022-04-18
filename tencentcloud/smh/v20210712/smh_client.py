@@ -36,7 +36,8 @@ class SmhClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateLibrary", params)
+            headers = request.headers
+            body = self.call("CreateLibrary", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateLibraryResponse()
@@ -64,7 +65,8 @@ class SmhClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteLibrary", params)
+            headers = request.headers
+            body = self.call("DeleteLibrary", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteLibraryResponse()
@@ -92,7 +94,8 @@ class SmhClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeLibraries", params)
+            headers = request.headers
+            body = self.call("DescribeLibraries", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLibrariesResponse()
@@ -120,7 +123,8 @@ class SmhClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeLibrarySecret", params)
+            headers = request.headers
+            body = self.call("DescribeLibrarySecret", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLibrarySecretResponse()
@@ -148,7 +152,8 @@ class SmhClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeOfficialInstances", params)
+            headers = request.headers
+            body = self.call("DescribeOfficialInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeOfficialInstancesResponse()
@@ -176,7 +181,8 @@ class SmhClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeOfficialOverview", params)
+            headers = request.headers
+            body = self.call("DescribeOfficialOverview", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeOfficialOverviewResponse()
@@ -204,7 +210,8 @@ class SmhClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTrafficPackages", params)
+            headers = request.headers
+            body = self.call("DescribeTrafficPackages", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTrafficPackagesResponse()
@@ -232,7 +239,8 @@ class SmhClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyLibrary", params)
+            headers = request.headers
+            body = self.call("ModifyLibrary", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyLibraryResponse()
@@ -260,7 +268,8 @@ class SmhClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SendSmsCode", params)
+            headers = request.headers
+            body = self.call("SendSmsCode", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SendSmsCodeResponse()
@@ -288,7 +297,8 @@ class SmhClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("VerifySmsCode", params)
+            headers = request.headers
+            body = self.call("VerifySmsCode", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.VerifySmsCodeResponse()

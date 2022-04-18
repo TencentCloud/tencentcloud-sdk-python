@@ -36,7 +36,8 @@ class TioneClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateCodeRepository", params)
+            headers = request.headers
+            body = self.call("CreateCodeRepository", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateCodeRepositoryResponse()
@@ -64,7 +65,8 @@ class TioneClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateNotebookInstance", params)
+            headers = request.headers
+            body = self.call("CreateNotebookInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateNotebookInstanceResponse()
@@ -92,7 +94,8 @@ class TioneClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateNotebookLifecycleScript", params)
+            headers = request.headers
+            body = self.call("CreateNotebookLifecycleScript", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateNotebookLifecycleScriptResponse()
@@ -120,7 +123,8 @@ class TioneClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreatePresignedNotebookInstanceUrl", params)
+            headers = request.headers
+            body = self.call("CreatePresignedNotebookInstanceUrl", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreatePresignedNotebookInstanceUrlResponse()
@@ -148,7 +152,8 @@ class TioneClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateTrainingJob", params)
+            headers = request.headers
+            body = self.call("CreateTrainingJob", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateTrainingJobResponse()
@@ -176,7 +181,8 @@ class TioneClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteCodeRepository", params)
+            headers = request.headers
+            body = self.call("DeleteCodeRepository", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteCodeRepositoryResponse()
@@ -204,7 +210,8 @@ class TioneClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteNotebookInstance", params)
+            headers = request.headers
+            body = self.call("DeleteNotebookInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteNotebookInstanceResponse()
@@ -232,7 +239,8 @@ class TioneClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteNotebookLifecycleScript", params)
+            headers = request.headers
+            body = self.call("DeleteNotebookLifecycleScript", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteNotebookLifecycleScriptResponse()
@@ -260,7 +268,8 @@ class TioneClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCodeRepositories", params)
+            headers = request.headers
+            body = self.call("DescribeCodeRepositories", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCodeRepositoriesResponse()
@@ -288,7 +297,8 @@ class TioneClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCodeRepository", params)
+            headers = request.headers
+            body = self.call("DescribeCodeRepository", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCodeRepositoryResponse()
@@ -316,7 +326,8 @@ class TioneClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeNotebookInstance", params)
+            headers = request.headers
+            body = self.call("DescribeNotebookInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeNotebookInstanceResponse()
@@ -344,7 +355,8 @@ class TioneClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeNotebookInstances", params)
+            headers = request.headers
+            body = self.call("DescribeNotebookInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeNotebookInstancesResponse()
@@ -372,7 +384,8 @@ class TioneClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeNotebookLifecycleScript", params)
+            headers = request.headers
+            body = self.call("DescribeNotebookLifecycleScript", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeNotebookLifecycleScriptResponse()
@@ -400,7 +413,8 @@ class TioneClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeNotebookLifecycleScripts", params)
+            headers = request.headers
+            body = self.call("DescribeNotebookLifecycleScripts", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeNotebookLifecycleScriptsResponse()
@@ -428,7 +442,8 @@ class TioneClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeNotebookSummary", params)
+            headers = request.headers
+            body = self.call("DescribeNotebookSummary", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeNotebookSummaryResponse()
@@ -456,7 +471,8 @@ class TioneClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTrainingJob", params)
+            headers = request.headers
+            body = self.call("DescribeTrainingJob", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTrainingJobResponse()
@@ -484,7 +500,8 @@ class TioneClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTrainingJobs", params)
+            headers = request.headers
+            body = self.call("DescribeTrainingJobs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTrainingJobsResponse()
@@ -512,7 +529,8 @@ class TioneClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("StartNotebookInstance", params)
+            headers = request.headers
+            body = self.call("StartNotebookInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StartNotebookInstanceResponse()
@@ -540,7 +558,8 @@ class TioneClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("StopNotebookInstance", params)
+            headers = request.headers
+            body = self.call("StopNotebookInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StopNotebookInstanceResponse()
@@ -568,7 +587,8 @@ class TioneClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("StopTrainingJob", params)
+            headers = request.headers
+            body = self.call("StopTrainingJob", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StopTrainingJobResponse()
@@ -596,7 +616,8 @@ class TioneClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateCodeRepository", params)
+            headers = request.headers
+            body = self.call("UpdateCodeRepository", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateCodeRepositoryResponse()
@@ -624,7 +645,8 @@ class TioneClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateNotebookInstance", params)
+            headers = request.headers
+            body = self.call("UpdateNotebookInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateNotebookInstanceResponse()
@@ -652,7 +674,8 @@ class TioneClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateNotebookLifecycleScript", params)
+            headers = request.headers
+            body = self.call("UpdateNotebookLifecycleScript", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateNotebookLifecycleScriptResponse()

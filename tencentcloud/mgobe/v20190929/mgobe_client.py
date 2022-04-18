@@ -36,7 +36,8 @@ class MgobeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DismissRoom", params)
+            headers = request.headers
+            body = self.call("DismissRoom", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DismissRoomResponse()

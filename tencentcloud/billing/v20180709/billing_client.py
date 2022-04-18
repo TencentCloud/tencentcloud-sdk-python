@@ -36,7 +36,8 @@ class BillingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAccountBalance", params)
+            headers = request.headers
+            body = self.call("DescribeAccountBalance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAccountBalanceResponse()
@@ -64,7 +65,8 @@ class BillingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBillDetail", params)
+            headers = request.headers
+            body = self.call("DescribeBillDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBillDetailResponse()
@@ -92,7 +94,8 @@ class BillingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBillList", params)
+            headers = request.headers
+            body = self.call("DescribeBillList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBillListResponse()
@@ -120,7 +123,8 @@ class BillingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBillResourceSummary", params)
+            headers = request.headers
+            body = self.call("DescribeBillResourceSummary", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBillResourceSummaryResponse()
@@ -148,7 +152,8 @@ class BillingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBillSummaryByPayMode", params)
+            headers = request.headers
+            body = self.call("DescribeBillSummaryByPayMode", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBillSummaryByPayModeResponse()
@@ -176,7 +181,8 @@ class BillingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBillSummaryByProduct", params)
+            headers = request.headers
+            body = self.call("DescribeBillSummaryByProduct", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBillSummaryByProductResponse()
@@ -204,7 +210,8 @@ class BillingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBillSummaryByProject", params)
+            headers = request.headers
+            body = self.call("DescribeBillSummaryByProject", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBillSummaryByProjectResponse()
@@ -232,7 +239,8 @@ class BillingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBillSummaryByRegion", params)
+            headers = request.headers
+            body = self.call("DescribeBillSummaryByRegion", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBillSummaryByRegionResponse()
@@ -260,7 +268,8 @@ class BillingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBillSummaryByTag", params)
+            headers = request.headers
+            body = self.call("DescribeBillSummaryByTag", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBillSummaryByTagResponse()
@@ -288,7 +297,8 @@ class BillingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCostDetail", params)
+            headers = request.headers
+            body = self.call("DescribeCostDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCostDetailResponse()
@@ -316,7 +326,8 @@ class BillingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCostSummaryByProduct", params)
+            headers = request.headers
+            body = self.call("DescribeCostSummaryByProduct", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCostSummaryByProductResponse()
@@ -344,7 +355,8 @@ class BillingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCostSummaryByProject", params)
+            headers = request.headers
+            body = self.call("DescribeCostSummaryByProject", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCostSummaryByProjectResponse()
@@ -372,7 +384,8 @@ class BillingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCostSummaryByRegion", params)
+            headers = request.headers
+            body = self.call("DescribeCostSummaryByRegion", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCostSummaryByRegionResponse()
@@ -400,7 +413,8 @@ class BillingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCostSummaryByResource", params)
+            headers = request.headers
+            body = self.call("DescribeCostSummaryByResource", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCostSummaryByResourceResponse()
@@ -428,7 +442,8 @@ class BillingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDealsByCond", params)
+            headers = request.headers
+            body = self.call("DescribeDealsByCond", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDealsByCondResponse()
@@ -456,7 +471,8 @@ class BillingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDosageCosDetailByDate", params)
+            headers = request.headers
+            body = self.call("DescribeDosageCosDetailByDate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDosageCosDetailByDateResponse()
@@ -484,7 +500,8 @@ class BillingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDosageDetailByDate", params)
+            headers = request.headers
+            body = self.call("DescribeDosageDetailByDate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDosageDetailByDateResponse()
@@ -512,7 +529,8 @@ class BillingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeVoucherInfo", params)
+            headers = request.headers
+            body = self.call("DescribeVoucherInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeVoucherInfoResponse()
@@ -540,7 +558,8 @@ class BillingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeVoucherUsageDetails", params)
+            headers = request.headers
+            body = self.call("DescribeVoucherUsageDetails", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeVoucherUsageDetailsResponse()
@@ -568,7 +587,8 @@ class BillingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("PayDeals", params)
+            headers = request.headers
+            body = self.call("PayDeals", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.PayDealsResponse()

@@ -36,7 +36,8 @@ class BizliveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateSession", params)
+            headers = request.headers
+            body = self.call("CreateSession", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateSessionResponse()
@@ -64,7 +65,8 @@ class BizliveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeStreamPlayInfoList", params)
+            headers = request.headers
+            body = self.call("DescribeStreamPlayInfoList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeStreamPlayInfoListResponse()
@@ -92,7 +94,8 @@ class BizliveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeWorkers", params)
+            headers = request.headers
+            body = self.call("DescribeWorkers", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeWorkersResponse()
@@ -120,7 +123,8 @@ class BizliveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ForbidLiveStream", params)
+            headers = request.headers
+            body = self.call("ForbidLiveStream", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ForbidLiveStreamResponse()
@@ -148,7 +152,8 @@ class BizliveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RegisterIM", params)
+            headers = request.headers
+            body = self.call("RegisterIM", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RegisterIMResponse()
@@ -176,7 +181,8 @@ class BizliveClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("StopGame", params)
+            headers = request.headers
+            body = self.call("StopGame", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StopGameResponse()

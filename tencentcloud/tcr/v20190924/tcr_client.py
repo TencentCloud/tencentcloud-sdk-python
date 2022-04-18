@@ -36,7 +36,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("BatchDeleteImagePersonal", params)
+            headers = request.headers
+            body = self.call("BatchDeleteImagePersonal", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.BatchDeleteImagePersonalResponse()
@@ -64,7 +65,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("BatchDeleteRepositoryPersonal", params)
+            headers = request.headers
+            body = self.call("BatchDeleteRepositoryPersonal", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.BatchDeleteRepositoryPersonalResponse()
@@ -92,7 +94,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CheckInstance", params)
+            headers = request.headers
+            body = self.call("CheckInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CheckInstanceResponse()
@@ -120,7 +123,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CheckInstanceName", params)
+            headers = request.headers
+            body = self.call("CheckInstanceName", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CheckInstanceNameResponse()
@@ -148,7 +152,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateApplicationTriggerPersonal", params)
+            headers = request.headers
+            body = self.call("CreateApplicationTriggerPersonal", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateApplicationTriggerPersonalResponse()
@@ -176,7 +181,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateImageLifecyclePersonal", params)
+            headers = request.headers
+            body = self.call("CreateImageLifecyclePersonal", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateImageLifecyclePersonalResponse()
@@ -204,7 +210,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateImmutableTagRules", params)
+            headers = request.headers
+            body = self.call("CreateImmutableTagRules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateImmutableTagRulesResponse()
@@ -232,7 +239,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateInstance", params)
+            headers = request.headers
+            body = self.call("CreateInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateInstanceResponse()
@@ -260,7 +268,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateInstanceToken", params)
+            headers = request.headers
+            body = self.call("CreateInstanceToken", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateInstanceTokenResponse()
@@ -288,7 +297,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateInternalEndpointDns", params)
+            headers = request.headers
+            body = self.call("CreateInternalEndpointDns", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateInternalEndpointDnsResponse()
@@ -316,7 +326,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateMultipleSecurityPolicy", params)
+            headers = request.headers
+            body = self.call("CreateMultipleSecurityPolicy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateMultipleSecurityPolicyResponse()
@@ -344,7 +355,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateNamespace", params)
+            headers = request.headers
+            body = self.call("CreateNamespace", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateNamespaceResponse()
@@ -372,7 +384,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateNamespacePersonal", params)
+            headers = request.headers
+            body = self.call("CreateNamespacePersonal", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateNamespacePersonalResponse()
@@ -400,7 +413,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateReplicationInstance", params)
+            headers = request.headers
+            body = self.call("CreateReplicationInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateReplicationInstanceResponse()
@@ -428,7 +442,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateRepository", params)
+            headers = request.headers
+            body = self.call("CreateRepository", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateRepositoryResponse()
@@ -456,7 +471,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateRepositoryPersonal", params)
+            headers = request.headers
+            body = self.call("CreateRepositoryPersonal", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateRepositoryPersonalResponse()
@@ -484,7 +500,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateSecurityPolicy", params)
+            headers = request.headers
+            body = self.call("CreateSecurityPolicy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateSecurityPolicyResponse()
@@ -512,7 +529,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateTagRetentionExecution", params)
+            headers = request.headers
+            body = self.call("CreateTagRetentionExecution", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateTagRetentionExecutionResponse()
@@ -540,7 +558,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateTagRetentionRule", params)
+            headers = request.headers
+            body = self.call("CreateTagRetentionRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateTagRetentionRuleResponse()
@@ -568,7 +587,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateUserPersonal", params)
+            headers = request.headers
+            body = self.call("CreateUserPersonal", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateUserPersonalResponse()
@@ -596,7 +616,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateWebhookTrigger", params)
+            headers = request.headers
+            body = self.call("CreateWebhookTrigger", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateWebhookTriggerResponse()
@@ -624,7 +645,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteApplicationTriggerPersonal", params)
+            headers = request.headers
+            body = self.call("DeleteApplicationTriggerPersonal", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteApplicationTriggerPersonalResponse()
@@ -652,7 +674,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteImage", params)
+            headers = request.headers
+            body = self.call("DeleteImage", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteImageResponse()
@@ -680,7 +703,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteImageLifecycleGlobalPersonal", params)
+            headers = request.headers
+            body = self.call("DeleteImageLifecycleGlobalPersonal", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteImageLifecycleGlobalPersonalResponse()
@@ -708,7 +732,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteImageLifecyclePersonal", params)
+            headers = request.headers
+            body = self.call("DeleteImageLifecyclePersonal", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteImageLifecyclePersonalResponse()
@@ -736,7 +761,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteImagePersonal", params)
+            headers = request.headers
+            body = self.call("DeleteImagePersonal", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteImagePersonalResponse()
@@ -764,7 +790,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteImmutableTagRules", params)
+            headers = request.headers
+            body = self.call("DeleteImmutableTagRules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteImmutableTagRulesResponse()
@@ -792,7 +819,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteInstance", params)
+            headers = request.headers
+            body = self.call("DeleteInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteInstanceResponse()
@@ -820,7 +848,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteInstanceToken", params)
+            headers = request.headers
+            body = self.call("DeleteInstanceToken", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteInstanceTokenResponse()
@@ -848,7 +877,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteInternalEndpointDns", params)
+            headers = request.headers
+            body = self.call("DeleteInternalEndpointDns", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteInternalEndpointDnsResponse()
@@ -876,7 +906,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteMultipleSecurityPolicy", params)
+            headers = request.headers
+            body = self.call("DeleteMultipleSecurityPolicy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteMultipleSecurityPolicyResponse()
@@ -904,7 +935,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteNamespace", params)
+            headers = request.headers
+            body = self.call("DeleteNamespace", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteNamespaceResponse()
@@ -932,7 +964,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteNamespacePersonal", params)
+            headers = request.headers
+            body = self.call("DeleteNamespacePersonal", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteNamespacePersonalResponse()
@@ -960,7 +993,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteRepository", params)
+            headers = request.headers
+            body = self.call("DeleteRepository", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteRepositoryResponse()
@@ -988,7 +1022,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteRepositoryPersonal", params)
+            headers = request.headers
+            body = self.call("DeleteRepositoryPersonal", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteRepositoryPersonalResponse()
@@ -1016,7 +1051,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteSecurityPolicy", params)
+            headers = request.headers
+            body = self.call("DeleteSecurityPolicy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteSecurityPolicyResponse()
@@ -1044,7 +1080,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteTagRetentionRule", params)
+            headers = request.headers
+            body = self.call("DeleteTagRetentionRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteTagRetentionRuleResponse()
@@ -1072,7 +1109,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteWebhookTrigger", params)
+            headers = request.headers
+            body = self.call("DeleteWebhookTrigger", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteWebhookTriggerResponse()
@@ -1100,7 +1138,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeApplicationTriggerLogPersonal", params)
+            headers = request.headers
+            body = self.call("DescribeApplicationTriggerLogPersonal", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeApplicationTriggerLogPersonalResponse()
@@ -1128,7 +1167,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeApplicationTriggerPersonal", params)
+            headers = request.headers
+            body = self.call("DescribeApplicationTriggerPersonal", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeApplicationTriggerPersonalResponse()
@@ -1156,7 +1196,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeChartDownloadInfo", params)
+            headers = request.headers
+            body = self.call("DescribeChartDownloadInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeChartDownloadInfoResponse()
@@ -1184,7 +1225,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeExternalEndpointStatus", params)
+            headers = request.headers
+            body = self.call("DescribeExternalEndpointStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeExternalEndpointStatusResponse()
@@ -1212,7 +1254,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeFavorRepositoryPersonal", params)
+            headers = request.headers
+            body = self.call("DescribeFavorRepositoryPersonal", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeFavorRepositoryPersonalResponse()
@@ -1240,7 +1283,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeImageFilterPersonal", params)
+            headers = request.headers
+            body = self.call("DescribeImageFilterPersonal", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeImageFilterPersonalResponse()
@@ -1268,7 +1312,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeImageLifecycleGlobalPersonal", params)
+            headers = request.headers
+            body = self.call("DescribeImageLifecycleGlobalPersonal", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeImageLifecycleGlobalPersonalResponse()
@@ -1296,7 +1341,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeImageLifecyclePersonal", params)
+            headers = request.headers
+            body = self.call("DescribeImageLifecyclePersonal", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeImageLifecyclePersonalResponse()
@@ -1324,7 +1370,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeImageManifests", params)
+            headers = request.headers
+            body = self.call("DescribeImageManifests", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeImageManifestsResponse()
@@ -1352,7 +1399,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeImagePersonal", params)
+            headers = request.headers
+            body = self.call("DescribeImagePersonal", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeImagePersonalResponse()
@@ -1380,7 +1428,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeImages", params)
+            headers = request.headers
+            body = self.call("DescribeImages", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeImagesResponse()
@@ -1408,7 +1457,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeImmutableTagRules", params)
+            headers = request.headers
+            body = self.call("DescribeImmutableTagRules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeImmutableTagRulesResponse()
@@ -1436,7 +1486,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInstanceStatus", params)
+            headers = request.headers
+            body = self.call("DescribeInstanceStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInstanceStatusResponse()
@@ -1464,7 +1515,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInstanceToken", params)
+            headers = request.headers
+            body = self.call("DescribeInstanceToken", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInstanceTokenResponse()
@@ -1492,7 +1544,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInstances", params)
+            headers = request.headers
+            body = self.call("DescribeInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInstancesResponse()
@@ -1520,7 +1573,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInternalEndpointDnsStatus", params)
+            headers = request.headers
+            body = self.call("DescribeInternalEndpointDnsStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInternalEndpointDnsStatusResponse()
@@ -1548,7 +1602,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInternalEndpoints", params)
+            headers = request.headers
+            body = self.call("DescribeInternalEndpoints", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInternalEndpointsResponse()
@@ -1576,7 +1631,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeNamespacePersonal", params)
+            headers = request.headers
+            body = self.call("DescribeNamespacePersonal", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeNamespacePersonalResponse()
@@ -1604,7 +1660,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeNamespaces", params)
+            headers = request.headers
+            body = self.call("DescribeNamespaces", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeNamespacesResponse()
@@ -1632,7 +1689,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeReplicationInstanceCreateTasks", params)
+            headers = request.headers
+            body = self.call("DescribeReplicationInstanceCreateTasks", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeReplicationInstanceCreateTasksResponse()
@@ -1660,7 +1718,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeReplicationInstanceSyncStatus", params)
+            headers = request.headers
+            body = self.call("DescribeReplicationInstanceSyncStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeReplicationInstanceSyncStatusResponse()
@@ -1688,7 +1747,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeReplicationInstances", params)
+            headers = request.headers
+            body = self.call("DescribeReplicationInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeReplicationInstancesResponse()
@@ -1716,7 +1776,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRepositories", params)
+            headers = request.headers
+            body = self.call("DescribeRepositories", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRepositoriesResponse()
@@ -1744,7 +1805,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRepositoryFilterPersonal", params)
+            headers = request.headers
+            body = self.call("DescribeRepositoryFilterPersonal", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRepositoryFilterPersonalResponse()
@@ -1772,7 +1834,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRepositoryOwnerPersonal", params)
+            headers = request.headers
+            body = self.call("DescribeRepositoryOwnerPersonal", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRepositoryOwnerPersonalResponse()
@@ -1800,7 +1863,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRepositoryPersonal", params)
+            headers = request.headers
+            body = self.call("DescribeRepositoryPersonal", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRepositoryPersonalResponse()
@@ -1828,7 +1892,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSecurityPolicies", params)
+            headers = request.headers
+            body = self.call("DescribeSecurityPolicies", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSecurityPoliciesResponse()
@@ -1856,7 +1921,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTagRetentionExecution", params)
+            headers = request.headers
+            body = self.call("DescribeTagRetentionExecution", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTagRetentionExecutionResponse()
@@ -1884,7 +1950,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTagRetentionExecutionTask", params)
+            headers = request.headers
+            body = self.call("DescribeTagRetentionExecutionTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTagRetentionExecutionTaskResponse()
@@ -1912,7 +1979,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTagRetentionRules", params)
+            headers = request.headers
+            body = self.call("DescribeTagRetentionRules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTagRetentionRulesResponse()
@@ -1940,7 +2008,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeUserQuotaPersonal", params)
+            headers = request.headers
+            body = self.call("DescribeUserQuotaPersonal", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeUserQuotaPersonalResponse()
@@ -1968,7 +2037,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeWebhookTrigger", params)
+            headers = request.headers
+            body = self.call("DescribeWebhookTrigger", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeWebhookTriggerResponse()
@@ -1996,7 +2066,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeWebhookTriggerLog", params)
+            headers = request.headers
+            body = self.call("DescribeWebhookTriggerLog", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeWebhookTriggerLogResponse()
@@ -2024,7 +2095,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DownloadHelmChart", params)
+            headers = request.headers
+            body = self.call("DownloadHelmChart", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DownloadHelmChartResponse()
@@ -2052,7 +2124,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DuplicateImagePersonal", params)
+            headers = request.headers
+            body = self.call("DuplicateImagePersonal", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DuplicateImagePersonalResponse()
@@ -2080,7 +2153,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ManageExternalEndpoint", params)
+            headers = request.headers
+            body = self.call("ManageExternalEndpoint", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ManageExternalEndpointResponse()
@@ -2108,7 +2182,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ManageImageLifecycleGlobalPersonal", params)
+            headers = request.headers
+            body = self.call("ManageImageLifecycleGlobalPersonal", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ManageImageLifecycleGlobalPersonalResponse()
@@ -2136,7 +2211,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ManageInternalEndpoint", params)
+            headers = request.headers
+            body = self.call("ManageInternalEndpoint", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ManageInternalEndpointResponse()
@@ -2164,7 +2240,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ManageReplication", params)
+            headers = request.headers
+            body = self.call("ManageReplication", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ManageReplicationResponse()
@@ -2192,7 +2269,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyApplicationTriggerPersonal", params)
+            headers = request.headers
+            body = self.call("ModifyApplicationTriggerPersonal", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyApplicationTriggerPersonalResponse()
@@ -2220,7 +2298,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyImmutableTagRules", params)
+            headers = request.headers
+            body = self.call("ModifyImmutableTagRules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyImmutableTagRulesResponse()
@@ -2248,7 +2327,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyInstance", params)
+            headers = request.headers
+            body = self.call("ModifyInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyInstanceResponse()
@@ -2276,7 +2356,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyInstanceToken", params)
+            headers = request.headers
+            body = self.call("ModifyInstanceToken", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyInstanceTokenResponse()
@@ -2304,7 +2385,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyNamespace", params)
+            headers = request.headers
+            body = self.call("ModifyNamespace", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyNamespaceResponse()
@@ -2332,7 +2414,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyRepository", params)
+            headers = request.headers
+            body = self.call("ModifyRepository", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyRepositoryResponse()
@@ -2360,7 +2443,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyRepositoryAccessPersonal", params)
+            headers = request.headers
+            body = self.call("ModifyRepositoryAccessPersonal", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyRepositoryAccessPersonalResponse()
@@ -2388,7 +2472,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyRepositoryInfoPersonal", params)
+            headers = request.headers
+            body = self.call("ModifyRepositoryInfoPersonal", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyRepositoryInfoPersonalResponse()
@@ -2416,7 +2501,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifySecurityPolicy", params)
+            headers = request.headers
+            body = self.call("ModifySecurityPolicy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifySecurityPolicyResponse()
@@ -2444,7 +2530,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyTagRetentionRule", params)
+            headers = request.headers
+            body = self.call("ModifyTagRetentionRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyTagRetentionRuleResponse()
@@ -2472,7 +2559,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyUserPasswordPersonal", params)
+            headers = request.headers
+            body = self.call("ModifyUserPasswordPersonal", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyUserPasswordPersonalResponse()
@@ -2500,7 +2588,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyWebhookTrigger", params)
+            headers = request.headers
+            body = self.call("ModifyWebhookTrigger", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyWebhookTriggerResponse()
@@ -2528,7 +2617,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RenewInstance", params)
+            headers = request.headers
+            body = self.call("RenewInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RenewInstanceResponse()
@@ -2556,7 +2646,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ValidateNamespaceExistPersonal", params)
+            headers = request.headers
+            body = self.call("ValidateNamespaceExistPersonal", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ValidateNamespaceExistPersonalResponse()
@@ -2584,7 +2675,8 @@ class TcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ValidateRepositoryExistPersonal", params)
+            headers = request.headers
+            body = self.call("ValidateRepositoryExistPersonal", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ValidateRepositoryExistPersonalResponse()

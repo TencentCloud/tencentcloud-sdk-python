@@ -36,7 +36,8 @@ class TdcpgClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CloneClusterToPointInTime", params)
+            headers = request.headers
+            body = self.call("CloneClusterToPointInTime", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CloneClusterToPointInTimeResponse()
@@ -64,7 +65,8 @@ class TdcpgClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateCluster", params)
+            headers = request.headers
+            body = self.call("CreateCluster", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateClusterResponse()
@@ -92,7 +94,8 @@ class TdcpgClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateClusterInstances", params)
+            headers = request.headers
+            body = self.call("CreateClusterInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateClusterInstancesResponse()
@@ -120,7 +123,8 @@ class TdcpgClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteCluster", params)
+            headers = request.headers
+            body = self.call("DeleteCluster", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteClusterResponse()
@@ -148,7 +152,8 @@ class TdcpgClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteClusterInstances", params)
+            headers = request.headers
+            body = self.call("DeleteClusterInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteClusterInstancesResponse()
@@ -176,7 +181,8 @@ class TdcpgClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAccounts", params)
+            headers = request.headers
+            body = self.call("DescribeAccounts", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAccountsResponse()
@@ -204,7 +210,8 @@ class TdcpgClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeClusterBackups", params)
+            headers = request.headers
+            body = self.call("DescribeClusterBackups", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeClusterBackupsResponse()
@@ -232,7 +239,8 @@ class TdcpgClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeClusterEndpoints", params)
+            headers = request.headers
+            body = self.call("DescribeClusterEndpoints", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeClusterEndpointsResponse()
@@ -260,7 +268,8 @@ class TdcpgClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeClusterInstances", params)
+            headers = request.headers
+            body = self.call("DescribeClusterInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeClusterInstancesResponse()
@@ -288,7 +297,8 @@ class TdcpgClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeClusterRecoveryTimeRange", params)
+            headers = request.headers
+            body = self.call("DescribeClusterRecoveryTimeRange", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeClusterRecoveryTimeRangeResponse()
@@ -316,7 +326,8 @@ class TdcpgClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeClusters", params)
+            headers = request.headers
+            body = self.call("DescribeClusters", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeClustersResponse()
@@ -344,7 +355,8 @@ class TdcpgClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeResourcesByDealName", params)
+            headers = request.headers
+            body = self.call("DescribeResourcesByDealName", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeResourcesByDealNameResponse()
@@ -372,7 +384,8 @@ class TdcpgClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("IsolateCluster", params)
+            headers = request.headers
+            body = self.call("IsolateCluster", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.IsolateClusterResponse()
@@ -403,7 +416,8 @@ class TdcpgClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("IsolateClusterInstances", params)
+            headers = request.headers
+            body = self.call("IsolateClusterInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.IsolateClusterInstancesResponse()
@@ -431,7 +445,8 @@ class TdcpgClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyAccountDescription", params)
+            headers = request.headers
+            body = self.call("ModifyAccountDescription", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAccountDescriptionResponse()
@@ -459,7 +474,8 @@ class TdcpgClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyClusterEndpointWanStatus", params)
+            headers = request.headers
+            body = self.call("ModifyClusterEndpointWanStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyClusterEndpointWanStatusResponse()
@@ -487,7 +503,8 @@ class TdcpgClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyClusterInstancesSpec", params)
+            headers = request.headers
+            body = self.call("ModifyClusterInstancesSpec", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyClusterInstancesSpecResponse()
@@ -515,7 +532,8 @@ class TdcpgClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyClusterName", params)
+            headers = request.headers
+            body = self.call("ModifyClusterName", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyClusterNameResponse()
@@ -543,7 +561,8 @@ class TdcpgClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyClustersAutoRenewFlag", params)
+            headers = request.headers
+            body = self.call("ModifyClustersAutoRenewFlag", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyClustersAutoRenewFlagResponse()
@@ -571,7 +590,8 @@ class TdcpgClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RecoverCluster", params)
+            headers = request.headers
+            body = self.call("RecoverCluster", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RecoverClusterResponse()
@@ -602,7 +622,8 @@ class TdcpgClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RecoverClusterInstances", params)
+            headers = request.headers
+            body = self.call("RecoverClusterInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RecoverClusterInstancesResponse()
@@ -630,7 +651,8 @@ class TdcpgClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RenewCluster", params)
+            headers = request.headers
+            body = self.call("RenewCluster", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RenewClusterResponse()
@@ -658,7 +680,8 @@ class TdcpgClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ResetAccountPassword", params)
+            headers = request.headers
+            body = self.call("ResetAccountPassword", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ResetAccountPasswordResponse()
@@ -686,7 +709,8 @@ class TdcpgClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RestartClusterInstances", params)
+            headers = request.headers
+            body = self.call("RestartClusterInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RestartClusterInstancesResponse()
@@ -714,7 +738,8 @@ class TdcpgClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("TransformClusterPayMode", params)
+            headers = request.headers
+            body = self.call("TransformClusterPayMode", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.TransformClusterPayModeResponse()

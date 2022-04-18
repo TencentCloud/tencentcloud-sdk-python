@@ -36,7 +36,8 @@ class MspClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeregisterMigrationTask", params)
+            headers = request.headers
+            body = self.call("DeregisterMigrationTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeregisterMigrationTaskResponse()
@@ -64,7 +65,8 @@ class MspClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeMigrationTask", params)
+            headers = request.headers
+            body = self.call("DescribeMigrationTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeMigrationTaskResponse()
@@ -92,7 +94,8 @@ class MspClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ListMigrationProject", params)
+            headers = request.headers
+            body = self.call("ListMigrationProject", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListMigrationProjectResponse()
@@ -120,7 +123,8 @@ class MspClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ListMigrationTask", params)
+            headers = request.headers
+            body = self.call("ListMigrationTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListMigrationTaskResponse()
@@ -148,7 +152,8 @@ class MspClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyMigrationTaskBelongToProject", params)
+            headers = request.headers
+            body = self.call("ModifyMigrationTaskBelongToProject", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyMigrationTaskBelongToProjectResponse()
@@ -176,7 +181,8 @@ class MspClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyMigrationTaskStatus", params)
+            headers = request.headers
+            body = self.call("ModifyMigrationTaskStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyMigrationTaskStatusResponse()
@@ -204,7 +210,8 @@ class MspClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RegisterMigrationTask", params)
+            headers = request.headers
+            body = self.call("RegisterMigrationTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RegisterMigrationTaskResponse()

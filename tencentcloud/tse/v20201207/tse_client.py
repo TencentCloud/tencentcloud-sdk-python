@@ -36,7 +36,8 @@ class TseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSREInstanceAccessAddress", params)
+            headers = request.headers
+            body = self.call("DescribeSREInstanceAccessAddress", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSREInstanceAccessAddressResponse()
@@ -64,7 +65,8 @@ class TseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSREInstances", params)
+            headers = request.headers
+            body = self.call("DescribeSREInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSREInstancesResponse()

@@ -36,7 +36,8 @@ class TiemsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateJob", params)
+            headers = request.headers
+            body = self.call("CreateJob", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateJobResponse()
@@ -64,7 +65,8 @@ class TiemsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateRsgAsGroup", params)
+            headers = request.headers
+            body = self.call("CreateRsgAsGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateRsgAsGroupResponse()
@@ -92,7 +94,8 @@ class TiemsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateRuntime", params)
+            headers = request.headers
+            body = self.call("CreateRuntime", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateRuntimeResponse()
@@ -120,7 +123,8 @@ class TiemsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateService", params)
+            headers = request.headers
+            body = self.call("CreateService", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateServiceResponse()
@@ -148,7 +152,8 @@ class TiemsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateServiceConfig", params)
+            headers = request.headers
+            body = self.call("CreateServiceConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateServiceConfigResponse()
@@ -176,7 +181,8 @@ class TiemsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteInstance", params)
+            headers = request.headers
+            body = self.call("DeleteInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteInstanceResponse()
@@ -204,7 +210,8 @@ class TiemsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteJob", params)
+            headers = request.headers
+            body = self.call("DeleteJob", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteJobResponse()
@@ -232,7 +239,8 @@ class TiemsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteResourceGroup", params)
+            headers = request.headers
+            body = self.call("DeleteResourceGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteResourceGroupResponse()
@@ -260,7 +268,8 @@ class TiemsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteRsgAsGroup", params)
+            headers = request.headers
+            body = self.call("DeleteRsgAsGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteRsgAsGroupResponse()
@@ -288,7 +297,8 @@ class TiemsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteRuntime", params)
+            headers = request.headers
+            body = self.call("DeleteRuntime", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteRuntimeResponse()
@@ -316,7 +326,8 @@ class TiemsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteService", params)
+            headers = request.headers
+            body = self.call("DeleteService", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteServiceResponse()
@@ -344,7 +355,8 @@ class TiemsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteServiceConfig", params)
+            headers = request.headers
+            body = self.call("DeleteServiceConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteServiceConfigResponse()
@@ -372,7 +384,8 @@ class TiemsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInstances", params)
+            headers = request.headers
+            body = self.call("DescribeInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInstancesResponse()
@@ -400,7 +413,8 @@ class TiemsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeResourceGroups", params)
+            headers = request.headers
+            body = self.call("DescribeResourceGroups", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeResourceGroupsResponse()
@@ -428,7 +442,8 @@ class TiemsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRsgAsGroupActivities", params)
+            headers = request.headers
+            body = self.call("DescribeRsgAsGroupActivities", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRsgAsGroupActivitiesResponse()
@@ -456,7 +471,8 @@ class TiemsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRsgAsGroups", params)
+            headers = request.headers
+            body = self.call("DescribeRsgAsGroups", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRsgAsGroupsResponse()
@@ -484,7 +500,8 @@ class TiemsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRuntimes", params)
+            headers = request.headers
+            body = self.call("DescribeRuntimes", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRuntimesResponse()
@@ -512,7 +529,8 @@ class TiemsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeServiceConfigs", params)
+            headers = request.headers
+            body = self.call("DescribeServiceConfigs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeServiceConfigsResponse()
@@ -540,7 +558,8 @@ class TiemsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeServices", params)
+            headers = request.headers
+            body = self.call("DescribeServices", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeServicesResponse()
@@ -568,7 +587,8 @@ class TiemsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DisableRsgAsGroup", params)
+            headers = request.headers
+            body = self.call("DisableRsgAsGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DisableRsgAsGroupResponse()
@@ -596,7 +616,8 @@ class TiemsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("EnableRsgAsGroup", params)
+            headers = request.headers
+            body = self.call("EnableRsgAsGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.EnableRsgAsGroupResponse()
@@ -624,7 +645,8 @@ class TiemsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ExposeService", params)
+            headers = request.headers
+            body = self.call("ExposeService", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ExposeServiceResponse()
@@ -652,7 +674,8 @@ class TiemsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateJob", params)
+            headers = request.headers
+            body = self.call("UpdateJob", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateJobResponse()
@@ -680,7 +703,8 @@ class TiemsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateRsgAsGroup", params)
+            headers = request.headers
+            body = self.call("UpdateRsgAsGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateRsgAsGroupResponse()
@@ -708,7 +732,8 @@ class TiemsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateService", params)
+            headers = request.headers
+            body = self.call("UpdateService", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateServiceResponse()

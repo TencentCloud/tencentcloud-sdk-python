@@ -36,7 +36,8 @@ class OrganizationClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AcceptOrganizationInvitation", params)
+            headers = request.headers
+            body = self.call("AcceptOrganizationInvitation", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AcceptOrganizationInvitationResponse()
@@ -64,7 +65,8 @@ class OrganizationClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AddOrganizationNode", params)
+            headers = request.headers
+            body = self.call("AddOrganizationNode", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AddOrganizationNodeResponse()
@@ -92,7 +94,8 @@ class OrganizationClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CancelOrganizationInvitation", params)
+            headers = request.headers
+            body = self.call("CancelOrganizationInvitation", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CancelOrganizationInvitationResponse()
@@ -120,7 +123,8 @@ class OrganizationClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateOrganization", params)
+            headers = request.headers
+            body = self.call("CreateOrganization", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateOrganizationResponse()
@@ -148,7 +152,8 @@ class OrganizationClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteOrganization", params)
+            headers = request.headers
+            body = self.call("DeleteOrganization", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteOrganizationResponse()
@@ -176,7 +181,8 @@ class OrganizationClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteOrganizationMemberFromNode", params)
+            headers = request.headers
+            body = self.call("DeleteOrganizationMemberFromNode", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteOrganizationMemberFromNodeResponse()
@@ -204,7 +210,8 @@ class OrganizationClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteOrganizationMembers", params)
+            headers = request.headers
+            body = self.call("DeleteOrganizationMembers", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteOrganizationMembersResponse()
@@ -232,7 +239,8 @@ class OrganizationClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteOrganizationNodes", params)
+            headers = request.headers
+            body = self.call("DeleteOrganizationNodes", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteOrganizationNodesResponse()
@@ -260,7 +268,8 @@ class OrganizationClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DenyOrganizationInvitation", params)
+            headers = request.headers
+            body = self.call("DenyOrganizationInvitation", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DenyOrganizationInvitationResponse()
@@ -288,7 +297,8 @@ class OrganizationClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetOrganization", params)
+            headers = request.headers
+            body = self.call("GetOrganization", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetOrganizationResponse()
@@ -316,7 +326,8 @@ class OrganizationClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetOrganizationMember", params)
+            headers = request.headers
+            body = self.call("GetOrganizationMember", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetOrganizationMemberResponse()
@@ -344,7 +355,8 @@ class OrganizationClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ListOrganizationInvitations", params)
+            headers = request.headers
+            body = self.call("ListOrganizationInvitations", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListOrganizationInvitationsResponse()
@@ -372,7 +384,8 @@ class OrganizationClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ListOrganizationMembers", params)
+            headers = request.headers
+            body = self.call("ListOrganizationMembers", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListOrganizationMembersResponse()
@@ -400,7 +413,8 @@ class OrganizationClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ListOrganizationNodeMembers", params)
+            headers = request.headers
+            body = self.call("ListOrganizationNodeMembers", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListOrganizationNodeMembersResponse()
@@ -428,7 +442,8 @@ class OrganizationClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ListOrganizationNodes", params)
+            headers = request.headers
+            body = self.call("ListOrganizationNodes", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListOrganizationNodesResponse()
@@ -456,7 +471,8 @@ class OrganizationClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("MoveOrganizationMembersToNode", params)
+            headers = request.headers
+            body = self.call("MoveOrganizationMembersToNode", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.MoveOrganizationMembersToNodeResponse()
@@ -484,7 +500,8 @@ class OrganizationClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QuitOrganization", params)
+            headers = request.headers
+            body = self.call("QuitOrganization", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QuitOrganizationResponse()
@@ -512,7 +529,8 @@ class OrganizationClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SendOrganizationInvitation", params)
+            headers = request.headers
+            body = self.call("SendOrganizationInvitation", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SendOrganizationInvitationResponse()
@@ -540,7 +558,8 @@ class OrganizationClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateOrganizationMember", params)
+            headers = request.headers
+            body = self.call("UpdateOrganizationMember", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateOrganizationMemberResponse()
@@ -568,7 +587,8 @@ class OrganizationClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateOrganizationNode", params)
+            headers = request.headers
+            body = self.call("UpdateOrganizationNode", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateOrganizationNodeResponse()

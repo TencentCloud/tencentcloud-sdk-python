@@ -36,7 +36,8 @@ class CiiClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateStructureTask", params)
+            headers = request.headers
+            body = self.call("CreateStructureTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateStructureTaskResponse()
@@ -64,7 +65,8 @@ class CiiClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeStructCompareData", params)
+            headers = request.headers
+            body = self.call("DescribeStructCompareData", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeStructCompareDataResponse()
@@ -92,7 +94,8 @@ class CiiClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeStructureTaskResult", params)
+            headers = request.headers
+            body = self.call("DescribeStructureTaskResult", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeStructureTaskResultResponse()

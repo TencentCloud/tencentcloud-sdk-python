@@ -36,7 +36,8 @@ class TavClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetLocalEngine", params)
+            headers = request.headers
+            body = self.call("GetLocalEngine", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetLocalEngineResponse()
@@ -64,7 +65,8 @@ class TavClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetScanResult", params)
+            headers = request.headers
+            body = self.call("GetScanResult", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetScanResultResponse()
@@ -92,7 +94,8 @@ class TavClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ScanFile", params)
+            headers = request.headers
+            body = self.call("ScanFile", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ScanFileResponse()
@@ -120,7 +123,8 @@ class TavClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ScanFileHash", params)
+            headers = request.headers
+            body = self.call("ScanFileHash", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ScanFileHashResponse()

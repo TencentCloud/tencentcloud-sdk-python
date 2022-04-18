@@ -36,7 +36,8 @@ class TrtcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreatePicture", params)
+            headers = request.headers
+            body = self.call("CreatePicture", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreatePictureResponse()
@@ -64,7 +65,8 @@ class TrtcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateTroubleInfo", params)
+            headers = request.headers
+            body = self.call("CreateTroubleInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateTroubleInfoResponse()
@@ -92,7 +94,8 @@ class TrtcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeletePicture", params)
+            headers = request.headers
+            body = self.call("DeletePicture", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeletePictureResponse()
@@ -120,7 +123,8 @@ class TrtcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAbnormalEvent", params)
+            headers = request.headers
+            body = self.call("DescribeAbnormalEvent", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAbnormalEventResponse()
@@ -149,7 +153,8 @@ class TrtcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCallDetail", params)
+            headers = request.headers
+            body = self.call("DescribeCallDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCallDetailResponse()
@@ -177,7 +182,8 @@ class TrtcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDetailEvent", params)
+            headers = request.headers
+            body = self.call("DescribeDetailEvent", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDetailEventResponse()
@@ -205,7 +211,8 @@ class TrtcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeHistoryScale", params)
+            headers = request.headers
+            body = self.call("DescribeHistoryScale", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeHistoryScaleResponse()
@@ -233,7 +240,8 @@ class TrtcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePicture", params)
+            headers = request.headers
+            body = self.call("DescribePicture", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePictureResponse()
@@ -266,7 +274,8 @@ class TrtcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRecordStatistic", params)
+            headers = request.headers
+            body = self.call("DescribeRecordStatistic", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRecordStatisticResponse()
@@ -295,7 +304,8 @@ class TrtcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRoomInformation", params)
+            headers = request.headers
+            body = self.call("DescribeRoomInformation", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRoomInformationResponse()
@@ -327,7 +337,8 @@ class TrtcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTrtcMcuTranscodeTime", params)
+            headers = request.headers
+            body = self.call("DescribeTrtcMcuTranscodeTime", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTrtcMcuTranscodeTimeResponse()
@@ -356,7 +367,8 @@ class TrtcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeUserInformation", params)
+            headers = request.headers
+            body = self.call("DescribeUserInformation", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeUserInformationResponse()
@@ -384,7 +396,8 @@ class TrtcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DismissRoom", params)
+            headers = request.headers
+            body = self.call("DismissRoom", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DismissRoomResponse()
@@ -412,7 +425,8 @@ class TrtcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DismissRoomByStrRoomId", params)
+            headers = request.headers
+            body = self.call("DismissRoomByStrRoomId", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DismissRoomByStrRoomIdResponse()
@@ -440,7 +454,8 @@ class TrtcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyPicture", params)
+            headers = request.headers
+            body = self.call("ModifyPicture", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyPictureResponse()
@@ -468,7 +483,8 @@ class TrtcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RemoveUser", params)
+            headers = request.headers
+            body = self.call("RemoveUser", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RemoveUserResponse()
@@ -496,7 +512,8 @@ class TrtcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RemoveUserByStrRoomId", params)
+            headers = request.headers
+            body = self.call("RemoveUserByStrRoomId", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RemoveUserByStrRoomIdResponse()
@@ -544,7 +561,8 @@ class TrtcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("StartMCUMixTranscode", params)
+            headers = request.headers
+            body = self.call("StartMCUMixTranscode", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StartMCUMixTranscodeResponse()
@@ -592,7 +610,8 @@ class TrtcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("StartMCUMixTranscodeByStrRoomId", params)
+            headers = request.headers
+            body = self.call("StartMCUMixTranscodeByStrRoomId", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StartMCUMixTranscodeByStrRoomIdResponse()
@@ -620,7 +639,8 @@ class TrtcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("StopMCUMixTranscode", params)
+            headers = request.headers
+            body = self.call("StopMCUMixTranscode", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StopMCUMixTranscodeResponse()
@@ -648,7 +668,8 @@ class TrtcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("StopMCUMixTranscodeByStrRoomId", params)
+            headers = request.headers
+            body = self.call("StopMCUMixTranscodeByStrRoomId", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StopMCUMixTranscodeByStrRoomIdResponse()

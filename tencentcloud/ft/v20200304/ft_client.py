@@ -36,7 +36,8 @@ class FtClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CancelFaceMorphJob", params)
+            headers = request.headers
+            body = self.call("CancelFaceMorphJob", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CancelFaceMorphJobResponse()
@@ -64,7 +65,8 @@ class FtClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ChangeAgePic", params)
+            headers = request.headers
+            body = self.call("ChangeAgePic", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ChangeAgePicResponse()
@@ -92,7 +94,8 @@ class FtClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("FaceCartoonPic", params)
+            headers = request.headers
+            body = self.call("FaceCartoonPic", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.FaceCartoonPicResponse()
@@ -120,7 +123,8 @@ class FtClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("MorphFace", params)
+            headers = request.headers
+            body = self.call("MorphFace", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.MorphFaceResponse()
@@ -148,7 +152,8 @@ class FtClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryFaceMorphJob", params)
+            headers = request.headers
+            body = self.call("QueryFaceMorphJob", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryFaceMorphJobResponse()
@@ -176,7 +181,8 @@ class FtClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SwapGenderPic", params)
+            headers = request.headers
+            body = self.call("SwapGenderPic", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SwapGenderPicResponse()

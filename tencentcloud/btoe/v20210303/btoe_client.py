@@ -38,7 +38,8 @@ class BtoeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateAudioDeposit", params)
+            headers = request.headers
+            body = self.call("CreateAudioDeposit", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateAudioDepositResponse()
@@ -68,7 +69,8 @@ class BtoeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateDataDeposit", params)
+            headers = request.headers
+            body = self.call("CreateDataDeposit", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateDataDepositResponse()
@@ -98,7 +100,8 @@ class BtoeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateDocDeposit", params)
+            headers = request.headers
+            body = self.call("CreateDocDeposit", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateDocDepositResponse()
@@ -128,7 +131,8 @@ class BtoeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateHashDeposit", params)
+            headers = request.headers
+            body = self.call("CreateHashDeposit", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateHashDepositResponse()
@@ -158,7 +162,8 @@ class BtoeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateHashDepositNoCert", params)
+            headers = request.headers
+            body = self.call("CreateHashDepositNoCert", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateHashDepositNoCertResponse()
@@ -188,7 +193,8 @@ class BtoeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateHashDepositNoSeal", params)
+            headers = request.headers
+            body = self.call("CreateHashDepositNoSeal", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateHashDepositNoSealResponse()
@@ -218,7 +224,8 @@ class BtoeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateImageDeposit", params)
+            headers = request.headers
+            body = self.call("CreateImageDeposit", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateImageDepositResponse()
@@ -248,7 +255,8 @@ class BtoeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateVideoDeposit", params)
+            headers = request.headers
+            body = self.call("CreateVideoDeposit", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateVideoDepositResponse()
@@ -278,7 +286,8 @@ class BtoeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateWebpageDeposit", params)
+            headers = request.headers
+            body = self.call("CreateWebpageDeposit", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateWebpageDepositResponse()
@@ -308,7 +317,8 @@ class BtoeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetDepositCert", params)
+            headers = request.headers
+            body = self.call("GetDepositCert", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetDepositCertResponse()
@@ -339,7 +349,8 @@ class BtoeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetDepositFile", params)
+            headers = request.headers
+            body = self.call("GetDepositFile", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetDepositFileResponse()
@@ -369,7 +380,8 @@ class BtoeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetDepositInfo", params)
+            headers = request.headers
+            body = self.call("GetDepositInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetDepositInfoResponse()

@@ -36,7 +36,8 @@ class MgobeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ChangeRoomPlayerProfile", params)
+            headers = request.headers
+            body = self.call("ChangeRoomPlayerProfile", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ChangeRoomPlayerProfileResponse()
@@ -64,7 +65,8 @@ class MgobeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ChangeRoomPlayerStatus", params)
+            headers = request.headers
+            body = self.call("ChangeRoomPlayerStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ChangeRoomPlayerStatusResponse()
@@ -92,7 +94,8 @@ class MgobeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePlayer", params)
+            headers = request.headers
+            body = self.call("DescribePlayer", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePlayerResponse()
@@ -120,7 +123,8 @@ class MgobeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRoom", params)
+            headers = request.headers
+            body = self.call("DescribeRoom", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRoomResponse()
@@ -148,7 +152,8 @@ class MgobeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DismissRoom", params)
+            headers = request.headers
+            body = self.call("DismissRoom", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DismissRoomResponse()
@@ -176,7 +181,8 @@ class MgobeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyRoom", params)
+            headers = request.headers
+            body = self.call("ModifyRoom", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyRoomResponse()
@@ -204,7 +210,8 @@ class MgobeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RemoveRoomPlayer", params)
+            headers = request.headers
+            body = self.call("RemoveRoomPlayer", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RemoveRoomPlayerResponse()

@@ -36,7 +36,8 @@ class VmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SendCodeVoice", params)
+            headers = request.headers
+            body = self.call("SendCodeVoice", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SendCodeVoiceResponse()
@@ -64,7 +65,8 @@ class VmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SendTtsVoice", params)
+            headers = request.headers
+            body = self.call("SendTtsVoice", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SendTtsVoiceResponse()

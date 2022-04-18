@@ -36,7 +36,8 @@ class MariadbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ActivateHourDBInstance", params)
+            headers = request.headers
+            body = self.call("ActivateHourDBInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ActivateHourDBInstanceResponse()
@@ -64,7 +65,8 @@ class MariadbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AssociateSecurityGroups", params)
+            headers = request.headers
+            body = self.call("AssociateSecurityGroups", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AssociateSecurityGroupsResponse()
@@ -92,7 +94,8 @@ class MariadbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CancelDcnJob", params)
+            headers = request.headers
+            body = self.call("CancelDcnJob", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CancelDcnJobResponse()
@@ -120,7 +123,8 @@ class MariadbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CloneAccount", params)
+            headers = request.headers
+            body = self.call("CloneAccount", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CloneAccountResponse()
@@ -148,7 +152,8 @@ class MariadbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CloseDBExtranetAccess", params)
+            headers = request.headers
+            body = self.call("CloseDBExtranetAccess", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CloseDBExtranetAccessResponse()
@@ -177,7 +182,8 @@ class MariadbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CopyAccountPrivileges", params)
+            headers = request.headers
+            body = self.call("CopyAccountPrivileges", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CopyAccountPrivilegesResponse()
@@ -205,7 +211,8 @@ class MariadbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateAccount", params)
+            headers = request.headers
+            body = self.call("CreateAccount", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateAccountResponse()
@@ -233,7 +240,8 @@ class MariadbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateDBInstance", params)
+            headers = request.headers
+            body = self.call("CreateDBInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateDBInstanceResponse()
@@ -261,7 +269,8 @@ class MariadbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateDedicatedClusterDBInstance", params)
+            headers = request.headers
+            body = self.call("CreateDedicatedClusterDBInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateDedicatedClusterDBInstanceResponse()
@@ -289,7 +298,8 @@ class MariadbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateHourDBInstance", params)
+            headers = request.headers
+            body = self.call("CreateHourDBInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateHourDBInstanceResponse()
@@ -317,7 +327,8 @@ class MariadbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateTmpInstances", params)
+            headers = request.headers
+            body = self.call("CreateTmpInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateTmpInstancesResponse()
@@ -345,7 +356,8 @@ class MariadbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteAccount", params)
+            headers = request.headers
+            body = self.call("DeleteAccount", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteAccountResponse()
@@ -374,7 +386,8 @@ class MariadbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAccountPrivileges", params)
+            headers = request.headers
+            body = self.call("DescribeAccountPrivileges", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAccountPrivilegesResponse()
@@ -402,7 +415,8 @@ class MariadbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAccounts", params)
+            headers = request.headers
+            body = self.call("DescribeAccounts", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAccountsResponse()
@@ -430,7 +444,8 @@ class MariadbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBackupTime", params)
+            headers = request.headers
+            body = self.call("DescribeBackupTime", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBackupTimeResponse()
@@ -458,7 +473,8 @@ class MariadbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDBInstanceSpecs", params)
+            headers = request.headers
+            body = self.call("DescribeDBInstanceSpecs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDBInstanceSpecsResponse()
@@ -487,7 +503,8 @@ class MariadbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDBInstances", params)
+            headers = request.headers
+            body = self.call("DescribeDBInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDBInstancesResponse()
@@ -515,7 +532,8 @@ class MariadbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDBLogFiles", params)
+            headers = request.headers
+            body = self.call("DescribeDBLogFiles", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDBLogFilesResponse()
@@ -543,7 +561,8 @@ class MariadbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDBParameters", params)
+            headers = request.headers
+            body = self.call("DescribeDBParameters", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDBParametersResponse()
@@ -571,7 +590,8 @@ class MariadbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDBPerformance", params)
+            headers = request.headers
+            body = self.call("DescribeDBPerformance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDBPerformanceResponse()
@@ -599,7 +619,8 @@ class MariadbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDBPerformanceDetails", params)
+            headers = request.headers
+            body = self.call("DescribeDBPerformanceDetails", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDBPerformanceDetailsResponse()
@@ -627,7 +648,8 @@ class MariadbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDBResourceUsage", params)
+            headers = request.headers
+            body = self.call("DescribeDBResourceUsage", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDBResourceUsageResponse()
@@ -655,7 +677,8 @@ class MariadbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDBResourceUsageDetails", params)
+            headers = request.headers
+            body = self.call("DescribeDBResourceUsageDetails", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDBResourceUsageDetailsResponse()
@@ -683,7 +706,8 @@ class MariadbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDBSlowLogs", params)
+            headers = request.headers
+            body = self.call("DescribeDBSlowLogs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDBSlowLogsResponse()
@@ -711,7 +735,8 @@ class MariadbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDatabaseObjects", params)
+            headers = request.headers
+            body = self.call("DescribeDatabaseObjects", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDatabaseObjectsResponse()
@@ -739,7 +764,8 @@ class MariadbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDatabaseTable", params)
+            headers = request.headers
+            body = self.call("DescribeDatabaseTable", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDatabaseTableResponse()
@@ -767,7 +793,8 @@ class MariadbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDatabases", params)
+            headers = request.headers
+            body = self.call("DescribeDatabases", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDatabasesResponse()
@@ -795,7 +822,8 @@ class MariadbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDcnDetail", params)
+            headers = request.headers
+            body = self.call("DescribeDcnDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDcnDetailResponse()
@@ -823,7 +851,8 @@ class MariadbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeFileDownloadUrl", params)
+            headers = request.headers
+            body = self.call("DescribeFileDownloadUrl", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeFileDownloadUrlResponse()
@@ -851,7 +880,8 @@ class MariadbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeFlow", params)
+            headers = request.headers
+            body = self.call("DescribeFlow", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeFlowResponse()
@@ -879,7 +909,8 @@ class MariadbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInstanceNodeInfo", params)
+            headers = request.headers
+            body = self.call("DescribeInstanceNodeInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInstanceNodeInfoResponse()
@@ -907,7 +938,8 @@ class MariadbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeLogFileRetentionPeriod", params)
+            headers = request.headers
+            body = self.call("DescribeLogFileRetentionPeriod", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLogFileRetentionPeriodResponse()
@@ -935,7 +967,8 @@ class MariadbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePrice", params)
+            headers = request.headers
+            body = self.call("DescribePrice", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePriceResponse()
@@ -963,7 +996,8 @@ class MariadbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeProjectSecurityGroups", params)
+            headers = request.headers
+            body = self.call("DescribeProjectSecurityGroups", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeProjectSecurityGroupsResponse()
@@ -991,7 +1025,8 @@ class MariadbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRenewalPrice", params)
+            headers = request.headers
+            body = self.call("DescribeRenewalPrice", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRenewalPriceResponse()
@@ -1019,7 +1054,8 @@ class MariadbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSaleInfo", params)
+            headers = request.headers
+            body = self.call("DescribeSaleInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSaleInfoResponse()
@@ -1047,7 +1083,8 @@ class MariadbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSqlLogs", params)
+            headers = request.headers
+            body = self.call("DescribeSqlLogs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSqlLogsResponse()
@@ -1075,7 +1112,8 @@ class MariadbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeUpgradePrice", params)
+            headers = request.headers
+            body = self.call("DescribeUpgradePrice", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeUpgradePriceResponse()
@@ -1103,7 +1141,8 @@ class MariadbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DestroyHourDBInstance", params)
+            headers = request.headers
+            body = self.call("DestroyHourDBInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DestroyHourDBInstanceResponse()
@@ -1131,7 +1170,8 @@ class MariadbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DisassociateSecurityGroups", params)
+            headers = request.headers
+            body = self.call("DisassociateSecurityGroups", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DisassociateSecurityGroupsResponse()
@@ -1159,7 +1199,8 @@ class MariadbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("FlushBinlog", params)
+            headers = request.headers
+            body = self.call("FlushBinlog", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.FlushBinlogResponse()
@@ -1188,7 +1229,8 @@ class MariadbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GrantAccountPrivileges", params)
+            headers = request.headers
+            body = self.call("GrantAccountPrivileges", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GrantAccountPrivilegesResponse()
@@ -1216,7 +1258,8 @@ class MariadbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("InitDBInstances", params)
+            headers = request.headers
+            body = self.call("InitDBInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.InitDBInstancesResponse()
@@ -1244,7 +1287,8 @@ class MariadbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("IsolateHourDBInstance", params)
+            headers = request.headers
+            body = self.call("IsolateHourDBInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.IsolateHourDBInstanceResponse()
@@ -1272,7 +1316,8 @@ class MariadbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("KillSession", params)
+            headers = request.headers
+            body = self.call("KillSession", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.KillSessionResponse()
@@ -1301,7 +1346,8 @@ class MariadbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyAccountDescription", params)
+            headers = request.headers
+            body = self.call("ModifyAccountDescription", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAccountDescriptionResponse()
@@ -1334,7 +1380,8 @@ class MariadbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyAccountPrivileges", params)
+            headers = request.headers
+            body = self.call("ModifyAccountPrivileges", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAccountPrivilegesResponse()
@@ -1362,7 +1409,8 @@ class MariadbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyBackupTime", params)
+            headers = request.headers
+            body = self.call("ModifyBackupTime", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyBackupTimeResponse()
@@ -1390,7 +1438,8 @@ class MariadbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyDBInstanceName", params)
+            headers = request.headers
+            body = self.call("ModifyDBInstanceName", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDBInstanceNameResponse()
@@ -1418,7 +1467,8 @@ class MariadbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyDBInstanceSecurityGroups", params)
+            headers = request.headers
+            body = self.call("ModifyDBInstanceSecurityGroups", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDBInstanceSecurityGroupsResponse()
@@ -1446,7 +1496,8 @@ class MariadbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyDBInstancesProject", params)
+            headers = request.headers
+            body = self.call("ModifyDBInstancesProject", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDBInstancesProjectResponse()
@@ -1474,7 +1525,8 @@ class MariadbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyDBParameters", params)
+            headers = request.headers
+            body = self.call("ModifyDBParameters", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDBParametersResponse()
@@ -1502,7 +1554,8 @@ class MariadbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyDBSyncMode", params)
+            headers = request.headers
+            body = self.call("ModifyDBSyncMode", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDBSyncModeResponse()
@@ -1530,7 +1583,8 @@ class MariadbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyLogFileRetentionPeriod", params)
+            headers = request.headers
+            body = self.call("ModifyLogFileRetentionPeriod", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyLogFileRetentionPeriodResponse()
@@ -1563,7 +1617,8 @@ class MariadbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyRealServerAccessStrategy", params)
+            headers = request.headers
+            body = self.call("ModifyRealServerAccessStrategy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyRealServerAccessStrategyResponse()
@@ -1591,7 +1646,8 @@ class MariadbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifySyncTaskAttribute", params)
+            headers = request.headers
+            body = self.call("ModifySyncTaskAttribute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifySyncTaskAttributeResponse()
@@ -1619,7 +1675,8 @@ class MariadbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("OpenDBExtranetAccess", params)
+            headers = request.headers
+            body = self.call("OpenDBExtranetAccess", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.OpenDBExtranetAccessResponse()
@@ -1647,7 +1704,8 @@ class MariadbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RenewDBInstance", params)
+            headers = request.headers
+            body = self.call("RenewDBInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RenewDBInstanceResponse()
@@ -1676,7 +1734,8 @@ class MariadbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ResetAccountPassword", params)
+            headers = request.headers
+            body = self.call("ResetAccountPassword", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ResetAccountPasswordResponse()
@@ -1704,7 +1763,8 @@ class MariadbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RestartDBInstances", params)
+            headers = request.headers
+            body = self.call("RestartDBInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RestartDBInstancesResponse()
@@ -1732,7 +1792,8 @@ class MariadbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SwitchDBInstanceHA", params)
+            headers = request.headers
+            body = self.call("SwitchDBInstanceHA", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SwitchDBInstanceHAResponse()
@@ -1760,7 +1821,8 @@ class MariadbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpgradeDBInstance", params)
+            headers = request.headers
+            body = self.call("UpgradeDBInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpgradeDBInstanceResponse()

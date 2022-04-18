@@ -36,7 +36,8 @@ class IcrClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetIndustryV1HomeMembers", params)
+            headers = request.headers
+            body = self.call("GetIndustryV1HomeMembers", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetIndustryV1HomeMembersResponse()

@@ -36,7 +36,8 @@ class CfsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateCfsFileSystem", params)
+            headers = request.headers
+            body = self.call("CreateCfsFileSystem", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateCfsFileSystemResponse()
@@ -64,7 +65,8 @@ class CfsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateCfsPGroup", params)
+            headers = request.headers
+            body = self.call("CreateCfsPGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateCfsPGroupResponse()
@@ -92,7 +94,8 @@ class CfsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateCfsRule", params)
+            headers = request.headers
+            body = self.call("CreateCfsRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateCfsRuleResponse()
@@ -120,7 +123,8 @@ class CfsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteCfsFileSystem", params)
+            headers = request.headers
+            body = self.call("DeleteCfsFileSystem", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteCfsFileSystemResponse()
@@ -148,7 +152,8 @@ class CfsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteCfsPGroup", params)
+            headers = request.headers
+            body = self.call("DeleteCfsPGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteCfsPGroupResponse()
@@ -176,7 +181,8 @@ class CfsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteCfsRule", params)
+            headers = request.headers
+            body = self.call("DeleteCfsRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteCfsRuleResponse()
@@ -204,7 +210,8 @@ class CfsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteMountTarget", params)
+            headers = request.headers
+            body = self.call("DeleteMountTarget", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteMountTargetResponse()
@@ -232,7 +239,8 @@ class CfsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAvailableZoneInfo", params)
+            headers = request.headers
+            body = self.call("DescribeAvailableZoneInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAvailableZoneInfoResponse()
@@ -260,7 +268,8 @@ class CfsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCfsFileSystemClients", params)
+            headers = request.headers
+            body = self.call("DescribeCfsFileSystemClients", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCfsFileSystemClientsResponse()
@@ -288,7 +297,8 @@ class CfsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCfsFileSystems", params)
+            headers = request.headers
+            body = self.call("DescribeCfsFileSystems", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCfsFileSystemsResponse()
@@ -316,7 +326,8 @@ class CfsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCfsPGroups", params)
+            headers = request.headers
+            body = self.call("DescribeCfsPGroups", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCfsPGroupsResponse()
@@ -344,7 +355,8 @@ class CfsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCfsRules", params)
+            headers = request.headers
+            body = self.call("DescribeCfsRules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCfsRulesResponse()
@@ -372,7 +384,8 @@ class CfsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCfsServiceStatus", params)
+            headers = request.headers
+            body = self.call("DescribeCfsServiceStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCfsServiceStatusResponse()
@@ -400,7 +413,8 @@ class CfsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeMountTargets", params)
+            headers = request.headers
+            body = self.call("DescribeMountTargets", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeMountTargetsResponse()
@@ -428,7 +442,8 @@ class CfsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SignUpCfsService", params)
+            headers = request.headers
+            body = self.call("SignUpCfsService", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SignUpCfsServiceResponse()
@@ -456,7 +471,8 @@ class CfsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateCfsFileSystemName", params)
+            headers = request.headers
+            body = self.call("UpdateCfsFileSystemName", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateCfsFileSystemNameResponse()
@@ -484,7 +500,8 @@ class CfsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateCfsFileSystemPGroup", params)
+            headers = request.headers
+            body = self.call("UpdateCfsFileSystemPGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateCfsFileSystemPGroupResponse()
@@ -512,7 +529,8 @@ class CfsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateCfsFileSystemSizeLimit", params)
+            headers = request.headers
+            body = self.call("UpdateCfsFileSystemSizeLimit", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateCfsFileSystemSizeLimitResponse()
@@ -540,7 +558,8 @@ class CfsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateCfsPGroup", params)
+            headers = request.headers
+            body = self.call("UpdateCfsPGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateCfsPGroupResponse()
@@ -568,7 +587,8 @@ class CfsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateCfsRule", params)
+            headers = request.headers
+            body = self.call("UpdateCfsRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateCfsRuleResponse()

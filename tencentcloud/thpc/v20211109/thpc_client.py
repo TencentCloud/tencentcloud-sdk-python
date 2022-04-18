@@ -36,7 +36,8 @@ class ThpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("BindAutoScalingGroup", params)
+            headers = request.headers
+            body = self.call("BindAutoScalingGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.BindAutoScalingGroupResponse()
@@ -64,7 +65,8 @@ class ThpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateCluster", params)
+            headers = request.headers
+            body = self.call("CreateCluster", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateClusterResponse()
@@ -92,7 +94,8 @@ class ThpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteCluster", params)
+            headers = request.headers
+            body = self.call("DeleteCluster", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteClusterResponse()
@@ -120,7 +123,8 @@ class ThpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeClusters", params)
+            headers = request.headers
+            body = self.call("DescribeClusters", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeClustersResponse()

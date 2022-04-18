@@ -36,7 +36,8 @@ class TafClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DetectFraudKOL", params)
+            headers = request.headers
+            body = self.call("DetectFraudKOL", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DetectFraudKOLResponse()
@@ -64,7 +65,8 @@ class TafClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("EnhanceTaDegree", params)
+            headers = request.headers
+            body = self.call("EnhanceTaDegree", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.EnhanceTaDegreeResponse()
@@ -92,7 +94,8 @@ class TafClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RecognizeCustomizedAudience", params)
+            headers = request.headers
+            body = self.call("RecognizeCustomizedAudience", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RecognizeCustomizedAudienceResponse()
@@ -122,7 +125,8 @@ class TafClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RecognizeEffectiveFlow", params)
+            headers = request.headers
+            body = self.call("RecognizeEffectiveFlow", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RecognizeEffectiveFlowResponse()
@@ -150,7 +154,8 @@ class TafClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RecognizePreciseTargetAudience", params)
+            headers = request.headers
+            body = self.call("RecognizePreciseTargetAudience", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RecognizePreciseTargetAudienceResponse()
@@ -178,7 +183,8 @@ class TafClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RecognizeTargetAudience", params)
+            headers = request.headers
+            body = self.call("RecognizeTargetAudience", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RecognizeTargetAudienceResponse()
@@ -206,7 +212,8 @@ class TafClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SendTrafficSecuritySmsMessage", params)
+            headers = request.headers
+            body = self.call("SendTrafficSecuritySmsMessage", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SendTrafficSecuritySmsMessageResponse()

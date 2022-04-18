@@ -512,6 +512,140 @@ class AddDomainWhiteRuleResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class AddSpartaProtectionRequest(AbstractModel):
+    """AddSpartaProtection请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Domain: 需要防御的域名
+        :type Domain: str
+        :param CertType: 证书类型，0表示没有证书，CertType=1表示自有证书,2 为托管证书
+        :type CertType: int
+        :param IsCdn: 表示是否开启了CDN代理，1：有部署CDN，0：未部署CDN
+        :type IsCdn: int
+        :param UpstreamType: 回源类型，0表示通过IP回源,1 表示通过域名回源
+        :type UpstreamType: int
+        :param IsWebsocket: 是否开启WebSocket支持，1表示开启，0不开启
+        :type IsWebsocket: int
+        :param LoadBalance: 负载均衡策略，0表示轮徇，1表示IP hash
+        :type LoadBalance: str
+        :param Cert: CertType=1时，需要填次参数，表示证书内容
+        :type Cert: str
+        :param PrivateKey: CertType=1时，需要填次参数，表示证书的私钥
+        :type PrivateKey: str
+        :param SSLId: CertType=2时，需要填次参数，表示证书的ID
+        :type SSLId: str
+        :param ResourceId: Waf的资源ID
+        :type ResourceId: str
+        :param UpstreamScheme: HTTPS回源协议，填http或者https
+        :type UpstreamScheme: str
+        :param HttpsUpstreamPort: HTTPS回源端口,仅UpstreamScheme为http时需要填当前字段
+        :type HttpsUpstreamPort: str
+        :param IsGray: 是否开启灰度，0表示不开启灰度
+        :type IsGray: int
+        :param GrayAreas: 灰度的地区
+        :type GrayAreas: list of str
+        :param UpstreamDomain: UpstreamType=1时，填次字段表示回源域名
+        :type UpstreamDomain: str
+        :param SrcList: UpstreamType=0时，填次字段表示回源ip
+        :type SrcList: list of str
+        :param IsHttp2: 是否开启HTTP2,开启HTTP2需要HTTPS支持
+        :type IsHttp2: int
+        :param HttpsRewrite: 表示是否强制跳转到HTTPS，1强制跳转Https，0不强制跳转
+        :type HttpsRewrite: int
+        :param Ports: 服务有多端口需要设置此字段
+        :type Ports: list of PortItem
+        :param Edition: 版本：sparta-waf、clb-waf、cdn-waf
+        :type Edition: str
+        :param IsKeepAlive: 是否开启长连接，仅IP回源时可以用填次参数，域名回源时这个参数无效
+        :type IsKeepAlive: str
+        :param InstanceID: 实例id，上线之后带上此字段
+        :type InstanceID: str
+        :param Anycast: anycast ip类型开关： 0 普通ip 1 Anycast ip
+        :type Anycast: int
+        """
+        self.Domain = None
+        self.CertType = None
+        self.IsCdn = None
+        self.UpstreamType = None
+        self.IsWebsocket = None
+        self.LoadBalance = None
+        self.Cert = None
+        self.PrivateKey = None
+        self.SSLId = None
+        self.ResourceId = None
+        self.UpstreamScheme = None
+        self.HttpsUpstreamPort = None
+        self.IsGray = None
+        self.GrayAreas = None
+        self.UpstreamDomain = None
+        self.SrcList = None
+        self.IsHttp2 = None
+        self.HttpsRewrite = None
+        self.Ports = None
+        self.Edition = None
+        self.IsKeepAlive = None
+        self.InstanceID = None
+        self.Anycast = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        self.CertType = params.get("CertType")
+        self.IsCdn = params.get("IsCdn")
+        self.UpstreamType = params.get("UpstreamType")
+        self.IsWebsocket = params.get("IsWebsocket")
+        self.LoadBalance = params.get("LoadBalance")
+        self.Cert = params.get("Cert")
+        self.PrivateKey = params.get("PrivateKey")
+        self.SSLId = params.get("SSLId")
+        self.ResourceId = params.get("ResourceId")
+        self.UpstreamScheme = params.get("UpstreamScheme")
+        self.HttpsUpstreamPort = params.get("HttpsUpstreamPort")
+        self.IsGray = params.get("IsGray")
+        self.GrayAreas = params.get("GrayAreas")
+        self.UpstreamDomain = params.get("UpstreamDomain")
+        self.SrcList = params.get("SrcList")
+        self.IsHttp2 = params.get("IsHttp2")
+        self.HttpsRewrite = params.get("HttpsRewrite")
+        if params.get("Ports") is not None:
+            self.Ports = []
+            for item in params.get("Ports"):
+                obj = PortItem()
+                obj._deserialize(item)
+                self.Ports.append(obj)
+        self.Edition = params.get("Edition")
+        self.IsKeepAlive = params.get("IsKeepAlive")
+        self.InstanceID = params.get("InstanceID")
+        self.Anycast = params.get("Anycast")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddSpartaProtectionResponse(AbstractModel):
+    """AddSpartaProtection返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class AutoDenyDetail(AbstractModel):
     """Waf 攻击自动封禁详情
 
@@ -2452,6 +2586,46 @@ class ModifyWafThreatenIntelligenceResponse(AbstractModel):
             self.WafThreatenIntelligenceDetails = WafThreatenIntelligenceDetails()
             self.WafThreatenIntelligenceDetails._deserialize(params.get("WafThreatenIntelligenceDetails"))
         self.RequestId = params.get("RequestId")
+
+
+class PortItem(AbstractModel):
+    """防护域名端口配置信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Port: 监听端口配置
+        :type Port: str
+        :param Protocol: 与Port一一对应，表示端口对应的协议
+        :type Protocol: str
+        :param UpstreamPort: 与Port一一对应,  表示回源端口
+        :type UpstreamPort: str
+        :param UpstreamProtocol: 与Port一一对应,  表示回源协议
+        :type UpstreamProtocol: str
+        :param NginxServerId: Nginx的服务器ID
+        :type NginxServerId: str
+        """
+        self.Port = None
+        self.Protocol = None
+        self.UpstreamPort = None
+        self.UpstreamProtocol = None
+        self.NginxServerId = None
+
+
+    def _deserialize(self, params):
+        self.Port = params.get("Port")
+        self.Protocol = params.get("Protocol")
+        self.UpstreamPort = params.get("UpstreamPort")
+        self.UpstreamProtocol = params.get("UpstreamProtocol")
+        self.NginxServerId = params.get("NginxServerId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ResponseCode(AbstractModel):

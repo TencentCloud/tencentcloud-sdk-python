@@ -36,7 +36,8 @@ class TswClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeComponentAlertObject", params)
+            headers = request.headers
+            body = self.call("DescribeComponentAlertObject", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeComponentAlertObjectResponse()
@@ -64,7 +65,8 @@ class TswClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeServiceAlertObject", params)
+            headers = request.headers
+            body = self.call("DescribeServiceAlertObject", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeServiceAlertObjectResponse()
@@ -92,7 +94,8 @@ class TswClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeToken", params)
+            headers = request.headers
+            body = self.call("DescribeToken", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTokenResponse()

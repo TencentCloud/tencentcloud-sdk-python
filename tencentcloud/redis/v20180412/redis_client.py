@@ -36,7 +36,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AddReplicationInstance", params)
+            headers = request.headers
+            body = self.call("AddReplicationInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AddReplicationInstanceResponse()
@@ -64,7 +65,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ApplyParamsTemplate", params)
+            headers = request.headers
+            body = self.call("ApplyParamsTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ApplyParamsTemplateResponse()
@@ -92,7 +94,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AssociateSecurityGroups", params)
+            headers = request.headers
+            body = self.call("AssociateSecurityGroups", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AssociateSecurityGroupsResponse()
@@ -120,7 +123,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ChangeReplicaToMaster", params)
+            headers = request.headers
+            body = self.call("ChangeReplicaToMaster", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ChangeReplicaToMasterResponse()
@@ -148,7 +152,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CleanUpInstance", params)
+            headers = request.headers
+            body = self.call("CleanUpInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CleanUpInstanceResponse()
@@ -176,7 +181,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ClearInstance", params)
+            headers = request.headers
+            body = self.call("ClearInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ClearInstanceResponse()
@@ -204,7 +210,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateInstanceAccount", params)
+            headers = request.headers
+            body = self.call("CreateInstanceAccount", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateInstanceAccountResponse()
@@ -232,7 +239,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateInstances", params)
+            headers = request.headers
+            body = self.call("CreateInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateInstancesResponse()
@@ -260,7 +268,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateParamTemplate", params)
+            headers = request.headers
+            body = self.call("CreateParamTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateParamTemplateResponse()
@@ -288,7 +297,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateReplicationGroup", params)
+            headers = request.headers
+            body = self.call("CreateReplicationGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateReplicationGroupResponse()
@@ -316,7 +326,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteInstanceAccount", params)
+            headers = request.headers
+            body = self.call("DeleteInstanceAccount", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteInstanceAccountResponse()
@@ -344,7 +355,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteParamTemplate", params)
+            headers = request.headers
+            body = self.call("DeleteParamTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteParamTemplateResponse()
@@ -372,7 +384,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteReplicationInstance", params)
+            headers = request.headers
+            body = self.call("DeleteReplicationInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteReplicationInstanceResponse()
@@ -400,7 +413,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAutoBackupConfig", params)
+            headers = request.headers
+            body = self.call("DescribeAutoBackupConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAutoBackupConfigResponse()
@@ -428,7 +442,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBackupUrl", params)
+            headers = request.headers
+            body = self.call("DescribeBackupUrl", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBackupUrlResponse()
@@ -456,7 +471,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCommonDBInstances", params)
+            headers = request.headers
+            body = self.call("DescribeCommonDBInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCommonDBInstancesResponse()
@@ -484,7 +500,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDBSecurityGroups", params)
+            headers = request.headers
+            body = self.call("DescribeDBSecurityGroups", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDBSecurityGroupsResponse()
@@ -512,7 +529,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInstanceAccount", params)
+            headers = request.headers
+            body = self.call("DescribeInstanceAccount", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInstanceAccountResponse()
@@ -540,7 +558,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInstanceBackups", params)
+            headers = request.headers
+            body = self.call("DescribeInstanceBackups", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInstanceBackupsResponse()
@@ -568,7 +587,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInstanceDTSInfo", params)
+            headers = request.headers
+            body = self.call("DescribeInstanceDTSInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInstanceDTSInfoResponse()
@@ -596,7 +616,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInstanceDealDetail", params)
+            headers = request.headers
+            body = self.call("DescribeInstanceDealDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInstanceDealDetailResponse()
@@ -624,7 +645,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInstanceMonitorBigKey", params)
+            headers = request.headers
+            body = self.call("DescribeInstanceMonitorBigKey", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInstanceMonitorBigKeyResponse()
@@ -652,7 +674,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInstanceMonitorBigKeySizeDist", params)
+            headers = request.headers
+            body = self.call("DescribeInstanceMonitorBigKeySizeDist", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInstanceMonitorBigKeySizeDistResponse()
@@ -680,7 +703,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInstanceMonitorBigKeyTypeDist", params)
+            headers = request.headers
+            body = self.call("DescribeInstanceMonitorBigKeyTypeDist", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInstanceMonitorBigKeyTypeDistResponse()
@@ -708,7 +732,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInstanceMonitorHotKey", params)
+            headers = request.headers
+            body = self.call("DescribeInstanceMonitorHotKey", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInstanceMonitorHotKeyResponse()
@@ -736,7 +761,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInstanceMonitorSIP", params)
+            headers = request.headers
+            body = self.call("DescribeInstanceMonitorSIP", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInstanceMonitorSIPResponse()
@@ -764,7 +790,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInstanceMonitorTookDist", params)
+            headers = request.headers
+            body = self.call("DescribeInstanceMonitorTookDist", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInstanceMonitorTookDistResponse()
@@ -792,7 +819,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInstanceMonitorTopNCmd", params)
+            headers = request.headers
+            body = self.call("DescribeInstanceMonitorTopNCmd", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInstanceMonitorTopNCmdResponse()
@@ -820,7 +848,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInstanceMonitorTopNCmdTook", params)
+            headers = request.headers
+            body = self.call("DescribeInstanceMonitorTopNCmdTook", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInstanceMonitorTopNCmdTookResponse()
@@ -848,7 +877,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInstanceNodeInfo", params)
+            headers = request.headers
+            body = self.call("DescribeInstanceNodeInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInstanceNodeInfoResponse()
@@ -876,7 +906,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInstanceParamRecords", params)
+            headers = request.headers
+            body = self.call("DescribeInstanceParamRecords", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInstanceParamRecordsResponse()
@@ -904,7 +935,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInstanceParams", params)
+            headers = request.headers
+            body = self.call("DescribeInstanceParams", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInstanceParamsResponse()
@@ -932,7 +964,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInstanceSecurityGroup", params)
+            headers = request.headers
+            body = self.call("DescribeInstanceSecurityGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInstanceSecurityGroupResponse()
@@ -960,7 +993,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInstanceShards", params)
+            headers = request.headers
+            body = self.call("DescribeInstanceShards", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInstanceShardsResponse()
@@ -988,7 +1022,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInstanceZoneInfo", params)
+            headers = request.headers
+            body = self.call("DescribeInstanceZoneInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInstanceZoneInfoResponse()
@@ -1016,7 +1051,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInstances", params)
+            headers = request.headers
+            body = self.call("DescribeInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInstancesResponse()
@@ -1044,7 +1080,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeMaintenanceWindow", params)
+            headers = request.headers
+            body = self.call("DescribeMaintenanceWindow", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeMaintenanceWindowResponse()
@@ -1072,7 +1109,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeParamTemplateInfo", params)
+            headers = request.headers
+            body = self.call("DescribeParamTemplateInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeParamTemplateInfoResponse()
@@ -1100,7 +1138,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeParamTemplates", params)
+            headers = request.headers
+            body = self.call("DescribeParamTemplates", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeParamTemplatesResponse()
@@ -1128,7 +1167,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeProductInfo", params)
+            headers = request.headers
+            body = self.call("DescribeProductInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeProductInfoResponse()
@@ -1156,7 +1196,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeProjectSecurityGroup", params)
+            headers = request.headers
+            body = self.call("DescribeProjectSecurityGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeProjectSecurityGroupResponse()
@@ -1184,7 +1225,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeProjectSecurityGroups", params)
+            headers = request.headers
+            body = self.call("DescribeProjectSecurityGroups", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeProjectSecurityGroupsResponse()
@@ -1212,7 +1254,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeProxySlowLog", params)
+            headers = request.headers
+            body = self.call("DescribeProxySlowLog", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeProxySlowLogResponse()
@@ -1240,7 +1283,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeReplicationGroup", params)
+            headers = request.headers
+            body = self.call("DescribeReplicationGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeReplicationGroupResponse()
@@ -1268,7 +1312,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSlowLog", params)
+            headers = request.headers
+            body = self.call("DescribeSlowLog", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSlowLogResponse()
@@ -1296,7 +1341,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTaskInfo", params)
+            headers = request.headers
+            body = self.call("DescribeTaskInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTaskInfoResponse()
@@ -1324,7 +1370,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTaskList", params)
+            headers = request.headers
+            body = self.call("DescribeTaskList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTaskListResponse()
@@ -1352,7 +1399,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTendisSlowLog", params)
+            headers = request.headers
+            body = self.call("DescribeTendisSlowLog", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTendisSlowLogResponse()
@@ -1380,7 +1428,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DestroyPostpaidInstance", params)
+            headers = request.headers
+            body = self.call("DestroyPostpaidInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DestroyPostpaidInstanceResponse()
@@ -1408,7 +1457,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DestroyPrepaidInstance", params)
+            headers = request.headers
+            body = self.call("DestroyPrepaidInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DestroyPrepaidInstanceResponse()
@@ -1436,7 +1486,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DisableReplicaReadonly", params)
+            headers = request.headers
+            body = self.call("DisableReplicaReadonly", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DisableReplicaReadonlyResponse()
@@ -1464,7 +1515,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DisassociateSecurityGroups", params)
+            headers = request.headers
+            body = self.call("DisassociateSecurityGroups", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DisassociateSecurityGroupsResponse()
@@ -1492,7 +1544,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("EnableReplicaReadonly", params)
+            headers = request.headers
+            body = self.call("EnableReplicaReadonly", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.EnableReplicaReadonlyResponse()
@@ -1520,7 +1573,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("InquiryPriceCreateInstance", params)
+            headers = request.headers
+            body = self.call("InquiryPriceCreateInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.InquiryPriceCreateInstanceResponse()
@@ -1548,7 +1602,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("InquiryPriceRenewInstance", params)
+            headers = request.headers
+            body = self.call("InquiryPriceRenewInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.InquiryPriceRenewInstanceResponse()
@@ -1576,7 +1631,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("InquiryPriceUpgradeInstance", params)
+            headers = request.headers
+            body = self.call("InquiryPriceUpgradeInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.InquiryPriceUpgradeInstanceResponse()
@@ -1604,7 +1660,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("KillMasterGroup", params)
+            headers = request.headers
+            body = self.call("KillMasterGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.KillMasterGroupResponse()
@@ -1632,7 +1689,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ManualBackupInstance", params)
+            headers = request.headers
+            body = self.call("ManualBackupInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ManualBackupInstanceResponse()
@@ -1660,7 +1718,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModfiyInstancePassword", params)
+            headers = request.headers
+            body = self.call("ModfiyInstancePassword", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModfiyInstancePasswordResponse()
@@ -1688,7 +1747,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyAutoBackupConfig", params)
+            headers = request.headers
+            body = self.call("ModifyAutoBackupConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAutoBackupConfigResponse()
@@ -1716,7 +1776,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyConnectionConfig", params)
+            headers = request.headers
+            body = self.call("ModifyConnectionConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyConnectionConfigResponse()
@@ -1744,7 +1805,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyDBInstanceSecurityGroups", params)
+            headers = request.headers
+            body = self.call("ModifyDBInstanceSecurityGroups", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDBInstanceSecurityGroupsResponse()
@@ -1772,7 +1834,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyInstance", params)
+            headers = request.headers
+            body = self.call("ModifyInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyInstanceResponse()
@@ -1800,7 +1863,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyInstanceAccount", params)
+            headers = request.headers
+            body = self.call("ModifyInstanceAccount", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyInstanceAccountResponse()
@@ -1828,7 +1892,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyInstanceParams", params)
+            headers = request.headers
+            body = self.call("ModifyInstanceParams", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyInstanceParamsResponse()
@@ -1856,7 +1921,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyMaintenanceWindow", params)
+            headers = request.headers
+            body = self.call("ModifyMaintenanceWindow", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyMaintenanceWindowResponse()
@@ -1884,7 +1950,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyNetworkConfig", params)
+            headers = request.headers
+            body = self.call("ModifyNetworkConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyNetworkConfigResponse()
@@ -1912,7 +1979,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyParamTemplate", params)
+            headers = request.headers
+            body = self.call("ModifyParamTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyParamTemplateResponse()
@@ -1940,7 +2008,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RenewInstance", params)
+            headers = request.headers
+            body = self.call("RenewInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RenewInstanceResponse()
@@ -1968,7 +2037,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ResetPassword", params)
+            headers = request.headers
+            body = self.call("ResetPassword", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ResetPasswordResponse()
@@ -1996,7 +2066,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RestoreInstance", params)
+            headers = request.headers
+            body = self.call("RestoreInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RestoreInstanceResponse()
@@ -2024,7 +2095,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("StartupInstance", params)
+            headers = request.headers
+            body = self.call("StartupInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StartupInstanceResponse()
@@ -2052,7 +2124,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SwitchInstanceVip", params)
+            headers = request.headers
+            body = self.call("SwitchInstanceVip", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SwitchInstanceVipResponse()
@@ -2080,7 +2153,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpgradeInstance", params)
+            headers = request.headers
+            body = self.call("UpgradeInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpgradeInstanceResponse()
@@ -2108,7 +2182,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpgradeInstanceVersion", params)
+            headers = request.headers
+            body = self.call("UpgradeInstanceVersion", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpgradeInstanceVersionResponse()
@@ -2136,7 +2211,8 @@ class RedisClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpgradeVersionToMultiAvailabilityZones", params)
+            headers = request.headers
+            body = self.call("UpgradeVersionToMultiAvailabilityZones", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpgradeVersionToMultiAvailabilityZonesResponse()

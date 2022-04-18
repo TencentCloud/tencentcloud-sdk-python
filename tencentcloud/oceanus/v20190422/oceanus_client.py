@@ -36,7 +36,8 @@ class OceanusClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateJob", params)
+            headers = request.headers
+            body = self.call("CreateJob", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateJobResponse()
@@ -64,7 +65,8 @@ class OceanusClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateJobConfig", params)
+            headers = request.headers
+            body = self.call("CreateJobConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateJobConfigResponse()
@@ -92,7 +94,8 @@ class OceanusClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateResource", params)
+            headers = request.headers
+            body = self.call("CreateResource", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateResourceResponse()
@@ -120,7 +123,8 @@ class OceanusClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateResourceConfig", params)
+            headers = request.headers
+            body = self.call("CreateResourceConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateResourceConfigResponse()
@@ -148,7 +152,8 @@ class OceanusClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteResourceConfigs", params)
+            headers = request.headers
+            body = self.call("DeleteResourceConfigs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteResourceConfigsResponse()
@@ -176,7 +181,8 @@ class OceanusClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteResources", params)
+            headers = request.headers
+            body = self.call("DeleteResources", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteResourcesResponse()
@@ -204,7 +210,8 @@ class OceanusClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteTableConfig", params)
+            headers = request.headers
+            body = self.call("DeleteTableConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteTableConfigResponse()
@@ -232,7 +239,8 @@ class OceanusClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeJobConfigs", params)
+            headers = request.headers
+            body = self.call("DescribeJobConfigs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeJobConfigsResponse()
@@ -260,7 +268,8 @@ class OceanusClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeJobs", params)
+            headers = request.headers
+            body = self.call("DescribeJobs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeJobsResponse()
@@ -288,7 +297,8 @@ class OceanusClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeResourceConfigs", params)
+            headers = request.headers
+            body = self.call("DescribeResourceConfigs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeResourceConfigsResponse()
@@ -316,7 +326,8 @@ class OceanusClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeResourceRelatedJobs", params)
+            headers = request.headers
+            body = self.call("DescribeResourceRelatedJobs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeResourceRelatedJobsResponse()
@@ -344,7 +355,8 @@ class OceanusClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeResources", params)
+            headers = request.headers
+            body = self.call("DescribeResources", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeResourcesResponse()
@@ -372,7 +384,8 @@ class OceanusClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSystemResources", params)
+            headers = request.headers
+            body = self.call("DescribeSystemResources", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSystemResourcesResponse()
@@ -400,7 +413,8 @@ class OceanusClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RunJobs", params)
+            headers = request.headers
+            body = self.call("RunJobs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RunJobsResponse()
@@ -428,7 +442,8 @@ class OceanusClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("StopJobs", params)
+            headers = request.headers
+            body = self.call("StopJobs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StopJobsResponse()

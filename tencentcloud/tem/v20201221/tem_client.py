@@ -36,7 +36,8 @@ class TemClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateCosToken", params)
+            headers = request.headers
+            body = self.call("CreateCosToken", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateCosTokenResponse()
@@ -64,7 +65,8 @@ class TemClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateCosTokenV2", params)
+            headers = request.headers
+            body = self.call("CreateCosTokenV2", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateCosTokenV2Response()
@@ -92,7 +94,8 @@ class TemClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateNamespace", params)
+            headers = request.headers
+            body = self.call("CreateNamespace", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateNamespaceResponse()
@@ -120,7 +123,8 @@ class TemClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateResource", params)
+            headers = request.headers
+            body = self.call("CreateResource", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateResourceResponse()
@@ -148,7 +152,8 @@ class TemClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateServiceV2", params)
+            headers = request.headers
+            body = self.call("CreateServiceV2", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateServiceV2Response()
@@ -176,7 +181,8 @@ class TemClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteIngress", params)
+            headers = request.headers
+            body = self.call("DeleteIngress", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteIngressResponse()
@@ -204,7 +210,8 @@ class TemClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeployServiceV2", params)
+            headers = request.headers
+            body = self.call("DeployServiceV2", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeployServiceV2Response()
@@ -232,7 +239,8 @@ class TemClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeIngress", params)
+            headers = request.headers
+            body = self.call("DescribeIngress", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeIngressResponse()
@@ -260,7 +268,8 @@ class TemClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeIngresses", params)
+            headers = request.headers
+            body = self.call("DescribeIngresses", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeIngressesResponse()
@@ -288,7 +297,8 @@ class TemClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeNamespaces", params)
+            headers = request.headers
+            body = self.call("DescribeNamespaces", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeNamespacesResponse()
@@ -316,7 +326,8 @@ class TemClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRelatedIngresses", params)
+            headers = request.headers
+            body = self.call("DescribeRelatedIngresses", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRelatedIngressesResponse()
@@ -344,7 +355,8 @@ class TemClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeServiceRunPodListV2", params)
+            headers = request.headers
+            body = self.call("DescribeServiceRunPodListV2", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeServiceRunPodListV2Response()
@@ -372,7 +384,8 @@ class TemClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GenerateDownloadUrl", params)
+            headers = request.headers
+            body = self.call("GenerateDownloadUrl", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GenerateDownloadUrlResponse()
@@ -400,7 +413,8 @@ class TemClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyIngress", params)
+            headers = request.headers
+            body = self.call("ModifyIngress", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyIngressResponse()
@@ -428,7 +442,8 @@ class TemClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyNamespace", params)
+            headers = request.headers
+            body = self.call("ModifyNamespace", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyNamespaceResponse()
@@ -456,7 +471,8 @@ class TemClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyServiceInfo", params)
+            headers = request.headers
+            body = self.call("ModifyServiceInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyServiceInfoResponse()
@@ -484,7 +500,8 @@ class TemClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RestartServiceRunPod", params)
+            headers = request.headers
+            body = self.call("RestartServiceRunPod", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RestartServiceRunPodResponse()

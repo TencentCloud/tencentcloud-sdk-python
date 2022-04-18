@@ -36,7 +36,8 @@ class TicmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeVideoTask", params)
+            headers = request.headers
+            body = self.call("DescribeVideoTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeVideoTaskResponse()
@@ -64,7 +65,8 @@ class TicmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ImageModeration", params)
+            headers = request.headers
+            body = self.call("ImageModeration", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ImageModerationResponse()
@@ -92,7 +94,8 @@ class TicmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("VideoModeration", params)
+            headers = request.headers
+            body = self.call("VideoModeration", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.VideoModerationResponse()

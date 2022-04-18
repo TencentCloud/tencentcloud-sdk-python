@@ -38,7 +38,8 @@ class IvldClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AddCustomPersonImage", params)
+            headers = request.headers
+            body = self.call("AddCustomPersonImage", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AddCustomPersonImageResponse()
@@ -69,7 +70,8 @@ class IvldClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateCustomCategory", params)
+            headers = request.headers
+            body = self.call("CreateCustomCategory", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateCustomCategoryResponse()
@@ -107,7 +109,8 @@ class IvldClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateCustomGroup", params)
+            headers = request.headers
+            body = self.call("CreateCustomGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateCustomGroupResponse()
@@ -139,7 +142,8 @@ class IvldClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateCustomPerson", params)
+            headers = request.headers
+            body = self.call("CreateCustomPerson", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateCustomPersonResponse()
@@ -167,7 +171,8 @@ class IvldClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateDefaultCategories", params)
+            headers = request.headers
+            body = self.call("CreateDefaultCategories", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateDefaultCategoriesResponse()
@@ -197,7 +202,8 @@ class IvldClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateTask", params)
+            headers = request.headers
+            body = self.call("CreateTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateTaskResponse()
@@ -225,7 +231,8 @@ class IvldClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteCustomCategory", params)
+            headers = request.headers
+            body = self.call("DeleteCustomCategory", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteCustomCategoryResponse()
@@ -253,7 +260,8 @@ class IvldClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteCustomPerson", params)
+            headers = request.headers
+            body = self.call("DeleteCustomPerson", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteCustomPersonResponse()
@@ -281,7 +289,8 @@ class IvldClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteCustomPersonImage", params)
+            headers = request.headers
+            body = self.call("DeleteCustomPersonImage", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteCustomPersonImageResponse()
@@ -311,7 +320,8 @@ class IvldClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteMedia", params)
+            headers = request.headers
+            body = self.call("DeleteMedia", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteMediaResponse()
@@ -343,7 +353,8 @@ class IvldClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteTask", params)
+            headers = request.headers
+            body = self.call("DeleteTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteTaskResponse()
@@ -371,7 +382,8 @@ class IvldClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCustomCategories", params)
+            headers = request.headers
+            body = self.call("DescribeCustomCategories", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCustomCategoriesResponse()
@@ -399,7 +411,8 @@ class IvldClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCustomGroup", params)
+            headers = request.headers
+            body = self.call("DescribeCustomGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCustomGroupResponse()
@@ -427,7 +440,8 @@ class IvldClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCustomPersonDetail", params)
+            headers = request.headers
+            body = self.call("DescribeCustomPersonDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCustomPersonDetailResponse()
@@ -456,7 +470,8 @@ class IvldClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCustomPersons", params)
+            headers = request.headers
+            body = self.call("DescribeCustomPersons", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCustomPersonsResponse()
@@ -486,7 +501,8 @@ class IvldClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeMedia", params)
+            headers = request.headers
+            body = self.call("DescribeMedia", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeMediaResponse()
@@ -518,7 +534,8 @@ class IvldClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeMedias", params)
+            headers = request.headers
+            body = self.call("DescribeMedias", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeMediasResponse()
@@ -549,7 +566,8 @@ class IvldClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTask", params)
+            headers = request.headers
+            body = self.call("DescribeTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTaskResponse()
@@ -577,7 +595,8 @@ class IvldClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTaskDetail", params)
+            headers = request.headers
+            body = self.call("DescribeTaskDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTaskDetailResponse()
@@ -607,7 +626,8 @@ class IvldClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTasks", params)
+            headers = request.headers
+            body = self.call("DescribeTasks", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTasksResponse()
@@ -641,7 +661,8 @@ class IvldClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ImportMedia", params)
+            headers = request.headers
+            body = self.call("ImportMedia", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ImportMediaResponse()
@@ -703,7 +724,8 @@ class IvldClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyCallback", params)
+            headers = request.headers
+            body = self.call("ModifyCallback", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyCallbackResponse()
@@ -731,7 +753,8 @@ class IvldClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryCallback", params)
+            headers = request.headers
+            body = self.call("QueryCallback", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryCallbackResponse()
@@ -762,7 +785,8 @@ class IvldClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateCustomCategory", params)
+            headers = request.headers
+            body = self.call("UpdateCustomCategory", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateCustomCategoryResponse()
@@ -790,7 +814,8 @@ class IvldClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateCustomPerson", params)
+            headers = request.headers
+            body = self.call("UpdateCustomPerson", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateCustomPersonResponse()

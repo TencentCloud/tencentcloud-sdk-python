@@ -36,7 +36,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AddClusterInstances", params)
+            headers = request.headers
+            body = self.call("AddClusterInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AddClusterInstancesResponse()
@@ -64,7 +65,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AddInstances", params)
+            headers = request.headers
+            body = self.call("AddInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AddInstancesResponse()
@@ -92,7 +94,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("BindApiGroup", params)
+            headers = request.headers
+            body = self.call("BindApiGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.BindApiGroupResponse()
@@ -120,7 +123,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("BindPlugin", params)
+            headers = request.headers
+            body = self.call("BindPlugin", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.BindPluginResponse()
@@ -148,7 +152,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ChangeApiUsableStatus", params)
+            headers = request.headers
+            body = self.call("ChangeApiUsableStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ChangeApiUsableStatusResponse()
@@ -176,7 +181,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ContinueRunFailedTaskBatch", params)
+            headers = request.headers
+            body = self.call("ContinueRunFailedTaskBatch", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ContinueRunFailedTaskBatchResponse()
@@ -204,7 +210,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateAllGatewayApiAsync", params)
+            headers = request.headers
+            body = self.call("CreateAllGatewayApiAsync", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateAllGatewayApiAsyncResponse()
@@ -232,7 +239,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateApiGroup", params)
+            headers = request.headers
+            body = self.call("CreateApiGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateApiGroupResponse()
@@ -260,7 +268,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateApiRateLimitRule", params)
+            headers = request.headers
+            body = self.call("CreateApiRateLimitRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateApiRateLimitRuleResponse()
@@ -288,7 +297,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateApplication", params)
+            headers = request.headers
+            body = self.call("CreateApplication", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateApplicationResponse()
@@ -316,7 +326,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateCluster", params)
+            headers = request.headers
+            body = self.call("CreateCluster", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateClusterResponse()
@@ -344,7 +355,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateConfig", params)
+            headers = request.headers
+            body = self.call("CreateConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateConfigResponse()
@@ -372,7 +384,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateContainGroup", params)
+            headers = request.headers
+            body = self.call("CreateContainGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateContainGroupResponse()
@@ -400,7 +413,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateFileConfig", params)
+            headers = request.headers
+            body = self.call("CreateFileConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateFileConfigResponse()
@@ -428,7 +442,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateGatewayApi", params)
+            headers = request.headers
+            body = self.call("CreateGatewayApi", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateGatewayApiResponse()
@@ -456,7 +471,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateGroup", params)
+            headers = request.headers
+            body = self.call("CreateGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateGroupResponse()
@@ -484,7 +500,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateLane", params)
+            headers = request.headers
+            body = self.call("CreateLane", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateLaneResponse()
@@ -512,7 +529,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateLaneRule", params)
+            headers = request.headers
+            body = self.call("CreateLaneRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateLaneRuleResponse()
@@ -540,7 +558,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateMicroservice", params)
+            headers = request.headers
+            body = self.call("CreateMicroservice", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateMicroserviceResponse()
@@ -568,7 +587,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateNamespace", params)
+            headers = request.headers
+            body = self.call("CreateNamespace", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateNamespaceResponse()
@@ -596,7 +616,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreatePathRewrites", params)
+            headers = request.headers
+            body = self.call("CreatePathRewrites", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreatePathRewritesResponse()
@@ -624,7 +645,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreatePublicConfig", params)
+            headers = request.headers
+            body = self.call("CreatePublicConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreatePublicConfigResponse()
@@ -652,7 +674,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateRepository", params)
+            headers = request.headers
+            body = self.call("CreateRepository", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateRepositoryResponse()
@@ -680,7 +703,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateServerlessGroup", params)
+            headers = request.headers
+            body = self.call("CreateServerlessGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateServerlessGroupResponse()
@@ -708,7 +732,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateTask", params)
+            headers = request.headers
+            body = self.call("CreateTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateTaskResponse()
@@ -736,7 +761,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateTaskFlow", params)
+            headers = request.headers
+            body = self.call("CreateTaskFlow", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateTaskFlowResponse()
@@ -764,7 +790,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateUnitRule", params)
+            headers = request.headers
+            body = self.call("CreateUnitRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateUnitRuleResponse()
@@ -792,7 +819,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteApiGroup", params)
+            headers = request.headers
+            body = self.call("DeleteApiGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteApiGroupResponse()
@@ -820,7 +848,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteApplication", params)
+            headers = request.headers
+            body = self.call("DeleteApplication", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteApplicationResponse()
@@ -848,7 +877,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteConfig", params)
+            headers = request.headers
+            body = self.call("DeleteConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteConfigResponse()
@@ -876,7 +906,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteContainerGroup", params)
+            headers = request.headers
+            body = self.call("DeleteContainerGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteContainerGroupResponse()
@@ -904,7 +935,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteGroup", params)
+            headers = request.headers
+            body = self.call("DeleteGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteGroupResponse()
@@ -932,7 +964,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteImageTags", params)
+            headers = request.headers
+            body = self.call("DeleteImageTags", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteImageTagsResponse()
@@ -960,7 +993,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteLane", params)
+            headers = request.headers
+            body = self.call("DeleteLane", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteLaneResponse()
@@ -988,7 +1022,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteLaneRule", params)
+            headers = request.headers
+            body = self.call("DeleteLaneRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteLaneRuleResponse()
@@ -1016,7 +1051,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteMicroservice", params)
+            headers = request.headers
+            body = self.call("DeleteMicroservice", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteMicroserviceResponse()
@@ -1044,7 +1080,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteNamespace", params)
+            headers = request.headers
+            body = self.call("DeleteNamespace", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteNamespaceResponse()
@@ -1072,7 +1109,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeletePathRewrites", params)
+            headers = request.headers
+            body = self.call("DeletePathRewrites", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeletePathRewritesResponse()
@@ -1101,7 +1139,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeletePkgs", params)
+            headers = request.headers
+            body = self.call("DeletePkgs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeletePkgsResponse()
@@ -1129,7 +1168,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeletePublicConfig", params)
+            headers = request.headers
+            body = self.call("DeletePublicConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeletePublicConfigResponse()
@@ -1157,7 +1197,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteRepository", params)
+            headers = request.headers
+            body = self.call("DeleteRepository", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteRepositoryResponse()
@@ -1185,7 +1226,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteServerlessGroup", params)
+            headers = request.headers
+            body = self.call("DeleteServerlessGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteServerlessGroupResponse()
@@ -1213,7 +1255,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteTask", params)
+            headers = request.headers
+            body = self.call("DeleteTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteTaskResponse()
@@ -1241,7 +1284,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteUnitNamespaces", params)
+            headers = request.headers
+            body = self.call("DeleteUnitNamespaces", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteUnitNamespacesResponse()
@@ -1269,7 +1313,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteUnitRule", params)
+            headers = request.headers
+            body = self.call("DeleteUnitRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteUnitRuleResponse()
@@ -1297,7 +1342,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeployContainerGroup", params)
+            headers = request.headers
+            body = self.call("DeployContainerGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeployContainerGroupResponse()
@@ -1325,7 +1371,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeployGroup", params)
+            headers = request.headers
+            body = self.call("DeployGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeployGroupResponse()
@@ -1353,7 +1400,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeployServerlessGroup", params)
+            headers = request.headers
+            body = self.call("DeployServerlessGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeployServerlessGroupResponse()
@@ -1381,7 +1429,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeApiDetail", params)
+            headers = request.headers
+            body = self.call("DescribeApiDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeApiDetailResponse()
@@ -1409,7 +1458,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeApiGroup", params)
+            headers = request.headers
+            body = self.call("DescribeApiGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeApiGroupResponse()
@@ -1437,7 +1487,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeApiGroups", params)
+            headers = request.headers
+            body = self.call("DescribeApiGroups", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeApiGroupsResponse()
@@ -1465,7 +1516,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeApiRateLimitRules", params)
+            headers = request.headers
+            body = self.call("DescribeApiRateLimitRules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeApiRateLimitRulesResponse()
@@ -1493,7 +1545,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeApiUseDetail", params)
+            headers = request.headers
+            body = self.call("DescribeApiUseDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeApiUseDetailResponse()
@@ -1521,7 +1574,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeApiVersions", params)
+            headers = request.headers
+            body = self.call("DescribeApiVersions", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeApiVersionsResponse()
@@ -1549,7 +1603,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeApplication", params)
+            headers = request.headers
+            body = self.call("DescribeApplication", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeApplicationResponse()
@@ -1577,7 +1632,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeApplicationAttribute", params)
+            headers = request.headers
+            body = self.call("DescribeApplicationAttribute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeApplicationAttributeResponse()
@@ -1605,7 +1661,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeApplications", params)
+            headers = request.headers
+            body = self.call("DescribeApplications", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeApplicationsResponse()
@@ -1633,7 +1690,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBasicResourceUsage", params)
+            headers = request.headers
+            body = self.call("DescribeBasicResourceUsage", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBasicResourceUsageResponse()
@@ -1661,7 +1719,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeClusterInstances", params)
+            headers = request.headers
+            body = self.call("DescribeClusterInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeClusterInstancesResponse()
@@ -1689,7 +1748,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeConfig", params)
+            headers = request.headers
+            body = self.call("DescribeConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeConfigResponse()
@@ -1717,7 +1777,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeConfigReleaseLogs", params)
+            headers = request.headers
+            body = self.call("DescribeConfigReleaseLogs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeConfigReleaseLogsResponse()
@@ -1745,7 +1806,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeConfigReleases", params)
+            headers = request.headers
+            body = self.call("DescribeConfigReleases", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeConfigReleasesResponse()
@@ -1773,7 +1835,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeConfigSummary", params)
+            headers = request.headers
+            body = self.call("DescribeConfigSummary", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeConfigSummaryResponse()
@@ -1801,7 +1864,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeConfigs", params)
+            headers = request.headers
+            body = self.call("DescribeConfigs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeConfigsResponse()
@@ -1829,7 +1893,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeContainerEvents", params)
+            headers = request.headers
+            body = self.call("DescribeContainerEvents", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeContainerEventsResponse()
@@ -1857,7 +1922,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeContainerGroupDeployInfo", params)
+            headers = request.headers
+            body = self.call("DescribeContainerGroupDeployInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeContainerGroupDeployInfoResponse()
@@ -1885,7 +1951,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeContainerGroupDetail", params)
+            headers = request.headers
+            body = self.call("DescribeContainerGroupDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeContainerGroupDetailResponse()
@@ -1913,7 +1980,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeContainerGroups", params)
+            headers = request.headers
+            body = self.call("DescribeContainerGroups", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeContainerGroupsResponse()
@@ -1941,7 +2009,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCreateGatewayApiStatus", params)
+            headers = request.headers
+            body = self.call("DescribeCreateGatewayApiStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCreateGatewayApiStatusResponse()
@@ -1970,7 +2039,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDownloadInfo", params)
+            headers = request.headers
+            body = self.call("DescribeDownloadInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDownloadInfoResponse()
@@ -1998,7 +2068,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeEnabledUnitRule", params)
+            headers = request.headers
+            body = self.call("DescribeEnabledUnitRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeEnabledUnitRuleResponse()
@@ -2026,7 +2097,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeFileConfigs", params)
+            headers = request.headers
+            body = self.call("DescribeFileConfigs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeFileConfigsResponse()
@@ -2054,7 +2126,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeFlowLastBatchState", params)
+            headers = request.headers
+            body = self.call("DescribeFlowLastBatchState", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeFlowLastBatchStateResponse()
@@ -2082,7 +2155,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeGatewayAllGroupApis", params)
+            headers = request.headers
+            body = self.call("DescribeGatewayAllGroupApis", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeGatewayAllGroupApisResponse()
@@ -2110,7 +2184,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeGatewayApis", params)
+            headers = request.headers
+            body = self.call("DescribeGatewayApis", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeGatewayApisResponse()
@@ -2138,7 +2213,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeGatewayMonitorOverview", params)
+            headers = request.headers
+            body = self.call("DescribeGatewayMonitorOverview", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeGatewayMonitorOverviewResponse()
@@ -2166,7 +2242,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeGroup", params)
+            headers = request.headers
+            body = self.call("DescribeGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeGroupResponse()
@@ -2194,7 +2271,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeGroupAttribute", params)
+            headers = request.headers
+            body = self.call("DescribeGroupAttribute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeGroupAttributeResponse()
@@ -2222,7 +2300,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeGroupBindedGateways", params)
+            headers = request.headers
+            body = self.call("DescribeGroupBindedGateways", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeGroupBindedGatewaysResponse()
@@ -2250,7 +2329,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeGroupGateways", params)
+            headers = request.headers
+            body = self.call("DescribeGroupGateways", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeGroupGatewaysResponse()
@@ -2278,7 +2358,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeGroupInstances", params)
+            headers = request.headers
+            body = self.call("DescribeGroupInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeGroupInstancesResponse()
@@ -2306,7 +2387,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeGroupRelease", params)
+            headers = request.headers
+            body = self.call("DescribeGroupRelease", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeGroupReleaseResponse()
@@ -2334,7 +2416,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeGroupUseDetail", params)
+            headers = request.headers
+            body = self.call("DescribeGroupUseDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeGroupUseDetailResponse()
@@ -2362,7 +2445,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeGroups", params)
+            headers = request.headers
+            body = self.call("DescribeGroups", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeGroupsResponse()
@@ -2390,7 +2474,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeGroupsWithPlugin", params)
+            headers = request.headers
+            body = self.call("DescribeGroupsWithPlugin", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeGroupsWithPluginResponse()
@@ -2418,7 +2503,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeImageRepository", params)
+            headers = request.headers
+            body = self.call("DescribeImageRepository", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeImageRepositoryResponse()
@@ -2446,7 +2532,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeImageTags", params)
+            headers = request.headers
+            body = self.call("DescribeImageTags", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeImageTagsResponse()
@@ -2474,7 +2561,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInovcationIndicators", params)
+            headers = request.headers
+            body = self.call("DescribeInovcationIndicators", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInovcationIndicatorsResponse()
@@ -2502,7 +2590,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInstances", params)
+            headers = request.headers
+            body = self.call("DescribeInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInstancesResponse()
@@ -2530,7 +2619,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInvocationMetricDataCurve", params)
+            headers = request.headers
+            body = self.call("DescribeInvocationMetricDataCurve", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInvocationMetricDataCurveResponse()
@@ -2558,7 +2648,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInvocationMetricDataDimension", params)
+            headers = request.headers
+            body = self.call("DescribeInvocationMetricDataDimension", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInvocationMetricDataDimensionResponse()
@@ -2586,7 +2677,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInvocationMetricDataPoint", params)
+            headers = request.headers
+            body = self.call("DescribeInvocationMetricDataPoint", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInvocationMetricDataPointResponse()
@@ -2614,7 +2706,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInvocationMetricScatterPlot", params)
+            headers = request.headers
+            body = self.call("DescribeInvocationMetricScatterPlot", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInvocationMetricScatterPlotResponse()
@@ -2642,7 +2735,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeJvmMonitor", params)
+            headers = request.headers
+            body = self.call("DescribeJvmMonitor", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeJvmMonitorResponse()
@@ -2670,7 +2764,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeLaneRules", params)
+            headers = request.headers
+            body = self.call("DescribeLaneRules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLaneRulesResponse()
@@ -2698,7 +2793,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeLanes", params)
+            headers = request.headers
+            body = self.call("DescribeLanes", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLanesResponse()
@@ -2726,7 +2822,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeMicroservice", params)
+            headers = request.headers
+            body = self.call("DescribeMicroservice", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeMicroserviceResponse()
@@ -2754,7 +2851,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeMicroservices", params)
+            headers = request.headers
+            body = self.call("DescribeMicroservices", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeMicroservicesResponse()
@@ -2782,7 +2880,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeMsApiList", params)
+            headers = request.headers
+            body = self.call("DescribeMsApiList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeMsApiListResponse()
@@ -2810,7 +2909,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeOverviewInvocation", params)
+            headers = request.headers
+            body = self.call("DescribeOverviewInvocation", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeOverviewInvocationResponse()
@@ -2838,7 +2938,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePathRewrite", params)
+            headers = request.headers
+            body = self.call("DescribePathRewrite", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePathRewriteResponse()
@@ -2866,7 +2967,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePathRewrites", params)
+            headers = request.headers
+            body = self.call("DescribePathRewrites", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePathRewritesResponse()
@@ -2894,7 +2996,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePkgs", params)
+            headers = request.headers
+            body = self.call("DescribePkgs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePkgsResponse()
@@ -2922,7 +3025,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePluginInstances", params)
+            headers = request.headers
+            body = self.call("DescribePluginInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePluginInstancesResponse()
@@ -2950,7 +3054,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePodInstances", params)
+            headers = request.headers
+            body = self.call("DescribePodInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePodInstancesResponse()
@@ -2978,7 +3083,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePublicConfig", params)
+            headers = request.headers
+            body = self.call("DescribePublicConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePublicConfigResponse()
@@ -3006,7 +3112,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePublicConfigReleaseLogs", params)
+            headers = request.headers
+            body = self.call("DescribePublicConfigReleaseLogs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePublicConfigReleaseLogsResponse()
@@ -3034,7 +3141,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePublicConfigReleases", params)
+            headers = request.headers
+            body = self.call("DescribePublicConfigReleases", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePublicConfigReleasesResponse()
@@ -3062,7 +3170,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePublicConfigSummary", params)
+            headers = request.headers
+            body = self.call("DescribePublicConfigSummary", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePublicConfigSummaryResponse()
@@ -3090,7 +3199,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePublicConfigs", params)
+            headers = request.headers
+            body = self.call("DescribePublicConfigs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePublicConfigsResponse()
@@ -3118,7 +3228,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeReleasedConfig", params)
+            headers = request.headers
+            body = self.call("DescribeReleasedConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeReleasedConfigResponse()
@@ -3146,7 +3257,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRepositories", params)
+            headers = request.headers
+            body = self.call("DescribeRepositories", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRepositoriesResponse()
@@ -3174,7 +3286,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRepository", params)
+            headers = request.headers
+            body = self.call("DescribeRepository", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRepositoryResponse()
@@ -3202,7 +3315,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeServerlessGroup", params)
+            headers = request.headers
+            body = self.call("DescribeServerlessGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeServerlessGroupResponse()
@@ -3230,7 +3344,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeServerlessGroups", params)
+            headers = request.headers
+            body = self.call("DescribeServerlessGroups", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeServerlessGroupsResponse()
@@ -3258,7 +3373,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSimpleApplications", params)
+            headers = request.headers
+            body = self.call("DescribeSimpleApplications", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSimpleApplicationsResponse()
@@ -3286,7 +3402,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSimpleClusters", params)
+            headers = request.headers
+            body = self.call("DescribeSimpleClusters", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSimpleClustersResponse()
@@ -3314,7 +3431,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSimpleGroups", params)
+            headers = request.headers
+            body = self.call("DescribeSimpleGroups", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSimpleGroupsResponse()
@@ -3342,7 +3460,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSimpleNamespaces", params)
+            headers = request.headers
+            body = self.call("DescribeSimpleNamespaces", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSimpleNamespacesResponse()
@@ -3370,7 +3489,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeStatistics", params)
+            headers = request.headers
+            body = self.call("DescribeStatistics", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeStatisticsResponse()
@@ -3398,7 +3518,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTaskDetail", params)
+            headers = request.headers
+            body = self.call("DescribeTaskDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTaskDetailResponse()
@@ -3426,7 +3547,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTaskLastStatus", params)
+            headers = request.headers
+            body = self.call("DescribeTaskLastStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTaskLastStatusResponse()
@@ -3454,7 +3576,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTaskRecords", params)
+            headers = request.headers
+            body = self.call("DescribeTaskRecords", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTaskRecordsResponse()
@@ -3482,7 +3605,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeUnitApiUseDetail", params)
+            headers = request.headers
+            body = self.call("DescribeUnitApiUseDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeUnitApiUseDetailResponse()
@@ -3510,7 +3634,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeUnitNamespaces", params)
+            headers = request.headers
+            body = self.call("DescribeUnitNamespaces", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeUnitNamespacesResponse()
@@ -3538,7 +3663,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeUnitRule", params)
+            headers = request.headers
+            body = self.call("DescribeUnitRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeUnitRuleResponse()
@@ -3566,7 +3692,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeUnitRules", params)
+            headers = request.headers
+            body = self.call("DescribeUnitRules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeUnitRulesResponse()
@@ -3595,7 +3722,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeUploadInfo", params)
+            headers = request.headers
+            body = self.call("DescribeUploadInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeUploadInfoResponse()
@@ -3623,7 +3751,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeUsableUnitNamespaces", params)
+            headers = request.headers
+            body = self.call("DescribeUsableUnitNamespaces", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeUsableUnitNamespacesResponse()
@@ -3651,7 +3780,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DisableTask", params)
+            headers = request.headers
+            body = self.call("DisableTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DisableTaskResponse()
@@ -3679,7 +3809,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DisableTaskFlow", params)
+            headers = request.headers
+            body = self.call("DisableTaskFlow", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DisableTaskFlowResponse()
@@ -3707,7 +3838,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DisableUnitRoute", params)
+            headers = request.headers
+            body = self.call("DisableUnitRoute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DisableUnitRouteResponse()
@@ -3735,7 +3867,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DisableUnitRule", params)
+            headers = request.headers
+            body = self.call("DisableUnitRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DisableUnitRuleResponse()
@@ -3763,7 +3896,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DraftApiGroup", params)
+            headers = request.headers
+            body = self.call("DraftApiGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DraftApiGroupResponse()
@@ -3791,7 +3925,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("EnableTask", params)
+            headers = request.headers
+            body = self.call("EnableTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.EnableTaskResponse()
@@ -3819,7 +3954,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("EnableTaskFlow", params)
+            headers = request.headers
+            body = self.call("EnableTaskFlow", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.EnableTaskFlowResponse()
@@ -3847,7 +3983,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("EnableUnitRoute", params)
+            headers = request.headers
+            body = self.call("EnableUnitRoute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.EnableUnitRouteResponse()
@@ -3875,7 +4012,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("EnableUnitRule", params)
+            headers = request.headers
+            body = self.call("EnableUnitRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.EnableUnitRuleResponse()
@@ -3903,7 +4041,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ExecuteTask", params)
+            headers = request.headers
+            body = self.call("ExecuteTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ExecuteTaskResponse()
@@ -3931,7 +4070,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ExecuteTaskFlow", params)
+            headers = request.headers
+            body = self.call("ExecuteTaskFlow", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ExecuteTaskFlowResponse()
@@ -3959,7 +4099,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ExpandGroup", params)
+            headers = request.headers
+            body = self.call("ExpandGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ExpandGroupResponse()
@@ -3987,7 +4128,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyContainerGroup", params)
+            headers = request.headers
+            body = self.call("ModifyContainerGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyContainerGroupResponse()
@@ -4015,7 +4157,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyContainerReplicas", params)
+            headers = request.headers
+            body = self.call("ModifyContainerReplicas", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyContainerReplicasResponse()
@@ -4043,7 +4186,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyLane", params)
+            headers = request.headers
+            body = self.call("ModifyLane", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyLaneResponse()
@@ -4071,7 +4215,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyLaneRule", params)
+            headers = request.headers
+            body = self.call("ModifyLaneRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyLaneRuleResponse()
@@ -4099,7 +4244,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyMicroservice", params)
+            headers = request.headers
+            body = self.call("ModifyMicroservice", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyMicroserviceResponse()
@@ -4127,7 +4273,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyPathRewrite", params)
+            headers = request.headers
+            body = self.call("ModifyPathRewrite", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyPathRewriteResponse()
@@ -4155,7 +4302,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyTask", params)
+            headers = request.headers
+            body = self.call("ModifyTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyTaskResponse()
@@ -4184,7 +4332,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyUploadInfo", params)
+            headers = request.headers
+            body = self.call("ModifyUploadInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyUploadInfoResponse()
@@ -4212,7 +4361,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("OperateApplicationTcrBinding", params)
+            headers = request.headers
+            body = self.call("OperateApplicationTcrBinding", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.OperateApplicationTcrBindingResponse()
@@ -4240,7 +4390,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RedoTask", params)
+            headers = request.headers
+            body = self.call("RedoTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RedoTaskResponse()
@@ -4268,7 +4419,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RedoTaskBatch", params)
+            headers = request.headers
+            body = self.call("RedoTaskBatch", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RedoTaskBatchResponse()
@@ -4296,7 +4448,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RedoTaskExecute", params)
+            headers = request.headers
+            body = self.call("RedoTaskExecute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RedoTaskExecuteResponse()
@@ -4324,7 +4477,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RedoTaskFlowBatch", params)
+            headers = request.headers
+            body = self.call("RedoTaskFlowBatch", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RedoTaskFlowBatchResponse()
@@ -4352,7 +4506,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ReleaseApiGroup", params)
+            headers = request.headers
+            body = self.call("ReleaseApiGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ReleaseApiGroupResponse()
@@ -4380,7 +4535,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ReleaseConfig", params)
+            headers = request.headers
+            body = self.call("ReleaseConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ReleaseConfigResponse()
@@ -4408,7 +4564,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ReleaseFileConfig", params)
+            headers = request.headers
+            body = self.call("ReleaseFileConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ReleaseFileConfigResponse()
@@ -4436,7 +4593,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ReleasePublicConfig", params)
+            headers = request.headers
+            body = self.call("ReleasePublicConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ReleasePublicConfigResponse()
@@ -4464,7 +4622,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RemoveInstances", params)
+            headers = request.headers
+            body = self.call("RemoveInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RemoveInstancesResponse()
@@ -4492,7 +4651,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RevocationConfig", params)
+            headers = request.headers
+            body = self.call("RevocationConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RevocationConfigResponse()
@@ -4520,7 +4680,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RevocationPublicConfig", params)
+            headers = request.headers
+            body = self.call("RevocationPublicConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RevocationPublicConfigResponse()
@@ -4548,7 +4709,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RollbackConfig", params)
+            headers = request.headers
+            body = self.call("RollbackConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RollbackConfigResponse()
@@ -4576,7 +4738,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SearchBusinessLog", params)
+            headers = request.headers
+            body = self.call("SearchBusinessLog", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SearchBusinessLogResponse()
@@ -4604,7 +4767,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SearchStdoutLog", params)
+            headers = request.headers
+            body = self.call("SearchStdoutLog", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SearchStdoutLogResponse()
@@ -4632,7 +4796,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ShrinkGroup", params)
+            headers = request.headers
+            body = self.call("ShrinkGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ShrinkGroupResponse()
@@ -4660,7 +4825,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ShrinkInstances", params)
+            headers = request.headers
+            body = self.call("ShrinkInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ShrinkInstancesResponse()
@@ -4688,7 +4854,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("StartContainerGroup", params)
+            headers = request.headers
+            body = self.call("StartContainerGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StartContainerGroupResponse()
@@ -4716,7 +4883,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("StartGroup", params)
+            headers = request.headers
+            body = self.call("StartGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StartGroupResponse()
@@ -4744,7 +4912,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("StopContainerGroup", params)
+            headers = request.headers
+            body = self.call("StopContainerGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StopContainerGroupResponse()
@@ -4772,7 +4941,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("StopGroup", params)
+            headers = request.headers
+            body = self.call("StopGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StopGroupResponse()
@@ -4800,7 +4970,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("StopTaskBatch", params)
+            headers = request.headers
+            body = self.call("StopTaskBatch", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StopTaskBatchResponse()
@@ -4828,7 +4999,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("StopTaskExecute", params)
+            headers = request.headers
+            body = self.call("StopTaskExecute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StopTaskExecuteResponse()
@@ -4856,7 +5028,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("TerminateTaskFlowBatch", params)
+            headers = request.headers
+            body = self.call("TerminateTaskFlowBatch", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.TerminateTaskFlowBatchResponse()
@@ -4884,7 +5057,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UnbindApiGroup", params)
+            headers = request.headers
+            body = self.call("UnbindApiGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UnbindApiGroupResponse()
@@ -4912,7 +5086,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateApiGroup", params)
+            headers = request.headers
+            body = self.call("UpdateApiGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateApiGroupResponse()
@@ -4940,7 +5115,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateApiRateLimitRule", params)
+            headers = request.headers
+            body = self.call("UpdateApiRateLimitRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateApiRateLimitRuleResponse()
@@ -4968,7 +5144,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateApiRateLimitRules", params)
+            headers = request.headers
+            body = self.call("UpdateApiRateLimitRules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateApiRateLimitRulesResponse()
@@ -4996,7 +5173,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateApiTimeouts", params)
+            headers = request.headers
+            body = self.call("UpdateApiTimeouts", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateApiTimeoutsResponse()
@@ -5024,7 +5202,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateGatewayApi", params)
+            headers = request.headers
+            body = self.call("UpdateGatewayApi", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateGatewayApiResponse()
@@ -5052,7 +5231,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateHealthCheckSettings", params)
+            headers = request.headers
+            body = self.call("UpdateHealthCheckSettings", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateHealthCheckSettingsResponse()
@@ -5080,7 +5260,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateRepository", params)
+            headers = request.headers
+            body = self.call("UpdateRepository", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateRepositoryResponse()
@@ -5108,7 +5289,8 @@ class TsfClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateUnitRule", params)
+            headers = request.headers
+            body = self.call("UpdateUnitRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateUnitRuleResponse()

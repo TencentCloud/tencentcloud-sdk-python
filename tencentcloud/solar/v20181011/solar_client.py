@@ -36,7 +36,8 @@ class SolarClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CheckStaffChUser", params)
+            headers = request.headers
+            body = self.call("CheckStaffChUser", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CheckStaffChUserResponse()
@@ -64,7 +65,8 @@ class SolarClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CopyActivityChannel", params)
+            headers = request.headers
+            body = self.call("CopyActivityChannel", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CopyActivityChannelResponse()
@@ -92,7 +94,8 @@ class SolarClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateProject", params)
+            headers = request.headers
+            body = self.call("CreateProject", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateProjectResponse()
@@ -120,7 +123,8 @@ class SolarClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateSubProject", params)
+            headers = request.headers
+            body = self.call("CreateSubProject", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateSubProjectResponse()
@@ -148,7 +152,8 @@ class SolarClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteProject", params)
+            headers = request.headers
+            body = self.call("DeleteProject", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteProjectResponse()
@@ -176,7 +181,8 @@ class SolarClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCustomer", params)
+            headers = request.headers
+            body = self.call("DescribeCustomer", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCustomerResponse()
@@ -204,7 +210,8 @@ class SolarClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCustomers", params)
+            headers = request.headers
+            body = self.call("DescribeCustomers", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCustomersResponse()
@@ -232,7 +239,8 @@ class SolarClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeProject", params)
+            headers = request.headers
+            body = self.call("DescribeProject", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeProjectResponse()
@@ -260,7 +268,8 @@ class SolarClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeProjectStock", params)
+            headers = request.headers
+            body = self.call("DescribeProjectStock", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeProjectStockResponse()
@@ -288,7 +297,8 @@ class SolarClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeProjects", params)
+            headers = request.headers
+            body = self.call("DescribeProjects", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeProjectsResponse()
@@ -316,7 +326,8 @@ class SolarClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeResourceTemplateHeaders", params)
+            headers = request.headers
+            body = self.call("DescribeResourceTemplateHeaders", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeResourceTemplateHeadersResponse()
@@ -344,7 +355,8 @@ class SolarClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSubProject", params)
+            headers = request.headers
+            body = self.call("DescribeSubProject", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSubProjectResponse()
@@ -372,7 +384,8 @@ class SolarClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ExpireFlow", params)
+            headers = request.headers
+            body = self.call("ExpireFlow", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ExpireFlowResponse()
@@ -400,7 +413,8 @@ class SolarClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyProject", params)
+            headers = request.headers
+            body = self.call("ModifyProject", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyProjectResponse()
@@ -428,7 +442,8 @@ class SolarClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("OffLineProject", params)
+            headers = request.headers
+            body = self.call("OffLineProject", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.OffLineProjectResponse()
@@ -456,7 +471,8 @@ class SolarClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ReplenishProjectStock", params)
+            headers = request.headers
+            body = self.call("ReplenishProjectStock", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ReplenishProjectStockResponse()
@@ -484,7 +500,8 @@ class SolarClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SendWxTouchTask", params)
+            headers = request.headers
+            body = self.call("SendWxTouchTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SendWxTouchTaskResponse()

@@ -37,7 +37,8 @@ class TmtClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ImageTranslate", params)
+            headers = request.headers
+            body = self.call("ImageTranslate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ImageTranslateResponse()
@@ -66,7 +67,8 @@ class TmtClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("LanguageDetect", params)
+            headers = request.headers
+            body = self.call("LanguageDetect", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.LanguageDetectResponse()
@@ -97,7 +99,8 @@ class TmtClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SpeechTranslate", params)
+            headers = request.headers
+            body = self.call("SpeechTranslate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SpeechTranslateResponse()
@@ -126,7 +129,8 @@ class TmtClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("TextTranslate", params)
+            headers = request.headers
+            body = self.call("TextTranslate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.TextTranslateResponse()
@@ -154,7 +158,8 @@ class TmtClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("TextTranslateBatch", params)
+            headers = request.headers
+            body = self.call("TextTranslateBatch", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.TextTranslateBatchResponse()

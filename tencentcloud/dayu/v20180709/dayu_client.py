@@ -36,7 +36,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateBasicDDoSAlarmThreshold", params)
+            headers = request.headers
+            body = self.call("CreateBasicDDoSAlarmThreshold", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateBasicDDoSAlarmThresholdResponse()
@@ -64,7 +65,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateBoundIP", params)
+            headers = request.headers
+            body = self.call("CreateBoundIP", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateBoundIPResponse()
@@ -92,7 +94,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateCCFrequencyRules", params)
+            headers = request.headers
+            body = self.call("CreateCCFrequencyRules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateCCFrequencyRulesResponse()
@@ -120,7 +123,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateCCSelfDefinePolicy", params)
+            headers = request.headers
+            body = self.call("CreateCCSelfDefinePolicy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateCCSelfDefinePolicyResponse()
@@ -148,7 +152,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateDDoSPolicy", params)
+            headers = request.headers
+            body = self.call("CreateDDoSPolicy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateDDoSPolicyResponse()
@@ -176,7 +181,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateDDoSPolicyCase", params)
+            headers = request.headers
+            body = self.call("CreateDDoSPolicyCase", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateDDoSPolicyCaseResponse()
@@ -204,7 +210,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateInstanceName", params)
+            headers = request.headers
+            body = self.call("CreateInstanceName", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateInstanceNameResponse()
@@ -232,7 +239,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateL4HealthConfig", params)
+            headers = request.headers
+            body = self.call("CreateL4HealthConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateL4HealthConfigResponse()
@@ -260,7 +268,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateL4Rules", params)
+            headers = request.headers
+            body = self.call("CreateL4Rules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateL4RulesResponse()
@@ -288,7 +297,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateL7CCRule", params)
+            headers = request.headers
+            body = self.call("CreateL7CCRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateL7CCRuleResponse()
@@ -316,7 +326,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateL7HealthConfig", params)
+            headers = request.headers
+            body = self.call("CreateL7HealthConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateL7HealthConfigResponse()
@@ -344,7 +355,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateL7RuleCert", params)
+            headers = request.headers
+            body = self.call("CreateL7RuleCert", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateL7RuleCertResponse()
@@ -372,7 +384,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateL7Rules", params)
+            headers = request.headers
+            body = self.call("CreateL7Rules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateL7RulesResponse()
@@ -400,7 +413,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateL7RulesUpload", params)
+            headers = request.headers
+            body = self.call("CreateL7RulesUpload", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateL7RulesUploadResponse()
@@ -428,7 +442,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateNetReturn", params)
+            headers = request.headers
+            body = self.call("CreateNetReturn", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateNetReturnResponse()
@@ -456,7 +471,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateNewL4Rules", params)
+            headers = request.headers
+            body = self.call("CreateNewL4Rules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateNewL4RulesResponse()
@@ -484,7 +500,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateNewL7Rules", params)
+            headers = request.headers
+            body = self.call("CreateNewL7Rules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateNewL7RulesResponse()
@@ -512,7 +529,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateNewL7RulesUpload", params)
+            headers = request.headers
+            body = self.call("CreateNewL7RulesUpload", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateNewL7RulesUploadResponse()
@@ -540,7 +558,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateUnblockIp", params)
+            headers = request.headers
+            body = self.call("CreateUnblockIp", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateUnblockIpResponse()
@@ -568,7 +587,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteCCFrequencyRules", params)
+            headers = request.headers
+            body = self.call("DeleteCCFrequencyRules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteCCFrequencyRulesResponse()
@@ -596,7 +616,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteCCSelfDefinePolicy", params)
+            headers = request.headers
+            body = self.call("DeleteCCSelfDefinePolicy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteCCSelfDefinePolicyResponse()
@@ -624,7 +645,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteDDoSPolicy", params)
+            headers = request.headers
+            body = self.call("DeleteDDoSPolicy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteDDoSPolicyResponse()
@@ -652,7 +674,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteDDoSPolicyCase", params)
+            headers = request.headers
+            body = self.call("DeleteDDoSPolicyCase", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteDDoSPolicyCaseResponse()
@@ -680,7 +703,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteL4Rules", params)
+            headers = request.headers
+            body = self.call("DeleteL4Rules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteL4RulesResponse()
@@ -708,7 +732,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteL7Rules", params)
+            headers = request.headers
+            body = self.call("DeleteL7Rules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteL7RulesResponse()
@@ -736,7 +761,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteNewL4Rules", params)
+            headers = request.headers
+            body = self.call("DeleteNewL4Rules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteNewL4RulesResponse()
@@ -764,7 +790,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteNewL7Rules", params)
+            headers = request.headers
+            body = self.call("DeleteNewL7Rules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteNewL7RulesResponse()
@@ -792,7 +819,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeActionLog", params)
+            headers = request.headers
+            body = self.call("DescribeActionLog", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeActionLogResponse()
@@ -820,7 +848,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBGPIPL7RuleMaxCnt", params)
+            headers = request.headers
+            body = self.call("DescribeBGPIPL7RuleMaxCnt", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBGPIPL7RuleMaxCntResponse()
@@ -848,7 +877,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBaradData", params)
+            headers = request.headers
+            body = self.call("DescribeBaradData", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBaradDataResponse()
@@ -876,7 +906,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBasicCCThreshold", params)
+            headers = request.headers
+            body = self.call("DescribeBasicCCThreshold", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBasicCCThresholdResponse()
@@ -904,7 +935,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBasicDeviceThreshold", params)
+            headers = request.headers
+            body = self.call("DescribeBasicDeviceThreshold", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBasicDeviceThresholdResponse()
@@ -932,7 +964,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBizHttpStatus", params)
+            headers = request.headers
+            body = self.call("DescribeBizHttpStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBizHttpStatusResponse()
@@ -960,7 +993,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBizTrend", params)
+            headers = request.headers
+            body = self.call("DescribeBizTrend", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBizTrendResponse()
@@ -988,7 +1022,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCCAlarmThreshold", params)
+            headers = request.headers
+            body = self.call("DescribeCCAlarmThreshold", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCCAlarmThresholdResponse()
@@ -1016,7 +1051,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCCEvList", params)
+            headers = request.headers
+            body = self.call("DescribeCCEvList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCCEvListResponse()
@@ -1044,7 +1080,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCCFrequencyRules", params)
+            headers = request.headers
+            body = self.call("DescribeCCFrequencyRules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCCFrequencyRulesResponse()
@@ -1072,7 +1109,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCCIpAllowDeny", params)
+            headers = request.headers
+            body = self.call("DescribeCCIpAllowDeny", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCCIpAllowDenyResponse()
@@ -1100,7 +1138,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCCSelfDefinePolicy", params)
+            headers = request.headers
+            body = self.call("DescribeCCSelfDefinePolicy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCCSelfDefinePolicyResponse()
@@ -1128,7 +1167,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCCTrend", params)
+            headers = request.headers
+            body = self.call("DescribeCCTrend", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCCTrendResponse()
@@ -1156,7 +1196,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCCUrlAllow", params)
+            headers = request.headers
+            body = self.call("DescribeCCUrlAllow", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCCUrlAllowResponse()
@@ -1184,7 +1225,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDDoSAlarmThreshold", params)
+            headers = request.headers
+            body = self.call("DescribeDDoSAlarmThreshold", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDDoSAlarmThresholdResponse()
@@ -1212,7 +1254,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDDoSAttackIPRegionMap", params)
+            headers = request.headers
+            body = self.call("DescribeDDoSAttackIPRegionMap", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDDoSAttackIPRegionMapResponse()
@@ -1240,7 +1283,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDDoSAttackSource", params)
+            headers = request.headers
+            body = self.call("DescribeDDoSAttackSource", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDDoSAttackSourceResponse()
@@ -1268,7 +1312,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDDoSCount", params)
+            headers = request.headers
+            body = self.call("DescribeDDoSCount", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDDoSCountResponse()
@@ -1296,7 +1341,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDDoSDefendStatus", params)
+            headers = request.headers
+            body = self.call("DescribeDDoSDefendStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDDoSDefendStatusResponse()
@@ -1324,7 +1370,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDDoSEvInfo", params)
+            headers = request.headers
+            body = self.call("DescribeDDoSEvInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDDoSEvInfoResponse()
@@ -1352,7 +1399,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDDoSEvList", params)
+            headers = request.headers
+            body = self.call("DescribeDDoSEvList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDDoSEvListResponse()
@@ -1380,7 +1428,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDDoSIpLog", params)
+            headers = request.headers
+            body = self.call("DescribeDDoSIpLog", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDDoSIpLogResponse()
@@ -1408,7 +1457,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDDoSNetCount", params)
+            headers = request.headers
+            body = self.call("DescribeDDoSNetCount", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDDoSNetCountResponse()
@@ -1436,7 +1486,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDDoSNetEvInfo", params)
+            headers = request.headers
+            body = self.call("DescribeDDoSNetEvInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDDoSNetEvInfoResponse()
@@ -1464,7 +1515,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDDoSNetEvList", params)
+            headers = request.headers
+            body = self.call("DescribeDDoSNetEvList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDDoSNetEvListResponse()
@@ -1492,7 +1544,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDDoSNetIpLog", params)
+            headers = request.headers
+            body = self.call("DescribeDDoSNetIpLog", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDDoSNetIpLogResponse()
@@ -1520,7 +1573,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDDoSNetTrend", params)
+            headers = request.headers
+            body = self.call("DescribeDDoSNetTrend", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDDoSNetTrendResponse()
@@ -1548,7 +1602,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDDoSPolicy", params)
+            headers = request.headers
+            body = self.call("DescribeDDoSPolicy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDDoSPolicyResponse()
@@ -1576,7 +1631,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDDoSTrend", params)
+            headers = request.headers
+            body = self.call("DescribeDDoSTrend", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDDoSTrendResponse()
@@ -1604,7 +1660,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDDoSUsedStatis", params)
+            headers = request.headers
+            body = self.call("DescribeDDoSUsedStatis", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDDoSUsedStatisResponse()
@@ -1632,7 +1689,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeIPProductInfo", params)
+            headers = request.headers
+            body = self.call("DescribeIPProductInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeIPProductInfoResponse()
@@ -1660,7 +1718,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInsurePacks", params)
+            headers = request.headers
+            body = self.call("DescribeInsurePacks", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInsurePacksResponse()
@@ -1688,7 +1747,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeIpBlockList", params)
+            headers = request.headers
+            body = self.call("DescribeIpBlockList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeIpBlockListResponse()
@@ -1716,7 +1776,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeIpUnBlockList", params)
+            headers = request.headers
+            body = self.call("DescribeIpUnBlockList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeIpUnBlockListResponse()
@@ -1744,7 +1805,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeL4HealthConfig", params)
+            headers = request.headers
+            body = self.call("DescribeL4HealthConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeL4HealthConfigResponse()
@@ -1772,7 +1834,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeL4RulesErrHealth", params)
+            headers = request.headers
+            body = self.call("DescribeL4RulesErrHealth", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeL4RulesErrHealthResponse()
@@ -1800,7 +1863,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeL7HealthConfig", params)
+            headers = request.headers
+            body = self.call("DescribeL7HealthConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeL7HealthConfigResponse()
@@ -1828,7 +1892,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeNewL4Rules", params)
+            headers = request.headers
+            body = self.call("DescribeNewL4Rules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeNewL4RulesResponse()
@@ -1856,7 +1921,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeNewL4RulesErrHealth", params)
+            headers = request.headers
+            body = self.call("DescribeNewL4RulesErrHealth", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeNewL4RulesErrHealthResponse()
@@ -1884,7 +1950,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeNewL7RulesErrHealth", params)
+            headers = request.headers
+            body = self.call("DescribeNewL7RulesErrHealth", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeNewL7RulesErrHealthResponse()
@@ -1912,7 +1979,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePackIndex", params)
+            headers = request.headers
+            body = self.call("DescribePackIndex", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePackIndexResponse()
@@ -1940,7 +2008,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePcap", params)
+            headers = request.headers
+            body = self.call("DescribePcap", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePcapResponse()
@@ -1968,7 +2037,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePolicyCase", params)
+            headers = request.headers
+            body = self.call("DescribePolicyCase", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePolicyCaseResponse()
@@ -1996,7 +2066,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeResIpList", params)
+            headers = request.headers
+            body = self.call("DescribeResIpList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeResIpListResponse()
@@ -2024,7 +2095,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeResourceList", params)
+            headers = request.headers
+            body = self.call("DescribeResourceList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeResourceListResponse()
@@ -2052,7 +2124,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRuleSets", params)
+            headers = request.headers
+            body = self.call("DescribeRuleSets", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRuleSetsResponse()
@@ -2080,7 +2153,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSchedulingDomainList", params)
+            headers = request.headers
+            body = self.call("DescribeSchedulingDomainList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSchedulingDomainListResponse()
@@ -2108,7 +2182,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSecIndex", params)
+            headers = request.headers
+            body = self.call("DescribeSecIndex", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSecIndexResponse()
@@ -2136,7 +2211,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSourceIpSegment", params)
+            headers = request.headers
+            body = self.call("DescribeSourceIpSegment", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSourceIpSegmentResponse()
@@ -2164,7 +2240,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTransmitStatis", params)
+            headers = request.headers
+            body = self.call("DescribeTransmitStatis", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTransmitStatisResponse()
@@ -2192,7 +2269,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeUnBlockStatis", params)
+            headers = request.headers
+            body = self.call("DescribeUnBlockStatis", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeUnBlockStatisResponse()
@@ -2220,7 +2298,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribleL4Rules", params)
+            headers = request.headers
+            body = self.call("DescribleL4Rules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribleL4RulesResponse()
@@ -2248,7 +2327,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribleL7Rules", params)
+            headers = request.headers
+            body = self.call("DescribleL7Rules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribleL7RulesResponse()
@@ -2276,7 +2356,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribleNewL7Rules", params)
+            headers = request.headers
+            body = self.call("DescribleNewL7Rules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribleNewL7RulesResponse()
@@ -2304,7 +2385,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribleRegionCount", params)
+            headers = request.headers
+            body = self.call("DescribleRegionCount", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribleRegionCountResponse()
@@ -2332,7 +2414,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyCCAlarmThreshold", params)
+            headers = request.headers
+            body = self.call("ModifyCCAlarmThreshold", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyCCAlarmThresholdResponse()
@@ -2360,7 +2443,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyCCFrequencyRules", params)
+            headers = request.headers
+            body = self.call("ModifyCCFrequencyRules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyCCFrequencyRulesResponse()
@@ -2388,7 +2472,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyCCFrequencyRulesStatus", params)
+            headers = request.headers
+            body = self.call("ModifyCCFrequencyRulesStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyCCFrequencyRulesStatusResponse()
@@ -2416,7 +2501,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyCCHostProtection", params)
+            headers = request.headers
+            body = self.call("ModifyCCHostProtection", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyCCHostProtectionResponse()
@@ -2444,7 +2530,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyCCIpAllowDeny", params)
+            headers = request.headers
+            body = self.call("ModifyCCIpAllowDeny", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyCCIpAllowDenyResponse()
@@ -2472,7 +2559,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyCCLevel", params)
+            headers = request.headers
+            body = self.call("ModifyCCLevel", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyCCLevelResponse()
@@ -2500,7 +2588,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyCCPolicySwitch", params)
+            headers = request.headers
+            body = self.call("ModifyCCPolicySwitch", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyCCPolicySwitchResponse()
@@ -2528,7 +2617,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyCCSelfDefinePolicy", params)
+            headers = request.headers
+            body = self.call("ModifyCCSelfDefinePolicy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyCCSelfDefinePolicyResponse()
@@ -2556,7 +2646,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyCCThreshold", params)
+            headers = request.headers
+            body = self.call("ModifyCCThreshold", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyCCThresholdResponse()
@@ -2584,7 +2675,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyCCUrlAllow", params)
+            headers = request.headers
+            body = self.call("ModifyCCUrlAllow", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyCCUrlAllowResponse()
@@ -2612,7 +2704,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyDDoSAIStatus", params)
+            headers = request.headers
+            body = self.call("ModifyDDoSAIStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDDoSAIStatusResponse()
@@ -2640,7 +2733,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyDDoSAlarmThreshold", params)
+            headers = request.headers
+            body = self.call("ModifyDDoSAlarmThreshold", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDDoSAlarmThresholdResponse()
@@ -2668,7 +2762,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyDDoSDefendStatus", params)
+            headers = request.headers
+            body = self.call("ModifyDDoSDefendStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDDoSDefendStatusResponse()
@@ -2696,7 +2791,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyDDoSLevel", params)
+            headers = request.headers
+            body = self.call("ModifyDDoSLevel", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDDoSLevelResponse()
@@ -2724,7 +2820,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyDDoSPolicy", params)
+            headers = request.headers
+            body = self.call("ModifyDDoSPolicy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDDoSPolicyResponse()
@@ -2752,7 +2849,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyDDoSPolicyCase", params)
+            headers = request.headers
+            body = self.call("ModifyDDoSPolicyCase", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDDoSPolicyCaseResponse()
@@ -2780,7 +2878,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyDDoSPolicyName", params)
+            headers = request.headers
+            body = self.call("ModifyDDoSPolicyName", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDDoSPolicyNameResponse()
@@ -2808,7 +2907,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyDDoSSwitch", params)
+            headers = request.headers
+            body = self.call("ModifyDDoSSwitch", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDDoSSwitchResponse()
@@ -2836,7 +2936,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyDDoSThreshold", params)
+            headers = request.headers
+            body = self.call("ModifyDDoSThreshold", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDDoSThresholdResponse()
@@ -2864,7 +2965,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyDDoSWaterKey", params)
+            headers = request.headers
+            body = self.call("ModifyDDoSWaterKey", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDDoSWaterKeyResponse()
@@ -2892,7 +2994,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyElasticLimit", params)
+            headers = request.headers
+            body = self.call("ModifyElasticLimit", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyElasticLimitResponse()
@@ -2920,7 +3023,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyL4Health", params)
+            headers = request.headers
+            body = self.call("ModifyL4Health", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyL4HealthResponse()
@@ -2948,7 +3052,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyL4KeepTime", params)
+            headers = request.headers
+            body = self.call("ModifyL4KeepTime", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyL4KeepTimeResponse()
@@ -2976,7 +3081,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyL4Rules", params)
+            headers = request.headers
+            body = self.call("ModifyL4Rules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyL4RulesResponse()
@@ -3004,7 +3110,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyL7Rules", params)
+            headers = request.headers
+            body = self.call("ModifyL7Rules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyL7RulesResponse()
@@ -3032,7 +3139,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyNetReturnSwitch", params)
+            headers = request.headers
+            body = self.call("ModifyNetReturnSwitch", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyNetReturnSwitchResponse()
@@ -3060,7 +3168,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyNewDomainRules", params)
+            headers = request.headers
+            body = self.call("ModifyNewDomainRules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyNewDomainRulesResponse()
@@ -3088,7 +3197,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyNewL4Rule", params)
+            headers = request.headers
+            body = self.call("ModifyNewL4Rule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyNewL4RuleResponse()
@@ -3116,7 +3226,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyResBindDDoSPolicy", params)
+            headers = request.headers
+            body = self.call("ModifyResBindDDoSPolicy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyResBindDDoSPolicyResponse()
@@ -3144,7 +3255,8 @@ class DayuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyResourceRenewFlag", params)
+            headers = request.headers
+            body = self.call("ModifyResourceRenewFlag", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyResourceRenewFlagResponse()

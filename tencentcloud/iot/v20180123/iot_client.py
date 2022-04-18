@@ -36,7 +36,8 @@ class IotClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ActivateRule", params)
+            headers = request.headers
+            body = self.call("ActivateRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ActivateRuleResponse()
@@ -64,7 +65,8 @@ class IotClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AddDevice", params)
+            headers = request.headers
+            body = self.call("AddDevice", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AddDeviceResponse()
@@ -92,7 +94,8 @@ class IotClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AddProduct", params)
+            headers = request.headers
+            body = self.call("AddProduct", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AddProductResponse()
@@ -120,7 +123,8 @@ class IotClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AddRule", params)
+            headers = request.headers
+            body = self.call("AddRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AddRuleResponse()
@@ -148,7 +152,8 @@ class IotClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AddTopic", params)
+            headers = request.headers
+            body = self.call("AddTopic", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AddTopicResponse()
@@ -176,7 +181,8 @@ class IotClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AppAddUser", params)
+            headers = request.headers
+            body = self.call("AppAddUser", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AppAddUserResponse()
@@ -204,7 +210,8 @@ class IotClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AppDeleteDevice", params)
+            headers = request.headers
+            body = self.call("AppDeleteDevice", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AppDeleteDeviceResponse()
@@ -232,7 +239,8 @@ class IotClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AppGetDevice", params)
+            headers = request.headers
+            body = self.call("AppGetDevice", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AppGetDeviceResponse()
@@ -260,7 +268,8 @@ class IotClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AppGetDeviceData", params)
+            headers = request.headers
+            body = self.call("AppGetDeviceData", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AppGetDeviceDataResponse()
@@ -288,7 +297,8 @@ class IotClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AppGetDeviceStatuses", params)
+            headers = request.headers
+            body = self.call("AppGetDeviceStatuses", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AppGetDeviceStatusesResponse()
@@ -316,7 +326,8 @@ class IotClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AppGetDevices", params)
+            headers = request.headers
+            body = self.call("AppGetDevices", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AppGetDevicesResponse()
@@ -344,7 +355,8 @@ class IotClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AppGetToken", params)
+            headers = request.headers
+            body = self.call("AppGetToken", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AppGetTokenResponse()
@@ -372,7 +384,8 @@ class IotClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AppGetUser", params)
+            headers = request.headers
+            body = self.call("AppGetUser", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AppGetUserResponse()
@@ -400,7 +413,8 @@ class IotClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AppIssueDeviceControl", params)
+            headers = request.headers
+            body = self.call("AppIssueDeviceControl", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AppIssueDeviceControlResponse()
@@ -428,7 +442,8 @@ class IotClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AppResetPassword", params)
+            headers = request.headers
+            body = self.call("AppResetPassword", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AppResetPasswordResponse()
@@ -456,7 +471,8 @@ class IotClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AppSecureAddDevice", params)
+            headers = request.headers
+            body = self.call("AppSecureAddDevice", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AppSecureAddDeviceResponse()
@@ -484,7 +500,8 @@ class IotClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AppUpdateDevice", params)
+            headers = request.headers
+            body = self.call("AppUpdateDevice", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AppUpdateDeviceResponse()
@@ -512,7 +529,8 @@ class IotClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AppUpdateUser", params)
+            headers = request.headers
+            body = self.call("AppUpdateUser", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AppUpdateUserResponse()
@@ -540,7 +558,8 @@ class IotClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AssociateSubDeviceToGatewayProduct", params)
+            headers = request.headers
+            body = self.call("AssociateSubDeviceToGatewayProduct", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AssociateSubDeviceToGatewayProductResponse()
@@ -568,7 +587,8 @@ class IotClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeactivateRule", params)
+            headers = request.headers
+            body = self.call("DeactivateRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeactivateRuleResponse()
@@ -596,7 +616,8 @@ class IotClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteDevice", params)
+            headers = request.headers
+            body = self.call("DeleteDevice", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteDeviceResponse()
@@ -624,7 +645,8 @@ class IotClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteProduct", params)
+            headers = request.headers
+            body = self.call("DeleteProduct", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteProductResponse()
@@ -652,7 +674,8 @@ class IotClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteRule", params)
+            headers = request.headers
+            body = self.call("DeleteRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteRuleResponse()
@@ -680,7 +703,8 @@ class IotClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteTopic", params)
+            headers = request.headers
+            body = self.call("DeleteTopic", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteTopicResponse()
@@ -708,7 +732,8 @@ class IotClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetDataHistory", params)
+            headers = request.headers
+            body = self.call("GetDataHistory", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetDataHistoryResponse()
@@ -736,7 +761,8 @@ class IotClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetDebugLog", params)
+            headers = request.headers
+            body = self.call("GetDebugLog", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetDebugLogResponse()
@@ -764,7 +790,8 @@ class IotClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetDevice", params)
+            headers = request.headers
+            body = self.call("GetDevice", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetDeviceResponse()
@@ -792,7 +819,8 @@ class IotClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetDeviceData", params)
+            headers = request.headers
+            body = self.call("GetDeviceData", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetDeviceDataResponse()
@@ -820,7 +848,8 @@ class IotClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetDeviceLog", params)
+            headers = request.headers
+            body = self.call("GetDeviceLog", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetDeviceLogResponse()
@@ -848,7 +877,8 @@ class IotClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetDeviceSignatures", params)
+            headers = request.headers
+            body = self.call("GetDeviceSignatures", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetDeviceSignaturesResponse()
@@ -876,7 +906,8 @@ class IotClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetDeviceStatistics", params)
+            headers = request.headers
+            body = self.call("GetDeviceStatistics", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetDeviceStatisticsResponse()
@@ -904,7 +935,8 @@ class IotClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetDeviceStatuses", params)
+            headers = request.headers
+            body = self.call("GetDeviceStatuses", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetDeviceStatusesResponse()
@@ -932,7 +964,8 @@ class IotClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetDevices", params)
+            headers = request.headers
+            body = self.call("GetDevices", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetDevicesResponse()
@@ -960,7 +993,8 @@ class IotClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetProduct", params)
+            headers = request.headers
+            body = self.call("GetProduct", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetProductResponse()
@@ -988,7 +1022,8 @@ class IotClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetProducts", params)
+            headers = request.headers
+            body = self.call("GetProducts", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetProductsResponse()
@@ -1016,7 +1051,8 @@ class IotClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetRule", params)
+            headers = request.headers
+            body = self.call("GetRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetRuleResponse()
@@ -1044,7 +1080,8 @@ class IotClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetRules", params)
+            headers = request.headers
+            body = self.call("GetRules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetRulesResponse()
@@ -1072,7 +1109,8 @@ class IotClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetTopic", params)
+            headers = request.headers
+            body = self.call("GetTopic", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetTopicResponse()
@@ -1100,7 +1138,8 @@ class IotClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetTopics", params)
+            headers = request.headers
+            body = self.call("GetTopics", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetTopicsResponse()
@@ -1128,7 +1167,8 @@ class IotClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("IssueDeviceControl", params)
+            headers = request.headers
+            body = self.call("IssueDeviceControl", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.IssueDeviceControlResponse()
@@ -1156,7 +1196,8 @@ class IotClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("PublishMsg", params)
+            headers = request.headers
+            body = self.call("PublishMsg", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.PublishMsgResponse()
@@ -1184,7 +1225,8 @@ class IotClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ResetDevice", params)
+            headers = request.headers
+            body = self.call("ResetDevice", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ResetDeviceResponse()
@@ -1212,7 +1254,8 @@ class IotClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UnassociateSubDeviceFromGatewayProduct", params)
+            headers = request.headers
+            body = self.call("UnassociateSubDeviceFromGatewayProduct", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UnassociateSubDeviceFromGatewayProductResponse()
@@ -1240,7 +1283,8 @@ class IotClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateProduct", params)
+            headers = request.headers
+            body = self.call("UpdateProduct", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateProductResponse()
@@ -1268,7 +1312,8 @@ class IotClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateRule", params)
+            headers = request.headers
+            body = self.call("UpdateRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateRuleResponse()

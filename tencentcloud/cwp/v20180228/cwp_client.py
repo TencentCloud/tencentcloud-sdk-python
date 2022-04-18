@@ -36,7 +36,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CancelIgnoreVul", params)
+            headers = request.headers
+            body = self.call("CancelIgnoreVul", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CancelIgnoreVulResponse()
@@ -64,7 +65,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ChangeRuleEventsIgnoreStatus", params)
+            headers = request.headers
+            body = self.call("ChangeRuleEventsIgnoreStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ChangeRuleEventsIgnoreStatusResponse()
@@ -92,7 +94,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CheckBashRuleParams", params)
+            headers = request.headers
+            body = self.call("CheckBashRuleParams", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CheckBashRuleParamsResponse()
@@ -120,7 +123,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CloseProVersion", params)
+            headers = request.headers
+            body = self.call("CloseProVersion", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CloseProVersionResponse()
@@ -148,7 +152,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateBaselineStrategy", params)
+            headers = request.headers
+            body = self.call("CreateBaselineStrategy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateBaselineStrategyResponse()
@@ -176,7 +181,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateEmergencyVulScan", params)
+            headers = request.headers
+            body = self.call("CreateEmergencyVulScan", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateEmergencyVulScanResponse()
@@ -204,7 +210,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateProtectServer", params)
+            headers = request.headers
+            body = self.call("CreateProtectServer", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateProtectServerResponse()
@@ -232,7 +239,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateScanMalwareSetting", params)
+            headers = request.headers
+            body = self.call("CreateScanMalwareSetting", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateScanMalwareSettingResponse()
@@ -260,7 +268,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateSearchLog", params)
+            headers = request.headers
+            body = self.call("CreateSearchLog", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateSearchLogResponse()
@@ -288,7 +297,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateSearchTemplate", params)
+            headers = request.headers
+            body = self.call("CreateSearchTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateSearchTemplateResponse()
@@ -316,7 +326,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteAttackLogs", params)
+            headers = request.headers
+            body = self.call("DeleteAttackLogs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteAttackLogsResponse()
@@ -344,7 +355,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteBaselineStrategy", params)
+            headers = request.headers
+            body = self.call("DeleteBaselineStrategy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteBaselineStrategyResponse()
@@ -372,7 +384,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteBashEvents", params)
+            headers = request.headers
+            body = self.call("DeleteBashEvents", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteBashEventsResponse()
@@ -400,7 +413,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteBashRules", params)
+            headers = request.headers
+            body = self.call("DeleteBashRules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteBashRulesResponse()
@@ -428,7 +442,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteBruteAttacks", params)
+            headers = request.headers
+            body = self.call("DeleteBruteAttacks", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteBruteAttacksResponse()
@@ -456,7 +471,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteLoginWhiteList", params)
+            headers = request.headers
+            body = self.call("DeleteLoginWhiteList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteLoginWhiteListResponse()
@@ -484,7 +500,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteMachine", params)
+            headers = request.headers
+            body = self.call("DeleteMachine", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteMachineResponse()
@@ -512,7 +529,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteMachineTag", params)
+            headers = request.headers
+            body = self.call("DeleteMachineTag", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteMachineTagResponse()
@@ -540,7 +558,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteMaliciousRequests", params)
+            headers = request.headers
+            body = self.call("DeleteMaliciousRequests", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteMaliciousRequestsResponse()
@@ -568,7 +587,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteMalwareScanTask", params)
+            headers = request.headers
+            body = self.call("DeleteMalwareScanTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteMalwareScanTaskResponse()
@@ -596,7 +616,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteMalwares", params)
+            headers = request.headers
+            body = self.call("DeleteMalwares", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteMalwaresResponse()
@@ -624,7 +645,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteNonlocalLoginPlaces", params)
+            headers = request.headers
+            body = self.call("DeleteNonlocalLoginPlaces", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteNonlocalLoginPlacesResponse()
@@ -652,7 +674,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeletePrivilegeEvents", params)
+            headers = request.headers
+            body = self.call("DeletePrivilegeEvents", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeletePrivilegeEventsResponse()
@@ -680,7 +703,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeletePrivilegeRules", params)
+            headers = request.headers
+            body = self.call("DeletePrivilegeRules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeletePrivilegeRulesResponse()
@@ -708,7 +732,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteProtectDir", params)
+            headers = request.headers
+            body = self.call("DeleteProtectDir", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteProtectDirResponse()
@@ -736,7 +761,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteReverseShellEvents", params)
+            headers = request.headers
+            body = self.call("DeleteReverseShellEvents", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteReverseShellEventsResponse()
@@ -764,7 +790,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteReverseShellRules", params)
+            headers = request.headers
+            body = self.call("DeleteReverseShellRules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteReverseShellRulesResponse()
@@ -792,7 +819,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteSearchTemplate", params)
+            headers = request.headers
+            body = self.call("DeleteSearchTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteSearchTemplateResponse()
@@ -820,7 +848,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteTags", params)
+            headers = request.headers
+            body = self.call("DeleteTags", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteTagsResponse()
@@ -848,7 +877,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteWebPageEventLog", params)
+            headers = request.headers
+            body = self.call("DeleteWebPageEventLog", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteWebPageEventLogResponse()
@@ -876,7 +906,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAccountStatistics", params)
+            headers = request.headers
+            body = self.call("DescribeAccountStatistics", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAccountStatisticsResponse()
@@ -904,7 +935,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAssetAppList", params)
+            headers = request.headers
+            body = self.call("DescribeAssetAppList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAssetAppListResponse()
@@ -932,7 +964,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAssetAppProcessList", params)
+            headers = request.headers
+            body = self.call("DescribeAssetAppProcessList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAssetAppProcessListResponse()
@@ -960,7 +993,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAssetCoreModuleInfo", params)
+            headers = request.headers
+            body = self.call("DescribeAssetCoreModuleInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAssetCoreModuleInfoResponse()
@@ -988,7 +1022,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAssetCoreModuleList", params)
+            headers = request.headers
+            body = self.call("DescribeAssetCoreModuleList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAssetCoreModuleListResponse()
@@ -1016,7 +1051,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAssetDatabaseInfo", params)
+            headers = request.headers
+            body = self.call("DescribeAssetDatabaseInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAssetDatabaseInfoResponse()
@@ -1044,7 +1080,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAssetDatabaseList", params)
+            headers = request.headers
+            body = self.call("DescribeAssetDatabaseList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAssetDatabaseListResponse()
@@ -1072,7 +1109,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAssetEnvList", params)
+            headers = request.headers
+            body = self.call("DescribeAssetEnvList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAssetEnvListResponse()
@@ -1100,7 +1138,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAssetInfo", params)
+            headers = request.headers
+            body = self.call("DescribeAssetInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAssetInfoResponse()
@@ -1128,7 +1167,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAssetInitServiceList", params)
+            headers = request.headers
+            body = self.call("DescribeAssetInitServiceList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAssetInitServiceListResponse()
@@ -1156,7 +1196,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAssetJarInfo", params)
+            headers = request.headers
+            body = self.call("DescribeAssetJarInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAssetJarInfoResponse()
@@ -1184,7 +1225,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAssetJarList", params)
+            headers = request.headers
+            body = self.call("DescribeAssetJarList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAssetJarListResponse()
@@ -1212,7 +1254,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAssetMachineDetail", params)
+            headers = request.headers
+            body = self.call("DescribeAssetMachineDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAssetMachineDetailResponse()
@@ -1240,7 +1283,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAssetMachineList", params)
+            headers = request.headers
+            body = self.call("DescribeAssetMachineList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAssetMachineListResponse()
@@ -1268,7 +1312,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAssetPlanTaskList", params)
+            headers = request.headers
+            body = self.call("DescribeAssetPlanTaskList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAssetPlanTaskListResponse()
@@ -1296,7 +1341,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAssetPortInfoList", params)
+            headers = request.headers
+            body = self.call("DescribeAssetPortInfoList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAssetPortInfoListResponse()
@@ -1324,7 +1370,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAssetProcessInfoList", params)
+            headers = request.headers
+            body = self.call("DescribeAssetProcessInfoList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAssetProcessInfoListResponse()
@@ -1352,7 +1399,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAssetRecentMachineInfo", params)
+            headers = request.headers
+            body = self.call("DescribeAssetRecentMachineInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAssetRecentMachineInfoResponse()
@@ -1380,7 +1428,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAssetSystemPackageList", params)
+            headers = request.headers
+            body = self.call("DescribeAssetSystemPackageList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAssetSystemPackageListResponse()
@@ -1408,7 +1457,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAssetUserInfo", params)
+            headers = request.headers
+            body = self.call("DescribeAssetUserInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAssetUserInfoResponse()
@@ -1436,7 +1486,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAssetUserList", params)
+            headers = request.headers
+            body = self.call("DescribeAssetUserList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAssetUserListResponse()
@@ -1464,7 +1515,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAssetWebAppList", params)
+            headers = request.headers
+            body = self.call("DescribeAssetWebAppList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAssetWebAppListResponse()
@@ -1492,7 +1544,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAssetWebAppPluginList", params)
+            headers = request.headers
+            body = self.call("DescribeAssetWebAppPluginList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAssetWebAppPluginListResponse()
@@ -1520,7 +1573,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAssetWebFrameList", params)
+            headers = request.headers
+            body = self.call("DescribeAssetWebFrameList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAssetWebFrameListResponse()
@@ -1548,7 +1602,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAssetWebLocationInfo", params)
+            headers = request.headers
+            body = self.call("DescribeAssetWebLocationInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAssetWebLocationInfoResponse()
@@ -1576,7 +1631,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAssetWebLocationList", params)
+            headers = request.headers
+            body = self.call("DescribeAssetWebLocationList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAssetWebLocationListResponse()
@@ -1604,7 +1660,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAssetWebServiceInfoList", params)
+            headers = request.headers
+            body = self.call("DescribeAssetWebServiceInfoList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAssetWebServiceInfoListResponse()
@@ -1632,7 +1689,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAssetWebServiceProcessList", params)
+            headers = request.headers
+            body = self.call("DescribeAssetWebServiceProcessList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAssetWebServiceProcessListResponse()
@@ -1660,7 +1718,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAttackLogInfo", params)
+            headers = request.headers
+            body = self.call("DescribeAttackLogInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAttackLogInfoResponse()
@@ -1688,7 +1747,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAttackLogs", params)
+            headers = request.headers
+            body = self.call("DescribeAttackLogs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAttackLogsResponse()
@@ -1716,7 +1776,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAttackVulTypeList", params)
+            headers = request.headers
+            body = self.call("DescribeAttackVulTypeList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAttackVulTypeListResponse()
@@ -1744,7 +1805,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAvailableExpertServiceDetail", params)
+            headers = request.headers
+            body = self.call("DescribeAvailableExpertServiceDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAvailableExpertServiceDetailResponse()
@@ -1772,7 +1834,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBanMode", params)
+            headers = request.headers
+            body = self.call("DescribeBanMode", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBanModeResponse()
@@ -1800,7 +1863,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBanRegions", params)
+            headers = request.headers
+            body = self.call("DescribeBanRegions", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBanRegionsResponse()
@@ -1828,7 +1892,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBanStatus", params)
+            headers = request.headers
+            body = self.call("DescribeBanStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBanStatusResponse()
@@ -1856,7 +1921,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBanWhiteList", params)
+            headers = request.headers
+            body = self.call("DescribeBanWhiteList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBanWhiteListResponse()
@@ -1884,7 +1950,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBaselineAnalysisData", params)
+            headers = request.headers
+            body = self.call("DescribeBaselineAnalysisData", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBaselineAnalysisDataResponse()
@@ -1912,7 +1979,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBaselineBasicInfo", params)
+            headers = request.headers
+            body = self.call("DescribeBaselineBasicInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBaselineBasicInfoResponse()
@@ -1940,7 +2008,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBaselineDetail", params)
+            headers = request.headers
+            body = self.call("DescribeBaselineDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBaselineDetailResponse()
@@ -1968,7 +2037,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBaselineEffectHostList", params)
+            headers = request.headers
+            body = self.call("DescribeBaselineEffectHostList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBaselineEffectHostListResponse()
@@ -1996,7 +2066,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBaselineHostTop", params)
+            headers = request.headers
+            body = self.call("DescribeBaselineHostTop", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBaselineHostTopResponse()
@@ -2024,7 +2095,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBaselineList", params)
+            headers = request.headers
+            body = self.call("DescribeBaselineList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBaselineListResponse()
@@ -2052,7 +2124,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBaselineRule", params)
+            headers = request.headers
+            body = self.call("DescribeBaselineRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBaselineRuleResponse()
@@ -2080,7 +2153,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBaselineScanSchedule", params)
+            headers = request.headers
+            body = self.call("DescribeBaselineScanSchedule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBaselineScanScheduleResponse()
@@ -2108,7 +2182,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBaselineStrategyDetail", params)
+            headers = request.headers
+            body = self.call("DescribeBaselineStrategyDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBaselineStrategyDetailResponse()
@@ -2136,7 +2211,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBaselineStrategyList", params)
+            headers = request.headers
+            body = self.call("DescribeBaselineStrategyList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBaselineStrategyListResponse()
@@ -2164,7 +2240,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBaselineTop", params)
+            headers = request.headers
+            body = self.call("DescribeBaselineTop", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBaselineTopResponse()
@@ -2192,7 +2269,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBashEvents", params)
+            headers = request.headers
+            body = self.call("DescribeBashEvents", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBashEventsResponse()
@@ -2220,7 +2298,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBashRules", params)
+            headers = request.headers
+            body = self.call("DescribeBashRules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBashRulesResponse()
@@ -2248,7 +2327,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBruteAttackList", params)
+            headers = request.headers
+            body = self.call("DescribeBruteAttackList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBruteAttackListResponse()
@@ -2276,7 +2356,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBruteAttackRules", params)
+            headers = request.headers
+            body = self.call("DescribeBruteAttackRules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBruteAttackRulesResponse()
@@ -2304,7 +2385,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeComponentStatistics", params)
+            headers = request.headers
+            body = self.call("DescribeComponentStatistics", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeComponentStatisticsResponse()
@@ -2332,7 +2414,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeESAggregations", params)
+            headers = request.headers
+            body = self.call("DescribeESAggregations", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeESAggregationsResponse()
@@ -2360,7 +2443,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeESHits", params)
+            headers = request.headers
+            body = self.call("DescribeESHits", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeESHitsResponse()
@@ -2388,7 +2472,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeEmergencyResponseList", params)
+            headers = request.headers
+            body = self.call("DescribeEmergencyResponseList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeEmergencyResponseListResponse()
@@ -2416,7 +2501,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeEmergencyVulList", params)
+            headers = request.headers
+            body = self.call("DescribeEmergencyVulList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeEmergencyVulListResponse()
@@ -2444,7 +2530,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeExpertServiceList", params)
+            headers = request.headers
+            body = self.call("DescribeExpertServiceList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeExpertServiceListResponse()
@@ -2472,7 +2559,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeExpertServiceOrderList", params)
+            headers = request.headers
+            body = self.call("DescribeExpertServiceOrderList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeExpertServiceOrderListResponse()
@@ -2500,7 +2588,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeExportMachines", params)
+            headers = request.headers
+            body = self.call("DescribeExportMachines", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeExportMachinesResponse()
@@ -2528,7 +2617,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeGeneralStat", params)
+            headers = request.headers
+            body = self.call("DescribeGeneralStat", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeGeneralStatResponse()
@@ -2556,7 +2646,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeHistoryAccounts", params)
+            headers = request.headers
+            body = self.call("DescribeHistoryAccounts", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeHistoryAccountsResponse()
@@ -2584,7 +2675,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeHistoryService", params)
+            headers = request.headers
+            body = self.call("DescribeHistoryService", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeHistoryServiceResponse()
@@ -2612,7 +2704,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeHostLoginList", params)
+            headers = request.headers
+            body = self.call("DescribeHostLoginList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeHostLoginListResponse()
@@ -2640,7 +2733,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeIgnoreBaselineRule", params)
+            headers = request.headers
+            body = self.call("DescribeIgnoreBaselineRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeIgnoreBaselineRuleResponse()
@@ -2668,7 +2762,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeIgnoreRuleEffectHostList", params)
+            headers = request.headers
+            body = self.call("DescribeIgnoreRuleEffectHostList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeIgnoreRuleEffectHostListResponse()
@@ -2696,7 +2791,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeImportMachineInfo", params)
+            headers = request.headers
+            body = self.call("DescribeImportMachineInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeImportMachineInfoResponse()
@@ -2724,7 +2820,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeIndexList", params)
+            headers = request.headers
+            body = self.call("DescribeIndexList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeIndexListResponse()
@@ -2752,7 +2849,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeLogStorageStatistic", params)
+            headers = request.headers
+            body = self.call("DescribeLogStorageStatistic", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLogStorageStatisticResponse()
@@ -2780,7 +2878,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeLoginWhiteCombinedList", params)
+            headers = request.headers
+            body = self.call("DescribeLoginWhiteCombinedList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLoginWhiteCombinedListResponse()
@@ -2808,7 +2907,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeLoginWhiteList", params)
+            headers = request.headers
+            body = self.call("DescribeLoginWhiteList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLoginWhiteListResponse()
@@ -2836,7 +2936,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeMachineInfo", params)
+            headers = request.headers
+            body = self.call("DescribeMachineInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeMachineInfoResponse()
@@ -2864,7 +2965,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeMachineList", params)
+            headers = request.headers
+            body = self.call("DescribeMachineList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeMachineListResponse()
@@ -2892,7 +2994,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeMachineOsList", params)
+            headers = request.headers
+            body = self.call("DescribeMachineOsList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeMachineOsListResponse()
@@ -2920,7 +3023,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeMachineRegions", params)
+            headers = request.headers
+            body = self.call("DescribeMachineRegions", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeMachineRegionsResponse()
@@ -2948,7 +3052,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeMachines", params)
+            headers = request.headers
+            body = self.call("DescribeMachines", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeMachinesResponse()
@@ -2976,7 +3081,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeMalWareList", params)
+            headers = request.headers
+            body = self.call("DescribeMalWareList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeMalWareListResponse()
@@ -3004,7 +3110,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeMaliciousRequestWhiteList", params)
+            headers = request.headers
+            body = self.call("DescribeMaliciousRequestWhiteList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeMaliciousRequestWhiteListResponse()
@@ -3032,7 +3139,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeMalwareFile", params)
+            headers = request.headers
+            body = self.call("DescribeMalwareFile", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeMalwareFileResponse()
@@ -3060,7 +3168,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeMalwareInfo", params)
+            headers = request.headers
+            body = self.call("DescribeMalwareInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeMalwareInfoResponse()
@@ -3088,7 +3197,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeMalwareRiskWarning", params)
+            headers = request.headers
+            body = self.call("DescribeMalwareRiskWarning", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeMalwareRiskWarningResponse()
@@ -3116,7 +3226,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeMalwareTimingScanSetting", params)
+            headers = request.headers
+            body = self.call("DescribeMalwareTimingScanSetting", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeMalwareTimingScanSettingResponse()
@@ -3144,7 +3255,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeMonthInspectionReport", params)
+            headers = request.headers
+            body = self.call("DescribeMonthInspectionReport", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeMonthInspectionReportResponse()
@@ -3172,7 +3284,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeOpenPortStatistics", params)
+            headers = request.headers
+            body = self.call("DescribeOpenPortStatistics", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeOpenPortStatisticsResponse()
@@ -3200,7 +3313,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeOverviewStatistics", params)
+            headers = request.headers
+            body = self.call("DescribeOverviewStatistics", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeOverviewStatisticsResponse()
@@ -3228,7 +3342,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePrivilegeEvents", params)
+            headers = request.headers
+            body = self.call("DescribePrivilegeEvents", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePrivilegeEventsResponse()
@@ -3256,7 +3371,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePrivilegeRules", params)
+            headers = request.headers
+            body = self.call("DescribePrivilegeRules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePrivilegeRulesResponse()
@@ -3284,7 +3400,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeProVersionInfo", params)
+            headers = request.headers
+            body = self.call("DescribeProVersionInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeProVersionInfoResponse()
@@ -3312,7 +3429,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeProVersionStatus", params)
+            headers = request.headers
+            body = self.call("DescribeProVersionStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeProVersionStatusResponse()
@@ -3340,7 +3458,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeProcessStatistics", params)
+            headers = request.headers
+            body = self.call("DescribeProcessStatistics", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeProcessStatisticsResponse()
@@ -3368,7 +3487,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeProtectDirList", params)
+            headers = request.headers
+            body = self.call("DescribeProtectDirList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeProtectDirListResponse()
@@ -3396,7 +3516,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeProtectDirRelatedServer", params)
+            headers = request.headers
+            body = self.call("DescribeProtectDirRelatedServer", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeProtectDirRelatedServerResponse()
@@ -3424,7 +3545,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeProtectNetList", params)
+            headers = request.headers
+            body = self.call("DescribeProtectNetList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeProtectNetListResponse()
@@ -3452,7 +3574,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeReverseShellEvents", params)
+            headers = request.headers
+            body = self.call("DescribeReverseShellEvents", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeReverseShellEventsResponse()
@@ -3480,7 +3603,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeReverseShellRules", params)
+            headers = request.headers
+            body = self.call("DescribeReverseShellRules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeReverseShellRulesResponse()
@@ -3508,7 +3632,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRiskDnsList", params)
+            headers = request.headers
+            body = self.call("DescribeRiskDnsList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRiskDnsListResponse()
@@ -3536,7 +3661,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSaveOrUpdateWarnings", params)
+            headers = request.headers
+            body = self.call("DescribeSaveOrUpdateWarnings", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSaveOrUpdateWarningsResponse()
@@ -3564,7 +3690,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeScanMalwareSchedule", params)
+            headers = request.headers
+            body = self.call("DescribeScanMalwareSchedule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeScanMalwareScheduleResponse()
@@ -3592,7 +3719,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeScanSchedule", params)
+            headers = request.headers
+            body = self.call("DescribeScanSchedule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeScanScheduleResponse()
@@ -3620,7 +3748,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeScanState", params)
+            headers = request.headers
+            body = self.call("DescribeScanState", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeScanStateResponse()
@@ -3648,7 +3777,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeScanTaskDetails", params)
+            headers = request.headers
+            body = self.call("DescribeScanTaskDetails", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeScanTaskDetailsResponse()
@@ -3676,7 +3806,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeScanTaskStatus", params)
+            headers = request.headers
+            body = self.call("DescribeScanTaskStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeScanTaskStatusResponse()
@@ -3704,7 +3835,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeScanVulSetting", params)
+            headers = request.headers
+            body = self.call("DescribeScanVulSetting", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeScanVulSettingResponse()
@@ -3732,7 +3864,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSearchExportList", params)
+            headers = request.headers
+            body = self.call("DescribeSearchExportList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSearchExportListResponse()
@@ -3760,7 +3893,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSearchLogs", params)
+            headers = request.headers
+            body = self.call("DescribeSearchLogs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSearchLogsResponse()
@@ -3788,7 +3922,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSearchTemplates", params)
+            headers = request.headers
+            body = self.call("DescribeSearchTemplates", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSearchTemplatesResponse()
@@ -3816,7 +3951,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSecurityDynamics", params)
+            headers = request.headers
+            body = self.call("DescribeSecurityDynamics", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSecurityDynamicsResponse()
@@ -3844,7 +3980,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSecurityEventStat", params)
+            headers = request.headers
+            body = self.call("DescribeSecurityEventStat", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSecurityEventStatResponse()
@@ -3872,7 +4009,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSecurityEventsCnt", params)
+            headers = request.headers
+            body = self.call("DescribeSecurityEventsCnt", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSecurityEventsCntResponse()
@@ -3900,7 +4038,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSecurityTrends", params)
+            headers = request.headers
+            body = self.call("DescribeSecurityTrends", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSecurityTrendsResponse()
@@ -3928,7 +4067,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeServerRelatedDirInfo", params)
+            headers = request.headers
+            body = self.call("DescribeServerRelatedDirInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeServerRelatedDirInfoResponse()
@@ -3956,7 +4096,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeServersAndRiskAndFirstInfo", params)
+            headers = request.headers
+            body = self.call("DescribeServersAndRiskAndFirstInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeServersAndRiskAndFirstInfoResponse()
@@ -3984,7 +4125,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeStrategyExist", params)
+            headers = request.headers
+            body = self.call("DescribeStrategyExist", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeStrategyExistResponse()
@@ -4012,7 +4154,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTagMachines", params)
+            headers = request.headers
+            body = self.call("DescribeTagMachines", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTagMachinesResponse()
@@ -4040,7 +4183,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTags", params)
+            headers = request.headers
+            body = self.call("DescribeTags", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTagsResponse()
@@ -4068,7 +4212,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeUndoVulCounts", params)
+            headers = request.headers
+            body = self.call("DescribeUndoVulCounts", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeUndoVulCountsResponse()
@@ -4096,7 +4241,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeUsualLoginPlaces", params)
+            headers = request.headers
+            body = self.call("DescribeUsualLoginPlaces", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeUsualLoginPlacesResponse()
@@ -4124,7 +4270,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeVersionStatistics", params)
+            headers = request.headers
+            body = self.call("DescribeVersionStatistics", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeVersionStatisticsResponse()
@@ -4152,7 +4299,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeVulCountByDates", params)
+            headers = request.headers
+            body = self.call("DescribeVulCountByDates", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeVulCountByDatesResponse()
@@ -4180,7 +4328,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeVulEffectHostList", params)
+            headers = request.headers
+            body = self.call("DescribeVulEffectHostList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeVulEffectHostListResponse()
@@ -4208,7 +4357,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeVulHostCountScanTime", params)
+            headers = request.headers
+            body = self.call("DescribeVulHostCountScanTime", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeVulHostCountScanTimeResponse()
@@ -4236,7 +4386,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeVulHostTop", params)
+            headers = request.headers
+            body = self.call("DescribeVulHostTop", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeVulHostTopResponse()
@@ -4264,7 +4415,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeVulInfoCvss", params)
+            headers = request.headers
+            body = self.call("DescribeVulInfoCvss", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeVulInfoCvssResponse()
@@ -4292,7 +4444,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeVulLevelCount", params)
+            headers = request.headers
+            body = self.call("DescribeVulLevelCount", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeVulLevelCountResponse()
@@ -4320,7 +4473,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeVulList", params)
+            headers = request.headers
+            body = self.call("DescribeVulList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeVulListResponse()
@@ -4348,7 +4502,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeVulTop", params)
+            headers = request.headers
+            body = self.call("DescribeVulTop", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeVulTopResponse()
@@ -4376,7 +4531,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeWarningList", params)
+            headers = request.headers
+            body = self.call("DescribeWarningList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeWarningListResponse()
@@ -4404,7 +4560,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeWebPageEventList", params)
+            headers = request.headers
+            body = self.call("DescribeWebPageEventList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeWebPageEventListResponse()
@@ -4432,7 +4589,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeWebPageGeneralize", params)
+            headers = request.headers
+            body = self.call("DescribeWebPageGeneralize", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeWebPageGeneralizeResponse()
@@ -4460,7 +4618,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeWebPageProtectStat", params)
+            headers = request.headers
+            body = self.call("DescribeWebPageProtectStat", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeWebPageProtectStatResponse()
@@ -4488,7 +4647,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeWebPageServiceInfo", params)
+            headers = request.headers
+            body = self.call("DescribeWebPageServiceInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeWebPageServiceInfoResponse()
@@ -4516,7 +4676,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("EditBashRules", params)
+            headers = request.headers
+            body = self.call("EditBashRules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.EditBashRulesResponse()
@@ -4544,7 +4705,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("EditTags", params)
+            headers = request.headers
+            body = self.call("EditTags", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.EditTagsResponse()
@@ -4572,7 +4734,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ExportAssetCoreModuleList", params)
+            headers = request.headers
+            body = self.call("ExportAssetCoreModuleList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ExportAssetCoreModuleListResponse()
@@ -4600,7 +4763,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ExportAssetWebServiceInfoList", params)
+            headers = request.headers
+            body = self.call("ExportAssetWebServiceInfoList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ExportAssetWebServiceInfoListResponse()
@@ -4628,7 +4792,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ExportAttackLogs", params)
+            headers = request.headers
+            body = self.call("ExportAttackLogs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ExportAttackLogsResponse()
@@ -4656,7 +4821,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ExportBaselineEffectHostList", params)
+            headers = request.headers
+            body = self.call("ExportBaselineEffectHostList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ExportBaselineEffectHostListResponse()
@@ -4684,7 +4850,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ExportBaselineList", params)
+            headers = request.headers
+            body = self.call("ExportBaselineList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ExportBaselineListResponse()
@@ -4712,7 +4879,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ExportBashEvents", params)
+            headers = request.headers
+            body = self.call("ExportBashEvents", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ExportBashEventsResponse()
@@ -4740,7 +4908,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ExportBruteAttacks", params)
+            headers = request.headers
+            body = self.call("ExportBruteAttacks", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ExportBruteAttacksResponse()
@@ -4768,7 +4937,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ExportIgnoreBaselineRule", params)
+            headers = request.headers
+            body = self.call("ExportIgnoreBaselineRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ExportIgnoreBaselineRuleResponse()
@@ -4796,7 +4966,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ExportIgnoreRuleEffectHostList", params)
+            headers = request.headers
+            body = self.call("ExportIgnoreRuleEffectHostList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ExportIgnoreRuleEffectHostListResponse()
@@ -4824,7 +4995,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ExportMaliciousRequests", params)
+            headers = request.headers
+            body = self.call("ExportMaliciousRequests", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ExportMaliciousRequestsResponse()
@@ -4852,7 +5024,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ExportMalwares", params)
+            headers = request.headers
+            body = self.call("ExportMalwares", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ExportMalwaresResponse()
@@ -4880,7 +5053,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ExportNonlocalLoginPlaces", params)
+            headers = request.headers
+            body = self.call("ExportNonlocalLoginPlaces", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ExportNonlocalLoginPlacesResponse()
@@ -4908,7 +5082,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ExportPrivilegeEvents", params)
+            headers = request.headers
+            body = self.call("ExportPrivilegeEvents", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ExportPrivilegeEventsResponse()
@@ -4936,7 +5111,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ExportProtectDirList", params)
+            headers = request.headers
+            body = self.call("ExportProtectDirList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ExportProtectDirListResponse()
@@ -4964,7 +5140,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ExportReverseShellEvents", params)
+            headers = request.headers
+            body = self.call("ExportReverseShellEvents", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ExportReverseShellEventsResponse()
@@ -4992,7 +5169,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ExportScanTaskDetails", params)
+            headers = request.headers
+            body = self.call("ExportScanTaskDetails", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ExportScanTaskDetailsResponse()
@@ -5020,7 +5198,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ExportSecurityTrends", params)
+            headers = request.headers
+            body = self.call("ExportSecurityTrends", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ExportSecurityTrendsResponse()
@@ -5048,7 +5227,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ExportTasks", params)
+            headers = request.headers
+            body = self.call("ExportTasks", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ExportTasksResponse()
@@ -5076,7 +5256,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ExportVulDetectionExcel", params)
+            headers = request.headers
+            body = self.call("ExportVulDetectionExcel", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ExportVulDetectionExcelResponse()
@@ -5104,7 +5285,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ExportVulDetectionReport", params)
+            headers = request.headers
+            body = self.call("ExportVulDetectionReport", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ExportVulDetectionReportResponse()
@@ -5132,7 +5314,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ExportVulEffectHostList", params)
+            headers = request.headers
+            body = self.call("ExportVulEffectHostList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ExportVulEffectHostListResponse()
@@ -5160,7 +5343,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ExportVulList", params)
+            headers = request.headers
+            body = self.call("ExportVulList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ExportVulListResponse()
@@ -5188,7 +5372,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ExportWebPageEventList", params)
+            headers = request.headers
+            body = self.call("ExportWebPageEventList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ExportWebPageEventListResponse()
@@ -5216,7 +5401,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("IgnoreImpactedHosts", params)
+            headers = request.headers
+            body = self.call("IgnoreImpactedHosts", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.IgnoreImpactedHostsResponse()
@@ -5244,7 +5430,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("InquiryPriceOpenProVersionPrepaid", params)
+            headers = request.headers
+            body = self.call("InquiryPriceOpenProVersionPrepaid", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.InquiryPriceOpenProVersionPrepaidResponse()
@@ -5272,7 +5459,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyAutoOpenProVersionConfig", params)
+            headers = request.headers
+            body = self.call("ModifyAutoOpenProVersionConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAutoOpenProVersionConfigResponse()
@@ -5300,7 +5488,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyBanMode", params)
+            headers = request.headers
+            body = self.call("ModifyBanMode", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyBanModeResponse()
@@ -5328,7 +5517,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyBanStatus", params)
+            headers = request.headers
+            body = self.call("ModifyBanStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyBanStatusResponse()
@@ -5356,7 +5546,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyBruteAttackRules", params)
+            headers = request.headers
+            body = self.call("ModifyBruteAttackRules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyBruteAttackRulesResponse()
@@ -5384,7 +5575,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyMalwareTimingScanSettings", params)
+            headers = request.headers
+            body = self.call("ModifyMalwareTimingScanSettings", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyMalwareTimingScanSettingsResponse()
@@ -5412,7 +5604,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyProVersionRenewFlag", params)
+            headers = request.headers
+            body = self.call("ModifyProVersionRenewFlag", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyProVersionRenewFlagResponse()
@@ -5440,7 +5633,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyWarningSetting", params)
+            headers = request.headers
+            body = self.call("ModifyWarningSetting", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyWarningSettingResponse()
@@ -5468,7 +5662,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyWebPageProtectDir", params)
+            headers = request.headers
+            body = self.call("ModifyWebPageProtectDir", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyWebPageProtectDirResponse()
@@ -5496,7 +5691,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyWebPageProtectSetting", params)
+            headers = request.headers
+            body = self.call("ModifyWebPageProtectSetting", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyWebPageProtectSettingResponse()
@@ -5524,7 +5720,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyWebPageProtectSwitch", params)
+            headers = request.headers
+            body = self.call("ModifyWebPageProtectSwitch", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyWebPageProtectSwitchResponse()
@@ -5552,7 +5749,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("OpenProVersion", params)
+            headers = request.headers
+            body = self.call("OpenProVersion", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.OpenProVersionResponse()
@@ -5580,7 +5778,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("OpenProVersionPrepaid", params)
+            headers = request.headers
+            body = self.call("OpenProVersionPrepaid", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.OpenProVersionPrepaidResponse()
@@ -5608,7 +5807,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RecoverMalwares", params)
+            headers = request.headers
+            body = self.call("RecoverMalwares", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RecoverMalwaresResponse()
@@ -5636,7 +5836,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RenewProVersion", params)
+            headers = request.headers
+            body = self.call("RenewProVersion", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RenewProVersionResponse()
@@ -5664,7 +5865,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ScanAsset", params)
+            headers = request.headers
+            body = self.call("ScanAsset", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ScanAssetResponse()
@@ -5692,7 +5894,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ScanVul", params)
+            headers = request.headers
+            body = self.call("ScanVul", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ScanVulResponse()
@@ -5720,7 +5923,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ScanVulAgain", params)
+            headers = request.headers
+            body = self.call("ScanVulAgain", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ScanVulAgainResponse()
@@ -5748,7 +5952,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ScanVulSetting", params)
+            headers = request.headers
+            body = self.call("ScanVulSetting", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ScanVulSettingResponse()
@@ -5776,7 +5981,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SeparateMalwares", params)
+            headers = request.headers
+            body = self.call("SeparateMalwares", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SeparateMalwaresResponse()
@@ -5804,7 +6010,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SetBashEventsStatus", params)
+            headers = request.headers
+            body = self.call("SetBashEventsStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SetBashEventsStatusResponse()
@@ -5832,7 +6039,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("StopNoticeBanTips", params)
+            headers = request.headers
+            body = self.call("StopNoticeBanTips", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StopNoticeBanTipsResponse()
@@ -5860,7 +6068,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SwitchBashRules", params)
+            headers = request.headers
+            body = self.call("SwitchBashRules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SwitchBashRulesResponse()
@@ -5888,7 +6097,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SyncAssetScan", params)
+            headers = request.headers
+            body = self.call("SyncAssetScan", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SyncAssetScanResponse()
@@ -5916,7 +6126,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("TrustMalwares", params)
+            headers = request.headers
+            body = self.call("TrustMalwares", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.TrustMalwaresResponse()
@@ -5944,7 +6155,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UntrustMalwares", params)
+            headers = request.headers
+            body = self.call("UntrustMalwares", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UntrustMalwaresResponse()
@@ -5972,7 +6184,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateBaselineStrategy", params)
+            headers = request.headers
+            body = self.call("UpdateBaselineStrategy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateBaselineStrategyResponse()
@@ -6000,7 +6213,8 @@ class CwpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateMachineTags", params)
+            headers = request.headers
+            body = self.call("UpdateMachineTags", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateMachineTagsResponse()

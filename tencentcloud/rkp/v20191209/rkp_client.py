@@ -36,7 +36,8 @@ class RkpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetOpenId", params)
+            headers = request.headers
+            body = self.call("GetOpenId", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetOpenIdResponse()
@@ -64,7 +65,8 @@ class RkpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetToken", params)
+            headers = request.headers
+            body = self.call("GetToken", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetTokenResponse()
@@ -92,7 +94,8 @@ class RkpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryDevAndRisk", params)
+            headers = request.headers
+            body = self.call("QueryDevAndRisk", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryDevAndRiskResponse()

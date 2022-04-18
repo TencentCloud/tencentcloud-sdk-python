@@ -107,6 +107,9 @@ RESOURCENOTFOUND = 'ResourceNotFound'
 # 应用号不存在。
 RESOURCENOTFOUND_APPLICATION = 'ResourceNotFound.Application'
 
+# 未找到对应流程。
+RESOURCENOTFOUND_FLOW = 'ResourceNotFound.Flow'
+
 # 机构不存在。
 RESOURCENOTFOUND_ORGANIZATION = 'ResourceNotFound.Organization'
 

@@ -36,7 +36,8 @@ class GsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateSession", params)
+            headers = request.headers
+            body = self.call("CreateSession", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateSessionResponse()
@@ -64,7 +65,8 @@ class GsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInstancesCount", params)
+            headers = request.headers
+            body = self.call("DescribeInstancesCount", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInstancesCountResponse()
@@ -92,7 +94,8 @@ class GsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SaveGameArchive", params)
+            headers = request.headers
+            body = self.call("SaveGameArchive", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SaveGameArchiveResponse()
@@ -120,7 +123,8 @@ class GsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("StartPublishStream", params)
+            headers = request.headers
+            body = self.call("StartPublishStream", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StartPublishStreamResponse()
@@ -148,7 +152,8 @@ class GsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("StopGame", params)
+            headers = request.headers
+            body = self.call("StopGame", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StopGameResponse()
@@ -176,7 +181,8 @@ class GsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("StopPublishStream", params)
+            headers = request.headers
+            body = self.call("StopPublishStream", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StopPublishStreamResponse()
@@ -204,7 +210,8 @@ class GsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SwitchGameArchive", params)
+            headers = request.headers
+            body = self.call("SwitchGameArchive", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SwitchGameArchiveResponse()
@@ -232,7 +239,8 @@ class GsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("TrylockWorker", params)
+            headers = request.headers
+            body = self.call("TrylockWorker", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.TrylockWorkerResponse()

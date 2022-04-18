@@ -36,7 +36,8 @@ class BmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AttachCamRole", params)
+            headers = request.headers
+            body = self.call("AttachCamRole", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AttachCamRoleResponse()
@@ -64,7 +65,8 @@ class BmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("BindPsaTag", params)
+            headers = request.headers
+            body = self.call("BindPsaTag", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.BindPsaTagResponse()
@@ -92,7 +94,8 @@ class BmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("BuyDevices", params)
+            headers = request.headers
+            body = self.call("BuyDevices", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.BuyDevicesResponse()
@@ -121,7 +124,8 @@ class BmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateCustomImage", params)
+            headers = request.headers
+            body = self.call("CreateCustomImage", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateCustomImageResponse()
@@ -149,7 +153,8 @@ class BmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreatePsaRegulation", params)
+            headers = request.headers
+            body = self.call("CreatePsaRegulation", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreatePsaRegulationResponse()
@@ -177,7 +182,8 @@ class BmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateSpotDevice", params)
+            headers = request.headers
+            body = self.call("CreateSpotDevice", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateSpotDeviceResponse()
@@ -205,7 +211,8 @@ class BmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateUserCmd", params)
+            headers = request.headers
+            body = self.call("CreateUserCmd", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateUserCmdResponse()
@@ -234,7 +241,8 @@ class BmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteCustomImages", params)
+            headers = request.headers
+            body = self.call("DeleteCustomImages", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteCustomImagesResponse()
@@ -262,7 +270,8 @@ class BmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeletePsaRegulation", params)
+            headers = request.headers
+            body = self.call("DeletePsaRegulation", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeletePsaRegulationResponse()
@@ -290,7 +299,8 @@ class BmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteUserCmds", params)
+            headers = request.headers
+            body = self.call("DeleteUserCmds", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteUserCmdsResponse()
@@ -318,7 +328,8 @@ class BmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCustomImageProcess", params)
+            headers = request.headers
+            body = self.call("DescribeCustomImageProcess", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCustomImageProcessResponse()
@@ -346,7 +357,8 @@ class BmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCustomImages", params)
+            headers = request.headers
+            body = self.call("DescribeCustomImages", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCustomImagesResponse()
@@ -374,7 +386,8 @@ class BmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDeviceClass", params)
+            headers = request.headers
+            body = self.call("DescribeDeviceClass", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDeviceClassResponse()
@@ -402,7 +415,8 @@ class BmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDeviceClassPartition", params)
+            headers = request.headers
+            body = self.call("DescribeDeviceClassPartition", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDeviceClassPartitionResponse()
@@ -430,7 +444,8 @@ class BmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDeviceHardwareInfo", params)
+            headers = request.headers
+            body = self.call("DescribeDeviceHardwareInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDeviceHardwareInfoResponse()
@@ -458,7 +473,8 @@ class BmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDeviceInventory", params)
+            headers = request.headers
+            body = self.call("DescribeDeviceInventory", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDeviceInventoryResponse()
@@ -486,7 +502,8 @@ class BmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDeviceOperationLog", params)
+            headers = request.headers
+            body = self.call("DescribeDeviceOperationLog", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDeviceOperationLogResponse()
@@ -514,7 +531,8 @@ class BmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDevicePartition", params)
+            headers = request.headers
+            body = self.call("DescribeDevicePartition", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDevicePartitionResponse()
@@ -542,7 +560,8 @@ class BmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDevicePosition", params)
+            headers = request.headers
+            body = self.call("DescribeDevicePosition", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDevicePositionResponse()
@@ -570,7 +589,8 @@ class BmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDevicePriceInfo", params)
+            headers = request.headers
+            body = self.call("DescribeDevicePriceInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDevicePriceInfoResponse()
@@ -598,7 +618,8 @@ class BmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDevices", params)
+            headers = request.headers
+            body = self.call("DescribeDevices", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDevicesResponse()
@@ -626,7 +647,8 @@ class BmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeHardwareSpecification", params)
+            headers = request.headers
+            body = self.call("DescribeHardwareSpecification", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeHardwareSpecificationResponse()
@@ -654,7 +676,8 @@ class BmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeHostedDeviceOutBandInfo", params)
+            headers = request.headers
+            body = self.call("DescribeHostedDeviceOutBandInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeHostedDeviceOutBandInfoResponse()
@@ -682,7 +705,8 @@ class BmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeOperationResult", params)
+            headers = request.headers
+            body = self.call("DescribeOperationResult", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeOperationResultResponse()
@@ -710,7 +734,8 @@ class BmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeOsInfo", params)
+            headers = request.headers
+            body = self.call("DescribeOsInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeOsInfoResponse()
@@ -738,7 +763,8 @@ class BmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePsaRegulations", params)
+            headers = request.headers
+            body = self.call("DescribePsaRegulations", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePsaRegulationsResponse()
@@ -766,7 +792,8 @@ class BmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRegions", params)
+            headers = request.headers
+            body = self.call("DescribeRegions", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRegionsResponse()
@@ -794,7 +821,8 @@ class BmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRepairTaskConstant", params)
+            headers = request.headers
+            body = self.call("DescribeRepairTaskConstant", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRepairTaskConstantResponse()
@@ -830,7 +858,8 @@ class BmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTaskInfo", params)
+            headers = request.headers
+            body = self.call("DescribeTaskInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTaskInfoResponse()
@@ -858,7 +887,8 @@ class BmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTaskOperationLog", params)
+            headers = request.headers
+            body = self.call("DescribeTaskOperationLog", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTaskOperationLogResponse()
@@ -886,7 +916,8 @@ class BmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeUserCmdTaskInfo", params)
+            headers = request.headers
+            body = self.call("DescribeUserCmdTaskInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeUserCmdTaskInfoResponse()
@@ -914,7 +945,8 @@ class BmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeUserCmdTasks", params)
+            headers = request.headers
+            body = self.call("DescribeUserCmdTasks", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeUserCmdTasksResponse()
@@ -942,7 +974,8 @@ class BmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeUserCmds", params)
+            headers = request.headers
+            body = self.call("DescribeUserCmds", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeUserCmdsResponse()
@@ -970,7 +1003,8 @@ class BmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DetachCamRole", params)
+            headers = request.headers
+            body = self.call("DetachCamRole", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DetachCamRoleResponse()
@@ -998,7 +1032,8 @@ class BmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyCustomImageAttribute", params)
+            headers = request.headers
+            body = self.call("ModifyCustomImageAttribute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyCustomImageAttributeResponse()
@@ -1026,7 +1061,8 @@ class BmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyDeviceAliases", params)
+            headers = request.headers
+            body = self.call("ModifyDeviceAliases", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDeviceAliasesResponse()
@@ -1054,7 +1090,8 @@ class BmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyDeviceAutoRenewFlag", params)
+            headers = request.headers
+            body = self.call("ModifyDeviceAutoRenewFlag", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDeviceAutoRenewFlagResponse()
@@ -1082,7 +1119,8 @@ class BmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyLanIp", params)
+            headers = request.headers
+            body = self.call("ModifyLanIp", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyLanIpResponse()
@@ -1110,7 +1148,8 @@ class BmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyPayModePre2Post", params)
+            headers = request.headers
+            body = self.call("ModifyPayModePre2Post", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyPayModePre2PostResponse()
@@ -1138,7 +1177,8 @@ class BmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyPsaRegulation", params)
+            headers = request.headers
+            body = self.call("ModifyPsaRegulation", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyPsaRegulationResponse()
@@ -1166,7 +1206,8 @@ class BmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyUserCmd", params)
+            headers = request.headers
+            body = self.call("ModifyUserCmd", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyUserCmdResponse()
@@ -1194,7 +1235,8 @@ class BmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("OfflineDevices", params)
+            headers = request.headers
+            body = self.call("OfflineDevices", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.OfflineDevicesResponse()
@@ -1222,7 +1264,8 @@ class BmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RebootDevices", params)
+            headers = request.headers
+            body = self.call("RebootDevices", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RebootDevicesResponse()
@@ -1250,7 +1293,8 @@ class BmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RecoverDevices", params)
+            headers = request.headers
+            body = self.call("RecoverDevices", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RecoverDevicesResponse()
@@ -1278,7 +1322,8 @@ class BmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ReloadDeviceOs", params)
+            headers = request.headers
+            body = self.call("ReloadDeviceOs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ReloadDeviceOsResponse()
@@ -1328,7 +1373,8 @@ class BmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RepairTaskControl", params)
+            headers = request.headers
+            body = self.call("RepairTaskControl", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RepairTaskControlResponse()
@@ -1356,7 +1402,8 @@ class BmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ResetDevicePassword", params)
+            headers = request.headers
+            body = self.call("ResetDevicePassword", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ResetDevicePasswordResponse()
@@ -1384,7 +1431,8 @@ class BmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ReturnDevices", params)
+            headers = request.headers
+            body = self.call("ReturnDevices", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ReturnDevicesResponse()
@@ -1412,7 +1460,8 @@ class BmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RunUserCmd", params)
+            headers = request.headers
+            body = self.call("RunUserCmd", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RunUserCmdResponse()
@@ -1440,7 +1489,8 @@ class BmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SetOutBandVpnAuthPassword", params)
+            headers = request.headers
+            body = self.call("SetOutBandVpnAuthPassword", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SetOutBandVpnAuthPasswordResponse()
@@ -1468,7 +1518,8 @@ class BmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ShutdownDevices", params)
+            headers = request.headers
+            body = self.call("ShutdownDevices", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ShutdownDevicesResponse()
@@ -1496,7 +1547,8 @@ class BmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("StartDevices", params)
+            headers = request.headers
+            body = self.call("StartDevices", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StartDevicesResponse()
@@ -1524,7 +1576,8 @@ class BmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UnbindPsaTag", params)
+            headers = request.headers
+            body = self.call("UnbindPsaTag", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UnbindPsaTagResponse()

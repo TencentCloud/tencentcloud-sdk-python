@@ -36,7 +36,8 @@ class IotvideoClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ClearDeviceActiveCode", params)
+            headers = request.headers
+            body = self.call("ClearDeviceActiveCode", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ClearDeviceActiveCodeResponse()
@@ -64,7 +65,8 @@ class IotvideoClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateAnonymousAccessToken", params)
+            headers = request.headers
+            body = self.call("CreateAnonymousAccessToken", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateAnonymousAccessTokenResponse()
@@ -92,7 +94,8 @@ class IotvideoClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateAppUsr", params)
+            headers = request.headers
+            body = self.call("CreateAppUsr", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateAppUsrResponse()
@@ -121,7 +124,8 @@ class IotvideoClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateBinding", params)
+            headers = request.headers
+            body = self.call("CreateBinding", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateBindingResponse()
@@ -152,7 +156,8 @@ class IotvideoClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateDevToken", params)
+            headers = request.headers
+            body = self.call("CreateDevToken", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateDevTokenResponse()
@@ -181,7 +186,8 @@ class IotvideoClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateDevices", params)
+            headers = request.headers
+            body = self.call("CreateDevices", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateDevicesResponse()
@@ -209,7 +215,8 @@ class IotvideoClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateGencode", params)
+            headers = request.headers
+            body = self.call("CreateGencode", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateGencodeResponse()
@@ -237,7 +244,8 @@ class IotvideoClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateIotDataType", params)
+            headers = request.headers
+            body = self.call("CreateIotDataType", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateIotDataTypeResponse()
@@ -266,7 +274,8 @@ class IotvideoClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateIotModel", params)
+            headers = request.headers
+            body = self.call("CreateIotModel", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateIotModelResponse()
@@ -294,7 +303,8 @@ class IotvideoClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateProduct", params)
+            headers = request.headers
+            body = self.call("CreateProduct", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateProductResponse()
@@ -322,7 +332,8 @@ class IotvideoClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateStorage", params)
+            headers = request.headers
+            body = self.call("CreateStorage", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateStorageResponse()
@@ -350,7 +361,8 @@ class IotvideoClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateStorageService", params)
+            headers = request.headers
+            body = self.call("CreateStorageService", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateStorageServiceResponse()
@@ -378,7 +390,8 @@ class IotvideoClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateTraceIds", params)
+            headers = request.headers
+            body = self.call("CreateTraceIds", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateTraceIdsResponse()
@@ -406,7 +419,8 @@ class IotvideoClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateUploadPath", params)
+            headers = request.headers
+            body = self.call("CreateUploadPath", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateUploadPathResponse()
@@ -434,7 +448,8 @@ class IotvideoClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateUsrToken", params)
+            headers = request.headers
+            body = self.call("CreateUsrToken", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateUsrTokenResponse()
@@ -462,7 +477,8 @@ class IotvideoClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteAppUsr", params)
+            headers = request.headers
+            body = self.call("DeleteAppUsr", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteAppUsrResponse()
@@ -490,7 +506,8 @@ class IotvideoClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteBinding", params)
+            headers = request.headers
+            body = self.call("DeleteBinding", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteBindingResponse()
@@ -518,7 +535,8 @@ class IotvideoClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteDevice", params)
+            headers = request.headers
+            body = self.call("DeleteDevice", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteDeviceResponse()
@@ -546,7 +564,8 @@ class IotvideoClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteIotDataType", params)
+            headers = request.headers
+            body = self.call("DeleteIotDataType", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteIotDataTypeResponse()
@@ -574,7 +593,8 @@ class IotvideoClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteMessageQueue", params)
+            headers = request.headers
+            body = self.call("DeleteMessageQueue", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteMessageQueueResponse()
@@ -602,7 +622,8 @@ class IotvideoClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteOtaVersion", params)
+            headers = request.headers
+            body = self.call("DeleteOtaVersion", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteOtaVersionResponse()
@@ -630,7 +651,8 @@ class IotvideoClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteProduct", params)
+            headers = request.headers
+            body = self.call("DeleteProduct", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteProductResponse()
@@ -658,7 +680,8 @@ class IotvideoClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteTraceIds", params)
+            headers = request.headers
+            body = self.call("DeleteTraceIds", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteTraceIdsResponse()
@@ -686,7 +709,8 @@ class IotvideoClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeliverStorageService", params)
+            headers = request.headers
+            body = self.call("DeliverStorageService", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeliverStorageServiceResponse()
@@ -714,7 +738,8 @@ class IotvideoClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAccountBalance", params)
+            headers = request.headers
+            body = self.call("DescribeAccountBalance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAccountBalanceResponse()
@@ -742,7 +767,8 @@ class IotvideoClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBindDev", params)
+            headers = request.headers
+            body = self.call("DescribeBindDev", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBindDevResponse()
@@ -770,7 +796,8 @@ class IotvideoClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBindUsr", params)
+            headers = request.headers
+            body = self.call("DescribeBindUsr", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBindUsrResponse()
@@ -798,7 +825,8 @@ class IotvideoClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDevice", params)
+            headers = request.headers
+            body = self.call("DescribeDevice", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDeviceResponse()
@@ -826,7 +854,8 @@ class IotvideoClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDeviceModel", params)
+            headers = request.headers
+            body = self.call("DescribeDeviceModel", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDeviceModelResponse()
@@ -854,7 +883,8 @@ class IotvideoClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDevices", params)
+            headers = request.headers
+            body = self.call("DescribeDevices", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDevicesResponse()
@@ -882,7 +912,8 @@ class IotvideoClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeIotDataType", params)
+            headers = request.headers
+            body = self.call("DescribeIotDataType", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeIotDataTypeResponse()
@@ -910,7 +941,8 @@ class IotvideoClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeIotModel", params)
+            headers = request.headers
+            body = self.call("DescribeIotModel", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeIotModelResponse()
@@ -938,7 +970,8 @@ class IotvideoClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeIotModels", params)
+            headers = request.headers
+            body = self.call("DescribeIotModels", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeIotModelsResponse()
@@ -967,7 +1000,8 @@ class IotvideoClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeLogs", params)
+            headers = request.headers
+            body = self.call("DescribeLogs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLogsResponse()
@@ -995,7 +1029,8 @@ class IotvideoClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeMessageQueue", params)
+            headers = request.headers
+            body = self.call("DescribeMessageQueue", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeMessageQueueResponse()
@@ -1023,7 +1058,8 @@ class IotvideoClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeModelDataRet", params)
+            headers = request.headers
+            body = self.call("DescribeModelDataRet", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeModelDataRetResponse()
@@ -1051,7 +1087,8 @@ class IotvideoClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeOsList", params)
+            headers = request.headers
+            body = self.call("DescribeOsList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeOsListResponse()
@@ -1079,7 +1116,8 @@ class IotvideoClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeOtaVersions", params)
+            headers = request.headers
+            body = self.call("DescribeOtaVersions", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeOtaVersionsResponse()
@@ -1107,7 +1145,8 @@ class IotvideoClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeProduct", params)
+            headers = request.headers
+            body = self.call("DescribeProduct", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeProductResponse()
@@ -1135,7 +1174,8 @@ class IotvideoClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeProducts", params)
+            headers = request.headers
+            body = self.call("DescribeProducts", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeProductsResponse()
@@ -1163,7 +1203,8 @@ class IotvideoClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePubVersions", params)
+            headers = request.headers
+            body = self.call("DescribePubVersions", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePubVersionsResponse()
@@ -1191,7 +1232,8 @@ class IotvideoClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRechargeRecords", params)
+            headers = request.headers
+            body = self.call("DescribeRechargeRecords", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRechargeRecordsResponse()
@@ -1219,7 +1261,8 @@ class IotvideoClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRegistrationStatus", params)
+            headers = request.headers
+            body = self.call("DescribeRegistrationStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRegistrationStatusResponse()
@@ -1247,7 +1290,8 @@ class IotvideoClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRunLog", params)
+            headers = request.headers
+            body = self.call("DescribeRunLog", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRunLogResponse()
@@ -1275,7 +1319,8 @@ class IotvideoClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeStorageService", params)
+            headers = request.headers
+            body = self.call("DescribeStorageService", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeStorageServiceResponse()
@@ -1303,7 +1348,8 @@ class IotvideoClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeStream", params)
+            headers = request.headers
+            body = self.call("DescribeStream", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeStreamResponse()
@@ -1331,7 +1377,8 @@ class IotvideoClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTraceIds", params)
+            headers = request.headers
+            body = self.call("DescribeTraceIds", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTraceIdsResponse()
@@ -1359,7 +1406,8 @@ class IotvideoClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTraceStatus", params)
+            headers = request.headers
+            body = self.call("DescribeTraceStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTraceStatusResponse()
@@ -1387,7 +1435,8 @@ class IotvideoClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DisableDevice", params)
+            headers = request.headers
+            body = self.call("DisableDevice", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DisableDeviceResponse()
@@ -1415,7 +1464,8 @@ class IotvideoClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DisableDeviceStream", params)
+            headers = request.headers
+            body = self.call("DisableDeviceStream", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DisableDeviceStreamResponse()
@@ -1443,7 +1493,8 @@ class IotvideoClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DisableOtaVersion", params)
+            headers = request.headers
+            body = self.call("DisableOtaVersion", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DisableOtaVersionResponse()
@@ -1471,7 +1522,8 @@ class IotvideoClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyDevice", params)
+            headers = request.headers
+            body = self.call("ModifyDevice", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDeviceResponse()
@@ -1505,7 +1557,8 @@ class IotvideoClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyDeviceAction", params)
+            headers = request.headers
+            body = self.call("ModifyDeviceAction", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDeviceActionResponse()
@@ -1539,7 +1592,8 @@ class IotvideoClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyDeviceProperty", params)
+            headers = request.headers
+            body = self.call("ModifyDeviceProperty", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDevicePropertyResponse()
@@ -1567,7 +1621,8 @@ class IotvideoClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyProduct", params)
+            headers = request.headers
+            body = self.call("ModifyProduct", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyProductResponse()
@@ -1595,7 +1650,8 @@ class IotvideoClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyVerContent", params)
+            headers = request.headers
+            body = self.call("ModifyVerContent", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyVerContentResponse()
@@ -1627,7 +1683,8 @@ class IotvideoClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RefundStorageService", params)
+            headers = request.headers
+            body = self.call("RefundStorageService", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RefundStorageServiceResponse()
@@ -1655,7 +1712,8 @@ class IotvideoClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RunDevice", params)
+            headers = request.headers
+            body = self.call("RunDevice", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RunDeviceResponse()
@@ -1683,7 +1741,8 @@ class IotvideoClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RunDeviceStream", params)
+            headers = request.headers
+            body = self.call("RunDeviceStream", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RunDeviceStreamResponse()
@@ -1711,7 +1770,8 @@ class IotvideoClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RunIotModel", params)
+            headers = request.headers
+            body = self.call("RunIotModel", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RunIotModelResponse()
@@ -1739,7 +1799,8 @@ class IotvideoClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RunOtaVersion", params)
+            headers = request.headers
+            body = self.call("RunOtaVersion", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RunOtaVersionResponse()
@@ -1767,7 +1828,8 @@ class IotvideoClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RunTestOtaVersion", params)
+            headers = request.headers
+            body = self.call("RunTestOtaVersion", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RunTestOtaVersionResponse()
@@ -1798,7 +1860,8 @@ class IotvideoClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SendOnlineMsg", params)
+            headers = request.headers
+            body = self.call("SendOnlineMsg", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SendOnlineMsgResponse()
@@ -1826,7 +1889,8 @@ class IotvideoClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SetMessageQueue", params)
+            headers = request.headers
+            body = self.call("SetMessageQueue", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SetMessageQueueResponse()
@@ -1856,7 +1920,8 @@ class IotvideoClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpgradeDevice", params)
+            headers = request.headers
+            body = self.call("UpgradeDevice", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpgradeDeviceResponse()
@@ -1884,7 +1949,8 @@ class IotvideoClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UploadOtaVersion", params)
+            headers = request.headers
+            body = self.call("UploadOtaVersion", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UploadOtaVersionResponse()

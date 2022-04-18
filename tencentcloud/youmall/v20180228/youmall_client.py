@@ -36,7 +36,8 @@ class YoumallClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateAccount", params)
+            headers = request.headers
+            body = self.call("CreateAccount", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateAccountResponse()
@@ -64,7 +65,8 @@ class YoumallClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateFacePicture", params)
+            headers = request.headers
+            body = self.call("CreateFacePicture", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateFacePictureResponse()
@@ -92,7 +94,8 @@ class YoumallClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeletePersonFeature", params)
+            headers = request.headers
+            body = self.call("DeletePersonFeature", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeletePersonFeatureResponse()
@@ -120,7 +123,8 @@ class YoumallClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCameraPerson", params)
+            headers = request.headers
+            body = self.call("DescribeCameraPerson", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCameraPersonResponse()
@@ -148,7 +152,8 @@ class YoumallClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeClusterPersonArrivedMall", params)
+            headers = request.headers
+            body = self.call("DescribeClusterPersonArrivedMall", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeClusterPersonArrivedMallResponse()
@@ -176,7 +181,8 @@ class YoumallClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeClusterPersonTrace", params)
+            headers = request.headers
+            body = self.call("DescribeClusterPersonTrace", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeClusterPersonTraceResponse()
@@ -204,7 +210,8 @@ class YoumallClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeFaceIdByTempId", params)
+            headers = request.headers
+            body = self.call("DescribeFaceIdByTempId", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeFaceIdByTempIdResponse()
@@ -232,7 +239,8 @@ class YoumallClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeHistoryNetworkInfo", params)
+            headers = request.headers
+            body = self.call("DescribeHistoryNetworkInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeHistoryNetworkInfoResponse()
@@ -260,7 +268,8 @@ class YoumallClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeNetworkInfo", params)
+            headers = request.headers
+            body = self.call("DescribeNetworkInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeNetworkInfoResponse()
@@ -288,7 +297,8 @@ class YoumallClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePerson", params)
+            headers = request.headers
+            body = self.call("DescribePerson", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePersonResponse()
@@ -317,7 +327,8 @@ class YoumallClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePersonArrivedMall", params)
+            headers = request.headers
+            body = self.call("DescribePersonArrivedMall", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePersonArrivedMallResponse()
@@ -345,7 +356,8 @@ class YoumallClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePersonInfo", params)
+            headers = request.headers
+            body = self.call("DescribePersonInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePersonInfoResponse()
@@ -373,7 +385,8 @@ class YoumallClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePersonInfoByFacePicture", params)
+            headers = request.headers
+            body = self.call("DescribePersonInfoByFacePicture", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePersonInfoByFacePictureResponse()
@@ -401,7 +414,8 @@ class YoumallClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePersonTrace", params)
+            headers = request.headers
+            body = self.call("DescribePersonTrace", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePersonTraceResponse()
@@ -429,7 +443,8 @@ class YoumallClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePersonTraceDetail", params)
+            headers = request.headers
+            body = self.call("DescribePersonTraceDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePersonTraceDetailResponse()
@@ -457,7 +472,8 @@ class YoumallClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePersonVisitInfo", params)
+            headers = request.headers
+            body = self.call("DescribePersonVisitInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePersonVisitInfoResponse()
@@ -485,7 +501,8 @@ class YoumallClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeShopHourTrafficInfo", params)
+            headers = request.headers
+            body = self.call("DescribeShopHourTrafficInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeShopHourTrafficInfoResponse()
@@ -513,7 +530,8 @@ class YoumallClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeShopInfo", params)
+            headers = request.headers
+            body = self.call("DescribeShopInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeShopInfoResponse()
@@ -541,7 +559,8 @@ class YoumallClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeShopTrafficInfo", params)
+            headers = request.headers
+            body = self.call("DescribeShopTrafficInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeShopTrafficInfoResponse()
@@ -569,7 +588,8 @@ class YoumallClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTrajectoryData", params)
+            headers = request.headers
+            body = self.call("DescribeTrajectoryData", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTrajectoryDataResponse()
@@ -597,7 +617,8 @@ class YoumallClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeZoneFlowAgeInfoByZoneId", params)
+            headers = request.headers
+            body = self.call("DescribeZoneFlowAgeInfoByZoneId", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeZoneFlowAgeInfoByZoneIdResponse()
@@ -625,7 +646,8 @@ class YoumallClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeZoneFlowAndStayTime", params)
+            headers = request.headers
+            body = self.call("DescribeZoneFlowAndStayTime", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeZoneFlowAndStayTimeResponse()
@@ -653,7 +675,8 @@ class YoumallClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeZoneFlowDailyByZoneId", params)
+            headers = request.headers
+            body = self.call("DescribeZoneFlowDailyByZoneId", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeZoneFlowDailyByZoneIdResponse()
@@ -681,7 +704,8 @@ class YoumallClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeZoneFlowGenderAvrStayTimeByZoneId", params)
+            headers = request.headers
+            body = self.call("DescribeZoneFlowGenderAvrStayTimeByZoneId", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeZoneFlowGenderAvrStayTimeByZoneIdResponse()
@@ -709,7 +733,8 @@ class YoumallClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeZoneFlowGenderInfoByZoneId", params)
+            headers = request.headers
+            body = self.call("DescribeZoneFlowGenderInfoByZoneId", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeZoneFlowGenderInfoByZoneIdResponse()
@@ -737,7 +762,8 @@ class YoumallClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeZoneFlowHourlyByZoneId", params)
+            headers = request.headers
+            body = self.call("DescribeZoneFlowHourlyByZoneId", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeZoneFlowHourlyByZoneIdResponse()
@@ -765,7 +791,8 @@ class YoumallClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeZoneTrafficInfo", params)
+            headers = request.headers
+            body = self.call("DescribeZoneTrafficInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeZoneTrafficInfoResponse()
@@ -793,7 +820,8 @@ class YoumallClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyPersonFeatureInfo", params)
+            headers = request.headers
+            body = self.call("ModifyPersonFeatureInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyPersonFeatureInfoResponse()
@@ -821,7 +849,8 @@ class YoumallClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyPersonTagInfo", params)
+            headers = request.headers
+            body = self.call("ModifyPersonTagInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyPersonTagInfoResponse()
@@ -849,7 +878,8 @@ class YoumallClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyPersonType", params)
+            headers = request.headers
+            body = self.call("ModifyPersonType", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyPersonTypeResponse()
@@ -877,7 +907,8 @@ class YoumallClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RegisterCallback", params)
+            headers = request.headers
+            body = self.call("RegisterCallback", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RegisterCallbackResponse()

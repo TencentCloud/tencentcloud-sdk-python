@@ -36,7 +36,8 @@ class SsmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateProductSecret", params)
+            headers = request.headers
+            body = self.call("CreateProductSecret", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateProductSecretResponse()
@@ -64,7 +65,8 @@ class SsmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateSSHKeyPairSecret", params)
+            headers = request.headers
+            body = self.call("CreateSSHKeyPairSecret", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateSSHKeyPairSecretResponse()
@@ -92,7 +94,8 @@ class SsmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateSecret", params)
+            headers = request.headers
+            body = self.call("CreateSecret", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateSecretResponse()
@@ -120,7 +123,8 @@ class SsmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteSecret", params)
+            headers = request.headers
+            body = self.call("DeleteSecret", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteSecretResponse()
@@ -149,7 +153,8 @@ class SsmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteSecretVersion", params)
+            headers = request.headers
+            body = self.call("DeleteSecretVersion", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteSecretVersionResponse()
@@ -177,7 +182,8 @@ class SsmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAsyncRequestInfo", params)
+            headers = request.headers
+            body = self.call("DescribeAsyncRequestInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAsyncRequestInfoResponse()
@@ -206,7 +212,8 @@ class SsmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRotationDetail", params)
+            headers = request.headers
+            body = self.call("DescribeRotationDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRotationDetailResponse()
@@ -235,7 +242,8 @@ class SsmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRotationHistory", params)
+            headers = request.headers
+            body = self.call("DescribeRotationHistory", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRotationHistoryResponse()
@@ -263,7 +271,8 @@ class SsmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSecret", params)
+            headers = request.headers
+            body = self.call("DescribeSecret", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSecretResponse()
@@ -291,7 +300,8 @@ class SsmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSupportedProducts", params)
+            headers = request.headers
+            body = self.call("DescribeSupportedProducts", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSupportedProductsResponse()
@@ -319,7 +329,8 @@ class SsmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DisableSecret", params)
+            headers = request.headers
+            body = self.call("DisableSecret", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DisableSecretResponse()
@@ -347,7 +358,8 @@ class SsmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("EnableSecret", params)
+            headers = request.headers
+            body = self.call("EnableSecret", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.EnableSecretResponse()
@@ -375,7 +387,8 @@ class SsmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetRegions", params)
+            headers = request.headers
+            body = self.call("GetRegions", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetRegionsResponse()
@@ -403,7 +416,8 @@ class SsmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetSSHKeyPairValue", params)
+            headers = request.headers
+            body = self.call("GetSSHKeyPairValue", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetSSHKeyPairValueResponse()
@@ -432,7 +446,8 @@ class SsmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetSecretValue", params)
+            headers = request.headers
+            body = self.call("GetSecretValue", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetSecretValueResponse()
@@ -460,7 +475,8 @@ class SsmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetServiceStatus", params)
+            headers = request.headers
+            body = self.call("GetServiceStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetServiceStatusResponse()
@@ -488,7 +504,8 @@ class SsmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ListSecretVersionIds", params)
+            headers = request.headers
+            body = self.call("ListSecretVersionIds", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListSecretVersionIdsResponse()
@@ -516,7 +533,8 @@ class SsmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ListSecrets", params)
+            headers = request.headers
+            body = self.call("ListSecrets", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListSecretsResponse()
@@ -545,7 +563,8 @@ class SsmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("PutSecretValue", params)
+            headers = request.headers
+            body = self.call("PutSecretValue", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.PutSecretValueResponse()
@@ -573,7 +592,8 @@ class SsmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RestoreSecret", params)
+            headers = request.headers
+            body = self.call("RestoreSecret", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RestoreSecretResponse()
@@ -602,7 +622,8 @@ class SsmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RotateProductSecret", params)
+            headers = request.headers
+            body = self.call("RotateProductSecret", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RotateProductSecretResponse()
@@ -630,7 +651,8 @@ class SsmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateDescription", params)
+            headers = request.headers
+            body = self.call("UpdateDescription", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateDescriptionResponse()
@@ -661,7 +683,8 @@ class SsmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateRotationStatus", params)
+            headers = request.headers
+            body = self.call("UpdateRotationStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateRotationStatusResponse()
@@ -690,7 +713,8 @@ class SsmClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateSecret", params)
+            headers = request.headers
+            body = self.call("UpdateSecret", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateSecretResponse()

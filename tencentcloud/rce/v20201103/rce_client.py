@@ -36,7 +36,8 @@ class RceClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRiskAssessment", params)
+            headers = request.headers
+            body = self.call("DescribeRiskAssessment", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRiskAssessmentResponse()
@@ -64,7 +65,8 @@ class RceClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRiskModel", params)
+            headers = request.headers
+            body = self.call("DescribeRiskModel", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRiskModelResponse()
@@ -92,7 +94,8 @@ class RceClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRiskTrends", params)
+            headers = request.headers
+            body = self.call("DescribeRiskTrends", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRiskTrendsResponse()
@@ -120,7 +123,8 @@ class RceClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ManageMarketingRisk", params)
+            headers = request.headers
+            body = self.call("ManageMarketingRisk", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ManageMarketingRiskResponse()

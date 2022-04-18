@@ -36,7 +36,8 @@ class RpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryRegisterProtection", params)
+            headers = request.headers
+            body = self.call("QueryRegisterProtection", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryRegisterProtectionResponse()

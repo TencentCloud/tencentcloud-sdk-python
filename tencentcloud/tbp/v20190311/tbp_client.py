@@ -36,7 +36,8 @@ class TbpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateBot", params)
+            headers = request.headers
+            body = self.call("CreateBot", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateBotResponse()
@@ -64,7 +65,8 @@ class TbpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("Reset", params)
+            headers = request.headers
+            body = self.call("Reset", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ResetResponse()
@@ -92,7 +94,8 @@ class TbpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("TextProcess", params)
+            headers = request.headers
+            body = self.call("TextProcess", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.TextProcessResponse()
@@ -120,7 +123,8 @@ class TbpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("TextReset", params)
+            headers = request.headers
+            body = self.call("TextReset", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.TextResetResponse()

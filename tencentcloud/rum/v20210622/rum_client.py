@@ -40,7 +40,8 @@ class RumClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateLogExport", params)
+            headers = request.headers
+            body = self.call("CreateLogExport", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateLogExportResponse()
@@ -68,7 +69,8 @@ class RumClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateOfflineLogConfig", params)
+            headers = request.headers
+            body = self.call("CreateOfflineLogConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateOfflineLogConfigResponse()
@@ -96,7 +98,8 @@ class RumClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateProject", params)
+            headers = request.headers
+            body = self.call("CreateProject", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateProjectResponse()
@@ -124,7 +127,8 @@ class RumClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateReleaseFile", params)
+            headers = request.headers
+            body = self.call("CreateReleaseFile", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateReleaseFileResponse()
@@ -152,7 +156,8 @@ class RumClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateStarProject", params)
+            headers = request.headers
+            body = self.call("CreateStarProject", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateStarProjectResponse()
@@ -180,7 +185,8 @@ class RumClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateTawInstance", params)
+            headers = request.headers
+            body = self.call("CreateTawInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateTawInstanceResponse()
@@ -208,7 +214,8 @@ class RumClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateWhitelist", params)
+            headers = request.headers
+            body = self.call("CreateWhitelist", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateWhitelistResponse()
@@ -236,7 +243,8 @@ class RumClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteInstance", params)
+            headers = request.headers
+            body = self.call("DeleteInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteInstanceResponse()
@@ -268,7 +276,8 @@ class RumClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteLogExport", params)
+            headers = request.headers
+            body = self.call("DeleteLogExport", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteLogExportResponse()
@@ -296,7 +305,8 @@ class RumClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteOfflineLogConfig", params)
+            headers = request.headers
+            body = self.call("DeleteOfflineLogConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteOfflineLogConfigResponse()
@@ -324,7 +334,8 @@ class RumClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteOfflineLogRecord", params)
+            headers = request.headers
+            body = self.call("DeleteOfflineLogRecord", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteOfflineLogRecordResponse()
@@ -352,7 +363,8 @@ class RumClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteProject", params)
+            headers = request.headers
+            body = self.call("DeleteProject", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteProjectResponse()
@@ -380,7 +392,8 @@ class RumClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteReleaseFile", params)
+            headers = request.headers
+            body = self.call("DeleteReleaseFile", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteReleaseFileResponse()
@@ -408,7 +421,8 @@ class RumClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteStarProject", params)
+            headers = request.headers
+            body = self.call("DeleteStarProject", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteStarProjectResponse()
@@ -436,7 +450,8 @@ class RumClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteWhitelist", params)
+            headers = request.headers
+            body = self.call("DeleteWhitelist", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteWhitelistResponse()
@@ -464,7 +479,8 @@ class RumClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeData", params)
+            headers = request.headers
+            body = self.call("DescribeData", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDataResponse()
@@ -492,7 +508,8 @@ class RumClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDataCustomUrl", params)
+            headers = request.headers
+            body = self.call("DescribeDataCustomUrl", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDataCustomUrlResponse()
@@ -520,7 +537,8 @@ class RumClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDataEventUrl", params)
+            headers = request.headers
+            body = self.call("DescribeDataEventUrl", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDataEventUrlResponse()
@@ -548,7 +566,8 @@ class RumClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDataFetchProject", params)
+            headers = request.headers
+            body = self.call("DescribeDataFetchProject", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDataFetchProjectResponse()
@@ -576,7 +595,8 @@ class RumClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDataFetchUrl", params)
+            headers = request.headers
+            body = self.call("DescribeDataFetchUrl", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDataFetchUrlResponse()
@@ -604,7 +624,8 @@ class RumClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDataFetchUrlInfo", params)
+            headers = request.headers
+            body = self.call("DescribeDataFetchUrlInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDataFetchUrlInfoResponse()
@@ -632,7 +653,8 @@ class RumClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDataLogUrlInfo", params)
+            headers = request.headers
+            body = self.call("DescribeDataLogUrlInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDataLogUrlInfoResponse()
@@ -660,7 +682,8 @@ class RumClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDataLogUrlStatistics", params)
+            headers = request.headers
+            body = self.call("DescribeDataLogUrlStatistics", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDataLogUrlStatisticsResponse()
@@ -688,7 +711,8 @@ class RumClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDataPerformancePage", params)
+            headers = request.headers
+            body = self.call("DescribeDataPerformancePage", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDataPerformancePageResponse()
@@ -716,7 +740,8 @@ class RumClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDataPerformanceProject", params)
+            headers = request.headers
+            body = self.call("DescribeDataPerformanceProject", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDataPerformanceProjectResponse()
@@ -744,7 +769,8 @@ class RumClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDataPvUrlInfo", params)
+            headers = request.headers
+            body = self.call("DescribeDataPvUrlInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDataPvUrlInfoResponse()
@@ -772,7 +798,8 @@ class RumClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDataPvUrlStatistics", params)
+            headers = request.headers
+            body = self.call("DescribeDataPvUrlStatistics", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDataPvUrlStatisticsResponse()
@@ -800,7 +827,8 @@ class RumClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDataReportCount", params)
+            headers = request.headers
+            body = self.call("DescribeDataReportCount", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDataReportCountResponse()
@@ -828,7 +856,8 @@ class RumClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDataSetUrlStatistics", params)
+            headers = request.headers
+            body = self.call("DescribeDataSetUrlStatistics", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDataSetUrlStatisticsResponse()
@@ -856,7 +885,8 @@ class RumClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDataStaticProject", params)
+            headers = request.headers
+            body = self.call("DescribeDataStaticProject", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDataStaticProjectResponse()
@@ -884,7 +914,8 @@ class RumClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDataStaticResource", params)
+            headers = request.headers
+            body = self.call("DescribeDataStaticResource", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDataStaticResourceResponse()
@@ -912,7 +943,8 @@ class RumClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDataStaticUrl", params)
+            headers = request.headers
+            body = self.call("DescribeDataStaticUrl", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDataStaticUrlResponse()
@@ -941,7 +973,8 @@ class RumClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDataWebVitalsPage", params)
+            headers = request.headers
+            body = self.call("DescribeDataWebVitalsPage", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDataWebVitalsPageResponse()
@@ -969,7 +1002,8 @@ class RumClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeError", params)
+            headers = request.headers
+            body = self.call("DescribeError", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeErrorResponse()
@@ -1001,7 +1035,8 @@ class RumClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeLogExports", params)
+            headers = request.headers
+            body = self.call("DescribeLogExports", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLogExportsResponse()
@@ -1029,7 +1064,8 @@ class RumClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeLogList", params)
+            headers = request.headers
+            body = self.call("DescribeLogList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLogListResponse()
@@ -1057,7 +1093,8 @@ class RumClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeOfflineLogConfigs", params)
+            headers = request.headers
+            body = self.call("DescribeOfflineLogConfigs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeOfflineLogConfigsResponse()
@@ -1085,7 +1122,8 @@ class RumClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeOfflineLogRecords", params)
+            headers = request.headers
+            body = self.call("DescribeOfflineLogRecords", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeOfflineLogRecordsResponse()
@@ -1113,7 +1151,8 @@ class RumClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeOfflineLogs", params)
+            headers = request.headers
+            body = self.call("DescribeOfflineLogs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeOfflineLogsResponse()
@@ -1141,7 +1180,8 @@ class RumClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeProjectLimits", params)
+            headers = request.headers
+            body = self.call("DescribeProjectLimits", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeProjectLimitsResponse()
@@ -1169,7 +1209,8 @@ class RumClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeProjects", params)
+            headers = request.headers
+            body = self.call("DescribeProjects", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeProjectsResponse()
@@ -1197,7 +1238,8 @@ class RumClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePvList", params)
+            headers = request.headers
+            body = self.call("DescribePvList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePvListResponse()
@@ -1225,7 +1267,8 @@ class RumClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeReleaseFileSign", params)
+            headers = request.headers
+            body = self.call("DescribeReleaseFileSign", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeReleaseFileSignResponse()
@@ -1253,7 +1296,8 @@ class RumClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeReleaseFiles", params)
+            headers = request.headers
+            body = self.call("DescribeReleaseFiles", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeReleaseFilesResponse()
@@ -1281,7 +1325,8 @@ class RumClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeScores", params)
+            headers = request.headers
+            body = self.call("DescribeScores", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeScoresResponse()
@@ -1309,7 +1354,8 @@ class RumClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTawAreas", params)
+            headers = request.headers
+            body = self.call("DescribeTawAreas", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTawAreasResponse()
@@ -1337,7 +1383,8 @@ class RumClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTawInstances", params)
+            headers = request.headers
+            body = self.call("DescribeTawInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTawInstancesResponse()
@@ -1365,7 +1412,8 @@ class RumClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeUvList", params)
+            headers = request.headers
+            body = self.call("DescribeUvList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeUvListResponse()
@@ -1393,7 +1441,8 @@ class RumClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeWhitelists", params)
+            headers = request.headers
+            body = self.call("DescribeWhitelists", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeWhitelistsResponse()
@@ -1421,7 +1470,8 @@ class RumClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyInstance", params)
+            headers = request.headers
+            body = self.call("ModifyInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyInstanceResponse()
@@ -1449,7 +1499,8 @@ class RumClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyProject", params)
+            headers = request.headers
+            body = self.call("ModifyProject", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyProjectResponse()
@@ -1477,7 +1528,8 @@ class RumClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyProjectLimit", params)
+            headers = request.headers
+            body = self.call("ModifyProjectLimit", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyProjectLimitResponse()
@@ -1505,7 +1557,8 @@ class RumClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ResumeInstance", params)
+            headers = request.headers
+            body = self.call("ResumeInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ResumeInstanceResponse()
@@ -1533,7 +1586,8 @@ class RumClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("StopInstance", params)
+            headers = request.headers
+            body = self.call("StopInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StopInstanceResponse()

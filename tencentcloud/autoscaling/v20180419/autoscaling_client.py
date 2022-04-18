@@ -36,7 +36,8 @@ class AutoscalingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AttachInstances", params)
+            headers = request.headers
+            body = self.call("AttachInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AttachInstancesResponse()
@@ -64,7 +65,8 @@ class AutoscalingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AttachLoadBalancers", params)
+            headers = request.headers
+            body = self.call("AttachLoadBalancers", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AttachLoadBalancersResponse()
@@ -92,7 +94,8 @@ class AutoscalingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ClearLaunchConfigurationAttributes", params)
+            headers = request.headers
+            body = self.call("ClearLaunchConfigurationAttributes", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ClearLaunchConfigurationAttributesResponse()
@@ -122,7 +125,8 @@ class AutoscalingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CompleteLifecycleAction", params)
+            headers = request.headers
+            body = self.call("CompleteLifecycleAction", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CompleteLifecycleActionResponse()
@@ -150,7 +154,8 @@ class AutoscalingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateAutoScalingGroup", params)
+            headers = request.headers
+            body = self.call("CreateAutoScalingGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateAutoScalingGroupResponse()
@@ -180,7 +185,8 @@ class AutoscalingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateAutoScalingGroupFromInstance", params)
+            headers = request.headers
+            body = self.call("CreateAutoScalingGroupFromInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateAutoScalingGroupFromInstanceResponse()
@@ -212,7 +218,8 @@ class AutoscalingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateLaunchConfiguration", params)
+            headers = request.headers
+            body = self.call("CreateLaunchConfiguration", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateLaunchConfigurationResponse()
@@ -258,7 +265,8 @@ class AutoscalingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateLifecycleHook", params)
+            headers = request.headers
+            body = self.call("CreateLifecycleHook", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateLifecycleHookResponse()
@@ -313,7 +321,8 @@ class AutoscalingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateNotificationConfiguration", params)
+            headers = request.headers
+            body = self.call("CreateNotificationConfiguration", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateNotificationConfigurationResponse()
@@ -341,7 +350,8 @@ class AutoscalingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateScalingPolicy", params)
+            headers = request.headers
+            body = self.call("CreateScalingPolicy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateScalingPolicyResponse()
@@ -369,7 +379,8 @@ class AutoscalingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateScheduledAction", params)
+            headers = request.headers
+            body = self.call("CreateScheduledAction", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateScheduledActionResponse()
@@ -397,7 +408,8 @@ class AutoscalingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteAutoScalingGroup", params)
+            headers = request.headers
+            body = self.call("DeleteAutoScalingGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteAutoScalingGroupResponse()
@@ -427,7 +439,8 @@ class AutoscalingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteLaunchConfiguration", params)
+            headers = request.headers
+            body = self.call("DeleteLaunchConfiguration", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteLaunchConfigurationResponse()
@@ -455,7 +468,8 @@ class AutoscalingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteLifecycleHook", params)
+            headers = request.headers
+            body = self.call("DeleteLifecycleHook", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteLifecycleHookResponse()
@@ -483,7 +497,8 @@ class AutoscalingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteNotificationConfiguration", params)
+            headers = request.headers
+            body = self.call("DeleteNotificationConfiguration", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteNotificationConfigurationResponse()
@@ -511,7 +526,8 @@ class AutoscalingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteScalingPolicy", params)
+            headers = request.headers
+            body = self.call("DeleteScalingPolicy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteScalingPolicyResponse()
@@ -539,7 +555,8 @@ class AutoscalingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteScheduledAction", params)
+            headers = request.headers
+            body = self.call("DeleteScheduledAction", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteScheduledActionResponse()
@@ -567,7 +584,8 @@ class AutoscalingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAccountLimits", params)
+            headers = request.headers
+            body = self.call("DescribeAccountLimits", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAccountLimitsResponse()
@@ -595,7 +613,8 @@ class AutoscalingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAutoScalingActivities", params)
+            headers = request.headers
+            body = self.call("DescribeAutoScalingActivities", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAutoScalingActivitiesResponse()
@@ -623,7 +642,8 @@ class AutoscalingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAutoScalingAdvices", params)
+            headers = request.headers
+            body = self.call("DescribeAutoScalingAdvices", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAutoScalingAdvicesResponse()
@@ -651,7 +671,8 @@ class AutoscalingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAutoScalingGroupLastActivities", params)
+            headers = request.headers
+            body = self.call("DescribeAutoScalingGroupLastActivities", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAutoScalingGroupLastActivitiesResponse()
@@ -682,7 +703,8 @@ class AutoscalingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAutoScalingGroups", params)
+            headers = request.headers
+            body = self.call("DescribeAutoScalingGroups", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAutoScalingGroupsResponse()
@@ -713,7 +735,8 @@ class AutoscalingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAutoScalingInstances", params)
+            headers = request.headers
+            body = self.call("DescribeAutoScalingInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAutoScalingInstancesResponse()
@@ -744,7 +767,8 @@ class AutoscalingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeLaunchConfigurations", params)
+            headers = request.headers
+            body = self.call("DescribeLaunchConfigurations", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLaunchConfigurationsResponse()
@@ -775,7 +799,8 @@ class AutoscalingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeLifecycleHooks", params)
+            headers = request.headers
+            body = self.call("DescribeLifecycleHooks", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLifecycleHooksResponse()
@@ -806,7 +831,8 @@ class AutoscalingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeNotificationConfigurations", params)
+            headers = request.headers
+            body = self.call("DescribeNotificationConfigurations", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeNotificationConfigurationsResponse()
@@ -834,7 +860,8 @@ class AutoscalingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeScalingPolicies", params)
+            headers = request.headers
+            body = self.call("DescribeScalingPolicies", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeScalingPoliciesResponse()
@@ -865,7 +892,8 @@ class AutoscalingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeScheduledActions", params)
+            headers = request.headers
+            body = self.call("DescribeScheduledActions", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeScheduledActionsResponse()
@@ -896,7 +924,8 @@ class AutoscalingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DetachInstances", params)
+            headers = request.headers
+            body = self.call("DetachInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DetachInstancesResponse()
@@ -924,7 +953,8 @@ class AutoscalingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DetachLoadBalancers", params)
+            headers = request.headers
+            body = self.call("DetachLoadBalancers", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DetachLoadBalancersResponse()
@@ -965,7 +995,8 @@ class AutoscalingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DisableAutoScalingGroup", params)
+            headers = request.headers
+            body = self.call("DisableAutoScalingGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DisableAutoScalingGroupResponse()
@@ -993,7 +1024,8 @@ class AutoscalingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("EnableAutoScalingGroup", params)
+            headers = request.headers
+            body = self.call("EnableAutoScalingGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.EnableAutoScalingGroupResponse()
@@ -1024,7 +1056,8 @@ class AutoscalingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ExecuteScalingPolicy", params)
+            headers = request.headers
+            body = self.call("ExecuteScalingPolicy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ExecuteScalingPolicyResponse()
@@ -1052,7 +1085,8 @@ class AutoscalingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyAutoScalingGroup", params)
+            headers = request.headers
+            body = self.call("ModifyAutoScalingGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAutoScalingGroupResponse()
@@ -1080,7 +1114,8 @@ class AutoscalingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyDesiredCapacity", params)
+            headers = request.headers
+            body = self.call("ModifyDesiredCapacity", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDesiredCapacityResponse()
@@ -1111,7 +1146,8 @@ class AutoscalingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyLaunchConfigurationAttributes", params)
+            headers = request.headers
+            body = self.call("ModifyLaunchConfigurationAttributes", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyLaunchConfigurationAttributesResponse()
@@ -1139,7 +1175,8 @@ class AutoscalingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyLoadBalancerTargetAttributes", params)
+            headers = request.headers
+            body = self.call("ModifyLoadBalancerTargetAttributes", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyLoadBalancerTargetAttributesResponse()
@@ -1171,7 +1208,8 @@ class AutoscalingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyLoadBalancers", params)
+            headers = request.headers
+            body = self.call("ModifyLoadBalancers", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyLoadBalancersResponse()
@@ -1200,7 +1238,8 @@ class AutoscalingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyNotificationConfiguration", params)
+            headers = request.headers
+            body = self.call("ModifyNotificationConfiguration", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyNotificationConfigurationResponse()
@@ -1228,7 +1267,8 @@ class AutoscalingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyScalingPolicy", params)
+            headers = request.headers
+            body = self.call("ModifyScalingPolicy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyScalingPolicyResponse()
@@ -1256,7 +1296,8 @@ class AutoscalingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyScheduledAction", params)
+            headers = request.headers
+            body = self.call("ModifyScheduledAction", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyScheduledActionResponse()
@@ -1287,7 +1328,8 @@ class AutoscalingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RemoveInstances", params)
+            headers = request.headers
+            body = self.call("RemoveInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RemoveInstancesResponse()
@@ -1321,7 +1363,8 @@ class AutoscalingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ScaleInInstances", params)
+            headers = request.headers
+            body = self.call("ScaleInInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ScaleInInstancesResponse()
@@ -1353,7 +1396,8 @@ class AutoscalingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ScaleOutInstances", params)
+            headers = request.headers
+            body = self.call("ScaleOutInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ScaleOutInstancesResponse()
@@ -1382,7 +1426,8 @@ class AutoscalingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SetInstancesProtection", params)
+            headers = request.headers
+            body = self.call("SetInstancesProtection", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SetInstancesProtectionResponse()
@@ -1412,7 +1457,8 @@ class AutoscalingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("StartAutoScalingInstances", params)
+            headers = request.headers
+            body = self.call("StartAutoScalingInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StartAutoScalingInstancesResponse()
@@ -1444,7 +1490,8 @@ class AutoscalingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("StopAutoScalingInstances", params)
+            headers = request.headers
+            body = self.call("StopAutoScalingInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StopAutoScalingInstancesResponse()
@@ -1475,7 +1522,8 @@ class AutoscalingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpgradeLaunchConfiguration", params)
+            headers = request.headers
+            body = self.call("UpgradeLaunchConfiguration", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpgradeLaunchConfigurationResponse()
@@ -1505,7 +1553,8 @@ class AutoscalingClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpgradeLifecycleHook", params)
+            headers = request.headers
+            body = self.call("UpgradeLifecycleHook", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpgradeLifecycleHookResponse()

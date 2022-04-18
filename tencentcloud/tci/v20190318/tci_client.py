@@ -36,7 +36,8 @@ class TciClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AIAssistant", params)
+            headers = request.headers
+            body = self.call("AIAssistant", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AIAssistantResponse()
@@ -64,7 +65,8 @@ class TciClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CancelTask", params)
+            headers = request.headers
+            body = self.call("CancelTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CancelTaskResponse()
@@ -92,7 +94,8 @@ class TciClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CheckFacePhoto", params)
+            headers = request.headers
+            body = self.call("CheckFacePhoto", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CheckFacePhotoResponse()
@@ -120,7 +123,8 @@ class TciClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateFace", params)
+            headers = request.headers
+            body = self.call("CreateFace", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateFaceResponse()
@@ -148,7 +152,8 @@ class TciClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateLibrary", params)
+            headers = request.headers
+            body = self.call("CreateLibrary", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateLibraryResponse()
@@ -176,7 +181,8 @@ class TciClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreatePerson", params)
+            headers = request.headers
+            body = self.call("CreatePerson", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreatePersonResponse()
@@ -204,7 +210,8 @@ class TciClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateVocab", params)
+            headers = request.headers
+            body = self.call("CreateVocab", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateVocabResponse()
@@ -232,7 +239,8 @@ class TciClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateVocabLib", params)
+            headers = request.headers
+            body = self.call("CreateVocabLib", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateVocabLibResponse()
@@ -260,7 +268,8 @@ class TciClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteFace", params)
+            headers = request.headers
+            body = self.call("DeleteFace", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteFaceResponse()
@@ -288,7 +297,8 @@ class TciClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteLibrary", params)
+            headers = request.headers
+            body = self.call("DeleteLibrary", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteLibraryResponse()
@@ -316,7 +326,8 @@ class TciClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeletePerson", params)
+            headers = request.headers
+            body = self.call("DeletePerson", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeletePersonResponse()
@@ -344,7 +355,8 @@ class TciClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteVocab", params)
+            headers = request.headers
+            body = self.call("DeleteVocab", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteVocabResponse()
@@ -372,7 +384,8 @@ class TciClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteVocabLib", params)
+            headers = request.headers
+            body = self.call("DeleteVocabLib", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteVocabLibResponse()
@@ -400,7 +413,8 @@ class TciClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAITaskResult", params)
+            headers = request.headers
+            body = self.call("DescribeAITaskResult", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAITaskResultResponse()
@@ -428,7 +442,8 @@ class TciClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAttendanceResult", params)
+            headers = request.headers
+            body = self.call("DescribeAttendanceResult", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAttendanceResultResponse()
@@ -456,7 +471,8 @@ class TciClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAudioTask", params)
+            headers = request.headers
+            body = self.call("DescribeAudioTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAudioTaskResponse()
@@ -484,7 +500,8 @@ class TciClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeConversationTask", params)
+            headers = request.headers
+            body = self.call("DescribeConversationTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeConversationTaskResponse()
@@ -512,7 +529,8 @@ class TciClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeHighlightResult", params)
+            headers = request.headers
+            body = self.call("DescribeHighlightResult", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeHighlightResultResponse()
@@ -540,7 +558,8 @@ class TciClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeImageTask", params)
+            headers = request.headers
+            body = self.call("DescribeImageTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeImageTaskResponse()
@@ -568,7 +587,8 @@ class TciClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeImageTaskStatistic", params)
+            headers = request.headers
+            body = self.call("DescribeImageTaskStatistic", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeImageTaskStatisticResponse()
@@ -596,7 +616,8 @@ class TciClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeLibraries", params)
+            headers = request.headers
+            body = self.call("DescribeLibraries", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLibrariesResponse()
@@ -624,7 +645,8 @@ class TciClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePerson", params)
+            headers = request.headers
+            body = self.call("DescribePerson", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePersonResponse()
@@ -652,7 +674,8 @@ class TciClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePersons", params)
+            headers = request.headers
+            body = self.call("DescribePersons", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePersonsResponse()
@@ -680,7 +703,8 @@ class TciClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeVocab", params)
+            headers = request.headers
+            body = self.call("DescribeVocab", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeVocabResponse()
@@ -708,7 +732,8 @@ class TciClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeVocabLib", params)
+            headers = request.headers
+            body = self.call("DescribeVocabLib", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeVocabLibResponse()
@@ -736,7 +761,8 @@ class TciClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyLibrary", params)
+            headers = request.headers
+            body = self.call("ModifyLibrary", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyLibraryResponse()
@@ -764,7 +790,8 @@ class TciClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyPerson", params)
+            headers = request.headers
+            body = self.call("ModifyPerson", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyPersonResponse()
@@ -792,7 +819,8 @@ class TciClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SubmitAudioTask", params)
+            headers = request.headers
+            body = self.call("SubmitAudioTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SubmitAudioTaskResponse()
@@ -833,7 +861,8 @@ class TciClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SubmitCheckAttendanceTask", params)
+            headers = request.headers
+            body = self.call("SubmitCheckAttendanceTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SubmitCheckAttendanceTaskResponse()
@@ -861,7 +890,8 @@ class TciClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SubmitCheckAttendanceTaskPlus", params)
+            headers = request.headers
+            body = self.call("SubmitCheckAttendanceTaskPlus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SubmitCheckAttendanceTaskPlusResponse()
@@ -889,7 +919,8 @@ class TciClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SubmitConversationTask", params)
+            headers = request.headers
+            body = self.call("SubmitConversationTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SubmitConversationTaskResponse()
@@ -918,7 +949,8 @@ class TciClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SubmitDoubleVideoHighlights", params)
+            headers = request.headers
+            body = self.call("SubmitDoubleVideoHighlights", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SubmitDoubleVideoHighlightsResponse()
@@ -952,7 +984,8 @@ class TciClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SubmitFullBodyClassTask", params)
+            headers = request.headers
+            body = self.call("SubmitFullBodyClassTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SubmitFullBodyClassTaskResponse()
@@ -980,7 +1013,8 @@ class TciClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SubmitHighlights", params)
+            headers = request.headers
+            body = self.call("SubmitHighlights", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SubmitHighlightsResponse()
@@ -1008,7 +1042,8 @@ class TciClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SubmitImageTask", params)
+            headers = request.headers
+            body = self.call("SubmitImageTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SubmitImageTaskResponse()
@@ -1036,7 +1071,8 @@ class TciClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SubmitImageTaskPlus", params)
+            headers = request.headers
+            body = self.call("SubmitImageTaskPlus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SubmitImageTaskPlusResponse()
@@ -1071,7 +1107,8 @@ class TciClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SubmitOneByOneClassTask", params)
+            headers = request.headers
+            body = self.call("SubmitOneByOneClassTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SubmitOneByOneClassTaskResponse()
@@ -1106,7 +1143,8 @@ class TciClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SubmitOpenClassTask", params)
+            headers = request.headers
+            body = self.call("SubmitOpenClassTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SubmitOpenClassTaskResponse()
@@ -1140,7 +1178,8 @@ class TciClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SubmitPartialBodyClassTask", params)
+            headers = request.headers
+            body = self.call("SubmitPartialBodyClassTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SubmitPartialBodyClassTaskResponse()
@@ -1176,7 +1215,8 @@ class TciClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SubmitTraditionalClassTask", params)
+            headers = request.headers
+            body = self.call("SubmitTraditionalClassTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SubmitTraditionalClassTaskResponse()
@@ -1204,7 +1244,8 @@ class TciClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("TransmitAudioStream", params)
+            headers = request.headers
+            body = self.call("TransmitAudioStream", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.TransmitAudioStreamResponse()

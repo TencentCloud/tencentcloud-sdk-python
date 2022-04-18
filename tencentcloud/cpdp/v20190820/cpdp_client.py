@@ -36,7 +36,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AddContract", params)
+            headers = request.headers
+            body = self.call("AddContract", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AddContractResponse()
@@ -64,7 +65,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AddMerchant", params)
+            headers = request.headers
+            body = self.call("AddMerchant", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AddMerchantResponse()
@@ -92,7 +94,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AddShop", params)
+            headers = request.headers
+            body = self.call("AddShop", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AddShopResponse()
@@ -120,7 +123,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ApplyApplicationMaterial", params)
+            headers = request.headers
+            body = self.call("ApplyApplicationMaterial", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ApplyApplicationMaterialResponse()
@@ -148,7 +152,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ApplyOutwardOrder", params)
+            headers = request.headers
+            body = self.call("ApplyOutwardOrder", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ApplyOutwardOrderResponse()
@@ -176,7 +181,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ApplyPayerInfo", params)
+            headers = request.headers
+            body = self.call("ApplyPayerInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ApplyPayerInfoResponse()
@@ -204,7 +210,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ApplyReWithdrawal", params)
+            headers = request.headers
+            body = self.call("ApplyReWithdrawal", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ApplyReWithdrawalResponse()
@@ -232,7 +239,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ApplyReconciliationFile", params)
+            headers = request.headers
+            body = self.call("ApplyReconciliationFile", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ApplyReconciliationFileResponse()
@@ -260,7 +268,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ApplyTrade", params)
+            headers = request.headers
+            body = self.call("ApplyTrade", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ApplyTradeResponse()
@@ -288,7 +297,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ApplyWithdrawal", params)
+            headers = request.headers
+            body = self.call("ApplyWithdrawal", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ApplyWithdrawalResponse()
@@ -316,7 +326,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("BindAccount", params)
+            headers = request.headers
+            body = self.call("BindAccount", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.BindAccountResponse()
@@ -344,7 +355,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("BindAcct", params)
+            headers = request.headers
+            body = self.call("BindAcct", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.BindAcctResponse()
@@ -372,7 +384,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("BindOpenBankExternalSubMerchantBankAccount", params)
+            headers = request.headers
+            body = self.call("BindOpenBankExternalSubMerchantBankAccount", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.BindOpenBankExternalSubMerchantBankAccountResponse()
@@ -400,7 +413,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("BindRelateAccReUnionPay", params)
+            headers = request.headers
+            body = self.call("BindRelateAccReUnionPay", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.BindRelateAccReUnionPayResponse()
@@ -431,7 +445,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("BindRelateAcctSmallAmount", params)
+            headers = request.headers
+            body = self.call("BindRelateAcctSmallAmount", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.BindRelateAcctSmallAmountResponse()
@@ -463,7 +478,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("BindRelateAcctUnionPay", params)
+            headers = request.headers
+            body = self.call("BindRelateAcctUnionPay", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.BindRelateAcctUnionPayResponse()
@@ -491,7 +507,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CheckAcct", params)
+            headers = request.headers
+            body = self.call("CheckAcct", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CheckAcctResponse()
@@ -519,7 +536,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CheckAmount", params)
+            headers = request.headers
+            body = self.call("CheckAmount", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CheckAmountResponse()
@@ -547,7 +565,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CloseCloudOrder", params)
+            headers = request.headers
+            body = self.call("CloseCloudOrder", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CloseCloudOrderResponse()
@@ -575,7 +594,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CloseOpenBankPaymentOrder", params)
+            headers = request.headers
+            body = self.call("CloseOpenBankPaymentOrder", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CloseOpenBankPaymentOrderResponse()
@@ -603,7 +623,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CloseOrder", params)
+            headers = request.headers
+            body = self.call("CloseOrder", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CloseOrderResponse()
@@ -631,7 +652,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ConfirmOrder", params)
+            headers = request.headers
+            body = self.call("ConfirmOrder", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ConfirmOrderResponse()
@@ -659,7 +681,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ContractOrder", params)
+            headers = request.headers
+            body = self.call("ContractOrder", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ContractOrderResponse()
@@ -687,7 +710,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateAcct", params)
+            headers = request.headers
+            body = self.call("CreateAcct", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateAcctResponse()
@@ -715,7 +739,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateAgentTaxPaymentInfos", params)
+            headers = request.headers
+            body = self.call("CreateAgentTaxPaymentInfos", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateAgentTaxPaymentInfosResponse()
@@ -743,7 +768,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateAnchor", params)
+            headers = request.headers
+            body = self.call("CreateAnchor", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateAnchorResponse()
@@ -771,7 +797,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateBatchPayment", params)
+            headers = request.headers
+            body = self.call("CreateBatchPayment", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateBatchPaymentResponse()
@@ -799,7 +826,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateCloudSubMerchant", params)
+            headers = request.headers
+            body = self.call("CreateCloudSubMerchant", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateCloudSubMerchantResponse()
@@ -828,7 +856,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateCustAcctId", params)
+            headers = request.headers
+            body = self.call("CreateCustAcctId", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateCustAcctIdResponse()
@@ -856,7 +885,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateExternalAnchor", params)
+            headers = request.headers
+            body = self.call("CreateExternalAnchor", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateExternalAnchorResponse()
@@ -884,7 +914,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateInvoice", params)
+            headers = request.headers
+            body = self.call("CreateInvoice", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateInvoiceResponse()
@@ -912,7 +943,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateInvoiceV2", params)
+            headers = request.headers
+            body = self.call("CreateInvoiceV2", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateInvoiceV2Response()
@@ -940,7 +972,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateMerchant", params)
+            headers = request.headers
+            body = self.call("CreateMerchant", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateMerchantResponse()
@@ -968,7 +1001,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateOpenBankExternalSubMerchantRegistration", params)
+            headers = request.headers
+            body = self.call("CreateOpenBankExternalSubMerchantRegistration", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateOpenBankExternalSubMerchantRegistrationResponse()
@@ -996,7 +1030,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateOpenBankMerchant", params)
+            headers = request.headers
+            body = self.call("CreateOpenBankMerchant", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateOpenBankMerchantResponse()
@@ -1024,7 +1059,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateOpenBankPaymentOrder", params)
+            headers = request.headers
+            body = self.call("CreateOpenBankPaymentOrder", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateOpenBankPaymentOrderResponse()
@@ -1052,7 +1088,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateOrder", params)
+            headers = request.headers
+            body = self.call("CreateOrder", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateOrderResponse()
@@ -1080,7 +1117,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreatePayMerchant", params)
+            headers = request.headers
+            body = self.call("CreatePayMerchant", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreatePayMerchantResponse()
@@ -1108,7 +1146,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateRedInvoice", params)
+            headers = request.headers
+            body = self.call("CreateRedInvoice", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateRedInvoiceResponse()
@@ -1136,7 +1175,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateRedInvoiceV2", params)
+            headers = request.headers
+            body = self.call("CreateRedInvoiceV2", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateRedInvoiceV2Response()
@@ -1164,7 +1204,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateSinglePay", params)
+            headers = request.headers
+            body = self.call("CreateSinglePay", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateSinglePayResponse()
@@ -1192,7 +1233,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateSinglePayment", params)
+            headers = request.headers
+            body = self.call("CreateSinglePayment", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateSinglePaymentResponse()
@@ -1220,7 +1262,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateTransferBatch", params)
+            headers = request.headers
+            body = self.call("CreateTransferBatch", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateTransferBatchResponse()
@@ -1248,7 +1291,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeduceQuota", params)
+            headers = request.headers
+            body = self.call("DeduceQuota", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeduceQuotaResponse()
@@ -1276,7 +1320,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteAgentTaxPaymentInfo", params)
+            headers = request.headers
+            body = self.call("DeleteAgentTaxPaymentInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteAgentTaxPaymentInfoResponse()
@@ -1304,7 +1349,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteAgentTaxPaymentInfos", params)
+            headers = request.headers
+            body = self.call("DeleteAgentTaxPaymentInfos", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteAgentTaxPaymentInfosResponse()
@@ -1332,7 +1378,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeChargeDetail", params)
+            headers = request.headers
+            body = self.call("DescribeChargeDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeChargeDetailResponse()
@@ -1360,7 +1407,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeOrderStatus", params)
+            headers = request.headers
+            body = self.call("DescribeOrderStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeOrderStatusResponse()
@@ -1388,7 +1436,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DistributeAccreditQuery", params)
+            headers = request.headers
+            body = self.call("DistributeAccreditQuery", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DistributeAccreditQueryResponse()
@@ -1416,7 +1465,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DistributeAccreditTlinx", params)
+            headers = request.headers
+            body = self.call("DistributeAccreditTlinx", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DistributeAccreditTlinxResponse()
@@ -1444,7 +1494,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DistributeAddReceiver", params)
+            headers = request.headers
+            body = self.call("DistributeAddReceiver", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DistributeAddReceiverResponse()
@@ -1472,7 +1523,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DistributeApply", params)
+            headers = request.headers
+            body = self.call("DistributeApply", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DistributeApplyResponse()
@@ -1500,7 +1552,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DistributeCancel", params)
+            headers = request.headers
+            body = self.call("DistributeCancel", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DistributeCancelResponse()
@@ -1528,7 +1581,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DistributeQuery", params)
+            headers = request.headers
+            body = self.call("DistributeQuery", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DistributeQueryResponse()
@@ -1556,7 +1610,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DistributeQueryReceiver", params)
+            headers = request.headers
+            body = self.call("DistributeQueryReceiver", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DistributeQueryReceiverResponse()
@@ -1584,7 +1639,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DistributeRemoveReceiver", params)
+            headers = request.headers
+            body = self.call("DistributeRemoveReceiver", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DistributeRemoveReceiverResponse()
@@ -1612,7 +1668,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DownloadBill", params)
+            headers = request.headers
+            body = self.call("DownloadBill", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DownloadBillResponse()
@@ -1640,7 +1697,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DownloadOrgFile", params)
+            headers = request.headers
+            body = self.call("DownloadOrgFile", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DownloadOrgFileResponse()
@@ -1668,7 +1726,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DownloadReconciliationUrl", params)
+            headers = request.headers
+            body = self.call("DownloadReconciliationUrl", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DownloadReconciliationUrlResponse()
@@ -1696,7 +1755,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ExecuteMemberTransaction", params)
+            headers = request.headers
+            body = self.call("ExecuteMemberTransaction", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ExecuteMemberTransactionResponse()
@@ -1725,7 +1785,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetBillDownloadUrl", params)
+            headers = request.headers
+            body = self.call("GetBillDownloadUrl", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetBillDownloadUrlResponse()
@@ -1753,7 +1814,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("MigrateOrderRefund", params)
+            headers = request.headers
+            body = self.call("MigrateOrderRefund", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.MigrateOrderRefundResponse()
@@ -1781,7 +1843,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("MigrateOrderRefundQuery", params)
+            headers = request.headers
+            body = self.call("MigrateOrderRefundQuery", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.MigrateOrderRefundQueryResponse()
@@ -1809,7 +1872,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyAgentTaxPaymentInfo", params)
+            headers = request.headers
+            body = self.call("ModifyAgentTaxPaymentInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAgentTaxPaymentInfoResponse()
@@ -1837,7 +1901,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyBindedAccount", params)
+            headers = request.headers
+            body = self.call("ModifyBindedAccount", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyBindedAccountResponse()
@@ -1865,7 +1930,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyMerchant", params)
+            headers = request.headers
+            body = self.call("ModifyMerchant", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyMerchantResponse()
@@ -1893,7 +1959,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyMntMbrBindRelateAcctBankCode", params)
+            headers = request.headers
+            body = self.call("ModifyMntMbrBindRelateAcctBankCode", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyMntMbrBindRelateAcctBankCodeResponse()
@@ -1921,7 +1988,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryAcctBinding", params)
+            headers = request.headers
+            body = self.call("QueryAcctBinding", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryAcctBindingResponse()
@@ -1949,7 +2017,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryAcctInfo", params)
+            headers = request.headers
+            body = self.call("QueryAcctInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryAcctInfoResponse()
@@ -1977,7 +2046,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryAcctInfoList", params)
+            headers = request.headers
+            body = self.call("QueryAcctInfoList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryAcctInfoListResponse()
@@ -2005,7 +2075,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryAgentStatements", params)
+            headers = request.headers
+            body = self.call("QueryAgentStatements", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryAgentStatementsResponse()
@@ -2033,7 +2104,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryAgentTaxPaymentBatch", params)
+            headers = request.headers
+            body = self.call("QueryAgentTaxPaymentBatch", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryAgentTaxPaymentBatchResponse()
@@ -2061,7 +2133,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryAnchorContractInfo", params)
+            headers = request.headers
+            body = self.call("QueryAnchorContractInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryAnchorContractInfoResponse()
@@ -2089,7 +2162,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryApplicationMaterial", params)
+            headers = request.headers
+            body = self.call("QueryApplicationMaterial", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryApplicationMaterialResponse()
@@ -2117,7 +2191,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryAssignment", params)
+            headers = request.headers
+            body = self.call("QueryAssignment", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryAssignmentResponse()
@@ -2145,7 +2220,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryBalance", params)
+            headers = request.headers
+            body = self.call("QueryBalance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryBalanceResponse()
@@ -2173,7 +2249,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryBankClear", params)
+            headers = request.headers
+            body = self.call("QueryBankClear", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryBankClearResponse()
@@ -2201,7 +2278,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryBankTransactionDetails", params)
+            headers = request.headers
+            body = self.call("QueryBankTransactionDetails", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryBankTransactionDetailsResponse()
@@ -2229,7 +2307,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryBankWithdrawCashDetails", params)
+            headers = request.headers
+            body = self.call("QueryBankWithdrawCashDetails", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryBankWithdrawCashDetailsResponse()
@@ -2257,7 +2336,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryBatchPaymentResult", params)
+            headers = request.headers
+            body = self.call("QueryBatchPaymentResult", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryBatchPaymentResultResponse()
@@ -2285,7 +2365,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryBillDownloadURL", params)
+            headers = request.headers
+            body = self.call("QueryBillDownloadURL", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryBillDownloadURLResponse()
@@ -2313,7 +2394,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryCityCode", params)
+            headers = request.headers
+            body = self.call("QueryCityCode", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryCityCodeResponse()
@@ -2341,7 +2423,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryCloudChannelData", params)
+            headers = request.headers
+            body = self.call("QueryCloudChannelData", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryCloudChannelDataResponse()
@@ -2369,7 +2452,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryCloudOrder", params)
+            headers = request.headers
+            body = self.call("QueryCloudOrder", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryCloudOrderResponse()
@@ -2397,7 +2481,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryCloudRefundOrder", params)
+            headers = request.headers
+            body = self.call("QueryCloudRefundOrder", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryCloudRefundOrderResponse()
@@ -2425,7 +2510,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryCommonTransferRecharge", params)
+            headers = request.headers
+            body = self.call("QueryCommonTransferRecharge", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryCommonTransferRechargeResponse()
@@ -2453,7 +2539,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryContract", params)
+            headers = request.headers
+            body = self.call("QueryContract", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryContractResponse()
@@ -2481,7 +2568,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryContractPayFee", params)
+            headers = request.headers
+            body = self.call("QueryContractPayFee", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryContractPayFeeResponse()
@@ -2509,7 +2597,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryContractPayWayList", params)
+            headers = request.headers
+            body = self.call("QueryContractPayWayList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryContractPayWayListResponse()
@@ -2537,7 +2626,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryContractRelateShop", params)
+            headers = request.headers
+            body = self.call("QueryContractRelateShop", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryContractRelateShopResponse()
@@ -2565,7 +2655,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryCustAcctIdBalance", params)
+            headers = request.headers
+            body = self.call("QueryCustAcctIdBalance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryCustAcctIdBalanceResponse()
@@ -2593,7 +2684,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryDownloadBillURL", params)
+            headers = request.headers
+            body = self.call("QueryDownloadBillURL", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryDownloadBillURLResponse()
@@ -2621,7 +2713,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryExceedingInfo", params)
+            headers = request.headers
+            body = self.call("QueryExceedingInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryExceedingInfoResponse()
@@ -2649,7 +2742,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryExchangeRate", params)
+            headers = request.headers
+            body = self.call("QueryExchangeRate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryExchangeRateResponse()
@@ -2677,7 +2771,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryFundsTransactionDetails", params)
+            headers = request.headers
+            body = self.call("QueryFundsTransactionDetails", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryFundsTransactionDetailsResponse()
@@ -2705,7 +2800,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryInvoice", params)
+            headers = request.headers
+            body = self.call("QueryInvoice", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryInvoiceResponse()
@@ -2733,7 +2829,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryInvoiceV2", params)
+            headers = request.headers
+            body = self.call("QueryInvoiceV2", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryInvoiceV2Response()
@@ -2761,7 +2858,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryMaliciousRegistration", params)
+            headers = request.headers
+            body = self.call("QueryMaliciousRegistration", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryMaliciousRegistrationResponse()
@@ -2790,7 +2888,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryMemberBind", params)
+            headers = request.headers
+            body = self.call("QueryMemberBind", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryMemberBindResponse()
@@ -2818,7 +2917,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryMemberTransaction", params)
+            headers = request.headers
+            body = self.call("QueryMemberTransaction", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryMemberTransactionResponse()
@@ -2846,7 +2946,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryMemberTransactionDetails", params)
+            headers = request.headers
+            body = self.call("QueryMemberTransactionDetails", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryMemberTransactionDetailsResponse()
@@ -2874,7 +2975,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryMerchant", params)
+            headers = request.headers
+            body = self.call("QueryMerchant", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryMerchantResponse()
@@ -2902,7 +3004,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryMerchantBalance", params)
+            headers = request.headers
+            body = self.call("QueryMerchantBalance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryMerchantBalanceResponse()
@@ -2930,7 +3033,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryMerchantClassification", params)
+            headers = request.headers
+            body = self.call("QueryMerchantClassification", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryMerchantClassificationResponse()
@@ -2958,7 +3062,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryMerchantInfoForManagement", params)
+            headers = request.headers
+            body = self.call("QueryMerchantInfoForManagement", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryMerchantInfoForManagementResponse()
@@ -2986,7 +3091,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryMerchantOrder", params)
+            headers = request.headers
+            body = self.call("QueryMerchantOrder", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryMerchantOrderResponse()
@@ -3014,7 +3120,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryMerchantPayWayList", params)
+            headers = request.headers
+            body = self.call("QueryMerchantPayWayList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryMerchantPayWayListResponse()
@@ -3042,7 +3149,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryOpenBankBankAccountBalance", params)
+            headers = request.headers
+            body = self.call("QueryOpenBankBankAccountBalance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryOpenBankBankAccountBalanceResponse()
@@ -3070,7 +3178,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryOpenBankBankBranchList", params)
+            headers = request.headers
+            body = self.call("QueryOpenBankBankBranchList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryOpenBankBankBranchListResponse()
@@ -3098,7 +3207,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryOpenBankBindExternalSubMerchantBankAccount", params)
+            headers = request.headers
+            body = self.call("QueryOpenBankBindExternalSubMerchantBankAccount", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryOpenBankBindExternalSubMerchantBankAccountResponse()
@@ -3126,7 +3236,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryOpenBankDailyReceiptDownloadUrl", params)
+            headers = request.headers
+            body = self.call("QueryOpenBankDailyReceiptDownloadUrl", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryOpenBankDailyReceiptDownloadUrlResponse()
@@ -3154,7 +3265,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryOpenBankDownLoadUrl", params)
+            headers = request.headers
+            body = self.call("QueryOpenBankDownLoadUrl", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryOpenBankDownLoadUrlResponse()
@@ -3182,7 +3294,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryOpenBankExternalSubMerchantBankAccount", params)
+            headers = request.headers
+            body = self.call("QueryOpenBankExternalSubMerchantBankAccount", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryOpenBankExternalSubMerchantBankAccountResponse()
@@ -3210,7 +3323,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryOpenBankExternalSubMerchantRegistration", params)
+            headers = request.headers
+            body = self.call("QueryOpenBankExternalSubMerchantRegistration", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryOpenBankExternalSubMerchantRegistrationResponse()
@@ -3238,7 +3352,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryOpenBankPaymentOrder", params)
+            headers = request.headers
+            body = self.call("QueryOpenBankPaymentOrder", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryOpenBankPaymentOrderResponse()
@@ -3266,7 +3381,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryOpenBankSupportBankList", params)
+            headers = request.headers
+            body = self.call("QueryOpenBankSupportBankList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryOpenBankSupportBankListResponse()
@@ -3294,7 +3410,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryOpenBankUnbindExternalSubMerchantBankAccount", params)
+            headers = request.headers
+            body = self.call("QueryOpenBankUnbindExternalSubMerchantBankAccount", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryOpenBankUnbindExternalSubMerchantBankAccountResponse()
@@ -3322,7 +3439,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryOrder", params)
+            headers = request.headers
+            body = self.call("QueryOrder", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryOrderResponse()
@@ -3350,7 +3468,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryOrderStatus", params)
+            headers = request.headers
+            body = self.call("QueryOrderStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryOrderStatusResponse()
@@ -3378,7 +3497,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryOutwardOrder", params)
+            headers = request.headers
+            body = self.call("QueryOutwardOrder", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryOutwardOrderResponse()
@@ -3406,7 +3526,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryPayerInfo", params)
+            headers = request.headers
+            body = self.call("QueryPayerInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryPayerInfoResponse()
@@ -3434,7 +3555,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryReconciliationDocument", params)
+            headers = request.headers
+            body = self.call("QueryReconciliationDocument", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryReconciliationDocumentResponse()
@@ -3462,7 +3584,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryReconciliationFileApplyInfo", params)
+            headers = request.headers
+            body = self.call("QueryReconciliationFileApplyInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryReconciliationFileApplyInfoResponse()
@@ -3490,7 +3613,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryRefund", params)
+            headers = request.headers
+            body = self.call("QueryRefund", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryRefundResponse()
@@ -3518,7 +3642,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryShopOpenId", params)
+            headers = request.headers
+            body = self.call("QueryShopOpenId", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryShopOpenIdResponse()
@@ -3546,7 +3671,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QuerySinglePay", params)
+            headers = request.headers
+            body = self.call("QuerySinglePay", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QuerySinglePayResponse()
@@ -3574,7 +3700,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QuerySinglePaymentResult", params)
+            headers = request.headers
+            body = self.call("QuerySinglePaymentResult", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QuerySinglePaymentResultResponse()
@@ -3602,7 +3729,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QuerySingleTransactionStatus", params)
+            headers = request.headers
+            body = self.call("QuerySingleTransactionStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QuerySingleTransactionStatusResponse()
@@ -3630,7 +3758,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QuerySmallAmountTransfer", params)
+            headers = request.headers
+            body = self.call("QuerySmallAmountTransfer", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QuerySmallAmountTransferResponse()
@@ -3658,7 +3787,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryTrade", params)
+            headers = request.headers
+            body = self.call("QueryTrade", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryTradeResponse()
@@ -3686,7 +3816,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryTransferBatch", params)
+            headers = request.headers
+            body = self.call("QueryTransferBatch", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryTransferBatchResponse()
@@ -3714,7 +3845,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryTransferDetail", params)
+            headers = request.headers
+            body = self.call("QueryTransferDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryTransferDetailResponse()
@@ -3742,7 +3874,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryTransferResult", params)
+            headers = request.headers
+            body = self.call("QueryTransferResult", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryTransferResultResponse()
@@ -3770,7 +3903,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RechargeByThirdPay", params)
+            headers = request.headers
+            body = self.call("RechargeByThirdPay", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RechargeByThirdPayResponse()
@@ -3798,7 +3932,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RechargeMemberThirdPay", params)
+            headers = request.headers
+            body = self.call("RechargeMemberThirdPay", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RechargeMemberThirdPayResponse()
@@ -3826,7 +3961,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("Refund", params)
+            headers = request.headers
+            body = self.call("Refund", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RefundResponse()
@@ -3854,7 +3990,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RefundCloudOrder", params)
+            headers = request.headers
+            body = self.call("RefundCloudOrder", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RefundCloudOrderResponse()
@@ -3882,7 +4019,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RefundMemberTransaction", params)
+            headers = request.headers
+            body = self.call("RefundMemberTransaction", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RefundMemberTransactionResponse()
@@ -3910,7 +4048,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RefundOrder", params)
+            headers = request.headers
+            body = self.call("RefundOrder", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RefundOrderResponse()
@@ -3938,7 +4077,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RefundTlinxOrder", params)
+            headers = request.headers
+            body = self.call("RefundTlinxOrder", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RefundTlinxOrderResponse()
@@ -3966,7 +4106,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RegisterBehavior", params)
+            headers = request.headers
+            body = self.call("RegisterBehavior", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RegisterBehaviorResponse()
@@ -3994,7 +4135,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RegisterBill", params)
+            headers = request.headers
+            body = self.call("RegisterBill", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RegisterBillResponse()
@@ -4022,7 +4164,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RegisterBillSupportWithdraw", params)
+            headers = request.headers
+            body = self.call("RegisterBillSupportWithdraw", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RegisterBillSupportWithdrawResponse()
@@ -4050,7 +4193,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RevResigterBillSupportWithdraw", params)
+            headers = request.headers
+            body = self.call("RevResigterBillSupportWithdraw", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RevResigterBillSupportWithdrawResponse()
@@ -4078,7 +4222,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ReviseMbrProperty", params)
+            headers = request.headers
+            body = self.call("ReviseMbrProperty", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ReviseMbrPropertyResponse()
@@ -4106,7 +4251,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RevokeMemberRechargeThirdPay", params)
+            headers = request.headers
+            body = self.call("RevokeMemberRechargeThirdPay", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RevokeMemberRechargeThirdPayResponse()
@@ -4134,7 +4280,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RevokeRechargeByThirdPay", params)
+            headers = request.headers
+            body = self.call("RevokeRechargeByThirdPay", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RevokeRechargeByThirdPayResponse()
@@ -4162,7 +4309,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SyncContractData", params)
+            headers = request.headers
+            body = self.call("SyncContractData", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SyncContractDataResponse()
@@ -4190,7 +4338,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("TerminateContract", params)
+            headers = request.headers
+            body = self.call("TerminateContract", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.TerminateContractResponse()
@@ -4218,7 +4367,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("TransferSinglePay", params)
+            headers = request.headers
+            body = self.call("TransferSinglePay", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.TransferSinglePayResponse()
@@ -4246,7 +4396,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UnBindAcct", params)
+            headers = request.headers
+            body = self.call("UnBindAcct", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UnBindAcctResponse()
@@ -4274,7 +4425,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UnbindOpenBankExternalSubMerchantBankAccount", params)
+            headers = request.headers
+            body = self.call("UnbindOpenBankExternalSubMerchantBankAccount", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UnbindOpenBankExternalSubMerchantBankAccountResponse()
@@ -4302,7 +4454,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UnbindRelateAcct", params)
+            headers = request.headers
+            body = self.call("UnbindRelateAcct", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UnbindRelateAcctResponse()
@@ -4330,7 +4483,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UnifiedCloudOrder", params)
+            headers = request.headers
+            body = self.call("UnifiedCloudOrder", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UnifiedCloudOrderResponse()
@@ -4358,7 +4512,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UnifiedOrder", params)
+            headers = request.headers
+            body = self.call("UnifiedOrder", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UnifiedOrderResponse()
@@ -4386,7 +4541,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UnifiedTlinxOrder", params)
+            headers = request.headers
+            body = self.call("UnifiedTlinxOrder", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UnifiedTlinxOrderResponse()
@@ -4414,7 +4570,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UploadExternalAnchorInfo", params)
+            headers = request.headers
+            body = self.call("UploadExternalAnchorInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UploadExternalAnchorInfoResponse()
@@ -4442,7 +4599,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UploadFile", params)
+            headers = request.headers
+            body = self.call("UploadFile", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UploadFileResponse()
@@ -4470,7 +4628,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UploadOrgFile", params)
+            headers = request.headers
+            body = self.call("UploadOrgFile", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UploadOrgFileResponse()
@@ -4498,7 +4657,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UploadTaxList", params)
+            headers = request.headers
+            body = self.call("UploadTaxList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UploadTaxListResponse()
@@ -4526,7 +4686,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UploadTaxPayment", params)
+            headers = request.headers
+            body = self.call("UploadTaxPayment", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UploadTaxPaymentResponse()
@@ -4554,7 +4715,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ViewContract", params)
+            headers = request.headers
+            body = self.call("ViewContract", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ViewContractResponse()
@@ -4582,7 +4744,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ViewMerchant", params)
+            headers = request.headers
+            body = self.call("ViewMerchant", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ViewMerchantResponse()
@@ -4610,7 +4773,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ViewShop", params)
+            headers = request.headers
+            body = self.call("ViewShop", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ViewShopResponse()
@@ -4638,7 +4802,8 @@ class CpdpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("WithdrawCashMembership", params)
+            headers = request.headers
+            body = self.call("WithdrawCashMembership", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.WithdrawCashMembershipResponse()

@@ -36,7 +36,8 @@ class NppClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateCallBack", params)
+            headers = request.headers
+            body = self.call("CreateCallBack", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateCallBackResponse()
@@ -64,7 +65,8 @@ class NppClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DelVirtualNum", params)
+            headers = request.headers
+            body = self.call("DelVirtualNum", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DelVirtualNumResponse()
@@ -92,7 +94,8 @@ class NppClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteCallBack", params)
+            headers = request.headers
+            body = self.call("DeleteCallBack", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteCallBackResponse()
@@ -120,7 +123,8 @@ class NppClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCallBackCdr", params)
+            headers = request.headers
+            body = self.call("DescribeCallBackCdr", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCallBackCdrResponse()
@@ -148,7 +152,8 @@ class NppClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCallBackStatus", params)
+            headers = request.headers
+            body = self.call("DescribeCallBackStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCallBackStatusResponse()
@@ -176,7 +181,8 @@ class NppClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCallerDisplayList", params)
+            headers = request.headers
+            body = self.call("DescribeCallerDisplayList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCallerDisplayListResponse()
@@ -204,7 +210,8 @@ class NppClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("Get400Cdr", params)
+            headers = request.headers
+            body = self.call("Get400Cdr", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.Get400CdrResponse()
@@ -232,7 +239,8 @@ class NppClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetVirtualNum", params)
+            headers = request.headers
+            body = self.call("GetVirtualNum", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetVirtualNumResponse()

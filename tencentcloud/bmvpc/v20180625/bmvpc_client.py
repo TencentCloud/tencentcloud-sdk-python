@@ -36,7 +36,8 @@ class BmvpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AcceptVpcPeerConnection", params)
+            headers = request.headers
+            body = self.call("AcceptVpcPeerConnection", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AcceptVpcPeerConnectionResponse()
@@ -64,7 +65,8 @@ class BmvpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AsyncRegisterIps", params)
+            headers = request.headers
+            body = self.call("AsyncRegisterIps", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AsyncRegisterIpsResponse()
@@ -92,7 +94,8 @@ class BmvpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("BindEipsToNatGateway", params)
+            headers = request.headers
+            body = self.call("BindEipsToNatGateway", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.BindEipsToNatGatewayResponse()
@@ -120,7 +123,8 @@ class BmvpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("BindIpsToNatGateway", params)
+            headers = request.headers
+            body = self.call("BindIpsToNatGateway", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.BindIpsToNatGatewayResponse()
@@ -148,7 +152,8 @@ class BmvpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("BindSubnetsToNatGateway", params)
+            headers = request.headers
+            body = self.call("BindSubnetsToNatGateway", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.BindSubnetsToNatGatewayResponse()
@@ -176,7 +181,8 @@ class BmvpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateCustomerGateway", params)
+            headers = request.headers
+            body = self.call("CreateCustomerGateway", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateCustomerGatewayResponse()
@@ -204,7 +210,8 @@ class BmvpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateDockerSubnetWithVlan", params)
+            headers = request.headers
+            body = self.call("CreateDockerSubnetWithVlan", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateDockerSubnetWithVlanResponse()
@@ -236,7 +243,8 @@ class BmvpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateHostedInterface", params)
+            headers = request.headers
+            body = self.call("CreateHostedInterface", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateHostedInterfaceResponse()
@@ -264,7 +272,8 @@ class BmvpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateInterfaces", params)
+            headers = request.headers
+            body = self.call("CreateInterfaces", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateInterfacesResponse()
@@ -292,7 +301,8 @@ class BmvpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateNatGateway", params)
+            headers = request.headers
+            body = self.call("CreateNatGateway", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateNatGatewayResponse()
@@ -320,7 +330,8 @@ class BmvpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateRoutePolicies", params)
+            headers = request.headers
+            body = self.call("CreateRoutePolicies", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateRoutePoliciesResponse()
@@ -349,7 +360,8 @@ class BmvpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateSubnet", params)
+            headers = request.headers
+            body = self.call("CreateSubnet", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateSubnetResponse()
@@ -377,7 +389,8 @@ class BmvpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateVirtualSubnetWithVlan", params)
+            headers = request.headers
+            body = self.call("CreateVirtualSubnetWithVlan", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateVirtualSubnetWithVlanResponse()
@@ -405,7 +418,8 @@ class BmvpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateVpc", params)
+            headers = request.headers
+            body = self.call("CreateVpc", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateVpcResponse()
@@ -433,7 +447,8 @@ class BmvpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateVpcPeerConnection", params)
+            headers = request.headers
+            body = self.call("CreateVpcPeerConnection", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateVpcPeerConnectionResponse()
@@ -461,7 +476,8 @@ class BmvpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteCustomerGateway", params)
+            headers = request.headers
+            body = self.call("DeleteCustomerGateway", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteCustomerGatewayResponse()
@@ -491,7 +507,8 @@ class BmvpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteHostedInterface", params)
+            headers = request.headers
+            body = self.call("DeleteHostedInterface", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteHostedInterfaceResponse()
@@ -519,7 +536,8 @@ class BmvpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteHostedInterfaces", params)
+            headers = request.headers
+            body = self.call("DeleteHostedInterfaces", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteHostedInterfacesResponse()
@@ -547,7 +565,8 @@ class BmvpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteInterfaces", params)
+            headers = request.headers
+            body = self.call("DeleteInterfaces", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteInterfacesResponse()
@@ -575,7 +594,8 @@ class BmvpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteNatGateway", params)
+            headers = request.headers
+            body = self.call("DeleteNatGateway", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteNatGatewayResponse()
@@ -603,7 +623,8 @@ class BmvpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteRoutePolicy", params)
+            headers = request.headers
+            body = self.call("DeleteRoutePolicy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteRoutePolicyResponse()
@@ -632,7 +653,8 @@ class BmvpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteSubnet", params)
+            headers = request.headers
+            body = self.call("DeleteSubnet", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteSubnetResponse()
@@ -660,7 +682,8 @@ class BmvpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteVirtualIp", params)
+            headers = request.headers
+            body = self.call("DeleteVirtualIp", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteVirtualIpResponse()
@@ -690,7 +713,8 @@ class BmvpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteVpc", params)
+            headers = request.headers
+            body = self.call("DeleteVpc", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteVpcResponse()
@@ -718,7 +742,8 @@ class BmvpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteVpcPeerConnection", params)
+            headers = request.headers
+            body = self.call("DeleteVpcPeerConnection", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteVpcPeerConnectionResponse()
@@ -746,7 +771,8 @@ class BmvpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteVpnConnection", params)
+            headers = request.headers
+            body = self.call("DeleteVpnConnection", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteVpnConnectionResponse()
@@ -774,7 +800,8 @@ class BmvpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteVpnGateway", params)
+            headers = request.headers
+            body = self.call("DeleteVpnGateway", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteVpnGatewayResponse()
@@ -802,7 +829,8 @@ class BmvpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeregisterIps", params)
+            headers = request.headers
+            body = self.call("DeregisterIps", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeregisterIpsResponse()
@@ -830,7 +858,8 @@ class BmvpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCustomerGateways", params)
+            headers = request.headers
+            body = self.call("DescribeCustomerGateways", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCustomerGatewaysResponse()
@@ -858,7 +887,8 @@ class BmvpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeNatGateways", params)
+            headers = request.headers
+            body = self.call("DescribeNatGateways", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeNatGatewaysResponse()
@@ -886,7 +916,8 @@ class BmvpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeNatSubnets", params)
+            headers = request.headers
+            body = self.call("DescribeNatSubnets", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeNatSubnetsResponse()
@@ -914,7 +945,8 @@ class BmvpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRoutePolicies", params)
+            headers = request.headers
+            body = self.call("DescribeRoutePolicies", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRoutePoliciesResponse()
@@ -942,7 +974,8 @@ class BmvpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRouteTables", params)
+            headers = request.headers
+            body = self.call("DescribeRouteTables", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRouteTablesResponse()
@@ -970,7 +1003,8 @@ class BmvpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSubnetAvailableIps", params)
+            headers = request.headers
+            body = self.call("DescribeSubnetAvailableIps", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSubnetAvailableIpsResponse()
@@ -998,7 +1032,8 @@ class BmvpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSubnetByDevice", params)
+            headers = request.headers
+            body = self.call("DescribeSubnetByDevice", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSubnetByDeviceResponse()
@@ -1026,7 +1061,8 @@ class BmvpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSubnetByHostedDevice", params)
+            headers = request.headers
+            body = self.call("DescribeSubnetByHostedDevice", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSubnetByHostedDeviceResponse()
@@ -1054,7 +1090,8 @@ class BmvpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSubnets", params)
+            headers = request.headers
+            body = self.call("DescribeSubnets", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSubnetsResponse()
@@ -1082,7 +1119,8 @@ class BmvpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTaskStatus", params)
+            headers = request.headers
+            body = self.call("DescribeTaskStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTaskStatusResponse()
@@ -1110,7 +1148,8 @@ class BmvpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeVpcPeerConnections", params)
+            headers = request.headers
+            body = self.call("DescribeVpcPeerConnections", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeVpcPeerConnectionsResponse()
@@ -1138,7 +1177,8 @@ class BmvpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeVpcQuota", params)
+            headers = request.headers
+            body = self.call("DescribeVpcQuota", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeVpcQuotaResponse()
@@ -1166,7 +1206,8 @@ class BmvpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeVpcResource", params)
+            headers = request.headers
+            body = self.call("DescribeVpcResource", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeVpcResourceResponse()
@@ -1194,7 +1235,8 @@ class BmvpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeVpcView", params)
+            headers = request.headers
+            body = self.call("DescribeVpcView", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeVpcViewResponse()
@@ -1223,7 +1265,8 @@ class BmvpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeVpcs", params)
+            headers = request.headers
+            body = self.call("DescribeVpcs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeVpcsResponse()
@@ -1251,7 +1294,8 @@ class BmvpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeVpnConnections", params)
+            headers = request.headers
+            body = self.call("DescribeVpnConnections", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeVpnConnectionsResponse()
@@ -1279,7 +1323,8 @@ class BmvpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeVpnGateways", params)
+            headers = request.headers
+            body = self.call("DescribeVpnGateways", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeVpnGatewaysResponse()
@@ -1307,7 +1352,8 @@ class BmvpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DownloadCustomerGatewayConfiguration", params)
+            headers = request.headers
+            body = self.call("DownloadCustomerGatewayConfiguration", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DownloadCustomerGatewayConfigurationResponse()
@@ -1335,7 +1381,8 @@ class BmvpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyCustomerGatewayAttribute", params)
+            headers = request.headers
+            body = self.call("ModifyCustomerGatewayAttribute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyCustomerGatewayAttributeResponse()
@@ -1363,7 +1410,8 @@ class BmvpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyRoutePolicy", params)
+            headers = request.headers
+            body = self.call("ModifyRoutePolicy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyRoutePolicyResponse()
@@ -1391,7 +1439,8 @@ class BmvpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyRouteTable", params)
+            headers = request.headers
+            body = self.call("ModifyRouteTable", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyRouteTableResponse()
@@ -1419,7 +1468,8 @@ class BmvpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifySubnetAttribute", params)
+            headers = request.headers
+            body = self.call("ModifySubnetAttribute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifySubnetAttributeResponse()
@@ -1447,7 +1497,8 @@ class BmvpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifySubnetDHCPRelay", params)
+            headers = request.headers
+            body = self.call("ModifySubnetDHCPRelay", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifySubnetDHCPRelayResponse()
@@ -1475,7 +1526,8 @@ class BmvpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyVpcAttribute", params)
+            headers = request.headers
+            body = self.call("ModifyVpcAttribute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyVpcAttributeResponse()
@@ -1503,7 +1555,8 @@ class BmvpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyVpcPeerConnection", params)
+            headers = request.headers
+            body = self.call("ModifyVpcPeerConnection", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyVpcPeerConnectionResponse()
@@ -1531,7 +1584,8 @@ class BmvpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyVpnConnectionAttribute", params)
+            headers = request.headers
+            body = self.call("ModifyVpnConnectionAttribute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyVpnConnectionAttributeResponse()
@@ -1559,7 +1613,8 @@ class BmvpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyVpnGatewayAttribute", params)
+            headers = request.headers
+            body = self.call("ModifyVpnGatewayAttribute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyVpnGatewayAttributeResponse()
@@ -1587,7 +1642,8 @@ class BmvpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RejectVpcPeerConnection", params)
+            headers = request.headers
+            body = self.call("RejectVpcPeerConnection", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RejectVpcPeerConnectionResponse()
@@ -1615,7 +1671,8 @@ class BmvpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ResetVpnConnection", params)
+            headers = request.headers
+            body = self.call("ResetVpnConnection", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ResetVpnConnectionResponse()
@@ -1643,7 +1700,8 @@ class BmvpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UnbindEipsFromNatGateway", params)
+            headers = request.headers
+            body = self.call("UnbindEipsFromNatGateway", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UnbindEipsFromNatGatewayResponse()
@@ -1671,7 +1729,8 @@ class BmvpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UnbindIpsFromNatGateway", params)
+            headers = request.headers
+            body = self.call("UnbindIpsFromNatGateway", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UnbindIpsFromNatGatewayResponse()
@@ -1699,7 +1758,8 @@ class BmvpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UnbindSubnetsFromNatGateway", params)
+            headers = request.headers
+            body = self.call("UnbindSubnetsFromNatGateway", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UnbindSubnetsFromNatGatewayResponse()
@@ -1727,7 +1787,8 @@ class BmvpcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpgradeNatGateway", params)
+            headers = request.headers
+            body = self.call("UpgradeNatGateway", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpgradeNatGatewayResponse()

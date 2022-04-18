@@ -36,7 +36,8 @@ class AdvisorClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeStrategies", params)
+            headers = request.headers
+            body = self.call("DescribeStrategies", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeStrategiesResponse()
@@ -64,7 +65,8 @@ class AdvisorClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTaskStrategyRisks", params)
+            headers = request.headers
+            body = self.call("DescribeTaskStrategyRisks", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTaskStrategyRisksResponse()

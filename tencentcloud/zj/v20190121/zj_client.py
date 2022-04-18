@@ -36,7 +36,8 @@ class ZjClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AddCrowdPackInfo", params)
+            headers = request.headers
+            body = self.call("AddCrowdPackInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AddCrowdPackInfoResponse()
@@ -64,7 +65,8 @@ class ZjClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AddSmsSign", params)
+            headers = request.headers
+            body = self.call("AddSmsSign", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AddSmsSignResponse()
@@ -92,7 +94,8 @@ class ZjClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AddSmsTemplate", params)
+            headers = request.headers
+            body = self.call("AddSmsTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AddSmsTemplateResponse()
@@ -120,7 +123,8 @@ class ZjClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CancelCampaign", params)
+            headers = request.headers
+            body = self.call("CancelCampaign", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CancelCampaignResponse()
@@ -148,7 +152,8 @@ class ZjClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateCampaign", params)
+            headers = request.headers
+            body = self.call("CreateCampaign", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateCampaignResponse()
@@ -176,7 +181,8 @@ class ZjClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateMmsInstance", params)
+            headers = request.headers
+            body = self.call("CreateMmsInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateMmsInstanceResponse()
@@ -204,7 +210,8 @@ class ZjClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DelCrowdPack", params)
+            headers = request.headers
+            body = self.call("DelCrowdPack", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DelCrowdPackResponse()
@@ -232,7 +239,8 @@ class ZjClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DelTemplate", params)
+            headers = request.headers
+            body = self.call("DelTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DelTemplateResponse()
@@ -260,7 +268,8 @@ class ZjClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteMmsInstance", params)
+            headers = request.headers
+            body = self.call("DeleteMmsInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteMmsInstanceResponse()
@@ -288,7 +297,8 @@ class ZjClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeMmsInstanceInfo", params)
+            headers = request.headers
+            body = self.call("DescribeMmsInstanceInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeMmsInstanceInfoResponse()
@@ -316,7 +326,8 @@ class ZjClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeMmsInstanceList", params)
+            headers = request.headers
+            body = self.call("DescribeMmsInstanceList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeMmsInstanceListResponse()
@@ -344,7 +355,8 @@ class ZjClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSmsCampaignStatistics", params)
+            headers = request.headers
+            body = self.call("DescribeSmsCampaignStatistics", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSmsCampaignStatisticsResponse()
@@ -372,7 +384,8 @@ class ZjClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSmsSignList", params)
+            headers = request.headers
+            body = self.call("DescribeSmsSignList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSmsSignListResponse()
@@ -400,7 +413,8 @@ class ZjClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSmsTemplateList", params)
+            headers = request.headers
+            body = self.call("DescribeSmsTemplateList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSmsTemplateListResponse()
@@ -428,7 +442,8 @@ class ZjClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetCrowdPackList", params)
+            headers = request.headers
+            body = self.call("GetCrowdPackList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetCrowdPackListResponse()
@@ -456,7 +471,8 @@ class ZjClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetCrowdUploadInfo", params)
+            headers = request.headers
+            body = self.call("GetCrowdUploadInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetCrowdUploadInfoResponse()
@@ -484,7 +500,8 @@ class ZjClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetSmsAmountInfo", params)
+            headers = request.headers
+            body = self.call("GetSmsAmountInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetSmsAmountInfoResponse()
@@ -512,7 +529,8 @@ class ZjClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetSmsCampaignStatus", params)
+            headers = request.headers
+            body = self.call("GetSmsCampaignStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetSmsCampaignStatusResponse()
@@ -540,7 +558,8 @@ class ZjClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifySmsTemplate", params)
+            headers = request.headers
+            body = self.call("ModifySmsTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifySmsTemplateResponse()
@@ -568,7 +587,8 @@ class ZjClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("PushMmsContent", params)
+            headers = request.headers
+            body = self.call("PushMmsContent", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.PushMmsContentResponse()
@@ -596,7 +616,8 @@ class ZjClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SendSms", params)
+            headers = request.headers
+            body = self.call("SendSms", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SendSmsResponse()

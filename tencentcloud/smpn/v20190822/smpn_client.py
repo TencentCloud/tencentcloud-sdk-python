@@ -36,7 +36,8 @@ class SmpnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateSmpnEpa", params)
+            headers = request.headers
+            body = self.call("CreateSmpnEpa", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateSmpnEpaResponse()
@@ -64,7 +65,8 @@ class SmpnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSmpnChp", params)
+            headers = request.headers
+            body = self.call("DescribeSmpnChp", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSmpnChpResponse()
@@ -92,7 +94,8 @@ class SmpnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSmpnFnr", params)
+            headers = request.headers
+            body = self.call("DescribeSmpnFnr", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSmpnFnrResponse()
@@ -120,7 +123,8 @@ class SmpnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSmpnMhm", params)
+            headers = request.headers
+            body = self.call("DescribeSmpnMhm", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSmpnMhmResponse()
@@ -148,7 +152,8 @@ class SmpnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSmpnMrl", params)
+            headers = request.headers
+            body = self.call("DescribeSmpnMrl", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSmpnMrlResponse()

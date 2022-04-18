@@ -36,7 +36,8 @@ class AmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CancelTask", params)
+            headers = request.headers
+            body = self.call("CancelTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CancelTaskResponse()
@@ -87,7 +88,8 @@ class AmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateAudioModerationTask", params)
+            headers = request.headers
+            body = self.call("CreateAudioModerationTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateAudioModerationTaskResponse()
@@ -119,7 +121,8 @@ class AmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateBizConfig", params)
+            headers = request.headers
+            body = self.call("CreateBizConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateBizConfigResponse()
@@ -147,7 +150,8 @@ class AmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAmsList", params)
+            headers = request.headers
+            body = self.call("DescribeAmsList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAmsListResponse()
@@ -175,7 +179,8 @@ class AmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAudioStat", params)
+            headers = request.headers
+            body = self.call("DescribeAudioStat", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAudioStatResponse()
@@ -203,7 +208,8 @@ class AmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBizConfig", params)
+            headers = request.headers
+            body = self.call("DescribeBizConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBizConfigResponse()
@@ -231,7 +237,8 @@ class AmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTaskDetail", params)
+            headers = request.headers
+            body = self.call("DescribeTaskDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTaskDetailResponse()

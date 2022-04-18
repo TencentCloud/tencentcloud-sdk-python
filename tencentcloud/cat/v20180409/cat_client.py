@@ -36,7 +36,8 @@ class CatClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("BindAlarmPolicy", params)
+            headers = request.headers
+            body = self.call("BindAlarmPolicy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.BindAlarmPolicyResponse()
@@ -64,7 +65,8 @@ class CatClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateAgentGroup", params)
+            headers = request.headers
+            body = self.call("CreateAgentGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateAgentGroupResponse()
@@ -92,7 +94,8 @@ class CatClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateProbeTasks", params)
+            headers = request.headers
+            body = self.call("CreateProbeTasks", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateProbeTasksResponse()
@@ -120,7 +123,8 @@ class CatClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateTaskEx", params)
+            headers = request.headers
+            body = self.call("CreateTaskEx", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateTaskExResponse()
@@ -148,7 +152,8 @@ class CatClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteAgentGroup", params)
+            headers = request.headers
+            body = self.call("DeleteAgentGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteAgentGroupResponse()
@@ -176,7 +181,8 @@ class CatClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteProbeTask", params)
+            headers = request.headers
+            body = self.call("DeleteProbeTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteProbeTaskResponse()
@@ -204,7 +210,8 @@ class CatClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteTasks", params)
+            headers = request.headers
+            body = self.call("DeleteTasks", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteTasksResponse()
@@ -232,7 +239,8 @@ class CatClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAgentGroups", params)
+            headers = request.headers
+            body = self.call("DescribeAgentGroups", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAgentGroupsResponse()
@@ -260,7 +268,8 @@ class CatClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAgents", params)
+            headers = request.headers
+            body = self.call("DescribeAgents", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAgentsResponse()
@@ -288,7 +297,8 @@ class CatClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAlarmTopic", params)
+            headers = request.headers
+            body = self.call("DescribeAlarmTopic", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAlarmTopicResponse()
@@ -316,7 +326,8 @@ class CatClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAlarms", params)
+            headers = request.headers
+            body = self.call("DescribeAlarms", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAlarmsResponse()
@@ -344,7 +355,8 @@ class CatClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAlarmsByTask", params)
+            headers = request.headers
+            body = self.call("DescribeAlarmsByTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAlarmsByTaskResponse()
@@ -372,7 +384,8 @@ class CatClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCatLogs", params)
+            headers = request.headers
+            body = self.call("DescribeCatLogs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCatLogsResponse()
@@ -400,7 +413,8 @@ class CatClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDetailedSingleProbeData", params)
+            headers = request.headers
+            body = self.call("DescribeDetailedSingleProbeData", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDetailedSingleProbeDataResponse()
@@ -428,7 +442,8 @@ class CatClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeProbeMetricData", params)
+            headers = request.headers
+            body = self.call("DescribeProbeMetricData", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeProbeMetricDataResponse()
@@ -456,7 +471,8 @@ class CatClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeProbeNodes", params)
+            headers = request.headers
+            body = self.call("DescribeProbeNodes", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeProbeNodesResponse()
@@ -484,7 +500,8 @@ class CatClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeProbeTasks", params)
+            headers = request.headers
+            body = self.call("DescribeProbeTasks", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeProbeTasksResponse()
@@ -512,7 +529,8 @@ class CatClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTaskDetail", params)
+            headers = request.headers
+            body = self.call("DescribeTaskDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTaskDetailResponse()
@@ -540,7 +558,8 @@ class CatClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTasksByType", params)
+            headers = request.headers
+            body = self.call("DescribeTasksByType", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTasksByTypeResponse()
@@ -568,7 +587,8 @@ class CatClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeUserLimit", params)
+            headers = request.headers
+            body = self.call("DescribeUserLimit", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeUserLimitResponse()
@@ -596,7 +616,8 @@ class CatClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetAvailRatioHistory", params)
+            headers = request.headers
+            body = self.call("GetAvailRatioHistory", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetAvailRatioHistoryResponse()
@@ -624,7 +645,8 @@ class CatClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetDailyAvailRatio", params)
+            headers = request.headers
+            body = self.call("GetDailyAvailRatio", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetDailyAvailRatioResponse()
@@ -652,7 +674,8 @@ class CatClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetRealAvailRatio", params)
+            headers = request.headers
+            body = self.call("GetRealAvailRatio", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetRealAvailRatioResponse()
@@ -680,7 +703,8 @@ class CatClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetRespTimeTrendEx", params)
+            headers = request.headers
+            body = self.call("GetRespTimeTrendEx", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetRespTimeTrendExResponse()
@@ -708,7 +732,8 @@ class CatClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetResultSummary", params)
+            headers = request.headers
+            body = self.call("GetResultSummary", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetResultSummaryResponse()
@@ -736,7 +761,8 @@ class CatClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetReturnCodeHistory", params)
+            headers = request.headers
+            body = self.call("GetReturnCodeHistory", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetReturnCodeHistoryResponse()
@@ -764,7 +790,8 @@ class CatClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetReturnCodeInfo", params)
+            headers = request.headers
+            body = self.call("GetReturnCodeInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetReturnCodeInfoResponse()
@@ -792,7 +819,8 @@ class CatClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetTaskTotalNumber", params)
+            headers = request.headers
+            body = self.call("GetTaskTotalNumber", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetTaskTotalNumberResponse()
@@ -820,7 +848,8 @@ class CatClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyAgentGroup", params)
+            headers = request.headers
+            body = self.call("ModifyAgentGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAgentGroupResponse()
@@ -848,7 +877,8 @@ class CatClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyTaskEx", params)
+            headers = request.headers
+            body = self.call("ModifyTaskEx", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyTaskExResponse()
@@ -876,7 +906,8 @@ class CatClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("PauseTask", params)
+            headers = request.headers
+            body = self.call("PauseTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.PauseTaskResponse()
@@ -904,7 +935,8 @@ class CatClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ResumeProbeTask", params)
+            headers = request.headers
+            body = self.call("ResumeProbeTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ResumeProbeTaskResponse()
@@ -932,7 +964,8 @@ class CatClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RunTask", params)
+            headers = request.headers
+            body = self.call("RunTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RunTaskResponse()
@@ -960,7 +993,8 @@ class CatClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SuspendProbeTask", params)
+            headers = request.headers
+            body = self.call("SuspendProbeTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SuspendProbeTaskResponse()
@@ -988,7 +1022,8 @@ class CatClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateProbeTaskConfigurationList", params)
+            headers = request.headers
+            body = self.call("UpdateProbeTaskConfigurationList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateProbeTaskConfigurationListResponse()
@@ -1016,7 +1051,8 @@ class CatClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("VerifyResult", params)
+            headers = request.headers
+            body = self.call("VerifyResult", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.VerifyResultResponse()

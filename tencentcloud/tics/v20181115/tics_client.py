@@ -36,7 +36,8 @@ class TicsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDomainInfo", params)
+            headers = request.headers
+            body = self.call("DescribeDomainInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDomainInfoResponse()
@@ -64,7 +65,8 @@ class TicsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeFileInfo", params)
+            headers = request.headers
+            body = self.call("DescribeFileInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeFileInfoResponse()
@@ -92,7 +94,8 @@ class TicsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeIpInfo", params)
+            headers = request.headers
+            body = self.call("DescribeIpInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeIpInfoResponse()
@@ -120,7 +123,8 @@ class TicsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeThreatInfo", params)
+            headers = request.headers
+            body = self.call("DescribeThreatInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeThreatInfoResponse()

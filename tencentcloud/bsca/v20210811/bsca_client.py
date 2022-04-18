@@ -36,7 +36,8 @@ class BscaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeKBComponent", params)
+            headers = request.headers
+            body = self.call("DescribeKBComponent", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeKBComponentResponse()
@@ -64,7 +65,8 @@ class BscaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeKBComponentVulnerability", params)
+            headers = request.headers
+            body = self.call("DescribeKBComponentVulnerability", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeKBComponentVulnerabilityResponse()
@@ -92,7 +94,8 @@ class BscaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeKBLicense", params)
+            headers = request.headers
+            body = self.call("DescribeKBLicense", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeKBLicenseResponse()
@@ -120,7 +123,8 @@ class BscaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeKBVulnerability", params)
+            headers = request.headers
+            body = self.call("DescribeKBVulnerability", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeKBVulnerabilityResponse()

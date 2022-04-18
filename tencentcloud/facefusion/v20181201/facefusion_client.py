@@ -36,7 +36,8 @@ class FacefusionClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeMaterialList", params)
+            headers = request.headers
+            body = self.call("DescribeMaterialList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeMaterialListResponse()
@@ -66,7 +67,8 @@ class FacefusionClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("FaceFusion", params)
+            headers = request.headers
+            body = self.call("FaceFusion", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.FaceFusionResponse()
@@ -94,7 +96,8 @@ class FacefusionClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("FaceFusionLite", params)
+            headers = request.headers
+            body = self.call("FaceFusionLite", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.FaceFusionLiteResponse()
@@ -126,7 +129,8 @@ class FacefusionClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("FuseFace", params)
+            headers = request.headers
+            body = self.call("FuseFace", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.FuseFaceResponse()

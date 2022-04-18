@@ -38,7 +38,8 @@ class EcdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AddEcdnDomain", params)
+            headers = request.headers
+            body = self.call("AddEcdnDomain", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AddEcdnDomainResponse()
@@ -68,7 +69,8 @@ class EcdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateVerifyRecord", params)
+            headers = request.headers
+            body = self.call("CreateVerifyRecord", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateVerifyRecordResponse()
@@ -98,7 +100,8 @@ class EcdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteEcdnDomain", params)
+            headers = request.headers
+            body = self.call("DeleteEcdnDomain", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteEcdnDomainResponse()
@@ -128,7 +131,8 @@ class EcdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDomains", params)
+            headers = request.headers
+            body = self.call("DescribeDomains", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDomainsResponse()
@@ -158,7 +162,8 @@ class EcdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDomainsConfig", params)
+            headers = request.headers
+            body = self.call("DescribeDomainsConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDomainsConfigResponse()
@@ -186,7 +191,8 @@ class EcdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeEcdnDomainLogs", params)
+            headers = request.headers
+            body = self.call("DescribeEcdnDomainLogs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeEcdnDomainLogsResponse()
@@ -216,7 +222,8 @@ class EcdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeEcdnDomainStatistics", params)
+            headers = request.headers
+            body = self.call("DescribeEcdnDomainStatistics", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeEcdnDomainStatisticsResponse()
@@ -252,7 +259,8 @@ class EcdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeEcdnStatistics", params)
+            headers = request.headers
+            body = self.call("DescribeEcdnStatistics", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeEcdnStatisticsResponse()
@@ -282,7 +290,8 @@ class EcdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeIpStatus", params)
+            headers = request.headers
+            body = self.call("DescribeIpStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeIpStatusResponse()
@@ -312,7 +321,8 @@ class EcdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePurgeQuota", params)
+            headers = request.headers
+            body = self.call("DescribePurgeQuota", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePurgeQuotaResponse()
@@ -342,7 +352,8 @@ class EcdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePurgeTasks", params)
+            headers = request.headers
+            body = self.call("DescribePurgeTasks", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePurgeTasksResponse()
@@ -372,7 +383,8 @@ class EcdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("PurgePathCache", params)
+            headers = request.headers
+            body = self.call("PurgePathCache", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.PurgePathCacheResponse()
@@ -402,7 +414,8 @@ class EcdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("PurgeUrlsCache", params)
+            headers = request.headers
+            body = self.call("PurgeUrlsCache", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.PurgeUrlsCacheResponse()
@@ -432,7 +445,8 @@ class EcdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("StartEcdnDomain", params)
+            headers = request.headers
+            body = self.call("StartEcdnDomain", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StartEcdnDomainResponse()
@@ -462,7 +476,8 @@ class EcdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("StopEcdnDomain", params)
+            headers = request.headers
+            body = self.call("StopEcdnDomain", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StopEcdnDomainResponse()
@@ -493,7 +508,8 @@ class EcdnClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateDomainConfig", params)
+            headers = request.headers
+            body = self.call("UpdateDomainConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateDomainConfigResponse()

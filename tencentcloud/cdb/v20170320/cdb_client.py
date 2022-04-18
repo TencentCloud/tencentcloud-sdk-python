@@ -36,7 +36,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AddTimeWindow", params)
+            headers = request.headers
+            body = self.call("AddTimeWindow", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AddTimeWindowResponse()
@@ -64,7 +65,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ApplyCDBProxy", params)
+            headers = request.headers
+            body = self.call("ApplyCDBProxy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ApplyCDBProxyResponse()
@@ -92,7 +94,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AssociateSecurityGroups", params)
+            headers = request.headers
+            body = self.call("AssociateSecurityGroups", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AssociateSecurityGroupsResponse()
@@ -120,7 +123,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("BalanceRoGroupLoad", params)
+            headers = request.headers
+            body = self.call("BalanceRoGroupLoad", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.BalanceRoGroupLoadResponse()
@@ -148,7 +152,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CloseCDBProxy", params)
+            headers = request.headers
+            body = self.call("CloseCDBProxy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CloseCDBProxyResponse()
@@ -176,7 +181,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CloseWanService", params)
+            headers = request.headers
+            body = self.call("CloseWanService", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CloseWanServiceResponse()
@@ -204,7 +210,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateAccounts", params)
+            headers = request.headers
+            body = self.call("CreateAccounts", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateAccountsResponse()
@@ -232,7 +239,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateAuditLogFile", params)
+            headers = request.headers
+            body = self.call("CreateAuditLogFile", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateAuditLogFileResponse()
@@ -260,7 +268,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateAuditPolicy", params)
+            headers = request.headers
+            body = self.call("CreateAuditPolicy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateAuditPolicyResponse()
@@ -288,7 +297,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateAuditRule", params)
+            headers = request.headers
+            body = self.call("CreateAuditRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateAuditRuleResponse()
@@ -316,7 +326,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateBackup", params)
+            headers = request.headers
+            body = self.call("CreateBackup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateBackupResponse()
@@ -344,7 +355,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateCloneInstance", params)
+            headers = request.headers
+            body = self.call("CreateCloneInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateCloneInstanceResponse()
@@ -374,7 +386,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateDBImportJob", params)
+            headers = request.headers
+            body = self.call("CreateDBImportJob", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateDBImportJobResponse()
@@ -411,7 +424,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateDBInstance", params)
+            headers = request.headers
+            body = self.call("CreateDBInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateDBInstanceResponse()
@@ -447,7 +461,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateDBInstanceHour", params)
+            headers = request.headers
+            body = self.call("CreateDBInstanceHour", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateDBInstanceHourResponse()
@@ -475,7 +490,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateDeployGroup", params)
+            headers = request.headers
+            body = self.call("CreateDeployGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateDeployGroupResponse()
@@ -503,7 +519,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateParamTemplate", params)
+            headers = request.headers
+            body = self.call("CreateParamTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateParamTemplateResponse()
@@ -531,7 +548,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateRoInstanceIp", params)
+            headers = request.headers
+            body = self.call("CreateRoInstanceIp", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateRoInstanceIpResponse()
@@ -559,7 +577,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteAccounts", params)
+            headers = request.headers
+            body = self.call("DeleteAccounts", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteAccountsResponse()
@@ -587,7 +606,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteAuditLogFile", params)
+            headers = request.headers
+            body = self.call("DeleteAuditLogFile", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteAuditLogFileResponse()
@@ -615,7 +635,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteAuditPolicy", params)
+            headers = request.headers
+            body = self.call("DeleteAuditPolicy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteAuditPolicyResponse()
@@ -643,7 +664,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteAuditRule", params)
+            headers = request.headers
+            body = self.call("DeleteAuditRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteAuditRuleResponse()
@@ -671,7 +693,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteBackup", params)
+            headers = request.headers
+            body = self.call("DeleteBackup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteBackupResponse()
@@ -699,7 +722,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteDeployGroups", params)
+            headers = request.headers
+            body = self.call("DeleteDeployGroups", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteDeployGroupsResponse()
@@ -727,7 +751,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteParamTemplate", params)
+            headers = request.headers
+            body = self.call("DeleteParamTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteParamTemplateResponse()
@@ -755,7 +780,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteTimeWindow", params)
+            headers = request.headers
+            body = self.call("DeleteTimeWindow", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteTimeWindowResponse()
@@ -783,7 +809,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAccountPrivileges", params)
+            headers = request.headers
+            body = self.call("DescribeAccountPrivileges", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAccountPrivilegesResponse()
@@ -811,7 +838,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAccounts", params)
+            headers = request.headers
+            body = self.call("DescribeAccounts", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAccountsResponse()
@@ -839,7 +867,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAsyncRequestInfo", params)
+            headers = request.headers
+            body = self.call("DescribeAsyncRequestInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAsyncRequestInfoResponse()
@@ -867,7 +896,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAuditConfig", params)
+            headers = request.headers
+            body = self.call("DescribeAuditConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAuditConfigResponse()
@@ -895,7 +925,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAuditLogFiles", params)
+            headers = request.headers
+            body = self.call("DescribeAuditLogFiles", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAuditLogFilesResponse()
@@ -923,7 +954,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAuditPolicies", params)
+            headers = request.headers
+            body = self.call("DescribeAuditPolicies", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAuditPoliciesResponse()
@@ -951,7 +983,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAuditRules", params)
+            headers = request.headers
+            body = self.call("DescribeAuditRules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAuditRulesResponse()
@@ -979,7 +1012,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBackupConfig", params)
+            headers = request.headers
+            body = self.call("DescribeBackupConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBackupConfigResponse()
@@ -1009,7 +1043,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBackupDatabases", params)
+            headers = request.headers
+            body = self.call("DescribeBackupDatabases", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBackupDatabasesResponse()
@@ -1037,7 +1072,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBackupDownloadRestriction", params)
+            headers = request.headers
+            body = self.call("DescribeBackupDownloadRestriction", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBackupDownloadRestrictionResponse()
@@ -1065,7 +1101,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBackupOverview", params)
+            headers = request.headers
+            body = self.call("DescribeBackupOverview", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBackupOverviewResponse()
@@ -1093,7 +1130,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBackupSummaries", params)
+            headers = request.headers
+            body = self.call("DescribeBackupSummaries", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBackupSummariesResponse()
@@ -1123,7 +1161,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBackupTables", params)
+            headers = request.headers
+            body = self.call("DescribeBackupTables", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBackupTablesResponse()
@@ -1151,7 +1190,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBackups", params)
+            headers = request.headers
+            body = self.call("DescribeBackups", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBackupsResponse()
@@ -1179,7 +1219,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBinlogBackupOverview", params)
+            headers = request.headers
+            body = self.call("DescribeBinlogBackupOverview", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBinlogBackupOverviewResponse()
@@ -1207,7 +1248,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBinlogs", params)
+            headers = request.headers
+            body = self.call("DescribeBinlogs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBinlogsResponse()
@@ -1235,7 +1277,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCDBProxy", params)
+            headers = request.headers
+            body = self.call("DescribeCDBProxy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCDBProxyResponse()
@@ -1263,7 +1306,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCloneList", params)
+            headers = request.headers
+            body = self.call("DescribeCloneList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCloneListResponse()
@@ -1291,7 +1335,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDBImportRecords", params)
+            headers = request.headers
+            body = self.call("DescribeDBImportRecords", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDBImportRecordsResponse()
@@ -1319,7 +1364,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDBInstanceCharset", params)
+            headers = request.headers
+            body = self.call("DescribeDBInstanceCharset", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDBInstanceCharsetResponse()
@@ -1347,7 +1393,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDBInstanceConfig", params)
+            headers = request.headers
+            body = self.call("DescribeDBInstanceConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDBInstanceConfigResponse()
@@ -1375,7 +1422,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDBInstanceGTID", params)
+            headers = request.headers
+            body = self.call("DescribeDBInstanceGTID", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDBInstanceGTIDResponse()
@@ -1403,7 +1451,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDBInstanceInfo", params)
+            headers = request.headers
+            body = self.call("DescribeDBInstanceInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDBInstanceInfoResponse()
@@ -1431,7 +1480,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDBInstanceRebootTime", params)
+            headers = request.headers
+            body = self.call("DescribeDBInstanceRebootTime", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDBInstanceRebootTimeResponse()
@@ -1459,7 +1509,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDBInstances", params)
+            headers = request.headers
+            body = self.call("DescribeDBInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDBInstancesResponse()
@@ -1489,7 +1540,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDBPrice", params)
+            headers = request.headers
+            body = self.call("DescribeDBPrice", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDBPriceResponse()
@@ -1517,7 +1569,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDBSecurityGroups", params)
+            headers = request.headers
+            body = self.call("DescribeDBSecurityGroups", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDBSecurityGroupsResponse()
@@ -1545,7 +1598,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDBSwitchRecords", params)
+            headers = request.headers
+            body = self.call("DescribeDBSwitchRecords", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDBSwitchRecordsResponse()
@@ -1573,7 +1627,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDBZoneConfig", params)
+            headers = request.headers
+            body = self.call("DescribeDBZoneConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDBZoneConfigResponse()
@@ -1601,7 +1656,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDataBackupOverview", params)
+            headers = request.headers
+            body = self.call("DescribeDataBackupOverview", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDataBackupOverviewResponse()
@@ -1629,7 +1685,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDatabases", params)
+            headers = request.headers
+            body = self.call("DescribeDatabases", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDatabasesResponse()
@@ -1657,7 +1714,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDefaultParams", params)
+            headers = request.headers
+            body = self.call("DescribeDefaultParams", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDefaultParamsResponse()
@@ -1685,7 +1743,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDeployGroupList", params)
+            headers = request.headers
+            body = self.call("DescribeDeployGroupList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDeployGroupListResponse()
@@ -1713,7 +1772,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDeviceMonitorInfo", params)
+            headers = request.headers
+            body = self.call("DescribeDeviceMonitorInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDeviceMonitorInfoResponse()
@@ -1742,7 +1802,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeErrorLogData", params)
+            headers = request.headers
+            body = self.call("DescribeErrorLogData", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeErrorLogDataResponse()
@@ -1770,7 +1831,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInstanceParamRecords", params)
+            headers = request.headers
+            body = self.call("DescribeInstanceParamRecords", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInstanceParamRecordsResponse()
@@ -1798,7 +1860,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInstanceParams", params)
+            headers = request.headers
+            body = self.call("DescribeInstanceParams", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInstanceParamsResponse()
@@ -1826,7 +1889,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeLocalBinlogConfig", params)
+            headers = request.headers
+            body = self.call("DescribeLocalBinlogConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLocalBinlogConfigResponse()
@@ -1854,7 +1918,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeParamTemplateInfo", params)
+            headers = request.headers
+            body = self.call("DescribeParamTemplateInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeParamTemplateInfoResponse()
@@ -1882,7 +1947,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeParamTemplates", params)
+            headers = request.headers
+            body = self.call("DescribeParamTemplates", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeParamTemplatesResponse()
@@ -1910,7 +1976,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeProjectSecurityGroups", params)
+            headers = request.headers
+            body = self.call("DescribeProjectSecurityGroups", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeProjectSecurityGroupsResponse()
@@ -1938,7 +2005,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeProxyConnectionPoolConf", params)
+            headers = request.headers
+            body = self.call("DescribeProxyConnectionPoolConf", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeProxyConnectionPoolConfResponse()
@@ -1966,7 +2034,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeProxyCustomConf", params)
+            headers = request.headers
+            body = self.call("DescribeProxyCustomConf", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeProxyCustomConfResponse()
@@ -1994,7 +2063,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRoGroups", params)
+            headers = request.headers
+            body = self.call("DescribeRoGroups", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRoGroupsResponse()
@@ -2022,7 +2092,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRoMinScale", params)
+            headers = request.headers
+            body = self.call("DescribeRoMinScale", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRoMinScaleResponse()
@@ -2050,7 +2121,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRollbackRangeTime", params)
+            headers = request.headers
+            body = self.call("DescribeRollbackRangeTime", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRollbackRangeTimeResponse()
@@ -2078,7 +2150,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRollbackTaskDetail", params)
+            headers = request.headers
+            body = self.call("DescribeRollbackTaskDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRollbackTaskDetailResponse()
@@ -2107,7 +2180,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSlowLogData", params)
+            headers = request.headers
+            body = self.call("DescribeSlowLogData", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSlowLogDataResponse()
@@ -2135,7 +2209,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSlowLogs", params)
+            headers = request.headers
+            body = self.call("DescribeSlowLogs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSlowLogsResponse()
@@ -2163,7 +2238,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSupportedPrivileges", params)
+            headers = request.headers
+            body = self.call("DescribeSupportedPrivileges", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSupportedPrivilegesResponse()
@@ -2191,7 +2267,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTables", params)
+            headers = request.headers
+            body = self.call("DescribeTables", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTablesResponse()
@@ -2219,7 +2296,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTagsOfInstanceIds", params)
+            headers = request.headers
+            body = self.call("DescribeTagsOfInstanceIds", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTagsOfInstanceIdsResponse()
@@ -2247,7 +2325,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTasks", params)
+            headers = request.headers
+            body = self.call("DescribeTasks", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTasksResponse()
@@ -2275,7 +2354,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTimeWindow", params)
+            headers = request.headers
+            body = self.call("DescribeTimeWindow", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTimeWindowResponse()
@@ -2303,7 +2383,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeUploadedFiles", params)
+            headers = request.headers
+            body = self.call("DescribeUploadedFiles", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeUploadedFilesResponse()
@@ -2331,7 +2412,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DisassociateSecurityGroups", params)
+            headers = request.headers
+            body = self.call("DisassociateSecurityGroups", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DisassociateSecurityGroupsResponse()
@@ -2359,7 +2441,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("InitDBInstances", params)
+            headers = request.headers
+            body = self.call("InitDBInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.InitDBInstancesResponse()
@@ -2387,7 +2470,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("InquiryPriceUpgradeInstances", params)
+            headers = request.headers
+            body = self.call("InquiryPriceUpgradeInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.InquiryPriceUpgradeInstancesResponse()
@@ -2415,7 +2499,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("IsolateDBInstance", params)
+            headers = request.headers
+            body = self.call("IsolateDBInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.IsolateDBInstanceResponse()
@@ -2443,7 +2528,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyAccountDescription", params)
+            headers = request.headers
+            body = self.call("ModifyAccountDescription", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAccountDescriptionResponse()
@@ -2471,7 +2557,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyAccountHost", params)
+            headers = request.headers
+            body = self.call("ModifyAccountHost", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAccountHostResponse()
@@ -2499,7 +2586,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyAccountMaxUserConnections", params)
+            headers = request.headers
+            body = self.call("ModifyAccountMaxUserConnections", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAccountMaxUserConnectionsResponse()
@@ -2527,7 +2615,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyAccountPassword", params)
+            headers = request.headers
+            body = self.call("ModifyAccountPassword", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAccountPasswordResponse()
@@ -2558,7 +2647,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyAccountPrivileges", params)
+            headers = request.headers
+            body = self.call("ModifyAccountPrivileges", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAccountPrivilegesResponse()
@@ -2586,7 +2676,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyAuditConfig", params)
+            headers = request.headers
+            body = self.call("ModifyAuditConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAuditConfigResponse()
@@ -2614,7 +2705,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyAuditRule", params)
+            headers = request.headers
+            body = self.call("ModifyAuditRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAuditRuleResponse()
@@ -2642,7 +2734,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyAutoRenewFlag", params)
+            headers = request.headers
+            body = self.call("ModifyAutoRenewFlag", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAutoRenewFlagResponse()
@@ -2670,7 +2763,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyBackupConfig", params)
+            headers = request.headers
+            body = self.call("ModifyBackupConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyBackupConfigResponse()
@@ -2698,7 +2792,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyBackupDownloadRestriction", params)
+            headers = request.headers
+            body = self.call("ModifyBackupDownloadRestriction", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyBackupDownloadRestrictionResponse()
@@ -2726,7 +2821,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyCDBProxy", params)
+            headers = request.headers
+            body = self.call("ModifyCDBProxy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyCDBProxyResponse()
@@ -2754,7 +2850,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyCDBProxyConnectionPool", params)
+            headers = request.headers
+            body = self.call("ModifyCDBProxyConnectionPool", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyCDBProxyConnectionPoolResponse()
@@ -2782,7 +2879,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyCDBProxyDesc", params)
+            headers = request.headers
+            body = self.call("ModifyCDBProxyDesc", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyCDBProxyDescResponse()
@@ -2810,7 +2908,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyCDBProxyVipVPort", params)
+            headers = request.headers
+            body = self.call("ModifyCDBProxyVipVPort", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyCDBProxyVipVPortResponse()
@@ -2838,7 +2937,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyDBInstanceName", params)
+            headers = request.headers
+            body = self.call("ModifyDBInstanceName", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDBInstanceNameResponse()
@@ -2866,7 +2966,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyDBInstanceProject", params)
+            headers = request.headers
+            body = self.call("ModifyDBInstanceProject", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDBInstanceProjectResponse()
@@ -2894,7 +2995,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyDBInstanceSecurityGroups", params)
+            headers = request.headers
+            body = self.call("ModifyDBInstanceSecurityGroups", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDBInstanceSecurityGroupsResponse()
@@ -2922,7 +3024,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyDBInstanceVipVport", params)
+            headers = request.headers
+            body = self.call("ModifyDBInstanceVipVport", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDBInstanceVipVportResponse()
@@ -2950,7 +3053,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyInstanceParam", params)
+            headers = request.headers
+            body = self.call("ModifyInstanceParam", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyInstanceParamResponse()
@@ -2978,7 +3082,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyInstanceTag", params)
+            headers = request.headers
+            body = self.call("ModifyInstanceTag", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyInstanceTagResponse()
@@ -3006,7 +3111,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyLocalBinlogConfig", params)
+            headers = request.headers
+            body = self.call("ModifyLocalBinlogConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyLocalBinlogConfigResponse()
@@ -3034,7 +3140,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyNameOrDescByDpId", params)
+            headers = request.headers
+            body = self.call("ModifyNameOrDescByDpId", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyNameOrDescByDpIdResponse()
@@ -3062,7 +3169,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyParamTemplate", params)
+            headers = request.headers
+            body = self.call("ModifyParamTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyParamTemplateResponse()
@@ -3090,7 +3198,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyRoGroupInfo", params)
+            headers = request.headers
+            body = self.call("ModifyRoGroupInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyRoGroupInfoResponse()
@@ -3118,7 +3227,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyTimeWindow", params)
+            headers = request.headers
+            body = self.call("ModifyTimeWindow", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyTimeWindowResponse()
@@ -3150,7 +3260,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("OfflineIsolatedInstances", params)
+            headers = request.headers
+            body = self.call("OfflineIsolatedInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.OfflineIsolatedInstancesResponse()
@@ -3178,7 +3289,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("OpenDBInstanceGTID", params)
+            headers = request.headers
+            body = self.call("OpenDBInstanceGTID", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.OpenDBInstanceGTIDResponse()
@@ -3208,7 +3320,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("OpenWanService", params)
+            headers = request.headers
+            body = self.call("OpenWanService", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.OpenWanServiceResponse()
@@ -3236,7 +3349,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryCDBProxy", params)
+            headers = request.headers
+            body = self.call("QueryCDBProxy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryCDBProxyResponse()
@@ -3264,7 +3378,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ReleaseIsolatedDBInstances", params)
+            headers = request.headers
+            body = self.call("ReleaseIsolatedDBInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ReleaseIsolatedDBInstancesResponse()
@@ -3292,7 +3407,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ReloadBalanceProxyNode", params)
+            headers = request.headers
+            body = self.call("ReloadBalanceProxyNode", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ReloadBalanceProxyNodeResponse()
@@ -3320,7 +3436,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RenewDBInstance", params)
+            headers = request.headers
+            body = self.call("RenewDBInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RenewDBInstanceResponse()
@@ -3339,7 +3456,7 @@ class CdbClient(AbstractClient):
 
 
     def ResetRootAccount(self, request):
-        """重置实例ROOT账，初始化账号权限
+        """重置实例ROOT账号，初始化账号权限
 
         :param request: Request instance for ResetRootAccount.
         :type request: :class:`tencentcloud.cdb.v20170320.models.ResetRootAccountRequest`
@@ -3348,7 +3465,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ResetRootAccount", params)
+            headers = request.headers
+            body = self.call("ResetRootAccount", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ResetRootAccountResponse()
@@ -3380,7 +3498,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RestartDBInstances", params)
+            headers = request.headers
+            body = self.call("RestartDBInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RestartDBInstancesResponse()
@@ -3408,7 +3527,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("StartBatchRollback", params)
+            headers = request.headers
+            body = self.call("StartBatchRollback", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StartBatchRollbackResponse()
@@ -3436,7 +3556,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("StartReplication", params)
+            headers = request.headers
+            body = self.call("StartReplication", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StartReplicationResponse()
@@ -3464,7 +3585,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("StopDBImportJob", params)
+            headers = request.headers
+            body = self.call("StopDBImportJob", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StopDBImportJobResponse()
@@ -3492,7 +3614,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("StopReplication", params)
+            headers = request.headers
+            body = self.call("StopReplication", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StopReplicationResponse()
@@ -3520,7 +3643,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("StopRollback", params)
+            headers = request.headers
+            body = self.call("StopRollback", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StopRollbackResponse()
@@ -3548,7 +3672,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SwitchCDBProxy", params)
+            headers = request.headers
+            body = self.call("SwitchCDBProxy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SwitchCDBProxyResponse()
@@ -3576,7 +3701,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SwitchDBInstanceMasterSlave", params)
+            headers = request.headers
+            body = self.call("SwitchDBInstanceMasterSlave", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SwitchDBInstanceMasterSlaveResponse()
@@ -3604,7 +3730,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SwitchDrInstanceToMaster", params)
+            headers = request.headers
+            body = self.call("SwitchDrInstanceToMaster", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SwitchDrInstanceToMasterResponse()
@@ -3632,7 +3759,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SwitchForUpgrade", params)
+            headers = request.headers
+            body = self.call("SwitchForUpgrade", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SwitchForUpgradeResponse()
@@ -3660,7 +3788,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpgradeCDBProxy", params)
+            headers = request.headers
+            body = self.call("UpgradeCDBProxy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpgradeCDBProxyResponse()
@@ -3688,7 +3817,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpgradeCDBProxyVersion", params)
+            headers = request.headers
+            body = self.call("UpgradeCDBProxyVersion", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpgradeCDBProxyVersionResponse()
@@ -3716,7 +3846,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpgradeDBInstance", params)
+            headers = request.headers
+            body = self.call("UpgradeDBInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpgradeDBInstanceResponse()
@@ -3744,7 +3875,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpgradeDBInstanceEngineVersion", params)
+            headers = request.headers
+            body = self.call("UpgradeDBInstanceEngineVersion", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpgradeDBInstanceEngineVersionResponse()
@@ -3772,7 +3904,8 @@ class CdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("VerifyRootAccount", params)
+            headers = request.headers
+            body = self.call("VerifyRootAccount", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.VerifyRootAccountResponse()

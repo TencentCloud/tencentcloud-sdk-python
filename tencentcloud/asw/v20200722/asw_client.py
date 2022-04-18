@@ -36,7 +36,8 @@ class AswClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateFlowService", params)
+            headers = request.headers
+            body = self.call("CreateFlowService", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateFlowServiceResponse()
@@ -64,7 +65,8 @@ class AswClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeExecution", params)
+            headers = request.headers
+            body = self.call("DescribeExecution", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeExecutionResponse()
@@ -92,7 +94,8 @@ class AswClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeExecutionHistory", params)
+            headers = request.headers
+            body = self.call("DescribeExecutionHistory", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeExecutionHistoryResponse()
@@ -120,7 +123,8 @@ class AswClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeExecutions", params)
+            headers = request.headers
+            body = self.call("DescribeExecutions", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeExecutionsResponse()
@@ -148,7 +152,8 @@ class AswClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeFlowServiceDetail", params)
+            headers = request.headers
+            body = self.call("DescribeFlowServiceDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeFlowServiceDetailResponse()
@@ -176,7 +181,8 @@ class AswClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeFlowServices", params)
+            headers = request.headers
+            body = self.call("DescribeFlowServices", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeFlowServicesResponse()
@@ -204,7 +210,8 @@ class AswClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyFlowService", params)
+            headers = request.headers
+            body = self.call("ModifyFlowService", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyFlowServiceResponse()
@@ -232,7 +239,8 @@ class AswClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("StartExecution", params)
+            headers = request.headers
+            body = self.call("StartExecution", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StartExecutionResponse()
@@ -260,7 +268,8 @@ class AswClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("StopExecution", params)
+            headers = request.headers
+            body = self.call("StopExecution", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StopExecutionResponse()

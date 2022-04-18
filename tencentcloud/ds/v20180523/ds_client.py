@@ -38,7 +38,8 @@ class DsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CheckVcode", params)
+            headers = request.headers
+            body = self.call("CheckVcode", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CheckVcodeResponse()
@@ -66,7 +67,8 @@ class DsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateContractByUpload", params)
+            headers = request.headers
+            body = self.call("CreateContractByUpload", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateContractByUploadResponse()
@@ -94,7 +96,8 @@ class DsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateEnterpriseAccount", params)
+            headers = request.headers
+            body = self.call("CreateEnterpriseAccount", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateEnterpriseAccountResponse()
@@ -122,7 +125,8 @@ class DsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreatePersonalAccount", params)
+            headers = request.headers
+            body = self.call("CreatePersonalAccount", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreatePersonalAccountResponse()
@@ -150,7 +154,8 @@ class DsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateSeal", params)
+            headers = request.headers
+            body = self.call("CreateSeal", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateSealResponse()
@@ -178,7 +183,8 @@ class DsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteAccount", params)
+            headers = request.headers
+            body = self.call("DeleteAccount", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteAccountResponse()
@@ -206,7 +212,8 @@ class DsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteSeal", params)
+            headers = request.headers
+            body = self.call("DeleteSeal", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteSealResponse()
@@ -234,7 +241,8 @@ class DsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTaskStatus", params)
+            headers = request.headers
+            body = self.call("DescribeTaskStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTaskStatusResponse()
@@ -262,7 +270,8 @@ class DsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DownloadContract", params)
+            headers = request.headers
+            body = self.call("DownloadContract", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DownloadContractResponse()
@@ -290,7 +299,8 @@ class DsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SendVcode", params)
+            headers = request.headers
+            body = self.call("SendVcode", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SendVcodeResponse()
@@ -318,7 +328,8 @@ class DsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SignContractByCoordinate", params)
+            headers = request.headers
+            body = self.call("SignContractByCoordinate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SignContractByCoordinateResponse()
@@ -346,7 +357,8 @@ class DsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SignContractByKeyword", params)
+            headers = request.headers
+            body = self.call("SignContractByKeyword", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SignContractByKeywordResponse()

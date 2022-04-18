@@ -36,7 +36,8 @@ class DomainClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("BatchModifyDomainInfo", params)
+            headers = request.headers
+            body = self.call("BatchModifyDomainInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.BatchModifyDomainInfoResponse()
@@ -64,7 +65,8 @@ class DomainClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CheckBatchStatus", params)
+            headers = request.headers
+            body = self.call("CheckBatchStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CheckBatchStatusResponse()
@@ -92,7 +94,8 @@ class DomainClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CheckDomain", params)
+            headers = request.headers
+            body = self.call("CheckDomain", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CheckDomainResponse()
@@ -120,7 +123,8 @@ class DomainClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateDomainBatch", params)
+            headers = request.headers
+            body = self.call("CreateDomainBatch", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateDomainBatchResponse()
@@ -148,7 +152,8 @@ class DomainClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreatePhoneEmail", params)
+            headers = request.headers
+            body = self.call("CreatePhoneEmail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreatePhoneEmailResponse()
@@ -176,7 +181,8 @@ class DomainClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateTemplate", params)
+            headers = request.headers
+            body = self.call("CreateTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateTemplateResponse()
@@ -204,7 +210,8 @@ class DomainClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeletePhoneEmail", params)
+            headers = request.headers
+            body = self.call("DeletePhoneEmail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeletePhoneEmailResponse()
@@ -232,7 +239,8 @@ class DomainClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteTemplate", params)
+            headers = request.headers
+            body = self.call("DeleteTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteTemplateResponse()
@@ -260,7 +268,8 @@ class DomainClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBatchOperationLogDetails", params)
+            headers = request.headers
+            body = self.call("DescribeBatchOperationLogDetails", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBatchOperationLogDetailsResponse()
@@ -288,7 +297,8 @@ class DomainClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBatchOperationLogs", params)
+            headers = request.headers
+            body = self.call("DescribeBatchOperationLogs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBatchOperationLogsResponse()
@@ -316,7 +326,8 @@ class DomainClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDomainBaseInfo", params)
+            headers = request.headers
+            body = self.call("DescribeDomainBaseInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDomainBaseInfoResponse()
@@ -344,7 +355,8 @@ class DomainClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDomainNameList", params)
+            headers = request.headers
+            body = self.call("DescribeDomainNameList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDomainNameListResponse()
@@ -372,7 +384,8 @@ class DomainClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDomainPriceList", params)
+            headers = request.headers
+            body = self.call("DescribeDomainPriceList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDomainPriceListResponse()
@@ -400,7 +413,8 @@ class DomainClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePhoneEmailList", params)
+            headers = request.headers
+            body = self.call("DescribePhoneEmailList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePhoneEmailListResponse()
@@ -428,7 +442,8 @@ class DomainClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTemplate", params)
+            headers = request.headers
+            body = self.call("DescribeTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTemplateResponse()
@@ -456,7 +471,8 @@ class DomainClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTemplateList", params)
+            headers = request.headers
+            body = self.call("DescribeTemplateList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTemplateListResponse()
@@ -484,7 +500,8 @@ class DomainClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyDomainDNSBatch", params)
+            headers = request.headers
+            body = self.call("ModifyDomainDNSBatch", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDomainDNSBatchResponse()
@@ -512,7 +529,8 @@ class DomainClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyDomainOwnerBatch", params)
+            headers = request.headers
+            body = self.call("ModifyDomainOwnerBatch", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDomainOwnerBatchResponse()
@@ -540,7 +558,8 @@ class DomainClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RenewDomainBatch", params)
+            headers = request.headers
+            body = self.call("RenewDomainBatch", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RenewDomainBatchResponse()
@@ -568,7 +587,8 @@ class DomainClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SendPhoneEmailCode", params)
+            headers = request.headers
+            body = self.call("SendPhoneEmailCode", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SendPhoneEmailCodeResponse()
@@ -596,7 +616,8 @@ class DomainClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SetDomainAutoRenew", params)
+            headers = request.headers
+            body = self.call("SetDomainAutoRenew", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SetDomainAutoRenewResponse()
@@ -624,7 +645,8 @@ class DomainClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("TransferInDomainBatch", params)
+            headers = request.headers
+            body = self.call("TransferInDomainBatch", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.TransferInDomainBatchResponse()
@@ -652,7 +674,8 @@ class DomainClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("TransferProhibitionBatch", params)
+            headers = request.headers
+            body = self.call("TransferProhibitionBatch", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.TransferProhibitionBatchResponse()
@@ -680,7 +703,8 @@ class DomainClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateProhibitionBatch", params)
+            headers = request.headers
+            body = self.call("UpdateProhibitionBatch", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateProhibitionBatchResponse()
@@ -708,7 +732,8 @@ class DomainClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UploadImage", params)
+            headers = request.headers
+            body = self.call("UploadImage", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UploadImageResponse()

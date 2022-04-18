@@ -36,7 +36,8 @@ class HaboClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeStatus", params)
+            headers = request.headers
+            body = self.call("DescribeStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeStatusResponse()
@@ -64,7 +65,8 @@ class HaboClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("StartAnalyse", params)
+            headers = request.headers
+            body = self.call("StartAnalyse", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StartAnalyseResponse()

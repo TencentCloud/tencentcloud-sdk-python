@@ -1,59 +1,10 @@
 # 本版本更新包含以下内容：
 
-## DDoS 防护(antiddos) 版本：2020-03-09
+## 云监控(monitor) 版本：2018-07-24
 
-### 第 27 次发布
+### 第 43 次发布
 
-发布时间：2022-04-18 06:05:37
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [NewL7RuleEntry](https://cloud.tencent.com/document/api/1021/57582#NewL7RuleEntry)
-
-	* 新增成员：RewriteHttps, ErrCode
-
-
-
-
-## 云数据库 MySQL(cdb) 版本：2017-03-20
-
-### 第 91 次发布
-
-发布时间：2022-04-18 06:07:35
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeBackupConfig](https://cloud.tencent.com/document/api/236/15837)
-
-	* 新增出参：EnableBackupPeriodSave, BackupPeriodSaveDays, BackupPeriodSaveInterval, BackupPeriodSaveCount, StartBackupPeriodSaveDate
-
-* [ModifyBackupConfig](https://cloud.tencent.com/document/api/236/15839)
-
-	* 新增入参：EnableBackupPeriodSave, EnableBackupPeriodLongTermSave, BackupPeriodSaveDays, BackupPeriodSaveInterval, BackupPeriodSaveCount, StartBackupPeriodSaveDate
-
-
-修改数据结构：
-
-* [BackupInfo](https://cloud.tencent.com/document/api/236/15878#BackupInfo)
-
-	* 新增成员：SaveMode
-
-
-
-
-## 内容分发网络(cdn) 版本：2018-06-06
-
-### 第 99 次发布
-
-发布时间：2022-04-18 06:07:58
+发布时间：2022-04-19 06:13:47
 
 本次发布包含了以下内容：
 
@@ -61,55 +12,22 @@
 
 修改数据结构：
 
-* [OverseaConfig](https://cloud.tencent.com/document/api/228/30987#OverseaConfig)
+* [URLNotice](https://cloud.tencent.com/document/api/248/30354#URLNotice)
 
-	* 新增成员：HwPrivateAccess, QnPrivateAccess
+	* 新增成员：Weekday
 
+* [UserNotice](https://cloud.tencent.com/document/api/248/30354#UserNotice)
 
+	* 新增成员：Weekday
 
-
-## 物联网开发平台(iotexplorer) 版本：2019-04-23
-
-### 第 44 次发布
-
-发布时间：2022-04-18 06:13:51
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [PublishBroadcastMessage](https://cloud.tencent.com/document/api/1081/72633)
-
-
-
-## 安全运营中心(ssa) 版本：2018-06-08
-
-### 第 11 次发布
-
-发布时间：2022-04-18 06:17:42
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeSocCheckResultList](https://cloud.tencent.com/document/api/664/72634)
-
-新增数据结构：
-
-* [DescribeSocCheckResultListRspRsp](https://cloud.tencent.com/document/api/664/51406#DescribeSocCheckResultListRspRsp)
-* [SocCheckResult](https://cloud.tencent.com/document/api/664/51406#SocCheckResult)
 
 
 
 ## Web 应用防火墙(waf) 版本：2018-01-25
 
-### 第 6 次发布
+### 第 7 次发布
 
-发布时间：2022-04-18 06:22:13
+发布时间：2022-04-19 06:20:51
 
 本次发布包含了以下内容：
 
@@ -117,31 +35,11 @@
 
 新增接口：
 
-* [AddDomainWhiteRule](https://cloud.tencent.com/document/api/627/72650)
-* [DeleteDomainWhiteRules](https://cloud.tencent.com/document/api/627/72649)
-* [DeleteIpAccessControl](https://cloud.tencent.com/document/api/627/72648)
-* [DescribeAutoDenyIP](https://cloud.tencent.com/document/api/627/72647)
-* [DescribeDomainWhiteRules](https://cloud.tencent.com/document/api/627/72646)
-* [DescribeIpAccessControl](https://cloud.tencent.com/document/api/627/72645)
-* [DescribeIpHitItems](https://cloud.tencent.com/document/api/627/72644)
-* [DescribeWafAutoDenyRules](https://cloud.tencent.com/document/api/627/72643)
-* [DescribeWafAutoDenyStatus](https://cloud.tencent.com/document/api/627/72642)
-* [DescribeWafThreatenIntelligence](https://cloud.tencent.com/document/api/627/72641)
-* [ModifyDomainWhiteRule](https://cloud.tencent.com/document/api/627/72640)
-* [ModifyWafAutoDenyRules](https://cloud.tencent.com/document/api/627/72639)
-* [ModifyWafAutoDenyStatus](https://cloud.tencent.com/document/api/627/72638)
-* [ModifyWafThreatenIntelligence](https://cloud.tencent.com/document/api/627/72637)
-* [UpsertIpAccessControl](https://cloud.tencent.com/document/api/627/72636)
+* [AddSpartaProtection](https://cloud.tencent.com/document/api/627/72689)
 
 新增数据结构：
 
-* [AutoDenyDetail](https://cloud.tencent.com/document/api/627/53609#AutoDenyDetail)
-* [IpAccessControlData](https://cloud.tencent.com/document/api/627/53609#IpAccessControlData)
-* [IpAccessControlItem](https://cloud.tencent.com/document/api/627/53609#IpAccessControlItem)
-* [IpHitItem](https://cloud.tencent.com/document/api/627/53609#IpHitItem)
-* [IpHitItemsData](https://cloud.tencent.com/document/api/627/53609#IpHitItemsData)
-* [RuleList](https://cloud.tencent.com/document/api/627/53609#RuleList)
-* [WafThreatenIntelligenceDetails](https://cloud.tencent.com/document/api/627/53609#WafThreatenIntelligenceDetails)
+* [PortItem](https://cloud.tencent.com/document/api/627/53609#PortItem)
 
 
 
@@ -38562,7 +38460,7 @@
 
 新增接口：
 
-* [[PublishBroadcastMessage](https://cloud.tencent.com/document/api/1081/72633)](https://cloud.tencent.com/document/api/#/#)
+* [PublishBroadcastMessage](https://cloud.tencent.com/document/api/1081/72633)
 
 ### 第 43 次发布
 
@@ -45072,6 +44970,25 @@
 
 
 ## 云监控(monitor) 版本：2018-07-24
+
+### 第 43 次发布
+
+发布时间：2022-04-19 06:13:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [URLNotice](https://cloud.tencent.com/document/api/248/30354#URLNotice)
+
+	* 新增成员：Weekday
+
+* [UserNotice](https://cloud.tencent.com/document/api/248/30354#UserNotice)
+
+	* 新增成员：Weekday
+
 
 ### 第 42 次发布
 
@@ -55025,12 +54942,12 @@
 
 新增接口：
 
-* [[DescribeSocCheckResultList](https://cloud.tencent.com/document/api/664/72634)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeSocCheckResultList](https://cloud.tencent.com/document/api/664/72634)
 
 新增数据结构：
 
-* [[DescribeSocCheckResultListRspRsp](https://cloud.tencent.com/document/api/664/51406#DescribeSocCheckResultListRspRsp)](https://cloud.tencent.com/document/api/664/51406#[DescribeSocCheckResultListRspRsp](https://cloud.tencent.com/document/api/664/51406#DescribeSocCheckResultListRspRsp))
-* [[SocCheckResult](https://cloud.tencent.com/document/api/664/51406#SocCheckResult)](https://cloud.tencent.com/document/api/664/51406#[SocCheckResult](https://cloud.tencent.com/document/api/664/51406#SocCheckResult))
+* [DescribeSocCheckResultListRspRsp](https://cloud.tencent.com/document/api/664/51406#DescribeSocCheckResultListRspRsp)
+* [SocCheckResult](https://cloud.tencent.com/document/api/664/51406#SocCheckResult)
 
 ### 第 10 次发布
 
@@ -75117,6 +75034,22 @@
 
 ## Web 应用防火墙(waf) 版本：2018-01-25
 
+### 第 7 次发布
+
+发布时间：2022-04-19 06:20:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[AddSpartaProtection](https://cloud.tencent.com/document/api/627/72689)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[PortItem](https://cloud.tencent.com/document/api/627/53609#PortItem)](https://cloud.tencent.com/document/api/627/53609#[PortItem](https://cloud.tencent.com/document/api/627/53609#PortItem))
+
 ### 第 6 次发布
 
 发布时间：2022-04-18 06:22:13
@@ -75127,31 +75060,31 @@
 
 新增接口：
 
-* [[AddDomainWhiteRule](https://cloud.tencent.com/document/api/627/72650)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteDomainWhiteRules](https://cloud.tencent.com/document/api/627/72649)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteIpAccessControl](https://cloud.tencent.com/document/api/627/72648)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeAutoDenyIP](https://cloud.tencent.com/document/api/627/72647)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeDomainWhiteRules](https://cloud.tencent.com/document/api/627/72646)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeIpAccessControl](https://cloud.tencent.com/document/api/627/72645)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeIpHitItems](https://cloud.tencent.com/document/api/627/72644)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeWafAutoDenyRules](https://cloud.tencent.com/document/api/627/72643)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeWafAutoDenyStatus](https://cloud.tencent.com/document/api/627/72642)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeWafThreatenIntelligence](https://cloud.tencent.com/document/api/627/72641)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyDomainWhiteRule](https://cloud.tencent.com/document/api/627/72640)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyWafAutoDenyRules](https://cloud.tencent.com/document/api/627/72639)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyWafAutoDenyStatus](https://cloud.tencent.com/document/api/627/72638)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyWafThreatenIntelligence](https://cloud.tencent.com/document/api/627/72637)](https://cloud.tencent.com/document/api/#/#)
-* [[UpsertIpAccessControl](https://cloud.tencent.com/document/api/627/72636)](https://cloud.tencent.com/document/api/#/#)
+* [AddDomainWhiteRule](https://cloud.tencent.com/document/api/627/72650)
+* [DeleteDomainWhiteRules](https://cloud.tencent.com/document/api/627/72649)
+* [DeleteIpAccessControl](https://cloud.tencent.com/document/api/627/72648)
+* [DescribeAutoDenyIP](https://cloud.tencent.com/document/api/627/72647)
+* [DescribeDomainWhiteRules](https://cloud.tencent.com/document/api/627/72646)
+* [DescribeIpAccessControl](https://cloud.tencent.com/document/api/627/72645)
+* [DescribeIpHitItems](https://cloud.tencent.com/document/api/627/72644)
+* [DescribeWafAutoDenyRules](https://cloud.tencent.com/document/api/627/72643)
+* [DescribeWafAutoDenyStatus](https://cloud.tencent.com/document/api/627/72642)
+* [DescribeWafThreatenIntelligence](https://cloud.tencent.com/document/api/627/72641)
+* [ModifyDomainWhiteRule](https://cloud.tencent.com/document/api/627/72640)
+* [ModifyWafAutoDenyRules](https://cloud.tencent.com/document/api/627/72639)
+* [ModifyWafAutoDenyStatus](https://cloud.tencent.com/document/api/627/72638)
+* [ModifyWafThreatenIntelligence](https://cloud.tencent.com/document/api/627/72637)
+* [UpsertIpAccessControl](https://cloud.tencent.com/document/api/627/72636)
 
 新增数据结构：
 
-* [[AutoDenyDetail](https://cloud.tencent.com/document/api/627/53609#AutoDenyDetail)](https://cloud.tencent.com/document/api/627/53609#[AutoDenyDetail](https://cloud.tencent.com/document/api/627/53609#AutoDenyDetail))
-* [[IpAccessControlData](https://cloud.tencent.com/document/api/627/53609#IpAccessControlData)](https://cloud.tencent.com/document/api/627/53609#[IpAccessControlData](https://cloud.tencent.com/document/api/627/53609#IpAccessControlData))
-* [[IpAccessControlItem](https://cloud.tencent.com/document/api/627/53609#IpAccessControlItem)](https://cloud.tencent.com/document/api/627/53609#[IpAccessControlItem](https://cloud.tencent.com/document/api/627/53609#IpAccessControlItem))
-* [[IpHitItem](https://cloud.tencent.com/document/api/627/53609#IpHitItem)](https://cloud.tencent.com/document/api/627/53609#[IpHitItem](https://cloud.tencent.com/document/api/627/53609#IpHitItem))
-* [[IpHitItemsData](https://cloud.tencent.com/document/api/627/53609#IpHitItemsData)](https://cloud.tencent.com/document/api/627/53609#[IpHitItemsData](https://cloud.tencent.com/document/api/627/53609#IpHitItemsData))
-* [[RuleList](https://cloud.tencent.com/document/api/627/53609#RuleList)](https://cloud.tencent.com/document/api/627/53609#[RuleList](https://cloud.tencent.com/document/api/627/53609#RuleList))
-* [[WafThreatenIntelligenceDetails](https://cloud.tencent.com/document/api/627/53609#WafThreatenIntelligenceDetails)](https://cloud.tencent.com/document/api/627/53609#[WafThreatenIntelligenceDetails](https://cloud.tencent.com/document/api/627/53609#WafThreatenIntelligenceDetails))
+* [AutoDenyDetail](https://cloud.tencent.com/document/api/627/53609#AutoDenyDetail)
+* [IpAccessControlData](https://cloud.tencent.com/document/api/627/53609#IpAccessControlData)
+* [IpAccessControlItem](https://cloud.tencent.com/document/api/627/53609#IpAccessControlItem)
+* [IpHitItem](https://cloud.tencent.com/document/api/627/53609#IpHitItem)
+* [IpHitItemsData](https://cloud.tencent.com/document/api/627/53609#IpHitItemsData)
+* [RuleList](https://cloud.tencent.com/document/api/627/53609#RuleList)
+* [WafThreatenIntelligenceDetails](https://cloud.tencent.com/document/api/627/53609#WafThreatenIntelligenceDetails)
 
 ### 第 5 次发布
 

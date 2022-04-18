@@ -36,7 +36,8 @@ class DcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AcceptDirectConnectTunnel", params)
+            headers = request.headers
+            body = self.call("AcceptDirectConnectTunnel", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AcceptDirectConnectTunnelResponse()
@@ -64,7 +65,8 @@ class DcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ApplyInternetAddress", params)
+            headers = request.headers
+            body = self.call("ApplyInternetAddress", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ApplyInternetAddressResponse()
@@ -95,7 +97,8 @@ class DcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateDirectConnect", params)
+            headers = request.headers
+            body = self.call("CreateDirectConnect", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateDirectConnectResponse()
@@ -123,7 +126,8 @@ class DcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateDirectConnectTunnel", params)
+            headers = request.headers
+            body = self.call("CreateDirectConnectTunnel", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateDirectConnectTunnelResponse()
@@ -152,7 +156,8 @@ class DcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteDirectConnect", params)
+            headers = request.headers
+            body = self.call("DeleteDirectConnect", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteDirectConnectResponse()
@@ -180,7 +185,8 @@ class DcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteDirectConnectTunnel", params)
+            headers = request.headers
+            body = self.call("DeleteDirectConnectTunnel", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteDirectConnectTunnelResponse()
@@ -208,7 +214,8 @@ class DcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAccessPoints", params)
+            headers = request.headers
+            body = self.call("DescribeAccessPoints", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAccessPointsResponse()
@@ -236,7 +243,8 @@ class DcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDirectConnectTunnelExtra", params)
+            headers = request.headers
+            body = self.call("DescribeDirectConnectTunnelExtra", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDirectConnectTunnelExtraResponse()
@@ -264,7 +272,8 @@ class DcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDirectConnectTunnels", params)
+            headers = request.headers
+            body = self.call("DescribeDirectConnectTunnels", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDirectConnectTunnelsResponse()
@@ -292,7 +301,8 @@ class DcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDirectConnects", params)
+            headers = request.headers
+            body = self.call("DescribeDirectConnects", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDirectConnectsResponse()
@@ -320,7 +330,8 @@ class DcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInternetAddress", params)
+            headers = request.headers
+            body = self.call("DescribeInternetAddress", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInternetAddressResponse()
@@ -348,7 +359,8 @@ class DcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInternetAddressQuota", params)
+            headers = request.headers
+            body = self.call("DescribeInternetAddressQuota", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInternetAddressQuotaResponse()
@@ -376,7 +388,8 @@ class DcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInternetAddressStatistics", params)
+            headers = request.headers
+            body = self.call("DescribeInternetAddressStatistics", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInternetAddressStatisticsResponse()
@@ -404,7 +417,8 @@ class DcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePublicDirectConnectTunnelRoutes", params)
+            headers = request.headers
+            body = self.call("DescribePublicDirectConnectTunnelRoutes", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePublicDirectConnectTunnelRoutesResponse()
@@ -432,7 +446,8 @@ class DcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DisableInternetAddress", params)
+            headers = request.headers
+            body = self.call("DisableInternetAddress", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DisableInternetAddressResponse()
@@ -460,7 +475,8 @@ class DcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("EnableInternetAddress", params)
+            headers = request.headers
+            body = self.call("EnableInternetAddress", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.EnableInternetAddressResponse()
@@ -488,7 +504,8 @@ class DcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyDirectConnectAttribute", params)
+            headers = request.headers
+            body = self.call("ModifyDirectConnectAttribute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDirectConnectAttributeResponse()
@@ -516,7 +533,8 @@ class DcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyDirectConnectTunnelAttribute", params)
+            headers = request.headers
+            body = self.call("ModifyDirectConnectTunnelAttribute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDirectConnectTunnelAttributeResponse()
@@ -544,7 +562,8 @@ class DcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyDirectConnectTunnelExtra", params)
+            headers = request.headers
+            body = self.call("ModifyDirectConnectTunnelExtra", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDirectConnectTunnelExtraResponse()
@@ -572,7 +591,8 @@ class DcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RejectDirectConnectTunnel", params)
+            headers = request.headers
+            body = self.call("RejectDirectConnectTunnel", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RejectDirectConnectTunnelResponse()
@@ -600,7 +620,8 @@ class DcClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ReleaseInternetAddress", params)
+            headers = request.headers
+            body = self.call("ReleaseInternetAddress", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ReleaseInternetAddressResponse()

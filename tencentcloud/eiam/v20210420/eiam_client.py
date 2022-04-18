@@ -36,7 +36,8 @@ class EiamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AddAccountToAccountGroup", params)
+            headers = request.headers
+            body = self.call("AddAccountToAccountGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AddAccountToAccountGroupResponse()
@@ -64,7 +65,8 @@ class EiamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AddUserToUserGroup", params)
+            headers = request.headers
+            body = self.call("AddUserToUserGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AddUserToUserGroupResponse()
@@ -92,7 +94,8 @@ class EiamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateAccountGroup", params)
+            headers = request.headers
+            body = self.call("CreateAccountGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateAccountGroupResponse()
@@ -120,7 +123,8 @@ class EiamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateAppAccount", params)
+            headers = request.headers
+            body = self.call("CreateAppAccount", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateAppAccountResponse()
@@ -148,7 +152,8 @@ class EiamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateOrgNode", params)
+            headers = request.headers
+            body = self.call("CreateOrgNode", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateOrgNodeResponse()
@@ -176,7 +181,8 @@ class EiamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateUser", params)
+            headers = request.headers
+            body = self.call("CreateUser", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateUserResponse()
@@ -204,7 +210,8 @@ class EiamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateUserGroup", params)
+            headers = request.headers
+            body = self.call("CreateUserGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateUserGroupResponse()
@@ -232,7 +239,8 @@ class EiamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteAccountGroup", params)
+            headers = request.headers
+            body = self.call("DeleteAccountGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteAccountGroupResponse()
@@ -260,7 +268,8 @@ class EiamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteAppAccount", params)
+            headers = request.headers
+            body = self.call("DeleteAppAccount", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteAppAccountResponse()
@@ -288,7 +297,8 @@ class EiamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteOrgNode", params)
+            headers = request.headers
+            body = self.call("DeleteOrgNode", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteOrgNodeResponse()
@@ -316,7 +326,8 @@ class EiamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteUser", params)
+            headers = request.headers
+            body = self.call("DeleteUser", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteUserResponse()
@@ -344,7 +355,8 @@ class EiamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteUserGroup", params)
+            headers = request.headers
+            body = self.call("DeleteUserGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteUserGroupResponse()
@@ -372,7 +384,8 @@ class EiamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteUsers", params)
+            headers = request.headers
+            body = self.call("DeleteUsers", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteUsersResponse()
@@ -400,7 +413,8 @@ class EiamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAccountGroup", params)
+            headers = request.headers
+            body = self.call("DescribeAccountGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAccountGroupResponse()
@@ -428,7 +442,8 @@ class EiamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAppAccount", params)
+            headers = request.headers
+            body = self.call("DescribeAppAccount", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAppAccountResponse()
@@ -456,7 +471,8 @@ class EiamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeApplication", params)
+            headers = request.headers
+            body = self.call("DescribeApplication", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeApplicationResponse()
@@ -484,7 +500,8 @@ class EiamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeOrgNode", params)
+            headers = request.headers
+            body = self.call("DescribeOrgNode", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeOrgNodeResponse()
@@ -512,7 +529,8 @@ class EiamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeOrgResourcesAuthorization", params)
+            headers = request.headers
+            body = self.call("DescribeOrgResourcesAuthorization", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeOrgResourcesAuthorizationResponse()
@@ -540,7 +558,8 @@ class EiamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePublicKey", params)
+            headers = request.headers
+            body = self.call("DescribePublicKey", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePublicKeyResponse()
@@ -568,7 +587,8 @@ class EiamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeUserGroup", params)
+            headers = request.headers
+            body = self.call("DescribeUserGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeUserGroupResponse()
@@ -596,7 +616,8 @@ class EiamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeUserGroupResourcesAuthorization", params)
+            headers = request.headers
+            body = self.call("DescribeUserGroupResourcesAuthorization", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeUserGroupResourcesAuthorizationResponse()
@@ -624,7 +645,8 @@ class EiamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeUserInfo", params)
+            headers = request.headers
+            body = self.call("DescribeUserInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeUserInfoResponse()
@@ -652,7 +674,8 @@ class EiamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeUserResourcesAuthorization", params)
+            headers = request.headers
+            body = self.call("DescribeUserResourcesAuthorization", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeUserResourcesAuthorizationResponse()
@@ -680,7 +703,8 @@ class EiamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeUserThirdPartyAccountInfo", params)
+            headers = request.headers
+            body = self.call("DescribeUserThirdPartyAccountInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeUserThirdPartyAccountInfoResponse()
@@ -708,7 +732,8 @@ class EiamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ListAccountInAccountGroup", params)
+            headers = request.headers
+            body = self.call("ListAccountInAccountGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListAccountInAccountGroupResponse()
@@ -736,7 +761,8 @@ class EiamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ListApplicationAuthorizations", params)
+            headers = request.headers
+            body = self.call("ListApplicationAuthorizations", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListApplicationAuthorizationsResponse()
@@ -764,7 +790,8 @@ class EiamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ListApplications", params)
+            headers = request.headers
+            body = self.call("ListApplications", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListApplicationsResponse()
@@ -792,7 +819,8 @@ class EiamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ListAuthorizedApplicationsToOrgNode", params)
+            headers = request.headers
+            body = self.call("ListAuthorizedApplicationsToOrgNode", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListAuthorizedApplicationsToOrgNodeResponse()
@@ -820,7 +848,8 @@ class EiamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ListAuthorizedApplicationsToUser", params)
+            headers = request.headers
+            body = self.call("ListAuthorizedApplicationsToUser", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListAuthorizedApplicationsToUserResponse()
@@ -848,7 +877,8 @@ class EiamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ListAuthorizedApplicationsToUserGroup", params)
+            headers = request.headers
+            body = self.call("ListAuthorizedApplicationsToUserGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListAuthorizedApplicationsToUserGroupResponse()
@@ -876,7 +906,8 @@ class EiamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ListUserGroups", params)
+            headers = request.headers
+            body = self.call("ListUserGroups", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListUserGroupsResponse()
@@ -904,7 +935,8 @@ class EiamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ListUserGroupsOfUser", params)
+            headers = request.headers
+            body = self.call("ListUserGroupsOfUser", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListUserGroupsOfUserResponse()
@@ -932,7 +964,8 @@ class EiamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ListUsers", params)
+            headers = request.headers
+            body = self.call("ListUsers", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListUsersResponse()
@@ -960,7 +993,8 @@ class EiamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ListUsersInOrgNode", params)
+            headers = request.headers
+            body = self.call("ListUsersInOrgNode", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListUsersInOrgNodeResponse()
@@ -988,7 +1022,8 @@ class EiamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ListUsersInUserGroup", params)
+            headers = request.headers
+            body = self.call("ListUsersInUserGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListUsersInUserGroupResponse()
@@ -1016,7 +1051,8 @@ class EiamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyAccountGroup", params)
+            headers = request.headers
+            body = self.call("ModifyAccountGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAccountGroupResponse()
@@ -1044,7 +1080,8 @@ class EiamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyAppAccount", params)
+            headers = request.headers
+            body = self.call("ModifyAppAccount", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAppAccountResponse()
@@ -1072,7 +1109,8 @@ class EiamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyApplication", params)
+            headers = request.headers
+            body = self.call("ModifyApplication", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyApplicationResponse()
@@ -1100,7 +1138,8 @@ class EiamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyUserInfo", params)
+            headers = request.headers
+            body = self.call("ModifyUserInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyUserInfoResponse()
@@ -1128,7 +1167,8 @@ class EiamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RemoveAccountFromAccountGroup", params)
+            headers = request.headers
+            body = self.call("RemoveAccountFromAccountGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RemoveAccountFromAccountGroupResponse()
@@ -1156,7 +1196,8 @@ class EiamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RemoveUserFromUserGroup", params)
+            headers = request.headers
+            body = self.call("RemoveUserFromUserGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RemoveUserFromUserGroupResponse()
@@ -1184,7 +1225,8 @@ class EiamClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateOrgNode", params)
+            headers = request.headers
+            body = self.call("UpdateOrgNode", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateOrgNodeResponse()

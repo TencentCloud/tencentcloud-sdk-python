@@ -36,7 +36,8 @@ class CmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AddTeamMember", params)
+            headers = request.headers
+            body = self.call("AddTeamMember", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AddTeamMemberResponse()
@@ -64,7 +65,8 @@ class CmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CopyProject", params)
+            headers = request.headers
+            body = self.call("CopyProject", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CopyProjectResponse()
@@ -92,7 +94,8 @@ class CmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateClass", params)
+            headers = request.headers
+            body = self.call("CreateClass", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateClassResponse()
@@ -120,7 +123,8 @@ class CmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateLink", params)
+            headers = request.headers
+            body = self.call("CreateLink", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateLinkResponse()
@@ -154,7 +158,8 @@ class CmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateProject", params)
+            headers = request.headers
+            body = self.call("CreateProject", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateProjectResponse()
@@ -182,7 +187,8 @@ class CmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateTeam", params)
+            headers = request.headers
+            body = self.call("CreateTeam", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateTeamResponse()
@@ -210,7 +216,8 @@ class CmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateVideoEncodingPreset", params)
+            headers = request.headers
+            body = self.call("CreateVideoEncodingPreset", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateVideoEncodingPresetResponse()
@@ -240,7 +247,8 @@ class CmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteClass", params)
+            headers = request.headers
+            body = self.call("DeleteClass", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteClassResponse()
@@ -268,7 +276,8 @@ class CmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteLoginStatus", params)
+            headers = request.headers
+            body = self.call("DeleteLoginStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteLoginStatusResponse()
@@ -296,7 +305,8 @@ class CmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteMaterial", params)
+            headers = request.headers
+            body = self.call("DeleteMaterial", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteMaterialResponse()
@@ -324,7 +334,8 @@ class CmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteProject", params)
+            headers = request.headers
+            body = self.call("DeleteProject", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteProjectResponse()
@@ -354,7 +365,8 @@ class CmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteTeam", params)
+            headers = request.headers
+            body = self.call("DeleteTeam", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteTeamResponse()
@@ -382,7 +394,8 @@ class CmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteTeamMembers", params)
+            headers = request.headers
+            body = self.call("DeleteTeamMembers", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteTeamMembersResponse()
@@ -410,7 +423,8 @@ class CmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteVideoEncodingPreset", params)
+            headers = request.headers
+            body = self.call("DeleteVideoEncodingPreset", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteVideoEncodingPresetResponse()
@@ -438,7 +452,8 @@ class CmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAccounts", params)
+            headers = request.headers
+            body = self.call("DescribeAccounts", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAccountsResponse()
@@ -466,7 +481,8 @@ class CmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeClass", params)
+            headers = request.headers
+            body = self.call("DescribeClass", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeClassResponse()
@@ -494,7 +510,8 @@ class CmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeJoinTeams", params)
+            headers = request.headers
+            body = self.call("DescribeJoinTeams", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeJoinTeamsResponse()
@@ -522,7 +539,8 @@ class CmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeLoginStatus", params)
+            headers = request.headers
+            body = self.call("DescribeLoginStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeLoginStatusResponse()
@@ -550,7 +568,8 @@ class CmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeMaterials", params)
+            headers = request.headers
+            body = self.call("DescribeMaterials", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeMaterialsResponse()
@@ -582,7 +601,8 @@ class CmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePlatforms", params)
+            headers = request.headers
+            body = self.call("DescribePlatforms", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePlatformsResponse()
@@ -610,7 +630,8 @@ class CmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeProjects", params)
+            headers = request.headers
+            body = self.call("DescribeProjects", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeProjectsResponse()
@@ -638,7 +659,8 @@ class CmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeResourceAuthorization", params)
+            headers = request.headers
+            body = self.call("DescribeResourceAuthorization", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeResourceAuthorizationResponse()
@@ -666,7 +688,8 @@ class CmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSharedSpace", params)
+            headers = request.headers
+            body = self.call("DescribeSharedSpace", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSharedSpaceResponse()
@@ -696,7 +719,8 @@ class CmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTaskDetail", params)
+            headers = request.headers
+            body = self.call("DescribeTaskDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTaskDetailResponse()
@@ -724,7 +748,8 @@ class CmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTasks", params)
+            headers = request.headers
+            body = self.call("DescribeTasks", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTasksResponse()
@@ -752,7 +777,8 @@ class CmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTeamMembers", params)
+            headers = request.headers
+            body = self.call("DescribeTeamMembers", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTeamMembersResponse()
@@ -780,7 +806,8 @@ class CmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTeams", params)
+            headers = request.headers
+            body = self.call("DescribeTeams", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTeamsResponse()
@@ -808,7 +835,8 @@ class CmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeVideoEncodingPresets", params)
+            headers = request.headers
+            body = self.call("DescribeVideoEncodingPresets", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeVideoEncodingPresetsResponse()
@@ -836,7 +864,8 @@ class CmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ExportVideoByEditorTrackData", params)
+            headers = request.headers
+            body = self.call("ExportVideoByEditorTrackData", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ExportVideoByEditorTrackDataResponse()
@@ -864,7 +893,8 @@ class CmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ExportVideoByTemplate", params)
+            headers = request.headers
+            body = self.call("ExportVideoByTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ExportVideoByTemplateResponse()
@@ -892,7 +922,8 @@ class CmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ExportVideoByVideoSegmentationData", params)
+            headers = request.headers
+            body = self.call("ExportVideoByVideoSegmentationData", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ExportVideoByVideoSegmentationDataResponse()
@@ -920,7 +951,8 @@ class CmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ExportVideoEditProject", params)
+            headers = request.headers
+            body = self.call("ExportVideoEditProject", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ExportVideoEditProjectResponse()
@@ -948,7 +980,8 @@ class CmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("FlattenListMedia", params)
+            headers = request.headers
+            body = self.call("FlattenListMedia", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.FlattenListMediaResponse()
@@ -978,7 +1011,8 @@ class CmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GenerateVideoSegmentationSchemeByAi", params)
+            headers = request.headers
+            body = self.call("GenerateVideoSegmentationSchemeByAi", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GenerateVideoSegmentationSchemeByAiResponse()
@@ -1006,7 +1040,8 @@ class CmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GrantResourceAuthorization", params)
+            headers = request.headers
+            body = self.call("GrantResourceAuthorization", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GrantResourceAuthorizationResponse()
@@ -1048,7 +1083,8 @@ class CmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("HandleStreamConnectProject", params)
+            headers = request.headers
+            body = self.call("HandleStreamConnectProject", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.HandleStreamConnectProjectResponse()
@@ -1076,7 +1112,8 @@ class CmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ImportMaterial", params)
+            headers = request.headers
+            body = self.call("ImportMaterial", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ImportMaterialResponse()
@@ -1104,7 +1141,8 @@ class CmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ImportMediaToProject", params)
+            headers = request.headers
+            body = self.call("ImportMediaToProject", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ImportMediaToProjectResponse()
@@ -1132,7 +1170,8 @@ class CmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ListMedia", params)
+            headers = request.headers
+            body = self.call("ListMedia", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ListMediaResponse()
@@ -1160,7 +1199,8 @@ class CmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyMaterial", params)
+            headers = request.headers
+            body = self.call("ModifyMaterial", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyMaterialResponse()
@@ -1188,7 +1228,8 @@ class CmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyProject", params)
+            headers = request.headers
+            body = self.call("ModifyProject", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyProjectResponse()
@@ -1217,7 +1258,8 @@ class CmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyTeam", params)
+            headers = request.headers
+            body = self.call("ModifyTeam", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyTeamResponse()
@@ -1245,7 +1287,8 @@ class CmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyTeamMember", params)
+            headers = request.headers
+            body = self.call("ModifyTeamMember", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyTeamMemberResponse()
@@ -1273,7 +1316,8 @@ class CmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyVideoEncodingPreset", params)
+            headers = request.headers
+            body = self.call("ModifyVideoEncodingPreset", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyVideoEncodingPresetResponse()
@@ -1304,7 +1348,8 @@ class CmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("MoveClass", params)
+            headers = request.headers
+            body = self.call("MoveClass", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.MoveClassResponse()
@@ -1337,7 +1382,8 @@ class CmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("MoveResource", params)
+            headers = request.headers
+            body = self.call("MoveResource", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.MoveResourceResponse()
@@ -1365,7 +1411,8 @@ class CmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ParseEvent", params)
+            headers = request.headers
+            body = self.call("ParseEvent", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ParseEventResponse()
@@ -1393,7 +1440,8 @@ class CmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RevokeResourceAuthorization", params)
+            headers = request.headers
+            body = self.call("RevokeResourceAuthorization", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RevokeResourceAuthorizationResponse()
@@ -1421,7 +1469,8 @@ class CmeClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SearchMaterial", params)
+            headers = request.headers
+            body = self.call("SearchMaterial", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SearchMaterialResponse()

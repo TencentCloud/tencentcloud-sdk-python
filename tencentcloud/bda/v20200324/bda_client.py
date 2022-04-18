@@ -42,7 +42,8 @@ class BdaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateGroup", params)
+            headers = request.headers
+            body = self.call("CreateGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateGroupResponse()
@@ -77,7 +78,8 @@ class BdaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreatePerson", params)
+            headers = request.headers
+            body = self.call("CreatePerson", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreatePersonResponse()
@@ -105,7 +107,8 @@ class BdaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateSegmentationTask", params)
+            headers = request.headers
+            body = self.call("CreateSegmentationTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateSegmentationTaskResponse()
@@ -140,7 +143,8 @@ class BdaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateTrace", params)
+            headers = request.headers
+            body = self.call("CreateTrace", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateTraceResponse()
@@ -168,7 +172,8 @@ class BdaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteGroup", params)
+            headers = request.headers
+            body = self.call("DeleteGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteGroupResponse()
@@ -196,7 +201,8 @@ class BdaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeletePerson", params)
+            headers = request.headers
+            body = self.call("DeletePerson", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeletePersonResponse()
@@ -224,7 +230,8 @@ class BdaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSegmentationTask", params)
+            headers = request.headers
+            body = self.call("DescribeSegmentationTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSegmentationTaskResponse()
@@ -252,7 +259,8 @@ class BdaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DetectBody", params)
+            headers = request.headers
+            body = self.call("DetectBody", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DetectBodyResponse()
@@ -280,7 +288,8 @@ class BdaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DetectBodyJoints", params)
+            headers = request.headers
+            body = self.call("DetectBodyJoints", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DetectBodyJointsResponse()
@@ -308,7 +317,8 @@ class BdaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetGroupList", params)
+            headers = request.headers
+            body = self.call("GetGroupList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetGroupListResponse()
@@ -336,7 +346,8 @@ class BdaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetPersonList", params)
+            headers = request.headers
+            body = self.call("GetPersonList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetPersonListResponse()
@@ -364,7 +375,8 @@ class BdaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetSummaryInfo", params)
+            headers = request.headers
+            body = self.call("GetSummaryInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetSummaryInfoResponse()
@@ -392,7 +404,8 @@ class BdaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyGroup", params)
+            headers = request.headers
+            body = self.call("ModifyGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyGroupResponse()
@@ -420,7 +433,8 @@ class BdaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyPersonInfo", params)
+            headers = request.headers
+            body = self.call("ModifyPersonInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyPersonInfoResponse()
@@ -455,7 +469,8 @@ class BdaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SearchTrace", params)
+            headers = request.headers
+            body = self.call("SearchTrace", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SearchTraceResponse()
@@ -483,7 +498,8 @@ class BdaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SegmentCustomizedPortraitPic", params)
+            headers = request.headers
+            body = self.call("SegmentCustomizedPortraitPic", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SegmentCustomizedPortraitPicResponse()
@@ -511,7 +527,8 @@ class BdaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SegmentPortraitPic", params)
+            headers = request.headers
+            body = self.call("SegmentPortraitPic", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SegmentPortraitPicResponse()
@@ -539,7 +556,8 @@ class BdaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("TerminateSegmentationTask", params)
+            headers = request.headers
+            body = self.call("TerminateSegmentationTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.TerminateSegmentationTaskResponse()

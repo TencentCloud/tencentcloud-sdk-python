@@ -36,7 +36,8 @@ class CfwClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AddAcRule", params)
+            headers = request.headers
+            body = self.call("AddAcRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AddAcRuleResponse()
@@ -64,7 +65,8 @@ class CfwClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AddEnterpriseSecurityGroupRules", params)
+            headers = request.headers
+            body = self.call("AddEnterpriseSecurityGroupRules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AddEnterpriseSecurityGroupRulesResponse()
@@ -92,7 +94,8 @@ class CfwClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateAcRules", params)
+            headers = request.headers
+            body = self.call("CreateAcRules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateAcRulesResponse()
@@ -120,7 +123,8 @@ class CfwClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateChooseVpcs", params)
+            headers = request.headers
+            body = self.call("CreateChooseVpcs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateChooseVpcsResponse()
@@ -148,7 +152,8 @@ class CfwClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateDatabaseWhiteListRules", params)
+            headers = request.headers
+            body = self.call("CreateDatabaseWhiteListRules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateDatabaseWhiteListRulesResponse()
@@ -176,7 +181,8 @@ class CfwClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateNatFwInstance", params)
+            headers = request.headers
+            body = self.call("CreateNatFwInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateNatFwInstanceResponse()
@@ -204,7 +210,8 @@ class CfwClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateNatFwInstanceWithDomain", params)
+            headers = request.headers
+            body = self.call("CreateNatFwInstanceWithDomain", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateNatFwInstanceWithDomainResponse()
@@ -232,7 +239,8 @@ class CfwClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateSecurityGroupApiRules", params)
+            headers = request.headers
+            body = self.call("CreateSecurityGroupApiRules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateSecurityGroupApiRulesResponse()
@@ -260,7 +268,8 @@ class CfwClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateSecurityGroupRules", params)
+            headers = request.headers
+            body = self.call("CreateSecurityGroupRules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateSecurityGroupRulesResponse()
@@ -288,7 +297,8 @@ class CfwClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteAcRule", params)
+            headers = request.headers
+            body = self.call("DeleteAcRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteAcRuleResponse()
@@ -316,7 +326,8 @@ class CfwClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteAllAccessControlRule", params)
+            headers = request.headers
+            body = self.call("DeleteAllAccessControlRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteAllAccessControlRuleResponse()
@@ -344,7 +355,8 @@ class CfwClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteNatFwInstance", params)
+            headers = request.headers
+            body = self.call("DeleteNatFwInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteNatFwInstanceResponse()
@@ -372,7 +384,8 @@ class CfwClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteResourceGroup", params)
+            headers = request.headers
+            body = self.call("DeleteResourceGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteResourceGroupResponse()
@@ -400,7 +413,8 @@ class CfwClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteSecurityGroupAllRule", params)
+            headers = request.headers
+            body = self.call("DeleteSecurityGroupAllRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteSecurityGroupAllRuleResponse()
@@ -428,7 +442,8 @@ class CfwClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteSecurityGroupRule", params)
+            headers = request.headers
+            body = self.call("DeleteSecurityGroupRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteSecurityGroupRuleResponse()
@@ -456,7 +471,8 @@ class CfwClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteVpcInstance", params)
+            headers = request.headers
+            body = self.call("DeleteVpcInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteVpcInstanceResponse()
@@ -484,7 +500,8 @@ class CfwClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAcLists", params)
+            headers = request.headers
+            body = self.call("DescribeAcLists", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAcListsResponse()
@@ -512,7 +529,8 @@ class CfwClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAddrTemplateList", params)
+            headers = request.headers
+            body = self.call("DescribeAddrTemplateList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAddrTemplateListResponse()
@@ -540,7 +558,8 @@ class CfwClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAssociatedInstanceList", params)
+            headers = request.headers
+            body = self.call("DescribeAssociatedInstanceList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAssociatedInstanceListResponse()
@@ -568,7 +587,8 @@ class CfwClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBlockByIpTimesList", params)
+            headers = request.headers
+            body = self.call("DescribeBlockByIpTimesList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBlockByIpTimesListResponse()
@@ -596,7 +616,8 @@ class CfwClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBlockStaticList", params)
+            headers = request.headers
+            body = self.call("DescribeBlockStaticList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBlockStaticListResponse()
@@ -624,7 +645,8 @@ class CfwClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCfwEips", params)
+            headers = request.headers
+            body = self.call("DescribeCfwEips", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCfwEipsResponse()
@@ -652,7 +674,8 @@ class CfwClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeEnterpriseSecurityGroupRule", params)
+            headers = request.headers
+            body = self.call("DescribeEnterpriseSecurityGroupRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeEnterpriseSecurityGroupRuleResponse()
@@ -680,7 +703,8 @@ class CfwClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeGuideScanInfo", params)
+            headers = request.headers
+            body = self.call("DescribeGuideScanInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeGuideScanInfoResponse()
@@ -708,7 +732,8 @@ class CfwClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeIPStatusList", params)
+            headers = request.headers
+            body = self.call("DescribeIPStatusList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeIPStatusListResponse()
@@ -736,7 +761,8 @@ class CfwClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeNatFwInfoCount", params)
+            headers = request.headers
+            body = self.call("DescribeNatFwInfoCount", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeNatFwInfoCountResponse()
@@ -764,7 +790,8 @@ class CfwClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeNatFwInstance", params)
+            headers = request.headers
+            body = self.call("DescribeNatFwInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeNatFwInstanceResponse()
@@ -792,7 +819,8 @@ class CfwClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeNatFwInstanceWithRegion", params)
+            headers = request.headers
+            body = self.call("DescribeNatFwInstanceWithRegion", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeNatFwInstanceWithRegionResponse()
@@ -820,7 +848,8 @@ class CfwClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeNatFwInstancesInfo", params)
+            headers = request.headers
+            body = self.call("DescribeNatFwInstancesInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeNatFwInstancesInfoResponse()
@@ -848,7 +877,8 @@ class CfwClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeNatFwVpcDnsLst", params)
+            headers = request.headers
+            body = self.call("DescribeNatFwVpcDnsLst", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeNatFwVpcDnsLstResponse()
@@ -876,7 +906,8 @@ class CfwClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeNatRuleOverview", params)
+            headers = request.headers
+            body = self.call("DescribeNatRuleOverview", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeNatRuleOverviewResponse()
@@ -904,7 +935,8 @@ class CfwClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeResourceGroup", params)
+            headers = request.headers
+            body = self.call("DescribeResourceGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeResourceGroupResponse()
@@ -932,7 +964,8 @@ class CfwClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeResourceGroupNew", params)
+            headers = request.headers
+            body = self.call("DescribeResourceGroupNew", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeResourceGroupNewResponse()
@@ -960,7 +993,8 @@ class CfwClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRuleOverview", params)
+            headers = request.headers
+            body = self.call("DescribeRuleOverview", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRuleOverviewResponse()
@@ -988,7 +1022,8 @@ class CfwClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSecurityGroupList", params)
+            headers = request.headers
+            body = self.call("DescribeSecurityGroupList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSecurityGroupListResponse()
@@ -1016,7 +1051,8 @@ class CfwClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSourceAsset", params)
+            headers = request.headers
+            body = self.call("DescribeSourceAsset", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSourceAssetResponse()
@@ -1044,7 +1080,8 @@ class CfwClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSwitchLists", params)
+            headers = request.headers
+            body = self.call("DescribeSwitchLists", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSwitchListsResponse()
@@ -1072,7 +1109,8 @@ class CfwClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSyncAssetStatus", params)
+            headers = request.headers
+            body = self.call("DescribeSyncAssetStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSyncAssetStatusResponse()
@@ -1100,7 +1138,8 @@ class CfwClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTLogInfo", params)
+            headers = request.headers
+            body = self.call("DescribeTLogInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTLogInfoResponse()
@@ -1128,7 +1167,8 @@ class CfwClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTLogIpList", params)
+            headers = request.headers
+            body = self.call("DescribeTLogIpList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTLogIpListResponse()
@@ -1156,7 +1196,8 @@ class CfwClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTableStatus", params)
+            headers = request.headers
+            body = self.call("DescribeTableStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTableStatusResponse()
@@ -1184,7 +1225,8 @@ class CfwClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeUnHandleEventTabList", params)
+            headers = request.headers
+            body = self.call("DescribeUnHandleEventTabList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeUnHandleEventTabListResponse()
@@ -1212,7 +1254,8 @@ class CfwClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeVpcRuleOverview", params)
+            headers = request.headers
+            body = self.call("DescribeVpcRuleOverview", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeVpcRuleOverviewResponse()
@@ -1240,7 +1283,8 @@ class CfwClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ExpandCfwVertical", params)
+            headers = request.headers
+            body = self.call("ExpandCfwVertical", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ExpandCfwVerticalResponse()
@@ -1268,7 +1312,8 @@ class CfwClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyAcRule", params)
+            headers = request.headers
+            body = self.call("ModifyAcRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAcRuleResponse()
@@ -1296,7 +1341,8 @@ class CfwClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyAllPublicIPSwitchStatus", params)
+            headers = request.headers
+            body = self.call("ModifyAllPublicIPSwitchStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAllPublicIPSwitchStatusResponse()
@@ -1324,7 +1370,8 @@ class CfwClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyAllRuleStatus", params)
+            headers = request.headers
+            body = self.call("ModifyAllRuleStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAllRuleStatusResponse()
@@ -1352,7 +1399,8 @@ class CfwClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyAllSwitchStatus", params)
+            headers = request.headers
+            body = self.call("ModifyAllSwitchStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAllSwitchStatusResponse()
@@ -1380,7 +1428,8 @@ class CfwClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyAllVPCSwitchStatus", params)
+            headers = request.headers
+            body = self.call("ModifyAllVPCSwitchStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAllVPCSwitchStatusResponse()
@@ -1408,7 +1457,8 @@ class CfwClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyAssetScan", params)
+            headers = request.headers
+            body = self.call("ModifyAssetScan", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAssetScanResponse()
@@ -1439,7 +1489,8 @@ class CfwClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyBlockIgnoreList", params)
+            headers = request.headers
+            body = self.call("ModifyBlockIgnoreList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyBlockIgnoreListResponse()
@@ -1467,7 +1518,8 @@ class CfwClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyBlockTop", params)
+            headers = request.headers
+            body = self.call("ModifyBlockTop", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyBlockTopResponse()
@@ -1495,7 +1547,8 @@ class CfwClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyItemSwitchStatus", params)
+            headers = request.headers
+            body = self.call("ModifyItemSwitchStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyItemSwitchStatusResponse()
@@ -1523,7 +1576,8 @@ class CfwClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyNatFwReSelect", params)
+            headers = request.headers
+            body = self.call("ModifyNatFwReSelect", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyNatFwReSelectResponse()
@@ -1551,7 +1605,8 @@ class CfwClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyNatFwSwitch", params)
+            headers = request.headers
+            body = self.call("ModifyNatFwSwitch", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyNatFwSwitchResponse()
@@ -1579,7 +1634,8 @@ class CfwClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyNatFwVpcDnsSwitch", params)
+            headers = request.headers
+            body = self.call("ModifyNatFwVpcDnsSwitch", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyNatFwVpcDnsSwitchResponse()
@@ -1607,7 +1663,8 @@ class CfwClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyPublicIPSwitchStatus", params)
+            headers = request.headers
+            body = self.call("ModifyPublicIPSwitchStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyPublicIPSwitchStatusResponse()
@@ -1636,7 +1693,8 @@ class CfwClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyResourceGroup", params)
+            headers = request.headers
+            body = self.call("ModifyResourceGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyResourceGroupResponse()
@@ -1664,7 +1722,8 @@ class CfwClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyRunSyncAsset", params)
+            headers = request.headers
+            body = self.call("ModifyRunSyncAsset", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyRunSyncAssetResponse()
@@ -1692,7 +1751,8 @@ class CfwClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifySecurityGroupAllRuleStatus", params)
+            headers = request.headers
+            body = self.call("ModifySecurityGroupAllRuleStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifySecurityGroupAllRuleStatusResponse()
@@ -1720,7 +1780,8 @@ class CfwClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifySecurityGroupItemRuleStatus", params)
+            headers = request.headers
+            body = self.call("ModifySecurityGroupItemRuleStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifySecurityGroupItemRuleStatusResponse()
@@ -1748,7 +1809,8 @@ class CfwClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifySecurityGroupRule", params)
+            headers = request.headers
+            body = self.call("ModifySecurityGroupRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifySecurityGroupRuleResponse()
@@ -1776,7 +1838,8 @@ class CfwClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifySecurityGroupSequenceRules", params)
+            headers = request.headers
+            body = self.call("ModifySecurityGroupSequenceRules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifySecurityGroupSequenceRulesResponse()
@@ -1804,7 +1867,8 @@ class CfwClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifySequenceRules", params)
+            headers = request.headers
+            body = self.call("ModifySequenceRules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifySequenceRulesResponse()
@@ -1832,7 +1896,8 @@ class CfwClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyTableStatus", params)
+            headers = request.headers
+            body = self.call("ModifyTableStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyTableStatusResponse()
@@ -1860,7 +1925,8 @@ class CfwClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyVPCSwitchStatus", params)
+            headers = request.headers
+            body = self.call("ModifyVPCSwitchStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyVPCSwitchStatusResponse()
@@ -1888,7 +1954,8 @@ class CfwClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RemoveAcRule", params)
+            headers = request.headers
+            body = self.call("RemoveAcRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RemoveAcRuleResponse()
@@ -1916,7 +1983,8 @@ class CfwClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RemoveEnterpriseSecurityGroupRule", params)
+            headers = request.headers
+            body = self.call("RemoveEnterpriseSecurityGroupRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RemoveEnterpriseSecurityGroupRuleResponse()
@@ -1944,7 +2012,8 @@ class CfwClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RunSyncAsset", params)
+            headers = request.headers
+            body = self.call("RunSyncAsset", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RunSyncAssetResponse()
@@ -1972,7 +2041,8 @@ class CfwClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SetNatFwDnatRule", params)
+            headers = request.headers
+            body = self.call("SetNatFwDnatRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SetNatFwDnatRuleResponse()
@@ -2000,7 +2070,8 @@ class CfwClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SetNatFwEip", params)
+            headers = request.headers
+            body = self.call("SetNatFwEip", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SetNatFwEipResponse()
@@ -2028,7 +2099,8 @@ class CfwClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("StopSecurityGroupRuleDispatch", params)
+            headers = request.headers
+            body = self.call("StopSecurityGroupRuleDispatch", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StopSecurityGroupRuleDispatchResponse()

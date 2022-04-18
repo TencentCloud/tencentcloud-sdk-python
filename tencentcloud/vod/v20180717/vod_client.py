@@ -38,7 +38,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ApplyUpload", params)
+            headers = request.headers
+            body = self.call("ApplyUpload", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ApplyUploadResponse()
@@ -66,7 +67,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AttachMediaSubtitles", params)
+            headers = request.headers
+            body = self.call("AttachMediaSubtitles", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AttachMediaSubtitlesResponse()
@@ -94,7 +96,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CommitUpload", params)
+            headers = request.headers
+            body = self.call("CommitUpload", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CommitUploadResponse()
@@ -128,7 +131,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ComposeMedia", params)
+            headers = request.headers
+            body = self.call("ComposeMedia", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ComposeMediaResponse()
@@ -158,7 +162,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ConfirmEvents", params)
+            headers = request.headers
+            body = self.call("ConfirmEvents", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ConfirmEventsResponse()
@@ -186,7 +191,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateAIAnalysisTemplate", params)
+            headers = request.headers
+            body = self.call("CreateAIAnalysisTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateAIAnalysisTemplateResponse()
@@ -214,7 +220,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateAIRecognitionTemplate", params)
+            headers = request.headers
+            body = self.call("CreateAIRecognitionTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateAIRecognitionTemplateResponse()
@@ -242,7 +249,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateAdaptiveDynamicStreamingTemplate", params)
+            headers = request.headers
+            body = self.call("CreateAdaptiveDynamicStreamingTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateAdaptiveDynamicStreamingTemplateResponse()
@@ -270,7 +278,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateAnimatedGraphicsTemplate", params)
+            headers = request.headers
+            body = self.call("CreateAnimatedGraphicsTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateAnimatedGraphicsTemplateResponse()
@@ -301,7 +310,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateClass", params)
+            headers = request.headers
+            body = self.call("CreateClass", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateClassResponse()
@@ -329,7 +339,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateContentReviewTemplate", params)
+            headers = request.headers
+            body = self.call("CreateContentReviewTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateContentReviewTemplateResponse()
@@ -357,7 +368,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateHeadTailTemplate", params)
+            headers = request.headers
+            body = self.call("CreateHeadTailTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateHeadTailTemplateResponse()
@@ -385,7 +397,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateImageProcessingTemplate", params)
+            headers = request.headers
+            body = self.call("CreateImageProcessingTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateImageProcessingTemplateResponse()
@@ -413,7 +426,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateImageSpriteTemplate", params)
+            headers = request.headers
+            body = self.call("CreateImageSpriteTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateImageSpriteTemplateResponse()
@@ -441,7 +455,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreatePersonSample", params)
+            headers = request.headers
+            body = self.call("CreatePersonSample", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreatePersonSampleResponse()
@@ -469,7 +484,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateProcedureTemplate", params)
+            headers = request.headers
+            body = self.call("CreateProcedureTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateProcedureTemplateResponse()
@@ -497,7 +513,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateSampleSnapshotTemplate", params)
+            headers = request.headers
+            body = self.call("CreateSampleSnapshotTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateSampleSnapshotTemplateResponse()
@@ -525,7 +542,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateSnapshotByTimeOffsetTemplate", params)
+            headers = request.headers
+            body = self.call("CreateSnapshotByTimeOffsetTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateSnapshotByTimeOffsetTemplateResponse()
@@ -555,7 +573,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateStorageRegion", params)
+            headers = request.headers
+            body = self.call("CreateStorageRegion", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateStorageRegionResponse()
@@ -583,7 +602,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateSubAppId", params)
+            headers = request.headers
+            body = self.call("CreateSubAppId", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateSubAppIdResponse()
@@ -611,7 +631,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateSuperPlayerConfig", params)
+            headers = request.headers
+            body = self.call("CreateSuperPlayerConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateSuperPlayerConfigResponse()
@@ -639,7 +660,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateTranscodeTemplate", params)
+            headers = request.headers
+            body = self.call("CreateTranscodeTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateTranscodeTemplateResponse()
@@ -668,7 +690,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateVodDomain", params)
+            headers = request.headers
+            body = self.call("CreateVodDomain", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateVodDomainResponse()
@@ -696,7 +719,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateWatermarkTemplate", params)
+            headers = request.headers
+            body = self.call("CreateWatermarkTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateWatermarkTemplateResponse()
@@ -724,7 +748,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateWordSamples", params)
+            headers = request.headers
+            body = self.call("CreateWordSamples", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateWordSamplesResponse()
@@ -754,7 +779,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteAIAnalysisTemplate", params)
+            headers = request.headers
+            body = self.call("DeleteAIAnalysisTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteAIAnalysisTemplateResponse()
@@ -782,7 +808,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteAIRecognitionTemplate", params)
+            headers = request.headers
+            body = self.call("DeleteAIRecognitionTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteAIRecognitionTemplateResponse()
@@ -810,7 +837,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteAdaptiveDynamicStreamingTemplate", params)
+            headers = request.headers
+            body = self.call("DeleteAdaptiveDynamicStreamingTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteAdaptiveDynamicStreamingTemplateResponse()
@@ -838,7 +866,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteAnimatedGraphicsTemplate", params)
+            headers = request.headers
+            body = self.call("DeleteAnimatedGraphicsTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteAnimatedGraphicsTemplateResponse()
@@ -867,7 +896,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteClass", params)
+            headers = request.headers
+            body = self.call("DeleteClass", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteClassResponse()
@@ -895,7 +925,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteContentReviewTemplate", params)
+            headers = request.headers
+            body = self.call("DeleteContentReviewTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteContentReviewTemplateResponse()
@@ -923,7 +954,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteHeadTailTemplate", params)
+            headers = request.headers
+            body = self.call("DeleteHeadTailTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteHeadTailTemplateResponse()
@@ -951,7 +983,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteImageProcessingTemplate", params)
+            headers = request.headers
+            body = self.call("DeleteImageProcessingTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteImageProcessingTemplateResponse()
@@ -979,7 +1012,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteImageSpriteTemplate", params)
+            headers = request.headers
+            body = self.call("DeleteImageSpriteTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteImageSpriteTemplateResponse()
@@ -1009,7 +1043,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteMedia", params)
+            headers = request.headers
+            body = self.call("DeleteMedia", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteMediaResponse()
@@ -1037,7 +1072,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeletePersonSample", params)
+            headers = request.headers
+            body = self.call("DeletePersonSample", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeletePersonSampleResponse()
@@ -1065,7 +1101,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteProcedureTemplate", params)
+            headers = request.headers
+            body = self.call("DeleteProcedureTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteProcedureTemplateResponse()
@@ -1093,7 +1130,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteSampleSnapshotTemplate", params)
+            headers = request.headers
+            body = self.call("DeleteSampleSnapshotTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteSampleSnapshotTemplateResponse()
@@ -1121,7 +1159,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteSnapshotByTimeOffsetTemplate", params)
+            headers = request.headers
+            body = self.call("DeleteSnapshotByTimeOffsetTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteSnapshotByTimeOffsetTemplateResponse()
@@ -1150,7 +1189,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteSuperPlayerConfig", params)
+            headers = request.headers
+            body = self.call("DeleteSuperPlayerConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteSuperPlayerConfigResponse()
@@ -1178,7 +1218,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteTranscodeTemplate", params)
+            headers = request.headers
+            body = self.call("DeleteTranscodeTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteTranscodeTemplateResponse()
@@ -1207,7 +1248,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteVodDomain", params)
+            headers = request.headers
+            body = self.call("DeleteVodDomain", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteVodDomainResponse()
@@ -1235,7 +1277,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteWatermarkTemplate", params)
+            headers = request.headers
+            body = self.call("DeleteWatermarkTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteWatermarkTemplateResponse()
@@ -1263,7 +1306,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteWordSamples", params)
+            headers = request.headers
+            body = self.call("DeleteWordSamples", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteWordSamplesResponse()
@@ -1291,7 +1335,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAIAnalysisTemplates", params)
+            headers = request.headers
+            body = self.call("DescribeAIAnalysisTemplates", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAIAnalysisTemplatesResponse()
@@ -1319,7 +1364,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAIRecognitionTemplates", params)
+            headers = request.headers
+            body = self.call("DescribeAIRecognitionTemplates", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAIRecognitionTemplatesResponse()
@@ -1347,7 +1393,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAdaptiveDynamicStreamingTemplates", params)
+            headers = request.headers
+            body = self.call("DescribeAdaptiveDynamicStreamingTemplates", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAdaptiveDynamicStreamingTemplatesResponse()
@@ -1375,7 +1422,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAllClass", params)
+            headers = request.headers
+            body = self.call("DescribeAllClass", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAllClassResponse()
@@ -1403,7 +1451,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAnimatedGraphicsTemplates", params)
+            headers = request.headers
+            body = self.call("DescribeAnimatedGraphicsTemplates", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAnimatedGraphicsTemplatesResponse()
@@ -1434,7 +1483,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCDNStatDetails", params)
+            headers = request.headers
+            body = self.call("DescribeCDNStatDetails", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCDNStatDetailsResponse()
@@ -1466,7 +1516,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCDNUsageData", params)
+            headers = request.headers
+            body = self.call("DescribeCDNUsageData", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCDNUsageDataResponse()
@@ -1497,7 +1548,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCdnLogs", params)
+            headers = request.headers
+            body = self.call("DescribeCdnLogs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCdnLogsResponse()
@@ -1525,7 +1577,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeContentReviewTemplates", params)
+            headers = request.headers
+            body = self.call("DescribeContentReviewTemplates", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeContentReviewTemplatesResponse()
@@ -1555,7 +1608,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDailyMediaPlayStat", params)
+            headers = request.headers
+            body = self.call("DescribeDailyMediaPlayStat", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDailyMediaPlayStatResponse()
@@ -1588,7 +1642,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDailyMostPlayedStat", params)
+            headers = request.headers
+            body = self.call("DescribeDailyMostPlayedStat", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDailyMostPlayedStatResponse()
@@ -1623,7 +1678,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDailyPlayStatFileList", params)
+            headers = request.headers
+            body = self.call("DescribeDailyPlayStatFileList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDailyPlayStatFileListResponse()
@@ -1652,7 +1708,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDrmDataKey", params)
+            headers = request.headers
+            body = self.call("DescribeDrmDataKey", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDrmDataKeyResponse()
@@ -1684,7 +1741,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeEventConfig", params)
+            headers = request.headers
+            body = self.call("DescribeEventConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeEventConfigResponse()
@@ -1712,7 +1770,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeEventsState", params)
+            headers = request.headers
+            body = self.call("DescribeEventsState", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeEventsStateResponse()
@@ -1740,7 +1799,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeHeadTailTemplates", params)
+            headers = request.headers
+            body = self.call("DescribeHeadTailTemplates", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeHeadTailTemplatesResponse()
@@ -1768,7 +1828,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeImageProcessingTemplates", params)
+            headers = request.headers
+            body = self.call("DescribeImageProcessingTemplates", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeImageProcessingTemplatesResponse()
@@ -1796,7 +1857,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeImageSpriteTemplates", params)
+            headers = request.headers
+            body = self.call("DescribeImageSpriteTemplates", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeImageSpriteTemplatesResponse()
@@ -1834,7 +1896,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeMediaInfos", params)
+            headers = request.headers
+            body = self.call("DescribeMediaInfos", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeMediaInfosResponse()
@@ -1865,7 +1928,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeMediaPlayStatDetails", params)
+            headers = request.headers
+            body = self.call("DescribeMediaPlayStatDetails", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeMediaPlayStatDetailsResponse()
@@ -1895,7 +1959,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeMediaProcessUsageData", params)
+            headers = request.headers
+            body = self.call("DescribeMediaProcessUsageData", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeMediaProcessUsageDataResponse()
@@ -1923,7 +1988,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePersonSamples", params)
+            headers = request.headers
+            body = self.call("DescribePersonSamples", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePersonSamplesResponse()
@@ -1953,7 +2019,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePrepaidProducts", params)
+            headers = request.headers
+            body = self.call("DescribePrepaidProducts", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePrepaidProductsResponse()
@@ -1981,7 +2048,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeProcedureTemplates", params)
+            headers = request.headers
+            body = self.call("DescribeProcedureTemplates", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeProcedureTemplatesResponse()
@@ -2014,7 +2082,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeReviewDetails", params)
+            headers = request.headers
+            body = self.call("DescribeReviewDetails", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeReviewDetailsResponse()
@@ -2042,7 +2111,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSampleSnapshotTemplates", params)
+            headers = request.headers
+            body = self.call("DescribeSampleSnapshotTemplates", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSampleSnapshotTemplatesResponse()
@@ -2070,7 +2140,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSnapshotByTimeOffsetTemplates", params)
+            headers = request.headers
+            body = self.call("DescribeSnapshotByTimeOffsetTemplates", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSnapshotByTimeOffsetTemplatesResponse()
@@ -2098,7 +2169,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeStorageData", params)
+            headers = request.headers
+            body = self.call("DescribeStorageData", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeStorageDataResponse()
@@ -2129,7 +2201,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeStorageDetails", params)
+            headers = request.headers
+            body = self.call("DescribeStorageDetails", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeStorageDetailsResponse()
@@ -2160,7 +2233,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeStorageRegions", params)
+            headers = request.headers
+            body = self.call("DescribeStorageRegions", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeStorageRegionsResponse()
@@ -2188,7 +2262,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSubAppIds", params)
+            headers = request.headers
+            body = self.call("DescribeSubAppIds", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSubAppIdsResponse()
@@ -2216,7 +2291,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSuperPlayerConfigs", params)
+            headers = request.headers
+            body = self.call("DescribeSuperPlayerConfigs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSuperPlayerConfigsResponse()
@@ -2244,7 +2320,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTaskDetail", params)
+            headers = request.headers
+            body = self.call("DescribeTaskDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTaskDetailResponse()
@@ -2274,7 +2351,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTasks", params)
+            headers = request.headers
+            body = self.call("DescribeTasks", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTasksResponse()
@@ -2302,7 +2380,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTranscodeTemplates", params)
+            headers = request.headers
+            body = self.call("DescribeTranscodeTemplates", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTranscodeTemplatesResponse()
@@ -2330,7 +2409,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeVodDomains", params)
+            headers = request.headers
+            body = self.call("DescribeVodDomains", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeVodDomainsResponse()
@@ -2358,7 +2438,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeWatermarkTemplates", params)
+            headers = request.headers
+            body = self.call("DescribeWatermarkTemplates", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeWatermarkTemplatesResponse()
@@ -2386,7 +2467,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeWordSamples", params)
+            headers = request.headers
+            body = self.call("DescribeWordSamples", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeWordSamplesResponse()
@@ -2428,7 +2510,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("EditMedia", params)
+            headers = request.headers
+            body = self.call("EditMedia", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.EditMediaResponse()
@@ -2456,7 +2539,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ExecuteFunction", params)
+            headers = request.headers
+            body = self.call("ExecuteFunction", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ExecuteFunctionResponse()
@@ -2485,7 +2569,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ForbidMediaDistribution", params)
+            headers = request.headers
+            body = self.call("ForbidMediaDistribution", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ForbidMediaDistributionResponse()
@@ -2536,7 +2621,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("LiveRealTimeClip", params)
+            headers = request.headers
+            body = self.call("LiveRealTimeClip", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.LiveRealTimeClipResponse()
@@ -2564,7 +2650,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ManageTask", params)
+            headers = request.headers
+            body = self.call("ManageTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ManageTaskResponse()
@@ -2594,7 +2681,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyAIAnalysisTemplate", params)
+            headers = request.headers
+            body = self.call("ModifyAIAnalysisTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAIAnalysisTemplateResponse()
@@ -2622,7 +2710,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyAIRecognitionTemplate", params)
+            headers = request.headers
+            body = self.call("ModifyAIRecognitionTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAIRecognitionTemplateResponse()
@@ -2650,7 +2739,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyAdaptiveDynamicStreamingTemplate", params)
+            headers = request.headers
+            body = self.call("ModifyAdaptiveDynamicStreamingTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAdaptiveDynamicStreamingTemplateResponse()
@@ -2678,7 +2768,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyAnimatedGraphicsTemplate", params)
+            headers = request.headers
+            body = self.call("ModifyAnimatedGraphicsTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAnimatedGraphicsTemplateResponse()
@@ -2706,7 +2797,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyClass", params)
+            headers = request.headers
+            body = self.call("ModifyClass", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyClassResponse()
@@ -2734,7 +2826,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyContentReviewTemplate", params)
+            headers = request.headers
+            body = self.call("ModifyContentReviewTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyContentReviewTemplateResponse()
@@ -2762,7 +2855,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyDefaultStorageRegion", params)
+            headers = request.headers
+            body = self.call("ModifyDefaultStorageRegion", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDefaultStorageRegionResponse()
@@ -2795,7 +2889,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyEventConfig", params)
+            headers = request.headers
+            body = self.call("ModifyEventConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyEventConfigResponse()
@@ -2823,7 +2918,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyHeadTailTemplate", params)
+            headers = request.headers
+            body = self.call("ModifyHeadTailTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyHeadTailTemplateResponse()
@@ -2851,7 +2947,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyImageSpriteTemplate", params)
+            headers = request.headers
+            body = self.call("ModifyImageSpriteTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyImageSpriteTemplateResponse()
@@ -2879,7 +2976,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyMediaInfo", params)
+            headers = request.headers
+            body = self.call("ModifyMediaInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyMediaInfoResponse()
@@ -2919,7 +3017,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyMediaStorageClass", params)
+            headers = request.headers
+            body = self.call("ModifyMediaStorageClass", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyMediaStorageClassResponse()
@@ -2947,7 +3046,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyPersonSample", params)
+            headers = request.headers
+            body = self.call("ModifyPersonSample", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyPersonSampleResponse()
@@ -2975,7 +3075,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifySampleSnapshotTemplate", params)
+            headers = request.headers
+            body = self.call("ModifySampleSnapshotTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifySampleSnapshotTemplateResponse()
@@ -3003,7 +3104,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifySnapshotByTimeOffsetTemplate", params)
+            headers = request.headers
+            body = self.call("ModifySnapshotByTimeOffsetTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifySnapshotByTimeOffsetTemplateResponse()
@@ -3031,7 +3133,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifySubAppIdInfo", params)
+            headers = request.headers
+            body = self.call("ModifySubAppIdInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifySubAppIdInfoResponse()
@@ -3059,7 +3162,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifySubAppIdStatus", params)
+            headers = request.headers
+            body = self.call("ModifySubAppIdStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifySubAppIdStatusResponse()
@@ -3087,7 +3191,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifySuperPlayerConfig", params)
+            headers = request.headers
+            body = self.call("ModifySuperPlayerConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifySuperPlayerConfigResponse()
@@ -3115,7 +3220,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyTranscodeTemplate", params)
+            headers = request.headers
+            body = self.call("ModifyTranscodeTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyTranscodeTemplateResponse()
@@ -3144,7 +3250,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyVodDomainAccelerateConfig", params)
+            headers = request.headers
+            body = self.call("ModifyVodDomainAccelerateConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyVodDomainAccelerateConfigResponse()
@@ -3173,7 +3280,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyVodDomainConfig", params)
+            headers = request.headers
+            body = self.call("ModifyVodDomainConfig", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyVodDomainConfigResponse()
@@ -3201,7 +3309,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyWatermarkTemplate", params)
+            headers = request.headers
+            body = self.call("ModifyWatermarkTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyWatermarkTemplateResponse()
@@ -3229,7 +3338,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyWordSample", params)
+            headers = request.headers
+            body = self.call("ModifyWordSample", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyWordSampleResponse()
@@ -3257,7 +3367,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ParseStreamingManifest", params)
+            headers = request.headers
+            body = self.call("ParseStreamingManifest", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ParseStreamingManifestResponse()
@@ -3291,7 +3402,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ProcessImage", params)
+            headers = request.headers
+            body = self.call("ProcessImage", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ProcessImageResponse()
@@ -3331,7 +3443,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ProcessMedia", params)
+            headers = request.headers
+            body = self.call("ProcessMedia", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ProcessMediaResponse()
@@ -3364,7 +3477,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ProcessMediaByProcedure", params)
+            headers = request.headers
+            body = self.call("ProcessMediaByProcedure", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ProcessMediaByProcedureResponse()
@@ -3392,7 +3506,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ProcessMediaByUrl", params)
+            headers = request.headers
+            body = self.call("ProcessMediaByUrl", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ProcessMediaByUrlResponse()
@@ -3425,7 +3540,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("PullEvents", params)
+            headers = request.headers
+            body = self.call("PullEvents", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.PullEventsResponse()
@@ -3453,7 +3569,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("PullUpload", params)
+            headers = request.headers
+            body = self.call("PullUpload", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.PullUploadResponse()
@@ -3483,7 +3600,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("PushUrlCache", params)
+            headers = request.headers
+            body = self.call("PushUrlCache", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.PushUrlCacheResponse()
@@ -3511,7 +3629,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ResetProcedureTemplate", params)
+            headers = request.headers
+            body = self.call("ResetProcedureTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ResetProcedureTemplateResponse()
@@ -3572,7 +3691,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SearchMedia", params)
+            headers = request.headers
+            body = self.call("SearchMedia", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SearchMediaResponse()
@@ -3622,7 +3742,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SimpleHlsClip", params)
+            headers = request.headers
+            body = self.call("SimpleHlsClip", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SimpleHlsClipResponse()
@@ -3650,7 +3771,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SplitMedia", params)
+            headers = request.headers
+            body = self.call("SplitMedia", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SplitMediaResponse()
@@ -3678,7 +3800,8 @@ class VodClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("WeChatMiniProgramPublish", params)
+            headers = request.headers
+            body = self.call("WeChatMiniProgramPublish", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.WeChatMiniProgramPublishResponse()

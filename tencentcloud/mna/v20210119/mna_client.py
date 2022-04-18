@@ -36,7 +36,8 @@ class MnaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateQos", params)
+            headers = request.headers
+            body = self.call("CreateQos", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateQosResponse()
@@ -64,7 +65,8 @@ class MnaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteQos", params)
+            headers = request.headers
+            body = self.call("DeleteQos", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteQosResponse()
@@ -92,7 +94,8 @@ class MnaClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeQos", params)
+            headers = request.headers
+            body = self.call("DescribeQos", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeQosResponse()

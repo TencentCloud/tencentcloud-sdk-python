@@ -36,7 +36,8 @@ class NlpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AutoSummarization", params)
+            headers = request.headers
+            body = self.call("AutoSummarization", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AutoSummarizationResponse()
@@ -65,7 +66,8 @@ class NlpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ChatBot", params)
+            headers = request.headers
+            body = self.call("ChatBot", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ChatBotResponse()
@@ -93,7 +95,8 @@ class NlpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateDict", params)
+            headers = request.headers
+            body = self.call("CreateDict", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateDictResponse()
@@ -121,7 +124,8 @@ class NlpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateWordItems", params)
+            headers = request.headers
+            body = self.call("CreateWordItems", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateWordItemsResponse()
@@ -149,7 +153,8 @@ class NlpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteDict", params)
+            headers = request.headers
+            body = self.call("DeleteDict", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteDictResponse()
@@ -177,7 +182,8 @@ class NlpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteWordItems", params)
+            headers = request.headers
+            body = self.call("DeleteWordItems", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteWordItemsResponse()
@@ -205,7 +211,8 @@ class NlpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DependencyParsing", params)
+            headers = request.headers
+            body = self.call("DependencyParsing", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DependencyParsingResponse()
@@ -233,7 +240,8 @@ class NlpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDict", params)
+            headers = request.headers
+            body = self.call("DescribeDict", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDictResponse()
@@ -261,7 +269,8 @@ class NlpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDicts", params)
+            headers = request.headers
+            body = self.call("DescribeDicts", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDictsResponse()
@@ -289,7 +298,8 @@ class NlpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeWordItems", params)
+            headers = request.headers
+            body = self.call("DescribeWordItems", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeWordItemsResponse()
@@ -317,7 +327,8 @@ class NlpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("KeywordsExtraction", params)
+            headers = request.headers
+            body = self.call("KeywordsExtraction", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.KeywordsExtractionResponse()
@@ -353,7 +364,8 @@ class NlpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("LexicalAnalysis", params)
+            headers = request.headers
+            body = self.call("LexicalAnalysis", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.LexicalAnalysisResponse()
@@ -381,7 +393,8 @@ class NlpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SearchWordItems", params)
+            headers = request.headers
+            body = self.call("SearchWordItems", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SearchWordItemsResponse()
@@ -411,7 +424,8 @@ class NlpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SentenceEmbedding", params)
+            headers = request.headers
+            body = self.call("SentenceEmbedding", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SentenceEmbeddingResponse()
@@ -441,7 +455,8 @@ class NlpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SentimentAnalysis", params)
+            headers = request.headers
+            body = self.call("SentimentAnalysis", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SentimentAnalysisResponse()
@@ -469,7 +484,8 @@ class NlpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SimilarWords", params)
+            headers = request.headers
+            body = self.call("SimilarWords", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SimilarWordsResponse()
@@ -503,7 +519,8 @@ class NlpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("TextClassification", params)
+            headers = request.headers
+            body = self.call("TextClassification", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.TextClassificationResponse()
@@ -533,7 +550,8 @@ class NlpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("TextCorrection", params)
+            headers = request.headers
+            body = self.call("TextCorrection", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.TextCorrectionResponse()
@@ -563,7 +581,8 @@ class NlpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("TextCorrectionPro", params)
+            headers = request.headers
+            body = self.call("TextCorrectionPro", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.TextCorrectionProResponse()
@@ -595,7 +614,8 @@ class NlpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("TextSimilarity", params)
+            headers = request.headers
+            body = self.call("TextSimilarity", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.TextSimilarityResponse()
@@ -627,7 +647,8 @@ class NlpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("TextSimilarityPro", params)
+            headers = request.headers
+            body = self.call("TextSimilarityPro", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.TextSimilarityProResponse()
@@ -655,7 +676,8 @@ class NlpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateDict", params)
+            headers = request.headers
+            body = self.call("UpdateDict", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateDictResponse()
@@ -691,7 +713,8 @@ class NlpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("WordEmbedding", params)
+            headers = request.headers
+            body = self.call("WordEmbedding", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.WordEmbeddingResponse()
@@ -719,7 +742,8 @@ class NlpClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("WordSimilarity", params)
+            headers = request.headers
+            body = self.call("WordSimilarity", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.WordSimilarityResponse()

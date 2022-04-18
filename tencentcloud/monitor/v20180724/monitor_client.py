@@ -36,7 +36,8 @@ class MonitorClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("BindingPolicyObject", params)
+            headers = request.headers
+            body = self.call("BindingPolicyObject", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.BindingPolicyObjectResponse()
@@ -64,7 +65,8 @@ class MonitorClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("BindingPolicyTag", params)
+            headers = request.headers
+            body = self.call("BindingPolicyTag", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.BindingPolicyTagResponse()
@@ -92,7 +94,8 @@ class MonitorClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateAlarmNotice", params)
+            headers = request.headers
+            body = self.call("CreateAlarmNotice", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateAlarmNoticeResponse()
@@ -120,7 +123,8 @@ class MonitorClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateAlarmPolicy", params)
+            headers = request.headers
+            body = self.call("CreateAlarmPolicy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateAlarmPolicyResponse()
@@ -150,7 +154,8 @@ class MonitorClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateAlertRule", params)
+            headers = request.headers
+            body = self.call("CreateAlertRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateAlertRuleResponse()
@@ -178,7 +183,8 @@ class MonitorClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreatePolicyGroup", params)
+            headers = request.headers
+            body = self.call("CreatePolicyGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreatePolicyGroupResponse()
@@ -208,7 +214,8 @@ class MonitorClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateServiceDiscovery", params)
+            headers = request.headers
+            body = self.call("CreateServiceDiscovery", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateServiceDiscoveryResponse()
@@ -236,7 +243,8 @@ class MonitorClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteAlarmNotices", params)
+            headers = request.headers
+            body = self.call("DeleteAlarmNotices", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteAlarmNoticesResponse()
@@ -264,7 +272,8 @@ class MonitorClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteAlarmPolicy", params)
+            headers = request.headers
+            body = self.call("DeleteAlarmPolicy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteAlarmPolicyResponse()
@@ -292,7 +301,8 @@ class MonitorClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteAlertRules", params)
+            headers = request.headers
+            body = self.call("DeleteAlertRules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteAlertRulesResponse()
@@ -320,7 +330,8 @@ class MonitorClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeletePolicyGroup", params)
+            headers = request.headers
+            body = self.call("DeletePolicyGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeletePolicyGroupResponse()
@@ -350,7 +361,8 @@ class MonitorClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteServiceDiscovery", params)
+            headers = request.headers
+            body = self.call("DeleteServiceDiscovery", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteServiceDiscoveryResponse()
@@ -378,7 +390,8 @@ class MonitorClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAccidentEventList", params)
+            headers = request.headers
+            body = self.call("DescribeAccidentEventList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAccidentEventListResponse()
@@ -406,7 +419,8 @@ class MonitorClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAlarmEvents", params)
+            headers = request.headers
+            body = self.call("DescribeAlarmEvents", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAlarmEventsResponse()
@@ -436,7 +450,8 @@ class MonitorClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAlarmHistories", params)
+            headers = request.headers
+            body = self.call("DescribeAlarmHistories", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAlarmHistoriesResponse()
@@ -464,7 +479,8 @@ class MonitorClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAlarmMetrics", params)
+            headers = request.headers
+            body = self.call("DescribeAlarmMetrics", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAlarmMetricsResponse()
@@ -492,7 +508,8 @@ class MonitorClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAlarmNotice", params)
+            headers = request.headers
+            body = self.call("DescribeAlarmNotice", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAlarmNoticeResponse()
@@ -520,7 +537,8 @@ class MonitorClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAlarmNoticeCallbacks", params)
+            headers = request.headers
+            body = self.call("DescribeAlarmNoticeCallbacks", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAlarmNoticeCallbacksResponse()
@@ -548,7 +566,8 @@ class MonitorClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAlarmNotices", params)
+            headers = request.headers
+            body = self.call("DescribeAlarmNotices", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAlarmNoticesResponse()
@@ -576,7 +595,8 @@ class MonitorClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAlarmPolicies", params)
+            headers = request.headers
+            body = self.call("DescribeAlarmPolicies", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAlarmPoliciesResponse()
@@ -604,7 +624,8 @@ class MonitorClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAlarmPolicy", params)
+            headers = request.headers
+            body = self.call("DescribeAlarmPolicy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAlarmPolicyResponse()
@@ -632,7 +653,8 @@ class MonitorClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAlertRules", params)
+            headers = request.headers
+            body = self.call("DescribeAlertRules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAlertRulesResponse()
@@ -660,7 +682,8 @@ class MonitorClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAllNamespaces", params)
+            headers = request.headers
+            body = self.call("DescribeAllNamespaces", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAllNamespacesResponse()
@@ -688,7 +711,8 @@ class MonitorClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBaseMetrics", params)
+            headers = request.headers
+            body = self.call("DescribeBaseMetrics", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBaseMetricsResponse()
@@ -716,7 +740,8 @@ class MonitorClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBasicAlarmList", params)
+            headers = request.headers
+            body = self.call("DescribeBasicAlarmList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBasicAlarmListResponse()
@@ -744,7 +769,8 @@ class MonitorClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBindingPolicyObjectList", params)
+            headers = request.headers
+            body = self.call("DescribeBindingPolicyObjectList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBindingPolicyObjectListResponse()
@@ -772,7 +798,8 @@ class MonitorClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeConditionsTemplateList", params)
+            headers = request.headers
+            body = self.call("DescribeConditionsTemplateList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeConditionsTemplateListResponse()
@@ -800,7 +827,8 @@ class MonitorClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeMonitorTypes", params)
+            headers = request.headers
+            body = self.call("DescribeMonitorTypes", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeMonitorTypesResponse()
@@ -828,7 +856,8 @@ class MonitorClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePolicyConditionList", params)
+            headers = request.headers
+            body = self.call("DescribePolicyConditionList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePolicyConditionListResponse()
@@ -856,7 +885,8 @@ class MonitorClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePolicyGroupInfo", params)
+            headers = request.headers
+            body = self.call("DescribePolicyGroupInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePolicyGroupInfoResponse()
@@ -884,7 +914,8 @@ class MonitorClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePolicyGroupList", params)
+            headers = request.headers
+            body = self.call("DescribePolicyGroupList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePolicyGroupListResponse()
@@ -912,7 +943,8 @@ class MonitorClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeProductEventList", params)
+            headers = request.headers
+            body = self.call("DescribeProductEventList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeProductEventListResponse()
@@ -940,7 +972,8 @@ class MonitorClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeProductList", params)
+            headers = request.headers
+            body = self.call("DescribeProductList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeProductListResponse()
@@ -972,7 +1005,8 @@ class MonitorClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePrometheusInstances", params)
+            headers = request.headers
+            body = self.call("DescribePrometheusInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePrometheusInstancesResponse()
@@ -1002,7 +1036,8 @@ class MonitorClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeServiceDiscovery", params)
+            headers = request.headers
+            body = self.call("DescribeServiceDiscovery", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeServiceDiscoveryResponse()
@@ -1030,7 +1065,8 @@ class MonitorClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeStatisticData", params)
+            headers = request.headers
+            body = self.call("DescribeStatisticData", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeStatisticDataResponse()
@@ -1061,7 +1097,8 @@ class MonitorClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetMonitorData", params)
+            headers = request.headers
+            body = self.call("GetMonitorData", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetMonitorDataResponse()
@@ -1089,7 +1126,8 @@ class MonitorClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyAlarmNotice", params)
+            headers = request.headers
+            body = self.call("ModifyAlarmNotice", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAlarmNoticeResponse()
@@ -1117,7 +1155,8 @@ class MonitorClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyAlarmPolicyCondition", params)
+            headers = request.headers
+            body = self.call("ModifyAlarmPolicyCondition", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAlarmPolicyConditionResponse()
@@ -1145,7 +1184,8 @@ class MonitorClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyAlarmPolicyInfo", params)
+            headers = request.headers
+            body = self.call("ModifyAlarmPolicyInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAlarmPolicyInfoResponse()
@@ -1173,7 +1213,8 @@ class MonitorClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyAlarmPolicyNotice", params)
+            headers = request.headers
+            body = self.call("ModifyAlarmPolicyNotice", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAlarmPolicyNoticeResponse()
@@ -1201,7 +1242,8 @@ class MonitorClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyAlarmPolicyStatus", params)
+            headers = request.headers
+            body = self.call("ModifyAlarmPolicyStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAlarmPolicyStatusResponse()
@@ -1229,7 +1271,8 @@ class MonitorClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyAlarmPolicyTasks", params)
+            headers = request.headers
+            body = self.call("ModifyAlarmPolicyTasks", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAlarmPolicyTasksResponse()
@@ -1257,7 +1300,8 @@ class MonitorClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyAlarmReceivers", params)
+            headers = request.headers
+            body = self.call("ModifyAlarmReceivers", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAlarmReceiversResponse()
@@ -1285,7 +1329,8 @@ class MonitorClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyPolicyGroup", params)
+            headers = request.headers
+            body = self.call("ModifyPolicyGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyPolicyGroupResponse()
@@ -1319,7 +1364,8 @@ class MonitorClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("PutMonitorData", params)
+            headers = request.headers
+            body = self.call("PutMonitorData", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.PutMonitorDataResponse()
@@ -1347,7 +1393,8 @@ class MonitorClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SendCustomAlarmMsg", params)
+            headers = request.headers
+            body = self.call("SendCustomAlarmMsg", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SendCustomAlarmMsgResponse()
@@ -1376,7 +1423,8 @@ class MonitorClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SetDefaultAlarmPolicy", params)
+            headers = request.headers
+            body = self.call("SetDefaultAlarmPolicy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SetDefaultAlarmPolicyResponse()
@@ -1404,7 +1452,8 @@ class MonitorClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UnBindingAllPolicyObject", params)
+            headers = request.headers
+            body = self.call("UnBindingAllPolicyObject", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UnBindingAllPolicyObjectResponse()
@@ -1432,7 +1481,8 @@ class MonitorClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UnBindingPolicyObject", params)
+            headers = request.headers
+            body = self.call("UnBindingPolicyObject", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UnBindingPolicyObjectResponse()
@@ -1462,7 +1512,8 @@ class MonitorClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateAlertRule", params)
+            headers = request.headers
+            body = self.call("UpdateAlertRule", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateAlertRuleResponse()
@@ -1490,7 +1541,8 @@ class MonitorClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateAlertRuleState", params)
+            headers = request.headers
+            body = self.call("UpdateAlertRuleState", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateAlertRuleStateResponse()
@@ -1520,7 +1572,8 @@ class MonitorClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateServiceDiscovery", params)
+            headers = request.headers
+            body = self.call("UpdateServiceDiscovery", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateServiceDiscoveryResponse()

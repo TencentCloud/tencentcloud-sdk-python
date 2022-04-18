@@ -36,7 +36,8 @@ class IottidClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AuthTestTid", params)
+            headers = request.headers
+            body = self.call("AuthTestTid", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AuthTestTidResponse()
@@ -64,7 +65,8 @@ class IottidClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("BurnTidNotify", params)
+            headers = request.headers
+            body = self.call("BurnTidNotify", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.BurnTidNotifyResponse()
@@ -92,7 +94,8 @@ class IottidClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeliverTidNotify", params)
+            headers = request.headers
+            body = self.call("DeliverTidNotify", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeliverTidNotifyResponse()
@@ -120,7 +123,8 @@ class IottidClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeliverTids", params)
+            headers = request.headers
+            body = self.call("DeliverTids", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeliverTidsResponse()
@@ -148,7 +152,8 @@ class IottidClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeAvailableLibCount", params)
+            headers = request.headers
+            body = self.call("DescribeAvailableLibCount", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeAvailableLibCountResponse()
@@ -176,7 +181,8 @@ class IottidClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribePermission", params)
+            headers = request.headers
+            body = self.call("DescribePermission", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePermissionResponse()
@@ -204,7 +210,8 @@ class IottidClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DownloadTids", params)
+            headers = request.headers
+            body = self.call("DownloadTids", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DownloadTidsResponse()
@@ -232,7 +239,8 @@ class IottidClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UploadDeviceUniqueCode", params)
+            headers = request.headers
+            body = self.call("UploadDeviceUniqueCode", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UploadDeviceUniqueCodeResponse()
@@ -260,7 +268,8 @@ class IottidClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("VerifyChipBurnInfo", params)
+            headers = request.headers
+            body = self.call("VerifyChipBurnInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.VerifyChipBurnInfoResponse()

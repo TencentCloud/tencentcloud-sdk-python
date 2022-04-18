@@ -36,7 +36,8 @@ class WavClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateChannelCode", params)
+            headers = request.headers
+            body = self.call("CreateChannelCode", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateChannelCodeResponse()
@@ -64,7 +65,8 @@ class WavClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateCorpTag", params)
+            headers = request.headers
+            body = self.call("CreateCorpTag", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateCorpTagResponse()
@@ -92,7 +94,8 @@ class WavClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateLead", params)
+            headers = request.headers
+            body = self.call("CreateLead", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateLeadResponse()
@@ -120,7 +123,8 @@ class WavClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryActivityJoinList", params)
+            headers = request.headers
+            body = self.call("QueryActivityJoinList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryActivityJoinListResponse()
@@ -148,7 +152,8 @@ class WavClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryActivityList", params)
+            headers = request.headers
+            body = self.call("QueryActivityList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryActivityListResponse()
@@ -176,7 +181,8 @@ class WavClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryActivityLiveCodeList", params)
+            headers = request.headers
+            body = self.call("QueryActivityLiveCodeList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryActivityLiveCodeListResponse()
@@ -204,7 +210,8 @@ class WavClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryChannelCodeList", params)
+            headers = request.headers
+            body = self.call("QueryChannelCodeList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryChannelCodeListResponse()
@@ -232,7 +239,8 @@ class WavClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryChatArchivingList", params)
+            headers = request.headers
+            body = self.call("QueryChatArchivingList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryChatArchivingListResponse()
@@ -260,7 +268,8 @@ class WavClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryClueInfoList", params)
+            headers = request.headers
+            body = self.call("QueryClueInfoList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryClueInfoListResponse()
@@ -288,7 +297,8 @@ class WavClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryCrmStatistics", params)
+            headers = request.headers
+            body = self.call("QueryCrmStatistics", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryCrmStatisticsResponse()
@@ -316,7 +326,8 @@ class WavClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryCustomerEventDetailStatistics", params)
+            headers = request.headers
+            body = self.call("QueryCustomerEventDetailStatistics", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryCustomerEventDetailStatisticsResponse()
@@ -344,7 +355,8 @@ class WavClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryDealerInfoList", params)
+            headers = request.headers
+            body = self.call("QueryDealerInfoList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryDealerInfoListResponse()
@@ -372,7 +384,8 @@ class WavClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryExternalContactDetail", params)
+            headers = request.headers
+            body = self.call("QueryExternalContactDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryExternalContactDetailResponse()
@@ -400,7 +413,8 @@ class WavClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryExternalContactList", params)
+            headers = request.headers
+            body = self.call("QueryExternalContactList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryExternalContactListResponse()
@@ -428,7 +442,8 @@ class WavClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryExternalUserEventList", params)
+            headers = request.headers
+            body = self.call("QueryExternalUserEventList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryExternalUserEventListResponse()
@@ -456,7 +471,8 @@ class WavClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryExternalUserMappingInfo", params)
+            headers = request.headers
+            body = self.call("QueryExternalUserMappingInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryExternalUserMappingInfoResponse()
@@ -484,7 +500,8 @@ class WavClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryLicenseInfo", params)
+            headers = request.headers
+            body = self.call("QueryLicenseInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryLicenseInfoResponse()
@@ -512,7 +529,8 @@ class WavClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryMaterialList", params)
+            headers = request.headers
+            body = self.call("QueryMaterialList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryMaterialListResponse()
@@ -540,7 +558,8 @@ class WavClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryMiniAppCodeList", params)
+            headers = request.headers
+            body = self.call("QueryMiniAppCodeList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryMiniAppCodeListResponse()
@@ -568,7 +587,8 @@ class WavClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryStaffEventDetailStatistics", params)
+            headers = request.headers
+            body = self.call("QueryStaffEventDetailStatistics", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryStaffEventDetailStatisticsResponse()
@@ -596,7 +616,8 @@ class WavClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryUserInfoList", params)
+            headers = request.headers
+            body = self.call("QueryUserInfoList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryUserInfoListResponse()
@@ -624,7 +645,8 @@ class WavClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryVehicleInfoList", params)
+            headers = request.headers
+            body = self.call("QueryVehicleInfoList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryVehicleInfoListResponse()

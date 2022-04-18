@@ -39,7 +39,8 @@ class TicClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ApplyStack", params)
+            headers = request.headers
+            body = self.call("ApplyStack", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ApplyStackResponse()
@@ -67,7 +68,8 @@ class TicClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateStack", params)
+            headers = request.headers
+            body = self.call("CreateStack", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateStackResponse()
@@ -95,7 +97,8 @@ class TicClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateStackVersion", params)
+            headers = request.headers
+            body = self.call("CreateStackVersion", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateStackVersionResponse()
@@ -123,7 +126,8 @@ class TicClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteStack", params)
+            headers = request.headers
+            body = self.call("DeleteStack", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteStackResponse()
@@ -151,7 +155,8 @@ class TicClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteStackVersion", params)
+            headers = request.headers
+            body = self.call("DeleteStackVersion", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteStackVersionResponse()
@@ -179,7 +184,8 @@ class TicClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeStackEvent", params)
+            headers = request.headers
+            body = self.call("DescribeStackEvent", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeStackEventResponse()
@@ -211,7 +217,8 @@ class TicClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeStackEvents", params)
+            headers = request.headers
+            body = self.call("DescribeStackEvents", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeStackEventsResponse()
@@ -243,7 +250,8 @@ class TicClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeStackVersions", params)
+            headers = request.headers
+            body = self.call("DescribeStackVersions", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeStackVersionsResponse()
@@ -274,7 +282,8 @@ class TicClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeStacks", params)
+            headers = request.headers
+            body = self.call("DescribeStacks", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeStacksResponse()
@@ -302,7 +311,8 @@ class TicClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DestroyStack", params)
+            headers = request.headers
+            body = self.call("DestroyStack", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DestroyStackResponse()
@@ -333,7 +343,8 @@ class TicClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("PlanStack", params)
+            headers = request.headers
+            body = self.call("PlanStack", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.PlanStackResponse()
@@ -361,7 +372,8 @@ class TicClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateStack", params)
+            headers = request.headers
+            body = self.call("UpdateStack", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateStackResponse()
@@ -389,7 +401,8 @@ class TicClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateStackVersion", params)
+            headers = request.headers
+            body = self.call("UpdateStackVersion", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateStackVersionResponse()

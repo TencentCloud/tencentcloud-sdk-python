@@ -36,7 +36,8 @@ class AmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CancelTask", params)
+            headers = request.headers
+            body = self.call("CancelTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CancelTaskResponse()
@@ -76,7 +77,8 @@ class AmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateAudioModerationSyncTask", params)
+            headers = request.headers
+            body = self.call("CreateAudioModerationSyncTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateAudioModerationSyncTaskResponse()
@@ -128,7 +130,8 @@ class AmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateAudioModerationTask", params)
+            headers = request.headers
+            body = self.call("CreateAudioModerationTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateAudioModerationTaskResponse()
@@ -156,7 +159,8 @@ class AmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTaskDetail", params)
+            headers = request.headers
+            body = self.call("DescribeTaskDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTaskDetailResponse()
@@ -184,7 +188,8 @@ class AmsClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTasks", params)
+            headers = request.headers
+            body = self.call("DescribeTasks", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTasksResponse()

@@ -36,7 +36,8 @@ class TdidClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateCredential", params)
+            headers = request.headers
+            body = self.call("CreateCredential", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateCredentialResponse()
@@ -64,7 +65,8 @@ class TdidClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateSelectiveCredential", params)
+            headers = request.headers
+            body = self.call("CreateSelectiveCredential", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateSelectiveCredentialResponse()
@@ -92,7 +94,8 @@ class TdidClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateTDid", params)
+            headers = request.headers
+            body = self.call("CreateTDid", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateTDidResponse()
@@ -120,7 +123,8 @@ class TdidClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateTDidByPublicKey", params)
+            headers = request.headers
+            body = self.call("CreateTDidByPublicKey", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateTDidByPublicKeyResponse()
@@ -148,7 +152,8 @@ class TdidClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetAuthorityIssuer", params)
+            headers = request.headers
+            body = self.call("GetAuthorityIssuer", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetAuthorityIssuerResponse()
@@ -176,7 +181,8 @@ class TdidClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetDidDocument", params)
+            headers = request.headers
+            body = self.call("GetDidDocument", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetDidDocumentResponse()
@@ -204,7 +210,8 @@ class TdidClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SetCredentialStatus", params)
+            headers = request.headers
+            body = self.call("SetCredentialStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SetCredentialStatusResponse()
@@ -232,7 +239,8 @@ class TdidClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("VerifyCredential", params)
+            headers = request.headers
+            body = self.call("VerifyCredential", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.VerifyCredentialResponse()

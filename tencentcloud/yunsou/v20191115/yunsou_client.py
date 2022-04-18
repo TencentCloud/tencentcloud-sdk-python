@@ -36,7 +36,8 @@ class YunsouClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DataManipulation", params)
+            headers = request.headers
+            body = self.call("DataManipulation", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DataManipulationResponse()
@@ -64,7 +65,8 @@ class YunsouClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DataSearch", params)
+            headers = request.headers
+            body = self.call("DataSearch", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DataSearchResponse()

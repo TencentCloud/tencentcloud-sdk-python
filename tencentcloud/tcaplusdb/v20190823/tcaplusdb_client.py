@@ -36,7 +36,8 @@ class TcaplusdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ClearTables", params)
+            headers = request.headers
+            body = self.call("ClearTables", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ClearTablesResponse()
@@ -64,7 +65,8 @@ class TcaplusdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CompareIdlFiles", params)
+            headers = request.headers
+            body = self.call("CompareIdlFiles", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CompareIdlFilesResponse()
@@ -92,7 +94,8 @@ class TcaplusdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateBackup", params)
+            headers = request.headers
+            body = self.call("CreateBackup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateBackupResponse()
@@ -120,7 +123,8 @@ class TcaplusdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateCluster", params)
+            headers = request.headers
+            body = self.call("CreateCluster", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateClusterResponse()
@@ -148,7 +152,8 @@ class TcaplusdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateSnapshots", params)
+            headers = request.headers
+            body = self.call("CreateSnapshots", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateSnapshotsResponse()
@@ -176,7 +181,8 @@ class TcaplusdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateTableGroup", params)
+            headers = request.headers
+            body = self.call("CreateTableGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateTableGroupResponse()
@@ -204,7 +210,8 @@ class TcaplusdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateTables", params)
+            headers = request.headers
+            body = self.call("CreateTables", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateTablesResponse()
@@ -232,7 +239,8 @@ class TcaplusdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteCluster", params)
+            headers = request.headers
+            body = self.call("DeleteCluster", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteClusterResponse()
@@ -260,7 +268,8 @@ class TcaplusdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteIdlFiles", params)
+            headers = request.headers
+            body = self.call("DeleteIdlFiles", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteIdlFilesResponse()
@@ -288,7 +297,8 @@ class TcaplusdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteSnapshots", params)
+            headers = request.headers
+            body = self.call("DeleteSnapshots", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteSnapshotsResponse()
@@ -316,7 +326,8 @@ class TcaplusdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteTableDataFlow", params)
+            headers = request.headers
+            body = self.call("DeleteTableDataFlow", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteTableDataFlowResponse()
@@ -344,7 +355,8 @@ class TcaplusdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteTableGroup", params)
+            headers = request.headers
+            body = self.call("DeleteTableGroup", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteTableGroupResponse()
@@ -372,7 +384,8 @@ class TcaplusdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteTableIndex", params)
+            headers = request.headers
+            body = self.call("DeleteTableIndex", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteTableIndexResponse()
@@ -400,7 +413,8 @@ class TcaplusdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteTables", params)
+            headers = request.headers
+            body = self.call("DeleteTables", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteTablesResponse()
@@ -428,7 +442,8 @@ class TcaplusdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeApplications", params)
+            headers = request.headers
+            body = self.call("DescribeApplications", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeApplicationsResponse()
@@ -456,7 +471,8 @@ class TcaplusdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeClusterTags", params)
+            headers = request.headers
+            body = self.call("DescribeClusterTags", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeClusterTagsResponse()
@@ -484,7 +500,8 @@ class TcaplusdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeClusters", params)
+            headers = request.headers
+            body = self.call("DescribeClusters", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeClustersResponse()
@@ -512,7 +529,8 @@ class TcaplusdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeIdlFileInfos", params)
+            headers = request.headers
+            body = self.call("DescribeIdlFileInfos", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeIdlFileInfosResponse()
@@ -540,7 +558,8 @@ class TcaplusdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeMachine", params)
+            headers = request.headers
+            body = self.call("DescribeMachine", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeMachineResponse()
@@ -568,7 +587,8 @@ class TcaplusdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRegions", params)
+            headers = request.headers
+            body = self.call("DescribeRegions", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRegionsResponse()
@@ -596,7 +616,8 @@ class TcaplusdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSnapshots", params)
+            headers = request.headers
+            body = self.call("DescribeSnapshots", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSnapshotsResponse()
@@ -624,7 +645,8 @@ class TcaplusdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTableGroupTags", params)
+            headers = request.headers
+            body = self.call("DescribeTableGroupTags", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTableGroupTagsResponse()
@@ -652,7 +674,8 @@ class TcaplusdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTableGroups", params)
+            headers = request.headers
+            body = self.call("DescribeTableGroups", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTableGroupsResponse()
@@ -680,7 +703,8 @@ class TcaplusdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTableTags", params)
+            headers = request.headers
+            body = self.call("DescribeTableTags", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTableTagsResponse()
@@ -708,7 +732,8 @@ class TcaplusdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTables", params)
+            headers = request.headers
+            body = self.call("DescribeTables", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTablesResponse()
@@ -736,7 +761,8 @@ class TcaplusdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTablesInRecycle", params)
+            headers = request.headers
+            body = self.call("DescribeTablesInRecycle", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTablesInRecycleResponse()
@@ -764,7 +790,8 @@ class TcaplusdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeTasks", params)
+            headers = request.headers
+            body = self.call("DescribeTasks", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTasksResponse()
@@ -792,7 +819,8 @@ class TcaplusdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeUinInWhitelist", params)
+            headers = request.headers
+            body = self.call("DescribeUinInWhitelist", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeUinInWhitelistResponse()
@@ -820,7 +848,8 @@ class TcaplusdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DisableRestProxy", params)
+            headers = request.headers
+            body = self.call("DisableRestProxy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DisableRestProxyResponse()
@@ -848,7 +877,8 @@ class TcaplusdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("EnableRestProxy", params)
+            headers = request.headers
+            body = self.call("EnableRestProxy", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.EnableRestProxyResponse()
@@ -876,7 +906,8 @@ class TcaplusdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ImportSnapshots", params)
+            headers = request.headers
+            body = self.call("ImportSnapshots", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ImportSnapshotsResponse()
@@ -904,7 +935,8 @@ class TcaplusdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("MergeTablesData", params)
+            headers = request.headers
+            body = self.call("MergeTablesData", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.MergeTablesDataResponse()
@@ -932,7 +964,8 @@ class TcaplusdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyCensorship", params)
+            headers = request.headers
+            body = self.call("ModifyCensorship", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyCensorshipResponse()
@@ -960,7 +993,8 @@ class TcaplusdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyClusterMachine", params)
+            headers = request.headers
+            body = self.call("ModifyClusterMachine", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyClusterMachineResponse()
@@ -988,7 +1022,8 @@ class TcaplusdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyClusterName", params)
+            headers = request.headers
+            body = self.call("ModifyClusterName", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyClusterNameResponse()
@@ -1016,7 +1051,8 @@ class TcaplusdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyClusterPassword", params)
+            headers = request.headers
+            body = self.call("ModifyClusterPassword", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyClusterPasswordResponse()
@@ -1044,7 +1080,8 @@ class TcaplusdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyClusterTags", params)
+            headers = request.headers
+            body = self.call("ModifyClusterTags", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyClusterTagsResponse()
@@ -1072,7 +1109,8 @@ class TcaplusdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifySnapshots", params)
+            headers = request.headers
+            body = self.call("ModifySnapshots", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifySnapshotsResponse()
@@ -1100,7 +1138,8 @@ class TcaplusdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyTableGroupName", params)
+            headers = request.headers
+            body = self.call("ModifyTableGroupName", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyTableGroupNameResponse()
@@ -1128,7 +1167,8 @@ class TcaplusdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyTableGroupTags", params)
+            headers = request.headers
+            body = self.call("ModifyTableGroupTags", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyTableGroupTagsResponse()
@@ -1156,7 +1196,8 @@ class TcaplusdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyTableMemos", params)
+            headers = request.headers
+            body = self.call("ModifyTableMemos", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyTableMemosResponse()
@@ -1184,7 +1225,8 @@ class TcaplusdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyTableQuotas", params)
+            headers = request.headers
+            body = self.call("ModifyTableQuotas", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyTableQuotasResponse()
@@ -1212,7 +1254,8 @@ class TcaplusdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyTableTags", params)
+            headers = request.headers
+            body = self.call("ModifyTableTags", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyTableTagsResponse()
@@ -1240,7 +1283,8 @@ class TcaplusdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyTables", params)
+            headers = request.headers
+            body = self.call("ModifyTables", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyTablesResponse()
@@ -1268,7 +1312,8 @@ class TcaplusdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RecoverRecycleTables", params)
+            headers = request.headers
+            body = self.call("RecoverRecycleTables", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RecoverRecycleTablesResponse()
@@ -1296,7 +1341,8 @@ class TcaplusdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RollbackTables", params)
+            headers = request.headers
+            body = self.call("RollbackTables", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RollbackTablesResponse()
@@ -1324,7 +1370,8 @@ class TcaplusdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SetTableDataFlow", params)
+            headers = request.headers
+            body = self.call("SetTableDataFlow", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SetTableDataFlowResponse()
@@ -1352,7 +1399,8 @@ class TcaplusdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("SetTableIndex", params)
+            headers = request.headers
+            body = self.call("SetTableIndex", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SetTableIndexResponse()
@@ -1380,7 +1428,8 @@ class TcaplusdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("UpdateApply", params)
+            headers = request.headers
+            body = self.call("UpdateApply", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateApplyResponse()
@@ -1408,7 +1457,8 @@ class TcaplusdbClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("VerifyIdlFiles", params)
+            headers = request.headers
+            body = self.call("VerifyIdlFiles", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.VerifyIdlFilesResponse()

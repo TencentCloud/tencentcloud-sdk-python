@@ -36,7 +36,8 @@ class FmuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("BeautifyPic", params)
+            headers = request.headers
+            body = self.call("BeautifyPic", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.BeautifyPicResponse()
@@ -64,7 +65,8 @@ class FmuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("BeautifyVideo", params)
+            headers = request.headers
+            body = self.call("BeautifyVideo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.BeautifyVideoResponse()
@@ -92,7 +94,8 @@ class FmuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CancelBeautifyVideoJob", params)
+            headers = request.headers
+            body = self.call("CancelBeautifyVideoJob", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CancelBeautifyVideoJobResponse()
@@ -122,7 +125,8 @@ class FmuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateModel", params)
+            headers = request.headers
+            body = self.call("CreateModel", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateModelResponse()
@@ -150,7 +154,8 @@ class FmuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteModel", params)
+            headers = request.headers
+            body = self.call("DeleteModel", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteModelResponse()
@@ -178,7 +183,8 @@ class FmuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("GetModelList", params)
+            headers = request.headers
+            body = self.call("GetModelList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetModelListResponse()
@@ -206,7 +212,8 @@ class FmuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("QueryBeautifyVideoJob", params)
+            headers = request.headers
+            body = self.call("QueryBeautifyVideoJob", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryBeautifyVideoJobResponse()
@@ -234,7 +241,8 @@ class FmuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("StyleImage", params)
+            headers = request.headers
+            body = self.call("StyleImage", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StyleImageResponse()
@@ -262,7 +270,8 @@ class FmuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("StyleImagePro", params)
+            headers = request.headers
+            body = self.call("StyleImagePro", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StyleImageProResponse()
@@ -297,7 +306,8 @@ class FmuClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("TryLipstickPic", params)
+            headers = request.headers
+            body = self.call("TryLipstickPic", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.TryLipstickPicResponse()

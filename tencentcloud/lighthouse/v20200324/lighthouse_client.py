@@ -39,7 +39,8 @@ class LighthouseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ApplyInstanceSnapshot", params)
+            headers = request.headers
+            body = self.call("ApplyInstanceSnapshot", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ApplyInstanceSnapshotResponse()
@@ -73,7 +74,8 @@ class LighthouseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AssociateInstancesKeyPairs", params)
+            headers = request.headers
+            body = self.call("AssociateInstancesKeyPairs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AssociateInstancesKeyPairsResponse()
@@ -101,7 +103,8 @@ class LighthouseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AttachCcn", params)
+            headers = request.headers
+            body = self.call("AttachCcn", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AttachCcnResponse()
@@ -129,7 +132,8 @@ class LighthouseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("AttachDisks", params)
+            headers = request.headers
+            body = self.call("AttachDisks", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.AttachDisksResponse()
@@ -157,7 +161,8 @@ class LighthouseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateBlueprint", params)
+            headers = request.headers
+            body = self.call("CreateBlueprint", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateBlueprintResponse()
@@ -195,7 +200,8 @@ class LighthouseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateFirewallRules", params)
+            headers = request.headers
+            body = self.call("CreateFirewallRules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateFirewallRulesResponse()
@@ -223,7 +229,8 @@ class LighthouseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateInstanceSnapshot", params)
+            headers = request.headers
+            body = self.call("CreateInstanceSnapshot", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateInstanceSnapshotResponse()
@@ -251,7 +258,8 @@ class LighthouseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateInstances", params)
+            headers = request.headers
+            body = self.call("CreateInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateInstancesResponse()
@@ -279,7 +287,8 @@ class LighthouseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("CreateKeyPair", params)
+            headers = request.headers
+            body = self.call("CreateKeyPair", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateKeyPairResponse()
@@ -307,7 +316,8 @@ class LighthouseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteBlueprints", params)
+            headers = request.headers
+            body = self.call("DeleteBlueprints", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteBlueprintsResponse()
@@ -344,7 +354,8 @@ class LighthouseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteFirewallRules", params)
+            headers = request.headers
+            body = self.call("DeleteFirewallRules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteFirewallRulesResponse()
@@ -372,7 +383,8 @@ class LighthouseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteKeyPairs", params)
+            headers = request.headers
+            body = self.call("DeleteKeyPairs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteKeyPairsResponse()
@@ -401,7 +413,8 @@ class LighthouseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DeleteSnapshots", params)
+            headers = request.headers
+            body = self.call("DeleteSnapshots", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteSnapshotsResponse()
@@ -429,7 +442,8 @@ class LighthouseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBlueprintInstances", params)
+            headers = request.headers
+            body = self.call("DescribeBlueprintInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBlueprintInstancesResponse()
@@ -457,7 +471,8 @@ class LighthouseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBlueprints", params)
+            headers = request.headers
+            body = self.call("DescribeBlueprints", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBlueprintsResponse()
@@ -485,7 +500,8 @@ class LighthouseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBundleDiscount", params)
+            headers = request.headers
+            body = self.call("DescribeBundleDiscount", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBundleDiscountResponse()
@@ -513,7 +529,8 @@ class LighthouseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeBundles", params)
+            headers = request.headers
+            body = self.call("DescribeBundles", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBundlesResponse()
@@ -541,7 +558,8 @@ class LighthouseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeCcnAttachedInstances", params)
+            headers = request.headers
+            body = self.call("DescribeCcnAttachedInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCcnAttachedInstancesResponse()
@@ -569,7 +587,8 @@ class LighthouseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDiskConfigs", params)
+            headers = request.headers
+            body = self.call("DescribeDiskConfigs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDiskConfigsResponse()
@@ -597,7 +616,8 @@ class LighthouseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDiskDiscount", params)
+            headers = request.headers
+            body = self.call("DescribeDiskDiscount", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDiskDiscountResponse()
@@ -625,7 +645,8 @@ class LighthouseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDisks", params)
+            headers = request.headers
+            body = self.call("DescribeDisks", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDisksResponse()
@@ -653,7 +674,8 @@ class LighthouseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDisksDeniedActions", params)
+            headers = request.headers
+            body = self.call("DescribeDisksDeniedActions", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDisksDeniedActionsResponse()
@@ -681,7 +703,8 @@ class LighthouseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeDisksReturnable", params)
+            headers = request.headers
+            body = self.call("DescribeDisksReturnable", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDisksReturnableResponse()
@@ -709,7 +732,8 @@ class LighthouseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeFirewallRules", params)
+            headers = request.headers
+            body = self.call("DescribeFirewallRules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeFirewallRulesResponse()
@@ -737,7 +761,8 @@ class LighthouseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeFirewallRulesTemplate", params)
+            headers = request.headers
+            body = self.call("DescribeFirewallRulesTemplate", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeFirewallRulesTemplateResponse()
@@ -765,7 +790,8 @@ class LighthouseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeGeneralResourceQuotas", params)
+            headers = request.headers
+            body = self.call("DescribeGeneralResourceQuotas", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeGeneralResourceQuotasResponse()
@@ -793,7 +819,8 @@ class LighthouseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInstanceLoginKeyPairAttribute", params)
+            headers = request.headers
+            body = self.call("DescribeInstanceLoginKeyPairAttribute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInstanceLoginKeyPairAttributeResponse()
@@ -826,7 +853,8 @@ class LighthouseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInstanceVncUrl", params)
+            headers = request.headers
+            body = self.call("DescribeInstanceVncUrl", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInstanceVncUrlResponse()
@@ -859,7 +887,8 @@ class LighthouseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInstances", params)
+            headers = request.headers
+            body = self.call("DescribeInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInstancesResponse()
@@ -887,7 +916,8 @@ class LighthouseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInstancesDeniedActions", params)
+            headers = request.headers
+            body = self.call("DescribeInstancesDeniedActions", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInstancesDeniedActionsResponse()
@@ -915,7 +945,8 @@ class LighthouseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInstancesDiskNum", params)
+            headers = request.headers
+            body = self.call("DescribeInstancesDiskNum", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInstancesDiskNumResponse()
@@ -943,7 +974,8 @@ class LighthouseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInstancesReturnable", params)
+            headers = request.headers
+            body = self.call("DescribeInstancesReturnable", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInstancesReturnableResponse()
@@ -971,7 +1003,8 @@ class LighthouseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeInstancesTrafficPackages", params)
+            headers = request.headers
+            body = self.call("DescribeInstancesTrafficPackages", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInstancesTrafficPackagesResponse()
@@ -999,7 +1032,8 @@ class LighthouseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeKeyPairs", params)
+            headers = request.headers
+            body = self.call("DescribeKeyPairs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeKeyPairsResponse()
@@ -1027,7 +1061,8 @@ class LighthouseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeModifyInstanceBundles", params)
+            headers = request.headers
+            body = self.call("DescribeModifyInstanceBundles", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeModifyInstanceBundlesResponse()
@@ -1055,7 +1090,8 @@ class LighthouseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeRegions", params)
+            headers = request.headers
+            body = self.call("DescribeRegions", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRegionsResponse()
@@ -1083,7 +1119,8 @@ class LighthouseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeResetInstanceBlueprints", params)
+            headers = request.headers
+            body = self.call("DescribeResetInstanceBlueprints", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeResetInstanceBlueprintsResponse()
@@ -1111,7 +1148,8 @@ class LighthouseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSnapshots", params)
+            headers = request.headers
+            body = self.call("DescribeSnapshots", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSnapshotsResponse()
@@ -1139,7 +1177,8 @@ class LighthouseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeSnapshotsDeniedActions", params)
+            headers = request.headers
+            body = self.call("DescribeSnapshotsDeniedActions", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSnapshotsDeniedActionsResponse()
@@ -1167,7 +1206,8 @@ class LighthouseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DescribeZones", params)
+            headers = request.headers
+            body = self.call("DescribeZones", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeZonesResponse()
@@ -1195,7 +1235,8 @@ class LighthouseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DetachCcn", params)
+            headers = request.headers
+            body = self.call("DetachCcn", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DetachCcnResponse()
@@ -1223,7 +1264,8 @@ class LighthouseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DetachDisks", params)
+            headers = request.headers
+            body = self.call("DetachDisks", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DetachDisksResponse()
@@ -1257,7 +1299,8 @@ class LighthouseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("DisassociateInstancesKeyPairs", params)
+            headers = request.headers
+            body = self.call("DisassociateInstancesKeyPairs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DisassociateInstancesKeyPairsResponse()
@@ -1285,7 +1328,8 @@ class LighthouseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ImportKeyPair", params)
+            headers = request.headers
+            body = self.call("ImportKeyPair", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ImportKeyPairResponse()
@@ -1313,7 +1357,8 @@ class LighthouseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("InquirePriceCreateBlueprint", params)
+            headers = request.headers
+            body = self.call("InquirePriceCreateBlueprint", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.InquirePriceCreateBlueprintResponse()
@@ -1341,7 +1386,8 @@ class LighthouseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("InquirePriceCreateDisks", params)
+            headers = request.headers
+            body = self.call("InquirePriceCreateDisks", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.InquirePriceCreateDisksResponse()
@@ -1369,7 +1415,8 @@ class LighthouseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("InquirePriceCreateInstances", params)
+            headers = request.headers
+            body = self.call("InquirePriceCreateInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.InquirePriceCreateInstancesResponse()
@@ -1397,7 +1444,8 @@ class LighthouseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("InquirePriceRenewDisks", params)
+            headers = request.headers
+            body = self.call("InquirePriceRenewDisks", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.InquirePriceRenewDisksResponse()
@@ -1425,7 +1473,8 @@ class LighthouseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("InquirePriceRenewInstances", params)
+            headers = request.headers
+            body = self.call("InquirePriceRenewInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.InquirePriceRenewInstancesResponse()
@@ -1453,7 +1502,8 @@ class LighthouseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyBlueprintAttribute", params)
+            headers = request.headers
+            body = self.call("ModifyBlueprintAttribute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyBlueprintAttributeResponse()
@@ -1481,7 +1531,8 @@ class LighthouseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyDisksAttribute", params)
+            headers = request.headers
+            body = self.call("ModifyDisksAttribute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDisksAttributeResponse()
@@ -1509,7 +1560,8 @@ class LighthouseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyDisksRenewFlag", params)
+            headers = request.headers
+            body = self.call("ModifyDisksRenewFlag", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDisksRenewFlagResponse()
@@ -1546,7 +1598,8 @@ class LighthouseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyFirewallRuleDescription", params)
+            headers = request.headers
+            body = self.call("ModifyFirewallRuleDescription", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyFirewallRuleDescriptionResponse()
@@ -1585,7 +1638,8 @@ class LighthouseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyFirewallRules", params)
+            headers = request.headers
+            body = self.call("ModifyFirewallRules", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyFirewallRulesResponse()
@@ -1616,7 +1670,8 @@ class LighthouseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyInstancesAttribute", params)
+            headers = request.headers
+            body = self.call("ModifyInstancesAttribute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyInstancesAttributeResponse()
@@ -1645,7 +1700,8 @@ class LighthouseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyInstancesLoginKeyPairAttribute", params)
+            headers = request.headers
+            body = self.call("ModifyInstancesLoginKeyPairAttribute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyInstancesLoginKeyPairAttributeResponse()
@@ -1677,7 +1733,8 @@ class LighthouseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifyInstancesRenewFlag", params)
+            headers = request.headers
+            body = self.call("ModifyInstancesRenewFlag", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyInstancesRenewFlagResponse()
@@ -1706,7 +1763,8 @@ class LighthouseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ModifySnapshotAttribute", params)
+            headers = request.headers
+            body = self.call("ModifySnapshotAttribute", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifySnapshotAttributeResponse()
@@ -1739,7 +1797,8 @@ class LighthouseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("RebootInstances", params)
+            headers = request.headers
+            body = self.call("RebootInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RebootInstancesResponse()
@@ -1767,7 +1826,8 @@ class LighthouseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ResetAttachCcn", params)
+            headers = request.headers
+            body = self.call("ResetAttachCcn", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ResetAttachCcnResponse()
@@ -1800,7 +1860,8 @@ class LighthouseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ResetInstance", params)
+            headers = request.headers
+            body = self.call("ResetInstance", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ResetInstanceResponse()
@@ -1833,7 +1894,8 @@ class LighthouseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("ResetInstancesPassword", params)
+            headers = request.headers
+            body = self.call("ResetInstancesPassword", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ResetInstancesPasswordResponse()
@@ -1866,7 +1928,8 @@ class LighthouseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("StartInstances", params)
+            headers = request.headers
+            body = self.call("StartInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StartInstancesResponse()
@@ -1898,7 +1961,8 @@ class LighthouseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("StopInstances", params)
+            headers = request.headers
+            body = self.call("StopInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StopInstancesResponse()
@@ -1926,7 +1990,8 @@ class LighthouseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("TerminateDisks", params)
+            headers = request.headers
+            body = self.call("TerminateDisks", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.TerminateDisksResponse()
@@ -1958,7 +2023,8 @@ class LighthouseClient(AbstractClient):
         """
         try:
             params = request._serialize()
-            body = self.call("TerminateInstances", params)
+            headers = request.headers
+            body = self.call("TerminateInstances", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.TerminateInstancesResponse()
