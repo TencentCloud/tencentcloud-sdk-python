@@ -4832,14 +4832,24 @@ class RecognizeHealthCodeOCRRequest(AbstractModel):
 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :type ImageUrl: str
+        :param Type: 需要识别的健康码类型列表，为空或不填表示默认为粤康码。
+
+1:粤康码
+
+2:随申码
+
+3:健康宝
+        :type Type: int
         """
         self.ImageBase64 = None
         self.ImageUrl = None
+        self.Type = None
 
 
     def _deserialize(self, params):
         self.ImageBase64 = params.get("ImageBase64")
         self.ImageUrl = params.get("ImageUrl")
+        self.Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4856,25 +4866,41 @@ class RecognizeHealthCodeOCRResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 持码人姓名
+        :param Name: 持码人姓名，如：王*
         :type Name: str
+        :param IDNumber: 持码人身份证号，如：11**************01
+        :type IDNumber: str
         :param Time: 健康码更新时间，格式为：XXXX-XX-XX XX:XX:XX
         :type Time: str
         :param Color: 健康码颜色：绿色、黄色、红色
         :type Color: str
+        :param TestingInterval: 核酸检测间隔时长：24小时、48小时、72小时、暂无核酸检测记录
+        :type TestingInterval: str
+        :param TestingResult: 核酸检测结果：阴性、阳性、暂无核酸检测记录
+        :type TestingResult: str
+        :param TestingTime: 核酸检测时间，格式为：XXXX-XX-XX XX:XX
+        :type TestingTime: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Name = None
+        self.IDNumber = None
         self.Time = None
         self.Color = None
+        self.TestingInterval = None
+        self.TestingResult = None
+        self.TestingTime = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.Name = params.get("Name")
+        self.IDNumber = params.get("IDNumber")
         self.Time = params.get("Time")
         self.Color = params.get("Color")
+        self.TestingInterval = params.get("TestingInterval")
+        self.TestingResult = params.get("TestingResult")
+        self.TestingTime = params.get("TestingTime")
         self.RequestId = params.get("RequestId")
 
 
