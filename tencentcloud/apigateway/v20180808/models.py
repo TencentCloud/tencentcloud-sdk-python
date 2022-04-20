@@ -2146,6 +2146,8 @@ class CreateApiRequest(AbstractModel):
         :type TokenTimeout: int
         :param EIAMAppId: EIAM应用ID。
         :type EIAMAppId: str
+        :param Owner: 资源的Owner
+        :type Owner: str
         """
         self.ServiceId = None
         self.ServiceType = None
@@ -2199,6 +2201,7 @@ class CreateApiRequest(AbstractModel):
         self.EIAMAuthType = None
         self.TokenTimeout = None
         self.EIAMAppId = None
+        self.Owner = None
 
 
     def _deserialize(self, params):
@@ -2296,6 +2299,7 @@ class CreateApiRequest(AbstractModel):
         self.EIAMAuthType = params.get("EIAMAuthType")
         self.TokenTimeout = params.get("TokenTimeout")
         self.EIAMAppId = params.get("EIAMAppId")
+        self.Owner = params.get("Owner")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5625,7 +5629,7 @@ class DescribeServicesStatusResponse(AbstractModel):
 
 
 class DescribeUpstreamBindApis(AbstractModel):
-    """查询vpc通道绑定api列表
+    """查询后端通道绑定API列表
 
     """
 
@@ -5633,7 +5637,7 @@ class DescribeUpstreamBindApis(AbstractModel):
         r"""
         :param TotalCount: 总数
         :type TotalCount: int
-        :param BindApiSet: 绑定的api信息
+        :param BindApiSet: 绑定的API信息
         :type BindApiSet: list of BindApiInfo
         """
         self.TotalCount = None
@@ -8850,6 +8854,9 @@ class ServiceConfig(AbstractModel):
         :type Path: str
         :param Method: API的后端服务请求方法，如 GET。如果 ServiceType 是 HTTP，则此参数必传。前后端方法可不同。
         :type Method: str
+        :param UpstreamId: 当绑定vpc通道才需要
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpstreamId: str
         :param CosConfig: API后端COS配置。如果 ServiceType 是 COS，则此参数必传。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CosConfig: :class:`tencentcloud.apigateway.v20180808.models.CosConfig`
@@ -8859,6 +8866,7 @@ class ServiceConfig(AbstractModel):
         self.Url = None
         self.Path = None
         self.Method = None
+        self.UpstreamId = None
         self.CosConfig = None
 
 
@@ -8868,6 +8876,7 @@ class ServiceConfig(AbstractModel):
         self.Url = params.get("Url")
         self.Path = params.get("Path")
         self.Method = params.get("Method")
+        self.UpstreamId = params.get("UpstreamId")
         if params.get("CosConfig") is not None:
             self.CosConfig = CosConfig()
             self.CosConfig._deserialize(params.get("CosConfig"))

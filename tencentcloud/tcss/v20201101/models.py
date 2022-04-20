@@ -34,16 +34,21 @@ class AbnormalProcessChildRuleInfo(AbstractModel):
         :param RuleId: 子策略id
 注意：此字段可能返回 null，表示取不到有效值。
         :type RuleId: str
+        :param RuleLevel: 威胁等级，HIGH:高，MIDDLE:中，LOW:低
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleLevel: str
         """
         self.RuleMode = None
         self.ProcessPath = None
         self.RuleId = None
+        self.RuleLevel = None
 
 
     def _deserialize(self, params):
         self.RuleMode = params.get("RuleMode")
         self.ProcessPath = params.get("ProcessPath")
         self.RuleId = params.get("RuleId")
+        self.RuleLevel = params.get("RuleLevel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -69,13 +74,16 @@ class AbnormalProcessEventDescription(AbstractModel):
         :type Remark: str
         :param MatchRule: 命中规则详细信息
         :type MatchRule: :class:`tencentcloud.tcss.v20201101.models.AbnormalProcessChildRuleInfo`
-        :param RuleName: 命中规则名字
+        :param RuleName: 命中规则名称，PROXY_TOOL：代理软件，TRANSFER_CONTROL：横向渗透，ATTACK_CMD：恶意命令，REVERSE_SHELL：反弹shell，FILELESS：无文件程序执行，RISK_CMD：高危命令，ABNORMAL_CHILD_PROC：敏感服务异常子进程启动，USER_DEFINED_RULE：用户自定义规则
         :type RuleName: str
         :param RuleId: 命中规则的id
         :type RuleId: str
         :param OperationTime: 事件最后一次处理的时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type OperationTime: str
+        :param GroupName: 命中策略名称：SYSTEM_DEFINED_RULE （系统策略）或  用户自定义的策略名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupName: str
         """
         self.Description = None
         self.Solution = None
@@ -84,6 +92,7 @@ class AbnormalProcessEventDescription(AbstractModel):
         self.RuleName = None
         self.RuleId = None
         self.OperationTime = None
+        self.GroupName = None
 
 
     def _deserialize(self, params):
@@ -96,6 +105,7 @@ class AbnormalProcessEventDescription(AbstractModel):
         self.RuleName = params.get("RuleName")
         self.RuleId = params.get("RuleId")
         self.OperationTime = params.get("OperationTime")
+        self.GroupName = params.get("GroupName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -116,7 +126,7 @@ class AbnormalProcessEventInfo(AbstractModel):
         :type ProcessPath: str
         :param EventType: 事件类型，MALICE_PROCESS_START:恶意进程启动
         :type EventType: str
-        :param MatchRuleName: 命中规则
+        :param MatchRuleName: 命中规则名称，PROXY_TOOL：代理软件，TRANSFER_CONTROL：横向渗透，ATTACK_CMD：恶意命令，REVERSE_SHELL：反弹shell，FILELESS：无文件程序执行，RISK_CMD：高危命令，ABNORMAL_CHILD_PROC：敏感服务异常子进程启动，USER_DEFINED_RULE：用户自定义规则
         :type MatchRuleName: str
         :param FoundTime: 生成时间
         :type FoundTime: str
@@ -161,6 +171,10 @@ RULE_MODE_HOLDUP 拦截
         :type LatestFoundTime: str
         :param RuleId: 规则组Id
         :type RuleId: str
+        :param MatchGroupName: 命中策略名称：SYSTEM_DEFINED_RULE （系统策略）或  用户自定义的策略名字
+        :type MatchGroupName: str
+        :param MatchRuleLevel: 命中规则等级，HIGH：高危，MIDDLE：中危，LOW：低危。
+        :type MatchRuleLevel: str
         """
         self.ProcessPath = None
         self.EventType = None
@@ -182,6 +196,8 @@ RULE_MODE_HOLDUP 拦截
         self.EventCount = None
         self.LatestFoundTime = None
         self.RuleId = None
+        self.MatchGroupName = None
+        self.MatchRuleLevel = None
 
 
     def _deserialize(self, params):
@@ -205,6 +221,8 @@ RULE_MODE_HOLDUP 拦截
         self.EventCount = params.get("EventCount")
         self.LatestFoundTime = params.get("LatestFoundTime")
         self.RuleId = params.get("RuleId")
+        self.MatchGroupName = params.get("MatchGroupName")
+        self.MatchRuleLevel = params.get("MatchRuleLevel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -297,11 +315,15 @@ FILELESS：无文件程序执行
 RISK_CMD：高危命令
 ABNORMAL_CHILD_PROC: 敏感服务异常子进程启动
         :type RuleType: str
+        :param RuleLevel: 威胁等级，HIGH:高，MIDDLE:中，LOW:低
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleLevel: str
         """
         self.RuleId = None
         self.IsEnable = None
         self.RuleMode = None
         self.RuleType = None
+        self.RuleLevel = None
 
 
     def _deserialize(self, params):
@@ -309,6 +331,7 @@ ABNORMAL_CHILD_PROC: 敏感服务异常子进程启动
         self.IsEnable = params.get("IsEnable")
         self.RuleMode = params.get("RuleMode")
         self.RuleType = params.get("RuleType")
+        self.RuleLevel = params.get("RuleLevel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8972,7 +8995,7 @@ class DescribeEscapeEventInfoRequest(AbstractModel):
         :type Limit: int
         :param Offset: 偏移量，默认为0。
         :type Offset: int
-        :param Filters: 过滤参数,"Filters":[{"Name":"Status","Values":["2"]}]
+        :param Filters: 过滤参数,Status：EVENT_UNDEAL:未处理，EVENT_DEALED:已处理，EVENT_INGNORE:忽略
         :type Filters: list of RunTimeFilters
         :param Order: 升序降序,asc desc
         :type Order: str
@@ -11579,10 +11602,7 @@ class EscapeEventInfo(AbstractModel):
         :type ContainerName: str
         :param ImageName: 镜像名
         :type ImageName: str
-        :param Status: 状态
-     EVENT_UNDEAL:事件未处理
-     EVENT_DEALED:事件已经处理
-     EVENT_INGNORE：事件忽略
+        :param Status: 状态，EVENT_UNDEAL:未处理，EVENT_DEALED:已处理，EVENT_INGNORE:忽略
         :type Status: str
         :param EventId: 事件记录的唯一id
         :type EventId: str
@@ -11612,6 +11632,12 @@ MountNamespace逃逸、
         :type EventCount: int
         :param LatestFoundTime: 最近生成时间
         :type LatestFoundTime: str
+        :param NodeIP: 节点IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NodeIP: str
+        :param HostID: 主机IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HostID: str
         """
         self.EventType = None
         self.ContainerName = None
@@ -11628,6 +11654,8 @@ MountNamespace逃逸、
         self.Description = None
         self.EventCount = None
         self.LatestFoundTime = None
+        self.NodeIP = None
+        self.HostID = None
 
 
     def _deserialize(self, params):
@@ -11646,6 +11674,8 @@ MountNamespace逃逸、
         self.Description = params.get("Description")
         self.EventCount = params.get("EventCount")
         self.LatestFoundTime = params.get("LatestFoundTime")
+        self.NodeIP = params.get("NodeIP")
+        self.HostID = params.get("HostID")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -11680,16 +11710,20 @@ MountNamespace逃逸、
         :type Name: str
         :param IsEnable: 是否打开：false否 ，true是
         :type IsEnable: bool
+        :param Group: 规则组别。RISK_CONTAINER：风险容器，PROCESS_PRIVILEGE：程序特权，CONTAINER_ESCAPE：容器逃逸
+        :type Group: str
         """
         self.Type = None
         self.Name = None
         self.IsEnable = None
+        self.Group = None
 
 
     def _deserialize(self, params):
         self.Type = params.get("Type")
         self.Name = params.get("Name")
         self.IsEnable = params.get("IsEnable")
+        self.Group = params.get("Group")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -13467,10 +13501,7 @@ class ModifyEscapeEventStatusRequest(AbstractModel):
         r"""
         :param EventIdSet: 处理事件ids
         :type EventIdSet: list of str
-        :param Status: 标记事件的状态
-   EVENT_DEALED:事件已经处理
-     EVENT_INGNORE：事件忽略
-     EVENT_DEL:事件删除
+        :param Status: 标记事件的状态：EVENT_UNDEAL:未处理（取消忽略），EVENT_DEALED:已处理，EVENT_IGNORE:忽略，EVENT_DELETE：已删除
         :type Status: str
         :param Remark: 备注
         :type Remark: str
@@ -14815,6 +14846,28 @@ MountNamespace逃逸、
         :param ClientIP: 外网ip
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClientIP: str
+        :param ContainerNetStatus: 网络状态
+未隔离  	NORMAL
+已隔离		ISOLATED
+隔离中		ISOLATING
+隔离失败	ISOLATE_FAILED
+解除隔离中  RESTORING
+解除隔离失败 RESTORE_FAILED
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ContainerNetStatus: str
+        :param ContainerNetSubStatus: 容器子状态
+"AGENT_OFFLINE"       //Agent离线
+"NODE_DESTROYED"      //节点已销毁
+"CONTAINER_EXITED"    //容器已退出
+"CONTAINER_DESTROYED" //容器已销毁
+"SHARED_HOST"         // 容器与主机共享网络
+"RESOURCE_LIMIT"      //隔离操作资源超限
+"UNKNOW"              // 原因未知
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ContainerNetSubStatus: str
+        :param ContainerIsolateOperationSrc: 容器隔离操作来源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ContainerIsolateOperationSrc: str
         """
         self.EventId = None
         self.FoundTime = None
@@ -14831,6 +14884,9 @@ MountNamespace逃逸、
         self.LatestFoundTime = None
         self.HostIP = None
         self.ClientIP = None
+        self.ContainerNetStatus = None
+        self.ContainerNetSubStatus = None
+        self.ContainerIsolateOperationSrc = None
 
 
     def _deserialize(self, params):
@@ -14849,6 +14905,9 @@ MountNamespace逃逸、
         self.LatestFoundTime = params.get("LatestFoundTime")
         self.HostIP = params.get("HostIP")
         self.ClientIP = params.get("ClientIP")
+        self.ContainerNetStatus = params.get("ContainerNetStatus")
+        self.ContainerNetSubStatus = params.get("ContainerNetSubStatus")
+        self.ContainerIsolateOperationSrc = params.get("ContainerIsolateOperationSrc")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
