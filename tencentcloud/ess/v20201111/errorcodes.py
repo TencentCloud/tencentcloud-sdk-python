@@ -167,7 +167,7 @@ RESOURCENOTFOUND_NOTEXISTFLOW = 'ResourceNotFound.NotExistFlow'
 # 资源不存在。
 RESOURCENOTFOUND_RESOURCE = 'ResourceNotFound.Resource'
 
-# 模版不存在。
+# 模板不存在。
 RESOURCENOTFOUND_TEMPLATE = 'ResourceNotFound.Template'
 
 # 资源不可用。

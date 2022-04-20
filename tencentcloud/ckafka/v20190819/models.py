@@ -1613,10 +1613,12 @@ class CreateTopicRequest(AbstractModel):
         :type MinInsyncReplicas: int
         :param UncleanLeaderElectionEnable: 是否允许未同步的副本选为leader，false:不允许，true:允许，默认不允许
         :type UncleanLeaderElectionEnable: int
-        :param RetentionMs: 可消息选。保留时间，单位ms，当前最小值为60000ms
+        :param RetentionMs: 可选参数。消息保留时间，单位ms，当前最小值为60000ms
         :type RetentionMs: int
         :param SegmentMs: Segment分片滚动的时长，单位ms，当前最小为3600000ms
         :type SegmentMs: int
+        :param MaxMessageBytes: 主题消息最大值，单位为 Byte，最小值1024Byte(即1KB)，最大值为8388608Byte（即8MB）。
+        :type MaxMessageBytes: int
         :param EnableAclRule: 预设ACL规则, 1:打开  0:关闭，默认不打开
         :type EnableAclRule: int
         :param AclRuleName: 预设ACL规则的名称
@@ -1638,6 +1640,7 @@ class CreateTopicRequest(AbstractModel):
         self.UncleanLeaderElectionEnable = None
         self.RetentionMs = None
         self.SegmentMs = None
+        self.MaxMessageBytes = None
         self.EnableAclRule = None
         self.AclRuleName = None
         self.RetentionBytes = None
@@ -1657,6 +1660,7 @@ class CreateTopicRequest(AbstractModel):
         self.UncleanLeaderElectionEnable = params.get("UncleanLeaderElectionEnable")
         self.RetentionMs = params.get("RetentionMs")
         self.SegmentMs = params.get("SegmentMs")
+        self.MaxMessageBytes = params.get("MaxMessageBytes")
         self.EnableAclRule = params.get("EnableAclRule")
         self.AclRuleName = params.get("AclRuleName")
         self.RetentionBytes = params.get("RetentionBytes")
@@ -2678,10 +2682,12 @@ class DescribeInstancesDetailRequest(AbstractModel):
         :type Limit: int
         :param TagKey: 匹配标签key值。
         :type TagKey: str
-        :param Filters: 过滤器。
+        :param Filters: 过滤器。filter.Name 支持('Ip', 'VpcId', 'SubNetId', 'InstanceType','InstanceId') ,filter.Values最多传递10个值.
         :type Filters: list of Filter
         :param InstanceIds: 已经废弃， 使用InstanceIdList
         :type InstanceIds: str
+        :param InstanceIdList: 按照实例ID过滤
+        :type InstanceIdList: list of str
         """
         self.InstanceId = None
         self.SearchWord = None
@@ -2691,6 +2697,7 @@ class DescribeInstancesDetailRequest(AbstractModel):
         self.TagKey = None
         self.Filters = None
         self.InstanceIds = None
+        self.InstanceIdList = None
 
 
     def _deserialize(self, params):
@@ -2707,6 +2714,7 @@ class DescribeInstancesDetailRequest(AbstractModel):
                 obj._deserialize(item)
                 self.Filters.append(obj)
         self.InstanceIds = params.get("InstanceIds")
+        self.InstanceIdList = params.get("InstanceIdList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

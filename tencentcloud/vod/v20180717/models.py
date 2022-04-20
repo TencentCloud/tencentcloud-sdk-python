@@ -11257,12 +11257,20 @@ class DrmStreamingsInfo(AbstractModel):
         r"""
         :param SimpleAesDefinition: 保护类型为 SimpleAES 的转自适应码流模板 ID。
         :type SimpleAesDefinition: int
+        :param WidevineDefinition: 保护类型为 Widevine 的转自适应码流模板 ID。
+        :type WidevineDefinition: int
+        :param FairPlayDefinition: 保护类型为 FairPlay 的转自适应码流模板 ID。
+        :type FairPlayDefinition: int
         """
         self.SimpleAesDefinition = None
+        self.WidevineDefinition = None
+        self.FairPlayDefinition = None
 
 
     def _deserialize(self, params):
         self.SimpleAesDefinition = params.get("SimpleAesDefinition")
+        self.WidevineDefinition = params.get("WidevineDefinition")
+        self.FairPlayDefinition = params.get("FairPlayDefinition")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -11281,12 +11289,20 @@ class DrmStreamingsInfoForUpdate(AbstractModel):
         r"""
         :param SimpleAesDefinition: 保护类型为 SimpleAES 的转自适应码流模板 ID。
         :type SimpleAesDefinition: int
+        :param WidevineDefinition: 保护类型为 Widevine 的转自适应码流模板 ID。
+        :type WidevineDefinition: int
+        :param FairPlayDefinition: 保护类型为 FairPlay 的转自适应码流模板 ID。
+        :type FairPlayDefinition: int
         """
         self.SimpleAesDefinition = None
+        self.WidevineDefinition = None
+        self.FairPlayDefinition = None
 
 
     def _deserialize(self, params):
         self.SimpleAesDefinition = params.get("SimpleAesDefinition")
+        self.WidevineDefinition = params.get("WidevineDefinition")
+        self.FairPlayDefinition = params.get("FairPlayDefinition")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -20016,7 +20032,7 @@ class SearchMediaRequest(AbstractModel):
         :param SourceTypes: 媒体文件来源集合，来源取值参见 [SourceType](https://cloud.tencent.com/document/product/266/31773#MediaSourceData)。
 <li>数组长度限制：10。</li>
         :type SourceTypes: list of str
-        :param StreamIds: 推流 [直播码](https://cloud.tencent.com/document/product/267/5959) 集合。匹配集合中的任意元素。
+        :param StreamIds: 推流直播码集合。匹配集合中的任意元素。
 <li>数组长度限制：10。</li>
         :type StreamIds: list of str
         :param Vids: 直播录制文件的唯一标识。匹配集合中的任意元素。
@@ -20069,7 +20085,7 @@ class SearchMediaRequest(AbstractModel):
 媒体文件来源，来源取值参见 [SourceType](https://cloud.tencent.com/document/product/266/31773#MediaSourceData)。
         :type SourceType: str
         :param StreamId: （不推荐：应使用 StreamIds 替代）
-推流 [直播码](https://cloud.tencent.com/document/product/267/5959)。
+推流直播码。
         :type StreamId: str
         :param Vid: （不推荐：应使用 Vids 替代）
 直播录制文件的唯一标识。

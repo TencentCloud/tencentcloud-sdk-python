@@ -121,6 +121,55 @@ class AddReplicationInstanceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class AllocateWanAddressRequest(AbstractModel):
+    """AllocateWanAddress请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AllocateWanAddressResponse(AbstractModel):
+    """AllocateWanAddress返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: 异步流程ID
+        :type FlowId: int
+        :param WanStatus: 开通外网的状态
+        :type WanStatus: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.WanStatus = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.WanStatus = params.get("WanStatus")
+        self.RequestId = params.get("RequestId")
+
+
 class ApplyParamsTemplateRequest(AbstractModel):
     """ApplyParamsTemplate请求参数结构体
 
@@ -6171,6 +6220,55 @@ class RegionConf(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ReleaseWanAddressRequest(AbstractModel):
+    """ReleaseWanAddress请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReleaseWanAddressResponse(AbstractModel):
+    """ReleaseWanAddress返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: 异步流程ID
+        :type FlowId: int
+        :param WanStatus: 关闭外网的状态
+        :type WanStatus: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.WanStatus = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.WanStatus = params.get("WanStatus")
+        self.RequestId = params.get("RequestId")
 
 
 class RenewInstanceRequest(AbstractModel):

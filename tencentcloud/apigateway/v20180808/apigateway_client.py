@@ -438,7 +438,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def CreateUpstream(self, request):
-        """用于创建创建VPC通道
+        """用于创建创建后端通道
 
         :param request: Request instance for CreateUpstream.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.CreateUpstreamRequest`
@@ -730,7 +730,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def DeleteUpstream(self, request):
-        """删除VPC通道，需要注意有api绑定时，不允许删除
+        """删除后端通道，需要注意有API绑定时，不允许删除
 
         :param request: Request instance for DeleteUpstream.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.DeleteUpstreamRequest`
@@ -1784,7 +1784,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def DescribeUpstreamBindApis(self, request):
-        """查询VPC通道绑定的api列表
+        """查询后端通道所绑定的API列表
 
         :param request: Request instance for DescribeUpstreamBindApis.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.DescribeUpstreamBindApisRequest`
@@ -1813,7 +1813,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def DescribeUpstreams(self, request):
-        """查询VPC通道列表详情
+        """查询后端通道列表详情
 
         :param request: Request instance for DescribeUpstreams.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.DescribeUpstreamsRequest`
@@ -2395,7 +2395,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def ModifyUpstream(self, request):
-        """修改VPC通道
+        """修改后端通道
 
         :param request: Request instance for ModifyUpstream.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.ModifyUpstreamRequest`

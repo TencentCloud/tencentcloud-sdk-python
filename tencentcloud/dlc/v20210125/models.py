@@ -910,12 +910,15 @@ class CreateUserRequest(AbstractModel):
         :type UserType: str
         :param WorkGroupIds: 绑定到用户的工作组ID集合。
         :type WorkGroupIds: list of int
+        :param UserAlias: 用户别名，字符长度小50
+        :type UserAlias: str
         """
         self.UserId = None
         self.UserDescription = None
         self.PolicySet = None
         self.UserType = None
         self.WorkGroupIds = None
+        self.UserAlias = None
 
 
     def _deserialize(self, params):
@@ -929,6 +932,7 @@ class CreateUserRequest(AbstractModel):
                 self.PolicySet.append(obj)
         self.UserType = params.get("UserType")
         self.WorkGroupIds = params.get("WorkGroupIds")
+        self.UserAlias = params.get("UserAlias")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1746,6 +1750,7 @@ task-id - String - （任务ID准确过滤）task-id取值形如：e386471f-139a
 task-state - String - （任务状态过滤）取值范围 0(初始化)， 1(运行中)， 2(成功)， -1(失败)。
 task-sql-keyword - String - （SQL语句关键字模糊过滤）取值形如：DROP TABLE。
 task-operator- string （子uin过滤）
+task-kind - string （任务类型过滤）
         :type Filters: list of Filter
         :param SortBy: 排序字段，支持如下字段类型，create-time（创建时间，默认）、update-time（更新时间）
         :type SortBy: str
@@ -1838,7 +1843,7 @@ class DescribeUsersRequest(AbstractModel):
         :type SortBy: str
         :param Sorting: 排序方式，desc表示正序，asc表示反序， 默认为asc
         :type Sorting: str
-        :param Filters: 过滤条件，支持如下字段类型，user-type：根据用户类型过滤。
+        :param Filters: 过滤条件，支持如下字段类型，user-type：根据用户类型过滤。user-keyword：根据用户名称过滤
         :type Filters: list of Filter
         """
         self.UserId = None
@@ -2883,6 +2888,9 @@ class TaskResponseInfo(AbstractModel):
         :param CanDownload: 查询数据能不能下载
 注意：此字段可能返回 null，表示取不到有效值。
         :type CanDownload: bool
+        :param UserAlias: 用户别名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserAlias: str
         """
         self.DatabaseName = None
         self.DataAmount = None
@@ -2909,6 +2917,7 @@ class TaskResponseInfo(AbstractModel):
         self.InputConf = None
         self.DataNumber = None
         self.CanDownload = None
+        self.UserAlias = None
 
 
     def _deserialize(self, params):
@@ -2937,6 +2946,7 @@ class TaskResponseInfo(AbstractModel):
         self.InputConf = params.get("InputConf")
         self.DataNumber = params.get("DataNumber")
         self.CanDownload = params.get("CanDownload")
+        self.UserAlias = params.get("UserAlias")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3216,6 +3226,9 @@ class UserInfo(AbstractModel):
         :param UserType: 用户类型。ADMIN：管理员 COMMON：普通用户。
 注意：此字段可能返回 null，表示取不到有效值。
         :type UserType: str
+        :param UserAlias: 用户别名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserAlias: str
         """
         self.UserId = None
         self.UserDescription = None
@@ -3225,6 +3238,7 @@ class UserInfo(AbstractModel):
         self.WorkGroupSet = None
         self.IsOwner = None
         self.UserType = None
+        self.UserAlias = None
 
 
     def _deserialize(self, params):
@@ -3246,6 +3260,7 @@ class UserInfo(AbstractModel):
                 self.WorkGroupSet.append(obj)
         self.IsOwner = params.get("IsOwner")
         self.UserType = params.get("UserType")
+        self.UserAlias = params.get("UserAlias")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3271,11 +3286,14 @@ class UserMessage(AbstractModel):
         :type Creator: str
         :param CreateTime: 当前用户的创建时间，形如2021-07-28 16:19:32
         :type CreateTime: str
+        :param UserAlias: 用户别名
+        :type UserAlias: str
         """
         self.UserId = None
         self.UserDescription = None
         self.Creator = None
         self.CreateTime = None
+        self.UserAlias = None
 
 
     def _deserialize(self, params):
@@ -3283,6 +3301,7 @@ class UserMessage(AbstractModel):
         self.UserDescription = params.get("UserDescription")
         self.Creator = params.get("Creator")
         self.CreateTime = params.get("CreateTime")
+        self.UserAlias = params.get("UserAlias")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

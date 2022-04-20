@@ -55,6 +55,35 @@ class RedisClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def AllocateWanAddress(self, request):
+        """开通外网
+
+        :param request: Request instance for AllocateWanAddress.
+        :type request: :class:`tencentcloud.redis.v20180412.models.AllocateWanAddressRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.AllocateWanAddressResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AllocateWanAddress", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AllocateWanAddressResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ApplyParamsTemplate(self, request):
         """应用参数模板到实例
 
@@ -1984,6 +2013,35 @@ class RedisClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyParamTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ReleaseWanAddress(self, request):
+        """关闭外网
+
+        :param request: Request instance for ReleaseWanAddress.
+        :type request: :class:`tencentcloud.redis.v20180412.models.ReleaseWanAddressRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.ReleaseWanAddressResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ReleaseWanAddress", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ReleaseWanAddressResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

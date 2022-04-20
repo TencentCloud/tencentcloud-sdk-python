@@ -403,6 +403,35 @@ class DomainClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeDomainSimpleInfo(self, request):
+        """获取域名实名信息详情
+
+        :param request: Request instance for DescribeDomainSimpleInfo.
+        :type request: :class:`tencentcloud.domain.v20180808.models.DescribeDomainSimpleInfoRequest`
+        :rtype: :class:`tencentcloud.domain.v20180808.models.DescribeDomainSimpleInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDomainSimpleInfo", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDomainSimpleInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribePhoneEmailList(self, request):
         """本接口用于获取已验证的手机邮箱列表
 

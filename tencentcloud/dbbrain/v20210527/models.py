@@ -71,6 +71,55 @@ class AddUserContactResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CancelKillTaskRequest(AbstractModel):
+    """CancelKillTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID。
+        :type InstanceId: str
+        :param Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
+        :type Product: str
+        """
+        self.InstanceId = None
+        self.Product = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Product = params.get("Product")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CancelKillTaskResponse(AbstractModel):
+    """CancelKillTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Status: kill会话任务终止成功返回1。
+        :type Status: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Status = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.RequestId = params.get("RequestId")
+
+
 class ContactItem(AbstractModel):
     """联系人contact描述。
 
@@ -539,6 +588,75 @@ class CreateSecurityAuditLogExportTaskResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateSqlFilterRequest(AbstractModel):
+    """CreateSqlFilter请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID。
+        :type InstanceId: str
+        :param SessionToken: 通过VerifyUserAccount获取有效期为5分钟的会话token，使用后会自动延长token有效期至五分钟后。
+        :type SessionToken: str
+        :param SqlType: SQL类型，取值包括SELECT, UPDATE, DELETE, INSERT, REPLACE。
+        :type SqlType: str
+        :param FilterKey: 关键字，用于筛选SQL语句，多个关键字用英文逗号分隔，逗号不能作为关键词，多个关键词之间的关系为“逻辑与”。
+        :type FilterKey: str
+        :param MaxConcurrency: 最大并发度，取值不能小于0，如果该值设为 0，则表示限制所有匹配的SQL执行。
+        :type MaxConcurrency: int
+        :param Duration: 限流时长，单位秒，支持-1和小于2147483647的正整数，-1表示永不过期。
+        :type Duration: int
+        :param Product: 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+        :type Product: str
+        """
+        self.InstanceId = None
+        self.SessionToken = None
+        self.SqlType = None
+        self.FilterKey = None
+        self.MaxConcurrency = None
+        self.Duration = None
+        self.Product = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.SessionToken = params.get("SessionToken")
+        self.SqlType = params.get("SqlType")
+        self.FilterKey = params.get("FilterKey")
+        self.MaxConcurrency = params.get("MaxConcurrency")
+        self.Duration = params.get("Duration")
+        self.Product = params.get("Product")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateSqlFilterResponse(AbstractModel):
+    """CreateSqlFilter返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FilterId: 限流任务ID。
+        :type FilterId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FilterId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FilterId = params.get("FilterId")
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteSecurityAuditLogExportTasksRequest(AbstractModel):
     """DeleteSecurityAuditLogExportTasks请求参数结构体
 
@@ -573,6 +691,55 @@ class DeleteSecurityAuditLogExportTasksRequest(AbstractModel):
 
 class DeleteSecurityAuditLogExportTasksResponse(AbstractModel):
     """DeleteSecurityAuditLogExportTasks返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteSqlFiltersRequest(AbstractModel):
+    """DeleteSqlFilters请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID。
+        :type InstanceId: str
+        :param SessionToken: 通过VerifyUserAccount获取有效期为5分钟的会话token，使用后会自动延长token有效期至五分钟后。
+        :type SessionToken: str
+        :param FilterIds: 限流任务ID列表。
+        :type FilterIds: list of int
+        """
+        self.InstanceId = None
+        self.SessionToken = None
+        self.FilterIds = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.SessionToken = params.get("SessionToken")
+        self.FilterIds = params.get("FilterIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteSqlFiltersResponse(AbstractModel):
+    """DeleteSqlFilters返回参数结构体
 
     """
 
@@ -1386,6 +1553,88 @@ class DescribeMySqlProcessListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeNoPrimaryKeyTablesRequest(AbstractModel):
+    """DescribeNoPrimaryKeyTables请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID。
+        :type InstanceId: str
+        :param Date: 查询日期，最早为30天前的日期。
+        :type Date: str
+        :param Limit: 查询数目，默认为20，最大为100。
+        :type Limit: int
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Product: 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+        :type Product: str
+        """
+        self.InstanceId = None
+        self.Date = None
+        self.Limit = None
+        self.Offset = None
+        self.Product = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Date = params.get("Date")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.Product = params.get("Product")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeNoPrimaryKeyTablesResponse(AbstractModel):
+    """DescribeNoPrimaryKeyTables返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NoPrimaryKeyTableCount: 无主键表总数。
+        :type NoPrimaryKeyTableCount: int
+        :param NoPrimaryKeyTableCountDiff: 与昨日扫描无主键表的差值，正数为增加，负数为减少，0为无变化。
+        :type NoPrimaryKeyTableCountDiff: int
+        :param NoPrimaryKeyTableRecordCount: 记录的无主键表总数（不超过无主键表总数），可用于分页查询。
+        :type NoPrimaryKeyTableRecordCount: int
+        :param NoPrimaryKeyTables: 无主键表列表。
+        :type NoPrimaryKeyTables: list of Table
+        :param Timestamp: 采集时间戳（秒）。
+        :type Timestamp: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.NoPrimaryKeyTableCount = None
+        self.NoPrimaryKeyTableCountDiff = None
+        self.NoPrimaryKeyTableRecordCount = None
+        self.NoPrimaryKeyTables = None
+        self.Timestamp = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.NoPrimaryKeyTableCount = params.get("NoPrimaryKeyTableCount")
+        self.NoPrimaryKeyTableCountDiff = params.get("NoPrimaryKeyTableCountDiff")
+        self.NoPrimaryKeyTableRecordCount = params.get("NoPrimaryKeyTableRecordCount")
+        if params.get("NoPrimaryKeyTables") is not None:
+            self.NoPrimaryKeyTables = []
+            for item in params.get("NoPrimaryKeyTables"):
+                obj = Table()
+                obj._deserialize(item)
+                self.NoPrimaryKeyTables.append(obj)
+        self.Timestamp = params.get("Timestamp")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeProxySessionKillTasksRequest(AbstractModel):
     """DescribeProxySessionKillTasks请求参数结构体
 
@@ -1445,6 +1694,80 @@ class DescribeProxySessionKillTasksResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Tasks.append(obj)
         self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeRedisTopBigKeysRequest(AbstractModel):
+    """DescribeRedisTopBigKeys请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID。
+        :type InstanceId: str
+        :param Date: 查询日期，最早可为前30天的日期。
+        :type Date: str
+        :param Product: 服务产品类型，支持值包括 "redis" - 云数据库 Redis。
+        :type Product: str
+        :param SortBy: 排序字段，取值包括Capacity - 内存，ItemCount - 元素数量。
+        :type SortBy: str
+        :param KeyType: key类型筛选条件，默认为不进行筛选，取值包括string, list, set, hash, sortedset, stream。
+        :type KeyType: str
+        :param Limit: 查询数目，默认为20，最大值为100。
+        :type Limit: int
+        """
+        self.InstanceId = None
+        self.Date = None
+        self.Product = None
+        self.SortBy = None
+        self.KeyType = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Date = params.get("Date")
+        self.Product = params.get("Product")
+        self.SortBy = params.get("SortBy")
+        self.KeyType = params.get("KeyType")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRedisTopBigKeysResponse(AbstractModel):
+    """DescribeRedisTopBigKeys返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TopKeys: top key列表。
+        :type TopKeys: list of RedisKeySpaceData
+        :param Timestamp: 采集时间戳（秒）。
+        :type Timestamp: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TopKeys = None
+        self.Timestamp = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("TopKeys") is not None:
+            self.TopKeys = []
+            for item in params.get("TopKeys"):
+                obj = RedisKeySpaceData()
+                obj._deserialize(item)
+                self.TopKeys.append(obj)
+        self.Timestamp = params.get("Timestamp")
         self.RequestId = params.get("RequestId")
 
 
@@ -1801,6 +2124,149 @@ class DescribeSlowLogUserHostStatsResponse(AbstractModel):
                 obj = SlowLogHost()
                 obj._deserialize(item)
                 self.Items.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeSqlFiltersRequest(AbstractModel):
+    """DescribeSqlFilters请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID。
+        :type InstanceId: str
+        :param FilterIds: 任务ID列表，用于筛选任务列表。
+        :type FilterIds: list of int
+        :param Statuses: 任务状态列表，用于筛选任务列表，取值包括RUNNING - 运行中, FINISHED - 已完成, TERMINATED - 已终止。
+        :type Statuses: list of str
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Limit: 返回数量，默认为20，最大值为100。
+        :type Limit: int
+        """
+        self.InstanceId = None
+        self.FilterIds = None
+        self.Statuses = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.FilterIds = params.get("FilterIds")
+        self.Statuses = params.get("Statuses")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSqlFiltersResponse(AbstractModel):
+    """DescribeSqlFilters返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 限流任务总数目。
+        :type TotalCount: int
+        :param Items: 限流任务列表。
+        :type Items: list of SQLFilter
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Items = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = SQLFilter()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeSqlTemplateRequest(AbstractModel):
+    """DescribeSqlTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID。
+        :type InstanceId: str
+        :param Schema: 数据库名。
+        :type Schema: str
+        :param SqlText: SQL语句。
+        :type SqlText: str
+        :param Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
+        :type Product: str
+        """
+        self.InstanceId = None
+        self.Schema = None
+        self.SqlText = None
+        self.Product = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Schema = params.get("Schema")
+        self.SqlText = params.get("SqlText")
+        self.Product = params.get("Product")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSqlTemplateResponse(AbstractModel):
+    """DescribeSqlTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Schema: 数据库名。
+        :type Schema: str
+        :param SqlText: SQL语句。
+        :type SqlText: str
+        :param SqlType: SQL类型。
+        :type SqlType: str
+        :param SqlTemplate: SQL模版内容。
+        :type SqlTemplate: str
+        :param SqlId: SQL模版ID。
+        :type SqlId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Schema = None
+        self.SqlText = None
+        self.SqlType = None
+        self.SqlTemplate = None
+        self.SqlId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Schema = params.get("Schema")
+        self.SqlText = params.get("SqlText")
+        self.SqlType = params.get("SqlType")
+        self.SqlTemplate = params.get("SqlTemplate")
+        self.SqlId = params.get("SqlId")
         self.RequestId = params.get("RequestId")
 
 
@@ -2849,6 +3315,63 @@ class ModifyDiagDBInstanceConfResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifySqlFiltersRequest(AbstractModel):
+    """ModifySqlFilters请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID。
+        :type InstanceId: str
+        :param SessionToken: 通过VerifyUserAccount获取有效期为5分钟的会话token，使用后会自动延长token有效期至五分钟后。
+        :type SessionToken: str
+        :param FilterIds: SQL限流任务ID列表。
+        :type FilterIds: list of int
+        :param Status: 限流任务状态，取值支持TERMINATED - 终止。
+        :type Status: str
+        :param Product: 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+        :type Product: str
+        """
+        self.InstanceId = None
+        self.SessionToken = None
+        self.FilterIds = None
+        self.Status = None
+        self.Product = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.SessionToken = params.get("SessionToken")
+        self.FilterIds = params.get("FilterIds")
+        self.Status = params.get("Status")
+        self.Product = params.get("Product")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifySqlFiltersResponse(AbstractModel):
+    """ModifySqlFilters返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class MonitorFloatMetric(AbstractModel):
     """监控数据（浮点型）
 
@@ -3054,6 +3577,118 @@ class ProfileInfo(AbstractModel):
         if params.get("MailConfiguration") is not None:
             self.MailConfiguration = MailConfiguration()
             self.MailConfiguration._deserialize(params.get("MailConfiguration"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RedisKeySpaceData(AbstractModel):
+    """redis key空间信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Key: key名。
+        :type Key: str
+        :param Type: key类型。
+        :type Type: str
+        :param Encoding: key编码方式。
+        :type Encoding: str
+        :param ExpireTime: key过期时间戳（毫秒），0代表未设置过期时间。
+        :type ExpireTime: int
+        :param Length: key内存大小，单位Byte。
+        :type Length: int
+        :param ItemCount: 元素个数。
+        :type ItemCount: int
+        :param MaxElementSize: 最大元素长度。
+        :type MaxElementSize: int
+        """
+        self.Key = None
+        self.Type = None
+        self.Encoding = None
+        self.ExpireTime = None
+        self.Length = None
+        self.ItemCount = None
+        self.MaxElementSize = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Type = params.get("Type")
+        self.Encoding = params.get("Encoding")
+        self.ExpireTime = params.get("ExpireTime")
+        self.Length = params.get("Length")
+        self.ItemCount = params.get("ItemCount")
+        self.MaxElementSize = params.get("MaxElementSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SQLFilter(AbstractModel):
+    """实例SQL限流任务。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: 任务ID。
+        :type Id: int
+        :param Status: 任务状态，取值包括RUNNING - 运行中, FINISHED - 已完成, TERMINATED - 已终止。
+        :type Status: str
+        :param SqlType: SQL类型，取值包括SELECT, UPDATE, DELETE, INSERT, REPLACE。
+        :type SqlType: str
+        :param OriginKeys: 筛选SQL的关键词，多个关键词用英文逗号拼接。
+        :type OriginKeys: str
+        :param OriginRule: 筛选SQL的规则。
+        :type OriginRule: str
+        :param RejectedSqlCount: 已拒绝SQL数目。
+        :type RejectedSqlCount: int
+        :param CurrentConcurrency: 当前并发数。
+        :type CurrentConcurrency: int
+        :param MaxConcurrency: 最大并发数。
+        :type MaxConcurrency: int
+        :param CreateTime: 任务创建时间。
+        :type CreateTime: str
+        :param CurrentTime: 当前时间。
+        :type CurrentTime: str
+        :param ExpireTime: 限流过期时间。
+        :type ExpireTime: str
+        """
+        self.Id = None
+        self.Status = None
+        self.SqlType = None
+        self.OriginKeys = None
+        self.OriginRule = None
+        self.RejectedSqlCount = None
+        self.CurrentConcurrency = None
+        self.MaxConcurrency = None
+        self.CreateTime = None
+        self.CurrentTime = None
+        self.ExpireTime = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.Status = params.get("Status")
+        self.SqlType = params.get("SqlType")
+        self.OriginKeys = params.get("OriginKeys")
+        self.OriginRule = params.get("OriginRule")
+        self.RejectedSqlCount = params.get("RejectedSqlCount")
+        self.CurrentConcurrency = params.get("CurrentConcurrency")
+        self.MaxConcurrency = params.get("MaxConcurrency")
+        self.CreateTime = params.get("CreateTime")
+        self.CurrentTime = params.get("CurrentTime")
+        self.ExpireTime = params.get("ExpireTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3470,6 +4105,46 @@ class SlowLogTopSqlItem(AbstractModel):
         
 
 
+class Table(AbstractModel):
+    """表结构。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TableSchema: 库名。
+        :type TableSchema: str
+        :param TableName: 表名。
+        :type TableName: str
+        :param Engine: 库表的存储引擎。
+        :type Engine: str
+        :param TableRows: 行数。
+        :type TableRows: int
+        :param TotalLength: 总使用空间（MB）。
+        :type TotalLength: float
+        """
+        self.TableSchema = None
+        self.TableName = None
+        self.Engine = None
+        self.TableRows = None
+        self.TotalLength = None
+
+
+    def _deserialize(self, params):
+        self.TableSchema = params.get("TableSchema")
+        self.TableName = params.get("TableName")
+        self.Engine = params.get("Engine")
+        self.TableRows = params.get("TableRows")
+        self.TotalLength = params.get("TotalLength")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TableSpaceData(AbstractModel):
     """库表空间统计数据。
 
@@ -3704,3 +4379,60 @@ class UserProfile(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class VerifyUserAccountRequest(AbstractModel):
+    """VerifyUserAccount请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID。
+        :type InstanceId: str
+        :param User: 数据库账号名。
+        :type User: str
+        :param Password: 数据库账号密码。
+        :type Password: str
+        :param Product: 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+        :type Product: str
+        """
+        self.InstanceId = None
+        self.User = None
+        self.Password = None
+        self.Product = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.User = params.get("User")
+        self.Password = params.get("Password")
+        self.Product = params.get("Product")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VerifyUserAccountResponse(AbstractModel):
+    """VerifyUserAccount返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SessionToken: 会话token，有效期为5分钟。
+        :type SessionToken: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.SessionToken = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.SessionToken = params.get("SessionToken")
+        self.RequestId = params.get("RequestId")

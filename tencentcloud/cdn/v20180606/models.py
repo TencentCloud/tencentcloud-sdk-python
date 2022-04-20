@@ -2156,6 +2156,35 @@ class Cache(AbstractModel):
         
 
 
+class CacheConfig(AbstractModel):
+    """启发式自定义时间缓存配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param HeuristicCacheTimeSwitch: on 代表开启自定义启发式缓存时间
+off 代表关闭自定义启发式缓存时间
+        :type HeuristicCacheTimeSwitch: str
+        :param HeuristicCacheTime: 单位 秒.
+        :type HeuristicCacheTime: int
+        """
+        self.HeuristicCacheTimeSwitch = None
+        self.HeuristicCacheTime = None
+
+
+    def _deserialize(self, params):
+        self.HeuristicCacheTimeSwitch = params.get("HeuristicCacheTimeSwitch")
+        self.HeuristicCacheTime = params.get("HeuristicCacheTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CacheConfigCache(AbstractModel):
     """路径缓存缓存配置
 
@@ -2224,12 +2253,19 @@ class CacheConfigFollowOrigin(AbstractModel):
 on：开启
 off：关闭
         :type Switch: str
+        :param HeuristicCache: 启发式缓存配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HeuristicCache: :class:`tencentcloud.cdn.v20180606.models.HeuristicCache`
         """
         self.Switch = None
+        self.HeuristicCache = None
 
 
     def _deserialize(self, params):
         self.Switch = params.get("Switch")
+        if params.get("HeuristicCache") is not None:
+            self.HeuristicCache = HeuristicCache()
+            self.HeuristicCache._deserialize(params.get("HeuristicCache"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3766,6 +3802,8 @@ bandwidth：计费带宽
         :type Metric: str
         :param Product: 指定查询的产品数据，可选为cdn或者ecdn，默认为cdn
         :type Product: str
+        :param TimeZone: 指定查询时间的时区，默认UTC+08:00
+        :type TimeZone: str
         """
         self.StartTime = None
         self.EndTime = None
@@ -3776,6 +3814,7 @@ bandwidth：计费带宽
         self.District = None
         self.Metric = None
         self.Product = None
+        self.TimeZone = None
 
 
     def _deserialize(self, params):
@@ -3788,6 +3827,7 @@ bandwidth：计费带宽
         self.District = params.get("District")
         self.Metric = params.get("Metric")
         self.Product = params.get("Product")
+        self.TimeZone = params.get("TimeZone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4034,6 +4074,8 @@ client：指定查询客户端地区（用户请求终端所在地区）数据
         :type AreaType: str
         :param Product: 指定查询的产品数据，可选为cdn或者ecdn，默认为cdn
         :type Product: str
+        :param TimeZone: 指定查询时间的时区，默认UTC+08:00
+        :type TimeZone: str
         """
         self.StartTime = None
         self.EndTime = None
@@ -4050,6 +4092,7 @@ client：指定查询客户端地区（用户请求终端所在地区）数据
         self.Area = None
         self.AreaType = None
         self.Product = None
+        self.TimeZone = None
 
 
     def _deserialize(self, params):
@@ -4068,6 +4111,7 @@ client：指定查询客户端地区（用户请求终端所在地区）数据
         self.Area = params.get("Area")
         self.AreaType = params.get("AreaType")
         self.Product = params.get("Product")
+        self.TimeZone = params.get("TimeZone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5167,6 +5211,8 @@ day：天粒度，指定查询区间大于 31 天，可返回天粒度明细数�
 mainland：指定查询中国境内 CDN 数据
 overseas：指定查询中国境外 CDN 数据
         :type Area: str
+        :param TimeZone: 指定查询时间的时区，默认UTC+08:00
+        :type TimeZone: str
         """
         self.StartTime = None
         self.EndTime = None
@@ -5176,6 +5222,7 @@ overseas：指定查询中国境外 CDN 数据
         self.Interval = None
         self.Detail = None
         self.Area = None
+        self.TimeZone = None
 
 
     def _deserialize(self, params):
@@ -5187,6 +5234,7 @@ overseas：指定查询中国境外 CDN 数据
         self.Interval = params.get("Interval")
         self.Detail = params.get("Detail")
         self.Area = params.get("Area")
+        self.TimeZone = params.get("TimeZone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8045,6 +8093,37 @@ class HeaderKey(AbstractModel):
     def _deserialize(self, params):
         self.Switch = params.get("Switch")
         self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HeuristicCache(AbstractModel):
+    """启发式缓存配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: on 代表开启启发式缓存
+off 代表关闭启发式缓存
+        :type Switch: str
+        :param CacheConfig: 自定义启发式缓存时间配置
+        :type CacheConfig: :class:`tencentcloud.cdn.v20180606.models.CacheConfig`
+        """
+        self.Switch = None
+        self.CacheConfig = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        if params.get("CacheConfig") is not None:
+            self.CacheConfig = CacheConfig()
+            self.CacheConfig._deserialize(params.get("CacheConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -14131,6 +14210,8 @@ global：全球加速
         :type OfflineCache: :class:`tencentcloud.cdn.v20180606.models.OfflineCache`
         :param OriginCombine: 合并回源
         :type OriginCombine: :class:`tencentcloud.cdn.v20180606.models.OriginCombine`
+        :param PostMaxSize: POST请求传输配置
+        :type PostMaxSize: :class:`tencentcloud.cdn.v20180606.models.PostSize`
         :param Quic: Quic访问（收费服务，详见计费说明和产品文档）
         :type Quic: :class:`tencentcloud.cdn.v20180606.models.Quic`
         :param OssPrivateAccess: 回源OSS私有鉴权
@@ -14185,6 +14266,7 @@ global：全球加速
         self.Ipv6Access = None
         self.OfflineCache = None
         self.OriginCombine = None
+        self.PostMaxSize = None
         self.Quic = None
         self.OssPrivateAccess = None
         self.WebSocket = None
@@ -14302,6 +14384,9 @@ global：全球加速
         if params.get("OriginCombine") is not None:
             self.OriginCombine = OriginCombine()
             self.OriginCombine._deserialize(params.get("OriginCombine"))
+        if params.get("PostMaxSize") is not None:
+            self.PostMaxSize = PostSize()
+            self.PostMaxSize._deserialize(params.get("PostMaxSize"))
         if params.get("Quic") is not None:
             self.Quic = Quic()
             self.Quic._deserialize(params.get("Quic"))

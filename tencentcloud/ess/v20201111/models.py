@@ -283,7 +283,7 @@ class CreateDocumentRequest(AbstractModel):
         r"""
         :param Operator: 无
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param TemplateId: 用户上传的模版ID
+        :param TemplateId: 用户上传的模板ID
         :type TemplateId: str
         :param FlowId: 流程ID
         :type FlowId: str
@@ -295,7 +295,8 @@ class CreateDocumentRequest(AbstractModel):
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         :param ClientToken: 客户端Token，保持接口幂等性
         :type ClientToken: str
-        :param NeedPreview: 是否需要生成预览文件 默认不生成
+        :param NeedPreview: 是否需要生成预览文件 默认不生成；
+预览链接有效期300秒；
         :type NeedPreview: bool
         """
         self.Operator = None

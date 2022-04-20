@@ -2457,17 +2457,20 @@ class CreatePluginRequest(AbstractModel):
         r"""
         :param PluginName: 用户自定义的插件名称。最长50个字符，最短2个字符，支持 a-z,A-Z,0-9,_, 必须字母开头，字母或者数字结尾。
         :type PluginName: str
-        :param PluginType: 插件类型。目前支持IPControl, TrafficControl, Cors, CustomReq, CustomAuth，Routing，TrafficControlByParameter。
+        :param PluginType: 插件类型。目前支持IPControl, TrafficControl, Cors, CustomReq, CustomAuth，Routing，TrafficControlByParameter, CircuitBreaker, ProxyCache。
         :type PluginType: str
         :param PluginData: 插件定义语句，支持json。
         :type PluginData: str
         :param Description: 插件描述，限定200字以内。
         :type Description: str
+        :param Tags: 标签
+        :type Tags: list of Tag
         """
         self.PluginName = None
         self.PluginType = None
         self.PluginData = None
         self.Description = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -2475,6 +2478,12 @@ class CreatePluginRequest(AbstractModel):
         self.PluginType = params.get("PluginType")
         self.PluginData = params.get("PluginData")
         self.Description = params.get("Description")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2633,23 +2642,29 @@ class CreateUpstreamRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Scheme: 后端协议，HTTP, HTTPS其中之一
+        :param Scheme: 后端协议，取值范围：HTTP, HTTPS
         :type Scheme: str
-        :param Algorithm: 负载均衡算法目前支持ROUND_ROBIN
+        :param Algorithm: 负载均衡算法，取值范围：ROUND-ROBIN
         :type Algorithm: str
         :param UniqVpcId: VPC唯一ID
         :type UniqVpcId: str
-        :param UpstreamName: VPC通道名字
+        :param UpstreamName: 后端通道名字
         :type UpstreamName: str
-        :param UpstreamDescription: VPC通道描述
+        :param UpstreamDescription: 后端通道描述
         :type UpstreamDescription: str
+        :param UpstreamType: 后端访问类型，取值范围：IP_PORT, K8S
+        :type UpstreamType: str
         :param Retries: 请求重试次数，默认3次
         :type Retries: int
-        :param UpstreamHost: 请求到后端的，host头
+        :param UpstreamHost: 网关转发到后端的Host请求头
         :type UpstreamHost: str
         :param Nodes: 后端节点
         :type Nodes: list of UpstreamNode
-        :param K8sService: k8s服务的配置
+        :param Tags: 标签
+        :type Tags: list of Tag
+        :param HealthChecker: 健康检查配置，目前只支持VPC通道
+        :type HealthChecker: :class:`tencentcloud.apigateway.v20180808.models.UpstreamHealthChecker`
+        :param K8sService: K8S容器服务的配置
         :type K8sService: list of K8sService
         """
         self.Scheme = None
@@ -2657,9 +2672,12 @@ class CreateUpstreamRequest(AbstractModel):
         self.UniqVpcId = None
         self.UpstreamName = None
         self.UpstreamDescription = None
+        self.UpstreamType = None
         self.Retries = None
         self.UpstreamHost = None
         self.Nodes = None
+        self.Tags = None
+        self.HealthChecker = None
         self.K8sService = None
 
 
@@ -2669,6 +2687,7 @@ class CreateUpstreamRequest(AbstractModel):
         self.UniqVpcId = params.get("UniqVpcId")
         self.UpstreamName = params.get("UpstreamName")
         self.UpstreamDescription = params.get("UpstreamDescription")
+        self.UpstreamType = params.get("UpstreamType")
         self.Retries = params.get("Retries")
         self.UpstreamHost = params.get("UpstreamHost")
         if params.get("Nodes") is not None:
@@ -2677,6 +2696,15 @@ class CreateUpstreamRequest(AbstractModel):
                 obj = UpstreamNode()
                 obj._deserialize(item)
                 self.Nodes.append(obj)
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        if params.get("HealthChecker") is not None:
+            self.HealthChecker = UpstreamHealthChecker()
+            self.HealthChecker._deserialize(params.get("HealthChecker"))
         if params.get("K8sService") is not None:
             self.K8sService = []
             for item in params.get("K8sService"):
@@ -2699,7 +2727,7 @@ class CreateUpstreamResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UpstreamId: 创建返回的唯一id
+        :param UpstreamId: 创建返回的唯一ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpstreamId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -3166,7 +3194,7 @@ class DeleteUpstreamRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UpstreamId: 待删除的VPC通道唯一ID
+        :param UpstreamId: 待删除的后端通道ID
         :type UpstreamId: str
         """
         self.UpstreamId = None
@@ -3190,7 +3218,7 @@ class DeleteUpstreamResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UpstreamId: 成功删除的vpc通道id
+        :param UpstreamId: 成功删除的后端通道ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpstreamId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -5325,7 +5353,7 @@ class DescribeServiceResponse(AbstractModel):
         :param DeploymentType: 服务部署的集群类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeploymentType: str
-        :param SpecialUse: 特殊用途
+        :param SpecialUse: 特殊用途, NULL和DEFAULT表示无特殊用途，其他用途如HTTP_DNS等
 注意：此字段可能返回 null，表示取不到有效值。
         :type SpecialUse: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -5668,11 +5696,11 @@ class DescribeUpstreamBindApisRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Limit: 分页
+        :param Limit: 分页大小
         :type Limit: int
-        :param Offset: 分页
+        :param Offset: 分页起始位置
         :type Offset: int
-        :param UpstreamId: vpc通道Id
+        :param UpstreamId: 后端通道ID
         :type UpstreamId: str
         :param Filters: ServiceId和ApiId过滤查询
         :type Filters: list of Filter
@@ -5726,7 +5754,7 @@ class DescribeUpstreamBindApisResponse(AbstractModel):
 
 
 class DescribeUpstreamInfo(AbstractModel):
-    """查询vpc通道返回信息
+    """查询后端通道返回信息
 
     """
 
@@ -5765,11 +5793,11 @@ class DescribeUpstreamsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Limit: 分页
+        :param Limit: 分页大小
         :type Limit: int
-        :param Offset: 分页
+        :param Offset: 分页起始位置
         :type Offset: int
-        :param Filters: 过滤条件
+        :param Filters: 过滤条件，支持后端通道ID（UpstreamId）、后端通道名字（UpstreamName）过滤查询
         :type Filters: list of Filter
         """
         self.Limit = None
@@ -8010,36 +8038,42 @@ class ModifyUpstreamRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UpstreamId: VPC通道唯一ID
+        :param UpstreamId: 后端通道唯一ID
         :type UpstreamId: str
-        :param UpstreamName: VPC通道名字
+        :param UpstreamName: 后端通道名字
         :type UpstreamName: str
-        :param UpstreamDescription: VPC通道描述
+        :param UpstreamDescription: 后端通道描述
         :type UpstreamDescription: str
-        :param Scheme: 后端协议，HTTP, HTTPS其中之一
+        :param Scheme: 后端协议，取值范围：HTTP, HTTPS
         :type Scheme: str
-        :param Algorithm: 负载均衡算法目前支持ROUND_ROBIN
+        :param UpstreamType: 后端访问类型，取值范围：IP_PORT, K8S
+        :type UpstreamType: str
+        :param Algorithm: 负载均衡算法，取值范围：ROUND_ROBIN
         :type Algorithm: str
         :param UniqVpcId: VPC唯一ID
         :type UniqVpcId: str
         :param Retries: 请求重试次数，默认3次
         :type Retries: int
-        :param UpstreamHost: 请求到后端的，host头
+        :param UpstreamHost: 网关转发到后端的 Host 请求头
         :type UpstreamHost: str
         :param Nodes: 后端节点列表
         :type Nodes: list of UpstreamNode
-        :param K8sService: k8s服务配置
+        :param HealthChecker: 健康检查配置，目前只支持VPC通道
+        :type HealthChecker: :class:`tencentcloud.apigateway.v20180808.models.UpstreamHealthChecker`
+        :param K8sService: 容器服务配置
         :type K8sService: list of K8sService
         """
         self.UpstreamId = None
         self.UpstreamName = None
         self.UpstreamDescription = None
         self.Scheme = None
+        self.UpstreamType = None
         self.Algorithm = None
         self.UniqVpcId = None
         self.Retries = None
         self.UpstreamHost = None
         self.Nodes = None
+        self.HealthChecker = None
         self.K8sService = None
 
 
@@ -8048,6 +8082,7 @@ class ModifyUpstreamRequest(AbstractModel):
         self.UpstreamName = params.get("UpstreamName")
         self.UpstreamDescription = params.get("UpstreamDescription")
         self.Scheme = params.get("Scheme")
+        self.UpstreamType = params.get("UpstreamType")
         self.Algorithm = params.get("Algorithm")
         self.UniqVpcId = params.get("UniqVpcId")
         self.Retries = params.get("Retries")
@@ -8058,6 +8093,9 @@ class ModifyUpstreamRequest(AbstractModel):
                 obj = UpstreamNode()
                 obj._deserialize(item)
                 self.Nodes.append(obj)
+        if params.get("HealthChecker") is not None:
+            self.HealthChecker = UpstreamHealthChecker()
+            self.HealthChecker._deserialize(params.get("HealthChecker"))
         if params.get("K8sService") is not None:
             self.K8sService = []
             for item in params.get("K8sService"):
@@ -8080,7 +8118,7 @@ class ModifyUpstreamResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Result: 返回修改后的vpc通道信息
+        :param Result: 返回修改后的后端通道信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.apigateway.v20180808.models.UpstreamInfo`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -9872,7 +9910,7 @@ class UpdateServiceResponse(AbstractModel):
 
 
 class UpstreamHealthChecker(AbstractModel):
-    """VPC通道健康检查参数配置
+    """后端通道健康检查参数配置
 
     """
 
@@ -9945,31 +9983,31 @@ class UpstreamHealthChecker(AbstractModel):
 
 
 class UpstreamHealthCheckerReqHeaders(AbstractModel):
-    """VPC通道主动健康检查的请求头配置
+    """后端通道主动健康检查的请求头配置
 
     """
 
 
 class UpstreamInfo(AbstractModel):
-    """VPC通道信息集合
+    """后端通道详细信息
 
     """
 
     def __init__(self):
         r"""
-        :param UpstreamId: VPC通道唯一ID
+        :param UpstreamId: 后端通道唯一ID
         :type UpstreamId: str
-        :param UpstreamName: VPC通道名字
+        :param UpstreamName: 后端通道名字
         :type UpstreamName: str
-        :param UpstreamDescription: VPC通道描述
+        :param UpstreamDescription: 后端通道描述
         :type UpstreamDescription: str
-        :param Scheme: 写意
+        :param Scheme: 后端协议，取值范围：HTTP, HTTPS
         :type Scheme: str
-        :param Algorithm: 负载均衡算法
+        :param Algorithm: 负载均衡算法，取值范围：ROUND_ROBIN
         :type Algorithm: str
-        :param UniqVpcId: vpc唯一ID
+        :param UniqVpcId: VPC唯一ID
         :type UniqVpcId: str
-        :param Retries: 请求重拾次数
+        :param Retries: 请求重试次数
         :type Retries: int
         :param Nodes: 后端节点
         :type Nodes: list of UpstreamNode
@@ -9981,12 +10019,12 @@ class UpstreamInfo(AbstractModel):
         :param HealthChecker: 健康检查配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type HealthChecker: :class:`tencentcloud.apigateway.v20180808.models.UpstreamHealthChecker`
-        :param UpstreamType: Upstream的类型
+        :param UpstreamType: 后端的类型，取值范围：IP_PORT, K8S
         :type UpstreamType: str
-        :param K8sServices: k8s服务配置
+        :param K8sServices: K8S容器服务配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type K8sServices: list of K8sService
-        :param UpstreamHost: vpc通道的Host
+        :param UpstreamHost: 网关转发给后端的Host请求头
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpstreamHost: str
         """
@@ -10048,37 +10086,37 @@ class UpstreamInfo(AbstractModel):
 
 
 class UpstreamNode(AbstractModel):
-    """VPC通道后端节点元数据
+    """后端通道后端节点元数据
 
     """
 
     def __init__(self):
         r"""
-        :param Host: IP（domain）
+        :param Host: IP或域名
         :type Host: str
         :param Port: 端口[0, 65535]
         :type Port: int
         :param Weight: 权重[0, 100], 0为禁用
         :type Weight: int
-        :param VmInstanceId: vm实例id
+        :param VmInstanceId: CVM实例ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type VmInstanceId: str
         :param Tags: 染色标签
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of str
-        :param Healthy: 节点健康状态，创建、编辑时不需要传该参数。OFF：关闭，HEALTHY：健康，UNHEALTHY：异常，NO_DATA：数据未上报
+        :param Healthy: 节点健康状态，创建、编辑时不需要传该参数。OFF：关闭，HEALTHY：健康，UNHEALTHY：异常，NO_DATA：数据未上报。目前只支持VPC通道。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Healthy: str
-        :param ServiceName: k8s服务名字
+        :param ServiceName: K8S容器服务名字
 注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceName: str
-        :param NameSpace: k8s命名空间
+        :param NameSpace: K8S命名空间
 注意：此字段可能返回 null，表示取不到有效值。
         :type NameSpace: str
         :param ClusterId: TKE集群的ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterId: str
-        :param Source: Node的来源
+        :param Source: Node的来源，取值范围：K8S
 注意：此字段可能返回 null，表示取不到有效值。
         :type Source: str
         :param UniqueServiceName: API网关内部记录唯一的服务名字

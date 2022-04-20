@@ -2548,9 +2548,9 @@ class ModifyDBInstanceNetworkAddressRequest(AbstractModel):
         :type InstanceId: str
         :param OldIpExpiredTime: 原IP保留时长，单位为分钟；原IP会在约定时间后释放，在释放前原IP和新IP均可访问；0表示立即回收原IP
         :type OldIpExpiredTime: int
-        :param NewUniqVpcId: 切换后IP地址所属私有网络统一ID，若为基础网络，该字段为空
+        :param NewUniqVpcId: 切换后IP地址的归属私有网络统一ID，若为基础网络，该字段为空
         :type NewUniqVpcId: str
-        :param NewUniqSubnetId: 切换后IP地址所属子网统一ID，若为基础网络，该字段为空
+        :param NewUniqSubnetId: 切换后IP地址的归属子网统一ID，若为基础网络，该字段为空
         :type NewUniqSubnetId: str
         :param NetworkAddresses: 待修改IP信息
         :type NetworkAddresses: list of ModifyNetworkAddress

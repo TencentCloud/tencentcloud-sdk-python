@@ -374,6 +374,9 @@ INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = 'InvalidParameterValue.Invali
 # 无效密码。指定的密码不符合密码复杂度限制。例如密码长度不符合限制等。
 INVALIDPARAMETERVALUE_INVALIDPASSWORD = 'InvalidParameterValue.InvalidPassword'
 
+# Region ID不可用。
+INVALIDPARAMETERVALUE_INVALIDREGION = 'InvalidParameterValue.InvalidRegion'
+
 # 时间格式不合法。
 INVALIDPARAMETERVALUE_INVALIDTIMEFORMAT = 'InvalidParameterValue.InvalidTimeFormat'
 

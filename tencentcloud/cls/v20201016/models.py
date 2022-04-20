@@ -4517,6 +4517,9 @@ class LogContextInfo(AbstractModel):
         :type PkgLogId: int
         :param BTime: 日志时间戳
         :type BTime: int
+        :param HostName: 日志来源主机名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HostName: str
         """
         self.Source = None
         self.Filename = None
@@ -4524,6 +4527,7 @@ class LogContextInfo(AbstractModel):
         self.PkgId = None
         self.PkgLogId = None
         self.BTime = None
+        self.HostName = None
 
 
     def _deserialize(self, params):
@@ -4533,6 +4537,7 @@ class LogContextInfo(AbstractModel):
         self.PkgId = params.get("PkgId")
         self.PkgLogId = params.get("PkgLogId")
         self.BTime = params.get("BTime")
+        self.HostName = params.get("HostName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4566,6 +4571,9 @@ class LogInfo(AbstractModel):
         :param LogJson: 日志内容的Json序列化字符串
 注意：此字段可能返回 null，表示取不到有效值。
         :type LogJson: str
+        :param HostName: 日志来源主机名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HostName: str
         """
         self.Time = None
         self.TopicId = None
@@ -4575,6 +4583,7 @@ class LogInfo(AbstractModel):
         self.PkgId = None
         self.PkgLogId = None
         self.LogJson = None
+        self.HostName = None
 
 
     def _deserialize(self, params):
@@ -4586,6 +4595,7 @@ class LogInfo(AbstractModel):
         self.PkgId = params.get("PkgId")
         self.PkgLogId = params.get("PkgLogId")
         self.LogJson = params.get("LogJson")
+        self.HostName = params.get("HostName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

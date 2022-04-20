@@ -376,6 +376,8 @@ class InputManageMarketingRisk(AbstractModel):
         :type Sponsor: :class:`tencentcloud.rce.v20201103.models.SponsorInfo`
         :param OnlineScam: 可选填写。详情请跳转至OnlineScamInfo查看。
         :type OnlineScam: :class:`tencentcloud.rce.v20201103.models.OnlineScamInfo`
+        :param Platform: 平台: 1android
+        :type Platform: str
         """
         self.Account = None
         self.SceneCode = None
@@ -398,6 +400,7 @@ class InputManageMarketingRisk(AbstractModel):
         self.Details = None
         self.Sponsor = None
         self.OnlineScam = None
+        self.Platform = None
 
 
     def _deserialize(self, params):
@@ -433,6 +436,7 @@ class InputManageMarketingRisk(AbstractModel):
         if params.get("OnlineScam") is not None:
             self.OnlineScam = OnlineScamInfo()
             self.OnlineScam._deserialize(params.get("OnlineScam"))
+        self.Platform = params.get("Platform")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -838,6 +842,9 @@ reject：拒绝，高风险恶意
 2063 疑似 群控设备 请求设备为猫池、手机墙等群控设备
 注意：此字段可能返回 null，表示取不到有效值。
         :type RiskType: list of int
+        :param ConstId: 唯一ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConstId: str
         """
         self.UserId = None
         self.PostTime = None
@@ -845,6 +852,7 @@ reject：拒绝，高风险恶意
         self.UserIp = None
         self.RiskLevel = None
         self.RiskType = None
+        self.ConstId = None
 
 
     def _deserialize(self, params):
@@ -854,6 +862,7 @@ reject：拒绝，高风险恶意
         self.UserIp = params.get("UserIp")
         self.RiskLevel = params.get("RiskLevel")
         self.RiskType = params.get("RiskType")
+        self.ConstId = params.get("ConstId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -55,6 +55,35 @@ class DbbrainClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CancelKillTask(self, request):
+        """终止中断会话任务。
+
+        :param request: Request instance for CancelKillTask.
+        :type request: :class:`tencentcloud.dbbrain.v20210527.models.CancelKillTaskRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.CancelKillTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CancelKillTask", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CancelKillTaskResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateDBDiagReportTask(self, request):
         """创建健康报告，并可以选择是否发送邮件。
 
@@ -258,6 +287,35 @@ class DbbrainClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateSqlFilter(self, request):
+        """创建实例SQL限流任务。
+
+        :param request: Request instance for CreateSqlFilter.
+        :type request: :class:`tencentcloud.dbbrain.v20210527.models.CreateSqlFilterRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.CreateSqlFilterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateSqlFilter", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateSqlFilterResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteSecurityAuditLogExportTasks(self, request):
         """删除安全审计日志导出任务。
 
@@ -273,6 +331,35 @@ class DbbrainClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteSecurityAuditLogExportTasksResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteSqlFilters(self, request):
+        """删除实例SQL限流任务。
+
+        :param request: Request instance for DeleteSqlFilters.
+        :type request: :class:`tencentcloud.dbbrain.v20210527.models.DeleteSqlFiltersRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.DeleteSqlFiltersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteSqlFilters", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteSqlFiltersResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -606,6 +693,35 @@ class DbbrainClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeNoPrimaryKeyTables(self, request):
+        """查询实例无主键表。
+
+        :param request: Request instance for DescribeNoPrimaryKeyTables.
+        :type request: :class:`tencentcloud.dbbrain.v20210527.models.DescribeNoPrimaryKeyTablesRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.DescribeNoPrimaryKeyTablesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeNoPrimaryKeyTables", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeNoPrimaryKeyTablesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeProxySessionKillTasks(self, request):
         """用于查询 redis 执行 kill 会话任务后代理节点的执行结果，入参异步任务 ID 从接口 CreateProxySessionKillTask 调用成功后取得。当前 product 只支持：redis。
 
@@ -621,6 +737,35 @@ class DbbrainClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeProxySessionKillTasksResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeRedisTopBigKeys(self, request):
+        """查询redis实例大key列表。
+
+        :param request: Request instance for DescribeRedisTopBigKeys.
+        :type request: :class:`tencentcloud.dbbrain.v20210527.models.DescribeRedisTopBigKeysRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.DescribeRedisTopBigKeysResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRedisTopBigKeys", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRedisTopBigKeysResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -766,6 +911,64 @@ class DbbrainClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeSlowLogUserHostStatsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeSqlFilters(self, request):
+        """查询实例SQL限流任务列表。
+
+        :param request: Request instance for DescribeSqlFilters.
+        :type request: :class:`tencentcloud.dbbrain.v20210527.models.DescribeSqlFiltersRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.DescribeSqlFiltersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSqlFilters", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSqlFiltersResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeSqlTemplate(self, request):
+        """查询SQL模版。
+
+        :param request: Request instance for DescribeSqlTemplate.
+        :type request: :class:`tencentcloud.dbbrain.v20210527.models.DescribeSqlTemplateRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.DescribeSqlTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSqlTemplate", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSqlTemplateResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -969,6 +1172,64 @@ class DbbrainClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDiagDBInstanceConfResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifySqlFilters(self, request):
+        """更改实例限流任务状态，目前仅用于终止限流。
+
+        :param request: Request instance for ModifySqlFilters.
+        :type request: :class:`tencentcloud.dbbrain.v20210527.models.ModifySqlFiltersRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.ModifySqlFiltersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifySqlFilters", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifySqlFiltersResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def VerifyUserAccount(self, request):
+        """验证用户数据库账号权限，获取会话token。
+
+        :param request: Request instance for VerifyUserAccount.
+        :type request: :class:`tencentcloud.dbbrain.v20210527.models.VerifyUserAccountRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.VerifyUserAccountResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("VerifyUserAccount", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.VerifyUserAccountResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

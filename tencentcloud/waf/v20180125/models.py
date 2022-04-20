@@ -549,7 +549,7 @@ class AddSpartaProtectionRequest(AbstractModel):
         :type GrayAreas: list of str
         :param UpstreamDomain: UpstreamType=1时，填次字段表示回源域名
         :type UpstreamDomain: str
-        :param SrcList: UpstreamType=0时，填次字段表示回源ip
+        :param SrcList: UpstreamType=0时，填次字段表示回源IP
         :type SrcList: list of str
         :param IsHttp2: 是否开启HTTP2,开启HTTP2需要HTTPS支持
         :type IsHttp2: int
@@ -563,8 +563,10 @@ class AddSpartaProtectionRequest(AbstractModel):
         :type IsKeepAlive: str
         :param InstanceID: 实例id，上线之后带上此字段
         :type InstanceID: str
-        :param Anycast: anycast ip类型开关： 0 普通ip 1 Anycast ip
+        :param Anycast: anycast IP类型开关： 0 普通IP 1 Anycast IP
         :type Anycast: int
+        :param Weights: src权重
+        :type Weights: list of int
         """
         self.Domain = None
         self.CertType = None
@@ -589,6 +591,7 @@ class AddSpartaProtectionRequest(AbstractModel):
         self.IsKeepAlive = None
         self.InstanceID = None
         self.Anycast = None
+        self.Weights = None
 
 
     def _deserialize(self, params):
@@ -620,6 +623,7 @@ class AddSpartaProtectionRequest(AbstractModel):
         self.IsKeepAlive = params.get("IsKeepAlive")
         self.InstanceID = params.get("InstanceID")
         self.Anycast = params.get("Anycast")
+        self.Weights = params.get("Weights")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1647,6 +1651,74 @@ class DescribeDomainWhiteRulesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDomainsRequest(AbstractModel):
+    """DescribeDomains请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Offset: 偏移
+        :type Offset: int
+        :param Limit: 容量
+        :type Limit: int
+        :param Filters: 过滤数组
+        :type Filters: list of FiltersItemNew
+        """
+        self.Offset = None
+        self.Limit = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = FiltersItemNew()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDomainsResponse(AbstractModel):
+    """DescribeDomains返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Total: 总数
+        :type Total: int
+        :param Domains: domain列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Domains: list of DomainInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Total = None
+        self.Domains = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("Domains") is not None:
+            self.Domains = []
+            for item in params.get("Domains"):
+                obj = DomainInfo()
+                obj._deserialize(item)
+                self.Domains.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeFlowTrendRequest(AbstractModel):
     """DescribeFlowTrend请求参数结构体
 
@@ -2032,6 +2104,12 @@ class DescribeWafThreatenIntelligenceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DomainInfo(AbstractModel):
+    """域名的详细信息
+
+    """
+
+
 class ExportAccessInfo(AbstractModel):
     """DescribeAccessExports接口
 
@@ -2097,6 +2175,38 @@ class ExportAccessInfo(AbstractModel):
         self.To = params.get("To")
         self.CosPath = params.get("CosPath")
         self.CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FiltersItemNew(AbstractModel):
+    """实例入参过滤器
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 字段名
+        :type Name: str
+        :param Values: 过滤值
+        :type Values: list of str
+        :param ExactMatch: 是否精确查找
+        :type ExactMatch: bool
+        """
+        self.Name = None
+        self.Values = None
+        self.ExactMatch = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Values = params.get("Values")
+        self.ExactMatch = params.get("ExactMatch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
