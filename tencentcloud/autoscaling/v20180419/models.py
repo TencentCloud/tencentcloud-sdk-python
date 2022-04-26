@@ -298,15 +298,22 @@ class AutoScalingAdvice(AbstractModel):
         r"""
         :param AutoScalingGroupId: 伸缩组ID。
         :type AutoScalingGroupId: str
+        :param Level: 伸缩组警告级别。取值范围：<br>
+<li>NORMAL：正常<br>
+<li>WARNING：警告级别<br>
+<li>CRITICAL：严重级别<br>
+        :type Level: str
         :param Advices: 伸缩组配置建议集合。
         :type Advices: list of Advice
         """
         self.AutoScalingGroupId = None
+        self.Level = None
         self.Advices = None
 
 
     def _deserialize(self, params):
         self.AutoScalingGroupId = params.get("AutoScalingGroupId")
+        self.Level = params.get("Level")
         if params.get("Advices") is not None:
             self.Advices = []
             for item in params.get("Advices"):
@@ -333,7 +340,17 @@ class AutoScalingGroup(AbstractModel):
         :type AutoScalingGroupId: str
         :param AutoScalingGroupName: 伸缩组名称
         :type AutoScalingGroupName: str
-        :param AutoScalingGroupStatus: 伸缩组当前状态。取值范围：<br><li>NORMAL：正常<br><li>CVM_ABNORMAL：启动配置异常<br><li>LB_ABNORMAL：负载均衡器异常<br><li>VPC_ABNORMAL：VPC网络异常<br><li>INSUFFICIENT_BALANCE：余额不足<br><li>LB_BACKEND_REGION_NOT_MATCH：CLB实例后端地域与AS服务所在地域不匹配<br>
+        :param AutoScalingGroupStatus: 伸缩组当前状态。取值范围：<br>
+<li>NORMAL：正常<br>
+<li>CVM_ABNORMAL：启动配置异常<br>
+<li>LB_ABNORMAL：负载均衡器异常<br>
+<li>LB_LISTENER_ABNORMAL：负载均衡器监听器异常<br>
+<li>LB_LOCATION_ABNORMAL：负载均衡器监听器转发配置异常<br>
+<li>VPC_ABNORMAL：VPC网络异常<br>
+<li>SUBNET_ABNORMAL：VPC子网异常<br>
+<li>INSUFFICIENT_BALANCE：余额不足<br>
+<li>LB_BACKEND_REGION_NOT_MATCH：CLB实例后端地域与AS服务所在地域不匹配<br>
+<li>LB_BACKEND_VPC_NOT_MATCH：CLB实例VPC与伸缩组VPC不匹配
         :type AutoScalingGroupStatus: str
         :param CreatedTime: 创建时间，采用UTC标准计时
         :type CreatedTime: str
@@ -3845,6 +3862,81 @@ InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定�
 
 class ModifyLaunchConfigurationAttributesResponse(AbstractModel):
     """ModifyLaunchConfigurationAttributes返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyLifecycleHookRequest(AbstractModel):
+    """ModifyLifecycleHook请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LifecycleHookId: 生命周期挂钩ID。
+        :type LifecycleHookId: str
+        :param LifecycleHookName: 生命周期挂钩名称。
+        :type LifecycleHookName: str
+        :param LifecycleTransition: 进入生命周期挂钩场景，取值包括：
+<li> INSTANCE_LAUNCHING：实例启动后
+<li> INSTANCE_TERMINATING：实例销毁前
+        :type LifecycleTransition: str
+        :param DefaultResult: 定义伸缩组在生命周期挂钩超时的情况下应采取的操作，取值包括：
+<li> CONTINUE： 超时后继续伸缩活动
+<li> ABANDON：超时后终止伸缩活动
+        :type DefaultResult: str
+        :param HeartbeatTimeout: 生命周期挂钩超时之前可以经过的最长时间（以秒为单位），范围从 30 到 7200 秒。
+        :type HeartbeatTimeout: int
+        :param NotificationMetadata: 弹性伸缩向通知目标发送的附加信息。
+        :type NotificationMetadata: str
+        :param LifecycleTransitionType: 进行生命周期挂钩的场景类型，取值范围包括`NORMAL`和 `EXTENSION`。说明：设置为`EXTENSION`值，在AttachInstances、DetachInstances、RemoveInstances 接口时会触发生命周期挂钩操作，值为`NORMAL`则不会在这些接口中触发生命周期挂钩。
+        :type LifecycleTransitionType: str
+        :param NotificationTarget: 通知目标信息。
+        :type NotificationTarget: :class:`tencentcloud.autoscaling.v20180419.models.NotificationTarget`
+        """
+        self.LifecycleHookId = None
+        self.LifecycleHookName = None
+        self.LifecycleTransition = None
+        self.DefaultResult = None
+        self.HeartbeatTimeout = None
+        self.NotificationMetadata = None
+        self.LifecycleTransitionType = None
+        self.NotificationTarget = None
+
+
+    def _deserialize(self, params):
+        self.LifecycleHookId = params.get("LifecycleHookId")
+        self.LifecycleHookName = params.get("LifecycleHookName")
+        self.LifecycleTransition = params.get("LifecycleTransition")
+        self.DefaultResult = params.get("DefaultResult")
+        self.HeartbeatTimeout = params.get("HeartbeatTimeout")
+        self.NotificationMetadata = params.get("NotificationMetadata")
+        self.LifecycleTransitionType = params.get("LifecycleTransitionType")
+        if params.get("NotificationTarget") is not None:
+            self.NotificationTarget = NotificationTarget()
+            self.NotificationTarget._deserialize(params.get("NotificationTarget"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyLifecycleHookResponse(AbstractModel):
+    """ModifyLifecycleHook返回参数结构体
 
     """
 

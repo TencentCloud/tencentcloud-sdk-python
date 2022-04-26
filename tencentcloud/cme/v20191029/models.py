@@ -2449,7 +2449,8 @@ class EventContent(AbstractModel):
 <li>Material.Deleted：媒体删除事件；</li>
 <li>Class.Created：分类新增事件；</li>
 <li>Class.Moved：分类移动事件；</li>
-<li>Class.Deleted：分类删除事件。</li>
+<li>Class.Deleted：分类删除事件；</li>
+<li>Task.VideoExportCompleted：视频导出完成事件。 </li>
         :type EventType: str
         :param Operator: 操作者，表示触发事件的操作者。如果是 `cmeid_system` 表示平台管理员操作。
         :type Operator: str
@@ -2484,6 +2485,9 @@ class EventContent(AbstractModel):
         :param ClassDeletedEvent: 分类删除事件。仅当 EventType 为 Class.Deleted 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClassDeletedEvent: :class:`tencentcloud.cme.v20191029.models.ClassDeletedEvent`
+        :param VideoExportCompletedEvent: 视频导出完成事件。仅当 EventType 为 Task.VideoExportCompleted 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VideoExportCompletedEvent: :class:`tencentcloud.cme.v20191029.models.VideoExportCompletedEvent`
         """
         self.EventType = None
         self.Operator = None
@@ -2498,6 +2502,7 @@ class EventContent(AbstractModel):
         self.ClassCreatedEvent = None
         self.ClassMovedEvent = None
         self.ClassDeletedEvent = None
+        self.VideoExportCompletedEvent = None
 
 
     def _deserialize(self, params):
@@ -2536,6 +2541,9 @@ class EventContent(AbstractModel):
         if params.get("ClassDeletedEvent") is not None:
             self.ClassDeletedEvent = ClassDeletedEvent()
             self.ClassDeletedEvent._deserialize(params.get("ClassDeletedEvent"))
+        if params.get("VideoExportCompletedEvent") is not None:
+            self.VideoExportCompletedEvent = VideoExportCompletedEvent()
+            self.VideoExportCompletedEvent._deserialize(params.get("VideoExportCompletedEvent"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6718,6 +6726,53 @@ class VideoEncodingPresetVideoSettingForUpdate(AbstractModel):
         self.ShortEdge = params.get("ShortEdge")
         self.Bitrate = params.get("Bitrate")
         self.FrameRate = params.get("FrameRate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VideoExportCompletedEvent(AbstractModel):
+    """视频导出完成事件。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 任务 Id。
+        :type TaskId: str
+        :param Status: 任务状态，取值有：
+<li>SUCCESS：成功；</li>
+<li>FAIL：失败。</li>
+        :type Status: str
+        :param ErrCode: 错误码，取值有：
+<li>0：成功；</li>
+<li>其他值：失败。</li>
+        :type ErrCode: int
+        :param ErrMsg: 错误信息。
+        :type ErrMsg: str
+        :param Output: 任务输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Output: :class:`tencentcloud.cme.v20191029.models.VideoEditProjectOutput`
+        """
+        self.TaskId = None
+        self.Status = None
+        self.ErrCode = None
+        self.ErrMsg = None
+        self.Output = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.Status = params.get("Status")
+        self.ErrCode = params.get("ErrCode")
+        self.ErrMsg = params.get("ErrMsg")
+        if params.get("Output") is not None:
+            self.Output = VideoEditProjectOutput()
+            self.Output._deserialize(params.get("Output"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

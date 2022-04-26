@@ -1268,7 +1268,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeCDBProxy(self, request):
-        """查询数据库代理
+        """查询数据库代理（待下线，替换接口QueryCDBProxy）
 
         :param request: Request instance for DescribeCDBProxy.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeCDBProxyRequest`

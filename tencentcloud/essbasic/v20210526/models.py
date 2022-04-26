@@ -112,6 +112,106 @@ class CcInfo(AbstractModel):
         
 
 
+class ChannelCreateFlowByFilesRequest(AbstractModel):
+    """ChannelCreateFlowByFiles请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Agent: 渠道应用相关信息
+        :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        :param Operator: 操作者的信息
+        :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
+        :param FileIds: 签署文件资源Id列表，目前仅支持单个文件
+        :type FileIds: list of str
+        :param FlowName: 流程名称，长度不超过200个字符
+        :type FlowName: str
+        :param Deadline: 流程截止时间，十位数时间戳，最大值为33162419560，即3020年
+        :type Deadline: int
+        :param FlowDescription: 流程的描述，长度不超过1000个字符
+        :type FlowDescription: str
+        :param FlowType: 流程的类型，长度不超过255个字符
+        :type FlowType: str
+        :param CallbackUrl: 流程回调地址，长度不超过255个字符
+        :type CallbackUrl: str
+        :param FlowApprovers: 流程签约方列表，最多不超过5个参与方
+        :type FlowApprovers: list of FlowApproverInfo
+        :param Unordered: 合同签署顺序类型(无序签,顺序签)，默认为false，即有序签署
+        :type Unordered: bool
+        :param Components: 签署文件中的控件，如：填写控件等
+        :type Components: list of Component
+        """
+        self.Agent = None
+        self.Operator = None
+        self.FileIds = None
+        self.FlowName = None
+        self.Deadline = None
+        self.FlowDescription = None
+        self.FlowType = None
+        self.CallbackUrl = None
+        self.FlowApprovers = None
+        self.Unordered = None
+        self.Components = None
+
+
+    def _deserialize(self, params):
+        if params.get("Agent") is not None:
+            self.Agent = Agent()
+            self.Agent._deserialize(params.get("Agent"))
+        if params.get("Operator") is not None:
+            self.Operator = UserInfo()
+            self.Operator._deserialize(params.get("Operator"))
+        self.FileIds = params.get("FileIds")
+        self.FlowName = params.get("FlowName")
+        self.Deadline = params.get("Deadline")
+        self.FlowDescription = params.get("FlowDescription")
+        self.FlowType = params.get("FlowType")
+        self.CallbackUrl = params.get("CallbackUrl")
+        if params.get("FlowApprovers") is not None:
+            self.FlowApprovers = []
+            for item in params.get("FlowApprovers"):
+                obj = FlowApproverInfo()
+                obj._deserialize(item)
+                self.FlowApprovers.append(obj)
+        self.Unordered = params.get("Unordered")
+        if params.get("Components") is not None:
+            self.Components = []
+            for item in params.get("Components"):
+                obj = Component()
+                obj._deserialize(item)
+                self.Components.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChannelCreateFlowByFilesResponse(AbstractModel):
+    """ChannelCreateFlowByFiles返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: 合同流程ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlowId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
 class Component(AbstractModel):
     """此结构体 (Component) 用于描述控件属性。
 
@@ -380,6 +480,67 @@ class CreateFlowsByTemplatesResponse(AbstractModel):
         self.CustomerData = params.get("CustomerData")
         self.ErrorMessages = params.get("ErrorMessages")
         self.PreviewUrls = params.get("PreviewUrls")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateSealByImageRequest(AbstractModel):
+    """CreateSealByImage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Agent: 渠道应用相关信息
+        :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        :param SealName: 印章名称
+        :type SealName: str
+        :param SealImage: 印章图片base64
+        :type SealImage: str
+        :param Operator: 操作者的信息
+        :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
+        """
+        self.Agent = None
+        self.SealName = None
+        self.SealImage = None
+        self.Operator = None
+
+
+    def _deserialize(self, params):
+        if params.get("Agent") is not None:
+            self.Agent = Agent()
+            self.Agent._deserialize(params.get("Agent"))
+        self.SealName = params.get("SealName")
+        self.SealImage = params.get("SealImage")
+        if params.get("Operator") is not None:
+            self.Operator = UserInfo()
+            self.Operator._deserialize(params.get("Operator"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateSealByImageResponse(AbstractModel):
+    """CreateSealByImage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SealId: 印章id
+        :type SealId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.SealId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.SealId = params.get("SealId")
         self.RequestId = params.get("RequestId")
 
 

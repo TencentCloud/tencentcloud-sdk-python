@@ -1766,6 +1766,7 @@ class RecognizeCarProResponse(AbstractModel):
         :param CarCoords: 汽车的四个矩形顶点坐标，如果图片中存在多辆车，则输出最大车辆的坐标。
         :type CarCoords: list of Coord
         :param CarTags: 车辆属性识别的结果数组，如果识别到多辆车，则会输出每辆车的top1结果。
+注意：置信度是指车牌信息置信度。
         :type CarTags: list of CarTagItem
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

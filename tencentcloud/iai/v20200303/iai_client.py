@@ -87,45 +87,6 @@ class IaiClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def CheckSimilarPerson(self, request):
-        """对指定的人员库进行人员查重，给出疑似相同人的信息。
-
-        可以使用本接口对已有的单个人员库进行人员查重，避免同一人在单个人员库中拥有多个身份；也可以使用本接口对已有的多个人员库进行人员查重，查询同一人是否同时存在多个人员库中。
-
-        不支持跨算法模型版本查重，且目前仅支持算法模型为3.0的人员库使用查重功能。
-
-        >
-        - 若对完全相同的指定人员库进行查重操作，需等待上次操作完成才可。即，若两次请求输入的 GroupIds 相同，第一次请求若未完成，第二次请求将返回失败。
-
-        >
-        - 查重的人员库状态为腾讯云开始进行查重任务的那一刻，即您可以理解为当您发起查重请求后，若您的查重任务需要排队，在排队期间您对人员库的增删操作均会会影响查重的结果。腾讯云将以开始进行查重任务的那一刻人员库的状态进行查重。查重任务开始后，您对人员库的任何操作均不影响查重任务的进行。但建议查重任务开始后，请不要对人员库中人员和人脸进行增删操作。
-
-        :param request: Request instance for CheckSimilarPerson.
-        :type request: :class:`tencentcloud.iai.v20200303.models.CheckSimilarPersonRequest`
-        :rtype: :class:`tencentcloud.iai.v20200303.models.CheckSimilarPersonResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CheckSimilarPerson", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.CheckSimilarPersonResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def CompareFace(self, request):
         """对两张图片中的人脸进行相似度比对，返回人脸相似度分数。
 
@@ -163,9 +124,9 @@ class IaiClient(AbstractClient):
     def CompareMaskFace(self, request):
         """对两张图片中的人脸进行相似度比对，返回人脸相似度分数。
 
-        戴口罩人脸比对接口可在人脸戴口罩情况下使用，口罩遮挡程度最高可以遮挡鼻尖。
+        防疫场景人脸比对接口可在人脸戴口罩情况下使用，口罩遮挡程度最高可以遮挡鼻尖。
 
-        如图片人脸不存在戴口罩情况，建议使用人脸比对服务。
+        如图片人脸不存在防疫场景下戴口罩的情况，建议使用人脸比对服务。
 
         :param request: Request instance for CompareMaskFace.
         :type request: :class:`tencentcloud.iai.v20200303.models.CompareMaskFaceRequest`
@@ -602,70 +563,6 @@ class IaiClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def EstimateCheckSimilarPersonCostTime(self, request):
-        """获取若要开始一个人员查重任务，这个任务结束的预估时间。
-
-        若EndTimestamp符合您预期，请您尽快发起人员查重请求，否则导致可能需要更多处理时间。
-
-        若预估时间超过5小时，则无法使用人员查重功能。
-
-        :param request: Request instance for EstimateCheckSimilarPersonCostTime.
-        :type request: :class:`tencentcloud.iai.v20200303.models.EstimateCheckSimilarPersonCostTimeRequest`
-        :rtype: :class:`tencentcloud.iai.v20200303.models.EstimateCheckSimilarPersonCostTimeResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("EstimateCheckSimilarPersonCostTime", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.EstimateCheckSimilarPersonCostTimeResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def GetCheckSimilarPersonJobIdList(self, request):
-        """获取人员查重任务列表，按任务创建时间逆序（最新的在前面）。
-
-        只保留最近1年的数据。
-
-        :param request: Request instance for GetCheckSimilarPersonJobIdList.
-        :type request: :class:`tencentcloud.iai.v20200303.models.GetCheckSimilarPersonJobIdListRequest`
-        :rtype: :class:`tencentcloud.iai.v20200303.models.GetCheckSimilarPersonJobIdListResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("GetCheckSimilarPersonJobIdList", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.GetCheckSimilarPersonJobIdListResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def GetGroupInfo(self, request):
         """获取人员库信息。
 
@@ -826,35 +723,6 @@ class IaiClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetPersonListNumResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def GetSimilarPersonResult(self, request):
-        """获取人员查重接口（CheckSimilarPerson）结果。
-
-        :param request: Request instance for GetSimilarPersonResult.
-        :type request: :class:`tencentcloud.iai.v20200303.models.GetSimilarPersonResultRequest`
-        :rtype: :class:`tencentcloud.iai.v20200303.models.GetSimilarPersonResultResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("GetSimilarPersonResult", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.GetSimilarPersonResultResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

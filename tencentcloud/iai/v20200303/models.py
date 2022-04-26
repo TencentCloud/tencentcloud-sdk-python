@@ -284,59 +284,6 @@ class Candidate(AbstractModel):
         
 
 
-class CheckSimilarPersonRequest(AbstractModel):
-    """CheckSimilarPerson请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param GroupIds: 待整理的人员库列表。 
-人员库总人数不可超过200万，人员库个数不可超过10个。
-数组元素取值为创建人员库接口中的GroupId
-        :type GroupIds: list of str
-        :param UniquePersonControl: 人员查重整理力度的控制。
-1：力度较高的人员整理，能够消除更多的重复身份，对应稍高的非重复身份误清除率；
-2：力度较低的人员整理，非重复身份的误清除率较低，对应稍低的重复身份消除率。
-        :type UniquePersonControl: int
-        """
-        self.GroupIds = None
-        self.UniquePersonControl = None
-
-
-    def _deserialize(self, params):
-        self.GroupIds = params.get("GroupIds")
-        self.UniquePersonControl = params.get("UniquePersonControl")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class CheckSimilarPersonResponse(AbstractModel):
-    """CheckSimilarPerson返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param JobId: 查重任务ID，用于查询、获取查重的进度和结果。
-        :type JobId: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.JobId = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.JobId = params.get("JobId")
-        self.RequestId = params.get("RequestId")
-
-
 class CompareFaceRequest(AbstractModel):
     """CompareFace请求参数结构体
 
@@ -1611,53 +1558,6 @@ class DetectLiveFaceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class EstimateCheckSimilarPersonCostTimeRequest(AbstractModel):
-    """EstimateCheckSimilarPersonCostTime请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param GroupIds: 待整理的人员库列表。 
-人员库总人数不可超过200万，人员库个数不可超过10个。
-数组元素取值为创建人员库接口中的GroupId
-        :type GroupIds: list of str
-        """
-        self.GroupIds = None
-
-
-    def _deserialize(self, params):
-        self.GroupIds = params.get("GroupIds")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class EstimateCheckSimilarPersonCostTimeResponse(AbstractModel):
-    """EstimateCheckSimilarPersonCostTime返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param EstimatedTimeCost: 人员查重任务预估需要耗费时间。 单位为分钟。
-        :type EstimatedTimeCost: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.EstimatedTimeCost = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.EstimatedTimeCost = params.get("EstimatedTimeCost")
-        self.RequestId = params.get("RequestId")
-
-
 class Eye(AbstractModel):
     """眼睛信息
 
@@ -2333,64 +2233,6 @@ class FaceShape(AbstractModel):
         
 
 
-class GetCheckSimilarPersonJobIdListRequest(AbstractModel):
-    """GetCheckSimilarPersonJobIdList请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Offset: 起始序号，默认值为0。
-        :type Offset: int
-        :param Limit: 返回数量，默认值为10，最大值为1000。
-        :type Limit: int
-        """
-        self.Offset = None
-        self.Limit = None
-
-
-    def _deserialize(self, params):
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class GetCheckSimilarPersonJobIdListResponse(AbstractModel):
-    """GetCheckSimilarPersonJobIdList返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param JobIdInfos: 人员查重任务信息列表。
-        :type JobIdInfos: list of JobIdInfo
-        :param JobIdNum: 查重任务总数量。
-        :type JobIdNum: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.JobIdInfos = None
-        self.JobIdNum = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        if params.get("JobIdInfos") is not None:
-            self.JobIdInfos = []
-            for item in params.get("JobIdInfos"):
-                obj = JobIdInfo()
-                obj._deserialize(item)
-                self.JobIdInfos.append(obj)
-        self.JobIdNum = params.get("JobIdNum")
-        self.RequestId = params.get("RequestId")
-
-
 class GetGroupInfoRequest(AbstractModel):
     """GetGroupInfo请求参数结构体
 
@@ -2758,56 +2600,6 @@ class GetPersonListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class GetSimilarPersonResultRequest(AbstractModel):
-    """GetSimilarPersonResult请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param JobId: 查重任务ID，用于查询、获取查重的进度和结果。取值为人员查重接口返回的JobId
-        :type JobId: str
-        """
-        self.JobId = None
-
-
-    def _deserialize(self, params):
-        self.JobId = params.get("JobId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class GetSimilarPersonResultResponse(AbstractModel):
-    """GetSimilarPersonResult返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Progress: 查重任务完成进度。取值[0.0，100.0]。当且仅当值为100时，SimilarPersons才有意义。
-        :type Progress: float
-        :param SimilarPersonsUrl: 疑似同一人的人员信息文件临时下载链接， 有效时间为5分钟，结果文件实际保存90天。
-文件内容由 SimilarPerson 的数组组成。
-        :type SimilarPersonsUrl: str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.Progress = None
-        self.SimilarPersonsUrl = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.Progress = params.get("Progress")
-        self.SimilarPersonsUrl = params.get("SimilarPersonsUrl")
-        self.RequestId = params.get("RequestId")
-
-
 class GetUpgradeGroupFaceModelVersionJobListRequest(AbstractModel):
     """GetUpgradeGroupFaceModelVersionJobList请求参数结构体
 
@@ -3153,41 +2945,6 @@ class HeadPose(AbstractModel):
         self.Pitch = params.get("Pitch")
         self.Yaw = params.get("Yaw")
         self.Roll = params.get("Roll")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class JobIdInfo(AbstractModel):
-    """查重任务信息
-
-    """
-
-    def __init__(self):
-        r"""
-        :param JobId: 查重任务ID，用于查询、获取查重的进度和结果。
-        :type JobId: str
-        :param StartTime: 查重起始时间。 
-StartTime的值是自 Unix 纪元时间到Group创建时间的毫秒数。 
-Unix 纪元时间是 1970 年 1 月 1 日星期四，协调世界时 (UTC) 00:00:00。 
-有关更多信息，请参阅 Unix 时间。
-        :type StartTime: int
-        :param JobStatus: 查重任务是否已完成。0: 成功 1: 未完成 2: 失败
-        :type JobStatus: int
-        """
-        self.JobId = None
-        self.StartTime = None
-        self.JobStatus = None
-
-
-    def _deserialize(self, params):
-        self.JobId = params.get("JobId")
-        self.StartTime = params.get("StartTime")
-        self.JobStatus = params.get("JobStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

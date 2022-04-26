@@ -809,6 +809,35 @@ class PostgresClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeEncryptionKeys(self, request):
+        """获取实例的密钥信息列表。
+
+        :param request: Request instance for DescribeEncryptionKeys.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeEncryptionKeysRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.DescribeEncryptionKeysResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeEncryptionKeys", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeEncryptionKeysResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeOrders(self, request):
         """本接口（DescribeOrders）用于获取订单信息。
 

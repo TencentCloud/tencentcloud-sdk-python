@@ -114,7 +114,7 @@ class CwpClient(AbstractClient):
 
 
     def CloseProVersion(self, request):
-        """本接口 (CloseProVersion) 用于关闭专业版。
+        """本接口 (CloseProVersion) 已全面改为授权模式,该接口只能解绑授权.
 
         :param request: Request instance for CloseProVersion.
         :type request: :class:`tencentcloud.cwp.v20180228.models.CloseProVersionRequest`

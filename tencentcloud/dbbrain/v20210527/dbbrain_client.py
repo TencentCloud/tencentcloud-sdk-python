@@ -955,7 +955,7 @@ class DbbrainClient(AbstractClient):
 
 
     def DescribeSqlTemplate(self, request):
-        """查询SQL模版。
+        """查询SQL模板。
 
         :param request: Request instance for DescribeSqlTemplate.
         :type request: :class:`tencentcloud.dbbrain.v20210527.models.DescribeSqlTemplateRequest`

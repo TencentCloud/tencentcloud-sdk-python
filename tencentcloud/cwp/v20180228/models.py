@@ -13248,7 +13248,6 @@ class DescribeVulListRequest(AbstractModel):
 <li>ModifyTime - String - 是否必填：否 - 最近发生时间</li>
 <li>Uuid- String - 是否必填：否 - 主机uuid查询</li>
 <li>VulName- string -</li>
-<li>HostIp- string - 是否必填：否 - 主机ip</li>
 <li>VulCategory- string - 是否必填：否 - 漏洞类别 1: web-cms漏洞 2:应用漏洞  4: Linux软件漏洞 5: Windows系统漏洞</li>
         :type Filters: list of Filters
         :param By: 可选排序字段 Level，LastTime，HostCount
@@ -17078,9 +17077,9 @@ class OpenProVersionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param MachineType: 云服务器类型。(当前参数已作废,可以留空值 )
+        :param MachineType: 云服务器类型（当前字段已作废，暂时填string类型空字符串代替，例如：""，英文双引号）
         :type MachineType: str
-        :param MachineRegion: 机器所属地域。(当前参数已作废,可以留空值 )
+        :param MachineRegion: 机器所属地域（当前字段已作废，暂时填string类型空字符串代替，例如：""，英文双引号）
         :type MachineRegion: str
         :param Quuids: 主机唯一标识Uuid数组。
 黑石的InstanceId，CVM的Uuid ,边缘计算的Uuid , 轻量应用服务器的Uuid ,混合云机器的Quuid 。 当前参数最大长度限制20

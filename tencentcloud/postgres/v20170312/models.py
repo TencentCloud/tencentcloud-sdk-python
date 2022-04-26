@@ -2477,6 +2477,57 @@ class DescribeDatabasesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeEncryptionKeysRequest(AbstractModel):
+    """DescribeEncryptionKeys请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DBInstanceId: 实例ID。
+        :type DBInstanceId: str
+        """
+        self.DBInstanceId = None
+
+
+    def _deserialize(self, params):
+        self.DBInstanceId = params.get("DBInstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeEncryptionKeysResponse(AbstractModel):
+    """DescribeEncryptionKeys返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EncryptionKeys: 实例密钥信息列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EncryptionKeys: list of EncryptionKey
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.EncryptionKeys = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("EncryptionKeys") is not None:
+            self.EncryptionKeys = []
+            for item in params.get("EncryptionKeys"):
+                obj = EncryptionKey()
+                obj._deserialize(item)
+                self.EncryptionKeys.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeOrdersRequest(AbstractModel):
     """DescribeOrders请求参数结构体
 
@@ -3177,6 +3228,56 @@ class DurationAnalysis(AbstractModel):
     def _deserialize(self, params):
         self.TimeSegment = params.get("TimeSegment")
         self.Count = params.get("Count")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EncryptionKey(AbstractModel):
+    """KMS密钥信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param KeyId: KMS实例加密的KeyId。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KeyId: str
+        :param KeyAlias: KMS实例加密Key的别名。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KeyAlias: str
+        :param DEKCipherTextBlob: 实例加密密钥DEK的密文。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DEKCipherTextBlob: str
+        :param IsEnabled: 密钥是否启用，1-启用， 0-未启用。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsEnabled: int
+        :param KeyRegion: KMS密钥所在地域。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KeyRegion: str
+        :param CreateTime: DEK密钥创建时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        """
+        self.KeyId = None
+        self.KeyAlias = None
+        self.DEKCipherTextBlob = None
+        self.IsEnabled = None
+        self.KeyRegion = None
+        self.CreateTime = None
+
+
+    def _deserialize(self, params):
+        self.KeyId = params.get("KeyId")
+        self.KeyAlias = params.get("KeyAlias")
+        self.DEKCipherTextBlob = params.get("DEKCipherTextBlob")
+        self.IsEnabled = params.get("IsEnabled")
+        self.KeyRegion = params.get("KeyRegion")
+        self.CreateTime = params.get("CreateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

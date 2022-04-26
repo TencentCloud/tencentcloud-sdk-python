@@ -1195,6 +1195,7 @@ class DescribeTaskDetailResponse(AbstractModel):
     def __init__(self):
         r"""
         :param TaskInfo: 任务信息，不包含任务结果
+注意：此字段可能返回 null，表示取不到有效值。
         :type TaskInfo: :class:`tencentcloud.ivld.v20210903.models.TaskInfo`
         :param TaskData: 任务结果数据，只在任务结束时返回
         :type TaskData: :class:`tencentcloud.ivld.v20210903.models.Data`
@@ -1348,7 +1349,8 @@ class ImportMediaRequest(AbstractModel):
         :type MD5: str
         :param Name: 待分析视频的名称，指定后可支持筛选，最多100个中文字符
         :type Name: str
-        :param WriteBackCosPath: 当非本人外部视频地址导入时，该字段为转存的cos桶地址且不可为空; 示例：https://${Bucket}-${AppId}.cos.${Region}.myqcloud.com/${PathPrefix}/  (注意，cos路径需要以/分隔符结尾)
+        :param WriteBackCosPath: 当非本人外部视频地址导入时，该字段为转存的cos桶地址且不可为空; 示例：https://${Bucket}-${AppId}.cos.${Region}.myqcloud.com/${PathPrefix}/  (注意，cos路径需要以/分隔符结尾)。
+推荐采用本主帐号COS桶，如果使用其他帐号COS桶，请确保COS桶可写，否则可导致分析失败
         :type WriteBackCosPath: str
         :param Label: 自定义标签，可用于查询
         :type Label: str
@@ -1629,6 +1631,9 @@ class MediaInfo(AbstractModel):
         :param Label: 媒资自定义标签
 注意：此字段可能返回 null，表示取不到有效值。
         :type Label: str
+        :param CallbackURL: 媒资导入完成后的回调地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CallbackURL: str
         """
         self.MediaId = None
         self.Name = None
@@ -1638,6 +1643,7 @@ class MediaInfo(AbstractModel):
         self.Metadata = None
         self.Progress = None
         self.Label = None
+        self.CallbackURL = None
 
 
     def _deserialize(self, params):
@@ -1651,6 +1657,7 @@ class MediaInfo(AbstractModel):
             self.Metadata._deserialize(params.get("Metadata"))
         self.Progress = params.get("Progress")
         self.Label = params.get("Label")
+        self.CallbackURL = params.get("CallbackURL")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2230,6 +2237,9 @@ class TaskInfo(AbstractModel):
         :param Label: 媒资自定义标签
 注意：此字段可能返回 null，表示取不到有效值。
         :type Label: str
+        :param CallbackURL: 任务分析完成后的后调地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CallbackURL: str
         """
         self.TaskId = None
         self.TaskName = None
@@ -2243,6 +2253,7 @@ class TaskInfo(AbstractModel):
         self.MediaPreknownInfo = None
         self.MediaName = None
         self.Label = None
+        self.CallbackURL = None
 
 
     def _deserialize(self, params):
@@ -2260,6 +2271,7 @@ class TaskInfo(AbstractModel):
             self.MediaPreknownInfo._deserialize(params.get("MediaPreknownInfo"))
         self.MediaName = params.get("MediaName")
         self.Label = params.get("Label")
+        self.CallbackURL = params.get("CallbackURL")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

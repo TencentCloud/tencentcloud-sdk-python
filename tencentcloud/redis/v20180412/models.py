@@ -5568,7 +5568,7 @@ class ModifyNetworkConfigRequest(AbstractModel):
         :type VpcId: str
         :param SubnetId: 子网ID，changeVpc、changeBaseToVpc的时候需要提供
         :type SubnetId: str
-        :param Recycle: vip保留时间，单位：天
+        :param Recycle: vip保留时间，单位：天，注：需要最新版SDK支持
         :type Recycle: int
         """
         self.InstanceId = None

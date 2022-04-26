@@ -1660,6 +1660,9 @@ off：关闭
 流量：flux
 注意：此字段可能返回 null，表示取不到有效值。
         :type Metric: str
+        :param StatisticItems: 累计用量配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StatisticItems: list of StatisticItem
         """
         self.Switch = None
         self.BpsThreshold = None
@@ -1669,6 +1672,7 @@ off：关闭
         self.AlertPercentage = None
         self.LastTriggerTimeOverseas = None
         self.Metric = None
+        self.StatisticItems = None
 
 
     def _deserialize(self, params):
@@ -1680,6 +1684,12 @@ off：关闭
         self.AlertPercentage = params.get("AlertPercentage")
         self.LastTriggerTimeOverseas = params.get("LastTriggerTimeOverseas")
         self.Metric = params.get("Metric")
+        if params.get("StatisticItems") is not None:
+            self.StatisticItems = []
+            for item in params.get("StatisticItems"):
+                obj = StatisticItem()
+                obj._deserialize(item)
+                self.StatisticItems.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3478,12 +3488,16 @@ class CreateVerifyRecordResponse(AbstractModel):
         :type Record: str
         :param RecordType: 解析类型
         :type RecordType: str
+        :param FileVerifyUrl: 文件验证 URL 指引
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileVerifyUrl: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.SubDomain = None
         self.Record = None
         self.RecordType = None
+        self.FileVerifyUrl = None
         self.RequestId = None
 
 
@@ -3491,6 +3505,7 @@ class CreateVerifyRecordResponse(AbstractModel):
         self.SubDomain = params.get("SubDomain")
         self.Record = params.get("Record")
         self.RecordType = params.get("RecordType")
+        self.FileVerifyUrl = params.get("FileVerifyUrl")
         self.RequestId = params.get("RequestId")
 
 
@@ -13564,6 +13579,71 @@ class StartScdnDomainResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class StatisticItem(AbstractModel):
+    """累计用量封顶的配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Type: 封顶类型，累计用量total，瞬时用量moment
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param UnBlockTime: 自动解封时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UnBlockTime: int
+        :param BpsThreshold: 带宽、流量阈值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BpsThreshold: int
+        :param CounterMeasure: 关闭方式 返回404:RETURN_404, dns回源：RESOLVE_DNS_TO_ORIGIN
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CounterMeasure: str
+        :param AlertPercentage: 触发提醒阈值百分比
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlertPercentage: int
+        :param AlertSwitch: 提醒开关 on/off
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlertSwitch: str
+        :param Metric: 指标类型，流量flux或带宽bandwidth
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Metric: str
+        :param Cycle: 检测周期，单位分钟，60或1440
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Cycle: int
+        :param Switch: 是否开启该选项，on/off
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Switch: str
+        """
+        self.Type = None
+        self.UnBlockTime = None
+        self.BpsThreshold = None
+        self.CounterMeasure = None
+        self.AlertPercentage = None
+        self.AlertSwitch = None
+        self.Metric = None
+        self.Cycle = None
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.UnBlockTime = params.get("UnBlockTime")
+        self.BpsThreshold = params.get("BpsThreshold")
+        self.CounterMeasure = params.get("CounterMeasure")
+        self.AlertPercentage = params.get("AlertPercentage")
+        self.AlertSwitch = params.get("AlertSwitch")
+        self.Metric = params.get("Metric")
+        self.Cycle = params.get("Cycle")
+        self.Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class StatusCodeCache(AbstractModel):
     """状态码缓存过期配置，默认情况下会对 404 状态码缓存 10 秒
 
@@ -14819,12 +14899,18 @@ class VerifyDomainRecordRequest(AbstractModel):
         r"""
         :param Domain: 域名
         :type Domain: str
+        :param VerifyType: 验证方式
+dns: DNS 解析验证（默认值）
+file: 文件验证
+        :type VerifyType: str
         """
         self.Domain = None
+        self.VerifyType = None
 
 
     def _deserialize(self, params):
         self.Domain = params.get("Domain")
+        self.VerifyType = params.get("VerifyType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

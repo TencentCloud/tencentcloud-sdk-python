@@ -285,3 +285,33 @@ class EssClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UploadFiles(self, request):
+        """此接口（UploadFiles）用于文件上传。
+        调用时需要设置Domain 为 file.ess.tencent.cn，设置Version为2020-12-22
+
+        :param request: Request instance for UploadFiles.
+        :type request: :class:`tencentcloud.ess.v20201111.models.UploadFilesRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.UploadFilesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UploadFiles", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UploadFilesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)

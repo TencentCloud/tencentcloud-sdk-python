@@ -1813,7 +1813,7 @@ class CreateTopicRequest(AbstractModel):
         :type AutoSplit: bool
         :param MaxSplitPartitions: 开启自动分裂后，每个主题能够允许的最大分区数，默认值为50
         :type MaxSplitPartitions: int
-        :param StorageType: 日志主题的存储类型，可选值 hot（实时存储），cold（低频存储）；默认为hot。
+        :param StorageType: 日志主题的存储类型，可选值 hot（标准存储），cold（低频存储）；默认为hot。
         :type StorageType: str
         :param Period: 生命周期，单位天，可取值范围1~3600。取值为3640时代表永久保存
         :type Period: int
@@ -3905,7 +3905,7 @@ class DescribeTopicsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Filters: <br><li> topicName按照【日志主题名称】进行过滤。类型：String必选：否<br><li> logsetName按照【日志集名称】进行过滤。类型：String必选：否<br><li> topicId按照【日志主题ID】进行过滤。类型：String必选：否<br><li> logsetId按照【日志集ID】进行过滤，可通过调用DescribeLogsets查询已创建的日志集列表或登录控制台进行查看；也可以调用CreateLogset创建新的日志集。类型：String必选：否<br><li> tagKey按照【标签键】进行过滤。类型：String必选：否<br><li> tag:tagKey按照【标签键值对】进行过滤。tagKey使用具体的标签键进行替换，例如tag:exampleKey。类型：String必选：否<br><li> storageType按照【日志主题的存储类型】进行过滤。可选值 hot（实时存储），cold（低频存储）类型：String必选：否每次请求的Filters的上限为10，Filter.Values的上限为100。
+        :param Filters: <br><li> topicName按照【日志主题名称】进行过滤。类型：String必选：否<br><li> logsetName按照【日志集名称】进行过滤。类型：String必选：否<br><li> topicId按照【日志主题ID】进行过滤。类型：String必选：否<br><li> logsetId按照【日志集ID】进行过滤，可通过调用DescribeLogsets查询已创建的日志集列表或登录控制台进行查看；也可以调用CreateLogset创建新的日志集。类型：String必选：否<br><li> tagKey按照【标签键】进行过滤。类型：String必选：否<br><li> tag:tagKey按照【标签键值对】进行过滤。tagKey使用具体的标签键进行替换，例如tag:exampleKey。类型：String必选：否<br><li> storageType按照【日志主题的存储类型】进行过滤。可选值 hot（标准存储），cold（低频存储）类型：String必选：否每次请求的Filters的上限为10，Filter.Values的上限为100。
         :type Filters: list of Filter
         :param Offset: 分页的偏移量，默认值为0。
         :type Offset: int

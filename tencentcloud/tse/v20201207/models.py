@@ -103,6 +103,12 @@ class DescribeSREInstanceAccessAddressResponse(AbstractModel):
         :param ConsoleIntranetAddress: 控制台内网访问地址
 注意：此字段可能返回 null，表示取不到有效值。
         :type ConsoleIntranetAddress: str
+        :param InternetBandWidth: 客户端公网带宽
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InternetBandWidth: int
+        :param ConsoleInternetBandWidth: 控制台公网带宽
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConsoleInternetBandWidth: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -111,6 +117,8 @@ class DescribeSREInstanceAccessAddressResponse(AbstractModel):
         self.EnvAddressInfos = None
         self.ConsoleInternetAddress = None
         self.ConsoleIntranetAddress = None
+        self.InternetBandWidth = None
+        self.ConsoleInternetBandWidth = None
         self.RequestId = None
 
 
@@ -125,6 +133,8 @@ class DescribeSREInstanceAccessAddressResponse(AbstractModel):
                 self.EnvAddressInfos.append(obj)
         self.ConsoleInternetAddress = params.get("ConsoleInternetAddress")
         self.ConsoleIntranetAddress = params.get("ConsoleIntranetAddress")
+        self.InternetBandWidth = params.get("InternetBandWidth")
+        self.ConsoleInternetBandWidth = params.get("ConsoleInternetBandWidth")
         self.RequestId = params.get("RequestId")
 
 
@@ -434,6 +444,18 @@ class SREInstance(AbstractModel):
         :param ConsoleDefaultPwd: 引擎实例控制台默认密码
 注意：此字段可能返回 null，表示取不到有效值。
         :type ConsoleDefaultPwd: str
+        :param TradeType: 交易付费类型，0后付费/1预付费
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TradeType: int
+        :param AutoRenewFlag: 自动续费标记：0表示默认状态(用户未设置，即初始状态)， 1表示自动续费，2表示明确不自动续费
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AutoRenewFlag: int
+        :param CurDeadline: 预付费到期时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CurDeadline: str
+        :param IsolateTime: 隔离开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsolateTime: str
         """
         self.InstanceId = None
         self.Name = None
@@ -460,6 +482,10 @@ class SREInstance(AbstractModel):
         self.EnableConsoleIntranet = None
         self.ConfigInfoVisible = None
         self.ConsoleDefaultPwd = None
+        self.TradeType = None
+        self.AutoRenewFlag = None
+        self.CurDeadline = None
+        self.IsolateTime = None
 
 
     def _deserialize(self, params):
@@ -508,6 +534,10 @@ class SREInstance(AbstractModel):
         self.EnableConsoleIntranet = params.get("EnableConsoleIntranet")
         self.ConfigInfoVisible = params.get("ConfigInfoVisible")
         self.ConsoleDefaultPwd = params.get("ConsoleDefaultPwd")
+        self.TradeType = params.get("TradeType")
+        self.AutoRenewFlag = params.get("AutoRenewFlag")
+        self.CurDeadline = params.get("CurDeadline")
+        self.IsolateTime = params.get("IsolateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

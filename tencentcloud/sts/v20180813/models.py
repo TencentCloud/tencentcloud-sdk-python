@@ -202,6 +202,77 @@ class AssumeRoleWithSAMLResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class AssumeRoleWithWebIdentityRequest(AbstractModel):
+    """AssumeRoleWithWebIdentity请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProviderId: 身份提供商名称
+        :type ProviderId: str
+        :param WebIdentityToken: IdP签发的OIDC令牌
+        :type WebIdentityToken: str
+        :param RoleArn: 角色访问描述名
+        :type RoleArn: str
+        :param RoleSessionName: 会话名称
+        :type RoleSessionName: str
+        :param DurationSeconds: 指定临时证书的有效期，单位：秒，默认 7200 秒，最长可设定有效期为 43200 秒
+        :type DurationSeconds: int
+        """
+        self.ProviderId = None
+        self.WebIdentityToken = None
+        self.RoleArn = None
+        self.RoleSessionName = None
+        self.DurationSeconds = None
+
+
+    def _deserialize(self, params):
+        self.ProviderId = params.get("ProviderId")
+        self.WebIdentityToken = params.get("WebIdentityToken")
+        self.RoleArn = params.get("RoleArn")
+        self.RoleSessionName = params.get("RoleSessionName")
+        self.DurationSeconds = params.get("DurationSeconds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AssumeRoleWithWebIdentityResponse(AbstractModel):
+    """AssumeRoleWithWebIdentity返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ExpiredTime: 临时秘钥过期时间(时间戳)
+        :type ExpiredTime: int
+        :param Expiration: 临时秘钥过期时间
+        :type Expiration: str
+        :param Credentials: 临时秘钥
+        :type Credentials: :class:`tencentcloud.sts.v20180813.models.Credentials`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ExpiredTime = None
+        self.Expiration = None
+        self.Credentials = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ExpiredTime = params.get("ExpiredTime")
+        self.Expiration = params.get("Expiration")
+        if params.get("Credentials") is not None:
+            self.Credentials = Credentials()
+            self.Credentials._deserialize(params.get("Credentials"))
+        self.RequestId = params.get("RequestId")
+
+
 class Credentials(AbstractModel):
     """临时证书
 

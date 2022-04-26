@@ -100,6 +100,42 @@ HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
         
 
 
+class Caller(AbstractModel):
+    """此结构体 (Caller) 用于描述调用方属性。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ApplicationId: 应用号
+        :type ApplicationId: str
+        :param OrganizationId: 主机构ID
+        :type OrganizationId: str
+        :param SubOrganizationId: 下属机构ID
+        :type SubOrganizationId: str
+        :param OperatorId: 经办人的用户ID
+        :type OperatorId: str
+        """
+        self.ApplicationId = None
+        self.OrganizationId = None
+        self.SubOrganizationId = None
+        self.OperatorId = None
+
+
+    def _deserialize(self, params):
+        self.ApplicationId = params.get("ApplicationId")
+        self.OrganizationId = params.get("OrganizationId")
+        self.SubOrganizationId = params.get("SubOrganizationId")
+        self.OperatorId = params.get("OperatorId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CancelFlowRequest(AbstractModel):
     """CancelFlow请求参数结构体
 
@@ -1110,6 +1146,123 @@ class StartFlowResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
+        self.RequestId = params.get("RequestId")
+
+
+class UploadFile(AbstractModel):
+    """此结构体 (UploadFile) 用于描述多文件上传的文件信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FileBody: Base64编码后的文件内容
+        :type FileBody: str
+        :param FileName: 文件名
+        :type FileName: str
+        """
+        self.FileBody = None
+        self.FileName = None
+
+
+    def _deserialize(self, params):
+        self.FileBody = params.get("FileBody")
+        self.FileName = params.get("FileName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UploadFilesRequest(AbstractModel):
+    """UploadFiles请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Caller: 调用方信息
+        :type Caller: :class:`tencentcloud.ess.v20201111.models.Caller`
+        :param BusinessType: 文件对应业务类型，用于区分文件存储路径：
+1. TEMPLATE - 模版； 文件类型：.pdf/.html
+2. DOCUMENT - 签署过程及签署后的合同文档 文件类型：.pdf/.html
+3. FLOW - 签署过程 文件类型：.pdf/.html
+4. SEAL - 印章； 文件类型：.jpg/.jpeg/.png
+5. BUSINESSLICENSE - 营业执照 文件类型：.jpg/.jpeg/.png
+6. IDCARD - 身份证 文件类型：.jpg/.jpeg/.png
+        :type BusinessType: str
+        :param FileInfos: 上传文件内容数组，最多支持20个文件
+        :type FileInfos: list of UploadFile
+        :param FileUrls: 上传文件链接数组，最多支持20个URL
+        :type FileUrls: str
+        :param CoverRect: 是否将pdf灰色矩阵置白
+true--是，处理置白
+false--否，不处理
+        :type CoverRect: bool
+        :param FileType: 特殊文件类型需要指定文件类型：
+HTML-- .html文件
+        :type FileType: str
+        :param CustomIds: 用户自定义ID数组，与上传文件一一对应
+        :type CustomIds: list of str
+        """
+        self.Caller = None
+        self.BusinessType = None
+        self.FileInfos = None
+        self.FileUrls = None
+        self.CoverRect = None
+        self.FileType = None
+        self.CustomIds = None
+
+
+    def _deserialize(self, params):
+        if params.get("Caller") is not None:
+            self.Caller = Caller()
+            self.Caller._deserialize(params.get("Caller"))
+        self.BusinessType = params.get("BusinessType")
+        if params.get("FileInfos") is not None:
+            self.FileInfos = []
+            for item in params.get("FileInfos"):
+                obj = UploadFile()
+                obj._deserialize(item)
+                self.FileInfos.append(obj)
+        self.FileUrls = params.get("FileUrls")
+        self.CoverRect = params.get("CoverRect")
+        self.FileType = params.get("FileType")
+        self.CustomIds = params.get("CustomIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UploadFilesResponse(AbstractModel):
+    """UploadFiles返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FileIds: 文件id数组
+        :type FileIds: list of str
+        :param TotalCount: 上传成功文件数量
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FileIds = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FileIds = params.get("FileIds")
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 

@@ -234,6 +234,10 @@ class CreateMigrateJobRequest(AbstractModel):
         :type DatabaseInfo: str
         :param Tags: 迁移实例的tag
         :type Tags: list of TagItem
+        :param SrcNodeType: 源实例类型: ""或者"simple":主从节点，"cluster": 集群节点
+        :type SrcNodeType: str
+        :param SrcInfoMulti: 源实例信息，具体内容跟迁移任务类型相关
+        :type SrcInfoMulti: list of SrcInfo
         """
         self.JobName = None
         self.MigrateOption = None
@@ -245,6 +249,8 @@ class CreateMigrateJobRequest(AbstractModel):
         self.DstInfo = None
         self.DatabaseInfo = None
         self.Tags = None
+        self.SrcNodeType = None
+        self.SrcInfoMulti = None
 
 
     def _deserialize(self, params):
@@ -269,6 +275,13 @@ class CreateMigrateJobRequest(AbstractModel):
                 obj = TagItem()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.SrcNodeType = params.get("SrcNodeType")
+        if params.get("SrcInfoMulti") is not None:
+            self.SrcInfoMulti = []
+            for item in params.get("SrcInfoMulti"):
+                obj = SrcInfo()
+                obj._deserialize(item)
+                self.SrcInfoMulti.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1321,6 +1334,10 @@ class ModifyMigrateJobRequest(AbstractModel):
 
 如果是'整个实例'的迁移模式,不需设置该字段
         :type DatabaseInfo: str
+        :param SrcNodeType: 源实例类型: ""或者"simple":主从节点，"cluster": 集群节点
+        :type SrcNodeType: str
+        :param SrcInfoMulti: 源实例信息，具体内容跟迁移任务类型相关
+        :type SrcInfoMulti: list of SrcInfo
         """
         self.JobId = None
         self.JobName = None
@@ -1330,6 +1347,8 @@ class ModifyMigrateJobRequest(AbstractModel):
         self.DstAccessType = None
         self.DstInfo = None
         self.DatabaseInfo = None
+        self.SrcNodeType = None
+        self.SrcInfoMulti = None
 
 
     def _deserialize(self, params):
@@ -1347,6 +1366,13 @@ class ModifyMigrateJobRequest(AbstractModel):
             self.DstInfo = DstInfo()
             self.DstInfo._deserialize(params.get("DstInfo"))
         self.DatabaseInfo = params.get("DatabaseInfo")
+        self.SrcNodeType = params.get("SrcNodeType")
+        if params.get("SrcInfoMulti") is not None:
+            self.SrcInfoMulti = []
+            for item in params.get("SrcInfoMulti"):
+                obj = SrcInfo()
+                obj._deserialize(item)
+                self.SrcInfoMulti.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

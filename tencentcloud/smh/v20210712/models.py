@@ -729,18 +729,22 @@ class SendSmsCodeRequest(AbstractModel):
         :type Purpose: str
         :param InstanceId: 官方云盘实例 ID
         :type InstanceId: str
-        :param PhoneNumber: 将作为超级管理员账号的手机号码，仅限中国境内手机号，无需国家代码“+86”。
+        :param PhoneNumber: 将作为超级管理员账号的手机号码
         :type PhoneNumber: str
+        :param CountryCode: 将作为超级管理员账号的手机号码的国家代码。默认为 +86。
+        :type CountryCode: str
         """
         self.Purpose = None
         self.InstanceId = None
         self.PhoneNumber = None
+        self.CountryCode = None
 
 
     def _deserialize(self, params):
         self.Purpose = params.get("Purpose")
         self.InstanceId = params.get("InstanceId")
         self.PhoneNumber = params.get("PhoneNumber")
+        self.CountryCode = params.get("CountryCode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -840,15 +844,18 @@ class VerifySmsCodeRequest(AbstractModel):
         :type Purpose: str
         :param InstanceId: 官方云盘实例 ID
         :type InstanceId: str
-        :param PhoneNumber: 将作为超级管理员账号的手机号码，仅限中国境内手机号，无需国家代码“+86”。
+        :param PhoneNumber: 将作为超级管理员账号的手机号码
         :type PhoneNumber: str
         :param Code: 短信验证码
         :type Code: str
+        :param CountryCode: 将作为超级管理员账号的手机号码的国家代码。默认为 +86。
+        :type CountryCode: str
         """
         self.Purpose = None
         self.InstanceId = None
         self.PhoneNumber = None
         self.Code = None
+        self.CountryCode = None
 
 
     def _deserialize(self, params):
@@ -856,6 +863,7 @@ class VerifySmsCodeRequest(AbstractModel):
         self.InstanceId = params.get("InstanceId")
         self.PhoneNumber = params.get("PhoneNumber")
         self.Code = params.get("Code")
+        self.CountryCode = params.get("CountryCode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

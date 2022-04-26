@@ -35,7 +35,7 @@ FAILEDOPERATION_BODYRECTILLEGAL = 'FailedOperation.BodyRectIllegal'
 # 输入的人体框数量不合法。
 FAILEDOPERATION_BODYRECTNUMILLEGAL = 'FailedOperation.BodyRectNumIllegal'
 
-# 创建轨迹失败，请选择符合要求的人体图片。
+# 创建动作轨迹失败，请选择符合要求的人体图片。
 FAILEDOPERATION_CREATETRACEFAILED = 'FailedOperation.CreateTraceFailed'
 
 # 文件下载失败。
@@ -86,6 +86,9 @@ FAILEDOPERATION_PROFILENUMEXCEED = 'FailedOperation.ProfileNumExceed'
 # 整个请求体太大（通常主要是图片）。
 FAILEDOPERATION_REQUESTENTITYTOOLARGE = 'FailedOperation.RequestEntityTooLarge'
 
+# 请求的次数超过了频率限制。
+FAILEDOPERATION_REQUESTLIMITEXCEEDED = 'FailedOperation.RequestLimitExceeded'
+
 # 后端服务超时。
 FAILEDOPERATION_REQUESTTIMEOUT = 'FailedOperation.RequestTimeout'
 
@@ -122,7 +125,7 @@ FAILEDOPERATION_VIDEODECODEFAILED = 'FailedOperation.VideoDecodeFailed'
 # 参数不合法。
 INVALIDPARAMETER_INVALIDPARAMETER = 'InvalidParameter.InvalidParameter'
 
-# 账号人体轨迹数量超出限制。
+# 账号人体动作轨迹数量超出限制。
 INVALIDPARAMETERVALUE_ACCOUNTTRACENUMEXCEED = 'InvalidParameterValue.AccountTraceNumExceed'
 
 # 算法模型版本不合法。
@@ -155,7 +158,7 @@ INVALIDPARAMETERVALUE_GROUPNUMEXCEED = 'InvalidParameterValue.GroupNumExceed'
 # 人体库备注超出长度限制。
 INVALIDPARAMETERVALUE_GROUPTAGTOOLONG = 'InvalidParameterValue.GroupTagTooLong'
 
-# 人体库人体轨迹数量超出限制。
+# 人体库人体动作轨迹数量超出限制。
 INVALIDPARAMETERVALUE_GROUPTRACENUMEXCEED = 'InvalidParameterValue.GroupTraceNumExceed'
 
 # 图片为空。
@@ -188,13 +191,13 @@ INVALIDPARAMETERVALUE_PERSONNAMEILLEGAL = 'InvalidParameterValue.PersonNameIlleg
 # 人员名称超出长度限制。
 INVALIDPARAMETERVALUE_PERSONNAMETOOLONG = 'InvalidParameterValue.PersonNameTooLong'
 
-# 人员人体轨迹数量超出限制。
+# 人员人体动作轨迹数量超出限制。
 INVALIDPARAMETERVALUE_PERSONTRACENUMEXCEED = 'InvalidParameterValue.PersonTraceNumExceed'
 
 # 搜索的人员数目超过限制。
 INVALIDPARAMETERVALUE_SEARCHPERSONSEXCEED = 'InvalidParameterValue.SearchPersonsExceed'
 
-# 创建人体轨迹的人体图片数量超出限制。
+# 创建人体动作轨迹的人体图片数量超出限制。
 INVALIDPARAMETERVALUE_TRACEBODYNUMEXCEED = 'InvalidParameterValue.TraceBodyNumExceed'
 
 # TraceMatchThreshold参数不合法。
