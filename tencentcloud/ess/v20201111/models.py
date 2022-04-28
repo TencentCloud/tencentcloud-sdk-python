@@ -630,6 +630,12 @@ class CreateSchemeUrlRequest(AbstractModel):
         :type PathType: int
         :param FlowId: 合同详情 id (PathType=1时必传)
         :type FlowId: str
+        :param OrganizationName: 企业名称
+        :type OrganizationName: str
+        :param EndPoint: 链接类型 HTTP：跳转电子签小程序的http_url，APP：第三方APP或小程序跳转电子签小程序，默认为HTTP类型
+        :type EndPoint: str
+        :param AutoJumpBack: 是否自动回跳 true：是， false：否。该参数只针对"APP" 类型的签署链接有效
+        :type AutoJumpBack: bool
         """
         self.Operator = None
         self.Agent = None
@@ -637,6 +643,9 @@ class CreateSchemeUrlRequest(AbstractModel):
         self.Mobile = None
         self.PathType = None
         self.FlowId = None
+        self.OrganizationName = None
+        self.EndPoint = None
+        self.AutoJumpBack = None
 
 
     def _deserialize(self, params):
@@ -650,6 +659,9 @@ class CreateSchemeUrlRequest(AbstractModel):
         self.Mobile = params.get("Mobile")
         self.PathType = params.get("PathType")
         self.FlowId = params.get("FlowId")
+        self.OrganizationName = params.get("OrganizationName")
+        self.EndPoint = params.get("EndPoint")
+        self.AutoJumpBack = params.get("AutoJumpBack")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

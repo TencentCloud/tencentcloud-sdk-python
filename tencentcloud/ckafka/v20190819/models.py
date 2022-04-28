@@ -1999,6 +1999,65 @@ class DeleteInstancePreResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteRouteRequest(AbstractModel):
+    """DeleteRoute请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例唯一id
+        :type InstanceId: str
+        :param RouteId: 路由id
+        :type RouteId: int
+        :param CallerAppid: 调用方appId
+        :type CallerAppid: int
+        :param DeleteRouteTime: 删除路由时间
+        :type DeleteRouteTime: str
+        """
+        self.InstanceId = None
+        self.RouteId = None
+        self.CallerAppid = None
+        self.DeleteRouteTime = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.RouteId = params.get("RouteId")
+        self.CallerAppid = params.get("CallerAppid")
+        self.DeleteRouteTime = params.get("DeleteRouteTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteRouteResponse(AbstractModel):
+    """DeleteRoute返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 返回结果
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = JgwOperateResponse()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteRouteTriggerTimeRequest(AbstractModel):
     """DeleteRouteTriggerTime请求参数结构体
 

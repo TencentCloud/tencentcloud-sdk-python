@@ -329,9 +329,9 @@ class AdaptiveDynamicStreamingTemplate(AbstractModel):
 <li>HLS。</li>
         :type Format: str
         :param DrmType: DRM 类型，取值范围：
-<li>FairPlay；</li>
-<li>SimpleAES；</li>
-<li>Widevine。</li>
+<li>SimpleAES</li>
+<li>Widevine</li>
+<li>FairPlay</li>
 如果取值为空字符串，代表不对视频做 DRM 保护。
         :type DrmType: str
         :param StreamInfos: 自适应转码输入流参数信息，最多输入10路流。
@@ -6013,8 +6013,10 @@ class CreateAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
         :type StreamInfos: list of AdaptiveStreamTemplate
         :param Name: 模板名称，长度限制：64 个字符。
         :type Name: str
-        :param DrmType: DRM方案类型，取值范围：
-<li>SimpleAES。</li>
+        :param DrmType: DRM 方案类型，取值范围：
+<li>SimpleAES</li>
+<li>Widevine</li>
+<li>FairPlay</li>
 如果取值为空字符串，代表不对视频做 DRM 保护。
         :type DrmType: str
         :param DisableHigherVideoBitrate: 是否禁止视频低码率转高码率，取值范围：
@@ -9561,6 +9563,64 @@ class DescribeImageProcessingTemplatesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeImageReviewUsageDataRequest(AbstractModel):
+    """DescribeImageReviewUsageData请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StartTime: 起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#52)。
+        :type StartTime: str
+        :param EndTime: 结束日期，需大于等于起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#52)。
+        :type EndTime: str
+        :param SubAppId: 点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.SubAppId = params.get("SubAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeImageReviewUsageDataResponse(AbstractModel):
+    """DescribeImageReviewUsageData返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ImageReviewUsageDataSet: 图片智能识别次数统计数据，展示查询时间范围内的图片智能识别次数的概览数据。
+        :type ImageReviewUsageDataSet: list of ImageReviewUsageDataItem
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ImageReviewUsageDataSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ImageReviewUsageDataSet") is not None:
+            self.ImageReviewUsageDataSet = []
+            for item in params.get("ImageReviewUsageDataSet"):
+                obj = ImageReviewUsageDataItem()
+                obj._deserialize(item)
+                self.ImageReviewUsageDataSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeImageSpriteTemplatesRequest(AbstractModel):
     """DescribeImageSpriteTemplates请求参数结构体
 
@@ -12630,6 +12690,34 @@ class ImageProcessingTemplate(AbstractModel):
                 obj._deserialize(item)
                 self.Operations.append(obj)
         self.CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImageReviewUsageDataItem(AbstractModel):
+    """图片智能识别次数统计数据。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Time: 数据所在时间区间的开始时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#52)。如：当时间粒度为天，2018-12-01T00:00:00+08:00，表示2018年12月1日（含）到2018年12月2日（不含）区间。
+        :type Time: str
+        :param Count: 次数。
+        :type Count: int
+        """
+        self.Time = None
+        self.Count = None
+
+
+    def _deserialize(self, params):
+        self.Time = params.get("Time")
+        self.Count = params.get("Count")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -19869,6 +19957,64 @@ class RestoreMediaTask(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ReviewImageRequest(AbstractModel):
+    """ReviewImage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FileId: 媒体文件 ID，即该文件在云点播上的全局唯一标识符。本接口要求媒体文件必须是图片格式。
+        :type FileId: str
+        :param Definition: 图片智能识别模板 ID，当前固定填 10。
+        :type Definition: int
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.FileId = None
+        self.Definition = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.FileId = params.get("FileId")
+        self.Definition = params.get("Definition")
+        self.SubAppId = params.get("SubAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReviewImageResponse(AbstractModel):
+    """ReviewImage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ReviewResultSet: 图片智能识别任务结果。
+        :type ReviewResultSet: list of ContentReviewResult
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ReviewResultSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ReviewResultSet") is not None:
+            self.ReviewResultSet = []
+            for item in params.get("ReviewResultSet"):
+                obj = ContentReviewResult()
+                obj._deserialize(item)
+                self.ReviewResultSet.append(obj)
+        self.RequestId = params.get("RequestId")
 
 
 class SampleSnapshotTaskInput(AbstractModel):

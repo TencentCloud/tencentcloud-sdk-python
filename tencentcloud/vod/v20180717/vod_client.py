@@ -1847,6 +1847,38 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeImageReviewUsageData(self, request):
+        """该接口返回查询时间范围内每天使用的图片智能识别用量信息。
+           1. 可以查询最近365天内的图片智能识别统计数据。
+           2. 查询时间跨度不超过90天。
+           3. 查询时间跨度超过1天的，返回以天为粒度的数据，否则，返回以5分钟为粒度的数据。
+
+        :param request: Request instance for DescribeImageReviewUsageData.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeImageReviewUsageDataRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeImageReviewUsageDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeImageReviewUsageData", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeImageReviewUsageDataResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeImageSpriteTemplates(self, request):
         """查询雪碧图模板，支持根据条件，分页查询。
 
@@ -3634,6 +3666,39 @@ class VodClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ResetProcedureTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ReviewImage(self, request):
+        """对点播中的图片文件发起智能识别（令人反感的信息、不安全的信息、不适宜的信息）任务。
+
+        ><li>图片文件大小支持：文件 < 5M；</li>
+        ><li>图片文件分辨率支持：建议分辨率大于256x256，否则可能会影响智能识别效果；</li>
+        ><li>图片文件支持格式：PNG、JPG、JPEG、BMP、GIF、WEBP格式。</li>
+
+        :param request: Request instance for ReviewImage.
+        :type request: :class:`tencentcloud.vod.v20180717.models.ReviewImageRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ReviewImageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ReviewImage", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ReviewImageResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

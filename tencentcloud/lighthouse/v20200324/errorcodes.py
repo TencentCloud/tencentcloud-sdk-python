@@ -38,6 +38,9 @@ FAILEDOPERATION_IMPORTKEYPAIRFAILED = 'FailedOperation.ImportKeyPairFailed'
 # 对实例的操作失败。
 FAILEDOPERATION_INSTANCEOPERATIONFAILED = 'FailedOperation.InstanceOperationFailed'
 
+# 退还资源失败。
+FAILEDOPERATION_ISOLATERESOURCESFAILED = 'FailedOperation.IsolateResourcesFailed'
+
 # 快照操作失败。
 FAILEDOPERATION_SNAPSHOTOPERATIONFAILED = 'FailedOperation.SnapshotOperationFailed'
 
@@ -67,6 +70,9 @@ INTERNALERROR_DESCRIBEINSTANCESRETURNABLEERROR = 'InternalError.DescribeInstance
 
 # 查询实例流量包错误。
 INTERNALERROR_DESCRIBEINSTANCESTRAFFICPACKAGESFAILED = 'InternalError.DescribeInstancesTrafficPackagesFailed'
+
+# 查询资源返回了不符合要求内容。
+INTERNALERROR_DESCRIBERESOURCESRETURNABLEERROR = 'InternalError.DescribeResourcesReturnableError'
 
 # 快照配额锁获取失败。
 INTERNALERROR_GETSNAPSHOTALLOCQUOTALOCKERROR = 'InternalError.GetSnapshotAllocQuotaLockError'
@@ -260,6 +266,9 @@ LIMITEXCEEDED_FIREWALLRULESLIMITEXCEEDED = 'LimitExceeded.FirewallRulesLimitExce
 # 超过实例配额。
 LIMITEXCEEDED_INSTANCEQUOTALIMITEXCEEDED = 'LimitExceeded.InstanceQuotaLimitExceeded'
 
+# 退还资源数量超出限制。
+LIMITEXCEEDED_ISOLATERESOURCESLIMITEXCEEDED = 'LimitExceeded.IsolateResourcesLimitExceeded'
+
 # 超过密钥对配额。
 LIMITEXCEEDED_KEYPAIRLIMITEXCEEDED = 'LimitExceeded.KeyPairLimitExceeded'
 
@@ -427,6 +436,9 @@ UNSUPPORTEDOPERATION_POSTDESTROYRESOURCEFAILED = 'UnsupportedOperation.PostDestr
 
 # 重新申请关联云联网失败。请检查云联网状态并稍后再试。
 UNSUPPORTEDOPERATION_RESETATTACHCCNFAILED = 'UnsupportedOperation.ResetAttachCcnFailed'
+
+# 资源不支持退换。
+UNSUPPORTEDOPERATION_RESOURCENOTRETURNABLE = 'UnsupportedOperation.ResourceNotReturnable'
 
 # 快照忙。
 UNSUPPORTEDOPERATION_SNAPSHOTBUSY = 'UnsupportedOperation.SnapshotBusy'

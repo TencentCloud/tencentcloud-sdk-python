@@ -916,10 +916,14 @@ class ContentInfo(AbstractModel):
         :param Json: json格式内容描述
 注意：此字段可能返回 null，表示取不到有效值。
         :type Json: :class:`tencentcloud.cls.v20201016.models.JsonInfo`
+        :param Parquet: parquet格式内容描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Parquet: :class:`tencentcloud.cls.v20201016.models.ParquetInfo`
         """
         self.Format = None
         self.Csv = None
         self.Json = None
+        self.Parquet = None
 
 
     def _deserialize(self, params):
@@ -930,6 +934,9 @@ class ContentInfo(AbstractModel):
         if params.get("Json") is not None:
             self.Json = JsonInfo()
             self.Json._deserialize(params.get("Json"))
+        if params.get("Parquet") is not None:
+            self.Parquet = ParquetInfo()
+            self.Parquet._deserialize(params.get("Parquet"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5873,6 +5880,68 @@ class OpenKafkaConsumerResponse(AbstractModel):
     def _deserialize(self, params):
         self.TopicID = params.get("TopicID")
         self.RequestId = params.get("RequestId")
+
+
+class ParquetInfo(AbstractModel):
+    """Parquet内容
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ParquetKeyInfo: ParquetKeyInfo数组
+        :type ParquetKeyInfo: list of ParquetKeyInfo
+        """
+        self.ParquetKeyInfo = None
+
+
+    def _deserialize(self, params):
+        if params.get("ParquetKeyInfo") is not None:
+            self.ParquetKeyInfo = []
+            for item in params.get("ParquetKeyInfo"):
+                obj = ParquetKeyInfo()
+                obj._deserialize(item)
+                self.ParquetKeyInfo.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ParquetKeyInfo(AbstractModel):
+    """Parquet内容描述
+
+    """
+
+    def __init__(self):
+        r"""
+        :param KeyName: 键值名称
+        :type KeyName: str
+        :param KeyType: 数据类型，目前支持6种类型：string、boolean、int32、int64、float、double
+        :type KeyType: str
+        :param KeyNonExistingField: 解析失败赋值信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KeyNonExistingField: str
+        """
+        self.KeyName = None
+        self.KeyType = None
+        self.KeyNonExistingField = None
+
+
+    def _deserialize(self, params):
+        self.KeyName = params.get("KeyName")
+        self.KeyType = params.get("KeyType")
+        self.KeyNonExistingField = params.get("KeyNonExistingField")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class PartitionInfo(AbstractModel):

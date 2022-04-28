@@ -4205,6 +4205,54 @@ class InternetAccessible(AbstractModel):
         
 
 
+class IsolateInstancesRequest(AbstractModel):
+    """IsolateInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceIds: 实例ID列表。一个或多个待操作的实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。每次请求退还实例和数据盘数量总计上限为20。
+        :type InstanceIds: list of str
+        :param IsolateDataDisk: 是否退还挂载的数据盘。取值范围：
+TRUE：表示退还实例同时退还其挂载的数据盘。
+FALSE：表示退还实例同时不再退还其挂载的数据盘。
+默认取值：TRUE。
+        :type IsolateDataDisk: bool
+        """
+        self.InstanceIds = None
+        self.IsolateDataDisk = None
+
+
+    def _deserialize(self, params):
+        self.InstanceIds = params.get("InstanceIds")
+        self.IsolateDataDisk = params.get("IsolateDataDisk")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IsolateInstancesResponse(AbstractModel):
+    """IsolateInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class KeyPair(AbstractModel):
     """描述密钥对信息。
 
@@ -4956,7 +5004,7 @@ class RenewInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceIds: 实例ID列表。一个或多个待操作的实例ID。可通过DescribeInstances接口返回值中的InstanceId获取。每次请求批量实例的上限为100。
+        :param InstanceIds: 实例ID列表。一个或多个待操作的实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。每次请求批量实例的上限为100。
         :type InstanceIds: list of str
         :param InstanceChargePrepaid: 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
         :type InstanceChargePrepaid: :class:`tencentcloud.lighthouse.v20200324.models.InstanceChargePrepaid`
