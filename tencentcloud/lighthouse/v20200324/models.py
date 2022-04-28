@@ -4257,6 +4257,34 @@ class LoginConfiguration(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param AutoGeneratePassword: <li>"YES"代表选择自动生成密码，这时不指定Password字段。</li>
+<li>"NO"代表选择自定义密码，这时要指定Password字段。</li>
+        :type AutoGeneratePassword: str
+        :param Password: 实例登录密码。具体按照操作系统的复杂度要求。
+WINDOWS 实例密码必须 12-30 位，不能以“/”开头且不包括用户名，至少包含以下字符中的三种不同字符
+<li>小写字母：[a-z]</li>
+<li>大写字母：[A-Z]</li>
+<li>数字： 0-9</li>
+<li>特殊字符：()`~!@#$%^&*-+=_|{}[]:;' <>,.?/</li>
+        :type Password: str
+        """
+        self.AutoGeneratePassword = None
+        self.Password = None
+
+
+    def _deserialize(self, params):
+        self.AutoGeneratePassword = params.get("AutoGeneratePassword")
+        self.Password = params.get("Password")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class LoginSettings(AbstractModel):
     """描述了实例登录相关配置与信息。
@@ -4919,6 +4947,67 @@ class RenewDiskChargePrepaid(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class RenewInstancesRequest(AbstractModel):
+    """RenewInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceIds: 实例ID列表。一个或多个待操作的实例ID。可通过DescribeInstances接口返回值中的InstanceId获取。每次请求批量实例的上限为100。
+        :type InstanceIds: list of str
+        :param InstanceChargePrepaid: 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
+        :type InstanceChargePrepaid: :class:`tencentcloud.lighthouse.v20200324.models.InstanceChargePrepaid`
+        :param RenewDataDisk: 是否续费弹性数据盘。取值范围：
+TRUE：表示续费实例同时续费其挂载的数据盘
+FALSE：表示续费实例同时不再续费其挂载的数据盘
+默认取值：TRUE。
+        :type RenewDataDisk: bool
+        :param AutoVoucher: 是否自动抵扣代金券。取值范围：
+TRUE：表示自动抵扣代金券
+FALSE：表示不自动抵扣代金券
+默认取值：FALSE。
+        :type AutoVoucher: bool
+        """
+        self.InstanceIds = None
+        self.InstanceChargePrepaid = None
+        self.RenewDataDisk = None
+        self.AutoVoucher = None
+
+
+    def _deserialize(self, params):
+        self.InstanceIds = params.get("InstanceIds")
+        if params.get("InstanceChargePrepaid") is not None:
+            self.InstanceChargePrepaid = InstanceChargePrepaid()
+            self.InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
+        self.RenewDataDisk = params.get("RenewDataDisk")
+        self.AutoVoucher = params.get("AutoVoucher")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RenewInstancesResponse(AbstractModel):
+    """RenewInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class ResetAttachCcnRequest(AbstractModel):

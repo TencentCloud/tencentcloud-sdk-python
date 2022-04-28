@@ -3352,39 +3352,6 @@ class ChangeRuleEventsIgnoreStatusResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class ChargePrepaid(AbstractModel):
-    """预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Period: 购买实例的时长，单位：月。取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36。
-        :type Period: int
-        :param RenewFlag: 自动续费标识。取值范围：
-<li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费</li>
-<li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费</li>
-<li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费</li>
-
-默认取值：NOTIFY_AND_MANUAL_RENEW。若该参数指定为NOTIFY_AND_AUTO_RENEW，在账户余额充足的情况下，实例到期后将按月自动续费。
-        :type RenewFlag: str
-        """
-        self.Period = None
-        self.RenewFlag = None
-
-
-    def _deserialize(self, params):
-        self.Period = params.get("Period")
-        self.RenewFlag = params.get("RenewFlag")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class CheckBashRuleParamsRequest(AbstractModel):
     """CheckBashRuleParams请求参数结构体
 
@@ -3447,48 +3414,6 @@ class CheckBashRuleParamsResponse(AbstractModel):
     def _deserialize(self, params):
         self.ErrCode = params.get("ErrCode")
         self.ErrMsg = params.get("ErrMsg")
-        self.RequestId = params.get("RequestId")
-
-
-class CloseProVersionRequest(AbstractModel):
-    """CloseProVersion请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Quuid: 主机唯一标识Uuid数组。
-黑石的InstanceId，CVM的Uuid ,边缘计算的Uuid , 轻量应用服务器的Uuid ,混合云机器的Quuid 。 当前参数最大长度限制20
-        :type Quuid: str
-        """
-        self.Quuid = None
-
-
-    def _deserialize(self, params):
-        self.Quuid = params.get("Quuid")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class CloseProVersionResponse(AbstractModel):
-    """CloseProVersion返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -15774,66 +15699,6 @@ class IgnoreRuleEffectHostInfo(AbstractModel):
         
 
 
-class InquiryPriceOpenProVersionPrepaidRequest(AbstractModel):
-    """InquiryPriceOpenProVersionPrepaid请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param ChargePrepaid: 预付费模式(包年包月)参数设置。
-        :type ChargePrepaid: :class:`tencentcloud.cwp.v20180228.models.ChargePrepaid`
-        :param Machines: 需要开通专业版机器列表数组。
-        :type Machines: list of ProVersionMachine
-        """
-        self.ChargePrepaid = None
-        self.Machines = None
-
-
-    def _deserialize(self, params):
-        if params.get("ChargePrepaid") is not None:
-            self.ChargePrepaid = ChargePrepaid()
-            self.ChargePrepaid._deserialize(params.get("ChargePrepaid"))
-        if params.get("Machines") is not None:
-            self.Machines = []
-            for item in params.get("Machines"):
-                obj = ProVersionMachine()
-                obj._deserialize(item)
-                self.Machines.append(obj)
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class InquiryPriceOpenProVersionPrepaidResponse(AbstractModel):
-    """InquiryPriceOpenProVersionPrepaid返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param OriginalPrice: 预支费用的原价，单位：元。
-        :type OriginalPrice: float
-        :param DiscountPrice: 预支费用的折扣价，单位：元。
-        :type DiscountPrice: float
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.OriginalPrice = None
-        self.DiscountPrice = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.OriginalPrice = params.get("OriginalPrice")
-        self.DiscountPrice = params.get("DiscountPrice")
-        self.RequestId = params.get("RequestId")
-
-
 class LoginWhiteCombinedInfo(AbstractModel):
     """异地登录合并后白名单
 
@@ -16704,54 +16569,6 @@ class ModifyMalwareTimingScanSettingsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class ModifyProVersionRenewFlagRequest(AbstractModel):
-    """ModifyProVersionRenewFlag请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param RenewFlag: 自动续费标识。取值范围：
-<li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费</li>
-<li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费</li>
-<li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费</li>
-        :type RenewFlag: str
-        :param Quuid: 主机唯一ID，对应CVM的uuid、BM的instanceId。
-        :type Quuid: str
-        """
-        self.RenewFlag = None
-        self.Quuid = None
-
-
-    def _deserialize(self, params):
-        self.RenewFlag = params.get("RenewFlag")
-        self.Quuid = params.get("Quuid")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ModifyProVersionRenewFlagResponse(AbstractModel):
-    """ModifyProVersionRenewFlag返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
-
-
 class ModifyWarningSettingRequest(AbstractModel):
     """ModifyWarningSetting请求参数结构体
 
@@ -17014,116 +16831,6 @@ class OpenPortStatistics(AbstractModel):
         
 
 
-class OpenProVersionPrepaidRequest(AbstractModel):
-    """OpenProVersionPrepaid请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param ChargePrepaid: 购买相关参数。
-        :type ChargePrepaid: :class:`tencentcloud.cwp.v20180228.models.ChargePrepaid`
-        :param Machines: 需要开通专业版主机信息数组。
-        :type Machines: list of ProVersionMachine
-        """
-        self.ChargePrepaid = None
-        self.Machines = None
-
-
-    def _deserialize(self, params):
-        if params.get("ChargePrepaid") is not None:
-            self.ChargePrepaid = ChargePrepaid()
-            self.ChargePrepaid._deserialize(params.get("ChargePrepaid"))
-        if params.get("Machines") is not None:
-            self.Machines = []
-            for item in params.get("Machines"):
-                obj = ProVersionMachine()
-                obj._deserialize(item)
-                self.Machines.append(obj)
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class OpenProVersionPrepaidResponse(AbstractModel):
-    """OpenProVersionPrepaid返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param DealIds: 订单ID列表。
-        :type DealIds: list of str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.DealIds = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.DealIds = params.get("DealIds")
-        self.RequestId = params.get("RequestId")
-
-
-class OpenProVersionRequest(AbstractModel):
-    """OpenProVersion请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param MachineType: 云服务器类型（当前字段已作废，暂时填string类型空字符串代替，例如：""，英文双引号）
-        :type MachineType: str
-        :param MachineRegion: 机器所属地域（当前字段已作废，暂时填string类型空字符串代替，例如：""，英文双引号）
-        :type MachineRegion: str
-        :param Quuids: 主机唯一标识Uuid数组。
-黑石的InstanceId，CVM的Uuid ,边缘计算的Uuid , 轻量应用服务器的Uuid ,混合云机器的Quuid 。 当前参数最大长度限制20
-        :type Quuids: list of str
-        :param ActivityId: 活动ID。
-        :type ActivityId: int
-        """
-        self.MachineType = None
-        self.MachineRegion = None
-        self.Quuids = None
-        self.ActivityId = None
-
-
-    def _deserialize(self, params):
-        self.MachineType = params.get("MachineType")
-        self.MachineRegion = params.get("MachineRegion")
-        self.Quuids = params.get("Quuids")
-        self.ActivityId = params.get("ActivityId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class OpenProVersionResponse(AbstractModel):
-    """OpenProVersion返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
-
-
 class OsName(AbstractModel):
     """操作系统名称
 
@@ -17331,45 +17038,6 @@ class PrivilegeRule(AbstractModel):
         self.CreateTime = params.get("CreateTime")
         self.ModifyTime = params.get("ModifyTime")
         self.Hostip = params.get("Hostip")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ProVersionMachine(AbstractModel):
-    """需要开通专业版机器信息。
-
-    """
-
-    def __init__(self):
-        r"""
-        :param MachineType: 主机类型。
-<li>CVM: 云服务器</li>
-<li>BM: 黑石物理机</li>
-<li>ECM: 边缘计算服务器</li>
-<li>LH: 轻量应用服务器</li>
-<li>Other: 混合云机器</li>
-        :type MachineType: str
-        :param MachineRegion: 主机所在地域。
-如：ap-guangzhou、ap-beijing
-        :type MachineRegion: str
-        :param Quuid: 主机唯一标识Uuid数组。
-黑石的InstanceId，CVM的Uuid ,边缘计算的Uuid , 轻量应用服务器的Uuid ,混合云机器的Quuid 。 当前参数最大长度限制20
-        :type Quuid: str
-        """
-        self.MachineType = None
-        self.MachineRegion = None
-        self.Quuid = None
-
-
-    def _deserialize(self, params):
-        self.MachineType = params.get("MachineType")
-        self.MachineRegion = params.get("MachineRegion")
-        self.Quuid = params.get("Quuid")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -17883,53 +17551,6 @@ class RegionSet(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
-
-
-class RenewProVersionRequest(AbstractModel):
-    """RenewProVersion请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param ChargePrepaid: 购买相关参数。
-        :type ChargePrepaid: :class:`tencentcloud.cwp.v20180228.models.ChargePrepaid`
-        :param Quuid: 主机唯一ID，对应CVM的uuid、BM的InstanceId。
-        :type Quuid: str
-        """
-        self.ChargePrepaid = None
-        self.Quuid = None
-
-
-    def _deserialize(self, params):
-        if params.get("ChargePrepaid") is not None:
-            self.ChargePrepaid = ChargePrepaid()
-            self.ChargePrepaid._deserialize(params.get("ChargePrepaid"))
-        self.Quuid = params.get("Quuid")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class RenewProVersionResponse(AbstractModel):
-    """RenewProVersion返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
 
 
 class ReverseShell(AbstractModel):

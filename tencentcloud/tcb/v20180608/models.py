@@ -2478,16 +2478,21 @@ class DatabasesInfo(AbstractModel):
         :param Region: 所属地域。
 当前支持ap-shanghai
         :type Region: str
+        :param UpdateTime: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
         """
         self.InstanceId = None
         self.Status = None
         self.Region = None
+        self.UpdateTime = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
         self.Status = params.get("Status")
         self.Region = params.get("Region")
+        self.UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5660,12 +5665,16 @@ class DescribeWxCloudBaseRunEnvsRequest(AbstractModel):
         r"""
         :param WxAppId: wx应用Id
         :type WxAppId: str
+        :param AllRegions: 是否查询全地域
+        :type AllRegions: bool
         """
         self.WxAppId = None
+        self.AllRegions = None
 
 
     def _deserialize(self, params):
         self.WxAppId = params.get("WxAppId")
+        self.AllRegions = params.get("AllRegions")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6128,6 +6137,9 @@ class EnvInfo(AbstractModel):
         :param EnvType: 环境类型：baas, run, hoting, weda
 注意：此字段可能返回 null，表示取不到有效值。
         :type EnvType: str
+        :param IsDauPackage: 是否是dau新套餐
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsDauPackage: bool
         """
         self.EnvId = None
         self.Source = None
@@ -6150,6 +6162,7 @@ class EnvInfo(AbstractModel):
         self.Tags = None
         self.CustomLogServices = None
         self.EnvType = None
+        self.IsDauPackage = None
 
 
     def _deserialize(self, params):
@@ -6209,6 +6222,7 @@ class EnvInfo(AbstractModel):
                 obj._deserialize(item)
                 self.CustomLogServices.append(obj)
         self.EnvType = params.get("EnvType")
+        self.IsDauPackage = params.get("IsDauPackage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -1262,6 +1262,63 @@ JobFlowFinish，流程任务已完成。
         self.RequestId = params.get("RequestId")
 
 
+class DescribeResourceScheduleRequest(AbstractModel):
+    """DescribeResourceSchedule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: emr集群的英文id
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeResourceScheduleResponse(AbstractModel):
+    """DescribeResourceSchedule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param OpenSwitch: 资源调度功能是否开启
+        :type OpenSwitch: bool
+        :param Scheduler: 正在使用的资源调度器
+        :type Scheduler: str
+        :param FSInfo: 公平调度器的信息
+        :type FSInfo: str
+        :param CSInfo: 容量调度器的信息
+        :type CSInfo: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.OpenSwitch = None
+        self.Scheduler = None
+        self.FSInfo = None
+        self.CSInfo = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.OpenSwitch = params.get("OpenSwitch")
+        self.Scheduler = params.get("Scheduler")
+        self.FSInfo = params.get("FSInfo")
+        self.CSInfo = params.get("CSInfo")
+        self.RequestId = params.get("RequestId")
+
+
 class DiskGroup(AbstractModel):
     """磁盘组。
 
@@ -2353,6 +2410,167 @@ class MetaDbInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ModifyResourcePoolsRequest(AbstractModel):
+    """ModifyResourcePools请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: emr集群id
+        :type InstanceId: str
+        :param Key: 标识是fair还是capacity
+        :type Key: str
+        """
+        self.InstanceId = None
+        self.Key = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Key = params.get("Key")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyResourcePoolsResponse(AbstractModel):
+    """ModifyResourcePools返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IsDraft: false表示不是草稿，提交刷新请求成功
+        :type IsDraft: bool
+        :param ErrorMsg: 扩展字段，暂时没用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorMsg: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.IsDraft = None
+        self.ErrorMsg = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.IsDraft = params.get("IsDraft")
+        self.ErrorMsg = params.get("ErrorMsg")
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyResourceScheduleConfigRequest(AbstractModel):
+    """ModifyResourceScheduleConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: emr集群的英文id
+        :type InstanceId: str
+        :param Key: 业务标识，fair表示编辑公平的配置项，fairPlan表示编辑执行计划，capacity表示编辑容量的配置项
+        :type Key: str
+        :param Value: 修改后的模块消息
+        :type Value: str
+        """
+        self.InstanceId = None
+        self.Key = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Key = params.get("Key")
+        self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyResourceScheduleConfigResponse(AbstractModel):
+    """ModifyResourceScheduleConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IsDraft: true为草稿，表示还没有刷新资源池
+        :type IsDraft: bool
+        :param ErrorMsg: 校验错误信息，如果不为空，则说明校验失败，配置没有成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorMsg: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.IsDraft = None
+        self.ErrorMsg = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.IsDraft = params.get("IsDraft")
+        self.ErrorMsg = params.get("ErrorMsg")
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyResourceSchedulerRequest(AbstractModel):
+    """ModifyResourceScheduler请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: emr集群的英文id
+        :type InstanceId: str
+        :param OldValue: 老的调度器:fair
+        :type OldValue: str
+        :param NewValue: 新的调度器:capacity
+        :type NewValue: str
+        """
+        self.InstanceId = None
+        self.OldValue = None
+        self.NewValue = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.OldValue = params.get("OldValue")
+        self.NewValue = params.get("NewValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyResourceSchedulerResponse(AbstractModel):
+    """ModifyResourceScheduler返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class MultiDisk(AbstractModel):

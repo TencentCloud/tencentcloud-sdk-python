@@ -26,14 +26,8 @@ FAILEDOPERATION_APISERVERFAIL = 'FailedOperation.APIServerFail'
 # 客户端已离线。
 FAILEDOPERATION_AGENTOFFLINE = 'FailedOperation.AgentOffline'
 
-# 关闭专业版失败。
-FAILEDOPERATION_CLOSEPROVERSION = 'FailedOperation.CloseProVersion'
-
 # 导出文件失败。
 FAILEDOPERATION_EXPORT = 'FailedOperation.Export'
-
-# 询价失败。
-FAILEDOPERATION_INQUIRYPRICE = 'FailedOperation.InquiryPrice'
 
 # 可用license数量不足，缺少1个license，请购买新license。
 FAILEDOPERATION_LICENSEEXCEEDED = 'FailedOperation.LicenseExceeded'
@@ -44,14 +38,8 @@ FAILEDOPERATION_MACHINEDELETE = 'FailedOperation.MachineDelete'
 # 无专业版主机。
 FAILEDOPERATION_NOPROFESSIONHOST = 'FailedOperation.NoProfessionHost'
 
-# 开通专业版失败。
-FAILEDOPERATION_OPENPROVERSION = 'FailedOperation.OpenProVersion'
-
 # 多台主机隔离，部分或全部失败。
 FAILEDOPERATION_PARTSEPARATE = 'FailedOperation.PartSeparate'
-
-# 不能关闭预付费模式专业版。
-FAILEDOPERATION_PREPAYMODE = 'FailedOperation.PrePayMode'
 
 # 开启防护失败。
 FAILEDOPERATION_PROTECTSTARTFAIL = 'FailedOperation.ProtectStartFail'
@@ -67,9 +55,6 @@ FAILEDOPERATION_SINGLESEPARATE = 'FailedOperation.SingleSeparate'
 
 # 创建基线策略超过上限。
 FAILEDOPERATION_TOOMANYSTRATEGY = 'FailedOperation.TooManyStrategy'
-
-# 交易失败。
-FAILEDOPERATION_TRADEERROR = 'FailedOperation.TradeError'
 
 # 内部错误。
 INTERNALERROR = 'InternalError'

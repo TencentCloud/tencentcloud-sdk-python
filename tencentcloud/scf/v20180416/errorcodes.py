@@ -179,6 +179,9 @@ INTERNALERROR_SYSTEMERROR = 'InternalError.SystemError'
 # FunctionName取值与规范不符，请修正后再试。可参考：https://tencentcs.com/5jXKFnBW。
 INVALIDPARAMETER_FUNCTIONNAME = 'InvalidParameter.FunctionName'
 
+# 创建函数传参异常。
+INVALIDPARAMETER_PARAMERROR = 'InvalidParameter.ParamError'
+
 # 请求参数不合法。
 INVALIDPARAMETER_PAYLOAD = 'InvalidParameter.Payload'
 
@@ -326,6 +329,12 @@ INVALIDPARAMETERVALUE_FUNCTION = 'InvalidParameterValue.Function'
 # 函数不存在。
 INVALIDPARAMETERVALUE_FUNCTIONNAME = 'InvalidParameterValue.FunctionName'
 
+# 请求 id 传参错误。
+INVALIDPARAMETERVALUE_FUNCTIONREQUESTID = 'InvalidParameterValue.FunctionRequestId'
+
+# FunctionType参数错误。
+INVALIDPARAMETERVALUE_FUNCTIONTYPE = 'InvalidParameterValue.FunctionType'
+
 # GitBranch不符合规范。
 INVALIDPARAMETERVALUE_GITBRANCH = 'InvalidParameterValue.GitBranch'
 
@@ -349,6 +358,9 @@ INVALIDPARAMETERVALUE_HANDLER = 'InvalidParameterValue.Handler'
 
 # IdleTimeOut参数传入错误。
 INVALIDPARAMETERVALUE_IDLETIMEOUT = 'InvalidParameterValue.IdleTimeOut'
+
+# ImageType 参数值有误。
+INVALIDPARAMETERVALUE_IMAGETYPE = 'InvalidParameterValue.ImageType'
 
 # imageUri 传入有误。
 INVALIDPARAMETERVALUE_IMAGEURI = 'InvalidParameterValue.ImageUri'
@@ -550,6 +562,9 @@ LIMITEXCEEDED_LAYERVERSIONS = 'LimitExceeded.LayerVersions'
 
 # layer数量超出最大限制。
 LIMITEXCEEDED_LAYERS = 'LimitExceeded.Layers'
+
+# 动态扩容最大值超限。
+LIMITEXCEEDED_MAXCAPACITY = 'LimitExceeded.MaxCapacity'
 
 # 内存超出最大限制。
 LIMITEXCEEDED_MEMORY = 'LimitExceeded.Memory'

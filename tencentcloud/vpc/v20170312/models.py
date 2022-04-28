@@ -4959,15 +4959,19 @@ class CreateVpnGatewaySslClientResponse(AbstractModel):
         r"""
         :param TaskId: 异步任务ID。
         :type TaskId: int
+        :param SslVpnClientId: SSL-VPN client 唯一ID
+        :type SslVpnClientId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TaskId = None
+        self.SslVpnClientId = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.TaskId = params.get("TaskId")
+        self.SslVpnClientId = params.get("SslVpnClientId")
         self.RequestId = params.get("RequestId")
 
 
@@ -5036,15 +5040,19 @@ class CreateVpnGatewaySslServerResponse(AbstractModel):
         r"""
         :param TaskId: 创建SSL-VPN server 异步任务ID
         :type TaskId: int
+        :param SslVpnServerId: SSL-VPN server 唯一ID
+        :type SslVpnServerId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TaskId = None
+        self.SslVpnServerId = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.TaskId = params.get("TaskId")
+        self.SslVpnServerId = params.get("SslVpnServerId")
         self.RequestId = params.get("RequestId")
 
 

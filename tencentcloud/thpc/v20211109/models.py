@@ -31,6 +31,8 @@ class BindAutoScalingGroupRequest(AbstractModel):
         :type LaunchConfigurationId: str
         :param AutoScalingGroupId: 弹性伸缩组ID。
         :type AutoScalingGroupId: str
+        :param QueueName: 队列名称。
+        :type QueueName: str
         :param ExpansionBusyTime: 任务连续等待时间，队列的任务处于连续等待的时间。单位秒。默认值120。
         :type ExpansionBusyTime: int
         :param ShrinkIdleTime: 节点连续空闲（未运行作业）时间，一个节点连续处于空闲状态时间。单位秒。默认值300。
@@ -49,6 +51,7 @@ false（默认）：发送正常请求，通过检查后直接绑定弹性伸缩
         self.ClusterId = None
         self.LaunchConfigurationId = None
         self.AutoScalingGroupId = None
+        self.QueueName = None
         self.ExpansionBusyTime = None
         self.ShrinkIdleTime = None
         self.EnableAutoExpansion = None
@@ -60,6 +63,7 @@ false（默认）：发送正常请求，通过检查后直接绑定弹性伸缩
         self.ClusterId = params.get("ClusterId")
         self.LaunchConfigurationId = params.get("LaunchConfigurationId")
         self.AutoScalingGroupId = params.get("AutoScalingGroupId")
+        self.QueueName = params.get("QueueName")
         self.ExpansionBusyTime = params.get("ExpansionBusyTime")
         self.ShrinkIdleTime = params.get("ShrinkIdleTime")
         self.EnableAutoExpansion = params.get("EnableAutoExpansion")

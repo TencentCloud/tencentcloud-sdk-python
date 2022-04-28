@@ -45,7 +45,7 @@ class AddNodesRequest(AbstractModel):
         :type SystemDisk: list of SystemDisk
         :param DataDisks: 节点数据盘配置信息。若不指定该参数，则默认不购买数据盘。支持购买的时候指定21块数据盘，其中最多包含1块LOCAL_BASIC数据盘或者LOCAL_SSD数据盘，最多包含20块CLOUD_BASIC数据盘、CLOUD_PREMIUM数据盘或者CLOUD_SSD数据盘。
         :type DataDisks: list of DataDisk
-        :param InternetAccessible: 节点数据盘配置信息。若不指定该参数，则默认不购买数据盘。支持购买的时候指定21块数据盘，其中最多包含1块LOCAL_BASIC数据盘或者LOCAL_SSD数据盘，最多包含20块CLOUD_BASIC数据盘、CLOUD_PREMIUM数据盘或者CLOUD_SSD数据盘。
+        :param InternetAccessible: 公网带宽相关信息设置。若不指定该参数，则默认公网带宽为0Mbps。
         :type InternetAccessible: :class:`tencentcloud.thpc.v20220401.models.InternetAccessible`
         :param InstanceName: 节点显示名称。
 不指定节点显示名称则默认显示‘未命名’。
@@ -166,6 +166,8 @@ class BindAutoScalingGroupRequest(AbstractModel):
         :type LaunchConfigurationId: str
         :param AutoScalingGroupId: 弹性伸缩组ID。
         :type AutoScalingGroupId: str
+        :param QueueName: 队列名称。
+        :type QueueName: str
         :param ExpansionBusyTime: 任务连续等待时间，队列的任务处于连续等待的时间。单位秒。默认值120。
         :type ExpansionBusyTime: int
         :param ShrinkIdleTime: 节点连续空闲（未运行作业）时间，一个节点连续处于空闲状态时间。单位秒。默认值300。
@@ -184,6 +186,7 @@ false（默认）：发送正常请求，通过检查后直接绑定弹性伸缩
         self.ClusterId = None
         self.LaunchConfigurationId = None
         self.AutoScalingGroupId = None
+        self.QueueName = None
         self.ExpansionBusyTime = None
         self.ShrinkIdleTime = None
         self.EnableAutoExpansion = None
@@ -195,6 +198,7 @@ false（默认）：发送正常请求，通过检查后直接绑定弹性伸缩
         self.ClusterId = params.get("ClusterId")
         self.LaunchConfigurationId = params.get("LaunchConfigurationId")
         self.AutoScalingGroupId = params.get("AutoScalingGroupId")
+        self.QueueName = params.get("QueueName")
         self.ExpansionBusyTime = params.get("ExpansionBusyTime")
         self.ShrinkIdleTime = params.get("ShrinkIdleTime")
         self.EnableAutoExpansion = params.get("EnableAutoExpansion")

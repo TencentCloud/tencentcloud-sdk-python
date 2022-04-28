@@ -669,6 +669,10 @@ class CreateProbeTasksRequest(AbstractModel):
         :type Cron: str
         :param Tag: 资源标签值
         :type Tag: list of Tag
+        :param ProbeType: 测试类型，包含定时测试与即时测试
+        :type ProbeType: int
+        :param PluginSource: 插件类型
+        :type PluginSource: str
         """
         self.BatchTasks = None
         self.TaskType = None
@@ -678,6 +682,8 @@ class CreateProbeTasksRequest(AbstractModel):
         self.TaskCategory = None
         self.Cron = None
         self.Tag = None
+        self.ProbeType = None
+        self.PluginSource = None
 
 
     def _deserialize(self, params):
@@ -699,6 +705,8 @@ class CreateProbeTasksRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tag.append(obj)
+        self.ProbeType = params.get("ProbeType")
+        self.PluginSource = params.get("PluginSource")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

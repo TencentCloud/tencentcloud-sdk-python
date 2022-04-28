@@ -556,6 +556,12 @@ class BGPInstanceSpecification(AbstractModel):
         :param ServiceBandWidth: 业务带宽
 注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceBandWidth: int
+        :param BattleEditionFlag: 战斗服版本标记，0表示普通高防包，1表示战斗服高防包
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BattleEditionFlag: int
+        :param ChannelEditionFlag: 渠道版标记，0表示普通高防包，1表示渠道版高防包
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChannelEditionFlag: int
         """
         self.ProtectBandwidth = None
         self.ProtectCountLimit = None
@@ -563,6 +569,8 @@ class BGPInstanceSpecification(AbstractModel):
         self.AutoRenewFlag = None
         self.UnionPackFlag = None
         self.ServiceBandWidth = None
+        self.BattleEditionFlag = None
+        self.ChannelEditionFlag = None
 
 
     def _deserialize(self, params):
@@ -572,6 +580,8 @@ class BGPInstanceSpecification(AbstractModel):
         self.AutoRenewFlag = params.get("AutoRenewFlag")
         self.UnionPackFlag = params.get("UnionPackFlag")
         self.ServiceBandWidth = params.get("ServiceBandWidth")
+        self.BattleEditionFlag = params.get("BattleEditionFlag")
+        self.ChannelEditionFlag = params.get("ChannelEditionFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

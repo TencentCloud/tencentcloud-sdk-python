@@ -331,6 +331,8 @@ class CreateSubscribeRequest(AbstractModel):
         :type AutoRenew: int
         :param Tags: 实例资源标签
         :type Tags: list of TagItem
+        :param Name: 用户自定义实例名
+        :type Name: str
         """
         self.Product = None
         self.PayType = None
@@ -338,6 +340,7 @@ class CreateSubscribeRequest(AbstractModel):
         self.Count = None
         self.AutoRenew = None
         self.Tags = None
+        self.Name = None
 
 
     def _deserialize(self, params):
@@ -352,6 +355,7 @@ class CreateSubscribeRequest(AbstractModel):
                 obj = TagItem()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -738,6 +742,11 @@ class DescribeSubscribeConfResponse(AbstractModel):
         :param AutoRenewFlag: 自动续费标识,0-不自动续费，1-自动续费
 注意：此字段可能返回 null，表示取不到有效值。
         :type AutoRenewFlag: int
+        :param SubscribeVersion: 数据订阅版本。老版订阅填txdts，kafka版填kafka
+        :type SubscribeVersion: str
+        :param Errors: 错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Errors: list of SubsErr
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -767,6 +776,8 @@ class DescribeSubscribeConfResponse(AbstractModel):
         self.Region = None
         self.Tags = None
         self.AutoRenewFlag = None
+        self.SubscribeVersion = None
+        self.Errors = None
         self.RequestId = None
 
 
@@ -807,6 +818,13 @@ class DescribeSubscribeConfResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Tags.append(obj)
         self.AutoRenewFlag = params.get("AutoRenewFlag")
+        self.SubscribeVersion = params.get("SubscribeVersion")
+        if params.get("Errors") is not None:
+            self.Errors = []
+            for item in params.get("Errors"):
+                obj = SubsErr()
+                obj._deserialize(item)
+                self.Errors.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1129,6 +1147,9 @@ class MigrateJobInfo(AbstractModel):
         :param Tags: 标签
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of TagItem
+        :param SrcInfoMulti: 源实例为集群时且接入为非cdb时源实例信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SrcInfoMulti: list of SrcInfo
         """
         self.JobId = None
         self.JobName = None
@@ -1147,6 +1168,7 @@ class MigrateJobInfo(AbstractModel):
         self.Detail = None
         self.ErrorInfo = None
         self.Tags = None
+        self.SrcInfoMulti = None
 
 
     def _deserialize(self, params):
@@ -1185,6 +1207,12 @@ class MigrateJobInfo(AbstractModel):
                 obj = TagItem()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        if params.get("SrcInfoMulti") is not None:
+            self.SrcInfoMulti = []
+            for item in params.get("SrcInfoMulti"):
+                obj = SrcInfo()
+                obj._deserialize(item)
+                self.SrcInfoMulti.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1892,6 +1920,31 @@ class StopMigrateJobResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class SubsErr(AbstractModel):
+    """查询订阅配置的错误信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Message: 错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Message: str
+        """
+        self.Message = None
+
+
+    def _deserialize(self, params):
+        self.Message = params.get("Message")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class SubscribeInfo(AbstractModel):

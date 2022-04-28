@@ -3072,11 +3072,14 @@ class TasksInfo(AbstractModel):
         :type SQL: str
         :param Config: 任务的配置信息，当前仅支持SparkSQLTask任务。
         :type Config: list of KVPair
+        :param Params: 任务的用户自定义参数信息
+        :type Params: list of KVPair
         """
         self.TaskType = None
         self.FailureTolerance = None
         self.SQL = None
         self.Config = None
+        self.Params = None
 
 
     def _deserialize(self, params):
@@ -3089,6 +3092,12 @@ class TasksInfo(AbstractModel):
                 obj = KVPair()
                 obj._deserialize(item)
                 self.Config.append(obj)
+        if params.get("Params") is not None:
+            self.Params = []
+            for item in params.get("Params"):
+                obj = KVPair()
+                obj._deserialize(item)
+                self.Params.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

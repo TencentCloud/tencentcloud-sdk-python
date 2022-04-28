@@ -113,35 +113,6 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def CloseProVersion(self, request):
-        """本接口 (CloseProVersion) 已全面改为授权模式,该接口只能解绑授权.
-
-        :param request: Request instance for CloseProVersion.
-        :type request: :class:`tencentcloud.cwp.v20180228.models.CloseProVersionRequest`
-        :rtype: :class:`tencentcloud.cwp.v20180228.models.CloseProVersionResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CloseProVersion", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.CloseProVersionResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def CreateBaselineStrategy(self, request):
         """根据策略信息创建基线策略
 
@@ -5420,35 +5391,6 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def InquiryPriceOpenProVersionPrepaid(self, request):
-        """本接口 (InquiryPriceOpenProVersionPrepaid) 用于开通专业版询价(预付费)。
-
-        :param request: Request instance for InquiryPriceOpenProVersionPrepaid.
-        :type request: :class:`tencentcloud.cwp.v20180228.models.InquiryPriceOpenProVersionPrepaidRequest`
-        :rtype: :class:`tencentcloud.cwp.v20180228.models.InquiryPriceOpenProVersionPrepaidResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("InquiryPriceOpenProVersionPrepaid", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.InquiryPriceOpenProVersionPrepaidResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def ModifyAutoOpenProVersionConfig(self, request):
         """用于设置新增主机自动开通专业防护配置。
 
@@ -5594,35 +5536,6 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ModifyProVersionRenewFlag(self, request):
-        """本接口 (ModifyProVersionRenewFlag) 用于修改专业版包年包月续费标识。
-
-        :param request: Request instance for ModifyProVersionRenewFlag.
-        :type request: :class:`tencentcloud.cwp.v20180228.models.ModifyProVersionRenewFlagRequest`
-        :rtype: :class:`tencentcloud.cwp.v20180228.models.ModifyProVersionRenewFlagResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("ModifyProVersionRenewFlag", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ModifyProVersionRenewFlagResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def ModifyWarningSetting(self, request):
         """修改告警设置
 
@@ -5739,64 +5652,6 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def OpenProVersion(self, request):
-        """本接口 (OpenProVersion) 用于开通专业版。
-
-        :param request: Request instance for OpenProVersion.
-        :type request: :class:`tencentcloud.cwp.v20180228.models.OpenProVersionRequest`
-        :rtype: :class:`tencentcloud.cwp.v20180228.models.OpenProVersionResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("OpenProVersion", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.OpenProVersionResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def OpenProVersionPrepaid(self, request):
-        """本接口 (OpenProVersionPrepaid) 用于开通专业版(包年包月)。
-
-        :param request: Request instance for OpenProVersionPrepaid.
-        :type request: :class:`tencentcloud.cwp.v20180228.models.OpenProVersionPrepaidRequest`
-        :rtype: :class:`tencentcloud.cwp.v20180228.models.OpenProVersionPrepaidResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("OpenProVersionPrepaid", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.OpenProVersionPrepaidResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def RecoverMalwares(self, request):
         """本接口（RecoverMalwares）用于批量恢复已经被隔离的木马文件。
 
@@ -5812,35 +5667,6 @@ class CwpClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RecoverMalwaresResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def RenewProVersion(self, request):
-        """本接口 (RenewProVersion) 用于续费专业版(包年包月)。
-
-        :param request: Request instance for RenewProVersion.
-        :type request: :class:`tencentcloud.cwp.v20180228.models.RenewProVersionRequest`
-        :rtype: :class:`tencentcloud.cwp.v20180228.models.RenewProVersionResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("RenewProVersion", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.RenewProVersionResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

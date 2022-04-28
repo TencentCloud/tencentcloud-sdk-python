@@ -110,6 +110,8 @@ class CreateApplicationRequest(AbstractModel):
         :type DeployMode: str
         :param EnableTracing: 是否开启 Java 应用的 APM 自动上报功能，1 表示启用；0 表示关闭
         :type EnableTracing: int
+        :param UseDefaultImageServiceParameters: 使用默认镜像服务额外参数
+        :type UseDefaultImageServiceParameters: :class:`tencentcloud.tem.v20210701.models.UseDefaultRepoParameters`
         """
         self.ApplicationName = None
         self.Description = None
@@ -123,6 +125,7 @@ class CreateApplicationRequest(AbstractModel):
         self.CodingLanguage = None
         self.DeployMode = None
         self.EnableTracing = None
+        self.UseDefaultImageServiceParameters = None
 
 
     def _deserialize(self, params):
@@ -138,6 +141,9 @@ class CreateApplicationRequest(AbstractModel):
         self.CodingLanguage = params.get("CodingLanguage")
         self.DeployMode = params.get("DeployMode")
         self.EnableTracing = params.get("EnableTracing")
+        if params.get("UseDefaultImageServiceParameters") is not None:
+            self.UseDefaultImageServiceParameters = UseDefaultRepoParameters()
+            self.UseDefaultImageServiceParameters._deserialize(params.get("UseDefaultImageServiceParameters"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3029,6 +3035,41 @@ class TemNamespaceInfo(AbstractModel):
         self.ClusterStatus = params.get("ClusterStatus")
         self.EnableTswTraceService = params.get("EnableTswTraceService")
         self.Locked = params.get("Locked")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UseDefaultRepoParameters(AbstractModel):
+    """创建应用，创建仓库参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EnterpriseInstanceName: 企业版实例名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnterpriseInstanceName: str
+        :param EnterpriseInstanceChargeType: 企业版收费类型  0 按量收费   1 包年包月
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnterpriseInstanceChargeType: int
+        :param EnterpriseInstanceType: 企业版规格：basic-基础班 ，standard-标准版，premium-高级版
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnterpriseInstanceType: str
+        """
+        self.EnterpriseInstanceName = None
+        self.EnterpriseInstanceChargeType = None
+        self.EnterpriseInstanceType = None
+
+
+    def _deserialize(self, params):
+        self.EnterpriseInstanceName = params.get("EnterpriseInstanceName")
+        self.EnterpriseInstanceChargeType = params.get("EnterpriseInstanceChargeType")
+        self.EnterpriseInstanceType = params.get("EnterpriseInstanceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

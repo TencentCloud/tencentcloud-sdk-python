@@ -693,35 +693,6 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def CreateServerlessGroup(self, request):
-        """创建Serverless部署组
-
-        :param request: Request instance for CreateServerlessGroup.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.CreateServerlessGroupRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.CreateServerlessGroupResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CreateServerlessGroup", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.CreateServerlessGroupResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def CreateTask(self, request):
         """创建任务
 
@@ -1376,35 +1347,6 @@ class TsfClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeployGroupResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def DeployServerlessGroup(self, request):
-        """部署Serverless应用
-
-        :param request: Request instance for DeployServerlessGroup.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.DeployServerlessGroupRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.DeployServerlessGroupResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DeployServerlessGroup", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DeployServerlessGroupResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -3291,64 +3233,6 @@ class TsfClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeRepositoryResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def DescribeServerlessGroup(self, request):
-        """查询Serverless部署组明细
-
-        :param request: Request instance for DescribeServerlessGroup.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeServerlessGroupRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeServerlessGroupResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeServerlessGroup", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeServerlessGroupResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def DescribeServerlessGroups(self, request):
-        """查询Serverless部署组列表
-
-        :param request: Request instance for DescribeServerlessGroups.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeServerlessGroupsRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeServerlessGroupsResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeServerlessGroups", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeServerlessGroupsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

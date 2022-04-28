@@ -640,6 +640,101 @@ class DescribeMetricRecordsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeServiceOverviewRequest(AbstractModel):
+    """DescribeServiceOverview请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Filters: 过滤条件
+        :type Filters: list of Filter
+        :param Metrics: 指标列表
+        :type Metrics: list of QueryMetricItem
+        :param GroupBy: 聚合维度
+        :type GroupBy: list of str
+        :param OrderBy: 排序
+        :type OrderBy: :class:`tencentcloud.apm.v20210622.models.OrderBy`
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param Limit: 每页大小
+        :type Limit: int
+        :param StartTime: 开始时间
+        :type StartTime: int
+        :param Offset: 分页起始点
+        :type Offset: int
+        :param EndTime: 结束时间
+        :type EndTime: int
+        """
+        self.Filters = None
+        self.Metrics = None
+        self.GroupBy = None
+        self.OrderBy = None
+        self.InstanceId = None
+        self.Limit = None
+        self.StartTime = None
+        self.Offset = None
+        self.EndTime = None
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        if params.get("Metrics") is not None:
+            self.Metrics = []
+            for item in params.get("Metrics"):
+                obj = QueryMetricItem()
+                obj._deserialize(item)
+                self.Metrics.append(obj)
+        self.GroupBy = params.get("GroupBy")
+        if params.get("OrderBy") is not None:
+            self.OrderBy = OrderBy()
+            self.OrderBy._deserialize(params.get("OrderBy"))
+        self.InstanceId = params.get("InstanceId")
+        self.Limit = params.get("Limit")
+        self.StartTime = params.get("StartTime")
+        self.Offset = params.get("Offset")
+        self.EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeServiceOverviewResponse(AbstractModel):
+    """DescribeServiceOverview返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Records: 指标结果集
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Records: list of ApmMetricRecord
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Records = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Records") is not None:
+            self.Records = []
+            for item in params.get("Records"):
+                obj = ApmMetricRecord()
+                obj._deserialize(item)
+                self.Records.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class Filter(AbstractModel):
     """查询过滤参数
 

@@ -91,6 +91,8 @@ class DtsClient(AbstractClient):
         在开始迁移前, 必须调用本接口创建校验, 且校验成功后才能开始迁移. 校验的结果可以通过DescribeMigrateCheckJob查看.
         校验成功后,迁移任务若有修改, 则必须重新创建校验并通过后, 才能开始迁移.
 
+        如果是金融区链路, 请使用域名: https://dts.ap-shenzhen-fsi.tencentcloudapi.com
+
         :param request: Request instance for CreateMigrateCheckJob.
         :type request: :class:`tencentcloud.dts.v20180330.models.CreateMigrateCheckJobRequest`
         :rtype: :class:`tencentcloud.dts.v20180330.models.CreateMigrateCheckJobResponse`

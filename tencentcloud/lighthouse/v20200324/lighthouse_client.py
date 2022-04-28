@@ -1816,6 +1816,35 @@ class LighthouseClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def RenewInstances(self, request):
+        """本接口(RenewInstances)用于续费一个或多个轻量应用服务器实例。
+
+        :param request: Request instance for RenewInstances.
+        :type request: :class:`tencentcloud.lighthouse.v20200324.models.RenewInstancesRequest`
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.RenewInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RenewInstances", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.RenewInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ResetAttachCcn(self, request):
         """本接口 (ResetAttachCcn) 用于关联云联网实例申请过期时，重新申请关联操作。
 
