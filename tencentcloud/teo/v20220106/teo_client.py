@@ -82,3 +82,32 @@ class TeoClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeZones(self, request):
+        """用户查询用户站点信息列表，支持分页
+
+        :param request: Request instance for DescribeZones.
+        :type request: :class:`tencentcloud.teo.v20220106.models.DescribeZonesRequest`
+        :rtype: :class:`tencentcloud.teo.v20220106.models.DescribeZonesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeZones", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeZonesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)

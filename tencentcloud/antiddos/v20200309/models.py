@@ -5401,6 +5401,318 @@ class DescribeListWaterPrintConfigResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeOverviewAttackTrendRequest(AbstractModel):
+    """DescribeOverviewAttackTrend请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Type: 攻击类型，取值ddos， cc
+        :type Type: str
+        :param Dimension: 纬度，当前仅支持attackcount
+        :type Dimension: str
+        :param Period: 周期，当前仅支持86400
+        :type Period: int
+        :param StartTime: 起始时间
+        :type StartTime: str
+        :param EndTime: 结束时间
+        :type EndTime: str
+        """
+        self.Type = None
+        self.Dimension = None
+        self.Period = None
+        self.StartTime = None
+        self.EndTime = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.Dimension = params.get("Dimension")
+        self.Period = params.get("Period")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeOverviewAttackTrendResponse(AbstractModel):
+    """DescribeOverviewAttackTrend返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Type: 攻击类型
+        :type Type: str
+        :param StartTime: 起始时间
+        :type StartTime: str
+        :param EndTime: 结束时间
+        :type EndTime: str
+        :param Period: 周期
+        :type Period: int
+        :param Data: 每个周期点的攻击次数
+        :type Data: list of int non-negative
+        :param Count: 包含的周期点数
+        :type Count: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Type = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Period = None
+        self.Data = None
+        self.Count = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Period = params.get("Period")
+        self.Data = params.get("Data")
+        self.Count = params.get("Count")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeOverviewCCTrendRequest(AbstractModel):
+    """DescribeOverviewCCTrend请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp-multip表示共享包；basic表示DDoS基础防护）
+        :type Business: str
+        :param Period: 统计粒度，取值[300(5分钟)，3600(小时)，86400(天)]
+        :type Period: int
+        :param StartTime: 统计开始时间
+        :type StartTime: str
+        :param EndTime: 统计结束时间
+        :type EndTime: str
+        :param MetricName: 指标，取值[inqps(总请求峰值，dropqps(攻击请求峰值))，incount(请求次数), dropcount(攻击次数)]
+        :type MetricName: str
+        :param IpList: 资源的IP
+        :type IpList: list of str
+        :param Id: 资源实例ID
+        :type Id: str
+        """
+        self.Business = None
+        self.Period = None
+        self.StartTime = None
+        self.EndTime = None
+        self.MetricName = None
+        self.IpList = None
+        self.Id = None
+
+
+    def _deserialize(self, params):
+        self.Business = params.get("Business")
+        self.Period = params.get("Period")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.MetricName = params.get("MetricName")
+        self.IpList = params.get("IpList")
+        self.Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeOverviewCCTrendResponse(AbstractModel):
+    """DescribeOverviewCCTrend返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Count: 值个数
+        :type Count: int
+        :param Data: 值数组
+        :type Data: list of int non-negative
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Count = None
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Count = params.get("Count")
+        self.Data = params.get("Data")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeOverviewDDoSTrendRequest(AbstractModel):
+    """DescribeOverviewDDoSTrend请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Business: 大禹子产品代号（bgpip表示高防IP；bgp-multip表示高防包；basic表示DDoS基础防护）
+        :type Business: str
+        :param Period: 统计粒度，取值[300(5分钟)，3600(小时)，86400(天)]
+        :type Period: int
+        :param StartTime: 统计开始时间
+        :type StartTime: str
+        :param EndTime: 统计结束时间
+        :type EndTime: str
+        :param MetricName: 指标，取值[bps(攻击流量带宽，pps(攻击包速率))]
+        :type MetricName: str
+        :param IpList: 资源实例的IP列表
+        :type IpList: list of str
+        :param Id: 资源实例ID
+        :type Id: str
+        """
+        self.Business = None
+        self.Period = None
+        self.StartTime = None
+        self.EndTime = None
+        self.MetricName = None
+        self.IpList = None
+        self.Id = None
+
+
+    def _deserialize(self, params):
+        self.Business = params.get("Business")
+        self.Period = params.get("Period")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.MetricName = params.get("MetricName")
+        self.IpList = params.get("IpList")
+        self.Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeOverviewDDoSTrendResponse(AbstractModel):
+    """DescribeOverviewDDoSTrend返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Count: 值个数
+        :type Count: int
+        :param Data: 值数组，攻击流量带宽单位为Mbps，包速率单位为pps
+        :type Data: list of int non-negative
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Count = None
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Count = params.get("Count")
+        self.Data = params.get("Data")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeOverviewIndexRequest(AbstractModel):
+    """DescribeOverviewIndex请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StartTime: 拉取指标起始时间
+        :type StartTime: str
+        :param EndTime: 拉取指标结束时间
+        :type EndTime: str
+        """
+        self.StartTime = None
+        self.EndTime = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeOverviewIndexResponse(AbstractModel):
+    """DescribeOverviewIndex返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AllIpCount: IP总数
+        :type AllIpCount: int
+        :param AntiddosIpCount: 高防IP总数（包含高防包+高防IP）
+        :type AntiddosIpCount: int
+        :param AttackIpCount: 攻击IP总数
+        :type AttackIpCount: int
+        :param BlockIpCount: 封堵IP总数
+        :type BlockIpCount: int
+        :param AntiddosDomainCount: 高防域名总数
+        :type AntiddosDomainCount: int
+        :param AttackDomainCount: 攻击域名总数
+        :type AttackDomainCount: int
+        :param MaxAttackFlow: 攻击流量峰值
+        :type MaxAttackFlow: int
+        :param NewAttackTime: 当前最近一条攻击中的起始时间
+        :type NewAttackTime: str
+        :param NewAttackIp: 当前最近一条攻击中的IP
+        :type NewAttackIp: str
+        :param NewAttackType: 当前最近一条攻击中的攻击类型
+        :type NewAttackType: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AllIpCount = None
+        self.AntiddosIpCount = None
+        self.AttackIpCount = None
+        self.BlockIpCount = None
+        self.AntiddosDomainCount = None
+        self.AttackDomainCount = None
+        self.MaxAttackFlow = None
+        self.NewAttackTime = None
+        self.NewAttackIp = None
+        self.NewAttackType = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AllIpCount = params.get("AllIpCount")
+        self.AntiddosIpCount = params.get("AntiddosIpCount")
+        self.AttackIpCount = params.get("AttackIpCount")
+        self.BlockIpCount = params.get("BlockIpCount")
+        self.AntiddosDomainCount = params.get("AntiddosDomainCount")
+        self.AttackDomainCount = params.get("AttackDomainCount")
+        self.MaxAttackFlow = params.get("MaxAttackFlow")
+        self.NewAttackTime = params.get("NewAttackTime")
+        self.NewAttackIp = params.get("NewAttackIp")
+        self.NewAttackType = params.get("NewAttackType")
+        self.RequestId = params.get("RequestId")
+
+
 class DisassociateDDoSEipAddressRequest(AbstractModel):
     """DisassociateDDoSEipAddress请求参数结构体
 

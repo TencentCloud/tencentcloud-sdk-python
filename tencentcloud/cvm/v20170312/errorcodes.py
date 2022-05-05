@@ -281,6 +281,9 @@ INVALIDPARAMETERVALUE_BANDWIDTHPACKAGEIDMALFORMED = 'InvalidParameterValue.Bandw
 # 请确认指定的带宽包是否存在。
 INVALIDPARAMETERVALUE_BANDWIDTHPACKAGEIDNOTFOUND = 'InvalidParameterValue.BandwidthPackageIdNotFound'
 
+# CamRoleName不合要求，只允许包含英文字母、数字或者 +=,.@_- 字符。
+INVALIDPARAMETERVALUE_CAMROLENAMEMALFORMED = 'InvalidParameterValue.CamRoleNameMalformed'
+
 # 找不到对应的CHC物理服务器。
 INVALIDPARAMETERVALUE_CHCHOSTSNOTFOUND = 'InvalidParameterValue.ChcHostsNotFound'
 
@@ -772,6 +775,9 @@ UNSUPPORTEDOPERATION_NOTSUPPORTINSTANCEIMAGE = 'UnsupportedOperation.NotSupportI
 
 # 该操作仅支持预付费账户
 UNSUPPORTEDOPERATION_ONLYFORPREPAIDACCOUNT = 'UnsupportedOperation.OnlyForPrepaidAccount'
+
+# 无效的原机型。
+UNSUPPORTEDOPERATION_ORIGINALINSTANCETYPEINVALID = 'UnsupportedOperation.OriginalInstanceTypeInvalid'
 
 # 当前镜像不支持对该实例的重装操作。
 UNSUPPORTEDOPERATION_RAWLOCALDISKINSREINSTALLTOQCOW2 = 'UnsupportedOperation.RawLocalDiskInsReinstalltoQcow2'

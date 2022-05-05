@@ -3691,9 +3691,9 @@ class ListLogPayloadRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param MinTime: 日志开始时间
+        :param MinTime: 日志开始时间，毫秒级时间戳
         :type MinTime: int
-        :param MaxTime: 日志结束时间
+        :param MaxTime: 日志结束时间，毫秒级时间戳
         :type MaxTime: int
         :param Keywords: 查询关键字，可以同时支持键值查询和文本查询，例如，查询某key的值为value，并且包含某word的日志，该参数为：key:value word。键值或文本可以包含多个，以空格隔开。其中可以索引的key比如：RequestID、ProductID、DeviceName等。
 一个典型的查询示例：ProductID:ABCDE12345 DeviceName:test publish
@@ -3766,9 +3766,9 @@ class ListLogRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param MinTime: 日志开始时间
+        :param MinTime: 日志开始时间，毫秒级时间戳
         :type MinTime: int
-        :param MaxTime: 日志结束时间
+        :param MaxTime: 日志结束时间，毫秒级时间戳
         :type MaxTime: int
         :param Keywords: 查询关键字，可以同时支持键值查询和文本查询，例如，查询某key的值为value，并且包含某word的日志，该参数为：key:value word。键值或文本可以包含多个，以空格隔开。其中可以索引的key包括：requestid、productid、devicename、scene、content。
 一个典型的查询示例：productid:ABCDE12345 devicename:test scene:SHADOW content:Device%20connect publish

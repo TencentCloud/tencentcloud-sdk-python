@@ -3507,7 +3507,7 @@ class CwpClient(AbstractClient):
 
 
     def DescribeProtectNetList(self, request):
-        """专家服务-旗舰护网列表
+        """专家服务-旗舰重保列表
 
         :param request: Request instance for DescribeProtectNetList.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeProtectNetListRequest`

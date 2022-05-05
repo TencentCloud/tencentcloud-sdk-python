@@ -9830,6 +9830,71 @@ class GetBillDownloadUrlResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class GetDistributeBillDownloadUrlRequest(AbstractModel):
+    """GetDistributeBillDownloadUrl请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param OpenId: 收单系统分配的开放ID
+        :type OpenId: str
+        :param OpenKey: 收单系统分配的密钥
+        :type OpenKey: str
+        :param Day: 分账日期（YYYYMMDD，今天传昨天的日期）
+        :type Day: str
+        """
+        self.OpenId = None
+        self.OpenKey = None
+        self.Day = None
+
+
+    def _deserialize(self, params):
+        self.OpenId = params.get("OpenId")
+        self.OpenKey = params.get("OpenKey")
+        self.Day = params.get("Day")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetDistributeBillDownloadUrlResponse(AbstractModel):
+    """GetDistributeBillDownloadUrl返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrCode: 业务系统返回码
+        :type ErrCode: str
+        :param ErrMessage: 业务系统返回消息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrMessage: str
+        :param Result: 账单文件下载地址响应对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.cpdp.v20190820.models.BillDownloadUrlResult`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrCode = None
+        self.ErrMessage = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrCode = params.get("ErrCode")
+        self.ErrMessage = params.get("ErrMessage")
+        if params.get("Result") is not None:
+            self.Result = BillDownloadUrlResult()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
 class MemberTransactionItem(AbstractModel):
     """会员间交易明细信息
 

@@ -181,6 +181,74 @@ class DescribePurgeTasksResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeZonesRequest(AbstractModel):
+    """DescribeZones请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Offset: 分页参数，页偏移
+        :type Offset: int
+        :param Limit: 分页参数，每页返回的站点个数
+        :type Limit: int
+        :param Filters: 查询条件过滤器，复杂类型
+        :type Filters: list of ZoneFilter
+        """
+        self.Offset = None
+        self.Limit = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = ZoneFilter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeZonesResponse(AbstractModel):
+    """DescribeZones返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 符合条件的站点数
+        :type TotalCount: int
+        :param Zones: 站点详细信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Zones: list of Zone
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Zones = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Zones") is not None:
+            self.Zones = []
+            for item in params.get("Zones"):
+                obj = Zone()
+                obj._deserialize(item)
+                self.Zones.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class FailReason(AbstractModel):
     """失败原因
 
@@ -244,6 +312,102 @@ class Task(AbstractModel):
         self.Type = params.get("Type")
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Zone(AbstractModel):
+    """站点信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: 站点ID
+        :type Id: str
+        :param Name: 站点名称
+        :type Name: str
+        :param OriginalNameServers: 站点当前使用的 NS 列表
+        :type OriginalNameServers: list of str
+        :param NameServers: 腾讯云分配的 NS 列表
+        :type NameServers: list of str
+        :param Status: 站点状态
+- active：NS 已切换
+- pending：NS 未切换
+- moved：NS 已切走
+- deactivated：被封禁
+        :type Status: str
+        :param Type: 站点接入方式
+- full：NS 接入
+- partial：CNAME 接入
+        :type Type: str
+        :param Paused: 站点是否关闭
+        :type Paused: bool
+        :param CreatedOn: 站点创建时间
+        :type CreatedOn: str
+        :param ModifiedOn: 站点修改时间
+        :type ModifiedOn: str
+        """
+        self.Id = None
+        self.Name = None
+        self.OriginalNameServers = None
+        self.NameServers = None
+        self.Status = None
+        self.Type = None
+        self.Paused = None
+        self.CreatedOn = None
+        self.ModifiedOn = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.Name = params.get("Name")
+        self.OriginalNameServers = params.get("OriginalNameServers")
+        self.NameServers = params.get("NameServers")
+        self.Status = params.get("Status")
+        self.Type = params.get("Type")
+        self.Paused = params.get("Paused")
+        self.CreatedOn = params.get("CreatedOn")
+        self.ModifiedOn = params.get("ModifiedOn")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ZoneFilter(AbstractModel):
+    """站点查询过滤条件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 过滤字段名，支持的列表如下：
+- name: 站点名。
+- status: 站点状态
+        :type Name: str
+        :param Values: 过滤字段值
+        :type Values: list of str
+        :param Fuzzy: 是否启用模糊查询，仅支持过滤字段名为name。模糊查询时，Values长度最大为1
+        :type Fuzzy: bool
+        """
+        self.Name = None
+        self.Values = None
+        self.Fuzzy = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Values = params.get("Values")
+        self.Fuzzy = params.get("Fuzzy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
