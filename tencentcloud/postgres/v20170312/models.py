@@ -523,7 +523,7 @@ class CreateDBInstancesRequest(AbstractModel):
         :type Zone: str
         :param ProjectId: 项目ID。
         :type ProjectId: int
-        :param DBVersion: PostgreSQL版本。当输入该参数时，会基于此版本创建对应的最新内核版本号实例。
+        :param DBVersion: PostgreSQL版本。当输入该参数时，会基于此版本创建对应的最新内核版本号实例。该参数和DBMajorVersion、DBKernelVersion至少需要传递一个。
         :type DBVersion: str
         :param InstanceChargeType: 实例计费类型。目前支持：PREPAID（预付费，即包年包月），POSTPAID_BY_HOUR（后付费，即按量计费）。
         :type InstanceChargeType: str
@@ -547,9 +547,9 @@ class CreateDBInstancesRequest(AbstractModel):
         :type TagList: list of Tag
         :param SecurityGroupIds: 安全组id
         :type SecurityGroupIds: list of str
-        :param DBMajorVersion: PostgreSQL主要版本。目前支持10，11，12，13这几个版本。当输入该参数时，会基于此版本创建对应的最新内核版本号实例。
+        :param DBMajorVersion: PostgreSQL主要版本。当输入该参数时，会基于此版本创建对应的最新内核版本号实例。该参数和DBVersion、DBKernelVersion至少需要传递一个。
         :type DBMajorVersion: str
-        :param DBKernelVersion: PostgreSQL内核版本。当输入该参数时，会创建该内核版本号实例。
+        :param DBKernelVersion: PostgreSQL内核版本。当输入该参数时，会创建该内核版本号实例。该参数和DBVersion、DBMajorVersion至少需要传递一个。
         :type DBKernelVersion: str
         """
         self.SpecCode = None
@@ -3855,11 +3855,11 @@ class ModifyDBInstanceDeploymentRequest(AbstractModel):
         :type DBInstanceId: str
         :param DBNodeSet: 实例节点信息。
         :type DBNodeSet: list of DBNode
-        :param SwitchTag: 切换时间，默认为 立即切换，入参为 0 ：立即切换 。1：指定时间切换。
+        :param SwitchTag: 切换时间。默认为 立即切换，入参为 0 ：立即切换 。1：指定时间切换。2：维护时间窗口内切换
         :type SwitchTag: int
-        :param SwitchStartTime: 切换开始时间，时间格式：HH:MM:SS，例如：01:00:00。
+        :param SwitchStartTime: 切换开始时间，时间格式：HH:MM:SS，例如：01:00:00。当SwitchTag为0或2时，该参数失效。
         :type SwitchStartTime: str
-        :param SwitchEndTime: 切换截止时间，时间格式：HH:MM:SS，例如：01:30:00。
+        :param SwitchEndTime: 切换截止时间，时间格式：HH:MM:SS，例如：01:30:00。当SwitchTag为0或2时，该参数失效。
         :type SwitchEndTime: str
         """
         self.DBInstanceId = None
@@ -4073,11 +4073,11 @@ class ModifyDBInstanceSpecRequest(AbstractModel):
         :type VoucherIds: list of str
         :param ActivityId: 活动ID。
         :type ActivityId: int
-        :param SwitchTag: 指定实例配置完成变更后的切换时间，默认为 立即切换，入参为 0 ：立即切换 。1：指定时间切换。
+        :param SwitchTag: 指定实例配置完成变更后的切换时间，默认为 立即切换，入参为 0 ：立即切换 。1：指定时间切换。2：维护时间窗口内切换。
         :type SwitchTag: int
-        :param SwitchStartTime: 切换开始时间，时间格式：HH:MM:SS，例如：01:00:00。
+        :param SwitchStartTime: 切换开始时间，时间格式：HH:MM:SS，例如：01:00:00。当SwitchTag为0或2时，该参数失效。
         :type SwitchStartTime: str
-        :param SwitchEndTime: 切换截止时间，时间格式：HH:MM:SS，例如：01:30:00。
+        :param SwitchEndTime: 切换截止时间，时间格式：HH:MM:SS，例如：01:30:00。当SwitchTag为0或2时，该参数失效。
         :type SwitchEndTime: str
         """
         self.DBInstanceId = None

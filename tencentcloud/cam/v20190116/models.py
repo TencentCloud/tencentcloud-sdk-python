@@ -691,6 +691,63 @@ class CreateGroupResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateOIDCConfigRequest(AbstractModel):
+    """CreateOIDCConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IdentityUrl: 身份提供商URL
+        :type IdentityUrl: str
+        :param IdentityKey: 签名公钥，需要base64
+        :type IdentityKey: str
+        :param ClientId: 客户端ID
+        :type ClientId: list of str
+        :param Name: 名称
+        :type Name: str
+        :param Description: 描述
+        :type Description: str
+        """
+        self.IdentityUrl = None
+        self.IdentityKey = None
+        self.ClientId = None
+        self.Name = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.IdentityUrl = params.get("IdentityUrl")
+        self.IdentityKey = params.get("IdentityKey")
+        self.ClientId = params.get("ClientId")
+        self.Name = params.get("Name")
+        self.Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateOIDCConfigResponse(AbstractModel):
+    """CreateOIDCConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CreatePolicyRequest(AbstractModel):
     """CreatePolicy请求参数结构体
 
@@ -1122,6 +1179,47 @@ class DeleteGroupResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteOIDCConfigRequest(AbstractModel):
+    """DeleteOIDCConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: OIDC身份提供商名称
+        :type Name: str
+        """
+        self.Name = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteOIDCConfigResponse(AbstractModel):
+    """DeleteOIDCConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeletePolicyRequest(AbstractModel):
     """DeletePolicy请求参数结构体
 
@@ -1467,6 +1565,75 @@ class DeleteUserResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeOIDCConfigRequest(AbstractModel):
+    """DescribeOIDCConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 名称
+        :type Name: str
+        """
+        self.Name = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeOIDCConfigResponse(AbstractModel):
+    """DescribeOIDCConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProviderType: 身份提供商类型 11角色身份提供商
+        :type ProviderType: int
+        :param IdentityUrl: 身份提供商URL
+        :type IdentityUrl: str
+        :param IdentityKey: 签名公钥
+        :type IdentityKey: str
+        :param ClientId: 客户端id
+        :type ClientId: list of str
+        :param Status: 状态：0:未设置，11:已开启，2:已禁用
+        :type Status: int
+        :param Description: 描述
+        :type Description: str
+        :param Name: 名称
+        :type Name: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ProviderType = None
+        self.IdentityUrl = None
+        self.IdentityKey = None
+        self.ClientId = None
+        self.Status = None
+        self.Description = None
+        self.Name = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ProviderType = params.get("ProviderType")
+        self.IdentityUrl = params.get("IdentityUrl")
+        self.IdentityKey = params.get("IdentityKey")
+        self.ClientId = params.get("ClientId")
+        self.Status = params.get("Status")
+        self.Description = params.get("Description")
+        self.Name = params.get("Name")
         self.RequestId = params.get("RequestId")
 
 
@@ -4861,6 +5028,63 @@ class UpdateGroupRequest(AbstractModel):
 
 class UpdateGroupResponse(AbstractModel):
     """UpdateGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UpdateOIDCConfigRequest(AbstractModel):
+    """UpdateOIDCConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IdentityUrl: 身份提供商URL
+        :type IdentityUrl: str
+        :param IdentityKey: 签名公钥，需要base64
+        :type IdentityKey: str
+        :param ClientId: 客户端ID
+        :type ClientId: list of str
+        :param Name: 名称
+        :type Name: str
+        :param Description: 描述
+        :type Description: str
+        """
+        self.IdentityUrl = None
+        self.IdentityKey = None
+        self.ClientId = None
+        self.Name = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.IdentityUrl = params.get("IdentityUrl")
+        self.IdentityKey = params.get("IdentityKey")
+        self.ClientId = params.get("ClientId")
+        self.Name = params.get("Name")
+        self.Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateOIDCConfigResponse(AbstractModel):
+    """UpdateOIDCConfig返回参数结构体
 
     """
 

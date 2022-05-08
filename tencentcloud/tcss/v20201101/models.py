@@ -8004,6 +8004,22 @@ class DescribeClusterDetailResponse(AbstractModel):
         :type DefenderStatus: str
         :param TaskCreateTime: 扫描任务创建时间
         :type TaskCreateTime: str
+        :param NetworkType: 网络类型.PublicNetwork为公网类型,VPCNetwork为VPC网络
+        :type NetworkType: str
+        :param ApiServerAddress: API Server地址
+        :type ApiServerAddress: str
+        :param NodeCount: 节点数
+        :type NodeCount: int
+        :param NamespaceCount: 命名空间数
+        :type NamespaceCount: int
+        :param WorkloadCount: 工作负载数
+        :type WorkloadCount: int
+        :param PodCount: Pod数量
+        :type PodCount: int
+        :param ServiceCount: Service数量
+        :type ServiceCount: int
+        :param IngressCount: Ingress数量
+        :type IngressCount: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -8023,6 +8039,14 @@ class DescribeClusterDetailResponse(AbstractModel):
         self.CheckStatus = None
         self.DefenderStatus = None
         self.TaskCreateTime = None
+        self.NetworkType = None
+        self.ApiServerAddress = None
+        self.NodeCount = None
+        self.NamespaceCount = None
+        self.WorkloadCount = None
+        self.PodCount = None
+        self.ServiceCount = None
+        self.IngressCount = None
         self.RequestId = None
 
 
@@ -8043,6 +8067,14 @@ class DescribeClusterDetailResponse(AbstractModel):
         self.CheckStatus = params.get("CheckStatus")
         self.DefenderStatus = params.get("DefenderStatus")
         self.TaskCreateTime = params.get("TaskCreateTime")
+        self.NetworkType = params.get("NetworkType")
+        self.ApiServerAddress = params.get("ApiServerAddress")
+        self.NodeCount = params.get("NodeCount")
+        self.NamespaceCount = params.get("NamespaceCount")
+        self.WorkloadCount = params.get("WorkloadCount")
+        self.PodCount = params.get("PodCount")
+        self.ServiceCount = params.get("ServiceCount")
+        self.IngressCount = params.get("IngressCount")
         self.RequestId = params.get("RequestId")
 
 

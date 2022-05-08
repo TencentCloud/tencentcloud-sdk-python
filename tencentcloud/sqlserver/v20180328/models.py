@@ -319,6 +319,8 @@ class Backup(AbstractModel):
         :type BackupName: str
         :param GroupId: 聚合Id，对于打包备份文件不返回此值。通过此值调用DescribeBackupFiles接口，获取单库备份文件的详细信息
         :type GroupId: str
+        :param BackupFormat: 备份文件形式（pkg-打包备份文件，single-单库备份文件）
+        :type BackupFormat: str
         """
         self.FileName = None
         self.Size = None
@@ -333,6 +335,7 @@ class Backup(AbstractModel):
         self.BackupWay = None
         self.BackupName = None
         self.GroupId = None
+        self.BackupFormat = None
 
 
     def _deserialize(self, params):
@@ -349,6 +352,7 @@ class Backup(AbstractModel):
         self.BackupWay = params.get("BackupWay")
         self.BackupName = params.get("BackupName")
         self.GroupId = params.get("GroupId")
+        self.BackupFormat = params.get("BackupFormat")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1563,6 +1567,17 @@ class DBInstance(AbstractModel):
         :param BackupModel: 备份模式，master_pkg-主节点打包备份(默认) ；master_no_pkg-主节点不打包备份；slave_pkg-从节点打包备份(always on集群有效)；slave_no_pkg-从节点不打包备份(always on集群有效)；只读副本对该值无效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type BackupModel: str
+        :param InstanceNote: 实例备份信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceNote: str
+        :param BackupCycle: 备份周期
+        :type BackupCycle: list of int
+        :param BackupCycleType: 备份周期类型，[daily、weekly、monthly]
+        :type BackupCycleType: str
+        :param BackupSaveDays: 数据(日志)备份保留时间
+        :type BackupSaveDays: int
+        :param InstanceType: 实例类型 HA-高可用 RO-只读实例 SI-基础版 BI-商业智能服务
+        :type InstanceType: str
         """
         self.InstanceId = None
         self.Name = None
@@ -1602,6 +1617,11 @@ class DBInstance(AbstractModel):
         self.HAFlag = None
         self.ResourceTags = None
         self.BackupModel = None
+        self.InstanceNote = None
+        self.BackupCycle = None
+        self.BackupCycleType = None
+        self.BackupSaveDays = None
+        self.InstanceType = None
 
 
     def _deserialize(self, params):
@@ -1648,6 +1668,11 @@ class DBInstance(AbstractModel):
                 obj._deserialize(item)
                 self.ResourceTags.append(obj)
         self.BackupModel = params.get("BackupModel")
+        self.InstanceNote = params.get("InstanceNote")
+        self.BackupCycle = params.get("BackupCycle")
+        self.BackupCycleType = params.get("BackupCycleType")
+        self.BackupSaveDays = params.get("BackupSaveDays")
+        self.InstanceType = params.get("InstanceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2534,12 +2559,15 @@ class DescribeBackupFilesRequest(AbstractModel):
         :type Offset: int
         :param DatabaseName: 按照备份的库名称筛选，不填则不筛选此项
         :type DatabaseName: str
+        :param OrderBy: 列表项排序，目前只按照备份大小排序（desc-降序，asc-升序），默认desc
+        :type OrderBy: str
         """
         self.InstanceId = None
         self.GroupId = None
         self.Limit = None
         self.Offset = None
         self.DatabaseName = None
+        self.OrderBy = None
 
 
     def _deserialize(self, params):
@@ -2548,6 +2576,7 @@ class DescribeBackupFilesRequest(AbstractModel):
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
         self.DatabaseName = params.get("DatabaseName")
+        self.OrderBy = params.get("OrderBy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2768,6 +2797,10 @@ class DescribeBackupsRequest(AbstractModel):
         :type DatabaseName: str
         :param Group: 是否分组查询，默认是0，单库备份情况下 0-兼容老方式不分组，1-单库备份分组后展示
         :type Group: int
+        :param Type: 备份类型，1-数据备份，2-日志备份，默认值为1
+        :type Type: int
+        :param BackupFormat: 按照备份文件形式筛选，pkg-打包备份文件，single-单库备份文件
+        :type BackupFormat: str
         """
         self.StartTime = None
         self.EndTime = None
@@ -2780,6 +2813,8 @@ class DescribeBackupsRequest(AbstractModel):
         self.BackupId = None
         self.DatabaseName = None
         self.Group = None
+        self.Type = None
+        self.BackupFormat = None
 
 
     def _deserialize(self, params):
@@ -2794,6 +2829,8 @@ class DescribeBackupsRequest(AbstractModel):
         self.BackupId = params.get("BackupId")
         self.DatabaseName = params.get("DatabaseName")
         self.Group = params.get("Group")
+        self.Type = params.get("Type")
+        self.BackupFormat = params.get("BackupFormat")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2976,6 +3013,8 @@ class DescribeDBInstancesRequest(AbstractModel):
         :type SearchKey: str
         :param UidSet: 实例唯一Uid列表
         :type UidSet: list of str
+        :param InstanceType: 实例类型 HA-高可用 RO-只读实例 SI-基础版 BI-商业智能服务
+        :type InstanceType: str
         """
         self.ProjectId = None
         self.Status = None
@@ -2992,6 +3031,7 @@ class DescribeDBInstancesRequest(AbstractModel):
         self.TagKeys = None
         self.SearchKey = None
         self.UidSet = None
+        self.InstanceType = None
 
 
     def _deserialize(self, params):
@@ -3010,6 +3050,7 @@ class DescribeDBInstancesRequest(AbstractModel):
         self.TagKeys = params.get("TagKeys")
         self.SearchKey = params.get("SearchKey")
         self.UidSet = params.get("UidSet")
+        self.InstanceType = params.get("InstanceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5554,7 +5595,7 @@ class ModifyBackupStrategyRequest(AbstractModel):
         r"""
         :param InstanceId: 实例ID
         :type InstanceId: str
-        :param BackupType: 备份类型，当前只支持按天备份，取值为daily
+        :param BackupType: 备份类型，当length(BackupDay) <=7 && length(BackupDay) >=2时，取值为weekly，当length(BackupDay)=1时，取值daily，默认daily
         :type BackupType: str
         :param BackupTime: 备份时间点，取值为0-23的整数
         :type BackupTime: int
@@ -5562,12 +5603,18 @@ class ModifyBackupStrategyRequest(AbstractModel):
         :type BackupDay: int
         :param BackupModel: 备份模式，master_pkg-主节点上打包备份文件；master_no_pkg-主节点单库备份文件；slave_pkg-从节点上打包备份文件；slave_no_pkg-从节点上单库备份文件，从节点上备份只有在always on容灾模式下支持。
         :type BackupModel: str
+        :param BackupCycle: BackupType取值为weekly时，表示每周的星期N做备份。（如果数据备份保留时间<7天，则取值[1,2,3,4,5,6,7]。如果数据备份保留时间>=7天，则备份周期取值至少是一周的任意2天）
+        :type BackupCycle: list of int non-negative
+        :param BackupSaveDays: 数据(日志)备份保留时间，取值[3-1830]天，默认7天
+        :type BackupSaveDays: int
         """
         self.InstanceId = None
         self.BackupType = None
         self.BackupTime = None
         self.BackupDay = None
         self.BackupModel = None
+        self.BackupCycle = None
+        self.BackupSaveDays = None
 
 
     def _deserialize(self, params):
@@ -5576,6 +5623,8 @@ class ModifyBackupStrategyRequest(AbstractModel):
         self.BackupTime = params.get("BackupTime")
         self.BackupDay = params.get("BackupDay")
         self.BackupModel = params.get("BackupModel")
+        self.BackupCycle = params.get("BackupCycle")
+        self.BackupSaveDays = params.get("BackupSaveDays")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

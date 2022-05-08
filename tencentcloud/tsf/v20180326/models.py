@@ -8712,6 +8712,61 @@ class DescribePodInstancesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeProgramsRequest(AbstractModel):
+    """DescribePrograms请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SearchWord: 模糊查询数据集ID，数据集名称，不传入时查询全量
+        :type SearchWord: str
+        :param Limit: 每页数量
+        :type Limit: int
+        :param Offset: 起始偏移量
+        :type Offset: int
+        """
+        self.SearchWord = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.SearchWord = params.get("SearchWord")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeProgramsResponse(AbstractModel):
+    """DescribePrograms返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 数据集列表
+        :type Result: :class:`tencentcloud.tsf.v20180326.models.PagedProgram`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = PagedProgram()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribePublicConfigReleaseLogsRequest(AbstractModel):
     """DescribePublicConfigReleaseLogs请求参数结构体
 
@@ -14584,6 +14639,39 @@ class OverviewBasicResourceUsage(AbstractModel):
         
 
 
+class PagedProgram(AbstractModel):
+    """tsf-privilege模块，分页数据集列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 总条数
+        :type TotalCount: int
+        :param Content: 数据集列表
+        :type Content: list of Program
+        """
+        self.TotalCount = None
+        self.Content = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Content") is not None:
+            self.Content = []
+            for item in params.get("Content"):
+                obj = Program()
+                obj._deserialize(item)
+                self.Content.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PathRewrite(AbstractModel):
     """路径重写
 
@@ -14869,6 +14957,128 @@ class Ports(AbstractModel):
     def _deserialize(self, params):
         self.TargetPort = params.get("TargetPort")
         self.Protocol = params.get("Protocol")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Program(AbstractModel):
+    """tsf-privilege模块 Program数据集
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProgramId: 数据集ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProgramId: str
+        :param ProgramName: 数据集名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProgramName: str
+        :param ProgramDesc: 数据集描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProgramDesc: str
+        :param DeleteFlag: 删除标识，true: 可以删除; false: 不可删除
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeleteFlag: bool
+        :param CreationTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreationTime: int
+        :param LastUpdateTime: 最后更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastUpdateTime: int
+        :param ProgramItemList: 数据项列表，无值时返回空数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProgramItemList: list of ProgramItem
+        """
+        self.ProgramId = None
+        self.ProgramName = None
+        self.ProgramDesc = None
+        self.DeleteFlag = None
+        self.CreationTime = None
+        self.LastUpdateTime = None
+        self.ProgramItemList = None
+
+
+    def _deserialize(self, params):
+        self.ProgramId = params.get("ProgramId")
+        self.ProgramName = params.get("ProgramName")
+        self.ProgramDesc = params.get("ProgramDesc")
+        self.DeleteFlag = params.get("DeleteFlag")
+        self.CreationTime = params.get("CreationTime")
+        self.LastUpdateTime = params.get("LastUpdateTime")
+        if params.get("ProgramItemList") is not None:
+            self.ProgramItemList = []
+            for item in params.get("ProgramItemList"):
+                obj = ProgramItem()
+                obj._deserialize(item)
+                self.ProgramItemList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProgramItem(AbstractModel):
+    """tsf-privilege模块，数据项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProgramItemId: 数据项ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProgramItemId: str
+        :param Resource: 资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Resource: :class:`tencentcloud.tsf.v20180326.models.Resource`
+        :param ValueList: 数据值列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ValueList: list of str
+        :param IsAll: 全选标识，true: 全选；false: 非全选
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsAll: bool
+        :param CreationTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreationTime: int
+        :param LastUpdateTime: 最后更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastUpdateTime: int
+        :param DeleteFlag: 删除标识，true: 可删除；false: 不可删除
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeleteFlag: bool
+        :param ProgramId: 数据集ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProgramId: str
+        """
+        self.ProgramItemId = None
+        self.Resource = None
+        self.ValueList = None
+        self.IsAll = None
+        self.CreationTime = None
+        self.LastUpdateTime = None
+        self.DeleteFlag = None
+        self.ProgramId = None
+
+
+    def _deserialize(self, params):
+        self.ProgramItemId = params.get("ProgramItemId")
+        if params.get("Resource") is not None:
+            self.Resource = Resource()
+            self.Resource._deserialize(params.get("Resource"))
+        self.ValueList = params.get("ValueList")
+        self.IsAll = params.get("IsAll")
+        self.CreationTime = params.get("CreationTime")
+        self.LastUpdateTime = params.get("LastUpdateTime")
+        self.DeleteFlag = params.get("DeleteFlag")
+        self.ProgramId = params.get("ProgramId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -15525,6 +15735,101 @@ class RepositoryList(AbstractModel):
                 obj = RepositoryInfo()
                 obj._deserialize(item)
                 self.Content.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Resource(AbstractModel):
+    """tsf-privilege 模块，资源
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ResourceId: 资源ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceId: str
+        :param ResourceCode: 资源编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceCode: str
+        :param ResourceName: 资源名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceName: str
+        :param ServiceCode: 资源所属产品编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceCode: str
+        :param ResourceAction: 选取资源使用的Action
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceAction: str
+        :param IdField: 资源数据查询的ID字段名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IdField: str
+        :param NameField: 资源数据查询的名称字段名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NameField: str
+        :param SelectIdsField: 资源数据查询的ID过滤字段名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SelectIdsField: str
+        :param CreationTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreationTime: int
+        :param LastUpdateTime: 最后更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastUpdateTime: int
+        :param DeleteFlag: 删除标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeleteFlag: bool
+        :param ResourceDesc: 资源描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceDesc: str
+        :param CanSelectAll: 是否可以选择全部
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CanSelectAll: bool
+        :param SearchWordField: 资源数据查询的模糊查询字段名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SearchWordField: str
+        :param Index: 排序
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Index: int
+        """
+        self.ResourceId = None
+        self.ResourceCode = None
+        self.ResourceName = None
+        self.ServiceCode = None
+        self.ResourceAction = None
+        self.IdField = None
+        self.NameField = None
+        self.SelectIdsField = None
+        self.CreationTime = None
+        self.LastUpdateTime = None
+        self.DeleteFlag = None
+        self.ResourceDesc = None
+        self.CanSelectAll = None
+        self.SearchWordField = None
+        self.Index = None
+
+
+    def _deserialize(self, params):
+        self.ResourceId = params.get("ResourceId")
+        self.ResourceCode = params.get("ResourceCode")
+        self.ResourceName = params.get("ResourceName")
+        self.ServiceCode = params.get("ServiceCode")
+        self.ResourceAction = params.get("ResourceAction")
+        self.IdField = params.get("IdField")
+        self.NameField = params.get("NameField")
+        self.SelectIdsField = params.get("SelectIdsField")
+        self.CreationTime = params.get("CreationTime")
+        self.LastUpdateTime = params.get("LastUpdateTime")
+        self.DeleteFlag = params.get("DeleteFlag")
+        self.ResourceDesc = params.get("ResourceDesc")
+        self.CanSelectAll = params.get("CanSelectAll")
+        self.SearchWordField = params.get("SearchWordField")
+        self.Index = params.get("Index")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

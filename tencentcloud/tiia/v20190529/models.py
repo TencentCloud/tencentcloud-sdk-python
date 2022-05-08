@@ -1384,9 +1384,10 @@ class GroupInfo(AbstractModel):
         :type MaxCapacity: int
         :param MaxQps: 该库的访问限频 。
         :type MaxQps: int
-        :param GroupType: 图库类型： 
-1: 通用图库，以用户输入图提取特征。
-2: 灰度图库，输入图和搜索图均转为灰度图提取特征。
+        :param GroupType: 图库类型，对应不同产品功能，默认为1。建议调整为4或5，1~3为历史版本，不推荐。
+参数值：
+4：相同图像搜索，在自建图库中搜索相同原图，可支持裁剪、翻转、调色、加水印后的图片搜索，适用于版权场景。
+5：商品图像搜索，在自建图库中搜索相同或相似的商品图片，适用于电商场景。
         :type GroupType: int
         :param PicCount: 图库图片数量。
         :type PicCount: int

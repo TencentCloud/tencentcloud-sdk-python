@@ -1199,7 +1199,7 @@ class UploadFilesRequest(AbstractModel):
         :param Caller: 调用方信息
         :type Caller: :class:`tencentcloud.ess.v20201111.models.Caller`
         :param BusinessType: 文件对应业务类型，用于区分文件存储路径：
-1. TEMPLATE - 模版； 文件类型：.pdf/.html
+1. TEMPLATE - 模板； 文件类型：.pdf/.html
 2. DOCUMENT - 签署过程及签署后的合同文档 文件类型：.pdf/.html
 3. FLOW - 签署过程 文件类型：.pdf/.html
 4. SEAL - 印章； 文件类型：.jpg/.jpeg/.png

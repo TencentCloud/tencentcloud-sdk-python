@@ -26,6 +26,35 @@ class TeoClient(AbstractClient):
     _service = 'teo'
 
 
+    def CreatePrefetchTask(self, request):
+        """创建预热任务
+
+        :param request: Request instance for CreatePrefetchTask.
+        :type request: :class:`tencentcloud.teo.v20220106.models.CreatePrefetchTaskRequest`
+        :rtype: :class:`tencentcloud.teo.v20220106.models.CreatePrefetchTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreatePrefetchTask", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreatePrefetchTaskResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreatePurgeTask(self, request):
         """创建清除缓存任务
 
@@ -41,6 +70,35 @@ class TeoClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreatePurgeTaskResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribePrefetchTasks(self, request):
+        """查询预热任务状态
+
+        :param request: Request instance for DescribePrefetchTasks.
+        :type request: :class:`tencentcloud.teo.v20220106.models.DescribePrefetchTasksRequest`
+        :rtype: :class:`tencentcloud.teo.v20220106.models.DescribePrefetchTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePrefetchTasks", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePrefetchTasksResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

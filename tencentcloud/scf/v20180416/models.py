@@ -3557,15 +3557,19 @@ class NamespaceUsage(AbstractModel):
         :param TotalConcurrencyMem: 命名空间配额总量
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalConcurrencyMem: int
-        :param TotalAllocatedConcurrencyMem: 命名空间配额使用量
+        :param TotalAllocatedConcurrencyMem: 命名空间并发使用量
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalAllocatedConcurrencyMem: int
+        :param TotalAllocatedProvisionedMem: 命名空间预置使用量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalAllocatedProvisionedMem: int
         """
         self.Functions = None
         self.Namespace = None
         self.FunctionsCount = None
         self.TotalConcurrencyMem = None
         self.TotalAllocatedConcurrencyMem = None
+        self.TotalAllocatedProvisionedMem = None
 
 
     def _deserialize(self, params):
@@ -3574,6 +3578,7 @@ class NamespaceUsage(AbstractModel):
         self.FunctionsCount = params.get("FunctionsCount")
         self.TotalConcurrencyMem = params.get("TotalConcurrencyMem")
         self.TotalAllocatedConcurrencyMem = params.get("TotalAllocatedConcurrencyMem")
+        self.TotalAllocatedProvisionedMem = params.get("TotalAllocatedProvisionedMem")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

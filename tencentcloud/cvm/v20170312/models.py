@@ -3007,6 +3007,75 @@ class EnhancedService(AbstractModel):
         
 
 
+class ExportImagesRequest(AbstractModel):
+    """ExportImages请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BucketName: COS存储桶名称
+        :type BucketName: str
+        :param ImageIds: 镜像ID列表
+        :type ImageIds: list of str
+        :param ExportFormat: 镜像文件导出格式。取值范围：RAW，QCOW2，VHD，VMDK。默认为RAW
+        :type ExportFormat: str
+        :param FileNamePrefixList: 导出文件的名称前缀列表
+        :type FileNamePrefixList: list of str
+        :param OnlyExportRootDisk: 是否只导出系统盘
+        :type OnlyExportRootDisk: bool
+        :param DryRun: 检测镜像是否支持导出
+        :type DryRun: bool
+        :param RoleName: 角色名称。默认为CVM_QcsRole，发起请求前请确认是否存在该角色，以及是否已正确配置COS写入权限。
+        :type RoleName: str
+        """
+        self.BucketName = None
+        self.ImageIds = None
+        self.ExportFormat = None
+        self.FileNamePrefixList = None
+        self.OnlyExportRootDisk = None
+        self.DryRun = None
+        self.RoleName = None
+
+
+    def _deserialize(self, params):
+        self.BucketName = params.get("BucketName")
+        self.ImageIds = params.get("ImageIds")
+        self.ExportFormat = params.get("ExportFormat")
+        self.FileNamePrefixList = params.get("FileNamePrefixList")
+        self.OnlyExportRootDisk = params.get("OnlyExportRootDisk")
+        self.DryRun = params.get("DryRun")
+        self.RoleName = params.get("RoleName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExportImagesResponse(AbstractModel):
+    """ExportImages返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 导出镜像任务ID
+        :type TaskId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
 class Externals(AbstractModel):
     """扩展数据
 

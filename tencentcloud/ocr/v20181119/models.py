@@ -5754,7 +5754,7 @@ class SmartStructuralOCRRequest(AbstractModel):
 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
         :type ImageBase64: str
-        :param ItemNames: 需返回的字段名称，例：
+        :param ItemNames: 自定义结构化功能需返回的字段名称，例：
 若客户只想返回姓名、性别两个字段的识别结果，则输入
 ItemNames=["姓名","性别"]
         :type ItemNames: list of str

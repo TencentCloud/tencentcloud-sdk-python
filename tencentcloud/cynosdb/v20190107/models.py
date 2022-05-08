@@ -3093,7 +3093,7 @@ class ModifyClusterParamRequest(AbstractModel):
         r"""
         :param ClusterId: 集群ID
         :type ClusterId: str
-        :param ParamList: 修改参数列表
+        :param ParamList: 要修改的参数列表。每一个元素是ParamName、CurrentValue和OldValue的组合。ParamName是参数名称，CurrentValue是当前值，OldValue是之前值
         :type ParamList: list of ParamItem
         :param IsInMaintainPeriod: 维护期间执行-yes,立即执行-no
         :type IsInMaintainPeriod: str

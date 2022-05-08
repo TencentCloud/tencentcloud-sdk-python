@@ -229,6 +229,35 @@ class CamClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateOIDCConfig(self, request):
+        """创建角色OIDC配置
+
+        :param request: Request instance for CreateOIDCConfig.
+        :type request: :class:`tencentcloud.cam.v20190116.models.CreateOIDCConfigRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.CreateOIDCConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateOIDCConfig", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateOIDCConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreatePolicy(self, request):
         """本接口（CreatePolicy）可用于创建策略。
 
@@ -461,6 +490,35 @@ class CamClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteOIDCConfig(self, request):
+        """删除OIDC身份提供商
+
+        :param request: Request instance for DeleteOIDCConfig.
+        :type request: :class:`tencentcloud.cam.v20190116.models.DeleteOIDCConfigRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.DeleteOIDCConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteOIDCConfig", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteOIDCConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeletePolicy(self, request):
         """本接口（DeletePolicy）可用于删除策略。
 
@@ -679,6 +737,35 @@ class CamClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteUserPermissionsBoundaryResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeOIDCConfig(self, request):
+        """查询角色OIDC配置
+
+        :param request: Request instance for DescribeOIDCConfig.
+        :type request: :class:`tencentcloud.cam.v20190116.models.DescribeOIDCConfigRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.DescribeOIDCConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeOIDCConfig", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeOIDCConfigResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -2042,6 +2129,35 @@ class CamClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateGroupResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateOIDCConfig(self, request):
+        """修改角色OIDC配置
+
+        :param request: Request instance for UpdateOIDCConfig.
+        :type request: :class:`tencentcloud.cam.v20190116.models.UpdateOIDCConfigRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.UpdateOIDCConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateOIDCConfig", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateOIDCConfigResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

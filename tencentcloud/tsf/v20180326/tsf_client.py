@@ -3015,6 +3015,35 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribePrograms(self, request):
+        """查询数据集列表
+
+        :param request: Request instance for DescribePrograms.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeProgramsRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeProgramsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePrograms", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeProgramsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribePublicConfig(self, request):
         """查询公共配置（单条）
 

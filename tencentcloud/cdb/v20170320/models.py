@@ -1853,6 +1853,8 @@ class CreateDBInstanceHourRequest(AbstractModel):
         :type AlarmPolicyIdList: list of str
         :param DryRun: 是否只预检此次请求。true：发送检查请求，不会创建实例。检查项包括是否填写了必需参数，请求格式，业务限制等。如果检查不通过，则返回对应错误码；如果检查通过，则返回RequestId.默认为false：发送正常请求，通过检查后直接创建实例。
         :type DryRun: bool
+        :param EngineType: 实例引擎类型，默认为"InnoDB"，支持值包括："InnoDB"，"RocksDB"。
+        :type EngineType: str
         :param Vips: 指定实例的IP列表。仅支持主实例指定，按实例顺序，不足则按未指定处理。
         :type Vips: list of str
         """
@@ -1891,6 +1893,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
         self.ParamTemplateType = None
         self.AlarmPolicyIdList = None
         self.DryRun = None
+        self.EngineType = None
         self.Vips = None
 
 
@@ -1942,6 +1945,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
         self.ParamTemplateType = params.get("ParamTemplateType")
         self.AlarmPolicyIdList = params.get("AlarmPolicyIdList")
         self.DryRun = params.get("DryRun")
+        self.EngineType = params.get("EngineType")
         self.Vips = params.get("Vips")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -2056,6 +2060,8 @@ class CreateDBInstanceRequest(AbstractModel):
         :type AlarmPolicyIdList: list of str
         :param DryRun: 是否只预检此次请求。true：发送检查请求，不会创建实例。检查项包括是否填写了必需参数，请求格式，业务限制等。如果检查不通过，则返回对应错误码；如果检查通过，则返回RequestId.默认为false：发送正常请求，通过检查后直接创建实例。
         :type DryRun: bool
+        :param EngineType: 实例引擎类型，默认为"InnoDB"，支持值包括："InnoDB"，"RocksDB"。
+        :type EngineType: str
         :param Vips: 指定实例的IP列表。仅支持主实例指定，按实例顺序，不足则按未指定处理。
         :type Vips: list of str
         """
@@ -2095,6 +2101,7 @@ class CreateDBInstanceRequest(AbstractModel):
         self.ParamTemplateType = None
         self.AlarmPolicyIdList = None
         self.DryRun = None
+        self.EngineType = None
         self.Vips = None
 
 
@@ -2147,6 +2154,7 @@ class CreateDBInstanceRequest(AbstractModel):
         self.ParamTemplateType = params.get("ParamTemplateType")
         self.AlarmPolicyIdList = params.get("AlarmPolicyIdList")
         self.DryRun = params.get("DryRun")
+        self.EngineType = params.get("EngineType")
         self.Vips = params.get("Vips")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
