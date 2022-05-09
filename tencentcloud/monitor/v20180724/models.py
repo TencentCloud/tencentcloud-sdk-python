@@ -408,6 +408,12 @@ class AlarmPolicy(AbstractModel):
         :param FilterDimensionsParam: 策略关联的过滤维度信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type FilterDimensionsParam: str
+        :param IsOneClick: 是否为一键告警策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsOneClick: int
+        :param OneClickStatus: 一键告警策略是否开启
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OneClickStatus: int
         """
         self.PolicyId = None
         self.PolicyName = None
@@ -439,6 +445,8 @@ class AlarmPolicy(AbstractModel):
         self.OriginId = None
         self.TagInstances = None
         self.FilterDimensionsParam = None
+        self.IsOneClick = None
+        self.OneClickStatus = None
 
 
     def _deserialize(self, params):
@@ -493,6 +501,8 @@ class AlarmPolicy(AbstractModel):
                 obj._deserialize(item)
                 self.TagInstances.append(obj)
         self.FilterDimensionsParam = params.get("FilterDimensionsParam")
+        self.IsOneClick = params.get("IsOneClick")
+        self.OneClickStatus = params.get("OneClickStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

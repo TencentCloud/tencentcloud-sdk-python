@@ -6474,7 +6474,7 @@ class ModifyCCPrecisionPolicyRequest(AbstractModel):
         :type InstanceId: str
         :param PolicyId: 策略Id
         :type PolicyId: str
-        :param PolicyAction: 策略方式，可取值alg表示验证码，drop表示丢弃
+        :param PolicyAction: 策略方式。可取值：alg、drop。alg指返回验证码方式验证，drop表示该访问丢弃。
         :type PolicyAction: str
         :param PolicyList: 策略记录
         :type PolicyList: list of CCPrecisionPlyRecord

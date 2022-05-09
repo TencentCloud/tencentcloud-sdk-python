@@ -60,10 +60,11 @@ class TiiaClient(AbstractClient):
     def CreateGroup(self, request):
         """用于创建一个空的图片库，如果图片库已存在则返回错误。不同类型图库对应不同的图像搜索服务，根据输入参数GroupType区分。
 
-        | 服务类型 |  功能描述 |
-        |  :------  | :-----------------  |
-        | 相同图像搜索<img width=30/>    | 在自建图库中搜索相同原图，可支持裁剪、翻转、调色、加水印后的图片搜索，适用于版权场景。|
-        | 商品图像搜索<img width=30/>   | 在自建图库中搜索相同或相似的商品图片，适用于电商场景。|
+        | 服务类型 | GroupType参数值 |功能描述 |
+        |  :------  | :----- |:-----------------  |
+        | 相同图像搜索<img width=30/>    | 4 |在自建图库中搜索相同原图，可支持裁剪、翻转、调色、加水印后的图片搜索，适用于图片版权保护、原图查询等场景。|
+        | 商品图像搜索<img width=30/>   | 5 |在自建图库中搜索相同或相似的商品图片，适用于商品分类、检索、推荐等电商场景。|
+        | 相似图像搜索<img width=30/>   | 6 |在自建图片库中搜索与输入图片高度相似的图片，适用于相似图案、logo、纹理等图像元素的搜索。|
 
         :param request: Request instance for CreateGroup.
         :type request: :class:`tencentcloud.tiia.v20190529.models.CreateGroupRequest`

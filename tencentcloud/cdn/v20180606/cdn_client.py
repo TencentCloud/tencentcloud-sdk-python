@@ -1014,7 +1014,6 @@ class CdnClient(AbstractClient):
 
     def DescribePushTasks(self, request):
         """DescribePushTasks  用于查询预热任务提交历史记录及执行进度。
-        接口灰度中，暂未全量开放，敬请期待。
 
         :param request: Request instance for DescribePushTasks.
         :type request: :class:`tencentcloud.cdn.v20180606.models.DescribePushTasksRequest`

@@ -10301,7 +10301,8 @@ ftp：历史 FTP 托管源源站，现已不维护
 IPv6 功能目前尚未全量，需要先申请试用
 注意：此字段可能返回 null，表示取不到有效值。
         :type OriginType: str
-        :param ServerName: 回主源站时 Host 头部，不填充则默认为加速域名
+        :param ServerName: 当源站类型为cos或者第三方存储加速时,ServerName字段必填
+回主源站时 Host 头部，不填充则默认为加速域名
 若接入的是泛域名，则回源 Host 默认为访问时的子域名
 注意：此字段可能返回 null，表示取不到有效值。
         :type ServerName: str

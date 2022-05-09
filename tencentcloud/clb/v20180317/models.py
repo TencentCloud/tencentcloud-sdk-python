@@ -4413,6 +4413,9 @@ class HealthCheck(AbstractModel):
         :param SourceIpType: 自定义探测相关参数。健康检查源IP类型：0（使用LB的VIP作为源IP），1（使用100.64网段IP作为源IP），默认值：0
 注意：此字段可能返回 null，表示取不到有效值。
         :type SourceIpType: int
+        :param ExtendedCode: GRPC健康检查状态码（仅适用于后端转发协议为GRPC的规则）。默认值为 12，可输入值为数值、多个数值、或者范围，例如 20 或 20,25 或 0-99
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExtendedCode: str
         """
         self.HealthSwitch = None
         self.TimeOut = None
@@ -4430,6 +4433,7 @@ class HealthCheck(AbstractModel):
         self.CheckType = None
         self.HttpVersion = None
         self.SourceIpType = None
+        self.ExtendedCode = None
 
 
     def _deserialize(self, params):
@@ -4449,6 +4453,7 @@ class HealthCheck(AbstractModel):
         self.CheckType = params.get("CheckType")
         self.HttpVersion = params.get("HttpVersion")
         self.SourceIpType = params.get("SourceIpType")
+        self.ExtendedCode = params.get("ExtendedCode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
