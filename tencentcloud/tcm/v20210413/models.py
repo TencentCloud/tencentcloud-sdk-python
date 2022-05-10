@@ -1233,6 +1233,9 @@ class PrometheusStatus(AbstractModel):
         :param Grafana: Grafana信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Grafana: :class:`tencentcloud.tcm.v20210413.models.GrafanaInfo`
+        :param Type: Prometheus 类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
         """
         self.PrometheusId = None
         self.DisplayName = None
@@ -1241,6 +1244,7 @@ class PrometheusStatus(AbstractModel):
         self.State = None
         self.Region = None
         self.Grafana = None
+        self.Type = None
 
 
     def _deserialize(self, params):
@@ -1253,6 +1257,7 @@ class PrometheusStatus(AbstractModel):
         if params.get("Grafana") is not None:
             self.Grafana = GrafanaInfo()
             self.Grafana._deserialize(params.get("Grafana"))
+        self.Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

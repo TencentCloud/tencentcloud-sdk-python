@@ -327,7 +327,7 @@ class CreateSubscribeRequest(AbstractModel):
         :type Duration: int
         :param Count: 购买数量,默认为1，最大为10
         :type Count: int
-        :param AutoRenew: 是否自动续费，默认为0，1表示自动续费。小时计费实例设置该标识无效。
+        :param AutoRenew: 是否自动续费，0表示不自动续费，1表示自动续费，默认为0。小时计费实例设置该标识无效。
         :type AutoRenew: int
         :param Tags: 实例资源标签
         :type Tags: list of TagItem
@@ -851,9 +851,9 @@ class DescribeSubscribesRequest(AbstractModel):
         :type Status: list of str
         :param SubsStatus: 数据订阅实例的配置状态，unconfigure - 未配置， configuring - 配置中，configured - 已配置
         :type SubsStatus: list of str
-        :param Offset: 返回记录的起始偏移量
+        :param Offset: 返回记录的起始偏移量，默认为0。请输入非负整数
         :type Offset: int
-        :param Limit: 单次返回的记录数量
+        :param Limit: 单次返回的记录数量，默认20。请输入1到100的整数
         :type Limit: int
         :param OrderDirection: 排序方向，可选的值为"DESC"和"ASC"，默认为"DESC"，按创建时间逆序排序
         :type OrderDirection: str

@@ -47,6 +47,11 @@ class AIAnalysisTemplateItem(AbstractModel):
         :type CreateTime: str
         :param UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
         :type UpdateTime: str
+        :param Type: 模板类型，取值范围：
+* Preset：系统预置模板；
+* Custom：用户自定义模板。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
         """
         self.Definition = None
         self.Name = None
@@ -57,6 +62,7 @@ class AIAnalysisTemplateItem(AbstractModel):
         self.FrameTagConfigure = None
         self.CreateTime = None
         self.UpdateTime = None
+        self.Type = None
 
 
     def _deserialize(self, params):
@@ -77,6 +83,7 @@ class AIAnalysisTemplateItem(AbstractModel):
             self.FrameTagConfigure._deserialize(params.get("FrameTagConfigure"))
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
+        self.Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -113,6 +120,11 @@ class AIRecognitionTemplateItem(AbstractModel):
         :type CreateTime: str
         :param UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
         :type UpdateTime: str
+        :param Type: 模板类型，取值范围：
+* Preset：系统预置模板；
+* Custom：用户自定义模板。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
         """
         self.Definition = None
         self.Name = None
@@ -124,6 +136,7 @@ class AIRecognitionTemplateItem(AbstractModel):
         self.AsrWordsConfigure = None
         self.CreateTime = None
         self.UpdateTime = None
+        self.Type = None
 
 
     def _deserialize(self, params):
@@ -147,6 +160,7 @@ class AIRecognitionTemplateItem(AbstractModel):
             self.AsrWordsConfigure._deserialize(params.get("AsrWordsConfigure"))
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
+        self.Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3817,6 +3831,11 @@ class ContentReviewTemplateItem(AbstractModel):
         :type CreateTime: str
         :param UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
         :type UpdateTime: str
+        :param Type: 模板类型，取值范围：
+* Preset：系统预置模板；
+* Custom：用户自定义模板。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
         """
         self.Definition = None
         self.Name = None
@@ -3828,6 +3847,7 @@ class ContentReviewTemplateItem(AbstractModel):
         self.UserDefineConfigure = None
         self.CreateTime = None
         self.UpdateTime = None
+        self.Type = None
 
 
     def _deserialize(self, params):
@@ -3851,6 +3871,7 @@ class ContentReviewTemplateItem(AbstractModel):
             self.UserDefineConfigure._deserialize(params.get("UserDefineConfigure"))
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
+        self.Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5657,16 +5678,22 @@ class DescribeAIAnalysisTemplatesRequest(AbstractModel):
         :type Offset: int
         :param Limit: 返回记录条数，默认值：10，最大值：100。
         :type Limit: int
+        :param Type: 模板类型过滤条件，不填则返回所有，可选值：
+* Preset：系统预置模板；
+* Custom：用户自定义模板。
+        :type Type: str
         """
         self.Definitions = None
         self.Offset = None
         self.Limit = None
+        self.Type = None
 
 
     def _deserialize(self, params):
         self.Definitions = params.get("Definitions")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5719,16 +5746,22 @@ class DescribeAIRecognitionTemplatesRequest(AbstractModel):
         :type Offset: int
         :param Limit: 返回记录条数，默认值：10，最大值：50。
         :type Limit: int
+        :param Type: 模板类型过滤条件，不填则返回所有，可选值：
+* Preset：系统预置模板；
+* Custom：用户自定义模板。
+        :type Type: str
         """
         self.Definitions = None
         self.Offset = None
         self.Limit = None
+        self.Type = None
 
 
     def _deserialize(self, params):
         self.Definitions = params.get("Definitions")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5917,16 +5950,22 @@ class DescribeContentReviewTemplatesRequest(AbstractModel):
         :type Offset: int
         :param Limit: 返回记录条数，默认值：10，最大值：50。
         :type Limit: int
+        :param Type: 模板类型过滤条件，不填则返回所有，可选值：
+* Preset：系统预置模板；
+* Custom：用户自定义模板。
+        :type Type: str
         """
         self.Definitions = None
         self.Offset = None
         self.Limit = None
+        self.Type = None
 
 
     def _deserialize(self, params):
         self.Definitions = params.get("Definitions")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -6284,14 +6284,17 @@ UDP(UDP协议)
         :type Protocol: str
         :param RealServers: 源站列表
         :type RealServers: list of SourceServer
-        :param InstanceDetails: 规则所属的资源实例
+        :param InstanceDetails: 资源实例
         :type InstanceDetails: list of InstanceRelation
+        :param InstanceDetailRule: 规则所属的资源实例
+        :type InstanceDetailRule: list of RuleInstanceRelation
         """
         self.BackendPort = None
         self.FrontendPort = None
         self.Protocol = None
         self.RealServers = None
         self.InstanceDetails = None
+        self.InstanceDetailRule = None
 
 
     def _deserialize(self, params):
@@ -6310,6 +6313,12 @@ UDP(UDP协议)
                 obj = InstanceRelation()
                 obj._deserialize(item)
                 self.InstanceDetails.append(obj)
+        if params.get("InstanceDetailRule") is not None:
+            self.InstanceDetailRule = []
+            for item in params.get("InstanceDetailRule"):
+                obj = RuleInstanceRelation()
+                obj._deserialize(item)
+                self.InstanceDetailRule.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6332,13 +6341,16 @@ class Layer7Rule(AbstractModel):
         :type ProxyTypeList: list of ProxyTypeInfo
         :param RealServers: 源站列表
         :type RealServers: list of SourceServer
-        :param InstanceDetails: 规则所属的资源实例
+        :param InstanceDetails: 资源实例
         :type InstanceDetails: list of InstanceRelation
+        :param InstanceDetailRule: 规则所属的资源实例
+        :type InstanceDetailRule: list of RuleInstanceRelation
         """
         self.Domain = None
         self.ProxyTypeList = None
         self.RealServers = None
         self.InstanceDetails = None
+        self.InstanceDetailRule = None
 
 
     def _deserialize(self, params):
@@ -6361,6 +6373,12 @@ class Layer7Rule(AbstractModel):
                 obj = InstanceRelation()
                 obj._deserialize(item)
                 self.InstanceDetails.append(obj)
+        if params.get("InstanceDetailRule") is not None:
+            self.InstanceDetailRule = []
+            for item in params.get("InstanceDetailRule"):
+                obj = RuleInstanceRelation()
+                obj._deserialize(item)
+                self.InstanceDetailRule.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7803,6 +7821,38 @@ class RegionInfo(AbstractModel):
 
     def _deserialize(self, params):
         self.Region = params.get("Region")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RuleInstanceRelation(AbstractModel):
+    """四七层规则的
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EipList: 资源实例的IP
+        :type EipList: list of str
+        :param InstanceId: 资源实例的ID
+        :type InstanceId: str
+        :param Cname: 资源实例的Cname
+        :type Cname: str
+        """
+        self.EipList = None
+        self.InstanceId = None
+        self.Cname = None
+
+
+    def _deserialize(self, params):
+        self.EipList = params.get("EipList")
+        self.InstanceId = params.get("InstanceId")
+        self.Cname = params.get("Cname")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
