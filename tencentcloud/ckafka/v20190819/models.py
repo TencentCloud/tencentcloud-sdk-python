@@ -3435,7 +3435,7 @@ class FetchMessageByOffsetRequest(AbstractModel):
         :type Topic: str
         :param Partition: 分区id
         :type Partition: int
-        :param Offset: 位点信息
+        :param Offset: 位点信息，必填
         :type Offset: int
         """
         self.InstanceId = None

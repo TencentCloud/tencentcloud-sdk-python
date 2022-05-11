@@ -1725,16 +1725,28 @@ class CreateClusterEndpointRequest(AbstractModel):
         :type SubnetId: str
         :param IsExtranet: 是否为外网访问（TRUE 外网访问 FALSE 内网访问，默认值： FALSE）
         :type IsExtranet: bool
+        :param Domain: 设置域名
+        :type Domain: str
+        :param SecurityGroup: 使用的安全组，只有外网访问需要传递
+        :type SecurityGroup: str
+        :param ExtensiveParameters: 创建lb参数，只有外网访问需要设置
+        :type ExtensiveParameters: str
         """
         self.ClusterId = None
         self.SubnetId = None
         self.IsExtranet = None
+        self.Domain = None
+        self.SecurityGroup = None
+        self.ExtensiveParameters = None
 
 
     def _deserialize(self, params):
         self.ClusterId = params.get("ClusterId")
         self.SubnetId = params.get("SubnetId")
         self.IsExtranet = params.get("IsExtranet")
+        self.Domain = params.get("Domain")
+        self.SecurityGroup = params.get("SecurityGroup")
+        self.ExtensiveParameters = params.get("ExtensiveParameters")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

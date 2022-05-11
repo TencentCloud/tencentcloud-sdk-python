@@ -2204,7 +2204,7 @@ class WaterMarkParams(AbstractModel):
         :type LocationX: int
         :param LocationY: 水印在输出时的Y偏移。单位为像素值。
         :type LocationY: int
-        :param WaterMarkUrl: 混流-水印图片URL地址，支持png、jpg、jpeg、bmp格式，暂不支持透明通道。URL链接长度限制为512字节。WaterMarkUrl和WaterMarkId参数都填时，以WaterMarkUrl为准。图片大小限制不超过10MB。
+        :param WaterMarkUrl: 混流-水印图片URL地址，支持png、jpg、jpeg、bmp格式，暂不支持透明通道。URL链接长度限制为512字节。WaterMarkUrl和WaterMarkId参数都填时，以WaterMarkUrl为准。图片大小限制不超过2MB。
         :type WaterMarkUrl: str
         """
         self.WaterMarkId = None

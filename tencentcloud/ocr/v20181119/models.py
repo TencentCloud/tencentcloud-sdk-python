@@ -3904,6 +3904,46 @@ class OrgCodeCertOCRResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class PassInvoiceInfo(AbstractModel):
+    """通行费发票信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NumberPlate: 通行费车牌号
+        :type NumberPlate: str
+        :param Type: 通行费类型
+        :type Type: str
+        :param PassDateBegin: 通行日期起
+        :type PassDateBegin: str
+        :param PassDateEnd: 通行日期止
+        :type PassDateEnd: str
+        :param TaxClassifyCode: 税收分类编码
+        :type TaxClassifyCode: str
+        """
+        self.NumberPlate = None
+        self.Type = None
+        self.PassDateBegin = None
+        self.PassDateEnd = None
+        self.TaxClassifyCode = None
+
+
+    def _deserialize(self, params):
+        self.NumberPlate = params.get("NumberPlate")
+        self.Type = params.get("Type")
+        self.PassDateBegin = params.get("PassDateBegin")
+        self.PassDateEnd = params.get("PassDateEnd")
+        self.TaxClassifyCode = params.get("TaxClassifyCode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PassportOCRRequest(AbstractModel):
     """PassportOCR请求参数结构体
 
@@ -7551,6 +7591,95 @@ class VatInvoiceUserInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class VatInvoiceVerifyNewRequest(AbstractModel):
+    """VatInvoiceVerifyNew请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InvoiceNo: 发票号码，8位、20位（全电票）
+        :type InvoiceNo: str
+        :param InvoiceDate: 开票日期（不支持当天发票查询，支持五年以内开具的发票），格式：“YYYY-MM-DD”，如：2019-12-20。
+        :type InvoiceDate: str
+        :param InvoiceCode: 发票代码（10或12 位），全电发票为空。查验未成功超过5次后当日无法再查。
+        :type InvoiceCode: str
+        :param InvoiceKind: 票种类型 01:增值税专用发票， 02:货运运输业增值税专用发 票， 03:机动车销售统一发票， 04:增值税普通发票， 08:增值税电子专用发票(含全电)， 10:增值税电子普通发票(含全电)， 11:增值税普通发票(卷式)， 14:增值税电子(通行费)发 票， 15:二手车销售统一发票， 32:深圳区块链发票(云南区块链因业务调整现已下线)。
+        :type InvoiceKind: str
+        :param CheckCode: 校验码后 6 位，增值税普通发票、增值税电子普通发票、增值税普通发票(卷式)、增值税电子普通发票(通行费)时必填;
+区块链为 5 位
+        :type CheckCode: str
+        :param Amount: 不含税金额，增值税专用发票、增值税电子专用发票、机动车销售统一发票、二手车销售统一发票、区块链发票时必填; 全电发票为价税合计(含税金额)
+        :type Amount: str
+        """
+        self.InvoiceNo = None
+        self.InvoiceDate = None
+        self.InvoiceCode = None
+        self.InvoiceKind = None
+        self.CheckCode = None
+        self.Amount = None
+
+
+    def _deserialize(self, params):
+        self.InvoiceNo = params.get("InvoiceNo")
+        self.InvoiceDate = params.get("InvoiceDate")
+        self.InvoiceCode = params.get("InvoiceCode")
+        self.InvoiceKind = params.get("InvoiceKind")
+        self.CheckCode = params.get("CheckCode")
+        self.Amount = params.get("Amount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VatInvoiceVerifyNewResponse(AbstractModel):
+    """VatInvoiceVerifyNew返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Invoice: 增值税发票信息，详情请点击左侧链接。
+        :type Invoice: :class:`tencentcloud.ocr.v20181119.models.VatInvoice`
+        :param VehicleInvoiceInfo: 机动车销售统一发票信息
+        :type VehicleInvoiceInfo: :class:`tencentcloud.ocr.v20181119.models.VehicleInvoiceInfo`
+        :param UsedVehicleInvoiceInfo: 二手车销售统一发票信息
+        :type UsedVehicleInvoiceInfo: :class:`tencentcloud.ocr.v20181119.models.UsedVehicleInvoiceInfo`
+        :param PassInvoiceInfoList: 通行费发票信息
+        :type PassInvoiceInfoList: list of PassInvoiceInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Invoice = None
+        self.VehicleInvoiceInfo = None
+        self.UsedVehicleInvoiceInfo = None
+        self.PassInvoiceInfoList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Invoice") is not None:
+            self.Invoice = VatInvoice()
+            self.Invoice._deserialize(params.get("Invoice"))
+        if params.get("VehicleInvoiceInfo") is not None:
+            self.VehicleInvoiceInfo = VehicleInvoiceInfo()
+            self.VehicleInvoiceInfo._deserialize(params.get("VehicleInvoiceInfo"))
+        if params.get("UsedVehicleInvoiceInfo") is not None:
+            self.UsedVehicleInvoiceInfo = UsedVehicleInvoiceInfo()
+            self.UsedVehicleInvoiceInfo._deserialize(params.get("UsedVehicleInvoiceInfo"))
+        if params.get("PassInvoiceInfoList") is not None:
+            self.PassInvoiceInfoList = []
+            for item in params.get("PassInvoiceInfoList"):
+                obj = PassInvoiceInfo()
+                obj._deserialize(item)
+                self.PassInvoiceInfoList.append(obj)
+        self.RequestId = params.get("RequestId")
 
 
 class VatInvoiceVerifyRequest(AbstractModel):

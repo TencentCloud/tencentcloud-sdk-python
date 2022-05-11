@@ -318,7 +318,7 @@ class FaceidClient(AbstractClient):
 
 
     def EncryptedPhoneVerification(self, request):
-        """本接口用于校验手机号、姓名和身份证号的真实性和一致性，入参支持MD5加密传输。
+        """本接口用于校验手机号、姓名和身份证号的真实性和一致性，入参支持明文、MD5和SHA256加密传输。
 
         :param request: Request instance for EncryptedPhoneVerification.
         :type request: :class:`tencentcloud.faceid.v20180301.models.EncryptedPhoneVerificationRequest`

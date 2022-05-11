@@ -1275,10 +1275,11 @@ class EncryptedPhoneVerificationRequest(AbstractModel):
         :type Name: str
         :param Phone: 手机号，加密方式以EncryptionMode为准
         :type Phone: str
-        :param EncryptionMode: 敏感信息的加密方式，目前只支持MD5加密传输，参数取值：
+        :param EncryptionMode: 敏感信息的加密方式，目前支持明文、MD5和SHA256加密传输，参数取值：
 
 0：明文，不加密
-1：使用MD5加密
+1:   使用MD5加密
+2:   使用SHA256
         :type EncryptionMode: str
         """
         self.IdCard = None
@@ -1310,8 +1311,8 @@ class EncryptedPhoneVerificationResponse(AbstractModel):
         r"""
         :param Result: 认证结果码:
 【收费结果码】
-0: 认证通过
--4: 信息不一致
+0:   三要素信息一致
+-4:  三要素信息不一致
 
 【不收费结果码】
 -7: 身份证号码有误

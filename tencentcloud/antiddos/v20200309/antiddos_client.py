@@ -2027,6 +2027,35 @@ class AntiddosClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeOverviewDDoSEventList(self, request):
+        """获取防护概览的ddos攻击事件
+
+        :param request: Request instance for DescribeOverviewDDoSEventList.
+        :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeOverviewDDoSEventListRequest`
+        :rtype: :class:`tencentcloud.antiddos.v20200309.models.DescribeOverviewDDoSEventListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeOverviewDDoSEventList", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeOverviewDDoSEventListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeOverviewDDoSTrend(self, request):
         """获取防护概览DDoS攻击流量带宽和攻击包速率数据
 

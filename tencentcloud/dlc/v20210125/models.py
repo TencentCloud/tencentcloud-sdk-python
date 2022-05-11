@@ -1610,6 +1610,8 @@ table-id - String - （过滤条件）table id形如：12342。
         :type Asc: bool
         :param TableType: table type，表类型查询,可用值:EXTERNAL_TABLE,INDEX_TABLE,MANAGED_TABLE,MATERIALIZED_VIEW,TABLE,VIEW,VIRTUAL_VIEW
         :type TableType: str
+        :param TableFormat: 筛选字段-表格式：不传（默认）为查全部；LAKEFS：托管表；ICEBERG：非托管iceberg表；HIVE：非托管hive表；OTHER：非托管其它；
+        :type TableFormat: str
         """
         self.DatabaseName = None
         self.Limit = None
@@ -1621,6 +1623,7 @@ table-id - String - （过滤条件）table id形如：12342。
         self.Sort = None
         self.Asc = None
         self.TableType = None
+        self.TableFormat = None
 
 
     def _deserialize(self, params):
@@ -1639,6 +1642,7 @@ table-id - String - （过滤条件）table id形如：12342。
         self.Sort = params.get("Sort")
         self.Asc = params.get("Asc")
         self.TableType = params.get("TableType")
+        self.TableFormat = params.get("TableFormat")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2386,16 +2390,31 @@ class Partition(AbstractModel):
         :type Type: str
         :param Comment: 对分区的描述。
         :type Comment: str
+        :param Transform: 隐式分区转换策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Transform: str
+        :param TransformArgs: 转换策略参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TransformArgs: list of str
+        :param CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: int
         """
         self.Name = None
         self.Type = None
         self.Comment = None
+        self.Transform = None
+        self.TransformArgs = None
+        self.CreateTime = None
 
 
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Type = params.get("Type")
         self.Comment = params.get("Comment")
+        self.Transform = params.get("Transform")
+        self.TransformArgs = params.get("TransformArgs")
+        self.CreateTime = params.get("CreateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2449,6 +2468,12 @@ class Policy(AbstractModel):
         :param CreateTime: 权限创建的时间，入参不填
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
+        :param SourceId: 权限所属工作组的ID，只有当该权限的来源为工作组时才会有值。即仅当Source字段的值为WORKGROUP时该字段才有值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceId: int
+        :param SourceName: 权限所属工作组的名称，只有当该权限的来源为工作组时才会有值。即仅当Source字段的值为WORKGROUP时该字段才有值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceName: str
         """
         self.Database = None
         self.Catalog = None
@@ -2464,6 +2489,8 @@ class Policy(AbstractModel):
         self.Mode = None
         self.Operator = None
         self.CreateTime = None
+        self.SourceId = None
+        self.SourceName = None
 
 
     def _deserialize(self, params):
@@ -2481,6 +2508,8 @@ class Policy(AbstractModel):
         self.Mode = params.get("Mode")
         self.Operator = params.get("Operator")
         self.CreateTime = params.get("CreateTime")
+        self.SourceId = params.get("SourceId")
+        self.SourceName = params.get("SourceName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
