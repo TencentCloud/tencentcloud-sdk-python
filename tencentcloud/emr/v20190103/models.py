@@ -365,6 +365,18 @@ class ClusterInstancesInfo(AbstractModel):
         :param ClusterExternalServiceInfo: 集群依赖关系
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterExternalServiceInfo: list of ClusterExternalServiceInfo
+        :param UniqVpcId: 集群vpcid 字符串类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UniqVpcId: str
+        :param UniqSubnetId: 子网id 字符串类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UniqSubnetId: str
+        :param TopologyInfoList: 节点信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopologyInfoList: list of TopologyInfo
+        :param IsMultiZoneCluster: 是否是跨AZ集群
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsMultiZoneCluster: bool
         """
         self.Id = None
         self.ClusterId = None
@@ -403,6 +415,10 @@ class ClusterInstancesInfo(AbstractModel):
         self.VpcName = None
         self.SubnetName = None
         self.ClusterExternalServiceInfo = None
+        self.UniqVpcId = None
+        self.UniqSubnetId = None
+        self.TopologyInfoList = None
+        self.IsMultiZoneCluster = None
 
 
     def _deserialize(self, params):
@@ -455,6 +471,15 @@ class ClusterInstancesInfo(AbstractModel):
                 obj = ClusterExternalServiceInfo()
                 obj._deserialize(item)
                 self.ClusterExternalServiceInfo.append(obj)
+        self.UniqVpcId = params.get("UniqVpcId")
+        self.UniqSubnetId = params.get("UniqSubnetId")
+        if params.get("TopologyInfoList") is not None:
+            self.TopologyInfoList = []
+            for item in params.get("TopologyInfoList"):
+                obj = TopologyInfo()
+                obj._deserialize(item)
+                self.TopologyInfoList.append(obj)
+        self.IsMultiZoneCluster = params.get("IsMultiZoneCluster")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -611,13 +636,9 @@ class CreateInstanceRequest(AbstractModel):
 <li>29：表示EMR-V2.5.1。</li>
 <li>30：表示EMR-V2.6.0。</li>
         :type ProductId: int
-        :param VPCSettings: 私有网络相关信息配置。通过该参数可以指定私有网络的ID，子网ID等信息。
-        :type VPCSettings: :class:`tencentcloud.emr.v20190103.models.VPCSettings`
         :param Software: 部署的组件列表。不同的EMR产品ID（ProductId：具体含义参考入参ProductId字段）对应不同可选组件列表，不同产品版本可选组件列表查询：[组件版本](https://cloud.tencent.com/document/product/589/20279) ；
 填写实例值：hive、flink。
         :type Software: list of str
-        :param ResourceSpec: 节点资源的规格。
-        :type ResourceSpec: :class:`tencentcloud.emr.v20190103.models.NewResourceSpec`
         :param SupportHA: 是否开启节点高可用。取值范围：
 <li>0：表示不开启节点高可用。</li>
 <li>1：表示开启节点高可用。</li>
@@ -630,8 +651,6 @@ class CreateInstanceRequest(AbstractModel):
 <li>0：表示按量计费。</li>
 <li>1：表示包年包月。</li>
         :type PayMode: int
-        :param Placement: 实例所在的位置。通过该参数可以指定实例所属可用区，所属项目等属性。
-        :type Placement: :class:`tencentcloud.emr.v20190103.models.Placement`
         :param TimeSpan: 购买实例的时长。结合TimeUnit一起使用。
 <li>TimeUnit为s时，该参数只能填写3600，表示按量计费实例。</li>
 <li>TimeUnit为m时，该参数填写的数字表示包年包月实例的购买时长，如1表示购买一个月</li>
@@ -644,8 +663,14 @@ class CreateInstanceRequest(AbstractModel):
 <li>设置密钥时，密码仅用于组件原生WebUI快捷入口登录。</li>
 <li>未设置密钥时，密码用于登录所购节点以及组件原生WebUI快捷入口登录。</li>
         :type LoginSettings: :class:`tencentcloud.emr.v20190103.models.LoginSettings`
+        :param VPCSettings: 私有网络相关信息配置。通过该参数可以指定私有网络的ID，子网ID等信息。
+        :type VPCSettings: :class:`tencentcloud.emr.v20190103.models.VPCSettings`
+        :param ResourceSpec: 节点资源的规格。
+        :type ResourceSpec: :class:`tencentcloud.emr.v20190103.models.NewResourceSpec`
         :param COSSettings: 开启COS访问需要设置的参数。
         :type COSSettings: :class:`tencentcloud.emr.v20190103.models.COSSettings`
+        :param Placement: 实例所在的位置。通过该参数可以指定实例所属可用区，所属项目等属性。
+        :type Placement: :class:`tencentcloud.emr.v20190103.models.Placement`
         :param SgId: 实例所属安全组的ID，形如sg-xxxxxxxx。该参数可以通过调用 [DescribeSecurityGroups](https://cloud.tencent.com/document/api/215/15808) 的返回值中的SecurityGroupId字段来获取。
         :type SgId: str
         :param PreExecutedFileSettings: [引导操作](https://cloud.tencent.com/document/product/589/35656)脚本设置。
@@ -692,19 +717,25 @@ Hadoop-Hbase
         :type SceneName: str
         :param ExternalService: 共享组件信息
         :type ExternalService: list of ExternalService
+        :param VersionID: 如果为0，则MultiZone、MultiDeployStrategy、MultiZoneSettings是disable的状态，如果为1，则废弃ResourceSpec，使用MultiZoneSettings。
+        :type VersionID: int
+        :param MultiZone: true表示开启跨AZ部署；仅为新建集群时的用户参数，后续不支持调整。
+        :type MultiZone: bool
+        :param MultiZoneSettings: 节点资源的规格，有几个可用区，就填几个，按顺序第一个为主可用区，第二个为备可用区，第三个为仲裁可用区。如果没有开启跨AZ，则长度为1即可。
+        :type MultiZoneSettings: list of MultiZoneSetting
         """
         self.ProductId = None
-        self.VPCSettings = None
         self.Software = None
-        self.ResourceSpec = None
         self.SupportHA = None
         self.InstanceName = None
         self.PayMode = None
-        self.Placement = None
         self.TimeSpan = None
         self.TimeUnit = None
         self.LoginSettings = None
+        self.VPCSettings = None
+        self.ResourceSpec = None
         self.COSSettings = None
+        self.Placement = None
         self.SgId = None
         self.PreExecutedFileSettings = None
         self.AutoRenew = None
@@ -722,31 +753,34 @@ Hadoop-Hbase
         self.ApplicationRole = None
         self.SceneName = None
         self.ExternalService = None
+        self.VersionID = None
+        self.MultiZone = None
+        self.MultiZoneSettings = None
 
 
     def _deserialize(self, params):
         self.ProductId = params.get("ProductId")
-        if params.get("VPCSettings") is not None:
-            self.VPCSettings = VPCSettings()
-            self.VPCSettings._deserialize(params.get("VPCSettings"))
         self.Software = params.get("Software")
-        if params.get("ResourceSpec") is not None:
-            self.ResourceSpec = NewResourceSpec()
-            self.ResourceSpec._deserialize(params.get("ResourceSpec"))
         self.SupportHA = params.get("SupportHA")
         self.InstanceName = params.get("InstanceName")
         self.PayMode = params.get("PayMode")
-        if params.get("Placement") is not None:
-            self.Placement = Placement()
-            self.Placement._deserialize(params.get("Placement"))
         self.TimeSpan = params.get("TimeSpan")
         self.TimeUnit = params.get("TimeUnit")
         if params.get("LoginSettings") is not None:
             self.LoginSettings = LoginSettings()
             self.LoginSettings._deserialize(params.get("LoginSettings"))
+        if params.get("VPCSettings") is not None:
+            self.VPCSettings = VPCSettings()
+            self.VPCSettings._deserialize(params.get("VPCSettings"))
+        if params.get("ResourceSpec") is not None:
+            self.ResourceSpec = NewResourceSpec()
+            self.ResourceSpec._deserialize(params.get("ResourceSpec"))
         if params.get("COSSettings") is not None:
             self.COSSettings = COSSettings()
             self.COSSettings._deserialize(params.get("COSSettings"))
+        if params.get("Placement") is not None:
+            self.Placement = Placement()
+            self.Placement._deserialize(params.get("Placement"))
         self.SgId = params.get("SgId")
         if params.get("PreExecutedFileSettings") is not None:
             self.PreExecutedFileSettings = []
@@ -781,6 +815,14 @@ Hadoop-Hbase
                 obj = ExternalService()
                 obj._deserialize(item)
                 self.ExternalService.append(obj)
+        self.VersionID = params.get("VersionID")
+        self.MultiZone = params.get("MultiZone")
+        if params.get("MultiZoneSettings") is not None:
+            self.MultiZoneSettings = []
+            for item in params.get("MultiZoneSettings"):
+                obj = MultiZoneSetting()
+                obj._deserialize(item)
+                self.MultiZoneSettings.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1740,8 +1782,6 @@ class InquiryPriceCreateInstanceRequest(AbstractModel):
 <li>TimeUnit为s时，该参数只能填写3600，表示按量计费实例。</li>
 <li>TimeUnit为m时，该参数填写的数字表示包年包月实例的购买时长，如1表示购买一个月</li>
         :type TimeSpan: int
-        :param ResourceSpec: 询价的节点规格。
-        :type ResourceSpec: :class:`tencentcloud.emr.v20190103.models.NewResourceSpec`
         :param Currency: 货币种类。取值范围：
 <li>CNY：表示人民币。</li>
         :type Currency: str
@@ -1759,6 +1799,8 @@ class InquiryPriceCreateInstanceRequest(AbstractModel):
 <li>ProductId为4的时候，必选组件包括：hadoop-2.8.4、knox-1.2.0、zookeeper-3.4.9</li>
 <li>ProductId为7的时候，必选组件包括：hadoop-3.1.2、knox-1.2.0、zookeeper-3.4.9</li>
         :type Software: list of str
+        :param ResourceSpec: 询价的节点规格。
+        :type ResourceSpec: :class:`tencentcloud.emr.v20190103.models.NewResourceSpec`
         :param Placement: 实例所在的位置。通过该参数可以指定实例所属可用区，所属项目等属性。
         :type Placement: :class:`tencentcloud.emr.v20190103.models.Placement`
         :param VPCSettings: 私有网络相关信息配置。通过该参数可以指定私有网络的ID，子网ID等信息。
@@ -1786,14 +1828,18 @@ Hadoop-Hbase
         :type SceneName: str
         :param ExternalService: 共用组件信息
         :type ExternalService: list of ExternalService
+        :param VersionID: 当前默认值为0，跨AZ特性支持后为1
+        :type VersionID: int
+        :param MultiZoneSettings: 可用区的规格信息
+        :type MultiZoneSettings: list of MultiZoneSetting
         """
         self.TimeUnit = None
         self.TimeSpan = None
-        self.ResourceSpec = None
         self.Currency = None
         self.PayMode = None
         self.SupportHA = None
         self.Software = None
+        self.ResourceSpec = None
         self.Placement = None
         self.VPCSettings = None
         self.MetaType = None
@@ -1802,18 +1848,20 @@ Hadoop-Hbase
         self.ProductId = None
         self.SceneName = None
         self.ExternalService = None
+        self.VersionID = None
+        self.MultiZoneSettings = None
 
 
     def _deserialize(self, params):
         self.TimeUnit = params.get("TimeUnit")
         self.TimeSpan = params.get("TimeSpan")
-        if params.get("ResourceSpec") is not None:
-            self.ResourceSpec = NewResourceSpec()
-            self.ResourceSpec._deserialize(params.get("ResourceSpec"))
         self.Currency = params.get("Currency")
         self.PayMode = params.get("PayMode")
         self.SupportHA = params.get("SupportHA")
         self.Software = params.get("Software")
+        if params.get("ResourceSpec") is not None:
+            self.ResourceSpec = NewResourceSpec()
+            self.ResourceSpec._deserialize(params.get("ResourceSpec"))
         if params.get("Placement") is not None:
             self.Placement = Placement()
             self.Placement._deserialize(params.get("Placement"))
@@ -1833,6 +1881,13 @@ Hadoop-Hbase
                 obj = ExternalService()
                 obj._deserialize(item)
                 self.ExternalService.append(obj)
+        self.VersionID = params.get("VersionID")
+        if params.get("MultiZoneSettings") is not None:
+            self.MultiZoneSettings = []
+            for item in params.get("MultiZoneSettings"):
+                obj = MultiZoneSetting()
+                obj._deserialize(item)
+                self.MultiZoneSettings.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2643,6 +2698,49 @@ class MultiDiskMC(AbstractModel):
         
 
 
+class MultiZoneSetting(AbstractModel):
+    """各个可用区的参数信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneTag: "master"、"standby"、"third-party"
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ZoneTag: str
+        :param VPCSettings: 无
+        :type VPCSettings: :class:`tencentcloud.emr.v20190103.models.VPCSettings`
+        :param Placement: 无
+        :type Placement: :class:`tencentcloud.emr.v20190103.models.Placement`
+        :param ResourceSpec: 无
+        :type ResourceSpec: :class:`tencentcloud.emr.v20190103.models.NewResourceSpec`
+        """
+        self.ZoneTag = None
+        self.VPCSettings = None
+        self.Placement = None
+        self.ResourceSpec = None
+
+
+    def _deserialize(self, params):
+        self.ZoneTag = params.get("ZoneTag")
+        if params.get("VPCSettings") is not None:
+            self.VPCSettings = VPCSettings()
+            self.VPCSettings._deserialize(params.get("VPCSettings"))
+        if params.get("Placement") is not None:
+            self.Placement = Placement()
+            self.Placement._deserialize(params.get("Placement"))
+        if params.get("ResourceSpec") is not None:
+            self.ResourceSpec = NewResourceSpec()
+            self.ResourceSpec._deserialize(params.get("ResourceSpec"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class NewResourceSpec(AbstractModel):
     """资源描述
 
@@ -2831,6 +2929,18 @@ class NodeHardwareInfo(AbstractModel):
         :param SupportModifyPayMode: 是否支持变更计费类型 1是，0否
 注意：此字段可能返回 null，表示取不到有效值。
         :type SupportModifyPayMode: int
+        :param RootStorageType: 系统盘类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RootStorageType: int
+        :param Zone: 可用区信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Zone: str
+        :param SubnetInfo: 子网
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubnetInfo: :class:`tencentcloud.emr.v20190103.models.SubnetInfo`
+        :param Clients: 客户端
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Clients: str
         """
         self.AppId = None
         self.SerialNo = None
@@ -2872,6 +2982,10 @@ class NodeHardwareInfo(AbstractModel):
         self.IsDynamicSpec = None
         self.DynamicPodSpec = None
         self.SupportModifyPayMode = None
+        self.RootStorageType = None
+        self.Zone = None
+        self.SubnetInfo = None
+        self.Clients = None
 
 
     def _deserialize(self, params):
@@ -2927,6 +3041,12 @@ class NodeHardwareInfo(AbstractModel):
         self.IsDynamicSpec = params.get("IsDynamicSpec")
         self.DynamicPodSpec = params.get("DynamicPodSpec")
         self.SupportModifyPayMode = params.get("SupportModifyPayMode")
+        self.RootStorageType = params.get("RootStorageType")
+        self.Zone = params.get("Zone")
+        if params.get("SubnetInfo") is not None:
+            self.SubnetInfo = SubnetInfo()
+            self.SubnetInfo._deserialize(params.get("SubnetInfo"))
+        self.Clients = params.get("Clients")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3274,6 +3394,9 @@ class PodSpec(AbstractModel):
         :param SubnetId: 代表vpc子网唯一id
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubnetId: str
+        :param PodName: pod name
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PodName: str
         """
         self.ResourceProviderIdentifier = None
         self.ResourceProviderType = None
@@ -3287,6 +3410,7 @@ class PodSpec(AbstractModel):
         self.DynamicPodSpec = None
         self.VpcId = None
         self.SubnetId = None
+        self.PodName = None
 
 
     def _deserialize(self, params):
@@ -3309,6 +3433,7 @@ class PodSpec(AbstractModel):
             self.DynamicPodSpec._deserialize(params.get("DynamicPodSpec"))
         self.VpcId = params.get("VpcId")
         self.SubnetId = params.get("SubnetId")
+        self.PodName = params.get("PodName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3943,6 +4068,10 @@ class ScaleOutInstanceRequest(AbstractModel):
         :type MasterCount: int
         :param StartServiceAfterScaleOut: 扩容后是否启动服务，true：启动，false：不启动
         :type StartServiceAfterScaleOut: str
+        :param ZoneId: 可用区，默认是集群的主可用区
+        :type ZoneId: int
+        :param SubnetId: 子网，默认是集群创建时的子网
+        :type SubnetId: str
         """
         self.TimeUnit = None
         self.TimeSpan = None
@@ -3966,6 +4095,8 @@ class ScaleOutInstanceRequest(AbstractModel):
         self.PodParameter = None
         self.MasterCount = None
         self.StartServiceAfterScaleOut = None
+        self.ZoneId = None
+        self.SubnetId = None
 
 
     def _deserialize(self, params):
@@ -4005,6 +4136,8 @@ class ScaleOutInstanceRequest(AbstractModel):
             self.PodParameter._deserialize(params.get("PodParameter"))
         self.MasterCount = params.get("MasterCount")
         self.StartServiceAfterScaleOut = params.get("StartServiceAfterScaleOut")
+        self.ZoneId = params.get("ZoneId")
+        self.SubnetId = params.get("SubnetId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4083,6 +4216,36 @@ class SearchItem(AbstractModel):
         
 
 
+class ShortNodeInfo(AbstractModel):
+    """节点信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NodeType: 节点类型，Master/Core/Task/Router/Common
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NodeType: str
+        :param NodeSize: 节点数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NodeSize: int
+        """
+        self.NodeType = None
+        self.NodeSize = None
+
+
+    def _deserialize(self, params):
+        self.NodeType = params.get("NodeType")
+        self.NodeSize = params.get("NodeSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Step(AbstractModel):
     """执行步骤
 
@@ -4115,6 +4278,36 @@ class Step(AbstractModel):
             self.ExecutionStep._deserialize(params.get("ExecutionStep"))
         self.ActionOnFailure = params.get("ActionOnFailure")
         self.User = params.get("User")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SubnetInfo(AbstractModel):
+    """子网信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SubnetName: 子网信息（名字）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubnetName: str
+        :param SubnetId: 子网信息（ID）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubnetId: str
+        """
+        self.SubnetName = None
+        self.SubnetId = None
+
+
+    def _deserialize(self, params):
+        self.SubnetName = params.get("SubnetName")
+        self.SubnetId = params.get("SubnetId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4283,6 +4476,56 @@ class TerminateTasksResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class TopologyInfo(AbstractModel):
+    """集群节点拓扑信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneId: 可用区ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ZoneId: int
+        :param Zone: 可用区信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Zone: str
+        :param SubnetInfoList: 子网信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubnetInfoList: list of SubnetInfo
+        :param NodeInfoList: 节点信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NodeInfoList: list of ShortNodeInfo
+        """
+        self.ZoneId = None
+        self.Zone = None
+        self.SubnetInfoList = None
+        self.NodeInfoList = None
+
+
+    def _deserialize(self, params):
+        self.ZoneId = params.get("ZoneId")
+        self.Zone = params.get("Zone")
+        if params.get("SubnetInfoList") is not None:
+            self.SubnetInfoList = []
+            for item in params.get("SubnetInfoList"):
+                obj = SubnetInfo()
+                obj._deserialize(item)
+                self.SubnetInfoList.append(obj)
+        if params.get("NodeInfoList") is not None:
+            self.NodeInfoList = []
+            for item in params.get("NodeInfoList"):
+                obj = ShortNodeInfo()
+                obj._deserialize(item)
+                self.NodeInfoList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class UpdateInstanceSettings(AbstractModel):

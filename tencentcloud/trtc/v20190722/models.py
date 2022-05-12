@@ -2196,13 +2196,13 @@ class WaterMarkParams(AbstractModel):
         r"""
         :param WaterMarkId: 混流-水印图片ID。取值为实时音视频控制台上传的图片ID。
         :type WaterMarkId: int
-        :param WaterMarkWidth: 混流-水印宽。单位为像素值。
+        :param WaterMarkWidth: 混流-水印宽。单位为像素值。水印宽+X偏移不能超过整个画布宽。
         :type WaterMarkWidth: int
-        :param WaterMarkHeight: 混流-水印高。单位为像素值。
+        :param WaterMarkHeight: 混流-水印高。单位为像素值。水印高+Y偏移不能超过整个画布高。
         :type WaterMarkHeight: int
-        :param LocationX: 水印在输出时的X偏移。单位为像素值。
+        :param LocationX: 水印在输出时的X偏移。单位为像素值。水印宽+X偏移不能超过整个画布宽。
         :type LocationX: int
-        :param LocationY: 水印在输出时的Y偏移。单位为像素值。
+        :param LocationY: 水印在输出时的Y偏移。单位为像素值。水印高+Y偏移不能超过整个画布高。
         :type LocationY: int
         :param WaterMarkUrl: 混流-水印图片URL地址，支持png、jpg、jpeg、bmp格式，暂不支持透明通道。URL链接长度限制为512字节。WaterMarkUrl和WaterMarkId参数都填时，以WaterMarkUrl为准。图片大小限制不超过2MB。
         :type WaterMarkUrl: str

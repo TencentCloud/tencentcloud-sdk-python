@@ -18,28 +18,22 @@
 FAILEDOPERATION_ACCOUNTALREADYEXISTEDINACCOUNTGROUP = 'FailedOperation.AccountAlreadyExistedInAccountGroup'
 
 # 账号组名称已存在。
-FAILEDOPERATION_ACCOUNTGROUPNAMEEXISTED = 'FailedOperation.AccountGroupNameExisted'
+FAILEDOPERATION_ACCOUNTGROUPNAMEALREADYEXISTS = 'FailedOperation.AccountGroupNameAlreadyExists'
 
 # 账号组不存在。
-FAILEDOPERATION_ACCOUNTGROUPNOTEXISTED = 'FailedOperation.AccountGroupNotExisted'
-
-# 账号ID列表不能为空。
-FAILEDOPERATION_ACCOUNTIDSISNULL = 'FailedOperation.AccountIdsIsNull'
+FAILEDOPERATION_ACCOUNTGROUPNOTEXIST = 'FailedOperation.AccountGroupNotExist'
 
 # 账号名称已存在。
-FAILEDOPERATION_ACCOUNTNAMEEXISTED = 'FailedOperation.AccountNameExisted'
+FAILEDOPERATION_ACCOUNTNAMEALREADYEXISTS = 'FailedOperation.AccountNameAlreadyExists'
+
+# 账号不存在。
+FAILEDOPERATION_ACCOUNTNOTEXIST = 'FailedOperation.AccountNotExist'
 
 # 账号不存在。
 FAILEDOPERATION_ACCOUNTNOTEXISTED = 'FailedOperation.AccountNotExisted'
 
-# 加入用户到用户组异常。
-FAILEDOPERATION_ADDUSERSTOUSERGROUP = 'FailedOperation.AddUsersToUserGroup'
-
-# 应用ID不能为空。
-FAILEDOPERATION_APPIDISNULL = 'FailedOperation.AppIdIsNull'
-
-# 应用ID不存在。
-FAILEDOPERATION_APPIDNOTFOUND = 'FailedOperation.AppIdNotFound'
+# 应用名称已存在。
+FAILEDOPERATION_APPDISPLAYNAMEALREADYEXISTS = 'FailedOperation.AppDisplayNameAlreadyExists'
 
 # 应用不存在。
 FAILEDOPERATION_APPNOTEXIST = 'FailedOperation.AppNotExist'
@@ -56,8 +50,8 @@ FAILEDOPERATION_CREATEORGNODEERROR = 'FailedOperation.CreateOrgNodeError'
 # 创建用户异常。
 FAILEDOPERATION_CREATEUSERFAILURE = 'FailedOperation.CreateUserFailure'
 
-# 创建用户组异常。
-FAILEDOPERATION_CREATEUSERGROUPFAILURE = 'FailedOperation.CreateUserGroupFailure'
+# 创建用户组失败。
+FAILEDOPERATION_CREATEUSERGROUPERROR = 'FailedOperation.CreateUserGroupError'
 
 # 自定义机构节点对外ID已存在。
 FAILEDOPERATION_CUSTOMIZEPARENTORGNODEIDALREADYEXISTS = 'FailedOperation.CustomizeParentOrgNodeIdAlreadyExists'
@@ -71,23 +65,20 @@ FAILEDOPERATION_DEFAULTORGNODECANNOTBEDELETED = 'FailedOperation.DefaultOrgNodeC
 # 删除机构节点失败。
 FAILEDOPERATION_DELETEORGNODEERROR = 'FailedOperation.DeleteOrgNodeError'
 
+# 删除用户失败。
+FAILEDOPERATION_DELETEUSERERROR = 'FailedOperation.DeleteUserError'
+
 # 用户为管理员，不能删除。
 FAILEDOPERATION_DELETEUSEREXISTSADMINISTRATOR = 'FailedOperation.DeleteUserExistsAdministrator'
 
-# 删除用户失败。
-FAILEDOPERATION_DELETEUSERFAILURE = 'FailedOperation.DeleteUserFailure'
-
-# 删除用户组异常。
-FAILEDOPERATION_DELETEUSERGROUPFAILURE = 'FailedOperation.DeleteUserGroupFailure'
+# 删除用户组失败。
+FAILEDOPERATION_DELETEUSERGROUPERROR = 'FailedOperation.DeleteUserGroupError'
 
 # 读取机构节点信息失败。
 FAILEDOPERATION_DESCRIBEORGNODEERROR = 'FailedOperation.DescribeOrgNodeError'
 
 # 读取根机构节点信息失败。
 FAILEDOPERATION_DESCRIBEORGNODEROOTERROR = 'FailedOperation.DescribeOrgNodeRootError'
-
-# EntityType取值不合法。
-FAILEDOPERATION_ENTITYTYPENOTEXISTED = 'FailedOperation.EntityTypeNotExisted'
 
 # 期望返回的用户属性类型不存在。
 FAILEDOPERATION_EXPECTFIELDSNOTFOUND = 'FailedOperation.ExpectFieldsNotFound'
@@ -97,9 +88,6 @@ FAILEDOPERATION_GROUPIDNOTFOUND = 'FailedOperation.GroupIdNotFound'
 
 # ID转换编码失败。
 FAILEDOPERATION_IDTOCODEERROR = 'FailedOperation.IdToCodeError'
-
-# 数据条目超过最大限制。
-FAILEDOPERATION_ITEMSEXCEEDMAXNUMBER = 'FailedOperation.ItemsExceedMaxNumber'
 
 # 同一个应用，相同的用户不能添加超过 %s 个映射关系。
 FAILEDOPERATION_LIMITQUOTANOTENOUGH = 'FailedOperation.LimitQuotaNotEnough'
@@ -115,9 +103,6 @@ FAILEDOPERATION_LISTUSERSINUSERGROUPERROR = 'FailedOperation.ListUsersInUserGrou
 
 # 主组织机构不存在。
 FAILEDOPERATION_MAINORGNODENOTEXIST = 'FailedOperation.MainOrgNodeNotExist'
-
-# 新密码必须不能为空。
-FAILEDOPERATION_NEWPASSWORDMUSTNOTBLANK = 'FailedOperation.NewPasswordMustNotBlank'
 
 # 操作失败。
 FAILEDOPERATION_OPERATIONERROR = 'FailedOperation.OperationError'
@@ -167,14 +152,11 @@ FAILEDOPERATION_UPDATEWECOMUSERORGEXCEEDSRANGE = 'FailedOperation.UpdateWeComUse
 # 不能变更企业微信用户到非相同的企业机构下。
 FAILEDOPERATION_UPDATEWECOMUSERORGNOTINSAMECROP = 'FailedOperation.UpdateWeComUserOrgNotInSameCrop'
 
-# 用户已存在于该用户组。
-FAILEDOPERATION_USERALREADYEXISTEDINUSERGROUP = 'FailedOperation.UserAlreadyExistedInUserGroup'
-
 # 获取用户被授权访问的应用列表失败。
 FAILEDOPERATION_USERAUTHLISTERROR = 'FailedOperation.UserAuthListError'
 
 # 用户邮箱已存在。
-FAILEDOPERATION_USEREMAILEXISTED = 'FailedOperation.UserEmailExisted'
+FAILEDOPERATION_USEREMAILALREADYEXISTS = 'FailedOperation.UserEmailAlreadyExists'
 
 # 用户组不存在。
 FAILEDOPERATION_USERGROUPNOTEXIST = 'FailedOperation.UserGroupNotExist'
@@ -190,12 +172,6 @@ FAILEDOPERATION_USERNOTFOUND = 'FailedOperation.UserNotFound'
 
 # 用户手机已存在。
 FAILEDOPERATION_USERPHONEALREADYEXISTS = 'FailedOperation.UserPhoneAlreadyExists'
-
-# 用户手机不能为空。
-FAILEDOPERATION_USERPHONEISEMPTY = 'FailedOperation.UserPhoneIsEmpty'
-
-# 应用名称已存在。
-INVALIDPARAMETER_APPDISPLAYNAMEEXISTED = 'InvalidParameter.AppDisplayNameExisted'
 
 # 属性校验失败。
 INVALIDPARAMETER_ATTRIBUTEVALUEVALIDERROR = 'InvalidParameter.AttributeValueValidError'
@@ -221,20 +197,44 @@ INVALIDPARAMETER_USEREXPIRATIONTIMEILLEGAL = 'InvalidParameter.UserExpirationTim
 # 用户ID参数为空。
 INVALIDPARAMETER_USERIDISNULL = 'InvalidParameter.UserIDIsNull'
 
-# 用户信息分页展示的排列属性不合法。
-INVALIDPARAMETER_USERINFOSORTKEYISILLEGAL = 'InvalidParameter.UserInfoSortKeyIsIllegal'
-
 # 用户名参数为空。
 INVALIDPARAMETER_USERNAMEISNULL = 'InvalidParameter.UserNameIsNull'
 
+# 账号ID列表不能为空。
+INVALIDPARAMETERVALUE_ACCOUNTIDSCANNOTBEEMPTY = 'InvalidParameterValue.AccountIdsCanNotBeEmpty'
+
+# 应用ID不能为空。
+INVALIDPARAMETERVALUE_APPIDCANNOTBEEMPTY = 'InvalidParameterValue.AppIdCanNotBeEmpty'
+
+# 应用信息分页展示的排列属性不合法。
+INVALIDPARAMETERVALUE_APPLICATIONINFOSORTKEYILLEGAL = 'InvalidParameterValue.ApplicationInfoSortKeyIllegal'
+
+# EntityType不匹配。
+INVALIDPARAMETERVALUE_ENTITYTYPENOTMATCH = 'InvalidParameterValue.EntityTypeNotMatch'
+
+# 参数的长度超出限制。
+INVALIDPARAMETERVALUE_LENGTHEXCEEDED = 'InvalidParameterValue.LengthExceeded'
+
+# 新密码不能为空。
+INVALIDPARAMETERVALUE_NEWPASSWORDCANNOTBEEMPTY = 'InvalidParameterValue.NewPasswordCanNotBeEmpty'
+
 # 参数不合法。
 INVALIDPARAMETERVALUE_PARAMETERILLEGAL = 'InvalidParameterValue.ParameterIllegal'
+
+# 分页展示的排序属性不合法。
+INVALIDPARAMETERVALUE_SORTKEYILLEGAL = 'InvalidParameterValue.SortKeyIllegal'
 
 # 用户ID不能为空。
 INVALIDPARAMETERVALUE_USERIDCANNOTBEEMPTY = 'InvalidParameterValue.UserIdCanNotBeEmpty'
 
 # 用户名不能为空。
 INVALIDPARAMETERVALUE_USERNAMECANNOTBEEMPTY = 'InvalidParameterValue.UserNameCanNotBeEmpty'
+
+# 用户手机不能为空。
+INVALIDPARAMETERVALUE_USERPHONECANNOTBEEMPTY = 'InvalidParameterValue.UserPhoneCanNotBeEmpty'
+
+# 数据条目数超出最大限制。
+LIMITEXCEEDED_ITEMSNUMBERLIMITEXCEEDED = 'LimitExceeded.ItemsNumberLimitExceeded'
 
 # 输入参数超出长度限制。
 LIMITEXCEEDED_PARAMETERLENGTHLIMITEXCEEDED = 'LimitExceeded.ParameterLengthLimitExceeded'

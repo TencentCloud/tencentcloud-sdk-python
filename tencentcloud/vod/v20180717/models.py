@@ -12159,6 +12159,40 @@ class FaceConfigureInfoForUpdate(AbstractModel):
         
 
 
+class FileDeleteResultItem(AbstractModel):
+    """文件删除结果信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FileId: 删除的文件 ID 。
+        :type FileId: str
+        :param DeleteParts: 本次删除的文件部分。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeleteParts: list of MediaDeleteItem
+        """
+        self.FileId = None
+        self.DeleteParts = None
+
+
+    def _deserialize(self, params):
+        self.FileId = params.get("FileId")
+        if params.get("DeleteParts") is not None:
+            self.DeleteParts = []
+            for item in params.get("DeleteParts"):
+                obj = MediaDeleteItem()
+                obj._deserialize(item)
+                self.DeleteParts.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class FileDeleteTask(AbstractModel):
     """文件删除任务
 
@@ -12168,12 +12202,21 @@ class FileDeleteTask(AbstractModel):
         r"""
         :param FileIdSet: 删除文件 ID 列表。
         :type FileIdSet: list of str
+        :param FileDeleteResultInfo: 删除文件结果信息列表。
+        :type FileDeleteResultInfo: list of FileDeleteResultItem
         """
         self.FileIdSet = None
+        self.FileDeleteResultInfo = None
 
 
     def _deserialize(self, params):
         self.FileIdSet = params.get("FileIdSet")
+        if params.get("FileDeleteResultInfo") is not None:
+            self.FileDeleteResultInfo = []
+            for item in params.get("FileDeleteResultInfo"):
+                obj = FileDeleteResultItem()
+                obj._deserialize(item)
+                self.FileDeleteResultInfo.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -13094,7 +13137,7 @@ class LiveRealTimeClipRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StreamId: 推流[直播码](https://cloud.tencent.com/document/product/267/5959)。
+        :param StreamId: 推流直播码。
         :type StreamId: str
         :param StartTime: 流剪辑的开始时间，格式参照 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
         :type StartTime: str

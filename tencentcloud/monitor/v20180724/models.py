@@ -2558,6 +2558,8 @@ class DescribeAlarmPoliciesRequest(AbstractModel):
         :type NeedCorrespondence: int
         :param TriggerTasks: 按照触发任务（例如弹性伸缩）过滤策略。最多10个
         :type TriggerTasks: list of AlarmPolicyTriggerTask
+        :param OneClickPolicyType: 根据一键告警策略筛选 不传展示全部策略 ONECLICK=展示一键告警策略 NOT_ONECLICK=展示非一键告警策略
+        :type OneClickPolicyType: list of str
         """
         self.Module = None
         self.PageNumber = None
@@ -2579,6 +2581,7 @@ class DescribeAlarmPoliciesRequest(AbstractModel):
         self.InstanceGroupId = None
         self.NeedCorrespondence = None
         self.TriggerTasks = None
+        self.OneClickPolicyType = None
 
 
     def _deserialize(self, params):
@@ -2607,6 +2610,7 @@ class DescribeAlarmPoliciesRequest(AbstractModel):
                 obj = AlarmPolicyTriggerTask()
                 obj._deserialize(item)
                 self.TriggerTasks.append(obj)
+        self.OneClickPolicyType = params.get("OneClickPolicyType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

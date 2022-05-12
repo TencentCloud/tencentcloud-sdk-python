@@ -7849,7 +7849,7 @@ class TagSpecification(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ResourceType: 标签绑定的资源类型，云服务器为“instance”，专用宿主机为“host”
+        :param ResourceType: 标签绑定的资源类型，云服务器为“instance”，专用宿主机为“host”，镜像为“image”
         :type ResourceType: str
         :param Tags: 标签对列表
         :type Tags: list of Tag

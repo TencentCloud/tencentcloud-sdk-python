@@ -243,11 +243,11 @@ class CreateGroupRequest(AbstractModel):
         :type GroupId: str
         :param GroupName: 图库名称描述。
         :type GroupName: str
-        :param MaxCapacity: 该库的容量限制。
+        :param MaxCapacity: 图库可容纳的最大图片数量。
         :type MaxCapacity: int
         :param Brief: 简介。
         :type Brief: str
-        :param MaxQps: 该库的访问限频 ，默认10。
+        :param MaxQps: 访问限制默认为10qps，如需扩容请联系[在线客服](https://cloud.tencent.com/online-service)申请。
         :type MaxQps: int
         :param GroupType: 图库类型，对应不同服务类型，默认为1。建议手动调整为4～6，1～3为历史版本，不推荐。
 参数值：
