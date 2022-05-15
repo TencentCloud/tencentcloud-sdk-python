@@ -442,6 +442,34 @@ class BindRuleRealServersResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class Capacity(AbstractModel):
+    """接口扩展参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CTCCToken: 电信鉴权的Token
+        :type CTCCToken: str
+        :param Province: 终端所处在的省份，建议不填写由服务端自动获取，若需填写请填写带有省、市、自治区、特别行政区等后缀的省份中文全称
+        :type Province: str
+        """
+        self.CTCCToken = None
+        self.Province = None
+
+
+    def _deserialize(self, params):
+        self.CTCCToken = params.get("CTCCToken")
+        self.Province = params.get("Province")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Certificate(AbstractModel):
     """服务器证书
 
@@ -1126,6 +1154,81 @@ class CreateDomainResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreateFirstLinkSessionRequest(AbstractModel):
+    """CreateFirstLinkSession请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TemplateId: 模版ID
+        :type TemplateId: str
+        :param SrcAddressInfo: 终端网络信息
+        :type SrcAddressInfo: :class:`tencentcloud.gaap.v20180529.models.SrcAddressInfo`
+        :param DestAddressInfo: 加速目标网络信息
+        :type DestAddressInfo: :class:`tencentcloud.gaap.v20180529.models.DestAddressInfo`
+        :param DeviceInfo: 终端设备信息
+        :type DeviceInfo: :class:`tencentcloud.gaap.v20180529.models.DeviceInfo`
+        :param Capacity: 接口扩展参数，如果是电信用户，需要填充CTCC Token字段
+        :type Capacity: :class:`tencentcloud.gaap.v20180529.models.Capacity`
+        """
+        self.TemplateId = None
+        self.SrcAddressInfo = None
+        self.DestAddressInfo = None
+        self.DeviceInfo = None
+        self.Capacity = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+        if params.get("SrcAddressInfo") is not None:
+            self.SrcAddressInfo = SrcAddressInfo()
+            self.SrcAddressInfo._deserialize(params.get("SrcAddressInfo"))
+        if params.get("DestAddressInfo") is not None:
+            self.DestAddressInfo = DestAddressInfo()
+            self.DestAddressInfo._deserialize(params.get("DestAddressInfo"))
+        if params.get("DeviceInfo") is not None:
+            self.DeviceInfo = DeviceInfo()
+            self.DeviceInfo._deserialize(params.get("DeviceInfo"))
+        if params.get("Capacity") is not None:
+            self.Capacity = Capacity()
+            self.Capacity._deserialize(params.get("Capacity"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateFirstLinkSessionResponse(AbstractModel):
+    """CreateFirstLinkSession返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SessionId: 加速成功时返回，单次加速唯一会话Id。。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SessionId: str
+        :param Duration: 剩余的加速时间，单位秒。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Duration: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.SessionId = None
+        self.Duration = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.SessionId = params.get("SessionId")
+        self.Duration = params.get("Duration")
         self.RequestId = params.get("RequestId")
 
 
@@ -2007,6 +2110,47 @@ class DeleteDomainResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteFirstLinkSessionRequest(AbstractModel):
+    """DeleteFirstLinkSession请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SessionId: 单次加速唯一会话Id
+        :type SessionId: str
+        """
+        self.SessionId = None
+
+
+    def _deserialize(self, params):
+        self.SessionId = params.get("SessionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteFirstLinkSessionResponse(AbstractModel):
+    """DeleteFirstLinkSession返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteListenersRequest(AbstractModel):
     """DeleteListeners请求参数结构体
 
@@ -2706,6 +2850,78 @@ class DescribeDomainErrorPageInfoResponse(AbstractModel):
                 obj = DomainErrorPageInfo()
                 obj._deserialize(item)
                 self.ErrorPageSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeFirstLinkSessionRequest(AbstractModel):
+    """DescribeFirstLinkSession请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SessionId: 单次加速唯一会话Id
+        :type SessionId: str
+        """
+        self.SessionId = None
+
+
+    def _deserialize(self, params):
+        self.SessionId = params.get("SessionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeFirstLinkSessionResponse(AbstractModel):
+    """DescribeFirstLinkSession返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Status: 会话状态，具体如下：
+1： 加速中；
+0： 非加速中。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param Duration: 剩余加速时间，单位秒。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Duration: int
+        :param SuiteType: 加速套餐类型。
+套餐说明如下：
+T100K：上/下行保障100kbps；
+BD4M：下行带宽保障4Mbps；
+BU4M：上行带宽保障4Mbps。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SuiteType: str
+        :param SrcPublicIpv4: 加速终端的公网ip
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SrcPublicIpv4: str
+        :param DestIpv4: 加速目标ip
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DestIpv4: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Status = None
+        self.Duration = None
+        self.SuiteType = None
+        self.SrcPublicIpv4 = None
+        self.DestIpv4 = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.Duration = params.get("Duration")
+        self.SuiteType = params.get("SuiteType")
+        self.SrcPublicIpv4 = params.get("SrcPublicIpv4")
+        self.DestIpv4 = params.get("DestIpv4")
         self.RequestId = params.get("RequestId")
 
 
@@ -4525,6 +4741,30 @@ class DescribeUDPListenersResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DestAddressInfo(AbstractModel):
+    """网络加速的目标地址信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DestIp: 加速的目标IP，可多ip一起加速
+        :type DestIp: list of str
+        """
+        self.DestIp = None
+
+
+    def _deserialize(self, params):
+        self.DestIp = params.get("DestIp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DestroyProxiesRequest(AbstractModel):
     """DestroyProxies请求参数结构体
 
@@ -4588,6 +4828,60 @@ class DestroyProxiesResponse(AbstractModel):
         self.InvalidStatusInstanceSet = params.get("InvalidStatusInstanceSet")
         self.OperationFailedInstanceSet = params.get("OperationFailedInstanceSet")
         self.RequestId = params.get("RequestId")
+
+
+class DeviceInfo(AbstractModel):
+    """终端设备信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Vendor: 设备数据卡所属的运营商
+1：移动
+2：电信
+3：联通
+4：广电
+99：其他
+        :type Vendor: int
+        :param OS: 设备操作系统
+1：Android
+2： IOS
+99：其他
+        :type OS: int
+        :param DeviceId: 设备唯一标识
+IOS 填写 IDFV
+Android 填写 IMEI
+        :type DeviceId: str
+        :param PhoneNum: 用户手机号码
+        :type PhoneNum: str
+        :param Wireless: 无线信息
+1：4G
+2：5G
+3：WIFI
+99：其他
+        :type Wireless: int
+        """
+        self.Vendor = None
+        self.OS = None
+        self.DeviceId = None
+        self.PhoneNum = None
+        self.Wireless = None
+
+
+    def _deserialize(self, params):
+        self.Vendor = params.get("Vendor")
+        self.OS = params.get("OS")
+        self.DeviceId = params.get("DeviceId")
+        self.PhoneNum = params.get("PhoneNum")
+        self.Wireless = params.get("Wireless")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DomainAccessRegionDict(AbstractModel):
@@ -7475,6 +7769,34 @@ class SetAuthenticationResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class SrcAddressInfo(AbstractModel):
+    """网络加速的原地址信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SrcIpv4: 内网Ip4地址
+        :type SrcIpv4: str
+        :param SrcPublicIpv4: 公网Ip4地址
+        :type SrcPublicIpv4: str
+        """
+        self.SrcIpv4 = None
+        self.SrcPublicIpv4 = None
+
+
+    def _deserialize(self, params):
+        self.SrcIpv4 = params.get("SrcIpv4")
+        self.SrcPublicIpv4 = params.get("SrcPublicIpv4")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class StatisticsDataInfo(AbstractModel):

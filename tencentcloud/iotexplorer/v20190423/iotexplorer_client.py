@@ -1564,7 +1564,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def GetCOSURL(self, request):
-        """本接口（GetCOSURL）用于获取固件存储在COS的URL
+        """本接口（GetCOSURL）用于获取固件COS存储的上传请求URL地址
 
         :param request: Request instance for GetCOSURL.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.GetCOSURLRequest`
@@ -2579,7 +2579,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def UploadFirmware(self, request):
-        """本接口（UploadFirmware）用于上传设备固件至平台
+        """本接口（UploadFirmware）用于创建设备固件版本信息，在平台用于固件版本升级、固件资源下发等。
 
         :param request: Request instance for UploadFirmware.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.UploadFirmwareRequest`

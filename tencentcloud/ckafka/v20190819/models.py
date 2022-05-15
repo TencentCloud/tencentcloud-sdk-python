@@ -4548,6 +4548,65 @@ class ModifyInstanceAttributesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyInstancePreRequest(AbstractModel):
+    """ModifyInstancePre请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例名称
+        :type InstanceId: str
+        :param DiskSize: 预计磁盘，根据磁盘步长，规格向上调整。
+        :type DiskSize: int
+        :param BandWidth: 预计带宽，根据带宽步长，规格向上调整。
+        :type BandWidth: int
+        :param Partition: 预计分区，根据带宽步长，规格向上调整。
+        :type Partition: int
+        """
+        self.InstanceId = None
+        self.DiskSize = None
+        self.BandWidth = None
+        self.Partition = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.DiskSize = params.get("DiskSize")
+        self.BandWidth = params.get("BandWidth")
+        self.Partition = params.get("Partition")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyInstancePreResponse(AbstractModel):
+    """ModifyInstancePre返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 变更预付费实例配置返回结构
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.CreateInstancePreResp`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = CreateInstancePreResp()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyPasswordRequest(AbstractModel):
     """ModifyPassword请求参数结构体
 

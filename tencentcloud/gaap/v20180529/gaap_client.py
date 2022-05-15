@@ -347,6 +347,35 @@ class GaapClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateFirstLinkSession(self, request):
+        """本接口（CreateFirstLinkSession）用于创建接入段加速会话，创建有可能成功，也可能失败，需要通过返回码来进行判断。
+
+        :param request: Request instance for CreateFirstLinkSession.
+        :type request: :class:`tencentcloud.gaap.v20180529.models.CreateFirstLinkSessionRequest`
+        :rtype: :class:`tencentcloud.gaap.v20180529.models.CreateFirstLinkSessionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateFirstLinkSession", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateFirstLinkSessionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateHTTPListener(self, request):
         """该接口（CreateHTTPListener）用于在通道实例下创建HTTP协议类型的监听器。
 
@@ -710,6 +739,35 @@ class GaapClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteDomainErrorPageInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteFirstLinkSession(self, request):
+        """本接口（DeleteFirstLinkSession）用于删除接入段加速会话，删除加速会话后会停止加速。
+
+        :param request: Request instance for DeleteFirstLinkSession.
+        :type request: :class:`tencentcloud.gaap.v20180529.models.DeleteFirstLinkSessionRequest`
+        :rtype: :class:`tencentcloud.gaap.v20180529.models.DeleteFirstLinkSessionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteFirstLinkSession", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteFirstLinkSessionResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1145,6 +1203,35 @@ class GaapClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDomainErrorPageInfoByIdsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeFirstLinkSession(self, request):
+        """本接口（DescribeFirstLinkSession）用于查询接入段加速会话状态，包括会话状态，生效时长，加速套餐等信息。
+
+        :param request: Request instance for DescribeFirstLinkSession.
+        :type request: :class:`tencentcloud.gaap.v20180529.models.DescribeFirstLinkSessionRequest`
+        :rtype: :class:`tencentcloud.gaap.v20180529.models.DescribeFirstLinkSessionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeFirstLinkSession", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeFirstLinkSessionResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

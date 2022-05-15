@@ -1897,6 +1897,9 @@ class ContainerGroupDeploy(AbstractModel):
         :param KubeInjectEnable: KubeInjectEnable值
 注意：此字段可能返回 null，表示取不到有效值。
         :type KubeInjectEnable: bool
+        :param RepoType: 仓库类型 (person, tcr)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RepoType: str
         """
         self.GroupId = None
         self.GroupName = None
@@ -1933,6 +1936,7 @@ class ContainerGroupDeploy(AbstractModel):
         self.VolumeInfos = None
         self.VolumeMountInfos = None
         self.KubeInjectEnable = None
+        self.RepoType = None
 
 
     def _deserialize(self, params):
@@ -1995,6 +1999,7 @@ class ContainerGroupDeploy(AbstractModel):
                 obj._deserialize(item)
                 self.VolumeMountInfos.append(obj)
         self.KubeInjectEnable = params.get("KubeInjectEnable")
+        self.RepoType = params.get("RepoType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
