@@ -209,6 +209,11 @@ def test_import_cdb():
     from tencentcloud.cdb.v20170320 import models
 
 
+def test_import_cdc():
+    from tencentcloud.cdc.v20201214 import cdc_client
+    from tencentcloud.cdc.v20201214 import models
+
+
 def test_import_cdn():
     from tencentcloud.cdn.v20180606 import cdn_client
     from tencentcloud.cdn.v20180606 import models

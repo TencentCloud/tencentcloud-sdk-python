@@ -102,7 +102,7 @@ class BindStaffSkillGroupListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SdkAppId: 实例ID
+        :param SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
         :type SdkAppId: int
         :param StaffEmail: 坐席邮箱
         :type StaffEmail: str
@@ -288,7 +288,7 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SdkAppId: 呼叫中心实例Id
+        :param SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
         :type SdkAppId: int
         :param NotBefore: 任务起始时间戳，Unix 秒级时间戳
         :type NotBefore: int
@@ -430,7 +430,7 @@ class CreateSDKLoginTokenRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SdkAppId: 应用ID。
+        :param SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
         :type SdkAppId: int
         :param SeatUserId: 坐席账号。
         :type SeatUserId: str
@@ -487,7 +487,7 @@ class CreateStaffRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SdkAppId: 应用ID
+        :param SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
         :type SdkAppId: int
         :param Staffs: 客服信息，个数不超过 10
         :type Staffs: list of SeatUserInfo
@@ -547,7 +547,7 @@ class CreateUserSigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SdkAppId: 应用 ID
+        :param SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
         :type SdkAppId: int
         :param Uid: 用户 ID
         :type Uid: str
@@ -604,7 +604,7 @@ class DeleteStaffRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SdkAppId: 实例ID
+        :param SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
         :type SdkAppId: int
         :param StaffList: 待删除客服邮箱列表
         :type StaffList: list of str
@@ -654,7 +654,7 @@ class DescribeAutoCalloutTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SdkAppId: 呼叫中心实例Id
+        :param SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
         :type SdkAppId: int
         :param TaskId: 任务Id
         :type TaskId: int
@@ -737,7 +737,7 @@ class DescribeAutoCalloutTasksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SdkAppId: 呼叫中心实例Id
+        :param SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
         :type SdkAppId: int
         :param PageSize: 分页大小
         :type PageSize: int
@@ -862,7 +862,7 @@ class DescribeCallInMetricsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SdkAppId: 实例ID
+        :param SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
         :type SdkAppId: int
         :param EnabledSkillGroup: 是否返回技能组维度信息，默认“是”
         :type EnabledSkillGroup: bool
@@ -941,9 +941,9 @@ class DescribeChatMessagesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例ID
+        :param InstanceId: 实例 ID（废弃）
         :type InstanceId: int
-        :param SdkAppId: 应用ID
+        :param SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
         :type SdkAppId: int
         :param CdrId: 服务记录ID
         :type CdrId: str
@@ -992,6 +992,7 @@ class DescribeChatMessagesResponse(AbstractModel):
         :param TotalCount: 总记录数
         :type TotalCount: int
         :param Messages: 消息列表
+注意：此字段可能返回 null，表示取不到有效值。
         :type Messages: list of MessageBody
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1023,9 +1024,9 @@ class DescribeIMCdrsRequest(AbstractModel):
         :type StartTimestamp: int
         :param EndTimestamp: 结束时间
         :type EndTimestamp: int
-        :param InstanceId: 实例ID
+        :param InstanceId: 实例 ID（废弃）
         :type InstanceId: int
-        :param SdkAppId: 应用ID
+        :param SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
         :type SdkAppId: int
         :param Limit: 返回记录条数 最大为100默认20
         :type Limit: int
@@ -1097,7 +1098,7 @@ class DescribePSTNActiveSessionListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SdkAppId: 应用 ID
+        :param SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
         :type SdkAppId: int
         :param Offset: 数据偏移
         :type Offset: int
@@ -1291,7 +1292,7 @@ class DescribeSkillGroupInfoListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SdkAppId: 应用ID
+        :param SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
         :type SdkAppId: int
         :param PageSize: 分页尺寸，上限 100
         :type PageSize: int
@@ -1361,7 +1362,7 @@ class DescribeStaffInfoListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SdkAppId: 应用ID
+        :param SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
         :type SdkAppId: int
         :param PageSize: 分页尺寸，上限 100
         :type PageSize: int
@@ -1431,7 +1432,7 @@ class DescribeStaffStatusMetricsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SdkAppId: 实例ID
+        :param SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
         :type SdkAppId: int
         :param StaffList: 筛选坐席列表，默认不传返回全部坐席信息
         :type StaffList: list of str
@@ -1636,9 +1637,9 @@ class DescribeTelSessionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SdkAppId: 应用ID
+        :param SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
         :type SdkAppId: int
-        :param SessionId: 会话ID
+        :param SessionId: 会话 ID
         :type SessionId: str
         """
         self.SdkAppId = None
@@ -2876,7 +2877,7 @@ class UnbindStaffSkillGroupListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SdkAppId: 实例ID
+        :param SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
         :type SdkAppId: int
         :param StaffEmail: 客服邮箱
         :type StaffEmail: str

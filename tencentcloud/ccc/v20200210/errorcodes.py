@@ -20,6 +20,9 @@ FAILEDOPERATION_CALLOUTFAILED = 'FailedOperation.CallOutFailed'
 # 重复账号。
 FAILEDOPERATION_DUPLICATEDACCOUNT = 'FailedOperation.DuplicatedAccount'
 
+# 权限不足。
+FAILEDOPERATION_PERMISSIONDENIED = 'FailedOperation.PermissionDenied'
+
 # 内部错误。
 INTERNALERROR = 'InternalError'
 

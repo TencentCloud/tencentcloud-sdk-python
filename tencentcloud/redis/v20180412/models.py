@@ -5429,6 +5429,55 @@ class ModifyInstanceParamsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyInstanceReadOnlyRequest(AbstractModel):
+    """ModifyInstanceReadOnly请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param InputMode: 实例输入模式，0：读写 1：只读
+        :type InputMode: str
+        """
+        self.InstanceId = None
+        self.InputMode = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.InputMode = params.get("InputMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyInstanceReadOnlyResponse(AbstractModel):
+    """ModifyInstanceReadOnly返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 任务ID
+        :type TaskId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyInstanceRequest(AbstractModel):
     """ModifyInstance请求参数结构体
 

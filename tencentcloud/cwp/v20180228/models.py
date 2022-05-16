@@ -9058,6 +9058,8 @@ class DescribeHistoryServiceResponse(AbstractModel):
         :type ResourceId: str
         :param Status: 0 没开通 1 正常 2隔离 3销毁
         :type Status: int
+        :param StartTime: 开始时间
+        :type StartTime: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -9067,6 +9069,7 @@ class DescribeHistoryServiceResponse(AbstractModel):
         self.IsAutoOpenRenew = None
         self.ResourceId = None
         self.Status = None
+        self.StartTime = None
         self.RequestId = None
 
 
@@ -9077,6 +9080,7 @@ class DescribeHistoryServiceResponse(AbstractModel):
         self.IsAutoOpenRenew = params.get("IsAutoOpenRenew")
         self.ResourceId = params.get("ResourceId")
         self.Status = params.get("Status")
+        self.StartTime = params.get("StartTime")
         self.RequestId = params.get("RequestId")
 
 

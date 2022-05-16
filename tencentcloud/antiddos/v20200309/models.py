@@ -4583,6 +4583,8 @@ class DescribeListBGPInstancesRequest(AbstractModel):
         :type FilterBoundStatus: str
         :param FilterInstanceIdList: 实例id数组
         :type FilterInstanceIdList: list of str
+        :param FilterEnterpriseFlag: 企业版搜索
+        :type FilterEnterpriseFlag: int
         """
         self.Offset = None
         self.Limit = None
@@ -4594,6 +4596,7 @@ class DescribeListBGPInstancesRequest(AbstractModel):
         self.FilterStatus = None
         self.FilterBoundStatus = None
         self.FilterInstanceIdList = None
+        self.FilterEnterpriseFlag = None
 
 
     def _deserialize(self, params):
@@ -4607,6 +4610,7 @@ class DescribeListBGPInstancesRequest(AbstractModel):
         self.FilterStatus = params.get("FilterStatus")
         self.FilterBoundStatus = params.get("FilterBoundStatus")
         self.FilterInstanceIdList = params.get("FilterInstanceIdList")
+        self.FilterEnterpriseFlag = params.get("FilterEnterpriseFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -1908,6 +1908,38 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeLicenseUsageData(self, request):
+        """该接口返回查询时间范围内每天 License 请求次数信息。
+           1. 可以查询最近365天内的 License 请求次数统计数据。
+           2. 查询时间跨度不超过90天。
+           3. 查询时间跨度超过1天的，返回以天为粒度的数据，否则，返回以5分钟为粒度的数据。
+
+        :param request: Request instance for DescribeLicenseUsageData.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeLicenseUsageDataRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeLicenseUsageDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLicenseUsageData", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeLicenseUsageDataResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeMediaInfos(self, request):
         """1. 该接口可以获取多个媒体文件的多种信息，包括：
             1. 基础信息（basicInfo）：包括媒体名称、分类、播放地址、封面图片等。

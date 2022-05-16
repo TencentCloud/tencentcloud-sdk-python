@@ -20,6 +20,9 @@ INTERNALERROR_QUERYERROR = 'InternalError.QueryError'
 # 标签操作失败。
 INTERNALERROR_TAGFAILURE = 'InternalError.TagFailure'
 
+# 未知错误。
+INTERNALERROR_UNKNOWNERROR = 'InternalError.UnknownError'
+
 # 请求格式不正确。
 INVALIDPARAMETERVALUE_BADREQUESTFORMAT = 'InvalidParameterValue.BadRequestFormat'
 

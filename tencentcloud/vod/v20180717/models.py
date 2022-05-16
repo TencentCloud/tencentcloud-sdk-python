@@ -9693,6 +9693,69 @@ class DescribeImageSpriteTemplatesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeLicenseUsageDataRequest(AbstractModel):
+    """DescribeLicenseUsageData请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StartTime: 起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#52)。
+        :type StartTime: str
+        :param EndTime: 结束日期，需大于等于起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#52)。
+        :type EndTime: str
+        :param LicenseType: License 类型，默认为 DRM 。目前支持的 License 类型包括：
+<li> DRM: DRM 加密播放 License</li>
+        :type LicenseType: str
+        :param SubAppId: 点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.LicenseType = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.LicenseType = params.get("LicenseType")
+        self.SubAppId = params.get("SubAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLicenseUsageDataResponse(AbstractModel):
+    """DescribeLicenseUsageData返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LicenseUsageDataSet: License 查询次数统计数据，展示所查询 License 次数的明细数据。
+        :type LicenseUsageDataSet: list of LicenseUsageDataItem
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.LicenseUsageDataSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("LicenseUsageDataSet") is not None:
+            self.LicenseUsageDataSet = []
+            for item in params.get("LicenseUsageDataSet"):
+                obj = LicenseUsageDataItem()
+                obj._deserialize(item)
+                self.LicenseUsageDataSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeMediaInfosRequest(AbstractModel):
     """DescribeMediaInfos请求参数结构体
 
@@ -13093,6 +13156,34 @@ class ImageWatermarkTemplate(AbstractModel):
         self.Width = params.get("Width")
         self.Height = params.get("Height")
         self.RepeatType = params.get("RepeatType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LicenseUsageDataItem(AbstractModel):
+    """License 请求次数统计数据。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Time: 数据所在时间区间的开始时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#52)。如：当时间粒度为天，2018-12-01T00:00:00+08:00，表示2018年12月1日（含）到2018年12月2日（不含）区间。
+        :type Time: str
+        :param Count: License 请求次数。
+        :type Count: int
+        """
+        self.Time = None
+        self.Count = None
+
+
+    def _deserialize(self, params):
+        self.Time = params.get("Time")
+        self.Count = params.get("Count")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

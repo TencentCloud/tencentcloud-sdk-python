@@ -17,30 +17,30 @@ import json
 
 from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentCloudSDKException
 from tencentcloud.common.abstract_client import AbstractClient
-from tencentcloud.ccc.v20200210 import models
+from tencentcloud.cdc.v20201214 import models
 
 
-class CccClient(AbstractClient):
-    _apiVersion = '2020-02-10'
-    _endpoint = 'ccc.tencentcloudapi.com'
-    _service = 'ccc'
+class CdcClient(AbstractClient):
+    _apiVersion = '2020-12-14'
+    _endpoint = 'cdc.tencentcloudapi.com'
+    _service = 'cdc'
 
 
-    def BindStaffSkillGroupList(self, request):
-        """绑定坐席所属技能组
+    def CreateDedicatedCluster(self, request):
+        """创建专用集群
 
-        :param request: Request instance for BindStaffSkillGroupList.
-        :type request: :class:`tencentcloud.ccc.v20200210.models.BindStaffSkillGroupListRequest`
-        :rtype: :class:`tencentcloud.ccc.v20200210.models.BindStaffSkillGroupListResponse`
+        :param request: Request instance for CreateDedicatedCluster.
+        :type request: :class:`tencentcloud.cdc.v20201214.models.CreateDedicatedClusterRequest`
+        :rtype: :class:`tencentcloud.cdc.v20201214.models.CreateDedicatedClusterResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("BindStaffSkillGroupList", params, headers=headers)
+            body = self.call("CreateDedicatedCluster", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.BindStaffSkillGroupListResponse()
+                model = models.CreateDedicatedClusterResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -55,21 +55,21 @@ class CccClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def CreateAutoCalloutTask(self, request):
-        """创建自动外呼任务
+    def CreateDedicatedClusterOrder(self, request):
+        """创建专用集群订单
 
-        :param request: Request instance for CreateAutoCalloutTask.
-        :type request: :class:`tencentcloud.ccc.v20200210.models.CreateAutoCalloutTaskRequest`
-        :rtype: :class:`tencentcloud.ccc.v20200210.models.CreateAutoCalloutTaskResponse`
+        :param request: Request instance for CreateDedicatedClusterOrder.
+        :type request: :class:`tencentcloud.cdc.v20201214.models.CreateDedicatedClusterOrderRequest`
+        :rtype: :class:`tencentcloud.cdc.v20201214.models.CreateDedicatedClusterOrderResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("CreateAutoCalloutTask", params, headers=headers)
+            body = self.call("CreateDedicatedClusterOrder", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.CreateAutoCalloutTaskResponse()
+                model = models.CreateDedicatedClusterOrderResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -84,21 +84,21 @@ class CccClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def CreateCallOutSession(self, request):
-        """创建外呼会话，当前仅支持双呼，即先使用平台号码呼出到坐席手机上，坐席接听后，然后再外呼用户，而且由于运营商频率限制，坐席手机号必须先加白名单，避免频控导致外呼失败。
+    def CreateSite(self, request):
+        """创建站点
 
-        :param request: Request instance for CreateCallOutSession.
-        :type request: :class:`tencentcloud.ccc.v20200210.models.CreateCallOutSessionRequest`
-        :rtype: :class:`tencentcloud.ccc.v20200210.models.CreateCallOutSessionResponse`
+        :param request: Request instance for CreateSite.
+        :type request: :class:`tencentcloud.cdc.v20201214.models.CreateSiteRequest`
+        :rtype: :class:`tencentcloud.cdc.v20201214.models.CreateSiteResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("CreateCallOutSession", params, headers=headers)
+            body = self.call("CreateSite", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.CreateCallOutSessionResponse()
+                model = models.CreateSiteResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -113,21 +113,21 @@ class CccClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def CreateSDKLoginToken(self, request):
-        """创建 SDK 登录 Token。
+    def DeleteDedicatedClusters(self, request):
+        """删除专用集群
 
-        :param request: Request instance for CreateSDKLoginToken.
-        :type request: :class:`tencentcloud.ccc.v20200210.models.CreateSDKLoginTokenRequest`
-        :rtype: :class:`tencentcloud.ccc.v20200210.models.CreateSDKLoginTokenResponse`
+        :param request: Request instance for DeleteDedicatedClusters.
+        :type request: :class:`tencentcloud.cdc.v20201214.models.DeleteDedicatedClustersRequest`
+        :rtype: :class:`tencentcloud.cdc.v20201214.models.DeleteDedicatedClustersResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("CreateSDKLoginToken", params, headers=headers)
+            body = self.call("DeleteDedicatedClusters", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.CreateSDKLoginTokenResponse()
+                model = models.DeleteDedicatedClustersResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -142,21 +142,21 @@ class CccClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def CreateStaff(self, request):
-        """创建客服账号。
+    def DeleteSites(self, request):
+        """删除站点
 
-        :param request: Request instance for CreateStaff.
-        :type request: :class:`tencentcloud.ccc.v20200210.models.CreateStaffRequest`
-        :rtype: :class:`tencentcloud.ccc.v20200210.models.CreateStaffResponse`
+        :param request: Request instance for DeleteSites.
+        :type request: :class:`tencentcloud.cdc.v20201214.models.DeleteSitesRequest`
+        :rtype: :class:`tencentcloud.cdc.v20201214.models.DeleteSitesResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("CreateStaff", params, headers=headers)
+            body = self.call("DeleteSites", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.CreateStaffResponse()
+                model = models.DeleteSitesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -171,21 +171,21 @@ class CccClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def CreateUserSig(self, request):
-        """创建用户数据签名
+    def DescribeDedicatedClusterCosCapacity(self, request):
+        """查询专用集群内cos的容量信息
 
-        :param request: Request instance for CreateUserSig.
-        :type request: :class:`tencentcloud.ccc.v20200210.models.CreateUserSigRequest`
-        :rtype: :class:`tencentcloud.ccc.v20200210.models.CreateUserSigResponse`
+        :param request: Request instance for DescribeDedicatedClusterCosCapacity.
+        :type request: :class:`tencentcloud.cdc.v20201214.models.DescribeDedicatedClusterCosCapacityRequest`
+        :rtype: :class:`tencentcloud.cdc.v20201214.models.DescribeDedicatedClusterCosCapacityResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("CreateUserSig", params, headers=headers)
+            body = self.call("DescribeDedicatedClusterCosCapacity", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.CreateUserSigResponse()
+                model = models.DescribeDedicatedClusterCosCapacityResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -200,21 +200,21 @@ class CccClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DeleteStaff(self, request):
-        """删除坐席信息
+    def DescribeDedicatedClusterHostStatistics(self, request):
+        """查询专用集群内宿主机的统计信息
 
-        :param request: Request instance for DeleteStaff.
-        :type request: :class:`tencentcloud.ccc.v20200210.models.DeleteStaffRequest`
-        :rtype: :class:`tencentcloud.ccc.v20200210.models.DeleteStaffResponse`
+        :param request: Request instance for DescribeDedicatedClusterHostStatistics.
+        :type request: :class:`tencentcloud.cdc.v20201214.models.DescribeDedicatedClusterHostStatisticsRequest`
+        :rtype: :class:`tencentcloud.cdc.v20201214.models.DescribeDedicatedClusterHostStatisticsResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("DeleteStaff", params, headers=headers)
+            body = self.call("DescribeDedicatedClusterHostStatistics", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DeleteStaffResponse()
+                model = models.DescribeDedicatedClusterHostStatisticsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -229,21 +229,21 @@ class CccClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeAutoCalloutTask(self, request):
-        """查询自动外呼任务详情
+    def DescribeDedicatedClusterHosts(self, request):
+        """专用集群宿主机信息
 
-        :param request: Request instance for DescribeAutoCalloutTask.
-        :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeAutoCalloutTaskRequest`
-        :rtype: :class:`tencentcloud.ccc.v20200210.models.DescribeAutoCalloutTaskResponse`
+        :param request: Request instance for DescribeDedicatedClusterHosts.
+        :type request: :class:`tencentcloud.cdc.v20201214.models.DescribeDedicatedClusterHostsRequest`
+        :rtype: :class:`tencentcloud.cdc.v20201214.models.DescribeDedicatedClusterHostsResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("DescribeAutoCalloutTask", params, headers=headers)
+            body = self.call("DescribeDedicatedClusterHosts", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeAutoCalloutTaskResponse()
+                model = models.DescribeDedicatedClusterHostsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -258,21 +258,21 @@ class CccClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeAutoCalloutTasks(self, request):
-        """批量查询自动任务外呼
+    def DescribeDedicatedClusterInstanceTypes(self, request):
+        """查询专用集群支持的实例规格列表
 
-        :param request: Request instance for DescribeAutoCalloutTasks.
-        :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeAutoCalloutTasksRequest`
-        :rtype: :class:`tencentcloud.ccc.v20200210.models.DescribeAutoCalloutTasksResponse`
+        :param request: Request instance for DescribeDedicatedClusterInstanceTypes.
+        :type request: :class:`tencentcloud.cdc.v20201214.models.DescribeDedicatedClusterInstanceTypesRequest`
+        :rtype: :class:`tencentcloud.cdc.v20201214.models.DescribeDedicatedClusterInstanceTypesResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("DescribeAutoCalloutTasks", params, headers=headers)
+            body = self.call("DescribeDedicatedClusterInstanceTypes", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeAutoCalloutTasksResponse()
+                model = models.DescribeDedicatedClusterInstanceTypesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -287,21 +287,21 @@ class CccClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeCCCBuyInfoList(self, request):
-        """获取用户购买信息列表
+    def DescribeDedicatedClusterOrders(self, request):
+        """查询专用集群订单列表
 
-        :param request: Request instance for DescribeCCCBuyInfoList.
-        :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeCCCBuyInfoListRequest`
-        :rtype: :class:`tencentcloud.ccc.v20200210.models.DescribeCCCBuyInfoListResponse`
+        :param request: Request instance for DescribeDedicatedClusterOrders.
+        :type request: :class:`tencentcloud.cdc.v20201214.models.DescribeDedicatedClusterOrdersRequest`
+        :rtype: :class:`tencentcloud.cdc.v20201214.models.DescribeDedicatedClusterOrdersResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("DescribeCCCBuyInfoList", params, headers=headers)
+            body = self.call("DescribeDedicatedClusterOrders", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeCCCBuyInfoListResponse()
+                model = models.DescribeDedicatedClusterOrdersResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -316,21 +316,21 @@ class CccClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeCallInMetrics(self, request):
-        """获取呼入实时数据统计指标
+    def DescribeDedicatedClusterOverview(self, request):
+        """专用集群概览信息
 
-        :param request: Request instance for DescribeCallInMetrics.
-        :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeCallInMetricsRequest`
-        :rtype: :class:`tencentcloud.ccc.v20200210.models.DescribeCallInMetricsResponse`
+        :param request: Request instance for DescribeDedicatedClusterOverview.
+        :type request: :class:`tencentcloud.cdc.v20201214.models.DescribeDedicatedClusterOverviewRequest`
+        :rtype: :class:`tencentcloud.cdc.v20201214.models.DescribeDedicatedClusterOverviewResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("DescribeCallInMetrics", params, headers=headers)
+            body = self.call("DescribeDedicatedClusterOverview", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeCallInMetricsResponse()
+                model = models.DescribeDedicatedClusterOverviewResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -345,21 +345,21 @@ class CccClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeChatMessages(self, request):
-        """包括具体聊天内容
+    def DescribeDedicatedClusterTypes(self, request):
+        """查询专有集群配置列表
 
-        :param request: Request instance for DescribeChatMessages.
-        :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeChatMessagesRequest`
-        :rtype: :class:`tencentcloud.ccc.v20200210.models.DescribeChatMessagesResponse`
+        :param request: Request instance for DescribeDedicatedClusterTypes.
+        :type request: :class:`tencentcloud.cdc.v20201214.models.DescribeDedicatedClusterTypesRequest`
+        :rtype: :class:`tencentcloud.cdc.v20201214.models.DescribeDedicatedClusterTypesResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("DescribeChatMessages", params, headers=headers)
+            body = self.call("DescribeDedicatedClusterTypes", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeChatMessagesResponse()
+                model = models.DescribeDedicatedClusterTypesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -374,21 +374,21 @@ class CccClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeIMCdrs(self, request):
-        """包括全媒体和文本两种类型
+    def DescribeDedicatedClusters(self, request):
+        """查询专用集群列表
 
-        :param request: Request instance for DescribeIMCdrs.
-        :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeIMCdrsRequest`
-        :rtype: :class:`tencentcloud.ccc.v20200210.models.DescribeIMCdrsResponse`
+        :param request: Request instance for DescribeDedicatedClusters.
+        :type request: :class:`tencentcloud.cdc.v20201214.models.DescribeDedicatedClustersRequest`
+        :rtype: :class:`tencentcloud.cdc.v20201214.models.DescribeDedicatedClustersResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("DescribeIMCdrs", params, headers=headers)
+            body = self.call("DescribeDedicatedClusters", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeIMCdrsResponse()
+                model = models.DescribeDedicatedClustersResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -403,21 +403,21 @@ class CccClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribePSTNActiveSessionList(self, request):
-        """获取当前正在通话的会话列表
+    def DescribeDedicatedSupportedZones(self, request):
+        """查询专用集群支持的可用区列表
 
-        :param request: Request instance for DescribePSTNActiveSessionList.
-        :type request: :class:`tencentcloud.ccc.v20200210.models.DescribePSTNActiveSessionListRequest`
-        :rtype: :class:`tencentcloud.ccc.v20200210.models.DescribePSTNActiveSessionListResponse`
+        :param request: Request instance for DescribeDedicatedSupportedZones.
+        :type request: :class:`tencentcloud.cdc.v20201214.models.DescribeDedicatedSupportedZonesRequest`
+        :rtype: :class:`tencentcloud.cdc.v20201214.models.DescribeDedicatedSupportedZonesResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("DescribePSTNActiveSessionList", params, headers=headers)
+            body = self.call("DescribeDedicatedSupportedZones", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribePSTNActiveSessionListResponse()
+                model = models.DescribeDedicatedSupportedZonesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -432,21 +432,21 @@ class CccClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeProtectedTelCdr(self, request):
-        """获取主被叫受保护的电话服务记录与录音
+    def DescribeSites(self, request):
+        """查询站点列表
 
-        :param request: Request instance for DescribeProtectedTelCdr.
-        :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeProtectedTelCdrRequest`
-        :rtype: :class:`tencentcloud.ccc.v20200210.models.DescribeProtectedTelCdrResponse`
+        :param request: Request instance for DescribeSites.
+        :type request: :class:`tencentcloud.cdc.v20201214.models.DescribeSitesRequest`
+        :rtype: :class:`tencentcloud.cdc.v20201214.models.DescribeSitesResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("DescribeProtectedTelCdr", params, headers=headers)
+            body = self.call("DescribeSites", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeProtectedTelCdrResponse()
+                model = models.DescribeSitesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -461,23 +461,21 @@ class CccClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeSeatUserList(self, request):
-        """废弃接口下架
+    def DescribeSitesDetail(self, request):
+        """查询站点详情
 
-        获取坐席用户列表（废弃）
-
-        :param request: Request instance for DescribeSeatUserList.
-        :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeSeatUserListRequest`
-        :rtype: :class:`tencentcloud.ccc.v20200210.models.DescribeSeatUserListResponse`
+        :param request: Request instance for DescribeSitesDetail.
+        :type request: :class:`tencentcloud.cdc.v20201214.models.DescribeSitesDetailRequest`
+        :rtype: :class:`tencentcloud.cdc.v20201214.models.DescribeSitesDetailResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("DescribeSeatUserList", params, headers=headers)
+            body = self.call("DescribeSitesDetail", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeSeatUserListResponse()
+                model = models.DescribeSitesDetailResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -492,21 +490,21 @@ class CccClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeSkillGroupInfoList(self, request):
-        """获取技能组信息列表
+    def ModifyDedicatedClusterInfo(self, request):
+        """修改本地专用集群信息
 
-        :param request: Request instance for DescribeSkillGroupInfoList.
-        :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeSkillGroupInfoListRequest`
-        :rtype: :class:`tencentcloud.ccc.v20200210.models.DescribeSkillGroupInfoListResponse`
+        :param request: Request instance for ModifyDedicatedClusterInfo.
+        :type request: :class:`tencentcloud.cdc.v20201214.models.ModifyDedicatedClusterInfoRequest`
+        :rtype: :class:`tencentcloud.cdc.v20201214.models.ModifyDedicatedClusterInfoResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("DescribeSkillGroupInfoList", params, headers=headers)
+            body = self.call("ModifyDedicatedClusterInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeSkillGroupInfoListResponse()
+                model = models.ModifyDedicatedClusterInfoResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -521,21 +519,21 @@ class CccClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeStaffInfoList(self, request):
-        """获取坐席信息列表
+    def ModifyOrderStatus(self, request):
+        """修改大订单、小订单的状态
 
-        :param request: Request instance for DescribeStaffInfoList.
-        :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeStaffInfoListRequest`
-        :rtype: :class:`tencentcloud.ccc.v20200210.models.DescribeStaffInfoListResponse`
+        :param request: Request instance for ModifyOrderStatus.
+        :type request: :class:`tencentcloud.cdc.v20201214.models.ModifyOrderStatusRequest`
+        :rtype: :class:`tencentcloud.cdc.v20201214.models.ModifyOrderStatusResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("DescribeStaffInfoList", params, headers=headers)
+            body = self.call("ModifyOrderStatus", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeStaffInfoListResponse()
+                model = models.ModifyOrderStatusResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -550,21 +548,21 @@ class CccClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeStaffStatusMetrics(self, request):
-        """获取坐席实时状态统计指标
+    def ModifySiteDeviceInfo(self, request):
+        """修改机房设备信息
 
-        :param request: Request instance for DescribeStaffStatusMetrics.
-        :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeStaffStatusMetricsRequest`
-        :rtype: :class:`tencentcloud.ccc.v20200210.models.DescribeStaffStatusMetricsResponse`
+        :param request: Request instance for ModifySiteDeviceInfo.
+        :type request: :class:`tencentcloud.cdc.v20201214.models.ModifySiteDeviceInfoRequest`
+        :rtype: :class:`tencentcloud.cdc.v20201214.models.ModifySiteDeviceInfoResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("DescribeStaffStatusMetrics", params, headers=headers)
+            body = self.call("ModifySiteDeviceInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeStaffStatusMetricsResponse()
+                model = models.ModifySiteDeviceInfoResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -579,137 +577,21 @@ class CccClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeTelCallInfo(self, request):
-        """按实例获取电话消耗统计
+    def ModifySiteInfo(self, request):
+        """修改机房信息
 
-        :param request: Request instance for DescribeTelCallInfo.
-        :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeTelCallInfoRequest`
-        :rtype: :class:`tencentcloud.ccc.v20200210.models.DescribeTelCallInfoResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeTelCallInfo", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeTelCallInfoResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def DescribeTelCdr(self, request):
-        """获取电话服务记录与录音
-
-        :param request: Request instance for DescribeTelCdr.
-        :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeTelCdrRequest`
-        :rtype: :class:`tencentcloud.ccc.v20200210.models.DescribeTelCdrResponse`
+        :param request: Request instance for ModifySiteInfo.
+        :type request: :class:`tencentcloud.cdc.v20201214.models.ModifySiteInfoRequest`
+        :rtype: :class:`tencentcloud.cdc.v20201214.models.ModifySiteInfoResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("DescribeTelCdr", params, headers=headers)
+            body = self.call("ModifySiteInfo", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeTelCdrResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def DescribeTelSession(self, request):
-        """获取 PSTN 会话信息
-
-        :param request: Request instance for DescribeTelSession.
-        :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeTelSessionRequest`
-        :rtype: :class:`tencentcloud.ccc.v20200210.models.DescribeTelSessionResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeTelSession", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeTelSessionResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def StopAutoCalloutTask(self, request):
-        """停止自动外呼任务
-
-        :param request: Request instance for StopAutoCalloutTask.
-        :type request: :class:`tencentcloud.ccc.v20200210.models.StopAutoCalloutTaskRequest`
-        :rtype: :class:`tencentcloud.ccc.v20200210.models.StopAutoCalloutTaskResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("StopAutoCalloutTask", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.StopAutoCalloutTaskResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def UnbindStaffSkillGroupList(self, request):
-        """解绑坐席所属技能组
-
-        :param request: Request instance for UnbindStaffSkillGroupList.
-        :type request: :class:`tencentcloud.ccc.v20200210.models.UnbindStaffSkillGroupListRequest`
-        :rtype: :class:`tencentcloud.ccc.v20200210.models.UnbindStaffSkillGroupListResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("UnbindStaffSkillGroupList", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.UnbindStaffSkillGroupListResponse()
+                model = models.ModifySiteInfoResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
