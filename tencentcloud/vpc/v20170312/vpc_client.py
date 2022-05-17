@@ -5321,6 +5321,35 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DisableFlowLogs(self, request):
+        """本接口（DisableFlowLogs）用于停止流日志。
+
+        :param request: Request instance for DisableFlowLogs.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DisableFlowLogsRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DisableFlowLogsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DisableFlowLogs", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DisableFlowLogsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DisableGatewayFlowMonitor(self, request):
         """本接口（DisableGatewayFlowMonitor）用于关闭网关流量监控。
 
@@ -5691,6 +5720,35 @@ class VpcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.EnableCcnRoutesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def EnableFlowLogs(self, request):
+        """本接口（EnableFlowLogs）用于启动流日志。
+
+        :param request: Request instance for EnableFlowLogs.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.EnableFlowLogsRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.EnableFlowLogsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("EnableFlowLogs", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.EnableFlowLogsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

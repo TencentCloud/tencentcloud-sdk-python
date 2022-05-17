@@ -541,6 +541,97 @@ class DescribeApmInstancesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeGeneralMetricDataRequest(AbstractModel):
+    """DescribeGeneralMetricData请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Filters: 要过滤的维度信息，支持：service.name（服务名）、span.kind（客户端/服务端视角）为维度进行过滤。
+
+span.kind:
+
+       server:服务端视角
+       client:客户端视角
+
+默认为服务端视角进行查询。
+        :type Filters: list of GeneralFilter
+        :param Metrics: 需要查询的指标，不可自定义输入。支持：service_request_count（总请求）、service_duration（平均响应时间）的指标数据。
+        :type Metrics: list of str
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param ViewName: 视图名称
+        :type ViewName: str
+        :param GroupBy: 聚合维度，支持：service.name（服务名）、span.kind （客户端/服务端视角）维度进行聚合。
+        :type GroupBy: list of str
+        :param StartTime: 起始时间的时间戳，单位为秒，只支持查询2天内最多1小时的指标数据。
+        :type StartTime: int
+        :param EndTime: 结束时间的时间戳，单位为秒，只支持查询2天内最多1小时的指标数据。
+        :type EndTime: int
+        :param Period: 聚合粒度，单位为秒，最小为60s，即一分钟的聚合粒度；如果为空或0则计算开始时间到截止时间的指标数据，上报其他值会报错。
+        :type Period: int
+        """
+        self.Filters = None
+        self.Metrics = None
+        self.InstanceId = None
+        self.ViewName = None
+        self.GroupBy = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Period = None
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = GeneralFilter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Metrics = params.get("Metrics")
+        self.InstanceId = params.get("InstanceId")
+        self.ViewName = params.get("ViewName")
+        self.GroupBy = params.get("GroupBy")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Period = params.get("Period")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeGeneralMetricDataResponse(AbstractModel):
+    """DescribeGeneralMetricData返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Records: 指标结果集
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Records: list of Line
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Records = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Records") is not None:
+            self.Records = []
+            for item in params.get("Records"):
+                obj = Line()
+                obj._deserialize(item)
+                self.Records.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeMetricRecordsRequest(AbstractModel):
     """DescribeMetricRecords请求参数结构体
 
@@ -758,6 +849,81 @@ class Filter(AbstractModel):
         self.Type = params.get("Type")
         self.Key = params.get("Key")
         self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GeneralFilter(AbstractModel):
+    """查询过滤参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Key: 过滤维度名
+        :type Key: str
+        :param Value: 过滤值
+        :type Value: str
+        """
+        self.Key = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Line(AbstractModel):
+    """指标曲线数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MetricName: 指标名
+        :type MetricName: str
+        :param MetricNameCN: 指标中文名
+        :type MetricNameCN: str
+        :param TimeSerial: 时间序列
+        :type TimeSerial: list of int
+        :param DataSerial: 数据序列
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataSerial: list of float
+        :param Tags: 维度列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of ApmTag
+        """
+        self.MetricName = None
+        self.MetricNameCN = None
+        self.TimeSerial = None
+        self.DataSerial = None
+        self.Tags = None
+
+
+    def _deserialize(self, params):
+        self.MetricName = params.get("MetricName")
+        self.MetricNameCN = params.get("MetricNameCN")
+        self.TimeSerial = params.get("TimeSerial")
+        self.DataSerial = params.get("DataSerial")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = ApmTag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -2576,6 +2576,29 @@ class CreateImageCacheResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreatePrometheusAlertPolicyRequest(AbstractModel):
+    """CreatePrometheusAlertPolicy请求参数结构体
+
+    """
+
+
+class CreatePrometheusAlertPolicyResponse(AbstractModel):
+    """CreatePrometheusAlertPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CreatePrometheusAlertRuleRequest(AbstractModel):
     """CreatePrometheusAlertRule请求参数结构体
 
@@ -2662,6 +2685,29 @@ class CreatePrometheusDashboardRequest(AbstractModel):
 
 class CreatePrometheusDashboardResponse(AbstractModel):
     """CreatePrometheusDashboard返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreatePrometheusTempRequest(AbstractModel):
+    """CreatePrometheusTemp请求参数结构体
+
+    """
+
+
+class CreatePrometheusTempResponse(AbstractModel):
+    """CreatePrometheusTemp返回参数结构体
 
     """
 
@@ -3367,6 +3413,29 @@ class DeleteImageCachesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeletePrometheusAlertPolicyRequest(AbstractModel):
+    """DeletePrometheusAlertPolicy请求参数结构体
+
+    """
+
+
+class DeletePrometheusAlertPolicyResponse(AbstractModel):
+    """DeletePrometheusAlertPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeletePrometheusAlertRuleRequest(AbstractModel):
     """DeletePrometheusAlertRule请求参数结构体
 
@@ -3397,6 +3466,52 @@ class DeletePrometheusAlertRuleRequest(AbstractModel):
 
 class DeletePrometheusAlertRuleResponse(AbstractModel):
     """DeletePrometheusAlertRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeletePrometheusTempRequest(AbstractModel):
+    """DeletePrometheusTemp请求参数结构体
+
+    """
+
+
+class DeletePrometheusTempResponse(AbstractModel):
+    """DeletePrometheusTemp返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeletePrometheusTempSyncRequest(AbstractModel):
+    """DeletePrometheusTempSync请求参数结构体
+
+    """
+
+
+class DeletePrometheusTempSyncResponse(AbstractModel):
+    """DeletePrometheusTempSync返回参数结构体
 
     """
 
@@ -5580,6 +5695,29 @@ class DescribePrometheusAlertHistoryResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribePrometheusAlertPolicyRequest(AbstractModel):
+    """DescribePrometheusAlertPolicy请求参数结构体
+
+    """
+
+
+class DescribePrometheusAlertPolicyResponse(AbstractModel):
+    """DescribePrometheusAlertPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DescribePrometheusAlertRuleRequest(AbstractModel):
     """DescribePrometheusAlertRule请求参数结构体
 
@@ -5649,6 +5787,29 @@ class DescribePrometheusAlertRuleResponse(AbstractModel):
                 obj._deserialize(item)
                 self.AlertRules.append(obj)
         self.Total = params.get("Total")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribePrometheusClusterAgentsRequest(AbstractModel):
+    """DescribePrometheusClusterAgents请求参数结构体
+
+    """
+
+
+class DescribePrometheusClusterAgentsResponse(AbstractModel):
+    """DescribePrometheusClusterAgents返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -5729,6 +5890,29 @@ class DescribePrometheusInstanceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribePrometheusInstancesOverviewRequest(AbstractModel):
+    """DescribePrometheusInstancesOverview请求参数结构体
+
+    """
+
+
+class DescribePrometheusInstancesOverviewResponse(AbstractModel):
+    """DescribePrometheusInstancesOverview返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DescribePrometheusOverviewsRequest(AbstractModel):
     """DescribePrometheusOverviews请求参数结构体
 
@@ -5799,6 +5983,29 @@ class DescribePrometheusOverviewsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribePrometheusRecordRulesRequest(AbstractModel):
+    """DescribePrometheusRecordRules请求参数结构体
+
+    """
+
+
+class DescribePrometheusRecordRulesResponse(AbstractModel):
+    """DescribePrometheusRecordRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DescribePrometheusTargetsRequest(AbstractModel):
     """DescribePrometheusTargets请求参数结构体
 
@@ -5865,6 +6072,52 @@ class DescribePrometheusTargetsResponse(AbstractModel):
                 obj = PrometheusJobTargets()
                 obj._deserialize(item)
                 self.Jobs.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribePrometheusTempRequest(AbstractModel):
+    """DescribePrometheusTemp请求参数结构体
+
+    """
+
+
+class DescribePrometheusTempResponse(AbstractModel):
+    """DescribePrometheusTemp返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DescribePrometheusTempSyncRequest(AbstractModel):
+    """DescribePrometheusTempSync请求参数结构体
+
+    """
+
+
+class DescribePrometheusTempSyncResponse(AbstractModel):
+    """DescribePrometheusTempSync返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -6302,6 +6555,47 @@ class DescribeVpcCniPodLimitsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DisableClusterAuditRequest(AbstractModel):
+    """DisableClusterAudit请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        """
+        self.ClusterId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DisableClusterAuditResponse(AbstractModel):
+    """DisableClusterAudit返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DisableClusterDeletionProtectionRequest(AbstractModel):
     """DisableClusterDeletionProtection请求参数结构体
 
@@ -6328,6 +6622,47 @@ class DisableClusterDeletionProtectionRequest(AbstractModel):
 
 class DisableClusterDeletionProtectionResponse(AbstractModel):
     """DisableClusterDeletionProtection返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DisableEventPersistenceRequest(AbstractModel):
+    """DisableEventPersistence请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        """
+        self.ClusterId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DisableEventPersistenceResponse(AbstractModel):
+    """DisableEventPersistence返回参数结构体
 
     """
 
@@ -6755,6 +7090,55 @@ class EksCluster(AbstractModel):
         
 
 
+class EnableClusterAuditRequest(AbstractModel):
+    """EnableClusterAudit请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param LogsetId: CLS日志集ID
+        :type LogsetId: str
+        :param TopicId: CLS日志主题ID
+        :type TopicId: str
+        """
+        self.ClusterId = None
+        self.LogsetId = None
+        self.TopicId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.LogsetId = params.get("LogsetId")
+        self.TopicId = params.get("TopicId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EnableClusterAuditResponse(AbstractModel):
+    """EnableClusterAudit返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class EnableClusterDeletionProtectionRequest(AbstractModel):
     """EnableClusterDeletionProtection请求参数结构体
 
@@ -6781,6 +7165,55 @@ class EnableClusterDeletionProtectionRequest(AbstractModel):
 
 class EnableClusterDeletionProtectionResponse(AbstractModel):
     """EnableClusterDeletionProtection返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class EnableEventPersistenceRequest(AbstractModel):
+    """EnableEventPersistence请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param LogsetId: cls服务的logsetID
+        :type LogsetId: str
+        :param TopicId: cls服务的topicID
+        :type TopicId: str
+        """
+        self.ClusterId = None
+        self.LogsetId = None
+        self.TopicId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.LogsetId = params.get("LogsetId")
+        self.TopicId = params.get("TopicId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EnableEventPersistenceResponse(AbstractModel):
+    """EnableEventPersistence返回参数结构体
 
     """
 
@@ -7808,6 +8241,51 @@ class ImageRegistryCredential(AbstractModel):
         
 
 
+class InstallLogAgentRequest(AbstractModel):
+    """InstallLogAgent请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: TKE集群ID
+        :type ClusterId: str
+        :param KubeletRootDir: kubelet根目录
+        :type KubeletRootDir: str
+        """
+        self.ClusterId = None
+        self.KubeletRootDir = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.KubeletRootDir = params.get("KubeletRootDir")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InstallLogAgentResponse(AbstractModel):
+    """InstallLogAgent返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class Instance(AbstractModel):
     """集群的实例信息
 
@@ -8795,6 +9273,29 @@ class ModifyNodePoolInstanceTypesRequest(AbstractModel):
 
 class ModifyNodePoolInstanceTypesResponse(AbstractModel):
     """ModifyNodePoolInstanceTypes返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyPrometheusAlertPolicyRequest(AbstractModel):
+    """ModifyPrometheusAlertPolicy请求参数结构体
+
+    """
+
+
+class ModifyPrometheusAlertPolicyResponse(AbstractModel):
+    """ModifyPrometheusAlertPolicy返回参数结构体
 
     """
 
@@ -10790,6 +11291,29 @@ class SetNodePoolNodeProtectionResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class SyncPrometheusTempRequest(AbstractModel):
+    """SyncPrometheusTemp请求参数结构体
+
+    """
+
+
+class SyncPrometheusTempResponse(AbstractModel):
+    """SyncPrometheusTemp返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class SyncPrometheusTemplateRequest(AbstractModel):
     """SyncPrometheusTemplate请求参数结构体
 
@@ -11005,6 +11529,47 @@ class TcpSocket(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class UninstallLogAgentRequest(AbstractModel):
+    """UninstallLogAgent请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        """
+        self.ClusterId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UninstallLogAgentResponse(AbstractModel):
+    """UninstallLogAgent返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class UpdateClusterVersionRequest(AbstractModel):

@@ -113,6 +113,36 @@ class ApmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeGeneralMetricData(self, request):
+        """获取指标数据通用接口。用户根据需要上送请求参数，返回对应的指标数据。
+        接口调用频率限制为：20次/秒，1200次/分钟。单请求的数据点数限制为1440个。
+
+        :param request: Request instance for DescribeGeneralMetricData.
+        :type request: :class:`tencentcloud.apm.v20210622.models.DescribeGeneralMetricDataRequest`
+        :rtype: :class:`tencentcloud.apm.v20210622.models.DescribeGeneralMetricDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeGeneralMetricData", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeGeneralMetricDataResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeMetricRecords(self, request):
         """拉取通用指标列表
 

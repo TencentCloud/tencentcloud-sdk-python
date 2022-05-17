@@ -18,6 +18,198 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class FileTranslateRequest(AbstractModel):
+    """FileTranslate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Source: 源语言，支持
+zh:简体中文
+zh-HK：繁体中文
+zh-TW : 繁体中文
+zh-TR:  繁体中文
+en ：英语
+ar：阿拉伯语
+de：德语
+es：西班牙语
+fr：法语
+it：意大利语
+ja：日语
+pt：葡萄牙语
+ru：俄语
+ko：韩语
+km：高棉语
+lo：老挝语
+        :type Source: str
+        :param Target: 目标语言，各源语言的目标语言支持列表如下
+zh（简体中文）： en （英语）、 ar (阿拉伯语）、 de （德语）、  es（西班牙语） 、fr（法语）、  it（意大利语） 、 ja （日语）、 pt （葡萄牙语）、 ru（俄语）、  ko（韩语）、 km（高棉语）、   lo（老挝语）
+zh-HK（繁体中文） ：en （英语）、 ar (阿拉伯语）、 de （德语）、  es（西班牙语） 、fr（法语）、  it（意大利语） 、 ja （日语）、 pt （葡萄牙语）、 ru（俄语）、  ko（韩语）、 km（高棉语）、   lo（老挝语）
+zh-TW（繁体中文）：en （英语）、 ar (阿拉伯语）、 de （德语）、  es（西班牙语） 、fr（法语）、  it（意大利语） 、 ja （日语）、 pt （葡萄牙语）、 ru（俄语）、  ko（韩语）、 km（高棉语）、   lo（老挝语）
+zh-TR 繁体中文 : en （英语）、 ar (阿拉伯语）、 de （德语）、  es（西班牙语） 、fr（法语）、  it（意大利语） 、 ja （日语）、 pt （葡萄牙语）、 ru（俄语）、  ko（韩语）、 km（高棉语）、   lo（老挝语）
+en （英语） ：zh（简体中文）、zh-HK（繁体中文）、 zh-TW（繁体中文)、 zh-TR(繁体中文）、 ar (阿拉伯语）、 de （德语）、  es（西班牙语） 、fr（法语）、  it（意大利语） 、 ja （日语）、 pt （葡萄牙语）、 ru（俄语）、  ko（韩语）、 km（高棉语）、   lo（老挝语）
+ar（阿拉伯语） ：zh（简体中文）、zh-HK（繁体中文）、 zh-TW（繁体中文)、zh-TR(繁体中文）
+de（德语 ）：zh（简体中文）、zh-HK（繁体中文）、 zh-TW（繁体中文)、zh-TR(繁体中文）
+es（西班牙语）：zh（简体中文）、zh-HK（繁体中文）、 zh-TW（繁体中文)、zh-TR(繁体中文）
+fr（法语）：zh（简体中文）、zh-HK（繁体中文）、 zh-TW（繁体中文)、zh-TR(繁体中文）
+it（意大利语）：zh（简体中文）、zh-HK（繁体中文）、 zh-TW（繁体中文)、zh-TR(繁体中文）
+ja（日语）：zh（简体中文）、zh-HK（繁体中文）、 zh-TW（繁体中文)、zh-TR(繁体中文）
+pt（葡萄牙语）：zh（简体中文）、zh-HK（繁体中文）、 zh-TW（繁体中文)、zh-TR(繁体中文）
+ru（俄语）：zh（简体中文）、zh-HK（繁体中文）、 zh-TW（繁体中文)、zh-TR(繁体中文）
+ko（韩语）：zh（简体中文）、zh-HK（繁体中文）、 zh-TW（繁体中文)、zh-TR(繁体中文）
+km（高棉语）：zh（简体中文）、zh-HK（繁体中文）、 zh-TW（繁体中文)、zh-TR(繁体中文）
+lo（老挝语）：zh（简体中文）、zh-HK（繁体中文）、 zh-TW（繁体中文)、zh-TR(繁体中文）
+        :type Target: str
+        :param DocumentType: 文档类型：可支持以下几种(pdf,docx,pptx,xlsx,txt,xml,html,markdown,properties)
+        :type DocumentType: str
+        :param SourceType: 数据来源，0：url，1：直接传文件编码后数据
+        :type SourceType: int
+        :param Url: 需要翻译文件url
+        :type Url: str
+        :param BasicDocumentType: 原始文档类型
+        :type BasicDocumentType: str
+        :param CallbackUrl: 回调url
+        :type CallbackUrl: str
+        :param Data: 文件数据，当SourceType 值为1时必须填写，为0可不写。要base64编码(采用python语言时注意读取文件应该为string而不是byte，以byte格式读取后要decode()。编码后的数据不可带有回车换行符)。数据要小于5MB。
+        :type Data: str
+        """
+        self.Source = None
+        self.Target = None
+        self.DocumentType = None
+        self.SourceType = None
+        self.Url = None
+        self.BasicDocumentType = None
+        self.CallbackUrl = None
+        self.Data = None
+
+
+    def _deserialize(self, params):
+        self.Source = params.get("Source")
+        self.Target = params.get("Target")
+        self.DocumentType = params.get("DocumentType")
+        self.SourceType = params.get("SourceType")
+        self.Url = params.get("Url")
+        self.BasicDocumentType = params.get("BasicDocumentType")
+        self.CallbackUrl = params.get("CallbackUrl")
+        self.Data = params.get("Data")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FileTranslateResponse(AbstractModel):
+    """FileTranslate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 文件翻译的请求返回结果，包含结果查询需要的TaskId
+        :type Data: :class:`tencentcloud.tmt.v20180321.models.Task`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = Task()
+            self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
+
+
+class GetFileTranslateData(AbstractModel):
+    """查询文件翻译任务
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 任务ID
+        :type TaskId: str
+        :param Status: 状态
+        :type Status: str
+        :param FileData: 文件数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileData: str
+        :param Message: 错误提示
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Message: str
+        """
+        self.TaskId = None
+        self.Status = None
+        self.FileData = None
+        self.Message = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.Status = params.get("Status")
+        self.FileData = params.get("FileData")
+        self.Message = params.get("Message")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetFileTranslateRequest(AbstractModel):
+    """GetFileTranslate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 任务ID
+        :type TaskId: str
+        """
+        self.TaskId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetFileTranslateResponse(AbstractModel):
+    """GetFileTranslate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 任务id
+        :type Data: :class:`tencentcloud.tmt.v20180321.models.GetFileTranslateData`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = GetFileTranslateData()
+            self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
+
+
 class ImageRecord(AbstractModel):
     """图片翻译结果
 
@@ -341,6 +533,30 @@ class SpeechTranslateResponse(AbstractModel):
         self.Target = params.get("Target")
         self.VadSeq = params.get("VadSeq")
         self.RequestId = params.get("RequestId")
+
+
+class Task(AbstractModel):
+    """文件翻译请求的返回数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 任务ID，可通过此ID在轮询接口获取识别状态与结果。注意：TaskId数据类型为字符串类型
+        :type TaskId: str
+        """
+        self.TaskId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class TextTranslateBatchRequest(AbstractModel):

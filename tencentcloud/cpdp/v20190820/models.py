@@ -6843,11 +6843,13 @@ class CreateOpenBankPaymentOrderRequest(AbstractModel):
 __TENPAY__: 商企付
 __WECHAT__: 微信支付
 __ALIPAY__: 支付宝
+__WECHAT__: 微信支付
         :type ChannelName: str
         :param PaymentMethod: 付款方式。如
 __EBANK_PAYMENT__:B2B EBank付款
 __OPENBANK_PAYMENT__:B2C  openbank付款
 __SAFT_ISV__:支付宝安心发
+__TRANS_TO_CHANGE__: 微信支付转账到零钱v2
         :type PaymentMethod: str
         :param PaymentMode: 付款模式。默认直接支付，如
 __DIRECT__:直接支付
@@ -10761,15 +10763,21 @@ class OpenBankPayeeInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PayeeId: 收款方唯一标识。当渠道为TENPAY，付款方式为EBANK_PAYMENT，必填，上送收款方入驻云企付商户ID；付款方式为OPENBANK_PAYMENT时，非必填，输入外部收款方的标识ID
+        :param PayeeId: 收款方唯一标识。
+当渠道为TENPAY，付款方式为EBANK_PAYMENT，必填，上送收款方入驻云企付商户ID；
+付款方式为OPENBANK_PAYMENT时，非必填，输入外部收款方的标识ID
+渠道为WECHAT，付款方式为TRANS_TO_CHANGE时，上送微信OPEN_ID；
         :type PayeeId: str
-        :param PayeeName: 收款方名称。当渠道为TENPAY，付款方式为EBANK_PAYMENT时，上送收款方入驻云企付的商户名称；
-渠道为TENPAY，付款方式为OPENBANK_PAYMENT时必选，上送收款方账户名称；渠道为ALIPAY，付款方式为SAFT_ISV时，收款账户标识类型为ALIPAY_LOGON_ID时必传，上送收款方真实姓名。
-        :type PayeeName: str
-        :param BankAccountNumber: 银行账号。渠道为TENPAY，付款方式为OPENBANK_PAYMENT时必选
-        :type BankAccountNumber: str
         :param BankBranchName: 支行名称。
         :type BankBranchName: str
+        :param BankAccountNumber: 银行账号。渠道为TENPAY，付款方式为OPENBANK_PAYMENT时必选
+        :type BankAccountNumber: str
+        :param PayeeName: 收款方名称。
+当渠道为TENPAY，付款方式为EBANK_PAYMENT时，上送收款方入驻云企付的商户名称；
+渠道为TENPAY，付款方式为OPENBANK_PAYMENT时必选，上送收款方账户名称；
+渠道为ALIPAY，付款方式为SAFT_ISV时，收款账户标识类型为ALIPAY_LOGON_ID时必传，上送收款方真实姓名。
+渠道为WECHAT，付款方式为TRANS_TO_CHANGE时，上送收款人姓名。
+        :type PayeeName: str
         :param BankBranchId: 联行号。渠道为TENPAY，付款方式为OPENBANK_PAYMENT时必选
         :type BankBranchId: str
         :param BindSerialNo: 收款方绑卡序列号。
@@ -10784,9 +10792,9 @@ ALIPAY_LOGON_ID：支付宝登录号。
         :type AccountType: str
         """
         self.PayeeId = None
-        self.PayeeName = None
-        self.BankAccountNumber = None
         self.BankBranchName = None
+        self.BankAccountNumber = None
+        self.PayeeName = None
         self.BankBranchId = None
         self.BindSerialNo = None
         self.AccountType = None
@@ -10794,9 +10802,9 @@ ALIPAY_LOGON_ID：支付宝登录号。
 
     def _deserialize(self, params):
         self.PayeeId = params.get("PayeeId")
-        self.PayeeName = params.get("PayeeName")
-        self.BankAccountNumber = params.get("BankAccountNumber")
         self.BankBranchName = params.get("BankBranchName")
+        self.BankAccountNumber = params.get("BankAccountNumber")
+        self.PayeeName = params.get("PayeeName")
         self.BankBranchId = params.get("BankBranchId")
         self.BindSerialNo = params.get("BindSerialNo")
         self.AccountType = params.get("AccountType")

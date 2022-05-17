@@ -27,9 +27,11 @@ class CreatePrefetchTaskRequest(AbstractModel):
         r"""
         :param ZoneId: Zone ID
         :type ZoneId: str
-        :param Targets: 预热的资源列表
+        :param Targets: 要预热的资源列表，每个元素格式类似如下:
+http://www.example.com/example.txt
         :type Targets: list of str
         :param EncodeUrl: 是否对url进行encode
+若内容含有非 ASCII 字符集的字符，请开启此开关，编码转换（编码规则遵循 RFC3986）
         :type EncodeUrl: bool
         :param Headers: 附带的http头部信息
         :type Headers: list of Header
@@ -105,10 +107,18 @@ class CreatePurgeTaskRequest(AbstractModel):
 - purge_host：Hostname
 - purge_all：全部缓存
         :type Type: str
-        :param Targets: 内容，一行一个
+        :param Targets: 要刷新的资源列表，每个元素格式依据Type而定
+1) Type = purge_host 时
+形如：www.example.com 或 foo.bar.example.com
+2) Type = purge_prefix 时
+形如：http://www.example.com/example
+3) Type = purge_url 时
+形如：https://www.example.com/example.jpg
+4）Type = purge_all 时
+Targets可为空，不需要填写
         :type Targets: list of str
         :param EncodeUrl: 若有编码转换，仅清除编码转换后匹配的资源
-若内容含有非 ASCII 字符集的字符，请打开 URL Encode 开关，编码转换（编码规则遵循 RFC3986）
+若内容含有非 ASCII 字符集的字符，请开启此开关，编码转换（编码规则遵循 RFC3986）
         :type EncodeUrl: bool
         """
         self.ZoneId = None
@@ -408,6 +418,97 @@ class DescribeZonesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DownloadL7LogsRequest(AbstractModel):
+    """DownloadL7Logs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StartTime: 起始时间(需严格按照RFC3339标准传参)
+        :type StartTime: str
+        :param EndTime: 结束时间(需严格按照RFC3339标准传参)
+        :type EndTime: str
+        :param PageSize: 每页展示条数
+        :type PageSize: int
+        :param PageNo: 当前页
+        :type PageNo: int
+        :param Zones: 站点集合
+        :type Zones: list of str
+        :param Domains: 域名集合
+        :type Domains: list of str
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.PageSize = None
+        self.PageNo = None
+        self.Zones = None
+        self.Domains = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.PageSize = params.get("PageSize")
+        self.PageNo = params.get("PageNo")
+        self.Zones = params.get("Zones")
+        self.Domains = params.get("Domains")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DownloadL7LogsResponse(AbstractModel):
+    """DownloadL7Logs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 七层离线日志data
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: list of L7OfflineLog
+        :param PageSize: 页面大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageSize: int
+        :param PageNo: 页号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageNo: int
+        :param Pages: 总页数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Pages: int
+        :param TotalSize: 总条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalSize: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.PageSize = None
+        self.PageNo = None
+        self.Pages = None
+        self.TotalSize = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = L7OfflineLog()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.PageSize = params.get("PageSize")
+        self.PageNo = params.get("PageNo")
+        self.Pages = params.get("Pages")
+        self.TotalSize = params.get("TotalSize")
+        self.RequestId = params.get("RequestId")
+
+
 class FailReason(AbstractModel):
     """失败原因
 
@@ -417,7 +518,8 @@ class FailReason(AbstractModel):
         r"""
         :param Reason: 失败原因
         :type Reason: str
-        :param Targets: 失败列表
+        :param Targets: 处理失败的资源列表。
+该列表元素来源于输入参数中的Targets，因此格式和入参中的Targets保持一致
         :type Targets: list of str
         """
         self.Reason = None
@@ -455,6 +557,51 @@ class Header(AbstractModel):
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class L7OfflineLog(AbstractModel):
+    """离线日志详细信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LogTime: 日志打包开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogTime: int
+        :param Domain: 站点名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Domain: str
+        :param Size: 原始大小 单位byte
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Size: int
+        :param Url: 下载地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Url: str
+        :param LogPacketName: 日志数据包名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogPacketName: str
+        """
+        self.LogTime = None
+        self.Domain = None
+        self.Size = None
+        self.Url = None
+        self.LogPacketName = None
+
+
+    def _deserialize(self, params):
+        self.LogTime = params.get("LogTime")
+        self.Domain = params.get("Domain")
+        self.Size = params.get("Size")
+        self.Url = params.get("Url")
+        self.LogPacketName = params.get("LogPacketName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

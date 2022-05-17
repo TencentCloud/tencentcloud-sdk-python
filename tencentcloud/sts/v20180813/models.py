@@ -77,12 +77,15 @@ qcs::cam::uin/12345678:role/tencentcloudServiceRole/4611686018427397920、qcs::c
         :param ExternalId: 角色外部ID，可在[访问管理](https://console.cloud.tencent.com/cam/role)，点击角色名获取。
 长度在2到128之间，可包含大小写字符，数字以及特殊字符：=,.@:/-。 正则为：[\w+=,.@:\/-]*
         :type ExternalId: str
+        :param Tags: 会话标签列表。最多可以传递 50 个会话标签，不支持包含相同标签键。
+        :type Tags: list of Tag
         """
         self.RoleArn = None
         self.RoleSessionName = None
         self.DurationSeconds = None
         self.Policy = None
         self.ExternalId = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -91,6 +94,12 @@ qcs::cam::uin/12345678:role/tencentcloudServiceRole/4611686018427397920、qcs::c
         self.DurationSeconds = params.get("DurationSeconds")
         self.Policy = params.get("Policy")
         self.ExternalId = params.get("ExternalId")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -469,3 +478,31 @@ class QueryApiKeyResponse(AbstractModel):
                 obj._deserialize(item)
                 self.IdKeys.append(obj)
         self.RequestId = params.get("RequestId")
+
+
+class Tag(AbstractModel):
+    """标签
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Key: 标签键，最长128个字符，区分大小写。
+        :type Key: str
+        :param Value: 标签值，最长256个字符，区分大小写。
+        :type Value: str
+        """
+        self.Key = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        

@@ -3257,7 +3257,7 @@ class CpdpClient(AbstractClient):
 
 
     def QueryOpenBankBankAccountBalance(self, request):
-        """云企付-查询账户余额
+        """云企付-子商户银行卡余额查询
 
         :param request: Request instance for QueryOpenBankBankAccountBalance.
         :type request: :class:`tencentcloud.cpdp.v20190820.models.QueryOpenBankBankAccountBalanceRequest`

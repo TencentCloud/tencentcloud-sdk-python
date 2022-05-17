@@ -245,6 +245,9 @@ INTERNALERROR_KUBERNETESGETOPERATIONERROR = 'InternalError.KubernetesGetOperatio
 # Kubernetes未知错误。
 INTERNALERROR_KUBERNETESINTERNAL = 'InternalError.KubernetesInternal'
 
+# Kubernetes Patch操作失败。
+INTERNALERROR_KUBERNETESPATCHOPERATIONERROR = 'InternalError.KubernetesPatchOperationError'
+
 # 底层调用CLB未知错误。
 INTERNALERROR_LBCOMMON = 'InternalError.LbCommon'
 

@@ -169,3 +169,32 @@ class TeoClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DownloadL7Logs(self, request):
+        """查询七层离线日志
+
+        :param request: Request instance for DownloadL7Logs.
+        :type request: :class:`tencentcloud.teo.v20220106.models.DownloadL7LogsRequest`
+        :rtype: :class:`tencentcloud.teo.v20220106.models.DownloadL7LogsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DownloadL7Logs", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DownloadL7LogsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
