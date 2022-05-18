@@ -872,12 +872,15 @@ class CreateRoleRequest(AbstractModel):
         :type ConsoleLogin: int
         :param SessionDuration: 申请角色临时密钥的最长有效期限制(范围：0~43200)
         :type SessionDuration: int
+        :param Tags: 角色绑定标签
+        :type Tags: list of RoleTags
         """
         self.RoleName = None
         self.PolicyDocument = None
         self.Description = None
         self.ConsoleLogin = None
         self.SessionDuration = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -886,6 +889,12 @@ class CreateRoleRequest(AbstractModel):
         self.Description = params.get("Description")
         self.ConsoleLogin = params.get("ConsoleLogin")
         self.SessionDuration = params.get("SessionDuration")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = RoleTags()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -983,16 +992,25 @@ class CreateServiceLinkedRoleRequest(AbstractModel):
         :type CustomSuffix: str
         :param Description: 角色说明。
         :type Description: str
+        :param Tags: 角色绑定标签。
+        :type Tags: list of RoleTags
         """
         self.QCSServiceName = None
         self.CustomSuffix = None
         self.Description = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
         self.QCSServiceName = params.get("QCSServiceName")
         self.CustomSuffix = params.get("CustomSuffix")
         self.Description = params.get("Description")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = RoleTags()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1648,14 +1666,23 @@ class DescribeRoleListRequest(AbstractModel):
         :type Page: int
         :param Rp: 每页行数，不能大于200
         :type Rp: int
+        :param Tags: 标签筛选
+        :type Tags: list of RoleTags
         """
         self.Page = None
         self.Rp = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
         self.Page = params.get("Page")
         self.Rp = params.get("Rp")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = RoleTags()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4543,6 +4570,9 @@ class RoleInfo(AbstractModel):
         :param DeletionTaskId: 服务相关角色删除TaskId
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeletionTaskId: str
+        :param Tags: 标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of RoleTags
         """
         self.RoleId = None
         self.RoleName = None
@@ -4554,6 +4584,7 @@ class RoleInfo(AbstractModel):
         self.RoleType = None
         self.SessionDuration = None
         self.DeletionTaskId = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -4567,6 +4598,40 @@ class RoleInfo(AbstractModel):
         self.RoleType = params.get("RoleType")
         self.SessionDuration = params.get("SessionDuration")
         self.DeletionTaskId = params.get("DeletionTaskId")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = RoleTags()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RoleTags(AbstractModel):
+    """角色标签类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Key: 标签键
+        :type Key: str
+        :param Value: 标签值
+        :type Value: str
+        """
+        self.Key = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

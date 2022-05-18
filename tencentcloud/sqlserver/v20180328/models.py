@@ -191,9 +191,12 @@ class AccountPrivilegeModifyInfo(AbstractModel):
         :type UserName: str
         :param DBPrivileges: 账号权限变更信息
         :type DBPrivileges: list of DBPrivilegeModifyInfo
+        :param IsAdmin: 是否为管理员账户
+        :type IsAdmin: bool
         """
         self.UserName = None
         self.DBPrivileges = None
+        self.IsAdmin = None
 
 
     def _deserialize(self, params):
@@ -204,6 +207,7 @@ class AccountPrivilegeModifyInfo(AbstractModel):
                 obj = DBPrivilegeModifyInfo()
                 obj._deserialize(item)
                 self.DBPrivileges.append(obj)
+        self.IsAdmin = params.get("IsAdmin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

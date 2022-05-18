@@ -4216,7 +4216,9 @@ class FullTextInfo(AbstractModel):
         r"""
         :param CaseSensitive: 是否大小写敏感
         :type CaseSensitive: bool
-        :param Tokenizer: 全文索引的分词符，字符串中每个字符代表一个分词符
+        :param Tokenizer: 全文索引的分词符，其中的每个字符代表一个分词符；
+仅支持英文符号及\n\t\r；
+推荐使用 @&?|#()='",;:<>[]{}/ \n\t\r\ 作为分词符；
         :type Tokenizer: str
         :param ContainZH: 是否包含中文
 注意：此字段可能返回 null，表示取不到有效值。
@@ -6690,7 +6692,10 @@ class ValueInfo(AbstractModel):
         r"""
         :param Type: 字段类型，目前支持的类型有：long、text、double
         :type Type: str
-        :param Tokenizer: 字段的分词符，只有当字段类型为text时才有意义；输入字符串中的每个字符代表一个分词符
+        :param Tokenizer: 字段的分词符，其中的每个字符代表一个分词符；
+仅支持英文符号及\n\t\r；
+long及double类型字段需为空；
+text类型字段推荐使用 @&?|#()='",;:<>[]{}/ \n\t\r\\ 作为分词符；
         :type Tokenizer: str
         :param SqlFlag: 字段是否开启分析功能
         :type SqlFlag: bool

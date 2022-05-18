@@ -2509,6 +2509,8 @@ class ModifyDynamicDNSRequest(AbstractModel):
         :type SubDomain: str
         :param RecordLineId: 线路的 ID，通过 API 记录线路获得，英文字符串，比如：10=1。参数RecordLineId优先级高于RecordLine，如果同时传递二者，优先使用RecordLineId参数。
         :type RecordLineId: str
+        :param Ttl: TTL值，如果不传，默认为域名的TTL值。
+        :type Ttl: int
         """
         self.Domain = None
         self.RecordId = None
@@ -2517,6 +2519,7 @@ class ModifyDynamicDNSRequest(AbstractModel):
         self.DomainId = None
         self.SubDomain = None
         self.RecordLineId = None
+        self.Ttl = None
 
 
     def _deserialize(self, params):
@@ -2527,6 +2530,7 @@ class ModifyDynamicDNSRequest(AbstractModel):
         self.DomainId = params.get("DomainId")
         self.SubDomain = params.get("SubDomain")
         self.RecordLineId = params.get("RecordLineId")
+        self.Ttl = params.get("Ttl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

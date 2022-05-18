@@ -3332,6 +3332,35 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyPrometheusTemp(self, request):
+        """修改模板内容
+
+        :param request: Request instance for ModifyPrometheusTemp.
+        :type request: :class:`tencentcloud.tke.v20180525.models.ModifyPrometheusTempRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.ModifyPrometheusTempResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyPrometheusTemp", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyPrometheusTempResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyPrometheusTemplate(self, request):
         """修改模板内容
 

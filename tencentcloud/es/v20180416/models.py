@@ -980,12 +980,17 @@ class InstanceInfo(AbstractModel):
         :type SubnetUid: str
         :param Status: 实例状态，0:处理中,1:正常,-1停止,-2:销毁中,-3:已销毁
         :type Status: int
+        :param RenewFlag: 自动续费标识。取值范围：
+RENEW_FLAG_AUTO：自动续费  
+RENEW_FLAG_MANUAL：不自动续费
+默认取值：
+RENEW_FLAG_DEFAULT：不自动续费
+若该参数指定为 RENEW_FLAG_AUTO，在账户余额充足的情况下，实例到期后将按月自动续费。
+        :type RenewFlag: str
         :param ChargeType: 实例计费模式。取值范围：  PREPAID：表示预付费，即包年包月  POSTPAID_BY_HOUR：表示后付费，即按量计费  CDHPAID：CDH付费，即只对CDH计费，不对CDH上的实例计费。
         :type ChargeType: str
         :param ChargePeriod: 包年包月购买时长,单位:月
         :type ChargePeriod: int
-        :param RenewFlag: 自动续费标识。取值范围：RENEW_FLAG_AUTO：自动续费  RENEW_FLAG_MANUAL：不自动续费  默认取值：RENEW_FLAG_DEFAULT：不自动续费。若该参数指定为RENEW_FLAG_AUTO，在账户余额充足的情况下，实例到期后将按月自动续费。
-        :type RenewFlag: str
         :param NodeType: 节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li>
         :type NodeType: str
         :param NodeNum: 节点个数
@@ -1158,9 +1163,9 @@ class InstanceInfo(AbstractModel):
         self.VpcUid = None
         self.SubnetUid = None
         self.Status = None
+        self.RenewFlag = None
         self.ChargeType = None
         self.ChargePeriod = None
-        self.RenewFlag = None
         self.NodeType = None
         self.NodeNum = None
         self.CpuNum = None
@@ -1235,9 +1240,9 @@ class InstanceInfo(AbstractModel):
         self.VpcUid = params.get("VpcUid")
         self.SubnetUid = params.get("SubnetUid")
         self.Status = params.get("Status")
+        self.RenewFlag = params.get("RenewFlag")
         self.ChargeType = params.get("ChargeType")
         self.ChargePeriod = params.get("ChargePeriod")
-        self.RenewFlag = params.get("RenewFlag")
         self.NodeType = params.get("NodeType")
         self.NodeNum = params.get("NodeNum")
         self.CpuNum = params.get("CpuNum")
