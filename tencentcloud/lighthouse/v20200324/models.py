@@ -2746,6 +2746,34 @@ class DescribeZonesRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param OrderField: 可用区列表排序的依据字段。取值范围：
+<li>ZONE：依据可用区排序。
+<li>INSTANCE_DISPLAY_LABEL：依据可用区展示标签排序, 可用区展示标签按可选择程度, 升序排列为: ['HIDDEN', 'NORMAL', 'SELECTED']。
+默认按可用区排序。
+        :type OrderField: str
+        :param Order: 输出可用区列表的排列顺序。取值范围：
+<li>ASC：升序排列。 
+<li>DESC：降序排列。
+默认按升序排列。
+        :type Order: str
+        """
+        self.OrderField = None
+        self.Order = None
+
+
+    def _deserialize(self, params):
+        self.OrderField = params.get("OrderField")
+        self.Order = params.get("Order")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribeZonesResponse(AbstractModel):
     """DescribeZones返回参数结构体

@@ -15054,7 +15054,7 @@ class WebSocket(AbstractModel):
         r"""
         :param Switch: WebSocket 超时配置开关, 开关为off时，平台仍支持WebSocket连接，此时超时时间默认为15秒，若需要调整超时时间，将开关置为on.
 
-* WebSocket 为内测功能,如需使用,请联系腾讯云工程师开白.
+* WebSocket 为ECDN产品功能，如需使用请通过ECDN域名配置.
         :type Switch: str
         :param Timeout: 设置超时时间，单位为秒，最大超时时间65秒。
 注意：此字段可能返回 null，表示取不到有效值。

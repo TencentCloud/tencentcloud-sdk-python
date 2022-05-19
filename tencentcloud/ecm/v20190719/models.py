@@ -9097,6 +9097,9 @@ DELETING：删除中
         :type EniType: int
         :param EcmRegion: EcmRegion ecm区域
         :type EcmRegion: str
+        :param Business: 网卡绑定的子机类型：cvm，eks。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Business: str
         """
         self.NetworkInterfaceId = None
         self.NetworkInterfaceName = None
@@ -9115,6 +9118,7 @@ DELETING：删除中
         self.TagSet = None
         self.EniType = None
         self.EcmRegion = None
+        self.Business = None
 
 
     def _deserialize(self, params):
@@ -9152,6 +9156,7 @@ DELETING：删除中
                 self.TagSet.append(obj)
         self.EniType = params.get("EniType")
         self.EcmRegion = params.get("EcmRegion")
+        self.Business = params.get("Business")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

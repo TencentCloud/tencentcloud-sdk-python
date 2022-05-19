@@ -26,6 +26,35 @@ class EmrClient(AbstractClient):
     _service = 'emr'
 
 
+    def AddUsersForUserManager(self, request):
+        """新增用户列表（用户管理）
+
+        :param request: Request instance for AddUsersForUserManager.
+        :type request: :class:`tencentcloud.emr.v20190103.models.AddUsersForUserManagerRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.AddUsersForUserManagerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AddUsersForUserManager", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AddUsersForUserManagerResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateInstance(self, request):
         """创建EMR集群实例
 
@@ -157,6 +186,35 @@ class EmrClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeInstancesList(self, request):
+        """EMR集群实例列表查询
+
+        :param request: Request instance for DescribeInstancesList.
+        :type request: :class:`tencentcloud.emr.v20190103.models.DescribeInstancesListRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.DescribeInstancesListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInstancesList", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeInstancesListResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

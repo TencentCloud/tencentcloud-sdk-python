@@ -490,6 +490,35 @@ class SslClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def HostCertificate(self, request):
+        """云资源托管
+
+        :param request: Request instance for HostCertificate.
+        :type request: :class:`tencentcloud.ssl.v20191205.models.HostCertificateRequest`
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.HostCertificateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("HostCertificate", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.HostCertificateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyCertificateAlias(self, request):
         """用户传入证书id和备注来修改证书备注。
 

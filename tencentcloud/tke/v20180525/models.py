@@ -2581,6 +2581,30 @@ class CreatePrometheusAlertPolicyRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例id
+        :type InstanceId: str
+        :param AlertRule: 告警配置
+        :type AlertRule: :class:`tencentcloud.tke.v20180525.models.PrometheusAlertPolicyItem`
+        """
+        self.InstanceId = None
+        self.AlertRule = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        if params.get("AlertRule") is not None:
+            self.AlertRule = PrometheusAlertPolicyItem()
+            self.AlertRule._deserialize(params.get("AlertRule"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class CreatePrometheusAlertPolicyResponse(AbstractModel):
     """CreatePrometheusAlertPolicy返回参数结构体
@@ -2589,13 +2613,17 @@ class CreatePrometheusAlertPolicyResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param Id: 告警id
+        :type Id: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.Id = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.Id = params.get("Id")
         self.RequestId = params.get("RequestId")
 
 
@@ -2700,10 +2728,82 @@ class CreatePrometheusDashboardResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreatePrometheusGlobalNotificationRequest(AbstractModel):
+    """CreatePrometheusGlobalNotification请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param Notification: 告警通知渠道
+        :type Notification: :class:`tencentcloud.tke.v20180525.models.PrometheusNotificationItem`
+        """
+        self.InstanceId = None
+        self.Notification = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        if params.get("Notification") is not None:
+            self.Notification = PrometheusNotificationItem()
+            self.Notification._deserialize(params.get("Notification"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreatePrometheusGlobalNotificationResponse(AbstractModel):
+    """CreatePrometheusGlobalNotification返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: 全局告警通知渠道ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Id = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.RequestId = params.get("RequestId")
+
+
 class CreatePrometheusTempRequest(AbstractModel):
     """CreatePrometheusTemp请求参数结构体
 
     """
+
+    def __init__(self):
+        r"""
+        :param Template: 模板设置
+        :type Template: :class:`tencentcloud.tke.v20180525.models.PrometheusTemp`
+        """
+        self.Template = None
+
+
+    def _deserialize(self, params):
+        if params.get("Template") is not None:
+            self.Template = PrometheusTemp()
+            self.Template._deserialize(params.get("Template"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class CreatePrometheusTempResponse(AbstractModel):
@@ -2713,13 +2813,17 @@ class CreatePrometheusTempResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param TemplateId: 模板Id
+        :type TemplateId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.TemplateId = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
         self.RequestId = params.get("RequestId")
 
 
@@ -3418,6 +3522,32 @@ class DeletePrometheusAlertPolicyRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例id
+        :type InstanceId: str
+        :param AlertIds: 告警策略id列表
+        :type AlertIds: list of str
+        :param Names: 告警策略名称
+        :type Names: list of str
+        """
+        self.InstanceId = None
+        self.AlertIds = None
+        self.Names = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.AlertIds = params.get("AlertIds")
+        self.Names = params.get("Names")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DeletePrometheusAlertPolicyResponse(AbstractModel):
     """DeletePrometheusAlertPolicy返回参数结构体
@@ -3486,6 +3616,24 @@ class DeletePrometheusTempRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param TemplateId: 模板id
+        :type TemplateId: str
+        """
+        self.TemplateId = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DeletePrometheusTempResponse(AbstractModel):
     """DeletePrometheusTemp返回参数结构体
@@ -3508,6 +3656,33 @@ class DeletePrometheusTempSyncRequest(AbstractModel):
     """DeletePrometheusTempSync请求参数结构体
 
     """
+
+    def __init__(self):
+        r"""
+        :param TemplateId: 模板id
+        :type TemplateId: str
+        :param Targets: 取消同步的对象列表
+        :type Targets: list of PrometheusTemplateSyncTarget
+        """
+        self.TemplateId = None
+        self.Targets = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+        if params.get("Targets") is not None:
+            self.Targets = []
+            for item in params.get("Targets"):
+                obj = PrometheusTemplateSyncTarget()
+                obj._deserialize(item)
+                self.Targets.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DeletePrometheusTempSyncResponse(AbstractModel):
@@ -5700,6 +5875,42 @@ class DescribePrometheusAlertPolicyRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例id
+        :type InstanceId: str
+        :param Offset: 分页
+        :type Offset: int
+        :param Limit: 分页
+        :type Limit: int
+        :param Filters: 过滤
+支持ID，Name
+        :type Filters: list of Filter
+        """
+        self.InstanceId = None
+        self.Offset = None
+        self.Limit = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribePrometheusAlertPolicyResponse(AbstractModel):
     """DescribePrometheusAlertPolicy返回参数结构体
@@ -5708,13 +5919,27 @@ class DescribePrometheusAlertPolicyResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param AlertRules: 告警详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlertRules: list of PrometheusAlertPolicyItem
+        :param Total: 总数
+        :type Total: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.AlertRules = None
+        self.Total = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        if params.get("AlertRules") is not None:
+            self.AlertRules = []
+            for item in params.get("AlertRules"):
+                obj = PrometheusAlertPolicyItem()
+                obj._deserialize(item)
+                self.AlertRules.append(obj)
+        self.Total = params.get("Total")
         self.RequestId = params.get("RequestId")
 
 
@@ -5795,6 +6020,32 @@ class DescribePrometheusClusterAgentsRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例id
+        :type InstanceId: str
+        :param Offset: 用于分页
+        :type Offset: int
+        :param Limit: 用于分页
+        :type Limit: int
+        """
+        self.InstanceId = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribePrometheusClusterAgentsResponse(AbstractModel):
     """DescribePrometheusClusterAgents返回参数结构体
@@ -5803,13 +6054,74 @@ class DescribePrometheusClusterAgentsResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param Agents: 被关联集群信息
+        :type Agents: list of PrometheusAgentOverview
+        :param Total: 被关联集群总量
+        :type Total: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.Agents = None
+        self.Total = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        if params.get("Agents") is not None:
+            self.Agents = []
+            for item in params.get("Agents"):
+                obj = PrometheusAgentOverview()
+                obj._deserialize(item)
+                self.Agents.append(obj)
+        self.Total = params.get("Total")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribePrometheusGlobalNotificationRequest(AbstractModel):
+    """DescribePrometheusGlobalNotification请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePrometheusGlobalNotificationResponse(AbstractModel):
+    """DescribePrometheusGlobalNotification返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Notification: 全局告警通知渠道
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Notification: :class:`tencentcloud.tke.v20180525.models.PrometheusNotificationItem`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Notification = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Notification") is not None:
+            self.Notification = PrometheusNotificationItem()
+            self.Notification._deserialize(params.get("Notification"))
         self.RequestId = params.get("RequestId")
 
 
@@ -5895,6 +6207,39 @@ class DescribePrometheusInstancesOverviewRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param Offset: 用于分页
+        :type Offset: int
+        :param Limit: 用于分页
+        :type Limit: int
+        :param Filters: 过滤实例，目前支持：
+ID: 通过实例ID来过滤 
+Name: 通过实例名称来过滤
+        :type Filters: list of Filter
+        """
+        self.Offset = None
+        self.Limit = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribePrometheusInstancesOverviewResponse(AbstractModel):
     """DescribePrometheusInstancesOverview返回参数结构体
@@ -5903,13 +6248,27 @@ class DescribePrometheusInstancesOverviewResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param Instances: 实例列表
+        :type Instances: list of PrometheusInstancesOverview
+        :param Total: 实例总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.Instances = None
+        self.Total = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        if params.get("Instances") is not None:
+            self.Instances = []
+            for item in params.get("Instances"):
+                obj = PrometheusInstancesOverview()
+                obj._deserialize(item)
+                self.Instances.append(obj)
+        self.Total = params.get("Total")
         self.RequestId = params.get("RequestId")
 
 
@@ -5988,6 +6347,41 @@ class DescribePrometheusRecordRulesRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例id
+        :type InstanceId: str
+        :param Offset: 分页
+        :type Offset: int
+        :param Limit: 分页
+        :type Limit: int
+        :param Filters: 过滤
+        :type Filters: list of Filter
+        """
+        self.InstanceId = None
+        self.Offset = None
+        self.Limit = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribePrometheusRecordRulesResponse(AbstractModel):
     """DescribePrometheusRecordRules返回参数结构体
@@ -5996,13 +6390,26 @@ class DescribePrometheusRecordRulesResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param Records: 聚合规则
+        :type Records: list of PrometheusRecordRuleYamlItem
+        :param Total: 总数
+        :type Total: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.Records = None
+        self.Total = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        if params.get("Records") is not None:
+            self.Records = []
+            for item in params.get("Records"):
+                obj = PrometheusRecordRuleYamlItem()
+                obj._deserialize(item)
+                self.Records.append(obj)
+        self.Total = params.get("Total")
         self.RequestId = params.get("RequestId")
 
 
@@ -6080,6 +6487,41 @@ class DescribePrometheusTempRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param Filters: 模糊过滤条件，支持
+Level 按模板级别过滤
+Name 按名称过滤
+Describe 按描述过滤
+ID 按templateId过滤
+        :type Filters: list of Filter
+        :param Offset: 分页偏移
+        :type Offset: int
+        :param Limit: 总数限制
+        :type Limit: int
+        """
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribePrometheusTempResponse(AbstractModel):
     """DescribePrometheusTemp返回参数结构体
@@ -6088,13 +6530,26 @@ class DescribePrometheusTempResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param Templates: 模板列表
+        :type Templates: list of PrometheusTemp
+        :param Total: 总数
+        :type Total: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.Templates = None
+        self.Total = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        if params.get("Templates") is not None:
+            self.Templates = []
+            for item in params.get("Templates"):
+                obj = PrometheusTemp()
+                obj._deserialize(item)
+                self.Templates.append(obj)
+        self.Total = params.get("Total")
         self.RequestId = params.get("RequestId")
 
 
@@ -6102,6 +6557,24 @@ class DescribePrometheusTempSyncRequest(AbstractModel):
     """DescribePrometheusTempSync请求参数结构体
 
     """
+
+    def __init__(self):
+        r"""
+        :param TemplateId: 模板ID
+        :type TemplateId: str
+        """
+        self.TemplateId = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DescribePrometheusTempSyncResponse(AbstractModel):
@@ -6111,13 +6584,23 @@ class DescribePrometheusTempSyncResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param Targets: 同步目标详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Targets: list of PrometheusTemplateSyncTarget
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.Targets = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        if params.get("Targets") is not None:
+            self.Targets = []
+            for item in params.get("Targets"):
+                obj = PrometheusTemplateSyncTarget()
+                obj._deserialize(item)
+                self.Targets.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -9293,6 +9776,30 @@ class ModifyPrometheusAlertPolicyRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例id
+        :type InstanceId: str
+        :param AlertRule: 告警配置
+        :type AlertRule: :class:`tencentcloud.tke.v20180525.models.PrometheusAlertPolicyItem`
+        """
+        self.InstanceId = None
+        self.AlertRule = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        if params.get("AlertRule") is not None:
+            self.AlertRule = PrometheusAlertPolicyItem()
+            self.AlertRule._deserialize(params.get("AlertRule"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class ModifyPrometheusAlertPolicyResponse(AbstractModel):
     """ModifyPrometheusAlertPolicy返回参数结构体
@@ -9358,10 +9865,81 @@ class ModifyPrometheusAlertRuleResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyPrometheusGlobalNotificationRequest(AbstractModel):
+    """ModifyPrometheusGlobalNotification请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param Notification: 告警通知渠道
+        :type Notification: :class:`tencentcloud.tke.v20180525.models.PrometheusNotificationItem`
+        """
+        self.InstanceId = None
+        self.Notification = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        if params.get("Notification") is not None:
+            self.Notification = PrometheusNotificationItem()
+            self.Notification._deserialize(params.get("Notification"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyPrometheusGlobalNotificationResponse(AbstractModel):
+    """ModifyPrometheusGlobalNotification返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyPrometheusTempRequest(AbstractModel):
     """ModifyPrometheusTemp请求参数结构体
 
     """
+
+    def __init__(self):
+        r"""
+        :param TemplateId: 模板ID
+        :type TemplateId: str
+        :param Template: 修改内容
+        :type Template: :class:`tencentcloud.tke.v20180525.models.PrometheusTempModify`
+        """
+        self.TemplateId = None
+        self.Template = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+        if params.get("Template") is not None:
+            self.Template = PrometheusTempModify()
+            self.Template._deserialize(params.get("Template"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ModifyPrometheusTempResponse(AbstractModel):
@@ -9877,6 +10455,100 @@ class PrometheusAlertHistoryItem(AbstractModel):
         
 
 
+class PrometheusAlertManagerConfig(AbstractModel):
+    """告警渠道使用自建alertmanager的配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Url: alertmanager url
+        :type Url: str
+        :param ClusterType: alertmanager部署所在集群类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterType: str
+        :param ClusterId: alertmanager部署所在集群ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterId: str
+        """
+        self.Url = None
+        self.ClusterType = None
+        self.ClusterId = None
+
+
+    def _deserialize(self, params):
+        self.Url = params.get("Url")
+        self.ClusterType = params.get("ClusterType")
+        self.ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PrometheusAlertPolicyItem(AbstractModel):
+    """托管prometheus告警策略实例
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 策略名称
+        :type Name: str
+        :param Rules: 规则列表
+        :type Rules: list of PrometheusAlertRule
+        :param Id: 告警策略 id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: str
+        :param TemplateId: 如果该告警来自模板下发，则TemplateId为模板id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TemplateId: str
+        :param Notification: 告警渠道，模板中使用可能返回null
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Notification: :class:`tencentcloud.tke.v20180525.models.PrometheusNotificationItem`
+        :param UpdatedAt: 最后修改时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdatedAt: str
+        :param ClusterId: 如果告警策略来源于用户集群CRD资源定义，则ClusterId为所属集群ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterId: str
+        """
+        self.Name = None
+        self.Rules = None
+        self.Id = None
+        self.TemplateId = None
+        self.Notification = None
+        self.UpdatedAt = None
+        self.ClusterId = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        if params.get("Rules") is not None:
+            self.Rules = []
+            for item in params.get("Rules"):
+                obj = PrometheusAlertRule()
+                obj._deserialize(item)
+                self.Rules.append(obj)
+        self.Id = params.get("Id")
+        self.TemplateId = params.get("TemplateId")
+        if params.get("Notification") is not None:
+            self.Notification = PrometheusNotificationItem()
+            self.Notification._deserialize(params.get("Notification"))
+        self.UpdatedAt = params.get("UpdatedAt")
+        self.ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PrometheusAlertRule(AbstractModel):
     """Prometheus告警规则
 
@@ -10137,6 +10809,92 @@ running = 运行中
         
 
 
+class PrometheusInstancesOverview(AbstractModel):
+    """托管prometheusV2实例概览
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param InstanceName: 实例名
+        :type InstanceName: str
+        :param VpcId: VPC ID
+        :type VpcId: str
+        :param SubnetId: 子网ID
+        :type SubnetId: str
+        :param InstanceStatus: 运行状态（1:正在创建；2:运行中；3:异常；4:重启中；5:销毁中； 6:已停机； 7: 已删除）
+        :type InstanceStatus: int
+        :param ChargeStatus: 计费状态（1:正常；2:过期; 3:销毁; 4:分配中; 5:分配失败）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChargeStatus: int
+        :param EnableGrafana: 是否开启 Grafana（0:不开启，1:开启）
+        :type EnableGrafana: int
+        :param GrafanaURL: Grafana 面板 URL
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GrafanaURL: str
+        :param InstanceChargeType: 实例付费类型（1:试用版；2:预付费）
+        :type InstanceChargeType: int
+        :param SpecName: 规格名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SpecName: str
+        :param DataRetentionTime: 存储周期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataRetentionTime: int
+        :param ExpireTime: 购买的实例过期时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpireTime: str
+        :param AutoRenewFlag: 自动续费标记(0:不自动续费；1:开启自动续费；2:禁止自动续费；-1:无效)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AutoRenewFlag: int
+        :param BoundTotal: 绑定集群总数
+        :type BoundTotal: int
+        :param BoundNormal: 绑定集群正常状态总数
+        :type BoundNormal: int
+        """
+        self.InstanceId = None
+        self.InstanceName = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.InstanceStatus = None
+        self.ChargeStatus = None
+        self.EnableGrafana = None
+        self.GrafanaURL = None
+        self.InstanceChargeType = None
+        self.SpecName = None
+        self.DataRetentionTime = None
+        self.ExpireTime = None
+        self.AutoRenewFlag = None
+        self.BoundTotal = None
+        self.BoundNormal = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.InstanceName = params.get("InstanceName")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.InstanceStatus = params.get("InstanceStatus")
+        self.ChargeStatus = params.get("ChargeStatus")
+        self.EnableGrafana = params.get("EnableGrafana")
+        self.GrafanaURL = params.get("GrafanaURL")
+        self.InstanceChargeType = params.get("InstanceChargeType")
+        self.SpecName = params.get("SpecName")
+        self.DataRetentionTime = params.get("DataRetentionTime")
+        self.ExpireTime = params.get("ExpireTime")
+        self.AutoRenewFlag = params.get("AutoRenewFlag")
+        self.BoundTotal = params.get("BoundTotal")
+        self.BoundNormal = params.get("BoundNormal")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PrometheusJobTargets(AbstractModel):
     """prometheus一个job的targets
 
@@ -10267,6 +11025,143 @@ webhook
         
 
 
+class PrometheusNotificationItem(AbstractModel):
+    """告警通知渠道配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Enabled: 是否启用
+        :type Enabled: bool
+        :param Type: 通道类型，默认为amp，支持以下
+amp
+webhook
+alertmanager
+        :type Type: str
+        :param WebHook: 如果Type为webhook, 则该字段为必填项
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WebHook: str
+        :param AlertManager: 如果Type为alertmanager, 则该字段为必填项
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlertManager: :class:`tencentcloud.tke.v20180525.models.PrometheusAlertManagerConfig`
+        :param RepeatInterval: 收敛时间
+        :type RepeatInterval: str
+        :param TimeRangeStart: 生效起始时间
+        :type TimeRangeStart: str
+        :param TimeRangeEnd: 生效结束时间
+        :type TimeRangeEnd: str
+        :param NotifyWay: 告警通知方式。目前有SMS、EMAIL、CALL、WECHAT方式。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NotifyWay: list of str
+        :param ReceiverGroups: 告警接收组（用户组）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReceiverGroups: list of str
+        :param PhoneNotifyOrder: 电话告警顺序。
+注：NotifyWay选择CALL，采用该参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PhoneNotifyOrder: list of int non-negative
+        :param PhoneCircleTimes: 电话告警次数。
+注：NotifyWay选择CALL，采用该参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PhoneCircleTimes: int
+        :param PhoneInnerInterval: 电话告警轮内间隔。单位：秒
+注：NotifyWay选择CALL，采用该参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PhoneInnerInterval: int
+        :param PhoneCircleInterval: 电话告警轮外间隔。单位：秒
+注：NotifyWay选择CALL，采用该参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PhoneCircleInterval: int
+        :param PhoneArriveNotice: 电话告警触达通知
+注：NotifyWay选择CALL，采用该参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PhoneArriveNotice: bool
+        """
+        self.Enabled = None
+        self.Type = None
+        self.WebHook = None
+        self.AlertManager = None
+        self.RepeatInterval = None
+        self.TimeRangeStart = None
+        self.TimeRangeEnd = None
+        self.NotifyWay = None
+        self.ReceiverGroups = None
+        self.PhoneNotifyOrder = None
+        self.PhoneCircleTimes = None
+        self.PhoneInnerInterval = None
+        self.PhoneCircleInterval = None
+        self.PhoneArriveNotice = None
+
+
+    def _deserialize(self, params):
+        self.Enabled = params.get("Enabled")
+        self.Type = params.get("Type")
+        self.WebHook = params.get("WebHook")
+        if params.get("AlertManager") is not None:
+            self.AlertManager = PrometheusAlertManagerConfig()
+            self.AlertManager._deserialize(params.get("AlertManager"))
+        self.RepeatInterval = params.get("RepeatInterval")
+        self.TimeRangeStart = params.get("TimeRangeStart")
+        self.TimeRangeEnd = params.get("TimeRangeEnd")
+        self.NotifyWay = params.get("NotifyWay")
+        self.ReceiverGroups = params.get("ReceiverGroups")
+        self.PhoneNotifyOrder = params.get("PhoneNotifyOrder")
+        self.PhoneCircleTimes = params.get("PhoneCircleTimes")
+        self.PhoneInnerInterval = params.get("PhoneInnerInterval")
+        self.PhoneCircleInterval = params.get("PhoneCircleInterval")
+        self.PhoneArriveNotice = params.get("PhoneArriveNotice")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PrometheusRecordRuleYamlItem(AbstractModel):
+    """prometheus聚合规则实例详情，包含所属集群ID
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 实例名称
+        :type Name: str
+        :param UpdateTime: 最近更新时间
+        :type UpdateTime: str
+        :param TemplateId: Yaml内容
+        :type TemplateId: str
+        :param Content: 如果该聚合规则来至模板，则TemplateId为模板id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Content: str
+        :param ClusterId: 该聚合规则如果来源于用户集群crd资源定义，则ClusterId为所属集群ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterId: str
+        """
+        self.Name = None
+        self.UpdateTime = None
+        self.TemplateId = None
+        self.Content = None
+        self.ClusterId = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.UpdateTime = params.get("UpdateTime")
+        self.TemplateId = params.get("TemplateId")
+        self.Content = params.get("Content")
+        self.ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PrometheusTarget(AbstractModel):
     """prometheus一个抓取目标的信息
 
@@ -10310,6 +11205,204 @@ unknown = 未知
         self.LastScrape = params.get("LastScrape")
         self.ScrapeDuration = params.get("ScrapeDuration")
         self.Error = params.get("Error")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PrometheusTemp(AbstractModel):
+    """模板实例
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 模板名称
+        :type Name: str
+        :param Level: 模板维度，支持以下类型
+instance 实例级别
+cluster 集群级别
+        :type Level: str
+        :param Describe: 模板描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Describe: str
+        :param RecordRules: 当Level为instance时有效，
+模板中的聚合规则列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecordRules: list of PrometheusConfigItem
+        :param ServiceMonitors: 当Level为cluster时有效，
+模板中的ServiceMonitor规则列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceMonitors: list of PrometheusConfigItem
+        :param PodMonitors: 当Level为cluster时有效，
+模板中的PodMonitors规则列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PodMonitors: list of PrometheusConfigItem
+        :param RawJobs: 当Level为cluster时有效，
+模板中的RawJobs规则列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RawJobs: list of PrometheusConfigItem
+        :param TemplateId: 模板的ID, 用于出参
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TemplateId: str
+        :param UpdateTime: 最近更新时间，用于出参
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        :param Version: 当前版本，用于出参
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Version: str
+        :param IsDefault: 是否系统提供的默认模板，用于出参
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsDefault: bool
+        :param AlertDetailRules: 当Level为instance时有效，
+模板中的告警配置列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlertDetailRules: list of PrometheusAlertPolicyItem
+        :param TargetsTotal: 关联实例数目
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetsTotal: int
+        """
+        self.Name = None
+        self.Level = None
+        self.Describe = None
+        self.RecordRules = None
+        self.ServiceMonitors = None
+        self.PodMonitors = None
+        self.RawJobs = None
+        self.TemplateId = None
+        self.UpdateTime = None
+        self.Version = None
+        self.IsDefault = None
+        self.AlertDetailRules = None
+        self.TargetsTotal = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Level = params.get("Level")
+        self.Describe = params.get("Describe")
+        if params.get("RecordRules") is not None:
+            self.RecordRules = []
+            for item in params.get("RecordRules"):
+                obj = PrometheusConfigItem()
+                obj._deserialize(item)
+                self.RecordRules.append(obj)
+        if params.get("ServiceMonitors") is not None:
+            self.ServiceMonitors = []
+            for item in params.get("ServiceMonitors"):
+                obj = PrometheusConfigItem()
+                obj._deserialize(item)
+                self.ServiceMonitors.append(obj)
+        if params.get("PodMonitors") is not None:
+            self.PodMonitors = []
+            for item in params.get("PodMonitors"):
+                obj = PrometheusConfigItem()
+                obj._deserialize(item)
+                self.PodMonitors.append(obj)
+        if params.get("RawJobs") is not None:
+            self.RawJobs = []
+            for item in params.get("RawJobs"):
+                obj = PrometheusConfigItem()
+                obj._deserialize(item)
+                self.RawJobs.append(obj)
+        self.TemplateId = params.get("TemplateId")
+        self.UpdateTime = params.get("UpdateTime")
+        self.Version = params.get("Version")
+        self.IsDefault = params.get("IsDefault")
+        if params.get("AlertDetailRules") is not None:
+            self.AlertDetailRules = []
+            for item in params.get("AlertDetailRules"):
+                obj = PrometheusAlertPolicyItem()
+                obj._deserialize(item)
+                self.AlertDetailRules.append(obj)
+        self.TargetsTotal = params.get("TargetsTotal")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PrometheusTempModify(AbstractModel):
+    """云原生Prometheus模板可修改项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 修改名称
+        :type Name: str
+        :param Describe: 修改描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Describe: str
+        :param ServiceMonitors: 当Level为cluster时有效，
+模板中的ServiceMonitor规则列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceMonitors: list of PrometheusConfigItem
+        :param PodMonitors: 当Level为cluster时有效，
+模板中的PodMonitors规则列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PodMonitors: list of PrometheusConfigItem
+        :param RawJobs: 当Level为cluster时有效，
+模板中的RawJobs规则列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RawJobs: list of PrometheusConfigItem
+        :param RecordRules: 当Level为instance时有效，
+模板中的聚合规则列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecordRules: list of PrometheusConfigItem
+        :param AlertDetailRules: 修改内容，只有当模板类型是Alert时生效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlertDetailRules: list of PrometheusAlertPolicyItem
+        """
+        self.Name = None
+        self.Describe = None
+        self.ServiceMonitors = None
+        self.PodMonitors = None
+        self.RawJobs = None
+        self.RecordRules = None
+        self.AlertDetailRules = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Describe = params.get("Describe")
+        if params.get("ServiceMonitors") is not None:
+            self.ServiceMonitors = []
+            for item in params.get("ServiceMonitors"):
+                obj = PrometheusConfigItem()
+                obj._deserialize(item)
+                self.ServiceMonitors.append(obj)
+        if params.get("PodMonitors") is not None:
+            self.PodMonitors = []
+            for item in params.get("PodMonitors"):
+                obj = PrometheusConfigItem()
+                obj._deserialize(item)
+                self.PodMonitors.append(obj)
+        if params.get("RawJobs") is not None:
+            self.RawJobs = []
+            for item in params.get("RawJobs"):
+                obj = PrometheusConfigItem()
+                obj._deserialize(item)
+                self.RawJobs.append(obj)
+        if params.get("RecordRules") is not None:
+            self.RecordRules = []
+            for item in params.get("RecordRules"):
+                obj = PrometheusConfigItem()
+                obj._deserialize(item)
+                self.RecordRules.append(obj)
+        if params.get("AlertDetailRules") is not None:
+            self.AlertDetailRules = []
+            for item in params.get("AlertDetailRules"):
+                obj = PrometheusAlertPolicyItem()
+                obj._deserialize(item)
+                self.AlertDetailRules.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -11318,6 +12411,33 @@ class SyncPrometheusTempRequest(AbstractModel):
     """SyncPrometheusTemp请求参数结构体
 
     """
+
+    def __init__(self):
+        r"""
+        :param TemplateId: 实例id
+        :type TemplateId: str
+        :param Targets: 同步目标
+        :type Targets: list of PrometheusTemplateSyncTarget
+        """
+        self.TemplateId = None
+        self.Targets = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+        if params.get("Targets") is not None:
+            self.Targets = []
+            for item in params.get("Targets"):
+                obj = PrometheusTemplateSyncTarget()
+                obj._deserialize(item)
+                self.Targets.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class SyncPrometheusTempResponse(AbstractModel):

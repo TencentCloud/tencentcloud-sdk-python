@@ -1223,6 +1223,93 @@ class CpdpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreatePayRollPreOrder(self, request):
+        """务工卡-核身预下单
+
+        :param request: Request instance for CreatePayRollPreOrder.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.CreatePayRollPreOrderRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.CreatePayRollPreOrderResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreatePayRollPreOrder", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreatePayRollPreOrderResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreatePayRollPreOrderWithAuth(self, request):
+        """务工卡-核身预下单带授权
+
+        :param request: Request instance for CreatePayRollPreOrderWithAuth.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.CreatePayRollPreOrderWithAuthRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.CreatePayRollPreOrderWithAuthResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreatePayRollPreOrderWithAuth", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreatePayRollPreOrderWithAuthResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreatePayRollToken(self, request):
+        """务工卡-生成授权令牌
+
+        :param request: Request instance for CreatePayRollToken.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.CreatePayRollTokenRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.CreatePayRollTokenResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreatePayRollToken", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreatePayRollTokenResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateRedInvoice(self, request):
         """智慧零售-发票红冲
 
@@ -1907,6 +1994,93 @@ class CpdpClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetDistributeBillDownloadUrlResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def GetPayRollAuth(self, request):
+        """务工卡-查询授权关系
+
+        :param request: Request instance for GetPayRollAuth.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.GetPayRollAuthRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.GetPayRollAuthResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetPayRollAuth", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetPayRollAuthResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def GetPayRollAuthList(self, request):
+        """务工卡-查询核身记录
+
+        :param request: Request instance for GetPayRollAuthList.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.GetPayRollAuthListRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.GetPayRollAuthListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetPayRollAuthList", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetPayRollAuthListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def GetPayRollAuthResult(self, request):
+        """务工卡-获取核身结果
+
+        :param request: Request instance for GetPayRollAuthResult.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.GetPayRollAuthResultRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.GetPayRollAuthResultResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetPayRollAuthResult", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetPayRollAuthResultResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

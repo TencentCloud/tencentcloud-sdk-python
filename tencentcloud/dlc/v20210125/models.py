@@ -2920,6 +2920,18 @@ class TaskResponseInfo(AbstractModel):
         :param UserAlias: 用户别名
 注意：此字段可能返回 null，表示取不到有效值。
         :type UserAlias: str
+        :param SparkJobName: spark应用作业名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SparkJobName: str
+        :param SparkJobId: spark应用作业Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SparkJobId: str
+        :param SparkJobFile: spark应用入口jar文件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SparkJobFile: str
+        :param UiUrl: spark ui url
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UiUrl: str
         """
         self.DatabaseName = None
         self.DataAmount = None
@@ -2947,6 +2959,10 @@ class TaskResponseInfo(AbstractModel):
         self.DataNumber = None
         self.CanDownload = None
         self.UserAlias = None
+        self.SparkJobName = None
+        self.SparkJobId = None
+        self.SparkJobFile = None
+        self.UiUrl = None
 
 
     def _deserialize(self, params):
@@ -2976,6 +2992,10 @@ class TaskResponseInfo(AbstractModel):
         self.DataNumber = params.get("DataNumber")
         self.CanDownload = params.get("CanDownload")
         self.UserAlias = params.get("UserAlias")
+        self.SparkJobName = params.get("SparkJobName")
+        self.SparkJobId = params.get("SparkJobId")
+        self.SparkJobFile = params.get("SparkJobFile")
+        self.UiUrl = params.get("UiUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

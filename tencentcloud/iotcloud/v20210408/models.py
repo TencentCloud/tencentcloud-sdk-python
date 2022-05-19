@@ -3308,6 +3308,58 @@ class EnableTopicRuleResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class FirmwareInfo(AbstractModel):
+    """设备固件详细信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Version: 固件版本
+        :type Version: str
+        :param Md5sum: 固件MD5值
+        :type Md5sum: str
+        :param CreateTime: 固件创建时间
+        :type CreateTime: int
+        :param ProductName: 产品名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductName: str
+        :param Name: 固件名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param Description: 固件描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param ProductId: 产品ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductId: str
+        """
+        self.Version = None
+        self.Md5sum = None
+        self.CreateTime = None
+        self.ProductName = None
+        self.Name = None
+        self.Description = None
+        self.ProductId = None
+
+
+    def _deserialize(self, params):
+        self.Version = params.get("Version")
+        self.Md5sum = params.get("Md5sum")
+        self.CreateTime = params.get("CreateTime")
+        self.ProductName = params.get("ProductName")
+        self.Name = params.get("Name")
+        self.Description = params.get("Description")
+        self.ProductId = params.get("ProductId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class FirmwareTaskInfo(AbstractModel):
     """固件升级任务信息
 
@@ -3346,6 +3398,51 @@ class FirmwareTaskInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class GetAllVersionRequest(AbstractModel):
+    """GetAllVersion请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProductId: 产品ID
+        :type ProductId: str
+        """
+        self.ProductId = None
+
+
+    def _deserialize(self, params):
+        self.ProductId = params.get("ProductId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetAllVersionResponse(AbstractModel):
+    """GetAllVersion返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Version: 版本号列表
+        :type Version: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Version = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Version = params.get("Version")
+        self.RequestId = params.get("RequestId")
 
 
 class GetCOSURLRequest(AbstractModel):
@@ -3429,6 +3526,77 @@ class GetUserResourceInfoResponse(AbstractModel):
     def _deserialize(self, params):
         self.UsedSize = params.get("UsedSize")
         self.Limit = params.get("Limit")
+        self.RequestId = params.get("RequestId")
+
+
+class ListFirmwaresRequest(AbstractModel):
+    """ListFirmwares请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PageNum: 获取的页数
+        :type PageNum: int
+        :param PageSize: 分页的大小
+        :type PageSize: int
+        :param ProductId: 产品ID
+        :type ProductId: str
+        :param Filters: 搜索过滤条件
+        :type Filters: list of SearchKeyword
+        """
+        self.PageNum = None
+        self.PageSize = None
+        self.ProductId = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.PageNum = params.get("PageNum")
+        self.PageSize = params.get("PageSize")
+        self.ProductId = params.get("ProductId")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = SearchKeyword()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListFirmwaresResponse(AbstractModel):
+    """ListFirmwares返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 固件总数
+        :type TotalCount: int
+        :param Firmwares: 固件列表
+        :type Firmwares: list of FirmwareInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Firmwares = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Firmwares") is not None:
+            self.Firmwares = []
+            for item in params.get("Firmwares"):
+                obj = FirmwareInfo()
+                obj._deserialize(item)
+                self.Firmwares.append(obj)
         self.RequestId = params.get("RequestId")
 
 

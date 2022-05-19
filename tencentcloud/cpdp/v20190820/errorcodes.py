@@ -26,6 +26,9 @@ AUTHFAILURE_MIDAS = 'AuthFailure.Midas'
 # 未找到密钥。
 AUTHFAILURE_SECRETKEYNOTFOUND = 'AuthFailure.SecretKeyNotFound'
 
+# 账户尚未签约。
+AUTHFAILURE_SIGN = 'AuthFailure.Sign'
+
 # 验证失败。
 AUTHFAILURE_VERIFYERROR = 'AuthFailure.VerifyError'
 
@@ -487,6 +490,9 @@ RESOURCENOTFOUND_BATCHINFONOTFOUND = 'ResourceNotFound.BatchInfoNotFound'
 
 # 发票信息不存在。
 RESOURCENOTFOUND_INVOICENOTFOUND = 'ResourceNotFound.InvoiceNotFound'
+
+# 密钥不匹配或不存在。
+RESOURCENOTFOUND_KEY = 'ResourceNotFound.Key'
 
 # 商户信息不存在。
 RESOURCENOTFOUND_MERCHANTINFONOTFOUND = 'ResourceNotFound.MerchantInfoNotFound'

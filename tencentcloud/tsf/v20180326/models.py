@@ -5265,7 +5265,7 @@ class DescribeApiGroupsRequest(AbstractModel):
         :type Limit: int
         :param GroupType: 分组类型。 ms： 微服务分组； external:外部Api分组
         :type GroupType: str
-        :param AuthType: 鉴权类型。 secret： 秘钥鉴权； none:无鉴权
+        :param AuthType: 鉴权类型。 secret： 密钥鉴权； none:无鉴权
         :type AuthType: str
         :param Status: 发布状态, drafted: 未发布。 released: 发布
         :type Status: str
@@ -5314,6 +5314,7 @@ class DescribeApiGroupsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param Result: 翻页结构体
+注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.TsfPageApiGroupInfo`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

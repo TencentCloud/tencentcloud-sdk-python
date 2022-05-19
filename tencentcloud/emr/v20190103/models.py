@@ -18,6 +18,52 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AddUsersForUserManagerRequest(AbstractModel):
+    """AddUsersForUserManager请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UserManagerUserList: 用户信息列表
+        :type UserManagerUserList: list of UserInfoForUserManager
+        """
+        self.UserManagerUserList = None
+
+
+    def _deserialize(self, params):
+        if params.get("UserManagerUserList") is not None:
+            self.UserManagerUserList = []
+            for item in params.get("UserManagerUserList"):
+                obj = UserInfoForUserManager()
+                obj._deserialize(item)
+                self.UserManagerUserList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddUsersForUserManagerResponse(AbstractModel):
+    """AddUsersForUserManager返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class BootstrapAction(AbstractModel):
     """引导脚本
 
@@ -1149,6 +1195,85 @@ class DescribeInstanceRenewNodesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeInstancesListRequest(AbstractModel):
+    """DescribeInstancesList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DisplayStrategy: 集群筛选策略。取值范围：<li>clusterList：表示查询除了已销毁集群之外的集群列表。</li><li>monitorManage：表示查询除了已销毁、创建中以及创建失败的集群之外的集群列表。</li><li>cloudHardwareManage/componentManage：目前这两个取值为预留取值，暂时和monitorManage表示同样的含义。</li>
+        :type DisplayStrategy: str
+        :param Offset: 页编号，默认值为0，表示第一页。
+        :type Offset: int
+        :param Limit: 每页返回数量，默认值为10，最大值为100。
+        :type Limit: int
+        :param OrderField: 排序字段。取值范围：<li>clusterId：表示按照实例ID排序。</li><li>addTime：表示按照实例创建时间排序。</li><li>status：表示按照实例的状态码排序。</li>
+        :type OrderField: str
+        :param Asc: 按照OrderField升序或者降序进行排序。取值范围：<li>0：表示降序。</li><li>1：表示升序。</li>默认值为0。
+        :type Asc: int
+        :param Filters: 自定义查询
+        :type Filters: list of Filters
+        """
+        self.DisplayStrategy = None
+        self.Offset = None
+        self.Limit = None
+        self.OrderField = None
+        self.Asc = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.DisplayStrategy = params.get("DisplayStrategy")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.OrderField = params.get("OrderField")
+        self.Asc = params.get("Asc")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filters()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInstancesListResponse(AbstractModel):
+    """DescribeInstancesList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCnt: 符合条件的实例总数。
+        :type TotalCnt: int
+        :param InstancesList: 集群实例列表
+        :type InstancesList: list of EmrListInstance
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCnt = None
+        self.InstancesList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCnt = params.get("TotalCnt")
+        if params.get("InstancesList") is not None:
+            self.InstancesList = []
+            for item in params.get("InstancesList"):
+                obj = EmrListInstance()
+                obj._deserialize(item)
+                self.InstancesList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeInstancesRequest(AbstractModel):
     """DescribeInstances请求参数结构体
 
@@ -1461,6 +1586,156 @@ class DynamicPodSpec(AbstractModel):
         
 
 
+class EmrListInstance(AbstractModel):
+    """集群列表返回示例
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param StatusDesc: 状态描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StatusDesc: str
+        :param ClusterName: 集群名字
+        :type ClusterName: str
+        :param ZoneId: 集群地域
+        :type ZoneId: int
+        :param AppId: 用户APPID
+        :type AppId: int
+        :param AddTime: 创建时间
+        :type AddTime: str
+        :param RunTime: 运行时间
+        :type RunTime: str
+        :param MasterIp: 集群IP
+        :type MasterIp: str
+        :param EmrVersion: 集群版本
+        :type EmrVersion: str
+        :param ChargeType: 集群计费类型
+        :type ChargeType: int
+        :param Id: emr ID
+        :type Id: int
+        :param ProductId: 产品ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductId: int
+        :param ProjectId: 项目ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectId: int
+        :param RegionId: 区域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegionId: int
+        :param SubnetId: 子网ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubnetId: int
+        :param VpcId: 网络ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcId: int
+        :param Zone: 地区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Zone: str
+        :param Status: 状态码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param Tags: 实例标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
+        :param AlarmInfo: 告警信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlarmInfo: str
+        :param IsWoodpeckerCluster: 是否是woodpecker集群
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsWoodpeckerCluster: int
+        :param VpcName: Vpc中文
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcName: str
+        :param SubnetName: 子网中文
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubnetName: str
+        :param UniqVpcId: 字符串VpcId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UniqVpcId: str
+        :param UniqSubnetId: 字符串子网
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UniqSubnetId: str
+        :param ClusterClass: 集群类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterClass: str
+        :param IsMultiZoneCluster: 是否为跨AZ集群
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsMultiZoneCluster: bool
+        """
+        self.ClusterId = None
+        self.StatusDesc = None
+        self.ClusterName = None
+        self.ZoneId = None
+        self.AppId = None
+        self.AddTime = None
+        self.RunTime = None
+        self.MasterIp = None
+        self.EmrVersion = None
+        self.ChargeType = None
+        self.Id = None
+        self.ProductId = None
+        self.ProjectId = None
+        self.RegionId = None
+        self.SubnetId = None
+        self.VpcId = None
+        self.Zone = None
+        self.Status = None
+        self.Tags = None
+        self.AlarmInfo = None
+        self.IsWoodpeckerCluster = None
+        self.VpcName = None
+        self.SubnetName = None
+        self.UniqVpcId = None
+        self.UniqSubnetId = None
+        self.ClusterClass = None
+        self.IsMultiZoneCluster = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.StatusDesc = params.get("StatusDesc")
+        self.ClusterName = params.get("ClusterName")
+        self.ZoneId = params.get("ZoneId")
+        self.AppId = params.get("AppId")
+        self.AddTime = params.get("AddTime")
+        self.RunTime = params.get("RunTime")
+        self.MasterIp = params.get("MasterIp")
+        self.EmrVersion = params.get("EmrVersion")
+        self.ChargeType = params.get("ChargeType")
+        self.Id = params.get("Id")
+        self.ProductId = params.get("ProductId")
+        self.ProjectId = params.get("ProjectId")
+        self.RegionId = params.get("RegionId")
+        self.SubnetId = params.get("SubnetId")
+        self.VpcId = params.get("VpcId")
+        self.Zone = params.get("Zone")
+        self.Status = params.get("Status")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        self.AlarmInfo = params.get("AlarmInfo")
+        self.IsWoodpeckerCluster = params.get("IsWoodpeckerCluster")
+        self.VpcName = params.get("VpcName")
+        self.SubnetName = params.get("SubnetName")
+        self.UniqVpcId = params.get("UniqVpcId")
+        self.UniqSubnetId = params.get("UniqSubnetId")
+        self.ClusterClass = params.get("ClusterClass")
+        self.IsMultiZoneCluster = params.get("IsMultiZoneCluster")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class EmrProductConfigOutter(AbstractModel):
     """EMR产品配置
 
@@ -1647,6 +1922,34 @@ class ExternalService(AbstractModel):
                 self.CustomServiceDefineList.append(obj)
         self.Service = params.get("Service")
         self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Filters(AbstractModel):
+    """Emr集群列表实例自定义查询过滤
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 字段名称
+        :type Name: str
+        :param Values: 过滤字段值
+        :type Values: list of str
+        """
+        self.Name = None
+        self.Values = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Values = params.get("Values")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4555,6 +4858,42 @@ class UpdateInstanceSettings(AbstractModel):
         self.CPUCores = params.get("CPUCores")
         self.ResourceId = params.get("ResourceId")
         self.InstanceType = params.get("InstanceType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UserInfoForUserManager(AbstractModel):
+    """添加的用户信息列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UserName: 用户名
+        :type UserName: str
+        :param UserGroup: 用户所属的组
+        :type UserGroup: str
+        :param PassWord: 密码
+        :type PassWord: str
+        :param ReMark: 备注
+        :type ReMark: str
+        """
+        self.UserName = None
+        self.UserGroup = None
+        self.PassWord = None
+        self.ReMark = None
+
+
+    def _deserialize(self, params):
+        self.UserName = params.get("UserName")
+        self.UserGroup = params.get("UserGroup")
+        self.PassWord = params.get("PassWord")
+        self.ReMark = params.get("ReMark")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

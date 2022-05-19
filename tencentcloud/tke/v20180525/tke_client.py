@@ -606,6 +606,35 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreatePrometheusGlobalNotification(self, request):
+        """创建全局告警通知渠道
+
+        :param request: Request instance for CreatePrometheusGlobalNotification.
+        :type request: :class:`tencentcloud.tke.v20180525.models.CreatePrometheusGlobalNotificationRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.CreatePrometheusGlobalNotificationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreatePrometheusGlobalNotification", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreatePrometheusGlobalNotificationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreatePrometheusTemp(self, request):
         """创建一个云原生Prometheus模板
 
@@ -2201,6 +2230,35 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribePrometheusGlobalNotification(self, request):
+        """查询全局告警通知渠道
+
+        :param request: Request instance for DescribePrometheusGlobalNotification.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribePrometheusGlobalNotificationRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribePrometheusGlobalNotificationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePrometheusGlobalNotification", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribePrometheusGlobalNotificationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribePrometheusInstance(self, request):
         """获取实例详细信息
 
@@ -3318,6 +3376,35 @@ class TkeClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyPrometheusAlertRuleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyPrometheusGlobalNotification(self, request):
+        """修改全局告警通知渠道
+
+        :param request: Request instance for ModifyPrometheusGlobalNotification.
+        :type request: :class:`tencentcloud.tke.v20180525.models.ModifyPrometheusGlobalNotificationRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.ModifyPrometheusGlobalNotificationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyPrometheusGlobalNotification", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyPrometheusGlobalNotificationResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

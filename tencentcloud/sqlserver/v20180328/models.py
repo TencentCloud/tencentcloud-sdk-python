@@ -35,12 +35,15 @@ class AccountCreateInfo(AbstractModel):
         :type Remark: str
         :param IsAdmin: 是否为管理员账户，默认为否
         :type IsAdmin: bool
+        :param Authentication: win-windows鉴权,sql-sqlserver鉴权，不填模式兼容接口sqlserver鉴权
+        :type Authentication: str
         """
         self.UserName = None
         self.Password = None
         self.DBPrivileges = None
         self.Remark = None
         self.IsAdmin = None
+        self.Authentication = None
 
 
     def _deserialize(self, params):
@@ -54,6 +57,7 @@ class AccountCreateInfo(AbstractModel):
                 self.DBPrivileges.append(obj)
         self.Remark = params.get("Remark")
         self.IsAdmin = params.get("IsAdmin")
+        self.Authentication = params.get("Authentication")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -88,6 +92,10 @@ class AccountDetail(AbstractModel):
         :type Dbs: list of DBPrivilege
         :param IsAdmin: 是否为管理员账户
         :type IsAdmin: bool
+        :param Authentication: win-windows鉴权,sql-sqlserver鉴权
+        :type Authentication: str
+        :param Host: win-windows鉴权账户需要host
+        :type Host: str
         """
         self.Name = None
         self.Remark = None
@@ -98,6 +106,8 @@ class AccountDetail(AbstractModel):
         self.InternalStatus = None
         self.Dbs = None
         self.IsAdmin = None
+        self.Authentication = None
+        self.Host = None
 
 
     def _deserialize(self, params):
@@ -115,6 +125,8 @@ class AccountDetail(AbstractModel):
                 obj._deserialize(item)
                 self.Dbs.append(obj)
         self.IsAdmin = params.get("IsAdmin")
+        self.Authentication = params.get("Authentication")
+        self.Host = params.get("Host")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3602,6 +3614,7 @@ class DescribeMigrationDatabasesResponse(AbstractModel):
         :param Amount: 数据库数量
         :type Amount: int
         :param MigrateDBSet: 数据库名称数组
+注意：此字段可能返回 null，表示取不到有效值。
         :type MigrateDBSet: list of str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -8166,6 +8179,8 @@ class UpgradeDBInstanceRequest(AbstractModel):
         :type HAType: str
         :param MultiZones: 修改实例是否为跨可用区容灾，SameZones-修改为同可用区 MultiZones-修改为夸可用区
         :type MultiZones: str
+        :param WaitSwitch: 执行变配的方式，默认为 1。支持值包括：0 - 立刻执行，1 - 维护时间窗执行
+        :type WaitSwitch: int
         """
         self.InstanceId = None
         self.Memory = None
@@ -8176,6 +8191,7 @@ class UpgradeDBInstanceRequest(AbstractModel):
         self.DBVersion = None
         self.HAType = None
         self.MultiZones = None
+        self.WaitSwitch = None
 
 
     def _deserialize(self, params):
@@ -8188,6 +8204,7 @@ class UpgradeDBInstanceRequest(AbstractModel):
         self.DBVersion = params.get("DBVersion")
         self.HAType = params.get("HAType")
         self.MultiZones = params.get("MultiZones")
+        self.WaitSwitch = params.get("WaitSwitch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

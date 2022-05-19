@@ -7304,6 +7304,8 @@ false（默认）：发送正常请求，通过检查后直接创建实例
         :type HpcClusterId: str
         :param LaunchTemplate: 实例启动模板。
         :type LaunchTemplate: :class:`tencentcloud.cvm.v20170312.models.LaunchTemplate`
+        :param DedicatedClusterId: 指定专用集群创建。
+        :type DedicatedClusterId: str
         :param ChcIds: 指定CHC物理服务器来创建CHC云主机。
         :type ChcIds: list of str
         :param DisableApiTermination: 实例销毁保护标志，表示是否允许通过api接口删除实例。取值范围：<br><li>TRUE：表示开启实例保护，不允许通过api接口删除实例<br><li>FALSE：表示关闭实例保护，允许通过api接口删除实例<br><br>默认取值：FALSE。
@@ -7334,6 +7336,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
         self.CamRoleName = None
         self.HpcClusterId = None
         self.LaunchTemplate = None
+        self.DedicatedClusterId = None
         self.ChcIds = None
         self.DisableApiTermination = None
 
@@ -7394,6 +7397,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
         if params.get("LaunchTemplate") is not None:
             self.LaunchTemplate = LaunchTemplate()
             self.LaunchTemplate._deserialize(params.get("LaunchTemplate"))
+        self.DedicatedClusterId = params.get("DedicatedClusterId")
         self.ChcIds = params.get("ChcIds")
         self.DisableApiTermination = params.get("DisableApiTermination")
         memeber_set = set(params.keys())

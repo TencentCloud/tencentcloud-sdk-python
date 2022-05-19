@@ -7238,6 +7238,293 @@ class CreatePayMerchantResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreatePayRollPreOrderRequest(AbstractModel):
+    """CreatePayRollPreOrder请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param OpenId: 用户在商户对应appid下的唯一标识
+        :type OpenId: str
+        :param SubMerchantId: 微信服务商下特约商户的商户号，由微信支付生成并下发
+        :type SubMerchantId: str
+        :param AuthNumber: 商户系统内部的商家核身单号，要求此参数只能由数字、大小写字母组成，在服务商内部唯一
+        :type AuthNumber: str
+        :param ProjectName: 该劳务活动的项目名称
+        :type ProjectName: str
+        :param CompanyName: 该工人所属的用工企业
+        :type CompanyName: str
+        :param WechatAppId: 是服务商在微信申请公众号/小程序或移动应用成功后分配的账号ID（与服务商主体一致）
+当输入服务商Appid时，会校验其与服务商商户号的绑定关系。服务商APPID和与特约商户APPID至少输入一个，且必须要有拉起领薪卡小程序时使用的APPID
+        :type WechatAppId: str
+        :param WechatSubAppId: 特约商户在微信申请公众号/小程序或移动应用成功后分配的账号ID（与特约商户主体一致）
+当输入特约商户Appid时，会校验其与特约商户号的绑定关系。服务商APPID和与特约商户APPID至少输入一个，且必须要有拉起领薪卡小程序时使用的APPID
+        :type WechatSubAppId: str
+        """
+        self.OpenId = None
+        self.SubMerchantId = None
+        self.AuthNumber = None
+        self.ProjectName = None
+        self.CompanyName = None
+        self.WechatAppId = None
+        self.WechatSubAppId = None
+
+
+    def _deserialize(self, params):
+        self.OpenId = params.get("OpenId")
+        self.SubMerchantId = params.get("SubMerchantId")
+        self.AuthNumber = params.get("AuthNumber")
+        self.ProjectName = params.get("ProjectName")
+        self.CompanyName = params.get("CompanyName")
+        self.WechatAppId = params.get("WechatAppId")
+        self.WechatSubAppId = params.get("WechatSubAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreatePayRollPreOrderResponse(AbstractModel):
+    """CreatePayRollPreOrder返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AuthNumber: 商户系统内部的商家核身单号，要求此参数只能由数字、大小写字母组成，在服务商内部唯一
+        :type AuthNumber: str
+        :param ExpireTime: Token有效时间，单位秒
+        :type ExpireTime: int
+        :param MerchantId: 微信服务商商户的商户号，由微信支付生成并下发
+        :type MerchantId: str
+        :param OpenId: 用户在商户对应appid下的唯一标识
+        :type OpenId: str
+        :param SubMerchantId: 微信服务商下特约商户的商户号，由微信支付生成并下发
+        :type SubMerchantId: str
+        :param Token: Token值
+        :type Token: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AuthNumber = None
+        self.ExpireTime = None
+        self.MerchantId = None
+        self.OpenId = None
+        self.SubMerchantId = None
+        self.Token = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AuthNumber = params.get("AuthNumber")
+        self.ExpireTime = params.get("ExpireTime")
+        self.MerchantId = params.get("MerchantId")
+        self.OpenId = params.get("OpenId")
+        self.SubMerchantId = params.get("SubMerchantId")
+        self.Token = params.get("Token")
+        self.RequestId = params.get("RequestId")
+
+
+class CreatePayRollPreOrderWithAuthRequest(AbstractModel):
+    """CreatePayRollPreOrderWithAuth请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param OpenId: 用户在商户对应appid下的唯一标识
+        :type OpenId: str
+        :param SubMerchantId: 微信服务商下特约商户的商户号，由微信支付生成并下发
+        :type SubMerchantId: str
+        :param AuthNumber: 商户系统内部的商家核身单号，要求此参数只能由数字、大小写字母组成，在服务商内部唯一
+        :type AuthNumber: str
+        :param ProjectName: 该劳务活动的项目名称
+        :type ProjectName: str
+        :param CompanyName: 该工人所属的用工企业
+        :type CompanyName: str
+        :param UserName: 用户实名信息，该字段需进行加密处理，加密方法详见[敏感信息加密说明](https://pay.weixin.qq.com/wiki/doc/apiv3_partner/wechatpay/wechatpay4_3.shtml)
+        :type UserName: str
+        :param IdNo: 用户证件号，该字段需进行加密处理，加密方法详见[敏感信息加密说明](https://pay.weixin.qq.com/wiki/doc/apiv3_partner/wechatpay/wechatpay4_3.shtml)
+        :type IdNo: str
+        :param EmploymentType: 微工卡服务仅支持用于与商户有用工关系的用户，需明确用工类型；参考值：
+LONG_TERM_EMPLOYMENT：长期用工，
+SHORT_TERM_EMPLOYMENT： 短期用工，
+COOPERATION_EMPLOYMENT：合作关系
+        :type EmploymentType: str
+        :param WechatAppId: 是服务商在微信申请公众号/小程序或移动应用成功后分配的账号ID（与服务商主体一致）
+当输入服务商Appid时，会校验其与服务商商户号的绑定关系。服务商APPID和与特约商户APPID至少输入一个，且必须要有拉起领薪卡小程序时使用的APPID
+        :type WechatAppId: str
+        :param WechatSubAppId: 特约商户在微信申请公众号/小程序或移动应用成功后分配的账号ID（与特约商户主体一致）
+当输入特约商户Appid时，会校验其与特约商户号的绑定关系。服务商APPID和与特约商户APPID至少输入一个，且必须要有拉起领薪卡小程序时使用的APPID
+        :type WechatSubAppId: str
+        """
+        self.OpenId = None
+        self.SubMerchantId = None
+        self.AuthNumber = None
+        self.ProjectName = None
+        self.CompanyName = None
+        self.UserName = None
+        self.IdNo = None
+        self.EmploymentType = None
+        self.WechatAppId = None
+        self.WechatSubAppId = None
+
+
+    def _deserialize(self, params):
+        self.OpenId = params.get("OpenId")
+        self.SubMerchantId = params.get("SubMerchantId")
+        self.AuthNumber = params.get("AuthNumber")
+        self.ProjectName = params.get("ProjectName")
+        self.CompanyName = params.get("CompanyName")
+        self.UserName = params.get("UserName")
+        self.IdNo = params.get("IdNo")
+        self.EmploymentType = params.get("EmploymentType")
+        self.WechatAppId = params.get("WechatAppId")
+        self.WechatSubAppId = params.get("WechatSubAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreatePayRollPreOrderWithAuthResponse(AbstractModel):
+    """CreatePayRollPreOrderWithAuth返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AuthNumber: 商户系统内部的商家核身单号，要求此参数只能由数字、大小写字母组成，在服务商内部唯一
+        :type AuthNumber: str
+        :param ExpireTime: Token有效时间，单位秒
+        :type ExpireTime: int
+        :param MerchantId: 微信服务商商户的商户号，由微信支付生成并下发
+        :type MerchantId: str
+        :param OpenId: 用户在商户对应appid下的唯一标识
+        :type OpenId: str
+        :param SubMerchantId: 微信服务商下特约商户的商户号，由微信支付生成并下发
+        :type SubMerchantId: str
+        :param Token: Token值
+        :type Token: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AuthNumber = None
+        self.ExpireTime = None
+        self.MerchantId = None
+        self.OpenId = None
+        self.SubMerchantId = None
+        self.Token = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AuthNumber = params.get("AuthNumber")
+        self.ExpireTime = params.get("ExpireTime")
+        self.MerchantId = params.get("MerchantId")
+        self.OpenId = params.get("OpenId")
+        self.SubMerchantId = params.get("SubMerchantId")
+        self.Token = params.get("Token")
+        self.RequestId = params.get("RequestId")
+
+
+class CreatePayRollTokenRequest(AbstractModel):
+    """CreatePayRollToken请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param OpenId: 用户在商户对应appid下的唯一标识
+        :type OpenId: str
+        :param SubMerchantId: 微信服务商下特约商户的商户号，由微信支付生成并下发
+        :type SubMerchantId: str
+        :param UserName: 用户实名信息，该字段需进行加密处理，加密方法详见[敏感信息加密说明](https://pay.weixin.qq.com/wiki/doc/apiv3_partner/wechatpay/wechatpay4_3.shtml)
+        :type UserName: str
+        :param IdNo: 用户证件号，该字段需进行加密处理，加密方法详见[敏感信息加密说明](https://pay.weixin.qq.com/wiki/doc/apiv3_partner/wechatpay/wechatpay4_3.shtml)
+        :type IdNo: str
+        :param EmploymentType: 微工卡服务仅支持用于与商户有用工关系的用户，需明确用工类型；参考值：
+LONG_TERM_EMPLOYMENT：长期用工，
+SHORT_TERM_EMPLOYMENT： 短期用工，
+COOPERATION_EMPLOYMENT：合作关系
+        :type EmploymentType: str
+        :param WechatAppId: 是服务商在微信申请公众号/小程序或移动应用成功后分配的账号ID（与服务商主体一致）
+当输入服务商Appid时，会校验其与服务商商户号的绑定关系。服务商APPID和与特约商户APPID至少输入一个，且必须要有拉起领薪卡小程序时使用的APPID
+        :type WechatAppId: str
+        :param WechatSubAppId: 特约商户在微信申请公众号/小程序或移动应用成功后分配的账号ID（与特约商户主体一致）
+当输入特约商户Appid时，会校验其与特约商户号的绑定关系。服务商APPID和与特约商户APPID至少输入一个，且必须要有拉起领薪卡小程序时使用的APPID
+        :type WechatSubAppId: str
+        """
+        self.OpenId = None
+        self.SubMerchantId = None
+        self.UserName = None
+        self.IdNo = None
+        self.EmploymentType = None
+        self.WechatAppId = None
+        self.WechatSubAppId = None
+
+
+    def _deserialize(self, params):
+        self.OpenId = params.get("OpenId")
+        self.SubMerchantId = params.get("SubMerchantId")
+        self.UserName = params.get("UserName")
+        self.IdNo = params.get("IdNo")
+        self.EmploymentType = params.get("EmploymentType")
+        self.WechatAppId = params.get("WechatAppId")
+        self.WechatSubAppId = params.get("WechatSubAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreatePayRollTokenResponse(AbstractModel):
+    """CreatePayRollToken返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ExpireTime: Token有效时间，单位秒
+        :type ExpireTime: int
+        :param MerchantId: 微信服务商商户的商户号，由微信支付生成并下发
+        :type MerchantId: str
+        :param OpenId: 用户在商户对应appid下的唯一标识
+        :type OpenId: str
+        :param SubMerchantId: 微信服务商下特约商户的商户号，由微信支付生成并下发
+        :type SubMerchantId: str
+        :param Token: Token值
+        :type Token: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ExpireTime = None
+        self.MerchantId = None
+        self.OpenId = None
+        self.SubMerchantId = None
+        self.Token = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ExpireTime = params.get("ExpireTime")
+        self.MerchantId = params.get("MerchantId")
+        self.OpenId = params.get("OpenId")
+        self.SubMerchantId = params.get("SubMerchantId")
+        self.Token = params.get("Token")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateRedInvoiceItem(AbstractModel):
     """创建红票明细
 
@@ -9897,6 +10184,234 @@ class GetDistributeBillDownloadUrlResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class GetPayRollAuthListRequest(AbstractModel):
+    """GetPayRollAuthList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param OpenId: 用户在商户对应appid下的唯一标识
+        :type OpenId: str
+        :param SubMerchantId: 微信服务商下特约商户的商户号，由微信支付生成并下发
+        :type SubMerchantId: str
+        :param AuthDate: 核身日期，一次只能查询一天，最久可查询90天内的记录，格式为YYYY-MM-DD
+        :type AuthDate: str
+        :param Offset: 非负整数，表示该次请求资源的起始位置，从0开始计数
+        :type Offset: int
+        :param Limit: 非0非负的整数，该次请求可返回的最大资源条数，默认值为10，最大支持10条
+        :type Limit: int
+        :param WechatAppId: 是服务商在微信申请公众号/小程序或移动应用成功后分配的账号ID（与服务商主体一致）
+当输入服务商Appid时，会校验其与服务商商户号的绑定关系。服务商APPID和与特约商户APPID至少输入一个，且必须要有拉起领薪卡小程序时使用的APPID
+        :type WechatAppId: str
+        :param WechatSubAppId: 特约商户在微信申请公众号/小程序或移动应用成功后分配的账号ID（与特约商户主体一致）
+当输入特约商户Appid时，会校验其与特约商户号的绑定关系。服务商APPID和与特约商户APPID至少输入一个，且必须要有拉起领薪卡小程序时使用的APPID
+        :type WechatSubAppId: str
+        :param AuthStatus: 核身状态，列表查询仅提供成功状态的核身记录查询，故此字段固定AUTHENTICATE_SUCCESS即可
+        :type AuthStatus: str
+        """
+        self.OpenId = None
+        self.SubMerchantId = None
+        self.AuthDate = None
+        self.Offset = None
+        self.Limit = None
+        self.WechatAppId = None
+        self.WechatSubAppId = None
+        self.AuthStatus = None
+
+
+    def _deserialize(self, params):
+        self.OpenId = params.get("OpenId")
+        self.SubMerchantId = params.get("SubMerchantId")
+        self.AuthDate = params.get("AuthDate")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.WechatAppId = params.get("WechatAppId")
+        self.WechatSubAppId = params.get("WechatSubAppId")
+        self.AuthStatus = params.get("AuthStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetPayRollAuthListResponse(AbstractModel):
+    """GetPayRollAuthList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Results: 核身结果列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Results: list of PayRollAuthResult
+        :param Total: 总记录条数
+        :type Total: int
+        :param Offset: 记录起始位置，该次请求资源的起始位置，请求中包含偏移量时应答消息返回相同偏移量，否则返回默认值0
+        :type Offset: int
+        :param Limit: 本次返回条数
+        :type Limit: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Results = None
+        self.Total = None
+        self.Offset = None
+        self.Limit = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Results") is not None:
+            self.Results = []
+            for item in params.get("Results"):
+                obj = PayRollAuthResult()
+                obj._deserialize(item)
+                self.Results.append(obj)
+        self.Total = params.get("Total")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.RequestId = params.get("RequestId")
+
+
+class GetPayRollAuthRequest(AbstractModel):
+    """GetPayRollAuth请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param OpenId: 用户在商户对应appid下的唯一标识
+        :type OpenId: str
+        :param SubMerchantId: 微信服务商下特约商户的商户号，由微信支付生成并下发
+        :type SubMerchantId: str
+        :param WechatAppId: 是服务商在微信申请公众号/小程序或移动应用成功后分配的账号ID（与服务商主体一致）
+当输入服务商Appid时，会校验其与服务商商户号的绑定关系。服务商APPID和与特约商户APPID至少输入一个，且必须要有拉起领薪卡小程序时使用的APPID
+        :type WechatAppId: str
+        :param WechatSubAppId: 特约商户在微信申请公众号/小程序或移动应用成功后分配的账号ID（与特约商户主体一致）
+当输入特约商户Appid时，会校验其与特约商户号的绑定关系。服务商APPID和与特约商户APPID至少输入一个，且必须要有拉起领薪卡小程序时使用的APPID
+        :type WechatSubAppId: str
+        """
+        self.OpenId = None
+        self.SubMerchantId = None
+        self.WechatAppId = None
+        self.WechatSubAppId = None
+
+
+    def _deserialize(self, params):
+        self.OpenId = params.get("OpenId")
+        self.SubMerchantId = params.get("SubMerchantId")
+        self.WechatAppId = params.get("WechatAppId")
+        self.WechatSubAppId = params.get("WechatSubAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetPayRollAuthResponse(AbstractModel):
+    """GetPayRollAuth返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AuthStatus: 授权状态：
+UNAUTHORIZED：未授权
+AUTHORIZED：已授权
+DEAUTHORIZED：已取消授权
+        :type AuthStatus: str
+        :param AuthTime: 授权时间，遵循[rfc3339](https://datatracker.ietf.org/doc/html/rfc3339)标准格式，格式为YYYY-MM-DDTHH:mm:ss.sss+TIMEZONE，空字符串等同null
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AuthTime: str
+        :param CancelAuthTime: 授权时间，遵循[rfc3339](https://datatracker.ietf.org/doc/html/rfc3339)标准格式，格式为YYYY-MM-DDTHH:mm:ss.sss+TIMEZONE，空字符串等同null
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CancelAuthTime: str
+        :param MerchantId: 微信服务商商户的商户号，由微信支付生成并下发
+        :type MerchantId: str
+        :param OpenId: 用户在商户对应appid下的唯一标识
+        :type OpenId: str
+        :param SubMerchantId: 微信服务商下特约商户的商户号，由微信支付生成并下发
+        :type SubMerchantId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AuthStatus = None
+        self.AuthTime = None
+        self.CancelAuthTime = None
+        self.MerchantId = None
+        self.OpenId = None
+        self.SubMerchantId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AuthStatus = params.get("AuthStatus")
+        self.AuthTime = params.get("AuthTime")
+        self.CancelAuthTime = params.get("CancelAuthTime")
+        self.MerchantId = params.get("MerchantId")
+        self.OpenId = params.get("OpenId")
+        self.SubMerchantId = params.get("SubMerchantId")
+        self.RequestId = params.get("RequestId")
+
+
+class GetPayRollAuthResultRequest(AbstractModel):
+    """GetPayRollAuthResult请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AuthNumber: 商户系统内部的商家核身单号，要求此参数只能由数字、大小写字母组成，在服务商内部唯一
+        :type AuthNumber: str
+        :param SubMerchantId: 微信服务商下特约商户的商户号，由微信支付生成并下发
+        :type SubMerchantId: str
+        """
+        self.AuthNumber = None
+        self.SubMerchantId = None
+
+
+    def _deserialize(self, params):
+        self.AuthNumber = params.get("AuthNumber")
+        self.SubMerchantId = params.get("SubMerchantId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetPayRollAuthResultResponse(AbstractModel):
+    """GetPayRollAuthResult返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 核身结果
+        :type Result: :class:`tencentcloud.cpdp.v20190820.models.PayRollAuthResult`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = PayRollAuthResult()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
 class MemberTransactionItem(AbstractModel):
     """会员间交易明细信息
 
@@ -11495,6 +12010,76 @@ class PayOrderResult(AbstractModel):
         self.WechatSignType = params.get("WechatSignType")
         self.WechatPackage = params.get("WechatPackage")
         self.WechatPaySign = params.get("WechatPaySign")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PayRollAuthResult(AbstractModel):
+    """微工卡核身结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AuthFailedReason: 结果为核身失败时的原因描述，仅在失败记录返回，空字符串等同null
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AuthFailedReason: str
+        :param AuthNumber: 商户系统内部的商家核身单号，要求此参数只能由数字、大小写字母组成，在服务商内部唯一
+        :type AuthNumber: str
+        :param AuthScene: 核身渠道，发起核身时的来源渠道，如通过小程序，硬件设备等
+FROM_MINI_APP：来自小程序方式核身
+FROM_HARDWARE：来自硬件设备方式核身
+        :type AuthScene: str
+        :param AuthSource: 核身渠道标识，用于定位渠道具体来源，如果是扫码打卡渠道标识就是具体的小程序appid，若是硬件设备，则是设备的序列号等
+        :type AuthSource: str
+        :param AuthStatus: 核身状态
+AUTHENTICATE_PROCESSING：核身中
+AUTHENTICATE_SUCCESS：核身成功
+AUTHENTICATE_FAILED：核身失败
+        :type AuthStatus: str
+        :param AuthTime: 核身时间，遵循[rfc3339](https://datatracker.ietf.org/doc/html/rfc3339)标准格式，格式为YYYY-MM-DDTHH:mm:ss.sss+TIMEZONE
+        :type AuthTime: str
+        :param CompanyName: 该用户所属的单位名称
+        :type CompanyName: str
+        :param MerchantId: 微信服务商商户的商户号，由微信支付生成并下发
+        :type MerchantId: str
+        :param OpenId: 用户在商户对应appid下的唯一标识
+        :type OpenId: str
+        :param ProjectName: 该项目的名称
+        :type ProjectName: str
+        :param SubMerchantId: 微信服务商下特约商户的商户号，由微信支付生成并下发
+        :type SubMerchantId: str
+        """
+        self.AuthFailedReason = None
+        self.AuthNumber = None
+        self.AuthScene = None
+        self.AuthSource = None
+        self.AuthStatus = None
+        self.AuthTime = None
+        self.CompanyName = None
+        self.MerchantId = None
+        self.OpenId = None
+        self.ProjectName = None
+        self.SubMerchantId = None
+
+
+    def _deserialize(self, params):
+        self.AuthFailedReason = params.get("AuthFailedReason")
+        self.AuthNumber = params.get("AuthNumber")
+        self.AuthScene = params.get("AuthScene")
+        self.AuthSource = params.get("AuthSource")
+        self.AuthStatus = params.get("AuthStatus")
+        self.AuthTime = params.get("AuthTime")
+        self.CompanyName = params.get("CompanyName")
+        self.MerchantId = params.get("MerchantId")
+        self.OpenId = params.get("OpenId")
+        self.ProjectName = params.get("ProjectName")
+        self.SubMerchantId = params.get("SubMerchantId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
