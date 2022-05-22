@@ -4113,6 +4113,8 @@ class DescribeReadOnlyGroupByReadOnlyInstanceResponse(AbstractModel):
         :type SubnetId: str
         :param MasterInstanceId: 主实例ID，形如mssql-sgeshe3th
         :type MasterInstanceId: str
+        :param MasterRegionId: 主实例的地域ID
+        :type MasterRegionId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4128,6 +4130,7 @@ class DescribeReadOnlyGroupByReadOnlyInstanceResponse(AbstractModel):
         self.VpcId = None
         self.SubnetId = None
         self.MasterInstanceId = None
+        self.MasterRegionId = None
         self.RequestId = None
 
 
@@ -4144,6 +4147,7 @@ class DescribeReadOnlyGroupByReadOnlyInstanceResponse(AbstractModel):
         self.VpcId = params.get("VpcId")
         self.SubnetId = params.get("SubnetId")
         self.MasterInstanceId = params.get("MasterInstanceId")
+        self.MasterRegionId = params.get("MasterRegionId")
         self.RequestId = params.get("RequestId")
 
 
@@ -6954,6 +6958,10 @@ SyncNormal:正常
         :type EndTime: str
         :param IsolateTime: 只读副本隔离时间
         :type IsolateTime: str
+        :param RegionId: 只读副本所在地域
+        :type RegionId: str
+        :param ZoneId: 只读副本所在可用区
+        :type ZoneId: str
         """
         self.InstanceId = None
         self.Name = None
@@ -6977,6 +6985,8 @@ SyncNormal:正常
         self.StartTime = None
         self.EndTime = None
         self.IsolateTime = None
+        self.RegionId = None
+        self.ZoneId = None
 
 
     def _deserialize(self, params):
@@ -7002,6 +7012,8 @@ SyncNormal:正常
         self.StartTime = params.get("StartTime")
         self.EndTime = params.get("EndTime")
         self.IsolateTime = params.get("IsolateTime")
+        self.RegionId = params.get("RegionId")
+        self.ZoneId = params.get("ZoneId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

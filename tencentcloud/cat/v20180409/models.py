@@ -673,6 +673,8 @@ class CreateProbeTasksRequest(AbstractModel):
         :type ProbeType: int
         :param PluginSource: 插件类型
         :type PluginSource: str
+        :param ClientNum: 客户度ID
+        :type ClientNum: str
         """
         self.BatchTasks = None
         self.TaskType = None
@@ -684,6 +686,7 @@ class CreateProbeTasksRequest(AbstractModel):
         self.Tag = None
         self.ProbeType = None
         self.PluginSource = None
+        self.ClientNum = None
 
 
     def _deserialize(self, params):
@@ -707,6 +710,7 @@ class CreateProbeTasksRequest(AbstractModel):
                 self.Tag.append(obj)
         self.ProbeType = params.get("ProbeType")
         self.PluginSource = params.get("PluginSource")
+        self.ClientNum = params.get("ClientNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -723,13 +727,17 @@ class CreateProbeTasksResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param TaskIDs: 任务ID列表
+        :type TaskIDs: list of str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.TaskIDs = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.TaskIDs = params.get("TaskIDs")
         self.RequestId = params.get("RequestId")
 
 
@@ -3016,6 +3024,12 @@ class NodeDefine(AbstractModel):
 <li> 3 = 国外 </li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Location: int
+        :param CodeType: 节点类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CodeType: str
+        :param NodeDefineStatus: 节点状态：1-运行,2-下线
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NodeDefineStatus: int
         """
         self.Name = None
         self.Code = None
@@ -3025,6 +3039,8 @@ class NodeDefine(AbstractModel):
         self.City = None
         self.IPType = None
         self.Location = None
+        self.CodeType = None
+        self.NodeDefineStatus = None
 
 
     def _deserialize(self, params):
@@ -3036,6 +3052,8 @@ class NodeDefine(AbstractModel):
         self.City = params.get("City")
         self.IPType = params.get("IPType")
         self.Location = params.get("Location")
+        self.CodeType = params.get("CodeType")
+        self.NodeDefineStatus = params.get("NodeDefineStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -1486,6 +1486,47 @@ class DescribeResourceScheduleResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeUsersForUserManagerRequest(AbstractModel):
+    """DescribeUsersForUserManager请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NeedKeytabInfo: 是否需要keytab文件的信息，仅对开启kerberos的集群有效，默认为false
+        :type NeedKeytabInfo: bool
+        """
+        self.NeedKeytabInfo = None
+
+
+    def _deserialize(self, params):
+        self.NeedKeytabInfo = params.get("NeedKeytabInfo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeUsersForUserManagerResponse(AbstractModel):
+    """DescribeUsersForUserManager返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DiskGroup(AbstractModel):
     """磁盘组。
 

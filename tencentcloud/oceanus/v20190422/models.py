@@ -18,6 +18,71 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class CheckSavepointRequest(AbstractModel):
+    """CheckSavepoint请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param JobId: 作业 id
+        :type JobId: str
+        :param SerialId: 快照资源 id
+        :type SerialId: str
+        :param RecordType: 快照类型 1: savepoint；2: checkpoint；3: cancelWithSavepoint
+        :type RecordType: int
+        :param SavepointPath: 快照路径，目前只支持 cos 路径
+        :type SavepointPath: str
+        :param WorkSpaceId: 工作空间 id
+        :type WorkSpaceId: str
+        """
+        self.JobId = None
+        self.SerialId = None
+        self.RecordType = None
+        self.SavepointPath = None
+        self.WorkSpaceId = None
+
+
+    def _deserialize(self, params):
+        self.JobId = params.get("JobId")
+        self.SerialId = params.get("SerialId")
+        self.RecordType = params.get("RecordType")
+        self.SavepointPath = params.get("SavepointPath")
+        self.WorkSpaceId = params.get("WorkSpaceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CheckSavepointResponse(AbstractModel):
+    """CheckSavepoint返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SerialId: 资源 id
+        :type SerialId: str
+        :param SavepointStatus: 1=可用，2=不可用
+        :type SavepointStatus: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.SerialId = None
+        self.SavepointStatus = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.SerialId = params.get("SerialId")
+        self.SavepointStatus = params.get("SavepointStatus")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateJobConfigRequest(AbstractModel):
     """CreateJobConfig请求参数结构体
 
@@ -579,6 +644,89 @@ class DescribeJobConfigsResponse(AbstractModel):
                 obj = JobConfig()
                 obj._deserialize(item)
                 self.JobConfigSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeJobSavepointRequest(AbstractModel):
+    """DescribeJobSavepoint请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param JobId: 作业 SerialId
+        :type JobId: str
+        :param Limit: 分页参数，单页总数
+        :type Limit: int
+        :param Offset: 分页参数，偏移量
+        :type Offset: int
+        :param WorkSpaceId: 工作空间 SerialId
+        :type WorkSpaceId: str
+        """
+        self.JobId = None
+        self.Limit = None
+        self.Offset = None
+        self.WorkSpaceId = None
+
+
+    def _deserialize(self, params):
+        self.JobId = params.get("JobId")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.WorkSpaceId = params.get("WorkSpaceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeJobSavepointResponse(AbstractModel):
+    """DescribeJobSavepoint返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalNumber: 快照列表总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalNumber: int
+        :param Savepoint: 快照列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Savepoint: list of Savepoint
+        :param RunningSavepoint: 进行中的快照列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RunningSavepoint: list of Savepoint
+        :param RunningTotalNumber: 进行中的快照列表总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RunningTotalNumber: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalNumber = None
+        self.Savepoint = None
+        self.RunningSavepoint = None
+        self.RunningTotalNumber = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalNumber = params.get("TotalNumber")
+        if params.get("Savepoint") is not None:
+            self.Savepoint = []
+            for item in params.get("Savepoint"):
+                obj = Savepoint()
+                obj._deserialize(item)
+                self.Savepoint.append(obj)
+        if params.get("RunningSavepoint") is not None:
+            self.RunningSavepoint = []
+            for item in params.get("RunningSavepoint"):
+                obj = Savepoint()
+                obj._deserialize(item)
+                self.RunningSavepoint.append(obj)
+        self.RunningTotalNumber = params.get("RunningTotalNumber")
         self.RequestId = params.get("RequestId")
 
 
@@ -1729,6 +1877,86 @@ class RunJobsResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class Savepoint(AbstractModel):
+    """描述Savepoint信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: 主键
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: int
+        :param VersionId: 版本号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VersionId: int
+        :param Status: 状态 1: Active; 2: Expired; 3: InProgress; 4: Failed; 5: Timeout
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: int
+        :param UpdateTime: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: int
+        :param Path: 路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Path: str
+        :param Size: 大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Size: int
+        :param RecordType: 快照类型 1: savepoint；2: checkpoint；3: cancelWithSavepoint
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecordType: int
+        :param JobRuntimeId: 运行作业实例的顺序 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JobRuntimeId: int
+        :param Description: 描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param Timeout: 固定超时时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Timeout: int
+        :param SerialId: 快照 serialId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SerialId: str
+        """
+        self.Id = None
+        self.VersionId = None
+        self.Status = None
+        self.CreateTime = None
+        self.UpdateTime = None
+        self.Path = None
+        self.Size = None
+        self.RecordType = None
+        self.JobRuntimeId = None
+        self.Description = None
+        self.Timeout = None
+        self.SerialId = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.VersionId = params.get("VersionId")
+        self.Status = params.get("Status")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        self.Path = params.get("Path")
+        self.Size = params.get("Size")
+        self.RecordType = params.get("RecordType")
+        self.JobRuntimeId = params.get("JobRuntimeId")
+        self.Description = params.get("Description")
+        self.Timeout = params.get("Timeout")
+        self.SerialId = params.get("SerialId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class StopJobDescription(AbstractModel):

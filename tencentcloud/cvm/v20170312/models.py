@@ -3267,26 +3267,30 @@ class HostItem(AbstractModel):
 
 
 class HostResource(AbstractModel):
-    """cdh实例的资源信息
+    """专用宿主机实例的资源信息
 
     """
 
     def __init__(self):
         r"""
-        :param CpuTotal: cdh实例总cpu核数
+        :param CpuTotal: 专用宿主机实例总cpu核数
         :type CpuTotal: int
-        :param CpuAvailable: cdh实例可用cpu核数
+        :param CpuAvailable: 专用宿主机实例可用cpu核数
         :type CpuAvailable: int
-        :param MemTotal: cdh实例总内存大小（单位为:GiB）
+        :param MemTotal: 专用宿主机实例总内存大小（单位为:GiB）
         :type MemTotal: float
-        :param MemAvailable: cdh实例可用内存大小（单位为:GiB）
+        :param MemAvailable: 专用宿主机实例可用内存大小（单位为:GiB）
         :type MemAvailable: float
-        :param DiskTotal: cdh实例总磁盘大小（单位为:GiB）
+        :param DiskTotal: 专用宿主机实例总磁盘大小（单位为:GiB）
         :type DiskTotal: int
-        :param DiskAvailable: cdh实例可用磁盘大小（单位为:GiB）
+        :param DiskAvailable: 专用宿主机实例可用磁盘大小（单位为:GiB）
         :type DiskAvailable: int
-        :param DiskType: cdh实例磁盘类型
+        :param DiskType: 专用宿主机实例磁盘类型
         :type DiskType: str
+        :param GpuTotal: 专用宿主机实例总GPU卡数
+        :type GpuTotal: int
+        :param GpuAvailable: 专用宿主机实例可用GPU卡数
+        :type GpuAvailable: int
         """
         self.CpuTotal = None
         self.CpuAvailable = None
@@ -3295,6 +3299,8 @@ class HostResource(AbstractModel):
         self.DiskTotal = None
         self.DiskAvailable = None
         self.DiskType = None
+        self.GpuTotal = None
+        self.GpuAvailable = None
 
 
     def _deserialize(self, params):
@@ -3305,6 +3311,8 @@ class HostResource(AbstractModel):
         self.DiskTotal = params.get("DiskTotal")
         self.DiskAvailable = params.get("DiskAvailable")
         self.DiskType = params.get("DiskType")
+        self.GpuTotal = params.get("GpuTotal")
+        self.GpuAvailable = params.get("GpuAvailable")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4254,7 +4262,7 @@ class Instance(AbstractModel):
         :type RestrictState: str
         :param InstanceName: 实例名称。
         :type InstanceName: str
-        :param InstanceChargeType: 实例计费模式。取值范围：<br><li>`PREPAID`：表示预付费，即包年包月<br><li>`POSTPAID_BY_HOUR`：表示后付费，即按量计费<br><li>`CDHPAID`：`CDH`付费，即只对`CDH`计费，不对`CDH`上的实例计费。<br><li>`SPOTPAID`：表示竞价实例付费。
+        :param InstanceChargeType: 实例计费模式。取值范围：<br><li>`PREPAID`：表示预付费，即包年包月<br><li>`POSTPAID_BY_HOUR`：表示后付费，即按量计费<br><li>`CDHPAID`：`专用宿主机`付费，即只对`专用宿主机`计费，不对`专用宿主机`上的实例计费。<br><li>`SPOTPAID`：表示竞价实例付费。
         :type InstanceChargeType: str
         :param SystemDisk: 实例系统盘信息。
         :type SystemDisk: :class:`tencentcloud.cvm.v20170312.models.SystemDisk`
@@ -4672,7 +4680,7 @@ class InstanceTypeQuotaItem(AbstractModel):
         :type Zone: str
         :param InstanceType: 实例机型。
         :type InstanceType: str
-        :param InstanceChargeType: 实例计费模式。取值范围： <br><li>PREPAID：表示预付费，即包年包月<br><li>POSTPAID_BY_HOUR：表示后付费，即按量计费<br><li>CDHPAID：表示[CDH](https://cloud.tencent.com/document/product/416)付费，即只对CDH计费，不对CDH上的实例计费。<br><li>`SPOTPAID`：表示竞价实例付费。
+        :param InstanceChargeType: 实例计费模式。取值范围： <br><li>PREPAID：表示预付费，即包年包月<br><li>POSTPAID_BY_HOUR：表示后付费，即按量计费<br><li>CDHPAID：表示[专用宿主机](https://cloud.tencent.com/document/product/416)付费，即只对`专用宿主机`计费，不对`专用宿主机`上的实例计费。<br><li>`SPOTPAID`：表示竞价实例付费。
         :type InstanceChargeType: str
         :param NetworkCard: 网卡类型，例如：25代表25G网卡
         :type NetworkCard: int
@@ -5145,7 +5153,7 @@ class LaunchTemplateVersionData(AbstractModel):
         :param InstanceName: 实例名称。
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceName: str
-        :param InstanceChargeType: 实例计费模式。取值范围：<br><li>`PREPAID`：表示预付费，即包年包月<br><li>`POSTPAID_BY_HOUR`：表示后付费，即按量计费<br><li>`CDHPAID`：`CDH`付费，即只对`CDH`计费，不对`CDH`上的实例计费。<br><li>`SPOTPAID`：表示竞价实例付费。
+        :param InstanceChargeType: 实例计费模式。取值范围：<br><li>`PREPAID`：表示预付费，即包年包月<br><li>`POSTPAID_BY_HOUR`：表示后付费，即按量计费<br><li>`CDHPAID`：`专用宿主机`付费，即只对`专用宿主机`计费，不对`专用宿主机`上的实例计费。<br><li>`SPOTPAID`：表示竞价实例付费。
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceChargeType: str
         :param SystemDisk: 实例系统盘信息。
@@ -6088,7 +6096,7 @@ class OsVersion(AbstractModel):
 
 
 class Placement(AbstractModel):
-    """描述了实例的抽象位置，包括其所在的可用区，所属的项目，宿主机（仅CDH产品可用），母机ip等
+    """描述了实例的抽象位置，包括其所在的可用区，所属的项目，宿主机（仅专用宿主机产品可用），母机ip等
 
     """
 

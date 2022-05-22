@@ -26,6 +26,35 @@ class OceanusClient(AbstractClient):
     _service = 'oceanus'
 
 
+    def CheckSavepoint(self, request):
+        """检查快照是否可用
+
+        :param request: Request instance for CheckSavepoint.
+        :type request: :class:`tencentcloud.oceanus.v20190422.models.CheckSavepointRequest`
+        :rtype: :class:`tencentcloud.oceanus.v20190422.models.CheckSavepointResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CheckSavepoint", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CheckSavepointResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateJob(self, request):
         """新建作业接口，一个 AppId 最多允许创建1000个作业
 
@@ -244,6 +273,35 @@ class OceanusClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeJobConfigsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeJobSavepoint(self, request):
+        """查找Savepoint列表
+
+        :param request: Request instance for DescribeJobSavepoint.
+        :type request: :class:`tencentcloud.oceanus.v20190422.models.DescribeJobSavepointRequest`
+        :rtype: :class:`tencentcloud.oceanus.v20190422.models.DescribeJobSavepointResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeJobSavepoint", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeJobSavepointResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
