@@ -1667,16 +1667,20 @@ class ModifyDomainOwnerBatchRequest(AbstractModel):
         :type NewOwnerUin: str
         :param TransferDns: 是否同时转移对应的 DNS 解析域名，默认false
         :type TransferDns: bool
+        :param NewOwnerAppId: 转入账户的appid。
+        :type NewOwnerAppId: str
         """
         self.Domains = None
         self.NewOwnerUin = None
         self.TransferDns = None
+        self.NewOwnerAppId = None
 
 
     def _deserialize(self, params):
         self.Domains = params.get("Domains")
         self.NewOwnerUin = params.get("NewOwnerUin")
         self.TransferDns = params.get("TransferDns")
+        self.NewOwnerAppId = params.get("NewOwnerAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

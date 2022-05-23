@@ -68,6 +68,8 @@ class AutoCalloutTaskInfo(AbstractModel):
         :type IvrId: int
         :param State: 任务状态0初始 1运行中 2已完成 3结束中 4已结束
         :type State: int
+        :param TaskId: 任务Id
+        :type TaskId: int
         """
         self.Name = None
         self.CalleeCount = None
@@ -76,6 +78,7 @@ class AutoCalloutTaskInfo(AbstractModel):
         self.NotAfter = None
         self.IvrId = None
         self.State = None
+        self.TaskId = None
 
 
     def _deserialize(self, params):
@@ -86,6 +89,7 @@ class AutoCalloutTaskInfo(AbstractModel):
         self.NotAfter = params.get("NotAfter")
         self.IvrId = params.get("IvrId")
         self.State = params.get("State")
+        self.TaskId = params.get("TaskId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

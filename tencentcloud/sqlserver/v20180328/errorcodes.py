@@ -47,6 +47,9 @@ FAILEDOPERATION_QUERYPRICEFAILED = 'FailedOperation.QueryPriceFailed'
 # 安全组操作失败。
 FAILEDOPERATION_SECURITYGROUPOPERATIONERROR = 'FailedOperation.SecurityGroupOperationError'
 
+# 操作网络失败或者超时。
+FAILEDOPERATION_VPCERROR = 'FailedOperation.VPCError'
+
 # 内部错误。
 INTERNALERROR = 'InternalError'
 
@@ -223,6 +226,9 @@ RESOURCENOTFOUND_INCREBACKUPMIGRATIONNOTEXIST = 'ResourceNotFound.IncreBackupMig
 
 # 实例不存在。
 RESOURCENOTFOUND_INSTANCENOTFOUND = 'ResourceNotFound.InstanceNotFound'
+
+# 参数未找到。
+RESOURCENOTFOUND_PARAMSNOTFOUND = 'ResourceNotFound.ParamsNotFound'
 
 # VPC网络不存在。
 RESOURCENOTFOUND_VPCNOTEXIST = 'ResourceNotFound.VpcNotExist'

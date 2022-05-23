@@ -86,6 +86,9 @@ INTERNALERROR_UNKNOWNERROR = 'InternalError.UnknownError'
 # 参数错误。
 INVALIDPARAMETER = 'InvalidParameter'
 
+# 未找到该接口。
+INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = 'InvalidParameter.ControllerNotFoundError'
+
 # 当前实例不可隔离。
 INVALIDPARAMETER_ISOLATENOTALLOWED = 'InvalidParameter.IsolateNotAllowed'
 

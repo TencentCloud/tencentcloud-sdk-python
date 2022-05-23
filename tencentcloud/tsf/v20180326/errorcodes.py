@@ -782,6 +782,9 @@ MISSINGPARAMETER_GROUPAPPLICATIONNULL = 'MissingParameter.GroupApplicationNull'
 # 分组ID不能为空。
 MISSINGPARAMETER_GROUPIDNULL = 'MissingParameter.GroupIdNull'
 
+# 分组所属命名空间不能为空。
+MISSINGPARAMETER_GROUPNAMESPACENULL = 'MissingParameter.GroupNamespaceNull'
+
 # 命名空间ID不能为空。
 MISSINGPARAMETER_NAMESPACEIDREQUIRED = 'MissingParameter.NamespaceIdRequired'
 

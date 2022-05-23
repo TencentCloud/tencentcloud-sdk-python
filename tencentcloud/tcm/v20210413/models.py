@@ -1479,10 +1479,13 @@ class TracingConfig(AbstractModel):
         :type Enable: bool
         :param APM: 腾讯云 APM 服务相关参数
         :type APM: :class:`tencentcloud.tcm.v20210413.models.APM`
+        :param Zipkin: 启动第三方服务器的地址
+        :type Zipkin: :class:`tencentcloud.tcm.v20210413.models.TracingZipkin`
         """
         self.Sampling = None
         self.Enable = None
         self.APM = None
+        self.Zipkin = None
 
 
     def _deserialize(self, params):
@@ -1491,6 +1494,33 @@ class TracingConfig(AbstractModel):
         if params.get("APM") is not None:
             self.APM = APM()
             self.APM._deserialize(params.get("APM"))
+        if params.get("Zipkin") is not None:
+            self.Zipkin = TracingZipkin()
+            self.Zipkin._deserialize(params.get("Zipkin"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TracingZipkin(AbstractModel):
+    """调用追踪的Zipkin设置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Address: Zipkin调用地址
+        :type Address: str
+        """
+        self.Address = None
+
+
+    def _deserialize(self, params):
+        self.Address = params.get("Address")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

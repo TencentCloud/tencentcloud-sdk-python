@@ -3370,7 +3370,7 @@ POLIS  警察证
 IKAD   劳工证
 MyKid 儿童卡
         :type Type: str
-        :param Birthday: 出生日期（目前该字段仅支持IKAD劳工证）
+        :param Birthday: 出生日期（目前该字段仅支持IKAD劳工证、MyKad 身份证）
         :type Birthday: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

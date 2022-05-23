@@ -533,7 +533,7 @@ class MpsClient(AbstractClient):
 
 
     def DeleteContentReviewTemplate(self, request):
-        """删除用户自定义内容智能识别模板。
+        """删除用户自定义内容审核模板。
 
         :param request: Request instance for DeleteContentReviewTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.DeleteContentReviewTemplateRequest`
@@ -910,7 +910,7 @@ class MpsClient(AbstractClient):
 
 
     def DescribeContentReviewTemplates(self, request):
-        """根据内容智能识别模板唯一标识，获取内容智能识别模板详情列表。返回结果包含符合条件的所有用户自定义模板及系统预置内容智能识别模板。
+        """根据智能审核模板唯一标识，获取智能审核模板详情列表。返回结果包含符合条件的所有用户自定义模板及系统预置智能审核模板。
 
         :param request: Request instance for DescribeContentReviewTemplates.
         :type request: :class:`tencentcloud.mps.v20190612.models.DescribeContentReviewTemplatesRequest`
@@ -1351,7 +1351,7 @@ class MpsClient(AbstractClient):
 
 
     def ExecuteFunction(self, request):
-        """本接口仅用于定制开发的特殊场景，除非云视频处理客服人员主动告知您需要使用本接口，其它情况请勿调用。
+        """本接口仅用于定制开发的特殊场景，除非云媒体处理客服人员主动告知您需要使用本接口，其它情况请勿调用。
 
         :param request: Request instance for ExecuteFunction.
         :type request: :class:`tencentcloud.mps.v20190612.models.ExecuteFunctionRequest`
@@ -1527,7 +1527,7 @@ class MpsClient(AbstractClient):
 
 
     def ModifyContentReviewTemplate(self, request):
-        """修改用户自定义内容智能识别模板。
+        """修改用户自定义内容审核模板。
 
         :param request: Request instance for ModifyContentReviewTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.ModifyContentReviewTemplateRequest`

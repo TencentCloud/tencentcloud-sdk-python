@@ -522,7 +522,7 @@ class AiAnalysisTaskClassificationResult(AbstractModel):
         r"""
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
-        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
         :type ErrCodeExt: str
         :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
         :type ErrCode: int
@@ -630,7 +630,7 @@ class AiAnalysisTaskCoverResult(AbstractModel):
         r"""
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
-        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
         :type ErrCodeExt: str
         :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
         :type ErrCode: int
@@ -732,7 +732,7 @@ class AiAnalysisTaskFrameTagResult(AbstractModel):
         r"""
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
-        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
         :type ErrCodeExt: str
         :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
         :type ErrCode: int
@@ -858,7 +858,7 @@ class AiAnalysisTaskTagResult(AbstractModel):
         r"""
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
-        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
         :type ErrCodeExt: str
         :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
         :type ErrCode: int
@@ -1112,7 +1112,7 @@ class AiRecognitionTaskAsrFullTextResult(AbstractModel):
         r"""
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
-        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
         :type ErrCodeExt: str
         :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
         :type ErrCode: int
@@ -1260,7 +1260,7 @@ class AiRecognitionTaskAsrWordsResult(AbstractModel):
         r"""
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
-        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
         :type ErrCodeExt: str
         :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
         :type ErrCode: int
@@ -1427,7 +1427,7 @@ class AiRecognitionTaskFaceResult(AbstractModel):
         r"""
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
-        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
         :type ErrCodeExt: str
         :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
         :type ErrCode: int
@@ -1508,11 +1508,53 @@ class AiRecognitionTaskFaceResultItem(AbstractModel):
         :type Name: str
         :param SegmentSet: 人物出现的片段结果集。
         :type SegmentSet: list of AiRecognitionTaskFaceSegmentItem
+        :param Gender: 人物性别：
+<li>Male：男性；</li>
+<li>Female：女性。</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Gender: str
+        :param Birthday: 人物出生日期。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Birthday: str
+        :param Profession: 人物职业或者职务。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Profession: str
+        :param SchoolOfGraduation: 人物毕业院校。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SchoolOfGraduation: str
+        :param Abstract: 人物简介。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Abstract: str
+        :param PlaceOfBirth: 人物出生地或者籍贯。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PlaceOfBirth: str
+        :param PersonType: 人物类型：
+<li>Politician：官员；</li>
+<li>Artist：艺人。</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PersonType: str
+        :param Remark: 敏感度标注：
+<li>Normal：正常；</li>
+<li>Sensitive：敏感。</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
+        :param Url: 截图链接
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Url: str
         """
         self.Id = None
         self.Type = None
         self.Name = None
         self.SegmentSet = None
+        self.Gender = None
+        self.Birthday = None
+        self.Profession = None
+        self.SchoolOfGraduation = None
+        self.Abstract = None
+        self.PlaceOfBirth = None
+        self.PersonType = None
+        self.Remark = None
+        self.Url = None
 
 
     def _deserialize(self, params):
@@ -1525,6 +1567,15 @@ class AiRecognitionTaskFaceResultItem(AbstractModel):
                 obj = AiRecognitionTaskFaceSegmentItem()
                 obj._deserialize(item)
                 self.SegmentSet.append(obj)
+        self.Gender = params.get("Gender")
+        self.Birthday = params.get("Birthday")
+        self.Profession = params.get("Profession")
+        self.SchoolOfGraduation = params.get("SchoolOfGraduation")
+        self.Abstract = params.get("Abstract")
+        self.PlaceOfBirth = params.get("PlaceOfBirth")
+        self.PersonType = params.get("PersonType")
+        self.Remark = params.get("Remark")
+        self.Url = params.get("Url")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1632,7 +1683,7 @@ class AiRecognitionTaskOcrFullTextResult(AbstractModel):
         r"""
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
-        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
         :type ErrCodeExt: str
         :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
         :type ErrCode: int
@@ -1803,7 +1854,7 @@ class AiRecognitionTaskOcrWordsResult(AbstractModel):
         r"""
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
-        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
         :type ErrCodeExt: str
         :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
         :type ErrCode: int
@@ -2502,7 +2553,7 @@ class AiReviewTaskPoliticalAsrResult(AbstractModel):
         r"""
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
-        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
         :type ErrCodeExt: str
         :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
         :type ErrCode: int
@@ -2551,7 +2602,7 @@ class AiReviewTaskPoliticalOcrResult(AbstractModel):
         r"""
         :param Status: 任务状态，有 PROCESSING，SUCCESS，FAIL 三种。
         :type Status: str
-        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
         :type ErrCodeExt: str
         :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
         :type ErrCode: int
@@ -2600,7 +2651,7 @@ class AiReviewTaskPoliticalResult(AbstractModel):
         r"""
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
-        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
         :type ErrCodeExt: str
         :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
         :type ErrCode: int
@@ -2649,7 +2700,7 @@ class AiReviewTaskPornAsrResult(AbstractModel):
         r"""
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
-        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
         :type ErrCodeExt: str
         :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
         :type ErrCode: int
@@ -2698,7 +2749,7 @@ class AiReviewTaskPornOcrResult(AbstractModel):
         r"""
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
-        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
         :type ErrCodeExt: str
         :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
         :type ErrCode: int
@@ -2747,7 +2798,7 @@ class AiReviewTaskPornResult(AbstractModel):
         r"""
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
-        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
         :type ErrCodeExt: str
         :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
         :type ErrCode: int
@@ -2796,7 +2847,7 @@ class AiReviewTaskProhibitedAsrResult(AbstractModel):
         r"""
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
-        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
         :type ErrCodeExt: str
         :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
         :type ErrCode: int
@@ -2845,7 +2896,7 @@ class AiReviewTaskProhibitedOcrResult(AbstractModel):
         r"""
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
-        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
         :type ErrCodeExt: str
         :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
         :type ErrCode: int
@@ -2894,7 +2945,7 @@ class AiReviewTaskTerrorismOcrResult(AbstractModel):
         r"""
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
-        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
         :type ErrCodeExt: str
         :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
         :type ErrCode: int
@@ -2943,7 +2994,7 @@ class AiReviewTaskTerrorismResult(AbstractModel):
         r"""
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
-        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
         :type ErrCodeExt: str
         :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
         :type ErrCode: int
@@ -3918,17 +3969,17 @@ class CosFileUploadTrigger(AbstractModel):
 
 
 class CosInputInfo(AbstractModel):
-    """视频处理 COS 对象信息。
+    """媒体处理 COS 对象信息。
 
     """
 
     def __init__(self):
         r"""
-        :param Bucket: 视频处理对象文件所在的 COS Bucket 名，如 TopRankVideo-125xxx88。
+        :param Bucket: 媒体处理对象文件所在的 COS Bucket 名，如 TopRankVideo-125xxx88。
         :type Bucket: str
-        :param Region: 视频处理对象文件所在的 COS Bucket 所属园区，如 ap-chongqing。
+        :param Region: 媒体处理对象文件所在的 COS Bucket 所属园区，如 ap-chongqing。
         :type Region: str
-        :param Object: 视频处理对象文件的输入路径，如`/movie/201907/WildAnimal.mov`。
+        :param Object: 媒体处理对象文件的输入路径，如`/movie/201907/WildAnimal.mov`。
         :type Object: str
         """
         self.Bucket = None
@@ -3950,15 +4001,15 @@ class CosInputInfo(AbstractModel):
 
 
 class CosOutputStorage(AbstractModel):
-    """视频处理 COS 输出对象信息。
+    """媒体处理 COS 输出对象信息。
 
     """
 
     def __init__(self):
         r"""
-        :param Bucket: 视频处理生成的文件输出的目标 Bucket 名，如 TopRankVideo-125xxx88。如果不填，表示继承上层。
+        :param Bucket: 媒体处理生成的文件输出的目标 Bucket 名，如 TopRankVideo-125xxx88。如果不填，表示继承上层。
         :type Bucket: str
-        :param Region: 视频处理生成的文件输出的目标 Bucket 的园区，如 ap-chongqing。如果不填，表示继承上层。
+        :param Region: 媒体处理生成的文件输出的目标 Bucket 的园区，如 ap-chongqing。如果不填，表示继承上层。
         :type Region: str
         """
         self.Bucket = None
@@ -5048,11 +5099,11 @@ class CreateWorkflowRequest(AbstractModel):
         :type WorkflowName: str
         :param Trigger: 工作流绑定的触发规则，当上传视频命中该规则到该对象时即触发工作流。
         :type Trigger: :class:`tencentcloud.mps.v20190612.models.WorkflowTrigger`
-        :param OutputStorage: 视频处理的文件输出存储位置。不填则继承 Trigger 中的存储位置。
+        :param OutputStorage: 媒体处理的文件输出存储位置。不填则继承 Trigger 中的存储位置。
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
-        :param OutputDir: 视频处理生成的文件输出的目标目录，如`/movie/201907/`。如果不填，表示与触发文件所在的目录一致。
+        :param OutputDir: 媒体处理生成的文件输出的目标目录，如`/movie/201907/`。如果不填，表示与触发文件所在的目录一致。
         :type OutputDir: str
-        :param MediaProcessTask: 视频处理类型任务参数。
+        :param MediaProcessTask: 媒体处理类型任务参数。
         :type MediaProcessTask: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskInput`
         :param AiContentReviewTask: 视频内容审核类型任务参数。
         :type AiContentReviewTask: :class:`tencentcloud.mps.v20190612.models.AiContentReviewTaskInput`
@@ -5303,7 +5354,7 @@ class DeleteContentReviewTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Definition: 内容智能识别模板唯一标识。
+        :param Definition: 内容审核模板唯一标识。
         :type Definition: int
         """
         self.Definition = None
@@ -5944,7 +5995,7 @@ class DescribeContentReviewTemplatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Definitions: 内容智能识别模板唯一标识过滤条件，数组长度限制：50。
+        :param Definitions: 智能审核模板唯一标识过滤条件，数组长度限制：50。
         :type Definitions: list of int
         :param Offset: 分页偏移量，默认值：0。
         :type Offset: int
@@ -6917,9 +6968,9 @@ class EditMediaRequest(AbstractModel):
         r"""
         :param FileInfos: 输入的视频文件信息。
         :type FileInfos: list of EditMediaFileInfo
-        :param OutputStorage: 视频处理输出文件的目标存储。
+        :param OutputStorage: 媒体处理输出文件的目标存储。
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
-        :param OutputObjectPath: 视频处理输出文件的目标路径。
+        :param OutputObjectPath: 媒体处理输出文件的目标路径。
         :type OutputObjectPath: str
         :param OutputConfig: 编辑后生成的文件配置。
         :type OutputConfig: :class:`tencentcloud.mps.v20190612.models.EditMediaOutputConfig`
@@ -8343,7 +8394,7 @@ class LiveStreamProcessTask(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TaskId: 视频处理任务 ID。
+        :param TaskId: 媒体处理任务 ID。
         :type TaskId: str
         :param Status: 任务流状态，取值：
 <li>PROCESSING：处理中；</li>
@@ -9014,7 +9065,7 @@ class MediaImageSpriteItem(AbstractModel):
 
 
 class MediaInputInfo(AbstractModel):
-    """视频处理的输入对象信息。
+    """媒体处理的输入对象信息。
 
     """
 
@@ -9022,9 +9073,9 @@ class MediaInputInfo(AbstractModel):
         r"""
         :param Type: 输入来源对象的类型，支持 COS 和 URL 两种。
         :type Type: str
-        :param CosInputInfo: 当 Type 为 COS 时有效，则该项为必填，表示视频处理 COS 对象信息。
+        :param CosInputInfo: 当 Type 为 COS 时有效，则该项为必填，表示媒体处理 COS 对象信息。
         :type CosInputInfo: :class:`tencentcloud.mps.v20190612.models.CosInputInfo`
-        :param UrlInputInfo: 当 Type 为 URL 时有效，则该项为必填，表示视频处理 URL 对象信息。
+        :param UrlInputInfo: 当 Type 为 URL 时有效，则该项为必填，表示媒体处理 URL 对象信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type UrlInputInfo: :class:`tencentcloud.mps.v20190612.models.UrlInputInfo`
         """
@@ -9133,7 +9184,7 @@ class MediaProcessTaskAdaptiveDynamicStreamingResult(AbstractModel):
         r"""
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
-        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
         :type ErrCodeExt: str
         :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
         :type ErrCode: int
@@ -9182,7 +9233,7 @@ class MediaProcessTaskAnimatedGraphicResult(AbstractModel):
         r"""
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
-        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
         :type ErrCodeExt: str
         :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
         :type ErrCode: int
@@ -9231,7 +9282,7 @@ class MediaProcessTaskImageSpriteResult(AbstractModel):
         r"""
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
-        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
         :type ErrCodeExt: str
         :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
         :type ErrCode: int
@@ -9272,7 +9323,7 @@ class MediaProcessTaskImageSpriteResult(AbstractModel):
 
 
 class MediaProcessTaskInput(AbstractModel):
-    """视频处理任务类型
+    """媒体处理任务类型
 
     """
 
@@ -9427,7 +9478,7 @@ class MediaProcessTaskSampleSnapshotResult(AbstractModel):
         r"""
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
-        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
         :type ErrCodeExt: str
         :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
         :type ErrCode: int
@@ -9476,7 +9527,7 @@ class MediaProcessTaskSnapshotByTimeOffsetResult(AbstractModel):
         r"""
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
-        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
         :type ErrCodeExt: str
         :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
         :type ErrCode: int
@@ -9525,7 +9576,7 @@ class MediaProcessTaskTranscodeResult(AbstractModel):
         r"""
         :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
         :type Status: str
-        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
         :type ErrCodeExt: str
         :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
         :type ErrCode: int
@@ -10153,11 +10204,11 @@ class ModifyContentReviewTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Definition: 内容智能识别模板唯一标识。
+        :param Definition: 内容审核模板唯一标识。
         :type Definition: int
-        :param Name: 内容智能识别模板名称，长度限制：64 个字符。
+        :param Name: 内容审核模板名称，长度限制：64 个字符。
         :type Name: str
-        :param Comment: 内容智能识别模板描述信息，长度限制：256 个字符。
+        :param Comment: 内容审核模板描述信息，长度限制：256 个字符。
         :type Comment: str
         :param PornConfigure: 令人反感的信息的控制参数。
         :type PornConfigure: :class:`tencentcloud.mps.v20190612.models.PornConfigureInfoForUpdate`
@@ -10170,7 +10221,7 @@ class ModifyContentReviewTemplateRequest(AbstractModel):
 <li>涉毒违法。</li>
 注意：此参数尚未支持。
         :type ProhibitedConfigure: :class:`tencentcloud.mps.v20190612.models.ProhibitedConfigureInfoForUpdate`
-        :param UserDefineConfigure: 用户自定义内容智能识别控制参数。
+        :param UserDefineConfigure: 用户自定义内容审核控制参数。
         :type UserDefineConfigure: :class:`tencentcloud.mps.v20190612.models.UserDefineConfigureInfoForUpdate`
         """
         self.Definition = None
@@ -10833,7 +10884,7 @@ class ModifyWordSampleResponse(AbstractModel):
 
 
 class MosaicInput(AbstractModel):
-    """视频处理任务中的马赛克参数类型
+    """媒体处理任务中的马赛克参数类型
 
     """
 
@@ -11942,13 +11993,13 @@ class ProcessMediaRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InputInfo: 视频处理的文件输入信息。
+        :param InputInfo: 媒体处理的文件输入信息。
         :type InputInfo: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
-        :param OutputStorage: 视频处理输出文件的目标存储。不填则继承 InputInfo 中的存储位置。
+        :param OutputStorage: 媒体处理输出文件的目标存储。不填则继承 InputInfo 中的存储位置。
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
-        :param OutputDir: 视频处理生成的文件输出的目标目录，如`/movie/201907/`。如果不填，表示与 InputInfo 中文件所在的目录一致。
+        :param OutputDir: 媒体处理生成的文件输出的目标目录，如`/movie/201907/`。如果不填，表示与 InputInfo 中文件所在的目录一致。
         :type OutputDir: str
-        :param MediaProcessTask: 视频处理类型任务参数。
+        :param MediaProcessTask: 媒体处理类型任务参数。
         :type MediaProcessTask: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskInput`
         :param AiContentReviewTask: 视频内容审核类型任务参数。
         :type AiContentReviewTask: :class:`tencentcloud.mps.v20190612.models.AiContentReviewTaskInput`
@@ -13040,25 +13091,29 @@ class TaskNotifyConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CmqModel: CMQ 的模型，有 Queue 和 Topic 两种，目前仅支持 Queue。
+        :param CmqModel: CMQ或TDMQ-CMQ 的模型，有 Queue 和 Topic 两种。
         :type CmqModel: str
-        :param CmqRegion: CMQ 的园区，如 sh，bj 等。
+        :param CmqRegion: CMQ或TDMQ-CMQ 的园区，如 sh，bj 等。
         :type CmqRegion: str
-        :param QueueName: 当模型为 Queue 时有效，表示接收事件通知的 CMQ 的队列名。
-        :type QueueName: str
-        :param TopicName: 当模型为 Topic 时有效，表示接收事件通知的 CMQ 的主题名。
+        :param TopicName: 当模型为 Topic 时有效，表示接收事件通知的 CMQ 或 TDMQ-CMQ 的主题名。
         :type TopicName: str
+        :param QueueName: 当模型为 Queue 时有效，表示接收事件通知的 CMQ 或 TDMQ-CMQ 的队列名。
+        :type QueueName: str
         :param NotifyMode: 工作流通知的模式，可取值有 Finish 和 Change，不填代表 Finish。
         :type NotifyMode: str
-        :param NotifyType: 通知类型，默认CMQ，指定URL时HTTP回调推送到 NotifyUrl 指定的地址。
+        :param NotifyType: 通知类型，可选值：
+<li>CMQ：已下线，建议切换到TDMQ-CMQ</li>
+<li>TDMQ-CMQ：消息队列</li>
+<li>URL：指定URL时HTTP回调推送到 NotifyUrl 指定的地址，回调协议http+json，包体内容同解析事件通知接口的输出参数 </li>
+目前 默认CMQ。
         :type NotifyType: str
         :param NotifyUrl: HTTP回调地址，NotifyType为URL时必填。
         :type NotifyUrl: str
         """
         self.CmqModel = None
         self.CmqRegion = None
-        self.QueueName = None
         self.TopicName = None
+        self.QueueName = None
         self.NotifyMode = None
         self.NotifyType = None
         self.NotifyUrl = None
@@ -13067,8 +13122,8 @@ class TaskNotifyConfig(AbstractModel):
     def _deserialize(self, params):
         self.CmqModel = params.get("CmqModel")
         self.CmqRegion = params.get("CmqRegion")
-        self.QueueName = params.get("QueueName")
         self.TopicName = params.get("TopicName")
+        self.QueueName = params.get("QueueName")
         self.NotifyMode = params.get("NotifyMode")
         self.NotifyType = params.get("NotifyType")
         self.NotifyUrl = params.get("NotifyUrl")
@@ -13082,15 +13137,15 @@ class TaskNotifyConfig(AbstractModel):
 
 
 class TaskOutputStorage(AbstractModel):
-    """视频处理输出对象信息。
+    """媒体处理输出对象信息。
 
     """
 
     def __init__(self):
         r"""
-        :param Type: 视频处理输出对象存储位置的类型，现在仅支持 COS。
+        :param Type: 媒体处理输出对象存储位置的类型，现在仅支持 COS。
         :type Type: str
-        :param CosOutputStorage: 当 Type 为 COS 时有效，则该项为必填，表示视频处理 COS 输出位置。
+        :param CosOutputStorage: 当 Type 为 COS 时有效，则该项为必填，表示媒体处理 COS 输出位置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CosOutputStorage: :class:`tencentcloud.mps.v20190612.models.CosOutputStorage`
         """
@@ -13653,7 +13708,7 @@ class TranscodeTemplate(AbstractModel):
 
 
 class UrlInputInfo(AbstractModel):
-    """视频处理 URL 对象信息。
+    """媒体处理 URL 对象信息。
 
     """
 
@@ -14149,7 +14204,7 @@ class VideoTemplateInfoForUpdate(AbstractModel):
 
 
 class WatermarkInput(AbstractModel):
-    """视频处理任务中的水印参数类型
+    """媒体处理任务中的水印参数类型
 
     """
 
@@ -14308,10 +14363,10 @@ class WorkflowInfo(AbstractModel):
         :type Status: str
         :param Trigger: 工作流绑定的输入规则，当上传视频命中该规则到该对象时即触发工作流。
         :type Trigger: :class:`tencentcloud.mps.v20190612.models.WorkflowTrigger`
-        :param OutputStorage: 视频处理的文件输出存储位置。
+        :param OutputStorage: 媒体处理的文件输出存储位置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
-        :param MediaProcessTask: 视频处理类型任务参数。
+        :param MediaProcessTask: 媒体处理类型任务参数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type MediaProcessTask: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskInput`
         :param AiContentReviewTask: 视频内容审核类型任务参数。
@@ -14328,7 +14383,7 @@ class WorkflowInfo(AbstractModel):
         :type TaskNotifyConfig: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
         :param TaskPriority: 任务流的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。
         :type TaskPriority: int
-        :param OutputDir: 视频处理生成的文件输出的目标目录，如`/movie/201907/`。
+        :param OutputDir: 媒体处理生成的文件输出的目标目录，如`/movie/201907/`。
         :type OutputDir: str
         :param CreateTime: 工作流创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
         :type CreateTime: str
@@ -14390,13 +14445,13 @@ class WorkflowInfo(AbstractModel):
 
 
 class WorkflowTask(AbstractModel):
-    """视频处理任务信息
+    """媒体处理任务信息
 
     """
 
     def __init__(self):
         r"""
-        :param TaskId: 视频处理任务 ID。
+        :param TaskId: 媒体处理任务 ID。
         :type TaskId: str
         :param Status: 任务流状态，取值：
 <li>PROCESSING：处理中；</li>
@@ -14406,13 +14461,13 @@ class WorkflowTask(AbstractModel):
         :type ErrCode: int
         :param Message: 已弃用，请使用各个具体任务的 Message。
         :type Message: str
-        :param InputInfo: 视频处理的目标文件信息。
+        :param InputInfo: 媒体处理的目标文件信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type InputInfo: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
         :param MetaData: 原始视频的元信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type MetaData: :class:`tencentcloud.mps.v20190612.models.MediaMetaData`
-        :param MediaProcessResultSet: 视频处理任务的执行状态与结果。
+        :param MediaProcessResultSet: 媒体处理任务的执行状态与结果。
         :type MediaProcessResultSet: list of MediaProcessTaskResult
         :param AiContentReviewResultSet: 视频内容审核任务的执行状态与结果。
         :type AiContentReviewResultSet: list of AiContentReviewResult
