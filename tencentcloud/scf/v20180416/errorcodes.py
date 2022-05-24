@@ -143,6 +143,9 @@ FAILEDOPERATION_RESERVEDEXCEEDTOTAL = 'FailedOperation.ReservedExceedTotal'
 # 当前函数已有保留并发设置任务处于进行中，请稍后重试。
 FAILEDOPERATION_RESERVEDINPROGRESS = 'FailedOperation.ReservedInProgress'
 
+# ServiceClosed 请确认后再操作。
+FAILEDOPERATION_SERVICECLOSED = 'FailedOperation.ServiceClosed'
+
 # Topic不存在。
 FAILEDOPERATION_TOPICNOTEXIST = 'FailedOperation.TopicNotExist'
 

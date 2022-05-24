@@ -414,6 +414,9 @@ class AlarmPolicy(AbstractModel):
         :param OneClickStatus: 一键告警策略是否开启
 注意：此字段可能返回 null，表示取不到有效值。
         :type OneClickStatus: int
+        :param AdvancedMetricNumber: 高级指标数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AdvancedMetricNumber: int
         """
         self.PolicyId = None
         self.PolicyName = None
@@ -447,6 +450,7 @@ class AlarmPolicy(AbstractModel):
         self.FilterDimensionsParam = None
         self.IsOneClick = None
         self.OneClickStatus = None
+        self.AdvancedMetricNumber = None
 
 
     def _deserialize(self, params):
@@ -503,6 +507,7 @@ class AlarmPolicy(AbstractModel):
         self.FilterDimensionsParam = params.get("FilterDimensionsParam")
         self.IsOneClick = params.get("IsOneClick")
         self.OneClickStatus = params.get("OneClickStatus")
+        self.AdvancedMetricNumber = params.get("AdvancedMetricNumber")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -665,6 +670,15 @@ re=正则匹配
         :param RuleType: 触发条件类型 STATIC=静态阈值 DYNAMIC=动态阈值。创建或编辑策略时，如不填则默认为 STATIC。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RuleType: str
+        :param IsAdvanced: 是否为高级指标，0否，1是
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsAdvanced: int
+        :param IsOpen: 高级指标是否开通，0否，1是
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsOpen: int
+        :param ProductId: 集成中心产品ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductId: str
         """
         self.MetricName = None
         self.Period = None
@@ -677,6 +691,9 @@ re=正则匹配
         self.Description = None
         self.Unit = None
         self.RuleType = None
+        self.IsAdvanced = None
+        self.IsOpen = None
+        self.ProductId = None
 
 
     def _deserialize(self, params):
@@ -693,6 +710,9 @@ re=正则匹配
         self.Description = params.get("Description")
         self.Unit = params.get("Unit")
         self.RuleType = params.get("RuleType")
+        self.IsAdvanced = params.get("IsAdvanced")
+        self.IsOpen = params.get("IsOpen")
+        self.ProductId = params.get("ProductId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5703,6 +5723,15 @@ class Metric(AbstractModel):
         :param MetricConfig: 指标配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type MetricConfig: :class:`tencentcloud.monitor.v20180724.models.MetricConfig`
+        :param IsAdvanced: 是否为高级指标。1是 0否
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsAdvanced: int
+        :param IsOpen: 高级指标是否开通。1是 0否
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsOpen: int
+        :param ProductId: 集成中心产品ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductId: int
         """
         self.Namespace = None
         self.MetricName = None
@@ -5712,6 +5741,9 @@ class Metric(AbstractModel):
         self.Dimensions = None
         self.Unit = None
         self.MetricConfig = None
+        self.IsAdvanced = None
+        self.IsOpen = None
+        self.ProductId = None
 
 
     def _deserialize(self, params):
@@ -5725,6 +5757,9 @@ class Metric(AbstractModel):
         if params.get("MetricConfig") is not None:
             self.MetricConfig = MetricConfig()
             self.MetricConfig._deserialize(params.get("MetricConfig"))
+        self.IsAdvanced = params.get("IsAdvanced")
+        self.IsOpen = params.get("IsOpen")
+        self.ProductId = params.get("ProductId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -3739,7 +3739,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeVirusList(self, request):
-        """运行时文件查杀事件列表
+        """查询运行时文件查杀事件列表
 
         :param request: Request instance for DescribeVirusList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVirusListRequest`

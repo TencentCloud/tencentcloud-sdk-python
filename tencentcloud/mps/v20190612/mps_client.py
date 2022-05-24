@@ -143,7 +143,7 @@ class MpsClient(AbstractClient):
 
 
     def CreateContentReviewTemplate(self, request):
-        """创建用户自定义内容智能识别模板，数量上限：50。
+        """创建用户自定义内容审核模板，数量上限：50。
 
         :param request: Request instance for CreateContentReviewTemplate.
         :type request: :class:`tencentcloud.mps.v20190612.models.CreateContentReviewTemplateRequest`

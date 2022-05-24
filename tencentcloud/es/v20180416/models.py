@@ -18,6 +18,51 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class BackingIndexMetaField(AbstractModel):
+    """后备索引元数据字段
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IndexName: 后备索引名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IndexName: str
+        :param IndexStatus: 后备索引状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IndexStatus: str
+        :param IndexStorage: 后备索引存储大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IndexStorage: int
+        :param IndexPhrase: 后备索引当前生命周期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IndexPhrase: str
+        :param IndexCreateTime: 后备索引创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IndexCreateTime: str
+        """
+        self.IndexName = None
+        self.IndexStatus = None
+        self.IndexStorage = None
+        self.IndexPhrase = None
+        self.IndexCreateTime = None
+
+
+    def _deserialize(self, params):
+        self.IndexName = params.get("IndexName")
+        self.IndexStatus = params.get("IndexStatus")
+        self.IndexStorage = params.get("IndexStorage")
+        self.IndexPhrase = params.get("IndexPhrase")
+        self.IndexCreateTime = params.get("IndexCreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ClusterView(AbstractModel):
     """集群维度视图数据
 
@@ -154,6 +199,67 @@ class CosBackup(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class CreateIndexRequest(AbstractModel):
+    """CreateIndex请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: ES集群ID
+        :type InstanceId: str
+        :param IndexType: 创建的索引类型。auto：自治索引；normal：普通索引
+        :type IndexType: str
+        :param IndexName: 创建的索引名
+        :type IndexName: str
+        :param IndexMetaJson: 创建的索引元数据JSON，如mappings、settings
+        :type IndexMetaJson: str
+        :param Username: 集群访问用户名
+        :type Username: str
+        :param Password: 集群访问密码
+        :type Password: str
+        """
+        self.InstanceId = None
+        self.IndexType = None
+        self.IndexName = None
+        self.IndexMetaJson = None
+        self.Username = None
+        self.Password = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.IndexType = params.get("IndexType")
+        self.IndexName = params.get("IndexName")
+        self.IndexMetaJson = params.get("IndexMetaJson")
+        self.Username = params.get("Username")
+        self.Password = params.get("Password")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateIndexResponse(AbstractModel):
+    """CreateIndex返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class CreateInstanceRequest(AbstractModel):
@@ -347,6 +453,67 @@ class CreateInstanceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteIndexRequest(AbstractModel):
+    """DeleteIndex请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: ES集群ID
+        :type InstanceId: str
+        :param IndexType: 删除的索引类型。auto：自治索引；normal：普通索引
+        :type IndexType: str
+        :param IndexName: 删除的索引名
+        :type IndexName: str
+        :param Username: 集群访问用户名
+        :type Username: str
+        :param Password: 集群访问密码
+        :type Password: str
+        :param BackingIndexName: 后备索引名
+        :type BackingIndexName: str
+        """
+        self.InstanceId = None
+        self.IndexType = None
+        self.IndexName = None
+        self.Username = None
+        self.Password = None
+        self.BackingIndexName = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.IndexType = params.get("IndexType")
+        self.IndexName = params.get("IndexName")
+        self.Username = params.get("Username")
+        self.Password = params.get("Password")
+        self.BackingIndexName = params.get("BackingIndexName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteIndexResponse(AbstractModel):
+    """DeleteIndex返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteInstanceRequest(AbstractModel):
     """DeleteInstance请求参数结构体
 
@@ -385,6 +552,162 @@ class DeleteInstanceResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeIndexListRequest(AbstractModel):
+    """DescribeIndexList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IndexType: 索引类型。auto：自治索引；normal：普通索引
+        :type IndexType: str
+        :param InstanceId: ES集群ID
+        :type InstanceId: str
+        :param IndexName: 索引名，若填空则获取所有索引
+        :type IndexName: str
+        :param Username: 集群访问用户名
+        :type Username: str
+        :param Password: 集群访问密码
+        :type Password: str
+        :param Offset: 分页起始位置
+        :type Offset: int
+        :param Limit: 一页展示数量
+        :type Limit: int
+        :param OrderBy: 排序字段，支持索引名：IndexName、索引存储量：IndexStorage、索引创建时间：IndexCreateTime
+        :type OrderBy: str
+        :param IndexStatusList: 过滤索引状态
+        :type IndexStatusList: list of str
+        :param Order: 排序顺序，支持asc、desc
+        :type Order: str
+        """
+        self.IndexType = None
+        self.InstanceId = None
+        self.IndexName = None
+        self.Username = None
+        self.Password = None
+        self.Offset = None
+        self.Limit = None
+        self.OrderBy = None
+        self.IndexStatusList = None
+        self.Order = None
+
+
+    def _deserialize(self, params):
+        self.IndexType = params.get("IndexType")
+        self.InstanceId = params.get("InstanceId")
+        self.IndexName = params.get("IndexName")
+        self.Username = params.get("Username")
+        self.Password = params.get("Password")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.OrderBy = params.get("OrderBy")
+        self.IndexStatusList = params.get("IndexStatusList")
+        self.Order = params.get("Order")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeIndexListResponse(AbstractModel):
+    """DescribeIndexList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IndexMetaFields: 索引元数据字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IndexMetaFields: list of IndexMetaField
+        :param TotalCount: 查询总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.IndexMetaFields = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("IndexMetaFields") is not None:
+            self.IndexMetaFields = []
+            for item in params.get("IndexMetaFields"):
+                obj = IndexMetaField()
+                obj._deserialize(item)
+                self.IndexMetaFields.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeIndexMetaRequest(AbstractModel):
+    """DescribeIndexMeta请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: ES集群ID
+        :type InstanceId: str
+        :param IndexType: 索引类型。auto：自治索引；normal：普通索引
+        :type IndexType: str
+        :param IndexName: 索引名，若填空则获取所有索引
+        :type IndexName: str
+        :param Username: 集群访问用户名
+        :type Username: str
+        :param Password: 集群访问密码
+        :type Password: str
+        """
+        self.InstanceId = None
+        self.IndexType = None
+        self.IndexName = None
+        self.Username = None
+        self.Password = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.IndexType = params.get("IndexType")
+        self.IndexName = params.get("IndexName")
+        self.Username = params.get("Username")
+        self.Password = params.get("Password")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeIndexMetaResponse(AbstractModel):
+    """DescribeIndexMeta返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IndexMetaField: 索引元数据字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IndexMetaField: :class:`tencentcloud.es.v20180416.models.IndexMetaField`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.IndexMetaField = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("IndexMetaField") is not None:
+            self.IndexMetaField = IndexMetaField()
+            self.IndexMetaField._deserialize(params.get("IndexMetaField"))
         self.RequestId = params.get("RequestId")
 
 
@@ -822,6 +1145,34 @@ class EsAcl(AbstractModel):
         
 
 
+class EsConfigSetInfo(AbstractModel):
+    """配置组信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Type: 配置组类型，如ldap,ad等
+        :type Type: str
+        :param EsConfig: "{\"order\":0,\"url\":\"ldap://10.0.1.72:389\",\"bind_dn\":\"cn=admin,dc=tencent,dc=com\",\"user_search.base_dn\":\"dc=tencent,dc=com\",\"user_search.filter\":\"(cn={0})\",\"group_search.base_dn\":\"dc=tencent,dc=com\"}"
+        :type EsConfig: str
+        """
+        self.Type = None
+        self.EsConfig = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.EsConfig = params.get("EsConfig")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class EsDictionaryInfo(AbstractModel):
     """ES 词库信息
 
@@ -953,6 +1304,242 @@ class GetRequestTargetNodeTypesResponse(AbstractModel):
     def _deserialize(self, params):
         self.TargetNodeTypes = params.get("TargetNodeTypes")
         self.RequestId = params.get("RequestId")
+
+
+class IndexMetaField(AbstractModel):
+    """索引元数据字段
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IndexType: 索引类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IndexType: str
+        :param IndexName: 索引名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IndexName: str
+        :param IndexStatus: 索引状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IndexStatus: str
+        :param IndexStorage: 索引存储大小，单位Byte
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IndexStorage: int
+        :param IndexCreateTime: 索引创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IndexCreateTime: str
+        :param BackingIndices: 后备索引
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BackingIndices: list of BackingIndexMetaField
+        :param ClusterId: 索引所属集群ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterId: str
+        :param ClusterName: 索引所属集群名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterName: str
+        :param ClusterVersion: 索引所属集群版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterVersion: str
+        :param IndexPolicyField: 索引生命周期字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IndexPolicyField: :class:`tencentcloud.es.v20180416.models.IndexPolicyField`
+        :param IndexOptionsField: 索引自治字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IndexOptionsField: :class:`tencentcloud.es.v20180416.models.IndexOptionsField`
+        :param IndexSettingsField: 索引配置字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IndexSettingsField: :class:`tencentcloud.es.v20180416.models.IndexSettingsField`
+        :param AppId: 索引所属集群APP ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppId: int
+        """
+        self.IndexType = None
+        self.IndexName = None
+        self.IndexStatus = None
+        self.IndexStorage = None
+        self.IndexCreateTime = None
+        self.BackingIndices = None
+        self.ClusterId = None
+        self.ClusterName = None
+        self.ClusterVersion = None
+        self.IndexPolicyField = None
+        self.IndexOptionsField = None
+        self.IndexSettingsField = None
+        self.AppId = None
+
+
+    def _deserialize(self, params):
+        self.IndexType = params.get("IndexType")
+        self.IndexName = params.get("IndexName")
+        self.IndexStatus = params.get("IndexStatus")
+        self.IndexStorage = params.get("IndexStorage")
+        self.IndexCreateTime = params.get("IndexCreateTime")
+        if params.get("BackingIndices") is not None:
+            self.BackingIndices = []
+            for item in params.get("BackingIndices"):
+                obj = BackingIndexMetaField()
+                obj._deserialize(item)
+                self.BackingIndices.append(obj)
+        self.ClusterId = params.get("ClusterId")
+        self.ClusterName = params.get("ClusterName")
+        self.ClusterVersion = params.get("ClusterVersion")
+        if params.get("IndexPolicyField") is not None:
+            self.IndexPolicyField = IndexPolicyField()
+            self.IndexPolicyField._deserialize(params.get("IndexPolicyField"))
+        if params.get("IndexOptionsField") is not None:
+            self.IndexOptionsField = IndexOptionsField()
+            self.IndexOptionsField._deserialize(params.get("IndexOptionsField"))
+        if params.get("IndexSettingsField") is not None:
+            self.IndexSettingsField = IndexSettingsField()
+            self.IndexSettingsField._deserialize(params.get("IndexSettingsField"))
+        self.AppId = params.get("AppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IndexOptionsField(AbstractModel):
+    """索引自治字段
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ExpireMaxAge: 过期时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpireMaxAge: str
+        :param ExpireMaxSize: 过期大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpireMaxSize: str
+        :param RolloverMaxAge: 滚动周期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RolloverMaxAge: str
+        :param RolloverDynamic: 是否开启动态滚动
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RolloverDynamic: str
+        :param ShardNumDynamic: 是否开启动态分片
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ShardNumDynamic: str
+        :param TimestampField: 时间分区字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimestampField: str
+        :param WriteMode: 写入模式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WriteMode: str
+        """
+        self.ExpireMaxAge = None
+        self.ExpireMaxSize = None
+        self.RolloverMaxAge = None
+        self.RolloverDynamic = None
+        self.ShardNumDynamic = None
+        self.TimestampField = None
+        self.WriteMode = None
+
+
+    def _deserialize(self, params):
+        self.ExpireMaxAge = params.get("ExpireMaxAge")
+        self.ExpireMaxSize = params.get("ExpireMaxSize")
+        self.RolloverMaxAge = params.get("RolloverMaxAge")
+        self.RolloverDynamic = params.get("RolloverDynamic")
+        self.ShardNumDynamic = params.get("ShardNumDynamic")
+        self.TimestampField = params.get("TimestampField")
+        self.WriteMode = params.get("WriteMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IndexPolicyField(AbstractModel):
+    """索引生命周期字段
+
+    """
+
+    def __init__(self):
+        r"""
+        :param WarmEnable: 是否开启warm阶段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WarmEnable: str
+        :param WarmMinAge: warm阶段转入时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WarmMinAge: str
+        :param ColdEnable: 是否开启cold阶段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ColdEnable: str
+        :param ColdMinAge: cold阶段转入时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ColdMinAge: str
+        :param FrozenEnable: 是否开启frozen阶段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FrozenEnable: str
+        :param FrozenMinAge: frozen阶段转入时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FrozenMinAge: str
+        """
+        self.WarmEnable = None
+        self.WarmMinAge = None
+        self.ColdEnable = None
+        self.ColdMinAge = None
+        self.FrozenEnable = None
+        self.FrozenMinAge = None
+
+
+    def _deserialize(self, params):
+        self.WarmEnable = params.get("WarmEnable")
+        self.WarmMinAge = params.get("WarmMinAge")
+        self.ColdEnable = params.get("ColdEnable")
+        self.ColdMinAge = params.get("ColdMinAge")
+        self.FrozenEnable = params.get("FrozenEnable")
+        self.FrozenMinAge = params.get("FrozenMinAge")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IndexSettingsField(AbstractModel):
+    """索引配置字段
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NumberOfShards: 索引主分片数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NumberOfShards: str
+        :param NumberOfReplicas: 索引副本分片数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NumberOfReplicas: str
+        :param RefreshInterval: 索引刷新频率
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RefreshInterval: str
+        """
+        self.NumberOfShards = None
+        self.NumberOfReplicas = None
+        self.RefreshInterval = None
+
+
+    def _deserialize(self, params):
+        self.NumberOfShards = params.get("NumberOfShards")
+        self.NumberOfReplicas = params.get("NumberOfReplicas")
+        self.RefreshInterval = params.get("RefreshInterval")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class InstanceInfo(AbstractModel):
@@ -2196,6 +2783,67 @@ class UpdateDictionariesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class UpdateIndexRequest(AbstractModel):
+    """UpdateIndex请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: ES集群ID
+        :type InstanceId: str
+        :param IndexType: 更新的索引类型。auto：自治索引；normal：普通索引
+        :type IndexType: str
+        :param IndexName: 更新的索引名
+        :type IndexName: str
+        :param UpdateMetaJson: 更新的索引元数据JSON，如mappings、settings
+        :type UpdateMetaJson: str
+        :param Username: 集群访问用户名
+        :type Username: str
+        :param Password: 集群访问密码
+        :type Password: str
+        """
+        self.InstanceId = None
+        self.IndexType = None
+        self.IndexName = None
+        self.UpdateMetaJson = None
+        self.Username = None
+        self.Password = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.IndexType = params.get("IndexType")
+        self.IndexName = params.get("IndexName")
+        self.UpdateMetaJson = params.get("UpdateMetaJson")
+        self.Username = params.get("Username")
+        self.Password = params.get("Password")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateIndexResponse(AbstractModel):
+    """UpdateIndex返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class UpdateInstanceRequest(AbstractModel):
     """UpdateInstance请求参数结构体
 
@@ -2267,6 +2915,8 @@ class UpdateInstanceRequest(AbstractModel):
         :type CerebroPublicAccess: str
         :param CerebroPrivateAccess: Cerebro内网访问状态
         :type CerebroPrivateAccess: str
+        :param EsConfigSet: 新增或修改的配置组信息
+        :type EsConfigSet: :class:`tencentcloud.es.v20180416.models.EsConfigSetInfo`
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -2297,6 +2947,7 @@ class UpdateInstanceRequest(AbstractModel):
         self.EnableCerebro = None
         self.CerebroPublicAccess = None
         self.CerebroPrivateAccess = None
+        self.EsConfigSet = None
 
 
     def _deserialize(self, params):
@@ -2347,6 +2998,9 @@ class UpdateInstanceRequest(AbstractModel):
         self.EnableCerebro = params.get("EnableCerebro")
         self.CerebroPublicAccess = params.get("CerebroPublicAccess")
         self.CerebroPrivateAccess = params.get("CerebroPrivateAccess")
+        if params.get("EsConfigSet") is not None:
+            self.EsConfigSet = EsConfigSetInfo()
+            self.EsConfigSet._deserialize(params.get("EsConfigSet"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

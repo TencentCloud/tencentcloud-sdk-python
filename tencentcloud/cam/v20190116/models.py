@@ -5010,6 +5010,109 @@ class SubAccountUser(AbstractModel):
         
 
 
+class TagRoleRequest(AbstractModel):
+    """TagRole请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Tags: 标签
+        :type Tags: list of RoleTags
+        :param RoleName: 角色名，与角色ID至少输入一个
+        :type RoleName: str
+        :param RoleId: 角色ID，与角色名至少输入一个
+        :type RoleId: str
+        """
+        self.Tags = None
+        self.RoleName = None
+        self.RoleId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = RoleTags()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        self.RoleName = params.get("RoleName")
+        self.RoleId = params.get("RoleId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TagRoleResponse(AbstractModel):
+    """TagRole返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UntagRoleRequest(AbstractModel):
+    """UntagRole请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TagKeys: 标签键
+        :type TagKeys: list of str
+        :param RoleName: 角色名，与角色ID至少输入一个
+        :type RoleName: str
+        :param RoleId: 角色ID，与角色名至少输入一个
+        :type RoleId: str
+        """
+        self.TagKeys = None
+        self.RoleName = None
+        self.RoleId = None
+
+
+    def _deserialize(self, params):
+        self.TagKeys = params.get("TagKeys")
+        self.RoleName = params.get("RoleName")
+        self.RoleId = params.get("RoleId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UntagRoleResponse(AbstractModel):
+    """UntagRole返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class UpdateAssumeRolePolicyRequest(AbstractModel):
     """UpdateAssumeRolePolicy请求参数结构体
 

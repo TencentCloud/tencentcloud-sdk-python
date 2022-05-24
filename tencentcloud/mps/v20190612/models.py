@@ -4404,9 +4404,9 @@ class CreateContentReviewTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 内容智能识别模板名称，长度限制：64 个字符。
+        :param Name: 内容审核模板名称，长度限制：64 个字符。
         :type Name: str
-        :param Comment: 内容智能识别模板描述信息，长度限制：256 个字符。
+        :param Comment: 内容审核模板描述信息，长度限制：256 个字符。
         :type Comment: str
         :param PornConfigure: 令人反感的信息的控制参数。
         :type PornConfigure: :class:`tencentcloud.mps.v20190612.models.PornConfigureInfo`
@@ -4419,7 +4419,7 @@ class CreateContentReviewTemplateRequest(AbstractModel):
 <li>涉毒违法。</li>
 注意：此参数尚未支持。
         :type ProhibitedConfigure: :class:`tencentcloud.mps.v20190612.models.ProhibitedConfigureInfo`
-        :param UserDefineConfigure: 用户自定义内容智能识别控制参数。
+        :param UserDefineConfigure: 用户自定义内容审核控制参数。
         :type UserDefineConfigure: :class:`tencentcloud.mps.v20190612.models.UserDefineConfigureInfo`
         """
         self.Name = None
@@ -4465,7 +4465,7 @@ class CreateContentReviewTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Definition: 内容智能识别模板唯一标识。
+        :param Definition: 内容审核模板唯一标识。
         :type Definition: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

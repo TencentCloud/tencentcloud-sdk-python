@@ -4360,7 +4360,7 @@ class DescribeCmqQueuesRequest(AbstractModel):
         :type QueueNameList: list of str
         :param IsTagFilter: 标签过滤查找时，需要设置为 true
         :type IsTagFilter: bool
-        :param Filters: 过滤器。目前支持按标签过滤。
+        :param Filters: 过滤器。目前支持按标签过滤，标签的Name需要加前缀“tag:”，例如：tag:负责人、tag:环境、tag:业务
         :type Filters: list of Filter
         """
         self.Offset = None
@@ -4554,7 +4554,7 @@ class DescribeCmqTopicsRequest(AbstractModel):
         :type TopicNameList: list of str
         :param IsTagFilter: 标签过滤查找时，需要设置为 true
         :type IsTagFilter: bool
-        :param Filters: 过滤器。目前支持按标签过滤。
+        :param Filters: 过滤器。目前支持按标签过滤，标签的Name需要加前缀“tag:”，例如：tag:负责人、tag:环境、tag:业务
         :type Filters: list of Filter
         """
         self.Offset = None

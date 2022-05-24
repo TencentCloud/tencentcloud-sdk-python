@@ -1574,6 +1574,51 @@ class DcnDetailItem(AbstractModel):
         
 
 
+class Deal(AbstractModel):
+    """订单信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DealName: 订单号
+        :type DealName: str
+        :param OwnerUin: 所属账号
+        :type OwnerUin: str
+        :param Count: 商品数量
+        :type Count: int
+        :param FlowId: 关联的流程 Id，可用于查询流程执行状态
+        :type FlowId: int
+        :param InstanceIds: 只有创建实例的订单会填充该字段，表示该订单创建的实例的 ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceIds: list of str
+        :param PayMode: 付费模式，0后付费/1预付费
+        :type PayMode: int
+        """
+        self.DealName = None
+        self.OwnerUin = None
+        self.Count = None
+        self.FlowId = None
+        self.InstanceIds = None
+        self.PayMode = None
+
+
+    def _deserialize(self, params):
+        self.DealName = params.get("DealName")
+        self.OwnerUin = params.get("OwnerUin")
+        self.Count = params.get("Count")
+        self.FlowId = params.get("FlowId")
+        self.InstanceIds = params.get("InstanceIds")
+        self.PayMode = params.get("PayMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DeleteAccountRequest(AbstractModel):
     """DeleteAccount请求参数结构体
 
@@ -2435,6 +2480,70 @@ class DescribeDBResourceUsageResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDBSecurityGroupsRequest(AbstractModel):
+    """DescribeDBSecurityGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Product: 数据库引擎名称，本接口取值：mariadb。
+        :type Product: str
+        :param InstanceId: 实例ID。
+        :type InstanceId: str
+        """
+        self.Product = None
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.Product = params.get("Product")
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDBSecurityGroupsResponse(AbstractModel):
+    """DescribeDBSecurityGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Groups: 安全组详情。
+        :type Groups: list of SecurityGroup
+        :param VIP: 实例VIP。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VIP: str
+        :param VPort: 实例端口。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VPort: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Groups = None
+        self.VIP = None
+        self.VPort = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Groups") is not None:
+            self.Groups = []
+            for item in params.get("Groups"):
+                obj = SecurityGroup()
+                obj._deserialize(item)
+                self.Groups.append(obj)
+        self.VIP = params.get("VIP")
+        self.VPort = params.get("VPort")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDBSlowLogsRequest(AbstractModel):
     """DescribeDBSlowLogs请求参数结构体
 
@@ -2998,6 +3107,60 @@ class DescribeLogFileRetentionPeriodResponse(AbstractModel):
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
         self.Days = params.get("Days")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeOrdersRequest(AbstractModel):
+    """DescribeOrders请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DealNames: 待查询的长订单号列表，创建实例、续费实例、扩容实例接口返回。
+        :type DealNames: list of str
+        """
+        self.DealNames = None
+
+
+    def _deserialize(self, params):
+        self.DealNames = params.get("DealNames")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeOrdersResponse(AbstractModel):
+    """DescribeOrders返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 返回的订单数量。
+        :type TotalCount: int
+        :param Deals: 订单信息列表。
+        :type Deals: list of Deal
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Deals = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Deals") is not None:
+            self.Deals = []
+            for item in params.get("Deals"):
+                obj = Deal()
+                obj._deserialize(item)
+                self.Deals.append(obj)
         self.RequestId = params.get("RequestId")
 
 

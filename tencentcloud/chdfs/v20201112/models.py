@@ -281,6 +281,8 @@ class CreateFileSystemRequest(AbstractModel):
         :type EnableRanger: bool
         :param RangerServiceAddresses: Ranger地址列表，默认为空数组
         :type RangerServiceAddresses: list of str
+        :param Tags: 多个资源标签，可以为空数组
+        :type Tags: list of Tag
         """
         self.FileSystemName = None
         self.CapacityQuota = None
@@ -291,6 +293,7 @@ class CreateFileSystemRequest(AbstractModel):
         self.RootInodeGroup = None
         self.EnableRanger = None
         self.RangerServiceAddresses = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -303,6 +306,12 @@ class CreateFileSystemRequest(AbstractModel):
         self.RootInodeGroup = params.get("RootInodeGroup")
         self.EnableRanger = params.get("EnableRanger")
         self.RangerServiceAddresses = params.get("RangerServiceAddresses")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
