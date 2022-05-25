@@ -5817,6 +5817,8 @@ class CreateAIAnalysisTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :type SubAppId: int
         :param Name: 视频内容分析模板名称，长度限制：64 个字符。
         :type Name: str
         :param Comment: 视频内容分析模板描述信息，长度限制：256 个字符。
@@ -5831,9 +5833,8 @@ class CreateAIAnalysisTemplateRequest(AbstractModel):
         :type FrameTagConfigure: :class:`tencentcloud.vod.v20180717.models.FrameTagConfigureInfo`
         :param HighlightConfigure: 智能精彩集锦任务控制参数。
         :type HighlightConfigure: :class:`tencentcloud.vod.v20180717.models.HighlightsConfigureInfo`
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
         """
+        self.SubAppId = None
         self.Name = None
         self.Comment = None
         self.ClassificationConfigure = None
@@ -5841,10 +5842,10 @@ class CreateAIAnalysisTemplateRequest(AbstractModel):
         self.CoverConfigure = None
         self.FrameTagConfigure = None
         self.HighlightConfigure = None
-        self.SubAppId = None
 
 
     def _deserialize(self, params):
+        self.SubAppId = params.get("SubAppId")
         self.Name = params.get("Name")
         self.Comment = params.get("Comment")
         if params.get("ClassificationConfigure") is not None:
@@ -5862,7 +5863,6 @@ class CreateAIAnalysisTemplateRequest(AbstractModel):
         if params.get("HighlightConfigure") is not None:
             self.HighlightConfigure = HighlightsConfigureInfo()
             self.HighlightConfigure._deserialize(params.get("HighlightConfigure"))
-        self.SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5900,6 +5900,8 @@ class CreateAIRecognitionTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :type SubAppId: int
         :param Name: 视频内容识别模板名称，长度限制：64 个字符。
         :type Name: str
         :param Comment: 视频内容识别模板描述信息，长度限制：256 个字符。
@@ -5922,9 +5924,8 @@ class CreateAIRecognitionTemplateRequest(AbstractModel):
         :type ObjectConfigure: :class:`tencentcloud.vod.v20180717.models.ObjectConfigureInfo`
         :param ScreenshotInterval: 截帧间隔，单位为秒。当不填时，默认截帧间隔为 1 秒，最小值为 0.5 秒。
         :type ScreenshotInterval: float
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
         """
+        self.SubAppId = None
         self.Name = None
         self.Comment = None
         self.HeadTailConfigure = None
@@ -5936,10 +5937,10 @@ class CreateAIRecognitionTemplateRequest(AbstractModel):
         self.AsrWordsConfigure = None
         self.ObjectConfigure = None
         self.ScreenshotInterval = None
-        self.SubAppId = None
 
 
     def _deserialize(self, params):
+        self.SubAppId = params.get("SubAppId")
         self.Name = params.get("Name")
         self.Comment = params.get("Comment")
         if params.get("HeadTailConfigure") is not None:
@@ -5967,7 +5968,6 @@ class CreateAIRecognitionTemplateRequest(AbstractModel):
             self.ObjectConfigure = ObjectConfigureInfo()
             self.ObjectConfigure._deserialize(params.get("ObjectConfigure"))
         self.ScreenshotInterval = params.get("ScreenshotInterval")
-        self.SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6011,6 +6011,8 @@ class CreateAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
         :param StreamInfos: 自适应转码输出子流参数信息，最多输出10路子流。
 注意：各个子流的帧率必须保持一致；如果不一致，采用第一个子流的帧率作为输出帧率。
         :type StreamInfos: list of AdaptiveStreamTemplate
+        :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :type SubAppId: int
         :param Name: 模板名称，长度限制：64 个字符。
         :type Name: str
         :param DrmType: DRM 方案类型，取值范围：
@@ -6031,17 +6033,15 @@ class CreateAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
         :type DisableHigherVideoResolution: int
         :param Comment: 模板描述信息，长度限制：256 个字符。
         :type Comment: str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
         """
         self.Format = None
         self.StreamInfos = None
+        self.SubAppId = None
         self.Name = None
         self.DrmType = None
         self.DisableHigherVideoBitrate = None
         self.DisableHigherVideoResolution = None
         self.Comment = None
-        self.SubAppId = None
 
 
     def _deserialize(self, params):
@@ -6052,12 +6052,12 @@ class CreateAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
                 obj = AdaptiveStreamTemplate()
                 obj._deserialize(item)
                 self.StreamInfos.append(obj)
+        self.SubAppId = params.get("SubAppId")
         self.Name = params.get("Name")
         self.DrmType = params.get("DrmType")
         self.DisableHigherVideoBitrate = params.get("DisableHigherVideoBitrate")
         self.DisableHigherVideoResolution = params.get("DisableHigherVideoResolution")
         self.Comment = params.get("Comment")
-        self.SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6097,6 +6097,8 @@ class CreateAnimatedGraphicsTemplateRequest(AbstractModel):
         r"""
         :param Fps: 帧率，取值范围：[1, 30]，单位：Hz。
         :type Fps: int
+        :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :type SubAppId: int
         :param Width: 动图宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
 <li>当 Width、Height 均为 0，则分辨率同源；</li>
 <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
@@ -6124,10 +6126,9 @@ class CreateAnimatedGraphicsTemplateRequest(AbstractModel):
         :type Name: str
         :param Comment: 模板描述信息，长度限制：256 个字符。
         :type Comment: str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
         """
         self.Fps = None
+        self.SubAppId = None
         self.Width = None
         self.Height = None
         self.ResolutionAdaptive = None
@@ -6135,11 +6136,11 @@ class CreateAnimatedGraphicsTemplateRequest(AbstractModel):
         self.Quality = None
         self.Name = None
         self.Comment = None
-        self.SubAppId = None
 
 
     def _deserialize(self, params):
         self.Fps = params.get("Fps")
+        self.SubAppId = params.get("SubAppId")
         self.Width = params.get("Width")
         self.Height = params.get("Height")
         self.ResolutionAdaptive = params.get("ResolutionAdaptive")
@@ -6147,7 +6148,6 @@ class CreateAnimatedGraphicsTemplateRequest(AbstractModel):
         self.Quality = params.get("Quality")
         self.Name = params.get("Name")
         self.Comment = params.get("Comment")
-        self.SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6242,6 +6242,8 @@ class CreateContentReviewTemplateRequest(AbstractModel):
 <li>ON：是；</li>
 <li>OFF：否。</li>
         :type ReviewWallSwitch: str
+        :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :type SubAppId: int
         :param Name: 内容智能识别模板名称，长度限制：64 个字符。
         :type Name: str
         :param Comment: 内容智能识别模板描述信息，长度限制：256 个字符。
@@ -6260,10 +6262,9 @@ class CreateContentReviewTemplateRequest(AbstractModel):
         :type UserDefineConfigure: :class:`tencentcloud.vod.v20180717.models.UserDefineConfigureInfo`
         :param ScreenshotInterval: 截帧间隔，单位为秒。当不填时，默认截帧间隔为 1 秒，最小值为 0.5 秒。
         :type ScreenshotInterval: float
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
         """
         self.ReviewWallSwitch = None
+        self.SubAppId = None
         self.Name = None
         self.Comment = None
         self.PornConfigure = None
@@ -6272,11 +6273,11 @@ class CreateContentReviewTemplateRequest(AbstractModel):
         self.ProhibitedConfigure = None
         self.UserDefineConfigure = None
         self.ScreenshotInterval = None
-        self.SubAppId = None
 
 
     def _deserialize(self, params):
         self.ReviewWallSwitch = params.get("ReviewWallSwitch")
+        self.SubAppId = params.get("SubAppId")
         self.Name = params.get("Name")
         self.Comment = params.get("Comment")
         if params.get("PornConfigure") is not None:
@@ -6295,7 +6296,6 @@ class CreateContentReviewTemplateRequest(AbstractModel):
             self.UserDefineConfigure = UserDefineConfigureInfo()
             self.UserDefineConfigure._deserialize(params.get("UserDefineConfigure"))
         self.ScreenshotInterval = params.get("ScreenshotInterval")
-        self.SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6532,6 +6532,8 @@ class CreateImageSpriteTemplateRequest(AbstractModel):
         :type RowCount: int
         :param ColumnCount: 雪碧图中小图的列数。
         :type ColumnCount: int
+        :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :type SubAppId: int
         :param Name: 雪碧图模板名称，长度限制：64 个字符。
         :type Name: str
         :param Comment: 模板描述信息，长度限制：256 个字符。
@@ -6560,20 +6562,18 @@ class CreateImageSpriteTemplateRequest(AbstractModel):
 <li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
 默认值：open。
         :type ResolutionAdaptive: str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
         """
         self.SampleType = None
         self.SampleInterval = None
         self.RowCount = None
         self.ColumnCount = None
+        self.SubAppId = None
         self.Name = None
         self.Comment = None
         self.FillType = None
         self.Width = None
         self.Height = None
         self.ResolutionAdaptive = None
-        self.SubAppId = None
 
 
     def _deserialize(self, params):
@@ -6581,13 +6581,13 @@ class CreateImageSpriteTemplateRequest(AbstractModel):
         self.SampleInterval = params.get("SampleInterval")
         self.RowCount = params.get("RowCount")
         self.ColumnCount = params.get("ColumnCount")
+        self.SubAppId = params.get("SubAppId")
         self.Name = params.get("Name")
         self.Comment = params.get("Comment")
         self.FillType = params.get("FillType")
         self.Width = params.get("Width")
         self.Height = params.get("Height")
         self.ResolutionAdaptive = params.get("ResolutionAdaptive")
-        self.SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6632,6 +6632,8 @@ class CreatePersonSampleRequest(AbstractModel):
 2. Review：用于内容不适宜，等价于 Review.Face。
 3. All：包含以上全部，等价于 1+2。
         :type Usages: list of str
+        :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :type SubAppId: int
         :param Description: 素材描述，长度限制：1024 个字符。
         :type Description: str
         :param FaceContents: 素材图片 [Base64](https://tools.ietf.org/html/rfc4648) 编码后的字符串，仅支持 jpeg、png 图片格式。数组长度限制：5 张图片。
@@ -6641,24 +6643,22 @@ class CreatePersonSampleRequest(AbstractModel):
 <li>数组长度限制：20 个标签；</li>
 <li>单个标签长度限制：128 个字符。</li>
         :type Tags: list of str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
         """
         self.Name = None
         self.Usages = None
+        self.SubAppId = None
         self.Description = None
         self.FaceContents = None
         self.Tags = None
-        self.SubAppId = None
 
 
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Usages = params.get("Usages")
+        self.SubAppId = params.get("SubAppId")
         self.Description = params.get("Description")
         self.FaceContents = params.get("FaceContents")
         self.Tags = params.get("Tags")
-        self.SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6788,6 +6788,8 @@ class CreateSampleSnapshotTemplateRequest(AbstractModel):
 <li>当 SampleType 为 Percent 时，指定采样间隔的百分比。</li>
 <li>当 SampleType 为 Time 时，指定采样间隔的时间，单位为秒。</li>
         :type SampleInterval: int
+        :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :type SubAppId: int
         :param Name: 采样截图模板名称，长度限制：64 个字符。
         :type Name: str
         :param Width: 截图宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
@@ -6813,8 +6815,6 @@ class CreateSampleSnapshotTemplateRequest(AbstractModel):
         :type Format: str
         :param Comment: 模板描述信息，长度限制：256 个字符。
         :type Comment: str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
         :param FillType: 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
 <li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
 <li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
@@ -6825,26 +6825,26 @@ class CreateSampleSnapshotTemplateRequest(AbstractModel):
         """
         self.SampleType = None
         self.SampleInterval = None
+        self.SubAppId = None
         self.Name = None
         self.Width = None
         self.Height = None
         self.ResolutionAdaptive = None
         self.Format = None
         self.Comment = None
-        self.SubAppId = None
         self.FillType = None
 
 
     def _deserialize(self, params):
         self.SampleType = params.get("SampleType")
         self.SampleInterval = params.get("SampleInterval")
+        self.SubAppId = params.get("SubAppId")
         self.Name = params.get("Name")
         self.Width = params.get("Width")
         self.Height = params.get("Height")
         self.ResolutionAdaptive = params.get("ResolutionAdaptive")
         self.Format = params.get("Format")
         self.Comment = params.get("Comment")
-        self.SubAppId = params.get("SubAppId")
         self.FillType = params.get("FillType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -6883,6 +6883,8 @@ class CreateSnapshotByTimeOffsetTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :type SubAppId: int
         :param Name: 指定时间点截图模板名称，长度限制：64 个字符。
         :type Name: str
         :param Width: 截图宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
@@ -6908,8 +6910,6 @@ class CreateSnapshotByTimeOffsetTemplateRequest(AbstractModel):
         :type Format: str
         :param Comment: 模板描述信息，长度限制：256 个字符。
         :type Comment: str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
         :param FillType: 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
 <li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
 <li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
@@ -6918,24 +6918,24 @@ class CreateSnapshotByTimeOffsetTemplateRequest(AbstractModel):
 默认值：black 。
         :type FillType: str
         """
+        self.SubAppId = None
         self.Name = None
         self.Width = None
         self.Height = None
         self.ResolutionAdaptive = None
         self.Format = None
         self.Comment = None
-        self.SubAppId = None
         self.FillType = None
 
 
     def _deserialize(self, params):
+        self.SubAppId = params.get("SubAppId")
         self.Name = params.get("Name")
         self.Width = params.get("Width")
         self.Height = params.get("Height")
         self.ResolutionAdaptive = params.get("ResolutionAdaptive")
         self.Format = params.get("Format")
         self.Comment = params.get("Comment")
-        self.SubAppId = params.get("SubAppId")
         self.FillType = params.get("FillType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -7185,6 +7185,8 @@ class CreateTranscodeTemplateRequest(AbstractModel):
         r"""
         :param Container: 封装格式，可选值：mp4、flv、hls、mp3、flac、ogg、m4a。其中，mp3、flac、ogg、m4a 为纯音频文件。
         :type Container: str
+        :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :type SubAppId: int
         :param Name: 转码模板名称，长度限制：64 个字符。
         :type Name: str
         :param Comment: 模板描述信息，长度限制：256 个字符。
@@ -7205,10 +7207,9 @@ class CreateTranscodeTemplateRequest(AbstractModel):
         :type AudioTemplate: :class:`tencentcloud.vod.v20180717.models.AudioTemplateInfo`
         :param TEHDConfig: 极速高清转码参数。
         :type TEHDConfig: :class:`tencentcloud.vod.v20180717.models.TEHDConfig`
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
         """
         self.Container = None
+        self.SubAppId = None
         self.Name = None
         self.Comment = None
         self.RemoveVideo = None
@@ -7216,11 +7217,11 @@ class CreateTranscodeTemplateRequest(AbstractModel):
         self.VideoTemplate = None
         self.AudioTemplate = None
         self.TEHDConfig = None
-        self.SubAppId = None
 
 
     def _deserialize(self, params):
         self.Container = params.get("Container")
+        self.SubAppId = params.get("SubAppId")
         self.Name = params.get("Name")
         self.Comment = params.get("Comment")
         self.RemoveVideo = params.get("RemoveVideo")
@@ -7234,7 +7235,6 @@ class CreateTranscodeTemplateRequest(AbstractModel):
         if params.get("TEHDConfig") is not None:
             self.TEHDConfig = TEHDConfig()
             self.TEHDConfig._deserialize(params.get("TEHDConfig"))
-        self.SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7330,6 +7330,8 @@ class CreateWatermarkTemplateRequest(AbstractModel):
 <li>text：文字水印；</li>
 <li>svg：SVG 水印。</li>
         :type Type: str
+        :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :type SubAppId: int
         :param Name: 水印模板名称，长度限制：64 个字符。
         :type Name: str
         :param Comment: 模板描述信息，长度限制：256 个字符。
@@ -7357,10 +7359,9 @@ class CreateWatermarkTemplateRequest(AbstractModel):
         :type TextTemplate: :class:`tencentcloud.vod.v20180717.models.TextWatermarkTemplateInput`
         :param SvgTemplate: SVG水印模板，当 Type 为 svg，该字段必填。当 Type 为 image 或 text，该字段无效。
         :type SvgTemplate: :class:`tencentcloud.vod.v20180717.models.SvgWatermarkInput`
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
         """
         self.Type = None
+        self.SubAppId = None
         self.Name = None
         self.Comment = None
         self.CoordinateOrigin = None
@@ -7369,11 +7370,11 @@ class CreateWatermarkTemplateRequest(AbstractModel):
         self.ImageTemplate = None
         self.TextTemplate = None
         self.SvgTemplate = None
-        self.SubAppId = None
 
 
     def _deserialize(self, params):
         self.Type = params.get("Type")
+        self.SubAppId = params.get("SubAppId")
         self.Name = params.get("Name")
         self.Comment = params.get("Comment")
         self.CoordinateOrigin = params.get("CoordinateOrigin")
@@ -7388,7 +7389,6 @@ class CreateWatermarkTemplateRequest(AbstractModel):
         if params.get("SvgTemplate") is not None:
             self.SvgTemplate = SvgWatermarkInput()
             self.SvgTemplate._deserialize(params.get("SvgTemplate"))
-        self.SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7442,7 +7442,7 @@ class CreateWordSamplesRequest(AbstractModel):
         :type Usages: list of str
         :param Words: 关键词，数组长度限制：100。
         :type Words: list of AiSampleWordInfo
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
         :type SubAppId: int
         """
         self.Usages = None
@@ -7989,7 +7989,7 @@ class DeletePersonSampleRequest(AbstractModel):
         r"""
         :param PersonId: 素材 ID。
         :type PersonId: str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
         :type SubAppId: int
         """
         self.PersonId = None
@@ -8349,7 +8349,7 @@ class DeleteWordSamplesRequest(AbstractModel):
         r"""
         :param Keywords: 关键词，数组长度限制：100 个词。
         :type Keywords: list of str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
         :type SubAppId: int
         """
         self.Keywords = None
@@ -9974,6 +9974,8 @@ class DescribePersonSamplesRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :type SubAppId: int
         :param Type: 拉取的素材类型，可选值：
 <li>UserDefine：用户自定义素材库；</li>
 <li>Default：系统默认素材库。</li>
@@ -9991,26 +9993,24 @@ class DescribePersonSamplesRequest(AbstractModel):
         :type Offset: int
         :param Limit: 返回记录条数，默认值：100，最大值：100。
         :type Limit: int
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
         """
+        self.SubAppId = None
         self.Type = None
         self.PersonIds = None
         self.Names = None
         self.Tags = None
         self.Offset = None
         self.Limit = None
-        self.SubAppId = None
 
 
     def _deserialize(self, params):
+        self.SubAppId = params.get("SubAppId")
         self.Type = params.get("Type")
         self.PersonIds = params.get("PersonIds")
         self.Names = params.get("Names")
         self.Tags = params.get("Tags")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
-        self.SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -11206,6 +11206,8 @@ class DescribeWordSamplesRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :type SubAppId: int
         :param Usages: <b>关键词应用场景过滤条件，可选值：</b>
 1. Recognition.Ocr：通过光学字符识别技术，进行内容识别；
 2. Recognition.Asr：通过音频识别技术，进行内容识别；
@@ -11224,24 +11226,22 @@ class DescribeWordSamplesRequest(AbstractModel):
         :type Offset: int
         :param Limit: 返回记录条数，默认值：100，最大值：100。
         :type Limit: int
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
         """
+        self.SubAppId = None
         self.Usages = None
         self.Keywords = None
         self.Tags = None
         self.Offset = None
         self.Limit = None
-        self.SubAppId = None
 
 
     def _deserialize(self, params):
+        self.SubAppId = params.get("SubAppId")
         self.Usages = params.get("Usages")
         self.Keywords = params.get("Keywords")
         self.Tags = params.get("Tags")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
-        self.SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -16719,6 +16719,8 @@ class ModifyPersonSampleRequest(AbstractModel):
         r"""
         :param PersonId: 素材 ID。
         :type PersonId: str
+        :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :type SubAppId: int
         :param Name: 名称，长度限制：128 个字符。
         :type Name: str
         :param Description: 描述，长度限制：1024 个字符。
@@ -16732,20 +16734,19 @@ class ModifyPersonSampleRequest(AbstractModel):
         :type FaceOperationInfo: :class:`tencentcloud.vod.v20180717.models.AiSampleFaceOperation`
         :param TagOperationInfo: 标签操作信息。
         :type TagOperationInfo: :class:`tencentcloud.vod.v20180717.models.AiSampleTagOperation`
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
         """
         self.PersonId = None
+        self.SubAppId = None
         self.Name = None
         self.Description = None
         self.Usages = None
         self.FaceOperationInfo = None
         self.TagOperationInfo = None
-        self.SubAppId = None
 
 
     def _deserialize(self, params):
         self.PersonId = params.get("PersonId")
+        self.SubAppId = params.get("SubAppId")
         self.Name = params.get("Name")
         self.Description = params.get("Description")
         self.Usages = params.get("Usages")
@@ -16755,7 +16756,6 @@ class ModifyPersonSampleRequest(AbstractModel):
         if params.get("TagOperationInfo") is not None:
             self.TagOperationInfo = AiSampleTagOperation()
             self.TagOperationInfo._deserialize(params.get("TagOperationInfo"))
-        self.SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -17497,6 +17497,8 @@ class ModifyWordSampleRequest(AbstractModel):
         r"""
         :param Keyword: 关键词，长度限制：128 个字符。
         :type Keyword: str
+        :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :type SubAppId: int
         :param Usages: <b>关键词应用场景，可选值：</b>
 1. Recognition.Ocr：通过光学字符识别技术，进行内容识别；
 2. Recognition.Asr：通过音频识别技术，进行内容识别；
@@ -17509,22 +17511,20 @@ class ModifyWordSampleRequest(AbstractModel):
         :type Usages: list of str
         :param TagOperationInfo: 标签操作信息。
         :type TagOperationInfo: :class:`tencentcloud.vod.v20180717.models.AiSampleTagOperation`
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
         """
         self.Keyword = None
+        self.SubAppId = None
         self.Usages = None
         self.TagOperationInfo = None
-        self.SubAppId = None
 
 
     def _deserialize(self, params):
         self.Keyword = params.get("Keyword")
+        self.SubAppId = params.get("SubAppId")
         self.Usages = params.get("Usages")
         if params.get("TagOperationInfo") is not None:
             self.TagOperationInfo = AiSampleTagOperation()
             self.TagOperationInfo._deserialize(params.get("TagOperationInfo"))
-        self.SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

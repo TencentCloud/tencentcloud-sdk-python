@@ -339,6 +339,11 @@ def test_import_cynosdb():
     from tencentcloud.cynosdb.v20190107 import models
 
 
+def test_import_dasb():
+    from tencentcloud.dasb.v20191018 import dasb_client
+    from tencentcloud.dasb.v20191018 import models
+
+
 def test_import_dayu():
     from tencentcloud.dayu.v20180709 import dayu_client
     from tencentcloud.dayu.v20180709 import models

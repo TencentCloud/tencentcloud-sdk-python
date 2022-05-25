@@ -1428,7 +1428,7 @@ class Task(AbstractModel):
 
 
 class TaskStatus(AbstractModel):
-    """获取录音识别结果结果的返回参数
+    """获取录音识别结果的返回参数
 
     """
 

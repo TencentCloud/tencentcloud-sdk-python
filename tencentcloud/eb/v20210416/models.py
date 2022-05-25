@@ -902,11 +902,15 @@ class Event(AbstractModel):
         :type Type: str
         :param Subject: 事件来源详细描述，可自定义，选填。云服务默认为标准qcs资源表示语法：qcs::dts:ap-guangzhou:appid/uin:xxx
         :type Subject: str
+        :param Time: 事件发生的毫秒时间戳，
+time.Now().UnixNano()/1e6
+        :type Time: int
         """
         self.Source = None
         self.Data = None
         self.Type = None
         self.Subject = None
+        self.Time = None
 
 
     def _deserialize(self, params):
@@ -914,6 +918,7 @@ class Event(AbstractModel):
         self.Data = params.get("Data")
         self.Type = params.get("Type")
         self.Subject = params.get("Subject")
+        self.Time = params.get("Time")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
