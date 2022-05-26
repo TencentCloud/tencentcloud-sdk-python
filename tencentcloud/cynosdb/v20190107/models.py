@@ -95,7 +95,7 @@ class ActivateInstanceRequest(AbstractModel):
         r"""
         :param ClusterId: 集群ID
         :type ClusterId: str
-        :param InstanceIdList: 实例ID数组
+        :param InstanceIdList: 实例 ID 列表，单个实例 ID 格式如：cynosdbmysql-ins-n7ocdslw，与TDSQL-C MySQL数据库控制台页面中显示的实例 ID 相同，可使用 查询实例列表 接口获取，其值为输出参数中字段 InstanceId 的值。
         :type InstanceIdList: list of str
         """
         self.ClusterId = None
@@ -146,26 +146,26 @@ class AddInstancesRequest(AbstractModel):
         :type ClusterId: str
         :param Cpu: Cpu核数
         :type Cpu: int
-        :param Memory: 内存
+        :param Memory: 内存，单位为GB
         :type Memory: int
-        :param ReadOnlyCount: 新增只读实例数
+        :param ReadOnlyCount: 新增只读实例数，取值范围为(0,16]
         :type ReadOnlyCount: int
         :param InstanceGrpId: 实例组ID，在已有RO组中新增实例时使用，不传则新增RO组
         :type InstanceGrpId: str
         :param VpcId: 所属VPC网络ID
         :type VpcId: str
-        :param SubnetId: 所属子网ID
+        :param SubnetId: 所属子网ID，如果设置了VpcId，则SubnetId必填
         :type SubnetId: str
-        :param Port: 新增RO组时使用的Port
+        :param Port: 新增RO组时使用的Port，取值范围为[0,65535)
         :type Port: int
-        :param InstanceName: 实例名称
+        :param InstanceName: 实例名称，字符串长度范围为[0,64)
         :type InstanceName: str
         :param AutoVoucher: 是否自动选择代金券 1是 0否 默认为0
         :type AutoVoucher: int
         :param DbType: 数据库类型，取值范围: 
 <li> MYSQL </li>
         :type DbType: str
-        :param OrderSource: 订单来源
+        :param OrderSource: 订单来源，字符串长度范围为[0,64)
         :type OrderSource: str
         :param DealMode: 交易模式 0-下单并支付 1-下单
         :type DealMode: int
@@ -569,7 +569,7 @@ class CreateClustersRequest(AbstractModel):
 <li> MYSQL </li>
         :type DbType: str
         :param DbVersion: 数据库版本，取值范围: 
-<li> MYSQL可选值：5.7 </li>
+<li> MYSQL可选值：5.7，8.0 </li>
         :type DbVersion: str
         :param ProjectId: 所属项目ID
         :type ProjectId: int
@@ -582,7 +582,7 @@ class CreateClustersRequest(AbstractModel):
         :param Storage: 该参数无实际意义，已废弃。
 存储大小，单位G。
         :type Storage: int
-        :param ClusterName: 集群名称
+        :param ClusterName: 集群名称，长度小于64个字符，每个字符取值范围：大/小写字母，数字，特殊符号（'-','_','.'）
         :type ClusterName: str
         :param AdminPassword: 账号密码(8-64个字符，包含大小写英文字母、数字和符号~!@#$%^&*_-+=`|\(){}[]:;'<>,.?/中的任意三种)
         :type AdminPassword: str
@@ -613,7 +613,7 @@ timeRollback，时间点回档
         :type InstanceCount: int
         :param TimeSpan: 包年包月购买时长
         :type TimeSpan: int
-        :param TimeUnit: 包年包月购买时长单位
+        :param TimeUnit: 包年包月购买时长单位，['s','d','m','y']
         :type TimeUnit: str
         :param AutoRenewFlag: 包年包月购买是否自动续费
         :type AutoRenewFlag: int
@@ -1984,9 +1984,9 @@ class DescribeClusterParamLogsRequest(AbstractModel):
         r"""
         :param ClusterId: 集群ID
         :type ClusterId: str
-        :param Limit: 返回数量，默认为 20，最大值为 100
+        :param Limit: 返回数量，默认为 20，取值范围为(0,100]
         :type Limit: int
-        :param Offset: 记录偏移量，默认值为0
+        :param Offset: 记录偏移量，默认值为0，取值范围为[0,INF)
         :type Offset: int
         """
         self.ClusterId = None
@@ -2643,7 +2643,7 @@ class DisassociateSecurityGroupsRequest(AbstractModel):
         r"""
         :param InstanceIds: 实例组ID数组
         :type InstanceIds: list of str
-        :param SecurityGroupIds: 要修改的安全组ID列表，一个或者多个安全组Id组成的数组。
+        :param SecurityGroupIds: 要修改的安全组ID列表，一个或者多个安全组ID组成的数组。
         :type SecurityGroupIds: list of str
         :param Zone: 可用区
         :type Zone: str
@@ -2929,7 +2929,7 @@ class ModifyAccountParamsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClusterId: 集群id
+        :param ClusterId: 集群id，不超过32个字符
         :type ClusterId: str
         :param Account: 账号信息
         :type Account: :class:`tencentcloud.cynosdb.v20190107.models.InputAccount`
@@ -3151,7 +3151,7 @@ class ModifyDBInstanceSecurityGroupsRequest(AbstractModel):
         r"""
         :param InstanceId: 实例组ID
         :type InstanceId: str
-        :param SecurityGroupIds: 要修改的安全组ID列表，一个或者多个安全组Id组成的数组。
+        :param SecurityGroupIds: 要修改的安全组ID列表，一个或者多个安全组ID组成的数组。
         :type SecurityGroupIds: list of str
         :param Zone: 可用区
         :type Zone: str
@@ -3548,7 +3548,7 @@ class PauseServerlessRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClusterId: 集群id
+        :param ClusterId: 集群ID
         :type ClusterId: str
         :param ForcePause: 是否强制暂停，忽略当前的用户链接  0:不强制  1:强制， 默认为1
         :type ForcePause: int
@@ -3576,7 +3576,7 @@ class PauseServerlessResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FlowId: 异步流程Id
+        :param FlowId: 异步流程ID
         :type FlowId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3685,7 +3685,7 @@ class ResumeServerlessRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClusterId: 集群id
+        :param ClusterId: 集群ID
         :type ClusterId: str
         """
         self.ClusterId = None
@@ -3709,7 +3709,7 @@ class ResumeServerlessResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FlowId: 异步流程Id
+        :param FlowId: 异步流程ID
         :type FlowId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4018,7 +4018,7 @@ class SetRenewFlagRequest(AbstractModel):
         r"""
         :param ResourceIds: 需操作的实例ID
         :type ResourceIds: list of str
-        :param AutoRenewFlag: 自动续费标志位
+        :param AutoRenewFlag: 自动续费标志位，续费标记 0:正常续费  1:自动续费 2:到期不续
         :type AutoRenewFlag: int
         """
         self.ResourceIds = None
@@ -4129,7 +4129,7 @@ class UpgradeInstanceRequest(AbstractModel):
         :type InstanceId: str
         :param Cpu: 数据库CPU
         :type Cpu: int
-        :param Memory: 数据库内存
+        :param Memory: 数据库内存，单位GB
         :type Memory: int
         :param UpgradeType: 升级类型：upgradeImmediate，upgradeInMaintain
         :type UpgradeType: str

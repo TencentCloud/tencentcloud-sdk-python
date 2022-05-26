@@ -3832,6 +3832,64 @@ class ListSDKLogResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ListTopicRulesRequest(AbstractModel):
+    """ListTopicRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PageNum: 请求的页数
+        :type PageNum: int
+        :param PageSize: 分页的大小
+        :type PageSize: int
+        """
+        self.PageNum = None
+        self.PageSize = None
+
+
+    def _deserialize(self, params):
+        self.PageNum = params.get("PageNum")
+        self.PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListTopicRulesResponse(AbstractModel):
+    """ListTopicRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCnt: 规则总数量
+        :type TotalCnt: int
+        :param Rules: 规则列表
+        :type Rules: list of TopicRuleInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCnt = None
+        self.Rules = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCnt = params.get("TotalCnt")
+        if params.get("Rules") is not None:
+            self.Rules = []
+            for item in params.get("Rules"):
+                obj = TopicRuleInfo()
+                obj._deserialize(item)
+                self.Rules.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class PayloadLogItem(AbstractModel):
     """内容日志项
 
@@ -4663,6 +4721,46 @@ class StatusStatistic(AbstractModel):
     def _deserialize(self, params):
         self.Status = params.get("Status")
         self.Total = params.get("Total")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TopicRuleInfo(AbstractModel):
+    """规则详细信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleName: 规则名称
+        :type RuleName: str
+        :param Description: 规则描述
+        :type Description: str
+        :param CreatedAt: 创建时间
+        :type CreatedAt: int
+        :param RuleDisabled: 不生效
+        :type RuleDisabled: bool
+        :param TopicPattern: 规则模式
+        :type TopicPattern: str
+        """
+        self.RuleName = None
+        self.Description = None
+        self.CreatedAt = None
+        self.RuleDisabled = None
+        self.TopicPattern = None
+
+
+    def _deserialize(self, params):
+        self.RuleName = params.get("RuleName")
+        self.Description = params.get("Description")
+        self.CreatedAt = params.get("CreatedAt")
+        self.RuleDisabled = params.get("RuleDisabled")
+        self.TopicPattern = params.get("TopicPattern")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

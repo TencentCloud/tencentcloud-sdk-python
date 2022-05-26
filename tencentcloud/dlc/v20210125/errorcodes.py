@@ -104,6 +104,9 @@ RESOURCENOTFOUND = 'ResourceNotFound'
 # 指定数据源连接没有找到。
 RESOURCENOTFOUND_DATASOURCENOTFOUND = 'ResourceNotFound.DatasourceNotFound'
 
+# 资源不可用。
+RESOURCEUNAVAILABLE = 'ResourceUnavailable'
+
 # 账号余额不足，无法执行SQL任务。
 RESOURCEUNAVAILABLE_BALANCEINSUFFICIENT = 'ResourceUnavailable.BalanceInsufficient'
 

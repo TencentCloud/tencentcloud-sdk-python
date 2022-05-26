@@ -287,6 +287,64 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateSparkApp(self, request):
+        """创建spark应用
+
+        :param request: Request instance for CreateSparkApp.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.CreateSparkAppRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.CreateSparkAppResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateSparkApp", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateSparkAppResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateSparkAppTask(self, request):
+        """创建spark任务
+
+        :param request: Request instance for CreateSparkAppTask.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.CreateSparkAppTaskRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.CreateSparkAppTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateSparkAppTask", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateSparkAppTaskResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateStoreLocation(self, request):
         """该接口（CreateStoreLocation）新增或覆盖计算结果存储位置。
 
@@ -519,6 +577,35 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteSparkApp(self, request):
+        """删除spark应用
+
+        :param request: Request instance for DeleteSparkApp.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DeleteSparkAppRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DeleteSparkAppResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteSparkApp", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteSparkAppResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteUser(self, request):
         """删除用户
 
@@ -650,6 +737,93 @@ class DlcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeScriptsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeSparkAppJob(self, request):
+        """查询具体的spark应用
+
+        :param request: Request instance for DescribeSparkAppJob.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeSparkAppJobRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeSparkAppJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSparkAppJob", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSparkAppJobResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeSparkAppJobs(self, request):
+        """获取spark应用列表
+
+        :param request: Request instance for DescribeSparkAppJobs.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeSparkAppJobsRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeSparkAppJobsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSparkAppJobs", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSparkAppJobsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeSparkAppTasks(self, request):
+        """查询spark应用的运行任务实例列表
+
+        :param request: Request instance for DescribeSparkAppTasks.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeSparkAppTasksRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeSparkAppTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSparkAppTasks", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSparkAppTasksResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -940,6 +1114,35 @@ class DlcClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DetachWorkGroupPolicyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifySparkApp(self, request):
+        """更新spark应用
+
+        :param request: Request instance for ModifySparkApp.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.ModifySparkAppRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.ModifySparkAppResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifySparkApp", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifySparkAppResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
