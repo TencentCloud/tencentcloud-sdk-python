@@ -2288,6 +2288,64 @@ class RedisClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def UpgradeProxyVersion(self, request):
+        """实例proxy版本升级
+
+        :param request: Request instance for UpgradeProxyVersion.
+        :type request: :class:`tencentcloud.redis.v20180412.models.UpgradeProxyVersionRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.UpgradeProxyVersionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpgradeProxyVersion", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpgradeProxyVersionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpgradeSmallVersion(self, request):
+        """实例小版本升级
+
+        :param request: Request instance for UpgradeSmallVersion.
+        :type request: :class:`tencentcloud.redis.v20180412.models.UpgradeSmallVersionRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.UpgradeSmallVersionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpgradeSmallVersion", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpgradeSmallVersionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def UpgradeVersionToMultiAvailabilityZones(self, request):
         """升级实例支持多AZ
 

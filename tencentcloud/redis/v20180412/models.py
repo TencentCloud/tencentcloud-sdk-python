@@ -7190,6 +7190,120 @@ class UpgradeInstanceVersionResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class UpgradeProxyVersionRequest(AbstractModel):
+    """UpgradeProxyVersion请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param CurrentProxyVersion: 当前proxy版本
+        :type CurrentProxyVersion: str
+        :param UpgradeProxyVersion: 可升级的redis版本
+        :type UpgradeProxyVersion: str
+        :param InstanceTypeUpgradeNow: 1-立即升级   0-维护时间窗口升级
+        :type InstanceTypeUpgradeNow: int
+        """
+        self.InstanceId = None
+        self.CurrentProxyVersion = None
+        self.UpgradeProxyVersion = None
+        self.InstanceTypeUpgradeNow = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.CurrentProxyVersion = params.get("CurrentProxyVersion")
+        self.UpgradeProxyVersion = params.get("UpgradeProxyVersion")
+        self.InstanceTypeUpgradeNow = params.get("InstanceTypeUpgradeNow")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpgradeProxyVersionResponse(AbstractModel):
+    """UpgradeProxyVersion返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: 异步流程ID
+        :type FlowId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
+class UpgradeSmallVersionRequest(AbstractModel):
+    """UpgradeSmallVersion请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param CurrentRedisVersion: 当前redis版本
+        :type CurrentRedisVersion: str
+        :param UpgradeRedisVersion: 可升级的redis版本
+        :type UpgradeRedisVersion: str
+        :param InstanceTypeUpgradeNow: 1-立即升级   0-维护时间窗口升级
+        :type InstanceTypeUpgradeNow: int
+        """
+        self.InstanceId = None
+        self.CurrentRedisVersion = None
+        self.UpgradeRedisVersion = None
+        self.InstanceTypeUpgradeNow = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.CurrentRedisVersion = params.get("CurrentRedisVersion")
+        self.UpgradeRedisVersion = params.get("UpgradeRedisVersion")
+        self.InstanceTypeUpgradeNow = params.get("InstanceTypeUpgradeNow")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpgradeSmallVersionResponse(AbstractModel):
+    """UpgradeSmallVersion返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: 异步流程ID
+        :type FlowId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
 class UpgradeVersionToMultiAvailabilityZonesRequest(AbstractModel):
     """UpgradeVersionToMultiAvailabilityZones请求参数结构体
 

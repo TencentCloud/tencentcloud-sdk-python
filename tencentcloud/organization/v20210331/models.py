@@ -67,6 +67,64 @@ class BindOrganizationMemberAuthAccountResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateOrganizationMemberPolicyRequest(AbstractModel):
+    """CreateOrganizationMemberPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MemberUin: 成员Uin。
+        :type MemberUin: int
+        :param PolicyName: 策略名。
+        :type PolicyName: str
+        :param IdentityId: 身份ID。
+        :type IdentityId: int
+        :param Description: 描述。
+        :type Description: str
+        """
+        self.MemberUin = None
+        self.PolicyName = None
+        self.IdentityId = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.MemberUin = params.get("MemberUin")
+        self.PolicyName = params.get("PolicyName")
+        self.IdentityId = params.get("IdentityId")
+        self.Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateOrganizationMemberPolicyResponse(AbstractModel):
+    """CreateOrganizationMemberPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PolicyId: 策略ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PolicyId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.PolicyId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.PolicyId = params.get("PolicyId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateOrganizationMemberRequest(AbstractModel):
     """CreateOrganizationMember请求参数结构体
 
