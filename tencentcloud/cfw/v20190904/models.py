@@ -1322,7 +1322,7 @@ class DescribeAcListsRequest(AbstractModel):
         :type Limit: int
         :param Offset: 偏移值
         :type Offset: int
-        :param Direction: 出站还是入站，0：入站，1：出站
+        :param Direction: 出站还是入站，1：入站，0：出站
         :type Direction: int
         :param EdgeId: EdgeId值
         :type EdgeId: str

@@ -71,6 +71,9 @@ INVALIDPARAMETER_BIZINVALIDPARAMETERVALUEERROR = 'InvalidParameter.BizInvalidPar
 # 实例不存在。
 INVALIDPARAMETER_INSTANCENOTFOUND = 'InvalidParameter.InstanceNotFound'
 
+# 业务参数错误。
+INVALIDPARAMETERVALUE_BIZINVALIDPARAMETERVALUEERROR = 'InvalidParameterValue.BizInvalidParameterValueError'
+
 # 数据转换错误。
 INVALIDPARAMETERVALUE_DATACONVERTERROR = 'InvalidParameterValue.DataConvertError'
 
@@ -112,3 +115,6 @@ UNAUTHORIZEDOPERATION_NOTENOUGHPRIVILEGES = 'UnauthorizedOperation.NotEnoughPriv
 
 # 操作不支持。
 UNSUPPORTEDOPERATION = 'UnsupportedOperation'
+
+# 自研上云用户创建同步任务时未指定标签，需要补齐“运营部门”、“运营产品”、“负责人”这三类标签。
+UNSUPPORTEDOPERATION_INTRANETUSERNOTTAGGEDERROR = 'UnsupportedOperation.IntraNetUserNotTaggedError'

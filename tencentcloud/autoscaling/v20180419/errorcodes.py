@@ -436,3 +436,6 @@ RESOURCEUNAVAILABLE_TDMQCMQTOPICHASNOSUBSCRIBER = 'ResourceUnavailable.TDMQCMQTo
 
 # 指定的可用区不可用。
 RESOURCEUNAVAILABLE_ZONEUNAVAILABLE = 'ResourceUnavailable.ZoneUnavailable'
+
+# 操作不支持。
+UNSUPPORTEDOPERATION = 'UnsupportedOperation'

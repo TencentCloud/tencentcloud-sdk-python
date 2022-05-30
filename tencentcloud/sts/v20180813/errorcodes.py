@@ -88,3 +88,6 @@ RESOURCENOTFOUND_ROLENOTFOUND = 'ResourceNotFound.RoleNotFound'
 
 # 未授权操作。
 UNAUTHORIZEDOPERATION = 'UnauthorizedOperation'
+
+# 操作不支持。
+UNSUPPORTEDOPERATION = 'UnsupportedOperation'

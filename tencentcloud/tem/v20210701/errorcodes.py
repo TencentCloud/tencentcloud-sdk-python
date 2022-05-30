@@ -116,6 +116,9 @@ MISSINGPARAMETER_PKGNAMENULL = 'MissingParameter.PkgNameNull'
 # 服务ID不能为空。
 MISSINGPARAMETER_SERVICEIDNULL = 'MissingParameter.ServiceIdNull'
 
+# 镜像仓库还未就绪。
+MISSINGPARAMETER_SVCREPONOTREADY = 'MissingParameter.SvcRepoNotReady'
+
 # 资源已绑定。
 RESOURCEINUSE_RESOURCEALREADYUSED = 'ResourceInUse.ResourceAlreadyUsed'
 

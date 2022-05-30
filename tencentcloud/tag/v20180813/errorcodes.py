@@ -133,3 +133,6 @@ RESOURCENOTFOUND_ATTACHEDTAGKEYNOTFOUND = 'ResourceNotFound.AttachedTagKeyNotFou
 
 # 标签不存在。
 RESOURCENOTFOUND_TAGNONEXIST = 'ResourceNotFound.TagNonExist'
+
+# 操作不支持。
+UNSUPPORTEDOPERATION = 'UnsupportedOperation'

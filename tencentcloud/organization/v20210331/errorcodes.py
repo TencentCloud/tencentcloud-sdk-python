@@ -95,6 +95,9 @@ RESOURCENOTFOUND_MEMBERPOLICYNOTEXIST = 'ResourceNotFound.MemberPolicyNotExist'
 # 企业组织不存在。
 RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = 'ResourceNotFound.OrganizationNotExist'
 
+# 操作不支持。
+UNSUPPORTEDOPERATION = 'UnsupportedOperation'
+
 # 不允许添加代付关系。
 UNSUPPORTEDOPERATION_ADDDELEGATEPAYERNOTALLOW = 'UnsupportedOperation.AddDelegatePayerNotAllow'
 

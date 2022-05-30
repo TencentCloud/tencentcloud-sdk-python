@@ -290,6 +290,9 @@ UNAUTHORIZEDOPERATION_NOCAMAUTHED = 'UnauthorizedOperation.NoCAMAuthed'
 # 用户不在白名单中。
 UNAUTHORIZEDOPERATION_USERNOTINWHITELIST = 'UnauthorizedOperation.UserNotInWhiteList'
 
+# 操作不支持。
+UNSUPPORTEDOPERATION = 'UnsupportedOperation'
+
 # redis 集群版不允许接入安全组。
 UNSUPPORTEDOPERATION_CLUSTERINSTANCEACCESSEDDENY = 'UnsupportedOperation.ClusterInstanceAccessedDeny'
 

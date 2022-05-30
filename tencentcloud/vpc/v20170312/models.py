@@ -3784,6 +3784,8 @@ class CreateNetworkInterfaceRequest(AbstractModel):
         :type PrivateIpAddresses: list of PrivateIpAddressSpecification
         :param Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
         :type Tags: list of Tag
+        :param TrunkingFlag: 网卡trunking模式设置，Enable-开启，Disable--关闭，默认关闭。
+        :type TrunkingFlag: str
         """
         self.VpcId = None
         self.NetworkInterfaceName = None
@@ -3793,6 +3795,7 @@ class CreateNetworkInterfaceRequest(AbstractModel):
         self.SecurityGroupIds = None
         self.PrivateIpAddresses = None
         self.Tags = None
+        self.TrunkingFlag = None
 
 
     def _deserialize(self, params):
@@ -3814,6 +3817,7 @@ class CreateNetworkInterfaceRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.TrunkingFlag = params.get("TrunkingFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9657,6 +9661,12 @@ class DescribeNetworkInterfaceLimitResponse(AbstractModel):
         :param ExtendEniPrivateIpAddressQuantity: 每个扩展型弹性网卡可以分配的IP配额
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExtendEniPrivateIpAddressQuantity: int
+        :param SubEniQuantity: 中继网卡配额
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubEniQuantity: int
+        :param SubEniPrivateIpAddressQuantity: 每个中继网卡可以分配的IP配额
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubEniPrivateIpAddressQuantity: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -9664,6 +9674,8 @@ class DescribeNetworkInterfaceLimitResponse(AbstractModel):
         self.EniPrivateIpAddressQuantity = None
         self.ExtendEniQuantity = None
         self.ExtendEniPrivateIpAddressQuantity = None
+        self.SubEniQuantity = None
+        self.SubEniPrivateIpAddressQuantity = None
         self.RequestId = None
 
 
@@ -9672,6 +9684,8 @@ class DescribeNetworkInterfaceLimitResponse(AbstractModel):
         self.EniPrivateIpAddressQuantity = params.get("EniPrivateIpAddressQuantity")
         self.ExtendEniQuantity = params.get("ExtendEniQuantity")
         self.ExtendEniPrivateIpAddressQuantity = params.get("ExtendEniPrivateIpAddressQuantity")
+        self.SubEniQuantity = params.get("SubEniQuantity")
+        self.SubEniPrivateIpAddressQuantity = params.get("SubEniPrivateIpAddressQuantity")
         self.RequestId = params.get("RequestId")
 
 
@@ -9697,6 +9711,7 @@ class DescribeNetworkInterfacesRequest(AbstractModel):
 <li>tag-key - String -是否必填：否- （过滤条件）按照标签键进行过滤。使用请参考示例2</li>
 <li>tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例3。</li>
 <li>is-primary - Boolean - 是否必填：否 - （过滤条件）按照是否主网卡进行过滤。值为true时，仅过滤主网卡；值为false时，仅过滤辅助网卡；此过滤参数未提供时，同时过滤主网卡和辅助网卡。</li>
+<li>eni-type - String -是否必填：否- （过滤条件）按照网卡类型进行过滤。“0”-辅助网卡，“1”-主网卡，“2”：中继网卡</li>
         :type Filters: list of Filter
         :param Offset: 偏移量，默认为0。
         :type Offset: int
@@ -15976,11 +15991,14 @@ class ModifyNetworkInterfaceAttributeRequest(AbstractModel):
         :type NetworkInterfaceDescription: str
         :param SecurityGroupIds: 指定绑定的安全组，例如:['sg-1dd51d']。
         :type SecurityGroupIds: list of str
+        :param TrunkingFlag: 网卡trunking模式设置，Enable-开启，Disable--关闭，默认关闭。
+        :type TrunkingFlag: str
         """
         self.NetworkInterfaceId = None
         self.NetworkInterfaceName = None
         self.NetworkInterfaceDescription = None
         self.SecurityGroupIds = None
+        self.TrunkingFlag = None
 
 
     def _deserialize(self, params):
@@ -15988,6 +16006,7 @@ class ModifyNetworkInterfaceAttributeRequest(AbstractModel):
         self.NetworkInterfaceName = params.get("NetworkInterfaceName")
         self.NetworkInterfaceDescription = params.get("NetworkInterfaceDescription")
         self.SecurityGroupIds = params.get("SecurityGroupIds")
+        self.TrunkingFlag = params.get("TrunkingFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

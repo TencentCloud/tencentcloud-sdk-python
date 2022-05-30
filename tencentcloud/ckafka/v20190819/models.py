@@ -5113,7 +5113,7 @@ class SendMessageRequest(AbstractModel):
         r"""
         :param DataHubId: DataHub接入ID
         :type DataHubId: str
-        :param Message: 发送消息内容
+        :param Message: 发送消息内容(单次请求最多500条)
         :type Message: list of BatchContent
         """
         self.DataHubId = None

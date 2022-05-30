@@ -20,6 +20,9 @@ AUTHFAILURE = 'AuthFailure'
 # 操作失败。
 FAILEDOPERATION = 'FailedOperation'
 
+# 鉴权失败。
+FAILEDOPERATION_AUTHFAIL = 'FailedOperation.AuthFail'
+
 # 员工已实名。
 FAILEDOPERATION_STAFFALREADYVERIFY = 'FailedOperation.StaffAlreadyVerify'
 
@@ -34,6 +37,9 @@ INTERNALERROR_DB = 'InternalError.Db'
 
 # 数据库连接出错。
 INTERNALERROR_DBCONNECTION = 'InternalError.DbConnection'
+
+# 数据库新增记录出错。
+INTERNALERROR_DBINSERT = 'InternalError.DbInsert'
 
 # 数据库读取失败。
 INTERNALERROR_DBREAD = 'InternalError.DbRead'

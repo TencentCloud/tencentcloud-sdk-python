@@ -195,55 +195,70 @@ class AutoSnapshotPolicy(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AutoSnapshotPolicyId: 定期快照策略ID。
-        :type AutoSnapshotPolicyId: str
-        :param AutoSnapshotPolicyName: 定期快照策略名称。
-        :type AutoSnapshotPolicyName: str
-        :param AutoSnapshotPolicyState: 定期快照策略的状态。取值范围：<br><li>NORMAL：正常<br><li>ISOLATED：已隔离。
-        :type AutoSnapshotPolicyState: str
-        :param IsActivated: 定期快照策略是否激活。
-        :type IsActivated: bool
-        :param IsPermanent: 使用该定期快照策略创建出来的快照是否永久保留。
-        :type IsPermanent: bool
-        :param RetentionDays: 使用该定期快照策略创建出来的快照保留天数。
-        :type RetentionDays: int
-        :param CreateTime: 定期快照策略的创建时间。
-        :type CreateTime: str
-        :param NextTriggerTime: 定期快照下次触发的时间。
-        :type NextTriggerTime: str
-        :param Policy: 定期快照的执行策略。
-        :type Policy: list of Policy
         :param DiskIdSet: 已绑定当前定期快照策略的云盘ID列表。
         :type DiskIdSet: list of str
+        :param IsActivated: 定期快照策略是否激活。
+        :type IsActivated: bool
+        :param AutoSnapshotPolicyState: 定期快照策略的状态。取值范围：<br><li>NORMAL：正常<br><li>ISOLATED：已隔离。
+        :type AutoSnapshotPolicyState: str
+        :param IsCopyToRemote: 是否是跨账号复制快照快照, 1：是, 0: 不是
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsCopyToRemote: int
+        :param IsPermanent: 使用该定期快照策略创建出来的快照是否永久保留。
+        :type IsPermanent: bool
+        :param NextTriggerTime: 定期快照下次触发的时间。
+        :type NextTriggerTime: str
+        :param AutoSnapshotPolicyName: 定期快照策略名称。
+        :type AutoSnapshotPolicyName: str
+        :param AutoSnapshotPolicyId: 定期快照策略ID。
+        :type AutoSnapshotPolicyId: str
+        :param Policy: 定期快照的执行策略。
+        :type Policy: list of Policy
+        :param CreateTime: 定期快照策略的创建时间。
+        :type CreateTime: str
+        :param RetentionDays: 使用该定期快照策略创建出来的快照保留天数。
+        :type RetentionDays: int
+        :param CopyToAccountUin: 复制的目标账户ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CopyToAccountUin: str
+        :param InstanceIdSet: 已绑定当前定期快照策略的实例ID列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceIdSet: list of str
         """
-        self.AutoSnapshotPolicyId = None
-        self.AutoSnapshotPolicyName = None
-        self.AutoSnapshotPolicyState = None
-        self.IsActivated = None
-        self.IsPermanent = None
-        self.RetentionDays = None
-        self.CreateTime = None
-        self.NextTriggerTime = None
-        self.Policy = None
         self.DiskIdSet = None
+        self.IsActivated = None
+        self.AutoSnapshotPolicyState = None
+        self.IsCopyToRemote = None
+        self.IsPermanent = None
+        self.NextTriggerTime = None
+        self.AutoSnapshotPolicyName = None
+        self.AutoSnapshotPolicyId = None
+        self.Policy = None
+        self.CreateTime = None
+        self.RetentionDays = None
+        self.CopyToAccountUin = None
+        self.InstanceIdSet = None
 
 
     def _deserialize(self, params):
-        self.AutoSnapshotPolicyId = params.get("AutoSnapshotPolicyId")
-        self.AutoSnapshotPolicyName = params.get("AutoSnapshotPolicyName")
-        self.AutoSnapshotPolicyState = params.get("AutoSnapshotPolicyState")
+        self.DiskIdSet = params.get("DiskIdSet")
         self.IsActivated = params.get("IsActivated")
+        self.AutoSnapshotPolicyState = params.get("AutoSnapshotPolicyState")
+        self.IsCopyToRemote = params.get("IsCopyToRemote")
         self.IsPermanent = params.get("IsPermanent")
-        self.RetentionDays = params.get("RetentionDays")
-        self.CreateTime = params.get("CreateTime")
         self.NextTriggerTime = params.get("NextTriggerTime")
+        self.AutoSnapshotPolicyName = params.get("AutoSnapshotPolicyName")
+        self.AutoSnapshotPolicyId = params.get("AutoSnapshotPolicyId")
         if params.get("Policy") is not None:
             self.Policy = []
             for item in params.get("Policy"):
                 obj = Policy()
                 obj._deserialize(item)
                 self.Policy.append(obj)
-        self.DiskIdSet = params.get("DiskIdSet")
+        self.CreateTime = params.get("CreateTime")
+        self.RetentionDays = params.get("RetentionDays")
+        self.CopyToAccountUin = params.get("CopyToAccountUin")
+        self.InstanceIdSet = params.get("InstanceIdSet")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -646,11 +661,14 @@ class CreateSnapshotRequest(AbstractModel):
         :type Deadline: str
         :param DiskBackupId: 云硬盘备份点ID。传入此参数时，将通过备份点创建快照。
         :type DiskBackupId: str
+        :param Tags: 快照绑定的标签。
+        :type Tags: list of Tag
         """
         self.DiskId = None
         self.SnapshotName = None
         self.Deadline = None
         self.DiskBackupId = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -658,6 +676,12 @@ class CreateSnapshotRequest(AbstractModel):
         self.SnapshotName = params.get("SnapshotName")
         self.Deadline = params.get("Deadline")
         self.DiskBackupId = params.get("DiskBackupId")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2954,6 +2978,8 @@ class Snapshot(AbstractModel):
         :type SnapshotId: str
         :param TimeStartShare: 快照开始共享的时间。
         :type TimeStartShare: str
+        :param Tags: 快照绑定的标签列表。
+        :type Tags: list of Tag
         """
         self.Placement = None
         self.CopyFromRemote = None
@@ -2974,6 +3000,7 @@ class Snapshot(AbstractModel):
         self.DiskUsage = None
         self.SnapshotId = None
         self.TimeStartShare = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -3003,6 +3030,12 @@ class Snapshot(AbstractModel):
         self.DiskUsage = params.get("DiskUsage")
         self.SnapshotId = params.get("SnapshotId")
         self.TimeStartShare = params.get("TimeStartShare")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3183,18 +3216,18 @@ class UnbindAutoSnapshotPolicyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DiskIds: 要解绑定期快照策略的云盘ID列表。
-        :type DiskIds: list of str
         :param AutoSnapshotPolicyId: 要解绑的定期快照策略ID。
         :type AutoSnapshotPolicyId: str
+        :param DiskIds: 要解绑定期快照策略的云盘ID列表。
+        :type DiskIds: list of str
         """
-        self.DiskIds = None
         self.AutoSnapshotPolicyId = None
+        self.DiskIds = None
 
 
     def _deserialize(self, params):
-        self.DiskIds = params.get("DiskIds")
         self.AutoSnapshotPolicyId = params.get("AutoSnapshotPolicyId")
+        self.DiskIds = params.get("DiskIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

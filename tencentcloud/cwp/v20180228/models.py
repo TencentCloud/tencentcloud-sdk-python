@@ -10014,7 +10014,7 @@ class DescribeMalWareListRequest(AbstractModel):
 <li>VirusName - String - 是否必填：否 - 描述筛选</li>
 <li>CreateBeginTime - String - 是否必填：否 - 创建时间筛选-开始时间</li>
 <li>CreateEndTime - String - 是否必填：否 - 创建时间筛选-结束时间</li>
-<li>Status - String - 是否必填：否 - 状态筛选 4待处理,5信任沃尔玛可哦啊吗,6已隔离,10隔离中,11恢复隔离中</li>
+<li>Status - String - 是否必填：否 - 状态筛选 4待处理,5信任,6已隔离,10隔离中,11恢复隔离中</li>
         :type Filters: list of Filter
         :param By: 检测排序 CreateTime
         :type By: str
@@ -16046,7 +16046,7 @@ class MalWareList(AbstractModel):
         :type Id: int
         :param Alias: 主机别名
         :type Alias: str
-        :param Tags: 特性标签
+        :param Tags: 特性标签，已废弃字段，不会再返回标签，详情中才会返回标签信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of str
         :param FileCreateTime: 首次运行时间
@@ -16061,6 +16061,12 @@ class MalWareList(AbstractModel):
         :type LatestScanTime: str
         :param Level: 风险等级 0未知、1低、2中、3高、4严重
         :type Level: int
+        :param CheckPlatform: '木马检测平台用,分割 1云查杀引擎、2TAV、3binaryAi、4异常行为、5威胁情报
+        :type CheckPlatform: str
+        :param ProcessExists: 木马进程是否存在 0:不存在，1:存在
+        :type ProcessExists: int
+        :param FileExists: 木马文件是否存在 0:不存在，1:存在
+        :type FileExists: int
         """
         self.HostIp = None
         self.Uuid = None
@@ -16075,6 +16081,9 @@ class MalWareList(AbstractModel):
         self.CreateTime = None
         self.LatestScanTime = None
         self.Level = None
+        self.CheckPlatform = None
+        self.ProcessExists = None
+        self.FileExists = None
 
 
     def _deserialize(self, params):
@@ -16091,6 +16100,9 @@ class MalWareList(AbstractModel):
         self.CreateTime = params.get("CreateTime")
         self.LatestScanTime = params.get("LatestScanTime")
         self.Level = params.get("Level")
+        self.CheckPlatform = params.get("CheckPlatform")
+        self.ProcessExists = params.get("ProcessExists")
+        self.FileExists = params.get("FileExists")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

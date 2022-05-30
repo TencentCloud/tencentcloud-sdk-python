@@ -349,12 +349,15 @@ class CreateKeyRequest(AbstractModel):
         :type Type: int
         :param Tags: 标签列表
         :type Tags: list of Tag
+        :param HsmClusterId: KMS 高级版对应的 HSM 集群 ID（仅对 KMS 独占版/托管版服务实例有效）。
+        :type HsmClusterId: str
         """
         self.Alias = None
         self.Description = None
         self.KeyUsage = None
         self.Type = None
         self.Tags = None
+        self.HsmClusterId = None
 
 
     def _deserialize(self, params):
@@ -368,6 +371,7 @@ class CreateKeyRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.HsmClusterId = params.get("HsmClusterId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -403,6 +407,9 @@ class CreateKeyResponse(AbstractModel):
         :param TagMsg: 标签操作的返回信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type TagMsg: str
+        :param HsmClusterId: HSM 集群 ID（仅对 KMS 独占版/托管版服务实例有效）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HsmClusterId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -414,6 +421,7 @@ class CreateKeyResponse(AbstractModel):
         self.KeyUsage = None
         self.TagCode = None
         self.TagMsg = None
+        self.HsmClusterId = None
         self.RequestId = None
 
 
@@ -426,6 +434,7 @@ class CreateKeyResponse(AbstractModel):
         self.KeyUsage = params.get("KeyUsage")
         self.TagCode = params.get("TagCode")
         self.TagMsg = params.get("TagMsg")
+        self.HsmClusterId = params.get("HsmClusterId")
         self.RequestId = params.get("RequestId")
 
 
@@ -1885,6 +1894,12 @@ class GetServiceStatusResponse(AbstractModel):
         :param ProResourceId: 旗舰版购买记录的唯一性标识。如果为开通旗舰版，则返回值为空
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProResourceId: str
+        :param ExclusiveVSMEnabled: 是否开通 KMS 托管版
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExclusiveVSMEnabled: bool
+        :param ExclusiveHSMEnabled: 是否开通 KMS 独享版
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExclusiveHSMEnabled: bool
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1894,6 +1909,8 @@ class GetServiceStatusResponse(AbstractModel):
         self.ProExpireTime = None
         self.ProRenewFlag = None
         self.ProResourceId = None
+        self.ExclusiveVSMEnabled = None
+        self.ExclusiveHSMEnabled = None
         self.RequestId = None
 
 
@@ -1904,6 +1921,8 @@ class GetServiceStatusResponse(AbstractModel):
         self.ProExpireTime = params.get("ProExpireTime")
         self.ProRenewFlag = params.get("ProRenewFlag")
         self.ProResourceId = params.get("ProResourceId")
+        self.ExclusiveVSMEnabled = params.get("ExclusiveVSMEnabled")
+        self.ExclusiveHSMEnabled = params.get("ExclusiveHSMEnabled")
         self.RequestId = params.get("RequestId")
 
 
@@ -2024,6 +2043,9 @@ class KeyMetadata(AbstractModel):
         :type ValidTo: int
         :param ResourceId: 资源ID，格式：creatorUin/$creatorUin/$keyId
         :type ResourceId: str
+        :param HsmClusterId: HSM 集群 ID（仅对 KMS 独占版/托管版服务实例有效）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HsmClusterId: str
         """
         self.KeyId = None
         self.Alias = None
@@ -2040,6 +2062,7 @@ class KeyMetadata(AbstractModel):
         self.Origin = None
         self.ValidTo = None
         self.ResourceId = None
+        self.HsmClusterId = None
 
 
     def _deserialize(self, params):
@@ -2058,6 +2081,7 @@ class KeyMetadata(AbstractModel):
         self.Origin = params.get("Origin")
         self.ValidTo = params.get("ValidTo")
         self.ResourceId = params.get("ResourceId")
+        self.HsmClusterId = params.get("HsmClusterId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2142,6 +2166,8 @@ class ListKeyDetailRequest(AbstractModel):
         :type KeyUsage: str
         :param TagFilters: 标签过滤条件
         :type TagFilters: list of TagFilter
+        :param HsmClusterId: KMS 高级版对应的 HSM 集群 ID（仅对 KMS 独占版/托管版服务实例有效）。
+        :type HsmClusterId: str
         """
         self.Offset = None
         self.Limit = None
@@ -2152,6 +2178,7 @@ class ListKeyDetailRequest(AbstractModel):
         self.Origin = None
         self.KeyUsage = None
         self.TagFilters = None
+        self.HsmClusterId = None
 
 
     def _deserialize(self, params):
@@ -2169,6 +2196,7 @@ class ListKeyDetailRequest(AbstractModel):
                 obj = TagFilter()
                 obj._deserialize(item)
                 self.TagFilters.append(obj)
+        self.HsmClusterId = params.get("HsmClusterId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2222,16 +2250,20 @@ class ListKeysRequest(AbstractModel):
         :type Limit: int
         :param Role: 根据创建者角色筛选，默认 0 表示用户自己创建的cmk， 1 表示授权其它云产品自动创建的cmk
         :type Role: int
+        :param HsmClusterId: KMS 高级版对应的 HSM 集群 ID（仅对 KMS 独占版/托管版服务实例有效）。
+        :type HsmClusterId: str
         """
         self.Offset = None
         self.Limit = None
         self.Role = None
+        self.HsmClusterId = None
 
 
     def _deserialize(self, params):
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
         self.Role = params.get("Role")
+        self.HsmClusterId = params.get("HsmClusterId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

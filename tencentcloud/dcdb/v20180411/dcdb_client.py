@@ -1661,6 +1661,35 @@ class DcdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def TerminateDedicatedDBInstance(self, request):
+        """本接口（IsolateDedicatedDBInstance）用于销毁已隔离的独享分布式数据库实例。
+
+        :param request: Request instance for TerminateDedicatedDBInstance.
+        :type request: :class:`tencentcloud.dcdb.v20180411.models.TerminateDedicatedDBInstanceRequest`
+        :rtype: :class:`tencentcloud.dcdb.v20180411.models.TerminateDedicatedDBInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("TerminateDedicatedDBInstance", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.TerminateDedicatedDBInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def UpgradeDCDBInstance(self, request):
         """本接口（UpgradeDCDBInstance）用于升级分布式数据库实例。本接口完成下单和支付两个动作，如果发生支付失败的错误，调用用户账户相关接口中的支付订单接口（PayDeals）重新支付即可。
 

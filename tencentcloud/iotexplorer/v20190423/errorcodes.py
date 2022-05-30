@@ -497,5 +497,8 @@ UNSUPPORTEDOPERATION_STAFFPOOLDUPNAMEEXIST = 'UnsupportedOperation.StaffPoolDupN
 # LoRa频点还被节点或网关使用。
 UNSUPPORTEDOPERATION_STUDIOLORAFREQINUSED = 'UnsupportedOperation.StudioLoRaFreqInUsed'
 
+# 账户有未支付订单。
+UNSUPPORTEDOPERATION_UNPAIDORDER = 'UnsupportedOperation.UnpaidOrder'
+
 # 存在重复VPN。
 UNSUPPORTEDOPERATION_VPNDUPKEYEXIST = 'UnsupportedOperation.VPNDupKeyExist'
