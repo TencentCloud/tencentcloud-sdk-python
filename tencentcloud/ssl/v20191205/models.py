@@ -927,6 +927,15 @@ class DescribeCertificateDetailResponse(AbstractModel):
         :param Tags: 关联标签列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tags
+        :param RootCert: 根证书。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RootCert: :class:`tencentcloud.ssl.v20191205.models.RootCertificates`
+        :param EncryptCert: 国密加密证书
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EncryptCert: str
+        :param EncryptPrivateKey: 国密加密私钥
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EncryptPrivateKey: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -964,6 +973,9 @@ class DescribeCertificateDetailResponse(AbstractModel):
         self.RenewAble = None
         self.Deployable = None
         self.Tags = None
+        self.RootCert = None
+        self.EncryptCert = None
+        self.EncryptPrivateKey = None
         self.RequestId = None
 
 
@@ -1013,6 +1025,11 @@ class DescribeCertificateDetailResponse(AbstractModel):
                 obj = Tags()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        if params.get("RootCert") is not None:
+            self.RootCert = RootCertificates()
+            self.RootCert._deserialize(params.get("RootCert"))
+        self.EncryptCert = params.get("EncryptCert")
+        self.EncryptPrivateKey = params.get("EncryptPrivateKey")
         self.RequestId = params.get("RequestId")
 
 
@@ -2302,6 +2319,12 @@ class RevokeDomainValidateAuths(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class RootCertificates(AbstractModel):
+    """根证书
+
+    """
 
 
 class SubmitAuditManagerRequest(AbstractModel):

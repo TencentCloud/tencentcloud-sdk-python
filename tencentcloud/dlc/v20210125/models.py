@@ -666,6 +666,10 @@ class CreateSparkAppRequest(AbstractModel):
         :type MaxRetries: int
         :param DataSource: 数据源名
         :type DataSource: str
+        :param IsLocalPythonFiles: pyspark：依赖上传方式，1、cos；2、lakefs（控制台使用，该方式不支持直接接口调用）
+        :type IsLocalPythonFiles: str
+        :param AppPythonFiles: pyspark：python依赖, 除py文件外，还支持zip/egg等归档格式，多文件以逗号分隔
+        :type AppPythonFiles: str
         """
         self.AppName = None
         self.AppType = None
@@ -686,6 +690,8 @@ class CreateSparkAppRequest(AbstractModel):
         self.CmdArgs = None
         self.MaxRetries = None
         self.DataSource = None
+        self.IsLocalPythonFiles = None
+        self.AppPythonFiles = None
 
 
     def _deserialize(self, params):
@@ -708,6 +714,8 @@ class CreateSparkAppRequest(AbstractModel):
         self.CmdArgs = params.get("CmdArgs")
         self.MaxRetries = params.get("MaxRetries")
         self.DataSource = params.get("DataSource")
+        self.IsLocalPythonFiles = params.get("IsLocalPythonFiles")
+        self.AppPythonFiles = params.get("AppPythonFiles")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2710,6 +2718,10 @@ class ModifySparkAppRequest(AbstractModel):
         :type IsLocalFiles: str
         :param AppFiles: spark作业依赖资源，以逗号分隔
         :type AppFiles: str
+        :param IsLocalPythonFiles: pyspark：依赖上传方式，1、cos；2、lakefs（控制台使用，该方式不支持直接接口调用）
+        :type IsLocalPythonFiles: str
+        :param AppPythonFiles: pyspark：python依赖, 除py文件外，还支持zip/egg等归档格式，多文件以逗号分隔
+        :type AppPythonFiles: str
         :param CmdArgs: spark作业命令行参数
         :type CmdArgs: str
         :param MaxRetries: 只对spark流任务生效
@@ -2734,6 +2746,8 @@ class ModifySparkAppRequest(AbstractModel):
         self.AppJars = None
         self.IsLocalFiles = None
         self.AppFiles = None
+        self.IsLocalPythonFiles = None
+        self.AppPythonFiles = None
         self.CmdArgs = None
         self.MaxRetries = None
         self.DataSource = None
@@ -2757,6 +2771,8 @@ class ModifySparkAppRequest(AbstractModel):
         self.AppJars = params.get("AppJars")
         self.IsLocalFiles = params.get("IsLocalFiles")
         self.AppFiles = params.get("AppFiles")
+        self.IsLocalPythonFiles = params.get("IsLocalPythonFiles")
+        self.AppPythonFiles = params.get("AppPythonFiles")
         self.CmdArgs = params.get("CmdArgs")
         self.MaxRetries = params.get("MaxRetries")
         self.DataSource = params.get("DataSource")
@@ -3214,6 +3230,12 @@ class SparkJobInfo(AbstractModel):
         :param DataSource: 数据源名
 注意：此字段可能返回 null，表示取不到有效值。
         :type DataSource: str
+        :param IsLocalPythonFiles: pyspark：依赖上传方式，1、cos；2、lakefs（控制台使用，该方式不支持直接接口调用）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsLocalPythonFiles: str
+        :param AppPythonFiles: pyspark：python依赖, 除py文件外，还支持zip/egg等归档格式，多文件以逗号分隔
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppPythonFiles: str
         """
         self.JobId = None
         self.JobName = None
@@ -3241,6 +3263,8 @@ class SparkJobInfo(AbstractModel):
         self.JobStatus = None
         self.StreamingStat = None
         self.DataSource = None
+        self.IsLocalPythonFiles = None
+        self.AppPythonFiles = None
 
 
     def _deserialize(self, params):
@@ -3272,6 +3296,8 @@ class SparkJobInfo(AbstractModel):
             self.StreamingStat = StreamingStatistics()
             self.StreamingStat._deserialize(params.get("StreamingStat"))
         self.DataSource = params.get("DataSource")
+        self.IsLocalPythonFiles = params.get("IsLocalPythonFiles")
+        self.AppPythonFiles = params.get("AppPythonFiles")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -359,6 +359,11 @@ def test_import_dbbrain():
     from tencentcloud.dbbrain.v20210527 import models
 
 
+def test_import_dbdc():
+    from tencentcloud.dbdc.v20201029 import dbdc_client
+    from tencentcloud.dbdc.v20201029 import models
+
+
 def test_import_dc():
     from tencentcloud.dc.v20180410 import dc_client
     from tencentcloud.dc.v20180410 import models
