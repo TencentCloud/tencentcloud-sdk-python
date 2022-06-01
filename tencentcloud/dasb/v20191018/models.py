@@ -27,7 +27,7 @@ class Acl(AbstractModel):
         r"""
         :param Id: 访问权限ID
         :type Id: int
-        :param Name: 规则名
+        :param Name: 访问权限名称
         :type Name: str
         :param AllowDiskRedirect: 是否开启磁盘映射
         :type AllowDiskRedirect: bool
@@ -35,47 +35,49 @@ class Acl(AbstractModel):
         :type AllowClipFileUp: bool
         :param AllowClipFileDown: 是否开启剪贴板文件下行
         :type AllowClipFileDown: bool
-        :param AllowClipTextUp: 是否开启剪贴板text（目前含图片）上行
+        :param AllowClipTextUp: 是否开启剪贴板文本（目前含图片）上行
         :type AllowClipTextUp: bool
-        :param AllowClipTextDown: 是否开启剪贴板text（目前含图片）下行
+        :param AllowClipTextDown: 是否开启剪贴板文本（目前含图片）下行
         :type AllowClipTextDown: bool
         :param AllowFileUp: 是否开启文件传输上传
         :type AllowFileUp: bool
-        :param MaxFileUpSize: 文件传输上传大小限制
+        :param MaxFileUpSize: 文件传输上传大小限制（预留参数，暂未启用）
         :type MaxFileUpSize: int
         :param AllowFileDown: 是否开启文件传输下载
         :type AllowFileDown: bool
-        :param MaxFileDownSize: 文件传输下载大小限制
+        :param MaxFileDownSize: 文件传输下载大小限制（预留参数，暂未启用）
         :type MaxFileDownSize: int
-        :param AllowAnyAccount: 是否允许任意账号登陆
+        :param AllowAnyAccount: 是否允许任意账号登录
         :type AllowAnyAccount: bool
         :param UserSet: 关联的用户列表
         :type UserSet: list of User
         :param UserGroupSet: 关联的用户组列表
         :type UserGroupSet: list of Group
-        :param DeviceSet: 关联的主机列表
+        :param DeviceSet: 关联的资产列表
         :type DeviceSet: list of Device
-        :param DeviceGroupSet: 关联的主机组列表
+        :param DeviceGroupSet: 关联的资产组列表
         :type DeviceGroupSet: list of Group
         :param AccountSet: 关联的账号列表
         :type AccountSet: list of str
         :param CmdTemplateSet: 关联的高危命令模板列表
         :type CmdTemplateSet: list of CmdTemplate
-        :param AllowDiskFileUp: 是否开启rdp磁盘映射文件上传
+        :param AllowDiskFileUp: 是否开启 RDP 磁盘映射文件上传
         :type AllowDiskFileUp: bool
-        :param AllowDiskFileDown: 是否开启rdp磁盘映射文件下载
+        :param AllowDiskFileDown: 是否开启 RDP 磁盘映射文件下载
         :type AllowDiskFileDown: bool
-        :param AllowShellFileUp: 是否开启rz sz文件上传
+        :param AllowShellFileUp: 是否开启 rz sz 文件上传
         :type AllowShellFileUp: bool
-        :param AllowShellFileDown: 是否开启rz sz文件下载
+        :param AllowShellFileDown: 是否开启 rz sz 文件下载
         :type AllowShellFileDown: bool
-        :param AllowFileDel: 是否开启SFTP文件删除
+        :param AllowFileDel: 是否开启 SFTP 文件删除
         :type AllowFileDel: bool
-        :param ValidateFrom: 生效日期
+        :param ValidateFrom: 访问权限生效时间，如:"2021-09-22T00:00:00+00:00"
+生效、失效时间不填则访问权限长期有效
         :type ValidateFrom: str
-        :param ValidateTo: 失效日期
+        :param ValidateTo: 访问权限失效时间，如:"2021-09-23T00:00:00+00:00"
+生效、失效时间不填则访问权限长期有效
         :type ValidateTo: str
-        :param Status: 策略状态，1-已生效，2-未生效，3-已过期
+        :param Status: 访问权限状态，1 - 已生效，2 - 未生效，3 - 已过期
         :type Status: int
         """
         self.Id = None
@@ -167,18 +169,153 @@ class Acl(AbstractModel):
         
 
 
-class CmdTemplate(AbstractModel):
-    """命令模板
+class AddDeviceGroupMembersRequest(AbstractModel):
+    """AddDeviceGroupMembers请求参数结构体
 
     """
 
     def __init__(self):
         r"""
-        :param Id: 模板ID
+        :param Id: 资产组ID
         :type Id: int
-        :param Name: 模板名称
+        :param MemberIdSet: 需要添加到资产组的资产ID集合
+        :type MemberIdSet: list of int non-negative
+        """
+        self.Id = None
+        self.MemberIdSet = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.MemberIdSet = params.get("MemberIdSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddDeviceGroupMembersResponse(AbstractModel):
+    """AddDeviceGroupMembers返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class AddUserGroupMembersRequest(AbstractModel):
+    """AddUserGroupMembers请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: 用户组ID
+        :type Id: int
+        :param MemberIdSet: 成员用户ID集合
+        :type MemberIdSet: list of int non-negative
+        """
+        self.Id = None
+        self.MemberIdSet = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.MemberIdSet = params.get("MemberIdSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddUserGroupMembersResponse(AbstractModel):
+    """AddUserGroupMembers返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class BindDeviceResourceRequest(AbstractModel):
+    """BindDeviceResource请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DeviceIdSet: 资产ID集合
+        :type DeviceIdSet: list of int non-negative
+        :param ResourceId: 堡垒机服务ID
+        :type ResourceId: str
+        """
+        self.DeviceIdSet = None
+        self.ResourceId = None
+
+
+    def _deserialize(self, params):
+        self.DeviceIdSet = params.get("DeviceIdSet")
+        self.ResourceId = params.get("ResourceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BindDeviceResourceResponse(AbstractModel):
+    """BindDeviceResource返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CmdTemplate(AbstractModel):
+    """高危命令模板
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: 高危命令模板ID
+        :type Id: int
+        :param Name: 高危命令模板名称
         :type Name: str
-        :param CmdList: 命令列表，\n分隔
+        :param CmdList: 命令列表，命令之间用换行符（"\n"）分隔
         :type CmdList: str
         """
         self.Id = None
@@ -206,37 +343,37 @@ class CreateAclRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 权限名称，最大32字符，不能为空，不能包含空白字符
+        :param Name: 权限名称，最大32字符，不能包含空白字符
         :type Name: str
         :param AllowDiskRedirect: 是否开启磁盘映射
         :type AllowDiskRedirect: bool
-        :param AllowAnyAccount: 是否允许任意账号登陆
+        :param AllowAnyAccount: 是否允许任意账号登录
         :type AllowAnyAccount: bool
         :param AllowClipFileUp: 是否开启剪贴板文件上行
         :type AllowClipFileUp: bool
         :param AllowClipFileDown: 是否开启剪贴板文件下行
         :type AllowClipFileDown: bool
-        :param AllowClipTextUp: 是否开启剪贴板text（含图片）上行
+        :param AllowClipTextUp: 是否开启剪贴板文本（含图片）上行
         :type AllowClipTextUp: bool
-        :param AllowClipTextDown: 是否开启剪贴板text（含图片）下行
+        :param AllowClipTextDown: 是否开启剪贴板文本（含图片）下行
         :type AllowClipTextDown: bool
-        :param AllowFileUp: 是否开启SFTP文件上传
+        :param AllowFileUp: 是否开启 SFTP 文件上传
         :type AllowFileUp: bool
-        :param MaxFileUpSize: 文件传输上传大小限制
+        :param MaxFileUpSize: 文件传输上传大小限制（预留参数，目前暂未使用）
         :type MaxFileUpSize: int
-        :param AllowFileDown: 是否开启SFTP文件下载
+        :param AllowFileDown: 是否开启 SFTP 文件下载
         :type AllowFileDown: bool
-        :param MaxFileDownSize: 文件传输下载大小限制
+        :param MaxFileDownSize: 文件传输下载大小限制（预留参数，目前暂未使用）
         :type MaxFileDownSize: int
-        :param UserIdSet: 关联的用户ID
+        :param UserIdSet: 关联的用户ID集合
         :type UserIdSet: list of int non-negative
         :param UserGroupIdSet: 关联的用户组ID
         :type UserGroupIdSet: list of int non-negative
-        :param DeviceIdSet: 关联的主机ID
+        :param DeviceIdSet: 关联的资产ID集合
         :type DeviceIdSet: list of int non-negative
-        :param DeviceGroupIdSet: 关联的主机组ID
+        :param DeviceGroupIdSet: 关联的资产组ID
         :type DeviceGroupIdSet: list of int non-negative
-        :param AccountSet: 关联的账号，账号name
+        :param AccountSet: 关联的账号
         :type AccountSet: list of str
         :param CmdTemplateIdSet: 关联的高危命令模板ID
         :type CmdTemplateIdSet: list of int non-negative
@@ -248,11 +385,13 @@ class CreateAclRequest(AbstractModel):
         :type AllowShellFileUp: bool
         :param AllowShellFileDown: 是否开启rz sz文件下载
         :type AllowShellFileDown: bool
-        :param AllowFileDel: 是否开启SFTP文件删除
+        :param AllowFileDel: 是否开启 SFTP 文件删除
         :type AllowFileDel: bool
-        :param ValidateFrom: 生效日期，如果为空，默认1970-01-01T08:00:01+08:00
+        :param ValidateFrom: 访问权限生效时间，如:"2021-09-22T00:00:00+00:00"
+生效、失效时间不填则访问权限长期有效
         :type ValidateFrom: str
-        :param ValidateTo: 失效日期，如果为空，默认1970-01-01T08:00:01+08:00
+        :param ValidateTo: 访问权限失效时间，如:"2021-09-23T00:00:00+00:00"
+生效、失效时间不填则访问权限长期有效
         :type ValidateTo: str
         """
         self.Name = None
@@ -322,7 +461,97 @@ class CreateAclResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Id: 访问权限ID
+        :param Id: 新建成功的访问权限ID
+        :type Id: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Id = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateDeviceGroupRequest(AbstractModel):
+    """CreateDeviceGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 资产组名，最大长度32字符
+        :type Name: str
+        """
+        self.Name = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDeviceGroupResponse(AbstractModel):
+    """CreateDeviceGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: 新建成功的资产组ID
+        :type Id: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Id = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateUserGroupRequest(AbstractModel):
+    """CreateUserGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 用户组名，最大长度32字符
+        :type Name: str
+        """
+        self.Name = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateUserGroupResponse(AbstractModel):
+    """CreateUserGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: 新建成功的用户组ID
         :type Id: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -343,23 +572,25 @@ class CreateUserRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserName: 用户名，最大长度32字符，不能为空
+        :param UserName: 用户名, 3-20个字符, 必须以英文字母开头，且不能包含字母、数字、.、_、-以外的字符
         :type UserName: str
-        :param RealName: 用户姓名，最大长度32字符，不能为空
+        :param RealName: 用户姓名，最大长度20个字符，不能包含空白字符
         :type RealName: str
-        :param Phone: 手机号
+        :param Phone: 大陆手机号直接填写，如果是其他国家、地区号码， 按照"国家地区代码|手机号"的格式输入。如: "+852|xxxxxxxx"
         :type Phone: str
         :param Email: 电子邮件
         :type Email: str
-        :param ValidateFrom: 生效起始时间,不设置则为1970-01-01T08:00:01+08:00
+        :param ValidateFrom: 用户生效时间，如:"2021-09-22T00:00:00+00:00"
+生效、失效时间不填则用户长期有效
         :type ValidateFrom: str
-        :param ValidateTo: 生效结束时间,不设置则为1970-01-01T08:00:01+08:00
+        :param ValidateTo: 用户失效时间，如:"2021-09-23T00:00:00+00:00"
+生效、失效时间不填则用户长期有效
         :type ValidateTo: str
         :param GroupIdSet: 所属用户组ID集合
         :type GroupIdSet: list of int non-negative
-        :param AuthType: 认证方式，0-本地 1-ldap 2-oauth,不传则默认为0
+        :param AuthType: 认证方式，0 - 本地， 1 - LDAP， 2 - OAuth 不传则默认为0
         :type AuthType: int
-        :param ValidateTime: 生效时间段, 0、1组成的字符串，长度168(7*24), 代表该用户的生效时间. 0 - 未生效，1 - 生效
+        :param ValidateTime: 访问时间段限制， 由0、1组成的字符串，长度168(7 × 24)，代表该用户在一周中允许访问的时间段。字符串中第N个字符代表在一周中的第N个小时， 0 - 代表不允许访问，1 - 代表允许访问
         :type ValidateTime: str
         """
         self.UserName = None
@@ -399,7 +630,7 @@ class CreateUserResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Id: 新建成功后返回的记录ID
+        :param Id: 新建用户的ID
         :type Id: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -439,6 +670,178 @@ class DeleteAclsRequest(AbstractModel):
 
 class DeleteAclsResponse(AbstractModel):
     """DeleteAcls返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteDeviceGroupMembersRequest(AbstractModel):
+    """DeleteDeviceGroupMembers请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: 资产组ID
+        :type Id: int
+        :param MemberIdSet: 需要删除的资产ID集合
+        :type MemberIdSet: list of int non-negative
+        """
+        self.Id = None
+        self.MemberIdSet = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.MemberIdSet = params.get("MemberIdSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteDeviceGroupMembersResponse(AbstractModel):
+    """DeleteDeviceGroupMembers返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteDeviceGroupsRequest(AbstractModel):
+    """DeleteDeviceGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IdSet: 待删除的资产组ID集合
+        :type IdSet: list of int non-negative
+        """
+        self.IdSet = None
+
+
+    def _deserialize(self, params):
+        self.IdSet = params.get("IdSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteDeviceGroupsResponse(AbstractModel):
+    """DeleteDeviceGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteUserGroupMembersRequest(AbstractModel):
+    """DeleteUserGroupMembers请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: 用户组ID
+        :type Id: int
+        :param MemberIdSet: 需删除的成员用户ID集合
+        :type MemberIdSet: list of int non-negative
+        """
+        self.Id = None
+        self.MemberIdSet = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.MemberIdSet = params.get("MemberIdSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteUserGroupMembersResponse(AbstractModel):
+    """DeleteUserGroupMembers返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteUserGroupsRequest(AbstractModel):
+    """DeleteUserGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IdSet: 待删除的用户组ID集合
+        :type IdSet: list of int non-negative
+        """
+        self.IdSet = None
+
+
+    def _deserialize(self, params):
+        self.IdSet = params.get("IdSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteUserGroupsResponse(AbstractModel):
+    """DeleteUserGroups返回参数结构体
 
     """
 
@@ -502,21 +905,21 @@ class DescribeAclsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param IdSet: 访问权限ID集合，非必需
+        :param IdSet: 访问权限ID集合
         :type IdSet: list of int non-negative
         :param Name: 访问权限名称，模糊查询，最长64字符
         :type Name: str
-        :param Offset: 分页，偏移位置
+        :param Offset: 分页偏移位置
         :type Offset: int
-        :param Limit: 每页条目数量，默认20
+        :param Limit: 每页条目数量，默认20，最大500
         :type Limit: int
-        :param Exact: 是否根据Name进行精确查询,默认值false
+        :param Exact: 是否根据Name进行精确查询，默认值false
         :type Exact: bool
-        :param AuthorizedUserIdSet: 有权限的用户ID集合
+        :param AuthorizedUserIdSet: 有访问权限的用户ID集合
         :type AuthorizedUserIdSet: list of int non-negative
-        :param AuthorizedDeviceIdSet: 有权限的主机ID集合
+        :param AuthorizedDeviceIdSet: 有访问权限的资产ID集合
         :type AuthorizedDeviceIdSet: list of int non-negative
-        :param Status: 策略状态，0-不限，1-已生效，2-未生效，3-已过期
+        :param Status: 访问权限状态，1 - 已生效，2 - 未生效，3 - 已过期
         :type Status: int
         """
         self.IdSet = None
@@ -554,9 +957,9 @@ class DescribeAclsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 记录总数
+        :param TotalCount: 访问权限总数
         :type TotalCount: int
-        :param AclSet: 访问权限记录集合，当前分页
+        :param AclSet: 访问权限列表
         :type AclSet: list of Acl
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -608,6 +1011,146 @@ class DescribeDasbImageIdsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDeviceGroupMembersRequest(AbstractModel):
+    """DescribeDeviceGroupMembers请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: 资产组ID
+        :type Id: int
+        :param Bound: true - 查询已在该资产组的资产，false - 查询未在该资产组的资产
+        :type Bound: bool
+        :param Name: 资产名或资产IP，模糊查询
+        :type Name: str
+        :param Offset: 分页偏移位置
+        :type Offset: int
+        :param Limit: 每页条目数，默认20, 最大500
+        :type Limit: int
+        :param Kind: 资产类型，1 - Linux，2 - Windows，3 - MySQL，4 - SQLServer
+        :type Kind: int
+        """
+        self.Id = None
+        self.Bound = None
+        self.Name = None
+        self.Offset = None
+        self.Limit = None
+        self.Kind = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.Bound = params.get("Bound")
+        self.Name = params.get("Name")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.Kind = params.get("Kind")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDeviceGroupMembersResponse(AbstractModel):
+    """DescribeDeviceGroupMembers返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 资产组成员总数
+        :type TotalCount: int
+        :param DeviceSet: 资产组成员列表
+        :type DeviceSet: list of Device
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.DeviceSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("DeviceSet") is not None:
+            self.DeviceSet = []
+            for item in params.get("DeviceSet"):
+                obj = Device()
+                obj._deserialize(item)
+                self.DeviceSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDeviceGroupsRequest(AbstractModel):
+    """DescribeDeviceGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IdSet: 资产组ID集合
+        :type IdSet: list of int non-negative
+        :param Name: 资产组名，最长64个字符，模糊查询
+        :type Name: str
+        :param Offset: 分页偏移位置
+        :type Offset: int
+        :param Limit: 每页条目数量，缺省20，最大500
+        :type Limit: int
+        """
+        self.IdSet = None
+        self.Name = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.IdSet = params.get("IdSet")
+        self.Name = params.get("Name")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDeviceGroupsResponse(AbstractModel):
+    """DescribeDeviceGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 资产组总数
+        :type TotalCount: int
+        :param GroupSet: 资产组列表
+        :type GroupSet: list of Group
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.GroupSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("GroupSet") is not None:
+            self.GroupSet = []
+            for item in params.get("GroupSet"):
+                obj = Group()
+                obj._deserialize(item)
+                self.GroupSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDevicesRequest(AbstractModel):
     """DescribeDevices请求参数结构体
 
@@ -615,25 +1158,25 @@ class DescribeDevicesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param IdSet: 主机ID集合，非必需
+        :param IdSet: 资产ID集合
         :type IdSet: list of int non-negative
-        :param Name: 主机名或主机IP，模糊查询
+        :param Name: 资产名或资产IP，模糊查询
         :type Name: str
         :param Ip: 暂未使用
         :type Ip: str
         :param ApCodeSet: 地域码集合
         :type ApCodeSet: list of str
-        :param Kind: 操作系统类型
+        :param Kind: 操作系统类型, 1 - Linux, 2 - Windows, 3 - MySQL, 4 - SQLServer
         :type Kind: int
         :param Offset: 分页，偏移位置
         :type Offset: int
         :param Limit: 每页条目数量，默认20
         :type Limit: int
-        :param AuthorizedUserIdSet: 有该主机访问权限的用户ID集合
+        :param AuthorizedUserIdSet: 有该资产访问权限的用户ID集合
         :type AuthorizedUserIdSet: list of int non-negative
-        :param ResourceIdSet: 过滤条件，主机绑定的堡垒机服务ID集合
+        :param ResourceIdSet: 过滤条件，资产绑定的堡垒机服务ID集合
         :type ResourceIdSet: list of str
-        :param KindSet: 可提供按照多种类型过滤, 1-Linux, 2-Windows, 3-MySQL
+        :param KindSet: 可提供按照多种类型过滤, 1 - Linux, 2 - Windows, 3 - MySQL, 4 - SQLServer
         :type KindSet: list of int non-negative
         """
         self.IdSet = None
@@ -675,9 +1218,9 @@ class DescribeDevicesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 记录总数
+        :param TotalCount: 资产总数
         :type TotalCount: int
-        :param DeviceSet: 主机信息列表
+        :param DeviceSet: 资产信息列表
         :type DeviceSet: list of Device
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -698,6 +1241,200 @@ class DescribeDevicesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeResourcesRequest(AbstractModel):
+    """DescribeResources请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ApCode: 地域码, 如: ap-guangzhou
+        :type ApCode: str
+        :param VpcId: 按照堡垒机开通的 VPC 实例ID查询
+        :type VpcId: str
+        :param ResourceIds: 资源ID集合，当传入ID集合时忽略 ApCode 和 VpcId
+        :type ResourceIds: list of str
+        """
+        self.ApCode = None
+        self.VpcId = None
+        self.ResourceIds = None
+
+
+    def _deserialize(self, params):
+        self.ApCode = params.get("ApCode")
+        self.VpcId = params.get("VpcId")
+        self.ResourceIds = params.get("ResourceIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeResourcesResponse(AbstractModel):
+    """DescribeResources返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ResourceSet: 堡垒机资源列表
+        :type ResourceSet: list of Resource
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ResourceSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ResourceSet") is not None:
+            self.ResourceSet = []
+            for item in params.get("ResourceSet"):
+                obj = Resource()
+                obj._deserialize(item)
+                self.ResourceSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeUserGroupMembersRequest(AbstractModel):
+    """DescribeUserGroupMembers请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: 用户组ID
+        :type Id: int
+        :param Bound: true - 查询已添加到该用户组的用户，false - 查询未添加到该用户组的用户
+        :type Bound: bool
+        :param Name: 用户名或用户姓名，最长64个字符，模糊查询
+        :type Name: str
+        :param Offset: 分页偏移位置
+        :type Offset: int
+        :param Limit: 每页条目数量，默认20, 最大500
+        :type Limit: int
+        """
+        self.Id = None
+        self.Bound = None
+        self.Name = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.Bound = params.get("Bound")
+        self.Name = params.get("Name")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeUserGroupMembersResponse(AbstractModel):
+    """DescribeUserGroupMembers返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 用户组成员总数
+        :type TotalCount: int
+        :param UserSet: 用户组成员列表
+        :type UserSet: list of User
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.UserSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("UserSet") is not None:
+            self.UserSet = []
+            for item in params.get("UserSet"):
+                obj = User()
+                obj._deserialize(item)
+                self.UserSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeUserGroupsRequest(AbstractModel):
+    """DescribeUserGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IdSet: 用户组ID集合
+        :type IdSet: list of int non-negative
+        :param Name: 用户组名，模糊查询,长度：0-64字符
+        :type Name: str
+        :param Offset: 分页偏移位置
+        :type Offset: int
+        :param Limit: 每页条目数量，缺省20，最大500
+        :type Limit: int
+        """
+        self.IdSet = None
+        self.Name = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.IdSet = params.get("IdSet")
+        self.Name = params.get("Name")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeUserGroupsResponse(AbstractModel):
+    """DescribeUserGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 用户组总数
+        :type TotalCount: int
+        :param GroupSet: 用户组列表
+        :type GroupSet: list of Group
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.GroupSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("GroupSet") is not None:
+            self.GroupSet = []
+            for item in params.get("GroupSet"):
+                obj = Group()
+                obj._deserialize(item)
+                self.GroupSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeUsersRequest(AbstractModel):
     """DescribeUsers请求参数结构体
 
@@ -711,15 +1448,16 @@ class DescribeUsersRequest(AbstractModel):
         :type Name: str
         :param Offset: 分页，偏移位置
         :type Offset: int
-        :param Limit: 每页条目数量，默认20
+        :param Limit: 每页条目数量，默认20, 最大500
         :type Limit: int
         :param UserName: 精确查询，IdSet为空时才生效
         :type UserName: str
-        :param Phone: 精确查询，IdSet、UserName为空时才生效
+        :param Phone: 精确查询，IdSet、UserName为空时才生效。
+大陆手机号直接填写，如果是其他国家、地区号码,按照"国家地区代码|手机号"的格式输入。如: "+852|xxxxxxxx"
         :type Phone: str
-        :param AuthorizedDeviceIdSet: 有访问权限的主机ID集合
+        :param AuthorizedDeviceIdSet: 查询具有指定资产ID访问权限的用户
         :type AuthorizedDeviceIdSet: list of int non-negative
-        :param AuthTypeSet: 认证方式，0-本地，1-ldap, 2-oauth 不传为全部
+        :param AuthTypeSet: 认证方式，0 - 本地, 1 - LDAP, 2 - OAuth, 不传为全部
         :type AuthTypeSet: list of int non-negative
         """
         self.IdSet = None
@@ -757,9 +1495,9 @@ class DescribeUsersResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 记录总数
+        :param TotalCount: 用户总数
         :type TotalCount: int
-        :param UserSet: 用户信息列表
+        :param UserSet: 用户列表
         :type UserSet: list of User
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -781,17 +1519,17 @@ class DescribeUsersResponse(AbstractModel):
 
 
 class Device(AbstractModel):
-    """主机信息
+    """资产信息
 
     """
 
     def __init__(self):
         r"""
-        :param Id: 主机记录ID
+        :param Id: 资产ID
         :type Id: int
-        :param InstanceId: 主机ID，对应cvm实例id
+        :param InstanceId: 实例ID，对应CVM、CDB等实例ID
         :type InstanceId: str
-        :param Name: 主机名
+        :param Name: 资产名
         :type Name: str
         :param PublicIp: 公网IP
         :type PublicIp: str
@@ -801,13 +1539,13 @@ class Device(AbstractModel):
         :type ApCode: str
         :param OsName: 操作系统名称
         :type OsName: str
-        :param Kind: 主机类型，1-Linux, 2-Windows
+        :param Kind: 资产类型 1 - Linux, 2 - Windows, 3 - MySQL, 4 - SQLServer
         :type Kind: int
         :param Port: 管理端口
         :type Port: int
-        :param GroupSet: 所属主机组信息列表
+        :param GroupSet: 所属资产组列表
         :type GroupSet: list of Group
-        :param AccountCount: 主机绑定的账号数
+        :param AccountCount: 资产绑定的账号数
         :type AccountCount: int
         :param VpcId: VPC ID
         :type VpcId: str
@@ -899,11 +1637,11 @@ class ModifyAclRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: 权限名称，最大32字符，不能包含空白字符
+        :param Name: 访问权限名称，最大32字符，不能包含空白字符
         :type Name: str
         :param AllowDiskRedirect: 是否开启磁盘映射
         :type AllowDiskRedirect: bool
-        :param AllowAnyAccount: 是否允许任意账号登陆
+        :param AllowAnyAccount: 是否允许任意账号登录
         :type AllowAnyAccount: bool
         :param Id: 访问权限ID
         :type Id: int
@@ -911,43 +1649,45 @@ class ModifyAclRequest(AbstractModel):
         :type AllowClipFileUp: bool
         :param AllowClipFileDown: 是否开启剪贴板文件下行
         :type AllowClipFileDown: bool
-        :param AllowClipTextUp: 是否开启剪贴板text（含图片）上行
+        :param AllowClipTextUp: 是否开启剪贴板文本（含图片）上行
         :type AllowClipTextUp: bool
-        :param AllowClipTextDown: 是否开启剪贴板text（含图片）下行
+        :param AllowClipTextDown: 是否开启剪贴板文本（含图片）下行
         :type AllowClipTextDown: bool
         :param AllowFileUp: 是否开启文件传输上传
         :type AllowFileUp: bool
-        :param MaxFileUpSize: 文件传输上传大小限制
+        :param MaxFileUpSize: 文件传输上传大小限制（预留参数，目前暂未使用）
         :type MaxFileUpSize: int
         :param AllowFileDown: 是否开启文件传输下载
         :type AllowFileDown: bool
-        :param MaxFileDownSize: 文件传输下载大小限制
+        :param MaxFileDownSize: 文件传输下载大小限制（预留参数，目前暂未使用）
         :type MaxFileDownSize: int
         :param UserIdSet: 关联的用户ID
         :type UserIdSet: list of int non-negative
         :param UserGroupIdSet: 关联的用户组ID
         :type UserGroupIdSet: list of int non-negative
-        :param DeviceIdSet: 关联的主机ID
+        :param DeviceIdSet: 关联的资产ID
         :type DeviceIdSet: list of int non-negative
-        :param DeviceGroupIdSet: 关联的主机组ID
+        :param DeviceGroupIdSet: 关联的资产组ID
         :type DeviceGroupIdSet: list of int non-negative
-        :param AccountSet: 关联的账号，账号name
+        :param AccountSet: 关联的账号
         :type AccountSet: list of str
         :param CmdTemplateIdSet: 关联的高危命令模板ID
         :type CmdTemplateIdSet: list of int non-negative
-        :param AllowDiskFileUp: 是否开启rdp磁盘映射文件上传
+        :param AllowDiskFileUp: 是否开启 RDP 磁盘映射文件上传
         :type AllowDiskFileUp: bool
-        :param AllowDiskFileDown: 是否开启rdp磁盘映射文件下载
+        :param AllowDiskFileDown: 是否开启 RDP 磁盘映射文件下载
         :type AllowDiskFileDown: bool
         :param AllowShellFileUp: 是否开启rz sz文件上传
         :type AllowShellFileUp: bool
         :param AllowShellFileDown: 是否开启rz sz文件下载
         :type AllowShellFileDown: bool
-        :param AllowFileDel: 是否开启SFTP文件删除
+        :param AllowFileDel: 是否开启 SFTP 文件删除
         :type AllowFileDel: bool
-        :param ValidateFrom: 生效日期，如果为空，默认1970-01-01T08:00:01+08:00
+        :param ValidateFrom: 访问权限生效时间，如:"2021-09-22T00:00:00+00:00"
+生效、失效时间不填则访问权限长期有效
         :type ValidateFrom: str
-        :param ValidateTo: 失效日期，如果为空，默认1970-01-01T08:00:01+08:00
+        :param ValidateTo: 访问权限失效时间，如:"2021-09-23T00:00:00+00:00"
+生效、失效时间不填则访问权限长期有效
         :type ValidateTo: str
         """
         self.Name = None
@@ -1038,21 +1778,23 @@ class ModifyUserRequest(AbstractModel):
         r"""
         :param Id: 用户ID
         :type Id: int
-        :param RealName: 用户姓名，最大长度32字符，不能为空
+        :param RealName: 用户姓名，最大长度20个字符，不能包含空格
         :type RealName: str
-        :param Phone: 手机号
+        :param Phone: 大陆手机号直接填写，如果是其他国家、地区号码,按照"国家地区代码|手机号"的格式输入。如: "+852|xxxxxxxx"
         :type Phone: str
         :param Email: 电子邮件
         :type Email: str
-        :param ValidateFrom: 生效起始时间,不设置则为1970-01-01 08:00:01
+        :param ValidateFrom: 用户生效时间，如:"2021-09-22T00:00:00+00:00"
+生效、失效时间不填则用户长期有效
         :type ValidateFrom: str
-        :param ValidateTo: 生效结束时间,不设置则为1970-01-01 08:00:01
+        :param ValidateTo: 用户失效时间，如:"2021-09-23T00:00:00+00:00"
+生效、失效时间不填则用户长期有效
         :type ValidateTo: str
         :param GroupIdSet: 所属用户组ID集合
         :type GroupIdSet: list of int non-negative
-        :param AuthType: 认证方式，0-本地 1-ldap, 2-oauth不传则默认为0
+        :param AuthType: 认证方式，0 - 本地，1 - LDAP，2 - OAuth 不传则默认为0
         :type AuthType: int
-        :param ValidateTime: 生效时间段, 0、1组成的字符串，长度168(7*24), 代表该用户的生效时间. 0 - 未生效，1 - 生效
+        :param ValidateTime: 访问时间段限制， 由0、1组成的字符串，长度168(7 × 24)，代表该用户在一周中允许访问的时间段。字符串中第N个字符代表在一周中的第N个小时， 0 - 代表不允许访问，1 - 代表允许访问
         :type ValidateTime: str
         """
         self.Id = None
@@ -1103,29 +1845,29 @@ class ModifyUserResponse(AbstractModel):
 
 
 class Resource(AbstractModel):
-    """用户购买的堡垒机资源信息
+    """堡垒机服务信息
 
     """
 
     def __init__(self):
         r"""
-        :param ResourceId: 资源实例id，如bh-saas-s3ed4r5e
+        :param ResourceId: 服务实例ID，如bh-saas-s3ed4r5e
         :type ResourceId: str
         :param ApCode: 地域编码
         :type ApCode: str
-        :param SvArgs: 实例规格信息（询价参数）
+        :param SvArgs: 服务实例规格信息
         :type SvArgs: str
-        :param VpcId: vpc id
+        :param VpcId: VPC ID
         :type VpcId: str
-        :param Nodes: 堡垒机规格对应的资产数
+        :param Nodes: 服务规格对应的资产数
         :type Nodes: int
-        :param RenewFlag: 自动续费标记，0表示默认状态，1表示自动续费，2表示明确不自动续费
+        :param RenewFlag: 自动续费标记，0 - 表示默认状态，1 - 表示自动续费，2 - 表示明确不自动续费
         :type RenewFlag: int
         :param ExpireTime: 过期时间
         :type ExpireTime: str
-        :param Status: 资源状态，0未初始化，1正常，2隔离，3销毁，4初始化失败，5初始化中
+        :param Status: 资源状态，0 - 未初始化，1 - 正常，2 - 隔离，3 - 销毁，4 - 初始化失败，5 - 初始化中
         :type Status: int
-        :param ResourceName: 实例名，如T-Sec-堡垒机（SaaS型）
+        :param ResourceName: 服务实例名，如T-Sec-堡垒机（SaaS型）
         :type ResourceName: str
         :param Pid: 定价模型ID
         :type Pid: int
@@ -1141,9 +1883,9 @@ class Resource(AbstractModel):
         :type Expired: bool
         :param Deployed: 是否开通，true-开通，false-未开通
         :type Deployed: bool
-        :param VpcName: 开通服务的VPC名称
+        :param VpcName: 开通服务的 VPC 名称
         :type VpcName: str
-        :param VpcCidrBlock: 开通服务的VPC对应的网段
+        :param VpcCidrBlock: 开通服务的 VPC 对应的网段
         :type VpcCidrBlock: str
         :param SubnetId: 开通服务的子网ID
         :type SubnetId: str
@@ -1155,7 +1897,7 @@ class Resource(AbstractModel):
         :type PublicIpSet: list of str
         :param PrivateIpSet: 内部IP
         :type PrivateIpSet: list of str
-        :param ModuleSet: 资源开通的高级功能列表，如:[DB]
+        :param ModuleSet: 服务开通的高级功能列表，如:[DB]
         :type ModuleSet: list of str
         :param UsedNodes: 已使用的授权点数
         :type UsedNodes: int
@@ -1241,25 +1983,27 @@ class User(AbstractModel):
 
     def __init__(self):
         r"""
-        :param UserName: 用户名
+        :param UserName: 用户名, 3-20个字符 必须以英文字母开头，且不能包含字母、数字、.、_、-以外的字符
         :type UserName: str
-        :param RealName: 用户姓名
+        :param RealName: 用户姓名， 最大20个字符，不能包含空白字符
         :type RealName: str
-        :param Phone: 手机号码
+        :param Phone: 手机号码， 大陆手机号直接填写，如果是其他国家、地区号码,按照"国家地区代码|手机号"的格式输入。如: "+852|xxxxxxxx"
         :type Phone: str
         :param Id: 用户ID
         :type Id: int
         :param Email: 电子邮件
         :type Email: str
-        :param ValidateFrom: 生效起始时间
+        :param ValidateFrom: 用户生效时间，如:"2021-09-22T00:00:00+00:00"
+生效、失效时间不填则用户长期有效
         :type ValidateFrom: str
-        :param ValidateTo: 生效结束时间
+        :param ValidateTo: 用户失效时间，如:"2021-09-22T00:00:00+00:00"
+生效、失效时间不填则用户长期有效
         :type ValidateTo: str
         :param GroupSet: 所属用户组列表
         :type GroupSet: list of Group
-        :param AuthType: 认证方式，0-本地 1-ldap
+        :param AuthType: 认证方式，0 - 本地，1 - LDAP，2 - OAuth
         :type AuthType: int
-        :param ValidateTime: 生效时间段, 0、1组成的字符串，长度168(7*24), 代表该用户的生效时间. 0 - 未生效，1 - 生效
+        :param ValidateTime: 访问时间段限制， 由0、1组成的字符串，长度168(7 × 24)，代表该用户在一周中允许访问的时间段。字符串中第N个字符代表在一周中的第N个小时， 0 - 代表不允许访问，1 - 代表允许访问
         :type ValidateTime: str
         """
         self.UserName = None

@@ -274,6 +274,8 @@ class EnvInfo(AbstractModel):
         :type EnvReplica: int
         :param RunningCount: 环境运行的节点数
         :type RunningCount: int
+        :param AliasEnvName: 环境别名
+        :type AliasEnvName: str
         """
         self.EnvName = None
         self.VpcInfos = None
@@ -286,6 +288,7 @@ class EnvInfo(AbstractModel):
         self.SpecId = None
         self.EnvReplica = None
         self.RunningCount = None
+        self.AliasEnvName = None
 
 
     def _deserialize(self, params):
@@ -305,6 +308,7 @@ class EnvInfo(AbstractModel):
         self.SpecId = params.get("SpecId")
         self.EnvReplica = params.get("EnvReplica")
         self.RunningCount = params.get("RunningCount")
+        self.AliasEnvName = params.get("AliasEnvName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

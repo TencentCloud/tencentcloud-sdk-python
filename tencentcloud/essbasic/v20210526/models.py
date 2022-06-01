@@ -773,10 +773,19 @@ class DescribeTemplatesRequest(AbstractModel):
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         :param TemplateId: 模板唯一标识
         :type TemplateId: str
+        :param ContentType: 查询内容：0-模版列表及详情（默认），1-仅模版列表
+        :type ContentType: int
+        :param Limit: 查询个数，默认20，最大100
+        :type Limit: int
+        :param Offset: 查询偏移位置，默认0
+        :type Offset: int
         """
         self.Agent = None
         self.Operator = None
         self.TemplateId = None
+        self.ContentType = None
+        self.Limit = None
+        self.Offset = None
 
 
     def _deserialize(self, params):
@@ -787,6 +796,9 @@ class DescribeTemplatesRequest(AbstractModel):
             self.Operator = UserInfo()
             self.Operator._deserialize(params.get("Operator"))
         self.TemplateId = params.get("TemplateId")
+        self.ContentType = params.get("ContentType")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -805,10 +817,19 @@ class DescribeTemplatesResponse(AbstractModel):
         r"""
         :param Templates: 模板详情
         :type Templates: list of TemplateInfo
+        :param TotalCount: 查询总数
+        :type TotalCount: int
+        :param Limit: 查询数量
+        :type Limit: int
+        :param Offset: 查询起始偏移
+        :type Offset: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Templates = None
+        self.TotalCount = None
+        self.Limit = None
+        self.Offset = None
         self.RequestId = None
 
 
@@ -819,6 +840,9 @@ class DescribeTemplatesResponse(AbstractModel):
                 obj = TemplateInfo()
                 obj._deserialize(item)
                 self.Templates.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
         self.RequestId = params.get("RequestId")
 
 

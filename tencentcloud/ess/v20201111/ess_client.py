@@ -145,6 +145,11 @@ class EssClient(AbstractClient):
     def CreateSchemeUrl(self, request):
         """获取小程序跳转链接
 
+        跳转到小程序的实现，参考官方文档（分为<a href="https://developers.weixin.qq.com/miniprogram/dev/api/navigate/wx.navigateToMiniProgram.html">全屏</a>、<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/openEmbeddedMiniProgram.html">半屏</a>两种方式）
+
+
+        如您需要自主配置小程序跳转链接，请参考: <a href="https://tcloud-doc.isd.com/document/product/1323/74774">跳转小程序链接配置说明</a>
+
         :param request: Request instance for CreateSchemeUrl.
         :type request: :class:`tencentcloud.ess.v20201111.models.CreateSchemeUrlRequest`
         :rtype: :class:`tencentcloud.ess.v20201111.models.CreateSchemeUrlResponse`
@@ -215,6 +220,35 @@ class EssClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeFlowBriefsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeFlowTemplates(self, request):
+        """二期接口-查询模板
+
+        :param request: Request instance for DescribeFlowTemplates.
+        :type request: :class:`tencentcloud.ess.v20201111.models.DescribeFlowTemplatesRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.DescribeFlowTemplatesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeFlowTemplates", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeFlowTemplatesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

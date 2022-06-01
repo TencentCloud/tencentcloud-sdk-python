@@ -3376,6 +3376,8 @@ IMPORTFAILED-导入失败
         :param Tags: 镜像关联的标签列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
+        :param LicenseType: 镜像许可类型
+        :type LicenseType: str
         """
         self.ImageId = None
         self.OsName = None
@@ -3393,6 +3395,7 @@ IMPORTFAILED-导入失败
         self.IsSupportCloudinit = None
         self.SnapshotSet = None
         self.Tags = None
+        self.LicenseType = None
 
 
     def _deserialize(self, params):
@@ -3422,6 +3425,7 @@ IMPORTFAILED-导入失败
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.LicenseType = params.get("LicenseType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4335,6 +4339,8 @@ class Instance(AbstractModel):
         :param GPUInfo: GPU信息。如果是gpu类型子机，该值会返回GPU信息，如果是其他类型子机则不返回。
 注意：此字段可能返回 null，表示取不到有效值。
         :type GPUInfo: :class:`tencentcloud.cvm.v20170312.models.GPUInfo`
+        :param LicenseType: 实例的操作系统许可类型，默认为TencentCloud
+        :type LicenseType: str
         """
         self.Placement = None
         self.InstanceId = None
@@ -4371,6 +4377,7 @@ class Instance(AbstractModel):
         self.RdmaIpAddresses = None
         self.IsolatedSource = None
         self.GPUInfo = None
+        self.LicenseType = None
 
 
     def _deserialize(self, params):
@@ -4431,6 +4438,7 @@ class Instance(AbstractModel):
         if params.get("GPUInfo") is not None:
             self.GPUInfo = GPUInfo()
             self.GPUInfo._deserialize(params.get("GPUInfo"))
+        self.LicenseType = params.get("LicenseType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

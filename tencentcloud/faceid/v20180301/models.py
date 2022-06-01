@@ -3012,6 +3012,149 @@ class MobileStatusResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ParseNfcDataRequest(AbstractModel):
+    """ParseNfcData请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ReqId: 前端SDK返回
+        :type ReqId: str
+        """
+        self.ReqId = None
+
+
+    def _deserialize(self, params):
+        self.ReqId = params.get("ReqId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ParseNfcDataResponse(AbstractModel):
+    """ParseNfcData返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ResultCode: 0为首次查询成功，-1为查询失败。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResultCode: str
+        :param IdNum: 身份证号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IdNum: str
+        :param Name: 姓名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param Picture: 照片
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Picture: str
+        :param BirthDate: 出生日期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BirthDate: str
+        :param BeginTime: 有效期起始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BeginTime: str
+        :param EndTime: 有效期结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: str
+        :param Address: 住址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Address: str
+        :param Nation: 民族
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Nation: str
+        :param Sex: 性别
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Sex: str
+        :param IdType: 身份证 01 中国护照 03 军官证 04 武警证 05 港澳通行证 06 台胞证 07 外国护照 08 士兵证 09 临时身份证 10 户口本 11 警官证 12 外国人永久居留证 13 港澳台居民居住证 14 回乡证 15 大陆居民来往台湾通行证 16 其他证件 99
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IdType: str
+        :param EnName: 英文姓名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnName: str
+        :param SigningOrganization: 签发机关
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SigningOrganization: str
+        :param OtherIdNum: 港澳台居民居住证，通行证号码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OtherIdNum: str
+        :param Nationality: 旅行证件国籍
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Nationality: str
+        :param PersonalNumber: 旅行证件机读区第二行 29~42 位
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PersonalNumber: str
+        :param CheckMRTD: 旅行证件类的核验结果。JSON格式如下：
+{"result_issuer ":"签发者证书合法性验证结果 ","result_pape r":"证件安全对象合法性验证 结果 ","result_data" :"防数据篡改验证结果 ","result_chip" :"防证书件芯片被复制验证结果"} 
+ 0:验证通过，1: 验证不通过，2: 未验证，3:部分通过，当4项核验结果都为0时，表示证件为真
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CheckMRTD: str
+        :param ImageA: 身份证照片面合成图片
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageA: str
+        :param ImageB: 身份证国徽面合成图片
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageB: str
+        :param ResultDescription: 对result code的结果描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResultDescription: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ResultCode = None
+        self.IdNum = None
+        self.Name = None
+        self.Picture = None
+        self.BirthDate = None
+        self.BeginTime = None
+        self.EndTime = None
+        self.Address = None
+        self.Nation = None
+        self.Sex = None
+        self.IdType = None
+        self.EnName = None
+        self.SigningOrganization = None
+        self.OtherIdNum = None
+        self.Nationality = None
+        self.PersonalNumber = None
+        self.CheckMRTD = None
+        self.ImageA = None
+        self.ImageB = None
+        self.ResultDescription = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ResultCode = params.get("ResultCode")
+        self.IdNum = params.get("IdNum")
+        self.Name = params.get("Name")
+        self.Picture = params.get("Picture")
+        self.BirthDate = params.get("BirthDate")
+        self.BeginTime = params.get("BeginTime")
+        self.EndTime = params.get("EndTime")
+        self.Address = params.get("Address")
+        self.Nation = params.get("Nation")
+        self.Sex = params.get("Sex")
+        self.IdType = params.get("IdType")
+        self.EnName = params.get("EnName")
+        self.SigningOrganization = params.get("SigningOrganization")
+        self.OtherIdNum = params.get("OtherIdNum")
+        self.Nationality = params.get("Nationality")
+        self.PersonalNumber = params.get("PersonalNumber")
+        self.CheckMRTD = params.get("CheckMRTD")
+        self.ImageA = params.get("ImageA")
+        self.ImageB = params.get("ImageB")
+        self.ResultDescription = params.get("ResultDescription")
+        self.RequestId = params.get("RequestId")
+
+
 class PhoneVerificationCMCCRequest(AbstractModel):
     """PhoneVerificationCMCC请求参数结构体
 

@@ -4578,6 +4578,8 @@ class DescribeDBInstancesRequest(AbstractModel):
         :type UniqueVpcIds: list of str
         :param UniqSubnetIds: 私有网络字符型subnetId
         :type UniqSubnetIds: list of str
+        :param Tags: 标签键值
+        :type Tags: list of Tag
         """
         self.ProjectId = None
         self.InstanceTypes = None
@@ -4610,6 +4612,7 @@ class DescribeDBInstancesRequest(AbstractModel):
         self.TagValues = None
         self.UniqueVpcIds = None
         self.UniqSubnetIds = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -4644,6 +4647,12 @@ class DescribeDBInstancesRequest(AbstractModel):
         self.TagValues = params.get("TagValues")
         self.UniqueVpcIds = params.get("UniqueVpcIds")
         self.UniqSubnetIds = params.get("UniqSubnetIds")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -11716,6 +11725,34 @@ class TablePrivilege(AbstractModel):
         self.Database = params.get("Database")
         self.Table = params.get("Table")
         self.Privileges = params.get("Privileges")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Tag(AbstractModel):
+    """标签结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Key: 标签键
+        :type Key: str
+        :param Value: 标签值
+        :type Value: str
+        """
+        self.Key = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

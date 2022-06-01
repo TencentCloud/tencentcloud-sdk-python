@@ -26,6 +26,93 @@ class DasbClient(AbstractClient):
     _service = 'dasb'
 
 
+    def AddDeviceGroupMembers(self, request):
+        """添加资产组成员
+
+        :param request: Request instance for AddDeviceGroupMembers.
+        :type request: :class:`tencentcloud.dasb.v20191018.models.AddDeviceGroupMembersRequest`
+        :rtype: :class:`tencentcloud.dasb.v20191018.models.AddDeviceGroupMembersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AddDeviceGroupMembers", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AddDeviceGroupMembersResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def AddUserGroupMembers(self, request):
+        """添加用户组成员
+
+        :param request: Request instance for AddUserGroupMembers.
+        :type request: :class:`tencentcloud.dasb.v20191018.models.AddUserGroupMembersRequest`
+        :rtype: :class:`tencentcloud.dasb.v20191018.models.AddUserGroupMembersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AddUserGroupMembers", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AddUserGroupMembersResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def BindDeviceResource(self, request):
+        """修改资产绑定的堡垒机服务
+
+        :param request: Request instance for BindDeviceResource.
+        :type request: :class:`tencentcloud.dasb.v20191018.models.BindDeviceResourceRequest`
+        :rtype: :class:`tencentcloud.dasb.v20191018.models.BindDeviceResourceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BindDeviceResource", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.BindDeviceResourceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateAcl(self, request):
         """新建访问权限
 
@@ -41,6 +128,35 @@ class DasbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateAclResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateDeviceGroup(self, request):
+        """新建资产组
+
+        :param request: Request instance for CreateDeviceGroup.
+        :type request: :class:`tencentcloud.dasb.v20191018.models.CreateDeviceGroupRequest`
+        :rtype: :class:`tencentcloud.dasb.v20191018.models.CreateDeviceGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateDeviceGroup", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateDeviceGroupResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -84,6 +200,35 @@ class DasbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateUserGroup(self, request):
+        """新建用户组
+
+        :param request: Request instance for CreateUserGroup.
+        :type request: :class:`tencentcloud.dasb.v20191018.models.CreateUserGroupRequest`
+        :rtype: :class:`tencentcloud.dasb.v20191018.models.CreateUserGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateUserGroup", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateUserGroupResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteAcls(self, request):
         """删除访问权限
 
@@ -99,6 +244,122 @@ class DasbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteAclsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteDeviceGroupMembers(self, request):
+        """删除资产组成员
+
+        :param request: Request instance for DeleteDeviceGroupMembers.
+        :type request: :class:`tencentcloud.dasb.v20191018.models.DeleteDeviceGroupMembersRequest`
+        :rtype: :class:`tencentcloud.dasb.v20191018.models.DeleteDeviceGroupMembersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteDeviceGroupMembers", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteDeviceGroupMembersResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteDeviceGroups(self, request):
+        """删除资产组
+
+        :param request: Request instance for DeleteDeviceGroups.
+        :type request: :class:`tencentcloud.dasb.v20191018.models.DeleteDeviceGroupsRequest`
+        :rtype: :class:`tencentcloud.dasb.v20191018.models.DeleteDeviceGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteDeviceGroups", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteDeviceGroupsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteUserGroupMembers(self, request):
+        """删除用户组成员
+
+        :param request: Request instance for DeleteUserGroupMembers.
+        :type request: :class:`tencentcloud.dasb.v20191018.models.DeleteUserGroupMembersRequest`
+        :rtype: :class:`tencentcloud.dasb.v20191018.models.DeleteUserGroupMembersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteUserGroupMembers", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteUserGroupMembersResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteUserGroups(self, request):
+        """删除用户组
+
+        :param request: Request instance for DeleteUserGroups.
+        :type request: :class:`tencentcloud.dasb.v20191018.models.DeleteUserGroupsRequest`
+        :rtype: :class:`tencentcloud.dasb.v20191018.models.DeleteUserGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteUserGroups", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteUserGroupsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -200,6 +461,64 @@ class DasbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeDeviceGroupMembers(self, request):
+        """查询资产组成员列表
+
+        :param request: Request instance for DescribeDeviceGroupMembers.
+        :type request: :class:`tencentcloud.dasb.v20191018.models.DescribeDeviceGroupMembersRequest`
+        :rtype: :class:`tencentcloud.dasb.v20191018.models.DescribeDeviceGroupMembersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDeviceGroupMembers", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDeviceGroupMembersResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDeviceGroups(self, request):
+        """查询资产组列表
+
+        :param request: Request instance for DescribeDeviceGroups.
+        :type request: :class:`tencentcloud.dasb.v20191018.models.DescribeDeviceGroupsRequest`
+        :rtype: :class:`tencentcloud.dasb.v20191018.models.DescribeDeviceGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDeviceGroups", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDeviceGroupsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeDevices(self, request):
         """查询资产列表
 
@@ -215,6 +534,93 @@ class DasbClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDevicesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeResources(self, request):
+        """查询用户购买的堡垒机服务信息，包括资源ID、授权点数、VPC、过期时间等。
+
+        :param request: Request instance for DescribeResources.
+        :type request: :class:`tencentcloud.dasb.v20191018.models.DescribeResourcesRequest`
+        :rtype: :class:`tencentcloud.dasb.v20191018.models.DescribeResourcesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeResources", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeResourcesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeUserGroupMembers(self, request):
+        """查询用户组成员列表
+
+        :param request: Request instance for DescribeUserGroupMembers.
+        :type request: :class:`tencentcloud.dasb.v20191018.models.DescribeUserGroupMembersRequest`
+        :rtype: :class:`tencentcloud.dasb.v20191018.models.DescribeUserGroupMembersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeUserGroupMembers", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeUserGroupMembersResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeUserGroups(self, request):
+        """查询用户组列表
+
+        :param request: Request instance for DescribeUserGroups.
+        :type request: :class:`tencentcloud.dasb.v20191018.models.DescribeUserGroupsRequest`
+        :rtype: :class:`tencentcloud.dasb.v20191018.models.DescribeUserGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeUserGroups", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeUserGroupsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
