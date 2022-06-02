@@ -99,6 +99,64 @@ class AssessQualityResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class Attribute(AbstractModel):
+    """属性
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Type: 属性
+        :type Type: str
+        :param Details: 属性详情
+        :type Details: str
+        """
+        self.Type = None
+        self.Details = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.Details = params.get("Details")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Box(AbstractModel):
+    """图像主体区域。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Rect: 图像主体区域。
+        :type Rect: :class:`tencentcloud.tiia.v20190529.models.ImageRect`
+        :param Score: 置信度。
+        :type Score: float
+        """
+        self.Rect = None
+        self.Score = None
+
+
+    def _deserialize(self, params):
+        if params.get("Rect") is not None:
+            self.Rect = ImageRect()
+            self.Rect._deserialize(params.get("Rect"))
+        self.Score = params.get("Score")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CarPlateContent(AbstractModel):
     """车牌信息
 
@@ -204,6 +262,38 @@ class CarTagItem(AbstractModel):
         
 
 
+class ColorInfo(AbstractModel):
+    """整张图颜色信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Color: RGB颜色值（16进制），例如：291A18。
+        :type Color: str
+        :param Percentage: 当前颜色标签所占比例。
+        :type Percentage: float
+        :param Label: 颜色标签。蜜柚色，米驼色等。
+        :type Label: str
+        """
+        self.Color = None
+        self.Percentage = None
+        self.Label = None
+
+
+    def _deserialize(self, params):
+        self.Color = params.get("Color")
+        self.Percentage = params.get("Percentage")
+        self.Label = params.get("Label")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Coord(AbstractModel):
     """汽车坐标信息
 
@@ -249,7 +339,7 @@ class CreateGroupRequest(AbstractModel):
         :type Brief: str
         :param MaxQps: 访问限制默认为10qps，如需扩容请联系[在线客服](https://cloud.tencent.com/online-service)申请。
         :type MaxQps: int
-        :param GroupType: 图库类型，对应不同服务类型，默认为1。建议手动调整为4～6，1～3为历史版本，不推荐。
+        :param GroupType: 图库类型，对应不同服务类型，默认为4。1～3为历史版本，不推荐。
 参数值：
 4：在自建图库中搜索相同原图，可支持裁剪、翻转、调色、加水印后的图片搜索，适用于图片版权保护、原图查询等场景。
 5：在自建图库中搜索相同或相似的商品图片，适用于商品分类、检索、推荐等电商场景。
@@ -314,27 +404,51 @@ class CreateImageRequest(AbstractModel):
         :type PicName: str
         :param ImageUrl: 图片的 Url 。对应图片 base64 编码后大小不可超过5M。  
 Url、Image必须提供一个，如果都提供，只使用 Url。 
-图片分辨率不超过4096*4096。
+图片分辨率不超过4096\*4096。
 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
 非腾讯云存储的Url速度和稳定性可能受一定影响。 
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+注意：开启主体识别分辨率不超过2000\*2000，图片长宽比小于10（长/短 < 10）。
         :type ImageUrl: str
-        :param ImageBase64: 图片 base64 数据，base64 编码后大小不可超过5M。 
-图片分辨率不超过4096*4096。 
-支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
-        :type ImageBase64: str
         :param CustomContent: 用户自定义的内容，最多支持4096个字符，查询时原样带回。
         :type CustomContent: str
+        :param ImageBase64: 图片 base64 数据，base64 编码后大小不可超过5M。 
+图片分辨率不超过4096\*4096。 
+支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+注意：开启主体识别分辨率不超过2000\*2000，图片长宽比小于10（长/短 < 10）。
+        :type ImageBase64: str
         :param Tags: 图片自定义标签，最多不超过10个，格式为JSON。
         :type Tags: str
+        :param EnableDetect: 是否需要启用主体识别，默认为**TRUE**。
+1.  为**TRUE**时，启用主体识别，返回主体信息。若没有指定**ImageRect**，自动提取最大面积主体创建图片并进行主体识别。主体识别结果可在**Response**中获取。
+2. 为**FALSE**时，不启用主体识别，不返回主体信息。若没有指定**ImageRect**，以整张图创建图片。
+注意：服务类型为商品图像搜索时生效。
+        :type EnableDetect: bool
+        :param CategoryId: 图像类目ID。
+若设置类目ID，提取对应类目的主体创建图片。
+注意：服务类型为商品图像搜索时生效。
+类目信息：
+0：上衣。
+1：裙装。
+2：下装。
+3：包。
+4：鞋。
+5：配饰。
+        :type CategoryId: int
+        :param ImageRect: 图像主体区域。
+若设置主体区域，提取指定的区域创建图片。
+        :type ImageRect: :class:`tencentcloud.tiia.v20190529.models.Rect`
         """
         self.GroupId = None
         self.EntityId = None
         self.PicName = None
         self.ImageUrl = None
-        self.ImageBase64 = None
         self.CustomContent = None
+        self.ImageBase64 = None
         self.Tags = None
+        self.EnableDetect = None
+        self.CategoryId = None
+        self.ImageRect = None
 
 
     def _deserialize(self, params):
@@ -342,9 +456,14 @@ Url、Image必须提供一个，如果都提供，只使用 Url。
         self.EntityId = params.get("EntityId")
         self.PicName = params.get("PicName")
         self.ImageUrl = params.get("ImageUrl")
-        self.ImageBase64 = params.get("ImageBase64")
         self.CustomContent = params.get("CustomContent")
+        self.ImageBase64 = params.get("ImageBase64")
         self.Tags = params.get("Tags")
+        self.EnableDetect = params.get("EnableDetect")
+        self.CategoryId = params.get("CategoryId")
+        if params.get("ImageRect") is not None:
+            self.ImageRect = Rect()
+            self.ImageRect._deserialize(params.get("ImageRect"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -361,13 +480,22 @@ class CreateImageResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param Object: 输入图的主体信息。
+若启用主体识别且在请求中指定了类目ID或主体区域，以指定的主体为准。若启用主体识别且没有指定，以最大面积主体为准。
+注意：此字段可能返回 null，表示取不到有效值。服务类型为商品图像搜索时生效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Object: :class:`tencentcloud.tiia.v20190529.models.ObjectInfo`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.Object = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        if params.get("Object") is not None:
+            self.Object = ObjectInfo()
+            self.Object._deserialize(params.get("Object"))
         self.RequestId = params.get("RequestId")
 
 
@@ -1605,6 +1733,54 @@ class Location(AbstractModel):
         
 
 
+class ObjectInfo(AbstractModel):
+    """图像的主体信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Box: 图像主体区域。
+        :type Box: :class:`tencentcloud.tiia.v20190529.models.Box`
+        :param CategoryId: 主体类别ID。
+        :type CategoryId: int
+        :param Colors: 整张图颜色信息。
+        :type Colors: list of ColorInfo
+        :param Attributes: 属性信息。
+        :type Attributes: list of Attribute
+        """
+        self.Box = None
+        self.CategoryId = None
+        self.Colors = None
+        self.Attributes = None
+
+
+    def _deserialize(self, params):
+        if params.get("Box") is not None:
+            self.Box = Box()
+            self.Box._deserialize(params.get("Box"))
+        self.CategoryId = params.get("CategoryId")
+        if params.get("Colors") is not None:
+            self.Colors = []
+            for item in params.get("Colors"):
+                obj = ColorInfo()
+                obj._deserialize(item)
+                self.Colors.append(obj)
+        if params.get("Attributes") is not None:
+            self.Attributes = []
+            for item in params.get("Attributes"):
+                obj = Attribute()
+                obj._deserialize(item)
+                self.Attributes.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Product(AbstractModel):
     """检测到的单个商品结构体
 
@@ -1867,6 +2043,42 @@ class RecognizeCarResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class Rect(AbstractModel):
+    """具体坐标，可用来判断边界
+
+    """
+
+    def __init__(self):
+        r"""
+        :param X: x轴坐标
+        :type X: int
+        :param Y: y轴坐标
+        :type Y: int
+        :param Width: (x,y)坐标距离长度
+        :type Width: int
+        :param Height: (x,y)坐标距离高度
+        :type Height: int
+        """
+        self.X = None
+        self.Y = None
+        self.Width = None
+        self.Height = None
+
+
+    def _deserialize(self, params):
+        self.X = params.get("X")
+        self.Y = params.get("Y")
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RegionDetected(AbstractModel):
     """检测到的图片中的商品位置和品类预测。
     当图片中存在多个商品时，输出多组坐标，按照__显著性__排序（综合考虑面积、是否在中心、检测算法置信度）。
@@ -1913,49 +2125,72 @@ class SearchImageRequest(AbstractModel):
         r"""
         :param GroupId: 图库名称。
         :type GroupId: str
-        :param ImageUrl: 图片的 Url 。对应图片 base64 编码后大小不可超过2M。 
-图片分辨率不超过1920*1080。 
+        :param ImageUrl: 图片的 Url 。对应图片 base64 编码后大小不可超过5M。 
+图片分辨率不超4096\*4096。 
 Url、Image必须提供一个，如果都提供，只使用 Url。 
 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
 非腾讯云存储的Url速度和稳定性可能受一定影响。 
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+注意：开启主体识别分辨率不超过2000\*2000，图片长宽比小于10（长/短 < 10）。
         :type ImageUrl: str
-        :param ImageBase64: 图片 base64 数据，base64 编码后大小不可超过2M。 
-图片分辨率不超过1920*1080。 
+        :param ImageBase64: 图片 base64 数据，base64 编码后大小不可超过5M。 
+图片分辨率不超过4096\*4096。 
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+注意：开启主体识别分辨率不超过2000\*2000，图片长宽比小于10（长/短 < 10）。
         :type ImageBase64: str
-        :param MatchThreshold: 出参Score中，只有超过MatchThreshold值的结果才会返回。默认为0
-        :type MatchThreshold: int
-        :param Offset: 起始序号，默认值为0。
-        :type Offset: int
         :param Limit: 返回数量，默认值为10，最大值为100。
         :type Limit: int
+        :param Offset: 起始序号，默认值为0。
+        :type Offset: int
+        :param MatchThreshold: 出参Score中，只有超过**MatchThreshold**值的结果才会返回。默认为0
+        :type MatchThreshold: int
         :param Filter: 针对入库时提交的Tags信息进行条件过滤。支持>、>=、 <、 <=、=，!=，多个条件之间支持AND和OR进行连接。
         :type Filter: str
         :param ImageRect: 图像主体区域。
+若设置主体区域，提取指定的区域进行检索。
         :type ImageRect: :class:`tencentcloud.tiia.v20190529.models.ImageRect`
+        :param EnableDetect: 是否需要启用主体识别，默认为**TRUE** 。
+1. 为**TRUE**时，启用主体识别，返回主体信息。若没有指定**ImageRect**，自动提取最大面积主体进行检索并进行主体识别。主体识别结果可在**Response中**获取。
+2. 为**FALSE**时，不启用主体识别，不返回主体信息。若没有指定**ImageRect**，以整张图检索图片。
+注意：服务类型为商品图像搜索时生效。
+        :type EnableDetect: bool
+        :param CategoryId: 图像类目ID。
+若设置类目ID，提取对应类目的主体进行检索。
+注意：服务类型为商品图像搜索时生效。
+类目信息：
+0：上衣。
+1：裙装。
+2：下装。
+3：包。
+4：鞋。
+5：配饰。
+        :type CategoryId: int
         """
         self.GroupId = None
         self.ImageUrl = None
         self.ImageBase64 = None
-        self.MatchThreshold = None
-        self.Offset = None
         self.Limit = None
+        self.Offset = None
+        self.MatchThreshold = None
         self.Filter = None
         self.ImageRect = None
+        self.EnableDetect = None
+        self.CategoryId = None
 
 
     def _deserialize(self, params):
         self.GroupId = params.get("GroupId")
         self.ImageUrl = params.get("ImageUrl")
         self.ImageBase64 = params.get("ImageBase64")
-        self.MatchThreshold = params.get("MatchThreshold")
-        self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.MatchThreshold = params.get("MatchThreshold")
         self.Filter = params.get("Filter")
         if params.get("ImageRect") is not None:
             self.ImageRect = ImageRect()
             self.ImageRect._deserialize(params.get("ImageRect"))
+        self.EnableDetect = params.get("EnableDetect")
+        self.CategoryId = params.get("CategoryId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1977,11 +2212,17 @@ class SearchImageResponse(AbstractModel):
         :param ImageInfos: 图片信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ImageInfos: list of ImageInfo
+        :param Object: 输入图的主体信息。
+若启用主体识别且在请求中指定了类目ID或主体区域，以指定的主体为准。若启用主体识别且没有指定，以最大面积主体为准。
+注意：此字段可能返回 null，表示取不到有效值。服务类型为商品图像搜索时生效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Object: :class:`tencentcloud.tiia.v20190529.models.ObjectInfo`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Count = None
         self.ImageInfos = None
+        self.Object = None
         self.RequestId = None
 
 
@@ -1993,6 +2234,9 @@ class SearchImageResponse(AbstractModel):
                 obj = ImageInfo()
                 obj._deserialize(item)
                 self.ImageInfos.append(obj)
+        if params.get("Object") is not None:
+            self.Object = ObjectInfo()
+            self.Object._deserialize(params.get("Object"))
         self.RequestId = params.get("RequestId")
 
 

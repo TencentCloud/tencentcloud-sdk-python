@@ -1131,6 +1131,8 @@ class ClusterCIDRSettings(AbstractModel):
         :type EniSubnetIds: list of str
         :param ClaimExpiredSeconds: VPC-CNI网络模式下，弹性网卡IP的回收时间，取值范围[300,15768000)
         :type ClaimExpiredSeconds: int
+        :param IgnoreServiceCIDRConflict: 是否忽略 ServiceCIDR 冲突错误, 仅在 VPC-CNI 模式生效，默认不忽略
+        :type IgnoreServiceCIDRConflict: bool
         """
         self.ClusterCIDR = None
         self.IgnoreClusterCIDRConflict = None
@@ -1139,6 +1141,7 @@ class ClusterCIDRSettings(AbstractModel):
         self.ServiceCIDR = None
         self.EniSubnetIds = None
         self.ClaimExpiredSeconds = None
+        self.IgnoreServiceCIDRConflict = None
 
 
     def _deserialize(self, params):
@@ -1149,6 +1152,7 @@ class ClusterCIDRSettings(AbstractModel):
         self.ServiceCIDR = params.get("ServiceCIDR")
         self.EniSubnetIds = params.get("EniSubnetIds")
         self.ClaimExpiredSeconds = params.get("ClaimExpiredSeconds")
+        self.IgnoreServiceCIDRConflict = params.get("IgnoreServiceCIDRConflict")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1441,6 +1445,9 @@ class ClusterNetworkSettings(AbstractModel):
         :param Subnets: 集群关联的容器子网
 注意：此字段可能返回 null，表示取不到有效值。
         :type Subnets: list of str
+        :param IgnoreServiceCIDRConflict: 是否忽略 ServiceCIDR 冲突错误, 仅在 VPC-CNI 模式生效，默认不忽略
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IgnoreServiceCIDRConflict: bool
         """
         self.ClusterCIDR = None
         self.IgnoreClusterCIDRConflict = None
@@ -1452,6 +1459,7 @@ class ClusterNetworkSettings(AbstractModel):
         self.KubeProxyMode = None
         self.ServiceCIDR = None
         self.Subnets = None
+        self.IgnoreServiceCIDRConflict = None
 
 
     def _deserialize(self, params):
@@ -1465,6 +1473,7 @@ class ClusterNetworkSettings(AbstractModel):
         self.KubeProxyMode = params.get("KubeProxyMode")
         self.ServiceCIDR = params.get("ServiceCIDR")
         self.Subnets = params.get("Subnets")
+        self.IgnoreServiceCIDRConflict = params.get("IgnoreServiceCIDRConflict")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

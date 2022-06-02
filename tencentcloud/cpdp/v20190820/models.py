@@ -6869,11 +6869,9 @@ __FREEZE__:担保支付
         :type NotifyUrl: str
         :param ExpireTime: 订单过期时间，yyyy-MM-dd HH:mm:ss格式。
         :type ExpireTime: str
-        :param FrontUrl: 前端成功回调URL。条件可选
-当付款方式PaymentMethod为EBANK_PAYMENT时必填
+        :param FrontUrl: 前端成功回调URL。条件可选。
         :type FrontUrl: str
-        :param RefreshUrl: 前端刷新 URL。条件可选
-当付款方式PaymentMethod为EBANK_PAYMENT时必填
+        :param RefreshUrl: 前端刷新 URL。条件可选。
         :type RefreshUrl: str
         :param SceneInfo: 设备信息，条件可选。
         :type SceneInfo: :class:`tencentcloud.cpdp.v20190820.models.OpenBankSceneInfo`
@@ -11246,11 +11244,11 @@ class OpenBankGoodsInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param GoodsName: 商品名称，默认值“商品支付”
+        :param GoodsName: 商品标题，默认值“商品支付”
         :type GoodsName: str
         :param GoodsDetail: 商品详细描述（商品列表）
         :type GoodsDetail: str
-        :param GoodsDescription: 商品简单描述。需传入应用市场上的 APP 名字-实际商品名称，例如：天天爱消除-游戏充值
+        :param GoodsDescription: 银行附言，不可以有以下字符：<>+{}()%*&';"[]等特殊符号
         :type GoodsDescription: str
         """
         self.GoodsName = None
