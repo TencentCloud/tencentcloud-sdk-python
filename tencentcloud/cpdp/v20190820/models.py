@@ -887,6 +887,31 @@ class AgentTaxPaymentBatch(AbstractModel):
         
 
 
+class AmountBeforeTaxResult(AbstractModel):
+    """税前金额结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AmountBeforeTax: 税前金额
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AmountBeforeTax: str
+        """
+        self.AmountBeforeTax = None
+
+
+    def _deserialize(self, params):
+        self.AmountBeforeTax = params.get("AmountBeforeTax")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AnchorContractInfo(AbstractModel):
     """主播签约信息
 
@@ -1110,6 +1135,232 @@ class ApplyDeclareResult(AbstractModel):
         if params.get("Data") is not None:
             self.Data = ApplyDeclareData()
             self.Data._deserialize(params.get("Data"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ApplyFlexPaymentRequest(AbstractModel):
+    """ApplyFlexPayment请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PayeeId: 收款用户ID
+        :type PayeeId: str
+        :param IncomeType: 收入类型
+LABOR:劳务所得
+OCCASION:偶然所得
+        :type IncomeType: str
+        :param AmountBeforeTax: 税前金额
+        :type AmountBeforeTax: str
+        :param OutOrderId: 外部订单ID
+        :type OutOrderId: str
+        :param FundingAccountInfo: 资金账户信息
+        :type FundingAccountInfo: :class:`tencentcloud.cpdp.v20190820.models.FlexFundingAccountInfo`
+        :param Remark: 提现备注
+        :type Remark: str
+        """
+        self.PayeeId = None
+        self.IncomeType = None
+        self.AmountBeforeTax = None
+        self.OutOrderId = None
+        self.FundingAccountInfo = None
+        self.Remark = None
+
+
+    def _deserialize(self, params):
+        self.PayeeId = params.get("PayeeId")
+        self.IncomeType = params.get("IncomeType")
+        self.AmountBeforeTax = params.get("AmountBeforeTax")
+        self.OutOrderId = params.get("OutOrderId")
+        if params.get("FundingAccountInfo") is not None:
+            self.FundingAccountInfo = FlexFundingAccountInfo()
+            self.FundingAccountInfo._deserialize(params.get("FundingAccountInfo"))
+        self.Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ApplyFlexPaymentResponse(AbstractModel):
+    """ApplyFlexPayment返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrCode: 错误码。SUCCESS为成功，其他为失败
+        :type ErrCode: str
+        :param ErrMessage: 错误消息
+        :type ErrMessage: str
+        :param Result: 返回结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.cpdp.v20190820.models.ApplyFlexPaymentResult`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrCode = None
+        self.ErrMessage = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrCode = params.get("ErrCode")
+        self.ErrMessage = params.get("ErrMessage")
+        if params.get("Result") is not None:
+            self.Result = ApplyFlexPaymentResult()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class ApplyFlexPaymentResult(AbstractModel):
+    """付款结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param OrderId: 订单ID
+        :type OrderId: str
+        :param AmountBeforeTax: 税前金额
+        :type AmountBeforeTax: str
+        :param AmountAfterTax: 税后金额
+        :type AmountAfterTax: str
+        :param Tax: 税金
+        :type Tax: str
+        """
+        self.OrderId = None
+        self.AmountBeforeTax = None
+        self.AmountAfterTax = None
+        self.Tax = None
+
+
+    def _deserialize(self, params):
+        self.OrderId = params.get("OrderId")
+        self.AmountBeforeTax = params.get("AmountBeforeTax")
+        self.AmountAfterTax = params.get("AmountAfterTax")
+        self.Tax = params.get("Tax")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ApplyFlexSettlementRequest(AbstractModel):
+    """ApplyFlexSettlement请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PayeeId: 收款用户ID
+        :type PayeeId: str
+        :param IncomeType: 收入类型
+LABOR:劳务所得
+OCCASION:偶然所得
+        :type IncomeType: str
+        :param AmountBeforeTax: 税前金额
+        :type AmountBeforeTax: str
+        :param OutOrderId: 外部订单ID
+        :type OutOrderId: str
+        :param Remark: 备注
+        :type Remark: str
+        """
+        self.PayeeId = None
+        self.IncomeType = None
+        self.AmountBeforeTax = None
+        self.OutOrderId = None
+        self.Remark = None
+
+
+    def _deserialize(self, params):
+        self.PayeeId = params.get("PayeeId")
+        self.IncomeType = params.get("IncomeType")
+        self.AmountBeforeTax = params.get("AmountBeforeTax")
+        self.OutOrderId = params.get("OutOrderId")
+        self.Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ApplyFlexSettlementResponse(AbstractModel):
+    """ApplyFlexSettlement返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrCode: 错误码。SUCCESS为成功，其他为失败
+        :type ErrCode: str
+        :param ErrMessage: 错误消息
+        :type ErrMessage: str
+        :param Result: 返回结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.cpdp.v20190820.models.ApplyFlexSettlementResult`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrCode = None
+        self.ErrMessage = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrCode = params.get("ErrCode")
+        self.ErrMessage = params.get("ErrMessage")
+        if params.get("Result") is not None:
+            self.Result = ApplyFlexSettlementResult()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class ApplyFlexSettlementResult(AbstractModel):
+    """结算结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param OrderId: 订单ID
+        :type OrderId: str
+        :param AmountBeforeTax: 税前金额
+        :type AmountBeforeTax: str
+        :param AmountAfterTax: 税后金额
+        :type AmountAfterTax: str
+        :param Tax: 税金
+        :type Tax: str
+        """
+        self.OrderId = None
+        self.AmountBeforeTax = None
+        self.AmountAfterTax = None
+        self.Tax = None
+
+
+    def _deserialize(self, params):
+        self.OrderId = params.get("OrderId")
+        self.AmountBeforeTax = params.get("AmountBeforeTax")
+        self.AmountAfterTax = params.get("AmountAfterTax")
+        self.Tax = params.get("Tax")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5623,6 +5874,118 @@ class CreateExternalAnchorResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateFlexPayeeRequest(AbstractModel):
+    """CreateFlexPayee请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param OutUserId: 用户外部业务ID
+        :type OutUserId: str
+        :param Name: 姓名
+        :type Name: str
+        :param IdNo: 证件号
+        :type IdNo: str
+        :param AccountName: 账户名称
+        :type AccountName: str
+        :param ServiceProviderId: 服务商ID
+        :type ServiceProviderId: str
+        :param TaxInfo: 计税信息
+        :type TaxInfo: :class:`tencentcloud.cpdp.v20190820.models.PayeeTaxInfo`
+        :param IdType: 证件类型
+0:身份证
+1:社会信用代码
+        :type IdType: int
+        :param Remark: 备注
+        :type Remark: str
+        """
+        self.OutUserId = None
+        self.Name = None
+        self.IdNo = None
+        self.AccountName = None
+        self.ServiceProviderId = None
+        self.TaxInfo = None
+        self.IdType = None
+        self.Remark = None
+
+
+    def _deserialize(self, params):
+        self.OutUserId = params.get("OutUserId")
+        self.Name = params.get("Name")
+        self.IdNo = params.get("IdNo")
+        self.AccountName = params.get("AccountName")
+        self.ServiceProviderId = params.get("ServiceProviderId")
+        if params.get("TaxInfo") is not None:
+            self.TaxInfo = PayeeTaxInfo()
+            self.TaxInfo._deserialize(params.get("TaxInfo"))
+        self.IdType = params.get("IdType")
+        self.Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateFlexPayeeResponse(AbstractModel):
+    """CreateFlexPayee返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrCode: 错误码。SUCCESS为成功，其他为失败
+        :type ErrCode: str
+        :param ErrMessage: 错误消息
+        :type ErrMessage: str
+        :param Result: 返回结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.cpdp.v20190820.models.CreateFlexPayeeResult`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrCode = None
+        self.ErrMessage = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrCode = params.get("ErrCode")
+        self.ErrMessage = params.get("ErrMessage")
+        if params.get("Result") is not None:
+            self.Result = CreateFlexPayeeResult()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class CreateFlexPayeeResult(AbstractModel):
+    """账户开立结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PayeeId: 收款用户ID
+        :type PayeeId: str
+        """
+        self.PayeeId = None
+
+
+    def _deserialize(self, params):
+        self.PayeeId = params.get("PayeeId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateInvoiceItem(AbstractModel):
     """发票开具明细
 
@@ -9970,6 +10333,247 @@ class FileItem(AbstractModel):
         
 
 
+class FlexFundingAccountInfo(AbstractModel):
+    """灵云V2-银行信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FundingAccountNo: 资金账户号
+        :type FundingAccountNo: str
+        :param FundingAccountType: 资金账户类型
+        :type FundingAccountType: str
+        :param FundingAccountBindSerialNo: 资金账户绑定序列号
+        :type FundingAccountBindSerialNo: str
+        """
+        self.FundingAccountNo = None
+        self.FundingAccountType = None
+        self.FundingAccountBindSerialNo = None
+
+
+    def _deserialize(self, params):
+        self.FundingAccountNo = params.get("FundingAccountNo")
+        self.FundingAccountType = params.get("FundingAccountType")
+        self.FundingAccountBindSerialNo = params.get("FundingAccountBindSerialNo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FreezeFlexBalanceRequest(AbstractModel):
+    """FreezeFlexBalance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PayeeId: 收款用户ID
+        :type PayeeId: str
+        :param AmountBeforeTax: 税前金额
+        :type AmountBeforeTax: str
+        :param IncomeType: 收入类型
+LABOR:劳务所得
+OCCASION:偶然所得
+        :type IncomeType: str
+        :param OutOrderId: 外部订单ID
+        :type OutOrderId: str
+        :param OperationType: 操作类型
+FREEZE:冻结
+UNFREEZE:解冻
+        :type OperationType: str
+        :param Remark: 冻结备注
+        :type Remark: str
+        """
+        self.PayeeId = None
+        self.AmountBeforeTax = None
+        self.IncomeType = None
+        self.OutOrderId = None
+        self.OperationType = None
+        self.Remark = None
+
+
+    def _deserialize(self, params):
+        self.PayeeId = params.get("PayeeId")
+        self.AmountBeforeTax = params.get("AmountBeforeTax")
+        self.IncomeType = params.get("IncomeType")
+        self.OutOrderId = params.get("OutOrderId")
+        self.OperationType = params.get("OperationType")
+        self.Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FreezeFlexBalanceResponse(AbstractModel):
+    """FreezeFlexBalance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrCode: 错误码。SUCCESS为成功，其他为失败
+        :type ErrCode: str
+        :param ErrMessage: 错误消息
+        :type ErrMessage: str
+        :param Result: 返回结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.cpdp.v20190820.models.FreezeFlexBalanceResult`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrCode = None
+        self.ErrMessage = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrCode = params.get("ErrCode")
+        self.ErrMessage = params.get("ErrMessage")
+        if params.get("Result") is not None:
+            self.Result = FreezeFlexBalanceResult()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class FreezeFlexBalanceResult(AbstractModel):
+    """冻结余额结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param OrderId: 冻结订单ID
+        :type OrderId: str
+        """
+        self.OrderId = None
+
+
+    def _deserialize(self, params):
+        self.OrderId = params.get("OrderId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FreezeOrderResult(AbstractModel):
+    """冻结单结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AmountBeforeTax: 税前金额
+        :type AmountBeforeTax: str
+        :param IncomeType: 收入类型
+LABOR:劳务所得
+OCCASION:偶然所得
+        :type IncomeType: str
+        :param OutOrderId: 外部订单ID
+        :type OutOrderId: str
+        :param OrderId: 订单ID
+        :type OrderId: str
+        :param OperationType: 操作类型
+FREEZE:冻结
+UNFREEZE:解冻
+        :type OperationType: str
+        :param InitiateTime: 发起时间
+        :type InitiateTime: str
+        :param FinishTime: 完成时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FinishTime: str
+        :param Status: 状态
+ACCEPTED:已受理
+ACCOUNTED:已记账
+SUCCEED:已成功
+FAILED:已失败
+        :type Status: str
+        :param StatusDesc: 状态描述
+        :type StatusDesc: str
+        :param Remark: 冻结备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
+        """
+        self.AmountBeforeTax = None
+        self.IncomeType = None
+        self.OutOrderId = None
+        self.OrderId = None
+        self.OperationType = None
+        self.InitiateTime = None
+        self.FinishTime = None
+        self.Status = None
+        self.StatusDesc = None
+        self.Remark = None
+
+
+    def _deserialize(self, params):
+        self.AmountBeforeTax = params.get("AmountBeforeTax")
+        self.IncomeType = params.get("IncomeType")
+        self.OutOrderId = params.get("OutOrderId")
+        self.OrderId = params.get("OrderId")
+        self.OperationType = params.get("OperationType")
+        self.InitiateTime = params.get("InitiateTime")
+        self.FinishTime = params.get("FinishTime")
+        self.Status = params.get("Status")
+        self.StatusDesc = params.get("StatusDesc")
+        self.Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FreezeOrders(AbstractModel):
+    """冻结订单列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param List: 列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type List: list of FreezeOrderResult
+        :param Count: 总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Count: int
+        """
+        self.List = None
+        self.Count = None
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self.List = []
+            for item in params.get("List"):
+                obj = FreezeOrderResult()
+                obj._deserialize(item)
+                self.List.append(obj)
+        self.Count = params.get("Count")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class FundsTransactionItem(AbstractModel):
     """会员资金交易明细信息
 
@@ -10963,6 +11567,72 @@ class ModifyBindedAccountResponse(AbstractModel):
         :param ErrMessage: 响应消息。
         :type ErrMessage: str
         :param Result: 该字段为null。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrCode = None
+        self.ErrMessage = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrCode = params.get("ErrCode")
+        self.ErrMessage = params.get("ErrMessage")
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyFlexPayeeAccountRightStatusRequest(AbstractModel):
+    """ModifyFlexPayeeAccountRightStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PayeeId: 收款用户ID
+        :type PayeeId: str
+        :param AccountRightType: 账户权益类型
+SETTLEMENT:结算权益
+PAYMENT:付款权益
+        :type AccountRightType: str
+        :param AccountRightStatus: 账户权益状态
+ENABLE:启用
+DISABLE:停用
+        :type AccountRightStatus: str
+        """
+        self.PayeeId = None
+        self.AccountRightType = None
+        self.AccountRightStatus = None
+
+
+    def _deserialize(self, params):
+        self.PayeeId = params.get("PayeeId")
+        self.AccountRightType = params.get("AccountRightType")
+        self.AccountRightStatus = params.get("AccountRightStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyFlexPayeeAccountRightStatusResponse(AbstractModel):
+    """ModifyFlexPayeeAccountRightStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrCode: 错误码。SUCCESS为成功，其他为失败
+        :type ErrCode: str
+        :param ErrMessage: 错误消息
+        :type ErrMessage: str
+        :param Result: 返回结果。默认为空。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -12078,6 +12748,506 @@ AUTHENTICATE_FAILED：核身失败
         self.OpenId = params.get("OpenId")
         self.ProjectName = params.get("ProjectName")
         self.SubMerchantId = params.get("SubMerchantId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PayeeAccountBalanceResult(AbstractModel):
+    """账户余额信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AccountId: 账户ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccountId: str
+        :param IncomeType: 收入类型
+LABOR:劳务所得
+OCCASION:偶然所得
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IncomeType: int
+        :param Balance: 总余额
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Balance: str
+        :param SystemFreezeBalance: 系统冻结余额
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SystemFreezeBalance: str
+        :param ManualFreezeBalance: 人工冻结余额
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ManualFreezeBalance: str
+        :param PayableBalance: 可提现余额
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PayableBalance: str
+        :param PaidBalance: 已提现余额
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PaidBalance: str
+        :param InPayBalance: 提现中余额
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InPayBalance: str
+        """
+        self.AccountId = None
+        self.IncomeType = None
+        self.Balance = None
+        self.SystemFreezeBalance = None
+        self.ManualFreezeBalance = None
+        self.PayableBalance = None
+        self.PaidBalance = None
+        self.InPayBalance = None
+
+
+    def _deserialize(self, params):
+        self.AccountId = params.get("AccountId")
+        self.IncomeType = params.get("IncomeType")
+        self.Balance = params.get("Balance")
+        self.SystemFreezeBalance = params.get("SystemFreezeBalance")
+        self.ManualFreezeBalance = params.get("ManualFreezeBalance")
+        self.PayableBalance = params.get("PayableBalance")
+        self.PaidBalance = params.get("PaidBalance")
+        self.InPayBalance = params.get("InPayBalance")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PayeeAccountInfoResult(AbstractModel):
+    """账户信息结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AccountId: 账户ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccountId: str
+        :param AccountName: 账户名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccountName: str
+        :param Remark: 备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
+        :param CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param UserInfo: 用户信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserInfo: :class:`tencentcloud.cpdp.v20190820.models.PayeeAccountUserInfo`
+        :param PropertyInfo: 属性信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PropertyInfo: :class:`tencentcloud.cpdp.v20190820.models.PayeeAccountPropertyInfo`
+        """
+        self.AccountId = None
+        self.AccountName = None
+        self.Remark = None
+        self.CreateTime = None
+        self.UserInfo = None
+        self.PropertyInfo = None
+
+
+    def _deserialize(self, params):
+        self.AccountId = params.get("AccountId")
+        self.AccountName = params.get("AccountName")
+        self.Remark = params.get("Remark")
+        self.CreateTime = params.get("CreateTime")
+        if params.get("UserInfo") is not None:
+            self.UserInfo = PayeeAccountUserInfo()
+            self.UserInfo._deserialize(params.get("UserInfo"))
+        if params.get("PropertyInfo") is not None:
+            self.PropertyInfo = PayeeAccountPropertyInfo()
+            self.PropertyInfo._deserialize(params.get("PropertyInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PayeeAccountInfos(AbstractModel):
+    """账户信息列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param List: 列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type List: list of PayeeAccountInfoResult
+        :param Count: 总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Count: int
+        """
+        self.List = None
+        self.Count = None
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self.List = []
+            for item in params.get("List"):
+                obj = PayeeAccountInfoResult()
+                obj._deserialize(item)
+                self.List.append(obj)
+        self.Count = params.get("Count")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PayeeAccountPropertyInfo(AbstractModel):
+    """账户属性信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SettleRightStatus: 结算权益状态
+ENABLE:启用
+DISABLE:停用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SettleRightStatus: str
+        :param PaymentRightStatus: 付款权益状态
+ENABLE:启用
+DISABLE:停用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PaymentRightStatus: str
+        """
+        self.SettleRightStatus = None
+        self.PaymentRightStatus = None
+
+
+    def _deserialize(self, params):
+        self.SettleRightStatus = params.get("SettleRightStatus")
+        self.PaymentRightStatus = params.get("PaymentRightStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PayeeAccountUserInfo(AbstractModel):
+    """账户用户信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param OutUserId: 外部用户ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OutUserId: str
+        :param UserType: 用户类型
+0:B端用户
+1:C端用户
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserType: int
+        :param IdType: 证件类型
+0:身份证
+1:社会信用代码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IdType: int
+        :param IdNo: 证件号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IdNo: str
+        :param Name: 姓名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        """
+        self.OutUserId = None
+        self.UserType = None
+        self.IdType = None
+        self.IdNo = None
+        self.Name = None
+
+
+    def _deserialize(self, params):
+        self.OutUserId = params.get("OutUserId")
+        self.UserType = params.get("UserType")
+        self.IdType = params.get("IdType")
+        self.IdNo = params.get("IdNo")
+        self.Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PayeeInfoResult(AbstractModel):
+    """收款用户信息结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PayeeId: 收款用户ID
+        :type PayeeId: str
+        :param OutUserId: 用户外部业务ID
+        :type OutUserId: str
+        :param Name: 姓名
+        :type Name: str
+        :param IdType: 证件类型
+0:身份证
+1:社会信用代码
+        :type IdType: int
+        :param IdNo: 证件号
+        :type IdNo: str
+        :param ServiceProviderId: 服务商ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceProviderId: str
+        :param Remark: 备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
+        """
+        self.PayeeId = None
+        self.OutUserId = None
+        self.Name = None
+        self.IdType = None
+        self.IdNo = None
+        self.ServiceProviderId = None
+        self.Remark = None
+
+
+    def _deserialize(self, params):
+        self.PayeeId = params.get("PayeeId")
+        self.OutUserId = params.get("OutUserId")
+        self.Name = params.get("Name")
+        self.IdType = params.get("IdType")
+        self.IdNo = params.get("IdNo")
+        self.ServiceProviderId = params.get("ServiceProviderId")
+        self.Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PayeeTaxInfo(AbstractModel):
+    """计税信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaxTemplateInfoList: 计税模板列表
+        :type TaxTemplateInfoList: list of PayeeTaxTemplateInfo
+        :param TaxpayerIdNo: 纳税人识别号
+        :type TaxpayerIdNo: str
+        :param TaxEntityType: 纳税主体类型
+NATURAL:自然人
+NON_NATURAL:非自然人
+        :type TaxEntityType: str
+        :param TaxServiceProviderId: 财税服务商ID
+        :type TaxServiceProviderId: str
+        """
+        self.TaxTemplateInfoList = None
+        self.TaxpayerIdNo = None
+        self.TaxEntityType = None
+        self.TaxServiceProviderId = None
+
+
+    def _deserialize(self, params):
+        if params.get("TaxTemplateInfoList") is not None:
+            self.TaxTemplateInfoList = []
+            for item in params.get("TaxTemplateInfoList"):
+                obj = PayeeTaxTemplateInfo()
+                obj._deserialize(item)
+                self.TaxTemplateInfoList.append(obj)
+        self.TaxpayerIdNo = params.get("TaxpayerIdNo")
+        self.TaxEntityType = params.get("TaxEntityType")
+        self.TaxServiceProviderId = params.get("TaxServiceProviderId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PayeeTaxTemplateInfo(AbstractModel):
+    """收款用户计税模板信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IncomeType: 收入类型
+LABOR: 劳务所得
+OCCASION: 偶然所得
+        :type IncomeType: str
+        :param TaxTemplateId: 计税模板ID
+        :type TaxTemplateId: str
+        """
+        self.IncomeType = None
+        self.TaxTemplateId = None
+
+
+    def _deserialize(self, params):
+        self.IncomeType = params.get("IncomeType")
+        self.TaxTemplateId = params.get("TaxTemplateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PaymentOrderResult(AbstractModel):
+    """付款订单结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IncomeType: 收入类型
+LABOR:劳务所得
+OCCASION:偶然所得
+        :type IncomeType: str
+        :param AmountBeforeTax: 税前金额
+        :type AmountBeforeTax: str
+        :param AmountAfterTax: 税后金额
+        :type AmountAfterTax: str
+        :param Tax: 税金
+        :type Tax: str
+        :param OutOrderId: 外部订单ID
+        :type OutOrderId: str
+        :param OrderId: 订单ID
+        :type OrderId: str
+        :param InitiateTime: 发起时间
+        :type InitiateTime: str
+        :param FinishTime: 完成时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FinishTime: str
+        :param Status: 状态
+ACCEPTED:已受理
+ACCOUNTED:已记账
+PAYING:付款中
+PAYED:完成付款渠道调用
+SUCCEED:已成功
+FAILED:已失败
+        :type Status: str
+        :param StatusDesc: 状态描述
+        :type StatusDesc: str
+        :param Remark: 提现备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
+        """
+        self.IncomeType = None
+        self.AmountBeforeTax = None
+        self.AmountAfterTax = None
+        self.Tax = None
+        self.OutOrderId = None
+        self.OrderId = None
+        self.InitiateTime = None
+        self.FinishTime = None
+        self.Status = None
+        self.StatusDesc = None
+        self.Remark = None
+
+
+    def _deserialize(self, params):
+        self.IncomeType = params.get("IncomeType")
+        self.AmountBeforeTax = params.get("AmountBeforeTax")
+        self.AmountAfterTax = params.get("AmountAfterTax")
+        self.Tax = params.get("Tax")
+        self.OutOrderId = params.get("OutOrderId")
+        self.OrderId = params.get("OrderId")
+        self.InitiateTime = params.get("InitiateTime")
+        self.FinishTime = params.get("FinishTime")
+        self.Status = params.get("Status")
+        self.StatusDesc = params.get("StatusDesc")
+        self.Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PaymentOrderStatusResult(AbstractModel):
+    """付款订单状态结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Status: 状态
+ACCEPTED:已受理
+ACCOUNTED:已记账
+PAYING:付款中
+PAYED:完成付款渠道调用
+SUCCEED:已成功
+FAILED:已失败
+        :type Status: str
+        :param StatusDesc: 状态描述
+        :type StatusDesc: str
+        """
+        self.Status = None
+        self.StatusDesc = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.StatusDesc = params.get("StatusDesc")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PaymentOrders(AbstractModel):
+    """付款订单列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param List: 列表
+        :type List: list of PaymentOrderResult
+        :param Count: 总数
+        :type Count: int
+        """
+        self.List = None
+        self.Count = None
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self.List = []
+            for item in params.get("List"):
+                obj = PaymentOrderResult()
+                obj._deserialize(item)
+                self.List.append(obj)
+        self.Count = params.get("Count")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -14943,6 +16113,602 @@ class QueryExternalAccountBookResult(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class QueryFlexAmountBeforeTaxRequest(AbstractModel):
+    """QueryFlexAmountBeforeTax请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PayeeId: 收款用户ID
+        :type PayeeId: str
+        :param IncomeType: 收入类型
+LABOR:劳务所得
+OCCASION:偶然所得
+        :type IncomeType: str
+        :param AmountAfterTax: 税后金额
+        :type AmountAfterTax: str
+        """
+        self.PayeeId = None
+        self.IncomeType = None
+        self.AmountAfterTax = None
+
+
+    def _deserialize(self, params):
+        self.PayeeId = params.get("PayeeId")
+        self.IncomeType = params.get("IncomeType")
+        self.AmountAfterTax = params.get("AmountAfterTax")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryFlexAmountBeforeTaxResponse(AbstractModel):
+    """QueryFlexAmountBeforeTax返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrCode: 错误码。SUCCESS为成功，其他为失败
+        :type ErrCode: str
+        :param ErrMessage: 错误消息
+        :type ErrMessage: str
+        :param Result: 返回结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.cpdp.v20190820.models.AmountBeforeTaxResult`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrCode = None
+        self.ErrMessage = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrCode = params.get("ErrCode")
+        self.ErrMessage = params.get("ErrMessage")
+        if params.get("Result") is not None:
+            self.Result = AmountBeforeTaxResult()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class QueryFlexFreezeOrderListRequest(AbstractModel):
+    """QueryFlexFreezeOrderList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PayeeId: 收款用户ID
+        :type PayeeId: str
+        :param OperationType: 操作类型
+FREEZE:冻结
+UNFREEZE:解冻
+        :type OperationType: str
+        :param StartTime: 开始时间，格式"yyyy-MM-dd hh:mm:ss"
+        :type StartTime: str
+        :param EndTime: 结束时间，格式"yyyy-MM-dd hh:mm:ss"
+        :type EndTime: str
+        :param PageNumber: 分页
+        :type PageNumber: :class:`tencentcloud.cpdp.v20190820.models.Paging`
+        """
+        self.PayeeId = None
+        self.OperationType = None
+        self.StartTime = None
+        self.EndTime = None
+        self.PageNumber = None
+
+
+    def _deserialize(self, params):
+        self.PayeeId = params.get("PayeeId")
+        self.OperationType = params.get("OperationType")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        if params.get("PageNumber") is not None:
+            self.PageNumber = Paging()
+            self.PageNumber._deserialize(params.get("PageNumber"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryFlexFreezeOrderListResponse(AbstractModel):
+    """QueryFlexFreezeOrderList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrCode: 错误码。SUCCESS为成功，其他为失败
+        :type ErrCode: str
+        :param ErrMessage: 错误消息
+        :type ErrMessage: str
+        :param Result: 返回结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.cpdp.v20190820.models.FreezeOrders`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrCode = None
+        self.ErrMessage = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrCode = params.get("ErrCode")
+        self.ErrMessage = params.get("ErrMessage")
+        if params.get("Result") is not None:
+            self.Result = FreezeOrders()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class QueryFlexPayeeAccountBalanceRequest(AbstractModel):
+    """QueryFlexPayeeAccountBalance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PayeeId: 收款用户ID
+        :type PayeeId: str
+        :param IncomeType: 收入类型
+LABOR:劳务所得
+OCCASION:偶然所得
+        :type IncomeType: str
+        """
+        self.PayeeId = None
+        self.IncomeType = None
+
+
+    def _deserialize(self, params):
+        self.PayeeId = params.get("PayeeId")
+        self.IncomeType = params.get("IncomeType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryFlexPayeeAccountBalanceResponse(AbstractModel):
+    """QueryFlexPayeeAccountBalance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrCode: 错误码。SUCCESS为成功，其他为失败
+        :type ErrCode: str
+        :param ErrMessage: 错误消息
+        :type ErrMessage: str
+        :param Result: 返回结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.cpdp.v20190820.models.PayeeAccountBalanceResult`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrCode = None
+        self.ErrMessage = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrCode = params.get("ErrCode")
+        self.ErrMessage = params.get("ErrMessage")
+        if params.get("Result") is not None:
+            self.Result = PayeeAccountBalanceResult()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class QueryFlexPayeeAccountInfoRequest(AbstractModel):
+    """QueryFlexPayeeAccountInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PayeeId: 收款用户ID
+        :type PayeeId: str
+        :param OutUserId: 外部用户ID
+        :type OutUserId: str
+        """
+        self.PayeeId = None
+        self.OutUserId = None
+
+
+    def _deserialize(self, params):
+        self.PayeeId = params.get("PayeeId")
+        self.OutUserId = params.get("OutUserId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryFlexPayeeAccountInfoResponse(AbstractModel):
+    """QueryFlexPayeeAccountInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrCode: 错误码。SUCCESS为成功，其他为失败
+        :type ErrCode: str
+        :param ErrMessage: 错误消息
+        :type ErrMessage: str
+        :param Result: 返回结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.cpdp.v20190820.models.PayeeAccountInfoResult`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrCode = None
+        self.ErrMessage = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrCode = params.get("ErrCode")
+        self.ErrMessage = params.get("ErrMessage")
+        if params.get("Result") is not None:
+            self.Result = PayeeAccountInfoResult()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class QueryFlexPayeeAccountListRequest(AbstractModel):
+    """QueryFlexPayeeAccountList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PropertyInfo: 账户属性信息
+        :type PropertyInfo: :class:`tencentcloud.cpdp.v20190820.models.PayeeAccountPropertyInfo`
+        :param StartTime: 开始时间
+        :type StartTime: str
+        :param EndTime: 结束时间
+        :type EndTime: str
+        :param PageNumber: 分页
+        :type PageNumber: :class:`tencentcloud.cpdp.v20190820.models.Paging`
+        """
+        self.PropertyInfo = None
+        self.StartTime = None
+        self.EndTime = None
+        self.PageNumber = None
+
+
+    def _deserialize(self, params):
+        if params.get("PropertyInfo") is not None:
+            self.PropertyInfo = PayeeAccountPropertyInfo()
+            self.PropertyInfo._deserialize(params.get("PropertyInfo"))
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        if params.get("PageNumber") is not None:
+            self.PageNumber = Paging()
+            self.PageNumber._deserialize(params.get("PageNumber"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryFlexPayeeAccountListResponse(AbstractModel):
+    """QueryFlexPayeeAccountList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrCode: 错误码。SUCCESS为成功，其他为失败
+        :type ErrCode: str
+        :param ErrMessage: 错误消息
+        :type ErrMessage: str
+        :param Result: 返回结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.cpdp.v20190820.models.PayeeAccountInfos`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrCode = None
+        self.ErrMessage = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrCode = params.get("ErrCode")
+        self.ErrMessage = params.get("ErrMessage")
+        if params.get("Result") is not None:
+            self.Result = PayeeAccountInfos()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class QueryFlexPayeeInfoRequest(AbstractModel):
+    """QueryFlexPayeeInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PayeeId: 收款用户ID
+        :type PayeeId: str
+        :param OutUserId: 外部用户ID
+        :type OutUserId: str
+        """
+        self.PayeeId = None
+        self.OutUserId = None
+
+
+    def _deserialize(self, params):
+        self.PayeeId = params.get("PayeeId")
+        self.OutUserId = params.get("OutUserId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryFlexPayeeInfoResponse(AbstractModel):
+    """QueryFlexPayeeInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrCode: 错误码。SUCCESS为成功，其他为失败
+        :type ErrCode: str
+        :param ErrMessage: 错误消息
+        :type ErrMessage: str
+        :param Result: 返回结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.cpdp.v20190820.models.PayeeInfoResult`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrCode = None
+        self.ErrMessage = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrCode = params.get("ErrCode")
+        self.ErrMessage = params.get("ErrMessage")
+        if params.get("Result") is not None:
+            self.Result = PayeeInfoResult()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class QueryFlexPaymentOrderListRequest(AbstractModel):
+    """QueryFlexPaymentOrderList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PayeeId: 收款用户ID
+        :type PayeeId: str
+        :param StartTime: 开始时间，格式"yyyy-MM-dd hh:mm:ss"
+        :type StartTime: str
+        :param EndTime: 结束时间，格式"yyyy-MM-dd hh:mm:ss"
+        :type EndTime: str
+        :param PageNumber: 分页
+        :type PageNumber: :class:`tencentcloud.cpdp.v20190820.models.Paging`
+        """
+        self.PayeeId = None
+        self.StartTime = None
+        self.EndTime = None
+        self.PageNumber = None
+
+
+    def _deserialize(self, params):
+        self.PayeeId = params.get("PayeeId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        if params.get("PageNumber") is not None:
+            self.PageNumber = Paging()
+            self.PageNumber._deserialize(params.get("PageNumber"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryFlexPaymentOrderListResponse(AbstractModel):
+    """QueryFlexPaymentOrderList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrCode: 错误码。SUCCESS为成功，其他为失败
+        :type ErrCode: str
+        :param ErrMessage: 错误消息
+        :type ErrMessage: str
+        :param Result: 返回结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.cpdp.v20190820.models.PaymentOrders`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrCode = None
+        self.ErrMessage = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrCode = params.get("ErrCode")
+        self.ErrMessage = params.get("ErrMessage")
+        if params.get("Result") is not None:
+            self.Result = PaymentOrders()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class QueryFlexPaymentOrderStatusRequest(AbstractModel):
+    """QueryFlexPaymentOrderStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param OutOrderId: 外部订单ID
+        :type OutOrderId: str
+        :param OrderId: 订单ID
+        :type OrderId: str
+        """
+        self.OutOrderId = None
+        self.OrderId = None
+
+
+    def _deserialize(self, params):
+        self.OutOrderId = params.get("OutOrderId")
+        self.OrderId = params.get("OrderId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryFlexPaymentOrderStatusResponse(AbstractModel):
+    """QueryFlexPaymentOrderStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrCode: 错误码。SUCCESS为成功，其他为失败
+        :type ErrCode: str
+        :param ErrMessage: 错误消息
+        :type ErrMessage: str
+        :param Result: 返回结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.cpdp.v20190820.models.PaymentOrderStatusResult`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrCode = None
+        self.ErrMessage = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrCode = params.get("ErrCode")
+        self.ErrMessage = params.get("ErrMessage")
+        if params.get("Result") is not None:
+            self.Result = PaymentOrderStatusResult()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class QueryFlexSettlementOrderListRequest(AbstractModel):
+    """QueryFlexSettlementOrderList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PayeeId: 收款用户ID
+        :type PayeeId: str
+        :param StartTime: 开始时间，格式"yyyy-MM-dd hh:mm:ss"
+        :type StartTime: str
+        :param EndTime: 结束时间，格式"yyyy-MM-dd hh:mm:ss"
+        :type EndTime: str
+        :param PageNumber: 分页
+        :type PageNumber: :class:`tencentcloud.cpdp.v20190820.models.Paging`
+        """
+        self.PayeeId = None
+        self.StartTime = None
+        self.EndTime = None
+        self.PageNumber = None
+
+
+    def _deserialize(self, params):
+        self.PayeeId = params.get("PayeeId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        if params.get("PageNumber") is not None:
+            self.PageNumber = Paging()
+            self.PageNumber._deserialize(params.get("PageNumber"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryFlexSettlementOrderListResponse(AbstractModel):
+    """QueryFlexSettlementOrderList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrCode: 错误码。SUCCESS为成功，其他为失败
+        :type ErrCode: str
+        :param ErrMessage: 错误消息
+        :type ErrMessage: str
+        :param Result: 返回结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.cpdp.v20190820.models.SettlementOrders`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrCode = None
+        self.ErrMessage = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrCode = params.get("ErrCode")
+        self.ErrMessage = params.get("ErrMessage")
+        if params.get("Result") is not None:
+            self.Result = SettlementOrders()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
 
 
 class QueryFundsTransactionDetailsRequest(AbstractModel):
@@ -22116,6 +23882,115 @@ class SceneInfo(AbstractModel):
         self.LocaleCode = params.get("LocaleCode")
         self.RegionCode = params.get("RegionCode")
         self.UserClientIp = params.get("UserClientIp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SettlementOrderResult(AbstractModel):
+    """结算订单结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IncomeType: 收入类型
+LABOR:劳务所得
+OCCASION:偶然所得
+        :type IncomeType: str
+        :param AmountBeforeTax: 税前金额
+        :type AmountBeforeTax: str
+        :param AmountAfterTax: 税后金额
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AmountAfterTax: str
+        :param Tax: 税金
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tax: str
+        :param OutOrderId: 外部订单ID
+        :type OutOrderId: str
+        :param OrderId: 订单ID
+        :type OrderId: str
+        :param InitiateTime: 发起时间
+        :type InitiateTime: str
+        :param FinishTime: 完成时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FinishTime: str
+        :param Status: 状态
+ACCEPTED:已受理
+ACCOUNTED:已记账
+SUCCEED:已成功
+FAILED:已失败
+        :type Status: str
+        :param StatusDesc: 状态描述
+        :type StatusDesc: str
+        :param Remark: 备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
+        """
+        self.IncomeType = None
+        self.AmountBeforeTax = None
+        self.AmountAfterTax = None
+        self.Tax = None
+        self.OutOrderId = None
+        self.OrderId = None
+        self.InitiateTime = None
+        self.FinishTime = None
+        self.Status = None
+        self.StatusDesc = None
+        self.Remark = None
+
+
+    def _deserialize(self, params):
+        self.IncomeType = params.get("IncomeType")
+        self.AmountBeforeTax = params.get("AmountBeforeTax")
+        self.AmountAfterTax = params.get("AmountAfterTax")
+        self.Tax = params.get("Tax")
+        self.OutOrderId = params.get("OutOrderId")
+        self.OrderId = params.get("OrderId")
+        self.InitiateTime = params.get("InitiateTime")
+        self.FinishTime = params.get("FinishTime")
+        self.Status = params.get("Status")
+        self.StatusDesc = params.get("StatusDesc")
+        self.Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SettlementOrders(AbstractModel):
+    """结算订单列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param List: 列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type List: list of SettlementOrderResult
+        :param Count: 总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Count: int
+        """
+        self.List = None
+        self.Count = None
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self.List = []
+            for item in params.get("List"):
+                obj = SettlementOrderResult()
+                obj._deserialize(item)
+                self.List.append(obj)
+        self.Count = params.get("Count")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

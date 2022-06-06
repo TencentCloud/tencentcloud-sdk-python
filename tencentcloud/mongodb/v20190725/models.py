@@ -3360,10 +3360,13 @@ class SpecificationInfo(AbstractModel):
         :type Zone: str
         :param SpecItems: 售卖规格信息
         :type SpecItems: list of SpecItem
+        :param SupportMultiAZ: 是否支持跨可用区部署 1-支持，0-不支持
+        :type SupportMultiAZ: int
         """
         self.Region = None
         self.Zone = None
         self.SpecItems = None
+        self.SupportMultiAZ = None
 
 
     def _deserialize(self, params):
@@ -3375,6 +3378,7 @@ class SpecificationInfo(AbstractModel):
                 obj = SpecItem()
                 obj._deserialize(item)
                 self.SpecItems.append(obj)
+        self.SupportMultiAZ = params.get("SupportMultiAZ")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

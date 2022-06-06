@@ -99,6 +99,64 @@ off ：字面匹配
         
 
 
+class AddCLSTopicDomainsRequest(AbstractModel):
+    """AddCLSTopicDomains请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LogsetId: 日志集ID
+        :type LogsetId: str
+        :param TopicId: 日志主题ID
+        :type TopicId: str
+        :param DomainAreaConfigs: 域名区域配置
+        :type DomainAreaConfigs: list of DomainAreaConfig
+        :param Channel: 接入渠道，cdn或者ecdn，默认值为cdn
+        :type Channel: str
+        """
+        self.LogsetId = None
+        self.TopicId = None
+        self.DomainAreaConfigs = None
+        self.Channel = None
+
+
+    def _deserialize(self, params):
+        self.LogsetId = params.get("LogsetId")
+        self.TopicId = params.get("TopicId")
+        if params.get("DomainAreaConfigs") is not None:
+            self.DomainAreaConfigs = []
+            for item in params.get("DomainAreaConfigs"):
+                obj = DomainAreaConfig()
+                obj._deserialize(item)
+                self.DomainAreaConfigs.append(obj)
+        self.Channel = params.get("Channel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddCLSTopicDomainsResponse(AbstractModel):
+    """AddCLSTopicDomains返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class AddCdnDomainRequest(AbstractModel):
     """AddCdnDomain请求参数结构体
 

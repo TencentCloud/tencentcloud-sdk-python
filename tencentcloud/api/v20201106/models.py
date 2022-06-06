@@ -83,7 +83,7 @@ class DescribeRegionsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Product: 待查询产品的名称，例如cvm
+        :param Product: 待查询产品的名称，例如cvm，具体取值请查询DescribeProducts接口
         :type Product: str
         """
         self.Product = None
@@ -137,7 +137,7 @@ class DescribeZonesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Product: 待查询产品的名称，例如cvm
+        :param Product: 待查询产品的名称，例如cvm，具体取值请查询DescribeProducts接口
         :type Product: str
         """
         self.Product = None

@@ -1891,16 +1891,20 @@ class DescribeSparkAppTasksResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Tasks: 任务列表
+        :param Tasks: 任务结果（该字段已废弃）
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tasks: :class:`tencentcloud.dlc.v20210125.models.TaskResponseInfo`
         :param TotalCount: 任务总数
         :type TotalCount: int
+        :param SparkAppTasks: 任务结果列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SparkAppTasks: list of TaskResponseInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Tasks = None
         self.TotalCount = None
+        self.SparkAppTasks = None
         self.RequestId = None
 
 
@@ -1909,6 +1913,12 @@ class DescribeSparkAppTasksResponse(AbstractModel):
             self.Tasks = TaskResponseInfo()
             self.Tasks._deserialize(params.get("Tasks"))
         self.TotalCount = params.get("TotalCount")
+        if params.get("SparkAppTasks") is not None:
+            self.SparkAppTasks = []
+            for item in params.get("SparkAppTasks"):
+                obj = TaskResponseInfo()
+                obj._deserialize(item)
+                self.SparkAppTasks.append(obj)
         self.RequestId = params.get("RequestId")
 
 

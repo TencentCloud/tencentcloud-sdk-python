@@ -440,6 +440,9 @@ INVALIDPARAMETERVALUE_LOCALDISKSIZERANGE = 'InvalidParameterValue.LocalDiskSizeR
 # 参数值必须为开启DHCP的VPC
 INVALIDPARAMETERVALUE_MUSTDHCPENABLEDVPC = 'InvalidParameterValue.MustDhcpEnabledVpc'
 
+# 子网不属于该cdc集群。
+INVALIDPARAMETERVALUE_NOTCDCSUBNET = 'InvalidParameterValue.NotCdcSubnet'
+
 # 不支持的操作。
 INVALIDPARAMETERVALUE_NOTSUPPORTED = 'InvalidParameterValue.NotSupported'
 

@@ -864,6 +864,11 @@ def test_import_tag():
     from tencentcloud.tag.v20180813 import models
 
 
+def test_import_tan():
+    from tencentcloud.tan.v20220420 import tan_client
+    from tencentcloud.tan.v20220420 import models
+
+
 def test_import_tat():
     from tencentcloud.tat.v20201028 import tat_client
     from tencentcloud.tat.v20201028 import models

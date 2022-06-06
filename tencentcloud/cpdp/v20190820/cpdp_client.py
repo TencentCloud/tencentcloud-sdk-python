@@ -142,6 +142,64 @@ class CpdpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ApplyFlexPayment(self, request):
+        """灵云V2-付款
+
+        :param request: Request instance for ApplyFlexPayment.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.ApplyFlexPaymentRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.ApplyFlexPaymentResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ApplyFlexPayment", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ApplyFlexPaymentResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ApplyFlexSettlement(self, request):
+        """灵云V2-结算
+
+        :param request: Request instance for ApplyFlexSettlement.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.ApplyFlexSettlementRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.ApplyFlexSettlementResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ApplyFlexSettlement", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ApplyFlexSettlementResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ApplyOpenBankOrderDetailReceipt(self, request):
         """云企付-申请单笔交易回单
 
@@ -919,6 +977,35 @@ class CpdpClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateExternalAnchorResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateFlexPayee(self, request):
+        """灵云V2-收款用户开立
+
+        :param request: Request instance for CreateFlexPayee.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.CreateFlexPayeeRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.CreateFlexPayeeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateFlexPayee", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateFlexPayeeResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1948,6 +2035,35 @@ class CpdpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def FreezeFlexBalance(self, request):
+        """灵云V2-冻结余额
+
+        :param request: Request instance for FreezeFlexBalance.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.FreezeFlexBalanceRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.FreezeFlexBalanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("FreezeFlexBalance", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.FreezeFlexBalanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def GetBillDownloadUrl(self, request):
         """调用该接口返回对账单下载地址，对账单下载URL通过GET方式访问，返回zip包，解压后为csv格式文件。文件首行如下：
         订单号,订单归属日期,机构编号,订单描述,交易类型,订单状态,支付场景,原始金额,折扣金额,实际交易金额,支付渠道优惠金额,抹零金额,币种,下单时间,付款成功时间,商户编号,门店编号,付款方式编号,付款方式名称,商户手续费T1,商户扣率,是否信用卡交易,原始订单号,用户账号,外部订单号,订单备注
@@ -2197,6 +2313,35 @@ class CpdpClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyBindedAccountResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyFlexPayeeAccountRightStatus(self, request):
+        """灵云V2-收款用户账户权益状态修改
+
+        :param request: Request instance for ModifyFlexPayeeAccountRightStatus.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.ModifyFlexPayeeAccountRightStatusRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.ModifyFlexPayeeAccountRightStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyFlexPayeeAccountRightStatus", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyFlexPayeeAccountRightStatusResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -3038,6 +3183,267 @@ class CpdpClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryExchangeRateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def QueryFlexAmountBeforeTax(self, request):
+        """灵云V2-查询税前金额
+
+        :param request: Request instance for QueryFlexAmountBeforeTax.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.QueryFlexAmountBeforeTaxRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.QueryFlexAmountBeforeTaxResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("QueryFlexAmountBeforeTax", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryFlexAmountBeforeTaxResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def QueryFlexFreezeOrderList(self, request):
+        """灵云V2-查询冻结订单列表
+
+        :param request: Request instance for QueryFlexFreezeOrderList.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.QueryFlexFreezeOrderListRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.QueryFlexFreezeOrderListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("QueryFlexFreezeOrderList", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryFlexFreezeOrderListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def QueryFlexPayeeAccountBalance(self, request):
+        """灵云V2-收款用户账户余额查询
+
+        :param request: Request instance for QueryFlexPayeeAccountBalance.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.QueryFlexPayeeAccountBalanceRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.QueryFlexPayeeAccountBalanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("QueryFlexPayeeAccountBalance", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryFlexPayeeAccountBalanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def QueryFlexPayeeAccountInfo(self, request):
+        """灵云V2-收款用户账户信息查询
+
+        :param request: Request instance for QueryFlexPayeeAccountInfo.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.QueryFlexPayeeAccountInfoRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.QueryFlexPayeeAccountInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("QueryFlexPayeeAccountInfo", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryFlexPayeeAccountInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def QueryFlexPayeeAccountList(self, request):
+        """灵云V2-收款用户账户列表查询
+
+        :param request: Request instance for QueryFlexPayeeAccountList.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.QueryFlexPayeeAccountListRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.QueryFlexPayeeAccountListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("QueryFlexPayeeAccountList", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryFlexPayeeAccountListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def QueryFlexPayeeInfo(self, request):
+        """灵云V2-收款用户信息查询
+
+        :param request: Request instance for QueryFlexPayeeInfo.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.QueryFlexPayeeInfoRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.QueryFlexPayeeInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("QueryFlexPayeeInfo", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryFlexPayeeInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def QueryFlexPaymentOrderList(self, request):
+        """灵云V2-查询付款订单列表
+
+        :param request: Request instance for QueryFlexPaymentOrderList.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.QueryFlexPaymentOrderListRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.QueryFlexPaymentOrderListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("QueryFlexPaymentOrderList", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryFlexPaymentOrderListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def QueryFlexPaymentOrderStatus(self, request):
+        """灵云V2-查询付款订单状态
+
+        :param request: Request instance for QueryFlexPaymentOrderStatus.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.QueryFlexPaymentOrderStatusRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.QueryFlexPaymentOrderStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("QueryFlexPaymentOrderStatus", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryFlexPaymentOrderStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def QueryFlexSettlementOrderList(self, request):
+        """灵云V2-查询结算订单列表
+
+        :param request: Request instance for QueryFlexSettlementOrderList.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.QueryFlexSettlementOrderListRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.QueryFlexSettlementOrderListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("QueryFlexSettlementOrderList", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryFlexSettlementOrderListResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

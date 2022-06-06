@@ -7192,14 +7192,22 @@ class RemoveBackupsRequest(AbstractModel):
         :type InstanceId: str
         :param BackupNames: 待删除的备份名称，备份名称可通过DescribeBackups接口的FileName字段获得。单次请求批量删除备份数不能超过10个。
         :type BackupNames: list of str
+        :param StartTime: 批量删除手动备份起始时间
+        :type StartTime: str
+        :param EndTime: 批量删除手动备份截止时间
+        :type EndTime: str
         """
         self.InstanceId = None
         self.BackupNames = None
+        self.StartTime = None
+        self.EndTime = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
         self.BackupNames = params.get("BackupNames")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -894,7 +894,7 @@ class DescribeFlowTemplatesRequest(AbstractModel):
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         :param GenerateSource: 暂未开放
         :type GenerateSource: int
-        :param ContentType: 查询内容：0-模版列表及详情（默认），1-仅模版列表
+        :param ContentType: 查询内容：0-模板列表及详情（默认），1-仅模板列表
         :type ContentType: int
         """
         self.Operator = None

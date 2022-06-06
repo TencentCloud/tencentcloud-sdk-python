@@ -839,6 +839,72 @@ class DescribeDetailEventResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeExternalTrtcMeasureRequest(AbstractModel):
+    """DescribeExternalTrtcMeasure请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StartTime: 查询开始日期。
+        :type StartTime: str
+        :param EndTime: 查询结束日期。
+        :type EndTime: str
+        :param SdkAppId: 对应的应用。如果没有这个参数，表示获取用户名下全部实时音视频应用的汇总。
+        :type SdkAppId: int
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.SdkAppId = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.SdkAppId = params.get("SdkAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeExternalTrtcMeasureResponse(AbstractModel):
+    """DescribeExternalTrtcMeasure返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkAppIdTrtrTimeUsages: 每个SdkAppId的时长使用信息
+        :type SdkAppIdTrtrTimeUsages: list of SdkAppIdNewTrtcTimeUsage
+        :param AnchorUsageMode: 主播的用量统计方式。取值"InRoomTime":房间时长,"SubscribeTime":"订阅时长","Bandwidth":带宽
+        :type AnchorUsageMode: str
+        :param AudienceUsageMode: 观众的用量统计方式。取值"InRoomTime":在房间时长,"SubscribeTime":"订阅时长","Bandwidth":带宽,"MergeWithAnchor":"不区分麦上麦下"
+        :type AudienceUsageMode: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.SdkAppIdTrtrTimeUsages = None
+        self.AnchorUsageMode = None
+        self.AudienceUsageMode = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("SdkAppIdTrtrTimeUsages") is not None:
+            self.SdkAppIdTrtrTimeUsages = []
+            for item in params.get("SdkAppIdTrtrTimeUsages"):
+                obj = SdkAppIdNewTrtcTimeUsage()
+                obj._deserialize(item)
+                self.SdkAppIdTrtrTimeUsages.append(obj)
+        self.AnchorUsageMode = params.get("AnchorUsageMode")
+        self.AudienceUsageMode = params.get("AudienceUsageMode")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeHistoryScaleRequest(AbstractModel):
     """DescribeHistoryScale请求参数结构体
 
@@ -1548,6 +1614,56 @@ class LayoutParams(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class MeasureTrtcMcuExternalRequest(AbstractModel):
+    """MeasureTrtcMcuExternal请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StartTime: 查询开始时间，格式为YYYY-MM-DD。
+        :type StartTime: str
+        :param EndTime: 查询结束时间，格式为YYYY-MM-DD。
+单次查询统计区间最多不能超过2天。
+        :type EndTime: str
+        :param SdkAppId: 应用ID，可不传。传应用ID时返回的是该应用的用量，不传时返回多个应用的合计值。
+        :type SdkAppId: int
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.SdkAppId = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.SdkAppId = params.get("SdkAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MeasureTrtcMcuExternalResponse(AbstractModel):
+    """MeasureTrtcMcuExternal返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class MixLayout(AbstractModel):
@@ -2372,6 +2488,48 @@ class ScaleInfomation(AbstractModel):
         
 
 
+class SdkAppIdNewTrtcTimeUsage(AbstractModel):
+    """SdkAppId级别实时音视频的用量数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkAppId: SdkAppId的值。
+        :type SdkAppId: str
+        :param TrtcTimeUsages: 统计的时间点数据。
+        :type TrtcTimeUsages: list of TrtcTimeNewUsage
+        :param AudienceTrtcTimeUsages: 统计的麦下用量的时间点数据。
+        :type AudienceTrtcTimeUsages: list of TrtcTimeNewUsage
+        """
+        self.SdkAppId = None
+        self.TrtcTimeUsages = None
+        self.AudienceTrtcTimeUsages = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        if params.get("TrtcTimeUsages") is not None:
+            self.TrtcTimeUsages = []
+            for item in params.get("TrtcTimeUsages"):
+                obj = TrtcTimeNewUsage()
+                obj._deserialize(item)
+                self.TrtcTimeUsages.append(obj)
+        if params.get("AudienceTrtcTimeUsages") is not None:
+            self.AudienceTrtcTimeUsages = []
+            for item in params.get("AudienceTrtcTimeUsages"):
+                obj = TrtcTimeNewUsage()
+                obj._deserialize(item)
+                self.AudienceTrtcTimeUsages.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SdkAppIdRecordUsage(AbstractModel):
     """SdkAppId级别录制时长数据。
 
@@ -2895,6 +3053,66 @@ class TimeValue(AbstractModel):
     def _deserialize(self, params):
         self.Time = params.get("Time")
         self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TrtcTimeNewUsage(AbstractModel):
+    """实时音视频用量的某一时间段的统计信息.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TimeKey: 时间点。
+        :type TimeKey: str
+        :param VoiceUserNum: 通话人数。仅供参考。在线人数以仪表盘查询结果为准。
+        :type VoiceUserNum: int
+        :param VideoTime: 音视频通话时长。单位：秒。
+        :type VideoTime: int
+        :param Class1VideoTime: 标清视频通话时长。单位：秒。
+        :type Class1VideoTime: int
+        :param Class2VideoTime: 高清视频通话时长。单位：秒。
+        :type Class2VideoTime: int
+        :param Class3VideoTime: 超高清视频通话时长。单位：秒。
+        :type Class3VideoTime: int
+        :param AudioTime: 音频通话时长。单位：秒。
+        :type AudioTime: int
+        :param Bandwidth: 带宽。单位：Mbps。
+        :type Bandwidth: float
+        :param Video2KTime: 2k视频通话时长。单位：秒。
+        :type Video2KTime: int
+        :param Video4KTime: 4k视频通话时长。单位：秒。
+        :type Video4KTime: int
+        """
+        self.TimeKey = None
+        self.VoiceUserNum = None
+        self.VideoTime = None
+        self.Class1VideoTime = None
+        self.Class2VideoTime = None
+        self.Class3VideoTime = None
+        self.AudioTime = None
+        self.Bandwidth = None
+        self.Video2KTime = None
+        self.Video4KTime = None
+
+
+    def _deserialize(self, params):
+        self.TimeKey = params.get("TimeKey")
+        self.VoiceUserNum = params.get("VoiceUserNum")
+        self.VideoTime = params.get("VideoTime")
+        self.Class1VideoTime = params.get("Class1VideoTime")
+        self.Class2VideoTime = params.get("Class2VideoTime")
+        self.Class3VideoTime = params.get("Class3VideoTime")
+        self.AudioTime = params.get("AudioTime")
+        self.Bandwidth = params.get("Bandwidth")
+        self.Video2KTime = params.get("Video2KTime")
+        self.Video4KTime = params.get("Video4KTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

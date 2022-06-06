@@ -26,6 +26,35 @@ class CdnClient(AbstractClient):
     _service = 'cdn'
 
 
+    def AddCLSTopicDomains(self, request):
+        """AddCLSTopicDomains 用于新增域名到某日志主题下
+
+        :param request: Request instance for AddCLSTopicDomains.
+        :type request: :class:`tencentcloud.cdn.v20180606.models.AddCLSTopicDomainsRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.AddCLSTopicDomainsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AddCLSTopicDomains", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AddCLSTopicDomainsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def AddCdnDomain(self, request):
         """AddCdnDomain 用于新增内容分发网络加速域名。1分钟内最多可新增100个域名。
 
