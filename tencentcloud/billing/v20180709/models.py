@@ -281,6 +281,27 @@ class BillDetailComponent(AbstractModel):
         :param ContractPrice: 合同价
 注意：此字段可能返回 null，表示取不到有效值。
         :type ContractPrice: str
+        :param InstanceType: 资源包、预留实例、节省计划、竞价实例这四类特殊实例本身的扣费行为，此字段体现对应的实例类型。枚举值如下：
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceType: str
+        :param RiTimeSpan: 预留实例抵扣的使用时长，时长单位与被抵扣的时长单位保持一致
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RiTimeSpan: str
+        :param OriginalCostWithRI: 按组件原价的口径换算的预留实例抵扣金额
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OriginalCostWithRI: str
+        :param SPDeductionRate: 节省计划可用余额额度范围内，节省计划对于此组件打的折扣率
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SPDeductionRate: str
+        :param SPDeduction: 节省计划抵扣的SP包面值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SPDeduction: str
+        :param OriginalCostWithSP: 按组件原价的口径换算的节省计划抵扣金额
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OriginalCostWithSP: str
+        :param BlendedDiscount: 综合了官网折扣、预留实例抵扣、节省计划抵扣的混合折扣率。若没有预留实例抵扣、节省计划抵扣,混合折扣率等于折扣率
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BlendedDiscount: str
         """
         self.ComponentCodeName = None
         self.ItemCodeName = None
@@ -301,6 +322,13 @@ class BillDetailComponent(AbstractModel):
         self.ItemCode = None
         self.ComponentCode = None
         self.ContractPrice = None
+        self.InstanceType = None
+        self.RiTimeSpan = None
+        self.OriginalCostWithRI = None
+        self.SPDeductionRate = None
+        self.SPDeduction = None
+        self.OriginalCostWithSP = None
+        self.BlendedDiscount = None
 
 
     def _deserialize(self, params):
@@ -323,6 +351,13 @@ class BillDetailComponent(AbstractModel):
         self.ItemCode = params.get("ItemCode")
         self.ComponentCode = params.get("ComponentCode")
         self.ContractPrice = params.get("ContractPrice")
+        self.InstanceType = params.get("InstanceType")
+        self.RiTimeSpan = params.get("RiTimeSpan")
+        self.OriginalCostWithRI = params.get("OriginalCostWithRI")
+        self.SPDeductionRate = params.get("SPDeductionRate")
+        self.SPDeduction = params.get("SPDeduction")
+        self.OriginalCostWithSP = params.get("OriginalCostWithSP")
+        self.BlendedDiscount = params.get("BlendedDiscount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -407,6 +442,22 @@ class BillResourceSummary(AbstractModel):
         :type ProductCode: str
         :param RegionId: 区域ID
         :type RegionId: int
+        :param InstanceType: 资源包、预留实例、节省计划、竞价实例这四类特殊实例本身的扣费行为，此字段体现对应的实例类型。枚举值如下：
+
+ri=Standard RI
+
+svp=Savings Plan
+
+si=Spot Instances
+
+rp=Resource Pack
+        :type InstanceType: str
+        :param OriginalCostWithRI: 按组件原价的口径换算的预留实例抵扣金额
+        :type OriginalCostWithRI: str
+        :param SPDeduction: 节省计划抵扣的SP包面值
+        :type SPDeduction: str
+        :param OriginalCostWithSP: 按组件原价的口径换算的节省计划抵扣金额
+        :type OriginalCostWithSP: str
         """
         self.BusinessCodeName = None
         self.ProductCodeName = None
@@ -441,6 +492,10 @@ class BillResourceSummary(AbstractModel):
         self.BusinessCode = None
         self.ProductCode = None
         self.RegionId = None
+        self.InstanceType = None
+        self.OriginalCostWithRI = None
+        self.SPDeduction = None
+        self.OriginalCostWithSP = None
 
 
     def _deserialize(self, params):
@@ -482,6 +537,10 @@ class BillResourceSummary(AbstractModel):
         self.BusinessCode = params.get("BusinessCode")
         self.ProductCode = params.get("ProductCode")
         self.RegionId = params.get("RegionId")
+        self.InstanceType = params.get("InstanceType")
+        self.OriginalCostWithRI = params.get("OriginalCostWithRI")
+        self.SPDeduction = params.get("SPDeduction")
+        self.OriginalCostWithSP = params.get("OriginalCostWithSP")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1684,10 +1743,6 @@ class DescribeBillDetailRequest(AbstractModel):
 小时费用
 预留实例退款
 按量计费冲正
-按量计费冲正
-按量计费冲正
-按量计费冲正
-按量计费冲正
 包年包月转按量
         :type ActionType: str
         :param ProjectId: 项目ID:资源所属项目ID
@@ -1949,10 +2004,6 @@ class DescribeBillResourceSummaryRequest(AbstractModel):
 预付费用
 小时费用
 预留实例退款
-按量计费冲正
-按量计费冲正
-按量计费冲正
-按量计费冲正
 按量计费冲正
 包年包月转按量
         :type ActionType: str

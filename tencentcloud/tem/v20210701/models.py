@@ -1677,19 +1677,22 @@ class HorizontalAutoscaler(AbstractModel):
 
     def __init__(self):
         r"""
-        :param MinReplicas: 最小实例数
+        :param MinReplicas: 最小实例数（可以不传）
         :type MinReplicas: int
-        :param MaxReplicas: 最大实例数
+        :param MaxReplicas: 最大实例数（可以不传）
         :type MaxReplicas: int
         :param Metrics: 指标度量（CPU or MEMORY）
         :type Metrics: str
         :param Threshold: 阈值（百分比）
         :type Threshold: int
+        :param Enabled: 是否启用
+        :type Enabled: bool
         """
         self.MinReplicas = None
         self.MaxReplicas = None
         self.Metrics = None
         self.Threshold = None
+        self.Enabled = None
 
 
     def _deserialize(self, params):
@@ -1697,6 +1700,7 @@ class HorizontalAutoscaler(AbstractModel):
         self.MaxReplicas = params.get("MaxReplicas")
         self.Metrics = params.get("Metrics")
         self.Threshold = params.get("Threshold")
+        self.Enabled = params.get("Enabled")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -10918,6 +10918,9 @@ class SellConfig(AbstractModel):
         :param DeviceTypeName: 实例类型描述，可能的取值范围有：通用型， 独享型， 基础型
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceTypeName: str
+        :param EngineType: 引擎类型描述，可能的取值范围有：Innodb，RocksDB
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EngineType: str
         """
         self.Device = None
         self.Type = None
@@ -10935,6 +10938,7 @@ class SellConfig(AbstractModel):
         self.Tag = None
         self.DeviceType = None
         self.DeviceTypeName = None
+        self.EngineType = None
 
 
     def _deserialize(self, params):
@@ -10954,6 +10958,7 @@ class SellConfig(AbstractModel):
         self.Tag = params.get("Tag")
         self.DeviceType = params.get("DeviceType")
         self.DeviceTypeName = params.get("DeviceTypeName")
+        self.EngineType = params.get("EngineType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

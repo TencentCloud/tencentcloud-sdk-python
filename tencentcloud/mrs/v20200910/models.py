@@ -1313,10 +1313,14 @@ class ImageToObjectResponse(AbstractModel):
         :param Template: 报告结构化结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type Template: :class:`tencentcloud.mrs.v20200910.models.Template`
+        :param TextTypeList: 多级分类结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TextTypeList: list of TextType
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Template = None
+        self.TextTypeList = None
         self.RequestId = None
 
 
@@ -1324,6 +1328,12 @@ class ImageToObjectResponse(AbstractModel):
         if params.get("Template") is not None:
             self.Template = Template()
             self.Template._deserialize(params.get("Template"))
+        if params.get("TextTypeList") is not None:
+            self.TextTypeList = []
+            for item in params.get("TextTypeList"):
+                obj = TextType()
+                obj._deserialize(item)
+                self.TextTypeList.append(obj)
         self.RequestId = params.get("RequestId")
 
 

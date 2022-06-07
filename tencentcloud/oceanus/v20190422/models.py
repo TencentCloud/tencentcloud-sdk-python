@@ -2079,3 +2079,71 @@ class SystemResourceItem(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class TriggerJobSavepointRequest(AbstractModel):
+    """TriggerJobSavepoint请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param JobId: 作业 SerialId
+        :type JobId: str
+        :param Description: 描述
+        :type Description: str
+        :param WorkSpaceId: 工作空间 SerialId
+        :type WorkSpaceId: str
+        """
+        self.JobId = None
+        self.Description = None
+        self.WorkSpaceId = None
+
+
+    def _deserialize(self, params):
+        self.JobId = params.get("JobId")
+        self.Description = params.get("Description")
+        self.WorkSpaceId = params.get("WorkSpaceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TriggerJobSavepointResponse(AbstractModel):
+    """TriggerJobSavepoint返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SavepointTrigger: 是否成功
+        :type SavepointTrigger: bool
+        :param ErrorMsg: 错误消息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorMsg: str
+        :param FinalSavepointPath: 快照路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FinalSavepointPath: str
+        :param SavepointId: 快照 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SavepointId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.SavepointTrigger = None
+        self.ErrorMsg = None
+        self.FinalSavepointPath = None
+        self.SavepointId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.SavepointTrigger = params.get("SavepointTrigger")
+        self.ErrorMsg = params.get("ErrorMsg")
+        self.FinalSavepointPath = params.get("FinalSavepointPath")
+        self.SavepointId = params.get("SavepointId")
+        self.RequestId = params.get("RequestId")

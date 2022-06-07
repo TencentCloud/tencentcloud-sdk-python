@@ -1377,6 +1377,11 @@ ContinueBreakPoint：播放完当前正在播放的点播 url 后再使用新的
         :type ExtraCmd: str
         :param Comment: 任务描述，限制 512 字节。
         :type Comment: str
+        :param ToUrl: 完整目标 URL 地址。
+用法注意：如果使用该参数来传完整目标地址，则 DomainName, AppName, StreamName 需要传入空值，任务将会使用该 ToUrl 参数指定的目标地址。
+
+注意：签名时间需要超过任务结束时间，避免因签名过期造成任务失败。
+        :type ToUrl: str
         :param BackupSourceType: 备源的类型：
 PullLivePushLive -直播，
 PullVodPushLive -点播。
@@ -1404,6 +1409,7 @@ PullVodPushLive -点播。
         self.CallbackUrl = None
         self.ExtraCmd = None
         self.Comment = None
+        self.ToUrl = None
         self.BackupSourceType = None
         self.BackupSourceUrl = None
 
@@ -1424,6 +1430,7 @@ PullVodPushLive -点播。
         self.CallbackUrl = params.get("CallbackUrl")
         self.ExtraCmd = params.get("ExtraCmd")
         self.Comment = params.get("Comment")
+        self.ToUrl = params.get("ToUrl")
         self.BackupSourceType = params.get("BackupSourceType")
         self.BackupSourceUrl = params.get("BackupSourceUrl")
         memeber_set = set(params.keys())
@@ -1637,6 +1644,8 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
         :type Mp3Param: :class:`tencentcloud.live.v20180801.models.RecordParam`
         :param RemoveWatermark: 是否去除水印，类型为慢直播时此参数无效。
         :type RemoveWatermark: bool
+        :param FlvSpecialParam: FLV 录制特殊参数。
+        :type FlvSpecialParam: :class:`tencentcloud.live.v20180801.models.FlvSpecialParam`
         """
         self.TemplateName = None
         self.Description = None
@@ -1648,6 +1657,7 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
         self.HlsSpecialParam = None
         self.Mp3Param = None
         self.RemoveWatermark = None
+        self.FlvSpecialParam = None
 
 
     def _deserialize(self, params):
@@ -1673,6 +1683,9 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
             self.Mp3Param = RecordParam()
             self.Mp3Param._deserialize(params.get("Mp3Param"))
         self.RemoveWatermark = params.get("RemoveWatermark")
+        if params.get("FlvSpecialParam") is not None:
+            self.FlvSpecialParam = FlvSpecialParam()
+            self.FlvSpecialParam._deserialize(params.get("FlvSpecialParam"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7438,6 +7451,30 @@ class EnableLiveDomainResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class FlvSpecialParam(AbstractModel):
+    """flv格式特殊配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UploadInRecording: 是否开启边录边传，仅flv格式有效。
+        :type UploadInRecording: bool
+        """
+        self.UploadInRecording = None
+
+
+    def _deserialize(self, params):
+        self.UploadInRecording = params.get("UploadInRecording")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ForbidLiveDomainRequest(AbstractModel):
     """ForbidLiveDomain请求参数结构体
 
@@ -8436,6 +8473,8 @@ class ModifyLiveRecordTemplateRequest(AbstractModel):
         :type Mp3Param: :class:`tencentcloud.live.v20180801.models.RecordParam`
         :param RemoveWatermark: 是否去除水印，类型为慢直播时此参数无效。
         :type RemoveWatermark: bool
+        :param FlvSpecialParam: FLV 录制定制参数。
+        :type FlvSpecialParam: :class:`tencentcloud.live.v20180801.models.FlvSpecialParam`
         """
         self.TemplateId = None
         self.TemplateName = None
@@ -8447,6 +8486,7 @@ class ModifyLiveRecordTemplateRequest(AbstractModel):
         self.HlsSpecialParam = None
         self.Mp3Param = None
         self.RemoveWatermark = None
+        self.FlvSpecialParam = None
 
 
     def _deserialize(self, params):
@@ -8472,6 +8512,9 @@ class ModifyLiveRecordTemplateRequest(AbstractModel):
             self.Mp3Param = RecordParam()
             self.Mp3Param._deserialize(params.get("Mp3Param"))
         self.RemoveWatermark = params.get("RemoveWatermark")
+        if params.get("FlvSpecialParam") is not None:
+            self.FlvSpecialParam = FlvSpecialParam()
+            self.FlvSpecialParam._deserialize(params.get("FlvSpecialParam"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9840,13 +9883,16 @@ class RecordTemplateInfo(AbstractModel):
         :param IsDelayLive: 0：普通直播，
 1：慢直播。
         :type IsDelayLive: int
-        :param HlsSpecialParam: HLS 录制定制参数
+        :param HlsSpecialParam: HLS 录制定制参数。
         :type HlsSpecialParam: :class:`tencentcloud.live.v20180801.models.HlsSpecialParam`
         :param Mp3Param: MP3 录制参数。
         :type Mp3Param: :class:`tencentcloud.live.v20180801.models.RecordParam`
         :param RemoveWatermark: 是否去除水印。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RemoveWatermark: bool
+        :param FlvSpecialParam: FLV 录制定制参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlvSpecialParam: :class:`tencentcloud.live.v20180801.models.FlvSpecialParam`
         """
         self.TemplateId = None
         self.TemplateName = None
@@ -9859,6 +9905,7 @@ class RecordTemplateInfo(AbstractModel):
         self.HlsSpecialParam = None
         self.Mp3Param = None
         self.RemoveWatermark = None
+        self.FlvSpecialParam = None
 
 
     def _deserialize(self, params):
@@ -9885,6 +9932,9 @@ class RecordTemplateInfo(AbstractModel):
             self.Mp3Param = RecordParam()
             self.Mp3Param._deserialize(params.get("Mp3Param"))
         self.RemoveWatermark = params.get("RemoveWatermark")
+        if params.get("FlvSpecialParam") is not None:
+            self.FlvSpecialParam = FlvSpecialParam()
+            self.FlvSpecialParam._deserialize(params.get("FlvSpecialParam"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -11574,6 +11574,12 @@ class DescribeVirusSummaryResponse(AbstractModel):
         :param RiskIncrease: 待处理风险个数较昨日增长
 注意：此字段可能返回 null，表示取不到有效值。
         :type RiskIncrease: int
+        :param IsolateIncrease: 隔离事件个数较昨日新增
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsolateIncrease: int
+        :param IsolateCnt: 隔离事件总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsolateCnt: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -11583,6 +11589,8 @@ class DescribeVirusSummaryResponse(AbstractModel):
         self.VirusDataBaseModifyTime = None
         self.RiskContainerIncrease = None
         self.RiskIncrease = None
+        self.IsolateIncrease = None
+        self.IsolateCnt = None
         self.RequestId = None
 
 
@@ -11593,6 +11601,8 @@ class DescribeVirusSummaryResponse(AbstractModel):
         self.VirusDataBaseModifyTime = params.get("VirusDataBaseModifyTime")
         self.RiskContainerIncrease = params.get("RiskContainerIncrease")
         self.RiskIncrease = params.get("RiskIncrease")
+        self.IsolateIncrease = params.get("IsolateIncrease")
+        self.IsolateCnt = params.get("IsolateCnt")
         self.RequestId = params.get("RequestId")
 
 
@@ -11613,7 +11623,10 @@ class DescribeVirusTaskListRequest(AbstractModel):
 <li>ContainerName - String - 是否必填：否 - 容器名称</li>
 <li>ContainerId - String - 是否必填：否 - 容器id</li>
 <li>Hostname - String - 是否必填：否 - 主机名称</li>
-<li>HostIp- String - 是否必填：是 - 容器名称</li>
+<li>HostIp- String - 是否必填：否 - 主机IP</li>
+<li>ImageId- String - 是否必填：否 - 镜像ID</li>
+<li>ImageName- String - 是否必填：否 - 镜像名称</li>
+<li>Status- String - 是否必填：否 - 状态</li>
         :type Filters: list of RunTimeFilters
         :param By: 排序字段
         :type By: str

@@ -142,6 +142,35 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateCustomErrorPage(self, request):
+        """创建自定义规则的自定义页
+
+        :param request: Request instance for CreateCustomErrorPage.
+        :type request: :class:`tencentcloud.teo.v20220106.models.CreateCustomErrorPageRequest`
+        :rtype: :class:`tencentcloud.teo.v20220106.models.CreateCustomErrorPageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCustomErrorPage", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateCustomErrorPageResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateDnsRecord(self, request):
         """创建 DNS 记录
 
@@ -186,6 +215,35 @@ class TeoClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateLoadBalancingResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateOriginGroup(self, request):
+        """源站组创建
+
+        :param request: Request instance for CreateOriginGroup.
+        :type request: :class:`tencentcloud.teo.v20220106.models.CreateOriginGroupRequest`
+        :rtype: :class:`tencentcloud.teo.v20220106.models.CreateOriginGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateOriginGroup", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateOriginGroupResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -403,6 +461,35 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteOriginGroup(self, request):
+        """源站组删除
+
+        :param request: Request instance for DeleteOriginGroup.
+        :type request: :class:`tencentcloud.teo.v20220106.models.DeleteOriginGroupRequest`
+        :rtype: :class:`tencentcloud.teo.v20220106.models.DeleteOriginGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteOriginGroup", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteOriginGroupResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteZone(self, request):
         """删除站点
 
@@ -490,6 +577,35 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeBotManagedRules(self, request):
+        """分页查询Bot托管规则
+
+        :param request: Request instance for DescribeBotManagedRules.
+        :type request: :class:`tencentcloud.teo.v20220106.models.DescribeBotManagedRulesRequest`
+        :rtype: :class:`tencentcloud.teo.v20220106.models.DescribeBotManagedRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBotManagedRules", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBotManagedRulesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeCnameStatus(self, request):
         """查询域名 CNAME 状态
 
@@ -505,6 +621,35 @@ class TeoClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCnameStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDDoSPolicy(self, request):
+        """查询DDoS防护配置详情
+
+        :param request: Request instance for DescribeDDoSPolicy.
+        :type request: :class:`tencentcloud.teo.v20220106.models.DescribeDDoSPolicyRequest`
+        :rtype: :class:`tencentcloud.teo.v20220106.models.DescribeDDoSPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDDoSPolicy", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDDoSPolicyResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -780,6 +925,64 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeOriginGroup(self, request):
+        """获取源站组信息列表
+
+        :param request: Request instance for DescribeOriginGroup.
+        :type request: :class:`tencentcloud.teo.v20220106.models.DescribeOriginGroupRequest`
+        :rtype: :class:`tencentcloud.teo.v20220106.models.DescribeOriginGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeOriginGroup", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeOriginGroupResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeOriginGroupDetail(self, request):
+        """获取源站组详细信息
+
+        :param request: Request instance for DescribeOriginGroupDetail.
+        :type request: :class:`tencentcloud.teo.v20220106.models.DescribeOriginGroupDetailRequest`
+        :rtype: :class:`tencentcloud.teo.v20220106.models.DescribeOriginGroupDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeOriginGroupDetail", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeOriginGroupDetailResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribePrefetchTasks(self, request):
         """查询预热任务状态
 
@@ -824,6 +1027,180 @@ class TeoClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePurgeTasksResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeSecurityPolicy(self, request):
+        """查询安全防护配置详情
+
+        :param request: Request instance for DescribeSecurityPolicy.
+        :type request: :class:`tencentcloud.teo.v20220106.models.DescribeSecurityPolicyRequest`
+        :rtype: :class:`tencentcloud.teo.v20220106.models.DescribeSecurityPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSecurityPolicy", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSecurityPolicyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeSecurityPolicyList(self, request):
+        """查询全部安全实例
+
+        :param request: Request instance for DescribeSecurityPolicyList.
+        :type request: :class:`tencentcloud.teo.v20220106.models.DescribeSecurityPolicyListRequest`
+        :rtype: :class:`tencentcloud.teo.v20220106.models.DescribeSecurityPolicyListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSecurityPolicyList", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSecurityPolicyListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeSecurityPolicyManagedRules(self, request):
+        """分页查询门神规则
+
+        :param request: Request instance for DescribeSecurityPolicyManagedRules.
+        :type request: :class:`tencentcloud.teo.v20220106.models.DescribeSecurityPolicyManagedRulesRequest`
+        :rtype: :class:`tencentcloud.teo.v20220106.models.DescribeSecurityPolicyManagedRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSecurityPolicyManagedRules", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSecurityPolicyManagedRulesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeSecurityPolicyManagedRulesId(self, request):
+        """规则id查询门神规则详情
+
+        :param request: Request instance for DescribeSecurityPolicyManagedRulesId.
+        :type request: :class:`tencentcloud.teo.v20220106.models.DescribeSecurityPolicyManagedRulesIdRequest`
+        :rtype: :class:`tencentcloud.teo.v20220106.models.DescribeSecurityPolicyManagedRulesIdResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSecurityPolicyManagedRulesId", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSecurityPolicyManagedRulesIdResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeSecurityPolicyRegions(self, request):
+        """查询所有地域信息
+
+        :param request: Request instance for DescribeSecurityPolicyRegions.
+        :type request: :class:`tencentcloud.teo.v20220106.models.DescribeSecurityPolicyRegionsRequest`
+        :rtype: :class:`tencentcloud.teo.v20220106.models.DescribeSecurityPolicyRegionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSecurityPolicyRegions", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSecurityPolicyRegionsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeZoneDDoSPolicy(self, request):
+        """查询所有DDoS防护分区
+
+        :param request: Request instance for DescribeZoneDDoSPolicy.
+        :type request: :class:`tencentcloud.teo.v20220106.models.DescribeZoneDDoSPolicyRequest`
+        :rtype: :class:`tencentcloud.teo.v20220106.models.DescribeZoneDDoSPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeZoneDDoSPolicy", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeZoneDDoSPolicyResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1128,6 +1505,64 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyDDoSPolicy(self, request):
+        """修改DDoS防护分区配置
+
+        :param request: Request instance for ModifyDDoSPolicy.
+        :type request: :class:`tencentcloud.teo.v20220106.models.ModifyDDoSPolicyRequest`
+        :rtype: :class:`tencentcloud.teo.v20220106.models.ModifyDDoSPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDDoSPolicy", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyDDoSPolicyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyDDoSPolicyHost(self, request):
+        """域名DDoS高可用开关
+
+        :param request: Request instance for ModifyDDoSPolicyHost.
+        :type request: :class:`tencentcloud.teo.v20220106.models.ModifyDDoSPolicyHostRequest`
+        :rtype: :class:`tencentcloud.teo.v20220106.models.ModifyDDoSPolicyHostResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDDoSPolicyHost", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyDDoSPolicyHostResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyDefaultCertificate(self, request):
         """修改默认证书状态
 
@@ -1288,6 +1723,64 @@ class TeoClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyLoadBalancingStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyOriginGroup(self, request):
+        """源站组修改
+
+        :param request: Request instance for ModifyOriginGroup.
+        :type request: :class:`tencentcloud.teo.v20220106.models.ModifyOriginGroupRequest`
+        :rtype: :class:`tencentcloud.teo.v20220106.models.ModifyOriginGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyOriginGroup", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyOriginGroupResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifySecurityPolicy(self, request):
+        """修改Web&Bot安全配置
+
+        :param request: Request instance for ModifySecurityPolicy.
+        :type request: :class:`tencentcloud.teo.v20220106.models.ModifySecurityPolicyRequest`
+        :rtype: :class:`tencentcloud.teo.v20220106.models.ModifySecurityPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifySecurityPolicy", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifySecurityPolicyResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

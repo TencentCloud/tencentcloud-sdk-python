@@ -1009,6 +1009,11 @@ def test_import_tione():
     from tencentcloud.tione.v20191022 import models
 
 
+def test_import_tione():
+    from tencentcloud.tione.v20211111 import tione_client
+    from tencentcloud.tione.v20211111 import models
+
+
 def test_import_tiw():
     from tencentcloud.tiw.v20190919 import tiw_client
     from tencentcloud.tiw.v20190919 import models
@@ -1037,6 +1042,11 @@ def test_import_tms():
 def test_import_tmt():
     from tencentcloud.tmt.v20180321 import tmt_client
     from tencentcloud.tmt.v20180321 import models
+
+
+def test_import_trp():
+    from tencentcloud.trp.v20210515 import trp_client
+    from tencentcloud.trp.v20210515 import models
 
 
 def test_import_trtc():

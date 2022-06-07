@@ -721,22 +721,27 @@ class ConsumerContent(AbstractModel):
         :param EnableTag: 是否投递 TAG 信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type EnableTag: bool
-        :param MetaFields: 需要投递的元数据列表，目前仅支持：__SOURCE__，__FILENAME__和__TIMESTAMP__
+        :param MetaFields: 需要投递的元数据列表，目前仅支持：\_\_SOURCE\_\_，\_\_FILENAME\_\_和\_\_TIMESTAMP\_\_
 注意：此字段可能返回 null，表示取不到有效值。
         :type MetaFields: list of str
         :param TagJsonNotTiled: 当EnableTag为true时，必须填写TagJsonNotTiled字段，TagJsonNotTiled用于标识tag信息是否json平铺，TagJsonNotTiled为true时不平铺，false时平铺
 注意：此字段可能返回 null，表示取不到有效值。
         :type TagJsonNotTiled: bool
+        :param TimestampAccuracy: 投递时间戳精度，可选项 [1:秒；2:毫秒] ，默认是秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimestampAccuracy: int
         """
         self.EnableTag = None
         self.MetaFields = None
         self.TagJsonNotTiled = None
+        self.TimestampAccuracy = None
 
 
     def _deserialize(self, params):
         self.EnableTag = params.get("EnableTag")
         self.MetaFields = params.get("MetaFields")
         self.TagJsonNotTiled = params.get("TagJsonNotTiled")
+        self.TimestampAccuracy = params.get("TimestampAccuracy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

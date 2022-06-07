@@ -173,16 +173,24 @@ class DescribeTaskStrategyRisksRequest(AbstractModel):
         :type Limit: int
         :param Offset: 偏移量,默认0
         :type Offset: int
+        :param Env: 环境
+        :type Env: str
+        :param TaskType: 任务类型
+        :type TaskType: str
         """
         self.StrategyId = None
         self.Limit = None
         self.Offset = None
+        self.Env = None
+        self.TaskType = None
 
 
     def _deserialize(self, params):
         self.StrategyId = params.get("StrategyId")
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
+        self.Env = params.get("Env")
+        self.TaskType = params.get("TaskType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -212,6 +220,9 @@ class DescribeTaskStrategyRisksResponse(AbstractModel):
         :param Risks: 风险实例详情列表，需要json decode
 注意：此字段可能返回 null，表示取不到有效值。
         :type Risks: str
+        :param ResourceCount: 巡检资源数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceCount: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -219,6 +230,7 @@ class DescribeTaskStrategyRisksResponse(AbstractModel):
         self.StrategyId = None
         self.RiskTotalCount = None
         self.Risks = None
+        self.ResourceCount = None
         self.RequestId = None
 
 
@@ -232,6 +244,7 @@ class DescribeTaskStrategyRisksResponse(AbstractModel):
         self.StrategyId = params.get("StrategyId")
         self.RiskTotalCount = params.get("RiskTotalCount")
         self.Risks = params.get("Risks")
+        self.ResourceCount = params.get("ResourceCount")
         self.RequestId = params.get("RequestId")
 
 

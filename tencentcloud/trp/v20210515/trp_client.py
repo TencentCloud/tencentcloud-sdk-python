@@ -17,30 +17,30 @@ import json
 
 from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentCloudSDKException
 from tencentcloud.common.abstract_client import AbstractClient
-from tencentcloud.emr.v20190103 import models
+from tencentcloud.trp.v20210515 import models
 
 
-class EmrClient(AbstractClient):
-    _apiVersion = '2019-01-03'
-    _endpoint = 'emr.tencentcloudapi.com'
-    _service = 'emr'
+class TrpClient(AbstractClient):
+    _apiVersion = '2021-05-15'
+    _endpoint = 'trp.tencentcloudapi.com'
+    _service = 'trp'
 
 
-    def AddUsersForUserManager(self, request):
-        """新增用户列表（用户管理）
+    def CreateCodeBatch(self, request):
+        """新增批次
 
-        :param request: Request instance for AddUsersForUserManager.
-        :type request: :class:`tencentcloud.emr.v20190103.models.AddUsersForUserManagerRequest`
-        :rtype: :class:`tencentcloud.emr.v20190103.models.AddUsersForUserManagerResponse`
+        :param request: Request instance for CreateCodeBatch.
+        :type request: :class:`tencentcloud.trp.v20210515.models.CreateCodeBatchRequest`
+        :rtype: :class:`tencentcloud.trp.v20210515.models.CreateCodeBatchResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("AddUsersForUserManager", params, headers=headers)
+            body = self.call("CreateCodeBatch", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.AddUsersForUserManagerResponse()
+                model = models.CreateCodeBatchResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -55,21 +55,21 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def CreateInstance(self, request):
-        """创建EMR集群实例
+    def CreateCodePack(self, request):
+        """生成码包
 
-        :param request: Request instance for CreateInstance.
-        :type request: :class:`tencentcloud.emr.v20190103.models.CreateInstanceRequest`
-        :rtype: :class:`tencentcloud.emr.v20190103.models.CreateInstanceResponse`
+        :param request: Request instance for CreateCodePack.
+        :type request: :class:`tencentcloud.trp.v20210515.models.CreateCodePackRequest`
+        :rtype: :class:`tencentcloud.trp.v20210515.models.CreateCodePackResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("CreateInstance", params, headers=headers)
+            body = self.call("CreateCodePack", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.CreateInstanceResponse()
+                model = models.CreateCodePackResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -84,21 +84,21 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeClusterNodes(self, request):
-        """查询硬件节点信息
+    def CreateMerchant(self, request):
+        """新建商户
 
-        :param request: Request instance for DescribeClusterNodes.
-        :type request: :class:`tencentcloud.emr.v20190103.models.DescribeClusterNodesRequest`
-        :rtype: :class:`tencentcloud.emr.v20190103.models.DescribeClusterNodesResponse`
+        :param request: Request instance for CreateMerchant.
+        :type request: :class:`tencentcloud.trp.v20210515.models.CreateMerchantRequest`
+        :rtype: :class:`tencentcloud.trp.v20210515.models.CreateMerchantResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("DescribeClusterNodes", params, headers=headers)
+            body = self.call("CreateMerchant", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeClusterNodesResponse()
+                model = models.CreateMerchantResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -113,21 +113,21 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeCvmQuota(self, request):
-        """获取账户的CVM配额
+    def CreateProduct(self, request):
+        """新建商品
 
-        :param request: Request instance for DescribeCvmQuota.
-        :type request: :class:`tencentcloud.emr.v20190103.models.DescribeCvmQuotaRequest`
-        :rtype: :class:`tencentcloud.emr.v20190103.models.DescribeCvmQuotaResponse`
+        :param request: Request instance for CreateProduct.
+        :type request: :class:`tencentcloud.trp.v20210515.models.CreateProductRequest`
+        :rtype: :class:`tencentcloud.trp.v20210515.models.CreateProductResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("DescribeCvmQuota", params, headers=headers)
+            body = self.call("CreateProduct", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeCvmQuotaResponse()
+                model = models.CreateProductResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -142,21 +142,21 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeInstanceRenewNodes(self, request):
-        """预付费集群隔离后续费资源查询
+    def CreateTraceChain(self, request):
+        """上链溯源信息
 
-        :param request: Request instance for DescribeInstanceRenewNodes.
-        :type request: :class:`tencentcloud.emr.v20190103.models.DescribeInstanceRenewNodesRequest`
-        :rtype: :class:`tencentcloud.emr.v20190103.models.DescribeInstanceRenewNodesResponse`
+        :param request: Request instance for CreateTraceChain.
+        :type request: :class:`tencentcloud.trp.v20210515.models.CreateTraceChainRequest`
+        :rtype: :class:`tencentcloud.trp.v20210515.models.CreateTraceChainResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("DescribeInstanceRenewNodes", params, headers=headers)
+            body = self.call("CreateTraceChain", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeInstanceRenewNodesResponse()
+                model = models.CreateTraceChainResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -171,21 +171,21 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeInstances(self, request):
-        """查询EMR实例
+    def CreateTraceCodes(self, request):
+        """批量导入二维码，只支持平台发的码
 
-        :param request: Request instance for DescribeInstances.
-        :type request: :class:`tencentcloud.emr.v20190103.models.DescribeInstancesRequest`
-        :rtype: :class:`tencentcloud.emr.v20190103.models.DescribeInstancesResponse`
+        :param request: Request instance for CreateTraceCodes.
+        :type request: :class:`tencentcloud.trp.v20210515.models.CreateTraceCodesRequest`
+        :rtype: :class:`tencentcloud.trp.v20210515.models.CreateTraceCodesResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("DescribeInstances", params, headers=headers)
+            body = self.call("CreateTraceCodes", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeInstancesResponse()
+                model = models.CreateTraceCodesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -200,21 +200,21 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeInstancesList(self, request):
-        """EMR集群实例列表查询
+    def CreateTraceData(self, request):
+        """新增溯源信息
 
-        :param request: Request instance for DescribeInstancesList.
-        :type request: :class:`tencentcloud.emr.v20190103.models.DescribeInstancesListRequest`
-        :rtype: :class:`tencentcloud.emr.v20190103.models.DescribeInstancesListResponse`
+        :param request: Request instance for CreateTraceData.
+        :type request: :class:`tencentcloud.trp.v20210515.models.CreateTraceDataRequest`
+        :rtype: :class:`tencentcloud.trp.v20210515.models.CreateTraceDataResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("DescribeInstancesList", params, headers=headers)
+            body = self.call("CreateTraceData", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeInstancesListResponse()
+                model = models.CreateTraceDataResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -229,21 +229,21 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeJobFlow(self, request):
-        """查询流程任务
+    def DeleteCodeBatch(self, request):
+        """删除批次
 
-        :param request: Request instance for DescribeJobFlow.
-        :type request: :class:`tencentcloud.emr.v20190103.models.DescribeJobFlowRequest`
-        :rtype: :class:`tencentcloud.emr.v20190103.models.DescribeJobFlowResponse`
+        :param request: Request instance for DeleteCodeBatch.
+        :type request: :class:`tencentcloud.trp.v20210515.models.DeleteCodeBatchRequest`
+        :rtype: :class:`tencentcloud.trp.v20210515.models.DeleteCodeBatchResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("DescribeJobFlow", params, headers=headers)
+            body = self.call("DeleteCodeBatch", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeJobFlowResponse()
+                model = models.DeleteCodeBatchResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -258,21 +258,21 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeResourceSchedule(self, request):
-        """获取yarn资源调度页面的数据
+    def DeleteMerchant(self, request):
+        """删除商户
 
-        :param request: Request instance for DescribeResourceSchedule.
-        :type request: :class:`tencentcloud.emr.v20190103.models.DescribeResourceScheduleRequest`
-        :rtype: :class:`tencentcloud.emr.v20190103.models.DescribeResourceScheduleResponse`
+        :param request: Request instance for DeleteMerchant.
+        :type request: :class:`tencentcloud.trp.v20210515.models.DeleteMerchantRequest`
+        :rtype: :class:`tencentcloud.trp.v20210515.models.DeleteMerchantResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("DescribeResourceSchedule", params, headers=headers)
+            body = self.call("DeleteMerchant", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeResourceScheduleResponse()
+                model = models.DeleteMerchantResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -287,21 +287,21 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeUsersForUserManager(self, request):
-        """批量导出用户。对于kerberos集群，如果需要kertab文件下载地址，可以将NeedKeytabInfo设置为true；注意SupportDownLoadKeyTab为true，但是DownLoadKeyTabUrl为空字符串，表示keytab文件在后台没有准备好（正在生成）
+    def DeleteProduct(self, request):
+        """删除商品，如果商品被使用，则不可删除
 
-        :param request: Request instance for DescribeUsersForUserManager.
-        :type request: :class:`tencentcloud.emr.v20190103.models.DescribeUsersForUserManagerRequest`
-        :rtype: :class:`tencentcloud.emr.v20190103.models.DescribeUsersForUserManagerResponse`
+        :param request: Request instance for DeleteProduct.
+        :type request: :class:`tencentcloud.trp.v20210515.models.DeleteProductRequest`
+        :rtype: :class:`tencentcloud.trp.v20210515.models.DeleteProductResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("DescribeUsersForUserManager", params, headers=headers)
+            body = self.call("DeleteProduct", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeUsersForUserManagerResponse()
+                model = models.DeleteProductResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -316,21 +316,21 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def InquirePriceRenewEmr(self, request):
-        """集群续费询价。
+    def DeleteTraceData(self, request):
+        """删除溯源信息，如果已经上链则不可删除
 
-        :param request: Request instance for InquirePriceRenewEmr.
-        :type request: :class:`tencentcloud.emr.v20190103.models.InquirePriceRenewEmrRequest`
-        :rtype: :class:`tencentcloud.emr.v20190103.models.InquirePriceRenewEmrResponse`
+        :param request: Request instance for DeleteTraceData.
+        :type request: :class:`tencentcloud.trp.v20210515.models.DeleteTraceDataRequest`
+        :rtype: :class:`tencentcloud.trp.v20210515.models.DeleteTraceDataResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("InquirePriceRenewEmr", params, headers=headers)
+            body = self.call("DeleteTraceData", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.InquirePriceRenewEmrResponse()
+                model = models.DeleteTraceDataResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -345,21 +345,21 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def InquiryPriceCreateInstance(self, request):
-        """创建实例询价
+    def DescribeCodeBatchById(self, request):
+        """查询批次信息
 
-        :param request: Request instance for InquiryPriceCreateInstance.
-        :type request: :class:`tencentcloud.emr.v20190103.models.InquiryPriceCreateInstanceRequest`
-        :rtype: :class:`tencentcloud.emr.v20190103.models.InquiryPriceCreateInstanceResponse`
+        :param request: Request instance for DescribeCodeBatchById.
+        :type request: :class:`tencentcloud.trp.v20210515.models.DescribeCodeBatchByIdRequest`
+        :rtype: :class:`tencentcloud.trp.v20210515.models.DescribeCodeBatchByIdResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("InquiryPriceCreateInstance", params, headers=headers)
+            body = self.call("DescribeCodeBatchById", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.InquiryPriceCreateInstanceResponse()
+                model = models.DescribeCodeBatchByIdResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -374,21 +374,21 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def InquiryPriceRenewInstance(self, request):
-        """续费询价。
+    def DescribeCodeBatchs(self, request):
+        """查询批次列表
 
-        :param request: Request instance for InquiryPriceRenewInstance.
-        :type request: :class:`tencentcloud.emr.v20190103.models.InquiryPriceRenewInstanceRequest`
-        :rtype: :class:`tencentcloud.emr.v20190103.models.InquiryPriceRenewInstanceResponse`
+        :param request: Request instance for DescribeCodeBatchs.
+        :type request: :class:`tencentcloud.trp.v20210515.models.DescribeCodeBatchsRequest`
+        :rtype: :class:`tencentcloud.trp.v20210515.models.DescribeCodeBatchsResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("InquiryPriceRenewInstance", params, headers=headers)
+            body = self.call("DescribeCodeBatchs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.InquiryPriceRenewInstanceResponse()
+                model = models.DescribeCodeBatchsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -403,21 +403,21 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def InquiryPriceScaleOutInstance(self, request):
-        """扩容询价. 当扩容时候，请通过该接口查询价格。
+    def DescribeCodePacks(self, request):
+        """查询码包列表
 
-        :param request: Request instance for InquiryPriceScaleOutInstance.
-        :type request: :class:`tencentcloud.emr.v20190103.models.InquiryPriceScaleOutInstanceRequest`
-        :rtype: :class:`tencentcloud.emr.v20190103.models.InquiryPriceScaleOutInstanceResponse`
+        :param request: Request instance for DescribeCodePacks.
+        :type request: :class:`tencentcloud.trp.v20210515.models.DescribeCodePacksRequest`
+        :rtype: :class:`tencentcloud.trp.v20210515.models.DescribeCodePacksResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("InquiryPriceScaleOutInstance", params, headers=headers)
+            body = self.call("DescribeCodePacks", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.InquiryPriceScaleOutInstanceResponse()
+                model = models.DescribeCodePacksResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -432,21 +432,21 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def InquiryPriceUpdateInstance(self, request):
-        """变配询价
+    def DescribeCodesByPack(self, request):
+        """查询码包的二维码列表，上限 3 万
 
-        :param request: Request instance for InquiryPriceUpdateInstance.
-        :type request: :class:`tencentcloud.emr.v20190103.models.InquiryPriceUpdateInstanceRequest`
-        :rtype: :class:`tencentcloud.emr.v20190103.models.InquiryPriceUpdateInstanceResponse`
+        :param request: Request instance for DescribeCodesByPack.
+        :type request: :class:`tencentcloud.trp.v20210515.models.DescribeCodesByPackRequest`
+        :rtype: :class:`tencentcloud.trp.v20210515.models.DescribeCodesByPackResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("InquiryPriceUpdateInstance", params, headers=headers)
+            body = self.call("DescribeCodesByPack", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.InquiryPriceUpdateInstanceResponse()
+                model = models.DescribeCodesByPackResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -461,21 +461,21 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ModifyResourcePools(self, request):
-        """刷新动态资源池
+    def DescribeMerchantById(self, request):
+        """查询商户信息
 
-        :param request: Request instance for ModifyResourcePools.
-        :type request: :class:`tencentcloud.emr.v20190103.models.ModifyResourcePoolsRequest`
-        :rtype: :class:`tencentcloud.emr.v20190103.models.ModifyResourcePoolsResponse`
+        :param request: Request instance for DescribeMerchantById.
+        :type request: :class:`tencentcloud.trp.v20210515.models.DescribeMerchantByIdRequest`
+        :rtype: :class:`tencentcloud.trp.v20210515.models.DescribeMerchantByIdResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("ModifyResourcePools", params, headers=headers)
+            body = self.call("DescribeMerchantById", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ModifyResourcePoolsResponse()
+                model = models.DescribeMerchantByIdResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -490,21 +490,21 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ModifyResourceScheduleConfig(self, request):
-        """修改yarn资源调度的资源配置
+    def DescribeMerchants(self, request):
+        """查询商户列表
 
-        :param request: Request instance for ModifyResourceScheduleConfig.
-        :type request: :class:`tencentcloud.emr.v20190103.models.ModifyResourceScheduleConfigRequest`
-        :rtype: :class:`tencentcloud.emr.v20190103.models.ModifyResourceScheduleConfigResponse`
+        :param request: Request instance for DescribeMerchants.
+        :type request: :class:`tencentcloud.trp.v20210515.models.DescribeMerchantsRequest`
+        :rtype: :class:`tencentcloud.trp.v20210515.models.DescribeMerchantsResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("ModifyResourceScheduleConfig", params, headers=headers)
+            body = self.call("DescribeMerchants", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ModifyResourceScheduleConfigResponse()
+                model = models.DescribeMerchantsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -519,21 +519,21 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ModifyResourceScheduler(self, request):
-        """修改了yarn的资源调度器，点击部署生效
+    def DescribeProductById(self, request):
+        """查询商品信息
 
-        :param request: Request instance for ModifyResourceScheduler.
-        :type request: :class:`tencentcloud.emr.v20190103.models.ModifyResourceSchedulerRequest`
-        :rtype: :class:`tencentcloud.emr.v20190103.models.ModifyResourceSchedulerResponse`
+        :param request: Request instance for DescribeProductById.
+        :type request: :class:`tencentcloud.trp.v20210515.models.DescribeProductByIdRequest`
+        :rtype: :class:`tencentcloud.trp.v20210515.models.DescribeProductByIdResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("ModifyResourceScheduler", params, headers=headers)
+            body = self.call("DescribeProductById", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ModifyResourceSchedulerResponse()
+                model = models.DescribeProductByIdResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -548,21 +548,21 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def RunJobFlow(self, request):
-        """创建流程作业
+    def DescribeProducts(self, request):
+        """查询商品列表
 
-        :param request: Request instance for RunJobFlow.
-        :type request: :class:`tencentcloud.emr.v20190103.models.RunJobFlowRequest`
-        :rtype: :class:`tencentcloud.emr.v20190103.models.RunJobFlowResponse`
+        :param request: Request instance for DescribeProducts.
+        :type request: :class:`tencentcloud.trp.v20210515.models.DescribeProductsRequest`
+        :rtype: :class:`tencentcloud.trp.v20210515.models.DescribeProductsResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("RunJobFlow", params, headers=headers)
+            body = self.call("DescribeProducts", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.RunJobFlowResponse()
+                model = models.DescribeProductsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -577,21 +577,21 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ScaleOutInstance(self, request):
-        """实例扩容
+    def DescribeTraceCodeById(self, request):
+        """查询二维码信息
 
-        :param request: Request instance for ScaleOutInstance.
-        :type request: :class:`tencentcloud.emr.v20190103.models.ScaleOutInstanceRequest`
-        :rtype: :class:`tencentcloud.emr.v20190103.models.ScaleOutInstanceResponse`
+        :param request: Request instance for DescribeTraceCodeById.
+        :type request: :class:`tencentcloud.trp.v20210515.models.DescribeTraceCodeByIdRequest`
+        :rtype: :class:`tencentcloud.trp.v20210515.models.DescribeTraceCodeByIdResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("ScaleOutInstance", params, headers=headers)
+            body = self.call("DescribeTraceCodeById", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ScaleOutInstanceResponse()
+                model = models.DescribeTraceCodeByIdResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -606,21 +606,21 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def SyncPodState(self, request):
-        """EMR同步TKE中POD状态
+    def DescribeTraceCodes(self, request):
+        """查询二维码列表
 
-        :param request: Request instance for SyncPodState.
-        :type request: :class:`tencentcloud.emr.v20190103.models.SyncPodStateRequest`
-        :rtype: :class:`tencentcloud.emr.v20190103.models.SyncPodStateResponse`
+        :param request: Request instance for DescribeTraceCodes.
+        :type request: :class:`tencentcloud.trp.v20210515.models.DescribeTraceCodesRequest`
+        :rtype: :class:`tencentcloud.trp.v20210515.models.DescribeTraceCodesResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("SyncPodState", params, headers=headers)
+            body = self.call("DescribeTraceCodes", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.SyncPodStateResponse()
+                model = models.DescribeTraceCodesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -635,21 +635,21 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def TerminateInstance(self, request):
-        """销毁EMR实例。此接口仅支持弹性MapReduce正式计费版本。
+    def DescribeTraceDataList(self, request):
+        """查询溯源信息，通常溯源信息跟生产批次绑定，即一个批次的所有溯源信息都是一样的
 
-        :param request: Request instance for TerminateInstance.
-        :type request: :class:`tencentcloud.emr.v20190103.models.TerminateInstanceRequest`
-        :rtype: :class:`tencentcloud.emr.v20190103.models.TerminateInstanceResponse`
+        :param request: Request instance for DescribeTraceDataList.
+        :type request: :class:`tencentcloud.trp.v20210515.models.DescribeTraceDataListRequest`
+        :rtype: :class:`tencentcloud.trp.v20210515.models.DescribeTraceDataListResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("TerminateInstance", params, headers=headers)
+            body = self.call("DescribeTraceDataList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.TerminateInstanceResponse()
+                model = models.DescribeTraceDataListResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -664,21 +664,166 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def TerminateTasks(self, request):
-        """缩容Task节点
+    def ModifyCodeBatch(self, request):
+        """修改批次
 
-        :param request: Request instance for TerminateTasks.
-        :type request: :class:`tencentcloud.emr.v20190103.models.TerminateTasksRequest`
-        :rtype: :class:`tencentcloud.emr.v20190103.models.TerminateTasksResponse`
+        :param request: Request instance for ModifyCodeBatch.
+        :type request: :class:`tencentcloud.trp.v20210515.models.ModifyCodeBatchRequest`
+        :rtype: :class:`tencentcloud.trp.v20210515.models.ModifyCodeBatchResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("TerminateTasks", params, headers=headers)
+            body = self.call("ModifyCodeBatch", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.TerminateTasksResponse()
+                model = models.ModifyCodeBatchResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyMerchant(self, request):
+        """编辑商户
+
+        :param request: Request instance for ModifyMerchant.
+        :type request: :class:`tencentcloud.trp.v20210515.models.ModifyMerchantRequest`
+        :rtype: :class:`tencentcloud.trp.v20210515.models.ModifyMerchantResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyMerchant", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyMerchantResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyProduct(self, request):
+        """编辑商品
+
+        :param request: Request instance for ModifyProduct.
+        :type request: :class:`tencentcloud.trp.v20210515.models.ModifyProductRequest`
+        :rtype: :class:`tencentcloud.trp.v20210515.models.ModifyProductResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyProduct", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyProductResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyTraceCode(self, request):
+        """冻结或者激活二维码，所属的批次的冻结状态优先级大于单个二维码的状态，即如果批次是冻结的，那么该批次下二维码的状态都是冻结的
+
+        :param request: Request instance for ModifyTraceCode.
+        :type request: :class:`tencentcloud.trp.v20210515.models.ModifyTraceCodeRequest`
+        :rtype: :class:`tencentcloud.trp.v20210515.models.ModifyTraceCodeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyTraceCode", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyTraceCodeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyTraceData(self, request):
+        """修改溯源信息
+
+        :param request: Request instance for ModifyTraceData.
+        :type request: :class:`tencentcloud.trp.v20210515.models.ModifyTraceDataRequest`
+        :rtype: :class:`tencentcloud.trp.v20210515.models.ModifyTraceDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyTraceData", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyTraceDataResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyTraceDataRanks(self, request):
+        """修改溯源信息的排序
+
+        :param request: Request instance for ModifyTraceDataRanks.
+        :type request: :class:`tencentcloud.trp.v20210515.models.ModifyTraceDataRanksRequest`
+        :rtype: :class:`tencentcloud.trp.v20210515.models.ModifyTraceDataRanksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyTraceDataRanks", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyTraceDataRanksResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

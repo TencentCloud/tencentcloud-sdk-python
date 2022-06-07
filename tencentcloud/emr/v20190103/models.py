@@ -25,13 +25,17 @@ class AddUsersForUserManagerRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param InstanceId: 集群字符串ID
+        :type InstanceId: str
         :param UserManagerUserList: 用户信息列表
         :type UserManagerUserList: list of UserInfoForUserManager
         """
+        self.InstanceId = None
         self.UserManagerUserList = None
 
 
     def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
         if params.get("UserManagerUserList") is not None:
             self.UserManagerUserList = []
             for item in params.get("UserManagerUserList"):
@@ -54,13 +58,23 @@ class AddUsersForUserManagerResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param SuccessUserList: 添加成功的用户列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SuccessUserList: list of str
+        :param FailedUserList: 添加失败的用户列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailedUserList: list of str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.SuccessUserList = None
+        self.FailedUserList = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.SuccessUserList = params.get("SuccessUserList")
+        self.FailedUserList = params.get("FailedUserList")
         self.RequestId = params.get("RequestId")
 
 
@@ -1493,13 +1507,31 @@ class DescribeUsersForUserManagerRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param InstanceId: 集群实例ID
+        :type InstanceId: str
+        :param PageNo: 页码
+        :type PageNo: int
+        :param PageSize: 分页的大小
+        :type PageSize: int
+        :param UserManagerFilter: 查询用户列表过滤器
+        :type UserManagerFilter: :class:`tencentcloud.emr.v20190103.models.UserManagerFilter`
         :param NeedKeytabInfo: 是否需要keytab文件的信息，仅对开启kerberos的集群有效，默认为false
         :type NeedKeytabInfo: bool
         """
+        self.InstanceId = None
+        self.PageNo = None
+        self.PageSize = None
+        self.UserManagerFilter = None
         self.NeedKeytabInfo = None
 
 
     def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.PageNo = params.get("PageNo")
+        self.PageSize = params.get("PageSize")
+        if params.get("UserManagerFilter") is not None:
+            self.UserManagerFilter = UserManagerFilter()
+            self.UserManagerFilter._deserialize(params.get("UserManagerFilter"))
         self.NeedKeytabInfo = params.get("NeedKeytabInfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -1517,13 +1549,27 @@ class DescribeUsersForUserManagerResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param TotalCnt: 总数
+        :type TotalCnt: int
+        :param UserManagerUserList: 用户信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserManagerUserList: list of UserManagerUserBriefInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.TotalCnt = None
+        self.UserManagerUserList = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.TotalCnt = params.get("TotalCnt")
+        if params.get("UserManagerUserList") is not None:
+            self.UserManagerUserList = []
+            for item in params.get("UserManagerUserList"):
+                obj = UserManagerUserBriefInfo()
+                obj._deserialize(item)
+                self.UserManagerUserList.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -4935,6 +4981,58 @@ class UserInfoForUserManager(AbstractModel):
         self.UserGroup = params.get("UserGroup")
         self.PassWord = params.get("PassWord")
         self.ReMark = params.get("ReMark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UserManagerFilter(AbstractModel):
+    """用户管理列表过滤器
+
+    """
+
+
+class UserManagerUserBriefInfo(AbstractModel):
+    """用户管理中用户的简要信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UserName: 用户名
+        :type UserName: str
+        :param UserGroup: 用户所属的组
+        :type UserGroup: str
+        :param UserType: Manager表示管理员、NormalUser表示普通用户
+        :type UserType: str
+        :param CreateTime: 用户创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param SupportDownLoadKeyTab: 是否可以下载用户对应的keytab文件，对开启kerberos的集群才有意义
+        :type SupportDownLoadKeyTab: bool
+        :param DownLoadKeyTabUrl: keytab文件的下载地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DownLoadKeyTabUrl: str
+        """
+        self.UserName = None
+        self.UserGroup = None
+        self.UserType = None
+        self.CreateTime = None
+        self.SupportDownLoadKeyTab = None
+        self.DownLoadKeyTabUrl = None
+
+
+    def _deserialize(self, params):
+        self.UserName = params.get("UserName")
+        self.UserGroup = params.get("UserGroup")
+        self.UserType = params.get("UserType")
+        self.CreateTime = params.get("CreateTime")
+        self.SupportDownLoadKeyTab = params.get("SupportDownLoadKeyTab")
+        self.DownLoadKeyTabUrl = params.get("DownLoadKeyTabUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

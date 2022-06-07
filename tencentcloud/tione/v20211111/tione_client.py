@@ -17,30 +17,30 @@ import json
 
 from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentCloudSDKException
 from tencentcloud.common.abstract_client import AbstractClient
-from tencentcloud.emr.v20190103 import models
+from tencentcloud.tione.v20211111 import models
 
 
-class EmrClient(AbstractClient):
-    _apiVersion = '2019-01-03'
-    _endpoint = 'emr.tencentcloudapi.com'
-    _service = 'emr'
+class TioneClient(AbstractClient):
+    _apiVersion = '2021-11-11'
+    _endpoint = 'tione.tencentcloudapi.com'
+    _service = 'tione'
 
 
-    def AddUsersForUserManager(self, request):
-        """新增用户列表（用户管理）
+    def CreateDataset(self, request):
+        """创建数据集
 
-        :param request: Request instance for AddUsersForUserManager.
-        :type request: :class:`tencentcloud.emr.v20190103.models.AddUsersForUserManagerRequest`
-        :rtype: :class:`tencentcloud.emr.v20190103.models.AddUsersForUserManagerResponse`
+        :param request: Request instance for CreateDataset.
+        :type request: :class:`tencentcloud.tione.v20211111.models.CreateDatasetRequest`
+        :rtype: :class:`tencentcloud.tione.v20211111.models.CreateDatasetResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("AddUsersForUserManager", params, headers=headers)
+            body = self.call("CreateDataset", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.AddUsersForUserManagerResponse()
+                model = models.CreateDatasetResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -55,21 +55,21 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def CreateInstance(self, request):
-        """创建EMR集群实例
+    def CreateTrainingModel(self, request):
+        """导入模型
 
-        :param request: Request instance for CreateInstance.
-        :type request: :class:`tencentcloud.emr.v20190103.models.CreateInstanceRequest`
-        :rtype: :class:`tencentcloud.emr.v20190103.models.CreateInstanceResponse`
+        :param request: Request instance for CreateTrainingModel.
+        :type request: :class:`tencentcloud.tione.v20211111.models.CreateTrainingModelRequest`
+        :rtype: :class:`tencentcloud.tione.v20211111.models.CreateTrainingModelResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("CreateInstance", params, headers=headers)
+            body = self.call("CreateTrainingModel", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.CreateInstanceResponse()
+                model = models.CreateTrainingModelResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -84,21 +84,21 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeClusterNodes(self, request):
-        """查询硬件节点信息
+    def CreateTrainingTask(self, request):
+        """创建模型训练任务
 
-        :param request: Request instance for DescribeClusterNodes.
-        :type request: :class:`tencentcloud.emr.v20190103.models.DescribeClusterNodesRequest`
-        :rtype: :class:`tencentcloud.emr.v20190103.models.DescribeClusterNodesResponse`
+        :param request: Request instance for CreateTrainingTask.
+        :type request: :class:`tencentcloud.tione.v20211111.models.CreateTrainingTaskRequest`
+        :rtype: :class:`tencentcloud.tione.v20211111.models.CreateTrainingTaskResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("DescribeClusterNodes", params, headers=headers)
+            body = self.call("CreateTrainingTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeClusterNodesResponse()
+                model = models.CreateTrainingTaskResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -113,21 +113,21 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeCvmQuota(self, request):
-        """获取账户的CVM配额
+    def DeleteDataset(self, request):
+        """删除数据集
 
-        :param request: Request instance for DescribeCvmQuota.
-        :type request: :class:`tencentcloud.emr.v20190103.models.DescribeCvmQuotaRequest`
-        :rtype: :class:`tencentcloud.emr.v20190103.models.DescribeCvmQuotaResponse`
+        :param request: Request instance for DeleteDataset.
+        :type request: :class:`tencentcloud.tione.v20211111.models.DeleteDatasetRequest`
+        :rtype: :class:`tencentcloud.tione.v20211111.models.DeleteDatasetResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("DescribeCvmQuota", params, headers=headers)
+            body = self.call("DeleteDataset", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeCvmQuotaResponse()
+                model = models.DeleteDatasetResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -142,21 +142,21 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeInstanceRenewNodes(self, request):
-        """预付费集群隔离后续费资源查询
+    def DeleteTrainingModel(self, request):
+        """删除模型
 
-        :param request: Request instance for DescribeInstanceRenewNodes.
-        :type request: :class:`tencentcloud.emr.v20190103.models.DescribeInstanceRenewNodesRequest`
-        :rtype: :class:`tencentcloud.emr.v20190103.models.DescribeInstanceRenewNodesResponse`
+        :param request: Request instance for DeleteTrainingModel.
+        :type request: :class:`tencentcloud.tione.v20211111.models.DeleteTrainingModelRequest`
+        :rtype: :class:`tencentcloud.tione.v20211111.models.DeleteTrainingModelResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("DescribeInstanceRenewNodes", params, headers=headers)
+            body = self.call("DeleteTrainingModel", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeInstanceRenewNodesResponse()
+                model = models.DeleteTrainingModelResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -171,21 +171,21 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeInstances(self, request):
-        """查询EMR实例
+    def DeleteTrainingModelVersion(self, request):
+        """删除模型版本
 
-        :param request: Request instance for DescribeInstances.
-        :type request: :class:`tencentcloud.emr.v20190103.models.DescribeInstancesRequest`
-        :rtype: :class:`tencentcloud.emr.v20190103.models.DescribeInstancesResponse`
+        :param request: Request instance for DeleteTrainingModelVersion.
+        :type request: :class:`tencentcloud.tione.v20211111.models.DeleteTrainingModelVersionRequest`
+        :rtype: :class:`tencentcloud.tione.v20211111.models.DeleteTrainingModelVersionResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("DescribeInstances", params, headers=headers)
+            body = self.call("DeleteTrainingModelVersion", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeInstancesResponse()
+                model = models.DeleteTrainingModelVersionResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -200,21 +200,21 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeInstancesList(self, request):
-        """EMR集群实例列表查询
+    def DeleteTrainingTask(self, request):
+        """删除训练任务
 
-        :param request: Request instance for DescribeInstancesList.
-        :type request: :class:`tencentcloud.emr.v20190103.models.DescribeInstancesListRequest`
-        :rtype: :class:`tencentcloud.emr.v20190103.models.DescribeInstancesListResponse`
+        :param request: Request instance for DeleteTrainingTask.
+        :type request: :class:`tencentcloud.tione.v20211111.models.DeleteTrainingTaskRequest`
+        :rtype: :class:`tencentcloud.tione.v20211111.models.DeleteTrainingTaskResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("DescribeInstancesList", params, headers=headers)
+            body = self.call("DeleteTrainingTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeInstancesListResponse()
+                model = models.DeleteTrainingTaskResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -229,21 +229,21 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeJobFlow(self, request):
-        """查询流程任务
+    def DescribeBillingResourceGroups(self, request):
+        """查询资源组详情
 
-        :param request: Request instance for DescribeJobFlow.
-        :type request: :class:`tencentcloud.emr.v20190103.models.DescribeJobFlowRequest`
-        :rtype: :class:`tencentcloud.emr.v20190103.models.DescribeJobFlowResponse`
+        :param request: Request instance for DescribeBillingResourceGroups.
+        :type request: :class:`tencentcloud.tione.v20211111.models.DescribeBillingResourceGroupsRequest`
+        :rtype: :class:`tencentcloud.tione.v20211111.models.DescribeBillingResourceGroupsResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("DescribeJobFlow", params, headers=headers)
+            body = self.call("DescribeBillingResourceGroups", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeJobFlowResponse()
+                model = models.DescribeBillingResourceGroupsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -258,21 +258,21 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeResourceSchedule(self, request):
-        """获取yarn资源调度页面的数据
+    def DescribeBillingSpecsPrice(self, request):
+        """本接口(DescribeBillingSpecsPrice)用于查询计费项价格。
 
-        :param request: Request instance for DescribeResourceSchedule.
-        :type request: :class:`tencentcloud.emr.v20190103.models.DescribeResourceScheduleRequest`
-        :rtype: :class:`tencentcloud.emr.v20190103.models.DescribeResourceScheduleResponse`
+        :param request: Request instance for DescribeBillingSpecsPrice.
+        :type request: :class:`tencentcloud.tione.v20211111.models.DescribeBillingSpecsPriceRequest`
+        :rtype: :class:`tencentcloud.tione.v20211111.models.DescribeBillingSpecsPriceResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("DescribeResourceSchedule", params, headers=headers)
+            body = self.call("DescribeBillingSpecsPrice", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeResourceScheduleResponse()
+                model = models.DescribeBillingSpecsPriceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -287,21 +287,21 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeUsersForUserManager(self, request):
-        """批量导出用户。对于kerberos集群，如果需要kertab文件下载地址，可以将NeedKeytabInfo设置为true；注意SupportDownLoadKeyTab为true，但是DownLoadKeyTabUrl为空字符串，表示keytab文件在后台没有准备好（正在生成）
+    def DescribeDatasetDetailStructured(self, request):
+        """查询结构化数据集详情
 
-        :param request: Request instance for DescribeUsersForUserManager.
-        :type request: :class:`tencentcloud.emr.v20190103.models.DescribeUsersForUserManagerRequest`
-        :rtype: :class:`tencentcloud.emr.v20190103.models.DescribeUsersForUserManagerResponse`
+        :param request: Request instance for DescribeDatasetDetailStructured.
+        :type request: :class:`tencentcloud.tione.v20211111.models.DescribeDatasetDetailStructuredRequest`
+        :rtype: :class:`tencentcloud.tione.v20211111.models.DescribeDatasetDetailStructuredResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("DescribeUsersForUserManager", params, headers=headers)
+            body = self.call("DescribeDatasetDetailStructured", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeUsersForUserManagerResponse()
+                model = models.DescribeDatasetDetailStructuredResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -316,21 +316,21 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def InquirePriceRenewEmr(self, request):
-        """集群续费询价。
+    def DescribeDatasetDetailUnstructured(self, request):
+        """查询非结构化数据集详情
 
-        :param request: Request instance for InquirePriceRenewEmr.
-        :type request: :class:`tencentcloud.emr.v20190103.models.InquirePriceRenewEmrRequest`
-        :rtype: :class:`tencentcloud.emr.v20190103.models.InquirePriceRenewEmrResponse`
+        :param request: Request instance for DescribeDatasetDetailUnstructured.
+        :type request: :class:`tencentcloud.tione.v20211111.models.DescribeDatasetDetailUnstructuredRequest`
+        :rtype: :class:`tencentcloud.tione.v20211111.models.DescribeDatasetDetailUnstructuredResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("InquirePriceRenewEmr", params, headers=headers)
+            body = self.call("DescribeDatasetDetailUnstructured", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.InquirePriceRenewEmrResponse()
+                model = models.DescribeDatasetDetailUnstructuredResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -345,21 +345,21 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def InquiryPriceCreateInstance(self, request):
-        """创建实例询价
+    def DescribeDatasets(self, request):
+        """查询数据集列表
 
-        :param request: Request instance for InquiryPriceCreateInstance.
-        :type request: :class:`tencentcloud.emr.v20190103.models.InquiryPriceCreateInstanceRequest`
-        :rtype: :class:`tencentcloud.emr.v20190103.models.InquiryPriceCreateInstanceResponse`
+        :param request: Request instance for DescribeDatasets.
+        :type request: :class:`tencentcloud.tione.v20211111.models.DescribeDatasetsRequest`
+        :rtype: :class:`tencentcloud.tione.v20211111.models.DescribeDatasetsResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("InquiryPriceCreateInstance", params, headers=headers)
+            body = self.call("DescribeDatasets", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.InquiryPriceCreateInstanceResponse()
+                model = models.DescribeDatasetsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -374,21 +374,21 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def InquiryPriceRenewInstance(self, request):
-        """续费询价。
+    def DescribeInferTemplates(self, request):
+        """查询推理镜像模板
 
-        :param request: Request instance for InquiryPriceRenewInstance.
-        :type request: :class:`tencentcloud.emr.v20190103.models.InquiryPriceRenewInstanceRequest`
-        :rtype: :class:`tencentcloud.emr.v20190103.models.InquiryPriceRenewInstanceResponse`
+        :param request: Request instance for DescribeInferTemplates.
+        :type request: :class:`tencentcloud.tione.v20211111.models.DescribeInferTemplatesRequest`
+        :rtype: :class:`tencentcloud.tione.v20211111.models.DescribeInferTemplatesResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("InquiryPriceRenewInstance", params, headers=headers)
+            body = self.call("DescribeInferTemplates", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.InquiryPriceRenewInstanceResponse()
+                model = models.DescribeInferTemplatesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -403,21 +403,21 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def InquiryPriceScaleOutInstance(self, request):
-        """扩容询价. 当扩容时候，请通过该接口查询价格。
+    def DescribeLatestTrainingMetrics(self, request):
+        """查询最近上报的训练自定义指标
 
-        :param request: Request instance for InquiryPriceScaleOutInstance.
-        :type request: :class:`tencentcloud.emr.v20190103.models.InquiryPriceScaleOutInstanceRequest`
-        :rtype: :class:`tencentcloud.emr.v20190103.models.InquiryPriceScaleOutInstanceResponse`
+        :param request: Request instance for DescribeLatestTrainingMetrics.
+        :type request: :class:`tencentcloud.tione.v20211111.models.DescribeLatestTrainingMetricsRequest`
+        :rtype: :class:`tencentcloud.tione.v20211111.models.DescribeLatestTrainingMetricsResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("InquiryPriceScaleOutInstance", params, headers=headers)
+            body = self.call("DescribeLatestTrainingMetrics", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.InquiryPriceScaleOutInstanceResponse()
+                model = models.DescribeLatestTrainingMetricsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -432,21 +432,21 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def InquiryPriceUpdateInstance(self, request):
-        """变配询价
+    def DescribeLogs(self, request):
+        """获取训练、推理、Notebook服务的日志
 
-        :param request: Request instance for InquiryPriceUpdateInstance.
-        :type request: :class:`tencentcloud.emr.v20190103.models.InquiryPriceUpdateInstanceRequest`
-        :rtype: :class:`tencentcloud.emr.v20190103.models.InquiryPriceUpdateInstanceResponse`
+        :param request: Request instance for DescribeLogs.
+        :type request: :class:`tencentcloud.tione.v20211111.models.DescribeLogsRequest`
+        :rtype: :class:`tencentcloud.tione.v20211111.models.DescribeLogsResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("InquiryPriceUpdateInstance", params, headers=headers)
+            body = self.call("DescribeLogs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.InquiryPriceUpdateInstanceResponse()
+                model = models.DescribeLogsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -461,21 +461,21 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ModifyResourcePools(self, request):
-        """刷新动态资源池
+    def DescribeTrainingFrameworks(self, request):
+        """训练框架列表
 
-        :param request: Request instance for ModifyResourcePools.
-        :type request: :class:`tencentcloud.emr.v20190103.models.ModifyResourcePoolsRequest`
-        :rtype: :class:`tencentcloud.emr.v20190103.models.ModifyResourcePoolsResponse`
+        :param request: Request instance for DescribeTrainingFrameworks.
+        :type request: :class:`tencentcloud.tione.v20211111.models.DescribeTrainingFrameworksRequest`
+        :rtype: :class:`tencentcloud.tione.v20211111.models.DescribeTrainingFrameworksResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("ModifyResourcePools", params, headers=headers)
+            body = self.call("DescribeTrainingFrameworks", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ModifyResourcePoolsResponse()
+                model = models.DescribeTrainingFrameworksResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -490,21 +490,21 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ModifyResourceScheduleConfig(self, request):
-        """修改yarn资源调度的资源配置
+    def DescribeTrainingMetrics(self, request):
+        """查询训练自定义指标
 
-        :param request: Request instance for ModifyResourceScheduleConfig.
-        :type request: :class:`tencentcloud.emr.v20190103.models.ModifyResourceScheduleConfigRequest`
-        :rtype: :class:`tencentcloud.emr.v20190103.models.ModifyResourceScheduleConfigResponse`
+        :param request: Request instance for DescribeTrainingMetrics.
+        :type request: :class:`tencentcloud.tione.v20211111.models.DescribeTrainingMetricsRequest`
+        :rtype: :class:`tencentcloud.tione.v20211111.models.DescribeTrainingMetricsResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("ModifyResourceScheduleConfig", params, headers=headers)
+            body = self.call("DescribeTrainingMetrics", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ModifyResourceScheduleConfigResponse()
+                model = models.DescribeTrainingMetricsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -519,21 +519,21 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ModifyResourceScheduler(self, request):
-        """修改了yarn的资源调度器，点击部署生效
+    def DescribeTrainingModelVersion(self, request):
+        """查询模型版本
 
-        :param request: Request instance for ModifyResourceScheduler.
-        :type request: :class:`tencentcloud.emr.v20190103.models.ModifyResourceSchedulerRequest`
-        :rtype: :class:`tencentcloud.emr.v20190103.models.ModifyResourceSchedulerResponse`
+        :param request: Request instance for DescribeTrainingModelVersion.
+        :type request: :class:`tencentcloud.tione.v20211111.models.DescribeTrainingModelVersionRequest`
+        :rtype: :class:`tencentcloud.tione.v20211111.models.DescribeTrainingModelVersionResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("ModifyResourceScheduler", params, headers=headers)
+            body = self.call("DescribeTrainingModelVersion", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ModifyResourceSchedulerResponse()
+                model = models.DescribeTrainingModelVersionResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -548,21 +548,21 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def RunJobFlow(self, request):
-        """创建流程作业
+    def DescribeTrainingModelVersions(self, request):
+        """模型版本列表
 
-        :param request: Request instance for RunJobFlow.
-        :type request: :class:`tencentcloud.emr.v20190103.models.RunJobFlowRequest`
-        :rtype: :class:`tencentcloud.emr.v20190103.models.RunJobFlowResponse`
+        :param request: Request instance for DescribeTrainingModelVersions.
+        :type request: :class:`tencentcloud.tione.v20211111.models.DescribeTrainingModelVersionsRequest`
+        :rtype: :class:`tencentcloud.tione.v20211111.models.DescribeTrainingModelVersionsResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("RunJobFlow", params, headers=headers)
+            body = self.call("DescribeTrainingModelVersions", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.RunJobFlowResponse()
+                model = models.DescribeTrainingModelVersionsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -577,21 +577,21 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ScaleOutInstance(self, request):
-        """实例扩容
+    def DescribeTrainingModels(self, request):
+        """模型列表
 
-        :param request: Request instance for ScaleOutInstance.
-        :type request: :class:`tencentcloud.emr.v20190103.models.ScaleOutInstanceRequest`
-        :rtype: :class:`tencentcloud.emr.v20190103.models.ScaleOutInstanceResponse`
+        :param request: Request instance for DescribeTrainingModels.
+        :type request: :class:`tencentcloud.tione.v20211111.models.DescribeTrainingModelsRequest`
+        :rtype: :class:`tencentcloud.tione.v20211111.models.DescribeTrainingModelsResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("ScaleOutInstance", params, headers=headers)
+            body = self.call("DescribeTrainingModels", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ScaleOutInstanceResponse()
+                model = models.DescribeTrainingModelsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -606,21 +606,21 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def SyncPodState(self, request):
-        """EMR同步TKE中POD状态
+    def DescribeTrainingTask(self, request):
+        """训练任务详情
 
-        :param request: Request instance for SyncPodState.
-        :type request: :class:`tencentcloud.emr.v20190103.models.SyncPodStateRequest`
-        :rtype: :class:`tencentcloud.emr.v20190103.models.SyncPodStateResponse`
+        :param request: Request instance for DescribeTrainingTask.
+        :type request: :class:`tencentcloud.tione.v20211111.models.DescribeTrainingTaskRequest`
+        :rtype: :class:`tencentcloud.tione.v20211111.models.DescribeTrainingTaskResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("SyncPodState", params, headers=headers)
+            body = self.call("DescribeTrainingTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.SyncPodStateResponse()
+                model = models.DescribeTrainingTaskResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -635,21 +635,21 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def TerminateInstance(self, request):
-        """销毁EMR实例。此接口仅支持弹性MapReduce正式计费版本。
+    def DescribeTrainingTaskPods(self, request):
+        """训练任务pod列表
 
-        :param request: Request instance for TerminateInstance.
-        :type request: :class:`tencentcloud.emr.v20190103.models.TerminateInstanceRequest`
-        :rtype: :class:`tencentcloud.emr.v20190103.models.TerminateInstanceResponse`
+        :param request: Request instance for DescribeTrainingTaskPods.
+        :type request: :class:`tencentcloud.tione.v20211111.models.DescribeTrainingTaskPodsRequest`
+        :rtype: :class:`tencentcloud.tione.v20211111.models.DescribeTrainingTaskPodsResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("TerminateInstance", params, headers=headers)
+            body = self.call("DescribeTrainingTaskPods", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.TerminateInstanceResponse()
+                model = models.DescribeTrainingTaskPodsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -664,21 +664,108 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def TerminateTasks(self, request):
-        """缩容Task节点
+    def DescribeTrainingTasks(self, request):
+        """训练任务列表
 
-        :param request: Request instance for TerminateTasks.
-        :type request: :class:`tencentcloud.emr.v20190103.models.TerminateTasksRequest`
-        :rtype: :class:`tencentcloud.emr.v20190103.models.TerminateTasksResponse`
+        :param request: Request instance for DescribeTrainingTasks.
+        :type request: :class:`tencentcloud.tione.v20211111.models.DescribeTrainingTasksRequest`
+        :rtype: :class:`tencentcloud.tione.v20211111.models.DescribeTrainingTasksResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("TerminateTasks", params, headers=headers)
+            body = self.call("DescribeTrainingTasks", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.TerminateTasksResponse()
+                model = models.DescribeTrainingTasksResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def PushTrainingMetrics(self, request):
+        """上报训练自定义指标
+
+        :param request: Request instance for PushTrainingMetrics.
+        :type request: :class:`tencentcloud.tione.v20211111.models.PushTrainingMetricsRequest`
+        :rtype: :class:`tencentcloud.tione.v20211111.models.PushTrainingMetricsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("PushTrainingMetrics", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.PushTrainingMetricsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def StartTrainingTask(self, request):
+        """启动模型训练任务
+
+        :param request: Request instance for StartTrainingTask.
+        :type request: :class:`tencentcloud.tione.v20211111.models.StartTrainingTaskRequest`
+        :rtype: :class:`tencentcloud.tione.v20211111.models.StartTrainingTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StartTrainingTask", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.StartTrainingTaskResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def StopTrainingTask(self, request):
+        """停止模型训练任务
+
+        :param request: Request instance for StopTrainingTask.
+        :type request: :class:`tencentcloud.tione.v20211111.models.StopTrainingTaskRequest`
+        :rtype: :class:`tencentcloud.tione.v20211111.models.StopTrainingTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StopTrainingTask", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.StopTrainingTaskResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

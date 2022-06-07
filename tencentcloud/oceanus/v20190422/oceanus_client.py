@@ -517,3 +517,32 @@ class OceanusClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
+
+
+    def TriggerJobSavepoint(self, request):
+        """触发Savepoint
+
+        :param request: Request instance for TriggerJobSavepoint.
+        :type request: :class:`tencentcloud.oceanus.v20190422.models.TriggerJobSavepointRequest`
+        :rtype: :class:`tencentcloud.oceanus.v20190422.models.TriggerJobSavepointResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("TriggerJobSavepoint", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.TriggerJobSavepointResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
