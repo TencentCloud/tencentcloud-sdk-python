@@ -24,6 +24,11 @@ def test_import_aai():
     from tencentcloud.aai.v20180522 import models
 
 
+def test_import_acp():
+    from tencentcloud.acp.v20220105 import acp_client
+    from tencentcloud.acp.v20220105 import models
+
+
 def test_import_advisor():
     from tencentcloud.advisor.v20200721 import advisor_client
     from tencentcloud.advisor.v20200721 import models
@@ -662,6 +667,11 @@ def test_import_mgobe():
 def test_import_mgobe():
     from tencentcloud.mgobe.v20201014 import mgobe_client
     from tencentcloud.mgobe.v20201014 import models
+
+
+def test_import_mmps():
+    from tencentcloud.mmps.v20200710 import mmps_client
+    from tencentcloud.mmps.v20200710 import models
 
 
 def test_import_mna():

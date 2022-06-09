@@ -4285,6 +4285,8 @@ class ApplyUploadRequest(AbstractModel):
         r"""
         :param MediaType: 媒体类型，可选值请参考 [上传能力综述](/document/product/266/9760#.E6.96.87.E4.BB.B6.E7.B1.BB.E5.9E.8B)。
         :type MediaType: str
+        :param SubAppId: <b>点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :type SubAppId: int
         :param MediaName: 媒体名称。
         :type MediaName: str
         :param CoverType: 封面类型，可选值请参考 [上传能力综述](/document/product/266/9760#.E6.96.87.E4.BB.B6.E7.B1.BB.E5.9E.8B)。
@@ -4304,10 +4306,9 @@ class ApplyUploadRequest(AbstractModel):
         :type SessionContext: str
         :param ExtInfo: 保留字段，特殊用途时使用。
         :type ExtInfo: str
-        :param SubAppId: 点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
         """
         self.MediaType = None
+        self.SubAppId = None
         self.MediaName = None
         self.CoverType = None
         self.Procedure = None
@@ -4317,11 +4318,11 @@ class ApplyUploadRequest(AbstractModel):
         self.SourceContext = None
         self.SessionContext = None
         self.ExtInfo = None
-        self.SubAppId = None
 
 
     def _deserialize(self, params):
         self.MediaType = params.get("MediaType")
+        self.SubAppId = params.get("SubAppId")
         self.MediaName = params.get("MediaName")
         self.CoverType = params.get("CoverType")
         self.Procedure = params.get("Procedure")
@@ -4331,7 +4332,6 @@ class ApplyUploadRequest(AbstractModel):
         self.SourceContext = params.get("SourceContext")
         self.SessionContext = params.get("SessionContext")
         self.ExtInfo = params.get("ExtInfo")
-        self.SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

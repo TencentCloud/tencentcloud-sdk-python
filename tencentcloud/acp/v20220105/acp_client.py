@@ -17,30 +17,30 @@ import json
 
 from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentCloudSDKException
 from tencentcloud.common.abstract_client import AbstractClient
-from tencentcloud.bsca.v20210811 import models
+from tencentcloud.acp.v20220105 import models
 
 
-class BscaClient(AbstractClient):
-    _apiVersion = '2021-08-11'
-    _endpoint = 'bsca.tencentcloudapi.com'
-    _service = 'bsca'
+class AcpClient(AbstractClient):
+    _apiVersion = '2022-01-05'
+    _endpoint = 'acp.tencentcloudapi.com'
+    _service = 'acp'
 
 
-    def DescribeKBComponent(self, request):
-        """本接口(DescribeKBComponent)用于在知识库中查询开源组件信息。本接口根据用户输入的PURL在知识库中寻找对应的开源组件，其中Name为必填字段。
+    def CreateAppScanTask(self, request):
+        """创建应用合规隐私诊断任务
 
-        :param request: Request instance for DescribeKBComponent.
-        :type request: :class:`tencentcloud.bsca.v20210811.models.DescribeKBComponentRequest`
-        :rtype: :class:`tencentcloud.bsca.v20210811.models.DescribeKBComponentResponse`
+        :param request: Request instance for CreateAppScanTask.
+        :type request: :class:`tencentcloud.acp.v20220105.models.CreateAppScanTaskRequest`
+        :rtype: :class:`tencentcloud.acp.v20220105.models.CreateAppScanTaskResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("DescribeKBComponent", params, headers=headers)
+            body = self.call("CreateAppScanTask", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeKBComponentResponse()
+                model = models.CreateAppScanTaskResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -55,21 +55,21 @@ class BscaClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeKBComponentVulnerability(self, request):
-        """本接口(DescribeKBComponentVulnerability)用于在知识库中查询开源组件的漏洞信息。
+    def CreateAppScanTaskRepeat(self, request):
+        """App应用合规隐私诊断重试任务
 
-        :param request: Request instance for DescribeKBComponentVulnerability.
-        :type request: :class:`tencentcloud.bsca.v20210811.models.DescribeKBComponentVulnerabilityRequest`
-        :rtype: :class:`tencentcloud.bsca.v20210811.models.DescribeKBComponentVulnerabilityResponse`
+        :param request: Request instance for CreateAppScanTaskRepeat.
+        :type request: :class:`tencentcloud.acp.v20220105.models.CreateAppScanTaskRepeatRequest`
+        :rtype: :class:`tencentcloud.acp.v20220105.models.CreateAppScanTaskRepeatResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("DescribeKBComponentVulnerability", params, headers=headers)
+            body = self.call("CreateAppScanTaskRepeat", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeKBComponentVulnerabilityResponse()
+                model = models.CreateAppScanTaskRepeatResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -84,21 +84,21 @@ class BscaClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeKBLicense(self, request):
-        """本接口(DescribeKBLicense)用于在知识库中查询许可证信息。
+    def DescribeFileTicket(self, request):
+        """获取应用合规文件上传凭证，用于上传诊断文件
 
-        :param request: Request instance for DescribeKBLicense.
-        :type request: :class:`tencentcloud.bsca.v20210811.models.DescribeKBLicenseRequest`
-        :rtype: :class:`tencentcloud.bsca.v20210811.models.DescribeKBLicenseResponse`
+        :param request: Request instance for DescribeFileTicket.
+        :type request: :class:`tencentcloud.acp.v20220105.models.DescribeFileTicketRequest`
+        :rtype: :class:`tencentcloud.acp.v20220105.models.DescribeFileTicketResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("DescribeKBLicense", params, headers=headers)
+            body = self.call("DescribeFileTicket", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeKBLicenseResponse()
+                model = models.DescribeFileTicketResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -113,21 +113,21 @@ class BscaClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeKBVulnerability(self, request):
-        """本接口(DescribeKBVulnerability)用于在知识库中查询漏洞详细信息，支持根据CVE ID查询或者根据Vul ID查询。
+    def DescribeScanTaskList(self, request):
+        """获取App隐私合规诊断任务列表
 
-        :param request: Request instance for DescribeKBVulnerability.
-        :type request: :class:`tencentcloud.bsca.v20210811.models.DescribeKBVulnerabilityRequest`
-        :rtype: :class:`tencentcloud.bsca.v20210811.models.DescribeKBVulnerabilityResponse`
+        :param request: Request instance for DescribeScanTaskList.
+        :type request: :class:`tencentcloud.acp.v20220105.models.DescribeScanTaskListRequest`
+        :rtype: :class:`tencentcloud.acp.v20220105.models.DescribeScanTaskListResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("DescribeKBVulnerability", params, headers=headers)
+            body = self.call("DescribeScanTaskList", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeKBVulnerabilityResponse()
+                model = models.DescribeScanTaskListResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -142,21 +142,50 @@ class BscaClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def MatchKBPURLList(self, request):
-        """本接口(MatchKBPURLList)用于在知识库中匹配与特征对应的开源组件列表。
+    def DescribeScanTaskReportUrl(self, request):
+        """获取App合规诊断任务报告url
 
-        :param request: Request instance for MatchKBPURLList.
-        :type request: :class:`tencentcloud.bsca.v20210811.models.MatchKBPURLListRequest`
-        :rtype: :class:`tencentcloud.bsca.v20210811.models.MatchKBPURLListResponse`
+        :param request: Request instance for DescribeScanTaskReportUrl.
+        :type request: :class:`tencentcloud.acp.v20220105.models.DescribeScanTaskReportUrlRequest`
+        :rtype: :class:`tencentcloud.acp.v20220105.models.DescribeScanTaskReportUrlResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("MatchKBPURLList", params, headers=headers)
+            body = self.call("DescribeScanTaskReportUrl", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.MatchKBPURLListResponse()
+                model = models.DescribeScanTaskReportUrlResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeScanTaskStatus(self, request):
+        """查询App隐私合规诊断任务状态
+
+        :param request: Request instance for DescribeScanTaskStatus.
+        :type request: :class:`tencentcloud.acp.v20220105.models.DescribeScanTaskStatusRequest`
+        :rtype: :class:`tencentcloud.acp.v20220105.models.DescribeScanTaskStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeScanTaskStatus", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeScanTaskStatusResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

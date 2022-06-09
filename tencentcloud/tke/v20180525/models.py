@@ -2493,6 +2493,8 @@ class CreateEKSClusterRequest(AbstractModel):
         :type EnableVpcCoreDNS: bool
         :param TagSpecification: 标签描述列表。通过指定该参数可以同时绑定标签到相应的资源实例，当前仅支持绑定标签到集群实例。
         :type TagSpecification: list of TagSpecification
+        :param SubnetInfos: 子网信息列表
+        :type SubnetInfos: list of SubnetInfos
         """
         self.K8SVersion = None
         self.VpcId = None
@@ -2504,6 +2506,7 @@ class CreateEKSClusterRequest(AbstractModel):
         self.ExtraParam = None
         self.EnableVpcCoreDNS = None
         self.TagSpecification = None
+        self.SubnetInfos = None
 
 
     def _deserialize(self, params):
@@ -2527,6 +2530,12 @@ class CreateEKSClusterRequest(AbstractModel):
                 obj = TagSpecification()
                 obj._deserialize(item)
                 self.TagSpecification.append(obj)
+        if params.get("SubnetInfos") is not None:
+            self.SubnetInfos = []
+            for item in params.get("SubnetInfos"):
+                obj = SubnetInfos()
+                obj._deserialize(item)
+                self.SubnetInfos.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -13864,6 +13873,34 @@ class SetNodePoolNodeProtectionResponse(AbstractModel):
         self.SucceedInstanceIds = params.get("SucceedInstanceIds")
         self.FailedInstanceIds = params.get("FailedInstanceIds")
         self.RequestId = params.get("RequestId")
+
+
+class SubnetInfos(AbstractModel):
+    """子网信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SubnetId: 子网id
+        :type SubnetId: str
+        :param Name: 子网节点名称
+        :type Name: str
+        """
+        self.SubnetId = None
+        self.Name = None
+
+
+    def _deserialize(self, params):
+        self.SubnetId = params.get("SubnetId")
+        self.Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class SyncPrometheusTempRequest(AbstractModel):

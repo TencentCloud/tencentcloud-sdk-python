@@ -4995,6 +4995,25 @@ class UserManagerFilter(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param UserName: 用户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserName: str
+        """
+        self.UserName = None
+
+
+    def _deserialize(self, params):
+        self.UserName = params.get("UserName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class UserManagerUserBriefInfo(AbstractModel):
     """用户管理中用户的简要信息

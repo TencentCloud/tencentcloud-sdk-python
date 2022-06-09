@@ -57,6 +57,9 @@ class AudioResult(AbstractModel):
         :param SubLabel: 该字段用于返回当前标签（Lable）下的二级标签。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubLabel: str
+        :param RecognitionResults: 识别类标签结果信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecognitionResults: list of RecognitionResult
         """
         self.HitFlag = None
         self.Label = None
@@ -70,6 +73,7 @@ class AudioResult(AbstractModel):
         self.MoanResults = None
         self.LanguageResults = None
         self.SubLabel = None
+        self.RecognitionResults = None
 
 
     def _deserialize(self, params):
@@ -100,6 +104,12 @@ class AudioResult(AbstractModel):
                 obj._deserialize(item)
                 self.LanguageResults.append(obj)
         self.SubLabel = params.get("SubLabel")
+        if params.get("RecognitionResults") is not None:
+            self.RecognitionResults = []
+            for item in params.get("RecognitionResults"):
+                obj = RecognitionResult()
+                obj._deserialize(item)
+                self.RecognitionResults.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -893,6 +903,41 @@ class MoanResult(AbstractModel):
         
 
 
+class RecognitionResult(AbstractModel):
+    """识别类标签结果信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Label: 可能的取值有：Teenager 、Gender
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Label: str
+        :param Tags: 识别标签列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
+        """
+        self.Label = None
+        self.Tags = None
+
+
+    def _deserialize(self, params):
+        self.Label = params.get("Label")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class StorageInfo(AbstractModel):
     """用于表示数据存储的相关信息
 
@@ -918,6 +963,48 @@ class StorageInfo(AbstractModel):
         if params.get("BucketInfo") is not None:
             self.BucketInfo = BucketInfo()
             self.BucketInfo._deserialize(params.get("BucketInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Tag(AbstractModel):
+    """音频切片识别标签
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 根据Label字段确定具体名称：
+当Label 为Teenager 时 Name可能取值有：Teenager 
+当Label 为Gender 时 Name可能取值有：Male 、Female
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param Score: 置信分：0～100，数值越大表示置信度越高
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Score: int
+        :param StartTime: 识别开始偏移时间，单位：毫秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTime: float
+        :param EndTime: 识别结束偏移时间，单位：毫秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: float
+        """
+        self.Name = None
+        self.Score = None
+        self.StartTime = None
+        self.EndTime = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Score = params.get("Score")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -377,6 +377,9 @@ LIMITEXCEEDED_ADDRESSQUOTALIMITEXCEEDEDDAILYALLOCATE = 'LimitExceeded.AddressQuo
 # LimitExceeded.AttachedDiskLimitExceeded
 LIMITEXCEEDED_ATTACHEDDISKLIMITEXCEEDED = 'LimitExceeded.AttachedDiskLimitExceeded'
 
+# 分配IPv6网段数量达到上限。
+LIMITEXCEEDED_CIDRBLOCK = 'LimitExceeded.CidrBlock'
+
 # 网卡配额不足。
 LIMITEXCEEDED_ENIQUOTALIMITEXCEEDED = 'LimitExceeded.EniQuotaLimitExceeded'
 

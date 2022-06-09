@@ -388,6 +388,38 @@ class TiiaClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DetectLabelPro(self, request):
+        """通用图像标签可识别数千种常见物体或场景，覆盖日常物品、场景、动物、植物、食物、饮品、交通工具等多个大类，返回主体的标签名称和所属细分类目等，广泛应用于拍照识物、场景分析、图像内容审核与推荐、智能相册分类等场景。
+
+        >
+        - 通用图像标签在原图像标签接口的基础上进行了升级，识别精度和标签覆盖范围相比原图像标签接口更优，推荐使用。
+
+        :param request: Request instance for DetectLabelPro.
+        :type request: :class:`tencentcloud.tiia.v20190529.models.DetectLabelProRequest`
+        :rtype: :class:`tencentcloud.tiia.v20190529.models.DetectLabelProResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DetectLabelPro", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DetectLabelProResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DetectMisbehavior(self, request):
         """可以识别输入的图片中是否包含不良行为，例如打架斗殴、赌博、抽烟等，可以应用于广告图、直播截图、短视频截图等审核，减少不良行为对平台内容质量的影响，维护健康向上的互联网环境。
         >

@@ -1574,6 +1574,35 @@ class OcrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def RecognizeIndonesiaIDCardOCR(self, request):
+        """印尼身份证识别
+
+        :param request: Request instance for RecognizeIndonesiaIDCardOCR.
+        :type request: :class:`tencentcloud.ocr.v20181119.models.RecognizeIndonesiaIDCardOCRRequest`
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.RecognizeIndonesiaIDCardOCRResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RecognizeIndonesiaIDCardOCR", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.RecognizeIndonesiaIDCardOCRResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def RecognizeOnlineTaxiItineraryOCR(self, request):
         """本接口支持网约车行程单关键字段的识别，包括行程起止日期、上车时间、起点、终点、里程、金额等字段。
 
@@ -1589,6 +1618,64 @@ class OcrClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RecognizeOnlineTaxiItineraryOCRResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def RecognizePhilippinesDrivingLicenseOCR(self, request):
+        """菲律宾驾驶证识别
+
+        :param request: Request instance for RecognizePhilippinesDrivingLicenseOCR.
+        :type request: :class:`tencentcloud.ocr.v20181119.models.RecognizePhilippinesDrivingLicenseOCRRequest`
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.RecognizePhilippinesDrivingLicenseOCRResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RecognizePhilippinesDrivingLicenseOCR", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.RecognizePhilippinesDrivingLicenseOCRResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def RecognizePhilippinesVoteIDOCR(self, request):
+        """菲律宾VoteID识别
+
+        :param request: Request instance for RecognizePhilippinesVoteIDOCR.
+        :type request: :class:`tencentcloud.ocr.v20181119.models.RecognizePhilippinesVoteIDOCRRequest`
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.RecognizePhilippinesVoteIDOCRResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RecognizePhilippinesVoteIDOCR", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.RecognizePhilippinesVoteIDOCRResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

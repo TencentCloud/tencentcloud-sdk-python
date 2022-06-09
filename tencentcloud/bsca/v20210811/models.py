@@ -678,6 +678,56 @@ class LicenseUnion(AbstractModel):
         
 
 
+class MatchKBPURLListRequest(AbstractModel):
+    """MatchKBPURLList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SHA1: SHA1。
+        :type SHA1: str
+        """
+        self.SHA1 = None
+
+
+    def _deserialize(self, params):
+        self.SHA1 = params.get("SHA1")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MatchKBPURLListResponse(AbstractModel):
+    """MatchKBPURLList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PURLList: 组件列表。
+        :type PURLList: list of PURL
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.PURLList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("PURLList") is not None:
+            self.PURLList = []
+            for item in params.get("PURLList"):
+                obj = PURL()
+                obj._deserialize(item)
+                self.PURLList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class PURL(AbstractModel):
     """PURL(Package URL)用于定位一个产品或组件，见 https://github.com/package-url/purl-spec。
 

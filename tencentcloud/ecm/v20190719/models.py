@@ -305,11 +305,17 @@ class AssignIpv6AddressesRequest(AbstractModel):
         :type Ipv6Addresses: list of Ipv6Address
         :param Ipv6AddressCount: 自动分配IPv6地址个数，内网IP地址个数总和不能超过配数。与入参Ipv6Addresses合并计算配额。与Ipv6Addresses必填一个。
         :type Ipv6AddressCount: int
+        :param Ipv6ISP: ipv6运营商如下：
+CTCC：中国电信
+CUCC：中国联通
+CMCC：中国移动
+        :type Ipv6ISP: str
         """
         self.EcmRegion = None
         self.NetworkInterfaceId = None
         self.Ipv6Addresses = None
         self.Ipv6AddressCount = None
+        self.Ipv6ISP = None
 
 
     def _deserialize(self, params):
@@ -322,6 +328,7 @@ class AssignIpv6AddressesRequest(AbstractModel):
                 obj._deserialize(item)
                 self.Ipv6Addresses.append(obj)
         self.Ipv6AddressCount = params.get("Ipv6AddressCount")
+        self.Ipv6ISP = params.get("Ipv6ISP")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
