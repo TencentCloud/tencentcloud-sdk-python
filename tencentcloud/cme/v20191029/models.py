@@ -5221,16 +5221,32 @@ class ProjectStreamConnectStatusChangedEvent(AbstractModel):
         :type ProjectId: str
         :param Status: 项目状态，取值有：
 <li>Working：云转推推流开始；</li>
-<li>Stopped：云转推推流结束。</li>
+<li>Stopped：云转推推流结束；</li>
+<li>InputInterrupted：云转推输入断流；</li>
+<li>OutputInterrupted：云转推输出断流。</li>
         :type Status: str
+        :param InputInterruptInfo: 云转推输入断流信息，仅当 Status 取值 InputInterrupted 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InputInterruptInfo: :class:`tencentcloud.cme.v20191029.models.StreamConnectInputInterruptInfo`
+        :param OutputInterruptInfo: 云转推输出断流信息，仅当 Status 取值 OutputInterrupted 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OutputInterruptInfo: :class:`tencentcloud.cme.v20191029.models.StreamConnectOutputInterruptInfo`
         """
         self.ProjectId = None
         self.Status = None
+        self.InputInterruptInfo = None
+        self.OutputInterruptInfo = None
 
 
     def _deserialize(self, params):
         self.ProjectId = params.get("ProjectId")
         self.Status = params.get("Status")
+        if params.get("InputInterruptInfo") is not None:
+            self.InputInterruptInfo = StreamConnectInputInterruptInfo()
+            self.InputInterruptInfo._deserialize(params.get("InputInterruptInfo"))
+        if params.get("OutputInterruptInfo") is not None:
+            self.OutputInterruptInfo = StreamConnectOutputInterruptInfo()
+            self.OutputInterruptInfo._deserialize(params.get("OutputInterruptInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5802,6 +5818,32 @@ class StorageNewFileCreatedEvent(AbstractModel):
         
 
 
+class StreamConnectInputInterruptInfo(AbstractModel):
+    """云转推输入断流信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EndPoint: 云转推输入源标识，取值有：
+<li>Main：主源；</li>
+<li>Backup：备源。</li>
+        :type EndPoint: str
+        """
+        self.EndPoint = None
+
+
+    def _deserialize(self, params):
+        self.EndPoint = params.get("EndPoint")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class StreamConnectOutput(AbstractModel):
     """云转推输出源。
 
@@ -5864,6 +5906,38 @@ class StreamConnectOutputInfo(AbstractModel):
             self.StreamConnectOutput = StreamConnectOutput()
             self.StreamConnectOutput._deserialize(params.get("StreamConnectOutput"))
         self.PushSwitch = params.get("PushSwitch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StreamConnectOutputInterruptInfo(AbstractModel):
+    """云转推输出断流信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: 云转推输出标识。
+        :type Id: str
+        :param Name: 云转推输出名称。
+        :type Name: str
+        :param Url: 云转推输出地址。
+        :type Url: str
+        """
+        self.Id = None
+        self.Name = None
+        self.Url = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.Name = params.get("Name")
+        self.Url = params.get("Url")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -3191,6 +3191,8 @@ class CreateFlowLogRequest(AbstractModel):
         :type StorageType: str
         :param FlowLogStorage: 流日志消费端信息，当消费端类型为ckafka时，必填。
         :type FlowLogStorage: :class:`tencentcloud.vpc.v20170312.models.FlowLogStorage`
+        :param CloudLogRegion: 流日志存储ID对应的地域，不传递默认为本地域。
+        :type CloudLogRegion: str
         """
         self.FlowLogName = None
         self.ResourceType = None
@@ -3202,6 +3204,7 @@ class CreateFlowLogRequest(AbstractModel):
         self.Tags = None
         self.StorageType = None
         self.FlowLogStorage = None
+        self.CloudLogRegion = None
 
 
     def _deserialize(self, params):
@@ -3222,6 +3225,7 @@ class CreateFlowLogRequest(AbstractModel):
         if params.get("FlowLogStorage") is not None:
             self.FlowLogStorage = FlowLogStorage()
             self.FlowLogStorage._deserialize(params.get("FlowLogStorage"))
+        self.CloudLogRegion = params.get("CloudLogRegion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8421,6 +8425,8 @@ class DescribeFlowLogsRequest(AbstractModel):
 <li>tag-key - String -是否必填：否- （过滤条件）按照标签键进行过滤。</li>
 <li>tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。</li>
         :type Filters: :class:`tencentcloud.vpc.v20170312.models.Filter`
+        :param CloudLogRegion: 流日志存储ID对应的地域信息
+        :type CloudLogRegion: str
         """
         self.VpcId = None
         self.FlowLogId = None
@@ -8435,6 +8441,7 @@ class DescribeFlowLogsRequest(AbstractModel):
         self.Offset = None
         self.Limit = None
         self.Filters = None
+        self.CloudLogRegion = None
 
 
     def _deserialize(self, params):
@@ -8453,6 +8460,7 @@ class DescribeFlowLogsRequest(AbstractModel):
         if params.get("Filters") is not None:
             self.Filters = Filter()
             self.Filters._deserialize(params.get("Filters"))
+        self.CloudLogRegion = params.get("CloudLogRegion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -13227,6 +13235,9 @@ class FlowLog(AbstractModel):
         :param FlowLogStorage: 消费端信息，当消费端类型为ckafka时返回
 注意：此字段可能返回 null，表示取不到有效值。
         :type FlowLogStorage: :class:`tencentcloud.vpc.v20170312.models.FlowLogStorage`
+        :param CloudLogRegion: 流日志存储ID对应的地域信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CloudLogRegion: str
         """
         self.VpcId = None
         self.FlowLogId = None
@@ -13242,6 +13253,7 @@ class FlowLog(AbstractModel):
         self.Enable = None
         self.StorageType = None
         self.FlowLogStorage = None
+        self.CloudLogRegion = None
 
 
     def _deserialize(self, params):
@@ -13266,6 +13278,7 @@ class FlowLog(AbstractModel):
         if params.get("FlowLogStorage") is not None:
             self.FlowLogStorage = FlowLogStorage()
             self.FlowLogStorage._deserialize(params.get("FlowLogStorage"))
+        self.CloudLogRegion = params.get("CloudLogRegion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

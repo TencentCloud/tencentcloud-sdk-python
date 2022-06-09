@@ -8070,10 +8070,16 @@ class DescribeBashEventsRequest(AbstractModel):
         :param Filters: 过滤条件。
 <li>Keywords - String - 是否必填：否 - 关键词(主机内网IP)</li>
         :type Filters: list of Filter
+        :param Order: 排序方式：根据请求次数排序：asc-升序/desc-降序
+        :type Order: str
+        :param By: 排序字段：CreateTime-发生时间。ModifyTime-处理时间
+        :type By: str
         """
         self.Limit = None
         self.Offset = None
         self.Filters = None
+        self.Order = None
+        self.By = None
 
 
     def _deserialize(self, params):
@@ -8085,6 +8091,8 @@ class DescribeBashEventsRequest(AbstractModel):
                 obj = Filter()
                 obj._deserialize(item)
                 self.Filters.append(obj)
+        self.Order = params.get("Order")
+        self.By = params.get("By")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8220,10 +8228,16 @@ class DescribeBruteAttackListRequest(AbstractModel):
 <li>ModifyEndTime - String - 是否必填：否 - 最近攻击时间筛选，结束时间</li>
 <li>Banned - String - 是否必填：否 - 阻断状态筛选，多个用","分割：0-未阻断（全局ZK开关关闭），82-未阻断(非专业版)，83-未阻断(已加白名单)，1-已阻断，2-未阻断-程序异常，3-未阻断-内网攻击暂不支持阻断，4-未阻断-安平暂不支持阻断</li>
         :type Filters: list of Filter
+        :param Order: 排序方式：根据请求次数排序：asc-升序/desc-降序
+        :type Order: str
+        :param By: 排序字段：CreateTime-首次攻击时间
+        :type By: str
         """
         self.Limit = None
         self.Offset = None
         self.Filters = None
+        self.Order = None
+        self.By = None
 
 
     def _deserialize(self, params):
@@ -8235,6 +8249,8 @@ class DescribeBruteAttackListRequest(AbstractModel):
                 obj = Filter()
                 obj._deserialize(item)
                 self.Filters.append(obj)
+        self.Order = params.get("Order")
+        self.By = params.get("By")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9106,10 +9122,16 @@ class DescribeHostLoginListRequest(AbstractModel):
 <li>Status - int - 是否必填：否 - 状态筛选1:正常登录；5：已加白,14:已处理，15：已忽略</li>
 <li>RiskLevel - int - 是否必填：否 - 状态筛选0:高危；1：可疑</li>
         :type Filters: list of Filter
+        :param Order: 排序方式：根据请求次数排序：asc-升序/desc-降序
+        :type Order: str
+        :param By: 排序字段：LoginTime-发生时间
+        :type By: str
         """
         self.Limit = None
         self.Offset = None
         self.Filters = None
+        self.Order = None
+        self.By = None
 
 
     def _deserialize(self, params):
@@ -9121,6 +9143,8 @@ class DescribeHostLoginListRequest(AbstractModel):
                 obj = Filter()
                 obj._deserialize(item)
                 self.Filters.append(obj)
+        self.Order = params.get("Order")
+        self.By = params.get("By")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -10554,10 +10578,16 @@ class DescribePrivilegeEventsRequest(AbstractModel):
         :param Filters: 过滤条件。
 <li>Keywords - String - 是否必填：否 - 关键词(主机IP)</li>
         :type Filters: list of Filter
+        :param Order: 排序方式：根据请求次数排序：asc-升序/desc-降序
+        :type Order: str
+        :param By: 排序字段：CreateTime-发现时间
+        :type By: str
         """
         self.Limit = None
         self.Offset = None
         self.Filters = None
+        self.Order = None
+        self.By = None
 
 
     def _deserialize(self, params):
@@ -10569,6 +10599,8 @@ class DescribePrivilegeEventsRequest(AbstractModel):
                 obj = Filter()
                 obj._deserialize(item)
                 self.Filters.append(obj)
+        self.Order = params.get("Order")
+        self.By = params.get("By")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -11070,10 +11102,16 @@ class DescribeReverseShellEventsRequest(AbstractModel):
         :param Filters: 过滤条件。
 <li>Keywords - String - 是否必填：否 - 关键字(主机内网IP|进程名)</li>
         :type Filters: list of Filter
+        :param Order: 排序方式：根据请求次数排序：asc-升序/desc-降序
+        :type Order: str
+        :param By: 排序字段：CreateTime-发生时间
+        :type By: str
         """
         self.Limit = None
         self.Offset = None
         self.Filters = None
+        self.Order = None
+        self.By = None
 
 
     def _deserialize(self, params):
@@ -11085,6 +11123,8 @@ class DescribeReverseShellEventsRequest(AbstractModel):
                 obj = Filter()
                 obj._deserialize(item)
                 self.Filters.append(obj)
+        self.Order = params.get("Order")
+        self.By = params.get("By")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -11212,7 +11252,7 @@ class DescribeRiskDnsListRequest(AbstractModel):
         :type Filters: list of Filter
         :param Order: 排序方式：根据请求次数排序：asc-升序/desc-降序
         :type Order: str
-        :param By: 排序字段：AccessCount-请求次数
+        :param By: 排序字段：AccessCount-请求次数。MergeTime-最近请求时间
         :type By: str
         """
         self.Limit = None

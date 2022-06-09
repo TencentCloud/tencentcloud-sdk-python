@@ -218,11 +218,17 @@ class DescribeOrganizationMembersRequest(AbstractModel):
         :type Lang: str
         :param SearchKey: 成员名或者成员ID搜索
         :type SearchKey: str
+        :param AuthName: 主体名称
+        :type AuthName: str
+        :param Product: 集团服务（服务管理员查询时，必须指定）
+        :type Product: str
         """
         self.Offset = None
         self.Limit = None
         self.Lang = None
         self.SearchKey = None
+        self.AuthName = None
+        self.Product = None
 
 
     def _deserialize(self, params):
@@ -230,6 +236,8 @@ class DescribeOrganizationMembersRequest(AbstractModel):
         self.Limit = params.get("Limit")
         self.Lang = params.get("Lang")
         self.SearchKey = params.get("SearchKey")
+        self.AuthName = params.get("AuthName")
+        self.Product = params.get("Product")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -278,12 +286,16 @@ class DescribeOrganizationRequest(AbstractModel):
         r"""
         :param Lang: 国际站：en，国内站：zh
         :type Lang: str
+        :param Product: 产品简称（查询是否集团服务委派管理员必须）
+        :type Product: str
         """
         self.Lang = None
+        self.Product = None
 
 
     def _deserialize(self, params):
         self.Lang = params.get("Lang")
+        self.Product = params.get("Product")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -342,6 +354,9 @@ class DescribeOrganizationResponse(AbstractModel):
         :param PayName: 代付者名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type PayName: str
+        :param IsAssignManager: 是否集团服务委派管理员 true-是、false-否
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsAssignManager: bool
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -359,6 +374,7 @@ class DescribeOrganizationResponse(AbstractModel):
         self.IsAllowQuit = None
         self.PayUin = None
         self.PayName = None
+        self.IsAssignManager = None
         self.RequestId = None
 
 
@@ -382,6 +398,7 @@ class DescribeOrganizationResponse(AbstractModel):
         self.IsAllowQuit = params.get("IsAllowQuit")
         self.PayUin = params.get("PayUin")
         self.PayName = params.get("PayName")
+        self.IsAssignManager = params.get("IsAssignManager")
         self.RequestId = params.get("RequestId")
 
 
