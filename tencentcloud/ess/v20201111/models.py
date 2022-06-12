@@ -193,6 +193,59 @@ class CancelFlowResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CancelMultiFlowSignQRCodeRequest(AbstractModel):
+    """CancelMultiFlowSignQRCode请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Operator: 用户信息
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param QrCodeId: 二维码id
+        :type QrCodeId: str
+        :param Agent: 应用信息
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        """
+        self.Operator = None
+        self.QrCodeId = None
+        self.Agent = None
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self.Operator = UserInfo()
+            self.Operator._deserialize(params.get("Operator"))
+        self.QrCodeId = params.get("QrCodeId")
+        if params.get("Agent") is not None:
+            self.Agent = Agent()
+            self.Agent._deserialize(params.get("Agent"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CancelMultiFlowSignQRCodeResponse(AbstractModel):
+    """CancelMultiFlowSignQRCode返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CcInfo(AbstractModel):
     """抄送信息
 
@@ -624,6 +677,85 @@ class CreateFlowResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateMultiFlowSignQRCodeRequest(AbstractModel):
+    """CreateMultiFlowSignQRCode请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TemplateId: 模版ID
+        :type TemplateId: str
+        :param Operator: 用户信息
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param FlowName: 合同名称
+        :type FlowName: str
+        :param Agent: 应用信息
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        :param FlowEffectiveDay: 合同有效天数 默认7天 最高设置不超过30天
+        :type FlowEffectiveDay: int
+        :param QrEffectiveDay: 二维码有效天数 默认7天 最高设置不超过90天
+        :type QrEffectiveDay: int
+        :param MaxFlowNum: 最大合同份数，默认5份 超过此上限 二维码自动失效
+        :type MaxFlowNum: int
+        :param CallbackUrl: 回调地址
+        :type CallbackUrl: str
+        """
+        self.TemplateId = None
+        self.Operator = None
+        self.FlowName = None
+        self.Agent = None
+        self.FlowEffectiveDay = None
+        self.QrEffectiveDay = None
+        self.MaxFlowNum = None
+        self.CallbackUrl = None
+
+
+    def _deserialize(self, params):
+        self.TemplateId = params.get("TemplateId")
+        if params.get("Operator") is not None:
+            self.Operator = UserInfo()
+            self.Operator._deserialize(params.get("Operator"))
+        self.FlowName = params.get("FlowName")
+        if params.get("Agent") is not None:
+            self.Agent = Agent()
+            self.Agent._deserialize(params.get("Agent"))
+        self.FlowEffectiveDay = params.get("FlowEffectiveDay")
+        self.QrEffectiveDay = params.get("QrEffectiveDay")
+        self.MaxFlowNum = params.get("MaxFlowNum")
+        self.CallbackUrl = params.get("CallbackUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateMultiFlowSignQRCodeResponse(AbstractModel):
+    """CreateMultiFlowSignQRCode返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param QrCode: 签署二维码对象
+        :type QrCode: :class:`tencentcloud.ess.v20201111.models.SignQrCode`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.QrCode = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("QrCode") is not None:
+            self.QrCode = SignQrCode()
+            self.QrCode._deserialize(params.get("QrCode"))
         self.RequestId = params.get("RequestId")
 
 
@@ -1333,6 +1465,38 @@ class Recipient(AbstractModel):
         self.UserId = params.get("UserId")
         self.DeliveryMethod = params.get("DeliveryMethod")
         self.RecipientExtra = params.get("RecipientExtra")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SignQrCode(AbstractModel):
+    """一码多扫签署二维码对象
+
+    """
+
+    def __init__(self):
+        r"""
+        :param QrCodeId: 二维码id
+        :type QrCodeId: str
+        :param QrCodeUrl: 二维码url
+        :type QrCodeUrl: str
+        :param ExpiredTime: 二维码过期时间
+        :type ExpiredTime: int
+        """
+        self.QrCodeId = None
+        self.QrCodeUrl = None
+        self.ExpiredTime = None
+
+
+    def _deserialize(self, params):
+        self.QrCodeId = params.get("QrCodeId")
+        self.QrCodeUrl = params.get("QrCodeUrl")
+        self.ExpiredTime = params.get("ExpiredTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

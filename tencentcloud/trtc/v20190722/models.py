@@ -105,7 +105,7 @@ class AudioParams(AbstractModel):
 3：16000Hz。
         :type SampleRate: int
         :param Channel: 声道数:
-1：单身道;
+1：单声道;
 2：双声道（默认）。
         :type Channel: int
         :param BitRate: 音频码率: 取值范围[32000, 128000] ，单位bps，默认64000bps。
@@ -1656,13 +1656,28 @@ class MeasureTrtcMcuExternalResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param Usages: 应用的用量信息数组。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Usages: list of OneSdkAppIdTranscodeTimeUsagesNewInfo
+        :param Type: 用户计费类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.Usages = None
+        self.Type = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        if params.get("Usages") is not None:
+            self.Usages = []
+            for item in params.get("Usages"):
+                obj = OneSdkAppIdTranscodeTimeUsagesNewInfo()
+                obj._deserialize(item)
+                self.Usages.append(obj)
+        self.Type = params.get("Type")
         self.RequestId = params.get("RequestId")
 
 
@@ -1997,6 +2012,43 @@ class OneSdkAppIdTranscodeTimeUsagesInfo(AbstractModel):
             self.SdkAppIdTranscodeTimeUsages = []
             for item in params.get("SdkAppIdTranscodeTimeUsages"):
                 obj = SdkAppIdTrtcMcuTranscodeTimeUsage()
+                obj._deserialize(item)
+                self.SdkAppIdTranscodeTimeUsages.append(obj)
+        self.TotalNum = params.get("TotalNum")
+        self.SdkAppId = params.get("SdkAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OneSdkAppIdTranscodeTimeUsagesNewInfo(AbstractModel):
+    """旁路转码时长的查询结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkAppIdTranscodeTimeUsages: 旁路转码时长查询结果数组
+        :type SdkAppIdTranscodeTimeUsages: list of SdkAppIdTrtcMcuTranscodeTimeNewUsage
+        :param TotalNum: 查询记录数量
+        :type TotalNum: int
+        :param SdkAppId: 所查询的应用ID，可能值为:1-应用的应用ID，2-total，显示为total则表示查询的是所有应用的用量合计值。
+        :type SdkAppId: str
+        """
+        self.SdkAppIdTranscodeTimeUsages = None
+        self.TotalNum = None
+        self.SdkAppId = None
+
+
+    def _deserialize(self, params):
+        if params.get("SdkAppIdTranscodeTimeUsages") is not None:
+            self.SdkAppIdTranscodeTimeUsages = []
+            for item in params.get("SdkAppIdTranscodeTimeUsages"):
+                obj = SdkAppIdTrtcMcuTranscodeTimeNewUsage()
                 obj._deserialize(item)
                 self.SdkAppIdTranscodeTimeUsages.append(obj)
         self.TotalNum = params.get("TotalNum")
@@ -2554,6 +2606,79 @@ class SdkAppIdRecordUsage(AbstractModel):
                 obj = RecordUsage()
                 obj._deserialize(item)
                 self.Usages.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SdkAppIdTrtcMcuTranscodeTimeNewUsage(AbstractModel):
+    """查询旁路转码计费时长。
+    查询时间小于等于1天时，返回每5分钟粒度的数据；查询时间大于1天时，返回按天汇总的数据。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TimeKey: 本组数据对应的时间点，格式如：2020-09-07或2020-09-07 00:05:05。
+        :type TimeKey: str
+        :param AudioTime: 语音时长，单位：秒。
+        :type AudioTime: int
+        :param VideoTimeH264SD: 视频时长-标清SD，单位：秒。
+        :type VideoTimeH264SD: int
+        :param VideoTimeH264HD: 视频时长-高清HD，单位：秒。
+        :type VideoTimeH264HD: int
+        :param VideoTimeH264FHD: 视频时长-全高清FHD，单位：秒。
+        :type VideoTimeH264FHD: int
+        :param Flux: 视频时长-带宽，单位：mbps。
+        :type Flux: float
+        :param VideoTimeH2642K: 视频时长-标清2K，单位：秒。
+        :type VideoTimeH2642K: int
+        :param VideoTimeH2644K: 视频时长-标清4K，单位：秒。
+        :type VideoTimeH2644K: int
+        :param VideoTimeH265SD: 视频时长-标清265SD，单位：秒。
+        :type VideoTimeH265SD: int
+        :param VideoTimeH265HD: 视频时长-高清265HD，单位：秒。
+        :type VideoTimeH265HD: int
+        :param VideoTimeH265FHD: 视频时长-全高清265FHD，单位：秒。
+        :type VideoTimeH265FHD: int
+        :param VideoTimeH2652K: 视频时长-标清2652K，单位：秒。
+        :type VideoTimeH2652K: int
+        :param VideoTimeH2654K: 视频时长-标清265 4K，单位：秒。
+        :type VideoTimeH2654K: int
+        """
+        self.TimeKey = None
+        self.AudioTime = None
+        self.VideoTimeH264SD = None
+        self.VideoTimeH264HD = None
+        self.VideoTimeH264FHD = None
+        self.Flux = None
+        self.VideoTimeH2642K = None
+        self.VideoTimeH2644K = None
+        self.VideoTimeH265SD = None
+        self.VideoTimeH265HD = None
+        self.VideoTimeH265FHD = None
+        self.VideoTimeH2652K = None
+        self.VideoTimeH2654K = None
+
+
+    def _deserialize(self, params):
+        self.TimeKey = params.get("TimeKey")
+        self.AudioTime = params.get("AudioTime")
+        self.VideoTimeH264SD = params.get("VideoTimeH264SD")
+        self.VideoTimeH264HD = params.get("VideoTimeH264HD")
+        self.VideoTimeH264FHD = params.get("VideoTimeH264FHD")
+        self.Flux = params.get("Flux")
+        self.VideoTimeH2642K = params.get("VideoTimeH2642K")
+        self.VideoTimeH2644K = params.get("VideoTimeH2644K")
+        self.VideoTimeH265SD = params.get("VideoTimeH265SD")
+        self.VideoTimeH265HD = params.get("VideoTimeH265HD")
+        self.VideoTimeH265FHD = params.get("VideoTimeH265FHD")
+        self.VideoTimeH2652K = params.get("VideoTimeH2652K")
+        self.VideoTimeH2654K = params.get("VideoTimeH2654K")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

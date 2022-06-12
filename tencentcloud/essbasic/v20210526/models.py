@@ -112,6 +112,60 @@ class CcInfo(AbstractModel):
         
 
 
+class ChannelCancelMultiFlowSignQRCodeRequest(AbstractModel):
+    """ChannelCancelMultiFlowSignQRCode请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Agent: 应用信息
+此接口Agent.ProxyOrganizationOpenId 和 Agent. ProxyOperator.OpenId 必填
+        :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        :param QrCodeId: 二维码id
+        :type QrCodeId: str
+        :param Operator: 用户信息
+        :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
+        """
+        self.Agent = None
+        self.QrCodeId = None
+        self.Operator = None
+
+
+    def _deserialize(self, params):
+        if params.get("Agent") is not None:
+            self.Agent = Agent()
+            self.Agent._deserialize(params.get("Agent"))
+        self.QrCodeId = params.get("QrCodeId")
+        if params.get("Operator") is not None:
+            self.Operator = UserInfo()
+            self.Operator._deserialize(params.get("Operator"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChannelCancelMultiFlowSignQRCodeResponse(AbstractModel):
+    """ChannelCancelMultiFlowSignQRCode返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ChannelCreateFlowByFilesRequest(AbstractModel):
     """ChannelCreateFlowByFiles请求参数结构体
 
@@ -209,6 +263,86 @@ class ChannelCreateFlowByFilesResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
+class ChannelCreateMultiFlowSignQRCodeRequest(AbstractModel):
+    """ChannelCreateMultiFlowSignQRCode请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Agent: 应用信息
+此接口Agent.ProxyOrganizationOpenId 和 Agent. ProxyOperator.OpenId 必填
+        :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        :param TemplateId: 模版ID
+        :type TemplateId: str
+        :param FlowName: 合同名称
+        :type FlowName: str
+        :param Operator: 用户信息
+        :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
+        :param FlowEffectiveDay: 合同有效天数 默认7天 最高设置不超过30天
+        :type FlowEffectiveDay: int
+        :param QrEffectiveDay: 二维码有效天数 默认7天 最高设置不超过90天
+        :type QrEffectiveDay: int
+        :param MaxFlowNum: 最大合同份数，默认5份 超过此上限 二维码自动失效
+        :type MaxFlowNum: int
+        :param CallbackUrl: 回调地址
+        :type CallbackUrl: str
+        """
+        self.Agent = None
+        self.TemplateId = None
+        self.FlowName = None
+        self.Operator = None
+        self.FlowEffectiveDay = None
+        self.QrEffectiveDay = None
+        self.MaxFlowNum = None
+        self.CallbackUrl = None
+
+
+    def _deserialize(self, params):
+        if params.get("Agent") is not None:
+            self.Agent = Agent()
+            self.Agent._deserialize(params.get("Agent"))
+        self.TemplateId = params.get("TemplateId")
+        self.FlowName = params.get("FlowName")
+        if params.get("Operator") is not None:
+            self.Operator = UserInfo()
+            self.Operator._deserialize(params.get("Operator"))
+        self.FlowEffectiveDay = params.get("FlowEffectiveDay")
+        self.QrEffectiveDay = params.get("QrEffectiveDay")
+        self.MaxFlowNum = params.get("MaxFlowNum")
+        self.CallbackUrl = params.get("CallbackUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChannelCreateMultiFlowSignQRCodeResponse(AbstractModel):
+    """ChannelCreateMultiFlowSignQRCode返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param QrCode: 签署二维码对象
+        :type QrCode: :class:`tencentcloud.essbasic.v20210526.models.SignQrCode`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.QrCode = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("QrCode") is not None:
+            self.QrCode = SignQrCode()
+            self.QrCode._deserialize(params.get("QrCode"))
         self.RequestId = params.get("RequestId")
 
 
@@ -773,7 +907,7 @@ class DescribeTemplatesRequest(AbstractModel):
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         :param TemplateId: 模板唯一标识
         :type TemplateId: str
-        :param ContentType: 查询内容：0-模版列表及详情（默认），1-仅模版列表
+        :param ContentType: 查询内容：0-模板列表及详情（默认），1-仅模板列表
         :type ContentType: int
         :param Limit: 查询个数，默认20，最大100
         :type Limit: int
@@ -1681,6 +1815,38 @@ class ResourceUrlInfo(AbstractModel):
         self.Url = params.get("Url")
         self.Name = params.get("Name")
         self.Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SignQrCode(AbstractModel):
+    """一码多扫签署二维码对象
+
+    """
+
+    def __init__(self):
+        r"""
+        :param QrCodeId: 二维码id
+        :type QrCodeId: str
+        :param QrCodeUrl: 二维码url
+        :type QrCodeUrl: str
+        :param ExpiredTime: 二维码过期时间
+        :type ExpiredTime: int
+        """
+        self.QrCodeId = None
+        self.QrCodeUrl = None
+        self.ExpiredTime = None
+
+
+    def _deserialize(self, params):
+        self.QrCodeId = params.get("QrCodeId")
+        self.QrCodeUrl = params.get("QrCodeUrl")
+        self.ExpiredTime = params.get("ExpiredTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

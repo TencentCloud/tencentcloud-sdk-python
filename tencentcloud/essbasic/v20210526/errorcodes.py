@@ -23,6 +23,15 @@ FAILEDOPERATION = 'FailedOperation'
 # 鉴权失败。
 FAILEDOPERATION_AUTHFAIL = 'FailedOperation.AuthFail'
 
+# 发起签署存在填写控件。
+FAILEDOPERATION_QRCODECREATORSIGNCOMPONENTS = 'FailedOperation.QrCodeCreatorSignComponents'
+
+# 模版签署人不存在。
+FAILEDOPERATION_QRCODESIGNUSERS = 'FailedOperation.QrCodeSignUsers'
+
+# 一码多人二维码模版有误。
+FAILEDOPERATION_QRCODETEMPLATEID = 'FailedOperation.QrCodeTemplateId'
+
 # 员工已实名。
 FAILEDOPERATION_STAFFALREADYVERIFY = 'FailedOperation.StaffAlreadyVerify'
 
@@ -98,11 +107,17 @@ OPERATIONDENIED = 'OperationDenied'
 # 应用号已被禁止。
 OPERATIONDENIED_BANNEDAPPLICATION = 'OperationDenied.BannedApplication'
 
+# 禁止操作。
+OPERATIONDENIED_FORBID = 'OperationDenied.Forbid'
+
 # 没有API权限。
 OPERATIONDENIED_NOAPIAUTH = 'OperationDenied.NoApiAuth'
 
 # 未通过个人实名。
 OPERATIONDENIED_NOIDENTITYVERIFY = 'OperationDenied.NoIdentityVerify'
+
+# 流程配额不足。
+OPERATIONDENIED_NOQUOTA = 'OperationDenied.NoQuota'
 
 # 用户与企业不对应。
 OPERATIONDENIED_USERNOTINORGANIZATION = 'OperationDenied.UserNotInOrganization'

@@ -504,11 +504,14 @@ class CreateInstanceRequest(AbstractModel):
         :type TagSpecification: :class:`tencentcloud.tcr.v20190924.models.TagSpecification`
         :param RegistryChargeType: 实例计费类型，0表示按量计费，1表示预付费，默认为按量计费
         :type RegistryChargeType: int
+        :param SyncTag: 是否同步TCR云标签至生成的COS Bucket
+        :type SyncTag: bool
         """
         self.RegistryName = None
         self.RegistryType = None
         self.TagSpecification = None
         self.RegistryChargeType = None
+        self.SyncTag = None
 
 
     def _deserialize(self, params):
@@ -518,6 +521,7 @@ class CreateInstanceRequest(AbstractModel):
             self.TagSpecification = TagSpecification()
             self.TagSpecification._deserialize(params.get("TagSpecification"))
         self.RegistryChargeType = params.get("RegistryChargeType")
+        self.SyncTag = params.get("SyncTag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -831,16 +835,20 @@ class CreateReplicationInstanceRequest(AbstractModel):
         :type ReplicationRegionId: int
         :param ReplicationRegionName: 复制实例地域名称
         :type ReplicationRegionName: str
+        :param SyncTag: 是否同步TCR云标签至生成的COS Bucket
+        :type SyncTag: bool
         """
         self.RegistryId = None
         self.ReplicationRegionId = None
         self.ReplicationRegionName = None
+        self.SyncTag = None
 
 
     def _deserialize(self, params):
         self.RegistryId = params.get("RegistryId")
         self.ReplicationRegionId = params.get("ReplicationRegionId")
         self.ReplicationRegionName = params.get("ReplicationRegionName")
+        self.SyncTag = params.get("SyncTag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1499,14 +1507,18 @@ class DeleteInstanceRequest(AbstractModel):
         :type RegistryId: str
         :param DeleteBucket: 是否删除存储桶，默认为false
         :type DeleteBucket: bool
+        :param DryRun: 是否dryRun模式，缺省值：false
+        :type DryRun: bool
         """
         self.RegistryId = None
         self.DeleteBucket = None
+        self.DryRun = None
 
 
     def _deserialize(self, params):
         self.RegistryId = params.get("RegistryId")
         self.DeleteBucket = params.get("DeleteBucket")
+        self.DryRun = params.get("DryRun")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -2326,6 +2326,35 @@ class RootCertificates(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param Sign: 国密签名证书
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Sign: str
+        :param Encrypt: 国密加密证书
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Encrypt: str
+        :param Standard: 标准证书
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Standard: str
+        """
+        self.Sign = None
+        self.Encrypt = None
+        self.Standard = None
+
+
+    def _deserialize(self, params):
+        self.Sign = params.get("Sign")
+        self.Encrypt = params.get("Encrypt")
+        self.Standard = params.get("Standard")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class SubmitAuditManagerRequest(AbstractModel):
     """SubmitAuditManager请求参数结构体

@@ -14207,6 +14207,12 @@ disabled：未启用
         :param ExtensionMode: 流量包当前续订模式，0 未续订、1到期续订、2用完续订、3到期或用完续订
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExtensionMode: int
+        :param TrueEnableTime: 流量包实际生效时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TrueEnableTime: str
+        :param TrueExpireTime: 流量包实际过期时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TrueExpireTime: str
         """
         self.Id = None
         self.Type = None
@@ -14226,6 +14232,8 @@ disabled：未启用
         self.Region = None
         self.ConfigId = None
         self.ExtensionMode = None
+        self.TrueEnableTime = None
+        self.TrueExpireTime = None
 
 
     def _deserialize(self, params):
@@ -14247,6 +14255,8 @@ disabled：未启用
         self.Region = params.get("Region")
         self.ConfigId = params.get("ConfigId")
         self.ExtensionMode = params.get("ExtensionMode")
+        self.TrueEnableTime = params.get("TrueEnableTime")
+        self.TrueExpireTime = params.get("TrueExpireTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -15114,7 +15124,7 @@ class WebSocket(AbstractModel):
 
 * WebSocket 为ECDN产品功能，如需使用请通过ECDN域名配置.
         :type Switch: str
-        :param Timeout: 设置超时时间，单位为秒，最大超时时间65秒。
+        :param Timeout: 设置超时时间，单位为秒，最大超时时间300秒。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Timeout: int
         """

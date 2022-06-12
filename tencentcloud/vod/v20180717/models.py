@@ -4588,8 +4588,9 @@ class AudioTemplateInfo(AbstractModel):
 <li>libmp3lame：更适合 flv；</li>
 <li>mp2。</li>
 当外层参数 Container 为 hls 时，可选值为：
-<li>libfdk_aac；</li>
-<li>libmp3lame。</li>
+<li>libfdk_aac。</li>
+当外层参数 Format 为 HLS 或 MPEG-DASH 时，可选值为：
+<li>libfdk_aac。</li>
         :type Codec: str
         :param Bitrate: 音频流的码率，取值范围：0 和 [26, 256]，单位：kbps。
 当取值为 0，表示音频码率和原始音频保持一致。
@@ -4649,8 +4650,9 @@ class AudioTemplateInfoForUpdate(AbstractModel):
 <li>libmp3lame：更适合 flv；</li>
 <li>mp2。</li>
 当外层参数 Container 为 hls 时，可选值为：
-<li>libfdk_aac；</li>
-<li>libmp3lame。</li>
+<li>libfdk_aac。</li>
+当外层参数 Format 为 HLS 或 MPEG-DASH 时，可选值为：
+<li>libfdk_aac。</li>
         :type Codec: str
         :param Bitrate: 音频流的码率，取值范围：0 和 [26, 256]，单位：kbps。 当取值为 0，表示音频码率和原始音频保持一致。
         :type Bitrate: int
@@ -6006,7 +6008,8 @@ class CreateAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
     def __init__(self):
         r"""
         :param Format: 自适应转码格式，取值范围：
-<li>HLS。</li>
+<li>HLS；</li>
+<li>MPEG-DASH。</li>
         :type Format: str
         :param StreamInfos: 自适应转码输出子流参数信息，最多输出10路子流。
 注意：各个子流的帧率必须保持一致；如果不一致，采用第一个子流的帧率作为输出帧率。
@@ -15943,10 +15946,13 @@ class ModifyAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
         r"""
         :param Definition: 自适应转码模板唯一标识。
         :type Definition: int
+        :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :type SubAppId: int
         :param Name: 模板名称，长度限制：64 个字符。
         :type Name: str
         :param Format: 自适应转码格式，取值范围：
-<li>HLS。</li>
+<li>HLS；</li>
+<li>MPEG-DASH。</li>
         :type Format: str
         :param DisableHigherVideoBitrate: 是否禁止视频低码率转高码率，取值范围：
 <li>0：否，</li>
@@ -15961,21 +15967,20 @@ class ModifyAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
         :type StreamInfos: list of AdaptiveStreamTemplate
         :param Comment: 模板描述信息，长度限制：256 个字符。
         :type Comment: str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
         """
         self.Definition = None
+        self.SubAppId = None
         self.Name = None
         self.Format = None
         self.DisableHigherVideoBitrate = None
         self.DisableHigherVideoResolution = None
         self.StreamInfos = None
         self.Comment = None
-        self.SubAppId = None
 
 
     def _deserialize(self, params):
         self.Definition = params.get("Definition")
+        self.SubAppId = params.get("SubAppId")
         self.Name = params.get("Name")
         self.Format = params.get("Format")
         self.DisableHigherVideoBitrate = params.get("DisableHigherVideoBitrate")
@@ -15987,7 +15992,6 @@ class ModifyAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
                 obj._deserialize(item)
                 self.StreamInfos.append(obj)
         self.Comment = params.get("Comment")
-        self.SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
