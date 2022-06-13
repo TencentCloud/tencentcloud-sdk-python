@@ -5370,6 +5370,72 @@ forbid：禁播。
         self.RequestId = params.get("RequestId")
 
 
+class DescribeLiveTimeShiftBillInfoListRequest(AbstractModel):
+    """DescribeLiveTimeShiftBillInfoList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StartTime: UTC开始时间，支持最近三个月的查询，查询时间最长跨度为一个月。
+
+使用 UTC 格式时间，
+例如：2019-01-08T10:00:00Z。
+注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type StartTime: str
+        :param EndTime: UTC结束时间，支持最近三个月的查询，查询时间最长跨度为一个月。
+
+使用 UTC 格式时间，
+例如：2019-01-08T10:00:00Z。
+注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type EndTime: str
+        :param PushDomains: 推流域名列表，若不传递此参数，则表示查询总体数据。
+        :type PushDomains: list of str
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.PushDomains = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.PushDomains = params.get("PushDomains")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLiveTimeShiftBillInfoListResponse(AbstractModel):
+    """DescribeLiveTimeShiftBillInfoList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DataInfoList: 时移计费明细数据。
+        :type DataInfoList: list of TimeShiftBillData
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DataInfoList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DataInfoList") is not None:
+            self.DataInfoList = []
+            for item in params.get("DataInfoList"):
+                obj = TimeShiftBillData()
+                obj._deserialize(item)
+                self.DataInfoList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeLiveTranscodeDetailInfoRequest(AbstractModel):
     """DescribeLiveTranscodeDetailInfo请求参数结构体
 
@@ -10654,6 +10720,42 @@ baseline/main/high。默认baseline
         self.AiTransCode = params.get("AiTransCode")
         self.AdaptBitratePercent = params.get("AdaptBitratePercent")
         self.ShortEdgeAsHeight = params.get("ShortEdgeAsHeight")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TimeShiftBillData(AbstractModel):
+    """时移计费明细数据。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Domain: 推流域名。
+        :type Domain: str
+        :param Duration: 时移时长,单位分钟。
+        :type Duration: float
+        :param StoragePeriod: 时移配置天数，单位天。
+        :type StoragePeriod: float
+        :param Time: 时间点，格式: yyyy-mm-ddTHH:MM:SSZ。
+        :type Time: str
+        """
+        self.Domain = None
+        self.Duration = None
+        self.StoragePeriod = None
+        self.Time = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        self.Duration = params.get("Duration")
+        self.StoragePeriod = params.get("StoragePeriod")
+        self.Time = params.get("Time")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -131,6 +131,9 @@ INVALIDPARAMETERVALUE_TOOLONG = 'InvalidParameterValue.TooLong'
 # 超过配额限制。
 LIMITEXCEEDED = 'LimitExceeded'
 
+# 填写的 Filter 取值过多。
+LIMITEXCEEDED_FILTERVALUEEXCEEDED = 'LimitExceeded.FilterValueExceeded'
+
 # 缺少参数错误。
 MISSINGPARAMETER = 'MissingParameter'
 

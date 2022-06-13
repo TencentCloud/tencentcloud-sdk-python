@@ -350,6 +350,9 @@ string|tinyint|smallint|int|bigint|boolean|float|double|decimal|timestamp|date|b
         :param ModifiedTime: 字段修改时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type ModifiedTime: str
+        :param IsPartition: 是否为分区字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsPartition: bool
         """
         self.Name = None
         self.Type = None
@@ -360,6 +363,7 @@ string|tinyint|smallint|int|bigint|boolean|float|double|decimal|timestamp|date|b
         self.Position = None
         self.CreateTime = None
         self.ModifiedTime = None
+        self.IsPartition = None
 
 
     def _deserialize(self, params):
@@ -372,6 +376,7 @@ string|tinyint|smallint|int|bigint|boolean|float|double|decimal|timestamp|date|b
         self.Position = params.get("Position")
         self.CreateTime = params.get("CreateTime")
         self.ModifiedTime = params.get("ModifiedTime")
+        self.IsPartition = params.get("IsPartition")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

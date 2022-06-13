@@ -308,7 +308,11 @@ class TiiaClient(AbstractClient):
 
 
     def DetectLabel(self, request):
-        """图像标签利用深度学习技术，可以对图片进行智能分类、物体识别等。
+        """>!
+        - **图像标签已升级服务，建议前往使用新版接口[通用图像标签](https://cloud.tencent.com/document/product/865/75196)。**
+        - **与本接口相比，[通用图像标签](https://cloud.tencent.com/document/product/865/75196)新版接口提供更高精度的图像标签识别服务，覆盖更广泛的物体与场景类型，效果和通用性更优。**
+
+        图像标签利用深度学习技术，可以对图片进行智能分类、物体识别等。
 
         目前支持8个大类、六十多个子类、数千个标签。涵盖各种日常场景、动植物、物品、美食、卡证等。具体分类请见[图像分析常见问题功能与限制相关](https://cloud.tencent.com/document/product/865/39164)。
 
@@ -327,7 +331,9 @@ class TiiaClient(AbstractClient):
         为了方便使用、减少图片传输次数，图像标签包装成多合一接口，实际上是多个服务。
 
         图像标签按照服务的实际使用数量进行收费。例如一张图片同时调用相册版、摄像头版两个服务，那么此次调用按照两次计费。
-        >
+
+        >?
+        - 图像标签摄像头版、相册版、网络版、新闻版分别按照各自的使用次数进行收费，例如一张图片同时使用相册版、摄像头版，则按照两次调用计费。建议测试对比后从中选择一个最合适的版本使用即可。
         - 公共参数中的签名方式必须指定为V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
 
         :param request: Request instance for DetectLabel.
@@ -391,8 +397,9 @@ class TiiaClient(AbstractClient):
     def DetectLabelPro(self, request):
         """通用图像标签可识别数千种常见物体或场景，覆盖日常物品、场景、动物、植物、食物、饮品、交通工具等多个大类，返回主体的标签名称和所属细分类目等，广泛应用于拍照识物、场景分析、图像内容审核与推荐、智能相册分类等场景。
 
-        >
-        - 通用图像标签在原图像标签接口的基础上进行了升级，识别精度和标签覆盖范围相比原图像标签接口更优，推荐使用。
+        >?
+        - **通用图像标签**在原图像标签接口的基础上进行了**升级**，识别精度和标签覆盖范围相比原图像标签接口更优，**推荐使用**。
+        - 公共参数中的签名方式必须指定为V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
 
         :param request: Request instance for DetectLabelPro.
         :type request: :class:`tencentcloud.tiia.v20190529.models.DetectLabelProRequest`
@@ -453,7 +460,7 @@ class TiiaClient(AbstractClient):
 
     def DetectProduct(self, request):
         """本接口支持识别图片中包含的商品，能够输出商品的品类名称、类别，还可以输出商品在图片中的位置。支持一张图片多个商品的识别。
-        >
+        >?
         - 公共参数中的签名方式必须指定为V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
 
         :param request: Request instance for DetectProduct.
@@ -486,7 +493,7 @@ class TiiaClient(AbstractClient):
         """商品识别-微信识物版，基于人工智能技术、海量训练图片、亿级商品库，可以实现全覆盖、细粒度、高准确率的商品识别和商品推荐功能。
         本服务可以识别出图片中的主体位置、主体商品类型，覆盖亿级SKU，输出具体商品的价格、型号等详细信息。
         客户无需自建商品库，即可快速实现商品识别、拍照搜商品等功能。
-        >
+        >?
         - 公共参数中的签名方式必须指定为V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
 
         :param request: Request instance for DetectProductBeta.
@@ -549,9 +556,9 @@ class TiiaClient(AbstractClient):
 
 
     def RecognizeCar(self, request):
-        """车辆识别可对图片中车辆的车型进行识别，可识别7000多种车型，输出车辆的品牌（如路虎）、车系（如神行者2）、类型（如中型SUV）、颜色、年份和坐标等信息，覆盖轿车、SUV、大型客车等市面常见车。如果图片中存在多辆车，会分别输出每辆车的车型和坐标。
+        """车辆识别可对图片中车辆的车型进行识别，输出车辆的品牌（如路虎）、车系（如神行者2）、类型（如中型SUV）、颜色和车辆在图中的坐标等信息，覆盖轿车、SUV、大型客车等市面常见车，支持三千多种车辆型号。如果图片中存在多辆车，会分别输出每辆车的车型和坐标。
 
-        >
+        >?
         - 公共参数中的签名方式必须指定为V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
 
         :param request: Request instance for RecognizeCar.
@@ -581,9 +588,9 @@ class TiiaClient(AbstractClient):
 
 
     def RecognizeCarPro(self, request):
-        """车辆识别（增强版）可对图片中车辆的车型和车牌进行识别，输出车辆的车牌，以及品牌（如路虎）、车系（如神行者2）、类型（如中型SUV）、颜色和坐标等信息，覆盖轿车、SUV、大型客车等市面常见车。如果图片中存在多辆车，会分别输出每辆车的车型、车牌和坐标。
+        """车辆识别（增强版）在车辆识别的基础上**增加了车牌识别的功能，并升级了车型识别的效果**。可对图片中车辆的车型和车牌进行同时识别，输出车辆的车牌信息，以及车辆品牌（如路虎）、车系（如神行者2）、类型（如中型SUV）、颜色和车辆在图中的坐标等信息，覆盖轿车、SUV、大型客车等市面常见车，支持三千多种车辆型号。如果图片中存在多辆车，会分别输出每辆车的车型、车牌和坐标。
 
-        >
+        >?
         - 公共参数中的签名方式必须指定为V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
 
         :param request: Request instance for RecognizeCarPro.

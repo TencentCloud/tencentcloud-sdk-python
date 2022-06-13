@@ -5952,6 +5952,40 @@ class RideHailingTransportLicenseOCRResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class SealInfo(AbstractModel):
+    """印章信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SealBody: 印章主体内容
+        :type SealBody: str
+        :param Location: 印章坐标
+        :type Location: :class:`tencentcloud.ocr.v20181119.models.Rect`
+        :param OtherTexts: 印章其它文本内容
+        :type OtherTexts: list of str
+        """
+        self.SealBody = None
+        self.Location = None
+        self.OtherTexts = None
+
+
+    def _deserialize(self, params):
+        self.SealBody = params.get("SealBody")
+        if params.get("Location") is not None:
+            self.Location = Rect()
+            self.Location._deserialize(params.get("Location"))
+        self.OtherTexts = params.get("OtherTexts")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SealOCRRequest(AbstractModel):
     """SealOCR请求参数结构体
 
@@ -5995,12 +6029,15 @@ class SealOCRResponse(AbstractModel):
         :type Location: :class:`tencentcloud.ocr.v20181119.models.Rect`
         :param OtherTexts: 其它文本内容
         :type OtherTexts: list of str
+        :param SealInfos: 全部印章信息
+        :type SealInfos: list of SealInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.SealBody = None
         self.Location = None
         self.OtherTexts = None
+        self.SealInfos = None
         self.RequestId = None
 
 
@@ -6010,6 +6047,12 @@ class SealOCRResponse(AbstractModel):
             self.Location = Rect()
             self.Location._deserialize(params.get("Location"))
         self.OtherTexts = params.get("OtherTexts")
+        if params.get("SealInfos") is not None:
+            self.SealInfos = []
+            for item in params.get("SealInfos"):
+                obj = SealInfo()
+                obj._deserialize(item)
+                self.SealInfos.append(obj)
         self.RequestId = params.get("RequestId")
 
 

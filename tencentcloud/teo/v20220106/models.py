@@ -574,12 +574,16 @@ class BotPortraitRule(AbstractModel):
         :param DropManagedIds: 拦截的规则ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type DropManagedIds: list of int
+        :param Switch: 本功能的开关
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Switch: str
         """
         self.RuleID = None
         self.AlgManagedIds = None
         self.CapManagedIds = None
         self.MonManagedIds = None
         self.DropManagedIds = None
+        self.Switch = None
 
 
     def _deserialize(self, params):
@@ -588,6 +592,7 @@ class BotPortraitRule(AbstractModel):
         self.CapManagedIds = params.get("CapManagedIds")
         self.MonManagedIds = params.get("MonManagedIds")
         self.DropManagedIds = params.get("DropManagedIds")
+        self.Switch = params.get("Switch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4376,6 +4381,68 @@ class DescribeSecurityPolicyResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeSecurityPortraitRulesRequest(AbstractModel):
+    """DescribeSecurityPortraitRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneId: 一级域名
+        :type ZoneId: str
+        :param Entity: 子域名/应用名
+        :type Entity: str
+        """
+        self.ZoneId = None
+        self.Entity = None
+
+
+    def _deserialize(self, params):
+        self.ZoneId = params.get("ZoneId")
+        self.Entity = params.get("Entity")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSecurityPortraitRulesResponse(AbstractModel):
+    """DescribeSecurityPortraitRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Count: 本次返回的规则数
+        :type Count: int
+        :param Rules: Bot用户画像规则
+        :type Rules: list of PortraitManagedRuleDetail
+        :param Total: 总规则数
+        :type Total: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Count = None
+        self.Rules = None
+        self.Total = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Count = params.get("Count")
+        if params.get("Rules") is not None:
+            self.Rules = []
+            for item in params.get("Rules"):
+                obj = PortraitManagedRuleDetail()
+                obj._deserialize(item)
+                self.Rules.append(obj)
+        self.Total = params.get("Total")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeZoneDDoSPolicyRequest(AbstractModel):
     """DescribeZoneDDoSPolicy请求参数结构体
 
@@ -7226,6 +7293,51 @@ class OriginRecordPrivateParameter(AbstractModel):
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PortraitManagedRuleDetail(AbstractModel):
+    """用户画像规则详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleId: 规则唯一id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleId: int
+        :param Description: 规则的描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param RuleTypeName: 规则所属类型的名字, botdb(用户画像)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleTypeName: str
+        :param ClassificationId: 规则内的功能分类Id(扫描器，Bot行为等)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClassificationId: int
+        :param Status: 规则当前所属动作状态(block, alg, ...)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        """
+        self.RuleId = None
+        self.Description = None
+        self.RuleTypeName = None
+        self.ClassificationId = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.RuleId = params.get("RuleId")
+        self.Description = params.get("Description")
+        self.RuleTypeName = params.get("RuleTypeName")
+        self.ClassificationId = params.get("ClassificationId")
+        self.Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

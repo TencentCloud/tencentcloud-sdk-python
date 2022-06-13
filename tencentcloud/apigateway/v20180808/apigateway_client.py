@@ -1285,6 +1285,35 @@ class ApigatewayClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeExclusiveInstancesStatus(self, request):
+        """查询专享实例列表（新）
+
+        :param request: Request instance for DescribeExclusiveInstancesStatus.
+        :type request: :class:`tencentcloud.apigateway.v20180808.models.DescribeExclusiveInstancesStatusRequest`
+        :rtype: :class:`tencentcloud.apigateway.v20180808.models.DescribeExclusiveInstancesStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeExclusiveInstancesStatus", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeExclusiveInstancesStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeIPStrategy(self, request):
         """本接口（DescribeIPStrategy）用于查询IP策略详情。
 

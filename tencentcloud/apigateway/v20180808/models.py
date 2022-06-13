@@ -4358,6 +4358,66 @@ class DescribeExclusiveInstancesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeExclusiveInstancesStatusRequest(AbstractModel):
+    """DescribeExclusiveInstancesStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Limit: 分页查询，limit
+        :type Limit: int
+        :param Offset: 分页查询，offset
+        :type Offset: int
+        :param Filters: 过滤条件
+        :type Filters: list of Filter
+        """
+        self.Limit = None
+        self.Offset = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeExclusiveInstancesStatusResponse(AbstractModel):
+    """DescribeExclusiveInstancesStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 独享实例列表查询结果
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.InstanceSummary`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = InstanceSummary()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeIPStrategyApisStatusRequest(AbstractModel):
     """DescribeIPStrategyApisStatus请求参数结构体
 
@@ -6952,6 +7012,41 @@ class InstanceParameterInput(AbstractModel):
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InstanceSummary(AbstractModel):
+    """专享查询列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 专享实例总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param InstanceSet: 专享实例列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceSet: list of InstanceInfo
+        """
+        self.TotalCount = None
+        self.InstanceSet = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("InstanceSet") is not None:
+            self.InstanceSet = []
+            for item in params.get("InstanceSet"):
+                obj = InstanceInfo()
+                obj._deserialize(item)
+                self.InstanceSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
