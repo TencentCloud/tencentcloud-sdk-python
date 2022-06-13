@@ -32,6 +32,7 @@ try:
     req.Operator = userInfo
 
     req.BusinessType = "FLOW"
+    # FlowId由CreateFlow或者CreateFlowByFiles返回
     req.BusinessIds = ["**************"]
 
     resp = client.DescribeFileUrls(req)
