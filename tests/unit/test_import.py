@@ -254,6 +254,11 @@ def test_import_chdfs():
     from tencentcloud.chdfs.v20201112 import models
 
 
+def test_import_ciam():
+    from tencentcloud.ciam.v20220331 import ciam_client
+    from tencentcloud.ciam.v20220331 import models
+
+
 def test_import_cii():
     from tencentcloud.cii.v20201210 import cii_client
     from tencentcloud.cii.v20201210 import models

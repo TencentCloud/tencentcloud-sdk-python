@@ -687,7 +687,7 @@ class CreateMultiFlowSignQRCodeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TemplateId: 模版ID
+        :param TemplateId: 模板ID
         :type TemplateId: str
         :param Operator: 用户信息
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`

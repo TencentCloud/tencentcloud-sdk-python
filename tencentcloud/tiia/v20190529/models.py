@@ -907,6 +907,75 @@ class DetectDisgustResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DetectEnvelopeRequest(AbstractModel):
+    """DetectEnvelope请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ImageUrl: 图片的URL地址。图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
+非腾讯云存储的Url速度和稳定性可能受一定影响。
+图片大小的限制为4M，图片像素的限制为4k。
+        :type ImageUrl: str
+        :param ImageBase64: 图片经过base64编码的内容。与ImageUrl同时存在时优先使用ImageUrl字段。 
+图片大小的限制为4M，图片像素的限制为4k。
+**注意：图片需要base64编码，并且要去掉编码头部。
+        :type ImageBase64: str
+        """
+        self.ImageUrl = None
+        self.ImageBase64 = None
+
+
+    def _deserialize(self, params):
+        self.ImageUrl = params.get("ImageUrl")
+        self.ImageBase64 = params.get("ImageBase64")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DetectEnvelopeResponse(AbstractModel):
+    """DetectEnvelope返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FirstTags: 一级标签结果数组。识别是否文件封。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FirstTags: list of ImageTag
+        :param SecondTags: 二级标签结果数组。识别文件封正反面。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecondTags: list of ImageTag
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FirstTags = None
+        self.SecondTags = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("FirstTags") is not None:
+            self.FirstTags = []
+            for item in params.get("FirstTags"):
+                obj = ImageTag()
+                obj._deserialize(item)
+                self.FirstTags.append(obj)
+        if params.get("SecondTags") is not None:
+            self.SecondTags = []
+            for item in params.get("SecondTags"):
+                obj = ImageTag()
+                obj._deserialize(item)
+                self.SecondTags.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DetectLabelBetaRequest(AbstractModel):
     """DetectLabelBeta请求参数结构体
 
@@ -1686,6 +1755,34 @@ class ImageRect(AbstractModel):
         self.Y = params.get("Y")
         self.Width = params.get("Width")
         self.Height = params.get("Height")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImageTag(AbstractModel):
+    """图片标签。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 标签内容。
+        :type Name: str
+        :param Confidence: 置信度范围在0-100之间。值越高，表示目标为相应结果的可能性越高。
+        :type Confidence: float
+        """
+        self.Name = None
+        self.Confidence = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Confidence = params.get("Confidence")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

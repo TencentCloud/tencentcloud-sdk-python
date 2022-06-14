@@ -26,10 +26,10 @@ FAILEDOPERATION_AUTHFAIL = 'FailedOperation.AuthFail'
 # 发起签署存在填写控件。
 FAILEDOPERATION_QRCODECREATORSIGNCOMPONENTS = 'FailedOperation.QrCodeCreatorSignComponents'
 
-# 模版签署人不存在。
+# 模板签署人不存在。
 FAILEDOPERATION_QRCODESIGNUSERS = 'FailedOperation.QrCodeSignUsers'
 
-# 一码多人二维码模版有误。
+# 一码多人二维码模板有误。
 FAILEDOPERATION_QRCODETEMPLATEID = 'FailedOperation.QrCodeTemplateId'
 
 # 员工已实名。

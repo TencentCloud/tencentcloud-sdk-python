@@ -2717,7 +2717,7 @@ class QueryChainMakerBlockTransactionRequest(AbstractModel):
         :type ClusterId: str
         :param ChainId: 业务链编号，可在业务链列表中获取
         :type ChainId: str
-        :param BlockHeight: 区块高度，-1表示最新区块
+        :param BlockHeight: 区块高度
         :type BlockHeight: int
         """
         self.ClusterId = None

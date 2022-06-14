@@ -113,6 +113,35 @@ class AcpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeResourceUsageInfo(self, request):
+        """查询应用合规平台用户资源的使用情况
+
+        :param request: Request instance for DescribeResourceUsageInfo.
+        :type request: :class:`tencentcloud.acp.v20220105.models.DescribeResourceUsageInfoRequest`
+        :rtype: :class:`tencentcloud.acp.v20220105.models.DescribeResourceUsageInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeResourceUsageInfo", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeResourceUsageInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeScanTaskList(self, request):
         """获取App隐私合规诊断任务列表
 

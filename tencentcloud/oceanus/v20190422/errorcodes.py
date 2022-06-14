@@ -53,6 +53,9 @@ INTERNALERROR_FAILEDTOBESCRIBERESOURCES = 'InternalError.FailedToBescribeResourc
 # 无法更新作业错误。
 INTERNALERROR_FAILEDTOUPDATEJOB = 'InternalError.FailedToUpdateJob'
 
+# 作业实例没找到。
+INTERNALERROR_JOBINSTANCENOTFOUND = 'InternalError.JobInstanceNotFound'
+
 # 内部错误。
 INTERNALERROR_LOGICERROR = 'InternalError.LogicError'
 
@@ -67,6 +70,9 @@ INTERNALERROR_SQLCODENOTFOUND = 'InternalError.SqlCodeNotFound'
 
 # 内部错误。
 INTERNALERROR_STSNEWCLIENT = 'InternalError.StsNewClient'
+
+# 系统错误。
+INTERNALERROR_SYSTEMERROR = 'InternalError.SystemError'
 
 # AppId资源不匹配。
 INVALIDPARAMETER_APPIDRESOURCENOTMATCH = 'InvalidParameter.AppIdResourceNotMatch'

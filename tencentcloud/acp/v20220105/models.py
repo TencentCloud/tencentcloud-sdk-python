@@ -418,6 +418,57 @@ class DescribeFileTicketResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeResourceUsageInfoRequest(AbstractModel):
+    """DescribeResourceUsageInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PriceName: 资源计费项名称
+        :type PriceName: str
+        """
+        self.PriceName = None
+
+
+    def _deserialize(self, params):
+        self.PriceName = params.get("PriceName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeResourceUsageInfoResponse(AbstractModel):
+    """DescribeResourceUsageInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 返回值, 0:成功, 其他值请查看“返回值”定义，暂时未定
+        :type Result: int
+        :param Data: 资源使用信息
+        :type Data: :class:`tencentcloud.acp.v20220105.models.ResourceUsageInfoData`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        if params.get("Data") is not None:
+            self.Data = ResourceUsageInfoData()
+            self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeScanTaskListRequest(AbstractModel):
     """DescribeScanTaskList请求参数结构体
 
@@ -654,6 +705,38 @@ class DescribeScanTaskStatusResponse(AbstractModel):
                 obj._deserialize(item)
                 self.FlowSteps.append(obj)
         self.RequestId = params.get("RequestId")
+
+
+class ResourceUsageInfoData(AbstractModel):
+    """资源使用情况信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ResourceName: 资源计费项名称
+        :type ResourceName: str
+        :param Total: 资源总数
+        :type Total: int
+        :param UnusedCount: 未使用资源数
+        :type UnusedCount: int
+        """
+        self.ResourceName = None
+        self.Total = None
+        self.UnusedCount = None
+
+
+    def _deserialize(self, params):
+        self.ResourceName = params.get("ResourceName")
+        self.Total = params.get("Total")
+        self.UnusedCount = params.get("UnusedCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class TaskFlowStepsInfo(AbstractModel):

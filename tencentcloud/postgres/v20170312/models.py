@@ -695,9 +695,9 @@ class CreateInstancesRequest(AbstractModel):
         :type DBNodeSet: list of DBNode
         :param NeedSupportTDE: 是否需要支持数据透明加密，1：是，0：否（默认）。
         :type NeedSupportTDE: int
-        :param KMSKeyId: 自定义密钥的keyId，若选择自定义密匙加密，则需要传入自定义密匙的keyId，keyId是CMK的唯一标识。
+        :param KMSKeyId: 自定义密钥的KeyId，若选择自定义密匙加密，则需要传入自定义密匙的KeyId，KeyId是CMK的唯一标识。
         :type KMSKeyId: str
-        :param KMSRegion: 使用KMS服务的地域，KMSRegion为空默认使用本地域的kms，本地域不支持的情况下需自选其他KMS支持的地域。
+        :param KMSRegion: 使用KMS服务的地域，KMSRegion为空默认使用本地域的KMS，本地域不支持的情况下需自选其他KMS支持的地域。
         :type KMSRegion: str
         """
         self.SpecCode = None
@@ -1729,9 +1729,9 @@ class DescribeAccountsRequest(AbstractModel):
         r"""
         :param DBInstanceId: 实例ID，形如postgres-6fego161
         :type DBInstanceId: str
-        :param Limit: 分页返回，每页最大返回数目，默认20，取值范围为1-100
+        :param Limit: 分页返回，每页最大返回数目，默认10，取值范围为1-100
         :type Limit: int
-        :param Offset: 分页返回，返回第几页的用户数据。页码从0开始计数
+        :param Offset: 数据偏移量，从0开始。
         :type Offset: int
         :param OrderBy: 返回数据按照创建时间或者用户名排序。取值只能为createTime或者name。createTime-按照创建时间排序；name-按照用户名排序
         :type OrderBy: str
@@ -2219,17 +2219,17 @@ db-tag-key：按照标签键过滤，类型为string
         :type Filters: list of Filter
         :param Limit: 每页显示数量，取值范围为1-100，默认为返回10条。
         :type Limit: int
+        :param Offset: 数据偏移量，从0开始。
+        :type Offset: int
         :param OrderBy: 排序指标，如实例名、创建时间等，支持DBInstanceId,CreateTime,Name,EndTime
         :type OrderBy: str
-        :param Offset: 页码偏移量，从0开始。
-        :type Offset: int
         :param OrderByType: 排序方式，包括升序：asc、降序：desc。
         :type OrderByType: str
         """
         self.Filters = None
         self.Limit = None
-        self.OrderBy = None
         self.Offset = None
+        self.OrderBy = None
         self.OrderByType = None
 
 
@@ -2241,8 +2241,8 @@ db-tag-key：按照标签键过滤，类型为string
                 obj._deserialize(item)
                 self.Filters.append(obj)
         self.Limit = params.get("Limit")
-        self.OrderBy = params.get("OrderBy")
         self.Offset = params.get("Offset")
+        self.OrderBy = params.get("OrderBy")
         self.OrderByType = params.get("OrderByType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -3163,7 +3163,7 @@ class DisIsolateDBInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DBInstanceIdSet: 资源ID列表
+        :param DBInstanceIdSet: 资源ID列表。注意：当前已不支持同时解隔离多个实例，这里只能传入单个实例ID。
         :type DBInstanceIdSet: list of str
         :param Period: 包年包月实例解隔离时购买时常 以月为单位
         :type Period: int
@@ -3569,17 +3569,21 @@ class InquiryPriceCreateDBInstancesResponse(AbstractModel):
         :type OriginalPrice: int
         :param Price: 折后价格，单位：分
         :type Price: int
+        :param Currency: 币种。例如，CNY：人民币。
+        :type Currency: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.OriginalPrice = None
         self.Price = None
+        self.Currency = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.OriginalPrice = params.get("OriginalPrice")
         self.Price = params.get("Price")
+        self.Currency = params.get("Currency")
         self.RequestId = params.get("RequestId")
 
 
@@ -3622,17 +3626,21 @@ class InquiryPriceRenewDBInstanceResponse(AbstractModel):
         :type OriginalPrice: int
         :param Price: 实际需要付款金额。比如24650表示246.5元
         :type Price: int
+        :param Currency: 币种。例如，CNY：人民币。
+        :type Currency: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.OriginalPrice = None
         self.Price = None
+        self.Currency = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.OriginalPrice = params.get("OriginalPrice")
         self.Price = params.get("Price")
+        self.Currency = params.get("Currency")
         self.RequestId = params.get("RequestId")
 
 
@@ -3683,17 +3691,21 @@ class InquiryPriceUpgradeDBInstanceResponse(AbstractModel):
         :type OriginalPrice: int
         :param Price: 实际需要付款金额
         :type Price: int
+        :param Currency: 币种。例如，CNY：人民币。
+        :type Currency: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.OriginalPrice = None
         self.Price = None
+        self.Currency = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.OriginalPrice = params.get("OriginalPrice")
         self.Price = params.get("Price")
+        self.Currency = params.get("Currency")
         self.RequestId = params.get("RequestId")
 
 
@@ -3704,7 +3716,7 @@ class IsolateDBInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DBInstanceIdSet: 实例ID集合
+        :param DBInstanceIdSet: 实例ID集合。注意：当前已不支持同时隔离多个实例，这里只能传入单个实例ID。
         :type DBInstanceIdSet: list of str
         """
         self.DBInstanceIdSet = None
@@ -4142,9 +4154,9 @@ class ModifyDBInstancesProjectRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DBInstanceIdSet: postgresql实例ID数组
+        :param DBInstanceIdSet: 实例ID集合。注意：当前已不支持同时操作多个实例，这里只能传入单个实例ID。
         :type DBInstanceIdSet: list of str
-        :param ProjectId: postgresql实例所属新项目的ID
+        :param ProjectId: 所属新项目的ID
         :type ProjectId: str
         """
         self.DBInstanceIdSet = None
@@ -5359,7 +5371,7 @@ class SetAutoRenewFlagRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DBInstanceIdSet: 实例ID数组
+        :param DBInstanceIdSet: 实例ID集合。注意：当前已不支持同时操作多个实例，这里只能传入单个实例ID。
         :type DBInstanceIdSet: list of str
         :param AutoRenewFlag: 续费标记。0-正常续费；1-自动续费；2-到期不续费
         :type AutoRenewFlag: int

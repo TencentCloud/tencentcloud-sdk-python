@@ -1825,7 +1825,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
         :type RoGroup: :class:`tencentcloud.cdb.v20170320.models.RoGroup`
         :param AutoRenewFlag: 购买按量计费实例该字段无意义。
         :type AutoRenewFlag: int
-        :param InstanceName: 实例名称。
+        :param InstanceName: 实例名称。一次购买多个实例命名会用后缀数字区分，例instnaceName=db，goodsNum=3，实例命名分别为db1，db2，db3。
         :type InstanceName: str
         :param ResourceTags: 实例标签信息。
         :type ResourceTags: list of TagInfo
@@ -2032,7 +2032,7 @@ class CreateDBInstanceRequest(AbstractModel):
         :type SecurityGroup: list of str
         :param RoGroup: 只读实例参数。购买只读实例时，该参数必传。
         :type RoGroup: :class:`tencentcloud.cdb.v20170320.models.RoGroup`
-        :param InstanceName: 实例名称。
+        :param InstanceName: 实例名称。一次购买多个实例命名会用后缀数字区分，例instnaceName=db，goodsNum=3，实例命名分别为db1，db2，db3。
         :type InstanceName: str
         :param ResourceTags: 实例标签信息。
         :type ResourceTags: list of TagInfo

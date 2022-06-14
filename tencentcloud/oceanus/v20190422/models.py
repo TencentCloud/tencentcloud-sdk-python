@@ -1437,6 +1437,63 @@ class JobV1(AbstractModel):
         
 
 
+class ModifyJobRequest(AbstractModel):
+    """ModifyJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param JobId: 作业Id
+        :type JobId: str
+        :param Name: 作业名称，支持长度小于50的中文/英文/数字/”-”/”_”/”.”，不能重名
+        :type Name: str
+        :param Remark: 描述
+        :type Remark: str
+        :param TargetFolderId: 拖拽文件需传入此参数
+        :type TargetFolderId: str
+        :param WorkSpaceId: 工作空间 SerialId
+        :type WorkSpaceId: str
+        """
+        self.JobId = None
+        self.Name = None
+        self.Remark = None
+        self.TargetFolderId = None
+        self.WorkSpaceId = None
+
+
+    def _deserialize(self, params):
+        self.JobId = params.get("JobId")
+        self.Name = params.get("Name")
+        self.Remark = params.get("Remark")
+        self.TargetFolderId = params.get("TargetFolderId")
+        self.WorkSpaceId = params.get("WorkSpaceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyJobResponse(AbstractModel):
+    """ModifyJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class Property(AbstractModel):
     """系统配置属性
 

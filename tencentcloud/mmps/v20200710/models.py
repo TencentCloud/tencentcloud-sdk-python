@@ -439,6 +439,63 @@ class CreateFlySecMiniAppScanTaskResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeBasicDiagnosisResourceUsageInfoRequest(AbstractModel):
+    """DescribeBasicDiagnosisResourceUsageInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Mode: 诊断模式 1:基础诊断，2:深度诊断
+        :type Mode: int
+        """
+        self.Mode = None
+
+
+    def _deserialize(self, params):
+        self.Mode = params.get("Mode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBasicDiagnosisResourceUsageInfoResponse(AbstractModel):
+    """DescribeBasicDiagnosisResourceUsageInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Ret: 返回值, 0:成功, 其他值请查看“返回值”定义
+        :type Ret: int
+        :param ResourceName: 资源类型
+        :type ResourceName: str
+        :param Total: 资源总数
+        :type Total: int
+        :param UnusedCount: 资源未使用次数
+        :type UnusedCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Ret = None
+        self.ResourceName = None
+        self.Total = None
+        self.UnusedCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Ret = params.get("Ret")
+        self.ResourceName = params.get("ResourceName")
+        self.Total = params.get("Total")
+        self.UnusedCount = params.get("UnusedCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeFlySecMiniAppReportUrlRequest(AbstractModel):
     """DescribeFlySecMiniAppReportUrl请求参数结构体
 
@@ -702,6 +759,46 @@ class DescribeFlySecMiniAppScanTaskStatusResponse(AbstractModel):
         self.Errno = params.get("Errno")
         self.MiniAppName = params.get("MiniAppName")
         self.MiniAppVersion = params.get("MiniAppVersion")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeResourceUsageInfoRequest(AbstractModel):
+    """DescribeResourceUsageInfo请求参数结构体
+
+    """
+
+
+class DescribeResourceUsageInfoResponse(AbstractModel):
+    """DescribeResourceUsageInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Ret: 返回值, 0:成功, 其他值请查看“返回值”定义
+        :type Ret: int
+        :param Data: 安全资源数据列表
+        :type Data: list of ResourceUsageInfoData
+        :param Total: 安全资源数量
+        :type Total: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Ret = None
+        self.Data = None
+        self.Total = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Ret = params.get("Ret")
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = ResourceUsageInfoData()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.Total = params.get("Total")
         self.RequestId = params.get("RequestId")
 
 
@@ -986,6 +1083,38 @@ class FlySecMiniAppTaskData(AbstractModel):
         self.CreateTime = params.get("CreateTime")
         self.Status = params.get("Status")
         self.Error = params.get("Error")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResourceUsageInfoData(AbstractModel):
+    """翼扬安全资源使用情况
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ResourceName: 资源名称, 具体名称请查看产品配置
+        :type ResourceName: str
+        :param Total: 资源总数
+        :type Total: int
+        :param UnusedCount: 资源未使用次数
+        :type UnusedCount: int
+        """
+        self.ResourceName = None
+        self.Total = None
+        self.UnusedCount = None
+
+
+    def _deserialize(self, params):
+        self.ResourceName = params.get("ResourceName")
+        self.Total = params.get("Total")
+        self.UnusedCount = params.get("UnusedCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
