@@ -37,6 +37,10 @@ class AbstractRuntimeMC(AbstractModel):
         :type Area: str
         :param Addr: 运行时应用listener地址后缀
         :type Addr: str
+        :param Status: 运行时状态
+        :type Status: int
+        :param ExpiredAt: 运行时过期时间
+        :type ExpiredAt: int
         """
         self.RuntimeId = None
         self.DisplayName = None
@@ -44,6 +48,8 @@ class AbstractRuntimeMC(AbstractModel):
         self.Zone = None
         self.Area = None
         self.Addr = None
+        self.Status = None
+        self.ExpiredAt = None
 
 
     def _deserialize(self, params):
@@ -53,6 +59,8 @@ class AbstractRuntimeMC(AbstractModel):
         self.Zone = params.get("Zone")
         self.Area = params.get("Area")
         self.Addr = params.get("Addr")
+        self.Status = params.get("Status")
+        self.ExpiredAt = params.get("ExpiredAt")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -238,6 +246,8 @@ class ListRuntimeDeployedInstancesMCRequest(AbstractModel):
         :type Sort: str
         :param Zone: 运行时地域
         :type Zone: str
+        :param ApiVersion: 1:3.0版本新控制台传1；否则传0
+        :type ApiVersion: int
         """
         self.RuntimeId = None
         self.Limit = None
@@ -245,6 +255,7 @@ class ListRuntimeDeployedInstancesMCRequest(AbstractModel):
         self.SortType = None
         self.Sort = None
         self.Zone = None
+        self.ApiVersion = None
 
 
     def _deserialize(self, params):
@@ -254,6 +265,7 @@ class ListRuntimeDeployedInstancesMCRequest(AbstractModel):
         self.SortType = params.get("SortType")
         self.Sort = params.get("Sort")
         self.Zone = params.get("Zone")
+        self.ApiVersion = params.get("ApiVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -456,6 +468,18 @@ class RuntimeMC(AbstractModel):
         :type MemoryUsed: float
         :param MemoryLimit: 内存上限 MB
         :type MemoryLimit: float
+        :param ExpiredAt: 运行时过期时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpiredAt: int
+        :param ChargeType: 收费类型：0:缺省，1:通过订单页自助下单(支持续费/升配等操作)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChargeType: int
+        :param ResourceLimitType: 资源限制类型：0:无限制，1:有限制
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceLimitType: int
+        :param AutoRenewal: 是否开启自动续费
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AutoRenewal: bool
         """
         self.RuntimeId = None
         self.Uin = None
@@ -472,6 +496,10 @@ class RuntimeMC(AbstractModel):
         self.CpuLimit = None
         self.MemoryUsed = None
         self.MemoryLimit = None
+        self.ExpiredAt = None
+        self.ChargeType = None
+        self.ResourceLimitType = None
+        self.AutoRenewal = None
 
 
     def _deserialize(self, params):
@@ -490,6 +518,10 @@ class RuntimeMC(AbstractModel):
         self.CpuLimit = params.get("CpuLimit")
         self.MemoryUsed = params.get("MemoryUsed")
         self.MemoryLimit = params.get("MemoryLimit")
+        self.ExpiredAt = params.get("ExpiredAt")
+        self.ChargeType = params.get("ChargeType")
+        self.ResourceLimitType = params.get("ResourceLimitType")
+        self.AutoRenewal = params.get("AutoRenewal")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

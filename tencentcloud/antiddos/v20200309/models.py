@@ -280,6 +280,9 @@ class BGPIPInstance(AbstractModel):
         :param BGPIPChannelFlag: 是否渠道版高防IP，是为1，否为0
 注意：此字段可能返回 null，表示取不到有效值。
         :type BGPIPChannelFlag: int
+        :param TagInfoList: 资源关联标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagInfoList: list of TagInfo
         """
         self.InstanceDetail = None
         self.SpecificationLimit = None
@@ -301,6 +304,7 @@ class BGPIPInstance(AbstractModel):
         self.DamDDoSStatus = None
         self.V6Flag = None
         self.BGPIPChannelFlag = None
+        self.TagInfoList = None
 
 
     def _deserialize(self, params):
@@ -340,6 +344,12 @@ class BGPIPInstance(AbstractModel):
         self.DamDDoSStatus = params.get("DamDDoSStatus")
         self.V6Flag = params.get("V6Flag")
         self.BGPIPChannelFlag = params.get("BGPIPChannelFlag")
+        if params.get("TagInfoList") is not None:
+            self.TagInfoList = []
+            for item in params.get("TagInfoList"):
+                obj = TagInfo()
+                obj._deserialize(item)
+                self.TagInfoList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -483,6 +493,8 @@ class BGPInstance(AbstractModel):
         :type DDoSLevel: str
         :param CCEnable: CC防护开关
         :type CCEnable: int
+        :param TagInfoList: 资源关联标签
+        :type TagInfoList: list of TagInfo
         """
         self.InstanceDetail = None
         self.SpecificationLimit = None
@@ -497,6 +509,7 @@ class BGPInstance(AbstractModel):
         self.BoundStatus = None
         self.DDoSLevel = None
         self.CCEnable = None
+        self.TagInfoList = None
 
 
     def _deserialize(self, params):
@@ -528,6 +541,12 @@ class BGPInstance(AbstractModel):
         self.BoundStatus = params.get("BoundStatus")
         self.DDoSLevel = params.get("DDoSLevel")
         self.CCEnable = params.get("CCEnable")
+        if params.get("TagInfoList") is not None:
+            self.TagInfoList = []
+            for item in params.get("TagInfoList"):
+                obj = TagInfo()
+                obj._deserialize(item)
+                self.TagInfoList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -653,11 +672,14 @@ class BlackWhiteIpRelation(AbstractModel):
         :type InstanceDetailList: list of InstanceRelation
         :param Mask: ip掩码，0表示32位完整ip
         :type Mask: int
+        :param ModifyTime: 修改时间
+        :type ModifyTime: str
         """
         self.Ip = None
         self.Type = None
         self.InstanceDetailList = None
         self.Mask = None
+        self.ModifyTime = None
 
 
     def _deserialize(self, params):
@@ -670,6 +692,7 @@ class BlackWhiteIpRelation(AbstractModel):
                 obj._deserialize(item)
                 self.InstanceDetailList.append(obj)
         self.Mask = params.get("Mask")
+        self.ModifyTime = params.get("ModifyTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1510,12 +1533,15 @@ class CreateCCReqLimitPolicyRequest(AbstractModel):
         :type Domain: str
         :param Policy: 策略项
         :type Policy: :class:`tencentcloud.antiddos.v20200309.models.CCReqLimitPolicyRecord`
+        :param IsGlobal: 是否为兜底频控
+        :type IsGlobal: int
         """
         self.InstanceId = None
         self.Ip = None
         self.Protocol = None
         self.Domain = None
         self.Policy = None
+        self.IsGlobal = None
 
 
     def _deserialize(self, params):
@@ -1526,6 +1552,7 @@ class CreateCCReqLimitPolicyRequest(AbstractModel):
         if params.get("Policy") is not None:
             self.Policy = CCReqLimitPolicyRecord()
             self.Policy._deserialize(params.get("Policy"))
+        self.IsGlobal = params.get("IsGlobal")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3537,7 +3564,7 @@ class DescribeCCLevelListResponse(AbstractModel):
         r"""
         :param Total: 分级策略列表总数
         :type Total: int
-        :param LevelList: 分级策略列表详情
+        :param LevelList: 分级策略列表总数
         :type LevelList: list of CCLevelPolicy
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4487,6 +4514,8 @@ class DescribeListBGPIPInstancesRequest(AbstractModel):
         :type FilterCname: str
         :param FilterInstanceIdList: 批量查询实例ID对应的高防IP实例资源
         :type FilterInstanceIdList: list of str
+        :param FilterTag: 标签搜索
+        :type FilterTag: :class:`tencentcloud.antiddos.v20200309.models.TagFilter`
         """
         self.Offset = None
         self.Limit = None
@@ -4501,6 +4530,7 @@ class DescribeListBGPIPInstancesRequest(AbstractModel):
         self.FilterStatus = None
         self.FilterCname = None
         self.FilterInstanceIdList = None
+        self.FilterTag = None
 
 
     def _deserialize(self, params):
@@ -4517,6 +4547,9 @@ class DescribeListBGPIPInstancesRequest(AbstractModel):
         self.FilterStatus = params.get("FilterStatus")
         self.FilterCname = params.get("FilterCname")
         self.FilterInstanceIdList = params.get("FilterInstanceIdList")
+        if params.get("FilterTag") is not None:
+            self.FilterTag = TagFilter()
+            self.FilterTag._deserialize(params.get("FilterTag"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4585,6 +4618,8 @@ class DescribeListBGPInstancesRequest(AbstractModel):
         :type FilterInstanceIdList: list of str
         :param FilterEnterpriseFlag: 企业版搜索
         :type FilterEnterpriseFlag: int
+        :param FilterTag: 标签搜索
+        :type FilterTag: :class:`tencentcloud.antiddos.v20200309.models.TagFilter`
         """
         self.Offset = None
         self.Limit = None
@@ -4597,6 +4632,7 @@ class DescribeListBGPInstancesRequest(AbstractModel):
         self.FilterBoundStatus = None
         self.FilterInstanceIdList = None
         self.FilterEnterpriseFlag = None
+        self.FilterTag = None
 
 
     def _deserialize(self, params):
@@ -4611,6 +4647,9 @@ class DescribeListBGPInstancesRequest(AbstractModel):
         self.FilterBoundStatus = params.get("FilterBoundStatus")
         self.FilterInstanceIdList = params.get("FilterInstanceIdList")
         self.FilterEnterpriseFlag = params.get("FilterEnterpriseFlag")
+        if params.get("FilterTag") is not None:
+            self.FilterTag = TagFilter()
+            self.FilterTag._deserialize(params.get("FilterTag"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6506,7 +6545,7 @@ class ListenerCcThreholdConfig(AbstractModel):
         r"""
         :param Domain: 域名
         :type Domain: str
-        :param Protocol: 协议（可取值htttps）
+        :param Protocol: 协议（可取值https）
         :type Protocol: str
         :param CCEnable: 开关状态（0：关闭，1：开启）
         :type CCEnable: int
@@ -7725,9 +7764,12 @@ class PacketFilterRelation(AbstractModel):
         :type PacketFilterConfig: :class:`tencentcloud.antiddos.v20200309.models.PacketFilterConfig`
         :param InstanceDetailList: 特征过滤配置所属的实例
         :type InstanceDetailList: list of InstanceRelation
+        :param ModifyTime: 修改时间
+        :type ModifyTime: str
         """
         self.PacketFilterConfig = None
         self.InstanceDetailList = None
+        self.ModifyTime = None
 
 
     def _deserialize(self, params):
@@ -7740,6 +7782,7 @@ class PacketFilterRelation(AbstractModel):
                 obj = InstanceRelation()
                 obj._deserialize(item)
                 self.InstanceDetailList.append(obj)
+        self.ModifyTime = params.get("ModifyTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8279,6 +8322,62 @@ class SwitchWaterPrintConfigResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class TagFilter(AbstractModel):
+    """标签类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TagKey: 标签键
+        :type TagKey: str
+        :param TagValue: 标签键值列表
+        :type TagValue: list of str
+        """
+        self.TagKey = None
+        self.TagValue = None
+
+
+    def _deserialize(self, params):
+        self.TagKey = params.get("TagKey")
+        self.TagValue = params.get("TagValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TagInfo(AbstractModel):
+    """标签信息，用于资源列表返回关联的标签
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TagKey: 标签键
+        :type TagKey: str
+        :param TagValue: 标签值
+        :type TagValue: str
+        """
+        self.TagKey = None
+        self.TagValue = None
+
+
+    def _deserialize(self, params):
+        self.TagKey = params.get("TagKey")
+        self.TagValue = params.get("TagValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class WaterPrintConfig(AbstractModel):

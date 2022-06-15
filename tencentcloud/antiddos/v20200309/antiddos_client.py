@@ -1187,7 +1187,7 @@ class AntiddosClient(AbstractClient):
 
 
     def DescribeCCLevelList(self, request):
-        """获取CC防护等级列表
+        """获取边界防护CC防护等级列表
 
         :param request: Request instance for DescribeCCLevelList.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeCCLevelListRequest`

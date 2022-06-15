@@ -10738,7 +10738,7 @@ class TimeShiftBillData(AbstractModel):
         r"""
         :param Domain: 推流域名。
         :type Domain: str
-        :param Duration: 时移时长,单位分钟。
+        :param Duration: 时移文件时长,单位分钟。
         :type Duration: float
         :param StoragePeriod: 时移配置天数，单位天。
         :type StoragePeriod: float

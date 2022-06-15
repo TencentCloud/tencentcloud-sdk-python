@@ -1056,6 +1056,35 @@ class InsuranceResult(AbstractModel):
         
 
 
+class Location(AbstractModel):
+    """位置信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Points: 位置信息
+        :type Points: list of Point
+        """
+        self.Points = None
+
+
+    def _deserialize(self, params):
+        if params.get("Points") is not None:
+            self.Points = []
+            for item in params.get("Points"):
+                obj = Point()
+                obj._deserialize(item)
+                self.Points.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class MachinePredict(AbstractModel):
     """机器核保预测结果
 
@@ -1148,6 +1177,44 @@ class MachineUnderwriteOutput(AbstractModel):
         
 
 
+class OcrRecognise(AbstractModel):
+    """Ocr识别结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param OriginalField: 原文字段
+        :type OriginalField: str
+        :param Value: 识别结果
+        :type Value: str
+        :param Confidence: 置信度
+        :type Confidence: float
+        :param Location: 位置信息
+        :type Location: :class:`tencentcloud.cii.v20210408.models.Location`
+        """
+        self.OriginalField = None
+        self.Value = None
+        self.Confidence = None
+        self.Location = None
+
+
+    def _deserialize(self, params):
+        self.OriginalField = params.get("OriginalField")
+        self.Value = params.get("Value")
+        self.Confidence = params.get("Confidence")
+        if params.get("Location") is not None:
+            self.Location = Location()
+            self.Location._deserialize(params.get("Location"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PerStructDifference(AbstractModel):
     """复核差异接口的每一份报告的差异结果
 
@@ -1194,6 +1261,38 @@ class PerStructDifference(AbstractModel):
                 obj = StructureOneItem()
                 obj._deserialize(item)
                 self.RemoveItems.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Point(AbstractModel):
+    """点信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param XCoordinate: x坐标
+        :type XCoordinate: int
+        :param YCoordinate: y坐标
+        :type YCoordinate: int
+        :param Page: 页码
+        :type Page: int
+        """
+        self.XCoordinate = None
+        self.YCoordinate = None
+        self.Page = None
+
+
+    def _deserialize(self, params):
+        self.XCoordinate = params.get("XCoordinate")
+        self.YCoordinate = params.get("YCoordinate")
+        self.Page = params.get("Page")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1359,12 +1458,16 @@ class StructureResultObject(AbstractModel):
         :type SubTaskId: str
         :param TaskFiles: 任务文件列表
         :type TaskFiles: list of str
+        :param ResultFields: 结构化字段结果数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResultFields: list of OcrRecognise
         """
         self.Code = None
         self.TaskType = None
         self.StructureResult = None
         self.SubTaskId = None
         self.TaskFiles = None
+        self.ResultFields = None
 
 
     def _deserialize(self, params):
@@ -1373,6 +1476,12 @@ class StructureResultObject(AbstractModel):
         self.StructureResult = params.get("StructureResult")
         self.SubTaskId = params.get("SubTaskId")
         self.TaskFiles = params.get("TaskFiles")
+        if params.get("ResultFields") is not None:
+            self.ResultFields = []
+            for item in params.get("ResultFields"):
+                obj = OcrRecognise()
+                obj._deserialize(item)
+                self.ResultFields.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
