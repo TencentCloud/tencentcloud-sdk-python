@@ -1653,7 +1653,7 @@ class DescribeScriptsRequest(AbstractModel):
         :type Offset: int
         :param SortBy: 按字段排序，支持如下字段类型，update-time
         :type SortBy: str
-        :param Sorting: 排序方式，desc表示正序，asc表示反序
+        :param Sorting: 排序方式，desc表示正序，asc表示反序，默认asc
         :type Sorting: str
         :param Filters: 过滤条件，如下支持的过滤类型，传参Name应为其一
 script-id - String - （过滤条件）script-id取值形如：157de0d1-26b4-4df2-a2d0-b64afc406c25。

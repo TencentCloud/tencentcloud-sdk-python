@@ -20,6 +20,9 @@ AUTHFAILURE = 'AuthFailure'
 # 操作失败。
 FAILEDOPERATION = 'FailedOperation'
 
+# 签署人未达到合法年龄。
+FAILEDOPERATION_AGENOTACHIEVENORMALLEGAL = 'FailedOperation.AgeNotAchieveNormalLegal'
+
 # 鉴权失败。
 FAILEDOPERATION_AUTHFAIL = 'FailedOperation.AuthFail'
 

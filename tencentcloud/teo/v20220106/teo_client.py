@@ -1505,6 +1505,35 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeTimingL7CacheData(self, request):
+        """七层查询缓存分析时序类流量数据
+
+        :param request: Request instance for DescribeTimingL7CacheData.
+        :type request: :class:`tencentcloud.teo.v20220106.models.DescribeTimingL7CacheDataRequest`
+        :rtype: :class:`tencentcloud.teo.v20220106.models.DescribeTimingL7CacheDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTimingL7CacheData", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeTimingL7CacheDataResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeTopL7AnalysisData(self, request):
         """查询top类流量数据
 
@@ -1520,6 +1549,35 @@ class TeoClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeTopL7AnalysisDataResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeTopL7CacheData(self, request):
+        """七层查询缓存分析top类流量数据
+
+        :param request: Request instance for DescribeTopL7CacheData.
+        :type request: :class:`tencentcloud.teo.v20220106.models.DescribeTopL7CacheDataRequest`
+        :rtype: :class:`tencentcloud.teo.v20220106.models.DescribeTopL7CacheDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTopL7CacheData", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeTopL7CacheDataResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

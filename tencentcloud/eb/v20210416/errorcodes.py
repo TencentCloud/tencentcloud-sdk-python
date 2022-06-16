@@ -125,6 +125,9 @@ INVALIDPARAMETERVALUE_INVALIDPATTERN = 'InvalidParameterValue.InvalidPattern'
 # Limit取值与规范不符，请修正后再试。
 INVALIDPARAMETERVALUE_LIMIT = 'InvalidParameterValue.Limit'
 
+# LinkMode取值与规范不符，请修正后再试。
+INVALIDPARAMETERVALUE_LINKMODE = 'InvalidParameterValue.LinkMode'
+
 # NoticeReceiverChannel取值与规范不符，请修正后再试。
 INVALIDPARAMETERVALUE_NOTICERECEIVERCHANNEL = 'InvalidParameterValue.NoticeReceiverChannel'
 

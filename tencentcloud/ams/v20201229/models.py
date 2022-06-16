@@ -622,7 +622,7 @@ class DescribeTaskDetailResponse(AbstractModel):
         :param Suggestion: 该字段用于返回基于恶意标签的后续操作建议。当您获取到判定结果后，返回值表示系统推荐的后续操作；建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
 注意：此字段可能返回 null，表示取不到有效值。
         :type Suggestion: str
-        :param Labels: 该字段用于返回检测结果所对应的恶意标签。<br>返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告，**Custom**：自定义违规；以及其他令人反感、不安全或不适宜的内容类型。
+        :param Labels: 该字段用于返回检测结果所对应的恶意标签。<br>返回值：**Porn**：色情，**Abuse**：谩骂，**Ad**：广告，**Custom**：自定义违规；以及其他令人反感、不安全或不适宜的内容类型。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Labels: list of TaskLabel
         :param InputInfo: 该字段用于返回审核服务的媒体内容信息，主要包括传入文件类型和访问地址。
@@ -646,6 +646,9 @@ class DescribeTaskDetailResponse(AbstractModel):
         :param UpdatedAt: 该字段用于返回被查询任务最后更新时间，格式采用 ISO 8601标准。
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdatedAt: str
+        :param Label: 该字段用于返回检测结果所对应的标签。如果未命中恶意，返回Normal，如果命中恶意，则返回Labels中优先级最高的标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Label: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -664,6 +667,7 @@ class DescribeTaskDetailResponse(AbstractModel):
         self.ErrorDescription = None
         self.CreatedAt = None
         self.UpdatedAt = None
+        self.Label = None
         self.RequestId = None
 
 
@@ -695,6 +699,7 @@ class DescribeTaskDetailResponse(AbstractModel):
         self.ErrorDescription = params.get("ErrorDescription")
         self.CreatedAt = params.get("CreatedAt")
         self.UpdatedAt = params.get("UpdatedAt")
+        self.Label = params.get("Label")
         self.RequestId = params.get("RequestId")
 
 

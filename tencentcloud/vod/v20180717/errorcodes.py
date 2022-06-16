@@ -374,6 +374,9 @@ INVALIDPARAMETERVALUE_NAMEPREFIXES = 'InvalidParameterValue.NamePrefixes'
 # Names数组中元素过多。
 INVALIDPARAMETERVALUE_NAMES = 'InvalidParameterValue.Names'
 
+# 参数错误：文件不支持解冻。
+INVALIDPARAMETERVALUE_NOTRESTORABLE = 'InvalidParameterValue.NotRestorable'
+
 # 参数值错误：物体库参数非法。
 INVALIDPARAMETERVALUE_OBJECTLIBRARY = 'InvalidParameterValue.ObjectLibrary'
 
@@ -415,6 +418,12 @@ INVALIDPARAMETERVALUE_RESOLUTION = 'InvalidParameterValue.Resolution'
 
 # 无效的ResolutionAdaptive。
 INVALIDPARAMETERVALUE_RESOLUTIONADAPTIVE = 'InvalidParameterValue.ResolutionAdaptive'
+
+# 参数错误：解冻天数错误。
+INVALIDPARAMETERVALUE_RESTOREDAY = 'InvalidParameterValue.RestoreDay'
+
+# 参数错误：不支持的解冻模式。
+INVALIDPARAMETERVALUE_RESTORETIER = 'InvalidParameterValue.RestoreTier'
 
 # 参数值错误：ReviewConfidence 参数取值非法。
 INVALIDPARAMETERVALUE_REVIEWCONFIDENCE = 'InvalidParameterValue.ReviewConfidence'

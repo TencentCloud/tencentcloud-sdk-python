@@ -3996,7 +3996,7 @@ class DescribeDDosAttackEventDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EventId: 时间id
+        :param EventId: 事件id
         :type EventId: str
         """
         self.EventId = None
@@ -5968,6 +5968,90 @@ class DescribeTimingL7AnalysisDataResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeTimingL7CacheDataRequest(AbstractModel):
+    """DescribeTimingL7CacheData请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StartTime: RFC3339标准，客户端时间
+        :type StartTime: str
+        :param EndTime: RFC3339标准，客户端时间
+        :type EndTime: str
+        :param MetricNames: 时序类访问流量指标列表
+        :type MetricNames: list of str
+        :param Interval: 时间间隔，选填{min, 5min, hour, day, week}
+        :type Interval: str
+        :param ZoneIds: 站点id列表
+        :type ZoneIds: list of str
+        :param Filters: 筛选条件
+        :type Filters: list of Filter
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.MetricNames = None
+        self.Interval = None
+        self.ZoneIds = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.MetricNames = params.get("MetricNames")
+        self.Interval = params.get("Interval")
+        self.ZoneIds = params.get("ZoneIds")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTimingL7CacheDataResponse(AbstractModel):
+    """DescribeTimingL7CacheData返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 详细数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: list of TimingDataRecord
+        :param Type: 查询维度
+        :type Type: str
+        :param Interval: 时间间隔
+        :type Interval: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.Type = None
+        self.Interval = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = TimingDataRecord()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.Type = params.get("Type")
+        self.Interval = params.get("Interval")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeTopL7AnalysisDataRequest(AbstractModel):
     """DescribeTopL7AnalysisData请求参数结构体
 
@@ -6056,6 +6140,94 @@ class DescribeTopL7AnalysisDataResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeTopL7CacheDataRequest(AbstractModel):
+    """DescribeTopL7CacheData请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StartTime: RFC3339标准，客户端时间
+        :type StartTime: str
+        :param EndTime: RFC3339标准，客户端时间
+        :type EndTime: str
+        :param MetricName: 时序类访问流量指标
+        :type MetricName: str
+        :param Limit: topN,填0时返回全量数据
+        :type Limit: int
+        :param Interval: 时间间隔，选填{min, 5min, hour, day, week}
+        :type Interval: str
+        :param ZoneIds: ZoneId数组
+        :type ZoneIds: list of str
+        :param Filters: 筛选条件
+        :type Filters: list of Filter
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.MetricName = None
+        self.Limit = None
+        self.Interval = None
+        self.ZoneIds = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.MetricName = params.get("MetricName")
+        self.Limit = params.get("Limit")
+        self.Interval = params.get("Interval")
+        self.ZoneIds = params.get("ZoneIds")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTopL7CacheDataResponse(AbstractModel):
+    """DescribeTopL7CacheData返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: top详细数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: list of TopDataRecord
+        :param Type: 查询维度
+        :type Type: str
+        :param MetricName: 查询指标
+        :type MetricName: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.Type = None
+        self.MetricName = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = TopDataRecord()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.Type = params.get("Type")
+        self.MetricName = params.get("MetricName")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeWebManagedRulesAttackEventsRequest(AbstractModel):
     """DescribeWebManagedRulesAttackEvents请求参数结构体
 
@@ -6071,11 +6243,11 @@ class DescribeWebManagedRulesAttackEventsRequest(AbstractModel):
         :type PageSize: int
         :param PageNo: 当前页
         :type PageNo: int
-        :param PolicyIds: ddos策略组id 集合
+        :param PolicyIds: ddos策略组id列表
         :type PolicyIds: list of int
         :param ZoneIds: 站点集合
         :type ZoneIds: list of str
-        :param Domains: 协议类型,{tcp,udp,all}
+        :param Domains: 子域名列表
         :type Domains: list of str
         :param IsShowDetail: 选填{Y、N},默认为Y；Y：展示，N：不展示
         :type IsShowDetail: str

@@ -696,7 +696,7 @@ class NodeDefine(AbstractModel):
 <li> 3 = 国外 </li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Location: int
-        :param CodeType: 节点类型
+        :param CodeType: 节点类型  如果为base 则为可用性拨测点，为空则为高级拨测点
 注意：此字段可能返回 null，表示取不到有效值。
         :type CodeType: str
         :param NodeDefineStatus: 节点状态：1-运行,2-下线

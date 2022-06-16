@@ -3686,6 +3686,38 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def RefreshUrlCache(self, request):
+        """1. 刷新指定的 URL 列表。
+        2. URL 的域名必须已在云点播中注册。
+        3. 单次请求最多指定20个 URL。
+        4. 默认刷新配额为每天100000个 URL。
+
+        :param request: Request instance for RefreshUrlCache.
+        :type request: :class:`tencentcloud.vod.v20180717.models.RefreshUrlCacheRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.RefreshUrlCacheResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RefreshUrlCache", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.RefreshUrlCacheResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ResetProcedureTemplate(self, request):
         """重新设置用户自定义任务流模板的内容。
 
@@ -3701,6 +3733,35 @@ class VodClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ResetProcedureTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def RestoreMedia(self, request):
+        """当媒体文件的存储类型是归档存储或深度归档存储时，是不可访问的。如需访问，则需要调用本接口进行解冻，解冻后可访问的媒体文件是临时的，在有效期过后，则不可访问。
+
+        :param request: Request instance for RestoreMedia.
+        :type request: :class:`tencentcloud.vod.v20180717.models.RestoreMediaRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.RestoreMediaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RestoreMedia", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.RestoreMediaResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

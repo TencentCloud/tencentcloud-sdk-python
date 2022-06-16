@@ -4525,7 +4525,7 @@ class AttachMediaSubtitlesRequest(AbstractModel):
         :type AdaptiveDynamicStreamingDefinition: int
         :param SubtitleIds: 字幕的唯一标识。
         :type SubtitleIds: list of str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID 。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
         :type SubAppId: int
         """
         self.FileId = None
@@ -5015,7 +5015,7 @@ class CommitUploadRequest(AbstractModel):
         r"""
         :param VodSessionKey: 点播会话，取申请上传接口的返回值 VodSessionKey。
         :type VodSessionKey: str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
         :type SubAppId: int
         """
         self.VodSessionKey = None
@@ -5044,10 +5044,8 @@ class CommitUploadResponse(AbstractModel):
         :param FileId: 媒体文件的唯一标识。
         :type FileId: str
         :param MediaUrl: 媒体播放地址。
-注意：此字段可能返回 null，表示取不到有效值。
         :type MediaUrl: str
         :param CoverUrl: 媒体封面地址。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CoverUrl: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5145,21 +5143,21 @@ class ComposeMediaRequest(AbstractModel):
         :type Tracks: list of MediaTrack
         :param Output: 输出的媒体文件信息。
         :type Output: :class:`tencentcloud.vod.v20180717.models.ComposeMediaOutput`
+        :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :type SubAppId: int
         :param Canvas: 制作视频文件时使用的画布。
         :type Canvas: :class:`tencentcloud.vod.v20180717.models.Canvas`
         :param SessionContext: 标识来源上下文，用于透传用户请求信息，在ComposeMediaComplete回调将返回该字段值，最长 1000个字符。
         :type SessionContext: str
         :param SessionId: 用于任务去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
         :type SessionId: str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
         """
         self.Tracks = None
         self.Output = None
+        self.SubAppId = None
         self.Canvas = None
         self.SessionContext = None
         self.SessionId = None
-        self.SubAppId = None
 
 
     def _deserialize(self, params):
@@ -5172,12 +5170,12 @@ class ComposeMediaRequest(AbstractModel):
         if params.get("Output") is not None:
             self.Output = ComposeMediaOutput()
             self.Output._deserialize(params.get("Output"))
+        self.SubAppId = params.get("SubAppId")
         if params.get("Canvas") is not None:
             self.Canvas = Canvas()
             self.Canvas._deserialize(params.get("Canvas"))
         self.SessionContext = params.get("SessionContext")
         self.SessionId = params.get("SessionId")
-        self.SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6192,7 +6190,7 @@ class CreateClassRequest(AbstractModel):
         :type ParentId: int
         :param ClassName: 分类名称，长度限制：1-64 个字符。
         :type ClassName: str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
         :type SubAppId: int
         """
         self.ParentId = None
@@ -6979,7 +6977,7 @@ class CreateStorageRegionRequest(AbstractModel):
         r"""
         :param StorageRegion: 待开通的存储地域，必须是系统支持的地域。
         :type StorageRegion: str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
         :type SubAppId: int
         """
         self.StorageRegion = None
@@ -7073,6 +7071,8 @@ class CreateSuperPlayerConfigRequest(AbstractModel):
         r"""
         :param Name: 播放器配置名称，长度限制：64 个字符。只允许出现 [0-9a-zA-Z] 及 _- 字符（如 test_ABC-123），同一个用户该名称唯一。
         :type Name: str
+        :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :type SubAppId: int
         :param AudioVideoType: 播放的音视频类型，可选值：
 <li>AdaptiveDynamicStream：自适应码流输出；</li>
 <li>Transcode：转码输出；</li>
@@ -7116,10 +7116,9 @@ class CreateSuperPlayerConfigRequest(AbstractModel):
         :type Scheme: str
         :param Comment: 模板描述信息，长度限制：256 个字符。
         :type Comment: str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
         """
         self.Name = None
+        self.SubAppId = None
         self.AudioVideoType = None
         self.DrmSwitch = None
         self.AdaptiveDynamicStreamingDefinition = None
@@ -7130,11 +7129,11 @@ class CreateSuperPlayerConfigRequest(AbstractModel):
         self.Domain = None
         self.Scheme = None
         self.Comment = None
-        self.SubAppId = None
 
 
     def _deserialize(self, params):
         self.Name = params.get("Name")
+        self.SubAppId = params.get("SubAppId")
         self.AudioVideoType = params.get("AudioVideoType")
         self.DrmSwitch = params.get("DrmSwitch")
         self.AdaptiveDynamicStreamingDefinition = params.get("AdaptiveDynamicStreamingDefinition")
@@ -7152,7 +7151,6 @@ class CreateSuperPlayerConfigRequest(AbstractModel):
         self.Domain = params.get("Domain")
         self.Scheme = params.get("Scheme")
         self.Comment = params.get("Comment")
-        self.SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7277,24 +7275,24 @@ class CreateVodDomainRequest(AbstractModel):
         r"""
         :param Domain: 需要接入点播的加速域名。注意：不支持填写泛域名。
         :type Domain: str
+        :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :type SubAppId: int
         :param AccelerateArea: 需要开启 CDN 加速的区域：
 <li>Chinese Mainland：中国境内（不包含港澳台）。</li>
 <li>Outside Chinese Mainland: 中国境外。</li>
 <li>Global: 全球范围。</li>
 如果没有设置 AccelerateArea， 点播会根据用户在腾讯云设置的地域信息自动开通中国境内或者中国境外的 CDN 加速。开启中国境内加速的域名，需要先[备案域名](/document/product/243/18905)。
         :type AccelerateArea: str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
         """
         self.Domain = None
-        self.AccelerateArea = None
         self.SubAppId = None
+        self.AccelerateArea = None
 
 
     def _deserialize(self, params):
         self.Domain = params.get("Domain")
-        self.AccelerateArea = params.get("AccelerateArea")
         self.SubAppId = params.get("SubAppId")
+        self.AccelerateArea = params.get("AccelerateArea")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7713,7 +7711,7 @@ class DeleteClassRequest(AbstractModel):
         r"""
         :param ClassId: 分类 ID
         :type ClassId: int
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
         :type SubAppId: int
         """
         self.ClassId = None
@@ -7938,25 +7936,25 @@ class DeleteMediaRequest(AbstractModel):
         r"""
         :param FileId: 媒体文件的唯一标识。
         :type FileId: str
+        :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :type SubAppId: int
         :param DeleteParts: 指定本次需要删除的部分。默认值为 "[]", 表示删除媒体及其对应的全部视频处理文件。
         :type DeleteParts: list of MediaDeleteItem
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID 。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
         """
         self.FileId = None
-        self.DeleteParts = None
         self.SubAppId = None
+        self.DeleteParts = None
 
 
     def _deserialize(self, params):
         self.FileId = params.get("FileId")
+        self.SubAppId = params.get("SubAppId")
         if params.get("DeleteParts") is not None:
             self.DeleteParts = []
             for item in params.get("DeleteParts"):
                 obj = MediaDeleteItem()
                 obj._deserialize(item)
                 self.DeleteParts.append(obj)
-        self.SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8037,7 +8035,7 @@ class DeleteProcedureTemplateRequest(AbstractModel):
         r"""
         :param Name: 任务流名字。
         :type Name: str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
         :type SubAppId: int
         """
         self.Name = None
@@ -8172,7 +8170,7 @@ class DeleteSuperPlayerConfigRequest(AbstractModel):
         r"""
         :param Name: 播放器配置名称。
         :type Name: str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
         :type SubAppId: int
         """
         self.Name = None
@@ -8262,7 +8260,7 @@ class DeleteVodDomainRequest(AbstractModel):
         r"""
         :param Domain: 要删除的点播加速域名。
         :type Domain: str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
         :type SubAppId: int
         """
         self.Domain = None
@@ -8599,7 +8597,7 @@ class DescribeAllClassRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
         :type SubAppId: int
         """
         self.SubAppId = None
@@ -8731,6 +8729,8 @@ class DescribeCDNStatDetailsRequest(AbstractModel):
         :type StartTime: str
         :param EndTime: 结束时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
         :type EndTime: str
+        :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :type SubAppId: int
         :param DomainNames: 域名列表。一次最多查询20个域名的数据。默认返回所有域名叠加的用量数据。
         :type DomainNames: list of str
         :param Area: 服务区域，取值有：
@@ -8796,30 +8796,28 @@ class DescribeCDNStatDetailsRequest(AbstractModel):
 <li>1440：天粒度，返回指定查询时间内1天粒度的数据。起始时间和结束时间跨度大于24小时，只支持天粒度的数据。</li>
 当 StartTime 和 EndTime 时间跨度大于24小时时，DataInterval 默认为 1440。
         :type DataInterval: int
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
         """
         self.Metric = None
         self.StartTime = None
         self.EndTime = None
+        self.SubAppId = None
         self.DomainNames = None
         self.Area = None
         self.Districts = None
         self.Isps = None
         self.DataInterval = None
-        self.SubAppId = None
 
 
     def _deserialize(self, params):
         self.Metric = params.get("Metric")
         self.StartTime = params.get("StartTime")
         self.EndTime = params.get("EndTime")
+        self.SubAppId = params.get("SubAppId")
         self.DomainNames = params.get("DomainNames")
         self.Area = params.get("Area")
         self.Districts = params.get("Districts")
         self.Isps = params.get("Isps")
         self.DataInterval = params.get("DataInterval")
-        self.SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8874,6 +8872,9 @@ class DescribeCDNUsageDataRequest(AbstractModel):
 <li>Flux：流量，单位为 byte。</li>
 <li>Bandwidth：带宽，单位为 bps。</li>
         :type DataType: str
+        :param SubAppId: <b>点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+当该字段为1时，表示以管理员身份查询所有子应用（含主应用）的用量合计，此时时间粒度只支持天粒度。</b>
+        :type SubAppId: int
         :param DataInterval: 用量数据的时间粒度，单位：分钟，取值有：
 <li>5：5 分钟粒度，返回指定查询时间内5分钟粒度的明细数据。</li>
 <li>60：小时粒度，返回指定查询时间内1小时粒度的数据。</li>
@@ -8882,25 +8883,22 @@ class DescribeCDNUsageDataRequest(AbstractModel):
         :type DataInterval: int
         :param DomainNames: 域名列表。一次最多查询20个域名的用量数据。可以指定多个域名，查询这些域名叠加的用量数据。默认返回所有域名叠加的用量数据。
         :type DomainNames: list of str
-        :param SubAppId: 点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-当该字段为1时，表示以管理员身份查询所有子应用（含主应用）的用量合计，此时时间粒度只支持天粒度。
-        :type SubAppId: int
         """
         self.StartTime = None
         self.EndTime = None
         self.DataType = None
+        self.SubAppId = None
         self.DataInterval = None
         self.DomainNames = None
-        self.SubAppId = None
 
 
     def _deserialize(self, params):
         self.StartTime = params.get("StartTime")
         self.EndTime = params.get("EndTime")
         self.DataType = params.get("DataType")
+        self.SubAppId = params.get("SubAppId")
         self.DataInterval = params.get("DataInterval")
         self.DomainNames = params.get("DomainNames")
-        self.SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8953,28 +8951,28 @@ class DescribeCdnLogsRequest(AbstractModel):
         :type StartTime: str
         :param EndTime: 结束时间需大于起始时间；使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。
         :type EndTime: str
+        :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :type SubAppId: int
         :param Limit: 分页拉取的最大返回结果数。默认值：100；最大值：1000。
         :type Limit: int
         :param Offset: 分页拉取的起始偏移量。默认值：0。
         :type Offset: int
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
         """
         self.DomainName = None
         self.StartTime = None
         self.EndTime = None
+        self.SubAppId = None
         self.Limit = None
         self.Offset = None
-        self.SubAppId = None
 
 
     def _deserialize(self, params):
         self.DomainName = params.get("DomainName")
         self.StartTime = params.get("StartTime")
         self.EndTime = params.get("EndTime")
+        self.SubAppId = params.get("SubAppId")
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
-        self.SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9105,7 +9103,7 @@ class DescribeDailyMediaPlayStatRequest(AbstractModel):
         :type StartDate: str
         :param EndDate: 结束日期，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。该参数仅日期部分有效。
         :type EndDate: str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
         :type SubAppId: int
         """
         self.FileId = None
@@ -9229,7 +9227,7 @@ class DescribeDailyPlayStatFileListRequest(AbstractModel):
         :type StartTime: str
         :param EndTime: 结束日期，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
         :type EndTime: str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
         :type SubAppId: int
         """
         self.StartTime = None
@@ -9390,7 +9388,7 @@ class DescribeEventsStateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SubAppId: 点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
         :type SubAppId: int
         """
         self.SubAppId = None
@@ -9577,7 +9575,7 @@ class DescribeImageReviewUsageDataRequest(AbstractModel):
         :type StartTime: str
         :param EndTime: 结束日期，需大于等于起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#52)。
         :type EndTime: str
-        :param SubAppId: 点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :param SubAppId: <b>点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
         :type SubAppId: int
         """
         self.StartTime = None
@@ -9844,27 +9842,27 @@ class DescribeMediaPlayStatDetailsRequest(AbstractModel):
         :type StartTime: str
         :param EndTime: 结束时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
         :type EndTime: str
+        :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :type SubAppId: int
         :param Interval: 统计时间粒度，有效值：
 <li>Hour：以小时为粒度。</li>
 <li>Day：以天为粒度。</li>
 默认按时间跨度决定，小于1天以小时为粒度，大于等于1天则以天为粒度。
         :type Interval: str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
         """
         self.FileId = None
         self.StartTime = None
         self.EndTime = None
-        self.Interval = None
         self.SubAppId = None
+        self.Interval = None
 
 
     def _deserialize(self, params):
         self.FileId = params.get("FileId")
         self.StartTime = params.get("StartTime")
         self.EndTime = params.get("EndTime")
-        self.Interval = params.get("Interval")
         self.SubAppId = params.get("SubAppId")
+        self.Interval = params.get("Interval")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -10168,7 +10166,7 @@ class DescribeReviewDetailsRequest(AbstractModel):
         :type StartTime: str
         :param EndTime: 结束日期，需大于起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
         :type EndTime: str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
         :type SubAppId: int
         """
         self.StartTime = None
@@ -10374,7 +10372,7 @@ class DescribeStorageDataRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
         :type SubAppId: int
         """
         self.SubAppId = None
@@ -10402,10 +10400,14 @@ class DescribeStorageDataResponse(AbstractModel):
         :type MediaCount: int
         :param TotalStorage: 当前总存储量，单位是字节。
         :type TotalStorage: int
-        :param InfrequentStorage: 当前低频存储量，单位是字节。
-        :type InfrequentStorage: int
         :param StandardStorage: 当前标准存储量，单位是字节。
         :type StandardStorage: int
+        :param InfrequentStorage: 当前低频存储量，单位是字节。
+        :type InfrequentStorage: int
+        :param ArchiveStorage: 当前归档存储量，单位是字节。
+        :type ArchiveStorage: int
+        :param DeepArchiveStorage: 当前深度归档存储量，单位是字节。
+        :type DeepArchiveStorage: int
         :param StorageStat: 各计费区域的存储用量。
         :type StorageStat: list of StorageStatData
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -10413,8 +10415,10 @@ class DescribeStorageDataResponse(AbstractModel):
         """
         self.MediaCount = None
         self.TotalStorage = None
-        self.InfrequentStorage = None
         self.StandardStorage = None
+        self.InfrequentStorage = None
+        self.ArchiveStorage = None
+        self.DeepArchiveStorage = None
         self.StorageStat = None
         self.RequestId = None
 
@@ -10422,8 +10426,10 @@ class DescribeStorageDataResponse(AbstractModel):
     def _deserialize(self, params):
         self.MediaCount = params.get("MediaCount")
         self.TotalStorage = params.get("TotalStorage")
-        self.InfrequentStorage = params.get("InfrequentStorage")
         self.StandardStorage = params.get("StandardStorage")
+        self.InfrequentStorage = params.get("InfrequentStorage")
+        self.ArchiveStorage = params.get("ArchiveStorage")
+        self.DeepArchiveStorage = params.get("DeepArchiveStorage")
         if params.get("StorageStat") is not None:
             self.StorageStat = []
             for item in params.get("StorageStat"):
@@ -10444,6 +10450,9 @@ class DescribeStorageDetailsRequest(AbstractModel):
         :type StartTime: str
         :param EndTime: 结束时间，需大于开始日期，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#52)。
         :type EndTime: str
+        :param SubAppId: <b>点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+当该字段为1时，表示以管理员身份查询所有子应用（含主应用）的用量合计。</b>
+        :type SubAppId: int
         :param Interval: 统计时间粒度，有效值：
 <li>Minute：以5分钟为粒度。</li>
 <li>Day：以天为粒度。</li>
@@ -10465,9 +10474,6 @@ class DescribeStorageDetailsRequest(AbstractModel):
 <li>DeepArchiveBulkRetrieval：深度归档批量取回量。</li>
 默认值为 TotalStorage。
         :type StorageType: str
-        :param SubAppId: 点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-当该字段为1时，表示以管理员身份查询所有子应用（含主应用）的用量合计。
-        :type SubAppId: int
         :param Area: 查询的存储区域，有效值：
 <li>Chinese Mainland：中国境内（不包含港澳台）。</li>
 <li>Outside Chinese Mainland：中国境外。</li>
@@ -10476,18 +10482,18 @@ class DescribeStorageDetailsRequest(AbstractModel):
         """
         self.StartTime = None
         self.EndTime = None
+        self.SubAppId = None
         self.Interval = None
         self.StorageType = None
-        self.SubAppId = None
         self.Area = None
 
 
     def _deserialize(self, params):
         self.StartTime = params.get("StartTime")
         self.EndTime = params.get("EndTime")
+        self.SubAppId = params.get("SubAppId")
         self.Interval = params.get("Interval")
         self.StorageType = params.get("StorageType")
-        self.SubAppId = params.get("SubAppId")
         self.Area = params.get("Area")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -10531,7 +10537,7 @@ class DescribeStorageRegionsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
         :type SubAppId: int
         """
         self.SubAppId = None
@@ -10891,6 +10897,8 @@ class DescribeTasksRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :type SubAppId: int
         :param Status: 过滤条件：任务状态，可选值：WAITING（等待中）、PROCESSING（处理中）、FINISH（已完成）。
         :type Status: str
         :param FileId: 过滤条件：文件 ID。
@@ -10907,9 +10915,8 @@ class DescribeTasksRequest(AbstractModel):
         :type Limit: int
         :param ScrollToken: 翻页标识，分批拉取时使用：当单次请求无法拉取所有数据，接口将会返回 ScrollToken，下一次请求携带该 Token，将会从下一条记录开始获取。
         :type ScrollToken: str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
         """
+        self.SubAppId = None
         self.Status = None
         self.FileId = None
         self.CreateTime = None
@@ -10917,10 +10924,10 @@ class DescribeTasksRequest(AbstractModel):
         self.Sort = None
         self.Limit = None
         self.ScrollToken = None
-        self.SubAppId = None
 
 
     def _deserialize(self, params):
+        self.SubAppId = params.get("SubAppId")
         self.Status = params.get("Status")
         self.FileId = params.get("FileId")
         if params.get("CreateTime") is not None:
@@ -10934,7 +10941,6 @@ class DescribeTasksRequest(AbstractModel):
             self.Sort._deserialize(params.get("Sort"))
         self.Limit = params.get("Limit")
         self.ScrollToken = params.get("ScrollToken")
-        self.SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -11530,6 +11536,8 @@ class EditMediaRequest(AbstractModel):
         r"""
         :param InputType: 输入视频的类型，可以取的值为  File，Stream 两种。
         :type InputType: str
+        :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :type SubAppId: int
         :param FileInfos: 输入的视频文件信息，当 InputType 为 File 时必填。
         :type FileInfos: list of EditMediaFileInfo
         :param StreamInfos: 输入的流信息，当 InputType 为 Stream 时必填。
@@ -11550,10 +11558,9 @@ class EditMediaRequest(AbstractModel):
         :type SessionId: str
         :param ExtInfo: 保留字段，特殊用途时使用。
         :type ExtInfo: str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
         """
         self.InputType = None
+        self.SubAppId = None
         self.FileInfos = None
         self.StreamInfos = None
         self.Definition = None
@@ -11563,11 +11570,11 @@ class EditMediaRequest(AbstractModel):
         self.TasksPriority = None
         self.SessionId = None
         self.ExtInfo = None
-        self.SubAppId = None
 
 
     def _deserialize(self, params):
         self.InputType = params.get("InputType")
+        self.SubAppId = params.get("SubAppId")
         if params.get("FileInfos") is not None:
             self.FileInfos = []
             for item in params.get("FileInfos"):
@@ -11589,7 +11596,6 @@ class EditMediaRequest(AbstractModel):
         self.TasksPriority = params.get("TasksPriority")
         self.SessionId = params.get("SessionId")
         self.ExtInfo = params.get("ExtInfo")
-        self.SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -12072,30 +12078,30 @@ class ExecuteFunctionRequest(AbstractModel):
         :type FunctionName: str
         :param FunctionArg: 接口参数，具体参数格式调用时与后端协调。
         :type FunctionArg: str
+        :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :type SubAppId: int
         :param SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
         :type SessionContext: str
         :param SessionId: 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
         :type SessionId: str
         :param ExtInfo: 保留字段，特殊用途时使用。
         :type ExtInfo: str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
         """
         self.FunctionName = None
         self.FunctionArg = None
+        self.SubAppId = None
         self.SessionContext = None
         self.SessionId = None
         self.ExtInfo = None
-        self.SubAppId = None
 
 
     def _deserialize(self, params):
         self.FunctionName = params.get("FunctionName")
         self.FunctionArg = params.get("FunctionArg")
+        self.SubAppId = params.get("SubAppId")
         self.SessionContext = params.get("SessionContext")
         self.SessionId = params.get("SessionId")
         self.ExtInfo = params.get("ExtInfo")
-        self.SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -12344,7 +12350,7 @@ class ForbidMediaDistributionRequest(AbstractModel):
         :type FileIds: list of str
         :param Operation: forbid：禁播，recover：解禁。
         :type Operation: str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID 。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID 。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
         :type SubAppId: int
         """
         self.FileIds = None
@@ -13237,6 +13243,8 @@ class LiveRealTimeClipRequest(AbstractModel):
         :type StartTime: str
         :param EndTime: 流剪辑的结束时间，格式参照 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
         :type EndTime: str
+        :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :type SubAppId: int
         :param IsPersistence: 是否固化。0 不固化，1 固化。默认不固化。
         :type IsPersistence: int
         :param ExpireTime: 剪辑固化后的视频存储过期时间。格式参照 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。填“9999-12-31T23:59:59Z”表示永不过期。过期后该媒体文件及其相关资源（转码结果、雪碧图等）将被永久删除。仅 IsPersistence 为 1 时有效，默认剪辑固化的视频永不过期。
@@ -13249,32 +13257,30 @@ class LiveRealTimeClipRequest(AbstractModel):
         :type Host: str
         :param ExtInfo: 系统保留字段，请勿填写。
         :type ExtInfo: str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
         """
         self.StreamId = None
         self.StartTime = None
         self.EndTime = None
+        self.SubAppId = None
         self.IsPersistence = None
         self.ExpireTime = None
         self.Procedure = None
         self.MetaDataRequired = None
         self.Host = None
         self.ExtInfo = None
-        self.SubAppId = None
 
 
     def _deserialize(self, params):
         self.StreamId = params.get("StreamId")
         self.StartTime = params.get("StartTime")
         self.EndTime = params.get("EndTime")
+        self.SubAppId = params.get("SubAppId")
         self.IsPersistence = params.get("IsPersistence")
         self.ExpireTime = params.get("ExpireTime")
         self.Procedure = params.get("Procedure")
         self.MetaDataRequired = params.get("MetaDataRequired")
         self.Host = params.get("Host")
         self.ExtInfo = params.get("ExtInfo")
-        self.SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -13341,7 +13347,7 @@ class ManageTaskRequest(AbstractModel):
         :param OperationType: 操作类型，取值范围：
 <li>Abort：终止任务。只能终止已发起且状态为等待中（WAITING）的任务。</li>
         :type OperationType: str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
         :type SubAppId: int
         """
         self.TaskId = None
@@ -16119,7 +16125,7 @@ class ModifyClassRequest(AbstractModel):
         :type ClassId: int
         :param ClassName: 分类名称。长度限制：1-64 个字符。
         :type ClassName: str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
         :type SubAppId: int
         """
         self.ClassId = None
@@ -16259,9 +16265,9 @@ class ModifyDefaultStorageRegionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StorageRegion: 默认的存储地域，必须是已经开通的地域」，建议改成「默认的存储地域，必须是已经开通的地域（通过 DescribeStorageRegions 接口查询）。
+        :param StorageRegion: 默认的存储地域，必须是已经开通的地域（通过 DescribeStorageRegions 接口查询）。
         :type StorageRegion: str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
         :type SubAppId: int
         """
         self.StorageRegion = None
@@ -16531,6 +16537,8 @@ class ModifyMediaInfoRequest(AbstractModel):
         r"""
         :param FileId: 媒体文件唯一标识。
         :type FileId: str
+        :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID 。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :type SubAppId: int
         :param Name: 媒体文件名称，最长 64 个字符。
         :type Name: str
         :param Description: 媒体文件描述，最长 128 个字符。
@@ -16562,10 +16570,9 @@ class ModifyMediaInfoRequest(AbstractModel):
         :param ClearSubtitles: 取值 1 表示清空媒体文件所有的字幕信息，其他值无意义。
 同一个请求里，ClearSubtitles 与 AddSubtitles不能同时出现。
         :type ClearSubtitles: int
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID 。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
         """
         self.FileId = None
+        self.SubAppId = None
         self.Name = None
         self.Description = None
         self.ClassId = None
@@ -16580,11 +16587,11 @@ class ModifyMediaInfoRequest(AbstractModel):
         self.AddSubtitles = None
         self.DeleteSubtitleIds = None
         self.ClearSubtitles = None
-        self.SubAppId = None
 
 
     def _deserialize(self, params):
         self.FileId = params.get("FileId")
+        self.SubAppId = params.get("SubAppId")
         self.Name = params.get("Name")
         self.Description = params.get("Description")
         self.ClassId = params.get("ClassId")
@@ -16609,7 +16616,6 @@ class ModifyMediaInfoRequest(AbstractModel):
                 self.AddSubtitles.append(obj)
         self.DeleteSubtitleIds = params.get("DeleteSubtitleIds")
         self.ClearSubtitles = params.get("ClearSubtitles")
-        self.SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -16665,7 +16671,7 @@ class ModifyMediaStorageClassRequest(AbstractModel):
 <li> ARCHIVE：归档存储。</li>
 <li> DEEP_ARCHIVE：深度归档存储。</li>
         :type StorageClass: str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
         :type SubAppId: int
         :param RestoreTier: 取回模式。当文件的存储类型从归档或深度归档转换为标准存储时，需要指定取回（也称为解冻）操作的模式，具体说明请参考[数据取回及取回模式](https://cloud.tencent.com/document/product/266/56196#retake)。
 当媒体文件目前的存储类型为归档存储时，有以下取值：
@@ -17003,7 +17009,7 @@ class ModifySubAppIdInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SubAppId: 子应用 ID。
+        :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
         :type SubAppId: int
         :param Name: 子应用名称，长度限制：40个字符。
         :type Name: str
@@ -17052,7 +17058,7 @@ class ModifySubAppIdStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SubAppId: 子应用 ID。
+        :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
         :type SubAppId: int
         :param Status: 子应用状态，取值范围：
 <li>On：启用。</li>
@@ -17300,7 +17306,7 @@ class ModifyVodDomainAccelerateConfigRequest(AbstractModel):
 <li>Disabled：关闭。</li>
 开启中国境内加速的域名，需要先[备案域名](/document/product/243/18905)。
         :type Status: str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
         :type SubAppId: int
         """
         self.Domain = None
@@ -17349,28 +17355,28 @@ class ModifyVodDomainConfigRequest(AbstractModel):
         r"""
         :param Domain: 域名。
         :type Domain: str
+        :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :type SubAppId: int
         :param RefererAuthPolicy: [Referer 防盗链](/document/product/266/14046)规则。
         :type RefererAuthPolicy: :class:`tencentcloud.vod.v20180717.models.RefererAuthPolicy`
         :param UrlSignatureAuthPolicy: [Key 防盗链](/document/product/266/14047)规则。
         :type UrlSignatureAuthPolicy: :class:`tencentcloud.vod.v20180717.models.UrlSignatureAuthPolicy`
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
         """
         self.Domain = None
+        self.SubAppId = None
         self.RefererAuthPolicy = None
         self.UrlSignatureAuthPolicy = None
-        self.SubAppId = None
 
 
     def _deserialize(self, params):
         self.Domain = params.get("Domain")
+        self.SubAppId = params.get("SubAppId")
         if params.get("RefererAuthPolicy") is not None:
             self.RefererAuthPolicy = RefererAuthPolicy()
             self.RefererAuthPolicy._deserialize(params.get("RefererAuthPolicy"))
         if params.get("UrlSignatureAuthPolicy") is not None:
             self.UrlSignatureAuthPolicy = UrlSignatureAuthPolicy()
             self.UrlSignatureAuthPolicy._deserialize(params.get("UrlSignatureAuthPolicy"))
-        self.SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -19042,6 +19048,8 @@ class ProcessMediaByProcedureRequest(AbstractModel):
         :type FileId: str
         :param ProcedureName: [任务流模板](/document/product/266/11700#.E4.BB.BB.E5.8A.A1.E6.B5.81.E6.A8.A1.E6.9D.BF)名字。
         :type ProcedureName: str
+        :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :type SubAppId: int
         :param TasksPriority: 任务流的优先级，数值越大优先级越高，取值范围是-10到10，不填代表0。
         :type TasksPriority: int
         :param TasksNotifyMode: 任务流状态变更通知模式，可取值有 Finish，Change 和 None，不填代表 Finish。
@@ -19052,28 +19060,26 @@ class ProcessMediaByProcedureRequest(AbstractModel):
         :type SessionId: str
         :param ExtInfo: 保留字段，特殊用途时使用。
         :type ExtInfo: str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
         """
         self.FileId = None
         self.ProcedureName = None
+        self.SubAppId = None
         self.TasksPriority = None
         self.TasksNotifyMode = None
         self.SessionContext = None
         self.SessionId = None
         self.ExtInfo = None
-        self.SubAppId = None
 
 
     def _deserialize(self, params):
         self.FileId = params.get("FileId")
         self.ProcedureName = params.get("ProcedureName")
+        self.SubAppId = params.get("SubAppId")
         self.TasksPriority = params.get("TasksPriority")
         self.TasksNotifyMode = params.get("TasksNotifyMode")
         self.SessionContext = params.get("SessionContext")
         self.SessionId = params.get("SessionId")
         self.ExtInfo = params.get("ExtInfo")
-        self.SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -19670,8 +19676,10 @@ class PullUploadRequest(AbstractModel):
     def __init__(self):
         r"""
         :param MediaUrl: 要拉取的媒体 URL，暂不支持拉取 Dash 格式（可以支持 HLS）。
-支持的扩展名详见[媒体类型](https://cloud.tencent.com/document/product/266/9760#.E5.AA.92.E4.BD.93.E7.B1.BB.E5.9E.8B)。
+支持的扩展名详见[媒体类型](https://cloud.tencent.com/document/product/266/9760#.E5.AA.92.E4.BD.93.E7.B1.BB.E5.9E.8B)。请确保媒体 URL 可以访问。
         :type MediaUrl: str
+        :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :type SubAppId: int
         :param MediaName: 媒体名称。
         :type MediaName: str
         :param CoverUrl: 要拉取的视频封面 URL。仅支持 gif、jpeg、png 三种图片格式。
@@ -19692,12 +19700,11 @@ class PullUploadRequest(AbstractModel):
         :type SessionId: str
         :param ExtInfo: 保留字段，特殊用途时使用。
         :type ExtInfo: str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
         :param SourceContext: 来源上下文，用于透传用户请求信息，[上传完成回调](/document/product/266/7830) 将返回该字段值，最长 250 个字符。
         :type SourceContext: str
         """
         self.MediaUrl = None
+        self.SubAppId = None
         self.MediaName = None
         self.CoverUrl = None
         self.Procedure = None
@@ -19707,12 +19714,12 @@ class PullUploadRequest(AbstractModel):
         self.SessionContext = None
         self.SessionId = None
         self.ExtInfo = None
-        self.SubAppId = None
         self.SourceContext = None
 
 
     def _deserialize(self, params):
         self.MediaUrl = params.get("MediaUrl")
+        self.SubAppId = params.get("SubAppId")
         self.MediaName = params.get("MediaName")
         self.CoverUrl = params.get("CoverUrl")
         self.Procedure = params.get("Procedure")
@@ -19722,7 +19729,6 @@ class PullUploadRequest(AbstractModel):
         self.SessionContext = params.get("SessionContext")
         self.SessionId = params.get("SessionId")
         self.ExtInfo = params.get("ExtInfo")
-        self.SubAppId = params.get("SubAppId")
         self.SourceContext = params.get("SourceContext")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -19917,6 +19923,51 @@ class RefererAuthPolicy(AbstractModel):
         
 
 
+class RefreshUrlCacheRequest(AbstractModel):
+    """RefreshUrlCache请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Urls: 刷新的 URL 列表，单次最多指定20个 URL。
+        :type Urls: list of str
+        :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :type SubAppId: int
+        """
+        self.Urls = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.Urls = params.get("Urls")
+        self.SubAppId = params.get("SubAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RefreshUrlCacheResponse(AbstractModel):
+    """RefreshUrlCache返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ResetProcedureTemplateRequest(AbstractModel):
     """ResetProcedureTemplate请求参数结构体
 
@@ -20044,6 +20095,65 @@ class ResourceTag(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class RestoreMediaRequest(AbstractModel):
+    """RestoreMedia请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FileIds: 媒体文件唯一标识列表。
+        :type FileIds: list of str
+        :param RestoreDay: 解冻出的临时媒体文件的可访问持续时长，单位为“天”。
+        :type RestoreDay: int
+        :param RestoreTier: 解冻模式。当媒体文件当前的存储类型为归档存储时，有以下取值：
+<li>极速模式：Expedited，解冻任务在5分钟后完成。</li>
+<li>标准模式：Standard，解冻任务在5小时后完成 。</li>
+<li>批量模式：Bulk，，解冻任务在12小时后完成。</li>
+当媒体文件的存储类型为深度归档存储时，有以下取值：
+<li>标准模式：Standard，解冻任务在24小时后完成。</li>
+<li>批量模式：Bulk，解冻任务在48小时后完成。</li>
+        :type RestoreTier: str
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.FileIds = None
+        self.RestoreDay = None
+        self.RestoreTier = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.FileIds = params.get("FileIds")
+        self.RestoreDay = params.get("RestoreDay")
+        self.RestoreTier = params.get("RestoreTier")
+        self.SubAppId = params.get("SubAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RestoreMediaResponse(AbstractModel):
+    """RestoreMedia返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class RestoreMediaTask(AbstractModel):
@@ -20577,28 +20687,28 @@ class SimpleHlsClipRequest(AbstractModel):
         r"""
         :param Url: 需要裁剪的腾讯云点播 HLS 视频 URL。
         :type Url: str
+        :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :type SubAppId: int
         :param StartTimeOffset: 裁剪的开始偏移时间，单位秒。默认 0，即从视频开头开始裁剪。负数表示距离视频结束多少秒开始裁剪。例如 -10 表示从倒数第 10 秒开始裁剪。
         :type StartTimeOffset: float
         :param EndTimeOffset: 裁剪的结束偏移时间，单位秒。默认 0，即裁剪到视频尾部。负数表示距离视频结束多少秒结束裁剪。例如 -10 表示到倒数第 10 秒结束裁剪。
         :type EndTimeOffset: float
         :param IsPersistence: 是否固化。0 不固化，1 固化。默认不固化。
         :type IsPersistence: int
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
         """
         self.Url = None
+        self.SubAppId = None
         self.StartTimeOffset = None
         self.EndTimeOffset = None
         self.IsPersistence = None
-        self.SubAppId = None
 
 
     def _deserialize(self, params):
         self.Url = params.get("Url")
+        self.SubAppId = params.get("SubAppId")
         self.StartTimeOffset = params.get("StartTimeOffset")
         self.EndTimeOffset = params.get("EndTimeOffset")
         self.IsPersistence = params.get("IsPersistence")
-        self.SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -20950,21 +21060,21 @@ class SplitMediaRequest(AbstractModel):
         :type FileId: str
         :param Segments: 视频拆条任务信息列表，最多同时支持100个拆条信息。
         :type Segments: list of SplitMediaTaskConfig
+        :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :type SubAppId: int
         :param SessionContext: 标识来源上下文，用于透传用户请求信息，在 SplitMediaComplete 回调和任务流状态变更回调将返回该字段值，最长 1000个字符。
         :type SessionContext: str
         :param SessionId: 用于任务去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
         :type SessionId: str
         :param TasksPriority: 任务的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。
         :type TasksPriority: int
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
         """
         self.FileId = None
         self.Segments = None
+        self.SubAppId = None
         self.SessionContext = None
         self.SessionId = None
         self.TasksPriority = None
-        self.SubAppId = None
 
 
     def _deserialize(self, params):
@@ -20975,10 +21085,10 @@ class SplitMediaRequest(AbstractModel):
                 obj = SplitMediaTaskConfig()
                 obj._deserialize(item)
                 self.Segments.append(obj)
+        self.SubAppId = params.get("SubAppId")
         self.SessionContext = params.get("SessionContext")
         self.SessionId = params.get("SessionId")
         self.TasksPriority = params.get("TasksPriority")
-        self.SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -23398,20 +23508,20 @@ class WeChatMiniProgramPublishRequest(AbstractModel):
         r"""
         :param FileId: 媒体文件 ID。
         :type FileId: str
-        :param SourceDefinition: 发布视频所对应的转码模板 ID，为0代表原始视频。
-        :type SourceDefinition: int
         :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
         :type SubAppId: int
+        :param SourceDefinition: 发布视频所对应的转码模板 ID，为0代表原始视频。
+        :type SourceDefinition: int
         """
         self.FileId = None
-        self.SourceDefinition = None
         self.SubAppId = None
+        self.SourceDefinition = None
 
 
     def _deserialize(self, params):
         self.FileId = params.get("FileId")
-        self.SourceDefinition = params.get("SourceDefinition")
         self.SubAppId = params.get("SubAppId")
+        self.SourceDefinition = params.get("SourceDefinition")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

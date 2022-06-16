@@ -26,6 +26,64 @@ class CiamClient(AbstractClient):
     _service = 'ciam'
 
 
+    def CreateApiImportUserJob(self, request):
+        """新建接口导入用户任务
+
+        :param request: Request instance for CreateApiImportUserJob.
+        :type request: :class:`tencentcloud.ciam.v20220331.models.CreateApiImportUserJobRequest`
+        :rtype: :class:`tencentcloud.ciam.v20220331.models.CreateApiImportUserJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateApiImportUserJob", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateApiImportUserJobResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateFileExportUserJob(self, request):
+        """新建文件导出用户任务
+
+        :param request: Request instance for CreateFileExportUserJob.
+        :type request: :class:`tencentcloud.ciam.v20220331.models.CreateFileExportUserJobRequest`
+        :rtype: :class:`tencentcloud.ciam.v20220331.models.CreateFileExportUserJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateFileExportUserJob", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateFileExportUserJobResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateUser(self, request):
         """创建用户
 
@@ -128,6 +186,35 @@ class CiamClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.LinkAccountResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ListJobs(self, request):
+        """查询任务详情
+
+        :param request: Request instance for ListJobs.
+        :type request: :class:`tencentcloud.ciam.v20220331.models.ListJobsRequest`
+        :rtype: :class:`tencentcloud.ciam.v20220331.models.ListJobsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListJobs", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ListJobsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
