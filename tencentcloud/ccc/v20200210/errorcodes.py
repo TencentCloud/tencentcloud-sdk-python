@@ -47,6 +47,9 @@ INVALIDPARAMETERVALUE_INSTANCENOTEXIST = 'InvalidParameterValue.InstanceNotExist
 # 查询记录不存在。
 INVALIDPARAMETERVALUE_RECORDNOTEXIST = 'InvalidParameterValue.RecordNotExist'
 
+# 技能组已存在。
+INVALIDPARAMETERVALUE_SKILLGROUPEXIST = 'InvalidParameterValue.SkillGroupExist'
+
 # 超过配额限制。
 LIMITEXCEEDED = 'LimitExceeded'
 

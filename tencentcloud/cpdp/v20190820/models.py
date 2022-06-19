@@ -1389,6 +1389,11 @@ class ApplyOpenBankOrderDetailReceiptRequest(AbstractModel):
         :type PaymentMethod: str
         :param ChannelOrderId: 云企付平台订单号
         :type ChannelOrderId: str
+        :param Environment: 环境类型。
+__release__:生产环境
+__sandbox__:沙箱环境
+_不填默认为生产环境_
+        :type Environment: str
         """
         self.OutApplyId = None
         self.ChannelMerchantId = None
@@ -1396,6 +1401,7 @@ class ApplyOpenBankOrderDetailReceiptRequest(AbstractModel):
         self.ChannelName = None
         self.PaymentMethod = None
         self.ChannelOrderId = None
+        self.Environment = None
 
 
     def _deserialize(self, params):
@@ -1405,6 +1411,7 @@ class ApplyOpenBankOrderDetailReceiptRequest(AbstractModel):
         self.ChannelName = params.get("ChannelName")
         self.PaymentMethod = params.get("PaymentMethod")
         self.ChannelOrderId = params.get("ChannelOrderId")
+        self.Environment = params.get("Environment")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6784,12 +6791,18 @@ __EBANK_PAYMENT__: ebank支付
 __OPENBANK_PAYMENT__: openbank支付
 __SAFT_ISV__: 安心发支付
         :type PaymentMethod: str
+        :param Environment: 环境类型。
+__release__:生产环境
+__sandbox__:沙箱环境
+_不填默认为生产环境_
+        :type Environment: str
         """
         self.OutAccountBookId = None
         self.ChannelMerchantId = None
         self.ChannelSubMerchantId = None
         self.ChannelName = None
         self.PaymentMethod = None
+        self.Environment = None
 
 
     def _deserialize(self, params):
@@ -6798,6 +6811,7 @@ __SAFT_ISV__: 安心发支付
         self.ChannelSubMerchantId = params.get("ChannelSubMerchantId")
         self.ChannelName = params.get("ChannelName")
         self.PaymentMethod = params.get("PaymentMethod")
+        self.Environment = params.get("Environment")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7390,6 +7404,11 @@ __ALIPAY__: 支付宝
         :type NotifyUrl: str
         :param Remark: 备注信息。
         :type Remark: str
+        :param Environment: 环境类型。
+__release__:生产环境
+__sandbox__:沙箱环境
+_不填默认为生产环境_
+        :type Environment: str
         """
         self.ChannelMerchantId = None
         self.OutOrderId = None
@@ -7402,6 +7421,7 @@ __ALIPAY__: 支付宝
         self.ChannelSubMerchantId = None
         self.NotifyUrl = None
         self.Remark = None
+        self.Environment = None
 
 
     def _deserialize(self, params):
@@ -7418,6 +7438,7 @@ __ALIPAY__: 支付宝
         self.ChannelSubMerchantId = params.get("ChannelSubMerchantId")
         self.NotifyUrl = params.get("NotifyUrl")
         self.Remark = params.get("Remark")
+        self.Environment = params.get("Environment")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -18715,6 +18736,11 @@ __SAFT_ISV__: 安心发支付
         :type OutAccountBookId: str
         :param ChannelAccountBookId: 渠道账本号ID。与OutAccountBookId二者选填其一。
         :type ChannelAccountBookId: str
+        :param Environment: 环境类型。
+__release__:生产环境
+__sandbox__:沙箱环境
+_不填默认为生产环境_
+        :type Environment: str
         """
         self.ChannelMerchantId = None
         self.ChannelSubMerchantId = None
@@ -18722,6 +18748,7 @@ __SAFT_ISV__: 安心发支付
         self.PaymentMethod = None
         self.OutAccountBookId = None
         self.ChannelAccountBookId = None
+        self.Environment = None
 
 
     def _deserialize(self, params):
@@ -18731,6 +18758,7 @@ __SAFT_ISV__: 安心发支付
         self.PaymentMethod = params.get("PaymentMethod")
         self.OutAccountBookId = params.get("OutAccountBookId")
         self.ChannelAccountBookId = params.get("ChannelAccountBookId")
+        self.Environment = params.get("Environment")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -19097,6 +19125,11 @@ class QueryOpenBankOrderDetailReceiptInfoRequest(AbstractModel):
         :type OutApplyId: str
         :param ChannelApplyId: 渠道回单申请ID，与外部回单申请ID二者选填其一
         :type ChannelApplyId: str
+        :param Environment: 环境类型。
+__release__:生产环境
+__sandbox__:沙箱环境
+_不填默认为生产环境_
+        :type Environment: str
         """
         self.ChannelMerchantId = None
         self.ChannelSubMerchantId = None
@@ -19104,6 +19137,7 @@ class QueryOpenBankOrderDetailReceiptInfoRequest(AbstractModel):
         self.PaymentMethod = None
         self.OutApplyId = None
         self.ChannelApplyId = None
+        self.Environment = None
 
 
     def _deserialize(self, params):
@@ -19113,6 +19147,7 @@ class QueryOpenBankOrderDetailReceiptInfoRequest(AbstractModel):
         self.PaymentMethod = params.get("PaymentMethod")
         self.OutApplyId = params.get("OutApplyId")
         self.ChannelApplyId = params.get("ChannelApplyId")
+        self.Environment = params.get("Environment")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -1076,6 +1076,60 @@ class DescribeApplicationPodsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeApplicationsStatusRequest(AbstractModel):
+    """DescribeApplicationsStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SourceChannel: 来源渠道
+        :type SourceChannel: int
+        :param EnvironmentId: 环境ID
+        :type EnvironmentId: str
+        """
+        self.SourceChannel = None
+        self.EnvironmentId = None
+
+
+    def _deserialize(self, params):
+        self.SourceChannel = params.get("SourceChannel")
+        self.EnvironmentId = params.get("EnvironmentId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeApplicationsStatusResponse(AbstractModel):
+    """DescribeApplicationsStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 返回结果
+        :type Result: list of ServiceVersionBrief
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = []
+            for item in params.get("Result"):
+                obj = ServiceVersionBrief()
+                obj._deserialize(item)
+                self.Result.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDeployApplicationDetailRequest(AbstractModel):
     """DescribeDeployApplicationDetail请求参数结构体
 
@@ -2739,6 +2793,93 @@ class RunVersionPod(AbstractModel):
         self.RestartCount = params.get("RestartCount")
         self.Ready = params.get("Ready")
         self.ContainerState = params.get("ContainerState")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ServiceVersionBrief(AbstractModel):
+    """服务版本信息列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param VersionName: 版本名称
+        :type VersionName: str
+        :param Status: 状态
+        :type Status: str
+        :param EnableEs: 是否启动弹性 -- 已废弃
+        :type EnableEs: int
+        :param CurrentInstances: 当前实例
+        :type CurrentInstances: int
+        :param VersionId: version的id
+        :type VersionId: str
+        :param LogOutputConf: 日志输出配置 -- 已废弃
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogOutputConf: :class:`tencentcloud.tem.v20210701.models.LogOutputConf`
+        :param ExpectedInstances: 期望实例
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpectedInstances: int
+        :param DeployMode: 部署方式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeployMode: str
+        :param BuildTaskId: 建构任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BuildTaskId: str
+        :param EnvironmentId: 环境ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnvironmentId: str
+        :param EnvironmentName: 环境name
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnvironmentName: str
+        :param ApplicationId: 服务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationId: str
+        :param ApplicationName: 服务name
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationName: str
+        :param UnderDeploying: 是否正在发布中
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UnderDeploying: bool
+        """
+        self.VersionName = None
+        self.Status = None
+        self.EnableEs = None
+        self.CurrentInstances = None
+        self.VersionId = None
+        self.LogOutputConf = None
+        self.ExpectedInstances = None
+        self.DeployMode = None
+        self.BuildTaskId = None
+        self.EnvironmentId = None
+        self.EnvironmentName = None
+        self.ApplicationId = None
+        self.ApplicationName = None
+        self.UnderDeploying = None
+
+
+    def _deserialize(self, params):
+        self.VersionName = params.get("VersionName")
+        self.Status = params.get("Status")
+        self.EnableEs = params.get("EnableEs")
+        self.CurrentInstances = params.get("CurrentInstances")
+        self.VersionId = params.get("VersionId")
+        if params.get("LogOutputConf") is not None:
+            self.LogOutputConf = LogOutputConf()
+            self.LogOutputConf._deserialize(params.get("LogOutputConf"))
+        self.ExpectedInstances = params.get("ExpectedInstances")
+        self.DeployMode = params.get("DeployMode")
+        self.BuildTaskId = params.get("BuildTaskId")
+        self.EnvironmentId = params.get("EnvironmentId")
+        self.EnvironmentName = params.get("EnvironmentName")
+        self.ApplicationId = params.get("ApplicationId")
+        self.ApplicationName = params.get("ApplicationName")
+        self.UnderDeploying = params.get("UnderDeploying")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

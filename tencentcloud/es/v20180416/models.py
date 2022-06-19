@@ -1740,6 +1740,9 @@ RENEW_FLAG_DEFAULT：不自动续费
         :param EsPrivateDomain: https集群内网域名
 注意：此字段可能返回 null，表示取不到有效值。
         :type EsPrivateDomain: str
+        :param EsConfigSets: 集群的配置组信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EsConfigSets: list of EsConfigSetInfo
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -1815,6 +1818,7 @@ RENEW_FLAG_DEFAULT：不自动续费
         self.HealthStatus = None
         self.EsPrivateUrl = None
         self.EsPrivateDomain = None
+        self.EsConfigSets = None
 
 
     def _deserialize(self, params):
@@ -1921,6 +1925,12 @@ RENEW_FLAG_DEFAULT：不自动续费
         self.HealthStatus = params.get("HealthStatus")
         self.EsPrivateUrl = params.get("EsPrivateUrl")
         self.EsPrivateDomain = params.get("EsPrivateDomain")
+        if params.get("EsConfigSets") is not None:
+            self.EsConfigSets = []
+            for item in params.get("EsConfigSets"):
+                obj = EsConfigSetInfo()
+                obj._deserialize(item)
+                self.EsConfigSets.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

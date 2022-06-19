@@ -333,6 +333,9 @@ class Certificates(AbstractModel):
         :param Tags: 标签列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tags
+        :param IsIgnore: 是否已忽略到期通知
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsIgnore: bool
         """
         self.OwnerUin = None
         self.ProjectId = None
@@ -364,6 +367,7 @@ class Certificates(AbstractModel):
         self.BoundResource = None
         self.Deployable = None
         self.Tags = None
+        self.IsIgnore = None
 
 
     def _deserialize(self, params):
@@ -406,6 +410,7 @@ class Certificates(AbstractModel):
                 obj = Tags()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.IsIgnore = params.get("IsIgnore")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

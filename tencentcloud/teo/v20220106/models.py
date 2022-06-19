@@ -5985,7 +5985,9 @@ class DescribeTimingL7CacheDataRequest(AbstractModel):
         :type Interval: str
         :param ZoneIds: 站点id列表
         :type ZoneIds: list of str
-        :param Filters: 筛选条件
+        :param Filters: 筛选条件，筛选EO/源站响应如下：
+EO响应：{Key: "cacheType", Value: ["hit"], Operator: "equals"}；
+源站响应：{Key: "cacheType", Value: ["miss", "dynamic"], Operator: "equals"}
         :type Filters: list of Filter
         """
         self.StartTime = None

@@ -1153,6 +1153,87 @@ class DescribeDomainAliasListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDomainAnalyticsRequest(AbstractModel):
+    """DescribeDomainAnalytics请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Domain: 要查询解析量的域名
+        :type Domain: str
+        :param StartDate: 查询的开始时间，格式：YYYY-MM-DD
+        :type StartDate: str
+        :param EndDate: 查询的结束时间，格式：YYYY-MM-DD
+        :type EndDate: str
+        :param DnsFormat: DATE:按天维度统计 HOUR:按小时维度统计
+        :type DnsFormat: str
+        :param DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+        :type DomainId: int
+        """
+        self.Domain = None
+        self.StartDate = None
+        self.EndDate = None
+        self.DnsFormat = None
+        self.DomainId = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        self.StartDate = params.get("StartDate")
+        self.EndDate = params.get("EndDate")
+        self.DnsFormat = params.get("DnsFormat")
+        self.DomainId = params.get("DomainId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDomainAnalyticsResponse(AbstractModel):
+    """DescribeDomainAnalytics返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 当前统计维度解析量小计
+        :type Data: list of DomainAnalyticsDetail
+        :param Info: 域名解析量统计查询信息
+        :type Info: :class:`tencentcloud.dnspod.v20210323.models.DomainAnalyticsInfo`
+        :param AliasData: 域名别名解析量统计信息
+        :type AliasData: list of DomainAliasAnalyticsItem
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.Info = None
+        self.AliasData = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = DomainAnalyticsDetail()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        if params.get("Info") is not None:
+            self.Info = DomainAnalyticsInfo()
+            self.Info._deserialize(params.get("Info"))
+        if params.get("AliasData") is not None:
+            self.AliasData = []
+            for item in params.get("AliasData"):
+                obj = DomainAliasAnalyticsItem()
+                obj._deserialize(item)
+                self.AliasData.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDomainListRequest(AbstractModel):
     """DescribeDomainList请求参数结构体
 
@@ -1725,6 +1806,91 @@ class DescribeRecordTypeResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeSubdomainAnalyticsRequest(AbstractModel):
+    """DescribeSubdomainAnalytics请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Domain: 要查询解析量的域名
+        :type Domain: str
+        :param StartDate: 查询的开始时间，格式：YYYY-MM-DD
+        :type StartDate: str
+        :param EndDate: 查询的结束时间，格式：YYYY-MM-DD
+        :type EndDate: str
+        :param Subdomain: 要查询解析量的子域名
+        :type Subdomain: str
+        :param DnsFormat: DATE:按天维度统计 HOUR:按小时维度统计
+        :type DnsFormat: str
+        :param DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+        :type DomainId: int
+        """
+        self.Domain = None
+        self.StartDate = None
+        self.EndDate = None
+        self.Subdomain = None
+        self.DnsFormat = None
+        self.DomainId = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        self.StartDate = params.get("StartDate")
+        self.EndDate = params.get("EndDate")
+        self.Subdomain = params.get("Subdomain")
+        self.DnsFormat = params.get("DnsFormat")
+        self.DomainId = params.get("DomainId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSubdomainAnalyticsResponse(AbstractModel):
+    """DescribeSubdomainAnalytics返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 当前统计维度解析量小计
+        :type Data: list of DomainAnalyticsDetail
+        :param Info: 子域名解析量统计查询信息
+        :type Info: :class:`tencentcloud.dnspod.v20210323.models.SubdomainAnalyticsInfo`
+        :param AliasData: 子域名别名解析量统计信息
+        :type AliasData: list of SubdomainAliasAnalyticsItem
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.Info = None
+        self.AliasData = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = DomainAnalyticsDetail()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        if params.get("Info") is not None:
+            self.Info = SubdomainAnalyticsInfo()
+            self.Info._deserialize(params.get("Info"))
+        if params.get("AliasData") is not None:
+            self.AliasData = []
+            for item in params.get("AliasData"):
+                obj = SubdomainAliasAnalyticsItem()
+                obj._deserialize(item)
+                self.AliasData.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeUserDetailRequest(AbstractModel):
     """DescribeUserDetail请求参数结构体
 
@@ -1754,6 +1920,41 @@ class DescribeUserDetailResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DomainAliasAnalyticsItem(AbstractModel):
+    """域名别名解析量统计信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Info: 域名解析量统计查询信息
+        :type Info: :class:`tencentcloud.dnspod.v20210323.models.DomainAnalyticsInfo`
+        :param Data: 当前统计维度解析量小计
+        :type Data: list of DomainAnalyticsDetail
+        """
+        self.Info = None
+        self.Data = None
+
+
+    def _deserialize(self, params):
+        if params.get("Info") is not None:
+            self.Info = DomainAnalyticsInfo()
+            self.Info._deserialize(params.get("Info"))
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = DomainAnalyticsDetail()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DomainAliasInfo(AbstractModel):
     """域名别名信息
 
@@ -1773,6 +1974,79 @@ class DomainAliasInfo(AbstractModel):
     def _deserialize(self, params):
         self.Id = params.get("Id")
         self.DomainAlias = params.get("DomainAlias")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DomainAnalyticsDetail(AbstractModel):
+    """当前统计维度解析量小计
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Num: 当前统计维度解析量小计
+        :type Num: int
+        :param DateKey: 按天统计时，为统计日期
+        :type DateKey: str
+        :param HourKey: 按小时统计时，为统计的当前时间的小时数(0-23)，例：HourKey为23时，统计周期为22点-23点的解析量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HourKey: int
+        """
+        self.Num = None
+        self.DateKey = None
+        self.HourKey = None
+
+
+    def _deserialize(self, params):
+        self.Num = params.get("Num")
+        self.DateKey = params.get("DateKey")
+        self.HourKey = params.get("HourKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DomainAnalyticsInfo(AbstractModel):
+    """域名解析量统计查询信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DnsFormat: DATE:按天维度统计 HOUR:按小时维度统计
+        :type DnsFormat: str
+        :param DnsTotal: 当前统计周期解析量总计
+        :type DnsTotal: int
+        :param Domain: 当前查询的域名
+        :type Domain: str
+        :param StartDate: 当前统计周期开始时间
+        :type StartDate: str
+        :param EndDate: 当前统计周期结束时间
+        :type EndDate: str
+        """
+        self.DnsFormat = None
+        self.DnsTotal = None
+        self.Domain = None
+        self.StartDate = None
+        self.EndDate = None
+
+
+    def _deserialize(self, params):
+        self.DnsFormat = params.get("DnsFormat")
+        self.DnsTotal = params.get("DnsTotal")
+        self.Domain = params.get("Domain")
+        self.StartDate = params.get("StartDate")
+        self.EndDate = params.get("EndDate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3158,6 +3432,85 @@ class RecordListItem(AbstractModel):
         self.Remark = params.get("Remark")
         self.TTL = params.get("TTL")
         self.MX = params.get("MX")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SubdomainAliasAnalyticsItem(AbstractModel):
+    """子域名别名解析量统计信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Info: 子域名解析量统计查询信息
+        :type Info: :class:`tencentcloud.dnspod.v20210323.models.SubdomainAnalyticsInfo`
+        :param Data: 当前统计维度解析量小计
+        :type Data: list of DomainAnalyticsDetail
+        """
+        self.Info = None
+        self.Data = None
+
+
+    def _deserialize(self, params):
+        if params.get("Info") is not None:
+            self.Info = SubdomainAnalyticsInfo()
+            self.Info._deserialize(params.get("Info"))
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = DomainAnalyticsDetail()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SubdomainAnalyticsInfo(AbstractModel):
+    """子域名解析量统计查询信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DnsFormat: DATE:按天维度统计 HOUR:按小时维度统计
+        :type DnsFormat: str
+        :param DnsTotal: 当前统计周期解析量总计
+        :type DnsTotal: int
+        :param Domain: 当前查询的域名
+        :type Domain: str
+        :param StartDate: 当前统计周期开始时间
+        :type StartDate: str
+        :param EndDate: 当前统计周期结束时间
+        :type EndDate: str
+        :param Subdomain: 当前统计的子域名
+        :type Subdomain: str
+        """
+        self.DnsFormat = None
+        self.DnsTotal = None
+        self.Domain = None
+        self.StartDate = None
+        self.EndDate = None
+        self.Subdomain = None
+
+
+    def _deserialize(self, params):
+        self.DnsFormat = params.get("DnsFormat")
+        self.DnsTotal = params.get("DnsTotal")
+        self.Domain = params.get("Domain")
+        self.StartDate = params.get("StartDate")
+        self.EndDate = params.get("EndDate")
+        self.Subdomain = params.get("Subdomain")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

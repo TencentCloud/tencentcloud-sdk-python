@@ -362,6 +362,64 @@ class CreateAutoCalloutTaskResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateCCCSkillGroupRequest(AbstractModel):
+    """CreateCCCSkillGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkAppId: 应用 ID（必填）
+        :type SdkAppId: int
+        :param SkillGroupName: 技能组名称
+        :type SkillGroupName: str
+        :param SkillGroupType: 技能组类型0-电话，1-在线，3-音频，4-视频
+        :type SkillGroupType: int
+        :param MaxConcurrency: 技能组接待人数上限（该技能组中1个座席可接待的人数上限）默认为1。1、若技能组类型为在线，则接待上限可设置为1及以上
+2、若技能组类型为电话、音频、视频，则接待上线必须只能为1
+        :type MaxConcurrency: int
+        """
+        self.SdkAppId = None
+        self.SkillGroupName = None
+        self.SkillGroupType = None
+        self.MaxConcurrency = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.SkillGroupName = params.get("SkillGroupName")
+        self.SkillGroupType = params.get("SkillGroupType")
+        self.MaxConcurrency = params.get("MaxConcurrency")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCCCSkillGroupResponse(AbstractModel):
+    """CreateCCCSkillGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SkillGroupId: 技能组ID
+        :type SkillGroupId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.SkillGroupId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.SkillGroupId = params.get("SkillGroupId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateCallOutSessionRequest(AbstractModel):
     """CreateCallOutSession请求参数结构体
 

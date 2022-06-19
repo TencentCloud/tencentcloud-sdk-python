@@ -188,6 +188,24 @@ class DescribeSupportedHsmRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param HsmType: Hsm类型，可选值all、virtulization、GHSM、EHSM、SHSM
+        :type HsmType: str
+        """
+        self.HsmType = None
+
+
+    def _deserialize(self, params):
+        self.HsmType = params.get("HsmType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribeSupportedHsmResponse(AbstractModel):
     """DescribeSupportedHsm返回参数结构体
@@ -197,6 +215,7 @@ class DescribeSupportedHsmResponse(AbstractModel):
     def __init__(self):
         r"""
         :param DeviceTypes: 当前地域所支持的设备列表
+注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceTypes: list of DeviceInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -569,12 +588,15 @@ class DescribeVsmsRequest(AbstractModel):
         :type TagFilters: list of TagFilter
         :param Manufacturer: 设备所属的厂商名称，根据厂商来进行筛选
         :type Manufacturer: str
+        :param HsmType: Hsm服务类型，可选virtualization、physical、GHSM、EHSM、SHSM、all
+        :type HsmType: str
         """
         self.Offset = None
         self.Limit = None
         self.SearchWord = None
         self.TagFilters = None
         self.Manufacturer = None
+        self.HsmType = None
 
 
     def _deserialize(self, params):
@@ -588,6 +610,7 @@ class DescribeVsmsRequest(AbstractModel):
                 obj._deserialize(item)
                 self.TagFilters.append(obj)
         self.Manufacturer = params.get("Manufacturer")
+        self.HsmType = params.get("HsmType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -705,7 +728,7 @@ class InquiryPriceBuyVsmRequest(AbstractModel):
         :type GoodsNum: int
         :param PayMode: 付费模式：0表示按需计费/后付费，1表示预付费
         :type PayMode: int
-        :param TimeSpan: 商品的时间大小
+        :param TimeSpan: 商品的时间大小，整型参数，举例：当TimeSpan为1，TImeUnit为m时，表示询价购买时长为1个月时的价格
         :type TimeSpan: str
         :param TimeUnit: 商品的时间单位，m表示月，y表示年
         :type TimeUnit: str
@@ -713,6 +736,8 @@ class InquiryPriceBuyVsmRequest(AbstractModel):
         :type Currency: str
         :param Type: 默认为CREATE，可选RENEW
         :type Type: str
+        :param HsmType: Hsm服务类型，可选值virtualization、physical、GHSM、EHSM、SHSM
+        :type HsmType: str
         """
         self.GoodsNum = None
         self.PayMode = None
@@ -720,6 +745,7 @@ class InquiryPriceBuyVsmRequest(AbstractModel):
         self.TimeUnit = None
         self.Currency = None
         self.Type = None
+        self.HsmType = None
 
 
     def _deserialize(self, params):
@@ -729,6 +755,7 @@ class InquiryPriceBuyVsmRequest(AbstractModel):
         self.TimeUnit = params.get("TimeUnit")
         self.Currency = params.get("Currency")
         self.Type = params.get("Type")
+        self.HsmType = params.get("HsmType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -745,7 +772,7 @@ class InquiryPriceBuyVsmResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCost: 原始总金额
+        :param TotalCost: 原始总金额，浮点型参数，精确到小数点后两位，如：2000.99
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCost: float
         :param GoodsNum: 购买的实例数量
@@ -757,7 +784,7 @@ class InquiryPriceBuyVsmResponse(AbstractModel):
         :param TimeUnit: 商品的时间单位
 注意：此字段可能返回 null，表示取不到有效值。
         :type TimeUnit: str
-        :param OriginalCost: 应付总金额
+        :param OriginalCost: 应付总金额，浮点型参数，精确到小数点后两位，如：2000.99
 注意：此字段可能返回 null，表示取不到有效值。
         :type OriginalCost: float
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

@@ -19191,7 +19191,7 @@ class VulEffectHostList(AbstractModel):
         :param Description: 说明
 注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
-        :param HostVersion: 版本信息 0=普通版本 1=专业版 2=旗舰版
+        :param HostVersion: 版本信息：0-基础版 1-专业版 2-旗舰版 3-普惠版
 注意：此字段可能返回 null，表示取不到有效值。
         :type HostVersion: int
         :param IsSupportAutoFix: 是否能自动修复 0 :漏洞不可自动修复，  1：可自动修复， 2：客户端已离线， 3：主机不是旗舰版只能手动修复， 4：机型不允许 ，5：修复中 ，6：已修复， 7：检测中  9:修复失败，10:已忽略 11:漏洞只支持linux不支持Windows 12：漏洞只支持Windows不支持linux，13:修复失败但此时主机已离线，14:修复失败但此时主机不是旗舰版， 15:已手动修复
@@ -19200,6 +19200,12 @@ class VulEffectHostList(AbstractModel):
         :param FixStatusMsg: 失败原因
 注意：此字段可能返回 null，表示取不到有效值。
         :type FixStatusMsg: str
+        :param FirstDiscoveryTime: 首次发现时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FirstDiscoveryTime: str
+        :param InstanceState: 实例状态："PENDING"-创建中 "LAUNCH_FAILED"-创建失败 "RUNNING"-运行中 "STOPPED"-关机 "STARTING"-表示开机中 "STOPPING"-表示关机中 "REBOOTING"-重启中 "SHUTDOWN"-表示停止待销毁 "TERMINATING"-表示销毁中 "
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceState: str
         """
         self.EventId = None
         self.Status = None
@@ -19214,6 +19220,8 @@ class VulEffectHostList(AbstractModel):
         self.HostVersion = None
         self.IsSupportAutoFix = None
         self.FixStatusMsg = None
+        self.FirstDiscoveryTime = None
+        self.InstanceState = None
 
 
     def _deserialize(self, params):
@@ -19230,6 +19238,8 @@ class VulEffectHostList(AbstractModel):
         self.HostVersion = params.get("HostVersion")
         self.IsSupportAutoFix = params.get("IsSupportAutoFix")
         self.FixStatusMsg = params.get("FixStatusMsg")
+        self.FirstDiscoveryTime = params.get("FirstDiscoveryTime")
+        self.InstanceState = params.get("InstanceState")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

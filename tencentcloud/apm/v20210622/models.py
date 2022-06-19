@@ -428,11 +428,14 @@ class DescribeApmAgentRequest(AbstractModel):
         :type NetworkMode: str
         :param LanguageEnvironment: 语言
         :type LanguageEnvironment: str
+        :param ReportMethod: 上报方式
+        :type ReportMethod: str
         """
         self.InstanceId = None
         self.AgentType = None
         self.NetworkMode = None
         self.LanguageEnvironment = None
+        self.ReportMethod = None
 
 
     def _deserialize(self, params):
@@ -440,6 +443,7 @@ class DescribeApmAgentRequest(AbstractModel):
         self.AgentType = params.get("AgentType")
         self.NetworkMode = params.get("NetworkMode")
         self.LanguageEnvironment = params.get("LanguageEnvironment")
+        self.ReportMethod = params.get("ReportMethod")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -561,7 +565,7 @@ span.kind:
         :type Metrics: list of str
         :param InstanceId: 实例ID
         :type InstanceId: str
-        :param ViewName: 视图名称
+        :param ViewName: 视图名称，不可自定义输入。支持：service_metric
         :type ViewName: str
         :param GroupBy: 聚合维度，支持：service.name（服务名）、span.kind （客户端/服务端视角）维度进行聚合。
         :type GroupBy: list of str

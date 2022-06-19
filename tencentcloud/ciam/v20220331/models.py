@@ -1069,6 +1069,54 @@ class SaltLocation(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param SaltLocationTypeEnum: 密码加盐的类型（HEAD，TAIL，OTHER）
+        :type SaltLocationTypeEnum: str
+        :param SaltLocationRule: 加盐规则
+        :type SaltLocationRule: :class:`tencentcloud.ciam.v20220331.models.SaltLocationRule`
+        """
+        self.SaltLocationTypeEnum = None
+        self.SaltLocationRule = None
+
+
+    def _deserialize(self, params):
+        self.SaltLocationTypeEnum = params.get("SaltLocationTypeEnum")
+        if params.get("SaltLocationRule") is not None:
+            self.SaltLocationRule = SaltLocationRule()
+            self.SaltLocationRule._deserialize(params.get("SaltLocationRule"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SaltLocationRule(AbstractModel):
+    """盐位规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Regex: 表达式
+        :type Regex: str
+        """
+        self.Regex = None
+
+
+    def _deserialize(self, params):
+        self.Regex = params.get("Regex")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class SetPasswordRequest(AbstractModel):
     """SetPassword请求参数结构体
