@@ -1348,6 +1348,15 @@ class ClusterCheckItem(AbstractModel):
         :param AffectedVersion: 受影响的版本信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type AffectedVersion: str
+        :param IgnoredAssetNum: 忽略的资产数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IgnoredAssetNum: int
+        :param IsIgnored: 是否忽略该检测项
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsIgnored: bool
+        :param RiskAssessment: 受影响评估
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RiskAssessment: str
         """
         self.CheckItemId = None
         self.Name = None
@@ -1365,6 +1374,9 @@ class ClusterCheckItem(AbstractModel):
         self.RelateLink = None
         self.AffectedType = None
         self.AffectedVersion = None
+        self.IgnoredAssetNum = None
+        self.IsIgnored = None
+        self.RiskAssessment = None
 
 
     def _deserialize(self, params):
@@ -1384,6 +1396,9 @@ class ClusterCheckItem(AbstractModel):
         self.RelateLink = params.get("RelateLink")
         self.AffectedType = params.get("AffectedType")
         self.AffectedVersion = params.get("AffectedVersion")
+        self.IgnoredAssetNum = params.get("IgnoredAssetNum")
+        self.IsIgnored = params.get("IsIgnored")
+        self.RiskAssessment = params.get("RiskAssessment")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

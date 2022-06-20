@@ -84,6 +84,64 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def AssociateBusinessLogConfig(self, request):
+        """关联日志配置项到应用
+
+        :param request: Request instance for AssociateBusinessLogConfig.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.AssociateBusinessLogConfigRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.AssociateBusinessLogConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AssociateBusinessLogConfig", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AssociateBusinessLogConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def AssociateConfigWithGroup(self, request):
+        """关联投递配置到部署组
+
+        :param request: Request instance for AssociateConfigWithGroup.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.AssociateConfigWithGroupRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.AssociateConfigWithGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AssociateConfigWithGroup", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AssociateConfigWithGroupResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def BindApiGroup(self, request):
         """网关与API分组批量绑定
 
@@ -1593,6 +1651,35 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeApplicationBusinessLogConfig(self, request):
+        """查询应用关联日志配置项信息
+
+        :param request: Request instance for DescribeApplicationBusinessLogConfig.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeApplicationBusinessLogConfigRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeApplicationBusinessLogConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeApplicationBusinessLogConfig", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeApplicationBusinessLogConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeApplications(self, request):
         """获取应用列表
 
@@ -1637,6 +1724,64 @@ class TsfClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBasicResourceUsageResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeBusinessLogConfig(self, request):
+        """查询业务日志配置项信息
+
+        :param request: Request instance for DescribeBusinessLogConfig.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeBusinessLogConfigRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeBusinessLogConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBusinessLogConfig", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBusinessLogConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeBusinessLogConfigs(self, request):
+        """查询日志配置项列表
+
+        :param request: Request instance for DescribeBusinessLogConfigs.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeBusinessLogConfigsRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeBusinessLogConfigsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBusinessLogConfigs", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBusinessLogConfigsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1970,6 +2115,93 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeDeliveryConfig(self, request):
+        """获取单个投递项配置信息
+
+        :param request: Request instance for DescribeDeliveryConfig.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeDeliveryConfigRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeDeliveryConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDeliveryConfig", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDeliveryConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDeliveryConfigByGroupId(self, request):
+        """用部署组id获取绑定信息
+
+        :param request: Request instance for DescribeDeliveryConfigByGroupId.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeDeliveryConfigByGroupIdRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeDeliveryConfigByGroupIdResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDeliveryConfigByGroupId", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDeliveryConfigByGroupIdResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDeliveryConfigs(self, request):
+        """获取多个投递项配置
+
+        :param request: Request instance for DescribeDeliveryConfigs.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeDeliveryConfigsRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeDeliveryConfigsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDeliveryConfigs", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDeliveryConfigsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeDownloadInfo(self, request):
         """TSF上传的程序包存放在腾讯云对象存储（COS）中，通过该API可以获取从COS下载程序包需要的信息，包括包所在的桶、存储路径、鉴权信息等，之后使用COS API（或SDK）进行下载。
         COS相关文档请查阅：https://cloud.tencent.com/document/product/436
@@ -2247,6 +2479,35 @@ class TsfClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeGroupBindedGatewaysResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeGroupBusinessLogConfigs(self, request):
+        """查询分组管理日志配置列表
+
+        :param request: Request instance for DescribeGroupBusinessLogConfigs.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeGroupBusinessLogConfigsRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DescribeGroupBusinessLogConfigsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeGroupBusinessLogConfigs", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeGroupBusinessLogConfigsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -3799,6 +4060,64 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DisassociateBusinessLogConfig(self, request):
+        """取消关联业务日志配置项和应用
+
+        :param request: Request instance for DisassociateBusinessLogConfig.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DisassociateBusinessLogConfigRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DisassociateBusinessLogConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DisassociateBusinessLogConfig", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DisassociateBusinessLogConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DisassociateKafkaConfig(self, request):
+        """取消关联投递信息和部署组
+
+        :param request: Request instance for DisassociateKafkaConfig.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.DisassociateKafkaConfigRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.DisassociateKafkaConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DisassociateKafkaConfig", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DisassociateKafkaConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DraftApiGroup(self, request):
         """下线Api分组
 
@@ -4279,6 +4598,35 @@ class TsfClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.OperateApplicationTcrBindingResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ReassociateBusinessLogConfig(self, request):
+        """重关联业务日志配置
+
+        :param request: Request instance for ReassociateBusinessLogConfig.
+        :type request: :class:`tencentcloud.tsf.v20180326.models.ReassociateBusinessLogConfigRequest`
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.ReassociateBusinessLogConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ReassociateBusinessLogConfig", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ReassociateBusinessLogConfigResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

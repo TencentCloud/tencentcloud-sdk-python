@@ -86,6 +86,9 @@ INVALIDPARAMETERVALUE_INVALIDOUTPUTCOSBUCKETURL = 'InvalidParameterValue.Invalid
 # OutputCOSKeyPrefix 无效。
 INVALIDPARAMETERVALUE_INVALIDOUTPUTCOSKEYPREFIX = 'InvalidParameterValue.InvalidOutputCOSKeyPrefix'
 
+# 用户名不合法。
+INVALIDPARAMETERVALUE_INVALIDUSERNAME = 'InvalidParameterValue.InvalidUsername'
+
 # 命令执行路径不合法。
 INVALIDPARAMETERVALUE_INVALIDWORKINGDIRECTORY = 'InvalidParameterValue.InvalidWorkingDirectory'
 

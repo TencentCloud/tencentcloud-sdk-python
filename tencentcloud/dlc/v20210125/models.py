@@ -1870,16 +1870,20 @@ class DescribeSparkAppTasksRequest(AbstractModel):
         :type Offset: int
         :param Limit: 分页查询Limit
         :type Limit: int
+        :param TaskId: 执行实例id
+        :type TaskId: str
         """
         self.JobId = None
         self.Offset = None
         self.Limit = None
+        self.TaskId = None
 
 
     def _deserialize(self, params):
         self.JobId = params.get("JobId")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.TaskId = params.get("TaskId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

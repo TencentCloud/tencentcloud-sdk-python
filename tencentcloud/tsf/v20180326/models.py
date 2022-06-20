@@ -958,6 +958,127 @@ class ApplicationForPage(AbstractModel):
         
 
 
+class AssociateBusinessLogConfigRequest(AbstractModel):
+    """AssociateBusinessLogConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param GroupId: TSF分组ID
+        :type GroupId: str
+        :param ConfigIdList: 日志配置项ID列表
+        :type ConfigIdList: list of str
+        """
+        self.GroupId = None
+        self.ConfigIdList = None
+
+
+    def _deserialize(self, params):
+        self.GroupId = params.get("GroupId")
+        self.ConfigIdList = params.get("ConfigIdList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AssociateBusinessLogConfigResponse(AbstractModel):
+    """AssociateBusinessLogConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 操作结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
+class AssociateConfigWithGroupRequest(AbstractModel):
+    """AssociateConfigWithGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ConfigId: 配置项id
+        :type ConfigId: str
+        :param Groups: 部署组信息
+        :type Groups: list of GroupInfo
+        :param SelectAll: 是否选择全部投递，1 表示全部，0或不填表示非全部
+        :type SelectAll: int
+        :param NamespaceId: 命名空间id
+        :type NamespaceId: str
+        :param ClusterId: 集群id
+        :type ClusterId: str
+        :param SearchWord: 模糊搜索关键词
+        :type SearchWord: str
+        """
+        self.ConfigId = None
+        self.Groups = None
+        self.SelectAll = None
+        self.NamespaceId = None
+        self.ClusterId = None
+        self.SearchWord = None
+
+
+    def _deserialize(self, params):
+        self.ConfigId = params.get("ConfigId")
+        if params.get("Groups") is not None:
+            self.Groups = []
+            for item in params.get("Groups"):
+                obj = GroupInfo()
+                obj._deserialize(item)
+                self.Groups.append(obj)
+        self.SelectAll = params.get("SelectAll")
+        self.NamespaceId = params.get("NamespaceId")
+        self.ClusterId = params.get("ClusterId")
+        self.SearchWord = params.get("SearchWord")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AssociateConfigWithGroupResponse(AbstractModel):
+    """AssociateConfigWithGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 绑定是否成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
 class BindApiGroupRequest(AbstractModel):
     """BindApiGroup请求参数结构体
 
@@ -1056,6 +1177,205 @@ class BindPluginResponse(AbstractModel):
     def _deserialize(self, params):
         self.Result = params.get("Result")
         self.RequestId = params.get("RequestId")
+
+
+class BusinesLogConfigAssociatedGroup(AbstractModel):
+    """业务日志配置关联部署组信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param GroupId: 部署组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupId: str
+        :param GroupName: 部署组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupName: str
+        :param ApplicationId: 部署组所属应用ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationId: str
+        :param ApplicationName: 部署组所属应用名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationName: str
+        :param ApplicationType: 部署组所属应用类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationType: str
+        :param NamespaceId: 部署组所属命名空间ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NamespaceId: str
+        :param NamespaceName: 部署组所属命名空间名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NamespaceName: str
+        :param ClusterId: 部署组所属集群ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterId: str
+        :param ClusterName: 部署组所属集群名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterName: str
+        :param ClusterType: 部署组所属集群类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterType: str
+        :param AssociatedTime: 部署组关联日志配置时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssociatedTime: str
+        """
+        self.GroupId = None
+        self.GroupName = None
+        self.ApplicationId = None
+        self.ApplicationName = None
+        self.ApplicationType = None
+        self.NamespaceId = None
+        self.NamespaceName = None
+        self.ClusterId = None
+        self.ClusterName = None
+        self.ClusterType = None
+        self.AssociatedTime = None
+
+
+    def _deserialize(self, params):
+        self.GroupId = params.get("GroupId")
+        self.GroupName = params.get("GroupName")
+        self.ApplicationId = params.get("ApplicationId")
+        self.ApplicationName = params.get("ApplicationName")
+        self.ApplicationType = params.get("ApplicationType")
+        self.NamespaceId = params.get("NamespaceId")
+        self.NamespaceName = params.get("NamespaceName")
+        self.ClusterId = params.get("ClusterId")
+        self.ClusterName = params.get("ClusterName")
+        self.ClusterType = params.get("ClusterType")
+        self.AssociatedTime = params.get("AssociatedTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BusinessLogConfig(AbstractModel):
+    """业务日志配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ConfigId: 配置项ID
+        :type ConfigId: str
+        :param ConfigName: 配置项名称
+        :type ConfigName: str
+        :param ConfigPath: 配置项日志路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigPath: str
+        :param ConfigDesc: 配置项描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigDesc: str
+        :param ConfigTags: 配置项标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigTags: str
+        :param ConfigPipeline: 配置项对应的ES管道
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigPipeline: str
+        :param ConfigCreateTime: 配置项创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigCreateTime: str
+        :param ConfigUpdateTime: 配置项更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigUpdateTime: str
+        :param ConfigSchema: 配置项解析规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigSchema: :class:`tencentcloud.tsf.v20180326.models.BusinessLogConfigSchema`
+        :param ConfigAssociatedGroups: 配置项关联部署组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigAssociatedGroups: list of BusinesLogConfigAssociatedGroup
+        """
+        self.ConfigId = None
+        self.ConfigName = None
+        self.ConfigPath = None
+        self.ConfigDesc = None
+        self.ConfigTags = None
+        self.ConfigPipeline = None
+        self.ConfigCreateTime = None
+        self.ConfigUpdateTime = None
+        self.ConfigSchema = None
+        self.ConfigAssociatedGroups = None
+
+
+    def _deserialize(self, params):
+        self.ConfigId = params.get("ConfigId")
+        self.ConfigName = params.get("ConfigName")
+        self.ConfigPath = params.get("ConfigPath")
+        self.ConfigDesc = params.get("ConfigDesc")
+        self.ConfigTags = params.get("ConfigTags")
+        self.ConfigPipeline = params.get("ConfigPipeline")
+        self.ConfigCreateTime = params.get("ConfigCreateTime")
+        self.ConfigUpdateTime = params.get("ConfigUpdateTime")
+        if params.get("ConfigSchema") is not None:
+            self.ConfigSchema = BusinessLogConfigSchema()
+            self.ConfigSchema._deserialize(params.get("ConfigSchema"))
+        if params.get("ConfigAssociatedGroups") is not None:
+            self.ConfigAssociatedGroups = []
+            for item in params.get("ConfigAssociatedGroups"):
+                obj = BusinesLogConfigAssociatedGroup()
+                obj._deserialize(item)
+                self.ConfigAssociatedGroups.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BusinessLogConfigSchema(AbstractModel):
+    """业务日志配置解析规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SchemaType: 解析规则类型
+        :type SchemaType: int
+        :param SchemaContent: 解析规则内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SchemaContent: str
+        :param SchemaDateFormat: 解析规则时间格式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SchemaDateFormat: str
+        :param SchemaMultilinePattern: 解析规则对应的多行匹配规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SchemaMultilinePattern: str
+        :param SchemaCreateTime: 解析规则创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SchemaCreateTime: str
+        :param SchemaPatternLayout: 用户填写的解析规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SchemaPatternLayout: str
+        """
+        self.SchemaType = None
+        self.SchemaContent = None
+        self.SchemaDateFormat = None
+        self.SchemaMultilinePattern = None
+        self.SchemaCreateTime = None
+        self.SchemaPatternLayout = None
+
+
+    def _deserialize(self, params):
+        self.SchemaType = params.get("SchemaType")
+        self.SchemaContent = params.get("SchemaContent")
+        self.SchemaDateFormat = params.get("SchemaDateFormat")
+        self.SchemaMultilinePattern = params.get("SchemaMultilinePattern")
+        self.SchemaCreateTime = params.get("SchemaCreateTime")
+        self.SchemaPatternLayout = params.get("SchemaPatternLayout")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class BusinessLogV2(AbstractModel):
@@ -4814,6 +5134,89 @@ class DeleteUnitRuleResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeliveryConfigBindGroup(AbstractModel):
+    """描述投递配置项绑定的部署组
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ConfigId: 配置id
+        :type ConfigId: str
+        :param ConfigName: 配置名
+        :type ConfigName: str
+        :param CollectPath: 采集路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CollectPath: list of str
+        :param Groups: 关联部署组信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Groups: list of GroupInfo
+        :param CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        """
+        self.ConfigId = None
+        self.ConfigName = None
+        self.CollectPath = None
+        self.Groups = None
+        self.CreateTime = None
+
+
+    def _deserialize(self, params):
+        self.ConfigId = params.get("ConfigId")
+        self.ConfigName = params.get("ConfigName")
+        self.CollectPath = params.get("CollectPath")
+        if params.get("Groups") is not None:
+            self.Groups = []
+            for item in params.get("Groups"):
+                obj = GroupInfo()
+                obj._deserialize(item)
+                self.Groups.append(obj)
+        self.CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeliveryConfigBindGroups(AbstractModel):
+    """描述配置项绑定的部署组
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 公共条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param Content: 内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Content: list of DeliveryConfigBindGroup
+        """
+        self.TotalCount = None
+        self.Content = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Content") is not None:
+            self.Content = []
+            for item in params.get("Content"):
+                obj = DeliveryConfigBindGroup()
+                obj._deserialize(item)
+                self.Content.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DeployContainerGroupRequest(AbstractModel):
     """DeployContainerGroup请求参数结构体
 
@@ -5544,6 +5947,47 @@ class DescribeApplicationAttributeResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeApplicationBusinessLogConfigRequest(AbstractModel):
+    """DescribeApplicationBusinessLogConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ApplicationId: TSF应用ID
+        :type ApplicationId: str
+        """
+        self.ApplicationId = None
+
+
+    def _deserialize(self, params):
+        self.ApplicationId = params.get("ApplicationId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeApplicationBusinessLogConfigResponse(AbstractModel):
+    """DescribeApplicationBusinessLogConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeApplicationRequest(AbstractModel):
     """DescribeApplication请求参数结构体
 
@@ -5698,6 +6142,118 @@ class DescribeBasicResourceUsageResponse(AbstractModel):
     def _deserialize(self, params):
         if params.get("Result") is not None:
             self.Result = OverviewBasicResourceUsage()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeBusinessLogConfigRequest(AbstractModel):
+    """DescribeBusinessLogConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ConfigId: 配置项ID
+        :type ConfigId: str
+        """
+        self.ConfigId = None
+
+
+    def _deserialize(self, params):
+        self.ConfigId = params.get("ConfigId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBusinessLogConfigResponse(AbstractModel):
+    """DescribeBusinessLogConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 日志配置项
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.tsf.v20180326.models.BusinessLogConfig`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = BusinessLogConfig()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeBusinessLogConfigsRequest(AbstractModel):
+    """DescribeBusinessLogConfigs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Offset: 偏移量，取值范围大于等于0，默认值为0
+        :type Offset: int
+        :param Limit: 单页请求配置数量，取值范围[1, 50]，默认值为10
+        :type Limit: int
+        :param SearchWord: 模糊匹配关键词
+        :type SearchWord: str
+        :param DisableProgramAuthCheck: 无
+        :type DisableProgramAuthCheck: bool
+        :param ConfigIdList: 无
+        :type ConfigIdList: list of str
+        """
+        self.Offset = None
+        self.Limit = None
+        self.SearchWord = None
+        self.DisableProgramAuthCheck = None
+        self.ConfigIdList = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.SearchWord = params.get("SearchWord")
+        self.DisableProgramAuthCheck = params.get("DisableProgramAuthCheck")
+        self.ConfigIdList = params.get("ConfigIdList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBusinessLogConfigsResponse(AbstractModel):
+    """DescribeBusinessLogConfigs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 业务日志配置列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.tsf.v20180326.models.TsfPageBusinessLogConfig`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = TsfPageBusinessLogConfig()
             self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
 
@@ -6395,6 +6951,156 @@ class DescribeCreateGatewayApiStatusResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDeliveryConfigByGroupIdRequest(AbstractModel):
+    """DescribeDeliveryConfigByGroupId请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param GroupId: 部署组id
+        :type GroupId: str
+        """
+        self.GroupId = None
+
+
+    def _deserialize(self, params):
+        self.GroupId = params.get("GroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDeliveryConfigByGroupIdResponse(AbstractModel):
+    """DescribeDeliveryConfigByGroupId返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 投递kafak配置项
+        :type Result: :class:`tencentcloud.tsf.v20180326.models.SimpleKafkaDeliveryConfig`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = SimpleKafkaDeliveryConfig()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDeliveryConfigRequest(AbstractModel):
+    """DescribeDeliveryConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ConfigId: 投递配置id
+        :type ConfigId: str
+        """
+        self.ConfigId = None
+
+
+    def _deserialize(self, params):
+        self.ConfigId = params.get("ConfigId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDeliveryConfigResponse(AbstractModel):
+    """DescribeDeliveryConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 投递kafka配置
+        :type Result: :class:`tencentcloud.tsf.v20180326.models.KafkaDeliveryConfig`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = KafkaDeliveryConfig()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDeliveryConfigsRequest(AbstractModel):
+    """DescribeDeliveryConfigs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SearchWord: 关键字
+        :type SearchWord: str
+        :param Offset: 偏移
+        :type Offset: int
+        :param Limit: 搜索条数
+        :type Limit: int
+        """
+        self.SearchWord = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.SearchWord = params.get("SearchWord")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDeliveryConfigsResponse(AbstractModel):
+    """DescribeDeliveryConfigs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 投递项关联部署组信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.tsf.v20180326.models.DeliveryConfigBindGroups`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = DeliveryConfigBindGroups()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDownloadInfoRequest(AbstractModel):
     """DescribeDownloadInfo请求参数结构体
 
@@ -6885,6 +7591,54 @@ class DescribeGroupBindedGatewaysResponse(AbstractModel):
     def _deserialize(self, params):
         if params.get("Result") is not None:
             self.Result = TsfPageGatewayDeployGroup()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeGroupBusinessLogConfigsRequest(AbstractModel):
+    """DescribeGroupBusinessLogConfigs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param GroupId: 分组ID
+        :type GroupId: str
+        """
+        self.GroupId = None
+
+
+    def _deserialize(self, params):
+        self.GroupId = params.get("GroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeGroupBusinessLogConfigsResponse(AbstractModel):
+    """DescribeGroupBusinessLogConfigs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 业务日志配置列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.tsf.v20180326.models.TsfPageBusinessLogConfig`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = TsfPageBusinessLogConfig()
             self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
 
@@ -10392,6 +11146,106 @@ class DisableUnitRuleResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DisassociateBusinessLogConfigRequest(AbstractModel):
+    """DisassociateBusinessLogConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ConfigIdList: 业务日志配置项ID列表
+        :type ConfigIdList: list of str
+        :param GroupId: TSF分组ID
+        :type GroupId: str
+        """
+        self.ConfigIdList = None
+        self.GroupId = None
+
+
+    def _deserialize(self, params):
+        self.ConfigIdList = params.get("ConfigIdList")
+        self.GroupId = params.get("GroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DisassociateBusinessLogConfigResponse(AbstractModel):
+    """DisassociateBusinessLogConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 操作结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
+class DisassociateKafkaConfigRequest(AbstractModel):
+    """DisassociateKafkaConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ConfigId: 配置项id
+        :type ConfigId: str
+        :param GroupIds: 部署组id
+        :type GroupIds: list of str
+        """
+        self.ConfigId = None
+        self.GroupIds = None
+
+
+    def _deserialize(self, params):
+        self.ConfigId = params.get("ConfigId")
+        self.GroupIds = params.get("GroupIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DisassociateKafkaConfigResponse(AbstractModel):
+    """DisassociateKafkaConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 解除绑定是否成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
 class DraftApiGroupRequest(AbstractModel):
     """DraftApiGroup请求参数结构体
 
@@ -11426,6 +12280,58 @@ class GroupDailyUseStatistics(AbstractModel):
                 obj = GroupUseStatisticsEntity()
                 obj._deserialize(item)
                 self.TopAvgTimeCost.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GroupInfo(AbstractModel):
+    """日志投递kafka用，描述部署组信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param GroupId: 部署组id
+        :type GroupId: str
+        :param GroupName: 部署组名称
+        :type GroupName: str
+        :param ClusterType: 集群类型
+        :type ClusterType: str
+        :param ClusterId: 集群id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterId: str
+        :param ClusterName: 集群名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterName: str
+        :param NamespaceName: 命名空间名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NamespaceName: str
+        :param AssociateTime: 绑定时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssociateTime: str
+        """
+        self.GroupId = None
+        self.GroupName = None
+        self.ClusterType = None
+        self.ClusterId = None
+        self.ClusterName = None
+        self.NamespaceName = None
+        self.AssociateTime = None
+
+
+    def _deserialize(self, params):
+        self.GroupId = params.get("GroupId")
+        self.GroupName = params.get("GroupName")
+        self.ClusterType = params.get("ClusterType")
+        self.ClusterId = params.get("ClusterId")
+        self.ClusterName = params.get("ClusterName")
+        self.NamespaceName = params.get("NamespaceName")
+        self.AssociateTime = params.get("AssociateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -12820,6 +13726,61 @@ class JvmMonitorData(AbstractModel):
                 obj = CurvePoint()
                 obj._deserialize(item)
                 self.ClassCount.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KafkaDeliveryConfig(AbstractModel):
+    """投递kafka配置项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ConfigId: 配置项id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigId: str
+        :param ConfigName: 配置名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigName: str
+        :param CollectPath: 采集路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CollectPath: list of str
+        :param KafkaVIp: kafka vip
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KafkaVIp: str
+        :param KafkaVPort: kafka vport
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KafkaVPort: str
+        :param Topic: kafka topic
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Topic: str
+        :param LineRule: 换行规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LineRule: str
+        """
+        self.ConfigId = None
+        self.ConfigName = None
+        self.CollectPath = None
+        self.KafkaVIp = None
+        self.KafkaVPort = None
+        self.Topic = None
+        self.LineRule = None
+
+
+    def _deserialize(self, params):
+        self.ConfigId = params.get("ConfigId")
+        self.ConfigName = params.get("ConfigName")
+        self.CollectPath = params.get("CollectPath")
+        self.KafkaVIp = params.get("KafkaVIp")
+        self.KafkaVPort = params.get("KafkaVPort")
+        self.Topic = params.get("Topic")
+        self.LineRule = params.get("LineRule")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -15204,6 +16165,59 @@ class QuantileEntity(AbstractModel):
         
 
 
+class ReassociateBusinessLogConfigRequest(AbstractModel):
+    """ReassociateBusinessLogConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ConfigId: 原关联日志配置ID
+        :type ConfigId: str
+        :param NewConfigId: 新关联日志配置ID
+        :type NewConfigId: str
+        :param ApplicationId: TSF应用ID
+        :type ApplicationId: str
+        :param GroupId: TSF部署组ID
+        :type GroupId: str
+        """
+        self.ConfigId = None
+        self.NewConfigId = None
+        self.ApplicationId = None
+        self.GroupId = None
+
+
+    def _deserialize(self, params):
+        self.ConfigId = params.get("ConfigId")
+        self.NewConfigId = params.get("NewConfigId")
+        self.ApplicationId = params.get("ApplicationId")
+        self.GroupId = params.get("GroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReassociateBusinessLogConfigResponse(AbstractModel):
+    """ReassociateBusinessLogConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class RedoTaskBatchRequest(AbstractModel):
     """RedoTaskBatch请求参数结构体
 
@@ -16879,6 +17893,36 @@ class SimpleGroup(AbstractModel):
         
 
 
+class SimpleKafkaDeliveryConfig(AbstractModel):
+    """日志投递kafka配置描述的缩简版
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ConfigId: 配置项id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigId: str
+        :param ConfigName: 配置项名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigName: str
+        """
+        self.ConfigId = None
+        self.ConfigName = None
+
+
+    def _deserialize(self, params):
+        self.ConfigId = params.get("ConfigId")
+        self.ConfigName = params.get("ConfigName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class StartContainerGroupRequest(AbstractModel):
     """StartContainerGroup请求参数结构体
 
@@ -17833,6 +18877,41 @@ class TsfPageApplication(AbstractModel):
             self.Content = []
             for item in params.get("Content"):
                 obj = ApplicationForPage()
+                obj._deserialize(item)
+                self.Content.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TsfPageBusinessLogConfig(AbstractModel):
+    """业务日志配置项列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 总条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param Content: 业务日志配置项列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Content: list of BusinessLogConfig
+        """
+        self.TotalCount = None
+        self.Content = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Content") is not None:
+            self.Content = []
+            for item in params.get("Content"):
+                obj = BusinessLogConfig()
                 obj._deserialize(item)
                 self.Content.append(obj)
         memeber_set = set(params.keys())

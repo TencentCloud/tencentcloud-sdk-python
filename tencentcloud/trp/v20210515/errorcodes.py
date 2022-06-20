@@ -17,6 +17,9 @@
 # CAM签名/鉴权错误。
 AUTHFAILURE = 'AuthFailure'
 
+# 企业服务时间已到期。
+AUTHFAILURE_CORPEXPIRED = 'AuthFailure.CorpExpired'
+
 # 操作失败。
 FAILEDOPERATION = 'FailedOperation'
 

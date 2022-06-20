@@ -134,6 +134,9 @@ LIMITEXCEEDED = 'LimitExceeded'
 # 缺少参数错误。
 MISSINGPARAMETER = 'MissingParameter'
 
+# 缺少签署控件参数。
+MISSINGPARAMETER_SIGNCOMPONENTS = 'MissingParameter.SignComponents'
+
 # 操作被拒绝。
 OPERATIONDENIED = 'OperationDenied'
 

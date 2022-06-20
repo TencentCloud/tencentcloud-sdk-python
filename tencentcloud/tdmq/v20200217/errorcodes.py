@@ -203,6 +203,9 @@ LIMITEXCEEDED_NAMESPACES = 'LimitExceeded.Namespaces'
 # 超过剩余额度，请重新调整。
 LIMITEXCEEDED_RETENTIONSIZE = 'LimitExceeded.RetentionSize'
 
+# 超过保留时间限制，请重新调整。
+LIMITEXCEEDED_RETENTIONTIME = 'LimitExceeded.RetentionTime'
+
 # 实例下订阅者数量超过限制。
 LIMITEXCEEDED_SUBSCRIPTIONS = 'LimitExceeded.Subscriptions'
 

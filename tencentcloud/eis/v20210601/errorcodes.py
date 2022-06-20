@@ -14,6 +14,9 @@
 # limitations under the License.
 
 
+# 操作失败。
+FAILEDOPERATION = 'FailedOperation'
+
 # 鉴权失败。
 FAILEDOPERATION_AUTHENTICATIONFAILED = 'FailedOperation.AuthenticationFailed'
 

@@ -282,11 +282,14 @@ class AdaptiveDynamicStreamingTaskInput(AbstractModel):
         :type Definition: int
         :param WatermarkSet: 水印列表，支持多张图片或文字水印，最大可支持 10 张。
         :type WatermarkSet: list of WatermarkInput
+        :param TraceWatermark: 溯源水印。
+        :type TraceWatermark: :class:`tencentcloud.vod.v20180717.models.TraceWatermarkInput`
         :param SubtitleSet: 字幕列表，元素为字幕 ID，支持多个字幕，最大可支持16个。
         :type SubtitleSet: list of str
         """
         self.Definition = None
         self.WatermarkSet = None
+        self.TraceWatermark = None
         self.SubtitleSet = None
 
 
@@ -298,6 +301,9 @@ class AdaptiveDynamicStreamingTaskInput(AbstractModel):
                 obj = WatermarkInput()
                 obj._deserialize(item)
                 self.WatermarkSet.append(obj)
+        if params.get("TraceWatermark") is not None:
+            self.TraceWatermark = TraceWatermarkInput()
+            self.TraceWatermark._deserialize(params.get("TraceWatermark"))
         self.SubtitleSet = params.get("SubtitleSet")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -19210,6 +19216,8 @@ class ProcessMediaRequest(AbstractModel):
         r"""
         :param FileId: 媒体文件 ID，即该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 [视频上传完成事件通知](/document/product/266/7830) 或 [云点播控制台](https://console.cloud.tencent.com/vod/media) 获取该字段。
         :type FileId: str
+        :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :type SubAppId: int
         :param MediaProcessTask: 视频处理类型任务参数。
         :type MediaProcessTask: :class:`tencentcloud.vod.v20180717.models.MediaProcessTaskInput`
         :param AiContentReviewTask: 视频智能识别类型任务参数。
@@ -19228,10 +19236,9 @@ class ProcessMediaRequest(AbstractModel):
         :type SessionId: str
         :param ExtInfo: 保留字段，特殊用途时使用。
         :type ExtInfo: str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
         """
         self.FileId = None
+        self.SubAppId = None
         self.MediaProcessTask = None
         self.AiContentReviewTask = None
         self.AiAnalysisTask = None
@@ -19241,11 +19248,11 @@ class ProcessMediaRequest(AbstractModel):
         self.SessionContext = None
         self.SessionId = None
         self.ExtInfo = None
-        self.SubAppId = None
 
 
     def _deserialize(self, params):
         self.FileId = params.get("FileId")
+        self.SubAppId = params.get("SubAppId")
         if params.get("MediaProcessTask") is not None:
             self.MediaProcessTask = MediaProcessTaskInput()
             self.MediaProcessTask._deserialize(params.get("MediaProcessTask"))
@@ -19263,7 +19270,6 @@ class ProcessMediaRequest(AbstractModel):
         self.SessionContext = params.get("SessionContext")
         self.SessionId = params.get("SessionId")
         self.ExtInfo = params.get("ExtInfo")
-        self.SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -22403,6 +22409,30 @@ class TimeRange(AbstractModel):
         
 
 
+class TraceWatermarkInput(AbstractModel):
+    """溯源水印参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Definition: 水印模板 ID。
+        :type Definition: int
+        """
+        self.Definition = None
+
+
+    def _deserialize(self, params):
+        self.Definition = params.get("Definition")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TranscodePlayInfo2017(AbstractModel):
     """视频转码播放信息（2017 版）
 
@@ -22513,27 +22543,30 @@ class TranscodeTaskInput(AbstractModel):
         :type Definition: int
         :param WatermarkSet: 水印列表，支持多张图片或文字水印，最大可支持 10 张。
         :type WatermarkSet: list of WatermarkInput
-        :param MosaicSet: 马赛克列表，最大可支持 10 张。
-        :type MosaicSet: list of MosaicInput
+        :param TraceWatermark: 溯源水印。
+        :type TraceWatermark: :class:`tencentcloud.vod.v20180717.models.TraceWatermarkInput`
         :param HeadTailSet: 片头片尾列表，支持多片头片尾，最大可支持 10 个。
         :type HeadTailSet: list of HeadTailTaskInput
-        :param StartTimeOffset: 转码后的视频的起始时间偏移，单位：秒。
-<li>不填或填0，表示转码后的视频从原始视频的起始位置开始；</li>
-<li>当数值大于0时（假设为 n），表示转码后的视频从原始视频的第 n 秒位置开始；</li>
-<li>当数值小于0时（假设为 -n），表示转码后的视频从原始视频结束 n 秒前的位置开始。</li>
-        :type StartTimeOffset: float
+        :param MosaicSet: 马赛克列表，最大可支持 10 张。
+        :type MosaicSet: list of MosaicInput
         :param EndTimeOffset: 转码后视频的终止时间偏移，单位：秒。
 <li>不填或填0，表示转码后的视频持续到原始视频的末尾终止；</li>
 <li>当数值大于0时（假设为 n），表示转码后的视频持续到原始视频第 n 秒时终止；</li>
 <li>当数值小于0时（假设为 -n），表示转码后的视频持续到原始视频结束 n 秒前终止。</li>
         :type EndTimeOffset: float
+        :param StartTimeOffset: 转码后的视频的起始时间偏移，单位：秒。
+<li>不填或填0，表示转码后的视频从原始视频的起始位置开始；</li>
+<li>当数值大于0时（假设为 n），表示转码后的视频从原始视频的第 n 秒位置开始；</li>
+<li>当数值小于0时（假设为 -n），表示转码后的视频从原始视频结束 n 秒前的位置开始。</li>
+        :type StartTimeOffset: float
         """
         self.Definition = None
         self.WatermarkSet = None
-        self.MosaicSet = None
+        self.TraceWatermark = None
         self.HeadTailSet = None
-        self.StartTimeOffset = None
+        self.MosaicSet = None
         self.EndTimeOffset = None
+        self.StartTimeOffset = None
 
 
     def _deserialize(self, params):
@@ -22544,20 +22577,23 @@ class TranscodeTaskInput(AbstractModel):
                 obj = WatermarkInput()
                 obj._deserialize(item)
                 self.WatermarkSet.append(obj)
-        if params.get("MosaicSet") is not None:
-            self.MosaicSet = []
-            for item in params.get("MosaicSet"):
-                obj = MosaicInput()
-                obj._deserialize(item)
-                self.MosaicSet.append(obj)
+        if params.get("TraceWatermark") is not None:
+            self.TraceWatermark = TraceWatermarkInput()
+            self.TraceWatermark._deserialize(params.get("TraceWatermark"))
         if params.get("HeadTailSet") is not None:
             self.HeadTailSet = []
             for item in params.get("HeadTailSet"):
                 obj = HeadTailTaskInput()
                 obj._deserialize(item)
                 self.HeadTailSet.append(obj)
-        self.StartTimeOffset = params.get("StartTimeOffset")
+        if params.get("MosaicSet") is not None:
+            self.MosaicSet = []
+            for item in params.get("MosaicSet"):
+                obj = MosaicInput()
+                obj._deserialize(item)
+                self.MosaicSet.append(obj)
         self.EndTimeOffset = params.get("EndTimeOffset")
+        self.StartTimeOffset = params.get("StartTimeOffset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

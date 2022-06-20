@@ -53,6 +53,9 @@ INTERNALERROR_DESCRIBESERVICELISTERROR = 'InternalError.DescribeServiceListError
 # 重启失败。
 INTERNALERROR_RESTARTAPPLICATIONERROR = 'InternalError.RestartApplicationError'
 
+# 停止应用失败。
+INTERNALERROR_STOPAPPLICATIONERROR = 'InternalError.StopApplicationError'
+
 # 更新 ingress 失败。
 INTERNALERROR_UPDATEINGRESSERROR = 'InternalError.UpdateIngressError'
 

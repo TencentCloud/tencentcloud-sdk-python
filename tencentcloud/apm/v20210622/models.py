@@ -168,7 +168,7 @@ class ApmInstanceDetail(AbstractModel):
         :param CreateUin: 创建人Uin
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateUin: str
-        :param ServiceCount: 该实例已上报的服务数
+        :param ServiceCount: 该实例已上报的服务端应用数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceCount: int
         :param CountOfReportSpanPerDay: 日均上报Span数
@@ -218,6 +218,12 @@ class ApmInstanceDetail(AbstractModel):
         :param LogTopicID: 日志主题ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type LogTopicID: str
+        :param ClientCount: 该实例已上报的客户端应用数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClientCount: int
+        :param TotalCount: 该实例已上报的总应用数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
         """
         self.AmountOfUsedStorage = None
         self.Name = None
@@ -241,6 +247,8 @@ class ApmInstanceDetail(AbstractModel):
         self.LogSource = None
         self.IsRelatedLog = None
         self.LogTopicID = None
+        self.ClientCount = None
+        self.TotalCount = None
 
 
     def _deserialize(self, params):
@@ -271,6 +279,8 @@ class ApmInstanceDetail(AbstractModel):
         self.LogSource = params.get("LogSource")
         self.IsRelatedLog = params.get("IsRelatedLog")
         self.LogTopicID = params.get("LogTopicID")
+        self.ClientCount = params.get("ClientCount")
+        self.TotalCount = params.get("TotalCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

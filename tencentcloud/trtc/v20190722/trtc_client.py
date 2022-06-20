@@ -571,39 +571,6 @@ class TrtcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def MeasureTrtcMcuExternal(self, request):
-        """查询旁路转码计费时长。
-        - 查询时间小于等于1天时，返回每5分钟粒度的数据；查询时间大于1天时，返回按天汇总的数据。
-        - 单次查询统计区间最多不能超过2天。
-        - 若查询当天用量，由于统计延迟等原因，返回数据可能不够准确。
-        - 日结后付费将于次日上午推送账单，建议次日上午9点以后再来查询前一天的用量。
-
-        :param request: Request instance for MeasureTrtcMcuExternal.
-        :type request: :class:`tencentcloud.trtc.v20190722.models.MeasureTrtcMcuExternalRequest`
-        :rtype: :class:`tencentcloud.trtc.v20190722.models.MeasureTrtcMcuExternalResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("MeasureTrtcMcuExternal", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.MeasureTrtcMcuExternalResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def ModifyCloudRecording(self, request):
         """成功开启录制后，可以使用此接口来更新录制任务。仅在录制任务进行时有效，录制退出后更新将会返回错误。更新操作是全量覆盖，并不是增量更新的模式，也就是说每次更新都需要携带全量的信息。
 

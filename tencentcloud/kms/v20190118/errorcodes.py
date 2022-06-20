@@ -29,6 +29,9 @@ FAILEDOPERATION_DECRYPTERROR = 'FailedOperation.DecryptError'
 # 加密操作失败。
 FAILEDOPERATION_ENCRYPTIONERROR = 'FailedOperation.EncryptionError'
 
+# 标签服务错误。
+FAILEDOPERATION_TAGGINGERROR = 'FailedOperation.TaggingError'
+
 # 内部错误。
 INTERNALERROR = 'InternalError'
 
