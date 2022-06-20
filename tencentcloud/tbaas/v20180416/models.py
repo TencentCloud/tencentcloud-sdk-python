@@ -2536,6 +2536,74 @@ class InvokeChainMakerContractResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class InvokeChainMakerDemoContractRequest(AbstractModel):
+    """InvokeChainMakerDemoContract请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 网络ID，可在区块链网络详情或列表中获取
+        :type ClusterId: str
+        :param ChainId: 业务链编号，可在业务链列表中获取
+        :type ChainId: str
+        :param ContractName: 合约名称，可在合约管理中获取
+        :type ContractName: str
+        :param FuncName: 合约方法名
+        :type FuncName: str
+        :param FuncParam: 合约方法入参，json格式字符串，key/value都是string类型的map
+        :type FuncParam: str
+        :param AsyncFlag: 是否异步执行，1为是，否则为0；如果异步执行，可使用返回值中的交易TxID查询执行结果
+        :type AsyncFlag: int
+        """
+        self.ClusterId = None
+        self.ChainId = None
+        self.ContractName = None
+        self.FuncName = None
+        self.FuncParam = None
+        self.AsyncFlag = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.ChainId = params.get("ChainId")
+        self.ContractName = params.get("ContractName")
+        self.FuncName = params.get("FuncName")
+        self.FuncParam = params.get("FuncParam")
+        self.AsyncFlag = params.get("AsyncFlag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InvokeChainMakerDemoContractResponse(AbstractModel):
+    """InvokeChainMakerDemoContract返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 交易结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.tbaas.v20180416.models.ChainMakerContractResult`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = ChainMakerContractResult()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
 class InvokeRequest(AbstractModel):
     """Invoke请求参数结构体
 
@@ -2838,6 +2906,198 @@ class QueryChainMakerContractResponse(AbstractModel):
     def _deserialize(self, params):
         if params.get("Result") is not None:
             self.Result = ChainMakerContractResult()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class QueryChainMakerDemoBlockTransactionRequest(AbstractModel):
+    """QueryChainMakerDemoBlockTransaction请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 网络ID，可在区块链网络详情或列表中获取
+        :type ClusterId: str
+        :param ChainId: 业务链编号，可在业务链列表中获取
+        :type ChainId: str
+        :param BlockHeight: 区块高度
+        :type BlockHeight: int
+        """
+        self.ClusterId = None
+        self.ChainId = None
+        self.BlockHeight = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.ChainId = params.get("ChainId")
+        self.BlockHeight = params.get("BlockHeight")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryChainMakerDemoBlockTransactionResponse(AbstractModel):
+    """QueryChainMakerDemoBlockTransaction返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 区块交易
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: list of ChainMakerTransactionResult
+        :param BlockHeight: 区块高度
+        :type BlockHeight: int
+        :param TxCount: 交易数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TxCount: int
+        :param BlockTimestamp: 区块时间戳，单位是秒
+        :type BlockTimestamp: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.BlockHeight = None
+        self.TxCount = None
+        self.BlockTimestamp = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = []
+            for item in params.get("Result"):
+                obj = ChainMakerTransactionResult()
+                obj._deserialize(item)
+                self.Result.append(obj)
+        self.BlockHeight = params.get("BlockHeight")
+        self.TxCount = params.get("TxCount")
+        self.BlockTimestamp = params.get("BlockTimestamp")
+        self.RequestId = params.get("RequestId")
+
+
+class QueryChainMakerDemoContractRequest(AbstractModel):
+    """QueryChainMakerDemoContract请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 网络ID，可在区块链网络详情或列表中获取
+        :type ClusterId: str
+        :param ChainId: 业务链编号，可在业务链列表中获取
+        :type ChainId: str
+        :param ContractName: 合约名称，可在合约管理中获取
+        :type ContractName: str
+        :param FuncName: 合约方法名
+        :type FuncName: str
+        :param FuncParam: 合约方法入参，json格式字符串，key/value都是string类型的map
+        :type FuncParam: str
+        """
+        self.ClusterId = None
+        self.ChainId = None
+        self.ContractName = None
+        self.FuncName = None
+        self.FuncParam = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.ChainId = params.get("ChainId")
+        self.ContractName = params.get("ContractName")
+        self.FuncName = params.get("FuncName")
+        self.FuncParam = params.get("FuncParam")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryChainMakerDemoContractResponse(AbstractModel):
+    """QueryChainMakerDemoContract返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 交易结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.tbaas.v20180416.models.ChainMakerContractResult`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = ChainMakerContractResult()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class QueryChainMakerDemoTransactionRequest(AbstractModel):
+    """QueryChainMakerDemoTransaction请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 网络ID，可在区块链网络详情或列表中获取
+        :type ClusterId: str
+        :param ChainId: 业务链编号，可在业务链列表中获取
+        :type ChainId: str
+        :param TxID: 交易ID，通过调用合约的返回值获取
+        :type TxID: str
+        """
+        self.ClusterId = None
+        self.ChainId = None
+        self.TxID = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.ChainId = params.get("ChainId")
+        self.TxID = params.get("TxID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryChainMakerDemoTransactionResponse(AbstractModel):
+    """QueryChainMakerDemoTransaction返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 交易结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.tbaas.v20180416.models.ChainMakerTransactionResult`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = ChainMakerTransactionResult()
             self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
 

@@ -877,6 +877,35 @@ class TbaasClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def InvokeChainMakerDemoContract(self, request):
+        """调用长安链体验网络合约执行交易
+
+        :param request: Request instance for InvokeChainMakerDemoContract.
+        :type request: :class:`tencentcloud.tbaas.v20180416.models.InvokeChainMakerDemoContractRequest`
+        :rtype: :class:`tencentcloud.tbaas.v20180416.models.InvokeChainMakerDemoContractResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("InvokeChainMakerDemoContract", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.InvokeChainMakerDemoContractResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def Query(self, request):
         """查询交易
 
@@ -950,6 +979,93 @@ class TbaasClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryChainMakerContractResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def QueryChainMakerDemoBlockTransaction(self, request):
+        """查询长安链体验网络指定高度区块的交易
+
+        :param request: Request instance for QueryChainMakerDemoBlockTransaction.
+        :type request: :class:`tencentcloud.tbaas.v20180416.models.QueryChainMakerDemoBlockTransactionRequest`
+        :rtype: :class:`tencentcloud.tbaas.v20180416.models.QueryChainMakerDemoBlockTransactionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("QueryChainMakerDemoBlockTransaction", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryChainMakerDemoBlockTransactionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def QueryChainMakerDemoContract(self, request):
+        """调用长安链体验网络合约查询
+
+        :param request: Request instance for QueryChainMakerDemoContract.
+        :type request: :class:`tencentcloud.tbaas.v20180416.models.QueryChainMakerDemoContractRequest`
+        :rtype: :class:`tencentcloud.tbaas.v20180416.models.QueryChainMakerDemoContractResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("QueryChainMakerDemoContract", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryChainMakerDemoContractResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def QueryChainMakerDemoTransaction(self, request):
+        """通过交易ID查询长安链体验网络交易
+
+        :param request: Request instance for QueryChainMakerDemoTransaction.
+        :type request: :class:`tencentcloud.tbaas.v20180416.models.QueryChainMakerDemoTransactionRequest`
+        :rtype: :class:`tencentcloud.tbaas.v20180416.models.QueryChainMakerDemoTransactionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("QueryChainMakerDemoTransaction", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryChainMakerDemoTransactionResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
