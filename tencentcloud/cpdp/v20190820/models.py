@@ -11935,22 +11935,26 @@ class OpenBankGoodsInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param GoodsName: 商品标题，默认值“商品支付”
+        :param GoodsName: 商品标题。默认值“商品支付”。
         :type GoodsName: str
-        :param GoodsDetail: 商品详细描述（商品列表）
+        :param GoodsDetail: 商品详细描述（商品列表）。
         :type GoodsDetail: str
-        :param GoodsDescription: 银行附言，不可以有以下字符：<>+{}()%*&';"[]等特殊符号
+        :param GoodsDescription: 银行附言。不可以有以下字符：<>+{}()%*&';"[]等特殊符号
         :type GoodsDescription: str
+        :param GoodsBizType: 业务类型。汇付渠道必填，汇付渠道传入固定值100099。
+        :type GoodsBizType: str
         """
         self.GoodsName = None
         self.GoodsDetail = None
         self.GoodsDescription = None
+        self.GoodsBizType = None
 
 
     def _deserialize(self, params):
         self.GoodsName = params.get("GoodsName")
         self.GoodsDetail = params.get("GoodsDetail")
         self.GoodsDescription = params.get("GoodsDescription")
+        self.GoodsBizType = params.get("GoodsBizType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -12034,18 +12038,23 @@ class OpenBankPayerInfo(AbstractModel):
         :param PayerName: 付款方名称。当TENPAY上送付款方入驻云企付的商户名称。
         :type PayerName: str
         :param BindSerialNo: 付款方付款账户标识。
-当付款方式为OPENBANK_PAYMENT时，必输表示企业账户ID；当付款方式为SAFT_ISV时，必须上送付款方的渠道电子记账本ID。
+当付款方式为OPENBANK_PAYMENT时，必输表示企业账户ID；当付款方式为SAFT_ISV时，必须上送付款方的渠道电子记账本ID；当付款方式为ONLINEBANK，上送付款方银行编号BankId。
         :type BindSerialNo: str
         :param AccountType: 付款账户标识类型
 BANK_ACCOUNT：绑定银行账户
 ACCOUNT_BOOK_ID：电子记账本ID。
 当付款方式为SAFT_ISV时，必须上送类型为ACCOUNT_BOOK_ID。
         :type AccountType: str
+        :param BankCardType: 付款卡类型。汇付渠道必填。
+DEBIT_CARD：借记卡
+CREDIT_CARD：信用卡
+        :type BankCardType: str
         """
         self.PayerId = None
         self.PayerName = None
         self.BindSerialNo = None
         self.AccountType = None
+        self.BankCardType = None
 
 
     def _deserialize(self, params):
@@ -12053,6 +12062,7 @@ ACCOUNT_BOOK_ID：电子记账本ID。
         self.PayerName = params.get("PayerName")
         self.BindSerialNo = params.get("BindSerialNo")
         self.AccountType = params.get("AccountType")
+        self.BankCardType = params.get("BankCardType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -12205,19 +12215,23 @@ class OpenBankSceneInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PayerClientIp: 用户端实际 ip，示例值：14.17.22.32
+        :param PayerClientIp: 用户端实际 ip。汇付渠道必填。
         :type PayerClientIp: str
-        :param PayerUa: 浏览器 User-Agent
+        :param PayerUa: 浏览器 User-Agent。
         :type PayerUa: str
-        :param OrderTime: 用户下单时间，若不上送，服务端默认当前时间
+        :param OrderTime: 用户下单时间。若不上送，服务端默认当前时间。
         :type OrderTime: str
-        :param DeviceId: 终端设备号（门店号或收银设备 ID），示例值：POS1:1
+        :param DeviceId: 终端设备号（门店号或收银设备 ID），示例值：POS1:1。
         :type DeviceId: str
+        :param DeviceType: 终端设备类型。MOBILE_BROWSER:手机浏览器，MOBILE_APP:手机应用程序，TABLET:平板；WATCH:手表，PC:电脑PC，OTHER:其他。
+汇付渠道必填。
+        :type DeviceType: str
         """
         self.PayerClientIp = None
         self.PayerUa = None
         self.OrderTime = None
         self.DeviceId = None
+        self.DeviceType = None
 
 
     def _deserialize(self, params):
@@ -12225,6 +12239,7 @@ class OpenBankSceneInfo(AbstractModel):
         self.PayerUa = params.get("PayerUa")
         self.OrderTime = params.get("OrderTime")
         self.DeviceId = params.get("DeviceId")
+        self.DeviceType = params.get("DeviceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -24054,11 +24069,20 @@ __WORKING__: 正常工作
         :param BankNotice: 银行渠道维护公告。
 注意：此字段可能返回 null，表示取不到有效值。
         :type BankNotice: str
+        :param BankId: 支持银行代码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BankId: str
+        :param CardType: 卡类型。
+D：借记卡，C：信用卡，Z：借贷合一卡。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CardType: str
         """
         self.BankCode = None
         self.BankName = None
         self.MaintainStatus = None
         self.BankNotice = None
+        self.BankId = None
+        self.CardType = None
 
 
     def _deserialize(self, params):
@@ -24066,6 +24090,8 @@ __WORKING__: 正常工作
         self.BankName = params.get("BankName")
         self.MaintainStatus = params.get("MaintainStatus")
         self.BankNotice = params.get("BankNotice")
+        self.BankId = params.get("BankId")
+        self.CardType = params.get("CardType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

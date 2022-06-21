@@ -200,6 +200,64 @@ class TcbrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def OperateServerManage(self, request):
+        """操作发布单
+
+        :param request: Request instance for OperateServerManage.
+        :type request: :class:`tencentcloud.tcbr.v20220217.models.OperateServerManageRequest`
+        :rtype: :class:`tencentcloud.tcbr.v20220217.models.OperateServerManageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("OperateServerManage", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.OperateServerManageResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ReleaseGray(self, request):
+        """灰度发布
+
+        :param request: Request instance for ReleaseGray.
+        :type request: :class:`tencentcloud.tcbr.v20220217.models.ReleaseGrayRequest`
+        :rtype: :class:`tencentcloud.tcbr.v20220217.models.ReleaseGrayResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ReleaseGray", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ReleaseGrayResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def UpdateCloudRunServer(self, request):
         """更新云托管服务
 

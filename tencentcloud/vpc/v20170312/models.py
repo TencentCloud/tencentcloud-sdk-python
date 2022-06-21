@@ -580,6 +580,55 @@ class AddressTemplateSpecification(AbstractModel):
         
 
 
+class AdjustPublicAddressRequest(AbstractModel):
+    """AdjustPublicAddress请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 标识CVM实例的唯一 ID。CVM 唯一 ID 形如：`ins-11112222`。
+        :type InstanceId: str
+        :param AddressId: 标识EIP实例的唯一 ID。EIP 唯一 ID 形如：`eip-11112222`。
+        :type AddressId: str
+        """
+        self.InstanceId = None
+        self.AddressId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.AddressId = params.get("AddressId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AdjustPublicAddressResponse(AbstractModel):
+    """AdjustPublicAddress返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 异步任务TaskId。可以使用[DescribeTaskResult](https://cloud.tencent.com/document/api/215/36271)接口查询任务状态。
+        :type TaskId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
 class AlgType(AbstractModel):
     """ALG协议类型
 
@@ -5008,6 +5057,12 @@ class CreateVpnGatewaySslServerRequest(AbstractModel):
         :type EncryptAlgorithm: str
         :param Compress: 是否支持压缩。当前仅支持不支持压缩。默认False
         :type Compress: bool
+        :param SsoEnabled: 是否开启SSO认证
+        :type SsoEnabled: bool
+        :param AccessPolicyEnabled: 是否开启策略访问控制
+        :type AccessPolicyEnabled: bool
+        :param SamlData: SAML-DATA
+        :type SamlData: str
         """
         self.VpnGatewayId = None
         self.SslVpnServerName = None
@@ -5018,6 +5073,9 @@ class CreateVpnGatewaySslServerRequest(AbstractModel):
         self.IntegrityAlgorithm = None
         self.EncryptAlgorithm = None
         self.Compress = None
+        self.SsoEnabled = None
+        self.AccessPolicyEnabled = None
+        self.SamlData = None
 
 
     def _deserialize(self, params):
@@ -5030,6 +5088,9 @@ class CreateVpnGatewaySslServerRequest(AbstractModel):
         self.IntegrityAlgorithm = params.get("IntegrityAlgorithm")
         self.EncryptAlgorithm = params.get("EncryptAlgorithm")
         self.Compress = params.get("Compress")
+        self.SsoEnabled = params.get("SsoEnabled")
+        self.AccessPolicyEnabled = params.get("AccessPolicyEnabled")
+        self.SamlData = params.get("SamlData")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -1042,7 +1042,7 @@ class ClusterBasicSettings(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClusterOs: 集群系统。centos7.2x86_64 或者 ubuntu16.04.1 LTSx86_64，默认取值为ubuntu16.04.1 LTSx86_64
+        :param ClusterOs: 集群系统，支持的os：https://cloud.tencent.com/document/product/457/68289
         :type ClusterOs: str
         :param ClusterVersion: 集群版本,默认值为1.10.5
         :type ClusterVersion: str
@@ -2080,7 +2080,7 @@ class CreateClusterNodePoolRequest(AbstractModel):
         :type ContainerRuntime: str
         :param RuntimeVersion: 运行时版本
         :type RuntimeVersion: str
-        :param NodePoolOs: 节点池os
+        :param NodePoolOs: 节点池os，当为自定义镜像时，传镜像id；否则为公共镜像的osName
         :type NodePoolOs: str
         :param OsCustomizeType: 容器的镜像版本，"DOCKER_CUSTOMIZE"(容器定制版),"GENERAL"(普通版本，默认值)
         :type OsCustomizeType: str

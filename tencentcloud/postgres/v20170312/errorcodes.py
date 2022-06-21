@@ -116,7 +116,7 @@ FAILEDOPERATION_MASTERINSTANCEQUERYERROR = 'FailedOperation.MasterInstanceQueryE
 # 修改只读组配置失败。
 FAILEDOPERATION_MODIFYROGROUPERROR = 'FailedOperation.ModifyROGroupError'
 
-# 不符合资源所拥有的的网络数量要求。
+# 不符合资源所拥有的网络数量要求。
 FAILEDOPERATION_NETWORKNUMLIMITERROR = 'FailedOperation.NetworkNumLimitError'
 
 # 操作超过频率限制，请稍后重试。如果持续不成功，请联系客服进行处理。

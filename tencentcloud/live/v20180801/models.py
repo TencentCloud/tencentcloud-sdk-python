@@ -1997,6 +1997,12 @@ baseline/main/high。默认baseline
         :type AdaptBitratePercent: float
         :param ShortEdgeAsHeight: 是否以短边作为高度，0：否，1：是。默认0。
         :type ShortEdgeAsHeight: int
+        :param DRMType: DRM 加密类型，可选值：fairplay、normalaes、widevine。
+不传递或着为空字符串，清空之前的DRM配置。
+        :type DRMType: str
+        :param DRMTracks: DRM 加密项，可选值：AUDIO、SD、HD、UHD1、UHD2，后四个为一组，同组中的内容只能选一个。
+不传递或着为空字符串，清空之前的DRM配置。
+        :type DRMTracks: str
         """
         self.TemplateName = None
         self.VideoBitrate = None
@@ -2018,6 +2024,8 @@ baseline/main/high。默认baseline
         self.AiTransCode = None
         self.AdaptBitratePercent = None
         self.ShortEdgeAsHeight = None
+        self.DRMType = None
+        self.DRMTracks = None
 
 
     def _deserialize(self, params):
@@ -2041,6 +2049,8 @@ baseline/main/high。默认baseline
         self.AiTransCode = params.get("AiTransCode")
         self.AdaptBitratePercent = params.get("AdaptBitratePercent")
         self.ShortEdgeAsHeight = params.get("ShortEdgeAsHeight")
+        self.DRMType = params.get("DRMType")
+        self.DRMTracks = params.get("DRMTracks")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8764,6 +8774,12 @@ baseline/main/high。
         :type AdaptBitratePercent: float
         :param ShortEdgeAsHeight: 是否以短边作为高度，0：否，1：是。默认0。
         :type ShortEdgeAsHeight: int
+        :param DRMType: DRM 加密类型，可选值：fairplay、normalaes、widevine。
+不传递或着为空字符串，清空之前的DRM配置。
+        :type DRMType: str
+        :param DRMTracks: DRM 加密项，可选值：AUDIO、SD、HD、UHD1、UHD2，后四个为一组，同组中的内容只能选一个。
+不传递或着为空字符串，清空之前的DRM配置。
+        :type DRMTracks: str
         """
         self.TemplateId = None
         self.Vcodec = None
@@ -8784,6 +8800,8 @@ baseline/main/high。
         self.FpsToOrig = None
         self.AdaptBitratePercent = None
         self.ShortEdgeAsHeight = None
+        self.DRMType = None
+        self.DRMTracks = None
 
 
     def _deserialize(self, params):
@@ -8806,6 +8824,8 @@ baseline/main/high。
         self.FpsToOrig = params.get("FpsToOrig")
         self.AdaptBitratePercent = params.get("AdaptBitratePercent")
         self.ShortEdgeAsHeight = params.get("ShortEdgeAsHeight")
+        self.DRMType = params.get("DRMType")
+        self.DRMTracks = params.get("DRMTracks")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -10674,6 +10694,12 @@ baseline/main/high。默认baseline
         :param ShortEdgeAsHeight: 是否以短边作为高度，0：否，1：是。默认0。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ShortEdgeAsHeight: int
+        :param DRMType: DRM 加密类型，可选值：fairplay、normalaes、widevine。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DRMType: str
+        :param DRMTracks: DRM 加密项，多个用|分割，可选值：AUDIO、SD、HD、UHD1、UHD2，后四个为一组，同组中的内容只能选一个。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DRMTracks: str
         """
         self.Vcodec = None
         self.VideoBitrate = None
@@ -10696,6 +10722,8 @@ baseline/main/high。默认baseline
         self.AiTransCode = None
         self.AdaptBitratePercent = None
         self.ShortEdgeAsHeight = None
+        self.DRMType = None
+        self.DRMTracks = None
 
 
     def _deserialize(self, params):
@@ -10720,6 +10748,8 @@ baseline/main/high。默认baseline
         self.AiTransCode = params.get("AiTransCode")
         self.AdaptBitratePercent = params.get("AdaptBitratePercent")
         self.ShortEdgeAsHeight = params.get("ShortEdgeAsHeight")
+        self.DRMType = params.get("DRMType")
+        self.DRMTracks = params.get("DRMTracks")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -10738,17 +10768,20 @@ class TimeShiftBillData(AbstractModel):
         r"""
         :param Domain: 推流域名。
         :type Domain: str
-        :param Duration: 时移文件时长,单位分钟。
+        :param Duration: 时移文件时长，单位分钟。
         :type Duration: float
         :param StoragePeriod: 时移配置天数，单位天。
         :type StoragePeriod: float
         :param Time: 时间点，格式: yyyy-mm-ddTHH:MM:SSZ。
         :type Time: str
+        :param TotalDuration: 时移总时长，单位分钟。
+        :type TotalDuration: float
         """
         self.Domain = None
         self.Duration = None
         self.StoragePeriod = None
         self.Time = None
+        self.TotalDuration = None
 
 
     def _deserialize(self, params):
@@ -10756,6 +10789,7 @@ class TimeShiftBillData(AbstractModel):
         self.Duration = params.get("Duration")
         self.StoragePeriod = params.get("StoragePeriod")
         self.Time = params.get("Time")
+        self.TotalDuration = params.get("TotalDuration")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
