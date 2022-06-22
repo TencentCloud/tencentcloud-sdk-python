@@ -3549,6 +3549,12 @@ class CreateVerifyRecordResponse(AbstractModel):
         :param FileVerifyUrl: 文件验证 URL 指引
 注意：此字段可能返回 null，表示取不到有效值。
         :type FileVerifyUrl: str
+        :param FileVerifyDomains: 文件校验域名列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileVerifyDomains: list of str
+        :param FileVerifyName: 文件校验文件名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileVerifyName: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3556,6 +3562,8 @@ class CreateVerifyRecordResponse(AbstractModel):
         self.Record = None
         self.RecordType = None
         self.FileVerifyUrl = None
+        self.FileVerifyDomains = None
+        self.FileVerifyName = None
         self.RequestId = None
 
 
@@ -3564,6 +3572,8 @@ class CreateVerifyRecordResponse(AbstractModel):
         self.Record = params.get("Record")
         self.RecordType = params.get("RecordType")
         self.FileVerifyUrl = params.get("FileVerifyUrl")
+        self.FileVerifyDomains = params.get("FileVerifyDomains")
+        self.FileVerifyName = params.get("FileVerifyName")
         self.RequestId = params.get("RequestId")
 
 

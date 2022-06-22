@@ -245,6 +245,9 @@ INTERNALERROR_FLOWERROR = 'InternalError.FlowError'
 # 管控系统元数据访问异常，请联系客服处理。
 INTERNALERROR_INSTANCEDATAERROR = 'InternalError.InstanceDataError'
 
+# 请求执行异常。
+INTERNALERROR_INTERNALHTTPSERVERERROR = 'InternalError.InternalHttpServerError'
+
 # 后台数据解析失败，请联系客服进行处理。
 INTERNALERROR_MARSHALERROR = 'InternalError.MarshalError'
 
@@ -451,6 +454,9 @@ OPERATIONDENIED_ROGROUPSTATUSERROR = 'OperationDenied.ROGroupStatusError'
 
 # 只读实例不支持ipv6。
 OPERATIONDENIED_ROINSTANCEIPV6NOTSUPPORTEDERROR = 'OperationDenied.ROInstanceIpv6NotSupportedError'
+
+# 只读实例状态限制当前操作。
+OPERATIONDENIED_ROINSTANCESTATUSLIMITOPERROR = 'OperationDenied.ROInstanceStatusLimitOpError'
 
 # 只读节点总数不能超过上限值。
 OPERATIONDENIED_ROINSTANCECOUNTEXEEDERROR = 'OperationDenied.RoInstanceCountExeedError'

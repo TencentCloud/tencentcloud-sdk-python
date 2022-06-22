@@ -15631,18 +15631,19 @@ class MediaTranscodeItem(AbstractModel):
         :type Height: int
         :param Width: 视频流宽度的最大值，单位：px。
         :type Width: int
-        :param Size: 媒体文件总大小（视频为 HLS 时，大小是 m3u8 和 ts 文件大小的总和），单位：字节。
+        :param Size: 媒体文件总大小，单位：字节。
+<li>当媒体文件为 HLS 时，大小是 m3u8 和 ts 文件大小的总和。</li>
         :type Size: int
         :param Duration: 视频时长，单位：秒。
         :type Duration: float
-        :param Container: 容器类型，例如 m4a，mp4 等。
-        :type Container: str
         :param Md5: 视频的 md5 值。
         :type Md5: str
-        :param AudioStreamSet: 音频流信息。
-        :type AudioStreamSet: list of MediaAudioStreamItem
+        :param Container: 容器类型，例如 m4a，mp4 等。
+        :type Container: str
         :param VideoStreamSet: 视频流信息。
         :type VideoStreamSet: list of MediaVideoStreamItem
+        :param AudioStreamSet: 音频流信息。
+        :type AudioStreamSet: list of MediaAudioStreamItem
         """
         self.Url = None
         self.Definition = None
@@ -15651,10 +15652,10 @@ class MediaTranscodeItem(AbstractModel):
         self.Width = None
         self.Size = None
         self.Duration = None
-        self.Container = None
         self.Md5 = None
-        self.AudioStreamSet = None
+        self.Container = None
         self.VideoStreamSet = None
+        self.AudioStreamSet = None
 
 
     def _deserialize(self, params):
@@ -15665,20 +15666,20 @@ class MediaTranscodeItem(AbstractModel):
         self.Width = params.get("Width")
         self.Size = params.get("Size")
         self.Duration = params.get("Duration")
-        self.Container = params.get("Container")
         self.Md5 = params.get("Md5")
-        if params.get("AudioStreamSet") is not None:
-            self.AudioStreamSet = []
-            for item in params.get("AudioStreamSet"):
-                obj = MediaAudioStreamItem()
-                obj._deserialize(item)
-                self.AudioStreamSet.append(obj)
+        self.Container = params.get("Container")
         if params.get("VideoStreamSet") is not None:
             self.VideoStreamSet = []
             for item in params.get("VideoStreamSet"):
                 obj = MediaVideoStreamItem()
                 obj._deserialize(item)
                 self.VideoStreamSet.append(obj)
+        if params.get("AudioStreamSet") is not None:
+            self.AudioStreamSet = []
+            for item in params.get("AudioStreamSet"):
+                obj = MediaAudioStreamItem()
+                obj._deserialize(item)
+                self.AudioStreamSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -20403,6 +20404,8 @@ class SearchMediaRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :type SubAppId: int
         :param FileIds: 文件 ID 集合，匹配集合中的任意元素。
 <li>数组长度限制：10。</li>
 <li>单个 ID 长度限制：40个字符。</li>
@@ -20423,7 +20426,7 @@ class SearchMediaRequest(AbstractModel):
 <li>数组长度限制：10。</li>
         :type ClassIds: list of int
         :param Tags: 标签集合，匹配集合中任意元素。
-<li>单个标签长度限制：8个字符。</li>
+<li>单个标签长度限制：16个字符。</li>
 <li>数组长度限制：10。</li>
         :type Tags: list of str
         :param Categories: 文件类型。匹配集合中的任意元素：
@@ -20472,8 +20475,6 @@ class SearchMediaRequest(AbstractModel):
 <li>单个存储地区长度限制：20个字符。</li>
 <li>数组长度限制：20。</li>
         :type StorageRegions: list of str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
         :param StorageClasses: 存储类型数组。可选值有：
 <li> STANDARD：标准存储。</li>
 <li> STANDARD_IA：低频存储。</li>
@@ -20505,6 +20506,7 @@ class SearchMediaRequest(AbstractModel):
 <li>格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。</li>
         :type EndTime: str
         """
+        self.SubAppId = None
         self.FileIds = None
         self.Names = None
         self.NamePrefixes = None
@@ -20522,7 +20524,6 @@ class SearchMediaRequest(AbstractModel):
         self.Limit = None
         self.Filters = None
         self.StorageRegions = None
-        self.SubAppId = None
         self.StorageClasses = None
         self.Text = None
         self.SourceType = None
@@ -20533,6 +20534,7 @@ class SearchMediaRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.SubAppId = params.get("SubAppId")
         self.FileIds = params.get("FileIds")
         self.Names = params.get("Names")
         self.NamePrefixes = params.get("NamePrefixes")
@@ -20556,7 +20558,6 @@ class SearchMediaRequest(AbstractModel):
         self.Limit = params.get("Limit")
         self.Filters = params.get("Filters")
         self.StorageRegions = params.get("StorageRegions")
-        self.SubAppId = params.get("SubAppId")
         self.StorageClasses = params.get("StorageClasses")
         self.Text = params.get("Text")
         self.SourceType = params.get("SourceType")

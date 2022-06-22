@@ -865,30 +865,39 @@ class BindingPolicyTagRequest(AbstractModel):
         :type PolicyId: str
         :param GroupId: 用于实例、实例组绑定和解绑接口（BindingPolicyObject、UnBindingAllPolicyObject、UnBindingPolicyObject）的策略 ID
         :type GroupId: str
-        :param Tag: 策略标签
-        :type Tag: :class:`tencentcloud.monitor.v20180724.models.PolicyTag`
         :param ServiceType: 产品类型
         :type ServiceType: str
+        :param Tag: 策略标签
+        :type Tag: :class:`tencentcloud.monitor.v20180724.models.PolicyTag`
         :param InstanceGroupId: 实例分组ID
         :type InstanceGroupId: int
+        :param BatchTag: 批量绑定标签
+        :type BatchTag: list of PolicyTag
         """
         self.Module = None
         self.PolicyId = None
         self.GroupId = None
-        self.Tag = None
         self.ServiceType = None
+        self.Tag = None
         self.InstanceGroupId = None
+        self.BatchTag = None
 
 
     def _deserialize(self, params):
         self.Module = params.get("Module")
         self.PolicyId = params.get("PolicyId")
         self.GroupId = params.get("GroupId")
+        self.ServiceType = params.get("ServiceType")
         if params.get("Tag") is not None:
             self.Tag = PolicyTag()
             self.Tag._deserialize(params.get("Tag"))
-        self.ServiceType = params.get("ServiceType")
         self.InstanceGroupId = params.get("InstanceGroupId")
+        if params.get("BatchTag") is not None:
+            self.BatchTag = []
+            for item in params.get("BatchTag"):
+                obj = PolicyTag()
+                obj._deserialize(item)
+                self.BatchTag.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

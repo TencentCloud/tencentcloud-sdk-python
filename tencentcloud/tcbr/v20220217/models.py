@@ -1014,7 +1014,7 @@ class RepositoryInfo(AbstractModel):
         :type Source: str
         :param Repo: 仓库名
         :type Repo: str
-        :param Branch: 分之名
+        :param Branch: 分支名
         :type Branch: str
         """
         self.Source = None

@@ -579,6 +579,35 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeInstances(self, request):
+        """查询用户所有实例的详细信息
+
+        :param request: Request instance for DescribeInstances.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeInstancesRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInstances", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeIpAccessControl(self, request):
         """Waf ip黑白名单查询
 

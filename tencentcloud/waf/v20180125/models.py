@@ -694,6 +694,61 @@ class AutoDenyDetail(AbstractModel):
         
 
 
+class BotPkg(AbstractModel):
+    """Bot资源信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ResourceIds: 资源id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceIds: str
+        :param Status: 状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param Region: 地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: int
+        :param BeginTime: 开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BeginTime: str
+        :param EndTime: 结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: str
+        :param InquireNum: 申请数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InquireNum: int
+        :param UsedNum: 使用数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UsedNum: int
+        """
+        self.ResourceIds = None
+        self.Status = None
+        self.Region = None
+        self.BeginTime = None
+        self.EndTime = None
+        self.InquireNum = None
+        self.UsedNum = None
+
+
+    def _deserialize(self, params):
+        self.ResourceIds = params.get("ResourceIds")
+        self.Status = params.get("Status")
+        self.Region = params.get("Region")
+        self.BeginTime = params.get("BeginTime")
+        self.EndTime = params.get("EndTime")
+        self.InquireNum = params.get("InquireNum")
+        self.UsedNum = params.get("UsedNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BotStatPointItem(AbstractModel):
     """bot的趋势图对象
 
@@ -1777,6 +1832,73 @@ class DescribeFlowTrendResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeInstancesRequest(AbstractModel):
+    """DescribeInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Offset: 偏移
+        :type Offset: int
+        :param Limit: 容量
+        :type Limit: int
+        :param Filters: 过滤数组
+        :type Filters: list of FiltersItemNew
+        """
+        self.Offset = None
+        self.Limit = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = FiltersItemNew()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInstancesResponse(AbstractModel):
+    """DescribeInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Total: 总数
+        :type Total: int
+        :param Instances: instance列表
+        :type Instances: list of InstanceInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Total = None
+        self.Instances = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("Instances") is not None:
+            self.Instances = []
+            for item in params.get("Instances"):
+                obj = InstanceInfo()
+                obj._deserialize(item)
+                self.Instances.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeIpAccessControlRequest(AbstractModel):
     """DescribeIpAccessControl请求参数结构体
 
@@ -2110,6 +2232,46 @@ class DomainInfo(AbstractModel):
     """
 
 
+class DomainPackageNew(AbstractModel):
+    """clb-waf 域名扩展套餐
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ResourceIds: 资源ID
+        :type ResourceIds: str
+        :param ValidTime: 过期时间
+        :type ValidTime: str
+        :param RenewFlag: 是否自动续费，1：自动续费，0：不自动续费
+        :type RenewFlag: int
+        :param Count: 套餐购买个数
+        :type Count: int
+        :param Region: 套餐购买地域，clb-waf暂时没有用到
+        :type Region: str
+        """
+        self.ResourceIds = None
+        self.ValidTime = None
+        self.RenewFlag = None
+        self.Count = None
+        self.Region = None
+
+
+    def _deserialize(self, params):
+        self.ResourceIds = params.get("ResourceIds")
+        self.ValidTime = params.get("ValidTime")
+        self.RenewFlag = params.get("RenewFlag")
+        self.Count = params.get("Count")
+        self.Region = params.get("Region")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ExportAccessInfo(AbstractModel):
     """DescribeAccessExports接口
 
@@ -2207,6 +2369,175 @@ class FiltersItemNew(AbstractModel):
         self.Name = params.get("Name")
         self.Values = params.get("Values")
         self.ExactMatch = params.get("ExactMatch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FraudPkg(AbstractModel):
+    """业务安全资源信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ResourceIds: 资源id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceIds: str
+        :param Status: 状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param Region: 地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: int
+        :param BeginTime: 开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BeginTime: str
+        :param EndTime: 结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: str
+        :param InquireNum: 申请数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InquireNum: int
+        :param UsedNum: 使用数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UsedNum: int
+        """
+        self.ResourceIds = None
+        self.Status = None
+        self.Region = None
+        self.BeginTime = None
+        self.EndTime = None
+        self.InquireNum = None
+        self.UsedNum = None
+
+
+    def _deserialize(self, params):
+        self.ResourceIds = params.get("ResourceIds")
+        self.Status = params.get("Status")
+        self.Region = params.get("Region")
+        self.BeginTime = params.get("BeginTime")
+        self.EndTime = params.get("EndTime")
+        self.InquireNum = params.get("InquireNum")
+        self.UsedNum = params.get("UsedNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InstanceInfo(AbstractModel):
+    """一个实例的详细信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: id
+        :type InstanceId: str
+        :param InstanceName: name
+        :type InstanceName: str
+        :param ResourceIds: 资源id
+        :type ResourceIds: str
+        :param Region: 地域
+        :type Region: str
+        :param PayMode: 付费模式
+        :type PayMode: int
+        :param RenewFlag: 自动续费
+        :type RenewFlag: int
+        :param Mode: 弹性计费
+        :type Mode: int
+        :param Level: 套餐版本
+        :type Level: int
+        :param ValidTime: 过期时间
+        :type ValidTime: str
+        :param BeginTime: 开始时间
+        :type BeginTime: str
+        :param DomainCount: 已用
+        :type DomainCount: int
+        :param SubDomainLimit: 上限
+        :type SubDomainLimit: int
+        :param MainDomainCount: 已用
+        :type MainDomainCount: int
+        :param MainDomainLimit: 上限
+        :type MainDomainLimit: int
+        :param MaxQPS: 峰值
+        :type MaxQPS: int
+        :param QPS: qps套餐
+        :type QPS: :class:`tencentcloud.waf.v20180125.models.QPSPackageNew`
+        :param DomainPkg: 域名套餐
+        :type DomainPkg: :class:`tencentcloud.waf.v20180125.models.DomainPackageNew`
+        :param AppId: 用户appid
+        :type AppId: int
+        :param Edition: clb或saas
+        :type Edition: str
+        :param FraudPkg: 业务安全包
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FraudPkg: :class:`tencentcloud.waf.v20180125.models.FraudPkg`
+        :param BotPkg: Bot资源包
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BotPkg: :class:`tencentcloud.waf.v20180125.models.BotPkg`
+        """
+        self.InstanceId = None
+        self.InstanceName = None
+        self.ResourceIds = None
+        self.Region = None
+        self.PayMode = None
+        self.RenewFlag = None
+        self.Mode = None
+        self.Level = None
+        self.ValidTime = None
+        self.BeginTime = None
+        self.DomainCount = None
+        self.SubDomainLimit = None
+        self.MainDomainCount = None
+        self.MainDomainLimit = None
+        self.MaxQPS = None
+        self.QPS = None
+        self.DomainPkg = None
+        self.AppId = None
+        self.Edition = None
+        self.FraudPkg = None
+        self.BotPkg = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.InstanceName = params.get("InstanceName")
+        self.ResourceIds = params.get("ResourceIds")
+        self.Region = params.get("Region")
+        self.PayMode = params.get("PayMode")
+        self.RenewFlag = params.get("RenewFlag")
+        self.Mode = params.get("Mode")
+        self.Level = params.get("Level")
+        self.ValidTime = params.get("ValidTime")
+        self.BeginTime = params.get("BeginTime")
+        self.DomainCount = params.get("DomainCount")
+        self.SubDomainLimit = params.get("SubDomainLimit")
+        self.MainDomainCount = params.get("MainDomainCount")
+        self.MainDomainLimit = params.get("MainDomainLimit")
+        self.MaxQPS = params.get("MaxQPS")
+        if params.get("QPS") is not None:
+            self.QPS = QPSPackageNew()
+            self.QPS._deserialize(params.get("QPS"))
+        if params.get("DomainPkg") is not None:
+            self.DomainPkg = DomainPackageNew()
+            self.DomainPkg._deserialize(params.get("DomainPkg"))
+        self.AppId = params.get("AppId")
+        self.Edition = params.get("Edition")
+        if params.get("FraudPkg") is not None:
+            self.FraudPkg = FraudPkg()
+            self.FraudPkg._deserialize(params.get("FraudPkg"))
+        if params.get("BotPkg") is not None:
+            self.BotPkg = BotPkg()
+            self.BotPkg._deserialize(params.get("BotPkg"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2729,6 +3060,46 @@ class PortItem(AbstractModel):
         self.UpstreamPort = params.get("UpstreamPort")
         self.UpstreamProtocol = params.get("UpstreamProtocol")
         self.NginxServerId = params.get("NginxServerId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QPSPackageNew(AbstractModel):
+    """clb-waf QPS套餐 New
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ResourceIds: 资源ID
+        :type ResourceIds: str
+        :param ValidTime: 过期时间
+        :type ValidTime: str
+        :param RenewFlag: 是否自动续费，1：自动续费，0：不自动续费
+        :type RenewFlag: int
+        :param Count: 套餐购买个数
+        :type Count: int
+        :param Region: 套餐购买地域，clb-waf暂时没有用到
+        :type Region: str
+        """
+        self.ResourceIds = None
+        self.ValidTime = None
+        self.RenewFlag = None
+        self.Count = None
+        self.Region = None
+
+
+    def _deserialize(self, params):
+        self.ResourceIds = params.get("ResourceIds")
+        self.ValidTime = params.get("ValidTime")
+        self.RenewFlag = params.get("RenewFlag")
+        self.Count = params.get("Count")
+        self.Region = params.get("Region")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

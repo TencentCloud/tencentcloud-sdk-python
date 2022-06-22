@@ -414,6 +414,10 @@ TEXT控件可以指定字体
         :type DocumentId: str
         :param ComponentDescription: 控件描述
         :type ComponentDescription: str
+        :param OffsetX: 指定关键字时横坐标偏移量
+        :type OffsetX: float
+        :param OffsetY: 指定关键字时纵坐标偏移量
+        :type OffsetY: float
         """
         self.ComponentId = None
         self.ComponentType = None
@@ -431,6 +435,8 @@ TEXT控件可以指定字体
         self.ComponentDateFontSize = None
         self.DocumentId = None
         self.ComponentDescription = None
+        self.OffsetX = None
+        self.OffsetY = None
 
 
     def _deserialize(self, params):
@@ -450,6 +456,8 @@ TEXT控件可以指定字体
         self.ComponentDateFontSize = params.get("ComponentDateFontSize")
         self.DocumentId = params.get("DocumentId")
         self.ComponentDescription = params.get("ComponentDescription")
+        self.OffsetX = params.get("OffsetX")
+        self.OffsetY = params.get("OffsetY")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

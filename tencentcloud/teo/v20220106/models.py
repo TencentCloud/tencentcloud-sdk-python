@@ -7547,9 +7547,9 @@ class DownloadL7LogsRequest(AbstractModel):
         :type PageSize: int
         :param PageNo: 当前页
         :type PageNo: int
-        :param Zones: 站点集合
+        :param Zones: 站点名集合
         :type Zones: list of str
-        :param Domains: 域名集合
+        :param Domains: 子域名集合
         :type Domains: list of str
         """
         self.StartTime = None
@@ -8022,7 +8022,7 @@ class L7OfflineLog(AbstractModel):
         :param LogTime: 日志打包开始时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type LogTime: int
-        :param Domain: 站点名称
+        :param Domain: 子域名
 注意：此字段可能返回 null，表示取不到有效值。
         :type Domain: str
         :param Size: 原始大小 单位byte
