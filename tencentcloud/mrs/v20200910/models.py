@@ -2339,6 +2339,9 @@ class PatientInfo(AbstractModel):
         :param MedicalInsuranceTypeCode: 居民医保代码
 注意：此字段可能返回 null，表示取不到有效值。
         :type MedicalInsuranceTypeCode: str
+        :param BedNo: 床号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BedNo: str
         """
         self.Name = None
         self.Sex = None
@@ -2361,6 +2364,7 @@ class PatientInfo(AbstractModel):
         self.MarriedCode = None
         self.ProfessionCode = None
         self.MedicalInsuranceTypeCode = None
+        self.BedNo = None
 
 
     def _deserialize(self, params):
@@ -2385,6 +2389,7 @@ class PatientInfo(AbstractModel):
         self.MarriedCode = params.get("MarriedCode")
         self.ProfessionCode = params.get("ProfessionCode")
         self.MedicalInsuranceTypeCode = params.get("MedicalInsuranceTypeCode")
+        self.BedNo = params.get("BedNo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2530,6 +2535,27 @@ class ReportInfo(AbstractModel):
         :param Diagnose: 临床诊断
 注意：此字段可能返回 null，表示取不到有效值。
         :type Diagnose: str
+        :param CheckItem: 检查项目
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CheckItem: str
+        :param CheckMethod: 检查方法
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CheckMethod: str
+        :param DiagnoseTime: 诊断时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiagnoseTime: str
+        :param HealthCheckupNum: 体检号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HealthCheckupNum: str
+        :param OtherTime: 其它时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OtherTime: str
+        :param PrintTime: 打印时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PrintTime: str
+        :param Times: 未归类时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Times: list of Time
         """
         self.Hospital = None
         self.DepartmentName = None
@@ -2549,6 +2575,13 @@ class ReportInfo(AbstractModel):
         self.ReportName = None
         self.UltraNum = None
         self.Diagnose = None
+        self.CheckItem = None
+        self.CheckMethod = None
+        self.DiagnoseTime = None
+        self.HealthCheckupNum = None
+        self.OtherTime = None
+        self.PrintTime = None
+        self.Times = None
 
 
     def _deserialize(self, params):
@@ -2570,6 +2603,18 @@ class ReportInfo(AbstractModel):
         self.ReportName = params.get("ReportName")
         self.UltraNum = params.get("UltraNum")
         self.Diagnose = params.get("Diagnose")
+        self.CheckItem = params.get("CheckItem")
+        self.CheckMethod = params.get("CheckMethod")
+        self.DiagnoseTime = params.get("DiagnoseTime")
+        self.HealthCheckupNum = params.get("HealthCheckupNum")
+        self.OtherTime = params.get("OtherTime")
+        self.PrintTime = params.get("PrintTime")
+        if params.get("Times") is not None:
+            self.Times = []
+            for item in params.get("Times"):
+                obj = Time()
+                obj._deserialize(item)
+                self.Times.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3108,6 +3153,36 @@ class TextType(AbstractModel):
         self.Id = params.get("Id")
         self.Level = params.get("Level")
         self.Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Time(AbstractModel):
+    """时间
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 具体时间类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param Value: 时间值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        """
+        self.Name = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

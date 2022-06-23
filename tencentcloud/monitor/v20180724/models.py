@@ -752,6 +752,51 @@ class AlarmPolicyTriggerTask(AbstractModel):
         
 
 
+class BindPrometheusManagedGrafanaRequest(AbstractModel):
+    """BindPrometheusManagedGrafana请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Prometheus 实例 ID
+        :type InstanceId: str
+        :param GrafanaId: Grafana 可视化服务实例 ID
+        :type GrafanaId: str
+        """
+        self.InstanceId = None
+        self.GrafanaId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.GrafanaId = params.get("GrafanaId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BindPrometheusManagedGrafanaResponse(AbstractModel):
+    """BindPrometheusManagedGrafana返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class BindingPolicyObjectDimension(AbstractModel):
     """策略绑定实例维度信息
 
@@ -1402,6 +1447,66 @@ class CreateAlertRuleResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateExporterIntegrationRequest(AbstractModel):
+    """CreateExporterIntegration请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例 ID
+        :type InstanceId: str
+        :param KubeType: Kubernetes 集群类型，取值如下：
+<li> 1= 容器集群(TKE) </li>
+<li> 2=弹性集群<EKS> </li>
+<li> 3= Prometheus管理的弹性集群<MEKS> </li>
+        :type KubeType: int
+        :param ClusterId: 集群 ID
+        :type ClusterId: str
+        :param Kind: 类型
+        :type Kind: str
+        :param Content: 集成配置
+        :type Content: str
+        """
+        self.InstanceId = None
+        self.KubeType = None
+        self.ClusterId = None
+        self.Kind = None
+        self.Content = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.KubeType = params.get("KubeType")
+        self.ClusterId = params.get("ClusterId")
+        self.Kind = params.get("Kind")
+        self.Content = params.get("Content")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateExporterIntegrationResponse(AbstractModel):
+    """CreateExporterIntegration返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CreatePolicyGroupCondition(AbstractModel):
     """创建策略传入的阈值告警条件
 
@@ -1586,6 +1691,100 @@ class CreatePolicyGroupResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.GroupId = params.get("GroupId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreatePrometheusAgentRequest(AbstractModel):
+    """CreatePrometheusAgent请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例 ID
+        :type InstanceId: str
+        :param Name: Agent 名称
+        :type Name: str
+        """
+        self.InstanceId = None
+        self.Name = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreatePrometheusAgentResponse(AbstractModel):
+    """CreatePrometheusAgent返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreatePrometheusScrapeJobRequest(AbstractModel):
+    """CreatePrometheusScrapeJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例 ID
+        :type InstanceId: str
+        :param AgentId: Agent ID
+        :type AgentId: str
+        :param Config: 任务内容
+        :type Config: str
+        """
+        self.InstanceId = None
+        self.AgentId = None
+        self.Config = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.AgentId = params.get("AgentId")
+        self.Config = params.get("Config")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreatePrometheusScrapeJobResponse(AbstractModel):
+    """CreatePrometheusScrapeJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -1828,6 +2027,66 @@ class DeleteAlertRulesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteExporterIntegrationRequest(AbstractModel):
+    """DeleteExporterIntegration请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例 ID
+        :type InstanceId: str
+        :param KubeType: Kubernetes 集群类型，取值如下：
+<li> 1= 容器集群(TKE) </li>
+<li> 2=弹性集群<EKS> </li>
+<li> 3= Prometheus管理的弹性集群<MEKS> </li>
+        :type KubeType: int
+        :param ClusterId: 集群 ID
+        :type ClusterId: str
+        :param Kind: 类型
+        :type Kind: str
+        :param Name: 名字
+        :type Name: str
+        """
+        self.InstanceId = None
+        self.KubeType = None
+        self.ClusterId = None
+        self.Kind = None
+        self.Name = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.KubeType = params.get("KubeType")
+        self.ClusterId = params.get("ClusterId")
+        self.Kind = params.get("Kind")
+        self.Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteExporterIntegrationResponse(AbstractModel):
+    """DeleteExporterIntegration返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeletePolicyGroupRequest(AbstractModel):
     """DeletePolicyGroup请求参数结构体
 
@@ -1858,6 +2117,55 @@ class DeletePolicyGroupRequest(AbstractModel):
 
 class DeletePolicyGroupResponse(AbstractModel):
     """DeletePolicyGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeletePrometheusScrapeJobsRequest(AbstractModel):
+    """DeletePrometheusScrapeJobs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例 ID
+        :type InstanceId: str
+        :param AgentId: Agent ID
+        :type AgentId: str
+        :param JobIds: 任务 ID 列表
+        :type JobIds: list of str
+        """
+        self.InstanceId = None
+        self.AgentId = None
+        self.JobIds = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.AgentId = params.get("AgentId")
+        self.JobIds = params.get("JobIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeletePrometheusScrapeJobsResponse(AbstractModel):
+    """DeletePrometheusScrapeJobs返回参数结构体
 
     """
 
@@ -3478,6 +3786,75 @@ class DescribeConditionsTemplateListResponse(AbstractModel):
                 obj = TemplateGroup()
                 obj._deserialize(item)
                 self.TemplateGroupList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeExporterIntegrationsRequest(AbstractModel):
+    """DescribeExporterIntegrations请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例 ID
+        :type InstanceId: str
+        :param KubeType: Kubernetes 集群类型，取值如下：
+<li> 1= 容器集群(TKE) </li>
+<li> 2=弹性集群<EKS> </li>
+<li> 3= Prometheus管理的弹性集群<MEKS> </li>
+        :type KubeType: int
+        :param ClusterId: 集群 ID
+        :type ClusterId: str
+        :param Kind: 类型
+        :type Kind: str
+        :param Name: 名字
+        :type Name: str
+        """
+        self.InstanceId = None
+        self.KubeType = None
+        self.ClusterId = None
+        self.Kind = None
+        self.Name = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.KubeType = params.get("KubeType")
+        self.ClusterId = params.get("ClusterId")
+        self.Kind = params.get("Kind")
+        self.Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeExporterIntegrationsResponse(AbstractModel):
+    """DescribeExporterIntegrations返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IntegrationSet: 集成配置列表
+        :type IntegrationSet: list of IntegrationConfiguration
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.IntegrationSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("IntegrationSet") is not None:
+            self.IntegrationSet = []
+            for item in params.get("IntegrationSet"):
+                obj = IntegrationConfiguration()
+                obj._deserialize(item)
+                self.IntegrationSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -5172,6 +5549,77 @@ class DescribeProductListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribePrometheusAgentsRequest(AbstractModel):
+    """DescribePrometheusAgents请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例 ID
+        :type InstanceId: str
+        :param Name: Agent 名称
+        :type Name: str
+        :param AgentIds: Agent ID 列表
+        :type AgentIds: list of str
+        :param Offset: 偏移量，默认为0
+        :type Offset: int
+        :param Limit: 返回数量，默认为20，最大值为100
+        :type Limit: int
+        """
+        self.InstanceId = None
+        self.Name = None
+        self.AgentIds = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Name = params.get("Name")
+        self.AgentIds = params.get("AgentIds")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePrometheusAgentsResponse(AbstractModel):
+    """DescribePrometheusAgents返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AgentSet: Agent 列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AgentSet: list of PrometheusAgent
+        :param TotalCount: Agent 总量
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AgentSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("AgentSet") is not None:
+            self.AgentSet = []
+            for item in params.get("AgentSet"):
+                obj = PrometheusAgent()
+                obj._deserialize(item)
+                self.AgentSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribePrometheusInstancesRequest(AbstractModel):
     """DescribePrometheusInstances请求参数结构体
 
@@ -5272,6 +5720,81 @@ class DescribePrometheusInstancesResponse(AbstractModel):
                 obj = PrometheusInstancesItem()
                 obj._deserialize(item)
                 self.InstanceSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribePrometheusScrapeJobsRequest(AbstractModel):
+    """DescribePrometheusScrapeJobs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例 ID
+        :type InstanceId: str
+        :param AgentId: Agent ID
+        :type AgentId: str
+        :param Name: 任务名
+        :type Name: str
+        :param JobIds: 任务 ID 列表
+        :type JobIds: list of str
+        :param Offset: 偏移量，默认为0
+        :type Offset: int
+        :param Limit: 返回数量，默认为20，最大值为100
+        :type Limit: int
+        """
+        self.InstanceId = None
+        self.AgentId = None
+        self.Name = None
+        self.JobIds = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.AgentId = params.get("AgentId")
+        self.Name = params.get("Name")
+        self.JobIds = params.get("JobIds")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePrometheusScrapeJobsResponse(AbstractModel):
+    """DescribePrometheusScrapeJobs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ScrapeJobSet: 任务列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScrapeJobSet: list of PrometheusScrapeJob
+        :param TotalCount: 任务总量
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ScrapeJobSet = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ScrapeJobSet") is not None:
+            self.ScrapeJobSet = []
+            for item in params.get("ScrapeJobSet"):
+                obj = PrometheusScrapeJob()
+                obj._deserialize(item)
+                self.ScrapeJobSet.append(obj)
         self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
@@ -5433,6 +5956,47 @@ class DescribeStatisticDataResponse(AbstractModel):
                 obj = MetricData()
                 obj._deserialize(item)
                 self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DestroyPrometheusInstanceRequest(AbstractModel):
+    """DestroyPrometheusInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例 ID，该实例必须先被 terminate
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DestroyPrometheusInstanceResponse(AbstractModel):
+    """DestroyPrometheusInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -5621,6 +6185,57 @@ class GetMonitorDataResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class GetPrometheusAgentManagementCommandRequest(AbstractModel):
+    """GetPrometheusAgentManagementCommand请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Prometheus 实例 ID
+        :type InstanceId: str
+        :param AgentId: Prometheus Agent ID
+        :type AgentId: str
+        """
+        self.InstanceId = None
+        self.AgentId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.AgentId = params.get("AgentId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetPrometheusAgentManagementCommandResponse(AbstractModel):
+    """GetPrometheusAgentManagementCommand返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Command: Agent 管理命令
+        :type Command: :class:`tencentcloud.monitor.v20180724.models.ManagementCommand`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Command = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Command") is not None:
+            self.Command = ManagementCommand()
+            self.Command._deserialize(params.get("Command"))
+        self.RequestId = params.get("RequestId")
+
+
 class Instance(AbstractModel):
     """实例维度组合数组
 
@@ -5699,6 +6314,99 @@ class InstanceGroups(AbstractModel):
     def _deserialize(self, params):
         self.Id = params.get("Id")
         self.Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IntegrationConfiguration(AbstractModel):
+    """export 集成配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 名字
+        :type Name: str
+        :param Kind: 类型
+        :type Kind: str
+        :param Content: 内容
+        :type Content: str
+        :param Status: 状态
+        :type Status: int
+        :param Category: 实例类型
+        :type Category: str
+        :param InstanceDesc: 实例描述
+        :type InstanceDesc: str
+        :param GrafanaDashboardURL: dashboard 的 URL
+        :type GrafanaDashboardURL: str
+        """
+        self.Name = None
+        self.Kind = None
+        self.Content = None
+        self.Status = None
+        self.Category = None
+        self.InstanceDesc = None
+        self.GrafanaDashboardURL = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Kind = params.get("Kind")
+        self.Content = params.get("Content")
+        self.Status = params.get("Status")
+        self.Category = params.get("Category")
+        self.InstanceDesc = params.get("InstanceDesc")
+        self.GrafanaDashboardURL = params.get("GrafanaDashboardURL")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ManagementCommand(AbstractModel):
+    """Prometheus Agent 管理命令行
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Install: Agent 安装命令
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Install: str
+        :param Restart: Agent 重启命令
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Restart: str
+        :param Stop: Agent 停止命令
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Stop: str
+        :param StatusCheck: Agent 状态检测命令
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StatusCheck: str
+        :param LogCheck: Agent 日志检测命令
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogCheck: str
+        """
+        self.Install = None
+        self.Restart = None
+        self.Stop = None
+        self.StatusCheck = None
+        self.LogCheck = None
+
+
+    def _deserialize(self, params):
+        self.Install = params.get("Install")
+        self.Restart = params.get("Restart")
+        self.Stop = params.get("Stop")
+        self.StatusCheck = params.get("StatusCheck")
+        self.LogCheck = params.get("LogCheck")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6632,6 +7340,55 @@ class ModifyPolicyGroupResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyPrometheusInstanceAttributesRequest(AbstractModel):
+    """ModifyPrometheusInstanceAttributes请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceName: 实例名称
+        :type InstanceName: str
+        :param InstanceId: 实例 ID
+        :type InstanceId: str
+        :param DataRetentionTime: 存储时长（取值为 15、30、45。此参数不适用于包年包月实例）
+        :type DataRetentionTime: int
+        """
+        self.InstanceName = None
+        self.InstanceId = None
+        self.DataRetentionTime = None
+
+
+    def _deserialize(self, params):
+        self.InstanceName = params.get("InstanceName")
+        self.InstanceId = params.get("InstanceId")
+        self.DataRetentionTime = params.get("DataRetentionTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyPrometheusInstanceAttributesResponse(AbstractModel):
+    """ModifyPrometheusInstanceAttributes返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class MonitorTypeNamespace(AbstractModel):
     """策略类型
 
@@ -6937,6 +7694,63 @@ class ProductSimple(AbstractModel):
         self.Namespace = params.get("Namespace")
         self.ProductName = params.get("ProductName")
         self.ProductEnName = params.get("ProductEnName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PrometheusAgent(AbstractModel):
+    """prometheus agent
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: Agent 名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param AgentId: Agent ID
+        :type AgentId: str
+        :param InstanceId: 实例 ID
+        :type InstanceId: str
+        :param Ipv4: Agent IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Ipv4: str
+        :param HeartbeatTime: 心跳时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HeartbeatTime: str
+        :param LastError: 最近一次错误
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastError: str
+        :param AgentVersion: Agent 版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AgentVersion: str
+        :param Status: Agent 状态
+        :type Status: int
+        """
+        self.Name = None
+        self.AgentId = None
+        self.InstanceId = None
+        self.Ipv4 = None
+        self.HeartbeatTime = None
+        self.LastError = None
+        self.AgentVersion = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.AgentId = params.get("AgentId")
+        self.InstanceId = params.get("InstanceId")
+        self.Ipv4 = params.get("Ipv4")
+        self.HeartbeatTime = params.get("HeartbeatTime")
+        self.LastError = params.get("LastError")
+        self.AgentVersion = params.get("AgentVersion")
+        self.Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7293,6 +8107,44 @@ class PrometheusRuleSet(AbstractModel):
         self.Health = params.get("Health")
         self.CreatedAt = params.get("CreatedAt")
         self.UpdatedAt = params.get("UpdatedAt")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PrometheusScrapeJob(AbstractModel):
+    """Prometheus 抓取任务
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 任务名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param AgentId: Agent ID
+        :type AgentId: str
+        :param JobId: 任务 ID
+        :type JobId: str
+        :param Config: 配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Config: str
+        """
+        self.Name = None
+        self.AgentId = None
+        self.JobId = None
+        self.Config = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.AgentId = params.get("AgentId")
+        self.JobId = params.get("JobId")
+        self.Config = params.get("Config")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7751,6 +8603,47 @@ class TemplateGroup(AbstractModel):
         
 
 
+class TerminatePrometheusInstancesRequest(AbstractModel):
+    """TerminatePrometheusInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceIds: 实例 ID 列表
+        :type InstanceIds: list of str
+        """
+        self.InstanceIds = None
+
+
+    def _deserialize(self, params):
+        self.InstanceIds = params.get("InstanceIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TerminatePrometheusInstancesResponse(AbstractModel):
+    """TerminatePrometheusInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class URLNotice(AbstractModel):
     """云监控告警通知模板 - 回调通知详情
 
@@ -7892,6 +8785,113 @@ class UnBindingPolicyObjectRequest(AbstractModel):
 
 class UnBindingPolicyObjectResponse(AbstractModel):
     """UnBindingPolicyObject返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UnbindPrometheusManagedGrafanaRequest(AbstractModel):
+    """UnbindPrometheusManagedGrafana请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Prometheus 实例 ID
+        :type InstanceId: str
+        :param GrafanaId: Grafana 实例 ID
+        :type GrafanaId: str
+        """
+        self.InstanceId = None
+        self.GrafanaId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.GrafanaId = params.get("GrafanaId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UnbindPrometheusManagedGrafanaResponse(AbstractModel):
+    """UnbindPrometheusManagedGrafana返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UninstallGrafanaDashboardRequest(AbstractModel):
+    """UninstallGrafanaDashboard请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例 ID
+        :type InstanceId: str
+        :param IntegrationCodes: Prometheus 集成项 Code，删除对应的 Dashboard，Code 如下：
+<li>spring_mvc</li>
+<li>mysql</li>
+<li>go</li>
+<li>redis</li>
+<li>jvm</li>
+<li>pgsql</li>
+<li>mongo</li>
+<li>kafka</li>
+<li>es</li>
+<li>flink</li>
+<li>blackbox</li>
+<li>consule</li>
+<li>memcached</li>
+<li>zk</li>
+<li>tps</li>
+<li>istio</li>
+<li>etcd</li>
+        :type IntegrationCodes: list of str
+        """
+        self.InstanceId = None
+        self.IntegrationCodes = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.IntegrationCodes = params.get("IntegrationCodes")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UninstallGrafanaDashboardResponse(AbstractModel):
+    """UninstallGrafanaDashboard返回参数结构体
 
     """
 
@@ -8056,6 +9056,170 @@ class UpdateAlertRuleStateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class UpdateExporterIntegrationRequest(AbstractModel):
+    """UpdateExporterIntegration请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例 ID
+        :type InstanceId: str
+        :param KubeType: Kubernetes 集群类型，取值如下：
+<li> 1= 容器集群(TKE) </li>
+<li> 2=弹性集群<EKS> </li>
+<li> 3= Prometheus管理的弹性集群<MEKS> </li>
+        :type KubeType: int
+        :param ClusterId: 集群 ID
+        :type ClusterId: str
+        :param Kind: 类型
+        :type Kind: str
+        :param Content: 配置内容
+        :type Content: str
+        """
+        self.InstanceId = None
+        self.KubeType = None
+        self.ClusterId = None
+        self.Kind = None
+        self.Content = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.KubeType = params.get("KubeType")
+        self.ClusterId = params.get("ClusterId")
+        self.Kind = params.get("Kind")
+        self.Content = params.get("Content")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateExporterIntegrationResponse(AbstractModel):
+    """UpdateExporterIntegration返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UpdatePrometheusAgentStatusRequest(AbstractModel):
+    """UpdatePrometheusAgentStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例 ID
+        :type InstanceId: str
+        :param AgentIds: Agent ID 列表
+        :type AgentIds: list of str
+        :param Status: 要更新的状态
+<li> 1= 开启 </li>
+<li> 2= 关闭 </li>
+        :type Status: int
+        """
+        self.InstanceId = None
+        self.AgentIds = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.AgentIds = params.get("AgentIds")
+        self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdatePrometheusAgentStatusResponse(AbstractModel):
+    """UpdatePrometheusAgentStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UpdatePrometheusScrapeJobRequest(AbstractModel):
+    """UpdatePrometheusScrapeJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例 ID
+        :type InstanceId: str
+        :param AgentId: Agent ID
+        :type AgentId: str
+        :param JobId: 抓取任务 ID
+        :type JobId: str
+        :param Config: 抓取任务配置
+        :type Config: str
+        """
+        self.InstanceId = None
+        self.AgentId = None
+        self.JobId = None
+        self.Config = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.AgentId = params.get("AgentId")
+        self.JobId = params.get("JobId")
+        self.Config = params.get("Config")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdatePrometheusScrapeJobResponse(AbstractModel):
+    """UpdatePrometheusScrapeJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class UpdateServiceDiscoveryRequest(AbstractModel):
     """UpdateServiceDiscovery请求参数结构体
 
@@ -8120,6 +9284,68 @@ class UpdateServiceDiscoveryResponse(AbstractModel):
         if params.get("ServiceDiscovery") is not None:
             self.ServiceDiscovery = ServiceDiscoveryItem()
             self.ServiceDiscovery._deserialize(params.get("ServiceDiscovery"))
+        self.RequestId = params.get("RequestId")
+
+
+class UpgradeGrafanaDashboardRequest(AbstractModel):
+    """UpgradeGrafanaDashboard请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例 ID
+        :type InstanceId: str
+        :param IntegrationCodes: Prometheus 集成项 Code，升级对应的 Dashboard，取值如下：
+<li>spring_mvc</li>
+<li>mysql</li>
+<li>go</li>
+<li>redis</li>
+<li>jvm</li>
+<li>pgsql</li>
+<li>mongo</li>
+<li>kafka</li>
+<li>es</li>
+<li>flink</li>
+<li>blackbox</li>
+<li>consule</li>
+<li>memcached</li>
+<li>zk</li>
+<li>tps</li>
+<li>istio</li>
+<li>etcd</li>
+        :type IntegrationCodes: list of str
+        """
+        self.InstanceId = None
+        self.IntegrationCodes = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.IntegrationCodes = params.get("IntegrationCodes")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpgradeGrafanaDashboardResponse(AbstractModel):
+    """UpgradeGrafanaDashboard返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 

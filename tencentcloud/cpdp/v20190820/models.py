@@ -6868,12 +6868,12 @@ class CreateOpenBankExternalSubMerchantRegistrationRequest(AbstractModel):
         :type ChannelMerchantId: str
         :param OutSubMerchantId: 外部子商户ID,平台侧商户唯一ID。
         :type OutSubMerchantId: str
-        :param ChannelName: 渠道名称。
+        :param ChannelName: 渠道名称。详见附录-云企付枚举类说明-ChannelName。
 __TENPAY__: 商企付
 __WECHAT__: 微信支付
 __ALIPAY__: 支付宝
         :type ChannelName: str
-        :param PaymentMethod: 支付方式。
+        :param PaymentMethod: 支付方式。详见附录-云企付枚举类说明-PaymentMethod。
 __EBANK_PAYMENT__: ebank支付
 __OPENBANK_PAYMENT__: openbank支付
         :type PaymentMethod: str
@@ -7216,13 +7216,13 @@ class CreateOpenBankPaymentOrderRequest(AbstractModel):
         r"""
         :param ChannelMerchantId: 云企付渠道商户号。外部接入平台入驻云企付平台后下发。
         :type ChannelMerchantId: str
-        :param ChannelName: 渠道名称。
+        :param ChannelName: 渠道名称。详见附录-云企付枚举类说明-ChannelName。
 __TENPAY__: 商企付
 __WECHAT__: 微信支付
 __ALIPAY__: 支付宝
 __WECHAT__: 微信支付
         :type ChannelName: str
-        :param PaymentMethod: 付款方式。如
+        :param PaymentMethod: 付款方式。详见附录-云企付枚举类说明-PaymentMethod。
 __EBANK_PAYMENT__:B2B EBank付款
 __OPENBANK_PAYMENT__:B2C  openbank付款
 __SAFT_ISV__:支付宝安心发
@@ -19335,9 +19335,9 @@ class QueryOpenBankPaymentOrderResult(AbstractModel):
         :type ChannelOrderId: str
         :param ThirdPayOrderId: 第三方支付平台订单号
         :type ThirdPayOrderId: str
-        :param OrderStatus: INIT：初始化
+        :param OrderStatus: 订单状态。
+INIT：初始化
 PAYING：支付中
-DEDUCTED：扣款成功
 ACCEPTED：支付受理成功
 SUCCESS：支付成功
 CLOSED：关单
@@ -19369,6 +19369,12 @@ OPENBANK_PAYMENT
         :param BankApprovalGuideInfo: 银行复核指引。当TENPAY下OPENBANT_PAYMENT时，下单受理成功是返回。
 注意：此字段可能返回 null，表示取不到有效值。
         :type BankApprovalGuideInfo: :class:`tencentcloud.cpdp.v20190820.models.OpenBankApprovalGuideInfo`
+        :param FeeAmount: 手续费金额
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FeeAmount: int
+        :param FeeRate: 手续费费率
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FeeRate: int
         """
         self.ChannelMerchantId = None
         self.OutOrderId = None
@@ -19384,6 +19390,8 @@ OPENBANK_PAYMENT
         self.RedirectInfo = None
         self.ExternalReturnData = None
         self.BankApprovalGuideInfo = None
+        self.FeeAmount = None
+        self.FeeRate = None
 
 
     def _deserialize(self, params):
@@ -19405,6 +19413,8 @@ OPENBANK_PAYMENT
         if params.get("BankApprovalGuideInfo") is not None:
             self.BankApprovalGuideInfo = OpenBankApprovalGuideInfo()
             self.BankApprovalGuideInfo._deserialize(params.get("BankApprovalGuideInfo"))
+        self.FeeAmount = params.get("FeeAmount")
+        self.FeeRate = params.get("FeeRate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

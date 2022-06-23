@@ -542,6 +542,69 @@ class DescribeEnvBaseInfoResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeServerManageTaskRequest(AbstractModel):
+    """DescribeServerManageTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EnvId: 环境Id
+        :type EnvId: str
+        :param ServerName: 服务名
+        :type ServerName: str
+        :param TaskId: 任务Id
+        :type TaskId: int
+        :param OperatorRemark: 操作标识
+        :type OperatorRemark: str
+        """
+        self.EnvId = None
+        self.ServerName = None
+        self.TaskId = None
+        self.OperatorRemark = None
+
+
+    def _deserialize(self, params):
+        self.EnvId = params.get("EnvId")
+        self.ServerName = params.get("ServerName")
+        self.TaskId = params.get("TaskId")
+        self.OperatorRemark = params.get("OperatorRemark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeServerManageTaskResponse(AbstractModel):
+    """DescribeServerManageTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IsExist: 是否存在
+        :type IsExist: bool
+        :param Task: 任务信息
+        :type Task: :class:`tencentcloud.tcbr.v20220217.models.ServerManageTaskInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.IsExist = None
+        self.Task = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.IsExist = params.get("IsExist")
+        if params.get("Task") is not None:
+            self.Task = ServerManageTaskInfo()
+            self.Task._deserialize(params.get("Task"))
+        self.RequestId = params.get("RequestId")
+
+
 class EnvBaseInfo(AbstractModel):
     """环境基础信息
 
@@ -1180,6 +1243,95 @@ class ServerBaseInfo(AbstractModel):
         
 
 
+class ServerManageTaskInfo(AbstractModel):
+    """服务管理任务信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: 任务Id
+        :type Id: int
+        :param EnvId: 环境Id
+        :type EnvId: str
+        :param ServerName: 服务名
+        :type ServerName: str
+        :param CreateTime: 创建时间
+        :type CreateTime: str
+        :param ChangeType: 变更类型
+        :type ChangeType: str
+        :param ReleaseType: 发布类型
+        :type ReleaseType: str
+        :param DeployType: 部署类型
+        :type DeployType: str
+        :param PreVersionName: 上一个版本名
+        :type PreVersionName: str
+        :param VersionName: 版本名
+        :type VersionName: str
+        :param PipelineId: 流水线Id
+        :type PipelineId: int
+        :param PipelineTaskId: 流水线任务Id
+        :type PipelineTaskId: int
+        :param ReleaseId: 发布单Id
+        :type ReleaseId: int
+        :param Status: 状态
+        :type Status: str
+        :param Steps: 步骤信息
+        :type Steps: list of TaskStepInfo
+        :param FailReason: 失败原因
+        :type FailReason: str
+        :param OperatorRemark: 操作标识
+        :type OperatorRemark: str
+        """
+        self.Id = None
+        self.EnvId = None
+        self.ServerName = None
+        self.CreateTime = None
+        self.ChangeType = None
+        self.ReleaseType = None
+        self.DeployType = None
+        self.PreVersionName = None
+        self.VersionName = None
+        self.PipelineId = None
+        self.PipelineTaskId = None
+        self.ReleaseId = None
+        self.Status = None
+        self.Steps = None
+        self.FailReason = None
+        self.OperatorRemark = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.EnvId = params.get("EnvId")
+        self.ServerName = params.get("ServerName")
+        self.CreateTime = params.get("CreateTime")
+        self.ChangeType = params.get("ChangeType")
+        self.ReleaseType = params.get("ReleaseType")
+        self.DeployType = params.get("DeployType")
+        self.PreVersionName = params.get("PreVersionName")
+        self.VersionName = params.get("VersionName")
+        self.PipelineId = params.get("PipelineId")
+        self.PipelineTaskId = params.get("PipelineTaskId")
+        self.ReleaseId = params.get("ReleaseId")
+        self.Status = params.get("Status")
+        if params.get("Steps") is not None:
+            self.Steps = []
+            for item in params.get("Steps"):
+                obj = TaskStepInfo()
+                obj._deserialize(item)
+                self.Steps.append(obj)
+        self.FailReason = params.get("FailReason")
+        self.OperatorRemark = params.get("OperatorRemark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class StaticStorageInfo(AbstractModel):
     """静态CDN资源信息
 
@@ -1276,6 +1428,53 @@ class Tag(AbstractModel):
     def _deserialize(self, params):
         self.Key = params.get("Key")
         self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TaskStepInfo(AbstractModel):
+    """任务步骤信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 步骤名
+        :type Name: str
+        :param Status: 未启动："todo"
+运行中："running"
+失败："failed"
+成功结束："finished"
+        :type Status: str
+        :param StartTime: 开始时间
+        :type StartTime: str
+        :param EndTime: 结束时间
+        :type EndTime: str
+        :param CostTime: 消耗时间：秒
+        :type CostTime: int
+        :param FailReason: 失败原因
+        :type FailReason: str
+        """
+        self.Name = None
+        self.Status = None
+        self.StartTime = None
+        self.EndTime = None
+        self.CostTime = None
+        self.FailReason = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Status = params.get("Status")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.CostTime = params.get("CostTime")
+        self.FailReason = params.get("FailReason")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

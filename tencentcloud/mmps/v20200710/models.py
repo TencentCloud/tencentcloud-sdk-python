@@ -47,6 +47,9 @@ class AppInfoItem(AbstractModel):
         :param BehaviorTitle: 小程序隐私诊断堆栈报告名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type BehaviorTitle: str
+        :param HighRiskCount: 诊断风险项数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HighRiskCount: int
         """
         self.AppPackage = None
         self.AppName = None
@@ -56,6 +59,7 @@ class AppInfoItem(AbstractModel):
         self.ReportTitle = None
         self.BehaviorUrl = None
         self.BehaviorTitle = None
+        self.HighRiskCount = None
 
 
     def _deserialize(self, params):
@@ -67,6 +71,7 @@ class AppInfoItem(AbstractModel):
         self.ReportTitle = params.get("ReportTitle")
         self.BehaviorUrl = params.get("BehaviorUrl")
         self.BehaviorTitle = params.get("BehaviorTitle")
+        self.HighRiskCount = params.get("HighRiskCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

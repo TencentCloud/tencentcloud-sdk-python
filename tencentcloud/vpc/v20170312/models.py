@@ -16081,7 +16081,7 @@ class ModifyNetworkAclEntriesRequest(AbstractModel):
         r"""
         :param NetworkAclId: 网络ACL实例ID。例如：acl-12345678。
         :type NetworkAclId: str
-        :param NetworkAclEntrySet: 网络ACL规则集。
+        :param NetworkAclEntrySet: 网络ACL规则集。NetworkAclEntrySet和NetworkAclQuintupleSet只能输入一个。
         :type NetworkAclEntrySet: :class:`tencentcloud.vpc.v20170312.models.NetworkAclEntrySet`
         """
         self.NetworkAclId = None

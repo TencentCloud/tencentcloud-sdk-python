@@ -5577,7 +5577,7 @@ class DescribeEKSClusterCredentialResponse(AbstractModel):
         r"""
         :param Addresses: 集群的接入地址信息
         :type Addresses: list of IPAddress
-        :param Credential: 集群的认证信息
+        :param Credential: 集群的认证信息（token只有请求是主账号才返回，子账户请使用返回的kubeconfig）
         :type Credential: :class:`tencentcloud.tke.v20180525.models.ClusterCredential`
         :param PublicLB: 集群的公网访问信息
         :type PublicLB: :class:`tencentcloud.tke.v20180525.models.ClusterPublicLB`

@@ -3207,15 +3207,22 @@ class HandleStreamConnectProjectResponse(AbstractModel):
         r"""
         :param StreamInputRtmpPushUrl: 输入源推流地址，当 Operation 取值 AddInput 且 InputType 为 RtmpPush 类型时有效。
         :type StreamInputRtmpPushUrl: str
+        :param VodPullInputPlayInfo: 点播输入源播放进度信息，当 Operation 取值 DescribeInputPlayInfo 且 InputType 为 VodPull 类型时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VodPullInputPlayInfo: :class:`tencentcloud.cme.v20191029.models.VodPullInputPlayInfo`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.StreamInputRtmpPushUrl = None
+        self.VodPullInputPlayInfo = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.StreamInputRtmpPushUrl = params.get("StreamInputRtmpPushUrl")
+        if params.get("VodPullInputPlayInfo") is not None:
+            self.VodPullInputPlayInfo = VodPullInputPlayInfo()
+            self.VodPullInputPlayInfo._deserialize(params.get("VodPullInputPlayInfo"))
         self.RequestId = params.get("RequestId")
 
 
@@ -7171,6 +7178,34 @@ class VodPullInputInfo(AbstractModel):
     def _deserialize(self, params):
         self.InputUrls = params.get("InputUrls")
         self.LoopTimes = params.get("LoopTimes")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VodPullInputPlayInfo(AbstractModel):
+    """点播文件播放信息，包含当前在播地址和该地址已播时长 。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Url: 当前正在播放文件 Url 。
+        :type Url: str
+        :param TimeOffset: 点播文件已播放时长，单位：秒。
+        :type TimeOffset: float
+        """
+        self.Url = None
+        self.TimeOffset = None
+
+
+    def _deserialize(self, params):
+        self.Url = params.get("Url")
+        self.TimeOffset = params.get("TimeOffset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

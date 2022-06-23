@@ -200,6 +200,35 @@ class TcbrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeServerManageTask(self, request):
+        """查询服务管理任务信息
+
+        :param request: Request instance for DescribeServerManageTask.
+        :type request: :class:`tencentcloud.tcbr.v20220217.models.DescribeServerManageTaskRequest`
+        :rtype: :class:`tencentcloud.tcbr.v20220217.models.DescribeServerManageTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeServerManageTask", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeServerManageTaskResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def OperateServerManage(self, request):
         """操作发布单
 
