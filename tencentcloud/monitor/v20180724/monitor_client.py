@@ -318,6 +318,35 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateRecordingRule(self, request):
+        """创建 Prometheus 的预聚合规则
+
+        :param request: Request instance for CreateRecordingRule.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.CreateRecordingRuleRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.CreateRecordingRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateRecordingRule", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateRecordingRuleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateServiceDiscovery(self, request):
         """在腾讯云容器服务下创建 Prometheus 服务发现。
         <p>注意：前提条件，已经通过 Prometheus 控制台集成了对应的腾讯云容器服务，具体请参考
@@ -509,6 +538,35 @@ class MonitorClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeletePrometheusScrapeJobsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteRecordingRules(self, request):
+        """批量删除 Prometheus 预聚合规则
+
+        :param request: Request instance for DeleteRecordingRules.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.DeleteRecordingRulesRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DeleteRecordingRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteRecordingRules", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteRecordingRulesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1271,6 +1329,35 @@ class MonitorClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribePrometheusScrapeJobsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeRecordingRules(self, request):
+        """根据条件查询 Prometheus 预聚合规则
+
+        :param request: Request instance for DescribeRecordingRules.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeRecordingRulesRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribeRecordingRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRecordingRules", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRecordingRulesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -2068,6 +2155,35 @@ class MonitorClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdatePrometheusScrapeJobResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateRecordingRule(self, request):
+        """更新 Prometheus 的预聚合规则
+
+        :param request: Request instance for UpdateRecordingRule.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.UpdateRecordingRuleRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.UpdateRecordingRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateRecordingRule", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateRecordingRuleResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

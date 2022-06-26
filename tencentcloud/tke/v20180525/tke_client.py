@@ -3448,6 +3448,35 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ForwardTKEEdgeApplicationRequestV3(self, request):
+        """操作TKEEdge集群的addon
+
+        :param request: Request instance for ForwardTKEEdgeApplicationRequestV3.
+        :type request: :class:`tencentcloud.tke.v20180525.models.ForwardTKEEdgeApplicationRequestV3Request`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.ForwardTKEEdgeApplicationRequestV3Response`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ForwardTKEEdgeApplicationRequestV3", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ForwardTKEEdgeApplicationRequestV3Response()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def GetClusterLevelPrice(self, request):
         """获取集群规模价格
 

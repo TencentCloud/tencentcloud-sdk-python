@@ -3687,9 +3687,9 @@ class InquiryPriceUpgradeDBInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param OriginalPrice: 总费用，打折前的
+        :param OriginalPrice: 刊例价费用
         :type OriginalPrice: int
-        :param Price: 实际需要付款金额
+        :param Price: 折后实际付款金额
         :type Price: int
         :param Currency: 币种。例如，CNY：人民币。
         :type Currency: str

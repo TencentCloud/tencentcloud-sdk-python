@@ -1788,6 +1788,68 @@ class CreatePrometheusScrapeJobResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateRecordingRuleRequest(AbstractModel):
+    """CreateRecordingRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 聚合规则名称
+        :type Name: str
+        :param Group: 聚合规则组内容，格式为 yaml
+        :type Group: str
+        :param InstanceId: Prometheus 实例 ID
+        :type InstanceId: str
+        :param RuleState: 规则状态码，取值如下：
+<li>1=RuleDeleted</li>
+<li>2=RuleEnabled</li>
+<li>3=RuleDisabled</li>
+默认状态码为 2 启用。
+        :type RuleState: int
+        """
+        self.Name = None
+        self.Group = None
+        self.InstanceId = None
+        self.RuleState = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Group = params.get("Group")
+        self.InstanceId = params.get("InstanceId")
+        self.RuleState = params.get("RuleState")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateRecordingRuleResponse(AbstractModel):
+    """CreateRecordingRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleId: 规则 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RuleId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RuleId = params.get("RuleId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateServiceDiscoveryRequest(AbstractModel):
     """CreateServiceDiscovery请求参数结构体
 
@@ -2166,6 +2228,51 @@ class DeletePrometheusScrapeJobsRequest(AbstractModel):
 
 class DeletePrometheusScrapeJobsResponse(AbstractModel):
     """DeletePrometheusScrapeJobs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteRecordingRulesRequest(AbstractModel):
+    """DeleteRecordingRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleIds: 规则 ID 列表
+        :type RuleIds: list of str
+        :param InstanceId: Prometheus 实例 ID
+        :type InstanceId: str
+        """
+        self.RuleIds = None
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.RuleIds = params.get("RuleIds")
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteRecordingRulesResponse(AbstractModel):
+    """DeleteRecordingRules返回参数结构体
 
     """
 
@@ -5799,6 +5906,84 @@ class DescribePrometheusScrapeJobsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeRecordingRulesRequest(AbstractModel):
+    """DescribeRecordingRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: Prometheus 实例 ID
+        :type InstanceId: str
+        :param Limit: 返回数量，默认为 20，最大值为 100
+        :type Limit: int
+        :param Offset: 偏移量，默认为 0
+        :type Offset: int
+        :param RuleId: 规则 ID
+        :type RuleId: str
+        :param RuleState: 规则状态码，取值如下：
+<li>1=RuleDeleted</li>
+<li>2=RuleEnabled</li>
+<li>3=RuleDisabled</li>
+        :type RuleState: int
+        :param Name: 规则名称
+        :type Name: str
+        """
+        self.InstanceId = None
+        self.Limit = None
+        self.Offset = None
+        self.RuleId = None
+        self.RuleState = None
+        self.Name = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.RuleId = params.get("RuleId")
+        self.RuleState = params.get("RuleState")
+        self.Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRecordingRulesResponse(AbstractModel):
+    """DescribeRecordingRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 规则组数量
+        :type TotalCount: int
+        :param RecordingRuleSet: 规则组详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecordingRuleSet: list of RecordingRuleSet
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.RecordingRuleSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("RecordingRuleSet") is not None:
+            self.RecordingRuleSet = []
+            for item in params.get("RecordingRuleSet"):
+                obj = RecordingRuleSet()
+                obj._deserialize(item)
+                self.RecordingRuleSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeServiceDiscoveryRequest(AbstractModel):
     """DescribeServiceDiscovery请求参数结构体
 
@@ -8321,6 +8506,54 @@ class ReceiverInfo(AbstractModel):
         
 
 
+class RecordingRuleSet(AbstractModel):
+    """Prometheus 聚合规则响应结构体内信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleId: 规则 ID
+        :type RuleId: str
+        :param RuleState: 规则状态码
+        :type RuleState: int
+        :param Name: 规则名称
+        :type Name: str
+        :param Group: 规则内容组
+        :type Group: str
+        :param Total: 规则数量
+        :type Total: int
+        :param CreatedAt: 规则创建时间
+        :type CreatedAt: str
+        :param UpdatedAt: 规则最近更新时间
+        :type UpdatedAt: str
+        """
+        self.RuleId = None
+        self.RuleState = None
+        self.Name = None
+        self.Group = None
+        self.Total = None
+        self.CreatedAt = None
+        self.UpdatedAt = None
+
+
+    def _deserialize(self, params):
+        self.RuleId = params.get("RuleId")
+        self.RuleState = params.get("RuleState")
+        self.Name = params.get("Name")
+        self.Group = params.get("Group")
+        self.Total = params.get("Total")
+        self.CreatedAt = params.get("CreatedAt")
+        self.UpdatedAt = params.get("UpdatedAt")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SendCustomAlarmMsgRequest(AbstractModel):
     """SendCustomAlarmMsg请求参数结构体
 
@@ -9217,6 +9450,72 @@ class UpdatePrometheusScrapeJobResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UpdateRecordingRuleRequest(AbstractModel):
+    """UpdateRecordingRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 聚合规则名称
+        :type Name: str
+        :param Group: 聚合规则组内容，格式为 yaml，通过 base64 进行编码。
+        :type Group: str
+        :param InstanceId: Prometheus 实例 ID
+        :type InstanceId: str
+        :param RuleId: Prometheus 聚合规则 ID
+        :type RuleId: str
+        :param RuleState: 规则状态码，取值如下：
+<li>1=RuleDeleted</li>
+<li>2=RuleEnabled</li>
+<li>3=RuleDisabled</li>
+默认状态码为 2 启用。
+        :type RuleState: int
+        """
+        self.Name = None
+        self.Group = None
+        self.InstanceId = None
+        self.RuleId = None
+        self.RuleState = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Group = params.get("Group")
+        self.InstanceId = params.get("InstanceId")
+        self.RuleId = params.get("RuleId")
+        self.RuleState = params.get("RuleState")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateRecordingRuleResponse(AbstractModel):
+    """UpdateRecordingRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleId: 规则 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RuleId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RuleId = params.get("RuleId")
         self.RequestId = params.get("RequestId")
 
 

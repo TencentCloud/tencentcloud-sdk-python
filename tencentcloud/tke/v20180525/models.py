@@ -9682,6 +9682,75 @@ class ForwardApplicationRequestV3Response(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ForwardTKEEdgeApplicationRequestV3Request(AbstractModel):
+    """ForwardTKEEdgeApplicationRequestV3请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Method: 请求集群addon的访问
+        :type Method: str
+        :param Path: 请求集群addon的路径
+        :type Path: str
+        :param Accept: 请求集群addon后允许接收的数据格式
+        :type Accept: str
+        :param ContentType: 请求集群addon的数据格式
+        :type ContentType: str
+        :param RequestBody: 请求集群addon的数据
+        :type RequestBody: str
+        :param ClusterName: 集群名称，例如cls-1234abcd
+        :type ClusterName: str
+        :param EncodedBody: 是否编码请求内容
+        :type EncodedBody: str
+        """
+        self.Method = None
+        self.Path = None
+        self.Accept = None
+        self.ContentType = None
+        self.RequestBody = None
+        self.ClusterName = None
+        self.EncodedBody = None
+
+
+    def _deserialize(self, params):
+        self.Method = params.get("Method")
+        self.Path = params.get("Path")
+        self.Accept = params.get("Accept")
+        self.ContentType = params.get("ContentType")
+        self.RequestBody = params.get("RequestBody")
+        self.ClusterName = params.get("ClusterName")
+        self.EncodedBody = params.get("EncodedBody")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ForwardTKEEdgeApplicationRequestV3Response(AbstractModel):
+    """ForwardTKEEdgeApplicationRequestV3返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ResponseBody: 请求集群addon后返回的数据
+        :type ResponseBody: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ResponseBody = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ResponseBody = params.get("ResponseBody")
+        self.RequestId = params.get("RequestId")
+
+
 class GetClusterLevelPriceRequest(AbstractModel):
     """GetClusterLevelPrice请求参数结构体
 

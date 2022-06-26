@@ -1192,11 +1192,14 @@ class OcrRecognise(AbstractModel):
         :type Confidence: float
         :param Location: 位置信息
         :type Location: :class:`tencentcloud.cii.v20210408.models.Location`
+        :param Field: 字段名
+        :type Field: str
         """
         self.OriginalField = None
         self.Value = None
         self.Confidence = None
         self.Location = None
+        self.Field = None
 
 
     def _deserialize(self, params):
@@ -1206,6 +1209,7 @@ class OcrRecognise(AbstractModel):
         if params.get("Location") is not None:
             self.Location = Location()
             self.Location._deserialize(params.get("Location"))
+        self.Field = params.get("Field")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

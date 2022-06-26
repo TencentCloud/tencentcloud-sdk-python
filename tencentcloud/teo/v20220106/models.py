@@ -1140,6 +1140,35 @@ off：关闭全路径缓存（即开启参数忽略）
         
 
 
+class CachePrefresh(AbstractModel):
+    """缓存预刷新
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 缓存预刷新配置开关
+        :type Switch: str
+        :param Percent: 缓存预刷新百分比：1-99
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Percent: int
+        """
+        self.Switch = None
+        self.Percent = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.Percent = params.get("Percent")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CertFilter(AbstractModel):
     """证书查询过滤条件
 
@@ -7116,6 +7145,9 @@ class DescribeZoneSettingResponse(AbstractModel):
         :param ClientIpHeader: 客户端IP回源请求头配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClientIpHeader: :class:`tencentcloud.teo.v20220106.models.ClientIp`
+        :param CachePrefresh: 缓存预刷新配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CachePrefresh: :class:`tencentcloud.teo.v20220106.models.CachePrefresh`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -7135,6 +7167,7 @@ class DescribeZoneSettingResponse(AbstractModel):
         self.Zone = None
         self.WebSocket = None
         self.ClientIpHeader = None
+        self.CachePrefresh = None
         self.RequestId = None
 
 
@@ -7183,6 +7216,9 @@ class DescribeZoneSettingResponse(AbstractModel):
         if params.get("ClientIpHeader") is not None:
             self.ClientIpHeader = ClientIp()
             self.ClientIpHeader._deserialize(params.get("ClientIpHeader"))
+        if params.get("CachePrefresh") is not None:
+            self.CachePrefresh = CachePrefresh()
+            self.CachePrefresh._deserialize(params.get("CachePrefresh"))
         self.RequestId = params.get("RequestId")
 
 
@@ -9357,6 +9393,8 @@ class ModifyZoneSettingRequest(AbstractModel):
         :type WebSocket: :class:`tencentcloud.teo.v20220106.models.WebSocket`
         :param ClientIpHeader: 客户端IP回源请求头配置
         :type ClientIpHeader: :class:`tencentcloud.teo.v20220106.models.ClientIp`
+        :param CachePrefresh: 缓存预刷新配置
+        :type CachePrefresh: :class:`tencentcloud.teo.v20220106.models.CachePrefresh`
         """
         self.ZoneId = None
         self.Cache = None
@@ -9373,6 +9411,7 @@ class ModifyZoneSettingRequest(AbstractModel):
         self.SmartRouting = None
         self.WebSocket = None
         self.ClientIpHeader = None
+        self.CachePrefresh = None
 
 
     def _deserialize(self, params):
@@ -9419,6 +9458,9 @@ class ModifyZoneSettingRequest(AbstractModel):
         if params.get("ClientIpHeader") is not None:
             self.ClientIpHeader = ClientIp()
             self.ClientIpHeader._deserialize(params.get("ClientIpHeader"))
+        if params.get("CachePrefresh") is not None:
+            self.CachePrefresh = CachePrefresh()
+            self.CachePrefresh._deserialize(params.get("CachePrefresh"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
