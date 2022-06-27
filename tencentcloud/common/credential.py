@@ -288,8 +288,9 @@ class ProfileCredential():
         :param secret_key: The secret key of your credential.
         :type secret_key: str
         """
-        if os.path.exists(os.environ['HOME'] + "/.tencentcloud/credentials"):
-            file_path = os.environ['HOME'] + "/.tencentcloud/credentials"
+        home_path = os.environ.get('HOME') or os.environ.get('HOMEPATH')
+        if os.path.exists(home_path + "/.tencentcloud/credentials"):
+            file_path = home_path + "/.tencentcloud/credentials"
         elif os.path.exists("/etc/tencentcloud/credentials"):
             file_path = "/etc/tencentcloud/credentials"
         else:
