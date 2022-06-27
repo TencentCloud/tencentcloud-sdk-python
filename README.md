@@ -191,7 +191,7 @@ secret_key = xxxxx
 
 ```python
 from tencentcloud.common import credential
-cred = credential.ProfileCredential.get_credential()
+cred = credential.ProfileCredential().get_credential()
 ```
 
 3. 角色扮演
