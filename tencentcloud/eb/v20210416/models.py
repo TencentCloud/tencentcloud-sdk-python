@@ -1471,12 +1471,12 @@ class ListTargetsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RuleId: 事件规则ID
-        :type RuleId: str
         :param EventBusId: 事件集ID
         :type EventBusId: str
         :param OrderBy: 根据哪个字段进行返回结果排序,支持以下字段：AddTime（创建时间）, ModTime（修改时间）
         :type OrderBy: str
+        :param RuleId: 事件规则ID
+        :type RuleId: str
         :param Limit: 返回数量，默认为20，最大值为100。
         :type Limit: int
         :param Offset: 分页偏移量，默认为0。
@@ -1484,18 +1484,18 @@ class ListTargetsRequest(AbstractModel):
         :param Order: 以升序还是降序的方式返回结果，可选值 ASC（升序） 和 DESC（降序）
         :type Order: str
         """
-        self.RuleId = None
         self.EventBusId = None
         self.OrderBy = None
+        self.RuleId = None
         self.Limit = None
         self.Offset = None
         self.Order = None
 
 
     def _deserialize(self, params):
-        self.RuleId = params.get("RuleId")
         self.EventBusId = params.get("EventBusId")
         self.OrderBy = params.get("OrderBy")
+        self.RuleId = params.get("RuleId")
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
         self.Order = params.get("Order")

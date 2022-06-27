@@ -1739,6 +1739,80 @@ class CreatePrometheusAgentResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreatePrometheusMultiTenantInstancePostPayModeRequest(AbstractModel):
+    """CreatePrometheusMultiTenantInstancePostPayMode请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceName: 实例名
+        :type InstanceName: str
+        :param VpcId: VPC ID
+        :type VpcId: str
+        :param SubnetId: 子网 ID
+        :type SubnetId: str
+        :param DataRetentionTime: 数据存储时间（单位天），限制值为15，30，45之一
+        :type DataRetentionTime: int
+        :param Zone: 可用区
+        :type Zone: str
+        :param TagSpecification: 实例的标签
+        :type TagSpecification: list of PrometheusTag
+        :param GrafanaInstanceId: 需要关联的 Grafana 实例
+        :type GrafanaInstanceId: str
+        """
+        self.InstanceName = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.DataRetentionTime = None
+        self.Zone = None
+        self.TagSpecification = None
+        self.GrafanaInstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceName = params.get("InstanceName")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.DataRetentionTime = params.get("DataRetentionTime")
+        self.Zone = params.get("Zone")
+        if params.get("TagSpecification") is not None:
+            self.TagSpecification = []
+            for item in params.get("TagSpecification"):
+                obj = PrometheusTag()
+                obj._deserialize(item)
+                self.TagSpecification.append(obj)
+        self.GrafanaInstanceId = params.get("GrafanaInstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreatePrometheusMultiTenantInstancePostPayModeResponse(AbstractModel):
+    """CreatePrometheusMultiTenantInstancePostPayMode返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例 ID
+        :type InstanceId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.InstanceId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreatePrometheusScrapeJobRequest(AbstractModel):
     """CreatePrometheusScrapeJob请求参数结构体
 

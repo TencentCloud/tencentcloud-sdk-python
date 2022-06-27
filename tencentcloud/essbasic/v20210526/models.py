@@ -119,8 +119,7 @@ class ChannelCancelMultiFlowSignQRCodeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Agent: 应用信息
-此接口Agent.ProxyOrganizationOpenId 和 Agent. ProxyOperator.OpenId 必填
+        :param Agent: 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         :param QrCodeId: 二维码id
         :type QrCodeId: str
@@ -273,8 +272,8 @@ class ChannelCreateMultiFlowSignQRCodeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Agent: 应用信息
-此接口Agent.ProxyOrganizationOpenId 和 Agent. ProxyOperator.OpenId 必填
+        :param Agent: 渠道应用相关信息。
+此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 必填。
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         :param TemplateId: 模版ID
         :type TemplateId: str
@@ -693,7 +692,7 @@ class CreateSignUrlsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Agent: 渠道应用相关信息
+        :param Agent: 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         :param FlowIds: 所签署合同ID数组
         :type FlowIds: list of str
@@ -771,7 +770,7 @@ class DescribeFlowDetailInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Agent: 应用信息
+        :param Agent: 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         :param FlowIds: 合同(流程)编号数组
         :type FlowIds: list of str
@@ -842,7 +841,8 @@ class DescribeResourceUrlsByFlowsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Agent: 渠道应用相关信息
+        :param Agent: 渠道应用相关信息。
+此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         :param Operator: 操作者的信息
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
@@ -909,7 +909,7 @@ class DescribeTemplatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Agent: 渠道应用相关信息
+        :param Agent: 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         :param Operator: 操作者的信息
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
@@ -1475,8 +1475,7 @@ class GetDownloadFlowUrlRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Agent: 应用信息
-此接口Agent.ProxyOrganizationOpenId 和 Agent. ProxyOperator.OpenId 必填
+        :param Agent: 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         :param Operator: 操作者的信息
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
@@ -1538,7 +1537,7 @@ class OperateChannelTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Agent: 应用信息
+        :param Agent: 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         :param TemplateId: 渠道方模板库模板唯一标识
         :type TemplateId: str

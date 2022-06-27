@@ -563,6 +563,82 @@ class DescribeFlySecMiniAppReportUrlResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeFlySecMiniAppScanReportListRequest(AbstractModel):
+    """DescribeFlySecMiniAppScanReportList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MiniAppID: 任务id
+        :type MiniAppID: str
+        :param Mode: 诊断方式 1:基础诊断，2:深度诊断
+        :type Mode: int
+        :param Status: 诊断状态 -1:查询全部, 0:排队中, 1:成功, 2:失败, 3:进行中
+        :type Status: int
+        :param Size: 查询数量, 0:查询所有, 其他值:最近几次的诊断数量
+        :type Size: int
+        :param MiniAppVersion: 小程序版本
+        :type MiniAppVersion: str
+        """
+        self.MiniAppID = None
+        self.Mode = None
+        self.Status = None
+        self.Size = None
+        self.MiniAppVersion = None
+
+
+    def _deserialize(self, params):
+        self.MiniAppID = params.get("MiniAppID")
+        self.Mode = params.get("Mode")
+        self.Status = params.get("Status")
+        self.Size = params.get("Size")
+        self.MiniAppVersion = params.get("MiniAppVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeFlySecMiniAppScanReportListResponse(AbstractModel):
+    """DescribeFlySecMiniAppScanReportList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Ret: 返回值, 0:成功, 其他值请查看“返回值”定义
+        :type Ret: int
+        :param Data: 诊断报告数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: list of FlySecMiniAppReportData
+        :param Total: 诊断任务数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Ret = None
+        self.Data = None
+        self.Total = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Ret = params.get("Ret")
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = FlySecMiniAppReportData()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.Total = params.get("Total")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeFlySecMiniAppScanTaskListRequest(AbstractModel):
     """DescribeFlySecMiniAppScanTaskList请求参数结构体
 
@@ -1043,6 +1119,120 @@ class DescribeScanTaskStatusResponse(AbstractModel):
                 obj._deserialize(item)
                 self.FlowSteps.append(obj)
         self.RequestId = params.get("RequestId")
+
+
+class FlySecMiniAppReportData(AbstractModel):
+    """翼扬诊断小程序报告数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskID: 任务id
+        :type TaskID: str
+        :param MiniAppID: 小程序appid
+        :type MiniAppID: str
+        :param MiniAppName: 小程序名称
+        :type MiniAppName: str
+        :param MiniAppVersion: 小程序版本
+        :type MiniAppVersion: str
+        :param Mode: 诊断模式 1:基础诊断，2:深度诊断
+        :type Mode: int
+        :param Status: 诊断状态, 0:排队中, 1:成功, 2:失败, 3:进行中
+        :type Status: int
+        :param CreateTime: 诊断时间
+        :type CreateTime: int
+        :param RiskScore: 诊断得分
+        :type RiskScore: str
+        :param RiskLevel: 诊断风险等级 1:高风险 2:中风险 3:低风险
+        :type RiskLevel: int
+        :param RiskItems: 诊断8大维度得分情况(每项总分100分)
+        :type RiskItems: :class:`tencentcloud.mmps.v20200710.models.FlySecMiniAppRiskItems`
+        """
+        self.TaskID = None
+        self.MiniAppID = None
+        self.MiniAppName = None
+        self.MiniAppVersion = None
+        self.Mode = None
+        self.Status = None
+        self.CreateTime = None
+        self.RiskScore = None
+        self.RiskLevel = None
+        self.RiskItems = None
+
+
+    def _deserialize(self, params):
+        self.TaskID = params.get("TaskID")
+        self.MiniAppID = params.get("MiniAppID")
+        self.MiniAppName = params.get("MiniAppName")
+        self.MiniAppVersion = params.get("MiniAppVersion")
+        self.Mode = params.get("Mode")
+        self.Status = params.get("Status")
+        self.CreateTime = params.get("CreateTime")
+        self.RiskScore = params.get("RiskScore")
+        self.RiskLevel = params.get("RiskLevel")
+        if params.get("RiskItems") is not None:
+            self.RiskItems = FlySecMiniAppRiskItems()
+            self.RiskItems._deserialize(params.get("RiskItems"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FlySecMiniAppRiskItems(AbstractModel):
+    """翼扬诊断小程序的诊断报告风险数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RiskItem1Score: 代码防护(基础诊断)
+        :type RiskItem1Score: int
+        :param RiskItem2Score: 开发测试信息泄露(基础诊断)
+        :type RiskItem2Score: int
+        :param RiskItem3Score: 编码规范(基础诊断)
+        :type RiskItem3Score: int
+        :param RiskItem4Score: 配置风险(基础诊断)
+        :type RiskItem4Score: int
+        :param RiskItem5Score: 账号安全(基础诊断)
+        :type RiskItem5Score: int
+        :param RiskItem6Score: 用户信息安全(基础诊断)
+        :type RiskItem6Score: int
+        :param RiskItem7Score: 内部信息泄露(基础诊断)
+        :type RiskItem7Score: int
+        :param RiskItem8Score: 其他安全(基础诊断)
+        :type RiskItem8Score: int
+        """
+        self.RiskItem1Score = None
+        self.RiskItem2Score = None
+        self.RiskItem3Score = None
+        self.RiskItem4Score = None
+        self.RiskItem5Score = None
+        self.RiskItem6Score = None
+        self.RiskItem7Score = None
+        self.RiskItem8Score = None
+
+
+    def _deserialize(self, params):
+        self.RiskItem1Score = params.get("RiskItem1Score")
+        self.RiskItem2Score = params.get("RiskItem2Score")
+        self.RiskItem3Score = params.get("RiskItem3Score")
+        self.RiskItem4Score = params.get("RiskItem4Score")
+        self.RiskItem5Score = params.get("RiskItem5Score")
+        self.RiskItem6Score = params.get("RiskItem6Score")
+        self.RiskItem7Score = params.get("RiskItem7Score")
+        self.RiskItem8Score = params.get("RiskItem8Score")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class FlySecMiniAppTaskData(AbstractModel):

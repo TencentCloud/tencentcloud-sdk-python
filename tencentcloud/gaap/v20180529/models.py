@@ -878,6 +878,9 @@ class CountryAreaMap(AbstractModel):
         :type ContinentName: str
         :param ContinentInnerCode: 大洲编码。
         :type ContinentInnerCode: str
+        :param Remark: 标注信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
         """
         self.NationCountryName = None
         self.NationCountryInnerCode = None
@@ -885,6 +888,7 @@ class CountryAreaMap(AbstractModel):
         self.GeographicalZoneInnerCode = None
         self.ContinentName = None
         self.ContinentInnerCode = None
+        self.Remark = None
 
 
     def _deserialize(self, params):
@@ -894,6 +898,7 @@ class CountryAreaMap(AbstractModel):
         self.GeographicalZoneInnerCode = params.get("GeographicalZoneInnerCode")
         self.ContinentName = params.get("ContinentName")
         self.ContinentInnerCode = params.get("ContinentInnerCode")
+        self.Remark = params.get("Remark")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

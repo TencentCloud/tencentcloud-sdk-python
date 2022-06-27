@@ -200,6 +200,35 @@ class MmpsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeFlySecMiniAppScanReportList(self, request):
+        """查询指定小程序版本的翼扬诊断安全得分
+
+        :param request: Request instance for DescribeFlySecMiniAppScanReportList.
+        :type request: :class:`tencentcloud.mmps.v20200710.models.DescribeFlySecMiniAppScanReportListRequest`
+        :rtype: :class:`tencentcloud.mmps.v20200710.models.DescribeFlySecMiniAppScanReportListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeFlySecMiniAppScanReportList", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeFlySecMiniAppScanReportListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeFlySecMiniAppScanTaskList(self, request):
         """获取翼扬安全诊断任务列表
 

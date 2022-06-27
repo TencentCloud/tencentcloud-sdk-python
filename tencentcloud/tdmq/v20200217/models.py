@@ -7222,11 +7222,20 @@ class ReceiveMessageRequest(AbstractModel):
         :type ReceiverQueueSize: int
         :param SubInitialPosition: 默认值为：Latest。用作判定consumer初始接收消息的位置，可选参数为：Earliest, Latest
         :type SubInitialPosition: str
+        :param MaxNumMessages: 用于设置BatchReceivePolicy，指在一次batch中最多接收多少条消息，默认是 0。即不开启BatchReceivePolicy
+        :type MaxNumMessages: int
+        :param MaxNumBytes: 用于设置BatchReceivePolicy，指在一次batch中最多接收的消息体有多大，单位是 bytes。默认是 0，即不开启BatchReceivePolicy
+        :type MaxNumBytes: int
+        :param Timeout: 用于设置BatchReceivePolicy，指在一次batch消息的接收z中最多等待的超时时间，单位是毫秒。默认是 0，即不开启BatchReceivePolicy
+        :type Timeout: int
         """
         self.Topic = None
         self.SubscriptionName = None
         self.ReceiverQueueSize = None
         self.SubInitialPosition = None
+        self.MaxNumMessages = None
+        self.MaxNumBytes = None
+        self.Timeout = None
 
 
     def _deserialize(self, params):
@@ -7234,6 +7243,9 @@ class ReceiveMessageRequest(AbstractModel):
         self.SubscriptionName = params.get("SubscriptionName")
         self.ReceiverQueueSize = params.get("ReceiverQueueSize")
         self.SubInitialPosition = params.get("SubInitialPosition")
+        self.MaxNumMessages = params.get("MaxNumMessages")
+        self.MaxNumBytes = params.get("MaxNumBytes")
+        self.Timeout = params.get("Timeout")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7262,6 +7274,12 @@ class ReceiveMessageResponse(AbstractModel):
         :param SubName: 返回订阅者的名字，用来创建 ack consumer时使用
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubName: str
+        :param MessageIDList: BatchReceivePolicy 一次性返回的多条消息的 MessageID，用 ‘###’ 来区分不同的 MessageID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MessageIDList: str
+        :param MessagesPayload: BatchReceivePolicy 一次性返回的多条消息的消息内容，用 ‘###’ 来区分不同的消息内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MessagesPayload: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -7270,6 +7288,8 @@ class ReceiveMessageResponse(AbstractModel):
         self.AckTopic = None
         self.ErrorMsg = None
         self.SubName = None
+        self.MessageIDList = None
+        self.MessagesPayload = None
         self.RequestId = None
 
 
@@ -7279,6 +7299,8 @@ class ReceiveMessageResponse(AbstractModel):
         self.AckTopic = params.get("AckTopic")
         self.ErrorMsg = params.get("ErrorMsg")
         self.SubName = params.get("SubName")
+        self.MessageIDList = params.get("MessageIDList")
+        self.MessagesPayload = params.get("MessagesPayload")
         self.RequestId = params.get("RequestId")
 
 

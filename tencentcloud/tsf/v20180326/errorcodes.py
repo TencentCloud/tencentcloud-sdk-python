@@ -896,6 +896,9 @@ RESOURCENOTFOUND_GROUPNOTEXIST = 'ResourceNotFound.GroupNotExist'
 # 无法获取机器信息。
 RESOURCENOTFOUND_INSTANCENOTEXIST = 'ResourceNotFound.InstanceNotExist'
 
+# [%s]模块未提供该接口[%s]。。
+RESOURCENOTFOUND_INTERFACENOTFOUND = 'ResourceNotFound.InterfaceNotFound'
+
 # 无法找到License服务器。
 RESOURCENOTFOUND_LICENSESERVERNOTFOUND = 'ResourceNotFound.LicenseServerNotFound'
 

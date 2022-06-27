@@ -202,6 +202,46 @@ class Check(AbstractModel):
         
 
 
+class Coordinate(AbstractModel):
+    """坐标
+
+    """
+
+    def __init__(self):
+        r"""
+        :param X: 左上角x坐标
+注意：此字段可能返回 null，表示取不到有效值。
+        :type X: int
+        :param Y: 左上角y坐标
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Y: int
+        :param Width: 宽度，单位像素
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Width: int
+        :param Height: 高度，单位像素
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Height: int
+        """
+        self.X = None
+        self.Y = None
+        self.Width = None
+        self.Height = None
+
+
+    def _deserialize(self, params):
+        self.X = params.get("X")
+        self.Y = params.get("Y")
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Desc(AbstractModel):
     """描述
 
@@ -1404,6 +1444,12 @@ class IndicatorItem(AbstractModel):
         :param ItemString: 项目原文
 注意：此字段可能返回 null，表示取不到有效值。
         :type ItemString: str
+        :param Id: 指标项ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: int
+        :param Coords: 指标项坐标位置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Coords: :class:`tencentcloud.mrs.v20200910.models.Coordinate`
         """
         self.Code = None
         self.Scode = None
@@ -1415,6 +1461,8 @@ class IndicatorItem(AbstractModel):
         self.Arrow = None
         self.Normal = None
         self.ItemString = None
+        self.Id = None
+        self.Coords = None
 
 
     def _deserialize(self, params):
@@ -1428,6 +1476,10 @@ class IndicatorItem(AbstractModel):
         self.Arrow = params.get("Arrow")
         self.Normal = params.get("Normal")
         self.ItemString = params.get("ItemString")
+        self.Id = params.get("Id")
+        if params.get("Coords") is not None:
+            self.Coords = Coordinate()
+            self.Coords._deserialize(params.get("Coords"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

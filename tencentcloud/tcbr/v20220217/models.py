@@ -427,11 +427,15 @@ class DescribeCloudRunServerDetailResponse(AbstractModel):
         :param ServerConfig: 服务配置信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type ServerConfig: :class:`tencentcloud.tcbr.v20220217.models.ServerBaseConfig`
+        :param OnlineVersionInfos: 在线版本信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OnlineVersionInfos: list of OnlineVersionInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.BaseInfo = None
         self.ServerConfig = None
+        self.OnlineVersionInfos = None
         self.RequestId = None
 
 
@@ -442,6 +446,12 @@ class DescribeCloudRunServerDetailResponse(AbstractModel):
         if params.get("ServerConfig") is not None:
             self.ServerConfig = ServerBaseConfig()
             self.ServerConfig._deserialize(params.get("ServerConfig"))
+        if params.get("OnlineVersionInfos") is not None:
+            self.OnlineVersionInfos = []
+            for item in params.get("OnlineVersionInfos"):
+                obj = OnlineVersionInfo()
+                obj._deserialize(item)
+                self.OnlineVersionInfos.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -930,6 +940,41 @@ class ObjectKV(AbstractModel):
     def _deserialize(self, params):
         self.Key = params.get("Key")
         self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OnlineVersionInfo(AbstractModel):
+    """在线版本信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param VersionName: 版本名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VersionName: str
+        :param ImageUrl: 镜像url
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageUrl: str
+        :param FlowRatio: 流量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlowRatio: str
+        """
+        self.VersionName = None
+        self.ImageUrl = None
+        self.FlowRatio = None
+
+
+    def _deserialize(self, params):
+        self.VersionName = params.get("VersionName")
+        self.ImageUrl = params.get("ImageUrl")
+        self.FlowRatio = params.get("FlowRatio")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
