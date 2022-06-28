@@ -116,6 +116,9 @@ INVALIDPARAMETERVALUE_TICKETSNPARAMETERVALUELIMIT = 'InvalidParameterValue.Ticke
 # 文件内容太大。
 LIMITEXCEEDED_TOOLARGEFILEERROR = 'LimitExceeded.TooLargeFileError'
 
+# 请求的次数超过了频率限制。
+REQUESTLIMITEXCEEDED = 'RequestLimitExceeded'
+
 # 地区编码不存在。
 RESOURCENOTFOUND_NOAREACODE = 'ResourceNotFound.NoAreaCode'
 

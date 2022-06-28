@@ -12354,7 +12354,7 @@ class GroupPod(AbstractModel):
         :param PodId: 实例ID(对应到kubernetes的pod id)
 注意：此字段可能返回 null，表示取不到有效值。
         :type PodId: str
-        :param Status: 实例状态，请参考后面的实例以及容器的状态定义
+        :param Status: 实例状态，请参考后面的实例以及容器的状态定义。启动中（pod 未 ready）：Starting；运行中：Running；异常：Abnormal；停止：Stopped；
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param Reason: 实例处于当前状态的原因，例如容器下载镜像失败

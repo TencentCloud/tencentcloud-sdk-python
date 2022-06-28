@@ -4698,6 +4698,9 @@ class Listener(AbstractModel):
         :param DeregisterTargetRst: 解绑后端目标时，是否发RST给客户端，（此参数仅对于TCP监听器有意义）。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeregisterTargetRst: bool
+        :param AttrFlags: 监听器的属性
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AttrFlags: list of str
         """
         self.ListenerId = None
         self.Protocol = None
@@ -4717,6 +4720,7 @@ class Listener(AbstractModel):
         self.KeepaliveEnable = None
         self.Toa = None
         self.DeregisterTargetRst = None
+        self.AttrFlags = None
 
 
     def _deserialize(self, params):
@@ -4749,6 +4753,7 @@ class Listener(AbstractModel):
         self.KeepaliveEnable = params.get("KeepaliveEnable")
         self.Toa = params.get("Toa")
         self.DeregisterTargetRst = params.get("DeregisterTargetRst")
+        self.AttrFlags = params.get("AttrFlags")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -15562,6 +15562,9 @@ class HostLoginList(AbstractModel):
         :param Location: 位置名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type Location: str
+        :param Quuid: 主机quuid
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Quuid: str
         """
         self.Id = None
         self.Uuid = None
@@ -15581,6 +15584,7 @@ class HostLoginList(AbstractModel):
         self.IsRiskSrcIp = None
         self.RiskLevel = None
         self.Location = None
+        self.Quuid = None
 
 
     def _deserialize(self, params):
@@ -15602,6 +15606,7 @@ class HostLoginList(AbstractModel):
         self.IsRiskSrcIp = params.get("IsRiskSrcIp")
         self.RiskLevel = params.get("RiskLevel")
         self.Location = params.get("Location")
+        self.Quuid = params.get("Quuid")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

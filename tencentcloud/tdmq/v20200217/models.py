@@ -1980,7 +1980,7 @@ class CreateEnvironmentRequest(AbstractModel):
         r"""
         :param EnvironmentId: 环境（命名空间）名称，不支持中字以及除了短线和下划线外的特殊字符且不超过16个字符。
         :type EnvironmentId: str
-        :param MsgTTL: 未消费消息过期时间，单位：秒，最小60，最大1296000，（15天）。
+        :param MsgTTL: 未消费消息过期时间，单位：秒，取值范围：60秒~1天。
         :type MsgTTL: int
         :param Remark: 说明，128个字符以内。
         :type Remark: str
@@ -2474,11 +2474,12 @@ class CreateTopicRequest(AbstractModel):
         :type EnvironmentId: str
         :param TopicName: 主题名，不支持中字以及除了短线和下划线外的特殊字符且不超过64个字符。
         :type TopicName: str
-        :param Partitions: 0：非分区topic，无分区；非0：具体分区topic的分区数，最大不允许超过128。
+        :param Partitions: 入参为1，即是创建非分区topic，无分区；入参大于1，表示分区topic的分区数，最大不允许超过128。
         :type Partitions: int
         :param Remark: 备注，128字符以内。
         :type Remark: str
-        :param TopicType: 0： 普通消息；
+        :param TopicType: 该入参将逐步弃用，可切换至PulsarTopicType参数
+0： 普通消息；
 1 ：全局顺序消息；
 2 ：局部顺序消息；
 3 ：重试队列；
@@ -2530,7 +2531,7 @@ class CreateTopicResponse(AbstractModel):
         :type EnvironmentId: str
         :param TopicName: 主题名。
         :type TopicName: str
-        :param Partitions: 0：非分区topic，无分区；非0：具体分区topic的分区数。
+        :param Partitions: 0或1：非分区topic，无分区；大于1：具体分区topic的分区数。（存量非分区主题返回0，增量非分区主题返回1）
         :type Partitions: int
         :param Remark: 备注，128字符以内。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -2540,7 +2541,6 @@ class CreateTopicResponse(AbstractModel):
 2 ：局部顺序消息；
 3 ：重试队列；
 4 ：死信队列；
-5 ：事务消息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TopicType: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -5679,12 +5679,10 @@ class DescribeTopicsRequest(AbstractModel):
         :param Limit: 返回数量，不填则默认为10，最大值为20。
         :type Limit: int
         :param TopicType: topic类型描述：
-0：普通消息；
-1：全局顺序消息；
-2：局部顺序消息；
-3：重试队列；
-4：死信队列；
-5：事务消息。
+0：非持久非分区主题类型；
+1：非持久分区主题类型；
+2：持久非分区主题类型；
+3：持久分区主题类型；
         :type TopicType: int
         :param ClusterId: Pulsar 集群的ID
         :type ClusterId: str
@@ -5693,6 +5691,10 @@ class DescribeTopicsRequest(AbstractModel):
 类型：String
 必选：否
         :type Filters: list of Filter
+        :param TopicCreator: 创建来源：
+1：用户创建
+2：系统创建
+        :type TopicCreator: int
         """
         self.EnvironmentId = None
         self.TopicName = None
@@ -5701,6 +5703,7 @@ class DescribeTopicsRequest(AbstractModel):
         self.TopicType = None
         self.ClusterId = None
         self.Filters = None
+        self.TopicCreator = None
 
 
     def _deserialize(self, params):
@@ -5716,6 +5719,7 @@ class DescribeTopicsRequest(AbstractModel):
                 obj = Filter()
                 obj._deserialize(item)
                 self.Filters.append(obj)
+        self.TopicCreator = params.get("TopicCreator")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6533,7 +6537,7 @@ class ModifyEnvironmentAttributesRequest(AbstractModel):
         r"""
         :param EnvironmentId: 命名空间名称。
         :type EnvironmentId: str
-        :param MsgTTL: 未消费消息过期时间，单位：秒，最大1296000。
+        :param MsgTTL: 未消费消息过期时间，单位：秒，范围60秒~1天。
         :type MsgTTL: int
         :param Remark: 备注，字符串最长不超过128。
         :type Remark: str

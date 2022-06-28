@@ -229,35 +229,6 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def CreateDataTransform(self, request):
-        """本接口用于创建数据加工任务。
-
-        :param request: Request instance for CreateDataTransform.
-        :type request: :class:`tencentcloud.cls.v20201016.models.CreateDataTransformRequest`
-        :rtype: :class:`tencentcloud.cls.v20201016.models.CreateDataTransformResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CreateDataTransform", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.CreateDataTransformResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def CreateExport(self, request):
         """本接口仅创建下载任务，任务返回的下载地址，请用户调用DescribeExports查看任务列表。其中有下载地址CosPath参数。参考文档https://cloud.tencent.com/document/product/614/56449
 
@@ -606,35 +577,6 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DeleteDataTransform(self, request):
-        """本接口用于删除数据加工任务
-
-        :param request: Request instance for DeleteDataTransform.
-        :type request: :class:`tencentcloud.cls.v20201016.models.DeleteDataTransformRequest`
-        :rtype: :class:`tencentcloud.cls.v20201016.models.DeleteDataTransformResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DeleteDataTransform", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DeleteDataTransformResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def DeleteExport(self, request):
         """本接口用于删除日志下载任务
 
@@ -969,35 +911,6 @@ class ClsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeConsumerResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def DescribeDataTransformInfo(self, request):
-        """本接口用于获取数据加工任务列表基本信息
-
-        :param request: Request instance for DescribeDataTransformInfo.
-        :type request: :class:`tencentcloud.cls.v20201016.models.DescribeDataTransformInfoRequest`
-        :rtype: :class:`tencentcloud.cls.v20201016.models.DescribeDataTransformInfoResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeDataTransformInfo", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeDataTransformInfoResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1549,35 +1462,6 @@ class ClsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyConsumerResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def ModifyDataTransform(self, request):
-        """本接口用于修改数据加工任务
-
-        :param request: Request instance for ModifyDataTransform.
-        :type request: :class:`tencentcloud.cls.v20201016.models.ModifyDataTransformRequest`
-        :rtype: :class:`tencentcloud.cls.v20201016.models.ModifyDataTransformResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("ModifyDataTransform", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ModifyDataTransformResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

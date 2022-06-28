@@ -570,7 +570,7 @@ class DescribeFlySecMiniAppScanReportListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param MiniAppID: 任务id
+        :param MiniAppID: 小程序AppID
         :type MiniAppID: str
         :param Mode: 诊断方式 1:基础诊断，2:深度诊断
         :type Mode: int
