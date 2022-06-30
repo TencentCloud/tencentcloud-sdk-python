@@ -7379,7 +7379,7 @@ class CreateOpenBankOrderPaymentResult(AbstractModel):
         :param ThirdPayOrderId: 第三方支付平台返回支付订单号。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ThirdPayOrderId: str
-        :param RedirectInfo: 小程序跳转参数渠道为TENPAY，付款方式为EBANK_PAYMENT时必选。
+        :param RedirectInfo: 跳转参数渠道为TENPAY，付款方式为EBANK_PAYMENT时必选。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RedirectInfo: :class:`tencentcloud.cpdp.v20190820.models.OpenBankRedirectInfo`
         :param OutOrderId: 外部商户订单号，只能是数字、大小写字母，且在同一个接入平台下唯一。
@@ -12689,6 +12689,36 @@ class OpenBankApprovalGuideInfo(AbstractModel):
         
 
 
+class OpenBankFormInfo(AbstractModel):
+    """网银页面提交html
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FormHtml: 网银页面提交html
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FormHtml: str
+        :param FormEncoding: 网银提交页面字符集
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FormEncoding: str
+        """
+        self.FormHtml = None
+        self.FormEncoding = None
+
+
+    def _deserialize(self, params):
+        self.FormHtml = params.get("FormHtml")
+        self.FormEncoding = params.get("FormEncoding")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class OpenBankGoodsInfo(AbstractModel):
     """云企付-商品信息
 
@@ -13045,6 +13075,9 @@ class OpenBankRedirectInfo(AbstractModel):
         :type MpPath: str
         :param MpUserName: 小程序原始 id
         :type MpUserName: str
+        :param FormInfo: 网银支付提交页面信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FormInfo: :class:`tencentcloud.cpdp.v20190820.models.OpenBankFormInfo`
         """
         self.QRCodeUrl = None
         self.QRCodeKey = None
@@ -13053,6 +13086,7 @@ class OpenBankRedirectInfo(AbstractModel):
         self.MpAppId = None
         self.MpPath = None
         self.MpUserName = None
+        self.FormInfo = None
 
 
     def _deserialize(self, params):
@@ -13063,6 +13097,9 @@ class OpenBankRedirectInfo(AbstractModel):
         self.MpAppId = params.get("MpAppId")
         self.MpPath = params.get("MpPath")
         self.MpUserName = params.get("MpUserName")
+        if params.get("FormInfo") is not None:
+            self.FormInfo = OpenBankFormInfo()
+            self.FormInfo._deserialize(params.get("FormInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

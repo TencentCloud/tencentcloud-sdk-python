@@ -27,7 +27,7 @@ class EssClient(AbstractClient):
 
 
     def CancelFlow(self, request):
-        """用于撤销流程
+        """用于撤销签署流程
 
         :param request: Request instance for CancelFlow.
         :type request: :class:`tencentcloud.ess.v20201111.models.CancelFlowRequest`
@@ -143,7 +143,7 @@ class EssClient(AbstractClient):
 
 
     def CreateFlowByFiles(self, request):
-        """此接口（CreateFlowByFiles）用来通过上传后的pdf资源编号来创建流程。
+        """此接口（CreateFlowByFiles）用来通过上传后的pdf资源编号来创建签署流程。
 
         :param request: Request instance for CreateFlowByFiles.
         :type request: :class:`tencentcloud.ess.v20201111.models.CreateFlowByFilesRequest`
@@ -207,7 +207,7 @@ class EssClient(AbstractClient):
         跳转到小程序的实现，参考官方文档（分为<a href="https://developers.weixin.qq.com/miniprogram/dev/api/navigate/wx.navigateToMiniProgram.html">全屏</a>、<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/openEmbeddedMiniProgram.html">半屏</a>两种方式）
 
 
-        如您需要自主配置小程序跳转链接，请参考: <a href="https://tcloud-doc.isd.com/document/product/1323/74774">跳转小程序链接配置说明</a>
+        如您需要自主配置小程序跳转链接，请参考: <a href="https://cloud.tencent.com/document/product/1323/74774">跳转小程序链接配置说明</a>
 
         :param request: Request instance for CreateSchemeUrl.
         :type request: :class:`tencentcloud.ess.v20201111.models.CreateSchemeUrlRequest`

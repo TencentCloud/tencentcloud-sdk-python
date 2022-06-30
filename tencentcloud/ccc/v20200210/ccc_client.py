@@ -695,6 +695,35 @@ class CccClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ModifyStaff(self, request):
+        """修改客服账号
+
+        :param request: Request instance for ModifyStaff.
+        :type request: :class:`tencentcloud.ccc.v20200210.models.ModifyStaffRequest`
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.ModifyStaffResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyStaff", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyStaffResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def StopAutoCalloutTask(self, request):
         """停止自动外呼任务
 

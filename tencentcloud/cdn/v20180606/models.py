@@ -11057,16 +11057,24 @@ delete：刷新全部资源
         :type FlushType: str
         :param UrlEncode: 是否对中文字符进行编码后刷新
         :type UrlEncode: bool
+        :param Area: 刷新区域
+无此参数时，默认刷新加速域名所在加速区域
+填充 mainland 时，仅刷新中国境内加速节点上缓存内容
+填充 overseas 时，仅刷新中国境外加速节点上缓存内容
+指定刷新区域时，需要与域名加速区域匹配
+        :type Area: str
         """
         self.Paths = None
         self.FlushType = None
         self.UrlEncode = None
+        self.Area = None
 
 
     def _deserialize(self, params):
         self.Paths = params.get("Paths")
         self.FlushType = params.get("FlushType")
         self.UrlEncode = params.get("UrlEncode")
+        self.Area = params.get("Area")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

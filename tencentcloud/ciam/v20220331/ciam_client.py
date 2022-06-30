@@ -229,6 +229,35 @@ class CiamClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ListLogMessageByCondition(self, request):
+        """查询日志信息
+
+        :param request: Request instance for ListLogMessageByCondition.
+        :type request: :class:`tencentcloud.ciam.v20220331.models.ListLogMessageByConditionRequest`
+        :rtype: :class:`tencentcloud.ciam.v20220331.models.ListLogMessageByConditionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListLogMessageByCondition", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ListLogMessageByConditionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ListUser(self, request):
         """查询用户列表
 

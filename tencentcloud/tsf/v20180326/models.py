@@ -6121,6 +6121,24 @@ class DescribeBasicResourceUsageRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param All: 是否无视权限查询全租户的，默认 true。注：无论 true 还是 false，PackageSpaceUsed 和 ConsulInstanceCount  都是全租户的
+        :type All: bool
+        """
+        self.All = None
+
+
+    def _deserialize(self, params):
+        self.All = params.get("All")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribeBasicResourceUsageResponse(AbstractModel):
     """DescribeBasicResourceUsage返回参数结构体
@@ -10339,6 +10357,8 @@ class DescribeStatisticsRequest(AbstractModel):
         :type BucketKey: str
         :param DbName: 数据库
         :type DbName: str
+        :param NamespaceIdList: 命名空间id数组
+        :type NamespaceIdList: list of str
         """
         self.Type = None
         self.TimeStep = None
@@ -10354,6 +10374,7 @@ class DescribeStatisticsRequest(AbstractModel):
         self.MetricDimensionValues = None
         self.BucketKey = None
         self.DbName = None
+        self.NamespaceIdList = None
 
 
     def _deserialize(self, params):
@@ -10376,6 +10397,7 @@ class DescribeStatisticsRequest(AbstractModel):
                 self.MetricDimensionValues.append(obj)
         self.BucketKey = params.get("BucketKey")
         self.DbName = params.get("DbName")
+        self.NamespaceIdList = params.get("NamespaceIdList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -13239,6 +13261,9 @@ class Instance(AbstractModel):
         :param AgentVersion: agent版本
 注意：此字段可能返回 null，表示取不到有效值。
         :type AgentVersion: str
+        :param NodeInstanceId: 容器母机实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NodeInstanceId: str
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -13278,6 +13303,7 @@ class Instance(AbstractModel):
         self.NamespaceName = None
         self.Reason = None
         self.AgentVersion = None
+        self.NodeInstanceId = None
 
 
     def _deserialize(self, params):
@@ -13319,6 +13345,7 @@ class Instance(AbstractModel):
         self.NamespaceName = params.get("NamespaceName")
         self.Reason = params.get("Reason")
         self.AgentVersion = params.get("AgentVersion")
+        self.NodeInstanceId = params.get("NodeInstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -14348,16 +14375,21 @@ class MetricDataSingleValue(AbstractModel):
         :param MetricDataValue: 指标值
 注意：此字段可能返回 null，表示取不到有效值。
         :type MetricDataValue: str
+        :param DailyPercent: 日环比
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DailyPercent: float
         """
         self.MetricName = None
         self.MetricFunction = None
         self.MetricDataValue = None
+        self.DailyPercent = None
 
 
     def _deserialize(self, params):
         self.MetricName = params.get("MetricName")
         self.MetricFunction = params.get("MetricFunction")
         self.MetricDataValue = params.get("MetricDataValue")
+        self.DailyPercent = params.get("DailyPercent")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

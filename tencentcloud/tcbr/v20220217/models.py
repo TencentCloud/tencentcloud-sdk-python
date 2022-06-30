@@ -464,12 +464,22 @@ class DescribeCloudRunServersRequest(AbstractModel):
         r"""
         :param EnvId: 环境Id
         :type EnvId: str
+        :param PageSize: 默认为9， 最大为30
+不传或传0时 取默认9
+大于30时取30
+        :type PageSize: int
+        :param PageNum: 不传或传0时 会默认为1
+        :type PageNum: int
         """
         self.EnvId = None
+        self.PageSize = None
+        self.PageNum = None
 
 
     def _deserialize(self, params):
         self.EnvId = params.get("EnvId")
+        self.PageSize = params.get("PageSize")
+        self.PageNum = params.get("PageNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -488,10 +498,13 @@ class DescribeCloudRunServersResponse(AbstractModel):
         r"""
         :param ServerList: 服务列表
         :type ServerList: list of ServerBaseInfo
+        :param Total: 服务总数
+        :type Total: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.ServerList = None
+        self.Total = None
         self.RequestId = None
 
 
@@ -502,6 +515,7 @@ class DescribeCloudRunServersResponse(AbstractModel):
                 obj = ServerBaseInfo()
                 obj._deserialize(item)
                 self.ServerList.append(obj)
+        self.Total = params.get("Total")
         self.RequestId = params.get("RequestId")
 
 

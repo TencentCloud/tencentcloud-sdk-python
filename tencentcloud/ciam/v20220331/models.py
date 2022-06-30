@@ -781,6 +781,88 @@ class ListJobsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ListLogMessageByConditionRequest(AbstractModel):
+    """ListLogMessageByCondition请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UserStoreId: 用户池ID
+        :type UserStoreId: str
+        :param Pageable: 分页数据
+        :type Pageable: :class:`tencentcloud.ciam.v20220331.models.Pageable`
+        :param StartTime: 开始时间，时间戳精确到毫秒
+        :type StartTime: int
+        :param Filters: Key可选值为events
+
+<li> **events** </li>	Values为["SIGNUP", "USER_UPDATE", "USER_DELETE", "USER_CREATE", "ACCOUNT_LINKING"] 中的一个或多个
+        :type Filters: list of Filter
+        """
+        self.UserStoreId = None
+        self.Pageable = None
+        self.StartTime = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.UserStoreId = params.get("UserStoreId")
+        if params.get("Pageable") is not None:
+            self.Pageable = Pageable()
+            self.Pageable._deserialize(params.get("Pageable"))
+        self.StartTime = params.get("StartTime")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListLogMessageByConditionResponse(AbstractModel):
+    """ListLogMessageByCondition返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Total: 总条数
+        :type Total: int
+        :param Pageable: 分页对象
+        :type Pageable: :class:`tencentcloud.ciam.v20220331.models.Pageable`
+        :param Content: 日志列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Content: list of LogMessage
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Total = None
+        self.Pageable = None
+        self.Content = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("Pageable") is not None:
+            self.Pageable = Pageable()
+            self.Pageable._deserialize(params.get("Pageable"))
+        if params.get("Content") is not None:
+            self.Content = []
+            for item in params.get("Content"):
+                obj = LogMessage()
+                obj._deserialize(item)
+                self.Content.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class ListUserByPropertyRequest(AbstractModel):
     """ListUserByProperty请求参数结构体
 
@@ -922,6 +1004,113 @@ class ListUserResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Content.append(obj)
         self.RequestId = params.get("RequestId")
+
+
+class LogMessage(AbstractModel):
+    """日志详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LogId: 日志标识
+        :type LogId: str
+        :param TenantId: 租户ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TenantId: str
+        :param UserStoreId: 用户池ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserStoreId: str
+        :param EventCode: 事件编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EventCode: str
+        :param EventDate: 事件发生时间戳，单位：毫秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EventDate: int
+        :param Description: 描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param Participant: 事件参与者
+
+<li> **TENANT** </li>  租户
+<li> **USER** </li>  用户
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Participant: str
+        :param ApplicationClientId: 应用clientId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationClientId: str
+        :param ApplicationName: 应用名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationName: str
+        :param AuthSourceId: 认证源ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AuthSourceId: str
+        :param AuthSourceName: 认证源名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AuthSourceName: str
+        :param AuthSourceType: 认证源类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AuthSourceType: str
+        :param AuthSourceCategory: 认证源类别
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AuthSourceCategory: str
+        :param Ip: IP地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Ip: str
+        :param UserAgent: 用户代理
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserAgent: str
+        :param UserId: 用户ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserId: str
+        :param Detail: 详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Detail: str
+        """
+        self.LogId = None
+        self.TenantId = None
+        self.UserStoreId = None
+        self.EventCode = None
+        self.EventDate = None
+        self.Description = None
+        self.Participant = None
+        self.ApplicationClientId = None
+        self.ApplicationName = None
+        self.AuthSourceId = None
+        self.AuthSourceName = None
+        self.AuthSourceType = None
+        self.AuthSourceCategory = None
+        self.Ip = None
+        self.UserAgent = None
+        self.UserId = None
+        self.Detail = None
+
+
+    def _deserialize(self, params):
+        self.LogId = params.get("LogId")
+        self.TenantId = params.get("TenantId")
+        self.UserStoreId = params.get("UserStoreId")
+        self.EventCode = params.get("EventCode")
+        self.EventDate = params.get("EventDate")
+        self.Description = params.get("Description")
+        self.Participant = params.get("Participant")
+        self.ApplicationClientId = params.get("ApplicationClientId")
+        self.ApplicationName = params.get("ApplicationName")
+        self.AuthSourceId = params.get("AuthSourceId")
+        self.AuthSourceName = params.get("AuthSourceName")
+        self.AuthSourceType = params.get("AuthSourceType")
+        self.AuthSourceCategory = params.get("AuthSourceCategory")
+        self.Ip = params.get("Ip")
+        self.UserAgent = params.get("UserAgent")
+        self.UserId = params.get("UserId")
+        self.Detail = params.get("Detail")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class MemberMap(AbstractModel):

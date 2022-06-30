@@ -1144,6 +1144,11 @@ def test_import_wss():
     from tencentcloud.wss.v20180426 import models
 
 
+def test_import_yinsuda():
+    from tencentcloud.yinsuda.v20220527 import yinsuda_client
+    from tencentcloud.yinsuda.v20220527 import models
+
+
 def test_import_youmall():
     from tencentcloud.youmall.v20180228 import youmall_client
     from tencentcloud.youmall.v20180228 import models

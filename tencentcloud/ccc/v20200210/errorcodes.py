@@ -44,8 +44,14 @@ INVALIDPARAMETERVALUE_ACCOUNTNOTEXIST = 'InvalidParameterValue.AccountNotExist'
 # 实例不存在。
 INVALIDPARAMETERVALUE_INSTANCENOTEXIST = 'InvalidParameterValue.InstanceNotExist'
 
+# 号码已经绑定别的账号。
+INVALIDPARAMETERVALUE_PHONENUMISBOUNDOTHERACCOUNT = 'InvalidParameterValue.PhoneNumIsBoundOtherAccount'
+
 # 查询记录不存在。
 INVALIDPARAMETERVALUE_RECORDNOTEXIST = 'InvalidParameterValue.RecordNotExist'
+
+# 技能组错误。
+INVALIDPARAMETERVALUE_SKILLGROUPERROR = 'InvalidParameterValue.SkillGroupError'
 
 # 技能组已存在。
 INVALIDPARAMETERVALUE_SKILLGROUPEXIST = 'InvalidParameterValue.SkillGroupExist'

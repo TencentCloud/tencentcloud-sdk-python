@@ -1941,6 +1941,67 @@ class MessageBody(AbstractModel):
         
 
 
+class ModifyStaffRequest(AbstractModel):
+    """ModifyStaff请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkAppId: 应用ID
+        :type SdkAppId: int
+        :param Email: 坐席账户
+        :type Email: str
+        :param Name: 坐席名称
+        :type Name: str
+        :param Phone: 坐席手机号（带0086前缀,示例：008618011111111）
+        :type Phone: str
+        :param Nick: 坐席昵称
+        :type Nick: str
+        :param SkillGroupIds: 绑定技能组ID列表
+        :type SkillGroupIds: list of int
+        """
+        self.SdkAppId = None
+        self.Email = None
+        self.Name = None
+        self.Phone = None
+        self.Nick = None
+        self.SkillGroupIds = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.Email = params.get("Email")
+        self.Name = params.get("Name")
+        self.Phone = params.get("Phone")
+        self.Nick = params.get("Nick")
+        self.SkillGroupIds = params.get("SkillGroupIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyStaffResponse(AbstractModel):
+    """ModifyStaff返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class PSTNSession(AbstractModel):
     """PSTN 会话类型。
 

@@ -18,6 +18,65 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AddDMSPartitionsRequest(AbstractModel):
+    """AddDMSPartitions请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Partitions: 分区
+        :type Partitions: list of DMSPartition
+        """
+        self.Partitions = None
+
+
+    def _deserialize(self, params):
+        if params.get("Partitions") is not None:
+            self.Partitions = []
+            for item in params.get("Partitions"):
+                obj = DMSPartition()
+                obj._deserialize(item)
+                self.Partitions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddDMSPartitionsResponse(AbstractModel):
+    """AddDMSPartitions返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Total: 成功数量
+        :type Total: int
+        :param Partitions: 分区值
+        :type Partitions: list of DMSPartition
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Total = None
+        self.Partitions = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("Partitions") is not None:
+            self.Partitions = []
+            for item in params.get("Partitions"):
+                obj = DMSPartition()
+                obj._deserialize(item)
+                self.Partitions.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class AddUsersToWorkGroupRequest(AbstractModel):
     """AddUsersToWorkGroup请求参数结构体
 
@@ -59,6 +118,214 @@ class AddUsersToWorkGroupResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class AlterDMSDatabaseRequest(AbstractModel):
+    """AlterDMSDatabase请求参数结构体
+
+    """
+
+
+class AlterDMSDatabaseResponse(AbstractModel):
+    """AlterDMSDatabase返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class AlterDMSPartitionRequest(AbstractModel):
+    """AlterDMSPartition请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CurrentDbName: 当前名称，变更前db名称
+        :type CurrentDbName: str
+        :param CurrentTableName: 当前名称，变更前table名称
+        :type CurrentTableName: str
+        :param CurrentValues: 当前名称，变更前Part名称
+        :type CurrentValues: str
+        :param Partition: 分区
+        :type Partition: :class:`tencentcloud.dlc.v20210125.models.DMSPartition`
+        """
+        self.CurrentDbName = None
+        self.CurrentTableName = None
+        self.CurrentValues = None
+        self.Partition = None
+
+
+    def _deserialize(self, params):
+        self.CurrentDbName = params.get("CurrentDbName")
+        self.CurrentTableName = params.get("CurrentTableName")
+        self.CurrentValues = params.get("CurrentValues")
+        if params.get("Partition") is not None:
+            self.Partition = DMSPartition()
+            self.Partition._deserialize(params.get("Partition"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AlterDMSPartitionResponse(AbstractModel):
+    """AlterDMSPartition返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class AlterDMSTableRequest(AbstractModel):
+    """AlterDMSTable请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CurrentName: 当前名称
+        :type CurrentName: str
+        :param CurrentDbName: 当前数据库名称
+        :type CurrentDbName: str
+        :param Asset: 基础对象
+        :type Asset: :class:`tencentcloud.dlc.v20210125.models.Asset`
+        :param Type: 表类型
+        :type Type: str
+        :param DbName: 数据库名称
+        :type DbName: str
+        :param StorageSize: 存储大小
+        :type StorageSize: int
+        :param RecordCount: 记录数量
+        :type RecordCount: int
+        :param LifeTime: 生命周期
+        :type LifeTime: int
+        :param DataUpdateTime: 数据更新时间
+        :type DataUpdateTime: str
+        :param StructUpdateTime: 结构更新时间
+        :type StructUpdateTime: str
+        :param LastAccessTime: 最后访问时间
+        :type LastAccessTime: str
+        :param Sds: 存储对象
+        :type Sds: :class:`tencentcloud.dlc.v20210125.models.DMSSds`
+        :param Columns: 列
+        :type Columns: list of DMSColumn
+        :param PartitionKeys: 分区键值
+        :type PartitionKeys: list of DMSColumn
+        :param ViewOriginalText: 视图文本
+        :type ViewOriginalText: str
+        :param ViewExpandedText: 视图文本
+        :type ViewExpandedText: str
+        :param Partitions: 分区
+        :type Partitions: list of DMSPartition
+        """
+        self.CurrentName = None
+        self.CurrentDbName = None
+        self.Asset = None
+        self.Type = None
+        self.DbName = None
+        self.StorageSize = None
+        self.RecordCount = None
+        self.LifeTime = None
+        self.DataUpdateTime = None
+        self.StructUpdateTime = None
+        self.LastAccessTime = None
+        self.Sds = None
+        self.Columns = None
+        self.PartitionKeys = None
+        self.ViewOriginalText = None
+        self.ViewExpandedText = None
+        self.Partitions = None
+
+
+    def _deserialize(self, params):
+        self.CurrentName = params.get("CurrentName")
+        self.CurrentDbName = params.get("CurrentDbName")
+        if params.get("Asset") is not None:
+            self.Asset = Asset()
+            self.Asset._deserialize(params.get("Asset"))
+        self.Type = params.get("Type")
+        self.DbName = params.get("DbName")
+        self.StorageSize = params.get("StorageSize")
+        self.RecordCount = params.get("RecordCount")
+        self.LifeTime = params.get("LifeTime")
+        self.DataUpdateTime = params.get("DataUpdateTime")
+        self.StructUpdateTime = params.get("StructUpdateTime")
+        self.LastAccessTime = params.get("LastAccessTime")
+        if params.get("Sds") is not None:
+            self.Sds = DMSSds()
+            self.Sds._deserialize(params.get("Sds"))
+        if params.get("Columns") is not None:
+            self.Columns = []
+            for item in params.get("Columns"):
+                obj = DMSColumn()
+                obj._deserialize(item)
+                self.Columns.append(obj)
+        if params.get("PartitionKeys") is not None:
+            self.PartitionKeys = []
+            for item in params.get("PartitionKeys"):
+                obj = DMSColumn()
+                obj._deserialize(item)
+                self.PartitionKeys.append(obj)
+        self.ViewOriginalText = params.get("ViewOriginalText")
+        self.ViewExpandedText = params.get("ViewExpandedText")
+        if params.get("Partitions") is not None:
+            self.Partitions = []
+            for item in params.get("Partitions"):
+                obj = DMSPartition()
+                obj._deserialize(item)
+                self.Partitions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AlterDMSTableResponse(AbstractModel):
+    """AlterDMSTable返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class Asset(AbstractModel):
+    """元数据基本对象
+
+    """
 
 
 class AttachUserPolicyRequest(AbstractModel):
@@ -317,6 +584,67 @@ class CancelTaskResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CheckLockMetaDataRequest(AbstractModel):
+    """CheckLockMetaData请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LockId: 锁ID
+        :type LockId: int
+        :param DatasourceConnectionName: 数据源名称
+        :type DatasourceConnectionName: str
+        :param TxnId: 事务ID
+        :type TxnId: int
+        :param ElapsedMs: 过期时间ms
+        :type ElapsedMs: int
+        """
+        self.LockId = None
+        self.DatasourceConnectionName = None
+        self.TxnId = None
+        self.ElapsedMs = None
+
+
+    def _deserialize(self, params):
+        self.LockId = params.get("LockId")
+        self.DatasourceConnectionName = params.get("DatasourceConnectionName")
+        self.TxnId = params.get("TxnId")
+        self.ElapsedMs = params.get("ElapsedMs")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CheckLockMetaDataResponse(AbstractModel):
+    """CheckLockMetaData返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LockId: 锁ID
+        :type LockId: int
+        :param LockState: 锁状态：ACQUIRED、WAITING、ABORT、NOT_ACQUIRED
+        :type LockState: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.LockId = None
+        self.LockState = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.LockId = params.get("LockId")
+        self.LockState = params.get("LockState")
+        self.RequestId = params.get("RequestId")
+
+
 class Column(AbstractModel):
     """数据表列信息。
 
@@ -384,6 +712,167 @@ string|tinyint|smallint|int|bigint|boolean|float|double|decimal|timestamp|date|b
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class CreateDMSDatabaseRequest(AbstractModel):
+    """CreateDMSDatabase请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 数据库名称
+        :type Name: str
+        """
+        self.Name = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDMSDatabaseResponse(AbstractModel):
+    """CreateDMSDatabase返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreateDMSTableRequest(AbstractModel):
+    """CreateDMSTable请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Asset: 基础对象
+        :type Asset: :class:`tencentcloud.dlc.v20210125.models.Asset`
+        :param Type: 表类型
+        :type Type: str
+        :param DbName: 数据库名称
+        :type DbName: str
+        :param StorageSize: 存储大小
+        :type StorageSize: int
+        :param RecordCount: 记录数量
+        :type RecordCount: int
+        :param LifeTime: 生命周期
+        :type LifeTime: int
+        :param DataUpdateTime: 数据更新时间
+        :type DataUpdateTime: str
+        :param StructUpdateTime: 结构更新时间
+        :type StructUpdateTime: str
+        :param LastAccessTime: 最后访问时间
+        :type LastAccessTime: str
+        :param Sds: 存储对象
+        :type Sds: :class:`tencentcloud.dlc.v20210125.models.DMSSds`
+        :param Columns: 列
+        :type Columns: list of DMSColumn
+        :param PartitionKeys: 分区键值
+        :type PartitionKeys: list of DMSColumn
+        :param ViewOriginalText: 视图文本
+        :type ViewOriginalText: str
+        :param ViewExpandedText: 视图文本
+        :type ViewExpandedText: str
+        :param Partitions: 分区
+        :type Partitions: list of DMSPartition
+        :param Name: 表名称
+        :type Name: str
+        """
+        self.Asset = None
+        self.Type = None
+        self.DbName = None
+        self.StorageSize = None
+        self.RecordCount = None
+        self.LifeTime = None
+        self.DataUpdateTime = None
+        self.StructUpdateTime = None
+        self.LastAccessTime = None
+        self.Sds = None
+        self.Columns = None
+        self.PartitionKeys = None
+        self.ViewOriginalText = None
+        self.ViewExpandedText = None
+        self.Partitions = None
+        self.Name = None
+
+
+    def _deserialize(self, params):
+        if params.get("Asset") is not None:
+            self.Asset = Asset()
+            self.Asset._deserialize(params.get("Asset"))
+        self.Type = params.get("Type")
+        self.DbName = params.get("DbName")
+        self.StorageSize = params.get("StorageSize")
+        self.RecordCount = params.get("RecordCount")
+        self.LifeTime = params.get("LifeTime")
+        self.DataUpdateTime = params.get("DataUpdateTime")
+        self.StructUpdateTime = params.get("StructUpdateTime")
+        self.LastAccessTime = params.get("LastAccessTime")
+        if params.get("Sds") is not None:
+            self.Sds = DMSSds()
+            self.Sds._deserialize(params.get("Sds"))
+        if params.get("Columns") is not None:
+            self.Columns = []
+            for item in params.get("Columns"):
+                obj = DMSColumn()
+                obj._deserialize(item)
+                self.Columns.append(obj)
+        if params.get("PartitionKeys") is not None:
+            self.PartitionKeys = []
+            for item in params.get("PartitionKeys"):
+                obj = DMSColumn()
+                obj._deserialize(item)
+                self.PartitionKeys.append(obj)
+        self.ViewOriginalText = params.get("ViewOriginalText")
+        self.ViewExpandedText = params.get("ViewExpandedText")
+        if params.get("Partitions") is not None:
+            self.Partitions = []
+            for item in params.get("Partitions"):
+                obj = DMSPartition()
+                obj._deserialize(item)
+                self.Partitions.append(obj)
+        self.Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDMSTableResponse(AbstractModel):
+    """CreateDMSTable返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class CreateDatabaseRequest(AbstractModel):
@@ -1200,6 +1689,448 @@ class CreateWorkGroupResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DMSColumn(AbstractModel):
+    """迁移列对象
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param Description: 描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param Type: 类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param Position: 排序
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Position: int
+        :param Params: 附加参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Params: list of KVPair
+        :param BizParams: 业务参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BizParams: list of KVPair
+        :param IsPartition: 是否分区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsPartition: bool
+        """
+        self.Name = None
+        self.Description = None
+        self.Type = None
+        self.Position = None
+        self.Params = None
+        self.BizParams = None
+        self.IsPartition = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Description = params.get("Description")
+        self.Type = params.get("Type")
+        self.Position = params.get("Position")
+        if params.get("Params") is not None:
+            self.Params = []
+            for item in params.get("Params"):
+                obj = KVPair()
+                obj._deserialize(item)
+                self.Params.append(obj)
+        if params.get("BizParams") is not None:
+            self.BizParams = []
+            for item in params.get("BizParams"):
+                obj = KVPair()
+                obj._deserialize(item)
+                self.BizParams.append(obj)
+        self.IsPartition = params.get("IsPartition")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DMSColumnOrder(AbstractModel):
+    """列排序对象
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Col: 列名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Col: str
+        :param Order: 排序
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Order: int
+        """
+        self.Col = None
+        self.Order = None
+
+
+    def _deserialize(self, params):
+        self.Col = params.get("Col")
+        self.Order = params.get("Order")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DMSPartition(AbstractModel):
+    """迁移元数据分区对象
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DatabaseName: 数据库名称
+        :type DatabaseName: str
+        :param SchemaName: 数据目录名称
+        :type SchemaName: str
+        :param TableName: 表名称
+        :type TableName: str
+        :param DataVersion: 数据版本
+        :type DataVersion: int
+        :param Name: 分区名称
+        :type Name: str
+        :param Values: 值列表
+        :type Values: list of str
+        :param StorageSize: 存储大小
+        :type StorageSize: int
+        :param RecordCount: 记录数量
+        :type RecordCount: int
+        :param CreateTime: 创建时间
+        :type CreateTime: str
+        :param ModifiedTime: 修改时间
+        :type ModifiedTime: str
+        :param LastAccessTime: 最后访问时间
+        :type LastAccessTime: str
+        :param Params: 附件属性
+        :type Params: list of KVPair
+        :param Sds: 存储对象
+        :type Sds: :class:`tencentcloud.dlc.v20210125.models.DMSSds`
+        """
+        self.DatabaseName = None
+        self.SchemaName = None
+        self.TableName = None
+        self.DataVersion = None
+        self.Name = None
+        self.Values = None
+        self.StorageSize = None
+        self.RecordCount = None
+        self.CreateTime = None
+        self.ModifiedTime = None
+        self.LastAccessTime = None
+        self.Params = None
+        self.Sds = None
+
+
+    def _deserialize(self, params):
+        self.DatabaseName = params.get("DatabaseName")
+        self.SchemaName = params.get("SchemaName")
+        self.TableName = params.get("TableName")
+        self.DataVersion = params.get("DataVersion")
+        self.Name = params.get("Name")
+        self.Values = params.get("Values")
+        self.StorageSize = params.get("StorageSize")
+        self.RecordCount = params.get("RecordCount")
+        self.CreateTime = params.get("CreateTime")
+        self.ModifiedTime = params.get("ModifiedTime")
+        self.LastAccessTime = params.get("LastAccessTime")
+        if params.get("Params") is not None:
+            self.Params = []
+            for item in params.get("Params"):
+                obj = KVPair()
+                obj._deserialize(item)
+                self.Params.append(obj)
+        if params.get("Sds") is not None:
+            self.Sds = DMSSds()
+            self.Sds._deserialize(params.get("Sds"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DMSSds(AbstractModel):
+    """元数据存储描述属性
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Location: 存储地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Location: str
+        :param InputFormat: 输入格式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InputFormat: str
+        :param OutputFormat: 输出格式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OutputFormat: str
+        :param NumBuckets: bucket数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NumBuckets: int
+        :param Compressed: 是是否压缩
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Compressed: bool
+        :param StoredAsSubDirectories: 是否有子目录
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StoredAsSubDirectories: bool
+        :param SerdeLib: 序列化lib
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SerdeLib: str
+        :param SerdeName: 序列化名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SerdeName: str
+        :param BucketCols: 桶名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BucketCols: list of str
+        :param SerdeParams: 序列化参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SerdeParams: list of KVPair
+        :param Params: 附加参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Params: list of KVPair
+        :param SortCols: 列排序(Expired)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SortCols: :class:`tencentcloud.dlc.v20210125.models.DMSColumnOrder`
+        :param Cols: 列
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Cols: list of DMSColumn
+        :param SortColumns: 列排序字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SortColumns: list of DMSColumnOrder
+        """
+        self.Location = None
+        self.InputFormat = None
+        self.OutputFormat = None
+        self.NumBuckets = None
+        self.Compressed = None
+        self.StoredAsSubDirectories = None
+        self.SerdeLib = None
+        self.SerdeName = None
+        self.BucketCols = None
+        self.SerdeParams = None
+        self.Params = None
+        self.SortCols = None
+        self.Cols = None
+        self.SortColumns = None
+
+
+    def _deserialize(self, params):
+        self.Location = params.get("Location")
+        self.InputFormat = params.get("InputFormat")
+        self.OutputFormat = params.get("OutputFormat")
+        self.NumBuckets = params.get("NumBuckets")
+        self.Compressed = params.get("Compressed")
+        self.StoredAsSubDirectories = params.get("StoredAsSubDirectories")
+        self.SerdeLib = params.get("SerdeLib")
+        self.SerdeName = params.get("SerdeName")
+        self.BucketCols = params.get("BucketCols")
+        if params.get("SerdeParams") is not None:
+            self.SerdeParams = []
+            for item in params.get("SerdeParams"):
+                obj = KVPair()
+                obj._deserialize(item)
+                self.SerdeParams.append(obj)
+        if params.get("Params") is not None:
+            self.Params = []
+            for item in params.get("Params"):
+                obj = KVPair()
+                obj._deserialize(item)
+                self.Params.append(obj)
+        if params.get("SortCols") is not None:
+            self.SortCols = DMSColumnOrder()
+            self.SortCols._deserialize(params.get("SortCols"))
+        if params.get("Cols") is not None:
+            self.Cols = []
+            for item in params.get("Cols"):
+                obj = DMSColumn()
+                obj._deserialize(item)
+                self.Cols.append(obj)
+        if params.get("SortColumns") is not None:
+            self.SortColumns = []
+            for item in params.get("SortColumns"):
+                obj = DMSColumnOrder()
+                obj._deserialize(item)
+                self.SortColumns.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DMSTable(AbstractModel):
+    """DMSTable基本信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ViewOriginalText: 视图文本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ViewOriginalText: str
+        :param ViewExpandedText: 视图文本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ViewExpandedText: str
+        :param Retention: hive维护版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Retention: int
+        :param Sds: 存储对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Sds: :class:`tencentcloud.dlc.v20210125.models.DMSSds`
+        :param PartitionKeys: 分区列
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PartitionKeys: list of DMSColumn
+        :param Partitions: 分区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Partitions: list of DMSPartition
+        :param Type: 表类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param DbName: 数据库名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DbName: str
+        :param SchemaName: Schema名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SchemaName: str
+        :param StorageSize: 存储大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StorageSize: int
+        :param RecordCount: 记录数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecordCount: int
+        :param LifeTime: 生命周期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LifeTime: int
+        :param LastAccessTime: 最后访问时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastAccessTime: str
+        :param DataUpdateTime: 数据更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataUpdateTime: str
+        :param StructUpdateTime: 结构更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StructUpdateTime: str
+        :param Columns: 列
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Columns: list of DMSColumn
+        :param Name: 表名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        """
+        self.ViewOriginalText = None
+        self.ViewExpandedText = None
+        self.Retention = None
+        self.Sds = None
+        self.PartitionKeys = None
+        self.Partitions = None
+        self.Type = None
+        self.DbName = None
+        self.SchemaName = None
+        self.StorageSize = None
+        self.RecordCount = None
+        self.LifeTime = None
+        self.LastAccessTime = None
+        self.DataUpdateTime = None
+        self.StructUpdateTime = None
+        self.Columns = None
+        self.Name = None
+
+
+    def _deserialize(self, params):
+        self.ViewOriginalText = params.get("ViewOriginalText")
+        self.ViewExpandedText = params.get("ViewExpandedText")
+        self.Retention = params.get("Retention")
+        if params.get("Sds") is not None:
+            self.Sds = DMSSds()
+            self.Sds._deserialize(params.get("Sds"))
+        if params.get("PartitionKeys") is not None:
+            self.PartitionKeys = []
+            for item in params.get("PartitionKeys"):
+                obj = DMSColumn()
+                obj._deserialize(item)
+                self.PartitionKeys.append(obj)
+        if params.get("Partitions") is not None:
+            self.Partitions = []
+            for item in params.get("Partitions"):
+                obj = DMSPartition()
+                obj._deserialize(item)
+                self.Partitions.append(obj)
+        self.Type = params.get("Type")
+        self.DbName = params.get("DbName")
+        self.SchemaName = params.get("SchemaName")
+        self.StorageSize = params.get("StorageSize")
+        self.RecordCount = params.get("RecordCount")
+        self.LifeTime = params.get("LifeTime")
+        self.LastAccessTime = params.get("LastAccessTime")
+        self.DataUpdateTime = params.get("DataUpdateTime")
+        self.StructUpdateTime = params.get("StructUpdateTime")
+        if params.get("Columns") is not None:
+            self.Columns = []
+            for item in params.get("Columns"):
+                obj = DMSColumn()
+                obj._deserialize(item)
+                self.Columns.append(obj)
+        self.Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DMSTableInfo(AbstractModel):
+    """DMSTable信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Table: DMS表信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Table: :class:`tencentcloud.dlc.v20210125.models.DMSTable`
+        :param Asset: 基础对象信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Asset: :class:`tencentcloud.dlc.v20210125.models.Asset`
+        """
+        self.Table = None
+        self.Asset = None
+
+
+    def _deserialize(self, params):
+        if params.get("Table") is not None:
+            self.Table = DMSTable()
+            self.Table._deserialize(params.get("Table"))
+        if params.get("Asset") is not None:
+            self.Asset = Asset()
+            self.Asset._deserialize(params.get("Asset"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DataFormat(AbstractModel):
     """数据表数据格式。
 
@@ -1563,6 +2494,401 @@ class DeleteWorkGroupResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDMSDatabaseRequest(AbstractModel):
+    """DescribeDMSDatabase请求参数结构体
+
+    """
+
+
+class DescribeDMSDatabaseResponse(AbstractModel):
+    """DescribeDMSDatabase返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDMSPartitionsRequest(AbstractModel):
+    """DescribeDMSPartitions请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DatabaseName: 数据库名
+        :type DatabaseName: str
+        :param TableName: 表名称
+        :type TableName: str
+        :param SchemaName: schema名称
+        :type SchemaName: str
+        :param Name: 名称
+        :type Name: str
+        :param Values: 单个分区名称，精准匹配
+        :type Values: list of str
+        :param PartitionNames: 多个分区名称，精准匹配
+        :type PartitionNames: list of str
+        :param PartValues: 多个分区字段的匹配，模糊匹配
+        :type PartValues: list of str
+        :param Filter: 过滤SQL
+        :type Filter: str
+        :param MaxParts: 最大分区数量
+        :type MaxParts: int
+        :param Offset: 翻页跳过数量
+        :type Offset: int
+        :param Limit: 页面数量
+        :type Limit: int
+        """
+        self.DatabaseName = None
+        self.TableName = None
+        self.SchemaName = None
+        self.Name = None
+        self.Values = None
+        self.PartitionNames = None
+        self.PartValues = None
+        self.Filter = None
+        self.MaxParts = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.DatabaseName = params.get("DatabaseName")
+        self.TableName = params.get("TableName")
+        self.SchemaName = params.get("SchemaName")
+        self.Name = params.get("Name")
+        self.Values = params.get("Values")
+        self.PartitionNames = params.get("PartitionNames")
+        self.PartValues = params.get("PartValues")
+        self.Filter = params.get("Filter")
+        self.MaxParts = params.get("MaxParts")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDMSPartitionsResponse(AbstractModel):
+    """DescribeDMSPartitions返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Partitions: 分区信息
+        :type Partitions: list of DMSPartition
+        :param Total: 总数
+        :type Total: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Partitions = None
+        self.Total = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Partitions") is not None:
+            self.Partitions = []
+            for item in params.get("Partitions"):
+                obj = DMSPartition()
+                obj._deserialize(item)
+                self.Partitions.append(obj)
+        self.Total = params.get("Total")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDMSTableRequest(AbstractModel):
+    """DescribeDMSTable请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DbName: 数据库名称
+        :type DbName: str
+        :param SchemaName: 数据库schema名称
+        :type SchemaName: str
+        :param Name: 表名称
+        :type Name: str
+        :param Catalog: 数据目录
+        :type Catalog: str
+        :param Keyword: 查询关键词
+        :type Keyword: str
+        :param Pattern: 查询模式
+        :type Pattern: str
+        :param Type: 表类型
+        :type Type: str
+        """
+        self.DbName = None
+        self.SchemaName = None
+        self.Name = None
+        self.Catalog = None
+        self.Keyword = None
+        self.Pattern = None
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.DbName = params.get("DbName")
+        self.SchemaName = params.get("SchemaName")
+        self.Name = params.get("Name")
+        self.Catalog = params.get("Catalog")
+        self.Keyword = params.get("Keyword")
+        self.Pattern = params.get("Pattern")
+        self.Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDMSTableResponse(AbstractModel):
+    """DescribeDMSTable返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Asset: 基础对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Asset: :class:`tencentcloud.dlc.v20210125.models.Asset`
+        :param ViewOriginalText: 视图文本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ViewOriginalText: str
+        :param ViewExpandedText: 视图文本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ViewExpandedText: str
+        :param Retention: hive维护版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Retention: int
+        :param Sds: 存储对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Sds: :class:`tencentcloud.dlc.v20210125.models.DMSSds`
+        :param PartitionKeys: 分区列
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PartitionKeys: list of DMSColumn
+        :param Partitions: 分区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Partitions: list of DMSPartition
+        :param Type: 表类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param DbName: 数据库名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DbName: str
+        :param SchemaName: Schame名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SchemaName: str
+        :param StorageSize: 存储大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StorageSize: int
+        :param RecordCount: 记录数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecordCount: int
+        :param LifeTime: 生命周期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LifeTime: int
+        :param LastAccessTime: 最后访问时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastAccessTime: str
+        :param DataUpdateTime: 数据更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataUpdateTime: str
+        :param StructUpdateTime: 结构更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StructUpdateTime: str
+        :param Columns: 列
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Columns: list of DMSColumn
+        :param Name: 表名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Asset = None
+        self.ViewOriginalText = None
+        self.ViewExpandedText = None
+        self.Retention = None
+        self.Sds = None
+        self.PartitionKeys = None
+        self.Partitions = None
+        self.Type = None
+        self.DbName = None
+        self.SchemaName = None
+        self.StorageSize = None
+        self.RecordCount = None
+        self.LifeTime = None
+        self.LastAccessTime = None
+        self.DataUpdateTime = None
+        self.StructUpdateTime = None
+        self.Columns = None
+        self.Name = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Asset") is not None:
+            self.Asset = Asset()
+            self.Asset._deserialize(params.get("Asset"))
+        self.ViewOriginalText = params.get("ViewOriginalText")
+        self.ViewExpandedText = params.get("ViewExpandedText")
+        self.Retention = params.get("Retention")
+        if params.get("Sds") is not None:
+            self.Sds = DMSSds()
+            self.Sds._deserialize(params.get("Sds"))
+        if params.get("PartitionKeys") is not None:
+            self.PartitionKeys = []
+            for item in params.get("PartitionKeys"):
+                obj = DMSColumn()
+                obj._deserialize(item)
+                self.PartitionKeys.append(obj)
+        if params.get("Partitions") is not None:
+            self.Partitions = []
+            for item in params.get("Partitions"):
+                obj = DMSPartition()
+                obj._deserialize(item)
+                self.Partitions.append(obj)
+        self.Type = params.get("Type")
+        self.DbName = params.get("DbName")
+        self.SchemaName = params.get("SchemaName")
+        self.StorageSize = params.get("StorageSize")
+        self.RecordCount = params.get("RecordCount")
+        self.LifeTime = params.get("LifeTime")
+        self.LastAccessTime = params.get("LastAccessTime")
+        self.DataUpdateTime = params.get("DataUpdateTime")
+        self.StructUpdateTime = params.get("StructUpdateTime")
+        if params.get("Columns") is not None:
+            self.Columns = []
+            for item in params.get("Columns"):
+                obj = DMSColumn()
+                obj._deserialize(item)
+                self.Columns.append(obj)
+        self.Name = params.get("Name")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDMSTablesRequest(AbstractModel):
+    """DescribeDMSTables请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DbName: 数据库名称
+        :type DbName: str
+        :param SchemaName: 数据库schema名称
+        :type SchemaName: str
+        :param Name: 表名称
+        :type Name: str
+        :param Catalog: 数据目录
+        :type Catalog: str
+        :param Keyword: 查询关键词
+        :type Keyword: str
+        :param Pattern: 查询模式
+        :type Pattern: str
+        :param Type: 表类型
+        :type Type: str
+        :param StartTime: 筛选参数：更新开始时间
+        :type StartTime: str
+        :param EndTime: 筛选参数：更新结束时间
+        :type EndTime: str
+        :param Limit: 分页参数
+        :type Limit: int
+        :param Offset: 分页参数
+        :type Offset: int
+        :param Sort: 排序字段：create_time：创建时间
+        :type Sort: str
+        :param Asc: 排序字段：true：升序（默认），false：降序
+        :type Asc: bool
+        """
+        self.DbName = None
+        self.SchemaName = None
+        self.Name = None
+        self.Catalog = None
+        self.Keyword = None
+        self.Pattern = None
+        self.Type = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Limit = None
+        self.Offset = None
+        self.Sort = None
+        self.Asc = None
+
+
+    def _deserialize(self, params):
+        self.DbName = params.get("DbName")
+        self.SchemaName = params.get("SchemaName")
+        self.Name = params.get("Name")
+        self.Catalog = params.get("Catalog")
+        self.Keyword = params.get("Keyword")
+        self.Pattern = params.get("Pattern")
+        self.Type = params.get("Type")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.Sort = params.get("Sort")
+        self.Asc = params.get("Asc")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDMSTablesResponse(AbstractModel):
+    """DescribeDMSTables返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TableList: DMS元数据列表信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableList: list of DMSTableInfo
+        :param TotalCount: 统计值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TableList = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("TableList") is not None:
+            self.TableList = []
+            for item in params.get("TableList"):
+                obj = DMSTableInfo()
+                obj._deserialize(item)
+                self.TableList.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -2614,6 +3940,149 @@ class DetachWorkGroupPolicyResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DropDMSDatabaseRequest(AbstractModel):
+    """DropDMSDatabase请求参数结构体
+
+    """
+
+
+class DropDMSDatabaseResponse(AbstractModel):
+    """DropDMSDatabase返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DropDMSPartitionsRequest(AbstractModel):
+    """DropDMSPartitions请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DatabaseName: 数据库名称
+        :type DatabaseName: str
+        :param SchemaName: 数据库Schema名称
+        :type SchemaName: str
+        :param TableName: 数据表名称
+        :type TableName: str
+        :param Name: 分区名称
+        :type Name: str
+        :param Values: 单个分区名称
+        :type Values: list of str
+        :param DeleteData: 是否删除分区数据
+        :type DeleteData: bool
+        """
+        self.DatabaseName = None
+        self.SchemaName = None
+        self.TableName = None
+        self.Name = None
+        self.Values = None
+        self.DeleteData = None
+
+
+    def _deserialize(self, params):
+        self.DatabaseName = params.get("DatabaseName")
+        self.SchemaName = params.get("SchemaName")
+        self.TableName = params.get("TableName")
+        self.Name = params.get("Name")
+        self.Values = params.get("Values")
+        self.DeleteData = params.get("DeleteData")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DropDMSPartitionsResponse(AbstractModel):
+    """DropDMSPartitions返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Status: 状态
+        :type Status: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Status = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.RequestId = params.get("RequestId")
+
+
+class DropDMSTableRequest(AbstractModel):
+    """DropDMSTable请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DbName: 数据库名称
+        :type DbName: str
+        :param Name: 表名称
+        :type Name: str
+        :param DeleteData: 是否删除数据
+        :type DeleteData: bool
+        :param EnvProps: 环境属性
+        :type EnvProps: :class:`tencentcloud.dlc.v20210125.models.KVPair`
+        """
+        self.DbName = None
+        self.Name = None
+        self.DeleteData = None
+        self.EnvProps = None
+
+
+    def _deserialize(self, params):
+        self.DbName = params.get("DbName")
+        self.Name = params.get("Name")
+        self.DeleteData = params.get("DeleteData")
+        if params.get("EnvProps") is not None:
+            self.EnvProps = KVPair()
+            self.EnvProps._deserialize(params.get("EnvProps"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DropDMSTableResponse(AbstractModel):
+    """DropDMSTable返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class Execution(AbstractModel):
     """SQL语句对象
 
@@ -2810,6 +4279,128 @@ class ListTaskJobLogDetailResponse(AbstractModel):
                 obj = JobLogResult()
                 obj._deserialize(item)
                 self.Results.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class LockComponentInfo(AbstractModel):
+    """元数据加锁内容
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DbName: 数据库名称
+        :type DbName: str
+        :param TableName: 表名称
+        :type TableName: str
+        :param Partition: 分区
+        :type Partition: str
+        :param LockType: 锁类型：SHARED_READ、SHARED_WRITE、EXCLUSIVE
+        :type LockType: str
+        :param LockLevel: 锁级别：DB、TABLE、PARTITION
+        :type LockLevel: str
+        :param DataOperationType: 锁操作：SELECT,INSERT,UPDATE,DELETE,UNSET,NO_TXN
+        :type DataOperationType: str
+        :param IsAcid: 是否保持Acid
+        :type IsAcid: bool
+        :param IsDynamicPartitionWrite: 是否动态分区写
+        :type IsDynamicPartitionWrite: bool
+        """
+        self.DbName = None
+        self.TableName = None
+        self.Partition = None
+        self.LockType = None
+        self.LockLevel = None
+        self.DataOperationType = None
+        self.IsAcid = None
+        self.IsDynamicPartitionWrite = None
+
+
+    def _deserialize(self, params):
+        self.DbName = params.get("DbName")
+        self.TableName = params.get("TableName")
+        self.Partition = params.get("Partition")
+        self.LockType = params.get("LockType")
+        self.LockLevel = params.get("LockLevel")
+        self.DataOperationType = params.get("DataOperationType")
+        self.IsAcid = params.get("IsAcid")
+        self.IsDynamicPartitionWrite = params.get("IsDynamicPartitionWrite")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LockMetaDataRequest(AbstractModel):
+    """LockMetaData请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LockComponentList: 加锁内容
+        :type LockComponentList: list of LockComponentInfo
+        :param DatasourceConnectionName: 数据源名称
+        :type DatasourceConnectionName: str
+        :param TxnId: 事务id
+        :type TxnId: int
+        :param AgentInfo: 客户端信息
+        :type AgentInfo: str
+        :param Hostname: 主机名
+        :type Hostname: str
+        """
+        self.LockComponentList = None
+        self.DatasourceConnectionName = None
+        self.TxnId = None
+        self.AgentInfo = None
+        self.Hostname = None
+
+
+    def _deserialize(self, params):
+        if params.get("LockComponentList") is not None:
+            self.LockComponentList = []
+            for item in params.get("LockComponentList"):
+                obj = LockComponentInfo()
+                obj._deserialize(item)
+                self.LockComponentList.append(obj)
+        self.DatasourceConnectionName = params.get("DatasourceConnectionName")
+        self.TxnId = params.get("TxnId")
+        self.AgentInfo = params.get("AgentInfo")
+        self.Hostname = params.get("Hostname")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LockMetaDataResponse(AbstractModel):
+    """LockMetaData返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LockId: 锁id
+        :type LockId: int
+        :param LockState: 锁状态：ACQUIRED、WAITING、ABORT、NOT_ACQUIRED
+        :type LockState: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.LockId = None
+        self.LockState = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.LockId = params.get("LockId")
+        self.LockState = params.get("LockState")
         self.RequestId = params.get("RequestId")
 
 
@@ -4090,6 +5681,51 @@ class UnbindWorkGroupsFromUserRequest(AbstractModel):
 
 class UnbindWorkGroupsFromUserResponse(AbstractModel):
     """UnbindWorkGroupsFromUser返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UnlockMetaDataRequest(AbstractModel):
+    """UnlockMetaData请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LockId: 锁ID
+        :type LockId: int
+        :param DatasourceConnectionName: 数据源名称
+        :type DatasourceConnectionName: str
+        """
+        self.LockId = None
+        self.DatasourceConnectionName = None
+
+
+    def _deserialize(self, params):
+        self.LockId = params.get("LockId")
+        self.DatasourceConnectionName = params.get("DatasourceConnectionName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UnlockMetaDataResponse(AbstractModel):
+    """UnlockMetaData返回参数结构体
 
     """
 

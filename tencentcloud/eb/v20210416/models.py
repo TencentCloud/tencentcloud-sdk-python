@@ -863,6 +863,50 @@ class DeleteTransformationResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ESTargetParams(AbstractModel):
+    """描述Es规则目标
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NetMode: 网络连接类型
+        :type NetMode: str
+        :param IndexPrefix: 索引前缀
+        :type IndexPrefix: str
+        :param RotationInterval: es日志轮换粒度
+        :type RotationInterval: str
+        :param OutputMode: DTS事件配置
+        :type OutputMode: str
+        :param IndexSuffixMode: DTS索引配置
+        :type IndexSuffixMode: str
+        :param IndexTemplateType: es模版类型
+        :type IndexTemplateType: str
+        """
+        self.NetMode = None
+        self.IndexPrefix = None
+        self.RotationInterval = None
+        self.OutputMode = None
+        self.IndexSuffixMode = None
+        self.IndexTemplateType = None
+
+
+    def _deserialize(self, params):
+        self.NetMode = params.get("NetMode")
+        self.IndexPrefix = params.get("IndexPrefix")
+        self.RotationInterval = params.get("RotationInterval")
+        self.OutputMode = params.get("OutputMode")
+        self.IndexSuffixMode = params.get("IndexSuffixMode")
+        self.IndexTemplateType = params.get("IndexTemplateType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class EtlFilter(AbstractModel):
     """描述如何过滤数据
 
@@ -1897,10 +1941,13 @@ class TargetDescription(AbstractModel):
         :type SCFParams: :class:`tencentcloud.eb.v20210416.models.SCFParams`
         :param CkafkaTargetParams: Ckafka参数
         :type CkafkaTargetParams: :class:`tencentcloud.eb.v20210416.models.CkafkaTargetParams`
+        :param ESTargetParams: ElasticSearch参数
+        :type ESTargetParams: :class:`tencentcloud.eb.v20210416.models.ESTargetParams`
         """
         self.ResourceDescription = None
         self.SCFParams = None
         self.CkafkaTargetParams = None
+        self.ESTargetParams = None
 
 
     def _deserialize(self, params):
@@ -1911,6 +1958,9 @@ class TargetDescription(AbstractModel):
         if params.get("CkafkaTargetParams") is not None:
             self.CkafkaTargetParams = CkafkaTargetParams()
             self.CkafkaTargetParams._deserialize(params.get("CkafkaTargetParams"))
+        if params.get("ESTargetParams") is not None:
+            self.ESTargetParams = ESTargetParams()
+            self.ESTargetParams._deserialize(params.get("ESTargetParams"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

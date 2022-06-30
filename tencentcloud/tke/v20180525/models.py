@@ -820,6 +820,8 @@ ipvs-bpf模式: 设置KubeProxyMode为kube-proxy-bpf
         :type BasePodNumber: int
         :param CiliumMode: 启用 CiliumMode 的模式，空值表示不启用，“clusterIP” 表示启用 Cilium 支持 ClusterIP
         :type CiliumMode: str
+        :param IsDualStack: 集群VPC-CNI模式下是否是双栈集群，默认false，表明非双栈集群。
+        :type IsDualStack: bool
         """
         self.IPVS = None
         self.AsEnabled = None
@@ -838,6 +840,7 @@ ipvs-bpf模式: 设置KubeProxyMode为kube-proxy-bpf
         self.EnableCustomizedPodCIDR = None
         self.BasePodNumber = None
         self.CiliumMode = None
+        self.IsDualStack = None
 
 
     def _deserialize(self, params):
@@ -860,6 +863,7 @@ ipvs-bpf模式: 设置KubeProxyMode为kube-proxy-bpf
         self.EnableCustomizedPodCIDR = params.get("EnableCustomizedPodCIDR")
         self.BasePodNumber = params.get("BasePodNumber")
         self.CiliumMode = params.get("CiliumMode")
+        self.IsDualStack = params.get("IsDualStack")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2914,6 +2918,105 @@ class CreatePrometheusAlertRuleResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreatePrometheusClusterAgentRequest(AbstractModel):
+    """CreatePrometheusClusterAgent请求参数结构体
+
+    """
+
+
+class CreatePrometheusClusterAgentResponse(AbstractModel):
+    """CreatePrometheusClusterAgent返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreatePrometheusConfigRequest(AbstractModel):
+    """CreatePrometheusConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例id
+        :type InstanceId: str
+        :param ClusterType: 集群类型
+        :type ClusterType: str
+        :param ClusterId: 集群id
+        :type ClusterId: str
+        :param ServiceMonitors: ServiceMonitors配置
+        :type ServiceMonitors: list of PrometheusConfigItem
+        :param PodMonitors: PodMonitors配置
+        :type PodMonitors: list of PrometheusConfigItem
+        :param RawJobs: prometheus原生Job配置
+        :type RawJobs: list of PrometheusConfigItem
+        """
+        self.InstanceId = None
+        self.ClusterType = None
+        self.ClusterId = None
+        self.ServiceMonitors = None
+        self.PodMonitors = None
+        self.RawJobs = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.ClusterType = params.get("ClusterType")
+        self.ClusterId = params.get("ClusterId")
+        if params.get("ServiceMonitors") is not None:
+            self.ServiceMonitors = []
+            for item in params.get("ServiceMonitors"):
+                obj = PrometheusConfigItem()
+                obj._deserialize(item)
+                self.ServiceMonitors.append(obj)
+        if params.get("PodMonitors") is not None:
+            self.PodMonitors = []
+            for item in params.get("PodMonitors"):
+                obj = PrometheusConfigItem()
+                obj._deserialize(item)
+                self.PodMonitors.append(obj)
+        if params.get("RawJobs") is not None:
+            self.RawJobs = []
+            for item in params.get("RawJobs"):
+                obj = PrometheusConfigItem()
+                obj._deserialize(item)
+                self.RawJobs.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreatePrometheusConfigResponse(AbstractModel):
+    """CreatePrometheusConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CreatePrometheusDashboardRequest(AbstractModel):
     """CreatePrometheusDashboard请求参数结构体
 
@@ -3013,6 +3116,51 @@ class CreatePrometheusGlobalNotificationResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.Id = params.get("Id")
+        self.RequestId = params.get("RequestId")
+
+
+class CreatePrometheusRecordRuleYamlRequest(AbstractModel):
+    """CreatePrometheusRecordRuleYaml请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例id
+        :type InstanceId: str
+        :param Content: yaml的内容
+        :type Content: str
+        """
+        self.InstanceId = None
+        self.Content = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Content = params.get("Content")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreatePrometheusRecordRuleYamlResponse(AbstractModel):
+    """CreatePrometheusRecordRuleYaml返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -4048,6 +4196,135 @@ class DeletePrometheusAlertRuleRequest(AbstractModel):
 
 class DeletePrometheusAlertRuleResponse(AbstractModel):
     """DeletePrometheusAlertRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeletePrometheusClusterAgentRequest(AbstractModel):
+    """DeletePrometheusClusterAgent请求参数结构体
+
+    """
+
+
+class DeletePrometheusClusterAgentResponse(AbstractModel):
+    """DeletePrometheusClusterAgent返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeletePrometheusConfigRequest(AbstractModel):
+    """DeletePrometheusConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例id
+        :type InstanceId: str
+        :param ClusterType: 集群类型
+        :type ClusterType: str
+        :param ClusterId: 集群id
+        :type ClusterId: str
+        :param ServiceMonitors: 要删除的ServiceMonitor名字列表
+        :type ServiceMonitors: list of str
+        :param PodMonitors: 要删除的PodMonitor名字列表
+        :type PodMonitors: list of str
+        :param RawJobs: 要删除的RawJobs名字列表
+        :type RawJobs: list of str
+        """
+        self.InstanceId = None
+        self.ClusterType = None
+        self.ClusterId = None
+        self.ServiceMonitors = None
+        self.PodMonitors = None
+        self.RawJobs = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.ClusterType = params.get("ClusterType")
+        self.ClusterId = params.get("ClusterId")
+        self.ServiceMonitors = params.get("ServiceMonitors")
+        self.PodMonitors = params.get("PodMonitors")
+        self.RawJobs = params.get("RawJobs")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeletePrometheusConfigResponse(AbstractModel):
+    """DeletePrometheusConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeletePrometheusRecordRuleYamlRequest(AbstractModel):
+    """DeletePrometheusRecordRuleYaml请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例id
+        :type InstanceId: str
+        :param Names: 聚合规则列表
+        :type Names: list of str
+        """
+        self.InstanceId = None
+        self.Names = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Names = params.get("Names")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeletePrometheusRecordRuleYamlResponse(AbstractModel):
+    """DeletePrometheusRecordRuleYaml返回参数结构体
 
     """
 
@@ -6882,6 +7159,165 @@ class DescribePrometheusClusterAgentsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribePrometheusConfigRequest(AbstractModel):
+    """DescribePrometheusConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例id
+        :type InstanceId: str
+        :param ClusterId: 集群id
+        :type ClusterId: str
+        :param ClusterType: 集群类型
+        :type ClusterType: str
+        """
+        self.InstanceId = None
+        self.ClusterId = None
+        self.ClusterType = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.ClusterId = params.get("ClusterId")
+        self.ClusterType = params.get("ClusterType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePrometheusConfigResponse(AbstractModel):
+    """DescribePrometheusConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Config: 全局配置
+        :type Config: str
+        :param ServiceMonitors: ServiceMonitor配置
+        :type ServiceMonitors: list of PrometheusConfigItem
+        :param PodMonitors: PodMonitor配置
+        :type PodMonitors: list of PrometheusConfigItem
+        :param RawJobs: 原生Job
+        :type RawJobs: list of PrometheusConfigItem
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Config = None
+        self.ServiceMonitors = None
+        self.PodMonitors = None
+        self.RawJobs = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Config = params.get("Config")
+        if params.get("ServiceMonitors") is not None:
+            self.ServiceMonitors = []
+            for item in params.get("ServiceMonitors"):
+                obj = PrometheusConfigItem()
+                obj._deserialize(item)
+                self.ServiceMonitors.append(obj)
+        if params.get("PodMonitors") is not None:
+            self.PodMonitors = []
+            for item in params.get("PodMonitors"):
+                obj = PrometheusConfigItem()
+                obj._deserialize(item)
+                self.PodMonitors.append(obj)
+        if params.get("RawJobs") is not None:
+            self.RawJobs = []
+            for item in params.get("RawJobs"):
+                obj = PrometheusConfigItem()
+                obj._deserialize(item)
+                self.RawJobs.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribePrometheusGlobalConfigRequest(AbstractModel):
+    """DescribePrometheusGlobalConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例级别抓取配置
+        :type InstanceId: str
+        :param DisableStatistics: 是否禁用统计
+        :type DisableStatistics: bool
+        """
+        self.InstanceId = None
+        self.DisableStatistics = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.DisableStatistics = params.get("DisableStatistics")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePrometheusGlobalConfigResponse(AbstractModel):
+    """DescribePrometheusGlobalConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Config: 配置内容
+        :type Config: str
+        :param ServiceMonitors: ServiceMonitors列表以及对应targets信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceMonitors: list of PrometheusConfigItem
+        :param PodMonitors: PodMonitors列表以及对应targets信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PodMonitors: list of PrometheusConfigItem
+        :param RawJobs: RawJobs列表以及对应targets信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RawJobs: list of PrometheusConfigItem
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Config = None
+        self.ServiceMonitors = None
+        self.PodMonitors = None
+        self.RawJobs = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Config = params.get("Config")
+        if params.get("ServiceMonitors") is not None:
+            self.ServiceMonitors = []
+            for item in params.get("ServiceMonitors"):
+                obj = PrometheusConfigItem()
+                obj._deserialize(item)
+                self.ServiceMonitors.append(obj)
+        if params.get("PodMonitors") is not None:
+            self.PodMonitors = []
+            for item in params.get("PodMonitors"):
+                obj = PrometheusConfigItem()
+                obj._deserialize(item)
+                self.PodMonitors.append(obj)
+        if params.get("RawJobs") is not None:
+            self.RawJobs = []
+            for item in params.get("RawJobs"):
+                obj = PrometheusConfigItem()
+                obj._deserialize(item)
+                self.RawJobs.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribePrometheusGlobalNotificationRequest(AbstractModel):
     """DescribePrometheusGlobalNotification请求参数结构体
 
@@ -6927,6 +7363,29 @@ class DescribePrometheusGlobalNotificationResponse(AbstractModel):
         if params.get("Notification") is not None:
             self.Notification = PrometheusNotificationItem()
             self.Notification._deserialize(params.get("Notification"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribePrometheusInstanceInitStatusRequest(AbstractModel):
+    """DescribePrometheusInstanceInitStatus请求参数结构体
+
+    """
+
+
+class DescribePrometheusInstanceInitStatusResponse(AbstractModel):
+    """DescribePrometheusInstanceInitStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -11308,6 +11767,60 @@ class ModifyNodePoolInstanceTypesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyPrometheusAgentExternalLabelsRequest(AbstractModel):
+    """ModifyPrometheusAgentExternalLabels请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param ExternalLabels: 新的external_labels
+        :type ExternalLabels: list of Label
+        """
+        self.InstanceId = None
+        self.ClusterId = None
+        self.ExternalLabels = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.ClusterId = params.get("ClusterId")
+        if params.get("ExternalLabels") is not None:
+            self.ExternalLabels = []
+            for item in params.get("ExternalLabels"):
+                obj = Label()
+                obj._deserialize(item)
+                self.ExternalLabels.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyPrometheusAgentExternalLabelsResponse(AbstractModel):
+    """ModifyPrometheusAgentExternalLabels返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyPrometheusAlertPolicyRequest(AbstractModel):
     """ModifyPrometheusAlertPolicy请求参数结构体
 
@@ -11402,6 +11915,82 @@ class ModifyPrometheusAlertRuleResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyPrometheusConfigRequest(AbstractModel):
+    """ModifyPrometheusConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例id
+        :type InstanceId: str
+        :param ClusterType: 集群类型
+        :type ClusterType: str
+        :param ClusterId: 集群id
+        :type ClusterId: str
+        :param ServiceMonitors: ServiceMonitors配置
+        :type ServiceMonitors: list of PrometheusConfigItem
+        :param PodMonitors: PodMonitors配置
+        :type PodMonitors: list of PrometheusConfigItem
+        :param RawJobs: prometheus原生Job配置
+        :type RawJobs: list of PrometheusConfigItem
+        """
+        self.InstanceId = None
+        self.ClusterType = None
+        self.ClusterId = None
+        self.ServiceMonitors = None
+        self.PodMonitors = None
+        self.RawJobs = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.ClusterType = params.get("ClusterType")
+        self.ClusterId = params.get("ClusterId")
+        if params.get("ServiceMonitors") is not None:
+            self.ServiceMonitors = []
+            for item in params.get("ServiceMonitors"):
+                obj = PrometheusConfigItem()
+                obj._deserialize(item)
+                self.ServiceMonitors.append(obj)
+        if params.get("PodMonitors") is not None:
+            self.PodMonitors = []
+            for item in params.get("PodMonitors"):
+                obj = PrometheusConfigItem()
+                obj._deserialize(item)
+                self.PodMonitors.append(obj)
+        if params.get("RawJobs") is not None:
+            self.RawJobs = []
+            for item in params.get("RawJobs"):
+                obj = PrometheusConfigItem()
+                obj._deserialize(item)
+                self.RawJobs.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyPrometheusConfigResponse(AbstractModel):
+    """ModifyPrometheusConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyPrometheusGlobalNotificationRequest(AbstractModel):
     """ModifyPrometheusGlobalNotification请求参数结构体
 
@@ -11434,6 +12023,55 @@ class ModifyPrometheusGlobalNotificationRequest(AbstractModel):
 
 class ModifyPrometheusGlobalNotificationResponse(AbstractModel):
     """ModifyPrometheusGlobalNotification返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyPrometheusRecordRuleYamlRequest(AbstractModel):
+    """ModifyPrometheusRecordRuleYaml请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例id
+        :type InstanceId: str
+        :param Name: 聚合实例名称
+        :type Name: str
+        :param Content: 新的内容
+        :type Content: str
+        """
+        self.InstanceId = None
+        self.Name = None
+        self.Content = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Name = params.get("Name")
+        self.Content = params.get("Content")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyPrometheusRecordRuleYamlResponse(AbstractModel):
+    """ModifyPrometheusRecordRuleYaml返回参数结构体
 
     """
 
@@ -13640,6 +14278,29 @@ class RunMonitorServiceEnabled(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class RunPrometheusInstanceRequest(AbstractModel):
+    """RunPrometheusInstance请求参数结构体
+
+    """
+
+
+class RunPrometheusInstanceResponse(AbstractModel):
+    """RunPrometheusInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class RunSecurityServiceEnabled(AbstractModel):

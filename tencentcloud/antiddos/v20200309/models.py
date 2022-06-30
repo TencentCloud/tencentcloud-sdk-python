@@ -102,6 +102,46 @@ class AclConfigRelation(AbstractModel):
         
 
 
+class AnycastOutPackRelation(AbstractModel):
+    """Anycast转外套餐详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NormalBandwidth: 业务带宽(单位M)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NormalBandwidth: int
+        :param ForwardRulesLimit: 转发规则数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ForwardRulesLimit: int
+        :param AutoRenewFlag: 自动续费标记
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AutoRenewFlag: int
+        :param CurDeadline: 到期时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CurDeadline: str
+        """
+        self.NormalBandwidth = None
+        self.ForwardRulesLimit = None
+        self.AutoRenewFlag = None
+        self.CurDeadline = None
+
+
+    def _deserialize(self, params):
+        self.NormalBandwidth = params.get("NormalBandwidth")
+        self.ForwardRulesLimit = params.get("ForwardRulesLimit")
+        self.AutoRenewFlag = params.get("AutoRenewFlag")
+        self.CurDeadline = params.get("CurDeadline")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AssociateDDoSEipAddressRequest(AbstractModel):
     """AssociateDDoSEipAddress请求参数结构体
 
@@ -283,6 +323,10 @@ class BGPIPInstance(AbstractModel):
         :param TagInfoList: 资源关联标签
 注意：此字段可能返回 null，表示取不到有效值。
         :type TagInfoList: list of TagInfo
+        :param AnycastOutPackRelation: 资产实例所属的全力防护套餐包详情，
+注意：当资产实例不是全力防护套餐包的实例时，此字段为null
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AnycastOutPackRelation: :class:`tencentcloud.antiddos.v20200309.models.AnycastOutPackRelation`
         """
         self.InstanceDetail = None
         self.SpecificationLimit = None
@@ -305,6 +349,7 @@ class BGPIPInstance(AbstractModel):
         self.V6Flag = None
         self.BGPIPChannelFlag = None
         self.TagInfoList = None
+        self.AnycastOutPackRelation = None
 
 
     def _deserialize(self, params):
@@ -350,6 +395,9 @@ class BGPIPInstance(AbstractModel):
                 obj = TagInfo()
                 obj._deserialize(item)
                 self.TagInfoList.append(obj)
+        if params.get("AnycastOutPackRelation") is not None:
+            self.AnycastOutPackRelation = AnycastOutPackRelation()
+            self.AnycastOutPackRelation._deserialize(params.get("AnycastOutPackRelation"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -495,6 +543,8 @@ class BGPInstance(AbstractModel):
         :type CCEnable: int
         :param TagInfoList: 资源关联标签
         :type TagInfoList: list of TagInfo
+        :param IpCountNewFlag: 新版本1ip高防包
+        :type IpCountNewFlag: int
         """
         self.InstanceDetail = None
         self.SpecificationLimit = None
@@ -510,6 +560,7 @@ class BGPInstance(AbstractModel):
         self.DDoSLevel = None
         self.CCEnable = None
         self.TagInfoList = None
+        self.IpCountNewFlag = None
 
 
     def _deserialize(self, params):
@@ -547,6 +598,7 @@ class BGPInstance(AbstractModel):
                 obj = TagInfo()
                 obj._deserialize(item)
                 self.TagInfoList.append(obj)
+        self.IpCountNewFlag = params.get("IpCountNewFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4516,6 +4568,8 @@ class DescribeListBGPIPInstancesRequest(AbstractModel):
         :type FilterInstanceIdList: list of str
         :param FilterTag: 标签搜索
         :type FilterTag: :class:`tencentcloud.antiddos.v20200309.models.TagFilter`
+        :param FilterPackType: 按照套餐类型进行过滤
+        :type FilterPackType: list of str
         """
         self.Offset = None
         self.Limit = None
@@ -4531,6 +4585,7 @@ class DescribeListBGPIPInstancesRequest(AbstractModel):
         self.FilterCname = None
         self.FilterInstanceIdList = None
         self.FilterTag = None
+        self.FilterPackType = None
 
 
     def _deserialize(self, params):
@@ -4550,6 +4605,7 @@ class DescribeListBGPIPInstancesRequest(AbstractModel):
         if params.get("FilterTag") is not None:
             self.FilterTag = TagFilter()
             self.FilterTag._deserialize(params.get("FilterTag"))
+        self.FilterPackType = params.get("FilterPackType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

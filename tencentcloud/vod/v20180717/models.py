@@ -1089,7 +1089,7 @@ class AiAnalysisTaskTagResult(AbstractModel):
 
 
 class AiContentReviewResult(AbstractModel):
-    """智能识别结果
+    """音视频审核结果
 
     """
 
@@ -1107,34 +1107,34 @@ class AiContentReviewResult(AbstractModel):
 <li>Prohibited.Asr：Asr 文字（ 音频中的文字）鉴违禁</li>
 <li>Prohibited.Ocr：Ocr 文字鉴违禁</li>
         :type Type: str
-        :param PornTask: 视频智能识别任务（画面涉及令人反感的信息）的查询结果，当任务类型为 Porn 时有效。
+        :param PornTask: 视频音视频审核任务（画面涉及令人反感的信息）的查询结果，当任务类型为 Porn 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PornTask: :class:`tencentcloud.vod.v20180717.models.AiReviewTaskPornResult`
-        :param TerrorismTask: 视频智能识别任务（画面涉及令人不安全的信息）的查询结果，当任务类型为 Terrorism 时有效。
+        :param TerrorismTask: 视频音视频审核任务（画面涉及令人不安全的信息）的查询结果，当任务类型为 Terrorism 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TerrorismTask: :class:`tencentcloud.vod.v20180717.models.AiReviewTaskTerrorismResult`
-        :param PoliticalTask: 视频智能识别任务（画面涉及令人不适宜的信息）的查询结果，当任务类型为 Political 时有效。
+        :param PoliticalTask: 视频音视频审核任务（画面涉及令人不适宜的信息）的查询结果，当任务类型为 Political 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PoliticalTask: :class:`tencentcloud.vod.v20180717.models.AiReviewTaskPoliticalResult`
-        :param PornAsrTask: 视频智能识别任务（Asr 文字涉及令人反感的信息）的查询结果，当任务类型为 Porn.Asr 时有效。
+        :param PornAsrTask: 视频音视频审核任务（Asr 文字涉及令人反感的信息）的查询结果，当任务类型为 Porn.Asr 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PornAsrTask: :class:`tencentcloud.vod.v20180717.models.AiReviewTaskPornAsrResult`
-        :param PornOcrTask: 视频智能识别任务（Ocr 文字涉及令人反感的信息）的查询结果，当任务类型为 Porn.Ocr 时有效。
+        :param PornOcrTask: 视频音视频审核任务（Ocr 文字涉及令人反感的信息）的查询结果，当任务类型为 Porn.Ocr 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PornOcrTask: :class:`tencentcloud.vod.v20180717.models.AiReviewTaskPornOcrResult`
-        :param PoliticalAsrTask: 视频智能识别任务（Asr 文字涉及令人不适宜的信息）的查询结果，当任务类型为 Political.Asr 时有效。
+        :param PoliticalAsrTask: 视频音视频审核任务（Asr 文字涉及令人不适宜的信息）的查询结果，当任务类型为 Political.Asr 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PoliticalAsrTask: :class:`tencentcloud.vod.v20180717.models.AiReviewTaskPoliticalAsrResult`
-        :param PoliticalOcrTask: 视频智能识别任务（Ocr 文字涉及令人不适宜的信息）的查询结果，当任务类型为 Political.Ocr 时有效。
+        :param PoliticalOcrTask: 视频音视频审核任务（Ocr 文字涉及令人不适宜的信息）的查询结果，当任务类型为 Political.Ocr 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PoliticalOcrTask: :class:`tencentcloud.vod.v20180717.models.AiReviewTaskPoliticalOcrResult`
-        :param TerrorismOcrTask: 视频智能识别任务（ Ocr 文字涉及令人不安全的信息）的查询结果，当任务类型为 Terrorism.Ocr 时有效。
+        :param TerrorismOcrTask: 视频音视频审核任务（ Ocr 文字涉及令人不安全的信息）的查询结果，当任务类型为 Terrorism.Ocr 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TerrorismOcrTask: :class:`tencentcloud.vod.v20180717.models.AiReviewTaskTerrorismOcrResult`
-        :param ProhibitedOcrTask: 视频智能识别 Ocr 文字鉴违禁任务的查询结果，当任务类型为 Prohibited.Ocr 时有效。
+        :param ProhibitedOcrTask: 视频音视频审核 Ocr 文字鉴违禁任务的查询结果，当任务类型为 Prohibited.Ocr 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProhibitedOcrTask: :class:`tencentcloud.vod.v20180717.models.AiReviewTaskProhibitedOcrResult`
-        :param ProhibitedAsrTask: 视频智能识别 Asr 文字鉴违禁任务的查询结果，当任务类型为 Prohibited.Asr 时有效。
+        :param ProhibitedAsrTask: 视频音视频审核 Asr 文字鉴违禁任务的查询结果，当任务类型为 Prohibited.Asr 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProhibitedAsrTask: :class:`tencentcloud.vod.v20180717.models.AiReviewTaskProhibitedAsrResult`
         """
@@ -1193,13 +1193,13 @@ class AiContentReviewResult(AbstractModel):
 
 
 class AiContentReviewTaskInput(AbstractModel):
-    """智能识别任务类型
+    """音视频审核任务类型
 
     """
 
     def __init__(self):
         r"""
-        :param Definition: 智能识别模板 ID。
+        :param Definition: 音视频审核模板 ID。
         :type Definition: int
         """
         self.Definition = None
@@ -2662,7 +2662,7 @@ class AiRecognitionTaskSegmentSegmentItem(AbstractModel):
 
 
 class AiReviewPoliticalAsrTaskInput(AbstractModel):
-    """智能识别 Asr 文字涉及令人不适宜的信息、违规任务输入参数类型
+    """音视频审核 Asr 文字涉及令人不适宜的信息、违规任务输入参数类型
 
     """
 
@@ -2735,7 +2735,7 @@ class AiReviewPoliticalAsrTaskOutput(AbstractModel):
 
 
 class AiReviewPoliticalOcrTaskInput(AbstractModel):
-    """智能识别 Ocr 文字涉及令人不适宜信息的任务输入参数类型
+    """音视频审核 Ocr 文字涉及令人不适宜信息的任务输入参数类型
 
     """
 
@@ -2808,7 +2808,7 @@ class AiReviewPoliticalOcrTaskOutput(AbstractModel):
 
 
 class AiReviewPoliticalTaskInput(AbstractModel):
-    """智能识别涉及令人不适宜信息的任务输入参数类型
+    """音视频审核涉及令人不适宜信息的任务输入参数类型
 
     """
 
@@ -2845,7 +2845,7 @@ class AiReviewPoliticalTaskOutput(AbstractModel):
 <li>review。</li>
 <li>block。</li>
         :type Suggestion: str
-        :param Label: 视频涉及令人不适宜信息的结果标签。智能识别模板[画面鉴政任务控制参数](https://cloud.tencent.com/document/api/266/31773#PoliticalImgReviewTemplateInfo)里 LabelSet 参数与此参数取值范围的对应关系：
+        :param Label: 视频涉及令人不适宜信息的结果标签。音视频审核模板[画面鉴政任务控制参数](https://cloud.tencent.com/document/api/266/31773#PoliticalImgReviewTemplateInfo)里 LabelSet 参数与此参数取值范围的对应关系：
 violation_photo：
 <li>violation_photo：违规图标。</li>
 其他（即 politician/entertainment/sport/entrepreneur/scholar/celebrity/military）：
@@ -2889,7 +2889,7 @@ violation_photo：
 
 
 class AiReviewPornAsrTaskInput(AbstractModel):
-    """智能识别 Asr 文字涉及令人反感的信息的任务输入参数类型
+    """音视频审核 Asr 文字涉及令人反感的信息的任务输入参数类型
 
     """
 
@@ -2962,7 +2962,7 @@ class AiReviewPornAsrTaskOutput(AbstractModel):
 
 
 class AiReviewPornOcrTaskInput(AbstractModel):
-    """智能识别 Ocr 文字涉及令人反感的信息的任务输入参数类型
+    """音视频审核 Ocr 文字涉及令人反感的信息的任务输入参数类型
 
     """
 
@@ -3035,7 +3035,7 @@ class AiReviewPornOcrTaskOutput(AbstractModel):
 
 
 class AiReviewPornTaskInput(AbstractModel):
-    """智能识别涉及令人反感的信息的任务输入参数类型
+    """音视频审核涉及令人反感的信息的任务输入参数类型
 
     """
 
@@ -3116,7 +3116,7 @@ class AiReviewPornTaskOutput(AbstractModel):
 
 
 class AiReviewProhibitedAsrTaskInput(AbstractModel):
-    """智能识别 Asr 文字鉴违禁任务输入参数类型
+    """音视频审核 Asr 文字鉴违禁任务输入参数类型
 
     """
 
@@ -3189,7 +3189,7 @@ class AiReviewProhibitedAsrTaskOutput(AbstractModel):
 
 
 class AiReviewProhibitedOcrTaskInput(AbstractModel):
-    """智能识别 Ocr 文字鉴违禁任务输入参数类型
+    """音视频审核 Ocr 文字鉴违禁任务输入参数类型
 
     """
 
@@ -3262,7 +3262,7 @@ class AiReviewProhibitedOcrTaskOutput(AbstractModel):
 
 
 class AiReviewTaskPoliticalAsrResult(AbstractModel):
-    """智能识别 Asr 文字涉及令人不适宜信息、违规任务结果类型
+    """音视频审核 Asr 文字涉及令人不适宜信息、违规任务结果类型
 
     """
 
@@ -3276,9 +3276,9 @@ class AiReviewTaskPoliticalAsrResult(AbstractModel):
         :type ErrCode: int
         :param Message: 错误信息。
         :type Message: str
-        :param Input: 智能识别 Asr 文字涉及令人不适宜信息的任务输入。
+        :param Input: 音视频审核 Asr 文字涉及令人不适宜信息的任务输入。
         :type Input: :class:`tencentcloud.vod.v20180717.models.AiReviewPoliticalAsrTaskInput`
-        :param Output: 智能识别 Asr 文字涉及令人不适宜信息的任务输出。
+        :param Output: 音视频审核 Asr 文字涉及令人不适宜信息的任务输出。
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiReviewPoliticalAsrTaskOutput`
         """
         self.Status = None
@@ -3310,7 +3310,7 @@ class AiReviewTaskPoliticalAsrResult(AbstractModel):
 
 
 class AiReviewTaskPoliticalOcrResult(AbstractModel):
-    """智能识别 Ocr 文字涉及令人不适宜信息、违规任务结果类型
+    """音视频审核 Ocr 文字涉及令人不适宜信息、违规任务结果类型
 
     """
 
@@ -3324,9 +3324,9 @@ class AiReviewTaskPoliticalOcrResult(AbstractModel):
         :type ErrCode: int
         :param Message: 错误信息。
         :type Message: str
-        :param Input: 智能识别 Ocr 文字涉及令人不适宜信息的任务输入。
+        :param Input: 音视频审核 Ocr 文字涉及令人不适宜信息的任务输入。
         :type Input: :class:`tencentcloud.vod.v20180717.models.AiReviewPoliticalOcrTaskInput`
-        :param Output: 智能识别 Ocr 文字涉及令人不适宜信息的任务输出。
+        :param Output: 音视频审核 Ocr 文字涉及令人不适宜信息的任务输出。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiReviewPoliticalOcrTaskOutput`
         """
@@ -3359,7 +3359,7 @@ class AiReviewTaskPoliticalOcrResult(AbstractModel):
 
 
 class AiReviewTaskPoliticalResult(AbstractModel):
-    """智能识别涉及令人不适宜信息的任务结果类型
+    """音视频审核涉及令人不适宜信息的任务结果类型
 
     """
 
@@ -3373,9 +3373,9 @@ class AiReviewTaskPoliticalResult(AbstractModel):
         :type ErrCode: int
         :param Message: 错误信息。
         :type Message: str
-        :param Input: 智能识别涉及令人不适宜信息的任务输入。
+        :param Input: 音视频审核涉及令人不适宜信息的任务输入。
         :type Input: :class:`tencentcloud.vod.v20180717.models.AiReviewPoliticalTaskInput`
-        :param Output: 智能识别涉及令人不适宜信息的任务输出。
+        :param Output: 音视频审核涉及令人不适宜信息的任务输出。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiReviewPoliticalTaskOutput`
         """
@@ -3408,7 +3408,7 @@ class AiReviewTaskPoliticalResult(AbstractModel):
 
 
 class AiReviewTaskPornAsrResult(AbstractModel):
-    """智能识别 Asr 文字涉及令人反感的信息的任务结果类型
+    """音视频审核 Asr 文字涉及令人反感的信息的任务结果类型
 
     """
 
@@ -3422,9 +3422,9 @@ class AiReviewTaskPornAsrResult(AbstractModel):
         :type ErrCode: int
         :param Message: 错误信息。
         :type Message: str
-        :param Input: 智能识别 Asr 文字涉及令人反感的信息的任务输入。
+        :param Input: 音视频审核 Asr 文字涉及令人反感的信息的任务输入。
         :type Input: :class:`tencentcloud.vod.v20180717.models.AiReviewPornAsrTaskInput`
-        :param Output: 智能识别 Asr 文字涉及令人反感的信息的任务输出。
+        :param Output: 音视频审核 Asr 文字涉及令人反感的信息的任务输出。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiReviewPornAsrTaskOutput`
         """
@@ -3457,7 +3457,7 @@ class AiReviewTaskPornAsrResult(AbstractModel):
 
 
 class AiReviewTaskPornOcrResult(AbstractModel):
-    """智能识别 Ocr 文字涉及令人反感的信息的任务结果类型
+    """音视频审核 Ocr 文字涉及令人反感的信息的任务结果类型
 
     """
 
@@ -3471,9 +3471,9 @@ class AiReviewTaskPornOcrResult(AbstractModel):
         :type ErrCode: int
         :param Message: 错误信息。
         :type Message: str
-        :param Input: 智能识别 Ocr 文字涉及令人反感的信息的任务输入。
+        :param Input: 音视频审核 Ocr 文字涉及令人反感的信息的任务输入。
         :type Input: :class:`tencentcloud.vod.v20180717.models.AiReviewPornOcrTaskInput`
-        :param Output: Ocr 文字智能识别涉及令人反感的信息的任务输出。
+        :param Output: Ocr 文字音视频审核涉及令人反感的信息的任务输出。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiReviewPornOcrTaskOutput`
         """
@@ -3506,7 +3506,7 @@ class AiReviewTaskPornOcrResult(AbstractModel):
 
 
 class AiReviewTaskPornResult(AbstractModel):
-    """智能识别涉及令人反感的信息的任务结果类型
+    """音视频审核涉及令人反感的信息的任务结果类型
 
     """
 
@@ -3520,9 +3520,9 @@ class AiReviewTaskPornResult(AbstractModel):
         :type ErrCode: int
         :param Message: 错误信息。
         :type Message: str
-        :param Input: 智能识别涉及令人反感的信息的任务输入。
+        :param Input: 音视频审核涉及令人反感的信息的任务输入。
         :type Input: :class:`tencentcloud.vod.v20180717.models.AiReviewPornTaskInput`
-        :param Output: 智能识别涉及令人反感的信息的任务输出。
+        :param Output: 音视频审核涉及令人反感的信息的任务输出。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiReviewPornTaskOutput`
         """
@@ -3555,7 +3555,7 @@ class AiReviewTaskPornResult(AbstractModel):
 
 
 class AiReviewTaskProhibitedAsrResult(AbstractModel):
-    """智能识别 Asr 文字鉴违禁任务结果类型
+    """音视频审核 Asr 文字鉴违禁任务结果类型
 
     """
 
@@ -3569,9 +3569,9 @@ class AiReviewTaskProhibitedAsrResult(AbstractModel):
         :type ErrCode: int
         :param Message: 错误信息。
         :type Message: str
-        :param Input: 智能识别 Asr 文字鉴违禁任务输入。
+        :param Input: 音视频审核 Asr 文字鉴违禁任务输入。
         :type Input: :class:`tencentcloud.vod.v20180717.models.AiReviewProhibitedAsrTaskInput`
-        :param Output: 智能识别 Asr 文字鉴违禁任务输出。
+        :param Output: 音视频审核 Asr 文字鉴违禁任务输出。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiReviewProhibitedAsrTaskOutput`
         """
@@ -3604,7 +3604,7 @@ class AiReviewTaskProhibitedAsrResult(AbstractModel):
 
 
 class AiReviewTaskProhibitedOcrResult(AbstractModel):
-    """智能识别 Ocr 文字鉴违禁任务结果类型
+    """音视频审核 Ocr 文字鉴违禁任务结果类型
 
     """
 
@@ -3618,9 +3618,9 @@ class AiReviewTaskProhibitedOcrResult(AbstractModel):
         :type ErrCode: int
         :param Message: 错误信息。
         :type Message: str
-        :param Input: 智能识别 Ocr 文字鉴违禁任务输入。
+        :param Input: 音视频审核 Ocr 文字鉴违禁任务输入。
         :type Input: :class:`tencentcloud.vod.v20180717.models.AiReviewProhibitedOcrTaskInput`
-        :param Output: 智能识别 Ocr 文字鉴违禁任务输出。
+        :param Output: 音视频审核 Ocr 文字鉴违禁任务输出。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiReviewProhibitedOcrTaskOutput`
         """
@@ -3653,7 +3653,7 @@ class AiReviewTaskProhibitedOcrResult(AbstractModel):
 
 
 class AiReviewTaskTerrorismOcrResult(AbstractModel):
-    """智能识别 Ocr 文字鉴别涉及令人不安全的信息的任务结果类型
+    """音视频审核 Ocr 文字鉴别涉及令人不安全的信息的任务结果类型
 
     """
 
@@ -3667,9 +3667,9 @@ class AiReviewTaskTerrorismOcrResult(AbstractModel):
         :type ErrCode: int
         :param Message: 错误信息。
         :type Message: str
-        :param Input: 智能识别 Ocr 文字涉及令人不安全的信息的任务输入。
+        :param Input: 音视频审核 Ocr 文字涉及令人不安全的信息的任务输入。
         :type Input: :class:`tencentcloud.vod.v20180717.models.AiReviewTerrorismOcrTaskInput`
-        :param Output: 智能识别 Ocr 文字涉及令人不安全的信息的任务输出。
+        :param Output: 音视频审核 Ocr 文字涉及令人不安全的信息的任务输出。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiReviewTerrorismOcrTaskOutput`
         """
@@ -3702,7 +3702,7 @@ class AiReviewTaskTerrorismOcrResult(AbstractModel):
 
 
 class AiReviewTaskTerrorismResult(AbstractModel):
-    """智能识别涉及令人不安全的信息的任务结果类型
+    """音视频审核涉及令人不安全的信息的任务结果类型
 
     """
 
@@ -3716,9 +3716,9 @@ class AiReviewTaskTerrorismResult(AbstractModel):
         :type ErrCode: int
         :param Message: 错误信息。
         :type Message: str
-        :param Input: 智能识别涉及令人不安全的信息的任务输入。
+        :param Input: 音视频审核涉及令人不安全的信息的任务输入。
         :type Input: :class:`tencentcloud.vod.v20180717.models.AiReviewTerrorismTaskInput`
-        :param Output: 智能识别涉及令人不安全的信息的任务输出。
+        :param Output: 音视频审核涉及令人不安全的信息的任务输出。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiReviewTerrorismTaskOutput`
         """
@@ -3751,7 +3751,7 @@ class AiReviewTaskTerrorismResult(AbstractModel):
 
 
 class AiReviewTerrorismOcrTaskInput(AbstractModel):
-    """智能识别 Ocr 文字涉及令人不安全的信息的任务输入参数类型
+    """音视频审核 Ocr 文字涉及令人不安全的信息的任务输入参数类型
 
     """
 
@@ -3824,7 +3824,7 @@ class AiReviewTerrorismOcrTaskOutput(AbstractModel):
 
 
 class AiReviewTerrorismTaskInput(AbstractModel):
-    """智能识别涉及令人不安全的信息的任务输入参数类型
+    """音视频审核涉及令人不安全的信息的任务输入参数类型
 
     """
 
@@ -5609,17 +5609,17 @@ class ContentReviewResult(AbstractModel):
 
 
 class ContentReviewTemplateItem(AbstractModel):
-    """智能识别模板详情
+    """音视频审核模板详情
 
     """
 
     def __init__(self):
         r"""
-        :param Definition: 智能识别模板唯一标识。
+        :param Definition: 音视频审核模板唯一标识。
         :type Definition: int
-        :param Name: 智能识别模板名称，长度限制：64 个字符。
+        :param Name: 音视频审核模板名称，长度限制：64 个字符。
         :type Name: str
-        :param Comment: 智能识别模板描述信息，长度限制：256 个字符。
+        :param Comment: 音视频审核模板描述信息，长度限制：256 个字符。
         :type Comment: str
         :param PornConfigure: 鉴别涉及令人反感的信息的控制参数。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -5635,10 +5635,10 @@ class ContentReviewTemplateItem(AbstractModel):
 <li>涉毒违法。</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProhibitedConfigure: :class:`tencentcloud.vod.v20180717.models.ProhibitedConfigureInfo`
-        :param UserDefineConfigure: 用户自定义智能识别控制参数。
+        :param UserDefineConfigure: 用户自定义音视频审核控制参数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type UserDefineConfigure: :class:`tencentcloud.vod.v20180717.models.UserDefineConfigureInfo`
-        :param ReviewWallSwitch: 智能识别结果是否进入智能识别墙（对智能识别结果进行人工复核）的开关。
+        :param ReviewWallSwitch: 音视频审核结果是否进入音视频审核墙（对音视频审核结果进行人工复核）的开关。
 <li>ON：是；</li>
 <li>OFF：否。</li>
         :type ReviewWallSwitch: str
@@ -5825,9 +5825,9 @@ class CreateAIAnalysisTemplateRequest(AbstractModel):
         r"""
         :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
         :type SubAppId: int
-        :param Name: 视频内容分析模板名称，长度限制：64 个字符。
+        :param Name: 音视频内容分析模板名称，长度限制：64 个字符。
         :type Name: str
-        :param Comment: 视频内容分析模板描述信息，长度限制：256 个字符。
+        :param Comment: 音视频内容分析模板描述信息，长度限制：256 个字符。
         :type Comment: str
         :param ClassificationConfigure: 智能分类任务控制参数。
         :type ClassificationConfigure: :class:`tencentcloud.vod.v20180717.models.ClassificationConfigureInfo`
@@ -5885,7 +5885,7 @@ class CreateAIAnalysisTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Definition: 视频内容分析模板唯一标识。
+        :param Definition: 音视频内容分析模板唯一标识。
         :type Definition: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5908,9 +5908,9 @@ class CreateAIRecognitionTemplateRequest(AbstractModel):
         r"""
         :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
         :type SubAppId: int
-        :param Name: 视频内容识别模板名称，长度限制：64 个字符。
+        :param Name: 音视频内容识别模板名称，长度限制：64 个字符。
         :type Name: str
-        :param Comment: 视频内容识别模板描述信息，长度限制：256 个字符。
+        :param Comment: 音视频内容识别模板描述信息，长度限制：256 个字符。
         :type Comment: str
         :param HeadTailConfigure: 视频片头片尾识别控制参数。
         :type HeadTailConfigure: :class:`tencentcloud.vod.v20180717.models.HeadTailConfigureInfo`
@@ -5990,7 +5990,7 @@ class CreateAIRecognitionTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Definition: 视频内容识别模板唯一标识。
+        :param Definition: 音视频内容识别模板唯一标识。
         :type Definition: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6245,15 +6245,15 @@ class CreateContentReviewTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ReviewWallSwitch: 智能识别结果是否进入智能识别墙（对识别结果进行人工复核）的开关。
+        :param ReviewWallSwitch: 音视频审核结果是否进入音视频审核墙（对识别结果进行人工复核）的开关。
 <li>ON：是；</li>
 <li>OFF：否。</li>
         :type ReviewWallSwitch: str
         :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
         :type SubAppId: int
-        :param Name: 内容智能识别模板名称，长度限制：64 个字符。
+        :param Name: 内容审核模板名称，长度限制：64 个字符。
         :type Name: str
-        :param Comment: 内容智能识别模板描述信息，长度限制：256 个字符。
+        :param Comment: 内容审核模板描述信息，长度限制：256 个字符。
         :type Comment: str
         :param PornConfigure: 令人反感的信息的控制参数。
         :type PornConfigure: :class:`tencentcloud.vod.v20180717.models.PornConfigureInfo`
@@ -6265,7 +6265,7 @@ class CreateContentReviewTemplateRequest(AbstractModel):
 <li>谩骂；</li>
 <li>涉毒违法。</li>
         :type ProhibitedConfigure: :class:`tencentcloud.vod.v20180717.models.ProhibitedConfigureInfo`
-        :param UserDefineConfigure: 用户自定义内容智能识别控制参数。
+        :param UserDefineConfigure: 用户自定义内容审核控制参数。
         :type UserDefineConfigure: :class:`tencentcloud.vod.v20180717.models.UserDefineConfigureInfo`
         :param ScreenshotInterval: 截帧间隔，单位为秒。当不填时，默认截帧间隔为 1 秒，最小值为 0.5 秒。
         :type ScreenshotInterval: float
@@ -6319,7 +6319,7 @@ class CreateContentReviewTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Definition: 内容智能识别模板唯一标识。
+        :param Definition: 音视频内容审核模板唯一标识。
         :type Definition: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6716,30 +6716,31 @@ class CreateProcedureTemplateRequest(AbstractModel):
         r"""
         :param Name: 任务流名字（支持中文，不超过20个字）。
         :type Name: str
+        :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :type SubAppId: int
         :param Comment: 模板描述信息，长度限制：256 个字符。
         :type Comment: str
         :param MediaProcessTask: 视频处理类型任务参数。
         :type MediaProcessTask: :class:`tencentcloud.vod.v20180717.models.MediaProcessTaskInput`
-        :param AiContentReviewTask: AI 智能识别类型任务参数。
+        :param AiContentReviewTask: AI 内容审核类型任务参数。
         :type AiContentReviewTask: :class:`tencentcloud.vod.v20180717.models.AiContentReviewTaskInput`
-        :param AiAnalysisTask: AI 智能内容分析类型任务参数。
+        :param AiAnalysisTask: AI 内容分析类型任务参数。
         :type AiAnalysisTask: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskInput`
         :param AiRecognitionTask: AI 内容识别类型任务参数。
         :type AiRecognitionTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskInput`
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
         """
         self.Name = None
+        self.SubAppId = None
         self.Comment = None
         self.MediaProcessTask = None
         self.AiContentReviewTask = None
         self.AiAnalysisTask = None
         self.AiRecognitionTask = None
-        self.SubAppId = None
 
 
     def _deserialize(self, params):
         self.Name = params.get("Name")
+        self.SubAppId = params.get("SubAppId")
         self.Comment = params.get("Comment")
         if params.get("MediaProcessTask") is not None:
             self.MediaProcessTask = MediaProcessTaskInput()
@@ -6753,7 +6754,6 @@ class CreateProcedureTemplateRequest(AbstractModel):
         if params.get("AiRecognitionTask") is not None:
             self.AiRecognitionTask = AiRecognitionTaskInput()
             self.AiRecognitionTask._deserialize(params.get("AiRecognitionTask"))
-        self.SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7535,7 +7535,7 @@ class DeleteAIAnalysisTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Definition: 视频内容分析模板唯一标识。
+        :param Definition: 音视频内容分析模板唯一标识。
         :type Definition: int
         :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
         :type SubAppId: int
@@ -7580,7 +7580,7 @@ class DeleteAIRecognitionTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Definition: 视频内容识别模板唯一标识。
+        :param Definition: 音视频内容识别模板唯一标识。
         :type Definition: int
         :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
         :type SubAppId: int
@@ -7760,7 +7760,7 @@ class DeleteContentReviewTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Definition: 内容智能识别模板唯一标识。
+        :param Definition: 内容审核模板唯一标识。
         :type Definition: int
         :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
         :type SubAppId: int
@@ -8401,7 +8401,7 @@ class DescribeAIAnalysisTemplatesRequest(AbstractModel):
         r"""
         :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
         :type SubAppId: int
-        :param Definitions: 视频内容分析模板唯一标识过滤条件，数组长度最大值：100。
+        :param Definitions: 音视频内容分析模板唯一标识过滤条件，数组长度最大值：100。
         :type Definitions: list of int
         :param Offset: 分页偏移量，默认值：0。
         :type Offset: int
@@ -8437,7 +8437,7 @@ class DescribeAIAnalysisTemplatesResponse(AbstractModel):
         r"""
         :param TotalCount: 符合过滤条件的记录总数。
         :type TotalCount: int
-        :param AIAnalysisTemplateSet: 视频内容分析模板详情列表。
+        :param AIAnalysisTemplateSet: 音视频内容分析模板详情列表。
         :type AIAnalysisTemplateSet: list of AIAnalysisTemplateItem
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -8467,7 +8467,7 @@ class DescribeAIRecognitionTemplatesRequest(AbstractModel):
         r"""
         :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
         :type SubAppId: int
-        :param Definitions: 视频内容识别模板唯一标识过滤条件，数组长度限制：100。
+        :param Definitions: 音视频内容识别模板唯一标识过滤条件，数组长度限制：100。
         :type Definitions: list of int
         :param Offset: 分页偏移量，默认值：0。
         :type Offset: int
@@ -8503,7 +8503,7 @@ class DescribeAIRecognitionTemplatesResponse(AbstractModel):
         r"""
         :param TotalCount: 符合过滤条件的记录总数。
         :type TotalCount: int
-        :param AIRecognitionTemplateSet: 视频内容识别模板详情列表。
+        :param AIRecognitionTemplateSet: 音视频内容识别模板详情列表。
         :type AIRecognitionTemplateSet: list of AIRecognitionTemplateItem
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -9039,7 +9039,7 @@ class DescribeContentReviewTemplatesRequest(AbstractModel):
         r"""
         :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
         :type SubAppId: int
-        :param Definitions: 内容智能识别模板唯一标识过滤条件，数组长度限制：100。
+        :param Definitions: 内容审核模板唯一标识过滤条件，数组长度限制：100。
         :type Definitions: list of int
         :param Offset: 分页偏移量，默认值：0。
         :type Offset: int
@@ -9075,7 +9075,7 @@ class DescribeContentReviewTemplatesResponse(AbstractModel):
         r"""
         :param TotalCount: 符合过滤条件的记录总数。
         :type TotalCount: int
-        :param ContentReviewTemplateSet: 内容智能识别模板详情列表。
+        :param ContentReviewTemplateSet: 内容审核模板详情列表。
         :type ContentReviewTemplateSet: list of ContentReviewTemplateItem
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -9609,7 +9609,7 @@ class DescribeImageReviewUsageDataResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ImageReviewUsageDataSet: 图片智能识别次数统计数据，展示查询时间范围内的图片智能识别次数的概览数据。
+        :param ImageReviewUsageDataSet: 图片审核次数统计数据，展示查询时间范围内的图片审核次数的概览数据。
         :type ImageReviewUsageDataSet: list of ImageReviewUsageDataItem
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -12821,7 +12821,7 @@ class ImageProcessingTemplate(AbstractModel):
 
 
 class ImageReviewUsageDataItem(AbstractModel):
-    """图片智能识别次数统计数据。
+    """图片审核次数统计数据。
 
     """
 
@@ -13885,7 +13885,7 @@ class MediaClassInfo(AbstractModel):
 
 
 class MediaContentReviewAsrTextSegmentItem(AbstractModel):
-    """智能识别 Asr 文字的嫌疑片段
+    """音视频审核 Asr 文字的嫌疑片段
 
     """
 
@@ -13897,7 +13897,7 @@ class MediaContentReviewAsrTextSegmentItem(AbstractModel):
         :type EndTimeOffset: float
         :param Confidence: 嫌疑片段置信度。
         :type Confidence: float
-        :param Suggestion: 嫌疑片段智能识别的结果建议，取值范围：
+        :param Suggestion: 嫌疑片段音视频审核的结果建议，取值范围：
 <li>pass。</li>
 <li>review。</li>
 <li>block。</li>
@@ -13928,7 +13928,7 @@ class MediaContentReviewAsrTextSegmentItem(AbstractModel):
 
 
 class MediaContentReviewOcrTextSegmentItem(AbstractModel):
-    """智能识别 Ocr 文字的嫌疑片段
+    """音视频审核 Ocr 文字的嫌疑片段
 
     """
 
@@ -13940,7 +13940,7 @@ class MediaContentReviewOcrTextSegmentItem(AbstractModel):
         :type EndTimeOffset: float
         :param Confidence: 嫌疑片段置信度。
         :type Confidence: float
-        :param Suggestion: 嫌疑片段智能识别的结果建议，取值范围：
+        :param Suggestion: 嫌疑片段音视频审核的结果建议，取值范围：
 <li>pass。</li>
 <li>review。</li>
 <li>block。</li>
@@ -13984,7 +13984,7 @@ PicUrlExpireTime 时间点后图片将被删除）。
 
 
 class MediaContentReviewPoliticalSegmentItem(AbstractModel):
-    """智能识别涉及令人不适宜信息的嫌疑片段
+    """音视频审核涉及令人不适宜信息的嫌疑片段
 
     """
 
@@ -14003,7 +14003,7 @@ class MediaContentReviewPoliticalSegmentItem(AbstractModel):
         :type Suggestion: str
         :param Name: 涉及令人不适宜的信息、违规图标名字。
         :type Name: str
-        :param Label: 嫌疑片段涉及令人不适宜的信息的结果标签。智能识别模板[画面涉及令人不适宜的信息的任务控制参数](https://cloud.tencent.com/document/api/266/31773#PoliticalImgReviewTemplateInfo)里 LabelSet 参数与此参数取值范围的对应关系：
+        :param Label: 嫌疑片段涉及令人不适宜的信息的结果标签。音视频审核模板[画面涉及令人不适宜的信息的任务控制参数](https://cloud.tencent.com/document/api/266/31773#PoliticalImgReviewTemplateInfo)里 LabelSet 参数与此参数取值范围的对应关系：
 violation_photo：
 <li>violation_photo：违规图标。</li>
 politician：
@@ -14071,7 +14071,7 @@ military：
 
 
 class MediaContentReviewSegmentItem(AbstractModel):
-    """智能识别涉及令人反感的信息、涉及令人不安全的信息的嫌疑片段
+    """音视频审核涉及令人反感的信息、涉及令人不安全的信息的嫌疑片段
 
     """
 
@@ -14496,13 +14496,13 @@ class MediaMetaData(AbstractModel):
 
 
 class MediaMiniProgramReviewElem(AbstractModel):
-    """小程序智能识别概要元信息
+    """小程序音视频审核概要元信息
 
     """
 
     def __init__(self):
         r"""
-        :param Type: 智能识别类型。 
+        :param Type: 音视频审核类型。 
 <li>Porn：画面涉及令人反感的信息，</li>
 <li>Porn.Ocr：文字涉及令人反感的信息，</li>
 <li>Porn.Asr：声音涉及令人反感的信息，</li>
@@ -14511,12 +14511,12 @@ class MediaMiniProgramReviewElem(AbstractModel):
 <li>Political.Ocr：文字涉及令人不适宜的信息，</li>
 <li>Political.Asr：声音涉及令人不适宜的信息。</li>
         :type Type: str
-        :param Suggestion: 智能识别意见。
+        :param Suggestion: 音视频审核意见。
 <li>pass：确认正常，</li>
 <li>block：确认违规，</li>
 <li>review：疑似违规。</li>
         :type Suggestion: str
-        :param Confidence: 智能识别结果置信度。取值 0~100。
+        :param Confidence: 音视频审核结果置信度。取值 0~100。
         :type Confidence: float
         """
         self.Type = None
@@ -14538,13 +14538,13 @@ class MediaMiniProgramReviewElem(AbstractModel):
 
 
 class MediaMiniProgramReviewInfo(AbstractModel):
-    """小程序智能识别信息
+    """小程序音视频审核信息
 
     """
 
     def __init__(self):
         r"""
-        :param MiniProgramReviewList: 智能识别信息列表。
+        :param MiniProgramReviewList: 音视频审核信息列表。
         :type MiniProgramReviewList: list of MediaMiniProgramReviewInfoItem
         """
         self.MiniProgramReviewList = None
@@ -14567,7 +14567,7 @@ class MediaMiniProgramReviewInfo(AbstractModel):
 
 
 class MediaMiniProgramReviewInfoItem(AbstractModel):
-    """小程序智能识别信息单元
+    """小程序音视频审核信息单元
 
     """
 
@@ -14577,13 +14577,13 @@ class MediaMiniProgramReviewInfoItem(AbstractModel):
         :type Definition: int
         :param MetaData: 视频元信息。
         :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
-        :param Url: 小程序智能识别视频播放地址。
+        :param Url: 小程序音视频审核视频播放地址。
         :type Url: str
         :param ReviewResult: 小程序视频发布状态：
 <li>Pass：成功。</li>
 <li>Rejected：未通过。</li>
         :type ReviewResult: str
-        :param ReviewSummary: 小程序智能识别元素。
+        :param ReviewSummary: 小程序音视频审核元素。
         :type ReviewSummary: list of MediaMiniProgramReviewElem
         """
         self.Definition = None
@@ -15769,13 +15769,13 @@ class ModifyAIAnalysisTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Definition: 视频内容分析模板唯一标识。
+        :param Definition: 音视频内容分析模板唯一标识。
         :type Definition: int
         :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
         :type SubAppId: int
-        :param Name: 视频内容分析模板名称，长度限制：64 个字符。
+        :param Name: 音视频内容分析模板名称，长度限制：64 个字符。
         :type Name: str
-        :param Comment: 视频内容分析模板描述信息，长度限制：256 个字符。
+        :param Comment: 音视频内容分析模板描述信息，长度限制：256 个字符。
         :type Comment: str
         :param ClassificationConfigure: 智能分类任务控制参数。
         :type ClassificationConfigure: :class:`tencentcloud.vod.v20180717.models.ClassificationConfigureInfoForUpdate`
@@ -15852,13 +15852,13 @@ class ModifyAIRecognitionTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Definition: 视频内容识别模板唯一标识。
+        :param Definition: 音视频内容识别模板唯一标识。
         :type Definition: int
         :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
         :type SubAppId: int
-        :param Name: 视频内容识别模板名称，长度限制：64 个字符。
+        :param Name: 音视频内容识别模板名称，长度限制：64 个字符。
         :type Name: str
-        :param Comment: 视频内容识别模板描述信息，长度限制：256 个字符。
+        :param Comment: 音视频内容识别模板描述信息，长度限制：256 个字符。
         :type Comment: str
         :param HeadTailConfigure: 视频片头片尾识别控制参数。
         :type HeadTailConfigure: :class:`tencentcloud.vod.v20180717.models.HeadTailConfigureInfoForUpdate`
@@ -16177,13 +16177,13 @@ class ModifyContentReviewTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Definition: 内容智能识别模板唯一标识。
+        :param Definition: 内容审核模板唯一标识。
         :type Definition: int
         :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
         :type SubAppId: int
-        :param Name: 内容智能识别模板名称，长度限制：64 个字符。
+        :param Name: 内容审核模板名称，长度限制：64 个字符。
         :type Name: str
-        :param Comment: 内容智能识别模板描述信息，长度限制：256 个字符。
+        :param Comment: 内容审核模板描述信息，长度限制：256 个字符。
         :type Comment: str
         :param TerrorismConfigure: 令人不安全的信息的控制参数。
         :type TerrorismConfigure: :class:`tencentcloud.vod.v20180717.models.TerrorismConfigureInfoForUpdate`
@@ -16195,11 +16195,11 @@ class ModifyContentReviewTemplateRequest(AbstractModel):
 <li>谩骂；</li>
 <li>涉毒违法。</li>
         :type ProhibitedConfigure: :class:`tencentcloud.vod.v20180717.models.ProhibitedConfigureInfoForUpdate`
-        :param UserDefineConfigure: 用户自定义内容智能识别控制参数。
+        :param UserDefineConfigure: 用户自定义内容审核控制参数。
         :type UserDefineConfigure: :class:`tencentcloud.vod.v20180717.models.UserDefineConfigureInfoForUpdate`
         :param ScreenshotInterval: 截帧间隔，单位为秒，最小值为 0.5 秒。
         :type ScreenshotInterval: float
-        :param ReviewWallSwitch: 智能识别结果是否进入智能识别墙（对智能识别结果进行人工识别）的开关。
+        :param ReviewWallSwitch: 审核结果是否进入审核墙（对审核结果进行人工识别）的开关。
 <li>ON：是；</li>
 <li>OFF：否。</li>
         :type ReviewWallSwitch: str
@@ -18112,9 +18112,9 @@ class PoliticalAsrReviewTemplateInfo(AbstractModel):
 <li>ON：开启语音鉴别涉及令人不适宜的信息的任务；</li>
 <li>OFF：关闭语音鉴别的涉及令人不适宜的信息的任务。</li>
         :type Switch: str
-        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能识别达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
+        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当音视频审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
         :type ReviewConfidence: int
-        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能识别达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
+        :param BlockConfidence: 判定涉嫌违规的分数阈值，当音视频审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
         :type BlockConfidence: int
         """
         self.Switch = None
@@ -18146,9 +18146,9 @@ class PoliticalAsrReviewTemplateInfoForUpdate(AbstractModel):
 <li>ON：开启语音鉴别涉及令人不适宜的信息的任务；</li>
 <li>OFF：关闭语音鉴别涉及令人不适宜的信息的任务。</li>
         :type Switch: str
-        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能识别达到该分数以上，认为涉嫌违规。取值范围：0~100。
+        :param BlockConfidence: 判定涉嫌违规的分数阈值，当音视频审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
         :type BlockConfidence: int
-        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能识别达到该分数以上，认为需人工复核。取值范围：0~100。
+        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当音视频审核达到该分数以上，认为需人工复核。取值范围：0~100。
         :type ReviewConfidence: int
         """
         self.Switch = None
@@ -18249,7 +18249,7 @@ class PoliticalConfigureInfoForUpdate(AbstractModel):
 
 
 class PoliticalImageResult(AbstractModel):
-    """图片画面智能识别涉及令人不适宜信息的任务结果类型
+    """图片画面审核涉及令人不适宜信息的任务结果类型
 
     """
 
@@ -18298,7 +18298,7 @@ class PoliticalImgReviewTemplateInfo(AbstractModel):
 <li>ON：开启画面鉴别涉及令人不适宜的信息的任务；</li>
 <li>OFF：关闭画面鉴别涉及令人不适宜的信息的任务。</li>
         :type Switch: str
-        :param LabelSet: 画面鉴别涉及令人不适宜的信息的过滤标签，智能识别结果包含选择的标签则返回结果，如果过滤标签为空，则智能识别结果全部返回，可选值为：
+        :param LabelSet: 画面鉴别涉及令人不适宜的信息的过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：
 <li>violation_photo：违规图标；</li>
 <li>politician：相关人物；</li>
 <li>entertainment：娱乐人物；</li>
@@ -18308,9 +18308,9 @@ class PoliticalImgReviewTemplateInfo(AbstractModel):
 <li>celebrity：知名人物；</li>
 <li>military：相关人物。</li>
         :type LabelSet: list of str
-        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能识别达到该分数以上，认为涉嫌违规，不填默认为 97 分。取值范围：0~100。
+        :param BlockConfidence: 判定涉嫌违规的分数阈值，当审核达到该分数以上，认为涉嫌违规，不填默认为 97 分。取值范围：0~100。
         :type BlockConfidence: int
-        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能识别达到该分数以上，认为需人工复核，不填默认为 95 分。取值范围：0~100。
+        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当审核达到该分数以上，认为需人工复核，不填默认为 95 分。取值范围：0~100。
         :type ReviewConfidence: int
         """
         self.Switch = None
@@ -18344,7 +18344,7 @@ class PoliticalImgReviewTemplateInfoForUpdate(AbstractModel):
 <li>ON：开启画面鉴别涉及令人不适宜的信息的任务；</li>
 <li>OFF：关闭画面鉴别涉及令人不适宜的信息的任务。</li>
         :type Switch: str
-        :param LabelSet: 画面鉴别涉及令人不适宜的信息的过滤标签，智能识别结果包含选择的标签则返回结果，如果过滤标签为空，则智能识别结果全部返回，可选值为：
+        :param LabelSet: 画面鉴别涉及令人不适宜的信息的过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：
 <li>violation_photo：违规图标；</li>
 <li>politician：相关人物；</li>
 <li>entertainment：娱乐人物；</li>
@@ -18354,9 +18354,9 @@ class PoliticalImgReviewTemplateInfoForUpdate(AbstractModel):
 <li>celebrity：知名人物；</li>
 <li>military：相关人物。</li>
         :type LabelSet: list of str
-        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能识别达到该分数以上，认为涉嫌违规。取值范围：0~100。
+        :param BlockConfidence: 判定涉嫌违规的分数阈值，当审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
         :type BlockConfidence: int
-        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能识别达到该分数以上，认为需人工复核。取值范围：0~100。
+        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当审核达到该分数以上，认为需人工复核。取值范围：0~100。
         :type ReviewConfidence: int
         """
         self.Switch = None
@@ -18390,9 +18390,9 @@ class PoliticalOcrReviewTemplateInfo(AbstractModel):
 <li>ON：开启文本鉴别涉及令人不适宜的信息的任务；</li>
 <li>OFF：关闭文本鉴别涉及令人不适宜的信息的任务。</li>
         :type Switch: str
-        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能识别达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
+        :param BlockConfidence: 判定涉嫌违规的分数阈值，当审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
         :type BlockConfidence: int
-        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能识别达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
+        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
         :type ReviewConfidence: int
         """
         self.Switch = None
@@ -18424,9 +18424,9 @@ class PoliticalOcrReviewTemplateInfoForUpdate(AbstractModel):
 <li>ON：开启文本鉴别涉及令人不适宜的信息的任务；</li>
 <li>OFF：关闭文本鉴别涉及令人不适宜的信息的任务。</li>
         :type Switch: str
-        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能识别达到该分数以上，认为涉嫌违规。取值范围：0~100。
+        :param BlockConfidence: 判定涉嫌违规的分数阈值，当审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
         :type BlockConfidence: int
-        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能识别达到该分数以上，认为需人工复核。取值范围：0~100。
+        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当审核达到该分数以上，认为需人工复核。取值范围：0~100。
         :type ReviewConfidence: int
         """
         self.Switch = None
@@ -18458,9 +18458,9 @@ class PornAsrReviewTemplateInfo(AbstractModel):
 <li>ON：开启语音鉴别涉及令人反感的信息的任务；</li>
 <li>OFF：关闭语音鉴别涉及令人反感的信息的任务。</li>
         :type Switch: str
-        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能识别达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
+        :param BlockConfidence: 判定涉嫌违规的分数阈值，当审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
         :type BlockConfidence: int
-        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能识别达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
+        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
         :type ReviewConfidence: int
         """
         self.Switch = None
@@ -18492,9 +18492,9 @@ class PornAsrReviewTemplateInfoForUpdate(AbstractModel):
 <li>ON：开启语音鉴别涉及令人反感的信息的任务；</li>
 <li>OFF：关闭语音鉴别涉及令人反感的信息的任务。</li>
         :type Switch: str
-        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能识别达到该分数以上，认为涉嫌违规。取值范围：0~100。
+        :param BlockConfidence: 判定涉嫌违规的分数阈值，当审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
         :type BlockConfidence: int
-        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能识别达到该分数以上，认为需人工复核。取值范围：0~100。
+        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当审核达到该分数以上，认为需人工复核。取值范围：0~100。
         :type ReviewConfidence: int
         """
         self.Switch = None
@@ -18595,7 +18595,7 @@ class PornConfigureInfoForUpdate(AbstractModel):
 
 
 class PornImageResult(AbstractModel):
-    """图片画面智能识别涉及令人反感的信息的任务结果类型
+    """图片画面审核涉及令人反感的信息的任务结果类型
 
     """
 
@@ -18644,15 +18644,15 @@ class PornImgReviewTemplateInfo(AbstractModel):
 <li>ON：开启画面鉴别涉及令人反感的信息的任务；</li>
 <li>OFF：关闭画面鉴别涉及令人反感的信息的任务。</li>
         :type Switch: str
-        :param LabelSet: 画面鉴别涉及令人反感的信息的过滤标签，智能识别结果包含选择的标签则返回结果，如果过滤标签为空，则智能识别结果全部返回，可选值为：
+        :param LabelSet: 画面鉴别涉及令人反感的信息的过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：
 <li>porn：色情；</li>
 <li>vulgar：低俗；</li>
 <li>intimacy：亲密行为；</li>
 <li>sexy：性感。</li>
         :type LabelSet: list of str
-        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能识别达到该分数以上，认为涉嫌违规，不填默认为 90 分。取值范围：0~100。
+        :param BlockConfidence: 判定涉嫌违规的分数阈值，当审核达到该分数以上，认为涉嫌违规，不填默认为 90 分。取值范围：0~100。
         :type BlockConfidence: int
-        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能识别达到该分数以上，认为需人工复核，不填默认为 0 分。取值范围：0~100。
+        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当审核达到该分数以上，认为需人工复核，不填默认为 0 分。取值范围：0~100。
         :type ReviewConfidence: int
         """
         self.Switch = None
@@ -18686,15 +18686,15 @@ class PornImgReviewTemplateInfoForUpdate(AbstractModel):
 <li>ON：开启画面鉴别涉及令人反感的信息的任务；</li>
 <li>OFF：关闭画面鉴别涉及令人反感的信息的任务。</li>
         :type Switch: str
-        :param LabelSet: 画面鉴别涉及令人反感的信息的过滤标签，智能识别结果包含选择的标签则返回结果，如果过滤标签为空，则智能识别结果全部返回，可选值为：
+        :param LabelSet: 画面鉴别涉及令人反感的信息的过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：
 <li>porn：色情；</li>
 <li>vulgar：低俗；</li>
 <li>intimacy：亲密行为；</li>
 <li>sexy：性感。</li>
         :type LabelSet: list of str
-        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能识别达到该分数以上，认为涉嫌违规。取值范围：0~100。
+        :param BlockConfidence: 判定涉嫌违规的分数阈值，当审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
         :type BlockConfidence: int
-        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能识别达到该分数以上，认为需人工复核。取值范围：0~100。
+        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当审核达到该分数以上，认为需人工复核。取值范围：0~100。
         :type ReviewConfidence: int
         """
         self.Switch = None
@@ -18728,9 +18728,9 @@ class PornOcrReviewTemplateInfo(AbstractModel):
 <li>ON：开启文本鉴别涉及令人反感的信息的任务；</li>
 <li>OFF：关闭文本鉴别涉及令人反感的信息的任务。</li>
         :type Switch: str
-        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能识别达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
+        :param BlockConfidence: 判定涉嫌违规的分数阈值，当审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
         :type BlockConfidence: int
-        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能识别达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
+        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
         :type ReviewConfidence: int
         """
         self.Switch = None
@@ -18786,13 +18786,13 @@ class PornOcrReviewTemplateInfoForUpdate(AbstractModel):
 
 
 class ProcedureTask(AbstractModel):
-    """视频处理任务信息
+    """音视频处理任务信息
 
     """
 
     def __init__(self):
         r"""
-        :param TaskId: 视频处理任务 ID。
+        :param TaskId: 音视频处理任务 ID。
         :type TaskId: str
         :param Status: 任务流状态，取值：
 <li>PROCESSING：处理中；</li>
@@ -18814,16 +18814,16 @@ class ProcedureTask(AbstractModel):
 <li>若流程由 [ProcessMedia](https://cloud.tencent.com/document/product/266/33427) 发起，该字段表示 [MediaInfo](https://cloud.tencent.com/document/product/266/31773#MediaInfo) 的 BasicInfo.MediaUrl；</li>
 <li>若流程由 [ProcessMediaByUrl](https://cloud.tencent.com/document/product/266/33426) 发起，该字段表示 [MediaInputInfo](https://cloud.tencent.com/document/product/266/31773#MediaInputInfo) 的 Url。</li>
         :type FileUrl: str
-        :param MetaData: 原始视频的元信息。
+        :param MetaData: 原始音视频的元信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
-        :param MediaProcessResultSet: 视频处理任务的执行状态与结果。
+        :param MediaProcessResultSet: 音视频处理任务的执行状态与结果。
         :type MediaProcessResultSet: list of MediaProcessTaskResult
-        :param AiContentReviewResultSet: 视频智能识别任务的执行状态与结果。
+        :param AiContentReviewResultSet: 音视频审核任务的执行状态与结果。
         :type AiContentReviewResultSet: list of AiContentReviewResult
-        :param AiAnalysisResultSet: 视频内容分析任务的执行状态与结果。
+        :param AiAnalysisResultSet: 音视频内容分析任务的执行状态与结果。
         :type AiAnalysisResultSet: list of AiAnalysisResult
-        :param AiRecognitionResultSet: 视频内容识别任务的执行状态与结果。
+        :param AiRecognitionResultSet: 音视频内容识别任务的执行状态与结果。
         :type AiRecognitionResultSet: list of AiRecognitionResult
         :param TasksPriority: 任务流的优先级，取值范围为 [-10, 10]。
         :type TasksPriority: int
@@ -18921,7 +18921,7 @@ class ProcedureTemplate(AbstractModel):
         :param MediaProcessTask: 视频处理类型任务参数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type MediaProcessTask: :class:`tencentcloud.vod.v20180717.models.MediaProcessTaskInput`
-        :param AiContentReviewTask: AI 智能识别类型任务参数。
+        :param AiContentReviewTask: AI 智能审核类型任务参数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AiContentReviewTask: :class:`tencentcloud.vod.v20180717.models.AiContentReviewTaskInput`
         :param AiAnalysisTask: AI 智能内容分析类型任务参数。
@@ -19221,11 +19221,11 @@ class ProcessMediaRequest(AbstractModel):
         :type SubAppId: int
         :param MediaProcessTask: 视频处理类型任务参数。
         :type MediaProcessTask: :class:`tencentcloud.vod.v20180717.models.MediaProcessTaskInput`
-        :param AiContentReviewTask: 视频智能识别类型任务参数。
+        :param AiContentReviewTask: 音视频内容审核类型任务参数。
         :type AiContentReviewTask: :class:`tencentcloud.vod.v20180717.models.AiContentReviewTaskInput`
-        :param AiAnalysisTask: 视频内容分析类型任务参数。
+        :param AiAnalysisTask: 音视频内容分析类型任务参数。
         :type AiAnalysisTask: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskInput`
-        :param AiRecognitionTask: 视频内容识别类型任务参数。
+        :param AiRecognitionTask: 音视频内容识别类型任务参数。
         :type AiRecognitionTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskInput`
         :param TasksPriority: 任务流的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。
         :type TasksPriority: int
@@ -19383,21 +19383,21 @@ class ProductInstanceRecource(AbstractModel):
 <li>Traffic：流量资源包。</li>
 <li>Transcode：普通转码资源包。</li>
 <li>TESHD：极速高清转码资源包。</li>
-<li>Review：视频智能识别转码资源包。</li>
+<li>Review：音视频审核转码资源包。</li>
         :type ResourceType: str
         :param Amount: 资源包额度。
-<li>视频存储资源包，单位为字节。</li>
-<li>视频转码资源包，单位为秒。</li>
-<li>视频智能识别资源包，单位为秒。</li>
-<li>视频极速高清资源包，单位为秒。</li>
-<li>视频加速资源包，单位为字节。</li>
+<li>音视频存储资源包，单位为字节。</li>
+<li>音视频转码资源包，单位为秒。</li>
+<li>音视频审核资源包，单位为秒。</li>
+<li>音视频极速高清资源包，单位为秒。</li>
+<li>音视频加速资源包，单位为字节。</li>
         :type Amount: int
         :param Left: 资源包余量。
-<li>视频存储资源包，单位为字节。</li>
-<li>视频转码资源包，单位为秒。</li>
-<li>视频智能识别资源包，单位为秒。</li>
-<li>视频极速高清资源包，单位为秒。</li>
-<li>视频加速资源包，单位为字节。</li>
+<li>音视频存储资源包，单位为字节。</li>
+<li>音视频转码资源包，单位为秒。</li>
+<li>音视频审核资源包，单位为秒。</li>
+<li>音视频极速高清资源包，单位为秒。</li>
+<li>音视频加速资源包，单位为字节。</li>
         :type Left: int
         """
         self.ResourceType = None
@@ -19429,9 +19429,9 @@ class ProhibitedAsrReviewTemplateInfo(AbstractModel):
 <li>ON：开启语音违禁任务；</li>
 <li>OFF：关闭语音违禁任务。</li>
         :type Switch: str
-        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能识别达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
+        :param BlockConfidence: 判定涉嫌违规的分数阈值，当审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
         :type BlockConfidence: int
-        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能识别达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
+        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
         :type ReviewConfidence: int
         """
         self.Switch = None
@@ -19463,9 +19463,9 @@ class ProhibitedAsrReviewTemplateInfoForUpdate(AbstractModel):
 <li>ON：开启语音违禁任务；</li>
 <li>OFF：关闭语音违禁任务。</li>
         :type Switch: str
-        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能识别达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
+        :param BlockConfidence: 判定涉嫌违规的分数阈值，当审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
         :type BlockConfidence: int
-        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能识别达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
+        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
         :type ReviewConfidence: int
         """
         self.Switch = None
@@ -19563,9 +19563,9 @@ class ProhibitedOcrReviewTemplateInfo(AbstractModel):
 <li>ON：开启文本违禁任务；</li>
 <li>OFF：关闭文本违禁任务。</li>
         :type Switch: str
-        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能识别达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
+        :param BlockConfidence: 判定涉嫌违规的分数阈值，当审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
         :type BlockConfidence: int
-        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能识别达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
+        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
         :type ReviewConfidence: int
         """
         self.Switch = None
@@ -19597,9 +19597,9 @@ class ProhibitedOcrReviewTemplateInfoForUpdate(AbstractModel):
 <li>ON：开启文本违禁任务；</li>
 <li>OFF：关闭文本违禁任务。</li>
         :type Switch: str
-        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能识别达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
+        :param BlockConfidence: 判定涉嫌违规的分数阈值，当审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
         :type BlockConfidence: int
-        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能识别达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
+        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
         :type ReviewConfidence: int
         """
         self.Switch = None
@@ -20223,7 +20223,7 @@ class ReviewImageRequest(AbstractModel):
         r"""
         :param FileId: 媒体文件 ID，即该文件在云点播上的全局唯一标识符。本接口要求媒体文件必须是图片格式。
         :type FileId: str
-        :param Definition: 图片智能识别模板 ID，当前固定填 10。
+        :param Definition: 图片审核模板 ID，当前固定填 10。
         :type Definition: int
         :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
         :type SubAppId: int
@@ -20253,7 +20253,7 @@ class ReviewImageResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ReviewResultSet: 图片智能识别任务结果。
+        :param ReviewResultSet: 图片审核任务结果。
         :type ReviewResultSet: list of ContentReviewResult
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -22096,7 +22096,7 @@ class TerrorismConfigureInfoForUpdate(AbstractModel):
 
 
 class TerrorismImageResult(AbstractModel):
-    """图片画面智能识别涉及令人不安全的信息的任务结果类型
+    """图片画面审核涉及令人不安全的信息的任务结果类型
 
     """
 
@@ -22148,7 +22148,7 @@ class TerrorismImgReviewTemplateInfo(AbstractModel):
 <li>ON：开启画面鉴别涉及令人不安全的信息的任务；</li>
 <li>OFF：关闭画面鉴别涉及令人不安全的信息的任务。</li>
         :type Switch: str
-        :param LabelSet: 画面鉴别涉及令人不安全的信息的过滤标签，智能识别结果包含选择的标签则返回结果，如果过滤标签为空，则智能识别结果全部返回，可选值为：
+        :param LabelSet: 画面鉴别涉及令人不安全的信息的过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：
 <li>guns：武器枪支；</li>
 <li>crowd：人群聚集；</li>
 <li>bloody：血腥画面；</li>
@@ -22159,9 +22159,9 @@ class TerrorismImgReviewTemplateInfo(AbstractModel):
 <li>terrorists：暴恐人物；</li>
 <li>scenario：暴恐画面。</li>
         :type LabelSet: list of str
-        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能识别达到该分数以上，认为涉嫌违规，不填默认为 90 分。取值范围：0~100。
+        :param BlockConfidence: 判定涉嫌违规的分数阈值，当审核达到该分数以上，认为涉嫌违规，不填默认为 90 分。取值范围：0~100。
         :type BlockConfidence: int
-        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能识别达到该分数以上，认为需人工复核，不填默认为 80 分。取值范围：0~100。
+        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当审核达到该分数以上，认为需人工复核，不填默认为 80 分。取值范围：0~100。
         :type ReviewConfidence: int
         """
         self.Switch = None
@@ -22195,7 +22195,7 @@ class TerrorismImgReviewTemplateInfoForUpdate(AbstractModel):
 <li>ON：开启画面鉴别涉及令人不安全的信息的任务；</li>
 <li>OFF：关闭画面鉴别涉及令人不安全的信息的任务。</li>
         :type Switch: str
-        :param LabelSet: 画面鉴别涉及令人不安全的信息的过滤标签，智能识别结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：
+        :param LabelSet: 画面鉴别涉及令人不安全的信息的过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：
 <li>guns：武器枪支；</li>
 <li>crowd：人群聚集；</li>
 <li>bloody：血腥画面；</li>
@@ -22206,9 +22206,9 @@ class TerrorismImgReviewTemplateInfoForUpdate(AbstractModel):
 <li>terrorists：暴恐人物；</li>
 <li>scenario：暴恐画面。</li>
         :type LabelSet: list of str
-        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能识别达到该分数以上，认为涉嫌违规。取值范围：0~100。
+        :param BlockConfidence: 判定涉嫌违规的分数阈值，当审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
         :type BlockConfidence: int
-        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能识别达到该分数以上，认为需人工复核。取值范围：0~100。
+        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当审核达到该分数以上，认为需人工复核。取值范围：0~100。
         :type ReviewConfidence: int
         """
         self.Switch = None
@@ -22242,9 +22242,9 @@ class TerrorismOcrReviewTemplateInfo(AbstractModel):
 <li>ON：开启文本鉴别涉及令人不安全的信息的任务；</li>
 <li>OFF：关闭文本鉴别涉及令人不安全的信息的任务。</li>
         :type Switch: str
-        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能识别达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
+        :param BlockConfidence: 判定涉嫌违规的分数阈值，当审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
         :type BlockConfidence: int
-        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能识别达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
+        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
         :type ReviewConfidence: int
         """
         self.Switch = None
@@ -22276,9 +22276,9 @@ class TerrorismOcrReviewTemplateInfoForUpdate(AbstractModel):
 <li>ON：开启文本鉴别涉及令人不安全的信息的任务；</li>
 <li>OFF：关闭文本鉴别涉及令人不安全的信息的任务。</li>
         :type Switch: str
-        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能识别达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
+        :param BlockConfidence: 判定涉嫌违规的分数阈值，当审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
         :type BlockConfidence: int
-        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能识别达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
+        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
         :type ReviewConfidence: int
         """
         self.Switch = None
@@ -22795,22 +22795,22 @@ EncryptedKey 字符串的长度为8~40个字节，不能包含不可见字符。
 
 
 class UserDefineAsrTextReviewTemplateInfo(AbstractModel):
-    """用户自定义语音智能识别任务控制参数
+    """用户自定义语音审核任务控制参数
 
     """
 
     def __init__(self):
         r"""
-        :param Switch: 用户自定语音智能识别任务开关，可选值：
-<li>ON：开启自定义语音智能识别任务；</li>
-<li>OFF：关闭自定义语音智能识别任务。</li>
+        :param Switch: 用户自定语音审核任务开关，可选值：
+<li>ON：开启自定义语音审核任务；</li>
+<li>OFF：关闭自定义语音审核任务。</li>
         :type Switch: str
-        :param LabelSet: 用户自定义语音过滤标签，智能识别结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回。如果要使用标签过滤功能，添加自定义语音关键词素材时需要添加对应标签。
+        :param LabelSet: 用户自定义语音过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回。如果要使用标签过滤功能，添加自定义语音关键词素材时需要添加对应标签。
 标签个数最多 10 个，每个标签长度最多 16 个字符。
         :type LabelSet: list of str
-        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能智能识别达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
+        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
         :type BlockConfidence: int
-        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能识别达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
+        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
         :type ReviewConfidence: int
         """
         self.Switch = None
@@ -22834,22 +22834,22 @@ class UserDefineAsrTextReviewTemplateInfo(AbstractModel):
 
 
 class UserDefineAsrTextReviewTemplateInfoForUpdate(AbstractModel):
-    """用户自定义语音智能识别任务控制参数
+    """用户自定义语音审核任务控制参数
 
     """
 
     def __init__(self):
         r"""
-        :param Switch: 用户自定语音智能识别任务开关，可选值：
-<li>ON：开启自定义语音智能识别任务；</li>
-<li>OFF：关闭自定义语音智能识别任务。</li>
+        :param Switch: 用户自定语音审核任务开关，可选值：
+<li>ON：开启自定义语音审核任务；</li>
+<li>OFF：关闭自定义语音审核任务。</li>
         :type Switch: str
-        :param LabelSet: 用户自定义语音过滤标签，智能识别结果包含选择的标签则返回结果，如果过滤标签为空，则智能识别结果全部返回。如果要使用标签过滤功能，添加自定义语音关键词素材时需要添加对应标签。
+        :param LabelSet: 用户自定义语音过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回。如果要使用标签过滤功能，添加自定义语音关键词素材时需要添加对应标签。
 标签个数最多 10 个，每个标签长度最多 16 个字符。
         :type LabelSet: list of str
-        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能识别达到该分数以上，认为涉嫌违规。取值范围：0~100。
+        :param BlockConfidence: 判定涉嫌违规的分数阈值，当审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
         :type BlockConfidence: int
-        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能识别达到该分数以上，认为需人工复核。取值范围：0~100。
+        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当审核达到该分数以上，认为需人工复核。取值范围：0~100。
         :type ReviewConfidence: int
         """
         self.Switch = None
@@ -22873,19 +22873,19 @@ class UserDefineAsrTextReviewTemplateInfoForUpdate(AbstractModel):
 
 
 class UserDefineConfigureInfo(AbstractModel):
-    """用户自定义智能识别任务控制参数
+    """用户自定义音视频审核任务控制参数
 
     """
 
     def __init__(self):
         r"""
-        :param FaceReviewInfo: 用户自定义人物智能识别控制参数。
+        :param FaceReviewInfo: 用户自定义人物音视频审核控制参数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type FaceReviewInfo: :class:`tencentcloud.vod.v20180717.models.UserDefineFaceReviewTemplateInfo`
-        :param AsrReviewInfo: 用户自定义语音智能识别控制参数。
+        :param AsrReviewInfo: 用户自定义语音音视频审核控制参数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AsrReviewInfo: :class:`tencentcloud.vod.v20180717.models.UserDefineAsrTextReviewTemplateInfo`
-        :param OcrReviewInfo: 用户自定义文本智能识别控制参数。
+        :param OcrReviewInfo: 用户自定义文本音视频审核控制参数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type OcrReviewInfo: :class:`tencentcloud.vod.v20180717.models.UserDefineOcrTextReviewTemplateInfo`
         """
@@ -22914,17 +22914,17 @@ class UserDefineConfigureInfo(AbstractModel):
 
 
 class UserDefineConfigureInfoForUpdate(AbstractModel):
-    """用户自定义智能识别任务控制参数。
+    """用户自定义音视频审核任务控制参数。
 
     """
 
     def __init__(self):
         r"""
-        :param FaceReviewInfo: 用户自定义人物智能识别控制参数。
+        :param FaceReviewInfo: 用户自定义人物音视频审核控制参数。
         :type FaceReviewInfo: :class:`tencentcloud.vod.v20180717.models.UserDefineFaceReviewTemplateInfoForUpdate`
-        :param AsrReviewInfo: 用户自定义语音智能识别控制参数。
+        :param AsrReviewInfo: 用户自定义语音音视频审核控制参数。
         :type AsrReviewInfo: :class:`tencentcloud.vod.v20180717.models.UserDefineAsrTextReviewTemplateInfoForUpdate`
-        :param OcrReviewInfo: 用户自定义文本智能识别控制参数。
+        :param OcrReviewInfo: 用户自定义文本音视频审核控制参数。
         :type OcrReviewInfo: :class:`tencentcloud.vod.v20180717.models.UserDefineOcrTextReviewTemplateInfoForUpdate`
         """
         self.FaceReviewInfo = None
@@ -22952,22 +22952,22 @@ class UserDefineConfigureInfoForUpdate(AbstractModel):
 
 
 class UserDefineFaceReviewTemplateInfo(AbstractModel):
-    """用户自定义人物智能识别任务控制参数
+    """用户自定义人物音视频审核任务控制参数
 
     """
 
     def __init__(self):
         r"""
-        :param Switch: 用户自定义人物智能识别任务开关，可选值：
-<li>ON：开启自定义人物智能识别任务；</li>
-<li>OFF：关闭自定义人物智能识别任务。</li>
+        :param Switch: 用户自定义人物音视频审核任务开关，可选值：
+<li>ON：开启自定义人物音视频审核任务；</li>
+<li>OFF：关闭自定义人物音视频审核任务。</li>
         :type Switch: str
-        :param LabelSet: 用户自定义人物过滤标签，智能识别结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回。如果要使用标签过滤功能，添加自定义人物库的时，需要添加对应人物标签。
+        :param LabelSet: 用户自定义人物过滤标签，音视频审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回。如果要使用标签过滤功能，添加自定义人物库的时，需要添加对应人物标签。
 标签个数最多 10 个，每个标签长度最多 16 个字符。
         :type LabelSet: list of str
-        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能智能识别达到该分数以上，认为涉嫌违规，不填默认为 97 分。取值范围：0~100。
+        :param BlockConfidence: 判定涉嫌违规的分数阈值，当审核达到该分数以上，认为涉嫌违规，不填默认为 97 分。取值范围：0~100。
         :type BlockConfidence: int
-        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能识别达到该分数以上，认为需人工复核，不填默认为 95 分。取值范围：0~100。
+        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当审核达到该分数以上，认为需人工复核，不填默认为 95 分。取值范围：0~100。
         :type ReviewConfidence: int
         """
         self.Switch = None
@@ -22991,22 +22991,22 @@ class UserDefineFaceReviewTemplateInfo(AbstractModel):
 
 
 class UserDefineFaceReviewTemplateInfoForUpdate(AbstractModel):
-    """用户自定义人物智能识别任务控制参数。
+    """用户自定义人物音视频审核任务控制参数。
 
     """
 
     def __init__(self):
         r"""
-        :param Switch: 用户自定义人物智能识别任务开关，可选值：
-<li>ON：开启自定义人物智能识别任务；</li>
-<li>OFF：关闭自定义人物智能识别任务。</li>
+        :param Switch: 用户自定义人物音视频审核任务开关，可选值：
+<li>ON：开启自定义人物音视频审核任务；</li>
+<li>OFF：关闭自定义人物音视频审核任务。</li>
         :type Switch: str
-        :param LabelSet: 用户自定义人物过滤标签，智能识别结果包含选择的标签则返回结果，如果过滤标签为空，则智能识别结果全部返回。如果要使用标签过滤功能，添加自定义人物库的时，需要添加对应人物标签。
+        :param LabelSet: 用户自定义人物过滤标签，音视频审核结果包含选择的标签则返回结果，如果过滤标签为空，则音视频审核结果全部返回。如果要使用标签过滤功能，添加自定义人物库的时，需要添加对应人物标签。
 标签个数最多 10 个，每个标签长度最多 16 个字符。
         :type LabelSet: list of str
-        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能识别达到该分数以上，认为涉嫌违规。取值范围：0~100。
+        :param BlockConfidence: 判定涉嫌违规的分数阈值，当音视频审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
         :type BlockConfidence: int
-        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能识别达到该分数以上，认为需人工复核。取值范围：0~100。
+        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当音视频审核达到该分数以上，认为需人工复核。取值范围：0~100。
         :type ReviewConfidence: int
         """
         self.Switch = None
@@ -23030,22 +23030,22 @@ class UserDefineFaceReviewTemplateInfoForUpdate(AbstractModel):
 
 
 class UserDefineOcrTextReviewTemplateInfo(AbstractModel):
-    """用户自定义文本智能识别任务控制参数
+    """用户自定义文本音视频审核任务控制参数
 
     """
 
     def __init__(self):
         r"""
-        :param Switch: 用户自定文本智能识别任务开关，可选值：
-<li>ON：开启自定义文本智能识别任务；</li>
-<li>OFF：关闭自定义文本智能识别任务。</li>
+        :param Switch: 用户自定文本音视频审核任务开关，可选值：
+<li>ON：开启自定义文本音视频审核任务；</li>
+<li>OFF：关闭自定义文本音视频审核任务。</li>
         :type Switch: str
-        :param LabelSet: 用户自定义文本过滤标签，智能识别结果包含选择的标签则返回结果，如果过滤标签为空，则智能识别结果全部返回。如果要使用标签过滤功能，添加自定义文本关键词素材时需要添加对应标签。
+        :param LabelSet: 用户自定义文本过滤标签，音视频审核结果包含选择的标签则返回结果，如果过滤标签为空，则音视频审核结果全部返回。如果要使用标签过滤功能，添加自定义文本关键词素材时需要添加对应标签。
 标签个数最多 10 个，每个标签长度最多 16 个字符。
         :type LabelSet: list of str
-        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能识别达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
+        :param BlockConfidence: 判定涉嫌违规的分数阈值，当审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
         :type BlockConfidence: int
-        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能识别达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
+        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
         :type ReviewConfidence: int
         """
         self.Switch = None
@@ -23069,22 +23069,22 @@ class UserDefineOcrTextReviewTemplateInfo(AbstractModel):
 
 
 class UserDefineOcrTextReviewTemplateInfoForUpdate(AbstractModel):
-    """用户自定义文本智能识别任务控制参数。
+    """用户自定义文本音视频审核任务控制参数。
 
     """
 
     def __init__(self):
         r"""
-        :param Switch: 用户自定文本智能识别任务开关，可选值：
-<li>ON：开启自定义文本智能识别任务；</li>
-<li>OFF：关闭自定义文本智能识别任务。</li>
+        :param Switch: 用户自定文本音视频审核任务开关，可选值：
+<li>ON：开启自定义文本音视频审核任务；</li>
+<li>OFF：关闭自定义文本音视频审核任务。</li>
         :type Switch: str
-        :param LabelSet: 用户自定义文本过滤标签，智能识别结果包含选择的标签则返回结果，如果过滤标签为空，则智能识别结果全部返回。如果要使用标签过滤功能，添加自定义文本关键词素材时需要添加对应标签。
+        :param LabelSet: 用户自定义文本过滤标签，音视频审核结果包含选择的标签则返回结果，如果过滤标签为空，则音视频审核结果全部返回。如果要使用标签过滤功能，添加自定义文本关键词素材时需要添加对应标签。
 标签个数最多 10 个，每个标签长度最多 16 个字符。
         :type LabelSet: list of str
-        :param BlockConfidence: 判定涉嫌违规的分数阈值，当智能识别达到该分数以上，认为涉嫌违规。取值范围：0~100。
+        :param BlockConfidence: 判定涉嫌违规的分数阈值，当审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
         :type BlockConfidence: int
-        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当智能识别达到该分数以上，认为需人工复核。取值范围：0~100。
+        :param ReviewConfidence: 判定需人工复核是否违规的分数阈值，当审核达到该分数以上，认为需人工复核。取值范围：0~100。
         :type ReviewConfidence: int
         """
         self.Switch = None
@@ -23616,7 +23616,7 @@ FINISH：已完成。
         :param PublishResult: 微信小程序视频发布状态，取值：
 <li>Pass：发布成功；</li>
 <li>Failed：发布失败；</li>
-<li>Rejected：智能识别未通过。</li>
+<li>Rejected：音视频审核未通过。</li>
         :type PublishResult: str
         """
         self.TaskId = None

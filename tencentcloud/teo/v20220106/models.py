@@ -205,10 +205,12 @@ class ApplicationProxy(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ProxyId: 实例ID
+        :param ProxyId: 代理ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProxyId: str
-        :param ProxyName: 实例名称
+        :param ProxyName: 代理名称
+当ProxyType=hostname时，表示域名或者子域名
+当ProxyType=instance时，表示实例名称
         :type ProxyName: str
         :param PlatType: 调度模式：
 ip表示Anycast IP
@@ -248,11 +250,13 @@ fail：部署失败/停用失败
 注意：此字段可能返回 null，表示取不到有效值。
         :type SessionPersistTime: int
         :param ProxyType: 服务类型
-hostname：子域名
-instance：实例
+hostname：子域名模式
+instance：实例模式
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProxyType: str
-        :param HostId: 七层实例ID
+        :param HostId: 当ProxyType=hostname时：
+ProxyName为域名，如：test.123.com
+HostId表示该域名，即test.123.com对应的代理加速唯一标识
 注意：此字段可能返回 null，表示取不到有效值。
         :type HostId: str
         """
@@ -321,14 +325,14 @@ class ApplicationProxyRule(AbstractModel):
         :param OriginType: 源站类型，取值：
 custom：手动添加
 origins：源站组
-load_balancing：负载均衡
         :type OriginType: str
         :param OriginValue: 源站信息：
-当OriginType=custom时，表示多个：
-IP:端口
-域名:端口
-当OriginType=origins时，包含一个元素，表示源站组ID
-当OriginType=load_balancing时，包含一个元素，表示负载均衡ID
+当OriginType=custom时，表示一个或多个源站，如：
+OriginValue=["8.8.8.8:80","9.9.9.9:80"]
+OriginValue=["test.com:80"]
+
+当OriginType=origins时，包含一个元素，表示源站组ID，如：
+OriginValue=["origin-xxx"]
         :type OriginValue: list of str
         :param RuleId: 规则ID
 注意：此字段可能返回 null，表示取不到有效值。
@@ -1385,7 +1389,9 @@ class CreateApplicationProxyRequest(AbstractModel):
         :type ZoneId: str
         :param ZoneName: 站点名称
         :type ZoneName: str
-        :param ProxyName: 四层代理名称
+        :param ProxyName: 代理名称
+当ProxyType=hostname时，表示域名或者子域名
+当ProxyType=instance时，表示实例名称
         :type ProxyName: str
         :param PlatType: 调度模式：
 ip表示Anycast IP
@@ -1404,8 +1410,8 @@ domain表示CNAME
         :param SessionPersistTime: 会话保持时间，取值范围：30-3600，单位：秒
         :type SessionPersistTime: int
         :param ProxyType: 服务类型
-hostname：子域名
-instance：实例
+hostname：子域名模式
+instance：实例模式
         :type ProxyType: str
         """
         self.ZoneId = None
@@ -1488,14 +1494,12 @@ class CreateApplicationProxyRuleRequest(AbstractModel):
         :param OriginType: 源站类型，取值：
 custom：手动添加
 origins：源站组
-load_balancing：负载均衡
         :type OriginType: str
         :param OriginValue: 源站信息：
 当OriginType=custom时，表示多个：
 IP:端口
 域名:端口
 当OriginType=origins时，包含一个元素，表示源站组ID
-当OriginType=load_balancing时，包含一个元素，表示负载均衡ID
         :type OriginValue: list of str
         :param ForwardClientIp: 传递客户端IP，当Proto=TCP时，取值：
 TOA：TOA
@@ -1872,7 +1876,7 @@ class CreateOriginGroupRequest(AbstractModel):
         :param Type: 配置类型，当OriginType=self 时，需要填写：
 area: 按区域配置
 weight: 按权重配置
-当OriginType=third_party 时，不需要填写
+当OriginType=third_party/cos 时，不需要填写
         :type Type: str
         :param Record: 源站记录
         :type Record: list of OriginRecord
@@ -1881,6 +1885,7 @@ weight: 按权重配置
         :param OriginType: 源站类型
 self：自有源站
 third_party：第三方源站
+cos：腾讯云COS源站
         :type OriginType: str
         """
         self.OriginName = None
@@ -3513,7 +3518,9 @@ class DescribeApplicationProxyDetailResponse(AbstractModel):
         r"""
         :param ProxyId: 实例ID
         :type ProxyId: str
-        :param ProxyName: 实例名称
+        :param ProxyName: 代理名称
+当ProxyType=hostname时，表示域名或者子域名
+当ProxyType=instance时，表示实例名称
         :type ProxyName: str
         :param PlatType: 调度模式：
 ip表示Anycast IP
@@ -3545,10 +3552,12 @@ progress：部署中
         :param SessionPersistTime: 会话保持时间
         :type SessionPersistTime: int
         :param ProxyType: 服务类型
-hostname：子域名
-instance：实例
+hostname：子域名模式
+instance：实例模式
         :type ProxyType: str
-        :param HostId: 七层实例ID
+        :param HostId: 当ProxyType=hostname时：
+ProxyName为域名，如：test.123.com
+HostId表示该域名，即test.123.com对应的代理加速唯一标识
         :type HostId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3642,15 +3651,23 @@ class DescribeApplicationProxyResponse(AbstractModel):
         :param TotalCount: 记录总数
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
-        :param Quota: 当ZoneId不为空时，表示当前站点允许创建的实例数量
+        :param Quota: 字段已废弃
 注意：此字段可能返回 null，表示取不到有效值。
         :type Quota: int
+        :param IpCount: 表示套餐内PlatType为ip的Anycast IP实例数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IpCount: int
+        :param DomainCount: 表示套餐内PlatType为domain的CNAME实例数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DomainCount: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Data = None
         self.TotalCount = None
         self.Quota = None
+        self.IpCount = None
+        self.DomainCount = None
         self.RequestId = None
 
 
@@ -3663,6 +3680,8 @@ class DescribeApplicationProxyResponse(AbstractModel):
                 self.Data.append(obj)
         self.TotalCount = params.get("TotalCount")
         self.Quota = params.get("Quota")
+        self.IpCount = params.get("IpCount")
+        self.DomainCount = params.get("DomainCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -5100,7 +5119,9 @@ class DescribeOriginGroupDetailResponse(AbstractModel):
         :type OriginId: str
         :param OriginName: 源站组名称
         :type OriginName: str
-        :param Type: 配置类型
+        :param Type: 源站组配置类型
+area：表示按照Record记录中的Area字段进行按客户端IP所在区域回源。
+weight：表示按照Record记录中的Weight字段进行按权重回源。
         :type Type: str
         :param Record: 记录
         :type Record: list of OriginRecord
@@ -5113,12 +5134,19 @@ class DescribeOriginGroupDetailResponse(AbstractModel):
         :param OriginType: 源站类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type OriginType: str
-        :param ApplicationProxyUsed: 是否被四层代理使用
+        :param ApplicationProxyUsed: 当前源站组是否被四层代理使用。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApplicationProxyUsed: bool
-        :param LoadBalancingUsed: 是否被负载均衡使用
+        :param LoadBalancingUsed: 当前源站组是否被负载均衡使用。
 注意：此字段可能返回 null，表示取不到有效值。
         :type LoadBalancingUsed: bool
+        :param LoadBalancingUsedType: 使用当前源站组的负载均衡的类型：
+none：未被使用
+dns_only：被仅DNS类型负载均衡使用
+proxied：被代理加速类型负载均衡使用
+both：同时被仅DNS和代理加速类型负载均衡使用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LoadBalancingUsedType: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5132,6 +5160,7 @@ class DescribeOriginGroupDetailResponse(AbstractModel):
         self.OriginType = None
         self.ApplicationProxyUsed = None
         self.LoadBalancingUsed = None
+        self.LoadBalancingUsedType = None
         self.RequestId = None
 
 
@@ -5151,6 +5180,7 @@ class DescribeOriginGroupDetailResponse(AbstractModel):
         self.OriginType = params.get("OriginType")
         self.ApplicationProxyUsed = params.get("ApplicationProxyUsed")
         self.LoadBalancingUsed = params.get("LoadBalancingUsed")
+        self.LoadBalancingUsedType = params.get("LoadBalancingUsedType")
         self.RequestId = params.get("RequestId")
 
 
@@ -7429,10 +7459,10 @@ pending: 不生效
         :param Cname: CNAME 地址
 注意：此字段可能返回 null，表示取不到有效值。
         :type Cname: str
-        :param DomainStatus: 域名是否开启了lb，四层，安全
+        :param DomainStatus: 域名是否开启了负载均衡，四层代理，安全
 - lb 负载均衡
 - security 安全
-- l4 四层
+- l4 四层代理
 注意：此字段可能返回 null，表示取不到有效值。
         :type DomainStatus: list of str
         """
@@ -8260,9 +8290,11 @@ class ModifyApplicationProxyRequest(AbstractModel):
         r"""
         :param ZoneId: 站点ID
         :type ZoneId: str
-        :param ProxyId: 四层代理ID
+        :param ProxyId: 代理ID
         :type ProxyId: str
-        :param ProxyName: 四层代理名称
+        :param ProxyName: 代理名称
+当ProxyType=hostname时，表示域名或者子域名
+当ProxyType=instance时，表示实例名称
         :type ProxyName: str
         :param ForwardClientIp: 参数已经废弃
         :type ForwardClientIp: str
@@ -8271,8 +8303,8 @@ class ModifyApplicationProxyRequest(AbstractModel):
         :param SessionPersistTime: 会话保持时间，取值范围：30-3600，单位：秒
         :type SessionPersistTime: int
         :param ProxyType: 服务类型
-hostname：子域名
-instance：实例
+hostname：子域名模式
+instance：实例模式
         :type ProxyType: str
         """
         self.ZoneId = None
@@ -8308,7 +8340,7 @@ class ModifyApplicationProxyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ProxyId: 四层代理ID
+        :param ProxyId: 代理ID
         :type ProxyId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -8344,14 +8376,14 @@ class ModifyApplicationProxyRuleRequest(AbstractModel):
         :param OriginType: 源站类型，取值：
 custom：手动添加
 origins：源站组
-load_balancing：负载均衡
         :type OriginType: str
         :param OriginValue: 源站信息：
-当OriginType=custom时，表示多个：
-IP:端口
-域名:端口
-当OriginType=origins时，包含一个元素，表示源站组ID
-当OriginType=load_balancing时，包含一个元素，表示负载均衡ID
+当OriginType=custom时，表示一个或多个源站，如：
+OriginValue=["8.8.8.8:80","9.9.9.9:80"]
+OriginValue=["test.com:80"]
+
+当OriginType=origins时，包含一个元素，表示源站组ID，如：
+OriginValue=["origin-xxx"]
         :type OriginValue: list of str
         :param ForwardClientIp: 传递客户端IP，当Proto=TCP时，取值：
 TOA：TOA
@@ -8425,7 +8457,7 @@ class ModifyApplicationProxyRuleStatusRequest(AbstractModel):
         r"""
         :param ZoneId: 站点ID
         :type ZoneId: str
-        :param ProxyId: 四层代理ID
+        :param ProxyId: 代理ID
         :type ProxyId: str
         :param RuleId: 规则ID
         :type RuleId: str
@@ -8484,7 +8516,7 @@ class ModifyApplicationProxyStatusRequest(AbstractModel):
         r"""
         :param ZoneId: 站点ID
         :type ZoneId: str
-        :param ProxyId: 四层代理ID
+        :param ProxyId: 代理ID
         :type ProxyId: str
         :param Status: 状态
 offline: 停用
@@ -8516,7 +8548,7 @@ class ModifyApplicationProxyStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ProxyId: 四层代理ID
+        :param ProxyId: 代理ID
         :type ProxyId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -9082,7 +9114,7 @@ class ModifyOriginGroupRequest(AbstractModel):
         :param Type: 配置类型，当OriginType=self 时，需要填写：
 area: 按区域配置
 weight: 按权重配置
-当OriginType=third_party 时，不需要填写
+当OriginType=third_party/cos 时，不需要填写
         :type Type: str
         :param Record: 源站记录
         :type Record: list of OriginRecord
@@ -9091,6 +9123,7 @@ weight: 按权重配置
         :param OriginType: 源站类型
 self：自有源站
 third_party：第三方源站
+cos：腾讯云COS源站
         :type OriginType: str
         """
         self.OriginId = None
@@ -9609,6 +9642,35 @@ https：强制 https 回源，https 回源时仅支持源站 443 端口
         
 
 
+class OriginCheckOriginStatus(AbstractModel):
+    """源站健康检查，源站状态信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Status: healthy: 健康，unhealthy: 不健康，process: 探测中
+        :type Status: str
+        :param Host: host列表，源站组不健康时存在值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Host: list of str
+        """
+        self.Status = None
+        self.Host = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.Host = params.get("Host")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class OriginFilter(AbstractModel):
     """源站组查询过滤参数
 
@@ -9648,7 +9710,9 @@ class OriginGroup(AbstractModel):
         :type OriginId: str
         :param OriginName: 源站组名称
         :type OriginName: str
-        :param Type: 配置类型
+        :param Type: 源站组配置类型
+area：表示按照Record记录中的Area字段进行按客户端IP所在区域回源。
+weight：表示按照Record记录中的Weight字段进行按权重回源。
         :type Type: str
         :param Record: 记录
         :type Record: list of OriginRecord
@@ -9661,12 +9725,22 @@ class OriginGroup(AbstractModel):
         :param OriginType: 源站类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type OriginType: str
-        :param ApplicationProxyUsed: 是否为四层代理使用
+        :param ApplicationProxyUsed: 当前源站组是否被四层代理使用。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApplicationProxyUsed: bool
-        :param LoadBalancingUsed: 是否为负载均衡使用
+        :param LoadBalancingUsed: 当前源站组是否被负载均衡使用。
 注意：此字段可能返回 null，表示取不到有效值。
         :type LoadBalancingUsed: bool
+        :param Status: 源站状态信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: :class:`tencentcloud.teo.v20220106.models.OriginCheckOriginStatus`
+        :param LoadBalancingUsedType: 使用当前源站组的负载均衡的类型：
+none：未被使用
+dns_only：被仅DNS类型负载均衡使用
+proxied：被代理加速类型负载均衡使用
+both：同时被仅DNS和代理加速类型负载均衡使用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LoadBalancingUsedType: str
         """
         self.OriginId = None
         self.OriginName = None
@@ -9678,6 +9752,8 @@ class OriginGroup(AbstractModel):
         self.OriginType = None
         self.ApplicationProxyUsed = None
         self.LoadBalancingUsed = None
+        self.Status = None
+        self.LoadBalancingUsedType = None
 
 
     def _deserialize(self, params):
@@ -9696,6 +9772,10 @@ class OriginGroup(AbstractModel):
         self.OriginType = params.get("OriginType")
         self.ApplicationProxyUsed = params.get("ApplicationProxyUsed")
         self.LoadBalancingUsed = params.get("LoadBalancingUsed")
+        if params.get("Status") is not None:
+            self.Status = OriginCheckOriginStatus()
+            self.Status._deserialize(params.get("Status"))
+        self.LoadBalancingUsedType = params.get("LoadBalancingUsedType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9715,9 +9795,11 @@ class OriginRecord(AbstractModel):
         :param Record: 记录值
         :type Record: str
         :param Area: 当源站配置类型Type=area时，表示区域
-当源站类型Type=area时，为空表示默认区域
+为空表示默认区域
         :type Area: list of str
         :param Weight: 当源站配置类型Type=weight时，表示权重
+取值范围为[1-100]
+源站组内多个源站权重总和应为100
         :type Weight: int
         :param Port: 端口
         :type Port: int
