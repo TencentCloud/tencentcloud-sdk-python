@@ -30,7 +30,7 @@ try:
     req.FlowIds = ["**************"]
 
     userInfo = models.UserInfo()
-    # 管理员用户id或者员工用户id
+    # 发起人用户id，在控制台查询获取
     userInfo.UserId = "**************"
     req.Operator = userInfo
 

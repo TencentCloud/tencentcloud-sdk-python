@@ -24,17 +24,14 @@ try:
     clientProfile.httpProfile = httpProfile
 
     client = ess_client.EssClient(cred, "", clientProfile)
-    req = models.StartFlowRequest()
-
-    # 由CreateFlow返回
-    req.FlowId = "**************"
+    req = models.DescribeFlowTemplatesRequest()
 
     userInfo = models.UserInfo()
     # 发起人用户id，在控制台查询获取
     userInfo.UserId = "**************"
     req.Operator = userInfo
 
-    resp = client.StartFlow(req)
+    resp = client.DescribeFlowTemplates(req)
     # 输出json格式的字符串回包
     print("%s" % resp.to_json_string())
 
