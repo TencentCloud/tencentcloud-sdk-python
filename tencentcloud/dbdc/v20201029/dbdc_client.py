@@ -55,6 +55,35 @@ class DbdcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeHostList(self, request):
+        """本接口用于查询主机列表
+
+        :param request: Request instance for DescribeHostList.
+        :type request: :class:`tencentcloud.dbdc.v20201029.models.DescribeHostListRequest`
+        :rtype: :class:`tencentcloud.dbdc.v20201029.models.DescribeHostListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeHostList", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeHostListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeInstanceDetail(self, request):
         """本接口用于查询独享集群详情
 

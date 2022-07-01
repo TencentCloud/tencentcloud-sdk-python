@@ -1139,6 +1139,11 @@ def test_import_wav():
     from tencentcloud.wav.v20210129 import models
 
 
+def test_import_wedata():
+    from tencentcloud.wedata.v20210820 import wedata_client
+    from tencentcloud.wedata.v20210820 import models
+
+
 def test_import_wss():
     from tencentcloud.wss.v20180426 import wss_client
     from tencentcloud.wss.v20180426 import models

@@ -184,6 +184,72 @@ class DescribeDBInstancesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeHostListRequest(AbstractModel):
+    """DescribeHostList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 独享集群实例Id
+        :type InstanceId: str
+        :param Limit: 分页返回数量
+        :type Limit: int
+        :param Offset: 分页偏移量
+        :type Offset: int
+        :param AssignStatus: 分配状态过滤，0-可分配，1-禁止分配
+        :type AssignStatus: list of int
+        """
+        self.InstanceId = None
+        self.Limit = None
+        self.Offset = None
+        self.AssignStatus = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.AssignStatus = params.get("AssignStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeHostListResponse(AbstractModel):
+    """DescribeHostList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 主机总数
+        :type TotalCount: int
+        :param Hosts: 主机详情
+        :type Hosts: list of HostDetail
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Hosts = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Hosts") is not None:
+            self.Hosts = []
+            for item in params.get("Hosts"):
+                obj = HostDetail()
+                obj._deserialize(item)
+                self.Hosts.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeInstanceDetail(AbstractModel):
     """独享集群详情
 
@@ -670,6 +736,118 @@ class DeviceInfo(AbstractModel):
         self.RestDisk = params.get("RestDisk")
         self.RawDeviceNum = params.get("RawDeviceNum")
         self.InstanceNum = params.get("InstanceNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HostDetail(AbstractModel):
+    """主机详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param HostId: 主机Id
+        :type HostId: str
+        :param HostName: 主机名称
+        :type HostName: str
+        :param Zone: 可用区
+        :type Zone: str
+        :param Status: 主机状态
+        :type Status: int
+        :param AssignStatus: 分配DB实例状态,0:可分配,1:不可分配
+        :type AssignStatus: int
+        :param HostType: 主机类型, 0:物理机, 1:cvm本地盘, 2:cvm云盘
+        :type HostType: int
+        :param DbNum: DB实例数
+        :type DbNum: int
+        :param CpuSpec: 主机CPU(单位:核数)
+        :type CpuSpec: int
+        :param CpuAssigned: 已分配CPU(单位:核数)
+        :type CpuAssigned: int
+        :param CpuAssignable: 可分配CPU(单位:核数)
+        :type CpuAssignable: int
+        :param MemorySpec: 主机内存(单位:GB)
+        :type MemorySpec: int
+        :param MemoryAssigned: 已分配内存(单位:GB)
+        :type MemoryAssigned: int
+        :param MemoryAssignable: 可分配内存(单位:GB)
+        :type MemoryAssignable: int
+        :param DiskSpec: 主机磁盘(单位:GB)
+        :type DiskSpec: int
+        :param DiskAssigned: 已分配磁盘(单位:GB)
+        :type DiskAssigned: int
+        :param DiskAssignable: 可分配磁盘(GB)
+        :type DiskAssignable: int
+        :param CpuRatio: CPU分配比
+        :type CpuRatio: float
+        :param MemoryRatio: 内存分配比
+        :type MemoryRatio: float
+        :param DiskRatio: 磁盘分配比
+        :type DiskRatio: float
+        :param MachineName: 机型名称
+        :type MachineName: str
+        :param MachineType: 机型类别
+        :type MachineType: str
+        :param PidTag: 计费标签
+        :type PidTag: str
+        :param Pid: 计费ID
+        :type Pid: int
+        """
+        self.HostId = None
+        self.HostName = None
+        self.Zone = None
+        self.Status = None
+        self.AssignStatus = None
+        self.HostType = None
+        self.DbNum = None
+        self.CpuSpec = None
+        self.CpuAssigned = None
+        self.CpuAssignable = None
+        self.MemorySpec = None
+        self.MemoryAssigned = None
+        self.MemoryAssignable = None
+        self.DiskSpec = None
+        self.DiskAssigned = None
+        self.DiskAssignable = None
+        self.CpuRatio = None
+        self.MemoryRatio = None
+        self.DiskRatio = None
+        self.MachineName = None
+        self.MachineType = None
+        self.PidTag = None
+        self.Pid = None
+
+
+    def _deserialize(self, params):
+        self.HostId = params.get("HostId")
+        self.HostName = params.get("HostName")
+        self.Zone = params.get("Zone")
+        self.Status = params.get("Status")
+        self.AssignStatus = params.get("AssignStatus")
+        self.HostType = params.get("HostType")
+        self.DbNum = params.get("DbNum")
+        self.CpuSpec = params.get("CpuSpec")
+        self.CpuAssigned = params.get("CpuAssigned")
+        self.CpuAssignable = params.get("CpuAssignable")
+        self.MemorySpec = params.get("MemorySpec")
+        self.MemoryAssigned = params.get("MemoryAssigned")
+        self.MemoryAssignable = params.get("MemoryAssignable")
+        self.DiskSpec = params.get("DiskSpec")
+        self.DiskAssigned = params.get("DiskAssigned")
+        self.DiskAssignable = params.get("DiskAssignable")
+        self.CpuRatio = params.get("CpuRatio")
+        self.MemoryRatio = params.get("MemoryRatio")
+        self.DiskRatio = params.get("DiskRatio")
+        self.MachineName = params.get("MachineName")
+        self.MachineType = params.get("MachineType")
+        self.PidTag = params.get("PidTag")
+        self.Pid = params.get("Pid")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
