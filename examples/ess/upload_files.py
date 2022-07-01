@@ -28,9 +28,7 @@ try:
     req = models.UploadFilesRequest()
 
     caller = models.Caller()
-    # Appid 电子签侧应用id,电子签提供
-    caller.ApplicationId = "**************"
-    # 管理员用户id或者员工用户id
+    # 发起人用户id，在控制台查询获取
     caller.OperatorId = "**************"
     req.Caller = caller
 

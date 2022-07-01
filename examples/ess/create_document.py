@@ -33,15 +33,16 @@ try:
     req.FileNames = ["**************"]
 
     userInfo = models.UserInfo()
-    # 管理员用户id或者员工用户id
+    # 发起人用户id，在控制台查询获取
     userInfo.UserId = "**************"
-    userInfo.ClientIp = "**************"
     req.Operator = userInfo
 
-    # 后台配置后查询获取
+    # 控制台配置模板后查询获取
     req.TemplateId = "**************"
 
+    # 发起人填写控件
     formFiled = models.FormField()
+    # 控制台配置模板时，于"指定签约区域"步骤，查看控件属性可以获取
     formFiled.ComponentName = "**************"
     formFiled.ComponentValue = "**************"
     req.FormFields = [formFiled]
