@@ -494,6 +494,9 @@ RESOURCEUNAVAILABLE_TYPEERROR = 'ResourceUnavailable.TypeError'
 # 负载均衡资源已经售罄。
 RESOURCESSOLDOUT_LOADBALANCERSOLDOUT = 'ResourcesSoldOut.LoadBalancerSoldOut'
 
+# 特定机型售罄。
+RESOURCESSOLDOUT_SPECIFIEDINSTANCETYPE = 'ResourcesSoldOut.SpecifiedInstanceType'
+
 # 未授权操作。
 UNAUTHORIZEDOPERATION = 'UnauthorizedOperation'
 

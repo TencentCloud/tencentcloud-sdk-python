@@ -124,6 +124,8 @@ class CreateJobConfigRequest(AbstractModel):
         :type PythonVersion: str
         :param WorkSpaceId: 工作空间 SerialId
         :type WorkSpaceId: str
+        :param LogLevel: 日志级别
+        :type LogLevel: str
         """
         self.JobId = None
         self.EntrypointClass = None
@@ -142,6 +144,7 @@ class CreateJobConfigRequest(AbstractModel):
         self.LogCollectType = None
         self.PythonVersion = None
         self.WorkSpaceId = None
+        self.LogLevel = None
 
 
     def _deserialize(self, params):
@@ -172,6 +175,7 @@ class CreateJobConfigRequest(AbstractModel):
         self.LogCollectType = params.get("LogCollectType")
         self.PythonVersion = params.get("PythonVersion")
         self.WorkSpaceId = params.get("WorkSpaceId")
+        self.LogLevel = params.get("LogLevel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

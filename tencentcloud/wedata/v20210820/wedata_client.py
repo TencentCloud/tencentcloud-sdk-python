@@ -26,6 +26,35 @@ class WedataClient(AbstractClient):
     _service = 'wedata'
 
 
+    def DescribeProject(self, request):
+        """获取项目信息
+
+        :param request: Request instance for DescribeProject.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeProjectRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeProjectResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeProject", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeProjectResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeRelatedInstances(self, request):
         """查询任务实例的关联实例列表
 

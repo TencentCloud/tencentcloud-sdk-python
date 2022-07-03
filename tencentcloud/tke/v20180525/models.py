@@ -2923,6 +2923,33 @@ class CreatePrometheusClusterAgentRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param Agents: agent列表
+        :type Agents: list of PrometheusClusterAgentBasic
+        """
+        self.InstanceId = None
+        self.Agents = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        if params.get("Agents") is not None:
+            self.Agents = []
+            for item in params.get("Agents"):
+                obj = PrometheusClusterAgentBasic()
+                obj._deserialize(item)
+                self.Agents.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class CreatePrometheusClusterAgentResponse(AbstractModel):
     """CreatePrometheusClusterAgent返回参数结构体
@@ -12846,6 +12873,107 @@ class PrometheusAlertRuleDetail(AbstractModel):
         
 
 
+class PrometheusClusterAgentBasic(AbstractModel):
+    """与云监控融合托管prometheus实例，关联集群基础信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Region: 集群ID
+        :type Region: str
+        :param ClusterType: 集群类型
+        :type ClusterType: str
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param EnableExternal: 是否开启公网CLB
+        :type EnableExternal: bool
+        :param InClusterPodConfig: 集群内部署组件的pod配置
+        :type InClusterPodConfig: :class:`tencentcloud.tke.v20180525.models.PrometheusClusterAgentPodConfig`
+        :param ExternalLabels: 该集群采集的所有指标都会带上这些labels
+        :type ExternalLabels: list of Label
+        :param NotInstallBasicScrape: 是否安装默认采集配置
+        :type NotInstallBasicScrape: bool
+        :param NotScrape: 是否采集指标，true代表drop所有指标，false代表采集默认指标
+        :type NotScrape: bool
+        """
+        self.Region = None
+        self.ClusterType = None
+        self.ClusterId = None
+        self.EnableExternal = None
+        self.InClusterPodConfig = None
+        self.ExternalLabels = None
+        self.NotInstallBasicScrape = None
+        self.NotScrape = None
+
+
+    def _deserialize(self, params):
+        self.Region = params.get("Region")
+        self.ClusterType = params.get("ClusterType")
+        self.ClusterId = params.get("ClusterId")
+        self.EnableExternal = params.get("EnableExternal")
+        if params.get("InClusterPodConfig") is not None:
+            self.InClusterPodConfig = PrometheusClusterAgentPodConfig()
+            self.InClusterPodConfig._deserialize(params.get("InClusterPodConfig"))
+        if params.get("ExternalLabels") is not None:
+            self.ExternalLabels = []
+            for item in params.get("ExternalLabels"):
+                obj = Label()
+                obj._deserialize(item)
+                self.ExternalLabels.append(obj)
+        self.NotInstallBasicScrape = params.get("NotInstallBasicScrape")
+        self.NotScrape = params.get("NotScrape")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PrometheusClusterAgentPodConfig(AbstractModel):
+    """关联集群时在集群内部署组件的pod额外配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param HostNet: 是否使用HostNetWork
+        :type HostNet: bool
+        :param NodeSelector: 指定pod运行节点
+        :type NodeSelector: list of Label
+        :param Tolerations: 容忍污点
+        :type Tolerations: list of Toleration
+        """
+        self.HostNet = None
+        self.NodeSelector = None
+        self.Tolerations = None
+
+
+    def _deserialize(self, params):
+        self.HostNet = params.get("HostNet")
+        if params.get("NodeSelector") is not None:
+            self.NodeSelector = []
+            for item in params.get("NodeSelector"):
+                obj = Label()
+                obj._deserialize(item)
+                self.NodeSelector.append(obj)
+        if params.get("Tolerations") is not None:
+            self.Tolerations = []
+            for item in params.get("Tolerations"):
+                obj = Toleration()
+                obj._deserialize(item)
+                self.Tolerations.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PrometheusConfigItem(AbstractModel):
     """prometheus配置
 
@@ -14891,6 +15019,38 @@ class TcpSocket(AbstractModel):
 
     def _deserialize(self, params):
         self.Port = params.get("Port")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Toleration(AbstractModel):
+    """kubernetes Taint
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Key: 容忍应用到的 taint key
+        :type Key: str
+        :param Operator: 键与值的关系
+        :type Operator: str
+        :param Effect: 要匹配的污点效果
+        :type Effect: str
+        """
+        self.Key = None
+        self.Operator = None
+        self.Effect = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Operator = params.get("Operator")
+        self.Effect = params.get("Effect")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

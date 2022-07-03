@@ -4162,6 +4162,7 @@ class DescribeTaskStatusRequest(AbstractModel):
         :param TaskId: 请求ID，即接口返回的 RequestId 参数。
         :type TaskId: str
         :param DealName: 订单ID。
+注意：参数TaskId和DealName必须传一个。
         :type DealName: str
         """
         self.TaskId = None

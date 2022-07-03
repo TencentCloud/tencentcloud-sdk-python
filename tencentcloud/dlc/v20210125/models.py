@@ -4813,6 +4813,55 @@ class Property(AbstractModel):
         
 
 
+class ReportHeartbeatMetaDataRequest(AbstractModel):
+    """ReportHeartbeatMetaData请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DatasourceConnectionName: 数据源名称
+        :type DatasourceConnectionName: str
+        :param LockId: 锁ID
+        :type LockId: int
+        :param TxnId: 事务ID
+        :type TxnId: int
+        """
+        self.DatasourceConnectionName = None
+        self.LockId = None
+        self.TxnId = None
+
+
+    def _deserialize(self, params):
+        self.DatasourceConnectionName = params.get("DatasourceConnectionName")
+        self.LockId = params.get("LockId")
+        self.TxnId = params.get("TxnId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReportHeartbeatMetaDataResponse(AbstractModel):
+    """ReportHeartbeatMetaData返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class SQLTask(AbstractModel):
     """SQL查询任务
 

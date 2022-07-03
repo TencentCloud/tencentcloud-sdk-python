@@ -32,6 +32,9 @@ FAILEDOPERATION_DELETERULE = 'FailedOperation.DeleteRule'
 # 规则与事件不匹配，请修正后再试。
 FAILEDOPERATION_ERRORFILTER = 'FailedOperation.ErrorFilter'
 
+# 注册CLS服务失败。
+FAILEDOPERATION_REGISTERCLSSERVICE = 'FailedOperation.RegisterCLSService'
+
 # ServiceError操作失败，请检查资源信息。
 FAILEDOPERATION_SERVICEERROR = 'FailedOperation.ServiceError'
 
@@ -52,6 +55,9 @@ INTERNALERROR_SYSTEM = 'InternalError.System'
 
 # 参数错误。
 INVALIDPARAMETER = 'InvalidParameter'
+
+# APIGateway连接器不支持开启或关闭操作，请修正后重试。
+INVALIDPARAMETER_ENABLEAPIGATEWAY = 'InvalidParameter.EnableAPIGateway'
 
 # Payload与规范不符，请修正后再试。
 INVALIDPARAMETER_PAYLOAD = 'InvalidParameter.Payload'

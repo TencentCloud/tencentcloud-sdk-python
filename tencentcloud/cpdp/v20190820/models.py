@@ -1165,6 +1165,12 @@ OCCASION:偶然所得
         :type FundingAccountInfo: :class:`tencentcloud.cpdp.v20190820.models.FlexFundingAccountInfo`
         :param Remark: 提现备注
         :type Remark: str
+        :param Environment: 环境类型
+__release__:生产环境
+__sandbox__:沙箱环境
+__test__:测试环境
+缺省默认为生产环境
+        :type Environment: str
         """
         self.PayeeId = None
         self.IncomeType = None
@@ -1172,6 +1178,7 @@ OCCASION:偶然所得
         self.OutOrderId = None
         self.FundingAccountInfo = None
         self.Remark = None
+        self.Environment = None
 
 
     def _deserialize(self, params):
@@ -1183,6 +1190,7 @@ OCCASION:偶然所得
             self.FundingAccountInfo = FlexFundingAccountInfo()
             self.FundingAccountInfo._deserialize(params.get("FundingAccountInfo"))
         self.Remark = params.get("Remark")
+        self.Environment = params.get("Environment")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1279,12 +1287,19 @@ OCCASION:偶然所得
         :type OutOrderId: str
         :param Remark: 备注
         :type Remark: str
+        :param Environment: 环境类型
+__release__:生产环境
+__sandbox__:沙箱环境
+__test__:测试环境
+缺省默认为生产环境
+        :type Environment: str
         """
         self.PayeeId = None
         self.IncomeType = None
         self.AmountBeforeTax = None
         self.OutOrderId = None
         self.Remark = None
+        self.Environment = None
 
 
     def _deserialize(self, params):
@@ -1293,6 +1308,7 @@ OCCASION:偶然所得
         self.AmountBeforeTax = params.get("AmountBeforeTax")
         self.OutOrderId = params.get("OutOrderId")
         self.Remark = params.get("Remark")
+        self.Environment = params.get("Environment")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5950,6 +5966,14 @@ class CreateFlexPayeeRequest(AbstractModel):
         :type IdType: int
         :param Remark: 备注
         :type Remark: str
+        :param PhoneNo: 手机号码
+        :type PhoneNo: str
+        :param Environment: 环境类型
+__release__:生产环境
+__sandbox__:沙箱环境
+__test__:测试环境
+缺省默认为生产环境
+        :type Environment: str
         """
         self.OutUserId = None
         self.Name = None
@@ -5959,6 +5983,8 @@ class CreateFlexPayeeRequest(AbstractModel):
         self.TaxInfo = None
         self.IdType = None
         self.Remark = None
+        self.PhoneNo = None
+        self.Environment = None
 
 
     def _deserialize(self, params):
@@ -5972,6 +5998,8 @@ class CreateFlexPayeeRequest(AbstractModel):
             self.TaxInfo._deserialize(params.get("TaxInfo"))
         self.IdType = params.get("IdType")
         self.Remark = params.get("Remark")
+        self.PhoneNo = params.get("PhoneNo")
+        self.Environment = params.get("Environment")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -11037,6 +11065,12 @@ UNFREEZE:解冻
         :type OperationType: str
         :param Remark: 冻结备注
         :type Remark: str
+        :param Environment: 环境类型
+__release__:生产环境
+__sandbox__:沙箱环境
+__test__:测试环境
+缺省默认为生产环境
+        :type Environment: str
         """
         self.PayeeId = None
         self.AmountBeforeTax = None
@@ -11044,6 +11078,7 @@ UNFREEZE:解冻
         self.OutOrderId = None
         self.OperationType = None
         self.Remark = None
+        self.Environment = None
 
 
     def _deserialize(self, params):
@@ -11053,6 +11088,7 @@ UNFREEZE:解冻
         self.OutOrderId = params.get("OutOrderId")
         self.OperationType = params.get("OperationType")
         self.Remark = params.get("Remark")
+        self.Environment = params.get("Environment")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -12312,16 +12348,24 @@ PAYMENT:付款权益
 ENABLE:启用
 DISABLE:停用
         :type AccountRightStatus: str
+        :param Environment: 环境类型
+__release__:生产环境
+__sandbox__:沙箱环境
+__test__:测试环境
+缺省默认为生产环境
+        :type Environment: str
         """
         self.PayeeId = None
         self.AccountRightType = None
         self.AccountRightStatus = None
+        self.Environment = None
 
 
     def _deserialize(self, params):
         self.PayeeId = params.get("PayeeId")
         self.AccountRightType = params.get("AccountRightType")
         self.AccountRightStatus = params.get("AccountRightStatus")
+        self.Environment = params.get("Environment")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -14238,6 +14282,8 @@ FAILED:已失败
         :param Remark: 提现备注
 注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
+        :param PayeeId: 收款用户ID
+        :type PayeeId: str
         """
         self.IncomeType = None
         self.AmountBeforeTax = None
@@ -14250,6 +14296,7 @@ FAILED:已失败
         self.Status = None
         self.StatusDesc = None
         self.Remark = None
+        self.PayeeId = None
 
 
     def _deserialize(self, params):
@@ -14264,6 +14311,7 @@ FAILED:已失败
         self.Status = params.get("Status")
         self.StatusDesc = params.get("StatusDesc")
         self.Remark = params.get("Remark")
+        self.PayeeId = params.get("PayeeId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -17213,16 +17261,24 @@ OCCASION:偶然所得
         :type IncomeType: str
         :param AmountAfterTax: 税后金额
         :type AmountAfterTax: str
+        :param Environment: 环境类型
+__release__:生产环境
+__sandbox__:沙箱环境
+__test__:测试环境
+缺省默认为生产环境
+        :type Environment: str
         """
         self.PayeeId = None
         self.IncomeType = None
         self.AmountAfterTax = None
+        self.Environment = None
 
 
     def _deserialize(self, params):
         self.PayeeId = params.get("PayeeId")
         self.IncomeType = params.get("IncomeType")
         self.AmountAfterTax = params.get("AmountAfterTax")
+        self.Environment = params.get("Environment")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -17283,12 +17339,19 @@ UNFREEZE:解冻
         :type EndTime: str
         :param PageNumber: 分页
         :type PageNumber: :class:`tencentcloud.cpdp.v20190820.models.Paging`
+        :param Environment: 环境类型
+__release__:生产环境
+__sandbox__:沙箱环境
+__test__:测试环境
+缺省默认为生产环境
+        :type Environment: str
         """
         self.PayeeId = None
         self.OperationType = None
         self.StartTime = None
         self.EndTime = None
         self.PageNumber = None
+        self.Environment = None
 
 
     def _deserialize(self, params):
@@ -17299,6 +17362,7 @@ UNFREEZE:解冻
         if params.get("PageNumber") is not None:
             self.PageNumber = Paging()
             self.PageNumber._deserialize(params.get("PageNumber"))
+        self.Environment = params.get("Environment")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -17353,14 +17417,22 @@ class QueryFlexPayeeAccountBalanceRequest(AbstractModel):
 LABOR:劳务所得
 OCCASION:偶然所得
         :type IncomeType: str
+        :param Environment: 环境类型
+__release__:生产环境
+__sandbox__:沙箱环境
+__test__:测试环境
+缺省默认为生产环境
+        :type Environment: str
         """
         self.PayeeId = None
         self.IncomeType = None
+        self.Environment = None
 
 
     def _deserialize(self, params):
         self.PayeeId = params.get("PayeeId")
         self.IncomeType = params.get("IncomeType")
+        self.Environment = params.get("Environment")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -17413,14 +17485,22 @@ class QueryFlexPayeeAccountInfoRequest(AbstractModel):
         :type PayeeId: str
         :param OutUserId: 外部用户ID
         :type OutUserId: str
+        :param Environment: 环境类型
+__release__:生产环境
+__sandbox__:沙箱环境
+__test__:测试环境
+缺省默认为生产环境
+        :type Environment: str
         """
         self.PayeeId = None
         self.OutUserId = None
+        self.Environment = None
 
 
     def _deserialize(self, params):
         self.PayeeId = params.get("PayeeId")
         self.OutUserId = params.get("OutUserId")
+        self.Environment = params.get("Environment")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -17477,11 +17557,18 @@ class QueryFlexPayeeAccountListRequest(AbstractModel):
         :type EndTime: str
         :param PageNumber: 分页
         :type PageNumber: :class:`tencentcloud.cpdp.v20190820.models.Paging`
+        :param Environment: 环境类型
+__release__:生产环境
+__sandbox__:沙箱环境
+__test__:测试环境
+缺省默认为生产环境
+        :type Environment: str
         """
         self.PropertyInfo = None
         self.StartTime = None
         self.EndTime = None
         self.PageNumber = None
+        self.Environment = None
 
 
     def _deserialize(self, params):
@@ -17493,6 +17580,7 @@ class QueryFlexPayeeAccountListRequest(AbstractModel):
         if params.get("PageNumber") is not None:
             self.PageNumber = Paging()
             self.PageNumber._deserialize(params.get("PageNumber"))
+        self.Environment = params.get("Environment")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -17545,14 +17633,22 @@ class QueryFlexPayeeInfoRequest(AbstractModel):
         :type PayeeId: str
         :param OutUserId: 外部用户ID
         :type OutUserId: str
+        :param Environment: 环境类型
+__release__:生产环境
+__sandbox__:沙箱环境
+__test__:测试环境
+缺省默认为生产环境
+        :type Environment: str
         """
         self.PayeeId = None
         self.OutUserId = None
+        self.Environment = None
 
 
     def _deserialize(self, params):
         self.PayeeId = params.get("PayeeId")
         self.OutUserId = params.get("OutUserId")
+        self.Environment = params.get("Environment")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -17609,11 +17705,18 @@ class QueryFlexPaymentOrderListRequest(AbstractModel):
         :type EndTime: str
         :param PageNumber: 分页
         :type PageNumber: :class:`tencentcloud.cpdp.v20190820.models.Paging`
+        :param Environment: 环境类型
+__release__:生产环境
+__sandbox__:沙箱环境
+__test__:测试环境
+缺省默认为生产环境
+        :type Environment: str
         """
         self.PayeeId = None
         self.StartTime = None
         self.EndTime = None
         self.PageNumber = None
+        self.Environment = None
 
 
     def _deserialize(self, params):
@@ -17623,6 +17726,7 @@ class QueryFlexPaymentOrderListRequest(AbstractModel):
         if params.get("PageNumber") is not None:
             self.PageNumber = Paging()
             self.PageNumber._deserialize(params.get("PageNumber"))
+        self.Environment = params.get("Environment")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -17675,14 +17779,22 @@ class QueryFlexPaymentOrderStatusRequest(AbstractModel):
         :type OutOrderId: str
         :param OrderId: 订单ID
         :type OrderId: str
+        :param Environment: 环境类型
+__release__:生产环境
+__sandbox__:沙箱环境
+__test__:测试环境
+缺省默认为生产环境
+        :type Environment: str
         """
         self.OutOrderId = None
         self.OrderId = None
+        self.Environment = None
 
 
     def _deserialize(self, params):
         self.OutOrderId = params.get("OutOrderId")
         self.OrderId = params.get("OrderId")
+        self.Environment = params.get("Environment")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -17739,11 +17851,25 @@ class QueryFlexSettlementOrderListRequest(AbstractModel):
         :type EndTime: str
         :param PageNumber: 分页
         :type PageNumber: :class:`tencentcloud.cpdp.v20190820.models.Paging`
+        :param OperationType: 操作类型。
+ENABLE_SETTLE: 正常结算
+DISABLE_SETTLE: 停用结算
+UNFREEZE_SETTLE: 解冻结算
+若需要支持多个操作类型，则以;分隔
+        :type OperationType: str
+        :param Environment: 环境类型
+__release__:生产环境
+__sandbox__:沙箱环境
+__test__:测试环境
+缺省默认为生产环境
+        :type Environment: str
         """
         self.PayeeId = None
         self.StartTime = None
         self.EndTime = None
         self.PageNumber = None
+        self.OperationType = None
+        self.Environment = None
 
 
     def _deserialize(self, params):
@@ -17753,6 +17879,8 @@ class QueryFlexSettlementOrderListRequest(AbstractModel):
         if params.get("PageNumber") is not None:
             self.PageNumber = Paging()
             self.PageNumber._deserialize(params.get("PageNumber"))
+        self.OperationType = params.get("OperationType")
+        self.Environment = params.get("Environment")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -18,6 +18,71 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class DescribeProjectRequest(AbstractModel):
+    """DescribeProject请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProjectId: 项目id。一般使用项目Id来查询，与projectName必须存在一个。
+        :type ProjectId: str
+        :param DescribeClusters: 是否展示关联集群信息
+        :type DescribeClusters: bool
+        :param DescribeExecutors: 是否展示关联执行组的信息，仅部分信息。
+        :type DescribeExecutors: bool
+        :param DescribeAdminUsers: 默认不展示项目管理员信息
+        :type DescribeAdminUsers: bool
+        :param DescribeMemberCount: 默认不统计项目人员数量
+        :type DescribeMemberCount: bool
+        :param DescribeCreator: 默认不查询创建者的信息
+        :type DescribeCreator: bool
+        :param ProjectName: 项目名只在租户内唯一，一般用来转化为项目ID。
+        :type ProjectName: str
+        """
+        self.ProjectId = None
+        self.DescribeClusters = None
+        self.DescribeExecutors = None
+        self.DescribeAdminUsers = None
+        self.DescribeMemberCount = None
+        self.DescribeCreator = None
+        self.ProjectName = None
+
+
+    def _deserialize(self, params):
+        self.ProjectId = params.get("ProjectId")
+        self.DescribeClusters = params.get("DescribeClusters")
+        self.DescribeExecutors = params.get("DescribeExecutors")
+        self.DescribeAdminUsers = params.get("DescribeAdminUsers")
+        self.DescribeMemberCount = params.get("DescribeMemberCount")
+        self.DescribeCreator = params.get("DescribeCreator")
+        self.ProjectName = params.get("ProjectName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeProjectResponse(AbstractModel):
+    """DescribeProject返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeRelatedInstancesRequest(AbstractModel):
     """DescribeRelatedInstances请求参数结构体
 
