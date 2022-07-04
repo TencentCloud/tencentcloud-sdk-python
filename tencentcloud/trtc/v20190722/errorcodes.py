@@ -227,6 +227,9 @@ MISSINGPARAMETER_USERIDS = 'MissingParameter.UserIds'
 # EncodeParams中缺少视频输出参数。
 MISSINGPARAMETER_VIDEOENCODEPARAMS = 'MissingParameter.VideoEncodeParams'
 
+# 资源不足。
+RESOURCEINSUFFICIENT_REQUESTREJECTION = 'ResourceInsufficient.RequestRejection'
+
 # 没有操作SdkAppId的权限。
 UNAUTHORIZEDOPERATION_SDKAPPID = 'UnauthorizedOperation.SdkAppId'
 

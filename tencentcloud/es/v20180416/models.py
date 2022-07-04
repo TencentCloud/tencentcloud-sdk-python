@@ -2207,6 +2207,12 @@ class NodeInfo(AbstractModel):
         :type DiskCount: int
         :param DiskEncrypt: 节点磁盘是否加密 0: 不加密，1: 加密；默认不加密
         :type DiskEncrypt: int
+        :param CpuNum: cpu数目
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CpuNum: int
+        :param MemSize: 内存大小，单位GB
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MemSize: int
         """
         self.NodeNum = None
         self.NodeType = None
@@ -2216,6 +2222,8 @@ class NodeInfo(AbstractModel):
         self.LocalDiskInfo = None
         self.DiskCount = None
         self.DiskEncrypt = None
+        self.CpuNum = None
+        self.MemSize = None
 
 
     def _deserialize(self, params):
@@ -2229,6 +2237,8 @@ class NodeInfo(AbstractModel):
             self.LocalDiskInfo._deserialize(params.get("LocalDiskInfo"))
         self.DiskCount = params.get("DiskCount")
         self.DiskEncrypt = params.get("DiskEncrypt")
+        self.CpuNum = params.get("CpuNum")
+        self.MemSize = params.get("MemSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

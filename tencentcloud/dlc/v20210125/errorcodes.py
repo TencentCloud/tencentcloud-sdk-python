@@ -83,6 +83,9 @@ INVALIDPARAMETER_INVALIDSQLNUM = 'InvalidParameter.InvalidSQLNum'
 # 不支持的排序类型。
 INVALIDPARAMETER_INVALIDSORTBYTYPE = 'InvalidParameter.InvalidSortByType'
 
+# SparkAppParam无效。
+INVALIDPARAMETER_INVALIDSPARKAPPPARAM = 'InvalidParameter.InvalidSparkAppParam'
+
 # 存储位置错误。
 INVALIDPARAMETER_INVALIDSTORELOCATION = 'InvalidParameter.InvalidStoreLocation'
 

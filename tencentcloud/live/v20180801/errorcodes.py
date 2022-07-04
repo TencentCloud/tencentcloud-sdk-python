@@ -335,6 +335,9 @@ INVALIDPARAMETER_INVALIDTOURL = 'InvalidParameter.InvalidToUrl'
 # 错误的VodFileName。
 INVALIDPARAMETER_INVALIDVODFILENAME = 'InvalidParameter.InvalidVodFileName'
 
+# 水印参数有误。
+INVALIDPARAMETER_INVALIDWATERMARK = 'InvalidParameter.InvalidWatermark'
+
 # 当月不允许添加已删除的小程序域名。
 INVALIDPARAMETER_MPHOSTDELETE = 'InvalidParameter.MpHostDelete'
 
@@ -410,6 +413,9 @@ RESOURCENOTFOUND_DOMAINNOTEXIST = 'ResourceNotFound.DomainNotExist'
 # 用户被禁用。
 RESOURCENOTFOUND_FORBIDSERVICE = 'ResourceNotFound.ForbidService'
 
+# 用户服务被冻结。
+RESOURCENOTFOUND_FREEZESERVICE = 'ResourceNotFound.FreezeService'
+
 # 用户不支持此接口。
 RESOURCENOTFOUND_INVALIDUSER = 'ResourceNotFound.InvalidUser'
 
@@ -427,6 +433,9 @@ RESOURCENOTFOUND_STREAMNOTALIVE = 'ResourceNotFound.StreamNotAlive'
 
 # TaskId 不存在。
 RESOURCENOTFOUND_TASKID = 'ResourceNotFound.TaskId'
+
+# 用户主动停服。
+RESOURCENOTFOUND_USERDISABLESERVICE = 'ResourceNotFound.UserDisableService'
 
 # 用户未注册直播。
 RESOURCENOTFOUND_USERNOTEXIST = 'ResourceNotFound.UserNotExist'

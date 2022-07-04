@@ -68,6 +68,9 @@ INVALIDPARAMETERVALUE_BACKUPDATAPOINTINVALID = 'InvalidParameterValue.BackupData
 # 集群不存在。
 INVALIDPARAMETERVALUE_CLUSTERNOTFOUND = 'InvalidParameterValue.ClusterNotFound'
 
+# 数据库版本号相关参数数量错误。
+INVALIDPARAMETERVALUE_DATABASEVERSIONPARAMCOUNTERROR = 'InvalidParameterValue.DatabaseVersionParamCountError'
+
 # 订单未找到。
 INVALIDPARAMETERVALUE_DEALNAMENOTFOUND = 'InvalidParameterValue.DealNameNotFound'
 
@@ -85,6 +88,9 @@ INVALIDPARAMETERVALUE_INSTANCENOTFOUND = 'InvalidParameterValue.InstanceNotFound
 
 # 数据库版本信息无法被识别。
 INVALIDPARAMETERVALUE_INVALIDDBVERSION = 'InvalidParameterValue.InvalidDBVersion'
+
+# 数据库版本号相关参数不合法。
+INVALIDPARAMETERVALUE_INVALIDDATABASEVERSION = 'InvalidParameterValue.InvalidDatabaseVersion'
 
 # 传入的参数非法。
 INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = 'InvalidParameterValue.InvalidParameterValueError'

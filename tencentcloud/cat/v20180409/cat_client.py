@@ -114,7 +114,7 @@ class CatClient(AbstractClient):
 
 
     def DescribeProbeMetricData(self, request):
-        """列出云拨测指标详细数据
+        """查询云拨测指标数据，指标支持使用sum,avg,max,min聚合函数进行指标数据查询
 
         :param request: Request instance for DescribeProbeMetricData.
         :type request: :class:`tencentcloud.cat.v20180409.models.DescribeProbeMetricDataRequest`

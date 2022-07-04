@@ -275,6 +275,144 @@ class AddContractResult(AbstractModel):
         
 
 
+class AddFlexIdInfoRequest(AbstractModel):
+    """AddFlexIdInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IdType: 证件类型
+0:身份证
+1:社会信用代码
+        :type IdType: int
+        :param IdNo: 证件号
+        :type IdNo: str
+        :param PayeeId: 收款用户ID
+        :type PayeeId: str
+        :param Environment: 环境类型
+__release__:生产环境
+__sandbox__:沙箱环境
+__test__:测试环境
+缺省默认为生产环境
+        :type Environment: str
+        """
+        self.IdType = None
+        self.IdNo = None
+        self.PayeeId = None
+        self.Environment = None
+
+
+    def _deserialize(self, params):
+        self.IdType = params.get("IdType")
+        self.IdNo = params.get("IdNo")
+        self.PayeeId = params.get("PayeeId")
+        self.Environment = params.get("Environment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddFlexIdInfoResponse(AbstractModel):
+    """AddFlexIdInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrCode: 错误码。SUCCESS为成功，其他为失败
+        :type ErrCode: str
+        :param ErrMessage: 错误消息
+        :type ErrMessage: str
+        :param Result: 无
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrCode = None
+        self.ErrMessage = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrCode = params.get("ErrCode")
+        self.ErrMessage = params.get("ErrMessage")
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
+class AddFlexPhoneNoRequest(AbstractModel):
+    """AddFlexPhoneNo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PhoneNo: 手机号
+        :type PhoneNo: str
+        :param PayeeId: 收款用户ID
+        :type PayeeId: str
+        :param Environment: 环境类型
+__release__:生产环境
+__sandbox__:沙箱环境
+__test__:测试环境
+缺省默认为生产环境
+        :type Environment: str
+        """
+        self.PhoneNo = None
+        self.PayeeId = None
+        self.Environment = None
+
+
+    def _deserialize(self, params):
+        self.PhoneNo = params.get("PhoneNo")
+        self.PayeeId = params.get("PayeeId")
+        self.Environment = params.get("Environment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddFlexPhoneNoResponse(AbstractModel):
+    """AddFlexPhoneNo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrCode: 错误码。SUCCESS为成功，其他为失败
+        :type ErrCode: str
+        :param ErrMessage: 错误消息
+        :type ErrMessage: str
+        :param Result: 无
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrCode = None
+        self.ErrMessage = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrCode = params.get("ErrCode")
+        self.ErrMessage = params.get("ErrMessage")
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
 class AddMerchantRequest(AbstractModel):
     """AddMerchant请求参数结构体
 
@@ -11010,6 +11148,34 @@ class FileItem(AbstractModel):
         
 
 
+class FlexBillDownloadUrlResult(AbstractModel):
+    """对账单文件下载链接
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Url: 对账单文件下载链接
+        :type Url: str
+        :param ExpireTime: 下载链接过期时间
+        :type ExpireTime: str
+        """
+        self.Url = None
+        self.ExpireTime = None
+
+
+    def _deserialize(self, params):
+        self.Url = params.get("Url")
+        self.ExpireTime = params.get("ExpireTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class FlexFundingAccountInfo(AbstractModel):
     """灵云V2-银行信息
 
@@ -13421,6 +13587,87 @@ class OrderItem(AbstractModel):
         self.Status = params.get("Status")
         self.Price = params.get("Price")
         self.TaxCode = params.get("TaxCode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OrderSummaries(AbstractModel):
+    """订单汇总列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param List: 汇总列表
+        :type List: list of OrderSummaryResult
+        :param Count: 总数
+        :type Count: int
+        """
+        self.List = None
+        self.Count = None
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self.List = []
+            for item in params.get("List"):
+                obj = OrderSummaryResult()
+                obj._deserialize(item)
+                self.List.append(obj)
+        self.Count = params.get("Count")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OrderSummaryResult(AbstractModel):
+    """订单汇总结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SummaryId: 汇总ID
+        :type SummaryId: str
+        :param PayeeId: 收款账户ID
+        :type PayeeId: str
+        :param Name: 收款账户名称
+        :type Name: str
+        :param IncomeType: 收入类型
+        :type IncomeType: str
+        :param SummaryAmount: 汇总金额
+        :type SummaryAmount: str
+        :param SummaryTime: 汇总日期
+        :type SummaryTime: str
+        :param SummaryCount: 汇总记录数量
+        :type SummaryCount: int
+        """
+        self.SummaryId = None
+        self.PayeeId = None
+        self.Name = None
+        self.IncomeType = None
+        self.SummaryAmount = None
+        self.SummaryTime = None
+        self.SummaryCount = None
+
+
+    def _deserialize(self, params):
+        self.SummaryId = params.get("SummaryId")
+        self.PayeeId = params.get("PayeeId")
+        self.Name = params.get("Name")
+        self.IncomeType = params.get("IncomeType")
+        self.SummaryAmount = params.get("SummaryAmount")
+        self.SummaryTime = params.get("SummaryTime")
+        self.SummaryCount = params.get("SummaryCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -17320,6 +17567,78 @@ class QueryFlexAmountBeforeTaxResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class QueryFlexBillDownloadUrlRequest(AbstractModel):
+    """QueryFlexBillDownloadUrl请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BillDate: 对账单日期
+        :type BillDate: str
+        :param BillType: 对账单类型：FREEZE, SETTLEMENT,PAYMENT
+        :type BillType: str
+        :param ServiceProviderId: 服务商ID，如不填则查询平台级别对账单文件
+        :type ServiceProviderId: str
+        :param Environment: 环境类型
+__release__:生产环境
+__sandbox__:沙箱环境
+__test__:测试环境
+缺省默认为生产环境
+        :type Environment: str
+        """
+        self.BillDate = None
+        self.BillType = None
+        self.ServiceProviderId = None
+        self.Environment = None
+
+
+    def _deserialize(self, params):
+        self.BillDate = params.get("BillDate")
+        self.BillType = params.get("BillType")
+        self.ServiceProviderId = params.get("ServiceProviderId")
+        self.Environment = params.get("Environment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryFlexBillDownloadUrlResponse(AbstractModel):
+    """QueryFlexBillDownloadUrl返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrCode: 错误码。SUCCESS为成功，其他为失败
+        :type ErrCode: str
+        :param ErrMessage: 错误消息
+        :type ErrMessage: str
+        :param Result: 返回结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.cpdp.v20190820.models.FlexBillDownloadUrlResult`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrCode = None
+        self.ErrMessage = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrCode = params.get("ErrCode")
+        self.ErrMessage = params.get("ErrMessage")
+        if params.get("Result") is not None:
+            self.Result = FlexBillDownloadUrlResult()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
 class QueryFlexFreezeOrderListRequest(AbstractModel):
     """QueryFlexFreezeOrderList请求参数结构体
 
@@ -17400,6 +17719,84 @@ class QueryFlexFreezeOrderListResponse(AbstractModel):
         self.ErrMessage = params.get("ErrMessage")
         if params.get("Result") is not None:
             self.Result = FreezeOrders()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class QueryFlexOrderSummaryListRequest(AbstractModel):
+    """QueryFlexOrderSummaryList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SummaryDate: 汇总日期:yyyy-MM-dd
+        :type SummaryDate: str
+        :param PageNumber: 分页
+        :type PageNumber: :class:`tencentcloud.cpdp.v20190820.models.Paging`
+        :param OrderType: 汇总订单类型:FREEZE, SETTLEMENT,PAYMENT
+        :type OrderType: str
+        :param PayeeId: 收款用户ID
+        :type PayeeId: str
+        :param Environment: 环境类型
+__release__:生产环境
+__sandbox__:沙箱环境
+__test__:测试环境
+缺省默认为生产环境
+        :type Environment: str
+        """
+        self.SummaryDate = None
+        self.PageNumber = None
+        self.OrderType = None
+        self.PayeeId = None
+        self.Environment = None
+
+
+    def _deserialize(self, params):
+        self.SummaryDate = params.get("SummaryDate")
+        if params.get("PageNumber") is not None:
+            self.PageNumber = Paging()
+            self.PageNumber._deserialize(params.get("PageNumber"))
+        self.OrderType = params.get("OrderType")
+        self.PayeeId = params.get("PayeeId")
+        self.Environment = params.get("Environment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryFlexOrderSummaryListResponse(AbstractModel):
+    """QueryFlexOrderSummaryList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrCode: 错误码。SUCCESS为成功，其他为失败
+        :type ErrCode: str
+        :param ErrMessage: 错误消息
+        :type ErrMessage: str
+        :param Result: 返回结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.cpdp.v20190820.models.OrderSummaries`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrCode = None
+        self.ErrMessage = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrCode = params.get("ErrCode")
+        self.ErrMessage = params.get("ErrMessage")
+        if params.get("Result") is not None:
+            self.Result = OrderSummaries()
             self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
 

@@ -239,6 +239,8 @@ class AlterDMSTableRequest(AbstractModel):
         :type ViewExpandedText: str
         :param Partitions: 分区
         :type Partitions: list of DMSPartition
+        :param Name: 当前表名
+        :type Name: str
         """
         self.CurrentName = None
         self.CurrentDbName = None
@@ -257,6 +259,7 @@ class AlterDMSTableRequest(AbstractModel):
         self.ViewOriginalText = None
         self.ViewExpandedText = None
         self.Partitions = None
+        self.Name = None
 
 
     def _deserialize(self, params):
@@ -296,6 +299,7 @@ class AlterDMSTableRequest(AbstractModel):
                 obj = DMSPartition()
                 obj._deserialize(item)
                 self.Partitions.append(obj)
+        self.Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

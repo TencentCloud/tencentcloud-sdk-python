@@ -257,7 +257,7 @@ class Cluster(AbstractModel):
         :type Region: str
         :param Zone: 可用区
         :type Zone: str
-        :param DBVersion: 数据库版本
+        :param DBVersion: TDSQL-C PostgreSQL 合入的社区版本号
         :type DBVersion: str
         :param ProjectId: 项目ID
         :type ProjectId: int
@@ -294,6 +294,10 @@ class Cluster(AbstractModel):
         :type InstanceCount: int
         :param EndpointSet: 集群内访问点信息
         :type EndpointSet: list of Endpoint
+        :param DBMajorVersion: TDSQL-C PostgreSQL 合入的社区主要版本号
+        :type DBMajorVersion: str
+        :param DBKernelVersion: TDSQL-C PostgreSQL 内核版本号
+        :type DBKernelVersion: str
         """
         self.ClusterId = None
         self.ClusterName = None
@@ -312,6 +316,8 @@ class Cluster(AbstractModel):
         self.DBCharset = None
         self.InstanceCount = None
         self.EndpointSet = None
+        self.DBMajorVersion = None
+        self.DBKernelVersion = None
 
 
     def _deserialize(self, params):
@@ -337,6 +343,8 @@ class Cluster(AbstractModel):
                 obj = Endpoint()
                 obj._deserialize(item)
                 self.EndpointSet.append(obj)
+        self.DBMajorVersion = params.get("DBMajorVersion")
+        self.DBKernelVersion = params.get("DBKernelVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -416,8 +424,6 @@ class CreateClusterRequest(AbstractModel):
         r"""
         :param Zone: 可用区
         :type Zone: str
-        :param DBVersion: 数据库版本，目前仅支持 10.17
-        :type DBVersion: str
         :param MasterUserPassword: 数据库用户密码，必须满足 8-64个字符，至少包含 大写字母、小写字母、数字和符号~!@#$%^&*_-+=`|\(){}[]:;'<>,.?/中的任意三种
         :type MasterUserPassword: str
         :param CPU: CPU核数。取值参考文档【购买指南】
@@ -434,6 +440,10 @@ class CreateClusterRequest(AbstractModel):
         :type PayMode: str
         :param ClusterName: 集群名，1-60个字符，可以包含中文、英文、数字和符号"-"、"_"、"."。不输入此参数时默认与ClusterId保持一致
         :type ClusterName: str
+        :param DBVersion: TDSQL-C PostgreSQL 合入的社区版本号。
+支持入参值为：10.17。当输入该参数时，会基于此版本号创建对应的最新DBKernelVersion数据库内核。
+注：该参数与DBMajorVersion、DBKernelVersion只能传递一个，且需要传递一个。
+        :type DBVersion: str
         :param ProjectId: 项目Id，默认为0表示默认项目
         :type ProjectId: int
         :param Port: 连接数据库时，Endpoint使用的端口。取值范围为[1,65534]，默认值为5432
@@ -445,9 +455,16 @@ class CreateClusterRequest(AbstractModel):
         :type Period: int
         :param AutoRenewFlag: 是否自动续费，0-不 1-是。默认值为0，只有当PayMode为PREPAID时生效。
         :type AutoRenewFlag: int
+        :param DBMajorVersion: TDSQL-C PostgreSQL 合入的社区主要版本号。
+支持入参值为：10。当输入该参数时，会基于此版本号创建对应的最新DBKernelVersion数据库内核。
+注：该参数和DBVersion、DBKernelVersion只能传递一个，且需要传递一个。
+        :type DBMajorVersion: str
+        :param DBKernelVersion: TDSQL-C PostgreSQL 内核版本号。
+支持入参值为：v10.17_r1.4。当输入该参数时，会创建此版本号对应的数据库内核。
+注：该参数和DBVersion、DBMajorVersion只能传递一个，且需要传递一个。
+        :type DBKernelVersion: str
         """
         self.Zone = None
-        self.DBVersion = None
         self.MasterUserPassword = None
         self.CPU = None
         self.Memory = None
@@ -455,16 +472,18 @@ class CreateClusterRequest(AbstractModel):
         self.SubnetId = None
         self.PayMode = None
         self.ClusterName = None
+        self.DBVersion = None
         self.ProjectId = None
         self.Port = None
         self.InstanceCount = None
         self.Period = None
         self.AutoRenewFlag = None
+        self.DBMajorVersion = None
+        self.DBKernelVersion = None
 
 
     def _deserialize(self, params):
         self.Zone = params.get("Zone")
-        self.DBVersion = params.get("DBVersion")
         self.MasterUserPassword = params.get("MasterUserPassword")
         self.CPU = params.get("CPU")
         self.Memory = params.get("Memory")
@@ -472,11 +491,14 @@ class CreateClusterRequest(AbstractModel):
         self.SubnetId = params.get("SubnetId")
         self.PayMode = params.get("PayMode")
         self.ClusterName = params.get("ClusterName")
+        self.DBVersion = params.get("DBVersion")
         self.ProjectId = params.get("ProjectId")
         self.Port = params.get("Port")
         self.InstanceCount = params.get("InstanceCount")
         self.Period = params.get("Period")
         self.AutoRenewFlag = params.get("AutoRenewFlag")
+        self.DBMajorVersion = params.get("DBMajorVersion")
+        self.DBKernelVersion = params.get("DBKernelVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1180,6 +1202,10 @@ class Instance(AbstractModel):
  - RW：读写实例
  - RO：只读实例
         :type InstanceType: str
+        :param DBMajorVersion: TDSQL-C PostgreSQL 合入的社区主要版本号
+        :type DBMajorVersion: str
+        :param DBKernelVersion: TDSQL-C PostgreSQL 内核版本号
+        :type DBKernelVersion: str
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -1196,6 +1222,8 @@ class Instance(AbstractModel):
         self.CPU = None
         self.Memory = None
         self.InstanceType = None
+        self.DBMajorVersion = None
+        self.DBKernelVersion = None
 
 
     def _deserialize(self, params):
@@ -1214,6 +1242,8 @@ class Instance(AbstractModel):
         self.CPU = params.get("CPU")
         self.Memory = params.get("Memory")
         self.InstanceType = params.get("InstanceType")
+        self.DBMajorVersion = params.get("DBMajorVersion")
+        self.DBKernelVersion = params.get("DBKernelVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

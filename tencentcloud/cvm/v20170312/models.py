@@ -493,6 +493,118 @@ TENANT: 租赁
         
 
 
+class ConfigureChcAssistVpcRequest(AbstractModel):
+    """ConfigureChcAssistVpc请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ChcIds: CHC物理服务器的实例Id。
+        :type ChcIds: list of str
+        :param BmcVirtualPrivateCloud: 带外网络信息。
+        :type BmcVirtualPrivateCloud: :class:`tencentcloud.cvm.v20170312.models.VirtualPrivateCloud`
+        :param BmcSecurityGroupIds: 带外网络的安全组列表
+        :type BmcSecurityGroupIds: list of str
+        :param DeployVirtualPrivateCloud: 部署网络信息。
+        :type DeployVirtualPrivateCloud: :class:`tencentcloud.cvm.v20170312.models.VirtualPrivateCloud`
+        :param DeploySecurityGroupIds: 部署网络的安全组列表
+        :type DeploySecurityGroupIds: list of str
+        """
+        self.ChcIds = None
+        self.BmcVirtualPrivateCloud = None
+        self.BmcSecurityGroupIds = None
+        self.DeployVirtualPrivateCloud = None
+        self.DeploySecurityGroupIds = None
+
+
+    def _deserialize(self, params):
+        self.ChcIds = params.get("ChcIds")
+        if params.get("BmcVirtualPrivateCloud") is not None:
+            self.BmcVirtualPrivateCloud = VirtualPrivateCloud()
+            self.BmcVirtualPrivateCloud._deserialize(params.get("BmcVirtualPrivateCloud"))
+        self.BmcSecurityGroupIds = params.get("BmcSecurityGroupIds")
+        if params.get("DeployVirtualPrivateCloud") is not None:
+            self.DeployVirtualPrivateCloud = VirtualPrivateCloud()
+            self.DeployVirtualPrivateCloud._deserialize(params.get("DeployVirtualPrivateCloud"))
+        self.DeploySecurityGroupIds = params.get("DeploySecurityGroupIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConfigureChcAssistVpcResponse(AbstractModel):
+    """ConfigureChcAssistVpc返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ConfigureChcDeployVpcRequest(AbstractModel):
+    """ConfigureChcDeployVpc请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ChcIds: CHC物理服务器的实例Id。
+        :type ChcIds: list of str
+        :param DeployVirtualPrivateCloud: 部署网络信息。
+        :type DeployVirtualPrivateCloud: :class:`tencentcloud.cvm.v20170312.models.VirtualPrivateCloud`
+        :param DeploySecurityGroupIds: 部署网络的安全组列表。
+        :type DeploySecurityGroupIds: list of str
+        """
+        self.ChcIds = None
+        self.DeployVirtualPrivateCloud = None
+        self.DeploySecurityGroupIds = None
+
+
+    def _deserialize(self, params):
+        self.ChcIds = params.get("ChcIds")
+        if params.get("DeployVirtualPrivateCloud") is not None:
+            self.DeployVirtualPrivateCloud = VirtualPrivateCloud()
+            self.DeployVirtualPrivateCloud._deserialize(params.get("DeployVirtualPrivateCloud"))
+        self.DeploySecurityGroupIds = params.get("DeploySecurityGroupIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConfigureChcDeployVpcResponse(AbstractModel):
+    """ConfigureChcDeployVpc返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CreateDisasterRecoverGroupRequest(AbstractModel):
     """CreateDisasterRecoverGroup请求参数结构体
 
@@ -5687,6 +5799,67 @@ class LoginSettings(AbstractModel):
         
 
 
+class ModifyChcAttributeRequest(AbstractModel):
+    """ModifyChcAttribute请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ChcIds: CHC物理服务器ID。
+        :type ChcIds: list of str
+        :param InstanceName: CHC物理服务器名称
+        :type InstanceName: str
+        :param DeviceType: 服务器类型
+        :type DeviceType: str
+        :param BmcUser: 合法字符为字母,数字, 横线和下划线
+        :type BmcUser: str
+        :param Password: 密码8-16位字符, 允许数字，字母， 和特殊字符()`~!@#$%^&*-+=_|{}[]:;'<>,.?/
+        :type Password: str
+        :param BmcSecurityGroupIds: bmc网络的安全组列表
+        :type BmcSecurityGroupIds: list of str
+        """
+        self.ChcIds = None
+        self.InstanceName = None
+        self.DeviceType = None
+        self.BmcUser = None
+        self.Password = None
+        self.BmcSecurityGroupIds = None
+
+
+    def _deserialize(self, params):
+        self.ChcIds = params.get("ChcIds")
+        self.InstanceName = params.get("InstanceName")
+        self.DeviceType = params.get("DeviceType")
+        self.BmcUser = params.get("BmcUser")
+        self.Password = params.get("Password")
+        self.BmcSecurityGroupIds = params.get("BmcSecurityGroupIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyChcAttributeResponse(AbstractModel):
+    """ModifyChcAttribute返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyDisasterRecoverGroupAttributeRequest(AbstractModel):
     """ModifyDisasterRecoverGroupAttribute请求参数结构体
 
@@ -6706,6 +6879,88 @@ class RegionInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class RemoveChcAssistVpcRequest(AbstractModel):
+    """RemoveChcAssistVpc请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ChcIds: CHC物理服务器Id。
+        :type ChcIds: list of str
+        """
+        self.ChcIds = None
+
+
+    def _deserialize(self, params):
+        self.ChcIds = params.get("ChcIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RemoveChcAssistVpcResponse(AbstractModel):
+    """RemoveChcAssistVpc返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class RemoveChcDeployVpcRequest(AbstractModel):
+    """RemoveChcDeployVpc请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ChcIds: CHC物理服务器Id。
+        :type ChcIds: list of str
+        """
+        self.ChcIds = None
+
+
+    def _deserialize(self, params):
+        self.ChcIds = params.get("ChcIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RemoveChcDeployVpcResponse(AbstractModel):
+    """RemoveChcDeployVpc返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class RenewHostsRequest(AbstractModel):
@@ -8134,7 +8389,7 @@ class TagSpecification(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ResourceType: 标签绑定的资源类型，云服务器为“instance”，专用宿主机为“host”，镜像为“image”
+        :param ResourceType: 标签绑定的资源类型，云服务器为“instance”，专用宿主机为“host”，镜像为“image”，密钥为“keypair”
         :type ResourceType: str
         :param Tags: 标签对列表
         :type Tags: list of Tag

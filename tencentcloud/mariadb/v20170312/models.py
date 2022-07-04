@@ -453,6 +453,10 @@ class CreateAccountRequest(AbstractModel):
         :type Description: str
         :param DelayThresh: 根据传入时间判断备机不可用
         :type DelayThresh: int
+        :param SlaveConst: 针对只读账号，设置策略是否固定备机，0：不固定备机，即备机不满足条件与客户端不断开连接，Proxy选择其他可用备机，1：备机不满足条件断开连接，确保一个连接固定备机。
+        :type SlaveConst: int
+        :param MaxUserConnections: 用户最大连接数限制参数。不传或者传0表示为不限制，对应max_user_connections参数，目前10.1内核版本不支持设置。
+        :type MaxUserConnections: int
         """
         self.InstanceId = None
         self.UserName = None
@@ -461,6 +465,8 @@ class CreateAccountRequest(AbstractModel):
         self.ReadOnly = None
         self.Description = None
         self.DelayThresh = None
+        self.SlaveConst = None
+        self.MaxUserConnections = None
 
 
     def _deserialize(self, params):
@@ -471,6 +477,8 @@ class CreateAccountRequest(AbstractModel):
         self.ReadOnly = params.get("ReadOnly")
         self.Description = params.get("Description")
         self.DelayThresh = params.get("DelayThresh")
+        self.SlaveConst = params.get("SlaveConst")
+        self.MaxUserConnections = params.get("MaxUserConnections")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1003,6 +1011,8 @@ class DBAccount(AbstractModel):
         :param DelayThresh: 该字段对只读帐号有意义，表示选择主备延迟小于该值的备机
 注意：此字段可能返回 null，表示取不到有效值。
         :type DelayThresh: int
+        :param SlaveConst: 针对只读账号，设置策略是否固定备机，0：不固定备机，即备机不满足条件与客户端不断开连接，Proxy选择其他可用备机，1：备机不满足条件断开连接，确保一个连接固定备机。
+        :type SlaveConst: int
         """
         self.UserName = None
         self.Host = None
@@ -1011,6 +1021,7 @@ class DBAccount(AbstractModel):
         self.UpdateTime = None
         self.ReadOnly = None
         self.DelayThresh = None
+        self.SlaveConst = None
 
 
     def _deserialize(self, params):
@@ -1021,6 +1032,7 @@ class DBAccount(AbstractModel):
         self.UpdateTime = params.get("UpdateTime")
         self.ReadOnly = params.get("ReadOnly")
         self.DelayThresh = params.get("DelayThresh")
+        self.SlaveConst = params.get("SlaveConst")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

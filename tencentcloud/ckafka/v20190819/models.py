@@ -2379,6 +2379,24 @@ class DescribeCkafkaZoneRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param CdcId: cdc专业集群业务参数
+        :type CdcId: str
+        """
+        self.CdcId = None
+
+
+    def _deserialize(self, params):
+        self.CdcId = params.get("CdcId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribeCkafkaZoneResponse(AbstractModel):
     """DescribeCkafkaZone返回参数结构体
@@ -2890,16 +2908,20 @@ class DescribeRegionRequest(AbstractModel):
         :type Limit: int
         :param Business: 业务字段，可忽略
         :type Business: str
+        :param CdcId: cdc专有集群业务字段，可忽略
+        :type CdcId: str
         """
         self.Offset = None
         self.Limit = None
         self.Business = None
+        self.CdcId = None
 
 
     def _deserialize(self, params):
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
         self.Business = params.get("Business")
+        self.CdcId = params.get("CdcId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4144,6 +4166,9 @@ class InstanceDetail(AbstractModel):
         :param PublicNetwork: 公网带宽值
 注意：此字段可能返回 null，表示取不到有效值。
         :type PublicNetwork: int
+        :param ClusterType: 实例类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterType: str
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -4175,6 +4200,7 @@ class InstanceDetail(AbstractModel):
         self.PartitionNumber = None
         self.PublicNetworkChargeType = None
         self.PublicNetwork = None
+        self.ClusterType = None
 
 
     def _deserialize(self, params):
@@ -4218,6 +4244,7 @@ class InstanceDetail(AbstractModel):
         self.PartitionNumber = params.get("PartitionNumber")
         self.PublicNetworkChargeType = params.get("PublicNetworkChargeType")
         self.PublicNetwork = params.get("PublicNetwork")
+        self.ClusterType = params.get("ClusterType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

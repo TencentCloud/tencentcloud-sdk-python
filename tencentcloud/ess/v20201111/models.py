@@ -1719,32 +1719,29 @@ class UploadFilesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Caller: 调用方信息
-        :type Caller: :class:`tencentcloud.ess.v20201111.models.Caller`
         :param BusinessType: 文件对应业务类型，用于区分文件存储路径：
 1. TEMPLATE - 模板； 文件类型：.pdf/.html
 2. DOCUMENT - 签署过程及签署后的合同文档 文件类型：.pdf/.html
-3. FLOW - 签署过程 文件类型：.pdf/.html
-4. SEAL - 印章； 文件类型：.jpg/.jpeg/.png
-5. BUSINESSLICENSE - 营业执照 文件类型：.jpg/.jpeg/.png
-6. IDCARD - 身份证 文件类型：.jpg/.jpeg/.png
+3. SEAL - 印章； 文件类型：.jpg/.jpeg/.png
         :type BusinessType: str
+        :param Caller: 调用方信息
+        :type Caller: :class:`tencentcloud.ess.v20201111.models.Caller`
         :param FileInfos: 上传文件内容数组，最多支持20个文件
         :type FileInfos: list of UploadFile
         :param FileUrls: 上传文件链接数组，最多支持20个URL
         :type FileUrls: str
-        :param CoverRect: 是否将pdf灰色矩阵置白
+        :param CoverRect: 此参数只对 PDF 文件有效。是否将pdf灰色矩阵置白
 true--是，处理置白
 false--否，不处理
         :type CoverRect: bool
-        :param FileType: 特殊文件类型需要指定文件类型：
-HTML-- .html文件
+        :param FileType: 文件类型， 默认通过文件内容解析得到文件类型，客户可以显示的说明上传文件的类型。
+如：PDF 表示上传的文件 xxx.pdf的文件类型是 PDF
         :type FileType: str
         :param CustomIds: 用户自定义ID数组，与上传文件一一对应
         :type CustomIds: list of str
         """
-        self.Caller = None
         self.BusinessType = None
+        self.Caller = None
         self.FileInfos = None
         self.FileUrls = None
         self.CoverRect = None
@@ -1753,10 +1750,10 @@ HTML-- .html文件
 
 
     def _deserialize(self, params):
+        self.BusinessType = params.get("BusinessType")
         if params.get("Caller") is not None:
             self.Caller = Caller()
             self.Caller._deserialize(params.get("Caller"))
-        self.BusinessType = params.get("BusinessType")
         if params.get("FileInfos") is not None:
             self.FileInfos = []
             for item in params.get("FileInfos"):

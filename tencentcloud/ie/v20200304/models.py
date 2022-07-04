@@ -1119,6 +1119,32 @@ class DownInfo(AbstractModel):
         
 
 
+class DynamicImageInfo(AbstractModel):
+    """动图参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Quality: 画面质量，范围：1~100。
+<li>对于webp格式，默认：75</li>
+<li>对于gif格式，小于10为低质量，大于50为高质量，其它为普通。默认：低质量。</li>
+        :type Quality: int
+        """
+        self.Quality = None
+
+
+    def _deserialize(self, params):
+        self.Quality = params.get("Quality")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class EditInfo(AbstractModel):
     """画质重生子任务视频剪辑参数
 
@@ -1732,7 +1758,8 @@ class LowLightEnhance(AbstractModel):
 
 
 class MediaCuttingInfo(AbstractModel):
-    """编辑处理/剪切任务信息
+    """编辑处理/剪切任务信息。
+    截图结果默认存在 SaveInfoSet 的第一个存储位置。
 
     """
 
@@ -1745,14 +1772,21 @@ class MediaCuttingInfo(AbstractModel):
         :param OutForm: 截取结果形式信息。
         :type OutForm: :class:`tencentcloud.ie.v20200304.models.MediaCuttingOutForm`
         :param ResultListSaveType: 列表文件形式，存储到用户存储服务中，可选值：
-UseSaveInfo：默认，结果列表和结果存储同一位置；
-NoListFile：不存储结果列表。
+<li>NoListFile：不存储结果列表; </li>
+<li>UseSaveInfo：默认，结果列表和结果存储同一位置（即SaveInfoSet 的第一个存储位置）；</li>
+<li>SaveInfoSet 存储的Id：存储在指定的存储位置。</li>
         :type ResultListSaveType: str
+        :param WatermarkInfoSet: 水印信息，最多支持 10 个水印。
+        :type WatermarkInfoSet: list of MediaCuttingWatermark
+        :param DropPureColor: 是否去除纯色截图，如果值为 True ，对应时间点的截图如果是纯色，将略过。
+        :type DropPureColor: str
         """
         self.TimeInfo = None
         self.TargetInfo = None
         self.OutForm = None
         self.ResultListSaveType = None
+        self.WatermarkInfoSet = None
+        self.DropPureColor = None
 
 
     def _deserialize(self, params):
@@ -1766,6 +1800,13 @@ NoListFile：不存储结果列表。
             self.OutForm = MediaCuttingOutForm()
             self.OutForm._deserialize(params.get("OutForm"))
         self.ResultListSaveType = params.get("ResultListSaveType")
+        if params.get("WatermarkInfoSet") is not None:
+            self.WatermarkInfoSet = []
+            for item in params.get("WatermarkInfoSet"):
+                obj = MediaCuttingWatermark()
+                obj._deserialize(item)
+                self.WatermarkInfoSet.append(obj)
+        self.DropPureColor = params.get("DropPureColor")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1803,15 +1844,21 @@ Stretch：拉伸；
 Gaussian：高斯模糊；
 默认White。
         :type FillType: str
-        :param SpriteRowCount: Type=Sprite时有效，表示雪碧图行数，范围为 [1,200]，默认100。
+        :param SpriteRowCount: 【废弃】参考SpriteInfo
         :type SpriteRowCount: int
-        :param SpriteColumnCount: Type=Sprite时有效，表示雪碧图列数，范围为 [1,200]，默认100。
+        :param SpriteColumnCount: 【废弃】参考SpriteInfo
         :type SpriteColumnCount: int
+        :param SpriteInfo: Type=Sprite时有效，表示雪碧图参数信息。
+        :type SpriteInfo: :class:`tencentcloud.ie.v20200304.models.SpriteImageInfo`
+        :param DynamicInfo: Type=Dynamic时有效，表示动图参数信息。
+        :type DynamicInfo: :class:`tencentcloud.ie.v20200304.models.DynamicImageInfo`
         """
         self.Type = None
         self.FillType = None
         self.SpriteRowCount = None
         self.SpriteColumnCount = None
+        self.SpriteInfo = None
+        self.DynamicInfo = None
 
 
     def _deserialize(self, params):
@@ -1819,6 +1866,12 @@ Gaussian：高斯模糊；
         self.FillType = params.get("FillType")
         self.SpriteRowCount = params.get("SpriteRowCount")
         self.SpriteColumnCount = params.get("SpriteColumnCount")
+        if params.get("SpriteInfo") is not None:
+            self.SpriteInfo = SpriteImageInfo()
+            self.SpriteInfo._deserialize(params.get("SpriteInfo"))
+        if params.get("DynamicInfo") is not None:
+            self.DynamicInfo = DynamicImageInfo()
+            self.DynamicInfo._deserialize(params.get("DynamicInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1847,11 +1900,18 @@ class MediaCuttingTaskResult(AbstractModel):
         :param LastFile: 最后一个结果文件。
 注意：此字段可能返回 null，表示取不到有效值。
         :type LastFile: :class:`tencentcloud.ie.v20200304.models.TaskResultFile`
+        :param ImageCount: 任务结果包含的图片总数。
+静态图：总数即为文件数；
+雪碧图：所有小图总数；
+动图、视频：不计算图片数，为 0。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageCount: int
         """
         self.ListFile = None
         self.ResultCount = None
         self.FirstFile = None
         self.LastFile = None
+        self.ImageCount = None
 
 
     def _deserialize(self, params):
@@ -1865,6 +1925,7 @@ class MediaCuttingTaskResult(AbstractModel):
         if params.get("LastFile") is not None:
             self.LastFile = TaskResultFile()
             self.LastFile._deserialize(params.get("LastFile"))
+        self.ImageCount = params.get("ImageCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1920,6 +1981,163 @@ SectionSet：时间片段集合。
         
 
 
+class MediaCuttingWatermark(AbstractModel):
+    """媒体剪切水印信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Type: 水印类型，可选值：
+<li>Image：图像水印；</li>
+<li>Text：文字水印。</li>
+        :type Type: str
+        :param Image: 图像水印信息，当 Type=Image 时必选。
+        :type Image: :class:`tencentcloud.ie.v20200304.models.MediaCuttingWatermarkImage`
+        :param Text: 文字水印信息，当 Type=Text 时必选。
+        :type Text: :class:`tencentcloud.ie.v20200304.models.MediaCuttingWatermarkText`
+        """
+        self.Type = None
+        self.Image = None
+        self.Text = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        if params.get("Image") is not None:
+            self.Image = MediaCuttingWatermarkImage()
+            self.Image._deserialize(params.get("Image"))
+        if params.get("Text") is not None:
+            self.Text = MediaCuttingWatermarkText()
+            self.Text._deserialize(params.get("Text"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MediaCuttingWatermarkImage(AbstractModel):
+    """媒体剪切图像水印参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SourceId: 水印源的ID，对应SourceInfoSet内的源。
+注意1：对应的 MediaSourceInfo.Type需要为Image。
+注意2：对于动图，只取第一帧图像作为水印源。
+        :type SourceId: str
+        :param PosX: 水印水平坐标，单位像素，默认：0。
+        :type PosX: int
+        :param PosY: 水印垂直坐标，单位像素，默认：0。
+        :type PosY: int
+        :param Width: 水印宽度，单位像素，默认：0。
+        :type Width: int
+        :param Height: 水印高度，单位像素，默认：0。
+注意：对于宽高符合以下规则：
+1、Width>0 且 Height>0，按指定宽高拉伸；
+2、Width=0 且 Height>0，以Height为基准等比缩放；
+3、Width>0 且 Height=0，以Width为基准等比缩放；
+4、Width=0 且 Height=0，采用源的宽高。
+        :type Height: int
+        :param PosOriginType: 指定坐标原点，可选值：
+<li>LeftTop：PosXY 表示水印左上点到图片左上点的相对位置</li>
+<li>RightTop：PosXY 表示水印右上点到图片右上点的相对位置</li>
+<li>LeftBottom：PosXY 表示水印左下点到图片左下点的相对位置</li>
+<li>RightBottom：PosXY 表示水印右下点到图片右下点的相对位置</li>
+<li>Center：PosXY 表示水印中心点到图片中心点的相对位置</li>
+默认：LeftTop。
+        :type PosOriginType: str
+        """
+        self.SourceId = None
+        self.PosX = None
+        self.PosY = None
+        self.Width = None
+        self.Height = None
+        self.PosOriginType = None
+
+
+    def _deserialize(self, params):
+        self.SourceId = params.get("SourceId")
+        self.PosX = params.get("PosX")
+        self.PosY = params.get("PosY")
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
+        self.PosOriginType = params.get("PosOriginType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MediaCuttingWatermarkText(AbstractModel):
+    """媒体剪切文字水印参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Text: 水印文字。
+        :type Text: str
+        :param FontSize: 文字大小
+        :type FontSize: int
+        :param PosX: 水印水平坐标，单位像素，默认：0。
+        :type PosX: int
+        :param PosY: 水印垂直坐标，单位像素，默认：0。
+        :type PosY: int
+        :param FontColor: 文字颜色，格式为：#RRGGBBAA，默认值：#000000。
+        :type FontColor: str
+        :param FontAlpha: 文字透明度，范围：0~100，默认值：100。
+        :type FontAlpha: int
+        :param PosOriginType: 指定坐标原点，可选值：
+<li>LeftTop：PosXY 表示水印左上点到图片左上点的相对位置</li>
+<li>RightTop：PosXY 表示水印右上点到图片右上点的相对位置</li>
+<li>LeftBottom：PosXY 表示水印左下点到图片左下点的相对位置</li>
+<li>RightBottom：PosXY 表示水印右下点到图片右下点的相对位置</li>
+<li>Center：PosXY 表示水印中心点到图片中心点的相对位置</li>
+默认：LeftTop。
+        :type PosOriginType: str
+        :param Font: 字体，可选值：
+<li>SimHei</li>
+<li>SimKai</li>
+<li>Arial</li>
+默认 SimHei。
+        :type Font: str
+        """
+        self.Text = None
+        self.FontSize = None
+        self.PosX = None
+        self.PosY = None
+        self.FontColor = None
+        self.FontAlpha = None
+        self.PosOriginType = None
+        self.Font = None
+
+
+    def _deserialize(self, params):
+        self.Text = params.get("Text")
+        self.FontSize = params.get("FontSize")
+        self.PosX = params.get("PosX")
+        self.PosY = params.get("PosY")
+        self.FontColor = params.get("FontColor")
+        self.FontAlpha = params.get("FontAlpha")
+        self.PosOriginType = params.get("PosOriginType")
+        self.Font = params.get("Font")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class MediaJoiningInfo(AbstractModel):
     """编辑处理/拼接任务信息
 
@@ -1930,14 +2148,20 @@ class MediaJoiningInfo(AbstractModel):
         :param TargetInfo: 输出目标信息，拼接只采用FileName和Format，用于指定目标文件名和格式。
 其中Format只支持mp4.
         :type TargetInfo: :class:`tencentcloud.ie.v20200304.models.MediaTargetInfo`
+        :param Mode: 拼接模式：
+Fast：快速；
+Normal：正常；
+        :type Mode: str
         """
         self.TargetInfo = None
+        self.Mode = None
 
 
     def _deserialize(self, params):
         if params.get("TargetInfo") is not None:
             self.TargetInfo = MediaTargetInfo()
             self.TargetInfo._deserialize(params.get("TargetInfo"))
+        self.Mode = params.get("Mode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2298,9 +2522,7 @@ index：序号；
         :type Format: str
         :param TargetVideoInfo: 视频流信息。
         :type TargetVideoInfo: :class:`tencentcloud.ie.v20200304.models.TargetVideoInfo`
-        :param ResultListSaveType: 【不再使用】 对于多输出任务，部分子服务推荐结果信息以列表文件形式，存储到用户存储服务中，可选值：
-UseSaveInfo：默认，结果列表和结果存储同一位置；
-NoListFile：不存储结果列表。
+        :param ResultListSaveType: 【不再使用】
         :type ResultListSaveType: str
         """
         self.FileName = None
@@ -2895,7 +3117,7 @@ class ResultVideoInfo(AbstractModel):
         :param Height: 画面高度
 注意：此字段可能返回 null，表示取不到有效值。
         :type Height: int
-        :param Fps: 视频帧率
+        :param Fps: 视频帧率，如果高于原始帧率，部分服务将无效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Fps: int
         """
@@ -2933,9 +3155,13 @@ class SaveInfo(AbstractModel):
         :type Type: int
         :param CosInfo: Cos形式存储信息，当Type等于1时必选。
         :type CosInfo: :class:`tencentcloud.ie.v20200304.models.CosInfo`
+        :param Id: 存储信息ID标记，用于多个输出场景。部分任务支持多输出时，一般要求必选。
+ID只能包含字母、数字、下划线、中划线，长读不能超过128。
+        :type Id: str
         """
         self.Type = None
         self.CosInfo = None
+        self.Id = None
 
 
     def _deserialize(self, params):
@@ -2943,6 +3169,7 @@ class SaveInfo(AbstractModel):
         if params.get("CosInfo") is not None:
             self.CosInfo = CosInfo()
             self.CosInfo._deserialize(params.get("CosInfo"))
+        self.Id = params.get("Id")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3061,6 +3288,71 @@ class Sharp(AbstractModel):
     def _deserialize(self, params):
         self.Type = params.get("Type")
         self.Ratio = params.get("Ratio")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SpriteImageInfo(AbstractModel):
+    """雪碧图参数信息
+    注意：雪碧图大图整体的宽和高都不能大于 65000 像素。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RowCount: 表示雪碧图行数，默认：10。
+        :type RowCount: int
+        :param ColumnCount: 表示雪碧图列数，默认：10。
+        :type ColumnCount: int
+        :param MarginTop: 第一行元素与顶部像素距离，默认：0。
+        :type MarginTop: int
+        :param MarginBottom: 最后一行元素与底部像素距离，默认：0。
+        :type MarginBottom: int
+        :param MarginLeft: 最左一行元素与左边像素距离，默认：0。
+        :type MarginLeft: int
+        :param MarginRight: 最右一行元素与右边像素距离，默认：0。
+        :type MarginRight: int
+        :param PaddingTop: 小图与元素顶部像素距离，默认：0。
+        :type PaddingTop: int
+        :param PaddingBottom: 小图与元素底部像素距离，默认：0。
+        :type PaddingBottom: int
+        :param PaddingLeft: 小图与元素左边像素距离，默认：0。
+        :type PaddingLeft: int
+        :param PaddingRight: 小图与元素右边像素距离，默认：0。
+        :type PaddingRight: int
+        :param BackgroundColor: 背景颜色，格式：#RRGGBB，默认：#FFFFFF。
+        :type BackgroundColor: str
+        """
+        self.RowCount = None
+        self.ColumnCount = None
+        self.MarginTop = None
+        self.MarginBottom = None
+        self.MarginLeft = None
+        self.MarginRight = None
+        self.PaddingTop = None
+        self.PaddingBottom = None
+        self.PaddingLeft = None
+        self.PaddingRight = None
+        self.BackgroundColor = None
+
+
+    def _deserialize(self, params):
+        self.RowCount = params.get("RowCount")
+        self.ColumnCount = params.get("ColumnCount")
+        self.MarginTop = params.get("MarginTop")
+        self.MarginBottom = params.get("MarginBottom")
+        self.MarginLeft = params.get("MarginLeft")
+        self.MarginRight = params.get("MarginRight")
+        self.PaddingTop = params.get("PaddingTop")
+        self.PaddingBottom = params.get("PaddingBottom")
+        self.PaddingLeft = params.get("PaddingLeft")
+        self.PaddingRight = params.get("PaddingRight")
+        self.BackgroundColor = params.get("BackgroundColor")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3671,9 +3963,9 @@ class TargetVideoInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Width: 视频宽度，单位像素
+        :param Width: 视频宽度，单位像素，一般要求是偶数，否则会向下对齐。
         :type Width: int
-        :param Height: 视频高度，单位像素
+        :param Height: 视频高度，单位像素，一般要求是偶数，否则会向下对齐。
         :type Height: int
         :param FrameRate: 视频帧率，范围在1到120之间
         :type FrameRate: int
@@ -3712,10 +4004,14 @@ class TaskResultFile(AbstractModel):
         :param MediaInfo: 媒体信息，对于媒体文件，部分任务支持返回
 注意：此字段可能返回 null，表示取不到有效值。
         :type MediaInfo: :class:`tencentcloud.ie.v20200304.models.MediaResultInfo`
+        :param Md5: 文件对应的md5。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Md5: str
         """
         self.Url = None
         self.FileSize = None
         self.MediaInfo = None
+        self.Md5 = None
 
 
     def _deserialize(self, params):
@@ -3724,6 +4020,7 @@ class TaskResultFile(AbstractModel):
         if params.get("MediaInfo") is not None:
             self.MediaInfo = MediaResultInfo()
             self.MediaInfo._deserialize(params.get("MediaInfo"))
+        self.Md5 = params.get("Md5")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

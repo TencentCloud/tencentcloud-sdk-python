@@ -401,12 +401,16 @@ class BotConfig(AbstractModel):
         :type IspBotRule: :class:`tencentcloud.teo.v20220106.models.BotManagedRule`
         :param PortraitRule: 用户画像规则
         :type PortraitRule: :class:`tencentcloud.teo.v20220106.models.BotPortraitRule`
+        :param IntelligenceRule: Bot智能分析
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IntelligenceRule: :class:`tencentcloud.teo.v20220106.models.IntelligenceRule`
         """
         self.Switch = None
         self.ManagedRule = None
         self.UaBotRule = None
         self.IspBotRule = None
         self.PortraitRule = None
+        self.IntelligenceRule = None
 
 
     def _deserialize(self, params):
@@ -423,6 +427,9 @@ class BotConfig(AbstractModel):
         if params.get("PortraitRule") is not None:
             self.PortraitRule = BotPortraitRule()
             self.PortraitRule._deserialize(params.get("PortraitRule"))
+        if params.get("IntelligenceRule") is not None:
+            self.IntelligenceRule = IntelligenceRule()
+            self.IntelligenceRule._deserialize(params.get("IntelligenceRule"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2257,6 +2264,9 @@ class DDoSAntiPly(AbstractModel):
         :type ConnectTimeout: int
         :param EmptyConnectProtect: 空连接防护开启 0-1
         :type EmptyConnectProtect: str
+        :param UdpShard: UDP分片开关；off-关闭，on-开启
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UdpShard: str
         """
         self.DropTcp = None
         self.DropUdp = None
@@ -2271,6 +2281,7 @@ class DDoSAntiPly(AbstractModel):
         self.AbnormalSynNum = None
         self.ConnectTimeout = None
         self.EmptyConnectProtect = None
+        self.UdpShard = None
 
 
     def _deserialize(self, params):
@@ -2287,6 +2298,7 @@ class DDoSAntiPly(AbstractModel):
         self.AbnormalSynNum = params.get("AbnormalSynNum")
         self.ConnectTimeout = params.get("ConnectTimeout")
         self.EmptyConnectProtect = params.get("EmptyConnectProtect")
+        self.UdpShard = params.get("UdpShard")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3075,6 +3087,9 @@ class DdosRule(AbstractModel):
         :param Switch: DDoS开关 on-开启；off-关闭
 注意：此字段可能返回 null，表示取不到有效值。
         :type Switch: str
+        :param UdpShardOpen: UDP分片功能是否支持，off-不支持，on-支持
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UdpShardOpen: str
         """
         self.DdosStatusInfo = None
         self.DdosGeoIp = None
@@ -3083,6 +3098,7 @@ class DdosRule(AbstractModel):
         self.DdosPacketFilter = None
         self.DdosAcl = None
         self.Switch = None
+        self.UdpShardOpen = None
 
 
     def _deserialize(self, params):
@@ -3105,6 +3121,7 @@ class DdosRule(AbstractModel):
             self.DdosAcl = DdosAcls()
             self.DdosAcl._deserialize(params.get("DdosAcl"))
         self.Switch = params.get("Switch")
+        self.UdpShardOpen = params.get("UdpShardOpen")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5869,16 +5886,20 @@ class DescribeTimingL4DataRequest(AbstractModel):
         :type EndTime: str
         :param MetricNames: 指标列表
         :type MetricNames: list of str
-        :param ZoneIds: ZoneId列表，仅在zone/instance维度下查询时该参数有效
+        :param ZoneIds: 站点id列表
         :type ZoneIds: list of str
-        :param InstanceIds: InstanceId列表，仅在Instance维度下查询时该参数有效
+        :param InstanceIds: 该字段已废弃，请使用ProxyIds字段
         :type InstanceIds: list of str
-        :param Protocol: 协议类型， 该字段当前无效
+        :param Protocol: 该字段当前无效
         :type Protocol: str
         :param Interval: 时间间隔，选填{min, 5min, hour, day}
         :type Interval: str
-        :param RuleId: 规则ID，仅在instance维度有效
+        :param RuleId: 该字段当前无效，请使用Filter筛选
         :type RuleId: str
+        :param Filters: 支持的 Filter：proxyd,ruleId
+        :type Filters: list of Filter
+        :param ProxyIds: 四层实例列表
+        :type ProxyIds: list of str
         """
         self.StartTime = None
         self.EndTime = None
@@ -5888,6 +5909,8 @@ class DescribeTimingL4DataRequest(AbstractModel):
         self.Protocol = None
         self.Interval = None
         self.RuleId = None
+        self.Filters = None
+        self.ProxyIds = None
 
 
     def _deserialize(self, params):
@@ -5899,6 +5922,13 @@ class DescribeTimingL4DataRequest(AbstractModel):
         self.Protocol = params.get("Protocol")
         self.Interval = params.get("Interval")
         self.RuleId = params.get("RuleId")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.ProxyIds = params.get("ProxyIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8078,6 +8108,151 @@ class ImportDnsRecordsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class IntelligenceRule(AbstractModel):
+    """智能分析规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 开关
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Switch: str
+        :param Items: 规则详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of IntelligenceRuleItem
+        """
+        self.Switch = None
+        self.Items = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = IntelligenceRuleItem()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IntelligenceRuleItem(AbstractModel):
+    """Bot智能分析规则详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Label: 恶意BOT
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Label: str
+        :param Action: 动作
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Action: str
+        """
+        self.Label = None
+        self.Action = None
+
+
+    def _deserialize(self, params):
+        self.Label = params.get("Label")
+        self.Action = params.get("Action")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IpTableConfig(AbstractModel):
+    """IP黑白名单及IP区域控制配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 开关
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Switch: str
+        :param Rules: []
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Rules: list of IpTableRule
+        """
+        self.Switch = None
+        self.Rules = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        if params.get("Rules") is not None:
+            self.Rules = []
+            for item in params.get("Rules"):
+                obj = IpTableRule()
+                obj._deserialize(item)
+                self.Rules.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IpTableRule(AbstractModel):
+    """IP黑白名单详细规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Action: 动作: drop拦截，trans放行，monitor观察
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Action: str
+        :param MatchFrom: 根据类型匹配：ip(根据ip), area(根据区域)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MatchFrom: str
+        :param MatchContent: 匹配内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MatchContent: str
+        :param RuleID: 规则id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleID: int
+        :param UpdateTime: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        """
+        self.Action = None
+        self.MatchFrom = None
+        self.MatchContent = None
+        self.RuleID = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.Action = params.get("Action")
+        self.MatchFrom = params.get("MatchFrom")
+        self.MatchContent = params.get("MatchContent")
+        self.RuleID = params.get("RuleID")
+        self.UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class L7OfflineLog(AbstractModel):
     """离线日志详细信息
 
@@ -10057,10 +10232,14 @@ class RateLimitConfig(AbstractModel):
         :param Template: 默认模板
 注意：此字段可能返回 null，表示取不到有效值。
         :type Template: :class:`tencentcloud.teo.v20220106.models.RateLimitTemplate`
+        :param Intelligence: 智能客户端过滤
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Intelligence: :class:`tencentcloud.teo.v20220106.models.RateLimitIntelligence`
         """
         self.Switch = None
         self.UserRules = None
         self.Template = None
+        self.Intelligence = None
 
 
     def _deserialize(self, params):
@@ -10074,6 +10253,39 @@ class RateLimitConfig(AbstractModel):
         if params.get("Template") is not None:
             self.Template = RateLimitTemplate()
             self.Template._deserialize(params.get("Template"))
+        if params.get("Intelligence") is not None:
+            self.Intelligence = RateLimitIntelligence()
+            self.Intelligence._deserialize(params.get("Intelligence"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RateLimitIntelligence(AbstractModel):
+    """智能客户端过滤
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 功能开关
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Switch: str
+        :param Action: 执行动作 monitor(观察), alg(挑战)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Action: str
+        """
+        self.Switch = None
+        self.Action = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.Action = params.get("Action")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -10447,6 +10659,9 @@ class SecurityConfig(AbstractModel):
         :param SwitchConfig: 总开关
 注意：此字段可能返回 null，表示取不到有效值。
         :type SwitchConfig: :class:`tencentcloud.teo.v20220106.models.SwitchConfig`
+        :param IpTableConfig: IP黑白名单
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IpTableConfig: :class:`tencentcloud.teo.v20220106.models.IpTableConfig`
         """
         self.WafConfig = None
         self.RateLimitConfig = None
@@ -10454,6 +10669,7 @@ class SecurityConfig(AbstractModel):
         self.AclConfig = None
         self.BotConfig = None
         self.SwitchConfig = None
+        self.IpTableConfig = None
 
 
     def _deserialize(self, params):
@@ -10475,6 +10691,9 @@ class SecurityConfig(AbstractModel):
         if params.get("SwitchConfig") is not None:
             self.SwitchConfig = SwitchConfig()
             self.SwitchConfig._deserialize(params.get("SwitchConfig"))
+        if params.get("IpTableConfig") is not None:
+            self.IpTableConfig = IpTableConfig()
+            self.IpTableConfig._deserialize(params.get("IpTableConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
