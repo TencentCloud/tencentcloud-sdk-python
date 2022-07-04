@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import time
 
 from tencentcloud.common import credential
 from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentCloudSDKException
@@ -27,9 +28,8 @@ try:
     req = models.CreateFlowRequest()
 
     userInfo = models.UserInfo()
-    # 管理员用户id或者员工用户id
+    # 发起人用户id，在控制台查询获取
     userInfo.UserId = "**************"
-    userInfo.ClientIp = "**************"
     req.Operator = userInfo
 
     # 企业方 静默签署ApproverType为3 手动签署ApproverType为0
@@ -50,7 +50,7 @@ try:
     req.Approvers = [enterpriseInfo, clientInfo]
 
     # 请设置合理的过期时间（秒级时间戳），否则容易造成合同过期
-    req.DeadLine = 1682474522
+    req.DeadLine = int(time.time()) + 7 * 24 * 3600
     req.FlowName = "**************"
 
     resp = client.CreateFlow(req)
