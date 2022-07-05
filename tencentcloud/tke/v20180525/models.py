@@ -8473,13 +8473,25 @@ class DescribeTKEEdgeScriptResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param Link: 下载链接
+        :type Link: str
+        :param Token: 下载需要的token
+        :type Token: str
+        :param Command: 下载命令
+        :type Command: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.Link = None
+        self.Token = None
+        self.Command = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.Link = params.get("Link")
+        self.Token = params.get("Token")
+        self.Command = params.get("Command")
         self.RequestId = params.get("RequestId")
 
 

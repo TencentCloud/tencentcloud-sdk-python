@@ -3320,8 +3320,10 @@ class DescribeTaskListRequest(AbstractModel):
         :type TaskStatus: list of int
         :param Result: 任务状态
         :type Result: list of int
-        :param OperatorUin: 操作者Uin
+        :param OperatorUin: 操作者Uin，该字段已废弃，使用OperateUin代替
         :type OperatorUin: list of int
+        :param OperateUin: 操作者Uin
+        :type OperateUin: list of str
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -3334,6 +3336,7 @@ class DescribeTaskListRequest(AbstractModel):
         self.TaskStatus = None
         self.Result = None
         self.OperatorUin = None
+        self.OperateUin = None
 
 
     def _deserialize(self, params):
@@ -3348,6 +3351,7 @@ class DescribeTaskListRequest(AbstractModel):
         self.TaskStatus = params.get("TaskStatus")
         self.Result = params.get("Result")
         self.OperatorUin = params.get("OperatorUin")
+        self.OperateUin = params.get("OperateUin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

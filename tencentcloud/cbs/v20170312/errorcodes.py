@@ -14,9 +14,6 @@
 # limitations under the License.
 
 
-# 定期快照策略数量已达到上限。
-AUTOSNAPSHOTPOLICYOUTOFQUOTA = 'AutoSnapshotPolicyOutOfQuota'
-
 # 云盘退还数量已达上限，不能再退还。
 INSUFFICIENTREFUNDQUOTA = 'InsufficientRefundQuota'
 

@@ -3362,7 +3362,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeTKEEdgeScript(self, request):
-        """获取边缘脚本链接
+        """获取边缘脚本链接，此接口用于添加第三方节点，通过下载脚本从而将节点添加到边缘集群。
 
         :param request: Request instance for DescribeTKEEdgeScript.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeTKEEdgeScriptRequest`

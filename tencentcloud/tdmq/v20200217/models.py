@@ -1980,7 +1980,7 @@ class CreateEnvironmentRequest(AbstractModel):
         r"""
         :param EnvironmentId: 环境（命名空间）名称，不支持中字以及除了短线和下划线外的特殊字符且不超过16个字符。
         :type EnvironmentId: str
-        :param MsgTTL: 未消费消息过期时间，单位：秒，取值范围：60秒~1天。
+        :param MsgTTL: 未消费消息过期时间，单位：秒，取值范围：60秒~15天。
         :type MsgTTL: int
         :param Remark: 说明，128个字符以内。
         :type Remark: str
@@ -6537,7 +6537,7 @@ class ModifyEnvironmentAttributesRequest(AbstractModel):
         r"""
         :param EnvironmentId: 命名空间名称。
         :type EnvironmentId: str
-        :param MsgTTL: 未消费消息过期时间，单位：秒，范围60秒~1天。
+        :param MsgTTL: 未消费消息过期时间，单位：秒，范围60秒~15天。
         :type MsgTTL: int
         :param Remark: 备注，字符串最长不超过128。
         :type Remark: str

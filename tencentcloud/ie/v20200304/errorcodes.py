@@ -41,6 +41,9 @@ FAILEDOPERATION_SERVERBUSY = 'FailedOperation.ServerBusy'
 # 内部服务错误。
 FAILEDOPERATION_SERVERERROR = 'FailedOperation.ServerError'
 
+# 任务重复提交。
+FAILEDOPERATION_TASKRESUBMIT = 'FailedOperation.TaskResubmit'
+
 # 转码服务异常。
 FAILEDOPERATION_TRANSCODEERROR = 'FailedOperation.TranscodeError'
 
@@ -88,6 +91,9 @@ INVALIDPARAMETERVALUE_DOWNINFOTYPEWRONG = 'InvalidParameterValue.DownInfoTypeWro
 
 # 该任务不支持直播流。
 INVALIDPARAMETERVALUE_LIVESOURCENOTSUPPORT = 'InvalidParameterValue.LiveSourceNotSupport'
+
+# 存储信息不存在。
+INVALIDPARAMETERVALUE_SAVEINFONOTEXIST = 'InvalidParameterValue.SaveInfoNotExist'
 
 # 任务已经结束。
 INVALIDPARAMETERVALUE_TASKALREADYDONE = 'InvalidParameterValue.TaskAlreadyDone'

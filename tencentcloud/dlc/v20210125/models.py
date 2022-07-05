@@ -125,6 +125,38 @@ class AlterDMSDatabaseRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param CurrentName: 当前名称
+        :type CurrentName: str
+        :param SchemaName: schema名称
+        :type SchemaName: str
+        :param Location: 路径
+        :type Location: str
+        :param Asset: 基础对象
+        :type Asset: :class:`tencentcloud.dlc.v20210125.models.Asset`
+        """
+        self.CurrentName = None
+        self.SchemaName = None
+        self.Location = None
+        self.Asset = None
+
+
+    def _deserialize(self, params):
+        self.CurrentName = params.get("CurrentName")
+        self.SchemaName = params.get("SchemaName")
+        self.Location = params.get("Location")
+        if params.get("Asset") is not None:
+            self.Asset = Asset()
+            self.Asset._deserialize(params.get("Asset"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class AlterDMSDatabaseResponse(AbstractModel):
     """AlterDMSDatabase返回参数结构体
@@ -330,6 +362,95 @@ class Asset(AbstractModel):
     """元数据基本对象
 
     """
+
+    def __init__(self):
+        r"""
+        :param Id: 主键
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: int
+        :param Name: 名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param Guid: 对象GUID值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Guid: str
+        :param Catalog: 数据目录
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Catalog: str
+        :param Description: 描述信息
+        :type Description: str
+        :param Owner: 对象owner
+        :type Owner: str
+        :param OwnerAccount: 对象owner账户
+        :type OwnerAccount: str
+        :param PermValues: 权限
+        :type PermValues: list of KVPair
+        :param Params: 附加属性
+        :type Params: list of KVPair
+        :param BizParams: 附加业务属性
+        :type BizParams: list of KVPair
+        :param DataVersion: 数据版本
+        :type DataVersion: int
+        :param CreateTime: 创建时间
+        :type CreateTime: str
+        :param ModifiedTime: 修改时间
+        :type ModifiedTime: str
+        :param DatasourceId: 数据源主键
+        :type DatasourceId: int
+        """
+        self.Id = None
+        self.Name = None
+        self.Guid = None
+        self.Catalog = None
+        self.Description = None
+        self.Owner = None
+        self.OwnerAccount = None
+        self.PermValues = None
+        self.Params = None
+        self.BizParams = None
+        self.DataVersion = None
+        self.CreateTime = None
+        self.ModifiedTime = None
+        self.DatasourceId = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.Name = params.get("Name")
+        self.Guid = params.get("Guid")
+        self.Catalog = params.get("Catalog")
+        self.Description = params.get("Description")
+        self.Owner = params.get("Owner")
+        self.OwnerAccount = params.get("OwnerAccount")
+        if params.get("PermValues") is not None:
+            self.PermValues = []
+            for item in params.get("PermValues"):
+                obj = KVPair()
+                obj._deserialize(item)
+                self.PermValues.append(obj)
+        if params.get("Params") is not None:
+            self.Params = []
+            for item in params.get("Params"):
+                obj = KVPair()
+                obj._deserialize(item)
+                self.Params.append(obj)
+        if params.get("BizParams") is not None:
+            self.BizParams = []
+            for item in params.get("BizParams"):
+                obj = KVPair()
+                obj._deserialize(item)
+                self.BizParams.append(obj)
+        self.DataVersion = params.get("DataVersion")
+        self.CreateTime = params.get("CreateTime")
+        self.ModifiedTime = params.get("ModifiedTime")
+        self.DatasourceId = params.get("DatasourceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class AttachUserPolicyRequest(AbstractModel):
@@ -725,13 +846,27 @@ class CreateDMSDatabaseRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param Asset: 基础元数据对象
+        :type Asset: :class:`tencentcloud.dlc.v20210125.models.Asset`
+        :param SchemaName: Schema目录
+        :type SchemaName: str
+        :param Location: Db存储路径
+        :type Location: str
         :param Name: 数据库名称
         :type Name: str
         """
+        self.Asset = None
+        self.SchemaName = None
+        self.Location = None
         self.Name = None
 
 
     def _deserialize(self, params):
+        if params.get("Asset") is not None:
+            self.Asset = Asset()
+            self.Asset._deserialize(params.get("Asset"))
+        self.SchemaName = params.get("SchemaName")
+        self.Location = params.get("Location")
         self.Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -2506,6 +2641,32 @@ class DescribeDMSDatabaseRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param Name: 数据库名称
+        :type Name: str
+        :param SchemaName: schema名称
+        :type SchemaName: str
+        :param Pattern: 匹配规则
+        :type Pattern: str
+        """
+        self.Name = None
+        self.SchemaName = None
+        self.Pattern = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.SchemaName = params.get("SchemaName")
+        self.Pattern = params.get("Pattern")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribeDMSDatabaseResponse(AbstractModel):
     """DescribeDMSDatabase返回参数结构体
@@ -2514,13 +2675,35 @@ class DescribeDMSDatabaseResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param Name: 数据库名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param SchemaName: schema名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SchemaName: str
+        :param Location: 存储地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Location: str
+        :param Asset: 数据对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Asset: :class:`tencentcloud.dlc.v20210125.models.Asset`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.Name = None
+        self.SchemaName = None
+        self.Location = None
+        self.Asset = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.SchemaName = params.get("SchemaName")
+        self.Location = params.get("Location")
+        if params.get("Asset") is not None:
+            self.Asset = Asset()
+            self.Asset._deserialize(params.get("Asset"))
         self.RequestId = params.get("RequestId")
 
 
@@ -2553,6 +2736,8 @@ class DescribeDMSPartitionsRequest(AbstractModel):
         :type Offset: int
         :param Limit: 页面数量
         :type Limit: int
+        :param Expression: 表达式
+        :type Expression: str
         """
         self.DatabaseName = None
         self.TableName = None
@@ -2565,6 +2750,7 @@ class DescribeDMSPartitionsRequest(AbstractModel):
         self.MaxParts = None
         self.Offset = None
         self.Limit = None
+        self.Expression = None
 
 
     def _deserialize(self, params):
@@ -2579,6 +2765,7 @@ class DescribeDMSPartitionsRequest(AbstractModel):
         self.MaxParts = params.get("MaxParts")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.Expression = params.get("Expression")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3948,6 +4135,32 @@ class DropDMSDatabaseRequest(AbstractModel):
     """DropDMSDatabase请求参数结构体
 
     """
+
+    def __init__(self):
+        r"""
+        :param Name: 数据库名称
+        :type Name: str
+        :param DeleteData: 是否删除数据
+        :type DeleteData: bool
+        :param Cascade: 是否级联删除
+        :type Cascade: bool
+        """
+        self.Name = None
+        self.DeleteData = None
+        self.Cascade = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.DeleteData = params.get("DeleteData")
+        self.Cascade = params.get("Cascade")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DropDMSDatabaseResponse(AbstractModel):

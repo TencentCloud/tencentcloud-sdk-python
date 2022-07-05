@@ -465,23 +465,23 @@ class CreateAutoSnapshotPolicyRequest(AbstractModel):
         r"""
         :param Policy: 定期快照的执行策略。
         :type Policy: list of Policy
-        :param AutoSnapshotPolicyName: 要创建的定期快照策略名。不传则默认为“未命名”。最大长度不能超60个字节。
-        :type AutoSnapshotPolicyName: str
+        :param DryRun: 是否创建定期快照的执行策略。TRUE表示只需获取首次开始备份的时间，不实际创建定期快照策略，FALSE表示创建，默认为FALSE。
+        :type DryRun: bool
         :param IsActivated: 是否激活定期快照策略，FALSE表示未激活，TRUE表示激活，默认为TRUE。
         :type IsActivated: bool
+        :param AutoSnapshotPolicyName: 要创建的定期快照策略名。不传则默认为“未命名”。最大长度不能超60个字节。
+        :type AutoSnapshotPolicyName: str
         :param IsPermanent: 通过该定期快照策略创建的快照是否永久保留。FALSE表示非永久保留，TRUE表示永久保留，默认为FALSE。
         :type IsPermanent: bool
         :param RetentionDays: 通过该定期快照策略创建的快照保留天数，默认保留7天。如果指定本参数，则IsPermanent入参不可指定为TRUE，否则会产生冲突。
         :type RetentionDays: int
-        :param DryRun: 是否创建定期快照的执行策略。TRUE表示只需获取首次开始备份的时间，不实际创建定期快照策略，FALSE表示创建，默认为FALSE。
-        :type DryRun: bool
         """
         self.Policy = None
-        self.AutoSnapshotPolicyName = None
+        self.DryRun = None
         self.IsActivated = None
+        self.AutoSnapshotPolicyName = None
         self.IsPermanent = None
         self.RetentionDays = None
-        self.DryRun = None
 
 
     def _deserialize(self, params):
@@ -491,11 +491,11 @@ class CreateAutoSnapshotPolicyRequest(AbstractModel):
                 obj = Policy()
                 obj._deserialize(item)
                 self.Policy.append(obj)
-        self.AutoSnapshotPolicyName = params.get("AutoSnapshotPolicyName")
+        self.DryRun = params.get("DryRun")
         self.IsActivated = params.get("IsActivated")
+        self.AutoSnapshotPolicyName = params.get("AutoSnapshotPolicyName")
         self.IsPermanent = params.get("IsPermanent")
         self.RetentionDays = params.get("RetentionDays")
-        self.DryRun = params.get("DryRun")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2247,36 +2247,36 @@ class ModifyAutoSnapshotPolicyAttributeRequest(AbstractModel):
         r"""
         :param AutoSnapshotPolicyId: 定期快照策略ID。
         :type AutoSnapshotPolicyId: str
-        :param Policy: 定期快照的执行策略。
-        :type Policy: list of Policy
-        :param AutoSnapshotPolicyName: 要创建的定期快照策略名。不传则默认为“未命名”。最大长度不能超60个字节。
-        :type AutoSnapshotPolicyName: str
         :param IsActivated: 是否激活定期快照策略，FALSE表示未激活，TRUE表示激活，默认为TRUE。
         :type IsActivated: bool
         :param IsPermanent: 通过该定期快照策略创建的快照是否永久保留。FALSE表示非永久保留，TRUE表示永久保留，默认为FALSE。
         :type IsPermanent: bool
-        :param RetentionDays: 通过该定期快照策略创建的快照保留天数，该参数不可与`IsPermanent`参数冲突，即若定期快照策略设置为永久保留，`RetentionDays`应置0。
+        :param AutoSnapshotPolicyName: 要创建的定期快照策略名。不传则默认为“未命名”。最大长度不能超60个字节。
+        :type AutoSnapshotPolicyName: str
+        :param Policy: 定期快照的执行策略。
+        :type Policy: list of Policy
+        :param RetentionDays: 通过该定期快照策略创建的快照保留天数。如果指定本参数，则IsPermanent入参不可指定为TRUE，否则会产生冲突。
         :type RetentionDays: int
         """
         self.AutoSnapshotPolicyId = None
-        self.Policy = None
-        self.AutoSnapshotPolicyName = None
         self.IsActivated = None
         self.IsPermanent = None
+        self.AutoSnapshotPolicyName = None
+        self.Policy = None
         self.RetentionDays = None
 
 
     def _deserialize(self, params):
         self.AutoSnapshotPolicyId = params.get("AutoSnapshotPolicyId")
+        self.IsActivated = params.get("IsActivated")
+        self.IsPermanent = params.get("IsPermanent")
+        self.AutoSnapshotPolicyName = params.get("AutoSnapshotPolicyName")
         if params.get("Policy") is not None:
             self.Policy = []
             for item in params.get("Policy"):
                 obj = Policy()
                 obj._deserialize(item)
                 self.Policy.append(obj)
-        self.AutoSnapshotPolicyName = params.get("AutoSnapshotPolicyName")
-        self.IsActivated = params.get("IsActivated")
-        self.IsPermanent = params.get("IsPermanent")
         self.RetentionDays = params.get("RetentionDays")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -2656,24 +2656,24 @@ class Placement(AbstractModel):
 
 
 class Policy(AbstractModel):
-    """描述了定期快照的执行策略。可理解为在DayOfWeek指定的那几天中，在Hour指定的小时执行该条定期快照策略。
+    """描述了定期快照的执行策略。可理解为在DayOfWeek/DayOfMonth指定的几天中，或者是IntervalDays设定的间隔的几天，在Hour指定的小时执行该条定期快照策略。注：DayOfWeek/DayOfMonth/IntervalDays为互斥规则，仅可设置其中一条策略规则。
 
     """
 
     def __init__(self):
         r"""
-        :param DayOfWeek: 指定每周从周一到周日需要触发定期快照的日期，取值范围：[0, 6]。0表示周日触发，1-6分别表示周一至周六。
-        :type DayOfWeek: list of int non-negative
         :param Hour: 指定定期快照策略的触发时间。单位为小时，取值范围：[0, 23]。00:00 ~ 23:00 共 24 个时间点可选，1表示 01:00，依此类推。
         :type Hour: list of int non-negative
+        :param DayOfWeek: 指定每周从周一到周日需要触发定期快照的日期，取值范围：[0, 6]。0表示周日触发，1-6分别表示周一至周六。
+        :type DayOfWeek: list of int non-negative
         """
-        self.DayOfWeek = None
         self.Hour = None
+        self.DayOfWeek = None
 
 
     def _deserialize(self, params):
-        self.DayOfWeek = params.get("DayOfWeek")
         self.Hour = params.get("Hour")
+        self.DayOfWeek = params.get("DayOfWeek")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

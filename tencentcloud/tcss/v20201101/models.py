@@ -9836,6 +9836,13 @@ class DescribePurchaseStateInfoResponse(AbstractModel):
         :param GivenAuthorizedCnt: 试用期间赠送镜像授权数，可能会过期
 注意：此字段可能返回 null，表示取不到有效值。
         :type GivenAuthorizedCnt: int
+        :param BeginTime: 起始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BeginTime: str
+        :param SubState: 子状态(具体意义依据State字段而定)
+State为4时，有效值为: ISOLATE(隔离) DESTROED(已销毁)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubState: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -9848,6 +9855,8 @@ class DescribePurchaseStateInfoResponse(AbstractModel):
         self.ExpirationTime = None
         self.AutomaticRenewal = None
         self.GivenAuthorizedCnt = None
+        self.BeginTime = None
+        self.SubState = None
         self.RequestId = None
 
 
@@ -9861,6 +9870,8 @@ class DescribePurchaseStateInfoResponse(AbstractModel):
         self.ExpirationTime = params.get("ExpirationTime")
         self.AutomaticRenewal = params.get("AutomaticRenewal")
         self.GivenAuthorizedCnt = params.get("GivenAuthorizedCnt")
+        self.BeginTime = params.get("BeginTime")
+        self.SubState = params.get("SubState")
         self.RequestId = params.get("RequestId")
 
 

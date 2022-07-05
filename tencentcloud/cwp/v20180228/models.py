@@ -13801,6 +13801,9 @@ class EffectiveMachineInfo(AbstractModel):
         :param LicenseOrder: 授权订单对象
 注意：此字段可能返回 null，表示取不到有效值。
         :type LicenseOrder: :class:`tencentcloud.cwp.v20180228.models.LicenseOrder`
+        :param VulNum: 漏洞数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VulNum: int
         """
         self.MachineName = None
         self.MachinePublicIp = None
@@ -13811,6 +13814,7 @@ class EffectiveMachineInfo(AbstractModel):
         self.KernelVersion = None
         self.MachineStatus = None
         self.LicenseOrder = None
+        self.VulNum = None
 
 
     def _deserialize(self, params):
@@ -13830,6 +13834,7 @@ class EffectiveMachineInfo(AbstractModel):
         if params.get("LicenseOrder") is not None:
             self.LicenseOrder = LicenseOrder()
             self.LicenseOrder._deserialize(params.get("LicenseOrder"))
+        self.VulNum = params.get("VulNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

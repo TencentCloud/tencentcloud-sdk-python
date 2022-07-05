@@ -703,20 +703,42 @@ class CreateSignUrlsRequest(AbstractModel):
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         :param FlowIds: 签署流程编号数组，最多支持100个。
         :type FlowIds: list of str
-        :param Endpoint: 签署链接类型：“WEIXINAPP”-直接跳小程序；“CHANNEL”-跳转H5页面；“APP”-第三方APP或小程序跳转电子签小程序；默认“WEIXINAPP”类型，即跳转至小程序。
+        :param Endpoint: 签署链接类型：“WEIXINAPP”-直接跳小程序；“CHANNEL”-跳转H5页面；“APP”-第三方APP或小程序跳转电子签小程序；默认“WEIXINAPP”类型，即跳转至小程序；
         :type Endpoint: str
-        :param JumpUrl: 签署完之后的H5页面的跳转链接，针对Endpoint为CHANNEL时有效，最大长度1000个字符。
-        :type JumpUrl: str
+        :param GenerateType: 签署链接生成类型，默认是 "ALL"；
+"ALL"：全部签署方签署链接；
+"CHANNEL"：渠道合作企业；
+"NOT_CHANNEL"：非渠道合作企业；
+"PERSON"：个人；
+        :type GenerateType: str
+        :param OrganizationName: 非渠道合作企业参与方的企业名称，GenerateType为"NOT_CHANNEL"时必填
+        :type OrganizationName: str
+        :param Name: 参与人姓名，GenerateType为"PERSON"时必填
+        :type Name: str
+        :param Mobile: 参与人手机号，GenerateType为"PERSON"时必填
+        :type Mobile: str
+        :param OrganizationOpenId: 渠道合作企业的企业Id，GenerateType为"CHANNEL"时必填
+        :type OrganizationOpenId: str
+        :param OpenId: 渠道合作企业参与人OpenId，GenerateType为"CHANNEL"时可用，指定到具体参与人
+        :type OpenId: str
         :param AutoJumpBack: Endpoint为"APP" 类型的签署链接，可以设置此值；支持调用方小程序打开签署链接，在电子签小程序完成签署后自动回跳至调用方小程序
         :type AutoJumpBack: bool
+        :param JumpUrl: 签署完之后的H5页面的跳转链接，针对Endpoint为CHANNEL时有效，最大长度1000个字符。
+        :type JumpUrl: str
         :param Operator: 操作者的信息
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         """
         self.Agent = None
         self.FlowIds = None
         self.Endpoint = None
-        self.JumpUrl = None
+        self.GenerateType = None
+        self.OrganizationName = None
+        self.Name = None
+        self.Mobile = None
+        self.OrganizationOpenId = None
+        self.OpenId = None
         self.AutoJumpBack = None
+        self.JumpUrl = None
         self.Operator = None
 
 
@@ -726,8 +748,14 @@ class CreateSignUrlsRequest(AbstractModel):
             self.Agent._deserialize(params.get("Agent"))
         self.FlowIds = params.get("FlowIds")
         self.Endpoint = params.get("Endpoint")
-        self.JumpUrl = params.get("JumpUrl")
+        self.GenerateType = params.get("GenerateType")
+        self.OrganizationName = params.get("OrganizationName")
+        self.Name = params.get("Name")
+        self.Mobile = params.get("Mobile")
+        self.OrganizationOpenId = params.get("OrganizationOpenId")
+        self.OpenId = params.get("OpenId")
         self.AutoJumpBack = params.get("AutoJumpBack")
+        self.JumpUrl = params.get("JumpUrl")
         if params.get("Operator") is not None:
             self.Operator = UserInfo()
             self.Operator._deserialize(params.get("Operator"))
