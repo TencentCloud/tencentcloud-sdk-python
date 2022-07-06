@@ -1908,11 +1908,15 @@ class ObjectInfo(AbstractModel):
         :type Colors: list of ColorInfo
         :param Attributes: 属性信息。
         :type Attributes: list of Attribute
+        :param AllBox: 图像的所有主体区域。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AllBox: list of Box
         """
         self.Box = None
         self.CategoryId = None
         self.Colors = None
         self.Attributes = None
+        self.AllBox = None
 
 
     def _deserialize(self, params):
@@ -1932,6 +1936,12 @@ class ObjectInfo(AbstractModel):
                 obj = Attribute()
                 obj._deserialize(item)
                 self.Attributes.append(obj)
+        if params.get("AllBox") is not None:
+            self.AllBox = []
+            for item in params.get("AllBox"):
+                obj = Box()
+                obj._deserialize(item)
+                self.AllBox.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

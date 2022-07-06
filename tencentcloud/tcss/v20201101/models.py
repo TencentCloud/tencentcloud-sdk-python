@@ -197,6 +197,15 @@ RULE_MODE_HOLDUP 拦截
         :param ContainerIsolateOperationSrc: 容器隔离操作来源
 注意：此字段可能返回 null，表示取不到有效值。
         :type ContainerIsolateOperationSrc: str
+        :param ContainerStatus: 容器状态
+正在运行: RUNNING
+暂停: PAUSED
+停止: STOPPED
+已经创建: CREATED
+已经销毁: DESTROYED
+正在重启中: RESTARTING
+迁移中: REMOVING
+        :type ContainerStatus: str
         """
         self.ProcessPath = None
         self.EventType = None
@@ -223,6 +232,7 @@ RULE_MODE_HOLDUP 拦截
         self.ContainerNetStatus = None
         self.ContainerNetSubStatus = None
         self.ContainerIsolateOperationSrc = None
+        self.ContainerStatus = None
 
 
     def _deserialize(self, params):
@@ -251,6 +261,7 @@ RULE_MODE_HOLDUP 拦截
         self.ContainerNetStatus = params.get("ContainerNetStatus")
         self.ContainerNetSubStatus = params.get("ContainerNetSubStatus")
         self.ContainerIsolateOperationSrc = params.get("ContainerIsolateOperationSrc")
+        self.ContainerStatus = params.get("ContainerStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -541,6 +552,15 @@ RULE_MODE_HOLDUP 拦截
         :type ContainerNetSubStatus: str
         :param ContainerIsolateOperationSrc: 容器隔离操作来源
         :type ContainerIsolateOperationSrc: str
+        :param ContainerStatus: 容器状态
+正在运行: RUNNING
+暂停: PAUSED
+停止: STOPPED
+已经创建: CREATED
+已经销毁: DESTROYED
+正在重启中: RESTARTING
+迁移中: REMOVING
+        :type ContainerStatus: str
         """
         self.ProcessName = None
         self.MatchRuleName = None
@@ -568,6 +588,7 @@ RULE_MODE_HOLDUP 拦截
         self.ContainerNetStatus = None
         self.ContainerNetSubStatus = None
         self.ContainerIsolateOperationSrc = None
+        self.ContainerStatus = None
 
 
     def _deserialize(self, params):
@@ -597,6 +618,7 @@ RULE_MODE_HOLDUP 拦截
         self.ContainerNetStatus = params.get("ContainerNetStatus")
         self.ContainerNetSubStatus = params.get("ContainerNetSubStatus")
         self.ContainerIsolateOperationSrc = params.get("ContainerIsolateOperationSrc")
+        self.ContainerStatus = params.get("ContainerStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -11264,6 +11286,7 @@ class DescribeVirusListRequest(AbstractModel):
 <li>TaskId- string - 是否必填：否 - 任务ID</li>
 <li>ContainerNetStatus - String -是否必填: 否 -  容器网络状态筛选 NORMAL ISOLATED ISOLATING RESTORING RESTORE_FAILED</li>
 <li>TimeRange - string -是否必填: 否 - 时间范围筛选 ["2022-03-31 16:55:00", "2022-03-31 17:00:00"]</li>
+<li>ContainerStatus - string -是否必填: 否 - 容器状态 RUNNING PAUSED STOPPED CREATED DESTROYED RESTARTING REMOVING</li>
         :type Filters: list of RunTimeFilters
         :param Order: 排序方式
         :type Order: str
@@ -11865,6 +11888,15 @@ MountNamespace逃逸、
         :param ContainerIsolateOperationSrc: 容器隔离操作来源
 注意：此字段可能返回 null，表示取不到有效值。
         :type ContainerIsolateOperationSrc: str
+        :param ContainerStatus: 容器状态
+正在运行: RUNNING
+暂停: PAUSED
+停止: STOPPED
+已经创建: CREATED
+已经销毁: DESTROYED
+正在重启中: RESTARTING
+迁移中: REMOVING
+        :type ContainerStatus: str
         """
         self.EventType = None
         self.ContainerName = None
@@ -11886,6 +11918,7 @@ MountNamespace逃逸、
         self.ContainerNetStatus = None
         self.ContainerNetSubStatus = None
         self.ContainerIsolateOperationSrc = None
+        self.ContainerStatus = None
 
 
     def _deserialize(self, params):
@@ -11909,6 +11942,7 @@ MountNamespace逃逸、
         self.ContainerNetStatus = params.get("ContainerNetStatus")
         self.ContainerNetSubStatus = params.get("ContainerNetSubStatus")
         self.ContainerIsolateOperationSrc = params.get("ContainerIsolateOperationSrc")
+        self.ContainerStatus = params.get("ContainerStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -14638,6 +14672,15 @@ class ReverseShellEventInfo(AbstractModel):
         :type ContainerNetSubStatus: str
         :param ContainerIsolateOperationSrc: 容器隔离操作来源
         :type ContainerIsolateOperationSrc: str
+        :param ContainerStatus: 容器状态
+正在运行: RUNNING
+暂停: PAUSED
+停止: STOPPED
+已经创建: CREATED
+已经销毁: DESTROYED
+正在重启中: RESTARTING
+迁移中: REMOVING
+        :type ContainerStatus: str
         """
         self.ProcessName = None
         self.ProcessPath = None
@@ -14658,6 +14701,7 @@ class ReverseShellEventInfo(AbstractModel):
         self.ContainerNetStatus = None
         self.ContainerNetSubStatus = None
         self.ContainerIsolateOperationSrc = None
+        self.ContainerStatus = None
 
 
     def _deserialize(self, params):
@@ -14680,6 +14724,7 @@ class ReverseShellEventInfo(AbstractModel):
         self.ContainerNetStatus = params.get("ContainerNetStatus")
         self.ContainerNetSubStatus = params.get("ContainerNetSubStatus")
         self.ContainerIsolateOperationSrc = params.get("ContainerIsolateOperationSrc")
+        self.ContainerStatus = params.get("ContainerStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -14892,6 +14937,15 @@ class RiskSyscallEventInfo(AbstractModel):
         :type ContainerNetSubStatus: str
         :param ContainerIsolateOperationSrc: 容器隔离操作来源
         :type ContainerIsolateOperationSrc: str
+        :param ContainerStatus: 容器状态
+正在运行: RUNNING
+暂停: PAUSED
+停止: STOPPED
+已经创建: CREATED
+已经销毁: DESTROYED
+正在重启中: RESTARTING
+迁移中: REMOVING
+        :type ContainerStatus: str
         """
         self.ProcessName = None
         self.ProcessPath = None
@@ -14914,6 +14968,7 @@ class RiskSyscallEventInfo(AbstractModel):
         self.ContainerNetStatus = None
         self.ContainerNetSubStatus = None
         self.ContainerIsolateOperationSrc = None
+        self.ContainerStatus = None
 
 
     def _deserialize(self, params):
@@ -14938,6 +14993,7 @@ class RiskSyscallEventInfo(AbstractModel):
         self.ContainerNetStatus = params.get("ContainerNetStatus")
         self.ContainerNetSubStatus = params.get("ContainerNetSubStatus")
         self.ContainerIsolateOperationSrc = params.get("ContainerIsolateOperationSrc")
+        self.ContainerStatus = params.get("ContainerStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -15963,8 +16019,14 @@ class VirusInfo(AbstractModel):
         :type ContainerName: str
         :param ContainerId: 容器id
         :type ContainerId: str
-        :param ContainerStatus: 容器状态，CS_RUNING:运行， CS_PAUSE:暂停，CS_STOP:停止，
-												       CS_CREATE:已经创建， CS_DESTORY:销毁
+        :param ContainerStatus: 容器状态
+正在运行: RUNNING
+暂停: PAUSED
+停止: STOPPED
+已经创建: CREATED
+已经销毁: DESTROYED
+正在重启中: RESTARTING
+迁移中: REMOVING
         :type ContainerStatus: str
         :param ImageName: 镜像名称
         :type ImageName: str

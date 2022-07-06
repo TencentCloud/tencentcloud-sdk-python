@@ -79,6 +79,8 @@ qcs::cam::uin/12345678:role/tencentcloudServiceRole/4611686018427397920、qcs::c
         :type ExternalId: str
         :param Tags: 会话标签列表。最多可以传递 50 个会话标签，不支持包含相同标签键。
         :type Tags: list of Tag
+        :param SourceIdentity: 调用者身份uin
+        :type SourceIdentity: str
         """
         self.RoleArn = None
         self.RoleSessionName = None
@@ -86,6 +88,7 @@ qcs::cam::uin/12345678:role/tencentcloudServiceRole/4611686018427397920、qcs::c
         self.Policy = None
         self.ExternalId = None
         self.Tags = None
+        self.SourceIdentity = None
 
 
     def _deserialize(self, params):
@@ -100,6 +103,7 @@ qcs::cam::uin/12345678:role/tencentcloudServiceRole/4611686018427397920、qcs::c
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.SourceIdentity = params.get("SourceIdentity")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

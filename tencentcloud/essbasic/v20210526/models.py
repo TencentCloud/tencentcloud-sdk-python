@@ -2314,7 +2314,7 @@ class UploadFilesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FileIds: 文件id数组
+        :param FileIds: 文件id数组，有效期一个小时
         :type FileIds: list of str
         :param TotalCount: 上传成功文件数量
         :type TotalCount: int
@@ -2351,13 +2351,17 @@ class UsageDetail(AbstractModel):
         :param Date: 日期，当需要汇总数据时日期为空
 注意：此字段可能返回 null，表示取不到有效值。
         :type Date: str
-        :param Usage: 消耗量
+        :param Usage: 消耗数量
         :type Usage: int
+        :param Cancel: 撤回数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Cancel: int
         """
         self.ProxyOrganizationOpenId = None
         self.ProxyOrganizationName = None
         self.Date = None
         self.Usage = None
+        self.Cancel = None
 
 
     def _deserialize(self, params):
@@ -2365,6 +2369,7 @@ class UsageDetail(AbstractModel):
         self.ProxyOrganizationName = params.get("ProxyOrganizationName")
         self.Date = params.get("Date")
         self.Usage = params.get("Usage")
+        self.Cancel = params.get("Cancel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

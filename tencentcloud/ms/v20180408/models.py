@@ -852,29 +852,28 @@ class DescribeResourceInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Pids: 资源类别id数组，13624：加固专业版，12750：企业版。空数组表示返回全部资源。
-        :type Pids: list of int non-negative
-        :param Filters: 支持通过资源id，pid进行查询
+        :param Filters: 支持CreateTime、ExpireTime、AppName、AppPkgName、BindValue、IsBind过滤
         :type Filters: list of Filter
         :param Offset: 偏移量，默认为0
         :type Offset: int
         :param Limit: 数量限制，默认为20，最大值为100。
         :type Limit: int
+        :param Pids: 资源类别id数组，13624：加固专业版，12750：企业版。空数组表示返回全部资源。
+        :type Pids: list of int non-negative
         :param OrderField: 按某个字段排序，目前支持CreateTime、ExpireTime其中的一个排序。
         :type OrderField: str
         :param OrderDirection: 升序（asc）还是降序（desc），默认：desc。
         :type OrderDirection: str
         """
-        self.Pids = None
         self.Filters = None
         self.Offset = None
         self.Limit = None
+        self.Pids = None
         self.OrderField = None
         self.OrderDirection = None
 
 
     def _deserialize(self, params):
-        self.Pids = params.get("Pids")
         if params.get("Filters") is not None:
             self.Filters = []
             for item in params.get("Filters"):
@@ -883,6 +882,7 @@ class DescribeResourceInstancesRequest(AbstractModel):
                 self.Filters.append(obj)
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.Pids = params.get("Pids")
         self.OrderField = params.get("OrderField")
         self.OrderDirection = params.get("OrderDirection")
         memeber_set = set(params.keys())

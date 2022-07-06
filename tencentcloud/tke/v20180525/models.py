@@ -711,6 +711,9 @@ class Cluster(AbstractModel):
         :param AutoUpgradeClusterLevel: 自动变配集群等级，针对托管集群生效
 注意：此字段可能返回 null，表示取不到有效值。
         :type AutoUpgradeClusterLevel: bool
+        :param QGPUShareEnable: 是否开启QGPU共享
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QGPUShareEnable: bool
         """
         self.ClusterId = None
         self.ClusterName = None
@@ -733,6 +736,7 @@ class Cluster(AbstractModel):
         self.EnableExternalNode = None
         self.ClusterLevel = None
         self.AutoUpgradeClusterLevel = None
+        self.QGPUShareEnable = None
 
 
     def _deserialize(self, params):
@@ -764,6 +768,7 @@ class Cluster(AbstractModel):
         self.EnableExternalNode = params.get("EnableExternalNode")
         self.ClusterLevel = params.get("ClusterLevel")
         self.AutoUpgradeClusterLevel = params.get("AutoUpgradeClusterLevel")
+        self.QGPUShareEnable = params.get("QGPUShareEnable")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -822,6 +827,8 @@ ipvs-bpf模式: 设置KubeProxyMode为kube-proxy-bpf
         :type CiliumMode: str
         :param IsDualStack: 集群VPC-CNI模式下是否是双栈集群，默认false，表明非双栈集群。
         :type IsDualStack: bool
+        :param QGPUShareEnable: 是否开启QGPU共享
+        :type QGPUShareEnable: bool
         """
         self.IPVS = None
         self.AsEnabled = None
@@ -841,6 +848,7 @@ ipvs-bpf模式: 设置KubeProxyMode为kube-proxy-bpf
         self.BasePodNumber = None
         self.CiliumMode = None
         self.IsDualStack = None
+        self.QGPUShareEnable = None
 
 
     def _deserialize(self, params):
@@ -864,6 +872,7 @@ ipvs-bpf模式: 设置KubeProxyMode为kube-proxy-bpf
         self.BasePodNumber = params.get("BasePodNumber")
         self.CiliumMode = params.get("CiliumMode")
         self.IsDualStack = params.get("IsDualStack")
+        self.QGPUShareEnable = params.get("QGPUShareEnable")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1452,6 +1461,12 @@ class ClusterNetworkSettings(AbstractModel):
         :param IgnoreServiceCIDRConflict: 是否忽略 ServiceCIDR 冲突错误, 仅在 VPC-CNI 模式生效，默认不忽略
 注意：此字段可能返回 null，表示取不到有效值。
         :type IgnoreServiceCIDRConflict: bool
+        :param IsDualStack: 集群VPC-CNI模式是否为非双栈集群，默认false，非双栈。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsDualStack: bool
+        :param Ipv6ServiceCIDR: 用于分配service的IP range，由系统自动分配
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Ipv6ServiceCIDR: str
         """
         self.ClusterCIDR = None
         self.IgnoreClusterCIDRConflict = None
@@ -1464,6 +1479,8 @@ class ClusterNetworkSettings(AbstractModel):
         self.ServiceCIDR = None
         self.Subnets = None
         self.IgnoreServiceCIDRConflict = None
+        self.IsDualStack = None
+        self.Ipv6ServiceCIDR = None
 
 
     def _deserialize(self, params):
@@ -1478,6 +1495,8 @@ class ClusterNetworkSettings(AbstractModel):
         self.ServiceCIDR = params.get("ServiceCIDR")
         self.Subnets = params.get("Subnets")
         self.IgnoreServiceCIDRConflict = params.get("IgnoreServiceCIDRConflict")
+        self.IsDualStack = params.get("IsDualStack")
+        self.Ipv6ServiceCIDR = params.get("Ipv6ServiceCIDR")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2090,6 +2109,8 @@ class CreateClusterNodePoolRequest(AbstractModel):
         :type OsCustomizeType: str
         :param Tags: 资源标签
         :type Tags: list of Tag
+        :param DeletionProtection: 删除保护开关
+        :type DeletionProtection: bool
         """
         self.ClusterId = None
         self.AutoScalingGroupPara = None
@@ -2104,6 +2125,7 @@ class CreateClusterNodePoolRequest(AbstractModel):
         self.NodePoolOs = None
         self.OsCustomizeType = None
         self.Tags = None
+        self.DeletionProtection = None
 
 
     def _deserialize(self, params):
@@ -2137,6 +2159,7 @@ class CreateClusterNodePoolRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.DeletionProtection = params.get("DeletionProtection")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -11439,6 +11462,8 @@ class ModifyClusterAttributeRequest(AbstractModel):
         :type ClusterLevel: str
         :param AutoUpgradeClusterLevel: 自动变配集群等级
         :type AutoUpgradeClusterLevel: :class:`tencentcloud.tke.v20180525.models.AutoUpgradeClusterLevel`
+        :param QGPUShareEnable: 是否开启QGPU共享
+        :type QGPUShareEnable: bool
         """
         self.ClusterId = None
         self.ProjectId = None
@@ -11446,6 +11471,7 @@ class ModifyClusterAttributeRequest(AbstractModel):
         self.ClusterDesc = None
         self.ClusterLevel = None
         self.AutoUpgradeClusterLevel = None
+        self.QGPUShareEnable = None
 
 
     def _deserialize(self, params):
@@ -11457,6 +11483,7 @@ class ModifyClusterAttributeRequest(AbstractModel):
         if params.get("AutoUpgradeClusterLevel") is not None:
             self.AutoUpgradeClusterLevel = AutoUpgradeClusterLevel()
             self.AutoUpgradeClusterLevel._deserialize(params.get("AutoUpgradeClusterLevel"))
+        self.QGPUShareEnable = params.get("QGPUShareEnable")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -11488,6 +11515,9 @@ class ModifyClusterAttributeResponse(AbstractModel):
         :param AutoUpgradeClusterLevel: 自动变配集群等级
 注意：此字段可能返回 null，表示取不到有效值。
         :type AutoUpgradeClusterLevel: :class:`tencentcloud.tke.v20180525.models.AutoUpgradeClusterLevel`
+        :param QGPUShareEnable: 是否开启QGPU共享
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QGPUShareEnable: bool
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -11496,6 +11526,7 @@ class ModifyClusterAttributeResponse(AbstractModel):
         self.ClusterDesc = None
         self.ClusterLevel = None
         self.AutoUpgradeClusterLevel = None
+        self.QGPUShareEnable = None
         self.RequestId = None
 
 
@@ -11507,6 +11538,7 @@ class ModifyClusterAttributeResponse(AbstractModel):
         if params.get("AutoUpgradeClusterLevel") is not None:
             self.AutoUpgradeClusterLevel = AutoUpgradeClusterLevel()
             self.AutoUpgradeClusterLevel._deserialize(params.get("AutoUpgradeClusterLevel"))
+        self.QGPUShareEnable = params.get("QGPUShareEnable")
         self.RequestId = params.get("RequestId")
 
 
@@ -11635,6 +11667,8 @@ class ModifyClusterNodePoolRequest(AbstractModel):
         :type Tags: list of Tag
         :param Unschedulable: 设置加入的节点是否参与调度，默认值为0，表示参与调度；非0表示不参与调度, 待节点初始化完成之后, 可执行kubectl uncordon nodename使node加入调度.
         :type Unschedulable: int
+        :param DeletionProtection: 删除保护开关
+        :type DeletionProtection: bool
         """
         self.ClusterId = None
         self.NodePoolId = None
@@ -11649,6 +11683,7 @@ class ModifyClusterNodePoolRequest(AbstractModel):
         self.ExtraArgs = None
         self.Tags = None
         self.Unschedulable = None
+        self.DeletionProtection = None
 
 
     def _deserialize(self, params):
@@ -11682,6 +11717,7 @@ class ModifyClusterNodePoolRequest(AbstractModel):
                 obj._deserialize(item)
                 self.Tags.append(obj)
         self.Unschedulable = params.get("Unschedulable")
+        self.DeletionProtection = params.get("DeletionProtection")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -12345,6 +12381,9 @@ class NodePool(AbstractModel):
         :param Tags: 资源标签
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
+        :param DeletionProtection: 删除保护开关
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeletionProtection: bool
         """
         self.NodePoolId = None
         self.Name = None
@@ -12365,6 +12404,7 @@ class NodePool(AbstractModel):
         self.DesiredPodNum = None
         self.UserScript = None
         self.Tags = None
+        self.DeletionProtection = None
 
 
     def _deserialize(self, params):
@@ -12404,6 +12444,7 @@ class NodePool(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.DeletionProtection = params.get("DeletionProtection")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

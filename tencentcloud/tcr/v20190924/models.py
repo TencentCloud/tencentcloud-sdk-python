@@ -786,16 +786,22 @@ class CreateNamespaceRequest(AbstractModel):
         :type NamespaceName: str
         :param IsPublic: 是否公开，true为公开，fale为私有
         :type IsPublic: bool
+        :param TagSpecification: 云标签描述
+        :type TagSpecification: :class:`tencentcloud.tcr.v20190924.models.TagSpecification`
         """
         self.RegistryId = None
         self.NamespaceName = None
         self.IsPublic = None
+        self.TagSpecification = None
 
 
     def _deserialize(self, params):
         self.RegistryId = params.get("RegistryId")
         self.NamespaceName = params.get("NamespaceName")
         self.IsPublic = params.get("IsPublic")
+        if params.get("TagSpecification") is not None:
+            self.TagSpecification = TagSpecification()
+            self.TagSpecification._deserialize(params.get("TagSpecification"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3126,13 +3132,19 @@ class DescribeNamespacesRequest(AbstractModel):
         :type NamespaceName: str
         :param Limit: 每页个数
         :type Limit: int
-        :param Offset: 页偏移
+        :param Offset: 页面偏移（第几页）
         :type Offset: int
+        :param All: 列出所有命名空间
+        :type All: bool
+        :param Filters: 过滤条件
+        :type Filters: list of Filter
         """
         self.RegistryId = None
         self.NamespaceName = None
         self.Limit = None
         self.Offset = None
+        self.All = None
+        self.Filters = None
 
 
     def _deserialize(self, params):
@@ -3140,6 +3152,13 @@ class DescribeNamespacesRequest(AbstractModel):
         self.NamespaceName = params.get("NamespaceName")
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
+        self.All = params.get("All")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6635,11 +6654,15 @@ class TcrNamespaceInfo(AbstractModel):
         :type Public: bool
         :param NamespaceId: 命名空间的Id
         :type NamespaceId: int
+        :param TagSpecification: 实例云标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagSpecification: :class:`tencentcloud.tcr.v20190924.models.TagSpecification`
         """
         self.Name = None
         self.CreationTime = None
         self.Public = None
         self.NamespaceId = None
+        self.TagSpecification = None
 
 
     def _deserialize(self, params):
@@ -6647,6 +6670,9 @@ class TcrNamespaceInfo(AbstractModel):
         self.CreationTime = params.get("CreationTime")
         self.Public = params.get("Public")
         self.NamespaceId = params.get("NamespaceId")
+        if params.get("TagSpecification") is not None:
+            self.TagSpecification = TagSpecification()
+            self.TagSpecification._deserialize(params.get("TagSpecification"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
