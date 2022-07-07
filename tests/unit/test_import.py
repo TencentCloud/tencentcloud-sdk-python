@@ -614,6 +614,11 @@ def test_import_iotvideo():
     from tencentcloud.iotvideo.v20201215 import models
 
 
+def test_import_iotvideo():
+    from tencentcloud.iotvideo.v20211125 import iotvideo_client
+    from tencentcloud.iotvideo.v20211125 import models
+
+
 def test_import_iotvideoindustry():
     from tencentcloud.iotvideoindustry.v20201201 import iotvideoindustry_client
     from tencentcloud.iotvideoindustry.v20201201 import models

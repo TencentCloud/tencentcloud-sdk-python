@@ -2176,7 +2176,7 @@ class TemplateInfo(AbstractModel):
         :type SignComponents: list of Component
         :param Recipients: 模板中的流程参与人信息
         :type Recipients: list of Recipient
-        :param TemplateType: 模板类型：1-静默签；2-静默签授权；3-普通模板
+        :param TemplateType: 模板类型：1-静默签；3-普通模板
         :type TemplateType: int
         :param IsPromoter: 是否是发起人
         :type IsPromoter: bool

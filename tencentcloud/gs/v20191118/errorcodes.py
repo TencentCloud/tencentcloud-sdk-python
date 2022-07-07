@@ -14,6 +14,9 @@
 # limitations under the License.
 
 
+# 操作失败。
+FAILEDOPERATION = 'FailedOperation'
+
 # 锁定机器超时或未调用TrylockWorker。
 FAILEDOPERATION_LOCKTIMEOUT = 'FailedOperation.LockTimeout'
 

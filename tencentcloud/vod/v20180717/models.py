@@ -1331,6 +1331,8 @@ class AiRecognitionTaskAsrFullTextResult(AbstractModel):
         :param Output: 语音全文识别任务输出信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskAsrFullTextResultOutput`
+        :param Progress: 任务进度，取值范围 [0-100] 。
+        :type Progress: int
         """
         self.Status = None
         self.ErrCodeExt = None
@@ -1338,6 +1340,7 @@ class AiRecognitionTaskAsrFullTextResult(AbstractModel):
         self.Message = None
         self.Input = None
         self.Output = None
+        self.Progress = None
 
 
     def _deserialize(self, params):
@@ -1351,6 +1354,7 @@ class AiRecognitionTaskAsrFullTextResult(AbstractModel):
         if params.get("Output") is not None:
             self.Output = AiRecognitionTaskAsrFullTextResultOutput()
             self.Output._deserialize(params.get("Output"))
+        self.Progress = params.get("Progress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

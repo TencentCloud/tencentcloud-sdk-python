@@ -11357,6 +11357,10 @@ FAILED:已失败
         :param Remark: 冻结备注
 注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
+        :param PayeeId: 收款用户ID
+        :type PayeeId: str
+        :param OutUserId: 外部用户ID
+        :type OutUserId: str
         """
         self.AmountBeforeTax = None
         self.IncomeType = None
@@ -11368,6 +11372,8 @@ FAILED:已失败
         self.Status = None
         self.StatusDesc = None
         self.Remark = None
+        self.PayeeId = None
+        self.OutUserId = None
 
 
     def _deserialize(self, params):
@@ -11381,6 +11387,8 @@ FAILED:已失败
         self.Status = params.get("Status")
         self.StatusDesc = params.get("StatusDesc")
         self.Remark = params.get("Remark")
+        self.PayeeId = params.get("PayeeId")
+        self.OutUserId = params.get("OutUserId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -13650,6 +13658,8 @@ class OrderSummaryResult(AbstractModel):
         :type SummaryTime: str
         :param SummaryCount: 汇总记录数量
         :type SummaryCount: int
+        :param OutUserId: 外部用户ID
+        :type OutUserId: str
         """
         self.SummaryId = None
         self.PayeeId = None
@@ -13658,6 +13668,7 @@ class OrderSummaryResult(AbstractModel):
         self.SummaryAmount = None
         self.SummaryTime = None
         self.SummaryCount = None
+        self.OutUserId = None
 
 
     def _deserialize(self, params):
@@ -13668,6 +13679,7 @@ class OrderSummaryResult(AbstractModel):
         self.SummaryAmount = params.get("SummaryAmount")
         self.SummaryTime = params.get("SummaryTime")
         self.SummaryCount = params.get("SummaryCount")
+        self.OutUserId = params.get("OutUserId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -14531,6 +14543,8 @@ FAILED:已失败
         :type Remark: str
         :param PayeeId: 收款用户ID
         :type PayeeId: str
+        :param OutUserId: 外部用户ID
+        :type OutUserId: str
         """
         self.IncomeType = None
         self.AmountBeforeTax = None
@@ -14544,6 +14558,7 @@ FAILED:已失败
         self.StatusDesc = None
         self.Remark = None
         self.PayeeId = None
+        self.OutUserId = None
 
 
     def _deserialize(self, params):
@@ -14559,6 +14574,7 @@ FAILED:已失败
         self.StatusDesc = params.get("StatusDesc")
         self.Remark = params.get("Remark")
         self.PayeeId = params.get("PayeeId")
+        self.OutUserId = params.get("OutUserId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -18094,14 +18110,14 @@ class QueryFlexPaymentOrderListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PayeeId: 收款用户ID
-        :type PayeeId: str
         :param StartTime: 开始时间，格式"yyyy-MM-dd hh:mm:ss"
         :type StartTime: str
         :param EndTime: 结束时间，格式"yyyy-MM-dd hh:mm:ss"
         :type EndTime: str
         :param PageNumber: 分页
         :type PageNumber: :class:`tencentcloud.cpdp.v20190820.models.Paging`
+        :param PayeeId: 收款用户ID
+        :type PayeeId: str
         :param Environment: 环境类型
 __release__:生产环境
 __sandbox__:沙箱环境
@@ -18109,20 +18125,20 @@ __test__:测试环境
 缺省默认为生产环境
         :type Environment: str
         """
-        self.PayeeId = None
         self.StartTime = None
         self.EndTime = None
         self.PageNumber = None
+        self.PayeeId = None
         self.Environment = None
 
 
     def _deserialize(self, params):
-        self.PayeeId = params.get("PayeeId")
         self.StartTime = params.get("StartTime")
         self.EndTime = params.get("EndTime")
         if params.get("PageNumber") is not None:
             self.PageNumber = Paging()
             self.PageNumber._deserialize(params.get("PageNumber"))
+        self.PayeeId = params.get("PayeeId")
         self.Environment = params.get("Environment")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -26299,6 +26315,12 @@ FAILED:已失败
         :param Remark: 备注
 注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
+        :param PayeeId: 收款用户ID
+        :type PayeeId: str
+        :param OutUserId: 外部用户ID
+        :type OutUserId: str
+        :param OperationType: 操作类型
+        :type OperationType: str
         """
         self.IncomeType = None
         self.AmountBeforeTax = None
@@ -26311,6 +26333,9 @@ FAILED:已失败
         self.Status = None
         self.StatusDesc = None
         self.Remark = None
+        self.PayeeId = None
+        self.OutUserId = None
+        self.OperationType = None
 
 
     def _deserialize(self, params):
@@ -26325,6 +26350,9 @@ FAILED:已失败
         self.Status = params.get("Status")
         self.StatusDesc = params.get("StatusDesc")
         self.Remark = params.get("Remark")
+        self.PayeeId = params.get("PayeeId")
+        self.OutUserId = params.get("OutUserId")
+        self.OperationType = params.get("OperationType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -14,6 +14,9 @@
 # limitations under the License.
 
 
+# 操作失败。
+FAILEDOPERATION = 'FailedOperation'
+
 # 未申请并发或申请后超时。
 FAILEDOPERATION_LOCKTIMEOUT = 'FailedOperation.LockTimeout'
 

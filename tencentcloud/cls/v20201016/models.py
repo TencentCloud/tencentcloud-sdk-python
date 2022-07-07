@@ -18,6 +18,34 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AlarmAnalysisConfig(AbstractModel):
+    """告警多维分析一些配置信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Key: 键
+        :type Key: str
+        :param Value: 值
+        :type Value: str
+        """
+        self.Key = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AlarmInfo(AbstractModel):
     """告警策略描述
 
@@ -282,20 +310,29 @@ class AnalysisDimensional(AbstractModel):
         r"""
         :param Name: 分析名称
         :type Name: str
-        :param Type: 分析类型：query，field
+        :param Type: 分析类型：query，field ，original
         :type Type: str
         :param Content: 分析内容
         :type Content: str
+        :param ConfigInfo: 配置
+        :type ConfigInfo: list of AlarmAnalysisConfig
         """
         self.Name = None
         self.Type = None
         self.Content = None
+        self.ConfigInfo = None
 
 
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Type = params.get("Type")
         self.Content = params.get("Content")
+        if params.get("ConfigInfo") is not None:
+            self.ConfigInfo = []
+            for item in params.get("ConfigInfo"):
+                obj = AlarmAnalysisConfig()
+                obj._deserialize(item)
+                self.ConfigInfo.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

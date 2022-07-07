@@ -27,7 +27,9 @@ class MgobeClient(AbstractClient):
 
 
     def ChangeRoomPlayerProfile(self, request):
-        """修改房间玩家自定义属性
+        """此接口无法使用，游戏联机对战引擎MGOBE已于6.1正式下架，感谢您的支持
+
+        修改房间玩家自定义属性
 
         :param request: Request instance for ChangeRoomPlayerProfile.
         :type request: :class:`tencentcloud.mgobe.v20201014.models.ChangeRoomPlayerProfileRequest`
@@ -56,7 +58,9 @@ class MgobeClient(AbstractClient):
 
 
     def ChangeRoomPlayerStatus(self, request):
-        """修改玩家自定义状态
+        """此接口无法使用，游戏联机对战引擎MGOBE已于6.1正式下架，感谢您的支持
+
+        修改玩家自定义状态
 
         :param request: Request instance for ChangeRoomPlayerStatus.
         :type request: :class:`tencentcloud.mgobe.v20201014.models.ChangeRoomPlayerStatusRequest`
@@ -85,7 +89,9 @@ class MgobeClient(AbstractClient):
 
 
     def DescribePlayer(self, request):
-        """该接口用于查询玩家信息。支持两种用法，当OpenId不传的时候，PlayerId必传，传入PlayerId可以查询当前PlayerId的玩家信息，当OpenId传入的时候，PlayerId可不传，按照OpenId查询玩家信息。
+        """此接口无法使用，游戏联机对战引擎MGOBE已于6.1正式下架，感谢您的支持
+
+        该接口用于查询玩家信息。支持两种用法，当OpenId不传的时候，PlayerId必传，传入PlayerId可以查询当前PlayerId的玩家信息，当OpenId传入的时候，PlayerId可不传，按照OpenId查询玩家信息。
 
         :param request: Request instance for DescribePlayer.
         :type request: :class:`tencentcloud.mgobe.v20201014.models.DescribePlayerRequest`
@@ -114,7 +120,9 @@ class MgobeClient(AbstractClient):
 
 
     def DescribeRoom(self, request):
-        """该接口用于查询房间信息。支持两种用法，当房间Id不传的时候，玩家Id必传，传入玩家Id可以查询当前玩家所在的房间信息，当房间Id传入的时候，玩家Id可不传，按照房间Id查询房间信息。
+        """此接口无法使用，游戏联机对战引擎MGOBE已于6.1正式下架，感谢您的支持
+
+        该接口用于查询房间信息。支持两种用法，当房间Id不传的时候，玩家Id必传，传入玩家Id可以查询当前玩家所在的房间信息，当房间Id传入的时候，玩家Id可不传，按照房间Id查询房间信息。
 
         :param request: Request instance for DescribeRoom.
         :type request: :class:`tencentcloud.mgobe.v20201014.models.DescribeRoomRequest`
@@ -143,7 +151,9 @@ class MgobeClient(AbstractClient):
 
 
     def DismissRoom(self, request):
-        """通过game_id、room_id解散房间
+        """此接口无法使用，游戏联机对战引擎MGOBE已于6.1正式下架，感谢您的支持
+
+        通过game_id、room_id解散房间
 
         :param request: Request instance for DismissRoom.
         :type request: :class:`tencentcloud.mgobe.v20201014.models.DismissRoomRequest`
@@ -172,7 +182,9 @@ class MgobeClient(AbstractClient):
 
 
     def ModifyRoom(self, request):
-        """修改房间
+        """此接口无法使用，游戏联机对战引擎MGOBE已于6.1正式下架，感谢您的支持
+
+        修改房间
 
         :param request: Request instance for ModifyRoom.
         :type request: :class:`tencentcloud.mgobe.v20201014.models.ModifyRoomRequest`
@@ -201,7 +213,9 @@ class MgobeClient(AbstractClient):
 
 
     def RemoveRoomPlayer(self, request):
-        """踢出房间玩家
+        """此接口无法使用，游戏联机对战引擎MGOBE已于6.1正式下架，感谢您的支持
+
+        踢出房间玩家
 
         :param request: Request instance for RemoveRoomPlayer.
         :type request: :class:`tencentcloud.mgobe.v20201014.models.RemoveRoomPlayerRequest`
