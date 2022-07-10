@@ -5596,9 +5596,9 @@ class RecognizeTravelCardOCRResponse(AbstractModel):
         :type Time: str
         :param Color: 行程卡颜色：绿色、黄色、红色
         :type Color: str
-        :param ReachedCity: 14天内到达或途经的城市
+        :param ReachedCity: 7天内到达或途经的城市（自2022年7月8日起，通信行程卡查询结果的覆盖时间范围由“14天”调整为“7天”）
         :type ReachedCity: list of str
-        :param RiskArea: 14天内到达或途径存在中高风险地区的城市
+        :param RiskArea: 7天内到达或途径存在中高风险地区的城市（自2022年6月29日起，通信行程卡取消“星号”标记，改字段将返回空值）
         :type RiskArea: list of str
         :param Telephone: 电话号码
         :type Telephone: str

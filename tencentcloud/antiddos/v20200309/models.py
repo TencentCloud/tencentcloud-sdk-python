@@ -5527,6 +5527,97 @@ class DescribeListWaterPrintConfigResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeNewL7RulesRequest(AbstractModel):
+    """DescribeNewL7Rules请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Business: 大禹子产品代号（bgpip表示高防IP）
+        :type Business: str
+        :param StatusList: 状态搜索，选填，取值[0(规则配置成功)，1(规则配置生效中)，2(规则配置失败)，3(规则删除生效中)，5(规则删除失败)，6(规则等待配置)，7(规则等待删除)，8(规则待配置证书)]
+        :type StatusList: list of int non-negative
+        :param Domain: 域名搜索，选填，当需要搜索域名请填写
+        :type Domain: str
+        :param Ip: IP搜索，选填，当需要搜索IP请填写
+        :type Ip: str
+        :param Limit: 一页条数，填0表示不分页
+        :type Limit: int
+        :param Offset: 页起始偏移，取值为(页码-1)*一页条数
+        :type Offset: int
+        :param ProtocolList: 转发协议搜索，选填，取值[http, https, http/https]
+        :type ProtocolList: list of str
+        :param Cname: 高防IP实例的Cname
+        :type Cname: str
+        """
+        self.Business = None
+        self.StatusList = None
+        self.Domain = None
+        self.Ip = None
+        self.Limit = None
+        self.Offset = None
+        self.ProtocolList = None
+        self.Cname = None
+
+
+    def _deserialize(self, params):
+        self.Business = params.get("Business")
+        self.StatusList = params.get("StatusList")
+        self.Domain = params.get("Domain")
+        self.Ip = params.get("Ip")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.ProtocolList = params.get("ProtocolList")
+        self.Cname = params.get("Cname")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeNewL7RulesResponse(AbstractModel):
+    """DescribeNewL7Rules返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Rules: 转发规则列表
+        :type Rules: list of NewL7RuleEntry
+        :param Healths: 健康检查配置列表
+        :type Healths: list of L7RuleHealth
+        :param Total: 总规则数
+        :type Total: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Rules = None
+        self.Healths = None
+        self.Total = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Rules") is not None:
+            self.Rules = []
+            for item in params.get("Rules"):
+                obj = NewL7RuleEntry()
+                obj._deserialize(item)
+                self.Rules.append(obj)
+        if params.get("Healths") is not None:
+            self.Healths = []
+            for item in params.get("Healths"):
+                obj = L7RuleHealth()
+                obj._deserialize(item)
+                self.Healths.append(obj)
+        self.Total = params.get("Total")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeOverviewAttackTrendRequest(AbstractModel):
     """DescribeOverviewAttackTrend请求参数结构体
 
@@ -6461,6 +6552,62 @@ class L7RuleEntry(AbstractModel):
         self.VirtualPort = params.get("VirtualPort")
         self.SSLId = params.get("SSLId")
         self.Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class L7RuleHealth(AbstractModel):
+    """L7规则健康检查参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Status: 配置状态，0： 正常，1：配置中，2：配置失败
+        :type Status: int
+        :param Enable: =1表示开启；=0表示关闭
+        :type Enable: int
+        :param RuleId: 规则ID
+        :type RuleId: str
+        :param Url: 检查目录的URL，默认为/
+        :type Url: str
+        :param Interval: 检测间隔时间，单位秒
+        :type Interval: int
+        :param AliveNum: 健康阈值，单位次
+        :type AliveNum: int
+        :param KickNum: 不健康阈值，单位次
+        :type KickNum: int
+        :param Method: HTTP请求方式，取值[HEAD,GET]
+        :type Method: str
+        :param StatusCode: 健康检查判定正常状态码，1xx =1, 2xx=2, 3xx=4, 4xx=8,5xx=16，多个状态码值加和
+        :type StatusCode: int
+        """
+        self.Status = None
+        self.Enable = None
+        self.RuleId = None
+        self.Url = None
+        self.Interval = None
+        self.AliveNum = None
+        self.KickNum = None
+        self.Method = None
+        self.StatusCode = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.Enable = params.get("Enable")
+        self.RuleId = params.get("RuleId")
+        self.Url = params.get("Url")
+        self.Interval = params.get("Interval")
+        self.AliveNum = params.get("AliveNum")
+        self.KickNum = params.get("KickNum")
+        self.Method = params.get("Method")
+        self.StatusCode = params.get("StatusCode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

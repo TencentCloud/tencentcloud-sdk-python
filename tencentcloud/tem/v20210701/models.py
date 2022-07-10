@@ -670,7 +670,8 @@ class DeployApplicationRequest(AbstractModel):
         :type OsFlavour: str
         :param EnablePrometheusConf: 是否开启prometheus 业务指标监控
         :type EnablePrometheusConf: :class:`tencentcloud.tem.v20210701.models.EnablePrometheusConf`
-        :param EnableTracing: 1：开始apm采集；0：关闭apm采集
+        :param EnableTracing: 1：开始apm采集（skywalking）；
+0：关闭apm采集；
         :type EnableTracing: int
         """
         self.ApplicationId = None
@@ -2062,7 +2063,7 @@ class ModifyApplicationInfoRequest(AbstractModel):
         :type Description: str
         :param SourceChannel: 来源渠道
         :type SourceChannel: int
-        :param EnableTracing: 是否开启调用链, 0 为关闭，1位开启
+        :param EnableTracing: 是否开启调用链,（此参数已弃用）
         :type EnableTracing: int
         """
         self.ApplicationId = None
@@ -2416,16 +2417,20 @@ class PortMapping(AbstractModel):
         :type TargetPort: int
         :param Protocol: 协议栈 TCP/UDP
         :type Protocol: str
+        :param ServiceName: k8s service名称
+        :type ServiceName: str
         """
         self.Port = None
         self.TargetPort = None
         self.Protocol = None
+        self.ServiceName = None
 
 
     def _deserialize(self, params):
         self.Port = params.get("Port")
         self.TargetPort = params.get("TargetPort")
         self.Protocol = params.get("Protocol")
+        self.ServiceName = params.get("ServiceName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

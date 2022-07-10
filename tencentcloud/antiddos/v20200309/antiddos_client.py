@@ -1969,6 +1969,35 @@ class AntiddosClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeNewL7Rules(self, request):
+        """高防IP获取7层规则
+
+        :param request: Request instance for DescribeNewL7Rules.
+        :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeNewL7RulesRequest`
+        :rtype: :class:`tencentcloud.antiddos.v20200309.models.DescribeNewL7RulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeNewL7Rules", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeNewL7RulesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeOverviewAttackTrend(self, request):
         """拉取防护概览攻击趋势
 

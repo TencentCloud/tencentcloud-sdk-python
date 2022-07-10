@@ -1233,7 +1233,9 @@ class FlowApproverInfo(AbstractModel):
         :type OpenId: str
         :param OrganizationOpenId: 企业签署方在同一渠道下的其他合作企业OpenId，签署方为非发起方企业场景下必传，最大长度64个字符；
         :type OrganizationOpenId: str
-        :param ApproverType: 签署人类型，PERSON-个人；ORGANIZATION-企业；
+        :param ApproverType: 签署人类型，PERSON-个人；
+PERSON_AUTO_SIGN-个人自动签；
+ORGANIZATION-企业；
 ENTERPRISESERVER-企业静默签;
 注：ENTERPRISESERVER 类型仅用于使用文件创建签署流程（ChannelCreateFlowByFiles）接口；并且仅能指定发起方企业签署方为静默签署；
         :type ApproverType: str
@@ -1385,7 +1387,7 @@ class FlowInfo(AbstractModel):
         :type FlowType: str
         :param FlowDescription: 合同描述，最大长度1000个字符
         :type FlowDescription: str
-        :param CustomerData: 渠道的业务信息，最大长度1000个字符
+        :param CustomerData: 渠道的业务信息，最大长度1000个字符。发起自动签署时，需设置对应自动签署场景，目前仅支持场景：处方单-E_PRESCRIPTION_AUTO_SIGN
         :type CustomerData: str
         :param CustomShowMap: 合同显示的页卡模板，说明：只支持{合同名称}, {发起方企业}, {发起方姓名}, {签署方N企业}, {签署方N姓名}，且N不能超过签署人的数量，N从1开始
         :type CustomShowMap: str

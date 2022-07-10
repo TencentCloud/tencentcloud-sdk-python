@@ -389,14 +389,18 @@ class BillingResourceInfo(AbstractModel):
         :type ClusterId: str
         :param InstanceIds: 实例ID列表
         :type InstanceIds: list of str
+        :param DealName: 订单ID
+        :type DealName: str
         """
         self.ClusterId = None
         self.InstanceIds = None
+        self.DealName = None
 
 
     def _deserialize(self, params):
         self.ClusterId = params.get("ClusterId")
         self.InstanceIds = params.get("InstanceIds")
+        self.DealName = params.get("DealName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4337,9 +4341,9 @@ class RollbackDatabase(AbstractModel):
 
     def __init__(self):
         r"""
-        :param OldDatabase: 旧数据库
+        :param OldDatabase: 旧数据库名称
         :type OldDatabase: str
-        :param NewDatabase: 新数据库
+        :param NewDatabase: 新数据库名称
         :type NewDatabase: str
         """
         self.OldDatabase = None

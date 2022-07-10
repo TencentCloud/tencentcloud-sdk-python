@@ -27,7 +27,9 @@ class GpmClient(AbstractClient):
 
 
     def CancelMatching(self, request):
-        """取消匹配。
+        """此接口无法使用，游戏玩家匹配GPM已于6.1正式下架，感谢您的支持
+
+        取消匹配。
 
         :param request: Request instance for CancelMatching.
         :type request: :class:`tencentcloud.gpm.v20200820.models.CancelMatchingRequest`
@@ -56,7 +58,9 @@ class GpmClient(AbstractClient):
 
 
     def CreateMatch(self, request):
-        """创建匹配
+        """此接口无法使用，游戏玩家匹配GPM已于6.1正式下架，感谢您的支持
+
+        创建匹配
 
         :param request: Request instance for CreateMatch.
         :type request: :class:`tencentcloud.gpm.v20200820.models.CreateMatchRequest`
@@ -85,7 +89,9 @@ class GpmClient(AbstractClient):
 
 
     def CreateRule(self, request):
-        """创建规则
+        """此接口无法使用，游戏玩家匹配GPM已于6.1正式下架，感谢您的支持
+
+        创建规则
 
         :param request: Request instance for CreateRule.
         :type request: :class:`tencentcloud.gpm.v20200820.models.CreateRuleRequest`
@@ -114,7 +120,9 @@ class GpmClient(AbstractClient):
 
 
     def DeleteMatch(self, request):
-        """删除匹配
+        """此接口无法使用，游戏玩家匹配GPM已于6.1正式下架，感谢您的支持
+
+        删除匹配
 
         :param request: Request instance for DeleteMatch.
         :type request: :class:`tencentcloud.gpm.v20200820.models.DeleteMatchRequest`
@@ -143,7 +151,9 @@ class GpmClient(AbstractClient):
 
 
     def DeleteRule(self, request):
-        """删除规则
+        """此接口无法使用，游戏玩家匹配GPM已于6.1正式下架，感谢您的支持
+
+        删除规则
 
         :param request: Request instance for DeleteRule.
         :type request: :class:`tencentcloud.gpm.v20200820.models.DeleteRuleRequest`
@@ -172,7 +182,9 @@ class GpmClient(AbstractClient):
 
 
     def DescribeData(self, request):
-        """统计数据
+        """此接口无法使用，游戏玩家匹配GPM已于6.1正式下架，感谢您的支持
+
+        统计数据
 
         :param request: Request instance for DescribeData.
         :type request: :class:`tencentcloud.gpm.v20200820.models.DescribeDataRequest`
@@ -201,7 +213,9 @@ class GpmClient(AbstractClient):
 
 
     def DescribeMatch(self, request):
-        """查询匹配详情
+        """此接口无法使用，游戏玩家匹配GPM已于6.1正式下架，感谢您的支持
+
+        查询匹配详情
 
         :param request: Request instance for DescribeMatch.
         :type request: :class:`tencentcloud.gpm.v20200820.models.DescribeMatchRequest`
@@ -230,7 +244,9 @@ class GpmClient(AbstractClient):
 
 
     def DescribeMatchCodes(self, request):
-        """分页查询匹配Code
+        """此接口无法使用，游戏玩家匹配GPM已于6.1正式下架，感谢您的支持
+
+        分页查询匹配Code
 
         :param request: Request instance for DescribeMatchCodes.
         :type request: :class:`tencentcloud.gpm.v20200820.models.DescribeMatchCodesRequest`
@@ -259,7 +275,9 @@ class GpmClient(AbstractClient):
 
 
     def DescribeMatches(self, request):
-        """分页查询匹配列表
+        """此接口无法使用，游戏玩家匹配GPM已于6.1正式下架，感谢您的支持
+
+        分页查询匹配列表
 
         :param request: Request instance for DescribeMatches.
         :type request: :class:`tencentcloud.gpm.v20200820.models.DescribeMatchesRequest`
@@ -288,7 +306,9 @@ class GpmClient(AbstractClient):
 
 
     def DescribeMatchingProgress(self, request):
-        """查询匹配进度。
+        """此接口无法使用，游戏玩家匹配GPM已于6.1正式下架，感谢您的支持
+
+        查询匹配进度。
 
         :param request: Request instance for DescribeMatchingProgress.
         :type request: :class:`tencentcloud.gpm.v20200820.models.DescribeMatchingProgressRequest`
@@ -317,7 +337,9 @@ class GpmClient(AbstractClient):
 
 
     def DescribeRule(self, request):
-        """查询规则详情
+        """此接口无法使用，游戏玩家匹配GPM已于6.1正式下架，感谢您的支持
+
+        查询规则详情
 
         :param request: Request instance for DescribeRule.
         :type request: :class:`tencentcloud.gpm.v20200820.models.DescribeRuleRequest`
@@ -346,7 +368,9 @@ class GpmClient(AbstractClient):
 
 
     def DescribeRules(self, request):
-        """分页查询规则集列表
+        """此接口无法使用，游戏玩家匹配GPM已于6.1正式下架，感谢您的支持
+
+        分页查询规则集列表
 
         :param request: Request instance for DescribeRules.
         :type request: :class:`tencentcloud.gpm.v20200820.models.DescribeRulesRequest`
@@ -375,7 +399,9 @@ class GpmClient(AbstractClient):
 
 
     def DescribeToken(self, request):
-        """查询匹配Token，Token用于push消息验证。
+        """此接口无法使用，游戏玩家匹配GPM已于6.1正式下架，感谢您的支持
+
+        查询匹配Token，Token用于push消息验证。
 
         :param request: Request instance for DescribeToken.
         :type request: :class:`tencentcloud.gpm.v20200820.models.DescribeTokenRequest`
@@ -404,7 +430,9 @@ class GpmClient(AbstractClient):
 
 
     def ModifyMatch(self, request):
-        """修改匹配
+        """此接口无法使用，游戏玩家匹配GPM已于6.1正式下架，感谢您的支持
+
+        修改匹配
 
         :param request: Request instance for ModifyMatch.
         :type request: :class:`tencentcloud.gpm.v20200820.models.ModifyMatchRequest`
@@ -433,7 +461,9 @@ class GpmClient(AbstractClient):
 
 
     def ModifyRule(self, request):
-        """修改规则（描述、标签）
+        """此接口无法使用，游戏玩家匹配GPM已于6.1正式下架，感谢您的支持
+
+        修改规则（描述、标签）
 
         :param request: Request instance for ModifyRule.
         :type request: :class:`tencentcloud.gpm.v20200820.models.ModifyRuleRequest`
@@ -462,7 +492,9 @@ class GpmClient(AbstractClient):
 
 
     def ModifyToken(self, request):
-        """修改匹配Token。
+        """此接口无法使用，游戏玩家匹配GPM已于6.1正式下架，感谢您的支持
+
+        修改匹配Token。
 
         :param request: Request instance for ModifyToken.
         :type request: :class:`tencentcloud.gpm.v20200820.models.ModifyTokenRequest`
@@ -491,7 +523,9 @@ class GpmClient(AbstractClient):
 
 
     def StartMatching(self, request):
-        """支持传入一个玩家或多个玩家发起匹配，在同一个请求内的玩家将被分到同一个对局。
+        """此接口无法使用，游戏玩家匹配GPM已于6.1正式下架，感谢您的支持
+
+        支持传入一个玩家或多个玩家发起匹配，在同一个请求内的玩家将被分到同一个对局。
 
         :param request: Request instance for StartMatching.
         :type request: :class:`tencentcloud.gpm.v20200820.models.StartMatchingRequest`
@@ -520,7 +554,9 @@ class GpmClient(AbstractClient):
 
 
     def StartMatchingBackfill(self, request):
-        """通过调用StartMatchingBackfill，用户可以传入一个回填的匹配请求，GPM为回填请求搜索符合条件的ticket并形成一个新的match。
+        """此接口无法使用，游戏玩家匹配GPM已于6.1正式下架，感谢您的支持
+
+        通过调用StartMatchingBackfill，用户可以传入一个回填的匹配请求，GPM为回填请求搜索符合条件的ticket并形成一个新的match。
 
         :param request: Request instance for StartMatchingBackfill.
         :type request: :class:`tencentcloud.gpm.v20200820.models.StartMatchingBackfillRequest`

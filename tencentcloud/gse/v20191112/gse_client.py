@@ -27,7 +27,9 @@ class GseClient(AbstractClient):
 
 
     def AttachCcnInstances(self, request):
-        """本接口（AttachCcnInstances）用于关联云联网实例。
+        """此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+
+        本接口（AttachCcnInstances）用于关联云联网实例。
 
         :param request: Request instance for AttachCcnInstances.
         :type request: :class:`tencentcloud.gse.v20191112.models.AttachCcnInstancesRequest`
@@ -56,7 +58,9 @@ class GseClient(AbstractClient):
 
 
     def CopyFleet(self, request):
-        """本接口（CopyFleet）用于复制服务器舰队。
+        """此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+
+        本接口（CopyFleet）用于复制服务器舰队。
 
         :param request: Request instance for CopyFleet.
         :type request: :class:`tencentcloud.gse.v20191112.models.CopyFleetRequest`
@@ -85,7 +89,9 @@ class GseClient(AbstractClient):
 
 
     def CreateAlias(self, request):
-        """本接口（CreateAlias）用于创建别名。
+        """此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+
+        本接口（CreateAlias）用于创建别名。
 
         :param request: Request instance for CreateAlias.
         :type request: :class:`tencentcloud.gse.v20191112.models.CreateAliasRequest`
@@ -114,7 +120,9 @@ class GseClient(AbstractClient):
 
 
     def CreateAsset(self, request):
-        """本接口（CreateAsset）用于创建生成包。
+        """此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+
+        本接口（CreateAsset）用于创建生成包。
         通过获取上传cos的临时密钥，将文件上传至cos，然后将生成包的zip名称下发给本接口完成资源创建。
 
         上传文件至 cos支持俩种方式：
@@ -156,7 +164,9 @@ class GseClient(AbstractClient):
 
 
     def CreateAssetWithImage(self, request):
-        """本接口（CreateAssetWithImage）用于创建生成包镜像信息。
+        """此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+
+        本接口（CreateAssetWithImage）用于创建生成包镜像信息。
 
         :param request: Request instance for CreateAssetWithImage.
         :type request: :class:`tencentcloud.gse.v20191112.models.CreateAssetWithImageRequest`
@@ -185,7 +195,9 @@ class GseClient(AbstractClient):
 
 
     def CreateFleet(self, request):
-        """本接口（CreateFleet）用于创建服务器舰队。
+        """此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+
+        本接口（CreateFleet）用于创建服务器舰队。
 
         :param request: Request instance for CreateFleet.
         :type request: :class:`tencentcloud.gse.v20191112.models.CreateFleetRequest`
@@ -214,7 +226,9 @@ class GseClient(AbstractClient):
 
 
     def CreateGameServerSession(self, request):
-        """本接口（CreateGameServerSession）用于创建游戏服务会话。
+        """此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+
+        本接口（CreateGameServerSession）用于创建游戏服务会话。
 
         :param request: Request instance for CreateGameServerSession.
         :type request: :class:`tencentcloud.gse.v20191112.models.CreateGameServerSessionRequest`
@@ -243,7 +257,9 @@ class GseClient(AbstractClient):
 
 
     def CreateGameServerSessionQueue(self, request):
-        """本接口（CreateGameServerSessionQueue）用于创建游戏服务器会话队列。
+        """此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+
+        本接口（CreateGameServerSessionQueue）用于创建游戏服务器会话队列。
 
         :param request: Request instance for CreateGameServerSessionQueue.
         :type request: :class:`tencentcloud.gse.v20191112.models.CreateGameServerSessionQueueRequest`
@@ -272,7 +288,9 @@ class GseClient(AbstractClient):
 
 
     def DeleteAlias(self, request):
-        """本接口（DeleteAlias）用于删除别名。
+        """此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+
+        本接口（DeleteAlias）用于删除别名。
 
         :param request: Request instance for DeleteAlias.
         :type request: :class:`tencentcloud.gse.v20191112.models.DeleteAliasRequest`
@@ -301,7 +319,9 @@ class GseClient(AbstractClient):
 
 
     def DeleteAsset(self, request):
-        """本接口（DeleteAsset）用于删除生成包。
+        """此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+
+        本接口（DeleteAsset）用于删除生成包。
 
         :param request: Request instance for DeleteAsset.
         :type request: :class:`tencentcloud.gse.v20191112.models.DeleteAssetRequest`
@@ -330,7 +350,9 @@ class GseClient(AbstractClient):
 
 
     def DeleteFleet(self, request):
-        """本接口（DeleteFleet）用于删除服务器舰队。
+        """此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+
+        本接口（DeleteFleet）用于删除服务器舰队。
 
         :param request: Request instance for DeleteFleet.
         :type request: :class:`tencentcloud.gse.v20191112.models.DeleteFleetRequest`
@@ -359,7 +381,9 @@ class GseClient(AbstractClient):
 
 
     def DeleteGameServerSessionQueue(self, request):
-        """本接口（DeleteGameServerSessionQueue）用于删除游戏服务器会话队列。
+        """此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+
+        本接口（DeleteGameServerSessionQueue）用于删除游戏服务器会话队列。
 
         :param request: Request instance for DeleteGameServerSessionQueue.
         :type request: :class:`tencentcloud.gse.v20191112.models.DeleteGameServerSessionQueueRequest`
@@ -388,7 +412,9 @@ class GseClient(AbstractClient):
 
 
     def DeleteScalingPolicy(self, request):
-        """本接口（DeleteScalingPolicy）用于删除服务器舰队的扩缩容策略。
+        """此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+
+        本接口（DeleteScalingPolicy）用于删除服务器舰队的扩缩容策略。
         通过服务器舰队ID和策略名称删除服务器舰队的扩缩容策略，只传递服务器舰队ID时，会将这个服务器舰队下的所有策略都删除。
         传递策略名称时，单独删除策略名称对应的策略。
 
@@ -419,7 +445,9 @@ class GseClient(AbstractClient):
 
 
     def DeleteTimerScalingPolicy(self, request):
-        """本接口（DeleteTimerScalingPolicy）用于删除fleet下的定时器。
+        """此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+
+        本接口（DeleteTimerScalingPolicy）用于删除fleet下的定时器。
 
         :param request: Request instance for DeleteTimerScalingPolicy.
         :type request: :class:`tencentcloud.gse.v20191112.models.DeleteTimerScalingPolicyRequest`
@@ -448,7 +476,9 @@ class GseClient(AbstractClient):
 
 
     def DescribeAlias(self, request):
-        """本接口（DescribeAlias）用于获取别名详情。
+        """此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+
+        本接口（DescribeAlias）用于获取别名详情。
 
         :param request: Request instance for DescribeAlias.
         :type request: :class:`tencentcloud.gse.v20191112.models.DescribeAliasRequest`
@@ -477,7 +507,9 @@ class GseClient(AbstractClient):
 
 
     def DescribeAsset(self, request):
-        """本接口（DescribeAsset）获取生成包信息。
+        """此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+
+        本接口（DescribeAsset）获取生成包信息。
 
         :param request: Request instance for DescribeAsset.
         :type request: :class:`tencentcloud.gse.v20191112.models.DescribeAssetRequest`
@@ -506,7 +538,9 @@ class GseClient(AbstractClient):
 
 
     def DescribeAssetSystems(self, request):
-        """本接口（DescribeAssetSystems）用于获取生成包支持的操作系统。
+        """此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+
+        本接口（DescribeAssetSystems）用于获取生成包支持的操作系统。
 
         :param request: Request instance for DescribeAssetSystems.
         :type request: :class:`tencentcloud.gse.v20191112.models.DescribeAssetSystemsRequest`
@@ -535,7 +569,9 @@ class GseClient(AbstractClient):
 
 
     def DescribeAssets(self, request):
-        """本接口（DescribeAssets）用于获取生成包列表。
+        """此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+
+        本接口（DescribeAssets）用于获取生成包列表。
 
         :param request: Request instance for DescribeAssets.
         :type request: :class:`tencentcloud.gse.v20191112.models.DescribeAssetsRequest`
@@ -564,7 +600,9 @@ class GseClient(AbstractClient):
 
 
     def DescribeCcnInstances(self, request):
-        """本接口（DescribeCcnInstances）用于查询云联网实例。
+        """此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+
+        本接口（DescribeCcnInstances）用于查询云联网实例。
 
         :param request: Request instance for DescribeCcnInstances.
         :type request: :class:`tencentcloud.gse.v20191112.models.DescribeCcnInstancesRequest`
@@ -593,7 +631,9 @@ class GseClient(AbstractClient):
 
 
     def DescribeFleetAttributes(self, request):
-        """本接口（DescribeFleetAttributes）用于查询服务器舰队属性。
+        """此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+
+        本接口（DescribeFleetAttributes）用于查询服务器舰队属性。
 
         :param request: Request instance for DescribeFleetAttributes.
         :type request: :class:`tencentcloud.gse.v20191112.models.DescribeFleetAttributesRequest`
@@ -622,7 +662,9 @@ class GseClient(AbstractClient):
 
 
     def DescribeFleetCapacity(self, request):
-        """本接口（DescribeFleetCapacity）用于查询服务部署容量配置。
+        """此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+
+        本接口（DescribeFleetCapacity）用于查询服务部署容量配置。
 
         :param request: Request instance for DescribeFleetCapacity.
         :type request: :class:`tencentcloud.gse.v20191112.models.DescribeFleetCapacityRequest`
@@ -651,7 +693,9 @@ class GseClient(AbstractClient):
 
 
     def DescribeFleetEvents(self, request):
-        """本接口（DescribeFleetEvents）用于查询服务器舰队相关的事件列表。
+        """此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+
+        本接口（DescribeFleetEvents）用于查询服务器舰队相关的事件列表。
 
         :param request: Request instance for DescribeFleetEvents.
         :type request: :class:`tencentcloud.gse.v20191112.models.DescribeFleetEventsRequest`
@@ -680,7 +724,9 @@ class GseClient(AbstractClient):
 
 
     def DescribeFleetPortSettings(self, request):
-        """本接口（DescribeFleetPortSettings）用于获取服务器舰队安全组信息。
+        """此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+
+        本接口（DescribeFleetPortSettings）用于获取服务器舰队安全组信息。
 
         :param request: Request instance for DescribeFleetPortSettings.
         :type request: :class:`tencentcloud.gse.v20191112.models.DescribeFleetPortSettingsRequest`
@@ -709,7 +755,9 @@ class GseClient(AbstractClient):
 
 
     def DescribeFleetRelatedResources(self, request):
-        """本接口（DescribeFleetRelatedResources）用于获取与游戏服务器舰队关联的资源信息，如别名、队列
+        """此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+
+        本接口（DescribeFleetRelatedResources）用于获取与游戏服务器舰队关联的资源信息，如别名、队列
 
         :param request: Request instance for DescribeFleetRelatedResources.
         :type request: :class:`tencentcloud.gse.v20191112.models.DescribeFleetRelatedResourcesRequest`
@@ -738,7 +786,9 @@ class GseClient(AbstractClient):
 
 
     def DescribeFleetStatisticDetails(self, request):
-        """本接口（DescribeFleetStatisticDetails）用于查询服务部署统计详情。
+        """此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+
+        本接口（DescribeFleetStatisticDetails）用于查询服务部署统计详情。
 
         :param request: Request instance for DescribeFleetStatisticDetails.
         :type request: :class:`tencentcloud.gse.v20191112.models.DescribeFleetStatisticDetailsRequest`
@@ -767,7 +817,9 @@ class GseClient(AbstractClient):
 
 
     def DescribeFleetStatisticFlows(self, request):
-        """本接口（DescribeFleetStatisticFlows）用于查询服务部署统计用量。
+        """此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+
+        本接口（DescribeFleetStatisticFlows）用于查询服务部署统计用量。
 
         :param request: Request instance for DescribeFleetStatisticFlows.
         :type request: :class:`tencentcloud.gse.v20191112.models.DescribeFleetStatisticFlowsRequest`
@@ -796,7 +848,9 @@ class GseClient(AbstractClient):
 
 
     def DescribeFleetStatisticSummary(self, request):
-        """本接口（DescribeFleetStatisticSummary）用于查询服务部署统计汇总信息。
+        """此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+
+        本接口（DescribeFleetStatisticSummary）用于查询服务部署统计汇总信息。
 
         :param request: Request instance for DescribeFleetStatisticSummary.
         :type request: :class:`tencentcloud.gse.v20191112.models.DescribeFleetStatisticSummaryRequest`
@@ -825,7 +879,9 @@ class GseClient(AbstractClient):
 
 
     def DescribeFleetUtilization(self, request):
-        """本接口（DescribeFleetUtilization）用于查询服务器舰队的利用率信息。
+        """此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+
+        本接口（DescribeFleetUtilization）用于查询服务器舰队的利用率信息。
 
         :param request: Request instance for DescribeFleetUtilization.
         :type request: :class:`tencentcloud.gse.v20191112.models.DescribeFleetUtilizationRequest`
@@ -854,7 +910,9 @@ class GseClient(AbstractClient):
 
 
     def DescribeGameServerSessionDetails(self, request):
-        """本接口（DescribeGameServerSessionDetails）用于查询游戏服务器会话详情列表。
+        """此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+
+        本接口（DescribeGameServerSessionDetails）用于查询游戏服务器会话详情列表。
 
         :param request: Request instance for DescribeGameServerSessionDetails.
         :type request: :class:`tencentcloud.gse.v20191112.models.DescribeGameServerSessionDetailsRequest`
@@ -883,7 +941,9 @@ class GseClient(AbstractClient):
 
 
     def DescribeGameServerSessionPlacement(self, request):
-        """本接口（DescribeGameServerSessionPlacement）用于查询游戏服务器会话的放置。
+        """此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+
+        本接口（DescribeGameServerSessionPlacement）用于查询游戏服务器会话的放置。
 
         :param request: Request instance for DescribeGameServerSessionPlacement.
         :type request: :class:`tencentcloud.gse.v20191112.models.DescribeGameServerSessionPlacementRequest`
@@ -912,7 +972,9 @@ class GseClient(AbstractClient):
 
 
     def DescribeGameServerSessionQueues(self, request):
-        """本接口（DescribeGameServerSessionQueues）用于查询游戏服务器会话队列。
+        """此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+
+        本接口（DescribeGameServerSessionQueues）用于查询游戏服务器会话队列。
 
         :param request: Request instance for DescribeGameServerSessionQueues.
         :type request: :class:`tencentcloud.gse.v20191112.models.DescribeGameServerSessionQueuesRequest`
@@ -941,7 +1003,9 @@ class GseClient(AbstractClient):
 
 
     def DescribeGameServerSessions(self, request):
-        """本接口（DescribeGameServerSessions）用于查询游戏服务器会话列表。
+        """此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+
+        本接口（DescribeGameServerSessions）用于查询游戏服务器会话列表。
 
         :param request: Request instance for DescribeGameServerSessions.
         :type request: :class:`tencentcloud.gse.v20191112.models.DescribeGameServerSessionsRequest`
@@ -970,7 +1034,9 @@ class GseClient(AbstractClient):
 
 
     def DescribeInstanceLimit(self, request):
-        """本接口（DescribeInstanceLimit）用于查询用户实例数限额。
+        """此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+
+        本接口（DescribeInstanceLimit）用于查询用户实例数限额。
 
         :param request: Request instance for DescribeInstanceLimit.
         :type request: :class:`tencentcloud.gse.v20191112.models.DescribeInstanceLimitRequest`
@@ -999,7 +1065,9 @@ class GseClient(AbstractClient):
 
 
     def DescribeInstanceTypes(self, request):
-        """本接口（DescribeInstanceTypes）用于获取服务器实例类型列表。
+        """此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+
+        本接口（DescribeInstanceTypes）用于获取服务器实例类型列表。
 
         :param request: Request instance for DescribeInstanceTypes.
         :type request: :class:`tencentcloud.gse.v20191112.models.DescribeInstanceTypesRequest`
@@ -1028,7 +1096,9 @@ class GseClient(AbstractClient):
 
 
     def DescribeInstances(self, request):
-        """本接口（DescribeInstances）用于查询服务器实例列表。
+        """此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+
+        本接口（DescribeInstances）用于查询服务器实例列表。
 
         :param request: Request instance for DescribeInstances.
         :type request: :class:`tencentcloud.gse.v20191112.models.DescribeInstancesRequest`
@@ -1057,7 +1127,9 @@ class GseClient(AbstractClient):
 
 
     def DescribeInstancesExtend(self, request):
-        """本接口（DescribeInstancesExtend）用于查询实例扩展信息列表。
+        """此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+
+        本接口（DescribeInstancesExtend）用于查询实例扩展信息列表。
 
         :param request: Request instance for DescribeInstancesExtend.
         :type request: :class:`tencentcloud.gse.v20191112.models.DescribeInstancesExtendRequest`
@@ -1086,7 +1158,9 @@ class GseClient(AbstractClient):
 
 
     def DescribePlayerSessions(self, request):
-        """本接口（DescribePlayerSessions）用于获取玩家会话列表。
+        """此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+
+        本接口（DescribePlayerSessions）用于获取玩家会话列表。
 
         :param request: Request instance for DescribePlayerSessions.
         :type request: :class:`tencentcloud.gse.v20191112.models.DescribePlayerSessionsRequest`
@@ -1115,7 +1189,9 @@ class GseClient(AbstractClient):
 
 
     def DescribeRuntimeConfiguration(self, request):
-        """本接口（DescribeRuntimeConfiguration）用于获取服务器舰队运行配置。
+        """此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+
+        本接口（DescribeRuntimeConfiguration）用于获取服务器舰队运行配置。
 
         :param request: Request instance for DescribeRuntimeConfiguration.
         :type request: :class:`tencentcloud.gse.v20191112.models.DescribeRuntimeConfigurationRequest`
@@ -1144,7 +1220,9 @@ class GseClient(AbstractClient):
 
 
     def DescribeScalingPolicies(self, request):
-        """本接口（DescribeScalingPolicies）用于查询服务器舰队的动态扩缩容策略列表。
+        """此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+
+        本接口（DescribeScalingPolicies）用于查询服务器舰队的动态扩缩容策略列表。
 
         :param request: Request instance for DescribeScalingPolicies.
         :type request: :class:`tencentcloud.gse.v20191112.models.DescribeScalingPoliciesRequest`
@@ -1173,7 +1251,9 @@ class GseClient(AbstractClient):
 
 
     def DescribeTimerScalingPolicies(self, request):
-        """本接口（DescribeTimerScalingPolicies）用于查询fleet下的定时器列表。可以通过fleetid，定时器名称分页查询。
+        """此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+
+        本接口（DescribeTimerScalingPolicies）用于查询fleet下的定时器列表。可以通过fleetid，定时器名称分页查询。
 
         :param request: Request instance for DescribeTimerScalingPolicies.
         :type request: :class:`tencentcloud.gse.v20191112.models.DescribeTimerScalingPoliciesRequest`
@@ -1202,7 +1282,9 @@ class GseClient(AbstractClient):
 
 
     def DescribeUserQuota(self, request):
-        """本接口（DescribeUserQuota）获取用户单个模块配额。
+        """此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+
+        本接口（DescribeUserQuota）获取用户单个模块配额。
 
         :param request: Request instance for DescribeUserQuota.
         :type request: :class:`tencentcloud.gse.v20191112.models.DescribeUserQuotaRequest`
@@ -1231,7 +1313,9 @@ class GseClient(AbstractClient):
 
 
     def DescribeUserQuotas(self, request):
-        """本接口（DescribeUserQuotas）用于获取用户配额
+        """此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+
+        本接口（DescribeUserQuotas）用于获取用户配额
 
         :param request: Request instance for DescribeUserQuotas.
         :type request: :class:`tencentcloud.gse.v20191112.models.DescribeUserQuotasRequest`
@@ -1260,7 +1344,9 @@ class GseClient(AbstractClient):
 
 
     def DetachCcnInstances(self, request):
-        """本接口（DetachCcnInstances）用于解关联云联网实例。
+        """此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+
+        本接口（DetachCcnInstances）用于解关联云联网实例。
 
         :param request: Request instance for DetachCcnInstances.
         :type request: :class:`tencentcloud.gse.v20191112.models.DetachCcnInstancesRequest`
@@ -1289,7 +1375,9 @@ class GseClient(AbstractClient):
 
 
     def EndGameServerSessionAndProcess(self, request):
-        """本接口（EndGameServerSessionAndProcess）用于终止游戏服务器会话和对应的进程，适用于时限保护和不保护。
+        """此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+
+        本接口（EndGameServerSessionAndProcess）用于终止游戏服务器会话和对应的进程，适用于时限保护和不保护。
 
         :param request: Request instance for EndGameServerSessionAndProcess.
         :type request: :class:`tencentcloud.gse.v20191112.models.EndGameServerSessionAndProcessRequest`
@@ -1318,7 +1406,9 @@ class GseClient(AbstractClient):
 
 
     def GetGameServerInstanceLogUrl(self, request):
-        """本接口用于获取游戏服务器实例的日志URL。
+        """此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+
+        本接口用于获取游戏服务器实例的日志URL。
 
         :param request: Request instance for GetGameServerInstanceLogUrl.
         :type request: :class:`tencentcloud.gse.v20191112.models.GetGameServerInstanceLogUrlRequest`
@@ -1347,7 +1437,9 @@ class GseClient(AbstractClient):
 
 
     def GetGameServerSessionLogUrl(self, request):
-        """本接口（GetGameServerSessionLogUrl）用于获取游戏服务器会话的日志URL。
+        """此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+
+        本接口（GetGameServerSessionLogUrl）用于获取游戏服务器会话的日志URL。
 
         :param request: Request instance for GetGameServerSessionLogUrl.
         :type request: :class:`tencentcloud.gse.v20191112.models.GetGameServerSessionLogUrlRequest`
@@ -1376,7 +1468,9 @@ class GseClient(AbstractClient):
 
 
     def GetInstanceAccess(self, request):
-        """本接口（GetInstanceAccess）用于获取实例登录所需要的凭据。
+        """此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+
+        本接口（GetInstanceAccess）用于获取实例登录所需要的凭据。
 
         :param request: Request instance for GetInstanceAccess.
         :type request: :class:`tencentcloud.gse.v20191112.models.GetInstanceAccessRequest`
@@ -1405,7 +1499,9 @@ class GseClient(AbstractClient):
 
 
     def GetUploadCredentials(self, request):
-        """本接口（GetUploadCredentials）获取上传文件授权信息。
+        """此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+
+        本接口（GetUploadCredentials）获取上传文件授权信息。
         通过 [GetUploadCredentials](https://cloud.tencent.com/document/product/1165/48727) 接口获取临时授权信息后，调用 COS API将数据上传，根据上传的 BucketKey 信息进行生成包 [CreateAsset](https://cloud.tencent.com/document/product/1165/48731) 的创建。参考下面的示例部分。
 
         :param request: Request instance for GetUploadCredentials.
@@ -1435,7 +1531,9 @@ class GseClient(AbstractClient):
 
 
     def GetUploadFederationToken(self, request):
-        """本接口（GetUploadFederationToken）用于 获取生成包上传所需要的临时密钥。
+        """此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+
+        本接口（GetUploadFederationToken）用于 获取生成包上传所需要的临时密钥。
 
         :param request: Request instance for GetUploadFederationToken.
         :type request: :class:`tencentcloud.gse.v20191112.models.GetUploadFederationTokenRequest`
@@ -1464,7 +1562,9 @@ class GseClient(AbstractClient):
 
 
     def JoinGameServerSession(self, request):
-        """本接口（JoinGameServerSession）用于加入游戏服务器会话。
+        """此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+
+        本接口（JoinGameServerSession）用于加入游戏服务器会话。
 
         :param request: Request instance for JoinGameServerSession.
         :type request: :class:`tencentcloud.gse.v20191112.models.JoinGameServerSessionRequest`
@@ -1493,7 +1593,9 @@ class GseClient(AbstractClient):
 
 
     def JoinGameServerSessionBatch(self, request):
-        """本接口（JoinGameServerSessionBatch）用于批量加入游戏服务器会话。
+        """此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+
+        本接口（JoinGameServerSessionBatch）用于批量加入游戏服务器会话。
 
         :param request: Request instance for JoinGameServerSessionBatch.
         :type request: :class:`tencentcloud.gse.v20191112.models.JoinGameServerSessionBatchRequest`
@@ -1522,7 +1624,9 @@ class GseClient(AbstractClient):
 
 
     def ListAliases(self, request):
-        """本接口（ListAliases）用于检索帐户下的所有别名。
+        """此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+
+        本接口（ListAliases）用于检索帐户下的所有别名。
 
         :param request: Request instance for ListAliases.
         :type request: :class:`tencentcloud.gse.v20191112.models.ListAliasesRequest`
@@ -1551,7 +1655,9 @@ class GseClient(AbstractClient):
 
 
     def ListFleets(self, request):
-        """本接口（ListFleets）用于获取服务器舰队列表。
+        """此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+
+        本接口（ListFleets）用于获取服务器舰队列表。
 
         :param request: Request instance for ListFleets.
         :type request: :class:`tencentcloud.gse.v20191112.models.ListFleetsRequest`
@@ -1580,7 +1686,9 @@ class GseClient(AbstractClient):
 
 
     def PutScalingPolicy(self, request):
-        """本接口（PutScalingPolicy）用于设置服务器舰队的动态扩缩容策略。
+        """此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+
+        本接口（PutScalingPolicy）用于设置服务器舰队的动态扩缩容策略。
 
         通过此接口可以增加或者更新服务器舰队的扩缩容策略。
         服务器舰队可以有多个扩缩容策略，但是只有一个TargetBased基于目标的策略。
@@ -1706,7 +1814,9 @@ class GseClient(AbstractClient):
 
 
     def PutTimerScalingPolicy(self, request):
-        """本接口（PutTimerScalingPolicy）用于给fleet创建或更新定时器。
+        """此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+
+        本接口（PutTimerScalingPolicy）用于给fleet创建或更新定时器。
 
         填写字段timer_id，表示更新；不填字段timer_id表示新增。
 
@@ -1737,7 +1847,9 @@ class GseClient(AbstractClient):
 
 
     def ResolveAlias(self, request):
-        """本接口（ResolveAlias）用于获取别名当前指向的fleetId。
+        """此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+
+        本接口（ResolveAlias）用于获取别名当前指向的fleetId。
 
         :param request: Request instance for ResolveAlias.
         :type request: :class:`tencentcloud.gse.v20191112.models.ResolveAliasRequest`
@@ -1766,7 +1878,9 @@ class GseClient(AbstractClient):
 
 
     def SearchGameServerSessions(self, request):
-        """本接口（SearchGameServerSessions）用于搜索游戏服务器会话列表。
+        """此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+
+        本接口（SearchGameServerSessions）用于搜索游戏服务器会话列表。
 
         :param request: Request instance for SearchGameServerSessions.
         :type request: :class:`tencentcloud.gse.v20191112.models.SearchGameServerSessionsRequest`
@@ -1795,7 +1909,9 @@ class GseClient(AbstractClient):
 
 
     def SetServerReserved(self, request):
-        """本接口（SetServerReserved）用于将异常的实例标记为保留，用于问题排查。
+        """此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+
+        本接口（SetServerReserved）用于将异常的实例标记为保留，用于问题排查。
 
         字段ReserveValue：0默认值，不保留；1 保留
 
@@ -1826,7 +1942,9 @@ class GseClient(AbstractClient):
 
 
     def SetServerWeight(self, request):
-        """本接口（SetServerWeight）用于设置服务器权重。
+        """此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+
+        本接口（SetServerWeight）用于设置服务器权重。
 
         :param request: Request instance for SetServerWeight.
         :type request: :class:`tencentcloud.gse.v20191112.models.SetServerWeightRequest`
@@ -1855,7 +1973,9 @@ class GseClient(AbstractClient):
 
 
     def StartFleetActions(self, request):
-        """本接口（StartFleetActions）用于启用服务器舰队自动扩缩容。
+        """此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+
+        本接口（StartFleetActions）用于启用服务器舰队自动扩缩容。
 
         :param request: Request instance for StartFleetActions.
         :type request: :class:`tencentcloud.gse.v20191112.models.StartFleetActionsRequest`
@@ -1884,7 +2004,9 @@ class GseClient(AbstractClient):
 
 
     def StartGameServerSessionPlacement(self, request):
-        """本接口（StartGameServerSessionPlacement）用于开始放置游戏服务器会话。
+        """此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+
+        本接口（StartGameServerSessionPlacement）用于开始放置游戏服务器会话。
 
         :param request: Request instance for StartGameServerSessionPlacement.
         :type request: :class:`tencentcloud.gse.v20191112.models.StartGameServerSessionPlacementRequest`
@@ -1913,7 +2035,9 @@ class GseClient(AbstractClient):
 
 
     def StopFleetActions(self, request):
-        """本接口（StopFleetActions）用于停止服务器舰队自动扩缩容，改为手动扩缩容。
+        """此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+
+        本接口（StopFleetActions）用于停止服务器舰队自动扩缩容，改为手动扩缩容。
 
         :param request: Request instance for StopFleetActions.
         :type request: :class:`tencentcloud.gse.v20191112.models.StopFleetActionsRequest`
@@ -1942,7 +2066,9 @@ class GseClient(AbstractClient):
 
 
     def StopGameServerSessionPlacement(self, request):
-        """本接口（StopGameServerSessionPlacement）用于停止放置游戏服务器会话。
+        """此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+
+        本接口（StopGameServerSessionPlacement）用于停止放置游戏服务器会话。
 
         :param request: Request instance for StopGameServerSessionPlacement.
         :type request: :class:`tencentcloud.gse.v20191112.models.StopGameServerSessionPlacementRequest`
@@ -1971,7 +2097,9 @@ class GseClient(AbstractClient):
 
 
     def UpdateAlias(self, request):
-        """本接口（UpdateAlias）用于更新别名的属性。
+        """此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+
+        本接口（UpdateAlias）用于更新别名的属性。
 
         :param request: Request instance for UpdateAlias.
         :type request: :class:`tencentcloud.gse.v20191112.models.UpdateAliasRequest`
@@ -2000,7 +2128,9 @@ class GseClient(AbstractClient):
 
 
     def UpdateAsset(self, request):
-        """本接口（UpdateAsset）用于修改生成包信息。
+        """此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+
+        本接口（UpdateAsset）用于修改生成包信息。
 
         :param request: Request instance for UpdateAsset.
         :type request: :class:`tencentcloud.gse.v20191112.models.UpdateAssetRequest`
@@ -2029,7 +2159,9 @@ class GseClient(AbstractClient):
 
 
     def UpdateBucketAccelerateOpt(self, request):
-        """本接口（UpdateBucketAccelerateOpt）用于开启cos全球加速。
+        """此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+
+        本接口（UpdateBucketAccelerateOpt）用于开启cos全球加速。
 
         :param request: Request instance for UpdateBucketAccelerateOpt.
         :type request: :class:`tencentcloud.gse.v20191112.models.UpdateBucketAccelerateOptRequest`
@@ -2058,7 +2190,9 @@ class GseClient(AbstractClient):
 
 
     def UpdateBucketCORSOpt(self, request):
-        """本接口（UpdateBucketCORSOpt）用于设置cos跨域访问。
+        """此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+
+        本接口（UpdateBucketCORSOpt）用于设置cos跨域访问。
 
         :param request: Request instance for UpdateBucketCORSOpt.
         :type request: :class:`tencentcloud.gse.v20191112.models.UpdateBucketCORSOptRequest`
@@ -2087,7 +2221,9 @@ class GseClient(AbstractClient):
 
 
     def UpdateFleetAttributes(self, request):
-        """本接口（UpdateFleetAttributes）用于更新服务器舰队属性。
+        """此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+
+        本接口（UpdateFleetAttributes）用于更新服务器舰队属性。
 
         :param request: Request instance for UpdateFleetAttributes.
         :type request: :class:`tencentcloud.gse.v20191112.models.UpdateFleetAttributesRequest`
@@ -2116,7 +2252,9 @@ class GseClient(AbstractClient):
 
 
     def UpdateFleetCapacity(self, request):
-        """本接口（UpdateFleetCapacity）用于更新服务器舰队容量配置。
+        """此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+
+        本接口（UpdateFleetCapacity）用于更新服务器舰队容量配置。
 
         :param request: Request instance for UpdateFleetCapacity.
         :type request: :class:`tencentcloud.gse.v20191112.models.UpdateFleetCapacityRequest`
@@ -2145,7 +2283,9 @@ class GseClient(AbstractClient):
 
 
     def UpdateFleetName(self, request):
-        """本接口（UpdateFleetName）用于更新服务器舰队名称。
+        """此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+
+        本接口（UpdateFleetName）用于更新服务器舰队名称。
 
         :param request: Request instance for UpdateFleetName.
         :type request: :class:`tencentcloud.gse.v20191112.models.UpdateFleetNameRequest`
@@ -2174,7 +2314,9 @@ class GseClient(AbstractClient):
 
 
     def UpdateFleetPortSettings(self, request):
-        """本接口（UpdateFleetPortSettings）用于更新服务器舰队安全组。
+        """此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+
+        本接口（UpdateFleetPortSettings）用于更新服务器舰队安全组。
 
         :param request: Request instance for UpdateFleetPortSettings.
         :type request: :class:`tencentcloud.gse.v20191112.models.UpdateFleetPortSettingsRequest`
@@ -2203,7 +2345,9 @@ class GseClient(AbstractClient):
 
 
     def UpdateGameServerSession(self, request):
-        """本接口（UpdateGameServerSession）用于更新游戏服务器会话。
+        """此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+
+        本接口（UpdateGameServerSession）用于更新游戏服务器会话。
 
         :param request: Request instance for UpdateGameServerSession.
         :type request: :class:`tencentcloud.gse.v20191112.models.UpdateGameServerSessionRequest`
@@ -2232,7 +2376,9 @@ class GseClient(AbstractClient):
 
 
     def UpdateGameServerSessionQueue(self, request):
-        """本接口（UpdateGameServerSessionQueue）用于修改游戏服务器会话队列。
+        """此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+
+        本接口（UpdateGameServerSessionQueue）用于修改游戏服务器会话队列。
 
         :param request: Request instance for UpdateGameServerSessionQueue.
         :type request: :class:`tencentcloud.gse.v20191112.models.UpdateGameServerSessionQueueRequest`
@@ -2261,7 +2407,9 @@ class GseClient(AbstractClient):
 
 
     def UpdateRuntimeConfiguration(self, request):
-        """本接口（UpdateRuntimeConfiguration）用于更新服务器舰队配置。
+        """此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+
+        本接口（UpdateRuntimeConfiguration）用于更新服务器舰队配置。
 
         :param request: Request instance for UpdateRuntimeConfiguration.
         :type request: :class:`tencentcloud.gse.v20191112.models.UpdateRuntimeConfigurationRequest`
