@@ -894,7 +894,7 @@ class DescribeFileUrlsRequest(AbstractModel):
         :type Offset: int
         :param Limit: 指定资源数量，查询全部资源则传入-1
         :type Limit: int
-        :param UrlTtl: 下载url过期时间，单位秒。0: 按默认值5分钟，允许范围：1s~24*60*60s(1天)
+        :param UrlTtl: 下载url过期时间，单位秒。0: 按默认值5分钟，允许范围：1s~24x60x60s(1天)
         :type UrlTtl: int
         :param Scene: 暂不开放
         :type Scene: str

@@ -779,14 +779,23 @@ class CreateKeyPairRequest(AbstractModel):
 <li>通过项目列表查询项目ID。
 <li>通过调用接口DescribeProject，取返回信息中的`projectId `获取项目ID。
         :type ProjectId: int
+        :param TagSpecification: 标签描述列表。通过指定该参数可以同时绑定标签到密钥对。
+        :type TagSpecification: list of TagSpecification
         """
         self.KeyName = None
         self.ProjectId = None
+        self.TagSpecification = None
 
 
     def _deserialize(self, params):
         self.KeyName = params.get("KeyName")
         self.ProjectId = params.get("ProjectId")
+        if params.get("TagSpecification") is not None:
+            self.TagSpecification = []
+            for item in params.get("TagSpecification"):
+                obj = TagSpecification()
+                obj._deserialize(item)
+                self.TagSpecification.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3936,16 +3945,25 @@ class ImportKeyPairRequest(AbstractModel):
         :type ProjectId: int
         :param PublicKey: 密钥对的公钥内容，`OpenSSH RSA` 格式。
         :type PublicKey: str
+        :param TagSpecification: 标签描述列表。通过指定该参数可以同时绑定标签到密钥对。
+        :type TagSpecification: list of TagSpecification
         """
         self.KeyName = None
         self.ProjectId = None
         self.PublicKey = None
+        self.TagSpecification = None
 
 
     def _deserialize(self, params):
         self.KeyName = params.get("KeyName")
         self.ProjectId = params.get("ProjectId")
         self.PublicKey = params.get("PublicKey")
+        if params.get("TagSpecification") is not None:
+            self.TagSpecification = []
+            for item in params.get("TagSpecification"):
+                obj = TagSpecification()
+                obj._deserialize(item)
+                self.TagSpecification.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

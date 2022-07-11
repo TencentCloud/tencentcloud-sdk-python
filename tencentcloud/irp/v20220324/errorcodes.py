@@ -14,8 +14,17 @@
 # limitations under the License.
 
 
-# 操作失败。
-FAILEDOPERATION = 'FailedOperation'
+# 内部错误。
+INTERNALERROR = 'InternalError'
 
-# 工作空间不存在。
-INVALIDPARAMETER_WORKSPACENOTEXIST = 'InvalidParameter.WorkspaceNotExist'
+# 参数错误。
+INVALIDPARAMETER = 'InvalidParameter'
+
+# 参数取值错误。
+INVALIDPARAMETERVALUE = 'InvalidParameterValue'
+
+# 操作被拒绝。
+OPERATIONDENIED = 'OperationDenied'
+
+# 未授权操作。
+UNAUTHORIZEDOPERATION = 'UnauthorizedOperation'

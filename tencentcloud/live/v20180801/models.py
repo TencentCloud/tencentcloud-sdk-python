@@ -6270,6 +6270,9 @@ South America 南美
 Middle East 中东
 Africa 非洲。
         :type RegionNames: list of str
+        :param CountryNames: 国家，映射表参照如下文档：
+https://cloud.tencent.com/document/product/267/34019。
+        :type CountryNames: list of str
         """
         self.StartTime = None
         self.EndTime = None
@@ -6277,6 +6280,7 @@ Africa 非洲。
         self.MainlandOrOversea = None
         self.Granularity = None
         self.RegionNames = None
+        self.CountryNames = None
 
 
     def _deserialize(self, params):
@@ -6286,6 +6290,7 @@ Africa 非洲。
         self.MainlandOrOversea = params.get("MainlandOrOversea")
         self.Granularity = params.get("Granularity")
         self.RegionNames = params.get("RegionNames")
+        self.CountryNames = params.get("CountryNames")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

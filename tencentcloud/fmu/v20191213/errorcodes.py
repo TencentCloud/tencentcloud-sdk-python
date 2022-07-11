@@ -95,6 +95,9 @@ FAILEDOPERATION_RPCFAIL = 'FailedOperation.RpcFail'
 # 系统内部错误。
 FAILEDOPERATION_SERVERERROR = 'FailedOperation.ServerError'
 
+# 未知错误。
+FAILEDOPERATION_UNKNOWN = 'FailedOperation.Unknown'
+
 # 内部错误。
 INTERNALERROR = 'InternalError'
 

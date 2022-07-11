@@ -9919,6 +9919,8 @@ class DescribeMediaProcessUsageDataRequest(AbstractModel):
         :type StartTime: str
         :param EndTime: 结束日期，需大于等于起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#52)。
         :type EndTime: str
+        :param SubAppId: <b>点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :type SubAppId: int
         :param Type: 查询视频处理任务类型，目前支持的任务类型包括：
 <li> Transcoding: 普通转码</li>
 <li> Transcoding-TESHD: 极速高清转码</li>
@@ -9926,23 +9928,23 @@ class DescribeMediaProcessUsageDataRequest(AbstractModel):
 <li> Editing-TESHD: 极速高清视频编辑</li>
 <li> AdaptiveBitrateStreaming: 自适应码流</li>
 <li> ContentAudit: 内容审核</li>
+<li> ContentRecognition: 内容识别</li>
 <li> RemoveWatermark: 去除水印</li>
+<li> ExtractTraceWatermark: 提取水印</li>
 <li>Transcode: 转码，包含普通转码、极速高清和视频编辑（不推荐使用）</li>
         :type Type: str
-        :param SubAppId: 点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
         """
         self.StartTime = None
         self.EndTime = None
-        self.Type = None
         self.SubAppId = None
+        self.Type = None
 
 
     def _deserialize(self, params):
         self.StartTime = params.get("StartTime")
         self.EndTime = params.get("EndTime")
-        self.Type = params.get("Type")
         self.SubAppId = params.get("SubAppId")
+        self.Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -13076,11 +13078,17 @@ class ImageWatermarkInput(AbstractModel):
 <li>repeat_last_frame：水印播放完后，停留在最后一帧；</li>
 <li>repeat：水印循环播放，直到视频结束（默认值）。</li>
         :type RepeatType: str
+        :param Transparency: 图片透明度，取值范围：[0, 100]
+<li>0：完全不透明</li>
+<li>100：完全透明</li>
+默认值：0。
+        :type Transparency: int
         """
         self.ImageContent = None
         self.Width = None
         self.Height = None
         self.RepeatType = None
+        self.Transparency = None
 
 
     def _deserialize(self, params):
@@ -13088,6 +13096,7 @@ class ImageWatermarkInput(AbstractModel):
         self.Width = params.get("Width")
         self.Height = params.get("Height")
         self.RepeatType = params.get("RepeatType")
+        self.Transparency = params.get("Transparency")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -13119,11 +13128,16 @@ class ImageWatermarkInputForUpdate(AbstractModel):
 <li>repeat_last_frame：水印播放完后，停留在最后一帧；</li>
 <li>repeat：水印循环播放，直到视频结束。</li>
         :type RepeatType: str
+        :param Transparency: 图片透明度，取值范围：[0, 100]
+<li>0：完全不透明</li>
+<li>100：完全透明。</li>
+        :type Transparency: int
         """
         self.ImageContent = None
         self.Width = None
         self.Height = None
         self.RepeatType = None
+        self.Transparency = None
 
 
     def _deserialize(self, params):
@@ -13131,6 +13145,7 @@ class ImageWatermarkInputForUpdate(AbstractModel):
         self.Width = params.get("Width")
         self.Height = params.get("Height")
         self.RepeatType = params.get("RepeatType")
+        self.Transparency = params.get("Transparency")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -13163,11 +13178,16 @@ class ImageWatermarkTemplate(AbstractModel):
 <li>repeat_last_frame：水印播放完后，停留在最后一帧；</li>
 <li>repeat：水印循环播放，直到视频结束。</li>
         :type RepeatType: str
+        :param Transparency: 图片透明度，取值范围：[0, 100]
+<li>0：完全不透明</li>
+<li>100：完全透明。</li>
+        :type Transparency: int
         """
         self.ImageUrl = None
         self.Width = None
         self.Height = None
         self.RepeatType = None
+        self.Transparency = None
 
 
     def _deserialize(self, params):
@@ -13175,6 +13195,7 @@ class ImageWatermarkTemplate(AbstractModel):
         self.Width = params.get("Width")
         self.Height = params.get("Height")
         self.RepeatType = params.get("RepeatType")
+        self.Transparency = params.get("Transparency")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

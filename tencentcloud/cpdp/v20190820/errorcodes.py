@@ -32,6 +32,9 @@ AUTHFAILURE_SIGN = 'AuthFailure.Sign'
 # 验证失败。
 AUTHFAILURE_VERIFYERROR = 'AuthFailure.VerifyError'
 
+# Token校验失败。
+AUTHFAILURE_VERIFYTOKENFAILURE = 'AuthFailure.VerifyTokenFailure'
+
 # 操作失败。
 FAILEDOPERATION = 'FailedOperation'
 

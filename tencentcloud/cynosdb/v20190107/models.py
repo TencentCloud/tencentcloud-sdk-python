@@ -630,7 +630,7 @@ class CreateClustersRequest(AbstractModel):
         :type ClusterName: str
         :param AdminPassword: 账号密码(8-64个字符，包含大小写英文字母、数字和符号~!@#$%^&*_-+=`|\(){}[]:;'<>,.?/中的任意三种)
         :type AdminPassword: str
-        :param Port: 端口，默认5432
+        :param Port: 端口，默认3306，取值范围[0, 65535)
         :type Port: int
         :param PayMode: 计费模式，按量计费：0，包年包月：1。默认按量计费。
         :type PayMode: int
@@ -653,13 +653,13 @@ timeRollback，时间点回档
         :param StorageLimit: 普通实例存储上限，单位GB
 当DbType为MYSQL，且存储计费模式为预付费时，该参数需不大于cpu与memory对应存储规格上限
         :type StorageLimit: int
-        :param InstanceCount: 实例数量
+        :param InstanceCount: 实例数量，数量范围为(0,16]
         :type InstanceCount: int
         :param TimeSpan: 包年包月购买时长
         :type TimeSpan: int
         :param TimeUnit: 包年包月购买时长单位，['s','d','m','y']
         :type TimeUnit: str
-        :param AutoRenewFlag: 包年包月购买是否自动续费
+        :param AutoRenewFlag: 包年包月购买是否自动续费，默认为0
         :type AutoRenewFlag: int
         :param AutoVoucher: 是否自动选择代金券 1是 0否 默认为0
         :type AutoVoucher: int
@@ -700,8 +700,10 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
         :type ClusterParams: list of ParamItem
         :param DealMode: 交易模式，0-下单且支付，1-下单
         :type DealMode: int
-        :param ParamTemplateId: 参数模版ID
+        :param ParamTemplateId: 参数模版ID，可以通过查询参数模板信息DescribeParamTemplates获得参数模板ID
         :type ParamTemplateId: int
+        :param SlaveZone: 多可用区地址
+        :type SlaveZone: str
         """
         self.Zone = None
         self.VpcId = None
@@ -742,6 +744,7 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
         self.ClusterParams = None
         self.DealMode = None
         self.ParamTemplateId = None
+        self.SlaveZone = None
 
 
     def _deserialize(self, params):
@@ -794,6 +797,7 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
                 self.ClusterParams.append(obj)
         self.DealMode = params.get("DealMode")
         self.ParamTemplateId = params.get("ParamTemplateId")
+        self.SlaveZone = params.get("SlaveZone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2825,14 +2829,18 @@ class DescribeResourcesByDealNameRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DealName: 计费订单id（如果计费还没回调业务发货，可能出现错误码InvalidParameterValue.DealNameNotFound，这种情况需要业务重试DescribeResourcesByDealName接口直到成功）
+        :param DealName: 计费订单ID（如果计费还没回调业务发货，可能出现错误码InvalidParameterValue.DealNameNotFound，这种情况需要业务重试DescribeResourcesByDealName接口直到成功）
         :type DealName: str
+        :param DealNames: 计费订单ID列表，可以一次查询若干条订单ID对应资源信息（如果计费还没回调业务发货，可能出现错误码InvalidParameterValue.DealNameNotFound，这种情况需要业务重试DescribeResourcesByDealName接口直到成功）
+        :type DealNames: list of str
         """
         self.DealName = None
+        self.DealNames = None
 
 
     def _deserialize(self, params):
         self.DealName = params.get("DealName")
+        self.DealNames = params.get("DealNames")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3565,7 +3573,7 @@ class ModifyClusterParamRequest(AbstractModel):
         r"""
         :param ClusterId: 集群ID
         :type ClusterId: str
-        :param ParamList: 要修改的参数列表。每一个元素是ParamName、CurrentValue和OldValue的组合。ParamName是参数名称，CurrentValue是当前值，OldValue是之前值
+        :param ParamList: 要修改的参数列表。每一个元素是ParamName、CurrentValue和OldValue的组合。ParamName是参数名称，CurrentValue是当前值，OldValue是之前值且不做校验
         :type ParamList: list of ParamItem
         :param IsInMaintainPeriod: 维护期间执行-yes,立即执行-no
         :type IsInMaintainPeriod: str

@@ -2112,16 +2112,25 @@ class CreateZoneRequest(AbstractModel):
         :type Type: str
         :param JumpStart: 是否跳过站点历史解析记录扫描
         :type JumpStart: bool
+        :param Tags: 资源标签
+        :type Tags: list of Tag
         """
         self.Name = None
         self.Type = None
         self.JumpStart = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Type = params.get("Type")
         self.JumpStart = params.get("JumpStart")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7097,6 +7106,9 @@ class DescribeZoneDetailsResponse(AbstractModel):
 - pending 切换验证中
 注意：此字段可能返回 null，表示取不到有效值。
         :type CnameStatus: str
+        :param Tags: 资源标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -7113,6 +7125,7 @@ class DescribeZoneDetailsResponse(AbstractModel):
         self.VanityNameServersIps = None
         self.CnameSpeedUp = None
         self.CnameStatus = None
+        self.Tags = None
         self.RequestId = None
 
 
@@ -7137,6 +7150,12 @@ class DescribeZoneDetailsResponse(AbstractModel):
                 self.VanityNameServersIps.append(obj)
         self.CnameSpeedUp = params.get("CnameSpeedUp")
         self.CnameStatus = params.get("CnameStatus")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -10923,6 +10942,36 @@ class SwitchConfig(AbstractModel):
         
 
 
+class Tag(AbstractModel):
+    """标签配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TagKey: 标签键
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagKey: str
+        :param TagValue: 标签值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagValue: str
+        """
+        self.TagKey = None
+        self.TagValue = None
+
+
+    def _deserialize(self, params):
+        self.TagKey = params.get("TagKey")
+        self.TagValue = params.get("TagValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Task(AbstractModel):
     """内容管理任务结果
 
@@ -11664,6 +11713,9 @@ class Zone(AbstractModel):
 - pending 站点验证中
 注意：此字段可能返回 null，表示取不到有效值。
         :type CnameStatus: str
+        :param Tags: 资源标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
         """
         self.Id = None
         self.Name = None
@@ -11675,6 +11727,7 @@ class Zone(AbstractModel):
         self.CreatedOn = None
         self.ModifiedOn = None
         self.CnameStatus = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -11688,6 +11741,12 @@ class Zone(AbstractModel):
         self.CreatedOn = params.get("CreatedOn")
         self.ModifiedOn = params.get("ModifiedOn")
         self.CnameStatus = params.get("CnameStatus")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -11707,6 +11766,8 @@ class ZoneFilter(AbstractModel):
         :param Name: 过滤字段名，支持的列表如下：
 - name: 站点名。
 - status: 站点状态
+- tagKey: 标签键
+- tagValue: 标签值
         :type Name: str
         :param Values: 过滤字段值
         :type Values: list of str

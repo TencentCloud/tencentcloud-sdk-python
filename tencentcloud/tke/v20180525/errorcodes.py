@@ -59,8 +59,14 @@ FAILEDOPERATION_COMPONENTCLINETHTTP = 'FailedOperation.ComponentClinetHttp'
 # 创建CLS采集配置失败。
 FAILEDOPERATION_CREATECLSCONFIG = 'FailedOperation.CreateClsConfig'
 
+# 创建CLS索引失败。
+FAILEDOPERATION_CREATECLSINDEX = 'FailedOperation.CreateClsIndex'
+
 # 创建CLS日志集失败。
 FAILEDOPERATION_CREATECLSLOGSET = 'FailedOperation.CreateClsLogSet'
+
+# 创建CLS机器组失败。
+FAILEDOPERATION_CREATECLSMACHINEGROUP = 'FailedOperation.CreateClsMachineGroup'
 
 # 创建 CLS 主题失败。
 FAILEDOPERATION_CREATECLSTOPIC = 'FailedOperation.CreateClsTopic'
@@ -82,6 +88,9 @@ FAILEDOPERATION_DBRECORDNOTFOUND = 'FailedOperation.DbRecordNotFound'
 
 # 获得安全组配额失败。
 FAILEDOPERATION_DFWGETUSGQUOTA = 'FailedOperation.DfwGetUSGQuota'
+
+# 获取CLS采集配置失败。
+FAILEDOPERATION_GETCLSCONFIG = 'FailedOperation.GetClsConfig'
 
 # 查询主题集失败。
 FAILEDOPERATION_GETCLSLOGSET = 'FailedOperation.GetClsLogSet'
