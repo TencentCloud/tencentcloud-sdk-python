@@ -2537,7 +2537,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Limit: 实例列表的大小，参数默认值20，传值则以传参为准，如果传参大于具体配置etc/conf/component.properties中的DescribeInstancesPageLimit配置项 （读不到配置默认配置项为1000），则以配置项为准
+        :param Limit: 返回数量，参数默认值20，最大值为1000
         :type Limit: int
         :param Offset: 偏移量，取Limit整数倍
         :type Offset: int
@@ -2585,6 +2585,8 @@ class DescribeInstancesRequest(AbstractModel):
         :type InstanceTags: list of InstanceTagInfo
         :param TagKeys: 根据标签的Key筛选资源，不传或者传空数组则不进行过滤
         :type TagKeys: list of str
+        :param ProductVersions: 需要过滤的产品版本支持多个，"local"本地盘版，"cloud"云盘版，"cdc"独享集群版，如果不传则默认不过滤
+        :type ProductVersions: list of str
         """
         self.Limit = None
         self.Offset = None
@@ -2610,6 +2612,7 @@ class DescribeInstancesRequest(AbstractModel):
         self.MonitorVersion = None
         self.InstanceTags = None
         self.TagKeys = None
+        self.ProductVersions = None
 
 
     def _deserialize(self, params):
@@ -2642,6 +2645,7 @@ class DescribeInstancesRequest(AbstractModel):
                 obj._deserialize(item)
                 self.InstanceTags.append(obj)
         self.TagKeys = params.get("TagKeys")
+        self.ProductVersions = params.get("ProductVersions")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

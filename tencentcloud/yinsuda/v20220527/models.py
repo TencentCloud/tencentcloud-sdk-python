@@ -366,12 +366,18 @@ class KTVMusicDetailInfo(AbstractModel):
         :type MidiUrl: str
         :param ChorusClipSet: 副歌片段信息。
         :type ChorusClipSet: list of ChorusClip
+        :param PreludeInterval: 前奏间隔。
+        :type PreludeInterval: int
+        :param GenreSet: 歌曲流派列表。
+        :type GenreSet: list of str
         """
         self.KTVMusicBaseInfo = None
         self.PlayToken = None
         self.LyricsUrl = None
         self.MidiUrl = None
         self.ChorusClipSet = None
+        self.PreludeInterval = None
+        self.GenreSet = None
 
 
     def _deserialize(self, params):
@@ -387,6 +393,8 @@ class KTVMusicDetailInfo(AbstractModel):
                 obj = ChorusClip()
                 obj._deserialize(item)
                 self.ChorusClipSet.append(obj)
+        self.PreludeInterval = params.get("PreludeInterval")
+        self.GenreSet = params.get("GenreSet")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

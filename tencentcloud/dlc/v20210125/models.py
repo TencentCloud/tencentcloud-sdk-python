@@ -1303,6 +1303,10 @@ class CreateSparkAppRequest(AbstractModel):
         :type IsLocalPythonFiles: str
         :param AppPythonFiles: pyspark：python依赖, 除py文件外，还支持zip/egg等归档格式，多文件以逗号分隔
         :type AppPythonFiles: str
+        :param IsLocalArchives: archives：依赖上传方式，1、cos；2、lakefs（控制台使用，该方式不支持直接接口调用）
+        :type IsLocalArchives: str
+        :param AppArchives: archives：依赖资源
+        :type AppArchives: str
         """
         self.AppName = None
         self.AppType = None
@@ -1325,6 +1329,8 @@ class CreateSparkAppRequest(AbstractModel):
         self.DataSource = None
         self.IsLocalPythonFiles = None
         self.AppPythonFiles = None
+        self.IsLocalArchives = None
+        self.AppArchives = None
 
 
     def _deserialize(self, params):
@@ -1349,6 +1355,8 @@ class CreateSparkAppRequest(AbstractModel):
         self.DataSource = params.get("DataSource")
         self.IsLocalPythonFiles = params.get("IsLocalPythonFiles")
         self.AppPythonFiles = params.get("AppPythonFiles")
+        self.IsLocalArchives = params.get("IsLocalArchives")
+        self.AppArchives = params.get("AppArchives")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3302,7 +3310,7 @@ class DescribeSparkAppJobsRequest(AbstractModel):
         :type SortBy: str
         :param Sorting: 正序或者倒序，例如：desc
         :type Sorting: str
-        :param Filters: 按照该参数过滤
+        :param Filters: 按照该参数过滤,支持spark-job-name
         :type Filters: list of Filter
         :param StartTime: 更新时间起始点
         :type StartTime: str
@@ -4672,6 +4680,10 @@ class ModifySparkAppRequest(AbstractModel):
         :type MaxRetries: int
         :param DataSource: 数据源名
         :type DataSource: str
+        :param IsLocalArchives: archives：依赖上传方式，1、cos；2、lakefs（控制台使用，该方式不支持直接接口调用）
+        :type IsLocalArchives: str
+        :param AppArchives: archives：依赖资源
+        :type AppArchives: str
         """
         self.AppName = None
         self.AppType = None
@@ -4695,6 +4707,8 @@ class ModifySparkAppRequest(AbstractModel):
         self.CmdArgs = None
         self.MaxRetries = None
         self.DataSource = None
+        self.IsLocalArchives = None
+        self.AppArchives = None
 
 
     def _deserialize(self, params):
@@ -4720,6 +4734,8 @@ class ModifySparkAppRequest(AbstractModel):
         self.CmdArgs = params.get("CmdArgs")
         self.MaxRetries = params.get("MaxRetries")
         self.DataSource = params.get("DataSource")
+        self.IsLocalArchives = params.get("IsLocalArchives")
+        self.AppArchives = params.get("AppArchives")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5226,9 +5242,21 @@ class SparkJobInfo(AbstractModel):
         :param IsLocalPythonFiles: pyspark：依赖上传方式，1、cos；2、lakefs（控制台使用，该方式不支持直接接口调用）
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsLocalPythonFiles: str
-        :param AppPythonFiles: pyspark：python依赖, 除py文件外，还支持zip/egg等归档格式，多文件以逗号分隔
+        :param AppPythonFiles: 注：该返回值已废弃
 注意：此字段可能返回 null，表示取不到有效值。
         :type AppPythonFiles: str
+        :param IsLocalArchives: archives：依赖上传方式，1、cos；2、lakefs（控制台使用，该方式不支持直接接口调用）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsLocalArchives: str
+        :param JobArchives: archives：依赖资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JobArchives: str
+        :param JobPythonFiles: pyspark：python依赖, 除py文件外，还支持zip/egg等归档格式，多文件以逗号分隔
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JobPythonFiles: str
+        :param TaskNum: 当前job正在运行或准备运行的任务个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskNum: int
         """
         self.JobId = None
         self.JobName = None
@@ -5258,6 +5286,10 @@ class SparkJobInfo(AbstractModel):
         self.DataSource = None
         self.IsLocalPythonFiles = None
         self.AppPythonFiles = None
+        self.IsLocalArchives = None
+        self.JobArchives = None
+        self.JobPythonFiles = None
+        self.TaskNum = None
 
 
     def _deserialize(self, params):
@@ -5291,6 +5323,10 @@ class SparkJobInfo(AbstractModel):
         self.DataSource = params.get("DataSource")
         self.IsLocalPythonFiles = params.get("IsLocalPythonFiles")
         self.AppPythonFiles = params.get("AppPythonFiles")
+        self.IsLocalArchives = params.get("IsLocalArchives")
+        self.JobArchives = params.get("JobArchives")
+        self.JobPythonFiles = params.get("JobPythonFiles")
+        self.TaskNum = params.get("TaskNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

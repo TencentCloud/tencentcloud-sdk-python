@@ -337,6 +337,8 @@ class CreateInstanceRequest(AbstractModel):
         :type WebNodeTypeInfo: :class:`tencentcloud.es.v20180416.models.WebNodeTypeInfo`
         :param Protocol: 创建https集群，默认是http
         :type Protocol: str
+        :param OperationDuration: 可维护时间段
+        :type OperationDuration: :class:`tencentcloud.es.v20180416.models.OperationDuration`
         """
         self.Zone = None
         self.EsVersion = None
@@ -368,6 +370,7 @@ class CreateInstanceRequest(AbstractModel):
         self.SceneType = None
         self.WebNodeTypeInfo = None
         self.Protocol = None
+        self.OperationDuration = None
 
 
     def _deserialize(self, params):
@@ -418,6 +421,9 @@ class CreateInstanceRequest(AbstractModel):
             self.WebNodeTypeInfo = WebNodeTypeInfo()
             self.WebNodeTypeInfo._deserialize(params.get("WebNodeTypeInfo"))
         self.Protocol = params.get("Protocol")
+        if params.get("OperationDuration") is not None:
+            self.OperationDuration = OperationDuration()
+            self.OperationDuration._deserialize(params.get("OperationDuration"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -898,6 +904,8 @@ class DescribeInstancesRequest(AbstractModel):
         :type ZoneList: list of str
         :param HealthStatus: 健康状态筛列表
         :type HealthStatus: list of int
+        :param VpcIds: Vpc列表 筛选项
+        :type VpcIds: list of str
         """
         self.Zone = None
         self.InstanceIds = None
@@ -910,6 +918,7 @@ class DescribeInstancesRequest(AbstractModel):
         self.IpList = None
         self.ZoneList = None
         self.HealthStatus = None
+        self.VpcIds = None
 
 
     def _deserialize(self, params):
@@ -929,6 +938,7 @@ class DescribeInstancesRequest(AbstractModel):
         self.IpList = params.get("IpList")
         self.ZoneList = params.get("ZoneList")
         self.HealthStatus = params.get("HealthStatus")
+        self.VpcIds = params.get("VpcIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1743,6 +1753,9 @@ RENEW_FLAG_DEFAULT：不自动续费
         :param EsConfigSets: 集群的配置组信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type EsConfigSets: list of EsConfigSetInfo
+        :param OperationDuration: 集群可维护时间段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OperationDuration: :class:`tencentcloud.es.v20180416.models.OperationDuration`
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -1819,6 +1832,7 @@ RENEW_FLAG_DEFAULT：不自动续费
         self.EsPrivateUrl = None
         self.EsPrivateDomain = None
         self.EsConfigSets = None
+        self.OperationDuration = None
 
 
     def _deserialize(self, params):
@@ -1931,6 +1945,9 @@ RENEW_FLAG_DEFAULT：不自动续费
                 obj = EsConfigSetInfo()
                 obj._deserialize(item)
                 self.EsConfigSets.append(obj)
+        if params.get("OperationDuration") is not None:
+            self.OperationDuration = OperationDuration()
+            self.OperationDuration._deserialize(params.get("OperationDuration"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2420,6 +2437,83 @@ class OperationDetail(AbstractModel):
                 obj = KeyValue()
                 obj._deserialize(item)
                 self.NewInfo.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OperationDuration(AbstractModel):
+    """集群可运维时间
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Periods: 维护周期，表示周一到周日，可取值[0, 6]
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Periods: list of int non-negative
+        :param TimeStart: 维护开始时间
+        :type TimeStart: str
+        :param TimeEnd: 维护结束时间
+        :type TimeEnd: str
+        :param TimeZone: 时区，以UTC形式表示
+        :type TimeZone: str
+        """
+        self.Periods = None
+        self.TimeStart = None
+        self.TimeEnd = None
+        self.TimeZone = None
+
+
+    def _deserialize(self, params):
+        self.Periods = params.get("Periods")
+        self.TimeStart = params.get("TimeStart")
+        self.TimeEnd = params.get("TimeEnd")
+        self.TimeZone = params.get("TimeZone")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OperationDurationUpdated(AbstractModel):
+    """集群可运维时间
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Periods: 维护周期，表示周一到周日，可取值[0, 6]
+        :type Periods: list of int non-negative
+        :param TimeStart: 维护开始时间
+        :type TimeStart: str
+        :param TimeEnd: 维护结束时间
+        :type TimeEnd: str
+        :param TimeZone: 时区，以UTC形式表示
+        :type TimeZone: str
+        :param MoreInstances: ES集群ID数组
+        :type MoreInstances: list of str
+        """
+        self.Periods = None
+        self.TimeStart = None
+        self.TimeEnd = None
+        self.TimeZone = None
+        self.MoreInstances = None
+
+
+    def _deserialize(self, params):
+        self.Periods = params.get("Periods")
+        self.TimeStart = params.get("TimeStart")
+        self.TimeEnd = params.get("TimeEnd")
+        self.TimeZone = params.get("TimeZone")
+        self.MoreInstances = params.get("MoreInstances")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2937,6 +3031,8 @@ class UpdateInstanceRequest(AbstractModel):
         :type CerebroPrivateAccess: str
         :param EsConfigSet: 新增或修改的配置组信息
         :type EsConfigSet: :class:`tencentcloud.es.v20180416.models.EsConfigSetInfo`
+        :param OperationDuration: 可维护时间段
+        :type OperationDuration: :class:`tencentcloud.es.v20180416.models.OperationDurationUpdated`
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -2968,6 +3064,7 @@ class UpdateInstanceRequest(AbstractModel):
         self.CerebroPublicAccess = None
         self.CerebroPrivateAccess = None
         self.EsConfigSet = None
+        self.OperationDuration = None
 
 
     def _deserialize(self, params):
@@ -3021,6 +3118,9 @@ class UpdateInstanceRequest(AbstractModel):
         if params.get("EsConfigSet") is not None:
             self.EsConfigSet = EsConfigSetInfo()
             self.EsConfigSet._deserialize(params.get("EsConfigSet"))
+        if params.get("OperationDuration") is not None:
+            self.OperationDuration = OperationDurationUpdated()
+            self.OperationDuration._deserialize(params.get("OperationDuration"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

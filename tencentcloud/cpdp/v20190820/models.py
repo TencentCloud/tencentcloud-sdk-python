@@ -14319,6 +14319,9 @@ OCCASION:偶然所得
         :param InPayBalance: 提现中余额
 注意：此字段可能返回 null，表示取不到有效值。
         :type InPayBalance: str
+        :param SumSettlementAmount: 累计结算金额
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SumSettlementAmount: str
         """
         self.AccountId = None
         self.IncomeType = None
@@ -14328,6 +14331,7 @@ OCCASION:偶然所得
         self.PayableBalance = None
         self.PaidBalance = None
         self.InPayBalance = None
+        self.SumSettlementAmount = None
 
 
     def _deserialize(self, params):
@@ -14339,6 +14343,7 @@ OCCASION:偶然所得
         self.PayableBalance = params.get("PayableBalance")
         self.PaidBalance = params.get("PaidBalance")
         self.InPayBalance = params.get("InPayBalance")
+        self.SumSettlementAmount = params.get("SumSettlementAmount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

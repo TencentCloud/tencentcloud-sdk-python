@@ -74,6 +74,9 @@ INVALIDPARAMETER_INVALIDGROUPID = 'InvalidParameter.InvalidGroupId'
 # 无效的Offset值。
 INVALIDPARAMETER_INVALIDOFFSET = 'InvalidParameter.InvalidOffset'
 
+# 无效的CAM role arn。
+INVALIDPARAMETER_INVALIDROLEARN = 'InvalidParameter.InvalidRoleArn'
+
 # SQL解析失败。
 INVALIDPARAMETER_INVALIDSQL = 'InvalidParameter.InvalidSQL'
 

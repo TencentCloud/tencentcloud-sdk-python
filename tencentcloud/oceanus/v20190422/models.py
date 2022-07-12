@@ -18,6 +18,38 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class CCN(AbstractModel):
+    """云联网描述信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param VpcId: 私有网络 ID
+        :type VpcId: str
+        :param SubnetId: 子网 ID
+        :type SubnetId: str
+        :param CcnId: 云联网 ID，如 ccn-rahigzjd
+        :type CcnId: str
+        """
+        self.VpcId = None
+        self.SubnetId = None
+        self.CcnId = None
+
+
+    def _deserialize(self, params):
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.CcnId = params.get("CcnId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CheckSavepointRequest(AbstractModel):
     """CheckSavepoint请求参数结构体
 
@@ -81,6 +113,226 @@ class CheckSavepointResponse(AbstractModel):
         self.SerialId = params.get("SerialId")
         self.SavepointStatus = params.get("SavepointStatus")
         self.RequestId = params.get("RequestId")
+
+
+class Cluster(AbstractModel):
+    """描述用户创建的集群信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群 ID
+        :type ClusterId: str
+        :param Name: 集群名称
+        :type Name: str
+        :param Region: 地域
+        :type Region: str
+        :param AppId: 用户 AppID
+        :type AppId: int
+        :param OwnerUin: 主账号 UIN
+        :type OwnerUin: str
+        :param CreatorUin: 创建者 UIN
+        :type CreatorUin: str
+        :param Status: 集群状态, 1 未初始化,，3 初始化中，2 运行中
+        :type Status: int
+        :param Remark: 描述
+        :type Remark: str
+        :param CreateTime: 集群创建时间
+        :type CreateTime: str
+        :param UpdateTime: 最后一次操作集群的时间
+        :type UpdateTime: str
+        :param CuNum: CU 数量
+        :type CuNum: int
+        :param CuMem: CU 内存规格
+        :type CuMem: int
+        :param Zone: 可用区
+        :type Zone: str
+        :param StatusDesc: 状态描述
+        :type StatusDesc: str
+        :param CCNs: 网络
+        :type CCNs: list of CCN
+        :param NetEnvironmentType: 网络
+        :type NetEnvironmentType: int
+        :param FreeCuNum: 空闲 CU
+        :type FreeCuNum: int
+        :param Tags: 集群绑定的标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
+        :param IsolatedTime: 集群隔离时间; 没隔离时间，则为 -
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsolatedTime: str
+        :param ExpireTime: 集群过期时间; 没过期概念，则为 -
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpireTime: str
+        :param SecondsUntilExpiry: 距离过期还有多少秒; 没过期概念，则为 -
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecondsUntilExpiry: str
+        :param AutoRenewFlag: 自动续费标记，0 表示默认状态 (用户未设置，即初始状态，用户开通了预付费不停服特权会进行自动续费)， 1 表示自动续费，2表示明确不自动续费(用户设置)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AutoRenewFlag: int
+        :param DefaultCOSBucket: 集群的默认 COS 存储桶
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DefaultCOSBucket: str
+        :param CLSLogSet: 集群的CLS 日志集 LogSet
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CLSLogSet: str
+        :param CLSTopicId: 集群的CLS 日志主题 TopicId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CLSTopicId: str
+        :param CLSLogName: 集群的CLS 日志集  名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CLSLogName: str
+        :param CLSTopicName: 集群的CLS 日志主题  名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CLSTopicName: str
+        :param Version: 集群的版本信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Version: :class:`tencentcloud.oceanus.v20190422.models.ClusterVersion`
+        :param FreeCu: 细粒度资源下的空闲CU
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FreeCu: float
+        :param DefaultLogCollectConf: 集群的默认日志采集配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DefaultLogCollectConf: str
+        :param CustomizedDNSEnabled: 取值：0-没有设置，1-已设置，2-不允许设置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CustomizedDNSEnabled: int
+        :param Correlations: 空间信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Correlations: list of WorkSpaceClusterItem
+        :param RunningCu: 运行CU
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RunningCu: float
+        :param PayMode: 0 后付费,1 预付费
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PayMode: int
+        """
+        self.ClusterId = None
+        self.Name = None
+        self.Region = None
+        self.AppId = None
+        self.OwnerUin = None
+        self.CreatorUin = None
+        self.Status = None
+        self.Remark = None
+        self.CreateTime = None
+        self.UpdateTime = None
+        self.CuNum = None
+        self.CuMem = None
+        self.Zone = None
+        self.StatusDesc = None
+        self.CCNs = None
+        self.NetEnvironmentType = None
+        self.FreeCuNum = None
+        self.Tags = None
+        self.IsolatedTime = None
+        self.ExpireTime = None
+        self.SecondsUntilExpiry = None
+        self.AutoRenewFlag = None
+        self.DefaultCOSBucket = None
+        self.CLSLogSet = None
+        self.CLSTopicId = None
+        self.CLSLogName = None
+        self.CLSTopicName = None
+        self.Version = None
+        self.FreeCu = None
+        self.DefaultLogCollectConf = None
+        self.CustomizedDNSEnabled = None
+        self.Correlations = None
+        self.RunningCu = None
+        self.PayMode = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.Name = params.get("Name")
+        self.Region = params.get("Region")
+        self.AppId = params.get("AppId")
+        self.OwnerUin = params.get("OwnerUin")
+        self.CreatorUin = params.get("CreatorUin")
+        self.Status = params.get("Status")
+        self.Remark = params.get("Remark")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        self.CuNum = params.get("CuNum")
+        self.CuMem = params.get("CuMem")
+        self.Zone = params.get("Zone")
+        self.StatusDesc = params.get("StatusDesc")
+        if params.get("CCNs") is not None:
+            self.CCNs = []
+            for item in params.get("CCNs"):
+                obj = CCN()
+                obj._deserialize(item)
+                self.CCNs.append(obj)
+        self.NetEnvironmentType = params.get("NetEnvironmentType")
+        self.FreeCuNum = params.get("FreeCuNum")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        self.IsolatedTime = params.get("IsolatedTime")
+        self.ExpireTime = params.get("ExpireTime")
+        self.SecondsUntilExpiry = params.get("SecondsUntilExpiry")
+        self.AutoRenewFlag = params.get("AutoRenewFlag")
+        self.DefaultCOSBucket = params.get("DefaultCOSBucket")
+        self.CLSLogSet = params.get("CLSLogSet")
+        self.CLSTopicId = params.get("CLSTopicId")
+        self.CLSLogName = params.get("CLSLogName")
+        self.CLSTopicName = params.get("CLSTopicName")
+        if params.get("Version") is not None:
+            self.Version = ClusterVersion()
+            self.Version._deserialize(params.get("Version"))
+        self.FreeCu = params.get("FreeCu")
+        self.DefaultLogCollectConf = params.get("DefaultLogCollectConf")
+        self.CustomizedDNSEnabled = params.get("CustomizedDNSEnabled")
+        if params.get("Correlations") is not None:
+            self.Correlations = []
+            for item in params.get("Correlations"):
+                obj = WorkSpaceClusterItem()
+                obj._deserialize(item)
+                self.Correlations.append(obj)
+        self.RunningCu = params.get("RunningCu")
+        self.PayMode = params.get("PayMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ClusterVersion(AbstractModel):
+    """集群的版本相关信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Flink: 集群的Flink版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Flink: str
+        :param SupportedFlink: 集群支持的Flink版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SupportedFlink: list of str
+        """
+        self.Flink = None
+        self.SupportedFlink = None
+
+
+    def _deserialize(self, params):
+        self.Flink = params.get("Flink")
+        self.SupportedFlink = params.get("SupportedFlink")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class CreateJobConfigRequest(AbstractModel):
@@ -421,6 +673,51 @@ class CreateResourceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteJobsRequest(AbstractModel):
+    """DeleteJobs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param JobIds: 作业Id列表
+        :type JobIds: list of str
+        :param WorkSpaceId: 工作空间Id
+        :type WorkSpaceId: str
+        """
+        self.JobIds = None
+        self.WorkSpaceId = None
+
+
+    def _deserialize(self, params):
+        self.JobIds = params.get("JobIds")
+        self.WorkSpaceId = params.get("WorkSpaceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteJobsResponse(AbstractModel):
+    """DeleteJobs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteResourceConfigsRequest(AbstractModel):
     """DeleteResourceConfigs请求参数结构体
 
@@ -565,6 +862,85 @@ class DeleteTableConfigResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeClustersRequest(AbstractModel):
+    """DescribeClusters请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterIds: 按照一个或者多个集群 ID 查询，每次请求的集群上限为 100
+        :type ClusterIds: list of str
+        :param Offset: 偏移量，默认 0
+        :type Offset: int
+        :param Limit: 请求的集群数量，默认 20，最大值 100
+        :type Limit: int
+        :param OrderType: 集群信息结果排序规则，1 按时间降序，2 按照时间升序，3  按照状态排序
+        :type OrderType: int
+        :param Filters: 过滤规则
+        :type Filters: list of Filter
+        :param WorkSpaceId: 工作空间 SerialId
+        :type WorkSpaceId: str
+        """
+        self.ClusterIds = None
+        self.Offset = None
+        self.Limit = None
+        self.OrderType = None
+        self.Filters = None
+        self.WorkSpaceId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterIds = params.get("ClusterIds")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.OrderType = params.get("OrderType")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.WorkSpaceId = params.get("WorkSpaceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeClustersResponse(AbstractModel):
+    """DescribeClusters返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 集群总数
+        :type TotalCount: int
+        :param ClusterSet: 集群列表
+        :type ClusterSet: list of Cluster
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.ClusterSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("ClusterSet") is not None:
+            self.ClusterSet = []
+            for item in params.get("ClusterSet"):
+                obj = Cluster()
+                obj._deserialize(item)
+                self.ClusterSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1113,6 +1489,47 @@ class DescribeSystemResourcesResponse(AbstractModel):
                 obj._deserialize(item)
                 self.ResourceSet.append(obj)
         self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeTreeJobsRequest(AbstractModel):
+    """DescribeTreeJobs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param WorkSpaceId: 工作空间 Serialid
+        :type WorkSpaceId: str
+        """
+        self.WorkSpaceId = None
+
+
+    def _deserialize(self, params):
+        self.WorkSpaceId = params.get("WorkSpaceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTreeJobsResponse(AbstractModel):
+    """DescribeTreeJobs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -2142,6 +2559,36 @@ class SystemResourceItem(AbstractModel):
         
 
 
+class Tag(AbstractModel):
+    """标签
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TagKey: 标签键
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagKey: str
+        :param TagValue: 标签值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagValue: str
+        """
+        self.TagKey = None
+        self.TagValue = None
+
+
+    def _deserialize(self, params):
+        self.TagKey = params.get("TagKey")
+        self.TagValue = params.get("TagValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TriggerJobSavepointRequest(AbstractModel):
     """TriggerJobSavepoint请求参数结构体
 
@@ -2208,3 +2655,47 @@ class TriggerJobSavepointResponse(AbstractModel):
         self.FinalSavepointPath = params.get("FinalSavepointPath")
         self.SavepointId = params.get("SavepointId")
         self.RequestId = params.get("RequestId")
+
+
+class WorkSpaceClusterItem(AbstractModel):
+    """空间和集群绑定关系
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterGroupId: 集群 ID
+        :type ClusterGroupId: int
+        :param ClusterGroupSerialId: 集群 SerialId
+        :type ClusterGroupSerialId: str
+        :param ClusterName: 集群名称
+        :type ClusterName: str
+        :param WorkSpaceId: 工作空间 SerialId
+        :type WorkSpaceId: str
+        :param WorkSpaceName: 工作空间名称
+        :type WorkSpaceName: str
+        :param Status: 绑定状态  2 绑定 1  解除绑定
+        :type Status: int
+        """
+        self.ClusterGroupId = None
+        self.ClusterGroupSerialId = None
+        self.ClusterName = None
+        self.WorkSpaceId = None
+        self.WorkSpaceName = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.ClusterGroupId = params.get("ClusterGroupId")
+        self.ClusterGroupSerialId = params.get("ClusterGroupSerialId")
+        self.ClusterName = params.get("ClusterName")
+        self.WorkSpaceId = params.get("WorkSpaceId")
+        self.WorkSpaceName = params.get("WorkSpaceName")
+        self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        

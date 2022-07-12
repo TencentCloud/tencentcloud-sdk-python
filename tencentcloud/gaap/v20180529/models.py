@@ -1652,6 +1652,8 @@ class CreateRuleRequest(AbstractModel):
         :type ServerNameIndicationSwitch: str
         :param ServerNameIndication: 服务器名称指示（ServerNameIndication，简称SNI），当SNI开关打开时，该字段必填。
         :type ServerNameIndication: str
+        :param ForcedRedirect: HTTP强制跳转HTTPS。输入当前规则对应的域名与地址。
+        :type ForcedRedirect: str
         """
         self.ListenerId = None
         self.Domain = None
@@ -1664,6 +1666,7 @@ class CreateRuleRequest(AbstractModel):
         self.ForwardHost = None
         self.ServerNameIndicationSwitch = None
         self.ServerNameIndication = None
+        self.ForcedRedirect = None
 
 
     def _deserialize(self, params):
@@ -1680,6 +1683,7 @@ class CreateRuleRequest(AbstractModel):
         self.ForwardHost = params.get("ForwardHost")
         self.ServerNameIndicationSwitch = params.get("ServerNameIndicationSwitch")
         self.ServerNameIndication = params.get("ServerNameIndication")
+        self.ForcedRedirect = params.get("ForcedRedirect")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6257,6 +6261,8 @@ lc，最小连接数。
         :type ServerNameIndicationSwitch: str
         :param ServerNameIndication: 服务器名称指示（ServerNameIndication，简称SNI），当SNI开关打开时，该字段必填。
         :type ServerNameIndication: str
+        :param ForcedRedirect: HTTP强制跳转HTTPS。输入当前规则对应的域名与地址。
+        :type ForcedRedirect: str
         """
         self.ListenerId = None
         self.RuleId = None
@@ -6268,6 +6274,7 @@ lc，最小连接数。
         self.ForwardHost = None
         self.ServerNameIndicationSwitch = None
         self.ServerNameIndication = None
+        self.ForcedRedirect = None
 
 
     def _deserialize(self, params):
@@ -6283,6 +6290,7 @@ lc，最小连接数。
         self.ForwardHost = params.get("ForwardHost")
         self.ServerNameIndicationSwitch = params.get("ServerNameIndicationSwitch")
         self.ServerNameIndication = params.get("ServerNameIndication")
+        self.ForcedRedirect = params.get("ForcedRedirect")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7551,6 +7559,9 @@ class RuleInfo(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ServerNameIndication: str
+        :param ForcedRedirect: 强转HTTPS指示，当传递值为https:时表示强转为https
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ForcedRedirect: str
         """
         self.RuleId = None
         self.ListenerId = None
@@ -7566,6 +7577,7 @@ class RuleInfo(AbstractModel):
         self.ForwardHost = None
         self.ServerNameIndicationSwitch = None
         self.ServerNameIndication = None
+        self.ForcedRedirect = None
 
 
     def _deserialize(self, params):
@@ -7590,6 +7602,7 @@ class RuleInfo(AbstractModel):
         self.ForwardHost = params.get("ForwardHost")
         self.ServerNameIndicationSwitch = params.get("ServerNameIndicationSwitch")
         self.ServerNameIndication = params.get("ServerNameIndication")
+        self.ForcedRedirect = params.get("ForcedRedirect")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

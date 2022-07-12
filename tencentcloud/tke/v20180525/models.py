@@ -9947,6 +9947,10 @@ class ExistedInstance(AbstractModel):
         :param InstanceChargeType: 实例计费模式。取值范围： PREPAID：表示预付费，即包年包月 POSTPAID_BY_HOUR：表示后付费，即按量计费 CDHPAID：CDH付费，即只对CDH计费，不对CDH上的实例计费。
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceChargeType: str
+        :param IPv6Addresses: 实例的IPv6地址。
+注意：此字段可能返回 null，表示取不到有效值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IPv6Addresses: list of str
         """
         self.Usable = None
         self.UnusableReason = None
@@ -9962,6 +9966,7 @@ class ExistedInstance(AbstractModel):
         self.InstanceType = None
         self.AutoscalingGroupId = None
         self.InstanceChargeType = None
+        self.IPv6Addresses = None
 
 
     def _deserialize(self, params):
@@ -9979,6 +9984,7 @@ class ExistedInstance(AbstractModel):
         self.InstanceType = params.get("InstanceType")
         self.AutoscalingGroupId = params.get("AutoscalingGroupId")
         self.InstanceChargeType = params.get("InstanceChargeType")
+        self.IPv6Addresses = params.get("IPv6Addresses")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

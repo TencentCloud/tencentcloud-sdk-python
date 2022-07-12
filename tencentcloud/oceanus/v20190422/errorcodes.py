@@ -26,6 +26,9 @@ FAILEDOPERATION = 'FailedOperation'
 # 重复的作业名。
 FAILEDOPERATION_DUPLICATEDJOBNAME = 'FailedOperation.DuplicatedJobName'
 
+# 查询资源关联标签失败。
+FAILEDOPERATION_GETRESOURCETAGSBYRESOURCEIDS = 'FailedOperation.GetResourceTagsByResourceIds'
+
 # 语法检查失败。
 FAILEDOPERATION_GRAMMARCHECKFAILURE = 'FailedOperation.GrammarCheckFailure'
 
@@ -116,6 +119,9 @@ INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 # 集群Id指定错误，为空或者不存在。
 INVALIDPARAMETERVALUE_CLUSTERID = 'InvalidParameterValue.ClusterId'
 
+# 群集Id报错。
+INVALIDPARAMETERVALUE_CLUSTERIDS = 'InvalidParameterValue.ClusterIds'
+
 # CU内存规格不匹配。
 INVALIDPARAMETERVALUE_CUMEM = 'InvalidParameterValue.CuMem'
 
@@ -136,6 +142,9 @@ INVALIDPARAMETERVALUE_JOBTYPECOMBINEWITHCLUSTERTYPE = 'InvalidParameterValue.Job
 
 # SQL作业不能指定EntrypointClass，JAR作业则必须指定。
 INVALIDPARAMETERVALUE_JOBTYPECOMBINEWITHENTRYPOINTCLASS = 'InvalidParameterValue.JobTypeCombineWithEntrypointClass'
+
+# OrderType值错误。
+INVALIDPARAMETERVALUE_ORDERTYPE = 'InvalidParameterValue.OrderType'
 
 # 未找到资源ID。
 INVALIDPARAMETERVALUE_RESOURCEIDSNOTFOUND = 'InvalidParameterValue.ResourceIdsNotFound'
@@ -227,6 +236,9 @@ RESOURCEUNAVAILABLE_JOBRESOURCECONFIGNOTREADY = 'ResourceUnavailable.JobResource
 # 找不到JobId的正在运行的作业实例。
 RESOURCEUNAVAILABLE_NORUNNINGJOBINSTANCESFOUNDFORJOBID = 'ResourceUnavailable.NoRunningJobInstancesFoundForJobId'
 
+# 不允许删除错误。
+RESOURCEUNAVAILABLE_NOTALLOWEDTOBEDELETED = 'ResourceUnavailable.NotAllowedToBeDeleted'
+
 # 不允许停止或暂停错误。
 RESOURCEUNAVAILABLE_NOTALLOWEDTOBESTOPORPAUSE = 'ResourceUnavailable.NotAllowedToBeStopOrPause'
 
@@ -235,6 +247,9 @@ RESOURCEUNAVAILABLE_REQCUMEM = 'ResourceUnavailable.ReqCuMem'
 
 # cos上的程序包不存在。
 RESOURCEUNAVAILABLE_RESOURCELOCNOTEXISTS = 'ResourceUnavailable.ResourceLocNotExists'
+
+# 未授权操作。
+UNAUTHORIZEDOPERATION = 'UnauthorizedOperation'
 
 # 操作不支持。
 UNSUPPORTEDOPERATION = 'UnsupportedOperation'

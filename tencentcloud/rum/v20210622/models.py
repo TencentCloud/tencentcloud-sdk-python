@@ -1148,6 +1148,10 @@ class DescribeDataFetchProjectRequest(AbstractModel):
         :type Url: str
         :param Env: 环境
         :type Env: str
+        :param Status: httpcode响应码
+        :type Status: str
+        :param Ret: retcode
+        :type Ret: str
         """
         self.StartTime = None
         self.Type = None
@@ -1172,6 +1176,8 @@ class DescribeDataFetchProjectRequest(AbstractModel):
         self.CostType = None
         self.Url = None
         self.Env = None
+        self.Status = None
+        self.Ret = None
 
 
     def _deserialize(self, params):
@@ -1198,6 +1204,8 @@ class DescribeDataFetchProjectRequest(AbstractModel):
         self.CostType = params.get("CostType")
         self.Url = params.get("Url")
         self.Env = params.get("Env")
+        self.Status = params.get("Status")
+        self.Ret = params.get("Ret")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1414,6 +1422,10 @@ class DescribeDataFetchUrlRequest(AbstractModel):
         :type Url: str
         :param Env: 环境
         :type Env: str
+        :param Status: httpcode响应码
+        :type Status: str
+        :param Ret: retcode
+        :type Ret: str
         """
         self.StartTime = None
         self.Type = None
@@ -1438,6 +1450,8 @@ class DescribeDataFetchUrlRequest(AbstractModel):
         self.CostType = None
         self.Url = None
         self.Env = None
+        self.Status = None
+        self.Ret = None
 
 
     def _deserialize(self, params):
@@ -1464,6 +1478,8 @@ class DescribeDataFetchUrlRequest(AbstractModel):
         self.CostType = params.get("CostType")
         self.Url = params.get("Url")
         self.Env = params.get("Env")
+        self.Status = params.get("Status")
+        self.Ret = params.get("Ret")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2341,6 +2357,8 @@ class DescribeDataSetUrlStatisticsRequest(AbstractModel):
         :type CostType: str
         :param Env: 环境
         :type Env: str
+        :param PackageType: 获取package
+        :type PackageType: str
         """
         self.StartTime = None
         self.Type = None
@@ -2364,6 +2382,7 @@ class DescribeDataSetUrlStatisticsRequest(AbstractModel):
         self.Browser = None
         self.CostType = None
         self.Env = None
+        self.PackageType = None
 
 
     def _deserialize(self, params):
@@ -2389,6 +2408,7 @@ class DescribeDataSetUrlStatisticsRequest(AbstractModel):
         self.Browser = params.get("Browser")
         self.CostType = params.get("CostType")
         self.Env = params.get("Env")
+        self.PackageType = params.get("PackageType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
