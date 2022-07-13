@@ -84,6 +84,35 @@ class EsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateLogstashInstance(self, request):
+        """用于创建Logstash实例
+
+        :param request: Request instance for CreateLogstashInstance.
+        :type request: :class:`tencentcloud.es.v20180416.models.CreateLogstashInstanceRequest`
+        :rtype: :class:`tencentcloud.es.v20180416.models.CreateLogstashInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateLogstashInstance", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateLogstashInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteIndex(self, request):
         """删除索引
 
@@ -128,6 +157,64 @@ class EsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteLogstashInstance(self, request):
+        """用于删除Logstash实例
+
+        :param request: Request instance for DeleteLogstashInstance.
+        :type request: :class:`tencentcloud.es.v20180416.models.DeleteLogstashInstanceRequest`
+        :rtype: :class:`tencentcloud.es.v20180416.models.DeleteLogstashInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteLogstashInstance", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteLogstashInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteLogstashPipelines(self, request):
+        """用于批量删除Logstash管道
+
+        :param request: Request instance for DeleteLogstashPipelines.
+        :type request: :class:`tencentcloud.es.v20180416.models.DeleteLogstashPipelinesRequest`
+        :rtype: :class:`tencentcloud.es.v20180416.models.DeleteLogstashPipelinesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteLogstashPipelines", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteLogstashPipelinesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -287,6 +374,122 @@ class EsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeLogstashInstanceLogs(self, request):
+        """查询用户该地域下符合条件的Logstash实例的日志
+
+        :param request: Request instance for DescribeLogstashInstanceLogs.
+        :type request: :class:`tencentcloud.es.v20180416.models.DescribeLogstashInstanceLogsRequest`
+        :rtype: :class:`tencentcloud.es.v20180416.models.DescribeLogstashInstanceLogsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLogstashInstanceLogs", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeLogstashInstanceLogsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeLogstashInstanceOperations(self, request):
+        """查询实例指定条件下的操作记录
+
+        :param request: Request instance for DescribeLogstashInstanceOperations.
+        :type request: :class:`tencentcloud.es.v20180416.models.DescribeLogstashInstanceOperationsRequest`
+        :rtype: :class:`tencentcloud.es.v20180416.models.DescribeLogstashInstanceOperationsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLogstashInstanceOperations", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeLogstashInstanceOperationsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeLogstashInstances(self, request):
+        """查询用户该地域下符合条件的所有Logstash实例
+
+        :param request: Request instance for DescribeLogstashInstances.
+        :type request: :class:`tencentcloud.es.v20180416.models.DescribeLogstashInstancesRequest`
+        :rtype: :class:`tencentcloud.es.v20180416.models.DescribeLogstashInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLogstashInstances", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeLogstashInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeLogstashPipelines(self, request):
+        """用于获取Logstash实例管道列表
+
+        :param request: Request instance for DescribeLogstashPipelines.
+        :type request: :class:`tencentcloud.es.v20180416.models.DescribeLogstashPipelinesRequest`
+        :rtype: :class:`tencentcloud.es.v20180416.models.DescribeLogstashPipelinesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLogstashPipelines", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeLogstashPipelinesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeViews(self, request):
         """查询集群各视图数据，包括集群维度、节点维度、Kibana维度
 
@@ -432,6 +635,35 @@ class EsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def RestartLogstashInstance(self, request):
+        """用于重启Logstash实例
+
+        :param request: Request instance for RestartLogstashInstance.
+        :type request: :class:`tencentcloud.es.v20180416.models.RestartLogstashInstanceRequest`
+        :rtype: :class:`tencentcloud.es.v20180416.models.RestartLogstashInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RestartLogstashInstance", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.RestartLogstashInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def RestartNodes(self, request):
         """用于重启集群节点
 
@@ -447,6 +679,93 @@ class EsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RestartNodesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SaveAndDeployLogstashPipeline(self, request):
+        """用于下发并且部署管道
+
+        :param request: Request instance for SaveAndDeployLogstashPipeline.
+        :type request: :class:`tencentcloud.es.v20180416.models.SaveAndDeployLogstashPipelineRequest`
+        :rtype: :class:`tencentcloud.es.v20180416.models.SaveAndDeployLogstashPipelineResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SaveAndDeployLogstashPipeline", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SaveAndDeployLogstashPipelineResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def StartLogstashPipelines(self, request):
+        """用于启动Logstash管道
+
+        :param request: Request instance for StartLogstashPipelines.
+        :type request: :class:`tencentcloud.es.v20180416.models.StartLogstashPipelinesRequest`
+        :rtype: :class:`tencentcloud.es.v20180416.models.StartLogstashPipelinesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StartLogstashPipelines", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.StartLogstashPipelinesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def StopLogstashPipelines(self, request):
+        """用于批量停止Logstash管道
+
+        :param request: Request instance for StopLogstashPipelines.
+        :type request: :class:`tencentcloud.es.v20180416.models.StopLogstashPipelinesRequest`
+        :rtype: :class:`tencentcloud.es.v20180416.models.StopLogstashPipelinesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StopLogstashPipelines", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.StopLogstashPipelinesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -599,6 +918,69 @@ class EsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.UpdateJdkResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateLogstashInstance(self, request):
+        """对集群进行节点规格变更，修改实例名称，修改配置，等操作。参数中InstanceId为必传参数，参数传递组合及含义如下：
+        - InstanceName：修改实例名称(仅用于标识实例)
+        - NodeNum: 修改实例节点数量（节点横向扩缩容，纵向扩缩容等）
+        - YMLConfig: 修改实例YML配置
+        - BindedES：修改绑定的ES集群配置
+        以上参数组合只能传递一种，多传或少传均会导致请求失败
+
+        :param request: Request instance for UpdateLogstashInstance.
+        :type request: :class:`tencentcloud.es.v20180416.models.UpdateLogstashInstanceRequest`
+        :rtype: :class:`tencentcloud.es.v20180416.models.UpdateLogstashInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateLogstashInstance", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateLogstashInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateLogstashPipelineDesc(self, request):
+        """用于更新管道描述信息
+
+        :param request: Request instance for UpdateLogstashPipelineDesc.
+        :type request: :class:`tencentcloud.es.v20180416.models.UpdateLogstashPipelineDescRequest`
+        :rtype: :class:`tencentcloud.es.v20180416.models.UpdateLogstashPipelineDescResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateLogstashPipelineDesc", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateLogstashPipelineDescResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

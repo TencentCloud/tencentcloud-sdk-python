@@ -97,7 +97,7 @@ class AppTaskData(AbstractModel):
         :param TaskErrMsg: 错误信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskErrMsg: str
-        :param Source: 来源,0:默认值(私域), 1:灵犀, 2:灵鲲
+        :param Source: 任务来源,0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android);
         :type Source: int
         :param AppInfo: 应用信息
         :type AppInfo: :class:`tencentcloud.mmps.v20200710.models.AppInfoItem`
@@ -145,7 +145,7 @@ class CreateAppScanTaskRepeatRequest(AbstractModel):
         r"""
         :param TaskType: 任务类型, 0:基础版, 1:专家版, 2:本地化
         :type TaskType: int
-        :param Source: 任务来源, 0:默认值(私域), 1:灵犀, 2:灵鲲;
+        :param Source: 任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android);
         :type Source: int
         :param AppPackage: 小程序AppID
         :type AppPackage: str
@@ -210,7 +210,7 @@ class CreateAppScanTaskRequest(AbstractModel):
         r"""
         :param TaskType: 任务类型, 0:基础版, 1:专家版, 2:本地化
         :type TaskType: int
-        :param Source: 任务来源, 0:默认值(私域), 1:灵犀, 2:灵鲲;
+        :param Source: 任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android);
         :type Source: int
         :param AppPackage: 小程序AppID
         :type AppPackage: str
@@ -890,7 +890,7 @@ class DescribeScanTaskListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Source: 任务来源, -1:所有, 0:默认值(私域), 1:灵犀, 2:灵鲲;
+        :param Source: 任务来源, -1:所有, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android);
         :type Source: int
         :param Platform: 应用平台, 0:android, 1:ios, 2:小程序
         :type Platform: int
@@ -982,7 +982,7 @@ class DescribeScanTaskReportUrlRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Source: 任务来源, 0:默认值(私域), 1:灵犀, 2:灵鲲;
+        :param Source: 任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android);
         :type Source: int
         :param TaskID: 任务id
         :type TaskID: str
@@ -1054,7 +1054,7 @@ class DescribeScanTaskStatusRequest(AbstractModel):
         r"""
         :param TaskType: 任务类型, 0:基础版, 1:专家版, 2:本地化
         :type TaskType: int
-        :param Source: 任务来源, 0:默认值(私域), 1:灵犀, 2:灵鲲;
+        :param Source: 任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android);
         :type Source: int
         :param TaskID: 任务id
         :type TaskID: str

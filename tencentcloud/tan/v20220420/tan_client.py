@@ -27,7 +27,7 @@ class TanClient(AbstractClient):
 
 
     def CreateBlockNodeRecords(self, request):
-        """创建节点记录
+        """推送节点数据
 
         :param request: Request instance for CreateBlockNodeRecords.
         :type request: :class:`tencentcloud.tan.v20220420.models.CreateBlockNodeRecordsRequest`

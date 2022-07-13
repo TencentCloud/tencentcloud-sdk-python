@@ -212,6 +212,29 @@ class AddRealServersResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class BanAndRecoverProxyRequest(AbstractModel):
+    """BanAndRecoverProxy请求参数结构体
+
+    """
+
+
+class BanAndRecoverProxyResponse(AbstractModel):
+    """BanAndRecoverProxy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class BandwidthPriceGradient(AbstractModel):
     """带宽梯度价格
 
@@ -2679,6 +2702,29 @@ class DescribeCountryAreaMappingResponse(AbstractModel):
                 obj = CountryAreaMap()
                 obj._deserialize(item)
                 self.CountryAreaMappingList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCrossBorderProxiesRequest(AbstractModel):
+    """DescribeCrossBorderProxies请求参数结构体
+
+    """
+
+
+class DescribeCrossBorderProxiesResponse(AbstractModel):
+    """DescribeCrossBorderProxies返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 

@@ -84,6 +84,35 @@ class IotvideoClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateProduct(self, request):
+        """创建产品
+
+        :param request: Request instance for CreateProduct.
+        :type request: :class:`tencentcloud.iotvideo.v20211125.models.CreateProductRequest`
+        :rtype: :class:`tencentcloud.iotvideo.v20211125.models.CreateProductResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateProduct", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateProductResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeDeviceDataStats(self, request):
         """查询设备数据统计
 
@@ -128,6 +157,35 @@ class IotvideoClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeMessageDataStatsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def GenSingleDeviceSignatureOfPublic(self, request):
+        """获取设备的绑定签名
+
+        :param request: Request instance for GenSingleDeviceSignatureOfPublic.
+        :type request: :class:`tencentcloud.iotvideo.v20211125.models.GenSingleDeviceSignatureOfPublicRequest`
+        :rtype: :class:`tencentcloud.iotvideo.v20211125.models.GenSingleDeviceSignatureOfPublicResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GenSingleDeviceSignatureOfPublic", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GenSingleDeviceSignatureOfPublicResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

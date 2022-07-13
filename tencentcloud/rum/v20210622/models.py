@@ -325,7 +325,7 @@ class CreateTawInstanceRequest(AbstractModel):
         r"""
         :param AreaId: 片区Id，(至少大于0)
         :type AreaId: int
-        :param ChargeType: 计费类型, (1=体验，2=预付费，3=后付费)
+        :param ChargeType: 计费类型, (1=后付费，2=预付费)
         :type ChargeType: int
         :param DataRetentionDays: 数据保存时间，(至少大于0)
         :type DataRetentionDays: int

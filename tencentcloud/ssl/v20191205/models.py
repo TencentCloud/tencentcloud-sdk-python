@@ -336,6 +336,9 @@ class Certificates(AbstractModel):
         :param IsIgnore: 是否已忽略到期通知
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsIgnore: bool
+        :param IsSM: 是否国密证书
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsSM: bool
         """
         self.OwnerUin = None
         self.ProjectId = None
@@ -368,6 +371,7 @@ class Certificates(AbstractModel):
         self.Deployable = None
         self.Tags = None
         self.IsIgnore = None
+        self.IsSM = None
 
 
     def _deserialize(self, params):
@@ -411,6 +415,7 @@ class Certificates(AbstractModel):
                 obj._deserialize(item)
                 self.Tags.append(obj)
         self.IsIgnore = params.get("IsIgnore")
+        self.IsSM = params.get("IsSM")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1340,7 +1345,7 @@ class DescribeCertificatesRequest(AbstractModel):
         :type ProjectId: int
         :param ExpirationSort: 按到期时间排序：DESC = 降序， ASC = 升序。
         :type ExpirationSort: str
-        :param CertificateStatus: 证书状态。
+        :param CertificateStatus: 证书状态：0 = 审核中，1 = 已通过，2 = 审核失败，3 = 已过期，4 = 已添加DNS记录，5 = 企业证书，待提交，6 = 订单取消中，7 = 已取消，8 = 已提交资料， 待上传确认函，9 = 证书吊销中，10 = 已吊销，11 = 重颁发中，12 = 待上传吊销确认函，13 = 免费证书待提交资料。
         :type CertificateStatus: list of int non-negative
         :param Deployable: 是否可部署，可选值：1 = 可部署，0 =  不可部署。
         :type Deployable: int
@@ -1350,6 +1355,8 @@ class DescribeCertificatesRequest(AbstractModel):
         :type Renew: int
         :param FilterSource: 筛选来源， upload：上传证书， buy：腾讯云证书， 不传默认全部
         :type FilterSource: str
+        :param IsSM: 是否筛选国密证书。1:筛选  0:不筛选
+        :type IsSM: int
         """
         self.Offset = None
         self.Limit = None
@@ -1362,6 +1369,7 @@ class DescribeCertificatesRequest(AbstractModel):
         self.Upload = None
         self.Renew = None
         self.FilterSource = None
+        self.IsSM = None
 
 
     def _deserialize(self, params):
@@ -1376,6 +1384,7 @@ class DescribeCertificatesRequest(AbstractModel):
         self.Upload = params.get("Upload")
         self.Renew = params.get("Renew")
         self.FilterSource = params.get("FilterSource")
+        self.IsSM = params.get("IsSM")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

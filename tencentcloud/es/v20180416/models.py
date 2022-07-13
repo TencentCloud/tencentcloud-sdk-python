@@ -459,6 +459,120 @@ class CreateInstanceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateLogstashInstanceRequest(AbstractModel):
+    """CreateLogstashInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceName: 实例名称（1-50 个英文、汉字、数字、连接线-或下划线_）
+        :type InstanceName: str
+        :param Zone: 可用区
+        :type Zone: str
+        :param LogstashVersion: 实例版本（支持"6.8.13"、"7.10.1"）
+        :type LogstashVersion: str
+        :param VpcId: 私有网络ID
+        :type VpcId: str
+        :param SubnetId: 子网ID
+        :type SubnetId: str
+        :param NodeNum: 节点数量（2-50个）
+        :type NodeNum: int
+        :param ChargeType: 计费类型<li>PREPAID：预付费，即包年包月</li><li>POSTPAID_BY_HOUR：按小时后付费</li>默认值POSTPAID_BY_HOUR
+        :type ChargeType: str
+        :param ChargePeriod: 包年包月购买时长（单位由参数TimeUnit决定）
+        :type ChargePeriod: int
+        :param TimeUnit: 计费时长单位（ChargeType为PREPAID时需要设置，默认值为“m”，表示月，当前只支持“m”）
+        :type TimeUnit: str
+        :param AutoVoucher: 是否自动使用代金券<li>0：不自动使用</li><li>1：自动使用</li>默认值0
+        :type AutoVoucher: int
+        :param VoucherIds: 代金券ID列表（目前仅支持指定一张代金券）
+        :type VoucherIds: list of str
+        :param RenewFlag: 自动续费标识<li>RENEW_FLAG_AUTO：自动续费</li><li>RENEW_FLAG_MANUAL：不自动续费，用户手动续费</li>ChargeType为PREPAID时需要设置，如不传递该参数，普通用户默认不自动续费，SVIP用户自动续费
+        :type RenewFlag: str
+        :param NodeType: 节点规格<li>LOGSTASH.S1.SMALL2：1核2G</li><li>LOGSTASH.S1.MEDIUM4：2核4G</li><li>LOGSTASH.S1.MEDIUM8：2核8G</li><li>LOGSTASH.S1.LARGE16：4核16G</li><li>LOGSTASH.S1.2XLARGE32：8核32G</li><li>LOGSTASH.S1.4XLARGE32：16核32G</li><li>LOGSTASH.S1.4XLARGE64：16核64G</li>
+        :type NodeType: str
+        :param DiskType: 节点磁盘类型<li>CLOUD_SSD：SSD云硬盘</li><li>CLOUD_PREMIUM：高硬能云硬盘</li>默认值CLOUD_SSD
+        :type DiskType: str
+        :param DiskSize: 节点磁盘容量（单位GB）
+        :type DiskSize: int
+        :param LicenseType: License类型<li>oss：开源版</li><li>xpack：xpack版</li>默认值xpack
+        :type LicenseType: str
+        :param TagList: 标签信息列表
+        :type TagList: list of TagInfo
+        """
+        self.InstanceName = None
+        self.Zone = None
+        self.LogstashVersion = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.NodeNum = None
+        self.ChargeType = None
+        self.ChargePeriod = None
+        self.TimeUnit = None
+        self.AutoVoucher = None
+        self.VoucherIds = None
+        self.RenewFlag = None
+        self.NodeType = None
+        self.DiskType = None
+        self.DiskSize = None
+        self.LicenseType = None
+        self.TagList = None
+
+
+    def _deserialize(self, params):
+        self.InstanceName = params.get("InstanceName")
+        self.Zone = params.get("Zone")
+        self.LogstashVersion = params.get("LogstashVersion")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.NodeNum = params.get("NodeNum")
+        self.ChargeType = params.get("ChargeType")
+        self.ChargePeriod = params.get("ChargePeriod")
+        self.TimeUnit = params.get("TimeUnit")
+        self.AutoVoucher = params.get("AutoVoucher")
+        self.VoucherIds = params.get("VoucherIds")
+        self.RenewFlag = params.get("RenewFlag")
+        self.NodeType = params.get("NodeType")
+        self.DiskType = params.get("DiskType")
+        self.DiskSize = params.get("DiskSize")
+        self.LicenseType = params.get("LicenseType")
+        if params.get("TagList") is not None:
+            self.TagList = []
+            for item in params.get("TagList"):
+                obj = TagInfo()
+                obj._deserialize(item)
+                self.TagList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateLogstashInstanceResponse(AbstractModel):
+    """CreateLogstashInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.InstanceId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteIndexRequest(AbstractModel):
     """DeleteIndex请求参数结构体
 
@@ -546,6 +660,92 @@ class DeleteInstanceRequest(AbstractModel):
 
 class DeleteInstanceResponse(AbstractModel):
     """DeleteInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteLogstashInstanceRequest(AbstractModel):
+    """DeleteLogstashInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteLogstashInstanceResponse(AbstractModel):
+    """DeleteLogstashInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteLogstashPipelinesRequest(AbstractModel):
+    """DeleteLogstashPipelines请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param PipelineIds: 管道ID列表
+        :type PipelineIds: list of str
+        """
+        self.InstanceId = None
+        self.PipelineIds = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.PipelineIds = params.get("PipelineIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteLogstashPipelinesResponse(AbstractModel):
+    """DeleteLogstashPipelines返回参数结构体
 
     """
 
@@ -975,6 +1175,295 @@ class DescribeInstancesResponse(AbstractModel):
                 obj = InstanceInfo()
                 obj._deserialize(item)
                 self.InstanceList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeLogstashInstanceLogsRequest(AbstractModel):
+    """DescribeLogstashInstanceLogs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param LogType: 日志类型，默认值为1
+<li>1, 主日志</li>
+<li>2, 慢日志</li>
+<li>3, GC日志</li>
+        :type LogType: int
+        :param SearchKey: 搜索词，支持LUCENE语法，如 level:WARN、ip:1.1.1.1、message:test-index等
+        :type SearchKey: str
+        :param StartTime: 日志开始时间，格式为YYYY-MM-DD HH:MM:SS, 如2019-01-22 20:15:53
+        :type StartTime: str
+        :param EndTime: 日志结束时间，格式为YYYY-MM-DD HH:MM:SS, 如2019-01-22 20:15:53
+        :type EndTime: str
+        :param Offset: 分页起始值, 默认值为0
+        :type Offset: int
+        :param Limit: 分页大小，默认值为100，最大值100
+        :type Limit: int
+        :param OrderByType: 时间排序方式，默认值为0
+<li>0, 降序</li>
+<li>1, 升序</li>
+        :type OrderByType: int
+        """
+        self.InstanceId = None
+        self.LogType = None
+        self.SearchKey = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Offset = None
+        self.Limit = None
+        self.OrderByType = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.LogType = params.get("LogType")
+        self.SearchKey = params.get("SearchKey")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.OrderByType = params.get("OrderByType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLogstashInstanceLogsResponse(AbstractModel):
+    """DescribeLogstashInstanceLogs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 返回的日志条数
+        :type TotalCount: int
+        :param InstanceLogList: 日志详细信息列表
+        :type InstanceLogList: list of InstanceLog
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.InstanceLogList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("InstanceLogList") is not None:
+            self.InstanceLogList = []
+            for item in params.get("InstanceLogList"):
+                obj = InstanceLog()
+                obj._deserialize(item)
+                self.InstanceLogList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeLogstashInstanceOperationsRequest(AbstractModel):
+    """DescribeLogstashInstanceOperations请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param StartTime: 起始时间, e.g. "2019-03-07 16:30:39"
+        :type StartTime: str
+        :param EndTime: 结束时间, e.g. "2019-03-30 20:18:03"
+        :type EndTime: str
+        :param Offset: 分页起始值
+        :type Offset: int
+        :param Limit: 分页大小
+        :type Limit: int
+        """
+        self.InstanceId = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLogstashInstanceOperationsResponse(AbstractModel):
+    """DescribeLogstashInstanceOperations返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 操作记录总数
+        :type TotalCount: int
+        :param Operations: 操作记录
+        :type Operations: list of Operation
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Operations = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Operations") is not None:
+            self.Operations = []
+            for item in params.get("Operations"):
+                obj = Operation()
+                obj._deserialize(item)
+                self.Operations.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeLogstashInstancesRequest(AbstractModel):
+    """DescribeLogstashInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Zone: 实例所属可用区，不传则默认所有可用区
+        :type Zone: str
+        :param InstanceIds: 实例ID列表
+        :type InstanceIds: list of str
+        :param InstanceNames: 实例名称列表
+        :type InstanceNames: list of str
+        :param Offset: 分页起始值, 默认值0
+        :type Offset: int
+        :param Limit: 分页大小，默认值20
+        :type Limit: int
+        :param OrderByKey: 排序字段<li>1：实例ID</li><li>2：实例名称</li><li>3：可用区</li><li>4：创建时间</li>若orderKey未传递则按创建时间降序排序
+        :type OrderByKey: int
+        :param OrderByType: 排序方式<li>0：升序</li><li>1：降序</li>若传递了orderByKey未传递orderByType, 则默认升序
+        :type OrderByType: int
+        """
+        self.Zone = None
+        self.InstanceIds = None
+        self.InstanceNames = None
+        self.Offset = None
+        self.Limit = None
+        self.OrderByKey = None
+        self.OrderByType = None
+
+
+    def _deserialize(self, params):
+        self.Zone = params.get("Zone")
+        self.InstanceIds = params.get("InstanceIds")
+        self.InstanceNames = params.get("InstanceNames")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.OrderByKey = params.get("OrderByKey")
+        self.OrderByType = params.get("OrderByType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLogstashInstancesResponse(AbstractModel):
+    """DescribeLogstashInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 返回的实例个数
+        :type TotalCount: int
+        :param InstanceList: 实例详细信息列表
+        :type InstanceList: list of LogstashInstanceInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.InstanceList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("InstanceList") is not None:
+            self.InstanceList = []
+            for item in params.get("InstanceList"):
+                obj = LogstashInstanceInfo()
+                obj._deserialize(item)
+                self.InstanceList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeLogstashPipelinesRequest(AbstractModel):
+    """DescribeLogstashPipelines请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLogstashPipelinesResponse(AbstractModel):
+    """DescribeLogstashPipelines返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 管道总数
+        :type TotalCount: int
+        :param LogstashPipelineList: 管道列表
+        :type LogstashPipelineList: list of LogstashPipelineInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.LogstashPipelineList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("LogstashPipelineList") is not None:
+            self.LogstashPipelineList = []
+            for item in params.get("LogstashPipelineList"):
+                obj = LogstashPipelineInfo()
+                obj._deserialize(item)
+                self.LogstashPipelineList.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -2149,6 +2638,361 @@ class LocalDiskInfo(AbstractModel):
         
 
 
+class LogstashBindedES(AbstractModel):
+    """Logstash绑定的ES集群信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ESInstanceId: ES集群ID
+        :type ESInstanceId: str
+        :param ESUserName: ES集群用户名
+        :type ESUserName: str
+        :param ESPassword: ES集群密码
+        :type ESPassword: str
+        """
+        self.ESInstanceId = None
+        self.ESUserName = None
+        self.ESPassword = None
+
+
+    def _deserialize(self, params):
+        self.ESInstanceId = params.get("ESInstanceId")
+        self.ESUserName = params.get("ESUserName")
+        self.ESPassword = params.get("ESPassword")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LogstashExtendedFile(AbstractModel):
+    """Logstash扩展文件信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 扩展文件名称
+        :type Name: str
+        :param Size: 扩展文件大小，单位B
+        :type Size: int
+        """
+        self.Name = None
+        self.Size = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Size = params.get("Size")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LogstashInstanceInfo(AbstractModel):
+    """Logstash实例详细信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param InstanceName: 实例名称
+        :type InstanceName: str
+        :param Region: 地域
+        :type Region: str
+        :param Zone: 可用区
+        :type Zone: str
+        :param AppId: 用户ID
+        :type AppId: int
+        :param Uin: 用户UIN
+        :type Uin: str
+        :param VpcId: 实例所属VPC的ID
+        :type VpcId: str
+        :param SubnetId: 实例所属子网的ID
+        :type SubnetId: str
+        :param Status: 实例状态，0:处理中,1:正常,-1停止,-2:销毁中,-3:已销毁
+        :type Status: int
+        :param ChargeType: 实例计费模式。取值范围：  PREPAID：表示预付费，即包年包月  POSTPAID_BY_HOUR：表示后付费，即按量计费  CDHPAID：CDH付费，即只对CDH计费，不对CDH上的实例计费。
+        :type ChargeType: str
+        :param ChargePeriod: 包年包月购买时长,单位:月
+        :type ChargePeriod: int
+        :param RenewFlag: 自动续费标识。取值范围：  NOTIFY_AND_AUTO_RENEW：通知过期且自动续费  NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费  DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费  默认取值：NOTIFY_AND_AUTO_RENEW。若该参数指定为NOTIFY_AND_AUTO_RENEW，在账户余额充足的情况下，实例到期后将按月自动续费。
+        :type RenewFlag: str
+        :param NodeType: 节点规格<li>LOGSTASH.S1.SMALL2：1核2G</li><li>LOGSTASH.S1.MEDIUM4：2核4G</li><li>LOGSTASH.S1.MEDIUM8：2核8G</li><li>LOGSTASH.S1.LARGE16：4核16G</li><li>LOGSTASH.S1.2XLARGE32：8核32G</li><li>LOGSTASH.S1.4XLARGE32：16核32G</li><li>LOGSTASH.S1.4XLARGE64：16核64G</li>
+        :type NodeType: str
+        :param NodeNum: 节点个数
+        :type NodeNum: int
+        :param DiskType: 节点磁盘类型
+        :type DiskType: str
+        :param DiskSize: 节点磁盘大小，单位GB
+        :type DiskSize: int
+        :param LogstashVersion: Logstash版本号
+        :type LogstashVersion: str
+        :param LicenseType: License类型<li>oss：开源版</li><li>xpack：基础版</li>默认值xpack
+        :type LicenseType: str
+        :param CreateTime: 实例创建时间
+        :type CreateTime: str
+        :param UpdateTime: 实例最后修改操作时间
+        :type UpdateTime: str
+        :param Deadline: 实例到期时间
+        :type Deadline: str
+        :param Nodes: 实例节点类型
+        :type Nodes: list of LogstashNodeInfo
+        :param BindedESInstanceId: 实例绑定的ES集群ID
+        :type BindedESInstanceId: str
+        :param YMLConfig: 实例的YML配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type YMLConfig: str
+        :param ExtendedFiles: 扩展文件列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExtendedFiles: list of LogstashExtendedFile
+        """
+        self.InstanceId = None
+        self.InstanceName = None
+        self.Region = None
+        self.Zone = None
+        self.AppId = None
+        self.Uin = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.Status = None
+        self.ChargeType = None
+        self.ChargePeriod = None
+        self.RenewFlag = None
+        self.NodeType = None
+        self.NodeNum = None
+        self.DiskType = None
+        self.DiskSize = None
+        self.LogstashVersion = None
+        self.LicenseType = None
+        self.CreateTime = None
+        self.UpdateTime = None
+        self.Deadline = None
+        self.Nodes = None
+        self.BindedESInstanceId = None
+        self.YMLConfig = None
+        self.ExtendedFiles = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.InstanceName = params.get("InstanceName")
+        self.Region = params.get("Region")
+        self.Zone = params.get("Zone")
+        self.AppId = params.get("AppId")
+        self.Uin = params.get("Uin")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.Status = params.get("Status")
+        self.ChargeType = params.get("ChargeType")
+        self.ChargePeriod = params.get("ChargePeriod")
+        self.RenewFlag = params.get("RenewFlag")
+        self.NodeType = params.get("NodeType")
+        self.NodeNum = params.get("NodeNum")
+        self.DiskType = params.get("DiskType")
+        self.DiskSize = params.get("DiskSize")
+        self.LogstashVersion = params.get("LogstashVersion")
+        self.LicenseType = params.get("LicenseType")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        self.Deadline = params.get("Deadline")
+        if params.get("Nodes") is not None:
+            self.Nodes = []
+            for item in params.get("Nodes"):
+                obj = LogstashNodeInfo()
+                obj._deserialize(item)
+                self.Nodes.append(obj)
+        self.BindedESInstanceId = params.get("BindedESInstanceId")
+        self.YMLConfig = params.get("YMLConfig")
+        if params.get("ExtendedFiles") is not None:
+            self.ExtendedFiles = []
+            for item in params.get("ExtendedFiles"):
+                obj = LogstashExtendedFile()
+                obj._deserialize(item)
+                self.ExtendedFiles.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LogstashNodeInfo(AbstractModel):
+    """Logstash节点信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NodeId: 节点ID
+        :type NodeId: str
+        :param Ip: 节点IP
+        :type Ip: str
+        :param Port: 节点端口
+        :type Port: int
+        """
+        self.NodeId = None
+        self.Ip = None
+        self.Port = None
+
+
+    def _deserialize(self, params):
+        self.NodeId = params.get("NodeId")
+        self.Ip = params.get("Ip")
+        self.Port = params.get("Port")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LogstashPipeline(AbstractModel):
+    """Logstash管道信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PipelineId: 管道ID
+        :type PipelineId: str
+        :param PipelineDesc: 管道描述信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PipelineDesc: str
+        :param Config: 管道配置内容
+        :type Config: str
+        :param Workers: 管道的Worker数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Workers: int
+        :param BatchSize: 管道批处理大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BatchSize: int
+        :param BatchDelay: 管道批处理延迟
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BatchDelay: int
+        :param QueueType: 管道缓冲队列类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QueueType: str
+        :param QueueMaxBytes: 管道缓冲队列大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QueueMaxBytes: str
+        :param QueueCheckPointWrites: 管道缓冲队列检查点写入数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QueueCheckPointWrites: int
+        """
+        self.PipelineId = None
+        self.PipelineDesc = None
+        self.Config = None
+        self.Workers = None
+        self.BatchSize = None
+        self.BatchDelay = None
+        self.QueueType = None
+        self.QueueMaxBytes = None
+        self.QueueCheckPointWrites = None
+
+
+    def _deserialize(self, params):
+        self.PipelineId = params.get("PipelineId")
+        self.PipelineDesc = params.get("PipelineDesc")
+        self.Config = params.get("Config")
+        self.Workers = params.get("Workers")
+        self.BatchSize = params.get("BatchSize")
+        self.BatchDelay = params.get("BatchDelay")
+        self.QueueType = params.get("QueueType")
+        self.QueueMaxBytes = params.get("QueueMaxBytes")
+        self.QueueCheckPointWrites = params.get("QueueCheckPointWrites")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LogstashPipelineInfo(AbstractModel):
+    """Logstash管道信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PipelineId: 管道ID
+        :type PipelineId: str
+        :param PipelineDesc: 管道描述信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PipelineDesc: str
+        :param Config: 管道配置内容
+        :type Config: str
+        :param Status: 管道状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param Workers: 管道的Worker数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Workers: int
+        :param BatchSize: 管道批处理大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BatchSize: int
+        :param BatchDelay: 管道批处理延迟
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BatchDelay: int
+        :param QueueType: 管道缓冲队列类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QueueType: str
+        :param QueueMaxBytes: 管道缓冲队列大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QueueMaxBytes: str
+        :param QueueCheckPointWrites: 管道缓冲队列检查点写入数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QueueCheckPointWrites: int
+        """
+        self.PipelineId = None
+        self.PipelineDesc = None
+        self.Config = None
+        self.Status = None
+        self.Workers = None
+        self.BatchSize = None
+        self.BatchDelay = None
+        self.QueueType = None
+        self.QueueMaxBytes = None
+        self.QueueCheckPointWrites = None
+
+
+    def _deserialize(self, params):
+        self.PipelineId = params.get("PipelineId")
+        self.PipelineDesc = params.get("PipelineDesc")
+        self.Config = params.get("Config")
+        self.Status = params.get("Status")
+        self.Workers = params.get("Workers")
+        self.BatchSize = params.get("BatchSize")
+        self.BatchDelay = params.get("BatchDelay")
+        self.QueueType = params.get("QueueType")
+        self.QueueMaxBytes = params.get("QueueMaxBytes")
+        self.QueueCheckPointWrites = params.get("QueueCheckPointWrites")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class MasterNodeInfo(AbstractModel):
     """实例专用主节点相关信息
 
@@ -2613,6 +3457,51 @@ class RestartKibanaResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class RestartLogstashInstanceRequest(AbstractModel):
+    """RestartLogstashInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param Type: 重启类型，0全量重启，1滚动重启
+        :type Type: int
+        """
+        self.InstanceId = None
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RestartLogstashInstanceResponse(AbstractModel):
+    """RestartLogstashInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class RestartNodesRequest(AbstractModel):
     """RestartNodes请求参数结构体
 
@@ -2647,6 +3536,147 @@ class RestartNodesRequest(AbstractModel):
 
 class RestartNodesResponse(AbstractModel):
     """RestartNodes返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class SaveAndDeployLogstashPipelineRequest(AbstractModel):
+    """SaveAndDeployLogstashPipeline请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param Pipeline: 实例管道信息
+        :type Pipeline: :class:`tencentcloud.es.v20180416.models.LogstashPipeline`
+        :param OpType: 操作类型<li>1：只保存</li><li>2：保存并部署</li>
+        :type OpType: int
+        """
+        self.InstanceId = None
+        self.Pipeline = None
+        self.OpType = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        if params.get("Pipeline") is not None:
+            self.Pipeline = LogstashPipeline()
+            self.Pipeline._deserialize(params.get("Pipeline"))
+        self.OpType = params.get("OpType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SaveAndDeployLogstashPipelineResponse(AbstractModel):
+    """SaveAndDeployLogstashPipeline返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class StartLogstashPipelinesRequest(AbstractModel):
+    """StartLogstashPipelines请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param PipelineIds: 管道ID列表
+        :type PipelineIds: list of str
+        """
+        self.InstanceId = None
+        self.PipelineIds = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.PipelineIds = params.get("PipelineIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StartLogstashPipelinesResponse(AbstractModel):
+    """StartLogstashPipelines返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class StopLogstashPipelinesRequest(AbstractModel):
+    """StopLogstashPipelines请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param PipelineIds: 管道ID列表
+        :type PipelineIds: list of str
+        """
+        self.InstanceId = None
+        self.PipelineIds = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.PipelineIds = params.get("PipelineIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StopLogstashPipelinesResponse(AbstractModel):
+    """StopLogstashPipelines返回参数结构体
 
     """
 
@@ -3190,6 +4220,131 @@ class UpdateJdkRequest(AbstractModel):
 
 class UpdateJdkResponse(AbstractModel):
     """UpdateJdk返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UpdateLogstashInstanceRequest(AbstractModel):
+    """UpdateLogstashInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param NodeNum: 实例节点数量
+        :type NodeNum: int
+        :param YMLConfig: 实例YML配置
+        :type YMLConfig: str
+        :param BindedES: 实例绑定的ES集群信息
+        :type BindedES: :class:`tencentcloud.es.v20180416.models.LogstashBindedES`
+        :param InstanceName: 实例名称
+        :type InstanceName: str
+        :param ExtendedFiles: 扩展文件列表
+        :type ExtendedFiles: list of LogstashExtendedFile
+        :param NodeType: 实例规格
+        :type NodeType: str
+        :param DiskSize: 节点磁盘容量
+        :type DiskSize: int
+        """
+        self.InstanceId = None
+        self.NodeNum = None
+        self.YMLConfig = None
+        self.BindedES = None
+        self.InstanceName = None
+        self.ExtendedFiles = None
+        self.NodeType = None
+        self.DiskSize = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.NodeNum = params.get("NodeNum")
+        self.YMLConfig = params.get("YMLConfig")
+        if params.get("BindedES") is not None:
+            self.BindedES = LogstashBindedES()
+            self.BindedES._deserialize(params.get("BindedES"))
+        self.InstanceName = params.get("InstanceName")
+        if params.get("ExtendedFiles") is not None:
+            self.ExtendedFiles = []
+            for item in params.get("ExtendedFiles"):
+                obj = LogstashExtendedFile()
+                obj._deserialize(item)
+                self.ExtendedFiles.append(obj)
+        self.NodeType = params.get("NodeType")
+        self.DiskSize = params.get("DiskSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateLogstashInstanceResponse(AbstractModel):
+    """UpdateLogstashInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UpdateLogstashPipelineDescRequest(AbstractModel):
+    """UpdateLogstashPipelineDesc请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param PipelineId: 实例管道ID
+        :type PipelineId: str
+        :param PipelineDesc: 管道描述信息
+        :type PipelineDesc: str
+        """
+        self.InstanceId = None
+        self.PipelineId = None
+        self.PipelineDesc = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.PipelineId = params.get("PipelineId")
+        self.PipelineDesc = params.get("PipelineDesc")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateLogstashPipelineDescResponse(AbstractModel):
+    """UpdateLogstashPipelineDesc返回参数结构体
 
     """
 

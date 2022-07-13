@@ -149,6 +149,89 @@ class CallDeviceActionSyncResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateProductRequest(AbstractModel):
+    """CreateProduct请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProductName: 产品名称
+        :type ProductName: str
+        :param DeviceType: 产品设备类型 1.普通设备 2.NVR设备
+        :type DeviceType: int
+        :param ProductVaildYears: 产品有效期
+        :type ProductVaildYears: int
+        :param Features: 设备功能码 ypsxth音频双向通话 spdxth视频单向通话 sxysp双向音视频
+        :type Features: list of str
+        :param ChipOs: 设备操作系统，通用设备填default
+        :type ChipOs: str
+        :param ChipManufactureId: 芯片厂商id，通用设备填default
+        :type ChipManufactureId: str
+        :param ChipId: 芯片id，通用设备填default
+        :type ChipId: str
+        :param ProductDescription: 产品描述信息
+        :type ProductDescription: str
+        :param EncryptionType: 认证方式 只支持取值为2 psk认证
+        :type EncryptionType: int
+        :param NetType: 连接类型，wifi表示WIFI连接，cellular表示4G连接
+        :type NetType: str
+        """
+        self.ProductName = None
+        self.DeviceType = None
+        self.ProductVaildYears = None
+        self.Features = None
+        self.ChipOs = None
+        self.ChipManufactureId = None
+        self.ChipId = None
+        self.ProductDescription = None
+        self.EncryptionType = None
+        self.NetType = None
+
+
+    def _deserialize(self, params):
+        self.ProductName = params.get("ProductName")
+        self.DeviceType = params.get("DeviceType")
+        self.ProductVaildYears = params.get("ProductVaildYears")
+        self.Features = params.get("Features")
+        self.ChipOs = params.get("ChipOs")
+        self.ChipManufactureId = params.get("ChipManufactureId")
+        self.ChipId = params.get("ChipId")
+        self.ProductDescription = params.get("ProductDescription")
+        self.EncryptionType = params.get("EncryptionType")
+        self.NetType = params.get("NetType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateProductResponse(AbstractModel):
+    """CreateProduct返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 产品详情
+        :type Data: :class:`tencentcloud.iotvideo.v20211125.models.VideoProduct`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = VideoProduct()
+            self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDeviceDataStatsRequest(AbstractModel):
     """DescribeDeviceDataStats请求参数结构体
 
@@ -321,6 +404,89 @@ class DeviceCntStats(AbstractModel):
         
 
 
+class DeviceSignatureInfo(AbstractModel):
+    """设备签名信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DeviceName: 设备名称
+        :type DeviceName: str
+        :param DeviceSignature: 设备签名
+        :type DeviceSignature: str
+        """
+        self.DeviceName = None
+        self.DeviceSignature = None
+
+
+    def _deserialize(self, params):
+        self.DeviceName = params.get("DeviceName")
+        self.DeviceSignature = params.get("DeviceSignature")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GenSingleDeviceSignatureOfPublicRequest(AbstractModel):
+    """GenSingleDeviceSignatureOfPublic请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProductId: 设备所属的产品ID
+        :type ProductId: str
+        :param DeviceName: 需要绑定的设备
+        :type DeviceName: str
+        :param Expire: 设备绑定签名的有效时间,以秒为单位。取值范围：0 < Expire <= 86400，Expire == -1（十年）
+        :type Expire: int
+        """
+        self.ProductId = None
+        self.DeviceName = None
+        self.Expire = None
+
+
+    def _deserialize(self, params):
+        self.ProductId = params.get("ProductId")
+        self.DeviceName = params.get("DeviceName")
+        self.Expire = params.get("Expire")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GenSingleDeviceSignatureOfPublicResponse(AbstractModel):
+    """GenSingleDeviceSignatureOfPublic返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DeviceSignature: 设备签名信息
+        :type DeviceSignature: :class:`tencentcloud.iotvideo.v20211125.models.DeviceSignatureInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DeviceSignature = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DeviceSignature") is not None:
+            self.DeviceSignature = DeviceSignatureInfo()
+            self.DeviceSignature._deserialize(params.get("DeviceSignature"))
+        self.RequestId = params.get("RequestId")
+
+
 class MessageCntStats(AbstractModel):
     """消息数量统计
 
@@ -351,6 +517,75 @@ class MessageCntStats(AbstractModel):
         self.UpMsgCnt = params.get("UpMsgCnt")
         self.DownMsgCnt = params.get("DownMsgCnt")
         self.NtpMsgCnt = params.get("NtpMsgCnt")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VideoProduct(AbstractModel):
+    """video产品元数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProductId: 产品ID
+        :type ProductId: str
+        :param ProductName: 产品名称
+        :type ProductName: str
+        :param DeviceType: 产品设备类型（普通设备)	1.普通设备
+        :type DeviceType: int
+        :param EncryptionType: 认证方式：2：PSK
+        :type EncryptionType: int
+        :param Features: 设备功能码
+        :type Features: list of str
+        :param ChipOs: 操作系统
+        :type ChipOs: str
+        :param ChipManufactureId: 芯片厂商id
+        :type ChipManufactureId: str
+        :param ChipId: 芯片id
+        :type ChipId: str
+        :param ProductDescription: 产品描述信息
+        :type ProductDescription: str
+        :param CreateTime: 创建时间unix时间戳
+        :type CreateTime: int
+        :param UpdateTime: 修改时间unix时间戳
+        :type UpdateTime: int
+        :param NetType: 连接类型，wifi表示WIFI连接，cellular表示4G连接
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NetType: str
+        """
+        self.ProductId = None
+        self.ProductName = None
+        self.DeviceType = None
+        self.EncryptionType = None
+        self.Features = None
+        self.ChipOs = None
+        self.ChipManufactureId = None
+        self.ChipId = None
+        self.ProductDescription = None
+        self.CreateTime = None
+        self.UpdateTime = None
+        self.NetType = None
+
+
+    def _deserialize(self, params):
+        self.ProductId = params.get("ProductId")
+        self.ProductName = params.get("ProductName")
+        self.DeviceType = params.get("DeviceType")
+        self.EncryptionType = params.get("EncryptionType")
+        self.Features = params.get("Features")
+        self.ChipOs = params.get("ChipOs")
+        self.ChipManufactureId = params.get("ChipManufactureId")
+        self.ChipId = params.get("ChipId")
+        self.ProductDescription = params.get("ProductDescription")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        self.NetType = params.get("NetType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

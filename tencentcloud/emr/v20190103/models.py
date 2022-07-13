@@ -4462,6 +4462,8 @@ class ScaleOutInstanceRequest(AbstractModel):
         :type ZoneId: int
         :param SubnetId: 子网，默认是集群创建时的子网
         :type SubnetId: str
+        :param ScaleOutServiceConfAssign: 预设配置组
+        :type ScaleOutServiceConfAssign: str
         """
         self.TimeUnit = None
         self.TimeSpan = None
@@ -4487,6 +4489,7 @@ class ScaleOutInstanceRequest(AbstractModel):
         self.StartServiceAfterScaleOut = None
         self.ZoneId = None
         self.SubnetId = None
+        self.ScaleOutServiceConfAssign = None
 
 
     def _deserialize(self, params):
@@ -4528,6 +4531,7 @@ class ScaleOutInstanceRequest(AbstractModel):
         self.StartServiceAfterScaleOut = params.get("StartServiceAfterScaleOut")
         self.ZoneId = params.get("ZoneId")
         self.SubnetId = params.get("SubnetId")
+        self.ScaleOutServiceConfAssign = params.get("ScaleOutServiceConfAssign")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

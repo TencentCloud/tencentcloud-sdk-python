@@ -462,35 +462,6 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeCustomRules(self, request):
-        """获取防护配置中的自定义策略列表
-
-        :param request: Request instance for DescribeCustomRules.
-        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeCustomRulesRequest`
-        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeCustomRulesResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeCustomRules", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeCustomRulesResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def DescribeDomainWhiteRules(self, request):
         """获取域名的规则白名单
 

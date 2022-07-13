@@ -55,6 +55,35 @@ class GaapClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def BanAndRecoverProxy(self, request):
+        """本接口（BanAndRecoverProxy）用于联通封禁解封GAAP跨境通道实例，支持按照客户UIN维度下发请求。被封禁的实例带宽上限将会被限制到0Mbps，无法正常处理客户端和源站之间的请求。
+
+        :param request: Request instance for BanAndRecoverProxy.
+        :type request: :class:`tencentcloud.gaap.v20180529.models.BanAndRecoverProxyRequest`
+        :rtype: :class:`tencentcloud.gaap.v20180529.models.BanAndRecoverProxyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BanAndRecoverProxy", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.BanAndRecoverProxyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def BindListenerRealServers(self, request):
         """本接口（BindListenerRealServers）用于TCP/UDP监听器绑定解绑源站。
         注意：本接口会解绑之前绑定的源站，绑定本次调用所选择的源站。例如：原来绑定的源站为A，B，C，本次调用的选择绑定的源站为C，D，E，那么调用后所绑定的源站为C，D，E。
@@ -1087,6 +1116,35 @@ class GaapClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCountryAreaMappingResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeCrossBorderProxies(self, request):
+        """本接口（DescribeCrossBorderProxies）用于查询跨境通道实例列表。
+
+        :param request: Request instance for DescribeCrossBorderProxies.
+        :type request: :class:`tencentcloud.gaap.v20180529.models.DescribeCrossBorderProxiesRequest`
+        :rtype: :class:`tencentcloud.gaap.v20180529.models.DescribeCrossBorderProxiesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCrossBorderProxies", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCrossBorderProxiesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

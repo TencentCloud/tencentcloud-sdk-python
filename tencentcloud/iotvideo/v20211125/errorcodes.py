@@ -13,3 +13,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+
+# 操作失败。
+FAILEDOPERATION = 'FailedOperation'
+
+# 内部错误。
+INTERNALERROR = 'InternalError'
+
+# 参数错误。
+INVALIDPARAMETER = 'InvalidParameter'
+
+# 操作不支持。
+UNSUPPORTEDOPERATION = 'UnsupportedOperation'
