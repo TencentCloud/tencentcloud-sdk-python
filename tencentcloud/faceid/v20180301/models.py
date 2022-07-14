@@ -1153,79 +1153,6 @@ class DetectInfoVideoData(AbstractModel):
         
 
 
-class DetectReflectLivenessAndCompareRequest(AbstractModel):
-    """DetectReflectLivenessAndCompare请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param LiveDataUrl: SDK生成的活体检测数据包的资源地址。
-        :type LiveDataUrl: str
-        :param LiveDataMd5: SDK生成的活体检测数据包的资源内容MD5（32位，用于校验LiveData的一致性）。
-        :type LiveDataMd5: str
-        :param ImageUrl: 用于比对的目标图片的资源地址。
-        :type ImageUrl: str
-        :param ImageMd5: 用于比对的目标图片的资源MD5（32位，用于校验Image的一致性）。
-        :type ImageMd5: str
-        """
-        self.LiveDataUrl = None
-        self.LiveDataMd5 = None
-        self.ImageUrl = None
-        self.ImageMd5 = None
-
-
-    def _deserialize(self, params):
-        self.LiveDataUrl = params.get("LiveDataUrl")
-        self.LiveDataMd5 = params.get("LiveDataMd5")
-        self.ImageUrl = params.get("ImageUrl")
-        self.ImageMd5 = params.get("ImageMd5")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DetectReflectLivenessAndCompareResponse(AbstractModel):
-    """DetectReflectLivenessAndCompare返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param BestFrameUrl: 验证通过后的视频最佳截图资源临时地址，jpg格式，资源和链接有效期2小时，务必在有效期内下载。
-        :type BestFrameUrl: str
-        :param BestFrameMd5: 验证通过后的视频最佳截图资源MD5（32位，用于校验BestFrame的一致性）。
-        :type BestFrameMd5: str
-        :param Result: 业务错误码，成功情况返回Success，错误情况请参考下方错误码 列表中FailedOperation部分。
-        :type Result: str
-        :param Description: 业务结果描述。
-        :type Description: str
-        :param Sim: 相似度，取值范围 [0.00, 100.00]。推荐相似度大于等于70时可判断为同一人，可根据具体场景自行调整阈值（阈值70的误通过率为千分之一，阈值80的误通过率是万分之一）。
-        :type Sim: float
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.BestFrameUrl = None
-        self.BestFrameMd5 = None
-        self.Result = None
-        self.Description = None
-        self.Sim = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.BestFrameUrl = params.get("BestFrameUrl")
-        self.BestFrameMd5 = params.get("BestFrameMd5")
-        self.Result = params.get("Result")
-        self.Description = params.get("Description")
-        self.Sim = params.get("Sim")
-        self.RequestId = params.get("RequestId")
-
-
 class EidInfo(AbstractModel):
     """Eid出参，包括商户方用户的标识和加密的用户姓名身份证信息。
 
@@ -1347,7 +1274,7 @@ class Encryption(AbstractModel):
         :type CiphertextBlob: str
         :param EncryptList: 在使用加密服务时，填入要被加密的字段。本接口中可填入加密后的一个或多个字段
         :type EncryptList: list of str
-        :param Iv: 有加密需求的用户，传入CBC加密的初始向量
+        :param Iv: 有加密需求的用户，传入CBC加密的初始向量（客户自定义字符串，长度16字符）。
         :type Iv: str
         """
         self.CiphertextBlob = None
@@ -1634,7 +1561,7 @@ class GetEidResultRequest(AbstractModel):
         r"""
         :param EidToken: E证通流程的唯一标识，调用GetEidToken接口时生成。
         :type EidToken: str
-        :param InfoType: 指定拉取的结果信息，取值（0：全部；1：文本类；2：身份证信息；3：最佳截图信息）。
+        :param InfoType: 指定拉取的结果信息，取值（0：全部；1：文本类；2：身份证信息；3：最佳截图信息；5：意愿核身相关结果；）。
 如 13表示拉取文本类、最佳截图信息。
 默认值：0
         :type InfoType: str
@@ -1678,6 +1605,9 @@ class GetEidResultResponse(AbstractModel):
         :param EidInfo: Eid信息。（包括商户下用户唯一标识以及加密后的姓名、身份证号信息。解密方式详见[E证通获取实名信息指引](https://cloud.tencent.com/document/product/1007/63370)）
 注意：此字段可能返回 null，表示取不到有效值。
         :type EidInfo: :class:`tencentcloud.faceid.v20180301.models.EidInfo`
+        :param IntentionVerifyData: 意愿核身相关信息。若未使用意愿核身功能，该字段返回值可以不处理。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IntentionVerifyData: :class:`tencentcloud.faceid.v20180301.models.IntentionVerifyData`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1685,6 +1615,7 @@ class GetEidResultResponse(AbstractModel):
         self.IdCardData = None
         self.BestFrame = None
         self.EidInfo = None
+        self.IntentionVerifyData = None
         self.RequestId = None
 
 
@@ -1701,6 +1632,9 @@ class GetEidResultResponse(AbstractModel):
         if params.get("EidInfo") is not None:
             self.EidInfo = EidInfo()
             self.EidInfo._deserialize(params.get("EidInfo"))
+        if params.get("IntentionVerifyData") is not None:
+            self.IntentionVerifyData = IntentionVerifyData()
+            self.IntentionVerifyData._deserialize(params.get("IntentionVerifyData"))
         self.RequestId = params.get("RequestId")
 
 
@@ -1719,12 +1653,20 @@ class GetEidTokenConfig(AbstractModel):
 默认1
 注：使用OCR时仅支持用户修改结果中的姓名
         :type InputType: str
+        :param UseIntentionVerify: 是否使用意愿核身，默认不使用。注意：如开启使用，则计费标签按【意愿核身】计费标签计价；如不开启，则计费标签按【E证通】计费标签计价，价格详见：[价格说明](https://cloud.tencent.com/document/product/1007/56804)。
+        :type UseIntentionVerify: bool
+        :param IntentionVerifyText: 意愿核身使用的文案，若未使用意愿核身功能，该字段无需传入。默认为空，最长可接受120的字符串长度。
+        :type IntentionVerifyText: str
         """
         self.InputType = None
+        self.UseIntentionVerify = None
+        self.IntentionVerifyText = None
 
 
     def _deserialize(self, params):
         self.InputType = params.get("InputType")
+        self.UseIntentionVerify = params.get("UseIntentionVerify")
+        self.IntentionVerifyText = params.get("IntentionVerifyText")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1750,7 +1692,7 @@ class GetEidTokenRequest(AbstractModel):
         :type Name: str
         :param Extra: 透传字段，在获取验证结果时返回。最长长度1024位。
         :type Extra: str
-        :param Config: 小程序模式配置，包括如何传入姓名身份证的配置。
+        :param Config: 小程序模式配置，包括如何传入姓名身份证的配置，以及是否使用意愿核身。
         :type Config: :class:`tencentcloud.faceid.v20180301.models.GetEidTokenConfig`
         :param RedirectUrl: 最长长度1024位。用户从Url中进入核身认证结束后重定向的回调链接地址。EidToken会在该链接的query参数中。
         :type RedirectUrl: str

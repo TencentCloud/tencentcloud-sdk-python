@@ -287,36 +287,6 @@ class FaceidClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DetectReflectLivenessAndCompare(self, request):
-        """使用活体比对（光线）SDK生成的数据包检测活体，并和传入的图片进行比对。
-        图片和SDK生成的数据内容必须存储在腾讯云COS，COS Bucket所在的Region需要和本接口请求的Region保持一致，推荐使用生成上传链接接口来完成资源传递。
-
-        :param request: Request instance for DetectReflectLivenessAndCompare.
-        :type request: :class:`tencentcloud.faceid.v20180301.models.DetectReflectLivenessAndCompareRequest`
-        :rtype: :class:`tencentcloud.faceid.v20180301.models.DetectReflectLivenessAndCompareResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DetectReflectLivenessAndCompare", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DetectReflectLivenessAndCompareResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def EncryptedPhoneVerification(self, request):
         """本接口用于校验手机号、姓名和身份证号的真实性和一致性，入参支持明文、MD5和SHA256加密传输。
 

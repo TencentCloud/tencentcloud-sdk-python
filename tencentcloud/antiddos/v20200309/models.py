@@ -6565,6 +6565,8 @@ class L7RuleEntry(AbstractModel):
         :type SSLId: str
         :param Id: 同ruleId
         :type Id: str
+        :param CCAIEnable: 智能cc开关，取值[0(关闭), 1(开启)]
+        :type CCAIEnable: int
         """
         self.KeepTime = None
         self.Domain = None
@@ -6587,6 +6589,7 @@ class L7RuleEntry(AbstractModel):
         self.VirtualPort = None
         self.SSLId = None
         self.Id = None
+        self.CCAIEnable = None
 
 
     def _deserialize(self, params):
@@ -6616,6 +6619,7 @@ class L7RuleEntry(AbstractModel):
         self.VirtualPort = params.get("VirtualPort")
         self.SSLId = params.get("SSLId")
         self.Id = params.get("Id")
+        self.CCAIEnable = params.get("CCAIEnable")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

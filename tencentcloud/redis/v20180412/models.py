@@ -678,6 +678,10 @@ TypeId为标准架构时，MemSize是实例总内存容量；TypeId为集群架�
         :type TemplateId: str
         :param DryRun: false ：默认值,发送正常请求，通过检查后直接创建实例 true：发送检查请求，不会创建实例。
         :type DryRun: bool
+        :param ProductVersion: "local"本地盘版，"cloud"云盘版，"cdc"独享集群版，如果不传默认发货为本地盘版本
+        :type ProductVersion: str
+        :param RedisClusterId: 独享集群id，ProductVersion="cdc"时必传
+        :type RedisClusterId: str
         """
         self.TypeId = None
         self.MemSize = None
@@ -702,6 +706,8 @@ TypeId为标准架构时，MemSize是实例总内存容量；TypeId为集群架�
         self.ZoneName = None
         self.TemplateId = None
         self.DryRun = None
+        self.ProductVersion = None
+        self.RedisClusterId = None
 
 
     def _deserialize(self, params):
@@ -738,6 +744,8 @@ TypeId为标准架构时，MemSize是实例总内存容量；TypeId为集群架�
         self.ZoneName = params.get("ZoneName")
         self.TemplateId = params.get("TemplateId")
         self.DryRun = params.get("DryRun")
+        self.ProductVersion = params.get("ProductVersion")
+        self.RedisClusterId = params.get("RedisClusterId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3881,6 +3889,8 @@ TypeId为标准架构时，MemSize是实例总内存容量；TypeId为集群架�
         :type ReplicasReadonly: bool
         :param ZoneName: 实例所属的可用区名称，可参考[地域和可用区](https://cloud.tencent.com/document/product/239/4106)  。
         :type ZoneName: str
+        :param ProductVersion: "local"本地盘版，"cloud"云盘版，"cdc"独享集群版，如果不传默认询价为本地盘版本
+        :type ProductVersion: str
         """
         self.TypeId = None
         self.MemSize = None
@@ -3892,6 +3902,7 @@ TypeId为标准架构时，MemSize是实例总内存容量；TypeId为集群架�
         self.RedisReplicasNum = None
         self.ReplicasReadonly = None
         self.ZoneName = None
+        self.ProductVersion = None
 
 
     def _deserialize(self, params):
@@ -3905,6 +3916,7 @@ TypeId为标准架构时，MemSize是实例总内存容量；TypeId为集群架�
         self.RedisReplicasNum = params.get("RedisReplicasNum")
         self.ReplicasReadonly = params.get("ReplicasReadonly")
         self.ZoneName = params.get("ZoneName")
+        self.ProductVersion = params.get("ProductVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -1456,6 +1456,10 @@ class CreateExporterIntegrationRequest(AbstractModel):
         r"""
         :param InstanceId: 实例 ID
         :type InstanceId: str
+        :param Kind: 类型
+        :type Kind: str
+        :param Content: 集成配置
+        :type Content: str
         :param KubeType: Kubernetes 集群类型，取值如下：
 <li> 1= 容器集群(TKE) </li>
 <li> 2=弹性集群<EKS> </li>
@@ -1463,24 +1467,20 @@ class CreateExporterIntegrationRequest(AbstractModel):
         :type KubeType: int
         :param ClusterId: 集群 ID
         :type ClusterId: str
-        :param Kind: 类型
-        :type Kind: str
-        :param Content: 集成配置
-        :type Content: str
         """
         self.InstanceId = None
-        self.KubeType = None
-        self.ClusterId = None
         self.Kind = None
         self.Content = None
+        self.KubeType = None
+        self.ClusterId = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
-        self.KubeType = params.get("KubeType")
-        self.ClusterId = params.get("ClusterId")
         self.Kind = params.get("Kind")
         self.Content = params.get("Content")
+        self.KubeType = params.get("KubeType")
+        self.ClusterId = params.get("ClusterId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1497,13 +1497,17 @@ class CreateExporterIntegrationResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param Names: 返回创建成功的集成名称列表
+        :type Names: list of str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.Names = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.Names = params.get("Names")
         self.RequestId = params.get("RequestId")
 
 
@@ -1729,13 +1733,17 @@ class CreatePrometheusAgentResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param AgentId: 创建成功的 Agent Id
+        :type AgentId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.AgentId = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.AgentId = params.get("AgentId")
         self.RequestId = params.get("RequestId")
 
 
@@ -1852,13 +1860,17 @@ class CreatePrometheusScrapeJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param JobId: 成功创建抓取任务 Id
+        :type JobId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.JobId = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.JobId = params.get("JobId")
         self.RequestId = params.get("RequestId")
 
 

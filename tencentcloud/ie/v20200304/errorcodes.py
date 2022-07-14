@@ -65,6 +65,9 @@ INTERNALERROR = 'InternalError'
 # 参数错误。
 INVALIDPARAMETER = 'InvalidParameter'
 
+# 不支持直播流。
+INVALIDPARAMETER_LIVESTREAMNOTSUPPORT = 'InvalidParameter.LiveStreamNotSupport'
+
 # 参数取值错误。
 INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 

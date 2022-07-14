@@ -16356,6 +16356,12 @@ class MalwareInfo(AbstractModel):
         :param Uuid: 主机uuid
 注意：此字段可能返回 null，表示取不到有效值。
         :type Uuid: str
+        :param ModifyTime: 最近修改时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifyTime: str
+        :param StrFileAccessTime: 最近访问时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StrFileAccessTime: str
         """
         self.VirusName = None
         self.FileSize = None
@@ -16384,6 +16390,8 @@ class MalwareInfo(AbstractModel):
         self.Level = None
         self.CheckPlatform = None
         self.Uuid = None
+        self.ModifyTime = None
+        self.StrFileAccessTime = None
 
 
     def _deserialize(self, params):
@@ -16414,6 +16422,8 @@ class MalwareInfo(AbstractModel):
         self.Level = params.get("Level")
         self.CheckPlatform = params.get("CheckPlatform")
         self.Uuid = params.get("Uuid")
+        self.ModifyTime = params.get("ModifyTime")
+        self.StrFileAccessTime = params.get("StrFileAccessTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
