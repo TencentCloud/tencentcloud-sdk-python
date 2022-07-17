@@ -238,6 +238,8 @@ class Cluster(AbstractModel):
 - TKE
 - EKS
         :type Type: str
+        :param HostedNamespaces: 集群关联的 Namespace 列表
+        :type HostedNamespaces: list of str
         """
         self.ClusterId = None
         self.Region = None
@@ -250,6 +252,7 @@ class Cluster(AbstractModel):
         self.Config = None
         self.Status = None
         self.Type = None
+        self.HostedNamespaces = None
 
 
     def _deserialize(self, params):
@@ -268,6 +271,7 @@ class Cluster(AbstractModel):
             self.Status = ClusterStatus()
             self.Status._deserialize(params.get("Status"))
         self.Type = params.get("Type")
+        self.HostedNamespaces = params.get("HostedNamespaces")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -598,6 +602,76 @@ class EgressGateway(AbstractModel):
         
 
 
+class ExtensiveCluster(AbstractModel):
+    """内网独占集群配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: Cluster ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterId: str
+        :param Zone: 可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Zone: str
+        """
+        self.ClusterId = None
+        self.Zone = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.Zone = params.get("Zone")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExtensiveClusters(AbstractModel):
+    """内网独占集群配置列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param L4Clusters: 4层集群配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type L4Clusters: list of ExtensiveCluster
+        :param L7Clusters: 7层集群配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type L7Clusters: list of ExtensiveCluster
+        """
+        self.L4Clusters = None
+        self.L7Clusters = None
+
+
+    def _deserialize(self, params):
+        if params.get("L4Clusters") is not None:
+            self.L4Clusters = []
+            for item in params.get("L4Clusters"):
+                obj = ExtensiveCluster()
+                obj._deserialize(item)
+                self.L4Clusters.append(obj)
+        if params.get("L7Clusters") is not None:
+            self.L7Clusters = []
+            for item in params.get("L7Clusters"):
+                obj = ExtensiveCluster()
+                obj._deserialize(item)
+                self.L7Clusters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Filter(AbstractModel):
     """键值对过滤器，用于条件过滤查询。例如过滤ID、名称等
 
@@ -904,13 +978,37 @@ OPEN：公网属性， INTERNAL：内网属性。
         :type SubnetId: str
         :param InternetChargeType: TRAFFIC_POSTPAID_BY_HOUR 按流量按小时后计费 ; BANDWIDTH_POSTPAID_BY_HOUR 按带宽按小时后计费;只读。
         :type InternetChargeType: str
-        :param InternetMaxBandwidthOut: 最大出带宽，单位Mbps，范围支持0到2048，仅对公网属性的LB生效，默认值 10
+        :param InternetMaxBandwidthOut: 最大出带宽，单位Mbps，仅对公网属性的LB生效，默认值 10
         :type InternetMaxBandwidthOut: int
+        :param ZoneID: 可用区 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ZoneID: str
+        :param VipIsp: 运营商类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VipIsp: str
+        :param TgwGroupName: TGW Group 名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TgwGroupName: str
+        :param AddressIPVersion: IP 类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AddressIPVersion: str
+        :param Tags: 标签列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
+        :param ExtensiveClusters: 内网独占集群配置列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExtensiveClusters: :class:`tencentcloud.tcm.v20210413.models.ExtensiveClusters`
         """
         self.LoadBalancerType = None
         self.SubnetId = None
         self.InternetChargeType = None
         self.InternetMaxBandwidthOut = None
+        self.ZoneID = None
+        self.VipIsp = None
+        self.TgwGroupName = None
+        self.AddressIPVersion = None
+        self.Tags = None
+        self.ExtensiveClusters = None
 
 
     def _deserialize(self, params):
@@ -918,6 +1016,19 @@ OPEN：公网属性， INTERNAL：内网属性。
         self.SubnetId = params.get("SubnetId")
         self.InternetChargeType = params.get("InternetChargeType")
         self.InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
+        self.ZoneID = params.get("ZoneID")
+        self.VipIsp = params.get("VipIsp")
+        self.TgwGroupName = params.get("TgwGroupName")
+        self.AddressIPVersion = params.get("AddressIPVersion")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        if params.get("ExtensiveClusters") is not None:
+            self.ExtensiveClusters = ExtensiveClusters()
+            self.ExtensiveClusters._deserialize(params.get("ExtensiveClusters"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1529,6 +1640,38 @@ class Service(AbstractModel):
         
 
 
+class Tag(AbstractModel):
+    """标签
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Key: 标签键
+        :type Key: str
+        :param Value: 标签值
+        :type Value: str
+        :param Passthrough: 是否透传给其他关联产品
+        :type Passthrough: bool
+        """
+        self.Key = None
+        self.Value = None
+        self.Passthrough = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Value = params.get("Value")
+        self.Passthrough = params.get("Passthrough")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TracingConfig(AbstractModel):
     """调用链配置
 
@@ -1608,11 +1751,18 @@ class WorkloadConfig(AbstractModel):
         :type HorizontalPodAutoscaler: :class:`tencentcloud.tcm.v20210413.models.HorizontalPodAutoscalerSpec`
         :param SelectedNodeList: 部署到指定节点
         :type SelectedNodeList: list of str
+        :param DeployMode: 组件的部署模式，取值说明：
+IN_GENERAL_NODE：常规节点
+IN_EKLET：eklet 节点
+IN_SHARED_NODE_POOL：共享节电池
+IN_EXCLUSIVE_NODE_POOL：独占节点池
+        :type DeployMode: str
         """
         self.Replicas = None
         self.Resources = None
         self.HorizontalPodAutoscaler = None
         self.SelectedNodeList = None
+        self.DeployMode = None
 
 
     def _deserialize(self, params):
@@ -1624,6 +1774,7 @@ class WorkloadConfig(AbstractModel):
             self.HorizontalPodAutoscaler = HorizontalPodAutoscalerSpec()
             self.HorizontalPodAutoscaler._deserialize(params.get("HorizontalPodAutoscaler"))
         self.SelectedNodeList = params.get("SelectedNodeList")
+        self.DeployMode = params.get("DeployMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

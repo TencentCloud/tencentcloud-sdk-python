@@ -753,6 +753,35 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def GetAttackDownloadRecords(self, request):
+        """查询下载攻击日志任务记录列表
+
+        :param request: Request instance for GetAttackDownloadRecords.
+        :type request: :class:`tencentcloud.waf.v20180125.models.GetAttackDownloadRecordsRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.GetAttackDownloadRecordsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetAttackDownloadRecords", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetAttackDownloadRecordsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyAccessPeriod(self, request):
         """本接口用于修改访问日志保存期限
 

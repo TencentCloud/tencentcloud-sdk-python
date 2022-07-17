@@ -196,6 +196,128 @@ class ActionConfigInfo(AbstractModel):
         
 
 
+class ActivityResItem(AbstractModel):
+    """编排子任务输出
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TranscodeTask: 转码任务输出
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TranscodeTask: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskTranscodeResult`
+        :param AnimatedGraphicTask: 转动图任务输出
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AnimatedGraphicTask: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskAnimatedGraphicResult`
+        :param SnapshotByTimeOffsetTask: 时间点截图任务输出
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SnapshotByTimeOffsetTask: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskSampleSnapshotResult`
+        :param SampleSnapshotTask: 采样截图任务输出
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SampleSnapshotTask: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskSampleSnapshotResult`
+        :param ImageSpriteTask: 雪碧图任务输出
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageSpriteTask: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskImageSpriteResult`
+        :param AdaptiveDynamicStreamingTask: 自适应码流任务输出
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AdaptiveDynamicStreamingTask: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskAdaptiveDynamicStreamingResult`
+        :param RecognitionTask: 识别任务输出
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecognitionTask: :class:`tencentcloud.mps.v20190612.models.ScheduleRecognitionTaskResult`
+        :param ReviewTask: 审核任务输出
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReviewTask: :class:`tencentcloud.mps.v20190612.models.ScheduleReviewTaskResult`
+        :param AnalysisTask: 分析任务输出
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AnalysisTask: :class:`tencentcloud.mps.v20190612.models.ScheduleAnalysisTaskResult`
+        """
+        self.TranscodeTask = None
+        self.AnimatedGraphicTask = None
+        self.SnapshotByTimeOffsetTask = None
+        self.SampleSnapshotTask = None
+        self.ImageSpriteTask = None
+        self.AdaptiveDynamicStreamingTask = None
+        self.RecognitionTask = None
+        self.ReviewTask = None
+        self.AnalysisTask = None
+
+
+    def _deserialize(self, params):
+        if params.get("TranscodeTask") is not None:
+            self.TranscodeTask = MediaProcessTaskTranscodeResult()
+            self.TranscodeTask._deserialize(params.get("TranscodeTask"))
+        if params.get("AnimatedGraphicTask") is not None:
+            self.AnimatedGraphicTask = MediaProcessTaskAnimatedGraphicResult()
+            self.AnimatedGraphicTask._deserialize(params.get("AnimatedGraphicTask"))
+        if params.get("SnapshotByTimeOffsetTask") is not None:
+            self.SnapshotByTimeOffsetTask = MediaProcessTaskSampleSnapshotResult()
+            self.SnapshotByTimeOffsetTask._deserialize(params.get("SnapshotByTimeOffsetTask"))
+        if params.get("SampleSnapshotTask") is not None:
+            self.SampleSnapshotTask = MediaProcessTaskSampleSnapshotResult()
+            self.SampleSnapshotTask._deserialize(params.get("SampleSnapshotTask"))
+        if params.get("ImageSpriteTask") is not None:
+            self.ImageSpriteTask = MediaProcessTaskImageSpriteResult()
+            self.ImageSpriteTask._deserialize(params.get("ImageSpriteTask"))
+        if params.get("AdaptiveDynamicStreamingTask") is not None:
+            self.AdaptiveDynamicStreamingTask = MediaProcessTaskAdaptiveDynamicStreamingResult()
+            self.AdaptiveDynamicStreamingTask._deserialize(params.get("AdaptiveDynamicStreamingTask"))
+        if params.get("RecognitionTask") is not None:
+            self.RecognitionTask = ScheduleRecognitionTaskResult()
+            self.RecognitionTask._deserialize(params.get("RecognitionTask"))
+        if params.get("ReviewTask") is not None:
+            self.ReviewTask = ScheduleReviewTaskResult()
+            self.ReviewTask._deserialize(params.get("ReviewTask"))
+        if params.get("AnalysisTask") is not None:
+            self.AnalysisTask = ScheduleAnalysisTaskResult()
+            self.AnalysisTask._deserialize(params.get("AnalysisTask"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ActivityResult(AbstractModel):
+    """编排任务输出
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ActivityType: 原子任务类型。
+<li>Transcode：转码。</li>
+<li>SampleSnapshot：采样截图。</li>
+<li>AnimatedGraphics：转动图。</li>
+<li>SnapshotByTimeOffset：时间点截图。</li>
+<li>ImageSprites：雪碧图。</li>
+<li>AdaptiveDynamicStreaming：自适应码流。</li>
+<li>AiContentReview：内容审核。</li>
+<li>AIRecognition：智能识别。</li>
+<li>AIAnalysis：智能分析。</li>
+        :type ActivityType: str
+        :param ActivityResItem: 原子任务输出。
+        :type ActivityResItem: :class:`tencentcloud.mps.v20190612.models.ActivityResItem`
+        """
+        self.ActivityType = None
+        self.ActivityResItem = None
+
+
+    def _deserialize(self, params):
+        self.ActivityType = params.get("ActivityType")
+        if params.get("ActivityResItem") is not None:
+            self.ActivityResItem = ActivityResItem()
+            self.ActivityResItem._deserialize(params.get("ActivityResItem"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AdaptiveDynamicStreamingInfoItem(AbstractModel):
     """转自适应码流信息
 
@@ -3553,6 +3675,41 @@ class AnimatedGraphicsTemplate(AbstractModel):
         
 
 
+class ArtifactRepairConfig(AbstractModel):
+    """去伪影（毛刺）配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 能力配置开关，可选值：
+<li>ON：开启；</li>
+<li>OFF：关闭。</li>
+默认值：ON。
+        :type Switch: str
+        :param Type: 类型，可选值：
+<li>weak</li>
+<li>strong</li>
+默认值：weak。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        """
+        self.Switch = None
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AsrFullTextConfigureInfo(AbstractModel):
     """语音全文识别任务控制参数
 
@@ -3839,6 +3996,42 @@ class ClassificationConfigureInfoForUpdate(AbstractModel):
 
     def _deserialize(self, params):
         self.Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ColorEnhanceConfig(AbstractModel):
+    """色彩增强配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 能力配置开关，可选值：
+<li>ON：开启；</li>
+<li>OFF：关闭。</li>
+默认值：ON。
+        :type Switch: str
+        :param Type: 类型，可选值：
+<li>weak</li>
+<li>normal</li>
+<li>strong</li>
+默认值：weak。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        """
+        self.Switch = None
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4873,6 +5066,8 @@ class CreateTranscodeTemplateRequest(AbstractModel):
         :type AudioTemplate: :class:`tencentcloud.mps.v20190612.models.AudioTemplateInfo`
         :param TEHDConfig: 极速高清转码参数。
         :type TEHDConfig: :class:`tencentcloud.mps.v20190612.models.TEHDConfig`
+        :param EnhanceConfig: 音视频增强配置。
+        :type EnhanceConfig: :class:`tencentcloud.mps.v20190612.models.EnhanceConfig`
         """
         self.Container = None
         self.Name = None
@@ -4882,6 +5077,7 @@ class CreateTranscodeTemplateRequest(AbstractModel):
         self.VideoTemplate = None
         self.AudioTemplate = None
         self.TEHDConfig = None
+        self.EnhanceConfig = None
 
 
     def _deserialize(self, params):
@@ -4899,6 +5095,9 @@ class CreateTranscodeTemplateRequest(AbstractModel):
         if params.get("TEHDConfig") is not None:
             self.TEHDConfig = TEHDConfig()
             self.TEHDConfig._deserialize(params.get("TEHDConfig"))
+        if params.get("EnhanceConfig") is not None:
+            self.EnhanceConfig = EnhanceConfig()
+            self.EnhanceConfig._deserialize(params.get("EnhanceConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6423,6 +6622,7 @@ class DescribeTaskDetailResponse(AbstractModel):
 <li>WorkflowTask：视频工作流处理任务。</li>
 <li>EditMediaTask：视频编辑任务。</li>
 <li>LiveStreamProcessTask：直播流处理任务。</li>
+<li>ScheduleTask：编排处理任务。</li>
         :type TaskType: str
         :param Status: 任务状态，取值：
 <li>WAITING：等待中；</li>
@@ -6435,12 +6635,12 @@ class DescribeTaskDetailResponse(AbstractModel):
         :type BeginProcessTime: str
         :param FinishTime: 任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
         :type FinishTime: str
-        :param WorkflowTask: 视频处理任务信息，仅当 TaskType 为 WorkflowTask，该字段有值。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type WorkflowTask: :class:`tencentcloud.mps.v20190612.models.WorkflowTask`
         :param EditMediaTask: 视频编辑任务信息，仅当 TaskType 为 EditMediaTask，该字段有值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type EditMediaTask: :class:`tencentcloud.mps.v20190612.models.EditMediaTask`
+        :param WorkflowTask: 视频处理任务信息，仅当 TaskType 为 WorkflowTask，该字段有值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkflowTask: :class:`tencentcloud.mps.v20190612.models.WorkflowTask`
         :param LiveStreamProcessTask: 直播流处理任务信息，仅当 TaskType 为 LiveStreamProcessTask，该字段有值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type LiveStreamProcessTask: :class:`tencentcloud.mps.v20190612.models.LiveStreamProcessTask`
@@ -6455,6 +6655,9 @@ class DescribeTaskDetailResponse(AbstractModel):
         :type SessionContext: str
         :param ExtInfo: 扩展信息字段，仅用于特定场景。
         :type ExtInfo: str
+        :param ScheduleTask: 编排处理任务信息，仅当 TaskType 为 ScheduleTask，该字段有值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScheduleTask: :class:`tencentcloud.mps.v20190612.models.ScheduleTask`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -6463,14 +6666,15 @@ class DescribeTaskDetailResponse(AbstractModel):
         self.CreateTime = None
         self.BeginProcessTime = None
         self.FinishTime = None
-        self.WorkflowTask = None
         self.EditMediaTask = None
+        self.WorkflowTask = None
         self.LiveStreamProcessTask = None
         self.TaskNotifyConfig = None
         self.TasksPriority = None
         self.SessionId = None
         self.SessionContext = None
         self.ExtInfo = None
+        self.ScheduleTask = None
         self.RequestId = None
 
 
@@ -6480,12 +6684,12 @@ class DescribeTaskDetailResponse(AbstractModel):
         self.CreateTime = params.get("CreateTime")
         self.BeginProcessTime = params.get("BeginProcessTime")
         self.FinishTime = params.get("FinishTime")
-        if params.get("WorkflowTask") is not None:
-            self.WorkflowTask = WorkflowTask()
-            self.WorkflowTask._deserialize(params.get("WorkflowTask"))
         if params.get("EditMediaTask") is not None:
             self.EditMediaTask = EditMediaTask()
             self.EditMediaTask._deserialize(params.get("EditMediaTask"))
+        if params.get("WorkflowTask") is not None:
+            self.WorkflowTask = WorkflowTask()
+            self.WorkflowTask._deserialize(params.get("WorkflowTask"))
         if params.get("LiveStreamProcessTask") is not None:
             self.LiveStreamProcessTask = LiveStreamProcessTask()
             self.LiveStreamProcessTask._deserialize(params.get("LiveStreamProcessTask"))
@@ -6496,6 +6700,9 @@ class DescribeTaskDetailResponse(AbstractModel):
         self.SessionId = params.get("SessionId")
         self.SessionContext = params.get("SessionContext")
         self.ExtInfo = params.get("ExtInfo")
+        if params.get("ScheduleTask") is not None:
+            self.ScheduleTask = ScheduleTask()
+            self.ScheduleTask._deserialize(params.get("ScheduleTask"))
         self.RequestId = params.get("RequestId")
 
 
@@ -6542,11 +6749,14 @@ class DescribeTasksResponse(AbstractModel):
         :type TaskSet: list of TaskSimpleInfo
         :param ScrollToken: 翻页标识，当请求未返回所有数据，该字段表示下一条记录的 ID。当该字段为空字符串，说明已无更多数据。
         :type ScrollToken: str
+        :param TotalCount: 符合过滤条件的记录总数。
+        :type TotalCount: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TaskSet = None
         self.ScrollToken = None
+        self.TotalCount = None
         self.RequestId = None
 
 
@@ -6558,6 +6768,7 @@ class DescribeTasksResponse(AbstractModel):
                 obj._deserialize(item)
                 self.TaskSet.append(obj)
         self.ScrollToken = params.get("ScrollToken")
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -6586,6 +6797,12 @@ class DescribeTranscodeTemplatesRequest(AbstractModel):
         :type Offset: int
         :param Limit: 返回记录条数，默认值：10，最大值：100。
         :type Limit: int
+        :param TranscodeType: 模板类型（替换旧版本 TEHDType），可选值：
+<li>Common：普通转码模板；</li>
+<li>TEHD：极速高清模板。</li>
+<li>Enhance：音视频增强模板。</li>
+默认空，不限制类型。
+        :type TranscodeType: str
         """
         self.Definitions = None
         self.Type = None
@@ -6593,6 +6810,7 @@ class DescribeTranscodeTemplatesRequest(AbstractModel):
         self.TEHDType = None
         self.Offset = None
         self.Limit = None
+        self.TranscodeType = None
 
 
     def _deserialize(self, params):
@@ -6602,6 +6820,7 @@ class DescribeTranscodeTemplatesRequest(AbstractModel):
         self.TEHDType = params.get("TEHDType")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.TranscodeType = params.get("TranscodeType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7196,6 +7415,33 @@ class EnableWorkflowResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class EnhanceConfig(AbstractModel):
+    """音视频增强配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param VideoEnhance: 视频增强配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VideoEnhance: :class:`tencentcloud.mps.v20190612.models.VideoEnhanceConfig`
+        """
+        self.VideoEnhance = None
+
+
+    def _deserialize(self, params):
+        if params.get("VideoEnhance") is not None:
+            self.VideoEnhance = VideoEnhanceConfig()
+            self.VideoEnhance._deserialize(params.get("VideoEnhance"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ExecuteFunctionRequest(AbstractModel):
     """ExecuteFunction请求参数结构体
 
@@ -7370,6 +7616,73 @@ class FaceConfigureInfoForUpdate(AbstractModel):
         
 
 
+class FaceEnhanceConfig(AbstractModel):
+    """人脸增强配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 能力配置开关，可选值：
+<li>ON：开启；</li>
+<li>OFF：关闭。</li>
+默认值：ON。
+        :type Switch: str
+        :param Intensity: 强度，取值范围：0.0~1.0。
+默认：0.0。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Intensity: float
+        """
+        self.Switch = None
+        self.Intensity = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.Intensity = params.get("Intensity")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FrameRateConfig(AbstractModel):
+    """插帧帧率配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 能力配置开关，可选值：
+<li>ON：开启；</li>
+<li>OFF：关闭。</li>
+默认值：ON。
+        :type Switch: str
+        :param Fps: 帧率，取值范围：[0, 100]，单位：Hz。
+默认值 0。
+注意：对于转码，该参数会覆盖 VideoTemplate 内部的 Fps。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Fps: int
+        """
+        self.Switch = None
+        self.Fps = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.Fps = params.get("Fps")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class FrameTagConfigureInfo(AbstractModel):
     """智能按帧标签任务控制参数
 
@@ -7422,6 +7735,43 @@ class FrameTagConfigureInfoForUpdate(AbstractModel):
         
 
 
+class HdrConfig(AbstractModel):
+    """HDR配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 能力配置开关，可选值：
+<li>ON：开启；</li>
+<li>OFF：关闭。</li>
+默认值：ON。
+        :type Switch: str
+        :param Type: 类型，可选值：
+<li>HDR10</li>
+<li>HLG</li>
+默认值：HDR10。
+注意：video的编码方式需要为libx265；
+注意：视频编码位深为10。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        """
+        self.Switch = None
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class HeadTailParameter(AbstractModel):
     """片头片尾参数
 
@@ -7451,6 +7801,42 @@ class HeadTailParameter(AbstractModel):
                 obj = MediaInputInfo()
                 obj._deserialize(item)
                 self.TailSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImageQualityEnhanceConfig(AbstractModel):
+    """综合增强配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 能力配置开关，可选值：
+<li>ON：开启；</li>
+<li>OFF：关闭。</li>
+默认值：ON。
+        :type Switch: str
+        :param Type: 类型，可选值：
+<li>weak</li>
+<li>normal</li>
+<li>strong</li>
+默认值：weak。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        """
+        self.Switch = None
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8464,6 +8850,40 @@ class LiveStreamTaskNotifyConfig(AbstractModel):
         self.TopicName = params.get("TopicName")
         self.NotifyType = params.get("NotifyType")
         self.NotifyUrl = params.get("NotifyUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LowLightEnhanceConfig(AbstractModel):
+    """低光照增强配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 能力配置开关，可选值：
+<li>ON：开启；</li>
+<li>OFF：关闭。</li>
+默认值：ON。
+        :type Switch: str
+        :param Type: 类型，可选值：
+<li>normal</li>
+默认值：normal。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        """
+        self.Switch = None
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -10679,6 +11099,8 @@ class ModifyTranscodeTemplateRequest(AbstractModel):
         :type AudioTemplate: :class:`tencentcloud.mps.v20190612.models.AudioTemplateInfoForUpdate`
         :param TEHDConfig: 极速高清转码参数。
         :type TEHDConfig: :class:`tencentcloud.mps.v20190612.models.TEHDConfigForUpdate`
+        :param EnhanceConfig: 音视频增强参数。
+        :type EnhanceConfig: :class:`tencentcloud.mps.v20190612.models.EnhanceConfig`
         """
         self.Definition = None
         self.Container = None
@@ -10689,6 +11111,7 @@ class ModifyTranscodeTemplateRequest(AbstractModel):
         self.VideoTemplate = None
         self.AudioTemplate = None
         self.TEHDConfig = None
+        self.EnhanceConfig = None
 
 
     def _deserialize(self, params):
@@ -10707,6 +11130,9 @@ class ModifyTranscodeTemplateRequest(AbstractModel):
         if params.get("TEHDConfig") is not None:
             self.TEHDConfig = TEHDConfigForUpdate()
             self.TEHDConfig._deserialize(params.get("TEHDConfig"))
+        if params.get("EnhanceConfig") is not None:
+            self.EnhanceConfig = EnhanceConfig()
+            self.EnhanceConfig._deserialize(params.get("EnhanceConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -11270,6 +11696,7 @@ class ParseNotificationResponse(AbstractModel):
         :param EventType: 支持事件类型，目前取值有：
 <li>WorkflowTask：视频工作流处理任务。</li>
 <li>EditMediaTask：视频编辑任务。</li>
+<li>ScheduleTask：编排任务。</li>
         :type EventType: str
         :param WorkflowTaskEvent: 视频处理任务信息，仅当 TaskType 为 WorkflowTask，该字段有值。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -11281,6 +11708,9 @@ class ParseNotificationResponse(AbstractModel):
         :type SessionId: str
         :param SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长1000个字符。
         :type SessionContext: str
+        :param ScheduleTaskEvent: 编排任务信息，仅当 TaskType 为 ScheduleTask，该字段有值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScheduleTaskEvent: :class:`tencentcloud.mps.v20190612.models.ScheduleTask`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -11289,6 +11719,7 @@ class ParseNotificationResponse(AbstractModel):
         self.EditMediaTaskEvent = None
         self.SessionId = None
         self.SessionContext = None
+        self.ScheduleTaskEvent = None
         self.RequestId = None
 
 
@@ -11302,6 +11733,9 @@ class ParseNotificationResponse(AbstractModel):
             self.EditMediaTaskEvent._deserialize(params.get("EditMediaTaskEvent"))
         self.SessionId = params.get("SessionId")
         self.SessionContext = params.get("SessionContext")
+        if params.get("ScheduleTaskEvent") is not None:
+            self.ScheduleTaskEvent = ScheduleTask()
+            self.ScheduleTaskEvent._deserialize(params.get("ScheduleTaskEvent"))
         self.RequestId = params.get("RequestId")
 
 
@@ -12015,6 +12449,11 @@ class ProcessMediaRequest(AbstractModel):
         :type SessionId: str
         :param SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
         :type SessionContext: str
+        :param ScheduleId: 编排ID。
+注意1：对于OutputStorage、OutputDir，如果编排任务里没有配置，将采用请求里对应参数。
+注意2：对于TaskNotifyConfig，如果编排任务里没有配置，将采用请求里对应的参数。
+注意3：编排的 Trigger 只是用来自动化触发场景，在手动发起的请求中已经配置的 Trigger 无意义。
+        :type ScheduleId: int
         """
         self.InputInfo = None
         self.OutputStorage = None
@@ -12027,6 +12466,7 @@ class ProcessMediaRequest(AbstractModel):
         self.TasksPriority = None
         self.SessionId = None
         self.SessionContext = None
+        self.ScheduleId = None
 
 
     def _deserialize(self, params):
@@ -12055,6 +12495,7 @@ class ProcessMediaRequest(AbstractModel):
         self.TasksPriority = params.get("TasksPriority")
         self.SessionId = params.get("SessionId")
         self.SessionContext = params.get("SessionContext")
+        self.ScheduleId = params.get("ScheduleId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -12738,6 +13179,282 @@ class SampleSnapshotTemplate(AbstractModel):
         
 
 
+class ScheduleAnalysisTaskResult(AbstractModel):
+    """编排视频分析任务结果类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :type Status: str
+        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :type ErrCodeExt: str
+        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
+        :type ErrCode: int
+        :param Message: 错误信息。
+        :type Message: str
+        :param Input: 分析任务的输入。
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskInput`
+        :param Output: 分析任务的输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Output: list of AiAnalysisResult
+        """
+        self.Status = None
+        self.ErrCodeExt = None
+        self.ErrCode = None
+        self.Message = None
+        self.Input = None
+        self.Output = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
+        self.ErrCode = params.get("ErrCode")
+        self.Message = params.get("Message")
+        if params.get("Input") is not None:
+            self.Input = AiAnalysisTaskInput()
+            self.Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self.Output = []
+            for item in params.get("Output"):
+                obj = AiAnalysisResult()
+                obj._deserialize(item)
+                self.Output.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ScheduleRecognitionTaskResult(AbstractModel):
+    """编排视频识别任务结果类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :type Status: str
+        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :type ErrCodeExt: str
+        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
+        :type ErrCode: int
+        :param Message: 错误信息。
+        :type Message: str
+        :param Input: 识别任务的输入。
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskInput`
+        :param Output: 识别任务的输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Output: list of AiRecognitionResult
+        """
+        self.Status = None
+        self.ErrCodeExt = None
+        self.ErrCode = None
+        self.Message = None
+        self.Input = None
+        self.Output = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
+        self.ErrCode = params.get("ErrCode")
+        self.Message = params.get("Message")
+        if params.get("Input") is not None:
+            self.Input = AiRecognitionTaskInput()
+            self.Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self.Output = []
+            for item in params.get("Output"):
+                obj = AiRecognitionResult()
+                obj._deserialize(item)
+                self.Output.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ScheduleReviewTaskResult(AbstractModel):
+    """编排视频审核任务结果类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :type Status: str
+        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :type ErrCodeExt: str
+        :param ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
+        :type ErrCode: int
+        :param Message: 错误信息。
+        :type Message: str
+        :param Input: 审核任务的输入。
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AiContentReviewTaskInput`
+        :param Output: 审核任务的输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Output: list of AiContentReviewResult
+        """
+        self.Status = None
+        self.ErrCodeExt = None
+        self.ErrCode = None
+        self.Message = None
+        self.Input = None
+        self.Output = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
+        self.ErrCode = params.get("ErrCode")
+        self.Message = params.get("Message")
+        if params.get("Input") is not None:
+            self.Input = AiContentReviewTaskInput()
+            self.Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self.Output = []
+            for item in params.get("Output"):
+                obj = AiContentReviewResult()
+                obj._deserialize(item)
+                self.Output.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ScheduleTask(AbstractModel):
+    """编排任务信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 编排任务 ID。
+        :type TaskId: str
+        :param Status: 任务流状态，取值：
+<li>PROCESSING：处理中；</li>
+<li>FINISH：已完成。</li>
+        :type Status: str
+        :param InputInfo: 媒体处理的目标文件信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InputInfo: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
+        :param MetaData: 原始视频的元信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MetaData: :class:`tencentcloud.mps.v20190612.models.MediaMetaData`
+        :param ActivityResultSet: 编排任务输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ActivityResultSet: list of ActivityResult
+        """
+        self.TaskId = None
+        self.Status = None
+        self.InputInfo = None
+        self.MetaData = None
+        self.ActivityResultSet = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.Status = params.get("Status")
+        if params.get("InputInfo") is not None:
+            self.InputInfo = MediaInputInfo()
+            self.InputInfo._deserialize(params.get("InputInfo"))
+        if params.get("MetaData") is not None:
+            self.MetaData = MediaMetaData()
+            self.MetaData._deserialize(params.get("MetaData"))
+        if params.get("ActivityResultSet") is not None:
+            self.ActivityResultSet = []
+            for item in params.get("ActivityResultSet"):
+                obj = ActivityResult()
+                obj._deserialize(item)
+                self.ActivityResultSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ScratchRepairConfig(AbstractModel):
+    """去划痕配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 能力配置开关，可选值：
+<li>ON：开启；</li>
+<li>OFF：关闭。</li>
+默认值：ON。
+        :type Switch: str
+        :param Intensity: 强度，取值范围：0.0~1.0。
+默认：0.0。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Intensity: float
+        """
+        self.Switch = None
+        self.Intensity = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.Intensity = params.get("Intensity")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SharpEnhanceConfig(AbstractModel):
+    """细节增强配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 能力配置开关，可选值：
+<li>ON：开启；</li>
+<li>OFF：关闭。</li>
+默认值：ON。
+        :type Switch: str
+        :param Intensity: 强度，取值范围：0.0~1.0。
+默认：0.0。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Intensity: float
+        """
+        self.Switch = None
+        self.Intensity = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.Intensity = params.get("Intensity")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SnapshotByTimeOffsetTaskInput(AbstractModel):
     """对视频按指定时间点截图任务输入参数类型
 
@@ -12874,6 +13591,48 @@ class SnapshotByTimeOffsetTemplate(AbstractModel):
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
         self.FillType = params.get("FillType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SuperResolutionConfig(AbstractModel):
+    """超分配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 能力配置开关，可选值：
+<li>ON：开启；</li>
+<li>OFF：关闭。</li>
+默认值：ON。
+        :type Switch: str
+        :param Type: 类型，可选值：
+<li>lq：针对低清晰度有较多噪声视频的超分；</li>
+<li>hq：针对高清晰度视频超分。</li>
+默认值：lq。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param Size: 超分倍数，可选值：
+<li>2：目前只支持 2 倍超分。</li>
+默认值：2。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Size: int
+        """
+        self.Switch = None
+        self.Type = None
+        self.Size = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.Type = params.get("Type")
+        self.Size = params.get("Size")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -13105,6 +13864,7 @@ class TaskNotifyConfig(AbstractModel):
 <li>CMQ：已下线，建议切换到TDMQ-CMQ</li>
 <li>TDMQ-CMQ：消息队列</li>
 <li>URL：指定URL时HTTP回调推送到 NotifyUrl 指定的地址，回调协议http+json，包体内容同解析事件通知接口的输出参数 </li>
+<li>SCF：不推荐使用，需要在控制台额外配置SCF</li>
 目前 默认CMQ。
         :type NotifyType: str
         :param NotifyUrl: HTTP回调地址，NotifyType为URL时必填。
@@ -13662,6 +14422,9 @@ class TranscodeTemplate(AbstractModel):
         :type CreateTime: str
         :param UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
         :type UpdateTime: str
+        :param EnhanceConfig: 音视频增强配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnhanceConfig: :class:`tencentcloud.mps.v20190612.models.EnhanceConfig`
         """
         self.Definition = None
         self.Container = None
@@ -13676,6 +14439,7 @@ class TranscodeTemplate(AbstractModel):
         self.ContainerType = None
         self.CreateTime = None
         self.UpdateTime = None
+        self.EnhanceConfig = None
 
 
     def _deserialize(self, params):
@@ -13698,6 +14462,9 @@ class TranscodeTemplate(AbstractModel):
         self.ContainerType = params.get("ContainerType")
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
+        if params.get("EnhanceConfig") is not None:
+            self.EnhanceConfig = EnhanceConfig()
+            self.EnhanceConfig._deserialize(params.get("EnhanceConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -14041,6 +14808,138 @@ class UserDefineOcrTextReviewTemplateInfoForUpdate(AbstractModel):
         
 
 
+class VideoDenoiseConfig(AbstractModel):
+    """视频降噪配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 能力配置开关，可选值：
+<li>ON：开启；</li>
+<li>OFF：关闭。</li>
+默认值：ON。
+        :type Switch: str
+        :param Type: 类型，可选值：
+<li>weak</li>
+<li>strong</li>
+默认值：weak。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        """
+        self.Switch = None
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        self.Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VideoEnhanceConfig(AbstractModel):
+    """视频增强配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FrameRate: 插帧帧率配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FrameRate: :class:`tencentcloud.mps.v20190612.models.FrameRateConfig`
+        :param SuperResolution: 超分配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SuperResolution: :class:`tencentcloud.mps.v20190612.models.SuperResolutionConfig`
+        :param Hdr: HDR配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Hdr: :class:`tencentcloud.mps.v20190612.models.HdrConfig`
+        :param Denoise: 视频降噪配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Denoise: :class:`tencentcloud.mps.v20190612.models.VideoDenoiseConfig`
+        :param ImageQualityEnhance: 综合增强配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageQualityEnhance: :class:`tencentcloud.mps.v20190612.models.ImageQualityEnhanceConfig`
+        :param ColorEnhance: 色彩增强配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ColorEnhance: :class:`tencentcloud.mps.v20190612.models.ColorEnhanceConfig`
+        :param SharpEnhance: 细节增强配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SharpEnhance: :class:`tencentcloud.mps.v20190612.models.SharpEnhanceConfig`
+        :param FaceEnhance: 人脸增强配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FaceEnhance: :class:`tencentcloud.mps.v20190612.models.FaceEnhanceConfig`
+        :param LowLightEnhance: 低光照增强配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LowLightEnhance: :class:`tencentcloud.mps.v20190612.models.LowLightEnhanceConfig`
+        :param ScratchRepair: 去划痕配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScratchRepair: :class:`tencentcloud.mps.v20190612.models.ScratchRepairConfig`
+        :param ArtifactRepair: 去伪影（毛刺）配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ArtifactRepair: :class:`tencentcloud.mps.v20190612.models.ArtifactRepairConfig`
+        """
+        self.FrameRate = None
+        self.SuperResolution = None
+        self.Hdr = None
+        self.Denoise = None
+        self.ImageQualityEnhance = None
+        self.ColorEnhance = None
+        self.SharpEnhance = None
+        self.FaceEnhance = None
+        self.LowLightEnhance = None
+        self.ScratchRepair = None
+        self.ArtifactRepair = None
+
+
+    def _deserialize(self, params):
+        if params.get("FrameRate") is not None:
+            self.FrameRate = FrameRateConfig()
+            self.FrameRate._deserialize(params.get("FrameRate"))
+        if params.get("SuperResolution") is not None:
+            self.SuperResolution = SuperResolutionConfig()
+            self.SuperResolution._deserialize(params.get("SuperResolution"))
+        if params.get("Hdr") is not None:
+            self.Hdr = HdrConfig()
+            self.Hdr._deserialize(params.get("Hdr"))
+        if params.get("Denoise") is not None:
+            self.Denoise = VideoDenoiseConfig()
+            self.Denoise._deserialize(params.get("Denoise"))
+        if params.get("ImageQualityEnhance") is not None:
+            self.ImageQualityEnhance = ImageQualityEnhanceConfig()
+            self.ImageQualityEnhance._deserialize(params.get("ImageQualityEnhance"))
+        if params.get("ColorEnhance") is not None:
+            self.ColorEnhance = ColorEnhanceConfig()
+            self.ColorEnhance._deserialize(params.get("ColorEnhance"))
+        if params.get("SharpEnhance") is not None:
+            self.SharpEnhance = SharpEnhanceConfig()
+            self.SharpEnhance._deserialize(params.get("SharpEnhance"))
+        if params.get("FaceEnhance") is not None:
+            self.FaceEnhance = FaceEnhanceConfig()
+            self.FaceEnhance._deserialize(params.get("FaceEnhance"))
+        if params.get("LowLightEnhance") is not None:
+            self.LowLightEnhance = LowLightEnhanceConfig()
+            self.LowLightEnhance._deserialize(params.get("LowLightEnhance"))
+        if params.get("ScratchRepair") is not None:
+            self.ScratchRepair = ScratchRepairConfig()
+            self.ScratchRepair._deserialize(params.get("ScratchRepair"))
+        if params.get("ArtifactRepair") is not None:
+            self.ArtifactRepair = ArtifactRepairConfig()
+            self.ArtifactRepair._deserialize(params.get("ArtifactRepair"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class VideoTemplateInfo(AbstractModel):
     """视频流配置参数
 
@@ -14052,17 +14951,21 @@ class VideoTemplateInfo(AbstractModel):
 <li>libx264：H.264 编码</li>
 <li>libx265：H.265 编码</li>
 <li>av1：AOMedia Video 1 编码</li>
+注意：目前 H.265 编码必须指定分辨率，并且需要在 640*480 以内。
+注意：av1 编码容器目前只支持 mp4 。
         :type Codec: str
         :param Fps: 视频帧率，取值范围：[0, 100]，单位：Hz。
 当取值为 0，表示帧率和原始视频保持一致。
+注意：自适应码率时取值范围是 [0, 60]
         :type Fps: int
-        :param Bitrate: 视频流的码率，取值范围：0 和 [75, 35000]，单位：kbps。
+        :param Bitrate: 视频流的码率，取值范围：0 和 [128, 35000]，单位：kbps。
 当取值为 0，表示视频码率和原始视频保持一致。
         :type Bitrate: int
         :param ResolutionAdaptive: 分辨率自适应，可选值：
 <li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
 <li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
 默认值：open。
+注意：自适应模式时，Width不能小于Height。
         :type ResolutionAdaptive: str
         :param Width: 视频流宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
 <li>当 Width、Height 均为 0，则分辨率同源；</li>
@@ -14087,6 +14990,7 @@ class VideoTemplateInfo(AbstractModel):
 <li>white：留白，保持视频宽高比不变，边缘剩余部分使用白色填充。</li>
 <li>gauss：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊填充。</li>
 默认值：black 。
+注意：自适应码流只支持 stretch、black。
         :type FillType: str
         :param Vcrf: 视频恒定码率控制因子，取值范围为[1, 51]。
 如果指定该参数，将使用 CRF 的码率控制方式做转码（视频码率将不再生效）。
@@ -14134,7 +15038,8 @@ class VideoTemplateInfoForUpdate(AbstractModel):
 <li>libx264：H.264 编码</li>
 <li>libx265：H.265 编码</li>
 <li>av1：AOMedia Video 1 编码</li>
-目前 H.265 编码必须指定分辨率，并且需要在 640*480 以内。av1 编码容器目前只支持 mp4 。
+注意：目前 H.265 编码必须指定分辨率，并且需要在 640*480 以内。
+注意：av1 编码容器目前只支持 mp4 。
         :type Codec: str
         :param Fps: 视频帧率，取值范围：[0, 100]，单位：Hz。
 当取值为 0，表示帧率和原始视频保持一致。
@@ -14145,6 +15050,7 @@ class VideoTemplateInfoForUpdate(AbstractModel):
         :param ResolutionAdaptive: 分辨率自适应，可选值：
 <li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
 <li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
+注意：自适应模式时，Width不能小于Height。
         :type ResolutionAdaptive: str
         :param Width: 视频流宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
 <li>当 Width、Height 均为 0，则分辨率同源；</li>

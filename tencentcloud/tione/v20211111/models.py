@@ -1031,12 +1031,16 @@ class DeleteTrainingModelRequest(AbstractModel):
         r"""
         :param TrainingModelId: 模型ID
         :type TrainingModelId: str
+        :param EnableDeleteCos: 是否同步清理cos
+        :type EnableDeleteCos: bool
         """
         self.TrainingModelId = None
+        self.EnableDeleteCos = None
 
 
     def _deserialize(self, params):
         self.TrainingModelId = params.get("TrainingModelId")
+        self.EnableDeleteCos = params.get("EnableDeleteCos")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1072,12 +1076,16 @@ class DeleteTrainingModelVersionRequest(AbstractModel):
         r"""
         :param TrainingModelVersionId: 模型版本ID
         :type TrainingModelVersionId: str
+        :param EnableDeleteCos: 是否同步清理cos
+        :type EnableDeleteCos: bool
         """
         self.TrainingModelVersionId = None
+        self.EnableDeleteCos = None
 
 
     def _deserialize(self, params):
         self.TrainingModelVersionId = params.get("TrainingModelVersionId")
+        self.EnableDeleteCos = params.get("EnableDeleteCos")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

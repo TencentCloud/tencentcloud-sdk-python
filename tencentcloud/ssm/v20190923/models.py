@@ -163,12 +163,15 @@ class CreateSSHKeyPairSecretRequest(AbstractModel):
         :type KmsKeyId: str
         :param Tags: 标签列表。
         :type Tags: list of Tag
+        :param SSHKeyName: 用户自定义输入的SSH密钥对的名称，可由数字，字母和下划线组成，只能以数字和字母开头，长度不超过25个字符。
+        :type SSHKeyName: str
         """
         self.SecretName = None
         self.ProjectId = None
         self.Description = None
         self.KmsKeyId = None
         self.Tags = None
+        self.SSHKeyName = None
 
 
     def _deserialize(self, params):
@@ -182,6 +185,7 @@ class CreateSSHKeyPairSecretRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        self.SSHKeyName = params.get("SSHKeyName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

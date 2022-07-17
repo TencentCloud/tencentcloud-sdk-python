@@ -32,6 +32,9 @@ FAILEDOPERATION_INVALIDUSER = 'FailedOperation.InvalidUser'
 # 内部错误。
 INTERNALERROR = 'InternalError'
 
+# 数据错误。
+INTERNALERROR_ACCESSDBERROR = 'InternalError.AccessDBError'
+
 # 内部错误：生成模板 ID 失败。
 INTERNALERROR_GENDEFINITION = 'InternalError.GenDefinition'
 

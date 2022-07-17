@@ -337,6 +337,12 @@ class Backup(AbstractModel):
         :type GroupId: str
         :param BackupFormat: 备份文件形式（pkg-打包备份文件，single-单库备份文件）
         :type BackupFormat: str
+        :param Region: 实例当前地域Code
+        :type Region: str
+        :param CrossBackupAddr: 跨地域备份的目的地域下载链接
+        :type CrossBackupAddr: list of CrossBackupAddr
+        :param CrossBackupStatus: 跨地域备份的目标地域和备份状态
+        :type CrossBackupStatus: list of CrossRegionStatus
         """
         self.FileName = None
         self.Size = None
@@ -352,6 +358,9 @@ class Backup(AbstractModel):
         self.BackupName = None
         self.GroupId = None
         self.BackupFormat = None
+        self.Region = None
+        self.CrossBackupAddr = None
+        self.CrossBackupStatus = None
 
 
     def _deserialize(self, params):
@@ -369,6 +378,19 @@ class Backup(AbstractModel):
         self.BackupName = params.get("BackupName")
         self.GroupId = params.get("GroupId")
         self.BackupFormat = params.get("BackupFormat")
+        self.Region = params.get("Region")
+        if params.get("CrossBackupAddr") is not None:
+            self.CrossBackupAddr = []
+            for item in params.get("CrossBackupAddr"):
+                obj = CrossBackupAddr()
+                obj._deserialize(item)
+                self.CrossBackupAddr.append(obj)
+        if params.get("CrossBackupStatus") is not None:
+            self.CrossBackupStatus = []
+            for item in params.get("CrossBackupStatus"):
+                obj = CrossRegionStatus()
+                obj._deserialize(item)
+                self.CrossBackupStatus.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -395,12 +417,18 @@ class BackupFile(AbstractModel):
         :type DBs: list of str
         :param DownloadLink: 下载地址
         :type DownloadLink: str
+        :param Region: 当前实例地域码
+        :type Region: str
+        :param CrossBackupAddr: 备份的跨地域region和所对应的下载地址
+        :type CrossBackupAddr: list of CrossBackupAddr
         """
         self.Id = None
         self.FileName = None
         self.Size = None
         self.DBs = None
         self.DownloadLink = None
+        self.Region = None
+        self.CrossBackupAddr = None
 
 
     def _deserialize(self, params):
@@ -409,6 +437,13 @@ class BackupFile(AbstractModel):
         self.Size = params.get("Size")
         self.DBs = params.get("DBs")
         self.DownloadLink = params.get("DownloadLink")
+        self.Region = params.get("Region")
+        if params.get("CrossBackupAddr") is not None:
+            self.CrossBackupAddr = []
+            for item in params.get("CrossBackupAddr"):
+                obj = CrossBackupAddr()
+                obj._deserialize(item)
+                self.CrossBackupAddr.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1400,6 +1435,66 @@ class CreateReadOnlyDBInstancesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CrossBackupAddr(AbstractModel):
+    """跨地域备份下载地址集合
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CrossRegion: 跨地域备份目标地域
+        :type CrossRegion: str
+        :param CrossInternalAddr: 跨地域备份内网下载地址
+        :type CrossInternalAddr: str
+        :param CrossExternalAddr: 跨地域备份外网下载地址
+        :type CrossExternalAddr: str
+        """
+        self.CrossRegion = None
+        self.CrossInternalAddr = None
+        self.CrossExternalAddr = None
+
+
+    def _deserialize(self, params):
+        self.CrossRegion = params.get("CrossRegion")
+        self.CrossInternalAddr = params.get("CrossInternalAddr")
+        self.CrossExternalAddr = params.get("CrossExternalAddr")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CrossRegionStatus(AbstractModel):
+    """跨地域备份的目标地域和备份状态
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CrossRegion: 跨地域备份目标地域
+        :type CrossRegion: str
+        :param CrossStatus: 备份跨地域的同步状态 0-创建中；1-成功；2-失败；4-同步中
+        :type CrossStatus: int
+        """
+        self.CrossRegion = None
+        self.CrossStatus = None
+
+
+    def _deserialize(self, params):
+        self.CrossRegion = params.get("CrossRegion")
+        self.CrossStatus = params.get("CrossStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DBCreateInfo(AbstractModel):
     """数据库创建信息
 
@@ -1594,6 +1689,12 @@ class DBInstance(AbstractModel):
         :type BackupSaveDays: int
         :param InstanceType: 实例类型 HA-高可用 RO-只读实例 SI-基础版 BI-商业智能服务
         :type InstanceType: str
+        :param CrossRegions: 跨地域备份目的地域，如果为空，则表示未开启跨地域备份
+        :type CrossRegions: list of str
+        :param CrossBackupEnabled: 跨地域备份状态 enable-开启，disable-关闭
+        :type CrossBackupEnabled: str
+        :param CrossBackupSaveDays: 跨地域备份保留天数，则默认7天
+        :type CrossBackupSaveDays: int
         """
         self.InstanceId = None
         self.Name = None
@@ -1638,6 +1739,9 @@ class DBInstance(AbstractModel):
         self.BackupCycleType = None
         self.BackupSaveDays = None
         self.InstanceType = None
+        self.CrossRegions = None
+        self.CrossBackupEnabled = None
+        self.CrossBackupSaveDays = None
 
 
     def _deserialize(self, params):
@@ -1689,6 +1793,9 @@ class DBInstance(AbstractModel):
         self.BackupCycleType = params.get("BackupCycleType")
         self.BackupSaveDays = params.get("BackupSaveDays")
         self.InstanceType = params.get("InstanceType")
+        self.CrossRegions = params.get("CrossRegions")
+        self.CrossBackupEnabled = params.get("CrossBackupEnabled")
+        self.CrossBackupSaveDays = params.get("CrossBackupSaveDays")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

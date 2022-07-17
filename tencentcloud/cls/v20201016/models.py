@@ -3747,7 +3747,7 @@ class ExportInfo(AbstractModel):
         :type Format: str
         :param Count: 日志导出数量
         :type Count: int
-        :param Status: 日志下载状态。Processing:导出正在进行中，Complete:导出完成，Failed:导出失败，Expired:日志导出已过期（三天有效期）。
+        :param Status: 日志下载状态。Processing:导出正在进行中，Completed:导出完成，Failed:导出失败，Expired:日志导出已过期(三天有效期), Queuing 排队中
         :type Status: str
         :param From: 日志导出起始时间
         :type From: int
@@ -3833,6 +3833,12 @@ class ExtractRuleInfo(AbstractModel):
         :param Backtracking: 增量采集模式下的回溯数据量，默认-1（全量采集）
 注意：此字段可能返回 null，表示取不到有效值。
         :type Backtracking: int
+        :param IsGBK: 是否为Gbk编码.   0: 否, 1: 是
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsGBK: int
+        :param JsonStandard: 是否为标准json.   0: 否, 1: 是
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JsonStandard: int
         """
         self.TimeKey = None
         self.TimeFormat = None
@@ -3844,6 +3850,8 @@ class ExtractRuleInfo(AbstractModel):
         self.UnMatchUpLoadSwitch = None
         self.UnMatchLogKey = None
         self.Backtracking = None
+        self.IsGBK = None
+        self.JsonStandard = None
 
 
     def _deserialize(self, params):
@@ -3862,6 +3870,8 @@ class ExtractRuleInfo(AbstractModel):
         self.UnMatchUpLoadSwitch = params.get("UnMatchUpLoadSwitch")
         self.UnMatchLogKey = params.get("UnMatchLogKey")
         self.Backtracking = params.get("Backtracking")
+        self.IsGBK = params.get("IsGBK")
+        self.JsonStandard = params.get("JsonStandard")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
