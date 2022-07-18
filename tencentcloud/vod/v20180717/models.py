@@ -13876,30 +13876,34 @@ class MediaClassInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ClassId: 分类 ID
+        :param ClassId: 分类 ID。
         :type ClassId: int
         :param ParentId: 父类 ID，一级分类的父类 ID 为 -1。
         :type ParentId: int
-        :param ClassName: 分类名称
-        :type ClassName: str
+        :param Name: 分类名称。
+        :type Name: str
         :param Level: 分类级别，一级分类为 0，最大值为 3，即最多允许 4 级分类层次。
         :type Level: int
-        :param SubClassIdSet: 当前分类的第一级子类 ID 集合
+        :param SubClassIdSet: 当前分类的第一级子类 ID 集合。
         :type SubClassIdSet: list of int
+        :param ClassName: 分类名称（该字段已不推荐使用，建议使用新的分类名称字段 Name）。
+        :type ClassName: str
         """
         self.ClassId = None
         self.ParentId = None
-        self.ClassName = None
+        self.Name = None
         self.Level = None
         self.SubClassIdSet = None
+        self.ClassName = None
 
 
     def _deserialize(self, params):
         self.ClassId = params.get("ClassId")
         self.ParentId = params.get("ParentId")
-        self.ClassName = params.get("ClassName")
+        self.Name = params.get("Name")
         self.Level = params.get("Level")
         self.SubClassIdSet = params.get("SubClassIdSet")
+        self.ClassName = params.get("ClassName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -21547,8 +21551,8 @@ class SubAppIdInfo(AbstractModel):
         r"""
         :param SubAppId: 子应用 ID。
         :type SubAppId: int
-        :param Name: 子应用名称。
-        :type Name: str
+        :param SubAppIdName: 子应用名称。
+        :type SubAppIdName: str
         :param Description: 子应用简介。
         :type Description: str
         :param CreateTime: 子应用创建时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
@@ -21559,20 +21563,24 @@ class SubAppIdInfo(AbstractModel):
 <li>Destroying：销毁中。</li>
 <li>Destroyed：销毁完成。</li>
         :type Status: str
+        :param Name: 子应用名称（该字段已不推荐使用，建议使用新的子应用名称字段 SubAppIdName）。
+        :type Name: str
         """
         self.SubAppId = None
-        self.Name = None
+        self.SubAppIdName = None
         self.Description = None
         self.CreateTime = None
         self.Status = None
+        self.Name = None
 
 
     def _deserialize(self, params):
         self.SubAppId = params.get("SubAppId")
-        self.Name = params.get("Name")
+        self.SubAppIdName = params.get("SubAppIdName")
         self.Description = params.get("Description")
         self.CreateTime = params.get("CreateTime")
         self.Status = params.get("Status")
+        self.Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

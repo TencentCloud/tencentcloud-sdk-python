@@ -1817,7 +1817,7 @@ class CreateLoadBalancingRequest(AbstractModel):
         r"""
         :param ZoneId: 站点ID
         :type ZoneId: str
-        :param Host: 子域名，填写@表示根域
+        :param Host: 子域名
         :type Host: str
         :param Type: 代理模式：
 dns_only: 仅DNS

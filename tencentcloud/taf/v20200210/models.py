@@ -194,12 +194,12 @@ class InputRecognizeTargetAudience(AbstractModel):
 
     def __init__(self):
         r"""
+        :param ModelIdList: 模型ID列表
+        :type ModelIdList: list of int
         :param Uid: 设备ID，AccountType指定的类型
         :type Uid: str
         :param AccountType: 设备号类型，1.imei 2.imeiMd5（小写后转MD5转小写）3.idfa， 4.idfaMd5（大写后转MD5转小写），5.手机号,256.其它
         :type AccountType: int
-        :param ModelIdList: 模型ID列表
-        :type ModelIdList: list of int
         :param Ip: 用户IP
         :type Ip: str
         :param Os: 操作系统类型(unknown，android，ios，windows)
@@ -275,9 +275,9 @@ class InputRecognizeTargetAudience(AbstractModel):
         :param DeviceList: 设备信息
         :type DeviceList: list of Device
         """
+        self.ModelIdList = None
         self.Uid = None
         self.AccountType = None
-        self.ModelIdList = None
         self.Ip = None
         self.Os = None
         self.Osv = None
@@ -318,9 +318,9 @@ class InputRecognizeTargetAudience(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.ModelIdList = params.get("ModelIdList")
         self.Uid = params.get("Uid")
         self.AccountType = params.get("AccountType")
-        self.ModelIdList = params.get("ModelIdList")
         self.Ip = params.get("Ip")
         self.Os = params.get("Os")
         self.Osv = params.get("Osv")

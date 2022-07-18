@@ -8410,6 +8410,10 @@ class VehicleInvoiceInfo(AbstractModel):
         :type MotorBankName: str
         :param MotorBankAccount: 账号
         :type MotorBankAccount: str
+        :param SellerAddress: 销售地址
+        :type SellerAddress: str
+        :param SellerTel: 销售电话
+        :type SellerTel: str
         """
         self.CarType = None
         self.PlateModel = None
@@ -8427,6 +8431,8 @@ class VehicleInvoiceInfo(AbstractModel):
         self.MotorTaxRate = None
         self.MotorBankName = None
         self.MotorBankAccount = None
+        self.SellerAddress = None
+        self.SellerTel = None
 
 
     def _deserialize(self, params):
@@ -8446,6 +8452,8 @@ class VehicleInvoiceInfo(AbstractModel):
         self.MotorTaxRate = params.get("MotorTaxRate")
         self.MotorBankName = params.get("MotorBankName")
         self.MotorBankAccount = params.get("MotorBankAccount")
+        self.SellerAddress = params.get("SellerAddress")
+        self.SellerTel = params.get("SellerTel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

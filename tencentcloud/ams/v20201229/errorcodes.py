@@ -95,6 +95,9 @@ RESOURCESSOLDOUT = 'ResourcesSoldOut'
 # 未授权操作。
 UNAUTHORIZEDOPERATION = 'UnauthorizedOperation'
 
+# 未开通权限/无有效套餐包/账号已欠费。
+UNAUTHORIZEDOPERATION_UNAUTHORIZED = 'UnauthorizedOperation.Unauthorized'
+
 # 未知参数错误。
 UNKNOWNPARAMETER = 'UnknownParameter'
 

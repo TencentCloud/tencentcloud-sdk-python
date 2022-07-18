@@ -816,6 +816,10 @@ class EnvInfo(AbstractModel):
         :type RunningCount: int
         :param AliasEnvName: 环境别名
         :type AliasEnvName: str
+        :param EnvDesc: 环境描述
+        :type EnvDesc: str
+        :param ClientBandWidth: 客户端带宽
+        :type ClientBandWidth: int
         """
         self.EnvName = None
         self.VpcInfos = None
@@ -829,6 +833,8 @@ class EnvInfo(AbstractModel):
         self.EnvReplica = None
         self.RunningCount = None
         self.AliasEnvName = None
+        self.EnvDesc = None
+        self.ClientBandWidth = None
 
 
     def _deserialize(self, params):
@@ -849,6 +855,8 @@ class EnvInfo(AbstractModel):
         self.EnvReplica = params.get("EnvReplica")
         self.RunningCount = params.get("RunningCount")
         self.AliasEnvName = params.get("AliasEnvName")
+        self.EnvDesc = params.get("EnvDesc")
+        self.ClientBandWidth = params.get("ClientBandWidth")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

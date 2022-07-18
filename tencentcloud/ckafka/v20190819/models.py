@@ -706,6 +706,77 @@ class CancelAuthorizationTokenResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CdcClusterResponse(AbstractModel):
+    """创建CDC 标准版共享集群出参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: int
+        """
+        self.TaskId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CheckCdcClusterRequest(AbstractModel):
+    """CheckCdcCluster请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 任务ID
+        :type TaskId: int
+        """
+        self.TaskId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CheckCdcClusterResponse(AbstractModel):
+    """CheckCdcCluster返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 返回结果状态Success
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
 class ClusterInfo(AbstractModel):
     """集群信息实体
 
@@ -1088,6 +1159,81 @@ class CreateAclResponse(AbstractModel):
     def _deserialize(self, params):
         if params.get("Result") is not None:
             self.Result = JgwOperateResponse()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class CreateCdcClusterRequest(AbstractModel):
+    """CreateCdcCluster请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CdcId: cdc的id
+        :type CdcId: str
+        :param CdcVpcId: vpcId,一个地域只有唯一一个vpcid用于CDC
+        :type CdcVpcId: str
+        :param CdcSubnetId: 每个CDC集群有唯一一个子网ID
+        :type CdcSubnetId: str
+        :param ZoneId: 所在可用区ID
+        :type ZoneId: int
+        :param Bandwidth: cdc集群的总带宽
+        :type Bandwidth: int
+        :param DiskSize: cdc集群的总磁盘
+        :type DiskSize: int
+        :param DiskType: 数据盘类型
+        :type DiskType: str
+        :param SystemDiskType: 系统盘类型
+        :type SystemDiskType: str
+        """
+        self.CdcId = None
+        self.CdcVpcId = None
+        self.CdcSubnetId = None
+        self.ZoneId = None
+        self.Bandwidth = None
+        self.DiskSize = None
+        self.DiskType = None
+        self.SystemDiskType = None
+
+
+    def _deserialize(self, params):
+        self.CdcId = params.get("CdcId")
+        self.CdcVpcId = params.get("CdcVpcId")
+        self.CdcSubnetId = params.get("CdcSubnetId")
+        self.ZoneId = params.get("ZoneId")
+        self.Bandwidth = params.get("Bandwidth")
+        self.DiskSize = params.get("DiskSize")
+        self.DiskType = params.get("DiskType")
+        self.SystemDiskType = params.get("SystemDiskType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCdcClusterResponse(AbstractModel):
+    """CreateCdcCluster返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 无
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.CdcClusterResponse`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = CdcClusterResponse()
             self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
 

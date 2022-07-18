@@ -25,11 +25,11 @@ class CreateBlockNodeRecordsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param GroupId: 盘查实例id
+        :param GroupId: 盘查组id，可在“盘查组概览”功能中获取。
         :type GroupId: str
-        :param NodeId: 节点id
+        :param NodeId: 节点id，可在“数据接入管理”中获取。
         :type NodeId: str
-        :param Records: 节点记录-json
+        :param Records: 节点数据json，具体demo请参考输入示例，其中key为数据接入管理中节点内创建的属性变量名，value为期望的推送值。
         :type Records: str
         """
         self.GroupId = None

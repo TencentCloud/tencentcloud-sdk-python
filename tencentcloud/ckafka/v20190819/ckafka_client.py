@@ -171,6 +171,35 @@ class CkafkaClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CheckCdcCluster(self, request):
+        """用于查询cdc-ckafka任务状态
+
+        :param request: Request instance for CheckCdcCluster.
+        :type request: :class:`tencentcloud.ckafka.v20190819.models.CheckCdcClusterRequest`
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.CheckCdcClusterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CheckCdcCluster", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CheckCdcClusterResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateAcl(self, request):
         """添加 ACL 策略
 
@@ -186,6 +215,35 @@ class CkafkaClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateAclResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateCdcCluster(self, request):
+        """用于cdc的专用ckafka集群
+
+        :param request: Request instance for CreateCdcCluster.
+        :type request: :class:`tencentcloud.ckafka.v20190819.models.CreateCdcClusterRequest`
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.CreateCdcClusterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCdcCluster", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateCdcClusterResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
