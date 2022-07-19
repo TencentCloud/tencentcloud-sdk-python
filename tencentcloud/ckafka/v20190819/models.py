@@ -4880,6 +4880,8 @@ class ModifyTopicAttributesRequest(AbstractModel):
         :type QuotaProducerByteRate: int
         :param QuotaConsumerByteRate: 消费限流，单位 MB/s
         :type QuotaConsumerByteRate: int
+        :param ReplicaNum: 调整topic副本数
+        :type ReplicaNum: int
         """
         self.InstanceId = None
         self.TopicName = None
@@ -4898,6 +4900,7 @@ class ModifyTopicAttributesRequest(AbstractModel):
         self.Tags = None
         self.QuotaProducerByteRate = None
         self.QuotaConsumerByteRate = None
+        self.ReplicaNum = None
 
 
     def _deserialize(self, params):
@@ -4923,6 +4926,7 @@ class ModifyTopicAttributesRequest(AbstractModel):
                 self.Tags.append(obj)
         self.QuotaProducerByteRate = params.get("QuotaProducerByteRate")
         self.QuotaConsumerByteRate = params.get("QuotaConsumerByteRate")
+        self.ReplicaNum = params.get("ReplicaNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -17534,6 +17534,10 @@ class NetworkAcl(AbstractModel):
         :type IngressEntries: list of NetworkAclEntry
         :param EgressEntries: 网络ACL出站规则。
         :type EgressEntries: list of NetworkAclEntry
+        :param NetworkAclType: 网络ACL类型。三元组：'TRIPLE'   五元组：'QUINTUPLE'
+        :type NetworkAclType: str
+        :param TagSet: 标签键值对
+        :type TagSet: list of Tag
         """
         self.VpcId = None
         self.NetworkAclId = None
@@ -17542,6 +17546,8 @@ class NetworkAcl(AbstractModel):
         self.SubnetSet = None
         self.IngressEntries = None
         self.EgressEntries = None
+        self.NetworkAclType = None
+        self.TagSet = None
 
 
     def _deserialize(self, params):
@@ -17567,6 +17573,13 @@ class NetworkAcl(AbstractModel):
                 obj = NetworkAclEntry()
                 obj._deserialize(item)
                 self.EgressEntries.append(obj)
+        self.NetworkAclType = params.get("NetworkAclType")
+        if params.get("TagSet") is not None:
+            self.TagSet = []
+            for item in params.get("TagSet"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.TagSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -320,6 +320,10 @@ class KTVMusicBaseInfo(AbstractModel):
 <li>Play：可播；</li>
 <li>Sing：可唱。</li>
         :type RightSet: list of str
+        :param RecommendType: 推荐类型，取值有：
+<li>Featured：精选；</li>
+<li>Other：其他。</li>
+        :type RecommendType: str
         """
         self.MusicId = None
         self.Name = None
@@ -328,6 +332,7 @@ class KTVMusicBaseInfo(AbstractModel):
         self.SingerImageUrl = None
         self.AlbumInfo = None
         self.RightSet = None
+        self.RecommendType = None
 
 
     def _deserialize(self, params):
@@ -340,6 +345,7 @@ class KTVMusicBaseInfo(AbstractModel):
             self.AlbumInfo = MusicAlbumInfo()
             self.AlbumInfo._deserialize(params.get("AlbumInfo"))
         self.RightSet = params.get("RightSet")
+        self.RecommendType = params.get("RecommendType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

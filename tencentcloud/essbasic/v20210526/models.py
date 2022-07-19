@@ -710,12 +710,14 @@ class CreateSignUrlsRequest(AbstractModel):
 "CHANNEL"：渠道合作企业；
 "NOT_CHANNEL"：非渠道合作企业；
 "PERSON"：个人；
+"FOLLOWER"：关注方，目前是合同抄送方；
         :type GenerateType: str
         :param OrganizationName: 非渠道合作企业参与方的企业名称，GenerateType为"NOT_CHANNEL"时必填
         :type OrganizationName: str
         :param Name: 参与人姓名，GenerateType为"PERSON"时必填
         :type Name: str
-        :param Mobile: 参与人手机号，GenerateType为"PERSON"时必填
+        :param Mobile: 参与人手机号；
+GenerateType为"PERSON"或"FOLLOWER"时必填
         :type Mobile: str
         :param OrganizationOpenId: 渠道合作企业的企业Id，GenerateType为"CHANNEL"时必填
         :type OrganizationOpenId: str

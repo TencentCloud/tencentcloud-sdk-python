@@ -2107,6 +2107,70 @@ class DomainPackageNew(AbstractModel):
         
 
 
+class DownloadAttackRecordInfo(AbstractModel):
+    """下载攻击日志记录数据项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: 记录ID
+        :type Id: int
+        :param TaskName: 下载任务名
+        :type TaskName: str
+        :param TaskId: 任务ID
+        :type TaskId: str
+        :param Host: 域名
+        :type Host: str
+        :param Count: 当前下载任务的日志条数
+        :type Count: int
+        :param Status: 下载任务运行状态：-1-下载超时，0-下载等待，1-下载完成，2-下载失败，4-正在下载
+        :type Status: int
+        :param Url: 下载文件URL
+        :type Url: str
+        :param CreateTime: 创建时间
+        :type CreateTime: str
+        :param ModifyTime: 最后更新修改时间
+        :type ModifyTime: str
+        :param ExpireTime: 过期时间
+        :type ExpireTime: str
+        :param TotalCount: 下载任务需下载的日志总条数
+        :type TotalCount: int
+        """
+        self.Id = None
+        self.TaskName = None
+        self.TaskId = None
+        self.Host = None
+        self.Count = None
+        self.Status = None
+        self.Url = None
+        self.CreateTime = None
+        self.ModifyTime = None
+        self.ExpireTime = None
+        self.TotalCount = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.TaskName = params.get("TaskName")
+        self.TaskId = params.get("TaskId")
+        self.Host = params.get("Host")
+        self.Count = params.get("Count")
+        self.Status = params.get("Status")
+        self.Url = params.get("Url")
+        self.CreateTime = params.get("CreateTime")
+        self.ModifyTime = params.get("ModifyTime")
+        self.ExpireTime = params.get("ExpireTime")
+        self.TotalCount = params.get("TotalCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ExportAccessInfo(AbstractModel):
     """DescribeAccessExports接口
 
@@ -2281,13 +2345,22 @@ class GetAttackDownloadRecordsResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param Records: 下载攻击日志记录数组
+        :type Records: list of DownloadAttackRecordInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.Records = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        if params.get("Records") is not None:
+            self.Records = []
+            for item in params.get("Records"):
+                obj = DownloadAttackRecordInfo()
+                obj._deserialize(item)
+                self.Records.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -2925,6 +2998,71 @@ class PortItem(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class PostAttackDownloadTaskRequest(AbstractModel):
+    """PostAttackDownloadTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Domain: 查询的域名，所有域名使用all
+        :type Domain: str
+        :param StartTime: 查询起始时间
+        :type StartTime: str
+        :param EndTime: 查询结束时间
+        :type EndTime: str
+        :param QueryString: Lucene语法
+        :type QueryString: str
+        :param TaskName: 任务名称
+        :type TaskName: str
+        :param Sort: 默认为desc，可以取值desc和asc
+        :type Sort: str
+        """
+        self.Domain = None
+        self.StartTime = None
+        self.EndTime = None
+        self.QueryString = None
+        self.TaskName = None
+        self.Sort = None
+
+
+    def _deserialize(self, params):
+        self.Domain = params.get("Domain")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.QueryString = params.get("QueryString")
+        self.TaskName = params.get("TaskName")
+        self.Sort = params.get("Sort")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PostAttackDownloadTaskResponse(AbstractModel):
+    """PostAttackDownloadTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Flow: 任务task id
+        :type Flow: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Flow = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Flow = params.get("Flow")
+        self.RequestId = params.get("RequestId")
 
 
 class QPSPackageNew(AbstractModel):

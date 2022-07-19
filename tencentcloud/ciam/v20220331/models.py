@@ -295,14 +295,21 @@ class DescribeUserByIdRequest(AbstractModel):
         :type UserStoreId: str
         :param UserId: 用户ID
         :type UserId: str
+        :param Original: 返回信息是否为原文
+
+<li> **false** </li>	默认，返回信息为脱敏信息
+<li> **true** </li>	返回用户信息原文
+        :type Original: bool
         """
         self.UserStoreId = None
         self.UserId = None
+        self.Original = None
 
 
     def _deserialize(self, params):
         self.UserStoreId = params.get("UserStoreId")
         self.UserId = params.get("UserId")
+        self.Original = params.get("Original")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -333,6 +340,88 @@ class DescribeUserByIdResponse(AbstractModel):
         if params.get("User") is not None:
             self.User = User()
             self.User._deserialize(params.get("User"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeUserRequest(AbstractModel):
+    """DescribeUser请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UserStoreId: 用户目录ID
+        :type UserStoreId: str
+        :param Pageable: 分页数据
+        :type Pageable: :class:`tencentcloud.ciam.v20220331.models.Pageable`
+        :param Filters: 查询条件，根据propertycode和propertykey
+        :type Filters: list of QueryUserFilter
+        :param Original: 是否返回明文
+        :type Original: bool
+        """
+        self.UserStoreId = None
+        self.Pageable = None
+        self.Filters = None
+        self.Original = None
+
+
+    def _deserialize(self, params):
+        self.UserStoreId = params.get("UserStoreId")
+        if params.get("Pageable") is not None:
+            self.Pageable = Pageable()
+            self.Pageable._deserialize(params.get("Pageable"))
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = QueryUserFilter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Original = params.get("Original")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeUserResponse(AbstractModel):
+    """DescribeUser返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Total: 总条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: int
+        :param Pageable: 分页对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Pageable: :class:`tencentcloud.ciam.v20220331.models.Pageable`
+        :param Content: 用户列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Content: list of User
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Total = None
+        self.Pageable = None
+        self.Content = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("Pageable") is not None:
+            self.Pageable = Pageable()
+            self.Pageable._deserialize(params.get("Pageable"))
+        if params.get("Content") is not None:
+            self.Content = []
+            for item in params.get("Content"):
+                obj = User()
+                obj._deserialize(item)
+                self.Content.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -879,16 +968,20 @@ class ListUserByPropertyRequest(AbstractModel):
         :type PropertyCode: str
         :param PropertyValue: 属性值
         :type PropertyValue: str
+        :param Original: 返回信息是否为原文
+        :type Original: bool
         """
         self.UserStoreId = None
         self.PropertyCode = None
         self.PropertyValue = None
+        self.Original = None
 
 
     def _deserialize(self, params):
         self.UserStoreId = params.get("UserStoreId")
         self.PropertyCode = params.get("PropertyCode")
         self.PropertyValue = params.get("PropertyValue")
+        self.Original = params.get("Original")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -941,10 +1034,13 @@ class ListUserRequest(AbstractModel):
 <li> **condition** </li>	Values = 查询条件，用户ID，用户名称，手机或邮箱
 <li> **userGroupId** </li>	Values = 用户组ID
         :type Filters: list of Filter
+        :param Original: 返回信息是否为原文
+        :type Original: bool
         """
         self.UserStoreId = None
         self.Pageable = None
         self.Filters = None
+        self.Original = None
 
 
     def _deserialize(self, params):
@@ -958,6 +1054,7 @@ class ListUserRequest(AbstractModel):
                 obj = Filter()
                 obj._deserialize(item)
                 self.Filters.append(obj)
+        self.Original = params.get("Original")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1165,6 +1262,38 @@ class Pageable(AbstractModel):
     def _deserialize(self, params):
         self.PageSize = params.get("PageSize")
         self.PageNumber = params.get("PageNumber")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryUserFilter(AbstractModel):
+    """查询用户信息条件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PropertyKey: 属性key
+        :type PropertyKey: str
+        :param PropertyValue: 属性value
+        :type PropertyValue: str
+        :param Logic: 逻辑值，等于true，不等于false
+        :type Logic: bool
+        """
+        self.PropertyKey = None
+        self.PropertyValue = None
+        self.Logic = None
+
+
+    def _deserialize(self, params):
+        self.PropertyKey = params.get("PropertyKey")
+        self.PropertyValue = params.get("PropertyValue")
+        self.Logic = params.get("Logic")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

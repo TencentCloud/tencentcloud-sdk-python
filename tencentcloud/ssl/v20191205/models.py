@@ -946,6 +946,12 @@ class DescribeCertificateDetailResponse(AbstractModel):
         :param EncryptPrivateKey: 国密加密私钥
 注意：此字段可能返回 null，表示取不到有效值。
         :type EncryptPrivateKey: str
+        :param CertFingerprint: 签名证书 SHA1指纹
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CertFingerprint: str
+        :param EncryptCertFingerprint: 加密证书 SHA1指纹 （国密证书特有）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EncryptCertFingerprint: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -986,6 +992,8 @@ class DescribeCertificateDetailResponse(AbstractModel):
         self.RootCert = None
         self.EncryptCert = None
         self.EncryptPrivateKey = None
+        self.CertFingerprint = None
+        self.EncryptCertFingerprint = None
         self.RequestId = None
 
 
@@ -1040,6 +1048,8 @@ class DescribeCertificateDetailResponse(AbstractModel):
             self.RootCert._deserialize(params.get("RootCert"))
         self.EncryptCert = params.get("EncryptCert")
         self.EncryptPrivateKey = params.get("EncryptPrivateKey")
+        self.CertFingerprint = params.get("CertFingerprint")
+        self.EncryptCertFingerprint = params.get("EncryptCertFingerprint")
         self.RequestId = params.get("RequestId")
 
 

@@ -971,6 +971,12 @@ class TaskGroupAction(AbstractModel):
         :param ActionType: 动作类型：平台、自定义
 注意：此字段可能返回 null，表示取不到有效值。
         :type ActionType: str
+        :param IsExecuteRedo: 是否可重试
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsExecuteRedo: bool
+        :param ActionRisk: 动作风险级别
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ActionRisk: str
         """
         self.TaskGroupActionId = None
         self.TaskGroupInstances = None
@@ -989,6 +995,8 @@ class TaskGroupAction(AbstractModel):
         self.ActionApiType = None
         self.ActionAttribute = None
         self.ActionType = None
+        self.IsExecuteRedo = None
+        self.ActionRisk = None
 
 
     def _deserialize(self, params):
@@ -1014,6 +1022,8 @@ class TaskGroupAction(AbstractModel):
         self.ActionApiType = params.get("ActionApiType")
         self.ActionAttribute = params.get("ActionAttribute")
         self.ActionType = params.get("ActionType")
+        self.IsExecuteRedo = params.get("IsExecuteRedo")
+        self.ActionRisk = params.get("ActionRisk")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1129,6 +1139,9 @@ class TaskGroupInstance(AbstractModel):
         :param TaskGroupInstanceEndTime: 执行结束时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskGroupInstanceEndTime: str
+        :param TaskGroupInstanceIsRedo: 实例是否可重试
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskGroupInstanceIsRedo: bool
         """
         self.TaskGroupInstanceId = None
         self.TaskGroupInstanceObjectId = None
@@ -1139,6 +1152,7 @@ class TaskGroupInstance(AbstractModel):
         self.TaskGroupInstanceStatusType = None
         self.TaskGroupInstanceStartTime = None
         self.TaskGroupInstanceEndTime = None
+        self.TaskGroupInstanceIsRedo = None
 
 
     def _deserialize(self, params):
@@ -1151,6 +1165,7 @@ class TaskGroupInstance(AbstractModel):
         self.TaskGroupInstanceStatusType = params.get("TaskGroupInstanceStatusType")
         self.TaskGroupInstanceStartTime = params.get("TaskGroupInstanceStartTime")
         self.TaskGroupInstanceEndTime = params.get("TaskGroupInstanceEndTime")
+        self.TaskGroupInstanceIsRedo = params.get("TaskGroupInstanceIsRedo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -202,7 +202,7 @@ class EssbasicClient(AbstractClient):
 
 
     def CreateSignUrls(self, request):
-        """创建跳转小程序查看或签署的链接
+        """创建跳转小程序查看或签署的链接；自动签署的签署方不创建签署链接；
 
         :param request: Request instance for CreateSignUrls.
         :type request: :class:`tencentcloud.essbasic.v20210526.models.CreateSignUrlsRequest`
