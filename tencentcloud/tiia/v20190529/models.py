@@ -217,15 +217,24 @@ class CarTagItem(AbstractModel):
         :type Type: str
         :param Color: 车辆颜色
         :type Color: str
-        :param Confidence: 置信度，0-100
+        :param Confidence: 车系置信度，0-100
         :type Confidence: int
         :param Year: 年份，没识别出年份的时候返回0
         :type Year: int
         :param CarLocation: 车辆在图片中的坐标信息
         :type CarLocation: list of Coord
-        :param PlateContent: 车牌信息
+        :param PlateContent: 车牌信息，仅车辆识别（增强版）支持
 注意：此字段可能返回 null，表示取不到有效值。
         :type PlateContent: :class:`tencentcloud.tiia.v20190529.models.CarPlateContent`
+        :param PlateConfidence: 车牌信息置信度，0-100，仅车辆识别（增强版）支持
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PlateConfidence: int
+        :param TypeConfidence: 车辆类型置信度，0-100，仅车辆识别（增强版）支持
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TypeConfidence: int
+        :param ColorConfidence: 车辆颜色置信度，0-100，仅车辆识别（增强版）支持
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ColorConfidence: int
         """
         self.Serial = None
         self.Brand = None
@@ -235,6 +244,9 @@ class CarTagItem(AbstractModel):
         self.Year = None
         self.CarLocation = None
         self.PlateContent = None
+        self.PlateConfidence = None
+        self.TypeConfidence = None
+        self.ColorConfidence = None
 
 
     def _deserialize(self, params):
@@ -253,6 +265,9 @@ class CarTagItem(AbstractModel):
         if params.get("PlateContent") is not None:
             self.PlateContent = CarPlateContent()
             self.PlateContent._deserialize(params.get("PlateContent"))
+        self.PlateConfidence = params.get("PlateConfidence")
+        self.TypeConfidence = params.get("TypeConfidence")
+        self.ColorConfidence = params.get("ColorConfidence")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -78,6 +78,58 @@ class AddUsersForUserManagerResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ApplicationStatics(AbstractModel):
+    """yarn application 统计信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Queue: 队列名
+        :type Queue: str
+        :param User: 用户名
+        :type User: str
+        :param ApplicationType: 作业类型
+        :type ApplicationType: str
+        :param SumMemorySeconds: SumMemorySeconds含义
+        :type SumMemorySeconds: int
+        :param SumVCoreSeconds: SumVCoreSeconds含义
+        :type SumVCoreSeconds: int
+        :param SumHDFSBytesWritten: SumHDFSBytesWritten（带单位）
+        :type SumHDFSBytesWritten: str
+        :param SumHDFSBytesRead: SumHDFSBytesRead（待单位）
+        :type SumHDFSBytesRead: str
+        :param CountApps: 作业数
+        :type CountApps: int
+        """
+        self.Queue = None
+        self.User = None
+        self.ApplicationType = None
+        self.SumMemorySeconds = None
+        self.SumVCoreSeconds = None
+        self.SumHDFSBytesWritten = None
+        self.SumHDFSBytesRead = None
+        self.CountApps = None
+
+
+    def _deserialize(self, params):
+        self.Queue = params.get("Queue")
+        self.User = params.get("User")
+        self.ApplicationType = params.get("ApplicationType")
+        self.SumMemorySeconds = params.get("SumMemorySeconds")
+        self.SumVCoreSeconds = params.get("SumVCoreSeconds")
+        self.SumHDFSBytesWritten = params.get("SumHDFSBytesWritten")
+        self.SumHDFSBytesRead = params.get("SumHDFSBytesRead")
+        self.CountApps = params.get("CountApps")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BootstrapAction(AbstractModel):
     """引导脚本
 
@@ -1146,6 +1198,112 @@ class DescribeCvmQuotaResponse(AbstractModel):
                 obj = PodSaleSpec()
                 obj._deserialize(item)
                 self.EksQuotaSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeEmrApplicationStaticsRequest(AbstractModel):
+    """DescribeEmrApplicationStatics请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 集群id
+        :type InstanceId: str
+        :param StartTime: 起始时间
+        :type StartTime: int
+        :param EndTime: 结束时间
+        :type EndTime: int
+        :param Queues: 过滤的队列名
+        :type Queues: list of str
+        :param Users: 过滤的用户名
+        :type Users: list of str
+        :param ApplicationTypes: 过滤的作业类型
+        :type ApplicationTypes: list of str
+        :param GroupBy: 分组字段，可选：queue, user, applicationType
+        :type GroupBy: list of str
+        :param OrderBy: 排序字段，可选：sumMemorySeconds, sumVCoreSeconds, sumHDFSBytesWritten, sumHDFSBytesRead
+        :type OrderBy: str
+        :param IsAsc: 是否顺序排序，0-逆序，1-正序
+        :type IsAsc: int
+        :param Offset: 页号
+        :type Offset: int
+        :param Limit: 页容量
+        :type Limit: int
+        """
+        self.InstanceId = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Queues = None
+        self.Users = None
+        self.ApplicationTypes = None
+        self.GroupBy = None
+        self.OrderBy = None
+        self.IsAsc = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Queues = params.get("Queues")
+        self.Users = params.get("Users")
+        self.ApplicationTypes = params.get("ApplicationTypes")
+        self.GroupBy = params.get("GroupBy")
+        self.OrderBy = params.get("OrderBy")
+        self.IsAsc = params.get("IsAsc")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeEmrApplicationStaticsResponse(AbstractModel):
+    """DescribeEmrApplicationStatics返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Statics: 作业统计信息
+        :type Statics: list of ApplicationStatics
+        :param TotalCount: 总数
+        :type TotalCount: int
+        :param Queues: 可选择的队列名
+        :type Queues: list of str
+        :param Users: 可选择的用户名
+        :type Users: list of str
+        :param ApplicationTypes: 可选择的作业类型
+        :type ApplicationTypes: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Statics = None
+        self.TotalCount = None
+        self.Queues = None
+        self.Users = None
+        self.ApplicationTypes = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Statics") is not None:
+            self.Statics = []
+            for item in params.get("Statics"):
+                obj = ApplicationStatics()
+                obj._deserialize(item)
+                self.Statics.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.Queues = params.get("Queues")
+        self.Users = params.get("Users")
+        self.ApplicationTypes = params.get("ApplicationTypes")
         self.RequestId = params.get("RequestId")
 
 

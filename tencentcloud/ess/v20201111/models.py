@@ -488,6 +488,7 @@ class CreateFlowByFilesRequest(AbstractModel):
 TEXT - 内容文本控件
 MULTI_LINE_TEXT - 多行文本控件
 CHECK_BOX - 勾选框控件
+ATTACHMENT - 附件
 注：默认字体大小为 字号12
         :type Components: list of Component
         :param Deadline: 签署流程的签署截止时间。

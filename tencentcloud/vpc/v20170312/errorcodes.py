@@ -761,6 +761,9 @@ UNSUPPORTEDOPERATION_RESOURCEMISMATCH = 'UnsupportedOperation.ResourceMismatch'
 # 未找到相关角色，请确认角色是否授权。
 UNSUPPORTEDOPERATION_ROLENOTFOUND = 'UnsupportedOperation.RoleNotFound'
 
+# 路由表绑定了子网。
+UNSUPPORTEDOPERATION_ROUTETABLEHASSUBNETRULE = 'UnsupportedOperation.RouteTableHasSubnetRule'
+
 # 指定的终端节点服务所创建的终端节点不支持绑定安全组。
 UNSUPPORTEDOPERATION_SPECIALENDPOINTSERVICE = 'UnsupportedOperation.SpecialEndPointService'
 

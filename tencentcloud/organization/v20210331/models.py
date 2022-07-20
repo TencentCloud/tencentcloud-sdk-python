@@ -487,6 +487,9 @@ class OrgMember(AbstractModel):
         :param BindStatus: 安全信息绑定状态  未绑定：Unbound，待激活：Valid，绑定成功：Success，绑定失败：Failed
 注意：此字段可能返回 null，表示取不到有效值。
         :type BindStatus: str
+        :param PermissionStatus: 成员权限状态 已确认：Confirmed ，待确认：UnConfirmed
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PermissionStatus: str
         """
         self.MemberUin = None
         self.Name = None
@@ -504,6 +507,7 @@ class OrgMember(AbstractModel):
         self.PayName = None
         self.OrgIdentity = None
         self.BindStatus = None
+        self.PermissionStatus = None
 
 
     def _deserialize(self, params):
@@ -533,6 +537,7 @@ class OrgMember(AbstractModel):
                 obj._deserialize(item)
                 self.OrgIdentity.append(obj)
         self.BindStatus = params.get("BindStatus")
+        self.PermissionStatus = params.get("PermissionStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
