@@ -4315,6 +4315,9 @@ class InstanceDetail(AbstractModel):
         :param ClusterType: 实例类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterType: str
+        :param Features: 实例功能列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Features: list of str
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -4347,6 +4350,7 @@ class InstanceDetail(AbstractModel):
         self.PublicNetworkChargeType = None
         self.PublicNetwork = None
         self.ClusterType = None
+        self.Features = None
 
 
     def _deserialize(self, params):
@@ -4391,6 +4395,7 @@ class InstanceDetail(AbstractModel):
         self.PublicNetworkChargeType = params.get("PublicNetworkChargeType")
         self.PublicNetwork = params.get("PublicNetwork")
         self.ClusterType = params.get("ClusterType")
+        self.Features = params.get("Features")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

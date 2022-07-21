@@ -3877,6 +3877,11 @@ class ImportImageRequest(AbstractModel):
         :type Force: bool
         :param TagSpecification: 标签描述列表。通过指定该参数可以同时绑定标签到自定义镜像。
         :type TagSpecification: list of TagSpecification
+        :param LicenseType: 导入镜像后，激活操作系统采用的许可证类型。
+可选项：
+TencentCloud: 腾讯云官方许可
+BYOL: 自带许可（Bring Your Own License）
+        :type LicenseType: str
         """
         self.Architecture = None
         self.OsType = None
@@ -3887,6 +3892,7 @@ class ImportImageRequest(AbstractModel):
         self.DryRun = None
         self.Force = None
         self.TagSpecification = None
+        self.LicenseType = None
 
 
     def _deserialize(self, params):
@@ -3904,6 +3910,7 @@ class ImportImageRequest(AbstractModel):
                 obj = TagSpecification()
                 obj._deserialize(item)
                 self.TagSpecification.append(obj)
+        self.LicenseType = params.get("LicenseType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

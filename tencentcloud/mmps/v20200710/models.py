@@ -290,6 +290,75 @@ class CreateAppScanTaskResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateFlySecMiniAppProfessionalScanTaskRequest(AbstractModel):
+    """CreateFlySecMiniAppProfessionalScanTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MiniAppID: 小程序AppID
+        :type MiniAppID: str
+        :param MiniAppName: 小程序名称
+        :type MiniAppName: str
+        :param Mode: 诊断模式 2:深度诊断
+        :type Mode: int
+        :param CorpName: 公司名称
+        :type CorpName: str
+        :param Mobile: 手机号码
+        :type Mobile: str
+        :param Email: 电子邮箱
+        :type Email: str
+        :param Remark: 备注信息
+        :type Remark: str
+        """
+        self.MiniAppID = None
+        self.MiniAppName = None
+        self.Mode = None
+        self.CorpName = None
+        self.Mobile = None
+        self.Email = None
+        self.Remark = None
+
+
+    def _deserialize(self, params):
+        self.MiniAppID = params.get("MiniAppID")
+        self.MiniAppName = params.get("MiniAppName")
+        self.Mode = params.get("Mode")
+        self.CorpName = params.get("CorpName")
+        self.Mobile = params.get("Mobile")
+        self.Email = params.get("Email")
+        self.Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateFlySecMiniAppProfessionalScanTaskResponse(AbstractModel):
+    """CreateFlySecMiniAppProfessionalScanTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Ret: 返回值, 0:成功, 其他值请查看“返回值”定义
+        :type Ret: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Ret = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Ret = params.get("Ret")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateFlySecMiniAppScanTaskRepeatRequest(AbstractModel):
     """CreateFlySecMiniAppScanTaskRepeat请求参数结构体
 
@@ -299,7 +368,7 @@ class CreateFlySecMiniAppScanTaskRepeatRequest(AbstractModel):
         r"""
         :param MiniAppID: 小程序AppID
         :type MiniAppID: str
-        :param Mode: 诊断模式 1:基础诊断，2:深度诊断
+        :param Mode: 诊断模式 1:基础诊断
         :type Mode: int
         :param OrgTaskID: 原任务id
         :type OrgTaskID: str
@@ -368,7 +437,7 @@ class CreateFlySecMiniAppScanTaskRequest(AbstractModel):
         r"""
         :param MiniAppID: 小程序AppID
         :type MiniAppID: str
-        :param Mode: 诊断模式 1:基础诊断，2:深度诊断
+        :param Mode: 诊断模式 1:基础诊断
         :type Mode: int
         :param MiniAppTestAccount: 小程序测试账号(自有账号体系需提供,其他情况不需要)
         :type MiniAppTestAccount: str

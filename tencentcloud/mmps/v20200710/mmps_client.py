@@ -84,6 +84,35 @@ class MmpsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateFlySecMiniAppProfessionalScanTask(self, request):
+        """创建小程序安全深度诊断任务
+
+        :param request: Request instance for CreateFlySecMiniAppProfessionalScanTask.
+        :type request: :class:`tencentcloud.mmps.v20200710.models.CreateFlySecMiniAppProfessionalScanTaskRequest`
+        :rtype: :class:`tencentcloud.mmps.v20200710.models.CreateFlySecMiniAppProfessionalScanTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateFlySecMiniAppProfessionalScanTask", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateFlySecMiniAppProfessionalScanTaskResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateFlySecMiniAppScanTask(self, request):
         """创建小程序翼扬安全的基础或深度诊断任务
 

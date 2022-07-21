@@ -1172,6 +1172,9 @@ class DCDBInstanceInfo(AbstractModel):
         :param ResourceTags: 实例标签信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceTags: list of ResourceTag
+        :param DbVersionId: 数据库引擎版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DbVersionId: str
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -1222,6 +1225,7 @@ class DCDBInstanceInfo(AbstractModel):
         self.DcnDstNum = None
         self.InstanceType = None
         self.ResourceTags = None
+        self.DbVersionId = None
 
 
     def _deserialize(self, params):
@@ -1284,6 +1288,7 @@ class DCDBInstanceInfo(AbstractModel):
                 obj = ResourceTag()
                 obj._deserialize(item)
                 self.ResourceTags.append(obj)
+        self.DbVersionId = params.get("DbVersionId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

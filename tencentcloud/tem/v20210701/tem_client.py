@@ -435,6 +435,35 @@ class TemClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DestroyEnvironment(self, request):
+        """销毁命名空间
+
+        :param request: Request instance for DestroyEnvironment.
+        :type request: :class:`tencentcloud.tem.v20210701.models.DestroyEnvironmentRequest`
+        :rtype: :class:`tencentcloud.tem.v20210701.models.DestroyEnvironmentResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DestroyEnvironment", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DestroyEnvironmentResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def GenerateApplicationPackageDownloadUrl(self, request):
         """生成应用程序包预签名下载链接
 

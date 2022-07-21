@@ -213,11 +213,12 @@ class DescribeAbnormalEventRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SdkAppId: 用户SDKAppID，查询SDKAppID下任意20条异常体验事件（可能不同房间）
+        :param SdkAppId: 用户SdkAppId（如：1400xxxxxx）
         :type SdkAppId: str
-        :param StartTime: 查询开始时间,本地unix时间戳（1592448600s）
+        :param StartTime: 查询开始时间，本地unix时间戳，单位为秒（如：1590065777）
+注意：支持查询14天内的数据
         :type StartTime: int
-        :param EndTime: 查询结束时间,本地unix时间戳（1592449080s）
+        :param EndTime: 查询结束时间，本地unix时间戳，单位为秒（如：1590065877）注意：与StartTime间隔时间不超过1小时。
         :type EndTime: int
         :param RoomId: 房间号，查询房间内任意20条以内异常体验事件
         :type RoomId: str
@@ -279,15 +280,17 @@ class DescribeCallDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CommId: 通话 ID（唯一标识一次通话）： sdkappid_roomgString（房间号_createTime（房间创建时间，unix时间戳，单位为s）例：1400353843_218695_1590065777。通过 DescribeRoomInformation（查询房间列表）接口获取（链接：https://cloud.tencent.com/document/product/647/44050）
+        :param CommId: 通话 ID（唯一标识一次通话）： SdkAppId_RoomId（房间号）_ CreateTime（房间创建时间，unix时间戳，单位为s）例：1400xxxxxx_218695_1590065777。通过 DescribeRoomInfo（查询历史房间列表）接口获取（[查询历史房间列表](https://cloud.tencent.com/document/product/647/44050)）。
         :type CommId: str
-        :param StartTime: 查询开始时间，14天内。本地unix时间戳（1590065777s），查询实时数据时，查询起止时间不超过1个小时。
+        :param StartTime: 查询开始时间，本地unix时间戳，单位为秒（如：1590065777），
+注意：支持查询14天内的数据。
         :type StartTime: int
-        :param EndTime: 查询结束时间，本地unix时间戳（1590065877s）
+        :param EndTime: 查询结束时间，本地unix时间戳，单位为秒（如：1590065877）
+注意：DataType 不为null ，与StartTime间隔时间不超过1小时；DataType 为null，与StartTime间隔时间不超过4小时。
         :type EndTime: int
-        :param SdkAppId: 用户SDKAppID（1400353843）
+        :param SdkAppId: 用户SdkAppId（如：1400xxxxxx）。
         :type SdkAppId: str
-        :param UserIds: 需查询的用户数组，不填默认返回6个用户,最多可填6个用户
+        :param UserIds: 需查询的用户数组，默认不填返回6个用户。
         :type UserIds: list of str
         :param DataType: 需查询的指标，不填则只返回用户列表，填all则返回所有指标。
 appCpu：APP CPU使用率；
@@ -304,9 +307,13 @@ bigvLoss：上/下行视频丢包率；
 bigvWidth：上/下行分辨率宽；
 bigvHeight：上/下行分辨率高
         :type DataType: list of str
-        :param PageNumber: 设置分页index，从0开始（PageNumber和PageSize 其中一个不填均默认返回6条数据）
+        :param PageNumber: 当前页数，默认为0，
+注意：PageNumber和PageSize 其中一个不填均默认返回6条数据。
         :type PageNumber: str
-        :param PageSize: 设置分页大小（PageNumber和PageSize 其中一个不填均默认返回6条数据,DataType，UserIds不为null，PageSize最大不超过6，DataType，UserIds为null，PageSize最大不超过100）
+        :param PageSize: 每页个数，默认为6，
+范围：[1，100]
+注意：DataType不为null，UserIds长度不能超过6，PageSize最大值不超过6；
+DataType 为null，UserIds长度不超过100，PageSize最大不超过100。
         :type PageSize: str
         """
         self.CommId = None
@@ -385,15 +392,17 @@ class DescribeDetailEventRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CommId: 通话 ID（唯一标识一次通话）： sdkappid_roomgString（房间号_createTime（房间创建时间，unix时间戳，单位s）。通过 DescribeRoomInformation（查询房间列表）接口获取。（链接：https://cloud.tencent.com/document/product/647/44050）
+        :param CommId: 通话 ID（唯一标识一次通话）： SdkAppId_RoomId（房间号）_ CreateTime（房间创建时间，unix时间戳，单位为s）例：1400xxxxxx_218695_1590065777。通过 DescribeRoomInfo（查询历史房间列表）接口获取（[查询历史房间列表](https://cloud.tencent.com/document/product/647/44050)）。
         :type CommId: str
-        :param StartTime: 查询开始时间，14天内。本地unix时间戳（1588055615s）
+        :param StartTime: 查询开始时间，本地unix时间戳，单位为秒（如：1590065777）
+注意：支持查询14天内的数据
         :type StartTime: int
-        :param EndTime: 查询结束时间，本地unix时间戳（1588058615s）
+        :param EndTime: 查询结束时间，本地unix时间戳，单位为秒（如：1590065877）
+注意：查询时间大于房间结束时间，以房间结束时间为准。
         :type EndTime: int
-        :param UserId: 用户id
+        :param UserId: 用户UserId
         :type UserId: str
-        :param RoomId: 房间号
+        :param RoomId: 房间号（如：223）
         :type RoomId: str
         """
         self.CommId = None
@@ -517,11 +526,13 @@ class DescribeHistoryScaleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SdkAppId: 用户sdkappid(1400188366)
+        :param SdkAppId: 用户SdkAppId（如：1400xxxxxx）
         :type SdkAppId: str
-        :param StartTime: 查询开始时间，5天内。本地unix时间戳（1587571000s）
+        :param StartTime: 查询开始时间，本地unix时间戳，单位为秒（如：1590065777）
+注意：支持查询14天内的数据。
         :type StartTime: int
-        :param EndTime: 查询结束时间，本地unix时间戳（1588034999s）
+        :param EndTime: 查询结束时间，本地unix时间戳，单位为秒（如：1590065877），建议与StartTime间隔时间超过24小时。
+注意：按天统计，结束时间小于前一天，否则查询数据为空（如：需查询20号数据，结束时间需小于20号0点）。
         :type EndTime: int
         """
         self.SdkAppId = None
@@ -705,17 +716,21 @@ class DescribeRoomInformationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SdkAppId: 用户sdkappid
+        :param SdkAppId: 用户SdkAppId（如：1400xxxxxx）
         :type SdkAppId: str
-        :param StartTime: 查询开始时间，14天内。本地unix时间戳（1588031999）
+        :param StartTime: 查询开始时间，本地unix时间戳，单位为秒（如：1590065777）
+注意：支持查询14天内的数据
         :type StartTime: int
-        :param EndTime: 查询结束时间，本地unix时间戳（1588034999）
+        :param EndTime: 查询结束时间，本地unix时间戳，单位为秒（如：1590065877）
+注意：与StartTime间隔时间不超过24小时。
         :type EndTime: int
-        :param RoomId: 字符串房间号
+        :param RoomId: 房间号（如：223)
         :type RoomId: str
-        :param PageNumber: 分页index，从0开始（PageNumber和PageSize 其中一个不填均默认返回10条数据）
+        :param PageNumber: 当前页数，默认为0，
+注意：PageNumber和PageSize 其中一个不填均默认返回10条数据。
         :type PageNumber: str
-        :param PageSize: 分页大小（PageNumber和PageSize 其中一个不填均默认返回10条数据,最大不超过100）
+        :param PageSize: 每页个数，默认为10，
+范围：[1，100]
         :type PageSize: str
         """
         self.SdkAppId = None
@@ -838,19 +853,24 @@ class DescribeUserInformationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CommId: 通话 ID（唯一标识一次通话）： sdkappid_roomgString（房间号_createTime（房间创建时间，unix时间戳，单位为s）例：1400353843_218695_1590065777。通过 DescribeRoomInformation（查询房间列表）接口获取（链接：https://cloud.tencent.com/document/product/647/44050）
+        :param CommId: 通话 ID（唯一标识一次通话）： SdkAppId_RoomId（房间号）_ CreateTime（房间创建时间，unix时间戳，单位为s）例：1400xxxxxx_218695_1590065777。通过 DescribeRoomInfo（查询历史房间列表）接口获取（[查询历史房间列表](https://cloud.tencent.com/document/product/647/44050)）。
         :type CommId: str
-        :param StartTime: 查询开始时间，14天内。本地unix时间戳（1590065777）
+        :param StartTime: 查询开始时间，本地unix时间戳，单位为秒（如：1590065777）
+注意：支持查询14天内的数据
         :type StartTime: int
-        :param EndTime: 查询结束时间，本地unix时间戳（1590065877）
+        :param EndTime: 查询结束时间，本地unix时间戳，单位为秒（如：1590065877）
+注意：与StartTime间隔时间不超过4小时。
         :type EndTime: int
-        :param SdkAppId: 用户SDKAppID（1400353843）
+        :param SdkAppId: 用户SdkAppId（如：1400xxxxxx）
         :type SdkAppId: str
-        :param UserIds: 需查询的用户数组，不填默认返回6个用户,最多可填6个用户
+        :param UserIds: 需查询的用户数组，不填默认返回6个用户
+范围：[1，100]。
         :type UserIds: list of str
-        :param PageNumber: 设置分页index，从0开始（PageNumber和PageSize 其中一个不填均默认返回6条数据）
+        :param PageNumber: 当前页数，默认为0，
+注意：PageNumber和PageSize 其中一个不填均默认返回6条数据。
         :type PageNumber: str
-        :param PageSize: 设置分页大小（PageNumber和PageSize 其中一个不填均默认返回6条数据,PageSize最大不超过100）
+        :param PageSize: 每页个数，默认为6，
+范围：[1，100]。
         :type PageSize: str
         """
         self.CommId = None

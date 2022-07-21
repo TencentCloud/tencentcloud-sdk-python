@@ -144,7 +144,7 @@ class EmrClient(AbstractClient):
 
 
     def DescribeEmrApplicationStatics(self, request):
-        """（通过走emrcc接入到cam） yarn applciation 统计接口
+        """yarn applciation 统计接口查询
 
         :param request: Request instance for DescribeEmrApplicationStatics.
         :type request: :class:`tencentcloud.emr.v20190103.models.DescribeEmrApplicationStaticsRequest`

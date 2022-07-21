@@ -1210,9 +1210,9 @@ class DescribeEmrApplicationStaticsRequest(AbstractModel):
         r"""
         :param InstanceId: 集群id
         :type InstanceId: str
-        :param StartTime: 起始时间
+        :param StartTime: 起始时间，时间戳（秒）
         :type StartTime: int
-        :param EndTime: 结束时间
+        :param EndTime: 结束时间，时间戳（秒）
         :type EndTime: int
         :param Queues: 过滤的队列名
         :type Queues: list of str
