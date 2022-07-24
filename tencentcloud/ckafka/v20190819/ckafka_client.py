@@ -258,6 +258,35 @@ class CkafkaClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateConnectResource(self, request):
+        """创建Datahub连接源
+
+        :param request: Request instance for CreateConnectResource.
+        :type request: :class:`tencentcloud.ckafka.v20190819.models.CreateConnectResourceRequest`
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.CreateConnectResourceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateConnectResource", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateConnectResourceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateConsumer(self, request):
         """创建消费者组
 
@@ -273,6 +302,35 @@ class CkafkaClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateConsumerResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateDatahubTask(self, request):
+        """创建Datahub转储任务
+
+        :param request: Request instance for CreateDatahubTask.
+        :type request: :class:`tencentcloud.ckafka.v20190819.models.CreateDatahubTaskRequest`
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.CreateDatahubTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateDatahubTask", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateDatahubTaskResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

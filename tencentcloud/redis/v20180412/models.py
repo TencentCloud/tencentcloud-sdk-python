@@ -2595,6 +2595,8 @@ class DescribeInstancesRequest(AbstractModel):
         :type TagKeys: list of str
         :param ProductVersions: 需要过滤的产品版本支持多个，"local"本地盘版，"cloud"云盘版，"cdc"独享集群版，如果不传则默认不过滤
         :type ProductVersions: list of str
+        :param InstanceIds: 批量查询指定的实例
+        :type InstanceIds: list of str
         """
         self.Limit = None
         self.Offset = None
@@ -2621,6 +2623,7 @@ class DescribeInstancesRequest(AbstractModel):
         self.InstanceTags = None
         self.TagKeys = None
         self.ProductVersions = None
+        self.InstanceIds = None
 
 
     def _deserialize(self, params):
@@ -2654,6 +2657,7 @@ class DescribeInstancesRequest(AbstractModel):
                 self.InstanceTags.append(obj)
         self.TagKeys = params.get("TagKeys")
         self.ProductVersions = params.get("ProductVersions")
+        self.InstanceIds = params.get("InstanceIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

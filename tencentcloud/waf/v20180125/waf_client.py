@@ -142,35 +142,6 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def CreateAttackDownloadTask(self, request):
-        """创建攻击日志下载任务
-
-        :param request: Request instance for CreateAttackDownloadTask.
-        :type request: :class:`tencentcloud.waf.v20180125.models.CreateAttackDownloadTaskRequest`
-        :rtype: :class:`tencentcloud.waf.v20180125.models.CreateAttackDownloadTaskResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CreateAttackDownloadTask", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.CreateAttackDownloadTaskResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def DeleteAccessExport(self, request):
         """本接口用于删除访问日志导出
 

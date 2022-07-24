@@ -219,6 +219,45 @@ class AclRuleInfo(AbstractModel):
         
 
 
+class AnalyseParam(AbstractModel):
+    """数据处理-解析参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Format: 解析格式，JSON，DELIMITER分隔符，REGULAR正则提取，SOURCE处理上层所有结果
+        :type Format: str
+        :param Regex: 分隔符、正则表达式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Regex: str
+        :param InputValueType: 需再次处理的KEY——模式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InputValueType: str
+        :param InputValue: 需再次处理的KEY——KEY表达式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InputValue: str
+        """
+        self.Format = None
+        self.Regex = None
+        self.InputValueType = None
+        self.InputValue = None
+
+
+    def _deserialize(self, params):
+        self.Format = params.get("Format")
+        self.Regex = params.get("Regex")
+        self.InputValueType = params.get("InputValueType")
+        self.InputValue = params.get("InputValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AppIdResponse(AbstractModel):
     """AppId的查询结果
 
@@ -777,6 +816,228 @@ class CheckCdcClusterResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ClickHouseConnectParam(AbstractModel):
+    """ClickHouse连接源参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Port: ClickHouse的连接port
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Port: int
+        :param UserName: ClickHouse连接源的用户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserName: str
+        :param Password: ClickHouse连接源的密码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Password: str
+        :param Resource: ClickHouse连接源的实例资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Resource: str
+        :param SelfBuilt: ClickHouse连接源是否为自建集群
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SelfBuilt: bool
+        :param ServiceVip: ClickHouse连接源的实例vip，当为腾讯云实例时，必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceVip: str
+        :param UniqVpcId: ClickHouse连接源的vpcId，当为腾讯云实例时，必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UniqVpcId: str
+        :param IsUpdate: 是否更新到关联的Datahub任务
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsUpdate: bool
+        """
+        self.Port = None
+        self.UserName = None
+        self.Password = None
+        self.Resource = None
+        self.SelfBuilt = None
+        self.ServiceVip = None
+        self.UniqVpcId = None
+        self.IsUpdate = None
+
+
+    def _deserialize(self, params):
+        self.Port = params.get("Port")
+        self.UserName = params.get("UserName")
+        self.Password = params.get("Password")
+        self.Resource = params.get("Resource")
+        self.SelfBuilt = params.get("SelfBuilt")
+        self.ServiceVip = params.get("ServiceVip")
+        self.UniqVpcId = params.get("UniqVpcId")
+        self.IsUpdate = params.get("IsUpdate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ClickHouseParam(AbstractModel):
+    """ClickHouse类型入参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Cluster: ClickHouse的集群
+        :type Cluster: str
+        :param Database: ClickHouse的数据库名
+        :type Database: str
+        :param Table: ClickHouse的数据表名
+        :type Table: str
+        :param Schema: ClickHouse的schema
+        :type Schema: list of ClickHouseSchema
+        :param Resource: 实例资源
+        :type Resource: str
+        :param Ip: ClickHouse的连接ip
+        :type Ip: str
+        :param Port: ClickHouse的连接port
+        :type Port: int
+        :param UserName: ClickHouse的用户名
+        :type UserName: str
+        :param Password: ClickHouse的密码
+        :type Password: str
+        :param ServiceVip: 实例vip
+        :type ServiceVip: str
+        :param UniqVpcId: 实例的vpcId
+        :type UniqVpcId: str
+        :param SelfBuilt: 是否为自建集群
+        :type SelfBuilt: bool
+        :param DropInvalidMessage: ClickHouse是否抛弃解析失败的消息，默认为true
+        :type DropInvalidMessage: bool
+        :param Type: ClickHouse 类型，emr-clickhouse : "emr";cdw-clickhouse : "cdwch";自建 : ""
+        :type Type: str
+        :param DropCls: 当设置成员参数DropInvalidMessageToCls设置为true时,DropInvalidMessage参数失效
+        :type DropCls: :class:`tencentcloud.ckafka.v20190819.models.DropCls`
+        """
+        self.Cluster = None
+        self.Database = None
+        self.Table = None
+        self.Schema = None
+        self.Resource = None
+        self.Ip = None
+        self.Port = None
+        self.UserName = None
+        self.Password = None
+        self.ServiceVip = None
+        self.UniqVpcId = None
+        self.SelfBuilt = None
+        self.DropInvalidMessage = None
+        self.Type = None
+        self.DropCls = None
+
+
+    def _deserialize(self, params):
+        self.Cluster = params.get("Cluster")
+        self.Database = params.get("Database")
+        self.Table = params.get("Table")
+        if params.get("Schema") is not None:
+            self.Schema = []
+            for item in params.get("Schema"):
+                obj = ClickHouseSchema()
+                obj._deserialize(item)
+                self.Schema.append(obj)
+        self.Resource = params.get("Resource")
+        self.Ip = params.get("Ip")
+        self.Port = params.get("Port")
+        self.UserName = params.get("UserName")
+        self.Password = params.get("Password")
+        self.ServiceVip = params.get("ServiceVip")
+        self.UniqVpcId = params.get("UniqVpcId")
+        self.SelfBuilt = params.get("SelfBuilt")
+        self.DropInvalidMessage = params.get("DropInvalidMessage")
+        self.Type = params.get("Type")
+        if params.get("DropCls") is not None:
+            self.DropCls = DropCls()
+            self.DropCls._deserialize(params.get("DropCls"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ClickHouseSchema(AbstractModel):
+    """ClickHouse的Schema
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ColumnName: 表的列名
+        :type ColumnName: str
+        :param JsonKey: 该列对应的jsonKey名
+        :type JsonKey: str
+        :param Type: 表列项的类型
+        :type Type: str
+        :param AllowNull: 列项是否允许为空
+        :type AllowNull: bool
+        """
+        self.ColumnName = None
+        self.JsonKey = None
+        self.Type = None
+        self.AllowNull = None
+
+
+    def _deserialize(self, params):
+        self.ColumnName = params.get("ColumnName")
+        self.JsonKey = params.get("JsonKey")
+        self.Type = params.get("Type")
+        self.AllowNull = params.get("AllowNull")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ClsParam(AbstractModel):
+    """Cls类型入参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DecodeJson: 生产的信息是否为json格式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DecodeJson: bool
+        :param Resource: cls日志主题id
+        :type Resource: str
+        :param LogSet: cls日志集id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogSet: str
+        :param ContentKey: 当DecodeJson为false时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ContentKey: str
+        """
+        self.DecodeJson = None
+        self.Resource = None
+        self.LogSet = None
+        self.ContentKey = None
+
+
+    def _deserialize(self, params):
+        self.DecodeJson = params.get("DecodeJson")
+        self.Resource = params.get("Resource")
+        self.LogSet = params.get("LogSet")
+        self.ContentKey = params.get("ContentKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ClusterInfo(AbstractModel):
     """集群信息实体
 
@@ -887,6 +1148,31 @@ delete：日志按保存时间删除；compact：日志按 key 压缩；compact,
         self.SegmentBytes = params.get("SegmentBytes")
         self.MaxMessageBytes = params.get("MaxMessageBytes")
         self.RetentionBytes = params.get("RetentionBytes")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConnectResourceResourceIdResp(AbstractModel):
+    """返回连接源的Id
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ResourceId: 连接源的Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceId: str
+        """
+        self.ResourceId = None
+
+
+    def _deserialize(self, params):
+        self.ResourceId = params.get("ResourceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1088,6 +1374,58 @@ class ConsumerRecord(AbstractModel):
         
 
 
+class CosParam(AbstractModel):
+    """Cos Datahub 任务接入参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BucketName: cos 存储桶名称
+        :type BucketName: str
+        :param Region: 地域代码
+        :type Region: str
+        :param ObjectKey: 对象名称
+        :type ObjectKey: str
+        :param AggregateBatchSize: 汇聚消息量的大小（单位：MB)
+        :type AggregateBatchSize: int
+        :param AggregateInterval: 汇聚的时间间隔（单位：小时）
+        :type AggregateInterval: int
+        :param FormatOutputType: 消息汇聚后的文件格式（支持csv, json）
+        :type FormatOutputType: str
+        :param ObjectKeyPrefix: 转储的对象目录前缀
+        :type ObjectKeyPrefix: str
+        :param DirectoryTimeFormat: 根据strptime 时间格式化的分区格式
+        :type DirectoryTimeFormat: str
+        """
+        self.BucketName = None
+        self.Region = None
+        self.ObjectKey = None
+        self.AggregateBatchSize = None
+        self.AggregateInterval = None
+        self.FormatOutputType = None
+        self.ObjectKeyPrefix = None
+        self.DirectoryTimeFormat = None
+
+
+    def _deserialize(self, params):
+        self.BucketName = params.get("BucketName")
+        self.Region = params.get("Region")
+        self.ObjectKey = params.get("ObjectKey")
+        self.AggregateBatchSize = params.get("AggregateBatchSize")
+        self.AggregateInterval = params.get("AggregateInterval")
+        self.FormatOutputType = params.get("FormatOutputType")
+        self.ObjectKeyPrefix = params.get("ObjectKeyPrefix")
+        self.DirectoryTimeFormat = params.get("DirectoryTimeFormat")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateAclRequest(AbstractModel):
     """CreateAcl请求参数结构体
 
@@ -1238,6 +1576,109 @@ class CreateCdcClusterResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateConnectResourceRequest(AbstractModel):
+    """CreateConnectResource请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ResourceName: 连接源名称
+        :type ResourceName: str
+        :param Type: 连接源类型
+        :type Type: str
+        :param Description: 连接源描述
+        :type Description: str
+        :param DtsConnectParam: Dts配置，Type为DTS时必填
+        :type DtsConnectParam: :class:`tencentcloud.ckafka.v20190819.models.DtsConnectParam`
+        :param MongoDBConnectParam: MongoDB配置，Type为MONGODB时必填
+        :type MongoDBConnectParam: :class:`tencentcloud.ckafka.v20190819.models.MongoDBConnectParam`
+        :param EsConnectParam: Es配置，Type为ES时必填
+        :type EsConnectParam: :class:`tencentcloud.ckafka.v20190819.models.EsConnectParam`
+        :param ClickHouseConnectParam: ClickHouse配置，Type为CLICKHOUSE时必填
+        :type ClickHouseConnectParam: :class:`tencentcloud.ckafka.v20190819.models.ClickHouseConnectParam`
+        :param MySQLConnectParam: MySQL配置，Type为MYSQL或TDSQL_C_MYSQL时必填
+        :type MySQLConnectParam: :class:`tencentcloud.ckafka.v20190819.models.MySQLConnectParam`
+        :param PostgreSQLConnectParam: PostgreSQL配置，Type为POSTGRESQL或TDSQL_C_POSTGRESQL时必填
+        :type PostgreSQLConnectParam: :class:`tencentcloud.ckafka.v20190819.models.PostgreSQLConnectParam`
+        :param MariaDBConnectParam: MariaDB配置，Type为MARIADB时必填
+        :type MariaDBConnectParam: :class:`tencentcloud.ckafka.v20190819.models.MariaDBConnectParam`
+        :param SQLServerConnectParam: SQLServer配置，Type为SQLSERVER时必填
+        :type SQLServerConnectParam: :class:`tencentcloud.ckafka.v20190819.models.SQLServerConnectParam`
+        """
+        self.ResourceName = None
+        self.Type = None
+        self.Description = None
+        self.DtsConnectParam = None
+        self.MongoDBConnectParam = None
+        self.EsConnectParam = None
+        self.ClickHouseConnectParam = None
+        self.MySQLConnectParam = None
+        self.PostgreSQLConnectParam = None
+        self.MariaDBConnectParam = None
+        self.SQLServerConnectParam = None
+
+
+    def _deserialize(self, params):
+        self.ResourceName = params.get("ResourceName")
+        self.Type = params.get("Type")
+        self.Description = params.get("Description")
+        if params.get("DtsConnectParam") is not None:
+            self.DtsConnectParam = DtsConnectParam()
+            self.DtsConnectParam._deserialize(params.get("DtsConnectParam"))
+        if params.get("MongoDBConnectParam") is not None:
+            self.MongoDBConnectParam = MongoDBConnectParam()
+            self.MongoDBConnectParam._deserialize(params.get("MongoDBConnectParam"))
+        if params.get("EsConnectParam") is not None:
+            self.EsConnectParam = EsConnectParam()
+            self.EsConnectParam._deserialize(params.get("EsConnectParam"))
+        if params.get("ClickHouseConnectParam") is not None:
+            self.ClickHouseConnectParam = ClickHouseConnectParam()
+            self.ClickHouseConnectParam._deserialize(params.get("ClickHouseConnectParam"))
+        if params.get("MySQLConnectParam") is not None:
+            self.MySQLConnectParam = MySQLConnectParam()
+            self.MySQLConnectParam._deserialize(params.get("MySQLConnectParam"))
+        if params.get("PostgreSQLConnectParam") is not None:
+            self.PostgreSQLConnectParam = PostgreSQLConnectParam()
+            self.PostgreSQLConnectParam._deserialize(params.get("PostgreSQLConnectParam"))
+        if params.get("MariaDBConnectParam") is not None:
+            self.MariaDBConnectParam = MariaDBConnectParam()
+            self.MariaDBConnectParam._deserialize(params.get("MariaDBConnectParam"))
+        if params.get("SQLServerConnectParam") is not None:
+            self.SQLServerConnectParam = SQLServerConnectParam()
+            self.SQLServerConnectParam._deserialize(params.get("SQLServerConnectParam"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateConnectResourceResponse(AbstractModel):
+    """CreateConnectResource返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 连接源的Id
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.ConnectResourceResourceIdResp`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = ConnectResourceResourceIdResp()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
 class CreateConsumerRequest(AbstractModel):
     """CreateConsumer请求参数结构体
 
@@ -1293,6 +1734,124 @@ class CreateConsumerResponse(AbstractModel):
     def _deserialize(self, params):
         if params.get("Result") is not None:
             self.Result = JgwOperateResponse()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class CreateDatahubTaskRequest(AbstractModel):
+    """CreateDatahubTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskName: 任务名称
+        :type TaskName: str
+        :param TaskType: 任务类型，SOURCE数据接入，SINK数据流出
+        :type TaskType: str
+        :param SourceResource: 数据源
+        :type SourceResource: :class:`tencentcloud.ckafka.v20190819.models.DatahubResource`
+        :param TargetResource: 数据目标
+        :type TargetResource: :class:`tencentcloud.ckafka.v20190819.models.DatahubResource`
+        :param TransformParam: 数据处理规则
+        :type TransformParam: :class:`tencentcloud.ckafka.v20190819.models.TransformParam`
+        :param PrivateLinkParam: 实例连接参数【已废弃】
+        :type PrivateLinkParam: :class:`tencentcloud.ckafka.v20190819.models.PrivateLinkParam`
+        :param SchemaId: 选择所要绑定的SchemaId
+        :type SchemaId: str
+        :param TransformsParam: 数据处理规则
+        :type TransformsParam: :class:`tencentcloud.ckafka.v20190819.models.TransformsParam`
+        :param TaskId: 任务ID
+        :type TaskId: str
+        """
+        self.TaskName = None
+        self.TaskType = None
+        self.SourceResource = None
+        self.TargetResource = None
+        self.TransformParam = None
+        self.PrivateLinkParam = None
+        self.SchemaId = None
+        self.TransformsParam = None
+        self.TaskId = None
+
+
+    def _deserialize(self, params):
+        self.TaskName = params.get("TaskName")
+        self.TaskType = params.get("TaskType")
+        if params.get("SourceResource") is not None:
+            self.SourceResource = DatahubResource()
+            self.SourceResource._deserialize(params.get("SourceResource"))
+        if params.get("TargetResource") is not None:
+            self.TargetResource = DatahubResource()
+            self.TargetResource._deserialize(params.get("TargetResource"))
+        if params.get("TransformParam") is not None:
+            self.TransformParam = TransformParam()
+            self.TransformParam._deserialize(params.get("TransformParam"))
+        if params.get("PrivateLinkParam") is not None:
+            self.PrivateLinkParam = PrivateLinkParam()
+            self.PrivateLinkParam._deserialize(params.get("PrivateLinkParam"))
+        self.SchemaId = params.get("SchemaId")
+        if params.get("TransformsParam") is not None:
+            self.TransformsParam = TransformsParam()
+            self.TransformsParam._deserialize(params.get("TransformsParam"))
+        self.TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDatahubTaskRes(AbstractModel):
+    """创建数据转储返回值
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 转储任务id
+        :type TaskId: str
+        :param DatahubId: 数据转储Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatahubId: str
+        """
+        self.TaskId = None
+        self.DatahubId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.DatahubId = params.get("DatahubId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDatahubTaskResponse(AbstractModel):
+    """CreateDatahubTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 任务id
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.CreateDatahubTaskRes`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = CreateDatahubTaskRes()
             self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
 
@@ -1925,6 +2484,162 @@ class CreateUserResponse(AbstractModel):
             self.Result = JgwOperateResponse()
             self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
+
+
+class DatahubResource(AbstractModel):
+    """Datahub资源配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Type: 资源类型
+        :type Type: str
+        :param KafkaParam: ckafka配置，Type为KAFKA时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KafkaParam: :class:`tencentcloud.ckafka.v20190819.models.KafkaParam`
+        :param EventBusParam: EB配置，Type为EB时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EventBusParam: :class:`tencentcloud.ckafka.v20190819.models.EventBusParam`
+        :param MongoDBParam: MongoDB配置，Type为MONGODB时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MongoDBParam: :class:`tencentcloud.ckafka.v20190819.models.MongoDBParam`
+        :param EsParam: Es配置，Type为ES时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EsParam: :class:`tencentcloud.ckafka.v20190819.models.EsParam`
+        :param TdwParam: Tdw配置，Type为TDW时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TdwParam: :class:`tencentcloud.ckafka.v20190819.models.TdwParam`
+        :param DtsParam: Dts配置，Type为DTS时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DtsParam: :class:`tencentcloud.ckafka.v20190819.models.DtsParam`
+        :param ClickHouseParam: ClickHouse配置，Type为CLICKHOUSE时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClickHouseParam: :class:`tencentcloud.ckafka.v20190819.models.ClickHouseParam`
+        :param ClsParam: Cls配置，Type为CLS时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClsParam: :class:`tencentcloud.ckafka.v20190819.models.ClsParam`
+        :param CosParam: Cos配置，Type为COS时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CosParam: :class:`tencentcloud.ckafka.v20190819.models.CosParam`
+        :param MySQLParam: MySQL配置，Type为MYSQL时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MySQLParam: :class:`tencentcloud.ckafka.v20190819.models.MySQLParam`
+        :param PostgreSQLParam: PostgreSQL配置，Type为POSTGRESQL或TDSQL_C_POSTGRESQL时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PostgreSQLParam: :class:`tencentcloud.ckafka.v20190819.models.PostgreSQLParam`
+        :param TopicParam: Topic配置，Type为Topic时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicParam: :class:`tencentcloud.ckafka.v20190819.models.TopicParam`
+        :param MariaDBParam: MariaDB配置，Type为MARIADB时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MariaDBParam: :class:`tencentcloud.ckafka.v20190819.models.MariaDBParam`
+        :param SQLServerParam: SQLServer配置，Type为SQLSERVER时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SQLServerParam: :class:`tencentcloud.ckafka.v20190819.models.SQLServerParam`
+        """
+        self.Type = None
+        self.KafkaParam = None
+        self.EventBusParam = None
+        self.MongoDBParam = None
+        self.EsParam = None
+        self.TdwParam = None
+        self.DtsParam = None
+        self.ClickHouseParam = None
+        self.ClsParam = None
+        self.CosParam = None
+        self.MySQLParam = None
+        self.PostgreSQLParam = None
+        self.TopicParam = None
+        self.MariaDBParam = None
+        self.SQLServerParam = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        if params.get("KafkaParam") is not None:
+            self.KafkaParam = KafkaParam()
+            self.KafkaParam._deserialize(params.get("KafkaParam"))
+        if params.get("EventBusParam") is not None:
+            self.EventBusParam = EventBusParam()
+            self.EventBusParam._deserialize(params.get("EventBusParam"))
+        if params.get("MongoDBParam") is not None:
+            self.MongoDBParam = MongoDBParam()
+            self.MongoDBParam._deserialize(params.get("MongoDBParam"))
+        if params.get("EsParam") is not None:
+            self.EsParam = EsParam()
+            self.EsParam._deserialize(params.get("EsParam"))
+        if params.get("TdwParam") is not None:
+            self.TdwParam = TdwParam()
+            self.TdwParam._deserialize(params.get("TdwParam"))
+        if params.get("DtsParam") is not None:
+            self.DtsParam = DtsParam()
+            self.DtsParam._deserialize(params.get("DtsParam"))
+        if params.get("ClickHouseParam") is not None:
+            self.ClickHouseParam = ClickHouseParam()
+            self.ClickHouseParam._deserialize(params.get("ClickHouseParam"))
+        if params.get("ClsParam") is not None:
+            self.ClsParam = ClsParam()
+            self.ClsParam._deserialize(params.get("ClsParam"))
+        if params.get("CosParam") is not None:
+            self.CosParam = CosParam()
+            self.CosParam._deserialize(params.get("CosParam"))
+        if params.get("MySQLParam") is not None:
+            self.MySQLParam = MySQLParam()
+            self.MySQLParam._deserialize(params.get("MySQLParam"))
+        if params.get("PostgreSQLParam") is not None:
+            self.PostgreSQLParam = PostgreSQLParam()
+            self.PostgreSQLParam._deserialize(params.get("PostgreSQLParam"))
+        if params.get("TopicParam") is not None:
+            self.TopicParam = TopicParam()
+            self.TopicParam._deserialize(params.get("TopicParam"))
+        if params.get("MariaDBParam") is not None:
+            self.MariaDBParam = MariaDBParam()
+            self.MariaDBParam._deserialize(params.get("MariaDBParam"))
+        if params.get("SQLServerParam") is not None:
+            self.SQLServerParam = SQLServerParam()
+            self.SQLServerParam._deserialize(params.get("SQLServerParam"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DateParam(AbstractModel):
+    """数据处理——Value处理参数——转换时间格式参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Format: 时间格式
+        :type Format: str
+        :param TargetType: 输入类型，string，unix时间戳，默认string
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetType: str
+        :param TimeZone: 时区，默认GMT+8
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimeZone: str
+        """
+        self.Format = None
+        self.TargetType = None
+        self.TimeZone = None
+
+
+    def _deserialize(self, params):
+        self.Format = params.get("Format")
+        self.TargetType = params.get("TargetType")
+        self.TimeZone = params.get("TimeZone")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DeleteAclRequest(AbstractModel):
@@ -3510,6 +4225,158 @@ class DescribeUserResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DropCls(AbstractModel):
+    """dip失败消息写入cls的配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DropInvalidMessageToCls: 是否投递到cls
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DropInvalidMessageToCls: bool
+        :param DropClsRegion: 投递cls的地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DropClsRegion: str
+        :param DropClsOwneruin: 投递cls的账号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DropClsOwneruin: str
+        :param DropClsTopicId: 投递cls的主题
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DropClsTopicId: str
+        :param DropClsLogSet: 投递cls的日志集id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DropClsLogSet: str
+        """
+        self.DropInvalidMessageToCls = None
+        self.DropClsRegion = None
+        self.DropClsOwneruin = None
+        self.DropClsTopicId = None
+        self.DropClsLogSet = None
+
+
+    def _deserialize(self, params):
+        self.DropInvalidMessageToCls = params.get("DropInvalidMessageToCls")
+        self.DropClsRegion = params.get("DropClsRegion")
+        self.DropClsOwneruin = params.get("DropClsOwneruin")
+        self.DropClsTopicId = params.get("DropClsTopicId")
+        self.DropClsLogSet = params.get("DropClsLogSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DtsConnectParam(AbstractModel):
+    """Dts连接源参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Port: Dts的连接port
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Port: int
+        :param GroupId: Dts消费分组的Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupId: str
+        :param UserName: Dts消费分组的账号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserName: str
+        :param Password: Dts消费分组的密码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Password: str
+        :param Resource: Dts实例Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Resource: str
+        :param Topic: Dts订阅的topic
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Topic: str
+        :param IsUpdate: 是否更新到关联的Datahub任务
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsUpdate: bool
+        """
+        self.Port = None
+        self.GroupId = None
+        self.UserName = None
+        self.Password = None
+        self.Resource = None
+        self.Topic = None
+        self.IsUpdate = None
+
+
+    def _deserialize(self, params):
+        self.Port = params.get("Port")
+        self.GroupId = params.get("GroupId")
+        self.UserName = params.get("UserName")
+        self.Password = params.get("Password")
+        self.Resource = params.get("Resource")
+        self.Topic = params.get("Topic")
+        self.IsUpdate = params.get("IsUpdate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DtsParam(AbstractModel):
+    """Dts类型入参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Resource: Dts实例Id
+        :type Resource: str
+        :param Ip: Dts的连接ip
+        :type Ip: str
+        :param Port: Dts的连接port
+        :type Port: int
+        :param Topic: Dts订阅的topic
+        :type Topic: str
+        :param GroupId: Dts消费分组的Id
+        :type GroupId: str
+        :param GroupUser: Dts消费分组的账号
+        :type GroupUser: str
+        :param GroupPassword: Dts消费分组的密码
+        :type GroupPassword: str
+        :param TranSql: false同步原始数据，true同步解析后的json格式数据,默认true
+        :type TranSql: bool
+        """
+        self.Resource = None
+        self.Ip = None
+        self.Port = None
+        self.Topic = None
+        self.GroupId = None
+        self.GroupUser = None
+        self.GroupPassword = None
+        self.TranSql = None
+
+
+    def _deserialize(self, params):
+        self.Resource = params.get("Resource")
+        self.Ip = params.get("Ip")
+        self.Port = params.get("Port")
+        self.Topic = params.get("Topic")
+        self.GroupId = params.get("GroupId")
+        self.GroupUser = params.get("GroupUser")
+        self.GroupPassword = params.get("GroupPassword")
+        self.TranSql = params.get("TranSql")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DynamicDiskConfig(AbstractModel):
     """动态硬盘扩容配置
 
@@ -3590,6 +4457,246 @@ class DynamicRetentionTime(AbstractModel):
         
 
 
+class EsConnectParam(AbstractModel):
+    """Es连接源参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Port: Es的连接port
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Port: int
+        :param UserName: Es连接源的用户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserName: str
+        :param Password: Es连接源的密码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Password: str
+        :param Resource: Es连接源的实例资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Resource: str
+        :param SelfBuilt: Es连接源是否为自建集群
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SelfBuilt: bool
+        :param ServiceVip: Es连接源的实例vip，当为腾讯云实例时，必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceVip: str
+        :param UniqVpcId: Es连接源的vpcId，当为腾讯云实例时，必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UniqVpcId: str
+        :param IsUpdate: 是否更新到关联的Datahub任务
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsUpdate: bool
+        """
+        self.Port = None
+        self.UserName = None
+        self.Password = None
+        self.Resource = None
+        self.SelfBuilt = None
+        self.ServiceVip = None
+        self.UniqVpcId = None
+        self.IsUpdate = None
+
+
+    def _deserialize(self, params):
+        self.Port = params.get("Port")
+        self.UserName = params.get("UserName")
+        self.Password = params.get("Password")
+        self.Resource = params.get("Resource")
+        self.SelfBuilt = params.get("SelfBuilt")
+        self.ServiceVip = params.get("ServiceVip")
+        self.UniqVpcId = params.get("UniqVpcId")
+        self.IsUpdate = params.get("IsUpdate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EsParam(AbstractModel):
+    """Es类型入参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Resource: 实例资源
+        :type Resource: str
+        :param Port: Es的连接port
+        :type Port: int
+        :param UserName: Es用户名
+        :type UserName: str
+        :param Password: Es密码
+        :type Password: str
+        :param SelfBuilt: 是否为自建集群
+        :type SelfBuilt: bool
+        :param ServiceVip: 实例vip
+        :type ServiceVip: str
+        :param UniqVpcId: 实例的vpcId
+        :type UniqVpcId: str
+        :param DropInvalidMessage: Es是否抛弃解析失败的消息
+        :type DropInvalidMessage: bool
+        :param Index: Es自定义index名称
+        :type Index: str
+        :param DateFormat: Es自定义日期后缀
+        :type DateFormat: str
+        :param ContentKey: 非json格式数据的自定义key
+        :type ContentKey: str
+        :param DropInvalidJsonMessage: Es是否抛弃非json格式的消息
+        :type DropInvalidJsonMessage: bool
+        :param DocumentIdField: 转储到Es中的文档ID取值字段名
+        :type DocumentIdField: str
+        :param IndexType: Es自定义index名称的类型，STRING，JSONPATH，默认为STRING
+        :type IndexType: str
+        :param DropCls: 当设置成员参数DropInvalidMessageToCls设置为true时,DropInvalidMessage参数失效
+        :type DropCls: :class:`tencentcloud.ckafka.v20190819.models.DropCls`
+        :param DatabasePrimaryKey: 转储到ES的消息为Database的binlog时，如果需要同步数据库操作，即增删改的操作到ES时填写数据库表主键
+        :type DatabasePrimaryKey: str
+        """
+        self.Resource = None
+        self.Port = None
+        self.UserName = None
+        self.Password = None
+        self.SelfBuilt = None
+        self.ServiceVip = None
+        self.UniqVpcId = None
+        self.DropInvalidMessage = None
+        self.Index = None
+        self.DateFormat = None
+        self.ContentKey = None
+        self.DropInvalidJsonMessage = None
+        self.DocumentIdField = None
+        self.IndexType = None
+        self.DropCls = None
+        self.DatabasePrimaryKey = None
+
+
+    def _deserialize(self, params):
+        self.Resource = params.get("Resource")
+        self.Port = params.get("Port")
+        self.UserName = params.get("UserName")
+        self.Password = params.get("Password")
+        self.SelfBuilt = params.get("SelfBuilt")
+        self.ServiceVip = params.get("ServiceVip")
+        self.UniqVpcId = params.get("UniqVpcId")
+        self.DropInvalidMessage = params.get("DropInvalidMessage")
+        self.Index = params.get("Index")
+        self.DateFormat = params.get("DateFormat")
+        self.ContentKey = params.get("ContentKey")
+        self.DropInvalidJsonMessage = params.get("DropInvalidJsonMessage")
+        self.DocumentIdField = params.get("DocumentIdField")
+        self.IndexType = params.get("IndexType")
+        if params.get("DropCls") is not None:
+            self.DropCls = DropCls()
+            self.DropCls._deserialize(params.get("DropCls"))
+        self.DatabasePrimaryKey = params.get("DatabasePrimaryKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EventBusParam(AbstractModel):
+    """EventBus配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Type: 资源类型。EB_COS/EB_ES/EB_CLS
+        :type Type: str
+        :param SelfBuilt: 是否为自建集群
+        :type SelfBuilt: bool
+        :param Resource: 实例资源
+        :type Resource: str
+        :param Namespace: SCF云函数命名空间
+        :type Namespace: str
+        :param FunctionName: SCF云函数函数名
+        :type FunctionName: str
+        :param Qualifier: SCF云函数版本及别名
+        :type Qualifier: str
+        """
+        self.Type = None
+        self.SelfBuilt = None
+        self.Resource = None
+        self.Namespace = None
+        self.FunctionName = None
+        self.Qualifier = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.SelfBuilt = params.get("SelfBuilt")
+        self.Resource = params.get("Resource")
+        self.Namespace = params.get("Namespace")
+        self.FunctionName = params.get("FunctionName")
+        self.Qualifier = params.get("Qualifier")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FailureParam(AbstractModel):
+    """数据处理规则失败处理
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Type: 类型，DLQ死信队列，IGNORE_ERROR保留，DROP废弃
+        :type Type: str
+        :param KafkaParam: Ckafka类型死信队列
+        :type KafkaParam: :class:`tencentcloud.ckafka.v20190819.models.KafkaParam`
+        :param RetryInterval: 重试间隔
+        :type RetryInterval: int
+        :param MaxRetryAttempts: 重试次数
+        :type MaxRetryAttempts: int
+        :param TopicParam: DIP Topic类型死信队列
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicParam: :class:`tencentcloud.ckafka.v20190819.models.TopicParam`
+        :param DlqType: 死信队列类型，CKAFKA，TOPIC
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DlqType: str
+        """
+        self.Type = None
+        self.KafkaParam = None
+        self.RetryInterval = None
+        self.MaxRetryAttempts = None
+        self.TopicParam = None
+        self.DlqType = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        if params.get("KafkaParam") is not None:
+            self.KafkaParam = KafkaParam()
+            self.KafkaParam._deserialize(params.get("KafkaParam"))
+        self.RetryInterval = params.get("RetryInterval")
+        self.MaxRetryAttempts = params.get("MaxRetryAttempts")
+        if params.get("TopicParam") is not None:
+            self.TopicParam = TopicParam()
+            self.TopicParam._deserialize(params.get("TopicParam"))
+        self.DlqType = params.get("DlqType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class FetchMessageByOffsetRequest(AbstractModel):
     """FetchMessageByOffset请求参数结构体
 
@@ -3649,6 +4756,84 @@ class FetchMessageByOffsetResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class FieldParam(AbstractModel):
+    """数据处理——处理链
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Analyse: 解析
+        :type Analyse: :class:`tencentcloud.ckafka.v20190819.models.AnalyseParam`
+        :param SecondaryAnalyse: 二次解析
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecondaryAnalyse: :class:`tencentcloud.ckafka.v20190819.models.SecondaryAnalyseParam`
+        :param SMT: 数据处理
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SMT: list of SMTParam
+        :param Result: 测试结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: str
+        :param AnalyseResult: 解析结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AnalyseResult: list of SMTParam
+        :param SecondaryAnalyseResult: 二次解析结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecondaryAnalyseResult: list of SMTParam
+        :param AnalyseJsonResult: JSON格式解析结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AnalyseJsonResult: str
+        :param SecondaryAnalyseJsonResult: JSON格式二次解析结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecondaryAnalyseJsonResult: str
+        """
+        self.Analyse = None
+        self.SecondaryAnalyse = None
+        self.SMT = None
+        self.Result = None
+        self.AnalyseResult = None
+        self.SecondaryAnalyseResult = None
+        self.AnalyseJsonResult = None
+        self.SecondaryAnalyseJsonResult = None
+
+
+    def _deserialize(self, params):
+        if params.get("Analyse") is not None:
+            self.Analyse = AnalyseParam()
+            self.Analyse._deserialize(params.get("Analyse"))
+        if params.get("SecondaryAnalyse") is not None:
+            self.SecondaryAnalyse = SecondaryAnalyseParam()
+            self.SecondaryAnalyse._deserialize(params.get("SecondaryAnalyse"))
+        if params.get("SMT") is not None:
+            self.SMT = []
+            for item in params.get("SMT"):
+                obj = SMTParam()
+                obj._deserialize(item)
+                self.SMT.append(obj)
+        self.Result = params.get("Result")
+        if params.get("AnalyseResult") is not None:
+            self.AnalyseResult = []
+            for item in params.get("AnalyseResult"):
+                obj = SMTParam()
+                obj._deserialize(item)
+                self.AnalyseResult.append(obj)
+        if params.get("SecondaryAnalyseResult") is not None:
+            self.SecondaryAnalyseResult = []
+            for item in params.get("SecondaryAnalyseResult"):
+                obj = SMTParam()
+                obj._deserialize(item)
+                self.SecondaryAnalyseResult.append(obj)
+        self.AnalyseJsonResult = params.get("AnalyseJsonResult")
+        self.SecondaryAnalyseJsonResult = params.get("SecondaryAnalyseJsonResult")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Filter(AbstractModel):
     """查询过滤器
     >描述键值对过滤器，用于条件过滤查询。例如过滤ID、名称、状态等
@@ -3672,6 +4857,42 @@ class Filter(AbstractModel):
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FilterMapParam(AbstractModel):
+    """过滤器参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Key: Key值
+        :type Key: str
+        :param MatchMode: 匹配模式，前缀匹配PREFIX，后缀匹配SUFFIX，包含匹配CONTAINS，EXCEPT除外匹配，数值匹配NUMBER，IP匹配IP
+        :type MatchMode: str
+        :param Value: Value值
+        :type Value: str
+        :param Type: 固定REGULAR
+        :type Type: str
+        """
+        self.Key = None
+        self.MatchMode = None
+        self.Value = None
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.MatchMode = params.get("MatchMode")
+        self.Value = params.get("Value")
+        self.Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4538,6 +5759,201 @@ class JgwOperateResponse(AbstractModel):
         
 
 
+class KafkaParam(AbstractModel):
+    """Ckafka配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SelfBuilt: 是否为自建集群
+        :type SelfBuilt: bool
+        :param Resource: 实例资源
+        :type Resource: str
+        :param Topic: Topic名称，多个以“,”分隔
+        :type Topic: str
+        :param OffsetType: Offset类型，最开始位置earliest，最新位置latest，时间点位置timestamp
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OffsetType: str
+        :param StartTime: Offset类型为timestamp时必传，传时间戳，精确到秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTime: int
+        :param ResourceName: 实例资源名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceName: str
+        :param ZoneId: Zone ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ZoneId: int
+        :param TopicId: Topic的Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicId: str
+        :param PartitionNum: Topic的分区数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PartitionNum: int
+        :param EnableToleration: 启用容错实例/开启死信队列
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnableToleration: bool
+        :param QpsLimit: Qps 限制
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QpsLimit: int
+        """
+        self.SelfBuilt = None
+        self.Resource = None
+        self.Topic = None
+        self.OffsetType = None
+        self.StartTime = None
+        self.ResourceName = None
+        self.ZoneId = None
+        self.TopicId = None
+        self.PartitionNum = None
+        self.EnableToleration = None
+        self.QpsLimit = None
+
+
+    def _deserialize(self, params):
+        self.SelfBuilt = params.get("SelfBuilt")
+        self.Resource = params.get("Resource")
+        self.Topic = params.get("Topic")
+        self.OffsetType = params.get("OffsetType")
+        self.StartTime = params.get("StartTime")
+        self.ResourceName = params.get("ResourceName")
+        self.ZoneId = params.get("ZoneId")
+        self.TopicId = params.get("TopicId")
+        self.PartitionNum = params.get("PartitionNum")
+        self.EnableToleration = params.get("EnableToleration")
+        self.QpsLimit = params.get("QpsLimit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MapParam(AbstractModel):
+    """Map参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Key: key值
+        :type Key: str
+        :param Type: 类型，DEFAULT默认，DATE系统预设-时间戳，CUSTOMIZE自定义，MAPPING映射
+        :type Type: str
+        :param Value: 值
+        :type Value: str
+        """
+        self.Key = None
+        self.Type = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Type = params.get("Type")
+        self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MariaDBConnectParam(AbstractModel):
+    """MariaDB连接源参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Port: MariaDB的连接port
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Port: int
+        :param UserName: MariaDB连接源的用户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserName: str
+        :param Password: MariaDB连接源的密码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Password: str
+        :param Resource: MariaDB连接源的实例资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Resource: str
+        :param ServiceVip: MariaDB连接源的实例vip，当为腾讯云实例时，必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceVip: str
+        :param UniqVpcId: MariaDB连接源的vpcId，当为腾讯云实例时，必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UniqVpcId: str
+        :param IsUpdate: 是否更新到关联的Datahub任务
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsUpdate: bool
+        """
+        self.Port = None
+        self.UserName = None
+        self.Password = None
+        self.Resource = None
+        self.ServiceVip = None
+        self.UniqVpcId = None
+        self.IsUpdate = None
+
+
+    def _deserialize(self, params):
+        self.Port = params.get("Port")
+        self.UserName = params.get("UserName")
+        self.Password = params.get("Password")
+        self.Resource = params.get("Resource")
+        self.ServiceVip = params.get("ServiceVip")
+        self.UniqVpcId = params.get("UniqVpcId")
+        self.IsUpdate = params.get("IsUpdate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MariaDBParam(AbstractModel):
+    """MariaDB类型入参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Database: MariaDB的数据库名称，"*"为全数据库
+        :type Database: str
+        :param Table: MariaDB的数据表名称，"*"为所监听的所有数据库中的非系统表，可以","间隔，监听多个数据表，但数据表需要以"数据库名.数据表名"的格式进行填写
+        :type Table: str
+        :param Resource: 该MariaDB在连接管理内的Id
+        :type Resource: str
+        :param SnapshotMode: 复制存量信息(schema_only不复制, initial全量)，默认位initial
+        :type SnapshotMode: str
+        """
+        self.Database = None
+        self.Table = None
+        self.Resource = None
+        self.SnapshotMode = None
+
+
+    def _deserialize(self, params):
+        self.Database = params.get("Database")
+        self.Table = params.get("Table")
+        self.Resource = params.get("Resource")
+        self.SnapshotMode = params.get("SnapshotMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ModifyGroupOffsetsRequest(AbstractModel):
     """ModifyGroupOffsets请求参数结构体
 
@@ -4964,6 +6380,271 @@ class ModifyTopicAttributesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class MongoDBConnectParam(AbstractModel):
+    """MongoDB连接源参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Port: MongoDB的连接port
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Port: int
+        :param UserName: MongoDB连接源的用户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserName: str
+        :param Password: MongoDB连接源的密码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Password: str
+        :param Resource: MongoDB连接源的实例资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Resource: str
+        :param SelfBuilt: MongoDB连接源是否为自建集群
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SelfBuilt: bool
+        :param ServiceVip: MongoDB连接源的实例vip，当为腾讯云实例时，必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceVip: str
+        :param UniqVpcId: MongoDB连接源的vpcId，当为腾讯云实例时，必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UniqVpcId: str
+        :param IsUpdate: 是否更新到关联的Datahub任务
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsUpdate: bool
+        """
+        self.Port = None
+        self.UserName = None
+        self.Password = None
+        self.Resource = None
+        self.SelfBuilt = None
+        self.ServiceVip = None
+        self.UniqVpcId = None
+        self.IsUpdate = None
+
+
+    def _deserialize(self, params):
+        self.Port = params.get("Port")
+        self.UserName = params.get("UserName")
+        self.Password = params.get("Password")
+        self.Resource = params.get("Resource")
+        self.SelfBuilt = params.get("SelfBuilt")
+        self.ServiceVip = params.get("ServiceVip")
+        self.UniqVpcId = params.get("UniqVpcId")
+        self.IsUpdate = params.get("IsUpdate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MongoDBParam(AbstractModel):
+    """MongoDB类型入参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Database: MongoDB的数据库名称
+        :type Database: str
+        :param Collection: MongoDB的集群
+        :type Collection: str
+        :param CopyExisting: 是否复制存量数据，默认传参true
+        :type CopyExisting: bool
+        :param Resource: 实例资源
+        :type Resource: str
+        :param Ip: MongoDB的连接ip
+        :type Ip: str
+        :param Port: MongoDB的连接port
+        :type Port: int
+        :param UserName: MongoDB数据库用户名
+        :type UserName: str
+        :param Password: MongoDB数据库密码
+        :type Password: str
+        :param ListeningEvent: 监听事件类型，为空时表示全选。取值包括insert,update,replace,delete,invalidate,drop,dropdatabase,rename，多个类型间使用,逗号分隔
+        :type ListeningEvent: str
+        :param ReadPreference: 主从优先级，默认主节点
+        :type ReadPreference: str
+        :param Pipeline: 聚合管道
+        :type Pipeline: str
+        :param SelfBuilt: 是否为自建集群
+        :type SelfBuilt: bool
+        """
+        self.Database = None
+        self.Collection = None
+        self.CopyExisting = None
+        self.Resource = None
+        self.Ip = None
+        self.Port = None
+        self.UserName = None
+        self.Password = None
+        self.ListeningEvent = None
+        self.ReadPreference = None
+        self.Pipeline = None
+        self.SelfBuilt = None
+
+
+    def _deserialize(self, params):
+        self.Database = params.get("Database")
+        self.Collection = params.get("Collection")
+        self.CopyExisting = params.get("CopyExisting")
+        self.Resource = params.get("Resource")
+        self.Ip = params.get("Ip")
+        self.Port = params.get("Port")
+        self.UserName = params.get("UserName")
+        self.Password = params.get("Password")
+        self.ListeningEvent = params.get("ListeningEvent")
+        self.ReadPreference = params.get("ReadPreference")
+        self.Pipeline = params.get("Pipeline")
+        self.SelfBuilt = params.get("SelfBuilt")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MySQLConnectParam(AbstractModel):
+    """MySQL连接源参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Port: MySQL的连接port
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Port: int
+        :param UserName: MySQL连接源的用户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserName: str
+        :param Password: MySQL连接源的密码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Password: str
+        :param Resource: MySQL连接源的实例资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Resource: str
+        :param ServiceVip: MySQL连接源的实例vip，当为腾讯云实例时，必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceVip: str
+        :param UniqVpcId: MySQL连接源的vpcId，当为腾讯云实例时，必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UniqVpcId: str
+        :param IsUpdate: 是否更新到关联的Datahub任务
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsUpdate: bool
+        :param ClusterId: 当type为TDSQL_C_MYSQL时，必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterId: str
+        """
+        self.Port = None
+        self.UserName = None
+        self.Password = None
+        self.Resource = None
+        self.ServiceVip = None
+        self.UniqVpcId = None
+        self.IsUpdate = None
+        self.ClusterId = None
+
+
+    def _deserialize(self, params):
+        self.Port = params.get("Port")
+        self.UserName = params.get("UserName")
+        self.Password = params.get("Password")
+        self.Resource = params.get("Resource")
+        self.ServiceVip = params.get("ServiceVip")
+        self.UniqVpcId = params.get("UniqVpcId")
+        self.IsUpdate = params.get("IsUpdate")
+        self.ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MySQLParam(AbstractModel):
+    """MySQL类型入参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Database: MySQL的数据库名称，"*"为全数据库
+        :type Database: str
+        :param Table: MySQL的数据表名称，"*"为所监听的所有数据库中的非系统表，可以","间隔，监听多个数据表，但数据表需要以"数据库名.数据表名"的格式进行填写
+        :type Table: str
+        :param Resource: 该MySQL在连接管理内的Id
+        :type Resource: str
+        :param SnapshotMode: 复制存量信息(schema_only不复制, initial全量)，默认位initial
+        :type SnapshotMode: str
+        :param DdlTopic: 存放MySQL的Ddl信息的Topic，为空则默认不存放
+        :type DdlTopic: str
+        :param DataSourceMonitorMode: "TABLE" 表示读取项为 table，"QUERY" 表示读取项为 query
+        :type DataSourceMonitorMode: str
+        :param DataSourceMonitorResource: 当 "DataMonitorMode"="TABLE" 时，传入需要读取的 Table；当 "DataMonitorMode"="QUERY" 时，传入需要读取的查询 sql 语句
+        :type DataSourceMonitorResource: str
+        :param DataSourceIncrementMode: "TIMESTAMP" 表示增量列为时间戳类型，"INCREMENT" 表示增量列为自增 id 类型
+        :type DataSourceIncrementMode: str
+        :param DataSourceIncrementColumn: 传入需要监听的列名称
+        :type DataSourceIncrementColumn: str
+        :param DataSourceStartFrom: "HEAD" 表示复制存量 + 增量数据，"TAIL" 表示只复制增量数据
+        :type DataSourceStartFrom: str
+        :param DataTargetInsertMode: "INSERT" 表示使用 Insert 模式插入，"UPSERT" 表示使用 Upsert 模式插入
+        :type DataTargetInsertMode: str
+        :param DataTargetPrimaryKeyField: 当 "DataInsertMode"="UPSERT" 时，传入当前 upsert 时依赖的主键
+        :type DataTargetPrimaryKeyField: str
+        :param DataTargetRecordMapping: 表与消息间的映射关系
+        :type DataTargetRecordMapping: list of RecordMapping
+        """
+        self.Database = None
+        self.Table = None
+        self.Resource = None
+        self.SnapshotMode = None
+        self.DdlTopic = None
+        self.DataSourceMonitorMode = None
+        self.DataSourceMonitorResource = None
+        self.DataSourceIncrementMode = None
+        self.DataSourceIncrementColumn = None
+        self.DataSourceStartFrom = None
+        self.DataTargetInsertMode = None
+        self.DataTargetPrimaryKeyField = None
+        self.DataTargetRecordMapping = None
+
+
+    def _deserialize(self, params):
+        self.Database = params.get("Database")
+        self.Table = params.get("Table")
+        self.Resource = params.get("Resource")
+        self.SnapshotMode = params.get("SnapshotMode")
+        self.DdlTopic = params.get("DdlTopic")
+        self.DataSourceMonitorMode = params.get("DataSourceMonitorMode")
+        self.DataSourceMonitorResource = params.get("DataSourceMonitorResource")
+        self.DataSourceIncrementMode = params.get("DataSourceIncrementMode")
+        self.DataSourceIncrementColumn = params.get("DataSourceIncrementColumn")
+        self.DataSourceStartFrom = params.get("DataSourceStartFrom")
+        self.DataTargetInsertMode = params.get("DataTargetInsertMode")
+        self.DataTargetPrimaryKeyField = params.get("DataTargetPrimaryKeyField")
+        if params.get("DataTargetRecordMapping") is not None:
+            self.DataTargetRecordMapping = []
+            for item in params.get("DataTargetRecordMapping"):
+                obj = RecordMapping()
+                obj._deserialize(item)
+                self.DataTargetRecordMapping.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class OperateResponseData(AbstractModel):
     """操作类型返回的Data结构
 
@@ -5071,6 +6752,106 @@ class Partitions(AbstractModel):
         
 
 
+class PostgreSQLConnectParam(AbstractModel):
+    """PostgreSQL连接源参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Port: PostgreSQL的连接port
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Port: int
+        :param UserName: PostgreSQL连接源的用户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserName: str
+        :param Password: PostgreSQL连接源的密码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Password: str
+        :param Resource: PostgreSQL连接源的实例资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Resource: str
+        :param ServiceVip: PostgreSQL连接源的实例vip，当为腾讯云实例时，必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceVip: str
+        :param UniqVpcId: PostgreSQL连接源的vpcId，当为腾讯云实例时，必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UniqVpcId: str
+        :param ClusterId: 当type为TDSQL_C_POSTGRESQL时，必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterId: str
+        :param IsUpdate: 是否更新到关联的Datahub任务
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsUpdate: bool
+        """
+        self.Port = None
+        self.UserName = None
+        self.Password = None
+        self.Resource = None
+        self.ServiceVip = None
+        self.UniqVpcId = None
+        self.ClusterId = None
+        self.IsUpdate = None
+
+
+    def _deserialize(self, params):
+        self.Port = params.get("Port")
+        self.UserName = params.get("UserName")
+        self.Password = params.get("Password")
+        self.Resource = params.get("Resource")
+        self.ServiceVip = params.get("ServiceVip")
+        self.UniqVpcId = params.get("UniqVpcId")
+        self.ClusterId = params.get("ClusterId")
+        self.IsUpdate = params.get("IsUpdate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PostgreSQLParam(AbstractModel):
+    """PostgreSQL类型入参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Database: PostgreSQL的数据库名称
+        :type Database: str
+        :param Table: PostgreSQL的数据表名称，"*"为所监听的所有数据库中的非系统表，可以","间隔，监听多个数据表，但数据表需要以"数据库名.数据表名"的格式进行填写
+        :type Table: str
+        :param Resource: 该PostgreSQL在连接管理内的Id
+        :type Resource: str
+        :param PluginName: 插件名(decoderbufs/pgoutput)，默认为decoderbufs
+        :type PluginName: str
+        :param SnapshotMode: 复制存量信息(never增量, initial全量)，默认为initial
+        :type SnapshotMode: str
+        """
+        self.Database = None
+        self.Table = None
+        self.Resource = None
+        self.PluginName = None
+        self.SnapshotMode = None
+
+
+    def _deserialize(self, params):
+        self.Database = params.get("Database")
+        self.Table = params.get("Table")
+        self.Resource = params.get("Resource")
+        self.PluginName = params.get("PluginName")
+        self.SnapshotMode = params.get("SnapshotMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Price(AbstractModel):
     """消息价格实体
 
@@ -5090,6 +6871,118 @@ class Price(AbstractModel):
     def _deserialize(self, params):
         self.RealTotalCost = params.get("RealTotalCost")
         self.TotalCost = params.get("TotalCost")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PrivateLinkParam(AbstractModel):
+    """建立私有连接的参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ServiceVip: 客户实例的vip
+        :type ServiceVip: str
+        :param UniqVpcId: 客户实例的vpcId
+        :type UniqVpcId: str
+        """
+        self.ServiceVip = None
+        self.UniqVpcId = None
+
+
+    def _deserialize(self, params):
+        self.ServiceVip = params.get("ServiceVip")
+        self.UniqVpcId = params.get("UniqVpcId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RecordMapping(AbstractModel):
+    """record 与数据库表的映射关系
+
+    """
+
+    def __init__(self):
+        r"""
+        :param JsonKey: 消息的 key 名称
+        :type JsonKey: str
+        :param Type: 消息类型
+        :type Type: str
+        :param AllowNull: 消息是否允许为空
+        :type AllowNull: bool
+        :param ColumnName: 对应映射列名称
+        :type ColumnName: str
+        :param ExtraInfo: 数据库表额外字段
+        :type ExtraInfo: str
+        :param ColumnSize: 当前列大小
+        :type ColumnSize: str
+        :param DecimalDigits: 当前列精度
+        :type DecimalDigits: str
+        :param AutoIncrement: 是否为自增列
+        :type AutoIncrement: bool
+        :param DefaultValue: 数据库表默认参数
+        :type DefaultValue: str
+        """
+        self.JsonKey = None
+        self.Type = None
+        self.AllowNull = None
+        self.ColumnName = None
+        self.ExtraInfo = None
+        self.ColumnSize = None
+        self.DecimalDigits = None
+        self.AutoIncrement = None
+        self.DefaultValue = None
+
+
+    def _deserialize(self, params):
+        self.JsonKey = params.get("JsonKey")
+        self.Type = params.get("Type")
+        self.AllowNull = params.get("AllowNull")
+        self.ColumnName = params.get("ColumnName")
+        self.ExtraInfo = params.get("ExtraInfo")
+        self.ColumnSize = params.get("ColumnSize")
+        self.DecimalDigits = params.get("DecimalDigits")
+        self.AutoIncrement = params.get("AutoIncrement")
+        self.DefaultValue = params.get("DefaultValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RegexReplaceParam(AbstractModel):
+    """数据处理——Value处理参数——正则替换参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Regex: 正则表达式
+        :type Regex: str
+        :param NewValue: 替换新值
+        :type NewValue: str
+        """
+        self.Regex = None
+        self.NewValue = None
+
+
+    def _deserialize(self, params):
+        self.Regex = params.get("Regex")
+        self.NewValue = params.get("NewValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5147,6 +7040,34 @@ class Region(AbstractModel):
         self.Support = params.get("Support")
         self.Ipv6 = params.get("Ipv6")
         self.MultiZone = params.get("MultiZone")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReplaceParam(AbstractModel):
+    """数据处理——Value处理参数——替换参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param OldValue: 被替换值
+        :type OldValue: str
+        :param NewValue: 替换值
+        :type NewValue: str
+        """
+        self.OldValue = None
+        self.NewValue = None
+
+
+    def _deserialize(self, params):
+        self.OldValue = params.get("OldValue")
+        self.NewValue = params.get("NewValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5246,6 +7167,156 @@ class RouteResponse(AbstractModel):
         
 
 
+class SMTParam(AbstractModel):
+    """数据处理——数据处理参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Key: 数据处理KEY
+        :type Key: str
+        :param Operate: 操作，DATE系统预设-时间戳，CUSTOMIZE自定义，MAPPING映射，JSONPATH
+        :type Operate: str
+        :param SchemeType: 数据类型，ORIGINAL原始，STRING，INT64，FLOAT64，BOOLEAN，MAP，ARRAY
+        :type SchemeType: str
+        :param Value: 数据处理VALUE
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        :param ValueOperate: VALUE处理
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ValueOperate: :class:`tencentcloud.ckafka.v20190819.models.ValueParam`
+        :param OriginalValue: 原始VALUE
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OriginalValue: str
+        :param ValueOperates: VALUE处理链
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ValueOperates: list of ValueParam
+        """
+        self.Key = None
+        self.Operate = None
+        self.SchemeType = None
+        self.Value = None
+        self.ValueOperate = None
+        self.OriginalValue = None
+        self.ValueOperates = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Operate = params.get("Operate")
+        self.SchemeType = params.get("SchemeType")
+        self.Value = params.get("Value")
+        if params.get("ValueOperate") is not None:
+            self.ValueOperate = ValueParam()
+            self.ValueOperate._deserialize(params.get("ValueOperate"))
+        self.OriginalValue = params.get("OriginalValue")
+        if params.get("ValueOperates") is not None:
+            self.ValueOperates = []
+            for item in params.get("ValueOperates"):
+                obj = ValueParam()
+                obj._deserialize(item)
+                self.ValueOperates.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SQLServerConnectParam(AbstractModel):
+    """SQLServer连接源参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Port: SQLServer的连接port
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Port: int
+        :param UserName: SQLServer连接源的用户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserName: str
+        :param Password: SQLServer连接源的密码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Password: str
+        :param Resource: SQLServer连接源的实例资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Resource: str
+        :param ServiceVip: SQLServer连接源的实例vip，当为腾讯云实例时，必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceVip: str
+        :param UniqVpcId: SQLServer连接源的vpcId，当为腾讯云实例时，必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UniqVpcId: str
+        :param IsUpdate: 是否更新到关联的Dip任务
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsUpdate: bool
+        """
+        self.Port = None
+        self.UserName = None
+        self.Password = None
+        self.Resource = None
+        self.ServiceVip = None
+        self.UniqVpcId = None
+        self.IsUpdate = None
+
+
+    def _deserialize(self, params):
+        self.Port = params.get("Port")
+        self.UserName = params.get("UserName")
+        self.Password = params.get("Password")
+        self.Resource = params.get("Resource")
+        self.ServiceVip = params.get("ServiceVip")
+        self.UniqVpcId = params.get("UniqVpcId")
+        self.IsUpdate = params.get("IsUpdate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SQLServerParam(AbstractModel):
+    """SQLServer类型入参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Database: SQLServer的数据库名称
+        :type Database: str
+        :param Table: SQLServer的数据表名称，"*"为所监听的所有数据库中的非系统表，可以","间隔，监听多个数据表，但数据表需要以"数据库名.数据表名"的格式进行填写
+        :type Table: str
+        :param Resource: 该SQLServer在连接管理内的Id
+        :type Resource: str
+        :param SnapshotMode: 复制存量信息(schema_only增量, initial全量)，默认为initial
+        :type SnapshotMode: str
+        """
+        self.Database = None
+        self.Table = None
+        self.Resource = None
+        self.SnapshotMode = None
+
+
+    def _deserialize(self, params):
+        self.Database = params.get("Database")
+        self.Table = params.get("Table")
+        self.Resource = params.get("Resource")
+        self.SnapshotMode = params.get("SnapshotMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SaleInfo(AbstractModel):
     """标准版销售信息
 
@@ -5277,6 +7348,30 @@ class SaleInfo(AbstractModel):
         self.Version = params.get("Version")
         self.Platform = params.get("Platform")
         self.SoldOut = params.get("SoldOut")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SecondaryAnalyseParam(AbstractModel):
+    """数据处理——二次解析参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Regex: 分隔符
+        :type Regex: str
+        """
+        self.Regex = None
+
+
+    def _deserialize(self, params):
+        self.Regex = params.get("Regex")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5384,6 +7479,34 @@ class SubscribedInfo(AbstractModel):
         
 
 
+class SubstrParam(AbstractModel):
+    """数据处理——Value处理参数——截取参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Start: 截取起始位置
+        :type Start: int
+        :param End: 截取截止位置
+        :type End: int
+        """
+        self.Start = None
+        self.End = None
+
+
+    def _deserialize(self, params):
+        self.Start = params.get("Start")
+        self.End = params.get("End")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Tag(AbstractModel):
     """实例详情中的标签对象
 
@@ -5403,6 +7526,34 @@ class Tag(AbstractModel):
     def _deserialize(self, params):
         self.TagKey = params.get("TagKey")
         self.TagValue = params.get("TagValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TdwParam(AbstractModel):
+    """Tdw类型入参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Bid: Tdw的bid
+        :type Bid: str
+        :param Tid: Tdw的tid
+        :type Tid: str
+        """
+        self.Bid = None
+        self.Tid = None
+
+
+    def _deserialize(self, params):
+        self.Bid = params.get("Bid")
+        self.Tid = params.get("Tid")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5735,6 +7886,45 @@ class TopicInSyncReplicaResult(AbstractModel):
         
 
 
+class TopicParam(AbstractModel):
+    """Topic配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Resource: 单独售卖Topic的Topic名称
+        :type Resource: str
+        :param OffsetType: Offset类型，最开始位置earliest，最新位置latest，时间点位置timestamp
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OffsetType: str
+        :param StartTime: Offset类型为timestamp时必传，传时间戳，精确到秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTime: int
+        :param TopicId: Topic的TopicId【出参】
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicId: str
+        """
+        self.Resource = None
+        self.OffsetType = None
+        self.StartTime = None
+        self.TopicId = None
+
+
+    def _deserialize(self, params):
+        self.Resource = params.get("Resource")
+        self.OffsetType = params.get("OffsetType")
+        self.StartTime = params.get("StartTime")
+        self.TopicId = params.get("TopicId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TopicPartitionDO(AbstractModel):
     """分区详情
 
@@ -5884,6 +8074,155 @@ class TopicSubscribeGroup(AbstractModel):
         
 
 
+class TransformParam(AbstractModel):
+    """数据处理参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AnalysisFormat: 解析格式，JSON，DELIMITER分隔符，REGULAR正则提取
+        :type AnalysisFormat: str
+        :param OutputFormat: 输出格式
+        :type OutputFormat: str
+        :param FailureParam: 是否保留解析失败数据
+        :type FailureParam: :class:`tencentcloud.ckafka.v20190819.models.FailureParam`
+        :param Content: 原始数据
+        :type Content: str
+        :param SourceType: 数据来源，TOPIC从源topic拉取，CUSTOMIZE自定义
+        :type SourceType: str
+        :param Regex: 分隔符、正则表达式
+        :type Regex: str
+        :param MapParam: Map
+        :type MapParam: list of MapParam
+        :param FilterParam: 过滤器
+        :type FilterParam: list of FilterMapParam
+        :param Result: 测试结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: str
+        :param AnalyseResult: 解析结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AnalyseResult: list of MapParam
+        :param UseEventBus: 底层引擎是否使用eb
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UseEventBus: bool
+        """
+        self.AnalysisFormat = None
+        self.OutputFormat = None
+        self.FailureParam = None
+        self.Content = None
+        self.SourceType = None
+        self.Regex = None
+        self.MapParam = None
+        self.FilterParam = None
+        self.Result = None
+        self.AnalyseResult = None
+        self.UseEventBus = None
+
+
+    def _deserialize(self, params):
+        self.AnalysisFormat = params.get("AnalysisFormat")
+        self.OutputFormat = params.get("OutputFormat")
+        if params.get("FailureParam") is not None:
+            self.FailureParam = FailureParam()
+            self.FailureParam._deserialize(params.get("FailureParam"))
+        self.Content = params.get("Content")
+        self.SourceType = params.get("SourceType")
+        self.Regex = params.get("Regex")
+        if params.get("MapParam") is not None:
+            self.MapParam = []
+            for item in params.get("MapParam"):
+                obj = MapParam()
+                obj._deserialize(item)
+                self.MapParam.append(obj)
+        if params.get("FilterParam") is not None:
+            self.FilterParam = []
+            for item in params.get("FilterParam"):
+                obj = FilterMapParam()
+                obj._deserialize(item)
+                self.FilterParam.append(obj)
+        self.Result = params.get("Result")
+        if params.get("AnalyseResult") is not None:
+            self.AnalyseResult = []
+            for item in params.get("AnalyseResult"):
+                obj = MapParam()
+                obj._deserialize(item)
+                self.AnalyseResult.append(obj)
+        self.UseEventBus = params.get("UseEventBus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TransformsParam(AbstractModel):
+    """数据处理参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Content: 原始数据
+        :type Content: str
+        :param FieldChain: 处理链
+        :type FieldChain: list of FieldParam
+        :param FilterParam: 过滤器
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FilterParam: list of FilterMapParam
+        :param FailureParam: 失败处理
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailureParam: :class:`tencentcloud.ckafka.v20190819.models.FailureParam`
+        :param Result: 测试结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: str
+        :param SourceType: 数据来源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceType: str
+        :param OutputFormat: 输出格式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OutputFormat: str
+        """
+        self.Content = None
+        self.FieldChain = None
+        self.FilterParam = None
+        self.FailureParam = None
+        self.Result = None
+        self.SourceType = None
+        self.OutputFormat = None
+
+
+    def _deserialize(self, params):
+        self.Content = params.get("Content")
+        if params.get("FieldChain") is not None:
+            self.FieldChain = []
+            for item in params.get("FieldChain"):
+                obj = FieldParam()
+                obj._deserialize(item)
+                self.FieldChain.append(obj)
+        if params.get("FilterParam") is not None:
+            self.FilterParam = []
+            for item in params.get("FilterParam"):
+                obj = FilterMapParam()
+                obj._deserialize(item)
+                self.FilterParam.append(obj)
+        if params.get("FailureParam") is not None:
+            self.FailureParam = FailureParam()
+            self.FailureParam._deserialize(params.get("FailureParam"))
+        self.Result = params.get("Result")
+        self.SourceType = params.get("SourceType")
+        self.OutputFormat = params.get("OutputFormat")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class User(AbstractModel):
     """用户实体
 
@@ -5945,6 +8284,58 @@ class UserResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Users.append(obj)
         self.TotalCount = params.get("TotalCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ValueParam(AbstractModel):
+    """数据处理——Value处理参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Type: 处理模式，REPLACE替换，SUBSTR截取，DATE日期转换，TRIM去除前后空格，REGEX_REPLACE正则替换
+        :type Type: str
+        :param Replace: 替换，TYPE=REPLACE时必传
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Replace: :class:`tencentcloud.ckafka.v20190819.models.ReplaceParam`
+        :param Substr: 截取，TYPE=SUBSTR时必传
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Substr: :class:`tencentcloud.ckafka.v20190819.models.SubstrParam`
+        :param Date: 时间转换，TYPE=DATE时必传
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Date: :class:`tencentcloud.ckafka.v20190819.models.DateParam`
+        :param RegexReplace: 正则替换，TYPE=REGEX_REPLACE时必传
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegexReplace: :class:`tencentcloud.ckafka.v20190819.models.RegexReplaceParam`
+        """
+        self.Type = None
+        self.Replace = None
+        self.Substr = None
+        self.Date = None
+        self.RegexReplace = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        if params.get("Replace") is not None:
+            self.Replace = ReplaceParam()
+            self.Replace._deserialize(params.get("Replace"))
+        if params.get("Substr") is not None:
+            self.Substr = SubstrParam()
+            self.Substr._deserialize(params.get("Substr"))
+        if params.get("Date") is not None:
+            self.Date = DateParam()
+            self.Date._deserialize(params.get("Date"))
+        if params.get("RegexReplace") is not None:
+            self.RegexReplace = RegexReplaceParam()
+            self.RegexReplace._deserialize(params.get("RegexReplace"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

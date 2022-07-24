@@ -55,6 +55,65 @@ class OceanusClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CopyJobs(self, request):
+        """单条和批量复制作业
+        https://iwiki.woa.com/pages/viewpage.action?pageId=1288112774
+
+        :param request: Request instance for CopyJobs.
+        :type request: :class:`tencentcloud.oceanus.v20190422.models.CopyJobsRequest`
+        :rtype: :class:`tencentcloud.oceanus.v20190422.models.CopyJobsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CopyJobs", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CopyJobsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateFolder(self, request):
+        """作业列表页面新建文件夹请求
+
+        :param request: Request instance for CreateFolder.
+        :type request: :class:`tencentcloud.oceanus.v20190422.models.CreateFolderRequest`
+        :rtype: :class:`tencentcloud.oceanus.v20190422.models.CreateFolderResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateFolder", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateFolderResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateJob(self, request):
         """新建作业接口，一个 AppId 最多允许创建1000个作业
 

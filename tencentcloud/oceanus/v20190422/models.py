@@ -335,6 +335,74 @@ class ClusterVersion(AbstractModel):
         
 
 
+class CopyJobsRequest(AbstractModel):
+    """CopyJobs请求参数结构体
+
+    """
+
+
+class CopyJobsResponse(AbstractModel):
+    """CopyJobs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreateFolderRequest(AbstractModel):
+    """CreateFolder请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FolderType: 文件夹类型，0是任务文件夹，1是依赖文件夹
+        :type FolderType: int
+        :param WorkSpaceId: 工作空间 SerialId
+        :type WorkSpaceId: str
+        """
+        self.FolderType = None
+        self.WorkSpaceId = None
+
+
+    def _deserialize(self, params):
+        self.FolderType = params.get("FolderType")
+        self.WorkSpaceId = params.get("WorkSpaceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateFolderResponse(AbstractModel):
+    """CreateFolder返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CreateJobConfigRequest(AbstractModel):
     """CreateJobConfig请求参数结构体
 

@@ -5049,11 +5049,14 @@ global: 全球节点
         :type Area: str
         :param Segment: 是否以IP段的格式返回。
         :type Segment: bool
+        :param ShowIpv6: 是否查询节点 IPV6 信息。
+        :type ShowIpv6: bool
         """
         self.Domain = None
         self.Layer = None
         self.Area = None
         self.Segment = None
+        self.ShowIpv6 = None
 
 
     def _deserialize(self, params):
@@ -5061,6 +5064,7 @@ global: 全球节点
         self.Layer = params.get("Layer")
         self.Area = params.get("Area")
         self.Segment = params.get("Segment")
+        self.ShowIpv6 = params.get("ShowIpv6")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8680,12 +8684,16 @@ class IpStatus(AbstractModel):
 online：上线状态，正常调度服务中
 offline：下线状态
         :type Status: str
+        :param Ipv6: 节点 IPV6
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Ipv6: str
         """
         self.Ip = None
         self.District = None
         self.Isp = None
         self.City = None
         self.Status = None
+        self.Ipv6 = None
 
 
     def _deserialize(self, params):
@@ -8694,6 +8702,7 @@ offline：下线状态
         self.Isp = params.get("Isp")
         self.City = params.get("City")
         self.Status = params.get("Status")
+        self.Ipv6 = params.get("Ipv6")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

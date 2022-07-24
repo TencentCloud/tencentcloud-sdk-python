@@ -896,6 +896,35 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def InquirePriceCreate(self, request):
+        """查询新购集群价格
+
+        :param request: Request instance for InquirePriceCreate.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.InquirePriceCreateRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.InquirePriceCreateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("InquirePriceCreate", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.InquirePriceCreateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def IsolateCluster(self, request):
         """隔离集群
 

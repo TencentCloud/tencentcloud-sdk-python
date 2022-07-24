@@ -742,6 +742,8 @@ class OcrClient(AbstractClient):
               </tbody>
             </table>
 
+        默认接口请求频率限制：20次/秒。
+
         :param request: Request instance for GeneralBasicOCR.
         :type request: :class:`tencentcloud.ocr.v20181119.models.GeneralBasicOCRRequest`
         :rtype: :class:`tencentcloud.ocr.v20181119.models.GeneralBasicOCRResponse`

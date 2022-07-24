@@ -3204,6 +3204,95 @@ class InputAccount(AbstractModel):
         
 
 
+class InquirePriceCreateRequest(AbstractModel):
+    """InquirePriceCreate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Zone: 可用区,每个地域提供最佳实践
+        :type Zone: str
+        :param GoodsNum: 购买商品数量
+        :type GoodsNum: int
+        :param InstancePayMode: 实例购买类型，可选值为：PREPAID, POSTPAID, SERVERLESS
+        :type InstancePayMode: str
+        :param StoragePayMode: 存储购买类型，可选值为：PREPAID, POSTPAID
+        :type StoragePayMode: str
+        :param Cpu: CPU核数，PREPAID与POSTPAID实例类型必传
+        :type Cpu: int
+        :param Memory: 内存大小，单位G，PREPAID与POSTPAID实例类型必传
+        :type Memory: int
+        :param Ccu: Ccu大小，serverless类型必传
+        :type Ccu: float
+        :param StorageLimit: 存储大小，PREPAID存储类型必传
+        :type StorageLimit: int
+        :param TimeSpan: 购买时长，PREPAID购买类型必传
+        :type TimeSpan: int
+        :param TimeUnit: 时长单位，可选值为：m,d。PREPAID购买类型必传
+        :type TimeUnit: str
+        """
+        self.Zone = None
+        self.GoodsNum = None
+        self.InstancePayMode = None
+        self.StoragePayMode = None
+        self.Cpu = None
+        self.Memory = None
+        self.Ccu = None
+        self.StorageLimit = None
+        self.TimeSpan = None
+        self.TimeUnit = None
+
+
+    def _deserialize(self, params):
+        self.Zone = params.get("Zone")
+        self.GoodsNum = params.get("GoodsNum")
+        self.InstancePayMode = params.get("InstancePayMode")
+        self.StoragePayMode = params.get("StoragePayMode")
+        self.Cpu = params.get("Cpu")
+        self.Memory = params.get("Memory")
+        self.Ccu = params.get("Ccu")
+        self.StorageLimit = params.get("StorageLimit")
+        self.TimeSpan = params.get("TimeSpan")
+        self.TimeUnit = params.get("TimeUnit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InquirePriceCreateResponse(AbstractModel):
+    """InquirePriceCreate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstancePrice: 实例价格
+        :type InstancePrice: :class:`tencentcloud.cynosdb.v20190107.models.TradePrice`
+        :param StoragePrice: 存储价格
+        :type StoragePrice: :class:`tencentcloud.cynosdb.v20190107.models.TradePrice`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.InstancePrice = None
+        self.StoragePrice = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("InstancePrice") is not None:
+            self.InstancePrice = TradePrice()
+            self.InstancePrice._deserialize(params.get("InstancePrice"))
+        if params.get("StoragePrice") is not None:
+            self.StoragePrice = TradePrice()
+            self.StoragePrice._deserialize(params.get("StoragePrice"))
+        self.RequestId = params.get("RequestId")
+
+
 class InstanceSpec(AbstractModel):
     """实例可售卖规格详细信息，创建实例时Cpu/Memory确定实例规格，存储可选大小为[MinStorageSize,MaxStorageSize]
 
@@ -4653,6 +4742,54 @@ class Tag(AbstractModel):
     def _deserialize(self, params):
         self.TagKey = params.get("TagKey")
         self.TagValue = params.get("TagValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TradePrice(AbstractModel):
+    """计费询价结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalPrice: 预付费模式下资源总价，不包含优惠，单位:分
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalPrice: int
+        :param Discount: 总的折扣，100表示100%不打折
+        :type Discount: float
+        :param TotalPriceDiscount: 预付费模式下的优惠后总价, 单位: 分,例如用户享有折扣 =TotalPrice × Discount
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalPriceDiscount: int
+        :param UnitPrice: 后付费模式下的单位资源价格，不包含优惠，单位:分
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UnitPrice: int
+        :param UnitPriceDiscount: 优惠后后付费模式下的单位资源价格, 单位: 分,例如用户享有折扣=UnitPricet × Discount
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UnitPriceDiscount: int
+        :param ChargeUnit: 计费价格单位
+        :type ChargeUnit: str
+        """
+        self.TotalPrice = None
+        self.Discount = None
+        self.TotalPriceDiscount = None
+        self.UnitPrice = None
+        self.UnitPriceDiscount = None
+        self.ChargeUnit = None
+
+
+    def _deserialize(self, params):
+        self.TotalPrice = params.get("TotalPrice")
+        self.Discount = params.get("Discount")
+        self.TotalPriceDiscount = params.get("TotalPriceDiscount")
+        self.UnitPrice = params.get("UnitPrice")
+        self.UnitPriceDiscount = params.get("UnitPriceDiscount")
+        self.ChargeUnit = params.get("ChargeUnit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

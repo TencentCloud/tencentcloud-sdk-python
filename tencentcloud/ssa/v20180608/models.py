@@ -3159,28 +3159,28 @@ class MappingResult(AbstractModel):
 
 
 class QueryFilter(AbstractModel):
-    """查询参数
+    """过滤条件
 
     """
 
     def __init__(self):
         r"""
-        :param FilterKey: 查询的字段
+        :param FilterKey: 过滤key
         :type FilterKey: str
-        :param FilterValue: 查询的值
-        :type FilterValue: str
-        :param FilterOperatorType: 匹配类型，1等于；2大于；3小于；4大于等于；5小于等于；6不等于；7in；8not in；9模糊匹配
+        :param FilterOperatorType: 操作符(只支持32位)
         :type FilterOperatorType: int
+        :param FilterValue: 过滤value
+        :type FilterValue: str
         """
         self.FilterKey = None
-        self.FilterValue = None
         self.FilterOperatorType = None
+        self.FilterValue = None
 
 
     def _deserialize(self, params):
         self.FilterKey = params.get("FilterKey")
-        self.FilterValue = params.get("FilterValue")
         self.FilterOperatorType = params.get("FilterOperatorType")
+        self.FilterValue = params.get("FilterValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
