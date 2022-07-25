@@ -335,10 +335,49 @@ class ClusterVersion(AbstractModel):
         
 
 
+class CopyJobItem(AbstractModel):
+    """复制作业单条明细
+
+    """
+
+
+class CopyJobResult(AbstractModel):
+    """复制作业单条明细结果
+
+    """
+
+
 class CopyJobsRequest(AbstractModel):
     """CopyJobs请求参数结构体
 
     """
+
+    def __init__(self):
+        r"""
+        :param JobItems: 复制明细列表
+        :type JobItems: list of CopyJobItem
+        :param WorkSpaceId: 工作空间 SerialId
+        :type WorkSpaceId: str
+        """
+        self.JobItems = None
+        self.WorkSpaceId = None
+
+
+    def _deserialize(self, params):
+        if params.get("JobItems") is not None:
+            self.JobItems = []
+            for item in params.get("JobItems"):
+                obj = CopyJobItem()
+                obj._deserialize(item)
+                self.JobItems.append(obj)
+        self.WorkSpaceId = params.get("WorkSpaceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class CopyJobsResponse(AbstractModel):
@@ -348,13 +387,33 @@ class CopyJobsResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param SuccessCount: 成功条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SuccessCount: int
+        :param FailCount: 失败条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailCount: int
+        :param CopyJobsResults: 结果列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CopyJobsResults: list of CopyJobResult
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.SuccessCount = None
+        self.FailCount = None
+        self.CopyJobsResults = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.SuccessCount = params.get("SuccessCount")
+        self.FailCount = params.get("FailCount")
+        if params.get("CopyJobsResults") is not None:
+            self.CopyJobsResults = []
+            for item in params.get("CopyJobsResults"):
+                obj = CopyJobResult()
+                obj._deserialize(item)
+                self.CopyJobsResults.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -365,16 +424,24 @@ class CreateFolderRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param FolderName: 新建文件夹名
+        :type FolderName: str
+        :param ParentId: 新建文件夹的父目录ID
+        :type ParentId: str
         :param FolderType: 文件夹类型，0是任务文件夹，1是依赖文件夹
         :type FolderType: int
         :param WorkSpaceId: 工作空间 SerialId
         :type WorkSpaceId: str
         """
+        self.FolderName = None
+        self.ParentId = None
         self.FolderType = None
         self.WorkSpaceId = None
 
 
     def _deserialize(self, params):
+        self.FolderName = params.get("FolderName")
+        self.ParentId = params.get("ParentId")
         self.FolderType = params.get("FolderType")
         self.WorkSpaceId = params.get("WorkSpaceId")
         memeber_set = set(params.keys())
@@ -393,13 +460,17 @@ class CreateFolderResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param FolderId: 新建文件夹的唯一ID
+        :type FolderId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.FolderId = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.FolderId = params.get("FolderId")
         self.RequestId = params.get("RequestId")
 
 

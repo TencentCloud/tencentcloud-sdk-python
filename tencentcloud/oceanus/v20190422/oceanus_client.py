@@ -57,7 +57,6 @@ class OceanusClient(AbstractClient):
 
     def CopyJobs(self, request):
         """单条和批量复制作业
-        https://iwiki.woa.com/pages/viewpage.action?pageId=1288112774
 
         :param request: Request instance for CopyJobs.
         :type request: :class:`tencentcloud.oceanus.v20190422.models.CopyJobsRequest`

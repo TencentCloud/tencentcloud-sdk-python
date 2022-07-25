@@ -14,6 +14,9 @@
 # limitations under the License.
 
 
+# 批量查询失败。
+FAILEDOPERATION_BATCHGETINSTANCEERROR = 'FailedOperation.BatchGetInstanceError'
+
 # 获取权限失败，请稍后重试。如果持续不成功，请联系客服进行处理。
 FAILEDOPERATION_CAMCHECKRESOURCEERROR = 'FailedOperation.CamCheckResourceError'
 

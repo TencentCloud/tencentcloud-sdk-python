@@ -876,6 +876,66 @@ class ClickHouseConnectParam(AbstractModel):
         
 
 
+class ClickHouseModifyConnectParam(AbstractModel):
+    """ClickHouse修改连接源参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Resource: ClickHouse连接源的实例资源【不支持修改】
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Resource: str
+        :param Port: ClickHouse的连接port【不支持修改】
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Port: int
+        :param ServiceVip: ClickHouse连接源的实例vip【不支持修改】
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceVip: str
+        :param UniqVpcId: ClickHouse连接源的vpcId【不支持修改】
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UniqVpcId: str
+        :param UserName: ClickHouse连接源的用户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserName: str
+        :param Password: ClickHouse连接源的密码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Password: str
+        :param SelfBuilt: ClickHouse连接源是否为自建集群【不支持修改】
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SelfBuilt: bool
+        :param IsUpdate: 是否更新到关联的Datahub任务，默认为true
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsUpdate: bool
+        """
+        self.Resource = None
+        self.Port = None
+        self.ServiceVip = None
+        self.UniqVpcId = None
+        self.UserName = None
+        self.Password = None
+        self.SelfBuilt = None
+        self.IsUpdate = None
+
+
+    def _deserialize(self, params):
+        self.Resource = params.get("Resource")
+        self.Port = params.get("Port")
+        self.ServiceVip = params.get("ServiceVip")
+        self.UniqVpcId = params.get("UniqVpcId")
+        self.UserName = params.get("UserName")
+        self.Password = params.get("Password")
+        self.SelfBuilt = params.get("SelfBuilt")
+        self.IsUpdate = params.get("IsUpdate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ClickHouseParam(AbstractModel):
     """ClickHouse类型入参
 
@@ -1173,6 +1233,38 @@ class ConnectResourceResourceIdResp(AbstractModel):
 
     def _deserialize(self, params):
         self.ResourceId = params.get("ResourceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Connection(AbstractModel):
+    """Connection信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TopicName: Topic名称
+        :type TopicName: str
+        :param GroupId: 消费组ID
+        :type GroupId: str
+        :param TopicId: Topic的Id
+        :type TopicId: str
+        """
+        self.TopicName = None
+        self.GroupId = None
+        self.TopicId = None
+
+
+    def _deserialize(self, params):
+        self.TopicName = params.get("TopicName")
+        self.GroupId = params.get("GroupId")
+        self.TopicId = params.get("TopicId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2608,6 +2700,111 @@ class DatahubResource(AbstractModel):
         
 
 
+class DatahubTaskIdRes(AbstractModel):
+    """Datahub请求的taskid
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: str
+        """
+        self.TaskId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DatahubTaskInfo(AbstractModel):
+    """Datahub任务信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 任务ID
+        :type TaskId: str
+        :param TaskName: 任务名称
+        :type TaskName: str
+        :param TaskType: 任务类型，SOURCE数据接入，SINK数据流出
+        :type TaskType: str
+        :param Status: 状态，-1创建失败，0创建中，1运行中，2删除中，3已删除，4删除失败，5暂停中，6已暂停，7暂停失败，8恢复中，9恢复失败
+        :type Status: int
+        :param SourceResource: 数据源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceResource: :class:`tencentcloud.ckafka.v20190819.models.DatahubResource`
+        :param TargetResource: 数据目标
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetResource: :class:`tencentcloud.ckafka.v20190819.models.DatahubResource`
+        :param CreateTime: 任务创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param ErrorMessage: 异常信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorMessage: str
+        :param TaskProgress: 创建进度百分比
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskProgress: float
+        :param TaskCurrentStep: 任务当前处于的步骤
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskCurrentStep: str
+        :param DatahubId: Datahub转储Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatahubId: str
+        :param StepList: 步骤列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StepList: list of str
+        """
+        self.TaskId = None
+        self.TaskName = None
+        self.TaskType = None
+        self.Status = None
+        self.SourceResource = None
+        self.TargetResource = None
+        self.CreateTime = None
+        self.ErrorMessage = None
+        self.TaskProgress = None
+        self.TaskCurrentStep = None
+        self.DatahubId = None
+        self.StepList = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.TaskName = params.get("TaskName")
+        self.TaskType = params.get("TaskType")
+        self.Status = params.get("Status")
+        if params.get("SourceResource") is not None:
+            self.SourceResource = DatahubResource()
+            self.SourceResource._deserialize(params.get("SourceResource"))
+        if params.get("TargetResource") is not None:
+            self.TargetResource = DatahubResource()
+            self.TargetResource._deserialize(params.get("TargetResource"))
+        self.CreateTime = params.get("CreateTime")
+        self.ErrorMessage = params.get("ErrorMessage")
+        self.TaskProgress = params.get("TaskProgress")
+        self.TaskCurrentStep = params.get("TaskCurrentStep")
+        self.DatahubId = params.get("DatahubId")
+        self.StepList = params.get("StepList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DateParam(AbstractModel):
     """数据处理——Value处理参数——转换时间格式参数
 
@@ -2759,6 +2956,148 @@ class DeleteAclRuleResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteConnectResourceRequest(AbstractModel):
+    """DeleteConnectResource请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ResourceId: 连接源的Id
+        :type ResourceId: str
+        """
+        self.ResourceId = None
+
+
+    def _deserialize(self, params):
+        self.ResourceId = params.get("ResourceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteConnectResourceResponse(AbstractModel):
+    """DeleteConnectResource返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 连接源的Id
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.ConnectResourceResourceIdResp`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = ConnectResourceResourceIdResp()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteDatahubTaskRequest(AbstractModel):
+    """DeleteDatahubTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 任务id
+        :type TaskId: str
+        """
+        self.TaskId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteDatahubTaskResponse(AbstractModel):
+    """DeleteDatahubTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.DatahubTaskIdRes`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = DatahubTaskIdRes()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteDatahubTopicRequest(AbstractModel):
+    """DeleteDatahubTopic请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: Topic名称
+        :type Name: str
+        """
+        self.Name = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteDatahubTopicResponse(AbstractModel):
+    """DeleteDatahubTopic返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 返回的结果集
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = JgwOperateResponse()
+            self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
 
 
@@ -3282,6 +3621,361 @@ class DescribeCkafkaZoneResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeConnectResource(AbstractModel):
+    """查询连接源具体数据的返参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ResourceId: 连接源的Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceId: str
+        :param ResourceName: 连接源名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceName: str
+        :param Description: 连接源描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param Type: 连接源类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param Status: 连接源的状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param CreateTime: 连接源的创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param ErrorMessage: 连接源的异常信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorMessage: str
+        :param CurrentStep: 连接源的当前所处步骤
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CurrentStep: str
+        :param DatahubTaskCount: 该连接源关联的Datahub任务数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatahubTaskCount: int
+        :param DtsConnectParam: Dts配置，Type为DTS时返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DtsConnectParam: :class:`tencentcloud.ckafka.v20190819.models.DtsConnectParam`
+        :param MongoDBConnectParam: MongoDB配置，Type为MONGODB时返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MongoDBConnectParam: :class:`tencentcloud.ckafka.v20190819.models.MongoDBConnectParam`
+        :param EsConnectParam: Es配置，Type为ES时返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EsConnectParam: :class:`tencentcloud.ckafka.v20190819.models.EsConnectParam`
+        :param ClickHouseConnectParam: ClickHouse配置，Type为CLICKHOUSE时返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClickHouseConnectParam: :class:`tencentcloud.ckafka.v20190819.models.ClickHouseConnectParam`
+        :param MySQLConnectParam: MySQL配置，Type为MYSQL时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MySQLConnectParam: :class:`tencentcloud.ckafka.v20190819.models.MySQLConnectParam`
+        :param PostgreSQLConnectParam: PostgreSQL配置，Type为POSTGRESQL或TDSQL_C_POSTGRESQL时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PostgreSQLConnectParam: :class:`tencentcloud.ckafka.v20190819.models.PostgreSQLConnectParam`
+        """
+        self.ResourceId = None
+        self.ResourceName = None
+        self.Description = None
+        self.Type = None
+        self.Status = None
+        self.CreateTime = None
+        self.ErrorMessage = None
+        self.CurrentStep = None
+        self.DatahubTaskCount = None
+        self.DtsConnectParam = None
+        self.MongoDBConnectParam = None
+        self.EsConnectParam = None
+        self.ClickHouseConnectParam = None
+        self.MySQLConnectParam = None
+        self.PostgreSQLConnectParam = None
+
+
+    def _deserialize(self, params):
+        self.ResourceId = params.get("ResourceId")
+        self.ResourceName = params.get("ResourceName")
+        self.Description = params.get("Description")
+        self.Type = params.get("Type")
+        self.Status = params.get("Status")
+        self.CreateTime = params.get("CreateTime")
+        self.ErrorMessage = params.get("ErrorMessage")
+        self.CurrentStep = params.get("CurrentStep")
+        self.DatahubTaskCount = params.get("DatahubTaskCount")
+        if params.get("DtsConnectParam") is not None:
+            self.DtsConnectParam = DtsConnectParam()
+            self.DtsConnectParam._deserialize(params.get("DtsConnectParam"))
+        if params.get("MongoDBConnectParam") is not None:
+            self.MongoDBConnectParam = MongoDBConnectParam()
+            self.MongoDBConnectParam._deserialize(params.get("MongoDBConnectParam"))
+        if params.get("EsConnectParam") is not None:
+            self.EsConnectParam = EsConnectParam()
+            self.EsConnectParam._deserialize(params.get("EsConnectParam"))
+        if params.get("ClickHouseConnectParam") is not None:
+            self.ClickHouseConnectParam = ClickHouseConnectParam()
+            self.ClickHouseConnectParam._deserialize(params.get("ClickHouseConnectParam"))
+        if params.get("MySQLConnectParam") is not None:
+            self.MySQLConnectParam = MySQLConnectParam()
+            self.MySQLConnectParam._deserialize(params.get("MySQLConnectParam"))
+        if params.get("PostgreSQLConnectParam") is not None:
+            self.PostgreSQLConnectParam = PostgreSQLConnectParam()
+            self.PostgreSQLConnectParam._deserialize(params.get("PostgreSQLConnectParam"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeConnectResourceRequest(AbstractModel):
+    """DescribeConnectResource请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ResourceId: 连接源的Id
+        :type ResourceId: str
+        """
+        self.ResourceId = None
+
+
+    def _deserialize(self, params):
+        self.ResourceId = params.get("ResourceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeConnectResourceResp(AbstractModel):
+    """查询连接源具体数据的返参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ResourceId: 连接源的Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceId: str
+        :param ResourceName: 连接源名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceName: str
+        :param Description: 连接源描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param Type: 连接源类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param Status: 连接源的状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param CreateTime: 连接源的创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param ErrorMessage: 连接源的异常信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorMessage: str
+        :param CurrentStep: 连接源的当前所处步骤
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CurrentStep: str
+        :param StepList: 步骤列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StepList: list of str
+        :param MySQLConnectParam: MySQL配置，Type为MYSQL时返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MySQLConnectParam: :class:`tencentcloud.ckafka.v20190819.models.MySQLConnectParam`
+        :param PostgreSQLConnectParam: PostgreSQL配置，Type为POSTGRESQL或TDSQL_C_POSTGRESQL时返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PostgreSQLConnectParam: :class:`tencentcloud.ckafka.v20190819.models.PostgreSQLConnectParam`
+        :param DtsConnectParam: Dts配置，Type为DTS时返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DtsConnectParam: :class:`tencentcloud.ckafka.v20190819.models.DtsConnectParam`
+        :param MongoDBConnectParam: MongoDB配置，Type为MONGODB时返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MongoDBConnectParam: :class:`tencentcloud.ckafka.v20190819.models.MongoDBConnectParam`
+        :param EsConnectParam: Es配置，Type为ES时返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EsConnectParam: :class:`tencentcloud.ckafka.v20190819.models.EsConnectParam`
+        :param ClickHouseConnectParam: ClickHouse配置，Type为CLICKHOUSE时返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClickHouseConnectParam: :class:`tencentcloud.ckafka.v20190819.models.ClickHouseConnectParam`
+        """
+        self.ResourceId = None
+        self.ResourceName = None
+        self.Description = None
+        self.Type = None
+        self.Status = None
+        self.CreateTime = None
+        self.ErrorMessage = None
+        self.CurrentStep = None
+        self.StepList = None
+        self.MySQLConnectParam = None
+        self.PostgreSQLConnectParam = None
+        self.DtsConnectParam = None
+        self.MongoDBConnectParam = None
+        self.EsConnectParam = None
+        self.ClickHouseConnectParam = None
+
+
+    def _deserialize(self, params):
+        self.ResourceId = params.get("ResourceId")
+        self.ResourceName = params.get("ResourceName")
+        self.Description = params.get("Description")
+        self.Type = params.get("Type")
+        self.Status = params.get("Status")
+        self.CreateTime = params.get("CreateTime")
+        self.ErrorMessage = params.get("ErrorMessage")
+        self.CurrentStep = params.get("CurrentStep")
+        self.StepList = params.get("StepList")
+        if params.get("MySQLConnectParam") is not None:
+            self.MySQLConnectParam = MySQLConnectParam()
+            self.MySQLConnectParam._deserialize(params.get("MySQLConnectParam"))
+        if params.get("PostgreSQLConnectParam") is not None:
+            self.PostgreSQLConnectParam = PostgreSQLConnectParam()
+            self.PostgreSQLConnectParam._deserialize(params.get("PostgreSQLConnectParam"))
+        if params.get("DtsConnectParam") is not None:
+            self.DtsConnectParam = DtsConnectParam()
+            self.DtsConnectParam._deserialize(params.get("DtsConnectParam"))
+        if params.get("MongoDBConnectParam") is not None:
+            self.MongoDBConnectParam = MongoDBConnectParam()
+            self.MongoDBConnectParam._deserialize(params.get("MongoDBConnectParam"))
+        if params.get("EsConnectParam") is not None:
+            self.EsConnectParam = EsConnectParam()
+            self.EsConnectParam._deserialize(params.get("EsConnectParam"))
+        if params.get("ClickHouseConnectParam") is not None:
+            self.ClickHouseConnectParam = ClickHouseConnectParam()
+            self.ClickHouseConnectParam._deserialize(params.get("ClickHouseConnectParam"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeConnectResourceResponse(AbstractModel):
+    """DescribeConnectResource返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 连接源的Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.DescribeConnectResourceResp`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = DescribeConnectResourceResp()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeConnectResourcesRequest(AbstractModel):
+    """DescribeConnectResources请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Type: 连接源类型
+        :type Type: str
+        :param SearchWord: 连接源名称的关键字查询
+        :type SearchWord: str
+        :param Offset: 分页偏移量，默认为0
+        :type Offset: int
+        :param Limit: 返回数量，默认为20，最大值为100
+        :type Limit: int
+        """
+        self.Type = None
+        self.SearchWord = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.SearchWord = params.get("SearchWord")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeConnectResourcesResp(AbstractModel):
+    """查询连接源列表的返参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 连接源个数
+        :type TotalCount: int
+        :param ConnectResourceList: 连接源数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConnectResourceList: list of DescribeConnectResource
+        """
+        self.TotalCount = None
+        self.ConnectResourceList = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("ConnectResourceList") is not None:
+            self.ConnectResourceList = []
+            for item in params.get("ConnectResourceList"):
+                obj = DescribeConnectResource()
+                obj._deserialize(item)
+                self.ConnectResourceList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeConnectResourcesResponse(AbstractModel):
+    """DescribeConnectResources返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 连接源列表
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.DescribeConnectResourcesResp`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = DescribeConnectResourcesResp()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeConsumerGroupRequest(AbstractModel):
     """DescribeConsumerGroup请求参数结构体
 
@@ -3341,6 +4035,320 @@ class DescribeConsumerGroupResponse(AbstractModel):
     def _deserialize(self, params):
         if params.get("Result") is not None:
             self.Result = ConsumerGroupResponse()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDatahubGroupOffsetsRequest(AbstractModel):
+    """DescribeDatahubGroupOffsets请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: （过滤条件）按照实例 ID 过滤
+        :type Name: str
+        :param Group: Kafka 消费分组
+        :type Group: str
+        :param SearchWord: 模糊匹配 topicName
+        :type SearchWord: str
+        :param Offset: 本次查询的偏移位置，默认为0
+        :type Offset: int
+        :param Limit: 本次返回结果的最大个数，默认为50，最大值为50
+        :type Limit: int
+        """
+        self.Name = None
+        self.Group = None
+        self.SearchWord = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Group = params.get("Group")
+        self.SearchWord = params.get("SearchWord")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDatahubGroupOffsetsResponse(AbstractModel):
+    """DescribeDatahubGroupOffsets返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 返回的结果对象
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.GroupOffsetResponse`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = GroupOffsetResponse()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDatahubTaskRequest(AbstractModel):
+    """DescribeDatahubTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 任务id
+        :type TaskId: str
+        """
+        self.TaskId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDatahubTaskRes(AbstractModel):
+    """查询Datahub任务信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 任务ID
+        :type TaskId: str
+        :param TaskName: 任务名称
+        :type TaskName: str
+        :param TaskType: 任务类型，SOURCE数据接入，SINK数据流出
+        :type TaskType: str
+        :param Status: 状态，-1创建失败，0创建中，1运行中，2删除中，3已删除，4删除失败，5暂停中，6已暂停，7暂停失败，8恢复中，9恢复失败
+        :type Status: int
+        :param SourceResource: 数据源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceResource: :class:`tencentcloud.ckafka.v20190819.models.DatahubResource`
+        :param TargetResource: 数据目标
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetResource: :class:`tencentcloud.ckafka.v20190819.models.DatahubResource`
+        :param Connections: Connection列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Connections: list of Connection
+        :param CreateTime: 任务创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param TransformParam: 消息处理规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TransformParam: :class:`tencentcloud.ckafka.v20190819.models.TransformParam`
+        :param DatahubId: 数据接入ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatahubId: str
+        :param SchemaId: 绑定的SchemaId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SchemaId: str
+        :param SchemaName: 绑定的Schema名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SchemaName: str
+        :param TransformsParam: 数据处理规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TransformsParam: :class:`tencentcloud.ckafka.v20190819.models.TransformsParam`
+        :param ErrorMessage: 异常信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorMessage: str
+        """
+        self.TaskId = None
+        self.TaskName = None
+        self.TaskType = None
+        self.Status = None
+        self.SourceResource = None
+        self.TargetResource = None
+        self.Connections = None
+        self.CreateTime = None
+        self.TransformParam = None
+        self.DatahubId = None
+        self.SchemaId = None
+        self.SchemaName = None
+        self.TransformsParam = None
+        self.ErrorMessage = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.TaskName = params.get("TaskName")
+        self.TaskType = params.get("TaskType")
+        self.Status = params.get("Status")
+        if params.get("SourceResource") is not None:
+            self.SourceResource = DatahubResource()
+            self.SourceResource._deserialize(params.get("SourceResource"))
+        if params.get("TargetResource") is not None:
+            self.TargetResource = DatahubResource()
+            self.TargetResource._deserialize(params.get("TargetResource"))
+        if params.get("Connections") is not None:
+            self.Connections = []
+            for item in params.get("Connections"):
+                obj = Connection()
+                obj._deserialize(item)
+                self.Connections.append(obj)
+        self.CreateTime = params.get("CreateTime")
+        if params.get("TransformParam") is not None:
+            self.TransformParam = TransformParam()
+            self.TransformParam._deserialize(params.get("TransformParam"))
+        self.DatahubId = params.get("DatahubId")
+        self.SchemaId = params.get("SchemaId")
+        self.SchemaName = params.get("SchemaName")
+        if params.get("TransformsParam") is not None:
+            self.TransformsParam = TransformsParam()
+            self.TransformsParam._deserialize(params.get("TransformsParam"))
+        self.ErrorMessage = params.get("ErrorMessage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDatahubTaskResponse(AbstractModel):
+    """DescribeDatahubTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 返回结果
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.DescribeDatahubTaskRes`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = DescribeDatahubTaskRes()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDatahubTasksRequest(AbstractModel):
+    """DescribeDatahubTasks请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Limit: 返回数量，默认为20，最大值为100
+        :type Limit: int
+        :param Offset: 分页偏移量，默认为0
+        :type Offset: int
+        :param SearchWord: 过滤条件，按照 TaskName 过滤，支持模糊查询
+        :type SearchWord: str
+        :param TargetType: 转储的目标类型
+        :type TargetType: str
+        :param TaskType: 任务类型，SOURCE数据接入，SINK数据流出
+        :type TaskType: str
+        :param SourceType: 转储的源类型
+        :type SourceType: str
+        :param Resource: 转储的资源
+        :type Resource: str
+        """
+        self.Limit = None
+        self.Offset = None
+        self.SearchWord = None
+        self.TargetType = None
+        self.TaskType = None
+        self.SourceType = None
+        self.Resource = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.SearchWord = params.get("SearchWord")
+        self.TargetType = params.get("TargetType")
+        self.TaskType = params.get("TaskType")
+        self.SourceType = params.get("SourceType")
+        self.Resource = params.get("Resource")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDatahubTasksRes(AbstractModel):
+    """查询Datahub任务列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 任务总数
+        :type TotalCount: int
+        :param TaskList: Datahub任务信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskList: list of DatahubTaskInfo
+        """
+        self.TotalCount = None
+        self.TaskList = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("TaskList") is not None:
+            self.TaskList = []
+            for item in params.get("TaskList"):
+                obj = DatahubTaskInfo()
+                obj._deserialize(item)
+                self.TaskList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDatahubTasksResponse(AbstractModel):
+    """DescribeDatahubTasks返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 返回任务查询结果
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.DescribeDatahubTasksRes`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = DescribeDatahubTasksRes()
             self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
 
@@ -4325,6 +5333,61 @@ class DtsConnectParam(AbstractModel):
         
 
 
+class DtsModifyConnectParam(AbstractModel):
+    """Dts修改连接源参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Resource: Dts实例Id【不支持修改】
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Resource: str
+        :param Port: Dts的连接port【不支持修改】
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Port: int
+        :param GroupId: Dts消费分组的Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupId: str
+        :param UserName: Dts消费分组的账号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserName: str
+        :param Password: Dts消费分组的密码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Password: str
+        :param IsUpdate: 是否更新到关联的Datahub任务，默认为true
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsUpdate: bool
+        :param Topic: Dts订阅的topic【不支持修改】
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Topic: str
+        """
+        self.Resource = None
+        self.Port = None
+        self.GroupId = None
+        self.UserName = None
+        self.Password = None
+        self.IsUpdate = None
+        self.Topic = None
+
+
+    def _deserialize(self, params):
+        self.Resource = params.get("Resource")
+        self.Port = params.get("Port")
+        self.GroupId = params.get("GroupId")
+        self.UserName = params.get("UserName")
+        self.Password = params.get("Password")
+        self.IsUpdate = params.get("IsUpdate")
+        self.Topic = params.get("Topic")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DtsParam(AbstractModel):
     """Dts类型入参
 
@@ -4517,6 +5580,66 @@ class EsConnectParam(AbstractModel):
         
 
 
+class EsModifyConnectParam(AbstractModel):
+    """Es修改连接源参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Resource: Es连接源的实例资源【不支持修改】
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Resource: str
+        :param Port: Es的连接port【不支持修改】
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Port: int
+        :param ServiceVip: Es连接源的实例vip【不支持修改】
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceVip: str
+        :param UniqVpcId: Es连接源的vpcId【不支持修改】
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UniqVpcId: str
+        :param UserName: Es连接源的用户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserName: str
+        :param Password: Es连接源的密码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Password: str
+        :param SelfBuilt: Es连接源是否为自建集群【不支持修改】
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SelfBuilt: bool
+        :param IsUpdate: 是否更新到关联的Datahub任务
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsUpdate: bool
+        """
+        self.Resource = None
+        self.Port = None
+        self.ServiceVip = None
+        self.UniqVpcId = None
+        self.UserName = None
+        self.Password = None
+        self.SelfBuilt = None
+        self.IsUpdate = None
+
+
+    def _deserialize(self, params):
+        self.Resource = params.get("Resource")
+        self.Port = params.get("Port")
+        self.ServiceVip = params.get("ServiceVip")
+        self.UniqVpcId = params.get("UniqVpcId")
+        self.UserName = params.get("UserName")
+        self.Password = params.get("Password")
+        self.SelfBuilt = params.get("SelfBuilt")
+        self.IsUpdate = params.get("IsUpdate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class EsParam(AbstractModel):
     """Es类型入参
 
@@ -4695,6 +5818,123 @@ class FailureParam(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class FetchDatahubMessageByOffsetRequest(AbstractModel):
+    """FetchDatahubMessageByOffset请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 主题名
+        :type Name: str
+        :param Partition: 分区id
+        :type Partition: int
+        :param Offset: 位点信息，必填
+        :type Offset: int
+        """
+        self.Name = None
+        self.Partition = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Partition = params.get("Partition")
+        self.Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FetchDatahubMessageByOffsetResponse(AbstractModel):
+    """FetchDatahubMessageByOffset返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 返回结果
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.ConsumerRecord`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = ConsumerRecord()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class FetchLatestDatahubMessageListRequest(AbstractModel):
+    """FetchLatestDatahubMessageList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 主题名
+        :type Name: str
+        :param Partition: 分区id
+        :type Partition: int
+        :param Offset: 位点信息
+        :type Offset: int
+        :param MessageCount: 最大查询条数，最小1，最大100
+        :type MessageCount: int
+        """
+        self.Name = None
+        self.Partition = None
+        self.Offset = None
+        self.MessageCount = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Partition = params.get("Partition")
+        self.Offset = params.get("Offset")
+        self.MessageCount = params.get("MessageCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FetchLatestDatahubMessageListResponse(AbstractModel):
+    """FetchLatestDatahubMessageList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 返回结果。
+        :type Result: list of ConsumerRecord
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = []
+            for item in params.get("Result"):
+                obj = ConsumerRecord()
+                obj._deserialize(item)
+                self.Result.append(obj)
+        self.RequestId = params.get("RequestId")
 
 
 class FetchMessageByOffsetRequest(AbstractModel):
@@ -5918,6 +7158,61 @@ class MariaDBConnectParam(AbstractModel):
         
 
 
+class MariaDBModifyConnectParam(AbstractModel):
+    """MariaDB连接源参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Resource: MariaDB连接源的实例资源【不支持修改】
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Resource: str
+        :param Port: MariaDB的连接port【不支持修改】
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Port: int
+        :param ServiceVip: MariaDB连接源的实例vip【不支持修改】
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceVip: str
+        :param UniqVpcId: MariaDB连接源的vpcId【不支持修改】
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UniqVpcId: str
+        :param UserName: MariaDB连接源的用户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserName: str
+        :param Password: MariaDB连接源的密码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Password: str
+        :param IsUpdate: 是否更新到关联的Datahub任务
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsUpdate: bool
+        """
+        self.Resource = None
+        self.Port = None
+        self.ServiceVip = None
+        self.UniqVpcId = None
+        self.UserName = None
+        self.Password = None
+        self.IsUpdate = None
+
+
+    def _deserialize(self, params):
+        self.Resource = params.get("Resource")
+        self.Port = params.get("Port")
+        self.ServiceVip = params.get("ServiceVip")
+        self.UniqVpcId = params.get("UniqVpcId")
+        self.UserName = params.get("UserName")
+        self.Password = params.get("Password")
+        self.IsUpdate = params.get("IsUpdate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class MariaDBParam(AbstractModel):
     """MariaDB类型入参
 
@@ -5952,6 +7247,165 @@ class MariaDBParam(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ModifyConnectResourceRequest(AbstractModel):
+    """ModifyConnectResource请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ResourceId: 连接源的Id
+        :type ResourceId: str
+        :param ResourceName: 连接源名称，为空时不修改
+        :type ResourceName: str
+        :param Description: 连接源描述，为空时不修改
+        :type Description: str
+        :param Type: 连接源类型，修改数据源参数时，需要与原Type相同，否则编辑数据源无效
+        :type Type: str
+        :param DtsConnectParam: Dts配置，Type为DTS时必填
+        :type DtsConnectParam: :class:`tencentcloud.ckafka.v20190819.models.DtsModifyConnectParam`
+        :param MongoDBConnectParam: MongoDB配置，Type为MONGODB时必填
+        :type MongoDBConnectParam: :class:`tencentcloud.ckafka.v20190819.models.MongoDBModifyConnectParam`
+        :param EsConnectParam: Es配置，Type为ES时必填
+        :type EsConnectParam: :class:`tencentcloud.ckafka.v20190819.models.EsModifyConnectParam`
+        :param ClickHouseConnectParam: ClickHouse配置，Type为CLICKHOUSE时必填
+        :type ClickHouseConnectParam: :class:`tencentcloud.ckafka.v20190819.models.ClickHouseModifyConnectParam`
+        :param MySQLConnectParam: MySQL配置，Type为MYSQL或TDSQL_C_MYSQL时必填
+        :type MySQLConnectParam: :class:`tencentcloud.ckafka.v20190819.models.MySQLModifyConnectParam`
+        :param PostgreSQLConnectParam: PostgreSQL配置，Type为POSTGRESQL或TDSQL_C_POSTGRESQL时必填
+        :type PostgreSQLConnectParam: :class:`tencentcloud.ckafka.v20190819.models.PostgreSQLModifyConnectParam`
+        :param MariaDBConnectParam: MariaDB配置，Type为MARIADB时必填
+        :type MariaDBConnectParam: :class:`tencentcloud.ckafka.v20190819.models.MariaDBModifyConnectParam`
+        :param SQLServerConnectParam: SQLServer配置，Type为SQLSERVER时必填
+        :type SQLServerConnectParam: :class:`tencentcloud.ckafka.v20190819.models.SQLServerModifyConnectParam`
+        """
+        self.ResourceId = None
+        self.ResourceName = None
+        self.Description = None
+        self.Type = None
+        self.DtsConnectParam = None
+        self.MongoDBConnectParam = None
+        self.EsConnectParam = None
+        self.ClickHouseConnectParam = None
+        self.MySQLConnectParam = None
+        self.PostgreSQLConnectParam = None
+        self.MariaDBConnectParam = None
+        self.SQLServerConnectParam = None
+
+
+    def _deserialize(self, params):
+        self.ResourceId = params.get("ResourceId")
+        self.ResourceName = params.get("ResourceName")
+        self.Description = params.get("Description")
+        self.Type = params.get("Type")
+        if params.get("DtsConnectParam") is not None:
+            self.DtsConnectParam = DtsModifyConnectParam()
+            self.DtsConnectParam._deserialize(params.get("DtsConnectParam"))
+        if params.get("MongoDBConnectParam") is not None:
+            self.MongoDBConnectParam = MongoDBModifyConnectParam()
+            self.MongoDBConnectParam._deserialize(params.get("MongoDBConnectParam"))
+        if params.get("EsConnectParam") is not None:
+            self.EsConnectParam = EsModifyConnectParam()
+            self.EsConnectParam._deserialize(params.get("EsConnectParam"))
+        if params.get("ClickHouseConnectParam") is not None:
+            self.ClickHouseConnectParam = ClickHouseModifyConnectParam()
+            self.ClickHouseConnectParam._deserialize(params.get("ClickHouseConnectParam"))
+        if params.get("MySQLConnectParam") is not None:
+            self.MySQLConnectParam = MySQLModifyConnectParam()
+            self.MySQLConnectParam._deserialize(params.get("MySQLConnectParam"))
+        if params.get("PostgreSQLConnectParam") is not None:
+            self.PostgreSQLConnectParam = PostgreSQLModifyConnectParam()
+            self.PostgreSQLConnectParam._deserialize(params.get("PostgreSQLConnectParam"))
+        if params.get("MariaDBConnectParam") is not None:
+            self.MariaDBConnectParam = MariaDBModifyConnectParam()
+            self.MariaDBConnectParam._deserialize(params.get("MariaDBConnectParam"))
+        if params.get("SQLServerConnectParam") is not None:
+            self.SQLServerConnectParam = SQLServerModifyConnectParam()
+            self.SQLServerConnectParam._deserialize(params.get("SQLServerConnectParam"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyConnectResourceResponse(AbstractModel):
+    """ModifyConnectResource返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 连接源的Id
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.ConnectResourceResourceIdResp`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = ConnectResourceResourceIdResp()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyDatahubTaskRequest(AbstractModel):
+    """ModifyDatahubTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 任务id
+        :type TaskId: str
+        :param TaskName: 任务名称
+        :type TaskName: str
+        """
+        self.TaskId = None
+        self.TaskName = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.TaskName = params.get("TaskName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDatahubTaskResponse(AbstractModel):
+    """ModifyDatahubTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.DatahubTaskIdRes`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = DatahubTaskIdRes()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
 
 
 class ModifyGroupOffsetsRequest(AbstractModel):
@@ -6440,6 +7894,66 @@ class MongoDBConnectParam(AbstractModel):
         
 
 
+class MongoDBModifyConnectParam(AbstractModel):
+    """MongoDB修改连接源参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Resource: MongoDB连接源的实例资源【不支持修改】
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Resource: str
+        :param Port: MongoDB的连接port【不支持修改】
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Port: int
+        :param ServiceVip: MongoDB连接源的实例vip【不支持修改】
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceVip: str
+        :param UniqVpcId: MongoDB连接源的vpcId【不支持修改】
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UniqVpcId: str
+        :param UserName: MongoDB连接源的用户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserName: str
+        :param Password: MongoDB连接源的密码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Password: str
+        :param SelfBuilt: MongoDB连接源是否为自建集群【不支持修改】
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SelfBuilt: bool
+        :param IsUpdate: 是否更新到关联的Datahub任务
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsUpdate: bool
+        """
+        self.Resource = None
+        self.Port = None
+        self.ServiceVip = None
+        self.UniqVpcId = None
+        self.UserName = None
+        self.Password = None
+        self.SelfBuilt = None
+        self.IsUpdate = None
+
+
+    def _deserialize(self, params):
+        self.Resource = params.get("Resource")
+        self.Port = params.get("Port")
+        self.ServiceVip = params.get("ServiceVip")
+        self.UniqVpcId = params.get("UniqVpcId")
+        self.UserName = params.get("UserName")
+        self.Password = params.get("Password")
+        self.SelfBuilt = params.get("SelfBuilt")
+        self.IsUpdate = params.get("IsUpdate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class MongoDBParam(AbstractModel):
     """MongoDB类型入参
 
@@ -6557,6 +8071,66 @@ class MySQLConnectParam(AbstractModel):
         self.Resource = params.get("Resource")
         self.ServiceVip = params.get("ServiceVip")
         self.UniqVpcId = params.get("UniqVpcId")
+        self.IsUpdate = params.get("IsUpdate")
+        self.ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MySQLModifyConnectParam(AbstractModel):
+    """MySQL修改连接源参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Resource: MySQL连接源的实例资源【不支持修改】
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Resource: str
+        :param Port: MySQL的连接port【不支持修改】
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Port: int
+        :param ServiceVip: MySQL连接源的实例vip【不支持修改】
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceVip: str
+        :param UniqVpcId: MySQL连接源的vpcId【不支持修改】
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UniqVpcId: str
+        :param UserName: MySQL连接源的用户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserName: str
+        :param Password: MySQL连接源的密码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Password: str
+        :param IsUpdate: 是否更新到关联的Datahub任务
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsUpdate: bool
+        :param ClusterId: 当type为TDSQL_C_MYSQL时
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterId: str
+        """
+        self.Resource = None
+        self.Port = None
+        self.ServiceVip = None
+        self.UniqVpcId = None
+        self.UserName = None
+        self.Password = None
+        self.IsUpdate = None
+        self.ClusterId = None
+
+
+    def _deserialize(self, params):
+        self.Resource = params.get("Resource")
+        self.Port = params.get("Port")
+        self.ServiceVip = params.get("ServiceVip")
+        self.UniqVpcId = params.get("UniqVpcId")
+        self.UserName = params.get("UserName")
+        self.Password = params.get("Password")
         self.IsUpdate = params.get("IsUpdate")
         self.ClusterId = params.get("ClusterId")
         memeber_set = set(params.keys())
@@ -6801,6 +8375,66 @@ class PostgreSQLConnectParam(AbstractModel):
         self.Resource = params.get("Resource")
         self.ServiceVip = params.get("ServiceVip")
         self.UniqVpcId = params.get("UniqVpcId")
+        self.ClusterId = params.get("ClusterId")
+        self.IsUpdate = params.get("IsUpdate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PostgreSQLModifyConnectParam(AbstractModel):
+    """PostgreSQL修改连接源参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Resource: PostgreSQL连接源的实例资源【不支持修改】
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Resource: str
+        :param Port: PostgreSQL的连接port【不支持修改】
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Port: int
+        :param ServiceVip: PostgreSQL连接源的实例vip【不支持修改】
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceVip: str
+        :param UniqVpcId: PostgreSQL连接源的vpcId【不支持修改】
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UniqVpcId: str
+        :param UserName: PostgreSQL连接源的用户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserName: str
+        :param Password: PostgreSQL连接源的密码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Password: str
+        :param ClusterId: 当type为TDSQL_C_POSTGRESQL时，该参数才有值【不支持修改】
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterId: str
+        :param IsUpdate: 是否更新到关联的Datahub任务
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsUpdate: bool
+        """
+        self.Resource = None
+        self.Port = None
+        self.ServiceVip = None
+        self.UniqVpcId = None
+        self.UserName = None
+        self.Password = None
+        self.ClusterId = None
+        self.IsUpdate = None
+
+
+    def _deserialize(self, params):
+        self.Resource = params.get("Resource")
+        self.Port = params.get("Port")
+        self.ServiceVip = params.get("ServiceVip")
+        self.UniqVpcId = params.get("UniqVpcId")
+        self.UserName = params.get("UserName")
+        self.Password = params.get("Password")
         self.ClusterId = params.get("ClusterId")
         self.IsUpdate = params.get("IsUpdate")
         memeber_set = set(params.keys())
@@ -7281,6 +8915,61 @@ class SQLServerConnectParam(AbstractModel):
         
 
 
+class SQLServerModifyConnectParam(AbstractModel):
+    """SQLServer修改连接源参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Resource: SQLServer连接源的实例资源【不支持修改】
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Resource: str
+        :param Port: SQLServer的连接port【不支持修改】
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Port: int
+        :param ServiceVip: SQLServer连接源的实例vip【不支持修改】
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceVip: str
+        :param UniqVpcId: SQLServer连接源的vpcId【不支持修改】
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UniqVpcId: str
+        :param UserName: SQLServer连接源的用户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserName: str
+        :param Password: SQLServer连接源的密码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Password: str
+        :param IsUpdate: 是否更新到关联的Dip任务
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsUpdate: bool
+        """
+        self.Resource = None
+        self.Port = None
+        self.ServiceVip = None
+        self.UniqVpcId = None
+        self.UserName = None
+        self.Password = None
+        self.IsUpdate = None
+
+
+    def _deserialize(self, params):
+        self.Resource = params.get("Resource")
+        self.Port = params.get("Port")
+        self.ServiceVip = params.get("ServiceVip")
+        self.UniqVpcId = params.get("UniqVpcId")
+        self.UserName = params.get("UserName")
+        self.Password = params.get("Password")
+        self.IsUpdate = params.get("IsUpdate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SQLServerParam(AbstractModel):
     """SQLServer类型入参
 
@@ -7546,14 +9235,18 @@ class TdwParam(AbstractModel):
         :type Bid: str
         :param Tid: Tdw的tid
         :type Tid: str
+        :param IsDomestic: 是否为国内站，默认true
+        :type IsDomestic: bool
         """
         self.Bid = None
         self.Tid = None
+        self.IsDomestic = None
 
 
     def _deserialize(self, params):
         self.Bid = params.get("Bid")
         self.Tid = params.get("Tid")
+        self.IsDomestic = params.get("IsDomestic")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

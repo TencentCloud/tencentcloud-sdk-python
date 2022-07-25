@@ -548,6 +548,35 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateEdgeLogConfig(self, request):
+        """创建边缘集群日志采集配置
+
+        :param request: Request instance for CreateEdgeLogConfig.
+        :type request: :class:`tencentcloud.tke.v20180525.models.CreateEdgeLogConfigRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.CreateEdgeLogConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateEdgeLogConfig", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateEdgeLogConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateImageCache(self, request):
         """创建镜像缓存的接口。创建过程中，请勿删除EKSCI实例和云盘，否则镜像缓存将创建失败。
 
@@ -1810,6 +1839,35 @@ class TkeClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeClusterEndpointVipStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeClusterEndpoints(self, request):
+        """获取集群的访问地址，包括内网地址，外网地址，外网域名，外网访问安全策略
+
+        :param request: Request instance for DescribeClusterEndpoints.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterEndpointsRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeClusterEndpointsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeClusterEndpoints", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeClusterEndpointsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -3854,6 +3912,35 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def InstallEdgeLogAgent(self, request):
+        """在tke@edge集群的边缘节点上安装日志采集组件
+
+        :param request: Request instance for InstallEdgeLogAgent.
+        :type request: :class:`tencentcloud.tke.v20180525.models.InstallEdgeLogAgentRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.InstallEdgeLogAgentResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("InstallEdgeLogAgent", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.InstallEdgeLogAgentResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def InstallLogAgent(self, request):
         """在TKE集群中安装CLS日志采集组件
 
@@ -4565,6 +4652,35 @@ class TkeClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SyncPrometheusTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UninstallEdgeLogAgent(self, request):
+        """从tke@edge集群边缘节点上卸载日志采集组件
+
+        :param request: Request instance for UninstallEdgeLogAgent.
+        :type request: :class:`tencentcloud.tke.v20180525.models.UninstallEdgeLogAgentRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.UninstallEdgeLogAgentResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UninstallEdgeLogAgent", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UninstallEdgeLogAgentResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

@@ -33,6 +33,7 @@ class Activity(AbstractModel):
 <li>SCALE_OUT：扩容活动<li>SCALE_IN：缩容活动<li>ATTACH_INSTANCES：添加实例<li>REMOVE_INSTANCES：销毁实例<li>DETACH_INSTANCES：移出实例<li>TERMINATE_INSTANCES_UNEXPECTEDLY：实例在CVM控制台被销毁<li>REPLACE_UNHEALTHY_INSTANCE：替换不健康实例
 <li>START_INSTANCES：开启实例
 <li>STOP_INSTANCES：关闭实例
+<li>INVOKE_COMMAND：执行命令
         :type ActivityType: str
         :param StatusCode: 伸缩活动状态。取值如下：<br>
 <li>INIT：初始化中
@@ -62,6 +63,8 @@ class Activity(AbstractModel):
         :type LifecycleActionResultSet: list of LifecycleActionResultInfo
         :param DetailedStatusMessageSet: 伸缩活动状态详细描述。
         :type DetailedStatusMessageSet: list of DetailedStatusMessage
+        :param InvocationResultSet: 执行命令结果。
+        :type InvocationResultSet: list of InvocationResult
         """
         self.AutoScalingGroupId = None
         self.ActivityId = None
@@ -77,6 +80,7 @@ class Activity(AbstractModel):
         self.StatusMessageSimplified = None
         self.LifecycleActionResultSet = None
         self.DetailedStatusMessageSet = None
+        self.InvocationResultSet = None
 
 
     def _deserialize(self, params):
@@ -109,6 +113,12 @@ class Activity(AbstractModel):
                 obj = DetailedStatusMessage()
                 obj._deserialize(item)
                 self.DetailedStatusMessageSet.append(obj)
+        if params.get("InvocationResultSet") is not None:
+            self.InvocationResultSet = []
+            for item in params.get("InvocationResultSet"):
+                obj = InvocationResult()
+                obj._deserialize(item)
+                self.InvocationResultSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -970,6 +980,8 @@ class CreateLaunchConfigurationRequest(AbstractModel):
         :param InstanceTypes: 实例机型列表，不同实例机型指定了不同的资源规格，最多支持10种实例机型。
 `InstanceType`和`InstanceTypes`参数互斥，二者必填一个且只能填写一个。
         :type InstanceTypes: list of str
+        :param CamRoleName: CAM角色名称。可通过DescribeRoleList接口返回值中的roleName获取。
+        :type CamRoleName: str
         :param InstanceTypesCheckPolicy: 实例类型校验策略，取值包括 ALL 和 ANY，默认取值为ANY。
 <br><li> ALL，所有实例类型（InstanceType）都可用则通过校验，否则校验报错。
 <br><li> ANY，存在任何一个实例类型（InstanceType）可用则通过校验，否则校验报错。
@@ -979,8 +991,8 @@ class CreateLaunchConfigurationRequest(AbstractModel):
         :type InstanceTypesCheckPolicy: str
         :param InstanceTags: 标签列表。通过指定该参数，可以为扩容的实例绑定标签。最多支持指定10个标签。
         :type InstanceTags: list of InstanceTag
-        :param CamRoleName: CAM角色名称。可通过DescribeRoleList接口返回值中的roleName获取。
-        :type CamRoleName: str
+        :param Tags: 标签描述列表。通过指定该参数可以支持绑定标签到启动配置。每个启动配置最多支持30个标签。
+        :type Tags: list of Tag
         :param HostNameSettings: 云服务器主机名（HostName）的相关设置。
         :type HostNameSettings: :class:`tencentcloud.autoscaling.v20180419.models.HostNameSettings`
         :param InstanceNameSettings: 云服务器实例名（InstanceName）的相关设置。
@@ -1007,9 +1019,10 @@ class CreateLaunchConfigurationRequest(AbstractModel):
         self.InstanceChargeType = None
         self.InstanceMarketOptions = None
         self.InstanceTypes = None
+        self.CamRoleName = None
         self.InstanceTypesCheckPolicy = None
         self.InstanceTags = None
-        self.CamRoleName = None
+        self.Tags = None
         self.HostNameSettings = None
         self.InstanceNameSettings = None
         self.InstanceChargePrepaid = None
@@ -1046,6 +1059,7 @@ class CreateLaunchConfigurationRequest(AbstractModel):
             self.InstanceMarketOptions = InstanceMarketOptionsRequest()
             self.InstanceMarketOptions._deserialize(params.get("InstanceMarketOptions"))
         self.InstanceTypes = params.get("InstanceTypes")
+        self.CamRoleName = params.get("CamRoleName")
         self.InstanceTypesCheckPolicy = params.get("InstanceTypesCheckPolicy")
         if params.get("InstanceTags") is not None:
             self.InstanceTags = []
@@ -1053,7 +1067,12 @@ class CreateLaunchConfigurationRequest(AbstractModel):
                 obj = InstanceTag()
                 obj._deserialize(item)
                 self.InstanceTags.append(obj)
-        self.CamRoleName = params.get("CamRoleName")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         if params.get("HostNameSettings") is not None:
             self.HostNameSettings = HostNameSettings()
             self.HostNameSettings._deserialize(params.get("HostNameSettings"))
@@ -2078,6 +2097,10 @@ class DescribeLaunchConfigurationsRequest(AbstractModel):
 <li> launch-configuration-id - String - 是否必填：否 -（过滤条件）按照启动配置ID过滤。</li>
 <li> launch-configuration-name - String - 是否必填：否 -（过滤条件）按照启动配置名称过滤。</li>
 <li> vague-launch-configuration-name - String - 是否必填：否 -（过滤条件）按照启动配置名称模糊搜索。</li>
+<li> tag-key - String - 是否必填：否 -（过滤条件）按照标签键进行过滤。</li>
+<li> tag-value - String - 是否必填：否 -（过滤条件）按照标签值进行过滤。</li>
+<li> tag:tag-key - String - 是否必填：否 -（过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例3
+</li>
 每次请求的`Filters`的上限为10，`Filter.Values`的上限为5。参数不支持同时指定`LaunchConfigurationIds`和`Filters`。
         :type Filters: list of Filter
         :param Limit: 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
@@ -3158,6 +3181,56 @@ class InternetAccessible(AbstractModel):
         
 
 
+class InvocationResult(AbstractModel):
+    """执行命令结果。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param InvocationId: 执行活动ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InvocationId: str
+        :param InvocationTaskId: 执行任务ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InvocationTaskId: str
+        :param CommandId: 命令ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CommandId: str
+        :param TaskStatus: 执行任务状态。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskStatus: str
+        :param ErrorMessage: 执行异常信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorMessage: str
+        """
+        self.InstanceId = None
+        self.InvocationId = None
+        self.InvocationTaskId = None
+        self.CommandId = None
+        self.TaskStatus = None
+        self.ErrorMessage = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.InvocationId = params.get("InvocationId")
+        self.InvocationTaskId = params.get("InvocationTaskId")
+        self.CommandId = params.get("CommandId")
+        self.TaskStatus = params.get("TaskStatus")
+        self.ErrorMessage = params.get("ErrorMessage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class LaunchConfiguration(AbstractModel):
     """符合条件的启动配置信息的集合。
 
@@ -3205,8 +3278,11 @@ class LaunchConfiguration(AbstractModel):
         :type InstanceMarketOptions: :class:`tencentcloud.autoscaling.v20180419.models.InstanceMarketOptionsRequest`
         :param InstanceTypes: 实例机型列表。
         :type InstanceTypes: list of str
-        :param InstanceTags: 标签列表。
+        :param InstanceTags: 实例标签列表。扩容出来的实例会自动带上标签，最多支持10个标签。
         :type InstanceTags: list of InstanceTag
+        :param Tags: 标签列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
         :param VersionNumber: 版本号。
         :type VersionNumber: int
         :param UpdatedTime: 更新时间。
@@ -3245,6 +3321,7 @@ class LaunchConfiguration(AbstractModel):
         self.InstanceMarketOptions = None
         self.InstanceTypes = None
         self.InstanceTags = None
+        self.Tags = None
         self.VersionNumber = None
         self.UpdatedTime = None
         self.CamRoleName = None
@@ -3300,6 +3377,12 @@ class LaunchConfiguration(AbstractModel):
                 obj = InstanceTag()
                 obj._deserialize(item)
                 self.InstanceTags.append(obj)
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         self.VersionNumber = params.get("VersionNumber")
         self.UpdatedTime = params.get("UpdatedTime")
         self.CamRoleName = params.get("CamRoleName")

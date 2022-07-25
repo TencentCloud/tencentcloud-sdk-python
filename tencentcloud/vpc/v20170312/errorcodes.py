@@ -599,6 +599,9 @@ UNSUPPORTEDOPERATION_CLBPOLICYLIMIT = 'UnsupportedOperation.ClbPolicyLimit'
 # 与该VPC下的TKE容器的网段重叠。
 UNSUPPORTEDOPERATION_CONFLICTWITHDOCKERROUTE = 'UnsupportedOperation.ConflictWithDockerRoute'
 
+# 该专线网关存在关联的NAT规则，不允许删除，请先删调所有的NAT规则。
+UNSUPPORTEDOPERATION_DCGATEWAYNATRULEEXISTS = 'UnsupportedOperation.DCGatewayNatRuleExists'
+
 # 指定的VPC未发现专线网关。
 UNSUPPORTEDOPERATION_DCGATEWAYSNOTFOUNDINVPC = 'UnsupportedOperation.DcGatewaysNotFoundInVpc'
 

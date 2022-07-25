@@ -62,6 +62,9 @@ INVALIDPARAMETER_INVALIDCACHEONLYONSWITCH = 'InvalidParameter.InvalidCacheOnlyOn
 # 证书信息错误。
 INVALIDPARAMETER_INVALIDCERTINFO = 'InvalidParameter.InvalidCertInfo'
 
+# 无效的客户端IP请求头。
+INVALIDPARAMETER_INVALIDCLIENTIPHEADERNAME = 'InvalidParameter.InvalidClientIpHeaderName'
+
 # 无效的源站。
 INVALIDPARAMETER_INVALIDORIGIN = 'InvalidParameter.InvalidOrigin'
 
@@ -91,6 +94,9 @@ INVALIDPARAMETER_ZONENOTFOUND = 'InvalidParameter.ZoneNotFound'
 
 # 与已经添加的记录冲突。
 INVALIDPARAMETERVALUE_CONFLICTRECORD = 'InvalidParameterValue.ConflictRecord'
+
+# DNS 记录与 DNSSEC 功能冲突。
+INVALIDPARAMETERVALUE_CONFLICTWITHDNSSEC = 'InvalidParameterValue.ConflictWithDNSSEC'
 
 # DNS 记录与 LB 记录冲突。
 INVALIDPARAMETERVALUE_CONFLICTWITHLBRECORD = 'InvalidParameterValue.ConflictWithLBRecord'

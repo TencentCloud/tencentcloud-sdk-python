@@ -17,6 +17,9 @@
 # 未完成实名认证，不允许此操作。
 AUTHFAILURE_UNREALNAMEAUTHENTICATED = 'AuthFailure.UnRealNameAuthenticated'
 
+# 操作失败。
+FAILEDOPERATION = 'FailedOperation'
+
 # 房间中没有设置混流模板。
 FAILEDOPERATION_MIXSESSIONNOTEXIST = 'FailedOperation.MixSessionNotExist'
 
