@@ -55,6 +55,8 @@ class DBInstanceDetail(AbstractModel):
         :type Disk: int
         :param ShardNum: 分布式类型的实例的分片数
         :type ShardNum: int
+        :param Region: 地域
+        :type Region: str
         :param Zone: 可用区
         :type Zone: str
         :param DbHosts: Db所在主机列表, 格式: m1,s1|m2,s2
@@ -63,6 +65,8 @@ class DBInstanceDetail(AbstractModel):
         :type HostRole: int
         :param DbEngine: DB引擎，MySQL,Percona,MariaDB
         :type DbEngine: str
+        :param CreateTime: 创建时间
+        :type CreateTime: str
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -79,10 +83,12 @@ class DBInstanceDetail(AbstractModel):
         self.Memory = None
         self.Disk = None
         self.ShardNum = None
+        self.Region = None
         self.Zone = None
         self.DbHosts = None
         self.HostRole = None
         self.DbEngine = None
+        self.CreateTime = None
 
 
     def _deserialize(self, params):
@@ -101,10 +107,12 @@ class DBInstanceDetail(AbstractModel):
         self.Memory = params.get("Memory")
         self.Disk = params.get("Disk")
         self.ShardNum = params.get("ShardNum")
+        self.Region = params.get("Region")
         self.Zone = params.get("Zone")
         self.DbHosts = params.get("DbHosts")
         self.HostRole = params.get("HostRole")
         self.DbEngine = params.get("DbEngine")
+        self.CreateTime = params.get("CreateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -265,9 +273,9 @@ class DescribeInstanceDetail(AbstractModel):
         :type Region: str
         :param ProductId: 产品ID, 0:CDB, 1:TDSQL
         :type ProductId: int
-        :param Type: 集群类型, 0:公有云, 1:金融围笼
+        :param Type: 集群类型, 0:公有云, 1:金融围笼, 2:CDC集群
         :type Type: int
-        :param HostType: 主机类型, 0:物理机, 1:cvm本地盘, 2:cvm云盘
+        :param HostType: 主机类型, 0:物理机, 1:CVM机型, 2:CDC机型
         :type HostType: int
         :param AutoRenewFlag: 自动续费标志, 0:未设置, 1:自动续费, 2:到期不续费
         :type AutoRenewFlag: int
@@ -305,9 +313,12 @@ class DescribeInstanceDetail(AbstractModel):
         :type DiskAssignable: int
         :param Zone: 可用区
         :type Zone: str
-        :param FenceId: 围笼ID
+        :param FenceId: 金融围笼ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type FenceId: str
+        :param ClusterId: 所属集群ID(默认集群为空)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterId: str
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -334,6 +345,7 @@ class DescribeInstanceDetail(AbstractModel):
         self.DiskAssignable = None
         self.Zone = None
         self.FenceId = None
+        self.ClusterId = None
 
 
     def _deserialize(self, params):
@@ -362,6 +374,7 @@ class DescribeInstanceDetail(AbstractModel):
         self.DiskAssignable = params.get("DiskAssignable")
         self.Zone = params.get("Zone")
         self.FenceId = params.get("FenceId")
+        self.ClusterId = params.get("ClusterId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -450,9 +463,12 @@ class DescribeInstanceDetailResponse(AbstractModel):
         :type DiskAssignable: int
         :param Zone: 可用区
         :type Zone: str
-        :param FenceId: 围笼ID
+        :param FenceId: 金融围笼ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type FenceId: str
+        :param ClusterId: 所属集群ID(默认集群为空)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -481,6 +497,7 @@ class DescribeInstanceDetailResponse(AbstractModel):
         self.DiskAssignable = None
         self.Zone = None
         self.FenceId = None
+        self.ClusterId = None
         self.RequestId = None
 
 
@@ -510,6 +527,7 @@ class DescribeInstanceDetailResponse(AbstractModel):
         self.DiskAssignable = params.get("DiskAssignable")
         self.Zone = params.get("Zone")
         self.FenceId = params.get("FenceId")
+        self.ClusterId = params.get("ClusterId")
         self.RequestId = params.get("RequestId")
 
 
@@ -538,6 +556,8 @@ class DescribeInstanceListRequest(AbstractModel):
         :type FenceId: list of str
         :param Status: 按实例状态过滤, -1:已隔离, 0:创建中, 1:运行中, 2:扩容中, 3:删除中
         :type Status: list of int
+        :param ClusterId: 按所属集群ID过滤
+        :type ClusterId: list of str
         """
         self.Limit = None
         self.Offset = None
@@ -548,6 +568,7 @@ class DescribeInstanceListRequest(AbstractModel):
         self.InstanceName = None
         self.FenceId = None
         self.Status = None
+        self.ClusterId = None
 
 
     def _deserialize(self, params):
@@ -560,6 +581,7 @@ class DescribeInstanceListRequest(AbstractModel):
         self.InstanceName = params.get("InstanceName")
         self.FenceId = params.get("FenceId")
         self.Status = params.get("Status")
+        self.ClusterId = params.get("ClusterId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

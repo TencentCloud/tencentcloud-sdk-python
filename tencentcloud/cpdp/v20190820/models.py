@@ -1035,12 +1035,17 @@ class AmountBeforeTaxResult(AbstractModel):
         :param AmountBeforeTax: 税前金额
 注意：此字段可能返回 null，表示取不到有效值。
         :type AmountBeforeTax: str
+        :param AmountBeforeTaxWithTwoDigitPrecision: 两位精度税前金额
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AmountBeforeTaxWithTwoDigitPrecision: str
         """
         self.AmountBeforeTax = None
+        self.AmountBeforeTaxWithTwoDigitPrecision = None
 
 
     def _deserialize(self, params):
         self.AmountBeforeTax = params.get("AmountBeforeTax")
+        self.AmountBeforeTaxWithTwoDigitPrecision = params.get("AmountBeforeTaxWithTwoDigitPrecision")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

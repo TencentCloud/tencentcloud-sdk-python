@@ -714,6 +714,10 @@ class CreateDedicatedClusterDBInstanceRequest(AbstractModel):
         :type MasterHostId: str
         :param SlaveHostIds: 指定从节点uuid，不填随机分配
         :type SlaveHostIds: list of str
+        :param RollbackInstanceId: 需要回档的源实例ID
+        :type RollbackInstanceId: str
+        :param RollbackTime: 回档时间
+        :type RollbackTime: str
         """
         self.GoodsNum = None
         self.Memory = None
@@ -738,6 +742,8 @@ class CreateDedicatedClusterDBInstanceRequest(AbstractModel):
         self.NodeNum = None
         self.MasterHostId = None
         self.SlaveHostIds = None
+        self.RollbackInstanceId = None
+        self.RollbackTime = None
 
 
     def _deserialize(self, params):
@@ -774,6 +780,8 @@ class CreateDedicatedClusterDBInstanceRequest(AbstractModel):
         self.NodeNum = params.get("NodeNum")
         self.MasterHostId = params.get("MasterHostId")
         self.SlaveHostIds = params.get("SlaveHostIds")
+        self.RollbackInstanceId = params.get("RollbackInstanceId")
+        self.RollbackTime = params.get("RollbackTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

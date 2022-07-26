@@ -8928,11 +8928,14 @@ class DescribeMicroserviceRequest(AbstractModel):
         :type Limit: int
         :param GroupIds: 可选，根据部署组ID进行过滤
         :type GroupIds: list of str
+        :param Filters: 过滤条件。多个 filter 之间是与关系，单个 filter 多个 value 之间是或关系。filter name 取值有：id（实例id）、name（实例名）、lan-ip（内网ip）、node-ip（所在节点ip）
+        :type Filters: list of Filter
         """
         self.MicroserviceId = None
         self.Offset = None
         self.Limit = None
         self.GroupIds = None
+        self.Filters = None
 
 
     def _deserialize(self, params):
@@ -8940,6 +8943,12 @@ class DescribeMicroserviceRequest(AbstractModel):
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
         self.GroupIds = params.get("GroupIds")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

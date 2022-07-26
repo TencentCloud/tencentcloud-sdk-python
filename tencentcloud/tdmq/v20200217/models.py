@@ -7224,7 +7224,7 @@ class ReceiveMessageRequest(AbstractModel):
         :type SubscriptionName: str
         :param ReceiverQueueSize: 默认值为1000，consumer接收的消息会首先存储到receiverQueueSize这个队列中，用作调优接收消息的速率
         :type ReceiverQueueSize: int
-        :param SubInitialPosition: 默认值为：Latest。用作判定consumer初始接收消息的位置，可选参数为：Earliest, Latest
+        :param SubInitialPosition: 默认值为：Earliest。用作判定consumer初始接收消息的位置，可选参数为：Earliest, Latest
         :type SubInitialPosition: str
         :param MaxNumMessages: 用于设置BatchReceivePolicy，指在一次batch中最多接收多少条消息，默认是 0。即不开启BatchReceivePolicy
         :type MaxNumMessages: int

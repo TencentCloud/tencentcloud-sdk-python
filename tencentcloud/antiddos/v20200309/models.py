@@ -327,6 +327,9 @@ class BGPIPInstance(AbstractModel):
 注意：当资产实例不是全力防护套餐包的实例时，此字段为null
 注意：此字段可能返回 null，表示取不到有效值。
         :type AnycastOutPackRelation: :class:`tencentcloud.antiddos.v20200309.models.AnycastOutPackRelation`
+        :param InstanceVersion: 资源实例版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceVersion: int
         """
         self.InstanceDetail = None
         self.SpecificationLimit = None
@@ -350,6 +353,7 @@ class BGPIPInstance(AbstractModel):
         self.BGPIPChannelFlag = None
         self.TagInfoList = None
         self.AnycastOutPackRelation = None
+        self.InstanceVersion = None
 
 
     def _deserialize(self, params):
@@ -398,6 +402,7 @@ class BGPIPInstance(AbstractModel):
         if params.get("AnycastOutPackRelation") is not None:
             self.AnycastOutPackRelation = AnycastOutPackRelation()
             self.AnycastOutPackRelation._deserialize(params.get("AnycastOutPackRelation"))
+        self.InstanceVersion = params.get("InstanceVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6495,16 +6500,21 @@ class L4RuleSource(AbstractModel):
         :param Port: 8000
 注意：此字段可能返回 null，表示取不到有效值。
         :type Port: int
+        :param Backup: 备份源站，1: 备份源站，0: 普通源站
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Backup: int
         """
         self.Source = None
         self.Weight = None
         self.Port = None
+        self.Backup = None
 
 
     def _deserialize(self, params):
         self.Source = params.get("Source")
         self.Weight = params.get("Weight")
         self.Port = params.get("Port")
+        self.Backup = params.get("Backup")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6654,6 +6664,18 @@ class L7RuleHealth(AbstractModel):
         :type Method: str
         :param StatusCode: 健康检查判定正常状态码，1xx =1, 2xx=2, 3xx=4, 4xx=8,5xx=16，多个状态码值加和
         :type StatusCode: int
+        :param ProtocolFlag: 是否同时下发http和https规则健康检查配置
+        :type ProtocolFlag: int
+        :param PassiveEnable: 被动探测开关，=1表示开启；=0表示关闭
+        :type PassiveEnable: int
+        :param BlockInter: 被动探测不健康屏蔽时间
+        :type BlockInter: int
+        :param FailedCountInter: 被动探测不健康统计间隔
+        :type FailedCountInter: int
+        :param FailedThreshold: 被动探测不健康阈值
+        :type FailedThreshold: int
+        :param PassiveStatusCode: 被动探测判定正常状态码，1xx =1, 2xx=2, 3xx=4, 4xx=8,5xx=16，多个状态码值加和
+        :type PassiveStatusCode: int
         """
         self.Status = None
         self.Enable = None
@@ -6664,6 +6686,12 @@ class L7RuleHealth(AbstractModel):
         self.KickNum = None
         self.Method = None
         self.StatusCode = None
+        self.ProtocolFlag = None
+        self.PassiveEnable = None
+        self.BlockInter = None
+        self.FailedCountInter = None
+        self.FailedThreshold = None
+        self.PassiveStatusCode = None
 
 
     def _deserialize(self, params):
@@ -6676,6 +6704,12 @@ class L7RuleHealth(AbstractModel):
         self.KickNum = params.get("KickNum")
         self.Method = params.get("Method")
         self.StatusCode = params.get("StatusCode")
+        self.ProtocolFlag = params.get("ProtocolFlag")
+        self.PassiveEnable = params.get("PassiveEnable")
+        self.BlockInter = params.get("BlockInter")
+        self.FailedCountInter = params.get("FailedCountInter")
+        self.FailedThreshold = params.get("FailedThreshold")
+        self.PassiveStatusCode = params.get("PassiveStatusCode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

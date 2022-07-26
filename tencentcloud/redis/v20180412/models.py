@@ -380,6 +380,108 @@ class BigKeyTypeInfo(AbstractModel):
         
 
 
+class ChangeInstanceRoleRequest(AbstractModel):
+    """ChangeInstanceRole请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param GroupId: 复制组ID
+        :type GroupId: str
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param InstanceRole: 实例角色，rw可读写，r只读
+        :type InstanceRole: str
+        """
+        self.GroupId = None
+        self.InstanceId = None
+        self.InstanceRole = None
+
+
+    def _deserialize(self, params):
+        self.GroupId = params.get("GroupId")
+        self.InstanceId = params.get("InstanceId")
+        self.InstanceRole = params.get("InstanceRole")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChangeInstanceRoleResponse(AbstractModel):
+    """ChangeInstanceRole返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 异步流程ID
+        :type TaskId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
+class ChangeMasterInstanceRequest(AbstractModel):
+    """ChangeMasterInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param GroupId: 复制组ID
+        :type GroupId: str
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        """
+        self.GroupId = None
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.GroupId = params.get("GroupId")
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChangeMasterInstanceResponse(AbstractModel):
+    """ChangeMasterInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 异步流程ID
+        :type TaskId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
 class ChangeReplicaToMasterRequest(AbstractModel):
     """ChangeReplicaToMaster请求参数结构体
 

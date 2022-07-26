@@ -143,27 +143,27 @@ class CancelFlowRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param Operator: 调用方用户信息，userId 必填
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         :param FlowId: 签署流程id
         :type FlowId: str
         :param CancelMessage: 撤销原因，最长200个字符；
         :type CancelMessage: str
-        :param Operator: 操作用户id
-        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         :param Agent: 应用相关信息
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
+        self.Operator = None
         self.FlowId = None
         self.CancelMessage = None
-        self.Operator = None
         self.Agent = None
 
 
     def _deserialize(self, params):
-        self.FlowId = params.get("FlowId")
-        self.CancelMessage = params.get("CancelMessage")
         if params.get("Operator") is not None:
             self.Operator = UserInfo()
             self.Operator._deserialize(params.get("Operator"))
+        self.FlowId = params.get("FlowId")
+        self.CancelMessage = params.get("CancelMessage")
         if params.get("Agent") is not None:
             self.Agent = Agent()
             self.Agent._deserialize(params.get("Agent"))
@@ -386,16 +386,14 @@ class CreateDocumentRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param Operator: 调用方用户信息，userId 必填
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         :param FlowId: 签署流程编号,由CreateFlow接口返回
         :type FlowId: str
         :param TemplateId: 用户上传的模板ID
         :type TemplateId: str
         :param FileNames: 文件名列表,单个文件名最大长度200个字符
         :type FileNames: list of str
-        :param Operator: 无
-        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param Agent: 应用相关信息
-        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         :param FormFields: 内容控件信息数组
         :type FormFields: list of FormField
         :param NeedPreview: 是否需要生成预览文件 默认不生成；
@@ -403,27 +401,26 @@ class CreateDocumentRequest(AbstractModel):
         :type NeedPreview: bool
         :param ClientToken: 客户端Token，保持接口幂等性,最大长度64个字符
         :type ClientToken: str
+        :param Agent: 应用相关信息
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
+        self.Operator = None
         self.FlowId = None
         self.TemplateId = None
         self.FileNames = None
-        self.Operator = None
-        self.Agent = None
         self.FormFields = None
         self.NeedPreview = None
         self.ClientToken = None
+        self.Agent = None
 
 
     def _deserialize(self, params):
-        self.FlowId = params.get("FlowId")
-        self.TemplateId = params.get("TemplateId")
-        self.FileNames = params.get("FileNames")
         if params.get("Operator") is not None:
             self.Operator = UserInfo()
             self.Operator._deserialize(params.get("Operator"))
-        if params.get("Agent") is not None:
-            self.Agent = Agent()
-            self.Agent._deserialize(params.get("Agent"))
+        self.FlowId = params.get("FlowId")
+        self.TemplateId = params.get("TemplateId")
+        self.FileNames = params.get("FileNames")
         if params.get("FormFields") is not None:
             self.FormFields = []
             for item in params.get("FormFields"):
@@ -432,6 +429,9 @@ class CreateDocumentRequest(AbstractModel):
                 self.FormFields.append(obj)
         self.NeedPreview = params.get("NeedPreview")
         self.ClientToken = params.get("ClientToken")
+        if params.get("Agent") is not None:
+            self.Agent = Agent()
+            self.Agent._deserialize(params.get("Agent"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -474,16 +474,16 @@ class CreateFlowByFilesRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param Operator: 调用方用户信息，userId 必填
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         :param FlowName: 签署流程名称,最大长度200个字符
         :type FlowName: str
         :param Approvers: 签署参与者信息
         :type Approvers: list of ApproverInfo
         :param FileIds: 签署pdf文件的资源编号列表，通过UploadFiles接口获取
         :type FileIds: list of str
-        :param Operator: 调用方用户信息
-        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param Agent: 应用号信息
-        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        :param FlowType: 签署流程的类型(如销售合同/入职合同等)，最大长度200个字符
+        :type FlowType: str
         :param Components: 经办人内容控件配置。可选类型为：
 TEXT - 内容文本控件
 MULTI_LINE_TEXT - 多行文本控件
@@ -491,6 +491,14 @@ CHECK_BOX - 勾选框控件
 ATTACHMENT - 附件
 注：默认字体大小为 字号12
         :type Components: list of Component
+        :param CcInfos: 被抄送人的信息列表。
+注:此功能为白名单功能，若有需要，请联系电子签客服开白使用
+        :type CcInfos: list of CcInfo
+        :param NeedPreview: 是否需要预览，true：预览模式，false：非预览（默认）；
+预览链接有效期300秒；
+        :type NeedPreview: bool
+        :param FlowDescription: 签署流程描述,最大长度1000个字符
+        :type FlowDescription: str
         :param Deadline: 签署流程的签署截止时间。
 值为unix时间戳,精确到秒,不传默认为当前时间一年后
         :type Deadline: int
@@ -499,35 +507,30 @@ true：无序签
 false：有序签
 注：默认为false（有序签）
         :type Unordered: bool
-        :param NeedPreview: 是否需要预览，true：预览模式，false：非预览（默认）；
-预览链接有效期300秒；
-        :type NeedPreview: bool
-        :param FlowDescription: 签署流程描述,最大长度1000个字符
-        :type FlowDescription: str
-        :param FlowType: 签署流程的类型(如销售合同/入职合同等)，最大长度200个字符
-        :type FlowType: str
-        :param CcInfos: 被抄送人的信息列表。
-注:此功能为白名单功能，若有需要，请联系电子签客服开白使用
-        :type CcInfos: list of CcInfo
         :param CustomShowMap: 合同显示的页卡模板，说明：只支持{合同名称}, {发起方企业}, {发起方姓名}, {签署方N企业}, {签署方N姓名}，且N不能超过签署人的数量，N从1开始
         :type CustomShowMap: str
+        :param Agent: 应用号信息
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
+        self.Operator = None
         self.FlowName = None
         self.Approvers = None
         self.FileIds = None
-        self.Operator = None
-        self.Agent = None
+        self.FlowType = None
         self.Components = None
-        self.Deadline = None
-        self.Unordered = None
+        self.CcInfos = None
         self.NeedPreview = None
         self.FlowDescription = None
-        self.FlowType = None
-        self.CcInfos = None
+        self.Deadline = None
+        self.Unordered = None
         self.CustomShowMap = None
+        self.Agent = None
 
 
     def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self.Operator = UserInfo()
+            self.Operator._deserialize(params.get("Operator"))
         self.FlowName = params.get("FlowName")
         if params.get("Approvers") is not None:
             self.Approvers = []
@@ -536,30 +539,27 @@ false：有序签
                 obj._deserialize(item)
                 self.Approvers.append(obj)
         self.FileIds = params.get("FileIds")
-        if params.get("Operator") is not None:
-            self.Operator = UserInfo()
-            self.Operator._deserialize(params.get("Operator"))
-        if params.get("Agent") is not None:
-            self.Agent = Agent()
-            self.Agent._deserialize(params.get("Agent"))
+        self.FlowType = params.get("FlowType")
         if params.get("Components") is not None:
             self.Components = []
             for item in params.get("Components"):
                 obj = Component()
                 obj._deserialize(item)
                 self.Components.append(obj)
-        self.Deadline = params.get("Deadline")
-        self.Unordered = params.get("Unordered")
-        self.NeedPreview = params.get("NeedPreview")
-        self.FlowDescription = params.get("FlowDescription")
-        self.FlowType = params.get("FlowType")
         if params.get("CcInfos") is not None:
             self.CcInfos = []
             for item in params.get("CcInfos"):
                 obj = CcInfo()
                 obj._deserialize(item)
                 self.CcInfos.append(obj)
+        self.NeedPreview = params.get("NeedPreview")
+        self.FlowDescription = params.get("FlowDescription")
+        self.Deadline = params.get("Deadline")
+        self.Unordered = params.get("Unordered")
         self.CustomShowMap = params.get("CustomShowMap")
+        if params.get("Agent") is not None:
+            self.Agent = Agent()
+            self.Agent._deserialize(params.get("Agent"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -602,53 +602,56 @@ class CreateFlowRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param Operator: 调用方用户信息，userId 必填
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         :param FlowName: 签署流程名称,最大长度200个字符
         :type FlowName: str
         :param Approvers: 签署流程参与者信息
         :type Approvers: list of FlowCreateApprover
-        :param Operator: 操作人信息
-        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param Agent: 应用相关信息
-        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        :param FlowType: 签署流程的类型(如销售合同/入职合同等)，最大长度200个字符
+        :type FlowType: str
+        :param ClientToken: 客户端Token，保持接口幂等性,最大长度64个字符
+        :type ClientToken: str
+        :param CallbackUrl: 暂未开放
+        :type CallbackUrl: str
+        :param DeadLine: 签署流程的签署截止时间。
+值为unix时间戳,精确到秒,不传默认为当前时间一年后
+        :type DeadLine: int
+        :param UserData: 用户自定义字段(需进行base64 encode),回调的时候会进行透传, 长度需要小于20480
+        :type UserData: str
+        :param FlowDescription: 签署流程描述,最大长度1000个字符
+        :type FlowDescription: str
         :param Unordered: 发送类型：
 true：无序签
 false：有序签
 注：默认为false（有序签），请和模板中的配置保持一致
         :type Unordered: bool
-        :param DeadLine: 签署流程的签署截止时间。
-值为unix时间戳,精确到秒,不传默认为当前时间一年后
-        :type DeadLine: int
-        :param FlowType: 签署流程的类型(如销售合同/入职合同等)，最大长度200个字符
-        :type FlowType: str
-        :param UserData: 用户自定义字段(需进行base64 encode),回调的时候会进行透传, 长度需要小于20480
-        :type UserData: str
-        :param FlowDescription: 签署流程描述,最大长度1000个字符
-        :type FlowDescription: str
-        :param ClientToken: 客户端Token，保持接口幂等性,最大长度64个字符
-        :type ClientToken: str
         :param CustomShowMap: 合同显示的页卡模板，说明：只支持{合同名称}, {发起方企业}, {发起方姓名}, {签署方N企业}, {签署方N姓名}，且N不能超过签署人的数量，N从1开始
         :type CustomShowMap: str
         :param RelatedFlowId: 暂未开放
         :type RelatedFlowId: str
-        :param CallbackUrl: 暂未开放
-        :type CallbackUrl: str
+        :param Agent: 应用相关信息
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
+        self.Operator = None
         self.FlowName = None
         self.Approvers = None
-        self.Operator = None
-        self.Agent = None
-        self.Unordered = None
-        self.DeadLine = None
         self.FlowType = None
+        self.ClientToken = None
+        self.CallbackUrl = None
+        self.DeadLine = None
         self.UserData = None
         self.FlowDescription = None
-        self.ClientToken = None
+        self.Unordered = None
         self.CustomShowMap = None
         self.RelatedFlowId = None
-        self.CallbackUrl = None
+        self.Agent = None
 
 
     def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self.Operator = UserInfo()
+            self.Operator._deserialize(params.get("Operator"))
         self.FlowName = params.get("FlowName")
         if params.get("Approvers") is not None:
             self.Approvers = []
@@ -656,21 +659,18 @@ false：有序签
                 obj = FlowCreateApprover()
                 obj._deserialize(item)
                 self.Approvers.append(obj)
-        if params.get("Operator") is not None:
-            self.Operator = UserInfo()
-            self.Operator._deserialize(params.get("Operator"))
+        self.FlowType = params.get("FlowType")
+        self.ClientToken = params.get("ClientToken")
+        self.CallbackUrl = params.get("CallbackUrl")
+        self.DeadLine = params.get("DeadLine")
+        self.UserData = params.get("UserData")
+        self.FlowDescription = params.get("FlowDescription")
+        self.Unordered = params.get("Unordered")
+        self.CustomShowMap = params.get("CustomShowMap")
+        self.RelatedFlowId = params.get("RelatedFlowId")
         if params.get("Agent") is not None:
             self.Agent = Agent()
             self.Agent._deserialize(params.get("Agent"))
-        self.Unordered = params.get("Unordered")
-        self.DeadLine = params.get("DeadLine")
-        self.FlowType = params.get("FlowType")
-        self.UserData = params.get("UserData")
-        self.FlowDescription = params.get("FlowDescription")
-        self.ClientToken = params.get("ClientToken")
-        self.CustomShowMap = params.get("CustomShowMap")
-        self.RelatedFlowId = params.get("RelatedFlowId")
-        self.CallbackUrl = params.get("CallbackUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -790,53 +790,53 @@ class CreateSchemeUrlRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Operator: 调用方用户信息，参考通用结构
+        :param Operator: 调用方用户信息，userId 必填
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param Agent: 应用相关信息
-        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        :param OrganizationName: 企业名称
+        :type OrganizationName: str
+        :param Name: 姓名,最大长度50个字符
+        :type Name: str
+        :param Mobile: 手机号，大陆手机号11位
+        :type Mobile: str
         :param EndPoint: 链接类型
 HTTP：跳转电子签小程序的http_url，
 APP：第三方APP或小程序跳转电子签小程序的path。
 默认为HTTP类型
         :type EndPoint: str
-        :param Name: 姓名,最大长度50个字符
-        :type Name: str
-        :param Mobile: 手机号，大陆手机号11位
-        :type Mobile: str
-        :param OrganizationName: 企业名称
-        :type OrganizationName: str
         :param FlowId: 签署流程编号 (PathType=1时必传)
         :type FlowId: str
         :param PathType: 跳转页面 1: 小程序合同详情 2: 小程序合同列表页 0: 不传, 默认主页
         :type PathType: int
         :param AutoJumpBack: 是否自动回跳 true：是， false：否。该参数只针对"APP" 类型的签署链接有效
         :type AutoJumpBack: bool
+        :param Agent: 应用相关信息
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
         self.Operator = None
-        self.Agent = None
-        self.EndPoint = None
+        self.OrganizationName = None
         self.Name = None
         self.Mobile = None
-        self.OrganizationName = None
+        self.EndPoint = None
         self.FlowId = None
         self.PathType = None
         self.AutoJumpBack = None
+        self.Agent = None
 
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
             self.Operator = UserInfo()
             self.Operator._deserialize(params.get("Operator"))
-        if params.get("Agent") is not None:
-            self.Agent = Agent()
-            self.Agent._deserialize(params.get("Agent"))
-        self.EndPoint = params.get("EndPoint")
+        self.OrganizationName = params.get("OrganizationName")
         self.Name = params.get("Name")
         self.Mobile = params.get("Mobile")
-        self.OrganizationName = params.get("OrganizationName")
+        self.EndPoint = params.get("EndPoint")
         self.FlowId = params.get("FlowId")
         self.PathType = params.get("PathType")
         self.AutoJumpBack = params.get("AutoJumpBack")
+        if params.get("Agent") is not None:
+            self.Agent = Agent()
+            self.Agent._deserialize(params.get("Agent"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -977,23 +977,23 @@ class DescribeFlowBriefsRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param Operator: 调用方用户信息，userId 必填
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         :param FlowIds: 需要查询的流程ID列表
         :type FlowIds: list of str
-        :param Operator: 操作人信息
-        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         :param Agent: 应用相关信息
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
-        self.FlowIds = None
         self.Operator = None
+        self.FlowIds = None
         self.Agent = None
 
 
     def _deserialize(self, params):
-        self.FlowIds = params.get("FlowIds")
         if params.get("Operator") is not None:
             self.Operator = UserInfo()
             self.Operator._deserialize(params.get("Operator"))
+        self.FlowIds = params.get("FlowIds")
         if params.get("Agent") is not None:
             self.Agent = Agent()
             self.Agent._deserialize(params.get("Agent"))
@@ -1039,47 +1039,47 @@ class DescribeFlowTemplatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Operator: 操作人信息
+        :param Operator: 调用方用户信息，userId 必填
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param Offset: 查询偏移位置，默认0
-        :type Offset: int
-        :param Limit: 查询个数，默认20，最大100
-        :type Limit: int
         :param Filters: 搜索条件，具体参考Filter结构体。本接口取值：template-id：按照【 **模板唯一标识** 】进行过滤
         :type Filters: list of Filter
-        :param Agent: 应用相关信息
-        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
-        :param GenerateSource: 暂未开放
-        :type GenerateSource: int
+        :param Limit: 查询个数，默认20，最大100
+        :type Limit: int
+        :param Offset: 查询偏移位置，默认0
+        :type Offset: int
         :param ContentType: 查询内容：0-模板列表及详情（默认），1-仅模板列表
         :type ContentType: int
+        :param GenerateSource: 暂未开放
+        :type GenerateSource: int
+        :param Agent: 应用相关信息
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
         self.Operator = None
-        self.Offset = None
-        self.Limit = None
         self.Filters = None
-        self.Agent = None
-        self.GenerateSource = None
+        self.Limit = None
+        self.Offset = None
         self.ContentType = None
+        self.GenerateSource = None
+        self.Agent = None
 
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
             self.Operator = UserInfo()
             self.Operator._deserialize(params.get("Operator"))
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
         if params.get("Filters") is not None:
             self.Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
                 self.Filters.append(obj)
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.ContentType = params.get("ContentType")
+        self.GenerateSource = params.get("GenerateSource")
         if params.get("Agent") is not None:
             self.Agent = Agent()
             self.Agent._deserialize(params.get("Agent"))
-        self.GenerateSource = params.get("GenerateSource")
-        self.ContentType = params.get("ContentType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1536,30 +1536,30 @@ class StartFlowRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param Operator: 调用方用户信息，userId 必填
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         :param FlowId: 签署流程编号，由CreateFlow接口返回
         :type FlowId: str
-        :param Operator: 用户信息
-        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param Agent: 应用相关信息
-        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         :param ClientToken: 客户端Token，保持接口幂等性,最大长度64个字符
         :type ClientToken: str
+        :param Agent: 应用相关信息
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
-        self.FlowId = None
         self.Operator = None
-        self.Agent = None
+        self.FlowId = None
         self.ClientToken = None
+        self.Agent = None
 
 
     def _deserialize(self, params):
-        self.FlowId = params.get("FlowId")
         if params.get("Operator") is not None:
             self.Operator = UserInfo()
             self.Operator._deserialize(params.get("Operator"))
+        self.FlowId = params.get("FlowId")
+        self.ClientToken = params.get("ClientToken")
         if params.get("Agent") is not None:
             self.Agent = Agent()
             self.Agent._deserialize(params.get("Agent"))
-        self.ClientToken = params.get("ClientToken")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

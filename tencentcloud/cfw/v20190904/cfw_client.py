@@ -172,7 +172,7 @@ class CfwClient(AbstractClient):
 
 
     def CreateNatFwInstance(self, request):
-        """创建防火墙实例
+        """创建NAT防火墙实例（Region参数必填）
 
         :param request: Request instance for CreateNatFwInstance.
         :type request: :class:`tencentcloud.cfw.v20190904.models.CreateNatFwInstanceRequest`

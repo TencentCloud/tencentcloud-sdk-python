@@ -139,6 +139,11 @@ def test_import_bm():
     from tencentcloud.bm.v20180423 import models
 
 
+def test_import_bma():
+    from tencentcloud.bma.v20210624 import bma_client
+    from tencentcloud.bma.v20210624 import models
+
+
 def test_import_bmeip():
     from tencentcloud.bmeip.v20180625 import bmeip_client
     from tencentcloud.bmeip.v20180625 import models
@@ -352,6 +357,11 @@ def test_import_cynosdb():
 def test_import_dasb():
     from tencentcloud.dasb.v20191018 import dasb_client
     from tencentcloud.dasb.v20191018 import models
+
+
+def test_import_dataintegration():
+    from tencentcloud.dataintegration.v20220613 import dataintegration_client
+    from tencentcloud.dataintegration.v20220613 import models
 
 
 def test_import_dayu():

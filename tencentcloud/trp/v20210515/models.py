@@ -102,7 +102,7 @@ class CodeBatch(AbstractModel):
         :param ProductName: 产品名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProductName: str
-        :param Ext: 0
+        :param Ext: 未使用
 注意：此字段可能返回 null，表示取不到有效值。
         :type Ext: :class:`tencentcloud.trp.v20210515.models.Ext`
         :param TplName: 模板名称
@@ -198,6 +198,8 @@ class CreateCodeBatchRequest(AbstractModel):
         :type BatchId: str
         :param Remark: 备注
         :type Remark: str
+        :param MpTpl: 活动ID
+        :type MpTpl: str
         """
         self.CorpId = None
         self.MerchantId = None
@@ -205,6 +207,7 @@ class CreateCodeBatchRequest(AbstractModel):
         self.BatchType = None
         self.BatchId = None
         self.Remark = None
+        self.MpTpl = None
 
 
     def _deserialize(self, params):
@@ -214,6 +217,7 @@ class CreateCodeBatchRequest(AbstractModel):
         self.BatchType = params.get("BatchType")
         self.BatchId = params.get("BatchId")
         self.Remark = params.get("Remark")
+        self.MpTpl = params.get("MpTpl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1602,11 +1606,20 @@ class ModifyCodeBatchRequest(AbstractModel):
         :type Status: int
         :param MpTpl: 模板ID
         :type MpTpl: str
+        :param MerchantId: 商户ID
+        :type MerchantId: str
+        :param ProductId: 商品ID
+        :type ProductId: str
+        :param Remark: 备注
+        :type Remark: str
         """
         self.BatchId = None
         self.CorpId = None
         self.Status = None
         self.MpTpl = None
+        self.MerchantId = None
+        self.ProductId = None
+        self.Remark = None
 
 
     def _deserialize(self, params):
@@ -1614,6 +1627,9 @@ class ModifyCodeBatchRequest(AbstractModel):
         self.CorpId = params.get("CorpId")
         self.Status = params.get("Status")
         self.MpTpl = params.get("MpTpl")
+        self.MerchantId = params.get("MerchantId")
+        self.ProductId = params.get("ProductId")
+        self.Remark = params.get("Remark")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

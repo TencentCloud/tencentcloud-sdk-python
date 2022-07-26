@@ -142,6 +142,64 @@ class RedisClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ChangeInstanceRole(self, request):
+        """复制组实例更换角色
+
+        :param request: Request instance for ChangeInstanceRole.
+        :type request: :class:`tencentcloud.redis.v20180412.models.ChangeInstanceRoleRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.ChangeInstanceRoleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ChangeInstanceRole", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ChangeInstanceRoleResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ChangeMasterInstance(self, request):
+        """复制组实例切主
+
+        :param request: Request instance for ChangeMasterInstance.
+        :type request: :class:`tencentcloud.redis.v20180412.models.ChangeMasterInstanceRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.ChangeMasterInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ChangeMasterInstance", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ChangeMasterInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ChangeReplicaToMaster(self, request):
         """该接口仅支持多AZ实例副本组提主和单AZ副本提主
 
