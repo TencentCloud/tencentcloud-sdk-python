@@ -1,3 +1,512 @@
+# Release 3.0.689
+
+## 应用合规平台(acp) 版本：2022-01-05
+
+### 第 3 次发布
+
+发布时间：2022-07-29 06:01:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeResourceUsageInfo](https://cloud.tencent.com/document/api/1553/75518)
+
+	* 新增入参：TaskType, Platform
+
+	* <font color="#dd0000">**修改入参**：</font>PriceName
+
+
+
+
+## 品牌经营管家(bma) 版本：2021-06-24
+
+### 第 3 次发布
+
+发布时间：2022-07-29 06:03:11
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateCRWork](https://cloud.tencent.com/document/api/1296/78029)
+* [DescribeCRMonitorDetail](https://cloud.tencent.com/document/api/1296/78028)
+* [DescribeCRMonitors](https://cloud.tencent.com/document/api/1296/78027)
+* [ModifyCRBlockStatus](https://cloud.tencent.com/document/api/1296/78026)
+* [ModifyCRMonitor](https://cloud.tencent.com/document/api/1296/78025)
+* [ModifyCRObtainStatus](https://cloud.tencent.com/document/api/1296/78024)
+* [ModifyCRRightStatus](https://cloud.tencent.com/document/api/1296/78023)
+* [UpdateCRWork](https://cloud.tencent.com/document/api/1296/78022)
+
+新增数据结构：
+
+* [Filter](https://cloud.tencent.com/document/api/1296/78030#Filter)
+* [Monitor](https://cloud.tencent.com/document/api/1296/78030#Monitor)
+* [MonitorTort](https://cloud.tencent.com/document/api/1296/78030#MonitorTort)
+
+### 第 2 次发布
+
+发布时间：2022-07-28 06:06:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateCRCompanyVerify](https://cloud.tencent.com/document/api/1296/77823)
+
+	* <font color="#dd0000">**修改入参**：</font>CompanyID, CompanyLegalName, ManagerName, ManagerPhone, VerificationCode
+
+
+
+
+## 内容分发网络(cdn) 版本：2018-06-06
+
+### 第 109 次发布
+
+发布时间：2022-07-29 06:04:29
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [PushUrlsCache](https://cloud.tencent.com/document/api/228/37869)
+
+	* 新增入参：UrlEncode
+
+
+
+
+## 消息队列 Ckafka(ckafka) 版本：2019-08-19
+
+### 第 48 次发布
+
+发布时间：2022-07-28 06:07:46
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [MySQLParam](https://cloud.tencent.com/document/api/597/40861#MySQLParam)
+
+	* 新增成员：TopicRegex, TopicReplacement, KeyColumns
+
+* [TdwParam](https://cloud.tencent.com/document/api/597/40861#TdwParam)
+
+	* 新增成员：TdwHost, TdwPort
+
+
+
+
+## 数据湖计算(dlc) 版本：2021-01-25
+
+### 第 30 次发布
+
+发布时间：2022-07-28 06:10:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ListTaskJobLogDetail](https://cloud.tencent.com/document/api/1342/75645)
+
+	* 新增入参：Asc, Filters
+
+
+修改数据结构：
+
+* [SparkJobInfo](https://cloud.tencent.com/document/api/1342/53778#SparkJobInfo)
+
+	* 新增成员：DataEngineStatus
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 23 次发布
+
+发布时间：2022-07-28 06:11:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ChannelCreateFlowByFiles](https://cloud.tencent.com/document/api/1420/73068)
+
+	* 新增入参：CustomerData
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 人脸核身(faceid) 版本：2018-03-01
+
+### 第 42 次发布
+
+发布时间：2022-07-28 06:11:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DetectInfoIdCardData](https://cloud.tencent.com/document/api/1007/41958#DetectInfoIdCardData)
+
+	* 新增成员：BackWarnInfos
+
+
+
+
+## 全球应用加速(gaap) 版本：2018-05-29
+
+### 第 34 次发布
+
+发布时间：2022-07-29 06:09:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ProxyGroupDetail](https://cloud.tencent.com/document/api/608/37023#ProxyGroupDetail)
+
+	* 新增成员：FeatureBitmap
+
+* [ProxyGroupInfo](https://cloud.tencent.com/document/api/608/37023#ProxyGroupInfo)
+
+	* 新增成员：FeatureBitmap
+
+* [ProxyInfo](https://cloud.tencent.com/document/api/608/37023#ProxyInfo)
+
+	* 新增成员：FeatureBitmap
+
+
+
+
+## 云直播(live) 版本：2018-08-01
+
+### 第 82 次发布
+
+发布时间：2022-07-29 06:11:33
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ForbidStreamInfo](https://cloud.tencent.com/document/api/267/20474#ForbidStreamInfo)
+
+	* 新增成员：AppName, DomainName
+
+
+
+
+## 性能测试服务(pts) 版本：2021-07-28
+
+### 第 1 次发布
+
+发布时间：2022-07-29 11:04:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [AbortCronJobs](https://cloud.tencent.com/document/api/#/#)
+* [AbortJob](https://cloud.tencent.com/document/api/#/#)
+* [AdjustJobSpeed](https://cloud.tencent.com/document/api/#/#)
+* [CopyScenario](https://cloud.tencent.com/document/api/#/#)
+* [CreateAlertChannel](https://cloud.tencent.com/document/api/#/#)
+* [CreateCronJob](https://cloud.tencent.com/document/api/#/#)
+* [CreateFile](https://cloud.tencent.com/document/api/#/#)
+* [CreateProject](https://cloud.tencent.com/document/api/#/#)
+* [CreateScenario](https://cloud.tencent.com/document/api/#/#)
+* [DeleteAlertChannel](https://cloud.tencent.com/document/api/#/#)
+* [DeleteCronJobs](https://cloud.tencent.com/document/api/#/#)
+* [DeleteFiles](https://cloud.tencent.com/document/api/#/#)
+* [DeleteJobs](https://cloud.tencent.com/document/api/#/#)
+* [DeleteProjects](https://cloud.tencent.com/document/api/#/#)
+* [DeleteScenarios](https://cloud.tencent.com/document/api/#/#)
+* [DescribeAlertChannels](https://cloud.tencent.com/document/api/#/#)
+* [DescribeAlertRecords](https://cloud.tencent.com/document/api/#/#)
+* [DescribeAvailableMetrics](https://cloud.tencent.com/document/api/#/#)
+* [DescribeCheckSummary](https://cloud.tencent.com/document/api/#/#)
+* [DescribeCronJobs](https://cloud.tencent.com/document/api/#/#)
+* [DescribeFiles](https://cloud.tencent.com/document/api/#/#)
+* [DescribeJobs](https://cloud.tencent.com/document/api/#/#)
+* [DescribeLabelValues](https://cloud.tencent.com/document/api/#/#)
+* [DescribeMetricLabelWithValues](https://cloud.tencent.com/document/api/#/#)
+* [DescribeNormalLogs](https://cloud.tencent.com/document/api/#/#)
+* [DescribeProjects](https://cloud.tencent.com/document/api/#/#)
+* [DescribeRegions](https://cloud.tencent.com/document/api/#/#)
+* [DescribeRequestSummary](https://cloud.tencent.com/document/api/#/#)
+* [DescribeSampleBatchQuery](https://cloud.tencent.com/document/api/#/#)
+* [DescribeSampleLogs](https://cloud.tencent.com/document/api/#/#)
+* [DescribeSampleMatrixBatchQuery](https://cloud.tencent.com/document/api/#/#)
+* [DescribeSampleMatrixQuery](https://cloud.tencent.com/document/api/#/#)
+* [DescribeSampleQuery](https://cloud.tencent.com/document/api/#/#)
+* [DescribeScenarioWithJobs](https://cloud.tencent.com/document/api/#/#)
+* [DescribeScenarios](https://cloud.tencent.com/document/api/#/#)
+* [GenerateTmpKey](https://cloud.tencent.com/document/api/#/#)
+* [RestartCronJobs](https://cloud.tencent.com/document/api/#/#)
+* [StartJob](https://cloud.tencent.com/document/api/#/#)
+* [UpdateCronJob](https://cloud.tencent.com/document/api/#/#)
+* [UpdateFileScenarioRelation](https://cloud.tencent.com/document/api/#/#)
+* [UpdateJob](https://cloud.tencent.com/document/api/#/#)
+* [UpdateProject](https://cloud.tencent.com/document/api/#/#)
+* [UpdateScenario](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [AggregationLegend](https://cloud.tencent.com/document/api/#/##AggregationLegend)
+* [AlertChannel](https://cloud.tencent.com/document/api/#/##AlertChannel)
+* [AlertChannelRecord](https://cloud.tencent.com/document/api/#/##AlertChannelRecord)
+* [AlertRecord](https://cloud.tencent.com/document/api/#/##AlertRecord)
+* [AlertRecordStatus](https://cloud.tencent.com/document/api/#/##AlertRecordStatus)
+* [Attributes](https://cloud.tencent.com/document/api/#/##Attributes)
+* [CheckSummary](https://cloud.tencent.com/document/api/#/##CheckSummary)
+* [Concurrency](https://cloud.tencent.com/document/api/#/##Concurrency)
+* [Credentials](https://cloud.tencent.com/document/api/#/##Credentials)
+* [CronJob](https://cloud.tencent.com/document/api/#/##CronJob)
+* [CustomSample](https://cloud.tencent.com/document/api/#/##CustomSample)
+* [CustomSampleMatrix](https://cloud.tencent.com/document/api/#/##CustomSampleMatrix)
+* [DNSConfig](https://cloud.tencent.com/document/api/#/##DNSConfig)
+* [DomainNameConfig](https://cloud.tencent.com/document/api/#/##DomainNameConfig)
+* [File](https://cloud.tencent.com/document/api/#/##File)
+* [FileInfo](https://cloud.tencent.com/document/api/#/##FileInfo)
+* [Filter](https://cloud.tencent.com/document/api/#/##Filter)
+* [GeoRegionsLoadItem](https://cloud.tencent.com/document/api/#/##GeoRegionsLoadItem)
+* [HostAlias](https://cloud.tencent.com/document/api/#/##HostAlias)
+* [InternalMetricQuery](https://cloud.tencent.com/document/api/#/##InternalMetricQuery)
+* [Job](https://cloud.tencent.com/document/api/#/##Job)
+* [Label](https://cloud.tencent.com/document/api/#/##Label)
+* [LabelWithValues](https://cloud.tencent.com/document/api/#/##LabelWithValues)
+* [Load](https://cloud.tencent.com/document/api/#/##Load)
+* [LoadSource](https://cloud.tencent.com/document/api/#/##LoadSource)
+* [LoadSpec](https://cloud.tencent.com/document/api/#/##LoadSpec)
+* [MetricInfo](https://cloud.tencent.com/document/api/#/##MetricInfo)
+* [MetricLabelWithValues](https://cloud.tencent.com/document/api/#/##MetricLabelWithValues)
+* [NormalLog](https://cloud.tencent.com/document/api/#/##NormalLog)
+* [Project](https://cloud.tencent.com/document/api/#/##Project)
+* [ProtocolInfo](https://cloud.tencent.com/document/api/#/##ProtocolInfo)
+* [ReactionTimeRange](https://cloud.tencent.com/document/api/#/##ReactionTimeRange)
+* [RegionDetail](https://cloud.tencent.com/document/api/#/##RegionDetail)
+* [RequestSummary](https://cloud.tencent.com/document/api/#/##RequestSummary)
+* [RequestsPerSecond](https://cloud.tencent.com/document/api/#/##RequestsPerSecond)
+* [SLALabel](https://cloud.tencent.com/document/api/#/##SLALabel)
+* [SLAPolicy](https://cloud.tencent.com/document/api/#/##SLAPolicy)
+* [SLARule](https://cloud.tencent.com/document/api/#/##SLARule)
+* [SampleLog](https://cloud.tencent.com/document/api/#/##SampleLog)
+* [SamplePair](https://cloud.tencent.com/document/api/#/##SamplePair)
+* [SampleStream](https://cloud.tencent.com/document/api/#/##SampleStream)
+* [Scenario](https://cloud.tencent.com/document/api/#/##Scenario)
+* [ScenarioRelatedJobsParams](https://cloud.tencent.com/document/api/#/##ScenarioRelatedJobsParams)
+* [ScenarioWithJobs](https://cloud.tencent.com/document/api/#/##ScenarioWithJobs)
+* [ScriptInfo](https://cloud.tencent.com/document/api/#/##ScriptInfo)
+* [ScriptOrigin](https://cloud.tencent.com/document/api/#/##ScriptOrigin)
+* [Stage](https://cloud.tencent.com/document/api/#/##Stage)
+* [TagSpec](https://cloud.tencent.com/document/api/#/##TagSpec)
+* [TestData](https://cloud.tencent.com/document/api/#/##TestData)
+* [VpcLoadDistribution](https://cloud.tencent.com/document/api/#/##VpcLoadDistribution)
+
+
+
+## 地域管理系统(region) 版本：2022-06-27
+
+### 第 1 次发布
+
+发布时间：2022-07-27 21:10:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeProducts](https://cloud.tencent.com/document/api/1596/77931)
+* [DescribeRegions](https://cloud.tencent.com/document/api/1596/77930)
+* [DescribeZones](https://cloud.tencent.com/document/api/1596/77929)
+
+新增数据结构：
+
+* [RegionInfo](https://cloud.tencent.com/document/api/1596/77932#RegionInfo)
+* [RegionProduct](https://cloud.tencent.com/document/api/1596/77932#RegionProduct)
+* [ZoneInfo](https://cloud.tencent.com/document/api/1596/77932#ZoneInfo)
+
+
+
+## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
+
+### 第 35 次发布
+
+发布时间：2022-07-29 06:14:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DBInstance](https://cloud.tencent.com/document/api/238/19976#DBInstance)
+
+	* 新增成员：DnsPodDomain, TgwWanVPort
+
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-01-06
+
+### 第 14 次发布
+
+发布时间：2022-07-28 06:23:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeZoneDetails](https://cloud.tencent.com/document/api/1552/74843)
+
+	* 新增出参：Resources
+
+
+新增数据结构：
+
+* [Resource](https://cloud.tencent.com/document/api/1552/73155#Resource)
+* [Sv](https://cloud.tencent.com/document/api/1552/73155#Sv)
+
+修改数据结构：
+
+* [Zone](https://cloud.tencent.com/document/api/1552/73155#Zone)
+
+	* 新增成员：Resources, CnameSpeedUp
+
+
+
+
+## 图像分析(tiia) 版本：2019-05-29
+
+### 第 26 次发布
+
+发布时间：2022-07-29 06:16:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* DetectCelebrity
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* Face
+* Labels
+* Threshold
+
+
+
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 113 次发布
+
+发布时间：2022-07-29 06:16:41
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeEdgeLogSwitches](https://cloud.tencent.com/document/api/457/78054)
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 110 次发布
+
+发布时间：2022-07-29 06:17:29
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [VideoTemplateInfo](https://cloud.tencent.com/document/api/266/31773#VideoTemplateInfo)
+
+	* 新增成员：PreserveHDRSwitch
+
+* [VideoTemplateInfoForUpdate](https://cloud.tencent.com/document/api/266/31773#VideoTemplateInfoForUpdate)
+
+	* 新增成员：PreserveHDRSwitch
+
+
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 121 次发布
+
+发布时间：2022-07-28 06:25:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeNetworkAclQuintupleEntries](https://cloud.tencent.com/document/api/215/77634)
+
+	* 新增入参：NetworkAclId, Offset, Limit, Filters
+
+
+
+
+## Web 应用防火墙(waf) 版本：2018-01-25
+
+### 第 15 次发布
+
+发布时间：2022-07-29 06:18:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeUserCdcClbWafRegions](https://cloud.tencent.com/document/api/627/78031)
+
+新增数据结构：
+
+* [CdcCluster](https://cloud.tencent.com/document/api/627/53609#CdcCluster)
+* [CdcRegion](https://cloud.tencent.com/document/api/627/53609#CdcRegion)
+
+
+
 # Release 3.0.688
 
 ## 应用合规平台(acp) 版本：2022-01-05

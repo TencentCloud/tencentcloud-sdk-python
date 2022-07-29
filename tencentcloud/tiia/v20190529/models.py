@@ -789,78 +789,6 @@ class DescribeImagesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class DetectCelebrityRequest(AbstractModel):
-    """DetectCelebrity请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param ImageUrl: 图片URL地址。 
-图片限制： 
-• 图片格式：PNG、JPG、JPEG。 
-• 图片大小：所下载图片经Base64编码后不超过4M。图片下载时间不超过3秒。 
-建议：
-• 图片像素：大于50*50像素，否则影响识别效果； 
-• 长宽比：长边：短边<5； 
-接口响应时间会受到图片下载时间的影响，建议使用更可靠的存储服务，推荐将图片存储在腾讯云COS。
-        :type ImageUrl: str
-        :param ImageBase64: 图片经过base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
-**注意：图片需要base64编码，并且要去掉编码头部。**
-        :type ImageBase64: str
-        """
-        self.ImageUrl = None
-        self.ImageBase64 = None
-
-
-    def _deserialize(self, params):
-        self.ImageUrl = params.get("ImageUrl")
-        self.ImageBase64 = params.get("ImageBase64")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DetectCelebrityResponse(AbstractModel):
-    """DetectCelebrity返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Faces: 公众人物识别结果数组。如果检测不到人脸，返回为空；最多可以返回10个人脸识别结果。
-        :type Faces: list of Face
-        :param Threshold: 本服务在不同误识率水平下（将图片中的人物识别错误的比例）的推荐阈值，可以用于控制识别结果的精度。 
-FalseRate1Percent, FalseRate5Permil, FalseRate1Permil分别代表误识率在百分之一、千分之五、千分之一情况下的推荐阈值。 
-因为阈值会存在变动，请勿将此处输出的固定值处理，而是每次取值与confidence对比，来判断本次的识别结果是否可信。
- 例如，如果您业务中可以接受的误识率是1%，则可以将所有confidence>=FalseRate1Percent的结论认为是正确的。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Threshold: :class:`tencentcloud.tiia.v20190529.models.Threshold`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.Faces = None
-        self.Threshold = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        if params.get("Faces") is not None:
-            self.Faces = []
-            for item in params.get("Faces"):
-                obj = Face()
-                obj._deserialize(item)
-                self.Faces.append(obj)
-        if params.get("Threshold") is not None:
-            self.Threshold = Threshold()
-            self.Threshold._deserialize(params.get("Threshold"))
-        self.RequestId = params.get("RequestId")
-
-
 class DetectDisgustRequest(AbstractModel):
     """DetectDisgust请求参数结构体
 
@@ -1581,68 +1509,6 @@ class EnhanceImageResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class Face(AbstractModel):
-    """公众人物识别人脸信息
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Name: 与图片中人脸最相似的公众人物的名字。
-        :type Name: str
-        :param Labels: 公众人物身份标签的数组，一个公众人物可能有多个身份标签。
-        :type Labels: list of Labels
-        :param BasicInfo: 对人物的简介。
-        :type BasicInfo: str
-        :param Confidence: 算法对于Name的置信度（图像中人脸与公众人物的相似度），0-100之间，值越高，表示对于Name越确定。
-        :type Confidence: int
-        :param X: 人脸区域左上角横坐标。
-        :type X: int
-        :param Y: 人脸区域左上角纵坐标。
-        :type Y: int
-        :param Width: 人脸区域宽度。
-        :type Width: int
-        :param Height: 人脸区域高度。
-        :type Height: int
-        :param ID: 公众人物的唯一编号，可以用于区分同名人物、一个人物不同称呼等情况。唯一编号为8个字符构成的字符串。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ID: str
-        """
-        self.Name = None
-        self.Labels = None
-        self.BasicInfo = None
-        self.Confidence = None
-        self.X = None
-        self.Y = None
-        self.Width = None
-        self.Height = None
-        self.ID = None
-
-
-    def _deserialize(self, params):
-        self.Name = params.get("Name")
-        if params.get("Labels") is not None:
-            self.Labels = []
-            for item in params.get("Labels"):
-                obj = Labels()
-                obj._deserialize(item)
-                self.Labels.append(obj)
-        self.BasicInfo = params.get("BasicInfo")
-        self.Confidence = params.get("Confidence")
-        self.X = params.get("X")
-        self.Y = params.get("Y")
-        self.Width = params.get("Width")
-        self.Height = params.get("Height")
-        self.ID = params.get("ID")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class GroupInfo(AbstractModel):
     """图库信息。
 
@@ -1798,36 +1664,6 @@ class ImageTag(AbstractModel):
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Confidence = params.get("Confidence")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class Labels(AbstractModel):
-    """名人识别的标签
-
-    """
-
-    def __init__(self):
-        r"""
-        :param FirstLabel: 公众人物身份标签的一级分类，例如体育明星、娱乐明星等；
-注意：此字段可能返回 null，表示取不到有效值。
-        :type FirstLabel: str
-        :param SecondLabel: 公众人物身份标签的二级分类，例如歌手（对应一级标签为“娱乐明星”）；
-注意：此字段可能返回 null，表示取不到有效值。
-        :type SecondLabel: str
-        """
-        self.FirstLabel = None
-        self.SecondLabel = None
-
-
-    def _deserialize(self, params):
-        self.FirstLabel = params.get("FirstLabel")
-        self.SecondLabel = params.get("SecondLabel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2423,38 +2259,3 @@ class SearchImageResponse(AbstractModel):
             self.Object = ObjectInfo()
             self.Object._deserialize(params.get("Object"))
         self.RequestId = params.get("RequestId")
-
-
-class Threshold(AbstractModel):
-    """本服务在不同误识率水平下（将图片中的人物识别错误的比例）的推荐阈值，可以用于控制识别结果的精度。
-    {FalseRate1Percent, FalseRate5Permil, FalseRate1Permil}分别代表误识率在百分之一、千分之五、千分之一情况下的推荐阈值。
-    因为阈值会存在变动，请勿将此处输出的固定值处理，而是每次取值与confidence对比，来判断本次的识别结果是否可信。
-    例如，如果您业务中可以接受的误识率是1%，则可以将所有confidence>=FalseRate1Percent的结论认为是正确的。
-
-    """
-
-    def __init__(self):
-        r"""
-        :param FalseRate1Percent: 误识率在百分之一时的推荐阈值。
-        :type FalseRate1Percent: int
-        :param FalseRate5Permil: 误识率在千分之五时的推荐阈值。
-        :type FalseRate5Permil: int
-        :param FalseRate1Permil: 误识率在千分之一时的推荐阈值。
-        :type FalseRate1Permil: int
-        """
-        self.FalseRate1Percent = None
-        self.FalseRate5Permil = None
-        self.FalseRate1Permil = None
-
-
-    def _deserialize(self, params):
-        self.FalseRate1Percent = params.get("FalseRate1Percent")
-        self.FalseRate5Permil = params.get("FalseRate5Permil")
-        self.FalseRate1Permil = params.get("FalseRate1Permil")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        

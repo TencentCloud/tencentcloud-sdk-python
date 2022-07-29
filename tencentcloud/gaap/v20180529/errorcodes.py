@@ -176,6 +176,9 @@ FAILEDOPERATION_UNTAGRESOURCESFAILED = 'FailedOperation.UnTagResourcesFailed'
 # 用户未认证。
 FAILEDOPERATION_USERNOTAUTHENTICATED = 'FailedOperation.UserNotAuthenticated'
 
+# 未开通协议。
+FAILEDOPERATION_USERNOTCONFIRMPROTOCOL = 'FailedOperation.UserNotConfirmProtocol'
+
 # 该用户不在运营商网络可加速范围内。
 FAILEDOPERATION_USEROUTOFCOVERAGE = 'FailedOperation.UserOutOfCoverage'
 

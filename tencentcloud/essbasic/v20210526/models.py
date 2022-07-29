@@ -194,6 +194,8 @@ class ChannelCreateFlowByFilesRequest(AbstractModel):
         :type FlowDescription: str
         :param CustomShowMap: 合同显示的页卡模板，说明：只支持{合同名称}, {发起方企业}, {发起方姓名}, {签署方N企业}, {签署方N姓名}，且N不能超过签署人的数量，N从1开始
         :type CustomShowMap: str
+        :param CustomerData: 渠道的业务信息，最大长度1000个字符。发起自动签署时，需设置对应自动签署场景，目前仅支持场景：处方单-E_PRESCRIPTION_AUTO_SIGN
+        :type CustomerData: str
         :param Operator: 操作者的信息
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         """
@@ -208,6 +210,7 @@ class ChannelCreateFlowByFilesRequest(AbstractModel):
         self.FlowType = None
         self.FlowDescription = None
         self.CustomShowMap = None
+        self.CustomerData = None
         self.Operator = None
 
 
@@ -235,6 +238,7 @@ class ChannelCreateFlowByFilesRequest(AbstractModel):
         self.FlowType = params.get("FlowType")
         self.FlowDescription = params.get("FlowDescription")
         self.CustomShowMap = params.get("CustomShowMap")
+        self.CustomerData = params.get("CustomerData")
         if params.get("Operator") is not None:
             self.Operator = UserInfo()
             self.Operator._deserialize(params.get("Operator"))

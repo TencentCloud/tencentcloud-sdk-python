@@ -8175,6 +8175,12 @@ class MySQLParam(AbstractModel):
         :type DataTargetPrimaryKeyField: str
         :param DataTargetRecordMapping: 表与消息间的映射关系
         :type DataTargetRecordMapping: list of RecordMapping
+        :param TopicRegex: 事件路由到特定主题的正则表达式，默认为(.*)
+        :type TopicRegex: str
+        :param TopicReplacement: TopicRegex的引用组，指定$1、$2等
+        :type TopicReplacement: str
+        :param KeyColumns: 格式：库1.表1:字段1,字段2;库2.表2:字段2，表之间;（分号）隔开，字段之间,（逗号）隔开。不指定的表默认取表的主键
+        :type KeyColumns: str
         """
         self.Database = None
         self.Table = None
@@ -8189,6 +8195,9 @@ class MySQLParam(AbstractModel):
         self.DataTargetInsertMode = None
         self.DataTargetPrimaryKeyField = None
         self.DataTargetRecordMapping = None
+        self.TopicRegex = None
+        self.TopicReplacement = None
+        self.KeyColumns = None
 
 
     def _deserialize(self, params):
@@ -8210,6 +8219,9 @@ class MySQLParam(AbstractModel):
                 obj = RecordMapping()
                 obj._deserialize(item)
                 self.DataTargetRecordMapping.append(obj)
+        self.TopicRegex = params.get("TopicRegex")
+        self.TopicReplacement = params.get("TopicReplacement")
+        self.KeyColumns = params.get("KeyColumns")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9235,18 +9247,26 @@ class TdwParam(AbstractModel):
         :type Bid: str
         :param Tid: Tdw的tid
         :type Tid: str
-        :param IsDomestic: 是否为国内站，默认true
+        :param IsDomestic: 默认true
         :type IsDomestic: bool
+        :param TdwHost: TDW地址，默认tl-tdbank-tdmanager.tencent-distribute.com
+        :type TdwHost: str
+        :param TdwPort: TDW端口，默认8099
+        :type TdwPort: int
         """
         self.Bid = None
         self.Tid = None
         self.IsDomestic = None
+        self.TdwHost = None
+        self.TdwPort = None
 
 
     def _deserialize(self, params):
         self.Bid = params.get("Bid")
         self.Tid = params.get("Tid")
         self.IsDomestic = params.get("IsDomestic")
+        self.TdwHost = params.get("TdwHost")
+        self.TdwPort = params.get("TdwPort")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

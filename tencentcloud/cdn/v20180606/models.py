@@ -11316,6 +11316,8 @@ global：预热全球节点
 注意事项：
 此功能灰度发布中，敬请期待
         :type DisableRange: bool
+        :param UrlEncode: 是否对URL进行编码
+        :type UrlEncode: bool
         """
         self.Urls = None
         self.UserAgent = None
@@ -11323,6 +11325,7 @@ global：预热全球节点
         self.Layer = None
         self.ParseM3U8 = None
         self.DisableRange = None
+        self.UrlEncode = None
 
 
     def _deserialize(self, params):
@@ -11332,6 +11335,7 @@ global：预热全球节点
         self.Layer = params.get("Layer")
         self.ParseM3U8 = params.get("ParseM3U8")
         self.DisableRange = params.get("DisableRange")
+        self.UrlEncode = params.get("UrlEncode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -9767,6 +9767,48 @@ class DescribeNetworkAclQuintupleEntriesRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param NetworkAclId: 网络ACL实例ID。形如：acl-12345678。
+        :type NetworkAclId: str
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Limit: 返回数量，默认为20，最小值为1，最大值为100。
+        :type Limit: int
+        :param Filters: 过滤条件，参数不支持同时指定`HaVipIds`和`Filters`。
+<li>protocol - String - 协议，形如：`TCP`。</li>
+<li>description - String - 描述。</li>
+<li>destination-cidr - String - 目的CIDR， 形如：'192.168.0.0/24'。</li>
+<li>source-cidr- String - 源CIDR， 形如：'192.168.0.0/24'。</li>
+<li>action - String - 动作，形如ACCEPT或DROP。</li>
+<li>network-acl-quintuple-entry-id - String - 五元组唯一ID，形如：'acli45-ahnu4rv5'。</li>
+<li>network-acl-direction - String - 方向，形如：'INGRESS'或'EGRESS'。</li>
+        :type Filters: list of Filter
+        """
+        self.NetworkAclId = None
+        self.Offset = None
+        self.Limit = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.NetworkAclId = params.get("NetworkAclId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribeNetworkAclQuintupleEntriesResponse(AbstractModel):
     """DescribeNetworkAclQuintupleEntries返回参数结构体

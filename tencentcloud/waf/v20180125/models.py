@@ -785,6 +785,69 @@ class BotStatPointItem(AbstractModel):
         
 
 
+class CdcCluster(AbstractModel):
+    """CDC场景下负载均衡WAF的集群信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: cdc的集群id
+        :type Id: str
+        :param Name: cdc的集群名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        """
+        self.Id = None
+        self.Name = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CdcRegion(AbstractModel):
+    """CDC场景下负载均衡WAF的地域信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Region: 地域
+        :type Region: str
+        :param Clusters: 该地域对应的集群信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Clusters: list of CdcCluster
+        """
+        self.Region = None
+        self.Clusters = None
+
+
+    def _deserialize(self, params):
+        self.Region = params.get("Region")
+        if params.get("Clusters") is not None:
+            self.Clusters = []
+            for item in params.get("Clusters"):
+                obj = CdcCluster()
+                obj._deserialize(item)
+                self.Clusters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateAccessExportRequest(AbstractModel):
     """CreateAccessExport请求参数结构体
 
@@ -1838,6 +1901,39 @@ class DescribeIpHitItemsResponse(AbstractModel):
         if params.get("Data") is not None:
             self.Data = IpHitItemsData()
             self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeUserCdcClbWafRegionsRequest(AbstractModel):
+    """DescribeUserCdcClbWafRegions请求参数结构体
+
+    """
+
+
+class DescribeUserCdcClbWafRegionsResponse(AbstractModel):
+    """DescribeUserCdcClbWafRegions返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: CdcRegion的类型描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: list of CdcRegion
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = CdcRegion()
+                obj._deserialize(item)
+                self.Data.append(obj)
         self.RequestId = params.get("RequestId")
 
 

@@ -41,7 +41,7 @@ class ApproverInfo(AbstractModel):
         :type ApproverName: str
         :param ApproverMobile: 本环节需要操作人的手机号
         :type ApproverMobile: str
-        :param SignComponents: 本环节操作人签署控件配置，为企业静默签署时，只允许类型为SIGN_SEAL（印章）和SIGN_DATE（日期）控件，并且传入印章编号。
+        :param SignComponents: 本环节操作人签署控件配置
         :type SignComponents: list of Component
         :param OrganizationName: 如果是企业,则为企业的名字
         :type OrganizationName: str
@@ -278,13 +278,15 @@ class Component(AbstractModel):
     def __init__(self):
         r"""
         :param ComponentType: 如果是 Component 控件类型，则可选类型为：
-TEXT - 内容文本控件
-DATE - 内容日期控件
-CHECK_BOX - 勾选框控件
+TEXT - 单行文本
+MULTI_LINE_TEXT - 多行文本
+CHECK_BOX - 勾选框
+ATTACHMENT - 附件
+SELECTOR - 选择器
 如果是 SignComponent 控件类型，则可选类型为：
-SIGN_SEAL - 签署印章控件
+SIGN_SEAL - 签署印章控件，静默签署时需要传入印章id作为ComponentValue
 SIGN_DATE - 签署日期控件
-SIGN_SIGNATURE - 手写签名控件
+SIGN_SIGNATURE - 手写签名控件，静默签署时不能使用
         :type ComponentType: str
         :param ComponentWidth: 参数控件宽度，单位pt
         :type ComponentWidth: float
@@ -316,7 +318,12 @@ ESIGN -- 个人印章类型
         :type ComponentExtra: str
         :param ComponentRecipientId: 控件关联的签署人ID
         :type ComponentRecipientId: str
-        :param ComponentValue: 控件所填写的内容
+        :param ComponentValue: 控件填充vaule，ComponentType和传入值类型对应关系：
+TEXT - 文本内容
+MULTI_LINE_TEXT - 文本内容
+CHECK_BOX - true/false
+ATTACHMENT - 附件的FileId，需要通过UploadFiles接口上传获取
+SELECTOR - 选项值
         :type ComponentValue: str
         :param IsFormType: 是否是表单域类型，默认不存在
         :type IsFormType: bool
@@ -484,12 +491,7 @@ class CreateFlowByFilesRequest(AbstractModel):
         :type FileIds: list of str
         :param FlowType: 签署流程的类型(如销售合同/入职合同等)，最大长度200个字符
         :type FlowType: str
-        :param Components: 经办人内容控件配置。可选类型为：
-TEXT - 内容文本控件
-MULTI_LINE_TEXT - 多行文本控件
-CHECK_BOX - 勾选框控件
-ATTACHMENT - 附件
-注：默认字体大小为 字号12
+        :param Components: 经办人内容控件配置
         :type Components: list of Component
         :param CcInfos: 被抄送人的信息列表。
 注:此功能为白名单功能，若有需要，请联系电子签客服开白使用
@@ -1400,11 +1402,16 @@ class FormField(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ComponentValue: 控件填充value
+        :param ComponentValue: 控件填充value，ComponentType和传入值类型对应关系：
+TEXT - 文本内容
+MULTI_LINE_TEXT - 文本内容
+CHECK_BOX - true/false
+ATTACHMENT - 附件的FileId，需要通过UploadFiles接口上传获取
+SELECTOR - 模板中配置的选项值
         :type ComponentValue: str
-        :param ComponentId: 控件id
+        :param ComponentId: 控件id，和ComponentName选择一项传入即可
         :type ComponentId: str
-        :param ComponentName: 控件名字，最大长度不超过30字符
+        :param ComponentName: 控件名字，最大长度不超过30字符，和ComponentId选择一项传入即可
         :type ComponentName: str
         """
         self.ComponentValue = None

@@ -7109,6 +7109,9 @@ class DescribeZoneDetailsResponse(AbstractModel):
         :param Tags: 资源标签
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
+        :param Resources: 计费资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Resources: list of Resource
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -7126,6 +7129,7 @@ class DescribeZoneDetailsResponse(AbstractModel):
         self.CnameSpeedUp = None
         self.CnameStatus = None
         self.Tags = None
+        self.Resources = None
         self.RequestId = None
 
 
@@ -7156,6 +7160,12 @@ class DescribeZoneDetailsResponse(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        if params.get("Resources") is not None:
+            self.Resources = []
+            for item in params.get("Resources"):
+                obj = Resource()
+                obj._deserialize(item)
+                self.Resources.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -10529,6 +10539,72 @@ class ReclaimZoneResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class Resource(AbstractModel):
+    """计费资源
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: 资源 ID
+        :type Id: str
+        :param PayMode: 付费模式
+0 为后付费
+1 为预付费
+        :type PayMode: int
+        :param CreateTime: 创建时间
+        :type CreateTime: str
+        :param EnableTime: 生效时间
+        :type EnableTime: str
+        :param ExpireTime: 失效时间
+        :type ExpireTime: str
+        :param Status: 套餐状态
+        :type Status: str
+        :param Sv: 询价参数
+        :type Sv: list of Sv
+        :param AutoRenewFlag: 是否自动续费
+0 表示默认状态
+1 表示自动续费
+2 表示不自动续费
+        :type AutoRenewFlag: int
+        :param PlanId: 套餐关联资源ID
+        :type PlanId: str
+        """
+        self.Id = None
+        self.PayMode = None
+        self.CreateTime = None
+        self.EnableTime = None
+        self.ExpireTime = None
+        self.Status = None
+        self.Sv = None
+        self.AutoRenewFlag = None
+        self.PlanId = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.PayMode = params.get("PayMode")
+        self.CreateTime = params.get("CreateTime")
+        self.EnableTime = params.get("EnableTime")
+        self.ExpireTime = params.get("ExpireTime")
+        self.Status = params.get("Status")
+        if params.get("Sv") is not None:
+            self.Sv = []
+            for item in params.get("Sv"):
+                obj = Sv()
+                obj._deserialize(item)
+                self.Sv.append(obj)
+        self.AutoRenewFlag = params.get("AutoRenewFlag")
+        self.PlanId = params.get("PlanId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ScanDnsRecordsRequest(AbstractModel):
     """ScanDnsRecords请求参数结构体
 
@@ -10909,6 +10985,34 @@ off：关闭
 
     def _deserialize(self, params):
         self.Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Sv(AbstractModel):
+    """询价参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Key: 询价参数 key
+        :type Key: str
+        :param Value: 询价参数 value
+        :type Value: str
+        """
+        self.Key = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -11716,6 +11820,14 @@ class Zone(AbstractModel):
         :param Tags: 资源标签
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
+        :param Resources: 计费资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Resources: list of Resource
+        :param CnameSpeedUp: 是否开启cname加速
+- enabled 开启
+- disabled 关闭
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CnameSpeedUp: str
         """
         self.Id = None
         self.Name = None
@@ -11728,6 +11840,8 @@ class Zone(AbstractModel):
         self.ModifiedOn = None
         self.CnameStatus = None
         self.Tags = None
+        self.Resources = None
+        self.CnameSpeedUp = None
 
 
     def _deserialize(self, params):
@@ -11747,6 +11861,13 @@ class Zone(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self.Tags.append(obj)
+        if params.get("Resources") is not None:
+            self.Resources = []
+            for item in params.get("Resources"):
+                obj = Resource()
+                obj._deserialize(item)
+                self.Resources.append(obj)
+        self.CnameSpeedUp = params.get("CnameSpeedUp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

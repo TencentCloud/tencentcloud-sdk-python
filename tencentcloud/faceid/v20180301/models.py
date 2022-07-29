@@ -958,12 +958,28 @@ class DetectInfoIdCardData(AbstractModel):
         :param Avatar: 身份证正面人像图base64编码。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Avatar: str
-        :param WarnInfos: 开启身份证防翻拍告警功能后才会返回，返回数组中可能出现的告警码如下：
--9102 身份证复印件告警。
--9103 身份证翻拍告警。
--9106 身份证 PS 告警。
+        :param WarnInfos: 身份证人像面告警码，开启身份证告警功能后才会返回，返回数组中可能出现的告警码如下：
+-9100 身份证有效日期不合法告警，
+-9101 身份证边框不完整告警，
+-9102 身份证复印件告警，
+-9103 身份证翻拍告警，
+-9105 身份证框内遮挡告警，
+-9104 临时身份证告警，
+-9106 身份证 PS 告警，
+-9107 身份证反光告警。
 注意：此字段可能返回 null，表示取不到有效值。
         :type WarnInfos: list of int
+        :param BackWarnInfos: 身份证国徽面告警码，开启身份证告警功能后才会返回，返回数组中可能出现的告警码如下：
+-9100 身份证有效日期不合法告警，
+-9101 身份证边框不完整告警，
+-9102 身份证复印件告警，
+-9103 身份证翻拍告警，
+-9105 身份证框内遮挡告警，
+-9104 临时身份证告警，
+-9106 身份证 PS 告警，
+-9107 身份证反光告警。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BackWarnInfos: list of int
         """
         self.OcrFront = None
         self.OcrBack = None
@@ -971,6 +987,7 @@ class DetectInfoIdCardData(AbstractModel):
         self.ProcessedBackImage = None
         self.Avatar = None
         self.WarnInfos = None
+        self.BackWarnInfos = None
 
 
     def _deserialize(self, params):
@@ -980,6 +997,7 @@ class DetectInfoIdCardData(AbstractModel):
         self.ProcessedBackImage = params.get("ProcessedBackImage")
         self.Avatar = params.get("Avatar")
         self.WarnInfos = params.get("WarnInfos")
+        self.BackWarnInfos = params.get("BackWarnInfos")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

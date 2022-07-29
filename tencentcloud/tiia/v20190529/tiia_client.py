@@ -241,39 +241,6 @@ class TiiaClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DetectCelebrity(self, request):
-        """传入一张图片，可以识别图片中包含的人物是否为公众人物，如果是，输出人物的姓名、基本信息、脸部坐标。
-
-        支持识别一张图片中存在的多个人脸，针对每个人脸，会给出与之最相似的公众人物。
-        >
-        - 公共参数中的签名方式必须指定为V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
-
-        :param request: Request instance for DetectCelebrity.
-        :type request: :class:`tencentcloud.tiia.v20190529.models.DetectCelebrityRequest`
-        :rtype: :class:`tencentcloud.tiia.v20190529.models.DetectCelebrityResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DetectCelebrity", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DetectCelebrityResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def DetectDisgust(self, request):
         """输入一张图片，返回AI针对一张图片是否是恶心的一系列判断值。
 

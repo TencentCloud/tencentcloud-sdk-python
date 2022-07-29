@@ -4475,16 +4475,22 @@ class ListTaskJobLogDetailRequest(AbstractModel):
         :type StartTime: int
         :param EndTime: 结束运行时间，unix时间戳（毫秒）
         :type EndTime: int
-        :param Limit: 分页大小，最大100，配合Context一起使用
+        :param Limit: 分页大小，最大1000，配合Context一起使用
         :type Limit: int
         :param Context: 下一次分页参数，第一次传空
         :type Context: str
+        :param Asc: 最近1000条日志是否升序排列，true:升序排序，false:倒序，默认false，倒序排列
+        :type Asc: bool
+        :param Filters: 预览日志的通用过滤条件
+        :type Filters: list of Filter
         """
         self.TaskId = None
         self.StartTime = None
         self.EndTime = None
         self.Limit = None
         self.Context = None
+        self.Asc = None
+        self.Filters = None
 
 
     def _deserialize(self, params):
@@ -4493,6 +4499,13 @@ class ListTaskJobLogDetailRequest(AbstractModel):
         self.EndTime = params.get("EndTime")
         self.Limit = params.get("Limit")
         self.Context = params.get("Context")
+        self.Asc = params.get("Asc")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5289,6 +5302,9 @@ class SparkJobInfo(AbstractModel):
         :param TaskNum: 当前job正在运行或准备运行的任务个数
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskNum: int
+        :param DataEngineStatus: 引擎状态：-100（默认：未知状态），-2~11：引擎正常状态；
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataEngineStatus: int
         """
         self.JobId = None
         self.JobName = None
@@ -5322,6 +5338,7 @@ class SparkJobInfo(AbstractModel):
         self.JobArchives = None
         self.JobPythonFiles = None
         self.TaskNum = None
+        self.DataEngineStatus = None
 
 
     def _deserialize(self, params):
@@ -5359,6 +5376,7 @@ class SparkJobInfo(AbstractModel):
         self.JobArchives = params.get("JobArchives")
         self.JobPythonFiles = params.get("JobPythonFiles")
         self.TaskNum = params.get("TaskNum")
+        self.DataEngineStatus = params.get("DataEngineStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

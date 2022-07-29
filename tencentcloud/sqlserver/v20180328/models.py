@@ -1695,6 +1695,10 @@ class DBInstance(AbstractModel):
         :type CrossBackupEnabled: str
         :param CrossBackupSaveDays: 跨地域备份保留天数，则默认7天
         :type CrossBackupSaveDays: int
+        :param DnsPodDomain: 外网地址域名
+        :type DnsPodDomain: str
+        :param TgwWanVPort: 外网端口号
+        :type TgwWanVPort: int
         """
         self.InstanceId = None
         self.Name = None
@@ -1742,6 +1746,8 @@ class DBInstance(AbstractModel):
         self.CrossRegions = None
         self.CrossBackupEnabled = None
         self.CrossBackupSaveDays = None
+        self.DnsPodDomain = None
+        self.TgwWanVPort = None
 
 
     def _deserialize(self, params):
@@ -1796,6 +1802,8 @@ class DBInstance(AbstractModel):
         self.CrossRegions = params.get("CrossRegions")
         self.CrossBackupEnabled = params.get("CrossBackupEnabled")
         self.CrossBackupSaveDays = params.get("CrossBackupSaveDays")
+        self.DnsPodDomain = params.get("DnsPodDomain")
+        self.TgwWanVPort = params.get("TgwWanVPort")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -6543,6 +6543,52 @@ class DescribeEdgeClusterInstancesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeEdgeLogSwitchesRequest(AbstractModel):
+    """DescribeEdgeLogSwitches请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterIds: 集群ID列表
+        :type ClusterIds: list of str
+        """
+        self.ClusterIds = None
+
+
+    def _deserialize(self, params):
+        self.ClusterIds = params.get("ClusterIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeEdgeLogSwitchesResponse(AbstractModel):
+    """DescribeEdgeLogSwitches返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SwitchSet: 集群日志开关集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SwitchSet: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.SwitchSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.SwitchSet = params.get("SwitchSet")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeEksContainerInstanceLogRequest(AbstractModel):
     """DescribeEksContainerInstanceLog请求参数结构体
 

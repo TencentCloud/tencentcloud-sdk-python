@@ -583,7 +583,7 @@ class DescribeFlySecMiniAppReportUrlRequest(AbstractModel):
         :type MiniAppID: str
         :param Mode: 诊断方式 1:基础诊断，2:深度诊断
         :type Mode: int
-        :param ReportType: 诊断报告类型 0:基础诊断报告, 1:总裁版诊断报告
+        :param ReportType: 诊断报告类型 0:基础诊断报告，1:总裁版诊断报告，2:诊断报告json结果
         :type ReportType: int
         """
         self.TaskID = None
@@ -1057,7 +1057,7 @@ class DescribeScanTaskReportUrlRequest(AbstractModel):
         :type TaskID: str
         :param Platform: 应用平台, 0:android, 1:ios, 2:小程序
         :type Platform: int
-        :param ReportType: 报告类型, 0:诊断报告, 1:堆栈报告
+        :param ReportType: 报告类型, 0:诊断报告, 1:堆栈报告(预留), 2:视频证据(预留), 3:报告json结果
         :type ReportType: int
         :param TaskType: 任务类型, 0:基础版, 1:专家版, 2:本地化
         :type TaskType: int

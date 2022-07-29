@@ -676,7 +676,7 @@ class CheckProxyCreateRequest(AbstractModel):
         :type NetworkType: str
         :param PackageType: 通道套餐类型。Thunder表示标准通道组，Accelerator表示游戏加速器通道，CrossBorder表示跨境通道。
         :type PackageType: str
-        :param Http3Supported: 支持Http3的开关，其中：0，表示不需要支持Http3接入；1，表示需要支持Http3接入。注意：如果开启了Http3的功能，那么该通道就不再支持TCP/UDP接入的功能。该功能的启停无法在通道创建完毕后再修改。
+        :param Http3Supported: 该字段已废弃，当IPAddressVersion为IPv4时，所创建的通道默认支持Http3.0；当为IPv6，默认不支持Http3.0。
         :type Http3Supported: int
         """
         self.AccessRegion = None
@@ -1475,11 +1475,7 @@ class CreateProxyGroupRequest(AbstractModel):
         :type IPAddressVersion: str
         :param PackageType: 通道组套餐类型，可取值：Thunder、Accelerator，默认值Thunder
         :type PackageType: str
-        :param Http3Supported: 支持Http3的开关，其中：
-0，表示不需要支持Http3接入；
-1，表示需要支持Http3接入。
-注意：如果开启了Http3的功能，那么该通道组就不再支持TCP/UDP接入的功能。
-该功能的启停无法在通道组创建完毕后再修改。
+        :param Http3Supported: 该字段已废弃，当IPAddressVersion为IPv4时，所创建的通道组默认支持Http3.0；当为IPv6，默认不支持Http3.0。
         :type Http3Supported: int
         """
         self.ProjectId = None
@@ -1578,7 +1574,7 @@ class CreateProxyRequest(AbstractModel):
         :type NetworkType: str
         :param PackageType: 通道套餐类型，Thunder表示标准通道组，Accelerator表示游戏加速器通道，CrossBorder表示跨境通道。
         :type PackageType: str
-        :param Http3Supported: 支持Http3的开关，其中：0，表示不需要支持Http3接入；1，表示需要支持Http3接入。注意：如果开启了Http3的功能，那么该通道就不再支持TCP/UDP接入的功能。该功能的启停无法在通道创建完毕后再修改。
+        :param Http3Supported: 该字段已废弃，当IPAddressVersion为IPv4时，所创建的通道默认支持Http3.0；当为IPv6，默认不支持Http3.0。
         :type Http3Supported: int
         """
         self.ProjectId = None
@@ -5546,7 +5542,7 @@ class InquiryPriceCreateProxyRequest(AbstractModel):
         :type NetworkType: str
         :param PackageType: 通道套餐类型，Thunder表示标准通道组，Accelerator表示游戏加速器通道，CrossBorder表示跨境通道。
         :type PackageType: str
-        :param Http3Supported: 支持Http3的开关，其中：0，表示不需要支持Http3接入；1，表示需要支持Http3接入。注意：如果开启了Http3的功能，那么该通道就不再支持TCP/UDP接入的功能。该功能的启停无法在通道创建完毕后再修改。
+        :param Http3Supported: 该字段已废弃，当IPAddressVersion为IPv4时，所创建的通道默认支持Http3.0；当为IPv6，默认不支持Http3.0。
         :type Http3Supported: int
         """
         self.AccessRegion = None
@@ -6931,6 +6927,20 @@ class ProxyGroupDetail(AbstractModel):
 1表示启用。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Http3Supported: int
+        :param FeatureBitmap: 特性位图，每个bit位代表一种特性，其中：
+0，表示不支持该特性；
+1，表示支持该特性。
+特性位图含义如下（从右往左）：
+第1个bit，支持4层加速；
+第2个bit，支持7层加速；
+第3个bit，支持Http3接入；
+第4个bit，支持IPv6；
+第5个bit，支持精品BGP接入；
+第6个bit，支持三网接入；
+第7个bit，支持接入段Qos加速。
+注意：此字段可能返回 null，表示取不到有效值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FeatureBitmap: int
         """
         self.CreateTime = None
         self.ProjectId = None
@@ -6951,6 +6961,7 @@ class ProxyGroupDetail(AbstractModel):
         self.IPAddressVersion = None
         self.PackageType = None
         self.Http3Supported = None
+        self.FeatureBitmap = None
 
 
     def _deserialize(self, params):
@@ -6980,6 +6991,7 @@ class ProxyGroupDetail(AbstractModel):
         self.IPAddressVersion = params.get("IPAddressVersion")
         self.PackageType = params.get("PackageType")
         self.Http3Supported = params.get("Http3Supported")
+        self.FeatureBitmap = params.get("FeatureBitmap")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7032,6 +7044,20 @@ CHANGING表示部分部署中。
 1表示启用。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Http3Supported: int
+        :param FeatureBitmap: 特性位图，每个bit位代表一种特性，其中：
+0，表示不支持该特性；
+1，表示支持该特性。
+特性位图含义如下（从右往左）：
+第1个bit，支持4层加速；
+第2个bit，支持7层加速；
+第3个bit，支持Http3接入；
+第4个bit，支持IPv6；
+第5个bit，支持精品BGP接入；
+第6个bit，支持三网接入；
+第7个bit，支持接入段Qos加速。
+注意：此字段可能返回 null，表示取不到有效值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FeatureBitmap: int
         """
         self.GroupId = None
         self.Domain = None
@@ -7044,6 +7070,7 @@ CHANGING表示部分部署中。
         self.CreateTime = None
         self.ProxyType = None
         self.Http3Supported = None
+        self.FeatureBitmap = None
 
 
     def _deserialize(self, params):
@@ -7065,6 +7092,7 @@ CHANGING表示部分部署中。
         self.CreateTime = params.get("CreateTime")
         self.ProxyType = params.get("ProxyType")
         self.Http3Supported = params.get("Http3Supported")
+        self.FeatureBitmap = params.get("FeatureBitmap")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7208,6 +7236,20 @@ CrossBorder表示跨境通道。
         :param InBanBlacklist: 是否在封禁黑名单中，其中：0表示不在黑名单中，1表示在黑名单中。
 注意：此字段可能返回 null，表示取不到有效值。
         :type InBanBlacklist: int
+        :param FeatureBitmap: 特性位图，每个bit位代表一种特性，其中：
+0，表示不支持该特性；
+1，表示支持该特性。
+特性位图含义如下（从右往左）：
+第1个bit，支持4层加速；
+第2个bit，支持7层加速；
+第3个bit，支持Http3接入；
+第4个bit，支持IPv6；
+第5个bit，支持精品BGP接入；
+第6个bit，支持三网接入；
+第7个bit，支持接入段Qos加速。
+注意：此字段可能返回 null，表示取不到有效值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FeatureBitmap: int
         """
         self.InstanceId = None
         self.CreateTime = None
@@ -7243,6 +7285,7 @@ CrossBorder表示跨境通道。
         self.IPList = None
         self.Http3Supported = None
         self.InBanBlacklist = None
+        self.FeatureBitmap = None
 
 
     def _deserialize(self, params):
@@ -7294,6 +7337,7 @@ CrossBorder表示跨境通道。
                 self.IPList.append(obj)
         self.Http3Supported = params.get("Http3Supported")
         self.InBanBlacklist = params.get("InBanBlacklist")
+        self.FeatureBitmap = params.get("FeatureBitmap")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

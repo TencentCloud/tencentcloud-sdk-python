@@ -7515,16 +7515,26 @@ class ForbidStreamInfo(AbstractModel):
         :type CreateTime: str
         :param ExpireTime: 禁推过期时间。
         :type ExpireTime: str
+        :param AppName: 推流路径。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppName: str
+        :param DomainName: 推流域名。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DomainName: str
         """
         self.StreamName = None
         self.CreateTime = None
         self.ExpireTime = None
+        self.AppName = None
+        self.DomainName = None
 
 
     def _deserialize(self, params):
         self.StreamName = params.get("StreamName")
         self.CreateTime = params.get("CreateTime")
         self.ExpireTime = params.get("ExpireTime")
+        self.AppName = params.get("AppName")
+        self.DomainName = params.get("DomainName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

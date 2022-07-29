@@ -17,30 +17,30 @@ import json
 
 from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentCloudSDKException
 from tencentcloud.common.abstract_client import AbstractClient
-from tencentcloud.waf.v20180125 import models
+from tencentcloud.pts.v20210728 import models
 
 
-class WafClient(AbstractClient):
-    _apiVersion = '2018-01-25'
-    _endpoint = 'waf.tencentcloudapi.com'
-    _service = 'waf'
+class PtsClient(AbstractClient):
+    _apiVersion = '2021-07-28'
+    _endpoint = 'pts.tencentcloudapi.com'
+    _service = 'pts'
 
 
-    def AddCustomRule(self, request):
-        """增加自定义策略
+    def AbortCronJobs(self, request):
+        """停止定时任务
 
-        :param request: Request instance for AddCustomRule.
-        :type request: :class:`tencentcloud.waf.v20180125.models.AddCustomRuleRequest`
-        :rtype: :class:`tencentcloud.waf.v20180125.models.AddCustomRuleResponse`
+        :param request: Request instance for AbortCronJobs.
+        :type request: :class:`tencentcloud.pts.v20210728.models.AbortCronJobsRequest`
+        :rtype: :class:`tencentcloud.pts.v20210728.models.AbortCronJobsResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("AddCustomRule", params, headers=headers)
+            body = self.call("AbortCronJobs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.AddCustomRuleResponse()
+                model = models.AbortCronJobsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -55,21 +55,21 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def AddDomainWhiteRule(self, request):
-        """增加域名规则白名单
+    def AbortJob(self, request):
+        """停止任务
 
-        :param request: Request instance for AddDomainWhiteRule.
-        :type request: :class:`tencentcloud.waf.v20180125.models.AddDomainWhiteRuleRequest`
-        :rtype: :class:`tencentcloud.waf.v20180125.models.AddDomainWhiteRuleResponse`
+        :param request: Request instance for AbortJob.
+        :type request: :class:`tencentcloud.pts.v20210728.models.AbortJobRequest`
+        :rtype: :class:`tencentcloud.pts.v20210728.models.AbortJobResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("AddDomainWhiteRule", params, headers=headers)
+            body = self.call("AbortJob", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.AddDomainWhiteRuleResponse()
+                model = models.AbortJobResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -84,21 +84,21 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def AddSpartaProtection(self, request):
-        """添加Spart防护域名
+    def AdjustJobSpeed(self, request):
+        """调整任务的目标RPS
 
-        :param request: Request instance for AddSpartaProtection.
-        :type request: :class:`tencentcloud.waf.v20180125.models.AddSpartaProtectionRequest`
-        :rtype: :class:`tencentcloud.waf.v20180125.models.AddSpartaProtectionResponse`
+        :param request: Request instance for AdjustJobSpeed.
+        :type request: :class:`tencentcloud.pts.v20210728.models.AdjustJobSpeedRequest`
+        :rtype: :class:`tencentcloud.pts.v20210728.models.AdjustJobSpeedResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("AddSpartaProtection", params, headers=headers)
+            body = self.call("AdjustJobSpeed", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.AddSpartaProtectionResponse()
+                model = models.AdjustJobSpeedResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -113,21 +113,21 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def CreateAccessExport(self, request):
-        """本接口用于创建访问日志导出
+    def CopyScenario(self, request):
+        """复制场景
 
-        :param request: Request instance for CreateAccessExport.
-        :type request: :class:`tencentcloud.waf.v20180125.models.CreateAccessExportRequest`
-        :rtype: :class:`tencentcloud.waf.v20180125.models.CreateAccessExportResponse`
+        :param request: Request instance for CopyScenario.
+        :type request: :class:`tencentcloud.pts.v20210728.models.CopyScenarioRequest`
+        :rtype: :class:`tencentcloud.pts.v20210728.models.CopyScenarioResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("CreateAccessExport", params, headers=headers)
+            body = self.call("CopyScenario", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.CreateAccessExportResponse()
+                model = models.CopyScenarioResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -142,21 +142,21 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DeleteAccessExport(self, request):
-        """本接口用于删除访问日志导出
+    def CreateAlertChannel(self, request):
+        """创建告警通知接收组
 
-        :param request: Request instance for DeleteAccessExport.
-        :type request: :class:`tencentcloud.waf.v20180125.models.DeleteAccessExportRequest`
-        :rtype: :class:`tencentcloud.waf.v20180125.models.DeleteAccessExportResponse`
+        :param request: Request instance for CreateAlertChannel.
+        :type request: :class:`tencentcloud.pts.v20210728.models.CreateAlertChannelRequest`
+        :rtype: :class:`tencentcloud.pts.v20210728.models.CreateAlertChannelResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("DeleteAccessExport", params, headers=headers)
+            body = self.call("CreateAlertChannel", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DeleteAccessExportResponse()
+                model = models.CreateAlertChannelResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -171,21 +171,21 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DeleteAttackDownloadRecord(self, request):
-        """删除攻击日志下载任务记录
+    def CreateCronJob(self, request):
+        """创建定时任务
 
-        :param request: Request instance for DeleteAttackDownloadRecord.
-        :type request: :class:`tencentcloud.waf.v20180125.models.DeleteAttackDownloadRecordRequest`
-        :rtype: :class:`tencentcloud.waf.v20180125.models.DeleteAttackDownloadRecordResponse`
+        :param request: Request instance for CreateCronJob.
+        :type request: :class:`tencentcloud.pts.v20210728.models.CreateCronJobRequest`
+        :rtype: :class:`tencentcloud.pts.v20210728.models.CreateCronJobResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("DeleteAttackDownloadRecord", params, headers=headers)
+            body = self.call("CreateCronJob", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DeleteAttackDownloadRecordResponse()
+                model = models.CreateCronJobResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -200,22 +200,21 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DeleteDomainWhiteRules(self, request):
-        """删除域名规则白名单
+    def CreateFile(self, request):
+        """创建文件
 
-
-        :param request: Request instance for DeleteDomainWhiteRules.
-        :type request: :class:`tencentcloud.waf.v20180125.models.DeleteDomainWhiteRulesRequest`
-        :rtype: :class:`tencentcloud.waf.v20180125.models.DeleteDomainWhiteRulesResponse`
+        :param request: Request instance for CreateFile.
+        :type request: :class:`tencentcloud.pts.v20210728.models.CreateFileRequest`
+        :rtype: :class:`tencentcloud.pts.v20210728.models.CreateFileResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("DeleteDomainWhiteRules", params, headers=headers)
+            body = self.call("CreateFile", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DeleteDomainWhiteRulesResponse()
+                model = models.CreateFileResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -230,21 +229,21 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DeleteDownloadRecord(self, request):
-        """删除访问日志下载记录
+    def CreateProject(self, request):
+        """创建项目
 
-        :param request: Request instance for DeleteDownloadRecord.
-        :type request: :class:`tencentcloud.waf.v20180125.models.DeleteDownloadRecordRequest`
-        :rtype: :class:`tencentcloud.waf.v20180125.models.DeleteDownloadRecordResponse`
+        :param request: Request instance for CreateProject.
+        :type request: :class:`tencentcloud.pts.v20210728.models.CreateProjectRequest`
+        :rtype: :class:`tencentcloud.pts.v20210728.models.CreateProjectResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("DeleteDownloadRecord", params, headers=headers)
+            body = self.call("CreateProject", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DeleteDownloadRecordResponse()
+                model = models.CreateProjectResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -259,21 +258,21 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DeleteIpAccessControl(self, request):
-        """Waf IP黑白名单Delete接口
+    def CreateScenario(self, request):
+        """创建场景
 
-        :param request: Request instance for DeleteIpAccessControl.
-        :type request: :class:`tencentcloud.waf.v20180125.models.DeleteIpAccessControlRequest`
-        :rtype: :class:`tencentcloud.waf.v20180125.models.DeleteIpAccessControlResponse`
+        :param request: Request instance for CreateScenario.
+        :type request: :class:`tencentcloud.pts.v20210728.models.CreateScenarioRequest`
+        :rtype: :class:`tencentcloud.pts.v20210728.models.CreateScenarioResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("DeleteIpAccessControl", params, headers=headers)
+            body = self.call("CreateScenario", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DeleteIpAccessControlResponse()
+                model = models.CreateScenarioResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -288,21 +287,21 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DeleteSession(self, request):
-        """删除CC攻击的session设置
+    def DeleteAlertChannel(self, request):
+        """删除告警通知接收组
 
-        :param request: Request instance for DeleteSession.
-        :type request: :class:`tencentcloud.waf.v20180125.models.DeleteSessionRequest`
-        :rtype: :class:`tencentcloud.waf.v20180125.models.DeleteSessionResponse`
+        :param request: Request instance for DeleteAlertChannel.
+        :type request: :class:`tencentcloud.pts.v20210728.models.DeleteAlertChannelRequest`
+        :rtype: :class:`tencentcloud.pts.v20210728.models.DeleteAlertChannelResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("DeleteSession", params, headers=headers)
+            body = self.call("DeleteAlertChannel", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DeleteSessionResponse()
+                model = models.DeleteAlertChannelResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -317,21 +316,21 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeAccessExports(self, request):
-        """本接口用于获取访问日志导出列表
+    def DeleteCronJobs(self, request):
+        """删除定时任务
 
-        :param request: Request instance for DescribeAccessExports.
-        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeAccessExportsRequest`
-        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeAccessExportsResponse`
+        :param request: Request instance for DeleteCronJobs.
+        :type request: :class:`tencentcloud.pts.v20210728.models.DeleteCronJobsRequest`
+        :rtype: :class:`tencentcloud.pts.v20210728.models.DeleteCronJobsResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("DescribeAccessExports", params, headers=headers)
+            body = self.call("DeleteCronJobs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeAccessExportsResponse()
+                model = models.DeleteCronJobsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -346,21 +345,21 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeAccessFastAnalysis(self, request):
-        """本接口用于访问日志的快速分析
+    def DeleteFiles(self, request):
+        """删除文件
 
-        :param request: Request instance for DescribeAccessFastAnalysis.
-        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeAccessFastAnalysisRequest`
-        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeAccessFastAnalysisResponse`
+        :param request: Request instance for DeleteFiles.
+        :type request: :class:`tencentcloud.pts.v20210728.models.DeleteFilesRequest`
+        :rtype: :class:`tencentcloud.pts.v20210728.models.DeleteFilesResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("DescribeAccessFastAnalysis", params, headers=headers)
+            body = self.call("DeleteFiles", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeAccessFastAnalysisResponse()
+                model = models.DeleteFilesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -375,21 +374,21 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeAccessIndex(self, request):
-        """本接口用于获取访问日志索引配置信息
+    def DeleteJobs(self, request):
+        """删除任务
 
-        :param request: Request instance for DescribeAccessIndex.
-        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeAccessIndexRequest`
-        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeAccessIndexResponse`
+        :param request: Request instance for DeleteJobs.
+        :type request: :class:`tencentcloud.pts.v20210728.models.DeleteJobsRequest`
+        :rtype: :class:`tencentcloud.pts.v20210728.models.DeleteJobsResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("DescribeAccessIndex", params, headers=headers)
+            body = self.call("DeleteJobs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeAccessIndexResponse()
+                model = models.DeleteJobsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -404,21 +403,21 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeAutoDenyIP(self, request):
-        """描述WAF自动封禁IP详情,对齐自动封堵状态
+    def DeleteProjects(self, request):
+        """删除项目
 
-        :param request: Request instance for DescribeAutoDenyIP.
-        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeAutoDenyIPRequest`
-        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeAutoDenyIPResponse`
+        :param request: Request instance for DeleteProjects.
+        :type request: :class:`tencentcloud.pts.v20210728.models.DeleteProjectsRequest`
+        :rtype: :class:`tencentcloud.pts.v20210728.models.DeleteProjectsResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("DescribeAutoDenyIP", params, headers=headers)
+            body = self.call("DeleteProjects", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeAutoDenyIPResponse()
+                model = models.DeleteProjectsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -433,22 +432,21 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeDomainWhiteRules(self, request):
-        """获取域名的规则白名单
+    def DeleteScenarios(self, request):
+        """删除场景
 
-
-        :param request: Request instance for DescribeDomainWhiteRules.
-        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeDomainWhiteRulesRequest`
-        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeDomainWhiteRulesResponse`
+        :param request: Request instance for DeleteScenarios.
+        :type request: :class:`tencentcloud.pts.v20210728.models.DeleteScenariosRequest`
+        :rtype: :class:`tencentcloud.pts.v20210728.models.DeleteScenariosResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("DescribeDomainWhiteRules", params, headers=headers)
+            body = self.call("DeleteScenarios", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeDomainWhiteRulesResponse()
+                model = models.DeleteScenariosResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -463,21 +461,21 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeDomains(self, request):
-        """查询用户所有域名的详细信息
+    def DescribeAlertChannels(self, request):
+        """查询告警通知接收组
 
-        :param request: Request instance for DescribeDomains.
-        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeDomainsRequest`
-        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeDomainsResponse`
+        :param request: Request instance for DescribeAlertChannels.
+        :type request: :class:`tencentcloud.pts.v20210728.models.DescribeAlertChannelsRequest`
+        :rtype: :class:`tencentcloud.pts.v20210728.models.DescribeAlertChannelsResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("DescribeDomains", params, headers=headers)
+            body = self.call("DescribeAlertChannels", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeDomainsResponse()
+                model = models.DescribeAlertChannelsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -492,21 +490,21 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeFlowTrend(self, request):
-        """获取waf流量访问趋势
+    def DescribeAlertRecords(self, request):
+        """返回告警历史项的列表
 
-        :param request: Request instance for DescribeFlowTrend.
-        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeFlowTrendRequest`
-        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeFlowTrendResponse`
+        :param request: Request instance for DescribeAlertRecords.
+        :type request: :class:`tencentcloud.pts.v20210728.models.DescribeAlertRecordsRequest`
+        :rtype: :class:`tencentcloud.pts.v20210728.models.DescribeAlertRecordsResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("DescribeFlowTrend", params, headers=headers)
+            body = self.call("DescribeAlertRecords", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeFlowTrendResponse()
+                model = models.DescribeAlertRecordsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -521,21 +519,21 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeInstances(self, request):
-        """查询用户所有实例的详细信息
+    def DescribeAvailableMetrics(self, request):
+        """查询系统支持的指标
 
-        :param request: Request instance for DescribeInstances.
-        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeInstancesRequest`
-        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeInstancesResponse`
+        :param request: Request instance for DescribeAvailableMetrics.
+        :type request: :class:`tencentcloud.pts.v20210728.models.DescribeAvailableMetricsRequest`
+        :rtype: :class:`tencentcloud.pts.v20210728.models.DescribeAvailableMetricsResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("DescribeInstances", params, headers=headers)
+            body = self.call("DescribeAvailableMetrics", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeInstancesResponse()
+                model = models.DescribeAvailableMetricsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -550,21 +548,21 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeIpAccessControl(self, request):
-        """Waf ip黑白名单查询
+    def DescribeCheckSummary(self, request):
+        """查询检查点汇总信息
 
-        :param request: Request instance for DescribeIpAccessControl.
-        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeIpAccessControlRequest`
-        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeIpAccessControlResponse`
+        :param request: Request instance for DescribeCheckSummary.
+        :type request: :class:`tencentcloud.pts.v20210728.models.DescribeCheckSummaryRequest`
+        :rtype: :class:`tencentcloud.pts.v20210728.models.DescribeCheckSummaryResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("DescribeIpAccessControl", params, headers=headers)
+            body = self.call("DescribeCheckSummary", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeIpAccessControlResponse()
+                model = models.DescribeCheckSummaryResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -579,21 +577,21 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeIpHitItems(self, request):
-        """Waf  IP封堵状态查询
+    def DescribeCronJobs(self, request):
+        """列出定时任务，非必填数组为空就默认全选
 
-        :param request: Request instance for DescribeIpHitItems.
-        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeIpHitItemsRequest`
-        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeIpHitItemsResponse`
+        :param request: Request instance for DescribeCronJobs.
+        :type request: :class:`tencentcloud.pts.v20210728.models.DescribeCronJobsRequest`
+        :rtype: :class:`tencentcloud.pts.v20210728.models.DescribeCronJobsResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("DescribeIpHitItems", params, headers=headers)
+            body = self.call("DescribeCronJobs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeIpHitItemsResponse()
+                model = models.DescribeCronJobsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -608,21 +606,21 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeUserCdcClbWafRegions(self, request):
-        """在CDC场景下，负载均衡型WAF的添加、编辑域名配置的时候，需要展示CDC负载均衡型WAF（cdc-clb-waf)支持的地域列表，通过DescribeUserCdcClbWafRegions既可以获得当前对客户已经开放的地域列表
+    def DescribeFiles(self, request):
+        """查询文件列表
 
-        :param request: Request instance for DescribeUserCdcClbWafRegions.
-        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeUserCdcClbWafRegionsRequest`
-        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeUserCdcClbWafRegionsResponse`
+        :param request: Request instance for DescribeFiles.
+        :type request: :class:`tencentcloud.pts.v20210728.models.DescribeFilesRequest`
+        :rtype: :class:`tencentcloud.pts.v20210728.models.DescribeFilesResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("DescribeUserCdcClbWafRegions", params, headers=headers)
+            body = self.call("DescribeFiles", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeUserCdcClbWafRegionsResponse()
+                model = models.DescribeFilesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -637,21 +635,21 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeUserClbWafRegions(self, request):
-        """在负载均衡型WAF的添加、编辑域名配置的时候，需要展示负载均衡型WAF（clb-waf)支持的地域列表，通过DescribeUserClbWafRegions既可以获得当前对客户已经开放的地域列表
+    def DescribeJobs(self, request):
+        """查询任务列表
 
-        :param request: Request instance for DescribeUserClbWafRegions.
-        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeUserClbWafRegionsRequest`
-        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeUserClbWafRegionsResponse`
+        :param request: Request instance for DescribeJobs.
+        :type request: :class:`tencentcloud.pts.v20210728.models.DescribeJobsRequest`
+        :rtype: :class:`tencentcloud.pts.v20210728.models.DescribeJobsResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("DescribeUserClbWafRegions", params, headers=headers)
+            body = self.call("DescribeJobs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeUserClbWafRegionsResponse()
+                model = models.DescribeJobsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -666,21 +664,21 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeWafAutoDenyRules(self, request):
-        """返回ip惩罚规则详细信息
+    def DescribeLabelValues(self, request):
+        """查询标签内容
 
-        :param request: Request instance for DescribeWafAutoDenyRules.
-        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeWafAutoDenyRulesRequest`
-        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeWafAutoDenyRulesResponse`
+        :param request: Request instance for DescribeLabelValues.
+        :type request: :class:`tencentcloud.pts.v20210728.models.DescribeLabelValuesRequest`
+        :rtype: :class:`tencentcloud.pts.v20210728.models.DescribeLabelValuesResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("DescribeWafAutoDenyRules", params, headers=headers)
+            body = self.call("DescribeLabelValues", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeWafAutoDenyRulesResponse()
+                model = models.DescribeLabelValuesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -695,21 +693,21 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeWafAutoDenyStatus(self, request):
-        """描述WAF自动封禁模块详情
+    def DescribeMetricLabelWithValues(self, request):
+        """查询指标所有的label及values值
 
-        :param request: Request instance for DescribeWafAutoDenyStatus.
-        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeWafAutoDenyStatusRequest`
-        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeWafAutoDenyStatusResponse`
+        :param request: Request instance for DescribeMetricLabelWithValues.
+        :type request: :class:`tencentcloud.pts.v20210728.models.DescribeMetricLabelWithValuesRequest`
+        :rtype: :class:`tencentcloud.pts.v20210728.models.DescribeMetricLabelWithValuesResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("DescribeWafAutoDenyStatus", params, headers=headers)
+            body = self.call("DescribeMetricLabelWithValues", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeWafAutoDenyStatusResponse()
+                model = models.DescribeMetricLabelWithValuesResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -724,21 +722,21 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeWafThreatenIntelligence(self, request):
-        """描述WAF威胁情报封禁模块配置详情
+    def DescribeNormalLogs(self, request):
+        """压测过程日志日志包括引擎输出日志及用户输出日志
 
-        :param request: Request instance for DescribeWafThreatenIntelligence.
-        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeWafThreatenIntelligenceRequest`
-        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeWafThreatenIntelligenceResponse`
+        :param request: Request instance for DescribeNormalLogs.
+        :type request: :class:`tencentcloud.pts.v20210728.models.DescribeNormalLogsRequest`
+        :rtype: :class:`tencentcloud.pts.v20210728.models.DescribeNormalLogsResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("DescribeWafThreatenIntelligence", params, headers=headers)
+            body = self.call("DescribeNormalLogs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.DescribeWafThreatenIntelligenceResponse()
+                model = models.DescribeNormalLogsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -753,21 +751,21 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def GetAttackDownloadRecords(self, request):
-        """查询下载攻击日志任务记录列表
+    def DescribeProjects(self, request):
+        """查询项目列表
 
-        :param request: Request instance for GetAttackDownloadRecords.
-        :type request: :class:`tencentcloud.waf.v20180125.models.GetAttackDownloadRecordsRequest`
-        :rtype: :class:`tencentcloud.waf.v20180125.models.GetAttackDownloadRecordsResponse`
+        :param request: Request instance for DescribeProjects.
+        :type request: :class:`tencentcloud.pts.v20210728.models.DescribeProjectsRequest`
+        :rtype: :class:`tencentcloud.pts.v20210728.models.DescribeProjectsResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("GetAttackDownloadRecords", params, headers=headers)
+            body = self.call("DescribeProjects", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.GetAttackDownloadRecordsResponse()
+                model = models.DescribeProjectsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -782,21 +780,21 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ModifyAccessPeriod(self, request):
-        """本接口用于修改访问日志保存期限
+    def DescribeRegions(self, request):
+        """查询地域列表
 
-        :param request: Request instance for ModifyAccessPeriod.
-        :type request: :class:`tencentcloud.waf.v20180125.models.ModifyAccessPeriodRequest`
-        :rtype: :class:`tencentcloud.waf.v20180125.models.ModifyAccessPeriodResponse`
+        :param request: Request instance for DescribeRegions.
+        :type request: :class:`tencentcloud.pts.v20210728.models.DescribeRegionsRequest`
+        :rtype: :class:`tencentcloud.pts.v20210728.models.DescribeRegionsResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("ModifyAccessPeriod", params, headers=headers)
+            body = self.call("DescribeRegions", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ModifyAccessPeriodResponse()
+                model = models.DescribeRegionsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -811,21 +809,21 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ModifyCustomRuleStatus(self, request):
-        """开启或禁用自定义策略
+    def DescribeRequestSummary(self, request):
+        """查询请求汇总信息
 
-        :param request: Request instance for ModifyCustomRuleStatus.
-        :type request: :class:`tencentcloud.waf.v20180125.models.ModifyCustomRuleStatusRequest`
-        :rtype: :class:`tencentcloud.waf.v20180125.models.ModifyCustomRuleStatusResponse`
+        :param request: Request instance for DescribeRequestSummary.
+        :type request: :class:`tencentcloud.pts.v20210728.models.DescribeRequestSummaryRequest`
+        :rtype: :class:`tencentcloud.pts.v20210728.models.DescribeRequestSummaryResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("ModifyCustomRuleStatus", params, headers=headers)
+            body = self.call("DescribeRequestSummary", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ModifyCustomRuleStatusResponse()
+                model = models.DescribeRequestSummaryResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -840,21 +838,21 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ModifyDomainWhiteRule(self, request):
-        """更改某一条规则
+    def DescribeSampleBatchQuery(self, request):
+        """批量查询指标，返回固定时间点指标内容
 
-        :param request: Request instance for ModifyDomainWhiteRule.
-        :type request: :class:`tencentcloud.waf.v20180125.models.ModifyDomainWhiteRuleRequest`
-        :rtype: :class:`tencentcloud.waf.v20180125.models.ModifyDomainWhiteRuleResponse`
+        :param request: Request instance for DescribeSampleBatchQuery.
+        :type request: :class:`tencentcloud.pts.v20210728.models.DescribeSampleBatchQueryRequest`
+        :rtype: :class:`tencentcloud.pts.v20210728.models.DescribeSampleBatchQueryResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("ModifyDomainWhiteRule", params, headers=headers)
+            body = self.call("DescribeSampleBatchQuery", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ModifyDomainWhiteRuleResponse()
+                model = models.DescribeSampleBatchQueryResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -869,21 +867,21 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ModifyWafAutoDenyRules(self, request):
-        """修改ip惩罚规则
+    def DescribeSampleLogs(self, request):
+        """查询采样日志
 
-        :param request: Request instance for ModifyWafAutoDenyRules.
-        :type request: :class:`tencentcloud.waf.v20180125.models.ModifyWafAutoDenyRulesRequest`
-        :rtype: :class:`tencentcloud.waf.v20180125.models.ModifyWafAutoDenyRulesResponse`
+        :param request: Request instance for DescribeSampleLogs.
+        :type request: :class:`tencentcloud.pts.v20210728.models.DescribeSampleLogsRequest`
+        :rtype: :class:`tencentcloud.pts.v20210728.models.DescribeSampleLogsResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("ModifyWafAutoDenyRules", params, headers=headers)
+            body = self.call("DescribeSampleLogs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ModifyWafAutoDenyRulesResponse()
+                model = models.DescribeSampleLogsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -898,21 +896,21 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ModifyWafAutoDenyStatus(self, request):
-        """配置WAF自动封禁模块状态
+    def DescribeSampleMatrixBatchQuery(self, request):
+        """批量查询指标矩阵
 
-        :param request: Request instance for ModifyWafAutoDenyStatus.
-        :type request: :class:`tencentcloud.waf.v20180125.models.ModifyWafAutoDenyStatusRequest`
-        :rtype: :class:`tencentcloud.waf.v20180125.models.ModifyWafAutoDenyStatusResponse`
+        :param request: Request instance for DescribeSampleMatrixBatchQuery.
+        :type request: :class:`tencentcloud.pts.v20210728.models.DescribeSampleMatrixBatchQueryRequest`
+        :rtype: :class:`tencentcloud.pts.v20210728.models.DescribeSampleMatrixBatchQueryResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("ModifyWafAutoDenyStatus", params, headers=headers)
+            body = self.call("DescribeSampleMatrixBatchQuery", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ModifyWafAutoDenyStatusResponse()
+                model = models.DescribeSampleMatrixBatchQueryResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -927,21 +925,21 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ModifyWafThreatenIntelligence(self, request):
-        """配置WAF威胁情报封禁模块详情
+    def DescribeSampleMatrixQuery(self, request):
+        """查询指标矩阵
 
-        :param request: Request instance for ModifyWafThreatenIntelligence.
-        :type request: :class:`tencentcloud.waf.v20180125.models.ModifyWafThreatenIntelligenceRequest`
-        :rtype: :class:`tencentcloud.waf.v20180125.models.ModifyWafThreatenIntelligenceResponse`
+        :param request: Request instance for DescribeSampleMatrixQuery.
+        :type request: :class:`tencentcloud.pts.v20210728.models.DescribeSampleMatrixQueryRequest`
+        :rtype: :class:`tencentcloud.pts.v20210728.models.DescribeSampleMatrixQueryResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("ModifyWafThreatenIntelligence", params, headers=headers)
+            body = self.call("DescribeSampleMatrixQuery", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.ModifyWafThreatenIntelligenceResponse()
+                model = models.DescribeSampleMatrixQueryResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -956,21 +954,21 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def PostAttackDownloadTask(self, request):
-        """创建搜索下载攻击日志任务，使用CLS新版本的搜索下载getlog接口
+    def DescribeSampleQuery(self, request):
+        """查询指标，返回固定时间点指标内容
 
-        :param request: Request instance for PostAttackDownloadTask.
-        :type request: :class:`tencentcloud.waf.v20180125.models.PostAttackDownloadTaskRequest`
-        :rtype: :class:`tencentcloud.waf.v20180125.models.PostAttackDownloadTaskResponse`
+        :param request: Request instance for DescribeSampleQuery.
+        :type request: :class:`tencentcloud.pts.v20210728.models.DescribeSampleQueryRequest`
+        :rtype: :class:`tencentcloud.pts.v20210728.models.DescribeSampleQueryResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("PostAttackDownloadTask", params, headers=headers)
+            body = self.call("DescribeSampleQuery", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.PostAttackDownloadTaskResponse()
+                model = models.DescribeSampleQueryResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -985,21 +983,21 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def SearchAccessLog(self, request):
-        """本接口用于搜索WAF访问日志
+    def DescribeScenarioWithJobs(self, request):
+        """查询场景配置并附带已经执行的任务内容
 
-        :param request: Request instance for SearchAccessLog.
-        :type request: :class:`tencentcloud.waf.v20180125.models.SearchAccessLogRequest`
-        :rtype: :class:`tencentcloud.waf.v20180125.models.SearchAccessLogResponse`
+        :param request: Request instance for DescribeScenarioWithJobs.
+        :type request: :class:`tencentcloud.pts.v20210728.models.DescribeScenarioWithJobsRequest`
+        :rtype: :class:`tencentcloud.pts.v20210728.models.DescribeScenarioWithJobsResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("SearchAccessLog", params, headers=headers)
+            body = self.call("DescribeScenarioWithJobs", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.SearchAccessLogResponse()
+                model = models.DescribeScenarioWithJobsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1014,21 +1012,253 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def UpsertIpAccessControl(self, request):
-        """Waf IP黑白名单Upsert接口
+    def DescribeScenarios(self, request):
+        """查询场景列表
 
-        :param request: Request instance for UpsertIpAccessControl.
-        :type request: :class:`tencentcloud.waf.v20180125.models.UpsertIpAccessControlRequest`
-        :rtype: :class:`tencentcloud.waf.v20180125.models.UpsertIpAccessControlResponse`
+        :param request: Request instance for DescribeScenarios.
+        :type request: :class:`tencentcloud.pts.v20210728.models.DescribeScenariosRequest`
+        :rtype: :class:`tencentcloud.pts.v20210728.models.DescribeScenariosResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("UpsertIpAccessControl", params, headers=headers)
+            body = self.call("DescribeScenarios", params, headers=headers)
             response = json.loads(body)
             if "Error" not in response["Response"]:
-                model = models.UpsertIpAccessControlResponse()
+                model = models.DescribeScenariosResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def GenerateTmpKey(self, request):
+        """生成临时COS凭证
+
+        :param request: Request instance for GenerateTmpKey.
+        :type request: :class:`tencentcloud.pts.v20210728.models.GenerateTmpKeyRequest`
+        :rtype: :class:`tencentcloud.pts.v20210728.models.GenerateTmpKeyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GenerateTmpKey", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GenerateTmpKeyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def RestartCronJobs(self, request):
+        """重启状态为已中止的定时任务
+
+        :param request: Request instance for RestartCronJobs.
+        :type request: :class:`tencentcloud.pts.v20210728.models.RestartCronJobsRequest`
+        :rtype: :class:`tencentcloud.pts.v20210728.models.RestartCronJobsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RestartCronJobs", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.RestartCronJobsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def StartJob(self, request):
+        """创建并启动任务
+
+        :param request: Request instance for StartJob.
+        :type request: :class:`tencentcloud.pts.v20210728.models.StartJobRequest`
+        :rtype: :class:`tencentcloud.pts.v20210728.models.StartJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StartJob", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.StartJobResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateCronJob(self, request):
+        """更新定时任务
+
+        :param request: Request instance for UpdateCronJob.
+        :type request: :class:`tencentcloud.pts.v20210728.models.UpdateCronJobRequest`
+        :rtype: :class:`tencentcloud.pts.v20210728.models.UpdateCronJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateCronJob", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateCronJobResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateFileScenarioRelation(self, request):
+        """更新关联文件场景
+
+        :param request: Request instance for UpdateFileScenarioRelation.
+        :type request: :class:`tencentcloud.pts.v20210728.models.UpdateFileScenarioRelationRequest`
+        :rtype: :class:`tencentcloud.pts.v20210728.models.UpdateFileScenarioRelationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateFileScenarioRelation", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateFileScenarioRelationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateJob(self, request):
+        """更新任务
+
+        :param request: Request instance for UpdateJob.
+        :type request: :class:`tencentcloud.pts.v20210728.models.UpdateJobRequest`
+        :rtype: :class:`tencentcloud.pts.v20210728.models.UpdateJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateJob", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateJobResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateProject(self, request):
+        """更新项目
+
+        :param request: Request instance for UpdateProject.
+        :type request: :class:`tencentcloud.pts.v20210728.models.UpdateProjectRequest`
+        :rtype: :class:`tencentcloud.pts.v20210728.models.UpdateProjectResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateProject", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateProjectResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def UpdateScenario(self, request):
+        """更新场景
+
+        :param request: Request instance for UpdateScenario.
+        :type request: :class:`tencentcloud.pts.v20210728.models.UpdateScenarioRequest`
+        :rtype: :class:`tencentcloud.pts.v20210728.models.UpdateScenarioResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateScenario", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.UpdateScenarioResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
