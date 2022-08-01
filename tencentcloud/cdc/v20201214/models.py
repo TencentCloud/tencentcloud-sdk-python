@@ -552,6 +552,15 @@ class DedicatedClusterOrder(AbstractModel):
         :param PayStatus: 0代表未支付，1代表已支付
 注意：此字段可能返回 null，表示取不到有效值。
         :type PayStatus: int
+        :param PayType: 支付方式，一次性、按月、按年
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PayType: str
+        :param TimeUnit: 购买时长的单位
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimeUnit: str
+        :param TimeSpan: 购买时长
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimeSpan: int
         """
         self.DedicatedClusterId = None
         self.DedicatedClusterTypeId = None
@@ -569,6 +578,9 @@ class DedicatedClusterOrder(AbstractModel):
         self.Mem = None
         self.Gpu = None
         self.PayStatus = None
+        self.PayType = None
+        self.TimeUnit = None
+        self.TimeSpan = None
 
 
     def _deserialize(self, params):
@@ -593,6 +605,9 @@ class DedicatedClusterOrder(AbstractModel):
         self.Mem = params.get("Mem")
         self.Gpu = params.get("Gpu")
         self.PayStatus = params.get("PayStatus")
+        self.PayType = params.get("PayType")
+        self.TimeUnit = params.get("TimeUnit")
+        self.TimeSpan = params.get("TimeSpan")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -644,6 +659,12 @@ class DedicatedClusterOrderItem(AbstractModel):
         :param ComputeFormat: 规格展示
 注意：此字段可能返回 null，表示取不到有效值。
         :type ComputeFormat: str
+        :param TypeFamily: 规格类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TypeFamily: str
+        :param SubOrderPayStatus: 0未支付，1已支付
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubOrderPayStatus: int
         """
         self.DedicatedClusterTypeId = None
         self.SupportedStorageType = None
@@ -662,6 +683,8 @@ class DedicatedClusterOrderItem(AbstractModel):
         self.TotalGpu = None
         self.TypeName = None
         self.ComputeFormat = None
+        self.TypeFamily = None
+        self.SubOrderPayStatus = None
 
 
     def _deserialize(self, params):
@@ -682,6 +705,8 @@ class DedicatedClusterOrderItem(AbstractModel):
         self.TotalGpu = params.get("TotalGpu")
         self.TypeName = params.get("TypeName")
         self.ComputeFormat = params.get("ComputeFormat")
+        self.TypeFamily = params.get("TypeFamily")
+        self.SubOrderPayStatus = params.get("SubOrderPayStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -15363,9 +15363,9 @@ class WorkflowTask(AbstractModel):
 <li>PROCESSING：处理中；</li>
 <li>FINISH：已完成。</li>
         :type Status: str
-        :param ErrCode: 已弃用，请使用各个具体任务的 ErrCode。
+        :param ErrCode: 源异常时返回非0错误码，返回0 时请使用各个具体任务的 ErrCode。
         :type ErrCode: int
-        :param Message: 已弃用，请使用各个具体任务的 Message。
+        :param Message: 源异常时返回对应异常Message，否则请使用各个具体任务的 Message。
         :type Message: str
         :param InputInfo: 媒体处理的目标文件信息。
 注意：此字段可能返回 null，表示取不到有效值。

@@ -85,7 +85,7 @@ class YinsudaClient(AbstractClient):
 
 
     def DescribeKTVPlaylists(self, request):
-        """获取推荐歌单列表。
+        """获取歌单列表。
 
         :param request: Request instance for DescribeKTVPlaylists.
         :type request: :class:`tencentcloud.yinsuda.v20220527.models.DescribeKTVPlaylistsRequest`

@@ -62,6 +62,9 @@ INTERNALERROR_DBUPDATE = 'InternalError.DbUpdate'
 # 解密错误。
 INTERNALERROR_DECRYPTION = 'InternalError.Decryption'
 
+# 依赖的其他api出错。
+INTERNALERROR_DEPENDSAPI = 'InternalError.DependsApi'
+
 # 加密错误。
 INTERNALERROR_ENCRYPTION = 'InternalError.Encryption'
 

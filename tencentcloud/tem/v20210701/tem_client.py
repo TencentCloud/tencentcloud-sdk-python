@@ -261,6 +261,35 @@ class TemClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeApplications(self, request):
+        """获取运行服务列表
+
+        :param request: Request instance for DescribeApplications.
+        :type request: :class:`tencentcloud.tem.v20210701.models.DescribeApplicationsRequest`
+        :rtype: :class:`tencentcloud.tem.v20210701.models.DescribeApplicationsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeApplications", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeApplicationsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeApplicationsStatus(self, request):
         """单环境下所有应用状态查看
 
@@ -305,6 +334,35 @@ class TemClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDeployApplicationDetailResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeEnvironmentStatus(self, request):
+        """获取环境状态
+
+        :param request: Request instance for DescribeEnvironmentStatus.
+        :type request: :class:`tencentcloud.tem.v20210701.models.DescribeEnvironmentStatusRequest`
+        :rtype: :class:`tencentcloud.tem.v20210701.models.DescribeEnvironmentStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeEnvironmentStatus", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeEnvironmentStatusResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

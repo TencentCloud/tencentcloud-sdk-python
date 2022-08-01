@@ -86,6 +86,35 @@ class EssClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateConvertTaskApi(self, request):
+        """创建文件转换任务
+
+        :param request: Request instance for CreateConvertTaskApi.
+        :type request: :class:`tencentcloud.ess.v20201111.models.CreateConvertTaskApiRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.CreateConvertTaskApiResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateConvertTaskApi", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateConvertTaskApiResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateDocument(self, request):
         """创建签署流程电子文档
         适用场景：见创建签署流程接口。
@@ -356,6 +385,35 @@ class EssClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeThirdPartyAuthCodeResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def GetTaskResultApi(self, request):
+        """查询转换任务状态
+
+        :param request: Request instance for GetTaskResultApi.
+        :type request: :class:`tencentcloud.ess.v20201111.models.GetTaskResultApiRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.GetTaskResultApiResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetTaskResultApi", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetTaskResultApiResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

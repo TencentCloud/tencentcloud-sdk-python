@@ -160,6 +160,74 @@ class AuthDomain(AbstractModel):
         
 
 
+class BaasPackageInfo(AbstractModel):
+    """新套餐套餐详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PackageName: DAU产品套餐ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PackageName: str
+        :param PackageTitle: DAU套餐中文名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PackageTitle: str
+        :param GroupName: 套餐分组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupName: str
+        :param GroupTitle: 套餐分组中文名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupTitle: str
+        :param BillTags: json格式化计费标签，例如：
+{"pid":2, "cids":{"create": 2, "renew": 2, "modify": 2}, "productCode":"p_tcb_mp", "subProductCode":"sp_tcb_mp_cloudbase_dau"}
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BillTags: str
+        :param ResourceLimit: json格式化用户资源限制，例如：
+{"Qps":1000,"InvokeNum":{"TimeUnit":"m", "Unit":"万次", "MaxSize": 100},"Capacity":{"TimeUnit":"m", "Unit":"GB", "MaxSize": 100}, "Cdn":{"Flux":{"TimeUnit":"m", "Unit":"GB", "MaxSize": 100}, "BackFlux":{"TimeUnit":"m", "Unit":"GB", "MaxSize": 100}},"Scf":{"Concurrency":1000,"OutFlux":{"TimeUnit":"m", "Unit":"GB", "MaxSize": 100},"MemoryUse":{"TimeUnit":"m", "Unit":"WGBS", "MaxSize": 100000}}}
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceLimit: str
+        :param AdvanceLimit: json格式化高级限制，例如：
+{"CMSEnable":false,"ProvisionedConcurrencyMem":512000, "PictureProcessing":false, "SecurityAudit":false, "RealTimePush":false, "TemplateMessageBatchPush":false, "Payment":false}
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AdvanceLimit: str
+        :param PackageDescription: 套餐描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PackageDescription: str
+        :param IsExternal: 是否对外展示
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsExternal: bool
+        """
+        self.PackageName = None
+        self.PackageTitle = None
+        self.GroupName = None
+        self.GroupTitle = None
+        self.BillTags = None
+        self.ResourceLimit = None
+        self.AdvanceLimit = None
+        self.PackageDescription = None
+        self.IsExternal = None
+
+
+    def _deserialize(self, params):
+        self.PackageName = params.get("PackageName")
+        self.PackageTitle = params.get("PackageTitle")
+        self.GroupName = params.get("GroupName")
+        self.GroupTitle = params.get("GroupTitle")
+        self.BillTags = params.get("BillTags")
+        self.ResourceLimit = params.get("ResourceLimit")
+        self.AdvanceLimit = params.get("AdvanceLimit")
+        self.PackageDescription = params.get("PackageDescription")
+        self.IsExternal = params.get("IsExternal")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BackendServiceInfo(AbstractModel):
     """网关服务信息
 
@@ -2874,6 +2942,90 @@ class DescribeAuthDomainsResponse(AbstractModel):
                 obj = AuthDomain()
                 obj._deserialize(item)
                 self.Domains.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeBaasPackageListRequest(AbstractModel):
+    """DescribeBaasPackageList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PackageName: tcb产品套餐ID，不填拉取全量package信息。
+        :type PackageName: str
+        :param EnvId: 环境ID
+        :type EnvId: str
+        :param Source: 套餐归属方，填写后只返回对应的套餐 包含miniapp与qcloud两种 默认为miniapp
+        :type Source: str
+        :param EnvChannel: 套餐归属环境渠道
+        :type EnvChannel: str
+        :param TargetAction: 拉取套餐用途：
+1）new 新购
+2）modify变配
+3）renew续费
+        :type TargetAction: str
+        :param GroupName: 预留字段，同一商品会对应多个类型套餐，对指标有不同侧重。
+计算型calculation
+流量型flux
+容量型capactiy
+        :type GroupName: str
+        :param PackageTypeList: 类型分组过滤。默认为["default"]
+        :type PackageTypeList: list of str
+        :param PaymentChannel: 付费渠道，与回包billTags中的计费参数相关，不填返回默认值。
+        :type PaymentChannel: str
+        """
+        self.PackageName = None
+        self.EnvId = None
+        self.Source = None
+        self.EnvChannel = None
+        self.TargetAction = None
+        self.GroupName = None
+        self.PackageTypeList = None
+        self.PaymentChannel = None
+
+
+    def _deserialize(self, params):
+        self.PackageName = params.get("PackageName")
+        self.EnvId = params.get("EnvId")
+        self.Source = params.get("Source")
+        self.EnvChannel = params.get("EnvChannel")
+        self.TargetAction = params.get("TargetAction")
+        self.GroupName = params.get("GroupName")
+        self.PackageTypeList = params.get("PackageTypeList")
+        self.PaymentChannel = params.get("PaymentChannel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBaasPackageListResponse(AbstractModel):
+    """DescribeBaasPackageList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PackageList: 套餐列表
+        :type PackageList: list of BaasPackageInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.PackageList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("PackageList") is not None:
+            self.PackageList = []
+            for item in params.get("PackageList"):
+                obj = BaasPackageInfo()
+                obj._deserialize(item)
+                self.PackageList.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -6140,6 +6292,9 @@ class EnvInfo(AbstractModel):
         :param IsDauPackage: 是否是dau新套餐
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsDauPackage: bool
+        :param PackageType: 套餐类型:空\baas\tcbr
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PackageType: str
         """
         self.EnvId = None
         self.Source = None
@@ -6163,6 +6318,7 @@ class EnvInfo(AbstractModel):
         self.CustomLogServices = None
         self.EnvType = None
         self.IsDauPackage = None
+        self.PackageType = None
 
 
     def _deserialize(self, params):
@@ -6223,6 +6379,7 @@ class EnvInfo(AbstractModel):
                 self.CustomLogServices.append(obj)
         self.EnvType = params.get("EnvType")
         self.IsDauPackage = params.get("IsDauPackage")
+        self.PackageType = params.get("PackageType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6752,12 +6909,16 @@ class LogServiceInfo(AbstractModel):
         :type TopicId: str
         :param Region: cls日志所属地域
         :type Region: str
+        :param Period: topic保存时长 默认7天
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Period: int
         """
         self.LogsetName = None
         self.LogsetId = None
         self.TopicName = None
         self.TopicId = None
         self.Region = None
+        self.Period = None
 
 
     def _deserialize(self, params):
@@ -6766,6 +6927,7 @@ class LogServiceInfo(AbstractModel):
         self.TopicName = params.get("TopicName")
         self.TopicId = params.get("TopicId")
         self.Region = params.get("Region")
+        self.Period = params.get("Period")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

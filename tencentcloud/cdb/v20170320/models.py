@@ -8823,6 +8823,60 @@ class ModifyInstanceParamResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyInstancePasswordComplexityRequest(AbstractModel):
+    """ModifyInstancePasswordComplexity请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceIds: 实例短 ID 列表。
+        :type InstanceIds: list of str
+        :param ParamList: 要修改的参数列表。每一个元素是 Name 和 CurrentValue 的组合。Name 是参数名，CurrentValue 是要修改成的值。
+        :type ParamList: list of Parameter
+        """
+        self.InstanceIds = None
+        self.ParamList = None
+
+
+    def _deserialize(self, params):
+        self.InstanceIds = params.get("InstanceIds")
+        if params.get("ParamList") is not None:
+            self.ParamList = []
+            for item in params.get("ParamList"):
+                obj = Parameter()
+                obj._deserialize(item)
+                self.ParamList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyInstancePasswordComplexityResponse(AbstractModel):
+    """ModifyInstancePasswordComplexity返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AsyncRequestId: 异步任务 ID，可用于查询任务进度。
+        :type AsyncRequestId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AsyncRequestId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.AsyncRequestId = params.get("AsyncRequestId")
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyInstanceTagRequest(AbstractModel):
     """ModifyInstanceTag请求参数结构体
 

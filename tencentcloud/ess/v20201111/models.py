@@ -386,6 +386,77 @@ KEYWORD 关键字，使用ComponentId指定关键字
         
 
 
+class CreateConvertTaskApiRequest(AbstractModel):
+    """CreateConvertTaskApi请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ResourceId: 资源Id
+        :type ResourceId: str
+        :param ResourceType: 资源类型 取值范围doc,docx,html之一
+        :type ResourceType: str
+        :param ResourceName: 资源名称
+        :type ResourceName: str
+        :param Organization: 无
+        :type Organization: :class:`tencentcloud.ess.v20201111.models.OrganizationInfo`
+        :param Operator: 无
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param Agent: 无
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        """
+        self.ResourceId = None
+        self.ResourceType = None
+        self.ResourceName = None
+        self.Organization = None
+        self.Operator = None
+        self.Agent = None
+
+
+    def _deserialize(self, params):
+        self.ResourceId = params.get("ResourceId")
+        self.ResourceType = params.get("ResourceType")
+        self.ResourceName = params.get("ResourceName")
+        if params.get("Organization") is not None:
+            self.Organization = OrganizationInfo()
+            self.Organization._deserialize(params.get("Organization"))
+        if params.get("Operator") is not None:
+            self.Operator = UserInfo()
+            self.Operator._deserialize(params.get("Operator"))
+        if params.get("Agent") is not None:
+            self.Agent = Agent()
+            self.Agent._deserialize(params.get("Agent"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateConvertTaskApiResponse(AbstractModel):
+    """CreateConvertTaskApi返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 转换任务Id
+        :type TaskId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateDocumentRequest(AbstractModel):
     """CreateDocument请求参数结构体
 
@@ -1423,6 +1494,121 @@ SELECTOR - 模板中配置的选项值
         self.ComponentValue = params.get("ComponentValue")
         self.ComponentId = params.get("ComponentId")
         self.ComponentName = params.get("ComponentName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetTaskResultApiRequest(AbstractModel):
+    """GetTaskResultApi请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 任务Id
+        :type TaskId: str
+        :param Organization: 企业信息
+        :type Organization: :class:`tencentcloud.ess.v20201111.models.OrganizationInfo`
+        :param Operator: 操作人信息
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param Agent: 渠道信息
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        """
+        self.TaskId = None
+        self.Organization = None
+        self.Operator = None
+        self.Agent = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        if params.get("Organization") is not None:
+            self.Organization = OrganizationInfo()
+            self.Organization._deserialize(params.get("Organization"))
+        if params.get("Operator") is not None:
+            self.Operator = UserInfo()
+            self.Operator._deserialize(params.get("Operator"))
+        if params.get("Agent") is not None:
+            self.Agent = Agent()
+            self.Agent._deserialize(params.get("Agent"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetTaskResultApiResponse(AbstractModel):
+    """GetTaskResultApi返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 任务Id
+        :type TaskId: str
+        :param TaskStatus: 任务状态
+        :type TaskStatus: int
+        :param TaskMessage: 状态描述
+        :type TaskMessage: str
+        :param ResourceId: 资源Id
+        :type ResourceId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.TaskStatus = None
+        self.TaskMessage = None
+        self.ResourceId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.TaskStatus = params.get("TaskStatus")
+        self.TaskMessage = params.get("TaskMessage")
+        self.ResourceId = params.get("ResourceId")
+        self.RequestId = params.get("RequestId")
+
+
+class OrganizationInfo(AbstractModel):
+    """机构信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param OrganizationId: 机构在平台的编号
+        :type OrganizationId: str
+        :param Channel: 用户渠道
+        :type Channel: str
+        :param OrganizationOpenId: 用户在渠道的机构编号
+        :type OrganizationOpenId: str
+        :param ClientIp: 用户真实的IP
+        :type ClientIp: str
+        :param ProxyIp: 机构的代理IP
+        :type ProxyIp: str
+        """
+        self.OrganizationId = None
+        self.Channel = None
+        self.OrganizationOpenId = None
+        self.ClientIp = None
+        self.ProxyIp = None
+
+
+    def _deserialize(self, params):
+        self.OrganizationId = params.get("OrganizationId")
+        self.Channel = params.get("Channel")
+        self.OrganizationOpenId = params.get("OrganizationOpenId")
+        self.ClientIp = params.get("ClientIp")
+        self.ProxyIp = params.get("ProxyIp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

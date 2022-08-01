@@ -1581,6 +1581,9 @@ class PrivateZoneRecord(AbstractModel):
         :param Extra: 附加信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Extra: str
+        :param Enabled: 0暂停，1启用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Enabled: int
         """
         self.RecordId = None
         self.ZoneId = None
@@ -1594,6 +1597,7 @@ class PrivateZoneRecord(AbstractModel):
         self.CreatedOn = None
         self.UpdatedOn = None
         self.Extra = None
+        self.Enabled = None
 
 
     def _deserialize(self, params):
@@ -1609,6 +1613,7 @@ class PrivateZoneRecord(AbstractModel):
         self.CreatedOn = params.get("CreatedOn")
         self.UpdatedOn = params.get("UpdatedOn")
         self.Extra = params.get("Extra")
+        self.Enabled = params.get("Enabled")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

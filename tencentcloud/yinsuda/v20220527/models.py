@@ -195,14 +195,20 @@ class DescribeKTVPlaylistsRequest(AbstractModel):
         :type AppName: str
         :param UserId: 用户标识。
         :type UserId: str
+        :param Types: 类型列表，取值有：
+<li>OfficialRec：官方推荐；</li>
+<li>Customize：自定义。</li>
+        :type Types: list of str
         """
         self.AppName = None
         self.UserId = None
+        self.Types = None
 
 
     def _deserialize(self, params):
         self.AppName = params.get("AppName")
         self.UserId = params.get("UserId")
+        self.Types = params.get("Types")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

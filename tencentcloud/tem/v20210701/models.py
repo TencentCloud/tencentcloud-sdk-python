@@ -1077,6 +1077,73 @@ class DescribeApplicationPodsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeApplicationsRequest(AbstractModel):
+    """DescribeApplications请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EnvironmentId: 命名空间ID
+        :type EnvironmentId: str
+        :param Limit: 分页Limit
+        :type Limit: int
+        :param Offset: 分页offset
+        :type Offset: int
+        :param SourceChannel: 来源渠道
+        :type SourceChannel: int
+        :param ApplicationId: 服务id
+        :type ApplicationId: str
+        :param Keyword: 搜索关键字
+        :type Keyword: str
+        """
+        self.EnvironmentId = None
+        self.Limit = None
+        self.Offset = None
+        self.SourceChannel = None
+        self.ApplicationId = None
+        self.Keyword = None
+
+
+    def _deserialize(self, params):
+        self.EnvironmentId = params.get("EnvironmentId")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.SourceChannel = params.get("SourceChannel")
+        self.ApplicationId = params.get("ApplicationId")
+        self.Keyword = params.get("Keyword")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeApplicationsResponse(AbstractModel):
+    """DescribeApplications返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 返回结果
+        :type Result: :class:`tencentcloud.tem.v20210701.models.ServicePage`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = ServicePage()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeApplicationsStatusRequest(AbstractModel):
     """DescribeApplicationsStatus请求参数结构体
 
@@ -1183,6 +1250,60 @@ class DescribeDeployApplicationDetailResponse(AbstractModel):
         if params.get("Result") is not None:
             self.Result = TemDeployApplicationDetailInfo()
             self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeEnvironmentStatusRequest(AbstractModel):
+    """DescribeEnvironmentStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EnvironmentIds: 命名空间id
+        :type EnvironmentIds: list of str
+        :param SourceChannel: 来源Channel
+        :type SourceChannel: int
+        """
+        self.EnvironmentIds = None
+        self.SourceChannel = None
+
+
+    def _deserialize(self, params):
+        self.EnvironmentIds = params.get("EnvironmentIds")
+        self.SourceChannel = params.get("SourceChannel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeEnvironmentStatusResponse(AbstractModel):
+    """DescribeEnvironmentStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 返回状态列表
+        :type Result: list of NamespaceStatusInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = []
+            for item in params.get("Result"):
+                obj = NamespaceStatusInfo()
+                obj._deserialize(item)
+                self.Result.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -2410,6 +2531,56 @@ class NamespacePage(AbstractModel):
         
 
 
+class NamespaceStatusInfo(AbstractModel):
+    """命名空间状态
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EnvironmentId: 命名空间id
+        :type EnvironmentId: str
+        :param EnvironmentName: 命名空间名称
+        :type EnvironmentName: str
+        :param ClusterId: TCB envId | EKS clusterId
+        :type ClusterId: str
+        :param ClusterStatus: 环境状态
+        :type ClusterStatus: str
+        :param EnvironmentStartingStatus: 环境启动状态（不在启动中为null）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnvironmentStartingStatus: :class:`tencentcloud.tem.v20210701.models.TemEnvironmentStartingStatus`
+        :param EnvironmentStoppingStatus: 环境停止状态（不在停止中为null）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnvironmentStoppingStatus: :class:`tencentcloud.tem.v20210701.models.TemEnvironmentStoppingStatus`
+        """
+        self.EnvironmentId = None
+        self.EnvironmentName = None
+        self.ClusterId = None
+        self.ClusterStatus = None
+        self.EnvironmentStartingStatus = None
+        self.EnvironmentStoppingStatus = None
+
+
+    def _deserialize(self, params):
+        self.EnvironmentId = params.get("EnvironmentId")
+        self.EnvironmentName = params.get("EnvironmentName")
+        self.ClusterId = params.get("ClusterId")
+        self.ClusterStatus = params.get("ClusterStatus")
+        if params.get("EnvironmentStartingStatus") is not None:
+            self.EnvironmentStartingStatus = TemEnvironmentStartingStatus()
+            self.EnvironmentStartingStatus._deserialize(params.get("EnvironmentStartingStatus"))
+        if params.get("EnvironmentStoppingStatus") is not None:
+            self.EnvironmentStoppingStatus = TemEnvironmentStoppingStatus()
+            self.EnvironmentStoppingStatus._deserialize(params.get("EnvironmentStoppingStatus"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Pair(AbstractModel):
     """键值对
 
@@ -2856,6 +3027,47 @@ class RunVersionPod(AbstractModel):
         
 
 
+class ServicePage(AbstractModel):
+    """服务分页
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Records: 条目
+        :type Records: list of TemService
+        :param Total: 总数
+        :type Total: int
+        :param Size: 条目
+        :type Size: int
+        :param Pages: 页数
+        :type Pages: int
+        """
+        self.Records = None
+        self.Total = None
+        self.Size = None
+        self.Pages = None
+
+
+    def _deserialize(self, params):
+        if params.get("Records") is not None:
+            self.Records = []
+            for item in params.get("Records"):
+                obj = TemService()
+                obj._deserialize(item)
+                self.Records.append(obj)
+        self.Total = params.get("Total")
+        self.Size = params.get("Size")
+        self.Pages = params.get("Pages")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ServiceVersionBrief(AbstractModel):
     """服务版本信息列表
 
@@ -3158,6 +3370,66 @@ class TemDeployApplicationDetailInfo(AbstractModel):
         
 
 
+class TemEnvironmentStartingStatus(AbstractModel):
+    """环境启动进程（只统计由环境启动操作触发的应用数量）
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ApplicationNumNeedToStart: 需要启动的应用数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationNumNeedToStart: int
+        :param StartedApplicationNum: 已经启动的应用数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartedApplicationNum: int
+        """
+        self.ApplicationNumNeedToStart = None
+        self.StartedApplicationNum = None
+
+
+    def _deserialize(self, params):
+        self.ApplicationNumNeedToStart = params.get("ApplicationNumNeedToStart")
+        self.StartedApplicationNum = params.get("StartedApplicationNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TemEnvironmentStoppingStatus(AbstractModel):
+    """环境停止进程（只统计由环境停止操作触发的应用数量）
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ApplicationNumNeedToStop: 需要停止的应用数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationNumNeedToStop: int
+        :param StoppedApplicationNum: 已经停止的应用数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StoppedApplicationNum: int
+        """
+        self.ApplicationNumNeedToStop = None
+        self.StoppedApplicationNum = None
+
+
+    def _deserialize(self, params):
+        self.ApplicationNumNeedToStop = params.get("ApplicationNumNeedToStop")
+        self.StoppedApplicationNum = params.get("StoppedApplicationNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TemNamespaceInfo(AbstractModel):
     """命名空间对象
 
@@ -3238,6 +3510,111 @@ class TemNamespaceInfo(AbstractModel):
         self.ClusterStatus = params.get("ClusterStatus")
         self.EnableTswTraceService = params.get("EnableTswTraceService")
         self.Locked = params.get("Locked")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TemService(AbstractModel):
+    """服务
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ApplicationId: 主键
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationId: str
+        :param ApplicationName: 服务名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationName: str
+        :param Description: 描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param EnvironmentId: 命名空间id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnvironmentId: str
+        :param CreateDate: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateDate: str
+        :param ModifyDate: 修改时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifyDate: str
+        :param Modifier: 修改人
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Modifier: str
+        :param Creator: 创建者
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Creator: str
+        :param RepoType: tcr个人版or企业版
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RepoType: int
+        :param InstanceId: 企业版实例id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param RepoName: 镜像仓库名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RepoName: str
+        :param CodingLanguage: 编程语言
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CodingLanguage: str
+        :param DeployMode: 部署方式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeployMode: str
+        :param EnvironmentName: 环境名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnvironmentName: str
+        :param ActiveVersions: 服务当前运行环境的实例信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ActiveVersions: list of ServiceVersionBrief
+        :param EnableTracing: 是否启用链路追踪
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnableTracing: int
+        """
+        self.ApplicationId = None
+        self.ApplicationName = None
+        self.Description = None
+        self.EnvironmentId = None
+        self.CreateDate = None
+        self.ModifyDate = None
+        self.Modifier = None
+        self.Creator = None
+        self.RepoType = None
+        self.InstanceId = None
+        self.RepoName = None
+        self.CodingLanguage = None
+        self.DeployMode = None
+        self.EnvironmentName = None
+        self.ActiveVersions = None
+        self.EnableTracing = None
+
+
+    def _deserialize(self, params):
+        self.ApplicationId = params.get("ApplicationId")
+        self.ApplicationName = params.get("ApplicationName")
+        self.Description = params.get("Description")
+        self.EnvironmentId = params.get("EnvironmentId")
+        self.CreateDate = params.get("CreateDate")
+        self.ModifyDate = params.get("ModifyDate")
+        self.Modifier = params.get("Modifier")
+        self.Creator = params.get("Creator")
+        self.RepoType = params.get("RepoType")
+        self.InstanceId = params.get("InstanceId")
+        self.RepoName = params.get("RepoName")
+        self.CodingLanguage = params.get("CodingLanguage")
+        self.DeployMode = params.get("DeployMode")
+        self.EnvironmentName = params.get("EnvironmentName")
+        if params.get("ActiveVersions") is not None:
+            self.ActiveVersions = []
+            for item in params.get("ActiveVersions"):
+                obj = ServiceVersionBrief()
+                obj._deserialize(item)
+                self.ActiveVersions.append(obj)
+        self.EnableTracing = params.get("EnableTracing")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

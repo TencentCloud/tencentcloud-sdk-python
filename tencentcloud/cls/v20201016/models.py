@@ -5990,6 +5990,9 @@ class ShipperInfo(AbstractModel):
         :type Content: :class:`tencentcloud.cls.v20201016.models.ContentInfo`
         :param CreateTime: 投递日志的创建时间
         :type CreateTime: str
+        :param FilenameMode: 投递文件命名配置，0：随机数命名，1：投递时间命名，默认0（随机数命名）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FilenameMode: int
         """
         self.ShipperId = None
         self.TopicId = None
@@ -6004,6 +6007,7 @@ class ShipperInfo(AbstractModel):
         self.Compress = None
         self.Content = None
         self.CreateTime = None
+        self.FilenameMode = None
 
 
     def _deserialize(self, params):
@@ -6029,6 +6033,7 @@ class ShipperInfo(AbstractModel):
             self.Content = ContentInfo()
             self.Content._deserialize(params.get("Content"))
         self.CreateTime = params.get("CreateTime")
+        self.FilenameMode = params.get("FilenameMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

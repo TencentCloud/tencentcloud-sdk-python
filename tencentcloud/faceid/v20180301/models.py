@@ -758,6 +758,8 @@ Base64编码后的图片数据大小不超过3M，仅支持jpg、png格式。请
         :type Encryption: :class:`tencentcloud.faceid.v20180301.models.Encryption`
         :param IntentionVerifyText: 意愿核身使用的文案，若未使用意愿核身功能，该字段无需传入。默认为空，最长可接受120的字符串长度。
         :type IntentionVerifyText: str
+        :param IntentionQuestions: 意愿核身过程中播报文本/问题、用户朗读/回答的文本，当前支持一个播报文本+回答文本。
+        :type IntentionQuestions: list of IntentionQuestion
         """
         self.RuleId = None
         self.TerminalType = None
@@ -768,6 +770,7 @@ Base64编码后的图片数据大小不超过3M，仅支持jpg、png格式。请
         self.ImageBase64 = None
         self.Encryption = None
         self.IntentionVerifyText = None
+        self.IntentionQuestions = None
 
 
     def _deserialize(self, params):
@@ -782,6 +785,12 @@ Base64编码后的图片数据大小不超过3M，仅支持jpg、png格式。请
             self.Encryption = Encryption()
             self.Encryption._deserialize(params.get("Encryption"))
         self.IntentionVerifyText = params.get("IntentionVerifyText")
+        if params.get("IntentionQuestions") is not None:
+            self.IntentionQuestions = []
+            for item in params.get("IntentionQuestions"):
+                obj = IntentionQuestion()
+                obj._deserialize(item)
+                self.IntentionQuestions.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1433,6 +1442,9 @@ class GetDetectInfoEnhancedResponse(AbstractModel):
         :param IntentionVerifyData: 意愿核身相关信息。若未使用意愿核身功能，该字段返回值可以不处理。
 注意：此字段可能返回 null，表示取不到有效值。
         :type IntentionVerifyData: :class:`tencentcloud.faceid.v20180301.models.IntentionVerifyData`
+        :param IntentionQuestionResult: 意愿核身问答模式结果。若未使用该意愿核身功能，该字段返回值可以不处理。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IntentionQuestionResult: :class:`tencentcloud.faceid.v20180301.models.IntentionQuestionResult`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1442,6 +1454,7 @@ class GetDetectInfoEnhancedResponse(AbstractModel):
         self.VideoData = None
         self.Encryption = None
         self.IntentionVerifyData = None
+        self.IntentionQuestionResult = None
         self.RequestId = None
 
 
@@ -1464,6 +1477,9 @@ class GetDetectInfoEnhancedResponse(AbstractModel):
         if params.get("IntentionVerifyData") is not None:
             self.IntentionVerifyData = IntentionVerifyData()
             self.IntentionVerifyData._deserialize(params.get("IntentionVerifyData"))
+        if params.get("IntentionQuestionResult") is not None:
+            self.IntentionQuestionResult = IntentionQuestionResult()
+            self.IntentionQuestionResult._deserialize(params.get("IntentionQuestionResult"))
         self.RequestId = params.get("RequestId")
 
 
@@ -2400,6 +2416,86 @@ class ImageRecognitionResponse(AbstractModel):
         self.Result = params.get("Result")
         self.Description = params.get("Description")
         self.RequestId = params.get("RequestId")
+
+
+class IntentionQuestion(AbstractModel):
+    """意愿核身过程中播报的问题文本、用户回答的标准文本。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Question: 系统播报的问题文本，问题最大长度为150个字符。
+        :type Question: str
+        :param Answers: 用户答案的标准文本列表，用于识别用户回答的语音与标准文本是否一致。列表长度最大为50，单个答案长度限制10个字符。
+        :type Answers: list of str
+        """
+        self.Question = None
+        self.Answers = None
+
+
+    def _deserialize(self, params):
+        self.Question = params.get("Question")
+        self.Answers = params.get("Answers")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IntentionQuestionResult(AbstractModel):
+    """意愿核身问答模式结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FinalResultCode: 意愿核身最终结果：
+0：通过，-1：未通过
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FinalResultCode: str
+        :param Video: 视频base64（其中包含全程问题和回答音频，mp4格式）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Video: str
+        :param ScreenShot: 屏幕截图base64列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScreenShot: list of str
+        :param ResultCode: 和答案匹配结果列表
+0：成功，-1：不匹配
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResultCode: list of str
+        :param AsrResult: 回答问题语音识别结果列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AsrResult: list of str
+        :param Audios: 答案录音音频
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Audios: list of str
+        """
+        self.FinalResultCode = None
+        self.Video = None
+        self.ScreenShot = None
+        self.ResultCode = None
+        self.AsrResult = None
+        self.Audios = None
+
+
+    def _deserialize(self, params):
+        self.FinalResultCode = params.get("FinalResultCode")
+        self.Video = params.get("Video")
+        self.ScreenShot = params.get("ScreenShot")
+        self.ResultCode = params.get("ResultCode")
+        self.AsrResult = params.get("AsrResult")
+        self.Audios = params.get("Audios")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class IntentionVerifyData(AbstractModel):
