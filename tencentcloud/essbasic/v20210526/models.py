@@ -27,13 +27,13 @@ class Agent(AbstractModel):
         r"""
         :param AppId: 腾讯电子签颁发给渠道的应用ID，32位字符串
         :type AppId: str
-        :param ProxyOrganizationOpenId: 渠道/平台合作企业的企业ID
+        :param ProxyOrganizationOpenId: 渠道/平台合作企业的企业ID，最大64位字符串
         :type ProxyOrganizationOpenId: str
         :param ProxyOperator: 渠道/平台合作企业经办人（操作员）
         :type ProxyOperator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         :param ProxyAppId: 腾讯电子签颁发给渠道侧合作企业的应用ID
         :type ProxyAppId: str
-        :param ProxyOrganizationId: 腾讯电子签颁发给渠道侧合作企业的企业ID
+        :param ProxyOrganizationId: 内部参数，腾讯电子签颁发给渠道侧合作企业的企业ID，不需要传
         :type ProxyOrganizationId: str
         """
         self.AppId = None
@@ -51,6 +51,42 @@ class Agent(AbstractModel):
             self.ProxyOperator._deserialize(params.get("ProxyOperator"))
         self.ProxyAppId = params.get("ProxyAppId")
         self.ProxyOrganizationId = params.get("ProxyOrganizationId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ApproverRestriction(AbstractModel):
+    """指定签署人限制项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 指定签署人名字
+        :type Name: str
+        :param Mobile: 指定签署人手机号
+        :type Mobile: str
+        :param IdCardType: 指定签署人证件类型
+        :type IdCardType: str
+        :param IdCardNumber: 指定签署人证件号码
+        :type IdCardNumber: str
+        """
+        self.Name = None
+        self.Mobile = None
+        self.IdCardType = None
+        self.IdCardNumber = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Mobile = params.get("Mobile")
+        self.IdCardType = params.get("IdCardType")
+        self.IdCardNumber = params.get("IdCardNumber")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -162,6 +198,71 @@ class ChannelCancelMultiFlowSignQRCodeResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ChannelCreateBatchCancelFlowUrlRequest(AbstractModel):
+    """ChannelCreateBatchCancelFlowUrl请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Agent: 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+        :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        :param FlowIds: 签署流程Id数组
+        :type FlowIds: list of str
+        :param Operator: 操作人信息
+        :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
+        """
+        self.Agent = None
+        self.FlowIds = None
+        self.Operator = None
+
+
+    def _deserialize(self, params):
+        if params.get("Agent") is not None:
+            self.Agent = Agent()
+            self.Agent._deserialize(params.get("Agent"))
+        self.FlowIds = params.get("FlowIds")
+        if params.get("Operator") is not None:
+            self.Operator = UserInfo()
+            self.Operator._deserialize(params.get("Operator"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChannelCreateBatchCancelFlowUrlResponse(AbstractModel):
+    """ChannelCreateBatchCancelFlowUrl返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BatchCancelFlowUrl: 批量撤回url
+        :type BatchCancelFlowUrl: str
+        :param FailMessages: 签署流程批量撤回失败原因
+        :type FailMessages: list of str
+        :param UrlExpireOn: 签署撤回url过期时间-年月日-时分秒
+        :type UrlExpireOn: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.BatchCancelFlowUrl = None
+        self.FailMessages = None
+        self.UrlExpireOn = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.BatchCancelFlowUrl = params.get("BatchCancelFlowUrl")
+        self.FailMessages = params.get("FailMessages")
+        self.UrlExpireOn = params.get("UrlExpireOn")
         self.RequestId = params.get("RequestId")
 
 
@@ -297,6 +398,8 @@ class ChannelCreateMultiFlowSignQRCodeRequest(AbstractModel):
 不传默认使用渠道应用号配置的回调地址
 回调时机:用户通过签署二维码发起合同时，企业额度不足导致失败
         :type CallbackUrl: str
+        :param ApproverRestrictions: 限制二维码用户条件
+        :type ApproverRestrictions: :class:`tencentcloud.essbasic.v20210526.models.ApproverRestriction`
         :param Operator: 用户信息
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         """
@@ -307,6 +410,7 @@ class ChannelCreateMultiFlowSignQRCodeRequest(AbstractModel):
         self.FlowEffectiveDay = None
         self.QrEffectiveDay = None
         self.CallbackUrl = None
+        self.ApproverRestrictions = None
         self.Operator = None
 
 
@@ -320,6 +424,9 @@ class ChannelCreateMultiFlowSignQRCodeRequest(AbstractModel):
         self.FlowEffectiveDay = params.get("FlowEffectiveDay")
         self.QrEffectiveDay = params.get("QrEffectiveDay")
         self.CallbackUrl = params.get("CallbackUrl")
+        if params.get("ApproverRestrictions") is not None:
+            self.ApproverRestrictions = ApproverRestriction()
+            self.ApproverRestrictions._deserialize(params.get("ApproverRestrictions"))
         if params.get("Operator") is not None:
             self.Operator = UserInfo()
             self.Operator._deserialize(params.get("Operator"))
@@ -341,10 +448,13 @@ class ChannelCreateMultiFlowSignQRCodeResponse(AbstractModel):
         r"""
         :param QrCode: 签署二维码对象
         :type QrCode: :class:`tencentcloud.essbasic.v20210526.models.SignQrCode`
+        :param SignUrls: 签署链接对象
+        :type SignUrls: :class:`tencentcloud.essbasic.v20210526.models.SignUrl`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.QrCode = None
+        self.SignUrls = None
         self.RequestId = None
 
 
@@ -352,6 +462,9 @@ class ChannelCreateMultiFlowSignQRCodeResponse(AbstractModel):
         if params.get("QrCode") is not None:
             self.QrCode = SignQrCode()
             self.QrCode._deserialize(params.get("QrCode"))
+        if params.get("SignUrls") is not None:
+            self.SignUrls = SignUrl()
+            self.SignUrls._deserialize(params.get("SignUrls"))
         self.RequestId = params.get("RequestId")
 
 
@@ -1916,6 +2029,38 @@ class SignQrCode(AbstractModel):
         
 
 
+class SignUrl(AbstractModel):
+    """一码多扫签署二维码签署信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AppSignUrl: 小程序签署链接
+        :type AppSignUrl: str
+        :param EffectiveTime: 签署链接有效时间
+        :type EffectiveTime: str
+        :param HttpSignUrl: 移动端签署链接
+        :type HttpSignUrl: str
+        """
+        self.AppSignUrl = None
+        self.EffectiveTime = None
+        self.HttpSignUrl = None
+
+
+    def _deserialize(self, params):
+        self.AppSignUrl = params.get("AppSignUrl")
+        self.EffectiveTime = params.get("EffectiveTime")
+        self.HttpSignUrl = params.get("HttpSignUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SignUrlInfo(AbstractModel):
     """签署链接内容
 
@@ -2398,7 +2543,7 @@ class UserInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param OpenId: 用户在渠道的编号
+        :param OpenId: 用户在渠道的编号，最大64位字符串
         :type OpenId: str
         :param Channel: 用户的来源渠道
         :type Channel: str
