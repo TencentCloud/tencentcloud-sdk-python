@@ -1003,6 +1003,61 @@ class DeployStrategyConf(AbstractModel):
         
 
 
+class DescribeApplicationInfoRequest(AbstractModel):
+    """DescribeApplicationInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ApplicationId: 服务版本ID
+        :type ApplicationId: str
+        :param SourceChannel: 来源渠道
+        :type SourceChannel: int
+        :param EnvironmentId: 环境ID
+        :type EnvironmentId: str
+        """
+        self.ApplicationId = None
+        self.SourceChannel = None
+        self.EnvironmentId = None
+
+
+    def _deserialize(self, params):
+        self.ApplicationId = params.get("ApplicationId")
+        self.SourceChannel = params.get("SourceChannel")
+        self.EnvironmentId = params.get("EnvironmentId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeApplicationInfoResponse(AbstractModel):
+    """DescribeApplicationInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 返回结果
+        :type Result: :class:`tencentcloud.tem.v20210701.models.TemServiceVersionInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = TemServiceVersionInfo()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeApplicationPodsRequest(AbstractModel):
     """DescribeApplicationPods请求参数结构体
 
@@ -2581,6 +2636,50 @@ class NamespaceStatusInfo(AbstractModel):
         
 
 
+class NodeInfo(AbstractModel):
+    """node信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: node名字
+        :type Name: str
+        :param Zone: node可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Zone: str
+        :param SubnetId: node子网ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubnetId: str
+        :param AvailableIpCount: 可用IP数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AvailableIpCount: str
+        :param Cidr: cidr块
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Cidr: str
+        """
+        self.Name = None
+        self.Zone = None
+        self.SubnetId = None
+        self.AvailableIpCount = None
+        self.Cidr = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Zone = params.get("Zone")
+        self.SubnetId = params.get("SubnetId")
+        self.AvailableIpCount = params.get("AvailableIpCount")
+        self.Cidr = params.get("Cidr")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Pair(AbstractModel):
     """键值对
 
@@ -3624,6 +3723,417 @@ class TemService(AbstractModel):
         
 
 
+class TemServiceVersionInfo(AbstractModel):
+    """版本信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param VersionId: 主键
+        :type VersionId: str
+        :param ApplicationId: 服务id
+        :type ApplicationId: bool
+        :param DeployMode: 部署方式
+        :type DeployMode: str
+        :param JdkVersion: jdk版本
+        :type JdkVersion: str
+        :param Description: 描述
+        :type Description: str
+        :param DeployVersion: 部署版本
+        :type DeployVersion: str
+        :param PublishMode: 发布方式
+        :type PublishMode: str
+        :param JvmOpts: 启动参数
+        :type JvmOpts: str
+        :param InitPodNum: 初始实例
+        :type InitPodNum: int
+        :param CpuSpec: cpu规格
+        :type CpuSpec: float
+        :param MemorySpec: 内存规格
+        :type MemorySpec: float
+        :param ImgRepo: 镜像路径
+        :type ImgRepo: str
+        :param ImgName: 镜像名称
+        :type ImgName: str
+        :param ImgVersion: 镜像版本
+        :type ImgVersion: str
+        :param EsInfo: 弹性配置
+        :type EsInfo: :class:`tencentcloud.tem.v20210701.models.EsInfo`
+        :param EnvConf: 环境配置
+        :type EnvConf: list of Pair
+        :param StorageConfs: 存储配置
+        :type StorageConfs: list of StorageConf
+        :param Status: 运行状态
+        :type Status: str
+        :param Vpc: 私有网络
+        :type Vpc: str
+        :param SubnetId: 子网网络
+        :type SubnetId: str
+        :param CreateDate: 创建时间
+        :type CreateDate: str
+        :param ModifyDate: 修改时间
+        :type ModifyDate: str
+        :param StorageMountConfs: 挂载配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StorageMountConfs: list of StorageMountConf
+        :param VersionName: 版本名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VersionName: str
+        :param LogOutputConf: 日志输出配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogOutputConf: :class:`tencentcloud.tem.v20210701.models.LogOutputConf`
+        :param ApplicationName: 服务名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationName: str
+        :param ApplicationDescription: 服务描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationDescription: str
+        :param EnvironmentName: 环境名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnvironmentName: str
+        :param EnvironmentId: 环境ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnvironmentId: str
+        :param PublicDomain: 公网地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PublicDomain: str
+        :param EnablePublicAccess: 是否开通公网访问
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnablePublicAccess: bool
+        :param CurrentInstances: 现有的实例
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CurrentInstances: int
+        :param ExpectedInstances: 期望的实例
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpectedInstances: int
+        :param CodingLanguage: 编程语言
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CodingLanguage: str
+        :param PkgName: 程序包名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PkgName: str
+        :param EsEnable: 是否启用弹性伸缩
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EsEnable: int
+        :param EsStrategy: 弹性策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EsStrategy: int
+        :param ImageTag: 镜像tag
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageTag: str
+        :param LogEnable: 是否启用log
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogEnable: int
+        :param MinAliveInstances: 最小实例数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MinAliveInstances: int
+        :param SecurityGroupIds: 安全组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecurityGroupIds: list of str
+        :param ImageCommand: 镜像命令
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageCommand: str
+        :param ImageArgs: 镜像命令参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageArgs: list of str
+        :param UseRegistryDefaultConfig: 是否使用默认注册中心配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UseRegistryDefaultConfig: bool
+        :param Service: eks 访问设置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Service: :class:`tencentcloud.tem.v20210701.models.EksService`
+        :param SettingConfs: 挂载配置信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SettingConfs: list of MountedSettingConf
+        :param LogConfs: log path数组信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogConfs: list of str
+        :param PostStart: 启动后立即执行的脚本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PostStart: str
+        :param PreStop: 停止前执行的脚本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PreStop: str
+        :param Liveness: 存活探针配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Liveness: :class:`tencentcloud.tem.v20210701.models.HealthCheckConfig`
+        :param Readiness: 就绪探针配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Readiness: :class:`tencentcloud.tem.v20210701.models.HealthCheckConfig`
+        :param HorizontalAutoscaler: 弹性策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HorizontalAutoscaler: list of HorizontalAutoscaler
+        :param CronHorizontalAutoscaler: 定时弹性策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CronHorizontalAutoscaler: list of CronHorizontalAutoscaler
+        :param Zones: 应用实际可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Zones: list of str
+        :param LastDeployDate: 最新部署时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastDeployDate: str
+        :param LastDeploySuccessDate: 最新部署成功时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastDeploySuccessDate: str
+        :param NodeInfos: 应用所在node信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NodeInfos: list of NodeInfo
+        :param ImageType: image类型 -0 为demo -1为正常image
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageType: int
+        :param EnableTracing: 是否启用调用链组件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnableTracing: int
+        :param EnableTracingReport: 是否开启调用链上报，只有 EnableTracing=1 时生效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnableTracingReport: int
+        :param RepoType: 镜像类型：0-个人镜像、1-企业镜像、2-公有镜像
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RepoType: int
+        :param BatchDeployStatus: 分批发布子状态：batch_updating、batch_updating_waiting_confirm
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BatchDeployStatus: str
+        :param ApmInstanceId: APM 资源 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApmInstanceId: str
+        :param WorkloadInfo: 工作负载信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkloadInfo: :class:`tencentcloud.tem.v20210701.models.WorkloadInfo`
+        :param SpeedUp: 是否启用应用加速
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SpeedUp: bool
+        :param StartupProbe: 启动检测探针配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartupProbe: :class:`tencentcloud.tem.v20210701.models.HealthCheckConfig`
+        :param OsFlavour: 操作系统版本，可选参数：
+- ALPINE
+- CENTOS
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OsFlavour: str
+        :param RepoServer: 镜像仓库server
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RepoServer: str
+        :param UnderDeploying: 是否正在发布中
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UnderDeploying: bool
+        :param EnablePrometheusConf: 是否开启prometheus业务指标监控
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnablePrometheusConf: :class:`tencentcloud.tem.v20210701.models.EnablePrometheusConf`
+        :param StoppedManually: 是否为手动停止
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StoppedManually: bool
+        :param TcrInstanceId: tcr实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TcrInstanceId: str
+        """
+        self.VersionId = None
+        self.ApplicationId = None
+        self.DeployMode = None
+        self.JdkVersion = None
+        self.Description = None
+        self.DeployVersion = None
+        self.PublishMode = None
+        self.JvmOpts = None
+        self.InitPodNum = None
+        self.CpuSpec = None
+        self.MemorySpec = None
+        self.ImgRepo = None
+        self.ImgName = None
+        self.ImgVersion = None
+        self.EsInfo = None
+        self.EnvConf = None
+        self.StorageConfs = None
+        self.Status = None
+        self.Vpc = None
+        self.SubnetId = None
+        self.CreateDate = None
+        self.ModifyDate = None
+        self.StorageMountConfs = None
+        self.VersionName = None
+        self.LogOutputConf = None
+        self.ApplicationName = None
+        self.ApplicationDescription = None
+        self.EnvironmentName = None
+        self.EnvironmentId = None
+        self.PublicDomain = None
+        self.EnablePublicAccess = None
+        self.CurrentInstances = None
+        self.ExpectedInstances = None
+        self.CodingLanguage = None
+        self.PkgName = None
+        self.EsEnable = None
+        self.EsStrategy = None
+        self.ImageTag = None
+        self.LogEnable = None
+        self.MinAliveInstances = None
+        self.SecurityGroupIds = None
+        self.ImageCommand = None
+        self.ImageArgs = None
+        self.UseRegistryDefaultConfig = None
+        self.Service = None
+        self.SettingConfs = None
+        self.LogConfs = None
+        self.PostStart = None
+        self.PreStop = None
+        self.Liveness = None
+        self.Readiness = None
+        self.HorizontalAutoscaler = None
+        self.CronHorizontalAutoscaler = None
+        self.Zones = None
+        self.LastDeployDate = None
+        self.LastDeploySuccessDate = None
+        self.NodeInfos = None
+        self.ImageType = None
+        self.EnableTracing = None
+        self.EnableTracingReport = None
+        self.RepoType = None
+        self.BatchDeployStatus = None
+        self.ApmInstanceId = None
+        self.WorkloadInfo = None
+        self.SpeedUp = None
+        self.StartupProbe = None
+        self.OsFlavour = None
+        self.RepoServer = None
+        self.UnderDeploying = None
+        self.EnablePrometheusConf = None
+        self.StoppedManually = None
+        self.TcrInstanceId = None
+
+
+    def _deserialize(self, params):
+        self.VersionId = params.get("VersionId")
+        self.ApplicationId = params.get("ApplicationId")
+        self.DeployMode = params.get("DeployMode")
+        self.JdkVersion = params.get("JdkVersion")
+        self.Description = params.get("Description")
+        self.DeployVersion = params.get("DeployVersion")
+        self.PublishMode = params.get("PublishMode")
+        self.JvmOpts = params.get("JvmOpts")
+        self.InitPodNum = params.get("InitPodNum")
+        self.CpuSpec = params.get("CpuSpec")
+        self.MemorySpec = params.get("MemorySpec")
+        self.ImgRepo = params.get("ImgRepo")
+        self.ImgName = params.get("ImgName")
+        self.ImgVersion = params.get("ImgVersion")
+        if params.get("EsInfo") is not None:
+            self.EsInfo = EsInfo()
+            self.EsInfo._deserialize(params.get("EsInfo"))
+        if params.get("EnvConf") is not None:
+            self.EnvConf = []
+            for item in params.get("EnvConf"):
+                obj = Pair()
+                obj._deserialize(item)
+                self.EnvConf.append(obj)
+        if params.get("StorageConfs") is not None:
+            self.StorageConfs = []
+            for item in params.get("StorageConfs"):
+                obj = StorageConf()
+                obj._deserialize(item)
+                self.StorageConfs.append(obj)
+        self.Status = params.get("Status")
+        self.Vpc = params.get("Vpc")
+        self.SubnetId = params.get("SubnetId")
+        self.CreateDate = params.get("CreateDate")
+        self.ModifyDate = params.get("ModifyDate")
+        if params.get("StorageMountConfs") is not None:
+            self.StorageMountConfs = []
+            for item in params.get("StorageMountConfs"):
+                obj = StorageMountConf()
+                obj._deserialize(item)
+                self.StorageMountConfs.append(obj)
+        self.VersionName = params.get("VersionName")
+        if params.get("LogOutputConf") is not None:
+            self.LogOutputConf = LogOutputConf()
+            self.LogOutputConf._deserialize(params.get("LogOutputConf"))
+        self.ApplicationName = params.get("ApplicationName")
+        self.ApplicationDescription = params.get("ApplicationDescription")
+        self.EnvironmentName = params.get("EnvironmentName")
+        self.EnvironmentId = params.get("EnvironmentId")
+        self.PublicDomain = params.get("PublicDomain")
+        self.EnablePublicAccess = params.get("EnablePublicAccess")
+        self.CurrentInstances = params.get("CurrentInstances")
+        self.ExpectedInstances = params.get("ExpectedInstances")
+        self.CodingLanguage = params.get("CodingLanguage")
+        self.PkgName = params.get("PkgName")
+        self.EsEnable = params.get("EsEnable")
+        self.EsStrategy = params.get("EsStrategy")
+        self.ImageTag = params.get("ImageTag")
+        self.LogEnable = params.get("LogEnable")
+        self.MinAliveInstances = params.get("MinAliveInstances")
+        self.SecurityGroupIds = params.get("SecurityGroupIds")
+        self.ImageCommand = params.get("ImageCommand")
+        self.ImageArgs = params.get("ImageArgs")
+        self.UseRegistryDefaultConfig = params.get("UseRegistryDefaultConfig")
+        if params.get("Service") is not None:
+            self.Service = EksService()
+            self.Service._deserialize(params.get("Service"))
+        if params.get("SettingConfs") is not None:
+            self.SettingConfs = []
+            for item in params.get("SettingConfs"):
+                obj = MountedSettingConf()
+                obj._deserialize(item)
+                self.SettingConfs.append(obj)
+        self.LogConfs = params.get("LogConfs")
+        self.PostStart = params.get("PostStart")
+        self.PreStop = params.get("PreStop")
+        if params.get("Liveness") is not None:
+            self.Liveness = HealthCheckConfig()
+            self.Liveness._deserialize(params.get("Liveness"))
+        if params.get("Readiness") is not None:
+            self.Readiness = HealthCheckConfig()
+            self.Readiness._deserialize(params.get("Readiness"))
+        if params.get("HorizontalAutoscaler") is not None:
+            self.HorizontalAutoscaler = []
+            for item in params.get("HorizontalAutoscaler"):
+                obj = HorizontalAutoscaler()
+                obj._deserialize(item)
+                self.HorizontalAutoscaler.append(obj)
+        if params.get("CronHorizontalAutoscaler") is not None:
+            self.CronHorizontalAutoscaler = []
+            for item in params.get("CronHorizontalAutoscaler"):
+                obj = CronHorizontalAutoscaler()
+                obj._deserialize(item)
+                self.CronHorizontalAutoscaler.append(obj)
+        self.Zones = params.get("Zones")
+        self.LastDeployDate = params.get("LastDeployDate")
+        self.LastDeploySuccessDate = params.get("LastDeploySuccessDate")
+        if params.get("NodeInfos") is not None:
+            self.NodeInfos = []
+            for item in params.get("NodeInfos"):
+                obj = NodeInfo()
+                obj._deserialize(item)
+                self.NodeInfos.append(obj)
+        self.ImageType = params.get("ImageType")
+        self.EnableTracing = params.get("EnableTracing")
+        self.EnableTracingReport = params.get("EnableTracingReport")
+        self.RepoType = params.get("RepoType")
+        self.BatchDeployStatus = params.get("BatchDeployStatus")
+        self.ApmInstanceId = params.get("ApmInstanceId")
+        if params.get("WorkloadInfo") is not None:
+            self.WorkloadInfo = WorkloadInfo()
+            self.WorkloadInfo._deserialize(params.get("WorkloadInfo"))
+        self.SpeedUp = params.get("SpeedUp")
+        if params.get("StartupProbe") is not None:
+            self.StartupProbe = HealthCheckConfig()
+            self.StartupProbe._deserialize(params.get("StartupProbe"))
+        self.OsFlavour = params.get("OsFlavour")
+        self.RepoServer = params.get("RepoServer")
+        self.UnderDeploying = params.get("UnderDeploying")
+        if params.get("EnablePrometheusConf") is not None:
+            self.EnablePrometheusConf = EnablePrometheusConf()
+            self.EnablePrometheusConf._deserialize(params.get("EnablePrometheusConf"))
+        self.StoppedManually = params.get("StoppedManually")
+        self.TcrInstanceId = params.get("TcrInstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class UseDefaultRepoParameters(AbstractModel):
     """创建应用，创建仓库参数
 
@@ -3650,6 +4160,36 @@ class UseDefaultRepoParameters(AbstractModel):
         self.EnterpriseInstanceName = params.get("EnterpriseInstanceName")
         self.EnterpriseInstanceChargeType = params.get("EnterpriseInstanceChargeType")
         self.EnterpriseInstanceType = params.get("EnterpriseInstanceType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WorkloadInfo(AbstractModel):
+    """工作负载详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 资源 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterId: str
+        :param ApplicationName: 应用名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationName: str
+        """
+        self.ClusterId = None
+        self.ApplicationName = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.ApplicationName = params.get("ApplicationName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

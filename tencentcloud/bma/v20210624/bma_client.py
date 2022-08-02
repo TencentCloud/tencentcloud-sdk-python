@@ -26,6 +26,151 @@ class BmaClient(AbstractClient):
     _service = 'bma'
 
 
+    def CreateBPFakeURL(self, request):
+        """添加仿冒链接（举报）
+
+        :param request: Request instance for CreateBPFakeURL.
+        :type request: :class:`tencentcloud.bma.v20210624.models.CreateBPFakeURLRequest`
+        :rtype: :class:`tencentcloud.bma.v20210624.models.CreateBPFakeURLResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateBPFakeURL", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateBPFakeURLResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateBPFalseTicket(self, request):
+        """添加误报工单
+
+        :param request: Request instance for CreateBPFalseTicket.
+        :type request: :class:`tencentcloud.bma.v20210624.models.CreateBPFalseTicketRequest`
+        :rtype: :class:`tencentcloud.bma.v20210624.models.CreateBPFalseTicketResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateBPFalseTicket", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateBPFalseTicketResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateBPOfflineAttachment(self, request):
+        """添加下线材料
+
+        :param request: Request instance for CreateBPOfflineAttachment.
+        :type request: :class:`tencentcloud.bma.v20210624.models.CreateBPOfflineAttachmentRequest`
+        :rtype: :class:`tencentcloud.bma.v20210624.models.CreateBPOfflineAttachmentResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateBPOfflineAttachment", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateBPOfflineAttachmentResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateBPOfflineTicket(self, request):
+        """添加下线工单
+
+        :param request: Request instance for CreateBPOfflineTicket.
+        :type request: :class:`tencentcloud.bma.v20210624.models.CreateBPOfflineTicketRequest`
+        :rtype: :class:`tencentcloud.bma.v20210624.models.CreateBPOfflineTicketResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateBPOfflineTicket", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateBPOfflineTicketResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateBPProtectURLs(self, request):
+        """添加保护网站
+
+        :param request: Request instance for CreateBPProtectURLs.
+        :type request: :class:`tencentcloud.bma.v20210624.models.CreateBPProtectURLsRequest`
+        :rtype: :class:`tencentcloud.bma.v20210624.models.CreateBPProtectURLsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateBPProtectURLs", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateBPProtectURLsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateCRBlock(self, request):
         """版权保护-新建拦截接口
 
@@ -142,6 +287,122 @@ class BmaClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeBPCompanyInfo(self, request):
+        """查询企业信息
+
+        :param request: Request instance for DescribeBPCompanyInfo.
+        :type request: :class:`tencentcloud.bma.v20210624.models.DescribeBPCompanyInfoRequest`
+        :rtype: :class:`tencentcloud.bma.v20210624.models.DescribeBPCompanyInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBPCompanyInfo", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBPCompanyInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeBPFakeURLs(self, request):
+        """查询仿冒链接
+
+        :param request: Request instance for DescribeBPFakeURLs.
+        :type request: :class:`tencentcloud.bma.v20210624.models.DescribeBPFakeURLsRequest`
+        :rtype: :class:`tencentcloud.bma.v20210624.models.DescribeBPFakeURLsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBPFakeURLs", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBPFakeURLsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeBPProtectURLs(self, request):
+        """查询保护网站
+
+        :param request: Request instance for DescribeBPProtectURLs.
+        :type request: :class:`tencentcloud.bma.v20210624.models.DescribeBPProtectURLsRequest`
+        :rtype: :class:`tencentcloud.bma.v20210624.models.DescribeBPProtectURLsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBPProtectURLs", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBPProtectURLsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeBPReportFakeURLs(self, request):
+        """查询举报列表
+
+        :param request: Request instance for DescribeBPReportFakeURLs.
+        :type request: :class:`tencentcloud.bma.v20210624.models.DescribeBPReportFakeURLsRequest`
+        :rtype: :class:`tencentcloud.bma.v20210624.models.DescribeBPReportFakeURLsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBPReportFakeURLs", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBPReportFakeURLsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeCRMonitorDetail(self, request):
         """版权保护-查询作品监测详情接口
 
@@ -215,6 +476,35 @@ class BmaClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeCRWorkInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyBPOfflineAttachment(self, request):
+        """修改下线材料
+
+        :param request: Request instance for ModifyBPOfflineAttachment.
+        :type request: :class:`tencentcloud.bma.v20210624.models.ModifyBPOfflineAttachmentRequest`
+        :rtype: :class:`tencentcloud.bma.v20210624.models.ModifyBPOfflineAttachmentResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyBPOfflineAttachment", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyBPOfflineAttachmentResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

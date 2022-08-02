@@ -113,6 +113,35 @@ class CatClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeNodes(self, request):
+        """获取拨测节点
+
+        :param request: Request instance for DescribeNodes.
+        :type request: :class:`tencentcloud.cat.v20180409.models.DescribeNodesRequest`
+        :rtype: :class:`tencentcloud.cat.v20180409.models.DescribeNodesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeNodes", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeNodesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeProbeMetricData(self, request):
         """查询云拨测指标数据，指标支持使用sum,avg,max,min聚合函数进行指标数据查询
 

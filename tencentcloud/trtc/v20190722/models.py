@@ -92,6 +92,209 @@ class AbnormalExperience(AbstractModel):
         
 
 
+class AudioParams(AbstractModel):
+    """录制音频转码参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SampleRate: 音频采样率:
+1：48000Hz（默认）;
+2：44100Hz
+3：16000Hz。
+        :type SampleRate: int
+        :param Channel: 声道数:
+1：单声道;
+2：双声道（默认）。
+        :type Channel: int
+        :param BitRate: 音频码率: 取值范围[32000, 128000] ，单位bps，默认64000bps。
+        :type BitRate: int
+        """
+        self.SampleRate = None
+        self.Channel = None
+        self.BitRate = None
+
+
+    def _deserialize(self, params):
+        self.SampleRate = params.get("SampleRate")
+        self.Channel = params.get("Channel")
+        self.BitRate = params.get("BitRate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloudStorage(AbstractModel):
+    """第三方云存储的账号信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Vendor: 第三方云储存的供应商:
+0：腾讯云存储 COS，暂不支持其他家。
+        :type Vendor: int
+        :param Region: 第三方云存储的地域信息。
+        :type Region: str
+        :param Bucket: 第三方存储桶信息。
+        :type Bucket: str
+        :param AccessKey: 第三方存储的access_key账号信息。
+        :type AccessKey: str
+        :param SecretKey: 第三方存储的secret_key账号信息。
+        :type SecretKey: str
+        :param FileNamePrefix: 第三方云存储bucket 的指定位置，由字符串数组组成。合法的字符串范围a~z,A~Z,0~9,'_'和'-'，举个例子，录制文件xxx.m3u8在 ["prefix1", "prefix2"]作用下，会变成prefix1/prefix2/TaskId/xxx.m3u8。
+        :type FileNamePrefix: list of str
+        """
+        self.Vendor = None
+        self.Region = None
+        self.Bucket = None
+        self.AccessKey = None
+        self.SecretKey = None
+        self.FileNamePrefix = None
+
+
+    def _deserialize(self, params):
+        self.Vendor = params.get("Vendor")
+        self.Region = params.get("Region")
+        self.Bucket = params.get("Bucket")
+        self.AccessKey = params.get("AccessKey")
+        self.SecretKey = params.get("SecretKey")
+        self.FileNamePrefix = params.get("FileNamePrefix")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloudVod(AbstractModel):
+    """点播相关参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TencentVod: 腾讯云点播相关参数。
+        :type TencentVod: :class:`tencentcloud.trtc.v20190722.models.TencentVod`
+        """
+        self.TencentVod = None
+
+
+    def _deserialize(self, params):
+        if params.get("TencentVod") is not None:
+            self.TencentVod = TencentVod()
+            self.TencentVod._deserialize(params.get("TencentVod"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCloudRecordingRequest(AbstractModel):
+    """CreateCloudRecording请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkAppId: TRTC的[SdkAppId](https://cloud.tencent.com/document/product/647/46351#sdkappid)，和录制的房间所对应的SdkAppId相同。
+        :type SdkAppId: int
+        :param RoomId: TRTC的[RoomId](https://cloud.tencent.com/document/product/647/46351#roomid)，录制的TRTC房间所对应的RoomId。
+        :type RoomId: str
+        :param UserId: 录制服务在TRTC房间使用的[UserId](https://cloud.tencent.com/document/product/647/46351#userid)，注意这个userId不能与其他TRTC或者录制服务等已经使用的UserId重复，建议可以把房间ID作为userId的标识的一部分。
+        :type UserId: str
+        :param UserSig: 云端录制加入房间的用户签名，当前 UserId 对应的验证签名，相当于登录密码，具体计算方法请参考TRTC计算[UserSig](https://cloud.tencent.com/document/product/647/45910#UserSig)的方案。
+        :type UserSig: str
+        :param RecordParams: 云端录制控制参数。
+        :type RecordParams: :class:`tencentcloud.trtc.v20190722.models.RecordParams`
+        :param StorageParams: 云端录制文件上传到云存储的参数。
+        :type StorageParams: :class:`tencentcloud.trtc.v20190722.models.StorageParams`
+        :param RoomIdType: TRTC房间号的类型，必须和录制的房间所对应的RoomId类型相同:
+0: 字符串类型的RoomId
+1: 32位整型的RoomId（默认）
+        :type RoomIdType: int
+        :param MixTranscodeParams: 混流的转码参数，录制模式为混流的时候可以设置。
+        :type MixTranscodeParams: :class:`tencentcloud.trtc.v20190722.models.MixTranscodeParams`
+        :param MixLayoutParams: 混流的布局参数，录制模式为混流的时候可以设置。
+        :type MixLayoutParams: :class:`tencentcloud.trtc.v20190722.models.MixLayoutParams`
+        :param ResourceExpiredHour: 接口可以调用的时效性，从成功开启录制并获得任务ID后开始计算，超时后无法调用查询、更新和停止等接口，但是录制任务不会停止。 参数的单位是小时，默认72小时（3天），最大可设置720小时（30天），最小设置6小时。举例说明：如果不设置该参数，那么开始录制成功后，查询、更新和停止录制的调用时效为72个小时。
+        :type ResourceExpiredHour: int
+        :param PrivateMapKey: TRTC房间权限加密串，只有在TRTC控制台启用了高级权限控制的时候需要携带，在TRTC控制台如果开启高级权限控制后，TRTC 的后台服务系统会校验一个叫做 [PrivateMapKey]（https://cloud.tencent.com/document/product/647/32240） 的“权限票据”，权限票据中包含了一个加密后的 RoomId 和一个加密后的“权限位列表”。由于 PrivateMapKey 中包含 RoomId，所以只提供了 UserSig 没有提供 PrivateMapKey 时，并不能进入指定的房间。
+        :type PrivateMapKey: str
+        """
+        self.SdkAppId = None
+        self.RoomId = None
+        self.UserId = None
+        self.UserSig = None
+        self.RecordParams = None
+        self.StorageParams = None
+        self.RoomIdType = None
+        self.MixTranscodeParams = None
+        self.MixLayoutParams = None
+        self.ResourceExpiredHour = None
+        self.PrivateMapKey = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.RoomId = params.get("RoomId")
+        self.UserId = params.get("UserId")
+        self.UserSig = params.get("UserSig")
+        if params.get("RecordParams") is not None:
+            self.RecordParams = RecordParams()
+            self.RecordParams._deserialize(params.get("RecordParams"))
+        if params.get("StorageParams") is not None:
+            self.StorageParams = StorageParams()
+            self.StorageParams._deserialize(params.get("StorageParams"))
+        self.RoomIdType = params.get("RoomIdType")
+        if params.get("MixTranscodeParams") is not None:
+            self.MixTranscodeParams = MixTranscodeParams()
+            self.MixTranscodeParams._deserialize(params.get("MixTranscodeParams"))
+        if params.get("MixLayoutParams") is not None:
+            self.MixLayoutParams = MixLayoutParams()
+            self.MixLayoutParams._deserialize(params.get("MixLayoutParams"))
+        self.ResourceExpiredHour = params.get("ResourceExpiredHour")
+        self.PrivateMapKey = params.get("PrivateMapKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCloudRecordingResponse(AbstractModel):
+    """CreateCloudRecording返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 云录制服务分配的任务 ID。任务 ID 是对一次录制生命周期过程的唯一标识，结束录制时会失去意义。任务 ID需要业务保存下来，作为下次针对这个录制任务操作的参数。
+        :type TaskId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreatePictureRequest(AbstractModel):
     """CreatePicture请求参数结构体
 
@@ -158,6 +361,55 @@ class CreatePictureResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.PictureId = params.get("PictureId")
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteCloudRecordingRequest(AbstractModel):
+    """DeleteCloudRecording请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkAppId: TRTC的SDKAppId，和录制的房间所对应的SDKAppId相同。
+        :type SdkAppId: int
+        :param TaskId: 录制任务的唯一Id，在启动录制成功后会返回。
+        :type TaskId: str
+        """
+        self.SdkAppId = None
+        self.TaskId = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteCloudRecordingResponse(AbstractModel):
+    """DeleteCloudRecording返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 云录制服务分配的任务 ID。任务 ID 是对一次录制生命周期过程的唯一标识，结束录制时会失去意义。
+        :type TaskId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
         self.RequestId = params.get("RequestId")
 
 
@@ -494,6 +746,72 @@ class DescribeCallDetailResponse(AbstractModel):
                 obj = QualityData()
                 obj._deserialize(item)
                 self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCloudRecordingRequest(AbstractModel):
+    """DescribeCloudRecording请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkAppId: TRTC的SDKAppId，和录制的房间所对应的SDKAppId相同。
+        :type SdkAppId: int
+        :param TaskId: 录制任务的唯一Id，在启动录制成功后会返回。
+        :type TaskId: str
+        """
+        self.SdkAppId = None
+        self.TaskId = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCloudRecordingResponse(AbstractModel):
+    """DescribeCloudRecording返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 录制任务的唯一Id。
+        :type TaskId: str
+        :param Status: 云端录制任务的状态信息。
+Idle：表示当前录制任务空闲中
+InProgress：表示当前录制任务正在进行中。
+Exited：表示当前录制任务正在退出的过程中。
+        :type Status: str
+        :param StorageFileList: 录制文件信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StorageFileList: list of StorageFile
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.Status = None
+        self.StorageFileList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.Status = params.get("Status")
+        if params.get("StorageFileList") is not None:
+            self.StorageFileList = []
+            for item in params.get("StorageFileList"):
+                obj = StorageFile()
+                obj._deserialize(item)
+                self.StorageFileList.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1720,6 +2038,252 @@ class LayoutParams(AbstractModel):
         
 
 
+class MixLayout(AbstractModel):
+    """用户自定义混流布局参数列表。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Top: 画布上该画面左上角的 y 轴坐标，取值范围 [0, 1920]，不能超过画布的高。
+        :type Top: int
+        :param Left: 画布上该画面左上角的 x 轴坐标，取值范围 [0, 1920]，不能超过画布的宽。
+        :type Left: int
+        :param Width: 画布上该画面宽度的相对值，取值范围 [0, 1920]，与Left相加不应超过画布的宽。
+        :type Width: int
+        :param Height: 画布上该画面高度的相对值，取值范围 [0, 1920]，与Top相加不应超过画布的高。
+        :type Height: int
+        :param UserId: 字符串内容为待显示在该画面的主播对应的UserId，如果不指定，会按照主播加入房间的顺序匹配。
+        :type UserId: str
+        :param Alpha: 画布的透明度值，取值范围[0, 255]。0表示不透明，255表示全透明。默认值为0。
+        :type Alpha: int
+        :param RenderMode: 0 ：拉伸模式，这个模式下整个视频内容会全部显示，并填满子画面，在源视频和目的视频宽高比不一致的时候，画面不会缺少内容，但是画面可能产生形变；
+
+1 ：剪裁模式（默认），这个模式下会严格按照目的视频的宽高比对源视频剪裁之后再拉伸，并填满子画面画布，在源视频和目的视频宽高比不一致的时候，画面保持不变形，但是会被剪裁；
+
+2 ：填黑模式，这个模式下会严格保持源视频的宽高比进行等比缩放，在源视频和目的视频宽高比不一致的时候，画面的上下侧边缘或者左右侧边缘会露出子画面画布的背景；
+
+3 ：智能拉伸模式，这个模式类似剪裁模式，区别是在源视频和目的视频宽高比不一致的时候，限制了最大剪裁比例为画面的宽度或者高度的20%；
+        :type RenderMode: int
+        :param MediaId: 对应订阅流的主辅路标识：
+0：主流（默认）；
+1：辅流；
+        :type MediaId: int
+        :param ImageLayer: 该画布的图层顺序, 这个值越小表示图层越靠后。默认值为0。
+        :type ImageLayer: int
+        :param SubBackgroundImage: 下载的url地址， 只支持jpg， png，大小限制不超过5M，宽高比不一致的处理方案同 RenderMode。
+        :type SubBackgroundImage: str
+        """
+        self.Top = None
+        self.Left = None
+        self.Width = None
+        self.Height = None
+        self.UserId = None
+        self.Alpha = None
+        self.RenderMode = None
+        self.MediaId = None
+        self.ImageLayer = None
+        self.SubBackgroundImage = None
+
+
+    def _deserialize(self, params):
+        self.Top = params.get("Top")
+        self.Left = params.get("Left")
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
+        self.UserId = params.get("UserId")
+        self.Alpha = params.get("Alpha")
+        self.RenderMode = params.get("RenderMode")
+        self.MediaId = params.get("MediaId")
+        self.ImageLayer = params.get("ImageLayer")
+        self.SubBackgroundImage = params.get("SubBackgroundImage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MixLayoutParams(AbstractModel):
+    """录制的混流布局参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MixLayoutMode: 布局模式:
+1：悬浮布局；
+2：屏幕分享布局；
+3：九宫格布局（默认）；
+4：自定义布局；
+
+悬浮布局：默认第一个进入房间的主播（也可以指定一个主播）的视频画面会铺满整个屏幕。其他主播的视频画面从左下角开始依次按照进房顺序水平排列，显示为小画面，小画面悬浮于大画面之上。当画面数量小于等于17个时，每行4个（4 x 4排列）。当画面数量大于17个时，重新布局小画面为每行5个（5 x 5）排列。最多支持25个画面，如果用户只发送音频，仍然会占用画面位置。
+
+屏幕分享布局：指定一个主播在屏幕左侧的大画面位置（如果不指定，那么大画面位置为背景色），其他主播自上而下依次垂直排列于右侧。当画面数量少于17个的时候，右侧每列最多8人，最多占据两列。当画面数量多于17个的时候，超过17个画面的主播从左下角开始依次水平排列。最多支持25个画面，如果主播只发送音频，仍然会占用画面位置。
+
+九宫格布局：根据主播的数量自动调整每个画面的大小，每个主播的画面大小一致，最多支持25个画面。
+
+自定义布局：根据需要在MixLayoutList内定制每个主播画面的布局。
+        :type MixLayoutMode: int
+        :param MixLayoutList: 如果MixLayoutMode 选择为4自定义布局模式的话，设置此参数为每个主播所对应的布局画面的详细信息，最大不超过25个。
+        :type MixLayoutList: list of MixLayout
+        :param BackGroundColor: 录制背景颜色，RGB的颜色表的16进制表示，每个颜色通过8bit长度标识，默认为黑色。比如橙色对应的RGB为 R:255 G:165 B:0, 那么对应的字符串描述为#FFA500，格式规范：‘#‘开头，后面跟固定RGB的颜色值
+        :type BackGroundColor: str
+        :param MaxResolutionUserId: 在布局模式为1：悬浮布局和 2：屏幕分享布局时，设定为显示大视频画面的UserId。不填的话：悬浮布局默认是第一个进房间的主播，屏幕分享布局默认是背景色
+        :type MaxResolutionUserId: str
+        :param MediaId: 主辅路标识，
+0：主流（默认）；
+1：辅流（屏幕分享）；
+这个位置的MediaId代表的是对应MaxResolutionUserId的主辅路，MixLayoutList内代表的是自定义用户的主辅路。
+        :type MediaId: int
+        :param BackgroundImageUrl: 下载的url地址， 只支持jpg， png，大小限制不超过5M。
+        :type BackgroundImageUrl: str
+        :param PlaceHolderMode: 设置为1时代表启用占位图功能，0时代表不启用占位图功能，默认为0。启用占位图功能时，在预设位置的用户没有上行视频时可显示对应的占位图。
+        :type PlaceHolderMode: int
+        :param BackgroundImageRenderMode: 背景画面宽高比不一致的时候处理方案，与MixLayoufList定义的RenderMode一致。
+        :type BackgroundImageRenderMode: int
+        :param DefaultSubBackgroundImage: 下载的url地址， 只支持jpg， png，大小限制不超过5M，宽高比不一致的处理方案同 RenderMode。
+        :type DefaultSubBackgroundImage: str
+        :param WaterMarkList: 水印布局参数， 最多支持25个。
+        :type WaterMarkList: list of WaterMark
+        """
+        self.MixLayoutMode = None
+        self.MixLayoutList = None
+        self.BackGroundColor = None
+        self.MaxResolutionUserId = None
+        self.MediaId = None
+        self.BackgroundImageUrl = None
+        self.PlaceHolderMode = None
+        self.BackgroundImageRenderMode = None
+        self.DefaultSubBackgroundImage = None
+        self.WaterMarkList = None
+
+
+    def _deserialize(self, params):
+        self.MixLayoutMode = params.get("MixLayoutMode")
+        if params.get("MixLayoutList") is not None:
+            self.MixLayoutList = []
+            for item in params.get("MixLayoutList"):
+                obj = MixLayout()
+                obj._deserialize(item)
+                self.MixLayoutList.append(obj)
+        self.BackGroundColor = params.get("BackGroundColor")
+        self.MaxResolutionUserId = params.get("MaxResolutionUserId")
+        self.MediaId = params.get("MediaId")
+        self.BackgroundImageUrl = params.get("BackgroundImageUrl")
+        self.PlaceHolderMode = params.get("PlaceHolderMode")
+        self.BackgroundImageRenderMode = params.get("BackgroundImageRenderMode")
+        self.DefaultSubBackgroundImage = params.get("DefaultSubBackgroundImage")
+        if params.get("WaterMarkList") is not None:
+            self.WaterMarkList = []
+            for item in params.get("WaterMarkList"):
+                obj = WaterMark()
+                obj._deserialize(item)
+                self.WaterMarkList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MixTranscodeParams(AbstractModel):
+    """录制的音视频转码参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param VideoParams: 录制视频转码参数，注意如果设置了这个参数，那么里面的字段都是必填的，没有默认值，如果不填这个参数，那么取值为默认值。
+        :type VideoParams: :class:`tencentcloud.trtc.v20190722.models.VideoParams`
+        :param AudioParams: 录制音频转码参数，注意如果设置了这个参数，那么里面的字段都是必填的，没有默认值，如果不填这个参数，那么取值为默认值。
+        :type AudioParams: :class:`tencentcloud.trtc.v20190722.models.AudioParams`
+        """
+        self.VideoParams = None
+        self.AudioParams = None
+
+
+    def _deserialize(self, params):
+        if params.get("VideoParams") is not None:
+            self.VideoParams = VideoParams()
+            self.VideoParams._deserialize(params.get("VideoParams"))
+        if params.get("AudioParams") is not None:
+            self.AudioParams = AudioParams()
+            self.AudioParams._deserialize(params.get("AudioParams"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCloudRecordingRequest(AbstractModel):
+    """ModifyCloudRecording请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkAppId: TRTC的SDKAppId，和录制的房间所对应的SDKAppId相同。
+        :type SdkAppId: int
+        :param TaskId: 录制任务的唯一Id，在启动录制成功后会返回。
+        :type TaskId: str
+        :param MixLayoutParams: 需要更新的混流的布局参数。
+        :type MixLayoutParams: :class:`tencentcloud.trtc.v20190722.models.MixLayoutParams`
+        :param SubscribeStreamUserIds: 指定订阅流白名单或者黑名单。
+        :type SubscribeStreamUserIds: :class:`tencentcloud.trtc.v20190722.models.SubscribeStreamUserIds`
+        """
+        self.SdkAppId = None
+        self.TaskId = None
+        self.MixLayoutParams = None
+        self.SubscribeStreamUserIds = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.TaskId = params.get("TaskId")
+        if params.get("MixLayoutParams") is not None:
+            self.MixLayoutParams = MixLayoutParams()
+            self.MixLayoutParams._deserialize(params.get("MixLayoutParams"))
+        if params.get("SubscribeStreamUserIds") is not None:
+            self.SubscribeStreamUserIds = SubscribeStreamUserIds()
+            self.SubscribeStreamUserIds._deserialize(params.get("SubscribeStreamUserIds"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCloudRecordingResponse(AbstractModel):
+    """ModifyCloudRecording返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 云录制服务分配的任务 ID。任务 ID 是对一次录制生命周期过程的唯一标识，结束录制时会失去意义。
+        :type TaskId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyPictureRequest(AbstractModel):
     """ModifyPicture请求参数结构体
 
@@ -2019,6 +2583,53 @@ class QualityData(AbstractModel):
         self.UserId = params.get("UserId")
         self.PeerId = params.get("PeerId")
         self.DataType = params.get("DataType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RecordParams(AbstractModel):
+    """云端录制控制参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RecordMode: 录制模式：
+1：单流录制，分别录制房间的订阅UserId的音频和视频，将录制文件（M3U8/TS）上传至云存储；
+2：混流录制，将房间内订阅UserId的音视频混录成一个音视频文件，将录制文件[M3U8/TS]上传至云存储；
+        :type RecordMode: int
+        :param MaxIdleTime: 房间内持续没有主播的状态超过MaxIdleTime的时长，自动停止录制，单位：秒。默认值为 30 秒，该值需大于等于 5秒，且小于等于 86400秒(24小时)。
+        :type MaxIdleTime: int
+        :param StreamType: 录制的媒体流类型：
+0：录制音频+视频流（默认）;
+1：仅录制音频流；
+2：仅录制视频流，
+        :type StreamType: int
+        :param SubscribeStreamUserIds: 指定订阅流白名单或者黑名单。
+        :type SubscribeStreamUserIds: :class:`tencentcloud.trtc.v20190722.models.SubscribeStreamUserIds`
+        :param OutputFormat: 输出文件的格式。0：(默认)输出文件为hls格式。1：输出文件格式为hls+mp4（hls录制完成后转mp4文件）
+        :type OutputFormat: int
+        """
+        self.RecordMode = None
+        self.MaxIdleTime = None
+        self.StreamType = None
+        self.SubscribeStreamUserIds = None
+        self.OutputFormat = None
+
+
+    def _deserialize(self, params):
+        self.RecordMode = params.get("RecordMode")
+        self.MaxIdleTime = params.get("MaxIdleTime")
+        self.StreamType = params.get("StreamType")
+        if params.get("SubscribeStreamUserIds") is not None:
+            self.SubscribeStreamUserIds = SubscribeStreamUserIds()
+            self.SubscribeStreamUserIds._deserialize(params.get("SubscribeStreamUserIds"))
+        self.OutputFormat = params.get("OutputFormat")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2637,6 +3248,164 @@ class StopMCUMixTranscodeResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class StorageFile(AbstractModel):
+    """云端录制查询接口，录制文件的信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UserId: 录制文件对应的UserId，如果是混流的话的这里返回的是空串。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserId: str
+        :param FileName: 录制索引文件名。
+        :type FileName: str
+        :param TrackType: 录制文件流信息。
+video：视频录制文件
+audio：音频录制文件
+audio_video：音视频录制文件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TrackType: str
+        :param BeginTimeStamp: 录制文件开始Unix时间戳。
+        :type BeginTimeStamp: int
+        """
+        self.UserId = None
+        self.FileName = None
+        self.TrackType = None
+        self.BeginTimeStamp = None
+
+
+    def _deserialize(self, params):
+        self.UserId = params.get("UserId")
+        self.FileName = params.get("FileName")
+        self.TrackType = params.get("TrackType")
+        self.BeginTimeStamp = params.get("BeginTimeStamp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StorageParams(AbstractModel):
+    """第三方存储参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CloudStorage: 第三方云存储的账号信息。
+        :type CloudStorage: :class:`tencentcloud.trtc.v20190722.models.CloudStorage`
+        :param CloudVod: 第三方云点播的账号信息。
+        :type CloudVod: :class:`tencentcloud.trtc.v20190722.models.CloudVod`
+        """
+        self.CloudStorage = None
+        self.CloudVod = None
+
+
+    def _deserialize(self, params):
+        if params.get("CloudStorage") is not None:
+            self.CloudStorage = CloudStorage()
+            self.CloudStorage._deserialize(params.get("CloudStorage"))
+        if params.get("CloudVod") is not None:
+            self.CloudVod = CloudVod()
+            self.CloudVod._deserialize(params.get("CloudVod"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SubscribeStreamUserIds(AbstractModel):
+    """指定订阅流白名单或者黑名单，音频的白名单和音频黑名单不能同时设置，视频亦然。同时实际并发订阅的媒体流路数最大支持25路流，混流场景下视频的多画面最大支持24画面。支持通过设置".*$"通配符，来前缀匹配黑白名单的UserId，注意房间里不能有和通配符规则相同的用户，否则将视为订阅具体用户，前缀规则会失效。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SubscribeAudioUserIds: 订阅音频流白名单，指定订阅哪几个UserId的音频流，例如["1", "2", "3"], 代表订阅UserId 1，2，3的音频流；["1.*$"], 代表订阅UserId前缀为1的音频流。默认不填订阅房间内所有的音频流，订阅列表用户数不超过32。
+        :type SubscribeAudioUserIds: list of str
+        :param UnSubscribeAudioUserIds: 订阅音频流黑名单，指定不订阅哪几个UserId的音频流，例如["1", "2", "3"], 代表不订阅UserId 1，2，3的音频流；["1.*$"], 代表不订阅UserId前缀为1的音频流。默认不填订阅房间内所有音频流，订阅列表用户数不超过32。
+        :type UnSubscribeAudioUserIds: list of str
+        :param SubscribeVideoUserIds: 订阅视频流白名单，指定订阅哪几个UserId的视频流，例如["1", "2", "3"], 代表订阅UserId  1，2，3的视频流；["1.*$"], 代表订阅UserId前缀为1的视频流。默认不填订阅房间内所有视频流，订阅列表用户数不超过32。
+        :type SubscribeVideoUserIds: list of str
+        :param UnSubscribeVideoUserIds: 订阅视频流黑名单，指定不订阅哪几个UserId的视频流，例如["1", "2", "3"], 代表不订阅UserId  1，2，3的视频流；["1.*$"], 代表不订阅UserId前缀为1的视频流。默认不填订阅房间内所有视频流，订阅列表用户数不超过32。
+        :type UnSubscribeVideoUserIds: list of str
+        """
+        self.SubscribeAudioUserIds = None
+        self.UnSubscribeAudioUserIds = None
+        self.SubscribeVideoUserIds = None
+        self.UnSubscribeVideoUserIds = None
+
+
+    def _deserialize(self, params):
+        self.SubscribeAudioUserIds = params.get("SubscribeAudioUserIds")
+        self.UnSubscribeAudioUserIds = params.get("UnSubscribeAudioUserIds")
+        self.SubscribeVideoUserIds = params.get("SubscribeVideoUserIds")
+        self.UnSubscribeVideoUserIds = params.get("UnSubscribeVideoUserIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TencentVod(AbstractModel):
+    """腾讯云点播相关参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Procedure: 媒体后续任务处理操作，即完成媒体上传后，可自动发起任务流操作。参数值为任务流模板名，云点播支持 创建任务流模板 并为模板命名。
+        :type Procedure: str
+        :param ExpireTime: 媒体文件过期时间，为当前时间的绝对过期时间；保存一天，就填"86400"，永久保存就填"0"，默认永久保存。
+        :type ExpireTime: int
+        :param StorageRegion: 指定上传园区，仅适用于对上传地域有特殊需求的用户。
+        :type StorageRegion: str
+        :param ClassId: 分类ID，用于对媒体进行分类管理，可通过 创建分类 接口，创建分类，获得分类 ID。
+默认值：0，表示其他分类。
+        :type ClassId: int
+        :param SubAppId: 点播 子应用 ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        :param SessionContext: 任务流上下文，任务完成回调时透传。
+        :type SessionContext: str
+        :param SourceContext: 上传上下文，上传完成回调时透传。
+        :type SourceContext: str
+        """
+        self.Procedure = None
+        self.ExpireTime = None
+        self.StorageRegion = None
+        self.ClassId = None
+        self.SubAppId = None
+        self.SessionContext = None
+        self.SourceContext = None
+
+
+    def _deserialize(self, params):
+        self.Procedure = params.get("Procedure")
+        self.ExpireTime = params.get("ExpireTime")
+        self.StorageRegion = params.get("StorageRegion")
+        self.ClassId = params.get("ClassId")
+        self.SubAppId = params.get("SubAppId")
+        self.SessionContext = params.get("SessionContext")
+        self.SourceContext = params.get("SourceContext")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TimeValue(AbstractModel):
     """返回的质量数据，时间:值
 
@@ -2768,6 +3537,116 @@ class UserInformation(AbstractModel):
         self.SdkVersion = params.get("SdkVersion")
         self.ClientIp = params.get("ClientIp")
         self.Finished = params.get("Finished")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VideoParams(AbstractModel):
+    """录制视频转码参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Width: 视频的宽度值，单位为像素，默认值360。不能超过1920，与height的乘积不能超过1920*1080。
+        :type Width: int
+        :param Height: 视频的高度值，单位为像素，默认值640。不能超过1920，与width的乘积不能超过1920*1080。
+        :type Height: int
+        :param Fps: 视频的帧率，范围[1, 60]，默认15。
+        :type Fps: int
+        :param BitRate: 视频的码率,单位是bps，范围[64000, 8192000]，默认550000bps。
+        :type BitRate: int
+        :param Gop: 视频关键帧时间间隔，单位秒，默认值10秒。
+        :type Gop: int
+        """
+        self.Width = None
+        self.Height = None
+        self.Fps = None
+        self.BitRate = None
+        self.Gop = None
+
+
+    def _deserialize(self, params):
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
+        self.Fps = params.get("Fps")
+        self.BitRate = params.get("BitRate")
+        self.Gop = params.get("Gop")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WaterMark(AbstractModel):
+    """水印布局参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param WaterMarkType: 水印类型，0为图片（默认），1为文字（暂不支持）。
+        :type WaterMarkType: int
+        :param WaterMarkImage: 水印为图片时的参数列表，水印为图片时校验必填。
+        :type WaterMarkImage: :class:`tencentcloud.trtc.v20190722.models.WaterMarkImage`
+        """
+        self.WaterMarkType = None
+        self.WaterMarkImage = None
+
+
+    def _deserialize(self, params):
+        self.WaterMarkType = params.get("WaterMarkType")
+        if params.get("WaterMarkImage") is not None:
+            self.WaterMarkImage = WaterMarkImage()
+            self.WaterMarkImage._deserialize(params.get("WaterMarkImage"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WaterMarkImage(AbstractModel):
+    """水印类型为图片的参数列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param WaterMarkUrl: 下载的url地址， 只支持jpg， png，大小限制不超过5M。
+        :type WaterMarkUrl: str
+        :param Top: 画布上该画面左上角的 y 轴坐标，取值范围 [0, 2560]，不能超过画布的高。
+        :type Top: int
+        :param Left: 画布上该画面左上角的 x 轴坐标，取值范围 [0, 2560]，不能超过画布的宽。
+        :type Left: int
+        :param Width: 画布上该画面宽度的相对值，取值范围 [0, 2560]，与Left相加不应超过画布的宽。
+        :type Width: int
+        :param Height: 画布上该画面高度的相对值，取值范围 [0, 2560]，与Top相加不应超过画布的高。
+        :type Height: int
+        """
+        self.WaterMarkUrl = None
+        self.Top = None
+        self.Left = None
+        self.Width = None
+        self.Height = None
+
+
+    def _deserialize(self, params):
+        self.WaterMarkUrl = params.get("WaterMarkUrl")
+        self.Top = params.get("Top")
+        self.Left = params.get("Left")
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

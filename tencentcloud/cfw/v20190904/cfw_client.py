@@ -201,7 +201,7 @@ class CfwClient(AbstractClient):
 
 
     def CreateNatFwInstanceWithDomain(self, request):
-        """创建防火墙实例和接入域名
+        """创建防火墙实例和接入域名（Region参数必填）
 
         :param request: Request instance for CreateNatFwInstanceWithDomain.
         :type request: :class:`tencentcloud.cfw.v20190904.models.CreateNatFwInstanceWithDomainRequest`

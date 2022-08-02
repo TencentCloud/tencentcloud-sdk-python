@@ -304,6 +304,91 @@ class DescribeDetailedSingleProbeDataResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeNodesRequest(AbstractModel):
+    """DescribeNodes请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NodeType: 节点类型
+<li> 1 = IDC </li>
+<li> 2 = LastMile </li>
+<li> 3 = Mobile </li>
+        :type NodeType: int
+        :param Location: 节点区域
+<li> 1 = 中国大陆 </li>
+<li> 2 = 港澳台 </li>
+<li> 3 = 海外 </li>
+        :type Location: int
+        :param IsIPv6: 是否IPv6
+        :type IsIPv6: bool
+        :param NodeName: 名字模糊搜索
+        :type NodeName: str
+        :param PayMode: 付费模式
+<li>1 = 试用版本</li>
+<li> 2 = 付费版本 </li>
+        :type PayMode: int
+        :param TaskType: 任务类型
+<li>1 = 页面性能</li>
+<li>2 = 文件上传</li>
+<li>3 = 文件下载</li>
+<li>4 = 端口性能</li>
+<li>5 = 网络质量</li>
+<li>6 = 音视频体验</li>
+        :type TaskType: int
+        """
+        self.NodeType = None
+        self.Location = None
+        self.IsIPv6 = None
+        self.NodeName = None
+        self.PayMode = None
+        self.TaskType = None
+
+
+    def _deserialize(self, params):
+        self.NodeType = params.get("NodeType")
+        self.Location = params.get("Location")
+        self.IsIPv6 = params.get("IsIPv6")
+        self.NodeName = params.get("NodeName")
+        self.PayMode = params.get("PayMode")
+        self.TaskType = params.get("TaskType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeNodesResponse(AbstractModel):
+    """DescribeNodes返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NodeSet: 节点列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NodeSet: list of NodeDefineExt
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.NodeSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("NodeSet") is not None:
+            self.NodeSet = []
+            for item in params.get("NodeSet"):
+                obj = NodeDefineExt()
+                obj._deserialize(item)
+                self.NodeSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeProbeMetricDataRequest(AbstractModel):
     """DescribeProbeMetricData请求参数结构体
 
@@ -778,6 +863,78 @@ class NodeDefine(AbstractModel):
         self.Location = params.get("Location")
         self.CodeType = params.get("CodeType")
         self.NodeDefineStatus = params.get("NodeDefineStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NodeDefineExt(AbstractModel):
+    """探测节点
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 节点名称
+        :type Name: str
+        :param Code: 节点代码
+        :type Code: str
+        :param Type: 节点类型
+<li> 1 = IDC </li>
+<li> 2 = LastMile </li>
+<li> 3 = Mobile </li>
+        :type Type: int
+        :param NetService: 网络服务商
+        :type NetService: str
+        :param District: 区域
+        :type District: str
+        :param City: 城市
+        :type City: str
+        :param IPType: IP 类型
+<li> 1 = IPv4 </li>
+<li> 2 = IPv6 </li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IPType: int
+        :param Location: 区域
+<li> 1 = 中国大陆 </li>
+<li> 2 = 港澳台 </li>
+<li> 3 = 国外 </li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Location: int
+        :param CodeType: 节点类型  如果为base 则为可用性拨测点，为空则为高级拨测点
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CodeType: str
+        :param TaskTypes: 节点支持的任务类型。1: 页面性能 2: 文件上传 3: 文件下载 4: 端口性能 5: 网络质量 6: 音视频体验
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskTypes: list of int
+        """
+        self.Name = None
+        self.Code = None
+        self.Type = None
+        self.NetService = None
+        self.District = None
+        self.City = None
+        self.IPType = None
+        self.Location = None
+        self.CodeType = None
+        self.TaskTypes = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Code = params.get("Code")
+        self.Type = params.get("Type")
+        self.NetService = params.get("NetService")
+        self.District = params.get("District")
+        self.City = params.get("City")
+        self.IPType = params.get("IPType")
+        self.Location = params.get("Location")
+        self.CodeType = params.get("CodeType")
+        self.TaskTypes = params.get("TaskTypes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

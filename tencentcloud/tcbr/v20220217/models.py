@@ -652,6 +652,8 @@ class EnvBaseInfo(AbstractModel):
         :type Region: str
         :param EnvType: 环境类型 tcbr ｜ run
         :type EnvType: str
+        :param SubnetIds: 子网id
+        :type SubnetIds: str
         """
         self.EnvId = None
         self.PackageType = None
@@ -661,6 +663,7 @@ class EnvBaseInfo(AbstractModel):
         self.Status = None
         self.Region = None
         self.EnvType = None
+        self.SubnetIds = None
 
 
     def _deserialize(self, params):
@@ -672,6 +675,7 @@ class EnvBaseInfo(AbstractModel):
         self.Status = params.get("Status")
         self.Region = params.get("Region")
         self.EnvType = params.get("EnvType")
+        self.SubnetIds = params.get("SubnetIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

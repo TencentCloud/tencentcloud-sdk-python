@@ -18,6 +18,299 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class BrandData(AbstractModel):
+    """商标信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BrandName: xxx
+        :type BrandName: str
+        :param BrandCertificateName: xxx
+        :type BrandCertificateName: str
+        :param BrandStatus: xxx
+        :type BrandStatus: int
+        :param BrandNote: xxx
+        :type BrandNote: str
+        :param TransferName: xxx
+        :type TransferName: str
+        :param TransferStatus: xxx
+        :type TransferStatus: int
+        :param TransferNote: xxx
+        :type TransferNote: str
+        """
+        self.BrandName = None
+        self.BrandCertificateName = None
+        self.BrandStatus = None
+        self.BrandNote = None
+        self.TransferName = None
+        self.TransferStatus = None
+        self.TransferNote = None
+
+
+    def _deserialize(self, params):
+        self.BrandName = params.get("BrandName")
+        self.BrandCertificateName = params.get("BrandCertificateName")
+        self.BrandStatus = params.get("BrandStatus")
+        self.BrandNote = params.get("BrandNote")
+        self.TransferName = params.get("TransferName")
+        self.TransferStatus = params.get("TransferStatus")
+        self.TransferNote = params.get("TransferNote")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateBPFakeURLRequest(AbstractModel):
+    """CreateBPFakeURL请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProtectURLId: xxx
+        :type ProtectURLId: int
+        :param FakeURL: xxx
+        :type FakeURL: str
+        :param SnapshotNames: xxx
+        :type SnapshotNames: list of str
+        :param Note: xxx
+        :type Note: str
+        """
+        self.ProtectURLId = None
+        self.FakeURL = None
+        self.SnapshotNames = None
+        self.Note = None
+
+
+    def _deserialize(self, params):
+        self.ProtectURLId = params.get("ProtectURLId")
+        self.FakeURL = params.get("FakeURL")
+        self.SnapshotNames = params.get("SnapshotNames")
+        self.Note = params.get("Note")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateBPFakeURLResponse(AbstractModel):
+    """CreateBPFakeURL返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreateBPFalseTicketRequest(AbstractModel):
+    """CreateBPFalseTicket请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FakeURL: xxx
+        :type FakeURL: str
+        """
+        self.FakeURL = None
+
+
+    def _deserialize(self, params):
+        self.FakeURL = params.get("FakeURL")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateBPFalseTicketResponse(AbstractModel):
+    """CreateBPFalseTicket返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreateBPOfflineAttachmentRequest(AbstractModel):
+    """CreateBPOfflineAttachment请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BrandName: xxx
+        :type BrandName: str
+        :param BrandCertificateName: xx
+        :type BrandCertificateName: str
+        :param TransferName: xx
+        :type TransferName: str
+        :param AuthorizationName: xx
+        :type AuthorizationName: str
+        """
+        self.BrandName = None
+        self.BrandCertificateName = None
+        self.TransferName = None
+        self.AuthorizationName = None
+
+
+    def _deserialize(self, params):
+        self.BrandName = params.get("BrandName")
+        self.BrandCertificateName = params.get("BrandCertificateName")
+        self.TransferName = params.get("TransferName")
+        self.AuthorizationName = params.get("AuthorizationName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateBPOfflineAttachmentResponse(AbstractModel):
+    """CreateBPOfflineAttachment返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreateBPOfflineTicketRequest(AbstractModel):
+    """CreateBPOfflineTicket请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FakeURLId: xxx
+        :type FakeURLId: int
+        """
+        self.FakeURLId = None
+
+
+    def _deserialize(self, params):
+        self.FakeURLId = params.get("FakeURLId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateBPOfflineTicketResponse(AbstractModel):
+    """CreateBPOfflineTicket返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreateBPProtectURLsRequest(AbstractModel):
+    """CreateBPProtectURLs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CompanyName: xxx
+        :type CompanyName: str
+        :param Phone: xxx
+        :type Phone: str
+        :param LicenseName: xxx
+        :type LicenseName: str
+        :param ProtectURLs: xxx
+        :type ProtectURLs: list of str
+        :param ProtectWebs: xxx
+        :type ProtectWebs: list of str
+        """
+        self.CompanyName = None
+        self.Phone = None
+        self.LicenseName = None
+        self.ProtectURLs = None
+        self.ProtectWebs = None
+
+
+    def _deserialize(self, params):
+        self.CompanyName = params.get("CompanyName")
+        self.Phone = params.get("Phone")
+        self.LicenseName = params.get("LicenseName")
+        self.ProtectURLs = params.get("ProtectURLs")
+        self.ProtectWebs = params.get("ProtectWebs")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateBPProtectURLsResponse(AbstractModel):
+    """CreateBPProtectURLs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CreateCRBlockRequest(AbstractModel):
     """CreateCRBlock请求参数结构体
 
@@ -454,6 +747,270 @@ class CreateCRWorkResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeBPCompanyInfoRequest(AbstractModel):
+    """DescribeBPCompanyInfo请求参数结构体
+
+    """
+
+
+class DescribeBPCompanyInfoResponse(AbstractModel):
+    """DescribeBPCompanyInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CompanyName: xx
+        :type CompanyName: str
+        :param Phone: xx
+        :type Phone: str
+        :param LicenseName: xx
+        :type LicenseName: str
+        :param LicenseStatus: xx
+        :type LicenseStatus: int
+        :param LicenseNote: xx
+        :type LicenseNote: str
+        :param AuthorizationName: xx
+        :type AuthorizationName: str
+        :param AuthorizationStatus: xx
+        :type AuthorizationStatus: int
+        :param AuthorizationNote: xx
+        :type AuthorizationNote: str
+        :param BrandDatas: xx
+        :type BrandDatas: list of BrandData
+        :param CompanyId: xx
+        :type CompanyId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.CompanyName = None
+        self.Phone = None
+        self.LicenseName = None
+        self.LicenseStatus = None
+        self.LicenseNote = None
+        self.AuthorizationName = None
+        self.AuthorizationStatus = None
+        self.AuthorizationNote = None
+        self.BrandDatas = None
+        self.CompanyId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.CompanyName = params.get("CompanyName")
+        self.Phone = params.get("Phone")
+        self.LicenseName = params.get("LicenseName")
+        self.LicenseStatus = params.get("LicenseStatus")
+        self.LicenseNote = params.get("LicenseNote")
+        self.AuthorizationName = params.get("AuthorizationName")
+        self.AuthorizationStatus = params.get("AuthorizationStatus")
+        self.AuthorizationNote = params.get("AuthorizationNote")
+        if params.get("BrandDatas") is not None:
+            self.BrandDatas = []
+            for item in params.get("BrandDatas"):
+                obj = BrandData()
+                obj._deserialize(item)
+                self.BrandDatas.append(obj)
+        self.CompanyId = params.get("CompanyId")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeBPFakeURLsRequest(AbstractModel):
+    """DescribeBPFakeURLs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Filters: xxx
+        :type Filters: list of Filter
+        :param PageSize: xxx
+        :type PageSize: int
+        :param PageNumber: xxx
+        :type PageNumber: int
+        """
+        self.Filters = None
+        self.PageSize = None
+        self.PageNumber = None
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.PageSize = params.get("PageSize")
+        self.PageNumber = params.get("PageNumber")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBPFakeURLsResponse(AbstractModel):
+    """DescribeBPFakeURLs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FakeURLInfos: xxx
+        :type FakeURLInfos: list of FakeURLInfo
+        :param TotalCount: xxx
+        :type TotalCount: int
+        :param ExportURL: xxx
+        :type ExportURL: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FakeURLInfos = None
+        self.TotalCount = None
+        self.ExportURL = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("FakeURLInfos") is not None:
+            self.FakeURLInfos = []
+            for item in params.get("FakeURLInfos"):
+                obj = FakeURLInfo()
+                obj._deserialize(item)
+                self.FakeURLInfos.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.ExportURL = params.get("ExportURL")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeBPProtectURLsRequest(AbstractModel):
+    """DescribeBPProtectURLs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PageSize: xxx
+        :type PageSize: int
+        :param PageNumber: xxx
+        :type PageNumber: int
+        """
+        self.PageSize = None
+        self.PageNumber = None
+
+
+    def _deserialize(self, params):
+        self.PageSize = params.get("PageSize")
+        self.PageNumber = params.get("PageNumber")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBPProtectURLsResponse(AbstractModel):
+    """DescribeBPProtectURLs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProtectURLInfos: xxx
+        :type ProtectURLInfos: list of ProtectURLInfo
+        :param TotalCount: xxx
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ProtectURLInfos = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ProtectURLInfos") is not None:
+            self.ProtectURLInfos = []
+            for item in params.get("ProtectURLInfos"):
+                obj = ProtectURLInfo()
+                obj._deserialize(item)
+                self.ProtectURLInfos.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeBPReportFakeURLsRequest(AbstractModel):
+    """DescribeBPReportFakeURLs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Filters: xxx
+        :type Filters: list of Filter
+        :param PageSize: xxx
+        :type PageSize: int
+        :param PageNumber: xxx
+        :type PageNumber: int
+        """
+        self.Filters = None
+        self.PageSize = None
+        self.PageNumber = None
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.PageSize = params.get("PageSize")
+        self.PageNumber = params.get("PageNumber")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBPReportFakeURLsResponse(AbstractModel):
+    """DescribeBPReportFakeURLs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ReportFakeURLInfos: xxx
+        :type ReportFakeURLInfos: list of ReportFakeURLInfo
+        :param TotalCount: xxx
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ReportFakeURLInfos = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ReportFakeURLInfos") is not None:
+            self.ReportFakeURLInfos = []
+            for item in params.get("ReportFakeURLInfos"):
+                obj = ReportFakeURLInfo()
+                obj._deserialize(item)
+                self.ReportFakeURLInfos.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeCRMonitorDetailRequest(AbstractModel):
     """DescribeCRMonitorDetail请求参数结构体
 
@@ -657,10 +1214,151 @@ class DescribeCRWorkInfoResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class FakeURLInfo(AbstractModel):
+    """仿冒网站信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FakeURLId: xxx
+        :type FakeURLId: int
+        :param ProtectWeb: xxx
+        :type ProtectWeb: str
+        :param DetectTime: xxx
+        :type DetectTime: str
+        :param FakeURL: xxx
+        :type FakeURL: str
+        :param Snapshot: xxx
+        :type Snapshot: str
+        :param IP: xxx
+        :type IP: str
+        :param IPLoc: xxx
+        :type IPLoc: str
+        :param Heat: xxx
+        :type Heat: int
+        :param Status: xxx
+        :type Status: int
+        :param Note: xxx
+        :type Note: str
+        :param FakeURLCompany: xxx
+        :type FakeURLCompany: str
+        :param FakeURLAttr: xxx
+        :type FakeURLAttr: str
+        :param FakeURLName: xxx
+        :type FakeURLName: str
+        :param FakeURLICP: xxx
+        :type FakeURLICP: str
+        :param FakeURLCreateTime: xxx
+        :type FakeURLCreateTime: str
+        :param FakeURLExpireTime: xxx
+        :type FakeURLExpireTime: str
+        """
+        self.FakeURLId = None
+        self.ProtectWeb = None
+        self.DetectTime = None
+        self.FakeURL = None
+        self.Snapshot = None
+        self.IP = None
+        self.IPLoc = None
+        self.Heat = None
+        self.Status = None
+        self.Note = None
+        self.FakeURLCompany = None
+        self.FakeURLAttr = None
+        self.FakeURLName = None
+        self.FakeURLICP = None
+        self.FakeURLCreateTime = None
+        self.FakeURLExpireTime = None
+
+
+    def _deserialize(self, params):
+        self.FakeURLId = params.get("FakeURLId")
+        self.ProtectWeb = params.get("ProtectWeb")
+        self.DetectTime = params.get("DetectTime")
+        self.FakeURL = params.get("FakeURL")
+        self.Snapshot = params.get("Snapshot")
+        self.IP = params.get("IP")
+        self.IPLoc = params.get("IPLoc")
+        self.Heat = params.get("Heat")
+        self.Status = params.get("Status")
+        self.Note = params.get("Note")
+        self.FakeURLCompany = params.get("FakeURLCompany")
+        self.FakeURLAttr = params.get("FakeURLAttr")
+        self.FakeURLName = params.get("FakeURLName")
+        self.FakeURLICP = params.get("FakeURLICP")
+        self.FakeURLCreateTime = params.get("FakeURLCreateTime")
+        self.FakeURLExpireTime = params.get("FakeURLExpireTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Filter(AbstractModel):
     """过滤参数
 
     """
+
+
+class ModifyBPOfflineAttachmentRequest(AbstractModel):
+    """ModifyBPOfflineAttachment请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LicenseName: xx
+        :type LicenseName: str
+        :param AuthorizationName: xx
+        :type AuthorizationName: str
+        :param BrandName: xx
+        :type BrandName: str
+        :param BrandCertificateName: xx
+        :type BrandCertificateName: str
+        :param TransferName: xx
+        :type TransferName: str
+        """
+        self.LicenseName = None
+        self.AuthorizationName = None
+        self.BrandName = None
+        self.BrandCertificateName = None
+        self.TransferName = None
+
+
+    def _deserialize(self, params):
+        self.LicenseName = params.get("LicenseName")
+        self.AuthorizationName = params.get("AuthorizationName")
+        self.BrandName = params.get("BrandName")
+        self.BrandCertificateName = params.get("BrandCertificateName")
+        self.TransferName = params.get("TransferName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyBPOfflineAttachmentResponse(AbstractModel):
+    """ModifyBPOfflineAttachment返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class ModifyCRBlockStatusRequest(AbstractModel):
@@ -974,6 +1672,142 @@ class MonitorTort(AbstractModel):
         self.TortNum = params.get("TortNum")
         self.ObtainNote = params.get("ObtainNote")
         self.WorkTitle = params.get("WorkTitle")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProtectURLInfo(AbstractModel):
+    """保护网站信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProtectURLId: xxx
+        :type ProtectURLId: int
+        :param ProtectURL: xxx
+        :type ProtectURL: str
+        :param ProtectWeb: xxx
+        :type ProtectWeb: str
+        :param ProtectURLStatus: xxx
+        :type ProtectURLStatus: int
+        :param ProtectURLNote: xxx
+        :type ProtectURLNote: str
+        :param CreateTime: xxx
+        :type CreateTime: str
+        """
+        self.ProtectURLId = None
+        self.ProtectURL = None
+        self.ProtectWeb = None
+        self.ProtectURLStatus = None
+        self.ProtectURLNote = None
+        self.CreateTime = None
+
+
+    def _deserialize(self, params):
+        self.ProtectURLId = params.get("ProtectURLId")
+        self.ProtectURL = params.get("ProtectURL")
+        self.ProtectWeb = params.get("ProtectWeb")
+        self.ProtectURLStatus = params.get("ProtectURLStatus")
+        self.ProtectURLNote = params.get("ProtectURLNote")
+        self.CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReportFakeURLInfo(AbstractModel):
+    """举报网址信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FakeURLId: xxx
+        :type FakeURLId: int
+        :param DetectTime: xxx
+        :type DetectTime: str
+        :param ProtectURL: xxx
+        :type ProtectURL: str
+        :param ProtectWeb: xxx
+        :type ProtectWeb: str
+        :param FakeURL: xxx
+        :type FakeURL: str
+        :param Snapshot: xxx
+        :type Snapshot: str
+        :param IP: xxx
+        :type IP: str
+        :param IPLoc: xxx
+        :type IPLoc: str
+        :param Heat: xxx
+        :type Heat: int
+        :param Status: xxx
+        :type Status: int
+        :param Note: xxx
+        :type Note: str
+        :param FakeURLCompany: xxx
+        :type FakeURLCompany: str
+        :param FakeURLAttr: xxx
+        :type FakeURLAttr: str
+        :param FakeURLName: xxx
+        :type FakeURLName: str
+        :param FakeURLICP: xxx
+        :type FakeURLICP: str
+        :param FakeURLCreateTime: xxx
+        :type FakeURLCreateTime: str
+        :param FakeURLExpireTime: xxx
+        :type FakeURLExpireTime: str
+        :param BlockTime: xxx
+        :type BlockTime: str
+        """
+        self.FakeURLId = None
+        self.DetectTime = None
+        self.ProtectURL = None
+        self.ProtectWeb = None
+        self.FakeURL = None
+        self.Snapshot = None
+        self.IP = None
+        self.IPLoc = None
+        self.Heat = None
+        self.Status = None
+        self.Note = None
+        self.FakeURLCompany = None
+        self.FakeURLAttr = None
+        self.FakeURLName = None
+        self.FakeURLICP = None
+        self.FakeURLCreateTime = None
+        self.FakeURLExpireTime = None
+        self.BlockTime = None
+
+
+    def _deserialize(self, params):
+        self.FakeURLId = params.get("FakeURLId")
+        self.DetectTime = params.get("DetectTime")
+        self.ProtectURL = params.get("ProtectURL")
+        self.ProtectWeb = params.get("ProtectWeb")
+        self.FakeURL = params.get("FakeURL")
+        self.Snapshot = params.get("Snapshot")
+        self.IP = params.get("IP")
+        self.IPLoc = params.get("IPLoc")
+        self.Heat = params.get("Heat")
+        self.Status = params.get("Status")
+        self.Note = params.get("Note")
+        self.FakeURLCompany = params.get("FakeURLCompany")
+        self.FakeURLAttr = params.get("FakeURLAttr")
+        self.FakeURLName = params.get("FakeURLName")
+        self.FakeURLICP = params.get("FakeURLICP")
+        self.FakeURLCreateTime = params.get("FakeURLCreateTime")
+        self.FakeURLExpireTime = params.get("FakeURLExpireTime")
+        self.BlockTime = params.get("BlockTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

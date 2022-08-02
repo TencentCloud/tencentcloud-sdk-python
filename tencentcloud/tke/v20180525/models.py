@@ -8626,11 +8626,14 @@ class DescribeTKEEdgeScriptRequest(AbstractModel):
         :type NodeName: str
         :param Config: json格式的节点配置
         :type Config: str
+        :param ScriptVersion: 可以下载某个历史版本的edgectl脚本，默认下载最新版本，edgectl版本信息可以在脚本里查看
+        :type ScriptVersion: str
         """
         self.ClusterId = None
         self.Interface = None
         self.NodeName = None
         self.Config = None
+        self.ScriptVersion = None
 
 
     def _deserialize(self, params):
@@ -8638,6 +8641,7 @@ class DescribeTKEEdgeScriptRequest(AbstractModel):
         self.Interface = params.get("Interface")
         self.NodeName = params.get("NodeName")
         self.Config = params.get("Config")
+        self.ScriptVersion = params.get("ScriptVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8660,12 +8664,16 @@ class DescribeTKEEdgeScriptResponse(AbstractModel):
         :type Token: str
         :param Command: 下载命令
         :type Command: str
+        :param ScriptVersion: edgectl脚本版本，默认拉取最新版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScriptVersion: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Link = None
         self.Token = None
         self.Command = None
+        self.ScriptVersion = None
         self.RequestId = None
 
 
@@ -8673,6 +8681,7 @@ class DescribeTKEEdgeScriptResponse(AbstractModel):
         self.Link = params.get("Link")
         self.Token = params.get("Token")
         self.Command = params.get("Command")
+        self.ScriptVersion = params.get("ScriptVersion")
         self.RequestId = params.get("RequestId")
 
 
@@ -9266,14 +9275,24 @@ class EdgeClusterAdvancedSettings(AbstractModel):
         :param ExtraArgs: 集群自定义参数
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExtraArgs: :class:`tencentcloud.tke.v20180525.models.EdgeClusterExtraArgs`
+        :param Runtime: 运行时类型，支持"docker"和"containerd"，默认为docker
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Runtime: str
+        :param ProxyMode: 集群kube-proxy转发模式，支持"iptables"和"ipvs"，默认为iptables
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProxyMode: str
         """
         self.ExtraArgs = None
+        self.Runtime = None
+        self.ProxyMode = None
 
 
     def _deserialize(self, params):
         if params.get("ExtraArgs") is not None:
             self.ExtraArgs = EdgeClusterExtraArgs()
             self.ExtraArgs._deserialize(params.get("ExtraArgs"))
+        self.Runtime = params.get("Runtime")
+        self.ProxyMode = params.get("ProxyMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

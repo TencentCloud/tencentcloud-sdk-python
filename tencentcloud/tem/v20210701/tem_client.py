@@ -232,6 +232,35 @@ class TemClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeApplicationInfo(self, request):
+        """服务基本信息查看
+
+        :param request: Request instance for DescribeApplicationInfo.
+        :type request: :class:`tencentcloud.tem.v20210701.models.DescribeApplicationInfoRequest`
+        :rtype: :class:`tencentcloud.tem.v20210701.models.DescribeApplicationInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeApplicationInfo", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeApplicationInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeApplicationPods(self, request):
         """获取应用实例列表
 
