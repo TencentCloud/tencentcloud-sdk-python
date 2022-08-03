@@ -536,7 +536,7 @@ class CompressInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Format: 压缩格式，支持gzip、lzop和none不压缩
+        :param Format: 压缩格式，支持gzip、lzop、snappy和none不压缩
         :type Format: str
         """
         self.Format = None

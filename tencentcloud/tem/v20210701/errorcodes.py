@@ -23,6 +23,9 @@ INTERNALERROR_ADDNEWNODEERROR = 'InternalError.AddNewNodeError'
 # 创建apm资源失败。
 INTERNALERROR_CREATEAPMRESOURCEERROR = 'InternalError.CreateApmResourceError'
 
+# 创建配置失败。
+INTERNALERROR_CREATECONFIGDATAERROR = 'InternalError.CreateConfigDataError'
+
 # 底层集群创建失败。
 INTERNALERROR_CREATEEKSCLUSTERERROR = 'InternalError.CreateEksClusterError'
 
@@ -41,6 +44,9 @@ INTERNALERROR_DELETESERVICEERROR = 'InternalError.DeleteServiceError'
 # 版本部署调用失败。
 INTERNALERROR_DEPLOYVERSIONERROR = 'InternalError.DeployVersionError'
 
+# 查询配置列表失败。
+INTERNALERROR_DESCRIBECONFIGDATALISTERROR = 'InternalError.DescribeConfigDataListError'
+
 # 查询 ingress 失败。
 INTERNALERROR_DESCRIBEINGRESSERROR = 'InternalError.DescribeIngressError'
 
@@ -56,6 +62,9 @@ INTERNALERROR_DESCRIBESERVICEINGRESSERROR = 'InternalError.DescribeServiceIngres
 # 查询service列表失败。
 INTERNALERROR_DESCRIBESERVICELISTERROR = 'InternalError.DescribeServiceListError'
 
+# 修改配置失败。
+INTERNALERROR_MODIFYCONFIGDATAERROR = 'InternalError.ModifyConfigDataError'
+
 # 重启失败。
 INTERNALERROR_RESTARTAPPLICATIONERROR = 'InternalError.RestartApplicationError'
 
@@ -67,6 +76,15 @@ INTERNALERROR_UPDATEINGRESSERROR = 'InternalError.UpdateIngressError'
 
 # 只支持绑定一种弹性伸缩。
 INVALIDPARAMETERVALUE_AUTOSCALERLARGERTHANONE = 'InvalidParameterValue.AutoScalerLargerThanOne'
+
+# 配置已存在。
+INVALIDPARAMETERVALUE_CONFIGDATAALREADYEXIST = 'InvalidParameterValue.ConfigDataAlreadyExist'
+
+# 配置不合法。
+INVALIDPARAMETERVALUE_CONFIGDATAINVALID = 'InvalidParameterValue.ConfigDataInvalid'
+
+# 定时弹性伸缩目标实例数不合法。
+INVALIDPARAMETERVALUE_CRONHPAREPLICASINVALID = 'InvalidParameterValue.CronHpaReplicasInvalid'
 
 # 版本号格式非法。
 INVALIDPARAMETERVALUE_INVALIDDEPLOYVERSION = 'InvalidParameterValue.InvalidDeployVersion'
@@ -128,6 +146,9 @@ MISSINGPARAMETER_NAMESPACEIDNULL = 'MissingParameter.NamespaceIdNull'
 # 包名不能为空。
 MISSINGPARAMETER_PKGNAMENULL = 'MissingParameter.PkgNameNull'
 
+# 弹性规则ID不能为空。
+MISSINGPARAMETER_SCALERIDNULL = 'MissingParameter.ScalerIdNull'
+
 # 服务ID不能为空。
 MISSINGPARAMETER_SERVICEIDNULL = 'MissingParameter.ServiceIdNull'
 
@@ -163,6 +184,9 @@ RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = 'ResourceNotFound.VersionNamespaceNo
 
 # 找不到版本对应的应用。
 RESOURCENOTFOUND_VERSIONSERVICENOTFOUND = 'ResourceNotFound.VersionServiceNotFound'
+
+# 应用已停止。
+RESOURCEUNAVAILABLE_APPLICATIONSTOPPED = 'ResourceUnavailable.ApplicationStopped'
 
 # 等待组件安装。
 RESOURCEUNAVAILABLE_WAITFORKRUISE = 'ResourceUnavailable.WaitForKruise'

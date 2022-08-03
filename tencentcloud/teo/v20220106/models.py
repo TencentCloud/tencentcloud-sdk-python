@@ -10015,7 +10015,10 @@ class OriginRecord(AbstractModel):
         :type Area: list of str
         :param Weight: 当源站配置类型Type=weight时，表示权重
 取值范围为[1-100]
-源站组内多个源站权重总和应为100
+源站组内多个源站权重总和应为100。
+当源站配置类型Type=proto，表示权重
+取值范围为[1-100]
+源站组内Proto相同的多个源站权重总和应为100。
         :type Weight: int
         :param Port: 端口
         :type Port: int
@@ -10029,6 +10032,9 @@ class OriginRecord(AbstractModel):
 当源站类型Private=true时有效
 注意：此字段可能返回 null，表示取不到有效值。
         :type PrivateParameter: list of OriginRecordPrivateParameter
+        :param Proto: 当源站配置类型Type=proto时，表示客户端请求协议，取值：http/https
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Proto: str
         """
         self.Record = None
         self.Area = None
@@ -10037,6 +10043,7 @@ class OriginRecord(AbstractModel):
         self.RecordId = None
         self.Private = None
         self.PrivateParameter = None
+        self.Proto = None
 
 
     def _deserialize(self, params):
@@ -10052,6 +10059,7 @@ class OriginRecord(AbstractModel):
                 obj = OriginRecordPrivateParameter()
                 obj._deserialize(item)
                 self.PrivateParameter.append(obj)
+        self.Proto = params.get("Proto")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -11497,11 +11505,11 @@ class WafRule(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BlockRuleIDs: 黑名单
+        :param BlockRuleIDs: 黑名单，ID参考接口 DescribeSecurityPolicyManagedRules
         :type BlockRuleIDs: list of int
-        :param Switch: id的开关
+        :param Switch: 托管规则 开关
         :type Switch: str
-        :param ObserveRuleIDs: 观察模式
+        :param ObserveRuleIDs: 观察模式，ID参考接口 DescribeSecurityPolicyManagedRules
 注意：此字段可能返回 null，表示取不到有效值。
         :type ObserveRuleIDs: list of int
         """

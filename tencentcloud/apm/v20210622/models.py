@@ -694,6 +694,10 @@ class DescribeMetricRecordsRequest(AbstractModel):
         :type EndTime: int
         :param BusinessName: 业务名称（默认值：taw）
         :type BusinessName: str
+        :param PageIndex: 页码
+        :type PageIndex: int
+        :param PageSize: 页长
+        :type PageSize: int
         """
         self.Filters = None
         self.Metrics = None
@@ -705,6 +709,8 @@ class DescribeMetricRecordsRequest(AbstractModel):
         self.Offset = None
         self.EndTime = None
         self.BusinessName = None
+        self.PageIndex = None
+        self.PageSize = None
 
 
     def _deserialize(self, params):
@@ -730,6 +736,8 @@ class DescribeMetricRecordsRequest(AbstractModel):
         self.Offset = params.get("Offset")
         self.EndTime = params.get("EndTime")
         self.BusinessName = params.get("BusinessName")
+        self.PageIndex = params.get("PageIndex")
+        self.PageSize = params.get("PageSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -749,10 +757,14 @@ class DescribeMetricRecordsResponse(AbstractModel):
         :param Records: 指标结果集
 注意：此字段可能返回 null，表示取不到有效值。
         :type Records: list of ApmMetricRecord
+        :param TotalCount: 查询指标结果集条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Records = None
+        self.TotalCount = None
         self.RequestId = None
 
 
@@ -763,6 +775,7 @@ class DescribeMetricRecordsResponse(AbstractModel):
                 obj = ApmMetricRecord()
                 obj._deserialize(item)
                 self.Records.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 

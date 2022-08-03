@@ -84,16 +84,22 @@ class CreateSessionRequest(AbstractModel):
         :type UserIp: str
         :param ClientSession: 客户端session信息，从SDK请求中获得
         :type ClientSession: str
+        :param RunMode: 云端运行模式。
+RunWithoutClient：允许无客户端连接的情况下仍保持云端 App 运行
+默认值（空）：要求必须有客户端连接才会保持云端 App 运行。
+        :type RunMode: str
         """
         self.UserId = None
         self.UserIp = None
         self.ClientSession = None
+        self.RunMode = None
 
 
     def _deserialize(self, params):
         self.UserId = params.get("UserId")
         self.UserIp = params.get("UserIp")
         self.ClientSession = params.get("ClientSession")
+        self.RunMode = params.get("RunMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

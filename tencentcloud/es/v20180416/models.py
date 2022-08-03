@@ -1356,6 +1356,8 @@ class DescribeLogstashInstancesRequest(AbstractModel):
         :type OrderByKey: int
         :param OrderByType: 排序方式<li>0：升序</li><li>1：降序</li>若传递了orderByKey未传递orderByType, 则默认升序
         :type OrderByType: int
+        :param VpcIds: VpcId 筛选项
+        :type VpcIds: list of str
         """
         self.Zone = None
         self.InstanceIds = None
@@ -1364,6 +1366,7 @@ class DescribeLogstashInstancesRequest(AbstractModel):
         self.Limit = None
         self.OrderByKey = None
         self.OrderByType = None
+        self.VpcIds = None
 
 
     def _deserialize(self, params):
@@ -1374,6 +1377,7 @@ class DescribeLogstashInstancesRequest(AbstractModel):
         self.Limit = params.get("Limit")
         self.OrderByKey = params.get("OrderByKey")
         self.OrderByType = params.get("OrderByType")
+        self.VpcIds = params.get("VpcIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

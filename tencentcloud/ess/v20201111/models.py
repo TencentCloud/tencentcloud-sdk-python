@@ -100,6 +100,42 @@ HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
         
 
 
+class ApproverRestriction(AbstractModel):
+    """指定签署人限制项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 指定签署人名字
+        :type Name: str
+        :param Mobile: 指定签署人手机号
+        :type Mobile: str
+        :param IdCardType: 指定签署人证件类型
+        :type IdCardType: str
+        :param IdCardNumber: 指定签署人证件号码
+        :type IdCardNumber: str
+        """
+        self.Name = None
+        self.Mobile = None
+        self.IdCardType = None
+        self.IdCardNumber = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Mobile = params.get("Mobile")
+        self.IdCardType = params.get("IdCardType")
+        self.IdCardNumber = params.get("IdCardNumber")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Caller(AbstractModel):
     """此结构体 (Caller) 用于描述调用方属性。
 
@@ -384,6 +420,65 @@ KEYWORD 关键字，使用ComponentId指定关键字
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class CreateBatchCancelFlowUrlRequest(AbstractModel):
+    """CreateBatchCancelFlowUrl请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Operator: 调用方用户信息，userId 必填
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param FlowIds: 需要执行撤回的签署流程id数组，最多100个
+        :type FlowIds: list of str
+        """
+        self.Operator = None
+        self.FlowIds = None
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self.Operator = UserInfo()
+            self.Operator._deserialize(params.get("Operator"))
+        self.FlowIds = params.get("FlowIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateBatchCancelFlowUrlResponse(AbstractModel):
+    """CreateBatchCancelFlowUrl返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BatchCancelFlowUrl: 批量撤回签署流程链接
+        :type BatchCancelFlowUrl: str
+        :param FailMessages: 签署流程撤回失败信息
+        :type FailMessages: list of str
+        :param UrlExpireOn: 签署连接过期时间字符串：年月日-时分秒
+        :type UrlExpireOn: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.BatchCancelFlowUrl = None
+        self.FailMessages = None
+        self.UrlExpireOn = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.BatchCancelFlowUrl = params.get("BatchCancelFlowUrl")
+        self.FailMessages = params.get("FailMessages")
+        self.UrlExpireOn = params.get("UrlExpireOn")
+        self.RequestId = params.get("RequestId")
 
 
 class CreateConvertTaskApiRequest(AbstractModel):
@@ -800,6 +895,8 @@ class CreateMultiFlowSignQRCodeRequest(AbstractModel):
         :type FlowEffectiveDay: int
         :param QrEffectiveDay: 二维码有效天数 默认7天 最高设置不超过90天
         :type QrEffectiveDay: int
+        :param ApproverRestrictions: 限制二维码用户条件
+        :type ApproverRestrictions: :class:`tencentcloud.ess.v20201111.models.ApproverRestriction`
         """
         self.TemplateId = None
         self.FlowName = None
@@ -809,6 +906,7 @@ class CreateMultiFlowSignQRCodeRequest(AbstractModel):
         self.MaxFlowNum = None
         self.FlowEffectiveDay = None
         self.QrEffectiveDay = None
+        self.ApproverRestrictions = None
 
 
     def _deserialize(self, params):
@@ -824,6 +922,9 @@ class CreateMultiFlowSignQRCodeRequest(AbstractModel):
         self.MaxFlowNum = params.get("MaxFlowNum")
         self.FlowEffectiveDay = params.get("FlowEffectiveDay")
         self.QrEffectiveDay = params.get("QrEffectiveDay")
+        if params.get("ApproverRestrictions") is not None:
+            self.ApproverRestrictions = ApproverRestriction()
+            self.ApproverRestrictions._deserialize(params.get("ApproverRestrictions"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -842,10 +943,13 @@ class CreateMultiFlowSignQRCodeResponse(AbstractModel):
         r"""
         :param QrCode: 签署二维码对象
         :type QrCode: :class:`tencentcloud.ess.v20201111.models.SignQrCode`
+        :param SignUrls: 签署链接对象
+        :type SignUrls: :class:`tencentcloud.ess.v20201111.models.SignUrl`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.QrCode = None
+        self.SignUrls = None
         self.RequestId = None
 
 
@@ -853,6 +957,9 @@ class CreateMultiFlowSignQRCodeResponse(AbstractModel):
         if params.get("QrCode") is not None:
             self.QrCode = SignQrCode()
             self.QrCode._deserialize(params.get("QrCode"))
+        if params.get("SignUrls") is not None:
+            self.SignUrls = SignUrl()
+            self.SignUrls._deserialize(params.get("SignUrls"))
         self.RequestId = params.get("RequestId")
 
 
@@ -1713,6 +1820,38 @@ class SignQrCode(AbstractModel):
         self.QrCodeId = params.get("QrCodeId")
         self.QrCodeUrl = params.get("QrCodeUrl")
         self.ExpiredTime = params.get("ExpiredTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SignUrl(AbstractModel):
+    """一码多扫签署二维码签署信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AppSignUrl: 小程序签署链接
+        :type AppSignUrl: str
+        :param EffectiveTime: 签署链接有效时间
+        :type EffectiveTime: str
+        :param HttpSignUrl: 移动端签署链接
+        :type HttpSignUrl: str
+        """
+        self.AppSignUrl = None
+        self.EffectiveTime = None
+        self.HttpSignUrl = None
+
+
+    def _deserialize(self, params):
+        self.AppSignUrl = params.get("AppSignUrl")
+        self.EffectiveTime = params.get("EffectiveTime")
+        self.HttpSignUrl = params.get("HttpSignUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
