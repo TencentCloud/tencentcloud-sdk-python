@@ -559,6 +559,87 @@ class CreateEnvironmentResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateLogConfigRequest(AbstractModel):
+    """CreateLogConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EnvironmentId: 环境 ID
+        :type EnvironmentId: str
+        :param Name: 配置名
+        :type Name: str
+        :param InputType: 收集类型，container_stdout 为标准输出；container_file 为文件；
+        :type InputType: str
+        :param ApplicationId: 应用 ID
+        :type ApplicationId: str
+        :param LogsetId: 日志集 ID
+        :type LogsetId: str
+        :param TopicId: 日志主题 ID
+        :type TopicId: str
+        :param LogType: 日志提取模式，minimalist_log 为单行全文；multiline_log 为多行全文；
+        :type LogType: str
+        :param BeginningRegex: 首行正则表达式，当LogType=multiline_log 时生效
+        :type BeginningRegex: str
+        :param LogPath: 收集文件目录，当 InputType=container_file 时生效
+        :type LogPath: str
+        :param FilePattern: 收集文件名模式，当 InputType=container_file 时生效
+        :type FilePattern: str
+        """
+        self.EnvironmentId = None
+        self.Name = None
+        self.InputType = None
+        self.ApplicationId = None
+        self.LogsetId = None
+        self.TopicId = None
+        self.LogType = None
+        self.BeginningRegex = None
+        self.LogPath = None
+        self.FilePattern = None
+
+
+    def _deserialize(self, params):
+        self.EnvironmentId = params.get("EnvironmentId")
+        self.Name = params.get("Name")
+        self.InputType = params.get("InputType")
+        self.ApplicationId = params.get("ApplicationId")
+        self.LogsetId = params.get("LogsetId")
+        self.TopicId = params.get("TopicId")
+        self.LogType = params.get("LogType")
+        self.BeginningRegex = params.get("BeginningRegex")
+        self.LogPath = params.get("LogPath")
+        self.FilePattern = params.get("FilePattern")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateLogConfigResponse(AbstractModel):
+    """CreateLogConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 创建是否成功
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateResourceRequest(AbstractModel):
     """CreateResource请求参数结构体
 
@@ -2060,6 +2141,128 @@ class DescribeIngressesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeLogConfigRequest(AbstractModel):
+    """DescribeLogConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EnvironmentId: 环境 ID
+        :type EnvironmentId: str
+        :param Name: 配置名
+        :type Name: str
+        :param ApplicationId: 应用 ID
+        :type ApplicationId: str
+        """
+        self.EnvironmentId = None
+        self.Name = None
+        self.ApplicationId = None
+
+
+    def _deserialize(self, params):
+        self.EnvironmentId = params.get("EnvironmentId")
+        self.Name = params.get("Name")
+        self.ApplicationId = params.get("ApplicationId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLogConfigResponse(AbstractModel):
+    """DescribeLogConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 配置
+        :type Result: :class:`tencentcloud.tem.v20210701.models.LogConfig`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = LogConfig()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribePagedLogConfigListRequest(AbstractModel):
+    """DescribePagedLogConfigList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EnvironmentId: 环境 ID
+        :type EnvironmentId: str
+        :param ApplicationId: 应用 ID
+        :type ApplicationId: str
+        :param ApplicationName: 应用名
+        :type ApplicationName: str
+        :param Name: 规则名
+        :type Name: str
+        :param Limit: 分页大小，默认 20
+        :type Limit: int
+        :param ContinueToken: 翻页游标
+        :type ContinueToken: str
+        """
+        self.EnvironmentId = None
+        self.ApplicationId = None
+        self.ApplicationName = None
+        self.Name = None
+        self.Limit = None
+        self.ContinueToken = None
+
+
+    def _deserialize(self, params):
+        self.EnvironmentId = params.get("EnvironmentId")
+        self.ApplicationId = params.get("ApplicationId")
+        self.ApplicationName = params.get("ApplicationName")
+        self.Name = params.get("Name")
+        self.Limit = params.get("Limit")
+        self.ContinueToken = params.get("ContinueToken")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePagedLogConfigListResponse(AbstractModel):
+    """DescribePagedLogConfigList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 日志收集配置列表
+        :type Result: :class:`tencentcloud.tem.v20210701.models.LogConfigListPage`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = LogConfigListPage()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeRelatedIngressesRequest(AbstractModel):
     """DescribeRelatedIngresses请求参数结构体
 
@@ -2270,6 +2473,59 @@ class DestroyEnvironmentResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DestroyLogConfigRequest(AbstractModel):
+    """DestroyLogConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EnvironmentId: 环境 ID
+        :type EnvironmentId: str
+        :param Name: 配置名
+        :type Name: str
+        :param ApplicationId: 应用 ID
+        :type ApplicationId: str
+        """
+        self.EnvironmentId = None
+        self.Name = None
+        self.ApplicationId = None
+
+
+    def _deserialize(self, params):
+        self.EnvironmentId = params.get("EnvironmentId")
+        self.Name = params.get("Name")
+        self.ApplicationId = params.get("ApplicationId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DestroyLogConfigResponse(AbstractModel):
+    """DestroyLogConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 返回结果
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
 class EksService(AbstractModel):
     """eks service info
 
@@ -2310,6 +2566,21 @@ class EksService(AbstractModel):
         :param PortMappings: 端口映射
 注意：此字段可能返回 null，表示取不到有效值。
         :type PortMappings: list of PortMapping
+        :param ServicePortMappingList: 每种类型访问配置详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServicePortMappingList: list of ServicePortMapping
+        :param FlushAll: 刷新复写所有类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlushAll: bool
+        :param EnableRegistryNextDeploy: 1: 下次部署自动注入注册中心信息；0：不注入
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnableRegistryNextDeploy: int
+        :param ApplicationId: 返回应用id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationId: str
+        :param AllIpDone: 所有服务IP是否已经ready
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AllIpDone: bool
         """
         self.Name = None
         self.Ports = None
@@ -2322,6 +2593,11 @@ class EksService(AbstractModel):
         self.SubnetId = None
         self.LoadBalanceId = None
         self.PortMappings = None
+        self.ServicePortMappingList = None
+        self.FlushAll = None
+        self.EnableRegistryNextDeploy = None
+        self.ApplicationId = None
+        self.AllIpDone = None
 
 
     def _deserialize(self, params):
@@ -2341,6 +2617,16 @@ class EksService(AbstractModel):
                 obj = PortMapping()
                 obj._deserialize(item)
                 self.PortMappings.append(obj)
+        if params.get("ServicePortMappingList") is not None:
+            self.ServicePortMappingList = []
+            for item in params.get("ServicePortMappingList"):
+                obj = ServicePortMapping()
+                obj._deserialize(item)
+                self.ServicePortMappingList.append(obj)
+        self.FlushAll = params.get("FlushAll")
+        self.EnableRegistryNextDeploy = params.get("EnableRegistryNextDeploy")
+        self.ApplicationId = params.get("ApplicationId")
+        self.AllIpDone = params.get("AllIpDone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2809,6 +3095,118 @@ class IngressTls(AbstractModel):
         
 
 
+class LogConfig(AbstractModel):
+    """日志收集配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 名称
+        :type Name: str
+        :param InputType: 收集类型，container_stdout 为标准输出；container_file 为文件；
+        :type InputType: str
+        :param LogsetId: 日志集 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogsetId: str
+        :param TopicId: 日志主题 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicId: str
+        :param LogType: 日志提取模式，minimalist_log 为单行全文；multiline_log 为多行全文；
+        :type LogType: str
+        :param BeginningRegex: 首行正则表达式，当LogType=multiline_log 时生效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BeginningRegex: str
+        :param LogPath: 收集文件目录，当 InputType=container_file 时生效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogPath: str
+        :param FilePattern: 收集文件名模式，当 InputType=container_file 时生效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FilePattern: str
+        :param CreateDate: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateDate: str
+        :param ModifyDate: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifyDate: str
+        :param ApplicationId: 应用 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationId: str
+        :param ApplicationName: 应用名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationName: str
+        """
+        self.Name = None
+        self.InputType = None
+        self.LogsetId = None
+        self.TopicId = None
+        self.LogType = None
+        self.BeginningRegex = None
+        self.LogPath = None
+        self.FilePattern = None
+        self.CreateDate = None
+        self.ModifyDate = None
+        self.ApplicationId = None
+        self.ApplicationName = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.InputType = params.get("InputType")
+        self.LogsetId = params.get("LogsetId")
+        self.TopicId = params.get("TopicId")
+        self.LogType = params.get("LogType")
+        self.BeginningRegex = params.get("BeginningRegex")
+        self.LogPath = params.get("LogPath")
+        self.FilePattern = params.get("FilePattern")
+        self.CreateDate = params.get("CreateDate")
+        self.ModifyDate = params.get("ModifyDate")
+        self.ApplicationId = params.get("ApplicationId")
+        self.ApplicationName = params.get("ApplicationName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LogConfigListPage(AbstractModel):
+    """LogConfig 列表结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Records: 记录
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Records: list of LogConfig
+        :param ContinueToken: 翻页游标
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ContinueToken: str
+        """
+        self.Records = None
+        self.ContinueToken = None
+
+
+    def _deserialize(self, params):
+        if params.get("Records") is not None:
+            self.Records = []
+            for item in params.get("Records"):
+                obj = LogConfig()
+                obj._deserialize(item)
+                self.Records.append(obj)
+        self.ContinueToken = params.get("ContinueToken")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class LogOutputConf(AbstractModel):
     """日志输出配置
 
@@ -3191,6 +3589,65 @@ class ModifyIngressResponse(AbstractModel):
         r"""
         :param Result: 创建成功
 注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyLogConfigRequest(AbstractModel):
+    """ModifyLogConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EnvironmentId: 环境 ID
+        :type EnvironmentId: str
+        :param Name: 配置名
+        :type Name: str
+        :param Data: 日志收集配置信息
+        :type Data: :class:`tencentcloud.tem.v20210701.models.LogConfig`
+        :param ApplicationId: 应用 ID
+        :type ApplicationId: str
+        """
+        self.EnvironmentId = None
+        self.Name = None
+        self.Data = None
+        self.ApplicationId = None
+
+
+    def _deserialize(self, params):
+        self.EnvironmentId = params.get("EnvironmentId")
+        self.Name = params.get("Name")
+        if params.get("Data") is not None:
+            self.Data = LogConfig()
+            self.Data._deserialize(params.get("Data"))
+        self.ApplicationId = params.get("ApplicationId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyLogConfigResponse(AbstractModel):
+    """ModifyLogConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 编辑是否成功
         :type Result: bool
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3858,6 +4315,116 @@ class ServicePage(AbstractModel):
         self.Total = params.get("Total")
         self.Size = params.get("Size")
         self.Pages = params.get("Pages")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ServicePortMapping(AbstractModel):
+    """端口映射详细信息结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Type: 服务类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param ServiceName: 服务名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceName: str
+        :param ClusterIp: 集群内访问vip
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterIp: str
+        :param ExternalIp: 集群外方位vip
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExternalIp: str
+        :param SubnetId: 子网id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubnetId: str
+        :param VpcId: vpc id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcId: str
+        :param LoadBalanceId: LoadBalance Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LoadBalanceId: str
+        :param Yaml: yaml 内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Yaml: str
+        :param Ports: 暴露端口列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Ports: list of int
+        :param PortMappingItemList: 端口映射数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PortMappingItemList: list of ServicePortMappingItem
+        """
+        self.Type = None
+        self.ServiceName = None
+        self.ClusterIp = None
+        self.ExternalIp = None
+        self.SubnetId = None
+        self.VpcId = None
+        self.LoadBalanceId = None
+        self.Yaml = None
+        self.Ports = None
+        self.PortMappingItemList = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.ServiceName = params.get("ServiceName")
+        self.ClusterIp = params.get("ClusterIp")
+        self.ExternalIp = params.get("ExternalIp")
+        self.SubnetId = params.get("SubnetId")
+        self.VpcId = params.get("VpcId")
+        self.LoadBalanceId = params.get("LoadBalanceId")
+        self.Yaml = params.get("Yaml")
+        self.Ports = params.get("Ports")
+        if params.get("PortMappingItemList") is not None:
+            self.PortMappingItemList = []
+            for item in params.get("PortMappingItemList"):
+                obj = ServicePortMappingItem()
+                obj._deserialize(item)
+                self.PortMappingItemList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ServicePortMappingItem(AbstractModel):
+    """服务端口映射条目
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Port: 应用访问端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Port: int
+        :param TargetPort: 应用监听端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetPort: int
+        :param Protocol: 协议类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Protocol: str
+        """
+        self.Port = None
+        self.TargetPort = None
+        self.Protocol = None
+
+
+    def _deserialize(self, params):
+        self.Port = params.get("Port")
+        self.TargetPort = params.get("TargetPort")
+        self.Protocol = params.get("Protocol")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -1595,7 +1595,7 @@ class GetEidResultRequest(AbstractModel):
         r"""
         :param EidToken: E证通流程的唯一标识，调用GetEidToken接口时生成。
         :type EidToken: str
-        :param InfoType: 指定拉取的结果信息，取值（0：全部；1：文本类；2：身份证信息；3：最佳截图信息；5：意愿核身相关结果；）。
+        :param InfoType: 指定拉取的结果信息，取值（0：全部；1：文本类；2：身份证信息；3：最佳截图信息；5：意愿核身朗读模式相关结果；6：意愿核身问答模式相关结果）。
 如 13表示拉取文本类、最佳截图信息。
 默认值：0
         :type InfoType: str
@@ -1639,9 +1639,12 @@ class GetEidResultResponse(AbstractModel):
         :param EidInfo: Eid信息。（包括商户下用户唯一标识以及加密后的姓名、身份证号信息。解密方式详见[E证通获取实名信息指引](https://cloud.tencent.com/document/product/1007/63370)）
 注意：此字段可能返回 null，表示取不到有效值。
         :type EidInfo: :class:`tencentcloud.faceid.v20180301.models.EidInfo`
-        :param IntentionVerifyData: 意愿核身相关信息。若未使用意愿核身功能，该字段返回值可以不处理。
+        :param IntentionVerifyData: 意愿核身朗读模式相关信息。若未使用意愿核身朗读功能，该字段返回值可以不处理。
 注意：此字段可能返回 null，表示取不到有效值。
         :type IntentionVerifyData: :class:`tencentcloud.faceid.v20180301.models.IntentionVerifyData`
+        :param IntentionQuestionResult: 意愿核身问答模式相关信息。若未使用意愿核身问答模式功能，该字段返回值可以不处理。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IntentionQuestionResult: :class:`tencentcloud.faceid.v20180301.models.IntentionQuestionResult`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1650,6 +1653,7 @@ class GetEidResultResponse(AbstractModel):
         self.BestFrame = None
         self.EidInfo = None
         self.IntentionVerifyData = None
+        self.IntentionQuestionResult = None
         self.RequestId = None
 
 
@@ -1669,6 +1673,9 @@ class GetEidResultResponse(AbstractModel):
         if params.get("IntentionVerifyData") is not None:
             self.IntentionVerifyData = IntentionVerifyData()
             self.IntentionVerifyData._deserialize(params.get("IntentionVerifyData"))
+        if params.get("IntentionQuestionResult") is not None:
+            self.IntentionQuestionResult = IntentionQuestionResult()
+            self.IntentionQuestionResult._deserialize(params.get("IntentionQuestionResult"))
         self.RequestId = params.get("RequestId")
 
 
@@ -1689,18 +1696,31 @@ class GetEidTokenConfig(AbstractModel):
         :type InputType: str
         :param UseIntentionVerify: 是否使用意愿核身，默认不使用。注意：如开启使用，则计费标签按【意愿核身】计费标签计价；如不开启，则计费标签按【E证通】计费标签计价，价格详见：[价格说明](https://cloud.tencent.com/document/product/1007/56804)。
         :type UseIntentionVerify: bool
-        :param IntentionVerifyText: 意愿核身使用的文案，若未使用意愿核身功能，该字段无需传入。默认为空，最长可接受120的字符串长度。
+        :param IntentionMode: 意愿核身模式。枚举值：1( 朗读模式)，2（问答模式） 。默认值1
+        :type IntentionMode: str
+        :param IntentionVerifyText: 意愿核身朗读模式使用的文案，若未使用意愿核身朗读功能，该字段无需传入。默认为空，最长可接受120的字符串长度。
         :type IntentionVerifyText: str
+        :param IntentionQuestions: 意愿核身问答模式的配置列表。当前仅支持一个问答。
+        :type IntentionQuestions: list of IntentionQuestion
         """
         self.InputType = None
         self.UseIntentionVerify = None
+        self.IntentionMode = None
         self.IntentionVerifyText = None
+        self.IntentionQuestions = None
 
 
     def _deserialize(self, params):
         self.InputType = params.get("InputType")
         self.UseIntentionVerify = params.get("UseIntentionVerify")
+        self.IntentionMode = params.get("IntentionMode")
         self.IntentionVerifyText = params.get("IntentionVerifyText")
+        if params.get("IntentionQuestions") is not None:
+            self.IntentionQuestions = []
+            for item in params.get("IntentionQuestions"):
+                obj = IntentionQuestion()
+                obj._deserialize(item)
+                self.IntentionQuestions.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

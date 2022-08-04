@@ -595,7 +595,7 @@ class BotLogData(AbstractModel):
 
 
 class BotManagedRule(AbstractModel):
-    """Bot 规则
+    """Bot 规则，下列规则ID可参考接口 DescribeBotManagedRules返回的ID信息
 
     """
 
@@ -1370,12 +1370,17 @@ class Compression(AbstractModel):
 on：开启
 off：关闭
         :type Switch: str
+        :param Algorithms: 支持的压缩算法列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Algorithms: list of str
         """
         self.Switch = None
+        self.Algorithms = None
 
 
     def _deserialize(self, params):
         self.Switch = params.get("Switch")
+        self.Algorithms = params.get("Algorithms")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2496,7 +2501,7 @@ class DDoSGeoIp(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RegionId: 地域信息
+        :param RegionId: 地域信息，ID参考接口DescribeSecurityPolicyRegions
 注意：此字段可能返回 null，表示取不到有效值。
         :type RegionId: list of int
         :param Switch: 区域封禁清空标识
@@ -11466,7 +11471,7 @@ class WafConfig(AbstractModel):
         :type Level: str
         :param Mode: 模式 block-阻断；observe-观察模式；close-关闭
         :type Mode: str
-        :param WafRules: 门神黑白名单
+        :param WafRules: 托管规则黑白名单
         :type WafRules: :class:`tencentcloud.teo.v20220106.models.WafRule`
         :param AiRule: AI规则引擎防护
 注意：此字段可能返回 null，表示取不到有效值。

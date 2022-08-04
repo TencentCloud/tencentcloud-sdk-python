@@ -800,14 +800,20 @@ Url、Image必须提供一个，如果都提供，只使用 Url。
 非腾讯云存储的Url速度和稳定性可能受一定影响。  
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :type Url: str
+        :param LocalBodySwitch: 人体局部关键点识别，开启后对人体局部图（例如部分身体部位）进行关键点识别，输出人体关键点坐标，默认不开启
+
+注意：若开启人体局部图片关键点识别，则BoundBox、Confidence返回为空。
+        :type LocalBodySwitch: bool
         """
         self.Image = None
         self.Url = None
+        self.LocalBodySwitch = None
 
 
     def _deserialize(self, params):
         self.Image = params.get("Image")
         self.Url = params.get("Url")
+        self.LocalBodySwitch = params.get("LocalBodySwitch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1207,16 +1213,20 @@ class KeyPointInfo(AbstractModel):
         :type X: float
         :param Y: 人体关键点纵坐标
         :type Y: float
+        :param BodyScore: 关键点坐标置信度，分数取值在0-1之间，阈值建议为0.25，小于0.25认为在图中无人体关键点。
+        :type BodyScore: float
         """
         self.KeyPointType = None
         self.X = None
         self.Y = None
+        self.BodyScore = None
 
 
     def _deserialize(self, params):
         self.KeyPointType = params.get("KeyPointType")
         self.X = params.get("X")
         self.Y = params.get("Y")
+        self.BodyScore = params.get("BodyScore")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -1750,46 +1750,56 @@ class DiskConfig(AbstractModel):
         r"""
         :param Available: 配置是否可用。
         :type Available: bool
-        :param DiskType: 云盘介质类型。取值范围：<br><li>CLOUD_BASIC：表示普通云硬盘<br><li>CLOUD_PREMIUM：表示高性能云硬盘<br><li>CLOUD_SSD：SSD表示SSD云硬盘。
-        :type DiskType: str
-        :param DiskUsage: 云盘类型。取值范围：<br><li>SYSTEM_DISK：表示系统盘<br><li>DATA_DISK：表示数据盘。
-        :type DiskUsage: str
         :param DiskChargeType: 付费模式。取值范围：<br><li>PREPAID：表示预付费，即包年包月<br><li>POSTPAID_BY_HOUR：表示后付费，即按量计费。
         :type DiskChargeType: str
-        :param MaxDiskSize: 最大可配置云盘大小，单位GB。
-        :type MaxDiskSize: int
-        :param MinDiskSize: 最小可配置云盘大小，单位GB。
-        :type MinDiskSize: int
         :param Zone: 云硬盘所属的[可用区](/document/product/213/15753#ZoneInfo)。
         :type Zone: str
-        :param DeviceClass: 实例机型。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DeviceClass: str
         :param InstanceFamily: 实例机型系列。详见[实例类型](https://cloud.tencent.com/document/product/213/11518)
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceFamily: str
+        :param DiskType: 云盘介质类型。取值范围：<br><li>CLOUD_BASIC：表示普通云硬盘<br><li>CLOUD_PREMIUM：表示高性能云硬盘<br><li>CLOUD_SSD：SSD表示SSD云硬盘。
+        :type DiskType: str
+        :param StepSize: 云盘大小变化的最小步长，单位GB。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StepSize: int
+        :param ExtraPerformanceRange: 额外的性能区间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExtraPerformanceRange: list of int
+        :param DeviceClass: 实例机型。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeviceClass: str
+        :param DiskUsage: 云盘类型。取值范围：<br><li>SYSTEM_DISK：表示系统盘<br><li>DATA_DISK：表示数据盘。
+        :type DiskUsage: str
+        :param MinDiskSize: 最小可配置云盘大小，单位GB。
+        :type MinDiskSize: int
+        :param MaxDiskSize: 最大可配置云盘大小，单位GB。
+        :type MaxDiskSize: int
         """
         self.Available = None
-        self.DiskType = None
-        self.DiskUsage = None
         self.DiskChargeType = None
-        self.MaxDiskSize = None
-        self.MinDiskSize = None
         self.Zone = None
-        self.DeviceClass = None
         self.InstanceFamily = None
+        self.DiskType = None
+        self.StepSize = None
+        self.ExtraPerformanceRange = None
+        self.DeviceClass = None
+        self.DiskUsage = None
+        self.MinDiskSize = None
+        self.MaxDiskSize = None
 
 
     def _deserialize(self, params):
         self.Available = params.get("Available")
-        self.DiskType = params.get("DiskType")
-        self.DiskUsage = params.get("DiskUsage")
         self.DiskChargeType = params.get("DiskChargeType")
-        self.MaxDiskSize = params.get("MaxDiskSize")
-        self.MinDiskSize = params.get("MinDiskSize")
         self.Zone = params.get("Zone")
-        self.DeviceClass = params.get("DeviceClass")
         self.InstanceFamily = params.get("InstanceFamily")
+        self.DiskType = params.get("DiskType")
+        self.StepSize = params.get("StepSize")
+        self.ExtraPerformanceRange = params.get("ExtraPerformanceRange")
+        self.DeviceClass = params.get("DeviceClass")
+        self.DiskUsage = params.get("DiskUsage")
+        self.MinDiskSize = params.get("MinDiskSize")
+        self.MaxDiskSize = params.get("MaxDiskSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

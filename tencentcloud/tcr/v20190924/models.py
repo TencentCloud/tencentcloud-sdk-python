@@ -6693,7 +6693,7 @@ class TcrRepositoryInfo(AbstractModel):
         :type Name: str
         :param Namespace: 命名空间名称
         :type Namespace: str
-        :param CreationTime: 创建时间
+        :param CreationTime: 创建时间，格式"2006-01-02 15:04:05.999999999 -0700 MST"
         :type CreationTime: str
         :param Public: 是否公开
         :type Public: bool
@@ -6703,7 +6703,7 @@ class TcrRepositoryInfo(AbstractModel):
         :param BriefDescription: 简单描述
 注意：此字段可能返回 null，表示取不到有效值。
         :type BriefDescription: str
-        :param UpdateTime: 更新时间
+        :param UpdateTime: 更新时间，格式"2006-01-02 15:04:05.999999999 -0700 MST"
         :type UpdateTime: str
         """
         self.Name = None

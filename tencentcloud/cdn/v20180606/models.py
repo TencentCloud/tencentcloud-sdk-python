@@ -949,6 +949,9 @@ class AdvancedCCRules(AbstractModel):
         :param Configure: 七层限频具体配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type Configure: list of ScdnSevenLayerRules
+        :param Switch: 是否开启改规则 on 开启，off关闭
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Switch: str
         """
         self.RuleName = None
         self.DetectionTime = None
@@ -958,6 +961,7 @@ class AdvancedCCRules(AbstractModel):
         self.Action = None
         self.RedirectUrl = None
         self.Configure = None
+        self.Switch = None
 
 
     def _deserialize(self, params):
@@ -974,6 +978,7 @@ class AdvancedCCRules(AbstractModel):
                 obj = ScdnSevenLayerRules()
                 obj._deserialize(item)
                 self.Configure.append(obj)
+        self.Switch = params.get("Switch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -12526,10 +12531,14 @@ class ScdnConfig(AbstractModel):
         :param AdvancedRules: 增强自定义 cc 防护规则
 注意：此字段可能返回 null，表示取不到有效值。
         :type AdvancedRules: list of AdvancedCCRules
+        :param GlobalAdvancedRules: 增强自定义 cc 防护规则， 全局
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GlobalAdvancedRules: list of AdvancedCCRules
         """
         self.Switch = None
         self.Rules = None
         self.AdvancedRules = None
+        self.GlobalAdvancedRules = None
 
 
     def _deserialize(self, params):
@@ -12546,6 +12555,12 @@ class ScdnConfig(AbstractModel):
                 obj = AdvancedCCRules()
                 obj._deserialize(item)
                 self.AdvancedRules.append(obj)
+        if params.get("GlobalAdvancedRules") is not None:
+            self.GlobalAdvancedRules = []
+            for item in params.get("GlobalAdvancedRules"):
+                obj = AdvancedCCRules()
+                obj._deserialize(item)
+                self.GlobalAdvancedRules.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

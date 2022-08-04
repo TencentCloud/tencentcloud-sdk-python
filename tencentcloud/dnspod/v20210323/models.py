@@ -3820,6 +3820,8 @@ class UserInfo(AbstractModel):
         :type WechatBinded: str
         :param Uin: 用户UIN
         :type Uin: int
+        :param FreeNs: 所属 DNS 服务器
+        :type FreeNs: list of str
         """
         self.Nick = None
         self.Id = None
@@ -3832,6 +3834,7 @@ class UserInfo(AbstractModel):
         self.RealName = None
         self.WechatBinded = None
         self.Uin = None
+        self.FreeNs = None
 
 
     def _deserialize(self, params):
@@ -3846,6 +3849,7 @@ class UserInfo(AbstractModel):
         self.RealName = params.get("RealName")
         self.WechatBinded = params.get("WechatBinded")
         self.Uin = params.get("Uin")
+        self.FreeNs = params.get("FreeNs")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
