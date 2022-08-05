@@ -7148,7 +7148,7 @@ class ProxyInfo(AbstractModel):
         :type RealServerRegion: str
         :param Bandwidth: 带宽，单位：Mbps。
         :type Bandwidth: int
-        :param Concurrent: 并发，单位：个/秒。
+        :param Concurrent: 并发，单位：万个/秒。
         :type Concurrent: int
         :param Status: 通道状态。其中：
 RUNNING表示运行中；

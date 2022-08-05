@@ -83,55 +83,6 @@ class DescribeRiskAssessmentResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class DescribeRiskModelRequest(AbstractModel):
-    """DescribeRiskModel请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param BusinessSecurityData: 业务入参
-        :type BusinessSecurityData: :class:`tencentcloud.rce.v20201103.models.InputDescribeRiskModelData`
-        """
-        self.BusinessSecurityData = None
-
-
-    def _deserialize(self, params):
-        if params.get("BusinessSecurityData") is not None:
-            self.BusinessSecurityData = InputDescribeRiskModelData()
-            self.BusinessSecurityData._deserialize(params.get("BusinessSecurityData"))
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeRiskModelResponse(AbstractModel):
-    """DescribeRiskModel返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Data: 业务出参
-        :type Data: :class:`tencentcloud.rce.v20201103.models.OutputDescribeRiskModel`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.Data = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        if params.get("Data") is not None:
-            self.Data = OutputDescribeRiskModel()
-            self.Data._deserialize(params.get("Data"))
-        self.RequestId = params.get("RequestId")
-
-
 class DescribeRiskTrendsRequest(AbstractModel):
     """DescribeRiskTrends请求参数结构体
 
@@ -204,42 +155,6 @@ class InputCryptoManageMarketingRisk(AbstractModel):
         self.IsAuthorized = params.get("IsAuthorized")
         self.CryptoType = params.get("CryptoType")
         self.CryptoContent = params.get("CryptoContent")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class InputDescribeRiskModelData(AbstractModel):
-    """客户请求入参
-
-    """
-
-    def __init__(self):
-        r"""
-        :param UserData: 业务参数加密后的签名值
-        :type UserData: str
-        :param ApplyDate: 调用时间戳，精确到秒
-        :type ApplyDate: int
-        :param UserId: 客户业务侧标识用户的唯一ID
-        :type UserId: str
-        :param IsTest: 是否为测试流量
-        :type IsTest: int
-        """
-        self.UserData = None
-        self.ApplyDate = None
-        self.UserId = None
-        self.IsTest = None
-
-
-    def _deserialize(self, params):
-        self.UserData = params.get("UserData")
-        self.ApplyDate = params.get("ApplyDate")
-        self.UserId = params.get("UserId")
-        self.IsTest = params.get("IsTest")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -568,65 +483,6 @@ class OtherAccountInfo(AbstractModel):
         self.AccountId = params.get("AccountId")
         self.MobilePhone = params.get("MobilePhone")
         self.DeviceId = params.get("DeviceId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class OutputDescribeRiskModel(AbstractModel):
-    """业务出参
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Code: 请求返回状态值，0为成功，别的结合Message查看
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Code: int
-        :param Message: 请求返回信息
-        :type Message: str
-        :param Value: 请求返回结果
-        :type Value: :class:`tencentcloud.rce.v20201103.models.OutputDescribeRiskModelValue`
-        """
-        self.Code = None
-        self.Message = None
-        self.Value = None
-
-
-    def _deserialize(self, params):
-        self.Code = params.get("Code")
-        self.Message = params.get("Message")
-        if params.get("Value") is not None:
-            self.Value = OutputDescribeRiskModelValue()
-            self.Value._deserialize(params.get("Value"))
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class OutputDescribeRiskModelValue(AbstractModel):
-    """风控建模服务出参对应值
-
-    """
-
-    def __init__(self):
-        r"""
-        :param ApplyScore: 模型分数值
-        :type ApplyScore: float
-        """
-        self.ApplyScore = None
-
-
-    def _deserialize(self, params):
-        self.ApplyScore = params.get("ApplyScore")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

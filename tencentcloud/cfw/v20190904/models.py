@@ -1651,7 +1651,7 @@ class DescribeBlockStaticListRequest(AbstractModel):
         :type StartTime: str
         :param EndTime: 结束时间
         :type EndTime: str
-        :param QueryType: 类型
+        :param QueryType: 列表类型，只能是下面三种之一：port、address、ip
         :type QueryType: str
         :param Top: top数
         :type Top: int

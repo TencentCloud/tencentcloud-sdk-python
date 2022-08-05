@@ -411,6 +411,90 @@ class DescribeCardsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeSmsRequest(AbstractModel):
+    """DescribeSms请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Sdkappid: 应用ID
+        :type Sdkappid: int
+        :param Iccid: 卡片ID
+        :type Iccid: str
+        :param Msisdn: 卡片号码
+        :type Msisdn: str
+        :param SmsType: 短信类型
+        :type SmsType: int
+        :param BeginTime: 开始时间  YYYY-MM-DD HH:mm:ss
+        :type BeginTime: str
+        :param EndTime: 结束时间  YYYY-MM-DD HH:mm:ss
+        :type EndTime: str
+        :param Offset: 偏移量
+        :type Offset: int
+        :param Limit: 小于200
+        :type Limit: int
+        """
+        self.Sdkappid = None
+        self.Iccid = None
+        self.Msisdn = None
+        self.SmsType = None
+        self.BeginTime = None
+        self.EndTime = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.Sdkappid = params.get("Sdkappid")
+        self.Iccid = params.get("Iccid")
+        self.Msisdn = params.get("Msisdn")
+        self.SmsType = params.get("SmsType")
+        self.BeginTime = params.get("BeginTime")
+        self.EndTime = params.get("EndTime")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSmsResponse(AbstractModel):
+    """DescribeSms返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Total: 总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: int
+        :param List: 短信列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type List: list of ResSms
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Total = None
+        self.List = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("List") is not None:
+            self.List = []
+            for item in params.get("List"):
+                obj = ResSms()
+                obj._deserialize(item)
+                self.List.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyUserCardRemarkRequest(AbstractModel):
     """ModifyUserCardRemark请求参数结构体
 
@@ -532,6 +616,71 @@ class ResRenew(AbstractModel):
 
     def _deserialize(self, params):
         self.OrderIds = params.get("OrderIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResSms(AbstractModel):
+    """查询短信列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Iccid: 卡片ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Iccid: str
+        :param Msisdn: 卡片号码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Msisdn: str
+        :param SdkAppid: 应用ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SdkAppid: int
+        :param Content: 短信内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Content: str
+        :param SmsType: 短信类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SmsType: int
+        :param SendTime: 发送时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SendTime: str
+        :param ReportTime: 推送时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReportTime: str
+        :param Remark: SUCC：成功  FAIL 失败
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
+        :param Status: 回执状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        """
+        self.Iccid = None
+        self.Msisdn = None
+        self.SdkAppid = None
+        self.Content = None
+        self.SmsType = None
+        self.SendTime = None
+        self.ReportTime = None
+        self.Remark = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.Iccid = params.get("Iccid")
+        self.Msisdn = params.get("Msisdn")
+        self.SdkAppid = params.get("SdkAppid")
+        self.Content = params.get("Content")
+        self.SmsType = params.get("SmsType")
+        self.SendTime = params.get("SendTime")
+        self.ReportTime = params.get("ReportTime")
+        self.Remark = params.get("Remark")
+        self.Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

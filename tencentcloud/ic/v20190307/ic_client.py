@@ -113,6 +113,35 @@ class IcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeSms(self, request):
+        """查询短信列表
+
+        :param request: Request instance for DescribeSms.
+        :type request: :class:`tencentcloud.ic.v20190307.models.DescribeSmsRequest`
+        :rtype: :class:`tencentcloud.ic.v20190307.models.DescribeSmsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSms", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeSmsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyUserCardRemark(self, request):
         """编辑卡片备注
 

@@ -489,6 +489,7 @@ class Component(AbstractModel):
         :param ComponentType: 如果是Component控件类型，则可选的字段为：
 TEXT - 普通文本控件；
 DATE - 普通日期控件；跟TEXT相比会有校验逻辑
+DYNAMIC_TABLE-动态表格控件；
 如果是SignComponent控件类型，则可选的字段为
 SIGN_SEAL - 签署印章控件；
 SIGN_DATE - 签署日期控件；
@@ -1489,6 +1490,65 @@ class FlowDetailInfo(AbstractModel):
 
 class FlowInfo(AbstractModel):
     """此结构体 (FlowInfo) 用于描述签署流程信息。
+
+    【动态表格传参说明】
+    当模板的 ComponentType='DYNAMIC_TABLE'时（渠道版），FormField.ComponentValue需要传递json格式的字符串参数，用于确定表头&填充动态表格（支持内容的单元格合并）
+    输入示例
+
+    ```
+    {
+        "headers":[
+            {
+                "content":"head1"
+            },
+            {
+                "content":"head2"
+            },
+            {
+                "content":"head3"
+            }
+        ],
+        "rowCount":3,
+        "body":{
+            "cells":[
+                {
+                    "rowStart":1,
+                    "rowEnd":1,
+                    "columnStart":1,
+                    "columnEnd":1,
+                    "content":"123"
+                },
+                {
+                    "rowStart":2,
+                    "rowEnd":3,
+                    "columnStart":1,
+                    "columnEnd":2,
+                    "content":"456"
+                },
+                {
+                    "rowStart":3,
+                    "rowEnd":3,
+                    "columnStart":3,
+                    "columnEnd":3,
+                    "content":"789"
+                }
+            ]
+        }
+    }
+
+    ```
+
+    表格参数说明
+
+    | 名称                | 类型    | 描述                                              |
+    | ------------------- | ------- | ------------------------------------------------- |
+    | headers             | Array   | 表头：不超过10列，不支持单元格合并，字数不超过100 |
+    | rowCount            | Integer | 表格内容最大行数                                  |
+    | cells.N.rowStart    | Integer | 单元格坐标：行起始index                           |
+    | cells.N.rowEnd      | Integer | 单元格坐标：行结束index                           |
+    | cells.N.columnStart | Integer | 单元格坐标：列起始index                           |
+    | cells.N.columnEnd   | Integer | 单元格坐标：列结束index                           |
+    | cells.N.content     | String  | 单元格内容，字数不超过100                         |
 
     """
 

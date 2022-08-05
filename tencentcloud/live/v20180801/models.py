@@ -3873,6 +3873,66 @@ class DescribeLiveDelayInfoListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeLiveDomainCertBindingsRequest(AbstractModel):
+    """DescribeLiveDomainCertBindings请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DomainSearch: 要搜索的域名字符串。
+        :type DomainSearch: str
+        :param Offset: 记录行的位置，从0开始。默认0。
+        :type Offset: int
+        :param Length: 记录行的最大数目。默认50。
+若不传，则最多返回50条数据。
+        :type Length: int
+        :param DomainName: 要查询的单个域名。
+        :type DomainName: str
+        :param OrderBy: 可取值：
+ExpireTimeAsc：证书过期时间降序。
+ExpireTimeDesc：证书过期时间升序。
+        :type OrderBy: str
+        """
+        self.DomainSearch = None
+        self.Offset = None
+        self.Length = None
+        self.DomainName = None
+        self.OrderBy = None
+
+
+    def _deserialize(self, params):
+        self.DomainSearch = params.get("DomainSearch")
+        self.Offset = params.get("Offset")
+        self.Length = params.get("Length")
+        self.DomainName = params.get("DomainName")
+        self.OrderBy = params.get("OrderBy")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLiveDomainCertBindingsResponse(AbstractModel):
+    """DescribeLiveDomainCertBindings返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeLiveDomainCertRequest(AbstractModel):
     """DescribeLiveDomainCert请求参数结构体
 
@@ -7734,6 +7794,37 @@ class HttpStatusInfo(AbstractModel):
         
 
 
+class LiveCertDomainInfo(AbstractModel):
+    """用作批量绑定域名和证书。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DomainName: 域名。
+        :type DomainName: str
+        :param Status: 是否启用域名的https规则。
+1：启用
+0：禁用
+-1：保持不变
+        :type Status: int
+        """
+        self.DomainName = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.DomainName = params.get("DomainName")
+        self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class LivePackageInfo(AbstractModel):
     """直播包信息。
 
@@ -7911,6 +8002,76 @@ class ModifyLiveCallbackTemplateResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyLiveDomainCertBindingsRequest(AbstractModel):
+    """ModifyLiveDomainCertBindings请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DomainInfos: 要绑定证书的播放域名/状态 信息列表。
+如果CloudCertId和证书公钥私钥对均不传，且域名列表已有绑定规则，只批量更新域名https规则的启用状态，并把未上传至腾讯云ssl的已有自有证书上传。
+        :type DomainInfos: list of LiveCertDomainInfo
+        :param CloudCertId: 腾讯云ssl的证书Id。
+见 https://cloud.tencent.com/document/api/400/41665
+        :type CloudCertId: str
+        :param CertificatePublicKey: 证书公钥。
+CloudCertId和公钥私钥对二选一，若CloudCertId将会舍弃公钥和私钥参数，否则将自动先把公钥私钥对上传至ssl新建证书，并使用上传成功后返回的CloudCertId。
+        :type CertificatePublicKey: str
+        :param CertificatePrivateKey: 证书私钥。
+CloudCertId和公钥私钥对二选一，若传CloudCertId将会舍弃公钥和私钥参数，否则将自动先把公钥私钥对上传至ssl新建证书，并使用上传成功后返回的CloudCertId。
+        :type CertificatePrivateKey: str
+        :param CertificateAlias: 上传至ssl证书中心的备注信息，只有新建证书时有效。传CloudCertId时会忽略。
+        :type CertificateAlias: str
+        """
+        self.DomainInfos = None
+        self.CloudCertId = None
+        self.CertificatePublicKey = None
+        self.CertificatePrivateKey = None
+        self.CertificateAlias = None
+
+
+    def _deserialize(self, params):
+        if params.get("DomainInfos") is not None:
+            self.DomainInfos = []
+            for item in params.get("DomainInfos"):
+                obj = LiveCertDomainInfo()
+                obj._deserialize(item)
+                self.DomainInfos.append(obj)
+        self.CloudCertId = params.get("CloudCertId")
+        self.CertificatePublicKey = params.get("CertificatePublicKey")
+        self.CertificatePrivateKey = params.get("CertificatePrivateKey")
+        self.CertificateAlias = params.get("CertificateAlias")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyLiveDomainCertBindingsResponse(AbstractModel):
+    """ModifyLiveDomainCertBindings返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MismatchedDomainNames: DomainNames 入参中，与证书不匹配的域名列表，将会跳过处理。
+        :type MismatchedDomainNames: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.MismatchedDomainNames = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.MismatchedDomainNames = params.get("MismatchedDomainNames")
         self.RequestId = params.get("RequestId")
 
 

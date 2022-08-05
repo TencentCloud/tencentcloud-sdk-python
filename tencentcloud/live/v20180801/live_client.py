@@ -1566,6 +1566,35 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeLiveDomainCertBindings(self, request):
+        """查询绑定证书的域名列表。
+
+        :param request: Request instance for DescribeLiveDomainCertBindings.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveDomainCertBindingsRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeLiveDomainCertBindingsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLiveDomainCertBindings", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeLiveDomainCertBindingsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeLiveDomainPlayInfoList(self, request):
         """查询实时的域名维度下行播放数据，由于数据处理有耗时，接口默认查询4分钟前的准实时数据。
 
@@ -3008,6 +3037,36 @@ class LiveClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyLiveCallbackTemplateResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyLiveDomainCertBindings(self, request):
+        """批量绑定证书对应的播放域名，并更新启用状态。
+        新建自有证书将自动上传至腾讯云ssl。
+
+        :param request: Request instance for ModifyLiveDomainCertBindings.
+        :type request: :class:`tencentcloud.live.v20180801.models.ModifyLiveDomainCertBindingsRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.ModifyLiveDomainCertBindingsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyLiveDomainCertBindings", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyLiveDomainCertBindingsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

@@ -1454,12 +1454,17 @@ class FlowBrief(AbstractModel):
         :param FlowType: 流程的类型
         :type FlowType: str
         :param FlowStatus: 流程状态
-- `1` 未签署
+- `0`  还没有发起
+- `1`  未签署
 - `2`  部分签署
 - `3`  已退回
 - `4`  完成签署
 - `5`  已过期
 - `6`  已取消
+- `7`  还没有预发起
+- `8`  等待填写
+- `9`  部分填写
+- `10`  拒填
 注意：此字段可能返回 null，表示取不到有效值。
         :type FlowStatus: int
         :param CreatedOn: 流程创建的时间戳
