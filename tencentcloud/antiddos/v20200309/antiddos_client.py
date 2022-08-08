@@ -1185,6 +1185,33 @@ class AntiddosClient(AbstractClient):
             else:
                 raise TencentCloudSDKException(e.message, e.message)
 
+    def DescribeBgpBizTrend(self, request):
+        """获取高防包流量折线图 (ANTIDDOS)
+
+        :param request: Request instance for DescribeBgpBizTrend.
+        :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeBgpBizTrendRequest`
+        :rtype: :class:`tencentcloud.antiddos.v20200309.models.DescribeBgpBizTrendResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBgpBizTrend", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBgpBizTrendResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
 
     def DescribeBlackWhiteIpList(self, request):
         """获取DDoS防护的IP黑白名单

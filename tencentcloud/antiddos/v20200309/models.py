@@ -3564,7 +3564,76 @@ class DescribeBizTrendRequest(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+class DescribeBgpBizTrendRequest(AbstractModel):
+    """DescribeBgpBizTrend请求参数结构体
 
+    """
+
+    def __init__(self):
+        r"""
+        :param Business: 大禹子产品代号（bgp-multip表示高防IP）
+        :type Business: str
+        :param StartTime: 统计开始时间。 例：“2020-09-22 00:00:00”
+        :type StartTime: str
+        :param EndTime: 统计结束时间。 例：“2020-09-22 00:00:00”
+        :type EndTime: str
+        :param InstanceId: 资源实例ID
+        :type InstanceId: str
+        :param MetricName: 统计纬度，可取值 intraffic, outtraffic
+        :type MetricName: str
+        :param Flag: 0表示固定时间，1表示自定义时间
+        :type Flag: str
+        """
+        self.Business = None
+        self.StartTime = None
+        self.EndTime = None
+        self.InstanceId = None
+        self.MetricName = None
+        self.Flag = None
+
+
+    def _deserialize(self, params):
+        self.Business = params.get("Business")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.InstanceId = params.get("InstanceId")
+        self.MetricName = params.get("MetricName")
+        self.Flag = params.get("Flag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+
+
+class DescribeBgpBizTrendResponse(AbstractModel):
+    """DescribeBgpBizTrend返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DataList: 曲线图各个时间点的值
+        :type DataList: list of float
+        :param MetricName: 统计纬度
+        :type MetricName: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        :param Total: 曲线图取值个数。
+        :type RequestId: int
+        """
+        self.DataList = None
+        self.MetricName = None
+        self.RequestId = None
+        self.Total = None
+
+
+    def _deserialize(self, params):
+        self.DataList = params.get("DataList")
+        self.MetricName = params.get("MetricName")
+        self.RequestId = params.get("RequestId")
+        self.Total = params.get("Total")
 
 class DescribeBizTrendResponse(AbstractModel):
     """DescribeBizTrend返回参数结构体
