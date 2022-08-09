@@ -245,6 +245,38 @@ yyyy-mm-dd HH:MM:SS
         
 
 
+class BatchDomainOperateErrors(AbstractModel):
+    """批量操作域名相关接口，若其中个别域名操作失败将会跳过，相应的域名错误信息将统一汇总在此类型中
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DomainName: 操作失败的域名。
+        :type DomainName: str
+        :param Code: API3.0错误码。
+        :type Code: str
+        :param Message: API3.0错误信息。
+        :type Message: str
+        """
+        self.DomainName = None
+        self.Code = None
+        self.Message = None
+
+
+    def _deserialize(self, params):
+        self.DomainName = params.get("DomainName")
+        self.Code = params.get("Code")
+        self.Message = params.get("Message")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BillAreaInfo(AbstractModel):
     """海外分区直播带宽出参，分区信息
 
@@ -3890,8 +3922,8 @@ class DescribeLiveDomainCertBindingsRequest(AbstractModel):
         :param DomainName: 要查询的单个域名。
         :type DomainName: str
         :param OrderBy: 可取值：
-ExpireTimeAsc：证书过期时间降序。
-ExpireTimeDesc：证书过期时间升序。
+ExpireTimeAsc：证书过期时间升序。
+ExpireTimeDesc：证书过期时间降序。
         :type OrderBy: str
         """
         self.DomainSearch = None
@@ -3923,13 +3955,26 @@ class DescribeLiveDomainCertBindingsResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param LiveDomainCertBindings: 有绑定证书的域名信息数组。
+        :type LiveDomainCertBindings: list of LiveDomainCertBindings
+        :param TotalNum: 总的记录行数，便于分页。
+        :type TotalNum: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.LiveDomainCertBindings = None
+        self.TotalNum = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        if params.get("LiveDomainCertBindings") is not None:
+            self.LiveDomainCertBindings = []
+            for item in params.get("LiveDomainCertBindings"):
+                obj = LiveDomainCertBindings()
+                obj._deserialize(item)
+                self.LiveDomainCertBindings.append(obj)
+        self.TotalNum = params.get("TotalNum")
         self.RequestId = params.get("RequestId")
 
 
@@ -7825,6 +7870,63 @@ class LiveCertDomainInfo(AbstractModel):
         
 
 
+class LiveDomainCertBindings(AbstractModel):
+    """DescribeLiveDomainCertBindings, DescribeLiveDomainCertBindingsGray接口返回的域名证书信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DomainName: 域名。
+        :type DomainName: str
+        :param CertificateAlias: 证书备注。与CertName同义。
+        :type CertificateAlias: str
+        :param CertType: 证书类型。
+0：自有证书
+1：腾讯云ssl托管证书
+        :type CertType: int
+        :param Status: https状态。
+1：已开启。
+0：已关闭。
+        :type Status: int
+        :param CertExpireTime: 证书过期时间。
+        :type CertExpireTime: str
+        :param CertId: 证书Id。
+        :type CertId: int
+        :param CloudCertId: 腾讯云ssl的证书Id。
+        :type CloudCertId: str
+        :param UpdateTime: 规则最后更新时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        """
+        self.DomainName = None
+        self.CertificateAlias = None
+        self.CertType = None
+        self.Status = None
+        self.CertExpireTime = None
+        self.CertId = None
+        self.CloudCertId = None
+        self.UpdateTime = None
+
+
+    def _deserialize(self, params):
+        self.DomainName = params.get("DomainName")
+        self.CertificateAlias = params.get("CertificateAlias")
+        self.CertType = params.get("CertType")
+        self.Status = params.get("Status")
+        self.CertExpireTime = params.get("CertExpireTime")
+        self.CertId = params.get("CertId")
+        self.CloudCertId = params.get("CloudCertId")
+        self.UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class LivePackageInfo(AbstractModel):
     """直播包信息。
 
@@ -8063,15 +8165,25 @@ class ModifyLiveDomainCertBindingsResponse(AbstractModel):
         r"""
         :param MismatchedDomainNames: DomainNames 入参中，与证书不匹配的域名列表，将会跳过处理。
         :type MismatchedDomainNames: list of str
+        :param Errors: 操作失败的域名及错误码，错误信息，包括MismatchedDomainNames中的域名。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Errors: list of BatchDomainOperateErrors
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.MismatchedDomainNames = None
+        self.Errors = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.MismatchedDomainNames = params.get("MismatchedDomainNames")
+        if params.get("Errors") is not None:
+            self.Errors = []
+            for item in params.get("Errors"):
+                obj = BatchDomainOperateErrors()
+                obj._deserialize(item)
+                self.Errors.append(obj)
         self.RequestId = params.get("RequestId")
 
 

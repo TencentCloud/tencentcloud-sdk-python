@@ -5996,6 +5996,72 @@ class FetchMessageByOffsetResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class FetchMessageListByOffsetRequest(AbstractModel):
+    """FetchMessageListByOffset请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例Id
+        :type InstanceId: str
+        :param Topic: 主题名
+        :type Topic: str
+        :param Partition: 分区id
+        :type Partition: int
+        :param Offset: 位点信息
+        :type Offset: int
+        :param SinglePartitionRecordNumber: 最大查询条数，默认20，最大20
+        :type SinglePartitionRecordNumber: int
+        """
+        self.InstanceId = None
+        self.Topic = None
+        self.Partition = None
+        self.Offset = None
+        self.SinglePartitionRecordNumber = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Topic = params.get("Topic")
+        self.Partition = params.get("Partition")
+        self.Offset = params.get("Offset")
+        self.SinglePartitionRecordNumber = params.get("SinglePartitionRecordNumber")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FetchMessageListByOffsetResponse(AbstractModel):
+    """FetchMessageListByOffset返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 返回结果。注意，列表中不返回具体的消息内容（key、value），如果需要查询具体消息内容，请使用FetchMessageByOffset接口
+        :type Result: list of ConsumerRecord
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = []
+            for item in params.get("Result"):
+                obj = ConsumerRecord()
+                obj._deserialize(item)
+                self.Result.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class FieldParam(AbstractModel):
     """数据处理——处理链
 

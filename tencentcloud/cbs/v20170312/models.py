@@ -940,40 +940,40 @@ class DescribeDiskConfigQuotaRequest(AbstractModel):
         r"""
         :param InquiryType: 查询类别，取值范围。<br><li>INQUIRY_CBS_CONFIG：查询云盘配置列表<br><li>INQUIRY_CVM_CONFIG：查询云盘与实例搭配的配置列表。
         :type InquiryType: str
-        :param Zones: 查询一个或多个[可用区](/document/product/213/15753#ZoneInfo)下的配置。
-        :type Zones: list of str
         :param DiskChargeType: 付费模式。取值范围：<br><li>PREPAID：预付费<br><li>POSTPAID_BY_HOUR：后付费。
         :type DiskChargeType: str
-        :param DiskTypes: 硬盘介质类型。取值范围：<br><li>CLOUD_BASIC：表示普通云硬盘<br><li>CLOUD_PREMIUM：表示高性能云硬盘<br><li>CLOUD_SSD：表示SSD云硬盘<br><li>CLOUD_HSSD：表示增强型SSD云硬盘。
-        :type DiskTypes: list of str
-        :param DiskUsage: 系统盘或数据盘。取值范围：<br><li>SYSTEM_DISK：表示系统盘<br><li>DATA_DISK：表示数据盘。
-        :type DiskUsage: str
         :param InstanceFamilies: 按照实例机型系列过滤。实例机型系列形如：S1、I1、M1等。详见[实例类型](https://cloud.tencent.com/document/product/213/11518)
         :type InstanceFamilies: list of str
-        :param CPU: 实例CPU核数。
-        :type CPU: int
+        :param DiskTypes: 硬盘介质类型。取值范围：<br><li>CLOUD_BASIC：表示普通云硬盘<br><li>CLOUD_PREMIUM：表示高性能云硬盘<br><li>CLOUD_SSD：表示SSD云硬盘<br><li>CLOUD_HSSD：表示增强型SSD云硬盘。
+        :type DiskTypes: list of str
+        :param Zones: 查询一个或多个[可用区](/document/product/213/15753#ZoneInfo)下的配置。
+        :type Zones: list of str
         :param Memory: 实例内存大小。
         :type Memory: int
+        :param DiskUsage: 系统盘或数据盘。取值范围：<br><li>SYSTEM_DISK：表示系统盘<br><li>DATA_DISK：表示数据盘。
+        :type DiskUsage: str
+        :param CPU: 实例CPU核数。
+        :type CPU: int
         """
         self.InquiryType = None
-        self.Zones = None
         self.DiskChargeType = None
-        self.DiskTypes = None
-        self.DiskUsage = None
         self.InstanceFamilies = None
-        self.CPU = None
+        self.DiskTypes = None
+        self.Zones = None
         self.Memory = None
+        self.DiskUsage = None
+        self.CPU = None
 
 
     def _deserialize(self, params):
         self.InquiryType = params.get("InquiryType")
-        self.Zones = params.get("Zones")
         self.DiskChargeType = params.get("DiskChargeType")
-        self.DiskTypes = params.get("DiskTypes")
-        self.DiskUsage = params.get("DiskUsage")
         self.InstanceFamilies = params.get("InstanceFamilies")
-        self.CPU = params.get("CPU")
+        self.DiskTypes = params.get("DiskTypes")
+        self.Zones = params.get("Zones")
         self.Memory = params.get("Memory")
+        self.DiskUsage = params.get("DiskUsage")
+        self.CPU = params.get("CPU")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

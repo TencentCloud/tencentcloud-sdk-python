@@ -1651,6 +1651,35 @@ class CkafkaClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def FetchMessageListByOffset(self, request):
+        """根据位点查询消息列表
+
+        :param request: Request instance for FetchMessageListByOffset.
+        :type request: :class:`tencentcloud.ckafka.v20190819.models.FetchMessageListByOffsetRequest`
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.FetchMessageListByOffsetResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("FetchMessageListByOffset", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.FetchMessageListByOffsetResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyConnectResource(self, request):
         """编辑Datahub连接源
 

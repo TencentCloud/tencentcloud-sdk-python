@@ -357,6 +357,68 @@ class DeleteTagsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeProjectsRequest(AbstractModel):
+    """DescribeProjects请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AllList: 传1拉取所有项目（包括隐藏项目），不传或传0拉取显示项目
+        :type AllList: int
+        :param Limit: 分页条数，固定值1000。
+        :type Limit: int
+        :param Offset: 分页偏移量。
+        :type Offset: int
+        """
+        self.AllList = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.AllList = params.get("AllList")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeProjectsResponse(AbstractModel):
+    """DescribeProjects返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Total: 数据总条数
+        :type Total: int
+        :param Projects: 项目列表
+        :type Projects: list of Project
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Total = None
+        self.Projects = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Total = params.get("Total")
+        if params.get("Projects") is not None:
+            self.Projects = []
+            for item in params.get("Projects"):
+                obj = Project()
+                obj._deserialize(item)
+                self.Projects.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeResourceTagsByResourceIdsRequest(AbstractModel):
     """DescribeResourceTagsByResourceIds请求参数结构体
 
@@ -1752,6 +1814,46 @@ class ModifyResourcesTagValueResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class Project(AbstractModel):
+    """项目信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProjectId: 项目ID
+        :type ProjectId: int
+        :param ProjectName: 项目名称
+        :type ProjectName: str
+        :param CreatorUin: 创建人uin
+        :type CreatorUin: int
+        :param ProjectInfo: 项目描述
+        :type ProjectInfo: str
+        :param CreateTime: 创建时间
+        :type CreateTime: str
+        """
+        self.ProjectId = None
+        self.ProjectName = None
+        self.CreatorUin = None
+        self.ProjectInfo = None
+        self.CreateTime = None
+
+
+    def _deserialize(self, params):
+        self.ProjectId = params.get("ProjectId")
+        self.ProjectName = params.get("ProjectName")
+        self.CreatorUin = params.get("CreatorUin")
+        self.ProjectInfo = params.get("ProjectInfo")
+        self.CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ResourceIdTag(AbstractModel):

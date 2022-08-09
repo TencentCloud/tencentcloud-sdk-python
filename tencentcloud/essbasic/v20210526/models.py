@@ -266,6 +266,77 @@ class ChannelCreateBatchCancelFlowUrlResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ChannelCreateConvertTaskApiRequest(AbstractModel):
+    """ChannelCreateConvertTaskApi请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Agent: 无
+        :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        :param ResourceId: 资源Id
+        :type ResourceId: str
+        :param ResourceType: 资源类型 取值范围doc,docx,html之一
+        :type ResourceType: str
+        :param ResourceName: 资源名称
+        :type ResourceName: str
+        :param Organization: 无
+        :type Organization: :class:`tencentcloud.essbasic.v20210526.models.OrganizationInfo`
+        :param Operator: 无
+        :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
+        """
+        self.Agent = None
+        self.ResourceId = None
+        self.ResourceType = None
+        self.ResourceName = None
+        self.Organization = None
+        self.Operator = None
+
+
+    def _deserialize(self, params):
+        if params.get("Agent") is not None:
+            self.Agent = Agent()
+            self.Agent._deserialize(params.get("Agent"))
+        self.ResourceId = params.get("ResourceId")
+        self.ResourceType = params.get("ResourceType")
+        self.ResourceName = params.get("ResourceName")
+        if params.get("Organization") is not None:
+            self.Organization = OrganizationInfo()
+            self.Organization._deserialize(params.get("Organization"))
+        if params.get("Operator") is not None:
+            self.Operator = UserInfo()
+            self.Operator._deserialize(params.get("Operator"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChannelCreateConvertTaskApiResponse(AbstractModel):
+    """ChannelCreateConvertTaskApi返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 任务id
+        :type TaskId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
 class ChannelCreateFlowByFilesRequest(AbstractModel):
     """ChannelCreateFlowByFiles请求参数结构体
 
@@ -468,6 +539,81 @@ class ChannelCreateMultiFlowSignQRCodeResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ChannelGetTaskResultApiRequest(AbstractModel):
+    """ChannelGetTaskResultApi请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Agent: 渠道信息
+        :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        :param TaskId: 任务Id
+        :type TaskId: str
+        :param Organization: 企业信息
+        :type Organization: :class:`tencentcloud.essbasic.v20210526.models.OrganizationInfo`
+        :param Operator: 操作人信息
+        :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
+        """
+        self.Agent = None
+        self.TaskId = None
+        self.Organization = None
+        self.Operator = None
+
+
+    def _deserialize(self, params):
+        if params.get("Agent") is not None:
+            self.Agent = Agent()
+            self.Agent._deserialize(params.get("Agent"))
+        self.TaskId = params.get("TaskId")
+        if params.get("Organization") is not None:
+            self.Organization = OrganizationInfo()
+            self.Organization._deserialize(params.get("Organization"))
+        if params.get("Operator") is not None:
+            self.Operator = UserInfo()
+            self.Operator._deserialize(params.get("Operator"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChannelGetTaskResultApiResponse(AbstractModel):
+    """ChannelGetTaskResultApi返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 任务Id
+        :type TaskId: str
+        :param TaskStatus: 任务状态
+        :type TaskStatus: int
+        :param TaskMessage: 状态描述
+        :type TaskMessage: str
+        :param ResourceId: 资源Id
+        :type ResourceId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.TaskStatus = None
+        self.TaskMessage = None
+        self.ResourceId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.TaskStatus = params.get("TaskStatus")
+        self.TaskMessage = params.get("TaskMessage")
+        self.ResourceId = params.get("ResourceId")
+        self.RequestId = params.get("RequestId")
+
+
 class Component(AbstractModel):
     """此结构体 (Component) 用于描述控件属性。
 
@@ -488,13 +634,18 @@ class Component(AbstractModel):
         :type ComponentId: str
         :param ComponentType: 如果是Component控件类型，则可选的字段为：
 TEXT - 普通文本控件；
-DATE - 普通日期控件；跟TEXT相比会有校验逻辑
-DYNAMIC_TABLE-动态表格控件；
+MULTI_LINE_TEXT - 多行文本控件；
+CHECK_BOX - 勾选框控件；
+FILL_IMAGE - 图片控件；
+DYNAMIC_TABLE - 动态表格控件；
+ATTACHMENT - 附件控件；
+SELECTOR - 选择器控件；
+
 如果是SignComponent控件类型，则可选的字段为
 SIGN_SEAL - 签署印章控件；
 SIGN_DATE - 签署日期控件；
 SIGN_SIGNATURE - 用户签名控件；
-SIGN_PERSONAL_SEAL - 个人签署印章控件；
+SIGN_PERSONAL_SEAL - 个人签署印章控件（使用文件发起暂不支持此类型）；
 
 表单域的控件不能作为印章和签名控件
         :type ComponentType: str
@@ -526,8 +677,13 @@ KEYWORD - 关键字
 TEXT控件可以指定字体
 例如：{"FontSize":12}
         :type ComponentExtra: str
-        :param ComponentValue: 印章 ID，传参 DEFAULT_COMPANY_SEAL 表示使用默认印章。
-控件填入内容，印章控件里面，如果是手写签名内容为PNG图片格式的base64编码
+        :param ComponentValue: 控件填充vaule，ComponentType和传入值类型对应关系：
+TEXT - 文本内容
+MULTI_LINE_TEXT - 文本内容
+CHECK_BOX - true/false
+FILL_IMAGE、ATTACHMENT - 附件的FileId，需要通过UploadFiles接口上传获取
+SELECTOR - 选项值
+DYNAMIC_TABLE - 传入json格式的表格内容，具体见数据结构FlowInfo：https://cloud.tencent.com/document/api/1420/61525#FlowInfo
         :type ComponentValue: str
         :param ComponentDateFontSize: 日期签署控件的字号，默认为 12
 
@@ -1668,7 +1824,13 @@ class FormField(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ComponentValue: 表单域或控件的Value
+        :param ComponentValue: 控件填充vaule，ComponentType和传入值类型对应关系：
+TEXT - 文本内容
+MULTI_LINE_TEXT - 文本内容
+CHECK_BOX - true/false
+FILL_IMAGE、ATTACHMENT - 附件的FileId，需要通过UploadFiles接口上传获取
+SELECTOR - 选项值
+DYNAMIC_TABLE - 传入json格式的表格内容，具体见数据结构FlowInfo：https://cloud.tencent.com/document/api/1420/61525#FlowInfo
         :type ComponentValue: str
         :param ComponentId: 表单域或控件的ID，跟ComponentName二选一，不能全为空
 注意：此字段可能返回 null，表示取不到有效值。
@@ -1855,6 +2017,46 @@ class OperateChannelTemplateResponse(AbstractModel):
                 obj._deserialize(item)
                 self.FailMessageList.append(obj)
         self.RequestId = params.get("RequestId")
+
+
+class OrganizationInfo(AbstractModel):
+    """机构信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param OrganizationOpenId: 用户在渠道的机构编号
+        :type OrganizationOpenId: str
+        :param ClientIp: 用户真实的IP
+        :type ClientIp: str
+        :param ProxyIp: 机构的代理IP
+        :type ProxyIp: str
+        :param OrganizationId: 机构在平台的编号
+        :type OrganizationId: str
+        :param Channel: 用户渠道
+        :type Channel: str
+        """
+        self.OrganizationOpenId = None
+        self.ClientIp = None
+        self.ProxyIp = None
+        self.OrganizationId = None
+        self.Channel = None
+
+
+    def _deserialize(self, params):
+        self.OrganizationOpenId = params.get("OrganizationOpenId")
+        self.ClientIp = params.get("ClientIp")
+        self.ProxyIp = params.get("ProxyIp")
+        self.OrganizationId = params.get("OrganizationId")
+        self.Channel = params.get("Channel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class PrepareFlowsRequest(AbstractModel):

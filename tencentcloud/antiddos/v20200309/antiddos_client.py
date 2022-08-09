@@ -722,35 +722,6 @@ class AntiddosClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DeleteBlackWhiteIpList(self, request):
-        """删除DDoS防护的IP黑白名单
-
-        :param request: Request instance for DeleteBlackWhiteIpList.
-        :type request: :class:`tencentcloud.antiddos.v20200309.models.DeleteBlackWhiteIpListRequest`
-        :rtype: :class:`tencentcloud.antiddos.v20200309.models.DeleteBlackWhiteIpListResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DeleteBlackWhiteIpList", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DeleteBlackWhiteIpListResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def DeleteCCLevelPolicy(self, request):
         """删除CC分级策略
 
@@ -1143,6 +1114,35 @@ class AntiddosClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBasicDeviceStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeBgpBizTrend(self, request):
+        """获取高防包流量折线图
+
+        :param request: Request instance for DescribeBgpBizTrend.
+        :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeBgpBizTrendRequest`
+        :rtype: :class:`tencentcloud.antiddos.v20200309.models.DescribeBgpBizTrendResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBgpBizTrend", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBgpBizTrendResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

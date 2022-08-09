@@ -211,13 +211,13 @@ class CreateCloudRecordingRequest(AbstractModel):
         :type SdkAppId: int
         :param RoomId: TRTC的[RoomId](https://cloud.tencent.com/document/product/647/46351#roomid)，录制的TRTC房间所对应的RoomId。
         :type RoomId: str
-        :param UserId: 录制服务在TRTC房间使用的[UserId](https://cloud.tencent.com/document/product/647/46351#userid)，注意这个userId不能与其他TRTC或者录制服务等已经使用的UserId重复，建议可以把房间ID作为userId的标识的一部分。
+        :param UserId: 录制机器人用于进入TRTC房间拉流的[UserId](https://cloud.tencent.com/document/product/647/46351#userid)，注意这个UserId不能与其他TRTC功能或者录制服务等已经使用的UserId重复，建议可以把房间ID作为userId的标识的一部分。
         :type UserId: str
-        :param UserSig: 云端录制加入房间的用户签名，当前 UserId 对应的验证签名，相当于登录密码，具体计算方法请参考TRTC计算[UserSig](https://cloud.tencent.com/document/product/647/45910#UserSig)的方案。
+        :param UserSig: 录制机器人用于进入TRTC房间拉流的用户签名，当前 UserId 对应的验证签名，相当于登录密码，具体计算方法请参考TRTC计算[UserSig](https://cloud.tencent.com/document/product/647/45910#UserSig)的方案。
         :type UserSig: str
         :param RecordParams: 云端录制控制参数。
         :type RecordParams: :class:`tencentcloud.trtc.v20190722.models.RecordParams`
-        :param StorageParams: 云端录制文件上传到云存储的参数。
+        :param StorageParams: 云端录制文件上传到云存储的参数(目前只支持使用腾讯云点播作为存储)。
         :type StorageParams: :class:`tencentcloud.trtc.v20190722.models.StorageParams`
         :param RoomIdType: TRTC房间号的类型，必须和录制的房间所对应的RoomId类型相同:
 0: 字符串类型的RoomId
@@ -458,73 +458,6 @@ class DeletePictureResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class DescribeAbnormalEventRequest(AbstractModel):
-    """DescribeAbnormalEvent请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param SdkAppId: 用户SdkAppId（如：1400xxxxxx）
-        :type SdkAppId: str
-        :param StartTime: 查询开始时间，本地unix时间戳，单位为秒（如：1590065777）
-注意：支持查询14天内的数据
-        :type StartTime: int
-        :param EndTime: 查询结束时间，本地unix时间戳，单位为秒（如：1590065877）注意：与StartTime间隔时间不超过1小时。
-        :type EndTime: int
-        :param RoomId: 房间号，查询房间内任意20条以内异常体验事件
-        :type RoomId: str
-        """
-        self.SdkAppId = None
-        self.StartTime = None
-        self.EndTime = None
-        self.RoomId = None
-
-
-    def _deserialize(self, params):
-        self.SdkAppId = params.get("SdkAppId")
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.RoomId = params.get("RoomId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeAbnormalEventResponse(AbstractModel):
-    """DescribeAbnormalEvent返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Total: 返回的数据总条数
-        :type Total: int
-        :param AbnormalExperienceList: 异常体验列表
-        :type AbnormalExperienceList: list of AbnormalExperience
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.Total = None
-        self.AbnormalExperienceList = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.Total = params.get("Total")
-        if params.get("AbnormalExperienceList") is not None:
-            self.AbnormalExperienceList = []
-            for item in params.get("AbnormalExperienceList"):
-                obj = AbnormalExperience()
-                obj._deserialize(item)
-                self.AbnormalExperienceList.append(obj)
-        self.RequestId = params.get("RequestId")
-
-
 class DescribeCallDetailInfoRequest(AbstractModel):
     """DescribeCallDetailInfo请求参数结构体
 
@@ -637,118 +570,6 @@ class DescribeCallDetailInfoResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class DescribeCallDetailRequest(AbstractModel):
-    """DescribeCallDetail请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param CommId: 通话 ID（唯一标识一次通话）： SdkAppId_RoomId（房间号）_ CreateTime（房间创建时间，unix时间戳，单位为s）例：1400xxxxxx_218695_1590065777。通过 DescribeRoomInfo（查询历史房间列表）接口获取（[查询历史房间列表](https://cloud.tencent.com/document/product/647/44050)）。
-        :type CommId: str
-        :param StartTime: 查询开始时间，本地unix时间戳，单位为秒（如：1590065777），
-注意：支持查询14天内的数据。
-        :type StartTime: int
-        :param EndTime: 查询结束时间，本地unix时间戳，单位为秒（如：1590065877）
-注意：DataType 不为null ，与StartTime间隔时间不超过1小时；DataType 为null，与StartTime间隔时间不超过4小时。
-        :type EndTime: int
-        :param SdkAppId: 用户SdkAppId（如：1400xxxxxx）。
-        :type SdkAppId: str
-        :param UserIds: 需查询的用户数组，默认不填返回6个用户。
-        :type UserIds: list of str
-        :param DataType: 需查询的指标，不填则只返回用户列表，填all则返回所有指标。
-appCpu：APP CPU使用率；
-sysCpu：系统 CPU使用率；
-aBit：上/下行音频码率；单位：bps
-aBlock：音频卡顿时长；单位：ms
-bigvBit：上/下行视频码率；单位：bps
-bigvCapFps：视频采集帧率；
-bigvEncFps：视频发送帧率；
-bigvDecFps：渲染帧率；
-bigvBlock：视频卡顿时长；单位：ms
-aLoss：上/下行音频丢包率；
-bigvLoss：上/下行视频丢包率；
-bigvWidth：上/下行分辨率宽；
-bigvHeight：上/下行分辨率高
-        :type DataType: list of str
-        :param PageNumber: 当前页数，默认为0，
-注意：PageNumber和PageSize 其中一个不填均默认返回6条数据。
-        :type PageNumber: str
-        :param PageSize: 每页个数，默认为6，
-范围：[1，100]
-注意：DataType不为null，UserIds长度不能超过6，PageSize最大值不超过6；
-DataType 为null，UserIds长度不超过100，PageSize最大不超过100。
-        :type PageSize: str
-        """
-        self.CommId = None
-        self.StartTime = None
-        self.EndTime = None
-        self.SdkAppId = None
-        self.UserIds = None
-        self.DataType = None
-        self.PageNumber = None
-        self.PageSize = None
-
-
-    def _deserialize(self, params):
-        self.CommId = params.get("CommId")
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.SdkAppId = params.get("SdkAppId")
-        self.UserIds = params.get("UserIds")
-        self.DataType = params.get("DataType")
-        self.PageNumber = params.get("PageNumber")
-        self.PageSize = params.get("PageSize")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeCallDetailResponse(AbstractModel):
-    """DescribeCallDetail返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Total: 返回的用户总条数
-        :type Total: int
-        :param UserList: 用户信息列表
-注意：此字段可能返回 null，表示取不到有效值。
-        :type UserList: list of UserInformation
-        :param Data: 质量数据
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Data: list of QualityData
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.Total = None
-        self.UserList = None
-        self.Data = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.Total = params.get("Total")
-        if params.get("UserList") is not None:
-            self.UserList = []
-            for item in params.get("UserList"):
-                obj = UserInformation()
-                obj._deserialize(item)
-                self.UserList.append(obj)
-        if params.get("Data") is not None:
-            self.Data = []
-            for item in params.get("Data"):
-                obj = QualityData()
-                obj._deserialize(item)
-                self.Data.append(obj)
-        self.RequestId = params.get("RequestId")
-
-
 class DescribeCloudRecordingRequest(AbstractModel):
     """DescribeCloudRecording请求参数结构体
 
@@ -815,74 +636,6 @@ Exited：表示当前录制任务正在退出的过程中。
         self.RequestId = params.get("RequestId")
 
 
-class DescribeDetailEventRequest(AbstractModel):
-    """DescribeDetailEvent请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param CommId: 通话 ID（唯一标识一次通话）： SdkAppId_RoomId（房间号）_ CreateTime（房间创建时间，unix时间戳，单位为s）例：1400xxxxxx_218695_1590065777。通过 DescribeRoomInfo（查询历史房间列表）接口获取（[查询历史房间列表](https://cloud.tencent.com/document/product/647/44050)）。
-        :type CommId: str
-        :param StartTime: 查询开始时间，本地unix时间戳，单位为秒（如：1590065777）
-注意：支持查询14天内的数据
-        :type StartTime: int
-        :param EndTime: 查询结束时间，本地unix时间戳，单位为秒（如：1590065877）
-注意：查询时间大于房间结束时间，以房间结束时间为准。
-        :type EndTime: int
-        :param UserId: 用户UserId
-        :type UserId: str
-        :param RoomId: 房间号（如：223）
-        :type RoomId: str
-        """
-        self.CommId = None
-        self.StartTime = None
-        self.EndTime = None
-        self.UserId = None
-        self.RoomId = None
-
-
-    def _deserialize(self, params):
-        self.CommId = params.get("CommId")
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.UserId = params.get("UserId")
-        self.RoomId = params.get("RoomId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeDetailEventResponse(AbstractModel):
-    """DescribeDetailEvent返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Data: 返回的事件列表，若没有数据，会返回空数组。
-        :type Data: list of EventList
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.Data = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        if params.get("Data") is not None:
-            self.Data = []
-            for item in params.get("Data"):
-                obj = EventList()
-                obj._deserialize(item)
-                self.Data.append(obj)
-        self.RequestId = params.get("RequestId")
-
-
 class DescribeExternalTrtcMeasureRequest(AbstractModel):
     """DescribeExternalTrtcMeasure请求参数结构体
 
@@ -946,71 +699,6 @@ class DescribeExternalTrtcMeasureResponse(AbstractModel):
                 self.SdkAppIdTrtrTimeUsages.append(obj)
         self.AnchorUsageMode = params.get("AnchorUsageMode")
         self.AudienceUsageMode = params.get("AudienceUsageMode")
-        self.RequestId = params.get("RequestId")
-
-
-class DescribeHistoryScaleRequest(AbstractModel):
-    """DescribeHistoryScale请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param SdkAppId: 用户SdkAppId（如：1400xxxxxx）
-        :type SdkAppId: str
-        :param StartTime: 查询开始时间，本地unix时间戳，单位为秒（如：1590065777）
-注意：支持查询14天内的数据。
-        :type StartTime: int
-        :param EndTime: 查询结束时间，本地unix时间戳，单位为秒（如：1590065877），建议与StartTime间隔时间超过24小时。
-注意：按天统计，结束时间小于前一天，否则查询数据为空（如：需查询20号数据，结束时间需小于20号0点）。
-        :type EndTime: int
-        """
-        self.SdkAppId = None
-        self.StartTime = None
-        self.EndTime = None
-
-
-    def _deserialize(self, params):
-        self.SdkAppId = params.get("SdkAppId")
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeHistoryScaleResponse(AbstractModel):
-    """DescribeHistoryScale返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Total: 返回的数据条数
-        :type Total: int
-        :param ScaleList: 返回的数据
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ScaleList: list of ScaleInfomation
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.Total = None
-        self.ScaleList = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.Total = params.get("Total")
-        if params.get("ScaleList") is not None:
-            self.ScaleList = []
-            for item in params.get("ScaleList"):
-                obj = ScaleInfomation()
-                obj._deserialize(item)
-                self.ScaleList.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1189,84 +877,6 @@ class DescribeRoomInfoRequest(AbstractModel):
 
 class DescribeRoomInfoResponse(AbstractModel):
     """DescribeRoomInfo返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Total: 返回当页数据总数
-        :type Total: int
-        :param RoomList: 房间信息列表
-        :type RoomList: list of RoomState
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.Total = None
-        self.RoomList = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.Total = params.get("Total")
-        if params.get("RoomList") is not None:
-            self.RoomList = []
-            for item in params.get("RoomList"):
-                obj = RoomState()
-                obj._deserialize(item)
-                self.RoomList.append(obj)
-        self.RequestId = params.get("RequestId")
-
-
-class DescribeRoomInformationRequest(AbstractModel):
-    """DescribeRoomInformation请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param SdkAppId: 用户SdkAppId（如：1400xxxxxx）
-        :type SdkAppId: str
-        :param StartTime: 查询开始时间，本地unix时间戳，单位为秒（如：1590065777）
-注意：支持查询14天内的数据
-        :type StartTime: int
-        :param EndTime: 查询结束时间，本地unix时间戳，单位为秒（如：1590065877）
-注意：与StartTime间隔时间不超过24小时。
-        :type EndTime: int
-        :param RoomId: 房间号（如：223)
-        :type RoomId: str
-        :param PageNumber: 当前页数，默认为0，
-注意：PageNumber和PageSize 其中一个不填均默认返回10条数据。
-        :type PageNumber: str
-        :param PageSize: 每页个数，默认为10，
-范围：[1，100]
-        :type PageSize: str
-        """
-        self.SdkAppId = None
-        self.StartTime = None
-        self.EndTime = None
-        self.RoomId = None
-        self.PageNumber = None
-        self.PageSize = None
-
-
-    def _deserialize(self, params):
-        self.SdkAppId = params.get("SdkAppId")
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.RoomId = params.get("RoomId")
-        self.PageNumber = params.get("PageNumber")
-        self.PageSize = params.get("PageSize")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeRoomInformationResponse(AbstractModel):
-    """DescribeRoomInformation返回参数结构体
 
     """
 
@@ -1614,90 +1224,6 @@ class DescribeUserInfoRequest(AbstractModel):
 
 class DescribeUserInfoResponse(AbstractModel):
     """DescribeUserInfo返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Total: 返回的用户总条数
-        :type Total: int
-        :param UserList: 用户信息列表
-注意：此字段可能返回 null，表示取不到有效值。
-        :type UserList: list of UserInformation
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.Total = None
-        self.UserList = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.Total = params.get("Total")
-        if params.get("UserList") is not None:
-            self.UserList = []
-            for item in params.get("UserList"):
-                obj = UserInformation()
-                obj._deserialize(item)
-                self.UserList.append(obj)
-        self.RequestId = params.get("RequestId")
-
-
-class DescribeUserInformationRequest(AbstractModel):
-    """DescribeUserInformation请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param CommId: 通话 ID（唯一标识一次通话）： SdkAppId_RoomId（房间号）_ CreateTime（房间创建时间，unix时间戳，单位为s）例：1400xxxxxx_218695_1590065777。通过 DescribeRoomInfo（查询历史房间列表）接口获取（[查询历史房间列表](https://cloud.tencent.com/document/product/647/44050)）。
-        :type CommId: str
-        :param StartTime: 查询开始时间，本地unix时间戳，单位为秒（如：1590065777）
-注意：支持查询14天内的数据
-        :type StartTime: int
-        :param EndTime: 查询结束时间，本地unix时间戳，单位为秒（如：1590065877）
-注意：与StartTime间隔时间不超过4小时。
-        :type EndTime: int
-        :param SdkAppId: 用户SdkAppId（如：1400xxxxxx）
-        :type SdkAppId: str
-        :param UserIds: 需查询的用户数组，不填默认返回6个用户
-范围：[1，100]。
-        :type UserIds: list of str
-        :param PageNumber: 当前页数，默认为0，
-注意：PageNumber和PageSize 其中一个不填均默认返回6条数据。
-        :type PageNumber: str
-        :param PageSize: 每页个数，默认为6，
-范围：[1，100]。
-        :type PageSize: str
-        """
-        self.CommId = None
-        self.StartTime = None
-        self.EndTime = None
-        self.SdkAppId = None
-        self.UserIds = None
-        self.PageNumber = None
-        self.PageSize = None
-
-
-    def _deserialize(self, params):
-        self.CommId = params.get("CommId")
-        self.StartTime = params.get("StartTime")
-        self.EndTime = params.get("EndTime")
-        self.SdkAppId = params.get("SdkAppId")
-        self.UserIds = params.get("UserIds")
-        self.PageNumber = params.get("PageNumber")
-        self.PageSize = params.get("PageSize")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeUserInformationResponse(AbstractModel):
-    """DescribeUserInformation返回参数结构体
 
     """
 

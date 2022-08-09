@@ -2787,55 +2787,6 @@ class DefaultAlarmThreshold(AbstractModel):
         
 
 
-class DeleteBlackWhiteIpListRequest(AbstractModel):
-    """DeleteBlackWhiteIpList请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param InstanceId: 资源实例ID
-        :type InstanceId: str
-        :param IpList: IP列表
-        :type IpList: list of str
-        :param Type: IP类型，取值[black(黑名单IP), white(白名单IP)]
-        :type Type: str
-        """
-        self.InstanceId = None
-        self.IpList = None
-        self.Type = None
-
-
-    def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.IpList = params.get("IpList")
-        self.Type = params.get("Type")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DeleteBlackWhiteIpListResponse(AbstractModel):
-    """DeleteBlackWhiteIpList返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
-
-
 class DeleteCCLevelPolicyRequest(AbstractModel):
     """DeleteCCLevelPolicy请求参数结构体
 
@@ -3502,6 +3453,83 @@ class DescribeBasicDeviceStatusResponse(AbstractModel):
                 obj = KeyValue()
                 obj._deserialize(item)
                 self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeBgpBizTrendRequest(AbstractModel):
+    """DescribeBgpBizTrend请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Business: 大禹子产品代号（bgp-multip表示高防包）
+        :type Business: str
+        :param StartTime: 统计开始时间。 例：“2020-09-22 00:00:00”
+        :type StartTime: str
+        :param EndTime: 统计结束时间。 例：“2020-09-22 00:00:00”
+        :type EndTime: str
+        :param MetricName: 统计纬度，可取值intraffic, outtraffic, inpkg, outpkg
+        :type MetricName: str
+        :param InstanceId: 资源实例ID
+        :type InstanceId: str
+        :param Flag: 0表示固定时间，1表示自定义时间
+        :type Flag: int
+        """
+        self.Business = None
+        self.StartTime = None
+        self.EndTime = None
+        self.MetricName = None
+        self.InstanceId = None
+        self.Flag = None
+
+
+    def _deserialize(self, params):
+        self.Business = params.get("Business")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.MetricName = params.get("MetricName")
+        self.InstanceId = params.get("InstanceId")
+        self.Flag = params.get("Flag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBgpBizTrendResponse(AbstractModel):
+    """DescribeBgpBizTrend返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DataList: 曲线图各个时间点的值
+        :type DataList: list of int non-negative
+        :param Total: 曲线图取值个数
+        :type Total: int
+        :param MetricName: 统计纬度
+        :type MetricName: str
+        :param MaxData: 返回数组最大值
+        :type MaxData: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DataList = None
+        self.Total = None
+        self.MetricName = None
+        self.MaxData = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DataList = params.get("DataList")
+        self.Total = params.get("Total")
+        self.MetricName = params.get("MetricName")
+        self.MaxData = params.get("MaxData")
         self.RequestId = params.get("RequestId")
 
 

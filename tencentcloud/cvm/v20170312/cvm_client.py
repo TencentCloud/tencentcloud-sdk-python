@@ -513,6 +513,35 @@ class CvmClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeChcDeniedActions(self, request):
+        """查询CHC物理服务器禁止做的操作，返回给用户
+
+        :param request: Request instance for DescribeChcDeniedActions.
+        :type request: :class:`tencentcloud.cvm.v20170312.models.DescribeChcDeniedActionsRequest`
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.DescribeChcDeniedActionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeChcDeniedActions", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeChcDeniedActionsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeChcHosts(self, request):
         """本接口 (DescribeChcHosts) 用于查询一个或多个CHC物理服务器详细信息。
 
