@@ -7897,6 +7897,8 @@ class DescribeAssetSummaryResponse(AbstractModel):
         :type LatestImageScanTime: str
         :param ImageUnsafeCnt: 风险镜像个数
         :type ImageUnsafeCnt: int
+        :param HostUnInstallCnt: 主机未安装agent数量
+        :type HostUnInstallCnt: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -7919,6 +7921,7 @@ class DescribeAssetSummaryResponse(AbstractModel):
         self.WebServiceCnt = None
         self.LatestImageScanTime = None
         self.ImageUnsafeCnt = None
+        self.HostUnInstallCnt = None
         self.RequestId = None
 
 
@@ -7942,6 +7945,7 @@ class DescribeAssetSummaryResponse(AbstractModel):
         self.WebServiceCnt = params.get("WebServiceCnt")
         self.LatestImageScanTime = params.get("LatestImageScanTime")
         self.ImageUnsafeCnt = params.get("ImageUnsafeCnt")
+        self.HostUnInstallCnt = params.get("HostUnInstallCnt")
         self.RequestId = params.get("RequestId")
 
 
@@ -9011,6 +9015,8 @@ class DescribeContainerAssetSummaryResponse(AbstractModel):
         :type ImageRegistryCnt: int
         :param ImageTotalCnt: 镜像总数
         :type ImageTotalCnt: int
+        :param HostUnInstallCnt: 主机未安装agent数量
+        :type HostUnInstallCnt: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -9024,6 +9030,7 @@ class DescribeContainerAssetSummaryResponse(AbstractModel):
         self.HostOfflineCnt = None
         self.ImageRegistryCnt = None
         self.ImageTotalCnt = None
+        self.HostUnInstallCnt = None
         self.RequestId = None
 
 
@@ -9038,6 +9045,7 @@ class DescribeContainerAssetSummaryResponse(AbstractModel):
         self.HostOfflineCnt = params.get("HostOfflineCnt")
         self.ImageRegistryCnt = params.get("ImageRegistryCnt")
         self.ImageTotalCnt = params.get("ImageTotalCnt")
+        self.HostUnInstallCnt = params.get("HostUnInstallCnt")
         self.RequestId = params.get("RequestId")
 
 

@@ -179,6 +179,12 @@ INVALIDPARAMETERVALUE_DUPLICATENAME = 'InvalidParameterValue.DuplicateName'
 # 训练框架对应的版本不支持，请阅读文档查看TIONE目前支持的框架和版本。
 INVALIDPARAMETERVALUE_FRAMEWORKVERSIONNOTSUPPORT = 'InvalidParameterValue.FrameworkVersionNotSupport'
 
+# 无效的过滤器。
+INVALIDPARAMETERVALUE_INVALIDFILTER = 'InvalidParameterValue.InvalidFilter'
+
+# 参数值数量超过限制。
+INVALIDPARAMETERVALUE_LIMITEXCEEDED = 'InvalidParameterValue.LimitExceeded'
+
 # 超过配额限制。
 LIMITEXCEEDED = 'LimitExceeded'
 
@@ -190,6 +196,9 @@ OPERATIONDENIED = 'OperationDenied'
 
 # 余额不足，创建/更新失败。
 OPERATIONDENIED_BALANCEINSUFFICIENT = 'OperationDenied.BalanceInsufficient'
+
+# 觅影资源包余额不足，请先充值。
+OPERATIONDENIED_MIYINGBALANCEINSUFFICIENT = 'OperationDenied.MIYINGBalanceInsufficient'
 
 # 白名单免费配额不足。
 OPERATIONDENIED_WHITELISTQUOTAEXCEED = 'OperationDenied.WhitelistQuotaExceed'

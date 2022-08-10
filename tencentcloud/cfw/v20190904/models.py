@@ -3743,9 +3743,9 @@ class ModifyBlockIgnoreListRequest(AbstractModel):
         :type IOC: list of IocListData
         :param IocAction: 可选值：delete（删除）、edit（编辑）、add（添加）  其他值无效
         :type IocAction: str
-        :param StartTime: 时间格式：yyyy-MM-dd HH:mm:ss
+        :param StartTime: 时间格式：yyyy-MM-dd HH:mm:ss，IocAction 为edit或add时必填
         :type StartTime: str
-        :param EndTime: 时间格式：yyyy-MM-dd HH:mm:ss
+        :param EndTime: 时间格式：yyyy-MM-dd HH:mm:ss，IocAction 为edit或add时必填
         :type EndTime: str
         """
         self.RuleType = None

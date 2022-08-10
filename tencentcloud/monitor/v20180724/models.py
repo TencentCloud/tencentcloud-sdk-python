@@ -4084,15 +4084,24 @@ class DescribeMonitorTypesResponse(AbstractModel):
         r"""
         :param MonitorTypes: 监控类型，云产品监控为 MT_QCE
         :type MonitorTypes: list of str
+        :param MonitorTypeInfos: 监控类型详情
+        :type MonitorTypeInfos: list of MonitorTypeInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.MonitorTypes = None
+        self.MonitorTypeInfos = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.MonitorTypes = params.get("MonitorTypes")
+        if params.get("MonitorTypeInfos") is not None:
+            self.MonitorTypeInfos = []
+            for item in params.get("MonitorTypeInfos"):
+                obj = MonitorTypeInfo()
+                obj._deserialize(item)
+                self.MonitorTypeInfos.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -7658,6 +7667,38 @@ class ModifyPrometheusInstanceAttributesResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class MonitorTypeInfo(AbstractModel):
+    """监控类型详细信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: 监控类型ID
+        :type Id: str
+        :param Name: 监控类型
+        :type Name: str
+        :param SortId: 排列顺序
+        :type SortId: int
+        """
+        self.Id = None
+        self.Name = None
+        self.SortId = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.Name = params.get("Name")
+        self.SortId = params.get("SortId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class MonitorTypeNamespace(AbstractModel):

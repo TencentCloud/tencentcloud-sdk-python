@@ -9230,6 +9230,9 @@ class EdgeCluster(AbstractModel):
         :param MaxNodePodNum: 节点最大Pod数
 注意：此字段可能返回 null，表示取不到有效值。
         :type MaxNodePodNum: int
+        :param ClusterAdvancedSettings: 集群高级设置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.EdgeClusterAdvancedSettings`
         """
         self.ClusterId = None
         self.ClusterName = None
@@ -9242,6 +9245,7 @@ class EdgeCluster(AbstractModel):
         self.CreatedTime = None
         self.EdgeClusterVersion = None
         self.MaxNodePodNum = None
+        self.ClusterAdvancedSettings = None
 
 
     def _deserialize(self, params):
@@ -9256,6 +9260,9 @@ class EdgeCluster(AbstractModel):
         self.CreatedTime = params.get("CreatedTime")
         self.EdgeClusterVersion = params.get("EdgeClusterVersion")
         self.MaxNodePodNum = params.get("MaxNodePodNum")
+        if params.get("ClusterAdvancedSettings") is not None:
+            self.ClusterAdvancedSettings = EdgeClusterAdvancedSettings()
+            self.ClusterAdvancedSettings._deserialize(params.get("ClusterAdvancedSettings"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

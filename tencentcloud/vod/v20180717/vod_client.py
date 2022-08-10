@@ -627,7 +627,7 @@ class VodClient(AbstractClient):
 
 
     def CreateSuperPlayerConfig(self, request):
-        """创建超级播放器配置，数量上限：100。
+        """创建播放器配置，数量上限：100。
 
         :param request: Request instance for CreateSuperPlayerConfig.
         :type request: :class:`tencentcloud.vod.v20180717.models.CreateSuperPlayerConfigRequest`
@@ -1184,7 +1184,7 @@ class VodClient(AbstractClient):
 
 
     def DeleteSuperPlayerConfig(self, request):
-        """删除超级播放器配置。
+        """删除播放器配置。
         *注：系统预置播放器配置不允许删除。*
 
         :param request: Request instance for DeleteSuperPlayerConfig.
@@ -2351,7 +2351,7 @@ class VodClient(AbstractClient):
 
 
     def DescribeSuperPlayerConfigs(self, request):
-        """查询超级播放器配置，支持根据条件，分页查询。
+        """查询播放器配置，支持根据条件，分页查询。
 
         :param request: Request instance for DescribeSuperPlayerConfigs.
         :type request: :class:`tencentcloud.vod.v20180717.models.DescribeSuperPlayerConfigsRequest`
@@ -3251,7 +3251,7 @@ class VodClient(AbstractClient):
 
 
     def ModifySuperPlayerConfig(self, request):
-        """修改超级播放器配置。
+        """修改播放器配置。
 
         :param request: Request instance for ModifySuperPlayerConfig.
         :type request: :class:`tencentcloud.vod.v20180717.models.ModifySuperPlayerConfigRequest`

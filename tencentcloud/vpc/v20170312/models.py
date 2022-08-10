@@ -21214,6 +21214,20 @@ class VpnConnection(AbstractModel):
         :type HealthCheckRemoteIp: str
         :param HealthCheckStatus: 通道健康检查状态，AVAILABLE：正常，UNAVAILABLE：不正常。 未配置健康检查不返回该对象
         :type HealthCheckStatus: str
+        :param DpdEnable: DPD探测开关。默认为0，表示关闭DPD探测。可选值：0（关闭），1（开启）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DpdEnable: int
+        :param DpdTimeout: DPD超时时间。即探测确认对端不存在需要的时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DpdTimeout: str
+        :param DpdAction: DPD超时后的动作。默认为clear。dpdEnable为1（开启）时有效。可取值为clear（断开）和restart（重试）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DpdAction: str
+        :param TagSet: 标签键值对数组
+        :type TagSet: list of Tag
+        :param NegotiationType: 协商类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NegotiationType: str
         """
         self.VpnConnectionId = None
         self.VpnConnectionName = None
@@ -21234,6 +21248,11 @@ class VpnConnection(AbstractModel):
         self.HealthCheckLocalIp = None
         self.HealthCheckRemoteIp = None
         self.HealthCheckStatus = None
+        self.DpdEnable = None
+        self.DpdTimeout = None
+        self.DpdAction = None
+        self.TagSet = None
+        self.NegotiationType = None
 
 
     def _deserialize(self, params):
@@ -21265,6 +21284,16 @@ class VpnConnection(AbstractModel):
         self.HealthCheckLocalIp = params.get("HealthCheckLocalIp")
         self.HealthCheckRemoteIp = params.get("HealthCheckRemoteIp")
         self.HealthCheckStatus = params.get("HealthCheckStatus")
+        self.DpdEnable = params.get("DpdEnable")
+        self.DpdTimeout = params.get("DpdTimeout")
+        self.DpdAction = params.get("DpdAction")
+        if params.get("TagSet") is not None:
+            self.TagSet = []
+            for item in params.get("TagSet"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.TagSet.append(obj)
+        self.NegotiationType = params.get("NegotiationType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

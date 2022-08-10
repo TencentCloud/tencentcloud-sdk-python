@@ -96,6 +96,34 @@ class BoundK8SInfo(AbstractModel):
         
 
 
+class CloudNativeAPIGatewayNode(AbstractModel):
+    """云原生API网关节点信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NodeId: 云原生网关节点 id
+        :type NodeId: str
+        :param NodeIp: 节点 ip
+        :type NodeIp: str
+        """
+        self.NodeId = None
+        self.NodeIp = None
+
+
+    def _deserialize(self, params):
+        self.NodeId = params.get("NodeId")
+        self.NodeIp = params.get("NodeIp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateEngineRequest(AbstractModel):
     """CreateEngine请求参数结构体
 
@@ -301,6 +329,94 @@ class DeleteEngineResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeCloudNativeAPIGatewayNodesRequest(AbstractModel):
+    """DescribeCloudNativeAPIGatewayNodes请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param GatewayId: 云原生API网关实例ID。
+        :type GatewayId: str
+        :param Offset: 翻页从第几个开始获取
+        :type Offset: int
+        :param Limit: 翻页获取多少个
+        :type Limit: int
+        """
+        self.GatewayId = None
+        self.Offset = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.GatewayId = params.get("GatewayId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCloudNativeAPIGatewayNodesResponse(AbstractModel):
+    """DescribeCloudNativeAPIGatewayNodes返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 获取云原生网关节点列表结果。
+        :type Result: :class:`tencentcloud.tse.v20201207.models.DescribeCloudNativeAPIGatewayNodesResult`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = DescribeCloudNativeAPIGatewayNodesResult()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCloudNativeAPIGatewayNodesResult(AbstractModel):
+    """获取网关节点信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 获取云原生API网关节点列表响应结果。
+        :type TotalCount: int
+        :param NodeList: 云原生API网关节点列表。
+        :type NodeList: list of CloudNativeAPIGatewayNode
+        """
+        self.TotalCount = None
+        self.NodeList = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("NodeList") is not None:
+            self.NodeList = []
+            for item in params.get("NodeList"):
+                obj = CloudNativeAPIGatewayNode()
+                obj._deserialize(item)
+                self.NodeList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DescribeNacosReplicasRequest(AbstractModel):
     """DescribeNacosReplicas请求参数结构体
 
@@ -441,11 +557,14 @@ class DescribeSREInstanceAccessAddressRequest(AbstractModel):
         :type SubnetId: str
         :param Workload: 引擎其他组件名称（pushgateway）
         :type Workload: str
+        :param EngineRegion: 部署地域
+        :type EngineRegion: str
         """
         self.InstanceId = None
         self.VpcId = None
         self.SubnetId = None
         self.Workload = None
+        self.EngineRegion = None
 
 
     def _deserialize(self, params):
@@ -453,6 +572,7 @@ class DescribeSREInstanceAccessAddressRequest(AbstractModel):
         self.VpcId = params.get("VpcId")
         self.SubnetId = params.get("SubnetId")
         self.Workload = params.get("Workload")
+        self.EngineRegion = params.get("EngineRegion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1317,6 +1437,9 @@ class ZookeeperReplica(AbstractModel):
         :param ZoneId: 可用区ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type ZoneId: str
+        :param AliasName: 别名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AliasName: str
         """
         self.Name = None
         self.Role = None
@@ -1324,6 +1447,7 @@ class ZookeeperReplica(AbstractModel):
         self.SubnetId = None
         self.Zone = None
         self.ZoneId = None
+        self.AliasName = None
 
 
     def _deserialize(self, params):
@@ -1333,6 +1457,7 @@ class ZookeeperReplica(AbstractModel):
         self.SubnetId = params.get("SubnetId")
         self.Zone = params.get("Zone")
         self.ZoneId = params.get("ZoneId")
+        self.AliasName = params.get("AliasName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

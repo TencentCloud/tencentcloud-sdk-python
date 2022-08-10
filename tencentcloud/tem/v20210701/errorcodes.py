@@ -86,6 +86,9 @@ INVALIDPARAMETERVALUE_CONFIGDATAINVALID = 'InvalidParameterValue.ConfigDataInval
 # 定时弹性伸缩目标实例数不合法。
 INVALIDPARAMETERVALUE_CRONHPAREPLICASINVALID = 'InvalidParameterValue.CronHpaReplicasInvalid'
 
+# 弹性伸缩指标不合法。
+INVALIDPARAMETERVALUE_HPAMETRICSINVALID = 'InvalidParameterValue.HpaMetricsInvalid'
+
 # 版本号格式非法。
 INVALIDPARAMETERVALUE_INVALIDDEPLOYVERSION = 'InvalidParameterValue.InvalidDeployVersion'
 

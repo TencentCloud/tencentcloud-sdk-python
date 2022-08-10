@@ -29,6 +29,9 @@ INTERNALERROR_GETCREDENTIAL = 'InternalError.GetCredential'
 # 角色获取错误。
 INTERNALERROR_GETROLEERROR = 'InternalError.GetRoleError'
 
+# 服务内部错误。
+INTERNALERROR_INTERNALERROR = 'InternalError.InternalError'
+
 # 操作失败。
 INTERNALERROR_OPERATIONFAILED = 'InternalError.OperationFailed'
 
@@ -49,6 +52,9 @@ INTERNALERROR_UPDATEERROR = 'InternalError.UpdateError'
 
 # 访问VPC内部错误。
 INTERNALERROR_VPCFAILURE = 'InternalError.VPCFailure'
+
+# 旧实例不支持此操作。
+INVALIDPARAMETERVALUE_ACTION = 'InvalidParameterValue.Action'
 
 # 请求格式不正确。
 INVALIDPARAMETERVALUE_BADREQUESTFORMAT = 'InvalidParameterValue.BadRequestFormat'
@@ -73,6 +79,9 @@ OPERATIONDENIED = 'OperationDenied'
 
 # 资源不存在。
 RESOURCENOTFOUND = 'ResourceNotFound'
+
+# 实例不存在。
+RESOURCENOTFOUND_INSTANCENOTFOUND = 'ResourceNotFound.InstanceNotFound'
 
 # 未授权操作。
 UNAUTHORIZEDOPERATION = 'UnauthorizedOperation'

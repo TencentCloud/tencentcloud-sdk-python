@@ -1379,6 +1379,68 @@ class ModifyRoomInfoResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyUserMicStatusRequest(AbstractModel):
+    """ModifyUserMicStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BizId: 应用ID
+        :type BizId: int
+        :param RoomId: 房间ID
+        :type RoomId: str
+        :param Users: 用户麦克风状态，数组长度不超过20
+        :type Users: list of UserMicStatus
+        """
+        self.BizId = None
+        self.RoomId = None
+        self.Users = None
+
+
+    def _deserialize(self, params):
+        self.BizId = params.get("BizId")
+        self.RoomId = params.get("RoomId")
+        if params.get("Users") is not None:
+            self.Users = []
+            for item in params.get("Users"):
+                obj = UserMicStatus()
+                obj._deserialize(item)
+                self.Users.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyUserMicStatusResponse(AbstractModel):
+    """ModifyUserMicStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 返回结果：0为成功，非0为失败
+        :type Result: int
+        :param ErrMsg: 错误信息
+        :type ErrMsg: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.ErrMsg = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.ErrMsg = params.get("ErrMsg")
+        self.RequestId = params.get("RequestId")
+
+
 class RealTimeSpeechStatisticsItem(AbstractModel):
     """实时语音用量统计数据
 
@@ -1903,6 +1965,34 @@ class UpdateScanUsersResponse(AbstractModel):
     def _deserialize(self, params):
         self.ErrorCode = params.get("ErrorCode")
         self.RequestId = params.get("RequestId")
+
+
+class UserMicStatus(AbstractModel):
+    """用户麦克风状态
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Uid: 用户ID
+        :type Uid: int
+        :param EnableMic: 是否开麦 。1闭麦  2开麦
+        :type EnableMic: int
+        """
+        self.Uid = None
+        self.EnableMic = None
+
+
+    def _deserialize(self, params):
+        self.Uid = params.get("Uid")
+        self.EnableMic = params.get("EnableMic")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class VoiceFilter(AbstractModel):

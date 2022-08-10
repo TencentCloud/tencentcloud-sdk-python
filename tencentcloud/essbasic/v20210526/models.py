@@ -244,11 +244,11 @@ class ChannelCreateBatchCancelFlowUrlResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BatchCancelFlowUrl: 批量撤回url
+        :param BatchCancelFlowUrl: 批量撤销url
         :type BatchCancelFlowUrl: str
-        :param FailMessages: 签署流程批量撤回失败原因
+        :param FailMessages: 签署流程批量撤销失败原因
         :type FailMessages: list of str
-        :param UrlExpireOn: 签署撤回url过期时间-年月日-时分秒
+        :param UrlExpireOn: 签署撤销url过期时间-年月日-时分秒
         :type UrlExpireOn: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -273,40 +273,40 @@ class ChannelCreateConvertTaskApiRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Agent: 无
+        :param Agent: 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
-        :param ResourceId: 资源Id
-        :type ResourceId: str
         :param ResourceType: 资源类型 取值范围doc,docx,html之一
         :type ResourceType: str
-        :param ResourceName: 资源名称
+        :param ResourceName: 资源名称，长度限制为256字符
         :type ResourceName: str
-        :param Organization: 无
-        :type Organization: :class:`tencentcloud.essbasic.v20210526.models.OrganizationInfo`
-        :param Operator: 无
+        :param ResourceId: 资源Id，通过UploadFiles获取
+        :type ResourceId: str
+        :param Operator: 操作者信息
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
+        :param Organization: 暂未开放
+        :type Organization: :class:`tencentcloud.essbasic.v20210526.models.OrganizationInfo`
         """
         self.Agent = None
-        self.ResourceId = None
         self.ResourceType = None
         self.ResourceName = None
-        self.Organization = None
+        self.ResourceId = None
         self.Operator = None
+        self.Organization = None
 
 
     def _deserialize(self, params):
         if params.get("Agent") is not None:
             self.Agent = Agent()
             self.Agent._deserialize(params.get("Agent"))
-        self.ResourceId = params.get("ResourceId")
         self.ResourceType = params.get("ResourceType")
         self.ResourceName = params.get("ResourceName")
-        if params.get("Organization") is not None:
-            self.Organization = OrganizationInfo()
-            self.Organization._deserialize(params.get("Organization"))
+        self.ResourceId = params.get("ResourceId")
         if params.get("Operator") is not None:
             self.Operator = UserInfo()
             self.Operator._deserialize(params.get("Operator"))
+        if params.get("Organization") is not None:
+            self.Organization = OrganizationInfo()
+            self.Organization._deserialize(params.get("Organization"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -546,19 +546,19 @@ class ChannelGetTaskResultApiRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Agent: 渠道信息
+        :param Agent: 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
-        :param TaskId: 任务Id
+        :param TaskId: 任务Id，通过ChannelCreateConvertTaskApi接口获得
         :type TaskId: str
-        :param Organization: 企业信息
-        :type Organization: :class:`tencentcloud.essbasic.v20210526.models.OrganizationInfo`
-        :param Operator: 操作人信息
+        :param Operator: 操作者的信息
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
+        :param Organization: 暂未开放
+        :type Organization: :class:`tencentcloud.essbasic.v20210526.models.OrganizationInfo`
         """
         self.Agent = None
         self.TaskId = None
-        self.Organization = None
         self.Operator = None
+        self.Organization = None
 
 
     def _deserialize(self, params):
@@ -566,12 +566,12 @@ class ChannelGetTaskResultApiRequest(AbstractModel):
             self.Agent = Agent()
             self.Agent._deserialize(params.get("Agent"))
         self.TaskId = params.get("TaskId")
-        if params.get("Organization") is not None:
-            self.Organization = OrganizationInfo()
-            self.Organization._deserialize(params.get("Organization"))
         if params.get("Operator") is not None:
             self.Operator = UserInfo()
             self.Operator._deserialize(params.get("Operator"))
+        if params.get("Organization") is not None:
+            self.Organization = OrganizationInfo()
+            self.Organization._deserialize(params.get("Organization"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -590,11 +590,23 @@ class ChannelGetTaskResultApiResponse(AbstractModel):
         r"""
         :param TaskId: 任务Id
         :type TaskId: str
-        :param TaskStatus: 任务状态
+        :param TaskStatus: 任务状态，需要关注的状态
+0  :NeedTranform   - 任务已提交
+4  :Processing     - 文档转换中
+8  :TaskEnd        - 任务处理完成
+-2 :DownloadFailed - 下载失败
+-6 :ProcessFailed  - 转换失败
+-13:ProcessTimeout - 转换文件超时
         :type TaskStatus: int
-        :param TaskMessage: 状态描述
+        :param TaskMessage: 状态描述，需要关注的状态
+NeedTranform   - 任务已提交
+Processing     - 文档转换中
+TaskEnd        - 任务处理完成
+DownloadFailed - 下载失败
+ProcessFailed  - 转换失败
+ProcessTimeout - 转换文件超时
         :type TaskMessage: str
-        :param ResourceId: 资源Id
+        :param ResourceId: 资源Id，也是FileId，用于文件发起使用
         :type ResourceId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2689,7 +2701,7 @@ class UploadFilesRequest(AbstractModel):
         :param Agent: 应用相关信息，若是渠道版调用 appid 和proxyappid 必填
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         :param BusinessType: 文件对应业务类型，用于区分文件存储路径：
-1. TEMPLATE - 模板； 文件类型：.pdf
+1. TEMPLATE - 模板； 文件类型：.pdf .doc .docx .html
 2. DOCUMENT - 签署过程及签署后的合同文档/图片控件 文件类型：.pdf/.jpg/.png
         :type BusinessType: str
         :param FileInfos: 上传文件内容数组，最多支持20个文件

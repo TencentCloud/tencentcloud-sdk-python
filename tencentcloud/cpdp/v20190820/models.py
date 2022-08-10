@@ -1314,6 +1314,8 @@ __sandbox__:沙箱环境
 __test__:测试环境
 缺省默认为生产环境
         :type Environment: str
+        :param NotifyUrl: 支付结果通知回调地址
+        :type NotifyUrl: str
         """
         self.PayeeId = None
         self.IncomeType = None
@@ -1322,6 +1324,7 @@ __test__:测试环境
         self.FundingAccountInfo = None
         self.Remark = None
         self.Environment = None
+        self.NotifyUrl = None
 
 
     def _deserialize(self, params):
@@ -1334,6 +1337,7 @@ __test__:测试环境
             self.FundingAccountInfo._deserialize(params.get("FundingAccountInfo"))
         self.Remark = params.get("Remark")
         self.Environment = params.get("Environment")
+        self.NotifyUrl = params.get("NotifyUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -68,6 +68,9 @@ FAILEDOPERATION_DELETEDOMAININLOCKEDTIME = 'FailedOperation.DeleteDomainInLocked
 # 配置域名规则失败。
 FAILEDOPERATION_DOMAINGSLBFAIL = 'FailedOperation.DomainGslbFail'
 
+# 域名归属待验证。
+FAILEDOPERATION_DOMAINNEEDVERIFYOWNER = 'FailedOperation.DomainNeedVerifyOwner'
+
 # 免费证书数量超出限制。
 FAILEDOPERATION_EXCEEDSFREELIMIT = 'FailedOperation.ExceedsFreeLimit'
 

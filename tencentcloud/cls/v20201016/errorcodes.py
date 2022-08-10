@@ -206,6 +206,9 @@ OPERATIONDENIED_TOPICHASDATAFORMTASK = 'OperationDenied.TopicHasDataFormTask'
 # topic绑定了函数投递。
 OPERATIONDENIED_TOPICHASDELIVERFUNCTION = 'OperationDenied.TopicHasDeliverFunction'
 
+# topic绑定了scheduleSql任务。
+OPERATIONDENIED_TOPICHASSCHEDULESQLTASK = 'OperationDenied.TopicHasScheduleSqlTask'
+
 # 资源不存在。
 RESOURCENOTFOUND = 'ResourceNotFound'
 

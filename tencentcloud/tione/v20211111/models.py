@@ -228,7 +228,7 @@ class CreateTrainingModelRequest(AbstractModel):
         :type TrainingModelId: str
         :param ModelOutputPath: 模型存储cos目录
         :type ModelOutputPath: :class:`tencentcloud.tione.v20211111.models.CosPathInfo`
-        :param TrainingModelSource: 模型来源 （JOB/COS/AUTO_ML）
+        :param TrainingModelSource: 模型来源 （JOB/COS）
         :type TrainingModelSource: str
         :param TrainingPreference: 模型偏好
         :type TrainingPreference: str
@@ -242,6 +242,8 @@ class CreateTrainingModelRequest(AbstractModel):
         :type ModelVersionType: str
         :param ModelFormat: 模型格式 （PYTORCH/TORCH_SCRIPT/DETECTRON2/SAVED_MODEL/FROZEN_GRAPH/PMML）
         :type ModelFormat: str
+        :param ReasoningEnvironmentId: 推理镜像ID
+        :type ReasoningEnvironmentId: str
         """
         self.ImportMethod = None
         self.TrainingModelCosPath = None
@@ -264,6 +266,7 @@ class CreateTrainingModelRequest(AbstractModel):
         self.TrainingJobVersion = None
         self.ModelVersionType = None
         self.ModelFormat = None
+        self.ReasoningEnvironmentId = None
 
 
     def _deserialize(self, params):
@@ -299,6 +302,7 @@ class CreateTrainingModelRequest(AbstractModel):
         self.TrainingJobVersion = params.get("TrainingJobVersion")
         self.ModelVersionType = params.get("ModelVersionType")
         self.ModelFormat = params.get("ModelFormat")
+        self.ReasoningEnvironmentId = params.get("ReasoningEnvironmentId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1033,14 +1037,18 @@ class DeleteTrainingModelRequest(AbstractModel):
         :type TrainingModelId: str
         :param EnableDeleteCos: 是否同步清理cos
         :type EnableDeleteCos: bool
+        :param ModelVersionType: 删除模型类型，枚举值：NORMAL 普通，ACCELERATE 加速，不传则删除所有
+        :type ModelVersionType: str
         """
         self.TrainingModelId = None
         self.EnableDeleteCos = None
+        self.ModelVersionType = None
 
 
     def _deserialize(self, params):
         self.TrainingModelId = params.get("TrainingModelId")
         self.EnableDeleteCos = params.get("EnableDeleteCos")
+        self.ModelVersionType = params.get("ModelVersionType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3928,6 +3936,9 @@ class TrainingTaskDetail(AbstractModel):
         :param ResourceGroupName: 预付费专用资源组名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceGroupName: str
+        :param Message: 任务信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Message: str
         """
         self.Id = None
         self.Name = None
@@ -3965,6 +3976,7 @@ class TrainingTaskDetail(AbstractModel):
         self.EndTime = None
         self.BillingInfo = None
         self.ResourceGroupName = None
+        self.Message = None
 
 
     def _deserialize(self, params):
@@ -4029,6 +4041,7 @@ class TrainingTaskDetail(AbstractModel):
         self.EndTime = params.get("EndTime")
         self.BillingInfo = params.get("BillingInfo")
         self.ResourceGroupName = params.get("ResourceGroupName")
+        self.Message = params.get("Message")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4097,6 +4110,9 @@ class TrainingTaskSetItem(AbstractModel):
         :param ImageInfo: 自定义镜像信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type ImageInfo: :class:`tencentcloud.tione.v20211111.models.ImageInfo`
+        :param Message: 任务信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Message: str
         """
         self.Id = None
         self.Name = None
@@ -4119,6 +4135,7 @@ class TrainingTaskSetItem(AbstractModel):
         self.BillingInfo = None
         self.ResourceGroupName = None
         self.ImageInfo = None
+        self.Message = None
 
 
     def _deserialize(self, params):
@@ -4157,6 +4174,7 @@ class TrainingTaskSetItem(AbstractModel):
         if params.get("ImageInfo") is not None:
             self.ImageInfo = ImageInfo()
             self.ImageInfo._deserialize(params.get("ImageInfo"))
+        self.Message = params.get("Message")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -2887,6 +2887,48 @@ class DetachDisksResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DetailPrice(AbstractModel):
+    """计费项目明细。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PriceName: 描述计费项目名称，目前取值
+<li>"DiskSpace"代表云硬盘空间收费项。</li>
+<li>"DiskBackupQuota"代表云硬盘备份点配额收费项。</li>
+        :type PriceName: str
+        :param OriginUnitPrice: 云硬盘计费项维度单价。
+        :type OriginUnitPrice: float
+        :param OriginalPrice: 云硬盘计费项维度总价。
+        :type OriginalPrice: float
+        :param Discount: 云硬盘在计费项维度折扣。
+        :type Discount: float
+        :param DiscountPrice: 云硬盘在计费项维度折后总价。
+        :type DiscountPrice: float
+        """
+        self.PriceName = None
+        self.OriginUnitPrice = None
+        self.OriginalPrice = None
+        self.Discount = None
+        self.DiscountPrice = None
+
+
+    def _deserialize(self, params):
+        self.PriceName = params.get("PriceName")
+        self.OriginUnitPrice = params.get("OriginUnitPrice")
+        self.OriginalPrice = params.get("OriginalPrice")
+        self.Discount = params.get("Discount")
+        self.DiscountPrice = params.get("DiscountPrice")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DisassociateInstancesKeyPairsRequest(AbstractModel):
     """DisassociateInstancesKeyPairs请求参数结构体
 
@@ -3015,14 +3057,21 @@ class Disk(AbstractModel):
         :type LatestOperationState: str
         :param LatestOperationRequestId: 上一次请求ID
         :type LatestOperationRequestId: str
-        :param CreatedTime: 创建时间
+        :param CreatedTime: 创建时间。按照 ISO8601 标准表示，并且使用 UTC 时间。 
+格式为： YYYY-MM-DDThh:mm:ssZ。
         :type CreatedTime: str
-        :param ExpiredTime: 到期时间
+        :param ExpiredTime: 到期时间。按照 ISO8601 标准表示，并且使用 UTC 时间。 
+格式为： YYYY-MM-DDThh:mm:ssZ。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExpiredTime: str
-        :param IsolatedTime: 隔离时间
+        :param IsolatedTime: 隔离时间。按照 ISO8601 标准表示，并且使用 UTC 时间。 
+格式为： YYYY-MM-DDThh:mm:ssZ。
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsolatedTime: str
+        :param DiskBackupCount: 云硬盘的已有备份点数量。
+        :type DiskBackupCount: int
+        :param DiskBackupQuota: 云硬盘的备份点配额数量。
+        :type DiskBackupQuota: int
         """
         self.DiskId = None
         self.InstanceId = None
@@ -3042,6 +3091,8 @@ class Disk(AbstractModel):
         self.CreatedTime = None
         self.ExpiredTime = None
         self.IsolatedTime = None
+        self.DiskBackupCount = None
+        self.DiskBackupQuota = None
 
 
     def _deserialize(self, params):
@@ -3063,6 +3114,8 @@ class Disk(AbstractModel):
         self.CreatedTime = params.get("CreatedTime")
         self.ExpiredTime = params.get("ExpiredTime")
         self.IsolatedTime = params.get("IsolatedTime")
+        self.DiskBackupCount = params.get("DiskBackupCount")
+        self.DiskBackupQuota = params.get("DiskBackupQuota")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3196,11 +3249,14 @@ class DiskPrice(AbstractModel):
         :type Discount: float
         :param DiscountPrice: 折后总价。
         :type DiscountPrice: float
+        :param DetailPrices: 计费项目明细列表。
+        :type DetailPrices: list of DetailPrice
         """
         self.OriginalDiskPrice = None
         self.OriginalPrice = None
         self.Discount = None
         self.DiscountPrice = None
+        self.DetailPrices = None
 
 
     def _deserialize(self, params):
@@ -3208,6 +3264,12 @@ class DiskPrice(AbstractModel):
         self.OriginalPrice = params.get("OriginalPrice")
         self.Discount = params.get("Discount")
         self.DiscountPrice = params.get("DiscountPrice")
+        if params.get("DetailPrices") is not None:
+            self.DetailPrices = []
+            for item in params.get("DetailPrices"):
+                obj = DetailPrice()
+                obj._deserialize(item)
+                self.DetailPrices.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

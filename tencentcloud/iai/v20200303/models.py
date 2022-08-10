@@ -235,7 +235,7 @@ class Candidate(AbstractModel):
         r"""
         :param PersonId: 人员ID
         :type PersonId: str
-        :param FaceId: 人脸ID
+        :param FaceId: 人脸ID，仅在SearchFaces/SearchFacesReturnsByGroup接口返回时有效。人员搜索类接口采用融合特征方式检索，该字段无意义
         :type FaceId: str
         :param Score: 候选者的匹配得分。 
 

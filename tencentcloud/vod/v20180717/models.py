@@ -10670,6 +10670,8 @@ class DescribeSuperPlayerConfigsRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :type SubAppId: int
         :param Names: 播放器配置名字过滤条件，数组长度限制：100。
         :type Names: list of str
         :param Offset: 分页偏移量，默认值：0。
@@ -10680,22 +10682,20 @@ class DescribeSuperPlayerConfigsRequest(AbstractModel):
 <li>Preset：系统预置配置；</li>
 <li>Custom：用户自定义配置。</li>
         :type Type: str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
         """
+        self.SubAppId = None
         self.Names = None
         self.Offset = None
         self.Limit = None
         self.Type = None
-        self.SubAppId = None
 
 
     def _deserialize(self, params):
+        self.SubAppId = params.get("SubAppId")
         self.Names = params.get("Names")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
         self.Type = params.get("Type")
-        self.SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -17145,6 +17145,8 @@ class ModifySuperPlayerConfigRequest(AbstractModel):
         r"""
         :param Name: 播放器配置名称。
         :type Name: str
+        :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :type SubAppId: int
         :param AudioVideoType: 播放的音视频类型，可选值：
 <li>AdaptiveDynamicStream：自适应码流输出；</li>
 <li>Transcode：转码输出；</li>
@@ -17173,10 +17175,9 @@ class ModifySuperPlayerConfigRequest(AbstractModel):
         :type Scheme: str
         :param Comment: 模板描述信息，长度限制：256 个字符。
         :type Comment: str
-        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
         """
         self.Name = None
+        self.SubAppId = None
         self.AudioVideoType = None
         self.DrmSwitch = None
         self.AdaptiveDynamicStreamingDefinition = None
@@ -17187,11 +17188,11 @@ class ModifySuperPlayerConfigRequest(AbstractModel):
         self.Domain = None
         self.Scheme = None
         self.Comment = None
-        self.SubAppId = None
 
 
     def _deserialize(self, params):
         self.Name = params.get("Name")
+        self.SubAppId = params.get("SubAppId")
         self.AudioVideoType = params.get("AudioVideoType")
         self.DrmSwitch = params.get("DrmSwitch")
         self.AdaptiveDynamicStreamingDefinition = params.get("AdaptiveDynamicStreamingDefinition")
@@ -17209,7 +17210,6 @@ class ModifySuperPlayerConfigRequest(AbstractModel):
         self.Domain = params.get("Domain")
         self.Scheme = params.get("Scheme")
         self.Comment = params.get("Comment")
-        self.SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -18060,6 +18060,11 @@ class PlayerConfig(AbstractModel):
 <li>Preset：系统预置配置；</li>
 <li>Custom：用户自定义配置。</li>
         :type Type: str
+        :param AudioVideoType: 播放的音视频类型，可选值有：
+<li>AdaptiveDynamicStream：自适应码流输出；</li>
+<li>Transcode：转码输出；</li>
+<li>Original：原始音视频。</li>
+        :type AudioVideoType: str
         :param DrmSwitch: 播放 DRM 保护的自适应码流开关：
 <li>ON：开启，表示仅播放 DRM  保护的自适应码流输出；</li>
 <li>OFF：关闭，表示播放未加密的自适应码流输出。</li>
@@ -18069,6 +18074,8 @@ class PlayerConfig(AbstractModel):
         :param DrmStreamingsInfo: 允许输出的 DRM 自适应码流模板内容。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DrmStreamingsInfo: :class:`tencentcloud.vod.v20180717.models.DrmStreamingsInfo`
+        :param TranscodeDefinition: 允许输出的转码模板 ID。
+        :type TranscodeDefinition: int
         :param ImageSpriteDefinition: 允许输出的雪碧图模板 ID。
         :type ImageSpriteDefinition: int
         :param ResolutionNameSet: 播放器对不于不同分辨率的子流展示名字。
@@ -18089,9 +18096,11 @@ class PlayerConfig(AbstractModel):
         """
         self.Name = None
         self.Type = None
+        self.AudioVideoType = None
         self.DrmSwitch = None
         self.AdaptiveDynamicStreamingDefinition = None
         self.DrmStreamingsInfo = None
+        self.TranscodeDefinition = None
         self.ImageSpriteDefinition = None
         self.ResolutionNameSet = None
         self.CreateTime = None
@@ -18104,11 +18113,13 @@ class PlayerConfig(AbstractModel):
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Type = params.get("Type")
+        self.AudioVideoType = params.get("AudioVideoType")
         self.DrmSwitch = params.get("DrmSwitch")
         self.AdaptiveDynamicStreamingDefinition = params.get("AdaptiveDynamicStreamingDefinition")
         if params.get("DrmStreamingsInfo") is not None:
             self.DrmStreamingsInfo = DrmStreamingsInfo()
             self.DrmStreamingsInfo._deserialize(params.get("DrmStreamingsInfo"))
+        self.TranscodeDefinition = params.get("TranscodeDefinition")
         self.ImageSpriteDefinition = params.get("ImageSpriteDefinition")
         if params.get("ResolutionNameSet") is not None:
             self.ResolutionNameSet = []
