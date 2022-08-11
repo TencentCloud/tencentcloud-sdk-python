@@ -55,37 +55,6 @@ class TbaasClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def BlockByNumberHandler(self, request):
-        """版本升级
-
-        Bcos根据块高查询区块信息
-
-        :param request: Request instance for BlockByNumberHandler.
-        :type request: :class:`tencentcloud.tbaas.v20180416.models.BlockByNumberHandlerRequest`
-        :rtype: :class:`tencentcloud.tbaas.v20180416.models.BlockByNumberHandlerResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("BlockByNumberHandler", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.BlockByNumberHandlerResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def CreateChaincodeAndInstallForUser(self, request):
         """创建并安装合约
 
@@ -130,37 +99,6 @@ class TbaasClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeployDynamicBcosContractResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def DeployDynamicContractHandler(self, request):
-        """版本升级
-
-        动态部署合约
-
-        :param request: Request instance for DeployDynamicContractHandler.
-        :type request: :class:`tencentcloud.tbaas.v20180416.models.DeployDynamicContractHandlerRequest`
-        :rtype: :class:`tencentcloud.tbaas.v20180416.models.DeployDynamicContractHandlerResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DeployDynamicContractHandler", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DeployDynamicContractHandlerResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -335,37 +273,6 @@ class TbaasClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetBlockListResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def GetBlockListHandler(self, request):
-        """版本升级
-
-        Bcos分页查询当前群组下的区块列表
-
-        :param request: Request instance for GetBlockListHandler.
-        :type request: :class:`tencentcloud.tbaas.v20180416.models.GetBlockListHandlerRequest`
-        :rtype: :class:`tencentcloud.tbaas.v20180416.models.GetBlockListHandlerResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("GetBlockListHandler", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.GetBlockListHandlerResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -656,68 +563,6 @@ class TbaasClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.GetPeerLogForUserResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def GetTransByHashHandler(self, request):
-        """版本升级
-
-        Bcos根据交易哈希查看交易详细信息
-
-        :param request: Request instance for GetTransByHashHandler.
-        :type request: :class:`tencentcloud.tbaas.v20180416.models.GetTransByHashHandlerRequest`
-        :rtype: :class:`tencentcloud.tbaas.v20180416.models.GetTransByHashHandlerResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("GetTransByHashHandler", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.GetTransByHashHandlerResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def GetTransListHandler(self, request):
-        """版本升级
-
-        Bcos分页查询当前群组的交易信息列表
-
-        :param request: Request instance for GetTransListHandler.
-        :type request: :class:`tencentcloud.tbaas.v20180416.models.GetTransListHandlerRequest`
-        :rtype: :class:`tencentcloud.tbaas.v20180416.models.GetTransListHandlerResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("GetTransListHandler", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.GetTransListHandlerResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1109,37 +954,6 @@ class TbaasClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def SendTransactionHandler(self, request):
-        """版本升级
-
-        Bcos发送交易
-
-        :param request: Request instance for SendTransactionHandler.
-        :type request: :class:`tencentcloud.tbaas.v20180416.models.SendTransactionHandlerRequest`
-        :rtype: :class:`tencentcloud.tbaas.v20180416.models.SendTransactionHandlerResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("SendTransactionHandler", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.SendTransactionHandlerResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def SrvInvoke(self, request):
         """trustsql服务统一接口
 
@@ -1155,37 +969,6 @@ class TbaasClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SrvInvokeResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def TransByDynamicContractHandler(self, request):
-        """版本升级
-
-        根据动态部署的合约发送交易
-
-        :param request: Request instance for TransByDynamicContractHandler.
-        :type request: :class:`tencentcloud.tbaas.v20180416.models.TransByDynamicContractHandlerRequest`
-        :rtype: :class:`tencentcloud.tbaas.v20180416.models.TransByDynamicContractHandlerResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("TransByDynamicContractHandler", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.TransByDynamicContractHandlerResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

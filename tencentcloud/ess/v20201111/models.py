@@ -658,7 +658,7 @@ class CreateFlowByFilesRequest(AbstractModel):
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         :param FlowName: 签署流程名称,最大长度200个字符
         :type FlowName: str
-        :param Approvers: 签署参与者信息
+        :param Approvers: 签署参与者信息，最大限制50方
         :type Approvers: list of ApproverInfo
         :param FileIds: 签署pdf文件的资源编号列表，通过UploadFiles接口获取
         :type FileIds: list of str
@@ -684,6 +684,11 @@ false：有序签
         :type Unordered: bool
         :param CustomShowMap: 合同显示的页卡模板，说明：只支持{合同名称}, {发起方企业}, {发起方姓名}, {签署方N企业}, {签署方N姓名}，且N不能超过签署人的数量，N从1开始
         :type CustomShowMap: str
+        :param NeedSignReview: 发起方企业的签署人进行签署操作是否需要企业内部审批。
+若设置为true,审核结果需通过接口 CreateFlowSignReview 通知电子签，审核通过后，发起方企业签署人方可进行签署操作，否则会阻塞其签署操作。
+
+注：企业可以通过此功能与企业内部的审批流程进行关联，支持手动、静默签署合同。
+        :type NeedSignReview: bool
         :param Agent: 应用号信息
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
@@ -699,6 +704,7 @@ false：有序签
         self.Deadline = None
         self.Unordered = None
         self.CustomShowMap = None
+        self.NeedSignReview = None
         self.Agent = None
 
 
@@ -732,6 +738,7 @@ false：有序签
         self.Deadline = params.get("Deadline")
         self.Unordered = params.get("Unordered")
         self.CustomShowMap = params.get("CustomShowMap")
+        self.NeedSignReview = params.get("NeedSignReview")
         if params.get("Agent") is not None:
             self.Agent = Agent()
             self.Agent._deserialize(params.get("Agent"))
@@ -781,7 +788,7 @@ class CreateFlowRequest(AbstractModel):
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         :param FlowName: 签署流程名称,最大长度200个字符
         :type FlowName: str
-        :param Approvers: 签署流程参与者信息
+        :param Approvers: 签署流程参与者信息，最大限制50方
         :type Approvers: list of FlowCreateApprover
         :param FlowType: 签署流程的类型(如销售合同/入职合同等)，最大长度200个字符
         :type FlowType: str
@@ -803,6 +810,11 @@ false：有序签
         :type Unordered: bool
         :param CustomShowMap: 合同显示的页卡模板，说明：只支持{合同名称}, {发起方企业}, {发起方姓名}, {签署方N企业}, {签署方N姓名}，且N不能超过签署人的数量，N从1开始
         :type CustomShowMap: str
+        :param NeedSignReview: 发起方企业的签署人进行签署操作是否需要企业内部审批。
+若设置为true,审核结果需通过接口 CreateFlowSignReview 通知电子签，审核通过后，发起方企业签署人方可进行签署操作，否则会阻塞其签署操作。
+
+注：企业可以通过此功能与企业内部的审批流程进行关联，支持手动、静默签署合同。
+        :type NeedSignReview: bool
         :param RelatedFlowId: 暂未开放
         :type RelatedFlowId: str
         :param Agent: 应用相关信息
@@ -819,6 +831,7 @@ false：有序签
         self.FlowDescription = None
         self.Unordered = None
         self.CustomShowMap = None
+        self.NeedSignReview = None
         self.RelatedFlowId = None
         self.Agent = None
 
@@ -842,6 +855,7 @@ false：有序签
         self.FlowDescription = params.get("FlowDescription")
         self.Unordered = params.get("Unordered")
         self.CustomShowMap = params.get("CustomShowMap")
+        self.NeedSignReview = params.get("NeedSignReview")
         self.RelatedFlowId = params.get("RelatedFlowId")
         if params.get("Agent") is not None:
             self.Agent = Agent()

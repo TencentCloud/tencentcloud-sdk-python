@@ -344,7 +344,7 @@ class ChannelCreateFlowByFilesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Agent: 渠道应用相关信息
+        :param Agent: 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         :param FlowName: 签署流程名称，长度不超过200个字符
         :type FlowName: str
@@ -368,6 +368,8 @@ class ChannelCreateFlowByFilesRequest(AbstractModel):
         :type CustomShowMap: str
         :param CustomerData: 渠道的业务信息，最大长度1000个字符。发起自动签署时，需设置对应自动签署场景，目前仅支持场景：处方单-E_PRESCRIPTION_AUTO_SIGN
         :type CustomerData: str
+        :param NeedSignReview: 发起方企业的签署人进行签署操作是否需要企业内部审批。 若设置为true,审核结果需通过接口 ChannelCreateFlowSignReview 通知电子签，审核通过后，发起方企业签署人方可进行签署操作，否则会阻塞其签署操作。  注：企业可以通过此功能与企业内部的审批流程进行关联，支持手动、静默签署合同。
+        :type NeedSignReview: bool
         :param Operator: 操作者的信息
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         """
@@ -383,6 +385,7 @@ class ChannelCreateFlowByFilesRequest(AbstractModel):
         self.FlowDescription = None
         self.CustomShowMap = None
         self.CustomerData = None
+        self.NeedSignReview = None
         self.Operator = None
 
 
@@ -411,6 +414,7 @@ class ChannelCreateFlowByFilesRequest(AbstractModel):
         self.FlowDescription = params.get("FlowDescription")
         self.CustomShowMap = params.get("CustomShowMap")
         self.CustomerData = params.get("CustomerData")
+        self.NeedSignReview = params.get("NeedSignReview")
         if params.get("Operator") is not None:
             self.Operator = UserInfo()
             self.Operator._deserialize(params.get("Operator"))
@@ -1744,6 +1748,11 @@ class FlowInfo(AbstractModel):
         :type CustomShowMap: str
         :param CcInfos: 被抄送人的信息列表，抄送功能暂不开放
         :type CcInfos: list of CcInfo
+        :param NeedSignReview: 发起方企业的签署人进行签署操作是否需要企业内部审批。
+若设置为true,审核结果需通过接口 ChannelCreateFlowSignReview 通知电子签，审核通过后，发起方企业签署人方可进行签署操作，否则会阻塞其签署操作。
+
+注：企业可以通过此功能与企业内部的审批流程进行关联，支持手动、静默签署合同。
+        :type NeedSignReview: bool
         """
         self.FlowName = None
         self.Deadline = None
@@ -1756,6 +1765,7 @@ class FlowInfo(AbstractModel):
         self.CustomerData = None
         self.CustomShowMap = None
         self.CcInfos = None
+        self.NeedSignReview = None
 
 
     def _deserialize(self, params):
@@ -1785,6 +1795,7 @@ class FlowInfo(AbstractModel):
                 obj = CcInfo()
                 obj._deserialize(item)
                 self.CcInfos.append(obj)
+        self.NeedSignReview = params.get("NeedSignReview")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

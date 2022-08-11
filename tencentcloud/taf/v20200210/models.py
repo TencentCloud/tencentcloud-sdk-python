@@ -181,12 +181,6 @@ class InputKolDataList(AbstractModel):
         
 
 
-class InputRecognizeEffectiveFlow(AbstractModel):
-    """接口入参
-
-    """
-
-
 class InputRecognizeTargetAudience(AbstractModel):
     """流量反欺诈-验准入参
 
@@ -500,73 +494,6 @@ class OutputKolValue(AbstractModel):
         
 
 
-class OutputRecognizeEffectiveFlow(AbstractModel):
-    """业务出参
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Code: 返回码。0表示成功，非0标识失败错误码
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Code: int
-        :param Message: UTF-8编码，出错消息。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Message: str
-        :param Value: 业务入参
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Value: :class:`tencentcloud.taf.v20200210.models.OutputRecognizeEffectiveFlowValue`
-        """
-        self.Code = None
-        self.Message = None
-        self.Value = None
-
-
-    def _deserialize(self, params):
-        self.Code = params.get("Code")
-        self.Message = params.get("Message")
-        if params.get("Value") is not None:
-            self.Value = OutputRecognizeEffectiveFlowValue()
-            self.Value._deserialize(params.get("Value"))
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class OutputRecognizeEffectiveFlowValue(AbstractModel):
-    """业务出参
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Lable: 返回标签
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Lable: str
-        :param Score: 返回分值
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Score: float
-        """
-        self.Lable = None
-        self.Score = None
-
-
-    def _deserialize(self, params):
-        self.Lable = params.get("Lable")
-        self.Score = params.get("Score")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class OutputRecognizeTargetAudience(AbstractModel):
     """流量反欺诈-验准返回值
 
@@ -721,55 +648,6 @@ class RecognizeCustomizedAudienceResponse(AbstractModel):
     def _deserialize(self, params):
         if params.get("Data") is not None:
             self.Data = OutputRecognizeTargetAudience()
-            self.Data._deserialize(params.get("Data"))
-        self.RequestId = params.get("RequestId")
-
-
-class RecognizeEffectiveFlowRequest(AbstractModel):
-    """RecognizeEffectiveFlow请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param BusinessSecurityData: 业务入参
-        :type BusinessSecurityData: :class:`tencentcloud.taf.v20200210.models.InputRecognizeEffectiveFlow`
-        """
-        self.BusinessSecurityData = None
-
-
-    def _deserialize(self, params):
-        if params.get("BusinessSecurityData") is not None:
-            self.BusinessSecurityData = InputRecognizeEffectiveFlow()
-            self.BusinessSecurityData._deserialize(params.get("BusinessSecurityData"))
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class RecognizeEffectiveFlowResponse(AbstractModel):
-    """RecognizeEffectiveFlow返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Data: 业务出参
-        :type Data: :class:`tencentcloud.taf.v20200210.models.OutputRecognizeEffectiveFlow`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.Data = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        if params.get("Data") is not None:
-            self.Data = OutputRecognizeEffectiveFlow()
             self.Data._deserialize(params.get("Data"))
         self.RequestId = params.get("RequestId")
 

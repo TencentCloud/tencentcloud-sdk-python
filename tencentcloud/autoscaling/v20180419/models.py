@@ -1004,6 +1004,9 @@ class CreateLaunchConfigurationRequest(AbstractModel):
 <br><li>ORIGINAL：使用设置的云盘类型
 <br><li>AUTOMATIC：自动选择当前可用的云盘类型
         :type DiskTypePolicy: str
+        :param HpcClusterId: 高性能计算集群ID。<br>
+注意：此字段默认为空。
+        :type HpcClusterId: str
         """
         self.LaunchConfigurationName = None
         self.ImageId = None
@@ -1027,6 +1030,7 @@ class CreateLaunchConfigurationRequest(AbstractModel):
         self.InstanceNameSettings = None
         self.InstanceChargePrepaid = None
         self.DiskTypePolicy = None
+        self.HpcClusterId = None
 
 
     def _deserialize(self, params):
@@ -1083,6 +1087,7 @@ class CreateLaunchConfigurationRequest(AbstractModel):
             self.InstanceChargePrepaid = InstanceChargePrepaid()
             self.InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
         self.DiskTypePolicy = params.get("DiskTypePolicy")
+        self.HpcClusterId = params.get("HpcClusterId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3301,6 +3306,9 @@ class LaunchConfiguration(AbstractModel):
 <br><li>ORIGINAL：使用设置的云盘类型
 <br><li>AUTOMATIC：自动选择当前可用区下可用的云盘类型
         :type DiskTypePolicy: str
+        :param HpcClusterId: 高性能计算集群ID。<br>
+注意：此字段默认为空。
+        :type HpcClusterId: str
         """
         self.ProjectId = None
         self.LaunchConfigurationId = None
@@ -3330,6 +3338,7 @@ class LaunchConfiguration(AbstractModel):
         self.InstanceNameSettings = None
         self.InstanceChargePrepaid = None
         self.DiskTypePolicy = None
+        self.HpcClusterId = None
 
 
     def _deserialize(self, params):
@@ -3397,6 +3406,7 @@ class LaunchConfiguration(AbstractModel):
             self.InstanceChargePrepaid = InstanceChargePrepaid()
             self.InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
         self.DiskTypePolicy = params.get("DiskTypePolicy")
+        self.HpcClusterId = params.get("HpcClusterId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3882,6 +3892,9 @@ InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定�
         :type EnhancedService: :class:`tencentcloud.autoscaling.v20180419.models.EnhancedService`
         :param CamRoleName: CAM角色名称。可通过DescribeRoleList接口返回值中的roleName获取。
         :type CamRoleName: str
+        :param HpcClusterId: 高性能计算集群ID。<br>
+注意：此字段默认为空。
+        :type HpcClusterId: str
         """
         self.LaunchConfigurationId = None
         self.ImageId = None
@@ -3901,6 +3914,7 @@ InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定�
         self.InstanceNameSettings = None
         self.EnhancedService = None
         self.CamRoleName = None
+        self.HpcClusterId = None
 
 
     def _deserialize(self, params):
@@ -3941,6 +3955,7 @@ InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定�
             self.EnhancedService = EnhancedService()
             self.EnhancedService._deserialize(params.get("EnhancedService"))
         self.CamRoleName = params.get("CamRoleName")
+        self.HpcClusterId = params.get("HpcClusterId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

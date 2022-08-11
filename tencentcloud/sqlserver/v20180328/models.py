@@ -844,6 +844,10 @@ class CreateBasicDBInstancesRequest(AbstractModel):
         :type Span: int
         :param ResourceTags: 新建实例绑定的标签集合
         :type ResourceTags: list of ResourceTag
+        :param Collation: 系统字符集排序规则，默认：Chinese_PRC_CI_AS
+        :type Collation: str
+        :param TimeZone: 系统时区，默认：China Standard Time
+        :type TimeZone: str
         """
         self.Zone = None
         self.Cpu = None
@@ -865,6 +869,8 @@ class CreateBasicDBInstancesRequest(AbstractModel):
         self.StartTime = None
         self.Span = None
         self.ResourceTags = None
+        self.Collation = None
+        self.TimeZone = None
 
 
     def _deserialize(self, params):
@@ -893,6 +899,8 @@ class CreateBasicDBInstancesRequest(AbstractModel):
                 obj = ResourceTag()
                 obj._deserialize(item)
                 self.ResourceTags.append(obj)
+        self.Collation = params.get("Collation")
+        self.TimeZone = params.get("TimeZone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -970,6 +978,10 @@ class CreateDBInstancesRequest(AbstractModel):
         :type MultiZones: bool
         :param ResourceTags: 新建实例绑定的标签集合
         :type ResourceTags: list of ResourceTag
+        :param Collation: 系统字符集排序规则，默认：Chinese_PRC_CI_AS
+        :type Collation: str
+        :param TimeZone: 系统时区，默认：China Standard Time
+        :type TimeZone: str
         """
         self.Zone = None
         self.Memory = None
@@ -991,6 +1003,8 @@ class CreateDBInstancesRequest(AbstractModel):
         self.HAType = None
         self.MultiZones = None
         self.ResourceTags = None
+        self.Collation = None
+        self.TimeZone = None
 
 
     def _deserialize(self, params):
@@ -1019,6 +1033,8 @@ class CreateDBInstancesRequest(AbstractModel):
                 obj = ResourceTag()
                 obj._deserialize(item)
                 self.ResourceTags.append(obj)
+        self.Collation = params.get("Collation")
+        self.TimeZone = params.get("TimeZone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1356,6 +1372,10 @@ class CreateReadOnlyDBInstancesRequest(AbstractModel):
         :type VoucherIds: list of str
         :param ResourceTags: 新建实例绑定的标签集合
         :type ResourceTags: list of ResourceTag
+        :param Collation: 系统字符集排序规则，默认：Chinese_PRC_CI_AS
+        :type Collation: str
+        :param TimeZone: 系统时区，默认：China Standard Time
+        :type TimeZone: str
         """
         self.InstanceId = None
         self.Zone = None
@@ -1377,6 +1397,8 @@ class CreateReadOnlyDBInstancesRequest(AbstractModel):
         self.AutoVoucher = None
         self.VoucherIds = None
         self.ResourceTags = None
+        self.Collation = None
+        self.TimeZone = None
 
 
     def _deserialize(self, params):
@@ -1405,6 +1427,8 @@ class CreateReadOnlyDBInstancesRequest(AbstractModel):
                 obj = ResourceTag()
                 obj._deserialize(item)
                 self.ResourceTags.append(obj)
+        self.Collation = params.get("Collation")
+        self.TimeZone = params.get("TimeZone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1699,6 +1723,10 @@ class DBInstance(AbstractModel):
         :type DnsPodDomain: str
         :param TgwWanVPort: 外网端口号
         :type TgwWanVPort: int
+        :param Collation: 系统字符集排序规则，默认：Chinese_PRC_CI_AS
+        :type Collation: str
+        :param TimeZone: 系统时区，默认：China Standard Time
+        :type TimeZone: str
         """
         self.InstanceId = None
         self.Name = None
@@ -1748,6 +1776,8 @@ class DBInstance(AbstractModel):
         self.CrossBackupSaveDays = None
         self.DnsPodDomain = None
         self.TgwWanVPort = None
+        self.Collation = None
+        self.TimeZone = None
 
 
     def _deserialize(self, params):
@@ -1804,6 +1834,8 @@ class DBInstance(AbstractModel):
         self.CrossBackupSaveDays = params.get("CrossBackupSaveDays")
         self.DnsPodDomain = params.get("DnsPodDomain")
         self.TgwWanVPort = params.get("TgwWanVPort")
+        self.Collation = params.get("Collation")
+        self.TimeZone = params.get("TimeZone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

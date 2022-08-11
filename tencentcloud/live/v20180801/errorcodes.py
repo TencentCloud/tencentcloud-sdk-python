@@ -65,8 +65,14 @@ FAILEDOPERATION_CONFIGCDNFAILED = 'FailedOperation.ConfigCDNFailed'
 # 2天内有产生流量，域名处于锁定期间，2天内无流量产生才允许删除域名。
 FAILEDOPERATION_DELETEDOMAININLOCKEDTIME = 'FailedOperation.DeleteDomainInLockedTime'
 
+# 域名已添加。
+FAILEDOPERATION_DOMAINADDED = 'FailedOperation.DomainAdded'
+
 # 配置域名规则失败。
 FAILEDOPERATION_DOMAINGSLBFAIL = 'FailedOperation.DomainGslbFail'
+
+# 域名需要实名认证。
+FAILEDOPERATION_DOMAINNEEDREALNAME = 'FailedOperation.DomainNeedRealName'
 
 # 域名归属待验证。
 FAILEDOPERATION_DOMAINNEEDVERIFYOWNER = 'FailedOperation.DomainNeedVerifyOwner'
@@ -113,6 +119,9 @@ FAILEDOPERATION_NOREALNAMEAUTH = 'FailedOperation.NoRealNameAuth'
 # 找不到记录。
 FAILEDOPERATION_NOTFOUND = 'FailedOperation.NotFound'
 
+# 父域名已添加。
+FAILEDOPERATION_PARENTDOMAINADDED = 'FailedOperation.ParentDomainAdded'
+
 # 启动混流失败。
 FAILEDOPERATION_PROCESSMIXERROR = 'FailedOperation.ProcessMixError'
 
@@ -127,6 +136,9 @@ FAILEDOPERATION_SDKNOPACKAGE = 'FailedOperation.SdkNoPackage'
 
 # 流不存在。
 FAILEDOPERATION_STREAMNOTEXIST = 'FailedOperation.StreamNotExist'
+
+# 子域名已添加。
+FAILEDOPERATION_SUBDOMAINADDED = 'FailedOperation.SubDomainAdded'
 
 # 解绑Tag失败，请尝试手动解绑。
 FAILEDOPERATION_TAGUNBINDERROR = 'FailedOperation.TagUnbindError'

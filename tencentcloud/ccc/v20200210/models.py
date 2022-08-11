@@ -1285,68 +1285,6 @@ class DescribeProtectedTelCdrResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class DescribeSeatUserListRequest(AbstractModel):
-    """DescribeSeatUserList请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param InstanceId: 实例ID
-        :type InstanceId: int
-        :param Offset: 偏移量
-        :type Offset: int
-        :param Limit: 返回数量
-        :type Limit: int
-        """
-        self.InstanceId = None
-        self.Offset = None
-        self.Limit = None
-
-
-    def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeSeatUserListResponse(AbstractModel):
-    """DescribeSeatUserList返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param TotalCount: 此实例的坐席用户总数
-        :type TotalCount: int
-        :param SeatUsers: 坐席用户信息列表
-        :type SeatUsers: list of SeatUserInfo
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.TotalCount = None
-        self.SeatUsers = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
-        if params.get("SeatUsers") is not None:
-            self.SeatUsers = []
-            for item in params.get("SeatUsers"):
-                obj = SeatUserInfo()
-                obj._deserialize(item)
-                self.SeatUsers.append(obj)
-        self.RequestId = params.get("RequestId")
-
-
 class DescribeSkillGroupInfoListRequest(AbstractModel):
     """DescribeSkillGroupInfoList请求参数结构体
 
@@ -1364,12 +1302,15 @@ class DescribeSkillGroupInfoListRequest(AbstractModel):
         :type SkillGroupId: int
         :param ModifiedTime: 查询修改时间大于等于ModifiedTime的技能组时使用
         :type ModifiedTime: int
+        :param SkillGroupName: 技能组名称
+        :type SkillGroupName: str
         """
         self.SdkAppId = None
         self.PageSize = None
         self.PageNumber = None
         self.SkillGroupId = None
         self.ModifiedTime = None
+        self.SkillGroupName = None
 
 
     def _deserialize(self, params):
@@ -1378,6 +1319,7 @@ class DescribeSkillGroupInfoListRequest(AbstractModel):
         self.PageNumber = params.get("PageNumber")
         self.SkillGroupId = params.get("SkillGroupId")
         self.ModifiedTime = params.get("ModifiedTime")
+        self.SkillGroupName = params.get("SkillGroupName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1960,6 +1902,10 @@ class ModifyStaffRequest(AbstractModel):
         :type Nick: str
         :param SkillGroupIds: 绑定技能组ID列表
         :type SkillGroupIds: list of int
+        :param UseMobileCallOut: 是否开启手机外呼开关
+        :type UseMobileCallOut: bool
+        :param UseMobileAccept: 手机接听模式 0 - 关闭 | 1 - 仅离线 | 2 - 始终
+        :type UseMobileAccept: int
         """
         self.SdkAppId = None
         self.Email = None
@@ -1967,6 +1913,8 @@ class ModifyStaffRequest(AbstractModel):
         self.Phone = None
         self.Nick = None
         self.SkillGroupIds = None
+        self.UseMobileCallOut = None
+        self.UseMobileAccept = None
 
 
     def _deserialize(self, params):
@@ -1976,6 +1924,8 @@ class ModifyStaffRequest(AbstractModel):
         self.Phone = params.get("Phone")
         self.Nick = params.get("Nick")
         self.SkillGroupIds = params.get("SkillGroupIds")
+        self.UseMobileCallOut = params.get("UseMobileCallOut")
+        self.UseMobileAccept = params.get("UseMobileAccept")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2689,6 +2639,10 @@ class StaffStatusMetrics(AbstractModel):
         :type ReserveRest: bool
         :param ReserveNotReady: 是否预约示忙
         :type ReserveNotReady: bool
+        :param UseMobileAccept: 手机接听模式： 0 - 关闭 | 1 - 仅离线 | 2- 始终
+        :type UseMobileAccept: int
+        :param UseMobileCallOut: 手机外呼开关
+        :type UseMobileCallOut: bool
         """
         self.Email = None
         self.Status = None
@@ -2702,6 +2656,8 @@ class StaffStatusMetrics(AbstractModel):
         self.Reason = None
         self.ReserveRest = None
         self.ReserveNotReady = None
+        self.UseMobileAccept = None
+        self.UseMobileCallOut = None
 
 
     def _deserialize(self, params):
@@ -2719,6 +2675,8 @@ class StaffStatusMetrics(AbstractModel):
         self.Reason = params.get("Reason")
         self.ReserveRest = params.get("ReserveRest")
         self.ReserveNotReady = params.get("ReserveNotReady")
+        self.UseMobileAccept = params.get("UseMobileAccept")
+        self.UseMobileCallOut = params.get("UseMobileCallOut")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

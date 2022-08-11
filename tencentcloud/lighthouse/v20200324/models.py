@@ -1492,14 +1492,18 @@ class DescribeDiskDiscountRequest(AbstractModel):
         :type DiskType: str
         :param DiskSize: 云硬盘大小。
         :type DiskSize: int
+        :param DiskBackupQuota: 指定云硬盘备份点配额，不传时默认为不带备份点配额。目前只支持不带或设置1个云硬盘备份点配额。
+        :type DiskBackupQuota: int
         """
         self.DiskType = None
         self.DiskSize = None
+        self.DiskBackupQuota = None
 
 
     def _deserialize(self, params):
         self.DiskType = params.get("DiskType")
         self.DiskSize = params.get("DiskSize")
+        self.DiskBackupQuota = params.get("DiskBackupQuota")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1619,11 +1623,13 @@ disk-usage
 按照【云硬盘类型】进行过滤。
 类型：String
 必选：否
+取值：SYSTEM_DISK或DATA_DISK
 disk-state
 按照【云硬盘状态】进行过滤。
 类型：String
 必选：否
-每次请求的 Filters 的上限为 10，Filter.Values 的上限为 5。参数不支持同时指定 DiskIds 和 Filters。
+取值：参考数据结构[Disk](https://cloud.tencent.com/document/api/1207/47576#Disk)中DiskState取值。
+每次请求的 Filters 的上限为 10，Filter.Values 的上限为 100。参数不支持同时指定 DiskIds 和 Filters。
         :type Filters: list of Filter
         :param Limit: 返回数量，默认为20，最大值为100。
         :type Limit: int
@@ -3045,7 +3051,17 @@ class Disk(AbstractModel):
         :type DiskSize: int
         :param RenewFlag: 续费标识
         :type RenewFlag: str
-        :param DiskState: 磁盘状态
+        :param DiskState: 磁盘状态，取值范围：
+<li>PENDING：创建中。 </li>
+<li>UNATTACHED：未挂载。</li>
+<li>ATTACHING：挂载中。</li>
+<li>ATTACHED：已挂载。</li>
+<li>DETACHING：卸载中。 </li>
+<li> SHUTDOWN：已隔离。</li>
+<li> CREATED_FAILED：创建失败。</li>
+<li>TERMINATING：销毁中。</li>
+<li> DELETING：删除中。</li>
+<li> FREEZING：冻结中。</li>
         :type DiskState: str
         :param Attached: 磁盘挂载状态
         :type Attached: bool
@@ -3706,11 +3722,14 @@ class InquirePriceCreateDisksRequest(AbstractModel):
         :type DiskChargePrepaid: :class:`tencentcloud.lighthouse.v20200324.models.DiskChargePrepaid`
         :param DiskCount: 云硬盘个数, 默认值: 1。
         :type DiskCount: int
+        :param DiskBackupQuota: 指定云硬盘备份点配额，不传时默认为不带备份点配额。目前只支持不带或设置1个云硬盘备份点配额。
+        :type DiskBackupQuota: int
         """
         self.DiskSize = None
         self.DiskType = None
         self.DiskChargePrepaid = None
         self.DiskCount = None
+        self.DiskBackupQuota = None
 
 
     def _deserialize(self, params):
@@ -3720,6 +3739,7 @@ class InquirePriceCreateDisksRequest(AbstractModel):
             self.DiskChargePrepaid = DiskChargePrepaid()
             self.DiskChargePrepaid._deserialize(params.get("DiskChargePrepaid"))
         self.DiskCount = params.get("DiskCount")
+        self.DiskBackupQuota = params.get("DiskBackupQuota")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

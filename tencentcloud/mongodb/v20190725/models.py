@@ -184,34 +184,6 @@ class BackupDownloadTaskStatus(AbstractModel):
         
 
 
-class BackupFile(AbstractModel):
-    """备份文件存储信息
-
-    """
-
-    def __init__(self):
-        r"""
-        :param ReplicateSetId: 备份文件所属的副本集/分片ID
-        :type ReplicateSetId: str
-        :param File: 备份文件保存路径
-        :type File: str
-        """
-        self.ReplicateSetId = None
-        self.File = None
-
-
-    def _deserialize(self, params):
-        self.ReplicateSetId = params.get("ReplicateSetId")
-        self.File = params.get("File")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class BackupInfo(AbstractModel):
     """备份信息
 
@@ -884,68 +856,6 @@ class DescribeAsyncRequestInfoResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
-        self.RequestId = params.get("RequestId")
-
-
-class DescribeBackupAccessRequest(AbstractModel):
-    """DescribeBackupAccess请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param InstanceId: 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
-        :type InstanceId: str
-        :param BackupName: 需要获取下载授权的备份文件名
-        :type BackupName: str
-        """
-        self.InstanceId = None
-        self.BackupName = None
-
-
-    def _deserialize(self, params):
-        self.InstanceId = params.get("InstanceId")
-        self.BackupName = params.get("BackupName")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeBackupAccessResponse(AbstractModel):
-    """DescribeBackupAccess返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Region: 实例所属地域
-        :type Region: str
-        :param Bucket: 备份文件所在存储桶
-        :type Bucket: str
-        :param Files: 备份文件的存储信息
-        :type Files: list of BackupFile
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.Region = None
-        self.Bucket = None
-        self.Files = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.Region = params.get("Region")
-        self.Bucket = params.get("Bucket")
-        if params.get("Files") is not None:
-            self.Files = []
-            for item in params.get("Files"):
-                obj = BackupFile()
-                obj._deserialize(item)
-                self.Files.append(obj)
         self.RequestId = params.get("RequestId")
 
 

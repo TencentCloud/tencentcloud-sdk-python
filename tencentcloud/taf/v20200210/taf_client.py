@@ -84,37 +84,6 @@ class TafClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def RecognizeEffectiveFlow(self, request):
-        """该服务已不再对外提供能力
-
-        筛选敏感易骚扰人群
-
-        :param request: Request instance for RecognizeEffectiveFlow.
-        :type request: :class:`tencentcloud.taf.v20200210.models.RecognizeEffectiveFlowRequest`
-        :rtype: :class:`tencentcloud.taf.v20200210.models.RecognizeEffectiveFlowResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("RecognizeEffectiveFlow", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.RecognizeEffectiveFlowResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def RecognizePreciseTargetAudience(self, request):
         """流量反欺诈-流量验准高级版
 

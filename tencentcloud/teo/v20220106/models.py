@@ -446,57 +446,54 @@ class BotLog(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AttackTime: 攻击时间
-注意：此字段可能返回 null，表示取不到有效值。
+        :param AttackTime: 攻击时间，采用unix秒级时间戳。
         :type AttackTime: int
-        :param AttackIp: 攻击ip
-注意：此字段可能返回 null，表示取不到有效值。
+        :param AttackIp: 攻击源（客户端）ip。
         :type AttackIp: str
-        :param Domain: 域名
-注意：此字段可能返回 null，表示取不到有效值。
+        :param Domain: 受攻击域名。
         :type Domain: str
-        :param RequestUri: 请求uri
-注意：此字段可能返回 null，表示取不到有效值。
+        :param RequestUri: URI。
         :type RequestUri: str
-        :param AttackType: 攻击类型
+        :param AttackType: 当前该字段无效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AttackType: str
-        :param RequestMethod: 请求方法
-注意：此字段可能返回 null，表示取不到有效值。
+        :param RequestMethod: 请求方法。
         :type RequestMethod: str
-        :param AttackContent: 攻击内容
-注意：此字段可能返回 null，表示取不到有效值。
+        :param AttackContent: 攻击内容。
         :type AttackContent: str
-        :param RiskLevel: 风险等级
+        :param RiskLevel: 当前该字段无效 。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RiskLevel: str
-        :param RuleId: 规则编号
+        :param RuleId: 当前该字段无效 。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RuleId: int
-        :param SipCountryCode: IP所在国家
-注意：此字段可能返回 null，表示取不到有效值。
+        :param SipCountryCode: IP所在国家iso-3166中alpha-2编码，编码信息请参考[ISO-3166](https://git.woa.com/edgeone/iso-3166/blob/master/all/all.json)。
         :type SipCountryCode: str
-        :param EventId: 事件id
-注意：此字段可能返回 null，表示取不到有效值。
+        :param EventId: 请求（事件）ID。
         :type EventId: str
-        :param DisposalMethod: 处置方式
+        :param DisposalMethod: 该字段当前无效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DisposalMethod: str
-        :param HttpLog: http_log
+        :param HttpLog: 该字段当前无效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type HttpLog: str
-        :param Ua: user agent
-注意：此字段可能返回 null，表示取不到有效值。
+        :param Ua: user agent。
         :type Ua: str
-        :param DetectionMethod: 检出方法
+        :param DetectionMethod: 该字段当前无效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DetectionMethod: str
-        :param Confidence: 置信度
+        :param Confidence: 该字段当前无效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Confidence: str
-        :param Maliciousness: 恶意度
+        :param Maliciousness: 该字段当前无效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Maliciousness: str
+        :param RuleDetailList: 规则相关信息列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleDetailList: list of SecRuleRelatedInfo
+        :param Label: Bot标签。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Label: str
         """
         self.AttackTime = None
         self.AttackIp = None
@@ -515,6 +512,8 @@ class BotLog(AbstractModel):
         self.DetectionMethod = None
         self.Confidence = None
         self.Maliciousness = None
+        self.RuleDetailList = None
+        self.Label = None
 
 
     def _deserialize(self, params):
@@ -535,6 +534,13 @@ class BotLog(AbstractModel):
         self.DetectionMethod = params.get("DetectionMethod")
         self.Confidence = params.get("Confidence")
         self.Maliciousness = params.get("Maliciousness")
+        if params.get("RuleDetailList") is not None:
+            self.RuleDetailList = []
+            for item in params.get("RuleDetailList"):
+                obj = SecRuleRelatedInfo()
+                obj._deserialize(item)
+                self.RuleDetailList.append(obj)
+        self.Label = params.get("Label")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -551,19 +557,19 @@ class BotLogData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param List: Bot攻击日志数据集合
+        :param List: Bot攻击日志数据集合。
 注意：此字段可能返回 null，表示取不到有效值。
         :type List: list of BotLog
-        :param PageNo: 当前页
+        :param PageNo: 分页拉取的起始页号。最小值：1。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PageNo: int
-        :param PageSize: 每页展示条数
+        :param PageSize: 分页拉取的最大返回结果数。最大值：1000。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PageSize: int
-        :param Pages: 总页数
+        :param Pages: 总页数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Pages: int
-        :param TotalSize: 总条数
+        :param TotalSize: 总条数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalSize: int
         """
@@ -853,45 +859,47 @@ class CCInterceptEventData(AbstractModel):
 
 
 class CCLog(AbstractModel):
-    """限速拦截日志
+    """CC日志
 
     """
 
     def __init__(self):
         r"""
-        :param AttackTime: 攻击时间
-注意：此字段可能返回 null，表示取不到有效值。
+        :param AttackTime: 攻击请求时间，采用unix秒级时间戳。
         :type AttackTime: int
-        :param AttackSip: 攻击源ip
-注意：此字段可能返回 null，表示取不到有效值。
+        :param AttackSip: 客户端ip。
         :type AttackSip: str
-        :param AttackDomain: 攻击域名
-注意：此字段可能返回 null，表示取不到有效值。
+        :param AttackDomain: 受攻击域名。
         :type AttackDomain: str
-        :param RequestUri: 请求uri
-注意：此字段可能返回 null，表示取不到有效值。
+        :param RequestUri: URI。
         :type RequestUri: str
-        :param HitCount: 命中次数
-注意：此字段可能返回 null，表示取不到有效值。
+        :param HitCount: 命中次数。
         :type HitCount: int
-        :param SipCountryCode: IP所在国家
-注意：此字段可能返回 null，表示取不到有效值。
+        :param SipCountryCode: IP所在国家iso-3166中alpha-2编码，编码信息请参考[ISO-3166](https://git.woa.com/edgeone/iso-3166/blob/master/all/all.json)。
         :type SipCountryCode: str
-        :param EventId: 事件id
-注意：此字段可能返回 null，表示取不到有效值。
+        :param EventId: 请求（事件）ID。
         :type EventId: str
-        :param DisposalMethod: 处置方式
+        :param DisposalMethod: 当前该字段已废弃。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DisposalMethod: str
-        :param HttpLog: http_log
+        :param HttpLog: 当前该字段已废弃。
 注意：此字段可能返回 null，表示取不到有效值。
         :type HttpLog: str
-        :param RuleId: 规则编号
+        :param RuleId: 当前该字段已废弃。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RuleId: int
-        :param RiskLevel: 风险等级
+        :param RiskLevel: 当前该字段已废弃。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RiskLevel: str
+        :param Ua: User Agent，仅自定义规则日志中存在。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Ua: str
+        :param RequestMethod: 请求方法，仅自定义规则日志中存在。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RequestMethod: str
+        :param RuleDetailList: 规则信息列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleDetailList: list of SecRuleRelatedInfo
         """
         self.AttackTime = None
         self.AttackSip = None
@@ -904,6 +912,9 @@ class CCLog(AbstractModel):
         self.HttpLog = None
         self.RuleId = None
         self.RiskLevel = None
+        self.Ua = None
+        self.RequestMethod = None
+        self.RuleDetailList = None
 
 
     def _deserialize(self, params):
@@ -918,6 +929,14 @@ class CCLog(AbstractModel):
         self.HttpLog = params.get("HttpLog")
         self.RuleId = params.get("RuleId")
         self.RiskLevel = params.get("RiskLevel")
+        self.Ua = params.get("Ua")
+        self.RequestMethod = params.get("RequestMethod")
+        if params.get("RuleDetailList") is not None:
+            self.RuleDetailList = []
+            for item in params.get("RuleDetailList"):
+                obj = SecRuleRelatedInfo()
+                obj._deserialize(item)
+                self.RuleDetailList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -934,20 +953,16 @@ class CCLogData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param List: CC拦截日志数据集合
+        :param List: CC拦截日志数据集合。
 注意：此字段可能返回 null，表示取不到有效值。
         :type List: list of CCLog
-        :param PageNo: 当前页
-注意：此字段可能返回 null，表示取不到有效值。
+        :param PageNo: 分页拉取的起始页号。最小值：1。
         :type PageNo: int
-        :param PageSize: 每页展示条数
-注意：此字段可能返回 null，表示取不到有效值。
+        :param PageSize: 分页拉取的最大返回结果数。最大值：1000。
         :type PageSize: int
-        :param Pages: 总页数
-注意：此字段可能返回 null，表示取不到有效值。
+        :param Pages: 总页数。
         :type Pages: int
-        :param TotalSize: 总条数
-注意：此字段可能返回 null，表示取不到有效值。
+        :param TotalSize: 总条数。
         :type TotalSize: int
         """
         self.List = None
@@ -2678,19 +2693,19 @@ class DDosAttackEventData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param List: 攻击事件数据集合
+        :param List: 攻击事件数据集合。
 注意：此字段可能返回 null，表示取不到有效值。
         :type List: list of DDosAttackEvent
-        :param PageNo: 当前页
+        :param PageNo: 分页拉取的起始页号。最小值：1。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PageNo: int
-        :param PageSize: 每页展示条数
+        :param PageSize: 分页拉取的最大返回结果数。最大值：1000。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PageSize: int
-        :param Pages: 总页数
+        :param Pages: 总页数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Pages: int
-        :param TotalSize: 总条数
+        :param TotalSize: 总条数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalSize: int
         """
@@ -2728,21 +2743,24 @@ class DDosAttackEventDetailData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AttackStatus: 攻击状态
+        :param AttackStatus: 攻击状态，取值有：
+<li>1 ：观察中 ；</li>
+<li>2 ：攻击开始 ；</li>
+<li>3 ：攻击结束 。</li>
         :type AttackStatus: int
-        :param AttackType: 攻击类型
+        :param AttackType: 攻击类型。
         :type AttackType: str
-        :param EndTime: 结束时间
+        :param EndTime: 结束时间。
         :type EndTime: int
-        :param StartTime: 开始时间
+        :param StartTime: 开始时间。
         :type StartTime: int
-        :param MaxBandWidth: 最大带宽
+        :param MaxBandWidth: 最大带宽。
         :type MaxBandWidth: int
-        :param PacketMaxRate: 最大包速率
+        :param PacketMaxRate: 最大包速率。
         :type PacketMaxRate: int
-        :param EventId: 事件Id
+        :param EventId: 事件Id。
         :type EventId: str
-        :param PolicyId: ddos 策略组id
+        :param PolicyId: ddos 策略组id。
         :type PolicyId: int
         """
         self.AttackStatus = None
@@ -2780,16 +2798,16 @@ class DDosAttackSourceEvent(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AttackSourceIp: 攻击源ip
+        :param AttackSourceIp: 攻击源ip。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AttackSourceIp: str
-        :param AttackRegion: 地区(国家)
+        :param AttackRegion: 地区（国家）。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AttackRegion: str
-        :param AttackFlow: 累计攻击流量
+        :param AttackFlow: 累计攻击流量。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AttackFlow: int
-        :param AttackPacketNum: 累计攻击包量
+        :param AttackPacketNum: 累计攻击包量。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AttackPacketNum: int
         """
@@ -2820,19 +2838,19 @@ class DDosAttackSourceEventData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param List: DDos攻击源数据集合
+        :param List: DDos攻击源数据集合。
 注意：此字段可能返回 null，表示取不到有效值。
         :type List: list of DDosAttackSourceEvent
-        :param PageNo: 当前页
+        :param PageNo: 分页拉取的起始页号。最小值：1。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PageNo: int
-        :param PageSize: 每页展示条数
+        :param PageSize: 分页拉取的最大返回结果数。最大值：1000。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PageSize: int
-        :param Pages: 总页数
+        :param Pages: 总页数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Pages: int
-        :param TotalSize: 总条数
+        :param TotalSize: 总条数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalSize: int
         """
@@ -2870,11 +2888,11 @@ class DDosMajorAttackEvent(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PolicyId: ddos 策略组id
+        :param PolicyId: ddos 策略组id。
         :type PolicyId: int
-        :param AttackMaxBandWidth: 攻击最大带宽
+        :param AttackMaxBandWidth: 攻击最大带宽。
         :type AttackMaxBandWidth: int
-        :param AttackTime: 攻击时间 单位为s
+        :param AttackTime: 攻击请求时间，采用unix秒级时间戳。
         :type AttackTime: int
         """
         self.PolicyId = None
@@ -2902,19 +2920,19 @@ class DDosMajorAttackEventData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param List: DDosMajorAttackEvent ddos 攻击事件
+        :param List: DDosMajorAttackEvent ddos 攻击事件。
 注意：此字段可能返回 null，表示取不到有效值。
         :type List: list of DDosMajorAttackEvent
-        :param PageNo: 当前页
+        :param PageNo: 分页拉取的起始页号。最小值：1。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PageNo: int
-        :param PageSize: 每页展示条数
+        :param PageSize: 分页拉取的最大返回结果数。最大值：1000。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PageSize: int
-        :param Pages: 总页数
+        :param Pages: 总页数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Pages: int
-        :param TotalSize: 总条数
+        :param TotalSize: 总条数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalSize: int
         """
@@ -3723,19 +3741,27 @@ class DescribeBotLogRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StartTime: 起始时间
+        :param StartTime: 起始时间。
         :type StartTime: str
-        :param EndTime: 结束时间
+        :param EndTime: 结束时间。
         :type EndTime: str
-        :param PageSize: 每页条数
+        :param PageSize: 分页拉取的最大返回结果数。最大值：1000。
         :type PageSize: int
-        :param PageNo: 当前页
+        :param PageNo: 分页拉取的起始页号。最小值：1。
         :type PageNo: int
-        :param ZoneIds: 站点集合
+        :param ZoneIds: 站点集合，不填默认查询所有站点。
         :type ZoneIds: list of str
-        :param Domains: 域名集合
+        :param Domains: 域名集合，不填默认查询所有子域名。
         :type Domains: list of str
-        :param QueryCondition: 查询条件
+        :param QueryCondition: 筛选条件，取值有：
+<li>action ：执行动作（处置方式）；</li>
+<li>sipCountryCode ：ip所在国家 ；</li>
+<li>attackIp ：攻击ip ；</li>
+<li>ruleId ：规则id ；</li>
+<li>eventId ：事件id ；</li>
+<li>ua ：用户代理 ；</li>
+<li>requestMethod ：请求方法 ；</li>
+<li>uri ：统一资源标识符 。</li>
         :type QueryCondition: list of QueryCondition
         """
         self.StartTime = None
@@ -3776,11 +3802,13 @@ class DescribeBotLogResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: Bot攻击Data
+        :param Data: Bot攻击数据内容。
         :type Data: :class:`tencentcloud.teo.v20220106.models.BotLogData`
-        :param Status: 状态，1：失败，0:成功
+        :param Status: 请求响应状态，取值有：
+<li>1 ：失败 ；</li>
+<li>0 ：成功 。</li>
         :type Status: int
-        :param Msg: 返回信息
+        :param Msg: 请求响应信息。
         :type Msg: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3980,23 +4008,37 @@ class DescribeDDosAttackDataRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StartTime: 开始时间
+        :param StartTime: 开始时间。
         :type StartTime: str
-        :param EndTime: 结束时间
+        :param EndTime: 结束时间。
         :type EndTime: str
-        :param MetricNames: 统计指标列表
+        :param MetricNames: 统计指标列表，取值有：
+<li>ddos_attackMaxBandwidth ：攻击带宽峰值 ；</li>
+<li>ddos_attackMaxPackageRate：攻击包速率峰值  ；</li>
+<li>ddos_attackBandwidth ：攻击带宽曲线 ；</li>
+<li>ddos_attackPackageRate ：攻击包速率曲线 。</li>
         :type MetricNames: list of str
-        :param ZoneIds: 站点id列表
+        :param ZoneIds: 站点id列表，不填默认选择全部站点。
         :type ZoneIds: list of str
-        :param PolicyIds: ddos策略组id列表
+        :param PolicyIds: ddos策略组id列表，不填默认选择全部策略id。
         :type PolicyIds: list of int
-        :param Port: 端口号
+        :param Port: 端口号。
         :type Port: int
-        :param ProtocolType: 协议类型,tcp,udp,all
+        :param ProtocolType: 协议类型，取值有：
+<li>tcp ；</li>
+<li>udp ；</li>
+<li>all 。</li>
         :type ProtocolType: str
-        :param AttackType: 攻击类型,flood,icmpFlood......,all
+        :param AttackType: 攻击类型，取值有：
+<li>flood ；</li>
+<li>icmpFlood ；</li>
+<li>all 。</li>
         :type AttackType: str
-        :param Interval: 查询时间粒度，可选{min,5min,hour,day}
+        :param Interval: 查询时间粒度，取值有：
+<li>min ：1分钟 ；</li>
+<li>5min ：5分钟 ；</li>
+<li>hour ：1小时 ；</li>
+<li>day ：1天 。</li>
         :type Interval: str
         """
         self.StartTime = None
@@ -4036,14 +4078,20 @@ class DescribeDDosAttackDataResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: DDos攻击数据
+        :param Data: DDos攻击数据内容。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: list of SecEntry
-        :param Status: 状态，1:失败，0:成功
+        :param Status: 请求响应状态，取值有：
+<li>1 ：失败 ；</li>
+<li>0 ：成功 。</li>
         :type Status: int
-        :param Msg: 返回数据
+        :param Msg: 请求响应信息。
         :type Msg: str
-        :param Interval: 查询时间粒度，可选{min,5min,hour,day}
+        :param Interval: 查询时间粒度，取值有：
+<li>min ：1分钟 ；</li>
+<li>5min ：5分钟 ；</li>
+<li>hour ：1小时 ；</li>
+<li>day ：1天 。</li>
         :type Interval: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4075,7 +4123,7 @@ class DescribeDDosAttackEventDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param EventId: 事件id
+        :param EventId: 事件id。
         :type EventId: str
         """
         self.EventId = None
@@ -4099,11 +4147,13 @@ class DescribeDDosAttackEventDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: DDos攻击事件详情
+        :param Data: DDos攻击事件详情。
         :type Data: :class:`tencentcloud.teo.v20220106.models.DDosAttackEventDetailData`
-        :param Status: 状态，1:失败，0:成功
+        :param Status: 请求响应状态，取值有：
+<li>1 ：失败 ；</li>
+<li>0 ：成功 。</li>
         :type Status: int
-        :param Msg: 返回信息
+        :param Msg: 请求响应信息。
         :type Msg: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4130,21 +4180,26 @@ class DescribeDDosAttackEventRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StartTime: 开始时间
+        :param StartTime: 开始时间。
         :type StartTime: str
-        :param EndTime: 结束时间
+        :param EndTime: 结束时间。
         :type EndTime: str
-        :param PageSize: 条数
+        :param PageSize: 分页拉取的最大返回结果数。最大值：1000。
         :type PageSize: int
-        :param PageNo: 当前页
+        :param PageNo: 分页拉取的起始页号。最小值：1。
         :type PageNo: int
-        :param PolicyIds: ddos策略组id 集合
+        :param PolicyIds: ddos策略组id列表，不填默认选择全部策略Id。
         :type PolicyIds: list of int
-        :param ZoneIds: 站点集合
+        :param ZoneIds: 站点id列表，不填默认选择全部站点。
         :type ZoneIds: list of str
-        :param ProtocolType: 协议类型,{tcp,udp,all}
+        :param ProtocolType: 协议类型，取值有：
+<li>tcp ；</li>
+<li>udp ；</li>
+<li>all 。</li>
         :type ProtocolType: str
-        :param IsShowDetail: 选填{Y、N},默认为Y；Y：展示，N：不展示
+        :param IsShowDetail: 是否展示详情，取值有：
+<li>Y ：展示 ；</li>
+<li>N ：不展示 。</li>默认为Y。
         :type IsShowDetail: str
         """
         self.StartTime = None
@@ -4182,11 +4237,13 @@ class DescribeDDosAttackEventResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: DDos攻击事件数据
+        :param Data: DDos攻击事件数据。
         :type Data: :class:`tencentcloud.teo.v20220106.models.DDosAttackEventData`
-        :param Status: 状态，1:失败，0:成功
+        :param Status: 请求响应状态，取值有：
+<li>1 ：失败 ；</li>
+<li>0 ：成功 。</li>
         :type Status: int
-        :param Msg: 返回信息
+        :param Msg: 请求响应信息。
         :type Msg: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4213,19 +4270,22 @@ class DescribeDDosAttackSourceEventRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StartTime: 开始时间
+        :param StartTime: 开始时间。
         :type StartTime: str
-        :param EndTime: 结束时间
+        :param EndTime: 结束时间。
         :type EndTime: str
-        :param PageSize: 条数
+        :param PageSize: 分页拉取的最大返回结果数。最大值：1000。
         :type PageSize: int
-        :param PageNo: 当前页
+        :param PageNo: 分页拉取的起始页号。最小值：1。
         :type PageNo: int
-        :param PolicyIds: ddos策略组id 集合
+        :param PolicyIds: ddos策略组id 集合，不填默认选择全部策略id。
         :type PolicyIds: list of int
-        :param ZoneIds: 站点集合
+        :param ZoneIds: 站点集合，不填默认选择全部站点。
         :type ZoneIds: list of str
-        :param ProtocolType: 协议类型,{tcp,udp,all}
+        :param ProtocolType: 协议类型，取值有：
+<li>tcp ；</li>
+<li>udp ；</li>
+<li>all 。</li>
         :type ProtocolType: str
         """
         self.StartTime = None
@@ -4261,11 +4321,13 @@ class DescribeDDosAttackSourceEventResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: DDos攻击源数据
+        :param Data: DDos攻击源数据。
         :type Data: :class:`tencentcloud.teo.v20220106.models.DDosAttackSourceEventData`
-        :param Status: 状态，1:失败，0:成功
+        :param Status: 请求响应状态，取值有：
+<li>1 ：失败 ；</li>
+<li>0 ：成功 。</li>
         :type Status: int
-        :param Msg: 返回信息
+        :param Msg: 请求响应信息。
         :type Msg: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4292,23 +4354,35 @@ class DescribeDDosAttackTopDataRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StartTime: 开始时间
+        :param StartTime: 开始时间。
         :type StartTime: str
-        :param EndTime: 结束时间
+        :param EndTime: 结束时间。
         :type EndTime: str
-        :param MetricName: 过滤指标
+        :param MetricName: 统计指标列表，取值有：
+<li>ddos_attackFlux_protocol ：攻击总流量协议类型分布排行 ；</li>
+<li>ddos_attackPackageNum_protocol ：攻击总包量协议类型分布排行 ；</li>
+<li>ddos_attackNum_attackType ：攻击总次数攻击类型分布排行 ；</li>
+<li>ddos_attackNum_sregion ：攻击总次数攻击源地区分布排行 ；</li>
+<li>ddos_attackFlux_sip ：攻击总流量攻击源ip分布排行 ；</li>
+<li>ddos_attackFlux_sregion ：攻击总流量攻击源地区分布排行 。</li>
         :type MetricName: str
-        :param Limit: 查询前多少名,传值为0 全量
+        :param Limit: 查询前多少个，传值为0返回全量。
         :type Limit: int
-        :param ZoneIds: 站点集合
+        :param ZoneIds: 站点id集合，不填默认选择全部站点。
         :type ZoneIds: list of str
-        :param PolicyIds: ddos策略组id 集合
+        :param PolicyIds: ddos策略组id 集合，不填默认选择全部策略id。
         :type PolicyIds: list of int
-        :param Port: 端口号
+        :param Port: 端口号。
         :type Port: int
-        :param ProtocolType: 协议类型,tcp,udp,all
+        :param ProtocolType: 协议类型，取值有：
+<li>tcp ；</li>
+<li>udp ；</li>
+<li>all 。</li>
         :type ProtocolType: str
-        :param AttackType: 攻击类型,flood,icmpFlood......,all
+        :param AttackType: 攻击类型，取值有：
+<li>flood ；</li>
+<li>icmpFlood ；</li>
+<li>all 。</li>
         :type AttackType: str
         """
         self.StartTime = None
@@ -4348,11 +4422,13 @@ class DescribeDDosAttackTopDataResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: topn数据
+        :param Data: top数据内容
         :type Data: list of TopNEntry
-        :param Status: 状态，1:失败，0:成功
+        :param Status: 请求响应状态，取值有：
+<li>1 ：失败 ；</li>
+<li>0 ：成功 。</li>
         :type Status: int
-        :param Msg: 返回消息
+        :param Msg: 请求响应消息。
         :type Msg: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4382,19 +4458,22 @@ class DescribeDDosMajorAttackEventRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StartTime: 开始时间
+        :param StartTime: 开始时间。
         :type StartTime: str
-        :param EndTime: 结束时间
+        :param EndTime: 结束时间。
         :type EndTime: str
-        :param PageSize: 条数
+        :param PageSize: 分页拉取的最大返回结果数。最大值：1000。
         :type PageSize: int
-        :param PageNo: 当前页
+        :param PageNo: 分页拉取的起始页号。最小值：1。
         :type PageNo: int
-        :param PolicyIds: ddos 策略组id集合
+        :param PolicyIds: ddos 策略组id集合，不填默认选择全部策略id。
         :type PolicyIds: list of int
-        :param ProtocolType: 协议类型，{tcp,udp,all}
+        :param ProtocolType: 协议类型，取值有：
+<li>tcp ；</li>
+<li>udp ；</li>
+<li>all 。</li>
         :type ProtocolType: str
-        :param ZoneIds: 站点集合
+        :param ZoneIds: 站点id列表，不填默认选择全部站点。
         :type ZoneIds: list of str
         """
         self.StartTime = None
@@ -4430,11 +4509,13 @@ class DescribeDDosMajorAttackEventResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: DDos查询主攻击事件
+        :param Data: DDos查询主攻击事件。
         :type Data: :class:`tencentcloud.teo.v20220106.models.DDosMajorAttackEventData`
-        :param Status: 状态，1:失败，0:成功
+        :param Status: 请求响应状态，取值有：
+<li>1 ：失败 ；</li>
+<li>0 ：成功 。</li>
         :type Status: int
-        :param Msg: 返回消息
+        :param Msg: 请求响应消息。
         :type Msg: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6435,36 +6516,30 @@ class DescribeWebManagedRulesDataRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StartTime: 开始时间
+        :param StartTime: 开始时间，RFC3339格式。
         :type StartTime: str
-        :param EndTime: 结束时间
+        :param EndTime: 结束时间，RFC3339格式。
         :type EndTime: str
-        :param MetricNames: 统计指标列表
+        :param MetricNames: 统计指标列表，取值有：
+<li>waf_interceptNum ：waf拦截次数 。</li>
         :type MetricNames: list of str
-        :param ZoneIds: 站点id列表
+        :param ZoneIds: 站点id列表，不填默认选择全部站点。
         :type ZoneIds: list of str
-        :param Domains: 子域名列表
+        :param Domains: 子域名列表，不填默认选择子域名。
         :type Domains: list of str
-        :param ProtocolType: 协议类型
+        :param ProtocolType: 该字段已废弃，请勿传。
         :type ProtocolType: str
-        :param AttackType: "webshell" : Webshell检测防护
-"oa" : 常见OA漏洞防护
-"xss" : XSS跨站脚本攻击防护
-"xxe" : XXE攻击防护
-"webscan" : 扫描器攻击漏洞防护
-"cms" : 常见CMS漏洞防护
-"upload" : 恶意文件上传攻击防护
-"sql" : SQL注入攻击防护
-"cmd_inject": 命令/代码注入攻击防护
-"osc" : 开源组件漏洞防护
-"file_read" : 任意文件读取
-"ldap" : LDAP注入攻击防护
-"other" : 其它漏洞防护
-
-"all":"所有"
+        :param AttackType: 该字段已废弃，请勿传。
         :type AttackType: str
-        :param Interval: 查询时间粒度，可选{min,5min,hour,day}
+        :param Interval: 查询时间粒度，取值有：
+<li>min ：1分钟 ；</li>
+<li>5min ：5分钟 ；</li>
+<li>hour ：1小时 ；</li>
+<li>day ：1天 。</li>
         :type Interval: str
+        :param QueryCondition: 筛选条件，取值有：
+<li>action ：执行动作 。</li>
+        :type QueryCondition: list of QueryCondition
         """
         self.StartTime = None
         self.EndTime = None
@@ -6474,6 +6549,7 @@ class DescribeWebManagedRulesDataRequest(AbstractModel):
         self.ProtocolType = None
         self.AttackType = None
         self.Interval = None
+        self.QueryCondition = None
 
 
     def _deserialize(self, params):
@@ -6485,6 +6561,12 @@ class DescribeWebManagedRulesDataRequest(AbstractModel):
         self.ProtocolType = params.get("ProtocolType")
         self.AttackType = params.get("AttackType")
         self.Interval = params.get("Interval")
+        if params.get("QueryCondition") is not None:
+            self.QueryCondition = []
+            for item in params.get("QueryCondition"):
+                obj = QueryCondition()
+                obj._deserialize(item)
+                self.QueryCondition.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6501,14 +6583,20 @@ class DescribeWebManagedRulesDataResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: Web攻击日志实体
+        :param Data: Web攻击日志实体。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: list of SecEntry
-        :param Status: 状态，1:失败，0:成功
+        :param Status: 请求响应状态，取值有：
+<li>1 ：失败 ；</li>
+<li>0 ：成功 。</li>
         :type Status: int
-        :param Msg: 返回消息
+        :param Msg: 请求响应消息。
         :type Msg: str
-        :param Interval: 查询时间粒度，可选{min,5min,hour,day}
+        :param Interval: 查询时间粒度，取值有：
+<li>min ：1分钟 ；</li>
+<li>5min ：5分钟 ；</li>
+<li>hour ：1小时 ；</li>
+<li>day ：1天 。</li>
         :type Interval: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6540,19 +6628,30 @@ class DescribeWebManagedRulesLogRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StartTime: 起始时间
+        :param StartTime: 起始时间。
         :type StartTime: str
-        :param EndTime: 结束时间
+        :param EndTime: 结束时间。
         :type EndTime: str
-        :param PageSize: 每页条数
+        :param PageSize: 分页拉取的最大返回结果数。最大值：1000。
         :type PageSize: int
-        :param PageNo: 当前页
+        :param PageNo: 分页拉取的起始页号。最小值：1。
         :type PageNo: int
-        :param ZoneIds: 站点集合
+        :param ZoneIds: 站点集合，不填默认选择全部站点。
         :type ZoneIds: list of str
-        :param Domains: 域名集合
+        :param Domains: 域名集合，不填默认选择全部子域名。
         :type Domains: list of str
-        :param QueryCondition: 查询条件
+        :param QueryCondition: 筛选条件，取值有：
+<li>attackType ：攻击类型 ；</li>
+<li>riskLevel ：风险等级 ；</li>
+<li>action ：执行动作（处置方式） ；</li>
+<li>ruleId ：规则id ；</li>
+<li>sipCountryCode ：ip所在国家 ；</li>
+<li>attackIp ：攻击ip ；</li>
+<li>oriDomain ：被攻击的子域名 ；</li>
+<li>eventId ：事件id ；</li>
+<li>ua ：用户代理 ；</li>
+<li>requestMethod ：请求方法 ；</li>
+<li>uri ：统一资源标识符 。</li>
         :type QueryCondition: list of QueryCondition
         """
         self.StartTime = None
@@ -6593,11 +6692,13 @@ class DescribeWebManagedRulesLogResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: web攻击日志data
+        :param Data: web攻击日志数据内容。
         :type Data: :class:`tencentcloud.teo.v20220106.models.WebLogData`
-        :param Status: 状态，1:失败，0:失败
+        :param Status: 请求响应状态，取值有：
+<li>1 ：失败 ；</li>
+<li>0 ：成功 。</li>
         :type Status: int
-        :param Msg: 返回信息
+        :param Msg: 请求响应信息。
         :type Msg: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6624,26 +6725,38 @@ class DescribeWebManagedRulesTopDataRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StartTime: 开始时间
+        :param StartTime: 开始时间。
         :type StartTime: str
-        :param EndTime: 结束时间
+        :param EndTime: 结束时间。
         :type EndTime: str
-        :param MetricName: 过滤指标
+        :param MetricName: 统计指标列表，取值有：
+<li>waf_requestNum_url ：url请求数排行 ；</li>
+<li>waf_requestNum_cip：客户端ip请求数排行 ；</li>
+<li>waf_cipRequestNum_region ：客户端区域请求数排行 。</li>
         :type MetricName: str
-        :param Limit: 查询前多少名,传值为0 全量
+        :param Limit: 查询前多少个，传值为0返回全量。
         :type Limit: int
-        :param ZoneIds: 站点集合
+        :param ZoneIds: 站点id列表，不填默认选择全部站点。
         :type ZoneIds: list of str
-        :param PolicyIds: ddos策略组id 集合
+        :param PolicyIds: 该字段已废弃，请勿传。
         :type PolicyIds: list of int
-        :param Port: 端口号
+        :param Port: 该字段已废弃，请勿传。
         :type Port: int
-        :param ProtocolType: 协议类型,tcp,udp,all
+        :param ProtocolType: 该字段已废弃，请勿传。
         :type ProtocolType: str
-        :param AttackType: 攻击类型,flood,icmpFlood......,all
+        :param AttackType: 该字段已废弃，请勿传。
         :type AttackType: str
-        :param Domains: 域名集合
+        :param Domains: 域名列表，不填默认选择全部子域名。
         :type Domains: list of str
+        :param Interval: 查询时间粒度，取值有：
+<li>min ：1分钟 ；</li>
+<li>5min ：5分钟 ；</li>
+<li>hour ：1小时 ；</li>
+<li>day ：1天 。</li>
+        :type Interval: str
+        :param QueryCondition: 筛选条件，取值有：
+<li>action ：执行动作 。</li>
+        :type QueryCondition: list of QueryCondition
         """
         self.StartTime = None
         self.EndTime = None
@@ -6655,6 +6768,8 @@ class DescribeWebManagedRulesTopDataRequest(AbstractModel):
         self.ProtocolType = None
         self.AttackType = None
         self.Domains = None
+        self.Interval = None
+        self.QueryCondition = None
 
 
     def _deserialize(self, params):
@@ -6668,6 +6783,13 @@ class DescribeWebManagedRulesTopDataRequest(AbstractModel):
         self.ProtocolType = params.get("ProtocolType")
         self.AttackType = params.get("AttackType")
         self.Domains = params.get("Domains")
+        self.Interval = params.get("Interval")
+        if params.get("QueryCondition") is not None:
+            self.QueryCondition = []
+            for item in params.get("QueryCondition"):
+                obj = QueryCondition()
+                obj._deserialize(item)
+                self.QueryCondition.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6684,11 +6806,13 @@ class DescribeWebManagedRulesTopDataResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: topn数据
+        :param Data: top数据内容。
         :type Data: list of TopNEntry
-        :param Status: 状态，1:失败，0:成功
+        :param Status: 请求响应状态，取值有：
+<li>1 ：失败 ；</li>
+<li>0 ：成功 。</li>
         :type Status: int
-        :param Msg: 返回消息
+        :param Msg: 请求响应消息。
         :type Msg: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6793,36 +6917,31 @@ class DescribeWebProtectionDataRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StartTime: 开始时间
+        :param StartTime: 开始时间，RFC3339格式。
         :type StartTime: str
-        :param EndTime: 结束时间
+        :param EndTime: 结束时间，RFC3339格式。
         :type EndTime: str
-        :param MetricNames: 统计指标列表
+        :param MetricNames: 统计指标列表，取值有：
+<li>ccRate_interceptNum ：速率限制规则限制次数 ；</li>
+<li>ccAcl_interceptNum ：自定义规则拦截次数 。</li>
         :type MetricNames: list of str
-        :param ZoneIds: 站点id列表
+        :param ZoneIds: 站点id列表，不填默认选择全部站点。
         :type ZoneIds: list of str
-        :param Domains: 子域名列表
+        :param Domains: 子域名列表，不填默认选择全部子域名。
         :type Domains: list of str
-        :param ProtocolType: 协议类型
+        :param ProtocolType: 该字段已废弃，请勿传。
         :type ProtocolType: str
-        :param AttackType: "webshell" : Webshell检测防护
-"oa" : 常见OA漏洞防护
-"xss" : XSS跨站脚本攻击防护
-"xxe" : XXE攻击防护
-"webscan" : 扫描器攻击漏洞防护
-"cms" : 常见CMS漏洞防护
-"upload" : 恶意文件上传攻击防护
-"sql" : SQL注入攻击防护
-"cmd_inject": 命令/代码注入攻击防护
-"osc" : 开源组件漏洞防护
-"file_read" : 任意文件读取
-"ldap" : LDAP注入攻击防护
-"other" : 其它漏洞防护
-
-"all":"所有"
+        :param AttackType: 该字段已废弃，请勿传。
         :type AttackType: str
-        :param Interval: 查询时间粒度，可选{min,5min,hour,day}
+        :param Interval: 查询时间粒度，取值有：
+<li>min ：1分钟 ；</li>
+<li>5min ：5分钟 ；</li>
+<li>hour ：1小时 ；</li>
+<li>day ：1天 。</li>
         :type Interval: str
+        :param QueryCondition: 筛选条件，取值有：
+<li>action ：执行动作 。</li>
+        :type QueryCondition: list of QueryCondition
         """
         self.StartTime = None
         self.EndTime = None
@@ -6832,6 +6951,7 @@ class DescribeWebProtectionDataRequest(AbstractModel):
         self.ProtocolType = None
         self.AttackType = None
         self.Interval = None
+        self.QueryCondition = None
 
 
     def _deserialize(self, params):
@@ -6843,6 +6963,12 @@ class DescribeWebProtectionDataRequest(AbstractModel):
         self.ProtocolType = params.get("ProtocolType")
         self.AttackType = params.get("AttackType")
         self.Interval = params.get("Interval")
+        if params.get("QueryCondition") is not None:
+            self.QueryCondition = []
+            for item in params.get("QueryCondition"):
+                obj = QueryCondition()
+                obj._deserialize(item)
+                self.QueryCondition.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6859,14 +6985,20 @@ class DescribeWebProtectionDataResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: 数据详情
+        :param Data: 数据详情。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: list of SecEntry
-        :param Status: 状态，1:失败，0:成功
+        :param Status: 请求响应状态，取值有：
+<li>1 ：失败 ；</li>
+<li>0 ：成功 。</li>
         :type Status: int
-        :param Msg: 消息
+        :param Msg: 请求响应消息。
         :type Msg: str
-        :param Interval: 查询时间粒度，可选{min,5min,hour,day}
+        :param Interval: 查询时间粒度，取值有：
+<li>min ：1分钟 ；</li>
+<li>5min ：5分钟 ；</li>
+<li>hour ：1小时 ；</li>
+<li>day ：1天 。</li>
         :type Interval: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6898,20 +7030,38 @@ class DescribeWebProtectionLogRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StartTime: 起始时间
+        :param StartTime: 起始时间。
         :type StartTime: str
-        :param EndTime: 结束时间
+        :param EndTime: 结束时间。
         :type EndTime: str
-        :param PageSize: 每页条数
+        :param PageSize: 分页拉取的最大返回结果数。最大值：1000。
         :type PageSize: int
-        :param PageNo: 当前页
+        :param PageNo: 分页拉取的起始页号。最小值：1。
         :type PageNo: int
-        :param ZoneIds: 站点集合
+        :param ZoneIds: 站点集合，不填默认查询所有站点。
         :type ZoneIds: list of str
-        :param Domains: 域名集合
+        :param Domains: 域名集合，不填默认查询所有域名。
         :type Domains: list of str
-        :param QueryCondition: 查询条件
+        :param QueryCondition: 筛选条件。
+限速规则日志中取值有：
+<li>action ：执行动作（处置方式）；</li>
+<li>ruleId ：规则id ；</li>
+<li>oriDomain ：被攻击的子域名 ；</li>
+<li>attackIp ：攻击ip 。</li>
+自定义规则日志中取值有：
+<li>action ：执行动作（处置方式）；</li>
+<li>ruleId ：规则id ；</li>
+<li>oriDomain ：被攻击的子域名 ；</li>
+<li>attackIp ：攻击ip ；</li>
+<li>eventId ：事件id ；</li>
+<li>ua ：用户代理 ；</li>
+<li>requestMethod ：请求方法 ；</li>
+<li>uri ：统一资源标识符 。</li>
         :type QueryCondition: list of QueryCondition
+        :param EntityType: 日志类型，取值有：
+<li>rate ：限速日志 ；</li>
+<li>acl ：自定义规则日志 。</li>不填默认为rate。
+        :type EntityType: str
         """
         self.StartTime = None
         self.EndTime = None
@@ -6920,6 +7070,7 @@ class DescribeWebProtectionLogRequest(AbstractModel):
         self.ZoneIds = None
         self.Domains = None
         self.QueryCondition = None
+        self.EntityType = None
 
 
     def _deserialize(self, params):
@@ -6935,6 +7086,7 @@ class DescribeWebProtectionLogRequest(AbstractModel):
                 obj = QueryCondition()
                 obj._deserialize(item)
                 self.QueryCondition.append(obj)
+        self.EntityType = params.get("EntityType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6951,11 +7103,13 @@ class DescribeWebProtectionLogResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: 限速拦截Data
+        :param Data: 限速拦截数据内容。
         :type Data: :class:`tencentcloud.teo.v20220106.models.CCLogData`
-        :param Status: 状态，1：失败，0:成功
+        :param Status: 请求响应状态，取值有：
+<li>1 ：失败 ；</li>
+<li>0 ：成功 。</li>
         :type Status: int
-        :param Msg: 返回信息
+        :param Msg: 请求响应信息。
         :type Msg: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -10676,10 +10830,10 @@ class SecEntry(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Key: Entry的Key
+        :param Key: 查询维度值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Key: str
-        :param Value: Entry的Value
+        :param Value: 查询维度下详细数据。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Value: list of SecEntryValue
         """
@@ -10711,19 +10865,19 @@ class SecEntryValue(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Metric: 指标名称
+        :param Metric: 指标名称。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Metric: str
-        :param Detail: 指标数据明细
+        :param Detail: 时序数据详情。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Detail: list of TimingDataItem
-        :param Max: 最大值
+        :param Max: 最大值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Max: int
-        :param Avg: 平均值
+        :param Avg: 平均值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Avg: float
-        :param Sum: 数据总和
+        :param Sum: 数据总和。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Sum: float
         """
@@ -10745,6 +10899,62 @@ class SecEntryValue(AbstractModel):
         self.Max = params.get("Max")
         self.Avg = params.get("Avg")
         self.Sum = params.get("Sum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SecRuleRelatedInfo(AbstractModel):
+    """安全规则（cc/waf/bot）相关信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleId: 规则ID列表（99999为无效id）。
+        :type RuleId: int
+        :param Action: 执行动作（处置方式），取值有：
+<li>trans ：通过 ；</li>
+<li>alg ：算法挑战 ；</li>
+<li>drop ：丢弃 ；</li>
+<li>ban ：封禁源ip ；</li>
+<li>redirect ：重定向 ；</li>
+<li>page ：返回指定页面 ；</li>
+<li>monitor ：观察 。</li>
+        :type Action: str
+        :param RiskLevel: 风险等级（waf日志中独有），取值有：
+<li>high risk ：高危 ；</li>
+<li>middle risk ：中危 ；</li>
+<li>low risk ：低危 ；</li>
+<li>unkonw ：未知 。</li>
+        :type RiskLevel: str
+        :param RuleLevel: 规则等级，取值有：
+<li>normal  ：正常 。</li>
+        :type RuleLevel: str
+        :param Description: 规则描述。
+        :type Description: str
+        :param RuleTypeName: 规则类型名称。
+        :type RuleTypeName: str
+        """
+        self.RuleId = None
+        self.Action = None
+        self.RiskLevel = None
+        self.RuleLevel = None
+        self.Description = None
+        self.RuleTypeName = None
+
+
+    def _deserialize(self, params):
+        self.RuleId = params.get("RuleId")
+        self.Action = params.get("Action")
+        self.RiskLevel = params.get("RiskLevel")
+        self.RuleLevel = params.get("RuleLevel")
+        self.Description = params.get("Description")
+        self.RuleTypeName = params.get("RuleTypeName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -11140,10 +11350,10 @@ class TimingDataItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Timestamp: 秒级时间戳
+        :param Timestamp: 返回数据对应时间点，采用unix秒级时间戳
 注意：此字段可能返回 null，表示取不到有效值。
         :type Timestamp: int
-        :param Value: 数值
+        :param Value: 具体数值
 注意：此字段可能返回 null，表示取不到有效值。
         :type Value: int
         """
@@ -11320,9 +11530,9 @@ class TopNEntry(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Key: Entry key
+        :param Key: top查询维度值。
         :type Key: str
-        :param Value: TopN数据
+        :param Value: 查询具体数据。
         :type Value: list of TopNEntryValue
         """
         self.Key = None
@@ -11353,9 +11563,9 @@ class TopNEntryValue(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Name: Entry的name
+        :param Name: 排序实体名。
         :type Name: str
-        :param Count: 数量
+        :param Count: 排序实体数量。
         :type Count: int
         """
         self.Name = None
@@ -11628,20 +11838,16 @@ class WebLogData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param List: 数据
+        :param List: 分组数据。
 注意：此字段可能返回 null，表示取不到有效值。
         :type List: list of WebLogs
-        :param PageNo: 当前页
-注意：此字段可能返回 null，表示取不到有效值。
+        :param PageNo: 分页拉取的起始页号。最小值：1。
         :type PageNo: int
-        :param PageSize: 每页展示条数
-注意：此字段可能返回 null，表示取不到有效值。
+        :param PageSize: 分页拉取的最大返回结果数。最大值：1000。
         :type PageSize: int
-        :param Pages: 总页数
-注意：此字段可能返回 null，表示取不到有效值。
+        :param Pages: 总页数。
         :type Pages: int
-        :param TotalSize: 总条数
-注意：此字段可能返回 null，表示取不到有效值。
+        :param TotalSize: 总条数。
         :type TotalSize: int
         """
         self.List = None
@@ -11678,51 +11884,47 @@ class WebLogs(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AttackContent: 攻击内容
+        :param AttackContent: 该字段已废弃。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AttackContent: str
-        :param AttackIp: 攻击IP
-注意：此字段可能返回 null，表示取不到有效值。
+        :param AttackIp: 攻击源（客户端）Ip。
         :type AttackIp: str
-        :param AttackType: 攻击类型
+        :param AttackType: 该字段已废弃。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AttackType: str
-        :param Domain: 域名
-注意：此字段可能返回 null，表示取不到有效值。
+        :param Domain: 受攻击子域名。
         :type Domain: str
-        :param Msuuid: uuid
+        :param Msuuid: 该字段已废弃。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Msuuid: str
-        :param RequestMethod: 请求方法
+        :param RequestMethod: 该字段已废弃。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RequestMethod: str
-        :param RequestUri: 请求URI
-注意：此字段可能返回 null，表示取不到有效值。
+        :param RequestUri: URI
         :type RequestUri: str
-        :param RiskLevel: 风险等级
+        :param RiskLevel: 该字段已废弃。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RiskLevel: str
-        :param RuleId: 规则ID
+        :param RuleId: 该字段已废弃。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RuleId: int
-        :param SipCountryCode: IP所在国家
-注意：此字段可能返回 null，表示取不到有效值。
+        :param SipCountryCode: IP所在国家iso-3166中alpha-2编码，编码信息请参考[ISO-3166](https://git.woa.com/edgeone/iso-3166/blob/master/all/all.json)
         :type SipCountryCode: str
-        :param EventId: 事件id
-注意：此字段可能返回 null，表示取不到有效值。
+        :param EventId: 请求（事件）ID。
         :type EventId: str
-        :param DisposalMethod: 处置方式
+        :param DisposalMethod: 该字段已废弃。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DisposalMethod: str
-        :param HttpLog: http_log
-注意：此字段可能返回 null，表示取不到有效值。
+        :param HttpLog: http log。
         :type HttpLog: str
-        :param Ua: user agent
+        :param Ua: 该字段已废弃。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Ua: str
-        :param AttackTime: 攻击时间，为保持统一，原参数time更名为AttackTime
-注意：此字段可能返回 null，表示取不到有效值。
+        :param AttackTime: 攻击时间，采用unix秒级时间戳。
         :type AttackTime: int
+        :param RuleDetailList: 规则相关信息列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleDetailList: list of SecRuleRelatedInfo
         """
         self.AttackContent = None
         self.AttackIp = None
@@ -11739,6 +11941,7 @@ class WebLogs(AbstractModel):
         self.HttpLog = None
         self.Ua = None
         self.AttackTime = None
+        self.RuleDetailList = None
 
 
     def _deserialize(self, params):
@@ -11757,6 +11960,12 @@ class WebLogs(AbstractModel):
         self.HttpLog = params.get("HttpLog")
         self.Ua = params.get("Ua")
         self.AttackTime = params.get("AttackTime")
+        if params.get("RuleDetailList") is not None:
+            self.RuleDetailList = []
+            for item in params.get("RuleDetailList"):
+                obj = SecRuleRelatedInfo()
+                obj._deserialize(item)
+                self.RuleDetailList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

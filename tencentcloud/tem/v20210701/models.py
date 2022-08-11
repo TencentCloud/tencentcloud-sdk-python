@@ -1910,6 +1910,57 @@ class DescribeDeployApplicationDetailResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeEnvironmentRequest(AbstractModel):
+    """DescribeEnvironment请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EnvironmentId: 命名空间id
+        :type EnvironmentId: str
+        :param SourceChannel: 来源Channel
+        :type SourceChannel: int
+        """
+        self.EnvironmentId = None
+        self.SourceChannel = None
+
+
+    def _deserialize(self, params):
+        self.EnvironmentId = params.get("EnvironmentId")
+        self.SourceChannel = params.get("SourceChannel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeEnvironmentResponse(AbstractModel):
+    """DescribeEnvironment返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 环境信息
+        :type Result: :class:`tencentcloud.tem.v20210701.models.NamespaceInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = NamespaceInfo()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeEnvironmentStatusRequest(AbstractModel):
     """DescribeEnvironmentStatus请求参数结构体
 
@@ -3702,6 +3753,69 @@ class MountedSettingConf(AbstractModel):
         
 
 
+class NamespaceInfo(AbstractModel):
+    """Namespace 基础信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EnvironmentId: ID 信息
+        :type EnvironmentId: str
+        :param NamespaceName: 名字（已弃用）
+        :type NamespaceName: str
+        :param Region: 地域
+        :type Region: str
+        :param VpcId: vpc id
+        :type VpcId: str
+        :param SubnetIds: subnet id 数组
+        :type SubnetIds: list of str
+        :param Description: 描述
+        :type Description: str
+        :param CreatedDate: 创建时间
+        :type CreatedDate: str
+        :param EnvironmentName: 环境名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnvironmentName: str
+        :param ApmInstanceId: APM 资源 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApmInstanceId: str
+        :param Locked: 环境是否上锁，1为上锁，0则未上锁
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Locked: int
+        """
+        self.EnvironmentId = None
+        self.NamespaceName = None
+        self.Region = None
+        self.VpcId = None
+        self.SubnetIds = None
+        self.Description = None
+        self.CreatedDate = None
+        self.EnvironmentName = None
+        self.ApmInstanceId = None
+        self.Locked = None
+
+
+    def _deserialize(self, params):
+        self.EnvironmentId = params.get("EnvironmentId")
+        self.NamespaceName = params.get("NamespaceName")
+        self.Region = params.get("Region")
+        self.VpcId = params.get("VpcId")
+        self.SubnetIds = params.get("SubnetIds")
+        self.Description = params.get("Description")
+        self.CreatedDate = params.get("CreatedDate")
+        self.EnvironmentName = params.get("EnvironmentName")
+        self.ApmInstanceId = params.get("ApmInstanceId")
+        self.Locked = params.get("Locked")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class NamespacePage(AbstractModel):
     """命名空间分页
 
@@ -5000,7 +5114,7 @@ class TemServiceVersionInfo(AbstractModel):
         :param VersionId: 主键
         :type VersionId: str
         :param ApplicationId: 服务id
-        :type ApplicationId: bool
+        :type ApplicationId: str
         :param DeployMode: 部署方式
         :type DeployMode: str
         :param JdkVersion: jdk版本
@@ -5026,6 +5140,7 @@ class TemServiceVersionInfo(AbstractModel):
         :param ImgVersion: 镜像版本
         :type ImgVersion: str
         :param EsInfo: 弹性配置
+注意：此字段可能返回 null，表示取不到有效值。
         :type EsInfo: :class:`tencentcloud.tem.v20210701.models.EsInfo`
         :param EnvConf: 环境配置
         :type EnvConf: list of Pair
@@ -5094,7 +5209,7 @@ class TemServiceVersionInfo(AbstractModel):
         :type LogEnable: int
         :param MinAliveInstances: 最小实例数
 注意：此字段可能返回 null，表示取不到有效值。
-        :type MinAliveInstances: int
+        :type MinAliveInstances: str
         :param SecurityGroupIds: 安全组
 注意：此字段可能返回 null，表示取不到有效值。
         :type SecurityGroupIds: list of str
@@ -5152,7 +5267,7 @@ class TemServiceVersionInfo(AbstractModel):
         :param EnableTracing: 是否启用调用链组件
 注意：此字段可能返回 null，表示取不到有效值。
         :type EnableTracing: int
-        :param EnableTracingReport: 是否开启调用链上报，只有 EnableTracing=1 时生效
+        :param EnableTracingReport: 是否开启调用链上报，只有 EnableTracing=1 时生效（参数已弃用）
 注意：此字段可能返回 null，表示取不到有效值。
         :type EnableTracingReport: int
         :param RepoType: 镜像类型：0-个人镜像、1-企业镜像、2-公有镜像
@@ -5184,7 +5299,7 @@ class TemServiceVersionInfo(AbstractModel):
         :param UnderDeploying: 是否正在发布中
 注意：此字段可能返回 null，表示取不到有效值。
         :type UnderDeploying: bool
-        :param EnablePrometheusConf: 是否开启prometheus业务指标监控
+        :param EnablePrometheusConf: 监控业务指标监控
 注意：此字段可能返回 null，表示取不到有效值。
         :type EnablePrometheusConf: :class:`tencentcloud.tem.v20210701.models.EnablePrometheusConf`
         :param StoppedManually: 是否为手动停止
@@ -5193,6 +5308,10 @@ class TemServiceVersionInfo(AbstractModel):
         :param TcrInstanceId: tcr实例ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type TcrInstanceId: str
+        :param EnableMetrics: 1：开始自动metrics采集（open-telemetry）；
+0：关闭metrics采集；
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnableMetrics: int
         """
         self.VersionId = None
         self.ApplicationId = None
@@ -5266,6 +5385,7 @@ class TemServiceVersionInfo(AbstractModel):
         self.EnablePrometheusConf = None
         self.StoppedManually = None
         self.TcrInstanceId = None
+        self.EnableMetrics = None
 
 
     def _deserialize(self, params):
@@ -5392,6 +5512,7 @@ class TemServiceVersionInfo(AbstractModel):
             self.EnablePrometheusConf._deserialize(params.get("EnablePrometheusConf"))
         self.StoppedManually = params.get("StoppedManually")
         self.TcrInstanceId = params.get("TcrInstanceId")
+        self.EnableMetrics = params.get("EnableMetrics")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

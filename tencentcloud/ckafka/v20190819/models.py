@@ -8247,6 +8247,10 @@ class MySQLParam(AbstractModel):
         :type TopicReplacement: str
         :param KeyColumns: 格式：库1.表1:字段1,字段2;库2.表2:字段2，表之间;（分号）隔开，字段之间,（逗号）隔开。不指定的表默认取表的主键
         :type KeyColumns: str
+        :param DropInvalidMessage: Mysql 是否抛弃解析失败的消息，默认为true
+        :type DropInvalidMessage: bool
+        :param DropCls: 当设置成员参数DropInvalidMessageToCls设置为true时,DropInvalidMessage参数失效
+        :type DropCls: :class:`tencentcloud.ckafka.v20190819.models.DropCls`
         """
         self.Database = None
         self.Table = None
@@ -8264,6 +8268,8 @@ class MySQLParam(AbstractModel):
         self.TopicRegex = None
         self.TopicReplacement = None
         self.KeyColumns = None
+        self.DropInvalidMessage = None
+        self.DropCls = None
 
 
     def _deserialize(self, params):
@@ -8288,6 +8294,10 @@ class MySQLParam(AbstractModel):
         self.TopicRegex = params.get("TopicRegex")
         self.TopicReplacement = params.get("TopicReplacement")
         self.KeyColumns = params.get("KeyColumns")
+        self.DropInvalidMessage = params.get("DropInvalidMessage")
+        if params.get("DropCls") is not None:
+            self.DropCls = DropCls()
+            self.DropCls._deserialize(params.get("DropCls"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -4255,12 +4255,16 @@ class DescribeLiveDomainsResponse(AbstractModel):
         :param CreateLimitCount: 可继续添加域名数量。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateLimitCount: int
+        :param PlayTypeCount: 启用的播放域名加速区域统计，数组元素分别为：中国大陆（境内），全球地区，国际/港澳台（境外）域名数量。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PlayTypeCount: list of int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.AllCount = None
         self.DomainList = None
         self.CreateLimitCount = None
+        self.PlayTypeCount = None
         self.RequestId = None
 
 
@@ -4273,6 +4277,7 @@ class DescribeLiveDomainsResponse(AbstractModel):
                 obj._deserialize(item)
                 self.DomainList.append(obj)
         self.CreateLimitCount = params.get("CreateLimitCount")
+        self.PlayTypeCount = params.get("PlayTypeCount")
         self.RequestId = params.get("RequestId")
 
 

@@ -94,6 +94,35 @@ class GmeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateCustomization(self, request):
+        """用户使用该接口可以创建语音消息转文本自学习模型，以供识别调用
+
+        :param request: Request instance for CreateCustomization.
+        :type request: :class:`tencentcloud.gme.v20180711.models.CreateCustomizationRequest`
+        :rtype: :class:`tencentcloud.gme.v20180711.models.CreateCustomizationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCustomization", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateCustomizationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateScanUser(self, request):
         """新增自定义送检用户
 
@@ -109,6 +138,35 @@ class GmeClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateScanUserResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteCustomization(self, request):
+        """用户通过该接口可以删除语音消息转文本自学习模型
+
+        :param request: Request instance for DeleteCustomization.
+        :type request: :class:`tencentcloud.gme.v20180711.models.DeleteCustomizationRequest`
+        :rtype: :class:`tencentcloud.gme.v20180711.models.DeleteCustomizationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteCustomization", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteCustomizationResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -414,6 +472,35 @@ class GmeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def GetCustomizationList(self, request):
+        """查询语音消息转文本自学习模型列表
+
+        :param request: Request instance for GetCustomizationList.
+        :type request: :class:`tencentcloud.gme.v20180711.models.GetCustomizationListRequest`
+        :rtype: :class:`tencentcloud.gme.v20180711.models.GetCustomizationListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetCustomizationList", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetCustomizationListResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyAppStatus(self, request):
         """本接口(ModifyAppStatus)用于修改应用总开关状态。
 
@@ -429,6 +516,64 @@ class GmeClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyAppStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyCustomization(self, request):
+        """用户通过该接口可以更新语音消息转文本自学习模型。
+
+        :param request: Request instance for ModifyCustomization.
+        :type request: :class:`tencentcloud.gme.v20180711.models.ModifyCustomizationRequest`
+        :rtype: :class:`tencentcloud.gme.v20180711.models.ModifyCustomizationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyCustomization", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyCustomizationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyCustomizationState(self, request):
+        """通过该接口，用户可以修改语音消息转文本自学习模型状态，上下线自学习模型
+
+        :param request: Request instance for ModifyCustomizationState.
+        :type request: :class:`tencentcloud.gme.v20180711.models.ModifyCustomizationStateRequest`
+        :rtype: :class:`tencentcloud.gme.v20180711.models.ModifyCustomizationStateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyCustomizationState", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyCustomizationStateResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

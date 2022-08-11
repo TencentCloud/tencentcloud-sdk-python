@@ -4117,6 +4117,34 @@ class CloudExternalPromptInfo(AbstractModel):
         
 
 
+class CloudExternalUserInfo(AbstractModel):
+    """渠道方用户信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ExternalUserType: 渠道方用户类型
+        :type ExternalUserType: str
+        :param ExternalUserId: 渠道方用户ID
+        :type ExternalUserId: str
+        """
+        self.ExternalUserType = None
+        self.ExternalUserId = None
+
+
+    def _deserialize(self, params):
+        self.ExternalUserType = params.get("ExternalUserType")
+        self.ExternalUserId = params.get("ExternalUserId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CloudGlobalPayTimeInfo(AbstractModel):
     """全局支付时间信息
 
@@ -27533,6 +27561,8 @@ ORDER_RECEIVE_MODE_COMBINE - 合单支付
 ORDER_RECEIVE_MODE_V_COMBINE - 虚拟合单支付
 若不传入该字段，则会根据是否传入子单来判断是 普通支付 还是 合单支付
         :type OrderReceiveMode: str
+        :param ExternalUserInfoList: 渠道方用户信息列表
+        :type ExternalUserInfoList: list of CloudExternalUserInfo
         """
         self.MidasAppId = None
         self.UserId = None
@@ -27572,6 +27602,7 @@ ORDER_RECEIVE_MODE_V_COMBINE - 虚拟合单支付
         self.ClientInfo = None
         self.ExternalPromptGroupList = None
         self.OrderReceiveMode = None
+        self.ExternalUserInfoList = None
 
 
     def _deserialize(self, params):
@@ -27636,6 +27667,12 @@ ORDER_RECEIVE_MODE_V_COMBINE - 虚拟合单支付
                 obj._deserialize(item)
                 self.ExternalPromptGroupList.append(obj)
         self.OrderReceiveMode = params.get("OrderReceiveMode")
+        if params.get("ExternalUserInfoList") is not None:
+            self.ExternalUserInfoList = []
+            for item in params.get("ExternalUserInfoList"):
+                obj = CloudExternalUserInfo()
+                obj._deserialize(item)
+                self.ExternalUserInfoList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

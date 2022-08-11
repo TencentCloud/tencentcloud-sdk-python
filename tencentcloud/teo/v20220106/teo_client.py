@@ -694,7 +694,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeDDosAttackData(self, request):
-        """查询DDos攻击数据
+        """查询DDos攻击时序数据
 
         :param request: Request instance for DescribeDDosAttackData.
         :type request: :class:`tencentcloud.teo.v20220106.models.DescribeDDosAttackDataRequest`
@@ -781,7 +781,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeDDosAttackSourceEvent(self, request):
-        """查询DDos攻击源
+        """查询DDos攻击源信息
 
         :param request: Request instance for DescribeDDosAttackSourceEvent.
         :type request: :class:`tencentcloud.teo.v20220106.models.DescribeDDosAttackSourceEventRequest`
@@ -1622,7 +1622,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeWebManagedRulesData(self, request):
-        """查询Web托管规则数据
+        """查询waf攻击时序数据
 
         :param request: Request instance for DescribeWebManagedRulesData.
         :type request: :class:`tencentcloud.teo.v20220106.models.DescribeWebManagedRulesDataRequest`
@@ -1651,7 +1651,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeWebManagedRulesLog(self, request):
-        """查询Web托管日志
+        """查询waf攻击日志
 
         :param request: Request instance for DescribeWebManagedRulesLog.
         :type request: :class:`tencentcloud.teo.v20220106.models.DescribeWebManagedRulesLogRequest`
@@ -1680,7 +1680,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeWebManagedRulesTopData(self, request):
-        """查询Web托管规则Top数据
+        """查询waf攻击top数据
 
         :param request: Request instance for DescribeWebManagedRulesTopData.
         :type request: :class:`tencentcloud.teo.v20220106.models.DescribeWebManagedRulesTopDataRequest`
@@ -1738,7 +1738,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeWebProtectionData(self, request):
-        """查询web防护数据
+        """查询CC防护时序数据
 
         :param request: Request instance for DescribeWebProtectionData.
         :type request: :class:`tencentcloud.teo.v20220106.models.DescribeWebProtectionDataRequest`
@@ -1767,7 +1767,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeWebProtectionLog(self, request):
-        """查询web防护日志
+        """查询CC防护日志
 
         :param request: Request instance for DescribeWebProtectionLog.
         :type request: :class:`tencentcloud.teo.v20220106.models.DescribeWebProtectionLogRequest`

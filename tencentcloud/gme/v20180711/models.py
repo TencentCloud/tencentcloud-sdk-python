@@ -448,6 +448,55 @@ class CreateAppResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateCustomizationRequest(AbstractModel):
+    """CreateCustomization请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BizId: 应用 ID，登录控制台创建应用得到的AppID
+        :type BizId: int
+        :param TextUrl: 文本文件的下载地址，服务会从该地址下载文件，目前仅支持腾讯云cos
+        :type TextUrl: str
+        """
+        self.BizId = None
+        self.TextUrl = None
+
+
+    def _deserialize(self, params):
+        self.BizId = params.get("BizId")
+        self.TextUrl = params.get("TextUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCustomizationResponse(AbstractModel):
+    """CreateCustomization返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ModelId: 模型ID
+        :type ModelId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ModelId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ModelId = params.get("ModelId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateScanUserRequest(AbstractModel):
     """CreateScanUser请求参数结构体
 
@@ -484,6 +533,87 @@ class CreateScanUserResponse(AbstractModel):
     def __init__(self):
         r"""
         :param ErrorCode: 返回结果码
+        :type ErrorCode: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrorCode = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrorCode = params.get("ErrorCode")
+        self.RequestId = params.get("RequestId")
+
+
+class CustomizationConfigs(AbstractModel):
+    """语音消息转文本自学习模型配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BizId: 应用 ID，登录控制台创建应用得到的AppID
+        :type BizId: int
+        :param ModelId: 模型ID
+        :type ModelId: str
+        :param ModelState: 模型状态，-1下线状态，1上线状态, 0训练中, -2训练失败
+        :type ModelState: int
+        """
+        self.BizId = None
+        self.ModelId = None
+        self.ModelState = None
+
+
+    def _deserialize(self, params):
+        self.BizId = params.get("BizId")
+        self.ModelId = params.get("ModelId")
+        self.ModelState = params.get("ModelState")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteCustomizationRequest(AbstractModel):
+    """DeleteCustomization请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ModelId: 要删除的模型ID
+        :type ModelId: str
+        :param BizId: 应用 ID，登录控制台创建应用得到的AppID
+        :type BizId: int
+        """
+        self.ModelId = None
+        self.BizId = None
+
+
+    def _deserialize(self, params):
+        self.ModelId = params.get("ModelId")
+        self.BizId = params.get("BizId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteCustomizationResponse(AbstractModel):
+    """DeleteCustomization返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrorCode: 返回值。0为成功，非0为失败。
         :type ErrorCode: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1211,6 +1341,57 @@ class DescribeUserInAndOutTimeResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class GetCustomizationListRequest(AbstractModel):
+    """GetCustomizationList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BizId: 应用 ID，登录控制台创建应用得到的AppID
+        :type BizId: int
+        """
+        self.BizId = None
+
+
+    def _deserialize(self, params):
+        self.BizId = params.get("BizId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetCustomizationListResponse(AbstractModel):
+    """GetCustomizationList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CustomizationConfigs: 语音消息转文本自学习模型配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CustomizationConfigs: list of CustomizationConfigs
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.CustomizationConfigs = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("CustomizationConfigs") is not None:
+            self.CustomizationConfigs = []
+            for item in params.get("CustomizationConfigs"):
+                obj = CustomizationConfigs()
+                obj._deserialize(item)
+                self.CustomizationConfigs.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class InOutTimeInfo(AbstractModel):
     """用户进出房间信息
 
@@ -1315,6 +1496,120 @@ class ModifyAppStatusResponse(AbstractModel):
         if params.get("Data") is not None:
             self.Data = ModifyAppStatusResp()
             self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyCustomizationRequest(AbstractModel):
+    """ModifyCustomization请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BizId: 应用 ID，登录控制台创建应用得到的AppID
+        :type BizId: int
+        :param TextUrl: 文本文件
+        :type TextUrl: str
+        :param ModelId: 要修改的模型ID
+        :type ModelId: str
+        """
+        self.BizId = None
+        self.TextUrl = None
+        self.ModelId = None
+
+
+    def _deserialize(self, params):
+        self.BizId = params.get("BizId")
+        self.TextUrl = params.get("TextUrl")
+        self.ModelId = params.get("ModelId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCustomizationResponse(AbstractModel):
+    """ModifyCustomization返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrorCode: 返回值。0为成功，非0为失败。
+        :type ErrorCode: int
+        :param ModelId: 自学习模型ID
+        :type ModelId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrorCode = None
+        self.ModelId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrorCode = params.get("ErrorCode")
+        self.ModelId = params.get("ModelId")
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyCustomizationStateRequest(AbstractModel):
+    """ModifyCustomizationState请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ModelId: 自学习模型ID
+        :type ModelId: str
+        :param ToState: 想要变换的模型状态，-1代表下线，1代表上线
+        :type ToState: int
+        :param BizId: 应用 ID，登录控制台创建应用得到的AppID
+        :type BizId: int
+        """
+        self.ModelId = None
+        self.ToState = None
+        self.BizId = None
+
+
+    def _deserialize(self, params):
+        self.ModelId = params.get("ModelId")
+        self.ToState = params.get("ToState")
+        self.BizId = params.get("BizId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCustomizationStateResponse(AbstractModel):
+    """ModifyCustomizationState返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ModelId: 自学习模型ID
+        :type ModelId: str
+        :param ErrorCode: 返回值。0为成功，非0为失败。
+        :type ErrorCode: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ModelId = None
+        self.ErrorCode = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ModelId = params.get("ModelId")
+        self.ErrorCode = params.get("ErrorCode")
         self.RequestId = params.get("RequestId")
 
 

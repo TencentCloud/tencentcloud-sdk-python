@@ -167,6 +167,9 @@ INVALIDPARAMETERVALUE_INVALIDCLBREGION = 'InvalidParameterValue.InvalidClbRegion
 # 过滤条件无效。
 INVALIDPARAMETERVALUE_INVALIDFILTER = 'InvalidParameterValue.InvalidFilter'
 
+# 高性能计算集群ID无效。
+INVALIDPARAMETERVALUE_INVALIDHPCCLUSTERID = 'InvalidParameterValue.InvalidHpcClusterId'
+
 # 镜像ID无效。
 INVALIDPARAMETERVALUE_INVALIDIMAGEID = 'InvalidParameterValue.InvalidImageId'
 

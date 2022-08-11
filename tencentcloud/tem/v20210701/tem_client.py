@@ -580,6 +580,35 @@ class TemClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeEnvironment(self, request):
+        """获取环境基础信息
+
+        :param request: Request instance for DescribeEnvironment.
+        :type request: :class:`tencentcloud.tem.v20210701.models.DescribeEnvironmentRequest`
+        :rtype: :class:`tencentcloud.tem.v20210701.models.DescribeEnvironmentResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeEnvironment", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeEnvironmentResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeEnvironmentStatus(self, request):
         """获取环境状态
 

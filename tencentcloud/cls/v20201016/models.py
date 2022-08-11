@@ -758,7 +758,7 @@ class ConsumerContent(AbstractModel):
         :param EnableTag: 是否投递 TAG 信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type EnableTag: bool
-        :param MetaFields: 需要投递的元数据列表，目前仅支持：\_\_SOURCE\_\_，\_\_FILENAME\_\_和\_\_TIMESTAMP\_\_
+        :param MetaFields: 需要投递的元数据列表，目前仅支持：\_\_SOURCE\_\_，\_\_FILENAME\_\_，\_\_TIMESTAMP\_\_，\_\_HOSTNAME\_\_和\_\_PKGID\_\_
 注意：此字段可能返回 null，表示取不到有效值。
         :type MetaFields: list of str
         :param TagJsonNotTiled: 当EnableTag为true时，必须填写TagJsonNotTiled字段，TagJsonNotTiled用于标识tag信息是否json平铺，TagJsonNotTiled为true时不平铺，false时平铺
@@ -1370,11 +1370,14 @@ class CreateConsumerRequest(AbstractModel):
         :type Content: :class:`tencentcloud.cls.v20201016.models.ConsumerContent`
         :param Ckafka: CKafka的描述
         :type Ckafka: :class:`tencentcloud.cls.v20201016.models.Ckafka`
+        :param Compression: 投递时压缩方式，取值0，2，3。[0:NONE；2:SNAPPY；3:LZ4]
+        :type Compression: int
         """
         self.TopicId = None
         self.NeedContent = None
         self.Content = None
         self.Ckafka = None
+        self.Compression = None
 
 
     def _deserialize(self, params):
@@ -1386,6 +1389,7 @@ class CreateConsumerRequest(AbstractModel):
         if params.get("Ckafka") is not None:
             self.Ckafka = Ckafka()
             self.Ckafka._deserialize(params.get("Ckafka"))
+        self.Compression = params.get("Compression")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2808,6 +2812,9 @@ class DescribeConsumerResponse(AbstractModel):
         :type Content: :class:`tencentcloud.cls.v20201016.models.ConsumerContent`
         :param Ckafka: CKafka的描述
         :type Ckafka: :class:`tencentcloud.cls.v20201016.models.Ckafka`
+        :param Compression: 压缩方式[0:NONE；2:SNAPPY；3:LZ4]
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Compression: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2815,6 +2822,7 @@ class DescribeConsumerResponse(AbstractModel):
         self.NeedContent = None
         self.Content = None
         self.Ckafka = None
+        self.Compression = None
         self.RequestId = None
 
 
@@ -2827,6 +2835,7 @@ class DescribeConsumerResponse(AbstractModel):
         if params.get("Ckafka") is not None:
             self.Ckafka = Ckafka()
             self.Ckafka._deserialize(params.get("Ckafka"))
+        self.Compression = params.get("Compression")
         self.RequestId = params.get("RequestId")
 
 
@@ -5037,12 +5046,15 @@ class ModifyConsumerRequest(AbstractModel):
         :type Content: :class:`tencentcloud.cls.v20201016.models.ConsumerContent`
         :param Ckafka: CKafka的描述
         :type Ckafka: :class:`tencentcloud.cls.v20201016.models.Ckafka`
+        :param Compression: 投递时压缩方式，取值0，2，3。[0:NONE；2:SNAPPY；3:LZ4]
+        :type Compression: int
         """
         self.TopicId = None
         self.Effective = None
         self.NeedContent = None
         self.Content = None
         self.Ckafka = None
+        self.Compression = None
 
 
     def _deserialize(self, params):
@@ -5055,6 +5067,7 @@ class ModifyConsumerRequest(AbstractModel):
         if params.get("Ckafka") is not None:
             self.Ckafka = Ckafka()
             self.Ckafka._deserialize(params.get("Ckafka"))
+        self.Compression = params.get("Compression")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

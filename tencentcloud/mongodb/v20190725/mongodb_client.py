@@ -200,37 +200,6 @@ class MongodbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeBackupAccess(self, request):
-        """备份下载功能已调整，此接口即将下线
-
-        本接口（DescribeBackupAccess）用于获取备份文件的下载授权，具体的备份文件信息可通过查询实例备份列表（DescribeDBBackups）接口获取
-
-        :param request: Request instance for DescribeBackupAccess.
-        :type request: :class:`tencentcloud.mongodb.v20190725.models.DescribeBackupAccessRequest`
-        :rtype: :class:`tencentcloud.mongodb.v20190725.models.DescribeBackupAccessResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeBackupAccess", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeBackupAccessResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def DescribeBackupDownloadTask(self, request):
         """查询备份下载任务信息
 

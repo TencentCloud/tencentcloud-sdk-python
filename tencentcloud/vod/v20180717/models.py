@@ -9034,6 +9034,71 @@ class DescribeCdnLogsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeClientUploadAccelerationUsageDataRequest(AbstractModel):
+    """DescribeClientUploadAccelerationUsageData请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StartTime: 起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#52)。
+        :type StartTime: str
+        :param EndTime: 结束日期，需大于等于起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#52)。
+        :type EndTime: str
+        :param SubAppId: <b>点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :type SubAppId: int
+        :param Type: 客户端上传加速类型，取值有：
+<li> AccelerationWithHTTP：HTTP 传输方式的上传加速。</li>
+<li> AccelerationWithQUIC：QUIC 传输方式的上传加速。</li>
+默认查询所有加速类型的用量 。
+        :type Type: str
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.SubAppId = None
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.SubAppId = params.get("SubAppId")
+        self.Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeClientUploadAccelerationUsageDataResponse(AbstractModel):
+    """DescribeClientUploadAccelerationUsageData返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClientUploadAccelerationUsageDataSet: 客户端上传加速统计数据。
+        :type ClientUploadAccelerationUsageDataSet: list of StatDataItem
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ClientUploadAccelerationUsageDataSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ClientUploadAccelerationUsageDataSet") is not None:
+            self.ClientUploadAccelerationUsageDataSet = []
+            for item in params.get("ClientUploadAccelerationUsageDataSet"):
+                obj = StatDataItem()
+                obj._deserialize(item)
+                self.ClientUploadAccelerationUsageDataSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeContentReviewTemplatesRequest(AbstractModel):
     """DescribeContentReviewTemplates请求参数结构体
 
@@ -11950,6 +12015,7 @@ class EventContent(AbstractModel):
 <li>WechatPublishComplete：微信发布完成；</li>
 <li>ComposeMediaComplete：制作媒体文件完成；</li>
 <li>WechatMiniProgramPublishComplete：微信小程序发布完成。</li>
+<li>FastClipMediaComplete：快速剪辑完成。</li>
 <b>兼容 2017 版的事件类型：</b>
 <li>TranscodeComplete：视频转码完成；</li>
 <li>ConcatComplete：视频拼接完成；</li>
@@ -22592,28 +22658,28 @@ class TranscodeTaskInput(AbstractModel):
         :type WatermarkSet: list of WatermarkInput
         :param TraceWatermark: 溯源水印。
         :type TraceWatermark: :class:`tencentcloud.vod.v20180717.models.TraceWatermarkInput`
-        :param HeadTailSet: 片头片尾列表，支持多片头片尾，最大可支持 10 个。
-        :type HeadTailSet: list of HeadTailTaskInput
         :param MosaicSet: 马赛克列表，最大可支持 10 张。
         :type MosaicSet: list of MosaicInput
-        :param EndTimeOffset: 转码后视频的终止时间偏移，单位：秒。
-<li>不填或填0，表示转码后的视频持续到原始视频的末尾终止；</li>
-<li>当数值大于0时（假设为 n），表示转码后的视频持续到原始视频第 n 秒时终止；</li>
-<li>当数值小于0时（假设为 -n），表示转码后的视频持续到原始视频结束 n 秒前终止。</li>
-        :type EndTimeOffset: float
+        :param HeadTailSet: 片头片尾列表，支持多片头片尾，最大可支持 10 个。
+        :type HeadTailSet: list of HeadTailTaskInput
         :param StartTimeOffset: 转码后的视频的起始时间偏移，单位：秒。
 <li>不填或填0，表示转码后的视频从原始视频的起始位置开始；</li>
 <li>当数值大于0时（假设为 n），表示转码后的视频从原始视频的第 n 秒位置开始；</li>
 <li>当数值小于0时（假设为 -n），表示转码后的视频从原始视频结束 n 秒前的位置开始。</li>
         :type StartTimeOffset: float
+        :param EndTimeOffset: 转码后视频的终止时间偏移，单位：秒。
+<li>不填或填0，表示转码后的视频持续到原始视频的末尾终止；</li>
+<li>当数值大于0时（假设为 n），表示转码后的视频持续到原始视频第 n 秒时终止；</li>
+<li>当数值小于0时（假设为 -n），表示转码后的视频持续到原始视频结束 n 秒前终止。</li>
+        :type EndTimeOffset: float
         """
         self.Definition = None
         self.WatermarkSet = None
         self.TraceWatermark = None
-        self.HeadTailSet = None
         self.MosaicSet = None
-        self.EndTimeOffset = None
+        self.HeadTailSet = None
         self.StartTimeOffset = None
+        self.EndTimeOffset = None
 
 
     def _deserialize(self, params):
@@ -22627,20 +22693,20 @@ class TranscodeTaskInput(AbstractModel):
         if params.get("TraceWatermark") is not None:
             self.TraceWatermark = TraceWatermarkInput()
             self.TraceWatermark._deserialize(params.get("TraceWatermark"))
-        if params.get("HeadTailSet") is not None:
-            self.HeadTailSet = []
-            for item in params.get("HeadTailSet"):
-                obj = HeadTailTaskInput()
-                obj._deserialize(item)
-                self.HeadTailSet.append(obj)
         if params.get("MosaicSet") is not None:
             self.MosaicSet = []
             for item in params.get("MosaicSet"):
                 obj = MosaicInput()
                 obj._deserialize(item)
                 self.MosaicSet.append(obj)
-        self.EndTimeOffset = params.get("EndTimeOffset")
+        if params.get("HeadTailSet") is not None:
+            self.HeadTailSet = []
+            for item in params.get("HeadTailSet"):
+                obj = HeadTailTaskInput()
+                obj._deserialize(item)
+                self.HeadTailSet.append(obj)
         self.StartTimeOffset = params.get("StartTimeOffset")
+        self.EndTimeOffset = params.get("EndTimeOffset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

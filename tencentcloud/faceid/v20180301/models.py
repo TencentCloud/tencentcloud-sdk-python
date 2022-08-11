@@ -2474,7 +2474,7 @@ class IntentionQuestionResult(AbstractModel):
     def __init__(self):
         r"""
         :param FinalResultCode: 意愿核身最终结果：
-0：通过，-1：未通过
+0：认证通过，-1：认证未通过，-2：浏览器内核不兼容，无法进行意愿校验
 注意：此字段可能返回 null，表示取不到有效值。
         :type FinalResultCode: str
         :param Video: 视频base64（其中包含全程问题和回答音频，mp4格式）

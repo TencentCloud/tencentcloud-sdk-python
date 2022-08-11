@@ -490,37 +490,6 @@ class CccClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeSeatUserList(self, request):
-        """废弃接口下架
-
-        获取坐席用户列表（废弃）
-
-        :param request: Request instance for DescribeSeatUserList.
-        :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeSeatUserListRequest`
-        :rtype: :class:`tencentcloud.ccc.v20200210.models.DescribeSeatUserListResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeSeatUserList", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeSeatUserListResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def DescribeSkillGroupInfoList(self, request):
         """获取技能组信息列表
 
