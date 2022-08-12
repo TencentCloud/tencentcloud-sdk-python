@@ -44,10 +44,10 @@ FAILEDOPERATION_ORGANIZATIONNAMENEEDCHANGE = 'FailedOperation.OrganizationNameNe
 # 创建签署流程预览链接失败，请稍后重试。
 FAILEDOPERATION_PREVIEWURLFAIL = 'FailedOperation.PreViewUrlFail'
 
-# 发起签署存在填写控件。
+# 签署二维码模板发起方签署人存在签署控件，请检查模板后重试。
 FAILEDOPERATION_QRCODECREATORSIGNCOMPONENTS = 'FailedOperation.QrCodeCreatorSignComponents'
 
-# 模板签署人不存在。
+# 签署二维码模板签署人不存在，请检查模板后重试。
 FAILEDOPERATION_QRCODESIGNUSERS = 'FailedOperation.QrCodeSignUsers'
 
 # 一码多人二维码模板有误。
@@ -131,7 +131,7 @@ INVALIDPARAMETER_DATAEXISTS = 'InvalidParameter.DataExists'
 # 数据不存在。
 INVALIDPARAMETER_DATANOTFOUND = 'InvalidParameter.DataNotFound'
 
-# 参数为空。
+# 参数为空，请检查参数修改后重试。
 INVALIDPARAMETER_EMPTYPARAMS = 'InvalidParameter.EmptyParams'
 
 # 不合法的EndPoint，请检查修改后重试。
@@ -311,7 +311,7 @@ OPERATIONDENIED_NOPERMISSIONUSERESOURCE = 'OperationDenied.NoPermissionUseResour
 # 无权限使用印章做静默签，请检查印章是否有效，是否有使用权限，并在修改后重试。
 OPERATIONDENIED_NOPERMISSIONUSESERVERSIGNSEAL = 'OperationDenied.NoPermissionUseServerSignSeal'
 
-# 流程配额不足。
+# 企业额度不足，请检查企业额度后处理。
 OPERATIONDENIED_NOQUOTA = 'OperationDenied.NoQuota'
 
 # 不支持的控件类型，请联系客服了解支持的控件类型，并在修改后重试。
@@ -401,7 +401,7 @@ RESOURCENOTFOUND_RESOURCE = 'ResourceNotFound.Resource'
 # 超管信息不存在，请检查企业认证信息。
 RESOURCENOTFOUND_SUPERADMIN = 'ResourceNotFound.SuperAdmin'
 
-# 模板不存在。
+# 模板不存在，请检查模板参数，模板配置，并稍后重试。
 RESOURCENOTFOUND_TEMPLATE = 'ResourceNotFound.Template'
 
 # 用户或者员工信息不存在，请检查参数后重试。

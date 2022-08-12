@@ -890,6 +890,70 @@ class CreateFlowResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateFlowSignReviewRequest(AbstractModel):
+    """CreateFlowSignReview请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Operator: 调用方用户信息，userId 必填
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param FlowId: 签署流程编号
+        :type FlowId: str
+        :param ReviewType: 企业内部审核结果
+PASS: 通过 
+REJECT: 拒绝
+        :type ReviewType: str
+        :param ReviewMessage: 审核原因 
+当ReviewType 是REJECT 时此字段必填,字符串长度不超过200
+        :type ReviewMessage: str
+        :param Agent: 应用相关信息
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        """
+        self.Operator = None
+        self.FlowId = None
+        self.ReviewType = None
+        self.ReviewMessage = None
+        self.Agent = None
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self.Operator = UserInfo()
+            self.Operator._deserialize(params.get("Operator"))
+        self.FlowId = params.get("FlowId")
+        self.ReviewType = params.get("ReviewType")
+        self.ReviewMessage = params.get("ReviewMessage")
+        if params.get("Agent") is not None:
+            self.Agent = Agent()
+            self.Agent._deserialize(params.get("Agent"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateFlowSignReviewResponse(AbstractModel):
+    """CreateFlowSignReview返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CreateMultiFlowSignQRCodeRequest(AbstractModel):
     """CreateMultiFlowSignQRCode请求参数结构体
 

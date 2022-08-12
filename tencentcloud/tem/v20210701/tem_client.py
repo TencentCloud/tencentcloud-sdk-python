@@ -899,6 +899,64 @@ class TemClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DisableApplicationAutoscaler(self, request):
+        """关闭应用弹性策略组合
+
+        :param request: Request instance for DisableApplicationAutoscaler.
+        :type request: :class:`tencentcloud.tem.v20210701.models.DisableApplicationAutoscalerRequest`
+        :rtype: :class:`tencentcloud.tem.v20210701.models.DisableApplicationAutoscalerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DisableApplicationAutoscaler", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DisableApplicationAutoscalerResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def EnableApplicationAutoscaler(self, request):
+        """启用应用弹性策略组合
+
+        :param request: Request instance for EnableApplicationAutoscaler.
+        :type request: :class:`tencentcloud.tem.v20210701.models.EnableApplicationAutoscalerRequest`
+        :rtype: :class:`tencentcloud.tem.v20210701.models.EnableApplicationAutoscalerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("EnableApplicationAutoscaler", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.EnableApplicationAutoscalerResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def GenerateApplicationPackageDownloadUrl(self, request):
         """生成应用程序包预签名下载链接
 

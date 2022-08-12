@@ -449,6 +449,64 @@ class ChannelCreateFlowByFilesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ChannelCreateFlowSignReviewRequest(AbstractModel):
+    """ChannelCreateFlowSignReview请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Agent: 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+        :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        :param FlowId: 签署流程编号
+        :type FlowId: str
+        :param ReviewType: 企业内部审核结果
+PASS: 通过
+REJECT: 拒绝
+        :type ReviewType: str
+        :param ReviewMessage: 审核原因 
+当ReviewType 是REJECT 时此字段必填,字符串长度不超过200
+        :type ReviewMessage: str
+        """
+        self.Agent = None
+        self.FlowId = None
+        self.ReviewType = None
+        self.ReviewMessage = None
+
+
+    def _deserialize(self, params):
+        if params.get("Agent") is not None:
+            self.Agent = Agent()
+            self.Agent._deserialize(params.get("Agent"))
+        self.FlowId = params.get("FlowId")
+        self.ReviewType = params.get("ReviewType")
+        self.ReviewMessage = params.get("ReviewMessage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChannelCreateFlowSignReviewResponse(AbstractModel):
+    """ChannelCreateFlowSignReview返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ChannelCreateMultiFlowSignQRCodeRequest(AbstractModel):
     """ChannelCreateMultiFlowSignQRCode请求参数结构体
 

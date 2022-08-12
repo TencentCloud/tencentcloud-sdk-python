@@ -1058,11 +1058,14 @@ class DeployApplicationRequest(AbstractModel):
 - ALPINE
 - TENCENTOS
         :type OsFlavour: str
-        :param EnablePrometheusConf: 是否开启prometheus 业务指标监控
+        :param EnablePrometheusConf: metrics业务指标监控配置
         :type EnablePrometheusConf: :class:`tencentcloud.tem.v20210701.models.EnablePrometheusConf`
-        :param EnableTracing: 1：开始apm采集（skywalking）；
+        :param EnableTracing: 1：开始自动apm采集（skywalking）；
 0：关闭apm采集；
         :type EnableTracing: int
+        :param EnableMetrics: 1：开始自动metrics采集（open-telemetry）；
+0：关闭metrics采集；
+        :type EnableMetrics: int
         """
         self.ApplicationId = None
         self.InitPodNum = None
@@ -1105,6 +1108,7 @@ class DeployApplicationRequest(AbstractModel):
         self.OsFlavour = None
         self.EnablePrometheusConf = None
         self.EnableTracing = None
+        self.EnableMetrics = None
 
 
     def _deserialize(self, params):
@@ -1195,6 +1199,7 @@ class DeployApplicationRequest(AbstractModel):
             self.EnablePrometheusConf = EnablePrometheusConf()
             self.EnablePrometheusConf._deserialize(params.get("EnablePrometheusConf"))
         self.EnableTracing = params.get("EnableTracing")
+        self.EnableMetrics = params.get("EnableMetrics")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2577,6 +2582,64 @@ class DestroyLogConfigResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DisableApplicationAutoscalerRequest(AbstractModel):
+    """DisableApplicationAutoscaler请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ApplicationId: 服务id
+        :type ApplicationId: str
+        :param EnvironmentId: 环境ID
+        :type EnvironmentId: str
+        :param SourceChannel: 来源渠道
+        :type SourceChannel: int
+        :param AutoscalerId: 弹性伸缩策略ID
+        :type AutoscalerId: str
+        """
+        self.ApplicationId = None
+        self.EnvironmentId = None
+        self.SourceChannel = None
+        self.AutoscalerId = None
+
+
+    def _deserialize(self, params):
+        self.ApplicationId = params.get("ApplicationId")
+        self.EnvironmentId = params.get("EnvironmentId")
+        self.SourceChannel = params.get("SourceChannel")
+        self.AutoscalerId = params.get("AutoscalerId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DisableApplicationAutoscalerResponse(AbstractModel):
+    """DisableApplicationAutoscaler返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 是否成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
 class EksService(AbstractModel):
     """eks service info
 
@@ -2685,6 +2748,64 @@ class EksService(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class EnableApplicationAutoscalerRequest(AbstractModel):
+    """EnableApplicationAutoscaler请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ApplicationId: 服务id
+        :type ApplicationId: str
+        :param EnvironmentId: 环境ID
+        :type EnvironmentId: str
+        :param SourceChannel: 来源渠道
+        :type SourceChannel: int
+        :param AutoscalerId: 弹性伸缩策略ID
+        :type AutoscalerId: str
+        """
+        self.ApplicationId = None
+        self.EnvironmentId = None
+        self.SourceChannel = None
+        self.AutoscalerId = None
+
+
+    def _deserialize(self, params):
+        self.ApplicationId = params.get("ApplicationId")
+        self.EnvironmentId = params.get("EnvironmentId")
+        self.SourceChannel = params.get("SourceChannel")
+        self.AutoscalerId = params.get("AutoscalerId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EnableApplicationAutoscalerResponse(AbstractModel):
+    """EnableApplicationAutoscaler返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 是否成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
 
 
 class EnablePrometheusConf(AbstractModel):
