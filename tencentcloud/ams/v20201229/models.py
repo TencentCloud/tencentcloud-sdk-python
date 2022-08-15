@@ -210,6 +210,46 @@ class AudioResultDetailMoanResult(AbstractModel):
         
 
 
+class AudioResultDetailSpeakerResult(AbstractModel):
+    """音频说话人声纹识别返回结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Label: 该字段用于返回检测结果需要检测的内容类型。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Label: str
+        :param Score: 该字段用于返回呻吟检测的置信度，取值范围：0（置信度最低）-100（置信度最高），越高代表音频越有可能属于说话人声纹。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Score: int
+        :param StartTime: 该字段用于返回对应说话人的片段在音频文件内的开始时间，单位为毫秒。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTime: float
+        :param EndTime: 该字段用于返回对应说话人的片段在音频文件内的结束时间，单位为毫秒。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: float
+        """
+        self.Label = None
+        self.Score = None
+        self.StartTime = None
+        self.EndTime = None
+
+
+    def _deserialize(self, params):
+        self.Label = params.get("Label")
+        self.Score = params.get("Score")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AudioResultDetailTextResult(AbstractModel):
     """音频ASR文本审核结果
 
@@ -387,16 +427,16 @@ class CreateAudioModerationSyncTaskRequest(AbstractModel):
         :type BizType: str
         :param DataId: 数据标识，可以由英文字母、数字、下划线、-、@#组成，不超过64个字符
         :type DataId: str
-        :param FileFormat: 音频文件资源格式，当前为mp3，wav，请按照实际文件格式填入
+        :param FileFormat: 音频文件资源格式，当前支持格式：wav、mp3、m4a，请按照实际文件格式填入。
         :type FileFormat: str
         :param Name: 文件名称，可以由英文字母、数字、下划线、-、@#组成，不超过64个字符
         :type Name: str
         :param FileContent: 数据Base64编码，短音频同步接口仅传入可音频内容；
-支持范围：文件大小不能超过5M，时长不可超过60s，码率范围为8-16Kbps；
-支持格式：wav、mp3
+支持范围：文件大小不能超过5M，时长不可超过60s；
+支持格式：wav (PCM编码)、mp3、m4a (采样率：16kHz~48kHz，位深：16bit 小端，声道数：单声道/双声道，建议格式：16kHz/16bit/单声道)。
         :type FileContent: str
         :param FileUrl: 音频资源访问链接，与FileContent参数必须二选一输入；
-支持范围：同FileContent；
+支持范围及格式：同FileContent；
         :type FileUrl: str
         """
         self.BizType = None
@@ -456,6 +496,19 @@ Block 建议屏蔽；
         :param MoanResults: 音频中低俗内容审核结果；
 注意：此字段可能返回 null，表示取不到有效值。
         :type MoanResults: list of MoanResult
+        :param SubLabel: 该字段用于返回当前标签（Lable）下的二级标签。
+注意：此字段可能返回null，表示取不到有效值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubLabel: str
+        :param LanguageResults: 该字段用于返回音频小语种检测的详细审核结果。具体结果内容请参见AudioResultDetailLanguageResult数据结构的细节描述。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LanguageResults: list of AudioResultDetailLanguageResult
+        :param SpeakerResults: 音频中说话人识别返回结果；
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SpeakerResults: list of AudioResultDetailSpeakerResult
+        :param RecognitionResults: 识别类标签结果信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecognitionResults: list of RecognitionResult
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -467,6 +520,10 @@ Block 建议屏蔽；
         self.AsrText = None
         self.TextResults = None
         self.MoanResults = None
+        self.SubLabel = None
+        self.LanguageResults = None
+        self.SpeakerResults = None
+        self.RecognitionResults = None
         self.RequestId = None
 
 
@@ -489,6 +546,25 @@ Block 建议屏蔽；
                 obj = MoanResult()
                 obj._deserialize(item)
                 self.MoanResults.append(obj)
+        self.SubLabel = params.get("SubLabel")
+        if params.get("LanguageResults") is not None:
+            self.LanguageResults = []
+            for item in params.get("LanguageResults"):
+                obj = AudioResultDetailLanguageResult()
+                obj._deserialize(item)
+                self.LanguageResults.append(obj)
+        if params.get("SpeakerResults") is not None:
+            self.SpeakerResults = []
+            for item in params.get("SpeakerResults"):
+                obj = AudioResultDetailSpeakerResult()
+                obj._deserialize(item)
+                self.SpeakerResults.append(obj)
+        if params.get("RecognitionResults") is not None:
+            self.RecognitionResults = []
+            for item in params.get("RecognitionResults"):
+                obj = RecognitionResult()
+                obj._deserialize(item)
+                self.RecognitionResults.append(obj)
         self.RequestId = params.get("RequestId")
 
 

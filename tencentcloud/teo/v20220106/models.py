@@ -205,60 +205,55 @@ class ApplicationProxy(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ProxyId: 代理ID
-注意：此字段可能返回 null，表示取不到有效值。
+        :param ProxyId: 代理ID。
         :type ProxyId: str
-        :param ProxyName: 代理名称
-当ProxyType=hostname时，表示域名或者子域名
-当ProxyType=instance时，表示实例名称
+        :param ProxyName: 当ProxyType=hostname时，表示域名或子域名；
+当ProxyType=instance时，表示代理名称。
         :type ProxyName: str
-        :param PlatType: 调度模式：
-ip表示Anycast IP
-domain表示CNAME
+        :param PlatType: 调度模式，取值有：
+<li>ip：表示Anycast IP调度；</li>
+<li>domain：表示CNAME调度。</li>
         :type PlatType: str
-        :param SecurityType: 0关闭安全，1开启安全
+        :param SecurityType: 是否开启安全，取值有：
+<li>0：关闭安全；</li>
+<li>1：开启安全。</li>
         :type SecurityType: int
-        :param AccelerateType: 0关闭加速，1开启加速
+        :param AccelerateType: 是否开启加速，取值有：
+<li>0：关闭加速；</li>
+<li>1：开启加速。</li>
         :type AccelerateType: int
-        :param ForwardClientIp: 字段已经移至Rule.ForwardClientIp
+        :param ForwardClientIp: 字段已经废弃。
         :type ForwardClientIp: str
-        :param SessionPersist: 字段已经移至Rule.SessionPersist
+        :param SessionPersist: 字段已经废弃。
         :type SessionPersist: bool
-        :param Rule: 规则列表
+        :param Rule: 规则列表。
         :type Rule: list of ApplicationProxyRule
-        :param Status: 状态：
-online：启用
-offline：停用
-progress：部署中
-stopping：停用中
-fail：部署失败/停用失败
-注意：此字段可能返回 null，表示取不到有效值。
+        :param Status: 状态，取值有：
+<li>online：启用；</li>
+<li>offline：停用；</li>
+<li>progress：部署中；</li>
+<li>stopping：停用中；</li>
+<li>fail：部署失败/停用失败。</li>
         :type Status: str
-        :param ScheduleValue: 调度信息
-注意：此字段可能返回 null，表示取不到有效值。
+        :param ScheduleValue: 调度信息。
         :type ScheduleValue: list of str
-        :param UpdateTime: 更新时间
-注意：此字段可能返回 null，表示取不到有效值。
+        :param UpdateTime: 更新时间。
         :type UpdateTime: str
-        :param ZoneId: 站点ID
-注意：此字段可能返回 null，表示取不到有效值。
+        :param ZoneId: 站点ID。
         :type ZoneId: str
-        :param ZoneName: 站点名称
-注意：此字段可能返回 null，表示取不到有效值。
+        :param ZoneName: 站点名称。
         :type ZoneName: str
-        :param SessionPersistTime: 会话保持时间
-注意：此字段可能返回 null，表示取不到有效值。
+        :param SessionPersistTime: 会话保持时间。
         :type SessionPersistTime: int
-        :param ProxyType: 服务类型
-hostname：子域名模式
-instance：实例模式
-注意：此字段可能返回 null，表示取不到有效值。
+        :param ProxyType: 四层代理模式，取值有：
+<li>hostname：表示子域名模式；</li>
+<li>instance：表示实例模式。</li>
         :type ProxyType: str
         :param HostId: 当ProxyType=hostname时：
-ProxyName为域名，如：test.123.com
-HostId表示该域名，即test.123.com对应的代理加速唯一标识
-注意：此字段可能返回 null，表示取不到有效值。
+表示代理加速唯一标识。
         :type HostId: str
+        :param Ipv6: Ipv6访问配置。
+        :type Ipv6: :class:`tencentcloud.teo.v20220106.models.Ipv6Access`
         """
         self.ProxyId = None
         self.ProxyName = None
@@ -276,6 +271,7 @@ HostId表示该域名，即test.123.com对应的代理加速唯一标识
         self.SessionPersistTime = None
         self.ProxyType = None
         self.HostId = None
+        self.Ipv6 = None
 
 
     def _deserialize(self, params):
@@ -300,6 +296,9 @@ HostId表示该域名，即test.123.com对应的代理加速唯一标识
         self.SessionPersistTime = params.get("SessionPersistTime")
         self.ProxyType = params.get("ProxyType")
         self.HostId = params.get("HostId")
+        if params.get("Ipv6") is not None:
+            self.Ipv6 = Ipv6Access()
+            self.Ipv6._deserialize(params.get("Ipv6"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -316,44 +315,45 @@ class ApplicationProxyRule(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Proto: 协议，取值为TCP或者UDP
+        :param Proto: 协议，取值有：
+<li>TCP：TCP协议；</li>
+<li>UDP：UDP协议。</li>
         :type Proto: str
         :param Port: 端口，支持格式：
-80：80端口
-81-90：81至90端口
+单个端口，如：80。
+端口段，如：81-82。表示81，82两个端口。
+注意：一条规则最多可填写20个端口。
         :type Port: list of str
-        :param OriginType: 源站类型，取值：
-custom：手动添加
-origins：源站组
+        :param OriginType: 源站类型，取值有：
+<li>custom：手动添加；</li>
+<li>origins：源站组。</li>
         :type OriginType: str
         :param OriginValue: 源站信息：
 当OriginType=custom时，表示一个或多个源站，如：
 OriginValue=["8.8.8.8:80","9.9.9.9:80"]
-OriginValue=["test.com:80"]
-
-当OriginType=origins时，包含一个元素，表示源站组ID，如：
-OriginValue=["origin-xxx"]
+OriginValue=["test.com:80"]；
+当OriginType=origins时，要求有且仅有一个元素，表示源站组ID，如：
+OriginValue=["origin-537f5b41-162a-11ed-abaa-525400c5da15"]。
         :type OriginValue: list of str
-        :param RuleId: 规则ID
+        :param RuleId: 规则ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RuleId: str
-        :param Status: 状态：
-online：启用
-offline：停用
-progress：部署中
-stopping：停用中
-fail：部署失败/停用失败
+        :param Status: 状态，取值有：
+<li>online：启用；</li>
+<li>offline：停用；</li>
+<li>progress：部署中；</li>
+<li>stopping：停用中；</li>
+<li>fail：部署失败/停用失败。</li>
         :type Status: str
-        :param ForwardClientIp: 传递客户端IP，当Proto=TCP时，取值：
-TOA：TOA
-PPV1: Proxy Protocol传递，协议版本V1
-PPV2: Proxy Protocol传递，协议版本V2
-OFF：不传递
-当Proto=UDP时，取值：
-PPV2: Proxy Protocol传递，协议版本V2
-OFF：不传递
+        :param ForwardClientIp: 传递客户端IP，取值有：
+<li>TOA：TOA（仅Proto=TCP时可选）；</li>
+<li>PPV1：Proxy Protocol传递，协议版本V1（仅Proto=TCP时可选）；</li>
+<li>PPV2：Proxy Protocol传递，协议版本V2；</li>
+<li>OFF：不传递。</li>
         :type ForwardClientIp: str
-        :param SessionPersist: 是否开启会话保持
+        :param SessionPersist: 是否开启会话保持，取值有：
+<li>true：开启；</li>
+<li>false：关闭。</li>
         :type SessionPersist: bool
         """
         self.Proto = None
@@ -999,13 +999,13 @@ class CacheConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Cache: 缓存配置
+        :param Cache: 缓存配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Cache: :class:`tencentcloud.teo.v20220106.models.CacheConfigCache`
-        :param NoCache: 不缓存配置
+        :param NoCache: 不缓存配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type NoCache: :class:`tencentcloud.teo.v20220106.models.CacheConfigNoCache`
-        :param FollowOrigin: 遵循源站配置
+        :param FollowOrigin: 遵循源站配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type FollowOrigin: :class:`tencentcloud.teo.v20220106.models.CacheConfigFollowOrigin`
         """
@@ -1040,18 +1040,18 @@ class CacheConfigCache(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Switch: 缓存配置开关
-on：开启
-off：关闭
+        :param Switch: 缓存配置开关，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Switch: str
-        :param CacheTime: 缓存过期时间设置
-单位为秒，最大可设置为 365 天
+        :param CacheTime: 缓存过期时间设置。
+单位为秒，最大可设置为 365 天。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CacheTime: int
-        :param IgnoreCacheControl: 是否开启强制缓存
-开启：on
-关闭：off
+        :param IgnoreCacheControl: 是否开启强制缓存，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IgnoreCacheControl: str
         """
@@ -1080,9 +1080,9 @@ class CacheConfigFollowOrigin(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Switch: 遵循源站配置开关
-on：开启
-off：关闭
+        :param Switch: 遵循源站配置开关，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Switch: str
         """
@@ -1107,9 +1107,9 @@ class CacheConfigNoCache(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Switch: 不缓存配置开关
-on：开启
-off：关闭
+        :param Switch: 不缓存配置开关，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Switch: str
         """
@@ -1134,15 +1134,17 @@ class CacheKey(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FullUrlCache: 是否开启全路径缓存
-on：开启全路径缓存（即关闭参数忽略）
-off：关闭全路径缓存（即开启参数忽略）
+        :param FullUrlCache: 是否开启全路径缓存，取值有：
+<li>on：开启全路径缓存（即关闭参数忽略）；</li>
+<li>off：关闭全路径缓存（即开启参数忽略）。</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FullUrlCache: str
-        :param IgnoreCase: 是否忽略大小写缓存
+        :param IgnoreCase: 是否忽略大小写缓存，取值有：
+<li>on：忽略；</li>
+<li>off：不忽略。</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IgnoreCase: str
-        :param QueryString: CacheKey中包含请求参数
+        :param QueryString: CacheKey中包含请求参数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type QueryString: :class:`tencentcloud.teo.v20220106.models.QueryString`
         """
@@ -1173,9 +1175,11 @@ class CachePrefresh(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Switch: 缓存预刷新配置开关
+        :param Switch: 缓存预刷新配置开关，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
         :type Switch: str
-        :param Percent: 缓存预刷新百分比：1-99
+        :param Percent: 缓存预刷新百分比，取值范围：1-99。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Percent: int
         """
@@ -1309,16 +1313,19 @@ class CheckCertificateResponse(AbstractModel):
 
 
 class ClientIp(AbstractModel):
-    """客户端IP头部
+    """存储客户端请求IP的头部信息配置
 
     """
 
     def __init__(self):
         r"""
-        :param Switch: 客户端IP头部配置开关
+        :param Switch: 配置开关，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Switch: str
-        :param HeaderName: 回源客户端IP请求头名称
+        :param HeaderName: 回源时，存放客户端IP的请求头名称。
+为空则使用默认值：X-Forwarded-IP。
 注意：此字段可能返回 null，表示取不到有效值。
         :type HeaderName: str
         """
@@ -1381,11 +1388,13 @@ class Compression(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Switch: 智能压缩配置开关
-on：开启
-off：关闭
+        :param Switch: 智能压缩配置开关，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
         :type Switch: str
-        :param Algorithms: 支持的压缩算法列表
+        :param Algorithms: 支持的压缩算法列表，取值有：
+<li>brotli：brotli算法；</li>
+<li>gzip：gzip算法。</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Algorithms: list of str
         """
@@ -1412,65 +1421,76 @@ class CreateApplicationProxyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ZoneId: 站点ID
+        :param ZoneId: 站点ID。
         :type ZoneId: str
-        :param ZoneName: 站点名称
+        :param ZoneName: 站点名称。
         :type ZoneName: str
-        :param ProxyName: 代理名称
-当ProxyType=hostname时，表示域名或者子域名
-当ProxyType=instance时，表示实例名称
-        :type ProxyName: str
-        :param PlatType: 调度模式：
-ip表示Anycast IP
-domain表示CNAME
-        :type PlatType: str
-        :param SecurityType: 0关闭安全，1开启安全
-        :type SecurityType: int
-        :param AccelerateType: 0关闭加速，1开启加速
-        :type AccelerateType: int
-        :param ForwardClientIp: 字段已经移至Rule.ForwardClientIp
-        :type ForwardClientIp: str
-        :param SessionPersist: 字段已经移至Rule.SessionPersist
-        :type SessionPersist: bool
-        :param Rule: 规则详细信息
+        :param Rule: 规则详细信息。
         :type Rule: list of ApplicationProxyRule
-        :param SessionPersistTime: 会话保持时间，取值范围：30-3600，单位：秒
-        :type SessionPersistTime: int
-        :param ProxyType: 服务类型
-hostname：子域名模式
-instance：实例模式
+        :param ProxyName: 当ProxyType=hostname时，表示域名或子域名；
+当ProxyType=instance时，表示代理名称。
+        :type ProxyName: str
+        :param PlatType: 调度模式，取值有：
+<li>ip：表示Anycast IP调度；</li>
+<li>domain：表示CNAME调度。</li>
+        :type PlatType: str
+        :param SecurityType: 是否开启安全，取值有：
+<li>0：关闭安全；</li>
+<li>1：开启安全。</li>
+        :type SecurityType: int
+        :param AccelerateType: 是否开启加速，取值有：
+<li>0：关闭加速；</li>
+<li>1：开启加速。</li>
+        :type AccelerateType: int
+        :param SessionPersist: 字段已经废弃。
+        :type SessionPersist: bool
+        :param ForwardClientIp: 字段已经废弃。
+        :type ForwardClientIp: str
+        :param ProxyType: 四层代理模式，取值有：
+<li>hostname：表示子域名模式；</li>
+<li>instance：表示实例模式。</li>不填写使用默认值instance。
         :type ProxyType: str
+        :param SessionPersistTime: 会话保持时间，取值范围：30-3600，单位：秒。
+不填写使用默认值600。
+        :type SessionPersistTime: int
+        :param Ipv6: Ipv6访问配置。
+不填写表示关闭Ipv6访问。
+        :type Ipv6: :class:`tencentcloud.teo.v20220106.models.Ipv6Access`
         """
         self.ZoneId = None
         self.ZoneName = None
+        self.Rule = None
         self.ProxyName = None
         self.PlatType = None
         self.SecurityType = None
         self.AccelerateType = None
-        self.ForwardClientIp = None
         self.SessionPersist = None
-        self.Rule = None
-        self.SessionPersistTime = None
+        self.ForwardClientIp = None
         self.ProxyType = None
+        self.SessionPersistTime = None
+        self.Ipv6 = None
 
 
     def _deserialize(self, params):
         self.ZoneId = params.get("ZoneId")
         self.ZoneName = params.get("ZoneName")
-        self.ProxyName = params.get("ProxyName")
-        self.PlatType = params.get("PlatType")
-        self.SecurityType = params.get("SecurityType")
-        self.AccelerateType = params.get("AccelerateType")
-        self.ForwardClientIp = params.get("ForwardClientIp")
-        self.SessionPersist = params.get("SessionPersist")
         if params.get("Rule") is not None:
             self.Rule = []
             for item in params.get("Rule"):
                 obj = ApplicationProxyRule()
                 obj._deserialize(item)
                 self.Rule.append(obj)
-        self.SessionPersistTime = params.get("SessionPersistTime")
+        self.ProxyName = params.get("ProxyName")
+        self.PlatType = params.get("PlatType")
+        self.SecurityType = params.get("SecurityType")
+        self.AccelerateType = params.get("AccelerateType")
+        self.SessionPersist = params.get("SessionPersist")
+        self.ForwardClientIp = params.get("ForwardClientIp")
         self.ProxyType = params.get("ProxyType")
+        self.SessionPersistTime = params.get("SessionPersistTime")
+        if params.get("Ipv6") is not None:
+            self.Ipv6 = Ipv6Access()
+            self.Ipv6._deserialize(params.get("Ipv6"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1487,7 +1507,7 @@ class CreateApplicationProxyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ProxyId: 新增的四层代理应用ID
+        :param ProxyId: 新增的四层代理应用ID。
         :type ProxyId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3537,9 +3557,9 @@ class DescribeApplicationProxyDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ZoneId: 站点ID
+        :param ZoneId: 站点ID。
         :type ZoneId: str
-        :param ProxyId: 实例ID
+        :param ProxyId: 实例ID。
         :type ProxyId: str
         """
         self.ZoneId = None
@@ -3565,49 +3585,53 @@ class DescribeApplicationProxyDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ProxyId: 实例ID
+        :param ProxyId: 实例ID。
         :type ProxyId: str
-        :param ProxyName: 代理名称
-当ProxyType=hostname时，表示域名或者子域名
-当ProxyType=instance时，表示实例名称
+        :param ProxyName: 当ProxyType=hostname时，表示域名或子域名；
+当ProxyType=instance时，表示代理名称。
         :type ProxyName: str
-        :param PlatType: 调度模式：
-ip表示Anycast IP
-domain表示CNAME
+        :param PlatType: 调度模式，取值有：
+<li>ip：表示Anycast IP调度；</li>
+<li>domain：表示CNAME调度。</li>
         :type PlatType: str
-        :param SecurityType: 0关闭安全，1开启安全
+        :param SecurityType: 是否开启安全，取值有：
+<li>0：关闭安全；</li>
+<li>1：开启安全。</li>
         :type SecurityType: int
-        :param AccelerateType: 0关闭加速，1开启加速
+        :param AccelerateType: 是否开启加速，取值有：
+<li>0：关闭加速；</li>
+<li>1：开启加速。</li>
         :type AccelerateType: int
-        :param ForwardClientIp: 字段已经移至Rule.ForwardClientIp
+        :param ForwardClientIp: 字段已经废弃。
         :type ForwardClientIp: str
-        :param SessionPersist: 字段已经移至Rule.SessionPersist
+        :param SessionPersist: 字段已经废弃。
         :type SessionPersist: bool
-        :param Rule: 规则列表
+        :param Rule: 规则列表。
         :type Rule: list of ApplicationProxyRule
-        :param Status: 状态：
-online：启用
-offline：停用
-progress：部署中
+        :param Status: 状态，取值有：
+<li>online：启用；</li>
+<li>offline：停用；</li>
+<li>progress：部署中。</li>
         :type Status: str
-        :param ScheduleValue: 调度信息
+        :param ScheduleValue: 调度信息。
         :type ScheduleValue: list of str
-        :param UpdateTime: 更新时间
+        :param UpdateTime: 更新时间。
         :type UpdateTime: str
-        :param ZoneId: 站点ID
+        :param ZoneId: 站点ID。
         :type ZoneId: str
-        :param ZoneName: 站点名称
+        :param ZoneName: 站点名称。
         :type ZoneName: str
-        :param SessionPersistTime: 会话保持时间
+        :param SessionPersistTime: 会话保持时间。
         :type SessionPersistTime: int
-        :param ProxyType: 服务类型
-hostname：子域名模式
-instance：实例模式
+        :param ProxyType: 四层代理模式，取值有：
+<li>hostname：表示子域名模式；</li>
+<li>instance：表示实例模式。</li>
         :type ProxyType: str
         :param HostId: 当ProxyType=hostname时：
-ProxyName为域名，如：test.123.com
-HostId表示该域名，即test.123.com对应的代理加速唯一标识
+表示代理加速唯一标识。
         :type HostId: str
+        :param Ipv6: IPv6访问配置。
+        :type Ipv6: :class:`tencentcloud.teo.v20220106.models.Ipv6Access`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3627,6 +3651,7 @@ HostId表示该域名，即test.123.com对应的代理加速唯一标识
         self.SessionPersistTime = None
         self.ProxyType = None
         self.HostId = None
+        self.Ipv6 = None
         self.RequestId = None
 
 
@@ -3652,6 +3677,9 @@ HostId表示该域名，即test.123.com对应的代理加速唯一标识
         self.SessionPersistTime = params.get("SessionPersistTime")
         self.ProxyType = params.get("ProxyType")
         self.HostId = params.get("HostId")
+        if params.get("Ipv6") is not None:
+            self.Ipv6 = Ipv6Access()
+            self.Ipv6._deserialize(params.get("Ipv6"))
         self.RequestId = params.get("RequestId")
 
 
@@ -3662,22 +3690,27 @@ class DescribeApplicationProxyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ZoneId: 站点ID
+        :param ZoneId: 站点ID。
         :type ZoneId: str
-        :param Offset: 分页参数Offset
+        :param Offset: 分页查询偏移量，默认为0。
         :type Offset: int
-        :param Limit: 分页参数Limit
+        :param Limit: 分页查询限制数目，默认为10，最大可设置为1000。
         :type Limit: int
+        :param ProxyId: 代理ID。
+当ProxyId为空时，表示查询站点下所有应用代理的列表。
+        :type ProxyId: str
         """
         self.ZoneId = None
         self.Offset = None
         self.Limit = None
+        self.ProxyId = None
 
 
     def _deserialize(self, params):
         self.ZoneId = params.get("ZoneId")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.ProxyId = params.get("ProxyId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3694,20 +3727,15 @@ class DescribeApplicationProxyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Data: 数据列表
-注意：此字段可能返回 null，表示取不到有效值。
+        :param Data: 应用代理列表。
         :type Data: list of ApplicationProxy
-        :param TotalCount: 记录总数
-注意：此字段可能返回 null，表示取不到有效值。
+        :param TotalCount: 记录总数。
         :type TotalCount: int
-        :param Quota: 字段已废弃
-注意：此字段可能返回 null，表示取不到有效值。
+        :param Quota: 字段已废弃。
         :type Quota: int
-        :param IpCount: 表示套餐内PlatType为ip的Anycast IP实例数量
-注意：此字段可能返回 null，表示取不到有效值。
+        :param IpCount: 当ProxyId为空时，表示套餐内PlatType为ip的Anycast IP的实例数量。
         :type IpCount: int
-        :param DomainCount: 表示套餐内PlatType为domain的CNAME实例数量
-注意：此字段可能返回 null，表示取不到有效值。
+        :param DomainCount: 当ProxyId为空时，表示套餐内PlatType为domain的CNAME的实例数量。
         :type DomainCount: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7335,7 +7363,7 @@ class DescribeZoneSettingRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ZoneId: 站点ID
+        :param ZoneId: 站点ID。
         :type ZoneId: str
         """
         self.ZoneId = None
@@ -7359,62 +7387,65 @@ class DescribeZoneSettingResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Cache: 缓存过期时间配置
+        :param ZoneId: 站点ID。
+        :type ZoneId: str
+        :param Zone: 站点名称。
+        :type Zone: str
+        :param Cache: 缓存过期时间配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Cache: :class:`tencentcloud.teo.v20220106.models.CacheConfig`
-        :param CacheKey: 节点缓存键配置
+        :param CacheKey: 节点缓存键配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CacheKey: :class:`tencentcloud.teo.v20220106.models.CacheKey`
-        :param MaxAge: 浏览器缓存配置
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MaxAge: :class:`tencentcloud.teo.v20220106.models.MaxAge`
-        :param OfflineCache: 离线缓存
-注意：此字段可能返回 null，表示取不到有效值。
-        :type OfflineCache: :class:`tencentcloud.teo.v20220106.models.OfflineCache`
-        :param Quic: Quic访问
+        :param Quic: Quic访问配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Quic: :class:`tencentcloud.teo.v20220106.models.Quic`
-        :param PostMaxSize: POST请求传输配置
+        :param PostMaxSize: POST请求传输配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PostMaxSize: :class:`tencentcloud.teo.v20220106.models.PostMaxSize`
-        :param Compression: 智能压缩配置
+        :param Compression: 智能压缩配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Compression: :class:`tencentcloud.teo.v20220106.models.Compression`
-        :param UpstreamHttp2: http2回源配置
+        :param UpstreamHttp2: Http2回源配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpstreamHttp2: :class:`tencentcloud.teo.v20220106.models.UpstreamHttp2`
-        :param ForceRedirect: 访问协议强制https跳转配置
+        :param ForceRedirect: 访问协议强制Https跳转配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ForceRedirect: :class:`tencentcloud.teo.v20220106.models.ForceRedirect`
-        :param Https: Https 加速配置
+        :param Https: Https 加速配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Https: :class:`tencentcloud.teo.v20220106.models.Https`
-        :param Origin: 源站配置
+        :param Origin: 源站配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Origin: :class:`tencentcloud.teo.v20220106.models.Origin`
-        :param SmartRouting: 动态加速配置
+        :param SmartRouting: 智能加速配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SmartRouting: :class:`tencentcloud.teo.v20220106.models.SmartRouting`
-        :param ZoneId: 站点ID
-        :type ZoneId: str
-        :param Zone: 站点域名
-        :type Zone: str
-        :param WebSocket: WebSocket配置
+        :param MaxAge: 浏览器缓存配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxAge: :class:`tencentcloud.teo.v20220106.models.MaxAge`
+        :param OfflineCache: 离线缓存配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OfflineCache: :class:`tencentcloud.teo.v20220106.models.OfflineCache`
+        :param WebSocket: WebSocket配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type WebSocket: :class:`tencentcloud.teo.v20220106.models.WebSocket`
-        :param ClientIpHeader: 客户端IP回源请求头配置
+        :param ClientIpHeader: 客户端IP回源请求头配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClientIpHeader: :class:`tencentcloud.teo.v20220106.models.ClientIp`
-        :param CachePrefresh: 缓存预刷新配置
+        :param CachePrefresh: 缓存预刷新配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CachePrefresh: :class:`tencentcloud.teo.v20220106.models.CachePrefresh`
+        :param Ipv6: Ipv6访问配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Ipv6: :class:`tencentcloud.teo.v20220106.models.Ipv6Access`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.ZoneId = None
+        self.Zone = None
         self.Cache = None
         self.CacheKey = None
-        self.MaxAge = None
-        self.OfflineCache = None
         self.Quic = None
         self.PostMaxSize = None
         self.Compression = None
@@ -7423,27 +7454,24 @@ class DescribeZoneSettingResponse(AbstractModel):
         self.Https = None
         self.Origin = None
         self.SmartRouting = None
-        self.ZoneId = None
-        self.Zone = None
+        self.MaxAge = None
+        self.OfflineCache = None
         self.WebSocket = None
         self.ClientIpHeader = None
         self.CachePrefresh = None
+        self.Ipv6 = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.ZoneId = params.get("ZoneId")
+        self.Zone = params.get("Zone")
         if params.get("Cache") is not None:
             self.Cache = CacheConfig()
             self.Cache._deserialize(params.get("Cache"))
         if params.get("CacheKey") is not None:
             self.CacheKey = CacheKey()
             self.CacheKey._deserialize(params.get("CacheKey"))
-        if params.get("MaxAge") is not None:
-            self.MaxAge = MaxAge()
-            self.MaxAge._deserialize(params.get("MaxAge"))
-        if params.get("OfflineCache") is not None:
-            self.OfflineCache = OfflineCache()
-            self.OfflineCache._deserialize(params.get("OfflineCache"))
         if params.get("Quic") is not None:
             self.Quic = Quic()
             self.Quic._deserialize(params.get("Quic"))
@@ -7468,8 +7496,12 @@ class DescribeZoneSettingResponse(AbstractModel):
         if params.get("SmartRouting") is not None:
             self.SmartRouting = SmartRouting()
             self.SmartRouting._deserialize(params.get("SmartRouting"))
-        self.ZoneId = params.get("ZoneId")
-        self.Zone = params.get("Zone")
+        if params.get("MaxAge") is not None:
+            self.MaxAge = MaxAge()
+            self.MaxAge._deserialize(params.get("MaxAge"))
+        if params.get("OfflineCache") is not None:
+            self.OfflineCache = OfflineCache()
+            self.OfflineCache._deserialize(params.get("OfflineCache"))
         if params.get("WebSocket") is not None:
             self.WebSocket = WebSocket()
             self.WebSocket._deserialize(params.get("WebSocket"))
@@ -7479,6 +7511,9 @@ class DescribeZoneSettingResponse(AbstractModel):
         if params.get("CachePrefresh") is not None:
             self.CachePrefresh = CachePrefresh()
             self.CachePrefresh._deserialize(params.get("CachePrefresh"))
+        if params.get("Ipv6") is not None:
+            self.Ipv6 = Ipv6Access()
+            self.Ipv6._deserialize(params.get("Ipv6"))
         self.RequestId = params.get("RequestId")
 
 
@@ -7987,13 +8022,13 @@ class ForceRedirect(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Switch: 访问强制跳转配置开关
-on：开启
-off：关闭
+        :param Switch: 访问强制跳转配置开关，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
         :type Switch: str
-        :param RedirectStatusCode: 重定向状态码
-301
-302
+        :param RedirectStatusCode: 重定向状态码，取值有：
+<li>301：301跳转；</li>
+<li>302：302跳转。</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RedirectStatusCode: int
         """
@@ -8123,15 +8158,21 @@ class Hsts(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Switch: 是否开启，on或off。
+        :param Switch: 是否开启，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
         :type Switch: str
-        :param MaxAge: MaxAge数值。
+        :param MaxAge: MaxAge数值。单位为秒，最大值为1天。
 注意：此字段可能返回 null，表示取不到有效值。
         :type MaxAge: int
-        :param IncludeSubDomains: 是否包含子域名，on或off。
+        :param IncludeSubDomains: 是否包含子域名，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IncludeSubDomains: str
-        :param Preload: 是否预加载，on或off。
+        :param Preload: 是否开启预加载，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Preload: str
         """
@@ -8162,18 +8203,21 @@ class Https(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Http2: http2 配置开关
-on：开启
-off：关闭
+        :param Http2: http2 配置开关，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Http2: str
-        :param OcspStapling: OCSP 配置开关
-on：开启
-off：关闭
-默认为关闭状态
+        :param OcspStapling: OCSP 配置开关，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type OcspStapling: str
-        :param TlsVersion: Tls版本设置，支持设置 TLSv1, TLSV1.1, TLSV1.2, TLSv1.3，修改时必须开启连续的版本
+        :param TlsVersion: Tls版本设置，取值有：
+<li>TLSv1：TLSv1版本；</li>
+<li>TLSV1.1：TLSv1.1版本；</li>
+<li>TLSV1.2：TLSv1.2版本；</li>
+<li>TLSv1.3：TLSv1.3版本。</li>修改时必须开启连续的版本。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TlsVersion: list of str
         :param Hsts: HSTS 配置。
@@ -8453,6 +8497,32 @@ class IpTableRule(AbstractModel):
         
 
 
+class Ipv6Access(AbstractModel):
+    """Ipv6访问配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: Ipv6访问功能配置，取值有：
+<li>on：开启Ipv6访问功能；</li>
+<li>off：关闭Ipv6访问功能。</li>
+        :type Switch: str
+        """
+        self.Switch = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class L7OfflineLog(AbstractModel):
     """离线日志详细信息
 
@@ -8632,21 +8702,21 @@ class MaxAge(AbstractModel):
 
     def __init__(self):
         r"""
-        :param MaxAgeTime: MaxAge 时间设置，单位秒，最大365天
-注意：时间为0，即不缓存。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MaxAgeTime: int
-        :param FollowOrigin: 是否遵循源站，on或off，开启时忽略时间设置。
-注意：此字段可能返回 null，表示取不到有效值。
+        :param FollowOrigin: 是否遵循源站，取值有：
+<li>on：遵循源站，忽略MaxAge 时间设置；</li>
+<li>off：不遵循源站，使用MaxAge 时间设置。</li>
         :type FollowOrigin: str
+        :param MaxAgeTime: MaxAge 时间设置，单位秒，最大365天。
+注意：时间为0，即不缓存。
+        :type MaxAgeTime: int
         """
-        self.MaxAgeTime = None
         self.FollowOrigin = None
+        self.MaxAgeTime = None
 
 
     def _deserialize(self, params):
-        self.MaxAgeTime = params.get("MaxAgeTime")
         self.FollowOrigin = params.get("FollowOrigin")
+        self.MaxAgeTime = params.get("MaxAgeTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8663,24 +8733,25 @@ class ModifyApplicationProxyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ZoneId: 站点ID
+        :param ZoneId: 站点ID。
         :type ZoneId: str
-        :param ProxyId: 代理ID
+        :param ProxyId: 代理ID。
         :type ProxyId: str
-        :param ProxyName: 代理名称
-当ProxyType=hostname时，表示域名或者子域名
-当ProxyType=instance时，表示实例名称
+        :param ProxyName: 当ProxyType=hostname时，表示域名或子域名；
+当ProxyType=instance时，表示代理名称。
         :type ProxyName: str
-        :param ForwardClientIp: 参数已经废弃
+        :param ForwardClientIp: 参数已经废弃。
         :type ForwardClientIp: str
-        :param SessionPersist: 参数已经废弃
+        :param SessionPersist: 参数已经废弃。
         :type SessionPersist: bool
-        :param SessionPersistTime: 会话保持时间，取值范围：30-3600，单位：秒
+        :param SessionPersistTime: 会话保持时间，不填写保持原有配置。取值范围：30-3600，单位：秒。
         :type SessionPersistTime: int
-        :param ProxyType: 服务类型
-hostname：子域名模式
-instance：实例模式
+        :param ProxyType: 四层代理模式，取值有：
+<li>hostname：表示子域名模式；</li>
+<li>instance：表示实例模式。</li>不填写保持原有配置。
         :type ProxyType: str
+        :param Ipv6: Ipv6访问配置，不填写保持原有配置。
+        :type Ipv6: :class:`tencentcloud.teo.v20220106.models.Ipv6Access`
         """
         self.ZoneId = None
         self.ProxyId = None
@@ -8689,6 +8760,7 @@ instance：实例模式
         self.SessionPersist = None
         self.SessionPersistTime = None
         self.ProxyType = None
+        self.Ipv6 = None
 
 
     def _deserialize(self, params):
@@ -8699,6 +8771,9 @@ instance：实例模式
         self.SessionPersist = params.get("SessionPersist")
         self.SessionPersistTime = params.get("SessionPersistTime")
         self.ProxyType = params.get("ProxyType")
+        if params.get("Ipv6") is not None:
+            self.Ipv6 = Ipv6Access()
+            self.Ipv6._deserialize(params.get("Ipv6"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8715,7 +8790,7 @@ class ModifyApplicationProxyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ProxyId: 代理ID
+        :param ProxyId: 代理ID。
         :type ProxyId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -9771,38 +9846,56 @@ class ModifyZoneSettingRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ZoneId: 待变更的站点ID
+        :param ZoneId: 待变更的站点ID。
         :type ZoneId: str
-        :param Cache: 缓存过期时间配置
+        :param Cache: 缓存过期时间配置。
+不填写表示保持原有配置。
         :type Cache: :class:`tencentcloud.teo.v20220106.models.CacheConfig`
-        :param CacheKey: 节点缓存键配置
+        :param CacheKey: 节点缓存键配置。
+不填写表示保持原有配置。
         :type CacheKey: :class:`tencentcloud.teo.v20220106.models.CacheKey`
-        :param MaxAge: 浏览器缓存配置
+        :param MaxAge: 浏览器缓存配置。
+不填写表示保持原有配置。
         :type MaxAge: :class:`tencentcloud.teo.v20220106.models.MaxAge`
-        :param OfflineCache: 离线缓存
+        :param OfflineCache: 离线缓存配置。
+不填写表示保持原有配置。
         :type OfflineCache: :class:`tencentcloud.teo.v20220106.models.OfflineCache`
-        :param Quic: Quic访问
+        :param Quic: Quic访问配置。
+不填写表示保持原有配置。
         :type Quic: :class:`tencentcloud.teo.v20220106.models.Quic`
-        :param PostMaxSize: POST请求传输配置
+        :param PostMaxSize: Post请求传输配置。
+不填写表示保持原有配置。
         :type PostMaxSize: :class:`tencentcloud.teo.v20220106.models.PostMaxSize`
-        :param Compression: 智能压缩配置
+        :param Compression: 智能压缩配置。
+不填写表示保持原有配置。
         :type Compression: :class:`tencentcloud.teo.v20220106.models.Compression`
-        :param UpstreamHttp2: http2回源配置
+        :param UpstreamHttp2: Http2回源配置。
+不填写表示保持原有配置。
         :type UpstreamHttp2: :class:`tencentcloud.teo.v20220106.models.UpstreamHttp2`
-        :param ForceRedirect: 访问协议强制https跳转配置
+        :param ForceRedirect: 访问协议强制Https跳转配置。
+不填写表示保持原有配置。
         :type ForceRedirect: :class:`tencentcloud.teo.v20220106.models.ForceRedirect`
-        :param Https: Https 加速配置
+        :param Https: Https加速配置。
+不填写表示保持原有配置。
         :type Https: :class:`tencentcloud.teo.v20220106.models.Https`
-        :param Origin: 源站配置
+        :param Origin: 源站配置。
+不填写表示保持原有配置。
         :type Origin: :class:`tencentcloud.teo.v20220106.models.Origin`
-        :param SmartRouting: 智能加速配置
+        :param SmartRouting: 智能加速配置。
+不填写表示保持原有配置。
         :type SmartRouting: :class:`tencentcloud.teo.v20220106.models.SmartRouting`
-        :param WebSocket: WebSocket配置
+        :param WebSocket: WebSocket配置。
+不填写表示保持原有配置。
         :type WebSocket: :class:`tencentcloud.teo.v20220106.models.WebSocket`
-        :param ClientIpHeader: 客户端IP回源请求头配置
+        :param ClientIpHeader: 客户端IP回源请求头配置。
+不填写表示保持原有配置。
         :type ClientIpHeader: :class:`tencentcloud.teo.v20220106.models.ClientIp`
-        :param CachePrefresh: 缓存预刷新配置
+        :param CachePrefresh: 缓存预刷新配置。
+不填写表示保持原有配置。
         :type CachePrefresh: :class:`tencentcloud.teo.v20220106.models.CachePrefresh`
+        :param Ipv6: Ipv6访问配置。
+不填写表示保持原有配置。
+        :type Ipv6: :class:`tencentcloud.teo.v20220106.models.Ipv6Access`
         """
         self.ZoneId = None
         self.Cache = None
@@ -9820,6 +9913,7 @@ class ModifyZoneSettingRequest(AbstractModel):
         self.WebSocket = None
         self.ClientIpHeader = None
         self.CachePrefresh = None
+        self.Ipv6 = None
 
 
     def _deserialize(self, params):
@@ -9869,6 +9963,9 @@ class ModifyZoneSettingRequest(AbstractModel):
         if params.get("CachePrefresh") is not None:
             self.CachePrefresh = CachePrefresh()
             self.CachePrefresh._deserialize(params.get("CachePrefresh"))
+        if params.get("Ipv6") is not None:
+            self.Ipv6 = Ipv6Access()
+            self.Ipv6._deserialize(params.get("Ipv6"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9885,7 +9982,7 @@ class ModifyZoneSettingResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ZoneId: 站点ID
+        :param ZoneId: 站点ID。
         :type ZoneId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -9971,7 +10068,9 @@ class OfflineCache(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Switch: on | off, 离线缓存是否开启
+        :param Switch: 离线缓存是否开启，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Switch: str
         """
@@ -9996,18 +10095,33 @@ class Origin(AbstractModel):
 
     def __init__(self):
         r"""
-        :param OriginPullProtocol: 回源协议配置
-http：强制 http 回源
-follow：协议跟随回源
-https：强制 https 回源，https 回源时仅支持源站 443 端口
+        :param Origins: 主源站列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Origins: list of str
+        :param BackupOrigins: 备源站列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BackupOrigins: list of str
+        :param OriginPullProtocol: 回源协议配置，取值有：
+<li>http：强制 http 回源；</li>
+<li>follow：协议跟随回源；</li>
+<li>https：强制 https 回源，https 回源时仅支持源站 443 端口。</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type OriginPullProtocol: str
+        :param CosPrivateAccess: OriginType 为对象存储（COS）时，可以指定是否允许访问私有 bucket。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CosPrivateAccess: str
         """
+        self.Origins = None
+        self.BackupOrigins = None
         self.OriginPullProtocol = None
+        self.CosPrivateAccess = None
 
 
     def _deserialize(self, params):
+        self.Origins = params.get("Origins")
+        self.BackupOrigins = params.get("BackupOrigins")
         self.OriginPullProtocol = params.get("OriginPullProtocol")
+        self.CosPrivateAccess = params.get("CosPrivateAccess")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -10310,11 +10424,11 @@ class PostMaxSize(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Switch: 是调整POST请求限制，平台默认为32MB。
-关闭：off，
-开启：on。
+        :param Switch: 是否开启POST请求上传文件限制，平台默认为限制为32MB，取值有：
+<li>on：开启限制；</li>
+<li>off：关闭限制。</li>
         :type Switch: str
-        :param MaxSize: 最大限制，取值在1MB和500MB之间。单位字节
+        :param MaxSize: 最大限制，取值在1MB和500MB之间。单位字节。
 注意：此字段可能返回 null，表示取不到有效值。
         :type MaxSize: int
         """
@@ -10373,14 +10487,17 @@ class QueryString(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Switch: on | off CacheKey是否由QueryString组成
+        :param Switch: CacheKey是否由QueryString组成，取值有：
+<li>on：是；</li>
+<li>off：否。</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Switch: str
-        :param Action: includeCustom:使用部分url参数
-excludeCustom:排除部分url参数
+        :param Action: CacheKey使用QueryString的方式，取值有：
+<li>includeCustom：使用部分url参数；</li>
+<li>excludeCustom：排除部分url参数。</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Action: str
-        :param Value: 使用/排除的url参数数组
+        :param Value: 使用/排除的url参数数组。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Value: list of str
         """
@@ -10409,7 +10526,9 @@ class Quic(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Switch: 是否启动Quic配置
+        :param Switch: 是否开启Quic配置，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
         :type Switch: str
         """
         self.Switch = None
@@ -11198,9 +11317,9 @@ class SmartRouting(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Switch: 智能加速配置开关
-on：开启
-off：关闭
+        :param Switch: 智能加速配置开关，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
         :type Switch: str
         """
         self.Switch = None
@@ -11591,9 +11710,9 @@ class UpstreamHttp2(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Switch: http2回源配置开关
-on：开启
-off：关闭
+        :param Switch: http2回源配置开关，取值有：
+<li>on：开启；</li>
+<li>off：关闭。</li>
         :type Switch: str
         """
         self.Switch = None
@@ -11982,9 +12101,11 @@ class WebSocket(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Switch: WebSocket 超时配置开关, 开关为off时，平台仍支持WebSocket连接，此时超时时间默认为15秒，若需要调整超时时间，将开关置为on.
+        :param Switch: WebSocket 超时时间配置开关，取值有：
+<li>on：使用Timeout作为WebSocket超时时间；</li>
+<li>off：平台仍支持WebSocket连接，此时使用系统默认的15秒为超时时间。</li>
         :type Switch: str
-        :param Timeout: 设置超时时间，单位为秒，最大超时时间120秒。
+        :param Timeout: 超时时间，单位为秒，最大超时时间120秒。
         :type Timeout: int
         """
         self.Switch = None

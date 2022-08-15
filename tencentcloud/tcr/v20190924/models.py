@@ -2648,6 +2648,8 @@ class DescribeImagesRequest(AbstractModel):
         :type Limit: int
         :param Offset: 页数，默认值为1
         :type Offset: int
+        :param Digest: 指定镜像 Digest 进行查找
+        :type Digest: str
         """
         self.RegistryId = None
         self.NamespaceName = None
@@ -2655,6 +2657,7 @@ class DescribeImagesRequest(AbstractModel):
         self.ImageVersion = None
         self.Limit = None
         self.Offset = None
+        self.Digest = None
 
 
     def _deserialize(self, params):
@@ -2664,6 +2667,7 @@ class DescribeImagesRequest(AbstractModel):
         self.ImageVersion = params.get("ImageVersion")
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
+        self.Digest = params.get("Digest")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3138,6 +3142,8 @@ class DescribeNamespacesRequest(AbstractModel):
         :type All: bool
         :param Filters: 过滤条件
         :type Filters: list of Filter
+        :param KmsSignPolicy: 仅查询启用了 KMS 镜像签名的空间
+        :type KmsSignPolicy: bool
         """
         self.RegistryId = None
         self.NamespaceName = None
@@ -3145,6 +3151,7 @@ class DescribeNamespacesRequest(AbstractModel):
         self.Offset = None
         self.All = None
         self.Filters = None
+        self.KmsSignPolicy = None
 
 
     def _deserialize(self, params):
@@ -3159,6 +3166,7 @@ class DescribeNamespacesRequest(AbstractModel):
                 obj = Filter()
                 obj._deserialize(item)
                 self.Filters.append(obj)
+        self.KmsSignPolicy = params.get("KmsSignPolicy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4407,6 +4415,34 @@ class ImmutableTagRule(AbstractModel):
         self.Disabled = params.get("Disabled")
         self.RuleId = params.get("RuleId")
         self.NsName = params.get("NsName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KeyValueString(AbstractModel):
+    """通用参数字符串键值对
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Key: 键
+        :type Key: str
+        :param Value: 值
+        :type Value: str
+        """
+        self.Key = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6568,17 +6604,25 @@ class TcrImageInfo(AbstractModel):
         r"""
         :param Digest: 哈希值
         :type Digest: str
-        :param Size: 镜像大小
+        :param Size: 镜像体积（单位：字节）
         :type Size: int
         :param ImageVersion: Tag名称
         :type ImageVersion: str
         :param UpdateTime: 更新时间
         :type UpdateTime: str
+        :param Kind: 制品类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Kind: str
+        :param KmsSignature: KMS 签名信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KmsSignature: str
         """
         self.Digest = None
         self.Size = None
         self.ImageVersion = None
         self.UpdateTime = None
+        self.Kind = None
+        self.KmsSignature = None
 
 
     def _deserialize(self, params):
@@ -6586,6 +6630,8 @@ class TcrImageInfo(AbstractModel):
         self.Size = params.get("Size")
         self.ImageVersion = params.get("ImageVersion")
         self.UpdateTime = params.get("UpdateTime")
+        self.Kind = params.get("Kind")
+        self.KmsSignature = params.get("KmsSignature")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6657,12 +6703,16 @@ class TcrNamespaceInfo(AbstractModel):
         :param TagSpecification: 实例云标签
 注意：此字段可能返回 null，表示取不到有效值。
         :type TagSpecification: :class:`tencentcloud.tcr.v20190924.models.TagSpecification`
+        :param Metadata: 命名空间元数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Metadata: list of KeyValueString
         """
         self.Name = None
         self.CreationTime = None
         self.Public = None
         self.NamespaceId = None
         self.TagSpecification = None
+        self.Metadata = None
 
 
     def _deserialize(self, params):
@@ -6673,6 +6723,12 @@ class TcrNamespaceInfo(AbstractModel):
         if params.get("TagSpecification") is not None:
             self.TagSpecification = TagSpecification()
             self.TagSpecification._deserialize(params.get("TagSpecification"))
+        if params.get("Metadata") is not None:
+            self.Metadata = []
+            for item in params.get("Metadata"):
+                obj = KeyValueString()
+                obj._deserialize(item)
+                self.Metadata.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

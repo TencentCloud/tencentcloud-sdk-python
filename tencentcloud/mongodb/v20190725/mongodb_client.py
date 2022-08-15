@@ -923,3 +923,32 @@ class MongodbClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
+
+
+    def TerminateDBInstances(self, request):
+        """包年包月实例隔离接口
+
+        :param request: Request instance for TerminateDBInstances.
+        :type request: :class:`tencentcloud.mongodb.v20190725.models.TerminateDBInstancesRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20190725.models.TerminateDBInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("TerminateDBInstances", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.TerminateDBInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)

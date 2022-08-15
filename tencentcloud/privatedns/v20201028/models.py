@@ -325,12 +325,14 @@ class CreatePrivateZoneRequest(AbstractModel):
         :type VpcSet: list of VpcInfo
         :param Remark: 备注
         :type Remark: str
-        :param DnsForwardStatus: 是否开启子域名递归, ENABLED， DISABLED。默认值为DISABLED
+        :param DnsForwardStatus: 是否开启子域名递归, ENABLED， DISABLED。默认值为ENABLED
         :type DnsForwardStatus: str
         :param Vpcs: 创建私有域的同时，将其关联至VPC
         :type Vpcs: list of VpcInfo
         :param AccountVpcSet: 创建私有域同时绑定关联账号的VPC
         :type AccountVpcSet: list of AccountVpcInfo
+        :param CnameSpeedupStatus: 是否CNAME加速：ENABLED，DISABLED，默认值为ENABLED
+        :type CnameSpeedupStatus: str
         """
         self.Domain = None
         self.TagSet = None
@@ -339,6 +341,7 @@ class CreatePrivateZoneRequest(AbstractModel):
         self.DnsForwardStatus = None
         self.Vpcs = None
         self.AccountVpcSet = None
+        self.CnameSpeedupStatus = None
 
 
     def _deserialize(self, params):
@@ -369,6 +372,7 @@ class CreatePrivateZoneRequest(AbstractModel):
                 obj = AccountVpcInfo()
                 obj._deserialize(item)
                 self.AccountVpcSet.append(obj)
+        self.CnameSpeedupStatus = params.get("CnameSpeedupStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1308,16 +1312,20 @@ class ModifyPrivateZoneRequest(AbstractModel):
         :type Remark: str
         :param DnsForwardStatus: 是否开启子域名递归, ENABLED， DISABLED
         :type DnsForwardStatus: str
+        :param CnameSpeedupStatus: 是否开启CNAME加速：ENABLED， DISABLED
+        :type CnameSpeedupStatus: str
         """
         self.ZoneId = None
         self.Remark = None
         self.DnsForwardStatus = None
+        self.CnameSpeedupStatus = None
 
 
     def _deserialize(self, params):
         self.ZoneId = params.get("ZoneId")
         self.Remark = params.get("Remark")
         self.DnsForwardStatus = params.get("DnsForwardStatus")
+        self.CnameSpeedupStatus = params.get("CnameSpeedupStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1493,6 +1501,8 @@ class PrivateZone(AbstractModel):
         :param IsCustomTld: 是否自定义TLD
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsCustomTld: bool
+        :param CnameSpeedupStatus: CNAME加速状态：开通：ENABLED, 关闭，DISABLED
+        :type CnameSpeedupStatus: str
         """
         self.ZoneId = None
         self.OwnerUin = None
@@ -1507,6 +1517,7 @@ class PrivateZone(AbstractModel):
         self.Tags = None
         self.AccountVpcSet = None
         self.IsCustomTld = None
+        self.CnameSpeedupStatus = None
 
 
     def _deserialize(self, params):
@@ -1538,6 +1549,7 @@ class PrivateZone(AbstractModel):
                 obj._deserialize(item)
                 self.AccountVpcSet.append(obj)
         self.IsCustomTld = params.get("IsCustomTld")
+        self.CnameSpeedupStatus = params.get("CnameSpeedupStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

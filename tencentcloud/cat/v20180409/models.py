@@ -219,9 +219,9 @@ AnalyzeTaskType_MediaStream：音视频体验
 	
 这里实际按拨测结果中的地区来填写即可
 
-国内一般是省级单位，如广东、广西、香港特区、新疆；直辖市则填北京、上海
+国内一般是省级单位，如广东、广西、中国香港、新疆；直辖市则填北京、上海
 
-海外一般是国家名，如澳大利亚、新加坡
+境外一般是国家名，如澳大利亚、新加坡
         :type Districts: list of str
         :param ErrorTypes: 错误类型
         :type ErrorTypes: list of str
@@ -319,7 +319,7 @@ class DescribeNodesRequest(AbstractModel):
         :param Location: 节点区域
 <li> 1 = 中国大陆 </li>
 <li> 2 = 港澳台 </li>
-<li> 3 = 海外 </li>
+<li> 3 = 境外</li>
         :type Location: int
         :param IsIPv6: 是否IPv6
         :type IsIPv6: bool
@@ -902,7 +902,7 @@ class NodeDefineExt(AbstractModel):
         :param Location: 区域
 <li> 1 = 中国大陆 </li>
 <li> 2 = 港澳台 </li>
-<li> 3 = 国外 </li>
+<li> 3 = 境外 </li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Location: int
         :param CodeType: 节点类型  如果为base 则为可用性拨测点，为空则为高级拨测点

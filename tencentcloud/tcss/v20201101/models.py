@@ -8255,6 +8255,14 @@ class DescribeClusterSummaryResponse(AbstractModel):
         :type IndependentClusterCount: int
         :param NoRiskClusterCount: 无风险的集群数量
         :type NoRiskClusterCount: int
+        :param CheckedClusterCount: 已经检查集群数
+        :type CheckedClusterCount: int
+        :param AutoCheckClusterCount: 自动检查集群数
+        :type AutoCheckClusterCount: int
+        :param ManualCheckClusterCount: 手动检查集群数
+        :type ManualCheckClusterCount: int
+        :param FailedClusterCount: 检查失败集群数
+        :type FailedClusterCount: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -8264,6 +8272,10 @@ class DescribeClusterSummaryResponse(AbstractModel):
         self.ManagedClusterCount = None
         self.IndependentClusterCount = None
         self.NoRiskClusterCount = None
+        self.CheckedClusterCount = None
+        self.AutoCheckClusterCount = None
+        self.ManualCheckClusterCount = None
+        self.FailedClusterCount = None
         self.RequestId = None
 
 
@@ -8274,6 +8286,10 @@ class DescribeClusterSummaryResponse(AbstractModel):
         self.ManagedClusterCount = params.get("ManagedClusterCount")
         self.IndependentClusterCount = params.get("IndependentClusterCount")
         self.NoRiskClusterCount = params.get("NoRiskClusterCount")
+        self.CheckedClusterCount = params.get("CheckedClusterCount")
+        self.AutoCheckClusterCount = params.get("AutoCheckClusterCount")
+        self.ManualCheckClusterCount = params.get("ManualCheckClusterCount")
+        self.FailedClusterCount = params.get("FailedClusterCount")
         self.RequestId = params.get("RequestId")
 
 

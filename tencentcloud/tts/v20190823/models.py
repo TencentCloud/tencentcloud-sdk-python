@@ -216,6 +216,46 @@ class DescribeTtsTaskStatusResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class Subtitle(AbstractModel):
+    """时间戳信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Text: ⽂本信息。
+        :type Text: str
+        :param BeginTime: ⽂本对应tts语⾳开始时间戳，单位ms。
+        :type BeginTime: int
+        :param EndTime: ⽂本对应tts语⾳结束时间戳，单位ms。
+        :type EndTime: int
+        :param BeginIndex: 该字在整句中的开始位置，从0开始。
+        :type BeginIndex: int
+        :param EndIndex: 该字在整句中的结束位置，从0开始。
+        :type EndIndex: int
+        """
+        self.Text = None
+        self.BeginTime = None
+        self.EndTime = None
+        self.BeginIndex = None
+        self.EndIndex = None
+
+
+    def _deserialize(self, params):
+        self.Text = params.get("Text")
+        self.BeginTime = params.get("BeginTime")
+        self.EndTime = params.get("EndTime")
+        self.BeginIndex = params.get("BeginIndex")
+        self.EndIndex = params.get("EndIndex")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TextToVoiceRequest(AbstractModel):
     """TextToVoice请求参数结构体
 
@@ -244,6 +284,8 @@ class TextToVoiceRequest(AbstractModel):
         :type SampleRate: int
         :param Codec: 返回音频格式，可取值：wav（默认），mp3，pcm
         :type Codec: str
+        :param EnableSubtitle: 是否开启时间戳功能，默认为false。
+        :type EnableSubtitle: bool
         """
         self.Text = None
         self.SessionId = None
@@ -255,6 +297,7 @@ class TextToVoiceRequest(AbstractModel):
         self.PrimaryLanguage = None
         self.SampleRate = None
         self.Codec = None
+        self.EnableSubtitle = None
 
 
     def _deserialize(self, params):
@@ -268,6 +311,7 @@ class TextToVoiceRequest(AbstractModel):
         self.PrimaryLanguage = params.get("PrimaryLanguage")
         self.SampleRate = params.get("SampleRate")
         self.Codec = params.get("Codec")
+        self.EnableSubtitle = params.get("EnableSubtitle")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -288,15 +332,24 @@ class TextToVoiceResponse(AbstractModel):
         :type Audio: str
         :param SessionId: 一次请求对应一个SessionId
         :type SessionId: str
+        :param Subtitles: 时间戳信息，若未开启时间戳，则返回空数组。
+        :type Subtitles: list of Subtitle
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Audio = None
         self.SessionId = None
+        self.Subtitles = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.Audio = params.get("Audio")
         self.SessionId = params.get("SessionId")
+        if params.get("Subtitles") is not None:
+            self.Subtitles = []
+            for item in params.get("Subtitles"):
+                obj = Subtitle()
+                obj._deserialize(item)
+                self.Subtitles.append(obj)
         self.RequestId = params.get("RequestId")

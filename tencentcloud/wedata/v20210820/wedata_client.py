@@ -27,7 +27,8 @@ class WedataClient(AbstractClient):
 
 
     def BatchDeleteTasksNew(self, request):
-        """批量删除任务，仅对任务状态为”已停止“有效；（Beta版本）
+        """<p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+        批量删除任务，仅对任务状态为”已停止“有效；
 
         :param request: Request instance for BatchDeleteTasksNew.
         :type request: :class:`tencentcloud.wedata.v20210820.models.BatchDeleteTasksNewRequest`
@@ -56,7 +57,8 @@ class WedataClient(AbstractClient):
 
 
     def BatchModifyOwnersNew(self, request):
-        """批量修改任务责任人（Beta版本）
+        """<p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+        批量修改任务责任人
 
         :param request: Request instance for BatchModifyOwnersNew.
         :type request: :class:`tencentcloud.wedata.v20210820.models.BatchModifyOwnersNewRequest`
@@ -85,7 +87,8 @@ class WedataClient(AbstractClient):
 
 
     def BatchStopTasksNew(self, request):
-        """仅对任务状态为”调度中“和”已暂停“有效，对所选任务的任务实例进行终止，并停止调度（Beta版本）
+        """<p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+        仅对任务状态为”调度中“和”已暂停“有效，对所选任务的任务实例进行终止，并停止调度
 
         :param request: Request instance for BatchStopTasksNew.
         :type request: :class:`tencentcloud.wedata.v20210820.models.BatchStopTasksNewRequest`
@@ -114,7 +117,8 @@ class WedataClient(AbstractClient):
 
 
     def CreateFolder(self, request):
-        """创建文件夹（Beta版本）
+        """<p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+        创建文件夹
 
         :param request: Request instance for CreateFolder.
         :type request: :class:`tencentcloud.wedata.v20210820.models.CreateFolderRequest`
@@ -143,7 +147,8 @@ class WedataClient(AbstractClient):
 
 
     def CreateTask(self, request):
-        """创建任务（Beta版本）
+        """<p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+        创建任务
 
         :param request: Request instance for CreateTask.
         :type request: :class:`tencentcloud.wedata.v20210820.models.CreateTaskRequest`
@@ -172,7 +177,8 @@ class WedataClient(AbstractClient):
 
 
     def CreateWorkflow(self, request):
-        """创建工作流（Beta版本）
+        """<p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+        创建工作流
 
         :param request: Request instance for CreateWorkflow.
         :type request: :class:`tencentcloud.wedata.v20210820.models.CreateWorkflowRequest`
@@ -201,7 +207,8 @@ class WedataClient(AbstractClient):
 
 
     def DeleteFolder(self, request):
-        """删除文件夹（Beta版本）
+        """<p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+        删除文件夹
 
         :param request: Request instance for DeleteFolder.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DeleteFolderRequest`
@@ -230,7 +237,8 @@ class WedataClient(AbstractClient):
 
 
     def DeleteWorkflowNew(self, request):
-        """删除工作流（Beta版本）
+        """<p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+        删除工作流
 
         :param request: Request instance for DeleteWorkflowNew.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DeleteWorkflowNewRequest`
@@ -259,7 +267,8 @@ class WedataClient(AbstractClient):
 
 
     def DescribeDependTasksNew(self, request):
-        """根据层级查找上/下游任务节点（Beta版本）
+        """<p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+        根据层级查找上/下游任务节点
 
         :param request: Request instance for DescribeDependTasksNew.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeDependTasksNewRequest`
@@ -288,7 +297,8 @@ class WedataClient(AbstractClient):
 
 
     def DescribeFolderList(self, request):
-        """拉取文件夹目录（Beta版本）
+        """<p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+        拉取文件夹目录
 
         :param request: Request instance for DescribeFolderList.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeFolderListRequest`
@@ -317,7 +327,8 @@ class WedataClient(AbstractClient):
 
 
     def DescribeFolderWorkflowList(self, request):
-        """拉取文件夹下的工作流（Beta版本）
+        """<p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+        拉取文件夹下的工作流
 
         :param request: Request instance for DescribeFolderWorkflowList.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeFolderWorkflowListRequest`
@@ -346,7 +357,8 @@ class WedataClient(AbstractClient):
 
 
     def DescribeInstanceLogs(self, request):
-        """获取实例日志列表（Beta版本）
+        """<p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+        获取实例日志列表
 
         :param request: Request instance for DescribeInstanceLogs.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeInstanceLogsRequest`
@@ -433,7 +445,8 @@ class WedataClient(AbstractClient):
 
 
     def DescribeTaskDetail(self, request):
-        """查询任务具体详情（Beta版本）
+        """<p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+        查询任务具体详情
 
         :param request: Request instance for DescribeTaskDetail.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeTaskDetailRequest`
@@ -491,7 +504,8 @@ class WedataClient(AbstractClient):
 
 
     def DescribeTaskScript(self, request):
-        """查询任务脚本（Beta版本）
+        """<p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+        查询任务脚本
 
         :param request: Request instance for DescribeTaskScript.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeTaskScriptRequest`
@@ -520,7 +534,8 @@ class WedataClient(AbstractClient):
 
 
     def DescribeTasksByPage(self, request):
-        """根据工作流分页查询任务（Beta版本）
+        """<p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+        根据工作流分页查询任务
 
         :param request: Request instance for DescribeTasksByPage.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeTasksByPageRequest`
@@ -549,7 +564,8 @@ class WedataClient(AbstractClient):
 
 
     def ForceSucInstances(self, request):
-        """实例批量置成功（Beta版本）
+        """<p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+        实例批量置成功
 
         :param request: Request instance for ForceSucInstances.
         :type request: :class:`tencentcloud.wedata.v20210820.models.ForceSucInstancesRequest`
@@ -578,7 +594,8 @@ class WedataClient(AbstractClient):
 
 
     def FreezeTasks(self, request):
-        """批量冻结任务（Beta版本）
+        """<p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+        批量冻结任务
 
         :param request: Request instance for FreezeTasks.
         :type request: :class:`tencentcloud.wedata.v20210820.models.FreezeTasksRequest`
@@ -607,7 +624,8 @@ class WedataClient(AbstractClient):
 
 
     def FreezeTasksByMultiWorkflow(self, request):
-        """基于多个工作流进行批量冻结任务操作（Beta版本）
+        """<p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+        基于多个工作流进行批量冻结任务操作
 
         :param request: Request instance for FreezeTasksByMultiWorkflow.
         :type request: :class:`tencentcloud.wedata.v20210820.models.FreezeTasksByMultiWorkflowRequest`
@@ -636,7 +654,8 @@ class WedataClient(AbstractClient):
 
 
     def KillInstances(self, request):
-        """实例批量终止操作（Beta版本）
+        """<p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+        实例批量终止操作
 
         :param request: Request instance for KillInstances.
         :type request: :class:`tencentcloud.wedata.v20210820.models.KillInstancesRequest`
@@ -665,7 +684,10 @@ class WedataClient(AbstractClient):
 
 
     def MakeUpTasksNew(self, request):
-        """任务批量补录，调度状态任务才可以补录；（Beta版本）
+        """<p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+        任务批量补录，调度状态任务才可以补录；
+
+
 
         :param request: Request instance for MakeUpTasksNew.
         :type request: :class:`tencentcloud.wedata.v20210820.models.MakeUpTasksNewRequest`
@@ -694,7 +716,8 @@ class WedataClient(AbstractClient):
 
 
     def MakeUpWorkflowNew(self, request):
-        """工作流下所有任务的补录（Beta版本）
+        """<p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+        工作流下所有任务的补录
 
         :param request: Request instance for MakeUpWorkflowNew.
         :type request: :class:`tencentcloud.wedata.v20210820.models.MakeUpWorkflowNewRequest`
@@ -723,7 +746,8 @@ class WedataClient(AbstractClient):
 
 
     def ModifyFolder(self, request):
-        """文件夹更新（Beta版本）
+        """<p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+        文件夹更新
 
         :param request: Request instance for ModifyFolder.
         :type request: :class:`tencentcloud.wedata.v20210820.models.ModifyFolderRequest`
@@ -752,7 +776,8 @@ class WedataClient(AbstractClient):
 
 
     def ModifyTaskInfo(self, request):
-        """更新任务（Beta版本）
+        """<p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+        更新任务
 
         :param request: Request instance for ModifyTaskInfo.
         :type request: :class:`tencentcloud.wedata.v20210820.models.ModifyTaskInfoRequest`
@@ -781,7 +806,8 @@ class WedataClient(AbstractClient):
 
 
     def ModifyTaskLinks(self, request):
-        """添加父任务依赖（Beta版本）
+        """<p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+        添加父任务依赖
 
         :param request: Request instance for ModifyTaskLinks.
         :type request: :class:`tencentcloud.wedata.v20210820.models.ModifyTaskLinksRequest`
@@ -810,7 +836,8 @@ class WedataClient(AbstractClient):
 
 
     def ModifyTaskScript(self, request):
-        """修改任务脚本（Beta版本）
+        """<p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+        修改任务脚本
 
         :param request: Request instance for ModifyTaskScript.
         :type request: :class:`tencentcloud.wedata.v20210820.models.ModifyTaskScriptRequest`
@@ -839,7 +866,8 @@ class WedataClient(AbstractClient):
 
 
     def ModifyWorkflowInfo(self, request):
-        """更新工作流（Beta版本）
+        """<p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+        更新工作流
 
         :param request: Request instance for ModifyWorkflowInfo.
         :type request: :class:`tencentcloud.wedata.v20210820.models.ModifyWorkflowInfoRequest`
@@ -868,7 +896,8 @@ class WedataClient(AbstractClient):
 
 
     def ModifyWorkflowSchedule(self, request):
-        """更新工作流调度（Beta版本）
+        """<p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+        更新工作流调度
 
         :param request: Request instance for ModifyWorkflowSchedule.
         :type request: :class:`tencentcloud.wedata.v20210820.models.ModifyWorkflowScheduleRequest`
@@ -897,7 +926,8 @@ class WedataClient(AbstractClient):
 
 
     def RegisterEvent(self, request):
-        """注册事件（Beta版本）
+        """<p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+        注册事件
 
         :param request: Request instance for RegisterEvent.
         :type request: :class:`tencentcloud.wedata.v20210820.models.RegisterEventRequest`
@@ -926,7 +956,8 @@ class WedataClient(AbstractClient):
 
 
     def RegisterEventListener(self, request):
-        """注册事件监听器（Beta版本）
+        """<p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+        注册事件监听器
 
         :param request: Request instance for RegisterEventListener.
         :type request: :class:`tencentcloud.wedata.v20210820.models.RegisterEventListenerRequest`
@@ -955,7 +986,8 @@ class WedataClient(AbstractClient):
 
 
     def RerunInstances(self, request):
-        """实例批量重跑（Beta版本）
+        """<p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+        实例批量重跑
 
         :param request: Request instance for RerunInstances.
         :type request: :class:`tencentcloud.wedata.v20210820.models.RerunInstancesRequest`
@@ -984,7 +1016,8 @@ class WedataClient(AbstractClient):
 
 
     def RunTask(self, request):
-        """运行任务（Beta版本）
+        """<p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+        运行任务
 
         :param request: Request instance for RunTask.
         :type request: :class:`tencentcloud.wedata.v20210820.models.RunTaskRequest`
@@ -1013,7 +1046,8 @@ class WedataClient(AbstractClient):
 
 
     def SetTaskAlarmNew(self, request):
-        """设置任务告警，新建/更新告警信息（最新）（Beta版本）
+        """<p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+        设置任务告警，新建/更新告警信息（最新）
 
         :param request: Request instance for SetTaskAlarmNew.
         :type request: :class:`tencentcloud.wedata.v20210820.models.SetTaskAlarmNewRequest`
@@ -1042,7 +1076,8 @@ class WedataClient(AbstractClient):
 
 
     def SubmitTask(self, request):
-        """提交任务（Beta版本）
+        """<p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+        提交任务
 
         :param request: Request instance for SubmitTask.
         :type request: :class:`tencentcloud.wedata.v20210820.models.SubmitTaskRequest`
@@ -1071,7 +1106,8 @@ class WedataClient(AbstractClient):
 
 
     def SubmitWorkflow(self, request):
-        """提交工作流（Beta版本）
+        """<p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+        提交工作流
 
         :param request: Request instance for SubmitWorkflow.
         :type request: :class:`tencentcloud.wedata.v20210820.models.SubmitWorkflowRequest`
@@ -1100,7 +1136,8 @@ class WedataClient(AbstractClient):
 
 
     def TriggerEvent(self, request):
-        """触发事件（Beta版本）
+        """<p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+        触发事件
 
         :param request: Request instance for TriggerEvent.
         :type request: :class:`tencentcloud.wedata.v20210820.models.TriggerEventRequest`

@@ -2813,6 +2813,8 @@ class DescribeScenarioWithJobsRequest(AbstractModel):
         :type ScenarioRelatedJobsParams: :class:`tencentcloud.pts.v20210728.models.ScenarioRelatedJobsParams`
         :param IgnoreScript: 是否需要返回场景的脚本内容
         :type IgnoreScript: bool
+        :param IgnoreDataset: 是否需要返回测试数据文件信息
+        :type IgnoreDataset: bool
         """
         self.Offset = None
         self.Limit = None
@@ -2824,6 +2826,7 @@ class DescribeScenarioWithJobsRequest(AbstractModel):
         self.Ascend = None
         self.ScenarioRelatedJobsParams = None
         self.IgnoreScript = None
+        self.IgnoreDataset = None
 
 
     def _deserialize(self, params):
@@ -2839,6 +2842,7 @@ class DescribeScenarioWithJobsRequest(AbstractModel):
             self.ScenarioRelatedJobsParams = ScenarioRelatedJobsParams()
             self.ScenarioRelatedJobsParams._deserialize(params.get("ScenarioRelatedJobsParams"))
         self.IgnoreScript = params.get("IgnoreScript")
+        self.IgnoreDataset = params.get("IgnoreDataset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

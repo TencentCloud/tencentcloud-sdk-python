@@ -2323,30 +2323,30 @@ class ModifyDiskAttributesRequest(AbstractModel):
         r"""
         :param DiskIds: 一个或多个待操作的云硬盘ID。如果传入多个云盘ID，仅支持所有云盘修改为同一属性。
         :type DiskIds: list of str
-        :param ProjectId: 新的云硬盘项目ID，只支持修改弹性云盘的项目ID。通过[DescribeProject](/document/api/378/4400)接口查询可用项目及其ID。
-        :type ProjectId: int
         :param DiskName: 新的云硬盘名称。
         :type DiskName: str
         :param Portable: 是否为弹性云盘，FALSE表示非弹性云盘，TRUE表示弹性云盘。仅支持非弹性云盘修改为弹性云盘。
         :type Portable: bool
+        :param ProjectId: 新的云硬盘项目ID，只支持修改弹性云盘的项目ID。通过[DescribeProject](/document/api/378/4400)接口查询可用项目及其ID。
+        :type ProjectId: int
         :param DeleteWithInstance: 成功挂载到云主机后该云硬盘是否随云主机销毁，TRUE表示随云主机销毁，FALSE表示不随云主机销毁。仅支持按量计费云硬盘数据盘。
         :type DeleteWithInstance: bool
         :param DiskType: 变更云盘类型时，可传入该参数，表示变更的目标类型，取值范围：<br><li>CLOUD_PREMIUM：表示高性能云硬盘<br><li>CLOUD_SSD：表示SSD云硬盘。<br>当前不支持批量变更类型，即传入DiskType时，DiskIds仅支持传入一块云盘；<br>变更云盘类型时不支持同时变更其他属性。
         :type DiskType: str
         """
         self.DiskIds = None
-        self.ProjectId = None
         self.DiskName = None
         self.Portable = None
+        self.ProjectId = None
         self.DeleteWithInstance = None
         self.DiskType = None
 
 
     def _deserialize(self, params):
         self.DiskIds = params.get("DiskIds")
-        self.ProjectId = params.get("ProjectId")
         self.DiskName = params.get("DiskName")
         self.Portable = params.get("Portable")
+        self.ProjectId = params.get("ProjectId")
         self.DeleteWithInstance = params.get("DeleteWithInstance")
         self.DiskType = params.get("DiskType")
         memeber_set = set(params.keys())

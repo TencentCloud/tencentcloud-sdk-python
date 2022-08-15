@@ -29,6 +29,9 @@ FAILEDOPERATION_DBRECORDUPDATEFAILED = 'FailedOperation.DbRecordUpdateFailed'
 # ES查询错误。
 FAILEDOPERATION_ESQUERYERROR = 'FailedOperation.ESQueryError'
 
+# 任务绑定的预付费套餐已过期。
+FAILEDOPERATION_ERRPREPAIDRESOURCEEXPIRE = 'FailedOperation.ErrPrePaidResourceExpire'
+
 # 无有效节点。
 FAILEDOPERATION_NOVALIDNODES = 'FailedOperation.NoValidNodes'
 

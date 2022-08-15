@@ -1,5 +1,5 @@
-# -*- coding: utf-8 -*-
-# Copyright 1999-2018 Tencent Ltd.
+# -*- coding: utf8 -*-
+# Copyright (c) 2017-2021 THL A29 Limited, a Tencent company. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,4 +14,17 @@
 # limitations under the License.
 
 
-__version__ = '3.0.714'
+# 内部错误。
+INTERNALERROR = 'InternalError'
+
+# 参数错误。
+INVALIDPARAMETER = 'InvalidParameter'
+
+# 参数取值错误。
+INVALIDPARAMETERVALUE = 'InvalidParameterValue'
+
+# 操作被拒绝。
+OPERATIONDENIED = 'OperationDenied'
+
+# 未授权操作。
+UNAUTHORIZEDOPERATION = 'UnauthorizedOperation'
