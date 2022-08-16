@@ -358,9 +358,9 @@ class CreateTrainingTaskRequest(AbstractModel):
         :type Output: :class:`tencentcloud.tione.v20211111.models.CosPathInfo`
         :param LogEnable: 是否上报日志
         :type LogEnable: bool
-        :param FrameworkName: 训练框架名称，通过DescribeTrainingFrameworks接口查询，eg：SPARK、TENSORFLOW、PYTORCH、LIGHT
+        :param FrameworkName: 训练框架名称，通过DescribeTrainingFrameworks接口查询，eg：SPARK、PYSPARK、TENSORFLOW、PYTORCH
         :type FrameworkName: str
-        :param FrameworkVersion: 训练框架版本，通过DescribeTrainingFrameworks接口查询，eg：1.15-py3.6-cpu、1.9-py3.6-cuda11.1-gpu
+        :param FrameworkVersion: 训练框架版本，通过DescribeTrainingFrameworks接口查询，eg：tf1.15-py3.7-cpu、torch1.9-py3.8-cuda11.1-gpu
         :type FrameworkVersion: str
         :param ResourceGroupId: 预付费专用资源组ID，通过DescribeBillingResourceGroups接口查询
         :type ResourceGroupId: str

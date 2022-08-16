@@ -3990,12 +3990,24 @@ class NetAddr(AbstractModel):
         :param NetType: 网络类型（ro-只读,rw/ha-读写）
 注意：此字段可能返回 null，表示取不到有效值。
         :type NetType: str
+        :param UniqSubnetId: 子网ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UniqSubnetId: str
+        :param UniqVpcId: 私有网络ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UniqVpcId: str
+        :param Description: 描述信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
         """
         self.Vip = None
         self.Vport = None
         self.WanDomain = None
         self.WanPort = None
         self.NetType = None
+        self.UniqSubnetId = None
+        self.UniqVpcId = None
+        self.Description = None
 
 
     def _deserialize(self, params):
@@ -4004,6 +4016,9 @@ class NetAddr(AbstractModel):
         self.WanDomain = params.get("WanDomain")
         self.WanPort = params.get("WanPort")
         self.NetType = params.get("NetType")
+        self.UniqSubnetId = params.get("UniqSubnetId")
+        self.UniqVpcId = params.get("UniqVpcId")
+        self.Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -79,6 +79,9 @@ class Acl(AbstractModel):
         :type ValidateTo: str
         :param Status: 访问权限状态，1 - 已生效，2 - 未生效，3 - 已过期
         :type Status: int
+        :param Department: 所属部门的信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Department: :class:`tencentcloud.dasb.v20191018.models.Department`
         """
         self.Id = None
         self.Name = None
@@ -106,6 +109,7 @@ class Acl(AbstractModel):
         self.ValidateFrom = None
         self.ValidateTo = None
         self.Status = None
+        self.Department = None
 
 
     def _deserialize(self, params):
@@ -160,6 +164,9 @@ class Acl(AbstractModel):
         self.ValidateFrom = params.get("ValidateFrom")
         self.ValidateTo = params.get("ValidateTo")
         self.Status = params.get("Status")
+        if params.get("Department") is not None:
+            self.Department = Department()
+            self.Department._deserialize(params.get("Department"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -393,6 +400,8 @@ class CreateAclRequest(AbstractModel):
         :param ValidateTo: 访问权限失效时间，如:"2021-09-23T00:00:00+00:00"
 生效、失效时间不填则访问权限长期有效
         :type ValidateTo: str
+        :param DepartmentId: 访问权限所属部门的ID
+        :type DepartmentId: str
         """
         self.Name = None
         self.AllowDiskRedirect = None
@@ -418,6 +427,7 @@ class CreateAclRequest(AbstractModel):
         self.AllowFileDel = None
         self.ValidateFrom = None
         self.ValidateTo = None
+        self.DepartmentId = None
 
 
     def _deserialize(self, params):
@@ -445,6 +455,7 @@ class CreateAclRequest(AbstractModel):
         self.AllowFileDel = params.get("AllowFileDel")
         self.ValidateFrom = params.get("ValidateFrom")
         self.ValidateTo = params.get("ValidateTo")
+        self.DepartmentId = params.get("DepartmentId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -484,12 +495,16 @@ class CreateDeviceGroupRequest(AbstractModel):
         r"""
         :param Name: 资产组名，最大长度32字符
         :type Name: str
+        :param DepartmentId: 资产组所属部门ID，如：1.2.3
+        :type DepartmentId: str
         """
         self.Name = None
+        self.DepartmentId = None
 
 
     def _deserialize(self, params):
         self.Name = params.get("Name")
+        self.DepartmentId = params.get("DepartmentId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -529,12 +544,16 @@ class CreateUserGroupRequest(AbstractModel):
         r"""
         :param Name: 用户组名，最大长度32字符
         :type Name: str
+        :param DepartmentId: 用户组所属部门的ID，如：1.2.3
+        :type DepartmentId: str
         """
         self.Name = None
+        self.DepartmentId = None
 
 
     def _deserialize(self, params):
         self.Name = params.get("Name")
+        self.DepartmentId = params.get("DepartmentId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -592,6 +611,8 @@ class CreateUserRequest(AbstractModel):
         :type AuthType: int
         :param ValidateTime: 访问时间段限制， 由0、1组成的字符串，长度168(7 × 24)，代表该用户在一周中允许访问的时间段。字符串中第N个字符代表在一周中的第N个小时， 0 - 代表不允许访问，1 - 代表允许访问
         :type ValidateTime: str
+        :param DepartmentId: 所属部门ID，如：“1.2.3”
+        :type DepartmentId: str
         """
         self.UserName = None
         self.RealName = None
@@ -602,6 +623,7 @@ class CreateUserRequest(AbstractModel):
         self.GroupIdSet = None
         self.AuthType = None
         self.ValidateTime = None
+        self.DepartmentId = None
 
 
     def _deserialize(self, params):
@@ -614,6 +636,7 @@ class CreateUserRequest(AbstractModel):
         self.GroupIdSet = params.get("GroupIdSet")
         self.AuthType = params.get("AuthType")
         self.ValidateTime = params.get("ValidateTime")
+        self.DepartmentId = params.get("DepartmentId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -898,6 +921,39 @@ class DeleteUsersResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class Department(AbstractModel):
+    """部门信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: 部门ID
+        :type Id: str
+        :param Name: 部门名称，1 - 256个字符
+        :type Name: str
+        :param Managers: 部门管理员账号ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Managers: list of str
+        """
+        self.Id = None
+        self.Name = None
+        self.Managers = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.Name = params.get("Name")
+        self.Managers = params.get("Managers")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DescribeAclsRequest(AbstractModel):
     """DescribeAcls请求参数结构体
 
@@ -921,6 +977,8 @@ class DescribeAclsRequest(AbstractModel):
         :type AuthorizedDeviceIdSet: list of int non-negative
         :param Status: 访问权限状态，1 - 已生效，2 - 未生效，3 - 已过期
         :type Status: int
+        :param DepartmentId: 部门ID，用于过滤属于某个部门的访问权限
+        :type DepartmentId: str
         """
         self.IdSet = None
         self.Name = None
@@ -930,6 +988,7 @@ class DescribeAclsRequest(AbstractModel):
         self.AuthorizedUserIdSet = None
         self.AuthorizedDeviceIdSet = None
         self.Status = None
+        self.DepartmentId = None
 
 
     def _deserialize(self, params):
@@ -941,6 +1000,7 @@ class DescribeAclsRequest(AbstractModel):
         self.AuthorizedUserIdSet = params.get("AuthorizedUserIdSet")
         self.AuthorizedDeviceIdSet = params.get("AuthorizedDeviceIdSet")
         self.Status = params.get("Status")
+        self.DepartmentId = params.get("DepartmentId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1030,6 +1090,8 @@ class DescribeDeviceGroupMembersRequest(AbstractModel):
         :type Limit: int
         :param Kind: 资产类型，1 - Linux，2 - Windows，3 - MySQL，4 - SQLServer
         :type Kind: int
+        :param DepartmentId: 所属部门ID
+        :type DepartmentId: str
         """
         self.Id = None
         self.Bound = None
@@ -1037,6 +1099,7 @@ class DescribeDeviceGroupMembersRequest(AbstractModel):
         self.Offset = None
         self.Limit = None
         self.Kind = None
+        self.DepartmentId = None
 
 
     def _deserialize(self, params):
@@ -1046,6 +1109,7 @@ class DescribeDeviceGroupMembersRequest(AbstractModel):
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
         self.Kind = params.get("Kind")
+        self.DepartmentId = params.get("DepartmentId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1100,11 +1164,14 @@ class DescribeDeviceGroupsRequest(AbstractModel):
         :type Offset: int
         :param Limit: 每页条目数量，缺省20，最大500
         :type Limit: int
+        :param DepartmentId: 部门ID，用于过滤属于某个部门的资产组
+        :type DepartmentId: str
         """
         self.IdSet = None
         self.Name = None
         self.Offset = None
         self.Limit = None
+        self.DepartmentId = None
 
 
     def _deserialize(self, params):
@@ -1112,6 +1179,7 @@ class DescribeDeviceGroupsRequest(AbstractModel):
         self.Name = params.get("Name")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.DepartmentId = params.get("DepartmentId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1178,6 +1246,8 @@ class DescribeDevicesRequest(AbstractModel):
         :type ResourceIdSet: list of str
         :param KindSet: 可提供按照多种类型过滤, 1 - Linux, 2 - Windows, 3 - MySQL, 4 - SQLServer
         :type KindSet: list of int non-negative
+        :param DepartmentId: 过滤条件，可按照部门ID进行过滤
+        :type DepartmentId: str
         """
         self.IdSet = None
         self.Name = None
@@ -1189,6 +1259,7 @@ class DescribeDevicesRequest(AbstractModel):
         self.AuthorizedUserIdSet = None
         self.ResourceIdSet = None
         self.KindSet = None
+        self.DepartmentId = None
 
 
     def _deserialize(self, params):
@@ -1202,6 +1273,7 @@ class DescribeDevicesRequest(AbstractModel):
         self.AuthorizedUserIdSet = params.get("AuthorizedUserIdSet")
         self.ResourceIdSet = params.get("ResourceIdSet")
         self.KindSet = params.get("KindSet")
+        self.DepartmentId = params.get("DepartmentId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1316,12 +1388,15 @@ class DescribeUserGroupMembersRequest(AbstractModel):
         :type Offset: int
         :param Limit: 每页条目数量，默认20, 最大500
         :type Limit: int
+        :param DepartmentId: 所属部门ID
+        :type DepartmentId: str
         """
         self.Id = None
         self.Bound = None
         self.Name = None
         self.Offset = None
         self.Limit = None
+        self.DepartmentId = None
 
 
     def _deserialize(self, params):
@@ -1330,6 +1405,7 @@ class DescribeUserGroupMembersRequest(AbstractModel):
         self.Name = params.get("Name")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.DepartmentId = params.get("DepartmentId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1384,11 +1460,14 @@ class DescribeUserGroupsRequest(AbstractModel):
         :type Offset: int
         :param Limit: 每页条目数量，缺省20，最大500
         :type Limit: int
+        :param DepartmentId: 部门ID，用于过滤属于某个部门的用户组
+        :type DepartmentId: str
         """
         self.IdSet = None
         self.Name = None
         self.Offset = None
         self.Limit = None
+        self.DepartmentId = None
 
 
     def _deserialize(self, params):
@@ -1396,6 +1475,7 @@ class DescribeUserGroupsRequest(AbstractModel):
         self.Name = params.get("Name")
         self.Offset = params.get("Offset")
         self.Limit = params.get("Limit")
+        self.DepartmentId = params.get("DepartmentId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1459,6 +1539,8 @@ class DescribeUsersRequest(AbstractModel):
         :type AuthorizedDeviceIdSet: list of int non-negative
         :param AuthTypeSet: 认证方式，0 - 本地, 1 - LDAP, 2 - OAuth, 不传为全部
         :type AuthTypeSet: list of int non-negative
+        :param DepartmentId: 部门ID，用于过滤属于某个部门的用户
+        :type DepartmentId: str
         """
         self.IdSet = None
         self.Name = None
@@ -1468,6 +1550,7 @@ class DescribeUsersRequest(AbstractModel):
         self.Phone = None
         self.AuthorizedDeviceIdSet = None
         self.AuthTypeSet = None
+        self.DepartmentId = None
 
 
     def _deserialize(self, params):
@@ -1479,6 +1562,7 @@ class DescribeUsersRequest(AbstractModel):
         self.Phone = params.get("Phone")
         self.AuthorizedDeviceIdSet = params.get("AuthorizedDeviceIdSet")
         self.AuthTypeSet = params.get("AuthTypeSet")
+        self.DepartmentId = params.get("DepartmentId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1554,6 +1638,9 @@ class Device(AbstractModel):
         :param Resource: 堡垒机服务信息，注意没有绑定服务时为null
 注意：此字段可能返回 null，表示取不到有效值。
         :type Resource: :class:`tencentcloud.dasb.v20191018.models.Resource`
+        :param Department: 资产所属部门
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Department: :class:`tencentcloud.dasb.v20191018.models.Department`
         """
         self.Id = None
         self.InstanceId = None
@@ -1569,6 +1656,7 @@ class Device(AbstractModel):
         self.VpcId = None
         self.SubnetId = None
         self.Resource = None
+        self.Department = None
 
 
     def _deserialize(self, params):
@@ -1593,6 +1681,9 @@ class Device(AbstractModel):
         if params.get("Resource") is not None:
             self.Resource = Resource()
             self.Resource._deserialize(params.get("Resource"))
+        if params.get("Department") is not None:
+            self.Department = Department()
+            self.Department._deserialize(params.get("Department"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1613,14 +1704,21 @@ class Group(AbstractModel):
         :type Id: int
         :param Name: 组名称
         :type Name: str
+        :param Department: 所属部门信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Department: :class:`tencentcloud.dasb.v20191018.models.Department`
         """
         self.Id = None
         self.Name = None
+        self.Department = None
 
 
     def _deserialize(self, params):
         self.Id = params.get("Id")
         self.Name = params.get("Name")
+        if params.get("Department") is not None:
+            self.Department = Department()
+            self.Department._deserialize(params.get("Department"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1689,6 +1787,8 @@ class ModifyAclRequest(AbstractModel):
         :param ValidateTo: 访问权限失效时间，如:"2021-09-23T00:00:00+00:00"
 生效、失效时间不填则访问权限长期有效
         :type ValidateTo: str
+        :param DepartmentId: 权限所属部门的ID，如：1.2.3
+        :type DepartmentId: str
         """
         self.Name = None
         self.AllowDiskRedirect = None
@@ -1715,6 +1815,7 @@ class ModifyAclRequest(AbstractModel):
         self.AllowFileDel = None
         self.ValidateFrom = None
         self.ValidateTo = None
+        self.DepartmentId = None
 
 
     def _deserialize(self, params):
@@ -1743,6 +1844,7 @@ class ModifyAclRequest(AbstractModel):
         self.AllowFileDel = params.get("AllowFileDel")
         self.ValidateFrom = params.get("ValidateFrom")
         self.ValidateTo = params.get("ValidateTo")
+        self.DepartmentId = params.get("DepartmentId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1796,6 +1898,8 @@ class ModifyUserRequest(AbstractModel):
         :type AuthType: int
         :param ValidateTime: 访问时间段限制， 由0、1组成的字符串，长度168(7 × 24)，代表该用户在一周中允许访问的时间段。字符串中第N个字符代表在一周中的第N个小时， 0 - 代表不允许访问，1 - 代表允许访问
         :type ValidateTime: str
+        :param DepartmentId: 用户所属部门的ID，如1.2.3
+        :type DepartmentId: str
         """
         self.Id = None
         self.RealName = None
@@ -1806,6 +1910,7 @@ class ModifyUserRequest(AbstractModel):
         self.GroupIdSet = None
         self.AuthType = None
         self.ValidateTime = None
+        self.DepartmentId = None
 
 
     def _deserialize(self, params):
@@ -1818,6 +1923,7 @@ class ModifyUserRequest(AbstractModel):
         self.GroupIdSet = params.get("GroupIdSet")
         self.AuthType = params.get("AuthType")
         self.ValidateTime = params.get("ValidateTime")
+        self.DepartmentId = params.get("DepartmentId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2005,6 +2111,12 @@ class User(AbstractModel):
         :type AuthType: int
         :param ValidateTime: 访问时间段限制， 由0、1组成的字符串，长度168(7 × 24)，代表该用户在一周中允许访问的时间段。字符串中第N个字符代表在一周中的第N个小时， 0 - 代表不允许访问，1 - 代表允许访问
         :type ValidateTime: str
+        :param Department: 用户所属部门（用于出参）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Department: :class:`tencentcloud.dasb.v20191018.models.Department`
+        :param DepartmentId: 用户所属部门（用于入参）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DepartmentId: str
         """
         self.UserName = None
         self.RealName = None
@@ -2016,6 +2128,8 @@ class User(AbstractModel):
         self.GroupSet = None
         self.AuthType = None
         self.ValidateTime = None
+        self.Department = None
+        self.DepartmentId = None
 
 
     def _deserialize(self, params):
@@ -2034,6 +2148,10 @@ class User(AbstractModel):
                 self.GroupSet.append(obj)
         self.AuthType = params.get("AuthType")
         self.ValidateTime = params.get("ValidateTime")
+        if params.get("Department") is not None:
+            self.Department = Department()
+            self.Department._deserialize(params.get("Department"))
+        self.DepartmentId = params.get("DepartmentId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

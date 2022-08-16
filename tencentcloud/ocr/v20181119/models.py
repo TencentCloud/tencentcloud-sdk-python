@@ -6269,12 +6269,15 @@ ItemNames=["姓名","性别"]
         :type IsPdf: bool
         :param PdfPageNumber: 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
         :type PdfPageNumber: int
+        :param ReturnFullText: 是否开启全文字段识别，默认值为false，开启后可返回全文字段识别结果。
+        :type ReturnFullText: bool
         """
         self.ImageUrl = None
         self.ImageBase64 = None
         self.ItemNames = None
         self.IsPdf = None
         self.PdfPageNumber = None
+        self.ReturnFullText = None
 
 
     def _deserialize(self, params):
@@ -6283,6 +6286,7 @@ ItemNames=["姓名","性别"]
         self.ItemNames = params.get("ItemNames")
         self.IsPdf = params.get("IsPdf")
         self.PdfPageNumber = params.get("PdfPageNumber")
+        self.ReturnFullText = params.get("ReturnFullText")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

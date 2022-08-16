@@ -190,6 +190,8 @@ class AudioResultDetailMoanResult(AbstractModel):
         :param SubLabel: 该字段用于返回当前标签（Lable）下的二级标签。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubLabel: str
+        :param Suggestion: 该字段用于返回基于恶意标签的后续操作建议。当您获取到判定结果后，返回值表示系统推荐的后续操作；建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
+        :type Suggestion: str
         """
         self.Label = None
         self.Score = None
@@ -197,6 +199,7 @@ class AudioResultDetailMoanResult(AbstractModel):
         self.EndTime = None
         self.SubLabelCode = None
         self.SubLabel = None
+        self.Suggestion = None
 
 
     def _deserialize(self, params):
@@ -206,6 +209,7 @@ class AudioResultDetailMoanResult(AbstractModel):
         self.EndTime = params.get("EndTime")
         self.SubLabelCode = params.get("SubLabelCode")
         self.SubLabel = params.get("SubLabel")
+        self.Suggestion = params.get("Suggestion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

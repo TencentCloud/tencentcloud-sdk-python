@@ -6149,9 +6149,9 @@ class DescribeAssetUserInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Quuid: 服务器Quuid
+        :param Quuid: 云服务器UUID
         :type Quuid: str
-        :param Uuid: 服务器Uuid
+        :param Uuid: 主机安全UUID
         :type Uuid: str
         :param Name: 账户名
         :type Name: str

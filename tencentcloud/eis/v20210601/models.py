@@ -248,6 +248,13 @@ class ListRuntimeDeployedInstancesMCRequest(AbstractModel):
         :type Zone: str
         :param ApiVersion: 1:3.0版本新控制台传1；否则传0
         :type ApiVersion: int
+        :param GroupId: -1:不按项目筛选，获取所有
+>=0: 按项目id筛选
+        :type GroupId: int
+        :param Status: -2: 不按状态筛选，获取所有
+0: 运行中
+2: 已停止
+        :type Status: int
         """
         self.RuntimeId = None
         self.Limit = None
@@ -256,6 +263,8 @@ class ListRuntimeDeployedInstancesMCRequest(AbstractModel):
         self.Sort = None
         self.Zone = None
         self.ApiVersion = None
+        self.GroupId = None
+        self.Status = None
 
 
     def _deserialize(self, params):
@@ -266,6 +275,8 @@ class ListRuntimeDeployedInstancesMCRequest(AbstractModel):
         self.Sort = params.get("Sort")
         self.Zone = params.get("Zone")
         self.ApiVersion = params.get("ApiVersion")
+        self.GroupId = params.get("GroupId")
+        self.Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

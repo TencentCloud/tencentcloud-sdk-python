@@ -236,6 +236,9 @@ RESOURCEUNAVAILABLE_BACKUPLOCKEDERROR = 'ResourceUnavailable.BackupLockedError'
 # 备份状态异常，暂不能执行该操作。备份可能已过期或已被删除。
 RESOURCEUNAVAILABLE_BACKUPSTATUSABNORMAL = 'ResourceUnavailable.BackupStatusAbnormal'
 
+# 备份状态无效，可能在其他流程中，也可能被删除。
+RESOURCEUNAVAILABLE_BACKUPSTATUSINVALID = 'ResourceUnavailable.BackupStatusInvalid'
+
 # 调用后端接口失败。
 RESOURCEUNAVAILABLE_CALLOSSERROR = 'ResourceUnavailable.CallOssError'
 

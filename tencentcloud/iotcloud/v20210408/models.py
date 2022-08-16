@@ -979,6 +979,51 @@ class DeleteDeviceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteDeviceShadowRequest(AbstractModel):
+    """DeleteDeviceShadow请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProductId: 产品ID
+        :type ProductId: str
+        :param DeviceName: 设备名称
+        :type DeviceName: str
+        """
+        self.ProductId = None
+        self.DeviceName = None
+
+
+    def _deserialize(self, params):
+        self.ProductId = params.get("ProductId")
+        self.DeviceName = params.get("DeviceName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteDeviceShadowResponse(AbstractModel):
+    """DeleteDeviceShadow返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeletePrivateCARequest(AbstractModel):
     """DeletePrivateCA请求参数结构体
 

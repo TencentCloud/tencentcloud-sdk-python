@@ -138,9 +138,12 @@ class Box(AbstractModel):
         :type Rect: :class:`tencentcloud.tiia.v20190529.models.ImageRect`
         :param Score: 置信度。
         :type Score: float
+        :param CategoryId: 主体区域类目ID
+        :type CategoryId: int
         """
         self.Rect = None
         self.Score = None
+        self.CategoryId = None
 
 
     def _deserialize(self, params):
@@ -148,6 +151,7 @@ class Box(AbstractModel):
             self.Rect = ImageRect()
             self.Rect._deserialize(params.get("Rect"))
         self.Score = params.get("Score")
+        self.CategoryId = params.get("CategoryId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1767,7 +1771,7 @@ class ObjectInfo(AbstractModel):
         :type Colors: list of ColorInfo
         :param Attributes: 属性信息。
         :type Attributes: list of Attribute
-        :param AllBox: 图像的所有主体区域。
+        :param AllBox: 图像的所有主体区域，置信度，以及主体区域类别ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AllBox: list of Box
         """

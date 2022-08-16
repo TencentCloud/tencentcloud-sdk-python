@@ -2249,6 +2249,12 @@ RENEW_FLAG_DEFAULT：不自动续费
         :param OperationDuration: 集群可维护时间段
 注意：此字段可能返回 null，表示取不到有效值。
         :type OperationDuration: :class:`tencentcloud.es.v20180416.models.OperationDuration`
+        :param OptionalWebServiceInfos: web节点列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OptionalWebServiceInfos: list of OptionalWebServiceInfo
+        :param AutoIndexEnabled: 自治索引开关
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AutoIndexEnabled: bool
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -2326,6 +2332,8 @@ RENEW_FLAG_DEFAULT：不自动续费
         self.EsPrivateDomain = None
         self.EsConfigSets = None
         self.OperationDuration = None
+        self.OptionalWebServiceInfos = None
+        self.AutoIndexEnabled = None
 
 
     def _deserialize(self, params):
@@ -2441,6 +2449,13 @@ RENEW_FLAG_DEFAULT：不自动续费
         if params.get("OperationDuration") is not None:
             self.OperationDuration = OperationDuration()
             self.OperationDuration._deserialize(params.get("OperationDuration"))
+        if params.get("OptionalWebServiceInfos") is not None:
+            self.OptionalWebServiceInfos = []
+            for item in params.get("OptionalWebServiceInfos"):
+                obj = OptionalWebServiceInfo()
+                obj._deserialize(item)
+                self.OptionalWebServiceInfos.append(obj)
+        self.AutoIndexEnabled = params.get("AutoIndexEnabled")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3371,6 +3386,61 @@ class OperationDurationUpdated(AbstractModel):
         
 
 
+class OptionalWebServiceInfo(AbstractModel):
+    """可选web组件信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Type: 类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param Status: 状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param PublicUrl: 公网url
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PublicUrl: str
+        :param PrivateUrl: 内网url
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PrivateUrl: str
+        :param PublicAccess: 公网访问权限
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PublicAccess: str
+        :param PrivateAccess: 内网访问权限
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PrivateAccess: str
+        :param Version: 版本号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Version: str
+        """
+        self.Type = None
+        self.Status = None
+        self.PublicUrl = None
+        self.PrivateUrl = None
+        self.PublicAccess = None
+        self.PrivateAccess = None
+        self.Version = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.Status = params.get("Status")
+        self.PublicUrl = params.get("PublicUrl")
+        self.PrivateUrl = params.get("PrivateUrl")
+        self.PublicAccess = params.get("PublicAccess")
+        self.PrivateAccess = params.get("PrivateAccess")
+        self.Version = params.get("Version")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RestartInstanceRequest(AbstractModel):
     """RestartInstance请求参数结构体
 
@@ -3950,6 +4020,8 @@ class UpdateIndexRequest(AbstractModel):
         :type Username: str
         :param Password: 集群访问密码
         :type Password: str
+        :param RolloverBackingIndex: 是否滚动后备索引
+        :type RolloverBackingIndex: bool
         """
         self.InstanceId = None
         self.IndexType = None
@@ -3957,6 +4029,7 @@ class UpdateIndexRequest(AbstractModel):
         self.UpdateMetaJson = None
         self.Username = None
         self.Password = None
+        self.RolloverBackingIndex = None
 
 
     def _deserialize(self, params):
@@ -3966,6 +4039,7 @@ class UpdateIndexRequest(AbstractModel):
         self.UpdateMetaJson = params.get("UpdateMetaJson")
         self.Username = params.get("Username")
         self.Password = params.get("Password")
+        self.RolloverBackingIndex = params.get("RolloverBackingIndex")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
