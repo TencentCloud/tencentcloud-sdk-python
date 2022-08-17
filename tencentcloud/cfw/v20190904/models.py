@@ -1713,11 +1713,11 @@ class DescribeCfwEipsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Mode: 0：cfw新增模式，1：cfw接入模式
+        :param Mode: 1：cfw接入模式，目前仅支持接入模式实例
         :type Mode: int
         :param NatGatewayId: ALL：查询所有弹性公网ip; nat-xxxxx：接入模式场景指定网关的弹性公网ip
         :type NatGatewayId: str
-        :param CfwInstance: 防火墙实例id
+        :param CfwInstance: 防火墙实例id，当前仅支持接入模式的实例
         :type CfwInstance: str
         """
         self.Mode = None

@@ -258,6 +258,35 @@ class BmaClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateCRUserVerify(self, request):
+        """品牌经营管家-版权保护个人认证接口
+
+        :param request: Request instance for CreateCRUserVerify.
+        :type request: :class:`tencentcloud.bma.v20210624.models.CreateCRUserVerifyRequest`
+        :rtype: :class:`tencentcloud.bma.v20210624.models.CreateCRUserVerifyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCRUserVerify", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateCRUserVerifyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateCRWork(self, request):
         """版权保护-添加作品接口
 

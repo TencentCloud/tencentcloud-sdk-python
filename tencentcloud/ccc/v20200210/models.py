@@ -1368,7 +1368,7 @@ class DescribeStaffInfoListRequest(AbstractModel):
         r"""
         :param SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
         :type SdkAppId: int
-        :param PageSize: 分页尺寸，上限 100
+        :param PageSize: 分页尺寸，上限 9999
         :type PageSize: int
         :param PageNumber: 分页页码，从 0 开始
         :type PageNumber: int
@@ -1376,12 +1376,15 @@ class DescribeStaffInfoListRequest(AbstractModel):
         :type StaffMail: str
         :param ModifiedTime: 查询修改时间大于等于ModifiedTime的坐席时使用
         :type ModifiedTime: int
+        :param SkillGroupId: 技能组ID
+        :type SkillGroupId: int
         """
         self.SdkAppId = None
         self.PageSize = None
         self.PageNumber = None
         self.StaffMail = None
         self.ModifiedTime = None
+        self.SkillGroupId = None
 
 
     def _deserialize(self, params):
@@ -1390,6 +1393,7 @@ class DescribeStaffInfoListRequest(AbstractModel):
         self.PageNumber = params.get("PageNumber")
         self.StaffMail = params.get("StaffMail")
         self.ModifiedTime = params.get("ModifiedTime")
+        self.SkillGroupId = params.get("SkillGroupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

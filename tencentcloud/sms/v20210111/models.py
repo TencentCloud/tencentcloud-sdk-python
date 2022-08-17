@@ -1391,6 +1391,89 @@ class PullSmsSendStatusResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ReportConversionRequest(AbstractModel):
+    """ReportConversion请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SmsSdkAppId: 短信应用ID。在 [短信控制台](https://console.cloud.tencent.com/smsv2/app-manage)  添加应用后生成的实际 SdkAppId，示例如1400006666。
+        :type SmsSdkAppId: str
+        :param SerialNo: 发送短信返回的流水号。
+        :type SerialNo: str
+        :param ConversionTime: 用户回填时间，UNIX 时间戳（单位：秒）。
+        :type ConversionTime: int
+        """
+        self.SmsSdkAppId = None
+        self.SerialNo = None
+        self.ConversionTime = None
+
+
+    def _deserialize(self, params):
+        self.SmsSdkAppId = params.get("SmsSdkAppId")
+        self.SerialNo = params.get("SerialNo")
+        self.ConversionTime = params.get("ConversionTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReportConversionResponse(AbstractModel):
+    """ReportConversion返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ReportConversionStatus: 转化率上报响应包体。
+        :type ReportConversionStatus: :class:`tencentcloud.sms.v20210111.models.ReportConversionStatus`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ReportConversionStatus = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ReportConversionStatus") is not None:
+            self.ReportConversionStatus = ReportConversionStatus()
+            self.ReportConversionStatus._deserialize(params.get("ReportConversionStatus"))
+        self.RequestId = params.get("RequestId")
+
+
+class ReportConversionStatus(AbstractModel):
+    """转化率上报响应。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Code: 错误码。上报成功返回 ok。
+        :type Code: str
+        :param Message: 错误码描述。
+        :type Message: str
+        """
+        self.Code = None
+        self.Message = None
+
+
+    def _deserialize(self, params):
+        self.Code = params.get("Code")
+        self.Message = params.get("Message")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SendSmsRequest(AbstractModel):
     """SendSms请求参数结构体
 

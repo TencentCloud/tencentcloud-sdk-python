@@ -548,6 +548,35 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateEdgeCVMInstances(self, request):
+        """创建边缘容器CVM机器
+
+        :param request: Request instance for CreateEdgeCVMInstances.
+        :type request: :class:`tencentcloud.tke.v20180525.models.CreateEdgeCVMInstancesRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.CreateEdgeCVMInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateEdgeCVMInstances", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateEdgeCVMInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateEdgeLogConfig(self, request):
         """创建边缘集群日志采集配置
 

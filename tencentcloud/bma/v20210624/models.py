@@ -590,6 +590,71 @@ class CreateCRRightResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateCRUserVerifyRequest(AbstractModel):
+    """CreateCRUserVerify请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UserName: 用户真实姓名
+        :type UserName: str
+        :param UserID: 用户身份证ID
+        :type UserID: str
+        :param UserPhone: 用户手机号码
+        :type UserPhone: str
+        :param VerificationCode: 短信验证码
+        :type VerificationCode: str
+        :param Type: xxx
+        :type Type: str
+        """
+        self.UserName = None
+        self.UserID = None
+        self.UserPhone = None
+        self.VerificationCode = None
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.UserName = params.get("UserName")
+        self.UserID = params.get("UserID")
+        self.UserPhone = params.get("UserPhone")
+        self.VerificationCode = params.get("VerificationCode")
+        self.Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCRUserVerifyResponse(AbstractModel):
+    """CreateCRUserVerify返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Status: 认证状态 0-认证成功 1-认证失败
+        :type Status: int
+        :param Note: 认证结果返回
+        :type Note: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Status = None
+        self.Note = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.Note = params.get("Note")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateCRWorkRequest(AbstractModel):
     """CreateCRWork请求参数结构体
 

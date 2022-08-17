@@ -1294,7 +1294,7 @@ ContinueBreakPoint：播放完当前正在播放的点播 url 后再使用新的
         :param Comment: 任务描述，限制 512 字节。
         :type Comment: str
         :param ToUrl: 完整目标 URL 地址。
-用法注意：如果使用该参数来传完整目标地址，则 DomainName, AppName, StreamName 需要传入空值，任务将会使用该 ToUrl 参数指定的目标地址。
+用法注意：如果使用该参数来传完整目标地址，则 DomainName, AppName, StreamName 需要传入空字符串，任务将会使用该 ToUrl 参数指定的目标地址。
 
 注意：签名时间需要超过任务结束时间，避免因签名过期造成任务失败。
         :type ToUrl: str
@@ -1309,6 +1309,12 @@ PullVodPushLive -点播。
         :param BackupSourceUrl: 备源 URL。
 只允许填一个备源 URL
         :type BackupSourceUrl: str
+        :param WatermarkList: 水印信息列表。
+注意：
+1. 最多支持4个不同位置的水印。
+2. 水印图片 URL 请使用合法外网可访问地址。
+3. 支持的水印图片格式：png，jpg，gif 等。
+        :type WatermarkList: list of PullPushWatermarkInfo
         """
         self.SourceType = None
         self.SourceUrls = None
@@ -1328,6 +1334,7 @@ PullVodPushLive -点播。
         self.ToUrl = None
         self.BackupSourceType = None
         self.BackupSourceUrl = None
+        self.WatermarkList = None
 
 
     def _deserialize(self, params):
@@ -1349,6 +1356,12 @@ PullVodPushLive -点播。
         self.ToUrl = params.get("ToUrl")
         self.BackupSourceType = params.get("BackupSourceType")
         self.BackupSourceUrl = params.get("BackupSourceUrl")
+        if params.get("WatermarkList") is not None:
+            self.WatermarkList = []
+            for item in params.get("WatermarkList"):
+                obj = PullPushWatermarkInfo()
+                obj._deserialize(item)
+                self.WatermarkList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8428,6 +8441,16 @@ PullVodPushLive -点播。
         :param BackupSourceUrl: 备源 URL。
 只允许填一个备源 URL
         :type BackupSourceUrl: str
+        :param WatermarkList: 水印信息列表。
+注意：
+1. 最多支持4个不同位置的水印。
+2. 水印图片 URL 请使用合法外网可访问地址。
+3. 支持的水印图片格式：png，jpg等。
+4. 轮播任务修改水印后，轮播到下一个文件时新水印生效。
+5. 直播源任务修改水印后，水印立即生效。
+6. 清除水印时，需携带该水印列表参数，内容为空数组。
+7. 暂不支持动图水印。
+        :type WatermarkList: list of PullPushWatermarkInfo
         """
         self.TaskId = None
         self.Operator = None
@@ -8444,6 +8467,7 @@ PullVodPushLive -点播。
         self.Comment = None
         self.BackupSourceType = None
         self.BackupSourceUrl = None
+        self.WatermarkList = None
 
 
     def _deserialize(self, params):
@@ -8462,6 +8486,12 @@ PullVodPushLive -点播。
         self.Comment = params.get("Comment")
         self.BackupSourceType = params.get("BackupSourceType")
         self.BackupSourceUrl = params.get("BackupSourceUrl")
+        if params.get("WatermarkList") is not None:
+            self.WatermarkList = []
+            for item in params.get("WatermarkList"):
+                obj = PullPushWatermarkInfo()
+                obj._deserialize(item)
+                self.WatermarkList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9341,6 +9371,56 @@ UTC 格式，例如：2018-06-29T19:00:00Z。
         
 
 
+class PullPushWatermarkInfo(AbstractModel):
+    """云转推水印信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PictureUrl: 水印图片 URL。
+URL中禁止包含的字符：
+;(){}$>`#"'|
+        :type PictureUrl: str
+        :param XPosition: 显示位置，X轴偏移，单位是百分比，默认 0。
+        :type XPosition: int
+        :param YPosition: 显示位置，Y轴偏移，单位是百分比，默认 0。
+        :type YPosition: int
+        :param Width: 水印宽度，占直播原始画面宽度百分比，建议高宽只设置一项，另外一项会自适应缩放，避免变形。默认原始宽度。
+        :type Width: int
+        :param Height: 水印高度，占直播原始画面高度百分比，建议高宽只设置一项，另外一项会自适应缩放，避免变形。默认原始高度。
+        :type Height: int
+        :param Location: 水印位置，默认 0。
+0：左上角。
+1：右上角。
+2：右下角。
+3：左下角。
+        :type Location: int
+        """
+        self.PictureUrl = None
+        self.XPosition = None
+        self.YPosition = None
+        self.Width = None
+        self.Height = None
+        self.Location = None
+
+
+    def _deserialize(self, params):
+        self.PictureUrl = params.get("PictureUrl")
+        self.XPosition = params.get("XPosition")
+        self.YPosition = params.get("YPosition")
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
+        self.Location = params.get("Location")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PullStreamConfig(AbstractModel):
     """拉流配置。
 
@@ -9502,6 +9582,17 @@ pause：暂停中。
         :type RecentPullInfo: :class:`tencentcloud.live.v20180801.models.RecentPullInfo`
         :param Comment: 任务备注信息。
         :type Comment: str
+        :param BackupSourceType: 备源类型：
+PullLivePushLive -直播，
+PullVodPushLive -点播。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BackupSourceType: str
+        :param BackupSourceUrl: 备源URL。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BackupSourceUrl: str
+        :param WatermarkList: 水印信息列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WatermarkList: list of PullPushWatermarkInfo
         """
         self.TaskId = None
         self.SourceType = None
@@ -9526,6 +9617,9 @@ pause：暂停中。
         self.Status = None
         self.RecentPullInfo = None
         self.Comment = None
+        self.BackupSourceType = None
+        self.BackupSourceUrl = None
+        self.WatermarkList = None
 
 
     def _deserialize(self, params):
@@ -9554,6 +9648,14 @@ pause：暂停中。
             self.RecentPullInfo = RecentPullInfo()
             self.RecentPullInfo._deserialize(params.get("RecentPullInfo"))
         self.Comment = params.get("Comment")
+        self.BackupSourceType = params.get("BackupSourceType")
+        self.BackupSourceUrl = params.get("BackupSourceUrl")
+        if params.get("WatermarkList") is not None:
+            self.WatermarkList = []
+            for item in params.get("WatermarkList"):
+                obj = PullPushWatermarkInfo()
+                obj._deserialize(item)
+                self.WatermarkList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

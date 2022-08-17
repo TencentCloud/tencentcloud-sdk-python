@@ -2746,6 +2746,75 @@ class CreateEKSContainerInstancesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateEdgeCVMInstancesRequest(AbstractModel):
+    """CreateEdgeCVMInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterID: 集群id
+        :type ClusterID: str
+        :param RunInstancePara: CVM创建透传参数，json化字符串格式，如需要保证扩展集群节点请求幂等性需要在此参数添加ClientToken字段，详见[CVM创建实例](https://cloud.tencent.com/document/product/213/15730)接口。
+        :type RunInstancePara: str
+        :param CvmRegion: CVM所属Region
+        :type CvmRegion: str
+        :param CvmCount: CVM数量
+        :type CvmCount: int
+        :param External: 实例扩展信息
+        :type External: str
+        :param UserScript: 用户自定义脚本
+        :type UserScript: str
+        :param EnableEni: 是否开启弹性网卡功能
+        :type EnableEni: bool
+        """
+        self.ClusterID = None
+        self.RunInstancePara = None
+        self.CvmRegion = None
+        self.CvmCount = None
+        self.External = None
+        self.UserScript = None
+        self.EnableEni = None
+
+
+    def _deserialize(self, params):
+        self.ClusterID = params.get("ClusterID")
+        self.RunInstancePara = params.get("RunInstancePara")
+        self.CvmRegion = params.get("CvmRegion")
+        self.CvmCount = params.get("CvmCount")
+        self.External = params.get("External")
+        self.UserScript = params.get("UserScript")
+        self.EnableEni = params.get("EnableEni")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateEdgeCVMInstancesResponse(AbstractModel):
+    """CreateEdgeCVMInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CvmIdSet: cvm id 列表
+        :type CvmIdSet: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.CvmIdSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.CvmIdSet = params.get("CvmIdSet")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateEdgeLogConfigRequest(AbstractModel):
     """CreateEdgeLogConfig请求参数结构体
 

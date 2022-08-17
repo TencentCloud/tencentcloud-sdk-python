@@ -2239,19 +2239,27 @@ class DDoSAcl(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DportEnd: 目的端口end
+        :param DportEnd: 目的端口结束，取值范围0-65535。
         :type DportEnd: int
-        :param DportStart: 目的端口start
+        :param DportStart: 目的端口开始，取值范围0-65535。
         :type DportStart: int
-        :param SportEnd: 源端口end
+        :param SportEnd: 源端口结束，取值范围0-65535。
         :type SportEnd: int
-        :param SportStart: 源端口start
+        :param SportStart: 源端口开始，取值范围0-65535。
         :type SportStart: int
-        :param Protocol: 协议 'tcp', 'udp', 'all'
+        :param Protocol: 协议，取值有：
+<li>tcp ：tcp协议 ；</li>
+<li>udp ：udp协议 ；</li>
+<li>all ：全部协议 。</li>
         :type Protocol: str
-        :param Action: 动作  drop-丢弃,；transmit-放行； forward-继续防护
+        :param Action: 执行动作，取值为：
+<li>drop ：丢弃 ；</li>
+<li>transmit ：放行 ；</li>
+<li>forward ：继续防护 。</li>
         :type Action: str
-        :param Default: 是否为系统配置 0-人工配置；1-系统配置
+        :param Default: 是否为系统配置，取值为：
+<li>0 ：修改配置 ；</li>
+<li>1 ：系统默认配置 。</li>
         :type Default: int
         """
         self.DportEnd = None
@@ -2287,34 +2295,45 @@ class DDoSAntiPly(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DropTcp: tcp协议封禁 on-开；off-关
+        :param DropTcp: tcp协议封禁，取值有：
+<li>off ：关闭 ；</li>
+<li>on ：开启 。</li>
         :type DropTcp: str
-        :param DropUdp: udp协议封禁 on-开；off-关
+        :param DropUdp: udp协议封禁，取值有：
+<li>off ：关闭 ；</li>
+<li>on ：开启 。</li>
         :type DropUdp: str
-        :param DropIcmp: icmp协议封禁 on-开；off-关
+        :param DropIcmp: icmp协议封禁，取值有：
+<li>off ：关闭 ；</li>
+<li>on ：开启 。</li>
         :type DropIcmp: str
-        :param DropOther: 其他协议封禁 on-开；off-关
+        :param DropOther: 其他协议封禁，取值有：
+<li>off ：关闭 ；</li>
+<li>on ：开启 。</li>
         :type DropOther: str
-        :param SourceCreateLimit: 源每秒新建数限制  0-4294967295
+        :param SourceCreateLimit: 源站每秒新连接限速，取值范围0-4294967295。
         :type SourceCreateLimit: int
-        :param SourceConnectLimit: 源并发连接控制 0-4294967295
+        :param SourceConnectLimit: 源站并发连接控制，取值范围0-4294967295。
         :type SourceConnectLimit: int
-        :param DestinationCreateLimit: 目的每秒新建数限制 0-4294967295
+        :param DestinationCreateLimit: 目的端口每秒新连接限速，取值范围0-4294967295。
         :type DestinationCreateLimit: int
-        :param DestinationConnectLimit: 目的端口的并发连接控制 0-4294967295
+        :param DestinationConnectLimit: 目的端口并发连接控制，取值范围0-4294967295。
         :type DestinationConnectLimit: int
-        :param AbnormalConnectNum: 异常连接数阈值  0-4294967295
+        :param AbnormalConnectNum: 每秒异常连接数阈值，取值范围0-4294967295。
         :type AbnormalConnectNum: int
-        :param AbnormalSynRatio: syn占比异常阈值 0-100
+        :param AbnormalSynRatio: 异常syn报文百分比阈值，取值范围0-100。
         :type AbnormalSynRatio: int
-        :param AbnormalSynNum: syn个数异常阈值 0-65535
+        :param AbnormalSynNum: 异常syn报文阈值，取值范围0-65535。
         :type AbnormalSynNum: int
-        :param ConnectTimeout: 连接超时检测 0-65535
+        :param ConnectTimeout: 每秒连接超时检测，取值范围0-65535。
         :type ConnectTimeout: int
-        :param EmptyConnectProtect: 空连接防护开启 0-1
+        :param EmptyConnectProtect: 空连接防护开启，取值有：
+<li>off ：关闭 ；</li>
+<li>on ：开启 。</li>
         :type EmptyConnectProtect: str
-        :param UdpShard: UDP分片开关；off-关闭，on-开启
-注意：此字段可能返回 null，表示取不到有效值。
+        :param UdpShard: UDP分片开关，取值有：
+<li>off ：关闭 ；</li>
+<li>on ：开启 。</li>
         :type UdpShard: str
         """
         self.DropTcp = None
@@ -2432,94 +2451,116 @@ class DDoSFeaturesFilter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Action: 动作 drop-丢弃；transmit-放行；drop_block-丢弃并拉黑；forward-继续防护
+        :param Action: 执行动作，取值有：
+<li>drop ：丢弃 ；</li>
+<li>transmit ：放行 ；</li>
+<li>drop_block ：丢弃并拉黑 ；</li>
+<li>forward ：继续防护 。</li>
         :type Action: str
-        :param Depth: 深度值1
-        :type Depth: int
-        :param Depth2: 深度值2
-        :type Depth2: int
-        :param DportEnd: 目标端口结束
-        :type DportEnd: int
-        :param DportStart: 目标端口开始
-        :type DportStart: int
-        :param IsNot: 取非判断1
-        :type IsNot: int
-        :param IsNot2: 取非判断2
-        :type IsNot2: int
-        :param MatchLogic: 多特征关系（单特征时(none)，第二特征相关配置可不填） none；and；or
-        :type MatchLogic: str
-        :param MatchType: 匹配方式1 pcre-正则匹配, sunday-字符串匹配
-        :type MatchType: str
-        :param MatchType2: 匹配方式2 pcre-正则匹配, sunday-字符串匹配
-        :type MatchType2: str
-        :param Offset: 偏移量1
-        :type Offset: int
-        :param Offset2: 偏移量2
-        :type Offset2: int
-        :param PacketMax: 最大包长
-        :type PacketMax: int
-        :param PacketMin: 最小包长
-        :type PacketMin: int
-        :param Protocol: 协议 tcp；udp；icmp；all
+        :param Protocol: 协议，取值有：
+<li>tcp ：tcp协议 ；</li>
+<li>udp ：udp协议 ；</li>
+<li>icmp ：icmp协议 ；</li>
+<li>all ：全部协议 。</li>
         :type Protocol: str
-        :param SportEnd: 源端口结束
-        :type SportEnd: int
-        :param SportStart: 源端口开始
+        :param DportStart: 目标端口开始，取值范围0-65535。
+        :type DportStart: int
+        :param DportEnd: 目标端口结束，取值范围0-65535。
+        :type DportEnd: int
+        :param PacketMin: 最小包长，取值范围0-1500。
+        :type PacketMin: int
+        :param PacketMax: 最大包长，取值范围0-1500。
+        :type PacketMax: int
+        :param SportStart: 源端口开始，取值范围0-65535。
         :type SportStart: int
-        :param Str: 匹配字符串1
-        :type Str: str
-        :param Str2: 匹配字符串2
-        :type Str2: str
-        :param MatchBegin: 匹配开始层级，层级参考计算机网络结构 begin_l5, no_match, begin_l3, begin_l4
+        :param SportEnd: 源端口结束，取值范围0-65535。
+        :type SportEnd: int
+        :param MatchType: 匹配方式1，【特征1】，取值有：
+<li>pcre ：正则匹配 ；</li>
+<li>sunday ：字符串匹配 。</li>默认为空字符串。
+        :type MatchType: str
+        :param IsNot: 取非判断，该参数对MatchType配合使用，【特征1】，取值有：
+<li>0 ：匹配 ；</li>
+<li>1 ：不匹配 。</li>
+        :type IsNot: int
+        :param Offset: 偏移量1，【特征1】，取值范围0-1500。
+        :type Offset: int
+        :param Depth: 检测包字符深度，【特征1】，取值范围1-1500。
+        :type Depth: int
+        :param MatchBegin: 匹配开始层级，层级参考计算机网络结构，取值有：
+<li>begin_l5 ：载荷开始检测 ；</li>
+<li>begin_l4 ：tcp/udp首部开始检测 ；</li>
+<li>begin_l3 ：ip首部开始检测 。</li>
         :type MatchBegin: str
-        :param MatchBegin2: 匹配开始层级，层级参考计算机网络结构 begin_l5, no_match, begin_l3, begin_l4
+        :param Str: 正则或字符串匹配的内容，【特征1】。
+        :type Str: str
+        :param MatchType2: 匹配方式2，【特征2】，取值有：
+<li>pcre ：正则匹配 ；</li>
+<li>sunday ：字符串匹配 。</li>默认为空字符串。
+        :type MatchType2: str
+        :param IsNot2: 取非判断2，该参数对MatchType2配合使用，【特征2】，取值有：
+<li>0 ：匹配 ；</li>
+<li>1 ：不匹配 。</li>
+        :type IsNot2: int
+        :param Offset2: 偏移量2，【特征2】，取值范围0-1500。
+        :type Offset2: int
+        :param Depth2: 检测包字符深度，【特征2】，取值范围1-1500。
+        :type Depth2: int
+        :param MatchBegin2: 匹配开始层级，层级参考计算机网络结构，取值有：
+<li>begin_l5 ：载荷开始检测 ；</li>
+<li>begin_l4 ：tcp/udp首部开始检测；</li>
+<li>begin_l3 ：ip首部开始检测 。</li>
         :type MatchBegin2: str
+        :param Str2: 正则或字符串匹配的内容，【特征2】。
+        :type Str2: str
+        :param MatchLogic: 多特征关系，仅配置【特征1】时填 none，存在【特征2】配置可不填。
+        :type MatchLogic: str
         """
         self.Action = None
-        self.Depth = None
-        self.Depth2 = None
-        self.DportEnd = None
-        self.DportStart = None
-        self.IsNot = None
-        self.IsNot2 = None
-        self.MatchLogic = None
-        self.MatchType = None
-        self.MatchType2 = None
-        self.Offset = None
-        self.Offset2 = None
-        self.PacketMax = None
-        self.PacketMin = None
         self.Protocol = None
-        self.SportEnd = None
+        self.DportStart = None
+        self.DportEnd = None
+        self.PacketMin = None
+        self.PacketMax = None
         self.SportStart = None
-        self.Str = None
-        self.Str2 = None
+        self.SportEnd = None
+        self.MatchType = None
+        self.IsNot = None
+        self.Offset = None
+        self.Depth = None
         self.MatchBegin = None
+        self.Str = None
+        self.MatchType2 = None
+        self.IsNot2 = None
+        self.Offset2 = None
+        self.Depth2 = None
         self.MatchBegin2 = None
+        self.Str2 = None
+        self.MatchLogic = None
 
 
     def _deserialize(self, params):
         self.Action = params.get("Action")
-        self.Depth = params.get("Depth")
-        self.Depth2 = params.get("Depth2")
-        self.DportEnd = params.get("DportEnd")
-        self.DportStart = params.get("DportStart")
-        self.IsNot = params.get("IsNot")
-        self.IsNot2 = params.get("IsNot2")
-        self.MatchLogic = params.get("MatchLogic")
-        self.MatchType = params.get("MatchType")
-        self.MatchType2 = params.get("MatchType2")
-        self.Offset = params.get("Offset")
-        self.Offset2 = params.get("Offset2")
-        self.PacketMax = params.get("PacketMax")
-        self.PacketMin = params.get("PacketMin")
         self.Protocol = params.get("Protocol")
-        self.SportEnd = params.get("SportEnd")
+        self.DportStart = params.get("DportStart")
+        self.DportEnd = params.get("DportEnd")
+        self.PacketMin = params.get("PacketMin")
+        self.PacketMax = params.get("PacketMax")
         self.SportStart = params.get("SportStart")
-        self.Str = params.get("Str")
-        self.Str2 = params.get("Str2")
+        self.SportEnd = params.get("SportEnd")
+        self.MatchType = params.get("MatchType")
+        self.IsNot = params.get("IsNot")
+        self.Offset = params.get("Offset")
+        self.Depth = params.get("Depth")
         self.MatchBegin = params.get("MatchBegin")
+        self.Str = params.get("Str")
+        self.MatchType2 = params.get("MatchType2")
+        self.IsNot2 = params.get("IsNot2")
+        self.Offset2 = params.get("Offset2")
+        self.Depth2 = params.get("Depth2")
         self.MatchBegin2 = params.get("MatchBegin2")
+        self.Str2 = params.get("Str2")
+        self.MatchLogic = params.get("MatchLogic")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2536,20 +2577,20 @@ class DDoSGeoIp(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RegionId: 地域信息，ID参考接口DescribeSecurityPolicyRegions
-注意：此字段可能返回 null，表示取不到有效值。
-        :type RegionId: list of int
-        :param Switch: 区域封禁清空标识
-注意：此字段可能返回 null，表示取不到有效值。
+        :param Switch: 区域封禁清空标识，取值有：
+<li>off ：清空地域封禁列表 ；</li>
+<li>on ：不做处理 。</li>
         :type Switch: str
+        :param RegionId: 地域信息，ID参考[DescribeSecurityPolicyRegions](https://tcloud4api.woa.com/document/product/1657/76031?!preview&!document=1)。
+        :type RegionId: list of int
         """
-        self.RegionId = None
         self.Switch = None
+        self.RegionId = None
 
 
     def _deserialize(self, params):
-        self.RegionId = params.get("RegionId")
         self.Switch = params.get("Switch")
+        self.RegionId = params.get("RegionId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2566,11 +2607,14 @@ class DDoSStatusInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param AiStatus: 不支持，填off
+        :param AiStatus: 暂不支持，默认值off。
         :type AiStatus: str
-        :param Appid: 用户appid
+        :param Appid: 废弃字段。
         :type Appid: str
-        :param PlyLevel: 策略等级 low, middle, high
+        :param PlyLevel: 策略等级，取值有:
+<li>low ：宽松 ；</li>
+<li>middle ：适中 ；</li>
+<li>high : 严格。 </li>
         :type PlyLevel: str
         """
         self.AiStatus = None
@@ -2598,23 +2642,19 @@ class DDoSUserAllowBlockIP(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Ip: 用户ip
-注意：此字段可能返回 null，表示取不到有效值。
+        :param Ip: 客户端IP。
         :type Ip: str
-        :param Mask: 掩码
-注意：此字段可能返回 null，表示取不到有效值。
+        :param Mask: 掩码。
         :type Mask: int
-        :param Type: 类型 block-丢弃；allow-允许
-注意：此字段可能返回 null，表示取不到有效值。
+        :param Type: 类型，取值有：
+<li>block ：丢弃 ；</li>
+<li>allow ：允许。</li>
         :type Type: str
-        :param UpdateTime: 时间戳
-注意：此字段可能返回 null，表示取不到有效值。
+        :param UpdateTime: 10位时间戳，例如1199116800。
         :type UpdateTime: int
-        :param Ip2: 用户ip范围截止
-注意：此字段可能返回 null，表示取不到有效值。
+        :param Ip2: 客户端IP2，设置IP范围时使用，例如 1.1.1.1-1.1.1.2。
         :type Ip2: str
-        :param Mask2: 掩码截止范围
-注意：此字段可能返回 null，表示取不到有效值。
+        :param Mask2: 掩码2，设置IP网段范围时使用，例如 1.1.1.0/24-1.1.2.0/24。
         :type Mask2: int
         """
         self.Ip = None
@@ -3019,23 +3059,25 @@ class DdosAcls(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Switch: 开关 off清空规则标识
-        :type Switch: str
-        :param Acl: 端口过了详细参数
+        :param Acl: 端口过滤规则数组。
         :type Acl: list of DDoSAcl
+        :param Switch: 清空规则标识，取值有：
+<li>off ：清空端口过滤规则列表，Acl无需填写。 ；</li>
+<li>on ：配置端口过滤规则，需填写Acl参数。</li>默认值为on。
+        :type Switch: str
         """
-        self.Switch = None
         self.Acl = None
+        self.Switch = None
 
 
     def _deserialize(self, params):
-        self.Switch = params.get("Switch")
         if params.get("Acl") is not None:
             self.Acl = []
             for item in params.get("Acl"):
                 obj = DDoSAcl()
                 obj._deserialize(item)
                 self.Acl.append(obj)
+        self.Switch = params.get("Switch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3052,23 +3094,25 @@ class DdosAllowBlock(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Switch: 开关标识防护是否清空
-        :type Switch: str
-        :param UserAllowBlockIp: 黑白名单数组
+        :param UserAllowBlockIp: 黑白名单数组。
         :type UserAllowBlockIp: list of DDoSUserAllowBlockIP
+        :param Switch: 开关标识防护是否清空，取值有：
+<li>off ：清空黑白名单列表，UserAllowBlockIp无需填写。 ；</li>
+<li>on ：配置黑白名单，需填写UserAllowBlockIp参数。</li>默认值为on。
+        :type Switch: str
         """
-        self.Switch = None
         self.UserAllowBlockIp = None
+        self.Switch = None
 
 
     def _deserialize(self, params):
-        self.Switch = params.get("Switch")
         if params.get("UserAllowBlockIp") is not None:
             self.UserAllowBlockIp = []
             for item in params.get("UserAllowBlockIp"):
                 obj = DDoSUserAllowBlockIP()
                 obj._deserialize(item)
                 self.UserAllowBlockIp.append(obj)
+        self.Switch = params.get("Switch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3085,23 +3129,25 @@ class DdosPacketFilter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Switch: 特征过滤清空标识，off清空处理
-        :type Switch: str
-        :param PacketFilter: 特征过滤数组
+        :param PacketFilter: 特征过滤规则数组。
         :type PacketFilter: list of DDoSFeaturesFilter
+        :param Switch: 特征过滤清空标识，取值有：
+<li>off ：清空特征过滤规则，无需填写 PacketFilter 参数 ；</li>
+<li>on ：配置特征过滤规则，需填写 PacketFilter 参数。</li>默认值为on。
+        :type Switch: str
         """
-        self.Switch = None
         self.PacketFilter = None
+        self.Switch = None
 
 
     def _deserialize(self, params):
-        self.Switch = params.get("Switch")
         if params.get("PacketFilter") is not None:
             self.PacketFilter = []
             for item in params.get("PacketFilter"):
                 obj = DDoSFeaturesFilter()
                 obj._deserialize(item)
                 self.PacketFilter.append(obj)
+        self.Switch = params.get("Switch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3118,30 +3164,35 @@ class DdosRule(AbstractModel):
 
     def __init__(self):
         r"""
-        :param DdosStatusInfo: DDoS防护等级
+        :param DdosStatusInfo: DDoS防护等级。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DdosStatusInfo: :class:`tencentcloud.teo.v20220106.models.DDoSStatusInfo`
-        :param DdosGeoIp: DDoS地域封禁
+        :param DdosGeoIp: DDoS地域封禁。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DdosGeoIp: :class:`tencentcloud.teo.v20220106.models.DDoSGeoIp`
-        :param DdosAllowBlock: DDoS黑白名单
+        :param DdosAllowBlock: DDoS黑白名单。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DdosAllowBlock: :class:`tencentcloud.teo.v20220106.models.DdosAllowBlock`
-        :param DdosAntiPly: DDoS 协议封禁+连接防护
+        :param DdosAntiPly: DDoS 协议封禁+连接防护。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DdosAntiPly: :class:`tencentcloud.teo.v20220106.models.DDoSAntiPly`
-        :param DdosPacketFilter: DDoS特征过滤
+        :param DdosPacketFilter: DDoS特征过滤。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DdosPacketFilter: :class:`tencentcloud.teo.v20220106.models.DdosPacketFilter`
-        :param DdosAcl: DDoS端口过滤
+        :param DdosAcl: DDoS端口过滤。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DdosAcl: :class:`tencentcloud.teo.v20220106.models.DdosAcls`
-        :param Switch: DDoS开关 on-开启；off-关闭
-注意：此字段可能返回 null，表示取不到有效值。
+        :param Switch: DDoS开关，取值有:
+<li>on ：开启 ；</li>
+<li>off ：关闭 。</li>
         :type Switch: str
-        :param UdpShardOpen: UDP分片功能是否支持，off-不支持，on-支持
-注意：此字段可能返回 null，表示取不到有效值。
+        :param UdpShardOpen: UDP分片功能是否支持，取值有:
+<li>on ：支持 ；</li>
+<li>off ：不支持 。</li>
         :type UdpShardOpen: str
+        :param DdosSpeedLimit: DDoS源站访问速率限制。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DdosSpeedLimit: :class:`tencentcloud.teo.v20220106.models.DdosSpeedLimit`
         """
         self.DdosStatusInfo = None
         self.DdosGeoIp = None
@@ -3151,6 +3202,7 @@ class DdosRule(AbstractModel):
         self.DdosAcl = None
         self.Switch = None
         self.UdpShardOpen = None
+        self.DdosSpeedLimit = None
 
 
     def _deserialize(self, params):
@@ -3174,6 +3226,37 @@ class DdosRule(AbstractModel):
             self.DdosAcl._deserialize(params.get("DdosAcl"))
         self.Switch = params.get("Switch")
         self.UdpShardOpen = params.get("UdpShardOpen")
+        if params.get("DdosSpeedLimit") is not None:
+            self.DdosSpeedLimit = DdosSpeedLimit()
+            self.DdosSpeedLimit._deserialize(params.get("DdosSpeedLimit"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DdosSpeedLimit(AbstractModel):
+    """DDoS端口限速
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PackageLimit: 源站包量限制，支持单位有pps、Kpps、Mpps、Gpps。支持范围1 pps-10000 Gpps。"0 pps"或其他单位数值为0，即不限包。""为不更新。
+        :type PackageLimit: str
+        :param FluxLimit: 源站流量限制，支持单位有bps、Kbps、Mbps、Gbps，支持范围1 bps-10000 Gbps。"0 bps"或其他单位数值为0，即不限流。""为不更新。
+        :type FluxLimit: str
+        """
+        self.PackageLimit = None
+        self.FluxLimit = None
+
+
+    def _deserialize(self, params):
+        self.PackageLimit = params.get("PackageLimit")
+        self.FluxLimit = params.get("FluxLimit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9080,11 +9163,11 @@ class ModifyDDoSPolicyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PolicyId: 策略组ID
+        :param PolicyId: 策略id。
         :type PolicyId: int
-        :param ZoneId: 一级域名
+        :param ZoneId: 站点id。
         :type ZoneId: str
-        :param DdosRule: DDoS具体防护配置
+        :param DdosRule: DDoS防护配置详情。
         :type DdosRule: :class:`tencentcloud.teo.v20220106.models.DdosRule`
         """
         self.PolicyId = None
@@ -9114,7 +9197,7 @@ class ModifyDDoSPolicyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PolicyId: 策略组ID
+        :param PolicyId: 策略id。
         :type PolicyId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

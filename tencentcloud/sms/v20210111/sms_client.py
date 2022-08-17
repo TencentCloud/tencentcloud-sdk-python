@@ -471,6 +471,36 @@ class SmsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ReportConversion(self, request):
+        """短信转化率上报。将已接收到短信的流水号上报到腾讯云短信服务。
+        >- 注：当前接口以白名单方式对外开放，如有需要请联系 [腾讯云短信小助手](https://cloud.tencent.com/document/product/382/3773#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81) 开通。
+
+        :param request: Request instance for ReportConversion.
+        :type request: :class:`tencentcloud.sms.v20210111.models.ReportConversionRequest`
+        :rtype: :class:`tencentcloud.sms.v20210111.models.ReportConversionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ReportConversion", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ReportConversionResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def SendSms(self, request):
         """短信发送接口，用于给用户发短信验证码、通知类短信或营销短信。
         >- 注：由于云 **API3.0 安全性**有所提升，所以**接口鉴权**较为复杂，建议使用 [SDK](https://cloud.tencent.com/document/product/382/43193) 来使用云短信服务。
