@@ -1173,7 +1173,6 @@ class DescribeCaptchaResultResponse(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type CaptchaMsg: str
         :param EvilLevel: 无感验证模式下，该参数返回验证结果：
-
 EvilLevel=0 请求无恶意
 EvilLevel=100 请求有恶意
 注意：此字段可能返回 null，表示取不到有效值。

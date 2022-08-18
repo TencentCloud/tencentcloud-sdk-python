@@ -3451,6 +3451,12 @@ class CreateTKEEdgeClusterRequest(AbstractModel):
         :type MaxNodePodNum: int
         :param PublicLB: 边缘计算集群公网访问LB信息
         :type PublicLB: :class:`tencentcloud.tke.v20180525.models.EdgeClusterPublicLB`
+        :param ClusterLevel: 集群的级别
+        :type ClusterLevel: str
+        :param AutoUpgradeClusterLevel: 集群是否支持自动升配
+        :type AutoUpgradeClusterLevel: bool
+        :param ChargeType: 集群计费方式
+        :type ChargeType: str
         """
         self.K8SVersion = None
         self.VpcId = None
@@ -3461,6 +3467,9 @@ class CreateTKEEdgeClusterRequest(AbstractModel):
         self.ClusterAdvancedSettings = None
         self.MaxNodePodNum = None
         self.PublicLB = None
+        self.ClusterLevel = None
+        self.AutoUpgradeClusterLevel = None
+        self.ChargeType = None
 
 
     def _deserialize(self, params):
@@ -3477,6 +3486,9 @@ class CreateTKEEdgeClusterRequest(AbstractModel):
         if params.get("PublicLB") is not None:
             self.PublicLB = EdgeClusterPublicLB()
             self.PublicLB._deserialize(params.get("PublicLB"))
+        self.ClusterLevel = params.get("ClusterLevel")
+        self.AutoUpgradeClusterLevel = params.get("AutoUpgradeClusterLevel")
+        self.ChargeType = params.get("ChargeType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

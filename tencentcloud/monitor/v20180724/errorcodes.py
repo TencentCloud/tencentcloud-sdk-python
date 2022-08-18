@@ -17,6 +17,9 @@
 # CAM签名/鉴权错误。
 AUTHFAILURE = 'AuthFailure'
 
+# 访问鉴权失败。
+AUTHFAILURE_ACCESSCAMFAIL = 'AuthFailure.AccessCAMFail'
+
 # 请求未授权。请参考 CAM 文档对鉴权的说明。
 AUTHFAILURE_UNAUTHORIZEDOPERATION = 'AuthFailure.UnauthorizedOperation'
 
@@ -125,6 +128,9 @@ FAILEDOPERATION_INSTANCENOTRUNNING = 'FailedOperation.InstanceNotRunning'
 # 内部服务错误。
 FAILEDOPERATION_INTERNALERROR = 'FailedOperation.InternalError'
 
+# 地区不可用。
+FAILEDOPERATION_REGIONUNAVAILABLE = 'FailedOperation.RegionUnavailable'
+
 # 资源已经存在。
 FAILEDOPERATION_RESOURCEEXIST = 'FailedOperation.ResourceExist'
 
@@ -148,6 +154,9 @@ FAILEDOPERATION_TKEENDPOINTSTATUSERROR = 'FailedOperation.TKEEndpointStatusError
 
 # 更新TKE资源时出现冲突。
 FAILEDOPERATION_TKERESOURCECONFLICT = 'FailedOperation.TKEResourceConflict'
+
+# 可用区不可用。
+FAILEDOPERATION_ZONEUNAVAILABLE = 'FailedOperation.ZoneUnavailable'
 
 # 内部错误。
 INTERNALERROR = 'InternalError'

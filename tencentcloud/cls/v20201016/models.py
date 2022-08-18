@@ -5533,12 +5533,16 @@ class OpenKafkaConsumerRequest(AbstractModel):
         r"""
         :param FromTopicId: CLS控制台创建的TopicId
         :type FromTopicId: str
+        :param Compression: 压缩方式[0:NONE；2:SNAPPY；3:LZ4]
+        :type Compression: int
         """
         self.FromTopicId = None
+        self.Compression = None
 
 
     def _deserialize(self, params):
         self.FromTopicId = params.get("FromTopicId")
+        self.Compression = params.get("Compression")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

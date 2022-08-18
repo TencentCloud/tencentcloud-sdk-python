@@ -37,7 +37,7 @@ class AgentAuditedClient(AbstractModel):
         :type ClientRemark: str
         :param ClientName: 代客名称（首选实名认证名称）
         :type ClientName: str
-        :param AuthType: 认证类型, 0：个人，1：企业；其他：未认证
+        :param AuthType: 认证类型, 0：个人，1：企业；其他：未认证或无效值
         :type AuthType: str
         :param AppId: 代客APPID
         :type AppId: str
@@ -749,6 +749,7 @@ class AuditApplyClientResponse(AbstractModel):
         :param AuditResult: 审核结果，包括accept/reject/qcloudaudit（腾讯云审核）
         :type AuditResult: str
         :param AgentTime: 关联时间对应的时间戳
+注意：此字段可能返回 null，表示取不到有效值。
         :type AgentTime: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1776,7 +1777,7 @@ class DescribeClientBalanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Balance: 账户可用余额，单位分 （可用余额 = 现金余额 - 冻结金额）
+        :param Balance: 账户可用余额，单位分 （可用余额 = 现金余额 - 冻结金额）  【注：该数据准确性存疑，请切换至DescribeClientBalanceNew取值】
         :type Balance: int
         :param Cash: 账户现金余额，单位分
         :type Cash: int

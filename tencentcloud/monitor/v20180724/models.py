@@ -1005,6 +1005,47 @@ class CLSNotice(AbstractModel):
         
 
 
+class CleanGrafanaInstanceRequest(AbstractModel):
+    """CleanGrafanaInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例名
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CleanGrafanaInstanceResponse(AbstractModel):
+    """CleanGrafanaInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CommonNamespace(AbstractModel):
     """统一的命名空间信息
 
@@ -1511,6 +1552,182 @@ class CreateExporterIntegrationResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateGrafanaInstanceRequest(AbstractModel):
+    """CreateGrafanaInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceName: 实例名
+        :type InstanceName: str
+        :param VpcId: VPC ID
+        :type VpcId: str
+        :param SubnetIds: 子网 ID 数组
+        :type SubnetIds: list of str
+        :param GrafanaInitPassword: Grafana 初始密码
+        :type GrafanaInitPassword: str
+        :param EnableInternet: 是否启用外网
+        :type EnableInternet: bool
+        :param TagSpecification: 标签
+        :type TagSpecification: list of PrometheusTag
+        """
+        self.InstanceName = None
+        self.VpcId = None
+        self.SubnetIds = None
+        self.GrafanaInitPassword = None
+        self.EnableInternet = None
+        self.TagSpecification = None
+
+
+    def _deserialize(self, params):
+        self.InstanceName = params.get("InstanceName")
+        self.VpcId = params.get("VpcId")
+        self.SubnetIds = params.get("SubnetIds")
+        self.GrafanaInitPassword = params.get("GrafanaInitPassword")
+        self.EnableInternet = params.get("EnableInternet")
+        if params.get("TagSpecification") is not None:
+            self.TagSpecification = []
+            for item in params.get("TagSpecification"):
+                obj = PrometheusTag()
+                obj._deserialize(item)
+                self.TagSpecification.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateGrafanaInstanceResponse(AbstractModel):
+    """CreateGrafanaInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例名
+        :type InstanceId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.InstanceId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateGrafanaIntegrationRequest(AbstractModel):
+    """CreateGrafanaIntegration请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例名
+        :type InstanceId: str
+        :param Kind: 类型
+        :type Kind: str
+        :param Content: 配置
+        :type Content: str
+        """
+        self.InstanceId = None
+        self.Kind = None
+        self.Content = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Kind = params.get("Kind")
+        self.Content = params.get("Content")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateGrafanaIntegrationResponse(AbstractModel):
+    """CreateGrafanaIntegration返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreateGrafanaNotificationChannelRequest(AbstractModel):
+    """CreateGrafanaNotificationChannel请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例名
+        :type InstanceId: str
+        :param ChannelName: 渠道名
+        :type ChannelName: str
+        :param OrgId: 组织 ID
+        :type OrgId: int
+        :param Receivers: 接受告警通道 ID 数组
+        :type Receivers: list of str
+        :param ExtraOrgIds: 额外组织 ID 数组
+        :type ExtraOrgIds: list of str
+        """
+        self.InstanceId = None
+        self.ChannelName = None
+        self.OrgId = None
+        self.Receivers = None
+        self.ExtraOrgIds = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.ChannelName = params.get("ChannelName")
+        self.OrgId = params.get("OrgId")
+        self.Receivers = params.get("Receivers")
+        self.ExtraOrgIds = params.get("ExtraOrgIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateGrafanaNotificationChannelResponse(AbstractModel):
+    """CreateGrafanaNotificationChannel返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CreatePolicyGroupCondition(AbstractModel):
     """创建策略传入的阈值告警条件
 
@@ -1936,6 +2153,64 @@ class CreateRecordingRuleResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateSSOAccountRequest(AbstractModel):
+    """CreateSSOAccount请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param UserId: 用户账号ID
+        :type UserId: str
+        :param Role: 权限
+        :type Role: list of GrafanaAccountRole
+        :param Notes: 备注
+        :type Notes: str
+        """
+        self.InstanceId = None
+        self.UserId = None
+        self.Role = None
+        self.Notes = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.UserId = params.get("UserId")
+        if params.get("Role") is not None:
+            self.Role = []
+            for item in params.get("Role"):
+                obj = GrafanaAccountRole()
+                obj._deserialize(item)
+                self.Role.append(obj)
+        self.Notes = params.get("Notes")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateSSOAccountResponse(AbstractModel):
+    """CreateSSOAccount返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class CreateServiceDiscoveryRequest(AbstractModel):
     """CreateServiceDiscovery请求参数结构体
 
@@ -2184,6 +2459,10 @@ class DeleteExporterIntegrationRequest(AbstractModel):
         r"""
         :param InstanceId: 实例 ID
         :type InstanceId: str
+        :param Kind: 类型
+        :type Kind: str
+        :param Name: 名字
+        :type Name: str
         :param KubeType: Kubernetes 集群类型，取值如下：
 <li> 1= 容器集群(TKE) </li>
 <li> 2=弹性集群<EKS> </li>
@@ -2191,24 +2470,20 @@ class DeleteExporterIntegrationRequest(AbstractModel):
         :type KubeType: int
         :param ClusterId: 集群 ID
         :type ClusterId: str
-        :param Kind: 类型
-        :type Kind: str
-        :param Name: 名字
-        :type Name: str
         """
         self.InstanceId = None
-        self.KubeType = None
-        self.ClusterId = None
         self.Kind = None
         self.Name = None
+        self.KubeType = None
+        self.ClusterId = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
-        self.KubeType = params.get("KubeType")
-        self.ClusterId = params.get("ClusterId")
         self.Kind = params.get("Kind")
         self.Name = params.get("Name")
+        self.KubeType = params.get("KubeType")
+        self.ClusterId = params.get("ClusterId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2220,6 +2495,137 @@ class DeleteExporterIntegrationRequest(AbstractModel):
 
 class DeleteExporterIntegrationResponse(AbstractModel):
     """DeleteExporterIntegration返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteGrafanaInstanceRequest(AbstractModel):
+    """DeleteGrafanaInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceIDs: 实例名数组
+        :type InstanceIDs: list of str
+        """
+        self.InstanceIDs = None
+
+
+    def _deserialize(self, params):
+        self.InstanceIDs = params.get("InstanceIDs")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteGrafanaInstanceResponse(AbstractModel):
+    """DeleteGrafanaInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteGrafanaIntegrationRequest(AbstractModel):
+    """DeleteGrafanaIntegration请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例 ID
+        :type InstanceId: str
+        :param IntegrationId: 集成 ID
+        :type IntegrationId: str
+        """
+        self.InstanceId = None
+        self.IntegrationId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.IntegrationId = params.get("IntegrationId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteGrafanaIntegrationResponse(AbstractModel):
+    """DeleteGrafanaIntegration返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteGrafanaNotificationChannelRequest(AbstractModel):
+    """DeleteGrafanaNotificationChannel请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ChannelIDs: 通道 ID 数组
+        :type ChannelIDs: list of str
+        :param InstanceId: 实例名
+        :type InstanceId: str
+        """
+        self.ChannelIDs = None
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.ChannelIDs = params.get("ChannelIDs")
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteGrafanaNotificationChannelResponse(AbstractModel):
+    """DeleteGrafanaNotificationChannel返回参数结构体
 
     """
 
@@ -2359,6 +2765,51 @@ class DeleteRecordingRulesRequest(AbstractModel):
 
 class DeleteRecordingRulesResponse(AbstractModel):
     """DeleteRecordingRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteSSOAccountRequest(AbstractModel):
+    """DeleteSSOAccount请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param UserId: 用户账号ID
+        :type UserId: str
+        """
+        self.InstanceId = None
+        self.UserId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.UserId = params.get("UserId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteSSOAccountResponse(AbstractModel):
+    """DeleteSSOAccount返回参数结构体
 
     """
 
@@ -3982,6 +4433,51 @@ class DescribeConditionsTemplateListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDNSConfigRequest(AbstractModel):
+    """DescribeDNSConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例名
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDNSConfigResponse(AbstractModel):
+    """DescribeDNSConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NameServers: DNS 服务器数组
+        :type NameServers: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.NameServers = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.NameServers = params.get("NameServers")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeExporterIntegrationsRequest(AbstractModel):
     """DescribeExporterIntegrations请求参数结构体
 
@@ -4051,6 +4547,407 @@ class DescribeExporterIntegrationsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeGrafanaConfigRequest(AbstractModel):
+    """DescribeGrafanaConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 无
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeGrafanaConfigResponse(AbstractModel):
+    """DescribeGrafanaConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Config: JSON 编码后的字符串
+        :type Config: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Config = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Config = params.get("Config")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeGrafanaEnvironmentsRequest(AbstractModel):
+    """DescribeGrafanaEnvironments请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例名
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeGrafanaEnvironmentsResponse(AbstractModel):
+    """DescribeGrafanaEnvironments返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Envs: 环境变量字符串
+        :type Envs: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Envs = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Envs = params.get("Envs")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeGrafanaInstancesRequest(AbstractModel):
+    """DescribeGrafanaInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Offset: 查询偏移量
+        :type Offset: int
+        :param Limit: 查询数量
+        :type Limit: int
+        :param InstanceIds: 实例 ID 数组
+        :type InstanceIds: list of str
+        :param InstanceName: 实例名，支持前缀模糊搜索
+        :type InstanceName: str
+        :param InstanceStatus: 查询状态
+        :type InstanceStatus: list of int
+        :param TagFilters: 标签过滤数组
+        :type TagFilters: list of PrometheusTag
+        """
+        self.Offset = None
+        self.Limit = None
+        self.InstanceIds = None
+        self.InstanceName = None
+        self.InstanceStatus = None
+        self.TagFilters = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.InstanceIds = params.get("InstanceIds")
+        self.InstanceName = params.get("InstanceName")
+        self.InstanceStatus = params.get("InstanceStatus")
+        if params.get("TagFilters") is not None:
+            self.TagFilters = []
+            for item in params.get("TagFilters"):
+                obj = PrometheusTag()
+                obj._deserialize(item)
+                self.TagFilters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeGrafanaInstancesResponse(AbstractModel):
+    """DescribeGrafanaInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceSet: 已废弃，请使用 Instances
+        :type InstanceSet: list of GrafanaInstanceInfo
+        :param TotalCount: 符合查询条件的实例总数
+        :type TotalCount: int
+        :param Instances: 实例列表
+        :type Instances: list of GrafanaInstanceInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.InstanceSet = None
+        self.TotalCount = None
+        self.Instances = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("InstanceSet") is not None:
+            self.InstanceSet = []
+            for item in params.get("InstanceSet"):
+                obj = GrafanaInstanceInfo()
+                obj._deserialize(item)
+                self.InstanceSet.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Instances") is not None:
+            self.Instances = []
+            for item in params.get("Instances"):
+                obj = GrafanaInstanceInfo()
+                obj._deserialize(item)
+                self.Instances.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeGrafanaIntegrationsRequest(AbstractModel):
+    """DescribeGrafanaIntegrations请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例名
+        :type InstanceId: str
+        :param IntegrationId: 集成 ID
+        :type IntegrationId: str
+        :param Kind: 类型
+        :type Kind: str
+        """
+        self.InstanceId = None
+        self.IntegrationId = None
+        self.Kind = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.IntegrationId = params.get("IntegrationId")
+        self.Kind = params.get("Kind")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeGrafanaIntegrationsResponse(AbstractModel):
+    """DescribeGrafanaIntegrations返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IntegrationSet: 集成数组
+        :type IntegrationSet: list of GrafanaIntegrationConfig
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.IntegrationSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("IntegrationSet") is not None:
+            self.IntegrationSet = []
+            for item in params.get("IntegrationSet"):
+                obj = GrafanaIntegrationConfig()
+                obj._deserialize(item)
+                self.IntegrationSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeGrafanaNotificationChannelsRequest(AbstractModel):
+    """DescribeGrafanaNotificationChannels请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例名
+        :type InstanceId: str
+        :param Offset: 偏移量
+        :type Offset: int
+        :param Limit: 查询数量
+        :type Limit: int
+        :param ChannelName: 渠道名
+        :type ChannelName: str
+        :param ChannelIDs: 渠道 ID
+        :type ChannelIDs: list of str
+        :param ChannelState: 状态
+        :type ChannelState: int
+        """
+        self.InstanceId = None
+        self.Offset = None
+        self.Limit = None
+        self.ChannelName = None
+        self.ChannelIDs = None
+        self.ChannelState = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.ChannelName = params.get("ChannelName")
+        self.ChannelIDs = params.get("ChannelIDs")
+        self.ChannelState = params.get("ChannelState")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeGrafanaNotificationChannelsResponse(AbstractModel):
+    """DescribeGrafanaNotificationChannels返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NotificationChannelSet: 告警通道数组
+        :type NotificationChannelSet: list of GrafanaNotificationChannel
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.NotificationChannelSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("NotificationChannelSet") is not None:
+            self.NotificationChannelSet = []
+            for item in params.get("NotificationChannelSet"):
+                obj = GrafanaNotificationChannel()
+                obj._deserialize(item)
+                self.NotificationChannelSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeGrafanaWhiteListRequest(AbstractModel):
+    """DescribeGrafanaWhiteList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例名
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeGrafanaWhiteListResponse(AbstractModel):
+    """DescribeGrafanaWhiteList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param WhiteList: 数组
+        :type WhiteList: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.WhiteList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.WhiteList = params.get("WhiteList")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeInstalledPluginsRequest(AbstractModel):
+    """DescribeInstalledPlugins请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例 ID
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInstalledPluginsResponse(AbstractModel):
+    """DescribeInstalledPlugins返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PluginSet: 插件列表
+        :type PluginSet: list of GrafanaPlugin
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.PluginSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("PluginSet") is not None:
+            self.PluginSet = []
+            for item in params.get("PluginSet"):
+                obj = GrafanaPlugin()
+                obj._deserialize(item)
+                self.PluginSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeMonitorTypesRequest(AbstractModel):
     """DescribeMonitorTypes请求参数结构体
 
@@ -4102,6 +4999,38 @@ class DescribeMonitorTypesResponse(AbstractModel):
                 obj = MonitorTypeInfo()
                 obj._deserialize(item)
                 self.MonitorTypeInfos.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribePluginOverviewsRequest(AbstractModel):
+    """DescribePluginOverviews请求参数结构体
+
+    """
+
+
+class DescribePluginOverviewsResponse(AbstractModel):
+    """DescribePluginOverviews返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PluginSet: 插件列表
+        :type PluginSet: list of GrafanaPlugin
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.PluginSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("PluginSet") is not None:
+            self.PluginSet = []
+            for item in params.get("PluginSet"):
+                obj = GrafanaPlugin()
+                obj._deserialize(item)
+                self.PluginSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -6079,6 +7008,57 @@ class DescribeRecordingRulesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeSSOAccountRequest(AbstractModel):
+    """DescribeSSOAccount请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSSOAccountResponse(AbstractModel):
+    """DescribeSSOAccount返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AccountSet: 授权账号列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccountSet: list of GrafanaAccountInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.AccountSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("AccountSet") is not None:
+            self.AccountSet = []
+            for item in params.get("AccountSet"):
+                obj = GrafanaAccountInfo()
+                obj._deserialize(item)
+                self.AccountSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeServiceDiscoveryRequest(AbstractModel):
     """DescribeServiceDiscovery请求参数结构体
 
@@ -6332,6 +7312,141 @@ class DimensionsDesc(AbstractModel):
         
 
 
+class EnableGrafanaInternetRequest(AbstractModel):
+    """EnableGrafanaInternet请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceID: 实例 ID
+        :type InstanceID: str
+        :param EnableInternet: 开启或关闭
+        :type EnableInternet: bool
+        """
+        self.InstanceID = None
+        self.EnableInternet = None
+
+
+    def _deserialize(self, params):
+        self.InstanceID = params.get("InstanceID")
+        self.EnableInternet = params.get("EnableInternet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EnableGrafanaInternetResponse(AbstractModel):
+    """EnableGrafanaInternet返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class EnableGrafanaSSORequest(AbstractModel):
+    """EnableGrafanaSSO请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EnableSSO: 是否开启 SSO
+        :type EnableSSO: bool
+        :param InstanceId: 实例 ID
+        :type InstanceId: str
+        """
+        self.EnableSSO = None
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.EnableSSO = params.get("EnableSSO")
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EnableGrafanaSSOResponse(AbstractModel):
+    """EnableGrafanaSSO返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class EnableSSOCamCheckRequest(AbstractModel):
+    """EnableSSOCamCheck请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param EnableSSOCamCheck: 是否开启cam鉴权
+        :type EnableSSOCamCheck: bool
+        """
+        self.InstanceId = None
+        self.EnableSSOCamCheck = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.EnableSSOCamCheck = params.get("EnableSSOCamCheck")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EnableSSOCamCheckResponse(AbstractModel):
+    """EnableSSOCamCheck返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class EventCondition(AbstractModel):
     """事件告警条件
 
@@ -6513,6 +7628,332 @@ class GetPrometheusAgentManagementCommandResponse(AbstractModel):
         if params.get("Command") is not None:
             self.Command = ManagementCommand()
             self.Command._deserialize(params.get("Command"))
+        self.RequestId = params.get("RequestId")
+
+
+class GrafanaAccountInfo(AbstractModel):
+    """Grafana可视化服务 授权账户信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UserId: 用户账号ID
+        :type UserId: str
+        :param Role: 用户权限
+        :type Role: list of GrafanaAccountRole
+        :param Notes: 备注
+        :type Notes: str
+        :param CreateAt: 创建时间
+        :type CreateAt: str
+        """
+        self.UserId = None
+        self.Role = None
+        self.Notes = None
+        self.CreateAt = None
+
+
+    def _deserialize(self, params):
+        self.UserId = params.get("UserId")
+        if params.get("Role") is not None:
+            self.Role = []
+            for item in params.get("Role"):
+                obj = GrafanaAccountRole()
+                obj._deserialize(item)
+                self.Role.append(obj)
+        self.Notes = params.get("Notes")
+        self.CreateAt = params.get("CreateAt")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GrafanaAccountRole(AbstractModel):
+    """Grafana可视化服务 账号权限
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Organization: 组织
+        :type Organization: str
+        :param Role: 权限
+        :type Role: str
+        """
+        self.Organization = None
+        self.Role = None
+
+
+    def _deserialize(self, params):
+        self.Organization = params.get("Organization")
+        self.Role = params.get("Role")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GrafanaInstanceInfo(AbstractModel):
+    """查询 Grafana 实例时的实例类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceName: 实例名
+        :type InstanceName: str
+        :param InstanceId: 实例 ID
+        :type InstanceId: str
+        :param Region: 地域
+        :type Region: str
+        :param VpcId: VPC ID
+        :type VpcId: str
+        :param SubnetIds: 子网 ID 数组
+        :type SubnetIds: list of str
+        :param InternetUrl: Grafana 内网地址
+        :type InternetUrl: str
+        :param InternalUrl: Grafana 公网地址
+        :type InternalUrl: str
+        :param CreatedAt: 创建时间
+        :type CreatedAt: str
+        :param InstanceStatus: 运行状态（1:正在创建；2:运行中；3:异常；4:重启中；5:停机中； 6:已停机； 7: 已删除）
+        :type InstanceStatus: int
+        :param TagSpecification: 实例的标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagSpecification: list of PrometheusTag
+        :param Zone: 实例的可用区
+        :type Zone: str
+        :param InstanceChargeType: 计费模式（1:包年包月）
+        :type InstanceChargeType: int
+        :param VpcName: VPC 名称
+        :type VpcName: str
+        :param SubnetName: 子网名称
+        :type SubnetName: str
+        :param RegionId: 地域 ID
+        :type RegionId: int
+        :param RootUrl: 可访问此实例的完整 URL
+        :type RootUrl: str
+        :param EnableSSO: 是否开启 SSO
+        :type EnableSSO: bool
+        :param Version: 版本号
+        :type Version: str
+        :param EnableSSOCamCheck: SSO登录时是否开启cam鉴权
+        :type EnableSSOCamCheck: bool
+        """
+        self.InstanceName = None
+        self.InstanceId = None
+        self.Region = None
+        self.VpcId = None
+        self.SubnetIds = None
+        self.InternetUrl = None
+        self.InternalUrl = None
+        self.CreatedAt = None
+        self.InstanceStatus = None
+        self.TagSpecification = None
+        self.Zone = None
+        self.InstanceChargeType = None
+        self.VpcName = None
+        self.SubnetName = None
+        self.RegionId = None
+        self.RootUrl = None
+        self.EnableSSO = None
+        self.Version = None
+        self.EnableSSOCamCheck = None
+
+
+    def _deserialize(self, params):
+        self.InstanceName = params.get("InstanceName")
+        self.InstanceId = params.get("InstanceId")
+        self.Region = params.get("Region")
+        self.VpcId = params.get("VpcId")
+        self.SubnetIds = params.get("SubnetIds")
+        self.InternetUrl = params.get("InternetUrl")
+        self.InternalUrl = params.get("InternalUrl")
+        self.CreatedAt = params.get("CreatedAt")
+        self.InstanceStatus = params.get("InstanceStatus")
+        if params.get("TagSpecification") is not None:
+            self.TagSpecification = []
+            for item in params.get("TagSpecification"):
+                obj = PrometheusTag()
+                obj._deserialize(item)
+                self.TagSpecification.append(obj)
+        self.Zone = params.get("Zone")
+        self.InstanceChargeType = params.get("InstanceChargeType")
+        self.VpcName = params.get("VpcName")
+        self.SubnetName = params.get("SubnetName")
+        self.RegionId = params.get("RegionId")
+        self.RootUrl = params.get("RootUrl")
+        self.EnableSSO = params.get("EnableSSO")
+        self.Version = params.get("Version")
+        self.EnableSSOCamCheck = params.get("EnableSSOCamCheck")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GrafanaIntegrationConfig(AbstractModel):
+    """Grafana 集成实例配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IntegrationId: 集成 ID
+        :type IntegrationId: str
+        :param Kind: 集成类型
+        :type Kind: str
+        :param Content: 集成内容
+        :type Content: str
+        :param Description: 集成描述
+        :type Description: str
+        """
+        self.IntegrationId = None
+        self.Kind = None
+        self.Content = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.IntegrationId = params.get("IntegrationId")
+        self.Kind = params.get("Kind")
+        self.Content = params.get("Content")
+        self.Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GrafanaNotificationChannel(AbstractModel):
+    """Grafana 告警渠道
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ChannelId: 渠道 ID
+        :type ChannelId: str
+        :param ChannelName: 渠道名
+        :type ChannelName: str
+        :param Receivers: 告警通道模板 ID 数组
+        :type Receivers: list of str
+        :param CreatedAt: 创建时间
+        :type CreatedAt: str
+        :param UpdatedAt: 更新时间
+        :type UpdatedAt: str
+        """
+        self.ChannelId = None
+        self.ChannelName = None
+        self.Receivers = None
+        self.CreatedAt = None
+        self.UpdatedAt = None
+
+
+    def _deserialize(self, params):
+        self.ChannelId = params.get("ChannelId")
+        self.ChannelName = params.get("ChannelName")
+        self.Receivers = params.get("Receivers")
+        self.CreatedAt = params.get("CreatedAt")
+        self.UpdatedAt = params.get("UpdatedAt")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GrafanaPlugin(AbstractModel):
+    """Grafana 插件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PluginId: Grafana 插件 ID
+        :type PluginId: str
+        :param Version: Grafana 插件版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Version: str
+        """
+        self.PluginId = None
+        self.Version = None
+
+
+    def _deserialize(self, params):
+        self.PluginId = params.get("PluginId")
+        self.Version = params.get("Version")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InstallPluginsRequest(AbstractModel):
+    """InstallPlugins请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Plugins: 插件信息
+        :type Plugins: list of GrafanaPlugin
+        :param InstanceId: 实例 ID
+        :type InstanceId: str
+        """
+        self.Plugins = None
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Plugins") is not None:
+            self.Plugins = []
+            for item in params.get("Plugins"):
+                obj = GrafanaPlugin()
+                obj._deserialize(item)
+                self.Plugins.append(obj)
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InstallPluginsResponse(AbstractModel):
+    """InstallPlugins返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -7434,6 +8875,51 @@ class ModifyAlarmReceiversRequest(AbstractModel):
 
 class ModifyAlarmReceiversResponse(AbstractModel):
     """ModifyAlarmReceivers返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyGrafanaInstanceRequest(AbstractModel):
+    """ModifyGrafanaInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例 ID
+        :type InstanceId: str
+        :param InstanceName: 实例名称
+        :type InstanceName: str
+        """
+        self.InstanceId = None
+        self.InstanceName = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.InstanceName = params.get("InstanceName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyGrafanaInstanceResponse(AbstractModel):
+    """ModifyGrafanaInstance返回参数结构体
 
     """
 
@@ -8681,6 +10167,47 @@ class RecordingRuleSet(AbstractModel):
         
 
 
+class ResumeGrafanaInstanceRequest(AbstractModel):
+    """ResumeGrafanaInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例 ID
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResumeGrafanaInstanceResponse(AbstractModel):
+    """ResumeGrafanaInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class SendCustomAlarmMsgRequest(AbstractModel):
     """SendCustomAlarmMsg请求参数结构体
 
@@ -9267,6 +10794,51 @@ class UninstallGrafanaDashboardResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class UninstallGrafanaPluginsRequest(AbstractModel):
+    """UninstallGrafanaPlugins请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PluginIds: 插件 ID 数组
+        :type PluginIds: list of str
+        :param InstanceId: 实例 ID
+        :type InstanceId: str
+        """
+        self.PluginIds = None
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.PluginIds = params.get("PluginIds")
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UninstallGrafanaPluginsResponse(AbstractModel):
+    """UninstallGrafanaPlugins返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class UpdateAlertRuleRequest(AbstractModel):
     """UpdateAlertRule请求参数结构体
 
@@ -9416,6 +10988,51 @@ class UpdateAlertRuleStateResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class UpdateDNSConfigRequest(AbstractModel):
+    """UpdateDNSConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例名
+        :type InstanceId: str
+        :param NameServers: DNS 数组
+        :type NameServers: list of str
+        """
+        self.InstanceId = None
+        self.NameServers = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.NameServers = params.get("NameServers")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateDNSConfigResponse(AbstractModel):
+    """UpdateDNSConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class UpdateExporterIntegrationRequest(AbstractModel):
     """UpdateExporterIntegration请求参数结构体
 
@@ -9461,6 +11078,251 @@ class UpdateExporterIntegrationRequest(AbstractModel):
 
 class UpdateExporterIntegrationResponse(AbstractModel):
     """UpdateExporterIntegration返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UpdateGrafanaConfigRequest(AbstractModel):
+    """UpdateGrafanaConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 无
+        :type InstanceId: str
+        :param Config: JSON 编码后的字符串
+        :type Config: str
+        """
+        self.InstanceId = None
+        self.Config = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Config = params.get("Config")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateGrafanaConfigResponse(AbstractModel):
+    """UpdateGrafanaConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UpdateGrafanaEnvironmentsRequest(AbstractModel):
+    """UpdateGrafanaEnvironments请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例名
+        :type InstanceId: str
+        :param Envs: 环境变量字符串
+        :type Envs: str
+        """
+        self.InstanceId = None
+        self.Envs = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Envs = params.get("Envs")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateGrafanaEnvironmentsResponse(AbstractModel):
+    """UpdateGrafanaEnvironments返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UpdateGrafanaIntegrationRequest(AbstractModel):
+    """UpdateGrafanaIntegration请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IntegrationId: 集成 ID
+        :type IntegrationId: str
+        :param InstanceId: 实例 ID
+        :type InstanceId: str
+        :param Kind: 集成类型
+        :type Kind: str
+        :param Content: 集成内容
+        :type Content: str
+        """
+        self.IntegrationId = None
+        self.InstanceId = None
+        self.Kind = None
+        self.Content = None
+
+
+    def _deserialize(self, params):
+        self.IntegrationId = params.get("IntegrationId")
+        self.InstanceId = params.get("InstanceId")
+        self.Kind = params.get("Kind")
+        self.Content = params.get("Content")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateGrafanaIntegrationResponse(AbstractModel):
+    """UpdateGrafanaIntegration返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UpdateGrafanaNotificationChannelRequest(AbstractModel):
+    """UpdateGrafanaNotificationChannel请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ChannelId: 通道 ID
+        :type ChannelId: str
+        :param InstanceId: 实例名
+        :type InstanceId: str
+        :param ChannelName: 渠道名
+        :type ChannelName: str
+        :param Receivers: 接受告警通道 ID 数组
+        :type Receivers: list of str
+        :param ExtraOrgIds: 额外组织 ID 数组
+        :type ExtraOrgIds: list of str
+        """
+        self.ChannelId = None
+        self.InstanceId = None
+        self.ChannelName = None
+        self.Receivers = None
+        self.ExtraOrgIds = None
+
+
+    def _deserialize(self, params):
+        self.ChannelId = params.get("ChannelId")
+        self.InstanceId = params.get("InstanceId")
+        self.ChannelName = params.get("ChannelName")
+        self.Receivers = params.get("Receivers")
+        self.ExtraOrgIds = params.get("ExtraOrgIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateGrafanaNotificationChannelResponse(AbstractModel):
+    """UpdateGrafanaNotificationChannel返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UpdateGrafanaWhiteListRequest(AbstractModel):
+    """UpdateGrafanaWhiteList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例名
+        :type InstanceId: str
+        :param Whitelist: 白名单数组
+        :type Whitelist: list of str
+        """
+        self.InstanceId = None
+        self.Whitelist = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Whitelist = params.get("Whitelist")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateGrafanaWhiteListResponse(AbstractModel):
+    """UpdateGrafanaWhiteList返回参数结构体
 
     """
 
@@ -9646,6 +11508,64 @@ class UpdateRecordingRuleResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class UpdateSSOAccountRequest(AbstractModel):
+    """UpdateSSOAccount请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 示例ID
+        :type InstanceId: str
+        :param UserId: 用户账号ID
+        :type UserId: str
+        :param Role: 权限
+        :type Role: list of GrafanaAccountRole
+        :param Notes: 备注
+        :type Notes: str
+        """
+        self.InstanceId = None
+        self.UserId = None
+        self.Role = None
+        self.Notes = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.UserId = params.get("UserId")
+        if params.get("Role") is not None:
+            self.Role = []
+            for item in params.get("Role"):
+                obj = GrafanaAccountRole()
+                obj._deserialize(item)
+                self.Role.append(obj)
+        self.Notes = params.get("Notes")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateSSOAccountResponse(AbstractModel):
+    """UpdateSSOAccount返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class UpdateServiceDiscoveryRequest(AbstractModel):
     """UpdateServiceDiscovery请求参数结构体
 
@@ -9760,6 +11680,51 @@ class UpgradeGrafanaDashboardRequest(AbstractModel):
 
 class UpgradeGrafanaDashboardResponse(AbstractModel):
     """UpgradeGrafanaDashboard返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class UpgradeGrafanaInstanceRequest(AbstractModel):
+    """UpgradeGrafanaInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例名
+        :type InstanceId: str
+        :param Alias: 版本别名
+        :type Alias: str
+        """
+        self.InstanceId = None
+        self.Alias = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Alias = params.get("Alias")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpgradeGrafanaInstanceResponse(AbstractModel):
+    """UpgradeGrafanaInstance返回参数结构体
 
     """
 
