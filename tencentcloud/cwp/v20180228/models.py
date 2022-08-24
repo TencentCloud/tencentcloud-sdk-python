@@ -12972,6 +12972,10 @@ class DescribeVulHostCountScanTimeResponse(AbstractModel):
         :type IfFirstScan: bool
         :param TaskId: 运行中的任务号, 没有任务则为0
         :type TaskId: int
+        :param LastFixTime: 最后一次修复漏洞的时间
+        :type LastFixTime: str
+        :param hadAutoFixVul: 是否有支持自动修复的漏洞事件
+        :type hadAutoFixVul: bool
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -12980,6 +12984,8 @@ class DescribeVulHostCountScanTimeResponse(AbstractModel):
         self.ScanTime = None
         self.IfFirstScan = None
         self.TaskId = None
+        self.LastFixTime = None
+        self.hadAutoFixVul = None
         self.RequestId = None
 
 
@@ -12989,6 +12995,8 @@ class DescribeVulHostCountScanTimeResponse(AbstractModel):
         self.ScanTime = params.get("ScanTime")
         self.IfFirstScan = params.get("IfFirstScan")
         self.TaskId = params.get("TaskId")
+        self.LastFixTime = params.get("LastFixTime")
+        self.hadAutoFixVul = params.get("hadAutoFixVul")
         self.RequestId = params.get("RequestId")
 
 
@@ -13127,6 +13135,12 @@ class DescribeVulInfoCvssResponse(AbstractModel):
         :param DefenseAttackCount: 已防御的攻击次数
 注意：此字段可能返回 null，表示取不到有效值。
         :type DefenseAttackCount: int
+        :param SuccessFixCount: 全网修复成功次数, 不支持自动修复的漏洞默认返回0
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SuccessFixCount: int
+        :param FixSwitch: 修复是否支持：0-windows/linux均不支持修复 ;1-windows/linux 均支持修复 ;2-仅linux支持修复;3-仅windows支持修复
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FixSwitch: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -13145,6 +13159,8 @@ class DescribeVulInfoCvssResponse(AbstractModel):
         self.CvssScoreFloat = None
         self.Labels = None
         self.DefenseAttackCount = None
+        self.SuccessFixCount = None
+        self.FixSwitch = None
         self.RequestId = None
 
 
@@ -13164,6 +13180,8 @@ class DescribeVulInfoCvssResponse(AbstractModel):
         self.CvssScoreFloat = params.get("CvssScoreFloat")
         self.Labels = params.get("Labels")
         self.DefenseAttackCount = params.get("DefenseAttackCount")
+        self.SuccessFixCount = params.get("SuccessFixCount")
+        self.FixSwitch = params.get("FixSwitch")
         self.RequestId = params.get("RequestId")
 
 
@@ -16056,8 +16074,11 @@ class Machine(AbstractModel):
         :type MachineType: str
         :param KernelVersion: 内核版本
         :type KernelVersion: str
-        :param ProtectType: 防护版本 BASIC_VERSION 基础版, PRO_VERSION 专业版 Flagship 旗舰版.
+        :param ProtectType: 防护版本：BASIC_VERSION 基础版， PRO_VERSION 专业版，Flagship 旗舰版，GENERAL_DISCOUNT 普惠版
         :type ProtectType: str
+        :param CloudTags: 云标签信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CloudTags: list of Tags
         """
         self.MachineName = None
         self.MachineOs = None
@@ -16083,6 +16104,7 @@ class Machine(AbstractModel):
         self.MachineType = None
         self.KernelVersion = None
         self.ProtectType = None
+        self.CloudTags = None
 
 
     def _deserialize(self, params):
@@ -16117,6 +16139,12 @@ class Machine(AbstractModel):
         self.MachineType = params.get("MachineType")
         self.KernelVersion = params.get("KernelVersion")
         self.ProtectType = params.get("ProtectType")
+        if params.get("CloudTags") is not None:
+            self.CloudTags = []
+            for item in params.get("CloudTags"):
+                obj = Tags()
+                obj._deserialize(item)
+                self.CloudTags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -18899,6 +18927,34 @@ class TagMachine(AbstractModel):
         self.MachineWanIp = params.get("MachineWanIp")
         self.MachineRegion = params.get("MachineRegion")
         self.MachineType = params.get("MachineType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Tags(AbstractModel):
+    """平台标签
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TagKey: 标签键
+        :type TagKey: str
+        :param TagValue: 标签值
+        :type TagValue: str
+        """
+        self.TagKey = None
+        self.TagValue = None
+
+
+    def _deserialize(self, params):
+        self.TagKey = params.get("TagKey")
+        self.TagValue = params.get("TagValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

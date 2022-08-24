@@ -254,6 +254,17 @@ class ApplicationProxy(AbstractModel):
         :type HostId: str
         :param Ipv6: Ipv6访问配置。
         :type Ipv6: :class:`tencentcloud.teo.v20220106.models.Ipv6Access`
+        :param Area: 加速区域，取值有：
+<li>mainland：中国大陆境内;</li>
+<li>overseas：全球（不含中国大陆）。</li>
+默认值：overseas
+        :type Area: str
+        :param BanStatus: 封禁状态，取值有：
+<li>banned：已封禁;</li>
+<li>banning：封禁中；</li>
+<li>recover：已解封；</li>
+<li>recovering：解封禁中。</li>
+        :type BanStatus: str
         """
         self.ProxyId = None
         self.ProxyName = None
@@ -272,6 +283,8 @@ class ApplicationProxy(AbstractModel):
         self.ProxyType = None
         self.HostId = None
         self.Ipv6 = None
+        self.Area = None
+        self.BanStatus = None
 
 
     def _deserialize(self, params):
@@ -299,6 +312,8 @@ class ApplicationProxy(AbstractModel):
         if params.get("Ipv6") is not None:
             self.Ipv6 = Ipv6Access()
             self.Ipv6._deserialize(params.get("Ipv6"))
+        self.Area = params.get("Area")
+        self.BanStatus = params.get("BanStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -336,7 +351,6 @@ OriginValue=["test.com:80"]；
 OriginValue=["origin-537f5b41-162a-11ed-abaa-525400c5da15"]。
         :type OriginValue: list of str
         :param RuleId: 规则ID。
-注意：此字段可能返回 null，表示取不到有效值。
         :type RuleId: str
         :param Status: 状态，取值有：
 <li>online：启用；</li>
@@ -1043,7 +1057,6 @@ class CacheConfigCache(AbstractModel):
         :param Switch: 缓存配置开关，取值有：
 <li>on：开启；</li>
 <li>off：关闭。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :type Switch: str
         :param CacheTime: 缓存过期时间设置。
 单位为秒，最大可设置为 365 天。
@@ -1083,7 +1096,6 @@ class CacheConfigFollowOrigin(AbstractModel):
         :param Switch: 遵循源站配置开关，取值有：
 <li>on：开启；</li>
 <li>off：关闭。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :type Switch: str
         """
         self.Switch = None
@@ -1110,7 +1122,6 @@ class CacheConfigNoCache(AbstractModel):
         :param Switch: 不缓存配置开关，取值有：
 <li>on：开启；</li>
 <li>off：关闭。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :type Switch: str
         """
         self.Switch = None
@@ -1322,7 +1333,6 @@ class ClientIp(AbstractModel):
         :param Switch: 配置开关，取值有：
 <li>on：开启；</li>
 <li>off：关闭。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :type Switch: str
         :param HeaderName: 回源时，存放客户端IP的请求头名称。
 为空则使用默认值：X-Forwarded-IP。
@@ -1425,8 +1435,6 @@ class CreateApplicationProxyRequest(AbstractModel):
         :type ZoneId: str
         :param ZoneName: 站点名称。
         :type ZoneName: str
-        :param Rule: 规则详细信息。
-        :type Rule: list of ApplicationProxyRule
         :param ProxyName: 当ProxyType=hostname时，表示域名或子域名；
 当ProxyType=instance时，表示代理名称。
         :type ProxyName: str
@@ -1446,6 +1454,8 @@ class CreateApplicationProxyRequest(AbstractModel):
         :type SessionPersist: bool
         :param ForwardClientIp: 字段已经废弃。
         :type ForwardClientIp: str
+        :param Rule: 规则详细信息。
+        :type Rule: list of ApplicationProxyRule
         :param ProxyType: 四层代理模式，取值有：
 <li>hostname：表示子域名模式；</li>
 <li>instance：表示实例模式。</li>不填写使用默认值instance。
@@ -1459,13 +1469,13 @@ class CreateApplicationProxyRequest(AbstractModel):
         """
         self.ZoneId = None
         self.ZoneName = None
-        self.Rule = None
         self.ProxyName = None
         self.PlatType = None
         self.SecurityType = None
         self.AccelerateType = None
         self.SessionPersist = None
         self.ForwardClientIp = None
+        self.Rule = None
         self.ProxyType = None
         self.SessionPersistTime = None
         self.Ipv6 = None
@@ -1474,18 +1484,18 @@ class CreateApplicationProxyRequest(AbstractModel):
     def _deserialize(self, params):
         self.ZoneId = params.get("ZoneId")
         self.ZoneName = params.get("ZoneName")
-        if params.get("Rule") is not None:
-            self.Rule = []
-            for item in params.get("Rule"):
-                obj = ApplicationProxyRule()
-                obj._deserialize(item)
-                self.Rule.append(obj)
         self.ProxyName = params.get("ProxyName")
         self.PlatType = params.get("PlatType")
         self.SecurityType = params.get("SecurityType")
         self.AccelerateType = params.get("AccelerateType")
         self.SessionPersist = params.get("SessionPersist")
         self.ForwardClientIp = params.get("ForwardClientIp")
+        if params.get("Rule") is not None:
+            self.Rule = []
+            for item in params.get("Rule"):
+                obj = ApplicationProxyRule()
+                obj._deserialize(item)
+                self.Rule.append(obj)
         self.ProxyType = params.get("ProxyType")
         self.SessionPersistTime = params.get("SessionPersistTime")
         if params.get("Ipv6") is not None:
@@ -3715,6 +3725,10 @@ class DescribeApplicationProxyDetailResponse(AbstractModel):
         :type HostId: str
         :param Ipv6: IPv6访问配置。
         :type Ipv6: :class:`tencentcloud.teo.v20220106.models.Ipv6Access`
+        :param Area: 加速区域，取值有：
+<li>mainland：中国大陆境内;</li>
+<li>overseas：全球（不含中国大陆）。</li>
+        :type Area: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3735,6 +3749,7 @@ class DescribeApplicationProxyDetailResponse(AbstractModel):
         self.ProxyType = None
         self.HostId = None
         self.Ipv6 = None
+        self.Area = None
         self.RequestId = None
 
 
@@ -3763,6 +3778,7 @@ class DescribeApplicationProxyDetailResponse(AbstractModel):
         if params.get("Ipv6") is not None:
             self.Ipv6 = Ipv6Access()
             self.Ipv6._deserialize(params.get("Ipv6"))
+        self.Area = params.get("Area")
         self.RequestId = params.get("RequestId")
 
 
@@ -3874,6 +3890,10 @@ class DescribeBotLogRequest(AbstractModel):
 <li>requestMethod ：请求方法 ；</li>
 <li>uri ：统一资源标识符 。</li>
         :type QueryCondition: list of QueryCondition
+        :param Area: 数据归属地区，取值有：
+<li>overseas ：全球（除中国大陆地区）数据 ；</li>
+<li>mainland ：中国大陆地区数据 。</li>不填默认查询overseas。
+        :type Area: str
         """
         self.StartTime = None
         self.EndTime = None
@@ -3882,6 +3902,7 @@ class DescribeBotLogRequest(AbstractModel):
         self.ZoneIds = None
         self.Domains = None
         self.QueryCondition = None
+        self.Area = None
 
 
     def _deserialize(self, params):
@@ -3897,6 +3918,7 @@ class DescribeBotLogRequest(AbstractModel):
                 obj = QueryCondition()
                 obj._deserialize(item)
                 self.QueryCondition.append(obj)
+        self.Area = params.get("Area")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4151,6 +4173,10 @@ class DescribeDDosAttackDataRequest(AbstractModel):
 <li>hour ：1小时 ；</li>
 <li>day ：1天 。</li>
         :type Interval: str
+        :param Area: 数据归属地区，取值有：
+<li>overseas ：全球（除中国大陆地区）数据 ；</li>
+<li>mainland ：中国大陆地区数据 。</li>不填默认查询overseas。
+        :type Area: str
         """
         self.StartTime = None
         self.EndTime = None
@@ -4161,6 +4187,7 @@ class DescribeDDosAttackDataRequest(AbstractModel):
         self.ProtocolType = None
         self.AttackType = None
         self.Interval = None
+        self.Area = None
 
 
     def _deserialize(self, params):
@@ -4173,6 +4200,7 @@ class DescribeDDosAttackDataRequest(AbstractModel):
         self.ProtocolType = params.get("ProtocolType")
         self.AttackType = params.get("AttackType")
         self.Interval = params.get("Interval")
+        self.Area = params.get("Area")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4236,12 +4264,18 @@ class DescribeDDosAttackEventDetailRequest(AbstractModel):
         r"""
         :param EventId: 事件id。
         :type EventId: str
+        :param Area: 数据归属地区，取值有：
+<li>overseas ：全球（除中国大陆地区）数据 ；</li>
+<li>mainland ：中国大陆地区数据 。</li>不填默认查询overseas。
+        :type Area: str
         """
         self.EventId = None
+        self.Area = None
 
 
     def _deserialize(self, params):
         self.EventId = params.get("EventId")
+        self.Area = params.get("Area")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4312,6 +4346,10 @@ class DescribeDDosAttackEventRequest(AbstractModel):
 <li>Y ：展示 ；</li>
 <li>N ：不展示 。</li>默认为Y。
         :type IsShowDetail: str
+        :param Area: 数据归属地区，取值有：
+<li>overseas ：全球（除中国大陆地区）数据 ；</li>
+<li>mainland ：中国大陆地区数据 。</li>不填默认查询overseas。
+        :type Area: str
         """
         self.StartTime = None
         self.EndTime = None
@@ -4321,6 +4359,7 @@ class DescribeDDosAttackEventRequest(AbstractModel):
         self.ZoneIds = None
         self.ProtocolType = None
         self.IsShowDetail = None
+        self.Area = None
 
 
     def _deserialize(self, params):
@@ -4332,6 +4371,7 @@ class DescribeDDosAttackEventRequest(AbstractModel):
         self.ZoneIds = params.get("ZoneIds")
         self.ProtocolType = params.get("ProtocolType")
         self.IsShowDetail = params.get("IsShowDetail")
+        self.Area = params.get("Area")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4398,6 +4438,10 @@ class DescribeDDosAttackSourceEventRequest(AbstractModel):
 <li>udp ；</li>
 <li>all 。</li>
         :type ProtocolType: str
+        :param Area: 数据归属地区，取值有：
+<li>overseas ：全球（除中国大陆地区）数据 ；</li>
+<li>mainland ：中国大陆地区数据 。</li>不填默认查询overseas。
+        :type Area: str
         """
         self.StartTime = None
         self.EndTime = None
@@ -4406,6 +4450,7 @@ class DescribeDDosAttackSourceEventRequest(AbstractModel):
         self.PolicyIds = None
         self.ZoneIds = None
         self.ProtocolType = None
+        self.Area = None
 
 
     def _deserialize(self, params):
@@ -4416,6 +4461,7 @@ class DescribeDDosAttackSourceEventRequest(AbstractModel):
         self.PolicyIds = params.get("PolicyIds")
         self.ZoneIds = params.get("ZoneIds")
         self.ProtocolType = params.get("ProtocolType")
+        self.Area = params.get("Area")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4495,6 +4541,10 @@ class DescribeDDosAttackTopDataRequest(AbstractModel):
 <li>icmpFlood ；</li>
 <li>all 。</li>
         :type AttackType: str
+        :param Area: 数据归属地区，取值有：
+<li>overseas ：全球（除中国大陆地区）数据 ；</li>
+<li>mainland ：中国大陆地区数据 。</li>不填默认查询overseas。
+        :type Area: str
         """
         self.StartTime = None
         self.EndTime = None
@@ -4505,6 +4555,7 @@ class DescribeDDosAttackTopDataRequest(AbstractModel):
         self.Port = None
         self.ProtocolType = None
         self.AttackType = None
+        self.Area = None
 
 
     def _deserialize(self, params):
@@ -4517,6 +4568,7 @@ class DescribeDDosAttackTopDataRequest(AbstractModel):
         self.Port = params.get("Port")
         self.ProtocolType = params.get("ProtocolType")
         self.AttackType = params.get("AttackType")
+        self.Area = params.get("Area")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4586,6 +4638,10 @@ class DescribeDDosMajorAttackEventRequest(AbstractModel):
         :type ProtocolType: str
         :param ZoneIds: 站点id列表，不填默认选择全部站点。
         :type ZoneIds: list of str
+        :param Area: 数据归属地区，取值有：
+<li>overseas ：全球（除中国大陆地区）数据 ；</li>
+<li>mainland ：中国大陆地区数据 。</li>不填默认查询overseas。
+        :type Area: str
         """
         self.StartTime = None
         self.EndTime = None
@@ -4594,6 +4650,7 @@ class DescribeDDosMajorAttackEventRequest(AbstractModel):
         self.PolicyIds = None
         self.ProtocolType = None
         self.ZoneIds = None
+        self.Area = None
 
 
     def _deserialize(self, params):
@@ -4604,6 +4661,7 @@ class DescribeDDosMajorAttackEventRequest(AbstractModel):
         self.PolicyIds = params.get("PolicyIds")
         self.ProtocolType = params.get("ProtocolType")
         self.ZoneIds = params.get("ZoneIds")
+        self.Area = params.get("Area")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5494,6 +5552,7 @@ class DescribeOverviewL7DataRequest(AbstractModel):
 l7Flow_outFlux: 访问流量
 l7Flow_request: 访问请求数
 l7Flow_outBandwidth: 访问带宽
+ l7Flow_hit_outFlux: 缓存命中流量
         :type MetricNames: list of str
         :param Interval: 时间间隔，选填{min, 5min, hour, day, week}
         :type Interval: str
@@ -5503,6 +5562,10 @@ l7Flow_outBandwidth: 访问带宽
         :type Domains: list of str
         :param Protocol: 协议类型， 选填{http,http2,https,all}
         :type Protocol: str
+        :param Area: 加速区域，取值有：
+<li>mainland：中国大陆境内;</li>
+<li>overseas：全球（不含中国大陆）。</li>
+        :type Area: str
         """
         self.StartTime = None
         self.EndTime = None
@@ -5511,6 +5574,7 @@ l7Flow_outBandwidth: 访问带宽
         self.ZoneIds = None
         self.Domains = None
         self.Protocol = None
+        self.Area = None
 
 
     def _deserialize(self, params):
@@ -5521,6 +5585,7 @@ l7Flow_outBandwidth: 访问带宽
         self.ZoneIds = params.get("ZoneIds")
         self.Domains = params.get("Domains")
         self.Protocol = params.get("Protocol")
+        self.Area = params.get("Area")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6113,6 +6178,10 @@ l4Flow_outFlux: 访问出流量
         :type Filters: list of Filter
         :param ProxyIds: 四层实例列表
         :type ProxyIds: list of str
+        :param Area: 加速区域，取值有：
+<li>mainland：中国大陆境内;</li>
+<li>overseas：全球（不含中国大陆）。</li>
+        :type Area: str
         """
         self.StartTime = None
         self.EndTime = None
@@ -6124,6 +6193,7 @@ l4Flow_outFlux: 访问出流量
         self.RuleId = None
         self.Filters = None
         self.ProxyIds = None
+        self.Area = None
 
 
     def _deserialize(self, params):
@@ -6142,6 +6212,7 @@ l4Flow_outFlux: 访问出流量
                 obj._deserialize(item)
                 self.Filters.append(obj)
         self.ProxyIds = params.get("ProxyIds")
+        self.Area = params.get("Area")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6208,6 +6279,10 @@ l7Flow_outBandwidth: 访问带宽
         :type ZoneIds: list of str
         :param Filters: 筛选条件
         :type Filters: list of Filter
+        :param Area: 加速区域，取值有：
+<li>mainland：中国大陆境内;</li>
+<li>overseas：全球（不含中国大陆）。</li>
+        :type Area: str
         """
         self.StartTime = None
         self.EndTime = None
@@ -6215,6 +6290,7 @@ l7Flow_outBandwidth: 访问带宽
         self.Interval = None
         self.ZoneIds = None
         self.Filters = None
+        self.Area = None
 
 
     def _deserialize(self, params):
@@ -6229,6 +6305,7 @@ l7Flow_outBandwidth: 访问带宽
                 obj = Filter()
                 obj._deserialize(item)
                 self.Filters.append(obj)
+        self.Area = params.get("Area")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6296,6 +6373,10 @@ l7Cache_request: 访问请求数
 EO响应：{Key: "cacheType", Value: ["hit"], Operator: "equals"}；
 源站响应：{Key: "cacheType", Value: ["miss", "dynamic"], Operator: "equals"}
         :type Filters: list of Filter
+        :param Area: 加速区域，取值有：
+<li>mainland：中国大陆境内;</li>
+<li>overseas：全球（不含中国大陆）。</li>
+        :type Area: str
         """
         self.StartTime = None
         self.EndTime = None
@@ -6303,6 +6384,7 @@ EO响应：{Key: "cacheType", Value: ["hit"], Operator: "equals"}；
         self.Interval = None
         self.ZoneIds = None
         self.Filters = None
+        self.Area = None
 
 
     def _deserialize(self, params):
@@ -6317,6 +6399,7 @@ EO响应：{Key: "cacheType", Value: ["hit"], Operator: "equals"}；
                 obj = Filter()
                 obj._deserialize(item)
                 self.Filters.append(obj)
+        self.Area = params.get("Area")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6382,6 +6465,10 @@ class DescribeTopL7AnalysisDataRequest(AbstractModel):
         :type ZoneIds: list of str
         :param Filters: 筛选条件
         :type Filters: list of Filter
+        :param Area: 加速区域，取值有：
+<li>mainland：中国大陆境内;</li>
+<li>overseas：全球（不含中国大陆）。</li>
+        :type Area: str
         """
         self.StartTime = None
         self.EndTime = None
@@ -6390,6 +6477,7 @@ class DescribeTopL7AnalysisDataRequest(AbstractModel):
         self.Interval = None
         self.ZoneIds = None
         self.Filters = None
+        self.Area = None
 
 
     def _deserialize(self, params):
@@ -6405,6 +6493,7 @@ class DescribeTopL7AnalysisDataRequest(AbstractModel):
                 obj = Filter()
                 obj._deserialize(item)
                 self.Filters.append(obj)
+        self.Area = params.get("Area")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6470,6 +6559,10 @@ class DescribeTopL7CacheDataRequest(AbstractModel):
         :type ZoneIds: list of str
         :param Filters: 筛选条件
         :type Filters: list of Filter
+        :param Area: 加速区域，取值有：
+<li>mainland：中国大陆境内;</li>
+<li>overseas：全球（不含中国大陆）。</li>
+        :type Area: str
         """
         self.StartTime = None
         self.EndTime = None
@@ -6478,6 +6571,7 @@ class DescribeTopL7CacheDataRequest(AbstractModel):
         self.Interval = None
         self.ZoneIds = None
         self.Filters = None
+        self.Area = None
 
 
     def _deserialize(self, params):
@@ -6493,6 +6587,7 @@ class DescribeTopL7CacheDataRequest(AbstractModel):
                 obj = Filter()
                 obj._deserialize(item)
                 self.Filters.append(obj)
+        self.Area = params.get("Area")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6651,6 +6746,10 @@ class DescribeWebManagedRulesDataRequest(AbstractModel):
         :param QueryCondition: 筛选条件，取值有：
 <li>action ：执行动作 。</li>
         :type QueryCondition: list of QueryCondition
+        :param Area: 数据归属地区，取值有：
+<li>overseas ：全球（除中国大陆地区）数据 ；</li>
+<li>mainland ：中国大陆地区数据 。</li>不填默认查询overseas。
+        :type Area: str
         """
         self.StartTime = None
         self.EndTime = None
@@ -6661,6 +6760,7 @@ class DescribeWebManagedRulesDataRequest(AbstractModel):
         self.AttackType = None
         self.Interval = None
         self.QueryCondition = None
+        self.Area = None
 
 
     def _deserialize(self, params):
@@ -6678,6 +6778,7 @@ class DescribeWebManagedRulesDataRequest(AbstractModel):
                 obj = QueryCondition()
                 obj._deserialize(item)
                 self.QueryCondition.append(obj)
+        self.Area = params.get("Area")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6764,6 +6865,10 @@ class DescribeWebManagedRulesLogRequest(AbstractModel):
 <li>requestMethod ：请求方法 ；</li>
 <li>uri ：统一资源标识符 。</li>
         :type QueryCondition: list of QueryCondition
+        :param Area: 数据归属地区，取值有：
+<li>overseas ：全球（除中国大陆地区）数据 ；</li>
+<li>mainland ：中国大陆地区数据 。</li>不填默认查询overseas。
+        :type Area: str
         """
         self.StartTime = None
         self.EndTime = None
@@ -6772,6 +6877,7 @@ class DescribeWebManagedRulesLogRequest(AbstractModel):
         self.ZoneIds = None
         self.Domains = None
         self.QueryCondition = None
+        self.Area = None
 
 
     def _deserialize(self, params):
@@ -6787,6 +6893,7 @@ class DescribeWebManagedRulesLogRequest(AbstractModel):
                 obj = QueryCondition()
                 obj._deserialize(item)
                 self.QueryCondition.append(obj)
+        self.Area = params.get("Area")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6868,6 +6975,10 @@ class DescribeWebManagedRulesTopDataRequest(AbstractModel):
         :param QueryCondition: 筛选条件，取值有：
 <li>action ：执行动作 。</li>
         :type QueryCondition: list of QueryCondition
+        :param Area: 数据归属地区，取值有：
+<li>overseas ：全球（除中国大陆地区）数据 ；</li>
+<li>mainland ：中国大陆地区数据 。</li>不填默认查询overseas。
+        :type Area: str
         """
         self.StartTime = None
         self.EndTime = None
@@ -6881,6 +6992,7 @@ class DescribeWebManagedRulesTopDataRequest(AbstractModel):
         self.Domains = None
         self.Interval = None
         self.QueryCondition = None
+        self.Area = None
 
 
     def _deserialize(self, params):
@@ -6901,6 +7013,7 @@ class DescribeWebManagedRulesTopDataRequest(AbstractModel):
                 obj = QueryCondition()
                 obj._deserialize(item)
                 self.QueryCondition.append(obj)
+        self.Area = params.get("Area")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7053,6 +7166,10 @@ class DescribeWebProtectionDataRequest(AbstractModel):
         :param QueryCondition: 筛选条件，取值有：
 <li>action ：执行动作 。</li>
         :type QueryCondition: list of QueryCondition
+        :param Area: 数据归属地区，取值有：
+<li>overseas ：全球（除中国大陆地区）数据 ；</li>
+<li>mainland ：中国大陆地区数据 。</li>不填默认查询overseas。
+        :type Area: str
         """
         self.StartTime = None
         self.EndTime = None
@@ -7063,6 +7180,7 @@ class DescribeWebProtectionDataRequest(AbstractModel):
         self.AttackType = None
         self.Interval = None
         self.QueryCondition = None
+        self.Area = None
 
 
     def _deserialize(self, params):
@@ -7080,6 +7198,7 @@ class DescribeWebProtectionDataRequest(AbstractModel):
                 obj = QueryCondition()
                 obj._deserialize(item)
                 self.QueryCondition.append(obj)
+        self.Area = params.get("Area")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7173,6 +7292,10 @@ class DescribeWebProtectionLogRequest(AbstractModel):
 <li>rate ：限速日志 ；</li>
 <li>acl ：自定义规则日志 。</li>不填默认为rate。
         :type EntityType: str
+        :param Area: 数据归属地区，取值有：
+<li>overseas ：全球（除中国大陆地区）数据 ；</li>
+<li>mainland ：中国大陆地区数据 。</li>不填默认查询overseas。
+        :type Area: str
         """
         self.StartTime = None
         self.EndTime = None
@@ -7182,6 +7305,7 @@ class DescribeWebProtectionLogRequest(AbstractModel):
         self.Domains = None
         self.QueryCondition = None
         self.EntityType = None
+        self.Area = None
 
 
     def _deserialize(self, params):
@@ -7198,6 +7322,7 @@ class DescribeWebProtectionLogRequest(AbstractModel):
                 obj._deserialize(item)
                 self.QueryCondition.append(obj)
         self.EntityType = params.get("EntityType")
+        self.Area = params.get("Area")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7340,10 +7465,8 @@ class DescribeZoneDetailsResponse(AbstractModel):
         :param Name: 站点名称
         :type Name: str
         :param OriginalNameServers: 用户当前使用的 NS 列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type OriginalNameServers: list of str
         :param NameServers: 腾讯云分配给用户的 NS 列表
-注意：此字段可能返回 null，表示取不到有效值。
         :type NameServers: list of str
         :param Status: 站点状态
 - active：NS 已切换
@@ -7357,16 +7480,6 @@ class DescribeZoneDetailsResponse(AbstractModel):
         :type Type: str
         :param Paused: 站点是否关闭
         :type Paused: bool
-        :param CreatedOn: 站点创建时间
-        :type CreatedOn: str
-        :param ModifiedOn: 站点修改时间
-        :type ModifiedOn: str
-        :param VanityNameServers: 用户自定义 NS 信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type VanityNameServers: :class:`tencentcloud.teo.v20220106.models.VanityNameServers`
-        :param VanityNameServersIps: 用户自定义 NS IP 信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type VanityNameServersIps: list of VanityNameServersIps
         :param CnameSpeedUp: 是否开启 CNAME 加速
 - enabled：开启
 - disabled：关闭
@@ -7374,14 +7487,28 @@ class DescribeZoneDetailsResponse(AbstractModel):
         :param CnameStatus: cname切换验证状态
 - finished 切换完成
 - pending 切换验证中
-注意：此字段可能返回 null，表示取不到有效值。
         :type CnameStatus: str
         :param Tags: 资源标签
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
+        :param Area: 站点接入地域，取值为：
+<li> global：全球；</li>
+<li> mainland：中国大陆；</li>
+<li> overseas：境外区域。</li>
+        :type Area: str
         :param Resources: 计费资源
 注意：此字段可能返回 null，表示取不到有效值。
         :type Resources: list of Resource
+        :param ModifiedOn: 站点修改时间
+        :type ModifiedOn: str
+        :param CreatedOn: 站点创建时间
+        :type CreatedOn: str
+        :param VanityNameServers: 用户自定义 NS 信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VanityNameServers: :class:`tencentcloud.teo.v20220106.models.VanityNameServers`
+        :param VanityNameServersIps: 用户自定义 NS IP 信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VanityNameServersIps: list of VanityNameServersIps
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -7392,14 +7519,15 @@ class DescribeZoneDetailsResponse(AbstractModel):
         self.Status = None
         self.Type = None
         self.Paused = None
-        self.CreatedOn = None
-        self.ModifiedOn = None
-        self.VanityNameServers = None
-        self.VanityNameServersIps = None
         self.CnameSpeedUp = None
         self.CnameStatus = None
         self.Tags = None
+        self.Area = None
         self.Resources = None
+        self.ModifiedOn = None
+        self.CreatedOn = None
+        self.VanityNameServers = None
+        self.VanityNameServersIps = None
         self.RequestId = None
 
 
@@ -7411,8 +7539,23 @@ class DescribeZoneDetailsResponse(AbstractModel):
         self.Status = params.get("Status")
         self.Type = params.get("Type")
         self.Paused = params.get("Paused")
-        self.CreatedOn = params.get("CreatedOn")
+        self.CnameSpeedUp = params.get("CnameSpeedUp")
+        self.CnameStatus = params.get("CnameStatus")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        self.Area = params.get("Area")
+        if params.get("Resources") is not None:
+            self.Resources = []
+            for item in params.get("Resources"):
+                obj = Resource()
+                obj._deserialize(item)
+                self.Resources.append(obj)
         self.ModifiedOn = params.get("ModifiedOn")
+        self.CreatedOn = params.get("CreatedOn")
         if params.get("VanityNameServers") is not None:
             self.VanityNameServers = VanityNameServers()
             self.VanityNameServers._deserialize(params.get("VanityNameServers"))
@@ -7422,20 +7565,6 @@ class DescribeZoneDetailsResponse(AbstractModel):
                 obj = VanityNameServersIps()
                 obj._deserialize(item)
                 self.VanityNameServersIps.append(obj)
-        self.CnameSpeedUp = params.get("CnameSpeedUp")
-        self.CnameStatus = params.get("CnameStatus")
-        if params.get("Tags") is not None:
-            self.Tags = []
-            for item in params.get("Tags"):
-                obj = Tag()
-                obj._deserialize(item)
-                self.Tags.append(obj)
-        if params.get("Resources") is not None:
-            self.Resources = []
-            for item in params.get("Resources"):
-                obj = Resource()
-                obj._deserialize(item)
-                self.Resources.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -7522,6 +7651,10 @@ class DescribeZoneSettingResponse(AbstractModel):
         :param Ipv6: Ipv6访问配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Ipv6: :class:`tencentcloud.teo.v20220106.models.Ipv6Access`
+        :param Area: 站点加速区域信息，取值有：
+<li>mainland：中国境内加速；</li>
+<li>overseas：中国境外加速。</li>
+        :type Area: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -7543,6 +7676,7 @@ class DescribeZoneSettingResponse(AbstractModel):
         self.ClientIpHeader = None
         self.CachePrefresh = None
         self.Ipv6 = None
+        self.Area = None
         self.RequestId = None
 
 
@@ -7597,6 +7731,7 @@ class DescribeZoneSettingResponse(AbstractModel):
         if params.get("Ipv6") is not None:
             self.Ipv6 = Ipv6Access()
             self.Ipv6._deserialize(params.get("Ipv6"))
+        self.Area = params.get("Area")
         self.RequestId = params.get("RequestId")
 
 
@@ -7607,11 +7742,11 @@ class DescribeZonesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Offset: 分页参数，页偏移
+        :param Offset: 分页查询偏移量。默认值：0，最小值：0。
         :type Offset: int
-        :param Limit: 分页参数，每页返回的站点个数
+        :param Limit: 分页查询限制数目。默认值：1000，最大值：1000。
         :type Limit: int
-        :param Filters: 查询条件过滤器，复杂类型
+        :param Filters: 查询条件过滤器，复杂类型。
         :type Filters: list of ZoneFilter
         """
         self.Offset = None
@@ -7644,10 +7779,9 @@ class DescribeZonesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TotalCount: 符合条件的站点数
+        :param TotalCount: 符合条件的站点个数。
         :type TotalCount: int
-        :param Zones: 站点详细信息列表
-注意：此字段可能返回 null，表示取不到有效值。
+        :param Zones: 站点详细信息列表。
         :type Zones: list of Zone
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -8628,12 +8762,17 @@ class L7OfflineLog(AbstractModel):
         :param LogPacketName: 日志数据包名
 注意：此字段可能返回 null，表示取不到有效值。
         :type LogPacketName: str
+        :param Area: 加速区域，取值有：
+<li>mainland：中国大陆境内;</li>
+<li>overseas：全球（不含中国大陆）。</li>
+        :type Area: str
         """
         self.LogTime = None
         self.Domain = None
         self.Size = None
         self.Url = None
         self.LogPacketName = None
+        self.Area = None
 
 
     def _deserialize(self, params):
@@ -8642,6 +8781,7 @@ class L7OfflineLog(AbstractModel):
         self.Size = params.get("Size")
         self.Url = params.get("Url")
         self.LogPacketName = params.get("LogPacketName")
+        self.Area = params.get("Area")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -10154,7 +10294,6 @@ class OfflineCache(AbstractModel):
         :param Switch: 离线缓存是否开启，取值有：
 <li>on：开启；</li>
 <li>off：关闭。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :type Switch: str
         """
         self.Switch = None
@@ -10573,7 +10712,6 @@ class QueryString(AbstractModel):
         :param Switch: CacheKey是否由QueryString组成，取值有：
 <li>on：是；</li>
 <li>off：否。</li>
-注意：此字段可能返回 null，表示取不到有效值。
         :type Switch: str
         :param Action: CacheKey使用QueryString的方式，取值有：
 <li>includeCustom：使用部分url参数；</li>
@@ -10915,29 +11053,35 @@ class Resource(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Id: 资源 ID
+        :param Id: 资源 ID。
         :type Id: str
-        :param PayMode: 付费模式
-0 为后付费
-1 为预付费
+        :param PayMode: 付费模式，取值有：
+<li>0：后付费。</li>
         :type PayMode: int
-        :param CreateTime: 创建时间
+        :param CreateTime: 创建时间。
         :type CreateTime: str
-        :param EnableTime: 生效时间
+        :param EnableTime: 生效时间。
         :type EnableTime: str
-        :param ExpireTime: 失效时间
+        :param ExpireTime: 失效时间。
         :type ExpireTime: str
-        :param Status: 套餐状态
+        :param Status: 套餐状态，取值有：
+<li>normal：正常；</li>
+<li>isolated：隔离；</li>
+<li>destroyed：销毁。</li>
         :type Status: str
-        :param Sv: 询价参数
+        :param Sv: 询价参数。
         :type Sv: list of Sv
-        :param AutoRenewFlag: 是否自动续费
-0 表示默认状态
-1 表示自动续费
-2 表示不自动续费
+        :param AutoRenewFlag: 是否自动续费，取值有：
+<li>0：默认状态；</li>
+<li>1：自动续费；</li>
+<li>2：不自动续费。</li>
         :type AutoRenewFlag: int
-        :param PlanId: 套餐关联资源ID
+        :param PlanId: 套餐关联资源 ID。
         :type PlanId: str
+        :param Area: 地域，取值有：
+<li>mainland：国内；</li>
+<li>overseas：海外。</li>
+        :type Area: str
         """
         self.Id = None
         self.PayMode = None
@@ -10948,6 +11092,7 @@ class Resource(AbstractModel):
         self.Sv = None
         self.AutoRenewFlag = None
         self.PlanId = None
+        self.Area = None
 
 
     def _deserialize(self, params):
@@ -10965,6 +11110,7 @@ class Resource(AbstractModel):
                 self.Sv.append(obj)
         self.AutoRenewFlag = params.get("AutoRenewFlag")
         self.PlanId = params.get("PlanId")
+        self.Area = params.get("Area")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -11426,9 +11572,9 @@ class Sv(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Key: 询价参数 key
+        :param Key: 询价参数键。
         :type Key: str
-        :param Value: 询价参数 value
+        :param Value: 询价参数值。
         :type Value: str
         """
         self.Key = None
@@ -12214,46 +12360,47 @@ class Zone(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Id: 站点ID
+        :param Id: 站点ID。
         :type Id: str
-        :param Name: 站点名称
+        :param Name: 站点名称。
         :type Name: str
-        :param OriginalNameServers: 站点当前使用的 NS 列表
+        :param OriginalNameServers: 站点当前使用的 NS 列表。
         :type OriginalNameServers: list of str
-        :param NameServers: 腾讯云分配的 NS 列表
+        :param NameServers: 腾讯云分配的 NS 列表。
         :type NameServers: list of str
-        :param Status: 站点状态
-- active：NS 已切换
-- pending：NS 未切换
-- moved：NS 已切走
-- deactivated：被封禁
+        :param Status: 站点状态，取值有：
+<li> active：NS 已切换； </li>
+<li> pending：NS 未切换；</li>
+<li> moved：NS 已切走；</li>
+<li> deactivated：被封禁。 </li>
         :type Status: str
-        :param Type: 站点接入方式
-- full：NS 接入
-- partial：CNAME 接入
+        :param Type: 站点接入方式，取值有
+<li> full：NS 接入； </li>
+<li> partial：CNAME 接入。</li>
         :type Type: str
-        :param Paused: 站点是否关闭
+        :param Paused: 站点是否关闭。
         :type Paused: bool
-        :param CreatedOn: 站点创建时间
-        :type CreatedOn: str
-        :param ModifiedOn: 站点修改时间
-        :type ModifiedOn: str
-        :param CnameStatus: cname 接入状态
-- finished 站点已验证
-- pending 站点验证中
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CnameStatus: str
-        :param Tags: 资源标签
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Tags: list of Tag
-        :param Resources: 计费资源
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Resources: list of Resource
-        :param CnameSpeedUp: 是否开启cname加速
-- enabled 开启
-- disabled 关闭
-注意：此字段可能返回 null，表示取不到有效值。
+        :param CnameSpeedUp: 是否开启cname加速，取值有：
+<li> enabled：开启；</li>
+<li> disabled：关闭。</li>
         :type CnameSpeedUp: str
+        :param CnameStatus: cname 接入状态，取值有：
+<li> finished：站点已验证；</li>
+<li> pending：站点验证中。</li>
+        :type CnameStatus: str
+        :param Tags: 资源标签列表。
+        :type Tags: list of Tag
+        :param Resources: 计费资源列表。
+        :type Resources: list of Resource
+        :param CreatedOn: 站点创建时间。
+        :type CreatedOn: str
+        :param ModifiedOn: 站点修改时间。
+        :type ModifiedOn: str
+        :param Area: 站点接入地域，取值为：
+<li> global：全球；</li>
+<li> mainland：中国大陆；</li>
+<li> overseas：境外区域。</li>
+        :type Area: str
         """
         self.Id = None
         self.Name = None
@@ -12262,12 +12409,13 @@ class Zone(AbstractModel):
         self.Status = None
         self.Type = None
         self.Paused = None
-        self.CreatedOn = None
-        self.ModifiedOn = None
+        self.CnameSpeedUp = None
         self.CnameStatus = None
         self.Tags = None
         self.Resources = None
-        self.CnameSpeedUp = None
+        self.CreatedOn = None
+        self.ModifiedOn = None
+        self.Area = None
 
 
     def _deserialize(self, params):
@@ -12278,8 +12426,7 @@ class Zone(AbstractModel):
         self.Status = params.get("Status")
         self.Type = params.get("Type")
         self.Paused = params.get("Paused")
-        self.CreatedOn = params.get("CreatedOn")
-        self.ModifiedOn = params.get("ModifiedOn")
+        self.CnameSpeedUp = params.get("CnameSpeedUp")
         self.CnameStatus = params.get("CnameStatus")
         if params.get("Tags") is not None:
             self.Tags = []
@@ -12293,7 +12440,9 @@ class Zone(AbstractModel):
                 obj = Resource()
                 obj._deserialize(item)
                 self.Resources.append(obj)
-        self.CnameSpeedUp = params.get("CnameSpeedUp")
+        self.CreatedOn = params.get("CreatedOn")
+        self.ModifiedOn = params.get("ModifiedOn")
+        self.Area = params.get("Area")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -12311,14 +12460,14 @@ class ZoneFilter(AbstractModel):
     def __init__(self):
         r"""
         :param Name: 过滤字段名，支持的列表如下：
-- name: 站点名。
-- status: 站点状态
-- tagKey: 标签键
-- tagValue: 标签值
+<li> name：站点名；</li>
+<li> status：站点状态；</li>
+<li> tagKey：标签键；</li>
+<li> tagValue: 标签值。</li>
         :type Name: str
-        :param Values: 过滤字段值
+        :param Values: 过滤字段值。
         :type Values: list of str
-        :param Fuzzy: 是否启用模糊查询，仅支持过滤字段名为name。模糊查询时，Values长度最大为1
+        :param Fuzzy: 是否启用模糊查询，仅支持过滤字段名为name。模糊查询时，Values长度最大为1。默认为false。
         :type Fuzzy: bool
         """
         self.Name = None

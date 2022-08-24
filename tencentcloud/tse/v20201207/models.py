@@ -417,6 +417,56 @@ class DescribeCloudNativeAPIGatewayNodesResult(AbstractModel):
         
 
 
+class DescribeInstanceRegionInfo(AbstractModel):
+    """实例地域信息描述
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EngineRegion: 引擎部署地域信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EngineRegion: str
+        :param Replica: 引擎在该地域的副本数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Replica: int
+        :param SpecId: 引擎在该地域的规格id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SpecId: str
+        :param IntranetVpcInfos: 内网的网络信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IntranetVpcInfos: list of VpcInfo
+        :param EnableClientInternet: 是否开公网
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnableClientInternet: bool
+        """
+        self.EngineRegion = None
+        self.Replica = None
+        self.SpecId = None
+        self.IntranetVpcInfos = None
+        self.EnableClientInternet = None
+
+
+    def _deserialize(self, params):
+        self.EngineRegion = params.get("EngineRegion")
+        self.Replica = params.get("Replica")
+        self.SpecId = params.get("SpecId")
+        if params.get("IntranetVpcInfos") is not None:
+            self.IntranetVpcInfos = []
+            for item in params.get("IntranetVpcInfos"):
+                obj = VpcInfo()
+                obj._deserialize(item)
+                self.IntranetVpcInfos.append(obj)
+        self.EnableClientInternet = params.get("EnableClientInternet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DescribeNacosReplicasRequest(AbstractModel):
     """DescribeNacosReplicas请求参数结构体
 
@@ -1228,6 +1278,9 @@ class SREInstance(AbstractModel):
         :param IsolateTime: 隔离开始时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsolateTime: str
+        :param RegionInfos: 实例地域相关的描述信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegionInfos: list of DescribeInstanceRegionInfo
         """
         self.InstanceId = None
         self.Name = None
@@ -1258,6 +1311,7 @@ class SREInstance(AbstractModel):
         self.AutoRenewFlag = None
         self.CurDeadline = None
         self.IsolateTime = None
+        self.RegionInfos = None
 
 
     def _deserialize(self, params):
@@ -1310,6 +1364,12 @@ class SREInstance(AbstractModel):
         self.AutoRenewFlag = params.get("AutoRenewFlag")
         self.CurDeadline = params.get("CurDeadline")
         self.IsolateTime = params.get("IsolateTime")
+        if params.get("RegionInfos") is not None:
+            self.RegionInfos = []
+            for item in params.get("RegionInfos"):
+                obj = DescribeInstanceRegionInfo()
+                obj._deserialize(item)
+                self.RegionInfos.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

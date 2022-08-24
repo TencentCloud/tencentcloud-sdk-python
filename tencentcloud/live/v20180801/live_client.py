@@ -2314,7 +2314,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveTranscodeTotalInfo(self, request):
-        """查询转码总量数据，可查询近30天内数据。
+        """查询转码总量数据，可查询近三个月内的数据。
         注意：
         如果是查询某一天内，则返回5分钟粒度数据；
         如果是查询跨天或指定域名， 则返回1小时粒度数据。

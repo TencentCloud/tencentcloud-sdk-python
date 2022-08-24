@@ -4480,6 +4480,108 @@ class SnapshotResult(AbstractModel):
         
 
 
+class SyncTableField(AbstractModel):
+    """缓写表字段名称的映射
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SourceName: TcaplusDB表字段名称
+        :type SourceName: str
+        :param TargetName: 目标缓写表的字段名称
+        :type TargetName: str
+        """
+        self.SourceName = None
+        self.TargetName = None
+
+
+    def _deserialize(self, params):
+        self.SourceName = params.get("SourceName")
+        self.TargetName = params.get("TargetName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SyncTableInfo(AbstractModel):
+    """TcaplusDB的缓写表信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TargetTableSplitNum: 目标缓写表的分表数目
+        :type TargetTableSplitNum: int
+        :param TargetTableNamePrefix: 目标缓写表名前缀
+        :type TargetTableNamePrefix: list of str
+        :param TargetSyncDBInstanceId: 缓写数据库实例ID
+        :type TargetSyncDBInstanceId: str
+        :param TargetDatabaseName: 缓写表所在数据库名称
+        :type TargetDatabaseName: str
+        :param Status: 缓写状态，0：创建中，1：进行中，2：关闭，-1：被删除
+        :type Status: int
+        :param ClusterId: 表格所在集群ID
+        :type ClusterId: str
+        :param TableGroupId: 表格所在表格组ID
+        :type TableGroupId: int
+        :param TableName: 表格名称
+        :type TableName: str
+        :param TableId: 表格ID
+        :type TableId: str
+        :param KeyFieldMapping: TcaplusDB表主键字段到目标缓写表字段的映射
+        :type KeyFieldMapping: list of SyncTableField
+        :param ValueFieldMapping: TcaplusDB表字段到目标缓写表字段的映射
+        :type ValueFieldMapping: list of SyncTableField
+        """
+        self.TargetTableSplitNum = None
+        self.TargetTableNamePrefix = None
+        self.TargetSyncDBInstanceId = None
+        self.TargetDatabaseName = None
+        self.Status = None
+        self.ClusterId = None
+        self.TableGroupId = None
+        self.TableName = None
+        self.TableId = None
+        self.KeyFieldMapping = None
+        self.ValueFieldMapping = None
+
+
+    def _deserialize(self, params):
+        self.TargetTableSplitNum = params.get("TargetTableSplitNum")
+        self.TargetTableNamePrefix = params.get("TargetTableNamePrefix")
+        self.TargetSyncDBInstanceId = params.get("TargetSyncDBInstanceId")
+        self.TargetDatabaseName = params.get("TargetDatabaseName")
+        self.Status = params.get("Status")
+        self.ClusterId = params.get("ClusterId")
+        self.TableGroupId = params.get("TableGroupId")
+        self.TableName = params.get("TableName")
+        self.TableId = params.get("TableId")
+        if params.get("KeyFieldMapping") is not None:
+            self.KeyFieldMapping = []
+            for item in params.get("KeyFieldMapping"):
+                obj = SyncTableField()
+                obj._deserialize(item)
+                self.KeyFieldMapping.append(obj)
+        if params.get("ValueFieldMapping") is not None:
+            self.ValueFieldMapping = []
+            for item in params.get("ValueFieldMapping"):
+                obj = SyncTableField()
+                obj._deserialize(item)
+                self.ValueFieldMapping.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TableGroupInfo(AbstractModel):
     """表格组详细信息
 
@@ -4611,6 +4713,9 @@ class TableInfoNew(AbstractModel):
         :param TxhBackupExpireDay: 表格Txh备份文件多少天后过期删除
 注意：此字段可能返回 null，表示取不到有效值。
         :type TxhBackupExpireDay: int
+        :param SyncTableInfo: 表格的缓写信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SyncTableInfo: :class:`tencentcloud.tcaplusdb.v20190823.models.SyncTableInfo`
         """
         self.TableName = None
         self.TableInstanceId = None
@@ -4640,6 +4745,7 @@ class TableInfoNew(AbstractModel):
         self.SortRule = None
         self.DbClusterInfoStruct = None
         self.TxhBackupExpireDay = None
+        self.SyncTableInfo = None
 
 
     def _deserialize(self, params):
@@ -4678,6 +4784,9 @@ class TableInfoNew(AbstractModel):
         self.SortRule = params.get("SortRule")
         self.DbClusterInfoStruct = params.get("DbClusterInfoStruct")
         self.TxhBackupExpireDay = params.get("TxhBackupExpireDay")
+        if params.get("SyncTableInfo") is not None:
+            self.SyncTableInfo = SyncTableInfo()
+            self.SyncTableInfo._deserialize(params.get("SyncTableInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

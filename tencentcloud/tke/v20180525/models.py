@@ -4396,6 +4396,33 @@ class DeletePrometheusClusterAgentRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param Agents: agent列表
+        :type Agents: list of PrometheusAgentInfo
+        :param InstanceId: 实例id
+        :type InstanceId: str
+        """
+        self.Agents = None
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Agents") is not None:
+            self.Agents = []
+            for item in params.get("Agents"):
+                obj = PrometheusAgentInfo()
+                obj._deserialize(item)
+                self.Agents.append(obj)
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DeletePrometheusClusterAgentResponse(AbstractModel):
     """DeletePrometheusClusterAgent返回参数结构体
@@ -12912,6 +12939,38 @@ Defaults to 1 second. Minimum value is 1.
         self.PeriodSeconds = params.get("PeriodSeconds")
         self.SuccessThreshold = params.get("SuccessThreshold")
         self.FailureThreshold = params.get("FailureThreshold")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PrometheusAgentInfo(AbstractModel):
+    """托管Prometheus agent信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterType: 集群类型
+        :type ClusterType: str
+        :param ClusterId: 集群id
+        :type ClusterId: str
+        :param Describe: 备注
+        :type Describe: str
+        """
+        self.ClusterType = None
+        self.ClusterId = None
+        self.Describe = None
+
+
+    def _deserialize(self, params):
+        self.ClusterType = params.get("ClusterType")
+        self.ClusterId = params.get("ClusterId")
+        self.Describe = params.get("Describe")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

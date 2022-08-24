@@ -20,6 +20,9 @@ AUTHFAILURE = 'AuthFailure'
 # 操作失败。
 FAILEDOPERATION = 'FailedOperation'
 
+# 添加私有链接失败。
+FAILEDOPERATION_ADDPRIVATELINK = 'FailedOperation.AddPrivateLink'
+
 # 用户鉴权错误。
 FAILEDOPERATION_AUTHENTICATEUSERFAILED = 'FailedOperation.AuthenticateUserFailed'
 
@@ -29,11 +32,20 @@ FAILEDOPERATION_CREATETRIGGER = 'FailedOperation.CreateTrigger'
 # 删除连接器失败，请检查资源状态。
 FAILEDOPERATION_DELETECONNECTION = 'FailedOperation.DeleteConnection'
 
+# 删除私有链接失败。
+FAILEDOPERATION_DELETEPRIVATELINK = 'FailedOperation.DeletePrivateLink'
+
 # 规则删除失败，请检查资源信息，确认是资源否存在或状态正常。
 FAILEDOPERATION_DELETERULE = 'FailedOperation.DeleteRule'
 
+# ES集群内部错误。
+FAILEDOPERATION_ESINTERNALERROR = 'FailedOperation.ESInternalError'
+
 # ES集群操作失败。
 FAILEDOPERATION_ESREQUESTFAILED = 'FailedOperation.ESRequestFailed'
+
+# ES索引模版冲突错误。
+FAILEDOPERATION_ESTEMPLATECONFLICT = 'FailedOperation.ESTemplateConflict'
 
 # 规则与事件不匹配，请修正后再试。
 FAILEDOPERATION_ERRORFILTER = 'FailedOperation.ErrorFilter'
@@ -43,6 +55,15 @@ FAILEDOPERATION_REGISTERCLSSERVICE = 'FailedOperation.RegisterCLSService'
 
 # ServiceError操作失败，请检查资源信息。
 FAILEDOPERATION_SERVICEERROR = 'FailedOperation.ServiceError'
+
+# 标签绑定操作失败。
+FAILEDOPERATION_TAGRESOURCE = 'FailedOperation.TagResource'
+
+# 申请标签配额失败。
+FAILEDOPERATION_TAGRESOURCEALLOCATEQUOTAS = 'FailedOperation.TagResourceAllocateQuotas'
+
+# 标签解绑操作失败。
+FAILEDOPERATION_UNTAGRESOURCE = 'FailedOperation.UnTagResource'
 
 # 连接器更新失败，请检查资源信息，确认是资源否存在或状态正常。
 FAILEDOPERATION_UPDATECONNECTION = 'FailedOperation.UpdateConnection'
@@ -194,6 +215,9 @@ INVALIDPARAMETERVALUE_TYPE = 'InvalidParameterValue.Type'
 # 事件投递失败，因欠费或违规等原因，账号已被禁用，请联系官网账户端客服处理。
 LIMITEXCEEDED_BANNEDACCOUNT = 'LimitExceeded.BannedAccount'
 
+# 集群私有链接超限。
+LIMITEXCEEDED_CLUSTERPRIVATELINKEXCEEDED = 'LimitExceeded.ClusterPrivateLinkExceeded'
+
 # Connection数量达到限制，可提交工单申请提升限制。
 LIMITEXCEEDED_CONNECTION = 'LimitExceeded.Connection'
 
@@ -221,11 +245,17 @@ LIMITEXCEEDED_TARGET = 'LimitExceeded.Target'
 # 投递目标创建失败，函数触发器数量达到限制，可提交工单申请提升限制。
 LIMITEXCEEDED_TRIGGER = 'LimitExceeded.Trigger'
 
+# 用户私有链接超限。
+LIMITEXCEEDED_USERPRIVATELINKEXCEEDED = 'LimitExceeded.UserPrivateLinkExceeded'
+
 # 投递目标创建失败，检测到当前账号不存在，请确认您的账号状态。
 OPERATIONDENIED_ACCOUNTNOTEXISTS = 'OperationDenied.AccountNotExists'
 
 # 不允许在自定义事件集上创建基于EB默认日志集的CLS事件目标。
 OPERATIONDENIED_DEFAULTCLSRESOURCEUNSUPPORTED = 'OperationDenied.DefaultCLSResourceUnsupported'
+
+# 不支持操作当前ES版本。
+OPERATIONDENIED_ESVERSIONUNSUPPORTED = 'OperationDenied.ESVersionUnsupported'
 
 # 操作失败，该资源不可修改或删除。
 OPERATIONDENIED_RESOURCEIMMUTABLE = 'OperationDenied.ResourceImmutable'
@@ -266,6 +296,9 @@ RESOURCENOTFOUND_INVALIDSERVICE = 'ResourceNotFound.InvalidService'
 # 投递目标创建失败，未找到指定的命名空间，请创建后再试。
 RESOURCENOTFOUND_NAMESPACE = 'ResourceNotFound.Namespace'
 
+# 未找到网络资源关联记录。
+RESOURCENOTFOUND_NETASSOCIATION = 'ResourceNotFound.NetAssociation'
+
 # 未找到privatelink记录。
 RESOURCENOTFOUND_PRIVATELINKRESOURCE = 'ResourceNotFound.PrivateLinkResource'
 
@@ -274,6 +307,9 @@ RESOURCENOTFOUND_ROLE = 'ResourceNotFound.Role'
 
 # 未找到指定的Rule，请创建后再试。
 RESOURCENOTFOUND_RULE = 'ResourceNotFound.Rule'
+
+# 未找到指定标签。
+RESOURCENOTFOUND_TAG = 'ResourceNotFound.Tag'
 
 # 未找到指定的Target，请创建后再试。
 RESOURCENOTFOUND_TARGET = 'ResourceNotFound.Target'
@@ -286,6 +322,9 @@ RESOURCENOTFOUND_VERSION = 'ResourceNotFound.Version'
 
 # 连接器创建失败，当前资源不可用。
 RESOURCEUNAVAILABLE_CONNECTION = 'ResourceUnavailable.Connection'
+
+# ES集群状态异常。
+RESOURCEUNAVAILABLE_ESUNHEALTH = 'ResourceUnavailable.ESUnhealth'
 
 # 投递目标创建失败，当前资源不可用。
 RESOURCEUNAVAILABLE_TARGET = 'ResourceUnavailable.Target'

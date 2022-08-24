@@ -1285,6 +1285,8 @@ class ServerBaseInfo(AbstractModel):
         :type UpdateTime: str
         :param AccessTypes: 公网访问类型
         :type AccessTypes: list of str
+        :param CustomDomainNames: 展示自定义域名
+        :type CustomDomainNames: list of str
         """
         self.ServerName = None
         self.DefaultDomainName = None
@@ -1292,6 +1294,7 @@ class ServerBaseInfo(AbstractModel):
         self.Status = None
         self.UpdateTime = None
         self.AccessTypes = None
+        self.CustomDomainNames = None
 
 
     def _deserialize(self, params):
@@ -1301,6 +1304,7 @@ class ServerBaseInfo(AbstractModel):
         self.Status = params.get("Status")
         self.UpdateTime = params.get("UpdateTime")
         self.AccessTypes = params.get("AccessTypes")
+        self.CustomDomainNames = params.get("CustomDomainNames")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

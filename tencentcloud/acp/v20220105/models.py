@@ -163,7 +163,7 @@ class CreateAppScanTaskRepeatRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Source: 任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android);
+        :param Source: 任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android), 3:app漏洞扫描;
         :type Source: int
         :param Platform: 应用平台, 0:android, 1:ios, 2:小程序
         :type Platform: int
@@ -250,7 +250,7 @@ class CreateAppScanTaskRequest(AbstractModel):
         r"""
         :param TaskType: 任务类型, 0:基础版, 1:专家版, 2:本地化
         :type TaskType: int
-        :param Source: 任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android);
+        :param Source: 任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android), 3:app漏洞扫描;
         :type Source: int
         :param Platform: 应用平台, 0:android, 1:ios, 2:小程序
         :type Platform: int
@@ -362,7 +362,7 @@ class DescribeFileTicketRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Source: 任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android);
+        :param Source: 任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android), 3:app漏洞扫描;
         :type Source: int
         :param Platform: 应用平台, 0:android, 1:ios, 2:小程序
         :type Platform: int
@@ -425,22 +425,26 @@ class DescribeResourceUsageInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param PriceName: 资源计费项名称(为空时，则根据TaskType和Platform进行查询)
+        :param PriceName: 资源计费项名称(为空时，则根据Source，TaskType和Platform进行查询)
         :type PriceName: str
         :param TaskType: 任务类型, 0:基础版, 1:专家版
         :type TaskType: int
         :param Platform: 应用平台, 0:android
         :type Platform: int
+        :param Source: 任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android), 3:app漏洞扫描;
+        :type Source: int
         """
         self.PriceName = None
         self.TaskType = None
         self.Platform = None
+        self.Source = None
 
 
     def _deserialize(self, params):
         self.PriceName = params.get("PriceName")
         self.TaskType = params.get("TaskType")
         self.Platform = params.get("Platform")
+        self.Source = params.get("Source")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -484,7 +488,7 @@ class DescribeScanTaskListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Source: 任务来源, -1:所有, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android);
+        :param Source: 任务来源, -1:所有, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android), 3:app漏洞扫描;
         :type Source: int
         :param Platform: 应用平台, 0:android, 1:ios, 2:小程序
         :type Platform: int
@@ -575,7 +579,7 @@ class DescribeScanTaskReportUrlRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Source: 任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android);
+        :param Source: 任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android), 3:app漏洞扫描;
         :type Source: int
         :param Platform: 应用平台, 0:android, 1:ios, 2:小程序
         :type Platform: int
@@ -623,12 +627,16 @@ class DescribeScanTaskReportUrlResponse(AbstractModel):
         :param ReportTitle: 诊断报告/堆栈/报告json结果的名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReportTitle: str
+        :param ReportResult: 诊断json结果内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReportResult: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Result = None
         self.ReportUrl = None
         self.ReportTitle = None
+        self.ReportResult = None
         self.RequestId = None
 
 
@@ -636,6 +644,7 @@ class DescribeScanTaskReportUrlResponse(AbstractModel):
         self.Result = params.get("Result")
         self.ReportUrl = params.get("ReportUrl")
         self.ReportTitle = params.get("ReportTitle")
+        self.ReportResult = params.get("ReportResult")
         self.RequestId = params.get("RequestId")
 
 
@@ -646,7 +655,7 @@ class DescribeScanTaskStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Source: 任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android);
+        :param Source: 任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android), 3:app漏洞扫描;
         :type Source: int
         :param Platform: 应用平台, 0:android, 1:ios, 2:小程序
         :type Platform: int

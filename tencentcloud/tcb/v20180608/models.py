@@ -6181,6 +6181,12 @@ class EnvBillingInfoItem(AbstractModel):
         :param FreeQuota: 免费配额信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type FreeQuota: str
+        :param EnableOverrun: 是否开启 `超过套餐额度部分转按量付费`
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnableOverrun: bool
+        :param ExtPackageType: 环境套餐类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExtPackageType: str
         """
         self.EnvId = None
         self.PackageId = None
@@ -6195,6 +6201,8 @@ class EnvBillingInfoItem(AbstractModel):
         self.PaymentChannel = None
         self.OrderInfo = None
         self.FreeQuota = None
+        self.EnableOverrun = None
+        self.ExtPackageType = None
 
 
     def _deserialize(self, params):
@@ -6213,6 +6221,8 @@ class EnvBillingInfoItem(AbstractModel):
             self.OrderInfo = OrderInfo()
             self.OrderInfo._deserialize(params.get("OrderInfo"))
         self.FreeQuota = params.get("FreeQuota")
+        self.EnableOverrun = params.get("EnableOverrun")
+        self.ExtPackageType = params.get("ExtPackageType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

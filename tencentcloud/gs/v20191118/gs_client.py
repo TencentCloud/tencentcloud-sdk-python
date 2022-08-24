@@ -56,7 +56,7 @@ class GsClient(AbstractClient):
 
 
     def DescribeInstancesCount(self, request):
-        """获取实例总数和运行数
+        """获取并发总数和运行数
 
         :param request: Request instance for DescribeInstancesCount.
         :type request: :class:`tencentcloud.gs.v20191118.models.DescribeInstancesCountRequest`

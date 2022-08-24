@@ -152,14 +152,18 @@ class DescribeInstancesCountRequest(AbstractModel):
         :type GameId: str
         :param GroupId: 实例分组ID
         :type GroupId: str
+        :param GameRegion: 游戏区域
+        :type GameRegion: str
         """
         self.GameId = None
         self.GroupId = None
+        self.GameRegion = None
 
 
     def _deserialize(self, params):
         self.GameId = params.get("GameId")
         self.GroupId = params.get("GroupId")
+        self.GameRegion = params.get("GameRegion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -614,6 +614,9 @@ LIMITEXCEEDED_TOOMUCHTEMPLATE = 'LimitExceeded.TooMuchTemplate'
 # 缺少参数错误。
 MISSINGPARAMETER = 'MissingParameter'
 
+# 请求的次数超过了频率限制。
+REQUESTLIMITEXCEEDED = 'RequestLimitExceeded'
+
 # 资源不存在。
 RESOURCENOTFOUND = 'ResourceNotFound'
 

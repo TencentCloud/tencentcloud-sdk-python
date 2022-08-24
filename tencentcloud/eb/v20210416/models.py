@@ -2191,6 +2191,8 @@ class UpdateRuleRequest(AbstractModel):
         :type Enable: bool
         :param Description: 规则描述，不限字符类型，200字符描述以内。
         :type Description: str
+        :param EventPattern: 参考：[事件模式](https://cloud.tencent.com/document/product/1359/56084)
+        :type EventPattern: str
         :param RuleName: 事件规则名称，只能包含字母、数字、下划线、连字符，以字母开头，以数字或字母结尾，2~60个字符
         :type RuleName: str
         """
@@ -2198,6 +2200,7 @@ class UpdateRuleRequest(AbstractModel):
         self.EventBusId = None
         self.Enable = None
         self.Description = None
+        self.EventPattern = None
         self.RuleName = None
 
 
@@ -2206,6 +2209,7 @@ class UpdateRuleRequest(AbstractModel):
         self.EventBusId = params.get("EventBusId")
         self.Enable = params.get("Enable")
         self.Description = params.get("Description")
+        self.EventPattern = params.get("EventPattern")
         self.RuleName = params.get("RuleName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

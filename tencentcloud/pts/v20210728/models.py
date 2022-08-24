@@ -3858,6 +3858,34 @@ class NormalLog(AbstractModel):
         
 
 
+class Notification(AbstractModel):
+    """测试启动前后的消息通知
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Events: 发生事件
+        :type Events: list of str
+        :param URL: webhook的网址
+        :type URL: str
+        """
+        self.Events = None
+        self.URL = None
+
+
+    def _deserialize(self, params):
+        self.Events = params.get("Events")
+        self.URL = params.get("URL")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Project(AbstractModel):
     """项目
 
@@ -5250,6 +5278,8 @@ class UpdateScenarioRequest(AbstractModel):
         :type Plugins: list of FileInfo
         :param DomainNameConfig: 域名解析配置
         :type DomainNameConfig: :class:`tencentcloud.pts.v20210728.models.DomainNameConfig`
+        :param NotificationHooks: WebHook请求配置
+        :type NotificationHooks: list of Notification
         """
         self.ScenarioId = None
         self.Name = None
@@ -5270,6 +5300,7 @@ class UpdateScenarioRequest(AbstractModel):
         self.SLAPolicy = None
         self.Plugins = None
         self.DomainNameConfig = None
+        self.NotificationHooks = None
 
 
     def _deserialize(self, params):
@@ -5323,6 +5354,12 @@ class UpdateScenarioRequest(AbstractModel):
         if params.get("DomainNameConfig") is not None:
             self.DomainNameConfig = DomainNameConfig()
             self.DomainNameConfig._deserialize(params.get("DomainNameConfig"))
+        if params.get("NotificationHooks") is not None:
+            self.NotificationHooks = []
+            for item in params.get("NotificationHooks"):
+                obj = Notification()
+                obj._deserialize(item)
+                self.NotificationHooks.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

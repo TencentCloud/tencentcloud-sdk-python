@@ -13825,20 +13825,40 @@ class ModifyEscapeEventStatusRequest(AbstractModel):
         r"""
         :param EventIdSet: 处理事件ids
         :type EventIdSet: list of str
-        :param Status: 标记事件的状态：EVENT_UNDEAL:未处理（取消忽略），EVENT_DEALED:已处理，EVENT_IGNORE:忽略，EVENT_DELETE：已删除
+        :param Status: 标记事件的状态：
+EVENT_UNDEAL:未处理（取消忽略），
+EVENT_DEALED:已处理，
+EVENT_IGNORE:忽略，
+EVENT_DELETE：已删除
+EVENT_ADD_WHITE：加白
         :type Status: str
         :param Remark: 备注
         :type Remark: str
+        :param ImageIDs: 加白镜像ID数组
+        :type ImageIDs: list of str
+        :param EventType: 加白事件类型
+   ESCAPE_CGROUPS：利用cgroup机制逃逸
+   ESCAPE_TAMPER_SENSITIVE_FILE：篡改敏感文件逃逸
+   ESCAPE_DOCKER_API：访问Docker API接口逃逸
+   ESCAPE_VUL_OCCURRED：逃逸漏洞利用
+   MOUNT_SENSITIVE_PTAH：敏感路径挂载
+   PRIVILEGE_CONTAINER_START：特权容器
+   PRIVILEGE：程序提权逃逸
+        :type EventType: list of str
         """
         self.EventIdSet = None
         self.Status = None
         self.Remark = None
+        self.ImageIDs = None
+        self.EventType = None
 
 
     def _deserialize(self, params):
         self.EventIdSet = params.get("EventIdSet")
         self.Status = params.get("Status")
         self.Remark = params.get("Remark")
+        self.ImageIDs = params.get("ImageIDs")
+        self.EventType = params.get("EventType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

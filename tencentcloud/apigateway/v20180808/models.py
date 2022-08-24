@@ -2388,6 +2388,39 @@ class CreateApiRsp(AbstractModel):
         
 
 
+class CreateApiRspSet(AbstractModel):
+    """CreateApiRsp  返回加TotalCount
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 个数
+        :type TotalCount: int
+        :param ApiSet: 返回的数组
+        :type ApiSet: list of CreateApiRsp
+        """
+        self.TotalCount = None
+        self.ApiSet = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("ApiSet") is not None:
+            self.ApiSet = []
+            for item in params.get("ApiSet"):
+                obj = CreateApiRsp()
+                obj._deserialize(item)
+                self.ApiSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateIPStrategyRequest(AbstractModel):
     """CreateIPStrategy请求参数结构体
 
@@ -6815,6 +6848,65 @@ class IPStrategysStatus(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ImportOpenApiRequest(AbstractModel):
+    """ImportOpenApi请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ServiceId: API所在的服务唯一ID。
+        :type ServiceId: str
+        :param Content: openAPI正文内容。
+        :type Content: str
+        :param EncodeType: Content格式，只能是YAML或者JSON，默认是YAML。
+        :type EncodeType: str
+        :param ContentVersion: Content版本，默认是openAPI，目前只支持openAPI。
+        :type ContentVersion: str
+        """
+        self.ServiceId = None
+        self.Content = None
+        self.EncodeType = None
+        self.ContentVersion = None
+
+
+    def _deserialize(self, params):
+        self.ServiceId = params.get("ServiceId")
+        self.Content = params.get("Content")
+        self.EncodeType = params.get("EncodeType")
+        self.ContentVersion = params.get("ContentVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImportOpenApiResponse(AbstractModel):
+    """ImportOpenApi返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 导入OpenApi返回参数。
+        :type Result: :class:`tencentcloud.apigateway.v20180808.models.CreateApiRspSet`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = CreateApiRspSet()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
 
 
 class InstanceChargePrepaid(AbstractModel):

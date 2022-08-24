@@ -340,6 +340,11 @@ class AdaptiveDynamicStreamingTemplate(AbstractModel):
 <li>FairPlay</li>
 如果取值为空字符串，代表不对视频做 DRM 保护。
         :type DrmType: str
+        :param DrmKeyProvider: DRM 的密钥提供商，取值范围：
+<li>SDMC：华曦达；</li>
+<li>VOD：云点播。</li>
+默认值为 VOD 。
+        :type DrmKeyProvider: str
         :param StreamInfos: 自适应转码输入流参数信息，最多输入10路流。
         :type StreamInfos: list of AdaptiveStreamTemplate
         :param DisableHigherVideoBitrate: 是否禁止视频低码率转高码率，取值范围：
@@ -361,6 +366,7 @@ class AdaptiveDynamicStreamingTemplate(AbstractModel):
         self.Comment = None
         self.Format = None
         self.DrmType = None
+        self.DrmKeyProvider = None
         self.StreamInfos = None
         self.DisableHigherVideoBitrate = None
         self.DisableHigherVideoResolution = None
@@ -375,6 +381,7 @@ class AdaptiveDynamicStreamingTemplate(AbstractModel):
         self.Comment = params.get("Comment")
         self.Format = params.get("Format")
         self.DrmType = params.get("DrmType")
+        self.DrmKeyProvider = params.get("DrmKeyProvider")
         if params.get("StreamInfos") is not None:
             self.StreamInfos = []
             for item in params.get("StreamInfos"):
@@ -1400,14 +1407,17 @@ class AiRecognitionTaskAsrFullTextResultOutput(AbstractModel):
         :type SegmentSet: list of AiRecognitionTaskAsrFullTextSegmentItem
         :param SegmentSetFileUrl: 语音全文识别片段列表文件 URL。文件的内容为 JSON，数据结构与 SegmentSet 字段一致。 （文件不会永久存储，到达SegmentSetFileUrlExpireTime 时间点后文件将被删除）。
         :type SegmentSetFileUrl: str
-        :param SegmentSetFileUrlExpireTime: 语音全文识别片段列表文件 URL 失效时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。。
+        :param SegmentSetFileUrlExpireTime: 语音全文识别片段列表文件 URL 失效时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
         :type SegmentSetFileUrlExpireTime: str
-        :param SubtitleUrl: 字幕文件 Url。
+        :param SubtitleSet: 生成的字幕列表，对应 [语音全文识别任务控制参数](https://cloud.tencent.com/document/api/266/31773#AsrFullTextConfigureInfo) SubtitleFormats。
+        :type SubtitleSet: list of AiRecognitionTaskAsrFullTextResultOutputSubtitleItem
+        :param SubtitleUrl: 生成的字幕文件 Url，对应 [语音全文识别任务控制参数](https://cloud.tencent.com/document/api/266/31773#AsrFullTextConfigureInfo) SubtitleFormat。
         :type SubtitleUrl: str
         """
         self.SegmentSet = None
         self.SegmentSetFileUrl = None
         self.SegmentSetFileUrlExpireTime = None
+        self.SubtitleSet = None
         self.SubtitleUrl = None
 
 
@@ -1420,7 +1430,43 @@ class AiRecognitionTaskAsrFullTextResultOutput(AbstractModel):
                 self.SegmentSet.append(obj)
         self.SegmentSetFileUrl = params.get("SegmentSetFileUrl")
         self.SegmentSetFileUrlExpireTime = params.get("SegmentSetFileUrlExpireTime")
+        if params.get("SubtitleSet") is not None:
+            self.SubtitleSet = []
+            for item in params.get("SubtitleSet"):
+                obj = AiRecognitionTaskAsrFullTextResultOutputSubtitleItem()
+                obj._deserialize(item)
+                self.SubtitleSet.append(obj)
         self.SubtitleUrl = params.get("SubtitleUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiRecognitionTaskAsrFullTextResultOutputSubtitleItem(AbstractModel):
+    """字幕信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Format: 字幕文件格式，取值范围：
+<li>vtt：WebVTT 字幕文件；</li>
+<li>srt：SRT 字幕文件。</li>
+        :type Format: str
+        :param Url: 字幕文件 Url。
+        :type Url: str
+        """
+        self.Format = None
+        self.Url = None
+
+
+    def _deserialize(self, params):
+        self.Format = params.get("Format")
+        self.Url = params.get("Url")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4405,16 +4451,24 @@ class AsrFullTextConfigureInfo(AbstractModel):
 <li>ON：开启智能语音全文识别任务；</li>
 <li>OFF：关闭智能语音全文识别任务。</li>
         :type Switch: str
+        :param SubtitleFormats: 生成的字幕文件格式列表，不填或者填空数组表示不生成字幕文件，可选值：
+<li>vtt：生成 WebVTT 字幕文件；</li>
+<li>srt：生成 SRT 字幕文件。</li>
+        :type SubtitleFormats: list of str
         :param SubtitleFormat: 生成的字幕文件格式，不填或者填空字符串表示不生成字幕文件，可选值：
-<li>vtt：生成 WebVTT 字幕文件。</li>
+<li>vtt：生成 WebVTT 字幕文件；</li>
+<li>srt：生成 SRT 字幕文件。</li>
+<font color='red'>注意：此字段已废弃，建议使用 SubtitleFormats。</font>
         :type SubtitleFormat: str
         """
         self.Switch = None
+        self.SubtitleFormats = None
         self.SubtitleFormat = None
 
 
     def _deserialize(self, params):
         self.Switch = params.get("Switch")
+        self.SubtitleFormats = params.get("SubtitleFormats")
         self.SubtitleFormat = params.get("SubtitleFormat")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -4436,16 +4490,24 @@ class AsrFullTextConfigureInfoForUpdate(AbstractModel):
 <li>ON：开启智能语音全文识别任务；</li>
 <li>OFF：关闭智能语音全文识别任务。</li>
         :type Switch: str
-        :param SubtitleFormat: 生成的字幕文件格式，填空字符串表示不生成字幕文件，可选值：
-<li>vtt：生成 WebVTT 字幕文件。</li>
+        :param SubtitleFormatsOperation: 字幕格式列表操作信息。
+        :type SubtitleFormatsOperation: :class:`tencentcloud.vod.v20180717.models.SubtitleFormatsOperation`
+        :param SubtitleFormat: 生成的字幕文件格式，<font color='red'>填空字符串</font>表示不生成字幕文件，可选值：
+<li>vtt：生成 WebVTT 字幕文件；</li>
+<li>srt：生成 SRT 字幕文件。</li>
+<font color='red'>注意：此字段已废弃，建议使用 SubtitleFormatsOperation。</font>
         :type SubtitleFormat: str
         """
         self.Switch = None
+        self.SubtitleFormatsOperation = None
         self.SubtitleFormat = None
 
 
     def _deserialize(self, params):
         self.Switch = params.get("Switch")
+        if params.get("SubtitleFormatsOperation") is not None:
+            self.SubtitleFormatsOperation = SubtitleFormatsOperation()
+            self.SubtitleFormatsOperation._deserialize(params.get("SubtitleFormatsOperation"))
         self.SubtitleFormat = params.get("SubtitleFormat")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -6032,6 +6094,11 @@ class CreateAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
 <li>FairPlay</li>
 如果取值为空字符串，代表不对视频做 DRM 保护。
         :type DrmType: str
+        :param DrmKeyProvider: DRM 的密钥提供商，取值范围：
+<li>SDMC：华曦达；</li>
+<li>VOD：云点播。</li>
+默认为 VOD 。
+        :type DrmKeyProvider: str
         :param DisableHigherVideoBitrate: 是否禁止视频低码率转高码率，取值范围：
 <li>0：否，</li>
 <li>1：是。</li>
@@ -6050,6 +6117,7 @@ class CreateAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
         self.SubAppId = None
         self.Name = None
         self.DrmType = None
+        self.DrmKeyProvider = None
         self.DisableHigherVideoBitrate = None
         self.DisableHigherVideoResolution = None
         self.Comment = None
@@ -6066,6 +6134,7 @@ class CreateAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
         self.SubAppId = params.get("SubAppId")
         self.Name = params.get("Name")
         self.DrmType = params.get("DrmType")
+        self.DrmKeyProvider = params.get("DrmKeyProvider")
         self.DisableHigherVideoBitrate = params.get("DisableHigherVideoBitrate")
         self.DisableHigherVideoResolution = params.get("DisableHigherVideoResolution")
         self.Comment = params.get("Comment")
@@ -10844,7 +10913,7 @@ class DescribeTaskDetailResponse(AbstractModel):
 <li>WechatMiniProgramPublish：微信小程序视频发布任务；</li>
 <li>PullUpload：拉取上传媒体文件任务；</li>
 <li>FastClipMedia：快速剪辑任务；</li>
-<li>ReduceMediaBitrate：降码率任务。</li>
+<li>RemoveWatermarkTask：智能去除水印任务。</li>
         :type TaskType: str
         :param Status: 任务状态，取值：
 <li>WAITING：等待中；</li>
@@ -10893,6 +10962,9 @@ class DescribeTaskDetailResponse(AbstractModel):
         :param SnapshotByTimeOffsetTask: 视频指定时间点截图任务信息，仅当 TaskType 为 SnapshotByTimeOffset，该字段有值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SnapshotByTimeOffsetTask: :class:`tencentcloud.vod.v20180717.models.SnapshotByTimeOffsetTask2017`
+        :param RemoveWatermarkTask: 智能去除水印任务信息，仅当 TaskType 为 RemoveWatermark，该字段有值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RemoveWatermarkTask: :class:`tencentcloud.vod.v20180717.models.RemoveWatermarkTask`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -10913,6 +10985,7 @@ class DescribeTaskDetailResponse(AbstractModel):
         self.ClipTask = None
         self.CreateImageSpriteTask = None
         self.SnapshotByTimeOffsetTask = None
+        self.RemoveWatermarkTask = None
         self.RequestId = None
 
 
@@ -10958,6 +11031,9 @@ class DescribeTaskDetailResponse(AbstractModel):
         if params.get("SnapshotByTimeOffsetTask") is not None:
             self.SnapshotByTimeOffsetTask = SnapshotByTimeOffsetTask2017()
             self.SnapshotByTimeOffsetTask._deserialize(params.get("SnapshotByTimeOffsetTask"))
+        if params.get("RemoveWatermarkTask") is not None:
+            self.RemoveWatermarkTask = RemoveWatermarkTask()
+            self.RemoveWatermarkTask._deserialize(params.get("RemoveWatermarkTask"))
         self.RequestId = params.get("RequestId")
 
 
@@ -12059,6 +12135,9 @@ class EventContent(AbstractModel):
         :param WechatMiniProgramPublishCompleteEvent: 微信小程序发布任务完成事件，当事件类型为 WechatMiniProgramPublishComplete 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type WechatMiniProgramPublishCompleteEvent: :class:`tencentcloud.vod.v20180717.models.WechatMiniProgramPublishTask`
+        :param RemoveWatermarkCompleteEvent: 智能去除水印任务完成事件，当事件类型为 RemoveWatermark 有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RemoveWatermarkCompleteEvent: :class:`tencentcloud.vod.v20180717.models.RemoveWatermarkTask`
         :param RestoreMediaCompleteEvent: 视频取回完成事件，当事件类型为RestoreMediaComplete 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RestoreMediaCompleteEvent: :class:`tencentcloud.vod.v20180717.models.RestoreMediaTask`
@@ -12079,6 +12158,7 @@ class EventContent(AbstractModel):
         self.SnapshotByTimeOffsetCompleteEvent = None
         self.WechatPublishCompleteEvent = None
         self.WechatMiniProgramPublishCompleteEvent = None
+        self.RemoveWatermarkCompleteEvent = None
         self.RestoreMediaCompleteEvent = None
 
 
@@ -12127,6 +12207,9 @@ class EventContent(AbstractModel):
         if params.get("WechatMiniProgramPublishCompleteEvent") is not None:
             self.WechatMiniProgramPublishCompleteEvent = WechatMiniProgramPublishTask()
             self.WechatMiniProgramPublishCompleteEvent._deserialize(params.get("WechatMiniProgramPublishCompleteEvent"))
+        if params.get("RemoveWatermarkCompleteEvent") is not None:
+            self.RemoveWatermarkCompleteEvent = RemoveWatermarkTask()
+            self.RemoveWatermarkCompleteEvent._deserialize(params.get("RemoveWatermarkCompleteEvent"))
         if params.get("RestoreMediaCompleteEvent") is not None:
             self.RestoreMediaCompleteEvent = RestoreMediaTask()
             self.RestoreMediaCompleteEvent._deserialize(params.get("RestoreMediaCompleteEvent"))
@@ -13342,10 +13425,22 @@ class LiveRealTimeClipRequest(AbstractModel):
         :type ExpireTime: str
         :param Procedure: 剪辑固化后的视频点播任务流处理，详见[上传指定任务流](https://cloud.tencent.com/document/product/266/9759)。仅 IsPersistence 为 1 时有效。
         :type Procedure: str
+        :param ClassId: 分类ID，用于对媒体进行分类管理，可通过 [创建分类](/document/product/266/7812) 接口，创建分类，获得分类 ID。
+<li>默认值：0，表示其他分类。</li>
+仅 IsPersistence 为 1 时有效。
+        :type ClassId: int
+        :param SourceContext: 来源上下文，用于透传用户请求信息，[上传完成回调](/document/product/266/7830) 将返回该字段值，最长 250 个字符。仅 IsPersistence 为 1 时有效。
+        :type SourceContext: str
+        :param SessionContext: 会话上下文，用于透传用户请求信息，当指定 Procedure 参数后，[任务流状态变更回调](/document/product/266/9636) 将返回该字段值，最长 1000 个字符。仅 IsPersistence 为 1 时有效。
+        :type SessionContext: str
         :param MetaDataRequired: 是否需要返回剪辑后的视频元信息。0 不需要，1 需要。默认不需要。
         :type MetaDataRequired: int
         :param Host: 云点播中添加的用于时移播放的域名，必须在云直播已经[关联录制模板和开通时移服务](https://cloud.tencent.com/document/product/266/52220#.E6.AD.A5.E9.AA.A43.EF.BC.9A.E5.85.B3.E8.81.94.E5.BD.95.E5.88.B6.E6.A8.A1.E6.9D.BF.3Ca-id.3D.22step3.22.3E.3C.2Fa.3E)。**如果本接口的首次调用时间在 2021-01-01T00:00:00Z 之后，则此字段为必选字段。**
         :type Host: str
+        :param StreamInfo: 剪辑的直播流信息：
+<li>默认剪辑直播原始流。</li>
+<li>当StreamInfo中指定的Type为Transcoding，则剪辑TemplateId对应的直播转码流。</li>
+        :type StreamInfo: :class:`tencentcloud.vod.v20180717.models.LiveRealTimeClipStreamInfo`
         :param ExtInfo: 系统保留字段，请勿填写。
         :type ExtInfo: str
         """
@@ -13356,8 +13451,12 @@ class LiveRealTimeClipRequest(AbstractModel):
         self.IsPersistence = None
         self.ExpireTime = None
         self.Procedure = None
+        self.ClassId = None
+        self.SourceContext = None
+        self.SessionContext = None
         self.MetaDataRequired = None
         self.Host = None
+        self.StreamInfo = None
         self.ExtInfo = None
 
 
@@ -13369,8 +13468,14 @@ class LiveRealTimeClipRequest(AbstractModel):
         self.IsPersistence = params.get("IsPersistence")
         self.ExpireTime = params.get("ExpireTime")
         self.Procedure = params.get("Procedure")
+        self.ClassId = params.get("ClassId")
+        self.SourceContext = params.get("SourceContext")
+        self.SessionContext = params.get("SessionContext")
         self.MetaDataRequired = params.get("MetaDataRequired")
         self.Host = params.get("Host")
+        if params.get("StreamInfo") is not None:
+            self.StreamInfo = LiveRealTimeClipStreamInfo()
+            self.StreamInfo._deserialize(params.get("StreamInfo"))
         self.ExtInfo = params.get("ExtInfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -13424,6 +13529,37 @@ class LiveRealTimeClipResponse(AbstractModel):
                 obj._deserialize(item)
                 self.SegmentSet.append(obj)
         self.RequestId = params.get("RequestId")
+
+
+class LiveRealTimeClipStreamInfo(AbstractModel):
+    """直播即时剪辑流信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Type: 直播流类型，可选值：
+<li>Original（原始流，<b>默认值</b>）。</li>
+<li>Transcoding（转码流）。</li>
+        :type Type: str
+        :param TemplateId: 直播转码模板ID。
+<b>当Type值为"Transcoding"时，必须填写。</b>
+        :type TemplateId: int
+        """
+        self.Type = None
+        self.TemplateId = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.TemplateId = params.get("TemplateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ManageTaskRequest(AbstractModel):
@@ -15435,14 +15571,21 @@ class MediaSourceData(AbstractModel):
         :type SourceType: str
         :param SourceContext: 用户创建文件时透传的字段
         :type SourceContext: str
+        :param TrtcRecordInfo: TRTC 伴生录制信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TrtcRecordInfo: :class:`tencentcloud.vod.v20180717.models.TrtcRecordInfo`
         """
         self.SourceType = None
         self.SourceContext = None
+        self.TrtcRecordInfo = None
 
 
     def _deserialize(self, params):
         self.SourceType = params.get("SourceType")
         self.SourceContext = params.get("SourceContext")
+        if params.get("TrtcRecordInfo") is not None:
+            self.TrtcRecordInfo = TrtcRecordInfo()
+            self.TrtcRecordInfo._deserialize(params.get("TrtcRecordInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -20075,6 +20218,192 @@ class RefreshUrlCacheResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class RemoveWaterMarkTaskInput(AbstractModel):
+    """智能去除水印任务的输入。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FileId: 媒体文件 ID。
+        :type FileId: str
+        """
+        self.FileId = None
+
+
+    def _deserialize(self, params):
+        self.FileId = params.get("FileId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RemoveWaterMarkTaskOutput(AbstractModel):
+    """智能去除水印任务的输出。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FileId: 视频 ID。
+        :type FileId: str
+        :param MetaData: 元信息。包括大小、时长、视频流信息、音频流信息等。
+        :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
+        """
+        self.FileId = None
+        self.MetaData = None
+
+
+    def _deserialize(self, params):
+        self.FileId = params.get("FileId")
+        if params.get("MetaData") is not None:
+            self.MetaData = MediaMetaData()
+            self.MetaData._deserialize(params.get("MetaData"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RemoveWatermarkRequest(AbstractModel):
+    """RemoveWatermark请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FileId: 媒体文件 ID 。
+        :type FileId: str
+        :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :type SubAppId: int
+        :param SessionId: 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+        :type SessionId: str
+        :param SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+        :type SessionContext: str
+        :param TasksPriority: 任务流的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。
+        :type TasksPriority: int
+        :param TasksNotifyMode: 该字段已无效。
+        :type TasksNotifyMode: str
+        """
+        self.FileId = None
+        self.SubAppId = None
+        self.SessionId = None
+        self.SessionContext = None
+        self.TasksPriority = None
+        self.TasksNotifyMode = None
+
+
+    def _deserialize(self, params):
+        self.FileId = params.get("FileId")
+        self.SubAppId = params.get("SubAppId")
+        self.SessionId = params.get("SessionId")
+        self.SessionContext = params.get("SessionContext")
+        self.TasksPriority = params.get("TasksPriority")
+        self.TasksNotifyMode = params.get("TasksNotifyMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RemoveWatermarkResponse(AbstractModel):
+    """RemoveWatermark返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 任务 ID 。
+        :type TaskId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
+class RemoveWatermarkTask(AbstractModel):
+    """智能去除水印任务信息，仅当 TaskType 为 RemoveWatermark，该字段有值。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 任务 ID 。
+        :type TaskId: str
+        :param Status: 任务流状态，取值：
+<li>PROCESSING：处理中；</li>
+<li>FINISH：已完成。</li>
+        :type Status: str
+        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :type ErrCodeExt: str
+        :param ErrCode: 错误码，0 表示成功，其他值表示失败：
+<li>40000：输入参数不合法，请检查输入参数；</li>
+<li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li>
+<li>70000：内部服务错误，建议重试。</li>
+        :type ErrCode: int
+        :param Message: 错误信息。
+        :type Message: str
+        :param Input: 智能去除水印任务的输入。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Input: :class:`tencentcloud.vod.v20180717.models.RemoveWaterMarkTaskInput`
+        :param Output: 智能去除水印任务的输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Output: :class:`tencentcloud.vod.v20180717.models.RemoveWaterMarkTaskOutput`
+        :param SessionId: 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+        :type SessionId: str
+        :param SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+        :type SessionContext: str
+        """
+        self.TaskId = None
+        self.Status = None
+        self.ErrCodeExt = None
+        self.ErrCode = None
+        self.Message = None
+        self.Input = None
+        self.Output = None
+        self.SessionId = None
+        self.SessionContext = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
+        self.ErrCode = params.get("ErrCode")
+        self.Message = params.get("Message")
+        if params.get("Input") is not None:
+            self.Input = RemoveWaterMarkTaskInput()
+            self.Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self.Output = RemoveWaterMarkTaskOutput()
+            self.Output._deserialize(params.get("Output"))
+        self.SessionId = params.get("SessionId")
+        self.SessionContext = params.get("SessionContext")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ResetProcedureTemplateRequest(AbstractModel):
     """ResetProcedureTemplate请求参数结构体
 
@@ -20802,12 +21131,29 @@ class SimpleHlsClipRequest(AbstractModel):
         :type EndTimeOffset: float
         :param IsPersistence: 是否固化。0 不固化，1 固化。默认不固化。
         :type IsPersistence: int
+        :param ExpireTime: 剪辑固化后的视频存储过期时间。格式参照 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。填“9999-12-31T23:59:59Z”表示永不过期。过期后该媒体文件及其相关资源（转码结果、雪碧图等）将被永久删除。仅 IsPersistence 为 1 时有效，默认剪辑固化的视频永不过期。
+        :type ExpireTime: str
+        :param Procedure: 剪辑固化后的视频点播任务流处理，详见[上传指定任务流](https://cloud.tencent.com/document/product/266/9759)。仅 IsPersistence 为 1 时有效。
+        :type Procedure: str
+        :param ClassId: 分类ID，用于对媒体进行分类管理，可通过 [创建分类](/document/product/266/7812) 接口，创建分类，获得分类 ID。
+<li>默认值：0，表示其他分类。</li>
+仅 IsPersistence 为 1 时有效。
+        :type ClassId: int
+        :param SourceContext: 来源上下文，用于透传用户请求信息，[上传完成回调](/document/product/266/7830) 将返回该字段值，最长 250 个字符。仅 IsPersistence 为 1 时有效。
+        :type SourceContext: str
+        :param SessionContext: 会话上下文，用于透传用户请求信息，当指定 Procedure 参数后，[任务流状态变更回调](/document/product/266/9636) 将返回该字段值，最长 1000 个字符。仅 IsPersistence 为 1 时有效。
+        :type SessionContext: str
         """
         self.Url = None
         self.SubAppId = None
         self.StartTimeOffset = None
         self.EndTimeOffset = None
         self.IsPersistence = None
+        self.ExpireTime = None
+        self.Procedure = None
+        self.ClassId = None
+        self.SourceContext = None
+        self.SessionContext = None
 
 
     def _deserialize(self, params):
@@ -20816,6 +21162,11 @@ class SimpleHlsClipRequest(AbstractModel):
         self.StartTimeOffset = params.get("StartTimeOffset")
         self.EndTimeOffset = params.get("EndTimeOffset")
         self.IsPersistence = params.get("IsPersistence")
+        self.ExpireTime = params.get("ExpireTime")
+        self.Procedure = params.get("Procedure")
+        self.ClassId = params.get("ClassId")
+        self.SourceContext = params.get("SourceContext")
+        self.SessionContext = params.get("SessionContext")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -20838,12 +21189,15 @@ class SimpleHlsClipResponse(AbstractModel):
         :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
         :param FileId: 剪辑固化后的视频的媒体文件的唯一标识。
         :type FileId: str
+        :param TaskId: 剪辑固化后的视频任务流 ID。
+        :type TaskId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Url = None
         self.MetaData = None
         self.FileId = None
+        self.TaskId = None
         self.RequestId = None
 
 
@@ -20853,6 +21207,7 @@ class SimpleHlsClipResponse(AbstractModel):
             self.MetaData = MediaMetaData()
             self.MetaData._deserialize(params.get("MetaData"))
         self.FileId = params.get("FileId")
+        self.TaskId = params.get("TaskId")
         self.RequestId = params.get("RequestId")
 
 
@@ -21652,6 +22007,39 @@ class SubAppIdInfo(AbstractModel):
         self.CreateTime = params.get("CreateTime")
         self.Status = params.get("Status")
         self.Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SubtitleFormatsOperation(AbstractModel):
+    """字幕格式列表操作。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Type: 操作类型，取值范围：
+<li>add：添加 Formats 指定的格式列表；</li>
+<li>delete：删除 Formats 指定的格式列表；<l/i>
+<li>reset：将已配置的格式列表重置为  Formats 指定的格式列表。</li>
+        :type Type: str
+        :param Formats: 字幕格式列表，取值范围：
+<li>vtt：生成 WebVTT 字幕文件；</li>
+<li>srt：生成 SRT 字幕文件。</li>
+        :type Formats: list of str
+        """
+        self.Type = None
+        self.Formats = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.Formats = params.get("Formats")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -22860,6 +23248,42 @@ class TransitionOpertion(AbstractModel):
 
     def _deserialize(self, params):
         self.Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TrtcRecordInfo(AbstractModel):
+    """TRTC伴生录制信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SdkAppId: TRTC 应用 ID。
+        :type SdkAppId: int
+        :param RoomId: TRTC 房间 ID。
+        :type RoomId: str
+        :param TaskId: 录制任务 ID。
+        :type TaskId: str
+        :param UserIds: 参与录制的用户 ID 列表。
+        :type UserIds: list of str
+        """
+        self.SdkAppId = None
+        self.RoomId = None
+        self.TaskId = None
+        self.UserIds = None
+
+
+    def _deserialize(self, params):
+        self.SdkAppId = params.get("SdkAppId")
+        self.RoomId = params.get("RoomId")
+        self.TaskId = params.get("TaskId")
+        self.UserIds = params.get("UserIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

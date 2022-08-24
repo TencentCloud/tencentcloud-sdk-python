@@ -2450,7 +2450,8 @@ class EventContent(AbstractModel):
 <li>Class.Created：分类新增事件；</li>
 <li>Class.Moved：分类移动事件；</li>
 <li>Class.Deleted：分类删除事件；</li>
-<li>Task.VideoExportCompleted：视频导出完成事件。 </li>
+<li>Task.VideoExportCompleted：视频导出完成事件； </li>
+<li>Project.MediaCast.StatusChanged：点播转直播项目状态变更事件。 </li>
         :type EventType: str
         :param Operator: 操作者，表示触发事件的操作者。如果是 `cmeid_system` 表示平台管理员操作。
         :type Operator: str
@@ -2488,6 +2489,9 @@ class EventContent(AbstractModel):
         :param VideoExportCompletedEvent: 视频导出完成事件。仅当 EventType 为 Task.VideoExportCompleted 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type VideoExportCompletedEvent: :class:`tencentcloud.cme.v20191029.models.VideoExportCompletedEvent`
+        :param ProjectMediaCastStatusChangedEvent: 点播转直播项目状态变更事件。仅当 EventType 为 Project.MediaCast.StatusChanged 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectMediaCastStatusChangedEvent: :class:`tencentcloud.cme.v20191029.models.ProjectMediaCastStatusChangedEvent`
         """
         self.EventType = None
         self.Operator = None
@@ -2503,6 +2507,7 @@ class EventContent(AbstractModel):
         self.ClassMovedEvent = None
         self.ClassDeletedEvent = None
         self.VideoExportCompletedEvent = None
+        self.ProjectMediaCastStatusChangedEvent = None
 
 
     def _deserialize(self, params):
@@ -2544,6 +2549,9 @@ class EventContent(AbstractModel):
         if params.get("VideoExportCompletedEvent") is not None:
             self.VideoExportCompletedEvent = VideoExportCompletedEvent()
             self.VideoExportCompletedEvent._deserialize(params.get("VideoExportCompletedEvent"))
+        if params.get("ProjectMediaCastStatusChangedEvent") is not None:
+            self.ProjectMediaCastStatusChangedEvent = ProjectMediaCastStatusChangedEvent()
+            self.ProjectMediaCastStatusChangedEvent._deserialize(params.get("ProjectMediaCastStatusChangedEvent"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4213,6 +4221,294 @@ class MaterialTagInfo(AbstractModel):
         
 
 
+class MediaCastDestinationInfo(AbstractModel):
+    """点播转直播输出信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Index: 输出源序号。由系统进行分配。
+        :type Index: int
+        :param Name: 输出源的名称。
+        :type Name: str
+        :param PushUrl: 输出直播流地址。支持的直播流类型为 RTMP 和 SRT。
+        :type PushUrl: str
+        """
+        self.Index = None
+        self.Name = None
+        self.PushUrl = None
+
+
+    def _deserialize(self, params):
+        self.Index = params.get("Index")
+        self.Name = params.get("Name")
+        self.PushUrl = params.get("PushUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MediaCastDestinationInterruptInfo(AbstractModel):
+    """点播转直播输出断流信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DestinationInfo: 发生断流的输出源信息。
+        :type DestinationInfo: :class:`tencentcloud.cme.v20191029.models.MediaCastDestinationInfo`
+        :param Reason: 输出源断流原因，取值有：
+<li>SystemError：系统错误；</li>
+<li>Unknown：未知错误。</li>
+        :type Reason: str
+        """
+        self.DestinationInfo = None
+        self.Reason = None
+
+
+    def _deserialize(self, params):
+        if params.get("DestinationInfo") is not None:
+            self.DestinationInfo = MediaCastDestinationInfo()
+            self.DestinationInfo._deserialize(params.get("DestinationInfo"))
+        self.Reason = params.get("Reason")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MediaCastOutputMediaSetting(AbstractModel):
+    """点播转直播输出媒体配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param VideoSetting: 视频配置。
+        :type VideoSetting: :class:`tencentcloud.cme.v20191029.models.MediaCastVideoSetting`
+        """
+        self.VideoSetting = None
+
+
+    def _deserialize(self, params):
+        if params.get("VideoSetting") is not None:
+            self.VideoSetting = MediaCastVideoSetting()
+            self.VideoSetting._deserialize(params.get("VideoSetting"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MediaCastPlaySetting(AbstractModel):
+    """播放控制参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LoopCount: 循环播放次数。LoopCount 和 EndTime 同时只能有一个生效。默认循环播放次数为一次。如果同时设置了 LoopCount 和 EndTime 参数，优先使用 LoopCount 参数。
+        :type LoopCount: int
+        :param EndTime: 结束时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type EndTime: str
+        """
+        self.LoopCount = None
+        self.EndTime = None
+
+
+    def _deserialize(self, params):
+        self.LoopCount = params.get("LoopCount")
+        self.EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MediaCastProjectInfo(AbstractModel):
+    """点播转直播项目信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Status: 点播转直播项目状态，取值有：
+<li>Working ：运行中；</li>
+<li>Idle ：空闲。</li>
+        :type Status: str
+        :param SourceInfos: 输入源列表。
+        :type SourceInfos: list of MediaCastSourceInfo
+        :param DestinationInfos: 输出源列表。
+        :type DestinationInfos: list of MediaCastDestinationInfo
+        :param OutputMediaSetting: 输出媒体配置。
+        :type OutputMediaSetting: :class:`tencentcloud.cme.v20191029.models.MediaCastOutputMediaSetting`
+        :param PlaySetting: 播放参数。
+        :type PlaySetting: :class:`tencentcloud.cme.v20191029.models.MediaCastPlaySetting`
+        :param StartTime: 项目启动时间。采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type StartTime: str
+        :param StopTime: 项目结束时间。采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。如果项目还在运行中，改字段为空。
+        :type StopTime: str
+        """
+        self.Status = None
+        self.SourceInfos = None
+        self.DestinationInfos = None
+        self.OutputMediaSetting = None
+        self.PlaySetting = None
+        self.StartTime = None
+        self.StopTime = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        if params.get("SourceInfos") is not None:
+            self.SourceInfos = []
+            for item in params.get("SourceInfos"):
+                obj = MediaCastSourceInfo()
+                obj._deserialize(item)
+                self.SourceInfos.append(obj)
+        if params.get("DestinationInfos") is not None:
+            self.DestinationInfos = []
+            for item in params.get("DestinationInfos"):
+                obj = MediaCastDestinationInfo()
+                obj._deserialize(item)
+                self.DestinationInfos.append(obj)
+        if params.get("OutputMediaSetting") is not None:
+            self.OutputMediaSetting = MediaCastOutputMediaSetting()
+            self.OutputMediaSetting._deserialize(params.get("OutputMediaSetting"))
+        if params.get("PlaySetting") is not None:
+            self.PlaySetting = MediaCastPlaySetting()
+            self.PlaySetting._deserialize(params.get("PlaySetting"))
+        self.StartTime = params.get("StartTime")
+        self.StopTime = params.get("StopTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MediaCastSourceInfo(AbstractModel):
+    """点播转直播输入源信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Type: 输入源的媒体类型，取值有：
+<li>CME：多媒体创作引擎的媒体文件；</li>
+<li>VOD：云点播的媒资文件。</li>
+        :type Type: str
+        :param MaterialId: 多媒体创作引擎的媒体 ID。当 Type = CME  时必填。
+        :type MaterialId: str
+        :param FileId: 云点播媒体文件 ID。当 Type = VOD 时必填。
+        :type FileId: str
+        :param Index: 序号，位于输入源列表中的序号，由系统分配。
+        :type Index: int
+        """
+        self.Type = None
+        self.MaterialId = None
+        self.FileId = None
+        self.Index = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.MaterialId = params.get("MaterialId")
+        self.FileId = params.get("FileId")
+        self.Index = params.get("Index")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MediaCastSourceInterruptInfo(AbstractModel):
+    """点播转直播输入断流信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SourceInfo: 发生断流的输入源信息。
+        :type SourceInfo: :class:`tencentcloud.cme.v20191029.models.MediaCastSourceInfo`
+        :param Reason: 输入源断开原因。取值有：
+<li>SystemError：系统错误；</li>
+<li>Unknown：未知错误。</li>
+        :type Reason: str
+        """
+        self.SourceInfo = None
+        self.Reason = None
+
+
+    def _deserialize(self, params):
+        if params.get("SourceInfo") is not None:
+            self.SourceInfo = MediaCastSourceInfo()
+            self.SourceInfo._deserialize(params.get("SourceInfo"))
+        self.Reason = params.get("Reason")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MediaCastVideoSetting(AbstractModel):
+    """点播转直播视频配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Width: 视频宽度，单位：px，默认值为1280。
+        :type Width: int
+        :param Height: 视频高度，单位：px，默认值为720。支持的视频分辨率最大为1920*1080。
+        :type Height: int
+        :param Bitrate: 视频码率，单位：kbps，默认值为2500。最大值为10000 kbps。
+        :type Bitrate: int
+        :param FrameRate: 视频帧率，单位：Hz，默认值为25。最大值为60。
+        :type FrameRate: float
+        """
+        self.Width = None
+        self.Height = None
+        self.Bitrate = None
+        self.FrameRate = None
+
+
+    def _deserialize(self, params):
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
+        self.Bitrate = params.get("Bitrate")
+        self.FrameRate = params.get("FrameRate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class MediaImageSpriteInfo(AbstractModel):
     """雪碧图
 
@@ -5178,10 +5474,13 @@ class ProjectInfo(AbstractModel):
         :param StreamConnectProjectInfo: 云转推项目信息，仅当项目类别取值 STREAM_CONNECT 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type StreamConnectProjectInfo: :class:`tencentcloud.cme.v20191029.models.StreamConnectProjectInfo`
-        :param CreateTime: 项目创建时间，格式按照 ISO 8601 标准表示。
-        :type CreateTime: str
+        :param MediaCastProjectInfo: 点播转直播项目信息，仅当项目类别取值为 MEDIA_CAST 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MediaCastProjectInfo: :class:`tencentcloud.cme.v20191029.models.MediaCastProjectInfo`
         :param UpdateTime: 项目更新时间，格式按照 ISO 8601 标准表示。
         :type UpdateTime: str
+        :param CreateTime: 项目创建时间，格式按照 ISO 8601 标准表示。
+        :type CreateTime: str
         """
         self.ProjectId = None
         self.Name = None
@@ -5190,8 +5489,9 @@ class ProjectInfo(AbstractModel):
         self.Owner = None
         self.CoverUrl = None
         self.StreamConnectProjectInfo = None
-        self.CreateTime = None
+        self.MediaCastProjectInfo = None
         self.UpdateTime = None
+        self.CreateTime = None
 
 
     def _deserialize(self, params):
@@ -5206,8 +5506,55 @@ class ProjectInfo(AbstractModel):
         if params.get("StreamConnectProjectInfo") is not None:
             self.StreamConnectProjectInfo = StreamConnectProjectInfo()
             self.StreamConnectProjectInfo._deserialize(params.get("StreamConnectProjectInfo"))
-        self.CreateTime = params.get("CreateTime")
+        if params.get("MediaCastProjectInfo") is not None:
+            self.MediaCastProjectInfo = MediaCastProjectInfo()
+            self.MediaCastProjectInfo._deserialize(params.get("MediaCastProjectInfo"))
         self.UpdateTime = params.get("UpdateTime")
+        self.CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProjectMediaCastStatusChangedEvent(AbstractModel):
+    """点播转直播项目状态变更事件。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProjectId: 项目 Id。
+        :type ProjectId: str
+        :param Status: 项目状态，取值有：
+<li>Started：点播转直播开始；</li>
+<li>Stopped：点播转直播结束；</li>
+<li>SourceInterrupted：点播转直播输入断流；</li>
+<li>DestinationInterrupted：点播转直播输出断流。</li>
+        :type Status: str
+        :param SourceInterruptInfo: 点播转直播输入断流信息，仅当 Status 取值 SourceInterrupted 时有效。
+        :type SourceInterruptInfo: :class:`tencentcloud.cme.v20191029.models.MediaCastSourceInterruptInfo`
+        :param DestinationInterruptInfo: 点播转直播输出断流信息，仅当 Status 取值 DestinationInterrupted 时有效。
+        :type DestinationInterruptInfo: :class:`tencentcloud.cme.v20191029.models.MediaCastDestinationInterruptInfo`
+        """
+        self.ProjectId = None
+        self.Status = None
+        self.SourceInterruptInfo = None
+        self.DestinationInterruptInfo = None
+
+
+    def _deserialize(self, params):
+        self.ProjectId = params.get("ProjectId")
+        self.Status = params.get("Status")
+        if params.get("SourceInterruptInfo") is not None:
+            self.SourceInterruptInfo = MediaCastSourceInterruptInfo()
+            self.SourceInterruptInfo._deserialize(params.get("SourceInterruptInfo"))
+        if params.get("DestinationInterruptInfo") is not None:
+            self.DestinationInterruptInfo = MediaCastDestinationInterruptInfo()
+            self.DestinationInterruptInfo._deserialize(params.get("DestinationInterruptInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

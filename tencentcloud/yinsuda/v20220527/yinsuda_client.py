@@ -55,6 +55,64 @@ class YinsudaClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateKTVRobot(self, request):
+        """创建机器人，支持进入 RTC 房间，播放曲库歌曲。
+
+        :param request: Request instance for CreateKTVRobot.
+        :type request: :class:`tencentcloud.yinsuda.v20220527.models.CreateKTVRobotRequest`
+        :rtype: :class:`tencentcloud.yinsuda.v20220527.models.CreateKTVRobotResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateKTVRobot", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateKTVRobotResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeKTVMatchMusics(self, request):
+        """根据输入的规则匹配曲库中的歌曲。
+
+        :param request: Request instance for DescribeKTVMatchMusics.
+        :type request: :class:`tencentcloud.yinsuda.v20220527.models.DescribeKTVMatchMusicsRequest`
+        :rtype: :class:`tencentcloud.yinsuda.v20220527.models.DescribeKTVMatchMusicsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeKTVMatchMusics", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeKTVMatchMusicsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeKTVPlaylistDetail(self, request):
         """根据歌单 Id 获取歌单详情。
 
@@ -113,6 +171,35 @@ class YinsudaClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeKTVRobots(self, request):
+        """获取机器人列表，支持 Id、状态等过滤条件。
+
+        :param request: Request instance for DescribeKTVRobots.
+        :type request: :class:`tencentcloud.yinsuda.v20220527.models.DescribeKTVRobotsRequest`
+        :rtype: :class:`tencentcloud.yinsuda.v20220527.models.DescribeKTVRobotsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeKTVRobots", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeKTVRobotsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeKTVSuggestions(self, request):
         """根据关键词获取联想词列表。
 
@@ -142,6 +229,35 @@ class YinsudaClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DestroyKTVRobot(self, request):
+        """销毁机器人，机器人退出 RTC 房间。
+
+        :param request: Request instance for DestroyKTVRobot.
+        :type request: :class:`tencentcloud.yinsuda.v20220527.models.DestroyKTVRobotRequest`
+        :rtype: :class:`tencentcloud.yinsuda.v20220527.models.DestroyKTVRobotResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DestroyKTVRobot", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DestroyKTVRobotResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def SearchKTVMusics(self, request):
         """根据关键词搜索歌曲，返回相关歌曲列表。
 
@@ -157,6 +273,35 @@ class YinsudaClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SearchKTVMusicsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SyncKTVRobotCommand(self, request):
+        """下发操作机器人指令，支持播放、暂停、恢复、歌单设置等操作指令，实现对机器人行为的控制。
+
+        :param request: Request instance for SyncKTVRobotCommand.
+        :type request: :class:`tencentcloud.yinsuda.v20220527.models.SyncKTVRobotCommandRequest`
+        :rtype: :class:`tencentcloud.yinsuda.v20220527.models.SyncKTVRobotCommandResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SyncKTVRobotCommand", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SyncKTVRobotCommandResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

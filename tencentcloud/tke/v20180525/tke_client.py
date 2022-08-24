@@ -1390,7 +1390,7 @@ class TkeClient(AbstractClient):
 
 
     def DeletePrometheusClusterAgent(self, request):
-        """解除2.0实例的集群关联
+        """解除TMP实例的集群关联
 
         :param request: Request instance for DeletePrometheusClusterAgent.
         :type request: :class:`tencentcloud.tke.v20180525.models.DeletePrometheusClusterAgentRequest`

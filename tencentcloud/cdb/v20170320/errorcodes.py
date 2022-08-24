@@ -431,6 +431,9 @@ OPERATIONDENIED_INSTANCESTATUSERROR = 'OperationDenied.InstanceStatusError'
 # 当前实例正在进行其他任务，不能执行延迟复制。
 OPERATIONDENIED_INSTANCETASKRUNNING = 'OperationDenied.InstanceTaskRunning'
 
+# 实例任务状态异常。
+OPERATIONDENIED_INSTANCETASKSTATUSERROR = 'OperationDenied.InstanceTaskStatusError'
+
 # 实例不支持该操作。
 OPERATIONDENIED_INSTANCEUNSUPPORTEDOPERATEERROR = 'OperationDenied.InstanceUnsupportedOperateError'
 

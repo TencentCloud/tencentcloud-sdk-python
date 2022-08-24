@@ -1012,7 +1012,7 @@ class CleanGrafanaInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例名
+        :param InstanceId: 实例 ID
         :type InstanceId: str
         """
         self.InstanceId = None
@@ -1089,6 +1089,47 @@ class CommonNamespace(AbstractModel):
         self.AvailableRegions = params.get("AvailableRegions")
         self.SortId = params.get("SortId")
         self.DashboardId = params.get("DashboardId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CommonNamespaceNew(AbstractModel):
+    """策略类型信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: 命名空间标示
+        :type Id: str
+        :param Name: 命名空间名称
+        :type Name: str
+        :param MonitorType: 监控类型
+        :type MonitorType: str
+        :param Dimensions: 维度信息
+        :type Dimensions: list of DimensionNew
+        """
+        self.Id = None
+        self.Name = None
+        self.MonitorType = None
+        self.Dimensions = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.Name = params.get("Name")
+        self.MonitorType = params.get("MonitorType")
+        if params.get("Dimensions") is not None:
+            self.Dimensions = []
+            for item in params.get("Dimensions"):
+                obj = DimensionNew()
+                obj._deserialize(item)
+                self.Dimensions.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1629,7 +1670,7 @@ class CreateGrafanaIntegrationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例名
+        :param InstanceId: 实例 ID
         :type InstanceId: str
         :param Kind: 类型
         :type Kind: str
@@ -1678,7 +1719,7 @@ class CreateGrafanaNotificationChannelRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例名
+        :param InstanceId: 实例 ID
         :type InstanceId: str
         :param ChannelName: 渠道名
         :type ChannelName: str
@@ -3814,6 +3855,9 @@ class DescribeAllNamespacesResponse(AbstractModel):
         :type QceNamespacesNew: list of CommonNamespace
         :param CustomNamespacesNew: 其他告警策略类型，暂不支持
         :type CustomNamespacesNew: list of CommonNamespace
+        :param CommonNamespaces: 通用告警策略类型(包括：应用性能监控，前端性能监控，云拨测)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CommonNamespaces: list of CommonNamespaceNew
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3821,6 +3865,7 @@ class DescribeAllNamespacesResponse(AbstractModel):
         self.CustomNamespaces = None
         self.QceNamespacesNew = None
         self.CustomNamespacesNew = None
+        self.CommonNamespaces = None
         self.RequestId = None
 
 
@@ -3843,6 +3888,12 @@ class DescribeAllNamespacesResponse(AbstractModel):
                 obj = CommonNamespace()
                 obj._deserialize(item)
                 self.CustomNamespacesNew.append(obj)
+        if params.get("CommonNamespaces") is not None:
+            self.CommonNamespaces = []
+            for item in params.get("CommonNamespaces"):
+                obj = CommonNamespaceNew()
+                obj._deserialize(item)
+                self.CommonNamespaces.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -4119,11 +4170,15 @@ class DescribeBasicAlarmListResponse(AbstractModel):
         :param Total: 总数
 注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
+        :param Warning: 备注信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Warning: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Alarms = None
         self.Total = None
+        self.Warning = None
         self.RequestId = None
 
 
@@ -4135,6 +4190,7 @@ class DescribeBasicAlarmListResponse(AbstractModel):
                 obj._deserialize(item)
                 self.Alarms.append(obj)
         self.Total = params.get("Total")
+        self.Warning = params.get("Warning")
         self.RequestId = params.get("RequestId")
 
 
@@ -4440,7 +4496,7 @@ class DescribeDNSConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例名
+        :param InstanceId: 实例 ID
         :type InstanceId: str
         """
         self.InstanceId = None
@@ -4554,7 +4610,7 @@ class DescribeGrafanaConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 无
+        :param InstanceId: 实例 ID
         :type InstanceId: str
         """
         self.InstanceId = None
@@ -4599,7 +4655,7 @@ class DescribeGrafanaEnvironmentsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例名
+        :param InstanceId: 实例 ID
         :type InstanceId: str
         """
         self.InstanceId = None
@@ -4732,7 +4788,7 @@ class DescribeGrafanaIntegrationsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例名
+        :param InstanceId: 实例 ID
         :type InstanceId: str
         :param IntegrationId: 集成 ID
         :type IntegrationId: str
@@ -4790,7 +4846,7 @@ class DescribeGrafanaNotificationChannelsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例名
+        :param InstanceId: 实例 ID
         :type InstanceId: str
         :param Offset: 偏移量
         :type Offset: int
@@ -4860,7 +4916,7 @@ class DescribeGrafanaWhiteListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例名
+        :param InstanceId: 实例 ID
         :type InstanceId: str
         """
         self.InstanceId = None
@@ -6197,11 +6253,15 @@ class DescribePolicyGroupListResponse(AbstractModel):
         :type GroupList: list of DescribePolicyGroupListGroup
         :param Total: 策略组总数
         :type Total: int
+        :param Warning: 备注信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Warning: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.GroupList = None
         self.Total = None
+        self.Warning = None
         self.RequestId = None
 
 
@@ -6213,6 +6273,7 @@ class DescribePolicyGroupListResponse(AbstractModel):
                 obj._deserialize(item)
                 self.GroupList.append(obj)
         self.Total = params.get("Total")
+        self.Warning = params.get("Warning")
         self.RequestId = params.get("RequestId")
 
 
@@ -7279,6 +7340,80 @@ class Dimension(AbstractModel):
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DimensionNew(AbstractModel):
+    """策略类型的维度信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Key: 维度 key 标示，后台英文名
+        :type Key: str
+        :param Name: 维度 key 名称，中英文前台展示名
+        :type Name: str
+        :param IsRequired: 是否必选
+        :type IsRequired: bool
+        :param Operators: 支持的操作符列表
+        :type Operators: list of Operator
+        :param IsMultiple: 是否支持多选
+        :type IsMultiple: bool
+        :param IsMutable: 创建后是否可以修改
+        :type IsMutable: bool
+        :param IsVisible: 是否展示给用户
+        :type IsVisible: bool
+        :param CanFilterPolicy: 能否用来过滤策略列表
+        :type CanFilterPolicy: bool
+        :param CanFilterHistory: 能否用来过滤告警历史
+        :type CanFilterHistory: bool
+        :param CanGroupBy: 能否作为聚合维度
+        :type CanGroupBy: bool
+        :param MustGroupBy: 是否必须作为聚合维度
+        :type MustGroupBy: bool
+        :param ShowValueReplace: 前端翻译要替换的 key
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ShowValueReplace: str
+        """
+        self.Key = None
+        self.Name = None
+        self.IsRequired = None
+        self.Operators = None
+        self.IsMultiple = None
+        self.IsMutable = None
+        self.IsVisible = None
+        self.CanFilterPolicy = None
+        self.CanFilterHistory = None
+        self.CanGroupBy = None
+        self.MustGroupBy = None
+        self.ShowValueReplace = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Name = params.get("Name")
+        self.IsRequired = params.get("IsRequired")
+        if params.get("Operators") is not None:
+            self.Operators = []
+            for item in params.get("Operators"):
+                obj = Operator()
+                obj._deserialize(item)
+                self.Operators.append(obj)
+        self.IsMultiple = params.get("IsMultiple")
+        self.IsMutable = params.get("IsMutable")
+        self.IsVisible = params.get("IsVisible")
+        self.CanFilterPolicy = params.get("CanFilterPolicy")
+        self.CanFilterHistory = params.get("CanFilterHistory")
+        self.CanGroupBy = params.get("CanGroupBy")
+        self.MustGroupBy = params.get("MustGroupBy")
+        self.ShowValueReplace = params.get("ShowValueReplace")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9215,6 +9350,34 @@ class MonitorTypeNamespace(AbstractModel):
         
 
 
+class Operator(AbstractModel):
+    """维度支持的操作符信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: 运算符标识
+        :type Id: str
+        :param Name: 运算符展示名
+        :type Name: str
+        """
+        self.Id = None
+        self.Name = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PeriodsSt(AbstractModel):
     """周期内的统计方式
 
@@ -10995,7 +11158,7 @@ class UpdateDNSConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例名
+        :param InstanceId: 实例 ID
         :type InstanceId: str
         :param NameServers: DNS 数组
         :type NameServers: list of str
@@ -11100,7 +11263,7 @@ class UpdateGrafanaConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 无
+        :param InstanceId: 实例 ID
         :type InstanceId: str
         :param Config: JSON 编码后的字符串
         :type Config: str
@@ -11145,7 +11308,7 @@ class UpdateGrafanaEnvironmentsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例名
+        :param InstanceId: 实例 ID
         :type InstanceId: str
         :param Envs: 环境变量字符串
         :type Envs: str
@@ -11245,7 +11408,7 @@ class UpdateGrafanaNotificationChannelRequest(AbstractModel):
         r"""
         :param ChannelId: 通道 ID
         :type ChannelId: str
-        :param InstanceId: 实例名
+        :param InstanceId: 实例 ID
         :type InstanceId: str
         :param ChannelName: 渠道名
         :type ChannelName: str
@@ -11702,7 +11865,7 @@ class UpgradeGrafanaInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例名
+        :param InstanceId: 实例 ID
         :type InstanceId: str
         :param Alias: 版本别名
         :type Alias: str

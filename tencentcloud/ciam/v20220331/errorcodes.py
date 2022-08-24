@@ -62,6 +62,9 @@ FAILEDOPERATION_PHONENUMBERISNULL = 'FailedOperation.PhoneNumberIsNull'
 # 主用户不存在。
 FAILEDOPERATION_PRIMARYUSERNOTFOUND = 'FailedOperation.PrimaryUserNotFound'
 
+# 查询用户条件不能有重复的条件。
+FAILEDOPERATION_QUERYUSERSPARAMETERREPEAT = 'FailedOperation.QueryUsersParameterRepeat'
+
 # 配额超限，如有需求请联系客服人员。
 FAILEDOPERATION_QUOTALIMITEXCEEDED = 'FailedOperation.QuotaLimitExceeded'
 

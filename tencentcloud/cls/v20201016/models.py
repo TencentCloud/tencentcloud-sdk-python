@@ -1701,6 +1701,8 @@ class CreateShipperRequest(AbstractModel):
         :type Compress: :class:`tencentcloud.cls.v20201016.models.CompressInfo`
         :param Content: 投递日志的内容格式配置
         :type Content: :class:`tencentcloud.cls.v20201016.models.ContentInfo`
+        :param FilenameMode: 投递文件命名配置，0：随机数命名，1：投递时间命名，默认0（随机数命名）
+        :type FilenameMode: int
         """
         self.TopicId = None
         self.Bucket = None
@@ -1712,6 +1714,7 @@ class CreateShipperRequest(AbstractModel):
         self.Partition = None
         self.Compress = None
         self.Content = None
+        self.FilenameMode = None
 
 
     def _deserialize(self, params):
@@ -1734,6 +1737,7 @@ class CreateShipperRequest(AbstractModel):
         if params.get("Content") is not None:
             self.Content = ContentInfo()
             self.Content._deserialize(params.get("Content"))
+        self.FilenameMode = params.get("FilenameMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4172,7 +4176,7 @@ class JsonInfo(AbstractModel):
         r"""
         :param EnableTag: 启用标志
         :type EnableTag: bool
-        :param MetaFields: 元数据信息列表, 可选值为 __SOURCE__、__FILENAME__、__TIMESTAMP__。
+        :param MetaFields: 元数据信息列表, 可选值为 __SOURCE__、__FILENAME__、__TIMESTAMP__、__HOSTNAME__。
 注意：此字段可能返回 null，表示取不到有效值。
         :type MetaFields: list of str
         """
@@ -5312,6 +5316,8 @@ class ModifyShipperRequest(AbstractModel):
         :type Compress: :class:`tencentcloud.cls.v20201016.models.CompressInfo`
         :param Content: 投递日志的内容格式配置
         :type Content: :class:`tencentcloud.cls.v20201016.models.ContentInfo`
+        :param FilenameMode: 投递文件命名配置，0：随机数命名，1：投递时间命名，默认0（随机数命名）
+        :type FilenameMode: int
         """
         self.ShipperId = None
         self.Bucket = None
@@ -5324,6 +5330,7 @@ class ModifyShipperRequest(AbstractModel):
         self.Partition = None
         self.Compress = None
         self.Content = None
+        self.FilenameMode = None
 
 
     def _deserialize(self, params):
@@ -5347,6 +5354,7 @@ class ModifyShipperRequest(AbstractModel):
         if params.get("Content") is not None:
             self.Content = ContentInfo()
             self.Content._deserialize(params.get("Content"))
+        self.FilenameMode = params.get("FilenameMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

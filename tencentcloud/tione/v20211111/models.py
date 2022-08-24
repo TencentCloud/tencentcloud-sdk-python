@@ -210,7 +210,7 @@ class CreateTrainingModelRequest(AbstractModel):
         :type Tags: list of Tag
         :param TrainingJobName: 训练任务名称
         :type TrainingJobName: str
-        :param AlgorithmFramework: 算法框架 （PYTORCH/TENSORFLOW/DETECTRON2/PMML)
+        :param AlgorithmFramework: 算法框架 （PYTORCH/TENSORFLOW/DETECTRON2/PMML/MMDETECTION)
         :type AlgorithmFramework: str
         :param ReasoningEnvironment: 推理环境
         :type ReasoningEnvironment: str
@@ -232,7 +232,7 @@ class CreateTrainingModelRequest(AbstractModel):
         :type TrainingModelSource: str
         :param TrainingPreference: 模型偏好
         :type TrainingPreference: str
-        :param AutoMLTaskId: 自动学习任务ID
+        :param AutoMLTaskId: 自动学习任务ID（已废弃）
         :type AutoMLTaskId: str
         :param TrainingJobVersion: 任务版本
         :type TrainingJobVersion: str

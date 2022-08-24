@@ -329,6 +329,9 @@ INVALIDPARAMETERVALUE_PARAMETERVALUELIMITEXCEEDED = 'InvalidParameterValue.Param
 # 参数取值错误，不在参数范围内。
 INVALIDPARAMETERVALUE_RANGEEXCEEDED = 'InvalidParameterValue.RangeExceeded'
 
+# 参数取值错误。
+INVALIDPARAMETERVALUE_UNSUPPORTEDPARAMETER = 'InvalidParameterValue.UnsupportedParameter'
+
 # 超过配额限制。
 LIMITEXCEEDED = 'LimitExceeded'
 
