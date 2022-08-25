@@ -135,6 +135,55 @@ class ActivateInstanceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class AddClusterSlaveZoneRequest(AbstractModel):
+    """AddClusterSlaveZone请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param SlaveZone: 从可用区
+        :type SlaveZone: str
+        """
+        self.ClusterId = None
+        self.SlaveZone = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.SlaveZone = params.get("SlaveZone")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddClusterSlaveZoneResponse(AbstractModel):
+    """AddClusterSlaveZone返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: 异步FlowId
+        :type FlowId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
 class AddInstancesRequest(AbstractModel):
     """AddInstances请求参数结构体
 
@@ -2300,6 +2349,60 @@ class DescribeClusterParamLogsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeClusterParamsRequest(AbstractModel):
+    """DescribeClusterParams请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        """
+        self.ClusterId = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeClusterParamsResponse(AbstractModel):
+    """DescribeClusterParams返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 参数个数
+        :type TotalCount: int
+        :param Items: 实例参数列表
+        :type Items: list of ParamInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Items = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = ParamInfo()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeClustersRequest(AbstractModel):
     """DescribeClusters请求参数结构体
 
@@ -2943,21 +3046,30 @@ class DescribeRollbackTimeRangeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param TimeRangeStart: 有效回归时间范围开始时间点
+        :param TimeRangeStart: 有效回归时间范围开始时间点（已废弃）
         :type TimeRangeStart: str
-        :param TimeRangeEnd: 有效回归时间范围结束时间点
+        :param TimeRangeEnd: 有效回归时间范围结束时间点（已废弃）
         :type TimeRangeEnd: str
+        :param RollbackTimeRanges: 可回档时间范围
+        :type RollbackTimeRanges: list of RollbackTimeRange
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TimeRangeStart = None
         self.TimeRangeEnd = None
+        self.RollbackTimeRanges = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.TimeRangeStart = params.get("TimeRangeStart")
         self.TimeRangeEnd = params.get("TimeRangeEnd")
+        if params.get("RollbackTimeRanges") is not None:
+            self.RollbackTimeRanges = []
+            for item in params.get("RollbackTimeRanges"):
+                obj = RollbackTimeRange()
+                obj._deserialize(item)
+                self.RollbackTimeRanges.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -3821,6 +3933,59 @@ class ModifyClusterParamResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyClusterSlaveZoneRequest(AbstractModel):
+    """ModifyClusterSlaveZone请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群Id
+        :type ClusterId: str
+        :param OldSlaveZone: 旧从可用区
+        :type OldSlaveZone: str
+        :param NewSlaveZone: 新从可用区
+        :type NewSlaveZone: str
+        """
+        self.ClusterId = None
+        self.OldSlaveZone = None
+        self.NewSlaveZone = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.OldSlaveZone = params.get("OldSlaveZone")
+        self.NewSlaveZone = params.get("NewSlaveZone")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyClusterSlaveZoneResponse(AbstractModel):
+    """ModifyClusterSlaveZone返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: 异步FlowId
+        :type FlowId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyDBInstanceSecurityGroupsRequest(AbstractModel):
     """ModifyDBInstanceSecurityGroups请求参数结构体
 
@@ -4203,6 +4368,71 @@ class OfflineInstanceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ParamInfo(AbstractModel):
+    """参数信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CurrentValue: 当前值
+        :type CurrentValue: str
+        :param Default: 默认值
+        :type Default: str
+        :param EnumValue: 参数为enum/string/bool时，可选值列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnumValue: list of str
+        :param Max: 参数类型为float/integer时的最大值
+        :type Max: str
+        :param Min: 参数类型为float/integer时的最小值
+        :type Min: str
+        :param ParamName: 参数名称
+        :type ParamName: str
+        :param NeedReboot: 是否需要重启生效
+        :type NeedReboot: int
+        :param ParamType: 参数类型：integer/float/string/enum/bool
+        :type ParamType: str
+        :param MatchType: 匹配类型，multiVal, regex在参数类型是string时使用
+        :type MatchType: str
+        :param MatchValue: 匹配目标值，当multiVal时，各个key用;分割
+        :type MatchValue: str
+        :param Description: 参数描述
+        :type Description: str
+        """
+        self.CurrentValue = None
+        self.Default = None
+        self.EnumValue = None
+        self.Max = None
+        self.Min = None
+        self.ParamName = None
+        self.NeedReboot = None
+        self.ParamType = None
+        self.MatchType = None
+        self.MatchValue = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.CurrentValue = params.get("CurrentValue")
+        self.Default = params.get("Default")
+        self.EnumValue = params.get("EnumValue")
+        self.Max = params.get("Max")
+        self.Min = params.get("Min")
+        self.ParamName = params.get("ParamName")
+        self.NeedReboot = params.get("NeedReboot")
+        self.ParamType = params.get("ParamType")
+        self.MatchType = params.get("MatchType")
+        self.MatchValue = params.get("MatchValue")
+        self.Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ParamItem(AbstractModel):
     """修改参数时，传入参数描述
 
@@ -4406,6 +4636,55 @@ class QueryFilter(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class RemoveClusterSlaveZoneRequest(AbstractModel):
+    """RemoveClusterSlaveZone请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param SlaveZone: 从可用区
+        :type SlaveZone: str
+        """
+        self.ClusterId = None
+        self.SlaveZone = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.SlaveZone = params.get("SlaveZone")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RemoveClusterSlaveZoneResponse(AbstractModel):
+    """RemoveClusterSlaveZone返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: 异步FlowId
+        :type FlowId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
 
 
 class ResumeServerlessRequest(AbstractModel):
@@ -4681,6 +4960,34 @@ class RollbackTableInfo(AbstractModel):
         
 
 
+class RollbackTimeRange(AbstractModel):
+    """可回档的时间范围
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TimeRangeStart: 开始时间
+        :type TimeRangeStart: str
+        :param TimeRangeEnd: 结束时间
+        :type TimeRangeEnd: str
+        """
+        self.TimeRangeStart = None
+        self.TimeRangeEnd = None
+
+
+    def _deserialize(self, params):
+        self.TimeRangeStart = params.get("TimeRangeStart")
+        self.TimeRangeEnd = params.get("TimeRangeEnd")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SecurityGroup(AbstractModel):
     """安全组详情
 
@@ -4850,6 +5157,63 @@ class SlowQueriesItem(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class SwitchClusterZoneRequest(AbstractModel):
+    """SwitchClusterZone请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群Id
+        :type ClusterId: str
+        :param OldZone: 当前可用区
+        :type OldZone: str
+        :param NewZone: 要切换到的可用区
+        :type NewZone: str
+        :param IsInMaintainPeriod: 维护期间执行-yes,立即执行-no
+        :type IsInMaintainPeriod: str
+        """
+        self.ClusterId = None
+        self.OldZone = None
+        self.NewZone = None
+        self.IsInMaintainPeriod = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.OldZone = params.get("OldZone")
+        self.NewZone = params.get("NewZone")
+        self.IsInMaintainPeriod = params.get("IsInMaintainPeriod")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SwitchClusterZoneResponse(AbstractModel):
+    """SwitchClusterZone返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: 异步FlowId
+        :type FlowId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
 
 
 class TablePrivileges(AbstractModel):

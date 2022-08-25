@@ -1098,12 +1098,16 @@ class DescribeScanTaskReportUrlResponse(AbstractModel):
         :param ReportTitle: 诊断报告/堆栈名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReportTitle: str
+        :param ReportResult: 诊断json结果内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReportResult: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.Result = None
         self.ReportUrl = None
         self.ReportTitle = None
+        self.ReportResult = None
         self.RequestId = None
 
 
@@ -1111,6 +1115,7 @@ class DescribeScanTaskReportUrlResponse(AbstractModel):
         self.Result = params.get("Result")
         self.ReportUrl = params.get("ReportUrl")
         self.ReportTitle = params.get("ReportTitle")
+        self.ReportResult = params.get("ReportResult")
         self.RequestId = params.get("RequestId")
 
 

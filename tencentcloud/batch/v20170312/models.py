@@ -2249,11 +2249,17 @@ class Docker(AbstractModel):
         :type Image: str
         :param Server: Docker Hub 可以不填，但确保具有公网访问能力。或者是 Tencent Registry 服务地址“ccr.ccs.tencentyun.com”
         :type Server: str
+        :param MaxRetryCount: 拉取Docker镜像重试次数。默认值：0。
+        :type MaxRetryCount: int
+        :param DelayOnRetry: 拉取Docker镜像失败时延迟时间。单位：秒。
+        :type DelayOnRetry: int
         """
         self.User = None
         self.Password = None
         self.Image = None
         self.Server = None
+        self.MaxRetryCount = None
+        self.DelayOnRetry = None
 
 
     def _deserialize(self, params):
@@ -2261,6 +2267,8 @@ class Docker(AbstractModel):
         self.Password = params.get("Password")
         self.Image = params.get("Image")
         self.Server = params.get("Server")
+        self.MaxRetryCount = params.get("MaxRetryCount")
+        self.DelayOnRetry = params.get("DelayOnRetry")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

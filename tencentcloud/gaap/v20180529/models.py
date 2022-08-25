@@ -1264,6 +1264,117 @@ class CreateFirstLinkSessionResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateGlobalDomainDnsRequest(AbstractModel):
+    """CreateGlobalDomainDns请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DomainId: 域名ID
+        :type DomainId: str
+        :param ProxyIdList: 通道ID列表
+        :type ProxyIdList: list of str
+        :param NationCountryInnerCodes: 国家ID列表
+        :type NationCountryInnerCodes: list of str
+        """
+        self.DomainId = None
+        self.ProxyIdList = None
+        self.NationCountryInnerCodes = None
+
+
+    def _deserialize(self, params):
+        self.DomainId = params.get("DomainId")
+        self.ProxyIdList = params.get("ProxyIdList")
+        self.NationCountryInnerCodes = params.get("NationCountryInnerCodes")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateGlobalDomainDnsResponse(AbstractModel):
+    """CreateGlobalDomainDns返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreateGlobalDomainRequest(AbstractModel):
+    """CreateGlobalDomain请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProjectId: 域名所属项目ID
+        :type ProjectId: int
+        :param DefaultValue: 域名默认入口
+        :type DefaultValue: str
+        :param Alias: 别名
+        :type Alias: str
+        :param TagSet: 标签列表
+        :type TagSet: list of TagPair
+        """
+        self.ProjectId = None
+        self.DefaultValue = None
+        self.Alias = None
+        self.TagSet = None
+
+
+    def _deserialize(self, params):
+        self.ProjectId = params.get("ProjectId")
+        self.DefaultValue = params.get("DefaultValue")
+        self.Alias = params.get("Alias")
+        if params.get("TagSet") is not None:
+            self.TagSet = []
+            for item in params.get("TagSet"):
+                obj = TagPair()
+                obj._deserialize(item)
+                self.TagSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateGlobalDomainResponse(AbstractModel):
+    """CreateGlobalDomain返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DomainId: 域名ID
+        :type DomainId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DomainId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DomainId = params.get("DomainId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateHTTPListenerRequest(AbstractModel):
     """CreateHTTPListener请求参数结构体
 
@@ -2227,6 +2338,88 @@ class DeleteFirstLinkSessionResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteGlobalDomainDnsRequest(AbstractModel):
+    """DeleteGlobalDomainDns请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DnsRecordId: 解析记录的ID
+        :type DnsRecordId: int
+        """
+        self.DnsRecordId = None
+
+
+    def _deserialize(self, params):
+        self.DnsRecordId = params.get("DnsRecordId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteGlobalDomainDnsResponse(AbstractModel):
+    """DeleteGlobalDomainDns返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteGlobalDomainRequest(AbstractModel):
+    """DeleteGlobalDomain请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DomainId: 域名ID
+        :type DomainId: str
+        """
+        self.DomainId = None
+
+
+    def _deserialize(self, params):
+        self.DomainId = params.get("DomainId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteGlobalDomainResponse(AbstractModel):
+    """DeleteGlobalDomain返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteListenersRequest(AbstractModel):
     """DeleteListeners请求参数结构体
 
@@ -3021,6 +3214,137 @@ BU4M：上行带宽保障4Mbps。
         self.SuiteType = params.get("SuiteType")
         self.SrcPublicIpv4 = params.get("SrcPublicIpv4")
         self.DestIpv4 = params.get("DestIpv4")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeGlobalDomainDnsRequest(AbstractModel):
+    """DescribeGlobalDomainDns请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DomainId: 域名ID
+        :type DomainId: str
+        """
+        self.DomainId = None
+
+
+    def _deserialize(self, params):
+        self.DomainId = params.get("DomainId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeGlobalDomainDnsResponse(AbstractModel):
+    """DescribeGlobalDomainDns返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param GlobalDnsList: DNS解析记录详细信息列表
+        :type GlobalDnsList: list of GlobalDns
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.GlobalDnsList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("GlobalDnsList") is not None:
+            self.GlobalDnsList = []
+            for item in params.get("GlobalDnsList"):
+                obj = GlobalDns()
+                obj._deserialize(item)
+                self.GlobalDnsList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeGlobalDomainsRequest(AbstractModel):
+    """DescribeGlobalDomains请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProjectId: 项目ID
+        :type ProjectId: int
+        :param Offset: 分页偏移量
+        :type Offset: int
+        :param Limit: 分页数量限制
+        :type Limit: int
+        :param Filters: 过滤条件
+        :type Filters: list of Filter
+        :param TagSet: 标签列表，当存在该字段时，拉取对应标签下的资源列表。
+最多支持5个标签，当存在两个或两个以上的标签时，满足其中任意一个标签时，域名会被拉取出来。
+        :type TagSet: list of TagPair
+        """
+        self.ProjectId = None
+        self.Offset = None
+        self.Limit = None
+        self.Filters = None
+        self.TagSet = None
+
+
+    def _deserialize(self, params):
+        self.ProjectId = params.get("ProjectId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        if params.get("TagSet") is not None:
+            self.TagSet = []
+            for item in params.get("TagSet"):
+                obj = TagPair()
+                obj._deserialize(item)
+                self.TagSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeGlobalDomainsResponse(AbstractModel):
+    """DescribeGlobalDomains返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Domains: 域名信息列表
+        :type Domains: list of Domain
+        :param TotalCount: 总记录数
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Domains = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Domains") is not None:
+            self.Domains = []
+            for item in params.get("Domains"):
+                obj = Domain()
+                obj._deserialize(item)
+                self.Domains.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -4983,6 +5307,124 @@ Android 填写 IMEI
         
 
 
+class DisableGlobalDomainRequest(AbstractModel):
+    """DisableGlobalDomain请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DomainId: 域名ID
+        :type DomainId: str
+        """
+        self.DomainId = None
+
+
+    def _deserialize(self, params):
+        self.DomainId = params.get("DomainId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DisableGlobalDomainResponse(AbstractModel):
+    """DisableGlobalDomain返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class Domain(AbstractModel):
+    """统一域名信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DomainId: 域名ID
+        :type DomainId: str
+        :param FullDomain: 完整域名记录
+        :type FullDomain: str
+        :param Alias: 别名
+        :type Alias: str
+        :param Type: 类型
+        :type Type: str
+        :param Status: 状态，1表示关闭，0表示开启，2表示关闭中，3表示开启中
+        :type Status: int
+        :param ProjectId: 所属项目
+        :type ProjectId: int
+        :param DefaultValue: 默认入口
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DefaultValue: str
+        :param ProxyCount: 通道数量
+        :type ProxyCount: int
+        :param CreateTime: 创建时间，使用UNIX时间戳
+        :type CreateTime: int
+        :param UpdateTime: 更新时间，使用UNIX时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: int
+        :param TagSet: 标签列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagSet: list of TagPair
+        :param BanStatus: 封禁解封状态：BANNED表示已封禁，RECOVER表示已解封或未封禁，BANNING表示封禁中，RECOVERING表示解封中，BAN_FAILED表示封禁失败，RECOVER_FAILED表示解封失败。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BanStatus: str
+        """
+        self.DomainId = None
+        self.FullDomain = None
+        self.Alias = None
+        self.Type = None
+        self.Status = None
+        self.ProjectId = None
+        self.DefaultValue = None
+        self.ProxyCount = None
+        self.CreateTime = None
+        self.UpdateTime = None
+        self.TagSet = None
+        self.BanStatus = None
+
+
+    def _deserialize(self, params):
+        self.DomainId = params.get("DomainId")
+        self.FullDomain = params.get("FullDomain")
+        self.Alias = params.get("Alias")
+        self.Type = params.get("Type")
+        self.Status = params.get("Status")
+        self.ProjectId = params.get("ProjectId")
+        self.DefaultValue = params.get("DefaultValue")
+        self.ProxyCount = params.get("ProxyCount")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        if params.get("TagSet") is not None:
+            self.TagSet = []
+            for item in params.get("TagSet"):
+                obj = TagPair()
+                obj._deserialize(item)
+                self.TagSet.append(obj)
+        self.BanStatus = params.get("BanStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DomainAccessRegionDict(AbstractModel):
     """域名解析就近访问配置详情
 
@@ -5252,6 +5694,47 @@ class DomainRuleSet(AbstractModel):
         
 
 
+class EnableGlobalDomainRequest(AbstractModel):
+    """EnableGlobalDomain请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DomainId: 域名ID
+        :type DomainId: str
+        """
+        self.DomainId = None
+
+
+    def _deserialize(self, params):
+        self.DomainId = params.get("DomainId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EnableGlobalDomainResponse(AbstractModel):
+    """EnableGlobalDomain返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class Filter(AbstractModel):
     """过滤条件
 
@@ -5271,6 +5754,52 @@ class Filter(AbstractModel):
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GlobalDns(AbstractModel):
+    """统一域名解析的DNS记录
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DnsRecordId: 解析记录ID
+        :type DnsRecordId: int
+        :param CountryAreaList: 域名就近接入地域信息列表
+        :type CountryAreaList: list of CountryAreaMap
+        :param AccessList: 域名解析对应的通道接入点信息列表
+        :type AccessList: list of ProxyAccessInfo
+        :param Status: 解析状态：1表示运行中，2表示创建中，3表示修改中，4表示删除中
+        :type Status: int
+        """
+        self.DnsRecordId = None
+        self.CountryAreaList = None
+        self.AccessList = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.DnsRecordId = params.get("DnsRecordId")
+        if params.get("CountryAreaList") is not None:
+            self.CountryAreaList = []
+            for item in params.get("CountryAreaList"):
+                obj = CountryAreaMap()
+                obj._deserialize(item)
+                self.CountryAreaList.append(obj)
+        if params.get("AccessList") is not None:
+            self.AccessList = []
+            for item in params.get("AccessList"):
+                obj = ProxyAccessInfo()
+                obj._deserialize(item)
+                self.AccessList.append(obj)
+        self.Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5868,6 +6397,112 @@ class ModifyDomainRequest(AbstractModel):
 
 class ModifyDomainResponse(AbstractModel):
     """ModifyDomain返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyGlobalDomainAttributeRequest(AbstractModel):
+    """ModifyGlobalDomainAttribute请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DomainId: 域名ID
+        :type DomainId: str
+        :param ProjectId: 项目ID
+        :type ProjectId: int
+        :param Alias: 别名
+        :type Alias: str
+        :param DefaultValue: 默认入口
+        :type DefaultValue: str
+        """
+        self.DomainId = None
+        self.ProjectId = None
+        self.Alias = None
+        self.DefaultValue = None
+
+
+    def _deserialize(self, params):
+        self.DomainId = params.get("DomainId")
+        self.ProjectId = params.get("ProjectId")
+        self.Alias = params.get("Alias")
+        self.DefaultValue = params.get("DefaultValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyGlobalDomainAttributeResponse(AbstractModel):
+    """ModifyGlobalDomainAttribute返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyGlobalDomainDnsRequest(AbstractModel):
+    """ModifyGlobalDomainDns请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DnsRecordId: 解析记录ID
+        :type DnsRecordId: int
+        :param DomainId: 域名ID
+        :type DomainId: str
+        :param NationCountryInnerCodes: 国家ID列表
+        :type NationCountryInnerCodes: list of str
+        :param ProxyIdList: 通道ID列表
+        :type ProxyIdList: list of str
+        """
+        self.DnsRecordId = None
+        self.DomainId = None
+        self.NationCountryInnerCodes = None
+        self.ProxyIdList = None
+
+
+    def _deserialize(self, params):
+        self.DnsRecordId = params.get("DnsRecordId")
+        self.DomainId = params.get("DomainId")
+        self.NationCountryInnerCodes = params.get("NationCountryInnerCodes")
+        self.ProxyIdList = params.get("ProxyIdList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyGlobalDomainDnsResponse(AbstractModel):
+    """ModifyGlobalDomainDns返回参数结构体
 
     """
 
@@ -6865,6 +7500,61 @@ class OpenSecurityPolicyResponse(AbstractModel):
     def _deserialize(self, params):
         self.TaskId = params.get("TaskId")
         self.RequestId = params.get("RequestId")
+
+
+class ProxyAccessInfo(AbstractModel):
+    """加速通道接入点详细信息(包含id、地域、ip等）
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RegionId: 地域ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegionId: str
+        :param RegionName: 地域名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegionName: str
+        :param ProxyId: 通道ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProxyId: str
+        :param Vip: 通道接入ip
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Vip: str
+        :param VipList: 三网通道VIP列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VipList: list of IPDetail
+        :param SourceRegionIdcType: 接入点IDC类型。ec或dc
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceRegionIdcType: str
+        """
+        self.RegionId = None
+        self.RegionName = None
+        self.ProxyId = None
+        self.Vip = None
+        self.VipList = None
+        self.SourceRegionIdcType = None
+
+
+    def _deserialize(self, params):
+        self.RegionId = params.get("RegionId")
+        self.RegionName = params.get("RegionName")
+        self.ProxyId = params.get("ProxyId")
+        self.Vip = params.get("Vip")
+        if params.get("VipList") is not None:
+            self.VipList = []
+            for item in params.get("VipList"):
+                obj = IPDetail()
+                obj._deserialize(item)
+                self.VipList.append(obj)
+        self.SourceRegionIdcType = params.get("SourceRegionIdcType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ProxyGroupDetail(AbstractModel):

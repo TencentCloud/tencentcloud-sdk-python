@@ -1672,6 +1672,47 @@ class DescribeTreeJobsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeTreeResourcesRequest(AbstractModel):
+    """DescribeTreeResources请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param WorkSpaceId: 工作空间 SerialId
+        :type WorkSpaceId: str
+        """
+        self.WorkSpaceId = None
+
+
+    def _deserialize(self, params):
+        self.WorkSpaceId = params.get("WorkSpaceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTreeResourcesResponse(AbstractModel):
+    """DescribeTreeResources返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class Filter(AbstractModel):
     """查询作业列表时的过滤器
 

@@ -9468,6 +9468,54 @@ class DescribeDrmDataKeyResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDrmKeyProviderInfoRequest(AbstractModel):
+    """DescribeDrmKeyProviderInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        self.SubAppId = params.get("SubAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDrmKeyProviderInfoResponse(AbstractModel):
+    """DescribeDrmKeyProviderInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SDMCInfo: 华曦达（SDMC）相关的 DRM 密钥提供商信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SDMCInfo: :class:`tencentcloud.vod.v20180717.models.SDMCDrmKeyProviderInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.SDMCInfo = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("SDMCInfo") is not None:
+            self.SDMCInfo = SDMCDrmKeyProviderInfo()
+            self.SDMCInfo._deserialize(params.get("SDMCInfo"))
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeEventConfigRequest(AbstractModel):
     """DescribeEventConfig请求参数结构体
 
@@ -20701,6 +20749,42 @@ class ReviewImageResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class SDMCDrmKeyProviderInfo(AbstractModel):
+    """华曦达（SDMC）相关的 DRM 密钥提供商信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Uid: 华曦达分配的用户 ID。最大长度为128个字符。
+        :type Uid: str
+        :param SecretId: 华曦达分配的用户密钥 ID。最大长度为128个字符。
+        :type SecretId: str
+        :param SecretKey: 华曦达分配的用户密钥内容。最大长度为128个字符。
+        :type SecretKey: str
+        :param FairPlayCertificateUrl: 华曦达分配的 FairPlay 证书地址。该地址需使用 HTTPS 协议，最大长度为1024个字符。
+        :type FairPlayCertificateUrl: str
+        """
+        self.Uid = None
+        self.SecretId = None
+        self.SecretKey = None
+        self.FairPlayCertificateUrl = None
+
+
+    def _deserialize(self, params):
+        self.Uid = params.get("Uid")
+        self.SecretId = params.get("SecretId")
+        self.SecretKey = params.get("SecretKey")
+        self.FairPlayCertificateUrl = params.get("FairPlayCertificateUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SampleSnapshotTaskInput(AbstractModel):
     """对视频做采样截图任务输入参数类型
 
@@ -20910,6 +20994,13 @@ class SearchMediaRequest(AbstractModel):
 <li> ARCHIVE：归档存储。</li>
 <li> DEEP_ARCHIVE：深度归档存储。</li>
         :type StorageClasses: list of str
+        :param TrtcSdkAppIds: TRTC 应用 ID 集合。匹配集合中的任意元素。
+<li>数组长度限制：10。</li>
+        :type TrtcSdkAppIds: list of int non-negative
+        :param TrtcRoomIds: TRTC 房间 ID 集合。匹配集合中的任意元素。
+<li>单个房间 ID 长度限制：64个字符；</li>
+<li>数组长度限制：10。</li>
+        :type TrtcRoomIds: list of str
         :param Text: （不推荐：应使用 Names、NamePrefixes 或 Descriptions 替代）
 搜索文本，模糊匹配媒体文件名称或描述信息，匹配项越多，匹配度越高，排序越优先。长度限制：64个字符。
         :type Text: str
@@ -20954,6 +21045,8 @@ class SearchMediaRequest(AbstractModel):
         self.Filters = None
         self.StorageRegions = None
         self.StorageClasses = None
+        self.TrtcSdkAppIds = None
+        self.TrtcRoomIds = None
         self.Text = None
         self.SourceType = None
         self.StreamId = None
@@ -20988,6 +21081,8 @@ class SearchMediaRequest(AbstractModel):
         self.Filters = params.get("Filters")
         self.StorageRegions = params.get("StorageRegions")
         self.StorageClasses = params.get("StorageClasses")
+        self.TrtcSdkAppIds = params.get("TrtcSdkAppIds")
+        self.TrtcRoomIds = params.get("TrtcRoomIds")
         self.Text = params.get("Text")
         self.SourceType = params.get("SourceType")
         self.StreamId = params.get("StreamId")
@@ -21084,6 +21179,53 @@ class SegmentConfigureInfoForUpdate(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class SetDrmKeyProviderInfoRequest(AbstractModel):
+    """SetDrmKeyProviderInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SDMCInfo: 华曦达（SDMC）相关的 DRM 密钥提供商信息。
+        :type SDMCInfo: :class:`tencentcloud.vod.v20180717.models.SDMCDrmKeyProviderInfo`
+        :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :type SubAppId: int
+        """
+        self.SDMCInfo = None
+        self.SubAppId = None
+
+
+    def _deserialize(self, params):
+        if params.get("SDMCInfo") is not None:
+            self.SDMCInfo = SDMCDrmKeyProviderInfo()
+            self.SDMCInfo._deserialize(params.get("SDMCInfo"))
+        self.SubAppId = params.get("SubAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SetDrmKeyProviderInfoResponse(AbstractModel):
+    """SetDrmKeyProviderInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
 
 
 class SimpleAesEdkPair(AbstractModel):

@@ -1,10 +1,61 @@
 # 本版本更新包含以下内容：
 
-## 应用合规平台(acp) 版本：2022-01-05
+## 批量计算(batch) 版本：2017-03-12
 
-### 第 4 次发布
+### 第 42 次发布
 
-发布时间：2022-08-24 06:06:48
+发布时间：2022-08-25 06:10:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Docker](https://cloud.tencent.com/document/api/599/15912#Docker)
+
+	* 新增成员：MaxRetryCount, DelayOnRetry
+
+
+
+
+## 云原生数据库 TDSQL-C(cynosdb) 版本：2019-01-07
+
+### 第 23 次发布
+
+发布时间：2022-08-25 06:22:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [AddClusterSlaveZone](https://cloud.tencent.com/document/api/1003/79555)
+* [DescribeClusterParams](https://cloud.tencent.com/document/api/1003/79556)
+* [ModifyClusterSlaveZone](https://cloud.tencent.com/document/api/1003/79554)
+* [RemoveClusterSlaveZone](https://cloud.tencent.com/document/api/1003/79553)
+* [SwitchClusterZone](https://cloud.tencent.com/document/api/1003/79552)
+
+修改接口：
+
+* [DescribeRollbackTimeRange](https://cloud.tencent.com/document/api/1003/48092)
+
+	* 新增出参：RollbackTimeRanges
+
+
+新增数据结构：
+
+* [ParamInfo](https://cloud.tencent.com/document/api/1003/48097#ParamInfo)
+* [RollbackTimeRange](https://cloud.tencent.com/document/api/1003/48097#RollbackTimeRange)
+
+
+
+## 分布式数据库 TDSQL(dcdb) 版本：2018-04-11
+
+### 第 44 次发布
+
+发布时间：2022-08-25 06:25:03
 
 本次发布包含了以下内容：
 
@@ -12,22 +63,68 @@
 
 修改接口：
 
-* [DescribeResourceUsageInfo](https://cloud.tencent.com/document/api/1553/75518)
+* [CreateDedicatedClusterDCDBInstance](https://cloud.tencent.com/document/api/557/61369)
 
-	* 新增入参：Source
+	* 新增入参：RollbackInstanceId, RollbackTime
 
-* [DescribeScanTaskReportUrl](https://cloud.tencent.com/document/api/1553/75162)
+
+
+
+## 全球应用加速(gaap) 版本：2018-05-29
+
+### 第 35 次发布
+
+发布时间：2022-08-25 06:30:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateGlobalDomain](https://cloud.tencent.com/document/api/608/79567)
+* [CreateGlobalDomainDns](https://cloud.tencent.com/document/api/608/79566)
+* [DeleteGlobalDomain](https://cloud.tencent.com/document/api/608/79565)
+* [DeleteGlobalDomainDns](https://cloud.tencent.com/document/api/608/79564)
+* [DescribeGlobalDomainDns](https://cloud.tencent.com/document/api/608/79563)
+* [DescribeGlobalDomains](https://cloud.tencent.com/document/api/608/79562)
+* [DisableGlobalDomain](https://cloud.tencent.com/document/api/608/79561)
+* [EnableGlobalDomain](https://cloud.tencent.com/document/api/608/79560)
+* [ModifyGlobalDomainAttribute](https://cloud.tencent.com/document/api/608/79559)
+* [ModifyGlobalDomainDns](https://cloud.tencent.com/document/api/608/79558)
+
+新增数据结构：
+
+* [Domain](https://cloud.tencent.com/document/api/608/37023#Domain)
+* [GlobalDns](https://cloud.tencent.com/document/api/608/37023#GlobalDns)
+* [ProxyAccessInfo](https://cloud.tencent.com/document/api/608/37023#ProxyAccessInfo)
+
+
+
+## 小程序安全(mmps) 版本：2020-07-10
+
+### 第 7 次发布
+
+发布时间：2022-08-25 06:38:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeScanTaskReportUrl](https://cloud.tencent.com/document/api/1223/75156)
 
 	* 新增出参：ReportResult
 
 
 
 
-## API网关(apigateway) 版本：2018-08-08
+## 流计算 Oceanus(oceanus) 版本：2019-04-22
 
-### 第 32 次发布
+### 第 24 次发布
 
-发布时间：2022-08-24 06:08:44
+发布时间：2022-08-25 06:41:36
 
 本次发布包含了以下内容：
 
@@ -35,159 +132,53 @@
 
 新增接口：
 
-* [ImportOpenApi](https://cloud.tencent.com/document/api/628/79383)
-
-新增数据结构：
-
-* [CreateApiRspSet](https://cloud.tencent.com/document/api/628/45244#CreateApiRspSet)
+* [DescribeTreeResources](https://cloud.tencent.com/document/api/849/79568)
 
 
 
-## 日志服务(cls) 版本：2020-10-16
+## 容器镜像服务(tcr) 版本：2019-09-24
 
-### 第 29 次发布
+### 第 43 次发布
 
-发布时间：2022-08-24 06:18:24
+发布时间：2022-08-25 06:49:32
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
+新增接口：
 
-* [CreateShipper](https://cloud.tencent.com/document/api/614/58747)
-
-	* 新增入参：FilenameMode
-
-* [ModifyShipper](https://cloud.tencent.com/document/api/614/58743)
-
-	* 新增入参：FilenameMode
-
-
-
-
-## 多媒体创作引擎(cme) 版本：2019-10-29
-
-### 第 51 次发布
-
-发布时间：2022-08-24 06:19:05
-
-本次发布包含了以下内容：
-
-改善已有的文档。
+* [CreateImageAccelerationService](https://cloud.tencent.com/document/api/1141/79580)
+* [CreateInstanceCustomizedDomain](https://cloud.tencent.com/document/api/1141/79579)
+* [CreateSecurityPolicies](https://cloud.tencent.com/document/api/1141/79578)
+* [CreateSignature](https://cloud.tencent.com/document/api/1141/79571)
+* [CreateSignaturePolicy](https://cloud.tencent.com/document/api/1141/79584)
+* [DeleteImageAccelerateService](https://cloud.tencent.com/document/api/1141/79577)
+* [DeleteInstanceCustomizedDomain](https://cloud.tencent.com/document/api/1141/79576)
+* [DeleteReplicationInstance](https://cloud.tencent.com/document/api/1141/79581)
+* [DeleteRepositoryTags](https://cloud.tencent.com/document/api/1141/79570)
+* [DeleteSignaturePolicy](https://cloud.tencent.com/document/api/1141/79583)
+* [DescribeGCJobs](https://cloud.tencent.com/document/api/1141/79569)
+* [DescribeImageAccelerateService](https://cloud.tencent.com/document/api/1141/79575)
+* [DescribeInstanceAll](https://cloud.tencent.com/document/api/1141/79574)
+* [DescribeInstanceAllNamespaces](https://cloud.tencent.com/document/api/1141/79582)
+* [DescribeInstanceCustomizedDomain](https://cloud.tencent.com/document/api/1141/79573)
+* [DescribeRegions](https://cloud.tencent.com/document/api/1141/79572)
 
 新增数据结构：
 
-* [MediaCastDestinationInfo](https://cloud.tencent.com/document/api/1156/40360#MediaCastDestinationInfo)
-* [MediaCastDestinationInterruptInfo](https://cloud.tencent.com/document/api/1156/40360#MediaCastDestinationInterruptInfo)
-* [MediaCastOutputMediaSetting](https://cloud.tencent.com/document/api/1156/40360#MediaCastOutputMediaSetting)
-* [MediaCastPlaySetting](https://cloud.tencent.com/document/api/1156/40360#MediaCastPlaySetting)
-* [MediaCastProjectInfo](https://cloud.tencent.com/document/api/1156/40360#MediaCastProjectInfo)
-* [MediaCastSourceInfo](https://cloud.tencent.com/document/api/1156/40360#MediaCastSourceInfo)
-* [MediaCastSourceInterruptInfo](https://cloud.tencent.com/document/api/1156/40360#MediaCastSourceInterruptInfo)
-* [MediaCastVideoSetting](https://cloud.tencent.com/document/api/1156/40360#MediaCastVideoSetting)
-* [ProjectMediaCastStatusChangedEvent](https://cloud.tencent.com/document/api/1156/40360#ProjectMediaCastStatusChangedEvent)
-
-修改数据结构：
-
-* [EventContent](https://cloud.tencent.com/document/api/1156/40360#EventContent)
-
-	* 新增成员：ProjectMediaCastStatusChangedEvent
-
-* [ProjectInfo](https://cloud.tencent.com/document/api/1156/40360#ProjectInfo)
-
-	* 新增成员：MediaCastProjectInfo
-
-
-
-
-## 腾讯云微服务引擎(tse) 版本：2020-12-07
-
-### 第 26 次发布
-
-发布时间：2022-08-24 06:56:05
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增数据结构：
-
-* [DescribeInstanceRegionInfo](https://cloud.tencent.com/document/api/1364/54942#DescribeInstanceRegionInfo)
-
-修改数据结构：
-
-* [SREInstance](https://cloud.tencent.com/document/api/1364/54942#SREInstance)
-
-	* 新增成员：RegionInfos
-
+* [CustomizedDomainInfo](https://cloud.tencent.com/document/api/1141/41603#CustomizedDomainInfo)
+* [GCJobInfo](https://cloud.tencent.com/document/api/1141/41603#GCJobInfo)
+* [Region](https://cloud.tencent.com/document/api/1141/41603#Region)
+* [Schedule](https://cloud.tencent.com/document/api/1141/41603#Schedule)
 
 
 
 ## 云点播(vod) 版本：2018-07-17
 
-### 第 115 次发布
+### 第 116 次发布
 
-发布时间：2022-08-24 06:58:00
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateAdaptiveDynamicStreamingTemplate](https://cloud.tencent.com/document/api/266/43068)
-
-	* 新增入参：DrmKeyProvider
-
-* [DescribeTaskDetail](https://cloud.tencent.com/document/api/266/33431)
-
-	* 新增出参：RemoveWatermarkTask
-
-
-新增数据结构：
-
-* [AiRecognitionTaskAsrFullTextResultOutputSubtitleItem](https://cloud.tencent.com/document/api/266/31773#AiRecognitionTaskAsrFullTextResultOutputSubtitleItem)
-* [RemoveWaterMarkTaskInput](https://cloud.tencent.com/document/api/266/31773#RemoveWaterMarkTaskInput)
-* [RemoveWaterMarkTaskOutput](https://cloud.tencent.com/document/api/266/31773#RemoveWaterMarkTaskOutput)
-* [RemoveWatermarkTask](https://cloud.tencent.com/document/api/266/31773#RemoveWatermarkTask)
-* [SubtitleFormatsOperation](https://cloud.tencent.com/document/api/266/31773#SubtitleFormatsOperation)
-* [TrtcRecordInfo](https://cloud.tencent.com/document/api/266/31773#TrtcRecordInfo)
-
-修改数据结构：
-
-* [AdaptiveDynamicStreamingTemplate](https://cloud.tencent.com/document/api/266/31773#AdaptiveDynamicStreamingTemplate)
-
-	* 新增成员：DrmKeyProvider
-
-* [AiRecognitionTaskAsrFullTextResultOutput](https://cloud.tencent.com/document/api/266/31773#AiRecognitionTaskAsrFullTextResultOutput)
-
-	* 新增成员：SubtitleSet
-
-* [AsrFullTextConfigureInfo](https://cloud.tencent.com/document/api/266/31773#AsrFullTextConfigureInfo)
-
-	* 新增成员：SubtitleFormats
-
-* [AsrFullTextConfigureInfoForUpdate](https://cloud.tencent.com/document/api/266/31773#AsrFullTextConfigureInfoForUpdate)
-
-	* 新增成员：SubtitleFormatsOperation
-
-* [EventContent](https://cloud.tencent.com/document/api/266/31773#EventContent)
-
-	* 新增成员：RemoveWatermarkCompleteEvent
-
-* [MediaSourceData](https://cloud.tencent.com/document/api/266/31773#MediaSourceData)
-
-	* 新增成员：TrtcRecordInfo
-
-
-
-
-## 音速达直播音乐版权引擎(yinsuda) 版本：2022-05-27
-
-### 第 6 次发布
-
-发布时间：2022-08-24 07:02:00
+发布时间：2022-08-25 06:58:49
 
 本次发布包含了以下内容：
 
@@ -195,25 +186,19 @@
 
 新增接口：
 
-* [CreateKTVRobot](https://cloud.tencent.com/document/api/1592/79388)
-* [DescribeKTVRobots](https://cloud.tencent.com/document/api/1592/79387)
-* [DestroyKTVRobot](https://cloud.tencent.com/document/api/1592/79386)
-* [SyncKTVRobotCommand](https://cloud.tencent.com/document/api/1592/79385)
+* [DescribeDrmKeyProviderInfo](https://cloud.tencent.com/document/api/266/79586)
+* [SetDrmKeyProviderInfo](https://cloud.tencent.com/document/api/266/79585)
+
+修改接口：
+
+* [SearchMedia](https://cloud.tencent.com/document/api/266/31813)
+
+	* 新增入参：TrtcSdkAppIds, TrtcRoomIds
+
 
 新增数据结构：
 
-* [JoinRoomInput](https://cloud.tencent.com/document/api/1592/76191#JoinRoomInput)
-* [KTVRobotInfo](https://cloud.tencent.com/document/api/1592/76191#KTVRobotInfo)
-* [PlayCommandInput](https://cloud.tencent.com/document/api/1592/76191#PlayCommandInput)
-* [SeekCommandInput](https://cloud.tencent.com/document/api/1592/76191#SeekCommandInput)
-* [SendMessageCommandInput](https://cloud.tencent.com/document/api/1592/76191#SendMessageCommandInput)
-* [SetAudioParamCommandInput](https://cloud.tencent.com/document/api/1592/76191#SetAudioParamCommandInput)
-* [SetDestroyModeCommandInput](https://cloud.tencent.com/document/api/1592/76191#SetDestroyModeCommandInput)
-* [SetPlayModeCommandInput](https://cloud.tencent.com/document/api/1592/76191#SetPlayModeCommandInput)
-* [SetPlaylistCommandInput](https://cloud.tencent.com/document/api/1592/76191#SetPlaylistCommandInput)
-* [SyncRobotCommand](https://cloud.tencent.com/document/api/1592/76191#SyncRobotCommand)
-* [TRTCJoinRoomInput](https://cloud.tencent.com/document/api/1592/76191#TRTCJoinRoomInput)
-* [TimeRange](https://cloud.tencent.com/document/api/1592/76191#TimeRange)
+* [SDMCDrmKeyProviderInfo](https://cloud.tencent.com/document/api/266/31773#SDMCDrmKeyProviderInfo)
 
 
 
@@ -2765,11 +2750,11 @@
 
 新增接口：
 
-* [[ImportOpenApi](https://cloud.tencent.com/document/api/628/79383)](https://cloud.tencent.com/document/api/#/#)
+* [ImportOpenApi](https://cloud.tencent.com/document/api/628/79383)
 
 新增数据结构：
 
-* [[CreateApiRspSet](https://cloud.tencent.com/document/api/628/45244#CreateApiRspSet)](https://cloud.tencent.com/document/api/628/45244#[CreateApiRspSet](https://cloud.tencent.com/document/api/628/45244#CreateApiRspSet))
+* [CreateApiRspSet](https://cloud.tencent.com/document/api/628/45244#CreateApiRspSet)
 
 ### 第 31 次发布
 
@@ -5414,6 +5399,21 @@
 
 
 ## 批量计算(batch) 版本：2017-03-12
+
+### 第 42 次发布
+
+发布时间：2022-08-25 06:10:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Docker](https://cloud.tencent.com/document/api/599/15912#Docker)
+
+	* 新增成员：MaxRetryCount, DelayOnRetry
+
 
 ### 第 41 次发布
 
@@ -21083,15 +21083,15 @@
 
 新增数据结构：
 
-* [[MediaCastDestinationInfo](https://cloud.tencent.com/document/api/1156/40360#MediaCastDestinationInfo)](https://cloud.tencent.com/document/api/1156/40360#[MediaCastDestinationInfo](https://cloud.tencent.com/document/api/1156/40360#MediaCastDestinationInfo))
-* [[MediaCastDestinationInterruptInfo](https://cloud.tencent.com/document/api/1156/40360#MediaCastDestinationInterruptInfo)](https://cloud.tencent.com/document/api/1156/40360#[MediaCastDestinationInterruptInfo](https://cloud.tencent.com/document/api/1156/40360#MediaCastDestinationInterruptInfo))
-* [[MediaCastOutputMediaSetting](https://cloud.tencent.com/document/api/1156/40360#MediaCastOutputMediaSetting)](https://cloud.tencent.com/document/api/1156/40360#[MediaCastOutputMediaSetting](https://cloud.tencent.com/document/api/1156/40360#MediaCastOutputMediaSetting))
-* [[MediaCastPlaySetting](https://cloud.tencent.com/document/api/1156/40360#MediaCastPlaySetting)](https://cloud.tencent.com/document/api/1156/40360#[MediaCastPlaySetting](https://cloud.tencent.com/document/api/1156/40360#MediaCastPlaySetting))
-* [[MediaCastProjectInfo](https://cloud.tencent.com/document/api/1156/40360#MediaCastProjectInfo)](https://cloud.tencent.com/document/api/1156/40360#[MediaCastProjectInfo](https://cloud.tencent.com/document/api/1156/40360#MediaCastProjectInfo))
-* [[MediaCastSourceInfo](https://cloud.tencent.com/document/api/1156/40360#MediaCastSourceInfo)](https://cloud.tencent.com/document/api/1156/40360#[MediaCastSourceInfo](https://cloud.tencent.com/document/api/1156/40360#MediaCastSourceInfo))
-* [[MediaCastSourceInterruptInfo](https://cloud.tencent.com/document/api/1156/40360#MediaCastSourceInterruptInfo)](https://cloud.tencent.com/document/api/1156/40360#[MediaCastSourceInterruptInfo](https://cloud.tencent.com/document/api/1156/40360#MediaCastSourceInterruptInfo))
-* [[MediaCastVideoSetting](https://cloud.tencent.com/document/api/1156/40360#MediaCastVideoSetting)](https://cloud.tencent.com/document/api/1156/40360#[MediaCastVideoSetting](https://cloud.tencent.com/document/api/1156/40360#MediaCastVideoSetting))
-* [[ProjectMediaCastStatusChangedEvent](https://cloud.tencent.com/document/api/1156/40360#ProjectMediaCastStatusChangedEvent)](https://cloud.tencent.com/document/api/1156/40360#[ProjectMediaCastStatusChangedEvent](https://cloud.tencent.com/document/api/1156/40360#ProjectMediaCastStatusChangedEvent))
+* [MediaCastDestinationInfo](https://cloud.tencent.com/document/api/1156/40360#MediaCastDestinationInfo)
+* [MediaCastDestinationInterruptInfo](https://cloud.tencent.com/document/api/1156/40360#MediaCastDestinationInterruptInfo)
+* [MediaCastOutputMediaSetting](https://cloud.tencent.com/document/api/1156/40360#MediaCastOutputMediaSetting)
+* [MediaCastPlaySetting](https://cloud.tencent.com/document/api/1156/40360#MediaCastPlaySetting)
+* [MediaCastProjectInfo](https://cloud.tencent.com/document/api/1156/40360#MediaCastProjectInfo)
+* [MediaCastSourceInfo](https://cloud.tencent.com/document/api/1156/40360#MediaCastSourceInfo)
+* [MediaCastSourceInterruptInfo](https://cloud.tencent.com/document/api/1156/40360#MediaCastSourceInterruptInfo)
+* [MediaCastVideoSetting](https://cloud.tencent.com/document/api/1156/40360#MediaCastVideoSetting)
+* [ProjectMediaCastStatusChangedEvent](https://cloud.tencent.com/document/api/1156/40360#ProjectMediaCastStatusChangedEvent)
 
 修改数据结构：
 
@@ -28438,6 +28438,34 @@
 
 ## 云原生数据库 TDSQL-C(cynosdb) 版本：2019-01-07
 
+### 第 23 次发布
+
+发布时间：2022-08-25 06:22:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[AddClusterSlaveZone](https://cloud.tencent.com/document/api/1003/79555)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeClusterParams](https://cloud.tencent.com/document/api/1003/79556)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyClusterSlaveZone](https://cloud.tencent.com/document/api/1003/79554)](https://cloud.tencent.com/document/api/#/#)
+* [[RemoveClusterSlaveZone](https://cloud.tencent.com/document/api/1003/79553)](https://cloud.tencent.com/document/api/#/#)
+* [[SwitchClusterZone](https://cloud.tencent.com/document/api/1003/79552)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [DescribeRollbackTimeRange](https://cloud.tencent.com/document/api/1003/48092)
+
+	* 新增出参：RollbackTimeRanges
+
+
+新增数据结构：
+
+* [[ParamInfo](https://cloud.tencent.com/document/api/1003/48097#ParamInfo)](https://cloud.tencent.com/document/api/1003/48097#[ParamInfo](https://cloud.tencent.com/document/api/1003/48097#ParamInfo))
+* [[RollbackTimeRange](https://cloud.tencent.com/document/api/1003/48097#RollbackTimeRange)](https://cloud.tencent.com/document/api/1003/48097#[RollbackTimeRange](https://cloud.tencent.com/document/api/1003/48097#RollbackTimeRange))
+
 ### 第 22 次发布
 
 发布时间：2022-08-16 06:18:39
@@ -30585,6 +30613,21 @@
 
 
 ## 分布式数据库 TDSQL(dcdb) 版本：2018-04-11
+
+### 第 44 次发布
+
+发布时间：2022-08-25 06:25:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateDedicatedClusterDCDBInstance](https://cloud.tencent.com/document/api/557/61369)
+
+	* 新增入参：RollbackInstanceId, RollbackTime
+
 
 ### 第 43 次发布
 
@@ -39313,6 +39356,33 @@
 
 
 ## 全球应用加速(gaap) 版本：2018-05-29
+
+### 第 35 次发布
+
+发布时间：2022-08-25 06:30:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateGlobalDomain](https://cloud.tencent.com/document/api/608/79567)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateGlobalDomainDns](https://cloud.tencent.com/document/api/608/79566)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteGlobalDomain](https://cloud.tencent.com/document/api/608/79565)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteGlobalDomainDns](https://cloud.tencent.com/document/api/608/79564)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeGlobalDomainDns](https://cloud.tencent.com/document/api/608/79563)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeGlobalDomains](https://cloud.tencent.com/document/api/608/79562)](https://cloud.tencent.com/document/api/#/#)
+* [[DisableGlobalDomain](https://cloud.tencent.com/document/api/608/79561)](https://cloud.tencent.com/document/api/#/#)
+* [[EnableGlobalDomain](https://cloud.tencent.com/document/api/608/79560)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyGlobalDomainAttribute](https://cloud.tencent.com/document/api/608/79559)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyGlobalDomainDns](https://cloud.tencent.com/document/api/608/79558)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[Domain](https://cloud.tencent.com/document/api/608/37023#Domain)](https://cloud.tencent.com/document/api/608/37023#[Domain](https://cloud.tencent.com/document/api/608/37023#Domain))
+* [[GlobalDns](https://cloud.tencent.com/document/api/608/37023#GlobalDns)](https://cloud.tencent.com/document/api/608/37023#[GlobalDns](https://cloud.tencent.com/document/api/608/37023#GlobalDns))
+* [[ProxyAccessInfo](https://cloud.tencent.com/document/api/608/37023#ProxyAccessInfo)](https://cloud.tencent.com/document/api/608/37023#[ProxyAccessInfo](https://cloud.tencent.com/document/api/608/37023#ProxyAccessInfo))
 
 ### 第 34 次发布
 
@@ -51328,6 +51398,21 @@
 
 ## 小程序安全(mmps) 版本：2020-07-10
 
+### 第 7 次发布
+
+发布时间：2022-08-25 06:38:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeScanTaskReportUrl](https://cloud.tencent.com/document/api/1223/75156)
+
+	* 新增出参：ReportResult
+
+
 ### 第 6 次发布
 
 发布时间：2022-07-21 15:01:26
@@ -55544,6 +55629,18 @@
 
 
 ## 流计算 Oceanus(oceanus) 版本：2019-04-22
+
+### 第 24 次发布
+
+发布时间：2022-08-25 06:41:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeTreeResources](https://cloud.tencent.com/document/api/849/79568)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 23 次发布
 
@@ -68813,6 +68910,40 @@
 
 ## 容器镜像服务(tcr) 版本：2019-09-24
 
+### 第 43 次发布
+
+发布时间：2022-08-25 06:49:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateImageAccelerationService](https://cloud.tencent.com/document/api/1141/79580)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateInstanceCustomizedDomain](https://cloud.tencent.com/document/api/1141/79579)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateSecurityPolicies](https://cloud.tencent.com/document/api/1141/79578)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateSignature](https://cloud.tencent.com/document/api/1141/79571)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateSignaturePolicy](https://cloud.tencent.com/document/api/1141/79584)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteImageAccelerateService](https://cloud.tencent.com/document/api/1141/79577)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteInstanceCustomizedDomain](https://cloud.tencent.com/document/api/1141/79576)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteReplicationInstance](https://cloud.tencent.com/document/api/1141/79581)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteRepositoryTags](https://cloud.tencent.com/document/api/1141/79570)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteSignaturePolicy](https://cloud.tencent.com/document/api/1141/79583)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeGCJobs](https://cloud.tencent.com/document/api/1141/79569)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeImageAccelerateService](https://cloud.tencent.com/document/api/1141/79575)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeInstanceAll](https://cloud.tencent.com/document/api/1141/79574)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeInstanceAllNamespaces](https://cloud.tencent.com/document/api/1141/79582)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeInstanceCustomizedDomain](https://cloud.tencent.com/document/api/1141/79573)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeRegions](https://cloud.tencent.com/document/api/1141/79572)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[CustomizedDomainInfo](https://cloud.tencent.com/document/api/1141/41603#CustomizedDomainInfo)](https://cloud.tencent.com/document/api/1141/41603#[CustomizedDomainInfo](https://cloud.tencent.com/document/api/1141/41603#CustomizedDomainInfo))
+* [[GCJobInfo](https://cloud.tencent.com/document/api/1141/41603#GCJobInfo)](https://cloud.tencent.com/document/api/1141/41603#[GCJobInfo](https://cloud.tencent.com/document/api/1141/41603#GCJobInfo))
+* [[Region](https://cloud.tencent.com/document/api/1141/41603#Region)](https://cloud.tencent.com/document/api/1141/41603#[Region](https://cloud.tencent.com/document/api/1141/41603#Region))
+* [[Schedule](https://cloud.tencent.com/document/api/1141/41603#Schedule)](https://cloud.tencent.com/document/api/1141/41603#[Schedule](https://cloud.tencent.com/document/api/1141/41603#Schedule))
+
 ### 第 42 次发布
 
 发布时间：2022-08-15 06:39:36
@@ -78775,7 +78906,7 @@
 
 新增数据结构：
 
-* [[DescribeInstanceRegionInfo](https://cloud.tencent.com/document/api/1364/54942#DescribeInstanceRegionInfo)](https://cloud.tencent.com/document/api/1364/54942#[DescribeInstanceRegionInfo](https://cloud.tencent.com/document/api/1364/54942#DescribeInstanceRegionInfo))
+* [DescribeInstanceRegionInfo](https://cloud.tencent.com/document/api/1364/54942#DescribeInstanceRegionInfo)
 
 修改数据结构：
 
@@ -81860,6 +81991,30 @@
 
 ## 云点播(vod) 版本：2018-07-17
 
+### 第 116 次发布
+
+发布时间：2022-08-25 06:58:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeDrmKeyProviderInfo](https://cloud.tencent.com/document/api/266/79586)](https://cloud.tencent.com/document/api/#/#)
+* [[SetDrmKeyProviderInfo](https://cloud.tencent.com/document/api/266/79585)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [SearchMedia](https://cloud.tencent.com/document/api/266/31813)
+
+	* 新增入参：TrtcSdkAppIds, TrtcRoomIds
+
+
+新增数据结构：
+
+* [[SDMCDrmKeyProviderInfo](https://cloud.tencent.com/document/api/266/31773#SDMCDrmKeyProviderInfo)](https://cloud.tencent.com/document/api/266/31773#[SDMCDrmKeyProviderInfo](https://cloud.tencent.com/document/api/266/31773#SDMCDrmKeyProviderInfo))
+
 ### 第 115 次发布
 
 发布时间：2022-08-24 06:58:00
@@ -81881,12 +82036,12 @@
 
 新增数据结构：
 
-* [[AiRecognitionTaskAsrFullTextResultOutputSubtitleItem](https://cloud.tencent.com/document/api/266/31773#AiRecognitionTaskAsrFullTextResultOutputSubtitleItem)](https://cloud.tencent.com/document/api/266/31773#[AiRecognitionTaskAsrFullTextResultOutputSubtitleItem](https://cloud.tencent.com/document/api/266/31773#AiRecognitionTaskAsrFullTextResultOutputSubtitleItem))
-* [[RemoveWaterMarkTaskInput](https://cloud.tencent.com/document/api/266/31773#RemoveWaterMarkTaskInput)](https://cloud.tencent.com/document/api/266/31773#[RemoveWaterMarkTaskInput](https://cloud.tencent.com/document/api/266/31773#RemoveWaterMarkTaskInput))
-* [[RemoveWaterMarkTaskOutput](https://cloud.tencent.com/document/api/266/31773#RemoveWaterMarkTaskOutput)](https://cloud.tencent.com/document/api/266/31773#[RemoveWaterMarkTaskOutput](https://cloud.tencent.com/document/api/266/31773#RemoveWaterMarkTaskOutput))
-* [[RemoveWatermarkTask](https://cloud.tencent.com/document/api/266/31773#RemoveWatermarkTask)](https://cloud.tencent.com/document/api/266/31773#[RemoveWatermarkTask](https://cloud.tencent.com/document/api/266/31773#RemoveWatermarkTask))
-* [[SubtitleFormatsOperation](https://cloud.tencent.com/document/api/266/31773#SubtitleFormatsOperation)](https://cloud.tencent.com/document/api/266/31773#[SubtitleFormatsOperation](https://cloud.tencent.com/document/api/266/31773#SubtitleFormatsOperation))
-* [[TrtcRecordInfo](https://cloud.tencent.com/document/api/266/31773#TrtcRecordInfo)](https://cloud.tencent.com/document/api/266/31773#[TrtcRecordInfo](https://cloud.tencent.com/document/api/266/31773#TrtcRecordInfo))
+* [AiRecognitionTaskAsrFullTextResultOutputSubtitleItem](https://cloud.tencent.com/document/api/266/31773#AiRecognitionTaskAsrFullTextResultOutputSubtitleItem)
+* [RemoveWaterMarkTaskInput](https://cloud.tencent.com/document/api/266/31773#RemoveWaterMarkTaskInput)
+* [RemoveWaterMarkTaskOutput](https://cloud.tencent.com/document/api/266/31773#RemoveWaterMarkTaskOutput)
+* [RemoveWatermarkTask](https://cloud.tencent.com/document/api/266/31773#RemoveWatermarkTask)
+* [SubtitleFormatsOperation](https://cloud.tencent.com/document/api/266/31773#SubtitleFormatsOperation)
+* [TrtcRecordInfo](https://cloud.tencent.com/document/api/266/31773#TrtcRecordInfo)
 
 修改数据结构：
 
@@ -88528,25 +88683,25 @@
 
 新增接口：
 
-* [[CreateKTVRobot](https://cloud.tencent.com/document/api/1592/79388)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeKTVRobots](https://cloud.tencent.com/document/api/1592/79387)](https://cloud.tencent.com/document/api/#/#)
-* [[DestroyKTVRobot](https://cloud.tencent.com/document/api/1592/79386)](https://cloud.tencent.com/document/api/#/#)
-* [[SyncKTVRobotCommand](https://cloud.tencent.com/document/api/1592/79385)](https://cloud.tencent.com/document/api/#/#)
+* [CreateKTVRobot](https://cloud.tencent.com/document/api/1592/79388)
+* [DescribeKTVRobots](https://cloud.tencent.com/document/api/1592/79387)
+* [DestroyKTVRobot](https://cloud.tencent.com/document/api/1592/79386)
+* [SyncKTVRobotCommand](https://cloud.tencent.com/document/api/1592/79385)
 
 新增数据结构：
 
-* [[JoinRoomInput](https://cloud.tencent.com/document/api/1592/76191#JoinRoomInput)](https://cloud.tencent.com/document/api/1592/76191#[JoinRoomInput](https://cloud.tencent.com/document/api/1592/76191#JoinRoomInput))
-* [[KTVRobotInfo](https://cloud.tencent.com/document/api/1592/76191#KTVRobotInfo)](https://cloud.tencent.com/document/api/1592/76191#[KTVRobotInfo](https://cloud.tencent.com/document/api/1592/76191#KTVRobotInfo))
-* [[PlayCommandInput](https://cloud.tencent.com/document/api/1592/76191#PlayCommandInput)](https://cloud.tencent.com/document/api/1592/76191#[PlayCommandInput](https://cloud.tencent.com/document/api/1592/76191#PlayCommandInput))
-* [[SeekCommandInput](https://cloud.tencent.com/document/api/1592/76191#SeekCommandInput)](https://cloud.tencent.com/document/api/1592/76191#[SeekCommandInput](https://cloud.tencent.com/document/api/1592/76191#SeekCommandInput))
-* [[SendMessageCommandInput](https://cloud.tencent.com/document/api/1592/76191#SendMessageCommandInput)](https://cloud.tencent.com/document/api/1592/76191#[SendMessageCommandInput](https://cloud.tencent.com/document/api/1592/76191#SendMessageCommandInput))
-* [[SetAudioParamCommandInput](https://cloud.tencent.com/document/api/1592/76191#SetAudioParamCommandInput)](https://cloud.tencent.com/document/api/1592/76191#[SetAudioParamCommandInput](https://cloud.tencent.com/document/api/1592/76191#SetAudioParamCommandInput))
-* [[SetDestroyModeCommandInput](https://cloud.tencent.com/document/api/1592/76191#SetDestroyModeCommandInput)](https://cloud.tencent.com/document/api/1592/76191#[SetDestroyModeCommandInput](https://cloud.tencent.com/document/api/1592/76191#SetDestroyModeCommandInput))
-* [[SetPlayModeCommandInput](https://cloud.tencent.com/document/api/1592/76191#SetPlayModeCommandInput)](https://cloud.tencent.com/document/api/1592/76191#[SetPlayModeCommandInput](https://cloud.tencent.com/document/api/1592/76191#SetPlayModeCommandInput))
-* [[SetPlaylistCommandInput](https://cloud.tencent.com/document/api/1592/76191#SetPlaylistCommandInput)](https://cloud.tencent.com/document/api/1592/76191#[SetPlaylistCommandInput](https://cloud.tencent.com/document/api/1592/76191#SetPlaylistCommandInput))
-* [[SyncRobotCommand](https://cloud.tencent.com/document/api/1592/76191#SyncRobotCommand)](https://cloud.tencent.com/document/api/1592/76191#[SyncRobotCommand](https://cloud.tencent.com/document/api/1592/76191#SyncRobotCommand))
-* [[TRTCJoinRoomInput](https://cloud.tencent.com/document/api/1592/76191#TRTCJoinRoomInput)](https://cloud.tencent.com/document/api/1592/76191#[TRTCJoinRoomInput](https://cloud.tencent.com/document/api/1592/76191#TRTCJoinRoomInput))
-* [[TimeRange](https://cloud.tencent.com/document/api/1592/76191#TimeRange)](https://cloud.tencent.com/document/api/1592/76191#[TimeRange](https://cloud.tencent.com/document/api/1592/76191#TimeRange))
+* [JoinRoomInput](https://cloud.tencent.com/document/api/1592/76191#JoinRoomInput)
+* [KTVRobotInfo](https://cloud.tencent.com/document/api/1592/76191#KTVRobotInfo)
+* [PlayCommandInput](https://cloud.tencent.com/document/api/1592/76191#PlayCommandInput)
+* [SeekCommandInput](https://cloud.tencent.com/document/api/1592/76191#SeekCommandInput)
+* [SendMessageCommandInput](https://cloud.tencent.com/document/api/1592/76191#SendMessageCommandInput)
+* [SetAudioParamCommandInput](https://cloud.tencent.com/document/api/1592/76191#SetAudioParamCommandInput)
+* [SetDestroyModeCommandInput](https://cloud.tencent.com/document/api/1592/76191#SetDestroyModeCommandInput)
+* [SetPlayModeCommandInput](https://cloud.tencent.com/document/api/1592/76191#SetPlayModeCommandInput)
+* [SetPlaylistCommandInput](https://cloud.tencent.com/document/api/1592/76191#SetPlaylistCommandInput)
+* [SyncRobotCommand](https://cloud.tencent.com/document/api/1592/76191#SyncRobotCommand)
+* [TRTCJoinRoomInput](https://cloud.tencent.com/document/api/1592/76191#TRTCJoinRoomInput)
+* [TimeRange](https://cloud.tencent.com/document/api/1592/76191#TimeRange)
 
 ### 第 5 次发布
 

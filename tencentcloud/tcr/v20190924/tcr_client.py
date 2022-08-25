@@ -171,6 +171,35 @@ class TcrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateImageAccelerationService(self, request):
+        """创建镜像加速服务
+
+        :param request: Request instance for CreateImageAccelerationService.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.CreateImageAccelerationServiceRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.CreateImageAccelerationServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateImageAccelerationService", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateImageAccelerationServiceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateImageLifecyclePersonal(self, request):
         """用于在个人版中创建清理策略
 
@@ -244,6 +273,35 @@ class TcrClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateInstanceCustomizedDomain(self, request):
+        """创建自定义域名
+
+        :param request: Request instance for CreateInstanceCustomizedDomain.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.CreateInstanceCustomizedDomainRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.CreateInstanceCustomizedDomainResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateInstanceCustomizedDomain", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateInstanceCustomizedDomainResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -490,6 +548,35 @@ class TcrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateSecurityPolicies(self, request):
+        """创建实例公网访问白名单策略
+
+        :param request: Request instance for CreateSecurityPolicies.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.CreateSecurityPoliciesRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.CreateSecurityPoliciesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateSecurityPolicies", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateSecurityPoliciesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateSecurityPolicy(self, request):
         """创建实例公网访问白名单策略
 
@@ -505,6 +592,64 @@ class TcrClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateSecurityPolicyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateSignature(self, request):
+        """为一个镜像版本创建签名
+
+        :param request: Request instance for CreateSignature.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.CreateSignatureRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.CreateSignatureResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateSignature", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateSignatureResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateSignaturePolicy(self, request):
+        """创建镜像签名策略
+
+        :param request: Request instance for CreateSignaturePolicy.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.CreateSignaturePolicyRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.CreateSignaturePolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateSignaturePolicy", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateSignaturePolicyResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -693,6 +838,35 @@ class TcrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteImageAccelerateService(self, request):
+        """删除镜像加速服务
+
+        :param request: Request instance for DeleteImageAccelerateService.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.DeleteImageAccelerateServiceRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.DeleteImageAccelerateServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteImageAccelerateService", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteImageAccelerateServiceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteImageLifecycleGlobalPersonal(self, request):
         """用于删除个人版全局镜像版本自动清理策略
 
@@ -824,6 +998,35 @@ class TcrClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteInstanceCustomizedDomain(self, request):
+        """删除自定义域名
+
+        :param request: Request instance for DeleteInstanceCustomizedDomain.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.DeleteInstanceCustomizedDomainRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.DeleteInstanceCustomizedDomainResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteInstanceCustomizedDomain", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteInstanceCustomizedDomainResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -983,6 +1186,35 @@ class TcrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteReplicationInstance(self, request):
+        """删除从实例
+
+        :param request: Request instance for DeleteReplicationInstance.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.DeleteReplicationInstanceRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.DeleteReplicationInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteReplicationInstance", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteReplicationInstanceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteRepository(self, request):
         """删除镜像仓库
 
@@ -1041,6 +1273,35 @@ class TcrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteRepositoryTags(self, request):
+        """用于企业版批量删除Repository Tag
+
+        :param request: Request instance for DeleteRepositoryTags.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.DeleteRepositoryTagsRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.DeleteRepositoryTagsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteRepositoryTags", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteRepositoryTagsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteSecurityPolicy(self, request):
         """删除实例公网访问白名单策略
 
@@ -1056,6 +1317,35 @@ class TcrClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteSecurityPolicyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteSignaturePolicy(self, request):
+        """删除命名空间加签策略
+
+        :param request: Request instance for DeleteSignaturePolicy.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.DeleteSignaturePolicyRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.DeleteSignaturePolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteSignaturePolicy", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteSignaturePolicyResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1273,6 +1563,64 @@ class TcrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeGCJobs(self, request):
+        """GC 最近10条历史
+
+        :param request: Request instance for DescribeGCJobs.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeGCJobsRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.DescribeGCJobsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeGCJobs", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeGCJobsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeImageAccelerateService(self, request):
+        """查询镜像加速服务状态
+
+        :param request: Request instance for DescribeImageAccelerateService.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeImageAccelerateServiceRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.DescribeImageAccelerateServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeImageAccelerateService", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeImageAccelerateServiceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeImageFilterPersonal(self, request):
         """用于在个人版中查询与指定tag镜像内容相同的tag列表
 
@@ -1476,6 +1824,93 @@ class TcrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeInstanceAll(self, request):
+        """查询全部实例信息
+
+        :param request: Request instance for DescribeInstanceAll.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeInstanceAllRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.DescribeInstanceAllResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInstanceAll", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeInstanceAllResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeInstanceAllNamespaces(self, request):
+        """查询所有有实例命名空间列表
+
+        :param request: Request instance for DescribeInstanceAllNamespaces.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeInstanceAllNamespacesRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.DescribeInstanceAllNamespacesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInstanceAllNamespaces", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeInstanceAllNamespacesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeInstanceCustomizedDomain(self, request):
+        """查询实例自定义域名列表
+
+        :param request: Request instance for DescribeInstanceCustomizedDomain.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeInstanceCustomizedDomainRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.DescribeInstanceCustomizedDomainResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInstanceCustomizedDomain", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeInstanceCustomizedDomainResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeInstanceStatus(self, request):
         """查询实例当前状态以及过程信息
 
@@ -1665,6 +2100,35 @@ class TcrClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeNamespacesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeRegions(self, request):
+        """用于在TCR中获取可用区域
+
+        :param request: Request instance for DescribeRegions.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeRegionsRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.DescribeRegionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRegions", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeRegionsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

@@ -1803,7 +1803,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
         :type MasterInstanceId: str
         :param InstanceRole: 实例类型，默认为 master，支持值包括：master - 表示主实例，dr - 表示灾备实例，ro - 表示只读实例。
         :type InstanceRole: str
-        :param MasterRegion: 主实例的可用区信息，购买灾备实例时必填。
+        :param MasterRegion: 主实例的可用区信息，购买灾备、RO实例时必填。
         :type MasterRegion: str
         :param Port: 自定义端口，端口支持范围：[ 1024-65535 ] 。
         :type Port: int
@@ -1837,7 +1837,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
         :type DeviceType: str
         :param ParamTemplateId: 参数模板id。
         :type ParamTemplateId: int
-        :param AlarmPolicyList: 告警策略id数组。
+        :param AlarmPolicyList: 告警策略id数组。云监控DescribeAlarmPolicy接口返回的OriginId。
         :type AlarmPolicyList: list of int
         :param InstanceNodes: 实例节点数。对于 RO 和 基础版实例， 该值默认为1。 如果需要购买三节点实例， 请将该值设置为3 或指定 BackupZone 参数。当购买主实例，且未指定该参数和 BackupZone 参数时，该值默认是 2， 即购买两节点实例。
         :type InstanceNodes: int
@@ -2026,7 +2026,7 @@ class CreateDBInstanceRequest(AbstractModel):
         :type BackupZone: str
         :param AutoRenewFlag: 自动续费标记，可选值为：0 - 不自动续费；1 - 自动续费。
         :type AutoRenewFlag: int
-        :param MasterRegion: 主实例地域信息，购买灾备实例时，该字段必填。
+        :param MasterRegion: 主实例地域信息，购买灾备、RO实例时，该字段必填。
         :type MasterRegion: str
         :param SecurityGroup: 安全组参数，可使用 [查询项目安全组信息](https://cloud.tencent.com/document/api/236/15850) 接口查询某个项目的安全组详情。
         :type SecurityGroup: list of str
@@ -2044,7 +2044,7 @@ class CreateDBInstanceRequest(AbstractModel):
         :type DeviceType: str
         :param ParamTemplateId: 参数模板id。
         :type ParamTemplateId: int
-        :param AlarmPolicyList: 告警策略id数组。
+        :param AlarmPolicyList: 告警策略id数组。云监控DescribeAlarmPolicy接口返回的OriginId。
         :type AlarmPolicyList: list of int
         :param InstanceNodes: 实例节点数。对于 RO 和 基础版实例， 该值默认为1。 如果需要购买三节点实例， 请将该值设置为3 或指定 BackupZone 参数。当购买主实例，且未指定该参数和 BackupZone 参数时，该值默认是 2， 即购买两节点实例。
         :type InstanceNodes: int

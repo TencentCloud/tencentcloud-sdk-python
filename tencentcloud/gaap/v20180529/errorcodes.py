@@ -215,6 +215,9 @@ INVALIDPARAMETERVALUE_DUPLICATEDLISTENERPORT = 'InvalidParameterValue.Duplicated
 # 无法同时开启所设置的特性。
 INVALIDPARAMETERVALUE_FEATURECONFLICT = 'InvalidParameterValue.FeatureConflict'
 
+# 该默认入口被封禁，无法添加。
+INVALIDPARAMETERVALUE_GLOBALDOMAINHITBANBLACKLIST = 'InvalidParameterValue.GlobalDomainHitBanBlacklist'
+
 # 资源已被录入封禁黑名单。
 INVALIDPARAMETERVALUE_HITBANBLACKLIST = 'InvalidParameterValue.HitBanBlacklist'
 
@@ -265,6 +268,9 @@ INVALIDPARAMETERVALUE_UNKNOWNDESTREGION = 'InvalidParameterValue.UnknownDestRegi
 
 # 超过配额限制。
 LIMITEXCEEDED = 'LimitExceeded'
+
+# 域名数量超限制。
+LIMITEXCEEDED_DOMAIN = 'LimitExceeded.Domain'
 
 # 标签配额不足。
 LIMITEXCEEDED_TAGQUOTA = 'LimitExceeded.TagQuota'

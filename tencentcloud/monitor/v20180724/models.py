@@ -5783,7 +5783,7 @@ class DescribePolicyGroupInfoReceiverInfo(AbstractModel):
         :type ReceiverGroupList: list of int
         :param ReceiverUserList: 告警接收人id列表
         :type ReceiverUserList: list of int
-        :param StartTime: 告警时间段开始时间。范围[0,86400)，作为unix时间戳转成北京时间后去掉日期，例如7200表示"10:0:0"
+        :param StartTime: 告警时间段开始时间。范围[0,86400)，作为 UNIX 时间戳转成北京时间后去掉日期，例如7200表示"10:0:0"
         :type StartTime: int
         :param EndTime: 告警时间段结束时间。含义同StartTime
         :type EndTime: int

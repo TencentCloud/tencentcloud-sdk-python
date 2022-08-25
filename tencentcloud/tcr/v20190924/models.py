@@ -389,6 +389,77 @@ class CreateApplicationTriggerPersonalResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateImageAccelerationServiceRequest(AbstractModel):
+    """CreateImageAccelerationService请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RegistryId: 实例Id
+        :type RegistryId: str
+        :param VpcId: 创建CFS的归属的VPCID
+        :type VpcId: str
+        :param SubnetId: 创建CFS的归属的子网ID
+        :type SubnetId: str
+        :param StorageType: 创建CFS的存储类型，其中 SD 为标准型存储， HP为性能存储。
+        :type StorageType: str
+        :param PGroupId: 权限组 ID
+        :type PGroupId: str
+        :param Zone: 可用区名称，例如ap-beijing-1，请参考 概览 文档中的地域与可用区列表
+        :type Zone: str
+        :param TagSpecification: 云标签描述
+        :type TagSpecification: :class:`tencentcloud.tcr.v20190924.models.TagSpecification`
+        """
+        self.RegistryId = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.StorageType = None
+        self.PGroupId = None
+        self.Zone = None
+        self.TagSpecification = None
+
+
+    def _deserialize(self, params):
+        self.RegistryId = params.get("RegistryId")
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.StorageType = params.get("StorageType")
+        self.PGroupId = params.get("PGroupId")
+        self.Zone = params.get("Zone")
+        if params.get("TagSpecification") is not None:
+            self.TagSpecification = TagSpecification()
+            self.TagSpecification._deserialize(params.get("TagSpecification"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateImageAccelerationServiceResponse(AbstractModel):
+    """CreateImageAccelerationService返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RegistryId: 实例Id
+        :type RegistryId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RegistryId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RegistryId = params.get("RegistryId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateImageLifecyclePersonalRequest(AbstractModel):
     """CreateImageLifecyclePersonal请求参数结构体
 
@@ -474,6 +545,55 @@ class CreateImmutableTagRulesRequest(AbstractModel):
 
 class CreateImmutableTagRulesResponse(AbstractModel):
     """CreateImmutableTagRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreateInstanceCustomizedDomainRequest(AbstractModel):
+    """CreateInstanceCustomizedDomain请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RegistryId: 主实例iD
+        :type RegistryId: str
+        :param DomainName: 自定义域名
+        :type DomainName: str
+        :param CertificateId: 证书ID
+        :type CertificateId: str
+        """
+        self.RegistryId = None
+        self.DomainName = None
+        self.CertificateId = None
+
+
+    def _deserialize(self, params):
+        self.RegistryId = params.get("RegistryId")
+        self.DomainName = params.get("DomainName")
+        self.CertificateId = params.get("CertificateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateInstanceCustomizedDomainResponse(AbstractModel):
+    """CreateInstanceCustomizedDomain返回参数结构体
 
     """
 
@@ -991,6 +1111,59 @@ class CreateRepositoryResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateSecurityPoliciesRequest(AbstractModel):
+    """CreateSecurityPolicies请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RegistryId: 实例Id
+        :type RegistryId: str
+        :param CidrBlock: 192.168.0.0/24
+        :type CidrBlock: str
+        :param Description: 描述
+        :type Description: str
+        """
+        self.RegistryId = None
+        self.CidrBlock = None
+        self.Description = None
+
+
+    def _deserialize(self, params):
+        self.RegistryId = params.get("RegistryId")
+        self.CidrBlock = params.get("CidrBlock")
+        self.Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateSecurityPoliciesResponse(AbstractModel):
+    """CreateSecurityPolicies返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RegistryId: 实例Id
+        :type RegistryId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RegistryId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RegistryId = params.get("RegistryId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateSecurityPolicyRequest(AbstractModel):
     """CreateSecurityPolicy请求参数结构体
 
@@ -1041,6 +1214,124 @@ class CreateSecurityPolicyResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RegistryId = params.get("RegistryId")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateSignaturePolicyRequest(AbstractModel):
+    """CreateSignaturePolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RegistryId: 实例 Id
+        :type RegistryId: str
+        :param Name: 策略名称
+        :type Name: str
+        :param NamespaceName: 命名空间名称
+        :type NamespaceName: str
+        :param KmsId: KMS 密钥
+        :type KmsId: str
+        :param KmsRegion: KMS 密钥所属地域
+        :type KmsRegion: str
+        :param Domain: 用户自定义域名，为空时使用 TCR 实例默认域名生成签名
+        :type Domain: str
+        :param Disabled: 禁用加签策略，默认为 false
+        :type Disabled: bool
+        """
+        self.RegistryId = None
+        self.Name = None
+        self.NamespaceName = None
+        self.KmsId = None
+        self.KmsRegion = None
+        self.Domain = None
+        self.Disabled = None
+
+
+    def _deserialize(self, params):
+        self.RegistryId = params.get("RegistryId")
+        self.Name = params.get("Name")
+        self.NamespaceName = params.get("NamespaceName")
+        self.KmsId = params.get("KmsId")
+        self.KmsRegion = params.get("KmsRegion")
+        self.Domain = params.get("Domain")
+        self.Disabled = params.get("Disabled")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateSignaturePolicyResponse(AbstractModel):
+    """CreateSignaturePolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class CreateSignatureRequest(AbstractModel):
+    """CreateSignature请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RegistryId: 实例ID
+        :type RegistryId: str
+        :param NamespaceName: 命名空间名称
+        :type NamespaceName: str
+        :param RepositoryName: 仓库名称
+        :type RepositoryName: str
+        :param ImageVersion: Tag名称
+        :type ImageVersion: str
+        """
+        self.RegistryId = None
+        self.NamespaceName = None
+        self.RepositoryName = None
+        self.ImageVersion = None
+
+
+    def _deserialize(self, params):
+        self.RegistryId = params.get("RegistryId")
+        self.NamespaceName = params.get("NamespaceName")
+        self.RepositoryName = params.get("RepositoryName")
+        self.ImageVersion = params.get("ImageVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateSignatureResponse(AbstractModel):
+    """CreateSignature返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -1250,6 +1541,42 @@ class CreateWebhookTriggerResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CustomizedDomainInfo(AbstractModel):
+    """自定义域名信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RegistryId: 实例ID
+        :type RegistryId: str
+        :param CertId: 证书ID
+        :type CertId: str
+        :param DomainName: 域名名称
+        :type DomainName: str
+        :param Status: 域名创建状态（SUCCESS, FAILURE, CREATING, DELETING）
+        :type Status: str
+        """
+        self.RegistryId = None
+        self.CertId = None
+        self.DomainName = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.RegistryId = params.get("RegistryId")
+        self.CertId = params.get("CertId")
+        self.DomainName = params.get("DomainName")
+        self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DeleteApplicationTriggerPersonalRequest(AbstractModel):
     """DeleteApplicationTriggerPersonal请求参数结构体
 
@@ -1276,6 +1603,47 @@ class DeleteApplicationTriggerPersonalRequest(AbstractModel):
 
 class DeleteApplicationTriggerPersonalResponse(AbstractModel):
     """DeleteApplicationTriggerPersonal返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteImageAccelerateServiceRequest(AbstractModel):
+    """DeleteImageAccelerateService请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RegistryId: 实例Id
+        :type RegistryId: str
+        """
+        self.RegistryId = None
+
+
+    def _deserialize(self, params):
+        self.RegistryId = params.get("RegistryId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteImageAccelerateServiceResponse(AbstractModel):
+    """DeleteImageAccelerateService返回参数结构体
 
     """
 
@@ -1487,6 +1855,55 @@ class DeleteImmutableTagRulesRequest(AbstractModel):
 
 class DeleteImmutableTagRulesResponse(AbstractModel):
     """DeleteImmutableTagRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteInstanceCustomizedDomainRequest(AbstractModel):
+    """DeleteInstanceCustomizedDomain请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RegistryId: 主实例iD
+        :type RegistryId: str
+        :param DomainName: 自定义域名
+        :type DomainName: str
+        :param CertificateId: 证书ID
+        :type CertificateId: str
+        """
+        self.RegistryId = None
+        self.DomainName = None
+        self.CertificateId = None
+
+
+    def _deserialize(self, params):
+        self.RegistryId = params.get("RegistryId")
+        self.DomainName = params.get("DomainName")
+        self.CertificateId = params.get("CertificateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteInstanceCustomizedDomainResponse(AbstractModel):
+    """DeleteInstanceCustomizedDomain返回参数结构体
 
     """
 
@@ -1794,6 +2211,55 @@ class DeleteNamespaceResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteReplicationInstanceRequest(AbstractModel):
+    """DeleteReplicationInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RegistryId: 实例id
+        :type RegistryId: str
+        :param ReplicationRegistryId: 复制实例ID
+        :type ReplicationRegistryId: str
+        :param ReplicationRegionId: 复制实例地域Id
+        :type ReplicationRegionId: int
+        """
+        self.RegistryId = None
+        self.ReplicationRegistryId = None
+        self.ReplicationRegionId = None
+
+
+    def _deserialize(self, params):
+        self.RegistryId = params.get("RegistryId")
+        self.ReplicationRegistryId = params.get("ReplicationRegistryId")
+        self.ReplicationRegionId = params.get("ReplicationRegionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteReplicationInstanceResponse(AbstractModel):
+    """DeleteReplicationInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteRepositoryPersonalRequest(AbstractModel):
     """DeleteRepositoryPersonal请求参数结构体
 
@@ -1884,6 +2350,59 @@ class DeleteRepositoryResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteRepositoryTagsRequest(AbstractModel):
+    """DeleteRepositoryTags请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RegistryId: 实例ID
+        :type RegistryId: str
+        :param NamespaceName: 命名空间名称
+        :type NamespaceName: str
+        :param RepositoryName: 仓库名称
+        :type RepositoryName: str
+        :param Tags: Tag列表，单次请求Tag数量最大为20
+        :type Tags: list of str
+        """
+        self.RegistryId = None
+        self.NamespaceName = None
+        self.RepositoryName = None
+        self.Tags = None
+
+
+    def _deserialize(self, params):
+        self.RegistryId = params.get("RegistryId")
+        self.NamespaceName = params.get("NamespaceName")
+        self.RepositoryName = params.get("RepositoryName")
+        self.Tags = params.get("Tags")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteRepositoryTagsResponse(AbstractModel):
+    """DeleteRepositoryTags返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteSecurityPolicyRequest(AbstractModel):
     """DeleteSecurityPolicy请求参数结构体
 
@@ -1934,6 +2453,51 @@ class DeleteSecurityPolicyResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RegistryId = params.get("RegistryId")
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteSignaturePolicyRequest(AbstractModel):
+    """DeleteSignaturePolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RegistryId: 实例ID
+        :type RegistryId: str
+        :param NamespaceName: 命名空间的名称
+        :type NamespaceName: str
+        """
+        self.RegistryId = None
+        self.NamespaceName = None
+
+
+    def _deserialize(self, params):
+        self.RegistryId = params.get("RegistryId")
+        self.NamespaceName = params.get("NamespaceName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteSignaturePolicyResponse(AbstractModel):
+    """DeleteSignaturePolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -2382,6 +2946,109 @@ class DescribeFavorRepositoryPersonalResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeGCJobsRequest(AbstractModel):
+    """DescribeGCJobs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RegistryId: 实例 Id
+        :type RegistryId: str
+        """
+        self.RegistryId = None
+
+
+    def _deserialize(self, params):
+        self.RegistryId = params.get("RegistryId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeGCJobsResponse(AbstractModel):
+    """DescribeGCJobs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Jobs: GC Job 列表
+        :type Jobs: list of GCJobInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Jobs = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Jobs") is not None:
+            self.Jobs = []
+            for item in params.get("Jobs"):
+                obj = GCJobInfo()
+                obj._deserialize(item)
+                self.Jobs.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeImageAccelerateServiceRequest(AbstractModel):
+    """DescribeImageAccelerateService请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RegistryId: 实例Id
+        :type RegistryId: str
+        """
+        self.RegistryId = None
+
+
+    def _deserialize(self, params):
+        self.RegistryId = params.get("RegistryId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeImageAccelerateServiceResponse(AbstractModel):
+    """DescribeImageAccelerateService返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Status: 镜像加速状态
+        :type Status: str
+        :param CFSVIP: CFS的VIP
+        :type CFSVIP: str
+        :param IsEnable: 是否开通
+        :type IsEnable: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Status = None
+        self.CFSVIP = None
+        self.IsEnable = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.CFSVIP = params.get("CFSVIP")
+        self.IsEnable = params.get("IsEnable")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeImageFilterPersonalRequest(AbstractModel):
     """DescribeImageFilterPersonal请求参数结构体
 
@@ -2764,6 +3431,169 @@ class DescribeImmutableTagRulesResponse(AbstractModel):
                 self.Rules.append(obj)
         self.EmptyNs = params.get("EmptyNs")
         self.Total = params.get("Total")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeInstanceAllNamespacesRequest(AbstractModel):
+    """DescribeInstanceAllNamespaces请求参数结构体
+
+    """
+
+
+class DescribeInstanceAllNamespacesResponse(AbstractModel):
+    """DescribeInstanceAllNamespaces返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeInstanceAllRequest(AbstractModel):
+    """DescribeInstanceAll请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Registryids: 实例ID列表(为空时，
+表示获取账号下所有实例)
+        :type Registryids: list of str
+        :param Offset: 偏移量,默认0
+        :type Offset: int
+        :param Limit: 最大输出条数，默认20，最大为100
+        :type Limit: int
+        :param Filters: 过滤条件
+        :type Filters: list of Filter
+        :param AllRegion: 获取所有地域的实例，默认为False
+        :type AllRegion: bool
+        """
+        self.Registryids = None
+        self.Offset = None
+        self.Limit = None
+        self.Filters = None
+        self.AllRegion = None
+
+
+    def _deserialize(self, params):
+        self.Registryids = params.get("Registryids")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.AllRegion = params.get("AllRegion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInstanceAllResponse(AbstractModel):
+    """DescribeInstanceAll返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 总实例个数
+        :type TotalCount: int
+        :param Registries: 实例信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Registries: list of Registry
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Registries = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Registries") is not None:
+            self.Registries = []
+            for item in params.get("Registries"):
+                obj = Registry()
+                obj._deserialize(item)
+                self.Registries.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeInstanceCustomizedDomainRequest(AbstractModel):
+    """DescribeInstanceCustomizedDomain请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RegistryId: 主实例iD
+        :type RegistryId: str
+        :param Limit: 分页Limit
+        :type Limit: int
+        :param Offset: 分页Offset
+        :type Offset: int
+        """
+        self.RegistryId = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.RegistryId = params.get("RegistryId")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInstanceCustomizedDomainResponse(AbstractModel):
+    """DescribeInstanceCustomizedDomain返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DomainInfoList: 域名信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DomainInfoList: list of CustomizedDomainInfo
+        :param TotalCount: 总个数
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DomainInfoList = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DomainInfoList") is not None:
+            self.DomainInfoList = []
+            for item in params.get("DomainInfoList"):
+                obj = CustomizedDomainInfo()
+                obj._deserialize(item)
+                self.DomainInfoList.append(obj)
+        self.TotalCount = params.get("TotalCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -3203,6 +4033,42 @@ class DescribeNamespacesResponse(AbstractModel):
                 obj._deserialize(item)
                 self.NamespaceList.append(obj)
         self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeRegionsRequest(AbstractModel):
+    """DescribeRegions请求参数结构体
+
+    """
+
+
+class DescribeRegionsResponse(AbstractModel):
+    """DescribeRegions返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 返回的总数
+        :type TotalCount: int
+        :param Regions: 地域信息列表
+        :type Regions: list of Region
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Regions = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Regions") is not None:
+            self.Regions = []
+            for item in params.get("Regions"):
+                obj = Region()
+                obj._deserialize(item)
+                self.Regions.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -4348,6 +5214,48 @@ class Filter(AbstractModel):
         
 
 
+class GCJobInfo(AbstractModel):
+    """GC 执行信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ID: 作业 ID
+        :type ID: int
+        :param JobStatus: 作业状态
+        :type JobStatus: str
+        :param CreationTime: 创建时间
+        :type CreationTime: str
+        :param UpdateTime: 更新时间
+        :type UpdateTime: str
+        :param Schedule: 调度信息
+        :type Schedule: :class:`tencentcloud.tcr.v20190924.models.Schedule`
+        """
+        self.ID = None
+        self.JobStatus = None
+        self.CreationTime = None
+        self.UpdateTime = None
+        self.Schedule = None
+
+
+    def _deserialize(self, params):
+        self.ID = params.get("ID")
+        self.JobStatus = params.get("JobStatus")
+        self.CreationTime = params.get("CreationTime")
+        self.UpdateTime = params.get("UpdateTime")
+        if params.get("Schedule") is not None:
+            self.Schedule = Schedule()
+            self.Schedule._deserialize(params.get("Schedule"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Header(AbstractModel):
     """Header KV
 
@@ -5479,6 +6387,58 @@ class PeerReplicationOption(AbstractModel):
         
 
 
+class Region(AbstractModel):
+    """地域信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Alias: gz
+        :type Alias: str
+        :param RegionId: 1
+        :type RegionId: int
+        :param RegionName: ap-guangzhou
+        :type RegionName: str
+        :param Status: alluser
+        :type Status: str
+        :param Remark: remark
+        :type Remark: str
+        :param CreatedAt: 创建时间
+        :type CreatedAt: str
+        :param UpdatedAt: 更新时间
+        :type UpdatedAt: str
+        :param Id: id
+        :type Id: int
+        """
+        self.Alias = None
+        self.RegionId = None
+        self.RegionName = None
+        self.Status = None
+        self.Remark = None
+        self.CreatedAt = None
+        self.UpdatedAt = None
+        self.Id = None
+
+
+    def _deserialize(self, params):
+        self.Alias = params.get("Alias")
+        self.RegionId = params.get("RegionId")
+        self.RegionName = params.get("RegionName")
+        self.Status = params.get("Status")
+        self.Remark = params.get("Remark")
+        self.CreatedAt = params.get("CreatedAt")
+        self.UpdatedAt = params.get("UpdatedAt")
+        self.Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Registry(AbstractModel):
     """实例信息结构体
 
@@ -6282,6 +7242,30 @@ class SameImagesResp(AbstractModel):
 
     def _deserialize(self, params):
         self.SameImages = params.get("SameImages")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Schedule(AbstractModel):
+    """作业调度信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Type: 类型：Hourly, Daily, Weekly, Custom, Manual, Dryrun, None
+        :type Type: str
+        """
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

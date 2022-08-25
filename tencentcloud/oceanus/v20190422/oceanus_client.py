@@ -606,6 +606,35 @@ class OceanusClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeTreeResources(self, request):
+        """查询树状结构资源列表
+
+        :param request: Request instance for DescribeTreeResources.
+        :type request: :class:`tencentcloud.oceanus.v20190422.models.DescribeTreeResourcesRequest`
+        :rtype: :class:`tencentcloud.oceanus.v20190422.models.DescribeTreeResourcesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTreeResources", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeTreeResourcesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ModifyJob(self, request):
         """更新作业属性，仅允许以下3种操作，不支持组合操作：
         (1)	更新作业名称

@@ -1764,6 +1764,35 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeDrmKeyProviderInfo(self, request):
+        """查询 DRM 密钥提供商信息。
+
+        :param request: Request instance for DescribeDrmKeyProviderInfo.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeDrmKeyProviderInfoRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeDrmKeyProviderInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDrmKeyProviderInfo", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDrmKeyProviderInfoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeEventConfig(self, request):
         """腾讯云点播为客户提供了媒体上传、媒体管理、媒体处理等等服务，在这些服务执行过程或执行结束时，腾讯云点播也提供各种对应的事件通知，方便开发者感知服务处理状态，并做下一步的业务操作。
 
@@ -3893,6 +3922,8 @@ class VodClient(AbstractClient):
         - 指定直播推流码集合 StreamIds（见输入参数）筛选直播录制的媒体。
         - 指定视频 ID 集合 Vids （见输入参数）筛选直播录制的媒体。
         - 指定媒体的创建时间范围筛选媒体。
+        - 指定 TRTC 应用 ID 集合筛选媒体。
+        - 指定 TRTC 房间 ID 集合筛选媒体。
         - （不推荐：应使用 Names、NamePrefixes 或 Descriptions 替代）指定单个文本 Text 对媒体文件名或描述信息进行模糊搜索。
         - （不推荐：应使用 SourceTypes 替代）指定单个媒体文件来源 SourceType 进行搜索。
         - （不推荐：应使用 StreamIds 替代）指定单个推流直播码 StreamId 进行搜索。
@@ -3929,6 +3960,35 @@ class VodClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.SearchMediaResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def SetDrmKeyProviderInfo(self, request):
+        """设置 DRM 密钥提供商信息。
+
+        :param request: Request instance for SetDrmKeyProviderInfo.
+        :type request: :class:`tencentcloud.vod.v20180717.models.SetDrmKeyProviderInfoRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.SetDrmKeyProviderInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SetDrmKeyProviderInfo", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.SetDrmKeyProviderInfoResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
