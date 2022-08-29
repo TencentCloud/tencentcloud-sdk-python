@@ -10209,7 +10209,7 @@ class ReceiverInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param StartTime: 告警时间段开始时间。范围[0,86400)，作为unix时间戳转成北京时间后去掉日期，例如7200表示"10:0:0"
+        :param StartTime: 告警时间段开始时间。范围[0,86400)，作为 UNIX 时间戳转成北京时间后去掉日期，例如7200表示"10:0:0"
         :type StartTime: int
         :param EndTime: 告警时间段结束时间。含义同StartTime
         :type EndTime: int
@@ -10221,7 +10221,7 @@ class ReceiverInfo(AbstractModel):
         :type Id: int
         :param SendFor: 电话告警通知时机。可选"OCCUR"(告警时通知),"RECOVER"(恢复时通知)
         :type SendFor: list of str
-        :param UidList: 电话告警接收者uid
+        :param UidList: 电话告警接收者 UID
         :type UidList: list of int
         :param RoundNumber: 电话告警轮数
         :type RoundNumber: int
@@ -10233,9 +10233,9 @@ class ReceiverInfo(AbstractModel):
         :type RecoverNotify: list of str
         :param NeedSendNotice: 是否需要电话告警触达提示。0不需要，1需要
         :type NeedSendNotice: int
-        :param ReceiverGroupList: 接收组列表。通过平台接口查询到的接收组id列表
+        :param ReceiverGroupList: 接收组列表。通过平台接口查询到的接收组 ID 列表
         :type ReceiverGroupList: list of int
-        :param ReceiverUserList: 接收人列表。通过平台接口查询到的接收人id列表
+        :param ReceiverUserList: 接收人列表。通过平台接口查询到的接收人 ID 列表
         :type ReceiverUserList: list of int
         :param ReceiveLanguage: 告警接收语言，枚举值（zh-CN，en-US）
         :type ReceiveLanguage: str

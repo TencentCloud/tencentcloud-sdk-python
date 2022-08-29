@@ -8288,6 +8288,8 @@ class MySQLParam(AbstractModel):
         :type IncludeContentChanges: str
         :param IncludeQuery: 如果该值为true，且MySQL中"binlog_rows_query_log_events"配置项的值为"ON"，则流入到topic的数据包含原SQL语句；若该值为false，流入到topic的数据不包含原SQL语句
         :type IncludeQuery: bool
+        :param RecordWithSchema: 如果该值为 true，则消息中会携带消息结构体对应的schema，如果该值为false则不会携带
+        :type RecordWithSchema: bool
         """
         self.Database = None
         self.Table = None
@@ -8311,6 +8313,7 @@ class MySQLParam(AbstractModel):
         self.IsTablePrefix = None
         self.IncludeContentChanges = None
         self.IncludeQuery = None
+        self.RecordWithSchema = None
 
 
     def _deserialize(self, params):
@@ -8343,6 +8346,7 @@ class MySQLParam(AbstractModel):
         self.IsTablePrefix = params.get("IsTablePrefix")
         self.IncludeContentChanges = params.get("IncludeContentChanges")
         self.IncludeQuery = params.get("IncludeQuery")
+        self.RecordWithSchema = params.get("RecordWithSchema")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8606,12 +8610,27 @@ class PostgreSQLParam(AbstractModel):
         :type PluginName: str
         :param SnapshotMode: 复制存量信息(never增量, initial全量)，默认为initial
         :type SnapshotMode: str
+        :param DataFormat: 上游数据格式(JSON/Debezium), 当数据库同步模式为默认字段匹配时,必填
+        :type DataFormat: str
+        :param DataTargetInsertMode: "INSERT" 表示使用 Insert 模式插入，"UPSERT" 表示使用 Upsert 模式插入
+        :type DataTargetInsertMode: str
+        :param DataTargetPrimaryKeyField: 当 "DataInsertMode"="UPSERT" 时，传入当前 upsert 时依赖的主键
+        :type DataTargetPrimaryKeyField: str
+        :param DataTargetRecordMapping: 表与消息间的映射关系
+        :type DataTargetRecordMapping: list of RecordMapping
+        :param DropInvalidMessage: 是否抛弃解析失败的消息，默认为true
+        :type DropInvalidMessage: bool
         """
         self.Database = None
         self.Table = None
         self.Resource = None
         self.PluginName = None
         self.SnapshotMode = None
+        self.DataFormat = None
+        self.DataTargetInsertMode = None
+        self.DataTargetPrimaryKeyField = None
+        self.DataTargetRecordMapping = None
+        self.DropInvalidMessage = None
 
 
     def _deserialize(self, params):
@@ -8620,6 +8639,16 @@ class PostgreSQLParam(AbstractModel):
         self.Resource = params.get("Resource")
         self.PluginName = params.get("PluginName")
         self.SnapshotMode = params.get("SnapshotMode")
+        self.DataFormat = params.get("DataFormat")
+        self.DataTargetInsertMode = params.get("DataTargetInsertMode")
+        self.DataTargetPrimaryKeyField = params.get("DataTargetPrimaryKeyField")
+        if params.get("DataTargetRecordMapping") is not None:
+            self.DataTargetRecordMapping = []
+            for item in params.get("DataTargetRecordMapping"):
+                obj = RecordMapping()
+                obj._deserialize(item)
+                self.DataTargetRecordMapping.append(obj)
+        self.DropInvalidMessage = params.get("DropInvalidMessage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

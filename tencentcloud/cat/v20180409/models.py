@@ -1266,12 +1266,16 @@ class UpdateProbeTaskConfigurationListRequest(AbstractModel):
         :type Parameters: str
         :param Cron: 定时任务cron表达式
         :type Cron: str
+        :param ResourceIDs: 预付费套餐id
+需要与taskId对应
+        :type ResourceIDs: list of str
         """
         self.TaskIds = None
         self.Nodes = None
         self.Interval = None
         self.Parameters = None
         self.Cron = None
+        self.ResourceIDs = None
 
 
     def _deserialize(self, params):
@@ -1280,6 +1284,7 @@ class UpdateProbeTaskConfigurationListRequest(AbstractModel):
         self.Interval = params.get("Interval")
         self.Parameters = params.get("Parameters")
         self.Cron = params.get("Cron")
+        self.ResourceIDs = params.get("ResourceIDs")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

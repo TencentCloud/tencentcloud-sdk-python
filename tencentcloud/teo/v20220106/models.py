@@ -1993,6 +1993,67 @@ class CreateOriginGroupResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreatePlanForZoneRequest(AbstractModel):
+    """CreatePlanForZone请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneId: 站点ID。
+        :type ZoneId: str
+        :param PlanType: 所要购买套餐的类型，取值有：
+<li> sta: 全球内容分发网络（不包括中国大陆）标准版套餐； </li>
+<li> sta_with_bot: 全球内容分发网络（不包括中国大陆）标准版套餐附带bot管理；</li>
+<li> sta_cm: 中国大陆内容分发网络标准版套餐； </li>
+<li> sta_cm_with_bot: 中国大陆内容分发网络标准版套餐附带bot管理；</li>
+<li> ent: 全球内容分发网络（不包括中国大陆）企业版套餐； </li>
+<li> ent_with_bot: 全球内容分发网络（不包括中国大陆）企业版套餐附带bot管理；</li>
+<li> ent_cm: 中国大陆内容分发网络企业版套餐； </li>
+<li> ent_cm_with_bot: 中国大陆内容分发网络企业版套餐附带bot管理。</li>当前账户可购买套餐类型请以<a href="https://tcloud4api.woa.com/document/product/1657/80124?!preview&!document=1">DescribeAvailablePlans</a>返回为准。
+        :type PlanType: str
+        """
+        self.ZoneId = None
+        self.PlanType = None
+
+
+    def _deserialize(self, params):
+        self.ZoneId = params.get("ZoneId")
+        self.PlanType = params.get("PlanType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreatePlanForZoneResponse(AbstractModel):
+    """CreatePlanForZone返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ResourceNames: 购买的资源名字列表。
+        :type ResourceNames: list of str
+        :param DealNames: 购买的订单号列表。
+        :type DealNames: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ResourceNames = None
+        self.DealNames = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ResourceNames = params.get("ResourceNames")
+        self.DealNames = params.get("DealNames")
+        self.RequestId = params.get("RequestId")
+
+
 class CreatePrefetchTaskRequest(AbstractModel):
     """CreatePrefetchTask请求参数结构体
 
@@ -2144,6 +2205,70 @@ class CreatePurgeTaskResponse(AbstractModel):
                 obj = FailReason()
                 obj._deserialize(item)
                 self.FailedList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class CreateRuleRequest(AbstractModel):
+    """CreateRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param RuleName: 规则名称，名称字符串长度 1～255。
+        :type RuleName: str
+        :param Status: 规则状态，取值有：
+<li> enable: 启用； </li>
+<li> disable: 未启用。</li>
+        :type Status: str
+        :param Rules: 规则内容。
+        :type Rules: list of RuleItem
+        """
+        self.ZoneId = None
+        self.RuleName = None
+        self.Status = None
+        self.Rules = None
+
+
+    def _deserialize(self, params):
+        self.ZoneId = params.get("ZoneId")
+        self.RuleName = params.get("RuleName")
+        self.Status = params.get("Status")
+        if params.get("Rules") is not None:
+            self.Rules = []
+            for item in params.get("Rules"):
+                obj = RuleItem()
+                obj._deserialize(item)
+                self.Rules.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateRuleResponse(AbstractModel):
+    """CreateRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleId: 规则 ID。
+        :type RuleId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RuleId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RuleId = params.get("RuleId")
         self.RequestId = params.get("RequestId")
 
 
@@ -3598,6 +3723,51 @@ class DeleteOriginGroupResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteRulesRequest(AbstractModel):
+    """DeleteRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param RuleIds: 指定删除的规则 ID 列表。
+        :type RuleIds: list of str
+        """
+        self.ZoneId = None
+        self.RuleIds = None
+
+
+    def _deserialize(self, params):
+        self.ZoneId = params.get("ZoneId")
+        self.RuleIds = params.get("RuleIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteRulesResponse(AbstractModel):
+    """DeleteRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteZoneRequest(AbstractModel):
     """DeleteZone请求参数结构体
 
@@ -3858,6 +4028,39 @@ class DescribeApplicationProxyResponse(AbstractModel):
         self.Quota = params.get("Quota")
         self.IpCount = params.get("IpCount")
         self.DomainCount = params.get("DomainCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeAvailablePlansRequest(AbstractModel):
+    """DescribeAvailablePlans请求参数结构体
+
+    """
+
+
+class DescribeAvailablePlansResponse(AbstractModel):
+    """DescribeAvailablePlans返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PlanInfoList: 当前账户可购买套餐类型及相关信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PlanInfoList: list of PlanInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.PlanInfoList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("PlanInfoList") is not None:
+            self.PlanInfoList = []
+            for item in params.get("PlanInfoList"):
+                obj = PlanInfo()
+                obj._deserialize(item)
+                self.PlanInfoList.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -5804,6 +6007,101 @@ class DescribePurgeTasksResponse(AbstractModel):
                 obj = Task()
                 obj._deserialize(item)
                 self.Tasks.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeRulesRequest(AbstractModel):
+    """DescribeRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param Filters: 过滤参数，不填默认不过滤。
+        :type Filters: list of RuleFilter
+        """
+        self.ZoneId = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.ZoneId = params.get("ZoneId")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = RuleFilter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRulesResponse(AbstractModel):
+    """DescribeRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param RuleList: 规则列表，按规则执行顺序从先往后排序。
+        :type RuleList: list of RuleSettingDetail
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ZoneId = None
+        self.RuleList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ZoneId = params.get("ZoneId")
+        if params.get("RuleList") is not None:
+            self.RuleList = []
+            for item in params.get("RuleList"):
+                obj = RuleSettingDetail()
+                obj._deserialize(item)
+                self.RuleList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeRulesSettingRequest(AbstractModel):
+    """DescribeRulesSetting请求参数结构体
+
+    """
+
+
+class DescribeRulesSettingResponse(AbstractModel):
+    """DescribeRulesSetting返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Actions: 规则引擎可应用匹配请求的设置列表及其详细建议配置信息。
+        :type Actions: list of RulesSettingAction
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Actions = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Actions") is not None:
+            self.Actions = []
+            for item in params.get("Actions"):
+                obj = RulesSettingAction()
+                obj._deserialize(item)
+                self.Actions.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -9849,6 +10147,119 @@ class ModifyOriginGroupResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyRulePriorityRequest(AbstractModel):
+    """ModifyRulePriority请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param RuleIds: 规则 ID 的顺序，多条规则执行顺序依次往下。
+        :type RuleIds: list of str
+        """
+        self.ZoneId = None
+        self.RuleIds = None
+
+
+    def _deserialize(self, params):
+        self.ZoneId = params.get("ZoneId")
+        self.RuleIds = params.get("RuleIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyRulePriorityResponse(AbstractModel):
+    """ModifyRulePriority返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyRuleRequest(AbstractModel):
+    """ModifyRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param RuleName: 规则名称，字符串名称长度 1~255。
+        :type RuleName: str
+        :param Rules: 规则内容。
+        :type Rules: list of RuleItem
+        :param RuleId: 规则 ID。
+        :type RuleId: str
+        :param Status: 规则状态，取值有：
+<li> enable: 启用； </li>
+<li> disable: 未启用。</li>
+        :type Status: str
+        """
+        self.ZoneId = None
+        self.RuleName = None
+        self.Rules = None
+        self.RuleId = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.ZoneId = params.get("ZoneId")
+        self.RuleName = params.get("RuleName")
+        if params.get("Rules") is not None:
+            self.Rules = []
+            for item in params.get("Rules"):
+                obj = RuleItem()
+                obj._deserialize(item)
+                self.Rules.append(obj)
+        self.RuleId = params.get("RuleId")
+        self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyRuleResponse(AbstractModel):
+    """ModifyRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleId: 规则 ID。
+        :type RuleId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RuleId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RuleId = params.get("RuleId")
+        self.RequestId = params.get("RequestId")
+
+
 class ModifySecurityPolicyRequest(AbstractModel):
     """ModifySecurityPolicy请求参数结构体
 
@@ -10594,6 +11005,69 @@ class OriginRecordPrivateParameter(AbstractModel):
         
 
 
+class PlanInfo(AbstractModel):
+    """edgeone套餐信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Currency: 结算货币类型，取值有：
+<li> CNY ：人民币结算； </li>
+<li> USD ：美元结算。</li>
+        :type Currency: str
+        :param Flux: 套餐所含流量（单位：字节）
+        :type Flux: int
+        :param Frequency: 结算周期，取值有：
+<li> y ：按年结算； </li>
+<li> m ：按月结算；</li>
+<li> h ：按小时结算； </li>
+<li> M ：按分钟结算；</li>
+<li> s ：按秒结算。 </li>
+        :type Frequency: str
+        :param PlanType: 套餐类型，取值有：
+<li> sta ：全球内容分发网络（不包括中国大陆）标准版套餐； </li>
+<li> sta_with_bot ：全球内容分发网络（不包括中国大陆）标准版套餐附带bot管理；</li>
+<li> sta_cm ：中国大陆内容分发网络标准版套餐； </li>
+<li> sta_cm_with_bot ：中国大陆内容分发网络标准版套餐附带bot管理；</li>
+<li> ent ：全球内容分发网络（不包括中国大陆）企业版套餐； </li>
+<li> ent_with_bot ： 全球内容分发网络（不包括中国大陆）企业版套餐附带bot管理；</li>
+<li> ent_cm ：中国大陆内容分发网络企业版套餐； </li>
+<li> ent_cm_with_bot ：中国大陆内容分发网络企业版套餐附带bot管理。</li>
+        :type PlanType: str
+        :param Price: 套餐价格（单位：分）
+        :type Price: float
+        :param Request: 套餐所含请求次数（单位：字节）
+        :type Request: int
+        :param SiteNumber: 套餐所能绑定的站点个数。
+        :type SiteNumber: int
+        """
+        self.Currency = None
+        self.Flux = None
+        self.Frequency = None
+        self.PlanType = None
+        self.Price = None
+        self.Request = None
+        self.SiteNumber = None
+
+
+    def _deserialize(self, params):
+        self.Currency = params.get("Currency")
+        self.Flux = params.get("Flux")
+        self.Frequency = params.get("Frequency")
+        self.PlanType = params.get("PlanType")
+        self.Price = params.get("Price")
+        self.Request = params.get("Request")
+        self.SiteNumber = params.get("SiteNumber")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PortraitManagedRuleDetail(AbstractModel):
     """用户画像规则详情
 
@@ -11111,6 +11585,688 @@ class Resource(AbstractModel):
         self.AutoRenewFlag = params.get("AutoRenewFlag")
         self.PlanId = params.get("PlanId")
         self.Area = params.get("Area")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RuleAction(AbstractModel):
+    """规则引擎功能项操作，对于一种功能只对应下面三种类型的其中一种，RuleAction 数组中的每一项只能是其中一个类型，更多功能项的填写规范可调用接口 [查询规则引擎的设置参数](https://tcloud4api.woa.com/document/product/1657/79433?!preview&!document=1) 查看。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NormalAction: 常规功能操作，选择该类型的功能项有：
+<li> 访问URL 重写（AccessUrlRedirect）；</li>
+<li> 回源 URL 重写 （UpstreamUrlRedirect）；</li>
+<li> QUIC（QUIC）；</li>
+<li> WebSocket （WebSocket）；</li>
+<li> 视频拖拽（VideoSeek）；</li>
+<li> Token 鉴权（Authentication）；</li>
+<li> 自定义CacheKey（CacheKey）；</li>
+<li> 节点缓存 TTL （Cache）；</li>
+<li> 浏览器缓存 TTL（MaxAge）；</li>
+<li> 离线缓存（OfflineCache）；</li>
+<li> 智能加速（SmartRouting）；</li>
+<li> 分片回源（RangeOriginPull）；</li>
+<li> HTTP/2 回源（UpstreamHttp2）；</li>
+<li> Host Header 重写（HostHeader）；</li>
+<li> 强制 HTTPS（ForceRedirect）；</li>
+<li> 回源 HTTPS（OriginPullProtocol）；</li>
+<li> 缓存预刷新（CachePrefresh）；</li>
+<li> 智能压缩（Compression）；</li>
+<li> Hsts；</li>
+<li> ClientIpHeader；</li>
+<li> TlsVersion；</li>
+<li> OcspStapling。</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NormalAction: :class:`tencentcloud.teo.v20220106.models.RuleNormalAction`
+        :param RewriteAction: 带有请求头/响应头的功能操作，选择该类型的功能项有：
+<li> 修改 HTTP 请求头（RequestHeader）；</li>
+<li> 修改HTTP响应头（ResponseHeader）。</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RewriteAction: :class:`tencentcloud.teo.v20220106.models.RuleRewriteAction`
+        :param CodeAction: 带有状态码的功能操作，选择该类型的功能项有：
+<li> 自定义错误页面（ErrorPage）；</li>
+<li> 状态码缓存 TTL（StatusCodeCache）。</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CodeAction: :class:`tencentcloud.teo.v20220106.models.RuleCodeAction`
+        """
+        self.NormalAction = None
+        self.RewriteAction = None
+        self.CodeAction = None
+
+
+    def _deserialize(self, params):
+        if params.get("NormalAction") is not None:
+            self.NormalAction = RuleNormalAction()
+            self.NormalAction._deserialize(params.get("NormalAction"))
+        if params.get("RewriteAction") is not None:
+            self.RewriteAction = RuleRewriteAction()
+            self.RewriteAction._deserialize(params.get("RewriteAction"))
+        if params.get("CodeAction") is not None:
+            self.CodeAction = RuleCodeAction()
+            self.CodeAction._deserialize(params.get("CodeAction"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RuleAndConditions(AbstractModel):
+    """规则引擎条件且关系条件列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Conditions: 规则引擎条件，该数组内所有项全部满足即判断该条件满足。
+        :type Conditions: list of RuleCondition
+        """
+        self.Conditions = None
+
+
+    def _deserialize(self, params):
+        if params.get("Conditions") is not None:
+            self.Conditions = []
+            for item in params.get("Conditions"):
+                obj = RuleCondition()
+                obj._deserialize(item)
+                self.Conditions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RuleChoicePropertiesItem(AbstractModel):
+    """规则引擎可应用于匹配请求的设置详细信息，可选参数配置项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 参数名称。
+        :type Name: str
+        :param Type: 参数值类型。
+<li> CHOICE：参数值只能在 ChoicesValue 中选择； </li>
+<li> TOGGLE：参数值为开关类型，可在 ChoicesValue 中选择；</li>
+<li> CUSTOM_NUM：参数值用户自定义，整型类型；</li>
+<li> CUSTOM_STRING：参数值用户自定义，字符串类型。</li>
+        :type Type: str
+        :param ChoicesValue: 参数值的可选值。
+注意：若参数值为用户自定义则该数组为空数组。
+        :type ChoicesValue: list of str
+        :param Min: 数值参数的最小值，非数值参数或 Min 和 Max 值都为 0 则此项无意义。
+        :type Min: int
+        :param Max: 数值参数的最大值，非数值参数或 Min 和 Max 值都为 0 则此项无意义。
+        :type Max: int
+        :param IsMultiple: 参数值是否支持多选或者填写多个。
+        :type IsMultiple: bool
+        :param IsAllowEmpty: 是否允许为空。
+        :type IsAllowEmpty: bool
+        :param ExtraParameter: 特殊参数。
+<li> 为 NULL：RuleAction 选择 NormalAction；</li>
+<li> 成员参数 Id 为 Action：RuleAction 选择 RewirteAction；</li>
+<li> 成员参数 Id 为 StatusCode：RuleAction 选择 CodeAction。</li>
+        :type ExtraParameter: :class:`tencentcloud.teo.v20220106.models.RuleExtraParameter`
+        """
+        self.Name = None
+        self.Type = None
+        self.ChoicesValue = None
+        self.Min = None
+        self.Max = None
+        self.IsMultiple = None
+        self.IsAllowEmpty = None
+        self.ExtraParameter = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Type = params.get("Type")
+        self.ChoicesValue = params.get("ChoicesValue")
+        self.Min = params.get("Min")
+        self.Max = params.get("Max")
+        self.IsMultiple = params.get("IsMultiple")
+        self.IsAllowEmpty = params.get("IsAllowEmpty")
+        if params.get("ExtraParameter") is not None:
+            self.ExtraParameter = RuleExtraParameter()
+            self.ExtraParameter._deserialize(params.get("ExtraParameter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RuleCodeAction(AbstractModel):
+    """规则引擎带有状态码的动作
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Action: 功能名称，功能名称填写规范可调用接口 [查询规则引擎的设置参数](https://tcloud4api.woa.com/document/product/1657/79433?!preview&!document=1) 查看。
+        :type Action: str
+        :param Parameters: 操作参数。
+        :type Parameters: list of RuleCodeActionParams
+        """
+        self.Action = None
+        self.Parameters = None
+
+
+    def _deserialize(self, params):
+        self.Action = params.get("Action")
+        if params.get("Parameters") is not None:
+            self.Parameters = []
+            for item in params.get("Parameters"):
+                obj = RuleCodeActionParams()
+                obj._deserialize(item)
+                self.Parameters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RuleCodeActionParams(AbstractModel):
+    """规则引擎条件使用StatusCode字段动作参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StatusCode: 状态 Code。
+        :type StatusCode: int
+        :param Name: 参数名称，参数填写规范可调用接口 [查询规则引擎的设置参数](https://tcloud4api.woa.com/document/product/1657/79433?!preview&!document=1) 查看。
+        :type Name: str
+        :param Values: 参数值。
+        :type Values: list of str
+        """
+        self.StatusCode = None
+        self.Name = None
+        self.Values = None
+
+
+    def _deserialize(self, params):
+        self.StatusCode = params.get("StatusCode")
+        self.Name = params.get("Name")
+        self.Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RuleCondition(AbstractModel):
+    """规则引擎条件参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Operator: 运算符，取值有：
+<li> equal: 等于； </li>
+<li> notequal: 不等于。</li>
+        :type Operator: str
+        :param Target: 匹配类型，取值有：
+<li> 全部（站点任意请求）: host。 </li>
+<li> 文件名: filename； </li>
+<li> 文件后缀: extension； </li>
+<li> HOST: host； </li>
+<li> URL Full: full_url，当前站点下完整 URL 路径，必须包含 HTTP 协议，Host 和 路径； </li>
+<li> URL Path: url，当前站点下 URL 路径的请求。 </li>
+        :type Target: str
+        :param Values: 对应匹配类型的参数值，对应匹配类型的取值有：
+<li> 文件后缀：jpg、txt等文件后缀；</li>
+<li> 文件名称：例如 foo.jpg 中的 foo；</li>
+<li> 全部（站点任意请求）： all； </li>
+<li> HOST：当前站点下的 host ，例如www.maxx55.com；</li>
+<li> URL Path：当前站点下 URL 路径的请求，例如：/example；</li>
+<li> URL Full：当前站点下完整 URL 请求，必须包含 HTTP 协议，Host 和 路径，例如：https://www.maxx55.cn/example。</li>
+        :type Values: list of str
+        """
+        self.Operator = None
+        self.Target = None
+        self.Values = None
+
+
+    def _deserialize(self, params):
+        self.Operator = params.get("Operator")
+        self.Target = params.get("Target")
+        self.Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RuleExtraParameter(AbstractModel):
+    """规则引擎参数详情信息，特殊参数类型。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: 参数名，取值有：
+<li> Action：修改 HTTP 头部所需参数，RuleAction 选择 RewirteAction；</li>
+<li> StatusCode：状态码相关功能所需参数，RuleAction 选择 CodeAction。</li>
+        :type Id: str
+        :param Type: 参数值类型。
+<li> CHOICE：参数值只能在 Values 中选择； </li>
+<li> CUSTOM_NUM：参数值用户自定义，整型类型；</li>
+<li> CUSTOM_STRING：参数值用户自定义，字符串类型。</li>
+        :type Type: str
+        :param Choices: 可选参数值。
+注意：当 Id 的值为 StatusCode 时数组中的值为整型，填写参数值时请填写字符串的整型数值。
+        :type Choices: str
+        """
+        self.Id = None
+        self.Type = None
+        self.Choices = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        self.Type = params.get("Type")
+        self.Choices = params.get("Choices")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RuleFilter(AbstractModel):
+    """规则查询 Filter
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 过滤参数，取值有：
+<li> RULE_ID：规则 ID。 </li>
+        :type Name: str
+        :param Values: 参数值。
+        :type Values: list of str
+        """
+        self.Name = None
+        self.Values = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RuleItem(AbstractModel):
+    """规则引擎规则项，Conditions 数组内多个项的关系为 或，内层 Conditions 列表内多个项的关系为 且。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Conditions: 执行功能判断条件。
+注意：满足该数组内任意一项条件，功能即可执行。
+        :type Conditions: list of RuleAndConditions
+        :param Actions: 执行的功能。
+        :type Actions: list of RuleAction
+        """
+        self.Conditions = None
+        self.Actions = None
+
+
+    def _deserialize(self, params):
+        if params.get("Conditions") is not None:
+            self.Conditions = []
+            for item in params.get("Conditions"):
+                obj = RuleAndConditions()
+                obj._deserialize(item)
+                self.Conditions.append(obj)
+        if params.get("Actions") is not None:
+            self.Actions = []
+            for item in params.get("Actions"):
+                obj = RuleAction()
+                obj._deserialize(item)
+                self.Actions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RuleNormalAction(AbstractModel):
+    """规则引擎常规类型的动作
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Action: 功能名称，功能名称填写规范可调用接口 [查询规则引擎的设置参数](https://tcloud4api.woa.com/document/product/1657/79433?!preview&!document=1) 查看。
+        :type Action: str
+        :param Parameters: 参数。
+        :type Parameters: list of RuleNormalActionParams
+        """
+        self.Action = None
+        self.Parameters = None
+
+
+    def _deserialize(self, params):
+        self.Action = params.get("Action")
+        if params.get("Parameters") is not None:
+            self.Parameters = []
+            for item in params.get("Parameters"):
+                obj = RuleNormalActionParams()
+                obj._deserialize(item)
+                self.Parameters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RuleNormalActionParams(AbstractModel):
+    """规则引擎条件常规动作参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 参数名称，参数填写规范可调用接口 [查询规则引擎的设置参数](https://tcloud4api.woa.com/document/product/1657/79433?!preview&!document=1) 查看。
+        :type Name: str
+        :param Values: 参数值。
+        :type Values: list of str
+        """
+        self.Name = None
+        self.Values = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RuleRewriteAction(AbstractModel):
+    """规则引擎HTTP请求头/响应头类型的动作
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Action: 功能名称，功能名称填写规范可调用接口 [查询规则引擎的设置参数](https://tcloud4api.woa.com/document/product/1657/79433?!preview&!document=1) 查看。
+        :type Action: str
+        :param Parameters: 参数。
+        :type Parameters: list of RuleRewriteActionParams
+        """
+        self.Action = None
+        self.Parameters = None
+
+
+    def _deserialize(self, params):
+        self.Action = params.get("Action")
+        if params.get("Parameters") is not None:
+            self.Parameters = []
+            for item in params.get("Parameters"):
+                obj = RuleRewriteActionParams()
+                obj._deserialize(item)
+                self.Parameters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RuleRewriteActionParams(AbstractModel):
+    """规则引擎条件 HTTP 请求/响应头操作动作参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Action: 功能参数名称，参数填写规范可调用接口 [查询规则引擎的设置参数](https://tcloud4api.woa.com/document/product/1657/79433?!preview&!document=1) 查看。现在只有三种取值：
+<li> add：添加 HTTP 头部；</li>
+<li> set：重写 HTTP 头部；</li>
+<li> del：删除 HTTP 头部。</li>
+        :type Action: str
+        :param Name: 参数名称。
+        :type Name: str
+        :param Values: 参数值。
+        :type Values: list of str
+        """
+        self.Action = None
+        self.Name = None
+        self.Values = None
+
+
+    def _deserialize(self, params):
+        self.Action = params.get("Action")
+        self.Name = params.get("Name")
+        self.Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RuleSettingDetail(AbstractModel):
+    """规则引擎规则详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleId: 规则ID。
+        :type RuleId: str
+        :param RuleName: 规则名称，名称字符串长度 1~255。
+        :type RuleName: str
+        :param Status: 规则状态，取值有:
+<li> enable: 启用； </li>
+<li> disable: 未启用。 </li>
+        :type Status: str
+        :param Rules: 规则内容。
+        :type Rules: list of RuleItem
+        :param RulePriority: 规则优先级, 值越大优先级越高，最小为 1。
+        :type RulePriority: int
+        """
+        self.RuleId = None
+        self.RuleName = None
+        self.Status = None
+        self.Rules = None
+        self.RulePriority = None
+
+
+    def _deserialize(self, params):
+        self.RuleId = params.get("RuleId")
+        self.RuleName = params.get("RuleName")
+        self.Status = params.get("Status")
+        if params.get("Rules") is not None:
+            self.Rules = []
+            for item in params.get("Rules"):
+                obj = RuleItem()
+                obj._deserialize(item)
+                self.Rules.append(obj)
+        self.RulePriority = params.get("RulePriority")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RulesProperties(AbstractModel):
+    """规则引擎可应用于匹配请求的设置详细信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 值为参数名称。
+        :type Name: str
+        :param Min: 数值参数的最小值，非数值参数或 Min 和 Max 值都为 0 则此项无意义。
+        :type Min: int
+        :param ChoicesValue: 参数值的可选值。
+注意：若参数值为用户自定义则该数组为空数组。
+        :type ChoicesValue: list of str
+        :param Type: 参数值类型。
+<li> CHOICE：参数值只能在 ChoicesValue 中选择； </li>
+<li> TOGGLE：参数值为开关类型，可在 ChoicesValue 中选择；</li>
+<li> OBJECT：参数值为对象类型，ChoiceProperties 为改对象类型关联的属性；</li>
+<li> CUSTOM_NUM：参数值用户自定义，整型类型；</li>
+<li> CUSTOM_STRING：参数值用户自定义，字符串类型。</li>注意：当参数类型为 OBJECT 类型时，请注意参考 [示例2 参数为 OBJECT 类型的创建](https://tcloud4api.woa.com/document/product/1657/79382?!preview&!document=1)
+        :type Type: str
+        :param Max: 数值参数的最大值，非数值参数或 Min 和 Max 值都为 0 则此项无意义。
+        :type Max: int
+        :param IsMultiple: 参数值是否支持多选或者填写多个。
+        :type IsMultiple: bool
+        :param IsAllowEmpty: 是否允许为空。
+        :type IsAllowEmpty: bool
+        :param ChoiceProperties: 该参数对应的关联配置参数，属于调用接口的必填参数。
+注意：如果可选参数无特殊新增参数则该数组为空数组。
+        :type ChoiceProperties: list of RuleChoicePropertiesItem
+        :param ExtraParameter: <li> 为 NULL：无特殊参数，RuleAction 选择 NormalAction；</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExtraParameter: :class:`tencentcloud.teo.v20220106.models.RuleExtraParameter`
+        """
+        self.Name = None
+        self.Min = None
+        self.ChoicesValue = None
+        self.Type = None
+        self.Max = None
+        self.IsMultiple = None
+        self.IsAllowEmpty = None
+        self.ChoiceProperties = None
+        self.ExtraParameter = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Min = params.get("Min")
+        self.ChoicesValue = params.get("ChoicesValue")
+        self.Type = params.get("Type")
+        self.Max = params.get("Max")
+        self.IsMultiple = params.get("IsMultiple")
+        self.IsAllowEmpty = params.get("IsAllowEmpty")
+        if params.get("ChoiceProperties") is not None:
+            self.ChoiceProperties = []
+            for item in params.get("ChoiceProperties"):
+                obj = RuleChoicePropertiesItem()
+                obj._deserialize(item)
+                self.ChoiceProperties.append(obj)
+        if params.get("ExtraParameter") is not None:
+            self.ExtraParameter = RuleExtraParameter()
+            self.ExtraParameter._deserialize(params.get("ExtraParameter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RulesSettingAction(AbstractModel):
+    """规则引擎可应用于匹配请求的设置列表及其详细信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Action: 功能名称，取值有：
+<li> 访问URL 重写（AccessUrlRedirect）；</li>
+<li> 回源 URL 重写 （UpstreamUrlRedirect）；</li>
+<li> 自定义错误页面
+(ErrorPage)；</li>
+<li> QUIC（QUIC）；</li>
+<li> WebSocket （WebSocket）；</li>
+<li> 视频拖拽（VideoSeek）；</li>
+<li> Token 鉴权（Authentication）；</li>
+<li> 自定义CacheKey（CacheKey）；</li>
+<li> 节点缓存 TTL （Cache）；</li>
+<li> 浏览器缓存 TTL（MaxAge）；</li>
+<li> 离线缓存（OfflineCache）；</li>
+<li> 智能加速（SmartRouting）；</li>
+<li> 分片回源（RangeOriginPull）；</li>
+<li> HTTP/2 回源（UpstreamHttp2）；</li>
+<li> Host Header 重写（HostHeader）；</li>
+<li> 强制 HTTPS（ForceRedirect）；</li>
+<li> 回源 HTTPS（OriginPullProtocol）；</li>
+<li> 缓存预刷新（CachePrefresh）；</li>
+<li> 智能压缩（Compression）；</li>
+<li> 修改 HTTP 请求头（RequestHeader）；</li>
+<li> 修改HTTP响应头（ResponseHeader）;</li>
+<li> 状态码缓存 TTL（StatusCodeCache）;</li>
+<li> Hsts；</li>
+<li> ClientIpHeader；</li>
+<li> TlsVersion；</li>
+<li> OcspStapling。</li>
+        :type Action: str
+        :param Properties: 参数信息。
+        :type Properties: list of RulesProperties
+        """
+        self.Action = None
+        self.Properties = None
+
+
+    def _deserialize(self, params):
+        self.Action = params.get("Action")
+        if params.get("Properties") is not None:
+            self.Properties = []
+            for item in params.get("Properties"):
+                obj = RulesProperties()
+                obj._deserialize(item)
+                self.Properties.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -1297,22 +1297,30 @@ class Encryption(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CiphertextBlob: 有加密需求的用户，接入传入kms的CiphertextBlob，关于数据加密可查阅<a href="https://cloud.tencent.com/document/product/1007/47180">数据加密</a> 文档。
-        :type CiphertextBlob: str
         :param EncryptList: 在使用加密服务时，填入要被加密的字段。本接口中可填入加密后的一个或多个字段
         :type EncryptList: list of str
+        :param CiphertextBlob: 有加密需求的用户，接入传入kms的CiphertextBlob，关于数据加密可查阅<a href="https://cloud.tencent.com/document/product/1007/47180">数据加密</a> 文档。
+        :type CiphertextBlob: str
         :param Iv: 有加密需求的用户，传入CBC加密的初始向量（客户自定义字符串，长度16字符）。
         :type Iv: str
+        :param Algorithm: 加密使用的算法（支持'AES-256-CBC'、'SM4-GCM'），不传默认为'AES-256-CBC'
+        :type Algorithm: str
+        :param TagList: SM4-GCM算法生成的消息摘要（校验消息完整性时使用）
+        :type TagList: list of str
         """
-        self.CiphertextBlob = None
         self.EncryptList = None
+        self.CiphertextBlob = None
         self.Iv = None
+        self.Algorithm = None
+        self.TagList = None
 
 
     def _deserialize(self, params):
-        self.CiphertextBlob = params.get("CiphertextBlob")
         self.EncryptList = params.get("EncryptList")
+        self.CiphertextBlob = params.get("CiphertextBlob")
         self.Iv = params.get("Iv")
+        self.Algorithm = params.get("Algorithm")
+        self.TagList = params.get("TagList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1388,8 +1396,10 @@ class GetDetectInfoEnhancedRequest(AbstractModel):
         :type IsCutIdCardImage: bool
         :param IsNeedIdCardAvatar: 是否需要从身份证中抠出头像。默认为false。（InfoType需要包含2）
         :type IsNeedIdCardAvatar: bool
-        :param IsEncrypt: 是否需要对返回中的敏感信息进行加密。其中敏感信息包括：Response.Text.IdCard、Response.Text.Name、Response.Text.OcrIdCard、Response.Text.OcrName
+        :param IsEncrypt: 已弃用。
         :type IsEncrypt: bool
+        :param Encryption: 是否需要对返回中的敏感信息进行加密。仅指定加密算法Algorithm即可，其余字段传入默认值。其中敏感信息包括：Response.Text.IdCard、Response.Text.Name、Response.Text.OcrIdCard、Response.Text.OcrName
+        :type Encryption: :class:`tencentcloud.faceid.v20180301.models.Encryption`
         """
         self.BizToken = None
         self.RuleId = None
@@ -1398,6 +1408,7 @@ class GetDetectInfoEnhancedRequest(AbstractModel):
         self.IsCutIdCardImage = None
         self.IsNeedIdCardAvatar = None
         self.IsEncrypt = None
+        self.Encryption = None
 
 
     def _deserialize(self, params):
@@ -1408,6 +1419,9 @@ class GetDetectInfoEnhancedRequest(AbstractModel):
         self.IsCutIdCardImage = params.get("IsCutIdCardImage")
         self.IsNeedIdCardAvatar = params.get("IsNeedIdCardAvatar")
         self.IsEncrypt = params.get("IsEncrypt")
+        if params.get("Encryption") is not None:
+            self.Encryption = Encryption()
+            self.Encryption._deserialize(params.get("Encryption"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

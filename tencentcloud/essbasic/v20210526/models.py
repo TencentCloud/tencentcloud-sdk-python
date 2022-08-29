@@ -670,6 +670,9 @@ ProcessTimeout - 转换文件超时
         :type TaskMessage: str
         :param ResourceId: 资源Id，也是FileId，用于文件发起使用
         :type ResourceId: str
+        :param PreviewUrl: 预览文件Url，有效期30分钟
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PreviewUrl: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -677,6 +680,7 @@ ProcessTimeout - 转换文件超时
         self.TaskStatus = None
         self.TaskMessage = None
         self.ResourceId = None
+        self.PreviewUrl = None
         self.RequestId = None
 
 
@@ -685,6 +689,7 @@ ProcessTimeout - 转换文件超时
         self.TaskStatus = params.get("TaskStatus")
         self.TaskMessage = params.get("TaskMessage")
         self.ResourceId = params.get("ResourceId")
+        self.PreviewUrl = params.get("PreviewUrl")
         self.RequestId = params.get("RequestId")
 
 
@@ -818,6 +823,63 @@ DYNAMIC_TABLE - 传入json格式的表格内容，具体见数据结构FlowInfo�
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class CreateChannelFlowEvidenceReportRequest(AbstractModel):
+    """CreateChannelFlowEvidenceReport请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: 签署流程编号
+        :type FlowId: str
+        :param Agent: 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填
+        :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        :param Operator: 操作者的信息
+        :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
+        """
+        self.FlowId = None
+        self.Agent = None
+        self.Operator = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        if params.get("Agent") is not None:
+            self.Agent = Agent()
+            self.Agent._deserialize(params.get("Agent"))
+        if params.get("Operator") is not None:
+            self.Operator = UserInfo()
+            self.Operator._deserialize(params.get("Operator"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateChannelFlowEvidenceReportResponse(AbstractModel):
+    """CreateChannelFlowEvidenceReport返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ReportUrl: 出证报告 URL（有效五分钟）
+        :type ReportUrl: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ReportUrl = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ReportUrl = params.get("ReportUrl")
+        self.RequestId = params.get("RequestId")
 
 
 class CreateConsoleLoginUrlRequest(AbstractModel):
@@ -965,6 +1027,8 @@ class CreateFlowsByTemplatesResponse(AbstractModel):
         :type ErrorMessages: list of str
         :param PreviewUrls: 预览模式下返回的预览文件url数组
         :type PreviewUrls: list of str
+        :param TaskInfos: 复杂文档合成任务的任务信息数组
+        :type TaskInfos: list of TaskInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -972,6 +1036,7 @@ class CreateFlowsByTemplatesResponse(AbstractModel):
         self.CustomerData = None
         self.ErrorMessages = None
         self.PreviewUrls = None
+        self.TaskInfos = None
         self.RequestId = None
 
 
@@ -980,6 +1045,12 @@ class CreateFlowsByTemplatesResponse(AbstractModel):
         self.CustomerData = params.get("CustomerData")
         self.ErrorMessages = params.get("ErrorMessages")
         self.PreviewUrls = params.get("PreviewUrls")
+        if params.get("TaskInfos") is not None:
+            self.TaskInfos = []
+            for item in params.get("TaskInfos"):
+                obj = TaskInfo()
+                obj._deserialize(item)
+                self.TaskInfos.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1913,7 +1984,8 @@ FILL_IMAGE、ATTACHMENT - 附件的FileId，需要通过UploadFiles接口上传�
 SELECTOR - 选项值
 DYNAMIC_TABLE - 传入json格式的表格内容，具体见数据结构FlowInfo：https://cloud.tencent.com/document/api/1420/61525#FlowInfo
         :type ComponentValue: str
-        :param ComponentId: 表单域或控件的ID，跟ComponentName二选一，不能全为空
+        :param ComponentId: 表单域或控件的ID，跟ComponentName二选一，不能全为空；
+CreateFlowsByTemplates 接口不使用此字段。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ComponentId: str
         :param ComponentName: 控件的名字，跟ComponentId二选一，不能全为空
@@ -2655,6 +2727,36 @@ class SyncProxyOrganizationResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class TaskInfo(AbstractModel):
+    """复杂文档合成任务的任务信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 合成任务Id，可以通过 ChannelGetTaskResultApi 接口获取任务信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: str
+        :param TaskStatus: 任务状态：READY - 任务已完成；NOTREADY - 任务未完成；
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskStatus: str
+        """
+        self.TaskId = None
+        self.TaskStatus = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.TaskStatus = params.get("TaskStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class TemplateInfo(AbstractModel):

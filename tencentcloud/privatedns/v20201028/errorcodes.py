@@ -167,6 +167,9 @@ RESOURCEINUSE = 'ResourceInUse'
 # 资源不足。
 RESOURCEINSUFFICIENT = 'ResourceInsufficient'
 
+# 余额不足。
+RESOURCEINSUFFICIENT_BALANCE = 'ResourceInsufficient.Balance'
+
 # 资源不存在。
 RESOURCENOTFOUND = 'ResourceNotFound'
 

@@ -403,35 +403,6 @@ class CfwClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DeleteSecurityGroupAllRule(self, request):
-        """删除全部规则
-
-        :param request: Request instance for DeleteSecurityGroupAllRule.
-        :type request: :class:`tencentcloud.cfw.v20190904.models.DeleteSecurityGroupAllRuleRequest`
-        :rtype: :class:`tencentcloud.cfw.v20190904.models.DeleteSecurityGroupAllRuleResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DeleteSecurityGroupAllRule", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DeleteSecurityGroupAllRuleResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def DeleteSecurityGroupRule(self, request):
         """删除规则
 
@@ -882,35 +853,6 @@ class CfwClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeNatFwVpcDnsLstResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def DescribeNatRuleOverview(self, request):
-        """nat规则列表概况
-
-        :param request: Request instance for DescribeNatRuleOverview.
-        :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeNatRuleOverviewRequest`
-        :rtype: :class:`tencentcloud.cfw.v20190904.models.DescribeNatRuleOverviewResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeNatRuleOverview", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeNatRuleOverviewResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1988,35 +1930,6 @@ class CfwClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.RemoveEnterpriseSecurityGroupRuleResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
-    def RunSyncAsset(self, request):
-        """同步资产-互联网&VPC
-
-        :param request: Request instance for RunSyncAsset.
-        :type request: :class:`tencentcloud.cfw.v20190904.models.RunSyncAssetRequest`
-        :rtype: :class:`tencentcloud.cfw.v20190904.models.RunSyncAssetResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("RunSyncAsset", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.RunSyncAssetResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

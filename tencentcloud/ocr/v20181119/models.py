@@ -7813,6 +7813,10 @@ Y: 有清单 N：无清单
         :type AmountWithTax: str
         :param Items: 项目明细
         :type Items: list of VatInvoiceItem
+        :param TaxBureau: 所属税局
+        :type TaxBureau: str
+        :param TrafficFreeFlag: 通行费标志:Y、是;N、否
+        :type TrafficFreeFlag: str
         """
         self.Code = None
         self.Number = None
@@ -7837,6 +7841,8 @@ Y: 有清单 N：无清单
         self.TaxAmount = None
         self.AmountWithTax = None
         self.Items = None
+        self.TaxBureau = None
+        self.TrafficFreeFlag = None
 
 
     def _deserialize(self, params):
@@ -7868,6 +7874,8 @@ Y: 有清单 N：无清单
                 obj = VatInvoiceItem()
                 obj._deserialize(item)
                 self.Items.append(obj)
+        self.TaxBureau = params.get("TaxBureau")
+        self.TrafficFreeFlag = params.get("TrafficFreeFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7954,6 +7962,8 @@ class VatInvoiceItem(AbstractModel):
         :type TaxRate: str
         :param TaxAmount: 税额
         :type TaxAmount: str
+        :param TaxClassifyCode: 税收分类编码
+        :type TaxClassifyCode: str
         """
         self.LineNo = None
         self.Name = None
@@ -7964,6 +7974,7 @@ class VatInvoiceItem(AbstractModel):
         self.AmountWithoutTax = None
         self.TaxRate = None
         self.TaxAmount = None
+        self.TaxClassifyCode = None
 
 
     def _deserialize(self, params):
@@ -7976,6 +7987,7 @@ class VatInvoiceItem(AbstractModel):
         self.AmountWithoutTax = params.get("AmountWithoutTax")
         self.TaxRate = params.get("TaxRate")
         self.TaxAmount = params.get("TaxAmount")
+        self.TaxClassifyCode = params.get("TaxClassifyCode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8422,6 +8434,8 @@ class VehicleInvoiceInfo(AbstractModel):
         :type SellerAddress: str
         :param SellerTel: 销售电话
         :type SellerTel: str
+        :param BuyerNo: 购方身份证
+        :type BuyerNo: str
         """
         self.CarType = None
         self.PlateModel = None
@@ -8441,6 +8455,7 @@ class VehicleInvoiceInfo(AbstractModel):
         self.MotorBankAccount = None
         self.SellerAddress = None
         self.SellerTel = None
+        self.BuyerNo = None
 
 
     def _deserialize(self, params):
@@ -8462,6 +8477,7 @@ class VehicleInvoiceInfo(AbstractModel):
         self.MotorBankAccount = params.get("MotorBankAccount")
         self.SellerAddress = params.get("SellerAddress")
         self.SellerTel = params.get("SellerTel")
+        self.BuyerNo = params.get("BuyerNo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

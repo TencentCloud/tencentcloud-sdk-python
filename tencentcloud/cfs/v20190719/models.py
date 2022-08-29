@@ -1284,7 +1284,7 @@ class SignUpCfsServiceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CfsServiceStatus: 该用户当前 CFS 服务的状态，none 是未开通，creating 是开通中，created 是已开通
+        :param CfsServiceStatus: 该用户当前 CFS 服务的状态，creating 是开通中，created 是已开通
         :type CfsServiceStatus: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
