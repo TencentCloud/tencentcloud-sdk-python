@@ -349,3 +349,102 @@ class DefaultCredentialProvider(object):
             return self.cred
 
         raise TencentCloudSDKException("ClientSideError", "no valid credentail.")
+
+
+class DefaultTkeOIDCRoleArnProvider(object):
+    default_session_name = 'tencentcloud-python-sdk-'
+
+    def __init__(self):
+        self.region = os.getenv('TKE_REGION')
+        if not self.region:
+            raise EnvironmentError("TKE_REGION not exist")
+
+        self.provider_id = os.getenv('TKE_PROVIDER_ID')
+        if not self.provider_id:
+            raise EnvironmentError("TKE_PROVIDER_ID not exist")
+
+        token_file = os.getenv('TKE_IDENTITY_TOKEN_FILE')
+        if not token_file:
+            raise EnvironmentError("TKE_IDENTITY_TOKEN_FILE not exist")
+
+        with open(token_file) as f:
+            self.web_identity_token = f.read()
+
+        self.role_arn = os.getenv('TKE_ROLE_ARN')
+        if not self.role_arn:
+            raise EnvironmentError("TKE_ROLE_ARN not exist")
+
+        self.role_session_name = self.default_session_name + str(time.time() * 1e6)  # time in microseconds
+
+    def get_credentials(self):
+        return OIDCRoleArnCredential(self.region, self.provider_id, self.web_identity_token, self.role_arn,
+                                     self.role_session_name)
+
+
+class OIDCRoleArnCredential(object):
+    _version = '2018-08-13'
+    _service = "sts"
+    _action = 'AssumeRoleWithWebIdentity'
+
+    def __init__(self, region, provider_id, web_identity_token, role_arn, role_session_name, duration_seconds=7200):
+        self._region = region
+        self._provider_id = provider_id
+        self._web_identity_token = web_identity_token
+        self._role_arn = role_arn
+        self._role_session_name = role_session_name
+        self._duration_seconds = duration_seconds
+
+        self._token = None
+        self._tmp_secret_id = None
+        self._tmp_secret_key = None
+        self._expired_time = 0
+
+        self._last_role_arn = None
+        self._tmp_credential = None
+
+    @property
+    def secretId(self):
+        self._keep_fresh()
+        return self._tmp_secret_id
+
+    @property
+    def secretKey(self):
+        self._keep_fresh()
+        return self._tmp_secret_key
+
+    @property
+    def secret_id(self):
+        self._keep_fresh()
+        return self._tmp_secret_id
+
+    @property
+    def secret_key(self):
+        self._keep_fresh()
+        return self._tmp_secret_key
+
+    @property
+    def token(self):
+        self._keep_fresh()
+        return self._token
+
+    def _keep_fresh(self):
+        if None in [self._token, self._tmp_secret_key, self._tmp_secret_id] or self._expired_time < int(time.time()):
+            self.refresh()
+
+    def refresh(self):
+        common_client = CommonClient(credential=None, region=self._region, version=self._version, service=self._service)
+        params = {
+            "ProviderId": self._provider_id,
+            "WebIdentityToken": self._web_identity_token,
+            "RoleArn": self._role_arn,
+            "RoleSessionName": self._role_session_name,
+            "DurationSeconds": self._duration_seconds,
+        }
+
+        options = {'SkipSign': True}
+
+        rsp = common_client.call_json(self._action, params, options=options)
+        self._token = rsp["Response"]["Credentials"]["Token"]
+        self._tmp_secret_id = rsp["Response"]["Credentials"]["TmpSecretId"]
+        self._tmp_secret_key = rsp["Response"]["Credentials"]["TmpSecretKey"]
+        self._expired_time = rsp["Response"]["ExpiredTime"] - self._duration_seconds * 0.9
