@@ -30,7 +30,7 @@ class CommonClient(AbstractClient):
     def __init__(self, service, version, credential, region, profile=None):
         """
         :param credential: 接口调用凭证
-        :type credential: tencentcloud.common.credential.Credential or tencentcloud.common.credential.STSAssumeRoleCredential
+        :type credential: tencentcloud.common.credential.Credential or tencentcloud.common.credential.STSAssumeRoleCredential or None
         :param region: 接口调用地域
         :type region: str
         :param version: 接口版本
@@ -40,7 +40,7 @@ class CommonClient(AbstractClient):
         :param profile: 请求网络信息
         :type profile: tencentcloud.common.profile.client_profile.ClientProfile
         """
-        if credential is None or region is None or version is None or service is None:
+        if region is None or version is None or service is None:
             raise TencentCloudSDKException("CommonClient Parameter Error, "
                                            "credential region version service all required.")
         self._apiVersion = version

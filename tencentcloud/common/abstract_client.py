@@ -68,9 +68,6 @@ class AbstractClient(object):
     FMT = '%(asctime)s %(process)d %(filename)s L%(lineno)s %(levelname)s %(message)s'
 
     def __init__(self, credential, region, profile=None):
-        if credential is None:
-            raise TencentCloudSDKException(
-                "InvalidCredential", "Credential is None or invalid")
         self.credential = credential
         self.region = region
         self.profile = ClientProfile() if profile is None else profile
@@ -119,7 +116,9 @@ class AbstractClient(object):
 
     def _build_req_inter(self, action, params, req_inter, options=None):
         options = options or {}
-        if self.profile.signMethod == "TC3-HMAC-SHA256" or options.get("IsMultipart") is True:
+        if options.get('SkipSign'):
+            self._build_req_without_signature(action, params, req_inter, options)
+        elif self.profile.signMethod == "TC3-HMAC-SHA256" or options.get("IsMultipart") is True:
             self._build_req_with_tc3_signature(action, params, req_inter, options)
         elif self.profile.signMethod in ("HmacSHA1", "HmacSHA256"):
             self._build_req_with_old_signature(action, params, req_inter)
@@ -248,6 +247,49 @@ class AbstractClient(object):
 
         return Sign.sign_tc3(self.credential.secret_key, date, service, string2sign)
 
+    def _build_req_without_signature(self, action, params, req, options=None):
+        content_type = self._default_content_type
+        if req.method == 'GET':
+            content_type = _form_urlencoded_content
+        elif req.method == 'POST':
+            content_type = _json_content
+        options = options or {}
+        if options.get("IsMultipart"):
+            content_type = _multipart_content
+        if options.get("IsOctetStream"):
+            content_type = _octet_stream
+        req.header["Content-Type"] = content_type
+
+        if req.method == "GET" and content_type == _multipart_content:
+            raise SDKError("ClientError",
+                           "Invalid request method GET for multipart.")
+
+        endpoint = self._get_endpoint()
+        timestamp = int(time.time())
+        req.header["Host"] = endpoint
+        req.header["X-TC-Action"] = action[0].upper() + action[1:]
+        req.header["X-TC-RequestClient"] = self._sdkVersion
+        req.header["X-TC-Timestamp"] = str(timestamp)
+        req.header["X-TC-Version"] = self._apiVersion
+        if self.profile.unsignedPayload is True:
+            req.header["X-TC-Content-SHA256"] = "UNSIGNED-PAYLOAD"
+        if self.region:
+            req.header['X-TC-Region'] = self.region
+        if self.profile.language:
+            req.header['X-TC-Language'] = self.profile.language
+
+        if req.method == 'GET':
+            params = copy.deepcopy(self._fix_params(params))
+            req.data = urlencode(params)
+        elif content_type == _json_content:
+            req.data = json.dumps(params)
+        elif content_type == _multipart_content:
+            boundary = uuid.uuid4().hex
+            req.header["Content-Type"] = content_type + "; boundary=" + boundary
+            req.data = self._get_multipart_body(params, boundary, options)
+
+        req.header["Authorization"] = "SKIP"
+
     # it must return bytes instead of string
     def _get_multipart_body(self, params, boundary, options=None):
         if options is None:
@@ -350,7 +392,7 @@ class AbstractClient(object):
             raise TencentCloudSDKException(code, message, reqid)
         return json_rsp
 
-    def call_json(self, action, params, headers=None):
+    def call_json(self, action, params, headers=None, options=None):
         """
         Call api with json object and return with json object.
 
@@ -358,10 +400,12 @@ class AbstractClient(object):
         :param action: api name e.g. ``DescribeInstances``
         :type params: dict
         :param params: params with this action
-        :type header: dict
-        :param header: request header, like {"X-TC-TraceId": "ffe0c072-8a5d-4e17-8887-a8a60252abca"}
+        :type headers: dict
+        :param headers: request header, like {"X-TC-TraceId": "ffe0c072-8a5d-4e17-8887-a8a60252abca"}
+        :type options: dict
+        :param options: request options, like {"SkipSign": False, "IsMultipart": False, "IsOctetStream": False, "BinaryParams": []}
         """
-        body = self.call(action, params, headers=headers)
+        body = self.call(action, params, options, headers)
         response = json.loads(body)
         if "Error" not in response["Response"]:
             return response
