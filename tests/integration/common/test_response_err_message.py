@@ -29,4 +29,4 @@ def test_response_error_message():
         resp = client.DescribeInstancesOperationLimit(req)
         assert False, "It must fail because param InstanceIds is empty"
     except TencentCloudSDKException as err:
-        assert "InvalidInstanceId.Malformed" in err.code, "unexpected error code"
+        assert "InvalidParameterValue.InstanceIdMalformed" in err.code, "unexpected error code"
