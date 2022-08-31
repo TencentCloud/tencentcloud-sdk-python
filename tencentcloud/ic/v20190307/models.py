@@ -544,6 +544,61 @@ class ModifyUserCardRemarkResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class PayForExtendDataRequest(AbstractModel):
+    """PayForExtendData请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Iccid: 卡片ICCID
+        :type Iccid: str
+        :param ExtentData: 套外流量,单位MB
+        :type ExtentData: int
+        :param Sdkappid: 应用ID
+        :type Sdkappid: int
+        """
+        self.Iccid = None
+        self.ExtentData = None
+        self.Sdkappid = None
+
+
+    def _deserialize(self, params):
+        self.Iccid = params.get("Iccid")
+        self.ExtentData = params.get("ExtentData")
+        self.Sdkappid = params.get("Sdkappid")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PayForExtendDataResponse(AbstractModel):
+    """PayForExtendData返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 订单号
+        :type Data: :class:`tencentcloud.ic.v20190307.models.ResOrderIds`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = ResOrderIds()
+            self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
+
+
 class RenewCardsRequest(AbstractModel):
     """RenewCards请求参数结构体
 
@@ -598,6 +653,31 @@ class RenewCardsResponse(AbstractModel):
             self.Data = ResRenew()
             self.Data._deserialize(params.get("Data"))
         self.RequestId = params.get("RequestId")
+
+
+class ResOrderIds(AbstractModel):
+    """订单ID集合
+
+    """
+
+    def __init__(self):
+        r"""
+        :param OrderIds: 每一张续费卡片的订单ID数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OrderIds: list of str
+        """
+        self.OrderIds = None
+
+
+    def _deserialize(self, params):
+        self.OrderIds = params.get("OrderIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ResRenew(AbstractModel):

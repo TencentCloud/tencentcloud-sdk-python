@@ -116,6 +116,12 @@ FAILEDOPERATION_DRUIDTABLENOTFOUND = 'FailedOperation.DruidTableNotFound'
 # 名字重复。
 FAILEDOPERATION_DUPLICATENAME = 'FailedOperation.DuplicateName'
 
+# 未开通。
+FAILEDOPERATION_ERRNOTOPEN = 'FailedOperation.ErrNotOpen'
+
+# 欠费。
+FAILEDOPERATION_ERROWED = 'FailedOperation.ErrOwed'
+
 # 生成资源ID错误。
 FAILEDOPERATION_GENERATEINSTANCEIDFAILED = 'FailedOperation.GenerateInstanceIDFailed'
 

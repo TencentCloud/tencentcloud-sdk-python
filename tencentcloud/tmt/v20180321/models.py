@@ -142,11 +142,15 @@ class GetFileTranslateData(AbstractModel):
         :param Message: 错误提示
 注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
+        :param Progress: 翻译进度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Progress: int
         """
         self.TaskId = None
         self.Status = None
         self.FileData = None
         self.Message = None
+        self.Progress = None
 
 
     def _deserialize(self, params):
@@ -154,6 +158,7 @@ class GetFileTranslateData(AbstractModel):
         self.Status = params.get("Status")
         self.FileData = params.get("FileData")
         self.Message = params.get("Message")
+        self.Progress = params.get("Progress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -295,3 +295,6 @@ UNAUTHORIZEDOPERATION_SDKAPPID = 'UnauthorizedOperation.SdkAppId'
 
 # 未知参数错误。
 UNKNOWNPARAMETER = 'UnknownParameter'
+
+# 操作不支持。
+UNSUPPORTEDOPERATION = 'UnsupportedOperation'

@@ -1068,6 +1068,35 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeIdleLoadBalancers(self, request):
+        """闲置实例是指创建超过7天后付费实例，且没有创建规则或创建规则没有绑定子机的负载均衡实例。
+
+        :param request: Request instance for DescribeIdleLoadBalancers.
+        :type request: :class:`tencentcloud.clb.v20180317.models.DescribeIdleLoadBalancersRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.DescribeIdleLoadBalancersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeIdleLoadBalancers", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeIdleLoadBalancersResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeLBListeners(self, request):
         """查询后端云主机或弹性网卡绑定的负载均衡，支持弹性网卡和cvm查询。
 

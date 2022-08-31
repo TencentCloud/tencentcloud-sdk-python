@@ -5624,6 +5624,64 @@ class DescribeListWaterPrintConfigResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeNewL7RulesErrHealthRequest(AbstractModel):
+    """DescribeNewL7RulesErrHealth请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Business: 大禹子产品代号(bgpip表示高防IP)
+        :type Business: str
+        :param RuleIdList: 规则Id列表
+        :type RuleIdList: list of str
+        """
+        self.Business = None
+        self.RuleIdList = None
+
+
+    def _deserialize(self, params):
+        self.Business = params.get("Business")
+        self.RuleIdList = params.get("RuleIdList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeNewL7RulesErrHealthResponse(AbstractModel):
+    """DescribeNewL7RulesErrHealth返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrHealths: 异常规则列表，返回值说明: Key值为规则ID，Value值为异常IP及错误信息，多个IP用","分割
+        :type ErrHealths: list of KeyValue
+        :param Total: 异常规则的总数
+        :type Total: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrHealths = None
+        self.Total = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ErrHealths") is not None:
+            self.ErrHealths = []
+            for item in params.get("ErrHealths"):
+                obj = KeyValue()
+                obj._deserialize(item)
+                self.ErrHealths.append(obj)
+        self.Total = params.get("Total")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeNewL7RulesRequest(AbstractModel):
     """DescribeNewL7Rules请求参数结构体
 

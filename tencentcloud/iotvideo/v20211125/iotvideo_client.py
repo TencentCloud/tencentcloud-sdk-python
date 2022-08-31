@@ -1099,6 +1099,35 @@ class IotvideoClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeCloudStorageStreamData(self, request):
+        """获取设备图片流数据
+
+        :param request: Request instance for DescribeCloudStorageStreamData.
+        :type request: :class:`tencentcloud.iotvideo.v20211125.models.DescribeCloudStorageStreamDataRequest`
+        :rtype: :class:`tencentcloud.iotvideo.v20211125.models.DescribeCloudStorageStreamDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCloudStorageStreamData", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCloudStorageStreamDataResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeCloudStorageThumbnail(self, request):
         """拉取云存事件缩略图
 

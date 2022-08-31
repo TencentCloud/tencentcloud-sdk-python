@@ -296,11 +296,14 @@ __sandbox__:沙箱环境
 __test__:测试环境
 缺省默认为生产环境
         :type Environment: str
+        :param Name: 姓名
+        :type Name: str
         """
         self.IdType = None
         self.IdNo = None
         self.PayeeId = None
         self.Environment = None
+        self.Name = None
 
 
     def _deserialize(self, params):
@@ -308,6 +311,7 @@ __test__:测试环境
         self.IdNo = params.get("IdNo")
         self.PayeeId = params.get("PayeeId")
         self.Environment = params.get("Environment")
+        self.Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1655,6 +1659,234 @@ PROCESSING：申请中。
         self.ReceiptMessage = params.get("ReceiptMessage")
         self.DownloadUrl = params.get("DownloadUrl")
         self.ExpireTime = params.get("ExpireTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ApplyOpenBankSettleOrderRequest(AbstractModel):
+    """ApplyOpenBankSettleOrder请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ChannelMerchantId: 渠道商户号
+        :type ChannelMerchantId: str
+        :param OutSettleId: 外部结算流水号
+        :type OutSettleId: str
+        :param SettleAmount: 结算金额
+        :type SettleAmount: int
+        :param ChannelName: 渠道名称。详见附录-枚举类型-ChannelName。
+        :type ChannelName: str
+        :param ChannelSubMerchantId: 渠道子商户号
+        :type ChannelSubMerchantId: str
+        :param SettleDetail: 结算备注
+        :type SettleDetail: str
+        :param NotifyUrl: 结算成功回调地址
+        :type NotifyUrl: str
+        """
+        self.ChannelMerchantId = None
+        self.OutSettleId = None
+        self.SettleAmount = None
+        self.ChannelName = None
+        self.ChannelSubMerchantId = None
+        self.SettleDetail = None
+        self.NotifyUrl = None
+
+
+    def _deserialize(self, params):
+        self.ChannelMerchantId = params.get("ChannelMerchantId")
+        self.OutSettleId = params.get("OutSettleId")
+        self.SettleAmount = params.get("SettleAmount")
+        self.ChannelName = params.get("ChannelName")
+        self.ChannelSubMerchantId = params.get("ChannelSubMerchantId")
+        self.SettleDetail = params.get("SettleDetail")
+        self.NotifyUrl = params.get("NotifyUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ApplyOpenBankSettleOrderResponse(AbstractModel):
+    """ApplyOpenBankSettleOrder返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrCode: 错误码。
+        :type ErrCode: str
+        :param ErrMessage: 错误信息。
+        :type ErrMessage: str
+        :param Result: 返回结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.cpdp.v20190820.models.ApplyOpenBankSettleOrderResult`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrCode = None
+        self.ErrMessage = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrCode = params.get("ErrCode")
+        self.ErrMessage = params.get("ErrMessage")
+        if params.get("Result") is not None:
+            self.Result = ApplyOpenBankSettleOrderResult()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class ApplyOpenBankSettleOrderResult(AbstractModel):
+    """云企付结算申请结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param OutSettleId: 外部结算流水号
+        :type OutSettleId: str
+        :param ChannelSettleId: 渠道结算流水号
+        :type ChannelSettleId: str
+        :param SettleStatus: 退款状态。
+SUCCESS：结算成功；
+FAILED：结算失败；
+PROCESSING：结算中;
+INIT:初始化;
+ACCEPT_FAILED:受理失败,底层银行返回订单不存在
+ACCEPTED：受理成功
+_UNKNOWN：默认未知
+        :type SettleStatus: str
+        """
+        self.OutSettleId = None
+        self.ChannelSettleId = None
+        self.SettleStatus = None
+
+
+    def _deserialize(self, params):
+        self.OutSettleId = params.get("OutSettleId")
+        self.ChannelSettleId = params.get("ChannelSettleId")
+        self.SettleStatus = params.get("SettleStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ApplyOpenBankSubMerchantSignOnlineRequest(AbstractModel):
+    """ApplyOpenBankSubMerchantSignOnline请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ChannelMerchantId: 渠道商户号。外部平台接入云企付平台下发。必填。
+        :type ChannelMerchantId: str
+        :param ChannelName: 渠道名称。详见附录-枚举类型-ChannelName。
+        :type ChannelName: str
+        :param OutSubMerchantId: 外部子商户ID。
+        :type OutSubMerchantId: str
+        :param ChannelSubMerchantId: 渠道子商户ID。
+        :type ChannelSubMerchantId: str
+        :param NotifyUrl: 签约成功回调地址。
+        :type NotifyUrl: str
+        """
+        self.ChannelMerchantId = None
+        self.ChannelName = None
+        self.OutSubMerchantId = None
+        self.ChannelSubMerchantId = None
+        self.NotifyUrl = None
+
+
+    def _deserialize(self, params):
+        self.ChannelMerchantId = params.get("ChannelMerchantId")
+        self.ChannelName = params.get("ChannelName")
+        self.OutSubMerchantId = params.get("OutSubMerchantId")
+        self.ChannelSubMerchantId = params.get("ChannelSubMerchantId")
+        self.NotifyUrl = params.get("NotifyUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ApplyOpenBankSubMerchantSignOnlineResponse(AbstractModel):
+    """ApplyOpenBankSubMerchantSignOnline返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrCode: 错误码。
+        :type ErrCode: str
+        :param ErrMessage: 错误信息。
+        :type ErrMessage: str
+        :param Result: 返回结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.cpdp.v20190820.models.ApplyOpenBankSubMerchantSignOnlineResult`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrCode = None
+        self.ErrMessage = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrCode = params.get("ErrCode")
+        self.ErrMessage = params.get("ErrMessage")
+        if params.get("Result") is not None:
+            self.Result = ApplyOpenBankSubMerchantSignOnlineResult()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class ApplyOpenBankSubMerchantSignOnlineResult(AbstractModel):
+    """子商户在线签约返回结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SignStatus: 处理状态
+  SUCCESS：签约成功
+  FAILED：签约失败
+  PROCESSING“签约中
+        :type SignStatus: str
+        :param SignMessage: 上传返回描述，例如失败原因等
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SignMessage: str
+        :param ExternalReturnData: 第三方渠道返回信息，见渠道特殊说明
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExternalReturnData: str
+        """
+        self.SignStatus = None
+        self.SignMessage = None
+        self.ExternalReturnData = None
+
+
+    def _deserialize(self, params):
+        self.SignStatus = params.get("SignStatus")
+        self.SignMessage = params.get("SignMessage")
+        self.ExternalReturnData = params.get("ExternalReturnData")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7708,6 +7940,10 @@ __SHARE_BY_API__：后续调用分润接口决定分润金额
         :type ProfitShareFlag: str
         :param ProfitShareInfoList: 分润信息，配合ProfitShareFlag使用。
         :type ProfitShareInfoList: list of OpenBankProfitShareInfo
+        :param SettlementRulesInfo: 商企付-担保支付（PaymentMode为 FREEZE ）时需设置该参数
+        :type SettlementRulesInfo: :class:`tencentcloud.cpdp.v20190820.models.OpenBankSettlementRulesInfo`
+        :param ExternalPaymentData: 底层支付渠道特殊字段，若无特殊说明时，可以为空
+        :type ExternalPaymentData: str
         :param Remark: 备注信息。
         :type Remark: str
         :param Environment: 环境类型
@@ -7734,6 +7970,8 @@ __sandbox__:沙箱环境
         self.Attachment = None
         self.ProfitShareFlag = None
         self.ProfitShareInfoList = None
+        self.SettlementRulesInfo = None
+        self.ExternalPaymentData = None
         self.Remark = None
         self.Environment = None
 
@@ -7770,6 +8008,10 @@ __sandbox__:沙箱环境
                 obj = OpenBankProfitShareInfo()
                 obj._deserialize(item)
                 self.ProfitShareInfoList.append(obj)
+        if params.get("SettlementRulesInfo") is not None:
+            self.SettlementRulesInfo = OpenBankSettlementRulesInfo()
+            self.SettlementRulesInfo._deserialize(params.get("SettlementRulesInfo"))
+        self.ExternalPaymentData = params.get("ExternalPaymentData")
         self.Remark = params.get("Remark")
         self.Environment = params.get("Environment")
         memeber_set = set(params.keys())
@@ -13149,6 +13391,50 @@ class OpenBankProfitShareInfo(AbstractModel):
         
 
 
+class OpenBankProfitShareRespInfo(AbstractModel):
+    """分账信息结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RecvId: 接收方企业ID
+        :type RecvId: str
+        :param ProfitShareFee: 分润金额（分）
+        :type ProfitShareFee: int
+        :param RealProfitShareFee: 实际分账金额
+        :type RealProfitShareFee: int
+        :param ProfitShareStatus: 分账状态
+        :type ProfitShareStatus: str
+        :param ProfitFinishTime: 分账完成时间
+        :type ProfitFinishTime: str
+        :param ProfitShareType: 分账类型
+        :type ProfitShareType: int
+        """
+        self.RecvId = None
+        self.ProfitShareFee = None
+        self.RealProfitShareFee = None
+        self.ProfitShareStatus = None
+        self.ProfitFinishTime = None
+        self.ProfitShareType = None
+
+
+    def _deserialize(self, params):
+        self.RecvId = params.get("RecvId")
+        self.ProfitShareFee = params.get("ProfitShareFee")
+        self.RealProfitShareFee = params.get("RealProfitShareFee")
+        self.ProfitShareStatus = params.get("ProfitShareStatus")
+        self.ProfitFinishTime = params.get("ProfitFinishTime")
+        self.ProfitShareType = params.get("ProfitShareType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class OpenBankQueryRefundOrderResult(AbstractModel):
     """云企付-退款查询结果
 
@@ -13189,6 +13475,9 @@ class OpenBankQueryRefundOrderResult(AbstractModel):
         :param RefundMessage: 退款返回描述，比如失败原因等。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RefundMessage: str
+        :param ProfitShareRespInfoList: 分账信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProfitShareRespInfoList: list of OpenBankProfitShareRespInfo
         """
         self.OutRefundId = None
         self.ChannelRefundId = None
@@ -13201,6 +13490,7 @@ class OpenBankQueryRefundOrderResult(AbstractModel):
         self.RefundInfo = None
         self.FeeAmount = None
         self.RefundMessage = None
+        self.ProfitShareRespInfoList = None
 
 
     def _deserialize(self, params):
@@ -13215,6 +13505,12 @@ class OpenBankQueryRefundOrderResult(AbstractModel):
         self.RefundInfo = params.get("RefundInfo")
         self.FeeAmount = params.get("FeeAmount")
         self.RefundMessage = params.get("RefundMessage")
+        if params.get("ProfitShareRespInfoList") is not None:
+            self.ProfitShareRespInfoList = []
+            for item in params.get("ProfitShareRespInfoList"):
+                obj = OpenBankProfitShareRespInfo()
+                obj._deserialize(item)
+                self.ProfitShareRespInfoList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -13431,6 +13727,38 @@ class OpenBankSceneInfo(AbstractModel):
         self.OrderTime = params.get("OrderTime")
         self.DeviceId = params.get("DeviceId")
         self.DeviceType = params.get("DeviceType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OpenBankSettlementRulesInfo(AbstractModel):
+    """云企付-结算规则信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UnfreezeRule: ONCE：仅单次解冻（默认）
+MULTI：多次解冻
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UnfreezeRule: str
+        :param RefundRule: ONCE：仅单次退款（默认）
+MULTI：多次退款
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RefundRule: str
+        """
+        self.UnfreezeRule = None
+        self.RefundRule = None
+
+
+    def _deserialize(self, params):
+        self.UnfreezeRule = params.get("UnfreezeRule")
+        self.RefundRule = params.get("RefundRule")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -21250,6 +21578,9 @@ OPENBANK_PAYMENT
         :param FeeRate: 手续费费率
 注意：此字段可能返回 null，表示取不到有效值。
         :type FeeRate: int
+        :param ProfitShareRespInfoList: 分账信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProfitShareRespInfoList: list of OpenBankProfitShareRespInfo
         """
         self.ChannelMerchantId = None
         self.OutOrderId = None
@@ -21267,6 +21598,7 @@ OPENBANK_PAYMENT
         self.BankApprovalGuideInfo = None
         self.FeeAmount = None
         self.FeeRate = None
+        self.ProfitShareRespInfoList = None
 
 
     def _deserialize(self, params):
@@ -21290,6 +21622,12 @@ OPENBANK_PAYMENT
             self.BankApprovalGuideInfo._deserialize(params.get("BankApprovalGuideInfo"))
         self.FeeAmount = params.get("FeeAmount")
         self.FeeRate = params.get("FeeRate")
+        if params.get("ProfitShareRespInfoList") is not None:
+            self.ProfitShareRespInfoList = []
+            for item in params.get("ProfitShareRespInfoList"):
+                obj = OpenBankProfitShareRespInfo()
+                obj._deserialize(item)
+                self.ProfitShareRespInfoList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -21369,6 +21707,142 @@ class QueryOpenBankRefundOrderResponse(AbstractModel):
             self.Result = OpenBankQueryRefundOrderResult()
             self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
+
+
+class QueryOpenBankSettleOrderRequest(AbstractModel):
+    """QueryOpenBankSettleOrder请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ChannelMerchantId: 渠道商户号
+        :type ChannelMerchantId: str
+        :param ChannelSubMerchantId: 渠道子商户号
+        :type ChannelSubMerchantId: str
+        :param OutSettleId: 外部结算流水号，与渠道结算流水号二选一
+        :type OutSettleId: str
+        :param ChannelSettleId: 渠道结算流水号，与外部结算流水号二选一
+        :type ChannelSettleId: str
+        """
+        self.ChannelMerchantId = None
+        self.ChannelSubMerchantId = None
+        self.OutSettleId = None
+        self.ChannelSettleId = None
+
+
+    def _deserialize(self, params):
+        self.ChannelMerchantId = params.get("ChannelMerchantId")
+        self.ChannelSubMerchantId = params.get("ChannelSubMerchantId")
+        self.OutSettleId = params.get("OutSettleId")
+        self.ChannelSettleId = params.get("ChannelSettleId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryOpenBankSettleOrderResponse(AbstractModel):
+    """QueryOpenBankSettleOrder返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrCode: 错误码
+        :type ErrCode: str
+        :param ErrMessage: 错误消息
+        :type ErrMessage: str
+        :param Result: 返回结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.cpdp.v20190820.models.QueryOpenBankSettleOrderResult`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrCode = None
+        self.ErrMessage = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrCode = params.get("ErrCode")
+        self.ErrMessage = params.get("ErrMessage")
+        if params.get("Result") is not None:
+            self.Result = QueryOpenBankSettleOrderResult()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class QueryOpenBankSettleOrderResult(AbstractModel):
+    """云企付结算查询结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param OutSettleId: 外部结算流水号
+        :type OutSettleId: str
+        :param ChannelSettleId: 渠道结算流水号
+        :type ChannelSettleId: str
+        :param SettleStatus: 退款状态。
+SUCCESS：结算成功；
+FAILED：结算失败；
+PROCESSING：结算中;
+INIT:初始化;
+ACCEPT_FAILED:受理失败,底层银行返回订单不存在
+ACCEPTED：受理成功
+_UNKNOWN：默认未知
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SettleStatus: str
+        :param SettleAmount: 结算金额
+        :type SettleAmount: int
+        :param SettleDate: 结算日期，格式YYYYMMdd
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SettleDate: str
+        :param SettleType: 结算类型（T1/D1）
+        :type SettleType: str
+        :param FailReason: 失败原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailReason: str
+        :param TimeFinish: 完成时间，格式yyyy-MM-dd HH:mm:ss
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimeFinish: str
+        :param SettleFee: 结算手续费
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SettleFee: str
+        """
+        self.OutSettleId = None
+        self.ChannelSettleId = None
+        self.SettleStatus = None
+        self.SettleAmount = None
+        self.SettleDate = None
+        self.SettleType = None
+        self.FailReason = None
+        self.TimeFinish = None
+        self.SettleFee = None
+
+
+    def _deserialize(self, params):
+        self.OutSettleId = params.get("OutSettleId")
+        self.ChannelSettleId = params.get("ChannelSettleId")
+        self.SettleStatus = params.get("SettleStatus")
+        self.SettleAmount = params.get("SettleAmount")
+        self.SettleDate = params.get("SettleDate")
+        self.SettleType = params.get("SettleType")
+        self.FailReason = params.get("FailReason")
+        self.TimeFinish = params.get("TimeFinish")
+        self.SettleFee = params.get("SettleFee")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class QueryOpenBankSubMerchantCredentialRequest(AbstractModel):
@@ -21599,6 +22073,106 @@ PROCESSING: 开通中
     def _deserialize(self, params):
         self.DealStatus = params.get("DealStatus")
         self.DealMessage = params.get("DealMessage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryOpenBankSubMerchantSignOnlineRequest(AbstractModel):
+    """QueryOpenBankSubMerchantSignOnline请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ChannelMerchantId: 渠道商户号。外部平台接入云企付平台下发。必填。
+        :type ChannelMerchantId: str
+        :param ChannelName: 渠道名称。详见附录-枚举类型-ChannelName。
+        :type ChannelName: str
+        :param OutSubMerchantId: 外部子商户ID。
+        :type OutSubMerchantId: str
+        :param ChannelSubMerchantId: 渠道子商户ID。
+        :type ChannelSubMerchantId: str
+        """
+        self.ChannelMerchantId = None
+        self.ChannelName = None
+        self.OutSubMerchantId = None
+        self.ChannelSubMerchantId = None
+
+
+    def _deserialize(self, params):
+        self.ChannelMerchantId = params.get("ChannelMerchantId")
+        self.ChannelName = params.get("ChannelName")
+        self.OutSubMerchantId = params.get("OutSubMerchantId")
+        self.ChannelSubMerchantId = params.get("ChannelSubMerchantId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryOpenBankSubMerchantSignOnlineResponse(AbstractModel):
+    """QueryOpenBankSubMerchantSignOnline返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrCode: 错误码。
+        :type ErrCode: str
+        :param ErrMessage: 错误信息。
+        :type ErrMessage: str
+        :param Result: 返回结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.cpdp.v20190820.models.QueryOpenBankSubMerchantSignOnlineResult`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrCode = None
+        self.ErrMessage = None
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ErrCode = params.get("ErrCode")
+        self.ErrMessage = params.get("ErrMessage")
+        if params.get("Result") is not None:
+            self.Result = QueryOpenBankSubMerchantSignOnlineResult()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class QueryOpenBankSubMerchantSignOnlineResult(AbstractModel):
+    """子商户查询签约返回结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SignStatus: 处理状态
+  SUCCESS：签约成功
+  FAILED：签约失败
+  PROCESSING“签约中
+        :type SignStatus: str
+        :param SignMessage: 上传返回描述，例如失败原因等
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SignMessage: str
+        """
+        self.SignStatus = None
+        self.SignMessage = None
+
+
+    def _deserialize(self, params):
+        self.SignStatus = params.get("SignStatus")
+        self.SignMessage = params.get("SignMessage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -24795,6 +25369,8 @@ __release__:生产环境
 __sandbox__:沙箱环境
 _不填默认为生产环境_
         :type Environment: str
+        :param ProfitShareInfoList: 分账信息列表。
+        :type ProfitShareInfoList: list of OpenBankProfitShareInfo
         """
         self.OutRefundId = None
         self.RefundAmount = None
@@ -24806,6 +25382,7 @@ _不填默认为生产环境_
         self.ExternalRefundData = None
         self.Remark = None
         self.Environment = None
+        self.ProfitShareInfoList = None
 
 
     def _deserialize(self, params):
@@ -24819,6 +25396,12 @@ _不填默认为生产环境_
         self.ExternalRefundData = params.get("ExternalRefundData")
         self.Remark = params.get("Remark")
         self.Environment = params.get("Environment")
+        if params.get("ProfitShareInfoList") is not None:
+            self.ProfitShareInfoList = []
+            for item in params.get("ProfitShareInfoList"):
+                obj = OpenBankProfitShareInfo()
+                obj._deserialize(item)
+                self.ProfitShareInfoList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -1077,11 +1077,15 @@ class ClsParam(AbstractModel):
         :param ContentKey: 当DecodeJson为false时必填
 注意：此字段可能返回 null，表示取不到有效值。
         :type ContentKey: str
+        :param TimeField: 指定消息中的某字段内容作为cls日志的时间。
+字段内容格式需要是秒级时间戳
+        :type TimeField: str
         """
         self.DecodeJson = None
         self.Resource = None
         self.LogSet = None
         self.ContentKey = None
+        self.TimeField = None
 
 
     def _deserialize(self, params):
@@ -1089,6 +1093,7 @@ class ClsParam(AbstractModel):
         self.Resource = params.get("Resource")
         self.LogSet = params.get("LogSet")
         self.ContentKey = params.get("ContentKey")
+        self.TimeField = params.get("TimeField")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

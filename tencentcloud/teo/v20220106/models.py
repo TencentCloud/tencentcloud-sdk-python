@@ -4327,13 +4327,19 @@ class DescribeDDoSPolicyResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param DdosRule: DDoS防护配置
+        :type DdosRule: :class:`tencentcloud.teo.v20220106.models.DdosRule`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.DdosRule = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        if params.get("DdosRule") is not None:
+            self.DdosRule = DdosRule()
+            self.DdosRule._deserialize(params.get("DdosRule"))
         self.RequestId = params.get("RequestId")
 
 
@@ -11624,6 +11630,7 @@ class RuleAction(AbstractModel):
 <li> ClientIpHeader；</li>
 <li> TlsVersion；</li>
 <li> OcspStapling。</li>
+<li> HTTP/2 访问（Http2）。</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type NormalAction: :class:`tencentcloud.teo.v20220106.models.RuleNormalAction`
         :param RewriteAction: 带有请求头/响应头的功能操作，选择该类型的功能项有：

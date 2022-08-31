@@ -517,6 +517,8 @@ class CreateJobConfigRequest(AbstractModel):
         :type WorkSpaceId: str
         :param LogLevel: 日志级别
         :type LogLevel: str
+        :param AutoRecover: Oceanus 平台恢复作业开关 1:开启 -1: 关闭
+        :type AutoRecover: int
         """
         self.JobId = None
         self.EntrypointClass = None
@@ -536,6 +538,7 @@ class CreateJobConfigRequest(AbstractModel):
         self.PythonVersion = None
         self.WorkSpaceId = None
         self.LogLevel = None
+        self.AutoRecover = None
 
 
     def _deserialize(self, params):
@@ -567,6 +570,7 @@ class CreateJobConfigRequest(AbstractModel):
         self.PythonVersion = params.get("PythonVersion")
         self.WorkSpaceId = params.get("WorkSpaceId")
         self.LogLevel = params.get("LogLevel")
+        self.AutoRecover = params.get("AutoRecover")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1802,6 +1806,12 @@ class JobConfig(AbstractModel):
         :param PythonVersion: pyflink作业运行的python版本
 注意：此字段可能返回 null，表示取不到有效值。
         :type PythonVersion: str
+        :param AutoRecover: Oceanus 平台恢复作业开关 1:开启 -1: 关闭
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AutoRecover: int
+        :param LogLevel: 日志级别
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogLevel: str
         """
         self.JobId = None
         self.EntrypointClass = None
@@ -1822,6 +1832,8 @@ class JobConfig(AbstractModel):
         self.ClsLogsetId = None
         self.ClsTopicId = None
         self.PythonVersion = None
+        self.AutoRecover = None
+        self.LogLevel = None
 
 
     def _deserialize(self, params):
@@ -1854,6 +1866,8 @@ class JobConfig(AbstractModel):
         self.ClsLogsetId = params.get("ClsLogsetId")
         self.ClsTopicId = params.get("ClsTopicId")
         self.PythonVersion = params.get("PythonVersion")
+        self.AutoRecover = params.get("AutoRecover")
+        self.LogLevel = params.get("LogLevel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

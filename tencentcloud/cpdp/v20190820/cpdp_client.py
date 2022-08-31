@@ -287,6 +287,64 @@ class CpdpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ApplyOpenBankSettleOrder(self, request):
+        """云企付结算申请接口
+
+        :param request: Request instance for ApplyOpenBankSettleOrder.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.ApplyOpenBankSettleOrderRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.ApplyOpenBankSettleOrderResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ApplyOpenBankSettleOrder", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ApplyOpenBankSettleOrderResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ApplyOpenBankSubMerchantSignOnline(self, request):
+        """子商户在线签约
+
+        :param request: Request instance for ApplyOpenBankSubMerchantSignOnline.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.ApplyOpenBankSubMerchantSignOnlineRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.ApplyOpenBankSubMerchantSignOnlineResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ApplyOpenBankSubMerchantSignOnline", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ApplyOpenBankSubMerchantSignOnlineResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ApplyOutwardOrder(self, request):
         """跨境-汇出指令申请。通过该接口可将对接方账户中的人民币余额汇兑成外币，再汇出至指定银行账户。
 
@@ -4387,6 +4445,35 @@ class CpdpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def QueryOpenBankSettleOrder(self, request):
+        """云企付结算单查询结果
+
+        :param request: Request instance for QueryOpenBankSettleOrder.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.QueryOpenBankSettleOrderRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.QueryOpenBankSettleOrderResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("QueryOpenBankSettleOrder", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryOpenBankSettleOrderResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def QueryOpenBankSubMerchantCredential(self, request):
         """云企付-子商户资质文件查询
 
@@ -4431,6 +4518,35 @@ class CpdpClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.QueryOpenBankSubMerchantRateConfigureResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def QueryOpenBankSubMerchantSignOnline(self, request):
+        """子商户在线签约查询
+
+        :param request: Request instance for QueryOpenBankSubMerchantSignOnline.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.QueryOpenBankSubMerchantSignOnlineRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.QueryOpenBankSubMerchantSignOnlineResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("QueryOpenBankSubMerchantSignOnline", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryOpenBankSubMerchantSignOnlineResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

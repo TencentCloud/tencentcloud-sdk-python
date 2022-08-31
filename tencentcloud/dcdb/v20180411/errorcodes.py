@@ -68,9 +68,6 @@ FAILEDOPERATION_SETRULELOCATIONFAILED = 'FailedOperation.SetRuleLocationFailed'
 # 标签键值校验或鉴权失败。
 FAILEDOPERATION_TAGDRYRUNERROR = 'FailedOperation.TagDryRunError'
 
-# 标签配额不足。
-FAILEDOPERATION_TAGQUOTAEXCEEDLIMIT = 'FailedOperation.TagQuotaExceedLimit'
-
 # 实例安全组信息更新失败。
 FAILEDOPERATION_UPDATEINSTANCEINFOFAILED = 'FailedOperation.UpdateInstanceInfoFailed'
 
@@ -281,9 +278,6 @@ INVALIDPARAMETERVALUE_SUPERUSERFORBIDDEN = 'InvalidParameterValue.SuperUserForbi
 # 请求过于频繁。
 LIMITEXCEEDED_TOOFREQUENTLYCALLED = 'LimitExceeded.TooFrequentlyCalled'
 
-# 资源不足。
-RESOURCEINSUFFICIENT = 'ResourceInsufficient'
-
 # 指定的账号不存在。
 RESOURCENOTFOUND_ACCOUNTDOESNOTEXIST = 'ResourceNotFound.AccountDoesNotExist'
 
@@ -301,9 +295,6 @@ RESOURCEUNAVAILABLE_BADINSTANCESTATUS = 'ResourceUnavailable.BadInstanceStatus'
 
 # COS API调用错误。
 RESOURCEUNAVAILABLE_COSAPIFAILED = 'ResourceUnavailable.CosApiFailed'
-
-# 独享集群状态异常。
-RESOURCEUNAVAILABLE_EXCLUSTERSTATUSABNORMAL = 'ResourceUnavailable.ExclusterStatusAbnormal'
 
 # 数据库实例已被删除。
 RESOURCEUNAVAILABLE_INSTANCEALREADYDELETED = 'ResourceUnavailable.InstanceAlreadyDeleted'

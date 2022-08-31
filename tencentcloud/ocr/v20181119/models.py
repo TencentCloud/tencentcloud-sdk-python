@@ -3496,7 +3496,7 @@ class MLIDPassportOCRResponse(AbstractModel):
         :type DateOfExpiration: str
         :param IssuingCountry: 发行国
         :type IssuingCountry: str
-        :param Nationality: 国籍
+        :param Nationality: 国家地区代码
         :type Nationality: str
         :param Warn: 告警码
 -9103	证照翻拍告警

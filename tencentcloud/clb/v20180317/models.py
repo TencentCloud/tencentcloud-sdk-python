@@ -3176,6 +3176,69 @@ class DescribeExclusiveClustersResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeIdleLoadBalancersRequest(AbstractModel):
+    """DescribeIdleLoadBalancers请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Offset: 数据偏移量，默认为0。
+        :type Offset: int
+        :param Limit: 返回负载均衡实例的数量，默认为20，最大值为100。
+        :type Limit: int
+        :param LoadBalancerRegion: 负载均衡所在地域。
+        :type LoadBalancerRegion: str
+        """
+        self.Offset = None
+        self.Limit = None
+        self.LoadBalancerRegion = None
+
+
+    def _deserialize(self, params):
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.LoadBalancerRegion = params.get("LoadBalancerRegion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeIdleLoadBalancersResponse(AbstractModel):
+    """DescribeIdleLoadBalancers返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IdleLoadBalancers: 闲置实例列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IdleLoadBalancers: list of IdleLoadBalancer
+        :param TotalCount: 所有闲置实例数目
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.IdleLoadBalancers = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("IdleLoadBalancers") is not None:
+            self.IdleLoadBalancers = []
+            for item in params.get("IdleLoadBalancers"):
+                obj = IdleLoadBalancer()
+                obj._deserialize(item)
+                self.IdleLoadBalancers.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeLBListenersRequest(AbstractModel):
     """DescribeLBListeners请求参数结构体
 
@@ -4455,6 +4518,55 @@ class HealthCheck(AbstractModel):
         self.HttpVersion = params.get("HttpVersion")
         self.SourceIpType = params.get("SourceIpType")
         self.ExtendedCode = params.get("ExtendedCode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IdleLoadBalancer(AbstractModel):
+    """闲置实例。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LoadBalancerId: 负载均衡ID
+        :type LoadBalancerId: str
+        :param LoadBalancerName: 负载均衡名字
+        :type LoadBalancerName: str
+        :param Region: 负载均衡所在地域
+        :type Region: str
+        :param Vip: 负载均衡的vip
+        :type Vip: str
+        :param IdleReason: 闲置原因。NO_RULES：没有规则，NO_RS：有规则没有绑定子机。
+        :type IdleReason: str
+        :param Status: 负载均衡实例的状态，包括
+0：创建中，1：正常运行。
+        :type Status: int
+        :param Forward: 负载均衡类型标识，1：负载均衡，0：传统型负载均衡。
+        :type Forward: int
+        """
+        self.LoadBalancerId = None
+        self.LoadBalancerName = None
+        self.Region = None
+        self.Vip = None
+        self.IdleReason = None
+        self.Status = None
+        self.Forward = None
+
+
+    def _deserialize(self, params):
+        self.LoadBalancerId = params.get("LoadBalancerId")
+        self.LoadBalancerName = params.get("LoadBalancerName")
+        self.Region = params.get("Region")
+        self.Vip = params.get("Vip")
+        self.IdleReason = params.get("IdleReason")
+        self.Status = params.get("Status")
+        self.Forward = params.get("Forward")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

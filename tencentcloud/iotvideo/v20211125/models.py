@@ -2708,6 +2708,63 @@ class DescribeCloudStorageResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeCloudStorageStreamDataRequest(AbstractModel):
+    """DescribeCloudStorageStreamData请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ProductId: 产品ID
+        :type ProductId: str
+        :param DeviceName: 设备名称
+        :type DeviceName: str
+        :param StartTime: 图片流事件开始时间
+        :type StartTime: int
+        """
+        self.ProductId = None
+        self.DeviceName = None
+        self.StartTime = None
+
+
+    def _deserialize(self, params):
+        self.ProductId = params.get("ProductId")
+        self.DeviceName = params.get("DeviceName")
+        self.StartTime = params.get("StartTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCloudStorageStreamDataResponse(AbstractModel):
+    """DescribeCloudStorageStreamData返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param VideoStream: 图片流视频地址
+        :type VideoStream: str
+        :param AudioStream: 图片流音频地址
+        :type AudioStream: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.VideoStream = None
+        self.AudioStream = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.VideoStream = params.get("VideoStream")
+        self.AudioStream = params.get("AudioStream")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeCloudStorageThumbnailRequest(AbstractModel):
     """DescribeCloudStorageThumbnail请求参数结构体
 

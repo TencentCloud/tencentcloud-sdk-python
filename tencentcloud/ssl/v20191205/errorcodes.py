@@ -77,6 +77,9 @@ FAILEDOPERATION_FILETOOLARGE = 'FailedOperation.FileTooLarge'
 # 文件尺寸太小，请上传清晰图片。
 FAILEDOPERATION_FILETOOSMALL = 'FailedOperation.FileTooSmall'
 
+# 公司管理人状态错误。
+FAILEDOPERATION_ILLEGALMANAGERSTATUS = 'FailedOperation.IllegalManagerStatus'
+
 # 证书来源错误。
 FAILEDOPERATION_INVALIDCERTIFICATESOURCE = 'FailedOperation.InvalidCertificateSource'
 
@@ -130,6 +133,9 @@ FAILEDOPERATION_ROLENOTFOUNDAUTHORIZATION = 'FailedOperation.RoleNotFoundAuthori
 
 # 内部错误。
 INTERNALERROR = 'InternalError'
+
+# 后端服务响应为空。
+INTERNALERROR_BACKENDRESPONSEEMPTY = 'InternalError.BackendResponseEmpty'
 
 # 后端服务响应错误。
 INTERNALERROR_BACKENDRESPONSEERROR = 'InternalError.BackendResponseError'

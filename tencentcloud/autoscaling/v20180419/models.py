@@ -1141,6 +1141,8 @@ class CreateLifecycleHookRequest(AbstractModel):
         :type NotificationTarget: :class:`tencentcloud.autoscaling.v20180419.models.NotificationTarget`
         :param LifecycleTransitionType: 进行生命周期挂钩的场景类型，取值范围包括NORMAL 和 EXTENSION。说明：设置为EXTENSION值，在AttachInstances、DetachInstances、RemoveInstaces接口时会触发生命周期挂钩操作，值为NORMAL则不会在这些接口中触发生命周期挂钩。
         :type LifecycleTransitionType: str
+        :param LifecycleCommand: 远程命令执行对象。NotificationTarget和CommandInfo参数互斥，二者不可同时指定。
+        :type LifecycleCommand: :class:`tencentcloud.autoscaling.v20180419.models.LifecycleCommand`
         """
         self.AutoScalingGroupId = None
         self.LifecycleHookName = None
@@ -1150,6 +1152,7 @@ class CreateLifecycleHookRequest(AbstractModel):
         self.NotificationMetadata = None
         self.NotificationTarget = None
         self.LifecycleTransitionType = None
+        self.LifecycleCommand = None
 
 
     def _deserialize(self, params):
@@ -1163,6 +1166,9 @@ class CreateLifecycleHookRequest(AbstractModel):
             self.NotificationTarget = NotificationTarget()
             self.NotificationTarget._deserialize(params.get("NotificationTarget"))
         self.LifecycleTransitionType = params.get("LifecycleTransitionType")
+        if params.get("LifecycleCommand") is not None:
+            self.LifecycleCommand = LifecycleCommand()
+            self.LifecycleCommand._deserialize(params.get("LifecycleCommand"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3427,15 +3433,35 @@ class LifecycleActionResultInfo(AbstractModel):
         :type LifecycleHookId: str
         :param InstanceId: 实例标识。
         :type InstanceId: str
-        :param NotificationResult: 通知的结果，表示通知CMQ是否成功。
+        :param InvocationId: 执行活动ID。可通过TAT的[查询执行活动](https://cloud.tencent.com/document/api/1340/52679)API查询具体的执行结果。
+        :type InvocationId: str
+        :param InvokeCommandResult: 命令调用的结果，表示执行TAT命令是否成功。<br>
+<li>SUCCESSFUL 命令调用成功，不代表命令执行成功，执行的具体情况可根据InvocationId进行查询</li>
+<li>FAILED 命令调用失败</li>
+<li>NONE</li>
+        :type InvokeCommandResult: str
+        :param NotificationResult: 通知的结果，表示通知CMQ/TCMQ是否成功。<br>
+<li>SUCCESSFUL 通知成功</li>
+<li>FAILED 通知失败</li>
+<li>NONE</li>
         :type NotificationResult: str
         :param LifecycleActionResult: 生命周期挂钩动作的执行结果，取值包括 CONTINUE、ABANDON。
         :type LifecycleActionResult: str
-        :param ResultReason: 结果的原因。
+        :param ResultReason: 结果的原因。<br>
+<li>HEARTBEAT_TIMEOUT 由于心跳超时，结果根据DefaultResult设置。</li>
+<li>NOTIFICATION_FAILURE 由于发送通知失败，结果根据DefaultResult设置。</li>
+<li>CALL_INTERFACE 调用了接口CompleteLifecycleAction设置结果。</li>
+<li>ANOTHER_ACTION_ABANDON 另一个生命周期操作的结果已设置为“ABANDON”。</li>
+<li>COMMAND_CALL_FAILURE  由于命令调用失败，结果根据DefaultResult设置。</li>
+<li>COMMAND_EXEC_FINISH  命令执行完成。</li>
+<li>COMMAND_EXEC_FAILURE 由于命令执行失败，结果根据DefaultResult设置。</li>
+<li>COMMAND_EXEC_RESULT_CHECK_FAILURE 由于命令结果检查失败，结果根据DefaultResult设置。</li>
         :type ResultReason: str
         """
         self.LifecycleHookId = None
         self.InstanceId = None
+        self.InvocationId = None
+        self.InvokeCommandResult = None
         self.NotificationResult = None
         self.LifecycleActionResult = None
         self.ResultReason = None
@@ -3444,9 +3470,44 @@ class LifecycleActionResultInfo(AbstractModel):
     def _deserialize(self, params):
         self.LifecycleHookId = params.get("LifecycleHookId")
         self.InstanceId = params.get("InstanceId")
+        self.InvocationId = params.get("InvocationId")
+        self.InvokeCommandResult = params.get("InvokeCommandResult")
         self.NotificationResult = params.get("NotificationResult")
         self.LifecycleActionResult = params.get("LifecycleActionResult")
         self.ResultReason = params.get("ResultReason")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LifecycleCommand(AbstractModel):
+    """远程命令执行对象。NotificationTarget和CommandInfo参数互斥，二者不可同时指定。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CommandId: 远程命令ID。若选择执行命令，则此项必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CommandId: str
+        :param Parameters: 自定义参数。字段类型为 json encoded string。如：{"varA": "222"}。
+key为自定义参数名称，value为该参数的默认取值。kv均为字符串型。
+如果未提供该参数取值，将使用 Command 的 DefaultParameters 进行替换。
+自定义参数最多20个。自定义参数名称需符合以下规范：字符数目上限64，可选范围【a-zA-Z0-9-_】。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Parameters: list of str
+        """
+        self.CommandId = None
+        self.Parameters = None
+
+
+    def _deserialize(self, params):
+        self.CommandId = params.get("CommandId")
+        self.Parameters = params.get("Parameters")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3483,6 +3544,9 @@ class LifecycleHook(AbstractModel):
         :type NotificationTarget: :class:`tencentcloud.autoscaling.v20180419.models.NotificationTarget`
         :param LifecycleTransitionType: 生命周期挂钩适用场景
         :type LifecycleTransitionType: str
+        :param LifecycleCommand: 远程命令执行对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LifecycleCommand: :class:`tencentcloud.autoscaling.v20180419.models.LifecycleCommand`
         """
         self.LifecycleHookId = None
         self.LifecycleHookName = None
@@ -3494,6 +3558,7 @@ class LifecycleHook(AbstractModel):
         self.CreatedTime = None
         self.NotificationTarget = None
         self.LifecycleTransitionType = None
+        self.LifecycleCommand = None
 
 
     def _deserialize(self, params):
@@ -3509,6 +3574,9 @@ class LifecycleHook(AbstractModel):
             self.NotificationTarget = NotificationTarget()
             self.NotificationTarget._deserialize(params.get("NotificationTarget"))
         self.LifecycleTransitionType = params.get("LifecycleTransitionType")
+        if params.get("LifecycleCommand") is not None:
+            self.LifecycleCommand = LifecycleCommand()
+            self.LifecycleCommand._deserialize(params.get("LifecycleCommand"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

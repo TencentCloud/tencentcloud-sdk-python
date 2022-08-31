@@ -443,6 +443,42 @@ class AutoscalingAdded(AbstractModel):
         
 
 
+class CUDNN(AbstractModel):
+    """cuDNN的版本信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Version: cuDNN的版本
+        :type Version: str
+        :param Name: cuDNN的名字
+        :type Name: str
+        :param DocName: cuDNN的Doc名字
+        :type DocName: str
+        :param DevName: cuDNN的Dev名字
+        :type DevName: str
+        """
+        self.Version = None
+        self.Name = None
+        self.DocName = None
+        self.DevName = None
+
+
+    def _deserialize(self, params):
+        self.Version = params.get("Version")
+        self.Name = params.get("Name")
+        self.DocName = params.get("DocName")
+        self.DevName = params.get("DevName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Capabilities(AbstractModel):
     """cloudrun安全特性能力
 
@@ -3519,6 +3555,31 @@ class CreateTKEEdgeClusterResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CustomDriver(AbstractModel):
+    """自定义驱动信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Address: 自定义GPU驱动地址链接
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Address: str
+        """
+        self.Address = None
+
+
+    def _deserialize(self, params):
+        self.Address = params.get("Address")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DNSConfig(AbstractModel):
     """自定义DNS配置
 
@@ -5280,6 +5341,15 @@ class DescribeClusterEndpointsResponse(AbstractModel):
         :param ClusterExternalACL: 集群APIServer的外网访问ACL列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterExternalACL: list of str
+        :param ClusterExternalDomain: 外网域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterExternalDomain: str
+        :param ClusterIntranetDomain: 内网域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterIntranetDomain: str
+        :param SecurityGroup: 外网安全组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecurityGroup: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5288,6 +5358,9 @@ class DescribeClusterEndpointsResponse(AbstractModel):
         self.ClusterIntranetEndpoint = None
         self.ClusterDomain = None
         self.ClusterExternalACL = None
+        self.ClusterExternalDomain = None
+        self.ClusterIntranetDomain = None
+        self.SecurityGroup = None
         self.RequestId = None
 
 
@@ -5297,6 +5370,9 @@ class DescribeClusterEndpointsResponse(AbstractModel):
         self.ClusterIntranetEndpoint = params.get("ClusterIntranetEndpoint")
         self.ClusterDomain = params.get("ClusterDomain")
         self.ClusterExternalACL = params.get("ClusterExternalACL")
+        self.ClusterExternalDomain = params.get("ClusterExternalDomain")
+        self.ClusterIntranetDomain = params.get("ClusterIntranetDomain")
+        self.SecurityGroup = params.get("SecurityGroup")
         self.RequestId = params.get("RequestId")
 
 
@@ -9087,6 +9163,34 @@ class DnsServerConf(AbstractModel):
         
 
 
+class DriverVersion(AbstractModel):
+    """GPU驱动和CUDA的版本信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Version: GPU驱动或者CUDA的版本
+        :type Version: str
+        :param Name: GPU驱动或者CUDA的名字
+        :type Name: str
+        """
+        self.Version = None
+        self.Name = None
+
+
+    def _deserialize(self, params):
+        self.Version = params.get("Version")
+        self.Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ECMEnhancedService(AbstractModel):
     """ECM增强服务
 
@@ -10570,6 +10674,58 @@ class ForwardTKEEdgeApplicationRequestV3Response(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class GPUArgs(AbstractModel):
+    """GPU相关的参数，包括驱动版本，CUDA版本，cuDNN版本以及是否开启MIG
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MIGEnable: 是否启用MIG特性
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MIGEnable: bool
+        :param Driver: GPU驱动版本信息
+        :type Driver: :class:`tencentcloud.tke.v20180525.models.DriverVersion`
+        :param CUDA: CUDA版本信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CUDA: :class:`tencentcloud.tke.v20180525.models.DriverVersion`
+        :param CUDNN: cuDNN版本信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CUDNN: :class:`tencentcloud.tke.v20180525.models.CUDNN`
+        :param CustomDriver: 自定义GPU驱动信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CustomDriver: :class:`tencentcloud.tke.v20180525.models.CustomDriver`
+        """
+        self.MIGEnable = None
+        self.Driver = None
+        self.CUDA = None
+        self.CUDNN = None
+        self.CustomDriver = None
+
+
+    def _deserialize(self, params):
+        self.MIGEnable = params.get("MIGEnable")
+        if params.get("Driver") is not None:
+            self.Driver = DriverVersion()
+            self.Driver._deserialize(params.get("Driver"))
+        if params.get("CUDA") is not None:
+            self.CUDA = DriverVersion()
+            self.CUDA._deserialize(params.get("CUDA"))
+        if params.get("CUDNN") is not None:
+            self.CUDNN = CUDNN()
+            self.CUDNN._deserialize(params.get("CUDNN"))
+        if params.get("CustomDriver") is not None:
+            self.CustomDriver = CustomDriver()
+            self.CustomDriver._deserialize(params.get("CustomDriver"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class GetClusterLevelPriceRequest(AbstractModel):
     """GetClusterLevelPrice请求参数结构体
 
@@ -11254,6 +11410,9 @@ class InstanceAdvancedSettings(AbstractModel):
         :param DesiredPodNumber: 该节点属于podCIDR大小自定义模式时，可指定节点上运行的pod数量上限
 注意：此字段可能返回 null，表示取不到有效值。
         :type DesiredPodNumber: int
+        :param GPUArgs: GPU驱动相关参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GPUArgs: :class:`tencentcloud.tke.v20180525.models.GPUArgs`
         :param PreStartUserScript: base64 编码的用户脚本，在初始化节点之前执行，目前只对添加已有节点生效
 注意：此字段可能返回 null，表示取不到有效值。
         :type PreStartUserScript: str
@@ -11269,6 +11428,7 @@ class InstanceAdvancedSettings(AbstractModel):
         self.DataDisks = None
         self.ExtraArgs = None
         self.DesiredPodNumber = None
+        self.GPUArgs = None
         self.PreStartUserScript = None
         self.Taints = None
 
@@ -11294,6 +11454,9 @@ class InstanceAdvancedSettings(AbstractModel):
             self.ExtraArgs = InstanceExtraArgs()
             self.ExtraArgs._deserialize(params.get("ExtraArgs"))
         self.DesiredPodNumber = params.get("DesiredPodNumber")
+        if params.get("GPUArgs") is not None:
+            self.GPUArgs = GPUArgs()
+            self.GPUArgs._deserialize(params.get("GPUArgs"))
         self.PreStartUserScript = params.get("PreStartUserScript")
         if params.get("Taints") is not None:
             self.Taints = []
@@ -11939,14 +12102,18 @@ class ModifyClusterEndpointSPRequest(AbstractModel):
         :type ClusterId: str
         :param SecurityPolicies: 安全策略放通单个IP或CIDR(例如: "192.168.1.0/24",默认为拒绝所有)
         :type SecurityPolicies: list of str
+        :param SecurityGroup: 修改外网访问安全组
+        :type SecurityGroup: str
         """
         self.ClusterId = None
         self.SecurityPolicies = None
+        self.SecurityGroup = None
 
 
     def _deserialize(self, params):
         self.ClusterId = params.get("ClusterId")
         self.SecurityPolicies = params.get("SecurityPolicies")
+        self.SecurityGroup = params.get("SecurityGroup")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -15168,14 +15335,18 @@ class SubnetInfos(AbstractModel):
         :type SubnetId: str
         :param Name: 子网节点名称
         :type Name: str
+        :param SecurityGroups: 安全组id
+        :type SecurityGroups: list of str
         """
         self.SubnetId = None
         self.Name = None
+        self.SecurityGroups = None
 
 
     def _deserialize(self, params):
         self.SubnetId = params.get("SubnetId")
         self.Name = params.get("Name")
+        self.SecurityGroups = params.get("SecurityGroups")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

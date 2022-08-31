@@ -2683,12 +2683,16 @@ class DescribeInstanceSpecsRequest(AbstractModel):
         :param DbType: 数据库类型，取值范围: 
 <li> MYSQL </li>
         :type DbType: str
+        :param IncludeZoneStocks: 是否需要返回可用区信息
+        :type IncludeZoneStocks: bool
         """
         self.DbType = None
+        self.IncludeZoneStocks = None
 
 
     def _deserialize(self, params):
         self.DbType = params.get("DbType")
+        self.IncludeZoneStocks = params.get("IncludeZoneStocks")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3530,11 +3534,27 @@ class InstanceSpec(AbstractModel):
         :type MaxStorageSize: int
         :param MinStorageSize: 实例最小可用存储，单位：GB
         :type MinStorageSize: int
+        :param HasStock: 是否有库存
+        :type HasStock: bool
+        :param MachineType: 机器类型
+        :type MachineType: str
+        :param MaxIops: 最大IOPS
+        :type MaxIops: int
+        :param MaxIoBandWidth: 最大IO带宽
+        :type MaxIoBandWidth: int
+        :param ZoneStockInfos: 地域库存信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ZoneStockInfos: list of ZoneStockInfo
         """
         self.Cpu = None
         self.Memory = None
         self.MaxStorageSize = None
         self.MinStorageSize = None
+        self.HasStock = None
+        self.MachineType = None
+        self.MaxIops = None
+        self.MaxIoBandWidth = None
+        self.ZoneStockInfos = None
 
 
     def _deserialize(self, params):
@@ -3542,6 +3562,16 @@ class InstanceSpec(AbstractModel):
         self.Memory = params.get("Memory")
         self.MaxStorageSize = params.get("MaxStorageSize")
         self.MinStorageSize = params.get("MinStorageSize")
+        self.HasStock = params.get("HasStock")
+        self.MachineType = params.get("MachineType")
+        self.MaxIops = params.get("MaxIops")
+        self.MaxIoBandWidth = params.get("MaxIoBandWidth")
+        if params.get("ZoneStockInfos") is not None:
+            self.ZoneStockInfos = []
+            for item in params.get("ZoneStockInfos"):
+                obj = ZoneStockInfo()
+                obj._deserialize(item)
+                self.ZoneStockInfos.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5405,3 +5435,31 @@ class UpgradeInstanceResponse(AbstractModel):
         self.BigDealIds = params.get("BigDealIds")
         self.DealNames = params.get("DealNames")
         self.RequestId = params.get("RequestId")
+
+
+class ZoneStockInfo(AbstractModel):
+    """可用区库存信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Zone: 可用区
+        :type Zone: str
+        :param HasStock: 是否有库存
+        :type HasStock: bool
+        """
+        self.Zone = None
+        self.HasStock = None
+
+
+    def _deserialize(self, params):
+        self.Zone = params.get("Zone")
+        self.HasStock = params.get("HasStock")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        

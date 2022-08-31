@@ -5597,12 +5597,24 @@ class DescribeParamTemplatesRequest(AbstractModel):
         r"""
         :param EngineVersions: 引擎版本，缺省则查询所有
         :type EngineVersions: list of str
+        :param EngineTypes: 引擎类型，缺省则查询所有
+        :type EngineTypes: list of str
+        :param TemplateNames: 模板名称，缺省则查询所有
+        :type TemplateNames: list of str
+        :param TemplateIds: 模板id，缺省则查询所有
+        :type TemplateIds: list of int
         """
         self.EngineVersions = None
+        self.EngineTypes = None
+        self.TemplateNames = None
+        self.TemplateIds = None
 
 
     def _deserialize(self, params):
         self.EngineVersions = params.get("EngineVersions")
+        self.EngineTypes = params.get("EngineTypes")
+        self.TemplateNames = params.get("TemplateNames")
+        self.TemplateIds = params.get("TemplateIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

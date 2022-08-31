@@ -180,11 +180,23 @@ class CarPlateContent(AbstractModel):
         :param PlateLocation: 车牌在图片中的坐标信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PlateLocation: list of Coord
+        :param PlateStatus: 判断车牌是否遮挡。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PlateStatus: str
+        :param PlateStatusConfidence: 车牌遮挡的置信度，0-100。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PlateStatusConfidence: int
+        :param PlateAngle: 车牌角度。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PlateAngle: float
         """
         self.Plate = None
         self.Color = None
         self.Type = None
         self.PlateLocation = None
+        self.PlateStatus = None
+        self.PlateStatusConfidence = None
+        self.PlateAngle = None
 
 
     def _deserialize(self, params):
@@ -197,6 +209,9 @@ class CarPlateContent(AbstractModel):
                 obj = Coord()
                 obj._deserialize(item)
                 self.PlateLocation.append(obj)
+        self.PlateStatus = params.get("PlateStatus")
+        self.PlateStatusConfidence = params.get("PlateStatusConfidence")
+        self.PlateAngle = params.get("PlateAngle")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -239,6 +254,12 @@ class CarTagItem(AbstractModel):
         :param ColorConfidence: 车辆颜色置信度，0-100，仅车辆识别（增强版）支持
 注意：此字段可能返回 null，表示取不到有效值。
         :type ColorConfidence: int
+        :param Orientation: 车辆朝向，仅车辆识别（增强版）支持
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Orientation: str
+        :param OrientationConfidence: 车辆朝向置信度，0-100，仅车辆识别（增强版）支持
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OrientationConfidence: int
         """
         self.Serial = None
         self.Brand = None
@@ -251,6 +272,8 @@ class CarTagItem(AbstractModel):
         self.PlateConfidence = None
         self.TypeConfidence = None
         self.ColorConfidence = None
+        self.Orientation = None
+        self.OrientationConfidence = None
 
 
     def _deserialize(self, params):
@@ -272,6 +295,8 @@ class CarTagItem(AbstractModel):
         self.PlateConfidence = params.get("PlateConfidence")
         self.TypeConfidence = params.get("TypeConfidence")
         self.ColorConfidence = params.get("ColorConfidence")
+        self.Orientation = params.get("Orientation")
+        self.OrientationConfidence = params.get("OrientationConfidence")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

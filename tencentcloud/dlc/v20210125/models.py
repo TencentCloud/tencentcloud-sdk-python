@@ -3681,7 +3681,7 @@ class DescribeTaskResultRequest(AbstractModel):
         r"""
         :param TaskId: 任务唯一ID
         :type TaskId: str
-        :param NextToken: 上一次请求响应返回的分页信息。第一次可以不带，从头开始返回数据，每次返回1000行数据。
+        :param NextToken: 上一次请求响应返回的分页信息。第一次可以不带，从头开始返回数据，每次返回MaxResults字段设置的数据量。
         :type NextToken: str
         :param MaxResults: 返回结果的最大行数，范围0~1000，默认为1000.
         :type MaxResults: int
@@ -3801,11 +3801,15 @@ class DescribeTasksResponse(AbstractModel):
         :type TaskList: list of TaskResponseInfo
         :param TotalCount: 实例总数。
         :type TotalCount: int
+        :param TasksOverview: 任务概览信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TasksOverview: :class:`tencentcloud.dlc.v20210125.models.TasksOverview`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TaskList = None
         self.TotalCount = None
+        self.TasksOverview = None
         self.RequestId = None
 
 
@@ -3817,6 +3821,9 @@ class DescribeTasksResponse(AbstractModel):
                 obj._deserialize(item)
                 self.TaskList.append(obj)
         self.TotalCount = params.get("TotalCount")
+        if params.get("TasksOverview") is not None:
+            self.TasksOverview = TasksOverview()
+            self.TasksOverview._deserialize(params.get("TasksOverview"))
         self.RequestId = params.get("RequestId")
 
 
@@ -5681,7 +5688,7 @@ class Task(AbstractModel):
 
 
 class TaskResponseInfo(AbstractModel):
-    """任务实例
+    """任务实例。
 
     """
 
@@ -5693,7 +5700,7 @@ class TaskResponseInfo(AbstractModel):
         :type DataAmount: int
         :param Id: 任务Id。
         :type Id: str
-        :param UsedTime: 计算时长，单位： ms。
+        :param UsedTime: 计算耗时，单位： ms
         :type UsedTime: int
         :param OutputPath: 任务输出路径。
         :type OutputPath: str
@@ -5762,6 +5769,9 @@ class TaskResponseInfo(AbstractModel):
         :param UiUrl: spark ui url
 注意：此字段可能返回 null，表示取不到有效值。
         :type UiUrl: str
+        :param TotalTime: 任务耗时，单位： ms
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalTime: int
         """
         self.DatabaseName = None
         self.DataAmount = None
@@ -5793,6 +5803,7 @@ class TaskResponseInfo(AbstractModel):
         self.SparkJobId = None
         self.SparkJobFile = None
         self.UiUrl = None
+        self.TotalTime = None
 
 
     def _deserialize(self, params):
@@ -5826,6 +5837,7 @@ class TaskResponseInfo(AbstractModel):
         self.SparkJobId = params.get("SparkJobId")
         self.SparkJobFile = params.get("SparkJobFile")
         self.UiUrl = params.get("UiUrl")
+        self.TotalTime = params.get("TotalTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5836,7 +5848,7 @@ class TaskResponseInfo(AbstractModel):
 
 
 class TaskResultInfo(AbstractModel):
-    """任务结果信息
+    """任务结果信息。
 
     """
 
@@ -5858,7 +5870,7 @@ class TaskResultInfo(AbstractModel):
         :type State: int
         :param DataAmount: 扫描的数据量，单位byte
         :type DataAmount: int
-        :param UsedTime: 任务执行耗时，单位秒
+        :param UsedTime: 计算耗时，单位： ms
         :type UsedTime: int
         :param OutputPath: 任务结果输出的COS桶地址
         :type OutputPath: str
@@ -5882,6 +5894,8 @@ class TaskResultInfo(AbstractModel):
         :type ProgressDetail: str
         :param DisplayFormat: 控制台展示格式。table：表格展示 text：文本展示
         :type DisplayFormat: str
+        :param TotalTime: 任务耗时，单位： ms
+        :type TotalTime: int
         """
         self.TaskId = None
         self.DatasourceConnectionName = None
@@ -5901,6 +5915,7 @@ class TaskResultInfo(AbstractModel):
         self.Percentage = None
         self.ProgressDetail = None
         self.DisplayFormat = None
+        self.TotalTime = None
 
 
     def _deserialize(self, params):
@@ -5927,6 +5942,7 @@ class TaskResultInfo(AbstractModel):
         self.Percentage = params.get("Percentage")
         self.ProgressDetail = params.get("ProgressDetail")
         self.DisplayFormat = params.get("DisplayFormat")
+        self.TotalTime = params.get("TotalTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5977,6 +5993,42 @@ class TasksInfo(AbstractModel):
                 obj = KVPair()
                 obj._deserialize(item)
                 self.Params.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TasksOverview(AbstractModel):
+    """任务概览
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskQueuedCount: 正在排队的任务个数
+        :type TaskQueuedCount: int
+        :param TaskInitCount: 初始化的任务个数
+        :type TaskInitCount: int
+        :param TaskRunningCount: 正在执行的任务个数
+        :type TaskRunningCount: int
+        :param TotalTaskCount: 当前时间范围的总任务个数
+        :type TotalTaskCount: int
+        """
+        self.TaskQueuedCount = None
+        self.TaskInitCount = None
+        self.TaskRunningCount = None
+        self.TotalTaskCount = None
+
+
+    def _deserialize(self, params):
+        self.TaskQueuedCount = params.get("TaskQueuedCount")
+        self.TaskInitCount = params.get("TaskInitCount")
+        self.TaskRunningCount = params.get("TaskRunningCount")
+        self.TotalTaskCount = params.get("TotalTaskCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -338,6 +338,9 @@ RESOURCENOTFOUND_INSTANCENOTFOUND = 'ResourceNotFound.InstanceNotFound'
 # 密钥对 ID 不存在。
 RESOURCENOTFOUND_KEYIDNOTFOUND = 'ResourceNotFound.KeyIdNotFound'
 
+# 自定义镜像不存在。
+RESOURCENOTFOUND_PRIVATEBLUEPRINTNOTFOUND = 'ResourceNotFound.PrivateBlueprintNotFound'
+
 # 快照 ID 不存在。
 RESOURCENOTFOUND_SNAPSHOTIDNOTFOUND = 'ResourceNotFound.SnapshotIdNotFound'
 
