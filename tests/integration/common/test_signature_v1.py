@@ -53,4 +53,4 @@ def test_signature_v1_fail():
             resp = client.DescribeInstancesOperationLimit(req)
             assert False, 'unexpected success, should fail'
         except TencentCloudSDKException as err:
-            assert err.code == 'InvalidInstanceId.Malformed'
+            assert err.code == 'InvalidParameterValue.InstanceIdMalformed'
