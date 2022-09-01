@@ -5940,6 +5940,12 @@ class HTTPSListener(AbstractModel):
         :param PolyClientCertificateAliasInfo: 多客户端CA证书别名信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type PolyClientCertificateAliasInfo: list of CertificateAliasInfo
+        :param Http3Supported: 是否支持Http3，其中：
+0，不支持Http3接入；
+1，持Http3接入。
+注意：如果支持了Http3的功能，那么该监听器会占用对应的UDP接入端口，不可再创建相同端口的UDP监听器。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Http3Supported: int
         """
         self.ListenerId = None
         self.ListenerName = None
@@ -5954,6 +5960,7 @@ class HTTPSListener(AbstractModel):
         self.AuthType = None
         self.ClientCertificateAlias = None
         self.PolyClientCertificateAliasInfo = None
+        self.Http3Supported = None
 
 
     def _deserialize(self, params):
@@ -5975,6 +5982,7 @@ class HTTPSListener(AbstractModel):
                 obj = CertificateAliasInfo()
                 obj._deserialize(item)
                 self.PolyClientCertificateAliasInfo.append(obj)
+        self.Http3Supported = params.get("Http3Supported")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

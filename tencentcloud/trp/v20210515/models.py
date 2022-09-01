@@ -596,6 +596,10 @@ class CreateTraceDataRequest(AbstractModel):
         :type TraceId: str
         :param TraceItems: 溯源信息
         :type TraceItems: list of TraceItem
+        :param Status: 溯源状态 0: 无效, 1: 有效
+        :type Status: int
+        :param PhaseData: 环节数据
+        :type PhaseData: :class:`tencentcloud.trp.v20210515.models.PhaseData`
         """
         self.CorpId = None
         self.BatchId = None
@@ -606,6 +610,8 @@ class CreateTraceDataRequest(AbstractModel):
         self.Type = None
         self.TraceId = None
         self.TraceItems = None
+        self.Status = None
+        self.PhaseData = None
 
 
     def _deserialize(self, params):
@@ -623,6 +629,10 @@ class CreateTraceDataRequest(AbstractModel):
                 obj = TraceItem()
                 obj._deserialize(item)
                 self.TraceItems.append(obj)
+        self.Status = params.get("Status")
+        if params.get("PhaseData") is not None:
+            self.PhaseData = PhaseData()
+            self.PhaseData._deserialize(params.get("PhaseData"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1934,8 +1944,10 @@ class ModifyTraceDataRequest(AbstractModel):
         :type ChainData: :class:`tencentcloud.trp.v20210515.models.ChainData`
         :param CorpId: 企业ID
         :type CorpId: int
-        :param Status: [无效] 溯源状态
+        :param Status: 溯源状态 0: 无效, 1: 有效
         :type Status: int
+        :param PhaseData: 环节数据
+        :type PhaseData: :class:`tencentcloud.trp.v20210515.models.PhaseData`
         """
         self.TraceId = None
         self.BatchId = None
@@ -1953,6 +1965,7 @@ class ModifyTraceDataRequest(AbstractModel):
         self.ChainData = None
         self.CorpId = None
         self.Status = None
+        self.PhaseData = None
 
 
     def _deserialize(self, params):
@@ -1979,6 +1992,9 @@ class ModifyTraceDataRequest(AbstractModel):
             self.ChainData._deserialize(params.get("ChainData"))
         self.CorpId = params.get("CorpId")
         self.Status = params.get("Status")
+        if params.get("PhaseData") is not None:
+            self.PhaseData = PhaseData()
+            self.PhaseData._deserialize(params.get("PhaseData"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2032,6 +2048,50 @@ class PackSpec(AbstractModel):
         self.Level = params.get("Level")
         self.Rate = params.get("Rate")
         self.Amount = params.get("Amount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PhaseData(AbstractModel):
+    """环节数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param HeadEnabled: 启用头
+        :type HeadEnabled: bool
+        :param HeadTitle: 标题
+        :type HeadTitle: str
+        :param Key: 标识符
+        :type Key: str
+        :param AppId: 小程序AppId
+        :type AppId: str
+        :param AppPath: 小程序AppPath
+        :type AppPath: str
+        :param AppName: 小程序名称AppName
+        :type AppName: str
+        """
+        self.HeadEnabled = None
+        self.HeadTitle = None
+        self.Key = None
+        self.AppId = None
+        self.AppPath = None
+        self.AppName = None
+
+
+    def _deserialize(self, params):
+        self.HeadEnabled = params.get("HeadEnabled")
+        self.HeadTitle = params.get("HeadTitle")
+        self.Key = params.get("Key")
+        self.AppId = params.get("AppId")
+        self.AppPath = params.get("AppPath")
+        self.AppName = params.get("AppName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2296,6 +2356,9 @@ class TraceItem(AbstractModel):
         :param Values: 多个值
 注意：此字段可能返回 null，表示取不到有效值。
         :type Values: list of str
+        :param Key: 类型标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: str
         """
         self.Name = None
         self.Value = None
@@ -2303,6 +2366,7 @@ class TraceItem(AbstractModel):
         self.ReadOnly = None
         self.Hidden = None
         self.Values = None
+        self.Key = None
 
 
     def _deserialize(self, params):
@@ -2312,6 +2376,7 @@ class TraceItem(AbstractModel):
         self.ReadOnly = params.get("ReadOnly")
         self.Hidden = params.get("Hidden")
         self.Values = params.get("Values")
+        self.Key = params.get("Key")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

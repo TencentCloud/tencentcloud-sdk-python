@@ -750,6 +750,9 @@ class Cluster(AbstractModel):
         :param QGPUShareEnable: 是否开启QGPU共享
 注意：此字段可能返回 null，表示取不到有效值。
         :type QGPUShareEnable: bool
+        :param RuntimeVersion: 运行时版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuntimeVersion: str
         """
         self.ClusterId = None
         self.ClusterName = None
@@ -773,6 +776,7 @@ class Cluster(AbstractModel):
         self.ClusterLevel = None
         self.AutoUpgradeClusterLevel = None
         self.QGPUShareEnable = None
+        self.RuntimeVersion = None
 
 
     def _deserialize(self, params):
@@ -805,6 +809,7 @@ class Cluster(AbstractModel):
         self.ClusterLevel = params.get("ClusterLevel")
         self.AutoUpgradeClusterLevel = params.get("AutoUpgradeClusterLevel")
         self.QGPUShareEnable = params.get("QGPUShareEnable")
+        self.RuntimeVersion = params.get("RuntimeVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

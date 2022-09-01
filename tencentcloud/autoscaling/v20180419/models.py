@@ -3485,7 +3485,7 @@ class LifecycleActionResultInfo(AbstractModel):
 
 
 class LifecycleCommand(AbstractModel):
-    """远程命令执行对象。NotificationTarget和CommandInfo参数互斥，二者不可同时指定。
+    """远程命令执行对象。
 
     """
 
@@ -3499,7 +3499,7 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
 如果未提供该参数取值，将使用 Command 的 DefaultParameters 进行替换。
 自定义参数最多20个。自定义参数名称需符合以下规范：字符数目上限64，可选范围【a-zA-Z0-9-_】。
 注意：此字段可能返回 null，表示取不到有效值。
-        :type Parameters: list of str
+        :type Parameters: str
         """
         self.CommandId = None
         self.Parameters = None

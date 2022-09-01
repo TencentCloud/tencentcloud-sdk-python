@@ -2196,9 +2196,9 @@ class DeleteRuleRequest(AbstractModel):
         :type ListenerId: str
         :param LocationIds: 要删除的转发规则的ID组成的数组。
         :type LocationIds: list of str
-        :param Domain: 要删除的转发规则的域名，如果是多域名，可以指定多域名列表中的任意一个。已提供LocationIds参数时本参数不生效。
+        :param Domain: 要删除的转发规则的域名，如果是多域名，可以指定多域名列表中的任意一个。
         :type Domain: str
-        :param Url: 要删除的转发规则的转发路径，已提供LocationIds参数时本参数不生效。
+        :param Url: 要删除的转发规则的转发路径。
         :type Url: str
         :param NewDefaultServerDomain: 监听器下必须配置一个默认域名，当需要删除默认域名时，可以指定另一个域名作为新的默认域名，如果新的默认域名是多域名，可以指定多域名列表中的任意一个。
         :type NewDefaultServerDomain: str

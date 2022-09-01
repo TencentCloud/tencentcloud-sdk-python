@@ -356,6 +356,9 @@ INVALIDPARAMETER_DOMAINISLIMITED = 'InvalidParameter.DomainIsLimited'
 # 域名长度超过限制。
 INVALIDPARAMETER_DOMAINTOOLONG = 'InvalidParameter.DomainTooLong'
 
+# 自适应码率子模板gop值必须存在且相等。
+INVALIDPARAMETER_GOPMUSTEQUALANDEXISTS = 'InvalidParameter.GopMustEqualAndExists'
+
 # 输入数目超出限制。
 INVALIDPARAMETER_INPUTNUMLIMITEXCEEDED = 'InvalidParameter.InputNumLimitExceeded'
 

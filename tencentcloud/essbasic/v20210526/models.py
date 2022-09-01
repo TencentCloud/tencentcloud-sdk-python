@@ -352,7 +352,7 @@ class ChannelCreateFlowByFilesRequest(AbstractModel):
         :type FlowApprovers: list of FlowApproverInfo
         :param FileIds: 签署文件资源Id列表，目前仅支持单个文件
         :type FileIds: list of str
-        :param Components: 签署文件中的控件，如：填写控件等
+        :param Components: 签署文件中的发起方的填写控件，需要在发起的时候进行填充
         :type Components: list of Component
         :param Deadline: 签署流程截止时间，十位数时间戳，最大值为33162419560，即3020年
         :type Deadline: int

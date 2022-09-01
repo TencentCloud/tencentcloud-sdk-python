@@ -10961,7 +10961,8 @@ class DescribeTaskDetailResponse(AbstractModel):
 <li>WechatMiniProgramPublish：微信小程序视频发布任务；</li>
 <li>PullUpload：拉取上传媒体文件任务；</li>
 <li>FastClipMedia：快速剪辑任务；</li>
-<li>RemoveWatermarkTask：智能去除水印任务。</li>
+<li>RemoveWatermarkTask：智能去除水印任务；</li>
+<li> ReviewAudioVideo：音视频审核任务。</li>
         :type TaskType: str
         :param Status: 任务状态，取值：
 <li>WAITING：等待中；</li>
@@ -11013,6 +11014,9 @@ class DescribeTaskDetailResponse(AbstractModel):
         :param RemoveWatermarkTask: 智能去除水印任务信息，仅当 TaskType 为 RemoveWatermark，该字段有值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RemoveWatermarkTask: :class:`tencentcloud.vod.v20180717.models.RemoveWatermarkTask`
+        :param ReviewAudioVideoTask: 音视频审核任务信息，仅当 TaskType 为 ReviewAudioVideo，该字段有值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReviewAudioVideoTask: :class:`tencentcloud.vod.v20180717.models.ReviewAudioVideoTask`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -11034,6 +11038,7 @@ class DescribeTaskDetailResponse(AbstractModel):
         self.CreateImageSpriteTask = None
         self.SnapshotByTimeOffsetTask = None
         self.RemoveWatermarkTask = None
+        self.ReviewAudioVideoTask = None
         self.RequestId = None
 
 
@@ -11082,6 +11087,9 @@ class DescribeTaskDetailResponse(AbstractModel):
         if params.get("RemoveWatermarkTask") is not None:
             self.RemoveWatermarkTask = RemoveWatermarkTask()
             self.RemoveWatermarkTask._deserialize(params.get("RemoveWatermarkTask"))
+        if params.get("ReviewAudioVideoTask") is not None:
+            self.ReviewAudioVideoTask = ReviewAudioVideoTask()
+            self.ReviewAudioVideoTask._deserialize(params.get("ReviewAudioVideoTask"))
         self.RequestId = params.get("RequestId")
 
 
@@ -12133,7 +12141,8 @@ class EventContent(AbstractModel):
 <li>WechatPublishComplete：微信发布完成；</li>
 <li>ComposeMediaComplete：制作媒体文件完成；</li>
 <li>WechatMiniProgramPublishComplete：微信小程序发布完成。</li>
-<li>FastClipMediaComplete：快速剪辑完成。</li>
+<li>FastClipMediaComplete：快速剪辑完成；</li>
+<li>ReviewAudioVideoComplete：音视频审核完成。</li>
 <b>兼容 2017 版的事件类型：</b>
 <li>TranscodeComplete：视频转码完成；</li>
 <li>ConcatComplete：视频拼接完成；</li>
@@ -12189,6 +12198,9 @@ class EventContent(AbstractModel):
         :param RestoreMediaCompleteEvent: 视频取回完成事件，当事件类型为RestoreMediaComplete 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RestoreMediaCompleteEvent: :class:`tencentcloud.vod.v20180717.models.RestoreMediaTask`
+        :param ReviewAudioVideoCompleteEvent: 音视频审核完成事件，当事件类型为 ReviewAudioVideoComplete 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReviewAudioVideoCompleteEvent: :class:`tencentcloud.vod.v20180717.models.ReviewAudioVideoTask`
         """
         self.EventHandle = None
         self.EventType = None
@@ -12208,6 +12220,7 @@ class EventContent(AbstractModel):
         self.WechatMiniProgramPublishCompleteEvent = None
         self.RemoveWatermarkCompleteEvent = None
         self.RestoreMediaCompleteEvent = None
+        self.ReviewAudioVideoCompleteEvent = None
 
 
     def _deserialize(self, params):
@@ -12261,6 +12274,9 @@ class EventContent(AbstractModel):
         if params.get("RestoreMediaCompleteEvent") is not None:
             self.RestoreMediaCompleteEvent = RestoreMediaTask()
             self.RestoreMediaCompleteEvent._deserialize(params.get("RestoreMediaCompleteEvent"))
+        if params.get("ReviewAudioVideoCompleteEvent") is not None:
+            self.ReviewAudioVideoCompleteEvent = ReviewAudioVideoTask()
+            self.ReviewAudioVideoCompleteEvent._deserialize(params.get("ReviewAudioVideoCompleteEvent"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -20682,6 +20698,211 @@ class RestoreMediaTask(AbstractModel):
         self.RestoreDay = params.get("RestoreDay")
         self.Status = params.get("Status")
         self.Message = params.get("Message")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReviewAudioVideoSegmentItem(AbstractModel):
+    """音视频审核片段。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StartTimeOffset: 嫌疑片段起始的偏移时间，单位：秒。
+        :type StartTimeOffset: float
+        :param EndTimeOffset: 嫌疑片段结束的偏移时间，单位：秒。
+        :type EndTimeOffset: float
+        :param Confidence: 嫌疑片段涉及令人反感的信息的分数。
+        :type Confidence: float
+        :param Suggestion: 嫌疑片段鉴别涉及违规信息的结果建议，取值范围：
+<li>review：疑似违规，建议复审；</li>
+<li>block：确认违规，建议封禁。</li>
+        :type Suggestion: str
+        :param Label: 嫌疑片段最可能的违规的标签，取值范围：
+<li>Porn：色情；</li>
+<li>Terrorism：暴恐；</li>
+<li>Political：令人不适宜的信息。</li>
+        :type Label: str
+        :param SubLabel: 当 Form 为 Image 或 Voice 时有效，表示当前标签（Label）下的二级标签。
+当 Form 为 Image 且 Label 为 Porn 时，取值范围：
+<li>porn：色情；</li>
+<li>vulgar：低俗。</li>
+
+当 Form 为 Image 且 Label 为 Terrorism 时，取值范围：
+<li>guns：武器枪支；</li>
+<li>bloody：血腥画面；</li>
+<li>banners：暴恐旗帜；</li>
+<li> scenario：暴恐画面；</li>
+<li>explosion：爆炸火灾。</li>
+
+当 Form 为 Image 且 Label 为 Political 时，取值范围：
+<li>violation_photo：违规图标；</li>
+<li>nation_politician：国家领导人；</li>
+<li>province_politician：省部级领导人；</li>
+<li>county_politician：市/县级领导人；</li>
+<li>sensitive_politician：敏感相关人物；</li>
+<li>foreign_politician：国外政治人物；</li>
+<li>sensitive_entertainment：敏感娱乐明星；</li>
+<li>sensitive_military：敏感军事人物。</li>
+
+当 Form 为 Voice 且 Label 为 Porn 时，取值范围：
+<li>moan：娇喘。</li>
+        :type SubLabel: str
+        :param Form: 嫌疑片段违禁的形式，取值范围：
+<li>Image：画面上的人物或图标；</li>
+<li>OCR：画面上的文字；</li>
+<li>ASR：语音中的文字；</li>
+<li>Voice：声音。</li>
+        :type Form: str
+        :param AreaCoordSet: 当 Form 为 Image 或 OCR 时有效，表示嫌疑人物、图标或文字出现的区域坐标 (像素级)，[x1, y1, x2, y2]，即左上角坐标、右下角坐标。
+        :type AreaCoordSet: list of int
+        :param Text: 当 Form 为 OCR 或 ASR 时有效，表示识别出来的 OCR 或 ASR 文本内容。
+        :type Text: str
+        :param KeywordSet: 当 Form 为 OCR 或 ASR 时有效，表示嫌疑片段命中的违规关键词列表。
+        :type KeywordSet: list of str
+        """
+        self.StartTimeOffset = None
+        self.EndTimeOffset = None
+        self.Confidence = None
+        self.Suggestion = None
+        self.Label = None
+        self.SubLabel = None
+        self.Form = None
+        self.AreaCoordSet = None
+        self.Text = None
+        self.KeywordSet = None
+
+
+    def _deserialize(self, params):
+        self.StartTimeOffset = params.get("StartTimeOffset")
+        self.EndTimeOffset = params.get("EndTimeOffset")
+        self.Confidence = params.get("Confidence")
+        self.Suggestion = params.get("Suggestion")
+        self.Label = params.get("Label")
+        self.SubLabel = params.get("SubLabel")
+        self.Form = params.get("Form")
+        self.AreaCoordSet = params.get("AreaCoordSet")
+        self.Text = params.get("Text")
+        self.KeywordSet = params.get("KeywordSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReviewAudioVideoTask(AbstractModel):
+    """音视频审核任务信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 任务 ID。
+        :type TaskId: str
+        :param Status: 任务状态，取值：
+<li>PROCESSING：处理中；</li>
+<li>FINISH：已完成。</li>
+        :type Status: str
+        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :type ErrCodeExt: str
+        :param Message: 错误信息。
+        :type Message: str
+        :param Output: 音视频审核任务的输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Output: :class:`tencentcloud.vod.v20180717.models.ReviewAudioVideoTaskOutput`
+        :param SessionId: 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+        :type SessionId: str
+        :param SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+        :type SessionContext: str
+        """
+        self.TaskId = None
+        self.Status = None
+        self.ErrCodeExt = None
+        self.Message = None
+        self.Output = None
+        self.SessionId = None
+        self.SessionContext = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
+        self.Message = params.get("Message")
+        if params.get("Output") is not None:
+            self.Output = ReviewAudioVideoTaskOutput()
+            self.Output._deserialize(params.get("Output"))
+        self.SessionId = params.get("SessionId")
+        self.SessionContext = params.get("SessionContext")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReviewAudioVideoTaskOutput(AbstractModel):
+    """音视频审核任务的输出。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Suggestion: 音视频内容审核的结果建议，取值范围：
+<li>pass：建议通过；</li>
+<li>review：建议复审；</li>
+<li>block：建议封禁。</li>
+        :type Suggestion: str
+        :param Label: 当 Suggestion 为 review 或 block 时有效，表示音视频最可能的违规的标签，取值范围：
+<li>Porn：色情；</li>
+<li>Terrorism：暴恐；</li>
+<li>Political：令人不适宜的信息。</li>
+        :type Label: str
+        :param Form: 当 Suggestion 为 review 或 block 时有效，表示音视频最可能的违禁的形式，取值范围：
+<li>Image：画面上的人物或图标；</li>
+<li>OCR：画面上的文字；</li>
+<li>ASR：语音中的文字；</li>
+<li>Voice：声音。</li>
+        :type Form: str
+        :param SegmentSet: 有违规信息的嫌疑的视频片段列表。
+<font color=red>注意</font> ：该列表最多仅展示前 10个 元素。如希望获得完整结果，请从 SegmentSetFileUrl 对应的文件中获取。
+        :type SegmentSet: list of ReviewAudioVideoSegmentItem
+        :param SegmentSetFileUrl: 涉及违规信息的嫌疑的视频片段列表文件 URL。文件的内容为 JSON，数据结构与 SegmentSet 字段一致。 （文件不会永久存储，到达SegmentSetFileUrlExpireTime 时间点后文件将被删除）。
+        :type SegmentSetFileUrl: str
+        :param SegmentSetFileUrlExpireTime: 涉及违规信息的嫌疑的视频片段列表文件 URL 失效时间，使用  [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type SegmentSetFileUrlExpireTime: str
+        """
+        self.Suggestion = None
+        self.Label = None
+        self.Form = None
+        self.SegmentSet = None
+        self.SegmentSetFileUrl = None
+        self.SegmentSetFileUrlExpireTime = None
+
+
+    def _deserialize(self, params):
+        self.Suggestion = params.get("Suggestion")
+        self.Label = params.get("Label")
+        self.Form = params.get("Form")
+        if params.get("SegmentSet") is not None:
+            self.SegmentSet = []
+            for item in params.get("SegmentSet"):
+                obj = ReviewAudioVideoSegmentItem()
+                obj._deserialize(item)
+                self.SegmentSet.append(obj)
+        self.SegmentSetFileUrl = params.get("SegmentSetFileUrl")
+        self.SegmentSetFileUrlExpireTime = params.get("SegmentSetFileUrlExpireTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
