@@ -339,6 +339,8 @@ class CreateInstanceRequest(AbstractModel):
         :type Protocol: str
         :param OperationDuration: 可维护时间段
         :type OperationDuration: :class:`tencentcloud.es.v20180416.models.OperationDuration`
+        :param EnableHybridStorage: 是否开启存算分离
+        :type EnableHybridStorage: bool
         """
         self.Zone = None
         self.EsVersion = None
@@ -371,6 +373,7 @@ class CreateInstanceRequest(AbstractModel):
         self.WebNodeTypeInfo = None
         self.Protocol = None
         self.OperationDuration = None
+        self.EnableHybridStorage = None
 
 
     def _deserialize(self, params):
@@ -424,6 +427,7 @@ class CreateInstanceRequest(AbstractModel):
         if params.get("OperationDuration") is not None:
             self.OperationDuration = OperationDuration()
             self.OperationDuration._deserialize(params.get("OperationDuration"))
+        self.EnableHybridStorage = params.get("EnableHybridStorage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2255,6 +2259,9 @@ RENEW_FLAG_DEFAULT：不自动续费
         :param AutoIndexEnabled: 自治索引开关
 注意：此字段可能返回 null，表示取不到有效值。
         :type AutoIndexEnabled: bool
+        :param EnableHybridStorage: 是否支持存储计算分离
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnableHybridStorage: bool
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -2334,6 +2341,7 @@ RENEW_FLAG_DEFAULT：不自动续费
         self.OperationDuration = None
         self.OptionalWebServiceInfos = None
         self.AutoIndexEnabled = None
+        self.EnableHybridStorage = None
 
 
     def _deserialize(self, params):
@@ -2456,6 +2464,7 @@ RENEW_FLAG_DEFAULT：不自动续费
                 obj._deserialize(item)
                 self.OptionalWebServiceInfos.append(obj)
         self.AutoIndexEnabled = params.get("AutoIndexEnabled")
+        self.EnableHybridStorage = params.get("EnableHybridStorage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

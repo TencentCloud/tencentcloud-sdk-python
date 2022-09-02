@@ -722,6 +722,9 @@ class BotPkg(AbstractModel):
         :param UsedNum: 使用数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type UsedNum: int
+        :param Type: 子产品code
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
         """
         self.ResourceIds = None
         self.Status = None
@@ -730,6 +733,7 @@ class BotPkg(AbstractModel):
         self.EndTime = None
         self.InquireNum = None
         self.UsedNum = None
+        self.Type = None
 
 
     def _deserialize(self, params):
@@ -740,6 +744,47 @@ class BotPkg(AbstractModel):
         self.EndTime = params.get("EndTime")
         self.InquireNum = params.get("InquireNum")
         self.UsedNum = params.get("UsedNum")
+        self.Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BotQPS(AbstractModel):
+    """bot的qps详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ResourceIds: 资源id
+        :type ResourceIds: str
+        :param ValidTime: 有效时间
+        :type ValidTime: str
+        :param Count: 资源数量
+        :type Count: int
+        :param Region: 资源所在地区
+        :type Region: str
+        :param MaxBotQPS: 使用qps的最大值
+        :type MaxBotQPS: int
+        """
+        self.ResourceIds = None
+        self.ValidTime = None
+        self.Count = None
+        self.Region = None
+        self.MaxBotQPS = None
+
+
+    def _deserialize(self, params):
+        self.ResourceIds = params.get("ResourceIds")
+        self.ValidTime = params.get("ValidTime")
+        self.Count = params.get("Count")
+        self.Region = params.get("Region")
+        self.MaxBotQPS = params.get("MaxBotQPS")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2434,6 +2479,9 @@ class InstanceInfo(AbstractModel):
         :param BotPkg: Bot资源包
 注意：此字段可能返回 null，表示取不到有效值。
         :type BotPkg: :class:`tencentcloud.waf.v20180125.models.BotPkg`
+        :param BotQPS: bot的qps详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BotQPS: :class:`tencentcloud.waf.v20180125.models.BotQPS`
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -2456,6 +2504,7 @@ class InstanceInfo(AbstractModel):
         self.Edition = None
         self.FraudPkg = None
         self.BotPkg = None
+        self.BotQPS = None
 
 
     def _deserialize(self, params):
@@ -2488,6 +2537,9 @@ class InstanceInfo(AbstractModel):
         if params.get("BotPkg") is not None:
             self.BotPkg = BotPkg()
             self.BotPkg._deserialize(params.get("BotPkg"))
+        if params.get("BotQPS") is not None:
+            self.BotQPS = BotQPS()
+            self.BotQPS._deserialize(params.get("BotQPS"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

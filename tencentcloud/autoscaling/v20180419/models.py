@@ -1135,13 +1135,13 @@ class CreateLifecycleHookRequest(AbstractModel):
         :type DefaultResult: str
         :param HeartbeatTimeout: 生命周期挂钩超时之前可以经过的最长时间（以秒为单位），范围从30到7200秒，默认值为300秒
         :type HeartbeatTimeout: int
-        :param NotificationMetadata: 弹性伸缩向通知目标发送的附加信息，默认值为空字符串""。最大长度不能超过1024个字节。
+        :param NotificationMetadata: 弹性伸缩向通知目标发送的附加信息，配置通知时使用,默认值为空字符串""。最大长度不能超过1024个字节。
         :type NotificationMetadata: str
-        :param NotificationTarget: 通知目标
+        :param NotificationTarget: 通知目标。NotificationTarget和LifecycleCommand参数互斥，二者不可同时指定。
         :type NotificationTarget: :class:`tencentcloud.autoscaling.v20180419.models.NotificationTarget`
         :param LifecycleTransitionType: 进行生命周期挂钩的场景类型，取值范围包括NORMAL 和 EXTENSION。说明：设置为EXTENSION值，在AttachInstances、DetachInstances、RemoveInstaces接口时会触发生命周期挂钩操作，值为NORMAL则不会在这些接口中触发生命周期挂钩。
         :type LifecycleTransitionType: str
-        :param LifecycleCommand: 远程命令执行对象。NotificationTarget和CommandInfo参数互斥，二者不可同时指定。
+        :param LifecycleCommand: 远程命令执行对象。NotificationTarget和LifecycleCommand参数互斥，二者不可同时指定。
         :type LifecycleCommand: :class:`tencentcloud.autoscaling.v20180419.models.LifecycleCommand`
         """
         self.AutoScalingGroupId = None
@@ -3440,7 +3440,7 @@ class LifecycleActionResultInfo(AbstractModel):
 <li>FAILED 命令调用失败</li>
 <li>NONE</li>
         :type InvokeCommandResult: str
-        :param NotificationResult: 通知的结果，表示通知CMQ/TCMQ是否成功。<br>
+        :param NotificationResult: 通知的结果，表示通知CMQ/TDMQ是否成功。<br>
 <li>SUCCESSFUL 通知成功</li>
 <li>FAILED 通知失败</li>
 <li>NONE</li>
@@ -4077,6 +4077,8 @@ class ModifyLifecycleHookRequest(AbstractModel):
         :type LifecycleTransitionType: str
         :param NotificationTarget: 通知目标信息。
         :type NotificationTarget: :class:`tencentcloud.autoscaling.v20180419.models.NotificationTarget`
+        :param LifecycleCommand: 远程命令执行对象。
+        :type LifecycleCommand: :class:`tencentcloud.autoscaling.v20180419.models.LifecycleCommand`
         """
         self.LifecycleHookId = None
         self.LifecycleHookName = None
@@ -4086,6 +4088,7 @@ class ModifyLifecycleHookRequest(AbstractModel):
         self.NotificationMetadata = None
         self.LifecycleTransitionType = None
         self.NotificationTarget = None
+        self.LifecycleCommand = None
 
 
     def _deserialize(self, params):
@@ -4099,6 +4102,9 @@ class ModifyLifecycleHookRequest(AbstractModel):
         if params.get("NotificationTarget") is not None:
             self.NotificationTarget = NotificationTarget()
             self.NotificationTarget._deserialize(params.get("NotificationTarget"))
+        if params.get("LifecycleCommand") is not None:
+            self.LifecycleCommand = LifecycleCommand()
+            self.LifecycleCommand._deserialize(params.get("LifecycleCommand"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5324,12 +5330,14 @@ class UpgradeLifecycleHookRequest(AbstractModel):
         :type DefaultResult: str
         :param HeartbeatTimeout: 生命周期挂钩超时之前可以经过的最长时间（以秒为单位），范围从30到7200秒，默认值为300秒
         :type HeartbeatTimeout: int
-        :param NotificationMetadata: 弹性伸缩向通知目标发送的附加信息，默认值为空字符串""
+        :param NotificationMetadata: 弹性伸缩向通知目标发送的附加信息，配置通知时使用，默认值为空字符串""
         :type NotificationMetadata: str
-        :param NotificationTarget: 通知目标
+        :param NotificationTarget: 通知目标。NotificationTarget和LifecycleCommand参数互斥，二者不可同时指定。
         :type NotificationTarget: :class:`tencentcloud.autoscaling.v20180419.models.NotificationTarget`
         :param LifecycleTransitionType: 进行生命周期挂钩的场景类型，取值范围包括NORMAL 和 EXTENSION。说明：设置为EXTENSION值，在AttachInstances、DetachInstances、RemoveInstaces接口时会触发生命周期挂钩操作，值为NORMAL则不会在这些接口中触发生命周期挂钩。
         :type LifecycleTransitionType: str
+        :param LifecycleCommand: 远程命令执行对象。NotificationTarget和LifecycleCommand参数互斥，二者不可同时指定。
+        :type LifecycleCommand: :class:`tencentcloud.autoscaling.v20180419.models.LifecycleCommand`
         """
         self.LifecycleHookId = None
         self.LifecycleHookName = None
@@ -5339,6 +5347,7 @@ class UpgradeLifecycleHookRequest(AbstractModel):
         self.NotificationMetadata = None
         self.NotificationTarget = None
         self.LifecycleTransitionType = None
+        self.LifecycleCommand = None
 
 
     def _deserialize(self, params):
@@ -5352,6 +5361,9 @@ class UpgradeLifecycleHookRequest(AbstractModel):
             self.NotificationTarget = NotificationTarget()
             self.NotificationTarget._deserialize(params.get("NotificationTarget"))
         self.LifecycleTransitionType = params.get("LifecycleTransitionType")
+        if params.get("LifecycleCommand") is not None:
+            self.LifecycleCommand = LifecycleCommand()
+            self.LifecycleCommand._deserialize(params.get("LifecycleCommand"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

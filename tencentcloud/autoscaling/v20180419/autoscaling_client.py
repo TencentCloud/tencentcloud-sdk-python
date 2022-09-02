@@ -242,7 +242,9 @@ class AutoscalingClient(AbstractClient):
     def CreateLifecycleHook(self, request):
         """本接口（CreateLifecycleHook）用于创建生命周期挂钩。
 
-        * 您可以为生命周期挂钩配置消息通知，弹性伸缩会通知您的CMQ消息队列，通知内容形如：
+        * 您可以为生命周期挂钩配置消息通知或执行自动化助手命令。
+
+        如果您配置了通知消息，弹性伸缩会通知您的TDMQ消息队列，通知内容形如：
 
         ```
         {

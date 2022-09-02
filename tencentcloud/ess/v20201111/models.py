@@ -60,6 +60,12 @@ HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
         :type VerifyChannel: list of str
         :param PreReadTime: 合同的强制预览时间：3~300s，未指定则按合同页数计算
         :type PreReadTime: int
+        :param UserId: 签署人userId，非企微场景不使用此字段
+        :type UserId: str
+        :param ApproverSource: 签署人用户来源,企微侧用户请传入：WEWORKAPP
+        :type ApproverSource: str
+        :param CustomApproverTag: 客户自定义签署人标识，64位长度，保证唯一，非企微场景不使用此字段
+        :type CustomApproverTag: str
         """
         self.ApproverType = None
         self.ApproverName = None
@@ -72,6 +78,9 @@ HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
         self.ApproverRole = None
         self.VerifyChannel = None
         self.PreReadTime = None
+        self.UserId = None
+        self.ApproverSource = None
+        self.CustomApproverTag = None
 
 
     def _deserialize(self, params):
@@ -91,6 +100,9 @@ HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
         self.ApproverRole = params.get("ApproverRole")
         self.VerifyChannel = params.get("VerifyChannel")
         self.PreReadTime = params.get("PreReadTime")
+        self.UserId = params.get("UserId")
+        self.ApproverSource = params.get("ApproverSource")
+        self.CustomApproverTag = params.get("CustomApproverTag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -644,6 +656,62 @@ class CreateDocumentResponse(AbstractModel):
     def _deserialize(self, params):
         self.DocumentId = params.get("DocumentId")
         self.PreviewFileUrl = params.get("PreviewFileUrl")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateFlowApproversRequest(AbstractModel):
+    """CreateFlowApprovers请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Operator: 调用方用户信息，userId 必填
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param FlowId: 签署流程编号
+        :type FlowId: str
+        :param Approvers: 补充签署人信息
+        :type Approvers: list of FillApproverInfo
+        """
+        self.Operator = None
+        self.FlowId = None
+        self.Approvers = None
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self.Operator = UserInfo()
+            self.Operator._deserialize(params.get("Operator"))
+        self.FlowId = params.get("FlowId")
+        if params.get("Approvers") is not None:
+            self.Approvers = []
+            for item in params.get("Approvers"):
+                obj = FillApproverInfo()
+                obj._deserialize(item)
+                self.Approvers.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateFlowApproversResponse(AbstractModel):
+    """CreateFlowApprovers返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
 
 
@@ -1348,6 +1416,62 @@ class DescribeFlowBriefsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeFlowInfoRequest(AbstractModel):
+    """DescribeFlowInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowIds: 需要查询的流程ID列表，限制最大100个
+        :type FlowIds: list of str
+        :param Operator: 调用方用户信息
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        """
+        self.FlowIds = None
+        self.Operator = None
+
+
+    def _deserialize(self, params):
+        self.FlowIds = params.get("FlowIds")
+        if params.get("Operator") is not None:
+            self.Operator = UserInfo()
+            self.Operator._deserialize(params.get("Operator"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeFlowInfoResponse(AbstractModel):
+    """DescribeFlowInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowDetailInfos: 签署流程信息
+        :type FlowDetailInfos: list of FlowDetailInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FlowDetailInfos = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("FlowDetailInfos") is not None:
+            self.FlowDetailInfos = []
+            for item in params.get("FlowDetailInfos"):
+                obj = FlowDetailInfo()
+                obj._deserialize(item)
+                self.FlowDetailInfos.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeFlowTemplatesRequest(AbstractModel):
     """DescribeFlowTemplates请求参数结构体
 
@@ -1545,6 +1669,40 @@ class FileUrl(AbstractModel):
         
 
 
+class FillApproverInfo(AbstractModel):
+    """补充签署人信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RecipientId: 签署人签署Id
+        :type RecipientId: str
+        :param ApproverSource: 签署人来源
+WEWORKAPP: 企业微信
+        :type ApproverSource: str
+        :param CustomUserId: 企业自定义账号Id
+WEWORKAPP场景下指企业自有应用获取企微明文的userid
+        :type CustomUserId: str
+        """
+        self.RecipientId = None
+        self.ApproverSource = None
+        self.CustomUserId = None
+
+
+    def _deserialize(self, params):
+        self.RecipientId = params.get("RecipientId")
+        self.ApproverSource = params.get("ApproverSource")
+        self.CustomUserId = params.get("CustomUserId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Filter(AbstractModel):
     """查询过滤条件
 
@@ -1564,6 +1722,85 @@ class Filter(AbstractModel):
     def _deserialize(self, params):
         self.Key = params.get("Key")
         self.Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FlowApproverDetail(AbstractModel):
+    """签署人详情信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ApproveMessage: 签署人信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApproveMessage: str
+        :param ApproveName: 签署人名字
+        :type ApproveName: str
+        :param ApproveStatus: 签署人的状态
+        :type ApproveStatus: int
+        :param ReceiptId: 模板配置时候的签署人id,与控件绑定
+        :type ReceiptId: str
+        :param CustomUserId: 客户自定义userId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CustomUserId: str
+        :param Mobile: 签署人手机号
+        :type Mobile: str
+        :param SignOrder: 签署顺序
+        :type SignOrder: int
+        :param ApproveTime: 签署人签署时间
+        :type ApproveTime: int
+        :param ApproveType: 参与者类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApproveType: str
+        :param ApproverSource: 签署人侧用户来源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApproverSource: str
+        :param CustomApproverTag: 客户自定义签署人标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CustomApproverTag: str
+        :param OrganizationId: 签署人企业Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OrganizationId: str
+        :param OrganizationName: 签署人企业名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OrganizationName: str
+        """
+        self.ApproveMessage = None
+        self.ApproveName = None
+        self.ApproveStatus = None
+        self.ReceiptId = None
+        self.CustomUserId = None
+        self.Mobile = None
+        self.SignOrder = None
+        self.ApproveTime = None
+        self.ApproveType = None
+        self.ApproverSource = None
+        self.CustomApproverTag = None
+        self.OrganizationId = None
+        self.OrganizationName = None
+
+
+    def _deserialize(self, params):
+        self.ApproveMessage = params.get("ApproveMessage")
+        self.ApproveName = params.get("ApproveName")
+        self.ApproveStatus = params.get("ApproveStatus")
+        self.ReceiptId = params.get("ReceiptId")
+        self.CustomUserId = params.get("CustomUserId")
+        self.Mobile = params.get("Mobile")
+        self.SignOrder = params.get("SignOrder")
+        self.ApproveTime = params.get("ApproveTime")
+        self.ApproveType = params.get("ApproveType")
+        self.ApproverSource = params.get("ApproverSource")
+        self.CustomApproverTag = params.get("CustomApproverTag")
+        self.OrganizationId = params.get("OrganizationId")
+        self.OrganizationName = params.get("OrganizationName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1671,10 +1908,14 @@ HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
         :type IsFullText: bool
         :param PreReadTime: 签署前置条件：阅读时长限制，默认为不需要
         :type PreReadTime: int
-        :param UserId: 签署方经办人的用户ID,和签署方经办人姓名+手机号+证件必须有一个
+        :param UserId: 签署方经办人的用户ID,和签署方经办人姓名+手机号+证件必须有一个。非企微场景不使用此字段
         :type UserId: str
         :param Required: 当前只支持true，默认为true
         :type Required: bool
+        :param ApproverSource: 签署人用户来源,企微侧用户请传入：WEWORKAPP
+        :type ApproverSource: str
+        :param CustomApproverTag: 客户自定义签署人标识，64位长度，保证唯一。非企微场景不使用此字段
+        :type CustomApproverTag: str
         """
         self.ApproverType = None
         self.OrganizationName = None
@@ -1689,6 +1930,8 @@ HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
         self.PreReadTime = None
         self.UserId = None
         self.Required = None
+        self.ApproverSource = None
+        self.CustomApproverTag = None
 
 
     def _deserialize(self, params):
@@ -1705,6 +1948,68 @@ HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
         self.PreReadTime = params.get("PreReadTime")
         self.UserId = params.get("UserId")
         self.Required = params.get("Required")
+        self.ApproverSource = params.get("ApproverSource")
+        self.CustomApproverTag = params.get("CustomApproverTag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FlowDetailInfo(AbstractModel):
+    """此结构体(FlowDetailInfo)描述的是合同(流程)的详细信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: 合同(流程)的Id
+        :type FlowId: str
+        :param FlowName: 合同(流程)的名字
+        :type FlowName: str
+        :param FlowType: 合同(流程)的类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlowType: str
+        :param FlowStatus: 合同(流程)的状态
+        :type FlowStatus: int
+        :param FlowMessage: 合同(流程)的信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlowMessage: str
+        :param FlowDescription: 流程的描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlowDescription: str
+        :param CreatedOn: 合同(流程)的创建时间戳
+        :type CreatedOn: int
+        :param FlowApproverInfos: 合同(流程)的签署人数组
+        :type FlowApproverInfos: list of FlowApproverDetail
+        """
+        self.FlowId = None
+        self.FlowName = None
+        self.FlowType = None
+        self.FlowStatus = None
+        self.FlowMessage = None
+        self.FlowDescription = None
+        self.CreatedOn = None
+        self.FlowApproverInfos = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.FlowName = params.get("FlowName")
+        self.FlowType = params.get("FlowType")
+        self.FlowStatus = params.get("FlowStatus")
+        self.FlowMessage = params.get("FlowMessage")
+        self.FlowDescription = params.get("FlowDescription")
+        self.CreatedOn = params.get("CreatedOn")
+        if params.get("FlowApproverInfos") is not None:
+            self.FlowApproverInfos = []
+            for item in params.get("FlowApproverInfos"):
+                obj = FlowApproverDetail()
+                obj._deserialize(item)
+                self.FlowApproverInfos.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

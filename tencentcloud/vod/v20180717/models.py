@@ -19642,6 +19642,12 @@ class ProductInstance(AbstractModel):
 <li>FullRefund：可全额退款。</li>
 <li>Denied：不可退款。</li>
         :type RefundStatus: str
+        :param RenewStatus: 自动续费状态，取值有：
+<li>Never：不自动续费。</li>
+<li>Expire：到期自动续费。</li>
+<li>ExpireOrUseOut：到期或用完自动续费。</li>
+<li>NotSupport：不支持。</li>
+        :type RenewStatus: str
         """
         self.ProductType = None
         self.StartTime = None
@@ -19652,6 +19658,7 @@ class ProductInstance(AbstractModel):
         self.ProductInstanceResourceSet = None
         self.ProductInstanceStatus = None
         self.RefundStatus = None
+        self.RenewStatus = None
 
 
     def _deserialize(self, params):
@@ -19669,6 +19676,7 @@ class ProductInstance(AbstractModel):
                 self.ProductInstanceResourceSet.append(obj)
         self.ProductInstanceStatus = params.get("ProductInstanceStatus")
         self.RefundStatus = params.get("RefundStatus")
+        self.RenewStatus = params.get("RenewStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

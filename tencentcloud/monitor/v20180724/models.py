@@ -9890,6 +9890,12 @@ class PrometheusInstancesItem(AbstractModel):
         :param GrafanaInstanceId: 绑定的 Grafana 实例 ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type GrafanaInstanceId: str
+        :param AlertRuleLimit: 告警规则限制
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlertRuleLimit: int
+        :param RecordingRuleLimit: 预聚合规则限制
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecordingRuleLimit: int
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -9918,6 +9924,8 @@ class PrometheusInstancesItem(AbstractModel):
         self.GrafanaIpWhiteList = None
         self.Grant = None
         self.GrafanaInstanceId = None
+        self.AlertRuleLimit = None
+        self.RecordingRuleLimit = None
 
 
     def _deserialize(self, params):
@@ -9955,6 +9963,8 @@ class PrometheusInstancesItem(AbstractModel):
             self.Grant = PrometheusInstanceGrantInfo()
             self.Grant._deserialize(params.get("Grant"))
         self.GrafanaInstanceId = params.get("GrafanaInstanceId")
+        self.AlertRuleLimit = params.get("AlertRuleLimit")
+        self.RecordingRuleLimit = params.get("RecordingRuleLimit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

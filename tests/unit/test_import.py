@@ -1149,6 +1149,11 @@ def test_import_vm():
     from tencentcloud.vm.v20201229 import models
 
 
+def test_import_vm():
+    from tencentcloud.vm.v20210922 import vm_client
+    from tencentcloud.vm.v20210922 import models
+
+
 def test_import_vms():
     from tencentcloud.vms.v20200902 import vms_client
     from tencentcloud.vms.v20200902 import models

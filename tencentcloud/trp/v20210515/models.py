@@ -200,6 +200,8 @@ class CreateCodeBatchRequest(AbstractModel):
         :type Remark: str
         :param MpTpl: 活动ID
         :type MpTpl: str
+        :param CloneId: 克隆批次ID
+        :type CloneId: str
         """
         self.CorpId = None
         self.MerchantId = None
@@ -208,6 +210,7 @@ class CreateCodeBatchRequest(AbstractModel):
         self.BatchId = None
         self.Remark = None
         self.MpTpl = None
+        self.CloneId = None
 
 
     def _deserialize(self, params):
@@ -218,6 +221,7 @@ class CreateCodeBatchRequest(AbstractModel):
         self.BatchId = params.get("BatchId")
         self.Remark = params.get("Remark")
         self.MpTpl = params.get("MpTpl")
+        self.CloneId = params.get("CloneId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

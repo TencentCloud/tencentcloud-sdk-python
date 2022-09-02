@@ -3365,7 +3365,7 @@ class InquirePriceCreateRequest(AbstractModel):
         r"""
         :param Zone: 可用区,每个地域提供最佳实践
         :type Zone: str
-        :param GoodsNum: 购买商品数量
+        :param GoodsNum: 购买计算节点个数
         :type GoodsNum: int
         :param InstancePayMode: 实例购买类型，可选值为：PREPAID, POSTPAID, SERVERLESS
         :type InstancePayMode: str
