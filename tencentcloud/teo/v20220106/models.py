@@ -61,38 +61,50 @@ class ACLUserRule(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RuleName: 规则名
+        :param RuleName: 规则名。
         :type RuleName: str
-        :param Action: 动作
+        :param Action: 处罚动作。
+1. trans 放行
+2. drop 拦截
+3. monitor 观察
+4. ban IP封禁
+5. redirect 重定向
+6. page 指定页面
+7. alg Javascript挑战
         :type Action: str
-        :param RuleStatus: 状态
+        :param RuleStatus: 规则状态。
+1. on 规则生效
+2. off 规则失效
         :type RuleStatus: str
-        :param Conditions: ACL规则
+        :param Conditions: ACL规则。
         :type Conditions: list of ACLCondition
-        :param RulePriority: 规则优先级
+        :param RulePriority: 规则优先级，0-100。
         :type RulePriority: int
-        :param RuleID: 规则id
+        :param RuleID: 规则id。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RuleID: int
-        :param UpdateTime: 更新时间
+        :param UpdateTime: 更新时间。
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
-        :param PunishTime: ip封禁的惩罚时间
+        :param PunishTime: ip封禁的惩罚时间，0-2天
 注意：此字段可能返回 null，表示取不到有效值。
         :type PunishTime: int
-        :param PunishTimeUnit: ip封禁的惩罚时间单位
+        :param PunishTimeUnit: ip封禁的惩罚时间单位。
+1. second 秒
+2. 分钟 minutes
+3. hour 小时
 注意：此字段可能返回 null，表示取不到有效值。
         :type PunishTimeUnit: str
-        :param Name: 自定义返回页面的名称
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Name: str
-        :param PageId: 自定义返回页面的实例id
+        :param PageId: 自定义返回页面的实例id。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PageId: int
-        :param RedirectUrl: 重定向时候的地址，必须为本用户接入的站点子域名
+        :param Name: 自定义返回页面的名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param RedirectUrl: 重定向时候的地址，必须为本用户接入的站点子域名。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RedirectUrl: str
-        :param ResponseCode: 重定向时候的返回码
+        :param ResponseCode: 重定向时候的返回码。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResponseCode: int
         """
@@ -105,8 +117,8 @@ class ACLUserRule(AbstractModel):
         self.UpdateTime = None
         self.PunishTime = None
         self.PunishTimeUnit = None
-        self.Name = None
         self.PageId = None
+        self.Name = None
         self.RedirectUrl = None
         self.ResponseCode = None
 
@@ -126,8 +138,8 @@ class ACLUserRule(AbstractModel):
         self.UpdateTime = params.get("UpdateTime")
         self.PunishTime = params.get("PunishTime")
         self.PunishTimeUnit = params.get("PunishTimeUnit")
-        self.Name = params.get("Name")
         self.PageId = params.get("PageId")
+        self.Name = params.get("Name")
         self.RedirectUrl = params.get("RedirectUrl")
         self.ResponseCode = params.get("ResponseCode")
         memeber_set = set(params.keys())
@@ -146,9 +158,11 @@ class AclConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Switch: 开关
+        :param Switch: 开关。
+1. on 开启
+2. off 关闭
         :type Switch: str
-        :param UserRules: ACL用户规则
+        :param UserRules: 自定义-用户规则。
         :type UserRules: list of ACLUserRule
         """
         self.Switch = None
@@ -179,8 +193,10 @@ class AiRule(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Mode: smart_status_close-关闭；smart_status_open-拦截处置；
-smart_status_observe-观察处置
+        :param Mode: AI规则引擎状态，取值有：
+<li> smart_status_close：关闭；</li>
+<li> smart_status_open：拦截处置；</li>
+<li> smart_status_observe：观察处置。</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Mode: str
         """
@@ -405,17 +421,19 @@ class BotConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Switch: bot开关
+        :param Switch: 开关。
+1. on 开启
+2. off 关闭
         :type Switch: str
-        :param ManagedRule: 预置规则
+        :param ManagedRule: 通用详细基础规则。
         :type ManagedRule: :class:`tencentcloud.teo.v20220106.models.BotManagedRule`
-        :param UaBotRule: 保留
+        :param UaBotRule: ua基础规则。
         :type UaBotRule: :class:`tencentcloud.teo.v20220106.models.BotManagedRule`
-        :param IspBotRule: 保留
+        :param IspBotRule: isp基础规则。
         :type IspBotRule: :class:`tencentcloud.teo.v20220106.models.BotManagedRule`
-        :param PortraitRule: 用户画像规则
+        :param PortraitRule: 用户画像规则。
         :type PortraitRule: :class:`tencentcloud.teo.v20220106.models.BotPortraitRule`
-        :param IntelligenceRule: Bot智能分析
+        :param IntelligenceRule: Bot智能分析。
 注意：此字段可能返回 null，表示取不到有效值。
         :type IntelligenceRule: :class:`tencentcloud.teo.v20220106.models.IntelligenceRule`
         """
@@ -621,78 +639,82 @@ class BotManagedRule(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ManagedIds: 想开启的规则id
+        :param RuleID: 本规则的ID。
+        :type RuleID: int
+        :param ManagedIds: 老版本的通用规则ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ManagedIds: list of int
-        :param RuleID: 本规则的id
-        :type RuleID: int
-        :param Action: drop/trans/monitor/alg
+        :param Action: 触发规则后的处置方式。
+1. drop 拦截
+2. trans 放行
+3. monitor 观察
+4. alg Javascript挑战
         :type Action: str
-        :param PunishTime: ip封禁的惩罚时间
+        :param PunishTime: 封禁的惩罚时间。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PunishTime: int
-        :param PunishTimeUnit: 单位
+        :param PunishTimeUnit: 封禁的惩罚时间单位。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PunishTimeUnit: str
-        :param Name: 自定义返回页面的名称
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Name: str
-        :param PageId: 自定义返回页面的实例id
-注意：此字段可能返回 null，表示取不到有效值。
-        :type PageId: int
-        :param RedirectUrl: 重定向时候的地址，必须为本用户接入的站点子域名，使用URLENCODE
-注意：此字段可能返回 null，表示取不到有效值。
-        :type RedirectUrl: str
-        :param ResponseCode: 重定向时候的返回码
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ResponseCode: int
-        :param TransManagedIds: 放行的规则ID
+        :param TransManagedIds: 放行的规则ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TransManagedIds: list of int
-        :param AlgManagedIds: JS挑战的规则ID
+        :param AlgManagedIds: JS挑战的规则ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AlgManagedIds: list of int
-        :param CapManagedIds: 数字验证码的规则ID
+        :param CapManagedIds: 数字验证码的规则ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CapManagedIds: list of int
-        :param MonManagedIds: 观察的规则ID
+        :param MonManagedIds: 观察的规则ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type MonManagedIds: list of int
-        :param DropManagedIds: 拦截的规则ID
+        :param DropManagedIds: 拦截的规则ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DropManagedIds: list of int
+        :param PageId: 自定义返回页面的实例id。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageId: int
+        :param Name: 自定义返回页面的名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param RedirectUrl: 重定向时候的地址，必须为本用户接入的站点子域名，使用URLENCODE。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RedirectUrl: str
+        :param ResponseCode: 重定向时候的返回码。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResponseCode: int
         """
-        self.ManagedIds = None
         self.RuleID = None
+        self.ManagedIds = None
         self.Action = None
         self.PunishTime = None
         self.PunishTimeUnit = None
-        self.Name = None
-        self.PageId = None
-        self.RedirectUrl = None
-        self.ResponseCode = None
         self.TransManagedIds = None
         self.AlgManagedIds = None
         self.CapManagedIds = None
         self.MonManagedIds = None
         self.DropManagedIds = None
+        self.PageId = None
+        self.Name = None
+        self.RedirectUrl = None
+        self.ResponseCode = None
 
 
     def _deserialize(self, params):
-        self.ManagedIds = params.get("ManagedIds")
         self.RuleID = params.get("RuleID")
+        self.ManagedIds = params.get("ManagedIds")
         self.Action = params.get("Action")
         self.PunishTime = params.get("PunishTime")
         self.PunishTimeUnit = params.get("PunishTimeUnit")
-        self.Name = params.get("Name")
-        self.PageId = params.get("PageId")
-        self.RedirectUrl = params.get("RedirectUrl")
-        self.ResponseCode = params.get("ResponseCode")
         self.TransManagedIds = params.get("TransManagedIds")
         self.AlgManagedIds = params.get("AlgManagedIds")
         self.CapManagedIds = params.get("CapManagedIds")
         self.MonManagedIds = params.get("MonManagedIds")
         self.DropManagedIds = params.get("DropManagedIds")
+        self.PageId = params.get("PageId")
+        self.Name = params.get("Name")
+        self.RedirectUrl = params.get("RedirectUrl")
+        self.ResponseCode = params.get("ResponseCode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -745,40 +767,52 @@ class BotPortraitRule(AbstractModel):
 
     def __init__(self):
         r"""
-        :param RuleID: 本规则的id
-注意：此字段可能返回 null，表示取不到有效值。
-        :type RuleID: int
-        :param AlgManagedIds: JS挑战的规则ID
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AlgManagedIds: list of int
-        :param CapManagedIds: 数字验证码的规则ID
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CapManagedIds: list of int
-        :param MonManagedIds: 观察的规则ID
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MonManagedIds: list of int
-        :param DropManagedIds: 拦截的规则ID
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DropManagedIds: list of int
-        :param Switch: 本功能的开关
+        :param Switch: 本功能的开关。
+1. on 开启
+2. off 关闭
 注意：此字段可能返回 null，表示取不到有效值。
         :type Switch: str
+        :param RuleID: 本规则的ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleID: int
+        :param AlgManagedIds: JS挑战的规则ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlgManagedIds: list of int
+        :param CapManagedIds: 数字验证码的规则ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CapManagedIds: list of int
+        :param MonManagedIds: 观察的规则ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MonManagedIds: list of int
+        :param DropManagedIds: 拦截的规则ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DropManagedIds: list of int
+        :param ManagedIds: 保留。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ManagedIds: list of int
+        :param TransManagedIds: 保留。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TransManagedIds: list of int
         """
+        self.Switch = None
         self.RuleID = None
         self.AlgManagedIds = None
         self.CapManagedIds = None
         self.MonManagedIds = None
         self.DropManagedIds = None
-        self.Switch = None
+        self.ManagedIds = None
+        self.TransManagedIds = None
 
 
     def _deserialize(self, params):
+        self.Switch = params.get("Switch")
         self.RuleID = params.get("RuleID")
         self.AlgManagedIds = params.get("AlgManagedIds")
         self.CapManagedIds = params.get("CapManagedIds")
         self.MonManagedIds = params.get("MonManagedIds")
         self.DropManagedIds = params.get("DropManagedIds")
-        self.Switch = params.get("Switch")
+        self.ManagedIds = params.get("ManagedIds")
+        self.TransManagedIds = params.get("TransManagedIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8475,6 +8509,257 @@ class DownloadL7LogsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DropPageConfig(AbstractModel):
+    """拦截页面的总体配置，用于配置各个模块的拦截后行为。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 配置开关。
+1. on 开启
+2. off 关闭
+        :type Switch: str
+        :param Waf: Waf(托管规则)模块的拦截页面配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Waf: :class:`tencentcloud.teo.v20220106.models.DropPageDetail`
+        :param Acl: 自定义页面的拦截页面配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Acl: :class:`tencentcloud.teo.v20220106.models.DropPageDetail`
+        """
+        self.Switch = None
+        self.Waf = None
+        self.Acl = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        if params.get("Waf") is not None:
+            self.Waf = DropPageDetail()
+            self.Waf._deserialize(params.get("Waf"))
+        if params.get("Acl") is not None:
+            self.Acl = DropPageDetail()
+            self.Acl._deserialize(params.get("Acl"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DropPageDetail(AbstractModel):
+    """拦截页面的配置信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PageId: 拦截页面的唯一Id。系统默认包含一个自带拦截页面，Id值为0。
+该Id可通过创建拦截页面接口进行上传获取。如传入0，代表使用系统默认拦截页面
+        :type PageId: int
+        :param StatusCode: 拦截页面的HTTP状态码。状态码范围是 100 - 600。
+        :type StatusCode: int
+        :param Name: 页面的元信息，文件名或url。
+        :type Name: str
+        :param Type: 页面的类型。
+        :type Type: str
+        """
+        self.PageId = None
+        self.StatusCode = None
+        self.Name = None
+        self.Type = None
+
+
+    def _deserialize(self, params):
+        self.PageId = params.get("PageId")
+        self.StatusCode = params.get("StatusCode")
+        self.Name = params.get("Name")
+        self.Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExceptConfig(AbstractModel):
+    """例外规则，用于配置需要跳过特定场景的规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Switch: 开关。
+1. on 开启
+2. off 关闭
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Switch: str
+        :param UserRules: 例外规则详情。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserRules: list of ExceptUserRule
+        """
+        self.Switch = None
+        self.UserRules = None
+
+
+    def _deserialize(self, params):
+        self.Switch = params.get("Switch")
+        if params.get("UserRules") is not None:
+            self.UserRules = []
+            for item in params.get("UserRules"):
+                obj = ExceptUserRule()
+                obj._deserialize(item)
+                self.UserRules.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExceptUserRule(AbstractModel):
+    """例外规则的配置，包含生效的条件，生效的范围
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RuleID: 规则ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleID: int
+        :param RuleName: 规则名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleName: str
+        :param Action: 规则的处置方式。
+1. skip 跳过
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Action: str
+        :param RuleStatus: 规则生效状态。
+1. on 生效
+2. off 失效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleStatus: str
+        :param UpdateTime: 更新时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        :param Conditions: 匹配条件。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Conditions: list of ExceptUserRuleCondition
+        :param Scope: 规则生效的范围。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Scope: :class:`tencentcloud.teo.v20220106.models.ExceptUserRuleScope`
+        :param RulePriority: 优先级。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RulePriority: int
+        """
+        self.RuleID = None
+        self.RuleName = None
+        self.Action = None
+        self.RuleStatus = None
+        self.UpdateTime = None
+        self.Conditions = None
+        self.Scope = None
+        self.RulePriority = None
+
+
+    def _deserialize(self, params):
+        self.RuleID = params.get("RuleID")
+        self.RuleName = params.get("RuleName")
+        self.Action = params.get("Action")
+        self.RuleStatus = params.get("RuleStatus")
+        self.UpdateTime = params.get("UpdateTime")
+        if params.get("Conditions") is not None:
+            self.Conditions = []
+            for item in params.get("Conditions"):
+                obj = ExceptUserRuleCondition()
+                obj._deserialize(item)
+                self.Conditions.append(obj)
+        if params.get("Scope") is not None:
+            self.Scope = ExceptUserRuleScope()
+            self.Scope._deserialize(params.get("Scope"))
+        self.RulePriority = params.get("RulePriority")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExceptUserRuleCondition(AbstractModel):
+    """例外规则生效的具体条件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MatchFrom: 匹配项。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MatchFrom: str
+        :param MatchParam: 匹配项的参数。当 MatchFrom 为 header 时，可以填入 header 的 key 作为参数。
+        :type MatchParam: str
+        :param Operator: 匹配操作符。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Operator: str
+        :param MatchContent: 匹配值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MatchContent: str
+        """
+        self.MatchFrom = None
+        self.MatchParam = None
+        self.Operator = None
+        self.MatchContent = None
+
+
+    def _deserialize(self, params):
+        self.MatchFrom = params.get("MatchFrom")
+        self.MatchParam = params.get("MatchParam")
+        self.Operator = params.get("Operator")
+        self.MatchContent = params.get("MatchContent")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExceptUserRuleScope(AbstractModel):
+    """例外规则的生效范围
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Modules: 生效的模块
+
+1. waf Waf防护
+2. bot Bot防护
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Modules: list of str
+        """
+        self.Modules = None
+
+
+    def _deserialize(self, params):
+        self.Modules = params.get("Modules")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class FailReason(AbstractModel):
     """失败原因
 
@@ -8880,10 +9165,12 @@ class IntelligenceRule(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Switch: 开关
+        :param Switch: 开关。
+1. on 开启
+2. off 关闭
 注意：此字段可能返回 null，表示取不到有效值。
         :type Switch: str
-        :param Items: 规则详情
+        :param Items: 规则详情。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Items: list of IntelligenceRuleItem
         """
@@ -8915,10 +9202,19 @@ class IntelligenceRuleItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Label: 恶意BOT
+        :param Label: 智能分析标签。
+1. evil_bot 恶意
+2. suspect_bot 疑似恶意
+3. good_bot 好的
+4. normal 正常
 注意：此字段可能返回 null，表示取不到有效值。
         :type Label: str
-        :param Action: 动作
+        :param Action: 触发智能分析标签对应的处置方式。
+1. drop 拦截
+2. trans 放行
+3. monitor 监控
+4. alg Javascript挑战
+5. captcha 数字验证码
 注意：此字段可能返回 null，表示取不到有效值。
         :type Action: str
         """
@@ -8939,16 +9235,18 @@ class IntelligenceRuleItem(AbstractModel):
 
 
 class IpTableConfig(AbstractModel):
-    """IP黑白名单及IP区域控制配置
+    """基础管控规则配置。
 
     """
 
     def __init__(self):
         r"""
-        :param Switch: 开关
+        :param Switch: 开关。
+1. on 开启
+2. off 关闭
 注意：此字段可能返回 null，表示取不到有效值。
         :type Switch: str
-        :param Rules: []
+        :param Rules: 基础管控规则。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Rules: list of IpTableRule
         """
@@ -8974,40 +9272,47 @@ class IpTableConfig(AbstractModel):
 
 
 class IpTableRule(AbstractModel):
-    """IP黑白名单详细规则
+    """详细规则。
 
     """
 
     def __init__(self):
         r"""
-        :param Action: 动作: drop拦截，trans放行，monitor观察
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Action: str
-        :param MatchFrom: 根据类型匹配：ip(根据ip), area(根据区域)
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MatchFrom: str
-        :param MatchContent: 匹配内容
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MatchContent: str
-        :param RuleID: 规则id
+        :param RuleID: 规则ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RuleID: int
-        :param UpdateTime: 更新时间
+        :param Action: 处置动作。
+1. drop 拦截
+2. trans放行
+3. monitor观察
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Action: str
+        :param MatchFrom: 类型匹配。
+1. ip 根据ip
+2. area 根据区域
+3. ua 根据User-Agent
+4. referer 根据Referer
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MatchFrom: str
+        :param MatchContent: 匹配内容。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MatchContent: str
+        :param UpdateTime: 更新时间。
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
         """
+        self.RuleID = None
         self.Action = None
         self.MatchFrom = None
         self.MatchContent = None
-        self.RuleID = None
         self.UpdateTime = None
 
 
     def _deserialize(self, params):
+        self.RuleID = params.get("RuleID")
         self.Action = params.get("Action")
         self.MatchFrom = params.get("MatchFrom")
         self.MatchContent = params.get("MatchContent")
-        self.RuleID = params.get("RuleID")
         self.UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -11253,14 +11558,16 @@ class RateLimitConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Switch: 开关
+        :param Switch: 开关。
+1. on 开启RateLimit；
+2. off 关闭RateLimit
         :type Switch: str
-        :param UserRules: 用户规则
+        :param UserRules: 速率限制-用户规则列表。
         :type UserRules: list of RateLimitUserRule
-        :param Template: 默认模板
+        :param Template: 速率限制模板功能。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Template: :class:`tencentcloud.teo.v20220106.models.RateLimitTemplate`
-        :param Intelligence: 智能客户端过滤
+        :param Intelligence: 智能客户端过滤。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Intelligence: :class:`tencentcloud.teo.v20220106.models.RateLimitIntelligence`
         """
@@ -11300,10 +11607,14 @@ class RateLimitIntelligence(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Switch: 功能开关
+        :param Switch: 功能开关。
+1. on 开启
+2. off 关闭
 注意：此字段可能返回 null，表示取不到有效值。
         :type Switch: str
-        :param Action: 执行动作 monitor(观察), alg(挑战)
+        :param Action: 执行动作 
+1. monitor(观察)
+2. alg(挑战)
 注意：此字段可能返回 null，表示取不到有效值。
         :type Action: str
         """
@@ -11330,10 +11641,16 @@ class RateLimitTemplate(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Mode: 模板名称
+        :param Mode: 模板等级名称。
+1. sup_loose 自适应 - 超级宽松
+2. loose     自适应 - 宽松
+3. emergency 自适应 - 紧急
+4. normal    自适应 - 适中
+5. strict    固定阈值 - 严格
+6. close     关闭 - 仅精准速率限制生效
 注意：此字段可能返回 null，表示取不到有效值。
         :type Mode: str
-        :param Detail: 模板值详情
+        :param Detail: 模板值详情。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Detail: :class:`tencentcloud.teo.v20220106.models.RateLimitTemplateDetail`
         """
@@ -11356,28 +11673,34 @@ class RateLimitTemplate(AbstractModel):
 
 
 class RateLimitTemplateDetail(AbstractModel):
-    """模板当前详细配置
+    """模板当前详细配置。
 
     """
 
     def __init__(self):
         r"""
-        :param Mode: 模板名称
+        :param Mode: 模板等级名称。
+1. sup_loose 自适应 - 超级宽松
+2. loose     自适应 - 宽松
+3. emergency 自适应 - 紧急
+4. normal    自适应 - 适中
+5. strict    固定阈值 - 严格
+6. close     关闭 - 仅精准速率限制生效
 注意：此字段可能返回 null，表示取不到有效值。
         :type Mode: str
-        :param ID: 唯一id
+        :param ID: 唯一id。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ID: int
-        :param Action: 处置动作
+        :param Action: 处置动作。模板阀值触发后的处罚行为。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Action: str
-        :param PunishTime: 惩罚时间，秒
+        :param PunishTime: 惩罚时间，单位是秒。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PunishTime: int
-        :param Threshold: 阈值
+        :param Threshold: 阈值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Threshold: int
-        :param Period: 统计周期
+        :param Period: 统计周期。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Period: int
         """
@@ -11412,31 +11735,39 @@ class RateLimitUserRule(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Threshold: RateLimit统计阈值
+        :param Threshold: RateLimit统计阈值，单位是次，取值范围0-4294967294。
         :type Threshold: int
-        :param Period: RateLimit统计时间
+        :param Period: RateLimit统计时间，取值范围 10/20/30/40/50/60 单位是秒。
         :type Period: int
-        :param RuleName: 规则名
+        :param RuleName: 规则名，只能以英文字符，数字，下划线组合，且不能以下划线开头。
         :type RuleName: str
-        :param Action: 动作：monitor(观察), drop(拦截)
+        :param Action: 处置动作。
+1. monitor(观察)；
+2. drop(拦截)；
+3. alg(Javascript挑战)
         :type Action: str
-        :param PunishTime: 惩罚时长
+        :param PunishTime: 惩罚时长，0-100。
         :type PunishTime: int
-        :param PunishTimeUnit: 处罚时长单位，second
+        :param PunishTimeUnit: 处罚时长单位。
+1. second 秒; 
+2. minutes 分钟
+3. hour 小时
         :type PunishTimeUnit: str
-        :param RuleStatus: 规则状态
+        :param RuleStatus: 规则状态。
+1. on 生效
+2. off 不生效
         :type RuleStatus: str
-        :param Conditions: 规则
+        :param Conditions: 规则。
         :type Conditions: list of ACLCondition
-        :param RulePriority: 规则权重
+        :param RulePriority: 规则权重，取值范围0-100。
         :type RulePriority: int
-        :param RuleID: 规则id
+        :param RuleID: 规则id。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RuleID: int
-        :param FreqFields: 过滤词
+        :param FreqFields: 过滤词。
 注意：此字段可能返回 null，表示取不到有效值。
         :type FreqFields: list of str
-        :param UpdateTime: 更新时间
+        :param UpdateTime: 更新时间.
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
         """
@@ -12476,33 +12807,39 @@ class SecRuleRelatedInfo(AbstractModel):
 
 
 class SecurityConfig(AbstractModel):
-    """安全配置
+    """安全配置。
 
     """
 
     def __init__(self):
         r"""
-        :param WafConfig: 门神配置
+        :param WafConfig: 托管规则。如果为null，默认使用历史配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type WafConfig: :class:`tencentcloud.teo.v20220106.models.WafConfig`
-        :param RateLimitConfig: RateLimit配置
+        :param RateLimitConfig: 速率限制。如果为null，默认使用历史配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RateLimitConfig: :class:`tencentcloud.teo.v20220106.models.RateLimitConfig`
-        :param DdosConfig: DDoS配置
+        :param DdosConfig: DDoS配置。如果为null，默认使用历史配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DdosConfig: :class:`tencentcloud.teo.v20220106.models.DDoSConfig`
-        :param AclConfig: ACL配置
+        :param AclConfig: 自定义规则。如果为null，默认使用历史配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AclConfig: :class:`tencentcloud.teo.v20220106.models.AclConfig`
-        :param BotConfig: Bot配置
+        :param BotConfig: Bot配置。如果为null，默认使用历史配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type BotConfig: :class:`tencentcloud.teo.v20220106.models.BotConfig`
-        :param SwitchConfig: 总开关
+        :param SwitchConfig: 七层防护总开关。如果为null，默认使用历史配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SwitchConfig: :class:`tencentcloud.teo.v20220106.models.SwitchConfig`
-        :param IpTableConfig: IP黑白名单
+        :param IpTableConfig: 基础访问管控。如果为null，默认使用历史配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type IpTableConfig: :class:`tencentcloud.teo.v20220106.models.IpTableConfig`
+        :param ExceptConfig: 例外规则配置。如果为null，默认使用历史配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExceptConfig: :class:`tencentcloud.teo.v20220106.models.ExceptConfig`
+        :param DropPageConfig: 自定义拦截页面配置。如果为null，默认使用历史配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DropPageConfig: :class:`tencentcloud.teo.v20220106.models.DropPageConfig`
         """
         self.WafConfig = None
         self.RateLimitConfig = None
@@ -12511,6 +12848,8 @@ class SecurityConfig(AbstractModel):
         self.BotConfig = None
         self.SwitchConfig = None
         self.IpTableConfig = None
+        self.ExceptConfig = None
+        self.DropPageConfig = None
 
 
     def _deserialize(self, params):
@@ -12535,6 +12874,12 @@ class SecurityConfig(AbstractModel):
         if params.get("IpTableConfig") is not None:
             self.IpTableConfig = IpTableConfig()
             self.IpTableConfig._deserialize(params.get("IpTableConfig"))
+        if params.get("ExceptConfig") is not None:
+            self.ExceptConfig = ExceptConfig()
+            self.ExceptConfig._deserialize(params.get("ExceptConfig"))
+        if params.get("DropPageConfig") is not None:
+            self.DropPageConfig = DropPageConfig()
+            self.DropPageConfig._deserialize(params.get("DropPageConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -12763,7 +13108,9 @@ class SwitchConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param WebSwitch: Web类型的安全总开关：Web基础防护，自定义规则，速率限制
+        :param WebSwitch: Web类型的安全总开关生效范围，Waf，自定义规则，速率限制。
+1. on 开启
+2. off 关闭
         :type WebSwitch: str
         """
         self.WebSwitch = None
@@ -13180,21 +13527,30 @@ class VanityNameServersIps(AbstractModel):
 
 
 class WafConfig(AbstractModel):
-    """门神配置
+    """Waf配置。
 
     """
 
     def __init__(self):
         r"""
-        :param Switch: 开关
+        :param Switch: WafConfig开关，取值有：
+<li> on：开启；</li>
+<li> off：关闭。</li>开关仅与配置是否生效有关，即使为off（关闭），也可以正常修改配置的内容。
         :type Switch: str
-        :param Level: 防护级别，loose/normal/strict/stricter/custom
+        :param Level: 防护级别，取值有：
+<li> loose：宽松；</li>
+<li> normal：正常；</li>
+<li> strict：严格；</li>
+<li> stricter：超严格；</li>
+<li> custom：自定义。</li>
         :type Level: str
-        :param Mode: 模式 block-阻断；observe-观察模式；close-关闭
+        :param Mode: 全局WAF模式，取值有：
+<li> block：阻断（全局阻断，但可对详细规则配置观察）；</li>
+<li> observe：观察（无论详细规则配置什么，都为观察）。</li>
         :type Mode: str
-        :param WafRules: 托管规则黑白名单
+        :param WafRules: 托管规则详细配置。
         :type WafRules: :class:`tencentcloud.teo.v20220106.models.WafRule`
-        :param AiRule: AI规则引擎防护
+        :param AiRule: AI规则引擎防护配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AiRule: :class:`tencentcloud.teo.v20220106.models.AiRule`
         """
@@ -13231,22 +13587,22 @@ class WafRule(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BlockRuleIDs: 黑名单，ID参考接口 DescribeSecurityPolicyManagedRules
-        :type BlockRuleIDs: list of int
-        :param Switch: 托管规则 开关
+        :param Switch: 托管规则开关。 on为开启
         :type Switch: str
-        :param ObserveRuleIDs: 观察模式，ID参考接口 DescribeSecurityPolicyManagedRules
+        :param BlockRuleIDs: 黑名单ID列表，将规则ID加入本参数列表中代表该ID关闭，即该规则ID不再生效。ID参考接口 [DescribeSecurityPolicyManagedRules](https://tcloud4api.woa.com/document/product/1657/76030?!preview&!document=1)。
+        :type BlockRuleIDs: list of int
+        :param ObserveRuleIDs: 观察模式ID列表，将规则ID加入本参数列表中代表该ID使用观察模式生效，即该规则ID进入观察模式。ID参考接口 [DescribeSecurityPolicyManagedRules](https://tcloud4api.woa.com/document/product/1657/76030?!preview&!document=1)。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ObserveRuleIDs: list of int
         """
-        self.BlockRuleIDs = None
         self.Switch = None
+        self.BlockRuleIDs = None
         self.ObserveRuleIDs = None
 
 
     def _deserialize(self, params):
-        self.BlockRuleIDs = params.get("BlockRuleIDs")
         self.Switch = params.get("Switch")
+        self.BlockRuleIDs = params.get("BlockRuleIDs")
         self.ObserveRuleIDs = params.get("ObserveRuleIDs")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

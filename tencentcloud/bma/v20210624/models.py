@@ -485,6 +485,60 @@ class CreateCRCompanyVerifyResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateCRRightFileRequest(AbstractModel):
+    """CreateCRRightFile请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param WorkId: xxx
+        :type WorkId: int
+        :param FileList: xxx
+        :type FileList: list of File
+        """
+        self.WorkId = None
+        self.FileList = None
+
+
+    def _deserialize(self, params):
+        self.WorkId = params.get("WorkId")
+        if params.get("FileList") is not None:
+            self.FileList = []
+            for item in params.get("FileList"):
+                obj = File()
+                obj._deserialize(item)
+                self.FileList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCRRightFileResponse(AbstractModel):
+    """CreateCRRightFile返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FileIds: xxx
+        :type FileIds: list of int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FileIds = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FileIds = params.get("FileIds")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateCRRightRequest(AbstractModel):
     """CreateCRRight请求参数结构体
 
@@ -587,6 +641,87 @@ class CreateCRRightResponse(AbstractModel):
     def _deserialize(self, params):
         self.TortId = params.get("TortId")
         self.TortNum = params.get("TortNum")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateCRTortRequest(AbstractModel):
+    """CreateCRTort请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param WorkId: xx
+        :type WorkId: int
+        :param TortURL: xx
+        :type TortURL: str
+        :param TortPlat: xx
+        :type TortPlat: str
+        :param TortTitle: xx
+        :type TortTitle: str
+        """
+        self.WorkId = None
+        self.TortURL = None
+        self.TortPlat = None
+        self.TortTitle = None
+
+
+    def _deserialize(self, params):
+        self.WorkId = params.get("WorkId")
+        self.TortURL = params.get("TortURL")
+        self.TortPlat = params.get("TortPlat")
+        self.TortTitle = params.get("TortTitle")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCRTortResponse(AbstractModel):
+    """CreateCRTort返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param WorkId: xx
+        :type WorkId: int
+        :param TortId: xx
+        :type TortId: int
+        :param TortTitle: xx
+        :type TortTitle: str
+        :param TortPlat: xx
+        :type TortPlat: str
+        :param TortURL: xx
+        :type TortURL: str
+        :param TortDomain: xx
+        :type TortDomain: str
+        :param TortBodyName: xx
+        :type TortBodyName: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.WorkId = None
+        self.TortId = None
+        self.TortTitle = None
+        self.TortPlat = None
+        self.TortURL = None
+        self.TortDomain = None
+        self.TortBodyName = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.WorkId = params.get("WorkId")
+        self.TortId = params.get("TortId")
+        self.TortTitle = params.get("TortTitle")
+        self.TortPlat = params.get("TortPlat")
+        self.TortURL = params.get("TortURL")
+        self.TortDomain = params.get("TortDomain")
+        self.TortBodyName = params.get("TortBodyName")
         self.RequestId = params.get("RequestId")
 
 
@@ -1363,6 +1498,42 @@ class FakeURLInfo(AbstractModel):
         
 
 
+class File(AbstractModel):
+    """权属文件列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FileUrl: xxx
+        :type FileUrl: str
+        :param FileType: xxx
+        :type FileType: int
+        :param ValidStartDate: xxx
+        :type ValidStartDate: str
+        :param ValidEndDate: xxx
+        :type ValidEndDate: str
+        """
+        self.FileUrl = None
+        self.FileType = None
+        self.ValidStartDate = None
+        self.ValidEndDate = None
+
+
+    def _deserialize(self, params):
+        self.FileUrl = params.get("FileUrl")
+        self.FileType = params.get("FileType")
+        self.ValidStartDate = params.get("ValidStartDate")
+        self.ValidEndDate = params.get("ValidEndDate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Filter(AbstractModel):
     """过滤参数
 
@@ -1480,16 +1651,20 @@ class ModifyCRMonitorRequest(AbstractModel):
         r"""
         :param WorkId: 作品ID
         :type WorkId: int
-        :param MonitorStatus: 监测状态 1-开启监测 2-关闭监测 默认为1
+        :param MonitorStatus: 监测状态 1-开启监测 2-关闭监测
         :type MonitorStatus: str
+        :param MonitorEnd: 默认不停止，支持续期
+        :type MonitorEnd: str
         """
         self.WorkId = None
         self.MonitorStatus = None
+        self.MonitorEnd = None
 
 
     def _deserialize(self, params):
         self.WorkId = params.get("WorkId")
         self.MonitorStatus = params.get("MonitorStatus")
+        self.MonitorEnd = params.get("MonitorEnd")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1599,6 +1774,71 @@ class ModifyCRRightStatusRequest(AbstractModel):
 
 class ModifyCRRightStatusResponse(AbstractModel):
     """ModifyCRRightStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyCRWhiteListRequest(AbstractModel):
+    """ModifyCRWhiteList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param WhiteListId: 白名单ID
+        :type WhiteListId: int
+        :param PlatForm: 平台名称
+        :type PlatForm: str
+        :param PlatUrl: 平台站点链接
+        :type PlatUrl: str
+        :param AuthorId: 作者ID
+        :type AuthorId: str
+        :param WorksId: 作品ID
+        :type WorksId: int
+        :param WorkId: xxx
+        :type WorkId: int
+        :param WhiteSites: xxx
+        :type WhiteSites: str
+        """
+        self.WhiteListId = None
+        self.PlatForm = None
+        self.PlatUrl = None
+        self.AuthorId = None
+        self.WorksId = None
+        self.WorkId = None
+        self.WhiteSites = None
+
+
+    def _deserialize(self, params):
+        self.WhiteListId = params.get("WhiteListId")
+        self.PlatForm = params.get("PlatForm")
+        self.PlatUrl = params.get("PlatUrl")
+        self.AuthorId = params.get("AuthorId")
+        self.WorksId = params.get("WorksId")
+        self.WorkId = params.get("WorkId")
+        self.WhiteSites = params.get("WhiteSites")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCRWhiteListResponse(AbstractModel):
+    """ModifyCRWhiteList返回参数结构体
 
     """
 

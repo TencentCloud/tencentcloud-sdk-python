@@ -128,6 +128,9 @@ UNSUPPORTEDOPERATION_NOBANLANCE = 'UnsupportedOperation.NoBanlance'
 # 客户免费额度已用完。
 UNSUPPORTEDOPERATION_NOFREEACCOUNT = 'UnsupportedOperation.NoFreeAccount'
 
+# 资源包余量已用尽。
+UNSUPPORTEDOPERATION_PKGEXHAUSTED = 'UnsupportedOperation.PkgExhausted'
+
 # 服务器已打开。
 UNSUPPORTEDOPERATION_SERVERALREADYOPEN = 'UnsupportedOperation.ServerAlreadyOpen'
 

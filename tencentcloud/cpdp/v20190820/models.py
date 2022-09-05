@@ -5545,6 +5545,19 @@ development: 开发环境
         :type SubMerchantStoreName: str
         :param OrganizationInfo: 公司信息
         :type OrganizationInfo: :class:`tencentcloud.cpdp.v20190820.models.OrganizationInfo`
+        :param SubMerchantIdType: 子商户证件类型
+1 - 身份证
+3 - 回乡证
+4 - 中国护照
+5 - 台胞证
+19 - 外国护照
+52 - 组织机构代码证
+68 - 营业执照 
+73 - 统一社会信用代码
+        :type SubMerchantIdType: str
+        :param SubMerchantIdCode: 子商户证件号码
+<敏感信息>加密详见<a href="https://cloud.tencent.com/document/product/1122/48979" target="_blank">《商户端接口敏感信息加密说明》</a>
+        :type SubMerchantIdCode: str
         """
         self.MidasAppId = None
         self.SubMchId = None
@@ -5565,6 +5578,8 @@ development: 开发环境
         self.MidasEnvironment = None
         self.SubMerchantStoreName = None
         self.OrganizationInfo = None
+        self.SubMerchantIdType = None
+        self.SubMerchantIdCode = None
 
 
     def _deserialize(self, params):
@@ -5589,6 +5604,8 @@ development: 开发环境
         if params.get("OrganizationInfo") is not None:
             self.OrganizationInfo = OrganizationInfo()
             self.OrganizationInfo._deserialize(params.get("OrganizationInfo"))
+        self.SubMerchantIdType = params.get("SubMerchantIdType")
+        self.SubMerchantIdCode = params.get("SubMerchantIdCode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -21546,6 +21563,8 @@ SUCCESS：支付成功
 CLOSED：关单
 PAY_FAIL：支付失败
 REVOKE：退票
+PART_REFUND：部分退款
+FULL_REFUND：全部退款
         :type OrderStatus: str
         :param ChannelName: 支付渠道名称，如TENPAY
         :type ChannelName: str

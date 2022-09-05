@@ -356,6 +356,9 @@ INVALIDPARAMETERVALUE_TAGVALNOTEXISTS = 'InvalidParameterValue.TagValNotExists'
 # 无效参数值。参数值太长。
 INVALIDPARAMETERVALUE_TOOLONG = 'InvalidParameterValue.TooLong'
 
+# 该流量包ID不合法。
+INVALIDPARAMETERVALUE_TRAFFICPACKAGEIDMALFORMED = 'InvalidParameterValue.TrafficPackageIdMalformed'
+
 # 该可用区不可用。
 INVALIDPARAMETERVALUE_UNAVAILABLEZONE = 'InvalidParameterValue.UnavailableZone'
 

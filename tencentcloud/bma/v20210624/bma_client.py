@@ -258,6 +258,64 @@ class BmaClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateCRRightFile(self, request):
+        """新增权属文件
+
+        :param request: Request instance for CreateCRRightFile.
+        :type request: :class:`tencentcloud.bma.v20210624.models.CreateCRRightFileRequest`
+        :rtype: :class:`tencentcloud.bma.v20210624.models.CreateCRRightFileResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCRRightFile", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateCRRightFileResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateCRTort(self, request):
+        """举报侵权链接
+
+        :param request: Request instance for CreateCRTort.
+        :type request: :class:`tencentcloud.bma.v20210624.models.CreateCRTortRequest`
+        :rtype: :class:`tencentcloud.bma.v20210624.models.CreateCRTortResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCRTort", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateCRTortResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateCRUserVerify(self, request):
         """品牌经营管家-版权保护个人认证接口
 
@@ -650,6 +708,35 @@ class BmaClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyCRRightStatusResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyCRWhiteList(self, request):
+        """版权保护-白名单修改接口
+
+        :param request: Request instance for ModifyCRWhiteList.
+        :type request: :class:`tencentcloud.bma.v20210624.models.ModifyCRWhiteListRequest`
+        :rtype: :class:`tencentcloud.bma.v20210624.models.ModifyCRWhiteListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyCRWhiteList", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyCRWhiteListResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
