@@ -677,7 +677,7 @@ class VpcClient(AbstractClient):
 
 
     def CheckAssistantCidr(self, request):
-        """本接口(CheckAssistantCidr)用于检查辅助CIDR是否与存量路由、对等连接（对端VPC的CIDR）等资源存在冲突。如果存在重叠，则返回重叠的资源。（接口灰度中，如需使用请提工单。）
+        """本接口(CheckAssistantCidr)用于检查辅助CIDR是否与存量路由、对等连接（对端VPC的CIDR）等资源存在冲突。如果存在重叠，则返回重叠的资源。
         * 检测辅助CIDR是否与当前VPC的主CIDR和辅助CIDR存在重叠。
         * 检测辅助CIDR是否与当前VPC的路由的目的端存在重叠。
         * 检测辅助CIDR是否与当前VPC的对等连接，对端VPC下的主CIDR或辅助CIDR存在重叠。
@@ -890,7 +890,7 @@ class VpcClient(AbstractClient):
 
 
     def CreateAssistantCidr(self, request):
-        """本接口(CreateAssistantCidr)用于批量创建辅助CIDR。（接口灰度中，如需使用请提工单。）
+        """本接口(CreateAssistantCidr)用于批量创建辅助CIDR。
 
         :param request: Request instance for CreateAssistantCidr.
         :type request: :class:`tencentcloud.vpc.v20170312.models.CreateAssistantCidrRequest`
@@ -1598,7 +1598,7 @@ class VpcClient(AbstractClient):
         <li>SecurityGroupId 字段允许输入与待修改的安全组位于相同项目中的安全组 ID，包括这个安全组 ID 本身，代表安全组下所有云服务器的内网 IP。使用这个字段时，这条规则用来匹配网络报文的过程中会随着被使用的这个 ID 所关联的云服务器变化而变化，不需要重新修改。</li>
         <li>Port 字段允许输入一个单独端口号，或者用减号分隔的两个端口号代表端口范围，例如80或8000-8010。只有当 Protocol 字段是 TCP 或 UDP 时，Port 字段才被接受，即 Protocol 字段不是 TCP 或 UDP 时，Protocol 和 Port 排他关系，不允许同时输入，否则会接口报错。</li>
         <li>Action 字段只允许输入 ACCEPT 或 DROP。</li>
-        <li>CidrBlock, Ipv6CidrBlock, SecurityGroupId, AddressTemplate 四者是排他关系，不允许同时输入，Protocol + Port 和 ServiceTemplate 二者是排他关系，不允许同时输入。</li>
+        <li>CidrBlock, Ipv6CidrBlock, SecurityGroupId, AddressTemplate 四者是排他关系，不允许同时输入，Protocol + Port 和 ServiceTemplate 二者是排他关系，不允许同时输入。IPv6CidrBlock和ICMP是排他关系，如需使用，请输入ICMPV6。</li>
         <li>一次请求中只能创建单个方向的规则, 如果需要指定索引（PolicyIndex）参数, 多条规则的索引必须一致。如想在规则最前面插入一条，则填0即可，如果想在最后追加，该字段可不填。</li>
         </ul></li></ul>
 
@@ -1800,7 +1800,7 @@ class VpcClient(AbstractClient):
 
     def CreateVpc(self, request):
         """本接口(CreateVpc)用于创建私有网络(VPC)。
-        * 用户可以创建的最小网段子网掩码为28（有16个IP地址），最大网段子网掩码为16（65,536个IP地址），如果需要规划VPC网段请参见[网络规划](https://cloud.tencent.com/document/product/215/30313)。
+        * 用户可以创建的最小网段子网掩码为28（有16个IP地址），10.0.0.0/12，172.16.0.0/12最大网段子网掩码为12（1,048,576个IP地址），192.168.0.0/16最大网段子网掩码为16（65,536个IP地址）如果需要规划VPC网段请参见[网络规划](https://cloud.tencent.com/document/product/215/30313)。
         * 同一个地域能创建的VPC资源个数也是有限制的，详见 <a href="https://cloud.tencent.com/doc/product/215/537" title="VPC使用限制">VPC使用限制</a>，如果需要申请更多资源，请提交[工单申请](https://console.cloud.tencent.com/workorder/category)。
         * 创建VPC同时可以绑定标签, 应答里的标签列表代表添加成功的标签。
 
@@ -2123,7 +2123,7 @@ class VpcClient(AbstractClient):
 
 
     def DeleteAssistantCidr(self, request):
-        """本接口(DeleteAssistantCidr)用于删除辅助CIDR。（接口灰度中，如需使用请提工单。）
+        """本接口(DeleteAssistantCidr)用于删除辅助CIDR。
 
         :param request: Request instance for DeleteAssistantCidr.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteAssistantCidrRequest`
@@ -3306,7 +3306,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeAssistantCidr(self, request):
-        """本接口（DescribeAssistantCidr）用于查询辅助CIDR列表。（接口灰度中，如需使用请提工单。）
+        """本接口（DescribeAssistantCidr）用于查询辅助CIDR列表。
 
         :param request: Request instance for DescribeAssistantCidr.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeAssistantCidrRequest`
@@ -6506,7 +6506,7 @@ class VpcClient(AbstractClient):
 
 
     def ModifyAssistantCidr(self, request):
-        """本接口(ModifyAssistantCidr)用于批量修改辅助CIDR，支持新增和删除。（接口灰度中，如需使用请提工单。）
+        """本接口(ModifyAssistantCidr)用于批量修改辅助CIDR，支持新增和删除。
 
         :param request: Request instance for ModifyAssistantCidr.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyAssistantCidrRequest`

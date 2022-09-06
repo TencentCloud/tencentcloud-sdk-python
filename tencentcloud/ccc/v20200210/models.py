@@ -29,14 +29,18 @@ class AutoCalloutTaskCalleeInfo(AbstractModel):
         :type Callee: str
         :param State: 呼叫状态 0初始 1已接听 2未接听 3呼叫中 4待重试
         :type State: int
+        :param Sessions: 会话ID列表
+        :type Sessions: list of str
         """
         self.Callee = None
         self.State = None
+        self.Sessions = None
 
 
     def _deserialize(self, params):
         self.Callee = params.get("Callee")
         self.State = params.get("State")
+        self.Sessions = params.get("Sessions")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

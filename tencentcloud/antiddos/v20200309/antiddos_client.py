@@ -2549,35 +2549,6 @@ class AntiddosClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ModifyL7RulesEdge(self, request):
-        """修改边界防护L7转发规则
-
-        :param request: Request instance for ModifyL7RulesEdge.
-        :type request: :class:`tencentcloud.antiddos.v20200309.models.ModifyL7RulesEdgeRequest`
-        :rtype: :class:`tencentcloud.antiddos.v20200309.models.ModifyL7RulesEdgeResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("ModifyL7RulesEdge", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ModifyL7RulesEdgeResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def ModifyNewDomainRules(self, request):
         """修改7层转发规则
 

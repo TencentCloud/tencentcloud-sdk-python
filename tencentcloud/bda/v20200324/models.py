@@ -1694,14 +1694,18 @@ Url、Image必须提供一个，如果都提供，只使用 Url。
 非腾讯云存储的Url速度和稳定性可能受一定影响。 
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :type Url: str
+        :param RspImgType: 返回图像方式（base64 或 url ) ，二选一。url有效期为30分钟。
+        :type RspImgType: str
         """
         self.Image = None
         self.Url = None
+        self.RspImgType = None
 
 
     def _deserialize(self, params):
         self.Image = params.get("Image")
         self.Url = params.get("Url")
+        self.RspImgType = params.get("RspImgType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1719,20 +1723,37 @@ class SegmentPortraitPicResponse(AbstractModel):
     def __init__(self):
         r"""
         :param ResultImage: 处理后的图片 base64 数据，透明背景图
+注意：此字段可能返回 null，表示取不到有效值。
         :type ResultImage: str
         :param ResultMask: 一个通过 Base64 编码的文件，解码后文件由 Float 型浮点数组成。这些浮点数代表原图从左上角开始的每一行的每一个像素点，每一个浮点数的值是原图相应像素点位于人体轮廓内的置信度（0-1）转化的灰度值（0-255）
+注意：此字段可能返回 null，表示取不到有效值。
         :type ResultMask: str
+        :param HasForeground: 图片是否存在前景。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HasForeground: bool
+        :param ResultImageUrl: 支持将处理过的图片 base64 数据，透明背景图以URL的形式返回值，URL有效期为30分钟。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResultImageUrl: str
+        :param ResultMaskUrl: 一个通过 Base64 编码的文件，解码后文件由 Float 型浮点数组成。支持以URL形式的返回值；URL有效期为30分钟。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResultMaskUrl: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.ResultImage = None
         self.ResultMask = None
+        self.HasForeground = None
+        self.ResultImageUrl = None
+        self.ResultMaskUrl = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.ResultImage = params.get("ResultImage")
         self.ResultMask = params.get("ResultMask")
+        self.HasForeground = params.get("HasForeground")
+        self.ResultImageUrl = params.get("ResultImageUrl")
+        self.ResultMaskUrl = params.get("ResultMaskUrl")
         self.RequestId = params.get("RequestId")
 
 

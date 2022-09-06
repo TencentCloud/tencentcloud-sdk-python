@@ -116,7 +116,7 @@ vendor：云厂商
 当SourceType为net时，SourceContent为源IP地址或者CIDR地址。
 例如：1.1.1.0/24
 
-当SourceType为template时，SourceContent为源地址模板名称。
+当SourceType为template时，SourceContent为源地址模板id。
 
 当SourceType为location时，SourceContent为源区域。
 例如["BJ11", "ZB"]
@@ -139,7 +139,7 @@ domain: 域名或者ip
 当DestType为net时，DestContent为源IP地址或者CIDR地址。
 例如：1.1.1.0/24
 
-当DestType为template时，DestContent为源地址模板名称。
+当DestType为template时，DestContent为源地址模板id。
 
 当DestType为location时，DestContent为源区域。
 例如["BJ11", "ZB"]
@@ -4410,60 +4410,6 @@ class ModifyTableStatusResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.Status = params.get("Status")
-        self.RequestId = params.get("RequestId")
-
-
-class ModifyVPCSwitchStatusRequest(AbstractModel):
-    """ModifyVPCSwitchStatus请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param FirewallVpcId: 公网IP
-        :type FirewallVpcId: str
-        :param Status: 状态值，0: 关闭 ,1:开启
-        :type Status: int
-        """
-        self.FirewallVpcId = None
-        self.Status = None
-
-
-    def _deserialize(self, params):
-        self.FirewallVpcId = params.get("FirewallVpcId")
-        self.Status = params.get("Status")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ModifyVPCSwitchStatusResponse(AbstractModel):
-    """ModifyVPCSwitchStatus返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param ReturnMsg: 接口返回信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ReturnMsg: str
-        :param ReturnCode: 接口返回错误码，0请求成功  非0失败
-        :type ReturnCode: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.ReturnMsg = None
-        self.ReturnCode = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.ReturnMsg = params.get("ReturnMsg")
-        self.ReturnCode = params.get("ReturnCode")
         self.RequestId = params.get("RequestId")
 
 

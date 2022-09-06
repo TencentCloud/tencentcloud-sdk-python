@@ -7561,63 +7561,6 @@ class ModifyDomainUsrNameResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class ModifyL7RulesEdgeRequest(AbstractModel):
-    """ModifyL7RulesEdge请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Business: 大禹子产品代号（edge表示边界防护产品）
-        :type Business: str
-        :param Id: 资源ID
-        :type Id: str
-        :param Rule: 规则
-        :type Rule: :class:`tencentcloud.antiddos.v20200309.models.L7RuleEntry`
-        """
-        self.Business = None
-        self.Id = None
-        self.Rule = None
-
-
-    def _deserialize(self, params):
-        self.Business = params.get("Business")
-        self.Id = params.get("Id")
-        if params.get("Rule") is not None:
-            self.Rule = L7RuleEntry()
-            self.Rule._deserialize(params.get("Rule"))
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ModifyL7RulesEdgeResponse(AbstractModel):
-    """ModifyL7RulesEdge返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Success: 成功码
-        :type Success: :class:`tencentcloud.antiddos.v20200309.models.SuccessCode`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.Success = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        if params.get("Success") is not None:
-            self.Success = SuccessCode()
-            self.Success._deserialize(params.get("Success"))
-        self.RequestId = params.get("RequestId")
-
-
 class ModifyNewDomainRulesRequest(AbstractModel):
     """ModifyNewDomainRules请求参数结构体
 

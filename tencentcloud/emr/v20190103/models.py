@@ -622,7 +622,7 @@ POSTPAID_BY_HOUR 按量计费，默认方式。
         :type VPCSettings: :class:`tencentcloud.emr.v20190103.models.VPCSettings`
         :param LoginSettings: 实例登录配置。
         :type LoginSettings: :class:`tencentcloud.emr.v20190103.models.LoginSettings`
-        :param TagSpecification: 实例标签。
+        :param TagSpecification: 实例标签，示例：["{\"TagKey\":\"test-tag1\",\"TagValue\":\"001\"}","{\"TagKey\":\"test-tag2\",\"TagValue\":\"002\"}"]。
         :type TagSpecification: list of str
         :param MetaDB: 元数据库配置。
         :type MetaDB: :class:`tencentcloud.emr.v20190103.models.MetaDbInfo`
@@ -1055,6 +1055,10 @@ class DescribeClusterNodesRequest(AbstractModel):
         :type HardwareResourceType: str
         :param SearchFields: 支持搜索的字段
         :type SearchFields: list of SearchItem
+        :param OrderField: 无
+        :type OrderField: str
+        :param Asc: 无
+        :type Asc: int
         """
         self.InstanceId = None
         self.NodeFlag = None
@@ -1062,6 +1066,8 @@ class DescribeClusterNodesRequest(AbstractModel):
         self.Limit = None
         self.HardwareResourceType = None
         self.SearchFields = None
+        self.OrderField = None
+        self.Asc = None
 
 
     def _deserialize(self, params):
@@ -1076,6 +1082,8 @@ class DescribeClusterNodesRequest(AbstractModel):
                 obj = SearchItem()
                 obj._deserialize(item)
                 self.SearchFields.append(obj)
+        self.OrderField = params.get("OrderField")
+        self.Asc = params.get("Asc")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2934,16 +2942,21 @@ class JobResult(AbstractModel):
 “JobFlowStepStatusSucceed”，任务步骤执行成功。
 注意：此字段可能返回 null，表示取不到有效值。
         :type JobState: str
+        :param ApplicationId: YARN任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationId: str
         """
         self.Name = None
         self.ActionOnFailure = None
         self.JobState = None
+        self.ApplicationId = None
 
 
     def _deserialize(self, params):
         self.Name = params.get("Name")
         self.ActionOnFailure = params.get("ActionOnFailure")
         self.JobState = params.get("JobState")
+        self.ApplicationId = params.get("ApplicationId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3489,6 +3502,18 @@ class NodeHardwareInfo(AbstractModel):
         :param Clients: 客户端
 注意：此字段可能返回 null，表示取不到有效值。
         :type Clients: str
+        :param CurrentTime: 系统当前时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CurrentTime: str
+        :param IsFederation: 是否用于联邦
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsFederation: int
+        :param DeviceName: 设备名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeviceName: str
+        :param ServiceClient: 服务
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceClient: str
         """
         self.AppId = None
         self.SerialNo = None
@@ -3534,6 +3559,10 @@ class NodeHardwareInfo(AbstractModel):
         self.Zone = None
         self.SubnetInfo = None
         self.Clients = None
+        self.CurrentTime = None
+        self.IsFederation = None
+        self.DeviceName = None
+        self.ServiceClient = None
 
 
     def _deserialize(self, params):
@@ -3595,6 +3624,10 @@ class NodeHardwareInfo(AbstractModel):
             self.SubnetInfo = SubnetInfo()
             self.SubnetInfo._deserialize(params.get("SubnetInfo"))
         self.Clients = params.get("Clients")
+        self.CurrentTime = params.get("CurrentTime")
+        self.IsFederation = params.get("IsFederation")
+        self.DeviceName = params.get("DeviceName")
+        self.ServiceClient = params.get("ServiceClient")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4811,8 +4844,7 @@ class Step(AbstractModel):
         :type ExecutionStep: :class:`tencentcloud.emr.v20190103.models.Execution`
         :param ActionOnFailure: 执行失败策略。
 1. TERMINATE_CLUSTER 执行失败时退出并销毁集群。
-2. CANCEL_AND_WAIT 执行失败时阻塞等待。
-3. CONTINUE 执行失败时跳过并执行后续步骤。
+2. CONTINUE 执行失败时跳过并执行后续步骤。
         :type ActionOnFailure: str
         :param User: 指定执行Step时的用户名，非必须，默认为hadoop。
         :type User: str

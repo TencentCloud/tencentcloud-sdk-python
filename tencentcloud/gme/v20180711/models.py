@@ -1168,16 +1168,24 @@ class DescribeUserInAndOutTimeRequest(AbstractModel):
         :type RoomId: int
         :param UserId: 用户ID
         :type UserId: int
+        :param UserIdStr: 字符串类型用户ID
+        :type UserIdStr: str
+        :param RoomIdStr: 字符串类型房间ID
+        :type RoomIdStr: str
         """
         self.BizId = None
         self.RoomId = None
         self.UserId = None
+        self.UserIdStr = None
+        self.RoomIdStr = None
 
 
     def _deserialize(self, params):
         self.BizId = params.get("BizId")
         self.RoomId = params.get("RoomId")
         self.UserId = params.get("UserId")
+        self.UserIdStr = params.get("UserIdStr")
+        self.RoomIdStr = params.get("RoomIdStr")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

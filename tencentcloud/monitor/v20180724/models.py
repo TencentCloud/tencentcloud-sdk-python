@@ -1764,13 +1764,18 @@ class CreateGrafanaNotificationChannelResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param ChannelId: 通道 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChannelId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.ChannelId = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.ChannelId = params.get("ChannelId")
         self.RequestId = params.get("RequestId")
 
 
@@ -2247,13 +2252,17 @@ class CreateSSOAccountResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param UserId: 已添加的用户 UIN
+        :type UserId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.UserId = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.UserId = params.get("UserId")
         self.RequestId = params.get("RequestId")
 
 
@@ -4968,12 +4977,16 @@ class DescribeInstalledPluginsRequest(AbstractModel):
         r"""
         :param InstanceId: 实例 ID
         :type InstanceId: str
+        :param PluginId: 按插件 ID 过滤
+        :type PluginId: str
         """
         self.InstanceId = None
+        self.PluginId = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
+        self.PluginId = params.get("PluginId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7083,12 +7096,16 @@ class DescribeSSOAccountRequest(AbstractModel):
         r"""
         :param InstanceId: 实例ID
         :type InstanceId: str
+        :param UserId: 按账号 UIN 进行过滤
+        :type UserId: str
         """
         self.InstanceId = None
+        self.UserId = None
 
 
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
+        self.UserId = params.get("UserId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7995,12 +8012,23 @@ class GrafanaNotificationChannel(AbstractModel):
         :type CreatedAt: str
         :param UpdatedAt: 更新时间
         :type UpdatedAt: str
+        :param OrgId: 默认生效组织
+        :type OrgId: str
+        :param ExtraOrgIds: 额外生效组织
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExtraOrgIds: list of str
+        :param OrgIds: 生效组织
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OrgIds: str
         """
         self.ChannelId = None
         self.ChannelName = None
         self.Receivers = None
         self.CreatedAt = None
         self.UpdatedAt = None
+        self.OrgId = None
+        self.ExtraOrgIds = None
+        self.OrgIds = None
 
 
     def _deserialize(self, params):
@@ -8009,6 +8037,9 @@ class GrafanaNotificationChannel(AbstractModel):
         self.Receivers = params.get("Receivers")
         self.CreatedAt = params.get("CreatedAt")
         self.UpdatedAt = params.get("UpdatedAt")
+        self.OrgId = params.get("OrgId")
+        self.ExtraOrgIds = params.get("ExtraOrgIds")
+        self.OrgIds = params.get("OrgIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8087,13 +8118,18 @@ class InstallPluginsResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param PluginIds: 已安装插件 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PluginIds: list of str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.PluginIds = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.PluginIds = params.get("PluginIds")
         self.RequestId = params.get("RequestId")
 
 

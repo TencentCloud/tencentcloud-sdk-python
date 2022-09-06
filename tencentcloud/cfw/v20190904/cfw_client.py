@@ -1857,35 +1857,6 @@ class CfwClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def ModifyVPCSwitchStatus(self, request):
-        """单个修改VPC火墙开关
-
-        :param request: Request instance for ModifyVPCSwitchStatus.
-        :type request: :class:`tencentcloud.cfw.v20190904.models.ModifyVPCSwitchStatusRequest`
-        :rtype: :class:`tencentcloud.cfw.v20190904.models.ModifyVPCSwitchStatusResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("ModifyVPCSwitchStatus", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.ModifyVPCSwitchStatusResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def RemoveAcRule(self, request):
         """删除互联网边界规则
 
