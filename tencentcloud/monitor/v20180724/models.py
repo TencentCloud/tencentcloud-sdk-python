@@ -1707,13 +1707,18 @@ class CreateGrafanaIntegrationResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param IntegrationId: 集成 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IntegrationId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self.IntegrationId = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
+        self.IntegrationId = params.get("IntegrationId")
         self.RequestId = params.get("RequestId")
 
 
@@ -1728,18 +1733,21 @@ class CreateGrafanaNotificationChannelRequest(AbstractModel):
         :type InstanceId: str
         :param ChannelName: 渠道名
         :type ChannelName: str
-        :param OrgId: 组织 ID
+        :param OrgId: 默认为1，已废弃，请使用 OrganizationIds
         :type OrgId: int
         :param Receivers: 接受告警通道 ID 数组
         :type Receivers: list of str
-        :param ExtraOrgIds: 额外组织 ID 数组
+        :param ExtraOrgIds: 额外组织 ID 数组，已废弃，请使用 OrganizationIds
         :type ExtraOrgIds: list of str
+        :param OrganizationIds: 生效的所有组织 ID 数组，默认为 ["1"]
+        :type OrganizationIds: list of str
         """
         self.InstanceId = None
         self.ChannelName = None
         self.OrgId = None
         self.Receivers = None
         self.ExtraOrgIds = None
+        self.OrganizationIds = None
 
 
     def _deserialize(self, params):
@@ -1748,6 +1756,7 @@ class CreateGrafanaNotificationChannelRequest(AbstractModel):
         self.OrgId = params.get("OrgId")
         self.Receivers = params.get("Receivers")
         self.ExtraOrgIds = params.get("ExtraOrgIds")
+        self.OrganizationIds = params.get("OrganizationIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8012,14 +8021,17 @@ class GrafanaNotificationChannel(AbstractModel):
         :type CreatedAt: str
         :param UpdatedAt: 更新时间
         :type UpdatedAt: str
-        :param OrgId: 默认生效组织
+        :param OrgId: 默认生效组织，已废弃，请使用 OrganizationIds
         :type OrgId: str
-        :param ExtraOrgIds: 额外生效组织
+        :param ExtraOrgIds: 额外生效组织，已废弃，请使用 OrganizationIds
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExtraOrgIds: list of str
-        :param OrgIds: 生效组织
+        :param OrgIds: 生效组织，已废弃，请使用 OrganizationIds
 注意：此字段可能返回 null，表示取不到有效值。
         :type OrgIds: str
+        :param OrganizationIds: 告警渠道的所有生效组织
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OrganizationIds: str
         """
         self.ChannelId = None
         self.ChannelName = None
@@ -8029,6 +8041,7 @@ class GrafanaNotificationChannel(AbstractModel):
         self.OrgId = None
         self.ExtraOrgIds = None
         self.OrgIds = None
+        self.OrganizationIds = None
 
 
     def _deserialize(self, params):
@@ -8040,6 +8053,7 @@ class GrafanaNotificationChannel(AbstractModel):
         self.OrgId = params.get("OrgId")
         self.ExtraOrgIds = params.get("ExtraOrgIds")
         self.OrgIds = params.get("OrgIds")
+        self.OrganizationIds = params.get("OrganizationIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -11465,14 +11479,17 @@ class UpdateGrafanaNotificationChannelRequest(AbstractModel):
         :type ChannelName: str
         :param Receivers: 接受告警通道 ID 数组
         :type Receivers: list of str
-        :param ExtraOrgIds: 额外组织 ID 数组
+        :param ExtraOrgIds: 已废弃，请使用 OrganizationIds
         :type ExtraOrgIds: list of str
+        :param OrganizationIds: 生效的组织 ID 数组
+        :type OrganizationIds: list of str
         """
         self.ChannelId = None
         self.InstanceId = None
         self.ChannelName = None
         self.Receivers = None
         self.ExtraOrgIds = None
+        self.OrganizationIds = None
 
 
     def _deserialize(self, params):
@@ -11481,6 +11498,7 @@ class UpdateGrafanaNotificationChannelRequest(AbstractModel):
         self.ChannelName = params.get("ChannelName")
         self.Receivers = params.get("Receivers")
         self.ExtraOrgIds = params.get("ExtraOrgIds")
+        self.OrganizationIds = params.get("OrganizationIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

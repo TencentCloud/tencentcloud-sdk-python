@@ -4558,6 +4558,15 @@ class NatInstanceInfo(AbstractModel):
         :param Status: 0 :正常 1：正在初始化
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
+        :param RegionDetail: 地域区域信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegionDetail: str
+        :param ZoneZh: 实例所在可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ZoneZh: str
+        :param ZoneZhBak: 实例所在可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ZoneZhBak: str
         """
         self.NatinsId = None
         self.NatinsName = None
@@ -4571,6 +4580,9 @@ class NatInstanceInfo(AbstractModel):
         self.VpcIp = None
         self.Subnets = None
         self.Status = None
+        self.RegionDetail = None
+        self.ZoneZh = None
+        self.ZoneZhBak = None
 
 
     def _deserialize(self, params):
@@ -4586,6 +4598,9 @@ class NatInstanceInfo(AbstractModel):
         self.VpcIp = params.get("VpcIp")
         self.Subnets = params.get("Subnets")
         self.Status = params.get("Status")
+        self.RegionDetail = params.get("RegionDetail")
+        self.ZoneZh = params.get("ZoneZh")
+        self.ZoneZhBak = params.get("ZoneZhBak")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

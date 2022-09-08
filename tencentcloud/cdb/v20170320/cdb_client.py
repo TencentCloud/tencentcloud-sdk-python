@@ -1296,6 +1296,35 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeCdbZoneConfig(self, request):
+        """本接口(DescribeCdbZoneConfig)用于查询云数据库各地域可售卖的规格配置。
+
+        :param request: Request instance for DescribeCdbZoneConfig.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeCdbZoneConfigRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeCdbZoneConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCdbZoneConfig", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCdbZoneConfigResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeCloneList(self, request):
         """本接口(DescribeCloneList) 用于查询用户实例的克隆任务列表。
 

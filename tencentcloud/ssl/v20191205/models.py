@@ -339,6 +339,9 @@ class Certificates(AbstractModel):
         :param IsSM: 是否国密证书
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsSM: bool
+        :param EncryptAlgorithm: 证书算法
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EncryptAlgorithm: str
         """
         self.OwnerUin = None
         self.ProjectId = None
@@ -372,6 +375,7 @@ class Certificates(AbstractModel):
         self.Tags = None
         self.IsIgnore = None
         self.IsSM = None
+        self.EncryptAlgorithm = None
 
 
     def _deserialize(self, params):
@@ -416,6 +420,7 @@ class Certificates(AbstractModel):
                 self.Tags.append(obj)
         self.IsIgnore = params.get("IsIgnore")
         self.IsSM = params.get("IsSM")
+        self.EncryptAlgorithm = params.get("EncryptAlgorithm")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -952,6 +957,9 @@ class DescribeCertificateDetailResponse(AbstractModel):
         :param EncryptCertFingerprint: 加密证书 SHA1指纹 （国密证书特有）
 注意：此字段可能返回 null，表示取不到有效值。
         :type EncryptCertFingerprint: str
+        :param EncryptAlgorithm: 证书算法
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EncryptAlgorithm: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -994,6 +1002,7 @@ class DescribeCertificateDetailResponse(AbstractModel):
         self.EncryptPrivateKey = None
         self.CertFingerprint = None
         self.EncryptCertFingerprint = None
+        self.EncryptAlgorithm = None
         self.RequestId = None
 
 
@@ -1050,6 +1059,7 @@ class DescribeCertificateDetailResponse(AbstractModel):
         self.EncryptPrivateKey = params.get("EncryptPrivateKey")
         self.CertFingerprint = params.get("CertFingerprint")
         self.EncryptCertFingerprint = params.get("EncryptCertFingerprint")
+        self.EncryptAlgorithm = params.get("EncryptAlgorithm")
         self.RequestId = params.get("RequestId")
 
 

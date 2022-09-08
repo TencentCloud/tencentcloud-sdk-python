@@ -1381,6 +1381,10 @@ class DescribeTemplatesRequest(AbstractModel):
         :type Offset: int
         :param Operator: 操作者的信息
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
+        :param QueryAllComponents: 是否返回所有组件信息
+        :type QueryAllComponents: bool
+        :param TemplateName: 模糊搜索模版名称
+        :type TemplateName: str
         """
         self.Agent = None
         self.TemplateId = None
@@ -1388,6 +1392,8 @@ class DescribeTemplatesRequest(AbstractModel):
         self.Limit = None
         self.Offset = None
         self.Operator = None
+        self.QueryAllComponents = None
+        self.TemplateName = None
 
 
     def _deserialize(self, params):
@@ -1401,6 +1407,8 @@ class DescribeTemplatesRequest(AbstractModel):
         if params.get("Operator") is not None:
             self.Operator = UserInfo()
             self.Operator._deserialize(params.get("Operator"))
+        self.QueryAllComponents = params.get("QueryAllComponents")
+        self.TemplateName = params.get("TemplateName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

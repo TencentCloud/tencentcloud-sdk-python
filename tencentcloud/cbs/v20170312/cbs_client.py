@@ -26,6 +26,39 @@ class CbsClient(AbstractClient):
     _service = 'cbs'
 
 
+    def ApplyDiskBackup(self, request):
+        """本接口（ApplyDiskBackup）用于回滚备份点到原云硬盘。
+
+        * 仅支持回滚到原云硬盘上。对于数据盘备份点，如果您需要复制备份点数据到其它云硬盘上，请先使用 CreateSnapshot 将备份点转换为快照，然后使用 CreateDisks 接口创建新的弹性云硬盘，将快照数据复制到新购云硬盘上。
+        * 用于回滚的备份点必须处于NORMAL状态。备份点状态可以通过DescribeDiskBackups接口查询，见输出参数中BackupState字段解释。
+        * 如果是弹性云硬盘，则云硬盘必须处于未挂载状态，云硬盘挂载状态可以通过DescribeDisks接口查询，见Attached字段解释；如果是随实例一起购买的非弹性云硬盘，则实例必须处于关机状态，实例状态可以通过DescribeInstancesStatus接口查询。
+
+        :param request: Request instance for ApplyDiskBackup.
+        :type request: :class:`tencentcloud.cbs.v20170312.models.ApplyDiskBackupRequest`
+        :rtype: :class:`tencentcloud.cbs.v20170312.models.ApplyDiskBackupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ApplyDiskBackup", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ApplyDiskBackupResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ApplySnapshot(self, request):
         """本接口（ApplySnapshot）用于回滚快照到原云硬盘。
 
@@ -284,6 +317,35 @@ class CbsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteDiskBackups(self, request):
+        """批量删除指定的云硬盘备份点。
+
+        :param request: Request instance for DeleteDiskBackups.
+        :type request: :class:`tencentcloud.cbs.v20170312.models.DeleteDiskBackupsRequest`
+        :rtype: :class:`tencentcloud.cbs.v20170312.models.DeleteDiskBackupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteDiskBackups", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteDiskBackupsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteSnapshots(self, request):
         """本接口（DeleteSnapshots）用于删除快照。
 
@@ -363,6 +425,38 @@ class CbsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDiskAssociatedAutoSnapshotPolicyResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDiskBackups(self, request):
+        """本接口（DescribeDiskBackups）用于查询备份点的详细信息。
+
+        根据备份点ID、创建备份点的云硬盘ID、创建备份点的云硬盘类型等对结果进行过滤，不同条件之间为与(AND)的关系，过滤信息详细请见过滤器Filter。
+        如果参数为空，返回当前用户一定数量（Limit所指定的数量，默认为20）的备份点列表。
+
+        :param request: Request instance for DescribeDiskBackups.
+        :type request: :class:`tencentcloud.cbs.v20170312.models.DescribeDiskBackupsRequest`
+        :rtype: :class:`tencentcloud.cbs.v20170312.models.DescribeDiskBackupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDiskBackups", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDiskBackupsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -716,6 +810,35 @@ class CbsClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def InquirePriceModifyDiskBackupQuota(self, request):
+        """本接口（InquirePricePriceModifyDiskBackupQuota）用于修改云硬盘备份点配额询价。
+
+        :param request: Request instance for InquirePriceModifyDiskBackupQuota.
+        :type request: :class:`tencentcloud.cbs.v20170312.models.InquirePriceModifyDiskBackupQuotaRequest`
+        :rtype: :class:`tencentcloud.cbs.v20170312.models.InquirePriceModifyDiskBackupQuotaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("InquirePriceModifyDiskBackupQuota", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.InquirePriceModifyDiskBackupQuotaResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def InquirePriceModifyDiskExtraPerformance(self, request):
         """本接口（InquirePriceModifyDiskExtraPerformance）用于调整云硬盘额外性能询价。
 
@@ -889,6 +1012,35 @@ class CbsClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyDiskAttributesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyDiskBackupQuota(self, request):
+        """此接口 (ModifyDiskBackupQuota) 用于修改云硬盘备份点配额。
+
+        :param request: Request instance for ModifyDiskBackupQuota.
+        :type request: :class:`tencentcloud.cbs.v20170312.models.ModifyDiskBackupQuotaRequest`
+        :rtype: :class:`tencentcloud.cbs.v20170312.models.ModifyDiskBackupQuotaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDiskBackupQuota", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyDiskBackupQuotaResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

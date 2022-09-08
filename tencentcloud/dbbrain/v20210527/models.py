@@ -1771,6 +1771,72 @@ class DescribeRedisTopBigKeysResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeRedisTopKeyPrefixListRequest(AbstractModel):
+    """DescribeRedisTopKeyPrefixList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID。
+        :type InstanceId: str
+        :param Date: 查询日期，如2021-05-27，最早可为前30天的日期。
+        :type Date: str
+        :param Product: 服务产品类型，支持值包括 "redis" - 云数据库 Redis。
+        :type Product: str
+        :param Limit: 查询数目，默认为20，最大值为100。
+        :type Limit: int
+        """
+        self.InstanceId = None
+        self.Date = None
+        self.Product = None
+        self.Limit = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Date = params.get("Date")
+        self.Product = params.get("Product")
+        self.Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRedisTopKeyPrefixListResponse(AbstractModel):
+    """DescribeRedisTopKeyPrefixList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Items: top key前缀列表。
+        :type Items: list of RedisPreKeySpaceData
+        :param Timestamp: 采集时间戳（秒）。
+        :type Timestamp: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Items = None
+        self.Timestamp = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Items") is not None:
+            self.Items = []
+            for item in params.get("Items"):
+                obj = RedisPreKeySpaceData()
+                obj._deserialize(item)
+                self.Items.append(obj)
+        self.Timestamp = params.get("Timestamp")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeSecurityAuditLogDownloadUrlsRequest(AbstractModel):
     """DescribeSecurityAuditLogDownloadUrls请求参数结构体
 
@@ -3624,6 +3690,50 @@ class RedisKeySpaceData(AbstractModel):
         self.ExpireTime = params.get("ExpireTime")
         self.Length = params.get("Length")
         self.ItemCount = params.get("ItemCount")
+        self.MaxElementSize = params.get("MaxElementSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RedisPreKeySpaceData(AbstractModel):
+    """redis key前缀空间信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AveElementSize: 平均元素长度。
+        :type AveElementSize: int
+        :param Length: 总占用内存（Byte）。
+        :type Length: int
+        :param KeyPreIndex: key前缀。
+        :type KeyPreIndex: str
+        :param ItemCount: 元素数量。
+        :type ItemCount: int
+        :param Count: key个数。
+        :type Count: int
+        :param MaxElementSize: 最大元素长度。
+        :type MaxElementSize: int
+        """
+        self.AveElementSize = None
+        self.Length = None
+        self.KeyPreIndex = None
+        self.ItemCount = None
+        self.Count = None
+        self.MaxElementSize = None
+
+
+    def _deserialize(self, params):
+        self.AveElementSize = params.get("AveElementSize")
+        self.Length = params.get("Length")
+        self.KeyPreIndex = params.get("KeyPreIndex")
+        self.ItemCount = params.get("ItemCount")
+        self.Count = params.get("Count")
         self.MaxElementSize = params.get("MaxElementSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

@@ -18,6 +18,356 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class BatchTaskDetail(AbstractModel):
+    """跑批任务详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BatchTaskId: 跑批任务ID
+        :type BatchTaskId: str
+        :param BatchTaskName: 跑批任务名称
+        :type BatchTaskName: str
+        :param Uin: 主账号uin
+        :type Uin: str
+        :param SubUin: 子账号uin
+        :type SubUin: str
+        :param Region: 地域
+        :type Region: str
+        :param ChargeType: 计费模式
+        :type ChargeType: str
+        :param ResourceGroupId: 预付费专用资源组id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceGroupId: str
+        :param ResourceGroupName: 预付费专用资源组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceGroupName: str
+        :param ResourceConfigInfo: 资源配置
+        :type ResourceConfigInfo: :class:`tencentcloud.tione.v20211111.models.ResourceConfigInfo`
+        :param Tags: 标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
+        :param ModelInfo: 服务对应的模型信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModelInfo: :class:`tencentcloud.tione.v20211111.models.ModelInfo`
+        :param ImageInfo: 自定义镜像信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageInfo: :class:`tencentcloud.tione.v20211111.models.ImageInfo`
+        :param CodePackagePath: 代码包
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CodePackagePath: :class:`tencentcloud.tione.v20211111.models.CosPathInfo`
+        :param StartCmd: 启动命令
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartCmd: str
+        :param DataConfigs: 输入数据配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataConfigs: list of DataConfig
+        :param Outputs: 输出数据配置
+        :type Outputs: list of DataConfig
+        :param LogEnable: 是否上报日志
+        :type LogEnable: bool
+        :param LogConfig: 日志配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogConfig: :class:`tencentcloud.tione.v20211111.models.LogConfig`
+        :param VpcId: vpc id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcId: str
+        :param SubnetId: 子网id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubnetId: str
+        :param Status: 任务状态
+        :type Status: str
+        :param RuntimeInSeconds: 运行时长
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuntimeInSeconds: int
+        :param CreateTime: 创建时间
+        :type CreateTime: str
+        :param UpdateTime: 更新时间
+        :type UpdateTime: str
+        :param StartTime: 任务开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTime: str
+        :param EndTime: 任务结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: str
+        :param ChargeStatus: 计费状态，eg：BILLING计费中，ARREARS_STOP欠费停止，NOT_BILLING不在计费中
+        :type ChargeStatus: str
+        :param LatestInstanceId: 最近一次实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LatestInstanceId: str
+        :param Remark: 备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
+        :param FailureReason: 失败原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailureReason: str
+        :param BillingInfo: 计费金额信息，eg：2.00元/小时 (for后付费)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BillingInfo: str
+        """
+        self.BatchTaskId = None
+        self.BatchTaskName = None
+        self.Uin = None
+        self.SubUin = None
+        self.Region = None
+        self.ChargeType = None
+        self.ResourceGroupId = None
+        self.ResourceGroupName = None
+        self.ResourceConfigInfo = None
+        self.Tags = None
+        self.ModelInfo = None
+        self.ImageInfo = None
+        self.CodePackagePath = None
+        self.StartCmd = None
+        self.DataConfigs = None
+        self.Outputs = None
+        self.LogEnable = None
+        self.LogConfig = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.Status = None
+        self.RuntimeInSeconds = None
+        self.CreateTime = None
+        self.UpdateTime = None
+        self.StartTime = None
+        self.EndTime = None
+        self.ChargeStatus = None
+        self.LatestInstanceId = None
+        self.Remark = None
+        self.FailureReason = None
+        self.BillingInfo = None
+
+
+    def _deserialize(self, params):
+        self.BatchTaskId = params.get("BatchTaskId")
+        self.BatchTaskName = params.get("BatchTaskName")
+        self.Uin = params.get("Uin")
+        self.SubUin = params.get("SubUin")
+        self.Region = params.get("Region")
+        self.ChargeType = params.get("ChargeType")
+        self.ResourceGroupId = params.get("ResourceGroupId")
+        self.ResourceGroupName = params.get("ResourceGroupName")
+        if params.get("ResourceConfigInfo") is not None:
+            self.ResourceConfigInfo = ResourceConfigInfo()
+            self.ResourceConfigInfo._deserialize(params.get("ResourceConfigInfo"))
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        if params.get("ModelInfo") is not None:
+            self.ModelInfo = ModelInfo()
+            self.ModelInfo._deserialize(params.get("ModelInfo"))
+        if params.get("ImageInfo") is not None:
+            self.ImageInfo = ImageInfo()
+            self.ImageInfo._deserialize(params.get("ImageInfo"))
+        if params.get("CodePackagePath") is not None:
+            self.CodePackagePath = CosPathInfo()
+            self.CodePackagePath._deserialize(params.get("CodePackagePath"))
+        self.StartCmd = params.get("StartCmd")
+        if params.get("DataConfigs") is not None:
+            self.DataConfigs = []
+            for item in params.get("DataConfigs"):
+                obj = DataConfig()
+                obj._deserialize(item)
+                self.DataConfigs.append(obj)
+        if params.get("Outputs") is not None:
+            self.Outputs = []
+            for item in params.get("Outputs"):
+                obj = DataConfig()
+                obj._deserialize(item)
+                self.Outputs.append(obj)
+        self.LogEnable = params.get("LogEnable")
+        if params.get("LogConfig") is not None:
+            self.LogConfig = LogConfig()
+            self.LogConfig._deserialize(params.get("LogConfig"))
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.Status = params.get("Status")
+        self.RuntimeInSeconds = params.get("RuntimeInSeconds")
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.ChargeStatus = params.get("ChargeStatus")
+        self.LatestInstanceId = params.get("LatestInstanceId")
+        self.Remark = params.get("Remark")
+        self.FailureReason = params.get("FailureReason")
+        self.BillingInfo = params.get("BillingInfo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BatchTaskInstance(AbstractModel):
+    """批处理任务实例
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BatchTaskInstanceId: 任务实例id
+        :type BatchTaskInstanceId: str
+        :param StartTime: 开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTime: str
+        :param EndTime: 结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: str
+        :param Status: 任务状态
+        :type Status: str
+        :param RuntimeInSeconds: 运行时长
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuntimeInSeconds: int
+        """
+        self.BatchTaskInstanceId = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Status = None
+        self.RuntimeInSeconds = None
+
+
+    def _deserialize(self, params):
+        self.BatchTaskInstanceId = params.get("BatchTaskInstanceId")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Status = params.get("Status")
+        self.RuntimeInSeconds = params.get("RuntimeInSeconds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BatchTaskSetItem(AbstractModel):
+    """出参类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BatchTaskId: 跑批任务ID
+        :type BatchTaskId: str
+        :param BatchTaskName: 跑批任务名称
+        :type BatchTaskName: str
+        :param ModelInfo: 模型信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModelInfo: :class:`tencentcloud.tione.v20211111.models.ModelInfo`
+        :param ImageInfo: 镜像信息
+        :type ImageInfo: :class:`tencentcloud.tione.v20211111.models.ImageInfo`
+        :param ChargeType: 计费模式
+        :type ChargeType: str
+        :param ChargeStatus: 计费状态，eg：BILLING计费中，ARREARS_STOP欠费停止，NOT_BILLING不在计费中
+        :type ChargeStatus: str
+        :param ResourceGroupId: 预付费专用资源组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceGroupId: str
+        :param ResourceConfigInfo: 资源配置
+        :type ResourceConfigInfo: :class:`tencentcloud.tione.v20211111.models.ResourceConfigInfo`
+        :param Tags: 标签配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
+        :param Status: 任务状态
+        :type Status: str
+        :param RuntimeInSeconds: 运行时长
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuntimeInSeconds: int
+        :param CreateTime: 创建时间
+        :type CreateTime: str
+        :param StartTime: 开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTime: str
+        :param EndTime: 结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: str
+        :param UpdateTime: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        :param Outputs: 输出
+        :type Outputs: list of DataConfig
+        :param ResourceGroupName: 预付费专用资源组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceGroupName: str
+        :param FailureReason: 失败原因
+        :type FailureReason: str
+        :param BillingInfo: 计费金额信息，eg：2.00元/小时 (for后付费)
+        :type BillingInfo: str
+        """
+        self.BatchTaskId = None
+        self.BatchTaskName = None
+        self.ModelInfo = None
+        self.ImageInfo = None
+        self.ChargeType = None
+        self.ChargeStatus = None
+        self.ResourceGroupId = None
+        self.ResourceConfigInfo = None
+        self.Tags = None
+        self.Status = None
+        self.RuntimeInSeconds = None
+        self.CreateTime = None
+        self.StartTime = None
+        self.EndTime = None
+        self.UpdateTime = None
+        self.Outputs = None
+        self.ResourceGroupName = None
+        self.FailureReason = None
+        self.BillingInfo = None
+
+
+    def _deserialize(self, params):
+        self.BatchTaskId = params.get("BatchTaskId")
+        self.BatchTaskName = params.get("BatchTaskName")
+        if params.get("ModelInfo") is not None:
+            self.ModelInfo = ModelInfo()
+            self.ModelInfo._deserialize(params.get("ModelInfo"))
+        if params.get("ImageInfo") is not None:
+            self.ImageInfo = ImageInfo()
+            self.ImageInfo._deserialize(params.get("ImageInfo"))
+        self.ChargeType = params.get("ChargeType")
+        self.ChargeStatus = params.get("ChargeStatus")
+        self.ResourceGroupId = params.get("ResourceGroupId")
+        if params.get("ResourceConfigInfo") is not None:
+            self.ResourceConfigInfo = ResourceConfigInfo()
+            self.ResourceConfigInfo._deserialize(params.get("ResourceConfigInfo"))
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        self.Status = params.get("Status")
+        self.RuntimeInSeconds = params.get("RuntimeInSeconds")
+        self.CreateTime = params.get("CreateTime")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.UpdateTime = params.get("UpdateTime")
+        if params.get("Outputs") is not None:
+            self.Outputs = []
+            for item in params.get("Outputs"):
+                obj = DataConfig()
+                obj._deserialize(item)
+                self.Outputs.append(obj)
+        self.ResourceGroupName = params.get("ResourceGroupName")
+        self.FailureReason = params.get("FailureReason")
+        self.BillingInfo = params.get("BillingInfo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CFSConfig(AbstractModel):
     """CFS存储的配置
 
@@ -79,6 +429,146 @@ class CosPathInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class CreateBatchTaskRequest(AbstractModel):
+    """CreateBatchTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BatchTaskName: 跑批任务名称，不超过60个字符，仅支持中英文、数字、下划线"_"、短横"-"，只能以中英文、数字开头
+        :type BatchTaskName: str
+        :param ChargeType: 计费模式，eg：PREPAID预付费，即包年包月；POSTPAID_BY_HOUR按小时后付费
+        :type ChargeType: str
+        :param ResourceConfigInfo: 资源配置
+        :type ResourceConfigInfo: :class:`tencentcloud.tione.v20211111.models.ResourceConfigInfo`
+        :param Outputs: 结果输出
+        :type Outputs: list of DataConfig
+        :param LogEnable: 是否上报日志
+        :type LogEnable: bool
+        :param JobType: 工作类型 1:单次 2:周期
+        :type JobType: int
+        :param CronInfo: 任务周期描述
+        :type CronInfo: :class:`tencentcloud.tione.v20211111.models.CronInfo`
+        :param ResourceGroupId: 预付费专用资源组
+        :type ResourceGroupId: str
+        :param Tags: 标签配置
+        :type Tags: list of Tag
+        :param ModelInfo: 服务对应的模型信息，有模型文件时需要填写
+        :type ModelInfo: :class:`tencentcloud.tione.v20211111.models.ModelInfo`
+        :param ImageInfo: 自定义镜像信息
+        :type ImageInfo: :class:`tencentcloud.tione.v20211111.models.ImageInfo`
+        :param CodePackage: 代码包
+        :type CodePackage: :class:`tencentcloud.tione.v20211111.models.CosPathInfo`
+        :param StartCmd: 启动命令
+        :type StartCmd: str
+        :param DataConfigs: 数据配置
+        :type DataConfigs: list of DataConfig
+        :param LogConfig: 日志配置
+        :type LogConfig: :class:`tencentcloud.tione.v20211111.models.LogConfig`
+        :param VpcId: VPC Id
+        :type VpcId: str
+        :param SubnetId: 子网Id
+        :type SubnetId: str
+        :param Remark: 备注
+        :type Remark: str
+        """
+        self.BatchTaskName = None
+        self.ChargeType = None
+        self.ResourceConfigInfo = None
+        self.Outputs = None
+        self.LogEnable = None
+        self.JobType = None
+        self.CronInfo = None
+        self.ResourceGroupId = None
+        self.Tags = None
+        self.ModelInfo = None
+        self.ImageInfo = None
+        self.CodePackage = None
+        self.StartCmd = None
+        self.DataConfigs = None
+        self.LogConfig = None
+        self.VpcId = None
+        self.SubnetId = None
+        self.Remark = None
+
+
+    def _deserialize(self, params):
+        self.BatchTaskName = params.get("BatchTaskName")
+        self.ChargeType = params.get("ChargeType")
+        if params.get("ResourceConfigInfo") is not None:
+            self.ResourceConfigInfo = ResourceConfigInfo()
+            self.ResourceConfigInfo._deserialize(params.get("ResourceConfigInfo"))
+        if params.get("Outputs") is not None:
+            self.Outputs = []
+            for item in params.get("Outputs"):
+                obj = DataConfig()
+                obj._deserialize(item)
+                self.Outputs.append(obj)
+        self.LogEnable = params.get("LogEnable")
+        self.JobType = params.get("JobType")
+        if params.get("CronInfo") is not None:
+            self.CronInfo = CronInfo()
+            self.CronInfo._deserialize(params.get("CronInfo"))
+        self.ResourceGroupId = params.get("ResourceGroupId")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        if params.get("ModelInfo") is not None:
+            self.ModelInfo = ModelInfo()
+            self.ModelInfo._deserialize(params.get("ModelInfo"))
+        if params.get("ImageInfo") is not None:
+            self.ImageInfo = ImageInfo()
+            self.ImageInfo._deserialize(params.get("ImageInfo"))
+        if params.get("CodePackage") is not None:
+            self.CodePackage = CosPathInfo()
+            self.CodePackage._deserialize(params.get("CodePackage"))
+        self.StartCmd = params.get("StartCmd")
+        if params.get("DataConfigs") is not None:
+            self.DataConfigs = []
+            for item in params.get("DataConfigs"):
+                obj = DataConfig()
+                obj._deserialize(item)
+                self.DataConfigs.append(obj)
+        if params.get("LogConfig") is not None:
+            self.LogConfig = LogConfig()
+            self.LogConfig._deserialize(params.get("LogConfig"))
+        self.VpcId = params.get("VpcId")
+        self.SubnetId = params.get("SubnetId")
+        self.Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateBatchTaskResponse(AbstractModel):
+    """CreateBatchTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BatchTaskId: 跑批任务ID
+        :type BatchTaskId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.BatchTaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.BatchTaskId = params.get("BatchTaskId")
+        self.RequestId = params.get("RequestId")
 
 
 class CreateDatasetRequest(AbstractModel):
@@ -198,7 +688,10 @@ class CreateTrainingModelRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ImportMethod: 导入方式（MODEL/VERSION）
+        :param ImportMethod: 导入方式
+MODEL：导入新模型
+VERSION：导入新版本
+EXIST：导入现有版本
         :type ImportMethod: str
         :param TrainingModelCosPath: 模型来源cos目录，以/结尾
         :type TrainingModelCosPath: :class:`tencentcloud.tione.v20211111.models.CosPathInfo`
@@ -244,6 +737,12 @@ class CreateTrainingModelRequest(AbstractModel):
         :type ModelFormat: str
         :param ReasoningEnvironmentId: 推理镜像ID
         :type ReasoningEnvironmentId: str
+        :param AutoClean: 模型自动清理开关(true/false)，当前版本仅支持SAVED_MODEL格式模型
+        :type AutoClean: str
+        :param MaxReservedModels: 模型数量保留上限(默认值为24个，上限为24，下限为1，步长为1)
+        :type MaxReservedModels: int
+        :param ModelCleanPeriod: 模型清理周期(默认值为1分钟，上限为1440，下限为1分钟，步长为1)
+        :type ModelCleanPeriod: int
         """
         self.ImportMethod = None
         self.TrainingModelCosPath = None
@@ -267,6 +766,9 @@ class CreateTrainingModelRequest(AbstractModel):
         self.ModelVersionType = None
         self.ModelFormat = None
         self.ReasoningEnvironmentId = None
+        self.AutoClean = None
+        self.MaxReservedModels = None
+        self.ModelCleanPeriod = None
 
 
     def _deserialize(self, params):
@@ -303,6 +805,9 @@ class CreateTrainingModelRequest(AbstractModel):
         self.ModelVersionType = params.get("ModelVersionType")
         self.ModelFormat = params.get("ModelFormat")
         self.ReasoningEnvironmentId = params.get("ReasoningEnvironmentId")
+        self.AutoClean = params.get("AutoClean")
+        self.MaxReservedModels = params.get("MaxReservedModels")
+        self.ModelCleanPeriod = params.get("ModelCleanPeriod")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -483,6 +988,40 @@ class CreateTrainingTaskResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CronInfo(AbstractModel):
+    """跑批任务周期描述
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CronConfig: cron配置
+        :type CronConfig: str
+        :param StartTime: 周期开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTime: str
+        :param EndTime: 周期结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: str
+        """
+        self.CronConfig = None
+        self.StartTime = None
+        self.EndTime = None
+
+
+    def _deserialize(self, params):
+        self.CronConfig = params.get("CronConfig")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CustomTrainingData(AbstractModel):
     """自定义指标
 
@@ -589,7 +1128,7 @@ class DataConfig(AbstractModel):
         r"""
         :param MappingPath: 映射路径
         :type MappingPath: str
-        :param DataSourceType: DATASET、COS、CFS、HDFS
+        :param DataSourceType: DATASET、COS、CFS、HDFS、WEDATA_HDFS
 注意：此字段可能返回 null，表示取不到有效值。
         :type DataSourceType: str
         :param DataSetSource: 来自数据集的数据
@@ -977,6 +1516,47 @@ class DatasetInfo(AbstractModel):
         
 
 
+class DeleteBatchTaskRequest(AbstractModel):
+    """DeleteBatchTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BatchTaskId: 跑批任务ID
+        :type BatchTaskId: str
+        """
+        self.BatchTaskId = None
+
+
+    def _deserialize(self, params):
+        self.BatchTaskId = params.get("BatchTaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteBatchTaskResponse(AbstractModel):
+    """DeleteBatchTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteDatasetRequest(AbstractModel):
     """DeleteDataset请求参数结构体
 
@@ -1161,6 +1741,197 @@ class DeleteTrainingTaskResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeBatchTaskInstancesRequest(AbstractModel):
+    """DescribeBatchTaskInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BatchTaskId: 跑批任务id
+        :type BatchTaskId: str
+        """
+        self.BatchTaskId = None
+
+
+    def _deserialize(self, params):
+        self.BatchTaskId = params.get("BatchTaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBatchTaskInstancesResponse(AbstractModel):
+    """DescribeBatchTaskInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BatchInstances: 实例集
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BatchInstances: list of BatchTaskInstance
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.BatchInstances = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("BatchInstances") is not None:
+            self.BatchInstances = []
+            for item in params.get("BatchInstances"):
+                obj = BatchTaskInstance()
+                obj._deserialize(item)
+                self.BatchInstances.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeBatchTaskRequest(AbstractModel):
+    """DescribeBatchTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BatchTaskId: 跑批任务ID
+        :type BatchTaskId: str
+        """
+        self.BatchTaskId = None
+
+
+    def _deserialize(self, params):
+        self.BatchTaskId = params.get("BatchTaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBatchTaskResponse(AbstractModel):
+    """DescribeBatchTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BatchTaskDetail: 跑批任务详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BatchTaskDetail: :class:`tencentcloud.tione.v20211111.models.BatchTaskDetail`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.BatchTaskDetail = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("BatchTaskDetail") is not None:
+            self.BatchTaskDetail = BatchTaskDetail()
+            self.BatchTaskDetail._deserialize(params.get("BatchTaskDetail"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeBatchTasksRequest(AbstractModel):
+    """DescribeBatchTasks请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Filters: 过滤器，eg：[{ "Name": "Id", "Values": ["train-23091792777383936"] }]
+
+取值范围：
+Name（名称）：task1
+Id（task ID）：train-23091792777383936
+Status（状态）：STARTING / RUNNING / STOPPING / STOPPED / FAILED / SUCCEED / SUBMIT_FAILED
+ChargeType（计费类型）：PREPAID（预付费）/ POSTPAID_BY_HOUR（后付费）
+CHARGE_STATUS（计费状态）：NOT_BILLING（未开始计费）/ BILLING（计费中）/ ARREARS_STOP（欠费停止）
+        :type Filters: list of Filter
+        :param TagFilters: 标签过滤器，eg：[{ "TagKey": "TagKeyA", "TagValue": ["TagValueA"] }]
+        :type TagFilters: list of TagFilter
+        :param Offset: 偏移量，默认为0
+        :type Offset: int
+        :param Limit: 返回数量，默认为10，最大为50
+        :type Limit: int
+        :param Order: 输出列表的排列顺序。取值范围：ASC（升序排列）/ DESC（降序排列），默认为DESC
+        :type Order: str
+        :param OrderField: 排序的依据字段， 取值范围 "CreateTime" "UpdateTime"
+        :type OrderField: str
+        """
+        self.Filters = None
+        self.TagFilters = None
+        self.Offset = None
+        self.Limit = None
+        self.Order = None
+        self.OrderField = None
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        if params.get("TagFilters") is not None:
+            self.TagFilters = []
+            for item in params.get("TagFilters"):
+                obj = TagFilter()
+                obj._deserialize(item)
+                self.TagFilters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.Order = params.get("Order")
+        self.OrderField = params.get("OrderField")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBatchTasksResponse(AbstractModel):
+    """DescribeBatchTasks返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 数量
+        :type TotalCount: int
+        :param BatchTaskSet: 任务集
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BatchTaskSet: list of BatchTaskSetItem
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.BatchTaskSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("BatchTaskSet") is not None:
+            self.BatchTaskSet = []
+            for item in params.get("BatchTaskSet"):
+                obj = BatchTaskSetItem()
+                obj._deserialize(item)
+                self.BatchTaskSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeBillingResourceGroupsRequest(AbstractModel):
     """DescribeBillingResourceGroups请求参数结构体
 
@@ -1308,6 +2079,64 @@ class DescribeBillingSpecsPriceResponse(AbstractModel):
                 obj = SpecPrice()
                 obj._deserialize(item)
                 self.SpecsPrice.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeBillingSpecsRequest(AbstractModel):
+    """DescribeBillingSpecs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskType: 枚举值：TRAIN、NOTEBOOK、INFERENCE
+        :type TaskType: str
+        :param ChargeType: 付费模式：POSTPAID_BY_HOUR后付费、PREPAID预付费
+        :type ChargeType: str
+        :param ResourceType: 资源类型：CALC 计算资源、CPU CPU资源、GPU GPU资源、CBS云硬盘
+        :type ResourceType: str
+        """
+        self.TaskType = None
+        self.ChargeType = None
+        self.ResourceType = None
+
+
+    def _deserialize(self, params):
+        self.TaskType = params.get("TaskType")
+        self.ChargeType = params.get("ChargeType")
+        self.ResourceType = params.get("ResourceType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBillingSpecsResponse(AbstractModel):
+    """DescribeBillingSpecs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Specs: 计费项列表
+        :type Specs: list of Spec
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Specs = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Specs") is not None:
+            self.Specs = []
+            for item in params.get("Specs"):
+                obj = Spec()
+                obj._deserialize(item)
+                self.Specs.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -2904,6 +3733,63 @@ class MetricData(AbstractModel):
         
 
 
+class ModelInfo(AbstractModel):
+    """模型描述信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ModelVersionId: 模型版本id, DescribeTrainingModelVersion查询模型接口时的id
+自动学习类型的模型填写自动学习的任务id
+        :type ModelVersionId: str
+        :param ModelId: 模型id
+        :type ModelId: str
+        :param ModelName: 模型名
+        :type ModelName: str
+        :param ModelVersion: 模型版本
+        :type ModelVersion: str
+        :param ModelSource: 模型来源
+        :type ModelSource: str
+        :param CosPathInfo: cos路径信息
+        :type CosPathInfo: :class:`tencentcloud.tione.v20211111.models.CosPathInfo`
+        :param AlgorithmFramework: 模型对应的算法框架，预留
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlgorithmFramework: str
+        :param ModelType: 默认为 NORMAL, 已加速模型: ACCELERATE, 自动学习模型 AUTO_ML
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModelType: str
+        """
+        self.ModelVersionId = None
+        self.ModelId = None
+        self.ModelName = None
+        self.ModelVersion = None
+        self.ModelSource = None
+        self.CosPathInfo = None
+        self.AlgorithmFramework = None
+        self.ModelType = None
+
+
+    def _deserialize(self, params):
+        self.ModelVersionId = params.get("ModelVersionId")
+        self.ModelId = params.get("ModelId")
+        self.ModelName = params.get("ModelName")
+        self.ModelVersion = params.get("ModelVersion")
+        self.ModelSource = params.get("ModelSource")
+        if params.get("CosPathInfo") is not None:
+            self.CosPathInfo = CosPathInfo()
+            self.CosPathInfo._deserialize(params.get("CosPathInfo"))
+        self.AlgorithmFramework = params.get("AlgorithmFramework")
+        self.ModelType = params.get("ModelType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class OcrLabelInfo(AbstractModel):
     """OCR场景标签列表
 
@@ -3383,6 +4269,38 @@ class SegmentationInfo(AbstractModel):
         
 
 
+class Spec(AbstractModel):
+    """计费项内容
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SpecId: 计费项标签
+        :type SpecId: str
+        :param SpecName: 计费项名称
+        :type SpecName: str
+        :param SpecAlias: 计费项显示名称
+        :type SpecAlias: str
+        """
+        self.SpecId = None
+        self.SpecName = None
+        self.SpecAlias = None
+
+
+    def _deserialize(self, params):
+        self.SpecId = params.get("SpecId")
+        self.SpecName = params.get("SpecName")
+        self.SpecAlias = params.get("SpecAlias")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SpecPrice(AbstractModel):
     """计费项询价结果
 
@@ -3501,6 +4419,47 @@ class StartTrainingTaskRequest(AbstractModel):
 
 class StartTrainingTaskResponse(AbstractModel):
     """StartTrainingTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class StopBatchTaskRequest(AbstractModel):
+    """StopBatchTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BatchTaskId: 跑批任务ID
+        :type BatchTaskId: str
+        """
+        self.BatchTaskId = None
+
+
+    def _deserialize(self, params):
+        self.BatchTaskId = params.get("BatchTaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StopBatchTaskResponse(AbstractModel):
+    """StopBatchTask返回参数结构体
 
     """
 
@@ -3779,6 +4738,24 @@ class TrainingModelVersionDTO(AbstractModel):
         :param TrainingModelFormat: 模型格式
 注意：此字段可能返回 null，表示取不到有效值。
         :type TrainingModelFormat: str
+        :param VersionType: 模型版本类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VersionType: str
+        :param GPUType: GPU类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GPUType: str
+        :param AutoClean: 模型自动清理开关
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AutoClean: str
+        :param ModelCleanPeriod: 模型清理周期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModelCleanPeriod: int
+        :param MaxReservedModels: 模型数量保留上限
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxReservedModels: int
+        :param ModelHotUpdatePath: 模型热更新目录
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModelHotUpdatePath: :class:`tencentcloud.tione.v20211111.models.CosPathInfo`
         """
         self.TrainingModelId = None
         self.TrainingModelVersionId = None
@@ -3800,6 +4777,12 @@ class TrainingModelVersionDTO(AbstractModel):
         self.TrainingModelProgress = None
         self.TrainingModelErrorMsg = None
         self.TrainingModelFormat = None
+        self.VersionType = None
+        self.GPUType = None
+        self.AutoClean = None
+        self.ModelCleanPeriod = None
+        self.MaxReservedModels = None
+        self.ModelHotUpdatePath = None
 
 
     def _deserialize(self, params):
@@ -3827,6 +4810,14 @@ class TrainingModelVersionDTO(AbstractModel):
         self.TrainingModelProgress = params.get("TrainingModelProgress")
         self.TrainingModelErrorMsg = params.get("TrainingModelErrorMsg")
         self.TrainingModelFormat = params.get("TrainingModelFormat")
+        self.VersionType = params.get("VersionType")
+        self.GPUType = params.get("GPUType")
+        self.AutoClean = params.get("AutoClean")
+        self.ModelCleanPeriod = params.get("ModelCleanPeriod")
+        self.MaxReservedModels = params.get("MaxReservedModels")
+        if params.get("ModelHotUpdatePath") is not None:
+            self.ModelHotUpdatePath = CosPathInfo()
+            self.ModelHotUpdatePath._deserialize(params.get("ModelHotUpdatePath"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

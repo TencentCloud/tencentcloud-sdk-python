@@ -500,6 +500,9 @@ RESOURCEINSUFFICIENT = 'ResourceInsufficient'
 # 网段资源不足。
 RESOURCEINSUFFICIENT_CIDRBLOCK = 'ResourceInsufficient.CidrBlock'
 
+# 子网IP资源不足, 无法分配IP。
+RESOURCEINSUFFICIENT_SUBNET = 'ResourceInsufficient.Subnet'
+
 # 资源不存在。
 RESOURCENOTFOUND = 'ResourceNotFound'
 
@@ -778,6 +781,9 @@ UNSUPPORTEDOPERATION_ROLENOTFOUND = 'UnsupportedOperation.RoleNotFound'
 
 # 路由表绑定了子网。
 UNSUPPORTEDOPERATION_ROUTETABLEHASSUBNETRULE = 'UnsupportedOperation.RouteTableHasSubnetRule'
+
+# SNAT子网 不支持分配IP。
+UNSUPPORTEDOPERATION_SNATSUBNET = 'UnsupportedOperation.SnatSubnet'
 
 # 指定的终端节点服务所创建的终端节点不支持绑定安全组。
 UNSUPPORTEDOPERATION_SPECIALENDPOINTSERVICE = 'UnsupportedOperation.SpecialEndPointService'

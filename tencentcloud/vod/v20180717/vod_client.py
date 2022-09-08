@@ -3877,6 +3877,37 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ReviewAudioVideo(self, request):
+        """对点播中的音视频媒体发起审核任务，智能检测视频画面、画面中的文字、语音中的文字出现的违规内容。
+
+        如使用事件通知，事件通知的类型为 [任务流状态变更](https://cloud.tencent.com/document/product/266/9636)。
+
+        :param request: Request instance for ReviewAudioVideo.
+        :type request: :class:`tencentcloud.vod.v20180717.models.ReviewAudioVideoRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ReviewAudioVideoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ReviewAudioVideo", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ReviewAudioVideoResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ReviewImage(self, request):
         """对点播中的图片文件发起审核（令人反感的信息、不安全的信息、不适宜的信息）任务。
 

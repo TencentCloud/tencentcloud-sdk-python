@@ -18,6 +18,51 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class ApplyDiskBackupRequest(AbstractModel):
+    """ApplyDiskBackup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DiskBackupId: 云硬盘备份点ID，可通过 DescribeDiskBackups 查询。
+        :type DiskBackupId: str
+        :param DiskId: 云硬盘备份点原云硬盘ID，可通过DescribeDisks接口查询。
+        :type DiskId: str
+        """
+        self.DiskBackupId = None
+        self.DiskId = None
+
+
+    def _deserialize(self, params):
+        self.DiskBackupId = params.get("DiskBackupId")
+        self.DiskId = params.get("DiskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ApplyDiskBackupResponse(AbstractModel):
+    """ApplyDiskBackup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class ApplySnapshotRequest(AbstractModel):
     """ApplySnapshot请求参数结构体
 
@@ -753,6 +798,47 @@ class DeleteAutoSnapshotPoliciesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteDiskBackupsRequest(AbstractModel):
+    """DeleteDiskBackups请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DiskBackupIds: 待删除的云硬盘备份点ID。
+        :type DiskBackupIds: list of str
+        """
+        self.DiskBackupIds = None
+
+
+    def _deserialize(self, params):
+        self.DiskBackupIds = params.get("DiskBackupIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteDiskBackupsResponse(AbstractModel):
+    """DeleteDiskBackups返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteSnapshotsRequest(AbstractModel):
     """DeleteSnapshots请求参数结构体
 
@@ -928,6 +1014,87 @@ class DescribeDiskAssociatedAutoSnapshotPolicyResponse(AbstractModel):
                 obj = AutoSnapshotPolicy()
                 obj._deserialize(item)
                 self.AutoSnapshotPolicySet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDiskBackupsRequest(AbstractModel):
+    """DescribeDiskBackups请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DiskBackupIds: 要查询备份点的ID列表。参数不支持同时指定 DiskBackupIds 和 Filters。
+        :type DiskBackupIds: list of str
+        :param Filters: 过滤条件，参数不支持同时指定 DiskBackupIds 和 Filters。过滤条件：<br><li>disk-backup-id - Array of String - 是否必填：否 -（过滤条件）按照备份点的ID过滤。备份点ID形如：dbp-11112222。
+<br><li>disk-id - Array of String - 是否必填：否 -（过滤条件）按照创建备份点的云硬盘ID过滤。
+<br><li>disk-usage - Array of String - 是否必填：否 -（过滤条件）按创建备份点的云硬盘类型过滤。 (SYSTEM_DISK：代表系统盘 | DATA_DISK：代表数据盘。)
+        :type Filters: list of Filter
+        :param Offset: 偏移量，默认为0。关于`Offset`的更进一步介绍请参考API[简介](/document/product/362/15633)中的相关小节。
+        :type Offset: int
+        :param Limit: 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](/document/product/362/15633)中的相关小节。
+        :type Limit: int
+        :param Order: 输出云硬盘备份点列表的排列顺序。取值范围：<br><li>ASC：升序排列<br><li>DESC：降序排列。
+        :type Order: str
+        :param OrderField: 云硬盘备份点列表排序的依据字段。取值范围：<br><li>CREATE_TIME：依据云硬盘备份点的创建时间排序<br>默认按创建时间排序。
+        :type OrderField: str
+        """
+        self.DiskBackupIds = None
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+        self.Order = None
+        self.OrderField = None
+
+
+    def _deserialize(self, params):
+        self.DiskBackupIds = params.get("DiskBackupIds")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.Order = params.get("Order")
+        self.OrderField = params.get("OrderField")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDiskBackupsResponse(AbstractModel):
+    """DescribeDiskBackups返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 符合条件的云硬盘备份点数量。
+        :type TotalCount: int
+        :param DiskBackupSet: 云硬盘备份点的详细信息列表。
+        :type DiskBackupSet: list of DiskBackup
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.DiskBackupSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("DiskBackupSet") is not None:
+            self.DiskBackupSet = []
+            for item in params.get("DiskBackupSet"):
+                obj = DiskBackup()
+                obj._deserialize(item)
+                self.DiskBackupSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -1709,6 +1876,62 @@ class Disk(AbstractModel):
         
 
 
+class DiskBackup(AbstractModel):
+    """云硬盘备份点。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DiskBackupId: 云硬盘备份点的ID。
+        :type DiskBackupId: str
+        :param DiskId: 云硬盘备份点关联的云硬盘ID。
+        :type DiskId: str
+        :param DiskSize: 云硬盘大小，单位GB。
+        :type DiskSize: int
+        :param DiskUsage: 云硬盘类型。取值范围：<br><li>SYSTEM_DISK：系统盘<br><li>DATA_DISK：数据盘。
+        :type DiskUsage: str
+        :param DiskBackupName: 备份点名称。
+        :type DiskBackupName: str
+        :param DiskBackupState: 云硬盘备份点状态。取值范围：<br><li>NORMAL：正常<br><li>CREATING：创建中<br><li>ROLLBACKING：回滚中
+        :type DiskBackupState: str
+        :param Percent: 云硬盘创建进度百分比。
+        :type Percent: int
+        :param CreateTime: 云硬盘备份点的创建时间。
+        :type CreateTime: str
+        :param Encrypt: 云盘是否为加密盘。取值范围：<br><li>false:表示非加密盘<br><li>true:表示加密盘。
+        :type Encrypt: bool
+        """
+        self.DiskBackupId = None
+        self.DiskId = None
+        self.DiskSize = None
+        self.DiskUsage = None
+        self.DiskBackupName = None
+        self.DiskBackupState = None
+        self.Percent = None
+        self.CreateTime = None
+        self.Encrypt = None
+
+
+    def _deserialize(self, params):
+        self.DiskBackupId = params.get("DiskBackupId")
+        self.DiskId = params.get("DiskId")
+        self.DiskSize = params.get("DiskSize")
+        self.DiskUsage = params.get("DiskUsage")
+        self.DiskBackupName = params.get("DiskBackupName")
+        self.DiskBackupState = params.get("DiskBackupState")
+        self.Percent = params.get("Percent")
+        self.CreateTime = params.get("CreateTime")
+        self.Encrypt = params.get("Encrypt")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DiskChargePrepaid(AbstractModel):
     """描述了实例的计费模式
 
@@ -1998,6 +2221,57 @@ class InitializeDisksResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class InquirePriceModifyDiskBackupQuotaRequest(AbstractModel):
+    """InquirePriceModifyDiskBackupQuota请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DiskId: 云硬盘ID， 通过DescribeDisks（查询云硬盘信息）接口查询。
+        :type DiskId: str
+        :param DiskBackupQuota: 修改后的云硬盘备份点配额，即云盘可以拥有的备份点数量，单位为个。
+        :type DiskBackupQuota: int
+        """
+        self.DiskId = None
+        self.DiskBackupQuota = None
+
+
+    def _deserialize(self, params):
+        self.DiskId = params.get("DiskId")
+        self.DiskBackupQuota = params.get("DiskBackupQuota")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InquirePriceModifyDiskBackupQuotaResponse(AbstractModel):
+    """InquirePriceModifyDiskBackupQuota返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DiskPrice: 描述了修改云硬盘备份点之后的云盘价格。
+        :type DiskPrice: :class:`tencentcloud.cbs.v20170312.models.Price`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DiskPrice = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DiskPrice") is not None:
+            self.DiskPrice = Price()
+            self.DiskPrice._deserialize(params.get("DiskPrice"))
         self.RequestId = params.get("RequestId")
 
 
@@ -2360,6 +2634,51 @@ class ModifyDiskAttributesRequest(AbstractModel):
 
 class ModifyDiskAttributesResponse(AbstractModel):
     """ModifyDiskAttributes返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyDiskBackupQuotaRequest(AbstractModel):
+    """ModifyDiskBackupQuota请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DiskId: 云硬盘ID。
+        :type DiskId: str
+        :param DiskBackupQuota: 调整之后的云硬盘备份点配额。
+        :type DiskBackupQuota: int
+        """
+        self.DiskId = None
+        self.DiskBackupQuota = None
+
+
+    def _deserialize(self, params):
+        self.DiskId = params.get("DiskId")
+        self.DiskBackupQuota = params.get("DiskBackupQuota")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDiskBackupQuotaResponse(AbstractModel):
+    """ModifyDiskBackupQuota返回参数结构体
 
     """
 

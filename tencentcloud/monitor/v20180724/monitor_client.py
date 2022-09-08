@@ -2134,6 +2134,9 @@ class MonitorClient(AbstractClient):
         接口调用频率限制为：20次/秒，1200次/分钟。单请求最多可支持批量拉取10个实例的监控数据，单请求的数据点数限制为1440个。
         若您需要调用的指标、对象较多，可能存在因限频出现拉取失败的情况，建议尽量将请求按时间维度均摊。
 
+        >?
+        >- 2022年9月1日起，云监控开始对GetMonitorData接口计费。每个主账号每月可获得100万次免费请求额度，超过免费额度后如需继续调用接口需要开通 [API请求按量付费](https://buy.cloud.tencent.com/APIRequestBuy)。计费规则可查看[API计费文档](https://cloud.tencent.com/document/product/248/77914)。
+
         :param request: Request instance for GetMonitorData.
         :type request: :class:`tencentcloud.monitor.v20180724.models.GetMonitorDataRequest`
         :rtype: :class:`tencentcloud.monitor.v20180724.models.GetMonitorDataResponse`

@@ -1066,6 +1066,12 @@ class DeployApplicationRequest(AbstractModel):
         :param EnableMetrics: 1：开始自动metrics采集（open-telemetry）；
 0：关闭metrics采集；
         :type EnableMetrics: int
+        :param TcrInstanceId: 镜像部署时，选择的tcr实例id
+        :type TcrInstanceId: str
+        :param RepoServer: 镜像部署时，选择的镜像服务器地址
+        :type RepoServer: str
+        :param RepoType: 镜像部署时，仓库类型：0：个人仓库；1：企业版；2：公共仓库；3：tem托管仓库；4：demo仓库
+        :type RepoType: int
         """
         self.ApplicationId = None
         self.InitPodNum = None
@@ -1109,6 +1115,9 @@ class DeployApplicationRequest(AbstractModel):
         self.EnablePrometheusConf = None
         self.EnableTracing = None
         self.EnableMetrics = None
+        self.TcrInstanceId = None
+        self.RepoServer = None
+        self.RepoType = None
 
 
     def _deserialize(self, params):
@@ -1200,6 +1209,9 @@ class DeployApplicationRequest(AbstractModel):
             self.EnablePrometheusConf._deserialize(params.get("EnablePrometheusConf"))
         self.EnableTracing = params.get("EnableTracing")
         self.EnableMetrics = params.get("EnableMetrics")
+        self.TcrInstanceId = params.get("TcrInstanceId")
+        self.RepoServer = params.get("RepoServer")
+        self.RepoType = params.get("RepoType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

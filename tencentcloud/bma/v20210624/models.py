@@ -853,6 +853,8 @@ class CreateCRWorkRequest(AbstractModel):
         :type ContentType: str
         :param Content: x
         :type Content: str
+        :param MonitorEndTime: x
+        :type MonitorEndTime: str
         """
         self.WorkName = None
         self.WorkCategory = None
@@ -882,6 +884,7 @@ class CreateCRWorkRequest(AbstractModel):
         self.AuthorizationEndTime = None
         self.ContentType = None
         self.Content = None
+        self.MonitorEndTime = None
 
 
     def _deserialize(self, params):
@@ -913,6 +916,7 @@ class CreateCRWorkRequest(AbstractModel):
         self.AuthorizationEndTime = params.get("AuthorizationEndTime")
         self.ContentType = params.get("ContentType")
         self.Content = params.get("Content")
+        self.MonitorEndTime = params.get("MonitorEndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

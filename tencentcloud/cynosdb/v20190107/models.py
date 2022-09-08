@@ -645,6 +645,72 @@ class CreateAccountsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateBackupRequest(AbstractModel):
+    """CreateBackup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param BackupType: 备份类型, 可选值：logic，逻辑备份；snapshot，物理备份
+        :type BackupType: str
+        :param BackupDatabases: 备份的库, 只在 BackupType 为 logic 时有效
+        :type BackupDatabases: list of str
+        :param BackupTables: 备份的表, 只在 BackupType 为 logic 时有效
+        :type BackupTables: list of DatabaseTables
+        :param BackupName: 备注名
+        :type BackupName: str
+        """
+        self.ClusterId = None
+        self.BackupType = None
+        self.BackupDatabases = None
+        self.BackupTables = None
+        self.BackupName = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.BackupType = params.get("BackupType")
+        self.BackupDatabases = params.get("BackupDatabases")
+        if params.get("BackupTables") is not None:
+            self.BackupTables = []
+            for item in params.get("BackupTables"):
+                obj = DatabaseTables()
+                obj._deserialize(item)
+                self.BackupTables.append(obj)
+        self.BackupName = params.get("BackupName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateBackupResponse(AbstractModel):
+    """CreateBackup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: 异步任务流ID
+        :type FlowId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FlowId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateClustersRequest(AbstractModel):
     """CreateClusters请求参数结构体
 
@@ -1668,6 +1734,36 @@ class DatabasePrivileges(AbstractModel):
     def _deserialize(self, params):
         self.Db = params.get("Db")
         self.Privileges = params.get("Privileges")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DatabaseTables(AbstractModel):
+    """数据库表信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Database: 数据库名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Database: str
+        :param Tables: 表名称列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tables: list of str
+        """
+        self.Database = None
+        self.Tables = None
+
+
+    def _deserialize(self, params):
+        self.Database = params.get("Database")
+        self.Tables = params.get("Tables")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4013,6 +4109,74 @@ class ModifyClusterSlaveZoneResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyClusterStorageRequest(AbstractModel):
+    """ModifyClusterStorage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ClusterId: 集群ID
+        :type ClusterId: str
+        :param NewStorageLimit: 集群新存储大小（单位G）
+        :type NewStorageLimit: int
+        :param OldStorageLimit: 集群原存储大小（单位G）
+        :type OldStorageLimit: int
+        :param DealMode: 交易模式 0-下单并支付 1-下单
+        :type DealMode: int
+        """
+        self.ClusterId = None
+        self.NewStorageLimit = None
+        self.OldStorageLimit = None
+        self.DealMode = None
+
+
+    def _deserialize(self, params):
+        self.ClusterId = params.get("ClusterId")
+        self.NewStorageLimit = params.get("NewStorageLimit")
+        self.OldStorageLimit = params.get("OldStorageLimit")
+        self.DealMode = params.get("DealMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyClusterStorageResponse(AbstractModel):
+    """ModifyClusterStorage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TranId: 冻结流水ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TranId: str
+        :param BigDealIds: 大订单号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BigDealIds: list of str
+        :param DealNames: 订单号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DealNames: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TranId = None
+        self.BigDealIds = None
+        self.DealNames = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TranId = params.get("TranId")
+        self.BigDealIds = params.get("BigDealIds")
+        self.DealNames = params.get("DealNames")
         self.RequestId = params.get("RequestId")
 
 

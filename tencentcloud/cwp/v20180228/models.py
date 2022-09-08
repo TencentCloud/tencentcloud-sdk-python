@@ -8942,6 +8942,9 @@ class DescribeGeneralStatResponse(AbstractModel):
         :param ProtectDays: 保护天数
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProtectDays: int
+        :param AddedOnTheFifteen: 15天内新增的主机数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AddedOnTheFifteen: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -8958,6 +8961,7 @@ class DescribeGeneralStatResponse(AbstractModel):
         self.Offline = None
         self.FlagshipMachineCnt = None
         self.ProtectDays = None
+        self.AddedOnTheFifteen = None
         self.RequestId = None
 
 
@@ -8975,6 +8979,7 @@ class DescribeGeneralStatResponse(AbstractModel):
         self.Offline = params.get("Offline")
         self.FlagshipMachineCnt = params.get("FlagshipMachineCnt")
         self.ProtectDays = params.get("ProtectDays")
+        self.AddedOnTheFifteen = params.get("AddedOnTheFifteen")
         self.RequestId = params.get("RequestId")
 
 
@@ -9959,6 +9964,7 @@ Other 混合云专区
 <li>Os -String 是否必填: 否 - 操作系统( DescribeMachineOsList 接口 值 )
 每个过滤条件只支持一个值，暂不支持多个值“或”关系查询
 <li>Quuid - String - 是否必填: 否 - 云服务器uuid  最大100条.</li>
+<li>AddedOnTheFifteen- String 是否必填: 否 - 是否只查询15天内新增的主机( 1：是) </li>
         :type Filters: list of Filter
         :param ProjectIds: 机器所属业务ID列表
         :type ProjectIds: list of int non-negative
@@ -16079,6 +16085,9 @@ class Machine(AbstractModel):
         :param CloudTags: 云标签信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type CloudTags: list of Tags
+        :param IsAddedOnTheFifteen: 是否15天内新增的主机 0：非15天内新增的主机，1：15天内增加的主机
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsAddedOnTheFifteen: int
         """
         self.MachineName = None
         self.MachineOs = None
@@ -16105,6 +16114,7 @@ class Machine(AbstractModel):
         self.KernelVersion = None
         self.ProtectType = None
         self.CloudTags = None
+        self.IsAddedOnTheFifteen = None
 
 
     def _deserialize(self, params):
@@ -16145,6 +16155,7 @@ class Machine(AbstractModel):
                 obj = Tags()
                 obj._deserialize(item)
                 self.CloudTags.append(obj)
+        self.IsAddedOnTheFifteen = params.get("IsAddedOnTheFifteen")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -16229,6 +16240,10 @@ class MalWareList(AbstractModel):
         :type ProcessExists: int
         :param FileExists: 木马文件是否存在 0:不存在，1:存在
         :type FileExists: int
+        :param Quuid: cvm quuid
+        :type Quuid: str
+        :param MD5: 木马样本md5
+        :type MD5: str
         """
         self.HostIp = None
         self.Uuid = None
@@ -16246,6 +16261,8 @@ class MalWareList(AbstractModel):
         self.CheckPlatform = None
         self.ProcessExists = None
         self.FileExists = None
+        self.Quuid = None
+        self.MD5 = None
 
 
     def _deserialize(self, params):
@@ -16265,6 +16282,8 @@ class MalWareList(AbstractModel):
         self.CheckPlatform = params.get("CheckPlatform")
         self.ProcessExists = params.get("ProcessExists")
         self.FileExists = params.get("FileExists")
+        self.Quuid = params.get("Quuid")
+        self.MD5 = params.get("MD5")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

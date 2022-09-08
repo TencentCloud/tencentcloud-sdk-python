@@ -26,6 +26,35 @@ class TioneClient(AbstractClient):
     _service = 'tione'
 
 
+    def CreateBatchTask(self, request):
+        """创建跑批任务
+
+        :param request: Request instance for CreateBatchTask.
+        :type request: :class:`tencentcloud.tione.v20211111.models.CreateBatchTaskRequest`
+        :rtype: :class:`tencentcloud.tione.v20211111.models.CreateBatchTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateBatchTask", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateBatchTaskResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateDataset(self, request):
         """创建数据集
 
@@ -99,6 +128,35 @@ class TioneClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateTrainingTaskResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteBatchTask(self, request):
+        """删除跑批任务
+
+        :param request: Request instance for DeleteBatchTask.
+        :type request: :class:`tencentcloud.tione.v20211111.models.DeleteBatchTaskRequest`
+        :rtype: :class:`tencentcloud.tione.v20211111.models.DeleteBatchTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteBatchTask", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteBatchTaskResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -229,6 +287,93 @@ class TioneClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeBatchTask(self, request):
+        """查询跑批任务
+
+        :param request: Request instance for DescribeBatchTask.
+        :type request: :class:`tencentcloud.tione.v20211111.models.DescribeBatchTaskRequest`
+        :rtype: :class:`tencentcloud.tione.v20211111.models.DescribeBatchTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBatchTask", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBatchTaskResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeBatchTaskInstances(self, request):
+        """查询跑批实例列表
+
+        :param request: Request instance for DescribeBatchTaskInstances.
+        :type request: :class:`tencentcloud.tione.v20211111.models.DescribeBatchTaskInstancesRequest`
+        :rtype: :class:`tencentcloud.tione.v20211111.models.DescribeBatchTaskInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBatchTaskInstances", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBatchTaskInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeBatchTasks(self, request):
+        """批量预测任务列表信息
+
+        :param request: Request instance for DescribeBatchTasks.
+        :type request: :class:`tencentcloud.tione.v20211111.models.DescribeBatchTasksRequest`
+        :rtype: :class:`tencentcloud.tione.v20211111.models.DescribeBatchTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBatchTasks", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBatchTasksResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeBillingResourceGroups(self, request):
         """查询资源组详情
 
@@ -244,6 +389,35 @@ class TioneClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeBillingResourceGroupsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeBillingSpecs(self, request):
+        """本接口(DescribeBillingSpecs)用于查询计费项列表
+
+        :param request: Request instance for DescribeBillingSpecs.
+        :type request: :class:`tencentcloud.tione.v20211111.models.DescribeBillingSpecsRequest`
+        :rtype: :class:`tencentcloud.tione.v20211111.models.DescribeBillingSpecsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBillingSpecs", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBillingSpecsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -737,6 +911,35 @@ class TioneClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.StartTrainingTaskResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def StopBatchTask(self, request):
+        """停止跑批任务
+
+        :param request: Request instance for StopBatchTask.
+        :type request: :class:`tencentcloud.tione.v20211111.models.StopBatchTaskRequest`
+        :rtype: :class:`tencentcloud.tione.v20211111.models.StopBatchTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StopBatchTask", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.StopBatchTaskResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

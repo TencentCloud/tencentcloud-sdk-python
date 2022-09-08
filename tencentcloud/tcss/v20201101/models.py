@@ -1677,6 +1677,9 @@ RESULT_PASSED: 通过
         :param ImageTag: 镜像的tag
 注意：此字段可能返回 null，表示取不到有效值。
         :type ImageTag: str
+        :param VerifyInfo: 检查项验证信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VerifyInfo: str
         """
         self.CustomerAssetId = None
         self.AssetName = None
@@ -1687,6 +1690,7 @@ RESULT_PASSED: 通过
         self.CheckResult = None
         self.HostIP = None
         self.ImageTag = None
+        self.VerifyInfo = None
 
 
     def _deserialize(self, params):
@@ -1699,6 +1703,7 @@ RESULT_PASSED: 通过
         self.CheckResult = params.get("CheckResult")
         self.HostIP = params.get("HostIP")
         self.ImageTag = params.get("ImageTag")
+        self.VerifyInfo = params.get("VerifyInfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1911,6 +1916,9 @@ RESULT_FAILED: 未通过
         :param LastCheckTime: 最近检测的时间。
 注意：此字段可能返回 null，表示取不到有效值。
         :type LastCheckTime: str
+        :param VerifyInfo: 验证信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VerifyInfo: str
         """
         self.CustomerPolicyItemId = None
         self.BasePolicyItemId = None
@@ -1924,6 +1932,7 @@ RESULT_FAILED: 未通过
         self.WhitelistId = None
         self.FixSuggestion = None
         self.LastCheckTime = None
+        self.VerifyInfo = None
 
 
     def _deserialize(self, params):
@@ -1939,6 +1948,7 @@ RESULT_FAILED: 未通过
         self.WhitelistId = params.get("WhitelistId")
         self.FixSuggestion = params.get("FixSuggestion")
         self.LastCheckTime = params.get("LastCheckTime")
+        self.VerifyInfo = params.get("VerifyInfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
