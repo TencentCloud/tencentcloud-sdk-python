@@ -4626,6 +4626,76 @@ class DescribeExporterIntegrationsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeGrafanaChannelsRequest(AbstractModel):
+    """DescribeGrafanaChannels请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例 ID
+        :type InstanceId: str
+        :param Offset: 偏移量
+        :type Offset: int
+        :param Limit: 查询数量
+        :type Limit: int
+        :param ChannelName: 渠道名
+        :type ChannelName: str
+        :param ChannelIds: 渠道 ID
+        :type ChannelIds: list of str
+        :param ChannelState: 状态
+        :type ChannelState: int
+        """
+        self.InstanceId = None
+        self.Offset = None
+        self.Limit = None
+        self.ChannelName = None
+        self.ChannelIds = None
+        self.ChannelState = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.ChannelName = params.get("ChannelName")
+        self.ChannelIds = params.get("ChannelIds")
+        self.ChannelState = params.get("ChannelState")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeGrafanaChannelsResponse(AbstractModel):
+    """DescribeGrafanaChannels返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NotificationChannelSet: 告警通道数组
+        :type NotificationChannelSet: list of GrafanaChannel
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.NotificationChannelSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("NotificationChannelSet") is not None:
+            self.NotificationChannelSet = []
+            for item in params.get("NotificationChannelSet"):
+                obj = GrafanaChannel()
+                obj._deserialize(item)
+                self.NotificationChannelSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeGrafanaConfigRequest(AbstractModel):
     """DescribeGrafanaConfig请求参数结构体
 
@@ -7812,11 +7882,18 @@ class GrafanaAccountInfo(AbstractModel):
         :type Notes: str
         :param CreateAt: 创建时间
         :type CreateAt: str
+        :param InstanceId: 实例 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param Uin: 用户主账号 UIN
+        :type Uin: str
         """
         self.UserId = None
         self.Role = None
         self.Notes = None
         self.CreateAt = None
+        self.InstanceId = None
+        self.Uin = None
 
 
     def _deserialize(self, params):
@@ -7829,6 +7906,8 @@ class GrafanaAccountInfo(AbstractModel):
                 self.Role.append(obj)
         self.Notes = params.get("Notes")
         self.CreateAt = params.get("CreateAt")
+        self.InstanceId = params.get("InstanceId")
+        self.Uin = params.get("Uin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7857,6 +7936,51 @@ class GrafanaAccountRole(AbstractModel):
     def _deserialize(self, params):
         self.Organization = params.get("Organization")
         self.Role = params.get("Role")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GrafanaChannel(AbstractModel):
+    """Grafana 告警渠道
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ChannelId: 渠道 ID
+        :type ChannelId: str
+        :param ChannelName: 渠道名
+        :type ChannelName: str
+        :param Receivers: 告警通道模板 ID 数组
+        :type Receivers: list of str
+        :param CreatedAt: 创建时间
+        :type CreatedAt: str
+        :param UpdatedAt: 更新时间
+        :type UpdatedAt: str
+        :param OrganizationIds: 告警渠道的所有生效组织
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OrganizationIds: list of str
+        """
+        self.ChannelId = None
+        self.ChannelName = None
+        self.Receivers = None
+        self.CreatedAt = None
+        self.UpdatedAt = None
+        self.OrganizationIds = None
+
+
+    def _deserialize(self, params):
+        self.ChannelId = params.get("ChannelId")
+        self.ChannelName = params.get("ChannelName")
+        self.Receivers = params.get("Receivers")
+        self.CreatedAt = params.get("CreatedAt")
+        self.UpdatedAt = params.get("UpdatedAt")
+        self.OrganizationIds = params.get("OrganizationIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7983,11 +8107,15 @@ class GrafanaIntegrationConfig(AbstractModel):
         :type Content: str
         :param Description: 集成描述
         :type Description: str
+        :param GrafanaURL: Grafana 跳转地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GrafanaURL: str
         """
         self.IntegrationId = None
         self.Kind = None
         self.Content = None
         self.Description = None
+        self.GrafanaURL = None
 
 
     def _deserialize(self, params):
@@ -7995,6 +8123,7 @@ class GrafanaIntegrationConfig(AbstractModel):
         self.Kind = params.get("Kind")
         self.Content = params.get("Content")
         self.Description = params.get("Description")
+        self.GrafanaURL = params.get("GrafanaURL")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -10358,7 +10487,7 @@ class RecordingRuleSet(AbstractModel):
         :type RuleId: str
         :param RuleState: 规则状态码
         :type RuleState: int
-        :param Name: 规则名称
+        :param Name: 分组名称
         :type Name: str
         :param Group: 规则内容组
         :type Group: str
@@ -10368,6 +10497,9 @@ class RecordingRuleSet(AbstractModel):
         :type CreatedAt: str
         :param UpdatedAt: 规则最近更新时间
         :type UpdatedAt: str
+        :param RuleName: 规则名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleName: str
         """
         self.RuleId = None
         self.RuleState = None
@@ -10376,6 +10508,7 @@ class RecordingRuleSet(AbstractModel):
         self.Total = None
         self.CreatedAt = None
         self.UpdatedAt = None
+        self.RuleName = None
 
 
     def _deserialize(self, params):
@@ -10386,6 +10519,7 @@ class RecordingRuleSet(AbstractModel):
         self.Total = params.get("Total")
         self.CreatedAt = params.get("CreatedAt")
         self.UpdatedAt = params.get("UpdatedAt")
+        self.RuleName = params.get("RuleName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

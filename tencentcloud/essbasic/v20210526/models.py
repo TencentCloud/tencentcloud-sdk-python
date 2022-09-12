@@ -148,6 +148,63 @@ class CcInfo(AbstractModel):
         
 
 
+class ChannelBatchCancelFlowsRequest(AbstractModel):
+    """ChannelBatchCancelFlows请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Agent: 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+        :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        :param FlowIds: 签署流程Id数组，最多100个，超过100不处理
+        :type FlowIds: list of str
+        :param Operator: 操作人信息
+        :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
+        """
+        self.Agent = None
+        self.FlowIds = None
+        self.Operator = None
+
+
+    def _deserialize(self, params):
+        if params.get("Agent") is not None:
+            self.Agent = Agent()
+            self.Agent._deserialize(params.get("Agent"))
+        self.FlowIds = params.get("FlowIds")
+        if params.get("Operator") is not None:
+            self.Operator = UserInfo()
+            self.Operator._deserialize(params.get("Operator"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChannelBatchCancelFlowsResponse(AbstractModel):
+    """ChannelBatchCancelFlows返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FailMessages: 签署流程批量撤销失败原因，错误信息与流程Id一一对应，如果部分流程不可撤销，不会返回错误信息，只会撤销可撤销流程
+        :type FailMessages: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FailMessages = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FailMessages = params.get("FailMessages")
+        self.RequestId = params.get("RequestId")
+
+
 class ChannelCancelMultiFlowSignQRCodeRequest(AbstractModel):
     """ChannelCancelMultiFlowSignQRCode请求参数结构体
 
@@ -446,6 +503,78 @@ class ChannelCreateFlowByFilesResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
+class ChannelCreateFlowGroupByFilesRequest(AbstractModel):
+    """ChannelCreateFlowGroupByFiles请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowFileInfos: 每个子合同的发起所需的信息，数量限制2-100
+        :type FlowFileInfos: list of FlowFileInfo
+        :param FlowGroupName: 合同组名称，长度不超过200个字符
+        :type FlowGroupName: str
+        :param Agent: 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+        :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        :param Operator: 操作者的信息
+        :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
+        """
+        self.FlowFileInfos = None
+        self.FlowGroupName = None
+        self.Agent = None
+        self.Operator = None
+
+
+    def _deserialize(self, params):
+        if params.get("FlowFileInfos") is not None:
+            self.FlowFileInfos = []
+            for item in params.get("FlowFileInfos"):
+                obj = FlowFileInfo()
+                obj._deserialize(item)
+                self.FlowFileInfos.append(obj)
+        self.FlowGroupName = params.get("FlowGroupName")
+        if params.get("Agent") is not None:
+            self.Agent = Agent()
+            self.Agent._deserialize(params.get("Agent"))
+        if params.get("Operator") is not None:
+            self.Operator = UserInfo()
+            self.Operator._deserialize(params.get("Operator"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChannelCreateFlowGroupByFilesResponse(AbstractModel):
+    """ChannelCreateFlowGroupByFiles返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowGroupId: 合同组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlowGroupId: str
+        :param FlowIds: 子合同ID列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlowIds: list of str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FlowGroupId = None
+        self.FlowIds = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FlowGroupId = params.get("FlowGroupId")
+        self.FlowIds = params.get("FlowIds")
         self.RequestId = params.get("RequestId")
 
 
@@ -1124,7 +1253,7 @@ class CreateSignUrlsRequest(AbstractModel):
         r"""
         :param Agent: 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
-        :param FlowIds: 签署流程编号数组，最多支持100个。
+        :param FlowIds: 签署流程编号数组，最多支持100个。(备注：该参数和合同组编号必须二选一)
         :type FlowIds: list of str
         :param Endpoint: 签署链接类型：“WEIXINAPP”-直接跳小程序；“CHANNEL”-跳转H5页面；“APP”-第三方APP或小程序跳转电子签小程序；默认“WEIXINAPP”类型，即跳转至小程序；
         :type Endpoint: str
@@ -1152,6 +1281,8 @@ GenerateType为"PERSON"或"FOLLOWER"时必填
         :type JumpUrl: str
         :param Operator: 操作者的信息
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
+        :param FlowGroupId: 合同组编号(备注：该参数和合同(流程)编号数组必须二选一)
+        :type FlowGroupId: str
         """
         self.Agent = None
         self.FlowIds = None
@@ -1165,6 +1296,7 @@ GenerateType为"PERSON"或"FOLLOWER"时必填
         self.AutoJumpBack = None
         self.JumpUrl = None
         self.Operator = None
+        self.FlowGroupId = None
 
 
     def _deserialize(self, params):
@@ -1184,6 +1316,7 @@ GenerateType为"PERSON"或"FOLLOWER"时必填
         if params.get("Operator") is not None:
             self.Operator = UserInfo()
             self.Operator._deserialize(params.get("Operator"))
+        self.FlowGroupId = params.get("FlowGroupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1233,13 +1366,17 @@ class DescribeFlowDetailInfoRequest(AbstractModel):
         :param Agent: 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         :param FlowIds: 合同(流程)编号数组，最多支持100个。
+（备注：该参数和合同组编号必须二选一）
         :type FlowIds: list of str
         :param Operator: 操作者的信息
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
+        :param FlowGroupId: 合同组编号（备注：该参数和合同(流程)编号数组必须二选一）
+        :type FlowGroupId: str
         """
         self.Agent = None
         self.FlowIds = None
         self.Operator = None
+        self.FlowGroupId = None
 
 
     def _deserialize(self, params):
@@ -1250,6 +1387,7 @@ class DescribeFlowDetailInfoRequest(AbstractModel):
         if params.get("Operator") is not None:
             self.Operator = UserInfo()
             self.Operator._deserialize(params.get("Operator"))
+        self.FlowGroupId = params.get("FlowGroupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1273,12 +1411,20 @@ class DescribeFlowDetailInfoResponse(AbstractModel):
         :param FlowInfo: 合同(签署流程)的具体详细描述信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type FlowInfo: list of FlowDetailInfo
+        :param FlowGroupId: 合同组编号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlowGroupId: str
+        :param FlowGroupName: 合同组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlowGroupName: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.ApplicationId = None
         self.ProxyOrganizationOpenId = None
         self.FlowInfo = None
+        self.FlowGroupId = None
+        self.FlowGroupName = None
         self.RequestId = None
 
 
@@ -1291,6 +1437,8 @@ class DescribeFlowDetailInfoResponse(AbstractModel):
                 obj = FlowDetailInfo()
                 obj._deserialize(item)
                 self.FlowInfo.append(obj)
+        self.FlowGroupId = params.get("FlowGroupId")
+        self.FlowGroupName = params.get("FlowGroupName")
         self.RequestId = params.get("RequestId")
 
 
@@ -1788,6 +1936,75 @@ class FlowDetailInfo(AbstractModel):
                 obj = FlowApproverDetail()
                 obj._deserialize(item)
                 self.FlowApproverInfos.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FlowFileInfo(AbstractModel):
+    """合同组中每个子合同的发起信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FileIds: 签署文件资源Id列表，目前仅支持单个文件
+        :type FileIds: list of str
+        :param FlowName: 签署流程名称，长度不超过200个字符
+        :type FlowName: str
+        :param FlowApprovers: 签署流程签约方列表，最多不超过5个参与方
+        :type FlowApprovers: list of FlowApproverInfo
+        :param Deadline: 签署流程截止时间，十位数时间戳，最大值为33162419560，即3020年
+        :type Deadline: int
+        :param FlowDescription: 签署流程的描述，长度不超过1000个字符
+        :type FlowDescription: str
+        :param FlowType: 签署流程的类型，长度不超过255个字符
+        :type FlowType: str
+        :param CallbackUrl: 签署流程回调地址，长度不超过255个字符
+        :type CallbackUrl: str
+        :param CustomerData: 渠道的业务信息，最大长度1000个字符。发起自动签署时，需设置对应自动签署场景，目前仅支持场景：处方单-E_PRESCRIPTION_AUTO_SIGN
+        :type CustomerData: str
+        :param Unordered: 合同签署顺序类型(无序签,顺序签)，默认为false，即有序签署
+        :type Unordered: bool
+        :param CustomShowMap: 合同显示的页卡模板，说明：只支持{合同名称}, {发起方企业}, {发起方姓名}, {签署方N企业}, {签署方N姓名}，且N不能超过签署人的数量，N从1开始
+        :type CustomShowMap: str
+        :param NeedSignReview: 本企业(发起方企业)是否需要签署审批
+        :type NeedSignReview: bool
+        """
+        self.FileIds = None
+        self.FlowName = None
+        self.FlowApprovers = None
+        self.Deadline = None
+        self.FlowDescription = None
+        self.FlowType = None
+        self.CallbackUrl = None
+        self.CustomerData = None
+        self.Unordered = None
+        self.CustomShowMap = None
+        self.NeedSignReview = None
+
+
+    def _deserialize(self, params):
+        self.FileIds = params.get("FileIds")
+        self.FlowName = params.get("FlowName")
+        if params.get("FlowApprovers") is not None:
+            self.FlowApprovers = []
+            for item in params.get("FlowApprovers"):
+                obj = FlowApproverInfo()
+                obj._deserialize(item)
+                self.FlowApprovers.append(obj)
+        self.Deadline = params.get("Deadline")
+        self.FlowDescription = params.get("FlowDescription")
+        self.FlowType = params.get("FlowType")
+        self.CallbackUrl = params.get("CallbackUrl")
+        self.CustomerData = params.get("CustomerData")
+        self.Unordered = params.get("Unordered")
+        self.CustomShowMap = params.get("CustomShowMap")
+        self.NeedSignReview = params.get("NeedSignReview")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2529,6 +2746,9 @@ PERSON 自然人
         :param OpenId: 企业经办人 用户在渠道的编号
 注意：此字段可能返回 null，表示取不到有效值。
         :type OpenId: str
+        :param FlowGroupId: 合同组签署链接对应的合同组id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlowGroupId: str
         """
         self.SignUrl = None
         self.Deadline = None
@@ -2542,6 +2762,7 @@ PERSON 自然人
         self.IdCardNumber = None
         self.FlowId = None
         self.OpenId = None
+        self.FlowGroupId = None
 
 
     def _deserialize(self, params):
@@ -2557,6 +2778,7 @@ PERSON 自然人
         self.IdCardNumber = params.get("IdCardNumber")
         self.FlowId = params.get("FlowId")
         self.OpenId = params.get("OpenId")
+        self.FlowGroupId = params.get("FlowGroupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

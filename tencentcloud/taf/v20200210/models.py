@@ -237,54 +237,6 @@ class InputRecognizeTargetAudience(AbstractModel):
         
 
 
-class InputSendTrafficSecuritySmsMsg(AbstractModel):
-    """业务入参
-
-    """
-
-    def __init__(self):
-        r"""
-        :param TaskId: 投放任务ID
-        :type TaskId: str
-        :param Mobiles: 手机号码列表（号码量<=200）
-        :type Mobiles: list of str
-        :param IsAuthorized: 是否授权，1：已授权
-        :type IsAuthorized: int
-        :param EncryptMethod: 加密方式，0：AES加密；1：DES加密
-        :type EncryptMethod: int
-        :param EncryptMode: 加密算法中的块处理模式，0：ECB模式；1：CBC模式；2：CTR模式；3：CFB模式；4：OFB模式；
-        :type EncryptMode: int
-        :param PaddingType: 填充模式，0：ZeroPadding；1：PKCS5Padding；2：PKCS7Padding；
-        :type PaddingType: int
-        :param EncryptData: 加密数据
-        :type EncryptData: str
-        """
-        self.TaskId = None
-        self.Mobiles = None
-        self.IsAuthorized = None
-        self.EncryptMethod = None
-        self.EncryptMode = None
-        self.PaddingType = None
-        self.EncryptData = None
-
-
-    def _deserialize(self, params):
-        self.TaskId = params.get("TaskId")
-        self.Mobiles = params.get("Mobiles")
-        self.IsAuthorized = params.get("IsAuthorized")
-        self.EncryptMethod = params.get("EncryptMethod")
-        self.EncryptMode = params.get("EncryptMode")
-        self.PaddingType = params.get("PaddingType")
-        self.EncryptData = params.get("EncryptData")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class OutputRecognizeTargetAudience(AbstractModel):
     """流量反欺诈-验准返回值
 
@@ -350,40 +302,6 @@ class OutputRecognizeTargetAudienceValue(AbstractModel):
         self.ModelId = params.get("ModelId")
         self.IsFound = params.get("IsFound")
         self.Score = params.get("Score")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class OutputSendTrafficSecuritySmsMsg(AbstractModel):
-    """返回结果
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Code: 返回码（0：接口调用成功 非0：接口调用失败）
-        :type Code: int
-        :param Message: 返回码对应的信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Message: str
-        :param Value: 发送失败的号码列表
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Value: list of str
-        """
-        self.Code = None
-        self.Message = None
-        self.Value = None
-
-
-    def _deserialize(self, params):
-        self.Code = params.get("Code")
-        self.Message = params.get("Message")
-        self.Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -545,55 +463,5 @@ class RecognizeTargetAudienceResponse(AbstractModel):
     def _deserialize(self, params):
         if params.get("Data") is not None:
             self.Data = OutputRecognizeTargetAudience()
-            self.Data._deserialize(params.get("Data"))
-        self.RequestId = params.get("RequestId")
-
-
-class SendTrafficSecuritySmsMessageRequest(AbstractModel):
-    """SendTrafficSecuritySmsMessage请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param BspData: 业务入参
-        :type BspData: :class:`tencentcloud.taf.v20200210.models.InputSendTrafficSecuritySmsMsg`
-        """
-        self.BspData = None
-
-
-    def _deserialize(self, params):
-        if params.get("BspData") is not None:
-            self.BspData = InputSendTrafficSecuritySmsMsg()
-            self.BspData._deserialize(params.get("BspData"))
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class SendTrafficSecuritySmsMessageResponse(AbstractModel):
-    """SendTrafficSecuritySmsMessage返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Data: 返回结果
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Data: :class:`tencentcloud.taf.v20200210.models.OutputSendTrafficSecuritySmsMsg`
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.Data = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        if params.get("Data") is not None:
-            self.Data = OutputSendTrafficSecuritySmsMsg()
             self.Data._deserialize(params.get("Data"))
         self.RequestId = params.get("RequestId")

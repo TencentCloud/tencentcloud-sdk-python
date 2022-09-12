@@ -550,6 +550,8 @@ class BGPInstance(AbstractModel):
         :type TagInfoList: list of TagInfo
         :param IpCountNewFlag: 新版本1ip高防包
         :type IpCountNewFlag: int
+        :param VitalityVersion: 攻击封堵套餐标记
+        :type VitalityVersion: int
         """
         self.InstanceDetail = None
         self.SpecificationLimit = None
@@ -566,6 +568,7 @@ class BGPInstance(AbstractModel):
         self.CCEnable = None
         self.TagInfoList = None
         self.IpCountNewFlag = None
+        self.VitalityVersion = None
 
 
     def _deserialize(self, params):
@@ -604,6 +607,7 @@ class BGPInstance(AbstractModel):
                 obj._deserialize(item)
                 self.TagInfoList.append(obj)
         self.IpCountNewFlag = params.get("IpCountNewFlag")
+        self.VitalityVersion = params.get("VitalityVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

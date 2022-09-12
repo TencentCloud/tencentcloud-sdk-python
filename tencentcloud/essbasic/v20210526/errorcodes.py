@@ -281,6 +281,9 @@ OPERATIONDENIED_AUTHTAG = 'OperationDenied.AuthTag'
 # 应用号已被禁止。
 OPERATIONDENIED_BANNEDAPPLICATION = 'OperationDenied.BannedApplication'
 
+# 文件发起静默签未开通白名单。
+OPERATIONDENIED_BYFILESSERVERSIGNFORBID = 'OperationDenied.ByFilesServerSignForbid'
+
 # 只支持下载单个。
 OPERATIONDENIED_DOWNLOADMORETHANONE = 'OperationDenied.DownLoadMoreThanOne'
 

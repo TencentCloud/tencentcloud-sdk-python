@@ -12932,29 +12932,32 @@ class ServerCertInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param CertId: 服务器证书 ID, 默认证书ID, 或在 SSL 证书管理进行证书托管时自动生成
+        :param CertId: 服务器证书 ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CertId: str
-        :param Alias: 证书备注名
+        :param Alias: 证书备注名。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Alias: str
-        :param Type: 证书类型:
-default: 默认证书
-upload:用户上传
-managed:腾讯云托管
+        :param Type: 证书类型，取值有：
+<li>default: 默认证书;</li>
+<li>upload:用户上传;</li>
+<li>managed:腾讯云托管。</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
-        :param ExpireTime: 证书过期时间
+        :param ExpireTime: 证书过期时间。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExpireTime: str
-        :param DeployTime: 证书部署时间
+        :param DeployTime: 证书部署时间。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeployTime: str
-        :param Status: 部署状态:
-processing: 部署中
-deployed: 已部署
+        :param Status: 部署状态，取值有：
+<li>processing: 部署中;</li>
+<li>deployed: 已部署。</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
+        :param SignAlgo: 证书算法。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SignAlgo: str
         """
         self.CertId = None
         self.Alias = None
@@ -12962,6 +12965,7 @@ deployed: 已部署
         self.ExpireTime = None
         self.DeployTime = None
         self.Status = None
+        self.SignAlgo = None
 
 
     def _deserialize(self, params):
@@ -12971,6 +12975,7 @@ deployed: 已部署
         self.ExpireTime = params.get("ExpireTime")
         self.DeployTime = params.get("DeployTime")
         self.Status = params.get("Status")
+        self.SignAlgo = params.get("SignAlgo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

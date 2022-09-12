@@ -627,6 +627,93 @@ class DeleteCustomizationResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteResult(AbstractModel):
+    """剔除房间操作结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Code: 错误码，0-剔除成功 其他-剔除失败
+        :type Code: int
+        :param ErrorMsg: 错误描述
+        :type ErrorMsg: str
+        """
+        self.Code = None
+        self.ErrorMsg = None
+
+
+    def _deserialize(self, params):
+        self.Code = params.get("Code")
+        self.ErrorMsg = params.get("ErrorMsg")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteRoomMemberRequest(AbstractModel):
+    """DeleteRoomMember请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RoomId: 要操作的房间id
+        :type RoomId: str
+        :param Uids: 要剔除的用户列表
+        :type Uids: list of str
+        :param DeleteType: 剔除类型 1-删除房间 2-剔除用户
+        :type DeleteType: int
+        :param BizId: 应用id
+        :type BizId: int
+        """
+        self.RoomId = None
+        self.Uids = None
+        self.DeleteType = None
+        self.BizId = None
+
+
+    def _deserialize(self, params):
+        self.RoomId = params.get("RoomId")
+        self.Uids = params.get("Uids")
+        self.DeleteType = params.get("DeleteType")
+        self.BizId = params.get("BizId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteRoomMemberResponse(AbstractModel):
+    """DeleteRoomMember返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DeleteResult: 剔除房间或成员的操作结果
+        :type DeleteResult: :class:`tencentcloud.gme.v20180711.models.DeleteResult`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DeleteResult = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DeleteResult") is not None:
+            self.DeleteResult = DeleteResult()
+            self.DeleteResult._deserialize(params.get("DeleteResult"))
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteScanUserRequest(AbstractModel):
     """DeleteScanUser请求参数结构体
 

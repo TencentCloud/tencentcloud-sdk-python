@@ -111,32 +111,3 @@ class TafClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(e.message, e.message)
-
-
-    def SendTrafficSecuritySmsMessage(self, request):
-        """流量安选产品，短信发送接口
-
-        :param request: Request instance for SendTrafficSecuritySmsMessage.
-        :type request: :class:`tencentcloud.taf.v20200210.models.SendTrafficSecuritySmsMessageRequest`
-        :rtype: :class:`tencentcloud.taf.v20200210.models.SendTrafficSecuritySmsMessageResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("SendTrafficSecuritySmsMessage", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.SendTrafficSecuritySmsMessageResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)

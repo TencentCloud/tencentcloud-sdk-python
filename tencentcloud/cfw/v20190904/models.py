@@ -1710,6 +1710,57 @@ class DescribeCfwEipsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDefenseSwitchRequest(AbstractModel):
+    """DescribeDefenseSwitch请求参数结构体
+
+    """
+
+
+class DescribeDefenseSwitchResponse(AbstractModel):
+    """DescribeDefenseSwitch返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param BasicRuleSwitch: 基础防御开关
+        :type BasicRuleSwitch: int
+        :param BaselineAllSwitch: 安全基线开关
+        :type BaselineAllSwitch: int
+        :param TiSwitch: 威胁情报开关
+        :type TiSwitch: int
+        :param VirtualPatchSwitch: 虚拟补丁开关
+        :type VirtualPatchSwitch: int
+        :param HistoryOpen: 是否历史开启
+        :type HistoryOpen: int
+        :param ReturnCode: 状态值，0：查询成功，非0：查询失败
+        :type ReturnCode: int
+        :param ReturnMsg: 状态信息，success：查询成功，fail：查询失败
+        :type ReturnMsg: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.BasicRuleSwitch = None
+        self.BaselineAllSwitch = None
+        self.TiSwitch = None
+        self.VirtualPatchSwitch = None
+        self.HistoryOpen = None
+        self.ReturnCode = None
+        self.ReturnMsg = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.BasicRuleSwitch = params.get("BasicRuleSwitch")
+        self.BaselineAllSwitch = params.get("BaselineAllSwitch")
+        self.TiSwitch = params.get("TiSwitch")
+        self.VirtualPatchSwitch = params.get("VirtualPatchSwitch")
+        self.HistoryOpen = params.get("HistoryOpen")
+        self.ReturnCode = params.get("ReturnCode")
+        self.ReturnMsg = params.get("ReturnMsg")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeEnterpriseSecurityGroupRuleRequest(AbstractModel):
     """DescribeEnterpriseSecurityGroupRule请求参数结构体
 
@@ -4893,11 +4944,11 @@ class ScanResultInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param LeakNum: 暴漏漏洞数量
+        :param LeakNum: 暴露漏洞数量
         :type LeakNum: int
         :param IPNum: 防护ip数量
         :type IPNum: int
-        :param PortNum: 暴漏端口数量
+        :param PortNum: 暴露端口数量
         :type PortNum: int
         :param IPStatus: 是否开启防护
         :type IPStatus: bool

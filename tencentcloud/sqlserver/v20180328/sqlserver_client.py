@@ -84,6 +84,35 @@ class SqlserverClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CloseInterCommunication(self, request):
+        """本接口（CloseInterCommunication）用于关闭实例互通。
+
+        :param request: Request instance for CloseInterCommunication.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.CloseInterCommunicationRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.CloseInterCommunicationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CloseInterCommunication", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CloseInterCommunicationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CompleteExpansion(self, request):
         """本接口（CompleteExpansion）在实例发起扩容后，实例状态处于“升级待切换”时，可立即完成实例升级切换操作，无需等待可维护时间窗。本接口需要在实例低峰时调用，在完全切换成功前，存在部分库不可访问的风险。
 
@@ -244,6 +273,64 @@ class SqlserverClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.CreateBasicDBInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateBusinessDBInstances(self, request):
+        """本接口（CreateBusinessDBInstances）用于创建商业智能服务实例。
+
+        :param request: Request instance for CreateBusinessDBInstances.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.CreateBusinessDBInstancesRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.CreateBusinessDBInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateBusinessDBInstances", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateBusinessDBInstancesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def CreateBusinessIntelligenceFile(self, request):
+        """本接口（CreateBusinessIntelligenceFile）用于添加商业智能服务文件。
+
+        :param request: Request instance for CreateBusinessIntelligenceFile.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.CreateBusinessIntelligenceFileRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.CreateBusinessIntelligenceFileResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateBusinessIntelligenceFile", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateBusinessIntelligenceFileResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -476,6 +563,35 @@ class SqlserverClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteBackupMigrationResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DeleteBusinessIntelligenceFile(self, request):
+        """本接口（DeleteBusinessIntelligenceFile）用于删除商业智能文件。
+
+        :param request: Request instance for DeleteBusinessIntelligenceFile.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DeleteBusinessIntelligenceFileRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DeleteBusinessIntelligenceFileResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteBusinessIntelligenceFile", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteBusinessIntelligenceFileResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -838,6 +954,35 @@ class SqlserverClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeBusinessIntelligenceFile(self, request):
+        """本接口（DescribeBusinessIntelligenceFile）用于查询商业智能服务需要的文件。
+
+        :param request: Request instance for DescribeBusinessIntelligenceFile.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeBusinessIntelligenceFileRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DescribeBusinessIntelligenceFileResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBusinessIntelligenceFile", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeBusinessIntelligenceFileResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeCrossRegionZone(self, request):
         """本接口(DescribeCrossRegionZone)根据主实例查询备机的容灾地域和可用区。
 
@@ -882,6 +1027,35 @@ class SqlserverClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeDBCharsetsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDBInstanceInter(self, request):
+        """本接口（DescribeDBInstanceInter）用于查询互通实例的信息。
+
+        :param request: Request instance for DescribeDBInstanceInter.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeDBInstanceInterRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DescribeDBInstanceInterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDBInstanceInter", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDBInstanceInterResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -2334,6 +2508,35 @@ class SqlserverClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyReadOnlyGroupDetailsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def OpenInterCommunication(self, request):
+        """本接口（OpenInterCommunication）用于打开实例的互通，实例互通可以实现商业智能服务相互联通。
+
+        :param request: Request instance for OpenInterCommunication.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.OpenInterCommunicationRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.OpenInterCommunicationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("OpenInterCommunication", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.OpenInterCommunicationResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

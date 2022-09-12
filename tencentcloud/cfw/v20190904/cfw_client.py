@@ -635,6 +635,35 @@ class CfwClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeDefenseSwitch(self, request):
+        """获取入侵防御按钮列表
+
+        :param request: Request instance for DescribeDefenseSwitch.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeDefenseSwitchRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.DescribeDefenseSwitchResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDefenseSwitch", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDefenseSwitchResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeEnterpriseSecurityGroupRule(self, request):
         """查询新企业安全组规则
 

@@ -1853,11 +1853,14 @@ class CreateTopicRequest(AbstractModel):
         :type TopicType: str
         :param Period: 日志集的保存周期，单位：天，默认30天。
         :type Period: int
+        :param StorageType: 日志主题的存储类型，可选值 HOT（标准存储），COLD（低频存储）；默认为HOT。
+        :type StorageType: str
         """
         self.TopicName = None
         self.PartitionCount = None
         self.TopicType = None
         self.Period = None
+        self.StorageType = None
 
 
     def _deserialize(self, params):
@@ -1865,6 +1868,7 @@ class CreateTopicRequest(AbstractModel):
         self.PartitionCount = params.get("PartitionCount")
         self.TopicType = params.get("TopicType")
         self.Period = params.get("Period")
+        self.StorageType = params.get("StorageType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

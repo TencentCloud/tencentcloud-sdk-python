@@ -7836,11 +7836,19 @@ class CreateOpenBankOrderPaymentResult(AbstractModel):
         :type RedirectInfo: :class:`tencentcloud.cpdp.v20190820.models.OpenBankRedirectInfo`
         :param OutOrderId: 外部商户订单号，只能是数字、大小写字母，且在同一个接入平台下唯一。
         :type OutOrderId: str
+        :param PayInfo: 渠道扩展支付信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PayInfo: str
+        :param PayInfoType: 渠道扩展支付信息类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PayInfoType: str
         """
         self.ChannelOrderId = None
         self.ThirdPayOrderId = None
         self.RedirectInfo = None
         self.OutOrderId = None
+        self.PayInfo = None
+        self.PayInfoType = None
 
 
     def _deserialize(self, params):
@@ -7850,6 +7858,8 @@ class CreateOpenBankOrderPaymentResult(AbstractModel):
             self.RedirectInfo = OpenBankRedirectInfo()
             self.RedirectInfo._deserialize(params.get("RedirectInfo"))
         self.OutOrderId = params.get("OutOrderId")
+        self.PayInfo = params.get("PayInfo")
+        self.PayInfoType = params.get("PayInfoType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -21600,6 +21610,9 @@ OPENBANK_PAYMENT
         :param ProfitShareRespInfoList: 分账信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProfitShareRespInfoList: list of OpenBankProfitShareRespInfo
+        :param TimeFinish: 支付完成时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimeFinish: str
         """
         self.ChannelMerchantId = None
         self.OutOrderId = None
@@ -21618,6 +21631,7 @@ OPENBANK_PAYMENT
         self.FeeAmount = None
         self.FeeRate = None
         self.ProfitShareRespInfoList = None
+        self.TimeFinish = None
 
 
     def _deserialize(self, params):
@@ -21647,6 +21661,7 @@ OPENBANK_PAYMENT
                 obj = OpenBankProfitShareRespInfo()
                 obj._deserialize(item)
                 self.ProfitShareRespInfoList.append(obj)
+        self.TimeFinish = params.get("TimeFinish")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

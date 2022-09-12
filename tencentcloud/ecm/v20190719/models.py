@@ -4298,11 +4298,18 @@ class DescribePriceRunInstanceRequest(AbstractModel):
         :type InstanceCount: int
         :param DataDisk: 数据盘信息
         :type DataDisk: list of DataDisk
+        :param InstanceChargeType: 实例计费类型。其中：
+0，按资源维度后付费，计算当日用量峰值，例如CPU，内存，硬盘等，仅适用于非GNR系列机型；
+1，按小时后付费，单价：xx元/实例/小时，仅适用于GNR机型，如需开通该计费方式请提工单申请；
+2，按月后付费，单价：xx元/实例/月，仅适用于GNR机型；
+该字段不填时，非GNR机型会默认选择0；GNR机型默认选择2。
+        :type InstanceChargeType: int
         """
         self.InstanceType = None
         self.SystemDisk = None
         self.InstanceCount = None
         self.DataDisk = None
+        self.InstanceChargeType = None
 
 
     def _deserialize(self, params):
@@ -4317,6 +4324,7 @@ class DescribePriceRunInstanceRequest(AbstractModel):
                 obj = DataDisk()
                 obj._deserialize(item)
                 self.DataDisk.append(obj)
+        self.InstanceChargeType = params.get("InstanceChargeType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

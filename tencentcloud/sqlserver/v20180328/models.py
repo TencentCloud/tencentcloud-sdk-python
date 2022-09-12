@@ -453,6 +453,84 @@ class BackupFile(AbstractModel):
         
 
 
+class BusinessIntelligenceFile(AbstractModel):
+    """商业智能服务文件类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FileName: 文件名称
+        :type FileName: str
+        :param FileType: 文件类型
+        :type FileType: str
+        :param FileURL: 文件的COS_URL
+        :type FileURL: str
+        :param FilePath: 文件在服务器上的路径
+        :type FilePath: str
+        :param FileSize: 文件大小，单位时Byte
+        :type FileSize: int
+        :param FileMd5: 文件md5值
+        :type FileMd5: str
+        :param Status: 部署文件状态 1-初始化待部署 2-部署中 3-部署成功 4-部署失败
+        :type Status: int
+        :param Remark: 备注信息
+        :type Remark: str
+        :param CreateTime: 文件创建时间
+        :type CreateTime: str
+        :param StartTime: 文件部署开始时间
+        :type StartTime: str
+        :param EndTime: 文件部署结束时间
+        :type EndTime: str
+        :param Message: 报错信息返回
+        :type Message: str
+        :param InstanceId: 商业智能实例ID
+        :type InstanceId: str
+        :param Action: 动作相关信息
+        :type Action: :class:`tencentcloud.sqlserver.v20180328.models.FileAction`
+        """
+        self.FileName = None
+        self.FileType = None
+        self.FileURL = None
+        self.FilePath = None
+        self.FileSize = None
+        self.FileMd5 = None
+        self.Status = None
+        self.Remark = None
+        self.CreateTime = None
+        self.StartTime = None
+        self.EndTime = None
+        self.Message = None
+        self.InstanceId = None
+        self.Action = None
+
+
+    def _deserialize(self, params):
+        self.FileName = params.get("FileName")
+        self.FileType = params.get("FileType")
+        self.FileURL = params.get("FileURL")
+        self.FilePath = params.get("FilePath")
+        self.FileSize = params.get("FileSize")
+        self.FileMd5 = params.get("FileMd5")
+        self.Status = params.get("Status")
+        self.Remark = params.get("Remark")
+        self.CreateTime = params.get("CreateTime")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.Message = params.get("Message")
+        self.InstanceId = params.get("InstanceId")
+        if params.get("Action") is not None:
+            self.Action = FileAction()
+            self.Action._deserialize(params.get("Action"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CloneDBRequest(AbstractModel):
     """CloneDB请求参数结构体
 
@@ -504,6 +582,56 @@ class CloneDBResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.FlowId = params.get("FlowId")
+        self.RequestId = params.get("RequestId")
+
+
+class CloseInterCommunicationRequest(AbstractModel):
+    """CloseInterCommunication请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceIdSet: 关闭互通的实例ID集合
+        :type InstanceIdSet: list of str
+        """
+        self.InstanceIdSet = None
+
+
+    def _deserialize(self, params):
+        self.InstanceIdSet = params.get("InstanceIdSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloseInterCommunicationResponse(AbstractModel):
+    """CloseInterCommunication返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InterInstanceFlowSet: 实例和异步流程ID
+        :type InterInstanceFlowSet: list of InterInstanceFlow
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.InterInstanceFlowSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("InterInstanceFlowSet") is not None:
+            self.InterInstanceFlowSet = []
+            for item in params.get("InterInstanceFlowSet"):
+                obj = InterInstanceFlow()
+                obj._deserialize(item)
+                self.InterInstanceFlowSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -928,6 +1056,169 @@ class CreateBasicDBInstancesResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.DealName = params.get("DealName")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateBusinessDBInstancesRequest(AbstractModel):
+    """CreateBusinessDBInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Zone: 实例可用区，类似ap-guangzhou-1（广州一区）；实例可售卖区域可以通过接口DescribeZones获取
+        :type Zone: str
+        :param Memory: 实例内存大小，单位GB
+        :type Memory: int
+        :param Storage: 实例磁盘大小，单位GB
+        :type Storage: int
+        :param Cpu: 预购买实例的CPU核心数
+        :type Cpu: int
+        :param MachineType: 购买实例的宿主机类型，CLOUD_PREMIUM-虚拟机高性能云盘，CLOUD_SSD-虚拟机SSD云盘
+        :type MachineType: str
+        :param ProjectId: 项目ID
+        :type ProjectId: int
+        :param GoodsNum: 本次购买几个实例，默认值为1
+        :type GoodsNum: int
+        :param SubnetId: VPC子网ID，形如subnet-bdoe83fa；SubnetId和VpcId需同时设置或者同时不设置
+        :type SubnetId: str
+        :param VpcId: VPC网络ID，形如vpc-dsp338hz；SubnetId和VpcId需同时设置或者同时不设置
+        :type VpcId: str
+        :param DBVersion: 商业智能服务器版本，目前只支持：201603（SQL Server 2016 Integration Services），201703（SQL Server 2017 Integration Services），201903（SQL Server 2019 Integration Services）版本。每个地域支持售卖的版本不同，可通过DescribeProductConfig接口来拉取每个地域可售卖的版本信息。不填，默认为版本201903。
+        :type DBVersion: str
+        :param SecurityGroupList: 安全组列表，填写形如sg-xxx的安全组ID
+        :type SecurityGroupList: list of str
+        :param Weekly: 可维护时间窗配置，以周为单位，表示周几允许维护，1-7分别代表周一到周末
+        :type Weekly: list of int
+        :param StartTime: 可维护时间窗配置，每天可维护的开始时间
+        :type StartTime: str
+        :param Span: 可维护时间窗配置，持续时间，单位：小时
+        :type Span: int
+        :param ResourceTags: 新建实例绑定的标签集合
+        :type ResourceTags: list of ResourceTag
+        """
+        self.Zone = None
+        self.Memory = None
+        self.Storage = None
+        self.Cpu = None
+        self.MachineType = None
+        self.ProjectId = None
+        self.GoodsNum = None
+        self.SubnetId = None
+        self.VpcId = None
+        self.DBVersion = None
+        self.SecurityGroupList = None
+        self.Weekly = None
+        self.StartTime = None
+        self.Span = None
+        self.ResourceTags = None
+
+
+    def _deserialize(self, params):
+        self.Zone = params.get("Zone")
+        self.Memory = params.get("Memory")
+        self.Storage = params.get("Storage")
+        self.Cpu = params.get("Cpu")
+        self.MachineType = params.get("MachineType")
+        self.ProjectId = params.get("ProjectId")
+        self.GoodsNum = params.get("GoodsNum")
+        self.SubnetId = params.get("SubnetId")
+        self.VpcId = params.get("VpcId")
+        self.DBVersion = params.get("DBVersion")
+        self.SecurityGroupList = params.get("SecurityGroupList")
+        self.Weekly = params.get("Weekly")
+        self.StartTime = params.get("StartTime")
+        self.Span = params.get("Span")
+        if params.get("ResourceTags") is not None:
+            self.ResourceTags = []
+            for item in params.get("ResourceTags"):
+                obj = ResourceTag()
+                obj._deserialize(item)
+                self.ResourceTags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateBusinessDBInstancesResponse(AbstractModel):
+    """CreateBusinessDBInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DealName: 订单名称
+        :type DealName: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DealName = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DealName = params.get("DealName")
+        self.RequestId = params.get("RequestId")
+
+
+class CreateBusinessIntelligenceFileRequest(AbstractModel):
+    """CreateBusinessIntelligenceFile请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param FileURL: COS_URL
+        :type FileURL: str
+        :param FileType: 文件类型 FLAT-作为数据源的平面文件， SSIS-ssis项目包
+        :type FileType: str
+        :param Remark: 备注
+        :type Remark: str
+        """
+        self.InstanceId = None
+        self.FileURL = None
+        self.FileType = None
+        self.Remark = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.FileURL = params.get("FileURL")
+        self.FileType = params.get("FileType")
+        self.Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateBusinessIntelligenceFileResponse(AbstractModel):
+    """CreateBusinessIntelligenceFile返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FileTaskId: 文件名称
+        :type FileTaskId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.FileTaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.FileTaskId = params.get("FileTaskId")
         self.RequestId = params.get("RequestId")
 
 
@@ -2255,6 +2546,51 @@ class DeleteBackupMigrationResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DeleteBusinessIntelligenceFileRequest(AbstractModel):
+    """DeleteBusinessIntelligenceFile请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param FileNameSet: 文件名称集合
+        :type FileNameSet: list of str
+        """
+        self.InstanceId = None
+        self.FileNameSet = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.FileNameSet = params.get("FileNameSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteBusinessIntelligenceFileResponse(AbstractModel):
+    """DeleteBusinessIntelligenceFile返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteDBInstanceRequest(AbstractModel):
     """DeleteDBInstance请求参数结构体
 
@@ -3033,6 +3369,88 @@ class DescribeBackupsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeBusinessIntelligenceFileRequest(AbstractModel):
+    """DescribeBusinessIntelligenceFile请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param FileName: 文件名称
+        :type FileName: str
+        :param StatusSet: 迁移任务状态集合,1-初始化待部署 2-部署中 3-部署成功 4-部署失败
+        :type StatusSet: list of int
+        :param FileType: 文件类型 FLAT-平面文件，SSIS商业智能服务项目文件
+        :type FileType: str
+        :param Limit: 分页，页大小，范围1-100
+        :type Limit: int
+        :param Offset: 分页,页数，默认0
+        :type Offset: int
+        :param OrderBy: 排序字段，可选值file_name,create_time,start_time
+        :type OrderBy: str
+        :param OrderByType: 排序方式，desc,asc
+        :type OrderByType: str
+        """
+        self.InstanceId = None
+        self.FileName = None
+        self.StatusSet = None
+        self.FileType = None
+        self.Limit = None
+        self.Offset = None
+        self.OrderBy = None
+        self.OrderByType = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.FileName = params.get("FileName")
+        self.StatusSet = params.get("StatusSet")
+        self.FileType = params.get("FileType")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        self.OrderBy = params.get("OrderBy")
+        self.OrderByType = params.get("OrderByType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBusinessIntelligenceFileResponse(AbstractModel):
+    """DescribeBusinessIntelligenceFile返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 文件部署任务总数
+        :type TotalCount: int
+        :param BackupMigrationSet: 文件部署任务集合
+        :type BackupMigrationSet: list of BusinessIntelligenceFile
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.BackupMigrationSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("BackupMigrationSet") is not None:
+            self.BackupMigrationSet = []
+            for item in params.get("BackupMigrationSet"):
+                obj = BusinessIntelligenceFile()
+                obj._deserialize(item)
+                self.BackupMigrationSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeCrossRegionZoneRequest(AbstractModel):
     """DescribeCrossRegionZone请求参数结构体
 
@@ -3124,6 +3542,80 @@ class DescribeDBCharsetsResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.DatabaseCharsets = params.get("DatabaseCharsets")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDBInstanceInterRequest(AbstractModel):
+    """DescribeDBInstanceInter请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Limit: 分页，页大小，范围是1-100
+        :type Limit: int
+        :param InstanceId: 按照实例ID筛选
+        :type InstanceId: str
+        :param Status: 按照状态筛选 1-互通ip prot打开中；2-互通ip prot已经打开；3-加入到互通组中；4-已加入到互通组；5-互通ip prot回收中；6-互通ip prot已回收；7-从互通组移除中；8-已从互通组中移除
+        :type Status: int
+        :param VersionSet: 实例版本代号列表
+        :type VersionSet: list of str
+        :param Zone: 实例所在可用区，格式如：ap-guangzhou-2
+        :type Zone: str
+        :param Offset: 分页，页数，默认是0
+        :type Offset: int
+        """
+        self.Limit = None
+        self.InstanceId = None
+        self.Status = None
+        self.VersionSet = None
+        self.Zone = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.Limit = params.get("Limit")
+        self.InstanceId = params.get("InstanceId")
+        self.Status = params.get("Status")
+        self.VersionSet = params.get("VersionSet")
+        self.Zone = params.get("Zone")
+        self.Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDBInstanceInterResponse(AbstractModel):
+    """DescribeDBInstanceInter返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 互通组内总条数
+        :type TotalCount: int
+        :param InterInstanceSet: 互通组内实例信息详情
+        :type InterInstanceSet: list of InterInstance
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.InterInstanceSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("InterInstanceSet") is not None:
+            self.InterInstanceSet = []
+            for item in params.get("InterInstanceSet"):
+                obj = InterInstance()
+                obj._deserialize(item)
+                self.InterInstanceSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -4853,6 +5345,34 @@ class DisassociateSecurityGroupsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class FileAction(AbstractModel):
+    """允许动作信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AllAction: 支持的所有操作，值包括：view(查看列表) remark(修改备注)，deploy(部署)，delete(删除文件)
+        :type AllAction: list of str
+        :param AllowedAction: 当前状态允许的操作，AllAction的子集,为空表示禁止所有操作
+        :type AllowedAction: list of str
+        """
+        self.AllAction = None
+        self.AllowedAction = None
+
+
+    def _deserialize(self, params):
+        self.AllAction = params.get("AllAction")
+        self.AllowedAction = params.get("AllowedAction")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class InquiryPriceCreateDBInstancesRequest(AbstractModel):
     """InquiryPriceCreateDBInstances请求参数结构体
 
@@ -5108,6 +5628,98 @@ class InstanceRenewInfo(AbstractModel):
     def _deserialize(self, params):
         self.InstanceId = params.get("InstanceId")
         self.RenewFlag = params.get("RenewFlag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InterInstance(AbstractModel):
+    """互通组内实例信息详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID
+        :type InstanceId: str
+        :param InterVip: 实例互通IP，用于加入互通组后访问
+        :type InterVip: str
+        :param InterPort: 实例互通端口，用于加入互通组后访问
+        :type InterPort: int
+        :param Status: 实例互通状态，1 -互通ipprot打开中 2 -互通ipprot已经打开 3 -已经打开互通ip的实例加入到互通组中 4 -已经打开互通ip的实例已加入到互通组 5 -互通ipprot回收中 6 -互通ipprot已回收 7 -已回收的实例从互通组中移除中 8 -已回收的实例从互通组中已经移除
+        :type Status: int
+        :param Region: 实例所在地域名称，如 ap-guangzhou
+        :type Region: str
+        :param Zone: 实例所在可用区名称，如 ap-guangzhou-1
+        :type Zone: str
+        :param Version: 实例版本代号
+        :type Version: str
+        :param VersionName: 实例版本
+        :type VersionName: str
+        :param Name: 实例名称
+        :type Name: str
+        :param Vip: 实例访问IP
+        :type Vip: str
+        :param Vport: 实例访问端口
+        :type Vport: int
+        """
+        self.InstanceId = None
+        self.InterVip = None
+        self.InterPort = None
+        self.Status = None
+        self.Region = None
+        self.Zone = None
+        self.Version = None
+        self.VersionName = None
+        self.Name = None
+        self.Vip = None
+        self.Vport = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.InterVip = params.get("InterVip")
+        self.InterPort = params.get("InterPort")
+        self.Status = params.get("Status")
+        self.Region = params.get("Region")
+        self.Zone = params.get("Zone")
+        self.Version = params.get("Version")
+        self.VersionName = params.get("VersionName")
+        self.Name = params.get("Name")
+        self.Vip = params.get("Vip")
+        self.Vport = params.get("Vport")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InterInstanceFlow(AbstractModel):
+    """实例开通或者关闭互通组后的状态
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID，例如：mssql-sdf32n1d
+        :type InstanceId: str
+        :param FlowId: 实例开通或者关闭互通组的流程ID，FlowId小于0-开通或者关闭失败，反之则成功。
+        :type FlowId: int
+        """
+        self.InstanceId = None
+        self.FlowId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.FlowId = params.get("FlowId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6705,6 +7317,56 @@ class ModifyReadOnlyGroupDetailsResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class OpenInterCommunicationRequest(AbstractModel):
+    """OpenInterCommunication请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceIdSet: 打开互通组的实例ID集合
+        :type InstanceIdSet: list of str
+        """
+        self.InstanceIdSet = None
+
+
+    def _deserialize(self, params):
+        self.InstanceIdSet = params.get("InstanceIdSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OpenInterCommunicationResponse(AbstractModel):
+    """OpenInterCommunication返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InterInstanceFlowSet: 实例和异步流程ID
+        :type InterInstanceFlowSet: list of InterInstanceFlow
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.InterInstanceFlowSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("InterInstanceFlowSet") is not None:
+            self.InterInstanceFlowSet = []
+            for item in params.get("InterInstanceFlowSet"):
+                obj = InterInstanceFlow()
+                obj._deserialize(item)
+                self.InterInstanceFlowSet.append(obj)
         self.RequestId = params.get("RequestId")
 
 

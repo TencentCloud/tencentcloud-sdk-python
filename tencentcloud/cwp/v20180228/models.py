@@ -55,14 +55,14 @@ class AssetAppBaseInfo(AbstractModel):
         r"""
         :param MachineIp: 主机内网IP
         :type MachineIp: str
+        :param MachineName: 主机名称
+        :type MachineName: str
         :param MachineWanIp: 主机外网IP
         :type MachineWanIp: str
-        :param Quuid: 主机Quuid
-        :type Quuid: str
         :param Uuid: 主机Uuid
         :type Uuid: str
-        :param OsInfo: 操作系统信息
-        :type OsInfo: str
+        :param Quuid: 主机Quuid
+        :type Quuid: str
         :param ProjectId: 主机业务组ID
         :type ProjectId: int
         :param Tag: 主机标签
@@ -82,41 +82,51 @@ class AssetAppBaseInfo(AbstractModel):
         :type Type: int
         :param BinPath: 二进制路径
         :type BinPath: str
-        :param ConfigPath: 配置文件路径
-        :type ConfigPath: str
+        :param OsInfo: 操作系统信息
+        :type OsInfo: str
         :param ProcessCount: 关联进程数
         :type ProcessCount: int
         :param Desc: 应用描述
         :type Desc: str
         :param Version: 版本号
         :type Version: str
+        :param ConfigPath: 配置文件路径
+        :type ConfigPath: str
+        :param FirstTime: 首次采集时间
+        :type FirstTime: str
         :param UpdateTime: 数据更新时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
+        :param IsNew: 是否新增[0:否|1:是]
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsNew: int
         """
         self.MachineIp = None
+        self.MachineName = None
         self.MachineWanIp = None
-        self.Quuid = None
         self.Uuid = None
-        self.OsInfo = None
+        self.Quuid = None
         self.ProjectId = None
         self.Tag = None
         self.Name = None
         self.Type = None
         self.BinPath = None
-        self.ConfigPath = None
+        self.OsInfo = None
         self.ProcessCount = None
         self.Desc = None
         self.Version = None
+        self.ConfigPath = None
+        self.FirstTime = None
         self.UpdateTime = None
+        self.IsNew = None
 
 
     def _deserialize(self, params):
         self.MachineIp = params.get("MachineIp")
+        self.MachineName = params.get("MachineName")
         self.MachineWanIp = params.get("MachineWanIp")
-        self.Quuid = params.get("Quuid")
         self.Uuid = params.get("Uuid")
-        self.OsInfo = params.get("OsInfo")
+        self.Quuid = params.get("Quuid")
         self.ProjectId = params.get("ProjectId")
         if params.get("Tag") is not None:
             self.Tag = []
@@ -127,11 +137,14 @@ class AssetAppBaseInfo(AbstractModel):
         self.Name = params.get("Name")
         self.Type = params.get("Type")
         self.BinPath = params.get("BinPath")
-        self.ConfigPath = params.get("ConfigPath")
+        self.OsInfo = params.get("OsInfo")
         self.ProcessCount = params.get("ProcessCount")
         self.Desc = params.get("Desc")
         self.Version = params.get("Version")
+        self.ConfigPath = params.get("ConfigPath")
+        self.FirstTime = params.get("FirstTime")
         self.UpdateTime = params.get("UpdateTime")
+        self.IsNew = params.get("IsNew")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -221,6 +234,12 @@ class AssetCoreModuleBaseInfo(AbstractModel):
         :param UpdateTime: 数据更新时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
+        :param FirstTime: 首次采集时间
+        :type FirstTime: str
+        :param IsNew: 是否新增[0:否|1:是]
+        :type IsNew: int
+        :param MachineWanIp: 服务器外网IP
+        :type MachineWanIp: str
         """
         self.Name = None
         self.Desc = None
@@ -236,6 +255,9 @@ class AssetCoreModuleBaseInfo(AbstractModel):
         self.Quuid = None
         self.Uuid = None
         self.UpdateTime = None
+        self.FirstTime = None
+        self.IsNew = None
+        self.MachineWanIp = None
 
 
     def _deserialize(self, params):
@@ -253,6 +275,9 @@ class AssetCoreModuleBaseInfo(AbstractModel):
         self.Quuid = params.get("Quuid")
         self.Uuid = params.get("Uuid")
         self.UpdateTime = params.get("UpdateTime")
+        self.FirstTime = params.get("FirstTime")
+        self.IsNew = params.get("IsNew")
+        self.MachineWanIp = params.get("MachineWanIp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -408,6 +433,12 @@ class AssetDatabaseBaseInfo(AbstractModel):
         :param UpdateTime: 数据更新时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
+        :param FirstTime: 首次采集时间
+        :type FirstTime: str
+        :param IsNew: 是否新增[0:否|1:是]
+        :type IsNew: int
+        :param MachineName: 主机名称
+        :type MachineName: str
         """
         self.MachineIp = None
         self.MachineWanIp = None
@@ -432,6 +463,9 @@ class AssetDatabaseBaseInfo(AbstractModel):
         self.Param = None
         self.Id = None
         self.UpdateTime = None
+        self.FirstTime = None
+        self.IsNew = None
+        self.MachineName = None
 
 
     def _deserialize(self, params):
@@ -463,6 +497,9 @@ class AssetDatabaseBaseInfo(AbstractModel):
         self.Param = params.get("Param")
         self.Id = params.get("Id")
         self.UpdateTime = params.get("UpdateTime")
+        self.FirstTime = params.get("FirstTime")
+        self.IsNew = params.get("IsNew")
+        self.MachineName = params.get("MachineName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -647,6 +684,12 @@ class AssetEnvBaseInfo(AbstractModel):
         :param UpdateTime: 数据更新时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
+        :param FirstTime: 首次采集时间
+        :type FirstTime: str
+        :param IsNew: 是否新增[0:否|1:是]
+        :type IsNew: int
+        :param MachineWanIp: 服务器外网IP
+        :type MachineWanIp: str
         """
         self.Name = None
         self.Type = None
@@ -658,6 +701,9 @@ class AssetEnvBaseInfo(AbstractModel):
         self.Quuid = None
         self.Uuid = None
         self.UpdateTime = None
+        self.FirstTime = None
+        self.IsNew = None
+        self.MachineWanIp = None
 
 
     def _deserialize(self, params):
@@ -671,6 +717,9 @@ class AssetEnvBaseInfo(AbstractModel):
         self.Quuid = params.get("Quuid")
         self.Uuid = params.get("Uuid")
         self.UpdateTime = params.get("UpdateTime")
+        self.FirstTime = params.get("FirstTime")
+        self.IsNew = params.get("IsNew")
+        self.MachineWanIp = params.get("MachineWanIp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -758,6 +807,12 @@ class AssetInitServiceBaseInfo(AbstractModel):
         :type Uuid: str
         :param UpdateTime: 数据更新时间
         :type UpdateTime: str
+        :param FirstTime: 首次采集时间
+        :type FirstTime: str
+        :param IsNew: 是否新增[0:否|1:是]
+        :type IsNew: int
+        :param MachineWanIp: 服务器外网IP
+        :type MachineWanIp: str
         """
         self.Name = None
         self.Type = None
@@ -770,6 +825,9 @@ class AssetInitServiceBaseInfo(AbstractModel):
         self.Quuid = None
         self.Uuid = None
         self.UpdateTime = None
+        self.FirstTime = None
+        self.IsNew = None
+        self.MachineWanIp = None
 
 
     def _deserialize(self, params):
@@ -784,6 +842,9 @@ class AssetInitServiceBaseInfo(AbstractModel):
         self.Quuid = params.get("Quuid")
         self.Uuid = params.get("Uuid")
         self.UpdateTime = params.get("UpdateTime")
+        self.FirstTime = params.get("FirstTime")
+        self.IsNew = params.get("IsNew")
+        self.MachineWanIp = params.get("MachineWanIp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -827,6 +888,12 @@ class AssetJarBaseInfo(AbstractModel):
         :param UpdateTime: 数据更新时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
+        :param FirstTime: 首次采集时间
+        :type FirstTime: str
+        :param IsNew: 是否新增[0:否|1:是]
+        :type IsNew: int
+        :param MachineWanIp: 服务器外网IP
+        :type MachineWanIp: str
         """
         self.Name = None
         self.Type = None
@@ -841,6 +908,9 @@ class AssetJarBaseInfo(AbstractModel):
         self.Quuid = None
         self.Uuid = None
         self.UpdateTime = None
+        self.FirstTime = None
+        self.IsNew = None
+        self.MachineWanIp = None
 
 
     def _deserialize(self, params):
@@ -857,6 +927,9 @@ class AssetJarBaseInfo(AbstractModel):
         self.Quuid = params.get("Quuid")
         self.Uuid = params.get("Uuid")
         self.UpdateTime = params.get("UpdateTime")
+        self.FirstTime = params.get("FirstTime")
+        self.IsNew = params.get("IsNew")
+        self.MachineWanIp = params.get("MachineWanIp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -952,16 +1025,21 @@ class AssetKeyVal(AbstractModel):
         :param Desc: 描述信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Desc: str
+        :param NewCount: 今日新增数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NewCount: int
         """
         self.Key = None
         self.Value = None
         self.Desc = None
+        self.NewCount = None
 
 
     def _deserialize(self, params):
         self.Key = params.get("Key")
         self.Value = params.get("Value")
         self.Desc = params.get("Desc")
+        self.NewCount = params.get("NewCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1014,6 +1092,10 @@ class AssetMachineBaseInfo(AbstractModel):
         :param UpdateTime: 数据更新时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
+        :param IsNew: 是否新增[0:否|1:是]
+        :type IsNew: int
+        :param FirstTime: 首次采集时间
+        :type FirstTime: str
         """
         self.Quuid = None
         self.Uuid = None
@@ -1032,6 +1114,8 @@ class AssetMachineBaseInfo(AbstractModel):
         self.CpuLoad = None
         self.Tag = None
         self.UpdateTime = None
+        self.IsNew = None
+        self.FirstTime = None
 
 
     def _deserialize(self, params):
@@ -1057,6 +1141,8 @@ class AssetMachineBaseInfo(AbstractModel):
                 obj._deserialize(item)
                 self.Tag.append(obj)
         self.UpdateTime = params.get("UpdateTime")
+        self.IsNew = params.get("IsNew")
+        self.FirstTime = params.get("FirstTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1313,6 +1399,12 @@ class AssetPlanTask(AbstractModel):
         :param UpdateTime: 数据更新时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
+        :param FirstTime: 首次采集时间
+        :type FirstTime: str
+        :param IsNew: 是否新增[0:否|1:是]
+        :type IsNew: int
+        :param MachineWanIp: 服务器外网IP
+        :type MachineWanIp: str
         """
         self.Status = None
         self.Cycle = None
@@ -1325,6 +1417,9 @@ class AssetPlanTask(AbstractModel):
         self.Quuid = None
         self.Uuid = None
         self.UpdateTime = None
+        self.FirstTime = None
+        self.IsNew = None
+        self.MachineWanIp = None
 
 
     def _deserialize(self, params):
@@ -1339,6 +1434,9 @@ class AssetPlanTask(AbstractModel):
         self.Quuid = params.get("Quuid")
         self.Uuid = params.get("Uuid")
         self.UpdateTime = params.get("UpdateTime")
+        self.FirstTime = params.get("FirstTime")
+        self.IsNew = params.get("IsNew")
+        self.MachineWanIp = params.get("MachineWanIp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1405,6 +1503,10 @@ class AssetPortBaseInfo(AbstractModel):
         :param UpdateTime: 数据更新时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
+        :param FirstTime: 首次采集时间
+        :type FirstTime: str
+        :param IsNew: 是否新增[0:否|1:是]
+        :type IsNew: int
         """
         self.MachineIp = None
         self.MachineWanIp = None
@@ -1430,6 +1532,8 @@ class AssetPortBaseInfo(AbstractModel):
         self.BindIp = None
         self.MachineName = None
         self.UpdateTime = None
+        self.FirstTime = None
+        self.IsNew = None
 
 
     def _deserialize(self, params):
@@ -1462,6 +1566,8 @@ class AssetPortBaseInfo(AbstractModel):
         self.BindIp = params.get("BindIp")
         self.MachineName = params.get("MachineName")
         self.UpdateTime = params.get("UpdateTime")
+        self.FirstTime = params.get("FirstTime")
+        self.IsNew = params.get("IsNew")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1532,6 +1638,10 @@ class AssetProcessBaseInfo(AbstractModel):
         :param UpdateTime: 数据更新时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
+        :param FirstTime: 首次采集时间
+        :type FirstTime: str
+        :param IsNew: 是否新增[0:否|1:是]
+        :type IsNew: int
         """
         self.MachineIp = None
         self.MachineWanIp = None
@@ -1559,6 +1669,8 @@ class AssetProcessBaseInfo(AbstractModel):
         self.PackageName = None
         self.MachineName = None
         self.UpdateTime = None
+        self.FirstTime = None
+        self.IsNew = None
 
 
     def _deserialize(self, params):
@@ -1593,6 +1705,8 @@ class AssetProcessBaseInfo(AbstractModel):
         self.PackageName = params.get("PackageName")
         self.MachineName = params.get("MachineName")
         self.UpdateTime = params.get("UpdateTime")
+        self.FirstTime = params.get("FirstTime")
+        self.IsNew = params.get("IsNew")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1628,6 +1742,10 @@ class AssetSystemPackageInfo(AbstractModel):
         :param UpdateTime: 数据更新时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
+        :param FirstTime: 首次采集时间
+        :type FirstTime: str
+        :param IsNew: 是否新增[0:否|1:是]
+        :type IsNew: int
         """
         self.Name = None
         self.Desc = None
@@ -1638,6 +1756,8 @@ class AssetSystemPackageInfo(AbstractModel):
         self.MachineIp = None
         self.OsInfo = None
         self.UpdateTime = None
+        self.FirstTime = None
+        self.IsNew = None
 
 
     def _deserialize(self, params):
@@ -1650,6 +1770,8 @@ class AssetSystemPackageInfo(AbstractModel):
         self.MachineIp = params.get("MachineIp")
         self.OsInfo = params.get("OsInfo")
         self.UpdateTime = params.get("UpdateTime")
+        self.FirstTime = params.get("FirstTime")
+        self.IsNew = params.get("IsNew")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1719,6 +1841,10 @@ class AssetUserBaseInfo(AbstractModel):
         :param UpdateTime: 更新时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
+        :param FirstTime: 首次采集时间
+        :type FirstTime: str
+        :param IsNew: 是否新增[0:否|1:是]
+        :type IsNew: int
         """
         self.MachineIp = None
         self.MachineWanIp = None
@@ -1746,6 +1872,8 @@ class AssetUserBaseInfo(AbstractModel):
         self.PasswordLockDays = None
         self.PasswordStatus = None
         self.UpdateTime = None
+        self.FirstTime = None
+        self.IsNew = None
 
 
     def _deserialize(self, params):
@@ -1775,6 +1903,8 @@ class AssetUserBaseInfo(AbstractModel):
         self.PasswordLockDays = params.get("PasswordLockDays")
         self.PasswordStatus = params.get("PasswordStatus")
         self.UpdateTime = params.get("UpdateTime")
+        self.FirstTime = params.get("FirstTime")
+        self.IsNew = params.get("IsNew")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2004,6 +2134,10 @@ class AssetWebAppBaseInfo(AbstractModel):
         :param UpdateTime: 数据更新时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
+        :param FirstTime: 首次采集时间
+        :type FirstTime: str
+        :param IsNew: 是否新增[0:否|1:是]
+        :type IsNew: int
         """
         self.MachineIp = None
         self.MachineWanIp = None
@@ -2023,6 +2157,8 @@ class AssetWebAppBaseInfo(AbstractModel):
         self.Desc = None
         self.MachineName = None
         self.UpdateTime = None
+        self.FirstTime = None
+        self.IsNew = None
 
 
     def _deserialize(self, params):
@@ -2049,6 +2185,8 @@ class AssetWebAppBaseInfo(AbstractModel):
         self.Desc = params.get("Desc")
         self.MachineName = params.get("MachineName")
         self.UpdateTime = params.get("UpdateTime")
+        self.FirstTime = params.get("FirstTime")
+        self.IsNew = params.get("IsNew")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2129,6 +2267,10 @@ class AssetWebFrameBaseInfo(AbstractModel):
         :param UpdateTime: 数据更新时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
+        :param FirstTime: 首次采集时间
+        :type FirstTime: str
+        :param IsNew: 是否新增[0:否|1:是]
+        :type IsNew: int
         """
         self.MachineIp = None
         self.MachineWanIp = None
@@ -2143,6 +2285,8 @@ class AssetWebFrameBaseInfo(AbstractModel):
         self.ServiceType = None
         self.MachineName = None
         self.UpdateTime = None
+        self.FirstTime = None
+        self.IsNew = None
 
 
     def _deserialize(self, params):
@@ -2164,6 +2308,8 @@ class AssetWebFrameBaseInfo(AbstractModel):
         self.ServiceType = params.get("ServiceType")
         self.MachineName = params.get("MachineName")
         self.UpdateTime = params.get("UpdateTime")
+        self.FirstTime = params.get("FirstTime")
+        self.IsNew = params.get("IsNew")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2219,6 +2365,11 @@ class AssetWebLocationBaseInfo(AbstractModel):
         :param UpdateTime: 数据更新时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
+        :param FirstTime: 首次采集时间
+        :type FirstTime: str
+        :param IsNew: 是否新增[0:否|1:是]
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsNew: int
         """
         self.Uuid = None
         self.Quuid = None
@@ -2239,6 +2390,8 @@ class AssetWebLocationBaseInfo(AbstractModel):
         self.Tag = None
         self.Id = None
         self.UpdateTime = None
+        self.FirstTime = None
+        self.IsNew = None
 
 
     def _deserialize(self, params):
@@ -2266,6 +2419,8 @@ class AssetWebLocationBaseInfo(AbstractModel):
                 self.Tag.append(obj)
         self.Id = params.get("Id")
         self.UpdateTime = params.get("UpdateTime")
+        self.FirstTime = params.get("FirstTime")
+        self.IsNew = params.get("IsNew")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2381,6 +2536,10 @@ class AssetWebServiceBaseInfo(AbstractModel):
         :param UpdateTime: 数据更新时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
+        :param FirstTime: 首次采集时间
+        :type FirstTime: str
+        :param IsNew: 是否新增[0:否|1:是]
+        :type IsNew: int
         """
         self.MachineIp = None
         self.MachineWanIp = None
@@ -2400,6 +2559,8 @@ class AssetWebServiceBaseInfo(AbstractModel):
         self.MachineName = None
         self.Desc = None
         self.UpdateTime = None
+        self.FirstTime = None
+        self.IsNew = None
 
 
     def _deserialize(self, params):
@@ -2426,6 +2587,8 @@ class AssetWebServiceBaseInfo(AbstractModel):
         self.MachineName = params.get("MachineName")
         self.Desc = params.get("Desc")
         self.UpdateTime = params.get("UpdateTime")
+        self.FirstTime = params.get("FirstTime")
+        self.IsNew = params.get("IsNew")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3578,6 +3741,98 @@ class CreateEmergencyVulScanResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateLicenseOrderRequest(AbstractModel):
+    """CreateLicenseOrder请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Tags: 标签数组, 空则表示不需要绑定标签
+        :type Tags: list of Tags
+        :param LicenseType: 授权类型, 0 专业版-按量计费, 1专业版-包年包月 , 2 旗舰版-包年包月
+默认为0
+        :type LicenseType: int
+        :param LicenseNum: 授权数量 , 需要购买的数量.
+默认为1
+        :type LicenseNum: int
+        :param RegionId: 购买订单地域,这里仅支持 1 广州,9 新加坡. 推荐选择广州. 新加坡地域为白名单用户购买.
+默认为1
+        :type RegionId: int
+        :param ProjectId: 项目ID .
+默认为0
+        :type ProjectId: int
+        :param TimeSpan: 购买时间长度,默认1 , 可选值为1,2,3,4,5,6,7,8,9,10,11,12,24,36
+该参数仅包年包月生效
+        :type TimeSpan: int
+        :param AutoRenewFlag: 是否自动续费, 默认不自动续费.
+该参数仅包年包月生效
+        :type AutoRenewFlag: bool
+        :param AutoProtectOpenConfig: 自动防护授权配置值, 不空则表示开启
+        :type AutoProtectOpenConfig: str
+        """
+        self.Tags = None
+        self.LicenseType = None
+        self.LicenseNum = None
+        self.RegionId = None
+        self.ProjectId = None
+        self.TimeSpan = None
+        self.AutoRenewFlag = None
+        self.AutoProtectOpenConfig = None
+
+
+    def _deserialize(self, params):
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tags()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        self.LicenseType = params.get("LicenseType")
+        self.LicenseNum = params.get("LicenseNum")
+        self.RegionId = params.get("RegionId")
+        self.ProjectId = params.get("ProjectId")
+        self.TimeSpan = params.get("TimeSpan")
+        self.AutoRenewFlag = params.get("AutoRenewFlag")
+        self.AutoProtectOpenConfig = params.get("AutoProtectOpenConfig")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateLicenseOrderResponse(AbstractModel):
+    """CreateLicenseOrder返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DealNames: 订单号列表
+        :type DealNames: list of str
+        :param ResourceIds: 资源ID列表,预付费订单该字段空值
+        :type ResourceIds: list of str
+        :param BigDealId: 大订单号 , 后付费该字段空值
+        :type BigDealId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DealNames = None
+        self.ResourceIds = None
+        self.BigDealId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DealNames = params.get("DealNames")
+        self.ResourceIds = params.get("ResourceIds")
+        self.BigDealId = params.get("BigDealId")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateProtectServerRequest(AbstractModel):
     """CreateProtectServer请求参数结构体
 
@@ -4043,6 +4298,55 @@ class DeleteBruteAttacksRequest(AbstractModel):
 
 class DeleteBruteAttacksResponse(AbstractModel):
     """DeleteBruteAttacks返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteLicenseRecordRequest(AbstractModel):
+    """DeleteLicenseRecord请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LicenseId: 授权ID ,可以用授权订单列表获取.
+        :type LicenseId: int
+        :param LicenseType: 授权类型
+        :type LicenseType: int
+        :param ResourceId: 资源ID
+        :type ResourceId: str
+        """
+        self.LicenseId = None
+        self.LicenseType = None
+        self.ResourceId = None
+
+
+    def _deserialize(self, params):
+        self.LicenseId = params.get("LicenseId")
+        self.LicenseType = params.get("LicenseType")
+        self.ResourceId = params.get("ResourceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteLicenseRecordResponse(AbstractModel):
+    """DeleteLicenseRecord返回参数结构体
 
     """
 
@@ -4728,10 +5032,8 @@ class DescribeAssetAppListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Limit: 需要返回的数量，默认为10，最大值为100
-        :type Limit: int
-        :param Offset: 偏移量，默认为0。
-        :type Offset: int
+        :param Quuid: 查询指定Quuid主机的信息
+        :type Quuid: str
         :param Filters: 过滤条件。
 <li>AppName- string - 是否必填：否 - 应用名搜索</li>
 <li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
@@ -4748,33 +5050,35 @@ class DescribeAssetAppListRequest(AbstractModel):
 <li>OsType - uint64 - 是否必填：否 - windows/linux</li>
 <li>Os -String 是否必填: 否 - 操作系统( DescribeMachineOsList 接口 值 )</li>
         :type Filters: list of AssetFilters
-        :param By: 排序方式：ProcessCount
-        :type By: str
+        :param Limit: 需要返回的数量，默认为10，最大值为100
+        :type Limit: int
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
         :param Order: 排序方式，asc升序 或 desc降序
         :type Order: str
-        :param Quuid: 查询指定Quuid主机的信息
-        :type Quuid: str
+        :param By: 排序方式：[FirstTime|ProcessCount]
+        :type By: str
         """
+        self.Quuid = None
+        self.Filters = None
         self.Limit = None
         self.Offset = None
-        self.Filters = None
-        self.By = None
         self.Order = None
-        self.Quuid = None
+        self.By = None
 
 
     def _deserialize(self, params):
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
+        self.Quuid = params.get("Quuid")
         if params.get("Filters") is not None:
             self.Filters = []
             for item in params.get("Filters"):
                 obj = AssetFilters()
                 obj._deserialize(item)
                 self.Filters.append(obj)
-        self.By = params.get("By")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
         self.Order = params.get("Order")
-        self.Quuid = params.get("Quuid")
+        self.By = params.get("By")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4948,46 +5252,46 @@ class DescribeAssetCoreModuleListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Limit: 需要返回的数量，默认为10，最大值为100
-        :type Limit: int
-        :param Offset: 偏移量，默认为0。
-        :type Offset: int
+        :param Uuid: 服务器Uuid
+        :type Uuid: str
+        :param Quuid: 服务器Quuid
+        :type Quuid: str
         :param Filters: 过滤条件。
 <li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
 <li>Name- string - 是否必填：否 - 包名</li>
 <li>User- string - 是否必填：否 - 用户</li>
         :type Filters: list of AssetFilters
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Limit: 需要返回的数量，默认为10，最大值为100
+        :type Limit: int
         :param Order: 排序方式，asc升序 或 desc降序
         :type Order: str
-        :param By: 排序依据:Size,ProcessCount,ModuleCount
+        :param By: 排序依据[Size|FirstTime|ProcessCount|ModuleCount]
         :type By: str
-        :param Uuid: 服务器Uuid
-        :type Uuid: str
-        :param Quuid: 服务器Quuid
-        :type Quuid: str
         """
-        self.Limit = None
-        self.Offset = None
-        self.Filters = None
-        self.Order = None
-        self.By = None
         self.Uuid = None
         self.Quuid = None
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+        self.Order = None
+        self.By = None
 
 
     def _deserialize(self, params):
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
+        self.Uuid = params.get("Uuid")
+        self.Quuid = params.get("Quuid")
         if params.get("Filters") is not None:
             self.Filters = []
             for item in params.get("Filters"):
                 obj = AssetFilters()
                 obj._deserialize(item)
                 self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
         self.Order = params.get("Order")
         self.By = params.get("By")
-        self.Uuid = params.get("Uuid")
-        self.Quuid = params.get("Quuid")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5090,10 +5394,8 @@ class DescribeAssetDatabaseListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Limit: 需要返回的数量，默认为10，最大值为100
-        :type Limit: int
-        :param Offset: 偏移量，默认为0。
-        :type Offset: int
+        :param Quuid: 查询指定Quuid主机的信息
+        :type Quuid: str
         :param Filters: 过滤条件。
 <li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
 <li>User- string - 是否必填：否 - 运行用户</li>
@@ -5115,25 +5417,35 @@ class DescribeAssetDatabaseListRequest(AbstractModel):
 <li>OsType - String - 是否必填：否 - 操作系统: linux/windows</li>
 <li>Os -String 是否必填: 否 - 操作系统( DescribeMachineOsList 接口 值 )</li>
         :type Filters: list of AssetFilters
-        :param Quuid: 查询指定Quuid主机的信息
-        :type Quuid: str
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Limit: 需要返回的数量，默认为10，最大值为100
+        :type Limit: int
+        :param Order: 排序方式，asc升序 或 desc降序
+        :type Order: str
+        :param By: 排序方式：[FirstTime]
+        :type By: str
         """
-        self.Limit = None
-        self.Offset = None
-        self.Filters = None
         self.Quuid = None
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+        self.Order = None
+        self.By = None
 
 
     def _deserialize(self, params):
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
+        self.Quuid = params.get("Quuid")
         if params.get("Filters") is not None:
             self.Filters = []
             for item in params.get("Filters"):
                 obj = AssetFilters()
                 obj._deserialize(item)
                 self.Filters.append(obj)
-        self.Quuid = params.get("Quuid")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.Order = params.get("Order")
+        self.By = params.get("By")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5181,10 +5493,10 @@ class DescribeAssetEnvListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Limit: 需要返回的数量，默认为10，最大值为100
-        :type Limit: int
-        :param Offset: 偏移量，默认为0。
-        :type Offset: int
+        :param Uuid: 服务器Uuid
+        :type Uuid: str
+        :param Quuid: 服务器Quuid
+        :type Quuid: str
         :param Type: 该字段已废弃，由Filters代替
         :type Type: int
         :param Filters: 过滤条件。
@@ -5192,22 +5504,28 @@ class DescribeAssetEnvListRequest(AbstractModel):
 <li>Name- string - 是否必填：否 - 环境变量名</li>
 <li>Type- int - 是否必填：否 - 类型：0用户变量，1系统变量</li>
         :type Filters: list of AssetFilters
-        :param Uuid: 服务器Uuid
-        :type Uuid: str
-        :param Quuid: 服务器Quuid
-        :type Quuid: str
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Limit: 需要返回的数量，默认为10，最大值为100
+        :type Limit: int
+        :param Order: 排序方式，asc升序 或 desc降序
+        :type Order: str
+        :param By: 排序方式：[FirstTime]
+        :type By: str
         """
-        self.Limit = None
-        self.Offset = None
-        self.Type = None
-        self.Filters = None
         self.Uuid = None
         self.Quuid = None
+        self.Type = None
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+        self.Order = None
+        self.By = None
 
 
     def _deserialize(self, params):
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
+        self.Uuid = params.get("Uuid")
+        self.Quuid = params.get("Quuid")
         self.Type = params.get("Type")
         if params.get("Filters") is not None:
             self.Filters = []
@@ -5215,8 +5533,10 @@ class DescribeAssetEnvListRequest(AbstractModel):
                 obj = AssetFilters()
                 obj._deserialize(item)
                 self.Filters.append(obj)
-        self.Uuid = params.get("Uuid")
-        self.Quuid = params.get("Quuid")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.Order = params.get("Order")
+        self.By = params.get("By")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5290,6 +5610,26 @@ class DescribeAssetInfoResponse(AbstractModel):
         :type WebServiceCount: int
         :param WebLocationCount: Web站点数
         :type WebLocationCount: int
+        :param AccountNewCount: 账号今日新增
+        :type AccountNewCount: int
+        :param PortNewCount: 端口今日新增
+        :type PortNewCount: int
+        :param ProcessNewCount: 进程今日新增
+        :type ProcessNewCount: int
+        :param SoftwareNewCount: 软件今日新增
+        :type SoftwareNewCount: int
+        :param DatabaseNewCount: 数据库今日新增
+        :type DatabaseNewCount: int
+        :param WebAppNewCount: Web应用今日新增
+        :type WebAppNewCount: int
+        :param WebFrameNewCount: Web框架今日新增
+        :type WebFrameNewCount: int
+        :param WebServiceNewCount: Web服务今日新增
+        :type WebServiceNewCount: int
+        :param WebLocationNewCount: Web站点今日新增
+        :type WebLocationNewCount: int
+        :param MachineNewCount: 主机今日新增
+        :type MachineNewCount: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5303,6 +5643,16 @@ class DescribeAssetInfoResponse(AbstractModel):
         self.WebFrameCount = None
         self.WebServiceCount = None
         self.WebLocationCount = None
+        self.AccountNewCount = None
+        self.PortNewCount = None
+        self.ProcessNewCount = None
+        self.SoftwareNewCount = None
+        self.DatabaseNewCount = None
+        self.WebAppNewCount = None
+        self.WebFrameNewCount = None
+        self.WebServiceNewCount = None
+        self.WebLocationNewCount = None
+        self.MachineNewCount = None
         self.RequestId = None
 
 
@@ -5317,6 +5667,16 @@ class DescribeAssetInfoResponse(AbstractModel):
         self.WebFrameCount = params.get("WebFrameCount")
         self.WebServiceCount = params.get("WebServiceCount")
         self.WebLocationCount = params.get("WebLocationCount")
+        self.AccountNewCount = params.get("AccountNewCount")
+        self.PortNewCount = params.get("PortNewCount")
+        self.ProcessNewCount = params.get("ProcessNewCount")
+        self.SoftwareNewCount = params.get("SoftwareNewCount")
+        self.DatabaseNewCount = params.get("DatabaseNewCount")
+        self.WebAppNewCount = params.get("WebAppNewCount")
+        self.WebFrameNewCount = params.get("WebFrameNewCount")
+        self.WebServiceNewCount = params.get("WebServiceNewCount")
+        self.WebLocationNewCount = params.get("WebLocationNewCount")
+        self.MachineNewCount = params.get("MachineNewCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -5327,10 +5687,10 @@ class DescribeAssetInitServiceListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Limit: 需要返回的数量，默认为10，最大值为100
-        :type Limit: int
-        :param Offset: 偏移量，默认为0。
-        :type Offset: int
+        :param Uuid: 服务器Uuid
+        :type Uuid: str
+        :param Quuid: 服务器Quuid
+        :type Quuid: str
         :param Filters: 过滤条件。
 <li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
 <li>Name- string - 是否必填：否 - 包名</li>
@@ -5352,29 +5712,37 @@ class DescribeAssetInitServiceListRequest(AbstractModel):
 13:驱动服务
 14:登录</li>
         :type Filters: list of AssetFilters
-        :param Uuid: 服务器Uuid
-        :type Uuid: str
-        :param Quuid: 服务器Quuid
-        :type Quuid: str
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Limit: 需要返回的数量，默认为10，最大值为100
+        :type Limit: int
+        :param Order: 排序方式，asc升序 或 desc降序
+        :type Order: str
+        :param By: 排序方式：[FirstTime]
+        :type By: str
         """
-        self.Limit = None
-        self.Offset = None
-        self.Filters = None
         self.Uuid = None
         self.Quuid = None
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+        self.Order = None
+        self.By = None
 
 
     def _deserialize(self, params):
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
+        self.Uuid = params.get("Uuid")
+        self.Quuid = params.get("Quuid")
         if params.get("Filters") is not None:
             self.Filters = []
             for item in params.get("Filters"):
                 obj = AssetFilters()
                 obj._deserialize(item)
                 self.Filters.append(obj)
-        self.Uuid = params.get("Uuid")
-        self.Quuid = params.get("Quuid")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.Order = params.get("Order")
+        self.By = params.get("By")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5477,10 +5845,10 @@ class DescribeAssetJarListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Limit: 需要返回的数量，默认为10，最大值为100
-        :type Limit: int
-        :param Offset: 偏移量，默认为0。
-        :type Offset: int
+        :param Uuid: 服务器Uuid
+        :type Uuid: str
+        :param Quuid: 服务器Quuid
+        :type Quuid: str
         :param Filters: 过滤条件。
 <li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
 <li>Name- string - 是否必填：否 - 包名</li>
@@ -5491,29 +5859,37 @@ class DescribeAssetJarListRequest(AbstractModel):
 4 : 其他依赖包</li>
 <li>Status- string - 是否必填：否 - 是否可执行：0否，1是</li>
         :type Filters: list of AssetFilters
-        :param Uuid: 服务器Uuid
-        :type Uuid: str
-        :param Quuid: 服务器Quuid
-        :type Quuid: str
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Limit: 需要返回的数量，默认为10，最大值为100
+        :type Limit: int
+        :param Order: 排序方式，asc升序 或 desc降序
+        :type Order: str
+        :param By: 排序方式：[FirstTime]
+        :type By: str
         """
-        self.Limit = None
-        self.Offset = None
-        self.Filters = None
         self.Uuid = None
         self.Quuid = None
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+        self.Order = None
+        self.By = None
 
 
     def _deserialize(self, params):
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
+        self.Uuid = params.get("Uuid")
+        self.Quuid = params.get("Quuid")
         if params.get("Filters") is not None:
             self.Filters = []
             for item in params.get("Filters"):
                 obj = AssetFilters()
                 obj._deserialize(item)
                 self.Filters.append(obj)
-        self.Uuid = params.get("Uuid")
-        self.Quuid = params.get("Quuid")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.Order = params.get("Order")
+        self.By = params.get("By")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5612,10 +5988,6 @@ class DescribeAssetMachineListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Limit: 需要返回的数量，默认为10，最大值为100
-        :type Limit: int
-        :param Offset: 偏移量，默认为0。
-        :type Offset: int
         :param Filters: 过滤条件。
 <li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
 <li>OsType - String - 是否必填：否 - windows或linux</li>
@@ -5633,29 +6005,33 @@ class DescribeAssetMachineListRequest(AbstractModel):
 <li>Quuid：主机Quuid</li>
 <li>Os -String 是否必填: 否 - 操作系统( DescribeMachineOsList 接口 值 )</li>
         :type Filters: list of Filter
-        :param By: 可选排序：PartitionCount
-        :type By: str
+        :param Limit: 需要返回的数量，默认为10，最大值为100
+        :type Limit: int
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
         :param Order: 排序方式，asc升序 或 desc降序
         :type Order: str
+        :param By: 可选排序[FirstTime|PartitionCount]
+        :type By: str
         """
+        self.Filters = None
         self.Limit = None
         self.Offset = None
-        self.Filters = None
-        self.By = None
         self.Order = None
+        self.By = None
 
 
     def _deserialize(self, params):
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
         if params.get("Filters") is not None:
             self.Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
                 self.Filters.append(obj)
-        self.By = params.get("By")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
         self.Order = params.get("Order")
+        self.By = params.get("By")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5703,38 +6079,46 @@ class DescribeAssetPlanTaskListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Limit: 需要返回的数量，默认为10，最大值为100
-        :type Limit: int
-        :param Offset: 偏移量，默认为0。
-        :type Offset: int
+        :param Uuid: 服务器Uuid
+        :type Uuid: str
+        :param Quuid: 服务器Quuid
+        :type Quuid: str
         :param Filters: 过滤条件。
 <li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
 <li>User- string - 是否必填：否 - 用户</li>
 <li>Status- int - 是否必填：否 - 默认启用状态：0未启用， 1启用 </li>
         :type Filters: list of AssetFilters
-        :param Uuid: 服务器Uuid
-        :type Uuid: str
-        :param Quuid: 服务器Quuid
-        :type Quuid: str
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Limit: 需要返回的数量，默认为10，最大值为100
+        :type Limit: int
+        :param Order: 排序方式，asc升序 或 desc降序
+        :type Order: str
+        :param By: 排序方式：[FirstTime]
+        :type By: str
         """
-        self.Limit = None
-        self.Offset = None
-        self.Filters = None
         self.Uuid = None
         self.Quuid = None
+        self.Filters = None
+        self.Offset = None
+        self.Limit = None
+        self.Order = None
+        self.By = None
 
 
     def _deserialize(self, params):
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
+        self.Uuid = params.get("Uuid")
+        self.Quuid = params.get("Quuid")
         if params.get("Filters") is not None:
             self.Filters = []
             for item in params.get("Filters"):
                 obj = AssetFilters()
                 obj._deserialize(item)
                 self.Filters.append(obj)
-        self.Uuid = params.get("Uuid")
-        self.Quuid = params.get("Quuid")
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
+        self.Order = params.get("Order")
+        self.By = params.get("By")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5782,10 +6166,8 @@ class DescribeAssetPortInfoListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Limit: 需要返回的数量，默认为10，最大值为100
-        :type Limit: int
-        :param Offset: 偏移量，默认为0。
-        :type Offset: int
+        :param Quuid: 查询指定Quuid主机的信息
+        :type Quuid: str
         :param Filters: 过滤条件。
 <li>Port - uint64 - 是否必填：否 - 端口</li>
 <li>Ip - String - 是否必填：否 - 绑定IP</li>
@@ -5800,33 +6182,35 @@ class DescribeAssetPortInfoListRequest(AbstractModel):
 <li>RunTimeEnd - String - 是否必填：否 - 运行结束时间</li>
 <li>Os -String 是否必填: 否 - 操作系统( DescribeMachineOsList 接口 值 )</li>
         :type Filters: list of Filter
+        :param Limit: 需要返回的数量，默认为10，最大值为100
+        :type Limit: int
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
         :param Order: 排序方式，asc升序 或 desc降序
         :type Order: str
-        :param By: 排序方式：StartTime
+        :param By: 排序方式：[FirstTime|StartTime]
         :type By: str
-        :param Quuid: 查询指定Quuid主机的信息
-        :type Quuid: str
         """
+        self.Quuid = None
+        self.Filters = None
         self.Limit = None
         self.Offset = None
-        self.Filters = None
         self.Order = None
         self.By = None
-        self.Quuid = None
 
 
     def _deserialize(self, params):
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
+        self.Quuid = params.get("Quuid")
         if params.get("Filters") is not None:
             self.Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
                 self.Filters.append(obj)
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
         self.Order = params.get("Order")
         self.By = params.get("By")
-        self.Quuid = params.get("Quuid")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5874,10 +6258,8 @@ class DescribeAssetProcessInfoListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Limit: 需要返回的数量，默认为10，最大值为100
-        :type Limit: int
-        :param Offset: 偏移量，默认为0。
-        :type Offset: int
+        :param Quuid: 查询指定Quuid主机的信息
+        :type Quuid: str
         :param Filters: 过滤条件。
 <li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
 <li>Name - String - 是否必填：否 - 进程名</li>
@@ -5898,31 +6280,33 @@ class DescribeAssetProcessInfoListRequest(AbstractModel):
 <li>InstallByPackage - uint64 - 是否必填：否 - 是否包安装：0否，1是</li>
 <li>Os -String 是否必填: 否 - 操作系统( DescribeMachineOsList 接口 值 )</li>
         :type Filters: list of Filter
-        :param Quuid: 查询指定Quuid主机的信息
-        :type Quuid: str
+        :param Limit: 需要返回的数量，默认为10，最大值为100
+        :type Limit: int
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
         :param Order: 排序方式，asc升序 或 desc降序
         :type Order: str
-        :param By: 排序方式：StartTime
+        :param By: 排序方式：[FirstTime|StartTime]
         :type By: str
         """
+        self.Quuid = None
+        self.Filters = None
         self.Limit = None
         self.Offset = None
-        self.Filters = None
-        self.Quuid = None
         self.Order = None
         self.By = None
 
 
     def _deserialize(self, params):
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
+        self.Quuid = params.get("Quuid")
         if params.get("Filters") is not None:
             self.Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
                 self.Filters.append(obj)
-        self.Quuid = params.get("Quuid")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
         self.Order = params.get("Order")
         self.By = params.get("By")
         memeber_set = set(params.keys())
@@ -6061,10 +6445,6 @@ class DescribeAssetSystemPackageListRequest(AbstractModel):
         :type Uuid: str
         :param Quuid: 主机Quuid
         :type Quuid: str
-        :param Limit: 需要返回的数量，默认为10，最大值为100
-        :type Limit: int
-        :param Offset: 偏移量，默认为0。
-        :type Offset: int
         :param Filters: 过滤条件。
 <li>Name - String - 是否必填：否 - 包 名</li>
 <li>StartTime - String - 是否必填：否 - 安装开始时间</li>
@@ -6075,16 +6455,20 @@ class DescribeAssetSystemPackageListRequest(AbstractModel):
 3:java
 4:system</li>
         :type Filters: list of Filter
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Limit: 需要返回的数量，默认为10，最大值为100
+        :type Limit: int
         :param Order: 排序方式，asc-升序 或 desc-降序。默认：desc-降序
         :type Order: str
-        :param By: 排序方式可选：InstallTime 安装时间
+        :param By: 排序方式可选：[FistTime|InstallTime:安装时间]
         :type By: str
         """
         self.Uuid = None
         self.Quuid = None
-        self.Limit = None
-        self.Offset = None
         self.Filters = None
+        self.Offset = None
+        self.Limit = None
         self.Order = None
         self.By = None
 
@@ -6092,14 +6476,14 @@ class DescribeAssetSystemPackageListRequest(AbstractModel):
     def _deserialize(self, params):
         self.Uuid = params.get("Uuid")
         self.Quuid = params.get("Quuid")
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
         if params.get("Filters") is not None:
             self.Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
                 self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
         self.Order = params.get("Order")
         self.By = params.get("By")
         memeber_set = set(params.keys())
@@ -6204,10 +6588,8 @@ class DescribeAssetUserListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Limit: 需要返回的数量，默认为10，最大值为100
-        :type Limit: int
-        :param Offset: 偏移量，默认为0。
-        :type Offset: int
+        :param Quuid: 查询指定Quuid主机的信息
+        :type Quuid: str
         :param Filters: 过滤条件。
 <li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
 <li>Name - String - 是否必填：否 - 账户名（模糊匹配）</li>
@@ -6228,37 +6610,36 @@ class DescribeAssetUserListRequest(AbstractModel):
 <li>PasswordStatus - uint64 - 是否必填：否 - 密码状态：1正常 2即将过期 3已过期 4已锁定 仅linux</li>
 <li>Os -String 是否必填: 否 - 操作系统( DescribeMachineOsList 接口 值 )</li>
         :type Filters: list of Filter
+        :param Limit: 需要返回的数量，默认为10，最大值为100
+        :type Limit: int
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
         :param Order: 排序方式，asc升序 或 desc降序
         :type Order: str
-        :param By: 可选排序：
-LoginTime
-PasswordChangeTime
-PasswordDuaTime
+        :param By: 可选排序：[FirstTime|LoginTime|PasswordChangeTime|PasswordDuaTime]
 PasswordLockDays
         :type By: str
-        :param Quuid: 查询指定Quuid主机的信息
-        :type Quuid: str
         """
+        self.Quuid = None
+        self.Filters = None
         self.Limit = None
         self.Offset = None
-        self.Filters = None
         self.Order = None
         self.By = None
-        self.Quuid = None
 
 
     def _deserialize(self, params):
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
+        self.Quuid = params.get("Quuid")
         if params.get("Filters") is not None:
             self.Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
                 self.Filters.append(obj)
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
         self.Order = params.get("Order")
         self.By = params.get("By")
-        self.Quuid = params.get("Quuid")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6306,10 +6687,8 @@ class DescribeAssetWebAppListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Limit: 需要返回的数量，默认为10，最大值为100
-        :type Limit: int
-        :param Offset: 偏移量，默认为0。
-        :type Offset: int
+        :param Quuid: 查询指定Quuid主机的信息
+        :type Quuid: str
         :param Filters: 过滤条件。
 <li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
 <li>Name - String - 是否必填：否 - 应用名</li>
@@ -6328,33 +6707,35 @@ class DescribeAssetWebAppListRequest(AbstractModel):
 <li>OsType - String - 是否必填：否 - windows/linux</li>
 <li>Os -String 是否必填: 否 - 操作系统( DescribeMachineOsList 接口 值 )</li>
         :type Filters: list of Filter
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Limit: 需要返回的数量，默认为10，最大值为100
+        :type Limit: int
         :param Order: 排序方式，asc升序 或 desc降序
         :type Order: str
-        :param By: 可选排序：PluginCount
+        :param By: 可选排序：[FirstTime|PluginCount]
         :type By: str
-        :param Quuid: 查询指定Quuid主机的信息
-        :type Quuid: str
         """
-        self.Limit = None
-        self.Offset = None
+        self.Quuid = None
         self.Filters = None
+        self.Offset = None
+        self.Limit = None
         self.Order = None
         self.By = None
-        self.Quuid = None
 
 
     def _deserialize(self, params):
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
+        self.Quuid = params.get("Quuid")
         if params.get("Filters") is not None:
             self.Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
                 self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
         self.Order = params.get("Order")
         self.By = params.get("By")
-        self.Quuid = params.get("Quuid")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6473,10 +6854,8 @@ class DescribeAssetWebFrameListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Limit: 需要返回的数量，默认为10，最大值为100
-        :type Limit: int
-        :param Offset: 偏移量，默认为0。
-        :type Offset: int
+        :param Quuid: 查询指定Quuid主机的信息
+        :type Quuid: str
         :param Filters: 过滤条件。
 <li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
 <li>Name - String - 是否必填：否 - 框架名</li>
@@ -6497,33 +6876,35 @@ class DescribeAssetWebFrameListRequest(AbstractModel):
 <li>OsType - String - 是否必填：否 - windows/linux</li>
 <li>Os -String 是否必填: 否 - 操作系统( DescribeMachineOsList 接口 值 )</li>
         :type Filters: list of Filter
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Limit: 需要返回的数量，默认为10，最大值为100
+        :type Limit: int
         :param Order: 排序方式，asc升序 或 desc降序
         :type Order: str
-        :param By: 可选排序：JarCount
+        :param By: 可选排序：[FirstTime|JarCount]
         :type By: str
-        :param Quuid: 查询指定Quuid主机的信息
-        :type Quuid: str
         """
-        self.Limit = None
-        self.Offset = None
+        self.Quuid = None
         self.Filters = None
+        self.Offset = None
+        self.Limit = None
         self.Order = None
         self.By = None
-        self.Quuid = None
 
 
     def _deserialize(self, params):
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
+        self.Quuid = params.get("Quuid")
         if params.get("Filters") is not None:
             self.Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
                 self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
         self.Order = params.get("Order")
         self.By = params.get("By")
-        self.Quuid = params.get("Quuid")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6627,10 +7008,8 @@ class DescribeAssetWebLocationListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Limit: 需要返回的数量，默认为10，最大值为100
-        :type Limit: int
-        :param Offset: 偏移量，默认为0。
-        :type Offset: int
+        :param Quuid: 查询指定Quuid主机的信息
+        :type Quuid: str
         :param Filters: 过滤条件。
 <li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
 <li>Name - String - 是否必填：否 - 域名</li>
@@ -6651,33 +7030,35 @@ class DescribeAssetWebLocationListRequest(AbstractModel):
 <li>OsType - String - 是否必填：否 - windows/linux</li>
 <li>Os -String 是否必填: 否 - 操作系统( DescribeMachineOsList 接口 值 )</li>
         :type Filters: list of Filter
+        :param Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param Limit: 需要返回的数量，默认为10，最大值为100
+        :type Limit: int
         :param Order: 排序方式，asc升序 或 desc降序
         :type Order: str
-        :param By: 可选排序：PathCount
+        :param By: 可选排序：[FirstTime|PathCount]
         :type By: str
-        :param Quuid: 查询指定Quuid主机的信息
-        :type Quuid: str
         """
-        self.Limit = None
-        self.Offset = None
+        self.Quuid = None
         self.Filters = None
+        self.Offset = None
+        self.Limit = None
         self.Order = None
         self.By = None
-        self.Quuid = None
 
 
     def _deserialize(self, params):
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
+        self.Quuid = params.get("Quuid")
         if params.get("Filters") is not None:
             self.Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
                 self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
         self.Order = params.get("Order")
         self.By = params.get("By")
-        self.Quuid = params.get("Quuid")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -6725,11 +7106,8 @@ class DescribeAssetWebServiceInfoListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Limit: 需要返回的数量，默认为10，最大值为100
-        :type Limit: int
-        :param Offset: 偏移量，默认为0。
-<li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
-        :type Offset: int
+        :param Quuid: 查询指定Quuid主机的信息
+        :type Quuid: str
         :param Filters: 过滤条件。
 <li>User- string - 是否必填：否 - 运行用户</li>
 <li>Name- string - 是否必填：否 - Web服务名：
@@ -6746,33 +7124,36 @@ class DescribeAssetWebServiceInfoListRequest(AbstractModel):
 <li>OsType- string - 是否必填：否 - Windows/linux</li>
 <li>Os -String 是否必填: 否 - 操作系统( DescribeMachineOsList 接口 值 )</li>
         :type Filters: list of AssetFilters
+        :param Offset: 偏移量，默认为0。
+<li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
+        :type Offset: int
+        :param Limit: 需要返回的数量，默认为10，最大值为100
+        :type Limit: int
         :param Order: 排序方式，asc升序 或 desc降序
         :type Order: str
-        :param By: 可选排序：ProcessCount
+        :param By: 可选排序：[FirstTime|ProcessCount]
         :type By: str
-        :param Quuid: 查询指定Quuid主机的信息
-        :type Quuid: str
         """
-        self.Limit = None
-        self.Offset = None
+        self.Quuid = None
         self.Filters = None
+        self.Offset = None
+        self.Limit = None
         self.Order = None
         self.By = None
-        self.Quuid = None
 
 
     def _deserialize(self, params):
-        self.Limit = params.get("Limit")
-        self.Offset = params.get("Offset")
+        self.Quuid = params.get("Quuid")
         if params.get("Filters") is not None:
             self.Filters = []
             for item in params.get("Filters"):
                 obj = AssetFilters()
                 obj._deserialize(item)
                 self.Filters.append(obj)
+        self.Offset = params.get("Offset")
+        self.Limit = params.get("Limit")
         self.Order = params.get("Order")
         self.By = params.get("By")
-        self.Quuid = params.get("Quuid")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9430,6 +9811,328 @@ class DescribeIndexListResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.Data = params.get("Data")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeLicenseBindListRequest(AbstractModel):
+    """DescribeLicenseBindList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LicenseId: 授权ID
+        :type LicenseId: int
+        :param LicenseType: 授权类型
+        :type LicenseType: int
+        :param ResourceId: 资源ID
+        :type ResourceId: str
+        :param Filters: <li>Keywords 机器别名/公私IP 模糊查询</li>
+        :type Filters: list of Filters
+        :param Limit: 限制条数,默认10.
+        :type Limit: int
+        :param Offset: 偏移量,默认0.
+        :type Offset: int
+        """
+        self.LicenseId = None
+        self.LicenseType = None
+        self.ResourceId = None
+        self.Filters = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        self.LicenseId = params.get("LicenseId")
+        self.LicenseType = params.get("LicenseType")
+        self.ResourceId = params.get("ResourceId")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filters()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLicenseBindListResponse(AbstractModel):
+    """DescribeLicenseBindList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 总条数
+        :type TotalCount: int
+        :param List: 绑定机器列表信息
+        :type List: list of LicenseBindDetail
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.List = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("List") is not None:
+            self.List = []
+            for item in params.get("List"):
+                obj = LicenseBindDetail()
+                obj._deserialize(item)
+                self.List.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeLicenseBindScheduleRequest(AbstractModel):
+    """DescribeLicenseBindSchedule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 任务ID
+        :type TaskId: int
+        :param Limit: 限制条数,默认10.
+        :type Limit: int
+        :param Offset: 偏移量,默认0
+        :type Offset: int
+        :param Filters: 过滤参数
+Status 绑定进度状态 0 进行中 1 已完成 2 失败
+        :type Filters: list of Filter
+        """
+        self.TaskId = None
+        self.Limit = None
+        self.Offset = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLicenseBindScheduleResponse(AbstractModel):
+    """DescribeLicenseBindSchedule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Schedule: 进度
+        :type Schedule: int
+        :param List: 绑定任务详情
+        :type List: list of LicenseBindTaskDetail
+        :param TotalCount: 总条数
+        :type TotalCount: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Schedule = None
+        self.List = None
+        self.TotalCount = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Schedule = params.get("Schedule")
+        if params.get("List") is not None:
+            self.List = []
+            for item in params.get("List"):
+                obj = LicenseBindTaskDetail()
+                obj._deserialize(item)
+                self.List.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeLicenseGeneralRequest(AbstractModel):
+    """DescribeLicenseGeneral请求参数结构体
+
+    """
+
+
+class DescribeLicenseGeneralResponse(AbstractModel):
+    """DescribeLicenseGeneral返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LicenseCnt: 总授权数 (包含隔离,过期等不可用状态)
+        :type LicenseCnt: int
+        :param AvailableLicenseCnt: 可用授权数
+        :type AvailableLicenseCnt: int
+        :param AvailableProVersionLicenseCnt: 可用专业版授权数(包含后付费).
+        :type AvailableProVersionLicenseCnt: int
+        :param AvailableFlagshipVersionLicenseCnt: 可用旗舰版授权数
+        :type AvailableFlagshipVersionLicenseCnt: int
+        :param NearExpiryLicenseCnt: 即将到期授权数 (15天内到期的)
+        :type NearExpiryLicenseCnt: int
+        :param ExpireLicenseCnt: 已到期授权数(不包含已删除的记录)
+        :type ExpireLicenseCnt: int
+        :param AutoOpenStatus: 自动升级开关状态,默认 false,  ture 开启, false 关闭
+        :type AutoOpenStatus: bool
+        :param ProtectType: PROVERSION_POSTPAY 专业版-后付费, PROVERSION_PREPAY 专业版-预付费, FLAGSHIP_PREPAY 旗舰版-预付费
+        :type ProtectType: str
+        :param IsOpenStatusHistory: 历史是否开通过自动升级开关
+        :type IsOpenStatusHistory: bool
+        :param UsedLicenseCnt: 已使用授权数
+        :type UsedLicenseCnt: int
+        :param NotExpiredLicenseCnt: 未到期授权数
+        :type NotExpiredLicenseCnt: int
+        :param FlagshipVersionLicenseCnt: 旗舰版总授权数(有效订单)
+        :type FlagshipVersionLicenseCnt: int
+        :param ProVersionLicenseCnt: 专业版总授权数(有效订单)
+        :type ProVersionLicenseCnt: int
+        :param CwpVersionLicenseCnt: 普惠版总授权数(有效订单的授权数)
+        :type CwpVersionLicenseCnt: int
+        :param AvailableLHLicenseCnt: 可用惠普版授权数
+        :type AvailableLHLicenseCnt: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.LicenseCnt = None
+        self.AvailableLicenseCnt = None
+        self.AvailableProVersionLicenseCnt = None
+        self.AvailableFlagshipVersionLicenseCnt = None
+        self.NearExpiryLicenseCnt = None
+        self.ExpireLicenseCnt = None
+        self.AutoOpenStatus = None
+        self.ProtectType = None
+        self.IsOpenStatusHistory = None
+        self.UsedLicenseCnt = None
+        self.NotExpiredLicenseCnt = None
+        self.FlagshipVersionLicenseCnt = None
+        self.ProVersionLicenseCnt = None
+        self.CwpVersionLicenseCnt = None
+        self.AvailableLHLicenseCnt = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.LicenseCnt = params.get("LicenseCnt")
+        self.AvailableLicenseCnt = params.get("AvailableLicenseCnt")
+        self.AvailableProVersionLicenseCnt = params.get("AvailableProVersionLicenseCnt")
+        self.AvailableFlagshipVersionLicenseCnt = params.get("AvailableFlagshipVersionLicenseCnt")
+        self.NearExpiryLicenseCnt = params.get("NearExpiryLicenseCnt")
+        self.ExpireLicenseCnt = params.get("ExpireLicenseCnt")
+        self.AutoOpenStatus = params.get("AutoOpenStatus")
+        self.ProtectType = params.get("ProtectType")
+        self.IsOpenStatusHistory = params.get("IsOpenStatusHistory")
+        self.UsedLicenseCnt = params.get("UsedLicenseCnt")
+        self.NotExpiredLicenseCnt = params.get("NotExpiredLicenseCnt")
+        self.FlagshipVersionLicenseCnt = params.get("FlagshipVersionLicenseCnt")
+        self.ProVersionLicenseCnt = params.get("ProVersionLicenseCnt")
+        self.CwpVersionLicenseCnt = params.get("CwpVersionLicenseCnt")
+        self.AvailableLHLicenseCnt = params.get("AvailableLHLicenseCnt")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeLicenseListRequest(AbstractModel):
+    """DescribeLicenseList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Filters: 多个条件筛选时 LicenseStatus,DeadlineStatus,ResourceId,Keywords 取交集
+<li> LicenseStatus 授权状态信息,0 未使用,1 部分使用, 2 已用完, 3 不可用  4 可使用</li>
+<li> BuyTime 购买时间</li>
+<li> LicenseType  授权类型, 0 专业版-按量计费, 1专业版-包年包月 , 2 旗舰版-包年包月</li>
+<li>DeadlineStatus 到期状态 NotExpired 未过期, Expire 已过期(包含已销毁) NearExpiry 即将到期</li>
+<li>ResourceId 资源ID</li>
+<li>Keywords IP筛选</li>
+<li>PayMode 付费模式 0 按量计费 , 1 包年包月</li>
+<li>OrderStatus 订单状态 1 正常 2 隔离 3 销毁</li>
+        :type Filters: list of Filters
+        :param Limit: 限制条数,默认10.
+        :type Limit: int
+        :param Offset: 偏移量,默认0.
+        :type Offset: int
+        :param Tags: 标签筛选,平台标签能力,这里传入 标签键,标签值作为一个对象
+        :type Tags: list of Tags
+        """
+        self.Filters = None
+        self.Limit = None
+        self.Offset = None
+        self.Tags = None
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filters()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tags()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLicenseListResponse(AbstractModel):
+    """DescribeLicenseList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 总条数
+        :type TotalCount: int
+        :param List: 授权数列表信息
+        :type List: list of LicenseDetail
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.List = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("List") is not None:
+            self.List = []
+            for item in params.get("List"):
+                obj = LicenseDetail()
+                obj._deserialize(item)
+                self.List.append(obj)
         self.RequestId = params.get("RequestId")
 
 
@@ -13665,6 +14368,51 @@ class DescribeWebPageServiceInfoResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DestroyOrderRequest(AbstractModel):
+    """DestroyOrder请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ResourceId: 资源ID
+        :type ResourceId: str
+        :param LicenseType: 授权类型 0 专业版-按量计费, 1专业版-包年包月 , 2 旗舰版-包年包月
+        :type LicenseType: int
+        """
+        self.ResourceId = None
+        self.LicenseType = None
+
+
+    def _deserialize(self, params):
+        self.ResourceId = params.get("ResourceId")
+        self.LicenseType = params.get("LicenseType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DestroyOrderResponse(AbstractModel):
+    """DestroyOrder返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
 class EditBashRulesRequest(AbstractModel):
     """EditBashRules请求参数结构体
 
@@ -14077,27 +14825,29 @@ class ExportAssetCoreModuleListRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param Uuid: 服务器Uuid
+        :type Uuid: str
+        :param Quuid: 服务器Quuid
+        :type Quuid: str
         :param Filters: 过滤条件。
 <li>Name- string - 是否必填：否 - 包名</li>
 <li>User- string - 是否必填：否 - 用户</li>
         :type Filters: list of AssetFilters
         :param Order: 排序方式，asc升序 或 desc降序
         :type Order: str
-        :param By: 排序依据:Size,ProcessCount,ModuleCount
+        :param By: 排序依据[FirstTime|Size|ProcessCount|ModuleCount]
         :type By: str
-        :param Uuid: 服务器Uuid
-        :type Uuid: str
-        :param Quuid: 服务器Quuid
-        :type Quuid: str
         """
+        self.Uuid = None
+        self.Quuid = None
         self.Filters = None
         self.Order = None
         self.By = None
-        self.Uuid = None
-        self.Quuid = None
 
 
     def _deserialize(self, params):
+        self.Uuid = params.get("Uuid")
+        self.Quuid = params.get("Quuid")
         if params.get("Filters") is not None:
             self.Filters = []
             for item in params.get("Filters"):
@@ -14106,8 +14856,6 @@ class ExportAssetCoreModuleListRequest(AbstractModel):
                 self.Filters.append(obj)
         self.Order = params.get("Order")
         self.By = params.get("By")
-        self.Uuid = params.get("Uuid")
-        self.Quuid = params.get("Quuid")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -14145,6 +14893,8 @@ class ExportAssetWebServiceInfoListRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param Quuid: 查询指定Quuid主机的信息
+        :type Quuid: str
         :param Filters: 过滤条件。
 <li>User- string - 是否必填：否 - 运行用户</li>
 <li>Name- string - 是否必填：否 - Web服务名：
@@ -14162,18 +14912,17 @@ class ExportAssetWebServiceInfoListRequest(AbstractModel):
         :type Filters: list of AssetFilters
         :param Order: 排序方式，asc升序 或 desc降序
         :type Order: str
-        :param By: 可选排序：ProcessCount
+        :param By: 可选排序：[FirstTime|ProcessCount]
         :type By: str
-        :param Quuid: 查询指定Quuid主机的信息
-        :type Quuid: str
         """
+        self.Quuid = None
         self.Filters = None
         self.Order = None
         self.By = None
-        self.Quuid = None
 
 
     def _deserialize(self, params):
+        self.Quuid = params.get("Quuid")
         if params.get("Filters") is not None:
             self.Filters = []
             for item in params.get("Filters"):
@@ -14182,7 +14931,6 @@ class ExportAssetWebServiceInfoListRequest(AbstractModel):
                 self.Filters.append(obj)
         self.Order = params.get("Order")
         self.By = params.get("By")
-        self.Quuid = params.get("Quuid")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -14620,6 +15368,79 @@ class ExportIgnoreRuleEffectHostListResponse(AbstractModel):
         :type DownloadUrl: str
         :param TaskId: 导出任务Id , 可通过ExportTasks 接口下载
         :type TaskId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DownloadUrl = None
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.DownloadUrl = params.get("DownloadUrl")
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
+class ExportLicenseDetailRequest(AbstractModel):
+    """ExportLicenseDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Filters: 多个条件筛选时 LicenseStatus,DeadlineStatus,ResourceId,Keywords 取交集
+<li> LicenseType  授权类型, 0 专业版-按量计费, 1专业版-包年包月 , 2 旗舰版-包年包月</li>
+<li>ResourceId 资源ID</li>
+        :type Filters: list of Filters
+        :param IsHistory: 是否导出全部授权详情
+        :type IsHistory: bool
+        :param Tags: 标签筛选,平台标签能力,这里传入 标签键,标签值作为一个对象
+        :type Tags: list of Tags
+        :param ExportMonth: 导出月份, 该参数仅在IsHistory 时可选.
+        :type ExportMonth: str
+        """
+        self.Filters = None
+        self.IsHistory = None
+        self.Tags = None
+        self.ExportMonth = None
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filters()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.IsHistory = params.get("IsHistory")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tags()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        self.ExportMonth = params.get("ExportMonth")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExportLicenseDetailResponse(AbstractModel):
+    """ExportLicenseDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DownloadUrl: 下载地址,该字段废弃
+        :type DownloadUrl: str
+        :param TaskId: 任务ID,可通过任务ID去查下载任务
+        :type TaskId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -15821,6 +16642,181 @@ class IgnoreRuleEffectHostInfo(AbstractModel):
         
 
 
+class LicenseBindDetail(AbstractModel):
+    """授权绑定详情信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param MachineName: 机器别名
+        :type MachineName: str
+        :param MachineWanIp: 机器公网IP
+        :type MachineWanIp: str
+        :param MachineIp: 机器内网IP
+        :type MachineIp: str
+        :param Quuid: 云服务器UUID
+        :type Quuid: str
+        :param Uuid: 云镜客户端UUID
+        :type Uuid: str
+        :param Tags: 标签信息
+        :type Tags: list of str
+        :param AgentStatus: 云镜客户端状态,OFFLINE 离线,ONLINE 在线,UNINSTALL 未安装
+        :type AgentStatus: str
+        :param IsUnBind: 是否允许解绑,false 不允许解绑
+        :type IsUnBind: bool
+        :param IsSwitchBind: 是否允许换绑,false 不允许换绑
+        :type IsSwitchBind: bool
+        """
+        self.MachineName = None
+        self.MachineWanIp = None
+        self.MachineIp = None
+        self.Quuid = None
+        self.Uuid = None
+        self.Tags = None
+        self.AgentStatus = None
+        self.IsUnBind = None
+        self.IsSwitchBind = None
+
+
+    def _deserialize(self, params):
+        self.MachineName = params.get("MachineName")
+        self.MachineWanIp = params.get("MachineWanIp")
+        self.MachineIp = params.get("MachineIp")
+        self.Quuid = params.get("Quuid")
+        self.Uuid = params.get("Uuid")
+        self.Tags = params.get("Tags")
+        self.AgentStatus = params.get("AgentStatus")
+        self.IsUnBind = params.get("IsUnBind")
+        self.IsSwitchBind = params.get("IsSwitchBind")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LicenseBindTaskDetail(AbstractModel):
+    """授权绑定任务详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Quuid: 云服务器UUID
+        :type Quuid: str
+        :param ErrMsg: 错误信息
+        :type ErrMsg: str
+        :param Status: 0 执行中, 1 成功,2失败
+        :type Status: int
+        """
+        self.Quuid = None
+        self.ErrMsg = None
+        self.Status = None
+
+
+    def _deserialize(self, params):
+        self.Quuid = params.get("Quuid")
+        self.ErrMsg = params.get("ErrMsg")
+        self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LicenseDetail(AbstractModel):
+    """授权订单列表对象
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LicenseId: 授权ID
+        :type LicenseId: int
+        :param LicenseType: 授权类型,0 专业版-按量计费, 1专业版-包年包月 , 2 旗舰版-包年包月
+        :type LicenseType: int
+        :param LicenseStatus: 授权状态 0 未使用,1 部分使用, 2 已用完, 3 不可用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LicenseStatus: int
+        :param LicenseCnt: 总授权数
+        :type LicenseCnt: int
+        :param UsedLicenseCnt: 已使用授权数
+        :type UsedLicenseCnt: int
+        :param OrderStatus: 订单状态 1 正常 2隔离, 3销毁
+        :type OrderStatus: int
+        :param Deadline: 截止日期
+        :type Deadline: str
+        :param ResourceId: 订单资源ID
+        :type ResourceId: str
+        :param AutoRenewFlag: 0 初始化,1 自动续费,2 不自动续费
+        :type AutoRenewFlag: int
+        :param ProjectId: 项目ID
+        :type ProjectId: int
+        :param TaskId: 任务ID ,默认0 ,查询绑定进度用
+        :type TaskId: int
+        :param BuyTime: 购买时间
+        :type BuyTime: str
+        :param SourceType: 是否试用订单.
+        :type SourceType: int
+        :param Alias: 资源别名
+        :type Alias: str
+        :param Tags: 平台标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tags
+        """
+        self.LicenseId = None
+        self.LicenseType = None
+        self.LicenseStatus = None
+        self.LicenseCnt = None
+        self.UsedLicenseCnt = None
+        self.OrderStatus = None
+        self.Deadline = None
+        self.ResourceId = None
+        self.AutoRenewFlag = None
+        self.ProjectId = None
+        self.TaskId = None
+        self.BuyTime = None
+        self.SourceType = None
+        self.Alias = None
+        self.Tags = None
+
+
+    def _deserialize(self, params):
+        self.LicenseId = params.get("LicenseId")
+        self.LicenseType = params.get("LicenseType")
+        self.LicenseStatus = params.get("LicenseStatus")
+        self.LicenseCnt = params.get("LicenseCnt")
+        self.UsedLicenseCnt = params.get("UsedLicenseCnt")
+        self.OrderStatus = params.get("OrderStatus")
+        self.Deadline = params.get("Deadline")
+        self.ResourceId = params.get("ResourceId")
+        self.AutoRenewFlag = params.get("AutoRenewFlag")
+        self.ProjectId = params.get("ProjectId")
+        self.TaskId = params.get("TaskId")
+        self.BuyTime = params.get("BuyTime")
+        self.SourceType = params.get("SourceType")
+        self.Alias = params.get("Alias")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tags()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class LicenseOrder(AbstractModel):
     """授权订单对象内容
 
@@ -15852,6 +16848,34 @@ class LicenseOrder(AbstractModel):
         self.Status = params.get("Status")
         self.SourceType = params.get("SourceType")
         self.ResourceId = params.get("ResourceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LicenseUnBindRsp(AbstractModel):
+    """授权解绑信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Quuid: QUUID 云服务器uuid,轻量服务器uuid,边缘计算 uuid
+        :type Quuid: str
+        :param ErrMsg: 失败原因
+        :type ErrMsg: str
+        """
+        self.Quuid = None
+        self.ErrMsg = None
+
+
+    def _deserialize(self, params):
+        self.Quuid = params.get("Quuid")
+        self.ErrMsg = params.get("ErrMsg")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -16691,6 +17715,127 @@ class ModifyBruteAttackRulesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ModifyLicenseBindsRequest(AbstractModel):
+    """ModifyLicenseBinds请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ResourceId: 资源ID
+        :type ResourceId: str
+        :param LicenseType: 授权类型
+        :type LicenseType: int
+        :param IsAll: 是否全部机器(当全部机器数大于当前订单可用授权数时,多余机器会被跳过)
+        :type IsAll: bool
+        :param QuuidList: 需要绑定的机器quuid列表, 当IsAll = false 时必填,反之忽略该参数. 最大长度=2000
+        :type QuuidList: list of str
+        """
+        self.ResourceId = None
+        self.LicenseType = None
+        self.IsAll = None
+        self.QuuidList = None
+
+
+    def _deserialize(self, params):
+        self.ResourceId = params.get("ResourceId")
+        self.LicenseType = params.get("LicenseType")
+        self.IsAll = params.get("IsAll")
+        self.QuuidList = params.get("QuuidList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyLicenseBindsResponse(AbstractModel):
+    """ModifyLicenseBinds返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 任务ID
+        :type TaskId: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyLicenseUnBindsRequest(AbstractModel):
+    """ModifyLicenseUnBinds请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ResourceId: 资源ID
+        :type ResourceId: str
+        :param LicenseType: 授权类型
+        :type LicenseType: int
+        :param IsAll: 是否全部机器(当全部机器数大于当前订单可用授权数时,多余机器会被跳过)
+        :type IsAll: bool
+        :param QuuidList: 需要绑定的机器quuid列表, 当IsAll = false 时必填,反之忽略该参数.
+最大长度=100
+        :type QuuidList: list of str
+        """
+        self.ResourceId = None
+        self.LicenseType = None
+        self.IsAll = None
+        self.QuuidList = None
+
+
+    def _deserialize(self, params):
+        self.ResourceId = params.get("ResourceId")
+        self.LicenseType = params.get("LicenseType")
+        self.IsAll = params.get("IsAll")
+        self.QuuidList = params.get("QuuidList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyLicenseUnBindsResponse(AbstractModel):
+    """ModifyLicenseUnBinds返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ErrMsg: 只有解绑失败的才有该值.
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrMsg: list of LicenseUnBindRsp
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ErrMsg = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("ErrMsg") is not None:
+            self.ErrMsg = []
+            for item in params.get("ErrMsg"):
+                obj = LicenseUnBindRsp()
+                obj._deserialize(item)
+                self.ErrMsg.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class ModifyMalwareTimingScanSettingsRequest(AbstractModel):
     """ModifyMalwareTimingScanSettings请求参数结构体
 
@@ -16761,6 +17906,59 @@ class ModifyMalwareTimingScanSettingsRequest(AbstractModel):
 
 class ModifyMalwareTimingScanSettingsResponse(AbstractModel):
     """ModifyMalwareTimingScanSettings返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyOrderAttributeRequest(AbstractModel):
+    """ModifyOrderAttribute请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param LicenseType: 授权类型 0 专业版-按量计费, 1专业版-包年包月 , 2 旗舰版-包年包月
+        :type LicenseType: int
+        :param ResourceId: 资源ID
+        :type ResourceId: str
+        :param AttrName: 可编辑的属性名称 ,当前支持的有: alias 资源别名
+        :type AttrName: str
+        :param AttrValue: 属性值
+        :type AttrValue: str
+        """
+        self.LicenseType = None
+        self.ResourceId = None
+        self.AttrName = None
+        self.AttrValue = None
+
+
+    def _deserialize(self, params):
+        self.LicenseType = params.get("LicenseType")
+        self.ResourceId = params.get("ResourceId")
+        self.AttrName = params.get("AttrName")
+        self.AttrValue = params.get("AttrValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyOrderAttributeResponse(AbstractModel):
+    """ModifyOrderAttribute返回参数结构体
 
     """
 

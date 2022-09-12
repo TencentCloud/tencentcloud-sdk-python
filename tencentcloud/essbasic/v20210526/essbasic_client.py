@@ -26,6 +26,36 @@ class EssbasicClient(AbstractClient):
     _service = 'essbasic'
 
 
+    def ChannelBatchCancelFlows(self, request):
+        """指定需要批量撤销的签署流程Id，批量撤销合同
+        客户指定需要撤销的签署流程Id，最多100个，超过100不处理；接口失败后返回错误信息
+
+        :param request: Request instance for ChannelBatchCancelFlows.
+        :type request: :class:`tencentcloud.essbasic.v20210526.models.ChannelBatchCancelFlowsRequest`
+        :rtype: :class:`tencentcloud.essbasic.v20210526.models.ChannelBatchCancelFlowsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ChannelBatchCancelFlows", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ChannelBatchCancelFlowsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ChannelCancelMultiFlowSignQRCode(self, request):
         """此接口（ChannelCancelMultiFlowSignQRCode）用于取消一码多扫二维码。该接口对传入的二维码ID，若还在有效期内，可以提前失效。
 
@@ -143,6 +173,35 @@ class EssbasicClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ChannelCreateFlowGroupByFiles(self, request):
+        """接口（ChannelCreateFlowGroupByFiles）用于通过多文件创建合同组签署流程。
+
+        :param request: Request instance for ChannelCreateFlowGroupByFiles.
+        :type request: :class:`tencentcloud.essbasic.v20210526.models.ChannelCreateFlowGroupByFilesRequest`
+        :rtype: :class:`tencentcloud.essbasic.v20210526.models.ChannelCreateFlowGroupByFilesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ChannelCreateFlowGroupByFiles", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ChannelCreateFlowGroupByFilesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def ChannelCreateFlowSignReview(self, request):
         """提交企业签署流程审批结果
 
@@ -235,7 +294,8 @@ class EssbasicClient(AbstractClient):
 
 
     def CreateChannelFlowEvidenceReport(self, request):
-        """创建出证报告，返回报告 URL
+        """【描述】：创建出证报告，返回报告 URL
+        【注意】：此接口需要通过添加白名单获取调用权限，请联系运营人员加白
 
         :param request: Request instance for CreateChannelFlowEvidenceReport.
         :type request: :class:`tencentcloud.essbasic.v20210526.models.CreateChannelFlowEvidenceReportRequest`

@@ -181,6 +181,35 @@ class GmeClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteRoomMember(self, request):
+        """本接口(DeleteRoomMember)用户删除房间或者剔除房间内用户
+
+        :param request: Request instance for DeleteRoomMember.
+        :type request: :class:`tencentcloud.gme.v20180711.models.DeleteRoomMemberRequest`
+        :rtype: :class:`tencentcloud.gme.v20180711.models.DeleteRoomMemberResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteRoomMember", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteRoomMemberResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteScanUser(self, request):
         """删除自定义送检用户
 

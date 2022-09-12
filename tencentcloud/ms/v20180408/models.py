@@ -845,6 +845,68 @@ class DeleteShieldInstancesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeApkDetectionResultRequest(AbstractModel):
+    """DescribeApkDetectionResult请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ApkUrl: 软件包的下载链接
+        :type ApkUrl: str
+        :param ApkMd5: 软件包的md5值，具有唯一性。腾讯APK云检测服务会根据md5值来判断该包是否为库中已收集的样本，已存在，则返回检测结果，反之，需要一定时间检测该样本。
+        :type ApkMd5: str
+        """
+        self.ApkUrl = None
+        self.ApkMd5 = None
+
+
+    def _deserialize(self, params):
+        self.ApkUrl = params.get("ApkUrl")
+        self.ApkMd5 = params.get("ApkMd5")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeApkDetectionResultResponse(AbstractModel):
+    """DescribeApkDetectionResult返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 响应结果，ok表示正常，error表示错误
+        :type Result: str
+        :param Reason: Result为error错误时的原因说明
+        :type Reason: str
+        :param ResultList: APK检测结果数组
+        :type ResultList: list of ResultListItem
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.Reason = None
+        self.ResultList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.Reason = params.get("Reason")
+        if params.get("ResultList") is not None:
+            self.ResultList = []
+            for item in params.get("ResultList"):
+                obj = ResultListItem()
+                obj._deserialize(item)
+                self.ResultList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeResourceInstancesRequest(AbstractModel):
     """DescribeResourceInstances请求参数结构体
 
@@ -1424,6 +1486,38 @@ class Filter(AbstractModel):
         
 
 
+class OptPluginListItem(AbstractModel):
+    """APK检测服务：非广告插件结果列表(SDK、风险插件等)
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PluginType: 非广告类型
+        :type PluginType: str
+        :param PluginName: 非广告插件名称
+        :type PluginName: str
+        :param PluginDesc: 非广告插件描述
+        :type PluginDesc: str
+        """
+        self.PluginType = None
+        self.PluginName = None
+        self.PluginDesc = None
+
+
+    def _deserialize(self, params):
+        self.PluginType = params.get("PluginType")
+        self.PluginName = params.get("PluginName")
+        self.PluginDesc = params.get("PluginDesc")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PlanDetailInfo(AbstractModel):
     """加固策略具体信息
 
@@ -1580,6 +1674,38 @@ class PluginInfo(AbstractModel):
         
 
 
+class PluginListItem(AbstractModel):
+    """APK检测服务：广告插件结果结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PluginType: 数字类型，分别为 1-通知栏广告，2-积分墙广告，3-banner广告，4- 悬浮窗图标广告，5-精品推荐列表广告, 6-插播广告
+        :type PluginType: str
+        :param PluginName: 广告插件名称
+        :type PluginName: str
+        :param PluginDesc: 广告插件描述
+        :type PluginDesc: str
+        """
+        self.PluginType = None
+        self.PluginName = None
+        self.PluginDesc = None
+
+
+    def _deserialize(self, params):
+        self.PluginType = params.get("PluginType")
+        self.PluginName = params.get("PluginName")
+        self.PluginDesc = params.get("PluginDesc")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ResourceInfo(AbstractModel):
     """拉取某个用户的所有资源信息
 
@@ -1653,6 +1779,130 @@ class ResourceServiceInfo(AbstractModel):
         self.CreateTime = params.get("CreateTime")
         self.ExpireTime = params.get("ExpireTime")
         self.ResourceName = params.get("ResourceName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResultListItem(AbstractModel):
+    """APK检测服务参数返回具体信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Banner: banner广告软件标记，分别为-1-不确定，0-否，1-是
+        :type Banner: str
+        :param BoutiqueRecommand: 精品推荐列表广告标记，分别为-1-不确定，0-否，1-是
+        :type BoutiqueRecommand: str
+        :param FloatWindows: 悬浮窗图标广告标记,分别为-1-不确定，0-否，1-是
+        :type FloatWindows: str
+        :param IntegralWall: 积分墙广告软件标记，分别为 -1 -不确定，0-否，1-是
+        :type IntegralWall: str
+        :param Md5: 安装包的md5
+        :type Md5: str
+        :param NotifyBar: 通知栏广告软件标记，分别为-1-不确定，0-否，1-是
+        :type NotifyBar: str
+        :param Official: 1表示官方，0表示非官方
+        :type Official: str
+        :param PluginList: 广告插件结果列表
+        :type PluginList: list of PluginListItem
+        :param OptPluginList: 非广告插件结果列表(SDK、风险插件等)
+        :type OptPluginList: list of OptPluginListItem
+        :param SafeType: 数字类型，分别为0-未知， 1-安全软件，2-风险软件，3-病毒软件
+        :type SafeType: str
+        :param Sid: Session id，合作方可以用来区分回调数据，需要唯一。
+        :type Sid: str
+        :param SoftName: 安装包名称
+        :type SoftName: str
+        :param Spot: 插播广告软件标记，取值：-1 不确定，0否， 1 是
+        :type Spot: str
+        :param VirusName: 病毒名称，utf8编码
+        :type VirusName: str
+        :param VirusDesc: 病毒描述，utf8编码
+        :type VirusDesc: str
+        :param RepackageStatus: 二次打包状态：0-表示默认；1-表示二次
+        :type RepackageStatus: str
+        :param Errno: 应用错误码：0、1-表示正常；                  
+
+2表示System Error(engine analysis error).
+
+3表示App analysis error, please confirm it.
+
+4表示App have not cert, please confirm it.
+
+5表示App size is zero, please confirm it.
+
+6表示App have not package name, please confirm it.
+
+7表示App build time is empty, please confirm it.
+
+8表示App have not valid cert, please confirm it.
+
+99表示Other error.
+
+1000表示App downloadlink download fail, please confirm it.
+
+1001表示APP md5 different between real md5, please confirm it.
+
+1002表示App md5 uncollect, please offer downloadlink.
+        :type Errno: str
+        :param ErrMsg: 对应errno的错误信息描述
+        :type ErrMsg: str
+        """
+        self.Banner = None
+        self.BoutiqueRecommand = None
+        self.FloatWindows = None
+        self.IntegralWall = None
+        self.Md5 = None
+        self.NotifyBar = None
+        self.Official = None
+        self.PluginList = None
+        self.OptPluginList = None
+        self.SafeType = None
+        self.Sid = None
+        self.SoftName = None
+        self.Spot = None
+        self.VirusName = None
+        self.VirusDesc = None
+        self.RepackageStatus = None
+        self.Errno = None
+        self.ErrMsg = None
+
+
+    def _deserialize(self, params):
+        self.Banner = params.get("Banner")
+        self.BoutiqueRecommand = params.get("BoutiqueRecommand")
+        self.FloatWindows = params.get("FloatWindows")
+        self.IntegralWall = params.get("IntegralWall")
+        self.Md5 = params.get("Md5")
+        self.NotifyBar = params.get("NotifyBar")
+        self.Official = params.get("Official")
+        if params.get("PluginList") is not None:
+            self.PluginList = []
+            for item in params.get("PluginList"):
+                obj = PluginListItem()
+                obj._deserialize(item)
+                self.PluginList.append(obj)
+        if params.get("OptPluginList") is not None:
+            self.OptPluginList = []
+            for item in params.get("OptPluginList"):
+                obj = OptPluginListItem()
+                obj._deserialize(item)
+                self.OptPluginList.append(obj)
+        self.SafeType = params.get("SafeType")
+        self.Sid = params.get("Sid")
+        self.SoftName = params.get("SoftName")
+        self.Spot = params.get("Spot")
+        self.VirusName = params.get("VirusName")
+        self.VirusDesc = params.get("VirusDesc")
+        self.RepackageStatus = params.get("RepackageStatus")
+        self.Errno = params.get("Errno")
+        self.ErrMsg = params.get("ErrMsg")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
