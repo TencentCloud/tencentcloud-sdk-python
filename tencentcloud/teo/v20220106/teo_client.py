@@ -1303,7 +1303,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeOverviewL7Data(self, request):
-        """查询七层监控类时序流量数据
+        """本接口（DescribeOverviewL7Data）用于查询七层监控类时序流量数据。
 
         :param request: Request instance for DescribeOverviewL7Data.
         :type request: :class:`tencentcloud.teo.v20220106.models.DescribeOverviewL7DataRequest`

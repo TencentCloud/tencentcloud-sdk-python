@@ -5048,6 +5048,8 @@ class RecognizeHealthCodeOCRResponse(AbstractModel):
         :type TestingTime: str
         :param Vaccination: 疫苗接种信息，返回接种针数或接种情况（允许返回空值）
         :type Vaccination: str
+        :param SpotName: 场所名称（允许返回空值）
+        :type SpotName: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5059,6 +5061,7 @@ class RecognizeHealthCodeOCRResponse(AbstractModel):
         self.TestingResult = None
         self.TestingTime = None
         self.Vaccination = None
+        self.SpotName = None
         self.RequestId = None
 
 
@@ -5071,6 +5074,7 @@ class RecognizeHealthCodeOCRResponse(AbstractModel):
         self.TestingResult = params.get("TestingResult")
         self.TestingTime = params.get("TestingTime")
         self.Vaccination = params.get("Vaccination")
+        self.SpotName = params.get("SpotName")
         self.RequestId = params.get("RequestId")
 
 

@@ -1646,35 +1646,6 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
-    def DescribeDBZoneConfig(self, request):
-        """本接口(DescribeDBZoneConfig)用于查询可创建的云数据库各地域可售卖的规格配置。
-
-        :param request: Request instance for DescribeDBZoneConfig.
-        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeDBZoneConfigRequest`
-        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeDBZoneConfigResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeDBZoneConfig", params, headers=headers)
-            response = json.loads(body)
-            if "Error" not in response["Response"]:
-                model = models.DescribeDBZoneConfigResponse()
-                model._deserialize(response["Response"])
-                return model
-            else:
-                code = response["Response"]["Error"]["Code"]
-                message = response["Response"]["Error"]["Message"]
-                reqid = response["Response"]["RequestId"]
-                raise TencentCloudSDKException(code, message, reqid)
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(e.message, e.message)
-
-
     def DescribeDataBackupOverview(self, request):
         """本接口(DescribeDataBackupOverview)用于查询用户在当前地域总的数据备份概览。
 

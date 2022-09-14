@@ -4233,7 +4233,7 @@ class DescribeApisStatusRequest(AbstractModel):
         :type Offset: int
         :param Limit: 返回数量，默认为 20，最大值为 100
         :type Limit: int
-        :param Filters: API过滤条件。支持ApiId、ApiName、ApiPath、ApiType、AuthRelationApiId、AuthType、ApiBuniessType、NotUsagePlanId、Environment、Tags (values为 $tag_key:tag_value的列表)、TagKeys （values 为 tag key的列表）。
+        :param Filters: API过滤条件。支持ApiId、ApiName、ApiPath、ApiType、AuthRelationApiId、AuthType、ApiBuniessType、NotUsagePlanId、 Environment、Tags (values为 $tag_key:tag_value的列表)、TagKeys （values 为 tag key的列表），其中NotUsagePlanId和Environment必须同时使用，不能单独使用一个。
         :type Filters: list of Filter
         """
         self.ServiceId = None

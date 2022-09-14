@@ -4216,21 +4216,29 @@ class DescribeBinlogBackupOverviewResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param BinlogBackupVolume: 总的日志备份容量（单位为字节）。
+        :param BinlogBackupVolume: 总的日志备份容量，包含异地日志备份（单位为字节）。
         :type BinlogBackupVolume: int
-        :param BinlogBackupCount: 总的日志备份个数。
+        :param BinlogBackupCount: 总的日志备份个数，包含异地日志备份。
         :type BinlogBackupCount: int
+        :param RemoteBinlogVolume: 异地日志备份容量（单位为字节）。
+        :type RemoteBinlogVolume: int
+        :param RemoteBinlogCount: 异地日志备份个数。
+        :type RemoteBinlogCount: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.BinlogBackupVolume = None
         self.BinlogBackupCount = None
+        self.RemoteBinlogVolume = None
+        self.RemoteBinlogCount = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.BinlogBackupVolume = params.get("BinlogBackupVolume")
         self.BinlogBackupCount = params.get("BinlogBackupCount")
+        self.RemoteBinlogVolume = params.get("RemoteBinlogVolume")
+        self.RemoteBinlogCount = params.get("RemoteBinlogCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -5235,42 +5243,6 @@ class DescribeDBSwitchRecordsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class DescribeDBZoneConfigRequest(AbstractModel):
-    """DescribeDBZoneConfig请求参数结构体
-
-    """
-
-
-class DescribeDBZoneConfigResponse(AbstractModel):
-    """DescribeDBZoneConfig返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param TotalCount: 可售卖地域配置数量
-        :type TotalCount: int
-        :param Items: 可售卖地域配置详情
-        :type Items: list of RegionSellConf
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.TotalCount = None
-        self.Items = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.TotalCount = params.get("TotalCount")
-        if params.get("Items") is not None:
-            self.Items = []
-            for item in params.get("Items"):
-                obj = RegionSellConf()
-                obj._deserialize(item)
-                self.Items.append(obj)
-        self.RequestId = params.get("RequestId")
-
-
 class DescribeDataBackupOverviewRequest(AbstractModel):
     """DescribeDataBackupOverview请求参数结构体
 
@@ -5314,6 +5286,10 @@ class DescribeDataBackupOverviewResponse(AbstractModel):
         :type ManualBackupVolume: int
         :param ManualBackupCount: 当前地域的手动备份总个数。
         :type ManualBackupCount: int
+        :param RemoteBackupVolume: 当前地域异地备份总容量。
+        :type RemoteBackupVolume: int
+        :param RemoteBackupCount: 当前地域异地备份总个数。
+        :type RemoteBackupCount: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5323,6 +5299,8 @@ class DescribeDataBackupOverviewResponse(AbstractModel):
         self.AutoBackupCount = None
         self.ManualBackupVolume = None
         self.ManualBackupCount = None
+        self.RemoteBackupVolume = None
+        self.RemoteBackupCount = None
         self.RequestId = None
 
 
@@ -5333,6 +5311,8 @@ class DescribeDataBackupOverviewResponse(AbstractModel):
         self.AutoBackupCount = params.get("AutoBackupCount")
         self.ManualBackupVolume = params.get("ManualBackupVolume")
         self.ManualBackupCount = params.get("ManualBackupCount")
+        self.RemoteBackupVolume = params.get("RemoteBackupVolume")
+        self.RemoteBackupCount = params.get("RemoteBackupCount")
         self.RequestId = params.get("RequestId")
 
 
@@ -10413,51 +10393,6 @@ class RWInstanceInfo(AbstractModel):
     """
 
 
-class RegionSellConf(AbstractModel):
-    """地域售卖配置
-
-    """
-
-    def __init__(self):
-        r"""
-        :param RegionName: 地域中文名称
-        :type RegionName: str
-        :param Area: 所属大区
-        :type Area: str
-        :param IsDefaultRegion: 是否为默认地域
-        :type IsDefaultRegion: int
-        :param Region: 地域名称
-        :type Region: str
-        :param ZonesConf: 可用区售卖配置
-        :type ZonesConf: list of ZoneSellConf
-        """
-        self.RegionName = None
-        self.Area = None
-        self.IsDefaultRegion = None
-        self.Region = None
-        self.ZonesConf = None
-
-
-    def _deserialize(self, params):
-        self.RegionName = params.get("RegionName")
-        self.Area = params.get("Area")
-        self.IsDefaultRegion = params.get("IsDefaultRegion")
-        self.Region = params.get("Region")
-        if params.get("ZonesConf") is not None:
-            self.ZonesConf = []
-            for item in params.get("ZonesConf"):
-                obj = ZoneSellConf()
-                obj._deserialize(item)
-                self.ZonesConf.append(obj)
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class ReleaseIsolatedDBInstancesRequest(AbstractModel):
     """ReleaseIsolatedDBInstances请求参数结构体
 
@@ -11349,134 +11284,6 @@ class SecurityGroup(AbstractModel):
         self.SecurityGroupId = params.get("SecurityGroupId")
         self.SecurityGroupName = params.get("SecurityGroupName")
         self.SecurityGroupRemark = params.get("SecurityGroupRemark")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class SellConfig(AbstractModel):
-    """售卖配置详情
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Device: 设备类型（废弃）
-        :type Device: str
-        :param Type: 售卖规格描述（废弃）
-        :type Type: str
-        :param CdbType: 实例类型（废弃）
-        :type CdbType: str
-        :param Memory: 内存大小，单位为MB
-        :type Memory: int
-        :param Cpu: CPU核心数
-        :type Cpu: int
-        :param VolumeMin: 磁盘最小规格，单位为GB
-        :type VolumeMin: int
-        :param VolumeMax: 磁盘最大规格，单位为GB
-        :type VolumeMax: int
-        :param VolumeStep: 磁盘步长，单位为GB
-        :type VolumeStep: int
-        :param Connection: 链接数
-        :type Connection: int
-        :param Qps: 每秒查询数量
-        :type Qps: int
-        :param Iops: 每秒IO数量
-        :type Iops: int
-        :param Info: 应用场景描述
-        :type Info: str
-        :param Status: 状态值，0 表示该规格对外售卖
-        :type Status: int
-        :param Tag: 标签值（废弃）
-        :type Tag: int
-        :param DeviceType: 实例类型，可能的取值范围有：UNIVERSAL (通用型), EXCLUSIVE (独享型), BASIC (基础型)
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DeviceType: str
-        :param DeviceTypeName: 实例类型描述，可能的取值范围有：通用型， 独享型， 基础型
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DeviceTypeName: str
-        :param EngineType: 引擎类型描述，可能的取值范围有：Innodb，RocksDB
-注意：此字段可能返回 null，表示取不到有效值。
-        :type EngineType: str
-        """
-        self.Device = None
-        self.Type = None
-        self.CdbType = None
-        self.Memory = None
-        self.Cpu = None
-        self.VolumeMin = None
-        self.VolumeMax = None
-        self.VolumeStep = None
-        self.Connection = None
-        self.Qps = None
-        self.Iops = None
-        self.Info = None
-        self.Status = None
-        self.Tag = None
-        self.DeviceType = None
-        self.DeviceTypeName = None
-        self.EngineType = None
-
-
-    def _deserialize(self, params):
-        self.Device = params.get("Device")
-        self.Type = params.get("Type")
-        self.CdbType = params.get("CdbType")
-        self.Memory = params.get("Memory")
-        self.Cpu = params.get("Cpu")
-        self.VolumeMin = params.get("VolumeMin")
-        self.VolumeMax = params.get("VolumeMax")
-        self.VolumeStep = params.get("VolumeStep")
-        self.Connection = params.get("Connection")
-        self.Qps = params.get("Qps")
-        self.Iops = params.get("Iops")
-        self.Info = params.get("Info")
-        self.Status = params.get("Status")
-        self.Tag = params.get("Tag")
-        self.DeviceType = params.get("DeviceType")
-        self.DeviceTypeName = params.get("DeviceTypeName")
-        self.EngineType = params.get("EngineType")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class SellType(AbstractModel):
-    """售卖实例类型
-
-    """
-
-    def __init__(self):
-        r"""
-        :param TypeName: 售卖实例名称
-        :type TypeName: str
-        :param EngineVersion: 内核版本号
-        :type EngineVersion: list of str
-        :param Configs: 售卖规格详细配置
-        :type Configs: list of SellConfig
-        """
-        self.TypeName = None
-        self.EngineVersion = None
-        self.Configs = None
-
-
-    def _deserialize(self, params):
-        self.TypeName = params.get("TypeName")
-        self.EngineVersion = params.get("EngineVersion")
-        if params.get("Configs") is not None:
-            self.Configs = []
-            for item in params.get("Configs"):
-                obj = SellConfig()
-                obj._deserialize(item)
-                self.Configs.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -12855,114 +12662,6 @@ class ZoneConf(AbstractModel):
         self.MasterZone = params.get("MasterZone")
         self.SlaveZone = params.get("SlaveZone")
         self.BackupZone = params.get("BackupZone")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ZoneSellConf(AbstractModel):
-    """可用区售卖配置
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Status: 可用区状态。可能的返回值为：1-上线；3-停售；4-不展示
-        :type Status: int
-        :param ZoneName: 可用区中文名称
-        :type ZoneName: str
-        :param IsCustom: 实例类型是否为自定义类型
-        :type IsCustom: bool
-        :param IsSupportDr: 是否支持灾备
-        :type IsSupportDr: bool
-        :param IsSupportVpc: 是否支持私有网络
-        :type IsSupportVpc: bool
-        :param HourInstanceSaleMaxNum: 小时计费实例最大售卖数量
-        :type HourInstanceSaleMaxNum: int
-        :param IsDefaultZone: 是否为默认可用区
-        :type IsDefaultZone: bool
-        :param IsBm: 是否为黑石区
-        :type IsBm: bool
-        :param PayType: 支持的付费类型。可能的返回值为：0-包年包月；1-小时计费；2-后付费
-        :type PayType: list of str
-        :param ProtectMode: 数据复制类型。0-异步复制；1-半同步复制；2-强同步复制
-        :type ProtectMode: list of str
-        :param Zone: 可用区名称
-        :type Zone: str
-        :param SellType: 售卖实例类型数组
-        :type SellType: list of SellType
-        :param ZoneConf: 多可用区信息
-        :type ZoneConf: :class:`tencentcloud.cdb.v20170320.models.ZoneConf`
-        :param DrZone: 可支持的灾备可用区信息
-        :type DrZone: list of str
-        :param IsSupportRemoteRo: 是否支持跨可用区只读
-        :type IsSupportRemoteRo: bool
-        :param RemoteRoZone: 可支持的跨可用区只读区信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type RemoteRoZone: list of str
-        :param ExClusterStatus: 独享型可用区状态。可能的返回值为：1-上线；3-停售；4-不展示
-        :type ExClusterStatus: int
-        :param ExClusterRemoteRoZone: 独享型可支持的跨可用区只读区信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ExClusterRemoteRoZone: list of str
-        :param ExClusterZoneConf: 独享型多可用区信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ExClusterZoneConf: :class:`tencentcloud.cdb.v20170320.models.ZoneConf`
-        """
-        self.Status = None
-        self.ZoneName = None
-        self.IsCustom = None
-        self.IsSupportDr = None
-        self.IsSupportVpc = None
-        self.HourInstanceSaleMaxNum = None
-        self.IsDefaultZone = None
-        self.IsBm = None
-        self.PayType = None
-        self.ProtectMode = None
-        self.Zone = None
-        self.SellType = None
-        self.ZoneConf = None
-        self.DrZone = None
-        self.IsSupportRemoteRo = None
-        self.RemoteRoZone = None
-        self.ExClusterStatus = None
-        self.ExClusterRemoteRoZone = None
-        self.ExClusterZoneConf = None
-
-
-    def _deserialize(self, params):
-        self.Status = params.get("Status")
-        self.ZoneName = params.get("ZoneName")
-        self.IsCustom = params.get("IsCustom")
-        self.IsSupportDr = params.get("IsSupportDr")
-        self.IsSupportVpc = params.get("IsSupportVpc")
-        self.HourInstanceSaleMaxNum = params.get("HourInstanceSaleMaxNum")
-        self.IsDefaultZone = params.get("IsDefaultZone")
-        self.IsBm = params.get("IsBm")
-        self.PayType = params.get("PayType")
-        self.ProtectMode = params.get("ProtectMode")
-        self.Zone = params.get("Zone")
-        if params.get("SellType") is not None:
-            self.SellType = []
-            for item in params.get("SellType"):
-                obj = SellType()
-                obj._deserialize(item)
-                self.SellType.append(obj)
-        if params.get("ZoneConf") is not None:
-            self.ZoneConf = ZoneConf()
-            self.ZoneConf._deserialize(params.get("ZoneConf"))
-        self.DrZone = params.get("DrZone")
-        self.IsSupportRemoteRo = params.get("IsSupportRemoteRo")
-        self.RemoteRoZone = params.get("RemoteRoZone")
-        self.ExClusterStatus = params.get("ExClusterStatus")
-        self.ExClusterRemoteRoZone = params.get("ExClusterRemoteRoZone")
-        if params.get("ExClusterZoneConf") is not None:
-            self.ExClusterZoneConf = ZoneConf()
-            self.ExClusterZoneConf._deserialize(params.get("ExClusterZoneConf"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

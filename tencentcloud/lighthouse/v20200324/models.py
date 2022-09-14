@@ -272,6 +272,13 @@ class Blueprint(AbstractModel):
         :param ImageId: CVM镜像共享到轻量应用服务器轻量应用服务器后的CVM镜像ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ImageId: str
+        :param CommunityUrl: 官方网站Url。
+        :type CommunityUrl: str
+        :param GuideUrl: 指导文章Url。
+        :type GuideUrl: str
+        :param SceneIdSet: 镜像关联使用场景Id列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SceneIdSet: list of str
         """
         self.BlueprintId = None
         self.DisplayTitle = None
@@ -289,6 +296,9 @@ class Blueprint(AbstractModel):
         self.SupportAutomationTools = None
         self.RequiredMemorySize = None
         self.ImageId = None
+        self.CommunityUrl = None
+        self.GuideUrl = None
+        self.SceneIdSet = None
 
 
     def _deserialize(self, params):
@@ -308,6 +318,9 @@ class Blueprint(AbstractModel):
         self.SupportAutomationTools = params.get("SupportAutomationTools")
         self.RequiredMemorySize = params.get("RequiredMemorySize")
         self.ImageId = params.get("ImageId")
+        self.CommunityUrl = params.get("CommunityUrl")
+        self.GuideUrl = params.get("GuideUrl")
+        self.SceneIdSet = params.get("SceneIdSet")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1192,6 +1205,9 @@ class DescribeBlueprintsRequest(AbstractModel):
 类型：String
 必选：否
 <li>blueprint-state</li>按照【镜像状态】进行过滤。
+类型：String
+必选：否
+<li>scene-id</li>按照【使用场景Id】进行过滤。
 类型：String
 必选：否
 

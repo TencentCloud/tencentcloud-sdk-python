@@ -17506,6 +17506,9 @@ class NatGateway(AbstractModel):
         :param ExclusiveGatewayBandwidth: 独享型NAT所在的网关集群的带宽(单位:Mbps)，当IsExclusive为false时无此字段。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExclusiveGatewayBandwidth: int
+        :param RestrictState: NAT网关是否被封禁。“NORMAL”：未被封禁，“RESTRICTED”：已被封禁。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RestrictState: str
         """
         self.NatGatewayId = None
         self.NatGatewayName = None
@@ -17525,6 +17528,7 @@ class NatGateway(AbstractModel):
         self.SourceIpTranslationNatRuleSet = None
         self.IsExclusive = None
         self.ExclusiveGatewayBandwidth = None
+        self.RestrictState = None
 
 
     def _deserialize(self, params):
@@ -17566,6 +17570,7 @@ class NatGateway(AbstractModel):
                 self.SourceIpTranslationNatRuleSet.append(obj)
         self.IsExclusive = params.get("IsExclusive")
         self.ExclusiveGatewayBandwidth = params.get("ExclusiveGatewayBandwidth")
+        self.RestrictState = params.get("RestrictState")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -19568,7 +19573,6 @@ EIP：云服务器的公网IP；
 LOCAL_GATEWAY：本地网关。
         :type GatewayType: str
         :param GatewayId: 下一跳地址，这里只需要指定不同下一跳类型的网关ID，系统会自动匹配到下一跳地址。
-特别注意：当 GatewayType 为 EIP 时，GatewayId 固定值 '0'
         :type GatewayId: str
         :param RouteId: 路由策略ID。IPv4路由策略ID是有意义的值，IPv6路由策略是无意义的值0。后续建议完全使用字符串唯一ID `RouteItemId`操作路由策略。
 该字段在删除时必填，其他字段无需填写。

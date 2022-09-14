@@ -7013,6 +7013,64 @@ class DescribeTopClientIpSumInfoListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeTranscodeTaskNumRequest(AbstractModel):
+    """DescribeTranscodeTaskNum请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param StartTime: 起始时间，格式：yyyy-mm-dd HH:MM:SS。
+        :type StartTime: str
+        :param EndTime: 结束时间，格式：yyyy-mm-dd HH:MM:SS。
+        :type EndTime: str
+        :param PushDomains: 推流域名列表，不填表示总体数据。
+        :type PushDomains: list of str
+        """
+        self.StartTime = None
+        self.EndTime = None
+        self.PushDomains = None
+
+
+    def _deserialize(self, params):
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.PushDomains = params.get("PushDomains")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTranscodeTaskNumResponse(AbstractModel):
+    """DescribeTranscodeTaskNum返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DataInfoList: 任务数列表。
+        :type DataInfoList: list of TranscodeTaskNum
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.DataInfoList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("DataInfoList") is not None:
+            self.DataInfoList = []
+            for item in params.get("DataInfoList"):
+                obj = TranscodeTaskNum()
+                obj._deserialize(item)
+                self.DataInfoList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeUploadStreamNumsRequest(AbstractModel):
     """DescribeUploadStreamNums请求参数结构体
 
@@ -11008,6 +11066,38 @@ topspeed_H265：极速高清-H265。
         self.Type = params.get("Type")
         self.PushDomain = params.get("PushDomain")
         self.Resolution = params.get("Resolution")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TranscodeTaskNum(AbstractModel):
+    """转码任务数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Time: 时间点。
+        :type Time: str
+        :param CodeRate: 码率。
+        :type CodeRate: int
+        :param Num: 任务数。
+        :type Num: int
+        """
+        self.Time = None
+        self.CodeRate = None
+        self.Num = None
+
+
+    def _deserialize(self, params):
+        self.Time = params.get("Time")
+        self.CodeRate = params.get("CodeRate")
+        self.Num = params.get("Num")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

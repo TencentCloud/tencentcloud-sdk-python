@@ -5772,6 +5772,9 @@ class TaskResponseInfo(AbstractModel):
         :param TotalTime: 任务耗时，单位： ms
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalTime: int
+        :param CmdArgs: spark app job执行task的程序入口参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CmdArgs: str
         """
         self.DatabaseName = None
         self.DataAmount = None
@@ -5804,6 +5807,7 @@ class TaskResponseInfo(AbstractModel):
         self.SparkJobFile = None
         self.UiUrl = None
         self.TotalTime = None
+        self.CmdArgs = None
 
 
     def _deserialize(self, params):
@@ -5838,6 +5842,7 @@ class TaskResponseInfo(AbstractModel):
         self.SparkJobFile = params.get("SparkJobFile")
         self.UiUrl = params.get("UiUrl")
         self.TotalTime = params.get("TotalTime")
+        self.CmdArgs = params.get("CmdArgs")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -2138,14 +2138,17 @@ class RecordParams(AbstractModel):
         :type StreamType: int
         :param SubscribeStreamUserIds: 指定订阅流白名单或者黑名单。
         :type SubscribeStreamUserIds: :class:`tencentcloud.trtc.v20190722.models.SubscribeStreamUserIds`
-        :param OutputFormat: 输出文件的格式，上传到云点播时此参数无效。0：(默认)输出文件为hls格式。1：输出文件格式为hls+mp4（hls录制完成后转mp4文件）
+        :param OutputFormat: 输出文件的格式，上传到云点播时此参数无效，存储到云点播时请关注TencentVod内的MediaType参数。0：(默认)输出文件为hls格式。1：输出文件格式为hls+mp4（hls录制完成后转mp4文件）。
         :type OutputFormat: int
+        :param AvMerge: 单流录制模式下，用户的音视频是否合并，0：单流音视频不合并（默认）。1：单流音视频合并成一个ts。混流录制此参数无需设置，默认音视频合并。
+        :type AvMerge: int
         """
         self.RecordMode = None
         self.MaxIdleTime = None
         self.StreamType = None
         self.SubscribeStreamUserIds = None
         self.OutputFormat = None
+        self.AvMerge = None
 
 
     def _deserialize(self, params):
@@ -2156,6 +2159,7 @@ class RecordParams(AbstractModel):
             self.SubscribeStreamUserIds = SubscribeStreamUserIds()
             self.SubscribeStreamUserIds._deserialize(params.get("SubscribeStreamUserIds"))
         self.OutputFormat = params.get("OutputFormat")
+        self.AvMerge = params.get("AvMerge")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2905,6 +2909,8 @@ class TencentVod(AbstractModel):
         :type SessionContext: str
         :param SourceContext: 上传上下文，上传完成回调时透传。
         :type SourceContext: str
+        :param MediaType: 上传到vod平台的录制文件格式类型，0：mp4(默认), 1: hls。
+        :type MediaType: int
         """
         self.Procedure = None
         self.ExpireTime = None
@@ -2913,6 +2919,7 @@ class TencentVod(AbstractModel):
         self.SubAppId = None
         self.SessionContext = None
         self.SourceContext = None
+        self.MediaType = None
 
 
     def _deserialize(self, params):
@@ -2923,6 +2930,7 @@ class TencentVod(AbstractModel):
         self.SubAppId = params.get("SubAppId")
         self.SessionContext = params.get("SessionContext")
         self.SourceContext = params.get("SourceContext")
+        self.MediaType = params.get("MediaType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

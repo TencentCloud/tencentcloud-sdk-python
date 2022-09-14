@@ -1869,7 +1869,7 @@ class ApplyOpenBankSubMerchantSignOnlineResult(AbstractModel):
         :param SignStatus: 处理状态
   SUCCESS：签约成功
   FAILED：签约失败
-  PROCESSING“签约中
+  PROCESSING：签约中
         :type SignStatus: str
         :param SignMessage: 上传返回描述，例如失败原因等
 注意：此字段可能返回 null，表示取不到有效值。
@@ -22194,7 +22194,7 @@ class QueryOpenBankSubMerchantSignOnlineResult(AbstractModel):
         :param SignStatus: 处理状态
   SUCCESS：签约成功
   FAILED：签约失败
-  PROCESSING“签约中
+  PROCESSING：签约中
         :type SignStatus: str
         :param SignMessage: 上传返回描述，例如失败原因等
 注意：此字段可能返回 null，表示取不到有效值。

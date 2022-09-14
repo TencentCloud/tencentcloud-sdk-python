@@ -378,17 +378,17 @@ class BackupFileInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param SnapshotId: 快照文件ID，用于回滚
+        :param SnapshotId: 快照文件ID，已废弃，请使用BackupId
         :type SnapshotId: int
-        :param FileName: 快照文件名
+        :param FileName: 备份文件名
         :type FileName: str
-        :param FileSize: 快照文件大小
+        :param FileSize: 备份文件大小
         :type FileSize: int
-        :param StartTime: 快照备份开始时间
+        :param StartTime: 备份开始时间
         :type StartTime: str
-        :param FinishTime: 快照备份完成时间
+        :param FinishTime: 备份完成时间
         :type FinishTime: str
-        :param BackupType: 备份类型：snapshot，快照备份；timepoint，时间点备份
+        :param BackupType: 备份类型：snapshot，快照备份；logic，逻辑备份
         :type BackupType: str
         :param BackupMethod: 备份方式：auto，自动备份；manual，手动备份
         :type BackupMethod: str
@@ -396,6 +396,15 @@ class BackupFileInfo(AbstractModel):
         :type BackupStatus: str
         :param SnapshotTime: 备份文件时间
         :type SnapshotTime: str
+        :param BackupId: 备份ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BackupId: int
+        :param SnapShotType: 快照类型，可选值：full，全量；increment，增量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SnapShotType: str
+        :param BackupName: 备份文件备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BackupName: str
         """
         self.SnapshotId = None
         self.FileName = None
@@ -406,6 +415,9 @@ class BackupFileInfo(AbstractModel):
         self.BackupMethod = None
         self.BackupStatus = None
         self.SnapshotTime = None
+        self.BackupId = None
+        self.SnapShotType = None
+        self.BackupName = None
 
 
     def _deserialize(self, params):
@@ -418,6 +430,9 @@ class BackupFileInfo(AbstractModel):
         self.BackupMethod = params.get("BackupMethod")
         self.BackupStatus = params.get("BackupStatus")
         self.SnapshotTime = params.get("SnapshotTime")
+        self.BackupId = params.get("BackupId")
+        self.SnapShotType = params.get("SnapShotType")
+        self.BackupName = params.get("BackupName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2058,18 +2073,42 @@ class DescribeBackupListRequest(AbstractModel):
         r"""
         :param ClusterId: 集群ID
         :type ClusterId: str
-        :param Limit: 备份文件列表偏移
+        :param Limit: 备份文件列表大小，取值范围(0,100]
         :type Limit: int
-        :param Offset: 备份文件列表起始
+        :param Offset: 备份文件列表偏移，取值范围[0,INF)
         :type Offset: int
         :param DbType: 数据库类型，取值范围: 
 <li> MYSQL </li>
         :type DbType: str
+        :param BackupIds: 备份ID
+        :type BackupIds: list of int
+        :param BackupType: 备份类型，可选值：snapshot，快照备份； logic，逻辑备份
+        :type BackupType: str
+        :param BackupMethod: 备份方式，可选值：auto，自动备份；manual，手动备
+        :type BackupMethod: str
+        :param SnapShotType: 快照类型，可选值：full，全量；increment，增量
+        :type SnapShotType: str
+        :param StartTime: 备份开始时间
+        :type StartTime: str
+        :param EndTime: 备份结束时间
+        :type EndTime: str
+        :param FileNames: 备份文件名，模糊查询
+        :type FileNames: list of str
+        :param BackupNames: 备份备注名，模糊查询
+        :type BackupNames: list of str
         """
         self.ClusterId = None
         self.Limit = None
         self.Offset = None
         self.DbType = None
+        self.BackupIds = None
+        self.BackupType = None
+        self.BackupMethod = None
+        self.SnapShotType = None
+        self.StartTime = None
+        self.EndTime = None
+        self.FileNames = None
+        self.BackupNames = None
 
 
     def _deserialize(self, params):
@@ -2077,6 +2116,14 @@ class DescribeBackupListRequest(AbstractModel):
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
         self.DbType = params.get("DbType")
+        self.BackupIds = params.get("BackupIds")
+        self.BackupType = params.get("BackupType")
+        self.BackupMethod = params.get("BackupMethod")
+        self.SnapShotType = params.get("SnapShotType")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        self.FileNames = params.get("FileNames")
+        self.BackupNames = params.get("BackupNames")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
