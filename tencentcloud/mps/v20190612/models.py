@@ -7163,12 +7163,16 @@ class EditMediaOutputConfig(AbstractModel):
         r"""
         :param Container: 封装格式，可选值：mp4、hls、mov、flv、avi。默认是 mp4。
         :type Container: str
+        :param Type: 剪辑模式，可选值 normal、fast。默认是精确剪辑 normal
+        :type Type: str
         """
         self.Container = None
+        self.Type = None
 
 
     def _deserialize(self, params):
         self.Container = params.get("Container")
+        self.Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

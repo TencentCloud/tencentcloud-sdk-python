@@ -1161,7 +1161,7 @@ class Condition(AbstractModel):
         :param CalcValue: 检测值
 注意：此字段可能返回 null，表示取不到有效值。
         :type CalcValue: str
-        :param ContinueTime: 持续时间
+        :param ContinueTime: 持续时间，单位秒
 注意：此字段可能返回 null，表示取不到有效值。
         :type ContinueTime: str
         :param MetricID: 指标ID
@@ -1174,6 +1174,13 @@ class Condition(AbstractModel):
         :type RuleID: int
         :param Unit: 指标单位
         :type Unit: str
+        :param IsAdvanced: 是否为高级指标，0：否；1：是
+        :type IsAdvanced: int
+        :param IsOpen: 是否开通高级指标，0：否；1：是
+        :type IsOpen: int
+        :param ProductId: 产品ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductId: str
         """
         self.AlarmNotifyPeriod = None
         self.AlarmNotifyType = None
@@ -1185,6 +1192,9 @@ class Condition(AbstractModel):
         self.Period = None
         self.RuleID = None
         self.Unit = None
+        self.IsAdvanced = None
+        self.IsOpen = None
+        self.ProductId = None
 
 
     def _deserialize(self, params):
@@ -1198,6 +1208,9 @@ class Condition(AbstractModel):
         self.Period = params.get("Period")
         self.RuleID = params.get("RuleID")
         self.Unit = params.get("Unit")
+        self.IsAdvanced = params.get("IsAdvanced")
+        self.IsOpen = params.get("IsOpen")
+        self.ProductId = params.get("ProductId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4454,6 +4467,8 @@ class DescribeConditionsTemplateListRequest(AbstractModel):
         :type Offset: int
         :param UpdateTimeOrder: 指定按更新时间的排序方式，asc=升序, desc=降序
         :type UpdateTimeOrder: str
+        :param PolicyCountOrder: 指定按绑定策略数目的排序方式，asc=升序, desc=降序
+        :type PolicyCountOrder: str
         """
         self.Module = None
         self.ViewName = None
@@ -4462,6 +4477,7 @@ class DescribeConditionsTemplateListRequest(AbstractModel):
         self.Limit = None
         self.Offset = None
         self.UpdateTimeOrder = None
+        self.PolicyCountOrder = None
 
 
     def _deserialize(self, params):
@@ -4472,6 +4488,7 @@ class DescribeConditionsTemplateListRequest(AbstractModel):
         self.Limit = params.get("Limit")
         self.Offset = params.get("Offset")
         self.UpdateTimeOrder = params.get("UpdateTimeOrder")
+        self.PolicyCountOrder = params.get("PolicyCountOrder")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

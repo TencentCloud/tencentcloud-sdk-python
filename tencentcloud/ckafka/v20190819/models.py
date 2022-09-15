@@ -1997,7 +1997,7 @@ class CreateInstancePreRequest(AbstractModel):
         r"""
         :param InstanceName: 实例名称，是一个不超过 64 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)
         :type InstanceName: str
-        :param ZoneId: 可用区
+        :param ZoneId: 可用区，购买多可用区实例时，填写ZoneIds.N字段中的任意一个值
         :type ZoneId: int
         :param Period: 预付费购买时长，例如 "1m",就是一个月
         :type Period: str
@@ -2030,7 +2030,7 @@ class CreateInstancePreRequest(AbstractModel):
         :type DiskType: str
         :param MultiZoneFlag: 跨可用区，zoneIds必填
         :type MultiZoneFlag: bool
-        :param ZoneIds: 可用区列表
+        :param ZoneIds: 可用区列表，购买多可用区实例时为必填项
         :type ZoneIds: list of int
         """
         self.InstanceName = None

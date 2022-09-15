@@ -567,6 +567,14 @@ class AddSpartaProtectionRequest(AbstractModel):
         :type Anycast: int
         :param Weights: src权重
         :type Weights: list of int
+        :param ActiveCheck: 是否开启主动健康检测，1表示开启，0表示不开启
+        :type ActiveCheck: int
+        :param TLSVersion: TLS版本信息
+        :type TLSVersion: int
+        :param Ciphers: 加密套件信息
+        :type Ciphers: list of int
+        :param CipherTemplate: 0:不支持选择：默认模版  1:通用型模版 2:安全型模版 3:自定义模版
+        :type CipherTemplate: int
         """
         self.Domain = None
         self.CertType = None
@@ -592,6 +600,10 @@ class AddSpartaProtectionRequest(AbstractModel):
         self.InstanceID = None
         self.Anycast = None
         self.Weights = None
+        self.ActiveCheck = None
+        self.TLSVersion = None
+        self.Ciphers = None
+        self.CipherTemplate = None
 
 
     def _deserialize(self, params):
@@ -624,6 +636,10 @@ class AddSpartaProtectionRequest(AbstractModel):
         self.InstanceID = params.get("InstanceID")
         self.Anycast = params.get("Anycast")
         self.Weights = params.get("Weights")
+        self.ActiveCheck = params.get("ActiveCheck")
+        self.TLSVersion = params.get("TLSVersion")
+        self.Ciphers = params.get("Ciphers")
+        self.CipherTemplate = params.get("CipherTemplate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1152,16 +1168,20 @@ class DeleteIpAccessControlRequest(AbstractModel):
         :type Items: list of str
         :param DeleteAll: 删除对应的域名下的所有黑/白IP名额单
         :type DeleteAll: bool
+        :param SourceType: 是否为多域名黑白名单
+        :type SourceType: str
         """
         self.Domain = None
         self.Items = None
         self.DeleteAll = None
+        self.SourceType = None
 
 
     def _deserialize(self, params):
         self.Domain = params.get("Domain")
         self.Items = params.get("Items")
         self.DeleteAll = params.get("DeleteAll")
+        self.SourceType = params.get("SourceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2482,6 +2502,9 @@ class InstanceInfo(AbstractModel):
         :param BotQPS: bot的qps详情
 注意：此字段可能返回 null，表示取不到有效值。
         :type BotQPS: :class:`tencentcloud.waf.v20180125.models.BotQPS`
+        :param ElasticBilling: qps弹性计费上限
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ElasticBilling: int
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -2505,6 +2528,7 @@ class InstanceInfo(AbstractModel):
         self.FraudPkg = None
         self.BotPkg = None
         self.BotQPS = None
+        self.ElasticBilling = None
 
 
     def _deserialize(self, params):
@@ -2540,6 +2564,7 @@ class InstanceInfo(AbstractModel):
         if params.get("BotQPS") is not None:
             self.BotQPS = BotQPS()
             self.BotQPS._deserialize(params.get("BotQPS"))
+        self.ElasticBilling = params.get("ElasticBilling")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3402,16 +3427,20 @@ class UpsertIpAccessControlRequest(AbstractModel):
         :type Items: list of str
         :param Edition: clb-waf或者sparta-waf
         :type Edition: str
+        :param SourceType: 是否为多域名黑白名单
+        :type SourceType: str
         """
         self.Domain = None
         self.Items = None
         self.Edition = None
+        self.SourceType = None
 
 
     def _deserialize(self, params):
         self.Domain = params.get("Domain")
         self.Items = params.get("Items")
         self.Edition = params.get("Edition")
+        self.SourceType = params.get("SourceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

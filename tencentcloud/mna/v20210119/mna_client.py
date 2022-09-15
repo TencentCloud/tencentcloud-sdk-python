@@ -229,6 +229,35 @@ class MnaClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def GetFlowStatistic(self, request):
+        """获取指定设备Id，指定时间点数据流量使用情况
+
+        :param request: Request instance for GetFlowStatistic.
+        :type request: :class:`tencentcloud.mna.v20210119.models.GetFlowStatisticRequest`
+        :rtype: :class:`tencentcloud.mna.v20210119.models.GetFlowStatisticResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetFlowStatistic", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.GetFlowStatisticResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def GetStatisticData(self, request):
         """在用量统计页面下载流量数据
 

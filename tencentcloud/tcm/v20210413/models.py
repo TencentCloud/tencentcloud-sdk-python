@@ -186,16 +186,20 @@ class CLS(AbstractModel):
         :type LogSet: str
         :param Topic: 日志主题
         :type Topic: str
+        :param NeedDelete: 是否删除
+        :type NeedDelete: bool
         """
         self.Enable = None
         self.LogSet = None
         self.Topic = None
+        self.NeedDelete = None
 
 
     def _deserialize(self, params):
         self.Enable = params.get("Enable")
         self.LogSet = params.get("LogSet")
         self.Topic = params.get("Topic")
+        self.NeedDelete = params.get("NeedDelete")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -916,10 +920,22 @@ class IstioConfig(AbstractModel):
         :param DisablePolicyChecks: 禁用策略检查功能
 注意：此字段可能返回 null，表示取不到有效值。
         :type DisablePolicyChecks: bool
+        :param EnablePilotHTTP: 支持HTTP1.0协议
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnablePilotHTTP: bool
+        :param DisableHTTPRetry: 禁用HTTP重试策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DisableHTTPRetry: bool
+        :param SmartDNS: SmartDNS策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SmartDNS: :class:`tencentcloud.tcm.v20210413.models.SmartDNSConfig`
         """
         self.OutboundTrafficPolicy = None
         self.Tracing = None
         self.DisablePolicyChecks = None
+        self.EnablePilotHTTP = None
+        self.DisableHTTPRetry = None
+        self.SmartDNS = None
 
 
     def _deserialize(self, params):
@@ -928,6 +944,11 @@ class IstioConfig(AbstractModel):
             self.Tracing = TracingConfig()
             self.Tracing._deserialize(params.get("Tracing"))
         self.DisablePolicyChecks = params.get("DisablePolicyChecks")
+        self.EnablePilotHTTP = params.get("EnablePilotHTTP")
+        self.DisableHTTPRetry = params.get("DisableHTTPRetry")
+        if params.get("SmartDNS") is not None:
+            self.SmartDNS = SmartDNSConfig()
+            self.SmartDNS._deserialize(params.get("SmartDNS"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1631,6 +1652,36 @@ class Service(AbstractModel):
         self.Type = params.get("Type")
         self.CLBDirectAccess = params.get("CLBDirectAccess")
         self.ExternalTrafficPolicy = params.get("ExternalTrafficPolicy")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SmartDNSConfig(AbstractModel):
+    """智能DNS配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param IstioMetaDNSCapture: 开启DNS代理
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IstioMetaDNSCapture: bool
+        :param IstioMetaDNSAutoAllocate: 开启自动地址分配
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IstioMetaDNSAutoAllocate: bool
+        """
+        self.IstioMetaDNSCapture = None
+        self.IstioMetaDNSAutoAllocate = None
+
+
+    def _deserialize(self, params):
+        self.IstioMetaDNSCapture = params.get("IstioMetaDNSCapture")
+        self.IstioMetaDNSAutoAllocate = params.get("IstioMetaDNSAutoAllocate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

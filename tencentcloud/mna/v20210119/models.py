@@ -797,6 +797,84 @@ class GetDevicesResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class GetFlowStatisticRequest(AbstractModel):
+    """GetFlowStatistic请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DeviceId: 设备ID，ID="-1"时默认查找所有设备
+        :type DeviceId: str
+        :param BeginTime: 开始查找时间
+        :type BeginTime: int
+        :param EndTime: 截止时间
+        :type EndTime: int
+        :param Type: 流量种类（1：上行流量，2：下行流量）
+        :type Type: int
+        :param TimeGranularity: 时间粒度（1：按小时统计，2：按天统计）
+        :type TimeGranularity: int
+        """
+        self.DeviceId = None
+        self.BeginTime = None
+        self.EndTime = None
+        self.Type = None
+        self.TimeGranularity = None
+
+
+    def _deserialize(self, params):
+        self.DeviceId = params.get("DeviceId")
+        self.BeginTime = params.get("BeginTime")
+        self.EndTime = params.get("EndTime")
+        self.Type = params.get("Type")
+        self.TimeGranularity = params.get("TimeGranularity")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetFlowStatisticResponse(AbstractModel):
+    """GetFlowStatistic返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param NetDetails: 流量详细信息
+        :type NetDetails: list of NetDetails
+        :param MaxValue: 查找时间段流量使用最大值（单位：bit）
+        :type MaxValue: float
+        :param AvgValue: 查找时间段流量使用平均值（单位：bit）
+        :type AvgValue: float
+        :param TotalValue: 查找时间段流量使用总量（单位：bit）
+        :type TotalValue: float
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.NetDetails = None
+        self.MaxValue = None
+        self.AvgValue = None
+        self.TotalValue = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("NetDetails") is not None:
+            self.NetDetails = []
+            for item in params.get("NetDetails"):
+                obj = NetDetails()
+                obj._deserialize(item)
+                self.NetDetails.append(obj)
+        self.MaxValue = params.get("MaxValue")
+        self.AvgValue = params.get("AvgValue")
+        self.TotalValue = params.get("TotalValue")
+        self.RequestId = params.get("RequestId")
+
+
 class GetStatisticDataRequest(AbstractModel):
     """GetStatisticData请求参数结构体
 
@@ -854,6 +932,34 @@ class GetStatisticDataResponse(AbstractModel):
     def _deserialize(self, params):
         self.FilePath = params.get("FilePath")
         self.RequestId = params.get("RequestId")
+
+
+class NetDetails(AbstractModel):
+    """网络详细信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Time: 时间点，单位：s
+        :type Time: str
+        :param Current: 流量值（bit）
+        :type Current: float
+        """
+        self.Time = None
+        self.Current = None
+
+
+    def _deserialize(self, params):
+        self.Time = params.get("Time")
+        self.Current = params.get("Current")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class NetworkData(AbstractModel):

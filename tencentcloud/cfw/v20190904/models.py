@@ -768,68 +768,6 @@ class CreateNatFwInstanceWithDomainResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class CreateSecurityGroupApiRulesRequest(AbstractModel):
-    """CreateSecurityGroupApiRules请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Data: 创建规则数据
-        :type Data: list of SecurityGroupApiRuleData
-        :param Direction: 方向，0：出站，1：入站
-        :type Direction: int
-        :param Type: 插入类型，0：后插，1：前插，2：中插
-        :type Type: int
-        :param Area: 腾讯云地域的英文简写
-        :type Area: str
-        """
-        self.Data = None
-        self.Direction = None
-        self.Type = None
-        self.Area = None
-
-
-    def _deserialize(self, params):
-        if params.get("Data") is not None:
-            self.Data = []
-            for item in params.get("Data"):
-                obj = SecurityGroupApiRuleData()
-                obj._deserialize(item)
-                self.Data.append(obj)
-        self.Direction = params.get("Direction")
-        self.Type = params.get("Type")
-        self.Area = params.get("Area")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class CreateSecurityGroupApiRulesResponse(AbstractModel):
-    """CreateSecurityGroupApiRules返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Status: 状态值，0:添加成功，非0：添加失败
-        :type Status: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.Status = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.Status = params.get("Status")
-        self.RequestId = params.get("RequestId")
-
-
 class CreateSecurityGroupRulesRequest(AbstractModel):
     """CreateSecurityGroupRules请求参数结构体
 
@@ -1347,80 +1285,6 @@ class DescribeAcListsResponse(AbstractModel):
                 self.Data.append(obj)
         self.AllTotal = params.get("AllTotal")
         self.Enable = params.get("Enable")
-        self.RequestId = params.get("RequestId")
-
-
-class DescribeAddrTemplateListRequest(AbstractModel):
-    """DescribeAddrTemplateList请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Offset: 偏移量，分页用
-        :type Offset: int
-        :param Limit: 条数，分页用
-        :type Limit: int
-        :param By: 排序字段，取值 'UpdateTime' | 'RulesNum'
-        :type By: str
-        :param Order: 排序，取值 'asc'|'desc'
-        :type Order: str
-        :param SearchValue: 搜索值
-        :type SearchValue: str
-        """
-        self.Offset = None
-        self.Limit = None
-        self.By = None
-        self.Order = None
-        self.SearchValue = None
-
-
-    def _deserialize(self, params):
-        self.Offset = params.get("Offset")
-        self.Limit = params.get("Limit")
-        self.By = params.get("By")
-        self.Order = params.get("Order")
-        self.SearchValue = params.get("SearchValue")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeAddrTemplateListResponse(AbstractModel):
-    """DescribeAddrTemplateList返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Total: 模板总数
-        :type Total: int
-        :param Data: 模板列表数据
-        :type Data: list of TemplateListInfo
-        :param NameList: 模板名称列表
-        :type NameList: list of str
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.Total = None
-        self.Data = None
-        self.NameList = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.Total = params.get("Total")
-        if params.get("Data") is not None:
-            self.Data = []
-            for item in params.get("Data"):
-                obj = TemplateListInfo()
-                obj._deserialize(item)
-                self.Data.append(obj)
-        self.NameList = params.get("NameList")
         self.RequestId = params.get("RequestId")
 
 
@@ -2665,51 +2529,6 @@ class DescribeSwitchListsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class DescribeSyncAssetStatusRequest(AbstractModel):
-    """DescribeSyncAssetStatus请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Type: 0: 互联网防火墙开关，1：vpc 防火墙开关
-        :type Type: int
-        """
-        self.Type = None
-
-
-    def _deserialize(self, params):
-        self.Type = params.get("Type")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeSyncAssetStatusResponse(AbstractModel):
-    """DescribeSyncAssetStatus返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Status: 1-更新中 2-更新完成 3、4-更新失败
-        :type Status: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.Status = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.Status = params.get("Status")
-        self.RequestId = params.get("RequestId")
-
-
 class DescribeTLogInfoRequest(AbstractModel):
     """DescribeTLogInfo请求参数结构体
 
@@ -3454,67 +3273,6 @@ class ModifyAllRuleStatusResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class ModifyAllSwitchStatusRequest(AbstractModel):
-    """ModifyAllSwitchStatus请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Status: 状态，0：关闭，1：开启
-        :type Status: int
-        :param Type: 0: 互联网边界防火墙开关，1：vpc防火墙开关
-        :type Type: int
-        :param Ids: 选中的防火墙开关Id
-        :type Ids: list of str
-        :param ChangeType: NAT开关切换类型，1,单个子网，2，同开同关，3，全部
-        :type ChangeType: int
-        :param Area: NAT实例所在地域
-        :type Area: str
-        """
-        self.Status = None
-        self.Type = None
-        self.Ids = None
-        self.ChangeType = None
-        self.Area = None
-
-
-    def _deserialize(self, params):
-        self.Status = params.get("Status")
-        self.Type = params.get("Type")
-        self.Ids = params.get("Ids")
-        self.ChangeType = params.get("ChangeType")
-        self.Area = params.get("Area")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ModifyAllSwitchStatusResponse(AbstractModel):
-    """ModifyAllSwitchStatus返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Status: 修改成功与否的状态值 0：修改成功，非 0：修改失败
-        :type Status: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.Status = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.Status = params.get("Status")
-        self.RequestId = params.get("RequestId")
-
-
 class ModifyAllVPCSwitchStatusRequest(AbstractModel):
     """ModifyAllVPCSwitchStatus请求参数结构体
 
@@ -3747,59 +3505,6 @@ class ModifyBlockTopResponse(AbstractModel):
 
 
     def _deserialize(self, params):
-        self.RequestId = params.get("RequestId")
-
-
-class ModifyItemSwitchStatusRequest(AbstractModel):
-    """ModifyItemSwitchStatus请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Id: id值
-        :type Id: int
-        :param Status: 状态值，0: 关闭 ,1:开启
-        :type Status: int
-        :param Type: 0: 互联网边界边界防火墙开关，1：vpc防火墙开关
-        :type Type: int
-        """
-        self.Id = None
-        self.Status = None
-        self.Type = None
-
-
-    def _deserialize(self, params):
-        self.Id = params.get("Id")
-        self.Status = params.get("Status")
-        self.Type = params.get("Type")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ModifyItemSwitchStatusResponse(AbstractModel):
-    """ModifyItemSwitchStatus返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Status: 修改成功与否状态值 0：修改成功，非 0：修改失败
-        :type Status: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.Status = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.Status = params.get("Status")
         self.RequestId = params.get("RequestId")
 
 
@@ -4099,64 +3804,6 @@ class ModifyRunSyncAssetResponse(AbstractModel):
     def __init__(self):
         r"""
         :param Status: 0：同步成功，1：资产更新中，2：后台同步调用失败
-        :type Status: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.Status = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.Status = params.get("Status")
-        self.RequestId = params.get("RequestId")
-
-
-class ModifySecurityGroupAllRuleStatusRequest(AbstractModel):
-    """ModifySecurityGroupAllRuleStatus请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Status: 列表规则状态，0：全部停用，1：全部启用
-        :type Status: int
-        :param Direction: 方向，0：出站，1：入站
-        :type Direction: int
-        :param EdgeId: Edge ID值
-        :type EdgeId: str
-        :param Area: NAT地域, 腾讯云地域的英文简写
-        :type Area: str
-        """
-        self.Status = None
-        self.Direction = None
-        self.EdgeId = None
-        self.Area = None
-
-
-    def _deserialize(self, params):
-        self.Status = params.get("Status")
-        self.Direction = params.get("Direction")
-        self.EdgeId = params.get("EdgeId")
-        self.Area = params.get("Area")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ModifySecurityGroupAllRuleStatusResponse(AbstractModel):
-    """ModifySecurityGroupAllRuleStatus返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Status: 0: 修改成功, 其他: 修改失败
-注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4981,62 +4628,6 @@ class ScanResultInfo(AbstractModel):
         
 
 
-class SecurityGroupApiRuleData(AbstractModel):
-    """添加安全组Api规则对象
-
-    """
-
-    def __init__(self):
-        r"""
-        :param SourceId: 访问源，入站时为Ip/Cidr，默认为0.0.0.0/0； 出站时当RuleType为1时，支持内网Ip/Cidr, 当RuleType为2时，填实例ID
-        :type SourceId: str
-        :param TargetId: 访问目的，出站时为Ip/Cidr，默认为0.0.0.0/0；入站时当RuleType为1时，支持内网Ip/Cidr, 当RuleType为2时，填实例ID
-        :type TargetId: str
-        :param Protocol: 协议，支持ANY/TCP/UDP/ICMP
-        :type Protocol: str
-        :param Port: 端口, 当Protocol为ANY或ICMP时，Port为-1/-1
-        :type Port: str
-        :param Strategy: 策略, 1：阻断，2：放行
-        :type Strategy: str
-        :param Detail: 描述
-        :type Detail: str
-        :param RuleType: 规则类型，1：VpcId+Ip/Cidr, 2: 实例ID，入站时为访问目的类型，出站时为访问源类型
-        :type RuleType: int
-        :param OrderIndex: 执行顺序，中间插入必传，前插、后插非必传
-        :type OrderIndex: int
-        :param VpcId: 私有网络ID，当RuleType为1时必传
-        :type VpcId: str
-        """
-        self.SourceId = None
-        self.TargetId = None
-        self.Protocol = None
-        self.Port = None
-        self.Strategy = None
-        self.Detail = None
-        self.RuleType = None
-        self.OrderIndex = None
-        self.VpcId = None
-
-
-    def _deserialize(self, params):
-        self.SourceId = params.get("SourceId")
-        self.TargetId = params.get("TargetId")
-        self.Protocol = params.get("Protocol")
-        self.Port = params.get("Port")
-        self.Strategy = params.get("Strategy")
-        self.Detail = params.get("Detail")
-        self.RuleType = params.get("RuleType")
-        self.OrderIndex = params.get("OrderIndex")
-        self.VpcId = params.get("VpcId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class SecurityGroupBothWayInfo(AbstractModel):
     """双向下发的企业安全组规则
 
@@ -5764,66 +5355,6 @@ class TLogInfo(AbstractModel):
         self.NetworkNum = params.get("NetworkNum")
         self.BanNum = params.get("BanNum")
         self.BruteForceNum = params.get("BruteForceNum")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class TemplateListInfo(AbstractModel):
-    """地址模版列表数据
-
-    """
-
-    def __init__(self):
-        r"""
-        :param Uuid: 模版ID
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Uuid: str
-        :param Name: 模版名称
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Name: str
-        :param Detail: 描述
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Detail: str
-        :param IpString: IP模版
-注意：此字段可能返回 null，表示取不到有效值。
-        :type IpString: str
-        :param InsertTime: 插入时间
-注意：此字段可能返回 null，表示取不到有效值。
-        :type InsertTime: str
-        :param UpdateTime: 修改时间
-注意：此字段可能返回 null，表示取不到有效值。
-        :type UpdateTime: str
-        :param Type: 模版类型
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Type: int
-        :param RulesNum: 关联规则条数
-注意：此字段可能返回 null，表示取不到有效值。
-        :type RulesNum: int
-        """
-        self.Uuid = None
-        self.Name = None
-        self.Detail = None
-        self.IpString = None
-        self.InsertTime = None
-        self.UpdateTime = None
-        self.Type = None
-        self.RulesNum = None
-
-
-    def _deserialize(self, params):
-        self.Uuid = params.get("Uuid")
-        self.Name = params.get("Name")
-        self.Detail = params.get("Detail")
-        self.IpString = params.get("IpString")
-        self.InsertTime = params.get("InsertTime")
-        self.UpdateTime = params.get("UpdateTime")
-        self.Type = params.get("Type")
-        self.RulesNum = params.get("RulesNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

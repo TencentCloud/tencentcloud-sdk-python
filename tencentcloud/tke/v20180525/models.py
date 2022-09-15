@@ -16058,6 +16058,8 @@ class UpdateTKEEdgeClusterRequest(AbstractModel):
         :type GridDaemon: str
         :param AutoUpgradeClusterLevel: 边缘集群开启自动升配
         :type AutoUpgradeClusterLevel: bool
+        :param ClusterLevel: 边缘集群的集群规模
+        :type ClusterLevel: str
         """
         self.ClusterId = None
         self.ClusterName = None
@@ -16071,6 +16073,7 @@ class UpdateTKEEdgeClusterRequest(AbstractModel):
         self.Health = None
         self.GridDaemon = None
         self.AutoUpgradeClusterLevel = None
+        self.ClusterLevel = None
 
 
     def _deserialize(self, params):
@@ -16090,6 +16093,7 @@ class UpdateTKEEdgeClusterRequest(AbstractModel):
         self.Health = params.get("Health")
         self.GridDaemon = params.get("GridDaemon")
         self.AutoUpgradeClusterLevel = params.get("AutoUpgradeClusterLevel")
+        self.ClusterLevel = params.get("ClusterLevel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

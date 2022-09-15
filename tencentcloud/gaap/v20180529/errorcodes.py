@@ -197,6 +197,9 @@ INVALIDPARAMETER = 'InvalidParameter'
 # 参数取值错误。
 INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 
+# 证书和私钥不匹配。
+INVALIDPARAMETERVALUE_CERTIFICATECONTENTNOTMATCHKEY = 'InvalidParameterValue.CertificateContentNotMatchKey'
+
 # Https证书与域名不匹配。
 INVALIDPARAMETERVALUE_CERTIFICATENOTMATCHDOMAIN = 'InvalidParameterValue.CertificateNotMatchDomain'
 
