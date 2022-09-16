@@ -1970,7 +1970,7 @@ class RedisClient(AbstractClient):
 
 
     def ModifyInstanceParams(self, request):
-        """本接口(ModifyInstanceParams)用于修改实例参数。
+        """本接口(ModifyInstanceParams)用于修改Redis实例的参数配置。
 
         :param request: Request instance for ModifyInstanceParams.
         :type request: :class:`tencentcloud.redis.v20180412.models.ModifyInstanceParamsRequest`

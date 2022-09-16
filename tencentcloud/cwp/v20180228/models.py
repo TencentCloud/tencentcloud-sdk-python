@@ -9994,7 +9994,7 @@ class DescribeLicenseGeneralResponse(AbstractModel):
         :type NearExpiryLicenseCnt: int
         :param ExpireLicenseCnt: 已到期授权数(不包含已删除的记录)
         :type ExpireLicenseCnt: int
-        :param AutoOpenStatus: 自动升级开关状态,默认 false,  ture 开启, false 关闭
+        :param AutoOpenStatus: 自动升级开关状态,默认 false,  true 开启, false 关闭
         :type AutoOpenStatus: bool
         :param ProtectType: PROVERSION_POSTPAY 专业版-后付费, PROVERSION_PREPAY 专业版-预付费, FLAGSHIP_PREPAY 旗舰版-预付费
         :type ProtectType: str

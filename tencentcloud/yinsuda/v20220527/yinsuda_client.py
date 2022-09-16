@@ -113,6 +113,35 @@ class YinsudaClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeKTVMusicsByTag(self, request):
+        """通过标签过滤歌曲列表。
+
+        :param request: Request instance for DescribeKTVMusicsByTag.
+        :type request: :class:`tencentcloud.yinsuda.v20220527.models.DescribeKTVMusicsByTagRequest`
+        :rtype: :class:`tencentcloud.yinsuda.v20220527.models.DescribeKTVMusicsByTagResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeKTVMusicsByTag", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeKTVMusicsByTagResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeKTVPlaylistDetail(self, request):
         """根据歌单 Id 获取歌单详情。
 
@@ -215,6 +244,35 @@ class YinsudaClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeKTVSuggestionsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeKTVTags(self, request):
+        """获取标签分组及分组下的标签列表信息。
+
+        :param request: Request instance for DescribeKTVTags.
+        :type request: :class:`tencentcloud.yinsuda.v20220527.models.DescribeKTVTagsRequest`
+        :rtype: :class:`tencentcloud.yinsuda.v20220527.models.DescribeKTVTagsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeKTVTags", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeKTVTagsResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

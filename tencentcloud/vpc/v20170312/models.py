@@ -5333,6 +5333,42 @@ class CrossBorderCompliance(AbstractModel):
         
 
 
+class CrossBorderFlowMonitorData(AbstractModel):
+    """跨境带宽监控数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InBandwidth: 入带宽
+        :type InBandwidth: list of int
+        :param OutBandwidth: 出带宽
+        :type OutBandwidth: list of int
+        :param InPkg: 入包
+        :type InPkg: list of int
+        :param OutPkg: 出包
+        :type OutPkg: list of int
+        """
+        self.InBandwidth = None
+        self.OutBandwidth = None
+        self.InPkg = None
+        self.OutPkg = None
+
+
+    def _deserialize(self, params):
+        self.InBandwidth = params.get("InBandwidth")
+        self.OutBandwidth = params.get("OutBandwidth")
+        self.InPkg = params.get("InPkg")
+        self.OutPkg = params.get("OutPkg")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CustomerGateway(AbstractModel):
     """对端网关
 
@@ -8213,6 +8249,81 @@ class DescribeCrossBorderComplianceResponse(AbstractModel):
                 obj._deserialize(item)
                 self.CrossBorderComplianceSet.append(obj)
         self.TotalCount = params.get("TotalCount")
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeCrossBorderFlowMonitorRequest(AbstractModel):
+    """DescribeCrossBorderFlowMonitor请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param SourceRegion: 源地域
+        :type SourceRegion: str
+        :param DestinationRegion: 目的地域
+        :type DestinationRegion: str
+        :param CcnId: 云联网Id
+        :type CcnId: str
+        :param CcnUin: 云联网所属账号
+        :type CcnUin: str
+        :param Period: 时间粒度
+        :type Period: int
+        :param StartTime: 开始时间
+        :type StartTime: str
+        :param EndTime: 结束时间
+        :type EndTime: str
+        """
+        self.SourceRegion = None
+        self.DestinationRegion = None
+        self.CcnId = None
+        self.CcnUin = None
+        self.Period = None
+        self.StartTime = None
+        self.EndTime = None
+
+
+    def _deserialize(self, params):
+        self.SourceRegion = params.get("SourceRegion")
+        self.DestinationRegion = params.get("DestinationRegion")
+        self.CcnId = params.get("CcnId")
+        self.CcnUin = params.get("CcnUin")
+        self.Period = params.get("Period")
+        self.StartTime = params.get("StartTime")
+        self.EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCrossBorderFlowMonitorResponse(AbstractModel):
+    """DescribeCrossBorderFlowMonitor返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param CrossBorderFlowMonitorData: 云联网跨境带宽监控数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CrossBorderFlowMonitorData: list of CrossBorderFlowMonitorData
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.CrossBorderFlowMonitorData = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("CrossBorderFlowMonitorData") is not None:
+            self.CrossBorderFlowMonitorData = []
+            for item in params.get("CrossBorderFlowMonitorData"):
+                obj = CrossBorderFlowMonitorData()
+                obj._deserialize(item)
+                self.CrossBorderFlowMonitorData.append(obj)
         self.RequestId = params.get("RequestId")
 
 

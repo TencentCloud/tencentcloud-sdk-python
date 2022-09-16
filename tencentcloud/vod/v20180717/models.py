@@ -248,12 +248,17 @@ class AdaptiveDynamicStreamingInfoItem(AbstractModel):
 <li>当媒体文件为 DASH 时，大小是 mpd 和分片文件大小的总和；</li>
 <li><font color=red>注意</font>：在 2022-01-10T16:00:00Z 前处理生成的自适应码流文件此字段为0。</li>
         :type Size: int
+        :param DigitalWatermarkType: 数字水印类型。可选值：
+<li>Trace 表示经过溯源水印处理；</li>
+<li>None 表示没有经过数字水印处理。</li>
+        :type DigitalWatermarkType: str
         """
         self.Definition = None
         self.Package = None
         self.DrmType = None
         self.Url = None
         self.Size = None
+        self.DigitalWatermarkType = None
 
 
     def _deserialize(self, params):
@@ -262,6 +267,7 @@ class AdaptiveDynamicStreamingInfoItem(AbstractModel):
         self.DrmType = params.get("DrmType")
         self.Url = params.get("Url")
         self.Size = params.get("Size")
+        self.DigitalWatermarkType = params.get("DigitalWatermarkType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -10963,6 +10969,7 @@ class DescribeTaskDetailResponse(AbstractModel):
 <li>FastClipMedia：快速剪辑任务；</li>
 <li>RemoveWatermarkTask：智能去除水印任务；</li>
 <li> ReviewAudioVideo：音视频审核任务。</li>
+<li> ReduceMediaBitrate：降码率任务。</li>
         :type TaskType: str
         :param Status: 任务状态，取值：
 <li>WAITING：等待中；</li>
@@ -11014,9 +11021,15 @@ class DescribeTaskDetailResponse(AbstractModel):
         :param RemoveWatermarkTask: 智能去除水印任务信息，仅当 TaskType 为 RemoveWatermark，该字段有值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RemoveWatermarkTask: :class:`tencentcloud.vod.v20180717.models.RemoveWatermarkTask`
+        :param ExtractTraceWatermarkTask: 提取溯源水印任务信息，仅当 TaskType 为 ExtractTraceWatermark，该字段有值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExtractTraceWatermarkTask: :class:`tencentcloud.vod.v20180717.models.ExtractTraceWatermarkTask`
         :param ReviewAudioVideoTask: 音视频审核任务信息，仅当 TaskType 为 ReviewAudioVideo，该字段有值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReviewAudioVideoTask: :class:`tencentcloud.vod.v20180717.models.ReviewAudioVideoTask`
+        :param ReduceMediaBitrateTask: 降码率任务信息，仅当 TaskType 为 ReduceMediaBitrate，该字段有值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReduceMediaBitrateTask: :class:`tencentcloud.vod.v20180717.models.ReduceMediaBitrateTask`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -11038,7 +11051,9 @@ class DescribeTaskDetailResponse(AbstractModel):
         self.CreateImageSpriteTask = None
         self.SnapshotByTimeOffsetTask = None
         self.RemoveWatermarkTask = None
+        self.ExtractTraceWatermarkTask = None
         self.ReviewAudioVideoTask = None
+        self.ReduceMediaBitrateTask = None
         self.RequestId = None
 
 
@@ -11087,9 +11102,15 @@ class DescribeTaskDetailResponse(AbstractModel):
         if params.get("RemoveWatermarkTask") is not None:
             self.RemoveWatermarkTask = RemoveWatermarkTask()
             self.RemoveWatermarkTask._deserialize(params.get("RemoveWatermarkTask"))
+        if params.get("ExtractTraceWatermarkTask") is not None:
+            self.ExtractTraceWatermarkTask = ExtractTraceWatermarkTask()
+            self.ExtractTraceWatermarkTask._deserialize(params.get("ExtractTraceWatermarkTask"))
         if params.get("ReviewAudioVideoTask") is not None:
             self.ReviewAudioVideoTask = ReviewAudioVideoTask()
             self.ReviewAudioVideoTask._deserialize(params.get("ReviewAudioVideoTask"))
+        if params.get("ReduceMediaBitrateTask") is not None:
+            self.ReduceMediaBitrateTask = ReduceMediaBitrateTask()
+            self.ReduceMediaBitrateTask._deserialize(params.get("ReduceMediaBitrateTask"))
         self.RequestId = params.get("RequestId")
 
 
@@ -12143,6 +12164,7 @@ class EventContent(AbstractModel):
 <li>WechatMiniProgramPublishComplete：微信小程序发布完成。</li>
 <li>FastClipMediaComplete：快速剪辑完成；</li>
 <li>ReviewAudioVideoComplete：音视频审核完成。</li>
+<li>ExtractTraceWatermarkComplete：提取溯源水印完成。</li>
 <b>兼容 2017 版的事件类型：</b>
 <li>TranscodeComplete：视频转码完成；</li>
 <li>ConcatComplete：视频拼接完成；</li>
@@ -12198,9 +12220,15 @@ class EventContent(AbstractModel):
         :param RestoreMediaCompleteEvent: 视频取回完成事件，当事件类型为RestoreMediaComplete 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RestoreMediaCompleteEvent: :class:`tencentcloud.vod.v20180717.models.RestoreMediaTask`
+        :param ExtractTraceWatermarkCompleteEvent: 溯源水印提取完成事件，当事件类型为ExtractTraceWatermarkComplete 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExtractTraceWatermarkCompleteEvent: :class:`tencentcloud.vod.v20180717.models.ExtractTraceWatermarkTask`
         :param ReviewAudioVideoCompleteEvent: 音视频审核完成事件，当事件类型为 ReviewAudioVideoComplete 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReviewAudioVideoCompleteEvent: :class:`tencentcloud.vod.v20180717.models.ReviewAudioVideoTask`
+        :param ReduceMediaBitrateCompleteEvent: 降码率完成事件，当事件类型为 ReduceMediaBitrateComplete 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReduceMediaBitrateCompleteEvent: :class:`tencentcloud.vod.v20180717.models.ReduceMediaBitrateTask`
         """
         self.EventHandle = None
         self.EventType = None
@@ -12220,7 +12248,9 @@ class EventContent(AbstractModel):
         self.WechatMiniProgramPublishCompleteEvent = None
         self.RemoveWatermarkCompleteEvent = None
         self.RestoreMediaCompleteEvent = None
+        self.ExtractTraceWatermarkCompleteEvent = None
         self.ReviewAudioVideoCompleteEvent = None
+        self.ReduceMediaBitrateCompleteEvent = None
 
 
     def _deserialize(self, params):
@@ -12274,9 +12304,15 @@ class EventContent(AbstractModel):
         if params.get("RestoreMediaCompleteEvent") is not None:
             self.RestoreMediaCompleteEvent = RestoreMediaTask()
             self.RestoreMediaCompleteEvent._deserialize(params.get("RestoreMediaCompleteEvent"))
+        if params.get("ExtractTraceWatermarkCompleteEvent") is not None:
+            self.ExtractTraceWatermarkCompleteEvent = ExtractTraceWatermarkTask()
+            self.ExtractTraceWatermarkCompleteEvent._deserialize(params.get("ExtractTraceWatermarkCompleteEvent"))
         if params.get("ReviewAudioVideoCompleteEvent") is not None:
             self.ReviewAudioVideoCompleteEvent = ReviewAudioVideoTask()
             self.ReviewAudioVideoCompleteEvent._deserialize(params.get("ReviewAudioVideoCompleteEvent"))
+        if params.get("ReduceMediaBitrateCompleteEvent") is not None:
+            self.ReduceMediaBitrateCompleteEvent = ReduceMediaBitrateTask()
+            self.ReduceMediaBitrateCompleteEvent._deserialize(params.get("ReduceMediaBitrateCompleteEvent"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -12349,6 +12385,188 @@ class ExecuteFunctionResponse(AbstractModel):
     def _deserialize(self, params):
         self.Result = params.get("Result")
         self.RequestId = params.get("RequestId")
+
+
+class ExtractTraceWatermarkRequest(AbstractModel):
+    """ExtractTraceWatermark请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Url: 需要提取水印的媒体 URL。
+        :type Url: str
+        :param SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :type SubAppId: int
+        :param SessionContext: 标识来源上下文，用于透传用户请求信息，在ExtractTraceWatermarkComplete回调和任务流状态变更回调将返回该字段值，最长 1000个字符。
+        :type SessionContext: str
+        :param SessionId: 用于任务去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+        :type SessionId: str
+        :param TasksPriority: 任务的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。
+        :type TasksPriority: int
+        :param ExtInfo: 保留字段，特殊用途时使用。
+        :type ExtInfo: str
+        """
+        self.Url = None
+        self.SubAppId = None
+        self.SessionContext = None
+        self.SessionId = None
+        self.TasksPriority = None
+        self.ExtInfo = None
+
+
+    def _deserialize(self, params):
+        self.Url = params.get("Url")
+        self.SubAppId = params.get("SubAppId")
+        self.SessionContext = params.get("SessionContext")
+        self.SessionId = params.get("SessionId")
+        self.TasksPriority = params.get("TasksPriority")
+        self.ExtInfo = params.get("ExtInfo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExtractTraceWatermarkResponse(AbstractModel):
+    """ExtractTraceWatermark返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 任务 ID。
+        :type TaskId: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TaskId = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.RequestId = params.get("RequestId")
+
+
+class ExtractTraceWatermarkTask(AbstractModel):
+    """提取溯源水印任务。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 任务 ID。
+        :type TaskId: str
+        :param Status: 任务状态，取值：
+<li>PROCESSING：处理中；</li>
+<li>FINISH：已完成。</li>
+        :type Status: str
+        :param ErrCode: 错误码，0 表示成功，其他值表示失败：
+<li>40000：输入参数不合法，请检查输入参数；</li>
+<li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li>
+<li>70000：内部服务错误，建议重试。</li>
+        :type ErrCode: int
+        :param Message: 错误信息。
+        :type Message: str
+        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :type ErrCodeExt: str
+        :param Input: 提取溯源水印任务输入信息。
+        :type Input: :class:`tencentcloud.vod.v20180717.models.ExtractTraceWatermarkTaskInput`
+        :param Output: 提取溯源水印任务输出信息。
+        :type Output: :class:`tencentcloud.vod.v20180717.models.ExtractTraceWatermarkTaskOutput`
+        :param SessionId: 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+        :type SessionId: str
+        :param SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+        :type SessionContext: str
+        """
+        self.TaskId = None
+        self.Status = None
+        self.ErrCode = None
+        self.Message = None
+        self.ErrCodeExt = None
+        self.Input = None
+        self.Output = None
+        self.SessionId = None
+        self.SessionContext = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.Status = params.get("Status")
+        self.ErrCode = params.get("ErrCode")
+        self.Message = params.get("Message")
+        self.ErrCodeExt = params.get("ErrCodeExt")
+        if params.get("Input") is not None:
+            self.Input = ExtractTraceWatermarkTaskInput()
+            self.Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self.Output = ExtractTraceWatermarkTaskOutput()
+            self.Output._deserialize(params.get("Output"))
+        self.SessionId = params.get("SessionId")
+        self.SessionContext = params.get("SessionContext")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExtractTraceWatermarkTaskInput(AbstractModel):
+    """提取溯源水印输入
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Url: 需要提取水印的媒体 URL。
+        :type Url: str
+        """
+        self.Url = None
+
+
+    def _deserialize(self, params):
+        self.Url = params.get("Url")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExtractTraceWatermarkTaskOutput(AbstractModel):
+    """提取溯源水印输出信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Uv: 播放者的 ID，以十六进制表示，共6位，该参数用于 [溯源水印](https://cloud.tencent.com/document/product/266/75789) 使用场景。
+        :type Uv: str
+        :param Uid: 该字段已废弃。
+        :type Uid: str
+        """
+        self.Uv = None
+        self.Uid = None
+
+
+    def _deserialize(self, params):
+        self.Uv = params.get("Uv")
+        self.Uid = params.get("Uid")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class FaceConfigureInfo(AbstractModel):
@@ -15940,6 +16158,10 @@ class MediaTranscodeItem(AbstractModel):
         :type VideoStreamSet: list of MediaVideoStreamItem
         :param AudioStreamSet: 音频流信息。
         :type AudioStreamSet: list of MediaAudioStreamItem
+        :param DigitalWatermarkType: 数字水印类型。可选值：
+<li>Trace 表示经过溯源水印处理；</li>
+<li>None 表示没有经过数字水印处理。</li>
+        :type DigitalWatermarkType: str
         """
         self.Url = None
         self.Definition = None
@@ -15952,6 +16174,7 @@ class MediaTranscodeItem(AbstractModel):
         self.Container = None
         self.VideoStreamSet = None
         self.AudioStreamSet = None
+        self.DigitalWatermarkType = None
 
 
     def _deserialize(self, params):
@@ -15976,6 +16199,7 @@ class MediaTranscodeItem(AbstractModel):
                 obj = MediaAudioStreamItem()
                 obj._deserialize(item)
                 self.AudioStreamSet.append(obj)
+        self.DigitalWatermarkType = params.get("DigitalWatermarkType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -20201,6 +20425,223 @@ class PushUrlCacheResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ReduceMediaBitrateAdaptiveDynamicStreamingResult(AbstractModel):
+    """降码率任务转自适应码流结果类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :type Status: str
+        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :type ErrCodeExt: str
+        :param Message: 错误信息。
+        :type Message: str
+        :param Input: 对视频转自适应码流任务的输入。
+        :type Input: :class:`tencentcloud.vod.v20180717.models.AdaptiveDynamicStreamingTaskInput`
+        :param Output: 对视频转自适应码流任务的输出。
+        :type Output: :class:`tencentcloud.vod.v20180717.models.AdaptiveDynamicStreamingInfoItem`
+        """
+        self.Status = None
+        self.ErrCodeExt = None
+        self.Message = None
+        self.Input = None
+        self.Output = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
+        self.Message = params.get("Message")
+        if params.get("Input") is not None:
+            self.Input = AdaptiveDynamicStreamingTaskInput()
+            self.Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self.Output = AdaptiveDynamicStreamingInfoItem()
+            self.Output._deserialize(params.get("Output"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReduceMediaBitrateMediaProcessTaskResult(AbstractModel):
+    """降码率任务结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Type: 任务的类型，可以取的值有：
+<li>Transcode：转码</li>
+<li>AdaptiveDynamicStreaming：自适应码流</li>
+        :type Type: str
+        :param TranscodeTask: 降码率任务中视频转码任务的查询结果，当任务类型为 Transcode 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TranscodeTask: :class:`tencentcloud.vod.v20180717.models.ReduceMediaBitrateTranscodeResult`
+        :param AdaptiveDynamicStreamingTask: 降码率任务中对视频转自适应码流任务的查询结果，当任务类型为 AdaptiveDynamicStreaming 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AdaptiveDynamicStreamingTask: :class:`tencentcloud.vod.v20180717.models.ReduceMediaBitrateAdaptiveDynamicStreamingResult`
+        """
+        self.Type = None
+        self.TranscodeTask = None
+        self.AdaptiveDynamicStreamingTask = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        if params.get("TranscodeTask") is not None:
+            self.TranscodeTask = ReduceMediaBitrateTranscodeResult()
+            self.TranscodeTask._deserialize(params.get("TranscodeTask"))
+        if params.get("AdaptiveDynamicStreamingTask") is not None:
+            self.AdaptiveDynamicStreamingTask = ReduceMediaBitrateAdaptiveDynamicStreamingResult()
+            self.AdaptiveDynamicStreamingTask._deserialize(params.get("AdaptiveDynamicStreamingTask"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReduceMediaBitrateTask(AbstractModel):
+    """降码率任务信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TaskId: 视频处理任务 ID。
+        :type TaskId: str
+        :param Status: 任务流状态，取值：
+<li>PROCESSING：处理中；</li>
+<li>FINISH：已完成。</li>
+        :type Status: str
+        :param FileId: 媒体文件 ID。
+        :type FileId: str
+        :param FileName: 媒体文件名称。
+        :type FileName: str
+        :param FileUrl: 媒体文件地址。
+        :type FileUrl: str
+        :param MetaData: 原始视频的元信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
+        :param MediaProcessResultSet: 降码率任务执行状态与结果。
+        :type MediaProcessResultSet: list of ReduceMediaBitrateMediaProcessTaskResult
+        :param TasksPriority: 任务流的优先级，取值范围为 [-10, 10]。
+        :type TasksPriority: int
+        :param TasksNotifyMode: 任务流状态变更通知模式。
+<li>Finish：只有当任务流全部执行完毕时，才发起一次事件通知；</li>
+<li>None：不接受该任务流回调。</li>
+        :type TasksNotifyMode: str
+        :param SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+        :type SessionContext: str
+        :param SessionId: 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+        :type SessionId: str
+        """
+        self.TaskId = None
+        self.Status = None
+        self.FileId = None
+        self.FileName = None
+        self.FileUrl = None
+        self.MetaData = None
+        self.MediaProcessResultSet = None
+        self.TasksPriority = None
+        self.TasksNotifyMode = None
+        self.SessionContext = None
+        self.SessionId = None
+
+
+    def _deserialize(self, params):
+        self.TaskId = params.get("TaskId")
+        self.Status = params.get("Status")
+        self.FileId = params.get("FileId")
+        self.FileName = params.get("FileName")
+        self.FileUrl = params.get("FileUrl")
+        if params.get("MetaData") is not None:
+            self.MetaData = MediaMetaData()
+            self.MetaData._deserialize(params.get("MetaData"))
+        if params.get("MediaProcessResultSet") is not None:
+            self.MediaProcessResultSet = []
+            for item in params.get("MediaProcessResultSet"):
+                obj = ReduceMediaBitrateMediaProcessTaskResult()
+                obj._deserialize(item)
+                self.MediaProcessResultSet.append(obj)
+        self.TasksPriority = params.get("TasksPriority")
+        self.TasksNotifyMode = params.get("TasksNotifyMode")
+        self.SessionContext = params.get("SessionContext")
+        self.SessionId = params.get("SessionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReduceMediaBitrateTranscodeResult(AbstractModel):
+    """降码率任务转码结果类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :type Status: str
+        :param ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :type ErrCodeExt: str
+        :param Message: 错误信息。
+        :type Message: str
+        :param Input: 转码任务的输入。
+        :type Input: :class:`tencentcloud.vod.v20180717.models.TranscodeTaskInput`
+        :param Output: 转码任务的输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Output: :class:`tencentcloud.vod.v20180717.models.MediaTranscodeItem`
+        :param Progress: 转码进度，取值范围 [0-100] 。
+        :type Progress: int
+        :param BeginProcessTime: 转码任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type BeginProcessTime: str
+        :param FinishTime: 转码任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type FinishTime: str
+        """
+        self.Status = None
+        self.ErrCodeExt = None
+        self.Message = None
+        self.Input = None
+        self.Output = None
+        self.Progress = None
+        self.BeginProcessTime = None
+        self.FinishTime = None
+
+
+    def _deserialize(self, params):
+        self.Status = params.get("Status")
+        self.ErrCodeExt = params.get("ErrCodeExt")
+        self.Message = params.get("Message")
+        if params.get("Input") is not None:
+            self.Input = TranscodeTaskInput()
+            self.Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self.Output = MediaTranscodeItem()
+            self.Output._deserialize(params.get("Output"))
+        self.Progress = params.get("Progress")
+        self.BeginProcessTime = params.get("BeginProcessTime")
+        self.FinishTime = params.get("FinishTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RefererAuthPolicy(AbstractModel):
     """Referer 防盗链配置
 
@@ -22770,6 +23211,7 @@ class TaskSimpleInfo(AbstractModel):
         :param TaskType: 任务类型，取值：
 <li>Procedure：视频处理任务；</li>
 <li>EditMedia：视频编辑任务</li>
+<li>ReduceMediaBitrate：降码率任务</li>
 <li>WechatDistribute：微信发布任务。</li>
 兼容 2017 版的任务类型：
 <li>Transcode：视频转码任务；</li>
@@ -23378,13 +23820,19 @@ class TraceWatermarkInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Definition: 水印模板 ID。
+        :param Switch: 溯源水印任务开关，此字段必填，可选值：
+<li>ON：开启溯源水印；</li>
+<li>OFF：关闭溯源水印。</li>
+        :type Switch: str
+        :param Definition: 该字段已废弃，请勿使用。
         :type Definition: int
         """
+        self.Switch = None
         self.Definition = None
 
 
     def _deserialize(self, params):
+        self.Switch = params.get("Switch")
         self.Definition = params.get("Definition")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

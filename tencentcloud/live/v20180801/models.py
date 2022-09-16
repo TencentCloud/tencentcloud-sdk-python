@@ -107,12 +107,20 @@ class AddLiveDomainRequest(AbstractModel):
 1 ：小程序直播 。
 默认值： 0。
         :type IsMiniProgramLive: int
+        :param VerifyOwnerType: 域名归属校验类型。
+可取值（与 AuthenticateDomainOwner 接口的 VerifyType 参数一致。）：
+dnsCheck ：立即验证配置 dns 的解析记录是否与待验证内容一致，成功则保存记录。
+fileCheck ：立即验证 web 文件是否与待验证内容一致，成功则保存记录。
+dbCheck :  检查是否已经验证成功过。
+若不传默认为 dbCheck 。
+        :type VerifyOwnerType: str
         """
         self.DomainName = None
         self.DomainType = None
         self.PlayType = None
         self.IsDelayLive = None
         self.IsMiniProgramLive = None
+        self.VerifyOwnerType = None
 
 
     def _deserialize(self, params):
@@ -121,6 +129,7 @@ class AddLiveDomainRequest(AbstractModel):
         self.PlayType = params.get("PlayType")
         self.IsDelayLive = params.get("IsDelayLive")
         self.IsMiniProgramLive = params.get("IsMiniProgramLive")
+        self.VerifyOwnerType = params.get("VerifyOwnerType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -212,6 +221,71 @@ class AddLiveWatermarkResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.WatermarkId = params.get("WatermarkId")
+        self.RequestId = params.get("RequestId")
+
+
+class AuthenticateDomainOwnerRequest(AbstractModel):
+    """AuthenticateDomainOwner请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DomainName: 要验证的域名。
+        :type DomainName: str
+        :param VerifyType: 验证类型。可取值：
+dnsCheck ：立即验证配置 dns 的解析记录是否与待验证内容一致，成功则保存记录。
+fileCheck ：立即验证 web 文件是否与待验证内容一致，成功则保存记录。
+dbCheck :  检查是否已经验证成功过。
+        :type VerifyType: str
+        """
+        self.DomainName = None
+        self.VerifyType = None
+
+
+    def _deserialize(self, params):
+        self.DomainName = params.get("DomainName")
+        self.VerifyType = params.get("VerifyType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AuthenticateDomainOwnerResponse(AbstractModel):
+    """AuthenticateDomainOwner返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Content: 验证内容。
+VerifyType 传 dnsCheck 时，为要配的 TXT 记录值。
+VerifyType 传 fileCheck 时，为文件内容。
+        :type Content: str
+        :param Status: 域名验证状态。
+>=0 为已验证归属。
+<0 未验证归属权。
+        :type Status: int
+        :param MainDomain: DomainName 对应的主域名。
+同一主域名下的所有域名只需成功验证一次，后续均无需再验证。
+        :type MainDomain: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Content = None
+        self.Status = None
+        self.MainDomain = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Content = params.get("Content")
+        self.Status = params.get("Status")
+        self.MainDomain = params.get("MainDomain")
         self.RequestId = params.get("RequestId")
 
 

@@ -249,6 +249,82 @@ class DescribeKTVMatchMusicsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeKTVMusicsByTagRequest(AbstractModel):
+    """DescribeKTVMusicsByTag请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AppName: 应用名称。
+        :type AppName: str
+        :param UserId: 用户标识。
+        :type UserId: str
+        :param TagId: 标签 Id。
+        :type TagId: str
+        :param ScrollToken: 滚动标记。
+        :type ScrollToken: str
+        :param Limit: 返回条数限制，默认 20，最大 50。
+        :type Limit: int
+        :param RightFilters: 权益过滤，取值有：
+<li>Play：可播；</li>
+<li>Sing：可唱。</li>
+        :type RightFilters: list of str
+        """
+        self.AppName = None
+        self.UserId = None
+        self.TagId = None
+        self.ScrollToken = None
+        self.Limit = None
+        self.RightFilters = None
+
+
+    def _deserialize(self, params):
+        self.AppName = params.get("AppName")
+        self.UserId = params.get("UserId")
+        self.TagId = params.get("TagId")
+        self.ScrollToken = params.get("ScrollToken")
+        self.Limit = params.get("Limit")
+        self.RightFilters = params.get("RightFilters")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeKTVMusicsByTagResponse(AbstractModel):
+    """DescribeKTVMusicsByTag返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param KTVMusicInfoSet: 歌曲信息列表。
+        :type KTVMusicInfoSet: list of KTVMusicBaseInfo
+        :param ScrollToken: 滚动标记，用于设置下次请求的 ScrollToken 参数。
+        :type ScrollToken: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.KTVMusicInfoSet = None
+        self.ScrollToken = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("KTVMusicInfoSet") is not None:
+            self.KTVMusicInfoSet = []
+            for item in params.get("KTVMusicInfoSet"):
+                obj = KTVMusicBaseInfo()
+                obj._deserialize(item)
+                self.KTVMusicInfoSet.append(obj)
+        self.ScrollToken = params.get("ScrollToken")
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeKTVPlaylistDetailRequest(AbstractModel):
     """DescribeKTVPlaylistDetail请求参数结构体
 
@@ -527,6 +603,60 @@ class DescribeKTVSuggestionsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeKTVTagsRequest(AbstractModel):
+    """DescribeKTVTags请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AppName: 应用名称。
+        :type AppName: str
+        :param UserId: 用户标识。
+        :type UserId: str
+        """
+        self.AppName = None
+        self.UserId = None
+
+
+    def _deserialize(self, params):
+        self.AppName = params.get("AppName")
+        self.UserId = params.get("UserId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeKTVTagsResponse(AbstractModel):
+    """DescribeKTVTags返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TagGroupInfoSet: 标签分组列表。
+        :type TagGroupInfoSet: list of KTVTagGroupInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TagGroupInfoSet = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("TagGroupInfoSet") is not None:
+            self.TagGroupInfoSet = []
+            for item in params.get("TagGroupInfoSet"):
+                obj = KTVTagGroupInfo()
+                obj._deserialize(item)
+                self.TagGroupInfoSet.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DestroyKTVRobotRequest(AbstractModel):
     """DestroyKTVRobot请求参数结构体
 
@@ -593,6 +723,38 @@ class JoinRoomInput(AbstractModel):
         if params.get("TRTCJoinRoomInput") is not None:
             self.TRTCJoinRoomInput = TRTCJoinRoomInput()
             self.TRTCJoinRoomInput._deserialize(params.get("TRTCJoinRoomInput"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KTVBPMInfo(AbstractModel):
+    """节拍信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Type: 节拍类型，取值有：
+<li>Slow：慢；</li>
+<li>Middle：中等；</li>
+<li>Fast：快；</li>
+<li>Unknown：未知。</li>
+        :type Type: str
+        :param Value: BPM 值。
+        :type Value: int
+        """
+        self.Type = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Type = params.get("Type")
+        self.Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -773,6 +935,9 @@ class KTVMusicDetailInfo(AbstractModel):
         :type PreludeInterval: int
         :param GenreSet: 歌曲流派列表。
         :type GenreSet: list of str
+        :param BPMInfo: 节拍信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BPMInfo: :class:`tencentcloud.yinsuda.v20220527.models.KTVBPMInfo`
         """
         self.KTVMusicBaseInfo = None
         self.PlayToken = None
@@ -781,6 +946,7 @@ class KTVMusicDetailInfo(AbstractModel):
         self.ChorusClipSet = None
         self.PreludeInterval = None
         self.GenreSet = None
+        self.BPMInfo = None
 
 
     def _deserialize(self, params):
@@ -798,6 +964,9 @@ class KTVMusicDetailInfo(AbstractModel):
                 self.ChorusClipSet.append(obj)
         self.PreludeInterval = params.get("PreludeInterval")
         self.GenreSet = params.get("GenreSet")
+        if params.get("BPMInfo") is not None:
+            self.BPMInfo = KTVBPMInfo()
+            self.BPMInfo._deserialize(params.get("BPMInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -920,6 +1089,71 @@ class KTVSuggestionInfo(AbstractModel):
 
     def _deserialize(self, params):
         self.Suggestion = params.get("Suggestion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KTVTagGroupInfo(AbstractModel):
+    """标签分组信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param GroupId: 分组 Id。
+        :type GroupId: str
+        :param Name: 分组名。
+        :type Name: str
+        :param TagInfoSet: 标签列表。
+        :type TagInfoSet: list of KTVTagInfo
+        """
+        self.GroupId = None
+        self.Name = None
+        self.TagInfoSet = None
+
+
+    def _deserialize(self, params):
+        self.GroupId = params.get("GroupId")
+        self.Name = params.get("Name")
+        if params.get("TagInfoSet") is not None:
+            self.TagInfoSet = []
+            for item in params.get("TagInfoSet"):
+                obj = KTVTagInfo()
+                obj._deserialize(item)
+                self.TagInfoSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KTVTagInfo(AbstractModel):
+    """标签信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TagId: 标签 Id。
+        :type TagId: str
+        :param Name: 标签名称。
+        :type Name: str
+        """
+        self.TagId = None
+        self.Name = None
+
+
+    def _deserialize(self, params):
+        self.TagId = params.get("TagId")
+        self.Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

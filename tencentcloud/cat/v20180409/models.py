@@ -47,7 +47,7 @@ class CreateProbeTasksRequest(AbstractModel):
         :type ProbeType: int
         :param PluginSource: 插件类型
         :type PluginSource: str
-        :param ClientNum: 客户度ID
+        :param ClientNum: 客户端ID
         :type ClientNum: str
         """
         self.BatchTasks = None

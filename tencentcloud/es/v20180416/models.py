@@ -504,6 +504,8 @@ class CreateLogstashInstanceRequest(AbstractModel):
         :type LicenseType: str
         :param TagList: 标签信息列表
         :type TagList: list of TagInfo
+        :param OperationDuration: 可维护时间段
+        :type OperationDuration: :class:`tencentcloud.es.v20180416.models.OperationDuration`
         """
         self.InstanceName = None
         self.Zone = None
@@ -522,6 +524,7 @@ class CreateLogstashInstanceRequest(AbstractModel):
         self.DiskSize = None
         self.LicenseType = None
         self.TagList = None
+        self.OperationDuration = None
 
 
     def _deserialize(self, params):
@@ -547,6 +550,9 @@ class CreateLogstashInstanceRequest(AbstractModel):
                 obj = TagInfo()
                 obj._deserialize(item)
                 self.TagList.append(obj)
+        if params.get("OperationDuration") is not None:
+            self.OperationDuration = OperationDuration()
+            self.OperationDuration._deserialize(params.get("OperationDuration"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2785,6 +2791,9 @@ class LogstashInstanceInfo(AbstractModel):
         :param ExtendedFiles: 扩展文件列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExtendedFiles: list of LogstashExtendedFile
+        :param OperationDuration: 可维护时间段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OperationDuration: :class:`tencentcloud.es.v20180416.models.OperationDuration`
         """
         self.InstanceId = None
         self.InstanceName = None
@@ -2811,6 +2820,7 @@ class LogstashInstanceInfo(AbstractModel):
         self.BindedESInstanceId = None
         self.YMLConfig = None
         self.ExtendedFiles = None
+        self.OperationDuration = None
 
 
     def _deserialize(self, params):
@@ -2849,6 +2859,9 @@ class LogstashInstanceInfo(AbstractModel):
                 obj = LogstashExtendedFile()
                 obj._deserialize(item)
                 self.ExtendedFiles.append(obj)
+        if params.get("OperationDuration") is not None:
+            self.OperationDuration = OperationDuration()
+            self.OperationDuration._deserialize(params.get("OperationDuration"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4345,6 +4358,8 @@ class UpdateLogstashInstanceRequest(AbstractModel):
         :type NodeType: str
         :param DiskSize: 节点磁盘容量
         :type DiskSize: int
+        :param OperationDuration: 可维护时间段
+        :type OperationDuration: :class:`tencentcloud.es.v20180416.models.OperationDurationUpdated`
         """
         self.InstanceId = None
         self.NodeNum = None
@@ -4354,6 +4369,7 @@ class UpdateLogstashInstanceRequest(AbstractModel):
         self.ExtendedFiles = None
         self.NodeType = None
         self.DiskSize = None
+        self.OperationDuration = None
 
 
     def _deserialize(self, params):
@@ -4372,6 +4388,9 @@ class UpdateLogstashInstanceRequest(AbstractModel):
                 self.ExtendedFiles.append(obj)
         self.NodeType = params.get("NodeType")
         self.DiskSize = params.get("DiskSize")
+        if params.get("OperationDuration") is not None:
+            self.OperationDuration = OperationDurationUpdated()
+            self.OperationDuration._deserialize(params.get("OperationDuration"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

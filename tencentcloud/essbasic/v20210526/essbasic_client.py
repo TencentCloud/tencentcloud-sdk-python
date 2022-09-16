@@ -324,7 +324,10 @@ class EssbasicClient(AbstractClient):
 
 
     def CreateConsoleLoginUrl(self, request):
-        """此接口（CreateConsoleLoginUrl）用于创建电子签控制台登录链接。若企业未激活，调用同步企业信息、同步经办人信息
+        """此接口（CreateConsoleLoginUrl）用于创建渠道子客企业控制台Web端登录链接。Web端登录链接是子客控制台的唯一入口。
+        若子客企业未激活，会进入企业激活流程,首次参与激活流程的经办人会成为超管。（若企业激活过程中填写信息有误，需要重置激活流程，可以换一个经办人OpenId获取新的链接进入。）
+        若子客企业已激活，使用了新的经办人OpenId进入，则会进入经办人的实名流程。
+        若子客企业、经办人均已完成认证，则会直接进入子客Web控制台。
 
         :param request: Request instance for CreateConsoleLoginUrl.
         :type request: :class:`tencentcloud.essbasic.v20210526.models.CreateConsoleLoginUrlRequest`
@@ -651,7 +654,7 @@ class EssbasicClient(AbstractClient):
 
 
     def SyncProxyOrganization(self, request):
-        """此接口（SyncProxyOrganization）用于同步渠道侧企业信息
+        """此接口（SyncProxyOrganization）用于同步渠道子客企业信息，主要是子客企业的营业执照，便于子客企业开通过程中不用手动上传。若有需要调用此接口，需要在创建控制链接CreateConsoleLoginUrl之后即刻进行调用。
 
         :param request: Request instance for SyncProxyOrganization.
         :type request: :class:`tencentcloud.essbasic.v20210526.models.SyncProxyOrganizationRequest`
@@ -680,7 +683,8 @@ class EssbasicClient(AbstractClient):
 
 
     def SyncProxyOrganizationOperators(self, request):
-        """此接口（SyncProxyOrganizationOperators）用于同步渠道合作企业经办人列表
+        """此接口（SyncProxyOrganizationOperators）用于同步渠道子客企业经办人列表，主要是同步经办人的离职状态。子客Web控制台的组织架构管理，是依赖于渠道平台的，无法针对员工做新增/更新/离职等操作。
+        若经办人信息有误，或者需要修改，也可以先将之前的经办人做离职操作，然后重新使用控制台链接CreateConsoleLoginUrl让经办人重新实名。
 
         :param request: Request instance for SyncProxyOrganizationOperators.
         :type request: :class:`tencentcloud.essbasic.v20210526.models.SyncProxyOrganizationOperatorsRequest`

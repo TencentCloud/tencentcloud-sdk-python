@@ -4495,9 +4495,9 @@ class InstanceParam(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Key: 设置参数的名字
+        :param Key: 设置参数的名称。例如timeout。
         :type Key: str
-        :param Value: 设置参数的值
+        :param Value: 设置参数名称对应的运行值。例如timeout对应运行值可设置为120， 单位为秒（s）。指当客户端连接闲置时间达到120 s时，将关闭连接。
         :type Value: str
         """
         self.Key = None
@@ -5516,9 +5516,9 @@ class ModifyInstanceParamsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例ID
+        :param InstanceId: 实例ID。
         :type InstanceId: str
-        :param InstanceParams: 实例修改的参数列表
+        :param InstanceParams: 实例修改的参数列表。
         :type InstanceParams: list of InstanceParam
         """
         self.InstanceId = None
@@ -5549,9 +5549,9 @@ class ModifyInstanceParamsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Changed: 修改是否成功。
+        :param Changed: 修改是否成功。修改成功为true，失败为false。
         :type Changed: bool
-        :param TaskId: 任务ID
+        :param TaskId: 任务ID。
         :type TaskId: int
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

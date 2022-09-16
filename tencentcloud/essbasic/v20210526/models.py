@@ -1021,15 +1021,15 @@ class CreateConsoleLoginUrlRequest(AbstractModel):
         :param Agent: 应用信息
 此接口Agent.AppId、Agent.ProxyOrganizationOpenId 和 Agent. ProxyOperator.OpenId 必填
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
-        :param ProxyOrganizationName: 渠道侧合作企业名称，最大长度64个字符
+        :param ProxyOrganizationName: 渠道子客企业名称，最大长度64个字符
         :type ProxyOrganizationName: str
-        :param ProxyOperatorName: 渠道侧合作企业经办人的姓名，最大长度50个字符
+        :param ProxyOperatorName: 渠道子客企业经办人的姓名，最大长度50个字符
         :type ProxyOperatorName: str
         :param Module: 控制台指定模块，文件/合同管理:"DOCUMENT"，模板管理:"TEMPLATE"，印章管理:"SEAL"，组织架构/人员:"OPERATOR"，空字符串："账号信息"
         :type Module: str
         :param ModuleId: 控制台指定模块Id
         :type ModuleId: str
-        :param UniformSocialCreditCode: 渠道侧合作企业统一社会信用代码，最大长度200个字符
+        :param UniformSocialCreditCode: 渠道子客企业统一社会信用代码，最大长度200个字符
         :type UniformSocialCreditCode: str
         :param MenuStatus: 是否展示左侧菜单栏 是：ENABLE（默认） 否：DISABLE
         :type MenuStatus: str
@@ -1075,10 +1075,9 @@ class CreateConsoleLoginUrlResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param ConsoleUrl: 控制台url，此链接5分钟内有效，且只能访问一次
+        :param ConsoleUrl: 子客Web控制台url，此链接5分钟内有效，且只能访问一次
         :type ConsoleUrl: str
-        :param IsActivated: 渠道合作企业是否认证开通腾讯电子签。
-当渠道合作企业未完成认证开通腾讯电子签,建议先调用同步企业信息(SyncProxyOrganization)和同步经办人信息(SyncProxyOrganizationOperators)接口成功后再跳转到登录页面。
+        :param IsActivated: 渠道子客企业是否已开通腾讯电子签。
         :type IsActivated: bool
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

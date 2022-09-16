@@ -116,6 +116,35 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def AuthenticateDomainOwner(self, request):
+        """验证用户是否拥有特定直播域名。
+
+        :param request: Request instance for AuthenticateDomainOwner.
+        :type request: :class:`tencentcloud.live.v20180801.models.AuthenticateDomainOwnerRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.AuthenticateDomainOwnerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AuthenticateDomainOwner", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.AuthenticateDomainOwnerResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CancelCommonMixStream(self, request):
         """该接口用来取消混流。用法与 mix_streamv2.cancel_mix_stream 基本一致。
 

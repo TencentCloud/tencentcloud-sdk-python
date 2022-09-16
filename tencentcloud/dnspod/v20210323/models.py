@@ -1358,6 +1358,38 @@ class DescribeDomainAnalyticsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeDomainGroupListRequest(AbstractModel):
+    """DescribeDomainGroupList请求参数结构体
+
+    """
+
+
+class DescribeDomainGroupListResponse(AbstractModel):
+    """DescribeDomainGroupList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param GroupList: 分组列表
+        :type GroupList: list of GroupInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.GroupList = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("GroupList") is not None:
+            self.GroupList = []
+            for item in params.get("GroupList"):
+                obj = GroupInfo()
+                obj._deserialize(item)
+                self.GroupList.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeDomainListRequest(AbstractModel):
     """DescribeDomainList请求参数结构体
 
@@ -2530,6 +2562,42 @@ class DomainShareInfo(AbstractModel):
         self.ShareTo = params.get("ShareTo")
         self.Mode = params.get("Mode")
         self.Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GroupInfo(AbstractModel):
+    """域名分组列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param GroupId: 分组ID
+        :type GroupId: int
+        :param GroupName: 分组名称
+        :type GroupName: str
+        :param GroupType: 分组类型
+        :type GroupType: str
+        :param Size: 该分组中域名个数
+        :type Size: int
+        """
+        self.GroupId = None
+        self.GroupName = None
+        self.GroupType = None
+        self.Size = None
+
+
+    def _deserialize(self, params):
+        self.GroupId = params.get("GroupId")
+        self.GroupName = params.get("GroupName")
+        self.GroupType = params.get("GroupType")
+        self.Size = params.get("Size")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

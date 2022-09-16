@@ -3656,6 +3656,35 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeCrossBorderFlowMonitor(self, request):
+        """查询跨境带宽监控数据，该接口特提供给联通使用
+
+        :param request: Request instance for DescribeCrossBorderFlowMonitor.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeCrossBorderFlowMonitorRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeCrossBorderFlowMonitorResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCrossBorderFlowMonitor", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeCrossBorderFlowMonitorResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeCustomerGatewayVendors(self, request):
         """本接口（DescribeCustomerGatewayVendors）用于查询可支持的对端网关厂商信息。
 
