@@ -248,6 +248,15 @@ class AlertChannelRecord(AbstractModel):
         :param UpdatedAt: 更新时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdatedAt: str
+        :param AppId: App ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppId: int
+        :param Uin: 主账号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Uin: str
+        :param SubAccountUin: 子账号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubAccountUin: str
         """
         self.NoticeId = None
         self.AMPConsumerId = None
@@ -255,6 +264,9 @@ class AlertChannelRecord(AbstractModel):
         self.Status = None
         self.CreatedAt = None
         self.UpdatedAt = None
+        self.AppId = None
+        self.Uin = None
+        self.SubAccountUin = None
 
 
     def _deserialize(self, params):
@@ -264,6 +276,9 @@ class AlertChannelRecord(AbstractModel):
         self.Status = params.get("Status")
         self.CreatedAt = params.get("CreatedAt")
         self.UpdatedAt = params.get("UpdatedAt")
+        self.AppId = params.get("AppId")
+        self.Uin = params.get("Uin")
+        self.SubAccountUin = params.get("SubAccountUin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -301,6 +316,27 @@ class AlertRecord(AbstractModel):
         :param JobId: 任务 ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type JobId: str
+        :param AppId: App ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppId: int
+        :param Uin: 主账号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Uin: str
+        :param SubAccountUin: 子账号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubAccountUin: str
+        :param ScenarioName: 场景名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScenarioName: str
+        :param Target: 告警对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Target: str
+        :param JobSLAId: 告警规则 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JobSLAId: str
+        :param JobSLADescription: 告警规则描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JobSLADescription: str
         """
         self.AlertRecordId = None
         self.ProjectId = None
@@ -309,6 +345,13 @@ class AlertRecord(AbstractModel):
         self.CreatedAt = None
         self.UpdatedAt = None
         self.JobId = None
+        self.AppId = None
+        self.Uin = None
+        self.SubAccountUin = None
+        self.ScenarioName = None
+        self.Target = None
+        self.JobSLAId = None
+        self.JobSLADescription = None
 
 
     def _deserialize(self, params):
@@ -321,6 +364,13 @@ class AlertRecord(AbstractModel):
         self.CreatedAt = params.get("CreatedAt")
         self.UpdatedAt = params.get("UpdatedAt")
         self.JobId = params.get("JobId")
+        self.AppId = params.get("AppId")
+        self.Uin = params.get("Uin")
+        self.SubAccountUin = params.get("SubAccountUin")
+        self.ScenarioName = params.get("ScenarioName")
+        self.Target = params.get("Target")
+        self.JobSLAId = params.get("JobSLAId")
+        self.JobSLADescription = params.get("JobSLADescription")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1036,6 +1086,15 @@ class CronJob(AbstractModel):
         :param JobOwner: tom
 注意：此字段可能返回 null，表示取不到有效值。
         :type JobOwner: str
+        :param AppId: App ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppId: int
+        :param Uin: 主账号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Uin: str
+        :param SubAccountUin: 子账号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubAccountUin: str
         """
         self.CronJobId = None
         self.Name = None
@@ -1052,6 +1111,9 @@ class CronJob(AbstractModel):
         self.FrequencyType = None
         self.Note = None
         self.JobOwner = None
+        self.AppId = None
+        self.Uin = None
+        self.SubAccountUin = None
 
 
     def _deserialize(self, params):
@@ -1070,6 +1132,9 @@ class CronJob(AbstractModel):
         self.FrequencyType = params.get("FrequencyType")
         self.Note = params.get("Note")
         self.JobOwner = params.get("JobOwner")
+        self.AppId = params.get("AppId")
+        self.Uin = params.get("Uin")
+        self.SubAccountUin = params.get("SubAccountUin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2088,6 +2153,7 @@ class DescribeMetricLabelWithValuesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param MetricLabelWithValuesSet: 指标所有的label和values数组
+注意：此字段可能返回 null，表示取不到有效值。
         :type MetricLabelWithValuesSet: list of MetricLabelWithValues
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3050,6 +3116,12 @@ class File(AbstractModel):
         :param Status: 文件状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
+        :param CreatedAt: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatedAt: str
+        :param ProjectId: 项目 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectId: str
         """
         self.FileId = None
         self.Kind = None
@@ -3065,6 +3137,8 @@ class File(AbstractModel):
         self.FileInfos = None
         self.ScenarioSet = None
         self.Status = None
+        self.CreatedAt = None
+        self.ProjectId = None
 
 
     def _deserialize(self, params):
@@ -3092,6 +3166,8 @@ class File(AbstractModel):
                 obj._deserialize(item)
                 self.ScenarioSet.append(obj)
         self.Status = params.get("Status")
+        self.CreatedAt = params.get("CreatedAt")
+        self.ProjectId = params.get("ProjectId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3451,6 +3527,27 @@ JobSelectClusterException:19,JobCreateTaskException:20,JobSyncTaskException:21
         :param CronId: 定时任务ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type CronId: str
+        :param Type: 场景类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param DomainNameConfig: 域名绑定配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DomainNameConfig: :class:`tencentcloud.pts.v20210728.models.DomainNameConfig`
+        :param Debug: false
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Debug: bool
+        :param AbortReason: 中断原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AbortReason: int
+        :param CreatedAt: 任务的创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatedAt: str
+        :param ProjectId: 项目ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectId: str
+        :param NotificationHooks: 通知事件回调
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NotificationHooks: list of NotificationHook
         """
         self.JobId = None
         self.ScenarioId = None
@@ -3483,6 +3580,13 @@ JobSelectClusterException:19,JobCreateTaskException:20,JobSyncTaskException:21
         self.RequestFiles = None
         self.Plugins = None
         self.CronId = None
+        self.Type = None
+        self.DomainNameConfig = None
+        self.Debug = None
+        self.AbortReason = None
+        self.CreatedAt = None
+        self.ProjectId = None
+        self.NotificationHooks = None
 
 
     def _deserialize(self, params):
@@ -3551,6 +3655,20 @@ JobSelectClusterException:19,JobCreateTaskException:20,JobSyncTaskException:21
                 obj._deserialize(item)
                 self.Plugins.append(obj)
         self.CronId = params.get("CronId")
+        self.Type = params.get("Type")
+        if params.get("DomainNameConfig") is not None:
+            self.DomainNameConfig = DomainNameConfig()
+            self.DomainNameConfig._deserialize(params.get("DomainNameConfig"))
+        self.Debug = params.get("Debug")
+        self.AbortReason = params.get("AbortReason")
+        self.CreatedAt = params.get("CreatedAt")
+        self.ProjectId = params.get("ProjectId")
+        if params.get("NotificationHooks") is not None:
+            self.NotificationHooks = []
+            for item in params.get("NotificationHooks"):
+                obj = NotificationHook()
+                obj._deserialize(item)
+                self.NotificationHooks.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3886,6 +4004,36 @@ class Notification(AbstractModel):
         
 
 
+class NotificationHook(AbstractModel):
+    """事件通知回调
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Events: 通知事件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Events: list of str
+        :param URL: 回调 URL
+注意：此字段可能返回 null，表示取不到有效值。
+        :type URL: str
+        """
+        self.Events = None
+        self.URL = None
+
+
+    def _deserialize(self, params):
+        self.Events = params.get("Events")
+        self.URL = params.get("URL")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Project(AbstractModel):
     """项目
 
@@ -4103,6 +4251,12 @@ class RequestSummary(AbstractModel):
         :type Max: float
         :param ErrorPercentage: 请求错误率
         :type ErrorPercentage: float
+        :param P99: 请求p99耗时，单位秒
+        :type P99: float
+        :param Status: 响应状态码
+        :type Status: str
+        :param Result: 响应详情
+        :type Result: str
         """
         self.Service = None
         self.Method = None
@@ -4113,6 +4267,9 @@ class RequestSummary(AbstractModel):
         self.Min = None
         self.Max = None
         self.ErrorPercentage = None
+        self.P99 = None
+        self.Status = None
+        self.Result = None
 
 
     def _deserialize(self, params):
@@ -4125,6 +4282,9 @@ class RequestSummary(AbstractModel):
         self.Min = params.get("Min")
         self.Max = params.get("Max")
         self.ErrorPercentage = params.get("ErrorPercentage")
+        self.P99 = params.get("P99")
+        self.Status = params.get("Status")
+        self.Result = params.get("Result")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4540,6 +4700,9 @@ class Scenario(AbstractModel):
         :param DomainNameConfig: 域名解析配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type DomainNameConfig: :class:`tencentcloud.pts.v20210728.models.DomainNameConfig`
+        :param NotificationHooks: 通知事件回调
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NotificationHooks: list of NotificationHook
         """
         self.ScenarioId = None
         self.Name = None
@@ -4565,6 +4728,7 @@ class Scenario(AbstractModel):
         self.SLAPolicy = None
         self.Plugins = None
         self.DomainNameConfig = None
+        self.NotificationHooks = None
 
 
     def _deserialize(self, params):
@@ -4623,6 +4787,12 @@ class Scenario(AbstractModel):
         if params.get("DomainNameConfig") is not None:
             self.DomainNameConfig = DomainNameConfig()
             self.DomainNameConfig._deserialize(params.get("DomainNameConfig"))
+        if params.get("NotificationHooks") is not None:
+            self.NotificationHooks = []
+            for item in params.get("NotificationHooks"):
+                obj = NotificationHook()
+                obj._deserialize(item)
+                self.NotificationHooks.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

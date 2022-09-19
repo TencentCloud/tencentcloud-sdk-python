@@ -1206,10 +1206,14 @@ class MetricData(AbstractModel):
         :type Metric: str
         :param DataSet: 表数据
         :type DataSet: list of DatePoint
+        :param MetricCount: 查询范围内的请求总量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MetricCount: int
         """
         self.Resource = None
         self.Metric = None
         self.DataSet = None
+        self.MetricCount = None
 
 
     def _deserialize(self, params):
@@ -1221,6 +1225,7 @@ class MetricData(AbstractModel):
                 obj = DatePoint()
                 obj._deserialize(item)
                 self.DataSet.append(obj)
+        self.MetricCount = params.get("MetricCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

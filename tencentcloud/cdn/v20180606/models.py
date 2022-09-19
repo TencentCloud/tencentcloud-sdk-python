@@ -8170,6 +8170,34 @@ class GuetzliAdapter(AbstractModel):
         
 
 
+class HTTPHeader(AbstractModel):
+    """HTTP 请求头
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 请求头名称
+        :type Name: str
+        :param Value: 请求头值
+        :type Value: str
+        """
+        self.Name = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class HeaderKey(AbstractModel):
     """组成CacheKey
 
@@ -11319,6 +11347,8 @@ global：预热全球节点
 注意事项：
 此功能灰度发布中，敬请期待
         :type DisableRange: bool
+        :param Headers: 自定义 HTTP 请求头。最多定义 20 个，Name 长度不超过 128 字节，Value 长度不超过 1024 字节
+        :type Headers: list of HTTPHeader
         :param UrlEncode: 是否对URL进行编码
         :type UrlEncode: bool
         """
@@ -11328,6 +11358,7 @@ global：预热全球节点
         self.Layer = None
         self.ParseM3U8 = None
         self.DisableRange = None
+        self.Headers = None
         self.UrlEncode = None
 
 
@@ -11338,6 +11369,12 @@ global：预热全球节点
         self.Layer = params.get("Layer")
         self.ParseM3U8 = params.get("ParseM3U8")
         self.DisableRange = params.get("DisableRange")
+        if params.get("Headers") is not None:
+            self.Headers = []
+            for item in params.get("Headers"):
+                obj = HTTPHeader()
+                obj._deserialize(item)
+                self.Headers.append(obj)
         self.UrlEncode = params.get("UrlEncode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

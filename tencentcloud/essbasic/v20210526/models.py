@@ -1254,7 +1254,9 @@ class CreateSignUrlsRequest(AbstractModel):
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         :param FlowIds: 签署流程编号数组，最多支持100个。(备注：该参数和合同组编号必须二选一)
         :type FlowIds: list of str
-        :param Endpoint: 签署链接类型：“WEIXINAPP”-直接跳小程序；“CHANNEL”-跳转H5页面；“APP”-第三方APP或小程序跳转电子签小程序；默认“WEIXINAPP”类型，即跳转至小程序；
+        :param FlowGroupId: 合同组编号(备注：该参数和合同(流程)编号数组必须二选一)
+        :type FlowGroupId: str
+        :param Endpoint: 签署链接类型：“WEIXINAPP”-短链直接跳小程序；“CHANNEL”-跳转H5页面；“APP”-第三方APP或小程序跳转电子签小程序；"LONGURL2WEIXINAPP"-长链接跳转小程序；默认“WEIXINAPP”类型，即跳转至小程序；
         :type Endpoint: str
         :param GenerateType: 签署链接生成类型，默认是 "ALL"；
 "ALL"：全部签署方签署链接；
@@ -1280,11 +1282,10 @@ GenerateType为"PERSON"或"FOLLOWER"时必填
         :type JumpUrl: str
         :param Operator: 操作者的信息
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
-        :param FlowGroupId: 合同组编号(备注：该参数和合同(流程)编号数组必须二选一)
-        :type FlowGroupId: str
         """
         self.Agent = None
         self.FlowIds = None
+        self.FlowGroupId = None
         self.Endpoint = None
         self.GenerateType = None
         self.OrganizationName = None
@@ -1295,7 +1296,6 @@ GenerateType为"PERSON"或"FOLLOWER"时必填
         self.AutoJumpBack = None
         self.JumpUrl = None
         self.Operator = None
-        self.FlowGroupId = None
 
 
     def _deserialize(self, params):
@@ -1303,6 +1303,7 @@ GenerateType为"PERSON"或"FOLLOWER"时必填
             self.Agent = Agent()
             self.Agent._deserialize(params.get("Agent"))
         self.FlowIds = params.get("FlowIds")
+        self.FlowGroupId = params.get("FlowGroupId")
         self.Endpoint = params.get("Endpoint")
         self.GenerateType = params.get("GenerateType")
         self.OrganizationName = params.get("OrganizationName")
@@ -1315,7 +1316,6 @@ GenerateType为"PERSON"或"FOLLOWER"时必填
         if params.get("Operator") is not None:
             self.Operator = UserInfo()
             self.Operator._deserialize(params.get("Operator"))
-        self.FlowGroupId = params.get("FlowGroupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1522,15 +1522,15 @@ class DescribeTemplatesRequest(AbstractModel):
         :type TemplateId: str
         :param ContentType: 查询内容：0-模板列表及详情（默认），1-仅模板列表
         :type ContentType: int
-        :param Limit: 查询个数，默认20，最大100
+        :param Limit: 查询个数，默认20，最大100；在查询列表的时候有效
         :type Limit: int
-        :param Offset: 查询偏移位置，默认0
+        :param Offset: 查询偏移位置，默认0；在查询列表的时候有效
         :type Offset: int
         :param Operator: 操作者的信息
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         :param QueryAllComponents: 是否返回所有组件信息
         :type QueryAllComponents: bool
-        :param TemplateName: 模糊搜索模版名称
+        :param TemplateName: 模糊搜索模板名称
         :type TemplateName: str
         """
         self.Agent = None

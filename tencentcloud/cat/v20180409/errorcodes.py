@@ -44,6 +44,12 @@ FAILEDOPERATION_PRERESOURCEIDFAILED = 'FailedOperation.PreResourceIDFailed'
 # 资源不存在。
 FAILEDOPERATION_RESOURCENOTFOUND = 'FailedOperation.ResourceNotFound'
 
+# 发送授权请求失败。
+FAILEDOPERATION_SENDREQUEST = 'FailedOperation.SendRequest'
+
+# 标签验证错误。
+FAILEDOPERATION_TAGREQUIREDVERIFYFAILED = 'FailedOperation.TagRequiredVerifyFailed'
+
 # 任务未运行。
 FAILEDOPERATION_TASKNOTRUNNING = 'FailedOperation.TaskNotRunning'
 
@@ -58,6 +64,9 @@ FAILEDOPERATION_TASKTYPENOTSAME = 'FailedOperation.TaskTypeNotSame'
 
 # 试用任务量超时。
 FAILEDOPERATION_TRIALTASKEXCEED = 'FailedOperation.TrialTaskExceed'
+
+# json解析失败。
+FAILEDOPERATION_UNMARSHALRESPONSE = 'FailedOperation.UnmarshalResponse'
 
 # 内部错误。
 INTERNALERROR = 'InternalError'

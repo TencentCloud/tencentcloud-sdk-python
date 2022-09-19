@@ -2583,6 +2583,134 @@ class CreateUserResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CtsdbConnectParam(AbstractModel):
+    """Ctsdb连接源参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Port: Ctsdb的连接port
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Port: int
+        :param ServiceVip: Ctsdb连接源的实例vip
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceVip: str
+        :param UniqVpcId: Ctsdb连接源的vpcId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UniqVpcId: str
+        :param UserName: Ctsdb连接源的用户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserName: str
+        :param Password: Ctsdb连接源的密码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Password: str
+        :param Resource: Ctsdb连接源的实例资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Resource: str
+        """
+        self.Port = None
+        self.ServiceVip = None
+        self.UniqVpcId = None
+        self.UserName = None
+        self.Password = None
+        self.Resource = None
+
+
+    def _deserialize(self, params):
+        self.Port = params.get("Port")
+        self.ServiceVip = params.get("ServiceVip")
+        self.UniqVpcId = params.get("UniqVpcId")
+        self.UserName = params.get("UserName")
+        self.Password = params.get("Password")
+        self.Resource = params.get("Resource")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CtsdbModifyConnectParam(AbstractModel):
+    """Ctsdb连接源参数(更新)
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Port: Ctsdb的连接port
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Port: int
+        :param ServiceVip: Ctsdb连接源的实例vip
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceVip: str
+        :param UniqVpcId: Ctsdb连接源的vpcId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UniqVpcId: str
+        :param UserName: Ctsdb连接源的用户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserName: str
+        :param Password: Ctsdb连接源的密码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Password: str
+        :param Resource: Ctsdb连接源的实例资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Resource: str
+        """
+        self.Port = None
+        self.ServiceVip = None
+        self.UniqVpcId = None
+        self.UserName = None
+        self.Password = None
+        self.Resource = None
+
+
+    def _deserialize(self, params):
+        self.Port = params.get("Port")
+        self.ServiceVip = params.get("ServiceVip")
+        self.UniqVpcId = params.get("UniqVpcId")
+        self.UserName = params.get("UserName")
+        self.Password = params.get("Password")
+        self.Resource = params.get("Resource")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CtsdbParam(AbstractModel):
+    """Ctsdb类型入参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Resource: 连接管理实例资源
+        :type Resource: str
+        :param CtsdbMetric: Ctsdb的metric
+        :type CtsdbMetric: str
+        """
+        self.Resource = None
+        self.CtsdbMetric = None
+
+
+    def _deserialize(self, params):
+        self.Resource = params.get("Resource")
+        self.CtsdbMetric = params.get("CtsdbMetric")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DatahubResource(AbstractModel):
     """Datahub资源配置
 
@@ -2634,6 +2762,9 @@ class DatahubResource(AbstractModel):
         :param SQLServerParam: SQLServer配置，Type为SQLSERVER时必填
 注意：此字段可能返回 null，表示取不到有效值。
         :type SQLServerParam: :class:`tencentcloud.ckafka.v20190819.models.SQLServerParam`
+        :param CtsdbParam: Ctsdb配置，Type为CTSDB时必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CtsdbParam: :class:`tencentcloud.ckafka.v20190819.models.CtsdbParam`
         """
         self.Type = None
         self.KafkaParam = None
@@ -2650,6 +2781,7 @@ class DatahubResource(AbstractModel):
         self.TopicParam = None
         self.MariaDBParam = None
         self.SQLServerParam = None
+        self.CtsdbParam = None
 
 
     def _deserialize(self, params):
@@ -2696,6 +2828,9 @@ class DatahubResource(AbstractModel):
         if params.get("SQLServerParam") is not None:
             self.SQLServerParam = SQLServerParam()
             self.SQLServerParam._deserialize(params.get("SQLServerParam"))
+        if params.get("CtsdbParam") is not None:
+            self.CtsdbParam = CtsdbParam()
+            self.CtsdbParam._deserialize(params.get("CtsdbParam"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3672,12 +3807,21 @@ class DescribeConnectResource(AbstractModel):
         :param ClickHouseConnectParam: ClickHouse配置，Type为CLICKHOUSE时返回
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClickHouseConnectParam: :class:`tencentcloud.ckafka.v20190819.models.ClickHouseConnectParam`
-        :param MySQLConnectParam: MySQL配置，Type为MYSQL时必填
+        :param MySQLConnectParam: MySQL配置，Type为MYSQL或TDSQL_C_MYSQL时返回
 注意：此字段可能返回 null，表示取不到有效值。
         :type MySQLConnectParam: :class:`tencentcloud.ckafka.v20190819.models.MySQLConnectParam`
-        :param PostgreSQLConnectParam: PostgreSQL配置，Type为POSTGRESQL或TDSQL_C_POSTGRESQL时必填
+        :param PostgreSQLConnectParam: PostgreSQL配置，Type为POSTGRESQL或TDSQL_C_POSTGRESQL时返回
 注意：此字段可能返回 null，表示取不到有效值。
         :type PostgreSQLConnectParam: :class:`tencentcloud.ckafka.v20190819.models.PostgreSQLConnectParam`
+        :param MariaDBConnectParam: MariaDB配置，Type为MARIADB时返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MariaDBConnectParam: :class:`tencentcloud.ckafka.v20190819.models.MariaDBConnectParam`
+        :param SQLServerConnectParam: SQLServer配置，Type为SQLSERVER时返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SQLServerConnectParam: :class:`tencentcloud.ckafka.v20190819.models.SQLServerConnectParam`
+        :param CtsdbConnectParam: Ctsdb配置，Type为CTSDB时返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CtsdbConnectParam: :class:`tencentcloud.ckafka.v20190819.models.CtsdbConnectParam`
         """
         self.ResourceId = None
         self.ResourceName = None
@@ -3694,6 +3838,9 @@ class DescribeConnectResource(AbstractModel):
         self.ClickHouseConnectParam = None
         self.MySQLConnectParam = None
         self.PostgreSQLConnectParam = None
+        self.MariaDBConnectParam = None
+        self.SQLServerConnectParam = None
+        self.CtsdbConnectParam = None
 
 
     def _deserialize(self, params):
@@ -3724,6 +3871,15 @@ class DescribeConnectResource(AbstractModel):
         if params.get("PostgreSQLConnectParam") is not None:
             self.PostgreSQLConnectParam = PostgreSQLConnectParam()
             self.PostgreSQLConnectParam._deserialize(params.get("PostgreSQLConnectParam"))
+        if params.get("MariaDBConnectParam") is not None:
+            self.MariaDBConnectParam = MariaDBConnectParam()
+            self.MariaDBConnectParam._deserialize(params.get("MariaDBConnectParam"))
+        if params.get("SQLServerConnectParam") is not None:
+            self.SQLServerConnectParam = SQLServerConnectParam()
+            self.SQLServerConnectParam._deserialize(params.get("SQLServerConnectParam"))
+        if params.get("CtsdbConnectParam") is not None:
+            self.CtsdbConnectParam = CtsdbConnectParam()
+            self.CtsdbConnectParam._deserialize(params.get("CtsdbConnectParam"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3791,7 +3947,7 @@ class DescribeConnectResourceResp(AbstractModel):
         :param StepList: 步骤列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type StepList: list of str
-        :param MySQLConnectParam: MySQL配置，Type为MYSQL时返回
+        :param MySQLConnectParam: MySQL配置，Type为MYSQL或TDSQL_C_MYSQL时返回
 注意：此字段可能返回 null，表示取不到有效值。
         :type MySQLConnectParam: :class:`tencentcloud.ckafka.v20190819.models.MySQLConnectParam`
         :param PostgreSQLConnectParam: PostgreSQL配置，Type为POSTGRESQL或TDSQL_C_POSTGRESQL时返回
@@ -3809,6 +3965,15 @@ class DescribeConnectResourceResp(AbstractModel):
         :param ClickHouseConnectParam: ClickHouse配置，Type为CLICKHOUSE时返回
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClickHouseConnectParam: :class:`tencentcloud.ckafka.v20190819.models.ClickHouseConnectParam`
+        :param MariaDBConnectParam: MariaDB配置，Type为MARIADB时返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MariaDBConnectParam: :class:`tencentcloud.ckafka.v20190819.models.MariaDBConnectParam`
+        :param SQLServerConnectParam: SQLServer配置，Type为SQLSERVER时返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SQLServerConnectParam: :class:`tencentcloud.ckafka.v20190819.models.SQLServerConnectParam`
+        :param CtsdbConnectParam: Ctsdb配置，Type为CTSDB时返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CtsdbConnectParam: :class:`tencentcloud.ckafka.v20190819.models.CtsdbConnectParam`
         """
         self.ResourceId = None
         self.ResourceName = None
@@ -3825,6 +3990,9 @@ class DescribeConnectResourceResp(AbstractModel):
         self.MongoDBConnectParam = None
         self.EsConnectParam = None
         self.ClickHouseConnectParam = None
+        self.MariaDBConnectParam = None
+        self.SQLServerConnectParam = None
+        self.CtsdbConnectParam = None
 
 
     def _deserialize(self, params):
@@ -3855,6 +4023,15 @@ class DescribeConnectResourceResp(AbstractModel):
         if params.get("ClickHouseConnectParam") is not None:
             self.ClickHouseConnectParam = ClickHouseConnectParam()
             self.ClickHouseConnectParam._deserialize(params.get("ClickHouseConnectParam"))
+        if params.get("MariaDBConnectParam") is not None:
+            self.MariaDBConnectParam = MariaDBConnectParam()
+            self.MariaDBConnectParam._deserialize(params.get("MariaDBConnectParam"))
+        if params.get("SQLServerConnectParam") is not None:
+            self.SQLServerConnectParam = SQLServerConnectParam()
+            self.SQLServerConnectParam._deserialize(params.get("SQLServerConnectParam"))
+        if params.get("CtsdbConnectParam") is not None:
+            self.CtsdbConnectParam = CtsdbConnectParam()
+            self.CtsdbConnectParam._deserialize(params.get("CtsdbConnectParam"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7070,6 +7247,39 @@ class JgwOperateResponse(AbstractModel):
         
 
 
+class KVParam(AbstractModel):
+    """key-value二次解析
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Delimiter: 分隔符
+        :type Delimiter: str
+        :param Regex: key-value二次解析分隔符
+        :type Regex: str
+        :param KeepOriginalKey: 保留源Key，默认为false不保留
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KeepOriginalKey: str
+        """
+        self.Delimiter = None
+        self.Regex = None
+        self.KeepOriginalKey = None
+
+
+    def _deserialize(self, params):
+        self.Delimiter = params.get("Delimiter")
+        self.Regex = params.get("Regex")
+        self.KeepOriginalKey = params.get("KeepOriginalKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class KafkaParam(AbstractModel):
     """Ckafka配置
 
@@ -7314,11 +7524,29 @@ class MariaDBParam(AbstractModel):
         :type Resource: str
         :param SnapshotMode: 复制存量信息(schema_only不复制, initial全量)，默认位initial
         :type SnapshotMode: str
+        :param KeyColumns: 格式：库1.表1:字段1,字段2;库2.表2:字段2，表之间;（分号）隔开，字段之间,（逗号）隔开。不指定的表默认取表的主键
+        :type KeyColumns: str
+        :param IsTablePrefix: 当Table输入的是前缀时，该项值为true，否则为false
+        :type IsTablePrefix: bool
+        :param OutputFormat: 输出格式，DEFAULT、CANAL_1、CANAL_2
+        :type OutputFormat: str
+        :param IncludeContentChanges: 如果该值为all，则DDL数据以及DML数据也会写入到选中的topic；若该值为dml，则只有DML数据写入到选中的topic
+        :type IncludeContentChanges: str
+        :param IncludeQuery: 如果该值为true，且MySQL中"binlog_rows_query_log_events"配置项的值为"ON"，则流入到topic的数据包含原SQL语句；若该值为false，流入到topic的数据不包含原SQL语句
+        :type IncludeQuery: bool
+        :param RecordWithSchema: 如果该值为 true，则消息中会携带消息结构体对应的schema，如果该值为false则不会携带
+        :type RecordWithSchema: bool
         """
         self.Database = None
         self.Table = None
         self.Resource = None
         self.SnapshotMode = None
+        self.KeyColumns = None
+        self.IsTablePrefix = None
+        self.OutputFormat = None
+        self.IncludeContentChanges = None
+        self.IncludeQuery = None
+        self.RecordWithSchema = None
 
 
     def _deserialize(self, params):
@@ -7326,6 +7554,12 @@ class MariaDBParam(AbstractModel):
         self.Table = params.get("Table")
         self.Resource = params.get("Resource")
         self.SnapshotMode = params.get("SnapshotMode")
+        self.KeyColumns = params.get("KeyColumns")
+        self.IsTablePrefix = params.get("IsTablePrefix")
+        self.OutputFormat = params.get("OutputFormat")
+        self.IncludeContentChanges = params.get("IncludeContentChanges")
+        self.IncludeQuery = params.get("IncludeQuery")
+        self.RecordWithSchema = params.get("RecordWithSchema")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7366,6 +7600,8 @@ class ModifyConnectResourceRequest(AbstractModel):
         :type MariaDBConnectParam: :class:`tencentcloud.ckafka.v20190819.models.MariaDBModifyConnectParam`
         :param SQLServerConnectParam: SQLServer配置，Type为SQLSERVER时必填
         :type SQLServerConnectParam: :class:`tencentcloud.ckafka.v20190819.models.SQLServerModifyConnectParam`
+        :param CtsdbConnectParam: Ctsdb配置，Type为CTSDB
+        :type CtsdbConnectParam: :class:`tencentcloud.ckafka.v20190819.models.CtsdbModifyConnectParam`
         """
         self.ResourceId = None
         self.ResourceName = None
@@ -7379,6 +7615,7 @@ class ModifyConnectResourceRequest(AbstractModel):
         self.PostgreSQLConnectParam = None
         self.MariaDBConnectParam = None
         self.SQLServerConnectParam = None
+        self.CtsdbConnectParam = None
 
 
     def _deserialize(self, params):
@@ -7410,6 +7647,9 @@ class ModifyConnectResourceRequest(AbstractModel):
         if params.get("SQLServerConnectParam") is not None:
             self.SQLServerConnectParam = SQLServerModifyConnectParam()
             self.SQLServerConnectParam._deserialize(params.get("SQLServerConnectParam"))
+        if params.get("CtsdbConnectParam") is not None:
+            self.CtsdbConnectParam = CtsdbModifyConnectParam()
+            self.CtsdbConnectParam._deserialize(params.get("CtsdbConnectParam"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8625,6 +8865,12 @@ class PostgreSQLParam(AbstractModel):
         :type DataTargetRecordMapping: list of RecordMapping
         :param DropInvalidMessage: 是否抛弃解析失败的消息，默认为true
         :type DropInvalidMessage: bool
+        :param IsTableRegular: 输入的table是否为正则表达式
+        :type IsTableRegular: bool
+        :param KeyColumns: 格式：库1.表1:字段1,字段2;库2.表2:字段2，表之间;（分号）隔开，字段之间,（逗号）隔开。不指定的表默认取表的主键
+        :type KeyColumns: str
+        :param RecordWithSchema: 如果该值为 true，则消息中会携带消息结构体对应的schema，如果该值为false则不会携带
+        :type RecordWithSchema: bool
         """
         self.Database = None
         self.Table = None
@@ -8636,6 +8882,9 @@ class PostgreSQLParam(AbstractModel):
         self.DataTargetPrimaryKeyField = None
         self.DataTargetRecordMapping = None
         self.DropInvalidMessage = None
+        self.IsTableRegular = None
+        self.KeyColumns = None
+        self.RecordWithSchema = None
 
 
     def _deserialize(self, params):
@@ -8654,6 +8903,9 @@ class PostgreSQLParam(AbstractModel):
                 obj._deserialize(item)
                 self.DataTargetRecordMapping.append(obj)
         self.DropInvalidMessage = params.get("DropInvalidMessage")
+        self.IsTableRegular = params.get("IsTableRegular")
+        self.KeyColumns = params.get("KeyColumns")
+        self.RecordWithSchema = params.get("RecordWithSchema")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -9333,6 +9585,30 @@ class SendMessageResponse(AbstractModel):
     def _deserialize(self, params):
         self.MessageId = params.get("MessageId")
         self.RequestId = params.get("RequestId")
+
+
+class SplitParam(AbstractModel):
+    """值支持一拆多，即将一个值拆为一个数组
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Regex: 分隔符
+        :type Regex: str
+        """
+        self.Regex = None
+
+
+    def _deserialize(self, params):
+        self.Regex = params.get("Regex")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class SubscribedInfo(AbstractModel):
@@ -10135,6 +10411,9 @@ class TransformsParam(AbstractModel):
         :param RowParam: 输出格式为ROW必填
 注意：此字段可能返回 null，表示取不到有效值。
         :type RowParam: :class:`tencentcloud.ckafka.v20190819.models.RowParam`
+        :param KeepMetadata: 是否保留数据源Topic元数据信息（源Topic、Partition、Offset），默认为false
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KeepMetadata: bool
         """
         self.Content = None
         self.FieldChain = None
@@ -10144,6 +10423,7 @@ class TransformsParam(AbstractModel):
         self.SourceType = None
         self.OutputFormat = None
         self.RowParam = None
+        self.KeepMetadata = None
 
 
     def _deserialize(self, params):
@@ -10169,6 +10449,7 @@ class TransformsParam(AbstractModel):
         if params.get("RowParam") is not None:
             self.RowParam = RowParam()
             self.RowParam._deserialize(params.get("RowParam"))
+        self.KeepMetadata = params.get("KeepMetadata")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -10255,7 +10536,7 @@ class ValueParam(AbstractModel):
 
     def __init__(self):
         r"""
-        :param Type: 处理模式，REPLACE替换，SUBSTR截取，DATE日期转换，TRIM去除前后空格，REGEX_REPLACE正则替换
+        :param Type: 处理模式，REPLACE替换，SUBSTR截取，DATE日期转换，TRIM去除前后空格，REGEX_REPLACE正则替换，URL_DECODE，LOWERCASE转换为小写
         :type Type: str
         :param Replace: 替换，TYPE=REPLACE时必传
 注意：此字段可能返回 null，表示取不到有效值。
@@ -10269,12 +10550,24 @@ class ValueParam(AbstractModel):
         :param RegexReplace: 正则替换，TYPE=REGEX_REPLACE时必传
 注意：此字段可能返回 null，表示取不到有效值。
         :type RegexReplace: :class:`tencentcloud.ckafka.v20190819.models.RegexReplaceParam`
+        :param Split: 值支持一拆多，TYPE=SPLIT时必传
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Split: :class:`tencentcloud.ckafka.v20190819.models.SplitParam`
+        :param KV: key-value二次解析，TYPE=KV时必传
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KV: :class:`tencentcloud.ckafka.v20190819.models.KVParam`
+        :param Result: 处理结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: str
         """
         self.Type = None
         self.Replace = None
         self.Substr = None
         self.Date = None
         self.RegexReplace = None
+        self.Split = None
+        self.KV = None
+        self.Result = None
 
 
     def _deserialize(self, params):
@@ -10291,6 +10584,13 @@ class ValueParam(AbstractModel):
         if params.get("RegexReplace") is not None:
             self.RegexReplace = RegexReplaceParam()
             self.RegexReplace._deserialize(params.get("RegexReplace"))
+        if params.get("Split") is not None:
+            self.Split = SplitParam()
+            self.Split._deserialize(params.get("Split"))
+        if params.get("KV") is not None:
+            self.KV = KVParam()
+            self.KV._deserialize(params.get("KV"))
+        self.Result = params.get("Result")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

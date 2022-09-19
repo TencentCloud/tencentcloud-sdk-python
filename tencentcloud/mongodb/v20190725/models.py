@@ -74,18 +74,19 @@ class Auth(AbstractModel):
 
     def __init__(self):
         r"""
-        :param NameSpace: *表示所有数据库,db.name表示特定的name数据库。
-        :type NameSpace: str
-        :param Mask: 用于控制权限,0无权限，1只读，2只写，3读写。
+        :param Mask: 当前账号具有的权限信息。<ul><li>0：无权限。</li><li>1：只读。</li><li>2：只写。</li><li>3：读写。</li></ul>
         :type Mask: int
+        :param NameSpace: 指具有当前账号权限的数据库名。
+<ul><li>* ：表示所有数据库。</li><li>db.name：表示特定name的数据库。</li></ul>
+        :type NameSpace: str
         """
-        self.NameSpace = None
         self.Mask = None
+        self.NameSpace = None
 
 
     def _deserialize(self, params):
-        self.NameSpace = params.get("NameSpace")
         self.Mask = params.get("Mask")
+        self.NameSpace = params.get("NameSpace")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

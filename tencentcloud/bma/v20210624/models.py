@@ -827,7 +827,7 @@ class CreateCRWorkRequest(AbstractModel):
         :type SamplePublicURL: str
         :param IsMonitor: 是否启用监测 0：不启用 1：启用 默认为0
         :type IsMonitor: str
-        :param IsCert: 是否启用存证0：不启用 1：启用 默认为1
+        :param IsCert: 是否启用存证0：不存证  2：存证 默认为0
         :type IsCert: str
         :param CertUrl: 存证回调地址
         :type CertUrl: str
@@ -835,25 +835,25 @@ class CreateCRWorkRequest(AbstractModel):
         :type MonitorUrl: str
         :param ProduceType: 创作性质（原创,改编,翻译,汇编,注释,整理,其他)
         :type ProduceType: str
-        :param WhiteLists: xxx
+        :param WhiteLists: 白名单
         :type WhiteLists: list of str
-        :param WorkId: x
+        :param WorkId: 作品ID
         :type WorkId: int
-        :param ProducerName: xx
+        :param ProducerName: 著作权人姓名
         :type ProducerName: str
-        :param Nickname: xx
+        :param Nickname: 作者
         :type Nickname: str
-        :param Authorization: x
+        :param Authorization: 授权书
         :type Authorization: str
-        :param AuthorizationStartTime: x
+        :param AuthorizationStartTime: 授权书开始时间
         :type AuthorizationStartTime: str
-        :param AuthorizationEndTime: x
+        :param AuthorizationEndTime: 授权书结束时间
         :type AuthorizationEndTime: str
-        :param ContentType: x
+        :param ContentType: 内容格式
         :type ContentType: str
-        :param Content: x
+        :param Content: 文件内容
         :type Content: str
-        :param MonitorEndTime: x
+        :param MonitorEndTime: 监测结束时间
         :type MonitorEndTime: str
         """
         self.WorkName = None
