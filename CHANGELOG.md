@@ -1,3 +1,28 @@
+# Release 3.0.735
+
+## 应用合规平台(acp) 版本：2022-01-05
+
+### 第 5 次发布
+
+发布时间：2022-09-19 11:21:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateAppScanTask](https://cloud.tencent.com/document/api/1553/75166)
+
+	* 新增入参：AppSha1, PrivacyTextMD5
+
+* [CreateAppScanTaskRepeat](https://cloud.tencent.com/document/api/1553/75165)
+
+	* 新增入参：AppSha1, PrivacyTextMD5
+
+
+
+
 # Release 3.0.734
 
 ## 内容分发网络(cdn) 版本：2018-06-06

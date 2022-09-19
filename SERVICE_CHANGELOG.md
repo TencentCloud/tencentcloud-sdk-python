@@ -1,33 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 内容分发网络(cdn) 版本：2018-06-06
+## 应用合规平台(acp) 版本：2022-01-05
 
-### 第 111 次发布
+### 第 5 次发布
 
-发布时间：2022-09-19 06:14:28
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [PushUrlsCache](https://cloud.tencent.com/document/api/228/37869)
-
-	* 新增入参：Headers
-
-
-新增数据结构：
-
-* [HTTPHeader](https://cloud.tencent.com/document/api/228/30987#HTTPHeader)
-
-
-
-## 消息队列 Ckafka(ckafka) 版本：2019-08-19
-
-### 第 57 次发布
-
-发布时间：2022-09-19 06:16:48
+发布时间：2022-09-19 11:21:50
 
 本次发布包含了以下内容：
 
@@ -35,166 +12,13 @@
 
 修改接口：
 
-* [ModifyConnectResource](https://cloud.tencent.com/document/api/597/77794)
+* [CreateAppScanTask](https://cloud.tencent.com/document/api/1553/75166)
 
-	* 新增入参：CtsdbConnectParam
+	* 新增入参：AppSha1, PrivacyTextMD5
 
+* [CreateAppScanTaskRepeat](https://cloud.tencent.com/document/api/1553/75165)
 
-新增数据结构：
-
-* [CtsdbConnectParam](https://cloud.tencent.com/document/api/597/40861#CtsdbConnectParam)
-* [CtsdbModifyConnectParam](https://cloud.tencent.com/document/api/597/40861#CtsdbModifyConnectParam)
-* [CtsdbParam](https://cloud.tencent.com/document/api/597/40861#CtsdbParam)
-* [KVParam](https://cloud.tencent.com/document/api/597/40861#KVParam)
-* [SplitParam](https://cloud.tencent.com/document/api/597/40861#SplitParam)
-
-修改数据结构：
-
-* [DatahubResource](https://cloud.tencent.com/document/api/597/40861#DatahubResource)
-
-	* 新增成员：CtsdbParam
-
-* [DescribeConnectResource](https://cloud.tencent.com/document/api/597/40861#DescribeConnectResource)
-
-	* 新增成员：MariaDBConnectParam, SQLServerConnectParam, CtsdbConnectParam
-
-* [DescribeConnectResourceResp](https://cloud.tencent.com/document/api/597/40861#DescribeConnectResourceResp)
-
-	* 新增成员：MariaDBConnectParam, SQLServerConnectParam, CtsdbConnectParam
-
-* [MariaDBParam](https://cloud.tencent.com/document/api/597/40861#MariaDBParam)
-
-	* 新增成员：KeyColumns, IsTablePrefix, OutputFormat, IncludeContentChanges, IncludeQuery, RecordWithSchema
-
-* [PostgreSQLParam](https://cloud.tencent.com/document/api/597/40861#PostgreSQLParam)
-
-	* 新增成员：IsTableRegular, KeyColumns, RecordWithSchema
-
-* [TransformsParam](https://cloud.tencent.com/document/api/597/40861#TransformsParam)
-
-	* 新增成员：KeepMetadata
-
-* [ValueParam](https://cloud.tencent.com/document/api/597/40861#ValueParam)
-
-	* 新增成员：Split, KV, Result
-
-
-
-
-## 云端 IDE(cloudstudio) 版本：2021-05-24
-
-### 第 1 次发布
-
-发布时间：2022-09-16 10:03:09
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateCustomizeTemplates](https://cloud.tencent.com/document/api/1039/80553)
-* [CreateWorkspaceByAgent](https://cloud.tencent.com/document/api/1039/80542)
-* [CreateWorkspaceByTemplate](https://cloud.tencent.com/document/api/1039/80552)
-* [CreateWorkspaceByVersionControl](https://cloud.tencent.com/document/api/1039/80541)
-* [DeleteCustomizeTemplatesById](https://cloud.tencent.com/document/api/1039/80551)
-* [DescribeCustomizeTemplates](https://cloud.tencent.com/document/api/1039/80550)
-* [DescribeCustomizeTemplatesById](https://cloud.tencent.com/document/api/1039/80549)
-* [DescribeCustomizeTemplatesPresets](https://cloud.tencent.com/document/api/1039/80548)
-* [DescribeWorkspaceEnvList](https://cloud.tencent.com/document/api/1039/80540)
-* [DescribeWorkspaceNameExist](https://cloud.tencent.com/document/api/1039/80539)
-* [DescribeWorkspaceStatus](https://cloud.tencent.com/document/api/1039/80538)
-* [DescribeWorkspaceStatusList](https://cloud.tencent.com/document/api/1039/80537)
-* [ModifyCustomizeTemplateVersionControl](https://cloud.tencent.com/document/api/1039/80547)
-* [ModifyCustomizeTemplatesFullById](https://cloud.tencent.com/document/api/1039/80546)
-* [ModifyCustomizeTemplatesPartById](https://cloud.tencent.com/document/api/1039/80545)
-* [ModifyWorkspaceAttributes](https://cloud.tencent.com/document/api/1039/80544)
-* [RecoverWorkspace](https://cloud.tencent.com/document/api/1039/80536)
-* [RemoveWorkspace](https://cloud.tencent.com/document/api/1039/80535)
-* [RunWorkspace](https://cloud.tencent.com/document/api/1039/80534)
-* [StopWorkspace](https://cloud.tencent.com/document/api/1039/80533)
-
-新增数据结构：
-
-* [AgentSpaceDTO](https://cloud.tencent.com/document/api/1039/80554#AgentSpaceDTO)
-* [CustomizeTemplatesPresetsInfo](https://cloud.tencent.com/document/api/1039/80554#CustomizeTemplatesPresetsInfo)
-* [ImageUserDTO](https://cloud.tencent.com/document/api/1039/80554#ImageUserDTO)
-* [UserDefinedTemplateParams](https://cloud.tencent.com/document/api/1039/80554#UserDefinedTemplateParams)
-* [UserDefinedTemplatePatchedParams](https://cloud.tencent.com/document/api/1039/80554#UserDefinedTemplatePatchedParams)
-* [UserInfoRsp](https://cloud.tencent.com/document/api/1039/80554#UserInfoRsp)
-* [UserSubInfo](https://cloud.tencent.com/document/api/1039/80554#UserSubInfo)
-* [WorkspaceDTO](https://cloud.tencent.com/document/api/1039/80554#WorkspaceDTO)
-* [WorkspaceInfo](https://cloud.tencent.com/document/api/1039/80554#WorkspaceInfo)
-* [WorkspaceInfoDTO](https://cloud.tencent.com/document/api/1039/80554#WorkspaceInfoDTO)
-* [WorkspaceResourceDTO](https://cloud.tencent.com/document/api/1039/80554#WorkspaceResourceDTO)
-* [WorkspaceShareInfo](https://cloud.tencent.com/document/api/1039/80554#WorkspaceShareInfo)
-* [WorkspaceStatusInfo](https://cloud.tencent.com/document/api/1039/80554#WorkspaceStatusInfo)
-* [WorkspaceTemplateInfo](https://cloud.tencent.com/document/api/1039/80554#WorkspaceTemplateInfo)
-
-
-
-## 私有域解析 Private DNS(privatedns) 版本：2020-10-28
-
-### 第 10 次发布
-
-发布时间：2022-09-19 06:43:11
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [MetricData](https://cloud.tencent.com/document/api/1338/55947#MetricData)
-
-	* 新增成员：MetricCount
-
-
-
-
-## 云压测(pts) 版本：2021-07-28
-
-### 第 4 次发布
-
-发布时间：2022-09-19 06:43:24
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增数据结构：
-
-* [NotificationHook](https://cloud.tencent.com/document/api/1484/78100#NotificationHook)
-
-修改数据结构：
-
-* [AlertChannelRecord](https://cloud.tencent.com/document/api/1484/78100#AlertChannelRecord)
-
-	* 新增成员：AppId, Uin, SubAccountUin
-
-* [AlertRecord](https://cloud.tencent.com/document/api/1484/78100#AlertRecord)
-
-	* 新增成员：AppId, Uin, SubAccountUin, ScenarioName, Target, JobSLAId, JobSLADescription
-
-* [CronJob](https://cloud.tencent.com/document/api/1484/78100#CronJob)
-
-	* 新增成员：AppId, Uin, SubAccountUin
-
-* [File](https://cloud.tencent.com/document/api/1484/78100#File)
-
-	* 新增成员：CreatedAt, ProjectId
-
-* [Job](https://cloud.tencent.com/document/api/1484/78100#Job)
-
-	* 新增成员：Type, DomainNameConfig, Debug, AbortReason, CreatedAt, ProjectId, NotificationHooks
-
-* [RequestSummary](https://cloud.tencent.com/document/api/1484/78100#RequestSummary)
-
-	* 新增成员：P99, Status, Result
-
-* [Scenario](https://cloud.tencent.com/document/api/1484/78100#Scenario)
-
-	* 新增成员：NotificationHooks
+	* 新增入参：AppSha1, PrivacyTextMD5
 
 
 
@@ -449,6 +273,25 @@
 
 
 ## 应用合规平台(acp) 版本：2022-01-05
+
+### 第 5 次发布
+
+发布时间：2022-09-19 11:21:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateAppScanTask](https://cloud.tencent.com/document/api/1553/75166)
+
+	* 新增入参：AppSha1, PrivacyTextMD5
+
+* [CreateAppScanTaskRepeat](https://cloud.tencent.com/document/api/1553/75165)
+
+	* 新增入参：AppSha1, PrivacyTextMD5
+
 
 ### 第 4 次发布
 
@@ -13822,7 +13665,7 @@
 
 新增数据结构：
 
-* [[HTTPHeader](https://cloud.tencent.com/document/api/228/30987#HTTPHeader)](https://cloud.tencent.com/document/api/228/30987#[HTTPHeader](https://cloud.tencent.com/document/api/228/30987#HTTPHeader))
+* [HTTPHeader](https://cloud.tencent.com/document/api/228/30987#HTTPHeader)
 
 ### 第 110 次发布
 
@@ -17913,11 +17756,11 @@
 
 新增数据结构：
 
-* [[CtsdbConnectParam](https://cloud.tencent.com/document/api/597/40861#CtsdbConnectParam)](https://cloud.tencent.com/document/api/597/40861#[CtsdbConnectParam](https://cloud.tencent.com/document/api/597/40861#CtsdbConnectParam))
-* [[CtsdbModifyConnectParam](https://cloud.tencent.com/document/api/597/40861#CtsdbModifyConnectParam)](https://cloud.tencent.com/document/api/597/40861#[CtsdbModifyConnectParam](https://cloud.tencent.com/document/api/597/40861#CtsdbModifyConnectParam))
-* [[CtsdbParam](https://cloud.tencent.com/document/api/597/40861#CtsdbParam)](https://cloud.tencent.com/document/api/597/40861#[CtsdbParam](https://cloud.tencent.com/document/api/597/40861#CtsdbParam))
-* [[KVParam](https://cloud.tencent.com/document/api/597/40861#KVParam)](https://cloud.tencent.com/document/api/597/40861#[KVParam](https://cloud.tencent.com/document/api/597/40861#KVParam))
-* [[SplitParam](https://cloud.tencent.com/document/api/597/40861#SplitParam)](https://cloud.tencent.com/document/api/597/40861#[SplitParam](https://cloud.tencent.com/document/api/597/40861#SplitParam))
+* [CtsdbConnectParam](https://cloud.tencent.com/document/api/597/40861#CtsdbConnectParam)
+* [CtsdbModifyConnectParam](https://cloud.tencent.com/document/api/597/40861#CtsdbModifyConnectParam)
+* [CtsdbParam](https://cloud.tencent.com/document/api/597/40861#CtsdbParam)
+* [KVParam](https://cloud.tencent.com/document/api/597/40861#KVParam)
+* [SplitParam](https://cloud.tencent.com/document/api/597/40861#SplitParam)
 
 修改数据结构：
 
@@ -21014,43 +20857,43 @@
 
 新增接口：
 
-* [[CreateCustomizeTemplates](https://cloud.tencent.com/document/api/1039/80553)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateWorkspaceByAgent](https://cloud.tencent.com/document/api/1039/80542)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateWorkspaceByTemplate](https://cloud.tencent.com/document/api/1039/80552)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateWorkspaceByVersionControl](https://cloud.tencent.com/document/api/1039/80541)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteCustomizeTemplatesById](https://cloud.tencent.com/document/api/1039/80551)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeCustomizeTemplates](https://cloud.tencent.com/document/api/1039/80550)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeCustomizeTemplatesById](https://cloud.tencent.com/document/api/1039/80549)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeCustomizeTemplatesPresets](https://cloud.tencent.com/document/api/1039/80548)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeWorkspaceEnvList](https://cloud.tencent.com/document/api/1039/80540)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeWorkspaceNameExist](https://cloud.tencent.com/document/api/1039/80539)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeWorkspaceStatus](https://cloud.tencent.com/document/api/1039/80538)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeWorkspaceStatusList](https://cloud.tencent.com/document/api/1039/80537)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyCustomizeTemplateVersionControl](https://cloud.tencent.com/document/api/1039/80547)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyCustomizeTemplatesFullById](https://cloud.tencent.com/document/api/1039/80546)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyCustomizeTemplatesPartById](https://cloud.tencent.com/document/api/1039/80545)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyWorkspaceAttributes](https://cloud.tencent.com/document/api/1039/80544)](https://cloud.tencent.com/document/api/#/#)
-* [[RecoverWorkspace](https://cloud.tencent.com/document/api/1039/80536)](https://cloud.tencent.com/document/api/#/#)
-* [[RemoveWorkspace](https://cloud.tencent.com/document/api/1039/80535)](https://cloud.tencent.com/document/api/#/#)
-* [[RunWorkspace](https://cloud.tencent.com/document/api/1039/80534)](https://cloud.tencent.com/document/api/#/#)
-* [[StopWorkspace](https://cloud.tencent.com/document/api/1039/80533)](https://cloud.tencent.com/document/api/#/#)
+* [CreateCustomizeTemplates](https://cloud.tencent.com/document/api/1039/80553)
+* [CreateWorkspaceByAgent](https://cloud.tencent.com/document/api/1039/80542)
+* [CreateWorkspaceByTemplate](https://cloud.tencent.com/document/api/1039/80552)
+* [CreateWorkspaceByVersionControl](https://cloud.tencent.com/document/api/1039/80541)
+* [DeleteCustomizeTemplatesById](https://cloud.tencent.com/document/api/1039/80551)
+* [DescribeCustomizeTemplates](https://cloud.tencent.com/document/api/1039/80550)
+* [DescribeCustomizeTemplatesById](https://cloud.tencent.com/document/api/1039/80549)
+* [DescribeCustomizeTemplatesPresets](https://cloud.tencent.com/document/api/1039/80548)
+* [DescribeWorkspaceEnvList](https://cloud.tencent.com/document/api/1039/80540)
+* [DescribeWorkspaceNameExist](https://cloud.tencent.com/document/api/1039/80539)
+* [DescribeWorkspaceStatus](https://cloud.tencent.com/document/api/1039/80538)
+* [DescribeWorkspaceStatusList](https://cloud.tencent.com/document/api/1039/80537)
+* [ModifyCustomizeTemplateVersionControl](https://cloud.tencent.com/document/api/1039/80547)
+* [ModifyCustomizeTemplatesFullById](https://cloud.tencent.com/document/api/1039/80546)
+* [ModifyCustomizeTemplatesPartById](https://cloud.tencent.com/document/api/1039/80545)
+* [ModifyWorkspaceAttributes](https://cloud.tencent.com/document/api/1039/80544)
+* [RecoverWorkspace](https://cloud.tencent.com/document/api/1039/80536)
+* [RemoveWorkspace](https://cloud.tencent.com/document/api/1039/80535)
+* [RunWorkspace](https://cloud.tencent.com/document/api/1039/80534)
+* [StopWorkspace](https://cloud.tencent.com/document/api/1039/80533)
 
 新增数据结构：
 
-* [[AgentSpaceDTO](https://cloud.tencent.com/document/api/1039/80554#AgentSpaceDTO)](https://cloud.tencent.com/document/api/1039/80554#[AgentSpaceDTO](https://cloud.tencent.com/document/api/1039/80554#AgentSpaceDTO))
-* [[CustomizeTemplatesPresetsInfo](https://cloud.tencent.com/document/api/1039/80554#CustomizeTemplatesPresetsInfo)](https://cloud.tencent.com/document/api/1039/80554#[CustomizeTemplatesPresetsInfo](https://cloud.tencent.com/document/api/1039/80554#CustomizeTemplatesPresetsInfo))
-* [[ImageUserDTO](https://cloud.tencent.com/document/api/1039/80554#ImageUserDTO)](https://cloud.tencent.com/document/api/1039/80554#[ImageUserDTO](https://cloud.tencent.com/document/api/1039/80554#ImageUserDTO))
-* [[UserDefinedTemplateParams](https://cloud.tencent.com/document/api/1039/80554#UserDefinedTemplateParams)](https://cloud.tencent.com/document/api/1039/80554#[UserDefinedTemplateParams](https://cloud.tencent.com/document/api/1039/80554#UserDefinedTemplateParams))
-* [[UserDefinedTemplatePatchedParams](https://cloud.tencent.com/document/api/1039/80554#UserDefinedTemplatePatchedParams)](https://cloud.tencent.com/document/api/1039/80554#[UserDefinedTemplatePatchedParams](https://cloud.tencent.com/document/api/1039/80554#UserDefinedTemplatePatchedParams))
-* [[UserInfoRsp](https://cloud.tencent.com/document/api/1039/80554#UserInfoRsp)](https://cloud.tencent.com/document/api/1039/80554#[UserInfoRsp](https://cloud.tencent.com/document/api/1039/80554#UserInfoRsp))
-* [[UserSubInfo](https://cloud.tencent.com/document/api/1039/80554#UserSubInfo)](https://cloud.tencent.com/document/api/1039/80554#[UserSubInfo](https://cloud.tencent.com/document/api/1039/80554#UserSubInfo))
-* [[WorkspaceDTO](https://cloud.tencent.com/document/api/1039/80554#WorkspaceDTO)](https://cloud.tencent.com/document/api/1039/80554#[WorkspaceDTO](https://cloud.tencent.com/document/api/1039/80554#WorkspaceDTO))
-* [[WorkspaceInfo](https://cloud.tencent.com/document/api/1039/80554#WorkspaceInfo)](https://cloud.tencent.com/document/api/1039/80554#[WorkspaceInfo](https://cloud.tencent.com/document/api/1039/80554#WorkspaceInfo))
-* [[WorkspaceInfoDTO](https://cloud.tencent.com/document/api/1039/80554#WorkspaceInfoDTO)](https://cloud.tencent.com/document/api/1039/80554#[WorkspaceInfoDTO](https://cloud.tencent.com/document/api/1039/80554#WorkspaceInfoDTO))
-* [[WorkspaceResourceDTO](https://cloud.tencent.com/document/api/1039/80554#WorkspaceResourceDTO)](https://cloud.tencent.com/document/api/1039/80554#[WorkspaceResourceDTO](https://cloud.tencent.com/document/api/1039/80554#WorkspaceResourceDTO))
-* [[WorkspaceShareInfo](https://cloud.tencent.com/document/api/1039/80554#WorkspaceShareInfo)](https://cloud.tencent.com/document/api/1039/80554#[WorkspaceShareInfo](https://cloud.tencent.com/document/api/1039/80554#WorkspaceShareInfo))
-* [[WorkspaceStatusInfo](https://cloud.tencent.com/document/api/1039/80554#WorkspaceStatusInfo)](https://cloud.tencent.com/document/api/1039/80554#[WorkspaceStatusInfo](https://cloud.tencent.com/document/api/1039/80554#WorkspaceStatusInfo))
-* [[WorkspaceTemplateInfo](https://cloud.tencent.com/document/api/1039/80554#WorkspaceTemplateInfo)](https://cloud.tencent.com/document/api/1039/80554#[WorkspaceTemplateInfo](https://cloud.tencent.com/document/api/1039/80554#WorkspaceTemplateInfo))
+* [AgentSpaceDTO](https://cloud.tencent.com/document/api/1039/80554#AgentSpaceDTO)
+* [CustomizeTemplatesPresetsInfo](https://cloud.tencent.com/document/api/1039/80554#CustomizeTemplatesPresetsInfo)
+* [ImageUserDTO](https://cloud.tencent.com/document/api/1039/80554#ImageUserDTO)
+* [UserDefinedTemplateParams](https://cloud.tencent.com/document/api/1039/80554#UserDefinedTemplateParams)
+* [UserDefinedTemplatePatchedParams](https://cloud.tencent.com/document/api/1039/80554#UserDefinedTemplatePatchedParams)
+* [UserInfoRsp](https://cloud.tencent.com/document/api/1039/80554#UserInfoRsp)
+* [UserSubInfo](https://cloud.tencent.com/document/api/1039/80554#UserSubInfo)
+* [WorkspaceDTO](https://cloud.tencent.com/document/api/1039/80554#WorkspaceDTO)
+* [WorkspaceInfo](https://cloud.tencent.com/document/api/1039/80554#WorkspaceInfo)
+* [WorkspaceInfoDTO](https://cloud.tencent.com/document/api/1039/80554#WorkspaceInfoDTO)
+* [WorkspaceResourceDTO](https://cloud.tencent.com/document/api/1039/80554#WorkspaceResourceDTO)
+* [WorkspaceShareInfo](https://cloud.tencent.com/document/api/1039/80554#WorkspaceShareInfo)
+* [WorkspaceStatusInfo](https://cloud.tencent.com/document/api/1039/80554#WorkspaceStatusInfo)
+* [WorkspaceTemplateInfo](https://cloud.tencent.com/document/api/1039/80554#WorkspaceTemplateInfo)
 
 
 
@@ -60943,7 +60786,7 @@
 
 新增数据结构：
 
-* [[NotificationHook](https://cloud.tencent.com/document/api/1484/78100#NotificationHook)](https://cloud.tencent.com/document/api/1484/78100#[NotificationHook](https://cloud.tencent.com/document/api/1484/78100#NotificationHook))
+* [NotificationHook](https://cloud.tencent.com/document/api/1484/78100#NotificationHook)
 
 修改数据结构：
 

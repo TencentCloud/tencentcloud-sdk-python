@@ -2,7 +2,7 @@
 |-|-|-|
 | aa | [活动防刷](https://cloud.tencent.com/document/product/1189) | 2022-08-08 06:02:45 |
 | aai | [](https://cloud.tencent.com/document/product) | 2019-08-08 23:15:13 |
-| acp | [应用合规平台](https://cloud.tencent.com/document/product/1553) | 2022-08-24 06:06:48 |
+| acp | [应用合规平台](https://cloud.tencent.com/document/product/1553) | 2022-09-19 11:21:50 |
 | advisor | [云顾问](https://cloud.tencent.com/document/product/1264) | 2022-06-08 06:03:05 |
 | af | [借贷反欺诈](https://cloud.tencent.com/document/product/668) | 2022-05-23 06:01:54 |
 | afc | [定制建模](https://cloud.tencent.com/document/product/1029) | 2022-05-23 06:01:56 |

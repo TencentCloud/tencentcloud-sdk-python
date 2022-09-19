@@ -183,6 +183,10 @@ class CreateAppScanTaskRepeatRequest(AbstractModel):
         :type AppName: str
         :param PrivacyTextName: 隐私申明文件名称
         :type PrivacyTextName: str
+        :param AppSha1: 软件Sha1值(PrivacyTextMD5不为空时必填)
+        :type AppSha1: str
+        :param PrivacyTextMD5: 隐私申明文本md5(AppSha1不为空时必填)
+        :type PrivacyTextMD5: str
         """
         self.Source = None
         self.Platform = None
@@ -194,6 +198,8 @@ class CreateAppScanTaskRepeatRequest(AbstractModel):
         self.PrivacyTextUrl = None
         self.AppName = None
         self.PrivacyTextName = None
+        self.AppSha1 = None
+        self.PrivacyTextMD5 = None
 
 
     def _deserialize(self, params):
@@ -207,6 +213,8 @@ class CreateAppScanTaskRepeatRequest(AbstractModel):
         self.PrivacyTextUrl = params.get("PrivacyTextUrl")
         self.AppName = params.get("AppName")
         self.PrivacyTextName = params.get("PrivacyTextName")
+        self.AppSha1 = params.get("AppSha1")
+        self.PrivacyTextMD5 = params.get("PrivacyTextMD5")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -256,7 +264,7 @@ class CreateAppScanTaskRequest(AbstractModel):
         :type Platform: int
         :param AppPackage: App包名
         :type AppPackage: str
-        :param AppName: App名称
+        :param AppName: App名称(任务来源为2时必填)
         :type AppName: str
         :param AppVersion: App版本
         :type AppVersion: str
@@ -282,6 +290,10 @@ class CreateAppScanTaskRequest(AbstractModel):
         :type IsAgreePrivacy: int
         :param PrivacyTextName: 隐私申明文件名称
         :type PrivacyTextName: str
+        :param AppSha1: 软件Sha1值(PrivacyTextMD5不为空时必填)
+        :type AppSha1: str
+        :param PrivacyTextMD5: 隐私申明文本md5(AppSha1不为空时必填)
+        :type PrivacyTextMD5: str
         """
         self.TaskType = None
         self.Source = None
@@ -300,6 +312,8 @@ class CreateAppScanTaskRequest(AbstractModel):
         self.Remark = None
         self.IsAgreePrivacy = None
         self.PrivacyTextName = None
+        self.AppSha1 = None
+        self.PrivacyTextMD5 = None
 
 
     def _deserialize(self, params):
@@ -320,6 +334,8 @@ class CreateAppScanTaskRequest(AbstractModel):
         self.Remark = params.get("Remark")
         self.IsAgreePrivacy = params.get("IsAgreePrivacy")
         self.PrivacyTextName = params.get("PrivacyTextName")
+        self.AppSha1 = params.get("AppSha1")
+        self.PrivacyTextMD5 = params.get("PrivacyTextMD5")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
