@@ -14,6 +14,9 @@
 # limitations under the License.
 
 
+# CAM签名/鉴权错误。
+AUTHFAILURE = 'AuthFailure'
+
 # DryRun 操作，代表请求将会是成功的，只是多传了 DryRun 参数。
 DRYRUNOPERATION = 'DryRunOperation'
 
@@ -22,6 +25,15 @@ FAILEDOPERATION = 'FailedOperation'
 
 # 证书不存在。
 FAILEDOPERATION_CERTIFICATENOTFOUND = 'FailedOperation.CertificateNotFound'
+
+# 创建日志集失败，请检查日志集名是否已存在。
+FAILEDOPERATION_CREATECLSLOGSETFAILED = 'FailedOperation.CreateClsLogSetFailed'
+
+# 创建日志主题任务失败，请检查日志主题名或任务名是否已存在。
+FAILEDOPERATION_CREATECLSLOGTOPICTASKFAILED = 'FailedOperation.CreateClsLogTopicTaskFailed'
+
+# 站点状态不正确。
+FAILEDOPERATION_INVALIDZONESTATUS = 'FailedOperation.InvalidZoneStatus'
 
 # 内部错误。
 INTERNALERROR = 'InternalError'
@@ -56,9 +68,6 @@ INTERNALERROR_SYSTEMERROR = 'InternalError.SystemError'
 # 参数错误。
 INVALIDPARAMETER = 'InvalidParameter'
 
-# 操作频繁，请稍后重试。
-INVALIDPARAMETER_ACTIONINPROGRESS = 'InvalidParameter.ActionInProgress'
-
 # 域名不存在或不属于该账号。
 INVALIDPARAMETER_DOMAINNOTFOUND = 'InvalidParameter.DomainNotFound'
 
@@ -71,14 +80,8 @@ INVALIDPARAMETER_INVALIDCERTINFO = 'InvalidParameter.InvalidCertInfo'
 # 无效的客户端IP请求头。
 INVALIDPARAMETER_INVALIDCLIENTIPHEADERNAME = 'InvalidParameter.InvalidClientIpHeaderName'
 
-# 套餐包不支持智能加速配置。
-INVALIDPARAMETER_INVALIDDYNAMICROUTINEBILLING = 'InvalidParameter.InvalidDynamicRoutineBilling'
-
 # 不合法的过滤字段。
 INVALIDPARAMETER_INVALIDFILTERNAME = 'InvalidParameter.InvalidFilterName'
-
-# 无效的强制HTTPS跳转。
-INVALIDPARAMETER_INVALIDFORCEREDIRECTTYPE = 'InvalidParameter.InvalidForceRedirectType'
 
 # 无效的源站。
 INVALIDPARAMETER_INVALIDORIGIN = 'InvalidParameter.InvalidOrigin'
@@ -86,32 +89,11 @@ INVALIDPARAMETER_INVALIDORIGIN = 'InvalidParameter.InvalidOrigin'
 # 套餐包不支持最大上传大小。
 INVALIDPARAMETER_INVALIDPOSTMAXSIZEBILLING = 'InvalidParameter.InvalidPostMaxSizeBilling'
 
-# 无效的最大上传大小。
-INVALIDPARAMETER_INVALIDPOSTSIZEVALUE = 'InvalidParameter.InvalidPostSizeValue'
-
-# 无效的URL重写。
-INVALIDPARAMETER_INVALIDREDIRECTURLCAPTURE = 'InvalidParameter.InvalidRedirectUrlCapture'
-
 # 无效的请求头header。
 INVALIDPARAMETER_INVALIDREQUESTHEADERNAME = 'InvalidParameter.InvalidRequestHeaderName'
 
-# 无效的请求头header。
-INVALIDPARAMETER_INVALIDREQUESTHEADERVALUE = 'InvalidParameter.InvalidRequestHeaderValue'
-
 # 无套餐包。
 INVALIDPARAMETER_INVALIDRESOURCEIDBILLING = 'InvalidParameter.InvalidResourceIdBilling'
-
-# 无效的响应头header。
-INVALIDPARAMETER_INVALIDRESPONSEHEADERVALUE = 'InvalidParameter.InvalidResponseHeaderValue'
-
-# 无效的规则引擎操作。
-INVALIDPARAMETER_INVALIDRULEENGINEACTION = 'InvalidParameter.InvalidRuleEngineAction'
-
-# 无效的规则引擎条件。
-INVALIDPARAMETER_INVALIDRULEENGINETARGET = 'InvalidParameter.InvalidRuleEngineTarget'
-
-# 无效的规则引擎文件后缀条件。
-INVALIDPARAMETER_INVALIDRULEENGINETARGETSEXTENSION = 'InvalidParameter.InvalidRuleEngineTargetsExtension'
 
 # URL重写的目标URL无效。
 INVALIDPARAMETER_INVALIDURLREDIRECTURL = 'InvalidParameter.InvalidUrlRedirectUrl'
@@ -164,9 +146,6 @@ INVALIDPARAMETERVALUE_INVALIDPROXYNAME = 'InvalidParameterValue.InvalidProxyName
 # DNS 代理域名源站错误。
 INVALIDPARAMETERVALUE_INVALIDPROXYORIGIN = 'InvalidParameterValue.InvalidProxyOrigin'
 
-# SRV 记录名称错误。
-INVALIDPARAMETERVALUE_INVALIDSRVNAME = 'InvalidParameterValue.InvalidSRVName'
-
 # 记录已存在。
 INVALIDPARAMETERVALUE_RECORDALREADYEXISTS = 'InvalidParameterValue.RecordAlreadyExists'
 
@@ -188,6 +167,9 @@ OPERATIONDENIED = 'OperationDenied'
 # 域名尚未备案。
 OPERATIONDENIED_DOMAINNOICP = 'OperationDenied.DomainNoICP'
 
+# 4层代理资源处于封禁中，禁止操作。
+OPERATIONDENIED_L4PROXYINBANNEDSTATUS = 'OperationDenied.L4ProxyInBannedStatus'
+
 # 资源被占用。
 RESOURCEINUSE = 'ResourceInUse'
 
@@ -203,14 +185,23 @@ RESOURCENOTFOUND = 'ResourceNotFound'
 # 资源不可用。
 RESOURCEUNAVAILABLE = 'ResourceUnavailable'
 
+# 无剩余可创建新任务的域名。
+RESOURCEUNAVAILABLE_AVAILABLEDOMAINNOTFOUND = 'ResourceUnavailable.AvailableDomainNotFound'
+
 # 证书不存在或未授权。
 RESOURCEUNAVAILABLE_CERTNOTFOUND = 'ResourceUnavailable.CertNotFound'
 
 # 域名不存在或未开启代理。
 RESOURCEUNAVAILABLE_HOSTNOTFOUND = 'ResourceUnavailable.HostNotFound'
 
+# 未拉取到已开启代理的zone信息。
+RESOURCEUNAVAILABLE_PROXYZONENOTFOUND = 'ResourceUnavailable.ProxyZoneNotFound'
+
 # 站点不存在或不属于该账号。
 RESOURCEUNAVAILABLE_ZONENOTFOUND = 'ResourceUnavailable.ZoneNotFound'
+
+# 未授权操作。
+UNAUTHORIZEDOPERATION = 'UnauthorizedOperation'
 
 # Cam 未授权。
 UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = 'UnauthorizedOperation.CamUnauthorized'
@@ -220,3 +211,12 @@ UNAUTHORIZEDOPERATION_DOMAINEMPTY = 'UnauthorizedOperation.DomainEmpty'
 
 # 子账户没有操作权限，请添加权限后继续操作。
 UNAUTHORIZEDOPERATION_NOPERMISSION = 'UnauthorizedOperation.NoPermission'
+
+# 后端服务器发生未知错误。
+UNAUTHORIZEDOPERATION_UNKNOWN = 'UnauthorizedOperation.Unknown'
+
+# 未知参数错误。
+UNKNOWNPARAMETER = 'UnknownParameter'
+
+# 操作不支持。
+UNSUPPORTEDOPERATION = 'UnsupportedOperation'

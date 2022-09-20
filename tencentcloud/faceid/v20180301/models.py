@@ -876,6 +876,14 @@ class DetectDetail(AbstractModel):
 人工审核库；
 注意：此字段可能返回 null，表示取不到有效值。
         :type CompareLibType: str
+        :param LivenessMode: 枚举活体检测类型：
+0：未知
+1：数字活体
+2：动作活体
+3：静默活体
+4：一闪活体（动作+光线）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LivenessMode: int
         """
         self.ReqTime = None
         self.Seq = None
@@ -890,6 +898,7 @@ class DetectDetail(AbstractModel):
         self.Comparestatus = None
         self.Comparemsg = None
         self.CompareLibType = None
+        self.LivenessMode = None
 
 
     def _deserialize(self, params):
@@ -906,6 +915,7 @@ class DetectDetail(AbstractModel):
         self.Comparestatus = params.get("Comparestatus")
         self.Comparemsg = params.get("Comparemsg")
         self.CompareLibType = params.get("CompareLibType")
+        self.LivenessMode = params.get("LivenessMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1093,6 +1103,14 @@ class DetectInfoText(AbstractModel):
 人工审核库；
 注意：此字段可能返回 null，表示取不到有效值。
         :type CompareLibType: str
+        :param LivenessMode: 本次流程最终活体类型。包括：
+0：未知
+1：数字活体
+2：动作活体
+3：静默活体
+4：一闪活体（动作+光线）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LivenessMode: int
         """
         self.ErrCode = None
         self.ErrMsg = None
@@ -1116,6 +1134,7 @@ class DetectInfoText(AbstractModel):
         self.LivenessDetail = None
         self.Mobile = None
         self.CompareLibType = None
+        self.LivenessMode = None
 
 
     def _deserialize(self, params):
@@ -1146,6 +1165,7 @@ class DetectInfoText(AbstractModel):
                 self.LivenessDetail.append(obj)
         self.Mobile = params.get("Mobile")
         self.CompareLibType = params.get("CompareLibType")
+        self.LivenessMode = params.get("LivenessMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

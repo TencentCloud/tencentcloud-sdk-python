@@ -116,6 +116,36 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateDataSource(self, request):
+        """<p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+        创建数据源
+
+        :param request: Request instance for CreateDataSource.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.CreateDataSourceRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.CreateDataSourceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateDataSource", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateDataSourceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateFolder(self, request):
         """<p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
         创建文件夹
@@ -206,6 +236,36 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteDataSources(self, request):
+        """<p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+        删除数据源
+
+        :param request: Request instance for DeleteDataSources.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DeleteDataSourcesRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DeleteDataSourcesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteDataSources", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteDataSourcesResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteFolder(self, request):
         """<p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
         删除文件夹
@@ -252,6 +312,36 @@ class WedataClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DeleteWorkflowNewResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeDatasource(self, request):
+        """<p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+        数据源详情
+
+        :param request: Request instance for DescribeDatasource.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeDatasourceRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeDatasourceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDatasource", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeDatasourceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -731,6 +821,36 @@ class WedataClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.MakeUpWorkflowNewResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyDataSource(self, request):
+        """<p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+        修改数据源
+
+        :param request: Request instance for ModifyDataSource.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.ModifyDataSourceRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.ModifyDataSourceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDataSource", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyDataSourceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

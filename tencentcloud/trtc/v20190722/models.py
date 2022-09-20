@@ -1919,7 +1919,8 @@ class OutputParams(AbstractModel):
         :type StreamId: str
         :param PureAudioStream: 取值范围[0,1]， 填0：直播流为音视频(默认); 填1：直播流为纯音频
         :type PureAudioStream: int
-        :param RecordId: 自定义录制文件名称前缀。请先在实时音视频控制台开通录制功能，https://cloud.tencent.com/document/product/647/50768
+        :param RecordId: 自定义录制文件名称前缀。请先在实时音视频控制台开通录制功能，https://cloud.tencent.com/document/product/647/50768。
+【注意】该方式仅对旧版云端录制功能的应用生效，新版云端录制功能的应用请用接口CreateCloudRecording发起录制。新、旧云端录制类型判断方式请见：https://cloud.tencent.com/document/product/647/50768#record
         :type RecordId: str
         :param RecordAudioOnly: 取值范围[0,1]，填0无实际含义; 填1：指定录制文件格式为mp3。此参数不建议使用，建议在实时音视频控制台配置纯音频录制模板。
         :type RecordAudioOnly: int
@@ -2828,7 +2829,7 @@ class StorageParams(AbstractModel):
         r"""
         :param CloudStorage: 第三方云存储的账号信息（暂不支持）。
         :type CloudStorage: :class:`tencentcloud.trtc.v20190722.models.CloudStorage`
-        :param CloudVod: 第三方云点播的账号信息。
+        :param CloudVod: 腾讯云云点播的账号信息（必填，目前仅支持存储至腾讯云云点播）。
         :type CloudVod: :class:`tencentcloud.trtc.v20190722.models.CloudVod`
         """
         self.CloudStorage = None

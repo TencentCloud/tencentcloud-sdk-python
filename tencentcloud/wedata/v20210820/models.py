@@ -435,6 +435,116 @@ class CommonId(AbstractModel):
         
 
 
+class CreateDataSourceRequest(AbstractModel):
+    """CreateDataSource请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 数据源名称，在相同SpaceName下，数据源名称不能为空
+        :type Name: str
+        :param Category: 数据源类别：绑定引擎、绑定数据库
+        :type Category: str
+        :param Type: 数据源类型:枚举值
+        :type Type: str
+        :param OwnerProjectId: 归属项目ID
+        :type OwnerProjectId: str
+        :param OwnerProjectName: 归属项目Name
+        :type OwnerProjectName: str
+        :param OwnerProjectIdent: 归属项目Name中文
+        :type OwnerProjectIdent: str
+        :param BizParams: 业务侧数据源的配置信息扩展
+        :type BizParams: str
+        :param Params: 数据源的配置信息，以JSON KV存储，根据每个数据源类型不同，而KV存储信息不同
+        :type Params: str
+        :param Description: 数据源描述信息
+        :type Description: str
+        :param Display: 数据源展示名，为了可视化查看
+        :type Display: str
+        :param DatabaseName: 若数据源列表为绑定数据库，则为db名称
+        :type DatabaseName: str
+        :param Instance: 数据源引擎的实例ID，如CDB实例ID
+        :type Instance: str
+        :param Status: 数据源数据源的可见性，1为可见、0为不可见。默认为1
+        :type Status: int
+        :param ClusterId: 数据源所属的业务空间名称
+        :type ClusterId: str
+        :param Collect: 是否采集
+        :type Collect: str
+        :param COSBucket: cos桶信息
+        :type COSBucket: str
+        :param COSRegion: cos region
+        :type COSRegion: str
+        """
+        self.Name = None
+        self.Category = None
+        self.Type = None
+        self.OwnerProjectId = None
+        self.OwnerProjectName = None
+        self.OwnerProjectIdent = None
+        self.BizParams = None
+        self.Params = None
+        self.Description = None
+        self.Display = None
+        self.DatabaseName = None
+        self.Instance = None
+        self.Status = None
+        self.ClusterId = None
+        self.Collect = None
+        self.COSBucket = None
+        self.COSRegion = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Category = params.get("Category")
+        self.Type = params.get("Type")
+        self.OwnerProjectId = params.get("OwnerProjectId")
+        self.OwnerProjectName = params.get("OwnerProjectName")
+        self.OwnerProjectIdent = params.get("OwnerProjectIdent")
+        self.BizParams = params.get("BizParams")
+        self.Params = params.get("Params")
+        self.Description = params.get("Description")
+        self.Display = params.get("Display")
+        self.DatabaseName = params.get("DatabaseName")
+        self.Instance = params.get("Instance")
+        self.Status = params.get("Status")
+        self.ClusterId = params.get("ClusterId")
+        self.Collect = params.get("Collect")
+        self.COSBucket = params.get("COSBucket")
+        self.COSRegion = params.get("COSRegion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDataSourceResponse(AbstractModel):
+    """CreateDataSource返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 主键ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: int
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Data = params.get("Data")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateFolderRequest(AbstractModel):
     """CreateFolder请求参数结构体
 
@@ -616,6 +726,217 @@ class CreateWorkflowResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DataSourceInfo(AbstractModel):
+    """数据源对象
+
+    """
+
+    def __init__(self):
+        r"""
+        :param DatabaseName: 若数据源列表为绑定数据库，则为db名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatabaseName: str
+        :param Description: 数据源描述信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param ID: 数据源ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ID: int
+        :param Instance: 数据源引擎的实例ID，如CDB实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Instance: str
+        :param Name: 数据源名称，在相同SpaceName下，数据源名称不能为空
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param Region: 数据源引擎所属区域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
+        :param Type: 数据源类型:枚举值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param ClusterId: 数据源所属的集群id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterId: str
+        :param AppId: 应用ID AppId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppId: int
+        :param BizParams: 业务侧数据源的配置信息扩展
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BizParams: str
+        :param Category: 数据源类别：绑定引擎、绑定数据库
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Category: str
+        :param Display: 数据源展示名，为了可视化查看
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Display: str
+        :param OwnerAccount: 数据源责任人账号ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OwnerAccount: str
+        :param Params: 数据源的配置信息，以JSON KV存储，根据每个数据源类型不同，而KV存储信息不同
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Params: str
+        :param Status: 数据源数据源的可见性，1为可见、0为不可见。默认为1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param OwnerAccountName: 数据源责任人账号名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OwnerAccountName: str
+        :param ClusterName: 集群名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterName: str
+        :param OwnerProjectId: 归属项目ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OwnerProjectId: str
+        :param OwnerProjectName: 归属项目Name
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OwnerProjectName: str
+        :param OwnerProjectIdent: 归属项目标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OwnerProjectIdent: str
+        :param AuthorityProjectName: 授权项目
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AuthorityProjectName: str
+        :param AuthorityUserName: 授权用户
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AuthorityUserName: str
+        :param Edit: 是否有编辑权限
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Edit: bool
+        :param Author: 是否有授权权限
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Author: bool
+        :param Deliver: 是否有转交权限
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Deliver: bool
+        :param DataSourceStatus: 数据源状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataSourceStatus: str
+        :param CreateTime: 时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: int
+        :param ParamsString: Params json字符串
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParamsString: str
+        :param BizParamsString: BizParams json字符串
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BizParamsString: str
+        """
+        self.DatabaseName = None
+        self.Description = None
+        self.ID = None
+        self.Instance = None
+        self.Name = None
+        self.Region = None
+        self.Type = None
+        self.ClusterId = None
+        self.AppId = None
+        self.BizParams = None
+        self.Category = None
+        self.Display = None
+        self.OwnerAccount = None
+        self.Params = None
+        self.Status = None
+        self.OwnerAccountName = None
+        self.ClusterName = None
+        self.OwnerProjectId = None
+        self.OwnerProjectName = None
+        self.OwnerProjectIdent = None
+        self.AuthorityProjectName = None
+        self.AuthorityUserName = None
+        self.Edit = None
+        self.Author = None
+        self.Deliver = None
+        self.DataSourceStatus = None
+        self.CreateTime = None
+        self.ParamsString = None
+        self.BizParamsString = None
+
+
+    def _deserialize(self, params):
+        self.DatabaseName = params.get("DatabaseName")
+        self.Description = params.get("Description")
+        self.ID = params.get("ID")
+        self.Instance = params.get("Instance")
+        self.Name = params.get("Name")
+        self.Region = params.get("Region")
+        self.Type = params.get("Type")
+        self.ClusterId = params.get("ClusterId")
+        self.AppId = params.get("AppId")
+        self.BizParams = params.get("BizParams")
+        self.Category = params.get("Category")
+        self.Display = params.get("Display")
+        self.OwnerAccount = params.get("OwnerAccount")
+        self.Params = params.get("Params")
+        self.Status = params.get("Status")
+        self.OwnerAccountName = params.get("OwnerAccountName")
+        self.ClusterName = params.get("ClusterName")
+        self.OwnerProjectId = params.get("OwnerProjectId")
+        self.OwnerProjectName = params.get("OwnerProjectName")
+        self.OwnerProjectIdent = params.get("OwnerProjectIdent")
+        self.AuthorityProjectName = params.get("AuthorityProjectName")
+        self.AuthorityUserName = params.get("AuthorityUserName")
+        self.Edit = params.get("Edit")
+        self.Author = params.get("Author")
+        self.Deliver = params.get("Deliver")
+        self.DataSourceStatus = params.get("DataSourceStatus")
+        self.CreateTime = params.get("CreateTime")
+        self.ParamsString = params.get("ParamsString")
+        self.BizParamsString = params.get("BizParamsString")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteDataSourcesRequest(AbstractModel):
+    """DeleteDataSources请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Ids: id列表
+        :type Ids: list of int non-negative
+        """
+        self.Ids = None
+
+
+    def _deserialize(self, params):
+        self.Ids = params.get("Ids")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteDataSourcesResponse(AbstractModel):
+    """DeleteDataSources返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 是否删除成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Data = params.get("Data")
+        self.RequestId = params.get("RequestId")
+
+
 class DeleteFolderRequest(AbstractModel):
     """DeleteFolder请求参数结构体
 
@@ -771,6 +1092,54 @@ class DependencyConfig(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class DescribeDatasourceRequest(AbstractModel):
+    """DescribeDatasource请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Id: 对象唯一ID
+        :type Id: int
+        """
+        self.Id = None
+
+
+    def _deserialize(self, params):
+        self.Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDatasourceResponse(AbstractModel):
+    """DescribeDatasource返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 数据源对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.wedata.v20210820.models.DataSourceInfo`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = DataSourceInfo()
+            self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
 
 
 class DescribeDependTasksNewRequest(AbstractModel):
@@ -2263,6 +2632,120 @@ class MakeUpWorkflowNewResponse(AbstractModel):
         if params.get("Data") is not None:
             self.Data = BatchOperateResult()
             self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyDataSourceRequest(AbstractModel):
+    """ModifyDataSource请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 数据源名称，在相同SpaceName下，数据源名称不能为空
+        :type Name: str
+        :param Category: 数据源类别：绑定引擎、绑定数据库
+        :type Category: str
+        :param Type: 数据源类型:枚举值
+        :type Type: str
+        :param ID: 数据源ID
+        :type ID: int
+        :param BizParams: 业务侧数据源的配置信息扩展
+        :type BizParams: str
+        :param Params: 数据源的配置信息，以JSON KV存储，根据每个数据源类型不同，而KV存储信息不同
+        :type Params: str
+        :param Description: 数据源描述信息
+        :type Description: str
+        :param Display: 数据源展示名，为了可视化查看
+        :type Display: str
+        :param DatabaseName: 若数据源列表为绑定数据库，则为db名称
+        :type DatabaseName: str
+        :param Instance: 数据源引擎的实例ID，如CDB实例ID
+        :type Instance: str
+        :param Status: 数据源数据源的可见性，1为可见、0为不可见。默认为1
+        :type Status: int
+        :param ClusterId: 数据源所属的业务空间名称
+        :type ClusterId: str
+        :param Collect: 是否采集
+        :type Collect: str
+        :param OwnerProjectId: 项目id
+        :type OwnerProjectId: str
+        :param OwnerProjectName: 项目名称
+        :type OwnerProjectName: str
+        :param OwnerProjectIdent: 项目中文名
+        :type OwnerProjectIdent: str
+        :param COSBucket: cos bucket
+        :type COSBucket: str
+        :param COSRegion: cos region
+        :type COSRegion: str
+        """
+        self.Name = None
+        self.Category = None
+        self.Type = None
+        self.ID = None
+        self.BizParams = None
+        self.Params = None
+        self.Description = None
+        self.Display = None
+        self.DatabaseName = None
+        self.Instance = None
+        self.Status = None
+        self.ClusterId = None
+        self.Collect = None
+        self.OwnerProjectId = None
+        self.OwnerProjectName = None
+        self.OwnerProjectIdent = None
+        self.COSBucket = None
+        self.COSRegion = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Category = params.get("Category")
+        self.Type = params.get("Type")
+        self.ID = params.get("ID")
+        self.BizParams = params.get("BizParams")
+        self.Params = params.get("Params")
+        self.Description = params.get("Description")
+        self.Display = params.get("Display")
+        self.DatabaseName = params.get("DatabaseName")
+        self.Instance = params.get("Instance")
+        self.Status = params.get("Status")
+        self.ClusterId = params.get("ClusterId")
+        self.Collect = params.get("Collect")
+        self.OwnerProjectId = params.get("OwnerProjectId")
+        self.OwnerProjectName = params.get("OwnerProjectName")
+        self.OwnerProjectIdent = params.get("OwnerProjectIdent")
+        self.COSBucket = params.get("COSBucket")
+        self.COSRegion = params.get("COSRegion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDataSourceResponse(AbstractModel):
+    """ModifyDataSource返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 是否成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Data = params.get("Data")
         self.RequestId = params.get("RequestId")
 
 

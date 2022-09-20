@@ -2776,62 +2776,6 @@ class DescribeUnHandleEventTabListResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
-class DescribeVpcRuleOverviewRequest(AbstractModel):
-    """DescribeVpcRuleOverview请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param EdgeId: EdgeId值两个vpc间的边id  不是必填项可以为空，就是所有vpc间的访问控制规则
-        :type EdgeId: str
-        """
-        self.EdgeId = None
-
-
-    def _deserialize(self, params):
-        self.EdgeId = params.get("EdgeId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            if name in memeber_set:
-                memeber_set.remove(name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeVpcRuleOverviewResponse(AbstractModel):
-    """DescribeVpcRuleOverview返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param StrategyNum: 阻断策略规则数量
-注意：此字段可能返回 null，表示取不到有效值。
-        :type StrategyNum: int
-        :param StartRuleNum: 启用规则数量
-注意：此字段可能返回 null，表示取不到有效值。
-        :type StartRuleNum: int
-        :param Total: 规则总量
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Total: int
-        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self.StrategyNum = None
-        self.StartRuleNum = None
-        self.Total = None
-        self.RequestId = None
-
-
-    def _deserialize(self, params):
-        self.StrategyNum = params.get("StrategyNum")
-        self.StartRuleNum = params.get("StartRuleNum")
-        self.Total = params.get("Total")
-        self.RequestId = params.get("RequestId")
-
-
 class DnsVpcSwitch(AbstractModel):
     """设置nat防火墙的vpc dns 接入开关
 

@@ -13951,12 +13951,15 @@ class TaskSimpleInfo(AbstractModel):
         :type BeginProcessTime: str
         :param FinishTime: 任务结束时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。若任务尚未完成，该字段为：0000-00-00T00:00:00Z。
         :type FinishTime: str
+        :param SubTaskTypes: 子任务类型。
+        :type SubTaskTypes: list of str
         """
         self.TaskId = None
         self.TaskType = None
         self.CreateTime = None
         self.BeginProcessTime = None
         self.FinishTime = None
+        self.SubTaskTypes = None
 
 
     def _deserialize(self, params):
@@ -13965,6 +13968,7 @@ class TaskSimpleInfo(AbstractModel):
         self.CreateTime = params.get("CreateTime")
         self.BeginProcessTime = params.get("BeginProcessTime")
         self.FinishTime = params.get("FinishTime")
+        self.SubTaskTypes = params.get("SubTaskTypes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

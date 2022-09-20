@@ -1024,6 +1024,11 @@ def test_import_teo():
     from tencentcloud.teo.v20220106 import models
 
 
+def test_import_teo():
+    from tencentcloud.teo.v20220901 import teo_client
+    from tencentcloud.teo.v20220901 import models
+
+
 def test_import_thpc():
     from tencentcloud.thpc.v20211109 import thpc_client
     from tencentcloud.thpc.v20211109 import models
