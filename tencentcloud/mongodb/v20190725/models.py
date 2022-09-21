@@ -815,6 +815,56 @@ class DBInstancePrice(AbstractModel):
         
 
 
+class DescribeAccountUsersRequest(AbstractModel):
+    """DescribeAccountUsers请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例ID。
+        :type InstanceId: str
+        """
+        self.InstanceId = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAccountUsersResponse(AbstractModel):
+    """DescribeAccountUsers返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Users: 实例账号列表。
+        :type Users: list of UserInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Users = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Users") is not None:
+            self.Users = []
+            for item in params.get("Users"):
+                obj = UserInfo()
+                obj._deserialize(item)
+                self.Users.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeAsyncRequestInfoRequest(AbstractModel):
     """DescribeAsyncRequestInfo请求参数结构体
 
@@ -3366,3 +3416,48 @@ class TerminateDBInstancesResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class UserInfo(AbstractModel):
+    """账户基本信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param UserName: 账号名。
+        :type UserName: str
+        :param AuthRole: 账号权限详情。
+        :type AuthRole: list of Auth
+        :param CreateTime: 账号创建时间。
+        :type CreateTime: str
+        :param UpdateTime: 账号更新时间。
+        :type UpdateTime: str
+        :param UserDesc: 备注信息。
+        :type UserDesc: str
+        """
+        self.UserName = None
+        self.AuthRole = None
+        self.CreateTime = None
+        self.UpdateTime = None
+        self.UserDesc = None
+
+
+    def _deserialize(self, params):
+        self.UserName = params.get("UserName")
+        if params.get("AuthRole") is not None:
+            self.AuthRole = []
+            for item in params.get("AuthRole"):
+                obj = Auth()
+                obj._deserialize(item)
+                self.AuthRole.append(obj)
+        self.CreateTime = params.get("CreateTime")
+        self.UpdateTime = params.get("UpdateTime")
+        self.UserDesc = params.get("UserDesc")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        

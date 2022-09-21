@@ -168,6 +168,42 @@ class AppearInfo(AbstractModel):
         
 
 
+class AudioData(AbstractModel):
+    """音频文件分析结果数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param AudioInfoSet: 音频识别文本结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AudioInfoSet: list of AudioInfo
+        :param TextTagSet: 音频识别标签数据
+        :type TextTagSet: :class:`tencentcloud.ivld.v20210903.models.MultiLevelTag`
+        """
+        self.AudioInfoSet = None
+        self.TextTagSet = None
+
+
+    def _deserialize(self, params):
+        if params.get("AudioInfoSet") is not None:
+            self.AudioInfoSet = []
+            for item in params.get("AudioInfoSet"):
+                obj = AudioInfo()
+                obj._deserialize(item)
+                self.AudioInfoSet.append(obj)
+        if params.get("TextTagSet") is not None:
+            self.TextTagSet = MultiLevelTag()
+            self.TextTagSet._deserialize(params.get("TextTagSet"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AudioInfo(AbstractModel):
     """音频识别结果信息
 
@@ -195,6 +231,56 @@ class AudioInfo(AbstractModel):
         self.StartTimeStamp = params.get("StartTimeStamp")
         self.EndTimeStamp = params.get("EndTimeStamp")
         self.Tag = params.get("Tag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AudioMetadata(AbstractModel):
+    """音频文件元信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FileSize: 媒资音频文件大小，单位为Byte
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileSize: int
+        :param MD5: 媒资音频文件MD5
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MD5: str
+        :param Duration: 媒资音频时长，单位为秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Duration: float
+        :param SampleRate: 媒资音频采样率，单位为khz
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SampleRate: float
+        :param BitRate: 媒资音频码率，单位为kbps
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BitRate: int
+        :param Format: 媒资音频文件格式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Format: str
+        """
+        self.FileSize = None
+        self.MD5 = None
+        self.Duration = None
+        self.SampleRate = None
+        self.BitRate = None
+        self.Format = None
+
+
+    def _deserialize(self, params):
+        self.FileSize = params.get("FileSize")
+        self.MD5 = params.get("MD5")
+        self.Duration = params.get("Duration")
+        self.SampleRate = params.get("SampleRate")
+        self.BitRate = params.get("BitRate")
+        self.Format = params.get("Format")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1197,13 +1283,26 @@ class DescribeTaskDetailResponse(AbstractModel):
         :param TaskInfo: 任务信息，不包含任务结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskInfo: :class:`tencentcloud.ivld.v20210903.models.TaskInfo`
-        :param TaskData: 任务结果数据，只在任务结束时返回
+        :param TaskData: 视频任务结果数据，只在视频任务结束时返回
+注意：此字段可能返回 null，表示取不到有效值。
         :type TaskData: :class:`tencentcloud.ivld.v20210903.models.Data`
+        :param ImageTaskData: 图片任务结果数据，只在图片任务结束时返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageTaskData: :class:`tencentcloud.ivld.v20210903.models.ImageData`
+        :param AudioTaskData: 音频任务结果数据，只在音频任务结束时返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AudioTaskData: :class:`tencentcloud.ivld.v20210903.models.AudioData`
+        :param TextTaskData: 文本任务结果数据，只在文本任务结束时返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TextTaskData: :class:`tencentcloud.ivld.v20210903.models.TextData`
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.TaskInfo = None
         self.TaskData = None
+        self.ImageTaskData = None
+        self.AudioTaskData = None
+        self.TextTaskData = None
         self.RequestId = None
 
 
@@ -1214,6 +1313,15 @@ class DescribeTaskDetailResponse(AbstractModel):
         if params.get("TaskData") is not None:
             self.TaskData = Data()
             self.TaskData._deserialize(params.get("TaskData"))
+        if params.get("ImageTaskData") is not None:
+            self.ImageTaskData = ImageData()
+            self.ImageTaskData._deserialize(params.get("ImageTaskData"))
+        if params.get("AudioTaskData") is not None:
+            self.AudioTaskData = AudioData()
+            self.AudioTaskData._deserialize(params.get("AudioTaskData"))
+        if params.get("TextTaskData") is not None:
+            self.TextTaskData = TextData()
+            self.TextTaskData._deserialize(params.get("TextTaskData"))
         self.RequestId = params.get("RequestId")
 
 
@@ -1336,6 +1444,176 @@ class DescribeTasksResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class ImageData(AbstractModel):
+    """图片文件标签结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param OcrSet: 图片中出现的可视文本识别结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OcrSet: list of ImageOcr
+        :param FrameTagSet: 图片中出现的帧标签识别结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FrameTagSet: :class:`tencentcloud.ivld.v20210903.models.MultiLevelTag`
+        :param MultiLevelPersonInfoSet: 图片中出现的层级人物识别结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MultiLevelPersonInfoSet: list of MultiLevelPersonInfo
+        :param TvLogo: 图片中出现的台标识别结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TvLogo: :class:`tencentcloud.ivld.v20210903.models.ImageLogo`
+        :param SourceLogo: 图片中出现的来源信息识别结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceLogo: :class:`tencentcloud.ivld.v20210903.models.ImageLogo`
+        """
+        self.OcrSet = None
+        self.FrameTagSet = None
+        self.MultiLevelPersonInfoSet = None
+        self.TvLogo = None
+        self.SourceLogo = None
+
+
+    def _deserialize(self, params):
+        if params.get("OcrSet") is not None:
+            self.OcrSet = []
+            for item in params.get("OcrSet"):
+                obj = ImageOcr()
+                obj._deserialize(item)
+                self.OcrSet.append(obj)
+        if params.get("FrameTagSet") is not None:
+            self.FrameTagSet = MultiLevelTag()
+            self.FrameTagSet._deserialize(params.get("FrameTagSet"))
+        if params.get("MultiLevelPersonInfoSet") is not None:
+            self.MultiLevelPersonInfoSet = []
+            for item in params.get("MultiLevelPersonInfoSet"):
+                obj = MultiLevelPersonInfo()
+                obj._deserialize(item)
+                self.MultiLevelPersonInfoSet.append(obj)
+        if params.get("TvLogo") is not None:
+            self.TvLogo = ImageLogo()
+            self.TvLogo._deserialize(params.get("TvLogo"))
+        if params.get("SourceLogo") is not None:
+            self.SourceLogo = ImageLogo()
+            self.SourceLogo._deserialize(params.get("SourceLogo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImageLogo(AbstractModel):
+    """图片中出现的Logo信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Logo: 图片中出现的Logo识别结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Logo: str
+        :param AppearRect: Logo在图片中出现的位置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppearRect: :class:`tencentcloud.ivld.v20210903.models.Rectf`
+        """
+        self.Logo = None
+        self.AppearRect = None
+
+
+    def _deserialize(self, params):
+        self.Logo = params.get("Logo")
+        if params.get("AppearRect") is not None:
+            self.AppearRect = Rectf()
+            self.AppearRect._deserialize(params.get("AppearRect"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImageMetadata(AbstractModel):
+    """图片文件元信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FileSize: 媒资图片文件大小，单位为Byte
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileSize: int
+        :param MD5: 媒资图片文件MD5
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MD5: str
+        :param Width: 媒资图片文件宽度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Width: int
+        :param Height: 媒资图片文件高度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Height: int
+        :param Format: 媒资图片文件格式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Format: str
+        """
+        self.FileSize = None
+        self.MD5 = None
+        self.Width = None
+        self.Height = None
+        self.Format = None
+
+
+    def _deserialize(self, params):
+        self.FileSize = params.get("FileSize")
+        self.MD5 = params.get("MD5")
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
+        self.Format = params.get("Format")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImageOcr(AbstractModel):
+    """图片OCR识别结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Content: 图片中可视文本识别结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Content: str
+        :param AppearRect: 可视文本在图片中的位置信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppearRect: :class:`tencentcloud.ivld.v20210903.models.Rectf`
+        """
+        self.Content = None
+        self.AppearRect = None
+
+
+    def _deserialize(self, params):
+        self.Content = params.get("Content")
+        if params.get("AppearRect") is not None:
+            self.AppearRect = Rectf()
+            self.AppearRect._deserialize(params.get("AppearRect"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ImportMediaRequest(AbstractModel):
     """ImportMedia请求参数结构体
 
@@ -1347,7 +1625,7 @@ class ImportMediaRequest(AbstractModel):
         :type URL: str
         :param MD5: 待分析视频的MD5，为空时不做校验，否则会做MD5校验，长度必须为32B
         :type MD5: str
-        :param Name: 待分析视频的名称，指定后可支持筛选，最多100个中文字符
+        :param Name: 待分析视频的名称，指定后可支持筛选，最多64B
         :type Name: str
         :param WriteBackCosPath: 当非本人外部视频地址导入时，该字段为转存的cos桶地址且不可为空; 示例：https://${Bucket}-${AppId}.cos.${Region}.myqcloud.com/${PathPrefix}/  (注意，cos路径需要以/分隔符结尾)。
 推荐采用本主帐号COS桶，如果使用其他帐号COS桶，请确保COS桶可写，否则可导致分析失败
@@ -1356,6 +1634,9 @@ class ImportMediaRequest(AbstractModel):
         :type Label: str
         :param CallbackURL: 媒资导入完成的回调地址，该设置优先级高于控制台全局的设置；
         :type CallbackURL: str
+        :param MediaType: 媒资文件类型，详细定义参见[MediaPreknownInfo.MediaType](https://cloud.tencent.com/document/product/1509/65063#MediaPreknownInfo)
+默认为2(视频)
+        :type MediaType: int
         """
         self.URL = None
         self.MD5 = None
@@ -1363,6 +1644,7 @@ class ImportMediaRequest(AbstractModel):
         self.WriteBackCosPath = None
         self.Label = None
         self.CallbackURL = None
+        self.MediaType = None
 
 
     def _deserialize(self, params):
@@ -1372,6 +1654,7 @@ class ImportMediaRequest(AbstractModel):
         self.WriteBackCosPath = params.get("WriteBackCosPath")
         self.Label = params.get("Label")
         self.CallbackURL = params.get("CallbackURL")
+        self.MediaType = params.get("MediaType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1565,11 +1848,15 @@ class MediaFilter(AbstractModel):
         :param LabelSet: 媒资自定义标签数组
 注意：此字段可能返回 null，表示取不到有效值。
         :type LabelSet: list of str
+        :param MediaType: 媒资文件类型，定义参见[MediaPreknownInfo.MediaType](https://cloud.tencent.com/document/product/1509/65063#MediaPreknownInfo)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MediaType: int
         """
         self.MediaNameSet = None
         self.StatusSet = None
         self.MediaIdSet = None
         self.LabelSet = None
+        self.MediaType = None
 
 
     def _deserialize(self, params):
@@ -1577,6 +1864,7 @@ class MediaFilter(AbstractModel):
         self.StatusSet = params.get("StatusSet")
         self.MediaIdSet = params.get("MediaIdSet")
         self.LabelSet = params.get("LabelSet")
+        self.MediaType = params.get("MediaType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1622,7 +1910,7 @@ class MediaInfo(AbstractModel):
         :param FailedReason: 若状态为失败，表示失败原因
 注意：此字段可能返回 null，表示取不到有效值。
         :type FailedReason: str
-        :param Metadata: 媒资视频元信息
+        :param Metadata: 媒资视频元信息，仅在MediaType=VIDEO时有效
 注意：此字段可能返回 null，表示取不到有效值。
         :type Metadata: :class:`tencentcloud.ivld.v20210903.models.MediaMetadata`
         :param Progress: 导入视频进度，取值范围为[0,100]
@@ -1634,6 +1922,18 @@ class MediaInfo(AbstractModel):
         :param CallbackURL: 媒资导入完成后的回调地址
 注意：此字段可能返回 null，表示取不到有效值。
         :type CallbackURL: str
+        :param MediaType: 媒资文件类型，具体参看[MediaPreknownInfo](https://cloud.tencent.com/document/product/1509/65063#MediaPreknownInfo)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MediaType: int
+        :param AudioMetadata: 媒资音频元信息，仅在MediaType=Audio时有效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AudioMetadata: :class:`tencentcloud.ivld.v20210903.models.AudioMetadata`
+        :param ImageMetadata: 媒资图片文件元信息，仅在MediaType=Image时有效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageMetadata: :class:`tencentcloud.ivld.v20210903.models.ImageMetadata`
+        :param TextMetadata: 媒资文本文件元信息，仅在MediaType=Text时有效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TextMetadata: :class:`tencentcloud.ivld.v20210903.models.TextMetadata`
         """
         self.MediaId = None
         self.Name = None
@@ -1644,6 +1944,10 @@ class MediaInfo(AbstractModel):
         self.Progress = None
         self.Label = None
         self.CallbackURL = None
+        self.MediaType = None
+        self.AudioMetadata = None
+        self.ImageMetadata = None
+        self.TextMetadata = None
 
 
     def _deserialize(self, params):
@@ -1658,6 +1962,16 @@ class MediaInfo(AbstractModel):
         self.Progress = params.get("Progress")
         self.Label = params.get("Label")
         self.CallbackURL = params.get("CallbackURL")
+        self.MediaType = params.get("MediaType")
+        if params.get("AudioMetadata") is not None:
+            self.AudioMetadata = AudioMetadata()
+            self.AudioMetadata._deserialize(params.get("AudioMetadata"))
+        if params.get("ImageMetadata") is not None:
+            self.ImageMetadata = ImageMetadata()
+            self.ImageMetadata._deserialize(params.get("ImageMetadata"))
+        if params.get("TextMetadata") is not None:
+            self.TextMetadata = TextMetadata()
+            self.TextMetadata._deserialize(params.get("TextMetadata"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1674,7 +1988,7 @@ class MediaMetadata(AbstractModel):
 
     def __init__(self):
         r"""
-        :param FileSize: 媒资视频文件大小
+        :param FileSize: 媒资视频文件大小，单位为字节
         :type FileSize: int
         :param MD5: 媒资视频文件MD5
         :type MD5: str
@@ -1733,8 +2047,11 @@ class MediaPreknownInfo(AbstractModel):
     | MediaType 名称|  MediaType取值 | MediaType描述 |
     |---|---|---|
     | MEDIA_TYPE_INVALID | 0 | 非法的媒资文件类型 |
-    | MEDIA_TYPE_IMAGE | 1 | 图片，当前不支持 |
-    | MEDIA_TYPE_VIDEO | 2 | 视频，当前只支持此类型媒资文件 |
+    | MEDIA_TYPE_IMAGE | 1 | 图片 |
+    | MEDIA_TYPE_VIDEO | 2 | 视频 |
+    | MEDIA_TYPE_AUDIO | 3 | 音频 |
+    | MEDIA_TYPE_VIDEO_STREAM | 4 | 视频流，暂不支持 |
+    | MEDIA_TYPE_TEXT | 5 | 文本 |
 
     MediaPreknownInfo.MediaLabel:
 
@@ -1844,6 +2161,46 @@ class ModifyCallbackResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class MultiLevelPersonInfo(AbstractModel):
+    """带类型树的已分类人物信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param L1ClassifyName: 一级分类名称(分类信息参见自定义人物类型)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type L1ClassifyName: str
+        :param L2ClassifiedPersonInfoSet: 已分类人物信息数组(所有分类类型为二级分类)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type L2ClassifiedPersonInfoSet: list of ClassifiedPersonInfo
+        :param Source: 检测结果来源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Source: int
+        """
+        self.L1ClassifyName = None
+        self.L2ClassifiedPersonInfoSet = None
+        self.Source = None
+
+
+    def _deserialize(self, params):
+        self.L1ClassifyName = params.get("L1ClassifyName")
+        if params.get("L2ClassifiedPersonInfoSet") is not None:
+            self.L2ClassifiedPersonInfoSet = []
+            for item in params.get("L2ClassifiedPersonInfoSet"):
+                obj = ClassifiedPersonInfo()
+                obj._deserialize(item)
+                self.L2ClassifiedPersonInfoSet.append(obj)
+        self.Source = params.get("Source")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class MultiLevelTag(AbstractModel):
@@ -1990,6 +2347,46 @@ class QueryCallbackResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class Rectf(AbstractModel):
+    """矩形内容框
+
+    """
+
+    def __init__(self):
+        r"""
+        :param X: 矩形框左上角水平座标
+注意：此字段可能返回 null，表示取不到有效值。
+        :type X: float
+        :param Y: 矩形框左上角竖直座标
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Y: float
+        :param Width: 矩形框宽度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Width: float
+        :param Height: 矩形框长度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Height: float
+        """
+        self.X = None
+        self.Y = None
+        self.Width = None
+        self.Height = None
+
+
+    def _deserialize(self, params):
+        self.X = params.get("X")
+        self.Y = params.get("Y")
+        self.Width = params.get("Width")
+        self.Height = params.get("Height")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ShowInfo(AbstractModel):
     """视频结构化结果
 
@@ -2042,6 +2439,12 @@ class ShowInfo(AbstractModel):
         :param SummaryTagSet: 概要标签信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type SummaryTagSet: list of str
+        :param UnknownPersonSet: 未知人物信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UnknownPersonSet: list of UnknownPerson
+        :param MultiLevelPersonInfoSet: 树状已分类人物信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MultiLevelPersonInfoSet: list of MultiLevelPersonInfo
         """
         self.Date = None
         self.Logo = None
@@ -2058,6 +2461,8 @@ class ShowInfo(AbstractModel):
         self.WebMediaURL = None
         self.MediaClassifierSet = None
         self.SummaryTagSet = None
+        self.UnknownPersonSet = None
+        self.MultiLevelPersonInfoSet = None
 
 
     def _deserialize(self, params):
@@ -2095,6 +2500,18 @@ class ShowInfo(AbstractModel):
         self.WebMediaURL = params.get("WebMediaURL")
         self.MediaClassifierSet = params.get("MediaClassifierSet")
         self.SummaryTagSet = params.get("SummaryTagSet")
+        if params.get("UnknownPersonSet") is not None:
+            self.UnknownPersonSet = []
+            for item in params.get("UnknownPersonSet"):
+                obj = UnknownPerson()
+                obj._deserialize(item)
+                self.UnknownPersonSet.append(obj)
+        if params.get("MultiLevelPersonInfoSet") is not None:
+            self.MultiLevelPersonInfoSet = []
+            for item in params.get("MultiLevelPersonInfoSet"):
+                obj = MultiLevelPersonInfo()
+                obj._deserialize(item)
+                self.MultiLevelPersonInfoSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2240,6 +2657,18 @@ class TaskInfo(AbstractModel):
         :param CallbackURL: 任务分析完成后的后调地址
 注意：此字段可能返回 null，表示取不到有效值。
         :type CallbackURL: str
+        :param AudioMetadata: 任务对应的媒资文件元信息，仅在MediaType为Audio时有效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AudioMetadata: :class:`tencentcloud.ivld.v20210903.models.AudioMetadata`
+        :param ImageMetadata: 任务对应的媒资文件元信息，仅在MediaType为Audio时有效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageMetadata: :class:`tencentcloud.ivld.v20210903.models.ImageMetadata`
+        :param TextMetadata: 任务对应的媒资文件元信息，仅在MediaType为Text时有效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TextMetadata: :class:`tencentcloud.ivld.v20210903.models.TextMetadata`
+        :param Metadata: 任务对应的媒资文件元信息，仅在MediaType为Video时有效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Metadata: :class:`tencentcloud.ivld.v20210903.models.MediaMetadata`
         """
         self.TaskId = None
         self.TaskName = None
@@ -2254,6 +2683,10 @@ class TaskInfo(AbstractModel):
         self.MediaName = None
         self.Label = None
         self.CallbackURL = None
+        self.AudioMetadata = None
+        self.ImageMetadata = None
+        self.TextMetadata = None
+        self.Metadata = None
 
 
     def _deserialize(self, params):
@@ -2272,6 +2705,18 @@ class TaskInfo(AbstractModel):
         self.MediaName = params.get("MediaName")
         self.Label = params.get("Label")
         self.CallbackURL = params.get("CallbackURL")
+        if params.get("AudioMetadata") is not None:
+            self.AudioMetadata = AudioMetadata()
+            self.AudioMetadata._deserialize(params.get("AudioMetadata"))
+        if params.get("ImageMetadata") is not None:
+            self.ImageMetadata = ImageMetadata()
+            self.ImageMetadata._deserialize(params.get("ImageMetadata"))
+        if params.get("TextMetadata") is not None:
+            self.TextMetadata = TextMetadata()
+            self.TextMetadata._deserialize(params.get("TextMetadata"))
+        if params.get("Metadata") is not None:
+            self.Metadata = MediaMetadata()
+            self.Metadata._deserialize(params.get("Metadata"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2315,6 +2760,43 @@ class TextAppearInfo(AbstractModel):
         
 
 
+class TextData(AbstractModel):
+    """文本文件标签识别结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Content: 文本内容信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Content: str
+        :param Summary: 文本概要信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Summary: str
+        :param TextTagSet: 文本标签信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TextTagSet: :class:`tencentcloud.ivld.v20210903.models.MultiLevelTag`
+        """
+        self.Content = None
+        self.Summary = None
+        self.TextTagSet = None
+
+
+    def _deserialize(self, params):
+        self.Content = params.get("Content")
+        self.Summary = params.get("Summary")
+        if params.get("TextTagSet") is not None:
+            self.TextTagSet = MultiLevelTag()
+            self.TextTagSet._deserialize(params.get("TextTagSet"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TextInfo(AbstractModel):
     """可视文本识别结果信息(OCR)
 
@@ -2342,6 +2824,81 @@ class TextInfo(AbstractModel):
         self.StartTimeStamp = params.get("StartTimeStamp")
         self.EndTimeStamp = params.get("EndTimeStamp")
         self.Tag = params.get("Tag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TextMetadata(AbstractModel):
+    """文本文件元信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FileSize: 媒资文本文件大小，单位为字节
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileSize: int
+        :param MD5: 媒资文本文件MD5
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MD5: str
+        :param Length: 媒资文本文件字符数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Length: int
+        :param Format: 媒资文本文件格式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Format: str
+        """
+        self.FileSize = None
+        self.MD5 = None
+        self.Length = None
+        self.Format = None
+
+
+    def _deserialize(self, params):
+        self.FileSize = params.get("FileSize")
+        self.MD5 = params.get("MD5")
+        self.Length = params.get("Length")
+        self.Format = params.get("Format")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UnknownPerson(AbstractModel):
+    """未知人物信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param VideoAppearSet: 视觉出现信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VideoAppearSet: list of VideoAppearInfo
+        :param PutLibraryAllowed: 未知人物是否可以入库(只有当未知人物人脸小图质量分符合要求时才可入库)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PutLibraryAllowed: bool
+        """
+        self.VideoAppearSet = None
+        self.PutLibraryAllowed = None
+
+
+    def _deserialize(self, params):
+        if params.get("VideoAppearSet") is not None:
+            self.VideoAppearSet = []
+            for item in params.get("VideoAppearSet"):
+                obj = VideoAppearInfo()
+                obj._deserialize(item)
+                self.VideoAppearSet.append(obj)
+        self.PutLibraryAllowed = params.get("PutLibraryAllowed")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

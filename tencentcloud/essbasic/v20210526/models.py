@@ -822,6 +822,73 @@ ProcessTimeout - 转换文件超时
         self.RequestId = params.get("RequestId")
 
 
+class ChannelVerifyPdfRequest(AbstractModel):
+    """ChannelVerifyPdf请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param FlowId: 合同Id，流程Id
+        :type FlowId: str
+        :param Agent: 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+        :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        :param Operator: 操作者的信息
+        :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
+        """
+        self.FlowId = None
+        self.Agent = None
+        self.Operator = None
+
+
+    def _deserialize(self, params):
+        self.FlowId = params.get("FlowId")
+        if params.get("Agent") is not None:
+            self.Agent = Agent()
+            self.Agent._deserialize(params.get("Agent"))
+        if params.get("Operator") is not None:
+            self.Operator = UserInfo()
+            self.Operator._deserialize(params.get("Operator"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChannelVerifyPdfResponse(AbstractModel):
+    """ChannelVerifyPdf返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param VerifyResult: 验签结果，1-文件未被篡改，全部签名在腾讯电子签完成； 2-文件未被篡改，部分签名在腾讯电子签完成；3-文件被篡改；4-异常：文件内没有签名域；5-异常：文件签名格式错误
+        :type VerifyResult: int
+        :param PdfVerifyResults: 验签结果详情,内部状态1-验签成功，在电子签签署；2-验签成功，在其他平台签署；3-验签失败；4-pdf文件没有签名域
+；5-文件签名格式错误
+        :type PdfVerifyResults: list of PdfVerifyResult
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.VerifyResult = None
+        self.PdfVerifyResults = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.VerifyResult = params.get("VerifyResult")
+        if params.get("PdfVerifyResults") is not None:
+            self.PdfVerifyResults = []
+            for item in params.get("PdfVerifyResults"):
+                obj = PdfVerifyResult()
+                obj._deserialize(item)
+                self.PdfVerifyResults.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class Component(AbstractModel):
     """此结构体 (Component) 用于描述控件属性。
 
@@ -2427,6 +2494,82 @@ class OrganizationInfo(AbstractModel):
         self.ProxyIp = params.get("ProxyIp")
         self.OrganizationId = params.get("OrganizationId")
         self.Channel = params.get("Channel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PdfVerifyResult(AbstractModel):
+    """合同文件验签单个结果结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param VerifyResult: 验签结果
+        :type VerifyResult: int
+        :param SignPlatform: 签署平台
+        :type SignPlatform: str
+        :param SignerName: 签署人名称
+        :type SignerName: str
+        :param SignTime: 签署时间
+        :type SignTime: int
+        :param SignAlgorithm: 签名算法
+        :type SignAlgorithm: str
+        :param CertSn: 签名证书序列号
+        :type CertSn: str
+        :param CertNotBefore: 证书起始时间
+        :type CertNotBefore: int
+        :param CertNotAfter: 证书过期时间
+        :type CertNotAfter: int
+        :param SignType: 签名类型
+        :type SignType: int
+        :param ComponentPosX: 签名域横坐标
+        :type ComponentPosX: float
+        :param ComponentPosY: 签名域纵坐标
+        :type ComponentPosY: float
+        :param ComponentWidth: 签名域宽度
+        :type ComponentWidth: float
+        :param ComponentHeight: 签名域高度
+        :type ComponentHeight: float
+        :param ComponentPage: 签名域所在页码
+        :type ComponentPage: int
+        """
+        self.VerifyResult = None
+        self.SignPlatform = None
+        self.SignerName = None
+        self.SignTime = None
+        self.SignAlgorithm = None
+        self.CertSn = None
+        self.CertNotBefore = None
+        self.CertNotAfter = None
+        self.SignType = None
+        self.ComponentPosX = None
+        self.ComponentPosY = None
+        self.ComponentWidth = None
+        self.ComponentHeight = None
+        self.ComponentPage = None
+
+
+    def _deserialize(self, params):
+        self.VerifyResult = params.get("VerifyResult")
+        self.SignPlatform = params.get("SignPlatform")
+        self.SignerName = params.get("SignerName")
+        self.SignTime = params.get("SignTime")
+        self.SignAlgorithm = params.get("SignAlgorithm")
+        self.CertSn = params.get("CertSn")
+        self.CertNotBefore = params.get("CertNotBefore")
+        self.CertNotAfter = params.get("CertNotAfter")
+        self.SignType = params.get("SignType")
+        self.ComponentPosX = params.get("ComponentPosX")
+        self.ComponentPosY = params.get("ComponentPosY")
+        self.ComponentWidth = params.get("ComponentWidth")
+        self.ComponentHeight = params.get("ComponentHeight")
+        self.ComponentPage = params.get("ComponentPage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

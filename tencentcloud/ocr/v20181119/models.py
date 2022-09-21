@@ -2864,6 +2864,88 @@ WarnInfos，告警信息，Code 告警码列表和释义：
         self.RequestId = params.get("RequestId")
 
 
+class ImageEnhancementRequest(AbstractModel):
+    """ImageEnhancement请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ImageBase64: 图片的 Base64 值。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
+图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :type ImageBase64: str
+        :param ImageUrl: 图片的 Url 地址。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
+图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :type ImageUrl: str
+        :param ReturnImage: 默认为空，ReturnImage的取值以及含义如下：
+“preprocess”: 返回预处理后的图片数据
+“origin”：返回原图片数据
+" ":不返回图片数据
+        :type ReturnImage: str
+        :param TaskType: 默认值为1，指定图像增强方法：
+1：切边增强
+2：弯曲矫正
+202：黑白模式
+204：提亮模式
+205：灰度模式
+207：省墨模式
+208：文字锐化（适合非彩色图片）
+301：去摩尔纹
+302：去除阴影
+        :type TaskType: int
+        """
+        self.ImageBase64 = None
+        self.ImageUrl = None
+        self.ReturnImage = None
+        self.TaskType = None
+
+
+    def _deserialize(self, params):
+        self.ImageBase64 = params.get("ImageBase64")
+        self.ImageUrl = params.get("ImageUrl")
+        self.ReturnImage = params.get("ReturnImage")
+        self.TaskType = params.get("TaskType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImageEnhancementResponse(AbstractModel):
+    """ImageEnhancement返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ImageTag: 图片数据标识：
+“origin”：原图
+“preprocess”:预处理后的图
+        :type ImageTag: str
+        :param Image: 图片数据，返回预处理后图像或原图像base64字符
+        :type Image: str
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.ImageTag = None
+        self.Image = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.ImageTag = params.get("ImageTag")
+        self.Image = params.get("Image")
+        self.RequestId = params.get("RequestId")
+
+
 class InstitutionOCRRequest(AbstractModel):
     """InstitutionOCR请求参数结构体
 

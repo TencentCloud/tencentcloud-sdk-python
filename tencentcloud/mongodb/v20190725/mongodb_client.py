@@ -171,6 +171,35 @@ class MongodbClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DescribeAccountUsers(self, request):
+        """本接口(DescribeAccountUsers)用于获取当前实例的全部账号列表。
+
+        :param request: Request instance for DescribeAccountUsers.
+        :type request: :class:`tencentcloud.mongodb.v20190725.models.DescribeAccountUsersRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20190725.models.DescribeAccountUsersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAccountUsers", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeAccountUsersResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DescribeAsyncRequestInfo(self, request):
         """查询异步任务状态接口
 

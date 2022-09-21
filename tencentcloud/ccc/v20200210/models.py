@@ -2177,7 +2177,7 @@ class PhoneNumBuyInfo(AbstractModel):
         :type BuyTime: int
         :param EndTime: 截至时间戳
         :type EndTime: int
-        :param State: 号码状态，1正常|2停用
+        :param State: 号码状态，1正常|2欠费停用|4管理员停用|5违规停用
         :type State: int
         """
         self.PhoneNum = None

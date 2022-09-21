@@ -1371,17 +1371,21 @@ class CreateProductRequest(AbstractModel):
         :param ProductVaildYears: 产品有效期
         :type ProductVaildYears: int
         :param Features: 设备功能码 ypsxth音频双向通话 spdxth视频单向通话 sxysp双向音视频
+注意：此字段只支持创建'摄像头'和'儿童手表'，摄像头传["ypsxth","spdxth"]，儿童手表传["ypsxth","spdxth","sxysp"]，创建其它品类的产品需要传递CategoryId字段，通过云api调用此接口时，如果传了CategoryId字段，将忽略Features字段,但Features仍需传值(可传任意字符串数组)
         :type Features: list of str
-        :param ChipOs: 设备操作系统，通用设备填default
-        :type ChipOs: str
         :param ChipManufactureId: 芯片厂商id，通用设备填default
         :type ChipManufactureId: str
         :param ChipId: 芯片id，通用设备填default
         :type ChipId: str
         :param ProductDescription: 产品描述信息
         :type ProductDescription: str
+        :param ChipOs: 设备操作系统，通用设备填default
+        :type ChipOs: str
         :param EncryptionType: 认证方式 只支持取值为2 psk认证
         :type EncryptionType: int
+        :param CategoryId: 产品品类id,113:摄像头,567:儿童手表,595:可视对讲门锁
+注意：通过云api调用此接口时，如果传了CategoryId字段，将忽略Features字段,但Features仍需传值(可传任意字符串数组)
+        :type CategoryId: int
         :param NetType: 连接类型，wifi表示WIFI连接，cellular表示4G连接
         :type NetType: str
         """
@@ -1389,11 +1393,12 @@ class CreateProductRequest(AbstractModel):
         self.DeviceType = None
         self.ProductVaildYears = None
         self.Features = None
-        self.ChipOs = None
         self.ChipManufactureId = None
         self.ChipId = None
         self.ProductDescription = None
+        self.ChipOs = None
         self.EncryptionType = None
+        self.CategoryId = None
         self.NetType = None
 
 
@@ -1402,11 +1407,12 @@ class CreateProductRequest(AbstractModel):
         self.DeviceType = params.get("DeviceType")
         self.ProductVaildYears = params.get("ProductVaildYears")
         self.Features = params.get("Features")
-        self.ChipOs = params.get("ChipOs")
         self.ChipManufactureId = params.get("ChipManufactureId")
         self.ChipId = params.get("ChipId")
         self.ProductDescription = params.get("ProductDescription")
+        self.ChipOs = params.get("ChipOs")
         self.EncryptionType = params.get("EncryptionType")
+        self.CategoryId = params.get("CategoryId")
         self.NetType = params.get("NetType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -6981,6 +6987,9 @@ class VideoProduct(AbstractModel):
         :param CategoryId: 产品品类,113:摄像头,567:儿童手表,595:可视对讲门锁
 注意：此字段可能返回 null，表示取不到有效值。
         :type CategoryId: int
+        :param ProductVaildYears: 产品有效年限
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductVaildYears: int
         """
         self.ProductId = None
         self.ProductName = None
@@ -6995,6 +7004,7 @@ class VideoProduct(AbstractModel):
         self.UpdateTime = None
         self.NetType = None
         self.CategoryId = None
+        self.ProductVaildYears = None
 
 
     def _deserialize(self, params):
@@ -7011,6 +7021,7 @@ class VideoProduct(AbstractModel):
         self.UpdateTime = params.get("UpdateTime")
         self.NetType = params.get("NetType")
         self.CategoryId = params.get("CategoryId")
+        self.ProductVaildYears = params.get("ProductVaildYears")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

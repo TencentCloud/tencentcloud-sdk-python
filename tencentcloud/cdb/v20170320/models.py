@@ -2567,6 +2567,8 @@ class CreateParamTemplateRequest(AbstractModel):
         :type ParamList: list of Parameter
         :param TemplateType: 默认参数模板类型。支持值包括："HIGH_STABILITY" - 高稳定模板，"HIGH_PERFORMANCE" - 高性能模板。
         :type TemplateType: str
+        :param EngineType: 实例引擎类型，默认为"InnoDB"，支持值包括："InnoDB"，"RocksDB"。
+        :type EngineType: str
         """
         self.Name = None
         self.Description = None
@@ -2574,6 +2576,7 @@ class CreateParamTemplateRequest(AbstractModel):
         self.TemplateId = None
         self.ParamList = None
         self.TemplateType = None
+        self.EngineType = None
 
 
     def _deserialize(self, params):
@@ -2588,6 +2591,7 @@ class CreateParamTemplateRequest(AbstractModel):
                 obj._deserialize(item)
                 self.ParamList.append(obj)
         self.TemplateType = params.get("TemplateType")
+        self.EngineType = params.get("EngineType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5005,7 +5009,7 @@ class DescribeDBInstancesResponse(AbstractModel):
         r"""
         :param TotalCount: 符合查询条件的实例总数。
         :type TotalCount: int
-        :param Items: 实例详细信息。
+        :param Items: 实例详细信息列表。
         :type Items: list of InstanceInfo
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

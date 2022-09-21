@@ -1067,6 +1067,35 @@ class OcrClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def ImageEnhancement(self, request):
+        """图像增强
+
+        :param request: Request instance for ImageEnhancement.
+        :type request: :class:`tencentcloud.ocr.v20181119.models.ImageEnhancementRequest`
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.ImageEnhancementResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ImageEnhancement", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ImageEnhancementResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def InstitutionOCR(self, request):
         """本接口支持事业单位法人证书关键字段识别，包括注册号、有效期、住所、名称、法定代表人等。
 

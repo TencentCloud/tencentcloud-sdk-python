@@ -29,6 +29,8 @@ class EssbasicClient(AbstractClient):
     def ChannelBatchCancelFlows(self, request):
         """指定需要批量撤销的签署流程Id，批量撤销合同
         客户指定需要撤销的签署流程Id，最多100个，超过100不处理；接口失败后返回错误信息
+        注意:
+        能撤回合同的只能是合同的发起人或者发起企业的超管、法人
 
         :param request: Request instance for ChannelBatchCancelFlows.
         :type request: :class:`tencentcloud.essbasic.v20210526.models.ChannelBatchCancelFlowsRequest`
@@ -87,7 +89,10 @@ class EssbasicClient(AbstractClient):
 
     def ChannelCreateBatchCancelFlowUrl(self, request):
         """指定需要批量撤销的签署流程Id，获取批量撤销链接
-        客户指定需要撤销的签署流程Id，最多100个，超过100不处理；接口调用成功返回批量撤销合同的链接，通过链接跳转到电子签小程序完成批量撤销
+        客户指定需要撤销的签署流程Id，最多100个，超过100不处理；
+        接口调用成功返回批量撤销合同的链接，通过链接跳转到电子签小程序完成批量撤销;
+        注意:
+        能撤回合同的只能是合同的发起人或者发起企业的超管、法人
 
         :param request: Request instance for ChannelCreateBatchCancelFlowUrl.
         :type request: :class:`tencentcloud.essbasic.v20210526.models.ChannelCreateBatchCancelFlowUrlRequest`
@@ -279,6 +284,35 @@ class EssbasicClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ChannelGetTaskResultApiResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ChannelVerifyPdf(self, request):
+        """合同文件验签
+
+        :param request: Request instance for ChannelVerifyPdf.
+        :type request: :class:`tencentcloud.essbasic.v20210526.models.ChannelVerifyPdfRequest`
+        :rtype: :class:`tencentcloud.essbasic.v20210526.models.ChannelVerifyPdfResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ChannelVerifyPdf", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ChannelVerifyPdfResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
