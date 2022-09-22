@@ -3384,7 +3384,7 @@ class TerminateDBInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param InstanceId: 实例Id列表
+        :param InstanceId: 指定预隔离实例ID。格式如：cmgo-p8vnipr5。
         :type InstanceId: str
         """
         self.InstanceId = None

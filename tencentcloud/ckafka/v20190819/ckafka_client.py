@@ -317,7 +317,7 @@ class CkafkaClient(AbstractClient):
 
 
     def CreateDatahubTask(self, request):
-        """创建Datahub转储任务
+        """创建DIP转储任务
 
         :param request: Request instance for CreateDatahubTask.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.CreateDatahubTaskRequest`

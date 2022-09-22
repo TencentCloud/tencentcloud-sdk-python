@@ -891,6 +891,56 @@ class DataSourceInfo(AbstractModel):
         
 
 
+class DataSourceInfoPage(AbstractModel):
+    """查询数据源分页列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PageNumber: 分页页码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageNumber: int
+        :param PageSize: 分页大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageSize: int
+        :param Rows: 数据源列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Rows: list of DataSourceInfo
+        :param TotalCount: 总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param TotalPageNumber: 总分页页码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalPageNumber: int
+        """
+        self.PageNumber = None
+        self.PageSize = None
+        self.Rows = None
+        self.TotalCount = None
+        self.TotalPageNumber = None
+
+
+    def _deserialize(self, params):
+        self.PageNumber = params.get("PageNumber")
+        self.PageSize = params.get("PageSize")
+        if params.get("Rows") is not None:
+            self.Rows = []
+            for item in params.get("Rows"):
+                obj = DataSourceInfo()
+                obj._deserialize(item)
+                self.Rows.append(obj)
+        self.TotalCount = params.get("TotalCount")
+        self.TotalPageNumber = params.get("TotalPageNumber")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DeleteDataSourcesRequest(AbstractModel):
     """DeleteDataSources请求参数结构体
 
@@ -1092,6 +1142,141 @@ class DependencyConfig(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class DescribeDataSourceListRequest(AbstractModel):
+    """DescribeDataSourceList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PageNumber: 页码
+        :type PageNumber: int
+        :param PageSize: 返回数量
+        :type PageSize: int
+        :param OrderFields: 排序配置
+        :type OrderFields: list of OrderField
+        :param Filters: 可选过滤条件，Filter可选配置(参考): "Name": { "type": "string", "description": "数据源名称" }, "Type": { "type": "string", "description": "类型" }, "ClusterId": { "type": "string", "description": "集群id" }, "CategoryId": { "type": "string", "description": "分类，项目或空间id" }
+        :type Filters: list of Filter
+        """
+        self.PageNumber = None
+        self.PageSize = None
+        self.OrderFields = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        self.PageNumber = params.get("PageNumber")
+        self.PageSize = params.get("PageSize")
+        if params.get("OrderFields") is not None:
+            self.OrderFields = []
+            for item in params.get("OrderFields"):
+                obj = OrderField()
+                obj._deserialize(item)
+                self.OrderFields.append(obj)
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDataSourceListResponse(AbstractModel):
+    """DescribeDataSourceList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 数据源列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.wedata.v20210820.models.DataSourceInfoPage`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = DataSourceInfoPage()
+            self.Data._deserialize(params.get("Data"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeDataSourceWithoutInfoRequest(AbstractModel):
+    """DescribeDataSourceWithoutInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param OrderFields: 1
+        :type OrderFields: list of OrderField
+        :param Filters: 1
+        :type Filters: list of Filter
+        """
+        self.OrderFields = None
+        self.Filters = None
+
+
+    def _deserialize(self, params):
+        if params.get("OrderFields") is not None:
+            self.OrderFields = []
+            for item in params.get("OrderFields"):
+                obj = OrderField()
+                obj._deserialize(item)
+                self.OrderFields.append(obj)
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDataSourceWithoutInfoResponse(AbstractModel):
+    """DescribeDataSourceWithoutInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Data: 1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: list of DataSourceInfo
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Data = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self.Data = []
+            for item in params.get("Data"):
+                obj = DataSourceInfo()
+                obj._deserialize(item)
+                self.Data.append(obj)
+        self.RequestId = params.get("RequestId")
 
 
 class DescribeDatasourceRequest(AbstractModel):
@@ -1921,6 +2106,34 @@ class DescribeTasksByPageResponse(AbstractModel):
             self.Data = TaskInfoDataPage()
             self.Data._deserialize(params.get("Data"))
         self.RequestId = params.get("RequestId")
+
+
+class Filter(AbstractModel):
+    """通用过滤器
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Name: 过滤字段名称
+        :type Name: str
+        :param Values: 过滤值列表
+        :type Values: list of str
+        """
+        self.Name = None
+        self.Values = None
+
+
+    def _deserialize(self, params):
+        self.Name = params.get("Name")
+        self.Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class Folder(AbstractModel):

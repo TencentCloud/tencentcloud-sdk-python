@@ -19,3 +19,6 @@ FAILEDOPERATION = 'FailedOperation'
 
 # 工作空间不存在。
 INVALIDPARAMETER_WORKSPACENOTEXIST = 'InvalidParameter.WorkspaceNotExist'
+
+# 用户不在白名单。
+OPERATIONDENIED_USERNOTINWHITELISTERROR = 'OperationDenied.UserNotInWhitelistError'

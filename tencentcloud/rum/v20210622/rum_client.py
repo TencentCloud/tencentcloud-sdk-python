@@ -557,7 +557,7 @@ class RumClient(AbstractClient):
 
 
     def DescribeDataFetchProject(self, request):
-        """获取DescribeDataFetchProject信息
+        """获取DescribeDataFetchProject信息。已下线，请使用DescribeDataFetchUrl
 
         :param request: Request instance for DescribeDataFetchProject.
         :type request: :class:`tencentcloud.rum.v20210622.models.DescribeDataFetchProjectRequest`

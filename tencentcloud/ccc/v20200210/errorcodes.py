@@ -23,6 +23,9 @@ FAILEDOPERATION_CALLEEISLIMITED = 'FailedOperation.CalleeIsLimited'
 # 主叫号码外呼超频。
 FAILEDOPERATION_CALLEROVERFREQUENCY = 'FailedOperation.CallerOverFrequency'
 
+# 当前号码状态不能被修改。
+FAILEDOPERATION_CURSTATENOTALLOWMODIFY = 'FailedOperation.CurStateNotAllowModify'
+
 # 重复账号。
 FAILEDOPERATION_DUPLICATEDACCOUNT = 'FailedOperation.DuplicatedAccount'
 

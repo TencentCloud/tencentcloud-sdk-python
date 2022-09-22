@@ -1860,6 +1860,8 @@ class CreateDatahubTaskRequest(AbstractModel):
         :type TransformsParam: :class:`tencentcloud.ckafka.v20190819.models.TransformsParam`
         :param TaskId: 任务ID
         :type TaskId: str
+        :param Tags: 标签列表
+        :type Tags: list of Tag
         """
         self.TaskName = None
         self.TaskType = None
@@ -1870,6 +1872,7 @@ class CreateDatahubTaskRequest(AbstractModel):
         self.SchemaId = None
         self.TransformsParam = None
         self.TaskId = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -1892,6 +1895,12 @@ class CreateDatahubTaskRequest(AbstractModel):
             self.TransformsParam = TransformsParam()
             self.TransformsParam._deserialize(params.get("TransformsParam"))
         self.TaskId = params.get("TaskId")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -4353,6 +4362,9 @@ class DescribeDatahubTaskRes(AbstractModel):
         :param ErrorMessage: 异常信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorMessage: str
+        :param Tags: 任务标签列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
         """
         self.TaskId = None
         self.TaskName = None
@@ -4368,6 +4380,7 @@ class DescribeDatahubTaskRes(AbstractModel):
         self.SchemaName = None
         self.TransformsParam = None
         self.ErrorMessage = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -4398,6 +4411,12 @@ class DescribeDatahubTaskRes(AbstractModel):
             self.TransformsParam = TransformsParam()
             self.TransformsParam._deserialize(params.get("TransformsParam"))
         self.ErrorMessage = params.get("ErrorMessage")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -7238,6 +7257,34 @@ class JgwOperateResponse(AbstractModel):
         if params.get("Data") is not None:
             self.Data = OperateResponseData()
             self.Data._deserialize(params.get("Data"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class JsonPathReplaceParam(AbstractModel):
+    """数据处理——Value处理参数——Jsonpath替换参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param OldValue: 被替换值，Jsonpath表达式
+        :type OldValue: str
+        :param NewValue: 替换值，Jsonpath表达式或字符串
+        :type NewValue: str
+        """
+        self.OldValue = None
+        self.NewValue = None
+
+
+    def _deserialize(self, params):
+        self.OldValue = params.get("OldValue")
+        self.NewValue = params.get("NewValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -10559,6 +10606,9 @@ class ValueParam(AbstractModel):
         :param Result: 处理结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: str
+        :param JsonPathReplace: JsonPath替换，TYPE=JSON_PATH_REPLACE时必传
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JsonPathReplace: :class:`tencentcloud.ckafka.v20190819.models.JsonPathReplaceParam`
         """
         self.Type = None
         self.Replace = None
@@ -10568,6 +10618,7 @@ class ValueParam(AbstractModel):
         self.Split = None
         self.KV = None
         self.Result = None
+        self.JsonPathReplace = None
 
 
     def _deserialize(self, params):
@@ -10591,6 +10642,9 @@ class ValueParam(AbstractModel):
             self.KV = KVParam()
             self.KV._deserialize(params.get("KV"))
         self.Result = params.get("Result")
+        if params.get("JsonPathReplace") is not None:
+            self.JsonPathReplace = JsonPathReplaceParam()
+            self.JsonPathReplace._deserialize(params.get("JsonPathReplace"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

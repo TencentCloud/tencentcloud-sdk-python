@@ -5502,6 +5502,73 @@ class DescribeRocketMQTopicsResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class DescribeRocketMQVipInstancesRequest(AbstractModel):
+    """DescribeRocketMQVipInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Filters: 查询条件过滤器
+        :type Filters: list of Filter
+        :param Limit: 查询数目上限，默认20
+        :type Limit: int
+        :param Offset: 查询起始位置
+        :type Offset: int
+        """
+        self.Filters = None
+        self.Limit = None
+        self.Offset = None
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self.Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self.Filters.append(obj)
+        self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRocketMQVipInstancesResponse(AbstractModel):
+    """DescribeRocketMQVipInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param TotalCount: 未分页的总数目
+        :type TotalCount: int
+        :param Instances: 实例信息列表
+        :type Instances: list of RocketMQVipInstance
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.TotalCount = None
+        self.Instances = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.TotalCount = params.get("TotalCount")
+        if params.get("Instances") is not None:
+            self.Instances = []
+            for item in params.get("Instances"):
+                obj = RocketMQVipInstance()
+                obj._deserialize(item)
+                self.Instances.append(obj)
+        self.RequestId = params.get("RequestId")
+
+
 class DescribeRolesRequest(AbstractModel):
     """DescribeRoles请求参数结构体
 
@@ -7841,6 +7908,84 @@ class RocketMQTopic(AbstractModel):
         self.PartitionNum = params.get("PartitionNum")
         self.CreateTime = params.get("CreateTime")
         self.UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RocketMQVipInstance(AbstractModel):
+    """RocketMQ专享实例信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: 实例id
+        :type InstanceId: str
+        :param InstanceName: 实例名称
+        :type InstanceName: str
+        :param InstanceVersion: 实例版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceVersion: str
+        :param Status: 实例状态，0表示创建中，1表示正常，2表示隔离中，3表示已销毁，4 - 异常
+        :type Status: int
+        :param NodeCount: 节点数量
+        :type NodeCount: int
+        :param ConfigDisplay: 实例配置规格名称
+        :type ConfigDisplay: str
+        :param MaxTps: 峰值TPS
+        :type MaxTps: int
+        :param MaxBandWidth: 峰值带宽，Mbps为单位
+        :type MaxBandWidth: int
+        :param MaxStorage: 存储容量，GB为单位
+        :type MaxStorage: int
+        :param ExpireTime: 实例到期时间，毫秒为单位
+        :type ExpireTime: int
+        :param AutoRenewFlag: 自动续费标记，0表示默认状态(用户未设置，即初始状态即手动续费)， 1表示自动续费，2表示明确不自动续费(用户设置)
+        :type AutoRenewFlag: int
+        :param PayMode: 0-后付费，1-预付费
+        :type PayMode: int
+        :param Remark: 备注信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
+        :param SpecName: 实例配置ID
+        :type SpecName: str
+        """
+        self.InstanceId = None
+        self.InstanceName = None
+        self.InstanceVersion = None
+        self.Status = None
+        self.NodeCount = None
+        self.ConfigDisplay = None
+        self.MaxTps = None
+        self.MaxBandWidth = None
+        self.MaxStorage = None
+        self.ExpireTime = None
+        self.AutoRenewFlag = None
+        self.PayMode = None
+        self.Remark = None
+        self.SpecName = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        self.InstanceName = params.get("InstanceName")
+        self.InstanceVersion = params.get("InstanceVersion")
+        self.Status = params.get("Status")
+        self.NodeCount = params.get("NodeCount")
+        self.ConfigDisplay = params.get("ConfigDisplay")
+        self.MaxTps = params.get("MaxTps")
+        self.MaxBandWidth = params.get("MaxBandWidth")
+        self.MaxStorage = params.get("MaxStorage")
+        self.ExpireTime = params.get("ExpireTime")
+        self.AutoRenewFlag = params.get("AutoRenewFlag")
+        self.PayMode = params.get("PayMode")
+        self.Remark = params.get("Remark")
+        self.SpecName = params.get("SpecName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

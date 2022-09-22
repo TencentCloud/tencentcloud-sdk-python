@@ -955,7 +955,7 @@ class MongodbClient(AbstractClient):
 
 
     def TerminateDBInstances(self, request):
-        """包年包月实例隔离接口
+        """本接口（TerminateDBInstances）可将包年包月实例退还隔离。
 
         :param request: Request instance for TerminateDBInstances.
         :type request: :class:`tencentcloud.mongodb.v20190725.models.TerminateDBInstancesRequest`
