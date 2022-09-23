@@ -286,7 +286,7 @@ class DescribeOrganizationRequest(AbstractModel):
         r"""
         :param Lang: 国际站：en，国内站：zh
         :type Lang: str
-        :param Product: 产品简称（查询是否集团服务委派管理员必须）
+        :param Product: 产品简称（查询是否集团服务委派管理员必填）
         :type Product: str
         """
         self.Lang = None
@@ -357,6 +357,9 @@ class DescribeOrganizationResponse(AbstractModel):
         :param IsAssignManager: 是否集团服务委派管理员 true-是、false-否
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsAssignManager: bool
+        :param IsAuthManager: 是否主体管理员 true-是、false-否
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsAuthManager: bool
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -375,6 +378,7 @@ class DescribeOrganizationResponse(AbstractModel):
         self.PayUin = None
         self.PayName = None
         self.IsAssignManager = None
+        self.IsAuthManager = None
         self.RequestId = None
 
 
@@ -399,6 +403,7 @@ class DescribeOrganizationResponse(AbstractModel):
         self.PayUin = params.get("PayUin")
         self.PayName = params.get("PayName")
         self.IsAssignManager = params.get("IsAssignManager")
+        self.IsAuthManager = params.get("IsAuthManager")
         self.RequestId = params.get("RequestId")
 
 

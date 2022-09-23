@@ -8814,6 +8814,16 @@ class ModifyLiveSnapshotTemplateRequest(AbstractModel):
         r"""
         :param TemplateId: 模板 ID。
         :type TemplateId: int
+        :param CosAppId: Cos 应用 ID。
+**注：此参数现在须必选。**
+        :type CosAppId: int
+        :param CosBucket: Cos Bucket名称。
+注：CosBucket参数值不能包含-[appid] 部分。
+**注：此参数现在须必选。**
+        :type CosBucket: str
+        :param CosRegion: Cos 地域。
+**注：此参数现在须必选。**
+        :type CosRegion: str
         :param TemplateName: 模板名称。
 长度上限：255字节。
         :type TemplateName: str
@@ -8831,43 +8841,36 @@ class ModifyLiveSnapshotTemplateRequest(AbstractModel):
 0：不开启。
 1：开启。
         :type PornFlag: int
-        :param CosAppId: Cos 应用 ID。
-        :type CosAppId: int
-        :param CosBucket: Cos Bucket名称。
-注：CosBucket参数值不能包含-[appid] 部分。
-        :type CosBucket: str
-        :param CosRegion: Cos 地域。
-        :type CosRegion: str
         :param CosPrefix: Cos Bucket文件夹前缀。
         :type CosPrefix: str
         :param CosFileName: Cos 文件名称。
         :type CosFileName: str
         """
         self.TemplateId = None
+        self.CosAppId = None
+        self.CosBucket = None
+        self.CosRegion = None
         self.TemplateName = None
         self.Description = None
         self.SnapshotInterval = None
         self.Width = None
         self.Height = None
         self.PornFlag = None
-        self.CosAppId = None
-        self.CosBucket = None
-        self.CosRegion = None
         self.CosPrefix = None
         self.CosFileName = None
 
 
     def _deserialize(self, params):
         self.TemplateId = params.get("TemplateId")
+        self.CosAppId = params.get("CosAppId")
+        self.CosBucket = params.get("CosBucket")
+        self.CosRegion = params.get("CosRegion")
         self.TemplateName = params.get("TemplateName")
         self.Description = params.get("Description")
         self.SnapshotInterval = params.get("SnapshotInterval")
         self.Width = params.get("Width")
         self.Height = params.get("Height")
         self.PornFlag = params.get("PornFlag")
-        self.CosAppId = params.get("CosAppId")
-        self.CosBucket = params.get("CosBucket")
-        self.CosRegion = params.get("CosRegion")
         self.CosPrefix = params.get("CosPrefix")
         self.CosFileName = params.get("CosFileName")
         memeber_set = set(params.keys())

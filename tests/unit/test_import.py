@@ -159,6 +159,11 @@ def test_import_bmvpc():
     from tencentcloud.bmvpc.v20180625 import models
 
 
+def test_import_bpaas():
+    from tencentcloud.bpaas.v20181217 import bpaas_client
+    from tencentcloud.bpaas.v20181217 import models
+
+
 def test_import_bri():
     from tencentcloud.bri.v20190328 import bri_client
     from tencentcloud.bri.v20190328 import models
@@ -657,6 +662,11 @@ def test_import_ivld():
 def test_import_kms():
     from tencentcloud.kms.v20190118 import kms_client
     from tencentcloud.kms.v20190118 import models
+
+
+def test_import_lcic():
+    from tencentcloud.lcic.v20220817 import lcic_client
+    from tencentcloud.lcic.v20220817 import models
 
 
 def test_import_lighthouse():

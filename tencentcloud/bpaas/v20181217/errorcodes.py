@@ -1,5 +1,5 @@
-# -*- coding: utf-8 -*-
-# Copyright 1999-2018 Tencent Ltd.
+# -*- coding: utf8 -*-
+# Copyright (c) 2017-2021 THL A29 Limited, a Tencent company. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,4 +14,17 @@
 # limitations under the License.
 
 
-__version__ = '3.0.739'
+# 鉴权失败。
+INTERNALERROR_CAUTHERROR = 'InternalError.CauthError'
+
+# 插入db失败。
+INTERNALERROR_DBERROR = 'InternalError.DbError'
+
+# 已经审批。
+INVALIDPARAMETER_HASBEENAPPROVED = 'InvalidParameter.HasBeenApproved'
+
+# 非法流程节点。
+INVALIDPARAMETER_ILLEGALNODE = 'InvalidParameter.IllegalNode'
+
+# 没有权限审批。
+UNAUTHORIZEDOPERATION_PERMISSIONDENIED = 'UnauthorizedOperation.PermissionDenied'

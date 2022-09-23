@@ -1702,6 +1702,8 @@ class CreateConnectResourceRequest(AbstractModel):
         :type MariaDBConnectParam: :class:`tencentcloud.ckafka.v20190819.models.MariaDBConnectParam`
         :param SQLServerConnectParam: SQLServer配置，Type为SQLSERVER时必填
         :type SQLServerConnectParam: :class:`tencentcloud.ckafka.v20190819.models.SQLServerConnectParam`
+        :param DorisConnectParam: Doris 配置，Type为 DORIS 时必填
+        :type DorisConnectParam: :class:`tencentcloud.ckafka.v20190819.models.DorisConnectParam`
         """
         self.ResourceName = None
         self.Type = None
@@ -1714,6 +1716,7 @@ class CreateConnectResourceRequest(AbstractModel):
         self.PostgreSQLConnectParam = None
         self.MariaDBConnectParam = None
         self.SQLServerConnectParam = None
+        self.DorisConnectParam = None
 
 
     def _deserialize(self, params):
@@ -1744,6 +1747,9 @@ class CreateConnectResourceRequest(AbstractModel):
         if params.get("SQLServerConnectParam") is not None:
             self.SQLServerConnectParam = SQLServerConnectParam()
             self.SQLServerConnectParam._deserialize(params.get("SQLServerConnectParam"))
+        if params.get("DorisConnectParam") is not None:
+            self.DorisConnectParam = DorisConnectParam()
+            self.DorisConnectParam._deserialize(params.get("DorisConnectParam"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3831,6 +3837,9 @@ class DescribeConnectResource(AbstractModel):
         :param CtsdbConnectParam: Ctsdb配置，Type为CTSDB时返回
 注意：此字段可能返回 null，表示取不到有效值。
         :type CtsdbConnectParam: :class:`tencentcloud.ckafka.v20190819.models.CtsdbConnectParam`
+        :param DorisConnectParam: Doris 配置，Type 为 DORIS 时返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DorisConnectParam: :class:`tencentcloud.ckafka.v20190819.models.DorisConnectParam`
         """
         self.ResourceId = None
         self.ResourceName = None
@@ -3850,6 +3859,7 @@ class DescribeConnectResource(AbstractModel):
         self.MariaDBConnectParam = None
         self.SQLServerConnectParam = None
         self.CtsdbConnectParam = None
+        self.DorisConnectParam = None
 
 
     def _deserialize(self, params):
@@ -3889,6 +3899,9 @@ class DescribeConnectResource(AbstractModel):
         if params.get("CtsdbConnectParam") is not None:
             self.CtsdbConnectParam = CtsdbConnectParam()
             self.CtsdbConnectParam._deserialize(params.get("CtsdbConnectParam"))
+        if params.get("DorisConnectParam") is not None:
+            self.DorisConnectParam = DorisConnectParam()
+            self.DorisConnectParam._deserialize(params.get("DorisConnectParam"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3983,6 +3996,9 @@ class DescribeConnectResourceResp(AbstractModel):
         :param CtsdbConnectParam: Ctsdb配置，Type为CTSDB时返回
 注意：此字段可能返回 null，表示取不到有效值。
         :type CtsdbConnectParam: :class:`tencentcloud.ckafka.v20190819.models.CtsdbConnectParam`
+        :param DorisConnectParam: Doris 配置，Type 为 DORIS 时返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DorisConnectParam: :class:`tencentcloud.ckafka.v20190819.models.DorisConnectParam`
         """
         self.ResourceId = None
         self.ResourceName = None
@@ -4002,6 +4018,7 @@ class DescribeConnectResourceResp(AbstractModel):
         self.MariaDBConnectParam = None
         self.SQLServerConnectParam = None
         self.CtsdbConnectParam = None
+        self.DorisConnectParam = None
 
 
     def _deserialize(self, params):
@@ -4041,6 +4058,9 @@ class DescribeConnectResourceResp(AbstractModel):
         if params.get("CtsdbConnectParam") is not None:
             self.CtsdbConnectParam = CtsdbConnectParam()
             self.CtsdbConnectParam._deserialize(params.get("CtsdbConnectParam"))
+        if params.get("DorisConnectParam") is not None:
+            self.DorisConnectParam = DorisConnectParam()
+            self.DorisConnectParam._deserialize(params.get("DorisConnectParam"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -5432,6 +5452,71 @@ class DescribeUserResponse(AbstractModel):
             self.Result = UserResponse()
             self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
+
+
+class DorisConnectParam(AbstractModel):
+    """Doris 连接源参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Port: Doris jdbc 负载均衡连接 port，通常映射到 fe 的 9030 端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Port: int
+        :param UserName: Doris 连接源的用户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserName: str
+        :param Password: Doris 连接源的密码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Password: str
+        :param Resource: Doris 连接源的实例资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Resource: str
+        :param ServiceVip: Doris 连接源的实例vip，当为腾讯云实例时，必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceVip: str
+        :param UniqVpcId: Doris 连接源的vpcId，当为腾讯云实例时，必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UniqVpcId: str
+        :param IsUpdate: 是否更新到关联的Datahub任务
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsUpdate: bool
+        :param SelfBuilt: Doris 连接源是否为自建集群
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SelfBuilt: bool
+        :param BePort: Doris 的 http 负载均衡连接 port，通常映射到 be 的 8040 端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BePort: int
+        """
+        self.Port = None
+        self.UserName = None
+        self.Password = None
+        self.Resource = None
+        self.ServiceVip = None
+        self.UniqVpcId = None
+        self.IsUpdate = None
+        self.SelfBuilt = None
+        self.BePort = None
+
+
+    def _deserialize(self, params):
+        self.Port = params.get("Port")
+        self.UserName = params.get("UserName")
+        self.Password = params.get("Password")
+        self.Resource = params.get("Resource")
+        self.ServiceVip = params.get("ServiceVip")
+        self.UniqVpcId = params.get("UniqVpcId")
+        self.IsUpdate = params.get("IsUpdate")
+        self.SelfBuilt = params.get("SelfBuilt")
+        self.BePort = params.get("BePort")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DropCls(AbstractModel):

@@ -334,17 +334,22 @@ class CloneDBInstanceResponse(AbstractModel):
         :param BillId: 订单流水号。
 注意：此字段可能返回 null，表示取不到有效值。
         :type BillId: str
+        :param DBInstanceId: 克隆出的新实例ID，当前只支持后付费返回该值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DBInstanceId: str
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self.DealName = None
         self.BillId = None
+        self.DBInstanceId = None
         self.RequestId = None
 
 
     def _deserialize(self, params):
         self.DealName = params.get("DealName")
         self.BillId = params.get("BillId")
+        self.DBInstanceId = params.get("DBInstanceId")
         self.RequestId = params.get("RequestId")
 
 
@@ -699,6 +704,22 @@ class CreateInstancesRequest(AbstractModel):
         :type KMSKeyId: str
         :param KMSRegion: 使用KMS服务的地域，KMSRegion为空默认使用本地域的KMS，本地域不支持的情况下需自选其他KMS支持的地域。
         :type KMSRegion: str
+        :param DBEngine: 数据库引擎，支持：
+1、postgresql（云数据库PostgreSQL）；
+2、mssql_compatible（MSSQL兼容-云数据库PostgreSQL）；
+如不指定默认使用postgresql。
+        :type DBEngine: str
+        :param DBEngineConfig: 数据库引擎的配置信息，配置格式如下：
+{"$key1":"$value1", "$key2":"$value2"}
+
+各引擎支持如下：
+1、mssql_compatible引擎：
+migrationMode：数据库模式，可选参数，可取值：single-db（单数据库模式），multi-db（多数据库模式）。默认为single-db。
+defaultLocale：排序区域规则，可选参数，在初始化后不可修改，默认为en_US，可选值如下：
+"af_ZA", "sq_AL", "ar_DZ", "ar_BH", "ar_EG", "ar_IQ", "ar_JO", "ar_KW", "ar_LB", "ar_LY", "ar_MA", "ar_OM", "ar_QA", "ar_SA", "ar_SY", "ar_TN", "ar_AE", "ar_YE", "hy_AM", "az_Cyrl_AZ", "az_Latn_AZ", "eu_ES", "be_BY", "bg_BG", "ca_ES", "zh_HK", "zh_MO", "zh_CN", "zh_SG", "zh_TW", "hr_HR", "cs_CZ", "da_DK", "nl_BE", "nl_NL", "en_AU", "en_BZ", "en_CA", "en_IE", "en_JM", "en_NZ", "en_PH", "en_ZA", "en_TT", "en_GB", "en_US", "en_ZW", "et_EE", "fo_FO", "fa_IR", "fi_FI", "fr_BE", "fr_CA", "fr_FR", "fr_LU", "fr_MC", "fr_CH", "mk_MK", "ka_GE", "de_AT", "de_DE", "de_LI", "de_LU", "de_CH", "el_GR", "gu_IN", "he_IL", "hi_IN", "hu_HU", "is_IS", "id_ID", "it_IT", "it_CH", "ja_JP", "kn_IN", "kok_IN", "ko_KR", "ky_KG", "lv_LV", "lt_LT", "ms_BN", "ms_MY", "mr_IN", "mn_MN", "nb_NO", "nn_NO", "pl_PL", "pt_BR", "pt_PT", "pa_IN", "ro_RO", "ru_RU", "sa_IN", "sr_Cyrl_RS", "sr_Latn_RS", "sk_SK", "sl_SI", "es_AR", "es_BO", "es_CL", "es_CO", "es_CR", "es_DO", "es_EC", "es_SV", "es_GT", "es_HN", "es_MX", "es_NI", "es_PA", "es_PY","es_PE", "es_PR", "es_ES", "es_TRADITIONAL", "es_UY", "es_VE", "sw_KE", "sv_FI", "sv_SE", "tt_RU", "te_IN", "th_TH", "tr_TR", "uk_UA", "ur_IN", "ur_PK", "uz_Cyrl_UZ", "uz_Latn_UZ", "vi_VN"。
+serverCollationName：排序规则名称，可选参数，在初始化后不可修改，默认为sql_latin1_general_cp1_ci_as，可选值如下：
+"bbf_unicode_general_ci_as", "bbf_unicode_cp1_ci_as", "bbf_unicode_CP1250_ci_as", "bbf_unicode_CP1251_ci_as", "bbf_unicode_cp1253_ci_as", "bbf_unicode_cp1254_ci_as", "bbf_unicode_cp1255_ci_as", "bbf_unicode_cp1256_ci_as", "bbf_unicode_cp1257_ci_as", "bbf_unicode_cp1258_ci_as", "bbf_unicode_cp874_ci_as", "sql_latin1_general_cp1250_ci_as", "sql_latin1_general_cp1251_ci_as", "sql_latin1_general_cp1_ci_as", "sql_latin1_general_cp1253_ci_as", "sql_latin1_general_cp1254_ci_as", "sql_latin1_general_cp1255_ci_as","sql_latin1_general_cp1256_ci_as", "sql_latin1_general_cp1257_ci_as", "sql_latin1_general_cp1258_ci_as", "chinese_prc_ci_as", "cyrillic_general_ci_as", "finnish_swedish_ci_as", "french_ci_as", "japanese_ci_as", "korean_wansung_ci_as", "latin1_general_ci_as", "modern_spanish_ci_as", "polish_ci_as", "thai_ci_as", "traditional_spanish_ci_as", "turkish_ci_as", "ukrainian_ci_as", "vietnamese_ci_as"。
+        :type DBEngineConfig: str
         """
         self.SpecCode = None
         self.Storage = None
@@ -727,6 +748,8 @@ class CreateInstancesRequest(AbstractModel):
         self.NeedSupportTDE = None
         self.KMSKeyId = None
         self.KMSRegion = None
+        self.DBEngine = None
+        self.DBEngineConfig = None
 
 
     def _deserialize(self, params):
@@ -767,6 +790,8 @@ class CreateInstancesRequest(AbstractModel):
         self.NeedSupportTDE = params.get("NeedSupportTDE")
         self.KMSKeyId = params.get("KMSKeyId")
         self.KMSRegion = params.get("KMSRegion")
+        self.DBEngine = params.get("DBEngine")
+        self.DBEngineConfig = params.get("DBEngineConfig")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -814,8 +839,6 @@ class CreateReadOnlyDBInstanceRequest(AbstractModel):
         r"""
         :param SpecCode: 售卖规格ID。该参数可以通过调用DescribeProductConfig的返回值中的SpecCode字段来获取。
         :type SpecCode: str
-        :param DBVersion: PostgreSQL内核版本，目前强制和主实例保持一致
-        :type DBVersion: str
         :param Storage: 实例容量大小，单位：GB。
         :type Storage: int
         :param InstanceCount: 一次性购买的实例数量。取值1-100
@@ -828,7 +851,9 @@ class CreateReadOnlyDBInstanceRequest(AbstractModel):
         :type Zone: str
         :param ProjectId: 项目ID。
         :type ProjectId: int
-        :param InstanceChargeType: 实例计费类型。目前支持：PREPAID（预付费，即包年包月），POSTPAID_BY_HOUR（后付费，即按量计费）。
+        :param DBVersion: 【废弃】不再需要指定，内核版本号与主实例保持一致
+        :type DBVersion: str
+        :param InstanceChargeType: 实例计费类型。目前支持：PREPAID（预付费，即包年包月），POSTPAID_BY_HOUR（后付费，即按量计费）。如果主实例为后付费，只读实例必须也为后付费。
         :type InstanceChargeType: str
         :param AutoVoucher: 是否自动使用代金券。1（是），0（否），默认不使用。
         :type AutoVoucher: int
@@ -854,13 +879,13 @@ class CreateReadOnlyDBInstanceRequest(AbstractModel):
         :type SecurityGroupIds: list of str
         """
         self.SpecCode = None
-        self.DBVersion = None
         self.Storage = None
         self.InstanceCount = None
         self.Period = None
         self.MasterDBInstanceId = None
         self.Zone = None
         self.ProjectId = None
+        self.DBVersion = None
         self.InstanceChargeType = None
         self.AutoVoucher = None
         self.VoucherIds = None
@@ -877,13 +902,13 @@ class CreateReadOnlyDBInstanceRequest(AbstractModel):
 
     def _deserialize(self, params):
         self.SpecCode = params.get("SpecCode")
-        self.DBVersion = params.get("DBVersion")
         self.Storage = params.get("Storage")
         self.InstanceCount = params.get("InstanceCount")
         self.Period = params.get("Period")
         self.MasterDBInstanceId = params.get("MasterDBInstanceId")
         self.Zone = params.get("Zone")
         self.ProjectId = params.get("ProjectId")
+        self.DBVersion = params.get("DBVersion")
         self.InstanceChargeType = params.get("InstanceChargeType")
         self.AutoVoucher = params.get("AutoVoucher")
         self.VoucherIds = params.get("VoucherIds")
@@ -1326,6 +1351,14 @@ class DBInstance(AbstractModel):
         :param IsSupportTDE: 实例是否支持TDE数据加密  0：不支持，1：支持
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsSupportTDE: int
+        :param DBEngine: 数据库引擎，支持：
+1、postgresql（云数据库PostgreSQL）；
+2、mssql_compatible（MSSQL兼容-云数据库PostgreSQL）；
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DBEngine: str
+        :param DBEngineConfig: 数据库引擎的配置信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DBEngineConfig: str
         """
         self.Region = None
         self.Zone = None
@@ -1364,6 +1397,8 @@ class DBInstance(AbstractModel):
         self.DBMajorVersion = None
         self.DBNodeSet = None
         self.IsSupportTDE = None
+        self.DBEngine = None
+        self.DBEngineConfig = None
 
 
     def _deserialize(self, params):
@@ -1424,6 +1459,8 @@ class DBInstance(AbstractModel):
                 obj._deserialize(item)
                 self.DBNodeSet.append(obj)
         self.IsSupportTDE = params.get("IsSupportTDE")
+        self.DBEngine = params.get("DBEngine")
+        self.DBEngineConfig = params.get("DBEngineConfig")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -2645,12 +2682,19 @@ class DescribeProductConfigRequest(AbstractModel):
         r"""
         :param Zone: 可用区名称
         :type Zone: str
+        :param DBEngine: 数据库引擎，支持：
+1、postgresql（云数据库PostgreSQL）；
+2、mssql_compatible（MSSQL兼容-云数据库PostgreSQL）；
+如不指定默认使用postgresql。
+        :type DBEngine: str
         """
         self.Zone = None
+        self.DBEngine = None
 
 
     def _deserialize(self, params):
         self.Zone = params.get("Zone")
+        self.DBEngine = params.get("DBEngine")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3527,10 +3571,18 @@ class InquiryPriceCreateDBInstancesRequest(AbstractModel):
         :type InstanceCount: int
         :param Period: 购买时长，单位：月。目前只支持1,2,3,4,5,6,7,8,9,10,11,12,24,36这些值。
         :type Period: int
-        :param Pid: 计费ID。该参数可以通过调用DescribeProductConfig接口的返回值中的Pid字段来获取。
+        :param Pid: 【弃字段，不再生效】，计费ID。该参数可以通过调用DescribeProductConfig接口的返回值中的Pid字段来获取。
         :type Pid: int
         :param InstanceChargeType: 实例计费类型。目前只支持：PREPAID（预付费，即包年包月）。
         :type InstanceChargeType: str
+        :param InstanceType: 实例类型，默认primary，支持如下：
+primary（双机高可用（一主一从））
+readonly（只读实例）
+        :type InstanceType: str
+        :param DBEngine: DB引擎，默认postgresql，支持如下：
+postgresql（云数据库PostgreSQL）
+mssql_compatible（MSSQL兼容-云数据库PostgreSQL）
+        :type DBEngine: str
         """
         self.Zone = None
         self.SpecCode = None
@@ -3539,6 +3591,8 @@ class InquiryPriceCreateDBInstancesRequest(AbstractModel):
         self.Period = None
         self.Pid = None
         self.InstanceChargeType = None
+        self.InstanceType = None
+        self.DBEngine = None
 
 
     def _deserialize(self, params):
@@ -3549,6 +3603,8 @@ class InquiryPriceCreateDBInstancesRequest(AbstractModel):
         self.Period = params.get("Period")
         self.Pid = params.get("Pid")
         self.InstanceChargeType = params.get("InstanceChargeType")
+        self.InstanceType = params.get("InstanceType")
+        self.DBEngine = params.get("DBEngine")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3565,9 +3621,9 @@ class InquiryPriceCreateDBInstancesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param OriginalPrice: 原始价格，单位：分
+        :param OriginalPrice: 刊例价，单位：分
         :type OriginalPrice: int
-        :param Price: 折后价格，单位：分
+        :param Price: 折后实际付款金额，单位：分
         :type Price: int
         :param Currency: 币种。例如，CNY：人民币。
         :type Currency: str
@@ -3657,7 +3713,7 @@ class InquiryPriceUpgradeDBInstanceRequest(AbstractModel):
         :type Memory: int
         :param DBInstanceId: 实例ID，形如postgres-hez4fh0v
         :type DBInstanceId: str
-        :param InstanceChargeType: 实例计费类型，预付费或者后付费。PREPAID-预付费。目前只支持预付费。
+        :param InstanceChargeType: 【废弃参数，不再生效】，实例计费类型。
         :type InstanceChargeType: str
         """
         self.Storage = None
@@ -5515,7 +5571,7 @@ class SpecItemInfo(AbstractModel):
         :type MinStorage: int
         :param Qps: 该规格的预估QPS
         :type Qps: int
-        :param Pid: 该规格对应的计费ID
+        :param Pid: 【该字段废弃】
         :type Pid: int
         :param Type: 机器类型
         :type Type: str

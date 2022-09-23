@@ -2070,9 +2070,9 @@ class DetachRolePolicyRequest(AbstractModel):
         r"""
         :param PolicyId: 策略ID，入参PolicyId与PolicyName二选一
         :type PolicyId: int
-        :param DetachRoleId: 角色ID，用于指定角色，入参 AttachRoleId 与 AttachRoleName 二选一
+        :param DetachRoleId: 角色ID，用于指定角色，入参 DetachRoleId 与 DetachRoleName 二选一
         :type DetachRoleId: str
-        :param DetachRoleName: 角色名称，用于指定角色，入参 AttachRoleId 与 AttachRoleName 二选一
+        :param DetachRoleName: 角色名称，用于指定角色，入参 DetachRoleId 与 DetachRoleName 二选一
         :type DetachRoleName: str
         :param PolicyName: 策略名，入参PolicyId与PolicyName二选一
         :type PolicyName: str

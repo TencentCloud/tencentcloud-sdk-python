@@ -1918,7 +1918,7 @@ HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
         :type RecipientId: str
         :param VerifyChannel: 签署意愿确认渠道,WEIXINAPP:人脸识别
         :type VerifyChannel: list of str
-        :param NotifyType: 是否发送短信，sms--短信通知，none--不通知，默认为sms
+        :param NotifyType: 是否发送短信，sms--短信通知，none--不通知，默认为sms；发起方=签署方时不发送短信
         :type NotifyType: str
         :param IsFullText: 签署前置条件：是否需要阅读全文，默认为不需要
         :type IsFullText: bool
