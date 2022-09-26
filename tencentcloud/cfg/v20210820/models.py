@@ -1207,6 +1207,12 @@ class TaskListItem(AbstractModel):
         :type TaskCreateTime: str
         :param TaskUpdateTime: 任务更新时间
         :type TaskUpdateTime: str
+        :param TaskPreCheckStatus: 0--未开始，1--进行中，2--已完成
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskPreCheckStatus: int
+        :param TaskPreCheckSuccess: 环境检查是否通过
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskPreCheckSuccess: bool
         """
         self.TaskId = None
         self.TaskTitle = None
@@ -1215,6 +1221,8 @@ class TaskListItem(AbstractModel):
         self.TaskStatus = None
         self.TaskCreateTime = None
         self.TaskUpdateTime = None
+        self.TaskPreCheckStatus = None
+        self.TaskPreCheckSuccess = None
 
 
     def _deserialize(self, params):
@@ -1225,6 +1233,8 @@ class TaskListItem(AbstractModel):
         self.TaskStatus = params.get("TaskStatus")
         self.TaskCreateTime = params.get("TaskCreateTime")
         self.TaskUpdateTime = params.get("TaskUpdateTime")
+        self.TaskPreCheckStatus = params.get("TaskPreCheckStatus")
+        self.TaskPreCheckSuccess = params.get("TaskPreCheckSuccess")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

@@ -2541,7 +2541,7 @@ class CreateEKSClusterRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param K8SVersion: k8s版本号。可为1.14.4, 1.12.8。
+        :param K8SVersion: k8s版本号。可为1.18.4 1.20.6。
         :type K8SVersion: str
         :param VpcId: vpc 的Id
         :type VpcId: str
@@ -2551,7 +2551,7 @@ class CreateEKSClusterRequest(AbstractModel):
         :type SubnetIds: list of str
         :param ClusterDesc: 集群描述信息
         :type ClusterDesc: str
-        :param ServiceSubnetId: Serivce 所在子网Id
+        :param ServiceSubnetId: Service CIDR 或 Serivce 所在子网Id
         :type ServiceSubnetId: str
         :param DnsServers: 集群自定义的Dns服务器信息
         :type DnsServers: list of DnsServerConf

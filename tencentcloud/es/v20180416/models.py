@@ -3883,11 +3883,15 @@ class TaskDetail(AbstractModel):
         :type FinishTime: str
         :param SubTasks: 子任务
         :type SubTasks: list of SubTaskDetail
+        :param ElapsedTime: 任务花费时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ElapsedTime: int
         """
         self.Name = None
         self.Progress = None
         self.FinishTime = None
         self.SubTasks = None
+        self.ElapsedTime = None
 
 
     def _deserialize(self, params):
@@ -3900,6 +3904,7 @@ class TaskDetail(AbstractModel):
                 obj = SubTaskDetail()
                 obj._deserialize(item)
                 self.SubTasks.append(obj)
+        self.ElapsedTime = params.get("ElapsedTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

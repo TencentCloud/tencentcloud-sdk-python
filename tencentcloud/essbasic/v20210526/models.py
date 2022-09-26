@@ -1595,9 +1595,9 @@ class DescribeTemplatesRequest(AbstractModel):
         :type Offset: int
         :param Operator: 操作者的信息
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
-        :param QueryAllComponents: 是否返回所有组件信息
+        :param QueryAllComponents: 是否返回所有组件信息。默认false，只返回发起方控件；true，返回所有签署方控件
         :type QueryAllComponents: bool
-        :param TemplateName: 模糊搜索模板名称
+        :param TemplateName: 模糊搜索模板名称，最大长度200
         :type TemplateName: str
         """
         self.Agent = None

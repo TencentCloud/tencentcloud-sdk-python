@@ -110,6 +110,9 @@ INVALIDPARAMETER_BUSINESSLICENSE = 'InvalidParameter.BusinessLicense'
 # 证件类型错误。
 INVALIDPARAMETER_CARDTYPE = 'InvalidParameter.CardType'
 
+# 参数错误,控件内容无效。
+INVALIDPARAMETER_COMPONENTVALUE = 'InvalidParameter.ComponentValue'
+
 # 查询内容参数有误。
 INVALIDPARAMETER_CONTENTTYPE = 'InvalidParameter.ContentType'
 
@@ -178,6 +181,9 @@ INVALIDPARAMETER_MENUSTATUS = 'InvalidParameter.MenuStatus'
 
 # 缺少必填参数的值。
 INVALIDPARAMETER_MISSINGREQUIREDPARAMETERVALUE = 'InvalidParameter.MissingRequiredParameterValue'
+
+# 不支持的手机号。
+INVALIDPARAMETER_NONSUPPORTMOBILE = 'InvalidParameter.NonsupportMobile'
 
 # OpenId不合法。
 INVALIDPARAMETER_OPENID = 'InvalidParameter.OpenId'
@@ -268,6 +274,9 @@ MISSINGPARAMETER_SEALIMAGE = 'MissingParameter.SealImage'
 
 # 印章名称为空。
 MISSINGPARAMETER_SEALNAME = 'MissingParameter.SealName'
+
+# 签署人缺少签署控件。
+MISSINGPARAMETER_SIGNCOMPONENTS = 'MissingParameter.SignComponents'
 
 # 缺少模板参数。
 MISSINGPARAMETER_TEMPLATES = 'MissingParameter.Templates'

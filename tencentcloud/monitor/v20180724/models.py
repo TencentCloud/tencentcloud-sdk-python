@@ -261,6 +261,9 @@ class AlarmNotice(AbstractModel):
         :param CLSNotices: 推送cls渠道
 注意：此字段可能返回 null，表示取不到有效值。
         :type CLSNotices: list of CLSNotice
+        :param Tags: 通知模版绑定的标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
         """
         self.Id = None
         self.Name = None
@@ -274,6 +277,7 @@ class AlarmNotice(AbstractModel):
         self.PolicyIds = None
         self.AMPConsumerId = None
         self.CLSNotices = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -304,6 +308,12 @@ class AlarmNotice(AbstractModel):
                 obj = CLSNotice()
                 obj._deserialize(item)
                 self.CLSNotices.append(obj)
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -422,6 +432,12 @@ class AlarmPolicy(AbstractModel):
         :param AdvancedMetricNumber: 高级指标数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type AdvancedMetricNumber: int
+        :param IsBindAll: 策略是否是全部对象策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsBindAll: int
+        :param Tags: 策略标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
         """
         self.PolicyId = None
         self.PolicyName = None
@@ -456,6 +472,8 @@ class AlarmPolicy(AbstractModel):
         self.IsOneClick = None
         self.OneClickStatus = None
         self.AdvancedMetricNumber = None
+        self.IsBindAll = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -513,6 +531,13 @@ class AlarmPolicy(AbstractModel):
         self.IsOneClick = params.get("IsOneClick")
         self.OneClickStatus = params.get("OneClickStatus")
         self.AdvancedMetricNumber = params.get("AdvancedMetricNumber")
+        self.IsBindAll = params.get("IsBindAll")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -684,6 +709,12 @@ re=正则匹配
         :param ProductId: 集成中心产品ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProductId: str
+        :param ValueMax: 最大值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ValueMax: float
+        :param ValueMin: 最小值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ValueMin: float
         """
         self.MetricName = None
         self.Period = None
@@ -699,6 +730,8 @@ re=正则匹配
         self.IsAdvanced = None
         self.IsOpen = None
         self.ProductId = None
+        self.ValueMax = None
+        self.ValueMin = None
 
 
     def _deserialize(self, params):
@@ -718,6 +751,8 @@ re=正则匹配
         self.IsAdvanced = params.get("IsAdvanced")
         self.IsOpen = params.get("IsOpen")
         self.ProductId = params.get("ProductId")
+        self.ValueMax = params.get("ValueMax")
+        self.ValueMin = params.get("ValueMin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1280,6 +1315,8 @@ class CreateAlarmNoticeRequest(AbstractModel):
         :type URLNotices: list of URLNotice
         :param CLSNotices: 推送CLS日志服务的操作 最多1个
         :type CLSNotices: list of CLSNotice
+        :param Tags: 模版绑定的标签
+        :type Tags: list of Tag
         """
         self.Module = None
         self.Name = None
@@ -1288,6 +1325,7 @@ class CreateAlarmNoticeRequest(AbstractModel):
         self.UserNotices = None
         self.URLNotices = None
         self.CLSNotices = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -1313,6 +1351,12 @@ class CreateAlarmNoticeRequest(AbstractModel):
                 obj = CLSNotice()
                 obj._deserialize(item)
                 self.CLSNotices.append(obj)
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1378,6 +1422,10 @@ class CreateAlarmPolicyRequest(AbstractModel):
         :type Filter: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicyFilter`
         :param GroupBy: 聚合维度列表，指定按哪些维度 key 来做 group by
         :type GroupBy: list of str
+        :param Tags: 模版绑定的标签
+        :type Tags: list of Tag
+        :param LogAlarmReqInfo: 日志告警信息
+        :type LogAlarmReqInfo: :class:`tencentcloud.monitor.v20180724.models.LogAlarmReq`
         """
         self.Module = None
         self.PolicyName = None
@@ -1393,6 +1441,8 @@ class CreateAlarmPolicyRequest(AbstractModel):
         self.TriggerTasks = None
         self.Filter = None
         self.GroupBy = None
+        self.Tags = None
+        self.LogAlarmReqInfo = None
 
 
     def _deserialize(self, params):
@@ -1421,6 +1471,15 @@ class CreateAlarmPolicyRequest(AbstractModel):
             self.Filter = AlarmPolicyFilter()
             self.Filter._deserialize(params.get("Filter"))
         self.GroupBy = params.get("GroupBy")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
+        if params.get("LogAlarmReqInfo") is not None:
+            self.LogAlarmReqInfo = LogAlarmReq()
+            self.LogAlarmReqInfo._deserialize(params.get("LogAlarmReqInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3497,6 +3556,8 @@ class DescribeAlarmNoticesRequest(AbstractModel):
         :type GroupIds: list of int
         :param NoticeIds: 根据通知模板 id 过滤，空数组/不传则不过滤
         :type NoticeIds: list of str
+        :param Tags: 模版根据标签过滤
+        :type Tags: list of Tag
         """
         self.Module = None
         self.PageNumber = None
@@ -3508,6 +3569,7 @@ class DescribeAlarmNoticesRequest(AbstractModel):
         self.UserIds = None
         self.GroupIds = None
         self.NoticeIds = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -3521,6 +3583,12 @@ class DescribeAlarmNoticesRequest(AbstractModel):
         self.UserIds = params.get("UserIds")
         self.GroupIds = params.get("GroupIds")
         self.NoticeIds = params.get("NoticeIds")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -3618,6 +3686,12 @@ class DescribeAlarmPoliciesRequest(AbstractModel):
         :type TriggerTasks: list of AlarmPolicyTriggerTask
         :param OneClickPolicyType: 根据一键告警策略筛选 不传展示全部策略 ONECLICK=展示一键告警策略 NOT_ONECLICK=展示非一键告警策略
         :type OneClickPolicyType: list of str
+        :param NotBindAll: 根据全部对象过滤，1代表需要过滤掉全部对象，0则无需过滤
+        :type NotBindAll: int
+        :param NotInstanceGroup: 根据实例对象过滤，1代表需要过滤掉有实例对象，0则无需过滤
+        :type NotInstanceGroup: int
+        :param Tags: 策略根据标签过滤
+        :type Tags: list of Tag
         """
         self.Module = None
         self.PageNumber = None
@@ -3640,6 +3714,9 @@ class DescribeAlarmPoliciesRequest(AbstractModel):
         self.NeedCorrespondence = None
         self.TriggerTasks = None
         self.OneClickPolicyType = None
+        self.NotBindAll = None
+        self.NotInstanceGroup = None
+        self.Tags = None
 
 
     def _deserialize(self, params):
@@ -3669,6 +3746,14 @@ class DescribeAlarmPoliciesRequest(AbstractModel):
                 obj._deserialize(item)
                 self.TriggerTasks.append(obj)
         self.OneClickPolicyType = params.get("OneClickPolicyType")
+        self.NotBindAll = params.get("NotBindAll")
+        self.NotInstanceGroup = params.get("NotInstanceGroup")
+        if params.get("Tags") is not None:
+            self.Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self.Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -8428,6 +8513,79 @@ class IntegrationConfiguration(AbstractModel):
         
 
 
+class LogAlarmReq(AbstractModel):
+    """日志告警请求信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param InstanceId: apm实例id
+        :type InstanceId: str
+        :param Filter: 检索条件信息
+        :type Filter: list of LogFilterInfo
+        :param AlarmMerge: 告警合并开启/暂停
+        :type AlarmMerge: str
+        :param AlarmMergeTime: 告警合并时间
+        :type AlarmMergeTime: str
+        """
+        self.InstanceId = None
+        self.Filter = None
+        self.AlarmMerge = None
+        self.AlarmMergeTime = None
+
+
+    def _deserialize(self, params):
+        self.InstanceId = params.get("InstanceId")
+        if params.get("Filter") is not None:
+            self.Filter = []
+            for item in params.get("Filter"):
+                obj = LogFilterInfo()
+                obj._deserialize(item)
+                self.Filter.append(obj)
+        self.AlarmMerge = params.get("AlarmMerge")
+        self.AlarmMergeTime = params.get("AlarmMergeTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LogFilterInfo(AbstractModel):
+    """日志告警检索条件结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Key: 字段名
+        :type Key: str
+        :param Operator: 比较符号
+        :type Operator: str
+        :param Value: 字段值
+        :type Value: str
+        """
+        self.Key = None
+        self.Operator = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Operator = params.get("Operator")
+        self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ManagementCommand(AbstractModel):
     """Prometheus Agent 管理命令行
 
@@ -8913,6 +9071,8 @@ class ModifyAlarmPolicyConditionRequest(AbstractModel):
         :type Filter: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicyFilter`
         :param GroupBy: 聚合维度列表，指定按哪些维度 key 来做 group by
         :type GroupBy: list of str
+        :param LogAlarmReqInfo: 日志告警创建请求参数信息
+        :type LogAlarmReqInfo: :class:`tencentcloud.monitor.v20180724.models.LogAlarmReq`
         """
         self.Module = None
         self.PolicyId = None
@@ -8921,6 +9081,7 @@ class ModifyAlarmPolicyConditionRequest(AbstractModel):
         self.EventCondition = None
         self.Filter = None
         self.GroupBy = None
+        self.LogAlarmReqInfo = None
 
 
     def _deserialize(self, params):
@@ -8937,6 +9098,9 @@ class ModifyAlarmPolicyConditionRequest(AbstractModel):
             self.Filter = AlarmPolicyFilter()
             self.Filter._deserialize(params.get("Filter"))
         self.GroupBy = params.get("GroupBy")
+        if params.get("LogAlarmReqInfo") is not None:
+            self.LogAlarmReqInfo = LogAlarmReq()
+            self.LogAlarmReqInfo._deserialize(params.get("LogAlarmReqInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -10730,6 +10894,34 @@ class SetDefaultAlarmPolicyResponse(AbstractModel):
 
     def _deserialize(self, params):
         self.RequestId = params.get("RequestId")
+
+
+class Tag(AbstractModel):
+    """标签
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Key: 标签key
+        :type Key: str
+        :param Value: 标签value
+        :type Value: str
+        """
+        self.Key = None
+        self.Value = None
+
+
+    def _deserialize(self, params):
+        self.Key = params.get("Key")
+        self.Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class TagInstance(AbstractModel):

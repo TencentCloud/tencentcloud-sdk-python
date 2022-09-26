@@ -1019,6 +1019,11 @@ def test_import_tdmq():
     from tencentcloud.tdmq.v20200217 import models
 
 
+def test_import_tds():
+    from tencentcloud.tds.v20220801 import tds_client
+    from tencentcloud.tds.v20220801 import models
+
+
 def test_import_tem():
     from tencentcloud.tem.v20201221 import tem_client
     from tencentcloud.tem.v20201221 import models

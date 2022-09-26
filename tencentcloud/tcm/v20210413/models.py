@@ -383,6 +383,12 @@ class ClusterStatus(AbstractModel):
         
 
 
+class CrossRegionConfig(AbstractModel):
+    """负载均衡跨域设置
+
+    """
+
+
 class CustomPromConfig(AbstractModel):
     """第三方 Prometheus 配置参数
 
@@ -1019,6 +1025,9 @@ OPEN：公网属性， INTERNAL：内网属性。
         :param ExtensiveClusters: 内网独占集群配置列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExtensiveClusters: :class:`tencentcloud.tcm.v20210413.models.ExtensiveClusters`
+        :param CrossRegionConfig: 负载均衡跨地域配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CrossRegionConfig: :class:`tencentcloud.tcm.v20210413.models.CrossRegionConfig`
         """
         self.LoadBalancerType = None
         self.SubnetId = None
@@ -1030,6 +1039,7 @@ OPEN：公网属性， INTERNAL：内网属性。
         self.AddressIPVersion = None
         self.Tags = None
         self.ExtensiveClusters = None
+        self.CrossRegionConfig = None
 
 
     def _deserialize(self, params):
@@ -1050,6 +1060,9 @@ OPEN：公网属性， INTERNAL：内网属性。
         if params.get("ExtensiveClusters") is not None:
             self.ExtensiveClusters = ExtensiveClusters()
             self.ExtensiveClusters._deserialize(params.get("ExtensiveClusters"))
+        if params.get("CrossRegionConfig") is not None:
+            self.CrossRegionConfig = CrossRegionConfig()
+            self.CrossRegionConfig._deserialize(params.get("CrossRegionConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
