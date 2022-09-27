@@ -363,6 +363,66 @@ class CreateApplicationResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class CreateApplicationServiceRequest(AbstractModel):
+    """CreateApplicationService请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ApplicationId: 服务id
+        :type ApplicationId: str
+        :param EnvironmentId: 环境ID
+        :type EnvironmentId: str
+        :param SourceChannel: 来源渠道
+        :type SourceChannel: int
+        :param Service: 访问方式详情
+        :type Service: :class:`tencentcloud.tem.v20210701.models.ServicePortMapping`
+        """
+        self.ApplicationId = None
+        self.EnvironmentId = None
+        self.SourceChannel = None
+        self.Service = None
+
+
+    def _deserialize(self, params):
+        self.ApplicationId = params.get("ApplicationId")
+        self.EnvironmentId = params.get("EnvironmentId")
+        self.SourceChannel = params.get("SourceChannel")
+        if params.get("Service") is not None:
+            self.Service = ServicePortMapping()
+            self.Service._deserialize(params.get("Service"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateApplicationServiceResponse(AbstractModel):
+    """CreateApplicationService返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 是否成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
 class CreateConfigDataRequest(AbstractModel):
     """CreateConfigData请求参数结构体
 
@@ -889,6 +949,64 @@ class DeleteApplicationResponse(AbstractModel):
     def __init__(self):
         r"""
         :param Result: 返回结果
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
+        self.RequestId = params.get("RequestId")
+
+
+class DeleteApplicationServiceRequest(AbstractModel):
+    """DeleteApplicationService请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ApplicationId: 服务id
+        :type ApplicationId: str
+        :param SourceChannel: 来源渠道
+        :type SourceChannel: int
+        :param EnvironmentId: 环境ID
+        :type EnvironmentId: str
+        :param ServiceName: 访问方式服务名
+        :type ServiceName: str
+        """
+        self.ApplicationId = None
+        self.SourceChannel = None
+        self.EnvironmentId = None
+        self.ServiceName = None
+
+
+    def _deserialize(self, params):
+        self.ApplicationId = params.get("ApplicationId")
+        self.SourceChannel = params.get("SourceChannel")
+        self.EnvironmentId = params.get("EnvironmentId")
+        self.ServiceName = params.get("ServiceName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteApplicationServiceResponse(AbstractModel):
+    """DeleteApplicationService返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 是否成功
+注意：此字段可能返回 null，表示取不到有效值。
         :type Result: bool
         :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1594,6 +1712,61 @@ class DescribeApplicationPodsResponse(AbstractModel):
     def _deserialize(self, params):
         if params.get("Result") is not None:
             self.Result = DescribeRunPodPage()
+            self.Result._deserialize(params.get("Result"))
+        self.RequestId = params.get("RequestId")
+
+
+class DescribeApplicationServiceListRequest(AbstractModel):
+    """DescribeApplicationServiceList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param EnvironmentId: namespace id
+        :type EnvironmentId: str
+        :param ApplicationId: 服务ID
+        :type ApplicationId: str
+        :param SourceChannel: xx
+        :type SourceChannel: int
+        """
+        self.EnvironmentId = None
+        self.ApplicationId = None
+        self.SourceChannel = None
+
+
+    def _deserialize(self, params):
+        self.EnvironmentId = params.get("EnvironmentId")
+        self.ApplicationId = params.get("ApplicationId")
+        self.SourceChannel = params.get("SourceChannel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeApplicationServiceListResponse(AbstractModel):
+    """DescribeApplicationServiceList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 应用 EKS Service 列表
+        :type Result: :class:`tencentcloud.tem.v20210701.models.EksService`
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self.Result = EksService()
             self.Result._deserialize(params.get("Result"))
         self.RequestId = params.get("RequestId")
 
@@ -3603,6 +3776,72 @@ class ModifyApplicationReplicasResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self.RequestId = params.get("RequestId")
+
+
+class ModifyApplicationServiceRequest(AbstractModel):
+    """ModifyApplicationService请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param ApplicationId: 服务id
+        :type ApplicationId: str
+        :param EnvironmentId: 环境ID
+        :type EnvironmentId: str
+        :param SourceChannel: 来源渠道
+        :type SourceChannel: int
+        :param Service: 全量访问方式设置
+        :type Service: :class:`tencentcloud.tem.v20210701.models.EksService`
+        :param Data: 单条访问方式设置
+        :type Data: :class:`tencentcloud.tem.v20210701.models.ServicePortMapping`
+        """
+        self.ApplicationId = None
+        self.EnvironmentId = None
+        self.SourceChannel = None
+        self.Service = None
+        self.Data = None
+
+
+    def _deserialize(self, params):
+        self.ApplicationId = params.get("ApplicationId")
+        self.EnvironmentId = params.get("EnvironmentId")
+        self.SourceChannel = params.get("SourceChannel")
+        if params.get("Service") is not None:
+            self.Service = EksService()
+            self.Service._deserialize(params.get("Service"))
+        if params.get("Data") is not None:
+            self.Data = ServicePortMapping()
+            self.Data._deserialize(params.get("Data"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyApplicationServiceResponse(AbstractModel):
+    """ModifyApplicationService返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param Result: 是否成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: bool
+        :param RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self.Result = None
+        self.RequestId = None
+
+
+    def _deserialize(self, params):
+        self.Result = params.get("Result")
         self.RequestId = params.get("RequestId")
 
 

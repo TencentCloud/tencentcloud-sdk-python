@@ -936,6 +936,8 @@ class OcrClient(AbstractClient):
     def HKIDCardOCR(self, request):
         """本接口支持中国香港身份证人像面中关键字段的识别，包括中文姓名、英文姓名、姓名电码、出生日期、性别、证件符号、首次签发日期、最近领用日期、身份证号、是否是永久性居民身份证；具备防伪识别、人像照片裁剪等扩展功能。
 
+        默认接口请求频率限制：5次/秒。
+
         :param request: Request instance for HKIDCardOCR.
         :type request: :class:`tencentcloud.ocr.v20181119.models.HKIDCardOCRRequest`
         :rtype: :class:`tencentcloud.ocr.v20181119.models.HKIDCardOCRResponse`

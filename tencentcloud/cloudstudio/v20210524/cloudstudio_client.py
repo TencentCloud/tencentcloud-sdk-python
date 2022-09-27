@@ -56,7 +56,7 @@ class CloudstudioClient(AbstractClient):
 
 
     def CreateWorkspaceByAgent(self, request):
-        """云主机方式创建工作空间
+        """云服务器方式创建工作空间
 
         :param request: Request instance for CreateWorkspaceByAgent.
         :type request: :class:`tencentcloud.cloudstudio.v20210524.models.CreateWorkspaceByAgentRequest`
@@ -85,7 +85,7 @@ class CloudstudioClient(AbstractClient):
 
 
     def CreateWorkspaceByTemplate(self, request):
-        """快速开始, 基于模版创建工作空间
+        """快速开始, 基于模板创建工作空间
 
         :param request: Request instance for CreateWorkspaceByTemplate.
         :type request: :class:`tencentcloud.cloudstudio.v20210524.models.CreateWorkspaceByTemplateRequest`
@@ -172,7 +172,7 @@ class CloudstudioClient(AbstractClient):
 
 
     def DescribeCustomizeTemplates(self, request):
-        """获取所有模版列表
+        """获取所有模板列表
 
         :param request: Request instance for DescribeCustomizeTemplates.
         :type request: :class:`tencentcloud.cloudstudio.v20210524.models.DescribeCustomizeTemplatesRequest`
@@ -375,7 +375,7 @@ class CloudstudioClient(AbstractClient):
 
 
     def ModifyCustomizeTemplateVersionControl(self, request):
-        """修改模版默认代码仓库
+        """修改模板默认代码仓库
 
         :param request: Request instance for ModifyCustomizeTemplateVersionControl.
         :type request: :class:`tencentcloud.cloudstudio.v20210524.models.ModifyCustomizeTemplateVersionControlRequest`

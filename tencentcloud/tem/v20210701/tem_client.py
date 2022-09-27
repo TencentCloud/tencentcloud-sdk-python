@@ -84,6 +84,35 @@ class TemClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def CreateApplicationService(self, request):
+        """新增访问方式
+
+        :param request: Request instance for CreateApplicationService.
+        :type request: :class:`tencentcloud.tem.v20210701.models.CreateApplicationServiceRequest`
+        :rtype: :class:`tencentcloud.tem.v20210701.models.CreateApplicationServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateApplicationService", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.CreateApplicationServiceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def CreateConfigData(self, request):
         """创建配置
 
@@ -290,6 +319,35 @@ class TemClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def DeleteApplicationService(self, request):
+        """删除一条访问方式
+
+        :param request: Request instance for DeleteApplicationService.
+        :type request: :class:`tencentcloud.tem.v20210701.models.DeleteApplicationServiceRequest`
+        :rtype: :class:`tencentcloud.tem.v20210701.models.DeleteApplicationServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteApplicationService", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DeleteApplicationServiceResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def DeleteIngress(self, request):
         """删除 Ingress 规则
 
@@ -421,6 +479,35 @@ class TemClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.DescribeApplicationPodsResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def DescribeApplicationServiceList(self, request):
+        """查询应用访问方式列表
+
+        :param request: Request instance for DescribeApplicationServiceList.
+        :type request: :class:`tencentcloud.tem.v20210701.models.DescribeApplicationServiceListRequest`
+        :rtype: :class:`tencentcloud.tem.v20210701.models.DescribeApplicationServiceListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeApplicationServiceList", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.DescribeApplicationServiceListResponse()
                 model._deserialize(response["Response"])
                 return model
             else:
@@ -1059,6 +1146,35 @@ class TemClient(AbstractClient):
             response = json.loads(body)
             if "Error" not in response["Response"]:
                 model = models.ModifyApplicationReplicasResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
+    def ModifyApplicationService(self, request):
+        """修改服务访问方式列表
+
+        :param request: Request instance for ModifyApplicationService.
+        :type request: :class:`tencentcloud.tem.v20210701.models.ModifyApplicationServiceRequest`
+        :rtype: :class:`tencentcloud.tem.v20210701.models.ModifyApplicationServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyApplicationService", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.ModifyApplicationServiceResponse()
                 model._deserialize(response["Response"])
                 return model
             else:

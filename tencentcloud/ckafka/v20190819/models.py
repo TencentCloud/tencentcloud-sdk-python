@@ -5222,7 +5222,7 @@ class DescribeTopicRequest(AbstractModel):
         :type SearchWord: str
         :param Offset: 偏移量，不填默认为0
         :type Offset: int
-        :param Limit: 返回数量，不填则默认为10，最大值为50
+        :param Limit: 返回数量，不填则默认为20，最大值为50
         :type Limit: int
         :param AclRuleName: Acl预设策略名称
         :type AclRuleName: str

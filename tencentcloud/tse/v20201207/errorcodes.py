@@ -62,6 +62,9 @@ INVALIDPARAMETERVALUE_BADREQUESTFORMAT = 'InvalidParameterValue.BadRequestFormat
 # 无效请求参数导致创建失败。
 INVALIDPARAMETERVALUE_CREATEERROR = 'InvalidParameterValue.CreateError'
 
+# 无效的参数值。
+INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = 'InvalidParameterValue.InvalidParameterValue'
+
 # 无效请求参数，查询失败。
 INVALIDPARAMETERVALUE_QUERYERROR = 'InvalidParameterValue.QueryError'
 

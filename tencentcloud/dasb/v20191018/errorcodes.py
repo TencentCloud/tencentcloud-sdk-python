@@ -20,6 +20,9 @@ AUTHFAILURE = 'AuthFailure'
 # 操作失败。
 FAILEDOPERATION = 'FailedOperation'
 
+# 目标数据不存在。
+FAILEDOPERATION_DATANOTFOUND = 'FailedOperation.DataNotFound'
+
 # 重复数据。
 FAILEDOPERATION_DUPLICATEDATA = 'FailedOperation.DuplicateData'
 

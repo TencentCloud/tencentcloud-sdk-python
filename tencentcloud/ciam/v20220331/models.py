@@ -85,7 +85,6 @@ class CreateFileExportUserJobRequest(AbstractModel):
         :type UserStoreId: str
         :param Format: 导出的数据类型
 
-<li> **JSON** </li>  JSON
 <li> **NDJSON** </li>  New-line Delimited JSON
 <li> **CSV** </li>  Comma-Separated Values
         :type Format: str
@@ -177,6 +176,16 @@ class CreateUserRequest(AbstractModel):
         :type Birthdate: int
         :param CustomizationAttributes: 自定义属性
         :type CustomizationAttributes: list of MemberMap
+        :param IndexedAttribute1: 索引字段1
+        :type IndexedAttribute1: str
+        :param IndexedAttribute2: 索引字段2
+        :type IndexedAttribute2: str
+        :param IndexedAttribute3: 索引字段3
+        :type IndexedAttribute3: str
+        :param IndexedAttribute4: 索引字段4
+        :type IndexedAttribute4: str
+        :param IndexedAttribute5: 索引字段5
+        :type IndexedAttribute5: str
         """
         self.UserStoreId = None
         self.PhoneNumber = None
@@ -188,6 +197,11 @@ class CreateUserRequest(AbstractModel):
         self.UserGroup = None
         self.Birthdate = None
         self.CustomizationAttributes = None
+        self.IndexedAttribute1 = None
+        self.IndexedAttribute2 = None
+        self.IndexedAttribute3 = None
+        self.IndexedAttribute4 = None
+        self.IndexedAttribute5 = None
 
 
     def _deserialize(self, params):
@@ -206,6 +220,11 @@ class CreateUserRequest(AbstractModel):
                 obj = MemberMap()
                 obj._deserialize(item)
                 self.CustomizationAttributes.append(obj)
+        self.IndexedAttribute1 = params.get("IndexedAttribute1")
+        self.IndexedAttribute2 = params.get("IndexedAttribute2")
+        self.IndexedAttribute3 = params.get("IndexedAttribute3")
+        self.IndexedAttribute4 = params.get("IndexedAttribute4")
+        self.IndexedAttribute5 = params.get("IndexedAttribute5")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -358,11 +377,14 @@ class DescribeUserRequest(AbstractModel):
         :type Filters: list of QueryUserFilter
         :param Original: 是否返回明文
         :type Original: bool
+        :param Sort: 排序设置
+        :type Sort: :class:`tencentcloud.ciam.v20220331.models.Sort`
         """
         self.UserStoreId = None
         self.Pageable = None
         self.Filters = None
         self.Original = None
+        self.Sort = None
 
 
     def _deserialize(self, params):
@@ -377,6 +399,9 @@ class DescribeUserRequest(AbstractModel):
                 obj._deserialize(item)
                 self.Filters.append(obj)
         self.Original = params.get("Original")
+        if params.get("Sort") is not None:
+            self.Sort = Sort()
+            self.Sort._deserialize(params.get("Sort"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -609,6 +634,16 @@ class ImportUser(AbstractModel):
         :type Salt: :class:`tencentcloud.ciam.v20220331.models.Salt`
         :param PasswordEncryptTypeEnum: 密码加密方式（SHA1;BCRYPT）
         :type PasswordEncryptTypeEnum: str
+        :param IndexedAttribute1: 索引字段1
+        :type IndexedAttribute1: str
+        :param IndexedAttribute2: 索引字段2
+        :type IndexedAttribute2: str
+        :param IndexedAttribute3: 索引字段3
+        :type IndexedAttribute3: str
+        :param IndexedAttribute4: 索引字段4
+        :type IndexedAttribute4: str
+        :param IndexedAttribute5: 索引字段5
+        :type IndexedAttribute5: str
         """
         self.UserName = None
         self.PhoneNumber = None
@@ -636,6 +671,11 @@ class ImportUser(AbstractModel):
         self.CustomizationAttributes = None
         self.Salt = None
         self.PasswordEncryptTypeEnum = None
+        self.IndexedAttribute1 = None
+        self.IndexedAttribute2 = None
+        self.IndexedAttribute3 = None
+        self.IndexedAttribute4 = None
+        self.IndexedAttribute5 = None
 
 
     def _deserialize(self, params):
@@ -672,6 +712,11 @@ class ImportUser(AbstractModel):
             self.Salt = Salt()
             self.Salt._deserialize(params.get("Salt"))
         self.PasswordEncryptTypeEnum = params.get("PasswordEncryptTypeEnum")
+        self.IndexedAttribute1 = params.get("IndexedAttribute1")
+        self.IndexedAttribute2 = params.get("IndexedAttribute2")
+        self.IndexedAttribute3 = params.get("IndexedAttribute3")
+        self.IndexedAttribute4 = params.get("IndexedAttribute4")
+        self.IndexedAttribute5 = params.get("IndexedAttribute5")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -706,7 +751,6 @@ class Job(AbstractModel):
         :type CreatedDate: int
         :param Format: 任务的数据类型
 
-<li> **JSON** </li>  JSON
 <li> **NDJSON** </li>  New-line Delimited JSON
 <li> **CSV** </li>  Comma-Separated Values
 注意：此字段可能返回 null，表示取不到有效值。
@@ -1284,16 +1328,20 @@ class QueryUserFilter(AbstractModel):
         :type PropertyValue: str
         :param Logic: 逻辑值，等于true，不等于false
         :type Logic: bool
+        :param OperateLogic: 操作逻辑符（支持> < = >= <=  != between）
+        :type OperateLogic: str
         """
         self.PropertyKey = None
         self.PropertyValue = None
         self.Logic = None
+        self.OperateLogic = None
 
 
     def _deserialize(self, params):
         self.PropertyKey = params.get("PropertyKey")
         self.PropertyValue = params.get("PropertyValue")
         self.Logic = params.get("Logic")
+        self.OperateLogic = params.get("OperateLogic")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1485,6 +1533,34 @@ class SetPasswordResponse(AbstractModel):
         self.RequestId = params.get("RequestId")
 
 
+class Sort(AbstractModel):
+    """查询用户排序
+
+    """
+
+    def __init__(self):
+        r"""
+        :param PropertyKey: 排序字段的key，参考自定义属性
+        :type PropertyKey: str
+        :param Order: 升序或者降序，ASC/DESC
+        :type Order: str
+        """
+        self.PropertyKey = None
+        self.Order = None
+
+
+    def _deserialize(self, params):
+        self.PropertyKey = params.get("PropertyKey")
+        self.Order = params.get("Order")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            if name in memeber_set:
+                memeber_set.remove(name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class UpdateUserRequest(AbstractModel):
     """UpdateUser请求参数结构体
 
@@ -1512,6 +1588,16 @@ class UpdateUserRequest(AbstractModel):
         :type Birthdate: int
         :param CustomizationAttributes: 自定义属性
         :type CustomizationAttributes: list of MemberMap
+        :param IndexedAttribute1: 索引字段1
+        :type IndexedAttribute1: str
+        :param IndexedAttribute2: 索引字段2
+        :type IndexedAttribute2: str
+        :param IndexedAttribute3: 索引字段3
+        :type IndexedAttribute3: str
+        :param IndexedAttribute4: 索引字段4
+        :type IndexedAttribute4: str
+        :param IndexedAttribute5: 索引字段5
+        :type IndexedAttribute5: str
         """
         self.UserId = None
         self.UserStoreId = None
@@ -1523,6 +1609,11 @@ class UpdateUserRequest(AbstractModel):
         self.UserGroup = None
         self.Birthdate = None
         self.CustomizationAttributes = None
+        self.IndexedAttribute1 = None
+        self.IndexedAttribute2 = None
+        self.IndexedAttribute3 = None
+        self.IndexedAttribute4 = None
+        self.IndexedAttribute5 = None
 
 
     def _deserialize(self, params):
@@ -1541,6 +1632,11 @@ class UpdateUserRequest(AbstractModel):
                 obj = MemberMap()
                 obj._deserialize(item)
                 self.CustomizationAttributes.append(obj)
+        self.IndexedAttribute1 = params.get("IndexedAttribute1")
+        self.IndexedAttribute2 = params.get("IndexedAttribute2")
+        self.IndexedAttribute3 = params.get("IndexedAttribute3")
+        self.IndexedAttribute4 = params.get("IndexedAttribute4")
+        self.IndexedAttribute5 = params.get("IndexedAttribute5")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
@@ -1738,6 +1834,21 @@ class User(AbstractModel):
         :param LockTime: 锁定时间点
 注意：此字段可能返回 null，表示取不到有效值。
         :type LockTime: int
+        :param IndexedAttribute1: 索引字段1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IndexedAttribute1: str
+        :param IndexedAttribute2: 索引字段2
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IndexedAttribute2: str
+        :param IndexedAttribute3: 索引字段3
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IndexedAttribute3: str
+        :param IndexedAttribute4: 索引字段4
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IndexedAttribute4: str
+        :param IndexedAttribute5: 索引字段5
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IndexedAttribute5: str
         """
         self.UserId = None
         self.UserName = None
@@ -1775,6 +1886,11 @@ class User(AbstractModel):
         self.Version = None
         self.LockType = None
         self.LockTime = None
+        self.IndexedAttribute1 = None
+        self.IndexedAttribute2 = None
+        self.IndexedAttribute3 = None
+        self.IndexedAttribute4 = None
+        self.IndexedAttribute5 = None
 
 
     def _deserialize(self, params):
@@ -1819,6 +1935,11 @@ class User(AbstractModel):
         self.Version = params.get("Version")
         self.LockType = params.get("LockType")
         self.LockTime = params.get("LockTime")
+        self.IndexedAttribute1 = params.get("IndexedAttribute1")
+        self.IndexedAttribute2 = params.get("IndexedAttribute2")
+        self.IndexedAttribute3 = params.get("IndexedAttribute3")
+        self.IndexedAttribute4 = params.get("IndexedAttribute4")
+        self.IndexedAttribute5 = params.get("IndexedAttribute5")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

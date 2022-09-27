@@ -31,11 +31,11 @@ class AgentSpaceDTO(AbstractModel):
         :type ImageId: int
         :param ImageName: 镜像名称
         :type ImageName: str
-        :param RemoteUser: 云主机登录名称
+        :param RemoteUser: 云服务器登录名称
         :type RemoteUser: str
-        :param RemoteHost: 云主机登录地址
+        :param RemoteHost: 云服务器登录地址
         :type RemoteHost: str
-        :param RemotePort: 云主机登录端口
+        :param RemotePort: 云服务器登录端口
         :type RemotePort: str
         :param WorkspaceType: 工作空间类型
         :type WorkspaceType: str
@@ -197,7 +197,7 @@ class CreateWorkspaceByTemplateRequest(AbstractModel):
         r"""
         :param CloudStudioSessionTeam: 用户所属组
         :type CloudStudioSessionTeam: str
-        :param TemplateId: 模版ID
+        :param TemplateId: 模板ID
         :type TemplateId: int
         """
         self.CloudStudioSessionTeam = None
@@ -802,7 +802,7 @@ class ModifyCustomizeTemplateVersionControlRequest(AbstractModel):
         r"""
         :param CloudStudioSessionTeam: 用户所属组
         :type CloudStudioSessionTeam: str
-        :param TemplateId: 模版ID
+        :param TemplateId: 模板ID
         :type TemplateId: int
         :param Url: 仓库地址
         :type Url: str

@@ -338,20 +338,24 @@ class DescribeCloudNativeAPIGatewayNodesRequest(AbstractModel):
         r"""
         :param GatewayId: 云原生API网关实例ID。
         :type GatewayId: str
-        :param Offset: 翻页从第几个开始获取
-        :type Offset: int
+        :param GroupId: 实例分组id
+        :type GroupId: str
         :param Limit: 翻页获取多少个
         :type Limit: int
+        :param Offset: 翻页从第几个开始获取
+        :type Offset: int
         """
         self.GatewayId = None
-        self.Offset = None
+        self.GroupId = None
         self.Limit = None
+        self.Offset = None
 
 
     def _deserialize(self, params):
         self.GatewayId = params.get("GatewayId")
-        self.Offset = params.get("Offset")
+        self.GroupId = params.get("GroupId")
         self.Limit = params.get("Limit")
+        self.Offset = params.get("Offset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:

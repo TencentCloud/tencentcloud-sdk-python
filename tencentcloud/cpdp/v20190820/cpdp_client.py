@@ -3400,6 +3400,35 @@ class CpdpClient(AbstractClient):
                 raise TencentCloudSDKException(e.message, e.message)
 
 
+    def QueryFinancialDataUrl(self, request):
+        """财税-查询金融数据文件下载链接
+
+        :param request: Request instance for QueryFinancialDataUrl.
+        :type request: :class:`tencentcloud.cpdp.v20190820.models.QueryFinancialDataUrlRequest`
+        :rtype: :class:`tencentcloud.cpdp.v20190820.models.QueryFinancialDataUrlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("QueryFinancialDataUrl", params, headers=headers)
+            response = json.loads(body)
+            if "Error" not in response["Response"]:
+                model = models.QueryFinancialDataUrlResponse()
+                model._deserialize(response["Response"])
+                return model
+            else:
+                code = response["Response"]["Error"]["Code"]
+                message = response["Response"]["Error"]["Message"]
+                reqid = response["Response"]["RequestId"]
+                raise TencentCloudSDKException(code, message, reqid)
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(e.message, e.message)
+
+
     def QueryFlexAmountBeforeTax(self, request):
         """灵云V2-查询税前金额
 

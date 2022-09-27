@@ -207,6 +207,9 @@ class Cluster(AbstractModel):
         :param PayMode: 0 后付费,1 预付费
 注意：此字段可能返回 null，表示取不到有效值。
         :type PayMode: int
+        :param IsNeedManageNode: 前端区分 集群是否需要2CU逻辑 因为历史集群 变配不需要, default 1  新集群都需要
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsNeedManageNode: int
         """
         self.ClusterId = None
         self.Name = None
@@ -242,6 +245,7 @@ class Cluster(AbstractModel):
         self.Correlations = None
         self.RunningCu = None
         self.PayMode = None
+        self.IsNeedManageNode = None
 
 
     def _deserialize(self, params):
@@ -296,6 +300,7 @@ class Cluster(AbstractModel):
                 self.Correlations.append(obj)
         self.RunningCu = params.get("RunningCu")
         self.PayMode = params.get("PayMode")
+        self.IsNeedManageNode = params.get("IsNeedManageNode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             if name in memeber_set:
